@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
   AlertBox,
@@ -39,12 +39,49 @@ const MODULE_DEFS = [
   { id: "modulo-7",  label: "Módulo 7",  title: "Administração Tributária" },
   { id: "modulo-8",  label: "Módulo 8",  title: "Planejamento Tributário" },
   { id: "modulo-9",  label: "Módulo 9",  title: "Tributos na Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Geral" },
 ] as const;
 
 export default function AulaAdministrativoTributario(props: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_administrativo_tributario_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
@@ -100,7 +137,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Princípios Fundamentais da Contabilidade"
             description="Equação contábil, demonstrações financeiras e papel no ambiente empresarial."
             variant={mv[1]}
@@ -195,7 +232,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
                 ),
               },
               {
-                titulo: "Exceções (Pegadinhas CESGRANRIO)",
+                titulo: "Exceções (pontos de atenção CESGRANRIO)",
                 icone: <LuTriangle />,
                 conteudo: (
                   <div className="space-y-3 text-lg">
@@ -224,7 +261,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
               { title: "BP / DRE / DFC", type: "Comparativo", placeholderColor: "bg-amber-500/20" },
             ],
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "Macete: APP",
             content: (
               <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl space-y-2">
@@ -263,7 +300,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={1} title="Sistema de Partidas Dobradas" description="Como toda transação é registrada: débito, crédito, equilíbrio permanente." variant={mv[2]} />
+          <ModuleSectionHeader index="INTRO" title="Sistema de Partidas Dobradas" description="Como toda transação é registrada: débito, crédito, equilíbrio permanente." variant={mv[2]} />
           <div className="space-y-6 text-lg leading-relaxed text-foreground">
             <p>
               O <strong>Sistema de Partidas Dobradas</strong> (Double-Entry Bookkeeping), criado por Luca Pacioli em 1494, é a base técnica da contabilidade moderna. O princípio é simples e absoluto:
@@ -354,7 +391,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
                 ),
               },
               {
-                titulo: "Exceções (Pegadinhas CESGRANRIO)",
+                titulo: "Exceções (pontos de atenção CESGRANRIO)",
                 icone: <LuTriangle />,
                 conteudo: (
                   <div className="space-y-2 text-lg">
@@ -374,7 +411,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           variant={mv[2]}
           video={{ videoId: "9bZkp7q19f0", title: "Partidas Dobradas — Débito e Crédito na Prática", duration: "9:30" }}
           resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Estrutura Contábil", materia: "Administração", images: [{ title: "T-Account / Razonete", type: "Estrutura", placeholderColor: "bg-blue-500/20" }, { title: "Regras D/C por Conta", type: "Tabela", placeholderColor: "bg-blue-500/20" }] }}
-          maceteVisual={{ title: "DEAD CLIC", content: (<div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl space-y-1 text-lg"><p className="font-bold text-blue-600 dark:text-blue-400">D→ Expenses, Assets, Dividends</p><p className="font-bold text-blue-600 dark:text-blue-400">C→ Liabilities, Income, Capital</p></div>) }}
+          sinteseEstrategica={{ title: "DEAD CLIC", content: (<div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl space-y-1 text-lg"><p className="font-bold text-blue-600 dark:text-blue-400">D→ Expenses, Assets, Dividends</p><p className="font-bold text-blue-600 dark:text-blue-400">C→ Liabilities, Income, Capital</p></div>) }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "Áudio: Débito e Crédito", artista: "Resumo Petrobras" }}
         />
 
@@ -404,7 +441,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={1} title="Sistema Tributário Nacional (STN)" description="Base legal: CTN, Constituição Federal, espécies de tributos e princípios." variant={mv[3]} />
+          <ModuleSectionHeader index="INTRO" title="Sistema Tributário Nacional (STN)" description="Base legal: CTN, Constituição Federal, espécies de tributos e princípios." variant={mv[3]} />
           <div className="space-y-6 text-lg leading-relaxed text-foreground">
             <p>
               O <strong>Sistema Tributário Nacional (STN)</strong> é o conjunto de normas constitucionais e infraconstitucionais que regulamentam a instituição, arrecadação e fiscalização de tributos no Brasil.
@@ -431,7 +468,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
             </p>
             <p>
               A <strong>CESGRANRIO cobra</strong>: classificar espécies tributárias (imposto vs. taxa vs. contribuição), identificar violações a princípios constitucionais, reconhecer a competência
-              de cada tributo (federal/estadual/municipal), e interpretar artigos do CTN. Pegadinha comum: confundir <em>anterioridade anual</em> com <em>anterioridade nonagesimal</em> (90 dias).
+              de cada tributo (federal/estadual/municipal), e interpretar artigos do CTN. pontos de atenção comum: confundir <em>anterioridade anual</em> com <em>anterioridade nonagesimal</em> (90 dias).
             </p>
 
             <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-xl border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
@@ -491,7 +528,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
                 ),
               },
               {
-                titulo: "Exceções (Pegadinhas CESGRANRIO)",
+                titulo: "Exceções (pontos de atenção CESGRANRIO)",
                 icone: <LuTriangle />,
                 conteudo: (
                   <div className="space-y-2 text-lg">
@@ -512,7 +549,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           variant={mv[3]}
           video={{ videoId: "4fndeDfaWCg", title: "Sistema Tributário Nacional — CTN e Princípios", duration: "14:00" }}
           resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Tributos: Conceitos e Sistema", materia: "Administração", images: [{ title: "5 Espécies Tributárias", type: "Mapa", placeholderColor: "bg-emerald-500/20" }, { title: "Competência Federal/Estadual/Municipal", type: "Tabela", placeholderColor: "bg-emerald-500/20" }] }}
-          maceteVisual={{ title: "Tributo ≠ Multa", content: (<div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl space-y-1 text-lg"><p className="font-bold text-emerald-600 dark:text-emerald-400">TRIBUTO: compulsório + legal + não é sanção</p><p className="text-foreground/70 text-lg">Multa = sanção → NÃO é tributo (CTN art. 3º)</p></div>) }}
+          sinteseEstrategica={{ title: "Tributo ≠ Multa", content: (<div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl space-y-1 text-lg"><p className="font-bold text-emerald-600 dark:text-emerald-400">TRIBUTO: compulsório + legal + não é sanção</p><p className="text-foreground/70 text-lg">Multa = sanção → NÃO é tributo (CTN art. 3º)</p></div>) }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "Áudio: Sistema Tributário", artista: "Resumo Petrobras" }}
         />
 
@@ -543,7 +580,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={1} title="ICMS — Imposto sobre Circulação de Mercadorias e Serviços" description="O principal tributo estadual: alíquotas, não-cumulatividade, fato gerador." variant={mv[4]} />
+          <ModuleSectionHeader index="INTRO" title="ICMS — Imposto sobre Circulação de Mercadorias e Serviços" description="O principal tributo estadual: alíquotas, não-cumulatividade, fato gerador." variant={mv[4]} />
           <div className="space-y-6 text-lg leading-relaxed text-foreground">
             <p>
               O <strong>ICMS (Imposto sobre Circulação de Mercadorias e Serviços)</strong>, previsto no art. 155, II da CF/88 e regulamentado pela Lei Complementar nº 87/1996 (Lei Kandir),
@@ -637,7 +674,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
                 ),
               },
               {
-                titulo: "Exceções (Pegadinhas CESGRANRIO)",
+                titulo: "Exceções (pontos de atenção CESGRANRIO)",
                 icone: <LuTriangle />,
                 conteudo: (
                   <div className="space-y-2 text-lg">
@@ -658,7 +695,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           variant={mv[4]}
           video={{ videoId: "5qap5aO4i9A", title: "ICMS e IPI — Não-Cumulatividade e Cálculo", duration: "11:00" }}
           resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "ICMS e IPI", materia: "Administração", images: [{ title: "Cálculo Crédito-Débito ICMS", type: "Exercício", placeholderColor: "bg-rose-500/20" }, { title: "ICMS vs IPI vs ISS", type: "Comparativo", placeholderColor: "bg-rose-500/20" }] }}
-          maceteVisual={{ title: "I — C — I: Quem paga o quê?", content: (<div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl space-y-1 text-lg"><p className="font-bold text-rose-600 dark:text-rose-400">ICMS = Estado | IPI = União | ISS = Município</p><p className="text-foreground/70 text-lg">Todos são não-cumulativos (ICMS e IPI). ISS: cumulativo.</p></div>) }}
+          sinteseEstrategica={{ title: "I — C — I: Quem paga o quê?", content: (<div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl space-y-1 text-lg"><p className="font-bold text-rose-600 dark:text-rose-400">ICMS = Estado | IPI = União | ISS = Município</p><p className="text-foreground/70 text-lg">Todos são não-cumulativos (ICMS e IPI). ISS: cumulativo.</p></div>) }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Áudio: ICMS e IPI", artista: "Resumo Petrobras" }}
         />
 
@@ -680,7 +717,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
       <TabsContent value="modulo-5" className="space-y-12 mt-0 outline-none">
         <ModuleBanner numero={5} titulo="Impostos de Renda (IRPJ e CSLL)" descricao="Tributacao do lucro: regimes, base de calculo e aliquotas." variant={mv[5]} />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={1} title="IRPJ e CSLL — Tributos sobre o Lucro" description="Como grandes empresas calculam imposto sobre o lucro." variant={mv[5]} />
+          <ModuleSectionHeader index="INTRO" title="IRPJ e CSLL — Tributos sobre o Lucro" description="Como grandes empresas calculam imposto sobre o lucro." variant={mv[5]} />
           <div className="space-y-6 text-lg leading-relaxed text-foreground">
             <p>O <strong>IRPJ</strong> tem aliquota de <strong>15%</strong>, mais <strong>adicional de 10%</strong> sobre lucro acima de R$ 240.000/ano. A <strong>CSLL</strong> tem aliquota de <strong>9%</strong>. Juntos: <strong>34%</strong> sobre o lucro tributavel — o que a Petrobras paga sobre seus bilhoes de lucro anual.</p>
             <p>Tres <strong>regimes</strong>: (1) <strong>Lucro Real</strong> — obrigatorio acima de R$ 78 milhoes/ano (Petrobras); base = lucro contabil ajustado pelo LALUR com adicoes e exclusoes; (2) <strong>Lucro Presumido</strong> — opcional ate R$ 78 milhoes; aplica percentual de presuncao sobre receita (8% comercio, 32% servicos); (3) <strong>Lucro Arbitrado</strong> — irregularidade contabil ou fraude.</p>
@@ -707,7 +744,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           ]} />
         </div>
         
-<ModuleConsolidation index={3} variant={mv[5]} video={{ videoId: "dQw4w9WgXcQ", title: "IRPJ e CSLL — Regimes", duration: "13:00" }} resumoVisual={{ moduloNome: "Módulo 5", tituloAula: "IRPJ e CSLL", materia: "Administracao", images: [{ title: "Regimes vs Faturamento", type: "Comparativo", placeholderColor: "bg-violet-500/20" }] }} maceteVisual={{ title: "34% sobre o lucro", content: (<div className="p-4 bg-violet-500/10 border border-violet-500/20 rounded-xl text-lg"><p className="font-bold text-violet-600 dark:text-violet-400">IRPJ 25% + CSLL 9% = 34% sobre o lucro</p><p className="text-lg text-foreground/70">Lucro Real obrigatorio acima R$78M (Petrobras)</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Audio IRPJ e CSLL", artista: "Resumo Petrobras" }} />
+<ModuleConsolidation index={3} variant={mv[5]} video={{ videoId: "dQw4w9WgXcQ", title: "IRPJ e CSLL — Regimes", duration: "13:00" }} resumoVisual={{ moduloNome: "Módulo 5", tituloAula: "IRPJ e CSLL", materia: "Administracao", images: [{ title: "Regimes vs Faturamento", type: "Comparativo", placeholderColor: "bg-violet-500/20" }] }} sinteseEstrategica={{ title: "34% sobre o lucro", content: (<div className="p-4 bg-violet-500/10 border border-violet-500/20 rounded-xl text-lg"><p className="font-bold text-violet-600 dark:text-violet-400">IRPJ 25% + CSLL 9% = 34% sobre o lucro</p><p className="text-lg text-foreground/70">Lucro Real obrigatorio acima R$78M (Petrobras)</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Audio IRPJ e CSLL", artista: "Resumo Petrobras" }} />
 
                 <QuizInterativo questoes={[
           { id: "m5q1", pergunta: "Qual regime e OBRIGATORIO para a Petrobras?", opcoes: [{ label: "Lucro Presumido", valor: "a" }, { label: "Lucro Real", valor: "b" }, { label: "Simples Nacional", valor: "c" }, { label: "Lucro Arbitrado", valor: "d" }], correta: "b", explicacao: "Lucro Real e obrigatorio para receita bruta superior a R$78M/ano." },
@@ -720,7 +757,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
       <TabsContent value="modulo-6" className="space-y-12 mt-0 outline-none">
         <ModuleBanner numero={6} titulo="Contribuicoes Sociais (PIS e COFINS)" descricao="Contribuicoes sobre a receita: cumulativo e nao-cumulativo." variant={mv[6]} />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={1} title="PIS e COFINS — Sobre a Receita Bruta" description="Regimes, aliquotas e creditos para a Petrobras." variant={mv[6]} />
+          <ModuleSectionHeader index="INTRO" title="PIS e COFINS — Sobre a Receita Bruta" description="Regimes, aliquotas e creditos para a Petrobras." variant={mv[6]} />
           <div className="space-y-6 text-lg leading-relaxed text-foreground">
             <p>O <strong>PIS</strong> e a <strong>COFINS</strong> sao contribuicoes federais sobre a <em>receita bruta</em>, nao sobre o lucro. Financiam a seguridade social. Para a Petrobras, representam bilhoes anuais em recolhimento sobre cada real de receita de vendas.</p>
             <p>Dois regimes: (1) <strong>Cumulativo</strong> (Lucro Presumido): PIS 0,65%, COFINS 3%, sem creditos; (2) <strong>Nao-Cumulativo</strong> (Lucro Real — Petrobras): PIS 1,65%, COFINS 7,6%, COM creditos sobre compras de insumos, energia e ativos. Formula: a recolher = debito sobre receitas menos credito sobre compras.</p>
@@ -744,7 +781,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           ]} />
         </div>
         
-<ModuleConsolidation index={3} variant={mv[6]} video={{ videoId: "dQw4w9WgXcQ", title: "PIS e COFINS — Regimes", duration: "11:30" }} resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "PIS e COFINS", materia: "Administracao", images: [{ title: "Aliquotas Comparadas", type: "Tabela", placeholderColor: "bg-amber-500/20" }] }} maceteVisual={{ title: "0,65/3 vs 1,65/7,6", content: (<div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-lg"><p className="font-bold text-amber-600 dark:text-amber-400">Cumulativo: PIS 0,65% + COFINS 3%</p><p className="font-bold text-amber-600 dark:text-amber-400">Nao-cum: PIS 1,65% + COFINS 7,6%</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "Audio PIS e COFINS", artista: "Resumo Petrobras" }} />
+<ModuleConsolidation index={3} variant={mv[6]} video={{ videoId: "dQw4w9WgXcQ", title: "PIS e COFINS — Regimes", duration: "11:30" }} resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "PIS e COFINS", materia: "Administracao", images: [{ title: "Aliquotas Comparadas", type: "Tabela", placeholderColor: "bg-amber-500/20" }] }} sinteseEstrategica={{ title: "0,65/3 vs 1,65/7,6", content: (<div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-lg"><p className="font-bold text-amber-600 dark:text-amber-400">Cumulativo: PIS 0,65% + COFINS 3%</p><p className="font-bold text-amber-600 dark:text-amber-400">Nao-cum: PIS 1,65% + COFINS 7,6%</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "Audio PIS e COFINS", artista: "Resumo Petrobras" }} />
 
                 <QuizInterativo questoes={[
           { id: "m6q1", pergunta: "No regime nao-cumulativo, as aliquotas de PIS/COFINS sao:", opcoes: [{ label: "PIS 0,65% e COFINS 3%", valor: "a" }, { label: "PIS 1,65% e COFINS 7,6%", valor: "b" }, { label: "PIS 9% e COFINS 15%", valor: "c" }, { label: "PIS 1% e COFINS 4%", valor: "d" }], correta: "b", explicacao: "Nao-cumulativo: PIS 1,65% e COFINS 7,6%, com creditos. Obrigatorio para Lucro Real." },
@@ -757,7 +794,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
       <TabsContent value="modulo-7" className="space-y-12 mt-0 outline-none">
         <ModuleBanner numero={7} titulo="Administracao Tributaria" descricao="Fiscalizacao, obrigacoes acessorias, lancamento e processo administrativo fiscal." variant={mv[7]} />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={1} title="Fiscalizacao e Obrigacoes Tributarias" description="Como o Estado fiscaliza, cobra e os contribuintes se defendem." variant={mv[7]} />
+          <ModuleSectionHeader index="INTRO" title="Fiscalizacao e Obrigacoes Tributarias" description="Como o Estado fiscaliza, cobra e os contribuintes se defendem." variant={mv[7]} />
           <div className="space-y-6 text-lg leading-relaxed text-foreground">
             <p>A <strong>Administracao Tributaria</strong> e exercida pela <strong>Receita Federal do Brasil</strong> (tributos federais), pelas <strong>SEFAZ estaduais</strong> (ICMS, IPVA) e pelas <strong>Secretarias Municipais</strong> (ISS, IPTU). A Petrobras, maior contribuinte do Brasil, e fiscalizada pelos tres orgaos simultaneamente.</p>
             <p>Obrigacoes tributarias: (1) <strong>Principal</strong> — pagar o tributo ou penalidade (obrigacao de dar dinheiro); (2) <strong>Acessoria</strong> — escriturar, declarar, informar (SPED, DCTF, DIRF, RAIS). Descumprimento de acessoria gera multa que se converte em obrigacao principal.</p>
@@ -783,7 +820,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           ]} />
         </div>
         
-<ModuleConsolidation index={3} variant={mv[7]} video={{ videoId: "dQw4w9WgXcQ", title: "Administracao Tributaria", duration: "12:00" }} resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "Adm. Tributaria", materia: "Administracao", images: [{ title: "3 Modalidades Lancamento", type: "Tabela", placeholderColor: "bg-blue-500/20" }] }} maceteVisual={{ title: "Decadencia vs Prescricao", content: (<div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-lg"><p className="font-bold text-blue-600 dark:text-blue-400">Decadencia: 5 anos para LANCAR</p><p className="font-bold text-blue-600 dark:text-blue-400">Prescricao: 5 anos para COBRAR</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Audio Adm. Tributaria", artista: "Resumo Petrobras" }} />
+<ModuleConsolidation index={3} variant={mv[7]} video={{ videoId: "dQw4w9WgXcQ", title: "Administracao Tributaria", duration: "12:00" }} resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "Adm. Tributaria", materia: "Administracao", images: [{ title: "3 Modalidades Lancamento", type: "Tabela", placeholderColor: "bg-blue-500/20" }] }} sinteseEstrategica={{ title: "Decadencia vs Prescricao", content: (<div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-lg"><p className="font-bold text-blue-600 dark:text-blue-400">Decadencia: 5 anos para LANCAR</p><p className="font-bold text-blue-600 dark:text-blue-400">Prescricao: 5 anos para COBRAR</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Audio Adm. Tributaria", artista: "Resumo Petrobras" }} />
 
                 <QuizInterativo questoes={[
           { id: "m7q1", pergunta: "Entregar a DCTF e:", opcoes: [{ label: "Obrigacao principal", valor: "a" }, { label: "Obrigacao acessoria", valor: "b" }, { label: "Penalidade tributaria", valor: "c" }, { label: "Facultativo", valor: "d" }], correta: "b", explicacao: "DCTF = declaracao = OBRIGACAO ACESSORIA. Descumprimento gera multa." },
@@ -796,7 +833,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
       <TabsContent value="modulo-8" className="space-y-12 mt-0 outline-none">
         <ModuleBanner numero={8} titulo="Planejamento Tributario" descricao="Elisao vs. evasao fiscal, estrategias legais e limites eticos." variant={mv[8]} />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={1} title="Elisao vs. Evasao Fiscal" description="A linha entre planejamento legal e crime tributario." variant={mv[8]} />
+          <ModuleSectionHeader index="INTRO" title="Elisao vs. Evasao Fiscal" description="A linha entre planejamento legal e crime tributario." variant={mv[8]} />
           <div className="space-y-6 text-lg leading-relaxed text-foreground">
             <p><strong>Planejamento Tributario</strong> e a reducao legal da carga tributaria — atividade completamente legitima. A Petrobras tem diretoria dedicada que economiza bilhoes anualmente.</p>
             <p><strong>Elisao Fiscal</strong> (licita): reducao por meios <em>legais</em>, <em>antes</em> do fato gerador. Exemplos: escolher Lucro Presumido vs. Real; usar JCP para deduzir IRPJ/CSLL; instalar unidade na Zona Franca de Manaus para isencao de IPI; compensar prejuizos fiscais (ate 30% do lucro).</p>
@@ -821,7 +858,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           ]} />
         </div>
         
-<ModuleConsolidation index={3} variant={mv[8]} video={{ videoId: "dQw4w9WgXcQ", title: "Planejamento Tributario", duration: "10:00" }} resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Planejamento Tributario", materia: "Administracao", images: [{ title: "Elisao vs Evasao", type: "Comparativo", placeholderColor: "bg-emerald-500/20" }] }} maceteVisual={{ title: "Antes x Depois do FG", content: (<div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-lg"><p className="font-bold text-emerald-600 dark:text-emerald-400">Antes + legal = ELISAO (ok)</p><p className="font-bold text-red-500 dark:text-red-400">Depois + ilegal = EVASAO (crime)</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Audio Planejamento Tributario", artista: "Resumo Petrobras" }} />
+<ModuleConsolidation index={3} variant={mv[8]} video={{ videoId: "dQw4w9WgXcQ", title: "Planejamento Tributario", duration: "10:00" }} resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Planejamento Tributario", materia: "Administracao", images: [{ title: "Elisao vs Evasao", type: "Comparativo", placeholderColor: "bg-emerald-500/20" }] }} sinteseEstrategica={{ title: "Antes x Depois do FG", content: (<div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-lg"><p className="font-bold text-emerald-600 dark:text-emerald-400">Antes + legal = ELISAO (ok)</p><p className="font-bold text-red-500 dark:text-red-400">Depois + ilegal = EVASAO (crime)</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Audio Planejamento Tributario", artista: "Resumo Petrobras" }} />
 
                 <QuizInterativo questoes={[
           { id: "m8q1", pergunta: "Instalar fabrica na ZFM para isencao de IPI e:", opcoes: [{ label: "Evasao fiscal", valor: "a" }, { label: "Elisao fiscal licita", valor: "b" }, { label: "Sonegacao permitida", valor: "c" }, { label: "Crime tributario", valor: "d" }], correta: "b", explicacao: "ELISAO: reducao licita por meio legal (beneficio ZFM), antes do FG. Completamente legitima." },
@@ -834,7 +871,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
       <TabsContent value="modulo-9" className="space-y-12 mt-0 outline-none">
         <ModuleBanner numero={9} titulo="Tributos na Petrobras" descricao="Participacoes governamentais e impacto tributario em Suprimentos." variant={mv[9]} />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={1} title="Tributos Especificos do Setor Petrolifero" description="Participacoes governamentais e creditos tributarios em Suprimentos." variant={mv[9]} />
+          <ModuleSectionHeader index="INTRO" title="Tributos Especificos do Setor Petrolifero" description="Participacoes governamentais e creditos tributarios em Suprimentos." variant={mv[9]} />
           <div className="space-y-6 text-lg leading-relaxed text-foreground">
             <p>A <strong>Petrobras e o maior contribuinte individual do Brasil</strong>, pagando mais de R$ 100 bilhoes/ano. Para o Tecnico de Suprimento, toda aquisicao carrega tributos que afetam o custo final.</p>
             <p><strong>Participacoes Governamentais</strong> (Lei 9.478/1997 e Lei 12.351/2010): (1) <strong>Royalties</strong> — compensacao pela exploracao de petroleo/gas, 5%-40% da producao; (2) <strong>Participacao Especial</strong> — sobre lucros extraordinarios de campos grandes, ate 40%; (3) <strong>Bonus de Assinatura</strong> — pagamento unico pela concessao; (4) <strong>CIDE Combustiveis</strong> — contribuicao federal sobre comercializacao de derivados.</p>
@@ -860,7 +897,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           { icone: <LuScale className="w-6 h-6" />, titulo: "Bonus de Assinatura", descricao: "Pagamento unico a ANP pela concessao ou partilha de producao. Nao e tributo recorrente." },
         ]} titulo="Participacoes Governamentais" />
         
-<ModuleConsolidation index={3} variant={mv[9]} video={{ videoId: "dQw4w9WgXcQ", title: "Tributacao Petrobras e Suprimentos", duration: "14:00" }} resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Tributos Petrobras", materia: "Administracao", images: [{ title: "Participacoes Governamentais", type: "Estrutura", placeholderColor: "bg-rose-500/20" }] }} maceteVisual={{ title: "Custo Efetivo em Suprimentos", content: (<div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl text-lg"><p className="font-bold text-rose-600 dark:text-rose-400">Custo Efetivo = Preco menos (IPI+ICMS+PIS/COFINS)</p><p className="text-lg text-foreground/70">Pode ser 20-30% menor que o valor nominal.</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Audio Tributos Petrobras", artista: "Resumo Petrobras" }} />
+<ModuleConsolidation index={3} variant={mv[9]} video={{ videoId: "dQw4w9WgXcQ", title: "Tributacao Petrobras e Suprimentos", duration: "14:00" }} resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Tributos Petrobras", materia: "Administracao", images: [{ title: "Participacoes Governamentais", type: "Estrutura", placeholderColor: "bg-rose-500/20" }] }} sinteseEstrategica={{ title: "Custo Efetivo em Suprimentos", content: (<div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl text-lg"><p className="font-bold text-rose-600 dark:text-rose-400">Custo Efetivo = Preco menos (IPI+ICMS+PIS/COFINS)</p><p className="text-lg text-foreground/70">Pode ser 20-30% menor que o valor nominal.</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Audio Tributos Petrobras", artista: "Resumo Petrobras" }} />
 
                 <QuizInterativo questoes={[
           { id: "m9q1", pergunta: "Os Royalties pagos pela Petrobras sao:", opcoes: [{ label: "IR sobre a producao", valor: "a" }, { label: "Compensacao financeira pela exploracao de recursos naturais da Uniao", valor: "b" }, { label: "Taxa da ANP pela licenca", valor: "c" }, { label: "Contribuicao previdenciaria dos trabalhadores", valor: "d" }], correta: "b", explicacao: "Royalties = compensacao financeira pela exploracao de recursos da Uniao (Lei 9.478/1997). Nao sao tributos no sentido estrito do CTN." },
@@ -871,9 +908,9 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
 
       {/* M10 */}
       <TabsContent value="modulo-10" className="space-y-12 mt-0 outline-none">
-        <ModuleBanner numero={10} titulo="Simulado Mestre" descricao="Consolidacao final: 12 questoes integradas no padrao CESGRANRIO." variant={mv[10]} />
+        <ModuleBanner numero={10} titulo="Simulado Geral" descricao="Consolidacao final: 12 questoes integradas no padrao CESGRANRIO." variant={mv[10]} />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={1} title="Revisao Integrada — Mapa Mental Completo" description="Revise tudo antes do simulado." variant={mv[10]} />
+          <ModuleSectionHeader index="INTRO" title="Revisao Integrada — Mapa Mental Completo" description="Revise tudo antes do simulado." variant={mv[10]} />
           <div className="grid md:grid-cols-2 gap-4 text-lg">
             <div className="bg-card rounded-xl border border-border p-4 space-y-2"><p className="font-bold">Contabilidade (M1-M2)</p><ul className="text-foreground/70 text-lg space-y-1 list-disc list-inside"><li>Ativo = Passivo + PL</li><li>BP (data) / DRE (periodo) / DFC (caixa)</li><li>Partidas dobradas: D = C</li><li>Principio da Competencia ≠ Regime de Caixa</li></ul></div>
             <div className="bg-card rounded-xl border border-border p-4 space-y-2"><p className="font-bold">Sistema Tributario (M3)</p><ul className="text-foreground/70 text-lg space-y-1 list-disc list-inside"><li>5 especies: Imposto, Taxa, CM, EC, Contrib.</li><li>Uniao: IR, IPI, IOF, PIS, COFINS, CSLL</li><li>Estado: ICMS, IPVA. Municipio: ISS, IPTU</li><li>Tributo nao e sancao (CTN art. 3)</li></ul></div>
@@ -885,7 +922,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           <p className="text-lg">12 questoes no padrao CESGRANRIO. Precisa de 70% para completar a aula. Boa sorte, futuro Tecnico de Suprimento da Petrobras!</p>
         </AlertBox>
         
-<ModuleConsolidation index={2} variant={mv[10]} video={{ videoId: "dQw4w9WgXcQ", title: "Revisao Geral — Adm. Tributario", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 10", tituloAula: "Simulado Mestre", materia: "Administracao", images: [{ title: "Mapa Mental Completo", type: "Sintese", placeholderColor: "bg-violet-500/20" }] }} maceteVisual={{ title: "Resumo Total", content: (<div className="p-4 bg-violet-500/10 border border-violet-500/20 rounded-xl text-lg"><p className="font-bold text-violet-600 dark:text-violet-400">Lucro: IRPJ 25% + CSLL 9% = 34%</p><p className="font-bold text-violet-600 dark:text-violet-400">Receita: PIS 1,65% + COFINS 7,6%</p><p className="text-lg text-foreground/70">ICMS=Estado | IPI=Uniao | ISS=Municipio</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", titulo: "Audio Revisao Geral", artista: "Resumo Petrobras" }} />
+<ModuleConsolidation index={2} variant={mv[10]} video={{ videoId: "dQw4w9WgXcQ", title: "Revisao Geral — Adm. Tributario", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 10", tituloAula: "Simulado Geral", materia: "Administracao", images: [{ title: "Mapa Mental Completo", type: "Sintese", placeholderColor: "bg-violet-500/20" }] }} sinteseEstrategica={{ title: "Resumo Total", content: (<div className="p-4 bg-violet-500/10 border border-violet-500/20 rounded-xl text-lg"><p className="font-bold text-violet-600 dark:text-violet-400">Lucro: IRPJ 25% + CSLL 9% = 34%</p><p className="font-bold text-violet-600 dark:text-violet-400">Receita: PIS 1,65% + COFINS 7,6%</p><p className="text-lg text-foreground/70">ICMS=Estado | IPI=Uniao | ISS=Municipio</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", titulo: "Audio Revisao Geral", artista: "Resumo Petrobras" }} />
 
                 <QuizInterativo questoes={[
           { id: "m10q1", pergunta: "A equacao fundamental da contabilidade e:", opcoes: [{ label: "Receita menos Custos = Lucro", valor: "a" }, { label: "Ativo = Passivo + Patrimonio Liquido", valor: "b" }, { label: "Caixa = AC menos PC", valor: "c" }, { label: "Lucro = Ativo menos Dividas", valor: "d" }], correta: "b", explicacao: "Ativo = Passivo + PL. Toda transacao contabil mantem esse equilibrio sem excecao." },

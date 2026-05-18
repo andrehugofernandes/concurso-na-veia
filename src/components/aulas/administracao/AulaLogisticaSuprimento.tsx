@@ -35,10 +35,45 @@ import { getModuleVariant } from "@/lib/moduleColors";
  * Estabilidade: Padrão Ouro (10 Módulos + Consolidação Completa)
  */
 export default function AulaLogisticaSuprimento(props: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set()
-  );
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_logistica_suprimento_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   const MODULE_DEFS = [
     { id: "modulo-1", label: "Módulo 1", title: "Fundamentos e Cadeia de Suprimentos" },
@@ -50,7 +85,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
     { id: "modulo-7", label: "Módulo 7", title: "Indicadores de Desempenho (KPIs)" },
     { id: "modulo-8", label: "Módulo 8", title: "Logística Reversa e Sustentabilidade" },
     { id: "modulo-9", label: "Módulo 9", title: "Logística Offshore Petrobras" },
-    { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre Logística" },
+    { id: "modulo-10", label: "Módulo 10", title: "Simulado Geral Logística" },
   ] as const;
 
   const handleModuleComplete = (modId: string, score: number) => {
@@ -116,7 +151,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             variant={mv[1]}
             title="A Missão Estratégica da Logística"
             description="Muito além de transportar: como a logística cria valor competitivo para a Petrobras."
@@ -208,7 +243,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
                       A Petrobras opera uma das logísticas mais complexas do mundo: abastecer plataformas a 300 km da costa,
                       em alto-mar, com condições climáticas imprevisíveis.
                     </p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-emerald-500" /> Inbound</h5>
                         <p className="text-lg">Recebimento de tubos, válvulas e químicos nos portos de Macaé e Niterói.</p>
@@ -241,7 +276,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
                 conteudo: (
                   <div className="space-y-4">
                     <p>Cuidado para não confundir logística com gestão de operações:</p>
-                    <AlertBox tipo="warning" titulo="Pegadinha clássica">
+                    <AlertBox tipo="warning" titulo="pontos de atenção clássica">
                       Logística NÃO é responsável pela transformação do produto (refino, perfuração). Ela cuida do FLUXO entre
                       as etapas de transformação. A transformação em si é responsabilidade da Gestão de Operações/Produção.
                     </AlertBox>
@@ -265,7 +300,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
               { title: "7 Certos", type: "Infográfico", placeholderColor: "bg-blue-500/20" },
             ],
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "Os 7 Certos",
             content: (
               <div className="space-y-2 text-lg font-bold text-center">
@@ -404,7 +439,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
               { title: "Fórmula LEC", type: "Esquema", placeholderColor: "bg-cyan-500/20" },
             ],
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "ABC em 3 segundos",
             content: (
               <div className="space-y-2 text-lg font-bold text-center">
@@ -527,7 +562,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           index={3} variant={mv[3]}
           video={{ videoId: "LOG3_V", title: "Armazenagem e Centros de Distribuição", duration: "14:00" }}
           resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Armazenagem", materia: "Logística", images: [{ title: "Layout em U", type: "Esquema", placeholderColor: "bg-emerald-500/20" }, { title: "Fluxo WMS", type: "Diagrama", placeholderColor: "bg-cyan-500/20" }] }}
-          maceteVisual={{ title: "Regra de Ouro do Picking", content: (<div className="text-center text-lg font-bold"><p>Mais GIRO = Mais PERTO da porta</p><p className="text-muted-foreground font-normal text-sm mt-1">Itens classe A ficam na zona nobre do armazém</p></div>) }}
+          sinteseEstrategica={{ title: "Regra de Ouro do Picking", content: (<div className="text-center text-lg font-bold"><p>Mais GIRO = Mais PERTO da porta</p><p className="text-muted-foreground font-normal text-sm mt-1">Itens classe A ficam na zona nobre do armazém</p></div>) }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "Podcast: Dentro do CD", artista: "Prof. Supply Chain" }}
         />
         <QuizInterativo questoes={mapQuizQuestions("modulo-3")} titulo="QUIZ: Armazenagem e CDs" numero={3} variant={mv[3]} onComplete={(score) => handleModuleComplete("modulo-3", score)} />
@@ -636,7 +671,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           index={4} variant={mv[4]}
           video={{ videoId: "LOG4_V", title: "Modais e Gestão de Transportes", duration: "18:00" }}
           resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Transportes", materia: "Logística", images: [{ title: "Matriz Modal BR", type: "Infográfico", placeholderColor: "bg-amber-500/20" }, { title: "Malha Dutoviária", type: "Mapa", placeholderColor: "bg-emerald-500/20" }] }}
-          maceteVisual={{ title: "Hierarquia de Custo", content: (<div className="text-center text-lg font-bold space-y-1"><p className="text-emerald-400">Dutoviário 💰</p><p className="text-blue-400">Aquaviário 💰💰</p><p className="text-cyan-400">Ferroviário 💰💰💰</p><p className="text-amber-400">Rodoviário 💰💰💰💰</p><p className="text-rose-400">Aéreo 💰💰💰💰💰</p></div>) }}
+          sinteseEstrategica={{ title: "Hierarquia de Custo", content: (<div className="text-center text-lg font-bold space-y-1"><p className="text-emerald-400">Dutoviário 💰</p><p className="text-blue-400">Aquaviário 💰💰</p><p className="text-cyan-400">Ferroviário 💰💰💰</p><p className="text-amber-400">Rodoviário 💰💰💰💰</p><p className="text-rose-400">Aéreo 💰💰💰💰💰</p></div>) }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Podcast: Modais Brasileiros", artista: "Prof. Supply Chain" }}
         />
         <QuizInterativo questoes={mapQuizQuestions("modulo-4")} titulo="QUIZ: Modais e Transportes" numero={4} variant={mv[4]} onComplete={(score) => handleModuleComplete("modulo-4", score)} />
@@ -774,7 +809,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
               { title: "Milk Run", type: "Esquema", placeholderColor: "bg-emerald-500/20" },
             ],
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "O Macete do 'Leiteiro'",
             content: (
               <>
@@ -785,7 +820,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
                 <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
                   &quot;<strong>Milk Run</strong> = Leiteiro. A empresa manda o caminhão <strong>buscar</strong> nos fornecedores, na rota fixa, como o leiteiro de casa em casa.&quot;
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
                   <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-2">Inbound</h4>
                     <p className="text-lg text-muted-foreground italic">&quot;Tudo que ENTRA na empresa.&quot;</p>
@@ -927,7 +962,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           index={6} variant={mv[6]}
           video={{ videoId: "LOG6_V", title: "Supply Chain Management", duration: "16:00" }}
           resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "SCM", materia: "Logística", images: [{ title: "Bullwhip Effect", type: "Gráfico", placeholderColor: "bg-amber-500/20" }, { title: "Modelo CPFR", type: "Diagrama", placeholderColor: "bg-blue-500/20" }] }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "O Macete do 'Chicote'",
             content: (
               <>
@@ -938,7 +973,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
                 <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
                   &quot;Pequena variação na ponta <strong>amplifica</strong> na base. Quanto mais longe do consumidor, mais &quot;chicoteado&quot; é o pedido.&quot;
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
                   <div className="p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 mb-2">Causa</h4>
                     <p className="text-lg text-muted-foreground italic">&quot;Cada elo infla o pedido por medo de faltar.&quot;</p>
@@ -1067,7 +1102,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           index={7} variant={mv[7]}
           video={{ videoId: "LOG7_V", title: "KPIs Logísticos", duration: "14:00" }}
           resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "KPIs", materia: "Logística", images: [{ title: "Dashboard KPIs", type: "Tabela", placeholderColor: "bg-blue-500/20" }, { title: "Fórmula OTIF", type: "Esquema", placeholderColor: "bg-rose-500/20" }] }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "O Macete do 'OTIF'",
             content: (
               <>
@@ -1078,7 +1113,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
                 <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
                   &quot;<strong>On Time</strong> = na hora. <strong>In Full</strong> = completo. Se falha UM dos dois, NÃO é OTIF.&quot;
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
                   <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-2">On Time ⏰</h4>
                     <p className="text-lg text-muted-foreground italic">&quot;Chegou no prazo combinado?&quot;</p>
@@ -1212,7 +1247,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           index={8} variant={mv[8]}
           video={{ videoId: "LOG8_V", title: "Logística Reversa e Sustentabilidade", duration: "15:00" }}
           resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Reversa", materia: "Logística", images: [{ title: "Ciclo Reverso", type: "Diagrama", placeholderColor: "bg-emerald-500/20" }, { title: "Hierarquia PNRS", type: "Infográfico", placeholderColor: "bg-amber-500/20" }] }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "O Macete da 'Seta Invertida'",
             content: (
               <>
@@ -1223,7 +1258,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
                 <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
                   &quot;Logística normal: fornecedor → cliente. Logística reversa: cliente → <strong>origem</strong>. A seta se inverte.&quot;
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
                   <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">Pós-Venda</h4>
                     <p className="text-lg text-muted-foreground italic">&quot;Defeito? Devolve ao vendedor.&quot;</p>
@@ -1357,7 +1392,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           index={9} variant={mv[9]}
           video={{ videoId: "LOG9_V", title: "Logística Offshore Petrobras", duration: "20:00" }}
           resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Petrobras", materia: "Offshore", images: [{ title: "Mapa Bacias", type: "Mapa", placeholderColor: "bg-blue-500/20" }, { title: "Frota PSV/AHTS", type: "Infográfico", placeholderColor: "bg-amber-500/20" }] }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "O Macete do 'Barco Certo'",
             content: (
               <>
@@ -1368,7 +1403,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
                 <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto text-center">
                   &quot;<strong>PSV</strong> = caminhão do mar (Suprimento). <strong>AHTS</strong> = guincho do mar (Âncoras). <strong>FPSO</strong> = fábrica flutuante (Produção).&quot;
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
                   <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-2">PSV 🚛</h4>
                     <p className="text-lg text-muted-foreground italic">&quot;Leva comida, peça, químico.&quot;</p>

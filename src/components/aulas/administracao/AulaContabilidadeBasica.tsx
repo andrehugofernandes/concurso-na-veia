@@ -13,7 +13,7 @@
  * - Prática (QuizInterativo)
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AulaProps, QuizQuestion } from "../shared";
 import {
   ModuleConsolidation,
@@ -49,12 +49,49 @@ const MODULE_DEFS = [
   { id: "modulo-7", label: "Módulo 7", title: "Análise de Demonstrações" },
   { id: "modulo-8", label: "Módulo 8", title: "Contabilidade de Custos" },
   { id: "modulo-9", label: "Módulo 9", title: "Contabilidade na Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Geral" },
 ] as const;
 
 export default function AulaContabilidadeBasica(props: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_contabilidade_basica_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   const handleQuizComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
@@ -83,7 +120,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={1}
+          index="INTRO"
           title="Fundamentos de Contabilidade"
           description="Entenda por que a contabilidade é essencial para qualquer organização, especialmente em contexto Petrobras."
           variant={getModuleVariant(1)}
@@ -136,8 +173,8 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
             { title: "Princípios Contábeis", type: "Estrutura", placeholderColor: "bg-amber-500/20" },
           ],
         }}
-        maceteVisual={{
-          title: "O Pulo do Gato",
+        sinteseEstrategica={{
+          title: "Destaque Estratégico",
           content: <p className="text-lg italic">{"A Contabilidade não é exata, é social. Ela conta a história da empresa através dos números."}</p>
         }}
         audio={{ audioUrl: "#", titulo: "Introdução à Contabilidade", artista: "Prof. Contabilidade" }}
@@ -255,7 +292,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
             { title: "A = P + PL", type: "Regra", placeholderColor: "bg-amber-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Pense no Ativo como o que você TEM e no Passivo como o que você DEVE. O PL é o que realmente é SEU."}</p>
         }}
@@ -378,7 +415,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
             { title: "Codificação", type: "Regra", placeholderColor: "bg-violet-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Macete de Código",
           content: <p className="text-lg italic">{"O primeiro dígito diz o que a conta representa. 1 é sempre Ativo, 2 é Passivo."}</p>
         }}
@@ -506,7 +543,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
             { title: "Partidas Dobradas", type: "Estrutura", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Mnemônico",
           content: <p className="text-lg italic">{"O Ativo DEVE para a empresa, por isso aumenta no DÉBITO."}</p>
         }}
@@ -633,7 +670,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
             { title: "Verificação", type: "Regra", placeholderColor: "bg-amber-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Dica de Segurança",
           content: <p className="text-lg italic">{"O balancete acusa erros matemáticos, mas não acusa se você debitou a conta errada!"}</p>
         }}
@@ -756,7 +793,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
             { title: "DRE", type: "Resultado", placeholderColor: "bg-violet-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Mestre da DRE",
           content: <p className="text-lg italic">{"Receita - Custo - Despesa = Lucro. Siga o fluxo!"}</p>
         }}
@@ -879,7 +916,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
             { title: "Rácios Financeiros", type: "Regra", placeholderColor: "bg-amber-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Regra do 1.0",
           content: <p className="text-lg italic">{"Liquidez abaixo de 1.0 é sinal de alerta: a empresa deve mais do que tem disponível no ano."}</p>
         }}
@@ -1007,7 +1044,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
             { title: "MD + MOD + CIF", type: "Estrutura", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Custo vs Despesa",
           content: <p className="text-lg italic">{"Se faz falta na fábrica, é CUSTO. Se faz falta no escritório, é DESPESA."}</p>
         }}
@@ -1131,7 +1168,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
             { title: "IFRS em Petrobras", type: "Estrutura", placeholderColor: "bg-amber-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Compliance é Lei",
           content: <p className="text-lg italic">{"Lei 13.303 + CVM + IFRS = Transparência total para acionistas e sociedade."}</p>
         }}
@@ -1177,7 +1214,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         />
       </div>
       <QuizInterativo
-        titulo="Elite e Compliance"
+        titulo="Avançado e Compliance"
         numero={9}
         variant={getModuleVariant(9)}
         questoes={toQQ(CONTABILIDADE_BASICA_QUIZZES["modulo-9"])}
@@ -1190,7 +1227,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
     <div className="space-y-6">
       <ModuleBanner 
         numero={10} 
-        titulo="Simulado Mestre - Contabilidade" 
+        titulo="Simulado Geral - Contabilidade" 
         descricao="O desafio final: integre todos os conceitos e valide seu domínio."
         variant={getModuleVariant(10)}
       />
@@ -1198,14 +1235,14 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
           index={10}
-          title="Simulado Mestre"
+          title="Simulado Geral"
           description="Avaliação integrada consolidando todos os conceitos de contabilidade básica."
           variant={getModuleVariant(10)}
         />
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
-            O <strong>Simulado Mestre é avaliação integradora</strong> que sintetiza tudo que você aprendeu em 9 módulos anteriores. Diferente de quizzes de cada módulo (que focam conceitos específicos), simulado combina múltiplos domínios em <strong>questões de alta complexidade</strong>. Uma questão pode começar descrevendo lançamento contábil, pedir cálculo de índice de liquidez da empresa, e então questionar implicações para decisão de investimento. Requer que você entenda não apenas "o que é", mas também "como funciona em contexto integrado". Simulado mestre em CESGRANRIO é tipicamente assim: questões exigem compreensão de múltiplos conceitos e capacidade de análise crítica, não simples memorização.
+            O <strong>Simulado Geral é avaliação integradora</strong> que sintetiza tudo que você aprendeu em 9 módulos anteriores. Diferente de quizzes de cada módulo (que focam conceitos específicos), simulado combina múltiplos domínios em <strong>questões de alta complexidade</strong>. Uma questão pode começar descrevendo lançamento contábil, pedir cálculo de índice de liquidez da empresa, e então questionar implicações para decisão de investimento. Requer que você entenda não apenas "o que é", mas também "como funciona em contexto integrado". Simulado Geral em CESGRANRIO é tipicamente assim: questões exigem compreensão de múltiplos conceitos e capacidade de análise crítica, não simples memorização.
           </p>
 
           <p>
@@ -1225,7 +1262,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           </p>
 
           <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Estrutura do Simulado Mestre</p>
+            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Estrutura do Simulado Geral</p>
             <ul className="text-lg space-y-1 text-foreground">
               <li>✓ 10 questões de múltipla escolha integradas</li>
               <li>✓ Meta de aprovação: 70% (7 de 10 questões)</li>
@@ -1255,7 +1292,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
             { title: "Flashcards", type: "Memorização", placeholderColor: "bg-rose-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Foco Total",
           content: <p className="text-lg italic">{"Respire fundo. A contabilidade é lógica. Se a conta não fechar, verifique a origem versus aplicação."}</p>
         }}

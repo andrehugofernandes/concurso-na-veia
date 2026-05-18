@@ -37,8 +37,45 @@ export default function AulaWeb({
   materiaNome, materiaCor, materiaId, prevTopico, nextTopico
 }: AulaProps) {
 
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_ti_web_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   // Definir os módulos da aula (Padrão Premium: 10 módulos)
   const MODULE_DEFS = [
@@ -129,7 +166,7 @@ export default function AulaWeb({
 
         <div className="space-y-12">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="A Web em Camadas"
             description="Entenda o modelo Requisição/Resposta e como a Cesgranrio cobra códigos de status."
             variant={mv[1]}
@@ -176,7 +213,7 @@ export default function AulaWeb({
 
         <div className="space-y-12">
            <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Tags Semânticas Modernas"
               description="Cada tag tem um propósito. Utilize a correta para ser amado pelo Google."
               variant={mv[2]}
@@ -504,8 +541,8 @@ export default function AulaWeb({
                 materia: materiaNome,
                 images: []
             }}
-            maceteVisual={{
-                title: "O Mantra Web",
+            sinteseEstrategica={{
+                title: "O Princípio Web",
                 content: "Estrutura no HTML, Beleza no CSS, Comportamento no JS."
             }}
              audio={{ audioUrl: "", titulo: "", artista: "" }}

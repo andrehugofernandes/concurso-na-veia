@@ -24,6 +24,30 @@ import {
   LuTarget,
   LuTriangleAlert,
   LuLightbulb,
+  LuUserX,
+  LuScale,
+  LuUsers,
+  LuArrowRightLeft,
+  LuClock,
+  LuRuler,
+  LuHourglass,
+  LuHouse,
+  LuGlobe,
+  LuMapPin,
+  LuHand,
+  LuPointer,
+  LuBrainCircuit,
+  LuListChecks,
+  LuGraduationCap,
+  LuMedal,
+  LuUser,
+  LuTags,
+  LuKey,
+  LuTimer,
+  LuMousePointer2,
+  LuLayers,
+  LuCircleAlert,
+  LuBuilding,
 } from "react-icons/lu";
 
 import {
@@ -59,6 +83,8 @@ export default function AulaCrase({
   loading,
   currentProgress = 0,
   onUpdateProgress,
+  prevTopico,
+  nextTopico,
 }: AulaProps) {
   const MODULE_DEFS = [
     { id: "modulo-1", label: "Módulo 1", title: "Conceito e Regra Geral" },
@@ -73,8 +99,45 @@ export default function AulaCrase({
     { id: "modulo-10", label: "Módulo 10", title: "Simulado Integrado" },
   ] as const;
 
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_portugues_crase_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
   const [quizM1, setQuizM1] = useState<QuizQuestion[]>([]);
   const [quizM2, setQuizM2] = useState<QuizQuestion[]>([]);
   const [quizM3, setQuizM3] = useState<QuizQuestion[]>([]);
@@ -132,6 +195,8 @@ export default function AulaCrase({
       currentProgress={currentProgress}
       onComplete={onComplete}
       loading={loading}
+      prevTopico={prevTopico}
+      nextTopico={nextTopico}
     >
       {/* ╔════════════════════════════════════════════════════════════════════════╗ */}
       {/* ║                        MÓDULO 1: CONCEITO                              ║ */}
@@ -144,25 +209,29 @@ export default function AulaCrase({
           descricao="A + A = À: A Equação Fundamental"
         />
 
-        {/* ★ RICH INTRO */}
+        {/* ★ RICH INTRO SECTION - Módulo 1 */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="A Crase: Fusão de Duas Vogais Idênticas"
+            description="Entenda a lógica matemática por trás da crase e elimine a decoreba de vez."
             variant={mv[1]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              <strong>Crase é a fusão gráfica da preposição "a" com o artigo definido feminino "a" (ou com pronomes demonstrativos iniciados por "a")</strong>. Quando essas duas vogais idênticas se encontram em sequência, uma delas desaparece, mas a fusão é marcada pelo acento grave (´), criando o símbolo: <strong>à</strong>. Essa é a razão matemática da crase: A (preposição) + A (artigo) = À.
+              <strong>Crase é a fusão gráfica da preposição "a" com o artigo definido feminino "a" (ou com pronomes demonstrativos iniciados por "a")</strong>. Quando essas duas vogais idênticas se encontram em sequência, uma delas desaparece, mas a fusão é marcada pelo acento grave (´), criando o símbolo: <strong>à</strong>. Essa é a razão matemática da crase: A (preposição) + A (artigo) = À. Não se trata de uma preposição especial, mas da aglutinação de duas classes gramaticais distintas que colidem na mesma frase.
             </p>
             <p>
-              A crase não é um erro ou capricho da linguagem — é um fenômeno fonético natural do português. Segundo a Nomenclatura Gramatical Brasileira (NGB), a crase é um processo de <em>elisão</em>, ou seja, a supressão de uma vogal quando duas vogais iguais se encontram. Historicamente, o português herdou essa tendência do latim, onde as vogais gemidas (repetidas) eram unificadas na pronúncia. A escrita apenas representou graficamente essa realidade linguística.
+              Pense na crase como uma junção de peças em um quebra-cabeça. Imagine que você tem um pino (a preposição exigida por um verbo de movimento) e um encaixe (o artigo feminino que acompanha o destino). Somente quando o pino encontra o encaixe perfeito, a conexão acontece e a luz acende (o acento grave). Se houver apenas o pino ou apenas o encaixe, a ligação não se concretiza. É uma relação de dependência mútua, simples e lógica.
             </p>
             <p>
-              Na Petrobras, documentos técnicos, procedimentos operacionais e comunicações formais utilizam crase constantemente. Relatórios de conformidade mencionam: "conforme referência <em>à</em> NBR 13434", "atento <em>à</em> resolução", "direcionado <em>à</em> segurança operacional". Um erro de crase em um documento contratual ou em uma instrução de trabalho pode prejudicar a interpretação jurídica ou criar ambiguidade crítica. Por isso, a CESGRANRIO cobra crase recorrentemente — testando não apenas conhecimento gramatical, mas a capacidade de aplicar regras sob pressão profissional.
+              A crase não é um erro ou capricho da linguagem — é um fenômeno fonético natural do português. Segundo a Nomenclatura Gramatical Brasileira (NGB) e Celso Cunha, a crase é um processo de <em>elisão</em> ou crase fonética, ou seja, a supressão ou fusão de uma vogal quando duas vogais iguais se encontram. Historicamente, o português herdou essa tendência do latim, onde as vogais gemidas (repetidas) eram unificadas na pronúncia. A escrita apenas representou graficamente essa realidade linguística através do sinal indicativo de crase.
             </p>
             <p>
-              A estratégia de domínio da crase repousa em um processo lógico de 3 passos: <strong>1) Identificar se há preposição "a" exigida</strong>, <strong>2) Verificar se há artigo "a" ou demonstrativo "aquele/a/o" exigido</strong>, <strong>3) Se ambos estão presentes, há crase</strong>. Candidatos que decoram exceções sem entender a regra base fracassam; candidatos que dominam a equação acertam 95% das questões em menos de 30 segundos.
+              Na Petrobras, documentos técnicos, procedimentos operacionais e comunicações formais utilizam crase constantemente. Relatórios de conformidade mencionam: "conforme referência <em>à</em> NBR 13434", "atento <em>à</em> resolução vigente", "direcionado <em>à</em> segurança operacional da plataforma". Um erro de crase em um documento contratual, edital ou instrução de trabalho pode prejudicar a interpretação jurídica, criar ambiguidades críticas e demonstrar falta de rigor técnico.
+            </p>
+            <p>
+              A estratégia de domínio da crase repousa em um processo lógico de 3 passos: <strong>1) Identificar se há preposição "a" exigida</strong>, <strong>2) Verificar se há artigo "a" ou demonstrativo "aquele/a/o" exigido</strong>, <strong>3) Se ambos estão presentes, há crase</strong>. Para a CESGRANRIO, a grande pontos de atenção não está na regra geral, mas nas exceções onde uma das peças parece estar presente, mas não está. Candidatos que decoram regras sem entender a base fracassam; quem domina a equação acerta 95% das questões em segundos.
             </p>
             <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-xl border border-blue-200 dark:border-blue-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground flex items-center gap-2">
@@ -191,7 +260,7 @@ export default function AulaCrase({
                     <p>
                       Crase ocorre obrigatoriamente quando o contexto exige tanto a preposição "a" quanto o artigo/demonstrativo "a". Exemplos: "Vou <strong>à</strong> praia" (vou A + A praia). "Dirijo-me <strong>à</strong> gerência" (dirijo-me A + A gerência). Nesses casos, a crase é automática e obrigatória — não há alternativa.
                     </p>
-                    <p className="font-semibold">Macete: Teste do masculino funciona aqui perfeitamente:</p>
+                    <p className="font-semibold">Insight Estratégico: O teste do masculino é aplicável integralmente nesta estrutura:</p>
                     <p className="italic">"Vou à praia" → "Vou ao museu" ✓ (virou "ao", confirma crase)</p>
                   </div>
                 ),
@@ -318,42 +387,87 @@ export default function AulaCrase({
         {/* ★ FLIP CARDS: Exercícios */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
           <ModuleSectionHeader index={5} title="Prática: Identifique a Crase" variant={mv[1]} />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
-              frente={<div className="font-bold text-lg">A EQUAÇÃO FUNDAMENTAL</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-blue-400">A (preposição) + A (artigo) = À</p>
-                  <p>A crase não é um erro — é uma fusão gráfica de duas vogais iguais. Quando a preposição "a" (exigida pelo verbo) encontra o artigo "a" (exigido pelo substantivo), elas se fundem em um único símbolo com acento grave.</p>
-                  <p>✅ "Vou <strong>à</strong> praia" (vou A + A praia)</p>
-                  <p>❌ "Vou <strong>a</strong> pé" (vou A, mas PÉ é masculino, sem artigo)</p>
-                  <p className="text-muted-foreground">A equação só funciona com ambas as peças presentes.</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-blue-500/10 rounded-full shadow-inner ring-1 ring-blue-500/20">
+                    <LuZap className="w-12 h-12 text-blue-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    A Equação Fundamental
+                  </span>
+                  <span className="text-sm text-blue-500/80 font-medium">
+                    A (prep) + A (art) = À
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">A Lógica Perfeita</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">A crase não é um erro — é uma fusão gráfica de duas vogais iguais. Quando a preposição "a" encontra o artigo "a", elas se fundem.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Vou <strong>à</strong> praia" (vou A + A praia)</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">❌ "Vou <strong>a</strong> pé" (vou A, mas PÉ é masculino)</p>
+                </div>
+              }
+              categoria="Matemática da Crase"
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">TESTE DO LUGAR</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-emerald-400">Preposição exigida pelo contexto</p>
-                  <p>Verbos de movimento ou relacionamento exigem a preposição "a". Exemplos: IR, VIR, DIRIGIR-SE, REFERIR-SE. Quando seguidos de substantivo feminino com artigo, há crase.</p>
-                  <p>✅ "Dirijo-me <strong>à</strong> gerência" (dirigir-se A + A gerência)</p>
-                  <p>✅ "Dedico-me <strong>à</strong> pesquisa" (dedicar A + A pesquisa)</p>
-                  <p className="text-muted-foreground">O primeiro "a" vem da regência verbal, não é opcional.</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-emerald-500/10 rounded-full shadow-inner ring-1 ring-emerald-500/20">
+                    <LuTarget className="w-12 h-12 text-emerald-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Teste do Lugar
+                  </span>
+                  <span className="text-sm text-emerald-500/80 font-medium">
+                    Preposição pelo Contexto
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Verbos Exigentes</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Verbos de movimento ou relacionamento exigem a preposição "a" (IR, DIRIGIR-SE). Quando seguidos de substantivo feminino, há crase.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Dirijo-me <strong>à</strong> gerência"</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Dedico-me <strong>à</strong> pesquisa"</p>
+                </div>
+              }
+              categoria="Regência Verbal"
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">TRÊS PILARES DA CRASE</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-purple-400">Obrigatória, Proibida ou Facultativa</p>
-                  <p>A crase ocorre em três contextos: OBRIGATÓRIA (ambas as peças presentes), PROIBIDA (falta a preposição ou artigo), FACULTATIVA (artigo é opcional).</p>
-                  <p>✅ OBRIGATÓRIA: "Vou à praia"</p>
-                  <p>❌ PROIBIDA: "Comecei a estudar" (verbo, sem artigo)</p>
-                  <p className="text-muted-foreground">Em concursos, identifique qual contexto para não errar.</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-purple-500/10 rounded-full shadow-inner ring-1 ring-purple-500/20">
+                    <LuBookOpen className="w-12 h-12 text-purple-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Três Pilares
+                  </span>
+                  <span className="text-sm text-purple-500/80 font-medium">
+                    A Divisão das Regras
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-purple-500 font-bold border-b border-purple-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Classificação</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">A crase ocorre em três contextos: OBRIGATÓRIA (ambas presentes), PROIBIDA (falta uma peça), FACULTATIVA (artigo opcional).</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ OBRIGATÓRIA: "Vou à praia"</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">❌ PROIBIDA: "Comecei a estudar"</p>
+                </div>
+              }
+              categoria="Estrutura"
             />
           </div>
         </section>
@@ -381,7 +495,7 @@ export default function AulaCrase({
             materia: "Português",
             images: [{ title: "Módulo 1", type: "Resumo", placeholderColor: "bg-blue-100" }],
           }}
-          maceteVisual={{ title: "Macete M1", content: "A + A = À: Se preposição A + artigo A, há crase." }}
+          sinteseEstrategica={{ title: "Síntese Estratégica S1", content: "A + A = À: Se a preposição 'a' encontra o artigo 'a', ocorre a crase." }}
           audio={{ audioUrl: "#", titulo: "AudioAula 1 - Crase", artista: "Petrobras Quest" }}
         />
 
@@ -408,37 +522,42 @@ export default function AulaCrase({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
-            title="O Macete de Ouro: Substitua por Masculino"
+            index="INTRO"
+            title="O Teste do Masculino: A Técnica Fundamental da Crase"
+            description="A técnica mais confiável para confirmar a presença simultânea de preposição e artigo."
             variant={mv[2]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              O <strong>teste do masculino</strong> é a técnica mais poderosa para identificar crase. O método é simples: substitua a palavra feminina por um equivalente masculino. Se o resultado virar "A**O**", então há crase (À). Se virar apenas "A", então não há crase.
+              O <strong>Teste do Masculino</strong> é a ferramenta sintática mais prática e eficaz para a identificação da crase. O método consiste em substituir o termo feminino que sucede o "a" por um termo equivalente no gênero masculino. Se, ao fazer essa substituição, o "a" se transformar em <strong>"ao"</strong>, a ocorrência de crase no termo original feminino está matematicamente comprovada. Se permanecer apenas "a", não há crase.
             </p>
             <p>
-              Exemplos: "Vou <strong>à</strong> praia" → "Vou <strong>ao</strong> museu" (virou AO, confirma à). "Refiro-me <strong>à</strong> Maria" → "Refiro-me <strong>ao</strong> João" (virou AO, confirma à). "Comeci <strong>a</strong> estudar" → "Comeci a trabalhar" (continua A, sem crase).
+              Pense nesse teste como o uso de um papel tornassol na química: ele revela componentes invisíveis a olho nu. Quando você troca a palavra feminina pela masculina, você "força" a estrutura gramatical a mostrar suas cartas. Se a preposição estava escondida junto com o artigo feminino ("à"), no masculino essa fusão se quebra e revela suas partes claramente ("ao" = a + o). É um teste de verificação que nunca falha quando aplicado corretamente.
             </p>
             <p>
-              Esse teste funciona porque a estrutura gramatical se mantém. Se há fusão no masculino (que resultaria em AO), a mesma fusão ocorre no feminino (resultando em À). Se no masculino a preposição fica simples (A), no feminino também fica simples (A).
+              A explicação técnica repousa na constância da regência. O verbo ou nome que exige a preposição "a" continuará exigindo-a, independentemente do gênero da palavra seguinte. O que muda é o artigo que acompanha essa palavra: "a" para femininos, "o" para masculinos. Assim, se a estrutura original continha [Preposição A + Artigo A], a estrutura testada conterá [Preposição A + Artigo O], resultando em "ao". Se resultou apenas em "a" (ou em "o"), significa que faltava uma das peças fundamentais.
             </p>
             <p>
-              Na Petrobras, essa técnica é ouro puro. Quando você recebe um documento técnico com lacunas de crase ("atento ____ resolução"), aplique o teste: "atento ao regulamento" (virou AO) → "atento <strong>à</strong> resolução" (há crase). Esse método desmente qualquer confusão e dirimi dúvidas em segundos.
+              Na rotina da Petrobras, essa técnica resolve impasses em segundos. Ao redigir um memorando dizendo "Reportar-se _____ gerência", o engenheiro pode ficar na dúvida. Aplicando o teste: "Reportar-se <strong>ao</strong> departamento" (virou AO). Logo, a forma correta é "Reportar-se <strong>à</strong> gerência". Em outro caso: "Visando _____ atender aos prazos". Teste com substantivo: "Visando <strong>ao</strong> atendimento". Opa, espera! O verbo "atender" não aceita artigo feminino depois dele, mas aqui temos um verbo ("atender") no original, então "Visando a atender", sem crase, porque antes de verbo não se usa artigo.
+            </p>
+            <p>
+              A pontos de atenção clássica das bancas como a CESGRANRIO envolve o uso de palavras femininas que não possuem equivalentes masculinos diretos, ou o uso de palavras no plural. O segredo não é buscar a tradução exata do masculino, mas sim um termo de <strong>mesmo valor sintático</strong>. Se a palavra original for "viagem", não tente achar o masculino de viagem, mas substitua por "passeio". "Vou <strong>à</strong> viagem" vira "Vou <strong>ao</strong> passeio" (crase confirmada). Adapte o teste ao contexto e não se deixe enganar.
             </p>
             <div className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/30 dark:to-green-950/30 rounded-xl border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground flex items-center gap-2">
-                <LuZap className="w-5 h-5 text-emerald-500" /> Técnica do Teste Masculino
+                <LuZap className="w-5 h-5 text-emerald-500" /> O Detector de Crase (O Teste do "AO")
               </h4>
               <p className="text-foreground/85">
-                Substitua a palavra feminina por um equivalente masculino:
+                Substitua a palavra feminina por um termo masculino equivalente na estrutura:
               </p>
-              <ul className="space-y-2 text-foreground/80">
-                <li>• <strong>Vira "AO"?</strong> → Há crase (À)</li>
-                <li>• <strong>Continua "A"?</strong> → Sem crase (A)</li>
+              <ul className="space-y-2 text-foreground/80 font-medium">
+                <li className="flex items-center gap-2">
+                  <LuCheck className="text-emerald-500 w-5 h-5" /> Se virar <strong>"AO"</strong> → <span className="text-emerald-700 dark:text-emerald-400">Há crase (À)</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <LuTriangleAlert className="text-red-500 w-5 h-5" /> Se continuar <strong>"A"</strong> → <span className="text-red-700 dark:text-red-400">Sem crase (A)</span>
+                </li>
               </ul>
-              <p className="text-sm italic text-foreground/70">
-                Este teste é 95% confiável e funciona em quase todos os casos de crase!
-              </p>
             </div>
           </div>
         </section>
@@ -571,47 +690,91 @@ export default function AulaCrase({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
           <ModuleSectionHeader index={5} title="Prática: Aplique o Teste" variant={mv[2]} />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
-              frente={<div className="font-bold text-lg">🎯 TESTE DO MASCULINO</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-emerald-400">Substitua por equivalente masculino</p>
-                  <p>Troque a palavra feminina por um masculino equivalente. Se virar "AO", há crase. Se continuar "A", não há crase. Exemplo: "Vou à festa" → "Vou ao baile" (virou AO).</p>
-                  <p>✅ "Vou <strong>à</strong> festa" (virou AO, há crase)</p>
-                  <p>❌ "Fui <strong>a</strong> pé" (continua A, sem crase)</p>
-                  <p className="text-muted-foreground">Este teste funciona em 95% dos casos!</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-emerald-500/10 rounded-full shadow-inner ring-1 ring-emerald-500/20">
+                    <LuTarget className="w-12 h-12 text-emerald-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Teste do Masculino
+                  </span>
+                  <span className="text-sm text-emerald-500/80 font-medium">
+                    A Substituição Mágica
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">A Mecânica</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Troque a palavra feminina por um masculino equivalente. Se virar "AO", há crase. Se continuar "A", não há crase.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Vou <strong>à</strong> festa" (Vou <strong>ao</strong> baile)</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">❌ "Fui <strong>a</strong> pé" (Continua A)</p>
+                </div>
+              }
+              categoria="Metodologia"
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">✅ RESULTADO: "AO"</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-green-500">Virou "AO" → Há CRASE</p>
-                  <p>Quando o teste do masculino resulta em "AO", significa que a estrutura contém tanto a preposição quanto o artigo. Portanto, no feminino haverá crase (À).</p>
-                  <p>✅ "Assisti <strong>à</strong> apresentação" (Assisti ao show → AO)</p>
-                  <p>✅ "Dedico-me <strong>à</strong> leitura" (Dedico-me ao livro → AO)</p>
-                  <p className="text-muted-foreground">A regra é constante: preposição + artigo = crase.</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-blue-500/10 rounded-full shadow-inner ring-1 ring-blue-500/20">
+                    <LuZap className="w-12 h-12 text-blue-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Resultado: "AO"
+                  </span>
+                  <span className="text-sm text-blue-500/80 font-medium">
+                    Confirmação de Crase
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Equação Completa</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Quando resulta em "AO", prova que temos preposição + artigo masculino. Logo, no feminino, teremos preposição + artigo feminino = À.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Dedico-me <strong>à</strong> leitura" (ao livro)</p>
+                </div>
+              }
+              categoria="Diagnóstico Positivo"
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">❌ RESULTADO: "A"</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-red-400">Continua "A" → SEM CRASE</p>
-                  <p>Se o teste resulta em apenas "A" (não "AO"), significa que falta uma das peças da equação. Pode ser porque há verbo (sem artigo) ou porque o equivalente masculino já não tem artigo.</p>
-                  <p>❌ "Comecei <strong>a</strong> trabalhar" (Comecei a estudar → A)</p>
-                  <p>❌ "Fui <strong>a</strong> pé" (Fui a cavalo → A)</p>
-                  <p className="text-muted-foreground">Sem ambas as peças, não há crase, sempre.</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-red-500/10 rounded-full shadow-inner ring-1 ring-red-500/20">
+                    <LuTriangleAlert className="w-12 h-12 text-red-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Resultado: "A"
+                  </span>
+                  <span className="text-sm text-red-500/80 font-medium">
+                    Ausência de Crase
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-red-500 font-bold border-b border-red-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Falta uma Peça</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Se continua apenas "A", falta o artigo definido. Ocorre antes de verbos e palavras que não aceitam determinante.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">❌ "Comecei <strong>a</strong> trabalhar"</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">❌ "Andamos <strong>a</strong> cavalo"</p>
+                </div>
+              }
+              categoria="Diagnóstico Negativo"
             />
           </div>
         </section>
 
-        <AlertBox tipo="info" titulo="Macete de Memorização">
+        <AlertBox tipo="info" titulo="Síntese de Memorização">
           Pense no teste do masculino como um <strong>"Detector de AO"</strong>. Se detecta "AO", há crase (À). Se não detecta (continua "A"), sem crase. Simples assim!
         </AlertBox>
 
@@ -625,7 +788,7 @@ export default function AulaCrase({
             materia: "Português",
             images: [{ title: "Módulo 2", type: "Resumo", placeholderColor: "bg-amber-100" }],
           }}
-          maceteVisual={{ title: "Macete M2", content: "AO no masculino? Tem crase no feminino (À)!" }}
+          sinteseEstrategica={{ title: "Síntese Estratégica S2", content: "AO no masculino? Tem crase no feminino (À)!" }}
           audio={{ audioUrl: "#", titulo: "AudioAula 2 - Crase", artista: "Petrobras Quest" }}
         />
 
@@ -651,36 +814,40 @@ export default function AulaCrase({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
-            title="A Razão Gramatical: Verbos Não Aceitam Artigo"
+            index="INTRO"
+            title="A Muralha dos Verbos: Por que a Crase é Proibida"
+            description="Entenda a restrição gramatical que impede o uso de crase antes de ações."
             variant={mv[3]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              <strong>Verbos nunca aceitam artigo definido</strong>. É uma regra gramical inviolável. Você não diz "o estudar", "a correr", "o trabalhar" — essas construções soam erradas porque verbos são palavras de ação, não nomes (substantivos), e nomes é que aceitam artigos. Como verbo não aceita artigo "a", quando há uma preposição "a" antes do verbo, ela fica simples: não há artigo para se fundir com, portanto, sem crase.
+              Princípio Fundamental da crase é clara: <strong>nunca utilize crase antes de verbos</strong>. Essa proibição não é uma exceção decorada, mas uma consequência lógica do conceito fundamental que acabamos de aprender. Como a crase é a fusão de uma preposição "a" com um artigo definido "a", é imperativo que a palavra seguinte admita esse artigo feminino. Acontece que verbos, por sua natureza de expressar ações ou estados, são completamente incompatíveis com artigos.
             </p>
             <p>
-              <strong>Estrutura: Preposição A + Verbo (sem artigo) = A (simples, nunca À)</strong>
+              Faça a analogia com o uso de roupas: você não tenta colocar um chapéu (artigo) no próprio vento (verbo). Chapéus são feitos para cabeças (substantivos). Você diz "o estudo", "a leitura", "a corrida", mas nunca diz "o estudar", "a ler", "a correr" no uso padrão da língua portuguesa. Se o verbo repele o artigo, a preposição "a" exigida pelo termo anterior fica ali, sozinha e solitária, incapaz de realizar a fusão.
             </p>
             <p>
-              Exemplos: "Começou <em>a</em> chover" (A + verbo chover, sem artigo). "Procedeu <em>a</em> realizar" (A + verbo realizar). "Passou <em>a</em> trabalhar" (A + verbo trabalhar). Em todos esses casos, o verbo rejeita o artigo, logo a preposição fica sozinha, sem crase.
+              Gramaticalmente, a preposição atua como uma ponte ligando termos, enquanto o artigo determina o substantivo. Em locuções como "começar a chover" ou "disposto a lutar", os verbos "chover" e "lutar" estão no infinitivo e exercem função de complemento sem a necessidade de determinantes. A preposição "a" atende exclusivamente à regência dos termos anteriores ("começar" ou "disposto"). Sem o artigo feminino para parear, o acento indicativo de crase é impossível.
             </p>
             <p>
-              Na Petrobras, textos técnicos dizem: "O procedimento passou <em>a</em> incluir...", "A empresa procedeu <em>a</em> investigar...", "Começou <em>a</em> implementar...". Candidatos ingênuos colocam crase aqui e erram feio. A regra é clara: verbo = sem crase, sempre.
+              Em relatórios técnicos da Petrobras, essa regra é frequentemente testada na escrita de metas e procedimentos. Frases como "O operador começou <em>a</em> avaliar o sistema" ou "A equipe foi orientada <em>a</em> interromper o processo" ilustram o padrão correto. Note que a preposição "a" está presente, mas como "avaliar" e "interromper" são verbos, a crase não acontece. Um erro comum ocorre quando se usa locuções como "A partir de", onde a ausência de crase se justifica exatamente por "partir" ser um verbo.
+            </p>
+            <p>
+              As bancas como a CESGRANRIO exploram essa regra de forma cruel ao colocar verbos e substantivos parecidos lado a lado. Por exemplo: "Procedeu <em>à</em> verificação" (tem crase, pois "verificação" é substantivo feminino) contra "Procedeu <em>a</em> verificar" (sem crase, pois "verificar" é verbo). Candidatos apressados focam apenas no verbo "proceder" e ignoram a palavra seguinte. Lembre-se: o que determina a crase não é apenas quem pede a preposição, mas fundamentalmente quem a recebe.
             </p>
             <div className="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-950/30 dark:to-pink-950/30 rounded-xl border border-red-200 dark:border-red-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground flex items-center gap-2">
-                <LuTriangleAlert className="w-5 h-5 text-red-500" /> Regra de Ouro: VERBO = SEM CRASE
+                <LuTriangleAlert className="w-5 h-5 text-red-500" /> A Regra Intransponível
               </h4>
               <p className="text-foreground/85">
-                Verbo infinitivo NUNCA leva crase, porque verbo não aceita artigo.
+                Preposição "A" + Verbo no infinitivo = <strong>Sempre sem crase</strong>.
               </p>
-              <div className="p-3 bg-white dark:bg-slate-900 rounded-lg border-l-4 border-red-500">
-                <p className="text-foreground/80">
-                  ❌ "Começou <strong>à</strong> estudar" — ERRADO!
+              <div className="p-3 bg-white dark:bg-slate-900 rounded-lg border-l-4 border-red-500 space-y-2">
+                <p className="flex items-center gap-2 text-foreground/80">
+                  <LuTriangleAlert className="text-red-500 w-4 h-4" /> "Chegou <strong>à</strong> chorar" — ERRO FATAL
                 </p>
-                <p className="text-foreground/80">
-                  ✅ "Começou <strong>a</strong> estudar" — CORRETO!
+                <p className="flex items-center gap-2 text-foreground/80">
+                  <LuCheck className="text-green-500 w-4 h-4" /> "Chegou <strong>a</strong> chorar" — CORRETO
                 </p>
               </div>
             </div>
@@ -789,42 +956,86 @@ export default function AulaCrase({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
           <ModuleSectionHeader index={5} title="Prática: Verbos vs Substantivos" variant={mv[3]} />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
-              frente={<div className="font-bold text-lg">⛔ VERBO = SEM CRASE</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-red-400">Verbos NUNCA aceitam artigo</p>
-                  <p>Quando a preposição "a" é seguida de um verbo no infinitivo, NÃO há crase. Verbos não recebem artigo. A estrutura é: preposição A + verbo (sem artigo).</p>
-                  <p>❌ "Começou <strong>à</strong> chover" (ERRADO)</p>
-                  <p>✅ "Começou <strong>a</strong> chover" (CORRETO - verbo, sem artigo)</p>
-                  <p className="text-muted-foreground">Macete: Se há verbo após "a", SEMPRE sem crase!</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-red-500/10 rounded-full shadow-inner ring-1 ring-red-500/20">
+                    <LuTriangleAlert className="w-12 h-12 text-red-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Diante de Verbos
+                  </span>
+                  <span className="text-sm text-red-500/80 font-medium">
+                    Proibição Absoluta
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-red-500 font-bold border-b border-red-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">A Regra Ouro</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Nunca se usa crase antes de verbo. Verbos repulsam artigos, logo a equação não se forma. Sem exceções.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">❌ "Começou <strong>à</strong> chover"</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Começou <strong>a</strong> chover"</p>
+                </div>
+              }
+              categoria="Regras Proibitivas"
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">✅ SUBSTANTIVO = COM CRASE</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-green-500">Substantivos aceitam artigo</p>
-                  <p>Quando a preposição "a" é seguida de um substantivo feminino COM artigo, há crase. A estrutura é: preposição A + artigo A + substantivo feminino = À.</p>
-                  <p>❌ "Dedico-me <strong>a</strong> pesquisa" (sem artigo, sem crase)</p>
-                  <p>✅ "Dedico-me <strong>à</strong> pesquisa" (com artigo, com crase)</p>
-                  <p className="text-muted-foreground">Se o substantivo tiver artigo definido feminino, há crase obrigatória.</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-emerald-500/10 rounded-full shadow-inner ring-1 ring-emerald-500/20">
+                    <LuTarget className="w-12 h-12 text-emerald-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Diante de Substantivos
+                  </span>
+                  <span className="text-sm text-emerald-500/80 font-medium">
+                    A Necessidade de Artigo
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Exigência Gramatical</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Substantivos femininos aceitam o artigo "a". Se o termo anterior exigir preposição, a crase será formada e a ocorrência é confirmada com o teste do masculino.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Procedeu <strong>à</strong> análise"</p>
+                </div>
+              }
+              categoria="Regência Correta"
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">🔑 DIFERENÇA CRÍTICA</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-amber-400">Verbo vs Substantivo</p>
-                  <p>VERBO: Ação, infinitivo. Exemplo: "começar", "fazer", "ir". Não recebe artigo. Logo: SEM CRASE.</p>
-                  <p>SUBSTANTIVO: Nome, coisa. Exemplo: "pesquisa", "empresa", "data". Pode receber artigo. Logo: COM CRASE (se houver artigo).</p>
-                  <p>✅ "Procedeu <strong>a</strong> verificar" (verbo = sem crase)</p>
-                  <p>✅ "Procedeu <strong>à</strong> análise" (substantivo + artigo = com crase)</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-amber-500/10 rounded-full shadow-inner ring-1 ring-amber-500/20">
+                    <LuZap className="w-12 h-12 text-amber-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    O Falso Adjetivo
+                  </span>
+                  <span className="text-sm text-amber-500/80 font-medium">
+                    A Atenção ao Posterior
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-amber-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Análise Cuidadosa</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Cuidado com adjetivos exigentes ("apto a"). O que define a crase é a palavra que vem depois. Se for verbo, não há crase. Se for substantivo, pode haver.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Apto <strong>a</strong> lutar"</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Apto <strong>à</strong> luta"</p>
+                </div>
+              }
+              categoria="Alerta de pontos de atenção"
             />
           </div>
         </section>
@@ -843,7 +1054,7 @@ export default function AulaCrase({
             materia: "Português",
             images: [{ title: "Módulo 3", type: "Resumo", placeholderColor: "bg-emerald-100" }],
           }}
-          maceteVisual={{ title: "Macete M3", content: "Antes de VERBO: crase é sempre proibida." }}
+          sinteseEstrategica={{ title: "Síntese Estratégica S3", content: "Antecedendo VERBOS: o uso da crase é vedado." }}
           audio={{ audioUrl: "#", titulo: "AudioAula 3 - Crase", artista: "Petrobras Quest" }}
         />
 
@@ -869,37 +1080,26 @@ export default function AulaCrase({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Pronomes Pessoais: Regra Categórica"
             variant={mv[4]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              <strong>Pronomes pessoais NUNCA aceitam artigo definido</strong>. É impossível dizer "a ela", "a mim", "a ti", "a você" no sentido de artigo — o artigo não cabe em pronomes pessoais. Quando há preposição "a" antes de pronome pessoal, a preposição fica simples, sem artigo para se fundir. Logo, sem crase.
+              A compreensão da relação entre a crase e os pronomes pessoais é um pilar estrutural na gramática exigida em concursos públicos. Pronomes como "ela", "você", "mim" e "ti" funcionam como verdadeiras barreiras linguísticas contra o uso do acento grave. Entender essa dinâmica não requer memorização exaustiva, mas sim o reconhecimento da natureza essencial dessas palavras, que operam de forma autossuficiente nas frases e rejeitam acompanhamentos desnecessários.
             </p>
             <p>
-              <strong>Estrutura: Preposição A + Pronome Pessoal (sem artigo) = A (simples, nunca À)</strong>
+              Do ponto de vista morfológico, pronomes pessoais possuem a função de substituir ou acompanhar o substantivo, designando diretamente as pessoas do discurso. Justamente por essa característica intrínseca de já determinarem quem é o sujeito ou objeto da ação, eles rejeitam de maneira terminante a antecipação de um artigo definido. É impossível e agramatical a formulação de construções como "a ela", "a mim" ou "a você" onde o primeiro "a" exerça papel de artigo; o artigo simplesmente não cabe antes de pronomes pessoais.
             </p>
             <p>
-              Exemplos: "Referi-me <em>a</em> ela" (A + pronome ela, sem artigo). "Dirijo-me <em>a</em> você" (A + pronome você). "Entreguei <em>a</em> mim" (A + pronome mim). "Fiz isso por <em>ti</em>" (preposição por + ti, sem crase mesmo com preposição diferente). Nesses casos, a preposição fica sozinha, sem crase.
+              Sem a presença do artigo feminino "a", o fenômeno da fusão torna-se matematicamente impossível. Quando um verbo de regência exigente demanda a preposição "a" e o termo subsequente é um pronome pessoal, a preposição permanece isolada, em sua forma simples. A estrutura lógica da frase se resume à equação: <strong>Preposição "A" + Pronome Pessoal (que repele o artigo) = "A" simples</strong>. Portanto, qualquer sinal indicativo de crase nesse cenário configura um erro sintático grave.
             </p>
             <p>
-              Essa regra é absoluta e sem exceção. Candidatos que escrevem "referi-me à ela" estão errados 100%. Pronome pessoal é uma barreira contra crase.
+              A aplicação prática dessa regra revela-se em exemplos cotidianos que frequentemente integram as armadilhas das bancas examinadoras. Ao analisarmos a frase "Referi-me <em>a</em> ela", observamos o uso correto da preposição exigida pelo verbo "referir", sem qualquer fusão, uma vez que "ela" repele o artigo. Da mesma forma, construções como "Dirijo-me <em>a</em> você" e "Fiz isso por <em>ti</em>" demonstram a preposição operando perfeitamente. Inversamente, escrever "referi-me <em>à</em> ela" ou "entreguei <em>à</em> você" constitui um desvio normativo severo.
             </p>
-            <div className="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-950/30 dark:to-pink-950/30 rounded-xl border border-red-200 dark:border-red-800 p-6 space-y-4">
-              <h4 className="font-bold text-foreground flex items-center gap-2">
-                <LuTriangleAlert className="w-5 h-5 text-red-500" /> Regra Absoluta: PRONOME PESSOAL = SEM CRASE
-              </h4>
-              <p className="text-foreground/85">
-                Pronomes pessoais (mim, ti, ele, ela, nós, vós, eles, elas) nunca levam crase.
-              </p>
-              <div className="space-y-2 p-3 bg-white dark:bg-slate-900 rounded-lg border-l-4 border-red-500">
-                <p className="text-foreground/80">❌ "Referi-me à ela" — ERRADO!</p>
-                <p className="text-foreground/80">✅ "Referi-me a ela" — CORRETO!</p>
-                <p className="text-foreground/80">❌ "Entreguei à você" — ERRADO!</p>
-                <p className="text-foreground/80">✅ "Entreguei a você" — CORRETO!</p>
-              </div>
-            </div>
+            <p>
+              Em síntese, a norma gramatical que proíbe a ocorrência de crase diante de pronomes pessoais é categórica, absoluta e isenta de exceções. Candidatos bem preparados devem tratar essa regra como um mandamento imutável em suas resoluções de prova. Reconhecer a presença de um pronome pessoal após o termo regente é o sinal definitivo para descartar imediatamente o uso do acento grave, garantindo a correção gramatical e evitando as "pontos de atenção" mais recorrentes.
+            </p>
           </div>
         </section>
 
@@ -1004,43 +1204,87 @@ export default function AulaCrase({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
           <ModuleSectionHeader index={5} title="Prática: Pronomes Pessoais" variant={mv[4]} />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
-              frente={<div className="font-bold text-lg">⛔ PRONOMES PESSOAIS</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-red-400">Pronomes NUNCA recebem artigo</p>
-                  <p>Pronomes pessoais (ela, ele, você, nós, vós) não aceitam artigo. Logo, quando a preposição "a" é seguida de pronome pessoal, não há crase. A equação não se completa (falta o artigo).</p>
-                  <p>❌ "Referi-me <strong>à</strong> ela" (ERRADO)</p>
-                  <p>✅ "Referi-me <strong>a</strong> ela" (CORRETO - pronome, sem artigo)</p>
-                  <p className="text-muted-foreground">Pronome ≠ artigo. Sempre sem crase com pronome pessoal!</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-rose-500/10 rounded-full shadow-inner ring-1 ring-rose-500/20">
+                    <LuUserX className="w-12 h-12 text-rose-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Barreira do Pronome
+                  </span>
+                  <span className="text-sm text-rose-500/80 font-medium">
+                    Rejeição ao Artigo
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-rose-500 font-bold border-b border-rose-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">A Mecânica</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Pronomes pessoais (ela, ele, você, nós, vós) não aceitam artigo. A equação não se completa.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">❌ "Referi-me <strong>à</strong> ela"</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Referi-me <strong>a</strong> ela"</p>
+                </div>
+              }
+              categoria="Regra Absoluta"
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">👤 PRONOMES vs SUBSTANTIVOS</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-amber-400">Diferença crítica em crase</p>
-                  <p>PRONOME PESSOAL: "ela", "você", "mim". Rejeita artigo. SEM CRASE.</p>
-                  <p>SUBSTANTIVO: "mulher", "pessoa", "menina". Aceita artigo. COM CRASE.</p>
-                  <p>❌ "Referi-me <strong>a</strong> ela" (pronome)</p>
-                  <p>✅ "Referi-me <strong>à</strong> mulher" (substantivo + artigo)</p>
-                  <p className="text-muted-foreground">Use o teste do masculino para diferenciar!</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-amber-500/10 rounded-full shadow-inner ring-1 ring-amber-500/20">
+                    <LuScale className="w-12 h-12 text-amber-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Pronome vs Nome
+                  </span>
+                  <span className="text-sm text-amber-500/80 font-medium">
+                    Diferença Crítica
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-amber-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Comparação</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Pronomes rejeitam artigos (sem crase). Substantivos aceitam artigos (com crase).</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">❌ "Referi-me <strong>a</strong> ela" (Pronome)</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Referi-me <strong>à</strong> mulher" (Nome)</p>
+                </div>
+              }
+              categoria="Análise Morfológica"
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">✅ PRONOMES OBLÍQUOS</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-blue-400">Mim, ti, si, ele(a), nós, vós</p>
-                  <p>Pronomes oblíquos também rejeitam artigo e, portanto, não recebem crase. "Para mim", "para ti", "a ele" — sempre com preposição isolada, nunca com crase.</p>
-                  <p>❌ "Isso é para <strong>à</strong> mim" (ERRADO)</p>
-                  <p>✅ "Isso é para <strong>a</strong> mim" ou "Isso é para <strong>mim</strong>" (CORRETO)</p>
-                  <p className="text-muted-foreground">Oblíquos não recebem artigo, logo sem crase!</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-blue-500/10 rounded-full shadow-inner ring-1 ring-blue-500/20">
+                    <LuTarget className="w-12 h-12 text-blue-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Pronomes Oblíquos
+                  </span>
+                  <span className="text-sm text-blue-500/80 font-medium">
+                    Mim, Ti, Si
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Extensão da Regra</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Pronomes oblíquos também rejeitam o artigo. A preposição permanece isolada, impossibilitando a fusão.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">❌ "Isso é para <strong>à</strong> mim"</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Isso é para <strong>a</strong> mim" ou "para <strong>mim</strong>"</p>
+                </div>
+              }
+              categoria="Atenção Especial"
             />
           </div>
         </section>
@@ -1059,7 +1303,7 @@ export default function AulaCrase({
             materia: "Português",
             images: [{ title: "Módulo 4", type: "Resumo", placeholderColor: "bg-rose-100" }],
           }}
-          maceteVisual={{ title: "Macete M4", content: "Antes de PRONOME pessoal: sempre sem crase." }}
+          sinteseEstrategica={{ title: "Síntese Estratégica S4", content: "Antecedendo PRONOMES pessoais: ausência de crase." }}
           audio={{ audioUrl: "#", titulo: "AudioAula 4 - Crase", artista: "Petrobras Quest" }}
         />
 
@@ -1085,41 +1329,26 @@ export default function AulaCrase({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Nomes Próprios Femininos: Artigo Opcional"
             variant={mv[5]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              <strong>Antes de nomes próprios femininos, a crase é facultativa</strong>. Isso significa que <strong>ambas as formas são corretas</strong> — com crase ou sem crase. A razão é que nomes próprios não costumam ser acompanhados de artigo definido no português padrão. "Maria" é apenas "Maria", não necessariamente "a Maria" (embora o português coloquial frequentemente use "a Maria").
+              No estudo da crase, a incidência diante de nomes próprios femininos configura um dos raros cenários de uso facultativo, oferecendo ao falante ou redator a liberdade de escolha. Diferente das regras categóricas de proibição ou obrigatoriedade, esta diretriz permite que ambas as construções — com ou sem o acento grave — sejam consideradas gramaticalmente irrepreensíveis. Compreender essa dualidade é fundamental para evitar a eliminação precoce de alternativas corretas em questões de múltipla escolha.
             </p>
             <p>
-              <strong>Estrutura: A + (opcional) + Nome Próprio Feminino = A ou À (ambas corretas)</strong>
+              A fundamentação sintática para essa opcionalidade reside na própria natureza do artigo definido diante de antropônimos (nomes de pessoas). No padrão culto da língua portuguesa, o uso do artigo antes de um nome próprio não é uma exigência estrutural para a identificação do sujeito. Pode-se dizer tanto "Maria chegou" quanto "A Maria chegou". Consequentemente, se a presença do artigo "a" é opcional, a fusão dele com a preposição exigida pelo termo regente também se torna uma questão de escolha estilística.
             </p>
             <p>
-              Exemplos: "Refiro-me <em>a</em> Maria" (SEM crase). "Refiro-me <em>à</em> Maria" (COM crase). Ambas as frases estão corretas. A diferença está no nível de formalidade: a forma "à Maria" é um pouco mais formal/literária, enquanto "a Maria" é mais coloquial.
+              Essa flexibilidade carrega consigo sutilezas de tom e regionalismo. A omissão do artigo (e, logo, da crase) tende a conferir um distanciamento mais respeitoso e formal à frase, como em "Refiro-me a Joana". Em contrapartida, a inclusão do artigo denota maior familiaridade ou proximidade, refletindo-se na construção com crase: "Refiro-me à Joana". Para os propósitos da norma-padrão e das bancas examinadoras, ambas as formas operam em perfeita conformidade com as regras gramaticais vigentes, desde que o nome se apresente de forma simples.
             </p>
             <p>
-              <strong>PORÉM, há uma exceção importante:</strong> quando o nome próprio é <strong>especificado</strong> (recebe adjetivo, adjunto ou qualificação), o artigo passa a ser <strong>obrigatório</strong>, e a crase também: "Refiro-me <em>à</em> Maria do Carmo" (nome especificado, artigo obrigatório, logo crase obrigatória).
+              Existe, contudo, uma exceção crítica que anula a facultatividade: a especificação do nome próprio. Quando o nome feminino vem acompanhado de um determinante, seja um sobrenome, um título, um adjetivo ou uma locução que o individualize, o emprego do artigo definido torna-se estritamente obrigatório. Diante de um termo especificado, como em "Refiro-me à Maria do Carmo" ou "Entreguei o relatório à engenheira Paula", a crase deixa de ser uma opção e passa a ser uma exigência absoluta da norma culta.
             </p>
             <p>
-              Na Petrobras, documentos formais usam nomes de pessoas, empresas, estados. Um relatório pode dizer "Conforme o depoimento <em>a</em> Daniela Silva" ou "Conforme o depoimento <em>à</em> Daniela Silva" — ambas corretas. Mas se especificar, "Conforme depoimento <em>à</em> Daniela Silva, diretora de operações", aí a especificação torna crase obrigatória.
+              Em suma, o domínio dessa regra dupla é um diferencial estratégico, especialmente para redações corporativas e exames de alto nível. Na ausência de determinantes, sinta-se seguro para utilizar ou omitir o acento grave. Entretanto, o olhar do candidato deve ser clínico para identificar qualquer elemento qualificador anexo ao nome próprio. Reconhecer a transição imediata do cenário facultativo para o cenário obrigatório devido a uma simples especificação é o conhecimento cirúrgico exigido pelas questões mais elaboradas da CESGRANRIO.
             </p>
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-xl border border-amber-200 dark:border-amber-800 p-6 space-y-4">
-              <h4 className="font-bold text-foreground flex items-center gap-2">
-                <LuLightbulb className="w-5 h-5 text-amber-500" /> Regra: AMBAS AS FORMAS SÃO CORRETAS
-              </h4>
-              <div className="space-y-2 p-3 bg-white dark:bg-slate-900 rounded-lg">
-                <p className="text-foreground/80">✅ "Refiro-me <strong>a</strong> Maria" — CORRETO!</p>
-                <p className="text-foreground/80">✅ "Refiro-me <strong>à</strong> Maria" — TAMBÉM CORRETO!</p>
-              </div>
-              <p className="text-foreground/85 text-sm">
-                <strong>MAS:</strong> Se o nome for especificado, crase é <strong>obrigatória</strong>:
-              </p>
-              <div className="p-3 bg-white dark:bg-slate-900 rounded-lg border-l-4 border-amber-500">
-                <p className="text-foreground/80">✅ "Refiro-me <strong>à</strong> Maria do Carmo" — OBRIGATÓRIA!</p>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -1232,42 +1461,86 @@ export default function AulaCrase({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
           <ModuleSectionHeader index={5} title="Prática: Simples vs Especificado" variant={mv[5]} />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
-              frente={<div className="font-bold text-lg">🎓 NOMES PRÓPRIOS SIMPLES</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-blue-400">Nome feminino SEM sobrenome</p>
-                  <p>Nomes próprios simples (apenas primeiro nome, sem sobrenome) FACULTAM o artigo. Por isso, a crase também é facultativa. Pode usar "a" ou "à" — ambas estão corretas em português formal.</p>
-                  <p>✅ "Refiro-me <strong>a</strong> Daniela" (sem artigo, sem crase)</p>
-                  <p>✅ "Refiro-me <strong>à</strong> Daniela" (com artigo, com crase)</p>
-                  <p className="text-muted-foreground">Nome simples = artigo opcional = crase facultativa.</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-violet-500/10 rounded-full shadow-inner ring-1 ring-violet-500/20">
+                    <LuUser className="w-12 h-12 text-violet-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Nome Simples
+                  </span>
+                  <span className="text-sm text-violet-500/80 font-medium">
+                    Ambas Corretas
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-violet-500 font-bold border-b border-violet-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Crase Facultativa</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Nomes próprios simples (apenas primeiro nome, sem sobrenome) FACULTAM o artigo. Portanto, a crase também é opcional.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Refiro-me <strong>a</strong> Daniela"</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Refiro-me <strong>à</strong> Daniela"</p>
+                </div>
+              }
+              categoria="Opção Estilística"
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">📋 NOMES PRÓPRIOS ESPECIFICADOS</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-emerald-400">Nome + sobrenome OU título</p>
-                  <p>Nomes próprios ESPECIFICADOS por sobrenome ou título (Daniela Silva, professora Maria) EXIGEM artigo. Quando o artigo é exigido, a crase é OBRIGATÓRIA no feminino.</p>
-                  <p>✅ "Refiro-me <strong>à</strong> Daniela Silva" (nome especificado, com crase)</p>
-                  <p>❌ "Refiro-me <strong>a</strong> Daniela Silva" (ERRADO - artigo é exigido)</p>
-                  <p className="text-muted-foreground">Especificação = artigo obrigatório = crase obrigatória.</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-emerald-500/10 rounded-full shadow-inner ring-1 ring-emerald-500/20">
+                    <LuTags className="w-12 h-12 text-emerald-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Especificado
+                  </span>
+                  <span className="text-sm text-emerald-500/80 font-medium">
+                    Artigo Exigido
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Crase Obrigatória</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Nomes especificados por sobrenome, título ou adjetivo EXIGEM a presença do artigo, tornando a crase obrigatória.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">❌ "Refiro-me <strong>a</strong> Daniela Silva"</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Refiro-me <strong>à</strong> Daniela Silva"</p>
+                </div>
+              }
+              categoria="Exceção Fundamental"
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">🔑 REGRA DA ESPECIFICAÇÃO</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-purple-400">O artigo muda tudo</p>
-                  <p>A diferença é simples: NOMES SIMPLES (facultativos) vs NOMES ESPECIFICADOS (obrigatórios). Se o nome pode receber artigo em contexto comum, a crase acompanha.</p>
-                  <p>✅ "Entreguei a carta <strong>a</strong> Marina" ou "<strong>à</strong> Marina" (simples)</p>
-                  <p>✅ "Entreguei a carta <strong>à</strong> Marina Costa" (especificado, obrigatório)</p>
-                  <p className="text-muted-foreground">Use teste: "a/à João" (simples) vs "a/à Dr. João" (especificado).</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-purple-500/10 rounded-full shadow-inner ring-1 ring-purple-500/20">
+                    <LuKey className="w-12 h-12 text-purple-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Determinante
+                  </span>
+                  <span className="text-sm text-purple-500/80 font-medium">
+                    O Artigo Muda Tudo
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-purple-500 font-bold border-b border-purple-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">A Virada de Chave</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">A diferença fundamental reside na presença do determinante. Se o nome recebe qualificações no contexto, a facultatividade desaparece.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ Teste: "a/à Joana" (simples) vs "à Dra. Joana" (especificado).</p>
+                </div>
+              }
+              categoria="Síntese Visual"
             />
           </div>
         </section>
@@ -1288,7 +1561,7 @@ export default function AulaCrase({
             materia: "Português",
             images: [{ title: "Módulo 5", type: "Resumo", placeholderColor: "bg-violet-100" }],
           }}
-          maceteVisual={{ title: "Macete M5", content: "Nome próprio feminino: a/à Maria — ambas corretas." }}
+          sinteseEstrategica={{ title: "Síntese Estratégica S5", content: "Nomes próprios femininos: o uso do artigo é facultativo." }}
           audio={{ audioUrl: "#", titulo: "AudioAula 5 - Crase", artista: "Petrobras Quest" }}
         />
 
@@ -1314,188 +1587,111 @@ export default function AulaCrase({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Possessivos Femininos Singulares: Artigo Opcional"
             variant={mv[6]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              <strong>Antes de possessivos femininos SINGULARES, a crase é facultativa</strong>. Possessivos como "minha", "sua", "tua", "nossa" (singular) carregam já uma noção de definição própria. O artigo é opcional: "a minha" ou apenas "minha" — ambas as formas existem em português. Como o artigo é opcional, a crase também é: <strong>a minha</strong> ou <strong>à minha</strong>, ambas corretas.
+              O estudo da crase diante de pronomes possessivos exige atenção redobrada à flexão de número da palavra. <strong>Antes de possessivos femininos singulares</strong> (como "minha", "tua", "sua", "nossa", "vossa"), <strong>a crase é estritamente facultativa</strong>. Isso ocorre porque o uso do artigo definido feminino singular antes desses pronomes já é, por si só, opcional na língua portuguesa normativa.
             </p>
             <p>
-              <strong>Estrutura: A + (opcional) + Possessivo Feminino Singular = A ou À (ambas corretas)</strong>
+              A estrutura sintática reflete essa opcionalidade natural com precisão. Ao dizermos "Refiro-me <em>a</em> minha opinião" (utilizando apenas a preposição) ou "Refiro-me <em>à</em> minha opinião" (com artigo e preposição fundidos), ambas as construções estão absolutamente corretas. O pronome possessivo singular já possui carga semântica suficiente para determinar o substantivo que o acompanha, tornando a presença do artigo um adorno puramente estilístico.
             </p>
             <p>
-              Exemplos: "Refiro-me <em>a</em> minha opinião" (SEM crase). "Refiro-me <em>à</em> minha opinião" (COM crase). "Assisti <em>a</em> sua apresentação" ou "Assisti <em>à</em> sua apresentação" — ambas corretas.
+              A dinâmica se transforma drasticamente, contudo, quando o pronome possessivo se encontra no <strong>plural</strong>. A gramática estabelece que, para manter a clareza e a harmonia estrutural da oração, o artigo definido plural "as" se torna <strong>obrigatório</strong> antes de possessivos no plural. Consequentemente, se o termo regente exige a preposição "a", a fusão é inevitável e <strong>a crase passa a ser inegociavelmente obrigatória</strong>.
             </p>
             <p>
-              <strong>MAS CUIDADO:</strong> No <strong>PLURAL</strong>, a situação muda completamente. "Minhas", "suas", "tuas", "nossas" (plural) EXIGEM artigo obrigatoriamente. Logo, crase é obrigatória também: "<em>à</em> minhas", "<em>à</em> suas" (com crase). Essa é a diferença crítica que muitos candidatos perdem.
+              Essa dicotomia é frequentemente explorada em provas de alto nível como as da CESGRANRIO. Enquanto "Dirijo-me <em>a</em> sua equipe" ou "Dirijo-me <em>à</em> sua equipe" são variações aceitáveis no singular, a transição para o plural não tolera ambiguidades: <strong>"Dirijo-me <em>às</em> suas equipes"</strong> é a única forma admitida. A omissão da crase no plural ("Dirijo-me a suas equipes") constitui erro gramatical severo por violar a exigência do artigo definido.
             </p>
             <p>
-              Na Petrobras, documentos dizem: "Conforme <em>a</em> minha análise" ou "Conforme <em>à</em> minha análise" — ambas certas. Mas "Conforme <em>às</em> minhas análises" é obrigatória (plural).
+              Outro ponto crítico surge na análise estrutural quando o possessivo <strong>substitui</strong> o substantivo em vez de acompanhá-lo. Se o pronome atua de forma substantivada (como núcleo autônomo do termo), o artigo passa a ser obrigatório para marcá-lo na oração, tornando a crase indispensável caso exista preposição exigida: "Não me refiro à sua ideia, mas <strong>à minha</strong>". O domínio absoluto dessa mecânica — acompanhar versus substituir, e singular versus plural — é o diferencial decisivo para gabaritar o tema.
             </p>
-            <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 rounded-xl border border-indigo-200 dark:border-indigo-800 p-6 space-y-4">
-              <h4 className="font-bold text-foreground flex items-center gap-2">
-                <LuLightbulb className="w-5 h-5 text-indigo-500" /> Regra Crítica: SINGULAR vs PLURAL
-              </h4>
-              <div className="space-y-3 p-3 bg-white dark:bg-slate-900 rounded-lg">
-                <div>
-                  <p className="font-semibold text-indigo-600">SINGULAR (Facultativo):</p>
-                  <p className="text-foreground/80">✅ "Dirijo-me <strong>a</strong> minha mãe" ou "Dirijo-me <strong>à</strong> minha mãe"</p>
-                </div>
-                <div className="border-t pt-3">
-                  <p className="font-semibold text-red-600">PLURAL (Obrigatório):</p>
-                  <p className="text-foreground/80">✅ "Dirijo-me <strong>às</strong> minhas mães" (OBRIGATÓRIA!)</p>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Exemplos: Singular vs Plural" variant={mv[6]} />
-          <ContentAccordion
-            slides={[
-              {
-                titulo: "SINGULAR: Ambas as Formas Corretas",
-                icone: <LuTarget className="w-5 h-5" />,
-                conteudo: (
-                  <div className="space-y-3 text-foreground/85">
-                    <p className="font-semibold">Possessivos singulares femininos = crase FACULTATIVA</p>
-                    <ul className="space-y-2">
-                      <li>✅ "Dirijo-me <em>a</em> minha mãe"</li>
-                      <li>✅ "Dirijo-me <em>à</em> minha mãe"</li>
-                      <li>✅ "Refiro-me <em>a</em> sua opinião"</li>
-                      <li>✅ "Refiro-me <em>à</em> sua opinião"</li>
-                    </ul>
-                  </div>
-                ),
-              },
-              {
-                titulo: "PLURAL: Crase OBRIGATÓRIA",
-                icone: <LuTriangleAlert className="w-5 h-5" />,
-                conteudo: (
-                  <div className="space-y-3 text-foreground/85">
-                    <p className="font-semibold">Possessivos plurais femininos = crase OBRIGATÓRIA (NÃO facultativa!)</p>
-                    <ul className="space-y-2">
-                      <li>❌ "Dirijo-me a minhas mães" (ERRADO!)</li>
-                      <li>✅ "Dirijo-me <em>às</em> minhas mães" (OBRIGATÓRIA!)</li>
-                      <li>❌ "Refiro-me a suas opiniões" (ERRADO!)</li>
-                      <li>✅ "Refiro-me <em>às</em> suas opiniões" (OBRIGATÓRIA!)</li>
-                    </ul>
-                  </div>
-                ),
-              },
-              {
-                titulo: "Por Que a Diferença?",
-                icone: <LuLightbulb className="w-5 h-5" />,
-                conteudo: (
-                  <div className="space-y-3 text-foreground/85">
-                    <p className="font-semibold">Explicação Gramatical:</p>
-                    <ul className="space-y-2">
-                      <li><strong>Singular:</strong> "Minha" já é suficientemente definida → artigo opcional → crase facultativa</li>
-                      <li><strong>Plural:</strong> "Minhas" exige artigo para clareza → artigo obrigatório → crase obrigatória</li>
-                    </ul>
-                    <p className="text-sm italic mt-3">
-                      Essa é a regra mais sutil da crase. Muitos candidatos não diferenciam singular/plural em possessivos!
-                    </p>
-                  </div>
-                ),
-              },
-            ]}
-          />
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Card: Possessivos Femininos" variant={mv[6]} />
-          <CardCarousel
-            cards={[
-              {
-                icone: "👩",
-                title: "Minha mãe (singular)",
-                descricao: "a/à minha mãe (ambas corretas) ✓✓",
-              },
-              {
-                icone: "👩👩",
-                title: "Minhas mães (plural)",
-                descricao: "às minhas mães (obrigatória, não facultativa)",
-              },
-              {
-                icone: "💬",
-                title: "Sua opinião (singular)",
-                descricao: "a/à sua opinião (ambas corretas) ✓✓",
-              },
-              {
-                icone: "💬💬",
-                title: "Suas opiniões (plural)",
-                descricao: "às suas opiniões (obrigatória)",
-              },
-              {
-                icone: "🎨",
-                title: "Tua arte (singular)",
-                descricao: "a/à tua arte (facultativo) ✓✓",
-              },
-              {
-                icone: "🎨🎨",
-                title: "Tuas artes (plural)",
-                descricao: "às tuas artes (obrigatória!)",
-              },
-            ]}
-          />
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={4} title="Diferença Crítica: Possessivo Acompanhando vs Substituindo" variant={mv[6]} />
-          <AlertBox tipo="info" titulo="Possessivo Acompanhando Substantivo vs Sozinho">
-            <p><strong>ACOMPANHANDO SUBSTANTIVO (com crase facultativa):</strong></p>
-            <p className="mt-2">✅ "Obedeci <em>à</em> sua ordem" (sua acompanha "ordem")</p>
-            <p className="mt-4"><strong>SUBSTITUINDO SUBSTANTIVO (crase obrigatória):</strong></p>
-            <p>✅ "Obedeci <em>à</em> sua" (sua SUBSTITUI "ordem", fica sozinho)</p>
-            <p className="mt-4 text-sm italic text-muted-foreground">
-              Ambas têm crase neste caso, mas a lógica gramatical é diferente!
-            </p>
-          </AlertBox>
-        </section>
-
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={5} title="Prática: Singular vs Plural" variant={mv[6]} />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <ModuleSectionHeader index={1} title="A Dinâmica do Pronome Possessivo" variant={mv[6]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
-              frente={<div className="font-bold text-lg">📌 POSSESSIVOS SINGULARES</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-amber-400">Meu/Minha, Seu/Sua (singular)</p>
-                  <p>Possessivos singulares femininos (minha, sua, sua, etc.) FACULTAM o artigo. Logo, a crase é FACULTATIVA. Pode usar com ou sem crase — ambas as formas estão corretas.</p>
-                  <p>✅ "Refiro-me <strong>a</strong> minha opinião" (sem artigo, sem crase)</p>
-                  <p>✅ "Refiro-me <strong>à</strong> minha opinião" (com artigo, com crase)</p>
-                  <p className="text-muted-foreground">Singular = artigo optional = crase opcional.</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-amber-500/10 rounded-full shadow-inner ring-1 ring-amber-500/20">
+                    <LuUser className="w-12 h-12 text-amber-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Possessivo Singular
+                  </span>
+                  <span className="text-sm text-amber-500/80 font-medium">
+                    Artigo Facultativo
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-amber-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Crase Opcional</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Possessivos singulares (minha, sua) tornam o uso do artigo opcional, fazendo com que a fusão seja facultativa.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Refiro-me <strong>a</strong> minha opinião"</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Refiro-me <strong>à</strong> minha opinião"</p>
+                </div>
+              }
+              categoria="Regra Base"
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">🚨 POSSESSIVOS PLURAIS</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-red-500">Minhas, Suas (plural)</p>
-                  <p>Possessivos plurais EXIGEM artigo definido. Com artigo exigido, a crase é OBRIGATÓRIA no feminino plural. Sempre "ÀS", nunca "A".</p>
-                  <p>✅ "Refiro-me <strong>às</strong> minhas opiniões" (plural, com crase obrigatória)</p>
-                  <p>❌ "Refiro-me <strong>a</strong> minhas opiniões" (ERRADO - artigo é obrigatório)</p>
-                  <p className="text-muted-foreground">Plural = artigo obrigatório = crase obrigatória (ÀS).</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-red-500/10 rounded-full shadow-inner ring-1 ring-red-500/20">
+                    <LuUsers className="w-12 h-12 text-red-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Possessivo Plural
+                  </span>
+                  <span className="text-sm text-red-500/80 font-medium">
+                    Artigo Exigido
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-red-500 font-bold border-b border-red-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Crase Obrigatória</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Possessivos plurais (minhas, suas) EXIGEM artigo definido plural. A crase (fusão com "as") passa a ser inegociável.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">❌ "Refiro-me <strong>a</strong> minhas opiniões"</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Refiro-me <strong>às</strong> minhas opiniões"</p>
+                </div>
+              }
+              categoria="Alerta Crítico"
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">🔄 SINGULAR vs PLURAL</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-blue-400">Diferença crítica na crase</p>
-                  <p>SINGULAR: Possessivos singulares fazem artigo ficar opcional → crase facultativa (A/À).</p>
-                  <p>PLURAL: Possessivos plurais exigem artigo → crase obrigatória (ÀS).</p>
-                  <p>✅ "Assisti <strong>à</strong> sua apresentação" (singular, facultativo)</p>
-                  <p>✅ "Assisti <strong>às</strong> suas apresentações" (plural, obrigatório)</p>
-                  <p className="text-muted-foreground">Número do possessivo muda tudo em crase!</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-blue-500/10 rounded-full shadow-inner ring-1 ring-blue-500/20">
+                    <LuArrowRightLeft className="w-12 h-12 text-blue-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Substituição
+                  </span>
+                  <span className="text-sm text-blue-500/80 font-medium">
+                    Omissão do Substantivo
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Crase Obrigatória</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Quando o possessivo SUBSTITUI o substantivo na oração, o artigo se torna obrigatório para substantivá-lo, forçando a crase.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Não obedeço à sua regra, obedeço <strong>à</strong> minha."</p>
+                </div>
+              }
+              categoria="pontos de atenção de Prova"
             />
           </div>
         </section>
@@ -1514,7 +1710,7 @@ export default function AulaCrase({
             materia: "Português",
             images: [{ title: "Módulo 6", type: "Resumo", placeholderColor: "bg-orange-100" }],
           }}
-          maceteVisual={{ title: "Macete M6", content: "Possessivo singular = facultativo; plural = obrigatório." }}
+          sinteseEstrategica={{ title: "Síntese Estratégica S6", content: "Possessivos no singular: facultativo; no plural: obrigatório." }}
           audio={{ audioUrl: "#", titulo: "AudioAula 6 - Crase", artista: "Petrobras Quest" }}
         />
 
@@ -1540,186 +1736,207 @@ export default function AulaCrase({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
-            title="Horas Exatas: Fusão Automática"
+            index="INTRO"
+            title="Horas Exatas e Expressões de Medida: Fusão Automática"
             variant={mv[7]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              <strong>Antes de horas exatas, a crase é obrigatória</strong>. Sempre. Não há exceção. A estrutura é: preposição A (de tempo) + artigo AS (definindo o horário plural) = ÀS. Quando se fala de hora singular (uma hora), a estrutura é A + A (hora feminina singular) = À. Você escreve: "Às 14 horas", "À uma hora", "Às 9 da manhã".
+              O uso da crase na indicação de horas exatas e expressões de medida obedece a uma lógica matemática na sintaxe da língua portuguesa. <strong>Antes de horas pontuais e determinadas, a crase é estritamente obrigatória</strong>. A estrutura baseia-se na união inseparável da preposição "a" (que indica o limite de tempo ou momento) com o artigo definido feminino "as" (que determina o numeral das horas). O resultado inevitável dessa equação é "às".
             </p>
             <p>
-              A razão é que horas são expressões de tempo preciso, sempre acompanhadas de artigo definido. "A hora", "as horas" — o artigo é obrigatório aqui. Logo, quando há preposição A antes de horário, a fusão é automática: crase sempre.
+              A estrutura fonética e visual reflete essa obrigatoriedade estrutural. Ao determinarmos um compromisso, redigimos "A reunião iniciará <em>às</em> 14h30" (preposição "a" + artigo plural "as"). A única variação de número ocorre no singular: "A inspeção ocorrerá <em>à</em> uma hora da tarde" (preposição "a" + artigo singular "a"). Independentemente do número, a crase marca presença garantindo que o tempo não é apenas uma estimativa, mas um ponto exato no relógio.
             </p>
             <p>
-              Exemplos: "A reunião é <em>às</em> 14h30" (preposição A + artigo plural AS = ÀS). "Chegue <em>à</em> uma hora em ponto" (preposição A + artigo singular A = À). "Saio <em>às</em> três da tarde" (preposição A + artigo plural AS = ÀS).
+              A dinâmica se expande de forma análoga para as expressões de medida, proporção e velocidade. Estruturas fixas da língua, como locuções prepositivas e conjuntivas femininas, carregam a crase por força da tradição normativa e da clareza semântica. Assim, expressões como <strong>"à proporção que", "à medida que", "à velocidade de" e "à distância de"</strong> exigem a presença do acento grave, demarcando que a proporção ou medida é determinada.
             </p>
             <p>
-              <strong>Diferença crítica:</strong> "por volta <strong>das</strong> 9" (preposição simples "de" + artigo "as" = "das", não é crase, é preposição diferente). "Sempre <strong>às</strong> 9" (preposição "a" + artigo "as" = "às", é crase).
+              Nas avaliações da CESGRANRIO, o grande divisor de águas reside na capacidade do candidato de diferenciar horas exatas de horas aproximadas ou extensões de tempo. Se a indicação não exigir a preposição "a", a crase desaparece. Por exemplo, "Estou aguardando <em>desde as</em> 9 horas" (a preposição é "desde", logo, apenas o artigo "as" sobrevive, sem crase) ou "Chegarei <em>após as</em> 18h" (preposição "após").
             </p>
             <p>
-              Na Petrobras, agendamentos dizem: "Reunião com operações <em>às</em> 10 horas". "Turno noturno <em>às</em> 22h". "Pausa <em>à</em> uma e meia". Esses são contextos onde crase com hora é sistemática.
+              Outro ponto crítico, fonte de constantes deslizes em provas, é a confusão morfológica entre a fusão com a preposição "a" e a contração com a preposição "de". "Chegou por volta <strong>das</strong> 14 horas" (preposição "de" + artigo "as") difere sintaticamente de "Sempre chega <strong>às</strong> 14 horas" (preposição "a" + artigo "as"). Dominar a identificação da preposição exigida pelo contexto é a única salvaguarda contra as armadilhas clássicas envolvendo horários.
             </p>
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-xl border border-green-200 dark:border-green-800 p-6 space-y-4">
-              <h4 className="font-bold text-foreground flex items-center gap-2">
-                <LuZap className="w-5 h-5 text-green-500" /> Regra: HORAS EXATAS = CRASE OBRIGATÓRIA
-              </h4>
-              <div className="space-y-2 p-3 bg-white dark:bg-slate-900 rounded-lg">
-                <p className="text-foreground/80">✅ "Às 14 horas" (plural: ÀS)</p>
-                <p className="text-foreground/80">✅ "À uma hora" (singular: À)</p>
-                <p className="text-foreground/80">✅ "Às 9:30" (plural: ÀS)</p>
-              </div>
-            </div>
           </div>
         </section>
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Exemplos: Horários Práticos" variant={mv[7]} />
-          <ContentAccordion
-            slides={[
-              {
-                titulo: "Horas Plural (ÀS)",
-                icone: <LuTarget className="w-5 h-5" />,
-                conteudo: (
-                  <div className="space-y-3 text-foreground/85">
-                    <p className="font-semibold">Quando a hora é múltipla ou vai além de 1:</p>
-                    <ul className="list-disc list-inside space-y-1">
-                      <li>✅ "Às 2 horas" (ÀS)</li>
-                      <li>✅ "Às 9 da manhã" (ÀS)</li>
-                      <li>✅ "Às 14:30" (ÀS)</li>
-                      <li>✅ "Às 22 horas" (ÀS)</li>
-                      <li>✅ "Às três e meia" (ÀS)</li>
-                    </ul>
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader index={1} title="A Lógica do Tempo e da Proporção" variant={mv[7]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-emerald-500/10 rounded-full shadow-inner ring-1 ring-emerald-500/20">
+                    <LuClock className="w-12 h-12 text-emerald-500" />
                   </div>
-                ),
-              },
-              {
-                titulo: "Hora Singular (À)",
-                icone: <LuTarget className="w-5 h-5" />,
-                conteudo: (
-                  <div className="space-y-3 text-foreground/85">
-                    <p className="font-semibold">Apenas quando é exatamente 1 hora:</p>
-                    <ul className="list-disc list-inside space-y-1">
-                      <li>✅ "À uma hora" (À)</li>
-                      <li>✅ "À uma da tarde" (À)</li>
-                      <li>✅ "À uma e meia" (À — a meia aplica-se à uma, mantém singular)</li>
-                    </ul>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Horas Exatas
+                  </span>
+                  <span className="text-sm text-emerald-500/80 font-medium">
+                    Preposição "A" exigida
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Crase Obrigatória</span>
                   </div>
-                ),
-              },
-              {
-                titulo: "Casos Especiais de Tempo",
-                icone: <LuLightbulb className="w-5 h-5" />,
-                conteudo: (
-                  <div className="space-y-3 text-foreground/85">
-                    <p className="font-semibold">Expressões afins de hora também levam crase:</p>
-                    <ul className="list-disc list-inside space-y-1">
-                      <li>✅ "À madrugada" (horas da madrugada)</li>
-                      <li>✅ "À alvorada" (ao amanhecer)</li>
-                      <li>✅ "À noite" (período noturno)</li>
-                      <li>✅ "À tarde" (período da tarde)</li>
-                    </ul>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Na indicação de horas pontuais (com a preposição A exigida), a fusão com o artigo (a/as) das horas força a crase.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "A operação começa <strong>às</strong> 8h em ponto."</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Cheguei <strong>à</strong> uma hora da tarde."</p>
+                </div>
+              }
+              categoria="Regra Matemática"
+            />
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-blue-500/10 rounded-full shadow-inner ring-1 ring-blue-500/20">
+                    <LuRuler className="w-12 h-12 text-blue-500" />
                   </div>
-                ),
-              },
-            ]}
-          />
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Medidas: Expressões com Crase" variant={mv[7]} />
-          <CardCarousel
-            cards={[
-              {
-                icone: "🕐",
-                title: "Às 9 horas",
-                descricao: "Hora exata (crase obrigatória com horas)",
-              },
-              {
-                icone: "📏",
-                title: "À vista",
-                descricao: "Expressão de medida (crase fixa)",
-              },
-              {
-                icone: "📐",
-                title: "À proporção de",
-                descricao: "Taxa/medida de proporção (crase)",
-              },
-              {
-                icone: "📊",
-                title: "À razão de",
-                descricao: "Medida de taxa (crase obrigatória)",
-              },
-              {
-                icone: "📋",
-                title: "À distância de",
-                descricao: "Expressão de medida (crase)",
-              },
-              {
-                icone: "⚙️",
-                title: "À velocidade de",
-                descricao: "Medida de velocidade (crase)",
-              },
-            ]}
-          />
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={4} title="Diferença: Hora Exata vs Aproximada" variant={mv[7]} />
-          <AlertBox tipo="warning" titulo="NÃO Confunda Exato com Aproximado">
-            <p><strong>Hora EXATA:</strong> "A reunião é <em>às</em> 14 horas" (preposição A + artigo AS = crase ÀS)</p>
-            <p className="mt-3">
-              <strong>Hora APROXIMADA:</strong> "Chegou <em>por volta das</em> 14 horas" (preposição "de" + artigo as = "das", não é crase)
-            </p>
-            <p className="mt-3">
-              <strong>Diferença:</strong> "Às" é crase (A+AS). "Das" é preposição "de" + artigo "as" (não é crase).
-            </p>
-          </AlertBox>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Locuções de Medida
+                  </span>
+                  <span className="text-sm text-blue-500/80 font-medium">
+                    Estruturas Fixas
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Crase Obrigatória</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Locuções femininas que expressam proporção ou medida possuem crase fixa pela gramática.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Aumentava o ritmo <strong>à medida que</strong> corria."</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Multado por trafegar <strong>à velocidade de</strong> 120km/h."</p>
+                </div>
+              }
+              categoria="Estrutura Cristalizada"
+            />
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-orange-500/10 rounded-full shadow-inner ring-1 ring-orange-500/20">
+                    <LuHourglass className="w-12 h-12 text-orange-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Preposições Ocultas
+                  </span>
+                  <span className="text-sm text-orange-500/80 font-medium">
+                    "Desde", "Após", "Para"
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-orange-500 font-bold border-b border-orange-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Atenção ao Contexto</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Se houver OUTRA preposição antes da hora, a preposição "A" desaparece, e não há crase!</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">❌ "Estou aqui desde <strong>às</strong> 15h" (ERRADO)</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Estou aqui <strong>desde as</strong> 15h" (CORRETO - sem crase)</p>
+                </div>
+              }
+              categoria="Armadilha Clássica"
+            />
+          </div>
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
           <ModuleSectionHeader index={5} title="Prática: Horas e Medidas" variant={mv[7]} />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
-              frente={<div className="font-bold text-lg">⏰ HORAS EXATAS</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-emerald-400">Horários numerados (2h, 10h, 14h)</p>
-                  <p>Horas exatas sempre recebem artigo feminino definido (AS). Logo, "a" + "as" = crase obrigatória (ÀS). Padrão: "Às [número] horas".</p>
-                  <p>✅ "A reunião é <strong>às</strong> 14h" (horas exatas = crase)</p>
-                  <p>✅ "Chegue <strong>às</strong> 2 da tarde" (horas exatas = crase)</p>
-                  <p className="text-muted-foreground">Regra de ouro: Horas exatas SEMPRE com crase (ÀS).</p>
+                frente={
+                  <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                    <div className="p-4 bg-emerald-500/10 rounded-full shadow-inner ring-1 ring-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+                      <LuClock className="w-8 h-8" />
+                    </div>
+                    <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                      HORAS EXATAS
+                    </span>
+                    <span className="text-sm text-emerald-600/80 dark:text-emerald-400/80 font-medium">
+                      Crase Obrigatória
+                    </span>
+                  </div>
+                }
+                verso={
+                <div className="space-y-4 p-4 flex flex-col h-full">
+                  <p className="font-semibold text-emerald-600 dark:text-emerald-400 border-b border-emerald-500/20 pb-2">Horários numerados (2h, 10h, 14h)</p>
+                  <div className="space-y-3 flex-grow">
+                    <p>Horas exatas sempre recebem artigo feminino definido (AS). Logo, "a" + "as" = crase obrigatória (ÀS). Padrão: "Às [número] horas".</p>
+                    <div className="bg-emerald-500/5 p-3 rounded-lg border border-emerald-500/10 text-sm">
+                      <p>✅ "A reunião é <strong>às</strong> 14h" (horas exatas)</p>
+                      <p>✅ "Chegue <strong>às</strong> 2 da tarde" (horas exatas)</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground italic">Regra de ouro: Horas exatas SEMPRE com crase (ÀS).</p>
                 </div>
               }
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">🕐 HORAS SINGULARES</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-blue-400">Expressões com "uma" ou "meia"</p>
-                  <p>Quando a hora é singular (uma hora, meia hora), usa-se artigo singular "a". Logo, "a" + "a" = crase (À), não ÀS.</p>
-                  <p>✅ "Chegue <strong>à</strong> uma hora" (singular = À)</p>
-                  <p>✅ "Reunião <strong>à</strong> meia hora" (meia = singular = À)</p>
-                  <p className="text-muted-foreground">Singular = À. Plural/Exata = ÀS.</p>
+                frente={
+                  <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                    <div className="p-4 bg-blue-500/10 rounded-full shadow-inner ring-1 ring-blue-500/20 text-blue-600 dark:text-blue-400">
+                      <LuTimer className="w-8 h-8" />
+                    </div>
+                    <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                      HORAS SINGULARES
+                    </span>
+                    <span className="text-sm text-blue-600/80 dark:text-blue-400/80 font-medium">
+                      Atenção ao Artigo
+                    </span>
+                  </div>
+                }
+                verso={
+                <div className="space-y-4 p-4 flex flex-col h-full">
+                  <p className="font-semibold text-blue-600 dark:text-blue-400 border-b border-blue-500/20 pb-2">Expressões com "uma" ou "meia"</p>
+                  <div className="space-y-3 flex-grow">
+                    <p>Quando a hora é singular (uma hora, meia hora), usa-se artigo singular "a". Logo, "a" + "a" = crase (À).</p>
+                    <div className="bg-blue-500/5 p-3 rounded-lg border border-blue-500/10 text-sm">
+                      <p>✅ "Chegue <strong>à</strong> uma hora" (singular = À)</p>
+                      <p>✅ "Reunião <strong>à</strong> meia hora" (meia = singular = À)</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground italic">Singular = À. Plural/Exata = ÀS.</p>
                 </div>
               }
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">📏 MEDIDAS E EXPRESSÕES</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-purple-400">À vista, à longa distância, etc.</p>
-                  <p>Expressões de medida que contêm artigo feminino também recebem crase: "à vista" (à prazo), "à distância" (de perto), "à noite" (de dia).</p>
-                  <p>✅ "Viagem <strong>à</strong> vista" (expressão, com crase)</p>
-                  <p>✅ "Pagamento <strong>à</strong> longa prazo" (expressão, com crase)</p>
-                  <p className="text-muted-foreground">Toda expressão de medida feminina recebe crase!</p>
+                frente={
+                  <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                    <div className="p-4 bg-purple-500/10 rounded-full shadow-inner ring-1 ring-purple-500/20 text-purple-600 dark:text-purple-400">
+                      <LuRuler className="w-8 h-8" />
+                    </div>
+                    <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                      MEDIDAS E EXPRESSÕES
+                    </span>
+                    <span className="text-sm text-purple-600/80 dark:text-purple-400/80 font-medium">
+                      Locuções Femininas
+                    </span>
+                  </div>
+                }
+                verso={
+                <div className="space-y-4 p-4 flex flex-col h-full">
+                  <p className="font-semibold text-purple-600 dark:text-purple-400 border-b border-purple-500/20 pb-2">À vista, à longa distância, etc.</p>
+                  <div className="space-y-3 flex-grow">
+                    <p>Expressões de medida que contêm artigo feminino também recebem crase obrigatoriamente.</p>
+                    <div className="bg-purple-500/5 p-3 rounded-lg border border-purple-500/10 text-sm">
+                      <p>✅ "Viagem <strong>à</strong> vista" (expressão)</p>
+                      <p>✅ "Pagamento <strong>à</strong> distância" (medida)</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground italic">Toda expressão de medida feminina recebe crase!</p>
                 </div>
               }
             />
           </div>
         </section>
 
-        <AlertBox tipo="info" titulo="Macete: Horas SEMPRE Têm Crase">
+        <AlertBox tipo="info" titulo="Análise Estratégica: Indicação de Horas">
           Quando vê hora exata numa questão, pense: <strong>"Crase é amiga de horas!"</strong> Sempre que a frase menciona horário específico, há crase. Às 8, às 14:30, à uma — todas com crase. Não há exceção para horas exatas.
         </AlertBox>
 
@@ -1733,7 +1950,7 @@ export default function AulaCrase({
             materia: "Português",
             images: [{ title: "Módulo 7", type: "Resumo", placeholderColor: "bg-cyan-100" }],
           }}
-          maceteVisual={{ title: "Macete M7", content: "Hora exata? Crase obrigatória. Às 14h, à 1h." }}
+          sinteseEstrategica={{ title: "Síntese Estratégica S7", content: "Indicação de horas exatas exige o acento grave." }}
           audio={{ audioUrl: "#", titulo: "AudioAula 7 - Crase", artista: "Petrobras Quest" }}
         />
 
@@ -1759,186 +1976,205 @@ export default function AulaCrase({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
-            title="Casa e Terra: Genérico vs Especificado"
+            index="INTRO"
+            title="Casa, Terra e Distância: A Regra da Especificação"
             variant={mv[8]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              <strong>As palavras "casa" e "terra" têm uma regra especial de crase: genéricas não levam crase, especificadas levam</strong>. Quando "casa" significa "para minha residência" (genérica, indefinida), não há artigo: "Vou <em>a</em> casa" (A + casa genérica, sem artigo = A). Mas quando "casa" é especificada (recebe adjetivo, adjunto), aí há artigo e crase: "Vou <em>à</em> casa da Maria" (A + a casa da Maria = À).
+              As palavras "casa", "terra" e "distância" ocupam um lugar peculiar nas regras de crase, regidas por um princípio gramatical inflexível: <strong>a regra da especificação</strong>. Quando esses termos são empregados em seu sentido genérico e universal, eles repelem o uso do artigo feminino, inviabilizando qualquer possibilidade de ocorrência da crase, uma vez que falta a parcela definidora na equação.
             </p>
             <p>
-              A mesma lógica aplica-se a "terra". "Voltamos <em>a</em> terra" (terra como oposto de mar, genérica = SEM crase). "Voltamos <em>à</em> terra natal" (terra com especificador "natal" = COM crase). A diferença reside em ter ou não um modificador (adjunto, aposição, adjetivo) que especifique a palavra.
+              Tomemos como exemplo o termo "casa" no sentido de "próprio lar". Quando redigimos "Retornarei a casa ao anoitecer", a palavra assume uma semântica de moradia inespecífica. A preposição "a" exigida pelo verbo "retornar" não encontra o artigo feminino, resultando apenas na preposição pura. Contudo, se adicionamos um adjunto adnominal ou qualquer modificador ("Retornarei à casa de meus avós"), a especificação atrai obrigatoriamente o artigo feminino, consumando a fusão estrutural.
             </p>
             <p>
-              <strong>Estrutura geral:</strong> <em>Palavra genérica</em> (sem artigo) = A (sem crase). <em>Palavra especificada</em> (com artigo obrigatório) = À (com crase).
+              A mesma lógica binária governa a palavra "terra". Quando empregada como antônimo de "bordo" ou "mar", em sua forma absoluta e desprovida de atributos, a crase é proibida: "Os marinheiros desceram a terra". Entretanto, basta que o termo receba um determinante que o particularize, como em "Retornou à terra de seus ancestrais" ou "Chegou à terra prometida", para que a crase se torne um elemento sintático indispensável.
             </p>
             <p>
-              Essa regra é tão importante que a CESGRANRIO cobra frequentemente. "Vou a casa" (genérica) vs "Vou à casa da vizinha" (especificada). Candidatos que não dominam essa sutileza perdem 2-3 pontos facilmente.
+              No tocante à "distância", o rigor gramatical se mantém. A locução "a distância", quando não especificada, afasta a crase ("Ensino a distância"). Mas, ao inserirmos uma medida exata ou um determinante claro, a preposição funde-se ao artigo que surge pela especificação: "A viatura estava posicionada à distância de cem metros" ou "Reconheceu o colega à longa distância". A precisão atrai a crase.
             </p>
-            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950/30 dark:to-blue-950/30 rounded-xl border border-cyan-200 dark:border-cyan-800 p-6 space-y-4">
-              <h4 className="font-bold text-foreground flex items-center gap-2">
-                <LuTarget className="w-5 h-5 text-cyan-500" /> Regra de Ouro: ESPECIFICAÇÃO Define Crase
-              </h4>
-              <div className="space-y-2 p-3 bg-white dark:bg-slate-900 rounded-lg">
-                <p className="text-foreground/80">
-                  <strong>Genérica:</strong> "Vou <em>a</em> casa" (SEM artigo, SEM crase)
-                </p>
-                <p className="text-foreground/80">
-                  <strong>Especificada:</strong> "Vou <em>à</em> casa da Maria" (COM artigo, COM crase)
-                </p>
-              </div>
-            </div>
+            <p>
+              Para os candidatos da CESGRANRIO, o domínio absoluto desta tríade é um diferencial competitivo vital. As bancas elaboram armadilhas sofisticadas mascarando a especificação em frases longas ou inserindo distratores entre o verbo e o termo genérico. Princípio Fundamental é cirúrgica: encontrou "casa", "terra" ou "distância"? Interrompa a leitura e busque imediatamente por qualquer palavra que limite ou defina esses substantivos.
+            </p>
           </div>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Exemplos: Casa Genérica vs Especificada" variant={mv[8]} />
-          <ContentAccordion
-            slides={[
-              {
-                titulo: "Casa Genérica (SEM Crase)",
-                icone: <LuTarget className="w-5 h-5" />,
-                conteudo: (
-                  <div className="space-y-3 text-foreground/85">
-                    <p className="font-semibold">Quando "casa" significa residência própria (sem especificação):</p>
-                    <ul className="list-disc list-inside space-y-1">
-                      <li>✅ "Vou <em>a</em> casa" (minha própria casa, genérica)</li>
-                      <li>✅ "Chego <em>a</em> casa cansado" (voltei para minha casa)</li>
-                      <li>✅ "Saio de casa cedo" (de minha casa, genérica)</li>
-                    </ul>
-                  </div>
-                ),
-              },
-              {
-                titulo: "Casa Especificada (COM Crase)",
-                icone: <LuTriangleAlert className="w-5 h-5" />,
-                conteudo: (
-                  <div className="space-y-3 text-foreground/85">
-                    <p className="font-semibold">Quando "casa" é especificada (possui adjetivo, adjunto, aposição):</p>
-                    <ul className="list-disc list-inside space-y-1">
-                      <li>✅ "Vou <em>à</em> casa da Maria"</li>
-                      <li>✅ "Vou <em>à</em> casa azul da esquina"</li>
-                      <li>✅ "Dirijo-me <em>à</em> casa do prefeito"</li>
-                      <li>✅ "Chego <em>à</em> casa da amiga"</li>
-                    </ul>
-                  </div>
-                ),
-              },
-              {
-                titulo: "Terra Genérica vs Especificada",
-                icone: <LuTarget className="w-5 h-5" />,
-                conteudo: (
-                  <div className="space-y-3 text-foreground/85">
-                    <p className="font-semibold">Mesma regra aplica-se a "terra":</p>
-                    <ul className="space-y-2">
-                      <li>✅ "Desembarcaram <em>a</em> terra" (oposto de bordo, genérica)</li>
-                      <li>✅ "Desembarcaram <em>à</em> terra firme" (especificada por "firme")</li>
-                      <li>✅ "Voltamos <em>a</em> terra" (genérica, sem especificação)</li>
-                      <li>✅ "Voltamos <em>à</em> terra natal" (especificada por "natal")</li>
-                    </ul>
-                  </div>
-                ),
-              },
-            ]}
-          />
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Card: Comparação Lado a Lado" variant={mv[8]} />
-          <CardCarousel
-            cards={[
-              {
-                icone: "🏠",
-                title: "Casa (genérica)",
-                descricao: "Vou a casa (SEM crase)",
-              },
-              {
-                icone: "🏠👩",
-                title: "Casa da Maria",
-                descricao: "Vou à casa da Maria (COM crase)",
-              },
-              {
-                icone: "🌍",
-                title: "Terra (genérica)",
-                descricao: "Desembarcaram a terra (SEM crase)",
-              },
-              {
-                icone: "🌍✨",
-                title: "Terra Natal",
-                descricao: "Voltamos à terra natal (COM crase)",
-              },
-              {
-                icone: "📍",
-                title: "Distância (sem prep)",
-                descricao: "A distância de 5km (artigo simples)",
-              },
-              {
-                icone: "📍➡️",
-                title: "À Distância de",
-                descricao: 'À distância de 5km (crase com "a")',
-              },
-            ]}
-          />
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={4} title="Distância: Expressão de Medida" variant={mv[8]} />
-          <AlertBox tipo="info" titulo="À Distância de...">
-            <p><strong>Crase obrigatória</strong> com expressões de distância que usam preposição A:</p>
-            <p className="mt-2">✅ "À distância de 10 quilômetros"</p>
-            <p>✅ "À distância de um metro"</p>
-            <p>✅ "À distância de meia légua"</p>
-            <br />
-            <p><strong>SEM preposição A, não há crase:</strong></p>
-            <p className="mt-2">✅ "A distância entre cidades é grande" (artigo simples, não crase)</p>
-          </AlertBox>
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={5} title="Prática: Casa, Terra, Distância" variant={mv[8]} />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <ModuleSectionHeader index={1} title="A Dinâmica da Especificação" variant={mv[8]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
-              frente={<div className="font-bold text-lg">🏠 CASA GENÉRICA</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-orange-400">Quando não está especificada</p>
-                  <p>A palavra "casa" sozinha (sem artigo ou especificador) não recebe crase. Exemplo: "Vou a casa". É uma situação onde o artigo é OMITIDO, então a crase não ocorre.</p>
-                  <p>✅ "Vou <strong>a</strong> casa" (sem artigo, sem crase)</p>
-                  <p>❌ "Vou <strong>à</strong> casa" (ERRADO neste contexto)</p>
-                  <p className="text-muted-foreground">Casa genérica = sem artigo = sem crase. Regra: omissão de artigo.</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-teal-500/10 rounded-full shadow-inner ring-1 ring-teal-500/20">
+                    <LuHouse className="w-12 h-12 text-teal-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    O Termo "Casa"
+                  </span>
+                  <span className="text-sm text-teal-500/80 font-medium">
+                    Lar vs. Residência Alheia
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-teal-500 font-bold border-b border-teal-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Atenção ao Determinante</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Procure sempre o que vem depois da palavra "casa". A presença de apenas uma palavra descritiva muda toda a regra.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Vou <strong>a</strong> casa." (Genérica = SEM crase)</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Vou <strong>à</strong> casa amarela." (Especificada = COM crase)</p>
+                </div>
+              }
+              categoria="Regra do Lar"
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">🏘️ CASA ESPECIFICADA</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-green-500">Com artigo ou identificador</p>
-                  <p>Quando "casa" é seguida de especificador (da vovó, do João, daquela esquina), o artigo é EXIGIDO. Logo, há crase. Estrutura: "a" + "a casa da..." = "à casa da...".</p>
-                  <p>✅ "Vou <strong>à</strong> casa da vovó" (especificada, com crase)</p>
-                  <p>✅ "Voltamos <strong>à</strong> casa do trabalho" (especificada, com crase)</p>
-                  <p className="text-muted-foreground">Casa especificada = artigo exigido = crase obrigatória.</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-blue-500/10 rounded-full shadow-inner ring-1 ring-blue-500/20">
+                    <LuGlobe className="w-12 h-12 text-blue-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    O Teste da Terra
+                  </span>
+                  <span className="text-sm text-blue-500/80 font-medium">
+                    Contexto Náutico
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Oposição ao Mar</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Lembre-se do contexto náutico. Se puder trocar mentalmente por "chão", não haverá crase.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Lançou-se <strong>a</strong> terra." (Piso comum = SEM crase)</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Lançou-se <strong>à</strong> terra prometida." (Especificada = COM crase)</p>
+                </div>
+              }
+              categoria="Navegação e Origem"
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">🌍 TERRA E DISTÂNCIA</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-teal-400">Palavras especiais com regras próprias</p>
-                  <p>TERRA: Como "casa", segue a mesma lógica. "À terra natal" (especificada), "a terra" (genérica). DISTÂNCIA: Quando usada com preposição "a", recebe crase se tiver artigo. "À distância" é expressão comum (à distância, à longa distância).</p>
-                  <p>✅ "Voltamos <strong>à</strong> terra natal" (especificada)</p>
-                  <p>✅ "Vemos <strong>à</strong> distância" (expressão de medida)</p>
-                  <p className="text-muted-foreground">Todas as especializações exigem crase!</p>
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-indigo-500/10 rounded-full shadow-inner ring-1 ring-indigo-500/20">
+                    <LuMapPin className="w-12 h-12 text-indigo-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    O Cálculo da Distância
+                  </span>
+                  <span className="text-sm text-indigo-500/80 font-medium">
+                    Abstrata vs Mensurável
+                  </span>
                 </div>
               }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-indigo-500 font-bold border-b border-indigo-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Foco na Medida</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Distância precisa de números ou determinantes para ganhar a crase. Expressões cristalizadas também a exigem.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">❌ "Graduação <strong>a</strong> distância." (Genérica = SEM crase)</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Tiro <strong>à</strong> queima-roupa e <strong>à</strong> longa distância." (Locuções fixas = COM crase)</p>
+                </div>
+              }
+              categoria="Métrica e Espaço"
             />
           </div>
         </section>
 
-        <AlertBox tipo="danger" titulo="Erro Crítico: Não Identificar Especificação">
-          Muitos candidatos escrevem: "Fui <em>a</em> casa da Maria" (ERRADO! Casa está especificada). Correto: "Fui <em>à</em> casa da Maria". A presença de "da Maria" (adjunto possessivo) torna "casa" especificada e exige crase. Leia com atenção para identificar especificadores!
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader index={2} title="Prática: Aplicação em Contexto" variant={mv[8]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-teal-500/10 rounded-full shadow-inner ring-1 ring-teal-500/20">
+                    <LuHouse className="w-12 h-12 text-teal-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    A Validação da Casa
+                  </span>
+                  <span className="text-sm text-teal-500/80 font-medium">
+                    Análise Contextual
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-teal-500 font-bold border-b border-teal-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Varredura de Adjetivos</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Procure sempre o que vem depois da palavra "casa". A presença de apenas uma palavra descritiva muda toda a regra.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Vou <strong>a</strong> casa." (Genérica = SEM crase)</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Vou <strong>à</strong> casa amarela." (Especificada = COM crase)</p>
+                </div>
+              }
+              categoria="Prova Prática"
+            />
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-blue-500/10 rounded-full shadow-inner ring-1 ring-blue-500/20">
+                    <LuGlobe className="w-12 h-12 text-blue-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Do Navio para o Chão
+                  </span>
+                  <span className="text-sm text-blue-500/80 font-medium">
+                    Contexto Náutico
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Gramática Histórica</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Lembre-se do contexto náutico da gramática histórica. Se puder trocar mentalmente por "chão", não haverá crase.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Lançou-se <strong>a</strong> terra." (Piso comum = SEM crase)</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Lançou-se <strong>à</strong> terra prometida." (Lugar único = COM crase)</p>
+                </div>
+              }
+              categoria="Prova Prática"
+            />
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-indigo-500/10 rounded-full shadow-inner ring-1 ring-indigo-500/20">
+                    <LuMapPin className="w-12 h-12 text-indigo-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    A Prova Matemática
+                  </span>
+                  <span className="text-sm text-indigo-500/80 font-medium">
+                    Abstrata vs Exata
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-indigo-500 font-bold border-b border-indigo-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Mensuração</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Distância precisa de números ou determinantes de extensão para ganhar a crase. Expressões cristalizadas também a exigem.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Graduação <strong>a</strong> distância." (EAD genérico = SEM crase)</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Tiro <strong>à</strong> queima-roupa." (Locução fixa = COM crase)</p>
+                </div>
+              }
+              categoria="Prova Prática"
+            />
+          </div>
+        </section>
+
+        <AlertBox tipo="info" titulo="Análise Visual: Critérios de Especificação">
+          Quando a palavra for <strong>Casa, Terra ou Distância</strong>, ative o radar: olhe imediatamente para a DIREITA da palavra. Há algum detalhe extra? Uma posse, uma cor, uma medida? Se sim, marque a crase com segurança. Se não houver nada, a crase está proibida.
         </AlertBox>
 
         <ModuleConsolidation
@@ -1951,7 +2187,7 @@ export default function AulaCrase({
             materia: "Português",
             images: [{ title: "Módulo 8", type: "Resumo", placeholderColor: "bg-teal-100" }],
           }}
-          maceteVisual={{ title: "Macete M8", content: "Casa/Terra genérica = sem crase; especificada = com crase." }}
+          sinteseEstrategica={{ title: "Síntese Estratégica S8", content: "Casa/Terra genérica: sem crase; especificada: com crase." }}
           audio={{ audioUrl: "#", titulo: "AudioAula 8 - Crase", artista: "Petrobras Quest" }}
         />
 
@@ -1977,203 +2213,205 @@ export default function AulaCrase({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
-            title="Demonstrativos com Crase: Fusão Especial"
+            index="INTRO"
+            title="Demonstrativos: A Fusão Especial do Acento Grave"
             variant={mv[9]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              <strong>Pronomes demonstrativos AQUELE, AQUELA, AQUILO aceitam fusão com a preposição A, gerando as formas ÀQUELE, ÀQUELA, ÀQUILO</strong>. Essa fusão é diferente daquela com artigo — aqui a preposição se funde diretamente com o demonstrativo. O acento grave marca essa fusão, indicando que houve contração.
+              O estudo da crase frequentemente se concentra na fusão entre a preposição "a" e o artigo definido feminino "a", mas existe uma segunda categoria gramatical igualmente sujeita a esse fenômeno: <strong>os pronomes demonstrativos iniciados pela vogal "a"</strong>. Esta regra engloba especificamente os pronomes "aquele", "aquela", "aqueles", "aquelas" e "aquilo". Nesses casos, o acento grave não marca a junção de artigo e preposição, mas a fusão oblíqua da preposição exigida pelo termo regente com a vogal inicial do próprio pronome.
             </p>
             <p>
-              <strong>Estrutura: Preposição A + Demonstrativo AQUELE = ÀQUELE (fusão especial)</strong>
+              A lógica sintática permanece inalterada, baseando-se na transitividade. Se um verbo ou nome exige a preposição "a" e o complemento que se segue é o pronome "aquele", a língua portuguesa não permite a repetição cacofônica "Refiro-me a aquele". A solução gramatical elegante é a fusão, sinalizada pelo acento grave: "Refiro-me <em>àquele</em>". Esta marca gráfica condensa os dois elementos em uma única estrutura sonora e visual, mantendo a integridade semântica da frase.
             </p>
             <p>
-              Exemplos: "Refiro-me <em>àquele</em> documento" (A + aquele = àquele). "Aludo <em>àquela</em> decisão" (A + aquela = àquela). "Pensei <em>àquilo</em> que você disse" (A + aquilo = àquilo). Em todos esses casos, a preposição A funde-se com o demonstrativo, criando as formas com acento grave.
+              O ponto crucial de diferenciação para as bancas examinadoras reside no contraste com os pronomes demonstrativos que indicam proximidade. Os pronomes "este", "esta", "esse" e "essa" não iniciam com a vogal "a". Consequentemente, não oferecem a base fonética necessária para que a fusão ocorra. Quando um termo rege a preposição "a" diante desses pronomes, a preposição permanece isolada e íntegra. Dizemos corretamente: "Refiro-me <em>a este</em> relatório", sem qualquer traço de crase.
             </p>
             <p>
-              <strong>Importante:</strong> O teste do masculino funciona aqui também. Se em forma masculina resultar em "ÀQUELE" (com crase), então no feminino há "ÀQUELA" (com crase), e no neutro há "ÀQUILO" (com crase). Essa consistência ajuda a memorizar.
+              Para validar a ocorrência da crase diante de "aquele", o mecanismo de verificação é simples e eficaz: substitui-se o pronome "aquele" por "a este". Se na substituição a preposição "a" se mantiver preservada e fizer sentido sintático (como em "Dirigiu-se a este" como prova de "Dirigiu-se àquele"), a crase está gramaticalmente confirmada. O uso de pronomes neutros, como "aquilo", segue rigorosamente o mesmo preceito: "Dediquei-me <em>àquilo</em> com afinco".
             </p>
             <p>
-              Na Petrobras, comunicações formais dizem: "Conforme <em>àquele</em> procedimento", "Referente <em>àquilo</em> discutido em reunião". A fusão com demonstrativos é frequente em textos técnicos porque esses pronomes ajudam a precisar referências anteriores.
+              Nas avaliações da CESGRANRIO, as questões envolvendo pronomes demonstrativos tendem a explorar a desatenção visual do candidato, misturando "àquela" com "a esta" em estruturas coordenadas. Textos técnicos e normativos da Petrobras frequentemente utilizam esses pronomes para retomar normas e diretrizes anteriores. Dominar a identificação mecânica da preposição regente e a análise da vogal inicial do pronome é a chave para não ceder a essas armadilhas pontuais.
             </p>
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 rounded-xl border border-purple-200 dark:border-purple-800 p-6 space-y-4">
-              <h4 className="font-bold text-foreground flex items-center gap-2">
-                <LuZap className="w-5 h-5 text-purple-500" /> Demonstrativos: Sempre Levam Crase
-              </h4>
-              <div className="space-y-2 p-3 bg-white dark:bg-slate-900 rounded-lg">
-                <p className="text-foreground/80">✅ "Refiro-me <strong>àquele</strong> rapaz"</p>
-                <p className="text-foreground/80">✅ "Aludo <strong>àquela</strong> moça"</p>
-                <p className="text-foreground/80">✅ "Pensei <strong>àquilo</strong> (neutro)"</p>
-              </div>
-            </div>
           </div>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Formas Completas: Demonstrativos com Crase" variant={mv[9]} />
-          <ContentAccordion
-            slides={[
-              {
-                titulo: "Demonstrativo AQUELE (Masculino)",
-                icone: <LuTarget className="w-5 h-5" />,
-                conteudo: (
-                  <div className="space-y-3 text-foreground/85">
-                    <p className="font-semibold">ÀQUELE — sempre com crase quando há preposição A:</p>
-                    <ul className="space-y-2">
-                      <li>✅ "Refiro-me <em>àquele</em> documento"</li>
-                      <li>✅ "Aludi <em>àquele</em> evento"</li>
-                      <li>✅ "Dirijo-me <em>àquele</em> senhor"</li>
-                    </ul>
-                  </div>
-                ),
-              },
-              {
-                titulo: "Demonstrativo AQUELA (Feminino)",
-                icone: <LuTarget className="w-5 h-5" />,
-                conteudo: (
-                  <div className="space-y-3 text-foreground/85">
-                    <p className="font-semibold">ÀQUELA — sempre com crase quando há preposição A:</p>
-                    <ul className="space-y-2">
-                      <li>✅ "Refiro-me <em>àquela</em> proposta"</li>
-                      <li>✅ "Aludi <em>àquela</em> reunião"</li>
-                      <li>✅ "Dirijo-me <em>àquela</em> moça"</li>
-                    </ul>
-                  </div>
-                ),
-              },
-              {
-                titulo: "Demonstrativo AQUILO (Neutro)",
-                icone: <LuTarget className="w-5 h-5" />,
-                conteudo: (
-                  <div className="space-y-3 text-foreground/85">
-                    <p className="font-semibold">ÀQUILO — sempre com crase quando há preposição A:</p>
-                    <ul className="space-y-2">
-                      <li>✅ "Refiro-me <em>àquilo</em> que foi dito"</li>
-                      <li>✅ "Não gosto <em>daquilo</em> que você fez" (note: "daquilo" = DE+AQUILO, não A)</li>
-                      <li>✅ "Pensei <em>àquilo</em> por horas"</li>
-                    </ul>
-                    <p className="text-sm italic mt-2">
-                      CUIDADO: "Daquilo" = DE (preposição) + AQUILO, não é crase!
-                    </p>
-                  </div>
-                ),
-              },
-              {
-                titulo: "Diferença: Este vs Aquele",
-                icone: <LuLightbulb className="w-5 h-5" />,
-                conteudo: (
-                  <div className="space-y-3 text-foreground/85">
-                    <p className="font-semibold">Demonstrativos próximos vs remotos:</p>
-                    <ul className="space-y-2">
-                      <li>✅ "Refiro-me <em>a este</em>" (demonstrativo próximo = SEM crase)</li>
-                      <li>✅ "Refiro-me <em>àquele</em>" (demonstrativo remoto = COM crase)</li>
-                      <li className="text-sm italic">Note: "Este" não recebe crase mesmo com preposição A!</li>
-                    </ul>
-                  </div>
-                ),
-              },
-            ]}
-          />
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Card: Demonstrativos e Seus Pares" variant={mv[9]} />
-          <CardCarousel
-            cards={[
-              {
-                icone: "👨",
-                title: "Àquele (masc)",
-                descricao: "Àquele rapaz (A+aquele, sempre crase)",
-              },
-              {
-                icone: "👩",
-                title: "Àquela (fem)",
-                descricao: "Àquela moça (A+aquela, sempre crase)",
-              },
-              {
-                icone: "⭕",
-                title: "Àquilo (neutro)",
-                descricao: "Àquilo que disseste (A+aquilo, sempre crase)",
-              },
-              {
-                icone: "👨",
-                title: "A este (próximo)",
-                descricao: "A este rapaz (SEM crase, demonstrativo próximo)",
-              },
-              {
-                icone: "🌍",
-                title: "Teste: Referir-se",
-                descricao: "Refiro-me àquele (crase com aquele)",
-              },
-              {
-                icone: "⚙️",
-                title: "Petrobras",
-                descricao: "Conforme àquele procedimento (documentação)",
-              },
-            ]}
-          />
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={4} title="Cuidado: Demonstrativo Próximo (Este) NÃO Leva Crase" variant={mv[9]} />
-          <AlertBox tipo="warning" titulo="Diferença Crítica: ESTE vs AQUELE">
-            <p><strong>AQUELE (remoto) → ÀQUELE (com crase)</strong></p>
-            <p>✅ "Refiro-me <em>àquele</em> documento" (remoto, crase obrigatória)</p>
-            <br />
-            <p><strong>ESTE (próximo) → A ESTE (sem crase)</strong></p>
-            <p>✅ "Refiro-me <em>a este</em> documento" (próximo, SEM crase)</p>
-            <br />
-            <p className="font-semibold mt-4">
-              A diferença está no tipo de demonstrativo! "Aquele" recebe crase (fusão especial), "este" não.
-            </p>
-          </AlertBox>
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={5} title="Prática: Demonstrativos com Crase" variant={mv[9]} />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <ModuleSectionHeader index={1} title="A Dinâmica dos Pronomes" variant={mv[9]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
-              frente={<div className="font-bold text-lg">🔵 DEMONSTRATIVOS REMOTOS</div>}
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-purple-500/10 rounded-full shadow-inner ring-1 ring-purple-500/20">
+                    <LuHand className="w-12 h-12 text-purple-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Iniciados por "A"
+                  </span>
+                  <span className="text-sm text-purple-500/80 font-medium">
+                    Aquele, Aquela, Aquilo
+                  </span>
+                </div>
+              }
               verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-blue-500">Aquele, aquela, aquilo</p>
-                  <p>Os demonstrativos remotos (aquele, aquela, aquilo) começam com "a". Quando a preposição "a" está antes deles, há CRASE especial (fusão da preposição com o demonstrativo): "a" + "aquele" = "àquele".</p>
-                  <p>✅ "Refiro-me <strong>àquele</strong> documento" (aquele começa com A)</p>
-                  <p>✅ "Aludi <strong>àquilo</strong> que disseste" (aquilo começa com A)</p>
-                  <p className="text-muted-foreground">Demonstrativo remoto + preposição A = crase (À).</p>
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-purple-500 font-bold border-b border-purple-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Fusão Direta</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">O choque fonético da preposição com a inicial do pronome gera a crase.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Dirijo-me <strong>àquela</strong> senhora."</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Atento <strong>àquilo</strong> que vejo."</p>
+                </div>
+              }
+              categoria="Regra de Proximidade"
+            />
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-orange-500/10 rounded-full shadow-inner ring-1 ring-orange-500/20">
+                    <LuPointer className="w-12 h-12 text-orange-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Sem Vogal "A"
+                  </span>
+                  <span className="text-sm text-orange-500/80 font-medium">
+                    Este, Esta, Esse, Essa
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-orange-500 font-bold border-b border-orange-500/10 pb-3">
+                    <LuUserX className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Sem Fusão Possível</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">A ausência da vogal "A" no início da palavra impossibilita a existência da crase.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">❌ "Dirijo-me <strong>à</strong> esta senhora."</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Dirijo-me <strong>a</strong> esta senhora."</p>
+                </div>
+              }
+              categoria="Conflito Fonético"
+            />
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-rose-500/10 rounded-full shadow-inner ring-1 ring-rose-500/20">
+                    <LuBrainCircuit className="w-12 h-12 text-rose-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    O Teste Lógico
+                  </span>
+                  <span className="text-sm text-rose-500/80 font-medium">
+                    Substituição Mental
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-rose-500 font-bold border-b border-rose-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Confirmação Tática</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Troque "àquele" por "a este". Se a frase fizer sentido e preservar o "a", a crase está correta.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ "Vou <strong>àquele</strong> (a este) local."</p>
+                </div>
+              }
+              categoria="Análise de Prova"
+            />
+          </div>
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader index={2} title="Prática: A Fusão Especial" variant={mv[9]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <FlipCard
+                frente={
+                  <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                    <div className="p-4 bg-purple-500/10 rounded-full shadow-inner ring-1 ring-purple-500/20 text-purple-600 dark:text-purple-400">
+                      <LuMousePointer2 className="w-8 h-8" />
+                    </div>
+                    <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                      O DEMONSTRATIVO NEUTRO
+                    </span>
+                    <span className="text-sm text-purple-600/80 dark:text-purple-400/80 font-medium">
+                      Caso Peculiar
+                    </span>
+                  </div>
+                }
+                verso={
+                <div className="space-y-4 p-4 flex flex-col h-full">
+                  <p className="font-semibold text-purple-600 dark:text-purple-400 border-b border-purple-500/20 pb-2">O caso peculiar de "Aquilo"</p>
+                  <div className="space-y-3 flex-grow">
+                    <p>Muitos esquecem que "aquilo" também entra na regra. Sendo um pronome neutro que inicia em "a", a fusão é obrigatória sob a regência correta.</p>
+                    <div className="bg-purple-500/5 p-3 rounded-lg border border-purple-500/10 text-sm">
+                      <p>✅ "Não dei atenção <strong>àquilo</strong> que disseram."</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground italic">Não importa se a referência é neutra, a regra gramatical é sonora.</p>
                 </div>
               }
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">🟢 DEMONSTRATIVOS PRÓXIMOS</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-green-500">Este, esse, aquele (próximo)</p>
-                  <p>Os demonstrativos próximos (este, esse, esse aqui) NÃO começam com "a". Logo, quando a preposição "a" os precede, não há fusão — apenas preposição + demonstrativo, sem crase.</p>
-                  <p>✅ "Refiro-me <strong>a</strong> este documento" (este não começa com A)</p>
-                  <p>✅ "Aludi <strong>a</strong> esse ponto" (esse não começa com A)</p>
-                  <p className="text-muted-foreground">Demonstrativo próximo = sem A inicial = sem crase.</p>
+                frente={
+                  <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                    <div className="p-4 bg-orange-500/10 rounded-full shadow-inner ring-1 ring-orange-500/20 text-orange-600 dark:text-orange-400">
+                      <LuLayers className="w-8 h-8" />
+                    </div>
+                    <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                      O CONTRASTE IMEDIATO
+                    </span>
+                    <span className="text-sm text-orange-600/80 dark:text-orange-400/80 font-medium">
+                      Diferenciação Visual
+                    </span>
+                  </div>
+                }
+                verso={
+                <div className="space-y-4 p-4 flex flex-col h-full">
+                  <p className="font-semibold text-orange-600 dark:text-orange-400 border-b border-orange-500/20 pb-2">Lado a Lado na Prova</p>
+                  <div className="space-y-3 flex-grow">
+                    <p>Provas adoram coordenar as duas regras na mesma sentença para confundir o candidato entre demonstrativos.</p>
+                    <div className="bg-orange-500/5 p-3 rounded-lg border border-orange-500/10 text-sm">
+                      <p>✅ "Prefiro <strong>esta</strong> máquina <strong>àquela</strong> outra."</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground italic">Observe a diferença gráfica ditada apenas pela vogal inicial!</p>
                 </div>
               }
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">🔑 REGRA DOS DEMONSTRATIVOS</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-purple-400">Começa com A? Há crase!</p>
-                  <p>A chave para demonstrativos é simples: se o demonstrativo COMEÇA COM "A" (aquele, aquela, aquilo), há crase com a preposição. Se não começa com "a" (este, esse), não há crase.</p>
-                  <p>✅ "Àquele" (inicia com A → crase)</p>
-                  <p>✅ "A este" (não inicia com A → sem crase)</p>
-                  <p className="text-muted-foreground">Teste rápido: Leia a primeira letra do demonstrativo!</p>
+                frente={
+                  <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                    <div className="p-4 bg-rose-500/10 rounded-full shadow-inner ring-1 ring-rose-500/20 text-rose-600 dark:text-rose-400">
+                      <LuCircleAlert className="w-8 h-8" />
+                    </div>
+                    <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                      A PREPOSIÇÃO DE
+                    </span>
+                    <span className="text-sm text-rose-600/80 dark:text-rose-400/80 font-medium">
+                      Destino Falso
+                    </span>
+                  </div>
+                }
+                verso={
+                <div className="space-y-4 p-4 flex flex-col h-full">
+                  <p className="font-semibold text-rose-600 dark:text-rose-400 border-b border-rose-500/20 pb-2">Cuidado com o Destino Falso</p>
+                  <div className="space-y-3 flex-grow">
+                    <p>A fusão só acontece com a preposição A. Contrações com "De" ou "Em" geram formas diferentes ("daquilo", "naquilo").</p>
+                    <div className="bg-rose-500/5 p-3 rounded-lg border border-rose-500/10 text-sm">
+                      <p>❌ "Não gosto <strong>àquilo</strong>." (Gostar rege "De")</p>
+                      <p>✅ "Não gosto <strong>daquilo</strong>."</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground italic">A crase só existe se a transitividade for para "A".</p>
                 </div>
               }
             />
           </div>
         </section>
 
-        <AlertBox tipo="danger" titulo="Erro Frequente: Confundir Este/Aquele">
-          Candidatos frequentemente erram "Refiro-me <em>à</em> este" (ERRADO!) quando o correto é "Refiro-me <em>a</em> este". Lembre: AQUELE → ÀQUELE (com crase). ESTE → A ESTE (sem crase). A diferença está na natureza do demonstrativo!
+        <AlertBox tipo="info" titulo="Análise Visual: Identificação de Vogais">
+          Encontrou um pronome demonstrativo na prova? O radar é direto: <strong>A palavra começa com a vogal A?</strong> Se sim (Aquele, Aquela, Aquilo) e o verbo pedir, marque a crase. Se não começar com A (Este, Essa), a crase está sumariamente vetada. A gramática aqui é puramente visual.
         </AlertBox>
 
         <ModuleConsolidation
@@ -2186,7 +2424,7 @@ export default function AulaCrase({
             materia: "Português",
             images: [{ title: "Módulo 9", type: "Resumo", placeholderColor: "bg-indigo-100" }],
           }}
-          maceteVisual={{ title: "Macete M9", content: "Àquele/Àquela/Àquilo: crase sempre (a + aquele)." }}
+          sinteseEstrategica={{ title: "Macete M9", content: "Àquele/Àquela/Àquilo: crase sempre (a + aquele)." }}
           audio={{ audioUrl: "#", titulo: "AudioAula 9 - Crase", artista: "Petrobras Quest" }}
         />
 
@@ -2212,240 +2450,203 @@ export default function AulaCrase({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
-            title="Domínio Completo: Checklist de Regras"
+            index="INTRO"
+            title="Consolidação Estratégica: O Domínio Definitivo da Crase"
             variant={mv[10]}
           />
-          <ContentAccordion
-            slides={[
-              {
-                titulo: "Regra 1: Equação Fundamental",
-                icone: <LuCheck className="w-5 h-5" />,
-                conteudo: (
-                  <p className="text-foreground/85">
-                    A (preposição) + A (artigo/demonstrativo) = À. Se falta um elemento, não há crase. Sempre verifique ambos!
-                  </p>
-                ),
-              },
-              {
-                titulo: "Regra 2: Teste do Masculino",
-                icone: <LuCheck className="w-5 h-5" />,
-                conteudo: (
-                  <p className="text-foreground/85">
-                    Substitua por masculino. Se vira "AO", há crase (À). Se continua "A", sem crase. Funciona em 95% dos casos.
-                  </p>
-                ),
-              },
-              {
-                titulo: "Regra 3: Verbos Proíbem",
-                icone: <LuCheck className="w-5 h-5" />,
-                conteudo: (
-                  <p className="text-foreground/85">
-                    Verbo nunca aceita artigo. A + Verbo = A (sem crase). Começou a estudar, não "à estudar".
-                  </p>
-                ),
-              },
-              {
-                titulo: "Regra 4: Pronomes Pessoais Proíbem",
-                icone: <LuCheck className="w-5 h-5" />,
-                conteudo: (
-                  <p className="text-foreground/85">
-                    Pronome pessoal nunca aceita artigo. Referi-me a ela, não "à ela". Absolutamente proibido!
-                  </p>
-                ),
-              },
-              {
-                titulo: "Regra 5: Nomes Próprios = Facultativo",
-                icone: <LuCheck className="w-5 h-5" />,
-                conteudo: (
-                  <p className="text-foreground/85">
-                    A Maria ou À Maria (ambas corretas). MAS se especificado (Maria da Silva), crase é obrigatória.
-                  </p>
-                ),
-              },
-              {
-                titulo: "Regra 6: Possessivos Singulares = Facultativo",
-                icone: <LuCheck className="w-5 h-5" />,
-                conteudo: (
-                  <p className="text-foreground/85">
-                    A minha ou À minha (ambas corretas). MAS plural é obrigatório: Às minhas (não "a minhas").
-                  </p>
-                ),
-              },
-              {
-                titulo: "Regra 7: Horas Exatas = Obrigatório",
-                icone: <LuCheck className="w-5 h-5" />,
-                conteudo: (
-                  <p className="text-foreground/85">
-                    Às 14 horas, à uma hora. Horas sempre levam crase. Por volta das (não é crase, é preposição "de").
-                  </p>
-                ),
-              },
-              {
-                titulo: "Regra 8: Casa/Terra = Especificação Define",
-                icone: <LuCheck className="w-5 h-5" />,
-                conteudo: (
-                  <p className="text-foreground/85">
-                    Vou a casa (genérica). Vou à casa da Maria (especificada). Mesma regra para terra.
-                  </p>
-                ),
-              },
-              {
-                titulo: "Regra 9: Demonstrativos Aquele = Obrigatório",
-                icone: <LuCheck className="w-5 h-5" />,
-                conteudo: (
-                  <p className="text-foreground/85">
-                    Àquele, àquela, àquilo (sempre crase). Diferente de "este" (a este, sem crase).
-                  </p>
-                ),
-              },
-              {
-                titulo: "Regra 10: Estratégia em Prova",
-                icone: <LuCheck className="w-5 h-5" />,
-                conteudo: (
-                  <p className="text-foreground/85">
-                    1) Aplique teste do masculino. 2) Se falhar, verifique categoria (verbo? pronome? hora?). 3) Escolha fundamentado em regra clara.
-                  </p>
-                ),
-              },
-            ]}
-          />
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Questões Simuladas: Padrão CESGRANRIO" variant={mv[10]} />
-          <CardCarousel
-            cards={[
-              {
-                icone: "📝",
-                title: "Q1: Básica",
-                descricao: "Vou ___ praia. (A) a (B) à [Resposta: à]",
-              },
-              {
-                icone: "📝",
-                title: "Q2: Teste do Masculino",
-                descricao: "Refiro-me ___ estratégia. (A) a (B) à [Resposta: à]",
-              },
-              {
-                icone: "📝",
-                title: "Q3: Verbo",
-                descricao: "Começou ___ chover. (A) a (B) à [Resposta: a]",
-              },
-              {
-                icone: "📝",
-                title: "Q4: Pronome",
-                descricao: "Referi-me ___ ela. (A) a (B) à [Resposta: a]",
-              },
-              {
-                icone: "📝",
-                title: "Q5: Hora",
-                descricao: "Reunião ___ 14h. (A) as (B) às [Resposta: às]",
-              },
-              {
-                icone: "📝",
-                title: "Q6: Casa Especificada",
-                descricao: "Fui ___ casa da vovó. (A) a (B) à [Resposta: à]",
-              },
-            ]}
-          />
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Macetes Finais: Dicas de Ouro" variant={mv[10]} />
-          <AlertBox tipo="info" titulo="Dicas Cruciais para Acertar Crase">
-            <div className="space-y-3">
-              <p>
-                <strong>1. Equação é Lei:</strong> A + A = À. Se falta, não há crase. Ponto.
-              </p>
-              <p>
-                <strong>2. Teste do Masculino é Ouro:</strong> 95% das questões resolvem com esse teste.
-              </p>
-              <p>
-                <strong>3. Verbos e Pronomes Pessoais = Nunca Crase:</strong> Memorizados? Acertados!
-              </p>
-              <p>
-                <strong>4. Horas e Demonstrativos Aquele = Sempre Crase:</strong> Fácil de lembrar.
-              </p>
-              <p>
-                <strong>5. Especificação Muda Tudo:</strong> Casa genérica (a) vs casa especificada (à).
-              </p>
-              <p>
-                <strong>6. Singular vs Plural Possessivos:</strong> Minha (facultativo) vs minhas (obrigatório).
-              </p>
-              <p>
-                <strong>7. Leia com Atenção:</strong> CESGRANRIO coloca pegadinhas. Casa vs casa da Maria. Hora exata vs aproximada.
-              </p>
-            </div>
-          </AlertBox>
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>
+              A jornada analítica pelas regras da crase culmina em uma etapa crucial de consolidação. Compreender cada regra isoladamente é o primeiro passo gramatical, mas o verdadeiro teste de proficiência, especialmente nas exigentes provas da CESGRANRIO, requer a capacidade de aplicar essas normativas de forma integrada e sob pressão. A crase não é um conjunto de exceções caóticas, mas um sistema lógico construído sobre a premissa imutável da fusão.
+            </p>
+            <p>
+              No cerne de todo o aprendizado repousa a "Equação Fundamental": a crase só existe quando a regência sintática demanda a preposição "a" e a semântica do termo subsequente autoriza o uso do artigo feminino "a" (ou os pronomes demonstrativos iniciados pela mesma vogal). Se, mediante a análise da frase, qualquer um desses dois componentes estiver ausente, a ocorrência do acento grave está terminantemente vetada. Esse é o princípio zero da resolução de questões.
+            </p>
+            <p>
+              O "Teste do Masculino" desponta como a ferramenta tática mais poderosa do arsenal do candidato. Ao substituir o termo feminino em dúvida por um termo masculino equivalente, a revelação é imediata. O surgimento do termo "ao" ratifica a crase original; a presença isolada de "a" ou "o" a proíbe. Esta prova matemática gramatical resolve a vasta maioria dos conflitos sintáticos cotidianos e acadêmicos.
+            </p>
+            <p>
+              A memorização ativa dos bloqueios absolutos protege o candidato das armadilhas mais comuns. A crase repudia verbos no infinitivo e a esmagadora maioria dos pronomes pessoais. Ela é facultativa diante de nomes próprios femininos e pronomes possessivos femininos no singular, mas se torna estritamente obrigatória em horas exatas e expressões adverbiais cristalizadas. Entender as fronteiras da crase é tão vital quanto saber onde aplicá-la.
+            </p>
+            <p>
+              Enfrentar o simulado a seguir não é apenas medir acertos, mas calibrar o olhar investigativo. Ao destrinchar as frases de contexto técnico e corporativo típicas da Petrobras, o foco deve repousar na identificação imediata de especificadores, locuções fixas e exigências transitivas. A excelência neste exame garante não apenas o ponto na prova, mas a fluência na redação técnica profissional que define um servidor de alto calibre.
+            </p>
+          </div>
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={4} title="Prática Final: 3 Frases Tipo Concurso" variant={mv[10]} />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <ModuleSectionHeader index={1} title="O Arsenal Analítico" variant={mv[10]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
-              frente={<div className="font-bold text-lg">📋 FRASE PETROBRAS 1</div>}
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-slate-500/10 rounded-full shadow-inner ring-1 ring-slate-500/20">
+                    <LuScale className="w-12 h-12 text-slate-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    A Prova de Fogo
+                  </span>
+                  <span className="text-sm text-slate-500/80 font-medium">
+                    Substituição Masculina
+                  </span>
+                </div>
+              }
               verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-emerald-400">Documentos e normas técnicas</p>
-                  <p>"Conforme referência __À__ NBR 13434, procedeu-se __À__ implementação"</p>
-                  <p>Análise: "referência à" (nome + artigo = crase). "procedeu-se à" (verbo que exige "a" + artigo = crase).</p>
-                  <p>✅ <strong>À / À</strong> (ambas as preposições exigem artigo feminino)</p>
-                  <p className="text-muted-foreground">Dica: Duas crase seguidas exigem análise dupla!</p>
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-slate-500 font-bold border-b border-slate-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">O Método Primário</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">A primeira ação ao encontrar uma dúvida é tentar a substituição por um termo masculino equivalente.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ Se virar "AO" = Crase confirmada.</p>
+                </div>
+              }
+              categoria="Metodologia Base"
+            />
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-emerald-500/10 rounded-full shadow-inner ring-1 ring-emerald-500/20">
+                    <LuListChecks className="w-12 h-12 text-emerald-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    O Triângulo Proibido
+                  </span>
+                  <span className="text-sm text-emerald-500/80 font-medium">
+                    Verbos, Pronomes, Genéricos
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
+                    <LuUserX className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Bloqueio Automático</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Antes de perder tempo, verifique se a palavra a seguir é um verbo no infinitivo, pronome pessoal ou palavra genérica.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">❌ Nesses cenários, corte a crase imediatamente.</p>
+                </div>
+              }
+              categoria="Filtro Rápido"
+            />
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-blue-500/10 rounded-full shadow-inner ring-1 ring-blue-500/20">
+                    <LuGraduationCap className="w-12 h-12 text-blue-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    As Margens Facultativas
+                  </span>
+                  <span className="text-sm text-blue-500/80 font-medium">
+                    Nomes e Possessivos
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Análise de Contexto</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">Diante de nomes próprios femininos e possessivos femininos singulares, a crase descansa no livre arbítrio.</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">✅ Ambas as formas (a/à) estão gramaticalmente impecáveis.</p>
+                </div>
+              }
+              categoria="Zona Neutra"
+            />
+          </div>
+        </section>
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+          <ModuleSectionHeader index={2} title="Prática: Mapeamento de Prova" variant={mv[10]} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <FlipCard
+                frente={
+                  <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                    <div className="p-4 bg-slate-500/10 rounded-full shadow-inner ring-1 ring-slate-500/20 text-slate-600 dark:text-slate-400">
+                      <LuBookOpen className="w-8 h-8" />
+                    </div>
+                    <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                      QUESTÃO ESTRUTURAL
+                    </span>
+                    <span className="text-sm text-slate-600/80 dark:text-slate-400/80 font-medium">
+                      Pluralidade e Regra
+                    </span>
+                  </div>
+                }
+                verso={
+                <div className="space-y-4 p-4 flex flex-col h-full">
+                  <p className="font-semibold text-slate-600 dark:text-slate-400 border-b border-slate-500/20 pb-2">"Referiu-se ___ normas da empresa."</p>
+                  <div className="space-y-3 flex-grow">
+                    <p>A CESGRANRIO testa a percepção de pluralidade. Se a palavra está no plural ("normas") e não há crase (A singular), a gramática falha.</p>
+                    <div className="bg-slate-500/5 p-3 rounded-lg border border-slate-500/10 text-sm">
+                      <p>✅ O correto exige crase e concordância: <strong>ÀS normas</strong>.</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground italic">Dissonância de plural é o erro mais comum.</p>
                 </div>
               }
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">👥 FRASE PETROBRAS 2</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-blue-400">Pessoas e cargos</p>
-                  <p>"Dirigi-me __À__ gerência e entrega __À__ diretora"</p>
-                  <p>Análise: "dirigir-se à" (verbo exigindo A) + "gerência" (fem. com artigo). "entrega à" (nome exigindo A) + "diretora" (fem. com artigo).</p>
-                  <p>✅ <strong>À / À</strong> (ambas exigem preposição + artigo feminino)</p>
-                  <p className="text-muted-foreground">Coordenação de crase em listas Petrobras é frequente!</p>
+                frente={
+                  <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                    <div className="p-4 bg-emerald-500/10 rounded-full shadow-inner ring-1 ring-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+                      <LuClock className="w-8 h-8" />
+                    </div>
+                    <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                      QUESTÃO TEMPORAL
+                    </span>
+                    <span className="text-sm text-emerald-600/80 dark:text-emerald-400/80 font-medium">
+                      Preposição Prévia
+                    </span>
+                  </div>
+                }
+                verso={
+                <div className="space-y-4 p-4 flex flex-col h-full">
+                  <p className="font-semibold text-emerald-600 dark:text-emerald-400 border-b border-emerald-500/20 pb-2">"Reunião agendada para ___ 14h."</p>
+                  <div className="space-y-3 flex-grow">
+                    <p>A armadilha da preposição prévia. A palavra "para" já cumpre o papel de preposição, impedindo a entrada do "a".</p>
+                    <div className="bg-emerald-500/5 p-3 rounded-lg border border-emerald-500/10 text-sm">
+                      <p>✅ Fica apenas o artigo: "Para <strong>as</strong> 14h".</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground italic">Se há "desde", "para" ou "após", adeus crase.</p>
                 </div>
               }
             />
             <FlipCard
-              frente={<div className="font-bold text-lg">⚙️ FRASE PETROBRAS 3</div>}
-              verso={
-                <div className="space-y-3 text-lg">
-                  <p className="font-semibold text-purple-400">Análise mista: crase + sem crase</p>
-                  <p>"Procedeu-se __À__ análise __A__ partir de dados"</p>
-                  <p>Análise: "procedeu-se à" (verbo que exige A + "análise" feminina com artigo = crase). "a partir" (preposição "a" + verbo "partir" infinitivo, sem artigo = sem crase).</p>
-                  <p>✅ <strong>À / A</strong> (primeira crase, segunda sem crase)</p>
-                  <p className="text-muted-foreground">CESGRANRIO testa capacidade de diferenciar verbo (sem crase) de substantivo (com crase)!</p>
+                frente={
+                  <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                    <div className="p-4 bg-blue-500/10 rounded-full shadow-inner ring-1 ring-blue-500/20 text-blue-600 dark:text-blue-400">
+                      <LuBuilding className="w-8 h-8" />
+                    </div>
+                    <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                      QUESTÃO DE LOCUÇÃO
+                    </span>
+                    <span className="text-sm text-blue-600/80 dark:text-blue-400/80 font-medium">
+                      Gênero da Expressão
+                    </span>
+                  </div>
+                }
+                verso={
+                <div className="space-y-4 p-4 flex flex-col h-full">
+                  <p className="font-semibold text-blue-600 dark:text-blue-400 border-b border-blue-500/20 pb-2">"Venderam os ativos ___ prazo."</p>
+                  <div className="space-y-3 flex-grow">
+                    <p>O falso cognato da medida. "Prazo" é palavra masculina. A crase diante de palavras masculinas é proibida.</p>
+                    <div className="bg-blue-500/5 p-3 rounded-lg border border-blue-500/10 text-sm">
+                      <p>✅ Fica "a prazo" (sem crase) e "à vista" (com crase).</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground italic">Sempre verifique o gênero da locução adverbial.</p>
                 </div>
               }
             />
           </div>
         </section>
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={5} title="Estratégia Final: Dia da Prova" variant={mv[10]} />
-          <AlertBox tipo="warning" titulo="Na Hora da Prova: Passo a Passo">
-            <ol className="list-decimal list-inside space-y-3">
-              <li>
-                <strong>Leia a frase inteira</strong> — contexto importa.
-              </li>
-              <li>
-                <strong>Identifique categoria:</strong> É hora? Verbo? Pronome? Nomes próprio? Casa? Cada tem regra.
-              </li>
-              <li>
-                <strong>Aplique teste do masculino</strong> (quando aplicável) — se vira AO, há crase.
-              </li>
-              <li>
-                <strong>Se duvidoso, use checklist:</strong> Verbo proíbe? Pronome proíbe? Hora exige? Especificação muda?
-              </li>
-              <li>
-                <strong>Confie na lógica, não em adivinhação</strong> — toda regra tem fundamentação clara.
-              </li>
-              <li>
-                <strong>Em caso de impasse</strong> — marque o que parecer MAIS formal/escrito (CESGRANRIO prefere formas com crase).
-              </li>
-            </ol>
-          </AlertBox>
-        </section>
+        <AlertBox tipo="info" titulo="Estratégia Final: O Triângulo de Ouro">
+          Na hora da prova, seu raciocínio deve ser automático: 1) A palavra a seguir aceita artigo feminino? 2) O termo anterior exige preposição A? 3) É uma exceção clássica (hora/demonstrativo)? Se a resposta para as três for clara, marque com confiança. A CESGRANRIO não esconde a crase, ela apenas exige que você execute os testes básicos metodicamente.
+        </AlertBox>
 
         <AlertBox tipo="success" titulo="Você Domina Crase Agora!">
           <p>
@@ -2463,7 +2664,7 @@ export default function AulaCrase({
             materia: "Português",
             images: [{ title: "Módulo 10", type: "Resumo", placeholderColor: "bg-slate-100" }],
           }}
-          maceteVisual={{ title: "Macete M10", content: "Domine a equação e o teste do masculino: 95% resolvidas." }}
+          sinteseEstrategica={{ title: "Macete M10", content: "Domine a equação e o teste do masculino: 95% resolvidas." }}
           audio={{ audioUrl: "#", titulo: "AudioAula 10 - Crase", artista: "Petrobras Quest" }}
         />
 

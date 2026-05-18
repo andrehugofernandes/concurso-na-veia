@@ -182,7 +182,7 @@ export function RichIntro({
   return (
     <div
       className={cn(
-        "space-y-6 text-xl text-foreground/90 leading-relaxed font-medium mb-12",
+        "space-y-6 text-xl text-foreground/90 leading-snug font-medium mb-12 tracking-tighter [word-spacing:-0.1em] sm:tracking-tight sm:[word-spacing:-0.05em] md:tracking-normal md:[word-spacing:normal] md:leading-relaxed",
         className,
       )}
     >
@@ -359,11 +359,11 @@ export function CardCarousel({
             >
               <div
                 className={cn(
-                  "bg-card rounded-2xl border border-border flex flex-col group/card hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 h-full",
-                  nested ? "p-4 md:p-6 shadow-sm" : "p-6 md:p-8 shadow-md",
+                  "bg-card rounded-2xl border border-border flex flex-col group/card hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500",
+                  nested ? "p-4 md:p-5 shadow-sm" : "px-5 md:px-6 py-4 md:py-5 shadow-md",
                 )}
               >
-                <div className="flex items-start gap-5 mb-6">
+                <div className="flex items-start gap-4 mb-4">
                   <div
                     className={cn(
                       "w-14 h-14 rounded-xl flex items-center justify-center text-2xl shrink-0 transition-all duration-500 group-hover/card:scale-110 group-hover/card:rotate-3 shadow-lg shadow-black/5",
@@ -399,7 +399,7 @@ export function CardCarousel({
           ))}
         </CarouselContent>
         <div className="flex items-center justify-between mt-8 pt-4 border-t border-border/40">
-          <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/60 flex items-center gap-2">
+          <span className="text-[12px] uppercase tracking-widest font-bold text-muted-foreground/60 flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
             {cards.length} tópicos disponíveis
           </span>
@@ -1622,7 +1622,7 @@ export function SummaryTabs({
             value="visual"
             className={`data-[state=active]:bg-violet-500 data-[state=active]:text-white`}
           >
-            🧠 Macete Visual
+            🧠 Síntese Estratégica
           </TabsTrigger>
         </TabsList>
 
@@ -2871,7 +2871,7 @@ export function StickyModuleNav({
                     ? "top-16"
                     : "top-20"
                   : "top-0",
-                "shadow-md border-b border-b-primary/20 flex flex-col items-center shrink-0",
+                "shadow-md border-b border-b-primary/20 flex flex-col items-center justify-center shrink-0",
                 "bg-background/90 dark:bg-slate-900/90 backdrop-blur-md supports-[backdrop-filter]:bg-background/70",
                 "min-h-[64px] md:min-h-[80px]",
               )
@@ -3332,7 +3332,7 @@ export function ModuleConsolidation({
   variant,
   video,
   resumoVisual,
-  maceteVisual,
+  sinteseEstrategica,
   audio,
 }: {
   index: number;
@@ -3345,13 +3345,13 @@ export function ModuleConsolidation({
     | "blue"
     | "cyan"
     | "slate";
-  video: {
+  video?: {
     videoId: string;
     title: string;
     duration: string;
     thumbnail?: string;
   };
-  resumoVisual: {
+  resumoVisual?: {
     moduloNome: string;
     tituloAula: string;
     materia: string;
@@ -3362,8 +3362,8 @@ export function ModuleConsolidation({
       imageUrl?: string;
     }[];
   };
-  maceteVisual: { title: string; content: React.ReactNode };
-  audio: {
+  sinteseEstrategica: { title: string; content: React.ReactNode };
+  audio?: {
     audioUrl: string;
     titulo: string;
     artista: string;
@@ -3371,6 +3371,59 @@ export function ModuleConsolidation({
     lyrics?: string;
   };
 }) {
+  const tabs = [
+    video && {
+      id: "video",
+      label: "Vídeo Aula",
+      icon: LuPlay,
+      content: (
+        <div className="w-full flex flex-col items-center py-6">
+          <div className="w-full max-w-3xl">
+            <VideoModal {...video} />
+          </div>
+        </div>
+      ),
+    },
+    resumoVisual && {
+      id: "resumo",
+      label: "Resumo Virtual",
+      icon: LuBookOpen,
+      content: <ModuleSummaryCarouselNew {...resumoVisual} />,
+    },
+    {
+      id: "visual",
+      label: "Síntese Estratégica",
+      icon: LuImage,
+      content: sinteseEstrategica ? (
+        <div className="text-center p-8 space-y-6">
+          <h3 className="text-xl font-bold text-foreground">
+            {sinteseEstrategica.title}
+          </h3>
+          {sinteseEstrategica.content}
+        </div>
+      ) : (
+        <div className="flex flex-col items-center justify-center p-12 text-center">
+          <LuImage className="w-12 h-12 text-muted-foreground/30 mb-4" />
+          <p className="text-muted-foreground italic">
+            Síntese Estratégica em breve...
+          </p>
+        </div>
+      ),
+    },
+    audio && {
+      id: "audio",
+      label: "Música do Módulo",
+      icon: LuVolume2,
+      content: (
+        <div className="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-xl border border-indigo-500/20">
+          <div className="w-full max-w-md">
+            <MusicPlayerCard {...audio} />
+          </div>
+        </div>
+      ),
+    },
+  ].filter(Boolean) as any[];
+
   return (
     <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
       <ModuleSectionHeader
@@ -3379,54 +3432,7 @@ export function ModuleConsolidation({
         variant={variant}
         description="Fixação rápida de conteúdo antes do desafio final."
       />
-      <LessonTabs
-        variant={variant}
-        tabs={[
-          {
-            id: "video",
-            label: "Vídeo Aula",
-            icon: LuPlay,
-            content: (
-              <div className="w-full flex flex-col items-center py-6">
-                <div className="w-full max-w-3xl">
-                  <VideoModal {...video} />
-                </div>
-              </div>
-            ),
-          },
-          {
-            id: "resumo",
-            label: "Resumo Virtual",
-            icon: LuBookOpen,
-            content: <ModuleSummaryCarouselNew {...resumoVisual} />,
-          },
-          {
-            id: "visual",
-            label: "Macete Visual",
-            icon: LuImage,
-            content: (
-              <div className="text-center p-8 space-y-6">
-                <h3 className="text-xl font-bold text-foreground">
-                  {maceteVisual.title}
-                </h3>
-                {maceteVisual.content}
-              </div>
-            ),
-          },
-          {
-            id: "audio",
-            label: "Música do Módulo",
-            icon: LuVolume2,
-            content: (
-              <div className="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-xl border border-indigo-500/20">
-                <div className="w-full max-w-md">
-                  <MusicPlayerCard {...audio} />
-                </div>
-              </div>
-            ),
-          },
-        ]}
-      />
+      <LessonTabs variant={variant} tabs={tabs} />
     </section>
   );
 }

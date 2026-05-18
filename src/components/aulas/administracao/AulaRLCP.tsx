@@ -7,7 +7,7 @@
  * Status: 10 módulos premium com conteúdo completo
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
   AulaProps,
@@ -50,14 +50,49 @@ const MODULE_DEFS = [
   { id: "modulo-7", label: "Módulo 7", title: "Contratos e Execução" },
   { id: "modulo-8", label: "Módulo 8", title: "Inabilitação e Desempate" },
   { id: "modulo-9", label: "Módulo 9", title: "RLCP na Prática Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Geral" },
 ] as const;
 
 export default function AulaRLCP(props: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_r_l_c_p_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   const quizM1 = QUIZ_RLCP["modulo-1"];
   const quizM2 = QUIZ_RLCP["modulo-2"];
@@ -242,7 +277,7 @@ export default function AulaRLCP(props: AulaProps) {
               },
             ],
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "P.I.L.A.R. - Princípios do RLCP",
             content: (
               <div className="space-y-2 text-left">
@@ -422,7 +457,7 @@ export default function AulaRLCP(props: AulaProps) {
               },
             ],
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "C.T.C. - O Trio das Modalidades",
             content: (
               <div className="space-y-2 text-left">
@@ -599,7 +634,7 @@ export default function AulaRLCP(props: AulaProps) {
               },
             ],
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "A Ordem dos Fatores",
             content: (
               <div className="space-y-2 text-left">
@@ -703,10 +738,10 @@ export default function AulaRLCP(props: AulaProps) {
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "TR vs Edital",
               content: (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                   <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/10">
                     <h6 className="font-bold text-blue-600 mb-1">Termo de Referência (TR)</h6>
                     <p className="text-lg text-muted-foreground">O "O QUE" será comprado. Especificações técnicas, quantidades e prazos.</p>
@@ -810,8 +845,8 @@ export default function AulaRLCP(props: AulaProps) {
                 },
               ],
             }}
-            maceteVisual={{
-              title: "A Regra de Ouro",
+            sinteseEstrategica={{
+              title: "Princípio Fundamental",
               content: (
                 <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 text-center">
                   <p className="text-lg font-medium">
@@ -911,7 +946,7 @@ export default function AulaRLCP(props: AulaProps) {
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Antes vs Depois",
               content: (
                  <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20 text-center">
@@ -1005,7 +1040,7 @@ export default function AulaRLCP(props: AulaProps) {
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Regra do Fiscal",
               content: (
                  <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-center">
@@ -1107,7 +1142,7 @@ export default function AulaRLCP(props: AulaProps) {
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Inabilita vs Desclassifica",
               content: (
                  <div className="p-4 bg-red-500/10 rounded-xl border border-red-500/20 text-center">
@@ -1185,7 +1220,7 @@ export default function AulaRLCP(props: AulaProps) {
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Compliance Always",
               content: (
                  <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-center">
@@ -1213,12 +1248,12 @@ export default function AulaRLCP(props: AulaProps) {
           <ModuleSectionHeader
             index={1}
             variant={variant}
-            title="Simulado Mestre RLCP"
+            title="Simulado Geral RLCP"
             description="Desafio final integrando todos os conceitos do curso."
           />
           <div className="space-y-6 text-lg leading-relaxed text-foreground">
             <p>
-              Agora é a hora da verdade. O Simulado Mestre traz questões no padrão CESGRANRIO que misturam princípios, modalidades e execução contratual. Prepare-se para pensar como um Técnico de Suprimento da Petrobras.
+              Agora é a hora da verdade. O Simulado Geral traz questões no padrão CESGRANRIO que misturam princípios, modalidades e execução contratual. Prepare-se para pensar como um Técnico de Suprimento da Petrobras.
             </p>
           </div>
         </section>
@@ -1255,7 +1290,7 @@ export default function AulaRLCP(props: AulaProps) {
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Você está pronto!",
               content: (
                  <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20 text-center">
@@ -1266,7 +1301,7 @@ export default function AulaRLCP(props: AulaProps) {
           />
 
           <QuizInterativo
-            titulo="QUIZ: Simulado Mestre"
+            titulo="QUIZ: Simulado Geral"
             questoes={toQQ(quizM10)}
             onComplete={(score) => handleModuleComplete('modulo-10', score)}
           />

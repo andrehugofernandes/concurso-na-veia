@@ -44,8 +44,45 @@ export default function AulaMetrologia({
   prevTopico,
   nextTopico,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_manutencao_metrologia_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   useEffect(() => {
     if (isCompleted) {
@@ -100,7 +137,7 @@ export default function AulaMetrologia({
         </RichIntro>
 
         <ModuleSectionHeader 
-            index={1}
+            index="INTRO"
             title="Conceitos Chave" 
             description="Termos que aparecem no seu dia a dia e na prova."
             variant="indigo"
@@ -143,8 +180,8 @@ export default function AulaMetrologia({
                     { title: "Conversão Pol/mm", type: "table", placeholderColor: "indigo" }
                 ]
             }}
-            maceteVisual={{
-                title: "O Pulo do Gato: 25,4",
+            sinteseEstrategica={{
+                title: "Destaque Estratégico: 25,4",
                 content: <p className="text-lg italic">"Vinte e cinco vírgula quatro, no meu bolso eu sempre guardo. De polegada para mm, multiplique sem medo!"</p>
             }}
             audio={{
@@ -227,7 +264,7 @@ export default function AulaMetrologia({
                     { title: "Tipos de Paquímetro", type: "gallery", placeholderColor: "green" }
                 ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "Resolução na Mão",
                 content: <p className="text-lg">Sempre 1 dividido pelo número de casinhas do nônio. 50 divisões? 0,02. 20 divisões? 0,05.</p>
             }}
@@ -304,7 +341,7 @@ export default function AulaMetrologia({
                     { title: "Exemplos de Leitura", type: "infographic", placeholderColor: "purple" }
                 ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "Dica de Ouro: O traço de baixo",
                 content: <p className="text-lg">Viu o traço debaixo da bainha? Some na hora 0,50mm ao valor do tambor!</p>
             }}
@@ -388,7 +425,7 @@ export default function AulaMetrologia({
                     { title: "Folga vs Interferência", type: "diagram", placeholderColor: "orange" }
                 ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "Maiúsculo vs Minúsculo",
                 content: <p className="text-lg">"FURO é GRANDE (Letra Maiúscula), eixo é pequeno (letra minúscula)."</p>
             }}
@@ -467,7 +504,7 @@ export default function AulaMetrologia({
                     { title: "Simbolologia N", type: "table", placeholderColor: "red" }
                 ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "Ra x Rz",
                 content: <p className="text-lg">"Ra é a média, Rz é o pico. Para a Cesgranrio, o Ra é o favorito!"</p>
             }}

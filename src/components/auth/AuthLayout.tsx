@@ -5,6 +5,7 @@ import { HeroSlideshow } from "./HeroSlideshow";
 import { OtpHelpModal } from "./OtpHelpModal";
 import { DynamicIsland } from "@/components/ui/dynamic-island";
 import { Menu } from "lucide-react";
+import PetrobrasLogo from "@/components/PetrobrasLogo";
 
 interface AuthLayoutProps {
   children: ReactNode;
@@ -46,27 +47,7 @@ export default function AuthLayout({
       >
         {/* Logo */}
         <div className="flex items-center gap-3">
-          {/* Logo Icon */}
-          <div
-            className="flex h-14 w-14 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-lg shadow-lg shadow-black/5"
-            style={{ backgroundColor: "var(--primary-hex)" }}
-          >
-            <span className="font-bebas drop-shadow-md shadow-black/5 text-2xl md:text-5xl font-bold text-white">
-              AV
-            </span>
-          </div>
-
-          {/* Logo Text Group */}
-          <div className="flex flex-col justify-center leading-none">
-            <h1 className="font-bebas font-bold text-2xl md:text-4xl tracking-normal leading-[0.9] flex 
-            flex-wrap items-baseline gap-1 md:gap-2">
-              <span style={{ color: "var(--primary-hex)" }}>A VAGA</span>
-              <span className="text-foreground">EH MINHA</span>
-            </h1>
-            <span className="font-sans text-[7px] md:text-[12.7px] font-bold uppercase tracking-[0.2em] text-foreground/40 md:mt-1 -mt-0.5">
-              Simulador de Concursos
-            </span>
-          </div>
+          <PetrobrasLogo className="scale-75 md:scale-90 origin-left" />
         </div>
 
         {/* Right side: DynamicIsland and Help Toggle grouped together */}

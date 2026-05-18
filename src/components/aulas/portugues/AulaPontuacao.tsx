@@ -1,12 +1,12 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
+import { getAllModuleVariants } from "@/lib/moduleColors";
 
 import { useState, useCallback, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import {
   LuCheck,
-  LuCirclePlay as LuPlayCircle,
+  LuCirclePlay,
   LuBrain,
   LuMusic,
   LuZap,
@@ -23,6 +23,13 @@ import {
   LuCircleCheck,
   LuCircleX,
   LuLayers,
+  LuPencil,
+  LuList,
+  LuScan,
+  LuGraduationCap,
+  LuFlag,
+  LuClipboardCheck,
+  LuScroll,
 } from "react-icons/lu";
 import {
   QuizQuestion,
@@ -30,20 +37,17 @@ import {
   AlertBox,
   FlipCard,
   QuizInterativo,
-  TimelineItem,
   ModuleBanner,
   CardCarousel,
-  StickyModuleNav,
   ModuleSectionHeader,
   ContentAccordion,
   LessonTabs,
   ModuleSummaryCarouselNew,
   MusicPlayerCard,
-  ProgressIndicator,
   AulaProps,
-  VideoModal,
   AulaTemplate,
   Comparison,
+  ModuleConsolidation,
 } from "../shared";
 
 import {
@@ -61,7 +65,7 @@ import {
 
 const MODULE_DEFS = [
   { id: "modulo-1", label: "Módulo 1", title: "Visão Geral e Funções" },
-  { id: "modulo-2", label: "Módulo 2", title: "Vírgula: Proibições Fatais" },
+  { id: "modulo-2", label: "Módulo 2", title: "Vírgula: Restrições de Uso" },
   { id: "modulo-3", label: "Módulo 3", title: "Vírgula: Termos Essenciais" },
   { id: "modulo-4", label: "Módulo 4", title: "Vírgula: Aposto e Vocativo" },
   { id: "modulo-5", label: "Módulo 5", title: "Vírgula: Adjuntos Deslocados" },
@@ -90,10 +94,45 @@ export default function AulaPontuacao({
   currentProgress,
   onUpdateProgress,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_portugues_pontuacao_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
   const [showCompletionBadge, setShowCompletionBadge] = useState(false);
 
@@ -181,10 +220,49 @@ export default function AulaPontuacao({
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="As Finalidades da Pontuação"
-          variant={mv[1]}
-        />
+              variant={mv[1]}
+            />
+            <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                <strong className="text-foreground">Contexto:</strong> A pontuação surgiu na
+                Grécia Antiga como ferramenta de oratória — indicava ao leitor onde respirar,
+                onde pausar e onde encerrar o pensamento. Nos textos escritos modernos, herdamos
+                esse sistema e o tornamos uma das convenções gramaticais mais cobradas em
+                concursos de alto nível.
+              </p>
+              <p>
+                <strong className="text-foreground">Explicação:</strong> Os sinais de pontuação
+                têm três funções fundamentais: <em>delimitação sintática</em> (separar termos e
+                orações), <em>hierarquização semântica</em> (indicar o peso relativo de cada
+                informação) e <em>marcação prosódica</em> (representar pausas e entonações da
+                fala). A ausência ou o uso incorreto de um único sinal pode inverter
+                completamente o sentido da frase.
+              </p>
+              <p>
+                <strong className="text-foreground">Demonstração:</strong> Compare as duas
+                versões da mesma frase: <em>"O funcionário que trabalhou bem foi promovido."</em>
+                (relativa restritiva — apenas o que trabalhou bem foi promovido) vs.{" "}
+                <em>"O funcionário, que trabalhou bem, foi promovido."</em> (relativa explicativa
+                — o funcionário em questão, por sinal, trabalhou bem). Um par de vírgulas
+                transforma uma seleção em um elogio.
+              </p>
+              <p>
+                <strong className="text-foreground">Expansão:</strong> Além da vírgula, o
+                sistema de pontuação inclui o ponto-final, o ponto e vírgula, os dois-pontos, o
+                ponto de interrogação, o ponto de exclamação, o travessão, os parênteses, as
+                aspas e as reticências. Cada um tem usos bem delimitados e, em textos técnicos e
+                oficiais, regras ainda mais rígidas que o uso literário.
+              </p>
+              <p>
+                <strong className="text-foreground">Aplicação CESGRANRIO:</strong> A banca
+                costuma apresentar um trecho de texto e perguntar qual alternativa de pontuação
+                mantém o sentido original ou qual violação está presente. Dominar as regras
+                proibitivas (o que nunca se pode fazer) é tão decisivo quanto as permissivas —
+                e este módulo cobre ambas as frentes.
+              </p>
+            </div>
             <CardCarousel
               cards={[
                 {
@@ -223,7 +301,7 @@ export default function AulaPontuacao({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={2}
+              index={1}
               title="Os Sinais e Suas Funções"
           variant={mv[1]}
         />
@@ -334,7 +412,7 @@ export default function AulaPontuacao({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={3}
+              index={2}
               title="Pontuação Normativa × Pontuação Expressiva"
           variant={mv[1]}
         />
@@ -397,18 +475,64 @@ export default function AulaPontuacao({
         </div>
       </TabsContent>
 
-      {/* Módulo 2: Proibições Fatais */}
+      {/* Módulo 2: Restrições de Uso */}
       <TabsContent value="modulo-2" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={2}
-            titulo="Vírgula: Proibições Fatais"
+            titulo="Vírgula: Restrições de Uso"
             descricao="O que NUNCA fazer se você quiser ser aprovado. Erros que zeram questões de gramática."
           variant={mv[2]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={2}
+              index="INTRO"
+              title="As Proibições Absolutas da Vírgula"
+              variant={mv[2]}
+            />
+            <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                <strong className="text-foreground">Contexto:</strong> Entre todas as regras de
+                pontuação, as restrições de uso da vírgula são as mais violadas por candidatos
+                que estudam por intuição. A gramática normativa brasileira é categórica: há
+                estruturas sintáticas que jamais devem ser interrompidas por vírgula, sob
+                nenhuma circunstância.
+              </p>
+              <p>
+                <strong className="text-foreground">Explicação:</strong> A vírgula é proibida
+                entre termos que mantêm vínculo sintático direto e obrigatório. Os três casos
+                clássicos são: (1) entre <em>sujeito e verbo</em>; (2) entre <em>verbo e objeto
+                direto</em>; (3) entre <em>verbo e objeto indireto</em>. Qualquer vírgula que
+                quebre essas ligações cria uma incorreção gramatical grave.
+              </p>
+              <p>
+                <strong className="text-foreground">Demonstração:</strong> Considere a frase
+                correta: <em>"O técnico de segurança aprovou o laudo."</em> Inserir vírgula após
+                "segurança" separa sujeito do verbo — incorreto. Inserir vírgula após "aprovou"
+                separa verbo do objeto direto — igualmente incorreto. Ambas as variantes
+                representam erros fatais em questões de múltipla escolha.
+              </p>
+              <p>
+                <strong className="text-foreground">Expansão:</strong> Existe ainda uma quarta
+                proibição menos óbvia: não se usa vírgula antes de oração subordinada
+                substantiva introduzida pelo conectivo "que" integrante em posição normal (após
+                verbo). Frases como <em>"Espero, que o projeto seja aprovado."</em> são
+                incorretas porque a oração subordinada exerce função de objeto direto do verbo
+                principal.
+              </p>
+              <p>
+                <strong className="text-foreground">Aplicação CESGRANRIO:</strong> A banca
+                apresenta alternativas onde apenas uma está corretamente pontuada. O primeiro
+                passo deve ser sempre eliminar as que separam sujeito do verbo ou verbo do
+                objeto — essas são erros inquestionáveis, o que reduz as opções rapidamente e
+                aumenta a probabilidade de acerto.
+              </p>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
               title="Scanner de Erros Fatais"
           variant={mv[2]}
         />
@@ -424,7 +548,7 @@ export default function AulaPontuacao({
               </AlertBox>
             </div>
             <Comparison
-              title="A Regra de Ouro"
+              title="Princípio Fundamental"
               left={{
                 title: "Pecado Capital (❌)",
                 content: "O gerente de planta, autorizou o embarque.",
@@ -442,7 +566,7 @@ export default function AulaPontuacao({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={3}
+              index={2}
               title="Catálogo Completo das Proibições"
           variant={mv[2]}
         />
@@ -575,7 +699,7 @@ export default function AulaPontuacao({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={4}
+              index={3}
               title="Teste Rápido: Certo ou Errado?"
           variant={mv[2]}
         />
@@ -659,7 +783,51 @@ export default function AulaPontuacao({
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={3}
+              index="INTRO"
+              title="O Efeito Organizacional da Vírgula"
+              variant={mv[3]}
+            />
+            <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                <strong className="text-foreground">Contexto:</strong> Uma vez memorizadas as
+                proibições absolutas, passamos aos usos obrigatórios. A vírgula é essencial para
+                organizar elementos que desempenham a mesma função dentro de uma oração, criando
+                listas coesas e evitando repetições desnecessárias.
+              </p>
+              <p>
+                <strong className="text-foreground">Explicação:</strong> Em termos sintáticos, a
+                vírgula separa termos coordenados assindéticos — ou seja, palavras ou expressões
+                que têm a mesma função sintática e não estão ligadas por conjunções como "e",
+                "ou", "nem". Além disso, ela marca a supressão de um verbo já mencionado no
+                período, figura de linguagem conhecida como zêugma.
+              </p>
+              <p>
+                <strong className="text-foreground">Demonstração:</strong> Na enumeração: <em>"A
+                empresa extrai, refina, distribui e exporta petróleo."</em> (vírgula separando
+                verbos coordenados). Na zêugma: <em>"Nós extraímos em águas profundas; eles, em
+                águas rasas."</em> (vírgula marcando a elipse do verbo "extraem"). Em ambos os
+                casos, a vírgula é obrigatória para a fluidez do texto.
+              </p>
+              <p>
+                <strong className="text-foreground">Expansão:</strong> A polêmica "vírgula antes
+                do e" (serial comma) não é obrigatória em português em enumerações simples, mas
+                torna-se necessária quando a conjunção "e" liga orações com sujeitos diferentes:
+                <em>"O gerente assinou o relatório, e a equipe iniciou a perfuração."</em> Esse
+                uso específico é um divisor de águas entre níveis de candidatos.
+              </p>
+              <p>
+                <strong className="text-foreground">Aplicação CESGRANRIO:</strong> A banca
+                adora explorar a justificativa da pontuação. Perguntas do tipo "a vírgula foi
+                usada para..." frequentemente têm como resposta "separar elementos de mesma
+                função sintática" ou "marcar a elipse do verbo". Compreender a função é tão
+                importante quanto saber usar.
+              </p>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
               title="Listas e Repetições"
           variant={mv[3]}
         />
@@ -707,7 +875,7 @@ export default function AulaPontuacao({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={4}
+              index={2}
               title="Regras SVO e Enumeração"
           variant={mv[3]}
         />
@@ -826,36 +994,85 @@ export default function AulaPontuacao({
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={4}
+              index="INTRO"
+              title="Isolamento de Termos Acessórios"
+              variant={mv[4]}
+            />
+            <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                <strong className="text-foreground">Contexto:</strong> O aposto e o vocativo são termos acessórios ou independentes na oração. Por não fazerem parte da estrutura central (sujeito-verbo-objeto), a gramática exige que eles sejam claramente demarcados.
+              </p>
+              <p>
+                <strong className="text-foreground">Explicação:</strong> O <em>vocativo</em> é um chamamento e deve ser 100% das vezes isolado por vírgulas. O <em>aposto</em> tem várias classificações, mas o explicativo (aquele que detalha um termo anterior) é o que exige isolamento obrigatório por vírgulas, travessões ou parênteses.
+              </p>
+              <p>
+                <strong className="text-foreground">Demonstração:</strong> Vocativo: <em>"Engenheiros, analisem o relatório."</em> (Início). <em>"Analisem, engenheiros, o relatório."</em> (Meio). Aposto: <em>"A Petrobras, maior empresa do Brasil, bateu recorde."</em>
+              </p>
+              <p>
+                <strong className="text-foreground">Expansão:</strong> Lembre-se de que o aposto especificativo (que restringe um nome genérico) não leva vírgula. Exemplo: <em>"A plataforma P-51 iniciou as operações."</em> (P-51 é aposto especificativo de plataforma).
+              </p>
+              <p>
+                <strong className="text-foreground">Aplicação:</strong> Nas questões, a banca pode tentar confundir aposto com predicativo do sujeito ou sujeito. A remoção mental do termo ajuda: se a frase continuar com sentido completo sem ele, provavelmente é um aposto explicativo e precisa de vírgulas.
+              </p>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
               title="Chamamento e Explicação"
           variant={mv[4]}
         />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
-                frente={<div className="font-bold">VOCATIVO</div>}
+                frente={
+                  <div className="text-center space-y-2">
+                    <div className="mx-auto w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center ring-1 ring-blue-500/20 mb-4">
+                      <LuEye className="w-8 h-8 text-blue-500" />
+                    </div>
+                    <p className="font-bold text-xl text-foreground">O Aposto</p>
+                    <p className="text-muted-foreground">O que é e como isolar</p>
+                  </div>
+                }
                 verso={
                   <div className="space-y-3 text-lg">
                     <p>
-                      <strong>Conceito:</strong> Chamamento direto.
+                      <strong>Conceito:</strong> Termo acessório que explica ou detalha
+                      um substantivo anterior.
                     </p>
                     <p>
-                      <strong>Regra:</strong> Sempre isolado por vírgula.
+                      <strong>Regra:</strong> Deve vir isolado por vírgulas, travessões
+                      ou parênteses.
                     </p>
-                    <p>✅ "Senhores, a reunião começou."</p>
+                    <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl">
+                      ✅ "Mário, o engenheiro-chefe, aprovou."
+                    </div>
                   </div>
                 }
               />
               <FlipCard
-                frente={<div className="font-bold">APOSTO</div>}
+                frente={
+                  <div className="text-center space-y-2">
+                    <div className="mx-auto w-16 h-16 bg-amber-500/10 rounded-full flex items-center justify-center ring-1 ring-amber-500/20 mb-4">
+                      <LuMessageCircle className="w-8 h-8 text-amber-500" />
+                    </div>
+                    <p className="font-bold text-xl text-foreground">O Vocativo</p>
+                    <p className="text-muted-foreground">Chamamento e isolamento</p>
+                  </div>
+                }
                 verso={
                   <div className="space-y-3 text-lg">
                     <p>
-                      <strong>Conceito:</strong> Explicação de um termo.
+                      <strong>Conceito:</strong> Termo independente usado para evocar
+                      ou chamar o interlocutor.
                     </p>
                     <p>
-                      <strong>Regra:</strong> Vem entre vírgulas.
+                      <strong>Regra:</strong> É o único termo com isolamento 100%
+                      obrigatório, independentemente da posição.
                     </p>
-                    <p>✅ "Mário, o engenheiro-chefe, aprovou."</p>
+                    <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl">
+                      ✅ "Senhores, a reunião começou."
+                    </div>
                   </div>
                 }
               />
@@ -864,7 +1081,7 @@ export default function AulaPontuacao({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={5}
+              index={2}
               title="Tipos de Aposto e Posição do Vocativo"
           variant={mv[4]}
         />
@@ -992,11 +1209,36 @@ export default function AulaPontuacao({
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={5}
+              index="INTRO"
+              title="O Deslocamento do Adjunto"
+              variant={mv[5]}
+            />
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                <strong className="text-foreground">Contexto:</strong> O adjunto adverbial tem sua posição original no fim da oração. Quando ele é movido para o início ou para o meio da frase, dizemos que ele está <em>deslocado</em>.
+              </p>
+              <p>
+                <strong className="text-foreground">Explicação:</strong> A pontuação desse deslocamento depende do seu <em>tamanho</em>. Adjuntos curtos (até duas palavras) têm vírgula facultativa. Adjuntos longos (três palavras ou mais) têm vírgula obrigatória.
+              </p>
+              <p>
+                <strong className="text-foreground">Demonstração:</strong> "Hoje, o mercado fechou em alta" (Curto - vírgula facultativa). "Na manhã de ontem, o mercado fechou em alta" (Longo - vírgula obrigatória).
+              </p>
+              <p>
+                <strong className="text-foreground">Expansão:</strong> Fique atento a locuções femininas com crase, pois são frequentemente cobradas junto com o deslocamento: "Às vezes, a produção cai."
+              </p>
+              <p>
+                <strong className="text-foreground">Aplicação:</strong> Sempre que iniciar uma frase com indicativo de tempo, lugar ou modo, conte as palavras. Se for extenso, coloque a vírgula.
+              </p>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
               title="A Regra do Comprimento"
-          variant={mv[5]}
-        />
-            <AlertBox tipo="warning" titulo="O Pulo do Gato (Cesgranrio)">
+              variant={mv[5]}
+            />
+            <AlertBox tipo="warning" titulo="Destaque Estratégico (Cesgranrio)">
               A banca avalia se o adjunto é **Longo** (obrigatória) ou **Curto**
               (facultativa).
             </AlertBox>
@@ -1024,10 +1266,10 @@ export default function AulaPontuacao({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={6}
+              index={2}
               title="O Que É um Adjunto Adverbial Deslocado?"
-          variant={mv[5]}
-        />
+              variant={mv[5]}
+            />
             <ContentAccordion
               slides={[
                 {
@@ -1160,10 +1402,35 @@ export default function AulaPontuacao({
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={6}
+              index="INTRO"
+              title="Vírgula entre Orações Coordenadas"
+              variant={mv[6]}
+            />
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                <strong className="text-foreground">Contexto:</strong> Orações coordenadas são independentes sintaticamente. A relação entre elas é estabelecida por conjunções que dão o sentido (adição, oposição, conclusão).
+              </p>
+              <p>
+                <strong className="text-foreground">Explicação:</strong> Como regra geral, orações coordenadas sindéticas (com conjunção) são separadas por vírgula. A grande exceção é a conjunção aditiva "e", que possui regras específicas.
+              </p>
+              <p>
+                <strong className="text-foreground">Demonstração:</strong> "Estudou muito, mas não passou." (Adversativa - vírgula obrigatória). "Estudou muito e passou." (Aditiva com mesmo sujeito - sem vírgula).
+              </p>
+              <p>
+                <strong className="text-foreground">Expansão:</strong> A banca Cesgranrio adora explorar as exceções do "e": quando ele liga sujeitos diferentes ou quando ele tem valor de "mas".
+              </p>
+              <p>
+                <strong className="text-foreground">Aplicação:</strong> Ao ver um "e" na prova, identifique os sujeitos dos dois verbos. Se forem iguais, nada de vírgula. Se forem diferentes, a vírgula é obrigatória.
+              </p>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
               title="A Conjunção 'E'"
-          variant={mv[6]}
-        />
+              variant={mv[6]}
+            />
             <p className="text-muted-foreground text-lg">
               Geralmente o 'E' não pede vírgula, mas em 3 situações ele é seu
               melhor amigo:
@@ -1191,10 +1458,10 @@ export default function AulaPontuacao({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={7}
+              index={2}
               title="Tipos de Orações Coordenadas"
-          variant={mv[6]}
-        />
+              variant={mv[6]}
+            />
             <ContentAccordion
               slides={[
                 {
@@ -1364,10 +1631,35 @@ export default function AulaPontuacao({
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={7}
+              index="INTRO"
+              title="A Pontuação nas Orações Subordinadas"
+              variant={mv[7]}
+            />
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                <strong className="text-foreground">Contexto:</strong> As orações subordinadas dependem de uma principal para ter sentido completo. A pontuação entre elas varia conforme o tipo da subordinada e a sua posição.
+              </p>
+              <p>
+                <strong className="text-foreground">Explicação:</strong> Orações subordinadas adjetivas dividem-se em duas categorias cruciais: as <em>explicativas</em> (isoladas por vírgulas) e as <em>restritivas</em> (sem vírgulas). Já as adverbiais seguem a regra do deslocamento.
+              </p>
+              <p>
+                <strong className="text-foreground">Demonstração:</strong> "O homem, que é mortal, deve aproveitar" (Explicativa - característica de todos). "O homem que trabalha constrói seu futuro" (Restritiva - apenas uma parte).
+              </p>
+              <p>
+                <strong className="text-foreground">Expansão:</strong> A presença ou ausência da vírgula em uma oração adjetiva altera profundamente o sentido do texto, o que é frequentemente cobrado em questões de interpretação.
+              </p>
+              <p>
+                <strong className="text-foreground">Aplicação:</strong> Sempre analise o sentido: se a oração puder ser retirada sem comprometer a essência geral (apenas explica), é explicativa e tem vírgula.
+              </p>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
               title="Explicativa vs Restritiva"
-          variant={mv[7]}
-        />
+              variant={mv[7]}
+            />
             <Comparison
               title="Impacto Semântico"
               left={{
@@ -1389,10 +1681,10 @@ export default function AulaPontuacao({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={8}
+              index={2}
               title="Tipos de Orações Subordinadas e a Vírgula"
-          variant={mv[7]}
-        />
+              variant={mv[7]}
+            />
             <ContentAccordion
               slides={[
                 {
@@ -1526,10 +1818,35 @@ export default function AulaPontuacao({
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={8}
+              index="INTRO"
+              title="As Pausas Maiores"
+              variant={mv[8]}
+            />
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                <strong className="text-foreground">Contexto:</strong> A pontuação funciona como uma hierarquia de pausas. Enquanto a vírgula é a pausa breve, o ponto e vírgula e o ponto final representam pausas maiores.
+              </p>
+              <p>
+                <strong className="text-foreground">Explicação:</strong> O ponto e vírgula é uma pausa intermediária. Ele é utilizado principalmente para organizar orações extensas que já possuem vírgulas internas e para separar itens em enumerações (incisos de uma lei, por exemplo).
+              </p>
+              <p>
+                <strong className="text-foreground">Demonstração:</strong> "Comprou maçãs, bananas e uvas; esqueceu, no entanto, os morangos."
+              </p>
+              <p>
+                <strong className="text-foreground">Expansão:</strong> Nos textos oficiais, tão comuns nas provas da Cesgranrio, o ponto e vírgula é obrigatório na enumeração de artigos e incisos, finalizando sempre com ponto no último item.
+              </p>
+              <p>
+                <strong className="text-foreground">Aplicação:</strong> Sempre que tiver uma lista extensa onde os itens já têm vírgulas, o ponto e vírgula vem para não confundir o leitor sobre onde termina cada elemento da lista.
+              </p>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
               title="O ponto-e-vírgula"
-          variant={mv[8]}
-        />
+              variant={mv[8]}
+            />
             <ContentAccordion
               slides={[
                 {
@@ -1554,10 +1871,10 @@ export default function AulaPontuacao({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={9}
+              index={2}
               title="Ponto Final, Ponto e Vírgula e Dois-Pontos"
-          variant={mv[8]}
-        />
+              variant={mv[8]}
+            />
             <ContentAccordion
               slides={[
                 {
@@ -1640,7 +1957,7 @@ export default function AulaPontuacao({
               ]}
           corIndicador="bg-emerald-600"
         />
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <FlipCard
                 frente={
                   <div className="text-center space-y-2">
@@ -1734,10 +2051,35 @@ export default function AulaPontuacao({
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={9}
+              index="INTRO"
+              title="Marcadores Especiais"
+              variant={mv[9]}
+            />
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                <strong className="text-foreground">Contexto:</strong> Sinais complementares, como dois-pontos, travessões e parênteses, não marcam pausas gramaticais severas, mas introduzem, destacam ou isolam informações no texto.
+              </p>
+              <p>
+                <strong className="text-foreground">Explicação:</strong> Dois-pontos geralmente introduzem citações, explicações ou enumerações. Travessões conferem ênfase máxima a elementos intercalados. Parênteses são usados para comentários marginais ou informações acessórias de menor relevância.
+              </p>
+              <p>
+                <strong className="text-foreground">Demonstração:</strong> "Todos tinham a mesma dúvida: quando seria a prova?" (Dois-pontos introduzindo explicação). "A Petrobras — maior empresa do Brasil — abriu edital." (Travessão dando ênfase).
+              </p>
+              <p>
+                <strong className="text-foreground">Expansão:</strong> A Cesgranrio frequentemente pergunta se a substituição de vírgulas por travessões ou parênteses altera o sentido. Geralmente, não altera o sentido, mas modifica o grau de ênfase.
+              </p>
+              <p>
+                <strong className="text-foreground">Aplicação:</strong> Sempre que precisar destacar fortemente uma intercalação, use travessões duplos. Para "esconder" ou apenas mencionar, use parênteses.
+              </p>
+            </div>
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
               title="Além da Vírgula"
-          variant={mv[9]}
-        />
+              variant={mv[9]}
+            />
             <div className="grid gap-4 md:grid-cols-2">
               <FlipCard
                 frente="Dois-Pontos (:)"
@@ -1752,10 +2094,10 @@ export default function AulaPontuacao({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={10}
+              index={2}
               title="Todos os Sinais Complementares"
-          variant={mv[9]}
-        />
+              variant={mv[9]}
+            />
             <CardCarousel
               cards={[
                 {

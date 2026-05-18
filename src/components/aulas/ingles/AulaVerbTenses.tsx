@@ -15,7 +15,6 @@ import {
   ModuleSectionHeader,
   FlipCard,
   TimelineItem,
-  ComparisonSide,
   Comparison,
 } from "../shared";
 
@@ -56,7 +55,7 @@ const MODULE_DEFS = [
   { id: "modulo-7", label: "Módulo 7", title: "Conditional Sentences" },
   { id: "modulo-8", label: "Módulo 8", title: "Tense Review & Error Correction" },
   { id: "modulo-9", label: "Módulo 9", title: "English in Petrobras Operations" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Geral" },
 ] as const;
 
 export default function AulaVerbTenses({
@@ -75,8 +74,45 @@ export default function AulaVerbTenses({
   prevTopico,
   nextTopico,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_ingles_verb_tenses_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   const [quizM1, setQuizM1] = useState<typeof QUIZ_M1_SIMPLE_PRESENT>([]);
   const [quizM2, setQuizM2] = useState<typeof QUIZ_M2_SIMPLE_PAST>([]);
@@ -149,7 +185,7 @@ export default function AulaVerbTenses({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Fundamentos do Presente em Inglês"
               description="Entender quando usar cada tempo é a chave para textos técnicos precisos"
             />
@@ -179,7 +215,7 @@ export default function AulaVerbTenses({
                 State verbs — verbos que descrevem estados mentais ou condições contínuas — NUNCA usam Present Continuous, mesmo que a lógica
                 pareça sugerir o contrário. Você não pode dizer "I am knowing English" ou "She is understanding the procedure". Estes verbos
                 (know, understand, want, like, believe, own, possess, prefer, seem, appear) descrevem estados, não ações, e portanto nunca
-                recebem a marca "-ing". Esta é a pegadinha número um em testes de gramática. Um falante experiente diria "I know English grammar"
+                recebem a marca "-ing". Esta é a pontos de atenção número um em testes de gramática. Um falante experiente diria "I know English grammar"
                 e não "I am knowing English grammar", mesmo que em português a segunda forma pareça natural. A Cambridge Grammar of English classifica
                 estes como "stative verbs" precisamente porque descrevem uma condição que permanece constante, não uma ação em desenvolvimento.
               </p>
@@ -201,7 +237,7 @@ export default function AulaVerbTenses({
 
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Estrutura e Usos Fundamentais</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <div className="font-semibold text-lg text-blue-700 dark:text-blue-300">Simple Present</div>
                     <div className="text-lg">Estrutura: S + V (he/she/it + V-s)</div>
@@ -386,7 +422,7 @@ export default function AulaVerbTenses({
                   ),
                 },
                 {
-                  titulo: "④ Exceções & Pegadinhas CESGRANRIO",
+                  titulo: "④ Exceções & pontos de atenção CESGRANRIO",
                   icone: <LuTriangleAlert className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-4">
@@ -423,7 +459,7 @@ export default function AulaVerbTenses({
               ]}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente={
                   <div className="space-y-3">
@@ -497,7 +533,7 @@ export default function AulaVerbTenses({
 <ModuleConsolidation
             index={2}
             variant={mv[1]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Simple Present vs Present Continuous — Regra de Ouro",
               content: (
                 <div className="space-y-2 text-lg">
@@ -508,14 +544,12 @@ export default function AulaVerbTenses({
                 </div>
               )
             }}
-            onComplete={() => handleModuleComplete("modulo-1")}
           />
 
                     <QuizInterativo
             questoes={quizM1}
             titulo="QUIZ: Módulo Nº 1"
             numero={3}
-            onComplete={() => handleModuleComplete("modulo-1")}
           />
         </div>
       </TabsContent>
@@ -532,7 +566,7 @@ export default function AulaVerbTenses({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="O Passado em Inglês Técnico: Relatórios, Incidentes e Manutenção"
               description="Os relatórios de incidente, os logs de manutenção e o histórico de equipamentos usam exclusivamente Simple Past"
             />
@@ -578,7 +612,7 @@ export default function AulaVerbTenses({
 
               <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Estrutura e Usos Fundamentais</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <div className="font-semibold text-lg text-emerald-700 dark:text-emerald-300">Simple Past</div>
                     <div className="text-lg">Estrutura: S + V-ed (regular) | S + V (irregular)</div>
@@ -751,7 +785,7 @@ export default function AulaVerbTenses({
                   ),
                 },
                 {
-                  titulo: "④ Exceções & Pegadinhas CESGRANRIO",
+                  titulo: "④ Exceções & pontos de atenção CESGRANRIO",
                   icone: <LuTriangleAlert className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-4">
@@ -788,7 +822,7 @@ export default function AulaVerbTenses({
               ]}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente={
                   <div className="space-y-3">
@@ -862,7 +896,7 @@ export default function AulaVerbTenses({
 <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Simple Past vs Past Continuous — Regra de Ouro",
               content: (
                 <div className="space-y-2 text-lg">
@@ -873,14 +907,12 @@ export default function AulaVerbTenses({
                 </div>
               )
             }}
-            onComplete={() => handleModuleComplete("modulo-2")}
           />
 
                     <QuizInterativo
             questoes={quizM2}
             titulo="QUIZ: Módulo Nº 2"
             numero={3}
-            onComplete={() => handleModuleComplete("modulo-2")}
           />
         </div>
       </TabsContent>
@@ -897,7 +929,7 @@ export default function AulaVerbTenses({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="O Dilema Clássico: Present Perfect vs Simple Past"
               description="A confusão entre estes dois tempos causa 40% dos erros em CESGRANRIO. A distinção é sutil, mas obrigatória."
             />
@@ -1155,7 +1187,7 @@ export default function AulaVerbTenses({
               ]}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <FlipCard
                 frente={
                   <div className="space-y-3">
@@ -1261,7 +1293,7 @@ export default function AulaVerbTenses({
 <ModuleConsolidation
             index={2}
             variant={mv[3]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Present Perfect vs Simple Past — A Distinção Crucial",
               content: (
                 <div className="space-y-2 text-lg">
@@ -1272,14 +1304,12 @@ export default function AulaVerbTenses({
                 </div>
               )
             }}
-            onComplete={() => handleModuleComplete("modulo-3")}
           />
 
                     <QuizInterativo
             questoes={quizM3}
             titulo="QUIZ: Módulo Nº 3"
             numero={3}
-            onComplete={() => handleModuleComplete("modulo-3")}
           />
         </div>
       </TabsContent>
@@ -1296,7 +1326,7 @@ export default function AulaVerbTenses({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Os 3 Futuros: Não São Simples Sinônimos"
               description="Usar o futuro errado muda o significado. CESGRANRIO testa esta distinção sutil obsessivamente."
             />
@@ -1371,14 +1401,19 @@ export default function AulaVerbTenses({
                         system is going to shut down!" (Vejo números críticos AGORA — evidência).
                       </p>
 
-                      <ComparisonSide
-                        lado1={{
-                          label: "WILL (Espontâneo/Genérico)",
+                      <Comparison
+                        title="Comparação Prática: WILL vs GOING TO"
+                        left={{
+                          title: "WILL (Espontâneo/Genérico)",
                           content: "I will solve this problem.\nThe valve will control the pressure.\nWe will complete the project.",
+                          description: "Decisões no momento da fala ou suposições genéricas.",
+                          variant: "info",
                         }}
-                        lado2={{
-                          label: "GOING TO (Planejado/Evidência)",
+                        right={{
+                          title: "GOING TO (Planejado/Evidência)",
                           content: "We are going to renovate the plant.\nThe pressure is going to exceed limits.\nWe are going to implement new safety rules.",
+                          description: "Planos já estabelecidos ou previsões com evidência presente.",
+                          variant: "success",
                         }}
                       />
 
@@ -1402,14 +1437,19 @@ export default function AulaVerbTenses({
                         mês, projeto está 100% finalizado, material já encomendado, equipe já selecionada.
                       </p>
 
-                      <ComparisonSide
-                        lado1={{
-                          label: "GOING TO (Plano, não tão próximo)",
+                      <Comparison
+                        title="Comparação Prática: GOING TO vs PRESENT CONTINUOUS"
+                        left={{
+                          title: "GOING TO (Plano, não tão próximo)",
                           content: "We are going to implement AI in our systems.\nThe company is going to hire 100 engineers.\nWe are going to open offices in Brazil.",
+                          description: "Planos futuros que ainda não foram agendados para os próximos dias.",
+                          variant: "info",
                         }}
-                        lado2={{
-                          label: "PRESENT CONTINUOUS (Agenda definida, muito próximo)",
+                        right={{
+                          title: "PRESENT CONTINUOUS (Agenda definida, muito próximo)",
                           content: "We are implementing a new Safety System next Monday.\nThe board is meeting on Friday at 3 PM.\nWe are traveling to São Paulo next week.",
+                          description: "Eventos confirmados e agendados no calendário para ocorrer brevemente.",
+                          variant: "success",
                         }}
                       />
 
@@ -1531,7 +1571,7 @@ export default function AulaVerbTenses({
               ]}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente={
                   <div className="space-y-3">
@@ -1605,7 +1645,7 @@ export default function AulaVerbTenses({
 <ModuleConsolidation
             index={3}
             variant={mv[4]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Future Forms — Quando Usar Cada Um",
               content: (
                 <div className="space-y-2 text-lg">
@@ -1616,14 +1656,12 @@ export default function AulaVerbTenses({
                 </div>
               )
             }}
-            onComplete={() => handleModuleComplete("modulo-4")}
           />
 
                     <QuizInterativo
             questoes={quizM4}
             titulo="QUIZ: Módulo Nº 4"
             numero={4}
-            onComplete={() => handleModuleComplete("modulo-4")}
           />
         </div>
       </TabsContent>
@@ -1633,10 +1671,9 @@ export default function AulaVerbTenses({
         <TabsContent key={`modulo-${modNum}`} value={`modulo-${modNum}`}>
           <div className="space-y-12 animate-in fade-in duration-500">
             <ModuleBanner
-              modulo={modNum}
+              numero={modNum}
               titulo={MODULE_DEFS[modNum - 1]?.title || `Módulo ${modNum}`}
-              icone={<LuBookOpen className="w-8 h-8" />}
-              corModulo={getModuleVariant(modNum)}
+              variant={mv[modNum]}
               descricao={`Aprofundamento em ${MODULE_DEFS[modNum - 1]?.title || "Verb Tenses"}`}
             />
             <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1665,7 +1702,7 @@ export default function AulaVerbTenses({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Voz Passiva em Contextos Técnicos"
               description="Procedimentos, manuais e relatórios Petrobras preferem a voz passiva porque enfatizam o que FOI FEITO, não quem o fez"
             />
@@ -1741,18 +1778,19 @@ export default function AulaVerbTenses({
               </div>
             </div>
 
-            <ComparisonSide
-              lado1={{
-                label: "ACTIVE VOICE (Ênfase: Quem faz)",
-                content: `The technician inspected the valve.
-The team completed the maintenance.
-The engineer designed the system.`
+            <Comparison
+              title="Comparação: Active Voice vs Passive Voice"
+              left={{
+                title: "ACTIVE VOICE (Ênfase: Quem faz)",
+                content: "The technician inspected the valve.\nThe team completed the maintenance.\nThe engineer designed the system.",
+                description: "O sujeito realiza a ação diretamente.",
+                variant: "info",
               }}
-              lado2={{
-                label: "PASSIVE VOICE (Ênfase: O que foi feito)",
-                content: `The valve was inspected (by the technician).
-The maintenance was completed (by the team).
-The system was designed (by the engineer).`
+              right={{
+                title: "PASSIVE VOICE (Ênfase: O que foi feito)",
+                content: "The valve was inspected (by the technician).\nThe maintenance was completed (by the team).\nThe system was designed (by the engineer).",
+                description: "O sujeito sofre ou recebe a ação.",
+                variant: "success",
               }}
             />
 
@@ -1930,34 +1968,34 @@ The system was designed (by the engineer).`
                   ),
                 },
                 {
-                  titulo: "④ Avisos: Pegadinhas com Passiva",
+                  titulo: "④ Avisos: pontos de atenção com Passiva",
                   icone: <LuTriangleAlert className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox
                         tipo="danger"
-                        titulo="Pegadinha #1: Verbos Intransitivos Nunca São Passivos"
+                        titulo="pontos de atenção #1: Verbos Intransitivos Nunca São Passivos"
                       >
                         <Comparison title="Exemplos" left={{ title: "ERRADO", content: "The accident was happened. The problem was occurred. The solution was arrived.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "The accident happened. The problem occurred. We arrived at a solution.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="warning"
-                        titulo="Pegadinha #2: By-Phrase Opcionais — Não Abuse"
+                        titulo="pontos de atenção #2: By-Phrase Opcionais — Não Abuse"
                       >
                         <Comparison title="Exemplos" left={{ title: "DESNECESSÁRIO", content: "The valve was closed by the operator. The pressure was recorded by the instrument.", description: "", variant: "danger" }} right={{ title: "CONCISO", content: "The valve was closed. The pressure was recorded. (By-phrase omitido porque óbvio)", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
-                        titulo="Pegadinha #3: Get-Passive é Coloquial, Evite em Textos Formais"
+                        titulo="pontos de atenção #3: Get-Passive é Coloquial, Evite em Textos Formais"
                       >
                         <Comparison title="Exemplos" left={{ title: "COLOQUIAL", content: "The equipment got damaged. The personnel got injured. The procedure got changed.", description: "", variant: "danger" }} right={{ title: "FORMAL", content: "The equipment was damaged. The personnel were injured. The procedure was changed.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="warning"
-                        titulo="Pegadinha #4: Passive Perfeita Exige 'Been'"
+                        titulo="pontos de atenção #4: Passive Perfeita Exige 'Been'"
                       >
                         <Comparison title="Exemplos" left={{ title: "ERRADO", content: "The inspection has completed. The system is maintained regularly. The data has recorded.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "The inspection has been completed. The system is being maintained regularly. The data has been recorded.", description: "", variant: "success" }} />
                       </AlertBox>
@@ -1967,7 +2005,7 @@ The system was designed (by the engineer).`
               ]}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente={
                   <div className="space-y-3">
@@ -2039,7 +2077,7 @@ The system was designed (by the engineer).`
 <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Passive Voice — Regra de Ouro",
               content: (
                 <div className="space-y-2 text-lg">
@@ -2050,14 +2088,12 @@ The system was designed (by the engineer).`
                 </div>
               )
             }}
-            onComplete={() => handleModuleComplete("modulo-5")}
           />
 
                     <QuizInterativo
             questoes={quizM5}
             titulo="QUIZ: Módulo Nº 5"
             numero={3}
-            onComplete={() => handleModuleComplete("modulo-5")}
           />
         </div>
       </TabsContent>
@@ -2074,7 +2110,7 @@ The system was designed (by the engineer).`
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Modais: O Espectro de Certeza e Obrigação"
               description="Can, may, must, should, have to, could, might, would — cada um qualifica a força de uma ação de forma única"
             />
@@ -2339,28 +2375,28 @@ The system was designed (by the engineer).`
                     <div className="space-y-4">
                       <AlertBox
                         tipo="danger"
-                        titulo="Pegadinha #1: MUST NOT vs DON'T HAVE TO"
+                        titulo="pontos de atenção #1: MUST NOT vs DON'T HAVE TO"
                       >
                         <Comparison title="Exemplos" left={{ title: "MUST NOT (Proibição)", content: "You MUST NOT enter without equipment. (Proibido, crime não entrar.)", description: "", variant: "danger" }} right={{ title: "DON'T HAVE TO (Opcional)", content: "You don't HAVE TO attend the meeting. (Opcional, você escolhe.)", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
-                        titulo="Pegadinha #2: CAN vs MAY para Permissão"
+                        titulo="pontos de atenção #2: CAN vs MAY para Permissão"
                       >
                         <Comparison title="Exemplos" left={{ title: "COLOQUIAL", content: "Can I start the procedure? Can we enter the restricted area?", description: "", variant: "danger" }} right={{ title: "FORMAL", content: "May I start the procedure? May we enter the restricted area?", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
-                        titulo="Pegadinha #3: COULD Passado vs COULD Condicional"
+                        titulo="pontos de atenção #3: COULD Passado vs COULD Condicional"
                       >
                         <Comparison title="Exemplos" left={{ title: "COULD Passado", content: "I could swim before my injury (capacidade perdida).", description: "", variant: "danger" }} right={{ title: "COULD Condicional", content: "If we had time, we could solve this (se fosse possível, conseguiríamos).", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="warning"
-                        titulo="Pegadinha #4: Modais NUNCA Tomam 'to' (exceto HAVE TO)"
+                        titulo="pontos de atenção #4: Modais NUNCA Tomam 'to' (exceto HAVE TO)"
                       >
                         <Comparison title="Exemplos" left={{ title: "ERRADO", content: "You must to complete. We can to do it. You should to check.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "You must complete. We can do it. You should check. (HAVE TO exigir: You have to complete.)", description: "", variant: "success" }} />
                       </AlertBox>
@@ -2370,7 +2406,7 @@ The system was designed (by the engineer).`
               ]}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente={
                   <div className="space-y-3">
@@ -2473,7 +2509,7 @@ The system was designed (by the engineer).`
 <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Modal Verbs — Força e Função",
               content: (
                 <div className="space-y-2 text-lg">
@@ -2485,14 +2521,12 @@ The system was designed (by the engineer).`
                 </div>
               )
             }}
-            onComplete={() => handleModuleComplete("modulo-6")}
           />
 
                     <QuizInterativo
             questoes={quizM6}
             titulo="QUIZ: Módulo Nº 6"
             numero={3}
-            onComplete={() => handleModuleComplete("modulo-6")}
           />
         </div>
       </TabsContent>
@@ -2509,7 +2543,7 @@ The system was designed (by the engineer).`
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Condicionais: A Lógica de SE... ENTÃO"
               description="Type 0, 1, 2 progridem de lei universal até hipótese improvável — cada uma com estrutura e contexto únicos"
             />
@@ -2586,26 +2620,19 @@ The system was designed (by the engineer).`
 
             {/* Timeline replaced */}
 
-            <ComparisonSide
-              lado1={{
-                label: "TYPE 1: Possível Realmente",
-                content: `If we increase the pressure,
-the flow will increase.
-(Possível, natural, esperado)
-
-If it rains tomorrow,
-the project will be delayed.
-(Cenário realista)`
+            <Comparison
+              title="Comparação: Conditional Type 1 vs Type 2"
+              left={{
+                title: "TYPE 1: Possível Realmente",
+                content: "If we increase the pressure,\nthe flow will increase.\n(Possível, natural, esperado)\n\nIf it rains tomorrow,\nthe project will be delayed.\n(Cenário realista)",
+                description: "Cenários reais, possíveis ou prováveis de acontecer.",
+                variant: "info",
               }}
-              lado2={{
-                label: "TYPE 2: Hipotético/Improvável",
-                content: `If we were to increase the pressure dramatically,
-the system would fail.
-(Contrário ao normal, hipotético)
-
-If the manager were here now,
-he would authorize the overtime.
-(Ele não está aqui, mas estou imaginando)`
+              right={{
+                title: "TYPE 2: Hipotético/Improvável",
+                content: "If we were to increase the pressure dramatically,\nthe system would fail.\n(Contrário ao normal, hipotético)\n\nIf the manager were here now,\nhe would authorize the overtime.\n(Ele não está aqui, mas estou imaginando)",
+                description: "Cenários hipotéticos, imaginários ou muito improváveis.",
+                variant: "success",
               }}
             />
 
@@ -2752,34 +2779,34 @@ he would authorize the overtime.
                   ),
                 },
                 {
-                  titulo: "④ Avisos: Pegadinhas com Condicionais",
+                  titulo: "④ Avisos: pontos de atenção com Condicionais",
                   icone: <LuTriangleAlert className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox
                         tipo="danger"
-                        titulo="Pegadinha #1: Type 0 NUNCA Usa 'will'"
+                        titulo="pontos de atenção #1: Type 0 NUNCA Usa 'will'"
                       >
                         <Comparison title="Exemplos" left={{ title: "ERRADO", content: "If you heat water, it will boil. If you press the button, the alarm will sound.", description: "", variant: "danger" }} right={{ title: "CORRETO (Type 0)", content: "If you heat water, it boils. If you press the button, the alarm sounds.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
-                        titulo="Pegadinha #2: Type 2 'be' Vira 'were' para TODOS"
+                        titulo="pontos de atenção #2: Type 2 'be' Vira 'were' para TODOS"
                       >
                         <Comparison title="Exemplos" left={{ title: "ERRADO", content: "If I was you. If he was president. If she was taller.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "If I were you. If he were president. If she were taller.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="danger"
-                        titulo="Pegadinha #3: Type 1 SEMPRE Simple Present na Condicional"
+                        titulo="pontos de atenção #3: Type 1 SEMPRE Simple Present na Condicional"
                       >
                         <Comparison title="Exemplos" left={{ title: "ERRADO", content: "If we will follow the procedure, we will succeed. If you will complete the task, you will be promoted.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "If we follow the procedure, we will succeed. If you complete the task, you will be promoted.", description: "", variant: "success" }} />
                       </AlertBox>
 
                       <AlertBox
                         tipo="warning"
-                        titulo="Pegadinha #4: UNLESS Nunca Recebe Negação (Dupla Negação)"
+                        titulo="pontos de atenção #4: UNLESS Nunca Recebe Negação (Dupla Negação)"
                       >
                         <Comparison title="Exemplos" left={{ title: "ERRADO", content: "Unless you don't complete the work, you will be fired. Unless he doesn't come, we will start.", description: "", variant: "danger" }} right={{ title: "CORRETO", content: "Unless you complete the work, you will be fired. Unless he comes, we will start.", description: "", variant: "success" }} />
                       </AlertBox>
@@ -2796,7 +2823,7 @@ he would authorize the overtime.
               ]}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente={
                   <div className="space-y-3">
@@ -2868,7 +2895,7 @@ he would authorize the overtime.
 <ModuleConsolidation
             index={2}
             variant={mv[7]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Conditionals — Os 3 Tipos e Probabilidade",
               content: (
                 <div className="space-y-2 text-lg">
@@ -2880,14 +2907,12 @@ he would authorize the overtime.
                 </div>
               )
             }}
-            onComplete={() => handleModuleComplete("modulo-7")}
           />
 
                     <QuizInterativo
             questoes={quizM7}
             titulo="QUIZ: Módulo Nº 7"
             numero={3}
-            onComplete={() => handleModuleComplete("modulo-7")}
           />
         </div>
       </TabsContent>
@@ -2904,7 +2929,7 @@ he would authorize the overtime.
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Estratégia CESGRANRIO: Identificar Erros de Tempos Verbais"
               description="CESGRANRIO testa compreensão de tempos verbais através de identificação de erros e escolha de correção"
             />
@@ -3203,7 +3228,7 @@ he would authorize the overtime.
               ]}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente={
                   <div className="space-y-3">
@@ -3289,7 +3314,7 @@ he would authorize the overtime.
 <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Tense Review — Âncoras de Tempo",
               content: (
                 <div className="space-y-2 text-lg">
@@ -3301,14 +3326,12 @@ he would authorize the overtime.
                 </div>
               )
             }}
-            onComplete={() => handleModuleComplete("modulo-8")}
           />
 
                     <QuizInterativo
             questoes={quizM8}
             titulo="QUIZ: Módulo Nº 8"
             numero={3}
-            onComplete={() => handleModuleComplete("modulo-8")}
           />
         </div>
       </TabsContent>
@@ -3325,7 +3348,7 @@ he would authorize the overtime.
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Documentos Técnicos Petrobras: Um Tempo para Cada Propósito"
               description="Cada tipo de documento corporativo Petrobras tem um 'registro verbal preferido'"
             />
@@ -3515,16 +3538,19 @@ he would authorize the overtime.
                         </p>
                       </div>
 
-                      <ComparisonSide
-                        lado1={{
-                          label: "Type 2 (Improvável Agora)",
-                          content:
-                            "If the pressure relief valve were to fail, the system would shut down automatically. (Improvável, mas possível)",
+                      <Comparison
+                        title="Comparação: Conditional Type 2 vs Type 3"
+                        left={{
+                          title: "Type 2 (Improvável Agora)",
+                          content: "If the pressure relief valve were to fail, the system would shut down automatically. (Improvável, mas possível)",
+                          description: "Situações hipotéticas ou irrealistas no presente/futuro.",
+                          variant: "info",
                         }}
-                        lado2={{
-                          label: "Type 3 (Arrependimento Passado)",
-                          content:
-                            "Had we installed redundant safety systems, the accident would have been prevented. (Já passou, mas lamentável)",
+                        right={{
+                          title: "Type 3 (Arrependimento Passado)",
+                          content: "Had we installed redundant safety systems, the accident would have been prevented. (Já passou, mas lamentável)",
+                          description: "Situações irrealistas ou arrependimentos de coisas do passado.",
+                          variant: "success",
                         }}
                       />
                     </div>
@@ -3533,7 +3559,7 @@ he would authorize the overtime.
               ]}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
                 frente={
                   <div className="space-y-3">
@@ -3619,7 +3645,7 @@ he would authorize the overtime.
 <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "English in Petrobras — Tempo por Documento",
               content: (
                 <div className="space-y-2 text-lg">
@@ -3631,31 +3657,29 @@ he would authorize the overtime.
                 </div>
               )
             }}
-            onComplete={() => handleModuleComplete("modulo-9")}
           />
 
                     <QuizInterativo
             questoes={quizM9}
             titulo="QUIZ: Módulo Nº 9"
             numero={3}
-            onComplete={() => handleModuleComplete("modulo-9")}
           />
         </div>
       </TabsContent>
 
-      {/* MODULE 10 — SIMULADO MESTRE (FINAL) */}
+      {/* MODULE 10 — Simulado Geral (FINAL) */}
       <TabsContent value="modulo-10">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={10}
-            titulo="Simulado Mestre — Consolidação Final"
+            titulo="Simulado Geral — Consolidação Final"
             variant={mv[10]}
             descricao="Você dominaria os 7 tempos verbais: teste sua expertise com 8 questões de simulado CESGRANRIO"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Os 7 Tempos Verbais — Guia de Referência Mestre"
               description="Resumo completo: estrutura, quando usar, exemplos, marcadores temporais"
             />
@@ -3784,7 +3808,7 @@ he would authorize the overtime.
                   ),
                 },
                 {
-                  titulo: "② Pegadinhas Finais: O Que CESGRANRIO Ama Testar",
+                  titulo: "② pontos de atenção Finais: O Que CESGRANRIO Ama Testar",
                   icone: <LuTriangleAlert className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-4">
@@ -3897,8 +3921,8 @@ he would authorize the overtime.
 <ModuleConsolidation
             index={2}
             variant={mv[10]}
-            maceteVisual={{
-              title: "Simulado Mestre — Os 5 Passos CESGRANRIO",
+            sinteseEstrategica={{
+              title: "Simulado Geral — Os 5 Passos CESGRANRIO",
               content: (
                 <div className="space-y-2 text-lg">
                   <p><strong>1.</strong> Leia a frase completa antes de responder.</p>
@@ -3910,14 +3934,12 @@ he would authorize the overtime.
                 </div>
               )
             }}
-            onComplete={() => handleModuleComplete("modulo-10")}
           />
 
                     <QuizInterativo
             questoes={quizFinal}
             titulo="QUIZ: Módulo Nº 10"
             numero={3}
-            onComplete={() => handleModuleComplete("modulo-10")}
           />
         </div>
       </TabsContent>

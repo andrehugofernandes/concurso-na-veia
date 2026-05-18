@@ -73,8 +73,44 @@ export default function AulaMecanicaFluidos({
   prevTopico,
   nextTopico
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("introducao");
-  const [completedModules, setCompletedModules] = useState<string[]>([]);
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_operacao_mecanica_fluidos_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "introducao";
+    }
+    return "introducao";
+  });
+
+  const [completedModules, setCompletedModules] = useState<string[]>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          return [];
+        }
+      }
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(completedModules)
+      );
+    }
+  }, [completedModules]);
   const [showConfetti, setShowConfetti] = useState(false);
 
   // Módulos da Aula
@@ -311,7 +347,7 @@ export default function AulaMecanicaFluidos({
                            ]}
                         />
 
-                        <AlertBox tipo="warning" titulo="Pegadinha Clássica">
+                        <AlertBox tipo="warning" titulo="pontos de atenção Clássica">
                            <p>Cuidado! Em líquidos, o aumento da temperatura afasta as moléculas e diminui a viscosidade. Em gases, aumenta a agitação e colisões, <strong>aumentando</strong> a viscosidade. Isso cai em 80% das provas de Especialista!</p>
                         </AlertBox>
                      </div>
@@ -339,8 +375,8 @@ export default function AulaMecanicaFluidos({
                     { title: "Gráfico μ vs T", type: "Gráfico", placeholderColor: "bg-cyan-500/20" }
                   ]
                 }}
-                maceteVisual={{
-                  title: "O Pulo do Gato",
+                sinteseEstrategica={{
+                  title: "Destaque Estratégico",
                   content: (
                     <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                       <p className="font-bold text-blue-600">Viscosidade & T</p>
@@ -440,7 +476,7 @@ export default function AulaMecanicaFluidos({
                     { title: "Distrabuição de P", type: "Gráfico", placeholderColor: "bg-blue-500/20" }
                   ]
                 }}
-                maceteVisual={{
+                sinteseEstrategica={{
                   title: "Cálculo Rápido P",
                   content: (
                     <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
@@ -626,7 +662,7 @@ export default function AulaMecanicaFluidos({
                        <h3 className="text-4xl font-black text-blue-600 tracking-tight">FLUIDO DOMINADO!</h3>
                        <p className="text-muted-foreground italic">"O segredo da operação não é impedir o fluxo, mas saber para onde ele vai pelo caminho de menor resistência."</p>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                        <Link href="/dashboard" className="w-full">
                          <Button variant="outline" size="lg" className="w-full rounded-2xl h-16 text-lg font-bold">Voltar ao Porto Seguro</Button>
                        </Link>

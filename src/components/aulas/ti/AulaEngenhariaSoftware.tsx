@@ -39,8 +39,45 @@ export default function AulaEngenhariaSoftware({
   materiaNome, materiaCor, materiaId, prevTopico, nextTopico
 }: AulaProps) {
 
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_ti_engenharia_software_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   // Definir os módulos da aula (Padrão Premium: 10 módulos)
   const MODULE_DEFS = [
@@ -138,7 +175,7 @@ export default function AulaEngenhariaSoftware({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Introdução aos Processos de Software"
               variant={mv[1]}
             />
@@ -249,7 +286,7 @@ export default function AulaEngenhariaSoftware({
                         />
                       </div>
 
-                      <AlertBox tipo="warning" titulo="⚠️ Pegadinha CESGRANRIO">
+                      <AlertBox tipo="warning" titulo="⚠️ pontos de atenção CESGRANRIO">
                         A banca costuma trocar a descrição do **Nível 2** pelo **Nível 3**. Lembre-se: Nível 2 é **foco no Projeto**; Nível 3 é **foco na Organização (Empresa inteira)**.
                       </AlertBox>
 
@@ -375,7 +412,7 @@ export default function AulaEngenhariaSoftware({
                       </div>
 
                       <div className="grid grid-cols-1 gap-4">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <ComparisonSide 
                             titulo="Nível G (Parcialmente Gerenciado)" 
                             tipo="correct"
@@ -430,7 +467,7 @@ export default function AulaEngenhariaSoftware({
                         <p>A norma **ISO/IEC 12207** define uma terminologia comum para o ciclo de vida. Ela divide os processos em três grandes categorias:</p>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="p-4 border border-border rounded-xl hover:shadow-md transition-shadow">
                           <h6 className="font-bold text-blue-600 mb-2">1. Primários</h6>
                           <ul className="text-lg space-y-1 text-muted-foreground list-disc pl-4">
@@ -504,7 +541,7 @@ export default function AulaEngenhariaSoftware({
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "A Frase para os Níveis do CMMI",
               content: (
                 <div className="space-y-4">
@@ -545,7 +582,7 @@ export default function AulaEngenhariaSoftware({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="A Evolução dos Modelos de Ciclo de Vida"
               variant={mv[2]}
             />
@@ -610,7 +647,7 @@ export default function AulaEngenhariaSoftware({
                         <p>O **Modelo Espiral** é fundamental para sistemas críticos (como os da Petrobras). Ele não foca apenas em fazer código, mas em **analisar riscos** continuamente.</p>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+                      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
                         <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl border-t-4 border-blue-500">
                           <span className="text-lg font-bold text-blue-600 uppercase">Q1</span>
                           <p className="text-lg font-bold mt-1">Planejamento</p>
@@ -693,7 +730,7 @@ export default function AulaEngenhariaSoftware({
                         </div>
                       </div>
 
-                      <AlertBox tipo="warning" titulo="⚠️ Pegadinha de Prova">
+                      <AlertBox tipo="warning" titulo="⚠️ pontos de atenção de Prova">
                         O RUP é **Iterativo**, mas suas fases (Concepção, Elaboração...) parecem sequenciais. Lembre-se que cada fase pode ter várias iterações internas!
                       </AlertBox>
                     </div>
@@ -735,7 +772,7 @@ export default function AulaEngenhariaSoftware({
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Fases do RUP: C.E.C.T.",
               content: (
                 <div className="p-6 bg-blue-600 text-white rounded-2xl shadow-xl text-center">
@@ -775,7 +812,7 @@ export default function AulaEngenhariaSoftware({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Tipos de Requisitos e Elicitação"
               variant={mv[3]}
             />
@@ -838,7 +875,7 @@ export default function AulaEngenhariaSoftware({
                         </div>
                       </div>
 
-                      <AlertBox tipo="danger" titulo="⚠️ Pegadinha da CESGRANRIO: Requisitos de Domínio">
+                      <AlertBox tipo="danger" titulo="⚠️ pontos de atenção da CESGRANRIO: Requisitos de Domínio">
                         Às vezes a banca cita requisitos que vêm da área de aplicação (ex: geologia, mecânica) e não do usuário final. Estes são os **Requisitos de Domínio**. Eles podem ser funcionais ou não-funcionais, mas sua origem é o **conhecimento técnico do setor**.
                       </AlertBox>
 
@@ -1011,7 +1048,7 @@ export default function AulaEngenhariaSoftware({
                           </div>
                        </div>
 
-                       <AlertBox tipo="warning" titulo="⚠️ Pegadinha CESGRANRIO: Rastreabilidade">
+                       <AlertBox tipo="warning" titulo="⚠️ pontos de atenção CESGRANRIO: Rastreabilidade">
                           A **Rastreabilidade** pode ser:
                           - **Forward (Avançante):** Do requisito para o código e testes.
                           - **Backward (Retroativa):** Do código/teste voltando para o requisito original.
@@ -1051,7 +1088,7 @@ export default function AulaEngenhariaSoftware({
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "MoSCoW na Mente",
               content: (
                 <div className="space-y-4">
@@ -1107,7 +1144,7 @@ export default function AulaEngenhariaSoftware({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Modelagem com UML 2.0"
               variant={mv[4]}
             />
@@ -1326,7 +1363,7 @@ export default function AulaEngenhariaSoftware({
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "O Segredo dos Diagramas",
               content: (
                 <div className="grid grid-cols-2 gap-4">
@@ -1371,7 +1408,7 @@ export default function AulaEngenhariaSoftware({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Scrum e Kanban"
               variant={mv[5]}
             />
@@ -1571,7 +1608,7 @@ export default function AulaEngenhariaSoftware({
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "As Três Maneiras do DevOps",
               content: (
                 <div className="space-y-4">
@@ -1622,7 +1659,7 @@ export default function AulaEngenhariaSoftware({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="O Modelo Relacional e Normalização"
               variant={mv[6]}
             />
@@ -1665,7 +1702,7 @@ export default function AulaEngenhariaSoftware({
                          </div>
                       </div>
 
-                      <AlertBox tipo="warning" titulo="⚠️ Pegadinha CESGRANRIO: BCNF">
+                      <AlertBox tipo="warning" titulo="⚠️ pontos de atenção CESGRANRIO: BCNF">
                         A Forma Normal de **Boyce-Codd (BCNF)** é uma versão mais rigorosa da 3FN. Ela trata de tabelas com chaves candidatas compostas que se sobrepõem. Se a prova perguntar qual FN é "mais forte" que a 3FN, a resposta costuma ser BCNF.
                       </AlertBox>
                     </div>
@@ -1802,7 +1839,7 @@ export default function AulaEngenhariaSoftware({
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "ACID de Inverno",
               content: (
                 <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
@@ -1840,7 +1877,7 @@ export default function AulaEngenhariaSoftware({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="O Teorema CAP e Tipos de NoSQL"
               variant={mv[7]}
             />
@@ -1979,7 +2016,7 @@ export default function AulaEngenhariaSoftware({
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "BASE vs ACID",
               content: (
                 <div className="p-4 bg-emerald-500/10 rounded-xl">
@@ -2016,7 +2053,7 @@ export default function AulaEngenhariaSoftware({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Monólitos vs Microserviços"
               variant={mv[8]}
             />
@@ -2150,8 +2187,8 @@ export default function AulaEngenhariaSoftware({
                 },
               ],
             }}
-            maceteVisual={{
-              title: "O Pulo do Gato: Circuit Breaker",
+            sinteseEstrategica={{
+              title: "Destaque Estratégico: Circuit Breaker",
               content: (
                 <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20 text-center">
                    <p className="text-lg">"Se o serviço vizinho está pegando fogo, **FECHE A PORTA** (Open Circuit) para não queimar sua casa também."</p>
@@ -2188,7 +2225,7 @@ export default function AulaEngenhariaSoftware({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Cultura de Segurança e OWASP Top 10"
               variant={mv[9]}
             />
@@ -2224,7 +2261,7 @@ export default function AulaEngenhariaSoftware({
 
                       <div className="p-6 bg-slate-900 text-white rounded-3xl">
                          <h6 className="font-bold text-red-400 mb-4 flex items-center gap-2">⚠️ OWASP Top 10 (Tendências Atuais)</h6>
-                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[10px]">
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-[10px]">
                             <div className="p-3 bg-slate-800 rounded-lg flex items-center gap-3">
                                <span className="bg-red-500 w-2 h-2 rounded-full"></span>
                                <span>**A01:2021-Broken Access Control:** Falha na autorização de acesso.</span>
@@ -2323,7 +2360,7 @@ export default function AulaEngenhariaSoftware({
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Nunca Confie, Sempre Verifique",
               content: (
                 <div className="p-4 bg-red-500/10 rounded-xl border border-red-500/20 text-center">
@@ -2360,7 +2397,7 @@ export default function AulaEngenhariaSoftware({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="A Pirâmide de Testes e Estratégias"
               variant={mv[10]}
             />
@@ -2452,7 +2489,7 @@ export default function AulaEngenhariaSoftware({
                              </div>
                            ))}
                         </div>
-                        <AlertBox tipo="warning" titulo="⚠️ Pegadinha CESGRANRIO: Verificação vs Validação">
+                        <AlertBox tipo="warning" titulo="⚠️ pontos de atenção CESGRANRIO: Verificação vs Validação">
                            Como já vimos no Módulo 3, a **Verificação** foca no processo ("Estamos fazendo certo?"), enquanto a **Validação** foca no produto ("Estamos fazendo a coisa certa para o cliente?"). No Módulo 10, associamos Verificação a Testes Estáticos (Revisões) e Validação a Testes Dinâmicos (Execução do Código).
                         </AlertBox>
                      </div>
@@ -2494,7 +2531,7 @@ export default function AulaEngenhariaSoftware({
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "As Sete Cores dos Testes",
               content: (
                 <div className="p-4 bg-green-500/10 rounded-xl border border-green-500/20">

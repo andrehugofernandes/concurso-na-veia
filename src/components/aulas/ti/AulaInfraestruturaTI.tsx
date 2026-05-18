@@ -37,8 +37,45 @@ export default function AulaInfraestruturaTI({
   materiaNome, materiaCor, materiaId, prevTopico, nextTopico
 }: AulaProps) {
 
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_ti_infraestrutura_t_i_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   // Definir os módulos da aula (Padrão Premium: 10 módulos)
   const MODULE_DEFS = [
@@ -129,7 +166,7 @@ export default function AulaInfraestruturaTI({
 
         <div className="space-y-12">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Arquitetura TCP/IP vs OSI"
             description="Entenda como os dados viajam entre as camadas e como a Cesgranrio cobra as diferenças."
             variant={mv[1]}
@@ -216,7 +253,7 @@ export default function AulaInfraestruturaTI({
                     { title: "Arquitetura TCP/IP", type: "Diagrama", placeholderColor: "bg-blue-500" }
                 ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "Mneumônico de Camadas",
                 content: "Memorize: Roteador = Camada 3 (Rede). Switch = Camada 2 (Enlace). Hub = Camada 1 (Física)."
             }}
@@ -242,7 +279,7 @@ export default function AulaInfraestruturaTI({
 
         <div className="space-y-12">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="O Coração da Rede Local"
             description="Como isolar tráfego e evitar loops infinitos em sua infraestrutura."
             variant={mv[2]}
@@ -315,7 +352,7 @@ export default function AulaInfraestruturaTI({
                 materia: materiaNome,
                 images: []
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "L2 vs L3",
                 content: "Switching trata da rede local (MAC). Roteamento trata da conexão entre redes (IP)."
             }}
@@ -337,7 +374,7 @@ export default function AulaInfraestruturaTI({
 
         <div className="space-y-12">
           <ModuleSectionHeader 
-            index={1}
+            index="INTRO"
             title="Estratégia de Defesa em Profundidade"
             description="A segurança de redes não é um produto único, mas um conjunto de camadas."
             variant={mv[3]}
@@ -401,7 +438,7 @@ export default function AulaInfraestruturaTI({
               variant={mv[3]}
               video={{ videoId: "", title: "", duration: "" }}
               resumoVisual={{ moduloNome: "Módulo 3", tituloAula: titulo, materia: materiaNome, images: [] }}
-              maceteVisual={{
+              sinteseEstrategica={{
                   title: "IDS vs IPS",
                   content: "IDS detecta, IPS bloqueia ataques em tempo real."
               }}
@@ -423,7 +460,7 @@ export default function AulaInfraestruturaTI({
 
         <div className="space-y-12">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="O Domínio no Active Directory"
             description="Como os objetos são organizados e gerenciados hierarquicamente."
             variant={mv[4]}
@@ -467,7 +504,7 @@ export default function AulaInfraestruturaTI({
             variant={mv[4]}
             video={{ videoId: "", title: "", duration: "" }}
             resumoVisual={{ moduloNome: "Módulo 4", tituloAula: titulo, materia: materiaNome, images: [] }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "AD = Centralização",
                 content: "Múltiplas máquinas, um gerenciamento centralizado via GPOs."
             }}
@@ -489,7 +526,7 @@ export default function AulaInfraestruturaTI({
 
         <div className="space-y-12">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Terminal e Permissões"
             description="Dominar o terminal Linux é obrigatório para ambientes críticos."
             variant={mv[5]}
@@ -543,7 +580,7 @@ export default function AulaInfraestruturaTI({
                 variant={mv[5]}
                 video={{ videoId: "", title: "", duration: "" }}
                 resumoVisual={{ moduloNome: "Módulo 5", tituloAula: titulo, materia: materiaNome, images: [] }}
-                maceteVisual={{
+                sinteseEstrategica={{
                     title: "Tudo é arquivo",
                     content: "No Linux, quase tudo pode ser configurado via arquivos em /etc."
                 }}
@@ -565,7 +602,7 @@ export default function AulaInfraestruturaTI({
 
         <div className="space-y-12">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Hipervisores e Abstração"
             description="Como rodar múltiplos sistemas no mesmo hardware com segurança e performance."
             variant={mv[6]}
@@ -622,7 +659,7 @@ export default function AulaInfraestruturaTI({
 
         <div className="space-y-12">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="VM vs Contêiner"
             description="Entenda a diferença fundamental de arquitetura entre máquinas virtuais e Docker."
             variant={mv[7]}
@@ -653,7 +690,7 @@ export default function AulaInfraestruturaTI({
                 {
                     titulo: "Conceitos K8s",
                     conteudo: (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
                             <div className="p-3 bg-slate-800 rounded border border-blue-500/30"><strong>Pod:</strong> Menor unidade de deploy.</div>
                             <div className="p-3 bg-slate-800 rounded border border-blue-500/30"><strong>Node:</strong> Máquina que roda os pods.</div>
                         </div>
@@ -686,7 +723,7 @@ export default function AulaInfraestruturaTI({
 
         <div className="space-y-12">
           <ModuleSectionHeader
-             index={1}
+             index="INTRO"
              title="Padrões de Serviço Cloud"
              description="A famosa pirâmide da nuvem cobrada exaustivamente em provas."
              variant={mv[8]}
@@ -732,7 +769,7 @@ export default function AulaInfraestruturaTI({
 
         <div className="space-y-12">
            <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Cultura de Monitoramento e ITIL"
               description="Boas práticas globais para gestão de serviços de tecnologia."
               variant={mv[9]}
@@ -775,7 +812,7 @@ export default function AulaInfraestruturaTI({
 
         <div className="space-y-12">
            <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="RPO vs RTO"
               description="As métricas de tempo e perda de dados permitidas em um desastre."
               variant={mv[10]}
@@ -806,7 +843,7 @@ export default function AulaInfraestruturaTI({
             variant={mv[10]}
             video={{ videoId: "", title: "", duration: "" }}
             resumoVisual={{ moduloNome: "Módulo 10", tituloAula: titulo, materia: materiaNome, images: [] }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Regra 3-2-1",
               content: "3 cópias, 2 mídias diferentes, 1 off-site (nuvem/outra sede)."
             }}

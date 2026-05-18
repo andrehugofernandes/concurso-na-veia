@@ -47,11 +47,11 @@ import {
   LuCrown,
 } from "react-icons/lu";
 import { QUIZ_LEI_13303 } from "@/data/quizzes/lei-13303-quizzes";
-const BANNER_VARIANTS: Record<number, "indigo" | "emerald" | "violet" | "amber" | "rose" | "cyan"> = {
-  1: "indigo", 2: "emerald", 3: "violet", 4: "amber", 5: "rose",
-  6: "cyan", 7: "indigo", 8: "emerald", 9: "violet", 10: "amber"
+const BANNER_VARIANTS: Record<number, "cyan" | "emerald" | "emerald" | "amber" | "rose" | "cyan"> = {
+  1: "cyan", 2: "emerald", 3: "emerald", 4: "amber", 5: "rose",
+  6: "cyan", 7: "cyan", 8: "emerald", 9: "emerald", 10: "amber"
 };
-const getBannerVariant = (n: number) => BANNER_VARIANTS[n] || "indigo";
+const getBannerVariant = (n: number) => BANNER_VARIANTS[n] || "cyan";
 
 const MODULE_DEFS = [
   {
@@ -79,12 +79,49 @@ const MODULE_DEFS = [
   },
   { id: "modulo-8", label: "Módulo 8", title: "Conflito de Interesses" },
   { id: "modulo-9", label: "Módulo 9", title: "Lei 13.303 na Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Geral" },
 ];
 
 export default function AulaLei13303(props: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_lei13303_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   const getQuiz = (mod: string) => QUIZ_LEI_13303[mod] || [];
 
@@ -118,6 +155,7 @@ export default function AulaLei13303(props: AulaProps) {
       onComplete={() => props.onUpdateProgress?.(100)}
     >
       {/* ==================== MÓDULO 1 ==================== */}
+      {activeTab === "modulo-1" && (
       <TabsContent value="modulo-1" className="space-y-12 mt-0 outline-none">
         <ModuleBanner
           numero={1}
@@ -128,10 +166,10 @@ export default function AulaLei13303(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Fundamentos da Lei 13.303"
             description="A lei que rege as empresas públicas e de economia mista no Brasil."
-            variant="indigo"
+            variant="cyan"
           />
 
           <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
@@ -163,8 +201,8 @@ export default function AulaLei13303(props: AulaProps) {
               à Informação, Lei Sarbanes-Oxley). Vamos começar pelo porquê antes de nos aprofundar no como.
             </p>
 
-            <div className="bg-indigo-500/10 border-l-4 border-indigo-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-indigo-600 dark:text-indigo-400 text-lg mb-2">📋 Escopo da Lei 13.303</p>
+            <div className="bg-cyan-500/10 border-l-4 border-cyan-500 p-5 rounded-r-xl mt-6">
+              <p className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">📋 Escopo da Lei 13.303</p>
               <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ Aplicável a empresas públicas federais</li>
                 <li>✓ Aplicável a sociedades de economia mista federais</li>
@@ -188,7 +226,7 @@ export default function AulaLei13303(props: AulaProps) {
                 titulo: "O Código de Governança",
                 descricao: "A Lei 13.303/2016 surge como o principal estatuto jurídico das empresas públicas e sociedades de economia mista, unificando as regras de gestão.",
                 icone: <LuBookOpen />,
-                corFundo: "bg-indigo-500/10",
+                corFundo: "bg-cyan-500/10",
               },
               {
                 titulo: "Regime Jurídico Híbrido",
@@ -254,7 +292,7 @@ export default function AulaLei13303(props: AulaProps) {
                     <p>
                       Observe o caso da Petrobras: por ser uma Sociedade de Economia Mista (SEM), ela precisa equilibrar o retorno aos acionistas privados com a sua missão estratégica de suprimento de energia para o país.
                     </p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="p-4 bg-muted rounded-lg border border-border">
                         <h5 className="font-bold flex items-center gap-2"><LuCheck className="text-emerald-500" /> Direito Privado</h5>
                         <p className="text-lg">Contratos comerciais, exploração de poços e concorrência no mercado de combustíveis.</p>
@@ -284,7 +322,7 @@ export default function AulaLei13303(props: AulaProps) {
                 icone: <LuAward />,
               },
               {
-                titulo: "Exceções e Pegadinhas: Cuidado!",
+                titulo: "Exceções e pontos de atenção: Cuidado!",
                 conteudo: (
                   <div className="space-y-4">
                     <p>
@@ -324,18 +362,18 @@ export default function AulaLei13303(props: AulaProps) {
             tituloAula: "Lei 13.303",
             materia: "Administração",
             images: [
-              { title: "Arquitetura da Lei", type: "diagram", placeholderColor: "indigo" },
+              { title: "Arquitetura da Lei", type: "diagram", placeholderColor: "cyan" },
               { title: "Fluxo de Aplicação", type: "infographic", placeholderColor: "blue" }
             ]
           }}
-          maceteVisual={{
-            title: "O Pulo do Gato: Princípio da Especialidade",
+          sinteseEstrategica={{
+            title: "Destaque Estratégico: Princípio da Especialidade",
             content: (
               <div className="space-y-3">
                 <p>Para não esquecer a hierarquia:</p>
                 <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-2 font-bold text-indigo-400">
-                    <div className="w-8 h-8 rounded bg-indigo-500/20 flex items-center justify-center">1</div>
+                  <div className="flex items-center gap-2 font-bold text-cyan-400">
+                    <div className="w-8 h-8 rounded bg-cyan-500/20 flex items-center justify-center">1</div>
                     CF/88 (Art. 173)
                   </div>
                   <div className="flex items-center gap-2 font-bold text-blue-400">
@@ -365,8 +403,10 @@ export default function AulaLei13303(props: AulaProps) {
           onComplete={(score) => handleModuleComplete("modulo-1", score)}
         />
       </TabsContent>
+      )}
 
       {/* ==================== MÓDULO 2 ==================== */}
+      {activeTab === "modulo-2" && (
       <TabsContent value="modulo-2" className="space-y-12 mt-0 outline-none">
         <ModuleBanner
           numero={2}
@@ -435,7 +475,7 @@ export default function AulaLei13303(props: AulaProps) {
                 titulo: "Empresa Pública (EP)",
                 descricao: "Capital 100% público. Pode ser unipessoal ou ter vários sócios, desde que todos sejam entes públicos.",
                 icone: <LuBuilding />,
-                corFundo: "bg-indigo-500/10",
+                corFundo: "bg-cyan-500/10",
               },
               {
                 titulo: "Soc. Economia Mista (SEM)",
@@ -502,9 +542,9 @@ export default function AulaLei13303(props: AulaProps) {
                 titulo: "Exemplificação: Comparativo Industrial",
                 conteudo: (
                   <div className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="p-4 bg-indigo-500/5 rounded-lg border border-indigo-500/20">
-                        <h5 className="font-bold text-indigo-400">Exemplo EP</h5>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="p-4 bg-cyan-500/5 rounded-lg border border-cyan-500/20">
+                        <h5 className="font-bold text-cyan-400">Exemplo EP</h5>
                         <p className="text-lg uppercase font-bold text-muted-foreground">Caixa Econômica Federal</p>
                         <p className="text-lg mt-2">Todo o patrimônio pertence à União. Atua como banco mas sem acionistas privados externos.</p>
                       </div>
@@ -525,7 +565,7 @@ export default function AulaLei13303(props: AulaProps) {
                     <p>
                       Cuidado com a expressão "maioria do capital". Para a Lei 13.303, o controle é exercido pela maioria do **Capital Votante**.
                     </p>
-                    <AlertBox tipo="warning" titulo="O pulo do gato">
+                    <AlertBox tipo="warning" titulo="Destaque Estratégico">
                       O governo não precisa ter 51% do capital TOTAL, mas sim a maioria das **Ações Ordinárias** (que dão direito a voto).
                     </AlertBox>
                   </div>
@@ -577,7 +617,7 @@ export default function AulaLei13303(props: AulaProps) {
               { title: "Tabela de Competências", type: "table", placeholderColor: "teal" }
             ]
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "Mnemônico de Ouro",
             content: (
               <div className="space-y-4">
@@ -605,8 +645,10 @@ export default function AulaLei13303(props: AulaProps) {
           onComplete={(score) => handleModuleComplete("modulo-2", score)}
         />
       </TabsContent>
+      )}
 
       {/* ==================== MÓDULO 3 ==================== */}
+      {activeTab === "modulo-3" && (
       <TabsContent value="modulo-3" className="space-y-12 mt-0 outline-none">
         <ModuleBanner
           numero={3}
@@ -620,7 +662,7 @@ export default function AulaLei13303(props: AulaProps) {
             index={3}
             title="Direitos e Proteção do Acionista"
             description="Voto, informação, fiscalização — o tripé de proteção dos investidores em empresas estatais."
-            variant="violet"
+            variant="emerald"
           />
 
           <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
@@ -654,8 +696,8 @@ export default function AulaLei13303(props: AulaProps) {
               Estatuto Social (que segue Lei 13.303).
             </p>
 
-            <div className="bg-violet-500/10 border-l-4 border-violet-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-violet-600 dark:text-violet-400 text-lg mb-2">⚖️ Direitos vs Deveres</p>
+            <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
+              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">⚖️ Direitos vs Deveres</p>
               <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Direitos:</strong> Voto (ordinárias), Dividendos, Fiscalização, Informação</li>
                 <li>✓ <strong>Deveres:</strong> Integralizar capital, Respeitar estatuto, Não votar abusivamente</li>
@@ -794,10 +836,10 @@ export default function AulaLei13303(props: AulaProps) {
             materia: "Administração",
             images: [
               { title: "Mapa de Direitos", type: "visual_summary", placeholderColor: "blue" },
-              { title: "Tabela de Deveres", type: "table", placeholderColor: "indigo" }
+              { title: "Tabela de Deveres", type: "table", placeholderColor: "cyan" }
             ]
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "V.I.D.A. do Acionista",
             content: (
               <div className="grid grid-cols-2 gap-2 text-lg font-bold">
@@ -823,8 +865,10 @@ export default function AulaLei13303(props: AulaProps) {
           onComplete={(score) => handleModuleComplete("modulo-3", score)}
         />
       </TabsContent>
+      )}
 
       {/* ==================== MÓDULO 4 ==================== */}
+      {activeTab === "modulo-4" && (
       <TabsContent value="modulo-4" className="space-y-12 mt-0 outline-none">
         <ModuleBanner
           numero={4}
@@ -1007,15 +1051,15 @@ export default function AulaLei13303(props: AulaProps) {
             tituloAula: "Lei 13.303",
             materia: "Administração",
             images: [
-              { title: "Organograma Legal", type: "diagram", placeholderColor: "indigo" },
+              { title: "Organograma Legal", type: "diagram", placeholderColor: "cyan" },
               { title: "Fluxo de Decisão", type: "infographic", placeholderColor: "blue" }
             ]
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "Pirâmide de Comando",
             content: (
               <div className="space-y-2 text-lg text-center">
-                <div className="p-2 border border-border bg-indigo-500/10 rounded">ASSEMBLEIA (Dono)</div>
+                <div className="p-2 border border-border bg-cyan-500/10 rounded">ASSEMBLEIA (Dono)</div>
                 <div className="p-2 border border-border bg-cyan-500/10 rounded">CONSELHO (Mente)</div>
                 <div className="p-2 border border-border bg-emerald-500/10 rounded">DIRETORIA (Braço)</div>
                 <div className="p-2 border border-border bg-rose-500/10 mt-4 rounded">FISCAL (Olho)</div>
@@ -1037,8 +1081,10 @@ export default function AulaLei13303(props: AulaProps) {
           onComplete={(score) => handleModuleComplete("modulo-4", score)}
         />
       </TabsContent>
+      )}
 
       {/* ==================== MÓDULO 5 ==================== */}
+      {activeTab === "modulo-5" && (
       <TabsContent value="modulo-5" className="space-y-12 mt-0 outline-none">
         <ModuleBanner
           numero={5}
@@ -1215,7 +1261,7 @@ export default function AulaLei13303(props: AulaProps) {
             <p className="text-lg leading-relaxed mb-4">
               Em 2018, a Petrobras enfrentou uma AGE histórica para votar o acordo com o DOJ (Departamento de Justiça Americano). Esse evento demonstrou na prática o poder da Assembleia em decidir sobre acordos bilionários que afetam o futuro da companhia por décadas.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="p-3 bg-white/5 rounded-lg border border-white/10">
                 <span className="text-[10px] uppercase font-bold text-amber-400">Ponto Chave</span>
                 <p className="text-lg mt-1">Soberania da Assembleia em transações críticas.</p>
@@ -1257,7 +1303,7 @@ export default function AulaLei13303(props: AulaProps) {
               { title: "Tabela de Quóruns", type: "table", placeholderColor: "orange" }
             ]
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "Regra das 4 Letras: AGOA",
             content: (
               <div className="space-y-2">
@@ -1286,8 +1332,10 @@ export default function AulaLei13303(props: AulaProps) {
           onComplete={(score) => handleModuleComplete("modulo-5", score)}
         />
       </TabsContent>
+      )}
 
       {/* ==================== MÓDULO 6 ==================== */}
+      {activeTab === "modulo-6" && (
       <TabsContent value="modulo-6" className="space-y-12 mt-0 outline-none">
         <ModuleBanner
           numero={6}
@@ -1490,7 +1538,7 @@ export default function AulaLei13303(props: AulaProps) {
               { title: "Matriz de Competências", type: "diagram", placeholderColor: "red" }
             ]
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "Regra do 10-4-36",
             content: (
               <div className="space-y-2 text-lg">
@@ -1515,8 +1563,10 @@ export default function AulaLei13303(props: AulaProps) {
           onComplete={(score) => handleModuleComplete("modulo-6", score)}
         />
       </TabsContent>
+      )}
 
       {/* ==================== MÓDULO 7 ==================== */}
+      {activeTab === "modulo-7" && (
       <TabsContent value="modulo-7" className="space-y-12 mt-0 outline-none">
         <ModuleBanner
           numero={7}
@@ -1530,7 +1580,7 @@ export default function AulaLei13303(props: AulaProps) {
             index={7}
             title="Diretoria Executiva e Conselho Fiscal"
             description="Quem executa? Quem fiscaliza? Separação clara de responsabilidades."
-            variant="indigo"
+            variant="cyan"
           />
 
           <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
@@ -1559,8 +1609,8 @@ export default function AulaLei13303(props: AulaProps) {
               façam fraude sem supervisão. Você entenderá as responsabilidades de cada um, obrigações legais, e como funcionam na prática na Petrobras.
             </p>
 
-            <div className="bg-indigo-500/10 border-l-4 border-indigo-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-indigo-600 dark:text-indigo-400 text-lg mb-2">⚖️ Diretoria vs Conselho Fiscal</p>
+            <div className="bg-cyan-500/10 border-l-4 border-cyan-500 p-5 rounded-r-xl mt-6">
+              <p className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">⚖️ Diretoria vs Conselho Fiscal</p>
               <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Diretoria:</strong> Executa, implementa estratégia, toma decisões operacionais</li>
                 <li>✓ <strong>Conselho Fiscal:</strong> Fiscaliza, examina contas, denúncia fraude, obrigatório em estatais</li>
@@ -1695,13 +1745,13 @@ export default function AulaLei13303(props: AulaProps) {
             materia: "Administração",
             images: [
               { title: "Ciclo de Responsabilidade", type: "diagram", placeholderColor: "blue" },
-              { title: "Matriz Funcional", type: "table", placeholderColor: "indigo" }
+              { title: "Matriz Funcional", type: "table", placeholderColor: "cyan" }
             ]
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "Fiscal = Cão de Guarda",
             content: (
-              <div className="text-center p-4 border-2 border-indigo-500/30 rounded-lg">
+              <div className="text-center p-4 border-2 border-cyan-500/30 rounded-lg">
                 <p className="italic">"O Fiscal morde (denuncia) | Não late (não manda) | Não dorme (fiscaliza sempre)"</p>
               </div>
             )
@@ -1721,8 +1771,10 @@ export default function AulaLei13303(props: AulaProps) {
           onComplete={(score) => handleModuleComplete("modulo-7", score)}
         />
       </TabsContent>
+      )}
 
       {/* ==================== MÓDULO 8 ==================== */}
+      {activeTab === "modulo-8" && (
       <TabsContent value="modulo-8" className="space-y-12 mt-0 outline-none">
         <ModuleBanner
           numero={8}
@@ -1909,7 +1961,7 @@ export default function AulaLei13303(props: AulaProps) {
               { title: "Fluxo de Denúncia", type: "diagram", placeholderColor: "red" }
             ]
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "Regra do Espelho",
             content: (
               <div className="text-center p-4">
@@ -1932,8 +1984,10 @@ export default function AulaLei13303(props: AulaProps) {
           onComplete={(score) => handleModuleComplete("modulo-8", score)}
         />
       </TabsContent>
+      )}
 
       {/* ==================== MÓDULO 9 ==================== */}
+      {activeTab === "modulo-9" && (
       <TabsContent value="modulo-9" className="space-y-12 mt-0 outline-none">
         <ModuleBanner
           numero={9}
@@ -1947,7 +2001,7 @@ export default function AulaLei13303(props: AulaProps) {
             index={9}
             title="Aplicação Prática na Petrobras"
             description="Da lei para a realidade corporativa: como Lei 13.303 funciona no dia a dia da maior empresa brasileira."
-            variant="violet"
+            variant="emerald"
           />
 
           <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
@@ -1976,8 +2030,8 @@ export default function AulaLei13303(props: AulaProps) {
               decisões reais de Assembleia e Conselho, e como Lei 13.303 funciona na prática. Será essencial para responder questões CESGRANRIO que citam contextos da Petrobras.
             </p>
 
-            <div className="bg-violet-500/10 border-l-4 border-violet-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-violet-600 dark:text-violet-400 text-lg mb-2">🏢 Petrobras: Modelo de Lei 13.303</p>
+            <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
+              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">🏢 Petrobras: Modelo de Lei 13.303</p>
               <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Assembleia Geral:</strong> Maio, aprova contas e elege Conselho</li>
                 <li>✓ <strong>Conselho Admin:</strong> 9 membros; presidente independente; representantes empregados/minoritários</li>
@@ -2093,10 +2147,10 @@ export default function AulaLei13303(props: AulaProps) {
 
         
 
-        <div className="space-y-12 mt-12 bg-indigo-500/5 p-8 rounded-3xl border border-indigo-500/10">
+        <div className="space-y-12 mt-12 bg-cyan-500/5 p-8 rounded-3xl border border-cyan-500/10">
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="flex-1 space-y-4">
-              <h3 className="text-2xl font-bold text-indigo-400 flex items-center gap-3">
+              <h3 className="text-2xl font-bold text-cyan-400 flex items-center gap-3">
                 <LuFingerprint className="text-3xl" /> A Cultura do Compliance
               </h3>
               <p className="text-muted-foreground leading-relaxed">
@@ -2109,16 +2163,16 @@ export default function AulaLei13303(props: AulaProps) {
                   { label: "Treinamento Ético", icon: <LuBrain /> },
                   { label: "Monitoramento Contínuo", icon: <LuActivity /> }
                 ].map((tag, i) => (
-                  <div key={i} className="flex items-center gap-2 px-3 py-1.5 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-lg font-bold text-indigo-300">
+                  <div key={i} className="flex items-center gap-2 px-3 py-1.5 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-lg font-bold text-cyan-300">
                     {tag.icon} {tag.label}
                   </div>
                 ))}
               </div>
             </div>
-            <div className="w-full md:w-64 h-64 bg-indigo-500/10 rounded-2xl flex items-center justify-center p-6 border border-indigo-500/20 shadow-2xl shadow-indigo-500/20">
+            <div className="w-full md:w-64 h-64 bg-cyan-500/10 rounded-2xl flex items-center justify-center p-6 border border-cyan-500/20 shadow-2xl shadow-cyan-500/20">
               <div className="text-center space-y-3">
-                <LuLock className="text-6xl text-indigo-400 mx-auto" />
-                <p className="text-[10px] uppercase font-bold tracking-tighter text-indigo-300">Selagem de Segurança</p>
+                <LuLock className="text-6xl text-cyan-400 mx-auto" />
+                <p className="text-[10px] uppercase font-bold tracking-tighter text-cyan-300">Selagem de Segurança</p>
               </div>
             </div>
           </div>
@@ -2149,7 +2203,7 @@ export default function AulaLei13303(props: AulaProps) {
               { title: "Arquitetura de Controle", type: "diagram", placeholderColor: "orange" }
             ]
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "Petrobras = 303 x 404",
             content: (
               <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
@@ -2172,12 +2226,14 @@ export default function AulaLei13303(props: AulaProps) {
           onComplete={(score) => handleModuleComplete("modulo-9", score)}
         />
       </TabsContent>
+      )}
 
       {/* ==================== MÓDULO 10 ==================== */}
+      {activeTab === "modulo-10" && (
       <TabsContent value="modulo-10" className="space-y-12 mt-0 outline-none">
         <ModuleBanner
           numero={10}
-          titulo="Simulado Mestre"
+          titulo="Simulado Geral"
           descricao="Teste final integrado com o padrão Cesgranrio."
           variant={getBannerVariant(10)}
         />
@@ -2185,7 +2241,7 @@ export default function AulaLei13303(props: AulaProps) {
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index={10}
-            title="Simulado Mestre: Lei 13.303 Integrada"
+            title="Simulado Geral: Lei 13.303 Integrada"
             description="Consolidação de todos os 9 módulos em questões CESGRANRIO autênticas."
             variant="amber"
           />
@@ -2193,7 +2249,7 @@ export default function AulaLei13303(props: AulaProps) {
           <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
             <p>
               Você completou 9 módulos de Lei 13.303: conceitos fundamentais, empresa estatal, direitos de acionista, órgãos de governança, assembleia, conselho de administração,
-              diretoria/fiscal, conflito de interesse, e aplicação na Petrobras. Agora é hora de <strong>consolidar tudo</strong> em um <strong>Simulado Mestre</strong> que reflete
+              diretoria/fiscal, conflito de interesse, e aplicação na Petrobras. Agora é hora de <strong>consolidar tudo</strong> em um <strong>Simulado Geral</strong> que reflete
               o padrão de questões CESGRANRIO reais.
             </p>
             <p>
@@ -2216,7 +2272,7 @@ export default function AulaLei13303(props: AulaProps) {
             </p>
 
             <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">👑 Simulado Mestre: 5-Step Strategy</p>
+              <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">👑 Simulado Geral: 5-Step Strategy</p>
               <ol className="text-lg space-y-1 text-foreground list-decimal list-inside">
                 <li><strong>Leia 2x:</strong> Contexto na primeira; Pergunta na segunda</li>
                 <li><strong>Identifique módulo-núcleo:</strong> Qual conceito (M1-M9) é central?</li>
@@ -2230,12 +2286,13 @@ export default function AulaLei13303(props: AulaProps) {
 
         <QuizInterativo
           questoes={getQuiz("modulo-10")}
-          titulo="QUIZ: Simulado Mestre"
+          titulo="QUIZ: Simulado Geral"
           numero={11}
           variant={getBannerVariant(10)}
           onComplete={(score) => handleModuleComplete("modulo-10", score)}
         />
       </TabsContent>
+      )}
     </AulaTemplate>
   );
 }

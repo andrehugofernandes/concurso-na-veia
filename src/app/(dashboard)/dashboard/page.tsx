@@ -201,12 +201,12 @@ export default function DashboardPage() {
           </p>
         </div>
         {userData.plan === "free" && (
-          <div className="flex flex-col xs:flex-row items-start xs:items-center gap-3 xs:gap-4 w-full md:w-auto">
-            <div className="flex flex-col items-start xs:items-end">
-              <span className="text-[9px] text-muted-foreground font-bold uppercase tracking-wider mb-0.5">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full md:w-auto">
+            <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-start bg-card/50 sm:bg-transparent px-3 py-2 sm:p-0 rounded-xl border border-border/50 sm:border-none">
+              <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">
                 Período de Teste
               </span>
-              <div className="flex items-center gap-1.5 bg-card px-2 py-1 rounded-lg border border-border shadow-sm">
+              <div className="flex items-center gap-1.5 bg-card sm:bg-card px-2 py-1 rounded-lg border border-border shadow-sm sm:mt-1">
                 <span
                   className={`text-lg font-black ${userData.diasRestantesTrial && userData.diasRestantesTrial <= 3 ? "text-red-500 animate-pulse" : "text-yellow-500"}`}
                 >
@@ -219,7 +219,7 @@ export default function DashboardPage() {
             </div>
             <Link
               href="/pricing"
-              className="w-full xs:w-auto text-center px-4 py-2.5 bg-gradient-to-r from-yellow-500 to-orange-500 text-slate-900 font-bold rounded-xl hover:shadow-lg hover:shadow-orange-500/20 transition-all text-xs uppercase tracking-wider"
+              className="w-full sm:w-auto text-center px-6 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 text-slate-900 font-bold rounded-xl hover:shadow-lg hover:shadow-orange-500/20 transition-all text-xs uppercase tracking-wider shadow-sm"
             >
               Seja PRO 👑
             </Link>
@@ -254,54 +254,54 @@ export default function DashboardPage() {
           <>
             {/* Stats Row */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8">
-              <div className="bg-card p-3 md:p-4 rounded-xl border border-border flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-4 shadow-sm hover:shadow-md transition-shadow">
-                <div className="p-2 sm:p-3 bg-blue-500/10 rounded-lg text-blue-500 text-xl sm:text-2xl">
+              <div className="bg-card p-4 rounded-xl border border-border flex flex-col xs:flex-row items-center xs:items-center gap-2 xs:gap-4 shadow-sm hover:shadow-md transition-shadow">
+                <div className="p-3 bg-blue-500/10 rounded-xl text-blue-500 text-xl xs:text-2xl shrink-0">
                   ⚡
                 </div>
-                <div className="text-center sm:text-left">
-                  <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
+                <div className="text-center xs:text-left">
+                  <p className="text-muted-foreground text-[9px] xs:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
                     Sequência
                   </p>
-                  <p className="text-lg sm:text-2xl font-black text-foreground">
+                  <p className="text-lg xs:text-xl font-black text-foreground">
                     {userData.sequencia_atual} dias
                   </p>
                 </div>
               </div>
-              <div className="bg-card p-3 md:p-4 rounded-xl border border-border flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-4 shadow-sm hover:shadow-md transition-shadow">
-                <div className="p-2 sm:p-3 bg-purple-500/10 rounded-lg text-purple-500 text-xl sm:text-2xl">
+              <div className="bg-card p-4 rounded-xl border border-border flex flex-col xs:flex-row items-center xs:items-center gap-2 xs:gap-4 shadow-sm hover:shadow-md transition-shadow">
+                <div className="p-3 bg-purple-500/10 rounded-xl text-purple-500 text-xl xs:text-2xl shrink-0">
                   🎯
                 </div>
-                <div className="text-center sm:text-left">
-                  <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
+                <div className="text-center xs:text-left">
+                  <p className="text-muted-foreground text-[9px] xs:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
                     Precisão
                   </p>
-                  <p className="text-lg sm:text-2xl font-black text-foreground">
+                  <p className="text-lg xs:text-xl font-black text-foreground">
                     {taxaAcerto}%
                   </p>
                 </div>
               </div>
-              <div className="bg-card p-3 md:p-4 rounded-xl border border-border flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-4 shadow-sm hover:shadow-md transition-shadow">
-                <div className="p-2 sm:p-3 bg-green-500/10 rounded-lg text-green-500 text-xl sm:text-2xl">
+              <div className="bg-card p-4 rounded-xl border border-border flex flex-col xs:flex-row items-center xs:items-center gap-2 xs:gap-4 shadow-sm hover:shadow-md transition-shadow">
+                <div className="p-3 bg-green-500/10 rounded-xl text-green-500 text-xl xs:text-2xl shrink-0">
                   📝
                 </div>
-                <div className="text-center sm:text-left">
-                  <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
+                <div className="text-center xs:text-left">
+                  <p className="text-muted-foreground text-[9px] xs:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
                     Questões
                   </p>
-                  <p className="text-lg sm:text-2xl font-black text-foreground">
+                  <p className="text-lg xs:text-xl font-black text-foreground">
                     {userData.questoes_geradas}
                   </p>
                 </div>
               </div>
-              <div className="bg-card p-3 md:p-4 rounded-xl border border-border flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-4 shadow-sm hover:shadow-md transition-shadow">
-                <div className="p-2 sm:p-3 bg-yellow-500/10 rounded-lg text-yellow-500 text-xl sm:text-2xl">
+              <div className="bg-card p-4 rounded-xl border border-border flex flex-col xs:flex-row items-center xs:items-center gap-2 xs:gap-4 shadow-sm hover:shadow-md transition-shadow">
+                <div className="p-3 bg-yellow-500/10 rounded-xl text-yellow-500 text-xl xs:text-2xl shrink-0">
                   🏆
                 </div>
-                <div className="text-center sm:text-left">
-                  <p className="text-muted-foreground text-[9px] sm:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
+                <div className="text-center xs:text-left">
+                  <p className="text-muted-foreground text-[9px] xs:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
                     Nível
                   </p>
-                  <p className="text-lg sm:text-2xl font-black text-foreground">
+                  <p className="text-lg xs:text-xl font-black text-foreground line-clamp-1">
                     {userData.nivel_jogador}
                   </p>
                 </div>
@@ -368,15 +368,15 @@ export default function DashboardPage() {
 
                 {/* Recent Activity / Continue Watching */}
                 <div className="md:col-span-2 bg-gradient-to-br from-indigo-900/20 to-blue-900/20 rounded-2xl border border-indigo-500/20 p-6 shadow-sm flex flex-col justify-center">
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
+                  <div className="flex flex-col xs:flex-row justify-between items-center xs:items-center gap-6 mb-6">
+                    <div className="text-center xs:text-left">
+                      <h3 className="text-xl font-bold text-foreground flex items-center justify-center xs:justify-start gap-2">
                         <span className="animate-pulse">▶️</span> Continue de
                         onde parou
                       </h3>
-                      <p className="text-muted-foreground text-sm mt-1">
+                      <p className="text-muted-foreground text-sm mt-2 max-w-xs">
                         Você estava estudando{" "}
-                        <strong className="block sm:inline mt-1 sm:mt-0">
+                        <strong className="text-indigo-400">
                           Interpretação de Texto
                         </strong>
                         .
@@ -384,7 +384,7 @@ export default function DashboardPage() {
                     </div>
                     <Link
                       href="/aulas/portugues/interpretacao-texto"
-                      className="w-full sm:w-auto text-center px-4 py-2.5 sm:py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg transition text-sm shadow-lg shadow-indigo-500/20"
+                      className="w-full xs:w-auto text-center px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition shadow-lg shadow-indigo-500/20 active:scale-95"
                     >
                       Retomar Aula
                     </Link>
@@ -453,19 +453,21 @@ export default function DashboardPage() {
                   href="/aulas"
                   className="group bg-card backdrop-blur-lg rounded-xl p-6 border border-border shadow-lg hover:border-blue-500/50 transition-all hover:transform hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="text-5xl">📖</div>
-                    <div>
+                  <div className="flex flex-col xs:flex-row items-center xs:items-start gap-4">
+                    <div className="text-4xl xs:text-5xl p-4 xs:p-0 bg-blue-500/10 xs:bg-transparent rounded-2xl xs:rounded-none shrink-0 mb-2 xs:mb-0">
+                      📖
+                    </div>
+                    <div className="text-center xs:text-left">
                       <h3 className="text-xl font-bold text-foreground group-hover:text-blue-500 transition-colors">
                         Conteúdo Teórico
                       </h3>
-                      <p className="text-muted-foreground text-sm mt-1">
+                      <p className="text-muted-foreground text-sm mt-1 leading-relaxed">
                         Aulas completas organizadas por edital, com
                         acompanhamento de progresso.
                       </p>
                     </div>
                   </div>
-                  <div className="mt-4 flex items-center gap-2 text-blue-400 font-semibold group-hover:text-blue-300 transition text-sm uppercase tracking-wide">
+                  <div className="mt-6 flex items-center justify-center xs:justify-start gap-2 text-blue-400 font-bold group-hover:text-blue-300 transition text-xs uppercase tracking-widest border-t border-border/50 pt-4 xs:border-none xs:pt-0">
                     Acessar Aulas
                     <svg
                       className="w-4 h-4 group-hover:translate-x-1 transition-transform"
@@ -483,25 +485,41 @@ export default function DashboardPage() {
                   </div>
                 </Link>
 
-                <div className="bg-muted/30 backdrop-blur-lg rounded-xl p-6 border border-border opacity-70">
-                  <div className="flex items-center gap-4">
-                    <div className="text-5xl opacity-50">🎯</div>
-                    <div>
-                      <h3 className="text-xl font-bold text-muted-foreground">
+                <Link
+                  href="/dashboard/maratona-100"
+                  className="group bg-card backdrop-blur-lg rounded-xl p-6 border border-border shadow-lg hover:border-emerald-500/50 transition-all hover:transform hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/10"
+                >
+                  <div className="flex flex-col xs:flex-row items-center xs:items-start gap-4">
+                    <div className="text-4xl xs:text-5xl p-4 xs:p-0 bg-emerald-500/10 xs:bg-transparent rounded-2xl xs:rounded-none shrink-0 mb-2 xs:mb-0">
+                      🎯
+                    </div>
+                    <div className="text-center xs:text-left">
+                      <h3 className="text-xl font-bold text-foreground group-hover:text-emerald-500 transition-colors">
                         Plano de Estudos
                       </h3>
-                      <p className="text-muted-foreground text-sm mt-1">
+                      <p className="text-muted-foreground text-sm mt-1 leading-relaxed">
                         Cronograma personalizado baseado no seu tempo
                         disponível.
                       </p>
                     </div>
                   </div>
-                  <div className="mt-4">
-                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-slate-800 text-gray-500 uppercase tracking-wide">
-                      Em desenvolvimento
-                    </span>
+                  <div className="mt-6 flex items-center justify-center xs:justify-start gap-2 text-emerald-400 font-bold group-hover:text-emerald-300 transition text-xs uppercase tracking-widest border-t border-border/50 pt-4 xs:border-none xs:pt-0">
+                    Acessar Plano
+                    <svg
+                      className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
                   </div>
-                </div>
+                </Link>
               </div>
             </section>
 
@@ -526,17 +544,19 @@ export default function DashboardPage() {
                   className="bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:border-primary/50 transition-all group text-left flex flex-col h-full active:scale-[0.98]"
                 >
                   <div className="h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 shrink-0"></div>
-                  <div className="p-5 sm:p-6 flex flex-col h-full justify-between gap-4">
-                    <div className="flex items-center gap-4">
-                      <div className="p-2.5 sm:p-3 bg-blue-500/10 rounded-lg text-blue-500 text-2xl sm:text-3xl group-hover:scale-110 transition-transform shrink-0">
+                  <div className="p-5 sm:p-6 flex flex-col h-full justify-between gap-6">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                      <div className="text-3xl sm:text-5xl p-3 sm:p-0 bg-blue-500/10 sm:bg-transparent rounded-xl sm:rounded-none shrink-0 mb-2 sm:mb-0 transition-transform group-hover:scale-110">
                         📝
                       </div>
-                      <h3 className="text-lg sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300 bg-clip-text text-transparent">
-                        LÍNGUA PORTUGUESA
-                      </h3>
+                      <div className="text-center sm:text-left">
+                        <h3 className="text-xl sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300 bg-clip-text text-transparent">
+                          LÍNGUA PORTUGUESA
+                        </h3>
+                      </div>
                     </div>
-                    <div className="flex justify-between items-end gap-3 mt-auto">
-                      <p className="text-muted-foreground text-xs sm:text-sm leading-snug line-clamp-2">
+                    <div className="flex justify-between items-center sm:items-end gap-3 mt-auto border-t border-border/30 pt-4">
+                      <p className="text-muted-foreground text-xs leading-snug line-clamp-2 flex-1">
                         Gramática, interpretação de texto e redação oficial.
                       </p>
                       <span className="text-[10px] bg-muted text-muted-foreground px-2 py-0.5 rounded shrink-0 font-bold">
@@ -554,17 +574,19 @@ export default function DashboardPage() {
                   className="bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:border-primary/50 transition-all group text-left flex flex-col h-full active:scale-[0.98]"
                 >
                   <div className="h-1.5 bg-gradient-to-r from-purple-500 to-pink-500 shrink-0"></div>
-                  <div className="p-5 sm:p-6 flex flex-col h-full justify-between gap-4">
-                    <div className="flex items-center gap-4">
-                      <div className="p-2.5 sm:p-3 bg-purple-500/10 rounded-lg text-purple-500 text-2xl sm:text-3xl group-hover:scale-110 transition-transform shrink-0">
+                  <div className="p-5 sm:p-6 flex flex-col h-full justify-between gap-6">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                      <div className="text-3xl sm:text-5xl p-3 sm:p-0 bg-purple-500/10 sm:bg-transparent rounded-xl sm:rounded-none shrink-0 mb-2 sm:mb-0 transition-transform group-hover:scale-110">
                         🔢
                       </div>
-                      <h3 className="text-lg sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-purple-600 to-pink-500 dark:from-purple-400 dark:to-pink-500 bg-clip-text text-transparent">
-                        MATEMÁTICA
-                      </h3>
+                      <div className="text-center sm:text-left">
+                        <h3 className="text-xl sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-purple-600 to-pink-500 dark:from-purple-400 dark:to-pink-500 bg-clip-text text-transparent">
+                          MATEMÁTICA
+                        </h3>
+                      </div>
                     </div>
-                    <div className="flex justify-between items-end gap-3 mt-auto">
-                      <p className="text-muted-foreground text-xs sm:text-sm leading-snug line-clamp-2">
+                    <div className="flex justify-between items-center sm:items-end gap-3 mt-auto border-t border-border/30 pt-4">
+                      <p className="text-muted-foreground text-xs leading-snug line-clamp-2 flex-1">
                         Raciocínio lógico, álgebra e geometria aplicada.
                       </p>
                       <span className="text-[10px] bg-muted text-muted-foreground px-2 py-0.5 rounded shrink-0 font-bold">
@@ -586,17 +608,19 @@ export default function DashboardPage() {
                   className="bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:border-primary/50 transition-all group text-left flex flex-col h-full active:scale-[0.98]"
                 >
                   <div className="h-1.5 bg-gradient-to-r from-green-500 to-emerald-500 shrink-0"></div>
-                  <div className="p-5 sm:p-6 flex flex-col h-full justify-between gap-4">
-                    <div className="flex items-center gap-4">
-                      <div className="p-2.5 sm:p-3 bg-green-500/10 rounded-lg text-green-500 text-2xl sm:text-3xl group-hover:scale-110 transition-transform shrink-0">
+                  <div className="p-5 sm:p-6 flex flex-col h-full justify-between gap-6">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                      <div className="text-3xl sm:text-5xl p-3 sm:p-0 bg-green-500/10 sm:bg-transparent rounded-xl sm:rounded-none shrink-0 mb-2 sm:mb-0 transition-transform group-hover:scale-110">
                         🏭
                       </div>
-                      <h3 className="text-lg sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-green-600 to-yellow-500 dark:from-green-400 dark:to-yellow-400 bg-clip-text text-transparent">
-                        ESPECÍFICOS
-                      </h3>
+                      <div className="text-center sm:text-left">
+                        <h3 className="text-xl sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-green-600 to-yellow-500 dark:from-green-400 dark:to-yellow-400 bg-clip-text text-transparent">
+                          ESPECÍFICOS
+                        </h3>
+                      </div>
                     </div>
-                    <div className="flex justify-between items-end gap-3 mt-auto">
-                      <p className="text-muted-foreground text-xs sm:text-sm leading-snug line-clamp-2">
+                    <div className="flex justify-between items-center sm:items-end gap-3 mt-auto border-t border-border/30 pt-4">
+                      <p className="text-muted-foreground text-xs leading-snug line-clamp-2 flex-1">
                         Questões focadas no seu cargo:{" "}
                         {(() => {
                           const cargoId =
@@ -626,8 +650,8 @@ export default function DashboardPage() {
                   >
                     <div className="h-1.5 bg-gradient-to-r from-red-500 to-rose-500 shrink-0"></div>
                     <div className="p-5 sm:p-6 flex flex-col h-full justify-between gap-4">
-                      <div className="flex items-center gap-4">
-                        <div className="p-2.5 sm:p-3 bg-red-500/10 rounded-lg text-red-500 text-2xl sm:text-3xl group-hover:scale-110 transition-transform shrink-0 relative">
+                      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                        <div className="text-3xl sm:text-5xl p-3 sm:p-0 bg-red-500/10 sm:bg-transparent rounded-xl sm:rounded-none shrink-0 mb-2 sm:mb-0 transition-transform group-hover:scale-110 relative">
                           🇺🇸
                           <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-white dark:bg-zinc-900 border border-red-500 flex items-center justify-center shadow-md">
                             <span className="text-[7px] font-black text-red-600">
@@ -635,9 +659,11 @@ export default function DashboardPage() {
                             </span>
                           </div>
                         </div>
-                        <h3 className="text-lg sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-red-600 to-rose-500 dark:from-red-400 dark:to-rose-500 bg-clip-text text-transparent">
-                          INGLÊS
-                        </h3>
+                        <div className="text-center sm:text-left">
+                          <h3 className="text-xl sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-red-600 to-rose-500 dark:from-red-400 dark:to-rose-500 bg-clip-text text-transparent">
+                            INGLÊS
+                          </h3>
+                        </div>
                       </div>
                       <div className="flex justify-between items-end gap-3 mt-auto">
                         <p className="text-muted-foreground text-xs sm:text-sm leading-snug">
@@ -740,19 +766,21 @@ export default function DashboardPage() {
                         <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl transform translate-x-10 -translate-y-10">
                           🎯
                         </div>
-                        <div className="relative z-10">
-                          <div className="text-4xl mb-3">🎯</div>
+                        <div className="relative z-10 flex flex-col items-center xs:items-start text-center xs:text-left">
+                          <div className="text-4xl mb-3 p-4 bg-white/10 rounded-2xl xs:bg-transparent xs:p-0">
+                            🎯
+                          </div>
                           <h3 className="text-xl font-bold">
                             Treino Intensivo
                           </h3>
-                          <p className="text-purple-100 text-sm mt-1">
+                          <p className="text-purple-100 text-sm mt-1 leading-relaxed">
                             20 questões de uma matéria ou tópico específico
                           </p>
-                          <div className="flex gap-2 mt-4">
-                            <span className="px-2 py-1 bg-white/20 rounded text-xs font-bold">
+                          <div className="flex justify-center xs:justify-start gap-2 mt-4">
+                            <span className="px-2 py-1 bg-white/20 rounded text-xs font-bold uppercase tracking-wider">
                               Foco Total
                             </span>
-                            <span className="px-2 py-1 bg-white/20 rounded text-xs font-bold">
+                            <span className="px-2 py-1 bg-white/20 rounded text-xs font-bold uppercase tracking-wider">
                               30 min
                             </span>
                           </div>
@@ -794,26 +822,28 @@ export default function DashboardPage() {
                         <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl transform translate-x-10 -translate-y-10">
                           🔥
                         </div>
-                        <div className="relative z-10">
-                          <div className="text-4xl mb-3">🔥</div>
+                        <div className="relative z-10 flex flex-col items-center xs:items-start text-center xs:text-left">
+                          <div className="text-4xl mb-3 p-4 bg-white/10 rounded-2xl xs:bg-transparent xs:p-0">
+                            🔥
+                          </div>
                           <h3 className="text-xl font-bold">
                             Maratona Oficial
                           </h3>
-                          <p className="text-orange-50 text-sm mt-1">
+                          <p className="text-orange-50 text-sm mt-1 leading-relaxed">
                             Simulação real da prova (Médio ou Superior)
                           </p>
-                          <div className="flex flex-wrap gap-2 mt-4">
-                            <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold">
+                          <div className="flex flex-wrap justify-center xs:justify-start gap-2 mt-4">
+                            <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold uppercase tracking-wider">
                               Port
                             </span>
-                            <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold">
+                            <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold uppercase tracking-wider">
                               Mat
                             </span>
-                            <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold">
+                            <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold uppercase tracking-wider">
                               Esp
                             </span>
                             {userData.nivel === "superior" && (
-                              <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold">
+                              <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold uppercase tracking-wider">
                                 Ing
                               </span>
                             )}
@@ -1173,13 +1203,13 @@ function RankingTable({ userCargo }: { userCargo: string }) {
                         />
                       ) : (
                         <span className="text-foreground font-bold">
-                          {player.nome.charAt(0)}
+                          {(player.nome || "Estudante").charAt(0)}
                         </span>
                       )}
                     </div>
                     <div className="min-w-0">
                       <p className="text-foreground font-bold truncate">
-                        {player.nome}
+                        {player.nome || "Estudante"}
                       </p>
                       <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-tight truncate">
                         {(() => {

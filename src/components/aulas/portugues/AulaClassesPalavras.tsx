@@ -20,19 +20,20 @@ import {
   AulaTemplate,
   Comparison,
   MusicPlayerCard,
+  ModuleConsolidation,
 } from "../shared";
 import { getModuleVariant } from "@/lib/moduleColors";
 import {
   QUIZ_M1_SUBSTANTIVO,
-  QUIZ_M2_ADJETIVO_ARTIGO,
-  QUIZ_M3_VERBO_I,
-  QUIZ_M4_VERBO_II,
-  QUIZ_M5_PRONOME_I,
-  QUIZ_M6_PRONOME_II,
-  QUIZ_M7_ADVERBIO,
-  QUIZ_M8_PREPOSICAO_NUMERAL,
-  QUIZ_M9_CONJUNCAO,
-  QUIZ_M10_FINAL_CLASSES,
+  QUIZ_M2_ADJETIVO,
+  QUIZ_M3_ARTIGO,
+  QUIZ_M4_PRONOME,
+  QUIZ_M5_VERBO,
+  QUIZ_M6_ADVERBIO,
+  QUIZ_M7_PREPOSICAO,
+  QUIZ_M8_CONJUNCAO,
+  QUIZ_M9_INTERJEICAO,
+  QUIZ_M10_NUMERAL,
 } from "./data/classes-palavras-quizzes";
 
 import {
@@ -49,6 +50,10 @@ import {
   LuBrain,
   LuMusic,
   LuCheck,
+  LuRepeat,
+  LuShieldAlert,
+  LuPalette,
+  LuLibrary,
 } from "react-icons/lu";
 
 // ── Definição dos 10 Módulos Premium (1 Classe = 1 Módulo) ──
@@ -56,25 +61,25 @@ const MODULE_DEFS = [
   {
     id: "modulo-1",
     label: "M1: Substantivo",
-    title: "Substantivo: O Nomeador",
+    title: "Classe: Substantivo",
   },
-  { id: "modulo-2", label: "M2: Adjetivo", title: "Adjetivo: O Qualificador" },
-  { id: "modulo-3", label: "M3: Artigo", title: "Artigo: O Determinante" },
-  { id: "modulo-4", label: "M4: Pronome", title: "Pronome: O Substituto" },
-  { id: "modulo-5", label: "M5: Verbo", title: "Verbo: O Motor da Oração" },
-  { id: "modulo-6", label: "M6: Advérbio", title: "Advérbio: A Circunstância" },
+  { id: "modulo-2", label: "M2: Adjetivo", title: "Classe: Adjetivo" },
+  { id: "modulo-3", label: "M3: Artigo", title: "Classe: Artigo" },
+  { id: "modulo-4", label: "M4: Pronome", title: "Classe: Pronome" },
+  { id: "modulo-5", label: "M5: Verbo", title: "Classe: Verbo" },
+  { id: "modulo-6", label: "M6: Advérbio", title: "Classe: Advérbio" },
   {
     id: "modulo-7",
     label: "M7: Preposição",
-    title: "Preposição: O Elo de Ligação",
+    title: "Classe: Preposição",
   },
   {
     id: "modulo-8",
     label: "M8: Conjunção",
-    title: "Conjunção: O Cimento do Texto",
+    title: "Classe: Conjunção",
   },
-  { id: "modulo-9", label: "M9: Interjeição", title: "Interjeição: A Emoção" },
-  { id: "modulo-10", label: "M10: Numeral", title: "Numeral: A Quantidade" },
+  { id: "modulo-9", label: "M9: Interjeição", title: "Classe: Interjeição" },
+  { id: "modulo-10", label: "M10: Numeral", title: "Classe: Numeral" },
 ] as const;
 // ══════════════════════════════════════════════════════════════════════════
 // HELPER FUNCTIONS FOR CONJUGATION
@@ -126,10 +131,45 @@ export default function AulaClassesPalavras({
     Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)]),
   ) as Record<number, ReturnType<typeof getModuleVariant>>;
 
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_portugues_classes_palavras_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
   const [qMod1, setQMod1] = useState<QuizQuestion[]>([]);
   const [qMod2, setQMod2] = useState<QuizQuestion[]>([]);
   const [qMod3, setQMod3] = useState<QuizQuestion[]>([]);
@@ -143,17 +183,15 @@ export default function AulaClassesPalavras({
 
   useEffect(() => {
     setQMod1(getRandomQuestions(QUIZ_M1_SUBSTANTIVO, 6));
-    setQMod2(getRandomQuestions(QUIZ_M2_ADJETIVO_ARTIGO, 6));
-    setQMod3(getRandomQuestions(QUIZ_M2_ADJETIVO_ARTIGO, 6));
-    setQMod4(
-      getRandomQuestions([...QUIZ_M5_PRONOME_I, ...QUIZ_M6_PRONOME_II], 6),
-    );
-    setQMod5(getRandomQuestions([...QUIZ_M3_VERBO_I, ...QUIZ_M4_VERBO_II], 6));
-    setQMod6(getRandomQuestions(QUIZ_M7_ADVERBIO, 6));
-    setQMod7(getRandomQuestions(QUIZ_M8_PREPOSICAO_NUMERAL, 6));
-    setQMod8(getRandomQuestions(QUIZ_M9_CONJUNCAO, 6));
-    setQMod9(getRandomQuestions(QUIZ_M9_CONJUNCAO, 6));
-    setQMod10(getRandomQuestions(QUIZ_M10_FINAL_CLASSES, 6));
+    setQMod2(getRandomQuestions(QUIZ_M2_ADJETIVO, 6));
+    setQMod3(getRandomQuestions(QUIZ_M3_ARTIGO, 6));
+    setQMod4(getRandomQuestions(QUIZ_M4_PRONOME, 6));
+    setQMod5(getRandomQuestions(QUIZ_M5_VERBO, 6));
+    setQMod6(getRandomQuestions(QUIZ_M6_ADVERBIO, 6));
+    setQMod7(getRandomQuestions(QUIZ_M7_PREPOSICAO, 6));
+    setQMod8(getRandomQuestions(QUIZ_M8_CONJUNCAO, 6));
+    setQMod9(getRandomQuestions(QUIZ_M9_INTERJEICAO, 6));
+    setQMod10(getRandomQuestions(QUIZ_M10_NUMERAL, 6));
   }, []);
 
   const handleModuleComplete = (moduleId: string, score: number) => {
@@ -204,89 +242,63 @@ export default function AulaClassesPalavras({
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="A Fundamentação dos Substantivos"
             description="Domine a classe de palavras que nomeia o mundo e estrutura o pensamento"
             variant={mv[1]}
           />
 
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
-            {/* PARÁGRAFO 1: Definição formal + contexto histórico/acadêmico */}
             <p>
               O substantivo constitui a classe lexical fundamental da língua portuguesa, 
               responsável pela designação de seres, conceitos, fenômenos e abstrações. 
-              Segundo Evanildo Bechara em sua "Moderna Gramática Portuguesa", o substantivo 
+              Conforme estabelecido pela gramática normativa, o substantivo 
               é "a palavra com que designamos os seres em geral", estabelecendo-se como 
               o pilar sobre o qual se edifica toda a estrutura sintática da oração. 
-              Na tradição gramatical ocidental, desde Dionísio da Trácia (século II a.C.), 
-              os substantivos representam a categoria primordial de nomeação, 
+              Tradicionalmente, os substantivos representam a categoria primordial de nomeação, 
               funcionando como âncora semântica para todas as outras classes gramaticais. 
               Para o contexto Petrobras, o domínio dos substantivos revela-se crucial 
-              na compreensão de documentos técnicos, relatórios e comunicados corporativos 
-              que empregam terminologia específica da indústria de óleo e gás.
+              na compreensão de documentos técnicos e relatórios.
             </p>
-
-            {/* PARÁGRAFO 2: Explicação intuitiva + analogia */}
             <p>
               Em outras palavras, os substantivos funcionam como os "blocos de construção" 
               da linguagem humana. Assim como os átomos formam toda a matéria conhecida, 
               os substantivos nomeiam os elementos essenciais que compõem nossa realidade 
               comunicativa. Quando dizemos "plataforma", "refinaria" ou "petróleo", 
               estamos utilizando substantivos que atuam como recipientes conceituais, 
-              armazenando não apenas o objeto em si, mas todo o universo de propriedades, 
-              relações e funções a ele associadas. Esta capacidade de nomeação transcende 
-              a mera etiquetagem, constituindo-se como ato cognitivo fundamental que 
-              permite aos seres humanos organizar, categorizar e compartilhar conhecimento 
-              sobre o mundo circundante.
+              armazenando não apenas o objeto em si, mas todo o universo de propriedades. 
+              Esta capacidade de nomeação transcende a mera etiquetagem, constituindo-se 
+              como ato cognitivo fundamental que permite organizar e compartilhar conhecimento.
             </p>
-
-            {/* PARÁGRAFO 3: Regras/Fórmulas/Artigos de lei */}
             <p>
               A classificação dos substantivos obedece a critérios morfológicos e semânticos 
               rigorosos, organizados em quatro eixos fundamentais: concreto vs. abstrato, 
               próprio vs. comum, simples vs. composto, e primitivo vs. derivado. 
-              Substantivos concretos designam seres com existência independente, perceptíveis 
-              pelos sentidos (sondador, plataforma, reservatório), enquanto abstratos 
-              referem-se a qualidades, estados ou ações (exploração, produção, refino). 
-              Os próprios individualizam seres específicos (Bacia de Campos, Campo de Tupi), 
-              exigindo inicial maiúscula, enquanto os comuns aplicam-se genericamente 
-              (bacia, campo, poço). A flexão de número constitui-se como marca morfológica 
-              obrigatória, com o plural seguindo regras precisas: terminações em -ão 
-              podem flexionar-se em -ões, -ães ou -ãos, constituindo-se clássica 
-              armadilha em avaliações da CESGRANRIO.
+              Substantivos concretos designam seres com existência independente, 
+              enquanto abstratos referem-se a qualidades, estados ou ações. 
+              Os próprios individualizam seres específicos, exigindo inicial maiúscula, 
+              enquanto os comuns aplicam-se genericamente. A flexão de número constitui-se 
+              como marca morfológica obrigatória, com o plural seguindo regras precisas, 
+              muitas vezes exploradas em armadilhas da banca.
             </p>
-
-            {/* PARÁGRAFO 4: Aplicação prática / Contexto Petrobras */}
             <p>
               No universo Petrobras, os substantivos técnicos assumem papel preponderante 
               na comunicação corporativa e documentação técnica. Termos como "laminado", 
-              "wellhead", "flowline" e "riser" transcendem o vocabulário comum, 
-              constituindo-se como léxico especializado fundamental para profissionais 
-              da área. A precisão na utilização desses substantivos técnicos impacta 
-              diretamente a segurança operacional, eficiência produtiva e conformidade 
-              regulatória. Relatórios de produção, por exemplo, dependem da correta 
-              nomeação de equipamentos e processos para garantir interpretação unívoca 
-              e tomada de decisões adequadas. Além disso, a compreensão dos substantivos 
-              coletivos específicos da indústria (frota, sonda, plataforma) revela-se 
-              essencial para leitura crítica de comunicados institucionais e documentos 
-              de licitação.
+              "wellhead" e "flowline" transcendem o vocabulário comum, constituindo-se 
+              como léxico especializado fundamental. A precisão na utilização desses 
+              substantivos técnicos impacta diretamente a segurança operacional e 
+              eficiência produtiva. Relatórios de produção dependem da correta nomeação 
+              de equipamentos para garantir interpretação unívoca e tomada de decisões.
             </p>
-
-            {/* PARÁGRAFO 5: Erros comuns + como a CESGRANRIO cobra */}
             <p>
               A CESGRANRIO sistematicamente explora as sutilezas morfológicas dos substantivos 
-              em suas avaliações, com ênfase particular na flexão de número, 
-              identificação de coletivos e distinção entre concreto/abstrato. 
-              Erros frequentes dos candidatos incluem a pluralização incorreta de 
-              substantivos compostos (guarda-chuvas vs. guarda-chuva), confusão entre 
-              substantivos e adjetivos pátrios, e dificuldade em identificar substantivos 
-              abstratos em contextos técnicos. A banca costuma apresentar alternativas 
-              com termos semanticamente próximos mas morfologicamente distintos, 
-              exigindo atenção redobrada à análise das classes gramaticais. 
-              Questões envolvendo substantivos coletivos menos comuns (alcatéia, 
-              cáfila, ninhada) frequentemente aparecem associadas a contextos 
-              da indústria de petróleo, testando tanto o conhecimento lexicográfico 
-              quanto a capacidade de aplicação em situações práticas.
+              em suas avaliações, com ênfase particular na flexão de número e distinção 
+              entre concreto/abstrato. Erros frequentes dos candidatos incluem a 
+              pluralização incorreta de substantivos compostos e confusão entre 
+              substantivos e adjetivos pátrios. A banca costuma apresentar alternativas 
+              com termos semanticamente próximos mas morfologicamente distintos. 
+              Questões envolvendo substantivos coletivos menos comuns frequentemente 
+              aparecem associadas a contextos industriais, testando a aplicação prática.
             </p>
 
             {/* CAIXA DE DESTAQUE: Fórmula / Regra-Chave / Artigo de Lei */}
@@ -294,26 +306,25 @@ export default function AulaClassesPalavras({
               <h4 className="font-bold text-foreground text-lg">
                 Estrutura de Flexão dos Substantivos
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
                 <div>
                   <p className="font-semibold text-amber-700 dark:text-amber-300">
-                    Singular → Plural
+                    Gênero e Número
                   </p>
-                  <ul className="space-y-1 mt-2">
-                    <li>• -ão → -ões (razão → razões)</li>
-                    <li>• -ão → -ães (capitão → capitães)</li>
-                    <li>• -ão → -ãos (cidadão → cidadãos)</li>
-                    <li>• Paroxítonos em -l → -is (projétil → projéteis)</li>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• Biformes: mudam de forma (menino/menina).</li>
+                    <li>• Uniformes: uma forma (sobrecomum, epiceno).</li>
+                    <li>• Plural dos Compostos: regra do "varia ou não".</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold text-amber-700 dark:text-amber-300">
-                    Compostos Especiais
+                    Grau (Aumentativo/Diminutivo)
                   </p>
-                  <ul className="space-y-1 mt-2">
-                    <li>• Verbo + substantivo: só o 2º varia (guarda-roupas)</li>
-                    <li>• Repetição: invariável (pingue-pongue)</li>
-                    <li>• Ligação hífen: variam os 2 (couve-flores)</li>
+                  <ul className="space-y-1 mt-2 text-sm">
+                    <li>• Sintético: sufixos (casarão, casinha).</li>
+                    <li>• Analítico: adjetivos (casa grande, casa pequena).</li>
+                    <li>• Valor Afetivo ou Pejorativo (fogaça, livreco).</li>
                   </ul>
                 </div>
               </div>
@@ -321,43 +332,41 @@ export default function AulaClassesPalavras({
           </div>
         </section>
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={2}
-            title="Conceito Científico"
+            index={1}
+            title="Fundamentos Morfológicos"
+            description="A base científica e a distinção entre Morfologia e Sintaxe"
             variant={mv[1]}
           />
-          <p className="text-lg text-muted-foreground">
-            O <strong>Substantivo</strong> é a classe de palavra que{" "}
-            <strong>nomeia</strong> seres, objetos, lugares, sentimentos, ações
-            e qualidades. Segundo Bechara, é a palavra que designa os seres em
-            geral, reais ou imaginários. É o núcleo de praticamente todos os
-            termos da oração (sujeito, objeto direto, objeto indireto,
-            complemento nominal).
-          </p>
-          <AlertBox tipo="info" titulo="Morfologia vs Sintaxe — Relembre!">
-            Na <strong>Morfologia</strong>, o substantivo é classificado pela
-            forma (RG da palavra). Na <strong>Sintaxe</strong>, ele exerce uma{" "}
-            <strong>função</strong> (Profissão da palavra). Ex: "navio" →
-            Morfologia: substantivo concreto. Sintaxe: pode ser sujeito, objeto
-            direto, etc.
-          </AlertBox>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg text-muted-foreground leading-relaxed text-justify">
+            <div className="space-y-4">
+              <p>
+                O <strong>Substantivo</strong> é a classe de palavra que <strong>nomeia</strong> seres, objetos, lugares, sentimentos, ações e qualidades. Na morfologia, ele é a palavra que designa os seres em geral, reais ou imaginários.
+              </p>
+              <AlertBox tipo="info" titulo="Morfologia vs Sintaxe">
+                <strong>Morfologia</strong>: É a classe gramatical (o "RG"). Ex: Navio = Substantivo.<br/>
+                <strong>Sintaxe</strong>: É a função na frase (a "Profissão"). Ex: Navio = Sujeito.
+              </AlertBox>
+            </div>
+            <div className="space-y-4">
+              <p>
+                Na estrutura oracional, o substantivo funciona como o <strong>núcleo</strong> de praticamente todos os termos: sujeito, objetos, complemento nominal e agente da passiva. Dominá-lo é o primeiro passo para a análise sintática avançada.
+              </p>
+            </div>
+          </div>
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={3}
-            title="Classificações dos Substantivos"
+            index={2}
+            title="Classificações Estratégicas"
+            description="Os 4 eixos fundamentais de oposição exigidos pela Cesgranrio"
             variant={mv[1]}
           />
-          <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-            Os substantivos são organizados em{" "}
-            <strong>quatro pares de oposição</strong> que definem a natureza do
-            ser.
-          </p>
           <ContentAccordion
             mode="stacked"
-            titulo="Os 4 Pares Fundamentais de Classificação"
+            titulo="Eixos de Classificação"
             icone={<LuTag />}
             corIndicador="bg-amber-500"
             slides={[
@@ -367,23 +376,20 @@ export default function AulaClassesPalavras({
                 conteudo: (
                   <div className="space-y-4">
                     <div className="grid md:grid-cols-2 gap-4">
-                      <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-                        <h4 className="font-bold text-blue-700 dark:text-blue-300 mb-2">Concreto 🏢</h4>
-                        <p className="text-sm">Seres com existência física, perceptível pelos sentidos.</p>
-                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
-                          <strong>Exemplos:</strong> plataforma, refinaria, petróleo, mar, funcionário
+                      <div className="bg-amber-500/5 rounded-lg p-4 border border-amber-500/20">
+                        <h4 className="font-bold text-amber-600 dark:text-amber-400 mb-2 uppercase text-sm tracking-widest">Concreto</h4>
+                        <p className="text-sm">Existência física ou independente, perceptível pelos sentidos.</p>
+                        <div className="mt-2 text-xs bg-background/50 rounded p-2 border border-border/50 font-medium">
+                          EX: plataforma, petróleo, mar, funcionário, vento, anjo.
                         </div>
                       </div>
-                      <div className="bg-purple-50 dark:bg-purple-950/30 rounded-lg p-4 border border-purple-200 dark:border-purple-800">
-                        <h4 className="font-bold text-purple-700 dark:text-purple-300 mb-2">Abstrato 💭</h4>
-                        <p className="text-sm">Qualidades, estados, ações, sentimentos - existem na mente.</p>
-                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
-                          <strong>Exemplos:</strong> beleza, eficiência, segurança, liberdade, produção
+                      <div className="bg-orange-500/5 rounded-lg p-4 border border-orange-500/20">
+                        <h4 className="font-bold text-orange-600 dark:text-orange-400 mb-2 uppercase text-sm tracking-widest">Abstrato</h4>
+                        <p className="text-sm">Qualidades, estados, ações e sentimentos. Dependem de um ser para existir.</p>
+                        <div className="mt-2 text-xs bg-background/50 rounded p-2 border border-border/50 font-medium">
+                          EX: beleza, eficiência, segurança, produção, saudade.
                         </div>
                       </div>
-                    </div>
-                    <div className="bg-amber-50 dark:bg-amber-950/30 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
-                      <p className="text-xs"><strong>⚠️ Dica Petrobras:</strong> "Segurança" é abstrato, mas "plataforma de segurança" é concreto!</p>
                     </div>
                   </div>
                 ),
@@ -392,25 +398,12 @@ export default function AulaClassesPalavras({
                 titulo: "🏷️ Próprio vs Comum",
                 icone: "2️⃣",
                 conteudo: (
-                  <div className="space-y-4">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-lg p-4 border border-emerald-200 dark:border-emerald-800">
-                        <h4 className="font-bold text-emerald-700 dark:text-emerald-300 mb-2">Próprio 🎯</h4>
-                        <p className="text-sm">Ser específico, individualizado. Sempre letra maiúscula!</p>
-                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
-                          <strong>Exemplos:</strong> Petrobras, Rio de Janeiro, Bacia de Campos, Atlântico
-                        </div>
-                      </div>
-                      <div className="bg-rose-50 dark:bg-rose-950/30 rounded-lg p-4 border border-rose-200 dark:border-rose-800">
-                        <h4 className="font-bold text-rose-700 dark:text-rose-300 mb-2">Comum 🌍</h4>
-                        <p className="text-sm">Qualquer elemento de uma classe. Letra minúscula.</p>
-                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
-                          <strong>Exemplos:</strong> empresa, cidade, bacia, oceano, funcionário
-                        </div>
-                      </div>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-4 border-l-2 border-amber-500 bg-muted/30">
+                      <p className="text-sm"><strong>Próprio:</strong> Individualiza (Petrobras, Rio). Sempre Maiúsculo.</p>
                     </div>
-                    <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-3 border border-blue-200 dark:border-blue-800">
-                      <p className="text-xs"><strong>📝 Regra:</strong> Próprio não admite artigo - "Petrobras" (não "a Petrobras")!</p>
+                    <div className="p-4 border-l-2 border-orange-500 bg-muted/30">
+                      <p className="text-sm"><strong>Comum:</strong> Generaliza (empresa, cidade). Minúsculo.</p>
                     </div>
                   </div>
                 ),
@@ -419,25 +412,12 @@ export default function AulaClassesPalavras({
                 titulo: "🔗 Simples vs Composto",
                 icone: "3️⃣",
                 conteudo: (
-                  <div className="space-y-4">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="bg-cyan-50 dark:bg-cyan-950/30 rounded-lg p-4 border border-cyan-200 dark:border-cyan-800">
-                        <h4 className="font-bold text-cyan-700 dark:text-cyan-300 mb-2">Simples 🔷</h4>
-                        <p className="text-sm">Um único radical. Uma palavra só.</p>
-                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
-                          <strong>Exemplos:</strong> mar, flor, petróleo, gás, poço, plataforma
-                        </div>
-                      </div>
-                      <div className="bg-orange-50 dark:bg-orange-950/30 rounded-lg p-4 border border-orange-200 dark:border-orange-800">
-                        <h4 className="font-bold text-orange-700 dark:text-orange-300 mb-2">Composto 🔗</h4>
-                        <p className="text-sm">Dois ou mais radicais unidos.</p>
-                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
-                          <strong>Exemplos:</strong> guarda-chuva, passatempo, petróleo-diesel, baixo-mar
-                        </div>
-                      </div>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-4 border-l-2 border-amber-500 bg-muted/30">
+                      <p className="text-sm"><strong>Simples:</strong> Um radical (mar, gás, poço).</p>
                     </div>
-                    <div className="bg-red-50 dark:bg-red-950/30 rounded-lg p-3 border border-red-200 dark:border-red-800">
-                      <p className="text-xs"><strong>⚠️ ARMADILHA CESGRANRIO:</strong> Plural de compostos é cobrado sempre! "guarda-chuvas" (não "guardas-chuvas")!</p>
+                    <div className="p-4 border-l-2 border-orange-500 bg-muted/30">
+                      <p className="text-sm"><strong>Composto:</strong> Dois radicais (passatempo, guarda-chuva).</p>
                     </div>
                   </div>
                 ),
@@ -446,25 +426,12 @@ export default function AulaClassesPalavras({
                 titulo: "🌱 Primitivo vs Derivado",
                 icone: "4️⃣",
                 conteudo: (
-                  <div className="space-y-4">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="bg-indigo-50 dark:bg-indigo-950/30 rounded-lg p-4 border border-indigo-200 dark:border-indigo-800">
-                        <h4 className="font-bold text-indigo-700 dark:text-indigo-300 mb-2">Primitivo 🌳</h4>
-                        <p className="text-sm">Não deriva de outra palavra portuguesa. Raiz original.</p>
-                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
-                          <strong>Exemplos:</strong> pedra, ferro, mar, terra, fogo, água
-                        </div>
-                      </div>
-                      <div className="bg-violet-50 dark:bg-violet-950/30 rounded-lg p-4 border border-violet-200 dark:border-violet-800">
-                        <h4 className="font-bold text-violet-700 dark:text-violet-300 mb-2">Derivado 🌿</h4>
-                        <p className="text-sm">Origina-se de outra palavra. Sufixos/prefixos.</p>
-                        <div className="mt-2 text-xs bg-white dark:bg-gray-800 rounded p-2">
-                          <strong>Exemplos:</strong> pedreira (de pedra), ferreiro (de ferro), marinheiro (de mar)
-                        </div>
-                      </div>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-4 border-l-2 border-amber-500 bg-muted/30">
+                      <p className="text-sm"><strong>Primitivo:</strong> Não vem de outra palavra (pedra, mar).</p>
                     </div>
-                    <div className="bg-green-50 dark:bg-green-950/30 rounded-lg p-3 border border-green-200 dark:border-green-800">
-                      <p className="text-xs"><strong>🎯 Foco Petrobras:</strong> "perfuração" (de perfurar), "extração" (de extrair), "refinaria" (de refinar)!</p>
+                    <div className="p-4 border-l-2 border-orange-500 bg-muted/30">
+                      <p className="text-sm"><strong>Derivado:</strong> Vem de outra (pedreira, marinheiro).</p>
                     </div>
                   </div>
                 ),
@@ -475,353 +442,220 @@ export default function AulaClassesPalavras({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={4}
-            title="Substantivos Coletivos — Atenção Máxima"
+            index={3}
+            title="Fenômenos de Substantivação"
+            description="O Efeito Rei Midas e a Derivação Imprópria"
             variant={mv[1]}
           />
-          <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-            O substantivo <strong>coletivo</strong> designa, no singular, um conjunto de seres da mesma espécie. A Cesgranrio adora cobrar os coletivos menos óbvios. Vire o card para ver o coletivo correspondente.
-          </p>
+          <div className="bg-amber-500/10 border-l-4 border-amber-500 p-6 rounded-xl mb-6 text-lg text-foreground/90 italic">
+            "Qualquer palavra precedida de artigo perde sua classe original e torna-se um substantivo."
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
               frente={
-                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                  <span className="text-5xl">🐟</span>
-                  <span className="font-bold text-xl text-foreground">Cardume</span>
-                  <p className="text-lg text-muted-foreground">Qual é o ser?</p>
-                </div>
-              }
-              verso={
-                <div className="flex flex-col justify-center h-full space-y-3 text-center text-lg p-2">
-                  <p className="font-black text-blue-400 text-lg">Peixes</p>
-                  <hr className="border-border/50" />
-                  <p className="text-muted-foreground text-lg">
-                    "Um <strong>cardume</strong> de sardinhas bloqueou o sonar."
-                  </p>
-                </div>
-              }
-            />
-            <FlipCard
-              frente={
-                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                  <span className="text-5xl">🌳</span>
-                  <span className="font-bold text-xl text-foreground">Arvoredo</span>
-                  <p className="text-lg text-muted-foreground">Qual é o ser?</p>
-                </div>
-              }
-              verso={
-                <div className="flex flex-col justify-center h-full space-y-3 text-center text-lg p-2">
-                  <p className="font-black text-emerald-400 text-lg">Árvores</p>
-                  <hr className="border-border/50" />
-                  <p className="text-muted-foreground text-lg">
-                    "O <strong>arvoredo</strong> às margens do rio foi preservado."
-                  </p>
-                </div>
-              }
-            />
-            <FlipCard
-              frente={
-                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                  <span className="text-5xl">⭐</span>
-                  <span className="font-bold text-xl text-foreground">Constelação</span>
-                  <p className="text-lg text-muted-foreground">Qual é o ser?</p>
-                </div>
-              }
-              verso={
-                <div className="flex flex-col justify-center h-full space-y-3 text-center text-lg p-2">
-                  <p className="font-black text-amber-400 text-lg">Estrelas</p>
-                  <hr className="border-border/50" />
-                  <p className="text-muted-foreground text-lg">
-                    "A <strong>constelação</strong> de Órion guia navegadores há séculos."
-                  </p>
-                </div>
-              }
-            />
-          </div>
-          <AlertBox tipo="info" titulo="Dica Cesgranrio: Concordância com Coletivos">
-            O substantivo coletivo está no singular, mas o verbo pode concordar com ele (singular) ou com o núcleo implícito (plural). Ex: "A maioria dos funcionários <strong>votou</strong>" (singular, concordância com 'maioria') — forma preferida pela norma culta. Fuja do erro!{" "}
-            Outros coletivos importantes: frota (navios/carros), manada (bovinos), alcateia (lobos), enxame (abelhas), penca (bananas), vara (porcos).
-          </AlertBox>
-        </section>
-
-        {/* Resumo + Multimídia M1 */}
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={5}
-            title="Resumo e Multimídia"
-            variant={mv[1]}
-          />
-          <LessonTabs
-            tabs={[
-              {
-                id: "video",
-                label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
-                  <div className="w-full flex flex-col items-center py-6">
-                    <VideoModal
-                      videoId="dQw4w9WgXcQ"
-                      title="Substantivos"
-                      duration="08:45"
-                    />
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-amber-500/10 rounded-full shadow-inner ring-1 ring-amber-500/20">
+                    <LuRepeat className="w-12 h-12 text-amber-500" />
                   </div>
-                ),
-              },
-              {
-                id: "visual",
-                label: "Visual",
-                icon: LuBrain,
-                content: (
-                  <ModuleSummaryCarouselNew
-                    tituloAula="Gramática de Elite"
-                    materia="Português"
-                    moduloNome="M1: Substantivo"
-                    images={[
-                      {
-                        title: "Substantivo",
-                        type: "Mapa Mental",
-                        placeholderColor: "#3b82f6",
-                      },
-                      {
-                        title: "Efeito Rei Midas",
-                        type: "Macete",
-                        placeholderColor: "#60a5fa",
-                      },
-                    ]}
-                  />
-                ),
-              },
-            ]}
-          />
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Verbo → Subst.
+                  </span>
+                  <span className="text-sm text-amber-500/80 font-medium">
+                    Verbo Substantivado
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-amber-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Exemplo</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    "<strong>O cantar</strong> dos pássaros é sinal de chuva."
+                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Aqui, o artigo "O" substantivou a ação.
+                  </p>
+                </div>
+              }
+              categoria="Verbo Substantivado"
+              variant="amber"
+            />
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-orange-500/10 rounded-full shadow-inner ring-1 ring-orange-500/20">
+                    <LuShieldAlert className="w-12 h-12 text-orange-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Advérbio → Subst.
+                  </span>
+                  <span className="text-sm text-orange-500/80 font-medium">
+                    Advérbio Substantivado
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-orange-500 font-bold border-b border-orange-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Exemplo</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    "Recebemos <strong>um não</strong> rotundo da gerência."
+                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    O artigo indefinido "UM" operou a mudança.
+                  </p>
+                </div>
+              }
+              categoria="Advérbio Substantivado"
+              variant="orange"
+            />
+            <FlipCard
+              frente={
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-amber-500/10 rounded-full shadow-inner ring-1 ring-amber-500/20">
+                    <LuPalette className="w-12 h-12 text-amber-500" />
+                  </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Adjetivo → Subst.
+                  </span>
+                  <span className="text-sm text-amber-500/80 font-medium">
+                    Adjetivo Substantivado
+                  </span>
+                </div>
+              }
+              verso={
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-amber-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">Exemplo</span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    "<strong>O azul</strong> do mar na Bacia de Campos."
+                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    A cor tornou-se o objeto da frase.
+                  </p>
+                </div>
+              }
+              categoria="Adjetivo Substantivado"
+              variant="amber"
+            />
+          </div>
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={4}
-            title="Derivação Imprópria — O 'Efeito Rei Midas'"
-            variant={mv[1]}
-          />
-          <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-xl mb-6 text-lg text-foreground">
-            <p>
-              <strong>O Artigo é o nosso Rei Midas</strong>: qualquer palavra da
-              língua que venha antecedida por ele perderá a sua classe original
-              e será imediatamente transformada em Substantivo.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <FlipCard
-              frente={
-                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                  <span className="font-bold text-3xl bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">
-                    Verbo
-                  </span>
-                  <LuArrowDown className="w-10 h-10 text-muted-foreground/40" />
-                  <span className="font-bold text-2xl text-foreground/90">
-                    Substantivo
-                  </span>
-                </div>
-              }
-              verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-2">
-                  <p>
-                    <strong>O cantar</strong> dos pássaros encanta.
-                  </p>
-                  <hr className="border-border/50" />
-                  <p>
-                    Foi um <strong>amanhecer</strong> radiante.
-                  </p>
-                </div>
-              }
-            />
-            <FlipCard
-              frente={
-                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                  <span className="font-bold text-3xl bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-                    Advérbio
-                  </span>
-                  <LuArrowDown className="w-10 h-10 text-muted-foreground/40" />
-                  <span className="font-bold text-2xl text-foreground/90">
-                    Substantivo
-                  </span>
-                </div>
-              }
-              verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-2">
-                  <p>
-                    Ele recebeu um <strong>não</strong> rotundo.
-                  </p>
-                  <hr className="border-border/50" />
-                  <p>
-                    Espero um <strong>sim</strong> da presidência.
-                  </p>
-                </div>
-              }
-            />
-            <FlipCard
-              frente={
-                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                  <span className="font-bold text-3xl bg-gradient-to-r from-cyan-600 to-blue-500 bg-clip-text text-transparent">
-                    Adjetivo
-                  </span>
-                  <LuArrowDown className="w-10 h-10 text-muted-foreground/40" />
-                  <span className="font-bold text-2xl text-foreground/90">
-                    Substantivo
-                  </span>
-                </div>
-              }
-              verso={
-                <div className="flex flex-col justify-center h-full space-y-4 text-center text-lg p-2">
-                  <p>
-                    <strong>O azul</strong> do céu é intenso.
-                  </p>
-                  <hr className="border-border/50" />
-                  <p>
-                    Ele defende os <strong>pobres</strong>.
-                  </p>
-                </div>
-              }
-            />
-          </div>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={5}
-            title="Gênero dos Substantivos — Os Heterônimos"
-            variant={mv[1]}
-          />
-          <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-            Os <strong>heterônimos</strong> são substantivos que formam o feminino através de palavras completamente diferentes (radicais distintos). São fontes frequentes de pegadinhas em prova de ortografia e concordância.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {[
-              ["bode", "cabra"],
-              ["boi", "vaca"],
-              ["carneiro", "ovelha"],
-              ["cavalo", "égua"],
-              ["frade", "freira"],
-              ["genro", "nora"],
-              ["homem", "mulher"],
-              ["padrinho", "madrinha"],
-            ].map(([m, f], i) => (
-              <div key={i} className="p-3 bg-muted/30 rounded-xl border border-border text-center text-lg">
-                <span className="font-bold text-blue-500">{m}</span>
-                <span className="mx-2 text-muted-foreground">/</span>
-                <span className="font-bold text-rose-400">{f}</span>
-              </div>
-            ))}
-          </div>
-          <AlertBox tipo="info" titulo="Substantivos de Gênero Duvidoso — Cesgranrio Cobra!">
-            Alguns substantivos têm gênero que causa dúvida: são MASCULINOS: o personagem, o dó (nota musical), o tapa, o êxtase, o estratagema, o tema, o poema, o dilema, o plasma. São FEMININOS: a alface, a personagem (em gramáticas tradicionais), a cal, a dinamite, a pane, a gênese. Em caso de dúvida em prova, lembre-se: consultar o gênero canônico na gramática Normativa Bechara é o critério da Cesgranrio.
-          </AlertBox>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={6}
-            title="Plural dos Substantivos Compostos"
+            title="Plural de Compostos e Coletivos"
+            description="Zonas críticas para Cesgranrio e concursos Petrobras"
             variant={mv[1]}
           />
           <ContentAccordion
             mode="stacked"
-            titulo="Regras de Pluralização"
-            icone={<LuHash />}
-            corIndicador="bg-amber-500"
+            titulo="Regras e Desafios"
+            icone={<LuLibrary />}
+            corIndicador="bg-orange-500"
             slides={[
               {
-                titulo: "Substantivo + Substantivo (sem hífen ou com)",
-                icone: "📚",
-                conteudo:
-                  "Ambos os elementos variam: 'couve-flor' → 'couves-flores'; 'pombo-correio' → 'pombos-correio' (segundo é invariável quando indica função). Regra geral: se ambos forem substantivos de igual valor, os dois variam. Exceção: quando o segundo funciona como determinante do primeiro, só o primeiro varia.",
-              },
-              {
-                titulo: "Substantivo + Adjetivo / Adjetivo + Substantivo",
-                icone: "🔤",
-                conteudo:
-                  "Ambos os elementos variam: 'amor-perfeito' → 'amores-perfeitos'; 'gentil-homem' → 'gentis-homens'; 'alto-relevo' → 'altos-relevos'. Quando o adjetivo 'grão' ou 'grã' aparece, só o segundo elemento varia: 'grão-mestre' → 'grão-mestres'.",
-              },
-              {
-                titulo: "Verbo + Substantivo / Verbo + Advérbio",
-                icone: "⚙️",
-                conteudo:
-                  "Só o substantivo varia (o verbo fica invariável): 'guarda-chuva' → 'guarda-chuvas'; 'porta-mala' → 'porta-malas'; 'beija-flor' → 'beija-flores'. Com verbo + advérbio: ambos ficam invariáveis: 'bota-fora' → 'bota-foras' (o 's' vai para o final, indicando o plural do conjunto).",
-              },
-              {
-                titulo: "Palavras Repetidas / Onomatopeias",
-                icone: "🔁",
-                conteudo:
-                  "Só o último elemento varia: 'pingue-pongue' → 'pingue-pongues'; 'reco-reco' → 'reco-recos'. Para as formas com elemento invariável (bem, mal, além, aquém): 'bem-estar' → 'bens-estares'; 'mal-entendido' → 'mal-entendidos'. Atenção: 'mal' antes de vogal não leva hífen: 'malentendido' (novo acordo ortográfico).",
-              },
-            ]}
-          />
-          <AlertBox tipo="warning" titulo="Novo Acordo Ortográfico — O que mudou no hífen">
-            O Acordo Ortográfico de 1990 modificou diversas regras do hífen em compostos. Não se usa mais hífen: entre prefixo terminado em vogal e segundo elemento começado por vogal diferente (coabitação), entre prefixo e R ou S (antessala, ultrassom). Usa-se hífen: entre prefixo e segundo elemento com H (anti-higiênico), entre prefixo terminado em vogal e segundo com mesma vogal (micro-ondas), e com 'sub' antes de vogal (sub-humano). A Cesgranrio tem cobrado esse tema!
-          </AlertBox>
-          <AlertBox tipo="success" titulo="Estratégia de Prova — Plural de Compostos">
-            Quando em dúvida sobre o plural de um composto, pergunte: "O segundo elemento é uma preposição, advérbio invariável ou numeral?" → Se sim, só o primeiro varia: guarda-POR-vida → guardas-por-vida. "É verbo?" → Fica invariável. "São dois substantivos de igual hierarquia?" → Os dois variam. Essa lógica cobre 90% das questões de concurso sobre plural de compostos.{" "}
-            <strong>Exemplos extras:</strong> segunda-feira → segundas-feiras; pé-de-moleque → pés-de-moleque; mata-borrão → mata-borrões; amor-perfeito → amores-perfeitos; salvo-conduto → salvos-condutos.
-          </AlertBox>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={7}
-            title="Resumo e Multimídia"
-            variant={mv[1]}
-          />
-          <LessonTabs
-            tabs={[
-              {
-                id: "video",
-                label: "Vídeo Aula",
-                icon: LuPlayCircle,
-                content: (
-                  <div className="w-full flex flex-col items-center py-6">
-                    <VideoModal
-                      videoId="dQw4w9WgXcQ"
-                      title="Substantivos"
-                      duration="08:45"
-                    />
+                titulo: "📚 Plural de Compostos",
+                icone: "🔄",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-sm font-semibold text-orange-600 mb-2">Regra de Ouro: Varia ou Não?</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="p-3 rounded border border-border bg-background/50">
+                        <p className="text-xs"><strong>Variam:</strong> Subst, Adj, Numeral, Pronome.</p>
+                      </div>
+                      <div className="p-3 rounded border border-border bg-background/50">
+                        <p className="text-xs"><strong>NÃO Variam:</strong> Verbo, Advérbio, Interjeição.</p>
+                      </div>
+                    </div>
+                    <div className="text-xs italic text-muted-foreground mt-2">
+                      EX: Guarda-chuva (V+S) → Guarda-chuvas | Couve-flor (S+S) → Couves-flores.
+                    </div>
                   </div>
                 ),
               },
               {
-                id: "visual",
-                label: "Visual",
-                icon: LuBrain,
-                content: (
-                  <ModuleSummaryCarouselNew
-                    tituloAula="Gramática de Elite"
-                    materia="Português"
-                    moduloNome="M1: Substantivo"
-                    images={[
-                      {
-                        title: "Substantivo",
-                        type: "Mapa Mental",
-                        placeholderColor: "#3b82f6",
-                      },
-                      {
-                        title: "Efeito Rei Midas",
-                        type: "Macete",
-                        placeholderColor: "#60a5fa",
-                      },
-                    ]}
-                  />
+                titulo: "⚓ Coletivos Industriais",
+                icone: "🏭",
+                conteudo: (
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    <div className="p-2 border border-border rounded text-center">
+                      <p className="text-xs font-bold">Frota</p>
+                      <p className="text-[10px] text-muted-foreground">Navios/Veículos</p>
+                    </div>
+                    <div className="p-2 border border-border rounded text-center">
+                      <p className="text-xs font-bold">Resíduo</p>
+                      <p className="text-[10px] text-muted-foreground">Conjunto de detritos</p>
+                    </div>
+                    <div className="p-2 border border-border rounded text-center">
+                      <p className="text-xs font-bold">Acervo</p>
+                      <p className="text-[10px] text-muted-foreground">Livros/Obras</p>
+                    </div>
+                  </div>
                 ),
               },
             ]}
           />
+          <AlertBox tipo="warning" titulo="Atenção ao Hífen">
+            O Acordo Ortográfico de 1990 removeu hífens em casos como "mandachuva" e "paraquedas". A Cesgranrio cobra a grafia correta em questões de concordância.
+          </AlertBox>
         </section>
 
-        <section className="mt-16">
+        <ModuleConsolidation
+          index={5}
+          variant={mv[1]}
+          video={{
+            videoId: "dQw4w9WgXcQ",
+            title: "Substantivo: O Nomeador",
+            duration: "08:45",
+          }}
+          resumoVisual={{
+            moduloNome: "M1: Substantivo",
+            tituloAula: "Classes de Palavras",
+            materia: "Português",
+            images: [
+              {
+                title: "Substantivo",
+                type: "Mapa Mental",
+                placeholderColor: "bg-amber-100",
+              },
+              {
+                title: "Efeito Rei Midas",
+                type: "Macete",
+                placeholderColor: "bg-orange-100",
+              },
+            ],
+          }}
+          sinteseEstrategica={{
+            title: "Efeito Rei Midas",
+            content: (
+              <p className="text-lg">
+                "Qualquer palavra precedida de <strong>artigo</strong> torna-se <strong>substantivo</strong>."
+              </p>
+            ),
+          }}
+          audio={{
+            audioUrl: "#",
+            titulo: "AudioAula: Substantivo",
+            artista: "Prof. André",
+          }}
+        />
+
+        <section className="mt-12">
           <QuizInterativo
             questoes={qMod1}
-            titulo="QUIZ: Substantivo: O Nomeador"
+            titulo="QUIZ: Substantivo"
             icone="🎯"
-            numero={8}
+            numero={6}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          variant={mv[1]}
-        />
+            variant={mv[1]}
+          />
         </section>
       </TabsContent>
 
@@ -836,7 +670,7 @@ export default function AulaClassesPalavras({
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="A Arte da Qualificação: O Adjetivo"
             description="Explore as nuances e especificações que o adjetivo confere ao substantivo"
             variant={mv[2]}
@@ -847,7 +681,7 @@ export default function AulaClassesPalavras({
               O adjetivo é a classe de palavras que exerce a função de qualificar o substantivo, 
               atribuindo-lhe estados, qualidades, propriedades ou modos de ser. Diferente do 
               substantivo, que nomeia a essência, o adjetivo lida com os acidentes e as nuances 
-              da realidade. Segundo Celso Cunha, o adjetivo funciona como um adscrito do nome, 
+              da realidade. De acordo com a tradição gramatical, o adjetivo funciona como um adscrito do nome, 
               estabelecendo uma relação de dependência morfológica (concordância) e semântica 
               (especificação). Na estrutura da oração, o adjetivo pode atuar como adjunto 
               adnominal (quando está colado ao substantivo) ou predicativo (quando expressa 
@@ -911,7 +745,7 @@ export default function AulaClassesPalavras({
               <h4 className="font-bold text-foreground text-lg">
                 Locuções Adjetivas e Erudições Técnicas
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-blue-700 dark:text-blue-300">Indústria e Natureza</p>
                   <ul className="space-y-1 mt-2 text-sm">
@@ -935,184 +769,105 @@ export default function AulaClassesPalavras({
           </div>
         </section>
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
+        {/* ★ SEÇÃO DE CONTEÚDO ESTRATÉGICO */}
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={1}
-            title="Conceito Científico"
-            variant={mv[2]}
-          />
-          <p className="text-lg text-muted-foreground">
-            O <strong>Adjetivo</strong> é a classe de palavra que{" "}
-            <strong>qualifica</strong> ou <strong>caracteriza</strong> o
-            substantivo, atribuindo-lhe propriedades, estados ou modos de ser. É
-            classe <strong>variável</strong> (concorda em gênero e número).
-          </p>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={2}
-            title="A Posição do Adjetivo Muda o Sentido"
-            variant={mv[2]}
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <FlipCard
-              hideFooter={true}
-              frente={
-                <div className="space-y-4 py-2">
-                  <h4 className="font-black text-xl uppercase">
-                    Adjetivo POSPOSTO
-                  </h4>
-                  <p className="text-lg text-muted-foreground uppercase tracking-widest">
-                    Depois do Substantivo
-                  </p>
-                  <p className="text-lg">
-                    Mantém o sentido original, literal e objetivo (
-                    <strong>denotativo</strong>).
-                  </p>
-                </div>
-              }
-              verso={
-                <div className="space-y-3 text-center">
-                  <p className="font-bold text-blue-600 uppercase text-[10px]">
-                    Valor Objetivo
-                  </p>
-                  <p>
-                    "Ele é um homem <strong>grande</strong>."
-                  </p>
-                  <p className="text-muted-foreground text-lg">
-                    (Alguém fisicamente alto)
-                  </p>
-                </div>
-              }
-            />
-            <FlipCard
-              hideFooter={true}
-              frente={
-                <div className="space-y-4 py-2">
-                  <h4 className="font-black text-xl uppercase">
-                    Adjetivo ANTEPOSTO
-                  </h4>
-                  <p className="text-lg text-muted-foreground uppercase tracking-widest">
-                    Antes do Substantivo
-                  </p>
-                  <p className="text-lg">
-                    Sentido figurado, emotivo ou subjetivo (
-                    <strong>conotativo</strong>).
-                  </p>
-                </div>
-              }
-              verso={
-                <div className="space-y-3 text-center">
-                  <p className="font-bold text-indigo-600 uppercase text-[10px]">
-                    Valor Subjetivo
-                  </p>
-                  <p>
-                    "Ele é um <strong>grande</strong> homem."
-                  </p>
-                  <p className="text-muted-foreground text-lg">
-                    (Alguém notável ou bondoso)
-                  </p>
-                </div>
-              }
-            />
-          </div>
-          <AlertBox tipo="success" titulo="Dica para a Prova">
-            Inverter o adjetivo pode mudar o sentido e invalidar uma reescrita
-            na prova da Cesgranrio.
-          </AlertBox>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={3}
-            title="Adjetivo Composto e Locução Adjetiva"
+            title="Classificação e Flexão"
+            description="As regras de variação e as locuções adjetivas"
             variant={mv[2]}
           />
           <ContentAccordion
             mode="stacked"
-            titulo="Tópicos Avançados"
+            titulo="Domínio do Adjetivo"
             icone={<LuTag />}
             corIndicador="bg-blue-500"
             slides={[
               {
-                titulo: "Adjetivo Composto (Plurimodificador)",
-                icone: "🔗",
-                conteudo:
-                  "O adjetivo composto é formado por dois ou mais radicais unidos por hífen. Na pluralização, apenas o ÚLTIMO elemento varia: 'camisas verde-escuras', 'acordos luso-brasileiros'. Exceção: quando o segundo elemento é substantivo, fica invariável: 'camisas verde-musgo', 'olhos castanho-claro'.",
-              },
-              {
-                titulo: "Locução Adjetiva",
-                icone: "📌",
-                conteudo:
-                  "É um conjunto de palavras (geralmente preposição + substantivo) que exerce a função de adjetivo. Exemplos: 'amor de mãe' = amor materno; 'casca de árvore' = casca arbórea; 'leite de vaca' = leite bovino. A prova pode pedir a substituição de uma locução pelo adjetivo equivalente.",
-              },
-              {
-                titulo: "Grau do Adjetivo",
-                icone: "📊",
-                conteudo:
-                  "Comparativo: de superioridade (mais alto do que), de igualdade (tão alto quanto), de inferioridade (menos alto do que). Superlativo absoluto analítico (muito alto) ou sintético (altíssimo). Superlativo relativo de superioridade (o mais alto de) e de inferioridade (o menos alto de). Formas sintéticas irregulares: bom→ótimo, mau→péssimo, grande→máximo, pequeno→mínimo.",
-              },
-            ]}
-          />
-          <AlertBox tipo="danger" titulo="Armadilha: Adjetivo Pátrio">
-            Adjetivos pátrios derivados de gentílicos podem ser cobrados na Cesgranrio como adjetivos ou substantivos. Ex: "técnica <strong>brasileira</strong>" (adjetivo) vs "o <strong>brasileiro</strong> trabalha muito" (substantivo por derivação imprópria). Lembre-se: adjetivos pátrios compostos só variam no último elemento — "acordos <strong>ítalo-brasileiros</strong>", nunca "ítalo-brasileira" no masculino plural.
-          </AlertBox>
-        </section>
-
-
-
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={4}
-            title="Resumo e Multimídia"
-            variant={mv[2]}
-          />
-          <LessonTabs
-            tabs={[
-              {
-                id: "visual",
-                label: "Mapa Mental",
-                icon: LuBrain,
-                content: (
-                  <ModuleSummaryCarouselNew
-                    tituloAula="Gramática de Elite"
-                    materia="Português"
-                    moduloNome="M2: Adjetivo"
-                    images={[
-                      {
-                        title: "Adjetivo",
-                        type: "Qualificador",
-                        placeholderColor: "#10b981",
-                      },
-                    ]}
-                  />
+                titulo: "🔄 Flexão dos Compostos",
+                icone: "1️⃣",
+                conteudo: (
+                  <div className="space-y-4">
+                    <p className="text-sm">Em adjetivos compostos, a regra geral é que <strong>apenas o último elemento varia</strong>.</p>
+                    <div className="bg-blue-500/5 rounded-lg p-4 border border-blue-500/20">
+                      <p className="text-xs font-mono">EX: Acordos econômico-financeiros | Camisas azul-escuras.</p>
+                      <p className="text-[10px] mt-2 text-muted-foreground italic">*Exceções: Surdo-mudo (ambos variam) e Azul-marinho/Azul-celeste (invariáveis).</p>
+                    </div>
+                  </div>
                 ),
               },
               {
-                id: "audio",
-                label: "Resumo Áudio",
-                icon: LuMusic,
-                content: (
-                   <MusicPlayerCard 
-                     titulo="A Meta dos Adjetivos"
-                     artista="Resumo Morfologia"
-                     audioUrl=""
-                   />
+                titulo: "📜 Locuções Adjetivas",
+                icone: "2️⃣",
+                conteudo: (
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-3 border rounded bg-muted/30">
+                      <p className="text-xs"><strong>De anjo:</strong> Angelical</p>
+                      <p className="text-xs"><strong>De guerra:</strong> Bélico</p>
+                    </div>
+                    <div className="p-3 border rounded bg-muted/30">
+                      <p className="text-xs"><strong>De chumbo:</strong> Plúmbeo</p>
+                      <p className="text-xs"><strong>De fígado:</strong> Hepático</p>
+                    </div>
+                  </div>
                 ),
               },
             ]}
           />
         </section>
 
-        <section className="mt-16">
+        <ModuleConsolidation
+          index={2}
+          variant={mv[2]}
+          video={{
+            videoId: "dQw4w9WgXcQ",
+            title: "Adjetivo: O Qualificador",
+            duration: "10:15",
+          }}
+          resumoVisual={{
+            moduloNome: "M2: Adjetivo",
+            tituloAula: "Classes de Palavras",
+            materia: "Português",
+            images: [
+              {
+                title: "Adjetivo",
+                type: "Mapa Mental",
+                placeholderColor: "bg-blue-100",
+              },
+              {
+                title: "Posição do Adjetivo",
+                type: "Macete Semântico",
+                placeholderColor: "bg-cyan-100",
+              },
+            ],
+          }}
+          sinteseEstrategica={{
+            title: "A Semântica da Posição",
+            content: (
+              <div className="space-y-4">
+                <p>A posição do adjetivo altera o sentido:</p>
+                <ul className="list-disc list-inside space-y-2 text-lg">
+                  <li><strong>Homem grande:</strong> Estatura física (Objetivo).</li>
+                  <li><strong>Grande homem:</strong> Caráter/Importância (Subjetivo).</li>
+                </ul>
+              </div>
+            ),
+          }}
+          audio={{
+            audioUrl: "#",
+            titulo: "AudioAula: Adjetivo",
+            artista: "Prof. André",
+          }}
+        />
+
+        <section className="mt-12">
           <QuizInterativo
             questoes={qMod2}
-            titulo="QUIZ: Adjetivo: O Qualificador"
+            titulo="QUIZ: Adjetivo"
             icone="✨"
-            numero={5}
-            variant={mv[2]}
+            numero={2}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
+            variant={mv[2]}
           />
         </section>
       </TabsContent>
@@ -1128,7 +883,7 @@ export default function AulaClassesPalavras({
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="O Poder do Artigo: Definindo o Nome"
             description="Entenda como os menores termos da língua exercem o maior impacto na estruturação do texto"
             variant={mv[3]}
@@ -1140,7 +895,7 @@ export default function AulaClassesPalavras({
               determiná-lo de forma precisa ou imprecisa, indicando, ao mesmo tempo, 
               o seu gênero e o seu número. Dividem-se em definidos (o, a, os, as) 
               e indefinidos (um, uma, uns, umas). Segundo a tradição gramatical de 
-              Rocha Lima, o artigo é um "atualizador", transformando um conceito 
+              Na perspectiva da gramática normativa, o artigo é um "atualizador", transformando um conceito 
               técnico ou abstrato em um ser específico dentro do universo do discurso. 
               Sua presença ou ausência não é facultativa sob o ponto de vista semântico: 
               ela define se estamos falando de uma categoria geral ("Cão que late...") 
@@ -1204,7 +959,7 @@ export default function AulaClassesPalavras({
               <h4 className="font-bold text-foreground text-lg">
                 O Interruptor Lingüístico: Presença vs. Ausência
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-emerald-700 dark:text-emerald-300">Concordância Rígida</p>
                   <ul className="space-y-1 mt-2 text-sm">
@@ -1226,235 +981,59 @@ export default function AulaClassesPalavras({
           </div>
         </section>
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12 text-justify leading-relaxed">
-          <ModuleSectionHeader
-            index={1}
-            title="Conceito Científico"
-            variant={mv[3]}
-          />
-          <p className="text-lg text-muted-foreground">
-            O <strong>Artigo</strong> é a classe de palavra{" "}
-            <strong>variável</strong> que antecede o substantivo para{" "}
-            <strong>determiná-lo</strong> (artigo definido: o, a, os, as) ou{" "}
-            <strong>indeterminá-lo</strong> (artigo indefinido: um, uma, uns,
-            umas).
-          </p>
-        </section>
+        <ModuleConsolidation
+          index={3}
+          variant={mv[3]}
+          video={{
+            videoId: "dQw4w9WgXcQ",
+            title: "Artigo: O Determinante",
+            duration: "07:20",
+          }}
+          resumoVisual={{
+            moduloNome: "M3: Artigo",
+            tituloAula: "Classes de Palavras",
+            materia: "Português",
+            images: [
+              {
+                title: "Artigo",
+                type: "Mapa Mental",
+                placeholderColor: "bg-emerald-100",
+              },
+              {
+                title: "Substantivação",
+                type: "Efeito Rei Midas",
+                placeholderColor: "bg-teal-100",
+              },
+            ],
+          }}
+          sinteseEstrategica={{
+            title: "A Regra da Proibição",
+            content: (
+              <div className="space-y-4">
+                <p>Cuidado com a concordância em placas e avisos:</p>
+                <ul className="list-disc list-inside space-y-2 text-lg">
+                  <li><strong>É proibida a entrada:</strong> Correto (Artigo força o feminino).</li>
+                  <li><strong>É proibido entrada:</strong> Correto (Sem artigo, fica neutro).</li>
+                  <li><span className="text-red-500">❌ É proibido a entrada:</span> Errado (Falta de concordância).</li>
+                </ul>
+              </div>
+            ),
+          }}
+          audio={{
+            audioUrl: "#",
+            titulo: "AudioAula: Artigo",
+            artista: "Prof. André",
+          }}
+        />
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={2}
-            title="Concordância: É Proibido vs É Proibida"
-            variant={mv[3]}
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <FlipCard
-              hideFooter={true}
-              frente={
-                <div className="space-y-4 py-2">
-                  <h4 className="font-black text-xl uppercase">Sem Artigo</h4>
-                  <p className="text-lg">Fica invariável (masculino).</p>
-                </div>
-              }
-              verso={
-                <div className="space-y-3 text-center">
-                  <p className="font-bold text-red-600 uppercase text-[10px]">
-                    Invariável
-                  </p>
-                  <p>
-                    "É <strong>proibido</strong> entrada."
-                  </p>
-                  <p className="text-muted-foreground text-lg">
-                    (Entrada em geral)
-                  </p>
-                </div>
-              }
-            />
-            <FlipCard
-              hideFooter={true}
-              frente={
-                <div className="space-y-4 py-2">
-                  <h4 className="font-black text-xl uppercase">Com Artigo</h4>
-                  <p className="text-lg">Ocorre a concordância.</p>
-                </div>
-              }
-              verso={
-                <div className="space-y-3 text-center">
-                  <p className="font-bold text-emerald-600 uppercase text-[10px]">
-                    Variável
-                  </p>
-                  <p>
-                    "É <strong>proibida a</strong> entrada."
-                  </p>
-                  <p className="text-muted-foreground text-lg">
-                    (Aquela entrada específica)
-                  </p>
-                </div>
-              }
-            />
-          </div>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={3}
-            title="Usos Especiais do Artigo"
-            variant={mv[3]}
-          />
-          <ContentAccordion
-            mode="stacked"
-            titulo="Casos Avançados"
-            icone={<LuBookOpen />}
-            corIndicador="bg-emerald-500"
-            slides={[
-              {
-                titulo: "Artigo Definido — Quando usar",
-                icone: "🎯",
-                conteudo:
-                  "Use o artigo definido (o, a, os, as) para referir-se a um ser já conhecido ou único: 'O presidente assinou o contrato' (aquele presidente específico). Obrigatório após o numeral ordinal em títulos: 'D. Pedro II', 'Henrique VIII'. Exige combinação com preposição: DE + O = DO, EM + A = NA, POR + O = PELO.",
-              },
-              {
-                titulo: "Artigo Indefinido — Quando usar",
-                icone: "❓",
-                conteudo:
-                  "Use o artigo indefinido (um, uma, uns, umas) para referir-se a um ser não identificado: 'Um funcionário ligou' (não sabemos quem). Pode indicar aproximação: 'Eram umas três horas.' Curiosidade: 'uns' e 'umas' são formas de plural que frequentemente indicam quantidade aproximada em linguagem coloquial.",
-              },
-              {
-                titulo: "Artigo Zero (Ausência de Artigo)",
-                icone: "⭕",
-                conteudo:
-                  "A ausência de artigo é chamada de 'artigo zero' e também carrega significado. 'Cão late' (qualquer cão, generalização) vs 'O cão late' (cão específico). Em avisos e placas, a ausência do artigo é padrão: 'Proibido entrada', 'Silêncio'. Essa distinção é cobrada em questões de reescrita.",
-              },
-              {
-                titulo: "Artigo como Substantivador",
-                icone: "✨",
-                conteudo:
-                  "O artigo é o principal substantivador da língua ('Efeito Rei Midas'). Qualquer classe de palavra antecedida por artigo torna-se substantivo: 'O sim que esperávamos chegou' (advérbio 'sim' → substantivo); 'O belo me atrai' (adjetivo 'belo' → substantivo). Esse fenômeno chama-se derivação imprópria.",
-              },
-            ]}
-          />
-          <AlertBox tipo="warning" titulo="Artigo com Nomes Próprios — Cesgranrio Adora!">
-            Alguns nomes de países pedem artigo (o Brasil, a França, os Estados Unidos) e outros não (Portugal, Moçambique, Cuba). Nomes de pessoas famosas podem receber artigo em registro informal: "A Petrobras anunciou..." — neste caso, o artigo é parte do nome. Em provas de reescrita, remover ou acrescentar artigo pode alterar o registro do texto.
-          </AlertBox>
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={4}
-            title="Resumo e Multimídia"
-            variant={mv[3]}
-          />
-          <LessonTabs
-            tabs={[
-              {
-                id: "visual",
-                label: "Determinantes",
-                icon: LuBrain,
-                content: (
-                  <ModuleSummaryCarouselNew
-                    tituloAula="Gramática de Elite"
-                    materia="Português"
-                    moduloNome="M3: Artigo"
-                    images={[
-                      {
-                        title: "Artigo",
-                        type: "Determinante",
-                        placeholderColor: "#f59e0b",
-                      },
-                    ]}
-                  />
-                ),
-              },
-              {
-                id: "audio",
-                label: "Resumo Áudio",
-                icon: LuMusic,
-                content: (
-                   <MusicPlayerCard 
-                     titulo="O Rei Midas: Artigos"
-                     artista="Resumo Morfologia"
-                     audioUrl=""
-                   />
-                ),
-              },
-            ]}
-          />
-        </section>
-
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={3}
-            title="Artigo e Concordância — Casos Especiais Cesgranrio"
-            variant={mv[3]}
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FlipCard
-              frente={
-                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                  <span className="text-5xl">🇧🇷</span>
-                  <span className="font-black text-xl text-amber-500">O Brasil vs Portugal</span>
-                  <p className="text-lg text-muted-foreground">Como fica o artigo?</p>
-                </div>
-              }
-              verso={
-                <div className="flex flex-col justify-center h-full space-y-2 p-2 text-lg">
-                  <p className="text-emerald-400 font-bold">✅ Fui AO Brasil. (artigo obrigatório)</p>
-                  <p className="text-emerald-400 font-bold">✅ Fui a Portugal. (sem artigo)</p>
-                  <hr className="border-border/50" />
-                  <p className="text-lg text-muted-foreground">Países que pedem artigo: Brasil, EUA, Argentina, França, China, Japão, Alemanha. Países sem artigo: Portugal, Cuba, Moçambique, Angola, Israel.</p>
-                </div>
-              }
-            />
-            <FlipCard
-              frente={
-                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                  <span className="text-5xl">🏢</span>
-                  <span className="font-black text-xl text-amber-500">A Petrobras</span>
-                  <p className="text-lg text-muted-foreground">Artigo e concordância</p>
-                </div>
-              }
-              verso={
-                <div className="flex flex-col justify-center h-full space-y-2 p-2 text-lg">
-                  <p className="text-emerald-400 font-bold">✅ "A Petrobras anunciou seus resultados."</p>
-                  <p className="text-blue-400 text-lg">O artigo é parte do nome próprio da empresa e exige concordância feminina.</p>
-                  <hr className="border-border/50" />
-                  <p className="text-red-400 font-bold">❌ "O Petrobras anunciou" — artigo masculino com substantivo feminino.</p>
-                </div>
-              }
-            />
-          </div>
-          <ContentAccordion
-            mode="stacked"
-            titulo="Artigo com Nomes Próprios e Títulos"
-            icone={<LuBookOpen />}
-            corIndicador="bg-emerald-500"
-            slides={[
-              {
-                titulo: "Artigo com Nomes de Pessoas",
-                icone: "👤",
-                conteudo:
-                  "Na norma culta escrita, evita-se o artigo diante de nomes próprios de pessoas: 'Pedro chegou' (formal). Na linguagem oral informal do Brasil, o artigo é comum: 'O Pedro chegou'. Em provas de concurso, o contexto do registro é determinante — textos formais pedem ausência de artigo diante de nomes próprios de pessoas.",
-              },
-              {
-                titulo: "Artigo com Nomes Geográficos",
-                icone: "🗺️",
-                conteudo:
-                  "Cidades geralmente não pedem artigo: 'Fui a Brasília', 'Venho de Manaus'. Exceção: cidades com artigo incorporado ao nome: 'O Cairo', 'A Haia', 'O Rio de Janeiro'. Estados e países variam (ver regras acima). Prova: 'Trabalhei __ Petrobras no Rio de Janeiro' → NA Petrobras (em + a, crase do artigo).",
-              },
-            ]}
-          />
-        </section>
-
-
-
-        <section className="mt-16">
+        <section className="mt-12">
           <QuizInterativo
             questoes={qMod3}
-            titulo="QUIZ: Artigo: O Determinante"
-            icone="🏷️"
-            numero={5}
-            variant={mv[3]}
+            titulo="QUIZ: Artigo"
+            icone="🎯"
+            numero={3}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
+            variant={mv[3]}
           />
         </section>
       </TabsContent>
@@ -1470,7 +1049,7 @@ export default function AulaClassesPalavras({
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="O Pronome: O Arquiteto da Coesão"
             description="Domine a classe que substitui, retoma e organiza as relações no texto"
             variant={mv[4]}
@@ -1484,7 +1063,7 @@ export default function AulaClassesPalavras({
               o pronome é o principal responsável pela coesão textual e pelas relações de 
               poder e cortesia na língua. Dividem-se em várias categorias: pessoais (reto 
               e oblíquo), possessivos, demonstrativos, indefinidos, interrogativos e 
-              relativos. Segundo Evanildo Bechara, os pronomes formam um sistema fechado 
+              relativos. Segundo a gramática normativa, os pronomes formam um sistema fechado 
               de referências que permite ao falante organizar o "eu", o "tu" e o "ele" 
               dentro de um contexto comunicativo dinâmico e preciso.
             </p>
@@ -1529,7 +1108,7 @@ export default function AulaClassesPalavras({
 
             <p>
               A CESGRANRIO tem fixação pelos pronomes relativos e pela colocação pronominal. 
-              O pronome "CUJO" é a pegadinha favorita: lembre-se de que ele não admite 
+              O pronome "CUJO" é a pontos de atenção favorita: lembre-se de que ele não admite 
               artigo depois (nunca escreva "cujo o"). O uso de "ONDE" exclusivo para 
               lugares físicos também é cobrado à exaustão. Nas questões de reescrita, a 
               banca testa se o candidato sabe trocar o objeto direto ("o/a") pelo indireto 
@@ -1543,7 +1122,7 @@ export default function AulaClassesPalavras({
               <h4 className="font-bold text-foreground text-lg">
                 Manual de Especialistas: Cujo e Onde
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-rose-700 dark:text-rose-300">O Pronome Cujo (Posse)</p>
                   <ul className="space-y-1 mt-2 text-sm">
@@ -1584,253 +1163,78 @@ export default function AulaClassesPalavras({
                 {[
                   ["1ª sing.", "Eu", "me"],
                   ["2ª sing.", "Tu", "te"],
-                  ["3ª sing.", "Ele/Ela", "o, a, lhe, se"],
-                  ["1ª plur.", "Nós", "nos"],
-                  ["2ª plur.", "Vós", "vos"],
-                  ["3ª plur.", "Eles/Elas", "os, as, lhes, se"],
-                ].map(([p, r, o], i) => (
-                  <tr key={i} className="hover:bg-muted/50 transition-colors">
-                    <td className="p-4 font-medium text-muted-foreground">
-                      {p}
-                    </td>
-                    <td className="p-4 font-bold text-violet-600">{r}</td>
-                    <td className="p-4 font-bold text-emerald-600">{o}</td>
+                  ["3ª sing.", "Ele/Ela", "o, a, se, lhe"],
+                  ["1ª plural", "Nós", "nos"],
+                  ["2ª plural", "Vós", "vos"],
+                  ["3ª plural", "Eles/Elas", "os, as, se, lhes"],
+                ].map(([pessoa, reto, obliquo], idx) => (
+                  <tr key={idx} className="hover:bg-muted/50 transition-colors">
+                    <td className="p-4 font-medium text-foreground">{pessoa}</td>
+                    <td className="p-4 text-muted-foreground">{reto}</td>
+                    <td className="p-4 text-muted-foreground">{obliquo}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <AlertBox tipo="danger" titulo="Erro Fatal na Cesgranrio">
-            "Vi <strong>ele</strong> no corredor." → <strong>ERRADO!</strong>{" "}
-            Pronome reto (ele/ela) não pode ser objeto direto. O correto é: "Vi-
-            <strong>o</strong>" ou "<strong>O</strong> vi".
+          <AlertBox tipo="warning" titulo="Atenção à Função Sintática">
+            Pronomes Retos exercem função de SUJEITO. Pronomes Oblíquos exercem função de COMPLEMENTO (Objeto Direto ou Indireto). Exceção: Pronomes retos precedidos de preposição tornam-se oblíquos tônicos ("Para mim", "Com ele").
           </AlertBox>
         </section>
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={3}
-            title="Colocação Pronominal"
-            variant={mv[4]}
-          />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-xl bg-violet-500/5 border border-violet-500/20 space-y-4">
-              <h4 className="font-bold text-violet-600 text-lg">Próclise</h4>
-              <p className="text-lg text-muted-foreground italic">
-                Antes do verbo
-              </p>
-              <p className="text-lg">
-                "Não <strong>me</strong> diga!"
-              </p>
-              <div className="text-[11px] bg-white dark:bg-black/20 p-2 rounded">
-                Fatores: palavras negativas, advérbios, pronomes relativos.
+        <ModuleConsolidation
+          index={4}
+          variant={mv[4]}
+          video={{
+            videoId: "dQw4w9WgXcQ",
+            title: "Pronome: O Substituto Estratégico",
+            duration: "15:40",
+          }}
+          resumoVisual={{
+            moduloNome: "M4: Pronome",
+            tituloAula: "Classes de Palavras",
+            materia: "Português",
+            images: [
+              {
+                title: "Pronome",
+                type: "Mapa Mental",
+                placeholderColor: "bg-violet-100",
+              },
+              {
+                title: "Colocação Pronominal",
+                type: "Checklist",
+                placeholderColor: "bg-purple-100",
+              },
+            ],
+          }}
+          sinteseEstrategica={{
+            title: "A Regra do CUJO",
+            content: (
+              <div className="space-y-4">
+                <p>O pronome <strong>CUJO</strong> é o campeão de erros. Lembre-se:</p>
+                <ul className="list-disc list-inside space-y-2 text-lg">
+                  <li><strong>Posse:</strong> Sempre liga dois substantivos (Dono + Coisa).</li>
+                  <li><strong>Sem Artigo:</strong> Nunca use "Cujo o" ou "Cujo a".</li>
+                  <li><strong>Concordância:</strong> Concorda com o termo que vem DEPOIS (a coisa possuída).</li>
+                </ul>
               </div>
-            </div>
-            <div className="p-6 rounded-xl bg-emerald-500/5 border border-emerald-500/20 space-y-4">
-              <h4 className="font-bold text-emerald-600 text-lg">Ênclise</h4>
-              <p className="text-lg text-muted-foreground italic">
-                Depois do verbo
-              </p>
-              <p className="text-lg">
-                "Diga-<strong>me</strong> a verdade."
-              </p>
-              <div className="text-[11px] bg-white dark:bg-black/20 p-2 rounded">
-                Padrão quando a frase começa com verbo ou no imperativo.
-              </div>
-            </div>
-            <div className="p-6 rounded-xl bg-amber-500/5 border border-amber-500/20 space-y-4">
-              <h4 className="font-bold text-amber-600 text-lg">Mesóclise</h4>
-              <p className="text-lg text-muted-foreground italic">
-                No meio do verbo
-              </p>
-              <p className="text-lg">
-                "Dir-<strong>te</strong>-ei tudo."
-              </p>
-              <div className="text-[11px] bg-white dark:bg-black/20 p-2 rounded">
-                Exclusiva para Futuro do Presente e do Pretérito (se não houver
-                próclise).
-              </div>
-            </div>
-          </div>
-        </section>
+            ),
+          }}
+          audio={{
+            audioUrl: "#",
+            titulo: "AudioAula: Pronome",
+            artista: "Prof. André",
+          }}
+        />
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={4}
-            title="Pronomes Possessivos, Demonstrativos e Relativos"
-            variant={mv[4]}
-          />
-          <ContentAccordion
-            mode="stacked"
-            titulo="Subclasses Essenciais"
-            icone={<LuShield />}
-            corIndicador="bg-rose-500"
-            slides={[
-              {
-                titulo: "Pronomes Possessivos",
-                icone: "🏠",
-                conteudo:
-                  "Indicam posse: meu/minha, teu/tua, seu/sua, nosso/nossa, vosso/vossa. Atenção: 'seu/sua' pode ser ambíguo (2ª ou 3ª pessoa). Em textos formais, prefira 'dele/dela' para evitar ambiguidade: 'O gerente entregou o relatório a seu superior' → qual 'seu'? Resolva com: 'entregou o relatório ao superior DELE'.",
-              },
-              {
-                titulo: "Pronomes Demonstrativos",
-                icone: "👉",
-                conteudo:
-                  "Este/esta/isto (perto de quem fala — 1ª pessoa); esse/essa/isso (perto de quem ouve — 2ª pessoa, ou já mencionado no texto); aquele/aquela/aquilo (longe de ambos — 3ª pessoa, ou mencionado antes). Em textos escritos: 'este' refere-se ao que vem a seguir (catáfora); 'esse' refere-se ao que veio antes (anáfora).",
-              },
-              {
-                titulo: "Pronomes Indefinidos",
-                icone: "🌫️",
-                conteudo:
-                  "Referem-se ao substantivo de modo vago: alguém, ninguém, tudo, nada, qualquer, todo, cada, muito, pouco, certo, vário. Cuidado: 'todo' com artigo = totalidade ('todo o documento' = o documento inteiro); sem artigo = qualquer ('todo documento deve ser assinado' = qualquer documento).",
-              },
-              {
-                titulo: "Pronomes Relativos",
-                icone: "🔄",
-                conteudo:
-                  "Retomam um termo anterior (antecedente) e iniciam uma oração adjetiva: que (mais usado), o qual/a qual/os quais/as quais (mais formal), quem (para pessoas), cujo/cuja (posse), onde (lugar). O pronome relativo 'que' substitui qualquer antecedente. 'O qual' é usado após preposições de duas ou mais sílabas: 'mediante o qual', 'durante o qual'.",
-              },
-            ]}
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FlipCard
-              frente={
-                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                  <LuBookOpen className="h-10 w-10 text-violet-400" />
-                  <span className="font-black text-2xl text-violet-400">CUJO</span>
-                  <p className="text-lg text-muted-foreground">A armadilha mais perigosa da prova</p>
-                </div>
-              }
-              verso={
-                <div className="flex flex-col justify-center h-full space-y-3 p-2 text-lg">
-                  <p className="text-emerald-400 font-bold">✅ "O relatório CUJAS conclusões foram aprovadas"</p>
-                  <hr className="border-border/50" />
-                  <p className="text-red-400 font-bold">❌ "cujas AS conclusões" — artigo proibido após cujo!</p>
-                  <hr className="border-border/50" />
-                  <p className="text-blue-400 text-lg">Concorda em gênero/número com o POSSUÍDO, não com o possuidor.</p>
-                </div>
-              }
-            />
-            <FlipCard
-              frente={
-                <div className="flex flex-col items-center justify-center text-center space-y-4 h-full">
-                  <LuNavigation className="h-10 w-10 text-amber-400" />
-                  <span className="font-black text-2xl text-amber-400">ONDE</span>
-                  <p className="text-lg text-muted-foreground">Pronome relativo de lugar</p>
-                </div>
-              }
-              verso={
-                <div className="flex flex-col justify-center h-full space-y-3 p-2 text-lg">
-                  <p className="text-emerald-400 font-bold">✅ "A empresa onde trabalho é sólida."</p>
-                  <hr className="border-border/50" />
-                  <p className="text-red-400 font-bold">❌ "onde" para antecedente não-lugar: "A situação onde me encontro..." → use "em que".</p>
-                  <hr className="border-border/50" />
-                  <p className="text-blue-400 text-lg">'Onde' exige antecedente com ideia de LUGAR.</p>
-                </div>
-              }
-            />
-          </div>
-          <AlertBox tipo="danger" titulo="Oblíquo Tônico — Erro Fatal Cesgranrio">
-            Pronomes oblíquos tônicos (mim, ti, si, ele com preposição) são precedidos de preposição: "para mim", "consigo", "entre nós". O erro "entre eu e tu" é gravíssimo na norma culta. Correto: "entre mim e ti". A CESGRANRIO frequentemente apresenta reescritas que trocam "mim" por "eu" para testar o candidato.
-          </AlertBox>
-        </section>
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
-          <ModuleSectionHeader
-            index={5}
-            title="Pronomes de Tratamento — A Armadilha do Concurso"
-            variant={mv[4]}
-          />
-          <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-            Os pronomes de tratamento são formas especiais de se referir a pessoas de forma respeitosa ou protocolar. São a fonte de uma das pegadinhas mais clássicas da Cesgranrio: apesar de se referirem à <strong>2ª pessoa</strong> (o interlocutor), exigem o verbo e os pronomes na <strong>3ª pessoa do singular</strong>.
-          </p>
-          <div className="overflow-hidden rounded-xl border border-border bg-muted/30">
-            <table className="w-full text-lg text-left">
-              <thead className="bg-muted text-foreground font-bold uppercase text-[10px] tracking-widest">
-                <tr>
-                  <th className="p-4">Pronome</th>
-                  <th className="p-4">Abreviatura</th>
-                  <th className="p-4">Uso</th>
-                  <th className="p-4">Possessivo Correto</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border text-lg">
-                {[
-                  ["Vossa Excelência", "V. Exa.", "Presidente, Ministro, Governador, Senador", "de V. Exa."],
-                  ["Vossa Senhoria", "V. Sa.", "Pessoas de destaque, autoridades em geral", "de V. Sa."],
-                  ["Vossa Magnificência", "V. Mag.", "Reitores de universidades", "de V. Mag."],
-                  ["Vossa Santidade", "V. S.", "Papa", "de V. S."],
-                  ["Vossa Majestade", "V. M.", "Reis e Rainhas", "de V. M."],
-                ].map(([p, abr, uso, pos], i) => (
-                  <tr key={i} className="hover:bg-muted/50 transition-colors">
-                    <td className="p-4 font-bold text-violet-600">{p}</td>
-                    <td className="p-4 text-muted-foreground">{abr}</td>
-                    <td className="p-4 text-muted-foreground">{uso}</td>
-                    <td className="p-4 font-medium text-emerald-600">{pos}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <AlertBox tipo="danger" titulo="Concordância com Pronome de Tratamento — Questão Clássica">
-            {`"Vossa Excelência está cansado?" — ERRADO! O correto é: "Vossa Excelência está cansada?" se a pessoa for mulher, ou "Vossa Excelência está cansado?" se homem. O verbo vai para a 3ª pessoa: "V. Exa. assinou o contrato" (não 'assinastes'). Os pronomes possessivos e oblíquos correspondentes também ficam na 3ª pessoa: "Trouxemos sua pasta, Vossa Excelência."`}
-          </AlertBox>
-        </section>
-
-
-
-
-
-        <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index={6}
-            title="Resumo e Multimídia"
-            variant={mv[4]}
-          />
-          <LessonTabs
-            tabs={[
-              {
-                id: "visual",
-                label: "Coesão",
-                icon: LuBrain,
-                content: (
-                  <ModuleSummaryCarouselNew
-                    tituloAula="Gramática de Elite"
-                    materia="Português"
-                    moduloNome="M4: Pronome"
-                    images={[
-                      {
-                        title: "Pronome",
-                        type: "Substituto",
-                        placeholderColor: "#8b5cf6",
-                      },
-                    ]}
-                  />
-                ),
-              },
-              {
-                id: "audio",
-                label: "Resumo Áudio",
-                icon: LuMusic,
-                content: (
-                   <MusicPlayerCard 
-                     titulo="O Dublê do Nome: Pronomes"
-                     artista="Resumo Morfologia"
-                     audioUrl=""
-                   />
-                ),
-              },
-            ]}
-          />
-        </section>
-
-        <section className="mt-16">
+        <section className="mt-12">
           <QuizInterativo
             questoes={qMod4}
-            titulo="QUIZ: Pronome: O Substituto"
+            titulo="QUIZ: Pronome"
             icone="👤"
-            numero={7}
-            variant={mv[4]}
+            numero={4}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
+            variant={mv[4]}
           />
         </section>
       </TabsContent>
@@ -1846,7 +1250,7 @@ export default function AulaClassesPalavras({
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="O Verbo: O Motor da Oração"
             description="Domine a classe mais dinâmica e complexa, essencial para a construção do sentido e da temporalidade"
             variant={mv[5]}
@@ -1856,7 +1260,7 @@ export default function AulaClassesPalavras({
             <p>
               O verbo é o coração pulsante da língua portuguesa. Representa a classe de 
               palavras que exprime ação, estado, mudança de estado, fenômeno natural ou 
-              processo, situando o fato no tempo. Segundo os ensinamentos de Bechara, 
+              processo, situando o fato no tempo. Conforme a gramática normativa, 
               o verbo é um "acontecimento" que confere dinamismo ao discurso. É a classe 
               mais flexível e complexa, dobrando-se em modo, tempo, número, pessoa e voz 
               para carregar toda a carga de verdade e intenção de quem fala. Sem o verbo, 
@@ -1883,7 +1287,7 @@ export default function AulaClassesPalavras({
               adjetivos sem perder sua essência verbal. A conjugação regular segue trilhas 
               previsíveis, mas são os verbos irregulares e defectivos (os "rebeldes" 
               da gramática) que guardam as nuances mais sofisticadas e as armadilhas 
-              preferidas dos examinadores de elite.
+              preferidas dos examinadores de Avançado.
             </p>
 
             <p>
@@ -1913,7 +1317,7 @@ export default function AulaClassesPalavras({
               <h4 className="font-bold text-foreground text-lg">
                 O "Checklist" Mortal dos Verbos (CESGRANRIO)
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-violet-700 dark:text-violet-300">Tempo & Modo</p>
                   <ul className="space-y-1 mt-2 text-sm">
@@ -2008,7 +1412,7 @@ export default function AulaClassesPalavras({
               variant: "info",
             }}
           />
-          <AlertBox tipo="warning" titulo="Passiva Pronominal — A Pegadinha">
+          <AlertBox tipo="warning" titulo="Passiva Pronominal — A pontos de atenção">
             A passiva pronominal usa o pronome SE como partícula apassivadora: "Extrai-se petróleo em Campos." (= O petróleo é extraído). O verbo concorda com o sujeito paciente: "Extraem-se plataformas novas." Confundir SE apassivador com SE indeterminador é um erro clássico de prova.
           </AlertBox>
         </section>
@@ -2149,7 +1553,7 @@ export default function AulaClassesPalavras({
                     {/* IRREGULARES INDICATIVO */}
                     <div className="md:col-span-2 space-y-4">
                       <p className="font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider text-sm">Modelos Irregulares (Alto Impacto)</p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="p-5 bg-rose-500/5 border border-rose-500/20 rounded-xl space-y-6">
                           <div>
                             <p className="font-black text-lg text-rose-700 dark:text-rose-300 mb-2">✦ SER (Presente)</p>
@@ -2216,7 +1620,7 @@ export default function AulaClassesPalavras({
                     {/* IRREGULARES SUBJUNTIVO */}
                     <div className="md:col-span-2 space-y-4">
                       <p className="font-bold text-amber-800 dark:text-amber-200 uppercase tracking-wider text-sm">Modelos Irregulares (Onde a Banca Ataca)</p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="p-5 bg-amber-500/5 border border-amber-500/20 rounded-xl space-y-6">
                           <div>
                             <p className="font-black text-lg text-amber-700 dark:text-amber-300 mb-2">✦ SEJA (Verbo Ser)</p>
@@ -2242,7 +1646,7 @@ export default function AulaClassesPalavras({
                       </div>
                     </div>
                   </div>
-                  <AlertBox tipo="warning" titulo="Pegadinha: Futuro do Subjuntivo">
+                  <AlertBox tipo="warning" titulo="pontos de atenção: Futuro do Subjuntivo">
                     Muitos verbos irregulares no **Futuro do Subjuntivo** são idênticos ao **Infinitivo Pessoal** nos regulares (se estudar / quando estudar). Mas nos irregulares a diferença é gritante: *Se eu vir* (do verbo Ver) vs *Se eu vier* (do verbo Vir). Estude estes dois!
                   </AlertBox>
                 </div>
@@ -2383,7 +1787,7 @@ export default function AulaClassesPalavras({
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="O Advérbio: A Precisão da Circunstância"
             description="Domine a classe invariável que ajusta o sentido do verbo, do adjetivo e do próprio advérbio"
             variant={mv[6]}
@@ -2450,14 +1854,14 @@ export default function AulaClassesPalavras({
               adverbiais em textos literários ou jornalísticos e as regras de 
               pontuação (uso da vírgula) para isolar advérbios deslocados no início 
               da frase. Dominar o advérbio é garantir que você não cairá nas 
-              pegadinhas de concordância nominal "sedutoras" que a banca prepara.
+              pontos de atenção de concordância nominal "sedutoras" que a banca prepara.
             </p>
 
             <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200/50 dark:border-amber-800/50 p-6 space-y-4">
               <h4 className="font-bold text-foreground text-lg">
                 O Teste do MUITO e as Palavras Camaleão
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-amber-700 dark:text-amber-300">O Teste Infalível</p>
                   <ul className="space-y-1 mt-2 text-sm">
@@ -2491,7 +1895,7 @@ export default function AulaClassesPalavras({
           </p>
           <div className="text-center p-8 bg-gradient-to-br from-orange-500/5 to-amber-500/5 rounded-2xl border border-orange-500/10">
             <h3 className="text-xl font-bold mb-4">
-              Macete: O Teste do 'Muito'
+              Estratégia: O Teste do 'Muito'
             </h3>
             <p className="text-muted-foreground">
               Troque a palavra por "MUITO". Se ela NÃO FLEXIONAR ("muitos"), é
@@ -2506,7 +1910,7 @@ export default function AulaClassesPalavras({
             title="Palavras Camaleão"
             variant={mv[6]}
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-4 bg-muted/30 rounded-xl border border-border">
               <p className="font-bold text-amber-500">MEIO (Advérbio)</p>
               <p className="text-lg italic">
@@ -2547,7 +1951,7 @@ export default function AulaClassesPalavras({
                   "O advérbio admite grau comparativo e superlativo, mas NUNCA flexiona em gênero ou número. Comparativo de superioridade: 'trabalha MAIS rapidamente'; de igualdade: 'trabalha TÃO rapidamente quanto'; de inferioridade: 'trabalha MENOS rapidamente'. Superlativo: 'trabalha muitíssimo rapidamente' ou 'trabalha muito, muito rapidamente'. O superlativo sintético (rapidíssimo) é correto quando modifica adjetivo.",
               },
               {
-                titulo: "Advérbio vs Adjetivo — A Diferença Fatal",
+                titulo: "Advérbio vs Adjetivo — Distinção Técnica Fundamental",
                 icone: "⚔️",
                 conteudo:
                   "O advérbio modifica VERBO, ADJETIVO ou outro ADVÉRBIO e é invariável. O adjetivo modifica SUBSTANTIVO e concorda em gênero e número. 'Os funcionários trabalham RÁPIDO' → rápido = advérbio (invariável). 'Os funcionários são RÁPIDOS' → rápidos = adjetivo (flexiona). 'Falaram CLARO' vs 'Tom CLARO'. Use o teste do 'muito' para diferenciar: se troca por 'muito' sem virar 'muitos', é advérbio.",
@@ -2561,7 +1965,7 @@ export default function AulaClassesPalavras({
             ]}
           />
           <Comparison
-            title="BOM vs BEM — MAU vs MAL: A Pegadinha da Cesgranrio"
+            title="BOM vs BEM — MAU vs MAL: A pontos de atenção da Cesgranrio"
             left={{
               title: "BOM / MAU (Adjetivos)",
               content: "Modificam SUBSTANTIVO\nConcordam em gênero e número\n\"É um BOM relatório\"\n\"Foi uma MÁ decisão\"\n\"São bons analistas\"",
@@ -2609,7 +2013,7 @@ export default function AulaClassesPalavras({
               },
               {
                 id: "macete",
-                label: "Macete Visual",
+                label: "Síntese Estratégica Visual",
                 icon: LuBrain,
                 content: (
                   <div className="text-center p-8 bg-gradient-to-br from-amber-500/5 to-orange-500/5 rounded-2xl border border-amber-500/10">
@@ -2651,7 +2055,7 @@ export default function AulaClassesPalavras({
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="A Preposição: O Elo de Ferro"
             description="Entenda a classe que subordina termos e cria as pontes sintáticas do texto"
             variant={mv[7]}
@@ -2662,7 +2066,7 @@ export default function AulaClassesPalavras({
               A preposição é a classe de palavras invariável que liga dois termos 
               de uma oração, estabelecendo uma relação de subordinação em que o 
               segundo termo (consequente) completa ou explica o sentido do primeiro 
-              (antecedente). Segundo a lição de Bechara, a preposição é um "relator", 
+              (antecedente). Segundo a gramática normativa, a preposição é um "relator", 
               um termo que não possui vida própria mas sim a função de indicar a 
               direção do pensamento. Dividem-se em essenciais (a, ante, após, até, 
               com, contra, de, de, em, entre, para, perante, por, sem, sob, sobre, 
@@ -2720,9 +2124,9 @@ export default function AulaClassesPalavras({
 
             <div className="bg-gradient-to-br from-blue-500/10 to-indigo-500/10 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-lg border border-blue-200/50 dark:border-blue-800/50 p-6 space-y-4">
               <h4 className="font-bold text-foreground text-lg">
-                O Mantra das Essenciais e a Regência
+                O Princípio das Essenciais e a Regência
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-blue-700 dark:text-blue-300">As 18 Essenciais</p>
                   <p className="text-xs font-mono leading-relaxed p-2 bg-blue-500/5 rounded">
@@ -2753,7 +2157,7 @@ export default function AulaClassesPalavras({
             A <strong>Preposição</strong> liga dois termos, estabelecendo uma
             relação de dependência entre eles.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-4 bg-muted/30 rounded-xl text-center">
               <strong>DO</strong> (De + O)
             </div>
@@ -2820,7 +2224,7 @@ export default function AulaClassesPalavras({
           <p className="text-lg text-muted-foreground leading-relaxed text-justify">
             A <strong>regência verbal</strong> define qual preposição o verbo exige para ligar seu complemento. Errar a preposição na regência é um dos erros mais cobrados na Cesgranrio em questões de correção e reescrita.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               { verbo: "ASSISTIR", prep: "A", ex: "Assisti AO relatório." },
               { verbo: "ASPIRAR (desejar)", prep: "A", ex: "Aspiro AO cargo." },
@@ -2857,7 +2261,7 @@ export default function AulaClassesPalavras({
                 icon: LuBrain,
                 content: (
                   <ModuleSummaryCarouselNew
-                    tituloAula="Gramática de Elite"
+                    tituloAula="Gramática de Avançado"
                     materia="Português"
                     moduloNome="M7: Preposição"
                     images={[
@@ -2909,7 +2313,7 @@ export default function AulaClassesPalavras({
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="A Conjunção: A Engrenagem do Raciocínio"
             description="Domine a classe que conecta orações e estabelece as complexas relações lógicas do discurso"
             variant={mv[8]}
@@ -2973,7 +2377,7 @@ export default function AulaClassesPalavras({
               você deve trocar uma conjunção por outra mantendo o sentido original. O 
               par favorito deles é a troca de "EMBORA" (concessiva) por "CONQUANTO" 
               ou "MALGRADO", testando o vocabulário erudito do candidato. Outra 
-              pegadinha clássica é a diferença entre a conjunção causal e a explicativa, 
+              pontos de atenção clássica é a diferença entre a conjunção causal e a explicativa, 
               ou entre a consecutiva ("tão... que") e a comparativa ("como..."). 
               Identificar o sentido correto do "COMO" (que pode ser causa, conformidade 
               ou comparação) é o teste definitivo para quem quer fechar a prova de 
@@ -2982,9 +2386,9 @@ export default function AulaClassesPalavras({
 
             <div className="bg-gradient-to-br from-emerald-500/10 to-indigo-500/10 dark:from-emerald-950/30 dark:to-indigo-950/30 rounded-lg border border-emerald-200/50 dark:border-emerald-800/50 p-6 space-y-4">
               <h4 className="font-bold text-foreground text-lg">
-                Equivalências de Elite (CESGRANRIO)
+                Equivalências de Avançado (CESGRANRIO)
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-emerald-700 dark:text-emerald-300">Concessivas (O Desafio)</p>
                   <ul className="space-y-1 mt-2 text-sm">
@@ -3052,7 +2456,7 @@ export default function AulaClassesPalavras({
                 titulo: "Adversativas (Oposição)",
                 icone: "⚔️",
                 conteudo:
-                  "Ligam orações com sentido de oposição ou contraste: MAS, PORÉM, CONTUDO, TODAVIA, ENTRETANTO, NO ENTANTO, SEM EMBARGO. Macete: todas as adversativas (exceto MAS) podem vir no meio da oração: 'Estudou muito; não passou, porém.' A vírgula antes dessas conjunções é obrigatória.",
+                  "Ligam orações com sentido de oposição ou contraste: MAS, PORÉM, CONTUDO, TODAVIA, ENTRETANTO, NO ENTANTO, SEM EMBARGO. Estratégia de Identificação: todas as adversativas (exceto MAS) podem vir no meio da oração: 'Estudou muito; não passou, porém.' A vírgula antes dessas conjunções é obrigatória.",
               },
               {
                 titulo: "Alternativas (Alternância)",
@@ -3136,7 +2540,7 @@ export default function AulaClassesPalavras({
             tabs={[
               {
                 id: "visual",
-                label: "Macete CIA P",
+                label: "Mnemônico CIA P",
                 icon: LuBrain,
                 content: (
                   <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-blue-500/5 rounded-2xl border border-indigo-500/10">
@@ -3192,7 +2596,7 @@ export default function AulaClassesPalavras({
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="A Interjeição: O Clamor da Linguagem"
             description="Entenda a classe invariável que vocaliza emoções, estados de espírito e apelos diretos"
             variant={mv[9]}
@@ -3262,7 +2666,7 @@ export default function AulaClassesPalavras({
               <h4 className="font-bold text-foreground text-lg">
                 O Camaleão do Sentimento: "AH!"
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-rose-700 dark:text-rose-300">Contexto e Sentido</p>
                   <ul className="space-y-1 mt-2 text-sm">
@@ -3342,7 +2746,7 @@ export default function AulaClassesPalavras({
                 icon: LuBrain,
                 content: (
                   <ModuleSummaryCarouselNew
-                    tituloAula="Gramática de Elite"
+                    tituloAula="Gramática de Avançado"
                     materia="Português"
                     moduloNome="M9: Interjeição"
                     images={[
@@ -3417,14 +2821,14 @@ export default function AulaClassesPalavras({
       <TabsContent value="modulo-10" className="space-y-12 mt-12">
         <ModuleBanner numero={10}
           titulo="O Numeral"
-          descricao="Quantidades, ordens e a pegadinha do numeral dual."
+          descricao="Quantidades, ordens e a pontos de atenção do numeral dual."
           variant={mv[10]}
         />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="O Numeral: A Precisão Quantitativa"
             description="Explore a classe que define quantidades exatas, ordens, frações e multiplicações"
             variant={mv[10]}
@@ -3478,7 +2882,7 @@ export default function AulaClassesPalavras({
             </p>
 
             <p>
-              Para a CESGRANRIO, o numeral aparece no topo das pegadinhas de escrita 
+              Para a CESGRANRIO, o numeral aparece no topo das pontos de atenção de escrita 
               formal. A banca testará se você sabe a diferença entre o artigo "UM" 
               (quando generaliza) e o numeral "UM" (quando quantifica). Outro tema 
               recorrente é a leitura e escrita de numerais ordinais grandes 
@@ -3494,7 +2898,7 @@ export default function AulaClassesPalavras({
               <h4 className="font-bold text-foreground text-lg">
                 Manual de Numeração Técnica
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-violet-700 dark:text-violet-300">Concordância de Gigantes</p>
                   <ul className="space-y-1 mt-2 text-sm">
@@ -3522,7 +2926,7 @@ export default function AulaClassesPalavras({
             title="Cardinais vs Ordinais"
             variant={mv[10]}
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-6 bg-muted/30 rounded-xl">
               <p className="font-bold">Cardinais (Quantidade)</p>
               <p className="text-lg">Um, dois, três... mil.</p>
@@ -3618,7 +3022,7 @@ export default function AulaClassesPalavras({
                 titulo: "Classes Invariáveis (não flexionam)",
                 icone: "🔒",
                 conteudo:
-                  "ADVÉRBIO: modifica verbo, adjetivo ou advérbio. PREPOSIÇÃO: conecta termos em relação de subordinação. CONJUNÇÃO: conecta orações ou termos de valor equivalente. INTERJEIÇÃO: exprime emoção ou apelo. Macete: CIA P = Conjunção, Interjeição, Advérbio, Preposição — as quatro invariáveis.",
+                  "ADVÉRBIO: modifica verbo, adjetivo ou advérbio. PREPOSIÇÃO: conecta termos em relação de subordinação. CONJUNÇÃO: conecta orações ou termos de valor equivalente. INTERJEIÇÃO: exprime emoção ou apelo. Mnemônico: CIA P = Conjunção, Interjeição, Advérbio, Preposição — as quatro invariáveis.",
               },
               {
                 titulo: "Questões de Prova: O que a Cesgranrio mais cobra",
@@ -3681,7 +3085,7 @@ export default function AulaClassesPalavras({
                 }}
                 className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-800 text-white border-0 font-black text-xl px-16 py-10 rounded-2xl shadow-[0_20px_50px_rgba(37,99,235,0.3)] hover:shadow-[0_25px_60px_rgba(37,99,235,0.4)] hover:-translate-y-1 active:translate-y-0.5 transition-all duration-300 uppercase tracking-widest flex items-center gap-4 mx-auto"
               >
-                Concluir Aula de Elite <LuCheck className="text-2xl" />
+                Concluir Aula de Avançado <LuCheck className="text-2xl" />
               </Button>
             </div>
 

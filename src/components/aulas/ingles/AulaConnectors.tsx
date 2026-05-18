@@ -33,7 +33,7 @@ const MODULE_DEFS = [
   { id: "modulo-7", label: "Módulo 7", numero: 7, titulo: "Sequential Connectors", descricao: "First, Then, Finally, Subsequently" },
   { id: "modulo-8", label: "Módulo 8", numero: 8, titulo: "Advanced Academic", descricao: "Otherwise, Thereby, Insofar as" },
   { id: "modulo-9", label: "Módulo 9", numero: 9, titulo: "Technical Reports", descricao: "Connectors in Petrobras Documents" },
-  { id: "modulo-10", label: "Módulo 10", numero: 10, titulo: "Simulado Mestre", descricao: "Full Practice Test" },
+  { id: "modulo-10", label: "Módulo 10", numero: 10, titulo: "Simulado Geral", descricao: "Full Practice Test" },
 ] as const;
 
 export default function AulaConnectors({
@@ -50,8 +50,45 @@ export default function AulaConnectors({
   prevTopico,
   nextTopico,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_ingles_connectors_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   useEffect(() => {
     if (isCompleted) {

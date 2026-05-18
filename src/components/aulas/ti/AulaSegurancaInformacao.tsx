@@ -37,8 +37,45 @@ export default function AulaSegurancaInformacao({
   materiaNome, materiaCor, materiaId, prevTopico, nextTopico
 }: AulaProps) {
 
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_ti_seguranca_informacao_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   // Definir os módulos da aula (Padrão Premium: 10 módulos)
   const MODULE_DEFS = [
@@ -129,7 +166,7 @@ export default function AulaSegurancaInformacao({
 
         <div className="space-y-12">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Os Pilares Essenciais"
             description="Entenda como cada pilar protege a informação sob diferentes perspectivas."
             variant={mv[1]}
@@ -187,7 +224,7 @@ export default function AulaSegurancaInformacao({
 
         <div className="space-y-12">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Sistemas de Chaves"
             description="Diferenças fundamentais entre algoritmos e suas aplicações reais."
             variant={mv[2]}
@@ -233,7 +270,7 @@ export default function AulaSegurancaInformacao({
 
         <div className="space-y-12">
            <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Hierarquia de Confiança"
               description="Entenda o papel das ACs e ARs na estrutura brasileira."
               variant={mv[3]}
@@ -369,7 +406,7 @@ export default function AulaSegurancaInformacao({
 
         <div className="space-y-12">
             <ModuleSectionHeader
-                index={1}
+                index="INTRO"
                 title="Detecção vs Prevenção"
                 description="Monitorar ataques é bom, bloqueá-los é melhor."
                 variant={mv[6]}
@@ -553,7 +590,7 @@ export default function AulaSegurancaInformacao({
                 materia: materiaNome,
                 images: []
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "Resumo Final",
                 content: "Segurança não é um evento, é um processo contínuo de vigilância e proteção."
             }}

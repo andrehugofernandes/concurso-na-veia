@@ -45,8 +45,45 @@ export default function AulaNr35({
   prevTopico,
   nextTopico,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_seguranca_nr35_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   useEffect(() => {
     if (isCompleted) {
@@ -123,7 +160,7 @@ export default function AulaNr35({
                     { title: "Direitos e Deveres", type: "card", placeholderColor: "orange" }
                 ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "O Mnemônico de Planejamento",
                 content: <p className="text-lg italic">"Eliminar &rarr; Prevenir &rarr; Mitigar." Essa é a ordem de sobrevivência!</p>
             }}
@@ -236,14 +273,14 @@ export default function AulaNr35({
                     { title: "Pontos de Ancoragem", type: "infographic", placeholderColor: "pink" }
                 ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "A ZQL (Zona de Queda Livre)",
                 content: <p className="text-lg">"Antes de subir, calcule se o chão vai te atingir!" ZQL = Comprimento do Talabarte + Absorvedor Aberto + Altura do Trabalhador + 1m de Segurança.</p>
             }}
             audio={{
                 audioUrl: "/audio/nr35-m3.mp3",
                 titulo: "Sistemas Anti-Queda",
-                artista: "Mestre de Segurança"
+                artista: "Especialista em Segurança"
             }}
         />
 
@@ -314,14 +351,14 @@ export default function AulaNr35({
                     { title: "Padrão de Escada Extensível", type: "diagram", placeholderColor: "orange" }
                 ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "A Regra dos 3 Pontos",
                 content: <p className="text-lg italic">"Duas mãos e um pé, ou dois pés e uma mão. Na escada, nunca se solta do corrimão!"</p>
             }}
             audio={{
                 audioUrl: "/audio/nr35-m5.mp3",
                 titulo: "Acessos Especializados",
-                artista: "Mestre da Segurança"
+                artista: "Especialista em Segurança"
             }}
         />
 

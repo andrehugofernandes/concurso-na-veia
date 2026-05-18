@@ -46,10 +46,10 @@ const MODULE_DEFS = [
   { id: "modulo-7", label: "Módulo 7", title: "Empresas Públicas" },
   { id: "modulo-8", label: "Módulo 8", title: "Cenários e Prospectiva" },
   { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Geral" },
   { id: "modulo-11", label: "Módulo 11", title: "PE Petrobras 2024-2028 (Pro)" },
   { id: "glossario", label: "Glossário", title: "Terminologia Técnica" },
-  { id: "faq", label: "FAQ", title: "Detector de Pegadinhas" },
+  { id: "faq", label: "FAQ", title: "Detector de pontos de atenção" },
   { id: "banco-questoes", label: "Questões", title: "Super Banco Cesgranrio" },
 ] as const;
 
@@ -60,8 +60,45 @@ export default function AulaPlanejamentoEstrategico({
   currentProgress, onUpdateProgress, titulo, descricao, duracao,
   materiaNome, materiaCor, materiaId, prevTopico, nextTopico,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_planejamento_estrategico_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   // Estados dos Quizzes carregados do arquivo externo
   const quizM1 = QUIZ_PLANEJAMENTO["modulo-1"];
@@ -154,6 +191,7 @@ export default function AulaPlanejamentoEstrategico({
       xpGanho={xpGanho}
     >
       {/* ═══ MÓDULO 1: CONCEITOS FUNDAMENTAIS ═══ */}
+      {activeTab === "modulo-1" && (
       <TabsContent value="modulo-1" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
@@ -165,7 +203,7 @@ export default function AulaPlanejamentoEstrategico({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="A Base do Planejamento"
               description="Entenda missão, visão e valores antes de qualquer estratégia."
               variant={mv[1]}
@@ -265,7 +303,7 @@ export default function AulaPlanejamentoEstrategico({
                         Para a prova, você deve conhecer como a Petrobras aplica esses conceitos no seu <strong>Plano Estratégico (PE 2024-2028)</strong>:
                       </p>
                       
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="bg-slate-500/5 p-5 rounded-2xl border-l-8 border-blue-600 shadow-sm">
                           <div className="flex justify-between items-start mb-2">
                              <p className="font-black text-blue-800 text-lg uppercase tracking-widest">Missão Petrobras</p>
@@ -318,8 +356,8 @@ export default function AulaPlanejamentoEstrategico({
                   icone: <LuLightbulb />,
                   conteudo: (
                     <div className="space-y-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <AlertBox tipo="danger" titulo="PEGADINHA: EFICÁCIA vs EFICIÊNCIA">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <AlertBox tipo="danger" titulo="pontos de atenção: EFICÁCIA vs EFICIÊNCIA">
                           <p className="text-lg leading-relaxed">
                             A Cesgranrio vai dizer que o Planejamento Estratégico foca na <strong>Eficiência</strong>. <br/>
                             <strong>FALSO!</strong> O nível estratégico foca na <strong>EFICÁCIA</strong> (resultados globais). Eficiência é foco do nível OPERACIONAL (meios/recursos).
@@ -365,7 +403,7 @@ export default function AulaPlanejamentoEstrategico({
                           </p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div className="p-4 bg-orange-500/10 rounded-xl">
                              <p className="font-bold text-orange-800 text-[11px] mb-1">A Falácia da Predição</p>
                              <p className="text-[10px] opacity-80">Achar que o futuro será apenas uma repetição melhorada do passado (Cuidado com projeções lineares!).</p>
@@ -412,7 +450,7 @@ export default function AulaPlanejamentoEstrategico({
                 { title: "Processo de PE", type: "Fluxo", placeholderColor: "bg-cyan-500/20" },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "PE = Missão + Visão + Valores + Estratégia",
               content: (
                 <div className="space-y-3 text-left">
@@ -431,13 +469,15 @@ export default function AulaPlanejamentoEstrategico({
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 2: ANÁLISE SWOT ═══ */}
+      {activeTab === "modulo-2" && (
       <TabsContent value="modulo-2" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={2} titulo="Análise SWOT" descricao="A ferramenta mais cobrada em provas: Forças, Fraquezas, Oportunidades e Ameaças." gradiente="bg-gradient-to-br from-blue-300 via-blue-500 to-blue-400" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={1} title="Diagnóstico Estratégico" description="Ambiente interno e externo sob a lupa da SWOT." variant={mv[2]} />
+            <ModuleSectionHeader index="INTRO" title="Diagnóstico Estratégico" description="Ambiente interno e externo sob a lupa da SWOT." variant={mv[2]} />
             <ContentAccordion slides={[
                 { 
                   titulo: "Conceituação - A Matriz SWOT (FOFA)", 
@@ -491,7 +531,7 @@ export default function AulaPlanejamentoEstrategico({
                         Ao analisar a Petrobras, os estrategistas separam ativos e competências (interno) de variáveis macroeconômicas (externo).
                       </p>
                       <div className="space-y-4">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div className="p-4 bg-green-500/5 rounded-xl border border-green-500/20">
                             <p className="font-black text-green-700 text-[10px] uppercase">Força: Tecnologia de Águas Ultraprofundas</p>
                             <p className="text-lg italic mt-1 text-muted-foreground">"Liderança mundial na exploração do Pré-sal e premiações da OTC."</p>
@@ -582,19 +622,21 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation index={2} variant={mv[2]} video={{ videoId: "iV7hKYv0fDc", title: "SWOT Completo", duration: "15:00" }} resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "Quadrantes SWOT", type: "Conceito", placeholderColor: "bg-emerald-500/20" }, { title: "Interno vs Externo", type: "Classificação", placeholderColor: "bg-teal-500/20" }, { title: "Cruzamento TOWS", type: "Estratégia", placeholderColor: "bg-green-500/20" }] }} maceteVisual={{ title: "SWOT: S e W = INTERNO, O e T = EXTERNO", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Força e Fraqueza você controla. Oportunidade e Ameaça você enfrenta."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "SWOT Descomplicado", artista: "Prof. Administração" }} />
+<ModuleConsolidation index={2} variant={mv[2]} video={{ videoId: "iV7hKYv0fDc", title: "SWOT Completo", duration: "15:00" }} resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "Quadrantes SWOT", type: "Conceito", placeholderColor: "bg-emerald-500/20" }, { title: "Interno vs Externo", type: "Classificação", placeholderColor: "bg-teal-500/20" }, { title: "Cruzamento TOWS", type: "Estratégia", placeholderColor: "bg-green-500/20" }] }} sinteseEstrategica={{ title: "SWOT: S e W = INTERNO, O e T = EXTERNO", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Força e Fraqueza você controla. Oportunidade e Ameaça você enfrenta."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "SWOT Descomplicado", artista: "Prof. Administração" }} />
 
                       <QuizInterativo questoes={quizM2} titulo="QUIZ: Análise SWOT" numero={3} variant={mv[2]} icone="🎯" onComplete={(score) => handleModuleComplete("modulo-2", score)} />
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 3: BSC ═══ */}
+      {activeTab === "modulo-3" && (
       <TabsContent value="modulo-3" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={3} titulo="Balanced Scorecard (BSC)" descricao="As 4 perspectivas de Kaplan e Norton para traduzir estratégia em ação." gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={1} title="As 4 Perspectivas" description="Financeira, Clientes, Processos Internos, Aprendizado." variant={mv[3]} />
+            <ModuleSectionHeader index="INTRO" title="As 4 Perspectivas" description="Financeira, Clientes, Processos Internos, Aprendizado." variant={mv[3]} />
             <ContentAccordion slides={[
               { 
                 titulo: "Conceituação - O que é BSC (Balanced Scorecard)?", 
@@ -605,7 +647,7 @@ export default function AulaPlanejamentoEstrategico({
                       O <strong>Balanced Scorecard (BSC)</strong>, desenvolvido por Kaplan e Norton em 1992, surgiu para corrigir a miopia da gestão baseada apenas em indicadores financeiros. O BSC propõe uma visão equilibrada (<i>balanced</i>) que traduz a visão e a estratégia em objetivos concretos em quatro perspectivas fundamentais.
                     </p>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="p-4 bg-amber-500/10 rounded-2xl border border-amber-500/20 shadow-sm">
                         <p className="font-bold text-amber-800 border-b border-amber-500/30 pb-2 mb-3">📈 Perspectiva Financeira</p>
                         <p className="text-lg leading-relaxed">Foca no valor gerado para os acionistas. Exemplos: ROE (Retorno sobre Patrimônio), Fluxo de Caixa Livre e Redução de Custos Operacionais.</p>
@@ -706,19 +748,21 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation index={2} variant={mv[3]} video={{ videoId: "iV7hKYv0fDc", title: "BSC Explicado", duration: "16:00" }} resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "4 Perspectivas BSC", type: "Conceito", placeholderColor: "bg-amber-500/20" }, { title: "Mapa Estratégico", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Causa e Efeito", type: "Relação", placeholderColor: "bg-yellow-500/20" }] }} maceteVisual={{ title: "BSC: F-C-P-A (Finanças Com Processos Aprendidos)", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Kaplan e Norton criaram em 1992. 4 perspectivas. Mapa estratégico."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "BSC na Prática", artista: "Prof. Administração" }} />
+<ModuleConsolidation index={2} variant={mv[3]} video={{ videoId: "iV7hKYv0fDc", title: "BSC Explicado", duration: "16:00" }} resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "4 Perspectivas BSC", type: "Conceito", placeholderColor: "bg-amber-500/20" }, { title: "Mapa Estratégico", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Causa e Efeito", type: "Relação", placeholderColor: "bg-yellow-500/20" }] }} sinteseEstrategica={{ title: "BSC: F-C-P-A (Finanças Com Processos Aprendidos)", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Kaplan e Norton criaram em 1992. 4 perspectivas. Mapa estratégico."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "BSC na Prática", artista: "Prof. Administração" }} />
 
                       <QuizInterativo questoes={quizM3} titulo="QUIZ: Balanced Scorecard (BSC)" numero={3} variant={mv[3]} icone="📊" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 4: FORMULAÇÃO ESTRATÉGICA (UNROLLED) ═══ */}
+      {activeTab === "modulo-4" && (
       <TabsContent value="modulo-4" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={4} titulo="Formulação Estratégica" descricao="Porter, Ansoff e a escolha do caminho competitivo." gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={1} title="Estratégias Competitivas" description="As 5 Forças de Porter e a Matriz de Ansoff." variant={mv[4]} />
+            <ModuleSectionHeader index="INTRO" title="Estratégias Competitivas" description="As 5 Forças de Porter e a Matriz de Ansoff." variant={mv[4]} />
             <ContentAccordion slides={[
               { 
                 titulo: "Conceituação - As 5 Forças de Porter", 
@@ -828,20 +872,22 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation index={2} variant={mv[4]} video={{ videoId: "iV7hKYv0fDc", title: "Estratégias de Porter", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "5 Forças de Porter", type: "Relação", placeholderColor: "bg-rose-500/20" }, { title: "Estratégias Genéricas", type: "Opções", placeholderColor: "bg-pink-500/20" }, { title: "Matriz Ansoff", type: "Crescimento", placeholderColor: "bg-red-500/20" }] }} maceteVisual={{ title: "PORTER: Custo, Diferenciação ou Foco", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Ou você é barato, ou é especial, ou foca em um bando."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Estratégias Competitivas", artista: "Prof. Administração" }} />
+<ModuleConsolidation index={2} variant={mv[4]} video={{ videoId: "iV7hKYv0fDc", title: "Estratégias de Porter", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "5 Forças de Porter", type: "Relação", placeholderColor: "bg-rose-500/20" }, { title: "Estratégias Genéricas", type: "Opções", placeholderColor: "bg-pink-500/20" }, { title: "Matriz Ansoff", type: "Crescimento", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "PORTER: Custo, Diferenciação ou Foco", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Ou você é barato, ou é especial, ou foca em um bando."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Estratégias Competitivas", artista: "Prof. Administração" }} />
 
                       <QuizInterativo questoes={quizM4} titulo="QUIZ: Formulação Estratégica" numero={3} variant={mv[4]} icone="⚔️" onComplete={(score) => handleModuleComplete("modulo-4", score)} />
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 5: IMPLEMENTAÇÃO ESTRATÉGICA (UNROLLED) ═══ */}
+      {activeTab === "modulo-5" && (
       <TabsContent value="modulo-5" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner numero={5} titulo="Implementação Estratégica" descricao="Onde a maioria das estratégias falha: transformando planos em ação real." gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400" />
+          <ModuleBanner numero={5} titulo="Implementação Estratégica" descricao="Onde a maioria das estratégias falha: transformando planos em ação real." gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400" />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={1} title="Da Estratégia à Ação" description="Ferramentas de execução: 5W2H e Matriz RACI." variant={mv[5]} />
+            <ModuleSectionHeader index="INTRO" title="Da Estratégia à Ação" description="Ferramentas de execução: 5W2H e Matriz RACI." variant={mv[5]} />
             
             <ContentAccordion slides={[
               { 
@@ -853,16 +899,16 @@ export default function AulaPlanejamentoEstrategico({
                       Implementar é a fase mais difícil. Segundo Kaplan e Norton, <strong>9 em cada 10 estratégias falham na execução</strong>, não no planejamento. Para vencer esse gap, usamos ferramentas de desdobramento.
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      <div className="p-4 bg-violet-500/10 rounded-xl border border-violet-200 text-center">
-                        <p className="font-black text-violet-700 text-lg">Diretriz</p>
+                      <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-200 text-center">
+                        <p className="font-black text-emerald-700 text-lg">Diretriz</p>
                         <p className="text-[10px] uppercase opacity-70">O "O Quê"</p>
                       </div>
-                      <div className="p-4 bg-violet-500/10 rounded-xl border border-violet-200 text-center">
-                        <p className="font-black text-violet-700 text-lg">Meta</p>
+                      <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-200 text-center">
+                        <p className="font-black text-emerald-700 text-lg">Meta</p>
                         <p className="text-[10px] uppercase opacity-70">O "Quanto"</p>
                       </div>
-                      <div className="p-4 bg-violet-500/10 rounded-xl border border-violet-200 text-center">
-                        <p className="font-black text-violet-700 text-lg">Plano</p>
+                      <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-200 text-center">
+                        <p className="font-black text-emerald-700 text-lg">Plano</p>
                         <p className="text-[10px] uppercase opacity-70">O "Como"</p>
                       </div>
                     </div>
@@ -880,7 +926,7 @@ export default function AulaPlanejamentoEstrategico({
                          <div key={q} className="p-2 bg-white/50 dark:bg-black/20 border rounded-lg text-center font-bold text-[10px]">{q}</div>
                        ))}
                     </div>
-                    <AlertBox tipo="warning" titulo="PEGADINHA COMUM">
+                    <AlertBox tipo="warning" titulo="pontos de atenção COMUM">
                        <p className="text-lg italic">"Who" (Quem) deve ser sempre UMA pessoa ou área específica (Accountability), nunca um grupo vago como 'todos os colaboradores'.</p>
                     </AlertBox>
                   </div>
@@ -914,8 +960,8 @@ export default function AulaPlanejamentoEstrategico({
                           <p className="text-[10px] opacity-70">Especialistas que dão opinião (Geólogos, Ambientalistas).</p>
                         </div>
                       </div>
-                      <div className="flex items-start gap-3 p-3 bg-violet-500/5 rounded-xl border border-violet-500/20">
-                        <div className="bg-violet-600 text-white w-6 h-6 rounded flex-shrink-0 flex items-center justify-center font-bold text-lg text-nowrap">I</div>
+                      <div className="flex items-start gap-3 p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
+                        <div className="bg-emerald-600 text-white w-6 h-6 rounded flex-shrink-0 flex items-center justify-center font-bold text-lg text-nowrap">I</div>
                         <div>
                           <p className="font-bold text-lg">Informed (Informado)</p>
                           <p className="text-[10px] opacity-70">Quem precisa saber do status (Diretoria, Acionistas).</p>
@@ -967,12 +1013,12 @@ export default function AulaPlanejamentoEstrategico({
               tituloAula: "Planejamento Estratégico", 
               materia: "Administração", 
               images: [
-                { title: "5W2H: Ação", type: "Ferramenta", placeholderColor: "bg-violet-500/20" }, 
-                { title: "Matriz RACI", type: "Responsabilidade", placeholderColor: "bg-purple-500/20" }, 
-                { title: "Barreiras à Execução", type: "Obstáculos", placeholderColor: "bg-fuchsia-500/20" }
+                { title: "5W2H: Ação", type: "Ferramenta", placeholderColor: "bg-emerald-500/20" }, 
+                { title: "Matriz RACI", type: "Responsabilidade", placeholderColor: "bg-amber-500/20" }, 
+                { title: "Barreiras à Execução", type: "Obstáculos", placeholderColor: "bg-rose-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "RACI: Quem Faz, Quem Manda, Quem Ajuda, Quem Sabe", 
               content: (<div className="space-y-3 text-left"><p className="text-lg italic">"R - Põe a mão. A - Responde (O Dono). C - Dá pitaco. I - Fica sabendo."</p></div>) 
             }} 
@@ -983,14 +1029,16 @@ export default function AulaPlanejamentoEstrategico({
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 6: CONTROLE E AVALIAÇÃO (UNROLLED) ═══ */}
+      {activeTab === "modulo-6" && (
       <TabsContent value="modulo-6" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={6} titulo="Controle e Avaliação" descricao="O que não é medido não é gerenciado: a ciência dos indicadores e feedback." gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800" />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={1} title="Medindo o Sucesso" description="KPIs, semáforos e a gestão do desempenho." variant={mv[6]} />
+            <ModuleSectionHeader index="INTRO" title="Medindo o Sucesso" description="KPIs, semáforos e a gestão do desempenho." variant={mv[6]} />
             
             <ContentAccordion slides={[
               { 
@@ -1020,7 +1068,7 @@ export default function AulaPlanejamentoEstrategico({
                 conteudo: (
                   <div className="space-y-4">
                     <p className="text-lg">Nas provas da Cesgranrio, saber a diferença entre indicadores de <strong>Resultado</strong> e de <strong>Risco</strong> é vital:</p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-200">
                         <p className="font-bold text-emerald-800 text-lg mb-1">KPI (Key Performance Indicator)</p>
                         <p className="text-lg opacity-70 italic">"O quão rápido estamos indo?"</p>
@@ -1120,7 +1168,7 @@ export default function AulaPlanejamentoEstrategico({
                 { title: "Ciclos de Feedback", type: "Aprendizagem", placeholderColor: "bg-orange-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "KPI: Como estou? KRI: Vou me ferrar?", 
               content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Se o KPI tá baixo, você não produziu. Se o KRI tá alto, você vai explodir."</p></div>) 
             }} 
@@ -1131,14 +1179,16 @@ export default function AulaPlanejamentoEstrategico({
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 7: PE EM EMPRESAS PÚBLICAS (UNROLLED) ═══ */}
+      {activeTab === "modulo-7" && (
       <TabsContent value="modulo-7" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={7} titulo="PE em Empresas Públicas" descricao="A complexa missão de equilibrar lucro, legislação e interesse social." gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800" />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={1} title="Setor Público e Governança" description="Lei 13.303/16 e a integração com o orçamento público." variant={mv[7]} />
+            <ModuleSectionHeader index="INTRO" title="Setor Público e Governança" description="Lei 13.303/16 e a integração com o orçamento público." variant={mv[7]} />
             
             <ContentAccordion slides={[
               { 
@@ -1249,10 +1299,10 @@ export default function AulaPlanejamentoEstrategico({
               images: [
                 { title: "PPA-LDO-LOA", type: "Instrumentos", placeholderColor: "bg-blue-500/20" }, 
                 { title: "Lei 13.303/16", type: "Legislação", placeholderColor: "bg-sky-500/20" }, 
-                { title: "Estatuto Petrobras", type: "Governança", placeholderColor: "bg-indigo-500/20" }
+                { title: "Estatuto Petrobras", type: "Governança", placeholderColor: "bg-cyan-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "PPA-LDO-LOA: Planeja - Decide - Aloca", 
               content: (<div className="space-y-3 text-left"><p className="text-lg italic">"PPA guia o rumo. LDO escolhe a briga. LOA paga a conta."</p></div>) 
             }} 
@@ -1263,14 +1313,16 @@ export default function AulaPlanejamentoEstrategico({
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 8: CENÁRIOS E PROSPECTIVA (UNROLLED) ═══ */}
+      {activeTab === "modulo-8" && (
       <TabsContent value="modulo-8" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={8} titulo="Cenários e Prospectiva" descricao="A arte de antecipar múltiplos futuros para reduzir a incerteza." gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800" />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={1} title="Pensando o Futuro" description="Metodologias para navegar em ambientes VUCA e BANI." variant={mv[8]} />
+            <ModuleSectionHeader index="INTRO" title="Pensando o Futuro" description="Metodologias para navegar em ambientes VUCA e BANI." variant={mv[8]} />
             
             <ContentAccordion slides={[
               { 
@@ -1341,7 +1393,7 @@ export default function AulaPlanejamentoEstrategico({
                 ) 
               },
               { 
-                titulo: "Pegadinhas - Planejamento Adaptativo", 
+                titulo: "pontos de atenção - Planejamento Adaptativo", 
                 icone: <LuZap />, 
                 conteudo: (
                   <div className="space-y-4">
@@ -1385,7 +1437,7 @@ export default function AulaPlanejamentoEstrategico({
                 { title: "Resiliência", type: "Estratégia", placeholderColor: "bg-teal-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "Cenário não é Previsão!", 
               content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Prever é tentar acertar um ponto. Cenarizar é desenhar o mapa do território desconhecido."</p></div>) 
             }} 
@@ -1396,14 +1448,16 @@ export default function AulaPlanejamentoEstrategico({
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 9: APLICAÇÕES PETROBRAS (UNROLLED) ═══ */}
+      {activeTab === "modulo-9" && (
       <TabsContent value="modulo-9" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={9} titulo="Aplicações Petrobras" descricao="O Plano Estratégico 2024-2028 e a Transição Energética Justa." gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800" />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={1} title="A Estratégia em Ação" description="Missão, Visão e o Plano de Negócios 2024-2028." variant={mv[9]} />
+            <ModuleSectionHeader index="INTRO" title="A Estratégia em Ação" description="Missão, Visão e o Plano de Negócios 2024-2028." variant={mv[9]} />
             
             <ContentAccordion slides={[
               { 
@@ -1527,7 +1581,7 @@ export default function AulaPlanejamentoEstrategico({
                 { title: "Capex Alocação", type: "Financeiro", placeholderColor: "bg-pink-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "Missão E J S", 
               content: (<div className="space-y-3 text-left"><p className="text-lg italic">"<strong>É</strong>tica, <strong>J</strong>usta e <strong>S</strong>egura. Lembre-se do EJS para a Missão!"</p></div>) 
             }} 
@@ -1538,14 +1592,16 @@ export default function AulaPlanejamentoEstrategico({
           </section>
         </div>
       </TabsContent>
+      )}
 
-      {/* ═══ MÓDULOS 10: SIMULADO MESTRE (UNROLLED PARA ESTABILIDADE) ═══ */}
+      {/* ═══ MÓDULOS 10: Simulado Geral (UNROLLED PARA ESTABILIDADE) ═══ */}
+      {activeTab === "modulo-10" && (
       <TabsContent value="modulo-10" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner numero={10} titulo="Simulado Mestre" descricao="Desafio final integrando todos os conceitos de Planejamento Estratégico." gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800" />
+          <ModuleBanner numero={10} titulo="Simulado Geral" descricao="Desafio final integrando todos os conceitos de Planejamento Estratégico." gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800" />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={1} title="O Grande Desafio" description="Teste seus conhecimentos com questões de nível difícil (Cesgranrio)." variant={mv[10]} />
+            <ModuleSectionHeader index="INTRO" title="O Grande Desafio" description="Teste seus conhecimentos com questões de nível difícil (Cesgranrio)." variant={mv[10]} />
             
             <ContentAccordion slides={[
               { 
@@ -1553,7 +1609,7 @@ export default function AulaPlanejamentoEstrategico({
                 icone: <LuBrain />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-muted-foreground leading-relaxed">No dia da prova, o cansaço é seu maior inimigo. O Simulado Mestre treina sua resistência mental.</p>
+                    <p className="text-muted-foreground leading-relaxed">No dia da prova, o cansaço é seu maior inimigo. O Simulado Geral treina sua resistência mental.</p>
                     <AlertBox tipo="success" titulo="DICA DE OURO">
                        <p className="text-lg">Leia primeiro o comando da questão e depois o texto de apoio. Muitas questões de Administração podem ser resolvidas apenas com lógica e eliminação.</p>
                     </AlertBox>
@@ -1598,21 +1654,23 @@ export default function AulaPlanejamentoEstrategico({
               moduloNome: "Módulo 10", 
               tituloAula: "Planejamento Estratégico", 
               materia: "Administração", 
-              images: [{ title: "Checklist Final", type: "Desafio", placeholderColor: "bg-violet-500/20" }] 
+              images: [{ title: "Checklist Final", type: "Desafio", placeholderColor: "bg-emerald-500/20" }] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "Confie no Processo!", 
               content: (<div className="text-lg italic text-left"><p>Você percorreu todos os 10 módulos. Agora é hora de brilhar!</p></div>) 
             }} 
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", titulo: "Dicas Finais", artista: "Prof. Administração" }} 
           />
 
-                      <QuizInterativo questoes={quizM10} titulo="QUIZ: Simulado Mestre" numero={3} variant={mv[10]} icone="👑" onComplete={(score) => handleModuleComplete("modulo-10", score)} />
+                      <QuizInterativo questoes={quizM10} titulo="QUIZ: Simulado Geral" numero={3} variant={mv[10]} icone="👑" onComplete={(score) => handleModuleComplete("modulo-10", score)} />
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 11: PE PETROBRAS 2024-2028 (PRO) ═══ */}
+      {activeTab === "modulo-11" && (
       <TabsContent value="modulo-11" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
@@ -1624,7 +1682,7 @@ export default function AulaPlanejamentoEstrategico({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="A Estratégia do Século XXI"
               description="Como a maior empresa do Brasil planeja os próximos 5 anos."
               variant={mv[11]}
@@ -1641,7 +1699,7 @@ export default function AulaPlanejamentoEstrategico({
                         A Petrobras não é mais "apenas" uma petroleira. A visão estratégica atual, definida no <strong>Plano Estratégico 2024-2028</strong>, foca na <strong>Dualidade Estratégica</strong>: maximizar o valor do Pré-sal enquanto financia a transição para fontes renováveis.
                       </p>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="p-5 bg-emerald-500/10 rounded-2xl border border-emerald-500/20">
                           <p className="font-bold text-emerald-800 text-lg mb-2">Descarbonização (Scope 1 e 2)</p>
                           <p className="text-lg">Meta de ser <strong>Net Zero</strong> até 2050. Investimento maciço em CCUS (Captura, Uso e Armazenamento de Carbono).</p>
@@ -1720,7 +1778,7 @@ export default function AulaPlanejamentoEstrategico({
                  </div>
               </div>
               <div className="p-4 bg-slate-50 dark:bg-slate-900 border rounded-xl flex items-center gap-3">
-                 <div className="w-10 h-10 bg-violet-500/10 rounded-lg flex items-center justify-center text-violet-600">
+                 <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-600">
                    <LuDatabase className="w-5 h-5" />
                  </div>
                  <div>
@@ -1752,8 +1810,8 @@ export default function AulaPlanejamentoEstrategico({
                   { title: "Capex Alocação Pro", type: "Investimento", placeholderColor: "bg-blue-500/20" },
                 ],
               }}
-              maceteVisual={{
-                title: "O Pulo do Gato: 102 Bi",
+              sinteseEstrategica={{
+                title: "Destaque Estratégico: 102 Bi",
                 content: (
                   <div className="space-y-3 text-left">
                     <p className="text-lg italic">"Lembre-se: 102 Bi de investimento total. 73% em E&P (Exploração), 11% em Baixo Carbono."</p>
@@ -1767,6 +1825,7 @@ export default function AulaPlanejamentoEstrategico({
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO GLOSSÁRIO: TERMINOLOGIA TÉCNICA ═══ */}
       <TabsContent value="glossario" className="space-y-[50px]">
@@ -1822,12 +1881,12 @@ export default function AulaPlanejamentoEstrategico({
         </div>
       </TabsContent>
 
-      {/* ═══ MÓDULO FAQ: DETECTOR DE PEGADINHAS ═══ */}
+      {/* ═══ MÓDULO FAQ: DETECTOR DE pontos de atenção ═══ */}
       <TabsContent value="faq" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={13}
-            titulo="FAQ: Detector de Pegadinhas Cesgranrio"
+            titulo="FAQ: Detector de pontos de atenção Cesgranrio"
             descricao="Antecipe os truques da banca e não perca pontos por pura distração."
             gradiente="bg-gradient-to-br from-amber-600 to-rose-700"
           />
@@ -1867,14 +1926,14 @@ export default function AulaPlanejamentoEstrategico({
             numero={14}
             titulo="Super Banco de Questões Comentadas"
             descricao="30 questões de nível avançado com explicações detalhadas para gabaritar Administração."
-            gradiente="bg-gradient-to-br from-indigo-700 to-violet-900"
+            gradiente="bg-gradient-to-br from-cyan-700 to-emerald-900"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-12">
             <div className="space-y-16">
               {/* Bloco 1: Estratégia e Fundamentos */}
               <div className="space-y-8">
-                <h3 className="text-xl font-bold text-indigo-700 border-b pb-2 flex items-center gap-2">
+                <h3 className="text-xl font-bold text-cyan-700 border-b pb-2 flex items-center gap-2">
                   <LuAward className="w-6 h-6" /> Bloco 1: Fundamentos e Níveis
                 </h3>
 
@@ -1952,7 +2011,7 @@ export default function AulaPlanejamentoEstrategico({
                 ].map((item, idx) => (
                   <div key={idx} className="space-y-4 p-6 bg-slate-50 dark:bg-slate-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl">
                     <div className="flex gap-4">
-                      <span className="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-lg flex items-center justify-center font-bold text-lg">{item.id}</span>
+                      <span className="flex-shrink-0 w-8 h-8 bg-cyan-600 text-white rounded-lg flex items-center justify-center font-bold text-lg">{item.id}</span>
                       <p className="text-lg font-medium leading-relaxed">{item.q}</p>
                     </div>
                     <div className="ml-12 grid grid-cols-1 gap-2">
@@ -1972,7 +2031,7 @@ export default function AulaPlanejamentoEstrategico({
 
               {/* Bloco 2: Ferramentas de Portfólio e Cenários */}
               <div className="space-y-8">
-                <h3 className="text-xl font-bold text-indigo-700 border-b pb-2 flex items-center gap-2">
+                <h3 className="text-xl font-bold text-cyan-700 border-b pb-2 flex items-center gap-2">
                   <LuTarget className="w-6 h-6" /> Bloco 2: Ferramentas e Prospectiva
                 </h3>
 
@@ -2061,8 +2120,8 @@ export default function AulaPlanejamentoEstrategico({
                          </div>
                        ))}
                     </div>
-                    <div className="ml-12 p-5 bg-indigo-500/5 border-l-4 border-indigo-500 rounded-r-2xl">
-                       <p className="text-[9px] font-black text-indigo-700 dark:text-indigo-400 uppercase tracking-widest mb-2 flex items-center gap-2">
+                    <div className="ml-12 p-5 bg-cyan-500/5 border-l-4 border-cyan-500 rounded-r-2xl">
+                       <p className="text-[9px] font-black text-cyan-700 dark:text-cyan-400 uppercase tracking-widest mb-2 flex items-center gap-2">
                          <LuSearch className="w-3 h-3" /> Análise do Especialista:
                        </p>
                        <p className="text-[11px] leading-relaxed text-slate-700 dark:text-slate-300 antialiased font-medium">{item.e}</p>
@@ -2073,7 +2132,7 @@ export default function AulaPlanejamentoEstrategico({
 
               {/* Bloco 3: Cultura e Mudança Estratégica */}
               <div className="space-y-8">
-                <h3 className="text-xl font-bold text-indigo-700 border-b pb-2 flex items-center gap-2">
+                <h3 className="text-xl font-bold text-cyan-700 border-b pb-2 flex items-center gap-2">
                   <LuBrain className="w-6 h-6" /> Bloco 3: Cultura e Execução
                 </h3>
 
@@ -2151,7 +2210,7 @@ export default function AulaPlanejamentoEstrategico({
                 ].map((item, idx) => (
                   <div key={idx} className="space-y-4 p-6 bg-slate-50 dark:bg-slate-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl">
                     <div className="flex gap-4">
-                      <span className="flex-shrink-0 w-8 h-8 bg-violet-600 text-white rounded-lg flex items-center justify-center font-bold text-lg">{item.id}</span>
+                      <span className="flex-shrink-0 w-8 h-8 bg-emerald-600 text-white rounded-lg flex items-center justify-center font-bold text-lg">{item.id}</span>
                       <p className="text-lg font-medium leading-relaxed">{item.q}</p>
                     </div>
                     <div className="ml-12 grid grid-cols-1 gap-2">
@@ -2161,8 +2220,8 @@ export default function AulaPlanejamentoEstrategico({
                          </div>
                        ))}
                     </div>
-                    <div className="ml-12 p-4 bg-violet-500/5 border-l-4 border-violet-500 rounded-r-xl">
-                       <p className="text-[10px] font-bold text-violet-700 uppercase mb-1 flex items-center gap-1">
+                    <div className="ml-12 p-4 bg-emerald-500/5 border-l-4 border-emerald-500 rounded-r-xl">
+                       <p className="text-[10px] font-bold text-emerald-700 uppercase mb-1 flex items-center gap-1">
                          <LuLightbulb className="w-3 h-3" /> Conclusão Pedagógica:
                        </p>
                        <p className="text-[11px] leading-relaxed text-slate-600 dark:text-slate-400 italic">{item.e}</p>
@@ -2173,7 +2232,7 @@ export default function AulaPlanejamentoEstrategico({
               
               {/* Bloco 4: Gestão de Crises e Riscos Estratégicos */}
               <div className="space-y-8">
-                <h3 className="text-xl font-bold text-indigo-700 border-b pb-2 flex items-center gap-2">
+                <h3 className="text-xl font-bold text-cyan-700 border-b pb-2 flex items-center gap-2">
                   <LuShieldCheck className="w-6 h-6" /> Bloco 4: Crises e Riscos
                 </h3>
 
@@ -2318,7 +2377,7 @@ export default function AulaPlanejamentoEstrategico({
                                   <div className="flex gap-4">
                                      <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0 font-bold text-lg italic">F</div>
                                      <div className="space-y-1">
-                                        <p className="text-[11px] font-bold text-white uppercase">Custo de Extração de Elite</p>
+                                        <p className="text-[11px] font-bold text-white uppercase">Custo de Extração de Avançado</p>
                                         <p className="text-[10px] text-slate-400 leading-relaxed">A Petrobras produz o barril mais 'limpo' (menos CO2 por barril) e mais barato do mundo no Pré-sal.</p>
                                      </div>
                                   </div>
@@ -2355,14 +2414,14 @@ export default function AulaPlanejamentoEstrategico({
                       <div className="space-y-4 max-w-xl">
                          <h4 className="text-3xl font-black tracking-tighter text-slate-900 dark:text-slate-100 uppercase leading-none">
                             Nota Técnica:<br/>
-                            <span className="text-indigo-600">A Governança Blindada</span>
+                            <span className="text-cyan-600">A Governança Blindada</span>
                          </h4>
                          <p className="text-[13px] text-slate-500 leading-relaxed font-medium">
                             O Planejamento Estratégico em uma estatal não é livre. Ele é amarrado por uma das leis mais rígidas do mundo corporativo: a <strong>Lei das Estatais</strong>. Entenda como ela molda o PE da Petrobras.
                          </p>
                       </div>
-                      <div className="px-6 py-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl border border-indigo-100 dark:border-indigo-800">
-                         <p className="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">Status Jurídico: Ativo</p>
+                      <div className="px-6 py-3 bg-cyan-50 dark:bg-cyan-900/20 rounded-2xl border border-cyan-100 dark:border-cyan-800">
+                         <p className="text-[10px] font-black text-cyan-600 dark:text-cyan-400 uppercase tracking-widest">Status Jurídico: Ativo</p>
                       </div>
                    </div>
 
@@ -2376,25 +2435,25 @@ export default function AulaPlanejamentoEstrategico({
       </TabsContent>
 
         {/* Nota Final do Instrutor */}
-        <div className="mt-20 p-12 bg-gradient-to-r from-slate-50 to-indigo-50 dark:from-slate-900/50 dark:to-indigo-900/50 rounded-[4rem] border border-indigo-200/50 text-center space-y-6 relative overflow-hidden">
-           <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl" />
+        <div className="mt-20 p-12 bg-gradient-to-r from-slate-50 to-cyan-50 dark:from-slate-900/50 dark:to-cyan-900/50 rounded-[4rem] border border-cyan-200/50 text-center space-y-6 relative overflow-hidden">
+           <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-cyan-500/5 rounded-full blur-3xl" />
            <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-500/5 rounded-full blur-3xl" />
            
-           <div className="w-20 h-20 bg-white dark:bg-slate-800 rounded-3xl shadow-2xl flex items-center justify-center mx-auto mb-6 border border-indigo-100 dark:border-indigo-900 group hover:rotate-12 transition-transform cursor-pointer">
-              <LuAward className="w-10 h-10 text-indigo-600 group-hover:scale-110 transition-transform" />
+           <div className="w-20 h-20 bg-white dark:bg-slate-800 rounded-3xl shadow-2xl flex items-center justify-center mx-auto mb-6 border border-cyan-100 dark:border-cyan-900 group hover:rotate-12 transition-transform cursor-pointer">
+              <LuAward className="w-10 h-10 text-cyan-600 group-hover:scale-110 transition-transform" />
            </div>
            
            <h4 className="text-3xl font-black text-slate-800 dark:text-slate-100 tracking-tighter uppercase italic">O Futuro te espera na Petrobras!</h4>
            
            <p className="text-[13px] text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
-              Você concluiu a jornada de elite pelo <strong>Planejamento Estratégico</strong>. O caminho até o crachá verde e amarelo é feito de consistência. Este módulo agora é parte do seu arsenal técnico. Revisite-o sempre que a dúvida bater.
+              Você concluiu a jornada de Avançado pelo <strong>Planejamento Estratégico</strong>. O caminho até o crachá verde e amarelo é feito de consistência. Este módulo agora é parte do seu arsenal técnico. Revisite-o sempre que a dúvida bater.
            </p>
            
            <div className="flex justify-center gap-2 mt-8">
-              {[1,2,3,4,5].map(i => <div key={i} className="w-2 h-2 rounded-full bg-indigo-500/20" />)}
+              {[1,2,3,4,5].map(i => <div key={i} className="w-2 h-2 rounded-full bg-cyan-500/20" />)}
            </div>
            
-           <p className="text-[11px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em] pt-4">Você está pronto. Avante!</p>
+           <p className="text-[11px] font-black text-cyan-600 dark:text-cyan-400 uppercase tracking-[0.3em] pt-4">Você está pronto. Avante!</p>
         </div>
     </AulaTemplate>
   );

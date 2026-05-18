@@ -8,7 +8,7 @@ import {
 } from '@/lib/actions/safe-action';
 
 export interface RankingItem {
-  nome: string;
+  nome: string | null;
   xp: number;
   cargo: string | null;
   avatar_url: string | null;

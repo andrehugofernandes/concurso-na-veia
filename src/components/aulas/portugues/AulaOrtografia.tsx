@@ -199,7 +199,7 @@ const QUIZ_MOD2_POOL: QuizQuestion[] = [
     ],
     correta: "B",
     explicacao:
-      "A regra de ouro da acentuação: TODAS as proparoxítonas são acentuadas graficamente.",
+      "Princípio Fundamental da acentuação: TODAS as proparoxítonas são acentuadas graficamente.",
   },
   {
     id: 104,
@@ -744,10 +744,45 @@ export default function AulaOrtografia({
   materiaNome,
   materiaId,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_portugues_ortografia_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   const [qMod1, setQMod1] = useState<QuizQuestion[]>([]);
   const [qMod2, setQMod2] = useState<QuizQuestion[]>([]);
@@ -884,7 +919,7 @@ export default function AulaOrtografia({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Encontros Vocálicos"
             description="A fundação da fonética: compreenda a união e a separação de sons vocálicos nas palavras."
           variant={mv[1]}
@@ -1104,11 +1139,11 @@ Ditongo é junto, hiato é separação!
               },
             ],
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "O Trio Parada Dura",
             content: (
               <div className="space-y-4 text-center">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
                     <span className="text-2xl mb-2 block">🤝</span>
                     <h4 className="font-bold text-amber-700 dark:text-amber-400">Ditongo</h4>
@@ -1155,7 +1190,7 @@ Ditongo é junto, hiato é separação!
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Classificação da Sílaba Tônica"
             description="Aprenda a identificar o coração sonoro das palavras para aplicar as regras de acento."
           variant={mv[2]}
@@ -1242,7 +1277,7 @@ Ditongo é junto, hiato é separação!
                       },
                       {
                         icone: <LuZap className="text-emerald-500" />,
-                        title: "A Regra de Ouro (Ditongos)",
+                        title: "Princípio Fundamental (Ditongos)",
                         descricao: (
                           <div className="text-center font-bold text-emerald-700 dark:text-emerald-400 mt-2">
                             TODAS as terminadas em DITONGO ORAL ganham acento
@@ -1461,7 +1496,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             moduloNome: "Acentuação", tituloAula: "Ortografia", materia: "Português",
             images: [{ title: "Mapa Mental: Acentos", type: "Mapa Mental", placeholderColor: "bg-blue-100" }]
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "A Regra do Oposto",
             content: <p className="text-lg">"<strong>Paroxítonas</strong> são o oposto das <strong>Oxítonas</strong>: o que acentua uma, não acentua a outra."</p>
           }}
@@ -1480,7 +1515,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
-          <ModuleSectionHeader index={1} title="As Três Grandes Baixas" variant={mv[3] || "blue"} />
+          <ModuleSectionHeader index="INTRO" title="As Três Grandes Baixas" variant={mv[3] || "blue"} />
           <AlertBox tipo="warning" titulo="O Alvo da Banca">
             As bancas amam cobrar as palavras que <strong>perderam</strong> o acento no Novo Acordo. Palavras paroxítonas sofreram as maiores mudanças.
           </AlertBox>
@@ -1512,8 +1547,8 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             moduloNome: "Novo Acordo", tituloAula: "Ortografia", materia: "Português",
             images: [{ title: "Tabela de Mudanças", type: "Tabela", placeholderColor: "bg-blue-100" }]
           }}
-          maceteVisual={{
-             title: "A Regra de Ouro",
+          sinteseEstrategica={{
+             title: "Princípio Fundamental",
              content: <p className="text-lg">"<strong>Paroxítona</strong> mudou, <strong>oxítona</strong> ficou. O trema morreu e as duplas perderam o chapéu."</p>
           }}
           audio={{ audioUrl: "#", titulo: "AudioAula: O Acordo", artista: "Prof. André" }}
@@ -1543,7 +1578,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         />
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
-          <ModuleSectionHeader index={1} title="G vs J e S vs Z" variant={mv[4] || "indigo"} />
+          <ModuleSectionHeader index="INTRO" title="G vs J e S vs Z" variant={mv[4] || "indigo"} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FlipCard
               frente={<div className="flex flex-col items-center justify-center p-6 h-full text-center font-bold">Verbos em -JAR</div>}
@@ -1566,7 +1601,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             moduloNome: "Grafia", tituloAula: "Ortografia", materia: "Português",
             images: [{ title: "Mapa G vs J", type: "Mapa Mental", placeholderColor: "bg-indigo-100" }]
           }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "Sufixos",
             content: <p className="text-lg">"Origem/Nacionalidade usa <strong>S</strong> (Holandês). Abstração/Qualidade usa <strong>Z</strong> (Rigidez)."</p>
           }}
@@ -1597,7 +1632,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           variant="rose" 
           video={{videoId:"dQw4w9WgXcQ", title:"Opostos", duration:"05:00"}} 
           resumoVisual={{moduloNome:"Opostos", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Tabela", placeholderColor:"bg-rose-100"}]}}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "Macete do Lobo",
             content: <p className="text-lg">"Lobo <strong>Mau</strong> é Lobo <strong>Bom</strong> (Troque por BOM). Mal-vindo é <strong>Bem</strong>-vindo (Troque por BEM)."</p>
           }}
@@ -1618,8 +1653,8 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           variant="amber" 
           video={{videoId:"dQw4w9WgXcQ", title:"Os Porquês", duration:"04:00"}} 
           resumoVisual={{moduloNome:"Porquês", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Mapa", placeholderColor:"bg-amber-100"}]}}
-          maceteVisual={{
-            title: "O Pulo do Gato",
+          sinteseEstrategica={{
+            title: "Destaque Estratégico",
             content: <div className="space-y-2"><p><strong>Por que</strong> (separado) = Pergunta.</p><p><strong>Porque</strong> (junto) = Resposta.</p></div>
           }}
           audio={{ audioUrl: "#", titulo: "AudioAula: Porquês", artista: "Prof. André" }}
@@ -1637,7 +1672,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           variant="violet" 
           video={{videoId:"dQw4w9WgXcQ", title:"Hífen", duration:"06:00"}} 
           resumoVisual={{moduloNome:"Hífen", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Tabela", placeholderColor:"bg-violet-100"}]}}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "Regra dos Opostos",
             content: <p className="text-lg">"Os incomuns se atraem (Sem Hífen). Os iguais se repelem (Com Hífen)."</p>
           }}
@@ -1653,7 +1688,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           variant="emerald" 
           video={{videoId:"dQw4w9WgXcQ", title:"Semântica", duration:"07:00"}} 
           resumoVisual={{moduloNome:"Semântica", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Lista", placeholderColor:"bg-emerald-100"}]}}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "Trinca da Cesgranrio",
             content: <div className="space-y-1"><p><strong>Sessão</strong> (Tempo/Cinema)</p><p><strong>Seção</strong> (Lugar/Divisão)</p><p><strong>Cessão</strong> (Dar/Ceder)</p></div>
           }}
@@ -1669,7 +1704,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           variant="blue" 
           video={{videoId:"dQw4w9WgXcQ", title:"Contexto", duration:"03:00"}} 
           resumoVisual={{moduloNome:"Contexto", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Card", placeholderColor:"bg-blue-100"}]}}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "A fim de",
             content: <p className="text-lg">"<strong>A fim de</strong> (separado) indica finalidade (Para). <strong>Afim</strong> (junto) indica semelhança."</p>
           }}
@@ -1688,7 +1723,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           variant="blue" 
           video={{videoId:"dQw4w9WgXcQ", title:"Revisão", duration:"05:00"}} 
           resumoVisual={{moduloNome:"Final", tituloAula:"Ortografia", materia:"Português", images:[{title:"Checklist", type:"Card", placeholderColor:"bg-blue-200"}]}}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "Checklist de Prova",
             content: <ul className="text-left list-disc list-inside"><li>Novo Acordo?</li><li>Porquês?</li><li>Mal vs Mau?</li></ul>
           }}

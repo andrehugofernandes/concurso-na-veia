@@ -53,8 +53,45 @@ export default function AulaReadingStrategies({
   prevTopico,
   nextTopico,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_ingles_reading_strategies_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   const [quizPrediction] = useState(() => getRandomQuestions(QUIZ_M1_PREDICTION, 8));
   const [quizSkimming] = useState(() => getRandomQuestions(QUIZ_M2_SKIMMING, 8));
@@ -102,7 +139,7 @@ export default function AulaReadingStrategies({
     { id: "modulo-7", label: "Módulo 7", title: "Critical Reading & Tone" },
     { id: "modulo-8", label: "Módulo 8", title: "Text Structure" },
     { id: "modulo-9", label: "Módulo 9", title: "Petrobras Context" },
-    { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+    { id: "modulo-10", label: "Módulo 10", title: "Simulado Geral" },
   ];
 
   // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
@@ -198,7 +235,7 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="A Arte da Predição (Pre-Reading)"
               description="Transformando um texto desconhecido em território familiar em 30 segundos."
               variant={mv[1]}
@@ -218,7 +255,7 @@ export default function AulaReadingStrategies({
                       <p className="text-lg leading-relaxed">
                         A **Predição** é a inferência baseada em dados observáveis. No Inglês Instrumental, ela serve como o "GPS" da sua leitura. Ao olhar para o título, as imagens e a fonte, seu cérebro já começa a "baixar" os arquivos de conhecimento relacionados.
                       </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                          <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/10">
                             <h6 className="font-bold text-blue-600">Schema (Conhecimento Prévio)</h6>
                             <p className="text-lg opacity-80 leading-relaxed italic">
@@ -298,7 +335,7 @@ export default function AulaReadingStrategies({
                   { title: "Checklist Pre-Reading", type: "Fórmula", placeholderColor: "bg-violet-500/20" }
                 ]
               }}
-              maceteVisual={{
+              sinteseEstrategica={{
                 title: "A Senha P.T.I.",
                 content: (
                   <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
@@ -359,7 +396,7 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="A Arte do Voo Rasante"
               description="Como ler 1000 palavras em 1 minuto e entender a tese central."
               variant={mv[2]}
@@ -400,7 +437,7 @@ export default function AulaReadingStrategies({
                   )
                 },
                 {
-                  titulo: "Exemplo: O Pulo do Gato",
+                  titulo: "Exemplo: Destaque Estratégico",
                   icone: "🐈",
                   conteudo: (
                     <div className="space-y-4">
@@ -438,7 +475,7 @@ export default function AulaReadingStrategies({
                   { title: "The 'Z' Eye Path", type: "Mapa Mental", placeholderColor: "bg-blue-500/20" }
                 ]
               }}
-              maceteVisual={{
+              sinteseEstrategica={{
                 title: "O Salto do Gato",
                 content: (
                   <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl">
@@ -498,7 +535,7 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Scanning: O Sniper da Leitura"
               description="Como encontrar informações específicas sem ler o texto completo."
               variant={mv[3]}
@@ -609,7 +646,7 @@ export default function AulaReadingStrategies({
                   { title: "Data Extraction Workflow", type: "Fórmula", placeholderColor: "bg-cyan-500/20" }
                 ]
               }}
-              maceteVisual={{
+              sinteseEstrategica={{
                 title: "Ctrl+F Ocular",
                 content: (
                   <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
@@ -669,7 +706,7 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="O Poder dos Cognatos"
               description="A sua maior vantagem competitiva como falante de língua latina."
               variant={mv[4]}
@@ -716,7 +753,7 @@ export default function AulaReadingStrategies({
                   conteudo: (
                     <div className="space-y-6">
                       <p className="text-lg">As palavras-chave que conectam o raciocínio técnico. Memorize por categoria:</p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/10">
                           <h6 className="font-bold text-emerald-600 text-lg">Contraste / Concessão</h6>
                           <p className="text-[10px] opacity-80 mt-1">**However, Nevertheless, Despite, Although, Yet.**</p>
@@ -843,8 +880,8 @@ export default function AulaReadingStrategies({
                   { title: "Morfology Table", type: "Fórmula", placeholderColor: "bg-orange-500/20" }
                 ]
               }}
-              maceteVisual={{
-                title: "O Pulo do Gato: Raiz Latina",
+              sinteseEstrategica={{
+                title: "Destaque Estratégico: Raiz Latina",
                 content: (
                   <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
                     <p className="font-bold text-amber-600">The Latin Hook</p>
@@ -901,7 +938,7 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Context Clues Mastery"
               description="Desvendando significados através de pistas contextuais."
               variant={mv[5]}
@@ -975,7 +1012,7 @@ export default function AulaReadingStrategies({
                   { title: "Conexões Contextuais", type: "Fórmula", placeholderColor: "bg-red-500/20" }
                 ]
               }}
-              maceteVisual={{
+              sinteseEstrategica={{
                 title: "O Segredo: Procure a Pista",
                 content: (
                   <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl">
@@ -1035,7 +1072,7 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Hierarquia da Informação"
               description="Mapeando a estrutura lógica de textos técnicos."
               variant={mv[6]}
@@ -1108,7 +1145,7 @@ export default function AulaReadingStrategies({
                   { title: "Supporting Evidence Grid", type: "Fórmula", placeholderColor: "bg-sky-500/20" }
                 ]
               }}
-              maceteVisual={{
+              sinteseEstrategica={{
                 title: "A Pirâmide Invertida",
                 content: (
                   <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
@@ -1166,7 +1203,7 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Desvendando Intenção e Atitude"
               description="Leitura crítica além das palavras superficiais."
               variant={mv[7]}
@@ -1240,7 +1277,7 @@ export default function AulaReadingStrategies({
                   { title: "Análise de Tom", type: "Fórmula", placeholderColor: "bg-emerald-500/20" }
                 ]
               }}
-              maceteVisual={{
+              sinteseEstrategica={{
                 title: "O Detector de Intenção",
                 content: (
                   <div className="p-4 bg-lime-500/10 border border-lime-500/20 rounded-xl">
@@ -1300,7 +1337,7 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Os 5 Padrões Principais"
               description="Mapeando arquitetura lógica textual."
               variant={mv[8]}
@@ -1393,7 +1430,7 @@ export default function AulaReadingStrategies({
                   { title: "Pattern Recognition Grid", type: "Fórmula", placeholderColor: "bg-blue-500/20" }
                 ]
               }}
-              maceteVisual={{
+              sinteseEstrategica={{
                 title: "O Radar de Transição",
                 content: (
                   <div className="p-4 bg-teal-500/10 border border-teal-500/20 rounded-xl">
@@ -1451,7 +1488,7 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Integração de Estratégias"
               description="Textos autênticos Petrobras: 300-400 palavras com 8 questões."
               variant={mv[9]}
@@ -1539,7 +1576,7 @@ export default function AulaReadingStrategies({
                   { title: "300-400 Word Passage Flow", type: "Fórmula", placeholderColor: "bg-indigo-500/20" }
                 ]
               }}
-              maceteVisual={{
+              sinteseEstrategica={{
                 title: "O Fluxo de Leitura",
                 content: (
                   <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
@@ -1569,11 +1606,11 @@ export default function AulaReadingStrategies({
         </div>
       </TabsContent>
 
-      {/* ═══ MÓDULO 10: SIMULADO MESTRE ═══ */}
+      {/* ═══ MÓDULO 10: Simulado Geral ═══ */}
       <TabsContent value="modulo-10" className="space-y-[50px]">
         <ModuleBanner
           numero={10}
-          titulo="SIMULADO MESTRE: CESGRANRIO MASTER EXAM"
+          titulo="Simulado Geral: CESGRANRIO MASTER EXAM"
           descricao="Teste final: integração completa de todas as 9 estratégias em um simulado autêntico."
           gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
           variant="purple"
@@ -1581,7 +1618,7 @@ export default function AulaReadingStrategies({
 
         <RichIntro>
           <p>
-            Este é o desafio final — o **Simulado Mestre**. Você terá acesso a um conjunto de **10 questões** que integram todas as competências dos módulos anteriores: **Prediction** (antecipar temas), **Skimming** (identificar propósito geral), **Scanning** (localizar dados específicos), **Inferencing** (deduzir significados), **Main Idea** (sintetizar argumentação), **Critical Reading** (reconhecer tom e intenção), **Text Structure** (navegar organização lógica), e **Petrobras Domain Knowledge** (aplicar contexto real).
+            Este é o desafio final — o **Simulado Geral**. Você terá acesso a um conjunto de **10 questões** que integram todas as competências dos módulos anteriores: **Prediction** (antecipar temas), **Skimming** (identificar propósito geral), **Scanning** (localizar dados específicos), **Inferencing** (deduzir significados), **Main Idea** (sintetizar argumentação), **Critical Reading** (reconhecer tom e intenção), **Text Structure** (navegar organização lógica), e **Petrobras Domain Knowledge** (aplicar contexto real).
           </p>
           <p>
             Não há atalhos aqui — apenas aplicação. Cada questão pode exigir uma combinação diferente de estratégias. Algumas serão diretas (skimming simples), outras sutis (exigindo inferência cuidadosa). O tempo é limitado — em uma prova Cesgranrio real, você teria ~3 minutos por questão. Use essa limitação para treinar **velocidade sob pressão**, a habilidade que mais importa no exame real.
@@ -1597,7 +1634,7 @@ export default function AulaReadingStrategies({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Avaliação Final Integrada"
               description="10 questões: teste completo de leitura em inglês instrumental."
               variant={mv[10]}
@@ -1635,7 +1672,7 @@ export default function AulaReadingStrategies({
                   { title: "Performance Benchmarks", type: "Fórmula", placeholderColor: "bg-fuchsia-500/20" }
                 ]
               }}
-              maceteVisual={{
+              sinteseEstrategica={{
                 title: "O Checklist Final",
                 content: (
                   <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl">
@@ -1658,7 +1695,7 @@ export default function AulaReadingStrategies({
 
                         <QuizInterativo
               questoes={quizSimuladoMestre}
-              titulo="QUIZ: Simulado Mestre"
+              titulo="QUIZ: Simulado Geral"
               icone="👑"
               numero={3}
               variant="purple"

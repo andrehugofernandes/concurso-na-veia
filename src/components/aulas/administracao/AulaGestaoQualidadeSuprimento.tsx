@@ -51,8 +51,45 @@ export default function AulaGestaoQualidadeSuprimento({
   prevTopico,
   nextTopico,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_gestao_qualidade_suprimento_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   const MODULE_DEFS = [
     { id: "modulo-1", label: "M1", title: "Fundamentos da Qualidade" },
@@ -64,7 +101,7 @@ export default function AulaGestaoQualidadeSuprimento({
     { id: "modulo-7", label: "M7", title: "Controle Estatístico (CEP)" },
     { id: "modulo-8", label: "M8", title: "Auditoria e Conformidade" },
     { id: "modulo-9", label: "M9", title: "Qualidade na Petrobras" },
-    { id: "modulo-10", label: "M10", title: "Simulado Mestre" },
+    { id: "modulo-10", label: "M10", title: "Simulado Geral" },
   ] as const;
 
   const mv = Object.fromEntries(
@@ -129,7 +166,7 @@ export default function AulaGestaoQualidadeSuprimento({
         <ModuleBanner numero={1} titulo="Fundamentos da Qualidade" variant={mv[1]} descricao="Conceitos, abordagens de Garvin, ciclo PDCA e custos da qualidade." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={1} variant={mv[1]} title="O que é Qualidade?" description="Da conformidade ao encantamento — as múltiplas dimensões do conceito." />
+          <ModuleSectionHeader index="INTRO" variant={mv[1]} title="O que é Qualidade?" description="Da conformidade ao encantamento — as múltiplas dimensões do conceito." />
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
             <p>
               <strong>Qualidade</strong> é um conceito multidimensional. Para <strong>Juran</strong>, é &quot;adequação ao uso&quot;. Para <strong>Crosby</strong>, é
@@ -235,7 +272,7 @@ export default function AulaGestaoQualidadeSuprimento({
           index={1} variant={mv[1]}
           video={{ videoId: "Q1", title: "Fundamentos da Qualidade", duration: "12:00" }}
           resumoVisual={{ moduloNome: "M1", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Ciclo PDCA", type: "Diagrama", placeholderColor: "bg-blue-500/20" }, { title: "Custos da Qualidade", type: "Gráfico", placeholderColor: "bg-amber-500/20" }] }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "O Macete do 'PDCA'",
             content: (
               <>
@@ -379,7 +416,7 @@ export default function AulaGestaoQualidadeSuprimento({
           index={2} variant={mv[2]}
           video={{ videoId: "Q2", title: "As 4 Eras da Qualidade", duration: "10:00" }}
           resumoVisual={{ moduloNome: "M2", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Timeline Eras", type: "Timeline", placeholderColor: "bg-amber-500/20" }, { title: "Evolução do Foco", type: "Diagrama", placeholderColor: "bg-blue-500/20" }] }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "O Macete do 'ICGT'",
             content: (
               <>
@@ -508,7 +545,7 @@ export default function AulaGestaoQualidadeSuprimento({
           index={3} variant={mv[3]}
           video={{ videoId: "Q3", title: "Os Gurus da Qualidade", duration: "15:00" }}
           resumoVisual={{ moduloNome: "M3", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Tabela Gurus", type: "Tabela", placeholderColor: "bg-emerald-500/20" }, { title: "Diagrama Ishikawa", type: "Diagrama", placeholderColor: "bg-amber-500/20" }] }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "O Macete do 'Guru Certo'",
             content: (
               <>
@@ -638,7 +675,7 @@ export default function AulaGestaoQualidadeSuprimento({
           index={4} variant={mv[4]}
           video={{ videoId: "Q4", title: "Ferramentas da Qualidade", duration: "18:00" }}
           resumoVisual={{ moduloNome: "M4", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "7 Ferramentas", type: "Dashboard", placeholderColor: "bg-rose-500/20" }, { title: "6M Ishikawa", type: "Diagrama", placeholderColor: "bg-blue-500/20" }] }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "O Macete dos '6M'",
             content: (
               <>
@@ -754,7 +791,7 @@ export default function AulaGestaoQualidadeSuprimento({
           index={5} variant={mv[5]}
           video={{ videoId: "Q5", title: "Normas ISO e Certificação", duration: "14:00" }}
           resumoVisual={{ moduloNome: "M5", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Família ISO", type: "Selo", placeholderColor: "bg-blue-500/20" }, { title: "SGI", type: "Diagrama", placeholderColor: "bg-emerald-500/20" }] }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "O Macete do '9-14-45'",
             content: (
               <>
@@ -868,7 +905,7 @@ export default function AulaGestaoQualidadeSuprimento({
           index={6} variant={mv[6]}
           video={{ videoId: "Q6", title: "Six Sigma e Lean", duration: "16:00" }}
           resumoVisual={{ moduloNome: "M6", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "DMAIC", type: "Infográfico", placeholderColor: "bg-blue-500/20" }, { title: "7 Desperdícios", type: "Diagrama", placeholderColor: "bg-amber-500/20" }] }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "O Macete do 'DMAIC'",
             content: (
               <>
@@ -981,7 +1018,7 @@ export default function AulaGestaoQualidadeSuprimento({
           index={7} variant={mv[7]}
           video={{ videoId: "Q7", title: "CEP e Cartas de Controle", duration: "14:00" }}
           resumoVisual={{ moduloNome: "M7", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Carta de Controle", type: "Gráfico", placeholderColor: "bg-amber-500/20" }, { title: "Cp/Cpk", type: "Fórmula", placeholderColor: "bg-blue-500/20" }] }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "O Macete do 'LSC-LIC'",
             content: (
               <>
@@ -1093,7 +1130,7 @@ export default function AulaGestaoQualidadeSuprimento({
           index={8} variant={mv[8]}
           video={{ videoId: "Q8", title: "Auditoria e Conformidade", duration: "12:00" }}
           resumoVisual={{ moduloNome: "M8", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Tipos de Auditoria", type: "Diagrama", placeholderColor: "bg-emerald-500/20" }, { title: "Não Conformidades", type: "Tabela", placeholderColor: "bg-rose-500/20" }] }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "O Macete do '1-2-3'",
             content: (
               <>
@@ -1207,7 +1244,7 @@ export default function AulaGestaoQualidadeSuprimento({
           index={9} variant={mv[9]}
           video={{ videoId: "Q9", title: "Qualidade na Petrobras", duration: "10:00" }}
           resumoVisual={{ moduloNome: "M9", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "SGI Petrobras", type: "Diagrama", placeholderColor: "bg-blue-500/20" }, { title: "SMS", type: "Infográfico", placeholderColor: "bg-emerald-500/20" }] }}
-          maceteVisual={{
+          sinteseEstrategica={{
             title: "O Macete do 'SMS'",
             content: (
               <>

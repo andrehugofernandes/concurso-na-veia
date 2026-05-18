@@ -30,6 +30,7 @@ import {
 import { cn } from "@/lib/utils";
 
 import { useUser } from "@/contexts/UserContext";
+import PetrobrasLogo from "@/components/PetrobrasLogo";
 
 interface AdminSidebarProps {
   isCollapsed: boolean;
@@ -62,7 +63,13 @@ const ALL_MENU_SECTIONS: MenuSection[] = [
     title: "Estudo",
     items: [
       { id: "aulas", label: "Aulas", href: "/aulas", icon: LuBookOpen },
-      { id: "petrolingo", label: "PetroLingo", href: "/aulas/ingles/petrolingo", icon: LuCrown, badge: "ELITE TOTAL" },
+      {
+        id: "petrolingo",
+        label: "PetroLingo",
+        href: "/aulas/ingles/petrolingo",
+        icon: LuCrown,
+        badge: "ELITE TOTAL",
+      },
       {
         id: "simulados",
         label: "Simulados Rápidos",
@@ -185,7 +192,10 @@ export function AdminSidebar({
 }: AdminSidebarProps) {
   const pathname = usePathname();
   const { profile } = useUser();
-  const isAdmin = profile?.role === "ADMIN" || profile?.role === "SYSADMIN" || userRole === "ADMIN";
+  const isAdmin =
+    profile?.role === "ADMIN" ||
+    profile?.role === "SYSADMIN" ||
+    userRole === "ADMIN";
   const userPlan = profile?.plan?.toLowerCase() || "";
 
   // Filtra as seções e itens com base no cargo (role) e plano
@@ -194,7 +204,8 @@ export function AdminSidebar({
     ...section,
     items: section.items.filter((item) => {
       if (item.id === "petrolingo") {
-        const hasAccess = isAdmin || userPlan === "elite-total" || userPlan === "ouro";
+        const hasAccess =
+          isAdmin || userPlan === "elite-total" || userPlan === "ouro";
         return hasAccess;
       }
       return true;
@@ -238,66 +249,23 @@ export function AdminSidebar({
         {/* Logo/header */}
         <div
           className={cn(
-            "flex items-center border-b border-gray-200 dark:border-gray-700 h-16 md:h-20 flex-shrink-0",
+            "flex items-center border-b border-gray-200 dark:border-gray-700 h-16 md:h-20 flex-shrink-0 transition-all duration-300",
             isCollapsed && !isOverlayOpen
-              ? "justify-center px-2"
+              ? "justify-center px-1"
               : "justify-start px-4",
           )}
         >
-          <div
-            className={cn(
-              "flex items-center",
-              isCollapsed && !isOverlayOpen ? "justify-center" : "gap-3",
-            )}
-          >
-            {/* Ícone/Logo */}
-            <div
-              className={cn(
-                "rounded-lg shadow-lg flex items-center justify-center flex-shrink-0 shadow-black/5",
-                isCollapsed && !isOverlayOpen
-                  ? "w-10 h-10 md:w-12 md:h-12 bg-primary"
-                  : "w-10 h-10 md:w-12 md:h-12",
-              )}
-              style={
-                !isCollapsed || isOverlayOpen
-                  ? { backgroundColor: "hsl(var(--primary))" }
-                  : undefined
-              }
-            >
-              <span
-                className={cn(
-                  "font-bebas font-bold text-white drop-shadow-md",
-                  isCollapsed && !isOverlayOpen
-                    ? "text-lg md:text-xl"
-                    : "text-2xl md:text-3xl",
-                )}
-              >
-                AV
-              </span>
+          {isCollapsed && !isOverlayOpen ? (
+            <div className="relative w-10 h-10 md:w-11 md:h-11 bg-black rounded-md shadow-lg flex-shrink-0 overflow-visible mt-2">
+              <img
+                src="/logo-icone.png"
+                alt="Logo"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] w-[260%] h-[260%] max-w-none object-contain drop-shadow-[0_8px_16px_rgba(34,197,94,0.4)] z-10"
+              />
             </div>
-
-            {/* Título — width/opacity animation garante expansão/contração limpa */}
-            <div
-              className={cn(
-                "transition-all duration-300 overflow-hidden whitespace-nowrap",
-                !isCollapsed || isOverlayOpen
-                  ? "w-auto opacity-100 max-w-[260px]"
-                  : "w-0 opacity-0 pointer-events-none",
-              )}
-            >
-              <div className="flex flex-col justify-center leading-none">
-                <h1 className="font-bebas font-bold text-[36px] md:text-[28px] tracking-tight leading-[1.1] flex items-baseline gap-1">
-                  <span style={{ color: "hsl(var(--primary))" }}>
-                    A VAGA
-                  </span>
-                  <span className="text-foreground">É MINHA</span>
-                </h1>
-                <span className="font-sans text-[10.8px] md:text-[8.3px] font-bold uppercase tracking-[0.2em] text-foreground/40 md:mt-1 -mt-0.5">
-                  Simulador de Concursos
-                </span>
-              </div>
-            </div>
-          </div>
+          ) : (
+            <PetrobrasLogo className="scale-75 md:scale-[0.80] origin-left" />
+          )}
         </div>
 
         {/* Navigation */}
@@ -354,12 +322,15 @@ export function AdminSidebar({
                   const isActive = (() => {
                     // Check if strictly equal
                     if (pathname === item.href) return true;
-                    
+
                     // Specific priority for PetroLingo
-                    if (item.id === "aulas" && pathname.startsWith("/aulas/ingles/petrolingo")) {
+                    if (
+                      item.id === "aulas" &&
+                      pathname.startsWith("/aulas/ingles/petrolingo")
+                    ) {
                       return false;
                     }
-                    
+
                     // Default startsWith match
                     return pathname.startsWith(item.href + "/");
                   })();
@@ -402,9 +373,11 @@ export function AdminSidebar({
                       )}
                       {/* Badge quando colapsado (e não em overlay) */}
                       {isCollapsed && !isOverlayOpen && item.badge && (
-                        <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                          {item.badge}
-                        </span>
+                        typeof item.badge === "number" ? (
+                          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                            {item.badge}
+                          </span>
+                        ) : null
                       )}
                       {/* Tooltip quando colapsado (e não em overlay) */}
                       {isCollapsed && !isOverlayOpen && (

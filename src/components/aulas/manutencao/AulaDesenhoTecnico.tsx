@@ -45,8 +45,45 @@ export default function AulaDesenhoTecnico({
   prevTopico,
   nextTopico,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_manutencao_desenho_tecnico_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   useEffect(() => {
     if (isCompleted) {
@@ -106,7 +143,7 @@ export default function AulaDesenhoTecnico({
         </AlertBox>
 
         <ModuleSectionHeader 
-            index={1}
+            index="INTRO"
             title="Série A e Proporções" 
             description="Entendendo as dimensões e dobragens padrão."
             variant="blue"
@@ -154,7 +191,7 @@ export default function AulaDesenhoTecnico({
                     { title: "Esquema de Dobragem", type: "infographic", placeholderColor: "indigo" }
                 ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "A Regra do Oposto na Escala",
                 content: <p className="text-lg">"Se o 1 vem atrás, o desenho é maior. Se o 1 vem na frente, o desenho é menor!"</p>
             }}
@@ -184,7 +221,7 @@ export default function AulaDesenhoTecnico({
         
         <RichIntro>
             <p>O maior desafio do desenho técnico é representar um objeto tridimensional em um papel que é bidimensional. A solução clássica da engenharia é a <strong>Projeção Ortográfica (NBR 10067)</strong>. No Brasil, utilizamos o <strong>1º Diedro (Método E)</strong>, enquanto em países como EUA e Japão é comum o 3º Diedro. No concurso da Petrobras, saber a posição das vistas no 1º diedro é ponto certo na prova.</p>
-            <p>No 1º Diedro, o objeto situa-se entre o observador e o plano de projeção. Isso gera uma disposição específica das vistas: a <strong>Vista Frontal</strong> (Elevação) fica no centro; a <strong>Vista Superior</strong> (Planta) fica abaixo da frontal; e a <strong>Vista Lateral Esquerda</strong> (Perfil) fica à direita da frontal. Essa inversão lógica (superior em baixo, esquerda na direita) é a 'pegadinha' básica.</p>
+            <p>No 1º Diedro, o objeto situa-se entre o observador e o plano de projeção. Isso gera uma disposição específica das vistas: a <strong>Vista Frontal</strong> (Elevação) fica no centro; a <strong>Vista Superior</strong> (Planta) fica abaixo da frontal; e a <strong>Vista Lateral Esquerda</strong> (Perfil) fica à direita da frontal. Essa inversão lógica (superior em baixo, esquerda na direita) é a 'pontos de atenção' básica.</p>
             <p>Além das vistas principais, o desenho ortográfico utiliza diferentes tipos de linhas para comunicar informações (NBR 8403): a <strong>Linha Contínua Larga</strong> representa contornos visíveis; a <strong>Linha Tracejada</strong> indica contornos ocultos; e a <strong>Linha de Traço e Ponto</strong> indica eixos de simetria e centros de furos.</p>
         </RichIntro>
 
@@ -223,8 +260,8 @@ export default function AulaDesenhoTecnico({
                     { title: "Layout em Cruz das Vistas", type: "diagram", placeholderColor: "indigo" }
                 ]
             }}
-            maceteVisual={{
-                title: "O Pulo do Gato",
+            sinteseEstrategica={{
+                title: "Destaque Estratégico",
                 content: <p className="text-lg italic">"Superior em baixo, esquerda na direita. No Brasil a projeção é assim feita!"</p>
             }}
             audio={{
@@ -298,7 +335,7 @@ export default function AulaDesenhoTecnico({
                     { title: "Diferença: Corte vs Seção", type: "diagram", placeholderColor: "teal" }
                 ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "Hachura não é enfeite",
                 content: <p className="text-lg">"Lugar de hachura é no lugar da massa!" Se for vazio, não tem risquinho.</p>
             }}
@@ -353,7 +390,7 @@ export default function AulaDesenhoTecnico({
                     { title: "Cotagem em Série vs Paralela", type: "infographic", placeholderColor: "orange" }
                 ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "A Orientação da Cota",
                 content: <p className="text-lg">"Leia de baixo ou da direita." As cotas devem estar sempre acima da linha de cota.</p>
             }}
@@ -405,7 +442,7 @@ export default function AulaDesenhoTecnico({
                     { title: "Interpretação de P&ID", type: "infographic", placeholderColor: "pink" }
                 ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "A Bússola no Isométrico",
                 content: <p className="text-lg">"Olhe sempre para o Norte!" Todo isométrico indica a direção do Norte de Projeto para orientação no campo.</p>
             }}

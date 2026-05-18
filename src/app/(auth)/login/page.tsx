@@ -223,12 +223,12 @@ export default function LoginPage() {
           {/* Título de Boas-vindas com Skin Gradient */}
           <div className="text-center md:text-left space-y-2">
             <h1 
-              className="text-4xl md:text-6xl font-black tracking-tighter leading-none bg-clip-text text-transparent transition-smooth font-display whitespace-nowrap"
+              className="text-2xl md:text-5xl text-center md:text-center font-black tracking-tighter leading-none bg-clip-text text-transparent transition-smooth font-display whitespace-nowrap"
               style={{ backgroundImage: "var(--primary-gradient)" }}
             >
               Acesse sua conta
             </h1>
-            <p className="text-muted-foreground text-sm md:text-lg font-medium">
+            <p className="text-center md:text-center text-muted-foreground text-sm md:text-lg font-medium">
               Bem-vindo de volta! Continue sua jornada.
             </p>
           </div>

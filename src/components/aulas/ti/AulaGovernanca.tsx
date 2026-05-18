@@ -50,10 +50,45 @@ export default function AulaGovernanca({
   prevTopico,
   nextTopico,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_ti_governanca_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   const MODULE_DEFS = [
     { id: "modulo-1", label: "Módulo 1", titulo: "Conceitos e Alinhamento" },
@@ -156,7 +191,7 @@ export default function AulaGovernanca({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="O Que é Governança de TI?"
               variant={mv[1]}
             />
@@ -289,7 +324,7 @@ export default function AulaGovernanca({
             />
 
             <ContentAccordion
-              titulo="Dicas e Macetes - Pulo do Gato"
+              titulo="Estratégias e Insights de Prova"
               icone="💡"
               corIndicador="bg-amber-500"
               defaultOpen={false}
@@ -305,7 +340,7 @@ export default function AulaGovernanca({
                               <span className="text-2xl">🔄</span>
                               <h5 className="font-bold">O que é EDM?</h5>
                               <p className="text-lg text-muted-foreground">
-                                O mantra da Governança na ISO 38500.
+                                O Princípio da Governança na ISO 38500.
                               </p>
                             </div>
                           }
@@ -345,7 +380,7 @@ export default function AulaGovernanca({
                         />
                       </div>
 
-                      <AlertBox tipo="warning" titulo="⚠️ Pegadinha CESGRANRIO">
+                      <AlertBox tipo="warning" titulo="⚠️ Pontos de Atenção - Cesgranrio">
                         A banca costuma dizer que o CIO é o responsável final
                         pela Governança de TI. **ERRADO!** O responsável final é
                         o **Corpo Diretivo / Conselho de Administração**. O CIO
@@ -414,18 +449,18 @@ export default function AulaGovernanca({
                   title: "Silos vs Integração",
                   type: "Infográfico",
                   placeholderColor: "blue",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Silos%20vs%20Integra%C3%A7%C3%A3o",
                 },
                 {
                   title: "Matriz EDM",
                   type: "Card",
                   placeholderColor: "emerald",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Matriz%20EDM",
                 },
               ],
             }}
-            maceteVisual={{
-              title: "G-DOR: O Macete",
+            sinteseEstrategica={{
+              title: "G-DOR: Síntese Estratégica",
               content: (
                 <div className="space-y-4">
                   <p className="font-bold text-lg">
@@ -465,7 +500,7 @@ export default function AulaGovernanca({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Estrutura e Fatores de Design"
               variant={mv[2]}
             />
@@ -627,7 +662,7 @@ export default function AulaGovernanca({
             />
 
             <ContentAccordion
-              titulo="Dicas e Pegadinhas de Prova"
+              titulo="Dicas e pontos de atenção de Prova"
               icone="💡"
               corIndicador="bg-amber-500"
               defaultOpen={false}
@@ -642,10 +677,10 @@ export default function AulaGovernanca({
                         nomenclatura mudou de "Processo" para "Objetivo".
                       </AlertBox>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
                           <p className="font-bold text-red-500">
-                            ❌ Onde as pessoas erram:
+                            ❌ Pontos de Atenção:
                           </p>
                           <p className="text-lg">
                             Achar que o COBIT é apenas para segurança. Ele é
@@ -692,18 +727,18 @@ export default function AulaGovernanca({
                   title: "Os 40 Objetivos",
                   type: "Infográfico",
                   placeholderColor: "blue",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Os%2040%20Objetivos",
                 },
                 {
                   title: "Domínios de Gestão",
                   type: "Diagrama",
                   placeholderColor: "emerald",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Dom%C3%ADnios%20de%20Gest%C3%A3o",
                 },
               ],
             }}
-            maceteVisual={{
-              title: "ABC do COBIT",
+            sinteseEstrategica={{
+              title: "Resumo Estrutural do COBIT",
               content: (
                 <p>
                   Lembre-se: APO (Plano), BAI (Obra), DSS (Suporte), MEA
@@ -738,7 +773,7 @@ export default function AulaGovernanca({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="SVS e Cadeia de Valor"
               variant={mv[3]}
             />
@@ -767,7 +802,7 @@ export default function AulaGovernanca({
                           </span>
                           Componentes do SVS
                         </h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div className="p-5 bg-card border border-border rounded-xl shadow-inner">
                             <h5 className="font-bold text-blue-500">
                               1. Princípios Orientadores
@@ -908,7 +943,7 @@ export default function AulaGovernanca({
                         </ul>
                       </div>
 
-                      <AlertBox tipo="warning" titulo="⚠️ Pegadinha CESGRANRIO">
+                      <AlertBox tipo="warning" titulo="⚠️ pontos de atenção CESGRANRIO">
                         Diferente do V3, o ITIL 4 diz que o valor não é apenas
                         entregue (como um presente), mas **co-criado** entre o
                         fornecedor e o consumidor. Se a questão disser 'Valor é
@@ -942,18 +977,18 @@ export default function AulaGovernanca({
                   title: "Service Value System",
                   type: "Diagrama",
                   placeholderColor: "blue",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Service%20Value%20System",
                 },
                 {
                   title: "As 4 Dimensões",
                   type: "Infográfico",
                   placeholderColor: "emerald",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=As%204%20Dimens%C3%B5es",
                 },
               ],
             }}
-            maceteVisual={{
-              title: "O Coração do ITIL",
+            sinteseEstrategica={{
+              title: "Prazos e Prioridades ITIL",
               content: (
                 <p>SVS = A Engrenagem que transforma Demanda em Valor.</p>
               ),
@@ -985,7 +1020,7 @@ export default function AulaGovernanca({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="6 Princípios e o Ciclo EDM"
               variant={mv[4]}
             />
@@ -1001,10 +1036,9 @@ export default function AulaGovernanca({
                   conteudo: (
                     <div className="space-y-8">
                       <p className="text-lg text-muted-foreground leading-relaxed">
-                        A **ISO/IEC 38500** é a norma 'pai' da Governança de TI.
-                        Ela foca no papel do **Corpo Diretivo** (Board).
-                        Diferente do COBIT, ela não diz como fazer, mas o que
-                        deve ser observado em 6 frentes.
+                        A **ISO/IEC 38500** constitui a norma diretriz para a Governança de TI.
+                        Ela estabelece as atribuições do **Corpo Diretivo** (Board).
+                        Distinta do COBIT, ela prescreve princípios orientadores em seis dimensões.
                       </p>
 
                       <div className="p-6 bg-muted rounded-xl border border-border">
@@ -1073,24 +1107,23 @@ export default function AulaGovernanca({
                       <TimelineItem
                         passo={1}
                         titulo="Evaluate (Avaliar)"
-                        descricao="O Conselho de Administração examina as propostas da TI e decide sobre as prioridades estratégicas da Petrobras."
+                        descricao="O Conselho de Administração analisa propostas estratégicas de TI."
                       />
                       <TimelineItem
                         passo={2}
                         titulo="Direct (Direcionar)"
-                        descricao="O Conselho dá a direção, aprova políticas e orçamentos, e delega a execução para a Gestão."
+                        descricao="O Conselho estabelece diretrizes, aprova políticas e delega a execução."
                       />
                       <TimelineItem
                         passo={3}
                         titulo="Monitor (Monitorar)"
-                        descricao="O Conselho verifica se a TI está entregando os resultados e se está em conformidade com as regras."
+                        descricao="O Conselho monitora a entrega de resultados e a conformidade regulatória."
                       />
 
                       <div className="p-6 bg-[#0a0a0a] rounded-xl text-white">
                         <p className="text-lg italic">
-                          "O sucesso da Petrobras depende de como a TI é
-                          dirigida. A ISO 38500 garante que quem manda entenda
-                          seu papel de cobrar e guiar a tecnologia."
+                          "O sucesso organizacional depende da governança de TI. A ISO 38500
+                          assegura que a alta direção monitore o desempenho da tecnologia."
                         </p>
                       </div>
                     </div>
@@ -1118,17 +1151,16 @@ export default function AulaGovernanca({
                                 Conformidade vs Desempenho
                               </h5>
                               <p className="text-lg text-muted-foreground">
-                                A eterna briga da governança.
+                                O dilema da governança.
                               </p>
                             </div>
                           }
                           verso={
                             <div className="space-y-2">
                               <span className="text-2xl">✅</span>
-                              <h5 className="font-bold">O Equilíbrio</h5>
+                              <h5 className="font-bold">Equilíbrio</h5>
                               <p className="text-lg text-muted-foreground">
-                                Não adianta ser 100% legal e 0% eficiente. A ISO
-                                busca ambos.
+                                A norma preconiza a convergência entre eficiência e conformidade legal.
                               </p>
                             </div>
                           }
@@ -1137,7 +1169,7 @@ export default function AulaGovernanca({
                           frente={
                             <div className="space-y-2">
                               <span className="text-2xl">👥</span>
-                              <h5 className="font-bold">Quem é o foco?</h5>
+                              <h5 className="font-bold">Público-alvo</h5>
                               <p className="text-lg text-muted-foreground">
                                 A quem se destina esta norma?
                               </p>
@@ -1148,17 +1180,15 @@ export default function AulaGovernanca({
                               <span className="text-2xl">✅</span>
                               <h5 className="font-bold">O Board</h5>
                               <p className="text-lg text-muted-foreground">
-                                Diretores, Proprietários e Alta Gestão.
+                                Diretores, proprietários e alta gestão.
                               </p>
                             </div>
                           }
                         />
                       </div>
-                      <AlertBox tipo="info" titulo="📌 Contexto Petrobras">
-                        Em auditorias do TCU (Tribunal de Contas da União), a
-                        ISO 38500 é frequentemente citada como base para cobrar
-                        responsabilidades dos diretores estatais sobre falhas em
-                        TI.
+                      <AlertBox tipo="info" titulo="📌 Contexto Institucional">
+                        Em auditorias do TCU, a ISO 38500 é frequentemente referenciada para
+                        atribuição de responsabilidades sobre a governança de TI.
                       </AlertBox>
                     </div>
                   ),
@@ -1188,24 +1218,19 @@ export default function AulaGovernanca({
                   title: "Os 6 Princípios",
                   type: "Card",
                   placeholderColor: "blue",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Os%206%20Princ%C3%ADpios",
                 },
                 {
                   title: "Fluxo EDM",
                   type: "Diagrama",
                   placeholderColor: "emerald",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Fluxo%20EDM",
                 },
               ],
             }}
-            maceteVisual={{
-              title: "REA DCH",
-              content: (
-                <p>
-                  R-E-A-D-C-H: Responsabilidade, Estratégia, Aquisição,
-                  Desempenho, Conformidade, Humano.
-                </p>
-              ),
+            sinteseEstrategica={{
+              title: "Fases de Gestão de Riscos",
+              content: <p>PETI sonha, PDTI realiza.</p>,
             }}
             audio={{
               audioUrl: "",
@@ -1234,7 +1259,7 @@ export default function AulaGovernanca({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Do Estratégico ao Operacional"
               variant={mv[5]}
             />
@@ -1250,33 +1275,33 @@ export default function AulaGovernanca({
                   conteudo: (
                     <div className="space-y-8">
                       <p className="text-lg text-muted-foreground leading-relaxed">
-                        O **PETI** é o topo da pirâmide. Ele olha para o futuro
-                        (3-5 anos) e define a **Visão, Missão e Valores** da TI
-                        alinhados à Petrobras.
+                        O **PETI** representa a cúpula do planejamento. Com horizonte de
+                        longo prazo (3-5 anos), define a **Missão, Visão e Valores** da
+                        divisão de TI alinhados aos objetivos da organização.
                       </p>
 
                       <div className="bg-muted p-6 rounded-xl border border-border space-y-4">
-                        <h4 className="font-bold">Análise SWOT (FOFA) na TI</h4>
+                        <h4 className="font-bold">Análise Estratégica (SWOT) na TI</h4>
                         <div className="grid grid-cols-2 gap-4">
                           <div className="p-4 bg-emerald-500/10 rounded-lg">
                             <strong className="text-emerald-500">
                               Forças:
                             </strong>{" "}
-                            Infra robusta, especialistas concursados.
+                            Infraestrutura robusta, quadro técnico qualificado.
                           </div>
                           <div className="p-4 bg-red-500/10 rounded-lg">
                             <strong className="text-red-500">Fraquezas:</strong>{" "}
-                            Sistemas legados, burocracia excessiva.
+                            Sistemas legados, processos operacionais onerosos.
                           </div>
                           <div className="p-4 bg-blue-500/10 rounded-lg">
                             <strong className="text-blue-500">
                               Oportunidades:
                             </strong>{" "}
-                            Avance da IA, Cloud pública no Brasil.
+                            Adoção de IA e Cloud computing.
                           </div>
                           <div className="p-4 bg-amber-500/10 rounded-lg">
                             <strong className="text-amber-500">Ameaças:</strong>{" "}
-                            Ransomware, mudanças regulatórias bruscas.
+                            Vulnerabilidades cibernéticas e mudanças regulatórias.
                           </div>
                         </div>
                       </div>
@@ -1297,29 +1322,28 @@ export default function AulaGovernanca({
                   conteudo: (
                     <div className="space-y-8">
                       <p>
-                        O **PDTI** é o braço executivo. É o documento que diz:
-                        'Neste ano, vamos gastar X milhões para migrar o ERP
-                        para o SAP S/4HANA'.
+                        O **PDTI** atua como instrumento executivo, delineando os
+                        investimentos anuais para atingir as metas estratégicas.
                       </p>
                       <TimelineItem
                         passo={1}
                         titulo="Diagnóstico"
-                        descricao="Como estamos hoje? (Inventário de recursos e dores)."
+                        descricao="Inventário de ativos e identificação de necessidades."
                       />
                       <TimelineItem
                         passo={2}
-                        titulo="Necessidades"
-                        descricao="O que as áreas de negócio pediram para a TI?"
+                        titulo="Demandas"
+                        descricao="Requisições das unidades de negócio."
                       />
                       <TimelineItem
                         passo={3}
-                        titulo="Plano de Metas"
-                        descricao="O que vamos entregar, prazos e KPIs."
+                        titulo="Plano de Ação"
+                        descricao="Estabelecimento de entregáveis, cronogramas e indicadores (KPIs)."
                       />
                       <TimelineItem
                         passo={4}
-                        titulo="Plano de Investimento"
-                        descricao="De onde virá o dinheiro e para onde ele vai."
+                        titulo="Plano Orçamentário"
+                        descricao="Alocação e detalhamento de investimentos."
                       />
                     </div>
                   ),
@@ -1337,11 +1361,10 @@ export default function AulaGovernanca({
                 {
                   conteudo: (
                     <div className="space-y-8">
-                      <AlertBox tipo="warning" titulo="⚠️ Pegadinha CESGRANRIO">
-                        O PDTI é apenas um documento técnico? **NÃO!** Ele é um
-                        instrumento de **Governança**. Sem PDTI, a empresa
-                        pública não pode licitar grandes softwares sem risco de
-                        ser barrada por órgãos de controle.
+                      <AlertBox tipo="warning" titulo="⚠️ Pontos de atenção">
+                        O PDTI transcende o documento técnico, configurando-se como instrumento
+                        de **Governança**. Em empresas públicas, a ausência de PDTI constitui óbice para
+                        aquisições de grande vulto junto aos órgãos de controle.
                       </AlertBox>
 
                       <FlipCard
@@ -1350,17 +1373,17 @@ export default function AulaGovernanca({
                             <span className="text-2xl">⚔️</span>
                             <h5 className="font-bold">PETI vs PDTI</h5>
                             <p className="text-lg text-muted-foreground">
-                              Qual o prazo?
+                              Diferenciação temporal.
                             </p>
                           </div>
                         }
                         verso={
                           <div className="space-y-2">
                             <span className="text-2xl">✅</span>
-                            <h5 className="font-bold">Longo vs Curto</h5>
+                            <h5 className="font-bold">Estratégico vs Tático</h5>
                             <p className="text-lg text-muted-foreground">
                               PETI = Longo prazo (Estratégico). PDTI =
-                              Curto/Médio (Planejamento).
+                              Curto/Médio prazo (Operacional/Planejamento).
                             </p>
                           </div>
                         }
@@ -1389,19 +1412,19 @@ export default function AulaGovernanca({
                   title: "Matriz SWOT",
                   type: "Infográfico",
                   placeholderColor: "blue",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Matriz%20SWOT",
                 },
                 {
                   title: "Estrutura PDTI",
                   type: "Card",
                   placeholderColor: "emerald",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Estrutura%20PDTI",
                 },
               ],
             }}
-            maceteVisual={{
-              title: "Visão no Topo",
-              content: <p>PETI sonha, PDTI realiza.</p>,
+            sinteseEstrategica={{
+              title: "Alinhamento Estratégico",
+              content: <p>PETI define diretrizes, PDTI viabiliza a execução.</p>,
             }}
             audio={{
               audioUrl: "",
@@ -1423,7 +1446,7 @@ export default function AulaGovernanca({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Identificação e Tratamento de Riscos"
               variant={mv[6]}
             />
@@ -1439,17 +1462,17 @@ export default function AulaGovernanca({
                   conteudo: (
                     <div className="space-y-8">
                       <p className="text-lg text-muted-foreground leading-relaxed">
-                        Gerir riscos é essencial para garantir a continuidade
-                        operacional. O processo da ISO 31000 envolve:
+                        A gestão de riscos é imperativa para assegurar a continuidade
+                        das operações. O processo conforme a ISO 31000 abrange:
                         Identificação, Análise, Avaliação e Tratamento.
                       </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="p-4 bg-red-500/10 rounded-xl border border-red-500/20">
                           <h4 className="font-bold text-red-500">
-                            Riscos Negativos
+                            Riscos de Ameaça
                           </h4>
                           <p className="text-lg">
-                            Ameaças que podem causar perdas ou interrupções.
+                            Eventos adversos capazes de gerar prejuízos.
                           </p>
                         </div>
                         <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
@@ -1457,8 +1480,7 @@ export default function AulaGovernanca({
                             Oportunidades
                           </h4>
                           <p className="text-lg">
-                            Riscos positivos que podem trazer ganhos
-                            estratégicos.
+                            Fatores positivos com potencial de ganho estratégico.
                           </p>
                         </div>
                       </div>
@@ -1490,18 +1512,18 @@ export default function AulaGovernanca({
                   title: "Matriz de Riscos",
                   type: "Diagrama",
                   placeholderColor: "blue",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Matriz%20de%20Riscos",
                 },
                 {
                   title: "Fluxo de Tratamento",
                   type: "Infográfico",
                   placeholderColor: "emerald",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Fluxo%20de%20Tratamento",
                 },
               ],
             }}
-            maceteVisual={{
-              title: "Aceitar ou Mitigar?",
+            sinteseEstrategica={{
+              title: "Modelos Ágeis",
               content: (
                 <p>
                   Lembre-se: M.A.T.E — Mitigar, Aceitar, Transferir, Evitar.
@@ -1529,13 +1551,13 @@ export default function AulaGovernanca({
         <ModuleBanner
           numero={7}
           titulo="Conformidade e LGPD"
-          descricao="A proteção de dados e o compliance como pilares da governança modern."
+          descricao="A proteção de dados e o compliance como pilares da governança moderna."
           variant={mv[7]}
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Privacidade e Governança de Dados"
               variant={mv[7]}
             />
@@ -1548,13 +1570,12 @@ export default function AulaGovernanca({
                   conteudo: (
                     <div className="space-y-4">
                       <p>
-                        A Lei Geral de Proteção de Dados (LGPD) exige que
-                        empresas como a Petrobras tenham governança estrita
-                        sobre dados pessoais.
+                        A Lei Geral de Proteção de Dados (LGPD) impõe rigorosos requisitos de governança
+                        sobre dados pessoais sob custódia de organizações.
                       </p>
-                      <AlertBox tipo="info" titulo="DPO / Encarregado">
-                        A figura do DPO é obrigatória e serve como elo entre a
-                        empresa, os titulares e a ANPD.
+                      <AlertBox tipo="info" titulo="Encarregado (DPO)">
+                        A nomeação de um Encarregado de Proteção de Dados é obrigatória, servindo
+                        como ponto de comunicação entre a organização, os titulares e a ANPD.
                       </AlertBox>
                     </div>
                   ),
@@ -1584,21 +1605,21 @@ export default function AulaGovernanca({
                   title: "Fundamentos LGPD",
                   type: "Card",
                   placeholderColor: "blue",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Fundamentos%20LGPD",
                 },
                 {
                   title: "Fluxo de Resposta",
                   type: "Infográfico",
                   placeholderColor: "emerald",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Fluxo%20de%20Resposta",
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Privacidade por Design",
               content: (
                 <p>
-                  Privacy by Design: Segurança desde o nascimento do projeto.
+                  Privacy by Design: Segurança integrada desde a concepção do projeto.
                 </p>
               ),
             }}
@@ -1629,7 +1650,7 @@ export default function AulaGovernanca({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Contratos e Níveis de Serviço"
               variant={mv[8]}
             />
@@ -1642,23 +1663,22 @@ export default function AulaGovernanca({
                   conteudo: (
                     <div className="space-y-4">
                       <p>
-                        O SLA (Service Level Agreement) define as expectativas
-                        de desempenho e as penalidades em caso de
-                        descumprimento.
+                        O SLA (Service Level Agreement) estabelece as expectativas
+                        de desempenho e penalidades contratuais.
                       </p>
                       <Comparison
                         title="SLA vs OLA"
                         left={{
                           title: "SLA (Externo)",
-                          content: "Acordo com Cliente/Terceiro",
-                          description: "Foco no resultado final do serviço.",
+                          content: "Acordo com Terceiros",
+                          description: "Focado nos níveis de entrega ao cliente.",
                           variant: "info",
                         }}
                         right={{
                           title: "OLA (Interno)",
-                          content: "Acordo entre áreas da TI",
+                          content: "Acordo Operacional",
                           description:
-                            "Suporte interno para garantir o SLA final.",
+                            "Suporte interno necessário para viabilizar o SLA.",
                           variant: "success",
                         }}
                       />
@@ -1690,18 +1710,18 @@ export default function AulaGovernanca({
                   title: "Métricas de Serviço",
                   type: "Infográfico",
                   placeholderColor: "blue",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=M%C3%A9tricas%20de%20Servi%C3%A7o",
                 },
                 {
                   title: "Hierarquia de Contratos",
                   type: "Diagrama",
                   placeholderColor: "emerald",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Hierarquia%20de%20Contratos",
                 },
               ],
             }}
-            maceteVisual={{
-              title: "Acordo é Acordo",
+            sinteseEstrategica={{
+              title: "Alinhamento Estratégico",
               content: <p>SLA = Promessa externa. OLA = Ajuda interna.</p>,
             }}
             audio={{
@@ -1731,7 +1751,7 @@ export default function AulaGovernanca({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="O Balanced Scorecard na TI"
               variant={mv[9]}
             />
@@ -1742,7 +1762,7 @@ export default function AulaGovernanca({
               slides={[
                 {
                   conteudo: (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="p-4 bg-muted rounded-xl">
                         <strong>Financeira:</strong> ROI, custos, valor do
                         negócio.
@@ -1787,18 +1807,18 @@ export default function AulaGovernanca({
                   title: "Painel de KPIs",
                   type: "Infográfico",
                   placeholderColor: "blue",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Painel%20de%20KPIs",
                 },
                 {
                   title: "Árvore de Indicadores",
                   type: "Diagrama",
                   placeholderColor: "emerald",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=%C3%81rvore%20de%20Indicadores",
                 },
               ],
             }}
-            maceteVisual={{
-              title: "Medir para Gerir",
+            sinteseEstrategica={{
+              title: "Síntese Estratégica",
               content: (
                 <p>
                   Quem não mede, não gerencia. O BSC equilibra o financeiro com
@@ -1833,7 +1853,7 @@ export default function AulaGovernanca({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Adaptação aos Novos Tempos"
               variant={mv[10]}
             />
@@ -1887,17 +1907,17 @@ export default function AulaGovernanca({
                   title: "Guardrails de Cloud",
                   type: "Infográfico",
                   placeholderColor: "blue",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=Guardrails%20de%20Cloud",
                 },
                 {
                   title: "DevSecOps flow",
                   type: "Diagrama",
                   placeholderColor: "emerald",
-                  imageUrl: "/temp-img.png",
+                  imageUrl: "https://placehold.co/600x400/1e293b/38bdf8?text=DevSecOps%20flow",
                 },
               ],
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Ágil com Controle",
               content: (
                 <p>

@@ -62,16 +62,16 @@ import {
 } from "./data/coesao-coerencia-quizzes";
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", title: "O Tecido do Texto" },
-  { id: "modulo-2", label: "Módulo 2", title: "O Poder do Retrovisor" },
-  { id: "modulo-3", label: "Módulo 3", title: "O Farol do Sentido" },
-  { id: "modulo-4", label: "Módulo 4", title: "O Silêncio Eloquente" },
-  { id: "modulo-5", label: "Módulo 5", title: "Substituições de Elite" },
-  { id: "modulo-6", label: "Módulo 6", title: "A Dança dos Conectivos" },
-  { id: "modulo-7", label: "Módulo 7", title: "Concessão & Oposição" },
+  { id: "modulo-1", label: "Módulo 1", title: "Conceitos de Coesão" },
+  { id: "modulo-2", label: "Módulo 2", title: "Mecanismos de Referência" },
+  { id: "modulo-3", label: "Módulo 3", title: "Diretrizes de Coerência" },
+  { id: "modulo-4", label: "Módulo 4", title: "Elipse e Coesão Implícita" },
+  { id: "modulo-5", label: "Módulo 5", title: "Técnicas de Substituição" },
+  { id: "modulo-6", label: "Módulo 6", title: "Conectores e Operadores" },
+  { id: "modulo-7", label: "Módulo 7", title: "Concessão e Oposição" },
   { id: "modulo-8", label: "Módulo 8", title: "Arquitetura da Coerência" },
   { id: "modulo-9", label: "Módulo 9", title: "Progressão e Relevância" },
-  { id: "modulo-10", label: "Módulo 10", title: "Arena de Elite" },
+  { id: "modulo-10", label: "Módulo 10", title: "Avaliação de Fixação" },
 ];
 
 export default function AulaCoesaoCoerencia({
@@ -92,10 +92,45 @@ export default function AulaCoesaoCoerencia({
 }: AulaProps) {
   const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_portugues_coesao_coerencia_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
 
   // Quizzes dinâmicos (seleção aleatória do pool)
@@ -217,10 +252,10 @@ export default function AulaCoesaoCoerencia({
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
-                Para <strong>Evanildo Bechara</strong>, o texto não é um amontoado de frases
+                Segundo a gramática normativa, o texto não é um amontoado de frases
                 soltas, mas um <strong>organismo vivo</strong> em que cada parte depende das
-                demais para produzir sentido. Na sua <em>Moderna Gramática Portuguesa</em>,
-                Bechara distingue dois planos de organização textual que a CESGRANRIO cobra
+                demais para produzir sentido. Nesta perspectiva gramatical,
+                distinguem-se dois planos de organização textual que a CESGRANRIO cobra
                 com frequência: a <strong>coesão</strong>, que opera na superfície
                 linguística — o terreno dos pronomes, das conjunções, das elipses e das
                 repetições controladas —, e a <strong>coerência</strong>, que habita o
@@ -231,7 +266,7 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                A <strong>coesão</strong>, segundo Bechara, funciona como a argamassa entre
+                A <strong>coesão</strong>, tecnicamente, funciona como a argamassa entre
                 os tijolos de uma construção: sem ela, as paredes (frases) até podem estar
                 de pé individualmente, mas o edifício (texto) desmorona. Essa argamassa se
                 manifesta por dois grandes mecanismos.{" "}
@@ -248,7 +283,7 @@ export default function AulaCoesaoCoerencia({
               <p>
                 Já a <strong>coerência</strong> não reside nas palavras em si, mas na
                 relação lógica entre o que o texto diz e o <strong>conhecimento de
-                mundo</strong> do leitor. Bechara adverte que um texto pode ser
+                mundo</strong> do leitor. Note-se que um texto pode ser
                 perfeitamente coeso — com todos os pronomes retomando os referentes
                 corretos e todos os conectivos bem empregados — e, ainda assim, ser
                 completamente <strong>incoerente</strong>. O exemplo clássico é a frase
@@ -273,9 +308,9 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                A principal <strong>pegadinha</strong> que a banca aplica neste tema é
+                A principal <strong>pontos de atenção</strong> que a banca aplica neste tema é
                 afirmar que um texto é incoerente apenas porque lhe falta um conectivo
-                explícito. Bechara ensina que pode haver coerência sem coesão explícita:
+                explícito. Sabe-se que pode haver coerência sem coesão explícita:
                 frases como <em>&quot;Choveu. O jogo foi cancelado&quot;</em> são perfeitamente
                 coerentes — o leitor infere a relação causal pelo contexto —, embora não
                 haja nenhum conectivo unindo as orações. A CESGRANRIO frequentemente
@@ -286,7 +321,7 @@ export default function AulaCoesaoCoerencia({
 
               <div className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/30 dark:to-blue-950/30 rounded-lg border border-indigo-200 dark:border-indigo-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground flex items-center gap-2">
-                  🛡️ Protocolo N.E.X.O. de Elite
+                  🛡️ Protocolo N.E.X.O. de Avançado
                 </h4>
                 <ul className="list-disc list-inside space-y-2 mt-2">
                   <li><strong>N</strong>avegar — Rastreie o antecedente (anáfora) ou o referente futuro (catáfora) com precisão cirúrgica.</li>
@@ -305,10 +340,10 @@ export default function AulaCoesaoCoerencia({
                 "Sim, pois ambos indicam oposição.",
                 "Não, pois a mudança exige ajuste no modo verbal.",
                 "Sim, desde que a pontuação seja mantida.",
-                "Sim, pois são sinônimos perfeitos no Padrão Bechara.",
+                "Sim, pois são sinônimos perfeitos na norma culta.",
               ]}
               correctAnswer={1}
-              explanation="Excelente! Como ensina Bechara, a conjunção 'contudo' (adversativa) acompanha o modo indicativo, enquanto 'embora' (concessiva) exige o modo subjuntivo."
+              explanation="Excelente! Conforme a gramática normativa, a conjunção 'contudo' (adversativa) acompanha o modo indicativo, enquanto 'embora' (concessiva) exige o modo subjuntivo."
               variant={mv[1]}
             />
           </section>
@@ -323,12 +358,12 @@ export default function AulaCoesaoCoerencia({
               mode="stacked"
               slides={[
                 {
-                  titulo: "O Microscópio de Bechara: A Dualidade",
+                  titulo: "A Dualidade Textual",
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground text-sm md:text-base leading-relaxed text-justify">
-                        Para o gramático <strong>Evanildo Bechara</strong>, o
+                        Para a gramática textual, o
                         texto é uma unidade sociocomunicativa intrincada. A{" "}
                         <strong>Coesão</strong> atua como a rede neural
                         (elementos de amarração, preposições, sintaxe), enquanto
@@ -348,7 +383,7 @@ export default function AulaCoesaoCoerencia({
                   titulo: "Anatomia da Estrutura",
                   icone: <LuScale />,
                   conteudo: (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="p-5 bg-blue-500/5 border border-blue-500/20 rounded-xl space-y-3">
                         <h4 className="font-bold text-blue-600 flex items-center gap-2">
                           <LuLink /> Coesão (Capa/Forma)
@@ -656,8 +691,8 @@ export default function AulaCoesaoCoerencia({
                   ),
                 },
                 {
-                  id: "macetes",
-                  label: "Macetes",
+                  id: "estrategias",
+                  label: "Estratégias",
                   icone: LuZap,
                   conteudo: (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -666,7 +701,7 @@ export default function AulaCoesaoCoerencia({
                           <LuActivity className="w-24 h-24 text-white" />
                         </div>
                         <h3 className="text-blue-100 font-bold mb-4 flex items-center gap-2">
-                          <LuZap className="text-amber-400" /> Macete: O Caminho
+                          <LuZap className="text-amber-400" /> Estratégia: O Caminho
                           da Referência
                         </h3>
                         <ul className="space-y-3 text-blue-50/90 text-sm md:text-base relative z-10">
@@ -701,7 +736,7 @@ export default function AulaCoesaoCoerencia({
                           <LuLightbulb className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                         </div>
                         <p className="font-medium text-foreground">
-                          A Regra de Ouro das Alternativas
+                          Princípio Fundamental das Alternativas
                         </p>
                         <p className="text-sm text-muted-foreground">
                           Nas questões de coesão, nunca busque apenas a palavra
@@ -765,7 +800,7 @@ export default function AulaCoesaoCoerencia({
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
                 Na <em>Moderna Gramática Portuguesa</em>,{" "}
-                <strong>Evanildo Bechara</strong> define a anáfora como o mecanismo
+                A gramática normativa define a anáfora como o mecanismo
                 pelo qual um termo do texto <strong>remete a outro já mencionado
                 anteriormente</strong>, criando uma cadeia de referência que economiza
                 recursos cognitivos do leitor e evita a repetição mecânica. Funciona como
@@ -776,7 +811,7 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                Bechara classifica a retomada anafórica em três grandes tipos que a
+                As gramáticas classificam a retomada anafórica em três grandes tipos que a
                 CESGRANRIO cobra sistematicamente. A{" "}
                 <strong>anáfora pronominal</strong> é a mais frequente: pronomes pessoais
                 (<em>ele, ela, eles</em>), demonstrativos (<em>esse, essa, isso</em>) e
@@ -790,7 +825,7 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                O ponto crucial que Bechara destaca — e que a CESGRANRIO transforma em
+                O ponto crucial desta mecânica — e que a CESGRANRIO transforma em
                 armadilha — é a <strong>concordância entre o pronome anafórico e seu
                 antecedente</strong>. Quando o texto diz{" "}
                 <em>&quot;As plataformas foram vistoriadas. Ela apresentou falhas&quot;</em>, há uma
@@ -798,7 +833,7 @@ export default function AulaCoesaoCoerencia({
                 retomar &quot;plataformas&quot; (plural). A banca insere esse tipo de
                 inconsistência nas alternativas de reescrita, esperando que o candidato
                 desatento valide a troca sem perceber a ruptura numérica. Além disso, os
-                pronomes demonstrativos seguem uma regra de ouro que Bechara sistematiza:
+                pronomes demonstrativos seguem uma regra de ouro da norma culta:
                 {" "}<strong>&quot;ESSE/ESSA/ISSO&quot;</strong> são tipicamente anafóricos (olham para
                 trás), enquanto <strong>&quot;ESTE/ESTA/ISTO&quot;</strong> tendem a ser catafóricos
                 (preparam o que virá).
@@ -818,12 +853,12 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                A <strong>pegadinha clássica</strong> da banca neste tema envolve a{" "}
+                A <strong>pontos de atenção clássica</strong> da banca neste tema envolve a{" "}
                 <strong>ambiguidade referencial</strong>: quando há dois ou mais
                 substantivos possíveis como antecedente, o pronome anafórico gera
                 dúvida sobre a quem se refere. Na frase{" "}
                 <em>&quot;O engenheiro informou ao gerente que ele seria transferido&quot;</em>,
-                quem será transferido — o engenheiro ou o gerente? Bechara ensina que a
+                quem será transferido — o engenheiro ou o gerente? Sabe-se que a
                 solução passa pela reestruturação sintática, e a CESGRANRIO explora
                 exatamente esse fenômeno ao pedir reescritas que eliminem a ambiguidade
                 sem alterar o sentido original.
@@ -844,7 +879,7 @@ export default function AulaCoesaoCoerencia({
 
             <QuizDiagnostic
               title="Teste de Antecedência"
-              question="Ao ler: 'A refinaria foi inspecionada. **Ela** apresentou falhas', o pronome 'Ela' exerce qual função segundo no Padrão Bechara?"
+              question="Ao ler: 'A refinaria foi inspecionada. **Ela** apresentou falhas', o pronome 'Ela' exerce qual função segundo a norma culta?"
               options={[
                 "Catáfora, pois aponta para o que será dito.",
                 "Anáfora, pois retoma um substantivo já mencionado.",
@@ -876,7 +911,7 @@ export default function AulaCoesaoCoerencia({
                         Anáfora (do grego <i>ana</i> = atrás) é o fenômeno em
                         que um termo aponta para outro já citado (o
                         antecedente). Funciona como a memória de curto prazo do
-                        leitor. Segundo a preceptiva de Bechara, a anáfora
+                        leitor. Segundo a gramática tradicional, a anáfora
                         economiza caracteres e acelera a leitura.
                       </p>
                       <div className="p-4 bg-cyan-500/10 rounded-xl border-l-4 border-cyan-500 font-medium">
@@ -941,7 +976,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={2}
               title="Consolidação: O Poder do Retrovisor"
-              description="Acesse o resumo visual e o macete de anáfora."
+              description="Acesse o resumo visual e a estratégia de anáfora."
               variant={mv[2]}
             />
 
@@ -1049,7 +1084,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index="INTRO"
               title="A Iluminação Catafórica: O Farol do Texto"
-              description="Domine o mecanismo de antecipação que Evanildo Bechara classifica como a remissão 'para diante', essencial na clareza de informativos técnicos."
+              description="Domine o mecanismo de antecipação classificado como a remissão 'para diante', essencial na clareza de informativos técnicos."
               variant={mv[3]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
@@ -1058,7 +1093,7 @@ export default function AulaCoesaoCoerencia({
                 farol alto de uma embarcação em alto-mar: ela projeta luz sobre o que
                 ainda não foi dito, criando um <strong>vácuo semântico
                 proposital</strong> que força o leitor a avançar para preencher o
-                significado. <strong>Evanildo Bechara</strong>, na{" "}
+                significado. A gramática normativa, na{" "}
                 <em>Moderna Gramática Portuguesa</em>, classifica a catáfora como a{" "}
                 <strong>remissão &quot;para diante&quot;</strong> — um recurso coesivo em que o
                 termo referente aparece <em>depois</em> do elemento que o anuncia. Essa
@@ -1070,7 +1105,7 @@ export default function AulaCoesaoCoerencia({
               <p>
                 O mecanismo catafórico mais frequente na língua portuguesa — e o mais
                 cobrado pela banca — é o uso dos <strong>pronomes demonstrativos
-                &quot;ESTE&quot;, &quot;ESTA&quot; e &quot;ISTO&quot;</strong> seguidos de dois-pontos. Bechara
+                &quot;ESTE&quot;, &quot;ESTA&quot; e &quot;ISTO&quot;</strong> seguidos de dois-pontos. Note-se que
                 sistematiza essa regra com clareza: enquanto &quot;esse/essa/isso&quot; olham para
                 trás (função anafórica), &quot;este/esta/isto&quot; olham para frente (função
                 catafórica). Na frase <em>&quot;O candidato deverá observar{" "}
@@ -1083,7 +1118,7 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                Além dos pronomes demonstrativos, Bechara identifica outros{" "}
+                Além dos pronomes demonstrativos, existem outros{" "}
                 <strong>marcadores catafóricos</strong> que a banca utiliza. Expressões
                 como <em>&quot;a seguinte medida&quot;</em>,{" "}
                 <em>&quot;os pontos abaixo enumerados&quot;</em> e{" "}
@@ -1112,11 +1147,11 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                A <strong>pegadinha clássica</strong> da banca envolve a confusão entre
+                A <strong>pontos de atenção clássica</strong> da banca envolve a confusão entre
                 catáfora e anáfora em frases com &quot;aquele... este&quot;. Na construção{" "}
                 <em>&quot;Pedro e Paulo chegaram; <strong>aquele</strong>, cansado;{" "}
                 <strong>este</strong>, animado&quot;</em>, muitos candidatos marcam &quot;este&quot;
-                como catafórico. No entanto, Bechara explica que, nesse caso, tanto
+                como catafórico. No entanto, a gramática normativa explica que, nesse caso, tanto
                 &quot;aquele&quot; quanto &quot;este&quot; são <strong>anafóricos</strong>: ambos retomam
                 termos já mencionados (&quot;Pedro&quot; e &quot;Paulo&quot;). A catáfora legítima exige
                 que o referente ainda <strong>não tenha sido apresentado</strong> — essa
@@ -1169,7 +1204,7 @@ export default function AulaCoesaoCoerencia({
                       <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-justify">
                         A <strong>Catáfora</strong> (do grego <i>kata</i> = para
                         a frente) é o farol do texto. Segundo a moderna
-                        gramática de Bechara, é a remissão para diante. Ela cria
+                        gramática normativa, é a remissão para diante. Ela cria
                         um vácuo de sentido proposital que obriga o leitor a
                         avançar na leitura para encontrar a resolução.
                       </p>
@@ -1239,7 +1274,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={2}
               title="Consolidação: O Farol do Sentido"
-              description="Acesse o resumo visual e os macetes de antecipação catafórica."
+              description="Acesse o resumo visual e as estratégias de antecipação catafórica."
               variant="emerald"
             />
 
@@ -1348,13 +1383,13 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index="INTRO"
               title="O Silêncio Eloquente: Elipse e Zêugma"
-              description="Descubra como a omissão estratégica de termos pode tornar o texto mais fluido e elegante, sem comprometer o rigor do Padrão Bechara."
+              description="Descubra como a omissão estratégica de termos pode tornar o texto mais fluido e elegante, sem comprometer o rigor da norma culta."
               variant={mv[4]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
                 Na tradição gramatical brasileira sistematizada por{" "}
-                <strong>Evanildo Bechara</strong>, a <strong>elipse</strong> é definida
+                Na gramática tradicional, a <strong>elipse</strong> é definida
                 como a <strong>omissão de um termo que pode ser facilmente
                 recuperado</strong> pelo contexto sintático ou semântico. Diferente do
                 erro de construção — em que a falta de um elemento gera ambiguidade ou
@@ -1366,7 +1401,7 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                Bechara distingue a elipse geral — omissão de qualquer termo recuperável
+                Distingue-se a elipse geral — omissão de qualquer termo recuperável
                 (sujeito, verbo, complemento) — de uma forma específica e sofisticada: o{" "}
                 <strong>zeugma</strong>. No zeugma, o termo omitido é exatamente aquele
                 que <strong>já apareceu em uma oração anterior</strong>. Na frase{" "}
@@ -1382,7 +1417,7 @@ export default function AulaCoesaoCoerencia({
               <p>
                 O maior <strong>sinal gráfico</strong> de que um zeugma está em ação é
                 a chamada <strong>vírgula vicária</strong> — a vírgula que substitui o
-                verbo omitido. Bechara a classifica como um recurso estilístico de alta
+                verbo omitido. Classifica-se como um recurso estilístico de alta
                 elegância na norma culta. Quando o texto diz{" "}
                 <em>&quot;A Petrobras foca em inovação; as operadoras privadas<strong>
                 ,</strong> em lucro imediato&quot;</em>, a vírgula após &quot;privadas&quot; ocupa o
@@ -1407,15 +1442,15 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                A <strong>pegadinha mais perigosa</strong> da banca neste tema é
+                A <strong>pontos de atenção mais perigosa</strong> da banca neste tema é
                 confundir <strong>elipse legítima</strong> com{" "}
-                <strong>erro de construção</strong>. Bechara adverte que a elipse só é
+                <strong>erro de construção</strong>. Adverte-se que a elipse só é
                 válida quando o termo omitido é <em>inequivocamente</em> recuperável. Se
                 a frase <em>&quot;Foram inspecionados os dutos e as válvulas. Apresentaram
                 corrosão&quot;</em> gera dúvida sobre o sujeito de &quot;apresentaram&quot; (os dutos?
                 as válvulas? ambos?), não se trata de elipse estratégica, mas de{" "}
                 <strong>ambiguidade sintática</strong> — um defeito textual que a
-                CESGRANRIO classifica como incoerência referencial. O candidato de elite
+                CESGRANRIO classifica como incoerência referencial. O candidato de Avançado
                 sabe diferenciar o silêncio eloquente do silêncio confuso.
               </p>
 
@@ -1531,7 +1566,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={2}
               title="Consolidação: O Silêncio Eloquente"
-              description="Acesse o resumo visual e os macetes de elipse e zêugma."
+              description="Acesse o resumo visual e as estratégias de elipse e zêugma."
               variant="rose"
             />
 
@@ -1625,33 +1660,33 @@ export default function AulaCoesaoCoerencia({
         </div>
       </TabsContent>
 
-      {/* ── MÓDULO 5: SUBSTITUIÇÕES DE ELITE ───────────────────── */}
+      {/* ── MÓDULO 5: SUBSTITUIÇÕES DE Avançado ───────────────────── */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
         <ModuleBanner
           numero={5}
-          titulo="Substituições de Elite"
+          titulo="Substituições de Avançado"
           descricao="Nominalização, Hiperonímia e Palavras-Sumário: o arsenal avançado de coesão lexical."
           variant={mv[5]}
         />
 
         <div className="space-y-[50px]">
-          {/* ★ RICH INTRO: Substituições de Elite */}
+          {/* ★ RICH INTRO: Substituições de Avançado */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
             <ModuleSectionHeader
               index="INTRO"
-              title="Substituições de Elite: A Engenharia Lexical"
-              description="Aprenda a elevar o nível do seu texto usando a 'reiteração por hiperonímia' e as 'palavras-sumário', recursos de prestígio no Padrão Bechara."
+              title="Substituições de Avançado: A Engenharia Lexical"
+              description="Aprenda a elevar o nível do seu texto usando a 'reiteração por hiperonímia' e as 'palavras-sumário', recursos de prestígio na norma culta."
               variant={mv[5]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
-                <strong>Evanildo Bechara</strong> ensina que a{" "}
+                A gramática normativa ensina que a{" "}
                 <strong>coesão lexical</strong> é o recurso pelo qual o autor substitui
                 um termo já mencionado por outro de campo semântico equivalente, evitando
                 a repetição mecânica sem sacrificar a clareza referencial. Diferente da
                 coesão referencial (pronomes e demonstrativos), a coesão lexical opera no
                 plano do <strong>vocabulário</strong>: trocar palavras por sinônimos,
-                hiperônimos, hipônimos ou expressões nominalizadas. Para Bechara, esse
+                hiperônimos, hipônimos ou expressões nominalizadas. Considera-se que esse
                 mecanismo é um indicador de <strong>maturidade intelectual</strong> do
                 autor, pois exige domínio amplo do léxico e sensibilidade ao contexto. Na
                 escrita técnica da Petrobras, onde a precisão terminológica é
@@ -1664,7 +1699,7 @@ export default function AulaCoesaoCoerencia({
                 (hipônimo) por um termo genérico (hiperônimo). Nos relatórios da
                 Petrobras, em vez de repetir &quot;plataforma de extração de petróleo&quot; dez
                 vezes, o redator técnico emprega termos como &quot;unidade offshore&quot;, &quot;ativo
-                de produção&quot; ou simplesmente &quot;a instalação&quot;. Bechara adverte, porém, que
+                de produção&quot; ou simplesmente &quot;a instalação&quot;. Adverte-se, porém, que
                 a troca só é legítima quando o hiperônimo <strong>preserva o sentido
                 original</strong> sem gerar ambiguidade. Trocar &quot;petróleo&quot; por
                 &quot;combustível fóssil&quot; é hiperonímia válida; trocar &quot;petróleo&quot; por
@@ -1674,7 +1709,7 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                Outro pilar da coesão lexical que Bechara destaca é a{" "}
+                Outro pilar da coesão lexical frequentemente destacado é a{" "}
                 <strong>nominalização</strong>: a transformação de um verbo ou adjetivo em
                 substantivo para retomar a ação descrita. Na frase{" "}
                 <em>&quot;A plataforma operou bem. A <strong>operação</strong> garantiu o
@@ -1702,13 +1737,13 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                A <strong>pegadinha refinada</strong> que a banca aplica envolve a{" "}
+                A <strong>pontos de atenção refinada</strong> que a banca aplica envolve a{" "}
                 <strong>falsa sinonímia</strong>. Trocar &quot;plataforma continental&quot; por
                 &quot;plataforma de petróleo&quot; pode parecer uma substituição válida, mas
-                Bechara alerta que são conceitos completamente distintos: a primeira é um
+                Sabe-se que são conceitos completamente distintos: a primeira é um
                 acidente geográfico, a segunda é uma estrutura industrial. A CESGRANRIO
                 insere alternativas com trocas lexicais aparentemente inofensivas que, na
-                verdade, alteram o referente ou o campo semântico. O candidato de elite
+                verdade, alteram o referente ou o campo semântico. O candidato de Avançado
                 sabe que <strong>nem todo hiperônimo é válido</strong> — a substituição
                 precisa respeitar o contexto pragmático do texto original.
               </p>
@@ -1855,7 +1890,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={5.2}
               title="Consolidação: A Matriz Lexical"
-              description="Acesse o resumo visual e os macetes de classificação vocabular."
+              description="Acesse o resumo visual e as estratégias de classificação vocabular."
               variant="violet"
             />
 
@@ -1951,7 +1986,7 @@ export default function AulaCoesaoCoerencia({
 
           <QuizInterativo
             questoes={quizM5}
-            titulo="QUIZ: Substituições de Elite"
+            titulo="QUIZ: Substituições de Avançado"
             icone="🎯"
             numero={6}
             variant="blue"
@@ -1975,12 +2010,12 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index="INTRO"
               title="A Dança dos Conectivos: Engenharia de Fluxo"
-              description="Transforme seu texto de um amontoado de frases em um organismo vivo por meio da coesão sequencial e dos nexos lógicos do Padrão Bechara."
+              description="Transforme seu texto de um amontoado de frases em um organismo vivo por meio da coesão sequencial e dos nexos lógicos da norma culta."
               variant={mv[6]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
-                <strong>Evanildo Bechara</strong> define a{" "}
+                A gramática normativa define a{" "}
                 <strong>coesão sequencial</strong> como o mecanismo que encadeia as
                 orações e parágrafos de um texto por meio de{" "}
                 <strong>conectivos</strong> — conjunções coordenativas, subordinativas,
@@ -1994,7 +2029,7 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                Bechara classifica os conectivos em dois grandes grupos. As{" "}
+                Classificam-se os conectivos em dois grandes grupos. As{" "}
                 <strong>conjunções coordenativas</strong> ligam orações de mesma
                 hierarquia sintática e se dividem em cinco tipos: <strong>aditivas</strong>{" "}
                 (e, nem, tampouco), <strong>adversativas</strong> (mas, porém, contudo,
@@ -2012,7 +2047,7 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                O ponto mais sofisticado que Bechara destaca — e que constitui a
+                O ponto mais sofisticado desta mecânica — e que constitui a
                 principal armadilha da banca — é a diferença entre{" "}
                 <strong>classificação gramatical</strong> e{" "}
                 <strong>valor semântico</strong> de um conectivo. O &quot;e&quot; é gramaticalmente
@@ -2042,12 +2077,12 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                A <strong>pegadinha clássica</strong> envolve pares de conectivos
+                A <strong>pontos de atenção clássica</strong> envolve pares de conectivos
                 foneticamente similares mas semanticamente opostos. O trio{" "}
                 <strong>&quot;porquanto&quot;</strong> (causal) vs.{" "}
                 <strong>&quot;portanto&quot;</strong> (conclusivo) vs.{" "}
                 <strong>&quot;porquê&quot;</strong> (substantivo) é o mais cobrado pela banca.
-                Bechara adverte que a troca acidental entre eles pode inverter
+                Note-se que a troca acidental entre eles pode inverter
                 completamente o argumento do texto. Outra armadilha recorrente é o{" "}
                 <strong>&quot;pois&quot;</strong> flutuante: antes do verbo, é explicativo
                 (<em>&quot;Estude, pois a prova é difícil&quot;</em>); depois do verbo, é
@@ -2208,7 +2243,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={3}
               title="Consolidação: As Pontes de Sentido"
-              description="Acesse o resumo visual e acerte a guerra letal entre Porquanto e Portanto."
+              description="Acesse o resumo visual e acerte a guerra Crítico entre Porquanto e Portanto."
               variant={mv[6]}
             />
 
@@ -2226,7 +2261,7 @@ export default function AulaCoesaoCoerencia({
                         <LuPlay className="w-8 h-8 ml-1" />
                       </div>
                       <p className="text-amber-100 font-medium z-10 text-lg">
-                        Assistir: Pegadinhas Conectivas
+                        Assistir: pontos de atenção Conectivas
                       </p>
                     </div>
                   ),
@@ -2317,15 +2352,15 @@ export default function AulaCoesaoCoerencia({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
             <ModuleSectionHeader
               index="INTRO"
-              title="A Concessão de Elite: A Arte de Contornar"
+              title="A Concessão: A Arte de Contornar"
               description="Aprenda a distinguir a força bruta da oposição (Adversidade) da elegância estratégica da Concessão, um dos temas preferidos da CESGRANRIO."
               variant={mv[7]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
-                <strong>Evanildo Bechara</strong> dedica atenção especial à distinção
+                A gramática normativa dedica atenção especial à distinção
                 entre <strong>adversidade</strong> e <strong>concessão</strong> na{" "}
-                <em>Moderna Gramática Portuguesa</em>, pois essa é uma das confusões
+                nos preceitos da norma culta, pois essa é uma das confusões
                 mais exploradas pela CESGRANRIO. Ambas expressam ideias de contraste,
                 mas operam de maneiras fundamentalmente diferentes. A conjunção{" "}
                 <strong>adversativa</strong> (mas, porém, contudo, todavia, entretanto)
@@ -2342,7 +2377,7 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                A diferença prática mais crítica que Bechara destaca — e que a
+                A diferença prática mais crítica deste tema — e que a
                 CESGRANRIO cobra em praticamente todas as provas — é a{" "}
                 <strong>mudança obrigatória de modo verbal</strong>. As adversativas
                 acompanham o modo <strong>indicativo</strong> (fato real): &quot;O projeto{" "}
@@ -2357,7 +2392,7 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                Bechara também sistematiza os{" "}
+                Existem também os{" "}
                 <strong>pares concessivos-adversativos</strong> que o candidato precisa
                 dominar para as questões de equivalência. &quot;Mas&quot; ↔ &quot;embora&quot;, &quot;porém&quot; ↔
                 &quot;conquanto&quot;, &quot;contudo&quot; ↔ &quot;ainda que&quot;, &quot;todavia&quot; ↔ &quot;mesmo que&quot;, &quot;no
@@ -2384,11 +2419,11 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                A <strong>pegadinha mais frequente</strong> da banca envolve a
+                A <strong>pontos de atenção mais frequente</strong> da banca envolve a
                 substituição sem ajuste modal. A questão apresenta uma frase com
                 adversativa no indicativo e pede a reescrita com concessiva. Três das
                 cinco alternativas mantêm o verbo no indicativo — e o candidato
-                desatento marca uma delas. Bechara é categórico:{" "}
+                desatento marca uma delas. A regra é categórica:{" "}
                 <strong>&quot;embora&quot; + indicativo é erro</strong>. Não existe &quot;Embora o
                 projeto <em>é</em> bom&quot;; o correto é &quot;Embora o projeto{" "}
                 <em>seja</em> bom&quot;. Outra armadilha é o uso de &quot;conquanto&quot;, conjunção
@@ -2411,7 +2446,7 @@ export default function AulaCoesaoCoerencia({
 
             <QuizDiagnostic
               title="Desafio de Contraste"
-              question="Se trocarmos o 'Mas' por 'Embora' em uma frase, o que acontece obrigatoriamente com o verbo segundo o Padrão Bechara?"
+              question="Se trocarmos o 'Mas' por 'Embora' em uma frase, o que acontece obrigatoriamente com o verbo segundo a norma culta?"
               options={[
                 "Nada, o verbo permanece no Indicativo.",
                 "O verbo deve ir para o Futuro do Pretérito.",
@@ -2439,7 +2474,7 @@ export default function AulaCoesaoCoerencia({
                   conteudo: (
                     <div className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-justify">
-                        Na gramática de Bechara, as conjunções adversativas
+                        Na gramática normativa, as conjunções adversativas
                         (mas, porém, contudo, todavia) introduzem o argumento{" "}
                         <strong>mais forte</strong>. Elas literalmente tratoram
                         a informação anterior, deixando claro que o que vem após
@@ -2596,7 +2631,7 @@ export default function AulaCoesaoCoerencia({
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="bg-gradient-to-br from-rose-900 to-slate-900 p-6 rounded-2xl shadow-lg border border-rose-700/50">
                         <h3 className="text-rose-100 font-bold mb-4">
-                          A REGRA DE OURO BIFURCADA
+                          Princípio Fundamental BIFURCADA
                         </h3>
                         <p className="text-rose-50/90 text-sm">
                           Acese a luz de alerta verbal quando essas conjunções
@@ -2663,7 +2698,7 @@ export default function AulaCoesaoCoerencia({
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
-                <strong>Evanildo Bechara</strong> adverte que a{" "}
+                A gramática normativa adverte que a{" "}
                 <strong>coerência</strong> não é um elemento visível na superfície do
                 texto como a coesão, mas o <strong>resultado da interação entre o
                 texto e o conhecimento de mundo do leitor</strong>. Um texto pode ter
@@ -2678,7 +2713,7 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                O pilar fundamental da coerência que Bechara sistematiza é o{" "}
+                O pilar fundamental da coerência frequentemente sistematizado é o{" "}
                 <strong>Princípio da Não-Contradição</strong>: um texto coerente não
                 pode afirmar e negar a mesma proposição simultaneamente sem
                 justificativa explícita. Se um relatório da Petrobras declara que{" "}
@@ -2693,7 +2728,7 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                Além da não-contradição, Bechara identifica outros princípios de
+                Além da não-contradição, identificam-se outros princípios de
                 coerência que a banca explora: a <strong>relevância</strong> (cada
                 informação deve contribuir para o tema central), a{" "}
                 <strong>continuidade temática</strong> (o texto não pode saltar
@@ -2721,13 +2756,13 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                A <strong>pegadinha mais sofisticada</strong> da CESGRANRIO neste
+                A <strong>pontos de atenção mais sofisticada</strong> da CESGRANRIO neste
                 tema é o texto com <strong>coesão impecável e coerência
                 quebrada</strong>. A banca constrói trechos em que todos os conectivos
                 estão corretos, os pronomes retomam os referentes certos e a
                 pontuação é perfeita — mas uma premissa contradiz outra, ou uma
                 conclusão não se sustenta logicamente pelas evidências apresentadas.
-                Bechara ensina que o candidato de elite deve ler o texto em{" "}
+                Ensina-se que o candidato de Avançado deve ler o texto em{" "}
                 <strong>duas camadas</strong>: primeiro a superfície gramatical
                 (coesão), depois o subsolo lógico (coerência). Só quando ambas as
                 camadas estão íntegras é que o texto pode ser considerado bem
@@ -2749,7 +2784,7 @@ export default function AulaCoesaoCoerencia({
 
             <QuizDiagnostic
               title="Dossiê de Coerência"
-              question="Segundo Bechara, qual a diferença primordial entre coesão e coerência?"
+              question="Segundo a gramática normativa, qual a diferença primordial entre coesão e coerência?"
               options={[
                 "Coesão é o sentido; Coerência é a gramática.",
                 "Coesão é a superfície (forma); Coerência é a base (lógica).",
@@ -2968,19 +3003,19 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index="INTRO"
               title="Progressão Temática: O Motor do Texto"
-              description="Aprenda a evitar o 'texto circular' (Tautologia) e domine o equilíbrio entre a informação dada (Tema) e a informação nova (Rema) segundo Bechara."
+              description="Aprenda a evitar o 'texto circular' (Tautologia) e domine o equilíbrio entre a informação dada (Tema) e a informação nova (Rema) segundo a norma culta."
               variant={mv[9]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
-                <strong>Evanildo Bechara</strong> ensina que um texto coerente não
+                A gramática normativa ensina que um texto coerente não
                 apenas conecta ideias (coesão) e respeita a lógica (coerência), mas
                 também precisa <strong>avançar</strong> — cada frase deve acrescentar
                 informação nova ao que já foi dito. Esse avanço controlado é a{" "}
                 <strong>progressão temática</strong>, o motor que mantém o leitor
                 engajado do primeiro ao último parágrafo. Um texto que apenas repete a
                 mesma ideia com palavras diferentes — sem de fato informar nada novo —
-                comete o que Bechara classifica como{" "}
+                comete o que a gramática normativa classifica como{" "}
                 <strong>tautologia textual</strong>, um dos defeitos mais graves na
                 redação técnica e um dos mais cobrados pela CESGRANRIO nos concursos
                 da Petrobras.
@@ -2990,7 +3025,7 @@ export default function AulaCoesaoCoerencia({
                 A estrutura da progressão temática se baseia no par conceitual{" "}
                 <strong>Tema</strong> (a informação já conhecida, o ponto de partida)
                 e <strong>Rema</strong> (a informação nova, o comentário inovador).
-                Bechara explica que cada frase parte de um Tema (dado) e acrescenta
+                Explica-se que cada frase parte de um Tema (dado) e acrescenta
                 um Rema (novo), e esse Rema se transforma no Tema da frase seguinte,
                 criando uma <strong>cadeia de progressão</strong>. No relatório{" "}
                 <em>&quot;A produção de petróleo no pré-sal [Tema] atingiu recorde
@@ -3000,7 +3035,7 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                Bechara identifica três padrões clássicos de progressão que a
+                Identificam-se três padrões clássicos de progressão que a
                 CESGRANRIO cobra. A <strong>progressão linear</strong> (o Rema de
                 cada frase vira o Tema da próxima) é a mais comum e direta. A{" "}
                 <strong>progressão com tema constante</strong> mantém o mesmo sujeito
@@ -3031,11 +3066,11 @@ export default function AulaCoesaoCoerencia({
               </p>
 
               <p>
-                A <strong>pegadinha clássica</strong> da banca envolve textos que{" "}
+                A <strong>pontos de atenção clássica</strong> da banca envolve textos que{" "}
                 <strong>parecem</strong> progredir porque usam vocabulário variado,
                 mas que na essência repetem a mesma ideia central sem avançar. É o
                 chamado <strong>texto circular</strong>: ele gira em torno de um
-                ponto sem jamais introduzir um dado novo. Bechara adverte que a mera
+                ponto sem jamais introduzir um dado novo. É importante advertir que a mera
                 substituição lexical (trocar &quot;importante&quot; por &quot;relevante&quot; por
                 &quot;significativo&quot;) não constitui progressão — é apenas coesão lexical
                 a serviço da repetição. A progressão real exige{" "}
@@ -3059,7 +3094,7 @@ export default function AulaCoesaoCoerencia({
 
             <QuizDiagnostic
               title="Diagnóstico de Fluxo"
-              question="Qual o nome técnico dado por Bechara à informação 'nova' que faz o texto progredir a partir de um tema conhecido?"
+              question="Qual o nome técnico dado à informação 'nova' que faz o texto progredir a partir de um tema conhecido?"
               options={[
                 "Catáfora, pois aponta para frente.",
                 "Rema, que é o comentário inovador sobre o tema.",
@@ -3082,7 +3117,7 @@ export default function AulaCoesaoCoerencia({
               mode="stacked"
               slides={[
                 {
-                  titulo: "Tema vs Rema (A Teoria de Bechara)",
+                  titulo: "Tema vs Rema",
                   icone: <LuActivity />,
                   conteudo: (
                     <div className="space-y-4">
@@ -3264,36 +3299,36 @@ export default function AulaCoesaoCoerencia({
         </div>
       </TabsContent>
 
-      {/* ── MÓDULO 10: ARENA DE ELITE ────────────────────────── */}
+      {/* ── MÓDULO 10: Avaliação de Fixação Avançada ────────────────────────── */}
       <TabsContent value="modulo-10" className="space-y-[50px]">
         <ModuleBanner
           numero={10}
-          titulo="Arena de Elite"
+          titulo="Avaliação de Fixação Avançada"
           descricao="Simulado Final: Teste seus conhecimentos em questões de alto nível da CESGRANRIO."
           variant={mv[10]}
         />
 
         <div className="space-y-[50px]">
-          {/* ★ RICH INTRO: Arena de Elite */}
+          {/* ★ RICH INTRO: Avaliação de Fixação Avançada */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
             <ModuleSectionHeader
               index="INTRO"
-              title="Arena de Elite: O Crivo da Aprovação"
-              description="Bem-vindo ao Lab de Questões. Aqui, a teoria de Bechara encontra a pressão da CESGRANRIO em um simulado final de alta periculosidade."
+              title="Avaliação de Fixação Avançada: O Crivo da Aprovação"
+              description="Bem-vindo ao Lab de Questões. Aqui, os preceitos gramaticais encontram a pressão da CESGRANRIO em um simulado final de alta periculosidade."
               variant={mv[10]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
                 A jornada pelos nove módulos anteriores construiu, peça a peça, o
-                arsenal teórico que <strong>Evanildo Bechara</strong> sistematizou ao
-                longo de décadas na <em>Moderna Gramática Portuguesa</em>. Você
+                arsenal teórico sistematizado ao
+                longo de décadas pela gramática normativa. Você
                 dominou a coesão referencial (anáfora, catáfora, elipse, zeugma), a
                 coesão lexical (hiperonímia, nominalização, palavras-sumário), a coesão
                 sequencial (conectivos e seus valores semânticos reais), a distinção
                 concessão vs. adversidade com ajuste modal obrigatório, os pilares da
                 coerência (não-contradição, relevância, pragmática) e a progressão
-                temática (Tema/Rema, tautologia). Nesta <strong>Arena de
-                Elite</strong>, todo esse conhecimento será testado simultaneamente —
+                temática (Tema/Rema, tautologia). Neste <strong>Módulo de
+                Consolidação</strong>, todo esse conhecimento será testado simultaneamente —
                 exatamente como a CESGRANRIO faz na prova real da Petrobras.
               </p>
 
@@ -3305,13 +3340,13 @@ export default function AulaCoesaoCoerencia({
                 avalie se a nova redação mantém a hiperonímia (Módulo 5) e a
                 progressão temática (Módulo 9) do original. Isso significa que
                 resolver uma questão isolando apenas um mecanismo é insuficiente — o
-                candidato de elite precisa analisar a alternativa em{" "}
+                candidato de Avançado precisa analisar a alternativa em{" "}
                 <strong>múltiplas camadas simultâneas</strong>, verificando coesão,
                 coerência e progressão de uma só vez.
               </p>
 
               <p>
-                Bechara oferece uma estratégia de resolução que pode ser adaptada para
+                A gramática normativa oferece uma estratégia de resolução que pode ser adaptada para
                 a prova: ler o texto em <strong>três passagens</strong>. Na primeira,
                 identificar o <strong>tema central</strong> e a{" "}
                 <strong>tese do autor</strong> (coerência macro). Na segunda, mapear os{" "}
@@ -3334,7 +3369,7 @@ export default function AulaCoesaoCoerencia({
                 referentes mais rapidamente, identifica as relações de hiperonímia
                 setoriais (sonda → equipamento → ativo) e compreende a coerência
                 pragmática do texto sem precisar recorrer ao conhecimento geral. A
-                Arena de Elite é o espaço para treinar essa leitura especializada sob
+                Avaliação de Fixação Avançada é o espaço para treinar essa leitura especializada sob
                 pressão de tempo.
               </p>
 
@@ -3343,12 +3378,12 @@ export default function AulaCoesaoCoerencia({
                 disciplina de atleta: cada questão errada deve ser{" "}
                 <strong>dissecada</strong>, não apenas revisada. Identifique{" "}
                 <em>qual mecanismo</em> você não reconheceu, <em>por que</em> a
-                alternativa errada parecia correta e <em>qual regra de Bechara</em>{" "}
+                alternativa errada parecia correta e <em>qual regra gramatical</em>{" "}
                 teria impedido o erro. Nos concursos da Petrobras, a diferença entre
                 aprovação e reprovação frequentemente se resume a 2-3 questões de
                 Língua Portuguesa — e são justamente as questões de coesão e
                 coerência que mais eliminam candidatos tecnicamente competentes mas
-                linguisticamente desatentos. Você é a elite. Prove.
+                linguisticamente desatentos. Você é a Avançado. Prove.
               </p>
 
               <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
@@ -3359,13 +3394,13 @@ export default function AulaCoesaoCoerencia({
                   <li><strong>1ª Leitura</strong> — Tema central + tese do autor (coerência macro).</li>
                   <li><strong>2ª Leitura</strong> — Mapeamento de coesão: referentes, conectivos, elipses.</li>
                   <li><strong>3ª Leitura</strong> — Progressão temática: o texto avança ou é circular?</li>
-                  <li><strong>Na dúvida</strong> — Volte à regra de Bechara. Se a alternativa viola qualquer princípio, elimine-a.</li>
+                  <li><strong>Na dúvida</strong> — Volte à regra gramatical. Se a alternativa viola qualquer princípio, elimine-a.</li>
                 </ul>
               </div>
             </div>
 
             <QuizDiagnostic
-              title="Mentalidade de Atleta"
+              title="Postura Estratégica"
               question="Qual o erro mais comum cometido pelos candidatos nas questões de Coesão Sequencial da Petrobras?"
               options={[
                 "Achar que o 'conquanto' é conclusivo.",
@@ -3374,11 +3409,11 @@ export default function AulaCoesaoCoerencia({
                 "Todas as alternativas anteriores.",
               ]}
               correctAnswer={3}
-              explanation="Infelizmente, todas essas são falhas recorrentes. Nesta Arena, vamos treinar seu olhar para que você nunca mais caia nessas armadilhas."
+              explanation="Infelizmente, todas essas são falhas recorrentes. Nesta etapa de avaliação, vamos treinar seu olhar para que você nunca mais caia nessas armadilhas."
               variant={mv[10]}
             />
           </section>
-          <AlertBox tipo="warning" titulo="Dossie Final: O olhar do Examinador">
+          <AlertBox tipo="warning" titulo="Síntese Técnica Final: O olhar do Examinador">
             Nas provas da Petrobras, a <strong>Coesão Referencial</strong>{" "}
             (Anáfora/Catáfora) é o tópico que mais cai. Revise bem os pronomes
             demonstrativos e a diferença entre o foco argumentativo do 'Mas' e

@@ -260,8 +260,45 @@ export default function AulaTiposTextuais({
   prevTopico,
   nextTopico,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_portugues_tipos_textuais_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
 
   // Estados dos Quizzes
@@ -348,7 +385,7 @@ export default function AulaTiposTextuais({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="O Processo Narrativo no Contexto da CESGRANRIO"
             description="A sucessão de fatos e a evolução temporal nos textos de prova."
             variant={mv[1] as any}
@@ -383,7 +420,7 @@ export default function AulaTiposTextuais({
             moduloNome: "Módulo 1", materia: "Português", tituloAula: "Narração",
             images: [{ title: "PENTE", type: "Esquema", placeholderColor: "bg-indigo-500/20" }]
           }}
-          maceteVisual={{ title: "Filme vs Foto", content: "Narração = Filme | Descrição = Foto" }}
+          sinteseEstrategica={{ title: "Filme vs Foto", content: "Narração = Filme | Descrição = Foto" }}
           audio={{ audioUrl: "#", titulo: "Ritmo Narrativo", artista: "Prof. André" }}
         />
 
@@ -406,7 +443,7 @@ export default function AulaTiposTextuais({
         />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="A Fotografia Textual"
             description="Entenda como a simultaneidade de traços define a descrição."
             variant={mv[2] as any}
@@ -431,7 +468,7 @@ export default function AulaTiposTextuais({
             moduloNome: "Módulo 2", materia: "Português", tituloAula: "Descrição",
             images: [{ title: "Adjetivação", type: "Tabela", placeholderColor: "bg-emerald-500/20" }]
           }}
-          maceteVisual={{ title: "Congelar o Tempo", content: "A descrição para o relógio para pintar o cenário." }}
+          sinteseEstrategica={{ title: "Congelar o Tempo", content: "A descrição para o relógio para pintar o cenário." }}
           audio={{ audioUrl: "#", titulo: "Texturas do Texto", artista: "Prof. André" }}
         />
         <QuizInterativo
@@ -453,7 +490,7 @@ export default function AulaTiposTextuais({
         />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="A Transmissão do Saber"
             description="Organizando o conhecimento de forma impessoal."
             variant={mv[3] as any}
@@ -475,7 +512,7 @@ export default function AulaTiposTextuais({
             moduloNome: "Módulo 3", materia: "Português", tituloAula: "Exposição",
             images: [{ title: "Clareza", type: "Esquema", placeholderColor: "bg-violet-500/20" }]
           }}
-          maceteVisual={{ title: "Ensinar vs Brigar", content: "Expor é dar uma aula. Argumentar é dar um sermão." }}
+          sinteseEstrategica={{ title: "Ensinar vs Brigar", content: "Expor é dar uma aula. Argumentar é dar um sermão." }}
           audio={{ audioUrl: "#", titulo: "Voz Didática", artista: "Prof. André" }}
         />
         <QuizInterativo
@@ -497,7 +534,7 @@ export default function AulaTiposTextuais({
         />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="A Lógica do Convencimento"
             description="Entenda como a tese é construída e defendida."
             variant={mv[4] as any}
@@ -522,7 +559,7 @@ export default function AulaTiposTextuais({
             moduloNome: "Módulo 4", materia: "Português", tituloAula: "Argumentação",
             images: [{ title: "Tese vs Fato", type: "Esquema", placeholderColor: "bg-blue-500/20" }]
           }}
-          maceteVisual={{ title: "Vender a Ideia", content: "Imagine que cada parágrafo argumentativo é um 'vendedor' da sua tese." }}
+          sinteseEstrategica={{ title: "Vender a Ideia", content: "Imagine que cada parágrafo argumentativo é um 'vendedor' da sua tese." }}
           audio={{ audioUrl: "#", titulo: "Retórica de Concurso", artista: "Prof. André" }}
         />
         <QuizInterativo
@@ -544,7 +581,7 @@ export default function AulaTiposTextuais({
         />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="A Ordem Sob Regras"
             description="Diferenciando o convite da obrigação."
             variant={mv[5] as any}
@@ -566,7 +603,7 @@ export default function AulaTiposTextuais({
             moduloNome: "Módulo 5", materia: "Português", tituloAula: "Injunção",
             images: [{ title: "Verbos de Ordem", type: "Diagrama", placeholderColor: "bg-amber-500/20" }]
           }}
-          maceteVisual={{ title: "Mão na Massa", content: "Injunção = Passo a Passo para o leitor agir." }}
+          sinteseEstrategica={{ title: "Mão na Massa", content: "Injunção = Passo a Passo para o leitor agir." }}
           audio={{ audioUrl: "#", titulo: "Comandos Verbais", artista: "Prof. André" }}
         />
         <QuizInterativo
@@ -588,7 +625,7 @@ export default function AulaTiposTextuais({
         />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="A Troca de Turnos"
             description="Interação direta e marcas de oralidade."
             variant={mv[6] as any}
@@ -610,7 +647,7 @@ export default function AulaTiposTextuais({
             moduloNome: "Módulo 6", materia: "Português", tituloAula: "Modo Dialogal",
             images: [{ title: "Turnos de Fala", type: "Esquema", placeholderColor: "bg-rose-500/20" }]
           }}
-          maceteVisual={{ title: "Tênis Textual", content: "O diálogo é como uma partida de tênis: a bola (fala) vai e volta." }}
+          sinteseEstrategica={{ title: "Tênis Textual", content: "O diálogo é como uma partida de tênis: a bola (fala) vai e volta." }}
           audio={{ audioUrl: "#", titulo: "Vozes Cruzadas", artista: "Prof. André" }}
         />
         <QuizInterativo
@@ -632,7 +669,7 @@ export default function AulaTiposTextuais({
         />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Sociologia do Texto"
             description="Tipos são a base, gêneros são a vida real."
             variant={mv[7] as any}
@@ -654,7 +691,7 @@ export default function AulaTiposTextuais({
             moduloNome: "Módulo 7", materia: "Português", tituloAula: "Gêneros",
             images: [{ title: "Tabela de Gêneros", type: "Tabela", placeholderColor: "bg-cyan-500/20" }]
           }}
-          maceteVisual={{ title: "Andaime e Prédio", content: "Tipo = Andaime (estrutura); Gênero = Prédio pronto (uso)." }}
+          sinteseEstrategica={{ title: "Andaime e Prédio", content: "Tipo = Andaime (estrutura); Gênero = Prédio pronto (uso)." }}
           audio={{ audioUrl: "#", titulo: "Comunicação Social", artista: "Prof. André" }}
         />
         <QuizInterativo
@@ -676,7 +713,7 @@ export default function AulaTiposTextuais({
         />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="A Mistura Orgânica"
             description="Identificando a predominância em textos híbridos."
             variant={mv[1] as any}
@@ -698,7 +735,7 @@ export default function AulaTiposTextuais({
             moduloNome: "Módulo 8", materia: "Português", tituloAula: "Hibridismo",
             images: [{ title: "Transição Lógica", type: "Diagrama", placeholderColor: "bg-indigo-500/20" }]
           }}
-          maceteVisual={{ title: "Tipo Camaleão", content: "O texto muda de 'cor' (tipo) conforme a necessidade do autor." }}
+          sinteseEstrategica={{ title: "Tipo Camaleão", content: "O texto muda de 'cor' (tipo) conforme a necessidade do autor." }}
           audio={{ audioUrl: "#", titulo: "Harmonia Textual", artista: "Prof. André" }}
         />
         <QuizInterativo
@@ -720,7 +757,7 @@ export default function AulaTiposTextuais({
         />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Raio-X da Banca"
             description="Estratégias específicas para as questões de tipologia."
             variant={mv[2] as any}
@@ -742,7 +779,7 @@ export default function AulaTiposTextuais({
             moduloNome: "Módulo 9", materia: "Português", tituloAula: "Laboratório",
             images: [{ title: "Radar CESGRANRIO", type: "Mapa Mental", placeholderColor: "bg-emerald-500/20" }]
           }}
-          maceteVisual={{ title: "Detetive de Texto", content: "Procure as 'pegadas' gramaticais que definem o tipo." }}
+          sinteseEstrategica={{ title: "Detetive de Texto", content: "Procure as 'pegadas' gramaticais que definem o tipo." }}
           audio={{ audioUrl: "#", titulo: "Tática de Prova", artista: "Prof. André" }}
         />
         <QuizInterativo
@@ -759,7 +796,7 @@ export default function AulaTiposTextuais({
         <ModuleBanner
           numero={10}
           titulo="Simulado Final"
-          descricao="O desafio definitivo: 10 questões de nível 'Elite' para consolidar sua aprovação."
+          descricao="O desafio definitivo: 10 questões de nível 'Avançado' para consolidar sua aprovação."
           variant={mv[3] as any}
         />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm text-center">
@@ -777,8 +814,8 @@ export default function AulaTiposTextuais({
             moduloNome: "Módulo 10", materia: "Português", tituloAula: "Simulado",
             images: [{ title: "Checklist Final", type: "Lista", placeholderColor: "bg-violet-500/20" }]
           }}
-          maceteVisual={{ title: "Foco Total", content: "A prova é um jogo de paciência e aplicação de técnica." }}
-          audio={{ audioUrl: "#", titulo: "Mentalidade Elite", artista: "Prof. André" }}
+          sinteseEstrategica={{ title: "Foco Total", content: "A prova é um jogo de paciência e aplicação de técnica." }}
+          audio={{ audioUrl: "#", titulo: "Mentalidade Estratégica", artista: "Prof. André" }}
         />
         <QuizInterativo
           questoes={quizzes["modulo-10"] || []}

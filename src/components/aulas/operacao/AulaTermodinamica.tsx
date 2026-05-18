@@ -71,8 +71,44 @@ export default function AulaTermodinamica({
   prevTopico,
   nextTopico
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("introducao");
-  const [completedModules, setCompletedModules] = useState<string[]>([]);
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_operacao_termodinamica_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "introducao";
+    }
+    return "introducao";
+  });
+
+  const [completedModules, setCompletedModules] = useState<string[]>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          return [];
+        }
+      }
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(completedModules)
+      );
+    }
+  }, [completedModules]);
   const [showConfetti, setShowConfetti] = useState(false);
 
   // Módulos da Aula
@@ -282,7 +318,7 @@ export default function AulaTermodinamica({
             <div className="space-y-[80px]">
               <section className="space-y-12">
                 <ModuleSectionHeader 
-                  index={1}
+                  index="INTRO"
                   title="O Universo Termodinâmico"
                   description="Como isolar o que importa para análise técnica."
                   variant="amber"
@@ -453,7 +489,7 @@ export default function AulaTermodinamica({
                     { title: "Intensivas vs Extensivas", type: "Tabela", placeholderColor: "bg-orange-500/20" }
                   ]
                 }}
-                maceteVisual={{
+                sinteseEstrategica={{
                   title: "Propriedades",
                   content: (
                     <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
@@ -494,7 +530,7 @@ export default function AulaTermodinamica({
             <div className="space-y-[80px]">
               <section className="space-y-12">
                  <ModuleSectionHeader 
-                  index={1}
+                  index="INTRO"
                   title="Primeira Lei: Balanço Crítico"
                   description="Energia não se cria, se transforma."
                   variant="blue"
@@ -582,7 +618,7 @@ export default function AulaTermodinamica({
                     { title: "Ciclo de Carnot Ideal", type: "Esquema", placeholderColor: "bg-indigo-500/20" }
                   ]
                 }}
-                maceteVisual={{
+                sinteseEstrategica={{
                   title: "A Diferença de Ouro",
                   content: (
                     <div className="space-y-4">
@@ -620,7 +656,7 @@ export default function AulaTermodinamica({
             <div className="space-y-[80px]">
               <section className="space-y-12">
                  <ModuleSectionHeader 
-                  index={1}
+                  index="INTRO"
                   title="Ciclo de Carnot"
                   description="A perfeição inatingível."
                   variant="emerald"
@@ -740,7 +776,7 @@ export default function AulaTermodinamica({
             <div className="space-y-[80px]">
                 <section className="space-y-8">
                    <ModuleSectionHeader 
-                    index={1}
+                    index="INTRO"
                     title="O Diagrama T-S (Temperatura-Entropia)"
                     description="O indispensável para ciclos de potência."
                     variant="violet"
@@ -754,7 +790,7 @@ export default function AulaTermodinamica({
                        - **Dentro do Sino:** Mistura Líquido-Vapor (usamos o **Título 'x'** para medir a porcentagem de vapor).
                      </p>
                      
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="p-4 bg-violet-50 dark:bg-violet-900/20 border border-violet-500/20 rounded-2xl">
                            <h5 className="font-black text-violet-600 mb-2 uppercase text-lg">Fórmula do Título (x)</h5>
                            <p className="text-xl font-mono font-bold text-center">x = m_vapor / m_total</p>

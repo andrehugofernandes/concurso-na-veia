@@ -56,7 +56,7 @@ const MODULE_DEFS = [
   { id: "modulo-7", label: "Módulo 7", title: "Metodologias Ágeis" },
   { id: "modulo-8", label: "Módulo 8", title: "PMO e Governança" },
   { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Geral" },
 ] as const;
 
 const TEMP_QUIZ = [
@@ -71,8 +71,45 @@ export default function AulaGestaoProjetos({
   currentProgress, onUpdateProgress, titulo, descricao, duracao,
   materiaNome, materiaCor, materiaId, prevTopico, nextTopico,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_gestao_projetos_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
   const [quizM1] = useState(() => TEMP_QUIZ);
   const [quizM2] = useState(() => TEMP_QUIZ);
   const [quizM3] = useState(() => TEMP_QUIZ);
@@ -170,7 +207,7 @@ export default function AulaGestaoProjetos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={1} 
+              index="INTRO" 
               title="A Essência do Projeto" 
               description="Definição PMBOK, características e a Tríplice Restrição." 
               variant={mv[1]} 
@@ -186,7 +223,7 @@ export default function AulaGestaoProjetos({
                       Segundo o <strong>PMBOK Guide</strong>, um projeto é um esforço <strong>temporário</strong> empreendido para criar um produto, serviço ou resultado <strong>exclusivo</strong>.
                     </p>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl">
                         <p className="font-bold text-blue-800 text-lg mb-2">⏳ Temporário</p>
                         <p className="text-[10px] text-blue-700">Tem um início e um fim definidos. Não é um esforço contínuo como uma linha de montagem.</p>
@@ -274,7 +311,7 @@ export default function AulaGestaoProjetos({
                 { title: "Partes Interessadas", type: "Mapa", placeholderColor: "bg-indigo-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "P.T.E. (Iniciais)", 
               content: (
                 <div className="space-y-2 text-left">
@@ -314,7 +351,7 @@ export default function AulaGestaoProjetos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={1} 
+              index="INTRO" 
               title="A Visão 360 do Projeto" 
               description="Do Escopo às Partes Interessadas." 
               variant={mv[2]} 
@@ -356,7 +393,7 @@ export default function AulaGestaoProjetos({
                 icone: <LuLightbulb />, 
                 conteudo: (
                   <div className="space-y-4">
-                    <AlertBox tipo="warning" titulo="O Pulo do Gato">
+                    <AlertBox tipo="warning" titulo="Destaque Estratégico">
                       <p className="text-lg">
                         No PMBOK 7, as 10 Áreas foram substituídas por <strong>8 Domínios de Desempenho</strong>. No entanto, para a Petrobras, a base conceitual das 10 áreas ainda é o norte fundamental nas questões de Administração.
                       </p>
@@ -401,7 +438,7 @@ export default function AulaGestaoProjetos({
                 { title: "Fluxo de Integração", type: "Diagrama", placeholderColor: "bg-teal-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "I.E.C.C. Q.R.C. R.A.P.", 
               content: (
                 <div className="text-[10px] text-left opacity-70">
@@ -440,7 +477,7 @@ export default function AulaGestaoProjetos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={1} 
+              index="INTRO" 
               title="O Fluxo da Vida de um Projeto" 
               description="Esqueça as fases, foque nos grupos de processos." 
               variant={mv[3]} 
@@ -533,7 +570,7 @@ export default function AulaGestaoProjetos({
                 { title: "Iniciação ao Encerramento", type: "Cronos", placeholderColor: "bg-orange-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "I.P.E.M.E.", 
               content: (
                 <p className="text-lg font-bold text-center text-amber-600 tracking-widest">Inicia - Planeja - Executa - Monitora - Encerra</p>
@@ -570,7 +607,7 @@ export default function AulaGestaoProjetos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={1} 
+              index="INTRO" 
               title="Planejamento de Entrega" 
               description="A estrutura da EAP e o domínio do cronograma." 
               variant={mv[4]} 
@@ -660,7 +697,7 @@ export default function AulaGestaoProjetos({
                 { title: "Gráfico de Gantt", type: "Cronograma", placeholderColor: "bg-pink-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "PERT = P+4M+O / 6", 
               content: (
                 <div className="space-y-1">
@@ -699,7 +736,7 @@ export default function AulaGestaoProjetos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={1} 
+              index="INTRO" 
               title="O Valor do Dinheiro e da Entrega" 
               description="EVA, CPI, SPI e métricas de qualidade." 
               variant={mv[5]} 
@@ -794,7 +831,7 @@ export default function AulaGestaoProjetos({
                 { title: "Ferramentas da Qualidade", type: "Colagem", placeholderColor: "bg-violet-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "Índice > 1 = Sucesso", 
               content: (
                 <p className="text-lg text-emerald-600 font-bold uppercase tracking-wider">Acima de 1 tá rindo, abaixo tá chorando!</p>
@@ -831,7 +868,7 @@ export default function AulaGestaoProjetos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={1} 
+              index="INTRO" 
               title="O Gerenciamento da Incerteza" 
               description="Identificação, análise e resposta aos riscos." 
               variant={mv[6]} 
@@ -847,7 +884,7 @@ export default function AulaGestaoProjetos({
                       Risco é um evento ou condição <strong>incerta</strong> que, se ocorrer, tem um efeito <strong>positivo (oportunidade)</strong> ou <strong>negativo (ameaça)</strong> em pelo menos um objetivo do projeto.
                     </p>
                     <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-center gap-4">
-                       <LuTriangle className="text-amber-600 flex-shrink-0" size={24} />
+                       <LuTriangle className="text-amber-600 flex-shrink-0" size={24} mode="stacked" />
                        <p className="text-[10px] text-amber-800 italic">"Risco conhecido = Contingência. Risco desconhecido = Reserva de Gerenciamento."</p>
                     </div>
                   </div>
@@ -917,7 +954,7 @@ export default function AulaGestaoProjetos({
                 { title: "Simulação Monte Carlo", type: "Dashboard", placeholderColor: "bg-orange-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "AMEAÇAS: E.T. M.A.", 
               content: (
                 <div className="text-[10px] space-y-1">
@@ -956,7 +993,7 @@ export default function AulaGestaoProjetos({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="A Revolução Ágil"
               description="Adaptabilidade, iteração e entrega contínua de valor."
               variant={mv[7]}
@@ -972,7 +1009,7 @@ export default function AulaGestaoProjetos({
                       O <strong>Manifesto Ágil</strong> (2001) prioriza: <strong>Indivíduos e Iterações</strong> sobre Processos e Ferramentas; <strong>Funcionamento de Software</strong> sobre Documentação; <strong>Colaboração com Cliente</strong> sobre Contrato; e <strong>Responder a Mudanças</strong> sobre Planejamento Rígido.
                     </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="p-4 bg-purple-50 border border-purple-200 rounded-xl">
                         <p className="font-bold text-purple-800 text-lg mb-2">🔄 Sprint</p>
                         <p className="text-[10px] text-purple-700">Iteração de 1-4 semanas com entrega funcional no final.</p>
@@ -1044,7 +1081,7 @@ export default function AulaGestaoProjetos({
                 { title: "Sprint Timeline", type: "Cronograma", placeholderColor: "bg-violet-500/20" }
               ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "D.O.R. & D.O.D.",
               content: (
                 <div className="space-y-2 text-left">
@@ -1084,7 +1121,7 @@ export default function AulaGestaoProjetos({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Estrutura de Governança"
               description="PMO, Portfolio e Alinhamento com a Estratégia."
               variant={mv[8]}
@@ -1176,7 +1213,7 @@ export default function AulaGestaoProjetos({
                 { title: "Dashboard de Métricas", type: "Dashboard", placeholderColor: "bg-cyan-500/20" }
               ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "E.V.M.",
               content: (
                 <div className="space-y-2 text-left">
@@ -1216,7 +1253,7 @@ export default function AulaGestaoProjetos({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Realidade Petrobras"
               description="Megaprojetos, Regulação e Stakeholders."
               variant={mv[9]}
@@ -1232,7 +1269,7 @@ export default function AulaGestaoProjetos({
                       Megaprojetos da Petrobras envolvem: <strong>Valores acima de $1 bilhão, Prazos de 5-15 anos, Múltiplas equipes globais e Regulação ambiental/operacional rigorosa.</strong> Exemplos incluem Pré-Sal, Refinarias e Plantas de Processamento.
                     </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="p-4 bg-orange-50 border border-orange-200 rounded-xl">
                         <p className="font-bold text-orange-800 text-lg mb-2">⛽ Pré-Sal</p>
                         <p className="text-[10px] text-orange-700">Exploração em águas profundas, mega-projetos de longa duração.</p>
@@ -1306,7 +1343,7 @@ export default function AulaGestaoProjetos({
                 { title: "Estrutura Stakeholder", type: "Rede", placeholderColor: "bg-yellow-500/20" }
               ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "PETAR",
               content: (
                 <div className="space-y-2 text-left">
@@ -1334,19 +1371,19 @@ export default function AulaGestaoProjetos({
         </div>
       </TabsContent>
 
-      {/* ═══ MÓDULO 10: SIMULADO MESTRE ═══ */}
+      {/* ═══ MÓDULO 10: Simulado Geral ═══ */}
       <TabsContent value="modulo-10" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={10}
-            titulo="Simulado Mestre"
+            titulo="Simulado Geral"
             descricao="Consolidação, Revisão e Simulado Final com Questões de Prova."
             gradiente="bg-gradient-to-br from-rose-300 via-rose-500 to-rose-400"
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Revisão Completa & Simulado"
               description="Consolidação de todos os conceitos em um simulado integrado."
               variant={mv[10]}
@@ -1423,7 +1460,7 @@ export default function AulaGestaoProjetos({
                 { title: "Guia de Revisão", type: "Checklist", placeholderColor: "bg-pink-500/20" }
               ]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "👑 MESTRE EM GESTÃO",
               content: (
                 <div className="text-center space-y-2">
@@ -1441,7 +1478,7 @@ export default function AulaGestaoProjetos({
 
                       <QuizInterativo
               questoes={quizM10}
-              titulo="SIMULADO MESTRE: Gestão de Projetos"
+              titulo="Simulado Geral: Gestão de Projetos"
               numero={3}
               variant={mv[10]}
               icone="🏆"

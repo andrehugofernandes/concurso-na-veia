@@ -144,13 +144,7 @@ export default function AulaProgressoesPa({
 
   const isModuleUnlocked = (_index: number) => true; // ✅ TODOS OS MÓDULOS DESBLOQUEADOS
 
-  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
-
-  const mv = Object.fromEntries(
-
-    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
-
-  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+    
 
 
   return (

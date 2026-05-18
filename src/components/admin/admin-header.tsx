@@ -269,7 +269,7 @@ export function AdminHeader({
   return (
     <header
       className={cn(
-        "h-16 md:h-20 border-b border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md flex items-center sticky top-0 z-50 transition-all duration-300",
+        "h-16 md:h-20 border-b border-gray-200 dark:border-gray-700 bg-white/15 dark:bg-gray-800/15 backdrop-blur-md flex items-center sticky top-0 z-50 transition-all duration-300",
         isStickyNavPinned &&
           !isTemporaryHeaderVisible &&
           "-translate-y-full opacity-0 pointer-events-none",
@@ -303,7 +303,7 @@ export function AdminHeader({
           {!isMobileSidebarOpen &&
             userRole !== "ADMIN" &&
             userRole !== "SYSADMIN" &&
-            (!profile?.plan || profile.plan === 'free') && (
+            (!profile?.plan || profile.plan === "free") && (
               <Link
                 href="/seja-pro"
                 className="hidden md:flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black text-[11px] font-black rounded-full transition-all shadow-sm hover:shadow-yellow-500/20 active:scale-95 border border-yellow-200/50"
@@ -434,8 +434,8 @@ export function AdminHeader({
   );
 }
 
-const NotificationCountContext = createContext<{ 
-  notificationCount: number; 
+const NotificationCountContext = createContext<{
+  notificationCount: number;
   setNotificationCount: (count: number) => void;
 }>({
   notificationCount: 0,
@@ -449,7 +449,9 @@ export function NotificationCountProvider({
 }) {
   const [notificationCount, setNotificationCount] = useState(0);
   return (
-    <NotificationCountContext.Provider value={{ notificationCount, setNotificationCount }}>
+    <NotificationCountContext.Provider
+      value={{ notificationCount, setNotificationCount }}
+    >
       {children}
     </NotificationCountContext.Provider>
   );

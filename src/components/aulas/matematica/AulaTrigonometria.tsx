@@ -100,13 +100,7 @@ export default function AulaTrigonometria({
     { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Final" },
   ];
 
-  // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N)
-
-  const mv = Object.fromEntries(
-
-    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
-
-  ) as Record<number, ReturnType<typeof getModuleVariant>>;
+    
 
 
   return (
@@ -363,7 +357,7 @@ export default function AulaTrigonometria({
                 imageUrl: "/temp-img.png"
               }]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Pulo do Gato",
               content: (<div className="space-y-3">
                 <p className="font-semibold">SOH-CAH-TOA é a chave mnemônica:</p>
@@ -659,7 +653,7 @@ export default function AulaTrigonometria({
                 imageUrl: "/temp-img.png"
               }]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Pulo do Gato",
               content: (<div className="space-y-3">
                 <p className="font-semibold">Decorar em sequência numérica (√n/2):</p>
@@ -906,7 +900,7 @@ export default function AulaTrigonometria({
                 imageUrl: "/temp-img.png"
               }]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Pulo do Gato",
               content: (<div className="space-y-3">
                 <p className="font-semibold">Conversão π: 180° = π rad</p>
@@ -1153,7 +1147,7 @@ export default function AulaTrigonometria({
                 imageUrl: "/temp-img.png"
               }]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Pulo do Gato",
               content: (<div className="space-y-3">
                 <p className="font-semibold">Propriedades fundamentais:</p>
@@ -1381,7 +1375,7 @@ export default function AulaTrigonometria({
                 imageUrl: "/temp-img.png"
               }]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Pulo do Gato",
               content: (<div className="space-y-3">
                 <p className="font-semibold">As 3 identidades principais:</p>
@@ -1607,7 +1601,7 @@ export default function AulaTrigonometria({
                 imageUrl: "/temp-img.png"
               }]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Pulo do Gato",
               content: (<div className="space-y-3">
                 <p className="font-semibold">Lei dos Senos: lado/seno oposto</p>
@@ -1826,7 +1820,7 @@ export default function AulaTrigonometria({
                 imageUrl: "/temp-img.png"
               }]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Pulo do Gato",
               content: (<div className="space-y-3">
                 <p className="font-semibold">Lei dos Cossenos (Pitágoras Generalizada):</p>
@@ -2045,7 +2039,7 @@ export default function AulaTrigonometria({
                 imageUrl: "/temp-img.png"
               }]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Pulo do Gato",
               content: (<div className="space-y-3">
                 <p className="font-semibold">Estratégia para resolver equações trigonométricas:</p>
@@ -2305,7 +2299,7 @@ export default function AulaTrigonometria({
                 imageUrl: "/temp-img.png"
               }]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Pulo do Gato - Contexto Petrobras",
               content: (<div className="space-y-3">
                 <p className="font-semibold">Aplicações comuns em operações Petrobras:</p>
@@ -2599,7 +2593,7 @@ export default function AulaTrigonometria({
                 imageUrl: "/temp-img.png"
               }]
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Pulo do Gato - Resumo Final",
               content: (<div className="space-y-3">
                 <p className="font-semibold">9 Pilares da Trigonometria (Revise em 5 minutos!):</p>

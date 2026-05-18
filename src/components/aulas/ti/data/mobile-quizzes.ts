@@ -1,278 +1,278 @@
 import { QuizQuestion } from "../../shared";
 
-// MÓDULO 1: ECOSSISTEMA MOBILE
+// MÓDULO 1: ECOSSISTEMA E SEGURANÇA
 export const quizM1: QuizQuestion[] = [
   {
     id: "m1q1",
-    pergunta: "Sobre o desenvolvimento nativo em Android e iOS, qual alternativa descreve corretamente a principal diferença entre eles?",
+    pergunta: "Considerando a arquitetura de sistemas operacionais móveis, qual alternativa descreve corretamente a distinção fundamental entre Android e iOS?",
     opcoes: [
-      { label: "A", valor: "Android usa primariamente Swift e o iOS usa Kotlin." },
-      { label: "B", valor: "Android roda sobre o kernel Linux e usa o ART (Android Runtime); iOS roda sobre o kernel XNU." },
-      { label: "C", valor: "O iOS é um sistema de código aberto baseado no projeto AOSP." },
-      { label: "D", valor: "A fragmentação de dispositivos é um problema exclusivo do ecossistema Apple." },
-      { label: "E", valor: "Ambos utilizam a mesma ferramenta oficial de desenvolvimento: o VS Code." }
+      { label: "A", valor: "O Android utiliza o kernel Darwin, enquanto o iOS baseia-se no kernel Linux." },
+      { label: "B", valor: "O Android opera sobre o Kernel Linux e utiliza o ART (Android Runtime); o iOS baseia-se no Kernel XNU (Darwin)." },
+      { label: "C", valor: "O iOS é um sistema de código aberto derivado do projeto AOSP, permitindo customizações de hardware." },
+      { label: "D", valor: "A fragmentação de dispositivos e versões do SO é um desafio mitigado pela Apple através do uso de múltiplas máquinas virtuais." },
+      { label: "E", valor: "Ambas as plataformas utilizam o paradigma de compilação JIT exclusivamente para todas as camadas de aplicação." }
     ],
     correta: "B",
-    explicacao: "Android é baseado em Linux e usa o ART para execução. iOS é baseado em XNU (BSD-based). São arquiteturas de kernel e runtime distintas."
+    explicacao: "O Android utiliza uma base Linux com o runtime ART (AOT compilation). O iOS utiliza o kernel XNU, parte do ecossistema Darwin da Apple, garantindo um controle mais verticalizado do hardware."
   },
   {
     id: "m1q2",
-    pergunta: "O conceito de 'fragmentação' no contexto Android refere-se a:",
+    pergunta: "No contexto do ecossistema Android, o fenômeno da 'fragmentação' implica em:",
     opcoes: [
-      { label: "A", valor: "A divisão do aplicativo em módulos menores para economia de memória." },
-      { label: "B", valor: "A existência de milhares de modelos de aparelhos com diferentes versões do SO e tamanhos de tela." },
-      { label: "C", valor: "A quebra de compatibilidade entre Java e Kotlin no Android Studio." },
-      { label: "D", valor: "O processo de compressão de arquivos .APK para .AAB." },
-      { label: "E", valor: "A separação obrigatória entre o banco de dados SQLite e o sistema de arquivos." }
+      { label: "A", valor: "A decomposição modular de arquivos .DEX para otimização de memória em dispositivos de baixo custo." },
+      { label: "B", valor: "A coexistência de uma vasta gama de versões do sistema operacional e especificações de hardware, exigindo estratégias complexas de compatibilidade retroativa." },
+      { label: "C", valor: "A incompatibilidade intrínseca entre as linguagens Java e Kotlin dentro do ambiente Android Studio." },
+      { label: "D", valor: "O processo técnico de conversão de pacotes .APK em .AAB para distribuição via Play Asset Delivery." },
+      { label: "E", valor: "O isolamento obrigatório de processos de sistema através do mecanismo de permissões dinâmicas." }
     ],
     correta: "B",
-    explicacao: "Fragmentação é o grande desafio do Android em lidar com a vasta gama de hardwares e versões de software coexistentes no mercado."
+    explicacao: "A fragmentação é o desafio de desenvolver aplicações que operem de forma consistente em milhares de variantes de hardware e múltiplas versões ativas do Android."
   },
   {
     id: "m1q3",
-    pergunta: "Qual das seguintes ferramentas é a IDE OFICIAL para o desenvolvimento Android?",
+    pergunta: "Qual das seguintes ferramentas é consolidada como o Ambiente de Desenvolvimento Integrado (IDE) oficial para a plataforma Android?",
     opcoes: [
-      { label: "A", valor: "Xcode" },
-      { label: "B", valor: "Android Studio (baseado no IntelliJ)" },
-      { label: "C", valor: "Eclipse ADT" },
-      { label: "D", valor: "Visual Studio Community" },
-      { label: "E", valor: "Neovim" }
+      { label: "A", valor: "Xcode, com suporte a emulação multi-device." },
+      { label: "B", valor: "Android Studio, construído sobre a plataforma IntelliJ IDEA." },
+      { label: "C", valor: "Eclipse ADT, mantido como padrão legado para sistemas críticos." },
+      { label: "D", valor: "Visual Studio, integrando o ecossistema .NET MAUI." },
+      { label: "E", valor: "Neovim, através de plugins de integração com o Gradle." }
     ],
     correta: "B",
-    explicacao: "Desde 2014, o Android Studio é a única IDE oficial suportada pelo Google para o desenvolvimento Android."
+    explicacao: "O Android Studio é a IDE oficial do Google, fornecendo ferramentas integradas para compilação, análise de performance e emulação."
   },
   {
     id: "m1q4",
-    pergunta: "No ecossistema Apple, qual sistema é responsável pela distribuição e controle de aplicativos?",
+    pergunta: "No fluxo de publicação de aplicações iOS, qual plataforma é utilizada para a gestão de metadados, versões e submissão à App Store?",
     opcoes: [
-      { label: "A", valor: "Google Play Console" },
-      { label: "B", valor: "App Store Connect" },
-      { label: "C", valor: "Apple Application Manager" },
-      { label: "D", valor: "iTunes Store Lib" },
-      { label: "E", valor: "Swift Package Manager" }
+      { label: "A", valor: "Google Play Console (Enterprise Edition)." },
+      { label: "B", valor: "App Store Connect." },
+      { label: "C", valor: "Apple Developer Portal (Legacy Mode)." },
+      { label: "D", valor: "Xcode Cloud Service Manager." },
+      { label: "E", valor: "Swift Package Manager (SPM)." }
     ],
     correta: "B",
-    explicacao: "O App Store Connect é a plataforma onde desenvolvedores gerenciam metadados, versões e enviam apps para a App Store."
+    explicacao: "O App Store Connect é o portal onde desenvolvedores gerenciam o ciclo de vida da aplicação, desde testes via TestFlight até o lançamento final."
   },
   {
     id: "m1q5",
-    pergunta: "A Petrobras utiliza dispositivos móveis para operações em campo (Offshore). Qual característica do ecossistema mobile é CRÍTICA nesse cenário?",
+    pergunta: "Em operações críticas de campo (ex: Offshore na Petrobras), qual requisito técnico é considerado primordial para a arquitetura mobile?",
     opcoes: [
-      { label: "A", valor: "Suporte a Realidade Virtual (VR)." },
-      { label: "B", valor: "Consumo de mídia em alta definição (8K)." },
-      { label: "C", valor: "Conectividade e resiliência (Offline-first) devido à instabilidade de rede em alto mar." },
-      { label: "D", valor: "Uso de jogos em 3D de alta performance." },
-      { label: "E", valor: "Sincronização obrigatória com mídias sociais." }
+      { label: "A", valor: "Implementação de recursos avançados de Realidade Aumentada (AR)." },
+      { label: "B", valor: "Suporte a streaming de vídeo em ultra-resolução (8K)." },
+      { label: "C", valor: "Arquitetura Offline-first com mecanismos de sincronização resilientes para ambientes de baixa conectividade." },
+      { label: "D", valor: "Integração nativa com motores de jogos de alta performance (Unreal/Unity)." },
+      { label: "E", valor: "Conectividade social obrigatória para autenticação via OAuth 2.0." }
     ],
     correta: "C",
-    explicacao: "Para operações offshore, onde a rede é instável, o app deve ser 'Offline-first', garantindo o registro de dados mesmo sem conexão imediata."
+    explicacao: "Em cenários com instabilidade de rede, a aplicação deve garantir a integridade dos dados localmente e sincronizá-los de forma assíncrona quando a conexão for restabelecida."
   }
 ];
 
-// MÓDULO 2: DESENVOLVIMENTO NATIVO (KOTLIN/SWIFT)
+// MÓDULO 2: DESENVOLVIMENTO NATIVO E PERFORMANCE
 export const quizM2: QuizQuestion[] = [
   {
     id: "m2q1",
-    pergunta: "No ciclo de vida de uma Activity no Android, qual método é chamado quando a Activity não está mais visível para o usuário?",
+    pergunta: "No ciclo de vida de uma Activity no Android, qual estado indica que a instância ainda reside na memória, mas não está mais visível ao usuário?",
     opcoes: [
       { label: "A", valor: "onStop()" },
       { label: "B", valor: "onPause()" },
       { label: "C", valor: "onDestroy()" },
       { label: "D", valor: "onRestart()" },
-      { label: "E", valor: "onFinish()" }
+      { label: "E", valor: "onStart()" }
     ],
     correta: "A",
-    explicacao: "onPause() é quando ela perde o foco (ex: sobreposição parcial). onStop() é quando ela fica totalmente oculta."
+    explicacao: "O método onStop() é invocado quando a Activity torna-se totalmente oculta. Diferente de onPause(), onde ela pode estar parcialmente visível mas sem foco."
   },
   {
     id: "m2q2",
-    pergunta: "Kotlin oferece 'Null Safety' (Segurança contra Nulos). Como declaramos uma variável que PODE receber valor nulo?",
+    pergunta: "A linguagem Kotlin implementa 'Null Safety' nativamente. Qual a sintaxe correta para declarar uma variável que admite a atribuição de valores nulos?",
     opcoes: [
       { label: "A", valor: "var nome: String" },
       { label: "B", valor: "var nome: String?" },
-      { label: "C", valor: "var nome: Nullable<String>" },
+      { label: "C", valor: "val nome: Nullable<String>" },
       { label: "D", valor: "var nome: Optional<String>" },
       { label: "E", valor: "var nome: String = null" }
     ],
     correta: "B",
-    explicacao: "Em Kotlin, o ponto de interrogação (?) após o tipo indica que a variável é 'nullable'."
+    explicacao: "O sufixo '?' define o tipo como nullable, obrigando o desenvolvedor a tratar a possível ausência de valor através de safe calls (?.) ou elvis operator (?:)."
   },
   {
     id: "m2q3",
-    pergunta: "No iOS, qual o nome do framework moderno e declarativo para construção de interfaces?",
+    pergunta: "Qual framework da Apple introduziu o paradigma de programação declarativa para a construção de interfaces no ecossistema iOS?",
     opcoes: [
-      { label: "A", valor: "UIKit" },
-      { label: "B", valor: "SwiftUI" },
-      { label: "C", valor: "CocoaPad" },
-      { label: "D", valor: "AppKit" },
-      { label: "E", valor: "Storyboard Pro" }
+      { label: "A", valor: "UIKit (baseado em MVC)." },
+      { label: "B", valor: "SwiftUI." },
+      { label: "C", valor: "Interface Builder com Storyboards." },
+      { label: "D", valor: "AppKit para aplicações universais." },
+      { label: "E", valor: "Objective-C Runtime UI." }
     ],
     correta: "B",
-    explicacao: "SwiftUI é o framework da Apple (lançado em 2019) que permite criar interfaces de forma declarativa e reativa."
+    explicacao: "O SwiftUI utiliza uma sintaxe declarativa e reativa, facilitando a sincronização entre o estado da aplicação e a interface visual."
   },
   {
     id: "m2q4",
-    pergunta: "O que é o ProGuard / R8 no desenvolvimento Android?",
+    pergunta: "Qual a função primordial do compilador R8 (sucessor do ProGuard) no build de uma aplicação Android?",
     opcoes: [
-      { label: "A", valor: "Um emulador de alta performance." },
-      { label: "B", valor: "Uma ferramenta de ofuscação e otimização de código que reduz o tamanho do APK/AAB." },
-      { label: "C", valor: "O gerenciador de dependências padrão." },
-      { label: "D", valor: "Um scanner de vulnerabilidades em tempo real." },
-      { label: "E", valor: "A engine de renderização de telas 2D." }
+      { label: "A", valor: "Emular o hardware do dispositivo para testes unitários." },
+      { label: "B", valor: "Realizar a ofuscação de código, remoção de recursos não utilizados (Shrinking) e otimização do bytecode." },
+      { label: "C", valor: "Gerenciar dependências através de repositórios Maven centrais." },
+      { label: "D", valor: "Atuar como um firewall de aplicação em tempo de execução." },
+      { label: "E", valor: "Renderizar vetores complexos em tempo real via GPU." }
     ],
     correta: "B",
-    explicacao: "R8 (sucessor do ProGuard) reduz o código não utilizado e ofusca as classes para dificultar engenharia reversa e economizar espaço."
+    explicacao: "O R8 otimiza o pacote final (.APK/.AAB), dificultando a engenharia reversa através da ofuscação e reduzindo o tamanho do binário."
   },
   {
     id: "m2q2_5",
-    pergunta: "Em Swift, 'Optional Binding' é uma técnica para:",
+    pergunta: "Em Swift, o mecanismo 'Optional Binding' (if let / guard let) é utilizado para:",
     opcoes: [
-      { label: "A", valor: "Conectar o app ao servidor via REST." },
-      { label: "B", valor: "Extrair o valor de um opcional de forma segura usando 'if let' ou 'guard let'." },
-      { label: "C", valor: "Criar variáveis globais acessíveis de qualquer tela." },
-      { label: "D", valor: "Compilar o app para múltiplas arquiteturas de CPU." },
-      { label: "E", valor: "Criptografar logs do sistema." }
+      { label: "A", valor: "Estabelecer conexões síncronas com bancos de dados externos." },
+      { label: "B", valor: "Extrair o valor de uma variável opcional de forma segura, evitando 'runtime crashes' por unwrap de nulos." },
+      { label: "C", valor: "Definir variáveis globais protegidas por criptografia." },
+      { label: "D", valor: "Compilar o código para arquiteturas de 32 bits." },
+      { label: "E", valor: "Gerenciar logs de erros do sistema operacional." }
     ],
     correta: "B",
-    explicacao: "O binding (if let / guard let) verifica se o opcional contém um valor e o atribui a uma constante temporária se não for nulo."
+    explicacao: "O Optional Binding verifica a presença de valor em um opcional e, em caso positivo, o atribui a uma constante temporária para uso seguro dentro de um escopo determinado."
   }
 ];
 
-// MÓDULO 3: APPS HÍBRIDOS E PWAS
+// MÓDULO 3: ARQUITETURAS HÍBRIDAS E PWAS
 export const quizM3: QuizQuestion[] = [
   {
     id: "m3q1",
-    pergunta: "Aplicativos Híbridos tradicionais (Cordova/Ionic 5-) utilizam qual tecnologia para renderizar a interface?",
+    pergunta: "A arquitetura de aplicações híbridas tradicionais (ex: Apache Cordova) baseia-se em qual componente para a renderização da interface?",
     opcoes: [
-      { label: "A", valor: "Compilação Nativa AOT" },
-      { label: "B", valor: "Canvas 2D" },
-      { label: "C", valor: "WebViews (navegador interno)" },
-      { label: "D", valor: "DirectX" },
-      { label: "E", valor: "OpenGL" }
+      { label: "A", valor: "Compilação Nativa via LLVM." },
+      { label: "B", valor: "Renderização direta via Canvas 2D/3D." },
+      { label: "C", valor: "Instâncias de WebViews (navegadores embarcados)." },
+      { label: "D", valor: "Abstração de componentes via JSI." },
+      { label: "E", valor: "Motores de renderização proprietários escritos em C++." }
     ],
     correta: "C",
-    explicacao: "Apps híbridos rodam código HTML/CSS/JS dentro de uma WebView, que é essencialmente uma instância de navegador no app."
+    explicacao: "Aplicações híbridas executam código Web em um contexto de 'WebView' (um container de navegador interno), utilizando 'plugins' ou 'bridges' para realizar a interoperabilidade com as APIs nativas do sistema operacional."
   },
   {
     id: "m3q2",
-    pergunta: "Qual o principal arquivo que define as capacidades de um PWA (Progressive Web App)?",
+    pergunta: "Qual arquivo de configuração é essencial para definir os metadados e o comportamento de instalação de um Progressive Web App (PWA)?",
     opcoes: [
-      { label: "A", valor: "package.json" },
-      { label: "B", valor: "manifest.json" },
-      { label: "C", valor: "styles.css" },
-      { label: "D", valor: "main.js" },
-      { label: "E", valor: "setup.php" }
+      { label: "A", valor: "package.json (Node.js configuration)." },
+      { label: "B", valor: "Web App Manifest (manifest.json)." },
+      { label: "C", valor: "service-worker.js." },
+      { label: "D", valor: "index.html com meta-tags de SEO." },
+      { label: "E", valor: "config.xml (padrão legante)." }
     ],
     correta: "B",
-    explicacao: "O Manifest (manifest.json) define ícones, cores de tema, nome e comportamento de 'instalação' (Add to Home Screen) do PWA."
+    explicacao: "O Manifest define propriedades como ícones, cores de tema, nome e modo de exibição (standalone), permitindo que o PWA seja 'instalado'."
   },
   {
     id: "m3q3",
-    pergunta: "Service Workers em um PWA são responsáveis por:",
+    pergunta: "No contexto de um PWA, qual a responsabilidade técnica do Service Worker?",
     opcoes: [
-      { label: "A", valor: "Desenhar a interface gráfica." },
-      { label: "B", valor: "Acesso ao hardware via Bluetooth." },
-      { label: "C", valor: "Gerenciar o cache de recursos, requisições de rede e suporte a modo Offline." },
-      { label: "D", valor: "Sincronizar contatos do telefone com a nuvem." },
-      { label: "E", valor: "Apostar em performance nativa via C++." }
+      { label: "A", valor: "Definir a estrutura semântica da página HTML." },
+      { label: "B", valor: "Prover acesso direto ao hardware via Bluetooth de baixo nível." },
+      { label: "C", valor: "Atuar como um proxy de rede, gerenciando o Cache API e permitindo o funcionamento offline." },
+      { label: "D", valor: "Sincronizar dados entre diferentes abas do navegador em tempo real." },
+      { label: "E", valor: "Compilar scripts JavaScript para código de máquina ARM." }
     ],
     correta: "C",
-    explicacao: "Service Workers rodam em background e interceptam chamadas de rede para servir cache, essencial para o funcionamento offline."
+    explicacao: "O Service Worker é um script que executa em um 'WorkerGlobalScope', atuando como um proxy programável entre a aplicação, o cache e a rede. Ele permite a interceptação de eventos 'fetch' para implementar estratégias de resiliência offline e pre-caching."
   },
   {
     id: "m3q4",
-    pergunta: "Uma desvantagem CRÍTICA de apps baseados em WebView em relação aos Nativo/Multipataforma é:",
+    pergunta: "Uma limitação técnica recorrente de aplicações baseadas em WebView frente às soluções Nativas é:",
     opcoes: [
-      { label: "A", valor: "Não podem ser instalados via APK." },
-      { label: "B", valor: "Performance inferior em animações e listas muito longas." },
-      { label: "C", valor: "Não suportam CSS3." },
-      { label: "D", valor: "São incompatíveis com JavaScript moderno (ES6)." },
-      { label: "E", valor: "Não permitem uso de cores hexadecimais." }
+      { label: "A", valor: "A impossibilidade de utilização de bibliotecas JavaScript modernas." },
+      { label: "B", valor: "Performance inferior em animações complexas e manipulação de grandes volumes de dados na UI." },
+      { label: "C", valor: "A ausência de suporte ao protocolo HTTPS." },
+      { label: "D", valor: "A restrição ao uso de fontes customizadas (Web Fonts)." },
+      { label: "E", valor: "A incompatibilidade com o sistema de arquivos do dispositivo móvel." }
     ],
     correta: "B",
-    explicacao: "A camada da WebView adiciona overhead de processamento, tornando animações complexas menos fluídas que as nativas."
+    explicacao: "O overhead de comunicação entre a WebView e o sistema operacional pode gerar gargalos de performance, especialmente em interfaces com alta taxa de atualização."
   },
   {
     id: "m3q5",
-    pergunta: "O que caracteriza um framework 'Multiplataforma' (ex: Flutter/RN) em comparação ao 'Híbrido' (ex: Cordova)?",
+    pergunta: "O que distingue fundamentalmente um framework 'Multiplataforma' (ex: Flutter/React Native) de uma solução 'Híbrida' (ex: Cordova)?",
     opcoes: [
-      { label: "A", valor: "O código é interpretado no servidor do framework." },
-      { label: "B", valor: "Multiplataforma gera componentes reais de interface (nativos ou desenhados na tela), enquanto Híbrido gera apenas HTML." },
-      { label: "C", valor: "Híbridos são obrigatoriamente feitos em Python." },
-      { label: "D", valor: "Multiplataforma só funciona em iPhones." },
-      { label: "E", valor: "Não há diferença, são sinônimos perfeitos." }
+      { label: "A", valor: "O uso obrigatório de linguagens de script interpretadas no servidor." },
+      { label: "B", valor: "A geração de componentes de interface nativos ou renderizados diretamente por engines gráficas, evitando o uso de WebViews para a UI principal." },
+      { label: "C", valor: "A exclusividade de suporte para sistemas operacionais baseados em Unix." },
+      { label: "D", valor: "A necessidade de conexão constante à internet para o funcionamento da lógica de negócio." },
+      { label: "E", valor: "A inexistência de acesso às APIs de hardware (Câmera/GPS)." }
     ],
     correta: "B",
-    explicacao: "Frameworks modernos evitam WebViews para renderizar componentes que conversam diretamente com o sistema operacional."
+    explicacao: "Frameworks multiplataforma modernos buscam performance nativa ao evitar a camada do navegador (WebView) para o desenho da interface do usuário."
   }
 ];
 
-// MÓDULO 4: REACT NATIVE CORE
+// MÓDULO 4: ARQUITETURA REACT NATIVE
 export const quizM4: QuizQuestion[] = [
   {
     id: "m4q1",
-    pergunta: "No React Native, como o layout é gerenciado por padrão?",
+    pergunta: "Como o React Native gerencia o posicionamento e layout de seus componentes por padrão?",
     opcoes: [
-      { label: "A", valor: "CSS Grid" },
-      { label: "B", valor: "Floats e Positioning" },
-      { label: "C", valor: "Flexbox (via Yoga Engine)" },
-      { label: "D", valor: "Bootstrap Grid" },
-      { label: "E", valor: "Manual pixels (X, Y)" }
+      { label: "A", valor: "CSS Grid Layout." },
+      { label: "B", valor: "Sistema de Floats herdado do HTML4." },
+      { label: "C", valor: "Implementação Flexbox através do motor Yoga (escrito em C++)." },
+      { label: "D", valor: "Posicionamento absoluto baseado em coordenadas cartesianas (X, Y)." },
+      { label: "E", valor: "Auto Layout proprietário da Apple." }
     ],
     correta: "C",
-    explicacao: "O React Native usa uma implementação de Flexbox via motor Yoga, focada em layouts móveis responsivos."
+    explicacao: "O motor Yoga traduz as propriedades Flexbox para as APIs de layout nativas de cada plataforma (Android e iOS)."
   },
   {
     id: "m4q2",
-    pergunta: "Qual componente é o equivalente à 'div' do Web no React Native?",
+    pergunta: "Qual componente do React Native é considerado a abstração fundamental para agrupamento de outros elementos, equivalente à 'div' no desenvolvimento Web?",
     opcoes: [
       { label: "A", valor: "<Container>" },
       { label: "B", valor: "<Box>" },
       { label: "C", valor: "<View>" },
       { label: "D", valor: "<Section>" },
-      { label: "E", valor: "<Block>" }
+      { label: "E", valor: "<Fragment>" }
     ],
     correta: "C",
-    explicacao: "A <View> é o bloco de construção fundamental de interface de usuário no RN."
+    explicacao: "A <View> mapeia-se diretamente para uma 'android.view' no Android e 'UIView' no iOS, sendo a base estrutural da interface."
   },
   {
     id: "m4q3",
-    pergunta: "Em relação ao texto no React Native, qual afirmação é VERDADEIRA?",
+    pergunta: "Sobre o tratamento de strings e textos no React Native, qual premissa é VERDADEIRA?",
     opcoes: [
-      { label: "A", valor: "Pode-se escrever texto puro dentro de uma <View>." },
-      { label: "B", valor: "Todo texto deve estar obrigatoriamente dentro de um componente <Text>." },
-      { label: "C", valor: "React Native suporta tags de parágrafo <p> nativamente." },
-      { label: "D", valor: "O texto herda estilos de fontes definidos na <View> pai." },
-      { label: "E", valor: "Não é possível estilizar textos no React Native." }
+      { label: "A", valor: "É permitido inserir texto diretamente em componentes de layout como <View>." },
+      { label: "B", valor: "Todo conteúdo textual deve ser obrigatoriamente encapsulado pelo componente <Text>." },
+      { label: "C", valor: "O React Native herda estilos de fonte do componente pai automaticamente." },
+      { label: "D", valor: "A tag <span> é utilizada para aplicar estilos parciais em um bloco de texto." },
+      { label: "E", valor: "Não há suporte para estilização de fontes (weight, size) via JavaScript." }
     ],
     correta: "B",
-    explicacao: "Ao contrário da Web, o RN lança erro se houver texto fora do componente <Text>, e não há herança de estilos de texto no nível do layout."
+    explicacao: "Ao contrário da Web, o React Native exige que strings residam em componentes <Text> para que possam ser processadas corretamente pelas engines nativas."
   },
   {
     id: "m4q4",
-    pergunta: "O que é o 'Metro' no contexto do desenvolvimento React Native?",
+    pergunta: "Na 'New Architecture' do React Native, qual o papel da JSI (JavaScript Interface)?",
     opcoes: [
-      { label: "A", valor: "O sistema de transporte de dados via API." },
-      { label: "B", valor: "O Bundler (empacotador) de JavaScript para ambientes de desenvolvimento." },
-      { label: "C", valor: "Um framework de animações ultrarrápidas." },
-      { label: "D", valor: "A ferramenta de publicação automática." },
-      { label: "E", valor: "O motor de banco de dados offline." }
+      { label: "A", valor: "Atuar como um Bundler para compactar arquivos JavaScript." },
+      { label: "B", valor: "Permitir a comunicação síncrona e direta entre o JavaScript e o código nativo (Host Objects em C++), eliminando a necessidade da Bridge." },
+      { label: "C", valor: "Gerenciar a navegação entre telas através de uma pilha de memória." },
+      { label: "D", valor: "Criptografar as requisições HTTP feitas pela biblioteca Axios." },
+      { label: "E", valor: "Prover uma interface gráfica para depuração de erros em tempo real." }
     ],
     correta: "B",
-    explicacao: "Metro é o bundler oficial que transforma o código JS em bundles consumíveis pelo app em tempo de execução."
+    explicacao: "A JSI (JavaScript Interface) permite que o motor JS mantenha referências diretas a objetos nativos (Host Objects) em C++. Isso possibilita a invocação de métodos nativos de forma síncrona, eliminando o overhead de serialização JSON característico da Bridge legada."
   },
   {
     id: "m4q5",
-    pergunta: "O componente 'FlatList' é preferido em relação ao 'ScrollView' para listas longas porque:",
+    pergunta: "Por que o componente 'FlatList' é tecnicamente superior ao 'ScrollView' para a exibição de grandes volumes de dados?",
     opcoes: [
-      { label: "A", valor: "Ele é mais bonito visualmente." },
-      { label: "B", valor: "Ele implementa 'Virtualização', renderizando apenas o que está visível na tela e poupando memória." },
-      { label: "C", valor: "Ele permite scroll infinito de forma nativa sem JS." },
-      { label: "D", valor: "Ele não suporta imagens, sendo mais rápido por isso." },
-      { label: "E", valor: "Ele funciona apenas com dados vindos do Firebase." }
+      { label: "A", valor: "Pois oferece maior variedade de propriedades CSS para estilização." },
+      { label: "B", valor: "Pelo uso da técnica de 'Virtualização', que mantém na memória apenas os elementos visíveis na tela, otimizando o consumo de recursos." },
+      { label: "C", valor: "Devido ao suporte nativo a múltiplos bancos de dados relacionais." },
+      { label: "D", valor: "Por permitir o scroll horizontal e vertical simultaneamente sem perda de FPS." },
+      { label: "E", valor: "Porque é o único componente que suporta carregamento de imagens remotas." }
     ],
     correta: "B",
-    explicacao: "A FlatList gerencia a memória de forma inteligente, destruindo e recriando itens que entram e saem da tela."
+    explicacao: "A FlatList utiliza a técnica de 'Windowing' ou 'Virtualização', onde apenas os elementos visíveis (e um pequeno buffer) são mantidos na memória. Itens que saem do campo de visão são destruídos ou reciclados, evitando o estouro de memória (OOM) em listas massivas."
   }
 ];
 
@@ -280,68 +280,68 @@ export const quizM4: QuizQuestion[] = [
 export const quizM5: QuizQuestion[] = [
   {
     id: "m5q1",
-    pergunta: "Qual biblioteca é considerada o padrão de ouro para navegação em React Native?",
+    pergunta: "Dentro do ecossistema Redux Toolkit (RTK), qual a função primordial do 'RTK Query' no gerenciamento de estado assíncrono?",
     opcoes: [
-      { label: "A", valor: "React Router Dom" },
-      { label: "B", valor: "Native Navigation" },
-      { label: "C", valor: "React Navigation" },
-      { label: "D", valor: "GoRouter" },
-      { label: "E", valor: "RN Navigator 2.0" }
+      { label: "A", valor: "Substituir integralmente a Context API para estados globais síncronos." },
+      { label: "B", valor: "Automatizar o ciclo de vida de requisições (Loading, Success, Error) e gerenciar o cache de dados do servidor via 'normalized caching'." },
+      { label: "C", valor: "Criptografar os dados armazenados no AsyncStorage automaticamente." },
+      { label: "D", valor: "Gerar interfaces gráficas baseadas em esquemas JSON de API." },
+      { label: "E", valor: "Reduzir o tamanho do bundle final através de Tree Shaking agressivo." }
     ],
-    correta: "C",
-    explicacao: "React Navigation é a mais documentada e flexível para Pilhas, Abas e Menus no ecossistema RN."
+    correta: "B",
+    explicacao: "O RTK Query abstrai a lógica de fetching, fornece hooks auto-gerados e implementa estratégias de cache e invalidação (tags), reduzindo drasticamente o 'boilerplate' de Thunks manuais."
   },
   {
     id: "m5q2",
-    pergunta: "O hook 'useEffect' no React Native é frequentemente usado para:",
+    pergunta: "No contexto do ciclo de vida funcional do React Native, a finalidade precípua do hook 'useEffect' é:",
     opcoes: [
-      { label: "A", valor: "Mudar o estilo CSS dinamicamente." },
-      { label: "B", valor: "Executar efeitos colaterais como chamadas de API ou subscrições após a montagem do componente." },
-      { label: "C", valor: "Criar variáveis de estado globais." },
-      { label: "D", valor: "Definir a cor de fundo da Status Bar." },
-      { label: "E", valor: "Navegar entre telas via parâmetros." }
+      { label: "A", valor: "Realizar a mutação direta de estilos CSS globais." },
+      { label: "B", valor: "Orquestrar a execução de efeitos colaterais, como requisições assíncronas e subscrições, após a renderização." },
+      { label: "C", valor: "Declarar variáveis de estado globais acessíveis via Context." },
+      { label: "D", valor: "Configurar propriedades estáticas da Status Bar nativa." },
+      { label: "E", valor: "Gerenciar a pilha de navegação de forma imperativa." }
     ],
     correta: "B",
-    explicacao: "useEffect é o centro da lógica reativa para disparar requisições ou listeners assim que o componente 'nasce' ou muda de parâmetros."
+    explicacao: "O hook useEffect permite que o desenvolvedor execute operações imperativas em resposta a mudanças de estado ou durante as fases de montagem e desmontagem do componente."
   },
   {
     id: "m5q3",
-    pergunta: "Sobre o Context API do React, no desenvolvimento mobile ele serve para:",
+    pergunta: "A implementação de 'Context API' no ecossistema React Native visa, primordialmente:",
     opcoes: [
-      { label: "A", valor: "Aumentar o brilho da tela do celular." },
-      { label: "B", valor: "Compartilhar estados entre componentes distantes na árvore sem o uso de 'prop drilling'." },
-      { label: "C", valor: "Apenas armazenar tokens de autenticação." },
-      { label: "D", valor: "Substituir o banco de dados SQLite." },
-      { label: "E", valor: "Gerar IDs únicos para cada componente." }
+      { label: "A", valor: "Ajustar parâmetros de hardware como luminosidade e contraste." },
+      { label: "B", valor: "Prover um mecanismo de injeção de dependências e compartilhamento de estado, mitigando o 'prop drilling'." },
+      { label: "C", valor: "Armazenar credenciais de autenticação em nível de kernel." },
+      { label: "D", valor: "Atuar como um banco de dados relacional local indexado." },
+      { label: "E", valor: "Garantir a unicidade de chaves de indexação em listas virtualizadas." }
     ],
     correta: "B",
-    explicacao: "Context permite que dados fluam da raiz para qualquer nível da árvore sem passar manualmente por todos os pais intermédios."
+    explicacao: "O Context API permite a propagação de dados através da árvore de componentes sem a necessidade de passar propriedades manualmente por todos os níveis hierárquicos."
   },
   {
     id: "m5q4",
-    pergunta: "Na navegação do tipo 'Stack' (Pilha), o que acontece quando chamamos 'navigation.push()'?",
+    pergunta: "A persistência de estado em aplicações Redux complexas é frequentemente delegada ao 'redux-persist'. Qual sua função técnica principal?",
     opcoes: [
-      { label: "A", valor: "A tela atual é encerrada e a nova aberta." },
-      { label: "B", valor: "Uma nova cópia da tela é empilhada sobre a anterior." },
-      { label: "C", valor: "O usuário volta para a tela raiz do app." },
-      { label: "D", valor: "O app é minimizado." },
-      { label: "E", valor: "O cache de dados é limpo." }
+      { label: "A", valor: "Aumentar a velocidade de renderização de componentes críticos." },
+      { label: "B", valor: "Serializar o estado do store e salvá-lo em storage local (como AsyncStorage), permitindo o 'rehydration' do estado após o reinício do app." },
+      { label: "C", valor: "Executar testes unitários automatizados em tempo de runtime." },
+      { label: "D", valor: "Gerenciar a autorização de rotas em nível de middleware." },
+      { label: "E", valor: "Otimizar imagens em cache para reduzir o consumo de banda." }
     ],
     correta: "B",
-    explicacao: "Diferente de 'navigate', o 'push' sempre adiciona uma nova instância no topo da pilha, mesmo se a tela já existir abaixo."
+    explicacao: "O redux-persist garante que o estado da aplicação sobreviva ao fechamento do processo, utilizando 'persistReducers' e 'persistStore' para sincronizar o estado em memória com o armazenamento persistente."
   },
   {
     id: "m5q5",
-    pergunta: "O 'AsyncStorage' do React Native é ideal para armazenar quais tipos de dados?",
+    pergunta: "Considerando as bibliotecas de navegação, o 'React Navigation' utiliza um modelo de navegação declarativo. Qual a vantagem desta abordagem?",
     opcoes: [
-      { label: "A", valor: "Vídeos em alta resolução." },
-      { label: "B", valor: "Tabelas com milhões de linhas indexadas." },
-      { label: "C", valor: "Pequenas chaves de configuração, tokens JWT e estados de UI simples." },
-      { label: "D", valor: "Logs detalhados de rede de 1 ano." },
-      { label: "E", valor: "Arquivos temporários binários de câmera." }
+      { label: "A", valor: "Permite o acesso direto às APIs de kernel do iOS/Android." },
+      { label: "B", valor: "Facilita a composição de rotas como componentes React, integrando-se naturalmente ao fluxo de renderização e estado da aplicação." },
+      { label: "C", valor: "Reduz o consumo de CPU ao evitar a interpolação de frames de animação." },
+      { label: "D", valor: "Elimina a necessidade de configuração de 'Deeplinks' no projeto." },
+      { label: "E", valor: "Garante que o app funcione exclusivamente em modo offline." }
     ],
-    correta: "C",
-    explicacao: "AsyncStorage é um sistema simples de chave/valor não estruturado, equivalente ao LocalStorage da Web. Não deve ser usado para dados massivos."
+    correta: "B",
+    explicacao: "A navegação declarativa permite definir a estrutura de telas como parte da árvore de componentes, facilitando a passagem de parâmetros e a reação a mudanças de estado global."
   }
 ];
 
@@ -349,68 +349,68 @@ export const quizM5: QuizQuestion[] = [
 export const quizM6: QuizQuestion[] = [
   {
     id: "m6q1",
-    pergunta: "Qual é o mantra do desenvolvimento Flutter?",
+    pergunta: "Como o framework Flutter lida com a concorrência e o paralelismo, considerando que a linguagem Dart é single-threaded por natureza?",
     opcoes: [
-      { label: "A", valor: "Tudo é uma função." },
-      { label: "B", valor: "Tudo é um componente HTML." },
-      { label: "C", valor: "Tudo é um Widget." },
-      { label: "D", valor: "Tudo é uma API." },
-      { label: "E", valor: "Tudo é Reactivo." }
+      { label: "A", valor: "Através da criação de Threads POSIX compartilhando o mesmo espaço de memória." },
+      { label: "B", valor: "Utilizando 'Isolates', que possuem sua própria heap de memória e se comunicam exclusivamente via troca de mensagens (Ports), evitando race conditions." },
+      { label: "C", valor: "Delegando todas as tarefas pesadas para o Web Worker do navegador subjacente." },
+      { label: "D", valor: "Através de um modelo de 'Green Threads' gerenciado pelo kernel do Android." },
+      { label: "E", valor: "O Flutter não suporta paralelismo, executando todas as tarefas de forma sequencial na main thread." }
     ],
-    correta: "C",
-    explicacao: "No Flutter, da página inteira ao ícone, cada elemento de UI e lógica estrutural é um Widget."
+    correta: "B",
+    explicacao: "Isolates são instâncias separadas de execução. Diferente de threads tradicionais, eles não compartilham memória, o que elimina a necessidade de locks e previne corrupção de dados por acesso concorrente."
   },
   {
     id: "m6q2",
-    pergunta: "O termo 'Hot Reload' no Flutter significa:",
+    pergunta: "O mecanismo de 'Hot Reload' no Flutter atua da seguinte forma:",
     opcoes: [
-      { label: "A", valor: "Reiniciar o hardware do celular em caso de erro." },
-      { label: "B", valor: "Atualizar o código no dispositivo mantendo o estado atual do app, quase instantaneamente." },
-      { label: "C", valor: "Apagar o cache das fontes e recarregar imagens." },
-      { label: "D", valor: "Enviar a versão para a loja de apps em background." },
-      { label: "E", valor: "O aquecimento do processador durante compilação pesada." }
+      { label: "A", valor: "Reinicia o ambiente de execução do sistema operacional para depuração." },
+      { label: "B", valor: "Injeta as alterações de código na Dart VM, atualizando a UI e preservando o estado mutável da aplicação." },
+      { label: "C", valor: "Realiza a limpeza de buffers de memória e recarregamento de assets externos." },
+      { label: "D", valor: "Efetua o deploy automático de pacotes para servidores de teste em nuvem." },
+      { label: "E", valor: "Otimiza a temperatura do processador via escalonamento de threads de compilação." }
     ],
     correta: "B",
-    explicacao: "Hot Reload injeta mudanças de código na Dart VM em execução, permitindo ver resultados sem perder onde o usuário estava no app."
+    explicacao: "O Hot Reload permite ciclos de desenvolvimento rápidos ao aplicar patches de código sem a necessidade de reconstruir o estado interno do aplicativo."
   },
   {
     id: "m6q3",
-    pergunta: "Dart utiliza compilação JIT e AOT. Qual das duas é usada para versões de RELEASE (Produção)?",
+    pergunta: "Considerando as estratégias de compilação da linguagem Dart, a modalidade 'Ahead-of-Time' (AOT) é empregada em versões de produção para:",
     opcoes: [
-      { label: "A", valor: "JIT (Just-in-Time)" },
-      { label: "B", valor: "AOT (Ahead-of-Time)" },
-      { label: "C", valor: "Ambas simultaneamente" },
-      { label: "D", valor: "Nenhuma, Dart é interpretado" },
-      { label: "E", valor: "Compilação binária via server." }
+      { label: "A", valor: "Permitir a execução de scripts dinâmicos durante o runtime." },
+      { label: "B", valor: "Compilar o código-fonte em binários de máquina nativos, otimizando o tempo de inicialização e performance." },
+      { label: "C", valor: "Atuar como um interpretador híbrido entre JavaScript e código nativo." },
+      { label: "D", valor: "Ignorar a verificação de tipos estáticos para acelerar o deploy." },
+      { label: "E", valor: "Distribuir a carga de processamento via instâncias de micro-VMs." }
     ],
     correta: "B",
-    explicacao: "AOT compila o código Dart para binário ARM/x86 antes da execução, garantindo performance máxima para o usuário final."
+    explicacao: "Diferente do modo de desenvolvimento (JIT), o modo Release utiliza AOT para gerar código binário altamente otimizado para a arquitetura do processador (ARM/x86)."
   },
   {
     id: "m6q4",
-    pergunta: "A engine de renderização padrão do Flutter (até a versão 3.10) que desenha a UI tela é:",
+    pergunta: "No pipeline de renderização do Flutter, qual é a hierarquia correta de árvores que geram o frame final na tela?",
     opcoes: [
-      { label: "A", valor: "WebKit" },
-      { label: "B", valor: "Gecko" },
-      { label: "C", valor: "Skia" },
-      { label: "D", valor: "Blink" },
-      { label: "E", valor: "CanvasEngine X" }
+      { label: "A", valor: "Widget Tree -> DOM Tree -> Native Tree" },
+      { label: "B", valor: "Widget Tree (Configuração) -> Element Tree (Ciclo de Vida) -> Render Tree (Layout e Pintura)" },
+      { label: "C", valor: "State Tree -> View Tree -> GPU Tree" },
+      { label: "D", valor: "Object Tree -> Element Tree -> Canvas Tree" },
+      { label: "E", valor: "Virtual Tree -> Real Tree -> Buffer Tree" }
     ],
-    correta: "C",
-    explicacao: "Skia é a biblioteca 2D usada pelo Chrome e Android, e é o coração gráfico do Flutter. (Nota: Impeller está substituindo nas versões novas)."
+    correta: "B",
+    explicacao: "Widgets são imutáveis e definem a configuração; Elements gerenciam a hierarquia e o estado; RenderObjects realizam o cálculo de tamanho, posição e a rasterização final."
   },
   {
     id: "m6q5",
-    pergunta: "Em Flutter, o Widget que provê uma estrutura visual básica (como AppBar, Floating Action Button e Drawer) é o:",
+    pergunta: "A transição da engine Skia para a 'Impeller' no Flutter visa resolver primariamente qual problema de performance?",
     opcoes: [
-      { label: "A", valor: "ViewContainer" },
-      { label: "B", valor: "MainFrame" },
-      { label: "C", valor: "Scaffold" },
-      { label: "D", valor: "Skeleton" },
-      { label: "E", valor: "BodyBuilder" }
+      { label: "A", valor: "O alto consumo de dados em conexões 3G." },
+      { label: "B", valor: "O 'Shader Compilation Junk', através do pré-aquecimento de shaders e uso de pipelines de renderização mais modernos." },
+      { label: "C", valor: "A incompatibilidade com dispositivos de arquitetura 32 bits." },
+      { label: "D", valor: "A falta de suporte a animações em 120Hz." },
+      { label: "E", valor: "O tempo excessivo de instalação do APK/IPA." }
     ],
-    correta: "C",
-    explicacao: "O Scaffold implementa os padrões visuais baiscos do Material Design em uma tela."
+    correta: "B",
+    explicacao: "Impeller reduz engasgos (jank) na primeira execução de animações ao evitar a compilação de shaders em tempo real durante a execução do frame (runtime compilation)."
   }
 ];
 
@@ -418,68 +418,68 @@ export const quizM6: QuizQuestion[] = [
 export const quizM7: QuizQuestion[] = [
   {
     id: "m7q1",
-    pergunta: "Qual a principal diferença entre um StatelessWidget e um StatefulWidget?",
+    pergunta: "No Flutter, qual é o papel técnico do 'InheritedWidget' no gerenciamento de estado?",
     opcoes: [
-      { label: "A", valor: "StatelessWidget gasta mais bateria." },
-      { label: "B", valor: "StatefulWidget possui um objeto de estado interno que permite reconstruir a UI quando os dados mudam." },
-      { label: "C", valor: "StatelessWidget só funciona em Android." },
-      { label: "D", valor: "StatefulWidget não suporta animações." },
-      { label: "E", valor: "StatelessWidget é feito em Java." }
+      { label: "A", valor: "Ele atua como um storage de banco de dados NoSQL persistente." },
+      { label: "B", valor: "Provê uma forma eficiente de propagar informações pela árvore de widgets sem passá-las via construtor (O(1) lookup)." },
+      { label: "C", valor: "Gerencia a destruição de isolates em segundo plano." },
+      { label: "D", valor: "Converte widgets em componentes nativos do Android Jetpack Compose." },
+      { label: "E", valor: "É um wrapper exclusivo para o gerenciamento de permissões de hardware." }
     ],
     correta: "B",
-    explicacao: "StatefulWidgets gerenciam estados mutáveis ao longo do tempo de vida do widget."
+    explicacao: "InheritedWidget é a base de soluções como Provider e Riverpod. Ele permite que widgets descendentes acessem dados de um ancestral comum de forma otimizada."
   },
   {
     id: "m7q2",
-    pergunta: "O padrão BLoC (Business Logic Component) no Flutter baseia-se em:",
+    pergunta: "Considerando a arquitetura Flutter, qual a principal distinção operacional entre o padrão BLoC e o Cubit?",
     opcoes: [
-      { label: "A", valor: "Variáveis globais e condicionais." },
-      { label: "B", valor: "Promessas e Callbacks." },
-      { label: "C", valor: "Streams (Sincronia baseada em fluxo de dados e eventos)." },
-      { label: "D", valor: "Reduções de matrizes bidimensionais." },
-      { label: "E", valor: "Apenas manipulação de JSON." }
+      { label: "A", valor: "O Cubit é baseado em Streams, enquanto o BLoC utiliza Future e Async/Await exclusivamente." },
+      { label: "B", valor: "O BLoC exige a definição explícita de Eventos para transição de estado, enquanto o Cubit utiliza métodos diretos." },
+      { label: "C", valor: "O Cubit gerencia apenas estados efêmeros, enquanto o BLoC é restrito a estados globais da aplicação." },
+      { label: "D", valor: "O BLoC depende do BuildContext para sua inicialização, ao passo que o Cubit é independente da árvore de widgets." },
+      { label: "E", valor: "O BLoC é uma implementação do padrão Singleton, e o Cubit segue o padrão Factory." }
     ],
-    correta: "C",
-    explicacao: "BLoC separa lógica de UI usando Sinks (entrada) e Streams (saída) para fluxo de dados assíncrono."
+    correta: "B",
+    explicacao: "O BLoC (Business Logic Component) é reativo e baseado em eventos (Sink de entrada), enquanto o Cubit simplifica o fluxo utilizando métodos para emitir novos estados."
   },
   {
     id: "m7q3",
-    pergunta: "No contexto de gerenciamento de estado, o pacote 'Provider' é conhecido por sua:",
+    pergunta: "O pacote Riverpod é frequentemente preferido em relação ao Provider original por qual razão técnica fundamental?",
     opcoes: [
-      { label: "A", valor: "Complexidade extrema para grandes apps." },
-      { label: "B", valor: "Dependência de códigos em C++." },
-      { label: "C", valor: "Simplicidade e uso eficiente do 'InheritedWidget' do Flutter." },
-      { label: "D", valor: "Incompatibilidade com o sistema iOS." },
-      { label: "E", valor: "Incapacidade de rodar no modo Hot Reload." }
+      { label: "A", valor: "O Riverpod é escrito em C++, garantindo maior performance em dispositivos Android." },
+      { label: "B", valor: "Ele elimina a dependência do BuildContext para acessar providers, resolve problemas de 'ProviderNotFoundException' em tempo de compilação e suporta múltiplos providers do mesmo tipo." },
+      { label: "C", valor: "O Riverpod é compatível apenas com aplicações desktop Linux." },
+      { label: "D", valor: "Ele força o uso do padrão MVC puro em toda a aplicação." },
+      { label: "E", valor: "O Riverpod reduz o consumo de bateria ao desativar o GPS do dispositivo." }
     ],
-    correta: "C",
-    explicacao: "Provider é o 'wrapper' (embrulho) recomendado pelo Google para gerenciamento de estado simples e eficiente."
+    correta: "B",
+    explicacao: "Riverpod é uma reescrita do Provider que resolve limitações fundamentais do InheritedWidget, como a dependência do BuildContext e a dificuldade de testar providers isoladamente."
   },
   {
     id: "m7q4",
-    pergunta: "Para monitorar mudanças em uma variável reativa de forma performática em bibliotecas como GetX ou MobX, usamos:",
+    pergunta: "A função do método 'notifyListeners()' em uma classe que estende 'ChangeNotifier' é:",
     opcoes: [
-      { label: "A", valor: "Loops de repetição infinitos." },
-      { label: "B", valor: "Obx ou Observables." },
-      { label: "C", valor: "Requisições HTTP a cada 1 segundo." },
-      { label: "D", valor: "Mudanças manuais no arquivo XML." },
-      { label: "E", valor: "Persistência em disco imediata." }
+      { label: "A", valor: "Enviar uma notificação push para o Firebase." },
+      { label: "B", valor: "Sinalizar a todos os widgets assinantes que o estado interno mudou, disparando o rebuild dos componentes dependentes." },
+      { label: "C", valor: "Limpar o cache de imagens da aplicação." },
+      { label: "D", valor: "Reiniciar a Main Isolate do Dart." },
+      { label: "E", valor: "Validar campos de formulários em tempo real." }
     ],
     correta: "B",
-    explicacao: "Observables automatizam a atualização da UI apenas quando o valor observado realmente sofre alteração."
+    explicacao: "O padrão Observer é a base do ChangeNotifier. Quando os dados mudam, o notifyListeners() avisa aos ouvintes (geralmente via ListenableBuilder ou Consumer) que a UI precisa ser atualizada."
   },
   {
     id: "m7q5",
-    pergunta: "Em uma prova do TCU ou Petrobras, qual termo descreve o fluxo de dados em um app Flutter robusto?",
+    pergunta: "No gerenciamento de estado reativo com 'Signals' (recentemente popularizado no ecossistema Dart), qual a principal vantagem?",
     opcoes: [
-      { label: "A", valor: "Fluxo Circular (Circular Flow)." },
-      { label: "B", valor: "Fluxo Unidirecional de Dados (Unidirectional Data Flow)." },
-      { label: "C", valor: "Fluxo Aleatório (Random Access)." },
-      { label: "D", valor: "Fluxo Bidirecional Dinâmico." },
-      { label: "E", valor: "Fluxo em Árvore Invertida." }
+      { label: "A", valor: "Substituir o compilador AOT por um JIT em produção." },
+      { label: "B", valor: "Granularidade fina de atualizações, onde apenas o widget exato que consome o sinal é reconstruído, sem afetar ancestrais ou vizinhos." },
+      { label: "C", valor: "Permitir o uso de variáveis globais sem qualquer tipo de proteção." },
+      { label: "D", valor: "Garantir que o app nunca ultrapasse 10MB de tamanho." },
+      { label: "E", valor: "Eliminar a necessidade de escrever qualquer código em Dart." }
     ],
     correta: "B",
-    explicacao: "A maioria dos padrões modernos (BLoC, Provider) prega o fluxo unidirecional para facilitar testes e manutenção."
+    explicacao: "Signals oferecem um modelo de reatividade 'push-pull' que otimiza as reconstruções de UI, garantindo que apenas os nós folha interessados no dado sejam atualizados."
   }
 ];
 
@@ -487,68 +487,68 @@ export const quizM7: QuizQuestion[] = [
 export const quizM8: QuizQuestion[] = [
   {
     id: "m8q1",
-    pergunta: "Tanto Android quanto iOS exigem 'Runtime Permissions' (Permissões em tempo de execução). Isso significa que:",
+    pergunta: "No Android e iOS, o sistema de 'Runtime Permissions' exige que o desenvolvedor implemente uma 'Rationale' (Justificativa) quando:",
     opcoes: [
-      { label: "A", valor: "O app só pede permissão se o Wi-Fi estiver ligado." },
-      { label: "B", valor: "A permissão é pedida apenas na instalação do app na loja." },
-      { label: "C", valor: "O usuário deve aceitar o uso da câmera/GPS no EXATO MOMENTO em que o recurso é solicitado no app." },
-      { label: "D", valor: "O app nunca pede permissão, o sistema operacional gerencia tudo sozinho." },
-      { label: "E", valor: "As permissões só valem para celulares com biometria." }
+      { label: "A", valor: "O usuário desinstala o aplicativo da loja." },
+      { label: "B", valor: "O sistema operacional entra em modo de economia de bateria (Doze Mode)." },
+      { label: "C", valor: "O usuário nega a permissão inicialmente, mas o recurso é essencial para a continuidade da funcionalidade." },
+      { label: "D", valor: "O app é distribuído fora das lojas oficiais (Sideloading)." },
+      { label: "E", valor: "O dispositivo não possui hardware de biometria disponível." }
     ],
     correta: "C",
-    explicacao: "Permissões sensíveis não são mais 'no pacote' da instalação; devem ser solicitadas contextualmente para segurança do usuário."
+    explicacao: "A justificativa contextualmente relevante é uma boa prática de UX e exigência técnica para explicar por que um recurso negado anteriormente ainda é necessário."
   },
   {
     id: "m8q2",
-    pergunta: "O 'Push Notification' (Notificações fora do app) é enviado primariamente através de quais serviços oficiais para Android e iOS?",
+    pergunta: "Sobre a autenticação biométrica (FaceID/TouchID) em aplicações mobile, qual afirmação é tecnicamente correta?",
     opcoes: [
-      { label: "A", valor: "Direct SMS e iMessage." },
-      { label: "B", valor: "FCM (Firebase Cloud Messaging) e APNs (Apple Push Notification service)." },
-      { label: "C", valor: "Google Cloud Drive e iCloud Drive." },
-      { label: "D", valor: "WhatsApp Business API." },
-      { label: "E", valor: "TCP/IP Sockets manuais." }
+      { label: "A", valor: "O aplicativo armazena uma cópia da imagem da digital no banco de dados SQLite local." },
+      { label: "B", valor: "A verificação ocorre dentro de um ambiente seguro isolado (TEE ou Secure Enclave), e o app recebe apenas um token de validação." },
+      { label: "C", valor: "A biometria só funciona se o aplicativo estiver conectado aos servidores da Apple ou Google em tempo real." },
+      { label: "D", valor: "Qualquer aplicativo pode acessar o padrão vetorial da digital do usuário para fins de marketing." },
+      { label: "E", valor: "O uso de biometria dispensa o uso de HTTPS em requisições de rede." }
     ],
     correta: "B",
-    explicacao: "FCM e APNs são as 'pontes' obrigatórias para enviar mensagens remotas para as plataformas."
+    explicacao: "Por questões de privacidade e segurança, o dado biométrico bruto nunca sai do hardware seguro; o app interage apenas com o resultado da verificação via APIs de sistema."
   },
   {
     id: "m8q3",
-    pergunta: "Em React Native, como é chamado o mecanismo de comunicação com módulos nativos escritos em Java/Swift?",
+    pergunta: "O que caracteriza o mecanismo de 'Platform Channels' (ou MethodChannels) no Flutter?",
     opcoes: [
-      { label: "A", valor: "Hyperlink" },
-      { label: "B", valor: "Native Bridge (ou Turbo Modules)" },
-      { label: "C", valor: "Web Tunnel" },
-      { label: "D", valor: "Direct Injunction" },
-      { label: "E", valor: "Native Socket" }
+      { label: "A", valor: "Um sistema de renderização que ignora o motor Skia para usar HTML5." },
+      { label: "B", valor: "Um canal de comunicação bidirecional e assíncrono que permite ao Dart invocar APIs nativas de host (Java/Kotlin/Swift)." },
+      { label: "C", valor: "Um protocolo de rede para sincronização de arquivos pesados via FTP." },
+      { label: "D", valor: "Uma ferramenta de depuração para medir o consumo de CPU em tempo real." },
+      { label: "E", valor: "Uma biblioteca exclusiva para integração com redes sociais de terceiros." }
     ],
     correta: "B",
-    explicacao: "A Bridge é a camada de comunicação assíncrona que serializa dados JS para o lado nativo."
+    explicacao: "MethodChannels utilizam a serialização de mensagens para permitir que o código multiplataforma acesse recursos específicos do hardware nativo."
   },
   {
     id: "m8q4",
-    pergunta: "Qual dessas tecnologias é tipicamente usada para biometria (Login com Digital/Face) em apps nativos e multiplataforma?",
+    pergunta: "Ao implementar processamento em segundo plano (Background Tasks) no iOS, qual o comportamento padrão do sistema?",
     opcoes: [
-      { label: "A", valor: "Local Authentication API" },
-      { label: "B", valor: "Biometric Storage DB" },
-      { label: "C", valor: "Fingerprint Scanner V4" },
-      { label: "D", valor: "Keymaster Lib" },
-      { label: "E", valor: "Auth0 Protocol Only" }
+      { label: "A", valor: "O app tem permissão ilimitada para rodar qualquer processo enquanto o celular estiver ligado." },
+      { label: "B", valor: "O sistema gerencia janelas de execução baseadas no padrão de uso do usuário, podendo suspender o app para economizar energia." },
+      { label: "C", valor: "Tarefas de background são proibidas, a menos que o app seja um player de música." },
+      { label: "D", valor: "O background do iOS funciona exatamente como o do Android, sem restrições de tempo." },
+      { label: "E", valor: "O app precisa de root para rodar em segundo plano no iOS." }
     ],
-    correta: "A",
-    explicacao: "Bibliotecas de 'Local Authentication' abstraem o FaceID (iOS) e BiometricPrompt (Android) para o desenvolvedor."
+    correta: "B",
+    explicacao: "O iOS prioriza a autonomia da bateria e a performance do sistema, alocando recursos para background de forma oportunista e restrita."
   },
   {
     id: "m8q5",
-    pergunta: "O 'Deep Linking' permite que um app móvel seja aberto através de:",
+    pergunta: "Para o armazenamento de segredos (Secrets) e chaves de API em um dispositivo móvel, qual a solução recomendada para garantir a segurança contra extração de dados?",
     opcoes: [
-      { label: "A", valor: "Um comando de voz oculto." },
-      { label: "B", valor: "Uma URL específica no navegador ou outro aplicativo." },
-      { label: "C", valor: "Um movimento brusco do giroscópio." },
-      { label: "D", valor: "Uma atualização silenciosa da loja." },
-      { label: "E", valor: "Um sensor de proximidade infravermelho." }
+      { label: "A", valor: "SharedPreferences com modo privado ativado." },
+      { label: "B", valor: "Arquivos de texto (.txt) ocultos na pasta de cache." },
+      { label: "C", valor: "Uso do Android Keystore System e do iOS Keychain Services." },
+      { label: "D", valor: "Criptografia Base64 em variáveis globais de código." },
+      { label: "E", valor: "Armazenamento direto no banco de dados Realm sem senha." }
     ],
-    correta: "B",
-    explicacao: "Deep links direcionam o usuário de um link web (ex: petrobras://vagas/123) diretamente para a tela correspondente dentro do app."
+    correta: "C",
+    explicacao: "Keystore e Keychain são abstrações para hardware de segurança que protegem chaves criptográficas mesmo que o sistema de arquivos seja acessado ilegalmente."
   }
 ];
 
@@ -625,67 +625,67 @@ export const quizM9: QuizQuestion[] = [
 export const quizM10: QuizQuestion[] = [
   {
     id: "m10q1",
-    pergunta: "O arquivo .AAB (Android App Bundle) é superior ao .APK porque:",
+    pergunta: "Qual é o principal problema resolvido pela ferramenta 'Fastlane Match' no ciclo de vida de um app iOS?",
     opcoes: [
-      { label: "A", valor: "Ele é criptografado pelo FBI." },
-      { label: "B", valor: "Ele permite que a Play Store gere APKs otimizados para a arquitetura de cada dispositivo, reduzindo o download." },
-      { label: "C", valor: "Ele não exige assinatura digital." },
-      { label: "D", valor: "Ele roda em iPhones via emulador." },
-      { label: "E", valor: "Ele transforma o app em um site automaticamente." }
+      { label: "A", valor: "Otimização automática de imagens PNG." },
+      { label: "B", valor: "A gestão caótica de Certificados e Provisioning Profiles entre múltiplos desenvolvedores, centralizando-os de forma criptografada em um repositório Git." },
+      { label: "C", valor: "A tradução automática da interface para 50 idiomas." },
+      { label: "D", valor: "O monitoramento de bateria em dispositivos antigos." },
+      { label: "E", valor: "A substituição total do Xcode pela linha de comando." }
     ],
     correta: "B",
-    explicacao: "O .AAB é o formato de publicação atual que permite que a loja envie apenas as bibliotecas e recursos necessários para o celular do usuário."
+    explicacao: "O Match implementa a filosofia 'Codesigning as Code', eliminando o erro humano e conflitos de certificados no time."
   },
   {
     id: "m10q2",
-    pergunta: "Para publicar na Apple App Store, é OBRIGATÓRIO o uso de:",
+    pergunta: "O conceito de 'App Thinning' (Slicing + Bitcode) tem como objetivo primário:",
     opcoes: [
-      { label: "A", valor: "Um PC com Windows 11." },
-      { label: "B", valor: "Um computador Mac (ou serviço de cloud macOS) para rodar o Xcode e assinar o app." },
-      { label: "C", valor: "Apenas o VS Code." },
-      { label: "D", valor: "Uma conta de desenvolvedor gratuita vitalícia." },
-      { label: "E", valor: "Unidade de processamento gráfico NVIDIA local." }
+      { label: "A", valor: "Tornar o ícone do aplicativo mais fino e moderno." },
+      { label: "B", valor: "Remover funcionalidades não utilizadas pelo usuário comum." },
+      { label: "C", valor: "Entregar um binário otimizado onde o usuário baixa apenas os assets e bibliotecas compatíveis com a arquitetura específica do seu dispositivo." },
+      { label: "D", valor: "Compactar o banco de dados SQL local em 90%." },
+      { label: "E", valor: "Impedir que o app seja instalado em tablets." }
     ],
-    correta: "B",
-    explicacao: "Apple exige hardware/software proprietário (Mac/Xcode) para build e assinatura final de apps iOS."
+    correta: "C",
+    explicacao: "Com o Slicing, a loja identifica o modelo do iPhone/Android e envia apenas o que é estritamente necessário (ex: imagens @3x apenas para telas Retina)."
   },
   {
     id: "m10q3",
-    pergunta: "O 'TestFlight' é a ferramenta oficial da Apple para:",
+    pergunta: "Segundo a Guideline 4.0 da Apple, qual é um motivo comum para a REJEIÇÃO de um aplicativo na App Store?",
     opcoes: [
-      { label: "A", valor: "Pagar faturas de anúncios." },
-      { label: "B", valor: "Distribuição de versões beta/teste para usuários internos e externos." },
-      { label: "C", valor: "Testar a velocidade de download de rede." },
-      { label: "D", valor: "Comprar e vender iPhones usados." },
-      { label: "E", valor: "Simular quedas de sinal GPS." }
+      { label: "A", valor: "O aplicativo é gratuito demais." },
+      { label: "B", valor: "O aplicativo é apenas uma 'web view' de um site existente sem fornecer funcionalidade nativa adicional significativa." },
+      { label: "C", valor: "O aplicativo usa cores que a Apple não gosta." },
+      { label: "D", valor: "O desenvolvedor não possui um Mac de última geração." },
+      { label: "E", valor: "O aplicativo possui mais de 10 telas." }
     ],
     correta: "B",
-    explicacao: "TestFlight permite que beta testers instalem versões experimentais do app antes de chegarem ao grande público."
+    explicacao: "A Apple exige que aplicativos 'mereçam' estar na loja, oferecendo uma experiência superior a um simples marcador de navegador."
   },
   {
     id: "m10q4",
-    pergunta: "O que é o 'CI/CD' aplicado ao mobile (ex: Fastlane, GitHub Actions)?",
+    pergunta: "Qual é a principal vantagem de utilizar a estratégia de 'Staged Rollout' (Lançamento Gradual)?",
     opcoes: [
-      { label: "A", valor: "Criptografia Integral / Dados Codificados." },
-      { label: "B", valor: "Corte de Custos / Desempenho Contínuo." },
-      { label: "C", valor: "Integração Contínua e Entrega Contínua (Automação de builds, testes e deploys)." },
-      { label: "D", valor: "Controle de Interface / Design Coeso." },
-      { label: "E", valor: "Comunicação Interna / Diálogos Constantes." }
+      { label: "A", valor: "Enganar os concorrentes sobre a data real de lançamento." },
+      { label: "B", valor: "Economizar custos de servidor ao não liberar para todos de uma vez." },
+      { label: "C", valor: "Mitigar riscos operacionais, permitindo monitorar crashes e feedbacks em uma pequena porcentagem da base antes da liberação total." },
+      { label: "D", valor: "Aumentar o hype e o desejo pelo aplicativo." },
+      { label: "E", valor: "Garantir que usuários premium recebam a atualização primeiro." }
     ],
     correta: "C",
-    explicacao: "Pipelines de CI/CD automatizam o processo de gerar builds e subir para as lojas, evitando erro humano e lentidão."
+    explicacao: "Rollouts graduais permitem 'estancar a sangria' se um bug crítico for detectado logo nos primeiros 1% ou 5% de usuários."
   },
   {
     id: "m10q5",
-    pergunta: "A revisão de aplicativos na Apple versus Google Play costuma ser:",
+    pergunta: "O que a 'Google Play Integrity API' garante para a segurança de uma operação corporativa?",
     opcoes: [
-      { label: "A", valor: "Ambas são instantâneas." },
-      { label: "B", valor: "Historicamente mais criteriosa e lenta na Apple (pode levar dias) do que na Play Store." },
-      { label: "C", valor: "O Google não faz revisão, tudo é liberado na hora." },
-      { label: "D", valor: "A Apple aprova tudo em 5 minutos." },
-      { label: "E", valor: "Não há revisão para empresas federadas como a Petrobras." }
+      { label: "A", valor: "Que o usuário é um funcionário da Petrobras." },
+      { label: "B", valor: "Que o dispositivo não possui vírus conhecidos." },
+      { label: "C", valor: "Que o binário instalado é o original da loja e que o dispositivo passou nos testes de compatibilidade e não foi comprometido (root/jailbreak)." },
+      { label: "D", valor: "Que a senha do usuário é forte o suficiente." },
+      { label: "E", valor: "Que o GPS do dispositivo nunca será desligado." }
     ],
-    correta: "B",
-    explicacao: "A Apple possui uma inspeção rigorosa (humana e automatizada) que garante a qualidade e segurança da App Store."
+    correta: "C",
+    explicacao: "A Play Integrity substitui o antigo SafetyNet, sendo vital para garantir a integridade do ambiente onde o app corporativo roda."
   }
 ];

@@ -37,8 +37,45 @@ export default function AulaBancoDados({
   materiaNome, materiaCor, materiaId, prevTopico, nextTopico
 }: AulaProps) {
 
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_ti_banco_dados_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   // Definir os módulos da aula (Padrão Premium: 10 módulos)
   const MODULE_DEFS = [
@@ -129,7 +166,7 @@ export default function AulaBancoDados({
 
         <div className="space-y-12">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Modelo Entidade-Relacionamento (MER)"
             description="A gramática da modelagem de dados. Como a Cesgranrio cobra a leitura de diagramas."
             variant={mv[1]}
@@ -195,8 +232,8 @@ export default function AulaBancoDados({
                 materia: materiaNome,
                 images: []
             }}
-            maceteVisual={{
-                title: "O Pulo do Gato",
+            sinteseEstrategica={{
+                title: "Destaque Estratégico",
                 content: "Entidade = Substantivo. Atributo = Adjetivo. Relacionamento = Verbo."
             }}
              audio={{ audioUrl: "", titulo: "", artista: "" }}
@@ -217,7 +254,7 @@ export default function AulaBancoDados({
 
         <div className="space-y-12">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Chaves e Integridade"
             description="O esqueleto que mantém o banco de dados consistente."
             variant={mv[2]}
@@ -263,7 +300,7 @@ export default function AulaBancoDados({
 
         <div className="space-y-12">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="As Três Formas Normais Obrigatórias"
             description="O tema mais cobrado pela Cesgranrio em Banco de Dados."
             variant={mv[3]}
@@ -364,7 +401,7 @@ export default function AulaBancoDados({
 
         <div className="space-y-12">
            <ModuleSectionHeader
-               index={1}
+               index="INTRO"
                title="Consultas e Agregações"
                description="Extrair inteligência dos dados."
                variant={mv[5]}
@@ -510,7 +547,7 @@ export default function AulaBancoDados({
                 variant={mv[8]}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FlipCard frente="Chave-Valor" verso="Simples e ultra rápido. Ex: Redis, DynamoDB." />
                 <FlipCard frente="Documentos" verso="Armazena JSON/BSON. Flexível. Ex: MongoDB." />
                 <FlipCard frente="Colunas" verso="Escaneamento de grandes volumes. Ex: Cassandra." />
@@ -590,7 +627,7 @@ export default function AulaBancoDados({
 
         <div className="space-y-12">
             <ModuleSectionHeader
-                index={1}
+                index="INTRO"
                 title="Índices e Planos de Execução"
                 description="Onde a mágica (e os gargalos) acontecem."
                 variant={mv[10]}
@@ -630,7 +667,7 @@ export default function AulaBancoDados({
                 materia: materiaNome,
                 images: []
             }}
-            maceteVisual={{
+            sinteseEstrategica={{
                 title: "Dica de Ouro",
                 content: "Backup sem teste de Restore não é Backup. É esperança."
             }}

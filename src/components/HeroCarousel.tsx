@@ -93,7 +93,7 @@ export default function HeroCarousel() {
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
                     transition={{ duration: 6, ease: "linear" }}
-                    className="h-full bg-yellow-500/50"
+                    className="h-full bg-primary/50"
                 />
             </div>
         </div>

@@ -80,6 +80,13 @@ export default function AulaFalseCognates({
   const [activeTab, setActiveTab] = useState("modulo-1");
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
 
+  useEffect(() => {
+    if (onUpdateProgress) {
+      const pct = Math.round((completedModules.size / 10) * 100);
+      onUpdateProgress(pct);
+    }
+  }, [completedModules, onUpdateProgress]);
+
   const [quizM1, setQuizM1] = useState<typeof QUIZ_M1_CLASSICOS>([]);
   const [quizM2, setQuizM2] = useState<typeof QUIZ_M2_INDUSTRIAL>([]);
   const [quizM3, setQuizM3] = useState<typeof QUIZ_M3_MANAGEMENT>([]);
@@ -466,22 +473,10 @@ export default function AulaFalseCognates({
               />
             </div>
           </section>
-
-          
-
-
-
-<ModuleConsolidation
-            modulo={1}
-            corModulo={mv[1]}
-            onComplete={() => handleModuleComplete("modulo-1")}
-          />
-
-                    <QuizInterativo
+<QuizInterativo
             questoes={quizM1}
             numero={2}
             onComplete={() => handleModuleComplete("modulo-1")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 1, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -809,22 +804,10 @@ export default function AulaFalseCognates({
               />
             </div>
           </section>
-
-          
-
-
-
-<ModuleConsolidation
-            modulo={2}
-            corModulo={mv[2]}
-            onComplete={() => handleModuleComplete("modulo-2")}
-          />
-
-                    <QuizInterativo
+<QuizInterativo
             questoes={quizM2}
             numero={2}
             onComplete={() => handleModuleComplete("modulo-2")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 2, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -1152,22 +1135,10 @@ export default function AulaFalseCognates({
               />
             </div>
           </section>
-
-          
-
-
-
-<ModuleConsolidation
-            modulo={3}
-            corModulo={mv[3]}
-            onComplete={() => handleModuleComplete("modulo-3")}
-          />
-
-                    <QuizInterativo
+<QuizInterativo
             questoes={quizM3}
             numero={2}
             onComplete={() => handleModuleComplete("modulo-3")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 3, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -1189,22 +1160,10 @@ export default function AulaFalseCognates({
               <p className="text-lg mt-2">Quiz disponível abaixo para praticar</p>
             </div>
           </section>
-
-          
-
-
-
-<ModuleConsolidation
-            modulo={4}
-            corModulo={mv[4]}
-            onComplete={() => handleModuleComplete("modulo-4")}
-          />
-
-                    <QuizInterativo
+<QuizInterativo
             questoes={quizM4}
             numero={1}
             onComplete={() => handleModuleComplete("modulo-4")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 4, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -1225,22 +1184,10 @@ export default function AulaFalseCognates({
               <p className="text-lg mt-2">Quiz disponível abaixo para praticar</p>
             </div>
           </section>
-
-          
-
-
-
-<ModuleConsolidation
-            modulo={5}
-            corModulo={mv[5]}
-            onComplete={() => handleModuleComplete("modulo-5")}
-          />
-
-                    <QuizInterativo
+<QuizInterativo
             questoes={quizM5}
             numero={1}
             onComplete={() => handleModuleComplete("modulo-5")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 5, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -1261,22 +1208,10 @@ export default function AulaFalseCognates({
               <p className="text-lg mt-2">Quiz disponível abaixo para praticar</p>
             </div>
           </section>
-
-          
-
-
-
-<ModuleConsolidation
-            modulo={6}
-            corModulo={mv[6]}
-            onComplete={() => handleModuleComplete("modulo-6")}
-          />
-
-                    <QuizInterativo
+<QuizInterativo
             questoes={quizM6}
             numero={1}
             onComplete={() => handleModuleComplete("modulo-6")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 6, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -1297,22 +1232,10 @@ export default function AulaFalseCognates({
               <p className="text-lg mt-2">Quiz disponível abaixo para praticar</p>
             </div>
           </section>
-
-          
-
-
-
-<ModuleConsolidation
-            modulo={7}
-            corModulo={mv[7]}
-            onComplete={() => handleModuleComplete("modulo-7")}
-          />
-
-                    <QuizInterativo
+<QuizInterativo
             questoes={quizM7}
             numero={1}
             onComplete={() => handleModuleComplete("modulo-7")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 7, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -1333,22 +1256,10 @@ export default function AulaFalseCognates({
               <p className="text-lg mt-2">Quiz disponível abaixo para praticar</p>
             </div>
           </section>
-
-          
-
-
-
-<ModuleConsolidation
-            modulo={8}
-            corModulo={mv[8]}
-            onComplete={() => handleModuleComplete("modulo-8")}
-          />
-
-                    <QuizInterativo
+<QuizInterativo
             questoes={quizM8}
             numero={1}
             onComplete={() => handleModuleComplete("modulo-8")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 8, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -1369,22 +1280,10 @@ export default function AulaFalseCognates({
               <p className="text-lg mt-2">Quiz disponível abaixo para praticar</p>
             </div>
           </section>
-
-          
-
-
-
-<ModuleConsolidation
-            modulo={9}
-            corModulo={mv[9]}
-            onComplete={() => handleModuleComplete("modulo-9")}
-          />
-
-                    <QuizInterativo
+<QuizInterativo
             questoes={quizM9}
             numero={1}
             onComplete={() => handleModuleComplete("modulo-9")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 9, tipo: "quiz" })}
           />
         </div>
       </TabsContent>
@@ -1445,22 +1344,10 @@ export default function AulaFalseCognates({
               </p>
             </div>
           </section>
-
-          
-
-
-
-<ModuleConsolidation
-            modulo={10}
-            corModulo={mv[10]}
-            onComplete={() => handleModuleComplete("modulo-10")}
-          />
-
-                    <QuizInterativo
+<QuizInterativo
             questoes={quizFinal}
             numero={2}
             onComplete={() => handleModuleComplete("modulo-10")}
-            onScoreSubmit={() => onUpdateProgress?.({ modulo: 10, tipo: "quiz" })}
           />
         </div>
       </TabsContent>

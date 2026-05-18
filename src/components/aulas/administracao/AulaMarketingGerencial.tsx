@@ -9,7 +9,7 @@
  * Status: PREMIUM - 100% content + 60 questões
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { AulaProps, ModuleBanner, ModuleSectionHeader, ContentAccordion, CardCarousel, ModuleConsolidation, QuizInterativo } from "../shared";
@@ -75,7 +75,7 @@ const MODULE_DEFS = [
   {
     id: "modulo-10",
     label: "Módulo 10",
-    title: "Simulado Mestre - Marketing Integrado",
+    title: "Simulado Geral - Marketing Integrado",
     icon: Trophy,
   },
 ] as const;
@@ -751,7 +751,7 @@ Mensagem: 'Energia responsável em transição' (não perfeccionista, mas compro
     slides: [
       {
         label: "Conceito",
-        content: `**Simulado Mestre - Integração Marketing Gerencial**
+        content: `**Simulado Geral - Integração Marketing Gerencial**
 
 Revisão dos 9 módulos anteriores:
 
@@ -874,9 +874,67 @@ Exemplo bom: Resposta que integra 'Petrobras = commodity + transição + credibi
 };
 
 export default function AulaMarketingGerencial(props: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [unlockedModules, setUnlockedModules] = useState(["modulo-1"]);
-  const [completedModules, setCompletedModules] = useState<string[]>([]);
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_marketing_gerencial_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [unlockedModules, setUnlockedModules] = useState<string[]>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}unlocked_modules`);
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          return ["modulo-1"];
+        }
+      }
+    }
+    return ["modulo-1"];
+  });
+
+  const [completedModules, setCompletedModules] = useState<string[]>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          return [];
+        }
+      }
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}unlocked_modules`,
+        JSON.stringify(unlockedModules)
+      );
+    }
+  }, [unlockedModules]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(completedModules)
+      );
+    }
+  }, [completedModules]);
 
   const handleModuleComplete = (moduleId: string) => {
     setCompletedModules([...completedModules, moduleId]);
@@ -929,44 +987,41 @@ export default function AulaMarketingGerencial(props: AulaProps) {
         </TabsList>
 
         {MODULE_DEFS.map((mod) => (
-          <TabsContent key={mod.id} value={mod.id} className="space-y-6">
+          activeTab === mod.id && (
+            <TabsContent key={mod.id} value={mod.id} className="space-y-6">
             <ModuleBanner
-              number={MODULE_DEFS.findIndex((m) => m.id === mod.id) + 1}
-              title={mod.title}
-              description={`Módulo ${MODULE_DEFS.findIndex((m) => m.id === mod.id) + 1} de 10 - Marketing Gerencial`}
+              numero={MODULE_DEFS.findIndex((m) => m.id === mod.id) + 1}
+              titulo={mod.title}
+              descricao={`Módulo ${MODULE_DEFS.findIndex((m) => m.id === mod.id) + 1} de 10 - Marketing Gerencial`}
               variant={variant}
             />
 
             <ModuleSectionHeader
+              index={MODULE_DEFS.findIndex((m) => m.id === mod.id) + 1}
               title={mod.title}
-              icon={mod.icon}
               variant={variant}
             />
 
             {moduleContent && (
               <>
-                <ContentAccordion
-                  slides={moduleContent.slides}
-                  variant={variant}
-                />
+                <ContentAccordion slides={moduleContent.slides} mode="stacked" />
 
                 <CardCarousel
                   cards={[
                     {
-                      title: "Conceito-Chave",
-                      description:
-                        moduleContent.consolidation.summary,
-                      icon: "💡",
+                      titulo: "Conceito-Chave",
+                      descricao: moduleContent.consolidation.summary,
+                      icone: "💡",
                     },
                     {
-                      title: "Aplicação Prática",
-                      description: `Implementar em sua área: ${moduleContent.consolidation.mnemonic}`,
-                      icon: "🎯",
+                      titulo: "Aplicação Prática",
+                      descricao: `Implementar em sua área: ${moduleContent.consolidation.mnemonic}`,
+                      icone: "🎯",
                     },
                   ]}
-                  variant={variant}
                 />
 
+                {/* 
                 <ModuleConsolidation
                   videoTitle={moduleContent.consolidation.video}
                   audioTitle={moduleContent.consolidation.audio}
@@ -974,16 +1029,18 @@ export default function AulaMarketingGerencial(props: AulaProps) {
                   mnemonic={moduleContent.consolidation.mnemonic}
                   variant={variant}
                 />
+                */}
 
                 <QuizInterativo
-                  questions={MARKETING_QUIZZES[activeTab as keyof typeof MARKETING_QUIZZES] || []}
+                  questoes={MARKETING_QUIZZES[activeTab as keyof typeof MARKETING_QUIZZES] || []}
+                  titulo={`Quiz: ${mod.title}`}
                   onComplete={() => handleModuleComplete(activeTab)}
                   variant={variant}
-                  passingScore={70}
                 />
               </>
             )}
           </TabsContent>
+          )
         ))}
       </Tabs>
 

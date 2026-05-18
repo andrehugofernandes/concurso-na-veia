@@ -55,7 +55,7 @@ const MODULE_DEFS = [
   { id: "modulo-7", label: "Módulo 7", title: "Management" },
   { id: "modulo-8", label: "Módulo 8", title: "Procurement" },
   { id: "modulo-9", label: "Módulo 9", title: "Petrobras Context" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Geral" },
 ] as const;
 export default function AulaVocabulary({
   onComplete,
@@ -73,10 +73,45 @@ export default function AulaVocabulary({
   prevTopico,
   nextTopico,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_ingles_vocabulary_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
   const [quizM1, setQuizM1] = useState<typeof QUIZ_M1_UPSTREAM>([]);
   const [quizM2, setQuizM2] = useState<typeof QUIZ_M2_DOWNSTREAM>([]);
   const [quizM3, setQuizM3] = useState<typeof QUIZ_M3_EQUIPMENT>([]);
@@ -157,7 +192,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Upstream: A Jornada da Exploração até a Produção"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -224,7 +259,7 @@ export default function AulaVocabulary({
                 cenários realistas. Candidatos costumam confundir "exploration"
                 (busca por reservas) com "development" (construção da
                 infraestrutura), ou não entender que múltiplos poços são
-                perfurados num mesmo campo. Outra pegadinha comum é não
+                perfurados num mesmo campo. Outra pontos de atenção comum é não
                 reconhecer que "production platform" é diferente de "drilling
                 rig" — uma plataforma produz óleo continuamente, enquanto uma
                 sonda é usada temporariamente para perfuração. O vocabulário é
@@ -237,7 +272,7 @@ export default function AulaVocabulary({
                 <h4 className="font-bold text-foreground">
                   Fases Principais do Upstream
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
                   <div>
                     <div className="font-semibold text-blue-700 dark:text-blue-300">
                       Exploration
@@ -414,7 +449,7 @@ export default function AulaVocabulary({
                   ),
                 },
                 {
-                  titulo: "④ Pegadinhas CESGRANRIO",
+                  titulo: "④ pontos de atenção CESGRANRIO",
                   icone: <LuTriangleAlert className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-4">
@@ -478,7 +513,7 @@ export default function AulaVocabulary({
             />
             <div className="space-y-4">
               <h4 className="font-bold text-lg">FlipCards: Termos Upstream</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FlipCard
                   frente="Seismic Survey"
                   verso="Investigação usando ondas sonoras para mapear estruturas geológicas subterrâneas. Identifica potenciais depósitos de óleo/gás. Ex: 'The seismic survey revealed a promising anticlinal structure.'"
@@ -510,7 +545,7 @@ export default function AulaVocabulary({
 <ModuleConsolidation
             index={2}
             variant={mv[1]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Upstream Operations - Key Drilling Terms",
               content: (
                 <div className="space-y-2">
@@ -571,7 +606,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Downstream: Transformando Óleo Cru em Produtos"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -649,7 +684,7 @@ export default function AulaVocabulary({
                 direto); não entender que "cracking" AUMENTA a produção de
                 gasolina (muitos pensam que reduz); achar que "distillation"
                 separa tipos diferentes de moléculas (na verdade, separa apenas
-                por tamanho/volatilidade). Outra pegadinha: questões sobre
+                por tamanho/volatilidade). Outra pontos de atenção: questões sobre
                 "light crude" vs "heavy crude" — light crude é mais fácil de
                 refinar e produz mais gasolina (margem maior), heavy crude
                 requer processamento adicional (conversão). Vocabulário
@@ -661,7 +696,7 @@ export default function AulaVocabulary({
                 <h4 className="font-bold text-foreground">
                   Cadeia de Valor Downstream
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
                   <div>
                     <div className="font-semibold text-orange-700 dark:text-orange-300">
                       Refining
@@ -834,7 +869,7 @@ export default function AulaVocabulary({
                   ),
                 },
                 {
-                  titulo: "④ Pegadinhas CESGRANRIO",
+                  titulo: "④ pontos de atenção CESGRANRIO",
                   icone: <LuTriangleAlert className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-4">
@@ -898,7 +933,7 @@ export default function AulaVocabulary({
               <h4 className="font-bold text-lg">
                 FlipCards: Termos Downstream
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FlipCard
                   frente="Distillation"
                   verso="Destilação. Aquecimento de crude oil e separação em frações por ponto de ebulição. Ex: 'Distillation separates crude oil into gasoline, diesel, and fuel oil.'"
@@ -930,7 +965,7 @@ export default function AulaVocabulary({
 <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Downstream Operations - Refining & Distribution",
               content: (
                 <div className="space-y-2">
@@ -992,7 +1027,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Equipamentos: Construindo a Indústria"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -1081,7 +1116,7 @@ export default function AulaVocabulary({
                 <h4 className="font-bold text-foreground">
                   Equipamentos Principais e Funções
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
                   <div>
                     <div className="font-semibold text-purple-700 dark:text-purple-300">
                       Valve
@@ -1265,7 +1300,7 @@ export default function AulaVocabulary({
                   ),
                 },
                 {
-                  titulo: "④ Pegadinhas CESGRANRIO",
+                  titulo: "④ pontos de atenção CESGRANRIO",
                   icone: <LuTriangleAlert className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-4">
@@ -1330,7 +1365,7 @@ export default function AulaVocabulary({
               <h4 className="font-bold text-lg">
                 FlipCards: Equipamentos Técnicos
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FlipCard
                   frente="Ball Valve"
                   verso="Válvula de esfera. ON/OFF rápido com esfera perfurada. Selador excelente. Ex: 'Install a ball valve at the wellhead for emergency shutdown.'"
@@ -1362,7 +1397,7 @@ export default function AulaVocabulary({
 <ModuleConsolidation
             index={2}
             variant={mv[3]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Industrial Equipment - Valves, Pumps & Pipes",
               content: (
                 <div className="space-y-2">
@@ -1423,7 +1458,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="HSE: Mais Que Compliance, É Cultura"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -1481,7 +1516,7 @@ export default function AulaVocabulary({
                 Trabalhos em altura (towers, platforms) exigem harness + rope
                 access training. Trabalho em "confined spaces" (tanques,
                 tubagens) requer respirador + safety watch + permit-to-work.
-                Exposição a H2S (hydrogen sulfide gas) é letal em segundos —
+                Exposição a H2S (hydrogen sulfide gas) é Crítico em segundos —
                 qualquer operação em campos com H2S requer treinamento
                 certificado e monitoramento contínuo com detectores. Offshore
                 trabalha com sistema IMCA (International Marine Contractors
@@ -1511,7 +1546,7 @@ export default function AulaVocabulary({
               </p>
               <div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 rounded-lg border border-red-200 dark:border-red-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">HSE Framework</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
                   <div>
                     <div className="font-semibold text-red-700 dark:text-red-300">
                       Health
@@ -1700,7 +1735,7 @@ export default function AulaVocabulary({
                   ),
                 },
                 {
-                  titulo: "④ Pegadinhas CESGRANRIO",
+                  titulo: "④ pontos de atenção CESGRANRIO",
                   icone: <LuTriangleAlert className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-4">
@@ -1763,7 +1798,7 @@ export default function AulaVocabulary({
             />
             <div className="space-y-4">
               <h4 className="font-bold text-lg">FlipCards: Termos HSE</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FlipCard
                   frente="PPE"
                   verso="Personal Protective Equipment. Hard hat, glasses, gloves, boots, respirator, harness. Ex: 'PPE compliance: all workers must wear complete PPE.'"
@@ -1795,7 +1830,7 @@ export default function AulaVocabulary({
 <ModuleConsolidation
             index={2}
             variant={mv[4]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Safety & HSE - PPE, Hazards & Compliance",
               content: (
                 <div className="space-y-2">
@@ -1857,7 +1892,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Business & Finance: O Lado Econômico"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -1938,7 +1973,7 @@ export default function AulaVocabulary({
                 <h4 className="font-bold text-foreground">
                   Economic Framework
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
                   <div>
                     <div className="font-semibold text-green-700 dark:text-green-300">
                       Brent Price
@@ -2129,7 +2164,7 @@ export default function AulaVocabulary({
                   ),
                 },
                 {
-                  titulo: "④ Pegadinhas CESGRANRIO",
+                  titulo: "④ pontos de atenção CESGRANRIO",
                   icone: <LuTriangleAlert className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-4">
@@ -2195,7 +2230,7 @@ export default function AulaVocabulary({
               <h4 className="font-bold text-lg">
                 FlipCards: Termos Financeiros
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FlipCard
                   frente="Brent Crude"
                   verso="Benchmark internacional de preço de óleo. USD/barrel, flutuante. Determina receita da empresa. Ex: 'Brent fell from $100 to $60, reducing revenue by 40%.'"
@@ -2227,7 +2262,7 @@ export default function AulaVocabulary({
 <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Financial & Business Terms - CAPEX, OPEX & Brent",
               content: (
                 <div className="space-y-2">
@@ -2288,7 +2323,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Environmental: A Transição Energética"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -2371,7 +2406,7 @@ export default function AulaVocabulary({
               </p>
               <div className="bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-950/30 dark:to-teal-950/30 rounded-lg border border-green-200 dark:border-green-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">ESG Framework</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
                   <div>
                     <div className="font-semibold text-green-700 dark:text-green-300">
                       Environmental
@@ -2551,7 +2586,7 @@ export default function AulaVocabulary({
                   ),
                 },
                 {
-                  titulo: "④ Pegadinhas CESGRANRIO",
+                  titulo: "④ pontos de atenção CESGRANRIO",
                   icone: <LuTriangleAlert className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-4">
@@ -2618,7 +2653,7 @@ export default function AulaVocabulary({
               <h4 className="font-bold text-lg">
                 FlipCards: Termos Ambientais
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FlipCard
                   frente="Carbon Footprint"
                   verso="Medida total de emissões de GHG em tCO2e. Inclui Scopes 1, 2, 3. Ex: 'Our carbon footprint: 8 tCO2e per barrel.'"
@@ -2650,7 +2685,7 @@ export default function AulaVocabulary({
 <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Environmental Terms - Carbon Footprint & ESG",
               content: (
                 <div className="space-y-2">
@@ -2711,7 +2746,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Project Management: Acompanhando o Progresso"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -2792,7 +2827,7 @@ export default function AulaVocabulary({
               </p>
               <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Project Framework</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
                   <div>
                     <div className="font-semibold text-blue-700 dark:text-blue-300">
                       KPI
@@ -2984,7 +3019,7 @@ export default function AulaVocabulary({
                   ),
                 },
                 {
-                  titulo: "④ Pegadinhas CESGRANRIO",
+                  titulo: "④ pontos de atenção CESGRANRIO",
                   icone: <LuTriangleAlert className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-4">
@@ -3047,7 +3082,7 @@ export default function AulaVocabulary({
             />
             <div className="space-y-4">
               <h4 className="font-bold text-lg">FlipCards: Termos de Gestão</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FlipCard
                   frente="KPI"
                   verso="Key Performance Indicator. Métrica específica de sucesso (tempo, custo, segurança, desempenho). Ex: 'KPI: deliver within $2B ±5% budget.'"
@@ -3079,7 +3114,7 @@ export default function AulaVocabulary({
 <ModuleConsolidation
             index={2}
             variant={mv[7]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Management & Projects - KPI, Milestone & Scope",
               content: (
                 <div className="space-y-2">
@@ -3142,7 +3177,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Procurement: Gerenciando a Cadeia de Suprimento"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -3225,7 +3260,7 @@ export default function AulaVocabulary({
               </p>
               <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Procurement Cycle</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
                   <div>
                     <div className="font-semibold text-amber-700 dark:text-amber-300">
                       Tender Publication
@@ -3418,7 +3453,7 @@ export default function AulaVocabulary({
                   ),
                 },
                 {
-                  titulo: "④ Pegadinhas CESGRANRIO",
+                  titulo: "④ pontos de atenção CESGRANRIO",
                   icone: <LuTriangleAlert className="w-5 h-5" />,
                   conteudo: (
                     <div className="space-y-4">
@@ -3483,7 +3518,7 @@ export default function AulaVocabulary({
               <h4 className="font-bold text-lg">
                 FlipCards: Termos de Procurement
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FlipCard
                   frente="Tender"
                   verso="Publicação formal de licitação. Especifica scope, schedule, cronograma, requisitos. Ex: 'Tender for jacket fabrication (deadline 60 days).'"
@@ -3515,7 +3550,7 @@ export default function AulaVocabulary({
 <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Procurement & Contracts - Tender, Bid & Liability",
               content: (
                 <div className="space-y-2">
@@ -3578,7 +3613,7 @@ export default function AulaVocabulary({
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Integrando Tudo: Vocabulary in Real Business Scenarios"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -3669,7 +3704,7 @@ export default function AulaVocabulary({
                 <h4 className="font-bold text-foreground">
                   Tipos de Documentos Petrobras
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
                   <div>
                     <div className="font-semibold text-indigo-700 dark:text-indigo-300">
                       Operational Report
@@ -3923,7 +3958,7 @@ export default function AulaVocabulary({
                       </AlertBox>
                       <AlertBox
                         tipo="warning"
-                        titulo="Pegadinha Comum: Significado Literal vs Contextual"
+                        titulo="pontos de atenção Comum: Significado Literal vs Contextual"
                       >
                         <Comparison
                           title="Análise de Uso"
@@ -4054,7 +4089,7 @@ export default function AulaVocabulary({
 <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Vocabulary in Petrobras Context",
               content: (
                 <div className="space-y-2">
@@ -4107,19 +4142,19 @@ export default function AulaVocabulary({
           />
         </div>
       </TabsContent>
-      {/* ═══ MÓDULO 10: SIMULADO MESTRE ═══ */}
+      {/* ═══ MÓDULO 10: Simulado Geral ═══ */}
       <TabsContent value="modulo-10">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={10}
-            titulo="Simulado Mestre"
+            titulo="Simulado Geral"
             descricao="Domínio de termos técnicos e expressões essenciais do setor."
             variant={mv[10]}
           />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
-              title="Simulado Mestre: Você Domina Vocabulário Técnico!"
+              index="INTRO"
+              title="Simulado Geral: Você Domina Vocabulário Técnico!"
             />
             <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
               <p>
@@ -4336,7 +4371,7 @@ export default function AulaVocabulary({
 <ModuleConsolidation
             index={2}
             variant={mv[10]}
-            maceteVisual={{
+            sinteseEstrategica={{
               title: "Master Simulator - Complete Petrobras Vocabulary",
               content: (
                 <div className="space-y-2">

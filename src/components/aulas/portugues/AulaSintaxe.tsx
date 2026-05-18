@@ -61,7 +61,7 @@ const MODULE_DEFS: ModuleDef[] = [
   { id: "modulo-7", label: "Módulo 7", title: "Termos Acessórios I" },
   { id: "modulo-8", label: "Módulo 8", title: "Termos Acessórios II" },
   { id: "modulo-9", label: "Módulo 9", title: "Aposto e Vocativo" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Arena" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado de Consolidação Final" },
 ];
 
 // ── POOL DE QUESTÕES (MÓDULO 4: LABORATÓRIO) ────────────────────────────
@@ -680,10 +680,45 @@ export default function AulaSintaxe({
   prevTopico,
   nextTopico,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_portugues_sintaxe_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
   const [showCompletionBadge, setShowCompletionBadge] = useState(false);
 
   // Sincronizar progresso inicial do estado global (apenas uma vez na carga)
@@ -771,7 +806,7 @@ export default function AulaSintaxe({
         {/* RICH INTRO */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="A Anatomia da Oração"
             description="Entenda o Sujeito não como 'quem faz a ação', mas como 'quem o verbo obedece'."
             variant={mv[1] as any}
@@ -785,7 +820,7 @@ export default function AulaSintaxe({
             </p>
             <div className="bg-indigo-500/10 border-l-4 border-indigo-500 p-6 rounded-r-2xl my-6">
               <h4 className="text-indigo-700 dark:text-indigo-400 font-bold mb-2">
-                A Pegadinha Suprema: Ordem Inversa
+                A pontos de atenção Suprema: Ordem Inversa
               </h4>
               <p className="text-indigo-800 dark:text-indigo-200">
                 A banca ama colocar o verbo antes do sujeito. Se você encontrar um verbo no plural iniciando a frase, pare tudo! O sujeito provavelmente vem depois. Ex: <em>"Construirão as novas unidades de refino os engenheiros contratados."</em> Quem construirá? <strong>Os engenheiros</strong> (Sujeito).
@@ -856,7 +891,7 @@ export default function AulaSintaxe({
         {/* RICH INTRO */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="A Lógica da Transitividade"
             description="Não decore verbos; entenda a relação de necessidade que eles estabelecem."
             variant={mv[2] as any}
@@ -969,7 +1004,7 @@ export default function AulaSintaxe({
         {/* RICH INTRO */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="O que é o Predicado?"
             description="Tudo o que se diz sobre o sujeito, ou a própria declaração sem sujeito."
             variant={mv[3] as any}
@@ -1071,7 +1106,7 @@ export default function AulaSintaxe({
         {/* RICH INTRO */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="O que são Complementos Verbais?"
             description="Termos que integram o sentido de verbos transitivos."
             variant={mv[4] as any}
@@ -1081,7 +1116,7 @@ export default function AulaSintaxe({
               Cuidado: Nem todo termo após o verbo é objeto! O <strong>Objeto Direto</strong> completa o verbo SEM preposição obrigatória, enquanto o <strong>Objeto Indireto</strong> EXIGE a preposição (A, DE, EM, PARA, COM).
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
                  <p className="font-bold text-emerald-700 dark:text-emerald-400">Objeto Direto</p>
                  <p className="text-sm">VTD + Complemento (Sem preposição)</p>
@@ -1169,7 +1204,7 @@ export default function AulaSintaxe({
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Resumo e Multimídia"
               description="Visão panorâmica de toda a Sintaxe da Oração."
           variant={mv[5]}
@@ -1214,8 +1249,8 @@ export default function AulaSintaxe({
                     <LuBrain className="w-4 h-4" />
                   </span>
                   <div>
-                    <strong>3. Macete Visual:</strong> A sacada genial ou atalho
-                    ("bizu") definitivo. Ele ancora a regra complexa a uma
+                    <strong>3. Síntese Estratégica:</strong> A consolidação técnica ou atalho
+                    ("orientação técnica") definitivo. Ele ancora a regra complexa a uma
                     estrutura simbólica simples de memorizar.
                   </div>
                 </li>
@@ -1284,7 +1319,7 @@ export default function AulaSintaxe({
                 },
                 {
                   id: "visual",
-                  label: "Macete Visual",
+                  label: "Síntese Estratégica",
                   icon:LuBrain,
                   content:(
                     <div className="text-center p-8 bg-gradient-to-br from-violet-500/5 to-purple-500/5 rounded-2xl border border-violet-500/10">
@@ -1336,7 +1371,7 @@ export default function AulaSintaxe({
         {/* RICH INTRO */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="O que é o Complemento Nominal?"
             description="O termo que completa o sentido de um NOME (substantivo, adjetivo ou advérbio)."
             variant={mv[5] as any}
@@ -1361,7 +1396,7 @@ export default function AulaSintaxe({
           <ModuleSectionHeader
             index={2}
             title="A Batalha Final: CN vs Adjunto"
-            description="A regra de ouro que resolve 90% das questões de Sintaxe."
+            description="Princípio Fundamental que resolve 90% das questões de Sintaxe."
             variant={mv[5] as any}
           />
           
@@ -1386,7 +1421,7 @@ export default function AulaSintaxe({
              />
           </div>
 
-          <AlertBox tipo="info" titulo="Macete 'O Som da Petrobras'">
+          <AlertBox tipo="info" titulo="Estratégia 'O Som da Petrobras'">
              Se o termo for preposicionado e estiver ligado a um <strong>Adjetivo</strong> ou <strong>Advérbio</strong>, ele é SEMPRE <strong>Complemento Nominal</strong>. A dúvida só existe com Substantivos Abstratos!
           </AlertBox>
         </section>
@@ -1413,7 +1448,7 @@ export default function AulaSintaxe({
         {/* RICH INTRO */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="O que é o Agente da Passiva?"
             description="O termo que indica o ser que executa a ação quando o verbo está na voz passiva."
             variant={mv[6] as any}
@@ -1439,7 +1474,7 @@ export default function AulaSintaxe({
           </div>
         </section>
 
-        {/* PEGADINHA CESGRANRIO */}
+        {/* pontos de atenção CESGRANRIO */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
           <ModuleSectionHeader
             index={2}
@@ -1516,7 +1551,7 @@ export default function AulaSintaxe({
         {/* RICH INTRO */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="O que é o Adjunto Adnominal?"
             description="O termo que caracteriza, determina ou restringe um substantivo, tendo valor ativo."
             variant={mv[7] as any}
@@ -1594,7 +1629,7 @@ export default function AulaSintaxe({
         {/* RICH INTRO */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="O que é o Adjunto Adverbial?"
             description="O termo que indica circunstância, modificando verbo, adjetivo ou outro advérbio."
             variant={mv[8] as any}
@@ -1672,7 +1707,7 @@ export default function AulaSintaxe({
         {/* RICH INTRO */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             title="Aposto vs Vocativo"
             description="Dois termos que adoram vírgulas, mas têm funções totalmente distintas."
             variant={mv[9] as any}
@@ -1720,7 +1755,7 @@ export default function AulaSintaxe({
       <TabsContent value="modulo-10" className="space-y-[50px]">
         <ModuleBanner
           numero={10}
-          titulo="Simulado Arena"
+          titulo="Simulado de Consolidação Final"
           descricao="O grande teste. Questões de alto nível filtradas pela Petrobras Quest para garantir sua aprovação."
           variant={mv[2] as any} /* Usando variante 2 para destaque */
         />
@@ -1730,14 +1765,14 @@ export default function AulaSintaxe({
            <LuCrown className="w-16 h-16 mx-auto text-amber-500 animate-bounce" />
            <h3 className="text-2xl font-bold">Você chegou ao Desafio Final!</h3>
            <p className="text-muted-foreground prose prose-lg mx-auto">
-              Sintaxe é a base da Gramática. Se você domina a relação entre os termos do período simples, está pronto para encarar o período composto e a concordância verbal. Boa sorte na Arena!
+              Sintaxe é a base da Gramática. Se você domina a relação entre os termos do período simples, está pronto para encarar o período composto e a concordância verbal. Desejamos sucesso em sua avaliação!
            </p>
         </section>
 
         <section className="mt-16">
           <QuizInterativo
             questoes={getRandomQuestions(QUIZ_MOD10_POOL, 5)}
-            titulo="SIMULADO ARENA: Sintaxe Completa"
+            titulo="SIMULADO DE SÍNTESE: Sintaxe Completa"
             icone="⚔️"
             numero={10}
             onComplete={(score) => handleModuleComplete("modulo-10", score)}

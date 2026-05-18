@@ -53,7 +53,7 @@ const MODULE_DEFS = [
   { id: "modulo-7", label: "Módulo 7", title: "Automação e Transformação" },
   { id: "modulo-8", label: "Módulo 8", title: "Gestão da Qualidade" },
   { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Geral" },
 ] as const;
 
 
@@ -62,8 +62,45 @@ export default function AulaGestaoProcessos({
   currentProgress, onUpdateProgress, titulo, descricao, duracao,
   materiaNome, materiaCor, materiaId, prevTopico, nextTopico,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_gestao_processos_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
   const [quizM1] = useState(() => QUIZ_GESTAO_PROCESSOS["modulo-1"]);
   const [quizM2] = useState(() => QUIZ_GESTAO_PROCESSOS["modulo-2"]);
   const [quizM3] = useState(() => QUIZ_GESTAO_PROCESSOS["modulo-3"]);
@@ -150,6 +187,7 @@ export default function AulaGestaoProcessos({
       xpGanho={xpGanho}
     >
       {/* ═══ MÓDULO 1: CONCEITOS DE PROCESSOS ═══ */}
+      {activeTab === "modulo-1" && (
       <TabsContent value="modulo-1" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
@@ -161,7 +199,7 @@ export default function AulaGestaoProcessos({
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Fundamentos do Processo de Negócio"
               description="A definição técnica e os componentes vitais que caem na sua prova."
               variant={mv[1]}
@@ -178,7 +216,7 @@ export default function AulaGestaoProcessos({
                         Para a <strong>CESGRANRIO</strong>, um processo é uma sequência lógica de atividades que consome recursos para transformar uma <strong>entrada</strong> em uma <strong>saída</strong> de valor.
                       </p>
                       
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="p-4 bg-blue-500/5 border border-blue-500/10 rounded-xl text-center">
                           <p className="font-bold text-blue-600 mb-1">Entradas (Inputs)</p>
                           <p className="text-lg text-muted-foreground">Demanda, Informação, Matéria-prima, Insumos.</p>
@@ -241,14 +279,14 @@ export default function AulaGestaoProcessos({
                           </div>
                         </div>
 
-                        <div className="flex gap-4 p-4 bg-indigo-50 rounded-xl border-l-4 border-indigo-600">
-                          <div className="bg-indigo-600 text-white w-10 h-10 rounded-full flex items-center justify-center shrink-0 font-bold">3</div>
+                        <div className="flex gap-4 p-4 bg-cyan-50 rounded-xl border-l-4 border-cyan-600">
+                          <div className="bg-cyan-600 text-white w-10 h-10 rounded-full flex items-center justify-center shrink-0 font-bold">3</div>
                           <div>
-                            <p className="font-bold text-indigo-900">Processos Gerenciais (Gestão)</p>
-                            <p className="text-lg text-indigo-700 mb-2">Monitoram e direcionam a organização.</p>
+                            <p className="font-bold text-cyan-900">Processos Gerenciais (Gestão)</p>
+                            <p className="text-lg text-cyan-700 mb-2">Monitoram e direcionam a organização.</p>
                             <div className="flex flex-wrap gap-2">
-                              <span className="px-2 py-1 bg-white border border-indigo-200 rounded text-[10px] font-bold">Compliance</span>
-                              <span className="px-2 py-1 bg-white border border-indigo-200 rounded text-[10px] font-bold">Estratégia</span>
+                              <span className="px-2 py-1 bg-white border border-cyan-200 rounded text-[10px] font-bold">Compliance</span>
+                              <span className="px-2 py-1 bg-white border border-cyan-200 rounded text-[10px] font-bold">Estratégia</span>
                             </div>
                           </div>
                         </div>
@@ -305,7 +343,7 @@ export default function AulaGestaoProcessos({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl">
                           <p className="font-bold text-green-700 mb-2 flex items-center gap-2"><LuRepeat /> Processos</p>
                           <ul className="text-lg space-y-1 text-green-800">
@@ -326,7 +364,7 @@ export default function AulaGestaoProcessos({
                         </div>
                       </div>
 
-                      <AlertBox tipo="warning" titulo="O Pulo do Gato!">
+                      <AlertBox tipo="warning" titulo="Destaque Estratégico!">
                         <p className="text-lg">Se a questão falar que algo "tem fim determinado", mate na hora: é <strong>Projeto</strong>. Se falar em "rotina" ou "dia a dia", é <strong>Processo</strong>.</p>
                       </AlertBox>
                     </div>
@@ -369,13 +407,13 @@ export default function AulaGestaoProcessos({
                 { title: "Processo vs Projeto", type: "Comparativo", placeholderColor: "bg-cyan-500/20" },
               ],
             }}
-            maceteVisual={{
-              title: "O Mantra do Processo",
+            sinteseEstrategica={{
+              title: "O Princípio do Processo",
               content: (
                 <div className="space-y-4 text-left">
                   <div className="p-4 bg-slate-900 text-white rounded-xl font-mono text-lg">
                     <p className="text-blue-400"># Definição Premium</p>
-                    <p>Processo = <span className="text-amber-400">Input</span> + <span className="text-emerald-400">Atividade</span> + <span className="text-rose-400">Output</span> + <span className="text-indigo-400">Valor</span></p>
+                    <p>Processo = <span className="text-amber-400">Input</span> + <span className="text-emerald-400">Atividade</span> + <span className="text-rose-400">Output</span> + <span className="text-cyan-400">Valor</span></p>
                   </div>
                   <div className="flex gap-2 text-[10px] font-bold uppercase overflow-x-auto pb-2">
                     <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded whitespace-nowrap">Repetitivo</span>
@@ -403,8 +441,10 @@ export default function AulaGestaoProcessos({
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 2: BPM ═══ */}
+      {activeTab === "modulo-2" && (
       <TabsContent value="modulo-2" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner 
@@ -416,7 +456,7 @@ export default function AulaGestaoProcessos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={1} 
+              index="INTRO" 
               title="A Filosofia e o Ciclo de Vida" 
               description="Do planejamento estratégico ao refinamento contínuo (Baseado no CBOK)." 
               variant={mv[2]} 
@@ -574,8 +614,8 @@ export default function AulaGestaoProcessos({
                 { title: "O Papel do Process Owner", type: "Responsabilidade", placeholderColor: "bg-green-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
-              title: "O Mantra do Gestor de Processos", 
+            sinteseEstrategica={{ 
+              title: "O Princípio do Gestor de Processos", 
               content: (
                 <div className="space-y-3 text-left">
                   <p className="text-lg italic">"Medir para entender, gerir para controlar, otimizar para evoluir."</p>
@@ -604,8 +644,10 @@ export default function AulaGestaoProcessos({
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 3: MODELAGEM BPMN ═══ */}
+      {activeTab === "modulo-3" && (
       <TabsContent value="modulo-3" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner 
@@ -617,7 +659,7 @@ export default function AulaGestaoProcessos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={1} 
+              index="INTRO" 
               title="Gramática do Processo" 
               description="Alfabeto visual: Eventos, Atividades, Gateways e Artefatos." 
               variant={mv[3]} 
@@ -633,7 +675,7 @@ export default function AulaGestaoProcessos({
                       Lembre-se: <strong>BPMN</strong> é para o processo o que a partitura é para a música. Todos os envolvidos devem ler e entender a mesma melodia operacional.
                     </p>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-3">
                         <p className="font-bold text-amber-700 text-lg flex items-center gap-2">⭕ Eventos (Ondas de Impacto)</p>
                         <ul className="text-lg space-y-2">
@@ -726,13 +768,13 @@ export default function AulaGestaoProcessos({
                 conteudo: (
                   <div className="space-y-4">
                     <p className="text-muted-foreground">Existem tarefas especiais que caem muito em provas:</p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="p-3 bg-slate-100 rounded-lg border border-slate-200">
-                        <p className="font-bold text-indigo-700 text-[10px] uppercase">Tarefa de Usuário 👤</p>
+                        <p className="font-bold text-cyan-700 text-[10px] uppercase">Tarefa de Usuário 👤</p>
                         <p className="text-[10px]">Humano realizando via sistema.</p>
                       </div>
                       <div className="p-3 bg-slate-100 rounded-lg border border-slate-200">
-                        <p className="font-bold text-indigo-700 text-[10px] uppercase">Tarefa de Serviço ⚙️</p>
+                        <p className="font-bold text-cyan-700 text-[10px] uppercase">Tarefa de Serviço ⚙️</p>
                         <p className="text-[10px]">Automação pura, sem intervenção.</p>
                       </div>
                     </div>
@@ -778,7 +820,7 @@ export default function AulaGestaoProcessos({
                 { title: "Pools e Colaboração", type: "Fluxograma", placeholderColor: "bg-yellow-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "Alfabeto Rápido", 
               content: (
                 <div className="space-y-3 text-left">
@@ -808,8 +850,10 @@ export default function AulaGestaoProcessos({
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 4: MAPEAMENTO AS-IS E TO-BE ═══ */}
+      {activeTab === "modulo-4" && (
       <TabsContent value="modulo-4" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner 
@@ -821,7 +865,7 @@ export default function AulaGestaoProcessos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={1} 
+              index="INTRO" 
               title="AS-IS e TO-BE: A Ponte para a Melhoria" 
               description="Não se melhora o que não se entende. O mapeamento é a fotografia da realidade." 
               variant={mv[4]} 
@@ -937,7 +981,7 @@ export default function AulaGestaoProcessos({
                         <p className="text-[10px] text-slate-500 italic">"Se a solução é óbvia e barata, implemente direto."</p>
                       </li>
                     </ul>
-                    <AlertBox tipo="warning" titulo="Pegadinha de Prova">
+                    <AlertBox tipo="warning" titulo="pontos de atenção de Prova">
                       <p className="text-lg">A CESGRANRIO pode perguntar se o TO-BE deve ser feito ANTES do AS-IS. <strong>Nunca!</strong> Sem saber onde você está (AS-IS), você não traça a rota para onde quer ir.</p>
                     </AlertBox>
                   </div>
@@ -979,8 +1023,8 @@ export default function AulaGestaoProcessos({
                 { title: "Quick Wins", type: "Estratégia", placeholderColor: "bg-red-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
-              title: "O Pulo do Gato", 
+            sinteseEstrategica={{ 
+              title: "Destaque Estratégico", 
               content: (
                 <div className="space-y-3 text-left">
                   <p className="text-lg font-bold text-rose-800">Gap Analysis:</p>
@@ -1006,20 +1050,22 @@ export default function AulaGestaoProcessos({
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 5: MELHORIA CONTÍNUA ═══ */}
+      {activeTab === "modulo-5" && (
       <TabsContent value="modulo-5" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner 
             numero={5} 
             titulo="Melhoria Contínua e PDCA" 
             descricao="A arte de nunca estar satisfeito com o 'bom o suficiente'. Evolução constante." 
-            gradiente="bg-gradient-to-br from-violet-300 via-violet-500 to-violet-400" 
+            gradiente="bg-gradient-to-br from-emerald-300 via-emerald-500 to-emerald-400" 
           />
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={1} 
+              index="INTRO" 
               title="Filosofias de Otimização" 
               description="Do Ciclo de Deming ao rigor estatístico do Six Sigma." 
               variant={mv[5]} 
@@ -1036,25 +1082,25 @@ export default function AulaGestaoProcessos({
                     </p>
                     
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                      <div className="p-4 bg-violet-100 border border-violet-200 rounded-xl text-center">
-                        <p className="font-black text-violet-800 text-xl">P</p>
-                        <p className="font-bold text-[10px] text-violet-700">PLAN</p>
-                        <p className="text-[8px] text-violet-600">Metas e Métodos</p>
+                      <div className="p-4 bg-emerald-100 border border-emerald-200 rounded-xl text-center">
+                        <p className="font-black text-emerald-800 text-xl">P</p>
+                        <p className="font-bold text-[10px] text-emerald-700">PLAN</p>
+                        <p className="text-[8px] text-emerald-600">Metas e Métodos</p>
                       </div>
-                      <div className="p-4 bg-violet-100 border border-violet-200 rounded-xl text-center">
-                        <p className="font-black text-violet-800 text-xl">D</p>
-                        <p className="font-bold text-[10px] text-violet-700">DO</p>
-                        <p className="text-[8px] text-violet-600">Execução e Treino</p>
+                      <div className="p-4 bg-emerald-100 border border-emerald-200 rounded-xl text-center">
+                        <p className="font-black text-emerald-800 text-xl">D</p>
+                        <p className="font-bold text-[10px] text-emerald-700">DO</p>
+                        <p className="text-[8px] text-emerald-600">Execução e Treino</p>
                       </div>
-                      <div className="p-4 bg-violet-100 border border-violet-200 rounded-xl text-center">
-                        <p className="font-black text-violet-800 text-xl">C</p>
-                        <p className="font-bold text-[10px] text-violet-700">CHECK</p>
-                        <p className="text-[8px] text-violet-600">Verificação</p>
+                      <div className="p-4 bg-emerald-100 border border-emerald-200 rounded-xl text-center">
+                        <p className="font-black text-emerald-800 text-xl">C</p>
+                        <p className="font-bold text-[10px] text-emerald-700">CHECK</p>
+                        <p className="text-[8px] text-emerald-600">Verificação</p>
                       </div>
-                      <div className="p-4 bg-violet-100 border border-violet-200 rounded-xl text-center">
-                        <p className="font-black text-violet-800 text-xl">A</p>
-                        <p className="font-bold text-[10px] text-violet-700">ACT</p>
-                        <p className="text-[8px] text-violet-600">Ação Corretiva</p>
+                      <div className="p-4 bg-emerald-100 border border-emerald-200 rounded-xl text-center">
+                        <p className="font-black text-emerald-800 text-xl">A</p>
+                        <p className="font-bold text-[10px] text-emerald-700">ACT</p>
+                        <p className="text-[8px] text-emerald-600">Ação Corretiva</p>
                       </div>
                     </div>
 
@@ -1069,7 +1115,7 @@ export default function AulaGestaoProcessos({
                 icone: <LuBookOpen />, 
                 conteudo: (
                   <div className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="bg-slate-900 text-white p-5 rounded-2xl border-l-8 border-orange-500">
                         <p className="font-bold text-orange-400 mb-2 flex items-center gap-2">🚜 Lean (Manufatura Enxuta)</p>
                         <p className="text-[10px] text-slate-300">Foco em <strong>Eliminar Desperdícios</strong> (Tempo, Estoque, Movimentação). "Fazer mais com menos".</p>
@@ -1080,7 +1126,7 @@ export default function AulaGestaoProcessos({
                       </div>
                     </div>
                     
-                    <div className="p-4 bg-violet-50 rounded-xl border border-violet-200 italic text-[10px] text-violet-800 text-center">
+                    <div className="p-4 bg-emerald-50 rounded-xl border border-emerald-200 italic text-[10px] text-emerald-800 text-center">
                       "Lean remove a gordura; Six Sigma remove a doença (erros)."
                     </div>
                   </div>
@@ -1178,12 +1224,12 @@ export default function AulaGestaoProcessos({
               tituloAula: "Gestão de Processos", 
               materia: "Administração", 
               images: [
-                { title: "Funil do PDCA", type: "Processo", placeholderColor: "bg-violet-500/20" }, 
-                { title: "Os 5 porquês", type: "Técnica", placeholderColor: "bg-purple-500/20" }, 
-                { title: "Cinto Negro (Black Belt)", type: "Hierarquia", placeholderColor: "bg-indigo-500/20" }
+                { title: "Funil do PDCA", type: "Processo", placeholderColor: "bg-emerald-500/20" }, 
+                { title: "Os 5 porquês", type: "Técnica", placeholderColor: "bg-amber-500/20" }, 
+                { title: "Cinto Negro (Black Belt)", type: "Hierarquia", placeholderColor: "bg-cyan-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "5S: A Base da Melhoria", 
               content: (
                 <div className="grid grid-cols-5 gap-1 text-[8px] font-bold text-center">
@@ -1213,8 +1259,10 @@ export default function AulaGestaoProcessos({
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 6: INDICADORES DE PROCESSOS ═══ */}
+      {activeTab === "modulo-6" && (
       <TabsContent value="modulo-6" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner 
@@ -1226,7 +1274,7 @@ export default function AulaGestaoProcessos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={1} 
+              index="INTRO" 
               title="A Ciência da Medição" 
               description="Eficiência, Eficácia e Efetividade: A trindade do desempenho." 
               variant={mv[6]} 
@@ -1353,7 +1401,7 @@ export default function AulaGestaoProcessos({
                 { title: "Alinhamento SMART", type: "Filtro", placeholderColor: "bg-yellow-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "Mantra do Desempenho", 
               content: (
                 <div className="space-y-2 text-left">
@@ -1382,8 +1430,10 @@ export default function AulaGestaoProcessos({
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 7: AUTOMAÇÃO E BPM ═══ */}
+      {activeTab === "modulo-7" && (
       <TabsContent value="modulo-7" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner 
@@ -1395,7 +1445,7 @@ export default function AulaGestaoProcessos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={1} 
+              index="INTRO" 
               title="A Era Digital nos Processos" 
               description="Sistemas, robôs e orquestração de fluxos." 
               variant={mv[7]} 
@@ -1409,7 +1459,7 @@ export default function AulaGestaoProcessos({
                   <div className="space-y-6">
                     <p className="text-muted-foreground">Nem toda automação é igual. Entenda onde cada uma brilha:</p>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl">
                         <p className="font-bold text-blue-800 text-lg mb-2">🤖 BPMS (Orquestrador)</p>
                         <p className="text-[10px] text-blue-700">Faz a gestão do fluxo de ponta a ponta. Conecta pessoas e sistemas. É o "maestro".</p>
@@ -1504,11 +1554,11 @@ export default function AulaGestaoProcessos({
               images: [
                 { title: "Arquitetura BPMS", type: "TI", placeholderColor: "bg-blue-500/20" }, 
                 { title: "Robôs de Processo", type: "Robótica", placeholderColor: "bg-slate-500/20" }, 
-                { title: "Dashboard de Execução", type: "Dados", placeholderColor: "bg-indigo-500/20" }
+                { title: "Dashboard de Execução", type: "Dados", placeholderColor: "bg-cyan-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
-              title: "O Mantra Tech", 
+            sinteseEstrategica={{ 
+              title: "O Princípio Tech", 
               content: (
                 <div className="space-y-2 text-left">
                   <p className="text-lg italic">"Se é repetitivo, é robô. Se é decisão, é regra. Se é fluxo, é processo."</p>
@@ -1533,8 +1583,10 @@ export default function AulaGestaoProcessos({
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 8: GESTÃO DA QUALIDADE ═══ */}
+      {activeTab === "modulo-8" && (
       <TabsContent value="modulo-8" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner 
@@ -1546,7 +1598,7 @@ export default function AulaGestaoProcessos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={1} 
+              index="INTRO" 
               title="A Cultura da Qualidade" 
               description="Do Ishikawa ao Pareto: Resolvendo problemas na raiz." 
               variant={mv[8]} 
@@ -1653,7 +1705,7 @@ export default function AulaGestaoProcessos({
                 { title: "Ciclo PDCA da Qualidade", type: "Loop", placeholderColor: "bg-teal-500/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "80/20 de Pareto", 
               content: (
                 <div className="space-y-2 text-left">
@@ -1683,8 +1735,10 @@ export default function AulaGestaoProcessos({
           </section>
         </div>
       </TabsContent>
+      )}
 
       {/* ═══ MÓDULO 9: APLICAÇÕES NA PETROBRAS ═══ */}
+      {activeTab === "modulo-9" && (
       <TabsContent value="modulo-9" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner 
@@ -1696,7 +1750,7 @@ export default function AulaGestaoProcessos({
           
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={1} 
+              index="INTRO" 
               title="A Cadeia de Valor Integrada" 
               description="Upstream, Midstream e Downstream." 
               variant={mv[9]} 
@@ -1787,7 +1841,7 @@ export default function AulaGestaoProcessos({
                 { title: "Padrão de Refino", type: "Química", placeholderColor: "bg-rose-600/20" }
               ] 
             }} 
-            maceteVisual={{ 
+            sinteseEstrategica={{ 
               title: "Cadeia Petrobras", 
               content: (
                 <div className="flex justify-between items-center text-[8px] font-bold uppercase text-slate-500">
@@ -1817,20 +1871,22 @@ export default function AulaGestaoProcessos({
           </section>
         </div>
       </TabsContent>
+      )}
 
-      {/* ═══ MÓDULO 10: Simulado Mestre ═══ */}
+      {/* ═══ MÓDULO 10: Simulado Geral ═══ */}
+      {activeTab === "modulo-10" && (
       <TabsContent value="modulo-10" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner 
             numero={10} 
-            titulo="Simulado Mestre e Consolidação" 
+            titulo="Simulado Geral e Consolidação" 
             descricao="Todas as competências testadas em um único simulado de alto nível. A hora da verdade!" 
-            gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800" 
+            gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800" 
           />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader 
-              index={1} 
+              index="INTRO" 
               title="O Checklist de Ouro" 
               description="O que você NÃO pode esquecer para a prova da CESGRANRIO." 
               variant={mv[10]} 
@@ -1838,21 +1894,21 @@ export default function AulaGestaoProcessos({
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Card 1: Conceitos Chave */}
-              <div className="p-6 bg-violet-50 border border-violet-100 rounded-3xl space-y-4">
-                <div className="w-10 h-10 bg-violet-600 rounded-xl flex items-center justify-center text-white">
+              <div className="p-6 bg-emerald-50 border border-emerald-100 rounded-3xl space-y-4">
+                <div className="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-white">
                   <LuCheck />
                 </div>
-                <h4 className="font-bold text-violet-900">Conceitos Fatais</h4>
+                <h4 className="font-bold text-emerald-900">Conceitos Fatais</h4>
                 <ul className="space-y-2">
-                  <li className="flex items-start gap-2 text-[10px] text-violet-800">
+                  <li className="flex items-start gap-2 text-[10px] text-emerald-800">
                     <span className="font-bold">•</span>
                     Processo vs Projeto (Repetitivo vs Único/Temporário)
                   </li>
-                  <li className="flex items-start gap-2 text-[10px] text-violet-800">
+                  <li className="flex items-start gap-2 text-[10px] text-emerald-800">
                     <span className="font-bold">•</span>
                     Dono do Processo (Responsável pelo resultado final)
                   </li>
-                  <li className="flex items-start gap-2 text-[10px] text-violet-800">
+                  <li className="flex items-start gap-2 text-[10px] text-emerald-800">
                     <span className="font-bold">•</span>
                     Valor Agregado (A visão do cliente interno/externo)
                   </li>
@@ -1860,21 +1916,21 @@ export default function AulaGestaoProcessos({
               </div>
 
               {/* Card 2: Ferramentas */}
-              <div className="p-6 bg-indigo-50 border border-indigo-100 rounded-3xl space-y-4">
-                <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white">
+              <div className="p-6 bg-cyan-50 border border-cyan-100 rounded-3xl space-y-4">
+                <div className="w-10 h-10 bg-cyan-600 rounded-xl flex items-center justify-center text-white">
                   <LuSettings />
                 </div>
-                <h4 className="font-bold text-indigo-900">Ferramentas Pro</h4>
+                <h4 className="font-bold text-cyan-900">Ferramentas Pro</h4>
                 <ul className="space-y-2">
-                  <li className="flex items-start gap-2 text-[10px] text-indigo-800">
+                  <li className="flex items-start gap-2 text-[10px] text-cyan-800">
                     <span className="font-bold">•</span>
                     Ishikawa (Causa e Efeito: 6 Ms)
                   </li>
-                  <li className="flex items-start gap-2 text-[10px] text-indigo-800">
+                  <li className="flex items-start gap-2 text-[10px] text-cyan-800">
                     <span className="font-bold">•</span>
                     Pareto (80/20: Priorização de problemas)
                   </li>
-                  <li className="flex items-start gap-2 text-[10px] text-indigo-800">
+                  <li className="flex items-start gap-2 text-[10px] text-cyan-800">
                     <span className="font-bold">•</span>
                     BPMN (Símbolos: Piscina, Raias, Eventos)
                   </li>
@@ -1927,6 +1983,7 @@ export default function AulaGestaoProcessos({
           </footer>
         </div>
       </TabsContent>
+      )}
     </AulaTemplate>
   );
 }

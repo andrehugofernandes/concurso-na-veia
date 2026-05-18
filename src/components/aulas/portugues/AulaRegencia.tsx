@@ -67,8 +67,8 @@ const MODULE_DEFS = [
     label: "Módulo 3",
     title: "Regência Nominal: Substantivos",
   },
-  { id: "modulo-4", label: "Módulo 4", title: "Verbos de Elite: Parte I" },
-  { id: "modulo-5", label: "Módulo 5", title: "Verbos de Elite: Parte II" },
+  { id: "modulo-4", label: "Módulo 4", title: "Verbos de Avançado: Parte I" },
+  { id: "modulo-5", label: "Módulo 5", title: "Verbos de Avançado: Parte II" },
   { id: "modulo-6", label: "Módulo 6", title: "Transitividade Bifronte" },
   { id: "modulo-7", label: "Módulo 7", title: "Movimento e Pronominais" },
   { id: "modulo-8", label: "Módulo 8", title: "Peculiaridades Cesgranrio" },
@@ -94,10 +94,45 @@ export default function AulaRegencia({
   currentProgress,
   onUpdateProgress,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_portugues_regencia_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
   const [showCompletionBadge, setShowCompletionBadge] = useState(false);
 
@@ -187,7 +222,7 @@ export default function AulaRegencia({
           {/* ★ RICH INTRO M1 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="O Que É Regência e Por Que Ela Decide Aprovações"
               variant={mv[1]}
             />
@@ -195,7 +230,7 @@ export default function AulaRegencia({
               <p>
                 Regência é a área da gramática que estuda a relação de dependência entre um termo de sentido
                 incompleto — o <strong>regente</strong> — e o termo que o completa, o <strong>regido</strong>.
-                Segundo Evanildo Bechara, "a regência determina a natureza da ligação sintática entre o
+                Segundo a gramática normativa, "a regência determina a natureza da ligação sintática entre o
                 núcleo e seu complemento, estabelecendo se essa ligação se faz com ou sem preposição". Em
                 outras palavras, toda vez que um verbo ou nome exige um complemento, há uma relação de
                 regência em jogo — e errar a preposição significa errar a regência.
@@ -230,7 +265,7 @@ export default function AulaRegencia({
                 A CESGRANRIO cobra regência em praticamente todas as provas da Petrobras porque a banca
                 sabe que a língua coloquial corrompeu os padrões normativos. O candidato despreparado
                 escreve como fala: "assisti o jogo", "cheguei em casa", "implicar em problemas" — todas
-                construções erradas pela norma culta. O gabarito baseia-se na gramática de Bechara e Cunha,
+                construções erradas pela norma culta. O gabarito baseia-se na gramática normativa tradicional,
                 e os distratores das alternativas sempre exploram substituições indevidas de preposição.
                 Memorizar as regências dos verbos e nomes mais cobrados é, portanto, o investimento de
                 estudo com maior retorno nesta disciplina.
@@ -493,13 +528,13 @@ export default function AulaRegencia({
           {/* ★ RICH INTRO M2 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Adjetivos e Suas Preposições: O Casamento Gramatical que a CESGRANRIO Adora"
               variant={mv[2]}
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
               <p>
-                A regência nominal é a relação de subordinação que um <strong>nome</strong> — adjetivo, substantivo ou advérbio — estabelece com o seu complemento, exigindo dele uma preposição específica e intransferível. Segundo Evanildo Bechara, o termo regente nominal "atrai" o termo regido por meio de uma preposição que não pode ser substituída sem alterar o sentido ou gerar incorreção gramatical. Diferentemente da regência verbal, onde o verbo comanda a cena, aqui o adjetivo é o protagonista: é ele quem dita qual preposição o acompanha.
+                A regência nominal é a relação de subordinação que um <strong>nome</strong> — adjetivo, substantivo ou advérbio — estabelece com o seu complemento, exigindo dele uma preposição específica e intransferível. De acordo com os preceitos gramaticais, o termo regente nominal "atrai" o termo regido por meio de uma preposição que não pode ser substituída sem alterar o sentido ou gerar incorreção gramatical. Diferentemente da regência verbal, onde o verbo comanda a cena, aqui o adjetivo é o protagonista: é ele quem dita qual preposição o acompanha.
               </p>
               <p>
                 Pense nos adjetivos como plugues elétricos: cada um tem um formato único que só encaixa em um tipo de tomada — a preposição certa. "Apto" só encaixa em "A" (apto <em>a</em> liderar); "versado" só encaixa em "EM" (versado <em>em</em> gestão); "compatível" só encaixa em "COM" (compatível <em>com</em> o cargo). Tentar encaixar a preposição errada produz ruído gramatical imediato, e a banca detecta esse ruído cirurgicamente. A prova não pergunta se você sabe o significado do adjetivo — ela testa se você conhece o seu par preposicional obrigatório.
@@ -717,7 +752,7 @@ export default function AulaRegencia({
           {/* ★ RICH INTRO M3 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Substantivos que Regem: Quando o Nome Exige Preposição"
               variant={mv[3]}
             />
@@ -934,12 +969,12 @@ export default function AulaRegencia({
         </div>
       </TabsContent>
 
-      {/* Módulo 4: Verbos de Elite I */}
+      {/* Módulo 4: Verbos de Avançado I */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={4}
-            titulo="Verbos de Elite: Parte I"
+            titulo="Verbos de Avançado: Parte I"
             descricao="Assistir, Aspirar e Visar: O trio que decide aprovações na Cesgranrio."
           variant={mv[4]}
         />
@@ -947,13 +982,13 @@ export default function AulaRegencia({
           {/* ★ RICH INTRO M4 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="O Trio de Ouro: Verbos que Mudam de Sentido com a Preposição"
               variant={mv[4]}
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
               <p>
-                Existem verbos na língua portuguesa cuja <strong>transitividade varia conforme o sentido</strong> que assumem na frase. Esses verbos — chamados pela gramática normativa de "verbos de dupla ou múltipla regência" — são os preferidos da CESGRANRIO justamente porque o mesmo verbo pode ser transitivo direto em um sentido e transitivo indireto em outro, exigindo ou proibindo a preposição dependendo do contexto. Assistir, aspirar e visar formam o "trio de ouro" da regência verbal de elite, aparecendo em praticamente todas as provas de nível superior da banca.
+                Existem verbos na língua portuguesa cuja <strong>transitividade varia conforme o sentido</strong> que assumem na frase. Esses verbos — chamados pela gramática normativa de "verbos de dupla ou múltipla regência" — são os preferidos da CESGRANRIO justamente porque o mesmo verbo pode ser transitivo direto em um sentido e transitivo indireto em outro, exigindo ou proibindo a preposição dependendo do contexto. Assistir, aspirar e visar formam o "trio de ouro" da regência verbal de Avançado, aparecendo em praticamente todas as provas de nível superior da banca.
               </p>
               <p>
                 O verbo <strong>ASSISTIR</strong> é o exemplo mais didático dessa dualidade. Quando significa "ver, presenciar, ser espectador", é transitivo indireto e exige a preposição "A": "Assisti <em>ao</em> julgamento" (nunca "assisti o julgamento"). Quando significa "ajudar, prestar assistência", é transitivo direto e não admite preposição: "O médico assistiu o paciente". Quando significa "caber, pertencer (como direito)", também é transitivo indireto com "A": "Assiste <em>ao</em> trabalhador o direito de greve". Três sentidos diferentes, três comportamentos sintáticos diferentes — e o examinador usa essa variação para montar as armadilhas.
@@ -968,7 +1003,7 @@ export default function AulaRegencia({
                 A CESGRANRIO monta questões com esses verbos de três formas: <strong>frases com erro de preposição</strong> (colocar "A" onde não deve ou omitir onde deve), <strong>identificação do sentido pelo contexto</strong> (qual sentido o verbo assume nesta frase?) e <strong>reescrita mantendo sentido e correção</strong> (qual alternativa preserva ambos?). A estratégia vencedora é sempre a mesma: primeiro identificar o sentido do verbo no contexto, depois aplicar a regra de regência correspondente a esse sentido específico — nunca memorizar uma única regra para o verbo inteiro.
               </p>
               <div className="bg-gradient-to-br from-rose-50 to-orange-50 dark:from-rose-950/30 dark:to-orange-950/30 border border-rose-200 dark:border-rose-800 rounded-xl p-6 space-y-4">
-                <h4 className="font-bold text-rose-900 dark:text-rose-100 text-xl">Mapa de Regência — Verbos de Elite I</h4>
+                <h4 className="font-bold text-rose-900 dark:text-rose-100 text-xl">Mapa de Regência — Verbos de Avançado I</h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
                   <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
                     <div className="font-bold text-rose-700 dark:text-rose-300">ASSISTIR</div>
@@ -1165,12 +1200,12 @@ export default function AulaRegencia({
         </div>
       </TabsContent>
 
-      {/* Módulo 5: Verbos de Elite II */}
+      {/* Módulo 5: Verbos de Avançado II */}
       <TabsContent value="modulo-5" className="space-y-[50px]">
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner
             numero={5}
-            titulo="Verbos de Elite: Parte II"
+            titulo="Verbos de Avançado: Parte II"
             descricao="Custar, Proceder, Querer e Chamar: nuances que o candidato comum ignora."
           variant={mv[5]}
         />
@@ -1178,7 +1213,7 @@ export default function AulaRegencia({
           {/* ★ RICH INTRO M5 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Verbos de Comportamento Único: Quando a Língua Culta Surpreende"
               variant={mv[5]}
             />
@@ -1199,7 +1234,7 @@ export default function AulaRegencia({
                 A CESGRANRIO usa esses verbos para testar a capacidade do candidato de <strong>reconhecer o conflito entre uso popular e uso culto</strong>. As alternativas incorretas geralmente reproduzem construções coloquiais plausíveis — "ele custou a entender", "quero que venha" com preposição inadequada, "chamou-o de burro" vs. "chamou-o burro". A estratégia de prova: ao ver uma das alternativas usando esses verbos sem preposição onde a norma culta exige ou com preposição onde não deve, leia o contexto, identifique o sentido e aplique a regra específica. Nunca generalize: cada sentido tem sua regra própria.
               </p>
               <div className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 border border-violet-200 dark:border-violet-800 rounded-xl p-6 space-y-4">
-                <h4 className="font-bold text-violet-900 dark:text-violet-100 text-xl">Regras Rápidas — Verbos de Elite II</h4>
+                <h4 className="font-bold text-violet-900 dark:text-violet-100 text-xl">Regras Rápidas — Verbos de Avançado II</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                   <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
                     <div className="font-bold text-violet-700 dark:text-violet-300">CUSTAR (ser difícil)</div>
@@ -1356,7 +1391,7 @@ export default function AulaRegencia({
           {/* ★ RICH INTRO M6 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="A Regra Pessoa/Coisa: O Critério que Determina a Preposição"
               variant={mv[6]}
             />
@@ -1409,7 +1444,7 @@ export default function AulaRegencia({
               <h4 className="font-black text-cyan-600 uppercase tracking-widest text-lg flex items-center gap-2">
                 <LuZap className="w-5 h-5" /> Regra de Ouro (Pagar/Perdoar)
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-background p-4 rounded-xl border">
                   <span className="text-lg font-bold text-muted-foreground uppercase">
                     Objeto Coisa (VTD)
@@ -1554,7 +1589,7 @@ export default function AulaRegencia({
           {/* ★ RICH INTRO M7 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Ir e Chegar: A Batalha entre 'A' e 'EM' que Define Aprovações"
               variant={mv[7]}
             />
@@ -1759,13 +1794,13 @@ export default function AulaRegencia({
           {/* ★ RICH INTRO M8 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Os Verbos que a CESGRANRIO Mais Ama: Implicar, Preferir, Aludir e Outros"
               variant={mv[8]}
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
               <p>
-                Além dos verbos já estudados nos módulos anteriores, existe um grupo de verbos que a CESGRANRIO eleva à categoria de "armadilha de elite" — verbos cujo uso incorreto é tão disseminado na linguagem coloquial que parece natural mesmo para falantes instruídos. Implicar, preferir, aludir, referir-se, obedecer e simpatizar formam esse grupo de <strong>peculiaridades de alta frequência</strong> nas provas de concurso público de nível superior. Dominar esses verbos significa garantir pontos que a maioria dos candidatos perde por confiança excessiva no instinto linguístico.
+                Além dos verbos já estudados nos módulos anteriores, existe um grupo de verbos que a CESGRANRIO eleva à categoria de "armadilha de Avançado" — verbos cujo uso incorreto é tão disseminado na linguagem coloquial que parece natural mesmo para falantes instruídos. Implicar, preferir, aludir, referir-se, obedecer e simpatizar formam esse grupo de <strong>peculiaridades de alta frequência</strong> nas provas de concurso público de nível superior. Dominar esses verbos significa garantir pontos que a maioria dos candidatos perde por confiança excessiva no instinto linguístico.
               </p>
               <p>
                 O verbo <strong>IMPLICAR</strong> é provavelmente o mais explorado pela banca. No sentido de "acarretar, causar, ter como consequência", é transitivo direto — sem preposição: "A decisão implica <em>riscos</em> financeiros" (nunca "implica em riscos"). O uso com "EM" é um hipercorrecionismo coloquial extremamente comum, mas gramaticalmente equivocado na norma culta. No sentido de "comprometer alguém, envolver em culpa", também é transitivo direto: "A investigação implicou o diretor". Apenas no sentido de "ser implicante, irritar-se" (sentido informal) pode ser intransitivo ou construído com "COM": "Ele implica com tudo".
@@ -2008,7 +2043,7 @@ export default function AulaRegencia({
           {/* ★ RICH INTRO M9 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="A Preposição Viajante: Como a Regência Comanda os Pronomes Relativos"
               variant={mv[9]}
             />
@@ -2059,7 +2094,7 @@ export default function AulaRegencia({
               exigir preposição, ela deve ser jogada para ANTES do pronome.
             </p>
             <Comparison
-              title="O Pulo do Gato"
+              title="Destaque Estratégico"
               left={{
                 title: "Incompleto",
                 content: "Estes são os poços **que** referi.",
@@ -2234,8 +2269,8 @@ export default function AulaRegencia({
           {/* ★ RICH INTRO M10 */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
-              title="Simulado Mestre: Como a CESGRANRIO Monta Questões de Regência"
+              index="INTRO"
+              title="Simulado Geral: Como a CESGRANRIO Monta Questões de Regência"
               variant={mv[10]}
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">

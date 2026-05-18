@@ -42,7 +42,7 @@ const MODULE_DEFS = [
   { id: "modulo-2", label: "Módulo 2", title: "Medidas de Controle Prioritárias" },
   { id: "modulo-3", label: "Módulo 3", title: "O Prontuário de Instalações Elétricas (PIE)" },
   { id: "modulo-4", label: "Módulo 4", title: "Medidas de Proteção Individual e Vestimentas" },
-  { id: "modulo-5", label: "Módulo 5", title: "Zonas de Risco e Simulado Mestre" },
+  { id: "modulo-5", label: "Módulo 5", title: "Zonas de Risco e Simulado Geral" },
 ] as const;
 
 export default function AulaNr10({
@@ -59,8 +59,45 @@ export default function AulaNr10({
   prevTopico,
   nextTopico,
 }: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_seguranca_nr10_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   const [quizM1, setQuizM1] = useState<typeof QUIZ_M1_NR10_INTRO>([]);
   const [quizM2, setQuizM2] = useState<typeof QUIZ_M2_NR10_MEDIDAS_CONTROLE>([]);
@@ -165,7 +202,7 @@ export default function AulaNr10({
                 conteudo: <p>Numa refinaria, o desenhista do diagrama elétrico (Projeto) e o pedreiro que abre valas perto de cabos (Proximidades) estão ambos sob a égide da NR-10.</p>,
               },
               {
-                titulo: "Pegadinhas de Concurso",
+                titulo: "pontos de atenção de Concurso",
                 icone: <LuLightbulb className="w-5 h-5" />,
                 conteudo: <p>A banca vai dizer que a NR-10 só se aplica a instalações de "Alta Tensão". FALSO. Aplica-se a Baixa e Alta Tensão indistintamente desde que haja risco.</p>,
               }
@@ -184,7 +221,7 @@ export default function AulaNr10({
               materia: "Segurança",
               images: [{ title: "G-T-D-C", type: "infographic", placeholderColor: "amber" }]
             }}
-            maceteVisual={{ title: "Berço ao Túmulo", content: "Projeto -> Construção -> Operação -> Manutenção -> Descarte" }}
+            sinteseEstrategica={{ title: "Berço ao Túmulo", content: "Projeto -> Construção -> Operação -> Manutenção -> Descarte" }}
             audio={{ audioUrl: "/audio/nr10-m1.mp3", titulo: "Podcast NR-10 Intro", artista: "Prof. Petro" }}
           />
 
@@ -214,7 +251,7 @@ export default function AulaNr10({
                 A medida prioritária absoluta de proteção coletiva é a <strong>Desenergização Elétrica</strong>. 
                 Se desenergizar for tecnicamente inviável, a segunda opção prioritária é o emprego de <strong>Tensão de Segurança</strong>.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
                 <div className="p-4 bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-800 rounded-xl">
                   <p className="font-bold text-blue-900 dark:text-blue-100 flex items-center gap-2 mb-2">
                     <LuShield className="w-5 h-5" /> EPC (Prioridade 1)
@@ -271,7 +308,7 @@ export default function AulaNr10({
               materia: "NR-10",
               images: [{ title: "EPC > EPI", type: "infographic", placeholderColor: "blue" }]
             }}
-            maceteVisual={{ title: "S-I-C-A-P-S", content: "Secciona, Impede, Constata, Aterra, Protege e Sinaliza!" }}
+            sinteseEstrategica={{ title: "S-I-C-A-P-S", content: "Secciona, Impede, Constata, Aterra, Protege e Sinaliza!" }}
             audio={{ audioUrl: "/audio/nr10-m2.mp3", titulo: "Audioaula Medidas", artista: "Prof. Petro" }}
           />
 
@@ -298,7 +335,7 @@ export default function AulaNr10({
               </p>
               <p>
                 O estabelecimento deve manter um Prontuário organizado e atualizado (Item 10.2.4). 
-                A regra de ouro que gera inúmeras questões de prova é o limite de potência: Empresas com carga instalada superior a <strong>75 kW</strong> são obrigadas a constituir o PIE. 
+                Princípio Fundamental que gera inúmeras questões de prova é o limite de potência: Empresas com carga instalada superior a <strong>75 kW</strong> são obrigadas a constituir o PIE. 
               </p>
               <p>
                 Este prontuário não é apenas "um papel", mas sim um compilado de diagramas unifilares, relatórios de auditoria, laudos de sistema de terra e especificações de EPIs/EPCs.
@@ -350,7 +387,7 @@ export default function AulaNr10({
               materia: "NR-10",
               images: [{ title: "PIE Checklist", type: "table", placeholderColor: "emerald" }]
             }}
-            maceteVisual={{ title: "75 é o Limite", content: "Carga > 75kW = PIE Obrigatório!" }}
+            sinteseEstrategica={{ title: "75 é o Limite", content: "Carga > 75kW = PIE Obrigatório!" }}
             audio={{ audioUrl: "/audio/nr10-m3.mp3", titulo: "Podcast PIE", artista: "Prof. Petro" }}
           />
 
@@ -414,7 +451,7 @@ export default function AulaNr10({
                 ),
               },
               {
-                titulo: "A Pegadinha da Aliança",
+                titulo: "A pontos de atenção da Aliança",
                 icone: <LuTriangleAlert className="w-5 h-5 text-orange-500" />,
                 conteudo: <p>Bancas afirmam que adornos por baixo do EPI são permitidos. FALSO. A proibição é absoluta para evitar pontos de calor e indução.</p>,
               }
@@ -433,7 +470,7 @@ export default function AulaNr10({
               materia: "NR-10",
               images: [{ title: "Proibição de Adornos", type: "infographic", placeholderColor: "orange" }]
             }}
-            maceteVisual={{ title: "Regra da Pele", content: "EPI é o úlitmo escudo. Se chegou no EPI, a proteção coletiva falhou." }}
+            sinteseEstrategica={{ title: "Regra da Pele", content: "EPI é o úlitmo escudo. Se chegou no EPI, a proteção coletiva falhou." }}
             audio={{ audioUrl: "/audio/nr10-m4.mp3", titulo: "Podcast Vestimentas", artista: "Prof. Petro" }}
           />
 
@@ -506,7 +543,7 @@ export default function AulaNr10({
               materia: "NR-10",
               images: [{ title: "Raios de Segurança", type: "diagram", placeholderColor: "red" }]
             }}
-            maceteVisual={{ title: "ZR = Arco", content: "Na ZR, o arco pula. Na ZC, ele te observa." }}
+            sinteseEstrategica={{ title: "ZR = Arco", content: "Na ZR, o arco pula. Na ZC, ele te observa." }}
             audio={{ audioUrl: "/audio/nr10-m5.mp3", titulo: "Podcast Final", artista: "Prof. Petro" }}
           />
 

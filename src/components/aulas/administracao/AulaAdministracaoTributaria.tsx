@@ -13,7 +13,7 @@
  * - Prática (QuizInterativo)
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AulaProps, QuizQuestion } from "../shared";
 import {
   ModuleConsolidation,
@@ -49,12 +49,49 @@ const MODULE_DEFS = [
   { id: "modulo-7", label: "Módulo 7", title: "Controle de Créditos Tributários" },
   { id: "modulo-8", label: "Módulo 8", title: "Sistemas de Informação Tributária" },
   { id: "modulo-9", label: "Módulo 9", title: "Administração Tributária em Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Geral" },
 ] as const;
 
 export default function AulaAdministracaoTributaria(props: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_administracao_tributaria_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   const handleQuizComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
@@ -78,7 +115,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={1}
+          index="INTRO"
           title="Administração Tributária: Conceitos"
           description="Disciplina que estuda gestão de tributos na empresa"
           variant={getModuleVariant(1)}
@@ -125,7 +162,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
             { title: "Órgãos e Jurisdições", type: "Estrutura", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Tripé da Administração Tributária",
           content: <div className="text-lg space-y-2"><p><strong>1. Conformidade:</strong> Cumprir prazos e obrigações</p><p><strong>2. Otimização:</strong> Reduzir custos legalmente</p><p><strong>3. Segurança:</strong> Documentação robusta</p></div>,
         }}
@@ -212,7 +249,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
             { title: "SEFAZ/Prefeitura", type: "Estadual/Municipal", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Hierarquia dos Órgãos",
           content: <div className="text-lg space-y-2"><p><strong>Federal:</strong> RFB (IR, COFINS, PIS)</p><p><strong>Estadual:</strong> SEFAZ (ICMS)</p><p><strong>Municipal:</strong> Prefeitura (ISS)</p></div>,
         }}
@@ -299,7 +336,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
             { title: "Livros Fiscais", type: "Registros", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Documentação Essencial",
           content: <div className="text-lg space-y-2"><p><strong>NF-e:</strong> Venda de mercadoria</p><p><strong>RPA:</strong> Serviço autônomo</p><p><strong>ECD:</strong> Contabilidade digital</p></div>,
         }}
@@ -386,7 +423,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
             { title: "SPED", type: "Sistema", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Calendário de Declarações",
           content: <div className="text-lg space-y-2"><p><strong>ECF:</strong> Até dia 15 (mensal)</p><p><strong>DACON:</strong> Quando compensar</p><p><strong>DIPJ:</strong> Até 30 de abril</p></div>,
         }}
@@ -473,7 +510,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
             { title: "Penalidades", type: "Consequências", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Regra de Ouro",
           content: <div className="text-lg space-y-2"><p><strong>Dia 15:</strong> ICMS, PIS, COFINS, INSS</p><p><strong>Dia 21:</strong> IR (estimativa)</p><p><strong>Não atrasar = evitar multas imensas</strong></p></div>,
         }}
@@ -560,7 +597,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
             { title: "Fluxo de Caixa", type: "Gestão", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Equação de Sucesso",
           content: <div className="text-lg space-y-2"><p><strong>Conformidade:</strong> 100% cumprimento</p><p><strong>+Otimização:</strong> reduzir custos legalmente</p><p><strong>=Excelência tributária</strong></p></div>,
         }}
@@ -647,7 +684,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
             { title: "Prescrição de Créditos", type: "Gestão", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Fórmula ICMS",
           content: <div className="text-lg space-y-2"><p><strong>Débito (saída):</strong> ICMS na venda</p><p><strong>- Crédito (entrada):</strong> ICMS na compra</p><p><strong>= ICMS a pagar</strong> (a diferença)</p></div>,
         }}
@@ -734,7 +771,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
             { title: "Certificado Digital", type: "Segurança", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Fluxo Digital",
           content: <div className="text-lg space-y-2"><p><strong>ERP → NF-e (valida) → Assina (cert.) → SEFAZ</strong></p><p><strong>ERP → SPED (valida) → Assina → RFB</strong></p><p>Tudo integrado, automático</p></div>,
         }}
@@ -821,7 +858,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
             { title: "Royalties e Governance", type: "Operação", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Complexidade Petrobras",
           content: <div className="text-lg space-y-2"><p><strong>27 estados:</strong> cada um com ICMS diferente</p><p><strong>Bilhões em imposto:</strong> exigem precisão absoluta</p><p><strong>Royalties/PE:</strong> repassos bilionários ao governo</p></div>,
         }}
@@ -857,18 +894,18 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
 
   const renderModulo10 = () => (
     <div className="space-y-6">
-      <ModuleBanner numero={10} titulo="Simulado Mestre - Administração Tributária" descricao="Teste integrado: conceitos, prazos, procedimentos, aplicação Petrobras" variant={getModuleVariant(10)} />
+      <ModuleBanner numero={10} titulo="Simulado Geral - Administração Tributária" descricao="Teste integrado: conceitos, prazos, procedimentos, aplicação Petrobras" variant={getModuleVariant(10)} />
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
           index={10}
-          title="Simulado Mestre - Administração Tributária"
+          title="Simulado Geral - Administração Tributária"
           description="Teste integrado: conceitos, prazos, procedimentos, aplicação Petrobras"
           variant={getModuleVariant(10)}
         />
         <div className="space-y-6 text-lg leading-relaxed text-foreground">
           <p>
-            O <strong>Simulado Mestre integra conhecimento</strong> de todos os 9 módulos anteriores em questões práticas. Não é teste de memorização, mas de compreensão e aplicação. Questões: cenários realistas (empresa tem situação tributária X, qual é o procedimento correto?), análise crítica (identifique órgão responsável, prazo aplicável, documentação necessária), decisão (qual estratégia reduz imposto legalmente?). Objetivo: validar se você domina administração tributária de forma integrada.
+            O <strong>Simulado Geral integra conhecimento</strong> de todos os 9 módulos anteriores em questões práticas. Não é teste de memorização, mas de compreensão e aplicação. Questões: cenários realistas (empresa tem situação tributária X, qual é o procedimento correto?), análise crítica (identifique órgão responsável, prazo aplicável, documentação necessária), decisão (qual estratégia reduz imposto legalmente?). Objetivo: validar se você domina administração tributária de forma integrada.
           </p>
           <p>
             Os <strong>domínios avaliados</strong> no simulado incluem: (1) <strong>Conhecimento:</strong> quem é o órgão arrecadador? Qual é o prazo? Qual documentação é necessária? (2) <strong>Procedimentos:</strong> como registrar operação? Como aproveitar crédito? Como fazer declaração? Qual é o passo-a-passo correto? (3) <strong>Gestão:</strong> como otimizar fluxo tributário? Como evitar multas? Como estruturar operação para minimizar imposto? Todas as dimensões aparecem nas questões.
@@ -880,7 +917,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
             A <strong>preparação para prova Petrobras</strong> com esse simulado deve ser rigorosa. Atingir 70% ou mais demonstra competência de técnico em administração tributária. Questões cobram: gestão de impostos, conformidade, prazos, sistemas, procedimentos administrativos. Se você entende como responder corretamente, preparou bem para qualquer questão de prova. Simulado é "ensaio geral" antes da prova oficial. Tempo: geralmente 10-15 questões, 30-45 minutos (teste sua velocidade).
           </p>
           <p>
-            Os <strong>benefícios de passar no Simulado Mestre</strong> com ≥70%: demonstra que você consolidou aprendizado dos 10 módulos, está pronto para prova, pode responder questões práticas de administração tributária em ambiente real (Petrobras), tem base sólida para evitar erros em operações reais. Estudar administração tributária não é apenas para passar em prova: é para trabalhar com integridade e competência na Petrobras. Cada procedimento que você aprende aqui protege empresa de riscos tributários.
+            Os <strong>benefícios de passar no Simulado Geral</strong> com ≥70%: demonstra que você consolidou aprendizado dos 10 módulos, está pronto para prova, pode responder questões práticas de administração tributária em ambiente real (Petrobras), tem base sólida para evitar erros em operações reais. Estudar administração tributária não é apenas para passar em prova: é para trabalhar com integridade e competência na Petrobras. Cada procedimento que você aprende aqui protege empresa de riscos tributários.
           </p>
           <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
             <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-3">👑 Domínio Total</p>
@@ -898,7 +935,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
       <ModuleConsolidation
         index={10}
         variant={getModuleVariant(10)}
-        video={{ videoId: "dQw4w9WgXcQ", title: "Simulado Mestre", duration: "12:00" }}
+        video={{ videoId: "dQw4w9WgXcQ", title: "Simulado Geral", duration: "12:00" }}
         resumoVisual={{
           moduloNome: "Módulo 10",
           tituloAula: "Administração Tributária",
@@ -908,11 +945,11 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
             { title: "Aplicação Prática", type: "Competência", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Estrutura Simulado",
           content: <div className="text-lg space-y-2"><p><strong>10 questões integradas</strong> cobrindo todos módulos</p><p><strong>Conhecimento + Procedimentos + Gestão</strong></p><p><strong>70%+ = Expert em Tributária</strong></p></div>,
         }}
-        audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Simulado Mestre", artista: "Prof. Administração" }}
+        audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Simulado Geral", artista: "Prof. Administração" }}
       />
 
       <ContentAccordion
@@ -934,7 +971,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
 
       <QuizInterativo
         questoes={toQQ(ADMINISTRACAO_TRIBUTARIA_QUIZZES["modulo-10"])}
-        titulo="Simulado Mestre - Administração Tributária"
+        titulo="Simulado Geral - Administração Tributária"
         numero={10}
         variant={getModuleVariant(10)}
         onComplete={(score: number) => handleQuizComplete("modulo-10", score)}

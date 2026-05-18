@@ -15,7 +15,7 @@
  * NOVO: Rich Intro Sections com ModuleSectionHeader e callout boxes
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AulaProps, QuizQuestion } from "../shared";
 import {
   ModuleConsolidation,
@@ -51,12 +51,49 @@ const MODULE_DEFS = [
   { id: "modulo-7", label: "Módulo 7", title: "Normas de Incidência" },
   { id: "modulo-8", label: "Módulo 8", title: "Tributos em Operações Petrobras" },
   { id: "modulo-9", label: "Módulo 9", title: "Planejamento Tributário Lícito" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Geral" },
 ] as const;
 
 export default function AulaDireitoTributario(props: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_direito_tributario_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   const handleQuizComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
@@ -85,7 +122,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={1}
+          index="INTRO"
           title="O Sistema Tributário Nacional"
           description="Entenda como a Constituição Federal organiza o poder de tributar no Brasil."
           variant={getModuleVariant(1)}
@@ -138,8 +175,8 @@ export default function AulaDireitoTributario(props: AulaProps) {
             { title: "Entes Federativos", type: "Mapa Mental", placeholderColor: "bg-indigo-500/20" },
           ],
         }}
-        maceteVisual={{
-          title: "O Pulo do Gato",
+        sinteseEstrategica={{
+          title: "Destaque Estratégico",
           content: <p className="text-lg italic">{"Competência é indelegável. O que é meu, é meu e ninguém tasca (só posso delegar a capacidade de arrecadar)."}</p>
         }}
         audio={{
@@ -244,7 +281,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
             { title: "Comércio Exterior", type: "Fluxograma", placeholderColor: "bg-indigo-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Federais = Lucro e Fronteira (IRPJ e Comércio Exterior)"}</p>
         }}
@@ -343,7 +380,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
             { title: "Retenção de ISS", type: "Diagrama", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Consumo = Indireto (Alguém paga, você sente no preço final)."}</p>
         }}
@@ -437,7 +474,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
             { title: "CIDE-Combustíveis", type: "Fluxograma", placeholderColor: "bg-violet-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"CIDE = Intervenção (Governo usando imposto para regular o preço do óleo)."}</p>
         }}
@@ -531,7 +568,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
             { title: "Extinção do Crédito", type: "Fluxograma", placeholderColor: "bg-amber-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Fato Gerador ocorreu? Dívida nasceu! Lançamento formalizou? Cobrança começou!"}</p>
         }}
@@ -630,7 +667,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
             { title: "Rito de Punição", type: "Diagrama", placeholderColor: "bg-rose-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Multa não é tributo! Tributo é obrigação, multa é punição."}</p>
         }}
@@ -720,7 +757,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
             { title: "Pilares da Incidência", type: "Diagrama", placeholderColor: "bg-amber-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Fato Gerador é o gatilho; Base e Alíquota definem o tamanho do estrago no caixa."}</p>
         }}
@@ -815,7 +852,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
             { title: "Royalties e Taxas", type: "Diagrama", placeholderColor: "bg-blue-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Royalties se paga pela produção; Imposto se paga pelo lucro."}</p>
         }}
@@ -905,7 +942,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
             { title: "Elisão Fiscal", type: "Mapa Mental", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Elisão = Lícita (Antes do fato gerador). Evasão = Crime (Depois do fato gerador)."}</p>
         }}
@@ -959,7 +996,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
     <div className="space-y-6">
       <ModuleBanner
         numero={10}
-        titulo="Simulado Mestre"
+        titulo="Simulado Geral"
         descricao="Teste seus conhecimentos em Direito Tributário com foco total Cesgranrio."
         variant={getModuleVariant(10)}
       />
@@ -974,7 +1011,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
 
         <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
           <p>
-            O <strong>Simulado Mestre</strong> é a avaliação consolidada de todo o conteúdo de Direito Tributário. Este módulo reúne questões que abrangem todos os tópicos estudados: fundamentos do sistema tributário nacional, tributos federais, estaduais e municipais, obrigações tributárias, fiscalização, normas de incidência e planejamento tributário lícito. A dificuldade das questões reflete o padrão cobrado em concursos Cesgranrio para a posição de Técnico em Suprimento.
+            O <strong>Simulado Geral</strong> é a avaliação consolidada de todo o conteúdo de Direito Tributário. Este módulo reúne questões que abrangem todos os tópicos estudados: fundamentos do sistema tributário nacional, tributos federais, estaduais e municipais, obrigações tributárias, fiscalização, normas de incidência e planejamento tributário lícito. A dificuldade das questões reflete o padrão cobrado em concursos Cesgranrio para a posição de Técnico em Suprimento.
           </p>
           <p>
             Como técnico em suprimento na Petrobras, você será responsável por operações que geram consequências tributárias complexas. Este simulado valida sua capacidade de identificar rapidamente o tipo de tributo envolvido, a competência do ente tributante, a base de cálculo e as obrigações acessórias. Em situações reais, essa análise determina se a empresa fica em dia com suas obrigações ou incorre em multas severas e juros moratórios.
@@ -1013,7 +1050,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
             { title: "Resumo Global", type: "Diagrama", placeholderColor: "bg-rose-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Leia o enunciado com calma. Identifique o tributo e a competência primeiro."}</p>
         }}
@@ -1067,7 +1104,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
       />
 
       <QuizInterativo
-        titulo="Simulado Mestre"
+        titulo="Simulado Geral"
         numero={10}
         variant={getModuleVariant(10)}
         questoes={toQQ(DIREITO_TRIBUTARIO_QUIZZES["modulo-10"])}

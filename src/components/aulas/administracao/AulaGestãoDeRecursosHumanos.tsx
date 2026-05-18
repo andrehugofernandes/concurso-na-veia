@@ -9,7 +9,7 @@
  * Status: PREMIUM - 100% content + 60 questões
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { AulaProps, ModuleBanner, ModuleSectionHeader, ContentAccordion, CardCarousel, ModuleConsolidation, QuizInterativo, getRandomQuestions } from "../shared";
@@ -75,7 +75,7 @@ const MODULE_DEFS = [
   {
     id: "modulo-10",
     label: "Módulo 10",
-    title: "Simulado Mestre - RH Integrado",
+    title: "Simulado Geral - RH Integrado",
     icon: Trophy,
   },
 ] as const;
@@ -614,7 +614,7 @@ Solução: Comunicação transparente, benefícios competitivos, desenvolvimento
     slides: [
       {
         label: "Conceito",
-        content: `**Simulado Mestre - Gestão de Recursos Humanos**
+        content: `**Simulado Geral - Gestão de Recursos Humanos**
 
 Revisão integrada dos 9 módulos anteriores:
 
@@ -679,9 +679,67 @@ Cuidado: Resposta correta passa por "Governança" em 80% das questões Petrobras
 };
 
 export default function AulaGestãoDeRecursosHumanos(props: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [unlockedModules, setUnlockedModules] = useState(["modulo-1"]);
-  const [completedModules, setCompletedModules] = useState<string[]>([]);
+  const STORAGE_KEY_PREFIX = "petrobras_quest_aula_gestao_recursos_humanos_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [unlockedModules, setUnlockedModules] = useState<string[]>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}unlocked_modules`);
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          return ["modulo-1"];
+        }
+      }
+    }
+    return ["modulo-1"];
+  });
+
+  const [completedModules, setCompletedModules] = useState<string[]>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          return [];
+        }
+      }
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}unlocked_modules`,
+        JSON.stringify(unlockedModules)
+      );
+    }
+  }, [unlockedModules]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(completedModules)
+      );
+    }
+  }, [completedModules]);
 
   const handleModuleComplete = (moduleId: string) => {
     setCompletedModules([...completedModules, moduleId]);
@@ -734,61 +792,63 @@ export default function AulaGestãoDeRecursosHumanos(props: AulaProps) {
         </TabsList>
 
         {MODULE_DEFS.map((mod) => (
-          <TabsContent key={mod.id} value={mod.id} className="space-y-6">
-            <ModuleBanner
-              number={MODULE_DEFS.findIndex((m) => m.id === mod.id) + 1}
-              title={mod.title}
-              description={`Módulo ${MODULE_DEFS.findIndex((m) => m.id === mod.id) + 1} de 10 - Gestão de Recursos Humanos`}
-              variant={variant}
-            />
+          activeTab === mod.id && (
+            <TabsContent key={mod.id} value={mod.id} className="space-y-6">
+              <ModuleBanner
+                numero={MODULE_DEFS.findIndex((m) => m.id === mod.id) + 1}
+                titulo={mod.title}
+                descricao={`Módulo ${MODULE_DEFS.findIndex((m) => m.id === mod.id) + 1} de 10 - Gestão de Recursos Humanos`}
+                variant={variant}
+              />
 
-            <ModuleSectionHeader
-              title={mod.title}
-              icon={mod.icon}
-              variant={variant}
-            />
+              <ModuleSectionHeader
+                index={MODULE_DEFS.findIndex((m) => m.id === mod.id) + 1}
+                title={mod.title}
+                variant={variant}
+              />
 
-            {moduleContent && (
-              <>
-                <ContentAccordion
-                  slides={moduleContent.slides}
-                  variant={variant}
-                />
+              {moduleContent && (
+                <>
+                  <ContentAccordion
+                    slides={moduleContent.slides}
+                    mode="stacked"
+                  />
 
-                <CardCarousel
-                  cards={[
-                    {
-                      title: "Conceito-Chave",
-                      description:
-                        moduleContent.consolidation.summary,
-                      icon: "💡",
-                    },
-                    {
-                      title: "Aplicação Prática",
-                      description: `Implementar em sua área: ${moduleContent.consolidation.mnemonic}`,
-                      icon: "🎯",
-                    },
-                  ]}
-                  variant={variant}
-                />
+                  <CardCarousel
+                    cards={[
+                      {
+                        titulo: "Conceito-Chave",
+                        descricao: moduleContent.consolidation.summary,
+                        icone: "💡",
+                      },
+                      {
+                        titulo: "Aplicação Prática",
+                        descricao: `Implementar em sua área: ${moduleContent.consolidation.mnemonic}`,
+                        icone: "🎯",
+                      },
+                    ]}
+                  />
 
-                <ModuleConsolidation
-                  videoTitle={moduleContent.consolidation.video}
-                  audioTitle={moduleContent.consolidation.audio}
-                  summary={moduleContent.consolidation.summary}
-                  mnemonic={moduleContent.consolidation.mnemonic}
-                  variant={variant}
-                />
+                  {/* 
+                  <ModuleConsolidation
+                    videoTitle={moduleContent.consolidation.video}
+                    audioTitle={moduleContent.consolidation.audio}
+                    summary={moduleContent.consolidation.summary}
+                    mnemonic={moduleContent.consolidation.mnemonic}
+                    variant={variant}
+                  />
+                  */}
 
-                <QuizInterativo
-                  questions={activeTab === "modulo-10" ? getRandomQuestions(QUIZ_GESTAO_RH["modulo-10"] || [], 10) : (QUIZ_GESTAO_RH[activeTab as keyof typeof QUIZ_GESTAO_RH] || [])}
-                  onComplete={() => handleModuleComplete(activeTab)}
-                  variant={variant}
-                  passingScore={70}
-                />
-              </>
-            )}
-          </TabsContent>
+                  <QuizInterativo
+                    questoes={activeTab === "modulo-10" ? getRandomQuestions(QUIZ_GESTAO_RH["modulo-10"] || [], 10) : (QUIZ_GESTAO_RH[activeTab as keyof typeof QUIZ_GESTAO_RH] || [])}
+                    titulo={`Quiz: ${mod.title}`}
+                    onComplete={() => handleModuleComplete(activeTab)}
+                    variant={variant}
+                  />
+                </>
+              )}
+            </TabsContent>
+          )
         ))}
       </Tabs>
 

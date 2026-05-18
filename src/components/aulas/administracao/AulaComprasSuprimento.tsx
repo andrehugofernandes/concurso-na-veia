@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AulaProps, QuizQuestion } from "../shared";
 import {
   ModuleConsolidation,
@@ -49,14 +49,49 @@ const MODULE_DEFS = [
   { id: "modulo-7", label: "Módulo 7", title: "e-Procurement" },
   { id: "modulo-8", label: "Módulo 8", title: "Ética e Compliance" },
   { id: "modulo-9", label: "Módulo 9", title: "Compras na Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Geral" },
 ] as const;
 
 export default function AulaComprasSuprimento(props: AulaProps) {
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_compras_suprimento_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
 
   const handleQuizComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
@@ -87,7 +122,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={1}
+          index="INTRO"
           title="A Base do Suprimento Estratégico"
           description="Entenda por que compras é o coração financeiro da indústria."
           variant={getModuleVariant(1)}
@@ -107,7 +142,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
             O <strong>Custo Total de Propriedade (TCO - Total Cost of Ownership)</strong> é a lente através da qual as decisões modernas de compras são tomadas. Em vez de focar no menor Preço de Aquisição, o TCO contabiliza fretes, impostos, custos de instalação, treinamento, manutenção, consumo de energia e até o descarte. Um equipamento 20% mais barato pode ter um TCO 40% maior devido a quebras frequentes, o que justifica a escolha técnica por fornecedores mais confiáveis, mesmo com valor de face superior.
           </p>
           <p>
-            No contexto da Petrobras (e provas da CESGRANRIO), a continuidade operacional é o mantra absoluto. Uma plataforma offshore (E&P) ou refinaria não pode parar por falta de uma válvula crítica. Portanto, o <em>Lead Time</em> (tempo desde a emissão do pedido até o recebimento) e a confiabilidade do fornecedor muitas vezes superam a guerra por centavos. O suprimento na estatal atua para garantir a segurança da operação, equilibrando austeridade financeira com a garantia de excelência em segurança e meio ambiente (SMS).
+            No contexto da Petrobras (e provas da CESGRANRIO), a continuidade operacional é O Princípio absoluto. Uma plataforma offshore (E&P) ou refinaria não pode parar por falta de uma válvula crítica. Portanto, o <em>Lead Time</em> (tempo desde a emissão do pedido até o recebimento) e a confiabilidade do fornecedor muitas vezes superam a guerra por centavos. O suprimento na estatal atua para garantir a segurança da operação, equilibrando austeridade financeira com a garantia de excelência em segurança e meio ambiente (SMS).
           </p>
 
           <div className="bg-indigo-500/10 border-l-4 border-indigo-500 p-5 rounded-r-xl mt-6">
@@ -140,7 +175,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
             { title: "Evolução do Setor", type: "Mapa Mental", placeholderColor: "bg-indigo-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "A Regra Mnemônica",
           content: <p className="text-lg italic text-center">"Q² T P F: Quem Quer Ter Preço Forte (Qualidade, Quantidade, Tempo, Preço, Fonte)"</p>,
         }}
@@ -186,7 +221,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
                   <ul className="list-disc pl-5 space-y-2">
                     <li><strong>Compras Centralizadas:</strong> Melhor negociação (ganho de escala), padronização, mas menor agilidade e pouca adaptação local.</li>
                     <li><strong>Compras Descentralizadas:</strong> Velocidade de resposta, autonomia local, mas perda de economia de escala.</li>
-                    <li><strong>TCO (Custo Total de Propriedade):</strong> Nunca caia na pegadinha do "menor preço de nota fiscal". TCO = Preço base + Aquisição + Custos Operacionais.</li>
+                    <li><strong>TCO (Custo Total de Propriedade):</strong> Nunca caia na pontos de atenção do "menor preço de nota fiscal". TCO = Preço base + Aquisição + Custos Operacionais.</li>
                   </ul>
                 </div>
               ),
@@ -279,7 +314,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
             { title: "Fluxo P2P (Procure-to-Pay)", type: "Fluxograma", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "A Santíssima Trindade do Recebimento",
           content: <p className="text-lg italic text-center">"O Triplo Check P-R-N: Pedido, Recebimento e Nota."</p>,
         }}
@@ -415,7 +450,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
             { title: "Matriz Make | Buy", type: "Quadro Comparativo", placeholderColor: "bg-amber-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "A Diferença Crucial",
           content: <p className="text-lg italic text-center">"SOLE = Solo (Sozinho no Mundo). SINGLE = Escolha Singela do Coração."</p>,
         }}
@@ -553,7 +588,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
             { title: "Gráfico de ZOPA", type: "Gráfico X-Y", placeholderColor: "bg-rose-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Bate na Zopa!",
           content: <p className="text-lg italic text-center">"O BATNA protege (Alternativa). A ZOPA permite fechar acordo (Zona)."</p>,
         }}
@@ -575,7 +610,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
                 <div className="space-y-4">
                   <p><strong>ZOPA (Zone of Possible Agreement):</strong> É a zona de possível acordo. O limite máximo que o comprador aceita pagar cruzado com o limite mínimo que o vendedor aceita cobrar. <strong>BATNA:</strong> Melhor alternativa em caso de não acordo (sua válvula de escape caso as negociações fracassem).</p>
                   <AlertBox tipo="info" titulo="O Poder do BATNA">
-                    A regra de ouro da negociação de Harvard: Quem tem o melhor BATNA detém o poder na mesa. Se você não depende do fornecedor (tem outros homologados), ele cederá.
+                    Princípio Fundamental da negociação de Harvard: Quem tem o melhor BATNA detém o poder na mesa. Se você não depende do fornecedor (tem outros homologados), ele cederá.
                   </AlertBox>
                 </div>
               ),
@@ -689,7 +724,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
             { title: "Matriz Portfólio de Compras", type: "Tabela", placeholderColor: "bg-violet-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "A Pirâmide da Decisão",
           content: <p className="text-lg italic text-center">"Da prateleira do JIT à Cadeira do Acordo-Quadro. Fuja da Emergencial!"</p>,
         }}
@@ -824,7 +859,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
             { title: "SLA x Pagamentos Mensais Glosados", type: "Fluxograma", placeholderColor: "bg-indigo-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "SLA não perdoa",
           content: <p className="text-lg italic text-center">"O SLA é o juiz cego. Bateu a métrica ganha. Falhou, leva glosa mensal na cabeça financeira corporativamente faturada pela fiscalização implacável rígida estatal fiscalizadora."</p>,
         }}
@@ -959,7 +994,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
             { title: "Arquitetura Petronect e SAP B2B EDI", type: "Esquema Digital de API", placeholderColor: "bg-emerald-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Sem papel. Sem Miguel.",
           content: <p className="text-lg italic text-center">"O digital rastreia e barateia. Catálogo para agilidade, Leilão Reverso para Commodities e Preço. Integração total no ERP."</p>,
         }}
@@ -1094,7 +1129,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
             { title: "Matriz Sustentabilidade ESG x Lucratividade na Contratação", type: "Fluxograma de Balança", placeholderColor: "bg-amber-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Brinde, Cartel e Ambiente Sustentável",
           content: <p className="text-lg italic text-center">"Amigo secreto de 1 milhão? Corrupção! Compre do melhor e fiscalize como ele fabrica."</p>,
         }}
@@ -1229,7 +1264,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
             { title: "Balança da Estata: Dinheiro Público vs Agilidade Privada", type: "Equação Dinâmica Ilustratória Gráfica Visual", placeholderColor: "bg-rose-500/20" },
           ],
         }}
-        maceteVisual={{
+        sinteseEstrategica={{
           title: "Rigidez Moral com Agilidade Funcional Comercial Operante Eficiente Otimizada Veloz Rápida Inteligente Lucrativa Competitiva Sustentável Robusta",
           content: <p className="text-lg italic text-center">"O RLCP é o carro blindado com motor de Fórmula 1 e pneus de tração pesada sustentável aderente."</p>,
         }}
@@ -1307,7 +1342,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
     <div className="space-y-6">
       <ModuleBanner
         numero={10}
-        titulo="Simulado Mestre"
+        titulo="Simulado Geral"
         descricao="Teste final abrangente. Aprovação destrava a XP completa da Missão Geração Ouro da CESGRANRIO focada em concursos Petrobras logísticos."
         variant={getModuleVariant(10)}
       />

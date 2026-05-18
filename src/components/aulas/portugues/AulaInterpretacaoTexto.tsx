@@ -38,7 +38,7 @@ import {
   LuLink,
   LuEye,
   LuCpu,
-  LuCirclePlay as LuPlayCircle,
+  LuCirclePlay,
   LuMusic,
   LuBrain,
   LuDna,
@@ -47,6 +47,7 @@ import {
   LuLayers,
   LuNewspaper,
   LuFileCheck,
+  LuMessageSquare,
 } from "react-icons/lu";
 
 import { getModuleVariant } from "@/lib/moduleColors";
@@ -85,7 +86,7 @@ export default function AulaInterpretacaoTexto({
   const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
   const MODULE_DEFS = [
-    { id: "modulo-1", label: "Módulo 1", titulo: "A Diferença Letal" },
+    { id: "modulo-1", label: "Módulo 1", titulo: "Fundamentos e Distinções Críticas" },
     { id: "modulo-2", label: "Módulo 2", titulo: "O Tópico Frasal" },
     { id: "modulo-3", label: "Módulo 3", titulo: "Coesão e Argumentação" },
     { id: "modulo-4", label: "Módulo 4", titulo: "Tipologia Textual" },
@@ -94,13 +95,48 @@ export default function AulaInterpretacaoTexto({
     { id: "modulo-7", label: "Módulo 7", titulo: "As Ameaças Triplas" },
     { id: "modulo-8", label: "Módulo 8", titulo: "A Lógica CESGRANRIO" },
     { id: "modulo-9", label: "Módulo 9", titulo: "Checklist Tático" },
-    { id: "modulo-10", label: "Módulo 10", titulo: "Arena de Elite" },
+    { id: "modulo-10", label: "Módulo 10", titulo: "Laboratório de Consolidação Final" },
   ];
 
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_portugues_interpretacao_texto_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
 
   const [quizM1, setQuizM1] = useState(QUIZ_M1_POOL);
@@ -201,12 +237,11 @@ export default function AulaInterpretacaoTexto({
       loading={loading}
       xpGanho={xpGanho}
     >
-      {/* ─── MÓDULO 1: A DIFERENÇA LETAL (DOSSIÊ PREMIUM) ─── */}
       <TabsContent value="modulo-1" className="space-y-[50px]">
         <ModuleBanner
           numero={1}
-          titulo="A Diferença Letal"
-          descricao="O Dossiê Premium de Compreensão vs. Interpretação. A fronteira exata entre o que o texto afirma e o que a banca induz."
+          titulo="Fundamentos e Distinções Críticas"
+          descricao="Guia Técnico de Compreensão vs. Interpretação. A fronteira exata entre o que o texto afirma e o que a banca induz."
           variant={mv[1]}
         />
 
@@ -215,18 +250,18 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index="INTRO"
             title="A Fronteira do Sentido: Compreensão vs. Interpretação"
-            description="O checklist mental obrigatório para blindar sua pontuação contra os venenos das alternativas 'quase' certas."
+            description="O checklist mental obrigatório para assegurar sua pontuação contra armadilhas das alternativas 'quase' certas."
             variant={mv[1]}
           />
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
             <p>
-              No teatro de operações da CESGRANRIO, a leitura não é um ato de
+              No contexto de avaliação da CESGRANRIO, a leitura não é um ato de
               lazer, mas um exercício de <strong>extração técnica</strong>. O
               edital da Petrobras demanda que você diferencie, com precisão
               cirúrgica, o que é um dado <em>explícito</em> (Compreensão) do que
               é uma conclusão <em>autorizada</em> (Interpretação). Essa
               distinção é a linha divisória entre o aprovado e o candidato que
-              "acha" que entendeu.
+              demonstra domínio da norma e do sentido.
             </p>
             <p>
               A <strong>Compreensão</strong> foca no que está 'esparramado'
@@ -235,7 +270,7 @@ export default function AulaInterpretacaoTexto({
               você precisar concluir algo que não está escrito com todas as
               letras, você já não está mais em solo de compreensão literal. É
               aqui que os erros de <em>Redução</em> e <em>Extrapolação</em>{" "}
-              começam a ser montados como armadilhas térmicas.
+              começam a ser montados como armadilhas estruturais.
             </p>
             <p>
               Já a <strong>Interpretação</strong> exige o diálogo com as
@@ -253,6 +288,16 @@ export default function AulaInterpretacaoTexto({
               não é o que você sabe, mas o que o{" "}
               <strong>examinador escreveu</strong>. Chamamos isso de manter o
               olhar dentro do Tribunal Textual.
+            </p>
+            <p>
+              Nas provas da <strong>CESGRANRIO</strong>, a banca frequentemente
+              alterna comandos de compreensão direta com inferências sutis no
+              mesmo bloco de questões. O candidato de elite deve rotular
+              mentalmente cada questão como "Radar de Linha" (está escrito) ou
+              "Radar de Lógica" (está implícito) para evitar o processamento
+              excessivo. A aplicação prática desse método reduz o tempo de
+              resposta e blinda o aluno contra as alternativas que "parecem"
+              corretas mas extrapolam o limite textual.
             </p>
             <div className="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/30 dark:to-blue-950/30 rounded-lg border border-indigo-200 dark:border-indigo-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground flex items-center gap-2">
@@ -284,24 +329,24 @@ export default function AulaInterpretacaoTexto({
           <ModuleSectionHeader
             index={1}
             title="A Natureza do Processo"
-            description="Para a CESGRANRIO, o maior erro do candidato é 'viajar' para além dos limites do texto. Vamos blindar sua leitura agora."
+            description="Para a CESGRANRIO, o maior erro do candidato é 'viajar' para além dos limites do texto. Vamos fundamentar sua leitura agora."
             variant={mv[1]}
           />
 
           <ContentAccordion
             mode="stacked"
-            titulo="Aprofundamento: O Microscópio de Bechara"
+            titulo="Aprofundamento: A Análise Pormenorizada"
             icone={<LuSearch />}
             corIndicador="bg-amber-500"
             defaultOpen={false}
             slides={[
               {
-                titulo: "A Unidade Sociocomunicativa (Bechara)",
+                titulo: "A Unidade Sociocomunicativa",
                 icone: "🔍",
                 conteudo: (
                   <div className="space-y-4 text-muted-foreground">
                     <p className="text-sm md:text-base leading-relaxed">
-                      Para Evanildo Bechara, o texto não é um amontoado casual
+                      Na visão da gramática textual, o texto não é um amontoado casual
                       de frases, mas sim uma{" "}
                       <strong>unidade sociocomunicativa</strong> elaborada com
                       um propósito muito bem delimitado. Isso significa que a
@@ -333,13 +378,13 @@ export default function AulaInterpretacaoTexto({
                   <div className="space-y-5">
                     <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
                       Dominar a referenciação é a chave mestra da Interpretação
-                      de Elite. Os pronomes e expressões dêiticas são os
+                      Estratégica. Os pronomes e expressões dêiticas são os
                       "grampos" que seguram o tecido do texto. Quando o autor
                       cita um elemento e depois o retoma com "isso", "aquele" ou
                       "o qual", ele cria uma teia coesiva que a banca testará
-                      impiedosamente.
+                      estratégicamente.
                     </p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
                       <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
                         <span className="font-bold text-blue-600 dark:text-blue-400 block mb-2 uppercase tracking-wider text-sm">
                           Anáfora (Resgate)
@@ -478,14 +523,14 @@ export default function AulaInterpretacaoTexto({
             <FlipCard
               frente={
                 <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
-                  <div className="p-4 bg-red-500/10 rounded-full shadow-inner">
+                  <div className="p-4 bg-red-500/10 rounded-full shadow-inner ring-1 ring-red-500/20">
                     <LuShieldAlert className="w-12 h-12 text-red-500 animate-pulse-slow" />
                   </div>
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
-                    ALERTA: Falsa Conclusão Financeira?
+                    Falsa Conclusão Financeira
                   </span>
                   <span className="text-sm text-red-500/80 font-medium">
-                    A culpa foi da verba?
+                    Contradição Direta
                   </span>
                 </div>
               }
@@ -493,19 +538,18 @@ export default function AulaInterpretacaoTexto({
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                   <div className="flex items-center gap-2 text-red-500 font-bold border-b border-red-500/10 pb-3">
                     <LuShieldAlert className="w-5 h-5 shrink-0" />
-                    <span className="tracking-widest uppercase text-sm">
-                      Falso (Contradição Direta)
+                    <span className="tracking-widest uppercase text-xs">
+                      Alerta de Contradição
                     </span>
                   </div>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    O texto afirma taxativamente que a paralisia{" "}
-                    <strong>"não decorreu de falta de verba"</strong>.
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    O texto afirma taxativamente que a paralisia <strong>"não decorreu de falta de verba"</strong>.
                   </p>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    Bancas gostam de explorar nosso "senso comum" (crise = falta
-                    de dinheiro) para induzir a erro. Ao fazer a prova, não
-                    julgue a empresa com sua bagagem existencial. Julgue-a
-                    estritamente pelos limites do léxico ali escrito.
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Bancas exploram o senso comum (crise = falta de dinheiro) para induzir ao erro.
+                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    ❌ "A escassez de recursos foi o principal <strong>gargalo</strong> da manutenção."
                   </p>
                 </div>
               }
@@ -518,10 +562,10 @@ export default function AulaInterpretacaoTexto({
                     <LuTarget className="w-12 h-12 text-emerald-500" />
                   </div>
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
-                    O Gargalo foi 100% Interno e Humano?
+                    Gargalo Interno e Humano
                   </span>
                   <span className="text-sm text-emerald-500/80 font-medium">
-                    Lógica e Dedução
+                    Inferência Lícita
                   </span>
                 </div>
               }
@@ -529,24 +573,22 @@ export default function AulaInterpretacaoTexto({
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                   <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
                     <LuCheck className="w-5 h-5 shrink-0" />
-                    <span className="tracking-widest uppercase text-sm">
-                      Verdadeiro (Inferência Lícita)
+                    <span className="tracking-widest uppercase text-xs">
+                      Dedução Autorizada
                     </span>
                   </div>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    Ao contrastar que a falha ocorreu devido a uma "crise de
-                    gestão logística" enquanto as "peças já estivessem
-                    estocadas", o autor circunscreve o gargalo.
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Ao contrastar "crise de gestão" com "peças estocadas", o autor circunscreve o erro operacional.
                   </p>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    Mesmo sem usar explicitamente a palavra "humano", deduzir
-                    isso é uma inferência corretíssima (Dedução com Lastro),
-                    pois falha logística com estoques cheios só pode culminar
-                    nas engrenagens operacionais (gestão de processos).
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    Mesmo sem usar a palavra "humano", deduzir isso é uma inferência <strong>corretíssima</strong>.
+                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    ✅ "A falha reside nas <strong>engrenagens operacionais</strong> e de processos."
                   </p>
                 </div>
               }
-              categoria="Interpretação de Elite"
+              categoria="Interpretação Avançada"
             />
           </div>
         </section>
@@ -556,7 +598,7 @@ export default function AulaInterpretacaoTexto({
           video={{
             videoId: "dQw4w9WgXcQ",
             title:
-              "Compreensão vs Interpretação: A Diferença que te faz Passar",
+              "Compreensão vs Interpretação: Distinção Crítica para o Desempenho",
             duration: "12:30",
             thumbnail:
               "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1073&auto=format&fit=crop",
@@ -589,8 +631,8 @@ export default function AulaInterpretacaoTexto({
               },
             ],
           }}
-          maceteVisual={{
-            title: "O Macete do 'Onde Está?'",
+          sinteseEstrategica={{
+            title: "A Estratégia do 'Onde Está?'",
             content: (
               <>
                 <div className="text-6xl my-6 animate-pulse">🎯 🔍</div>
@@ -600,7 +642,7 @@ export default function AulaInterpretacaoTexto({
                   <strong>'Depreende-se'</strong>, a resposta está NAS
                   ENTRELINHAS."
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
                   <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
                       Compreensão (Explícito)
@@ -630,7 +672,7 @@ export default function AulaInterpretacaoTexto({
           audio={{
             audioUrl: "https://audio-placeholder.mp3",
             titulo: "Podcast: Decifrando o Relatório Técnico",
-            artista: "Dossiê Petrobras",
+            artista: "Guia Técnico Petrobras",
             capaUrl:
               "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
             lyrics:
@@ -641,7 +683,7 @@ export default function AulaInterpretacaoTexto({
 
         <QuizInterativo
           questoes={quizM1}
-          titulo="QUIZ: A Diferença Letal"
+          titulo="QUIZ: Fundamentos e Distinções Críticas"
           icone="🛡️"
           numero={5}
           onComplete={(score) => handleModuleComplete("modulo-1", score)}
@@ -700,6 +742,15 @@ export default function AulaInterpretacaoTexto({
               unicamente a capacidade do candidato de extrair e sintetizar o
               Tópico Frasal subjacente. Confundir o miolo ou um exemplo solto
               com a verdadeira tese gera perda quase certa de pontuação.
+            </p>
+            <p>
+              Para a <strong>CESGRANRIO</strong>, o domínio do Tópico Frasal é
+              testado em questões que pedem a "ideia central" ou o "objetivo do
+              parágrafo X". Identificar a viga mestra permite descartar
+              rapidamente alternativas que focam em detalhes periféricos ou
+              exemplos secundários. No ambiente de alta pressão do concurso da
+              Petrobras, essa habilidade de síntese mecânica é o que garante a
+              precisão sem a necessidade de múltiplas releituras exaustivas.
             </p>
             <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground flex items-center gap-2">
@@ -928,7 +979,7 @@ export default function AulaInterpretacaoTexto({
                     Nesses cenários inóspitos de prova, a espinha dorsal
                     discursiva não grita por você. O Tópico repousa inteiramente
                     infuso no somatório das peças orgânicas da narrativa.
-                    Reivindica-se do candidato a capacidade letal de síntese
+                    Reivindica-se do candidato a capacidade Crítico de síntese
                     extrativa.
                   </p>
                 </div>
@@ -1006,8 +1057,8 @@ export default function AulaInterpretacaoTexto({
               },
             ],
           }}
-          maceteVisual={{
-            title: "O Macete da 'Viga Mestra'",
+          sinteseEstrategica={{
+            title: "A Estratégia do 'Eixo Central'",
             content: (
               <>
                 <div className="text-6xl my-6 animate-pulse">🏛️ 🏗️</div>
@@ -1016,7 +1067,7 @@ export default function AulaInterpretacaoTexto({
                   a viga mestra. Se você a encontra, o resto é apenas decoração
                   (exemplos, dados, detalhes)."
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
                   <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
                       Dedução (Início)
@@ -1110,11 +1161,19 @@ export default function AulaInterpretacaoTexto({
               pré-fabricada pelo autor (o incômodo do atraso), garantindo
               vitória para a ideia de substituição.
             </p>
+            <p>
+              Por fim, a <strong>Coesão Referencial</strong> é a arma secreta do
+              gabarito. A banca substituirá substantivos técnicos por pronomes
+              ou sinônimos ("isso", "tal fenômeno", "o referido") para testar se
+              você ainda rastreia o sujeito original após três frases de
+              interrupção. Perder o lastro do referente é o primeiro passo para
+              cair em uma pegadinha de contradição por troca de agentes.
+            </p>
             <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 rounded-lg border border-indigo-200 dark:border-indigo-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground flex items-center gap-2">
                 A Tríade de Conectivos Perigosos CESGRANRIO
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mt-3">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm mt-3">
                 <div className="bg-white dark:bg-black/20 p-3 rounded-lg shadow-sm border border-border">
                   <strong className="block text-indigo-600 dark:text-indigo-400">
                     Embora / Conquanto
@@ -1308,7 +1367,7 @@ export default function AulaInterpretacaoTexto({
                     Conquanto
                   </span>
                   <span className="text-sm text-indigo-500/80 font-medium">
-                    A Pegadinha Suprema
+                    A pontos de atenção Suprema
                   </span>
                 </div>
               }
@@ -1318,7 +1377,7 @@ export default function AulaInterpretacaoTexto({
                     <LuCheck className="w-4 h-4" /> CONCESSIVA
                   </p>
                   <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    Sinônimo letal de <strong>EMBORA</strong>. Bancas adoram
+                    Sinônimo Crítico de <strong>EMBORA</strong>. Bancas adoram
                     usá-lo porque a sonoridade confunde com "Portanto"
                     (conclusiva). O conquanto sempre abre alas para uma objeção
                     secundária superada.
@@ -1435,8 +1494,8 @@ export default function AulaInterpretacaoTexto({
               },
             ],
           }}
-          maceteVisual={{
-            title: "O Macete do 'Muro de Tijolos'",
+          sinteseEstrategica={{
+            title: "A Estratégia do 'Muro de Tijolos'",
             content: (
               <>
                 <div className="text-6xl my-6 animate-pulse">🔗 🧱</div>
@@ -1444,7 +1503,7 @@ export default function AulaInterpretacaoTexto({
                   "O texto é um muro. Os <strong>Conectivos</strong> são o
                   cimento. Sem eles, as frases (tijolos) caem sozinhas."
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
                   <div className="p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 mb-2">
                       Mas (Adversativa)
@@ -1539,6 +1598,15 @@ export default function AulaInterpretacaoTexto({
               da argumentação sobre o seu impacto é vital para não confundir o
               cronológico com o causal.
             </p>
+            <p>
+              A <strong>Aplicação CESGRANRIO</strong> foca na hibridização. A
+              banca perguntará qual o "gênero" (ex: editorial, relatório) e
+              qual a "tipologia predominante" (ex: dissertativo-argumentativo).
+              O erro fatal é confundir o gênero com o tipo. Enquanto o gênero é
+              o "uso social" do texto, o tipo é a sua estrutura linguística.
+              Dominar essa distinção permite que você elimine alternativas que
+              tentam rotular o texto apenas pelo seu suporte ou veículo.
+            </p>
             <div className="bg-gradient-to-br from-rose-50 to-orange-50 dark:from-rose-950/30 dark:to-orange-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground flex items-center gap-2">
                 ⚠️ Tática de Tipologia: O Pêndulo de Análise
@@ -1574,7 +1642,7 @@ export default function AulaInterpretacaoTexto({
 
           <ContentAccordion
             mode="stacked"
-            titulo="O Trio de Elite da Tipologia"
+            titulo="O Trio de Avançado da Tipologia"
             icone={<LuBrain />}
             corIndicador="bg-rose-500"
             defaultOpen={true}
@@ -1823,7 +1891,7 @@ export default function AulaInterpretacaoTexto({
           index={4}
           video={{
             videoId: "dQw4w9WgXcQ",
-            title: "DNA do Texto: Tipologias e Gêneros de Elite",
+            title: "DNA do Texto: Tipologias e Gêneros de Avançado",
             duration: "09:45",
             thumbnail:
               "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000",
@@ -1840,8 +1908,8 @@ export default function AulaInterpretacaoTexto({
               },
             ],
           }}
-          maceteVisual={{
-            title: "O Macete do 'DNA Textual'",
+          sinteseEstrategica={{
+            title: "A Estratégia do 'DNA Textual'",
             content: (
               <>
                 <div className="text-6xl my-6 animate-pulse">🧬 📄</div>
@@ -1850,7 +1918,7 @@ export default function AulaInterpretacaoTexto({
                   Injunção. Se tem <strong>opinião</strong>, é Dissertação. Se{" "}
                   <strong>relata fatos</strong>, é Narração."
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
                   <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-2">
                       Dissertação (Opinião)
@@ -1942,6 +2010,14 @@ export default function AulaInterpretacaoTexto({
               colunas estreitas, essa tática aumenta a retenção em até 30% sob
               pressão de tempo.
             </p>
+            <p>
+              A <strong>Matemática da Performance</strong> é implacável: se você
+              reduz o tempo de leitura de um texto de 10 minutos para 4 minutos
+              com as técnicas de blocos, você "compra" 6 minutos de vantagem
+              analítica sobre a concorrência. Esse tempo extra é o que permite
+              realizar a Prova Real em questões de inferência, garantindo que a
+              ansiedade do final do certame não comprometa seu raciocínio lógico.
+            </p>
             <div className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 rounded-lg border border-violet-200 dark:border-violet-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground flex items-center gap-2">
                 ⚡ Protocolo de Velocidade Petrobras
@@ -2015,7 +2091,7 @@ export default function AulaInterpretacaoTexto({
                   </div>
                 </div>
               }
-              categoria="Velocidade de Elite"
+              categoria="Velocidade de Avançado"
             />
             <FlipCard
               frente={
@@ -2055,7 +2131,7 @@ export default function AulaInterpretacaoTexto({
                   </div>
                 </div>
               }
-              categoria="Velocidade de Elite"
+              categoria="Velocidade de Avançado"
             />
           </div>
 
@@ -2199,7 +2275,7 @@ export default function AulaInterpretacaoTexto({
           index={3}
           video={{
             videoId: "dQw4w9WgXcQ",
-            title: "Leitura de Elite: Eliminando Vícios e Ganhando Velocidade",
+            title: "Leitura de Avançado: Eliminando Vícios e Ganhando Velocidade",
             duration: "07:30",
             thumbnail:
               "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000",
@@ -2232,8 +2308,8 @@ export default function AulaInterpretacaoTexto({
               },
             ],
           }}
-          maceteVisual={{
-            title: "O Macete da 'Leitura em Blocos'",
+          sinteseEstrategica={{
+            title: "A Estratégia da 'Leitura em Blocos'",
             content: (
               <>
                 <div className="text-6xl my-6 animate-pulse">⚡ 📖</div>
@@ -2242,7 +2318,7 @@ export default function AulaInterpretacaoTexto({
                   cérebro é capaz de captar 3 ou 4 palavras de uma vez como se
                   fosse uma foto."
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
                   <div className="p-4 bg-red-500/5 border border-red-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-red-600 dark:text-red-400 mb-2">
                       Subvocalização (Vício)
@@ -2253,7 +2329,7 @@ export default function AulaInterpretacaoTexto({
                   </div>
                   <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
-                      Visão Periférica (Elite)
+                      Visão Periférica (Avançado)
                     </h4>
                     <p className="text-lg text-muted-foreground italic truncate">
                       "Captar blocos de 3+ palavras."
@@ -2309,7 +2385,7 @@ export default function AulaInterpretacaoTexto({
               entrelinhas são <strong>matemáticas</strong>. Elas dependem de
               gatilhos gramaticais e lógicos chamados pressupostos e
               subentendidos. Dominar essa distinção é o que separa o palpiteiro
-              do analista de elite.
+              do analista de Avançado.
             </p>
             <p>
               O <strong>Pressuposto</strong> é uma informação que o autor não
@@ -2335,6 +2411,15 @@ export default function AulaInterpretacaoTexto({
               atingiu o ápice" pressupõe que ela vai atingir ou que se espera
               que atinja, é a chave para matar questões de alta complexidade
               analítica em segundos.
+            </p>
+            <p>
+              O <strong>Limite Ético da Inferência</strong> exige que você se
+              mantenha dentro das balizas do texto. Enquanto a inferência é um
+              mergulho autorizado nas entrelinhas, a extrapolação é um salto no
+              vazio. Na Petrobras, onde a precisão técnica é lei, a banca pune
+              severamente o candidato que tenta ser "mais inteligente que o
+              autor", adicionando causas ou consequências que a base textual não
+              suporta materialmente.
             </p>
             <div className="bg-gradient-to-br from-cyan-50 to-teal-50 dark:from-cyan-950/30 dark:to-teal-950/30 rounded-lg border border-cyan-200 dark:border-cyan-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground flex items-center gap-2">
@@ -2522,8 +2607,8 @@ export default function AulaInterpretacaoTexto({
               },
             ],
           }}
-          maceteVisual={{
-            title: "O Macete do 'Detetive Textual'",
+          sinteseEstrategica={{
+            title: "A Estratégia do 'Analista Textual'",
             content: (
               <>
                 <div className="text-6xl my-6 animate-pulse">🕵️‍♂️ 🔍</div>
@@ -2533,7 +2618,7 @@ export default function AulaInterpretacaoTexto({
                   Subentendido é o que o autor quer que você{" "}
                   <strong>pense</strong> (sugestão)."
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
                   <div className="p-4 bg-cyan-500/5 border border-cyan-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-cyan-600 dark:text-cyan-400 mb-2">
                       Pressuposto (Gramática)
@@ -2605,7 +2690,7 @@ export default function AulaInterpretacaoTexto({
               A CESGRANRIO não cria alternativas erradas de forma aleatória; ela
               utiliza uma engenharia de distrações baseada em três vícios
               lógicos capitais. Aprender a dar nome ao erro de uma alternativa
-              falsa é o <strong>poder definitivo</strong> do candidato de elite.
+              falsa é o <strong>poder definitivo</strong> do candidato de Avançado.
               Quando você para de procurar a certa e começa a identificar por
               que as outras quatro são venenosas, sua taxa de acerto beira os
               100%.
@@ -2633,6 +2718,15 @@ export default function AulaInterpretacaoTexto({
               o autor defende X quando, na verdade, ele o cita apenas para
               refutá-lo logo em seguida. Identificar esses desvios de rota exige
               foco total nos conectivos de oposição (mas, porém, contudo).
+            </p>
+            <p>
+              Para dominar o <strong>Contraste de Precisão</strong>, observe que a
+              alternativa correta é aquela que "abraça" a ideia central sem
+              deixar sobras ou faltas. Muitas vezes, a banca apresenta uma
+              opção <em>Redutiva</em> que é factualmente verdadeira, mas que
+              falha por ser "tímida" demais frente à grandiosidade do argumento
+              do autor. O gabarito premium é aquele que possui o mesmo peso
+              semântico e a mesma abrangência do texto original.
             </p>
             <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground flex items-center gap-2">
@@ -2793,7 +2887,7 @@ export default function AulaInterpretacaoTexto({
             <h4 className="font-bold text-red-700 dark:text-red-400 mb-3 flex items-center gap-2">
               <LuShieldAlert className="w-5 h-5" /> Regra de Ouro: A Blindagem
             </h4>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
               <li className="flex gap-2">
                 <span className="text-red-500 font-bold">1.</span>
                 <span>
@@ -2860,8 +2954,8 @@ export default function AulaInterpretacaoTexto({
               },
             ],
           }}
-          maceteVisual={{
-            title: "O Macete do 'Desarmador de Bombas'",
+          sinteseEstrategica={{
+            title: "A Estratégia do 'Identificador de Falhas'",
             content: (
               <>
                 <div className="text-6xl my-6 animate-pulse">🚫 💣</div>
@@ -2871,7 +2965,7 @@ export default function AulaInterpretacaoTexto({
                   <strong>Extrapolação</strong> traz reforços de fora e a{" "}
                   <strong>Contradição</strong> é fogo amigo."
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
                   <div className="p-4 bg-orange-500/5 border border-orange-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-orange-600 dark:text-orange-400 mb-2">
                       Extrapolação (Mais comum)
@@ -2902,7 +2996,7 @@ export default function AulaInterpretacaoTexto({
           audio={{
             audioUrl: "https://audio-placeholder.mp3",
             titulo: "Radar de Armadilhas (Módulo 7)",
-            artista: "Sertanejo de Elite",
+            artista: "Sertanejo de Avançado",
             capaUrl:
               "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
             lyrics: `[Intro]
@@ -2994,6 +3088,15 @@ E vença esse jogo, que hoje tá bonito!`,
               garantir a segurança operacional. Mantenha seu radar calibrado
               para o Gênero do texto.
             </p>
+            <p>
+              A <strong>Intencionalidade em Textos de Engenharia</strong> exige
+              que você identifique a "agenda" por trás da norma. Em documentos
+              oficiais da Petrobras, a finalidade costuma ser a padronização de
+              segurança ou a prestação de contas socioambiental. Saber se o
+              autor está tentando mitigar um risco reputacional ou apenas
+              descrever um novo processo de refino orienta sua busca por marcas
+              de modalização e argumentos de autoridade.
+            </p>
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground flex items-center gap-2">
                 🎯 Tática de Intencionalidade
@@ -3028,58 +3131,63 @@ E vença esse jogo, que hoje tá bonito!`,
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-4">
-                  <LuTarget className="w-12 h-12 text-primary opacity-50" />
-                  <div className="text-center">
-                    <h6 className="text-xl font-bold uppercase">
-                      Informativo vs. Persuasivo
-                    </h6>
-                    <p className="text-lg font-medium opacity-80">
-                      Qual o objetivo real do autor?
-                    </p>
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-blue-500/10 rounded-full shadow-inner ring-1 ring-blue-500/20">
+                    <LuTarget className="w-12 h-12 text-blue-500" />
                   </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Informativo vs. Persuasivo
+                  </span>
+                  <span className="text-sm text-blue-500/80 font-medium">
+                    ALVO DISCURSIVO
+                  </span>
                 </div>
               }
               verso={
-                <div className="space-y-4">
-                  <p className="text-lg leading-relaxed text-zinc-100">
-                    O texto **informativo** apenas relata fatos (neutro). O
-                    **persuasivo** quer mudar sua opinião ou convencer de uma
-                    tese (subjetivo).
-                  </p>
-                  <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-lg text-primary font-bold">
-                    Dica: Textos da Petrobras costumam ser Informativos, mas com
-                    tom 'Institucional' (positivo).
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">ALVO AUTORAL</span>
                   </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    O texto <strong>informativo</strong> apenas relata fatos de forma neutra. O
+                    <strong>persuasivo</strong> busca moldar a opinião ou convencer de uma
+                    tese subjetiva.
+                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground italic">
+                    ✅ "Relatórios da Petrobras costumam ser Informativos, mas com tom 'Institucional'."
+                  </p>
                 </div>
               }
               categoria="Intenção Autoral"
             />
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-4">
-                  <LuBrain className="w-12 h-12 text-primary opacity-50" />
-                  <div className="text-center">
-                    <h6 className="text-xl font-bold uppercase">
-                      Crítico vs. Elogioso
-                    </h6>
-                    <p className="text-lg font-medium opacity-80">
-                      O tom das palavras escolhidas.
-                    </p>
+                <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                  <div className="p-4 bg-indigo-500/10 rounded-full shadow-inner ring-1 ring-indigo-500/20">
+                    <LuMessageSquare className="w-12 h-12 text-indigo-500" />
                   </div>
+                  <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                    Crítico vs. Elogioso
+                  </span>
+                  <span className="text-sm text-indigo-500/80 font-medium">
+                    MODALIZAÇÃO DE TOM
+                  </span>
                 </div>
               }
               verso={
-                <div className="space-y-4">
-                  <p className="text-lg leading-relaxed text-zinc-100">
-                    A escolha de adjetivos indica o tom. O uso de **aspas**
-                    quase sempre indica ironia ou distanciamento crítico da
-                    banca.
-                  </p>
-                  <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-lg text-primary font-bold">
-                    Atenção: A Cesgranrio adora perguntar sobre o 'efeito de
-                    sentido' de um termo entre aspas.
+                <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                  <div className="flex items-center gap-2 text-indigo-500 font-bold border-b border-indigo-500/10 pb-3">
+                    <LuCheck className="w-5 h-5 shrink-0" />
+                    <span className="tracking-widest uppercase text-xs">MARCAS DE TOM</span>
                   </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    A escolha de adjetivos indica o tom. O uso de <strong>aspas</strong>
+                    quase sempre sinaliza ironia ou um distanciamento crítico por parte do autor.
+                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground italic">
+                    ⚠️ "A Cesgranrio foca muito no 'efeito de sentido' de termos entre aspas."
+                  </p>
                 </div>
               }
               categoria="Intenção Autoral"
@@ -3088,7 +3196,7 @@ E vença esse jogo, que hoje tá bonito!`,
 
           <div className="space-y-6 mt-10">
             <h4 className="text-xl font-bold text-blue-600 flex items-center gap-2">
-              <LuTarget className="w-5 h-5" /> Foco na Finalidade
+              <LuCirclePlay className="w-5 h-5" /> Foco na Finalidade
             </h4>
             <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-800">
               <p className="text-lg text-blue-800 dark:text-blue-300">
@@ -3150,8 +3258,8 @@ E vença esse jogo, que hoje tá bonito!`,
               },
             ],
           }}
-          maceteVisual={{
-            title: "O Macete da 'Mira Autoral'",
+          sinteseEstrategica={{
+            title: "A Estratégia do 'Foco Autoral'",
             content: (
               <>
                 <div className="text-6xl my-6 animate-pulse">🎯 🧠</div>
@@ -3160,7 +3268,7 @@ E vença esse jogo, que hoje tá bonito!`,
                   'supostamente', o tom é <strong>irônico</strong>. Se ele só
                   usa dados, o tom é <strong>expositivo</strong>."
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
                   <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-2">
                       Ironia (Armadilha)
@@ -3190,7 +3298,7 @@ E vença esse jogo, que hoje tá bonito!`,
           audio={{
             audioUrl: "https://audio-placeholder.mp3",
             titulo: "A Mira do Autor (Módulo 8)",
-            artista: "Sertanejo de Elite",
+            artista: "Sertanejo de Avançado",
             capaUrl:
               "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
             lyrics: `[Intro]
@@ -3280,6 +3388,15 @@ E mostre pro mundo sua superação!`,
               central ocorreu? Sim. O referencial temporal se confirma? Sim. A
               motivação declarada é espelho do texto originário? Não).
               Conclusão: "X" nessa assertiva sem sofrimento!
+            </p>
+            <p>
+              A <strong>Gestão de Tempo em Sinônimos</strong> é o teste final do
+              seu algoritmo. Quando a banca pede a substituição de um termo por
+              outro "sem prejuízo de sentido", não tente encaixar todas as
+              opções no texto. Aplique a lógica da exclusão baseada na carga
+              semântica: elimine as que alteram a intensidade (ex: "bom" vs
+              "excelente") ou o viés (ex: "crítico" vs "analítico"). Se a mecânica
+              está afinada, você resolve em 30 segundos.
             </p>
             <p>
               Pela mecânica das grandes estatais como Petrobras e Transpetro, a
@@ -3427,8 +3544,8 @@ E mostre pro mundo sua superação!`,
               },
             ],
           }}
-          maceteVisual={{
-            title: "O Macete da 'Troca de Peças'",
+          sinteseEstrategica={{
+            title: "A Estratégia da 'Troca de Peças'",
             content: (
               <>
                 <div className="text-6xl my-6 animate-pulse">🧩 🔄</div>
@@ -3437,7 +3554,7 @@ E mostre pro mundo sua superação!`,
                   troca 'viabilizar' por 'tornar possível', ela está testando
                   sua agilidade semântica, não sua criatividade."
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
                   <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-2">
                       Fomentar (Cesgranrio)
@@ -3467,7 +3584,7 @@ E mostre pro mundo sua superação!`,
           audio={{
             audioUrl: "https://audio-placeholder.mp3",
             titulo: "Troca de Peças (Módulo 9)",
-            artista: "Sertanejo de Elite",
+            artista: "Sertanejo de Avançado",
             capaUrl:
               "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
             lyrics: `[Intro]
@@ -3510,11 +3627,11 @@ E saia da prova como um vencedor!`,
         />
       </TabsContent>
 
-      {/* ─── MÓDULO 10: ARENA DE ELITE (DOSSIÊ PREMIUM) ─── */}
+      {/* ─── MÓDULO 10: Avaliação de Fixação Avançada (DOSSIÊ PREMIUM) ─── */}
       <TabsContent value="modulo-10" className="space-y-[50px]">
         <ModuleBanner
           numero={10}
-          titulo="Arena de Elite"
+          titulo="Avaliação de Fixação Avançada"
           descricao="A prova final. O Checklist de Blindagem antes do grande desafio."
           variant={mv[10]}
         />
@@ -3523,13 +3640,13 @@ E saia da prova como um vencedor!`,
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8 mb-10">
           <ModuleSectionHeader
             index="INTRO"
-            title="Arena de Elite: Blindagem Final"
-            description="O checklist de pré-combate para garantir que nenhum vício ou pegadinha te tire do topo da lista."
+            title="Avaliação de Fixação Avançada: Blindagem Final"
+            description="O checklist de pré-combate para garantir que nenhum vício ou pontos de atenção te tire do topo da lista."
             variant={mv[10]}
           />
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
             <p>
-              Você chegou à <strong>Arena de Elite</strong>. Agora, o
+              Você chegou à <strong>Avaliação de Fixação Avançada</strong>. Agora, o
               conhecimento teórico deve ser convertido em reflexo operacional.
               Em uma prova da Petrobras, o cansaço acumulado nas últimas
               questões de Português é o que causa as falhas de atenção mais
@@ -3561,6 +3678,15 @@ E saia da prova como um vencedor!`,
               radar e avance. O subconsciente muitas vezes resolve o paradoxo
               enquanto você processa outras questões mais simples.
             </p>
+            <p>
+              Considere, por fim, o <strong>Efeito de Fadiga Visual</strong>. No
+              limiar das 4 ou 5 horas de prova, seu cérebro começará a preencher
+              lacunas automaticamente para poupar energia. É nesse momento que os
+              "pontos de atenção" se tornam invisíveis. Force uma respiração
+              diafragmática, use o guia visual com mais firmeza e aplique o
+              Protocolo C.E.D.E.A de trás para frente se necessário, para quebrar
+              o padrão de leitura viciado e garantir a pontuação máxima.
+            </p>
             <div className="bg-gradient-to-br from-slate-50 to-zinc-50 dark:from-slate-950/30 dark:to-zinc-950/30 rounded-lg border border-slate-200 dark:border-slate-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground flex items-center gap-2">
                 🛡️ Checklist de Saída para a Prova
@@ -3580,7 +3706,7 @@ E saia da prova como um vencedor!`,
 
         <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
           <ModuleSectionHeader
-            index={1}
+            index="ESTRATÉGIA"
             title="Checklist de Blindagem Final"
             description="Revise os 5 mandamentos da interpretação Cesgranrio antes de começar."
             variant={mv[10]}
@@ -3589,74 +3715,117 @@ E saia da prova como um vencedor!`,
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuEye className="w-10 h-10 text-primary opacity-50" />
-                  <span className="font-bold uppercase text-lg text-center">
-                    1. Olhar de Raio-X
-                  </span>
-                </div>
-              }
-              verso={
-                <div className="space-y-3">
-                  <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-                    Sua primeira missão é identificar se a questão pede o
-                    **sentido global** (o texto todo) ou **localizado** (uma
-                    linha específica).
-                  </p>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/20 text-sm text-primary font-bold">
-                    Check: Leia o comando da questão 2x antes de ir ao texto.
+                <div className="w-full h-full flex flex-col">
+                  <div className="h-2 w-full bg-blue-500" />
+                  <div className="flex-1 flex flex-col items-center justify-center p-6 gap-4">
+                    <div className="p-4 rounded-full bg-blue-500/10 border border-blue-500/20">
+                      <LuEye className="w-10 h-10 text-blue-600 dark:text-blue-400" />
+                    </div>
+                    <span className="font-bold uppercase tracking-widest text-sm text-blue-600 dark:text-blue-400 text-center">
+                      1. Olhar de Raio-X
+                    </span>
                   </div>
                 </div>
               }
-              categoria="Arena de Elite"
+              verso={
+                <div className="w-full h-full flex flex-col">
+                  <div className="flex items-center gap-2 p-3 border-b border-blue-500/10 bg-blue-500/5">
+                    <LuCheck className="w-4 h-4 text-blue-600" />
+                    <span className="text-[10px] font-bold uppercase tracking-tighter text-blue-600">
+                      Filtro de Leitura
+                    </span>
+                  </div>
+                  <div className="flex-1 p-6 space-y-4">
+                    <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                      Sua primeira missão é identificar se a questão pede o
+                      <strong>sentido global</strong> (o texto todo) ou <strong>localizado</strong> (uma
+                      linha específica).
+                    </p>
+                    <div className="p-3 bg-blue-500/10 rounded-xl border border-blue-500/20">
+                      <p className="text-xs font-bold text-blue-700 dark:text-blue-300">
+                        PROTOCOLO: Leia o comando da questão 2x antes de ir ao texto. ✅
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              }
+              categoria="Avaliação de Fixação Avançada"
             />
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuShieldAlert className="w-10 h-10 text-primary opacity-50" />
-                  <span className="font-bold uppercase text-lg text-center">
-                    2. Filtro Anti-Achismo
-                  </span>
-                </div>
-              }
-              verso={
-                <div className="space-y-3">
-                  <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-                    Corte toda informação que não está escrita. Se a alternativa
-                    fizer sentido mas **não tiver prova no texto**, ela é
-                    Extrapolação.
-                  </p>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/20 text-sm text-primary font-bold">
-                    Regra: O texto é sua única verdade. O que você sabe de fora
-                    não conta.
+                <div className="w-full h-full flex flex-col">
+                  <div className="h-2 w-full bg-indigo-500" />
+                  <div className="flex-1 flex flex-col items-center justify-center p-6 gap-4">
+                    <div className="p-4 rounded-full bg-indigo-500/10 border border-indigo-500/20">
+                      <LuShieldAlert className="w-10 h-10 text-indigo-600 dark:text-indigo-400" />
+                    </div>
+                    <span className="font-bold uppercase tracking-widest text-sm text-indigo-600 dark:text-indigo-400 text-center">
+                      2. Filtro Anti-Achismo
+                    </span>
                   </div>
                 </div>
               }
-              categoria="Arena de Elite"
+              verso={
+                <div className="w-full h-full flex flex-col">
+                  <div className="flex items-center gap-2 p-3 border-b border-indigo-500/10 bg-indigo-500/5">
+                    <LuCheck className="w-4 h-4 text-indigo-600" />
+                    <span className="text-[10px] font-bold uppercase tracking-tighter text-indigo-600">
+                      Blindagem Técnica
+                    </span>
+                  </div>
+                  <div className="flex-1 p-6 space-y-4">
+                    <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                      Corte toda informação que não está escrita. Se a alternativa
+                      fizer sentido mas <strong>não tiver prova no texto</strong>, ela é
+                      considerada Extrapolação.
+                    </p>
+                    <div className="p-3 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
+                      <p className="text-xs font-bold text-indigo-700 dark:text-indigo-300">
+                        REGRA: O texto é sua única verdade. O que você sabe "de fora" não conta. 🛡️
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              }
+              categoria="Avaliação de Fixação Avançada"
             />
             <FlipCard
               frente={
-                <div className="flex flex-col items-center gap-3">
-                  <LuTarget className="w-10 h-10 text-primary opacity-50" />
-                  <span className="font-bold uppercase text-lg text-center">
-                    3. Radar de Sinônimos
-                  </span>
-                </div>
-              }
-              verso={
-                <div className="space-y-3">
-                  <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-                    Fique atento à troca de verbos técnicos. A banca substitui
-                    termos para ver se você entende a **equivalência semântica**
-                    no contexto industrial.
-                  </p>
-                  <div className="p-2 bg-primary/10 rounded-lg border border-primary/20 text-sm text-primary font-bold">
-                    Dica: Domine verbos como 'viabilizar', 'fomentar' e
-                    'negligenciar'.
+                <div className="w-full h-full flex flex-col">
+                  <div className="h-2 w-full bg-amber-500" />
+                  <div className="flex-1 flex flex-col items-center justify-center p-6 gap-4">
+                    <div className="p-4 rounded-full bg-amber-500/10 border border-amber-500/20">
+                      <LuTarget className="w-10 h-10 text-amber-600 dark:text-amber-400" />
+                    </div>
+                    <span className="font-bold uppercase tracking-widest text-sm text-amber-600 dark:text-amber-400 text-center">
+                      3. Radar de Sinônimos
+                    </span>
                   </div>
                 </div>
               }
-              categoria="Arena de Elite"
+              verso={
+                <div className="w-full h-full flex flex-col">
+                  <div className="flex items-center gap-2 p-3 border-b border-amber-500/10 bg-amber-500/5">
+                    <LuCheck className="w-4 h-4 text-amber-600" />
+                    <span className="text-[10px] font-bold uppercase tracking-tighter text-amber-600">
+                      Agilidade Semântica
+                    </span>
+                  </div>
+                  <div className="flex-1 p-6 space-y-4">
+                    <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                      Fique atento à troca de verbos técnicos. A banca substitui
+                      termos para testar sua <strong>equivalência semântica</strong>
+                      em contextos operacionais/industriais.
+                    </p>
+                    <div className="p-3 bg-amber-500/10 rounded-xl border border-amber-500/20">
+                      <p className="text-xs font-bold text-amber-700 dark:text-amber-300">
+                        FOCO: Domine verbos como 'viabilizar', 'fomentar' e 'negligenciar'. 🎯
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              }
+              categoria="Avaliação de Fixação Avançada"
             />
           </div>
 
@@ -3667,7 +3836,7 @@ E saia da prova como um vencedor!`,
             <p className="text-lg italic text-muted-foreground">
               "A interpretação na Petrobras não é sobre adivinhação, é sobre
               **mapeamento**. Se você utilizou as técnicas deste dossiê, o
-              gabarito é apenas uma consequência lógica. Boa sorte na Arena." -
+              gabarito é apenas uma consequência lógica. Desejamos um excelente desempenho na avaliação final." -
               Professor IA.
             </p>
           </div>
@@ -3677,7 +3846,7 @@ E saia da prova como um vencedor!`,
           index={2}
           video={{
             videoId: "dQw4w9WgXcQ",
-            title: "Checklist de Elite: A Blindagem Final",
+            title: "Checklist de Avançado: A Blindagem Final",
             duration: "07:30",
             thumbnail:
               "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1000",
@@ -3710,20 +3879,20 @@ E saia da prova como um vencedor!`,
               },
             ],
           }}
-          maceteVisual={{
-            title: "O Macete do 'Vencedor da Arena'",
+          sinteseEstrategica={{
+            title: "A Estratégia de Consolidação Final",
             content: (
               <>
                 <div className="text-6xl my-6 animate-pulse">👑 🚀</div>
                 <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto">
-                  "Você agora é um <strong>Mestre da Exegese</strong>. A prova
-                  não é sobre o que você acha, é sobre o que o texto permite.
-                  Confie no Dossiê e blinde sua nota."
+                  "Você agora detém um <strong>domínio analítico superior</strong>. A prova
+                  não é sobre o que você supõe, é sobre o que o texto fundamenta.
+                  Confie na metodologia e assegure seu desempenho."
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 text-left">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
                   <div className="p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl">
                     <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 mb-2">
-                      A Tática do Descarte
+                      A Estratégia do Descarte Técnica
                     </h4>
                     <p className="text-sm text-muted-foreground">
                       Não busque a certa, elimine as erradas por Redução,
@@ -3745,8 +3914,8 @@ E saia da prova como um vencedor!`,
           }}
           audio={{
             audioUrl: "https://audio-placeholder.mp3",
-            titulo: "Gabaritando a Arena (Módulo 10)",
-            artista: "Sertanejo de Elite",
+            titulo: "Consolidação de Desempenho (Módulo 10)",
+            artista: "Trilha de Foco Estratégico",
             capaUrl:
               "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
             lyrics: `[Intro]
@@ -3754,7 +3923,7 @@ E saia da prova como um vencedor!`,
 Chegou a hora, o momento final 
 A prova te espera, o clima é real 
 Mapeou o parágrafo, achou a viga 
-Agora é na Arena que a gente briga 
+Agora é na prática que a competência se confirma 
 
 Lembrou dos conectivos e da coesão 
 Limpou o DNA da sua visão 
@@ -3766,10 +3935,10 @@ A blindagem tá feita, o radar tá ligado
 O seu nome na lista já tá desenhado! 
 
 [Chorus]
-Gabaritando a Arena, com a mente de elite 
+Consolidando a excelência, com foco estratégico 
 Pro seu sucesso não tem mais limite 
 A Petrobras chama, o sonho é real 
-Interpretação mestre, nível funcional 
+Interpretação técnica, nível profissional 
 
 Dossiê completo, missão cumprida 
 Uma nova etapa na sua vida 
@@ -3781,7 +3950,7 @@ E brilhe na prova, saia da média!`,
 
         <QuizInterativo
           questoes={quizFinal}
-          titulo="QUIZ: Arena de Elite"
+          titulo="QUIZ: Avaliação de Fixação Avançada"
           icone="👑"
           numero={3}
           onComplete={(score) => handleModuleComplete("modulo-10", score)}

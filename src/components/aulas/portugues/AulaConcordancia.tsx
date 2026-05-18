@@ -1,5 +1,5 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
+import { getAllModuleVariants } from "@/lib/moduleColors";
 
 import { useState, useEffect } from "react";
 
@@ -55,6 +55,7 @@ import {
   StickyModuleNav,
   AulaTemplate,
   ModuleSectionHeader,
+  ModuleConsolidation,
 } from "../shared";
 import {
   LuImage,
@@ -66,6 +67,11 @@ import {
   LuCirclePlay as LuPlayCircle,
   LuBrain,
   LuMusic,
+  LuPaperclip,
+  LuTriangleAlert,
+  LuScale,
+  LuClock,
+  LuShieldAlert,
 } from "react-icons/lu";
 
 // ── QUIZ POOLS (EXPANDED TO 15 QUESTIONS PER MODULE) ────────────────────
@@ -1275,7 +1281,7 @@ const QUIZ_APROFUNDAMENTO_POOL: QuizQuestion[] = [
 const QUIZ_FINAL_POOL: QuizQuestion[] = [
   {
     id: 501,
-    pergunta: "Questão de Elite: 'Mais de um operário ... se.'",
+    pergunta: "Questão de Avançado: 'Mais de um operário ... se.'",
     opcoes: [
       { label: "A", valor: "feriu" },
       { label: "B", valor: "feriram" },
@@ -1646,9 +1652,9 @@ const CHALLENGE_POOL: ChallengeQuestion[] = [
 
 const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
   {
-    icone: "📎",
+    icone: <LuPaperclip className="w-8 h-8 text-blue-600" />,
     title: "Anexo / Incluso",
-    corFundo: "bg-blue-100 dark:bg-blue-900/30",
+    corFundo: "bg-blue-100/50 dark:bg-blue-900/30 ring-1 ring-blue-500/20",
     descricao: (
       <>
         <p>
@@ -1656,43 +1662,51 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
           com o substantivo.
         </p>
         <ul className="space-y-1 mt-2">
-          <li className="text-green-600">
-            ✅ "Seguem <strong>anexas</strong> as faturas."
+          <li className="flex gap-2 text-emerald-600 font-medium">
+            <LuCheck className="w-4 h-4 mt-1 flex-shrink-0" />
+            <span>
+              ✅ "Seguem <strong>anexas</strong> as faturas."
+            </span>
           </li>
-          <li className="text-green-600">
-            ✅ "O documento vai <strong>anexo</strong>."
+          <li className="flex gap-2 text-emerald-600 font-medium">
+            <LuCheck className="w-4 h-4 mt-1 flex-shrink-0" />
+            <span>
+              ✅ "O documento vai <strong>anexo</strong>."
+            </span>
           </li>
-          <li className="text-red-500 text-lg mt-1">
-            ⚠️ "Em anexo" é invariável (locução).
+          <li className="flex gap-2 text-amber-600 font-medium italic mt-1">
+            <LuTriangleAlert className="w-4 h-4 mt-1 flex-shrink-0" />
+            <span>⚠️ "Em anexo" é invariável.</span>
           </li>
         </ul>
       </>
     ),
   },
   {
-    icone: "⚖️",
+    icone: <LuScale className="w-8 h-8 text-orange-600" />,
     title: "Bastante",
-    corFundo: "bg-orange-100 dark:bg-orange-900/30",
+    corFundo:
+      "bg-orange-100/50 dark:bg-orange-900/30 ring-1 ring-orange-500/20",
     descricao: (
       <>
         <p>
-          <strong className="text-foreground">Macete:</strong> troque por
+          <strong className="text-foreground">Estratégia:</strong> troque por
           "muito/muitos".
         </p>
-        <ul className="space-y-1 mt-2">
-          <li>
+        <ul className="space-y-3 mt-2">
+          <li className="bg-emerald-500/5 p-2 rounded-lg border border-emerald-500/10">
             Troca por "MUITOS"? →{" "}
             <strong className="text-foreground">Variável</strong>.
             <br />
-            <span className="text-green-600">
+            <span className="text-emerald-600 font-medium">
               "Havia <strong>bastantes</strong> dúvidas."
             </span>
           </li>
-          <li>
+          <li className="bg-amber-500/5 p-2 rounded-lg border border-amber-500/10">
             Troca por "MUITO"? →{" "}
             <strong className="text-foreground">Invariável</strong>.
             <br />
-            <span className="text-green-600">
+            <span className="text-emerald-600 font-medium">
               "Eles são <strong>bastante</strong> inteligentes."
             </span>
           </li>
@@ -1701,34 +1715,34 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
     ),
   },
   {
-    icone: "½",
+    icone: <LuClock className="w-8 h-8 text-amber-600" />,
     title: "Meio",
-    corFundo: "bg-amber-100 dark:bg-amber-900/30",
+    corFundo: "bg-amber-100/50 dark:bg-amber-900/30 ring-1 ring-amber-500/20",
     descricao: (
       <>
         <p>
-          <strong className="text-foreground">Macete:</strong> troque por "um
-          pouco" ou "metade".
+          <strong className="text-foreground">Estratégia:</strong> troque por
+          "um pouco" ou "metade".
         </p>
-        <ul className="space-y-1 mt-2">
-          <li>
-            "Um pouco"? → Advérbio,{" "}
-            <strong className="text-foreground">invariável</strong>.
-            <br />
-            <span className="text-green-600">
-              ✅ "Ela está <strong>meio</strong> cansada."
-            </span>
-            <br />
-            <span className="text-red-500">
-              ❌ "Ela está <strong>meia</strong> cansada."
+        <ul className="space-y-2 mt-2 text-lg">
+          <li className="flex gap-2">
+            <LuCheck className="w-5 h-5 text-emerald-500 mt-1 flex-shrink-0" />
+            <span>
+              "Um pouco"? → <strong>Invariável</strong>. ✅ "
+              <strong>Meio</strong> cansada."
             </span>
           </li>
-          <li>
-            "Metade"? → Numeral,{" "}
-            <strong className="text-foreground">varia</strong>.
-            <br />
-            <span className="text-green-600">
-              ✅ "Tomou <strong>meia</strong> xícara."
+          <li className="flex gap-2 text-red-500">
+            <LuTriangleAlert className="w-5 h-5 mt-1 flex-shrink-0" />
+            <span>
+              ❌ "<strong>Meia</strong> cansada."
+            </span>
+          </li>
+          <li className="flex gap-2">
+            <LuCheck className="w-5 h-5 text-emerald-500 mt-1 flex-shrink-0" />
+            <span>
+              "Metade"? → <strong>Varia</strong>. ✅ "<strong>Meia</strong>{" "}
+              xícara."
             </span>
           </li>
         </ul>
@@ -1736,29 +1750,35 @@ const PALAVRAS_PERIGOSAS_CARDS: CarouselCard[] = [
     ),
   },
   {
-    icone: "🚫",
+    icone: <LuShieldAlert className="w-8 h-8 text-red-600" />,
     title: "Menos",
-    corFundo: "bg-red-100 dark:bg-red-900/30",
+    corFundo: "bg-red-100/50 dark:bg-red-900/30 ring-1 ring-red-500/20",
     descricao: (
       <>
-        <p>
-          <strong className="text-foreground text-lg">
-            NUNCA, JAMAIS existe "MENAS".
-          </strong>
+        <p className="font-bold text-red-600 text-lg uppercase tracking-tight">
+          NUNCA existe "MENAS".
         </p>
-        <p className="mt-1">
-          "Menos" é advérbio. Advérbio{" "}
-          <strong className="text-foreground">não tem gênero</strong>.
+        <p className="mt-1 text-muted-foreground italic">
+          "Menos" é advérbio e não tem gênero.
         </p>
         <ul className="space-y-1 mt-2">
-          <li className="text-green-600">
-            ✅ "Havia <strong>menos</strong> pessoas."
+          <li className="flex gap-2 text-emerald-600 font-medium">
+            <LuCheck className="w-4 h-4 mt-1 flex-shrink-0" />
+            <span>
+              ✅ "<strong>Menos</strong> pessoas."
+            </span>
           </li>
-          <li className="text-green-600">
-            ✅ "Havia <strong>menos</strong> confusão."
+          <li className="flex gap-2 text-emerald-600 font-medium">
+            <LuCheck className="w-4 h-4 mt-1 flex-shrink-0" />
+            <span>
+              ✅ "<strong>Menos</strong> confusão."
+            </span>
           </li>
-          <li className="text-red-500">
-            ❌ "Havia <strong>menas</strong> pessoas."
+          <li className="flex gap-2 text-red-500 font-medium">
+            <LuTriangleAlert className="w-4 h-4 mt-1 flex-shrink-0" />
+            <span>
+              ❌ "<strong>Menas</strong> pessoas."
+            </span>
           </li>
         </ul>
       </>
@@ -2030,14 +2050,49 @@ export default function AulaConcordancia({
     { id: "modulo-1", label: "Módulo 1", title: "Concordância Verbal" },
     { id: "modulo-2", label: "Módulo 2", title: "Concordância Nominal" },
     { id: "modulo-3", label: "Módulo 3", title: "Prática e Simulados" },
-    { id: "modulo-4", label: "Módulo 4", title: "Casos de Elite" },
+    { id: "modulo-4", label: "Módulo 4", title: "Casos de Avançado" },
     { id: "modulo-5", label: "Módulo 5", title: "Laboratório Cesgranrio" },
   ] as const;
 
-  const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_portugues_concordancia_";
+
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
+      return saved || "modulo-1";
+    }
+    return "modulo-1";
+  });
+
+  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          return new Set(arr);
+        } catch (e) {
+          return new Set();
+        }
+      }
+    }
+    return new Set();
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        `${STORAGE_KEY_PREFIX}completed_modules`,
+        JSON.stringify(Array.from(completedModules))
+      );
+    }
+  }, [completedModules]);
   const [challengeIndex, setChallengeIndex] = useState(0);
   const [currentExample, setCurrentExample] = useState(CONCEPT_EXAMPLES[0]);
 
@@ -2130,6 +2185,7 @@ export default function AulaConcordancia({
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
+      onComplete={onComplete}
       currentProgress={Math.round(
         (completedModules.size / MODULE_DEFS.length) * 100,
       )}
@@ -2139,73 +2195,120 @@ export default function AulaConcordancia({
         <ModuleBanner
           numero={1}
           titulo="Concordância Verbal"
-          descricao="Estudo sistemático das normas que regem a harmonia entre o verbo e o seu sujeito, fundamentado na gramática normativa de Bechara para garantir a precisão do texto técnico."
-          variant={mv[1]}
+          descricao="Estudo sistemático das normas que regem a harmonia entre o verbo e o seu sujeito, fundamentado nos preceitos da gramática normativa para garantir a precisão do texto técnico."
+          variant={mv[1] || "blue"}
         />
         <div className="space-y-[50px]">
           {/* FUNDAMENTAÇÃO TEÓRICA - CIÊNCIA ANTES DO FLOREIO */}
           <section className="bg-white dark:bg-slate-950 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 md:p-12 shadow-sm">
             <ModuleSectionHeader
-              index="📚"
+              index="INTRO"
               title="Fundamentos da Concordância Verbal"
               className="mb-8"
-          variant={mv[1]}
-        />
+              variant={mv[1]}
+            />
 
-            <div className="space-y-10">
-              <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-400 max-w-4xl">
-                A concordância verbal é o mecanismo sintático pelo qual o verbo
-                se flexiona para ajustar-se ao seu sujeito. Segundo Bechara, o
-                princípio fundamental é que o verbo concorde em número e pessoa
-                com o núcleo do sujeito, garantindo a unidade lógica da oração.
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+              <p>
+                A <strong>concordância verbal</strong> representa o pilar de
+                sustentação da coesão sintática em língua portuguesa, sendo um
+                dos temas mais recorrentes e decisivos em exames de alto nível.
+                Para o candidato que almeja uma vaga em instituições como a{" "}
+                <strong>Petrobras</strong>, dominar a harmonia entre o verbo e
+                seu sujeito não é apenas uma questão de correção gramatical, mas
+                uma demonstração de rigor técnico e clareza na comunicação
+                profissional, onde a ambiguidade pode gerar falhas operacionais
+                críticas.
               </p>
+              <p>
+                Tecnicamente, a concordância verbal é o processo de{" "}
+                <strong>flexão do verbo</strong> para se ajustar em número
+                (singular ou plural) e pessoa (1ª, 2ª ou 3ª) ao núcleo do
+                sujeito a que se refere. Diferente da fala coloquial, onde o
+                plural muitas vezes é marcado apenas no primeiro elemento, a
+                norma culta exige que o verbo identifique precisamente o seu
+                referente, independentemente da distância sintática ou da
+                presença de elementos intercalados que tentem "puxar" a
+                concordância para si.
+              </p>
+              <p>
+                Considere o contraste entre a estrutura padrão e a distração
+                comum: em "<strong>A manutenção</strong> (núcleo singular) das
+                plataformas marítimas <strong>exige</strong> (verbo singular)
+                investimentos", a concordância é mantida com o núcleo
+                "manutenção". Em contrapartida, um erro frequente seria: "
+                <em>A manutenção das plataformas exigem</em>", onde o redator
+                deixa-se enganar pelo termo adjacente no plural ("plataformas"),
+                violando o <strong>contrato básico</strong> de subordinação
+                sintática.
+              </p>
+              <p>
+                A complexidade aumenta em casos específicos, como sujeitos
+                compostos pós-postos ao verbo, sujeitos oracionais ou o uso do
+                pronome relativo "que" vs. "quem". Além disso,{" "}
+                <strong>verbos impessoais</strong> como "haver" (no sentido de
+                existir) e "fazer" (indicando tempo decorrido) constituem zonas
+                de perigo, pois não possuem sujeito e devem obrigatoriamente
+                permanecer na 3ª pessoa do singular, desafiando a intuição do
+                falante que busca pluralizar o complemento.
+              </p>
+              <p>
+                Na banca <strong>CESGRANRIO</strong>, o tema é explorado através
+                de textos densos onde o sujeito está propositalmente afastado do
+                verbo por várias orações intercaladas. O examinador busca testar
+                a capacidade do candidato de isolar o núcleo sintático em meio a
+                adjuntos adnominais e complementos preposicionados. Palavras
+                perigosas como "bastante", "meio" e "anexo" são frequentemente
+                inseridas para confundir a concordância verbal com a nominal,
+                exigindo uma análise estrutural fria e metódica.
+              </p>
+            </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-4">
-                  <h4 className="flex items-center gap-2 font-bold text-indigo-600 dark:text-indigo-400 text-xl">
-                    <LuCheck size={21} /> 01. Regra Geral
-                  </h4>
-                  <p className="text-lg text-slate-500 dark:text-slate-400">
-                    O verbo concorda com o núcleo do sujeito em número
-                    (singular/plural) e pessoa (1ª, 2ª ou 3ª).
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <h4 className="flex items-center gap-2 font-bold text-indigo-600 dark:text-indigo-400 text-xl">
+                  <LuCheck size={21} /> 01. Regra Geral
+                </h4>
+                <p className="text-lg text-slate-500 dark:text-slate-400">
+                  O verbo concorda com o núcleo do sujeito em número
+                  (singular/plural) e pessoa (1ª, 2ª ou 3ª).
+                </p>
+                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+                  <p className="text-lg font-bold uppercase tracking-widest text-slate-400">
+                    Exemplos Formais:
                   </p>
-                  <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
-                    <p className="text-lg font-bold uppercase tracking-widest text-slate-400">
-                      Exemplos Formais:
+                  <div className="space-y-3 font-mono text-lg">
+                    <p className="p-2 bg-white dark:bg-slate-950 rounded-lg border border-slate-100 dark:border-slate-800">
+                      "O **técnico** (singular) **concluiu** a análise."
                     </p>
-                    <div className="space-y-3 font-mono text-lg">
-                      <p className="p-2 bg-white dark:bg-slate-950 rounded-lg border border-slate-100 dark:border-slate-800">
-                        "O **técnico** (singular) **concluiu** a análise."
-                      </p>
-                      <p className="p-2 bg-white dark:bg-slate-950 rounded-lg border border-slate-100 dark:border-slate-800">
-                        "Os **operadores** (plural) **concluíram** a análise."
-                      </p>
-                    </div>
+                    <p className="p-2 bg-white dark:bg-slate-950 rounded-lg border border-slate-100 dark:border-slate-800">
+                      "Os **operadores** (plural) **concluíram** a análise."
+                    </p>
                   </div>
                 </div>
+              </div>
 
-                <div className="space-y-4">
-                  <h4 className="flex items-center gap-2 font-bold text-emerald-600 dark:text-emerald-400 text-xl">
-                    <LuBrain size={21} /> 02. Identificação do Sujeito
-                  </h4>
-                  <p className="text-lg text-slate-500 dark:text-slate-400">
-                    A precisão na concordância depende da correta identificação
-                    do núcleo do sujeito, ignorando adjuntos adnominais ou
-                    preposições intermediárias.
+              <div className="space-y-4">
+                <h4 className="flex items-center gap-2 font-bold text-emerald-600 dark:text-emerald-400 text-xl">
+                  <LuBrain size={21} /> 02. Identificação do Sujeito
+                </h4>
+                <p className="text-lg text-slate-500 dark:text-slate-400">
+                  A precisão na concordância depende da correta identificação do
+                  núcleo do sujeito, ignorando adjuntos adnominais ou
+                  preposições intermediárias.
+                </p>
+                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+                  <p className="text-lg font-bold uppercase tracking-widest text-slate-400">
+                    Exemplos Formais:
                   </p>
-                  <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
-                    <p className="text-lg font-bold uppercase tracking-widest text-slate-400">
-                      Exemplos Formais:
+                  <div className="space-y-3 font-mono text-lg">
+                    <p className="p-2 bg-white dark:bg-slate-950 rounded-lg border border-slate-100 dark:border-slate-800">
+                      "A **lista** de materiais **chegou**." (concorda com
+                      lista)
                     </p>
-                    <div className="space-y-3 font-mono text-lg">
-                      <p className="p-2 bg-white dark:bg-slate-950 rounded-lg border border-slate-100 dark:border-slate-800">
-                        "A **lista** de materiais **chegou**." (concorda com
-                        lista)
-                      </p>
-                      <p className="p-2 bg-white dark:bg-slate-950 rounded-lg border border-slate-100 dark:border-slate-800">
-                        "Os **laudos** da perícia **foram** emitidos."
-                      </p>
-                    </div>
+                    <p className="p-2 bg-white dark:bg-slate-950 rounded-lg border border-slate-100 dark:border-slate-800">
+                      "Os **laudos** da perícia **foram** emitidos."
+                    </p>
                   </div>
                 </div>
               </div>
@@ -2217,8 +2320,8 @@ export default function AulaConcordancia({
               index={1}
               title="A Lógica da Concordância (O Contrato Verbal)"
               className="mb-8"
-          variant={mv[1]}
-        />
+              variant={mv[1]}
+            />
 
             <div className="space-y-6">
               <ContentAccordion
@@ -2230,11 +2333,11 @@ export default function AulaConcordancia({
                   {
                     titulo: "O Fundamento",
                     icone: "📜",
-                    conteudo:(
+                    content: (
                       <>
                         <div className="bg-card rounded-xl border border-border p-4 shadow-sm mb-3">
                           <p className="font-bold text-lg text-foreground mb-2">
-                            A Regra de Ouro
+                            Princípio Fundamental
                           </p>
                           <p className="text-muted-foreground">
                             O verbo{" "}
@@ -2259,7 +2362,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Quem é o Chefe?",
                     icone: "👔",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Identificando o Núcleo do Sujeito
@@ -2298,7 +2401,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "A Armadilha da Ordem Inversa",
                     icone: "🔄",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Quando o Sujeito se Esconde
@@ -2340,8 +2443,8 @@ export default function AulaConcordancia({
               index={2}
               title="Revisão Relâmpago: Transitividade Verbal"
               className="mb-8"
-          variant={mv[1]}
-        />
+              variant={mv[1]}
+            />
             <p className="text-muted-foreground">
               Para entender a concordância com a partícula{" "}
               <strong className="text-foreground">SE</strong> (o maior pesadelo
@@ -2362,7 +2465,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Conceito",
                     icone: "📖",
-                    conteudo:(
+                    content: (
                       <>
                         <p>
                           O VTD exige um{" "}
@@ -2405,7 +2508,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Exemplos Petrobras",
                     icone: "🛢️",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Contexto do dia a dia na empresa:
@@ -2442,7 +2545,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Relação com o SE",
                     icone: "🔗",
-                    conteudo:(
+                    content: (
                       <>
                         <div className="bg-indigo-500/10 p-3 rounded-lg border border-indigo-500/20">
                           <p className="font-bold text-indigo-700 dark:text-indigo-400">
@@ -2477,9 +2580,9 @@ export default function AulaConcordancia({
                     ),
                   },
                   {
-                    titulo: "Macete de Prova",
+                    titulo: "Estratégia de Prova",
                     icone: "🎯",
-                    conteudo:(
+                    content: (
                       <>
                         <div className="bg-yellow-500/10 p-3 rounded-lg border border-yellow-500/20 mb-2">
                           <p className="font-bold text-yellow-700 dark:text-yellow-400">
@@ -2522,7 +2625,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Conceito",
                     icone: "📖",
-                    conteudo:(
+                    content: (
                       <>
                         <p>
                           O VTI exige um{" "}
@@ -2567,7 +2670,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Exemplos Petrobras",
                     icone: "🛢️",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           No contexto profissional:
@@ -2609,7 +2712,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Relação com o SE",
                     icone: "🔗",
-                    conteudo:(
+                    content: (
                       <>
                         <div className="bg-orange-500/10 p-3 rounded-lg border border-orange-500/20">
                           <p className="font-bold text-orange-700 dark:text-orange-400">
@@ -2647,7 +2750,7 @@ export default function AulaConcordancia({
                     ),
                   },
                   {
-                    titulo: "Pegadinha CESGRANRIO",
+                    titulo: "pontos de atenção CESGRANRIO",
                     icone: "⚠️",
                     content: (
                       <>
@@ -2680,7 +2783,7 @@ export default function AulaConcordancia({
                           </p>
                         </div>
                         <p className="mt-2 text-lg">
-                          🧠 Macete: A preposição (DE) é uma{" "}
+                          🧠 Estratégia: A preposição (DE) é uma{" "}
                           <strong>barreira</strong> — o termo após ela nunca é
                           sujeito.
                         </p>
@@ -2699,7 +2802,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Conceito",
                     icone: "📖",
-                    conteudo:(
+                    content: (
                       <>
                         <p>
                           O VI tem{" "}
@@ -2732,7 +2835,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Exemplos e Cuidados",
                     icone: "🛢️",
-                    conteudo:(
+                    content: (
                       <>
                         <ul className="space-y-2">
                           <li className="text-green-600">
@@ -2770,7 +2873,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Diferença para VTD/VTI",
                     icone: "⚖️",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Quadro comparativo rápido:
@@ -2822,7 +2925,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Conceito",
                     icone: "📖",
-                    conteudo:(
+                    content: (
                       <>
                         <p>
                           O VL não expressa ação — ele{" "}
@@ -2866,7 +2969,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Na Concordância",
                     icone: "🔗",
-                    conteudo:(
+                    content: (
                       <>
                         <p>
                           O VL{" "}
@@ -2910,9 +3013,9 @@ export default function AulaConcordancia({
                     ),
                   },
                   {
-                    titulo: "Macete de Prova",
+                    titulo: "Estratégia de Prova",
                     icone: "🎯",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Quando o VL importa em provas:
@@ -2963,8 +3066,8 @@ export default function AulaConcordancia({
               index={3}
               title="Sujeito Composto"
               className="mb-8"
-          variant={mv[1]}
-        />
+              variant={mv[1]}
+            />
             <p className="text-muted-foreground">
               Quando o sujeito tem{" "}
               <strong className="text-foreground">dois ou mais núcleos</strong>,
@@ -2983,7 +3086,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Regra Geral",
                     icone: "\u{1F4CF}",
-                    conteudo:(
+                    content: (
                       <>
                         <div className="bg-indigo-500/10 p-3 rounded-lg border border-indigo-500/20">
                           <p className="font-bold text-indigo-700 dark:text-indigo-400 text-center">
@@ -3014,7 +3117,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Sinônimos e Gradação",
                     icone: "🔄",
-                    conteudo:(
+                    content: (
                       <>
                         <p>
                           Quando os núcleos são{" "}
@@ -3045,7 +3148,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Exerc\u00edcio R\u00e1pido",
                     icone: "\u270F\uFE0F",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Complete mentalmente:
@@ -3087,7 +3190,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Regra",
                     icone: "\u{1F4CF}",
-                    conteudo:(
+                    content: (
                       <>
                         <div className="bg-purple-500/10 p-3 rounded-lg border border-purple-500/20">
                           <p className="font-bold text-purple-700 dark:text-purple-400 text-center">
@@ -3136,7 +3239,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Com OU",
                     icone: "\u{1F538}",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Depende do sentido:
@@ -3168,7 +3271,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Com NEM",
                     icone: "\u{1F539}",
-                    conteudo:(
+                    content: (
                       <>
                         <p>
                           NEM = E + N&Atilde;O. Verbo vai ao{" "}
@@ -3202,8 +3305,8 @@ export default function AulaConcordancia({
               index={4}
               title='O "Calcanhar de Aquiles": Verbos Impessoais'
               className="mb-8"
-          variant={mv[1]}
-        />
+              variant={mv[1]}
+            />
 
             <AlertBox tipo="danger" titulo="🚫 ERRO MORTAL Nº 1">
               Nunca, jamais escreva "Houveram problemas" ou "Fazem dois anos".
@@ -3218,9 +3321,9 @@ export default function AulaConcordancia({
                 defaultOpen={true}
                 slides={[
                   {
-                    titulo: "A Regra de Ouro",
+                    titulo: "Princípio Fundamental",
                     icone: "\u{1F4D6}",
-                    conteudo:(
+                    content: (
                       <>
                         <p>
                           No sentido de{" "}
@@ -3264,7 +3367,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Contamina\u00e7\u00e3o do Auxiliar",
                     icone: "\u2623\uFE0F",
-                    conteudo:(
+                    content: (
                       <>
                         <div className="bg-orange-500/10 p-3 rounded-lg border border-orange-500/20">
                           <p className="font-bold text-orange-700 dark:text-orange-400">
@@ -3311,7 +3414,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Quando HAVER \u00e9 pessoal",
                     icone: "\u{1F513}",
-                    conteudo:(
+                    content: (
                       <>
                         <p>
                           Em outros sentidos, HAVER{" "}
@@ -3357,7 +3460,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Regra",
                     icone: "\u{1F4D6}",
-                    conteudo:(
+                    content: (
                       <>
                         <p>
                           Indicando{" "}
@@ -3397,7 +3500,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "FAZER pessoal",
                     icone: "\u{1F513}",
-                    conteudo:(
+                    content: (
                       <>
                         <p>
                           Em outros sentidos, FAZER{" "}
@@ -3433,7 +3536,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "A Diferen\u00e7a Fatal",
                     icone: "\u26A0\uFE0F",
-                    conteudo:(
+                    content: (
                       <>
                         <p>
                           <strong className="text-foreground">
@@ -3487,7 +3590,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Tamb\u00e9m pessoais",
                     icone: "\u{1F4CB}",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Outros verbos que concordam:
@@ -3521,9 +3624,9 @@ export default function AulaConcordancia({
                         </ul>
                         <div className="bg-yellow-500/10 p-3 rounded-lg mt-2">
                           <p className="text-lg">
-                            {"\u{1F9E0}"} <strong>Macete:</strong> S&oacute;
-                            HAVER &eacute; impessoal. Todos os {'"'}primos
-                            {'"'} dele (existir, ocorrer, acontecer) s&atilde;o
+                            {"\u{1F9E0}"} <strong>Estratégia:</strong> Apenas
+                            HAVER é impessoal. Todos os {"'"}correlatos
+                            {"'"} dele (existir, ocorrer, acontecer) são
                             pessoais e concordam!
                           </p>
                         </div>
@@ -3539,13 +3642,13 @@ export default function AulaConcordancia({
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={5}
-              title='O Pesadelo: Part&iacute;cula "SE"'
+              title='Complexidade Técnica: Partícula "SE"'
               className="mb-8"
-          variant={mv[1]}
-        />
+              variant={mv[1]}
+            />
             <p className="text-muted-foreground">
-              Aqui &eacute; onde a transitividade (M&oacute;dulo 2) salva sua
-              vida. Existem{" "}
+              Aqui é onde a transitividade (Módulo 2) é fundamental para o
+              acerto. Existem{" "}
               <strong className="text-foreground">
                 duas fun&ccedil;&otilde;es
               </strong>{" "}
@@ -3562,7 +3665,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "O Conceito",
                     icone: "\u{1F4D6}",
-                    conteudo:(
+                    content: (
                       <>
                         <div className="bg-indigo-500/10 p-3 rounded-lg border border-indigo-500/20">
                           <p className="font-bold text-indigo-700 dark:text-indigo-400 text-center">
@@ -3597,13 +3700,13 @@ export default function AulaConcordancia({
                     ),
                   },
                   {
-                    titulo: "O Macete da Passiva",
+                    titulo: "A Estratégia da Passiva",
                     icone: "\u{1F4A1}",
-                    conteudo:(
+                    content: (
                       <>
                         <div className="bg-yellow-500/10 p-3 rounded-lg border border-yellow-500/20">
                           <p className="font-bold text-yellow-700 dark:text-yellow-400">
-                            Dica INFALIVEL para a prova
+                            Diretriz Técnica para a prova
                           </p>
                         </div>
                         <p className="mt-2">
@@ -3639,9 +3742,9 @@ export default function AulaConcordancia({
                     ),
                   },
                   {
-                    titulo: "Pegadinhas CESGRANRIO",
+                    titulo: "pontos de atenção CESGRANRIO",
                     icone: "\u{1F3AF}",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Armadilhas comuns na prova:
@@ -3687,7 +3790,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "O Conceito",
                     icone: "\u{1F4D6}",
-                    conteudo:(
+                    content: (
                       <>
                         <div className="bg-orange-500/10 p-3 rounded-lg border border-orange-500/20">
                           <p className="font-bold text-orange-700 dark:text-orange-400 text-center">
@@ -3724,7 +3827,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "A Diferen\u00e7a Chave",
                     icone: "\u{1F511}",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Resumo visual:
@@ -3762,10 +3865,10 @@ export default function AulaConcordancia({
                         </div>
                         <div className="bg-yellow-500/10 p-3 rounded-lg mt-3">
                           <p className="text-lg">
-                            {"\u{1F9E0}"} <strong>Macete:</strong> Viu a
-                            PREPOSI&Ccedil;&Atilde;O depois do SE? &Eacute; IIS,
-                            verbo no singular! Sem preposi&ccedil;&atilde;o?
-                            &Eacute; PA, verbo concorda!
+                            {"\u{1F9E0}"} <strong>Estratégia:</strong>{" "}
+                            Verificando a PREPOSIÇÃO depois do SE: se presente,
+                            trata-se de IIS (verbo no singular). Sem preposição,
+                            trata-se de PA (verbo concorda com o sujeito).
                           </p>
                         </div>
                       </>
@@ -3774,7 +3877,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Estrat\u00e9gia de Prova",
                     icone: "\u{1F3AF}",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Passo a passo para a quest&atilde;o:
@@ -3826,16 +3929,16 @@ export default function AulaConcordancia({
               index={6}
               title="Resumo e Multimídia"
               className="mb-8"
-          variant={mv[1]}
-        />
+              variant={mv[1]}
+            />
 
             <LessonTabs
               tabs={[
                 {
                   id: "video",
                   label: "Vídeo Aula",
-                  icon:LuPlayCircle,
-                  content:(
+                  icon: LuPlayCircle,
+                  content: (
                     <div className="w-full flex flex-col items-center py-6">
                       <div className="w-full max-w-3xl">
                         <VideoModal
@@ -3851,8 +3954,8 @@ export default function AulaConcordancia({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon:LuBookOpen,
-                  content:(
+                  icon: LuBookOpen,
+                  content: (
                     <ModuleSummaryCarouselNew
                       moduloNome="Concordância Verbal"
                       tituloAula="Concordância"
@@ -3895,9 +3998,9 @@ export default function AulaConcordancia({
                 },
                 {
                   id: "visual",
-                  label: "Macete Visual",
-                  icon:LuBrain,
-                  content:(
+                  label: "Síntese Estratégica",
+                  icon: LuBrain,
+                  content: (
                     <div className="text-center p-8 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10">
                       <h3 className="text-xl font-bold text-foreground mb-4">
                         A Barreira da Preposição
@@ -3917,8 +4020,8 @@ export default function AulaConcordancia({
                 {
                   id: "audio",
                   label: "Áudio Resumo",
-                  icon:LuMusic,
-                  content:(
+                  icon: LuMusic,
+                  content: (
                     <div className="w-full flex justify-center py-4">
                       <div className="w-full max-w-md">
                         <MusicPlayerCard
@@ -3945,6 +4048,80 @@ export default function AulaConcordancia({
             />
           </section>
 
+          <ModuleConsolidation
+            index={1}
+            video={{
+              videoId: "concordancia-verbal-v4",
+              title: "Concordância Verbal: O Eixo Petrobras",
+              duration: "12:30",
+              thumbnail:
+                "/assets/images/portugues/concordancia/thumb_verbal.png",
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 1",
+              tituloAula: "Concordância Verbal",
+              materia: "Língua Portuguesa",
+              images: [
+                {
+                  title: "Infográfico: Partícula SE",
+                  type: "Tático",
+                  placeholderColor: "bg-indigo-900/10",
+                  imageUrl:
+                    "/assets/images/portugues/concordancia/infografico_particula_se.png",
+                },
+                {
+                  title: "Mapa Mental: Verbos Impessoais",
+                  type: "Diagrama",
+                  placeholderColor: "bg-amber-900/10",
+                  imageUrl:
+                    "/assets/images/portugues/concordancia/mapa_verbos_impessoais.png",
+                },
+              ],
+            }}
+            sinteseEstrategica={{
+              title: "A Lei do Sujeito e a Partícula SE",
+              content: (
+                <>
+                  <div className="text-6xl my-6 animate-pulse">📢 ⚖️</div>
+                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto">
+                    "O verbo é o espelho do sujeito. Se o sujeito é paciente e
+                    tem o 'SE', ele concorda. Se o 'SE' é índice, ele trava no
+                    singular."
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
+                    <div className="p-4 bg-indigo-500/5 border border-indigo-500/20 rounded-xl">
+                      <h4 className="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-2">
+                        VTD + SE (Passiva)
+                      </h4>
+                      <p className="text-lg text-muted-foreground italic">
+                        "Vendem-se casas." (Casas são vendidas)
+                      </p>
+                    </div>
+                    <div className="p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl">
+                      <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 mb-2">
+                        VTI + SE (Índice)
+                      </h4>
+                      <p className="text-lg text-muted-foreground italic">
+                        "Necessita-se de técnicos." (Sempre singular)
+                      </p>
+                    </div>
+                  </div>
+                </>
+              ),
+            }}
+            audio={{
+              audioUrl:
+                "/assets/audio/portugues/concordancia/resumo_verbal.mp3",
+              titulo: "Podcast: O Verbo na Petrobras",
+              artista: "Dossiê Petrobras",
+              capaUrl:
+                "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
+              lyrics:
+                "[Host] - Atenção concurseiro, o verbo 'haver' no sentido de existir não tem plural...",
+            }}
+            variant={mv[1] || "blue"}
+          />
+
           {/* QUIZ DIAGNÓSTICO */}
           <section id="quiz-modulo-1" className="mt-16">
             <QuizInterativo
@@ -3953,8 +4130,8 @@ export default function AulaConcordancia({
               icone="📝"
               numero={7}
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          variant={mv[1]}
-        />
+              variant={mv[1]}
+            />
             {!completedModules.has("modulo-1") && (
               <div className="mt-8 p-4 bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200 rounded-lg text-center border border-yellow-200 dark:border-yellow-800/50">
                 🔒 Acerte 70% para desbloquear a Concordância Nominal!
@@ -3970,22 +4147,69 @@ export default function AulaConcordancia({
           numero={2}
           titulo="Concordância Nominal"
           descricao="Consiste na adaptação das palavras determinantes (artigos, adjetivos, pronomes adjetivos e numerais) ao gênero e número da palavra determinada (o substantivo), garantindo a coesão da frase."
-          variant={mv[2]}
+          variant={mv[2] || "emerald"}
         />
         <div className="space-y-[50px]">
           {/* ─── 1. REGRA GERAL & LOGICA (CONCEPT PRESENTATION) ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="O Conceito Central"
               className="mb-2"
-          variant={mv[2]}
-        />
-            <p className="text-muted-foreground text-lg ml-0 md:ml-[60px] -mt-6 mb-8">
-              Entenda a lógica por trás da regra
-            </p>
+              variant={mv[2]}
+            />
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+              <p>
+                A <strong>concordância nominal</strong> é o mecanismo que
+                assegura a harmonia estética e gramatical entre os nomes que
+                compõem a estrutura de um sintagma nominal. No contexto de
+                provas de alto rendimento, como as da <strong>Petrobras</strong>
+                , a precisão na flexão de gênero e número é fundamental para
+                evitar ambiguidades em relatórios técnicos e documentos
+                oficiais, onde a clareza sobre a qual substantivo um adjetivo se
+                refere pode alterar a interpretação de uma cláusula inteira.
+              </p>
+              <p>
+                Tecnicamente, a regra geral estabelece que o adjetivo e as
+                palavras adjetivas (artigo, numeral, pronome) devem concordar em
+                gênero e número com o substantivo que determinam. Essa relação
+                de dependência sintática exige que o candidato identifique
+                corretamente qual termo exerce a função de{" "}
+                <strong>núcleo</strong>, pois é ele quem "magnetiza" os demais
+                elementos ao seu redor, impondo suas propriedades gramaticais.
+              </p>
+              <p>
+                Observe o contraste: em "<strong>Regras e regulamentos</strong>{" "}
+                (núcleos masculinos) <strong>precisos</strong> (adjetivo
+                masculino plural)", a concordância segue a regra do plural
+                masculino predominante. Já em "<strong>Regra e norma</strong>{" "}
+                (núcleos femininos) <strong>precisas</strong> (adjetivo feminino
+                plural)", a harmonia é feita no feminino. O erro clássico ocorre
+                quando o adjetivo concorda apenas com o termo mais próximo por
+                descuido: "<em>Regras e regulamentos precisa</em>".
+              </p>
+              <p>
+                A complexidade se acentua em casos especiais envolvendo palavras
+                como <strong>meio, bastante, anexo, incluso e mesmo</strong>.
+                Estas palavras podem atuar como adjetivos (variáveis) ou como
+                advérbios (invariáveis), dependendo do contexto sintático. Saber
+                distinguir, por exemplo, entre "elas estavam{" "}
+                <strong>meio</strong> (advérbio) cansadas" e "comeram{" "}
+                <strong>meia</strong> (numeral/adjetivo) maçã" é o divisor de
+                águas entre a aprovação e o erro.
+              </p>
+              <p>
+                A banca <strong>CESGRANRIO</strong> costuma explorar casos de
+                concordância atrativa (com o mais próximo) versus concordância
+                gramatical (com o conjunto), especialmente quando o adjetivo
+                está posposto a vários substantivos. Outra estratégia comum é o
+                uso de predicativos do sujeito ou do objeto, onde a distância
+                entre o nome e o adjetivo facilita a indução ao erro por parte
+                do candidato menos atento à estrutura profunda da frase.
+              </p>
+            </div>
 
-            <div className="grid md:grid-cols-2 gap-8 items-stretch">
+            <div className="grid md:grid-cols-2 gap-8 items-stretch pt-8 border-t border-border/50">
               {/* LE: Conceito Visual (Ímã) */}
               <div className="bg-gradient-to-br from-indigo-500/5 to-purple-500/5 rounded-2xl border border-indigo-500/10 p-8 flex flex-col justify-center items-center text-center space-y-6">
                 <div className="w-24 h-24 rounded-full bg-white dark:bg-slate-800 shadow-xl flex items-center justify-center text-5xl relative group">
@@ -4068,8 +4292,8 @@ export default function AulaConcordancia({
               title="Palavras Perigosas (Decore Agora!)"
               description="Baseado nas palavras mais cobradas pela CESGRANRIO em provas de 2020 a 2024 (Petrobras, Transpetro, Banco do Brasil)."
               className="mb-8"
-          variant={mv[2]}
-        />
+              variant={mv[2]}
+            />
             <CardCarousel cards={PALAVRAS_PERIGOSAS_CARDS} />
           </section>
 
@@ -4079,8 +4303,8 @@ export default function AulaConcordancia({
               index={3}
               title="Palavras Invari&aacute;veis e Arm&aacute;veis"
               className="mb-6"
-          variant={mv[2]}
-        />
+              variant={mv[2]}
+            />
             <p className="text-muted-foreground">
               Existem palavras que{" "}
               <strong className="text-foreground">nunca mudam</strong>{" "}
@@ -4099,7 +4323,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "MENOS",
                     icone: "\u{1F534}",
-                    conteudo:(
+                    content: (
                       <>
                         <div className="bg-red-500/10 p-3 rounded-lg border border-red-500/20">
                           <p className="font-bold text-red-700 dark:text-red-400 text-center">
@@ -4131,7 +4355,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "ALERTA e PSEUDO",
                     icone: "\u{1F6A8}",
-                    conteudo:(
+                    content: (
                       <>
                         <p>
                           <strong className="text-foreground">ALERTA</strong>{" "}
@@ -4171,7 +4395,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "MEIO: adv. ou adj.",
                     icone: "\u{1F50D}",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Depende da fun&ccedil;&atilde;o:
@@ -4224,7 +4448,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "OBRIGADO/A",
                     icone: "\u{1F64F}",
-                    conteudo:(
+                    content: (
                       <>
                         <p>
                           Concorda com{" "}
@@ -4251,7 +4475,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "MESMO / PR&Oacute;PRIO / ANEXO / INCLUSO",
                     icone: "\u{1F4CE}",
-                    conteudo:(
+                    content: (
                       <>
                         <p>
                           S&atilde;o{" "}
@@ -4298,7 +4522,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Regra",
                     icone: "\u{1F4CF}",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Depende do DETERMINANTE:
@@ -4341,9 +4565,9 @@ export default function AulaConcordancia({
                     ),
                   },
                   {
-                    titulo: "Macete Visual",
+                    titulo: "Síntese Estratégica",
                     icone: "\u{1F9E0}",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Viu o ARTIGO? Concordou!
@@ -4391,16 +4615,16 @@ export default function AulaConcordancia({
               index={4}
               title="Resumo e Multimídia"
               className="mb-8"
-          variant={mv[2]}
-        />
+              variant={mv[2]}
+            />
 
             <LessonTabs
               tabs={[
                 {
                   id: "video",
                   label: "Vídeo Aula",
-                  icon:LuPlayCircle,
-                  content:(
+                  icon: LuPlayCircle,
+                  content: (
                     <div className="w-full flex flex-col items-center py-6">
                       <div className="w-full max-w-3xl">
                         <VideoModal
@@ -4416,8 +4640,8 @@ export default function AulaConcordancia({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon:LuBookOpen,
-                  content:(
+                  icon: LuBookOpen,
+                  content: (
                     <ModuleSummaryCarouselNew
                       moduloNome="Concordância Nominal"
                       tituloAula="Concordância"
@@ -4459,9 +4683,9 @@ export default function AulaConcordancia({
                 },
                 {
                   id: "visual",
-                  label: "Macete Visual",
-                  icon:LuBrain,
-                  content:(
+                  label: "Síntese Estratégica",
+                  icon: LuBrain,
+                  content: (
                     <div className="text-center p-8 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-2xl border border-emerald-500/10">
                       <h3 className="text-xl font-bold text-foreground mb-4">
                         Regra de Ouro (5s)
@@ -4488,8 +4712,8 @@ export default function AulaConcordancia({
                 {
                   id: "audio",
                   label: "Áudio Resumo",
-                  icon:LuMusic,
-                  content:(
+                  icon: LuMusic,
+                  content: (
                     <div className="w-full flex justify-center py-4">
                       <div className="w-full max-w-md">
                         <MusicPlayerCard
@@ -4514,6 +4738,68 @@ export default function AulaConcordancia({
             />
           </section>
 
+          <ModuleConsolidation
+            index={2}
+            video={{
+              videoId: "concordancia-nominal-v4",
+              title: "Concordância Nominal: O Reino do Substantivo",
+              duration: "10:15",
+              thumbnail:
+                "/assets/images/portugues/concordancia/thumb_nominal.png",
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 2",
+              tituloAula: "Concordância Nominal",
+              materia: "Língua Portuguesa",
+              images: [
+                {
+                  title: "Infográfico: Adjetivo Posposto",
+                  type: "Tático",
+                  placeholderColor: "bg-emerald-900/10",
+                  imageUrl:
+                    "/assets/images/portugues/concordancia/infografico_adjetivo_posposto.png",
+                },
+              ],
+            }}
+            sinteseEstrategica={{
+              title: "Magnetismo dos Nomes",
+              content: (
+                <>
+                  <div className="text-6xl my-6 animate-pulse">🧲 📝</div>
+                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto">
+                    "O substantivo é o núcleo. Artigos, numerais e adjetivos são
+                    satélites que orbitam e copiam suas características de
+                    gênero e número."
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
+                    <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
+                      <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mb-2">
+                        Anexo / Incluso
+                      </h4>
+                      <p className="text-lg text-muted-foreground italic">
+                        "As fotos seguem anexas." (Varia normal)
+                      </p>
+                    </div>
+                    <div className="p-4 bg-teal-500/5 border border-teal-500/20 rounded-xl">
+                      <h4 className="text-lg font-bold text-teal-600 dark:text-teal-400 mb-2">
+                        Em anexo
+                      </h4>
+                      <p className="text-lg text-muted-foreground italic">
+                        "Seguem em anexo as fotos." (Invariável)
+                      </p>
+                    </div>
+                  </div>
+                </>
+              ),
+            }}
+            audio={{
+              audioUrl: "",
+              titulo: "Concordância Nominal",
+              artista: "Petrobras Quest",
+            }}
+            variant={mv[2] || "emerald"}
+          />
+
           {/* QUIZ MODULE 2 */}
           <section id="quiz-modulo-2" className="mt-16">
             <QuizInterativo
@@ -4522,8 +4808,8 @@ export default function AulaConcordancia({
               icone="🧠"
               numero={5}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          variant={mv[2]}
-        />
+              variant={mv[2]}
+            />
             {!completedModules.has("modulo-2") && (
               <div className="mt-8 p-4 bg-emerald-100 dark:bg-emerald-900/20 text-emerald-800 dark:text-emerald-200 rounded-lg text-center border border-emerald-200 dark:border-emerald-800/50">
                 🔓 Quase lá! Desbloqueie a Prática Final.
@@ -4538,25 +4824,66 @@ export default function AulaConcordancia({
         <ModuleBanner
           numero={3}
           titulo="Prática e Simulados"
-          descricao="Como as bancas cobram? Aprenda o passo-a-passo para não cair em pegadinhas e resolva questões estilo CESGRANRIO."
-          variant={mv[3]}
+          descricao="Como as bancas cobram? Aprenda o passo-a-passo para não cair em pontos de atenção e resolva questões estilo CESGRANRIO."
+          variant={mv[3] || "violet"}
         />
         <div className="space-y-[50px]">
           {/* ─── 1. ESTRATÉGIA DE GUERRA ─── */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="O Algoritmo da Aprovação"
               className="mb-6"
-          variant={mv[3]}
-        />
-            <p className="text-muted-foreground">
-              Siga este m&eacute;todo em{" "}
-              <strong className="text-foreground">
-                toda quest&atilde;o de concord&acirc;ncia
-              </strong>{" "}
-              e voc&ecirc; nunca mais vai errar:
-            </p>
+              variant={mv[3]}
+            />
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+              <p>
+                A transição da teoria para a prática exige uma mudança de
+                mentalidade: do "saber a regra" para o "
+                <strong>aplicar o método sob pressão</strong>". Em concursos de
+                engenharia e técnica, a gestão do tempo é tão vital quanto o
+                conhecimento gramatical, e a concordância, por ser um tema
+                recorrente, deve ser resolvida com rapidez e segurança,
+                liberando energia cognitiva para questões de raciocínio mais
+                complexo.
+              </p>
+              <p>
+                O "<strong>Algoritmo da Aprovação</strong>" consiste em uma
+                sequência lógica de passos: identificar o verbo, localizar o
+                núcleo do sujeito, verificar a presença de termos intercalados
+                e, por fim, validar a flexão. Este processo sistemático elimina
+                a dependência do "ouvido" ou da intuição linguística, que
+                costumam falhar diante de estruturas sintáticas truncadas ou
+                inversões comuns em textos literários e técnicos.
+              </p>
+              <p>
+                Considere a abordagem estratégica: enquanto um candidato comum
+                lê a frase inteira buscando sentido, o candidato treinado foca
+                nos conectores. Na estrutura "A maioria dos funcionários{" "}
+                <strong>chegou/chegaram</strong>", ambos são aceitáveis, mas o
+                aluno estratégico sabe que a banca pode preferir a concordância
+                lógica (plural) para testar a percepção do coletivo. Identificar
+                essas opções facultativas é o que garante a pontuação máxima.
+              </p>
+              <p>
+                Além da identificação do erro, é preciso entender a{" "}
+                <strong>estratégia de distração</strong> da banca.
+                Frequentemente, a Cesgranrio insere uma oração adjetiva extensa
+                entre o sujeito e o verbo para que o candidato perca o referente
+                original. Dominar o isolamento dessas orações "ruído" é
+                essencial para manter a integridade da análise sintática durante
+                a prova, evitando cair em armadilhas de proximidade.
+              </p>
+              <p>
+                Nesta seção, simularemos o ambiente de prova com questões que
+                desafiam a percepção imediata. O foco será na varredura de "
+                <strong>dangerous words</strong>" e na análise de concordância
+                em períodos compostos. Lembre-se: na <strong>CESGRANRIO</strong>
+                , a resposta correta muitas vezes parece estranha ao ouvido, mas
+                é a única que sobrevive ao escrutínio rigoroso da gramática
+                normativa.
+              </p>
+            </div>
 
             <div className="space-y-3">
               <ContentAccordion
@@ -4568,7 +4895,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Passos 1 e 2",
                     icone: "\u{1F50E}",
-                    conteudo:(
+                    content: (
                       <>
                         <div className="space-y-3">
                           <div className="bg-violet-500/10 p-3 rounded-lg border border-violet-500/20">
@@ -4598,7 +4925,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Passos 3 e 4",
                     icone: "\u{26A0}\u{FE0F}",
-                    conteudo:(
+                    content: (
                       <>
                         <div className="space-y-3">
                           <div className="bg-orange-500/10 p-3 rounded-lg border border-orange-500/20">
@@ -4642,7 +4969,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Checklist R\u00e1pido",
                     icone: "\u{2705}",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Antes de marcar a quest&atilde;o, verifique:
@@ -4684,7 +5011,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "Top 5 Armadilhas",
                     icone: "\u{1F6A8}",
-                    conteudo:(
+                    content: (
                       <>
                         <div className="space-y-2 text-lg">
                           <div className="flex gap-2">
@@ -4746,7 +5073,7 @@ export default function AulaConcordancia({
                   {
                     titulo: "No Dia da Prova",
                     icone: "\u{1F4DD}",
-                    conteudo:(
+                    content: (
                       <>
                         <p className="font-bold text-foreground mb-2">
                           Estrat&eacute;gias finais:
@@ -4798,8 +5125,8 @@ export default function AulaConcordancia({
               index={2}
               title="Desafio Prático: Identifique o Erro"
               className="mb-8"
-          variant={mv[3]}
-        />
+              variant={mv[3]}
+            />
 
             {shuffledChallenges.length > 0 && (
               <div className="space-y-8">
@@ -4883,16 +5210,16 @@ export default function AulaConcordancia({
               index={3}
               title="Resumo e Multimídia"
               className="mb-8"
-          variant={mv[3]}
-        />
+              variant={mv[3]}
+            />
 
             <LessonTabs
               tabs={[
                 {
                   id: "video",
                   label: "Vídeo Aula",
-                  icon:LuPlayCircle,
-                  content:(
+                  icon: LuPlayCircle,
+                  content: (
                     <div className="w-full flex flex-col items-center py-6">
                       <div className="w-full max-w-3xl">
                         <VideoModal
@@ -4908,8 +5235,8 @@ export default function AulaConcordancia({
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon:LuBookOpen,
-                  content:(
+                  icon: LuBookOpen,
+                  content: (
                     <ModuleSummaryCarouselNew
                       moduloNome="Prática e Simulados"
                       tituloAula="Concordância"
@@ -4951,9 +5278,9 @@ export default function AulaConcordancia({
                 },
                 {
                   id: "visual",
-                  label: "Macete Visual",
-                  icon:LuBrain,
-                  content:(
+                  label: "Síntese Estratégica",
+                  icon: LuBrain,
+                  content: (
                     <div className="text-center p-8 bg-gradient-to-br from-violet-500/5 to-purple-500/5 rounded-2xl border border-violet-500/10">
                       <h3 className="text-xl font-bold text-foreground mb-4">
                         O Radar da Concordância
@@ -4971,8 +5298,8 @@ export default function AulaConcordancia({
                 {
                   id: "audio",
                   label: "Áudio Resumo",
-                  icon:LuMusic,
-                  content:(
+                  icon: LuMusic,
+                  content: (
                     <div className="w-full flex justify-center py-4">
                       <div className="w-full max-w-md">
                         <MusicPlayerCard
@@ -4997,6 +5324,7 @@ export default function AulaConcordancia({
             />
           </section>
 
+          
           {/* QUIZ MODULE 3 */}
           <section id="quiz-modulo-3" className="mt-16">
             <QuizInterativo
@@ -5005,28 +5333,80 @@ export default function AulaConcordancia({
               icone="🏆"
               numero={4}
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          variant={mv[3]}
-        />
+              variant={mv[3]}
+            />
           </section>
         </div>
       </TabsContent>
 
-      {/* MÓDULO 4: CASOS DE ELITE */}
+      {/* MÓDULO 4: CASOS DE Avançado */}
       <TabsContent value="modulo-4" className="space-y-[50px]">
         <ModuleBanner
           numero={4}
-          titulo="Casos de Elite"
+          titulo="Casos de Avançado"
           descricao="Aprofundamento em tópicos complexos: porcentagens, frações, pronomes relativos e expressões partitivas que definem a aprovação."
-          variant={mv[4]}
+          variant={mv[4] || "amber"}
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               title="Porcentagens e Frações"
               className="mb-8"
-          variant={mv[4]}
-        />
+              variant={mv[4]}
+            />
+
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed mb-10">
+              <p>
+                O diferencial entre os primeiros colocados e a lista de espera
+                reside no domínio dos "casos de borda" ou exceções raras.{" "}
+                <strong>
+                  Porcentagens, frações, pronomes relativos e expressões
+                  partitivas
+                </strong>{" "}
+                são os instrumentos que as bancas utilizam para realizar o
+                desempate técnico, exigindo do candidato um nível de
+                detalhamento que ultrapassa o conhecimento básico de sujeito e
+                predicado.
+              </p>
+              <p>
+                Casos como "Mais de um", "Cerca de", "Um dos que" e concordância
+                com numerais percentuais possuem regras próprias de preferência
+                e concordância atrativa. Por exemplo, em "1% dos entrevistados{" "}
+                <strong>votou/votaram</strong>", a concordância pode ser feita
+                com o numeral ou com o substantivo especificador, criando
+                nuances de ênfase que podem ser exploradas em questões de
+                reescrita e interpretação.
+              </p>
+              <p>
+                Compare as estruturas determinantes: "
+                <strong>Os Estados Unidos</strong> (com artigo){" "}
+                <strong>influenciam</strong>" vs. "<strong>Alagoas</strong> (sem
+                artigo) <strong>influencia</strong>". A presença do artigo
+                determinante define a flexão do verbo em nomes próprios
+                pluralizados. Ignorar essa pequena partícula é um erro fatal que
+                a banca monitora através de questões de preenchimento de lacunas
+                ou correção de textos formais.
+              </p>
+              <p>
+                Outro ponto crítico é a concordância com o pronome relativo
+                "quem", que admite o verbo na 3ª pessoa do singular (concordando
+                com o pronome) ou concordando com o antecedente. "Fomos nós{" "}
+                <strong>quem resolveu/resolvemos</strong> o problema". Essa
+                dualidade é um campo fértil para pegadinhas, onde a banca
+                apresenta uma opção como "única correta" quando, na verdade, há
+                alternatividade gramatical.
+              </p>
+              <p>
+                A <strong>CESGRANRIO</strong> frequentemente mistura
+                concordância verbal com voz passiva sintética (uso da partícula
+                "se"). Identificar se o "se" é índice de indeterminação do
+                sujeito ou partícula apassivadora é o teste definitivo de
+                concordância verbal avançada. Nesta seção, treinaremos o olhar
+                para detectar esses marcadores morfológicos instantaneamente,
+                garantindo a precisão em questões complexas.
+              </p>
+            </div>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="p-6 bg-amber-500/5 rounded-xl border border-amber-500/10">
                 <h4 className="font-bold text-amber-700 dark:text-amber-400 mb-2">
@@ -5072,8 +5452,8 @@ export default function AulaConcordancia({
               index={2}
               title="Pronomes Relativos: QUE e QUEM"
               className="mb-8"
-          variant={mv[4]}
-        />
+              variant={mv[4]}
+            />
             <div className="space-y-4">
               <div className="p-6 bg-red-500/5 rounded-xl border border-red-500/10">
                 <p className="font-bold mb-2">Sujeito é o relativo "QUE":</p>
@@ -5109,18 +5489,18 @@ export default function AulaConcordancia({
               index={3}
               title="Resumo e Multimídia"
               className="mb-8"
-          variant={mv[4]}
-        />
+              variant={mv[4]}
+            />
 
             <LessonTabs
               tabs={[
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon:LuBookOpen,
-                  content:(
+                  icon: LuBookOpen,
+                  content: (
                     <ModuleSummaryCarouselNew
-                      moduloNome="Casos de Elite"
+                      moduloNome="Casos de Avançado"
                       tituloAula="Concordância"
                       materia="Língua Portuguesa"
                       images={[
@@ -5162,6 +5542,71 @@ export default function AulaConcordancia({
             />
           </section>
 
+          <ModuleConsolidation
+            index={4}
+            video={{
+              videoId: "avancado-concordancia-v4",
+              title: "Casos de Elite: Porcentagens e Relativos",
+              duration: "14:20",
+              thumbnail:
+                "/assets/images/portugues/concordancia/thumb_avancado.png",
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 4",
+              tituloAula: "Casos de Avançado",
+              materia: "Língua Portuguesa",
+              images: [
+                {
+                  title: "Matriz: Concordância com 'QUE' vs 'QUEM'",
+                  type: "Tático",
+                  placeholderColor: "bg-rose-900/10",
+                  imageUrl:
+                    "/assets/images/portugues/concordancia/matriz_relativos.png",
+                },
+              ],
+            }}
+            sinteseEstrategica={{
+              title: "O Pulo do Gato no Avançado",
+              content: (
+                <>
+                  <div className="text-6xl my-6 animate-pulse">
+                    {" "}
+                    Leopard 🐆 🎓
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto">
+                    "Em porcentagens, o verbo é diplomata: pode concordar com o
+                    numeral ou com o substantivo. Mas se houver determinante, a
+                    regra endurece."
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
+                    <div className="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl">
+                      <h4 className="text-lg font-bold text-rose-600 dark:text-rose-400 mb-2">
+                        1% dos alunos
+                      </h4>
+                      <p className="text-lg text-muted-foreground italic">
+                        "Faltou" (1%) ou "Faltaram" (alunos).
+                      </p>
+                    </div>
+                    <div className="p-4 bg-orange-500/5 border border-orange-500/20 rounded-xl">
+                      <h4 className="text-lg font-bold text-orange-600 dark:text-orange-400 mb-2">
+                        O 1% dos alunos
+                      </h4>
+                      <p className="text-lg text-muted-foreground italic">
+                        "Faltou" (O determinante 'O' obriga).
+                      </p>
+                    </div>
+                  </div>
+                </>
+              ),
+            }}
+            audio={{
+              audioUrl: "",
+              titulo: "Casos de Avançado",
+              artista: "Petrobras Quest",
+            }}
+            variant={mv[4] || "amber"}
+          />
+
           <section id="quiz-modulo-4" className="mt-16">
             <QuizInterativo
               questoes={quizAprofundamentoQuestions}
@@ -5169,8 +5614,8 @@ export default function AulaConcordancia({
               icone="🔥"
               numero={4}
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          variant={mv[4]}
-        />
+              variant={mv[4]}
+            />
           </section>
         </div>
       </TabsContent>
@@ -5181,20 +5626,65 @@ export default function AulaConcordancia({
           numero={5}
           titulo="Laboratório Cesgranrio"
           descricao="Simulado final com questões de alto nível e revisão dos pontos críticos para garantir sua vaga na Petrobras."
-          variant={mv[5]}
+          variant={mv[5] || "rose"}
         />
         <div className="space-y-[50px]">
-          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm text-center">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
             <ModuleSectionHeader
-              index="🎯"
-              title="Missão Cumprida?"
+              index="INTRO"
+              title="Laboratório Cesgranrio"
               className="mb-8"
-          variant={mv[5]}
-        />
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-              Você percorreu toda a gramática de concordância. Agora, o desafio
-              final testará sua atenção aos detalhes mais sórdidos das bancas.
-            </p>
+              variant={mv[5]}
+            />
+
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed mb-10">
+              <p>
+                O <strong>Laboratório de Concordância</strong> é o estágio final
+                de maturação, onde o conhecimento é testado de forma holística e
+                integrada. Não se trata mais de regras isoladas, mas de ler o
+                texto como um organismo vivo, identificando falhas de
+                concordância que podem estar camufladas em meio a figuras de
+                linguagem, elipses ou zeugmas, comuns em enunciados de nível
+                superior.
+              </p>
+              <p>
+                Nesta fase, o rigor aumenta consideravelmente. Analisaremos
+                questões de provas recentes da <strong>Petrobras</strong> e de
+                outros órgãos federais organizados pela{" "}
+                <strong>CESGRANRIO</strong>. O objetivo é consolidar a "memória
+                de curto prazo" com os padrões mais frescos da banca, focando
+                especialmente em tendências recentes de cobrança, como a
+                concordância em textos de leis ou manuais técnicos.
+              </p>
+              <p>
+                Em uma questão típica de laboratório, a banca pode apresentar
+                cinco opções de reescrita para um mesmo parágrafo, onde apenas
+                uma mantém a correção gramatical integral. O desafio é perceber
+                que, às vezes, a concordância está correta, mas a regência ou a
+                pontuação estão erradas, exigindo uma{" "}
+                <strong>visão sistêmica</strong> da língua portuguesa para o
+                sucesso no exame.
+              </p>
+              <p>
+                Discutiremos também o "fator cansaço" e sua influência na
+                performance. Questões de concordância no final da prova tendem a
+                ser mais simples gramaticalmente, mas mais extensas visualmente.
+                Treinar a resiliência mental para não pular palavras ou ignorar
+                desinências verbais pequenas (como o sufixo "-m" ou "-s") é
+                parte integrante da <strong>preparação de elite</strong> que
+                propomos.
+              </p>
+              <p>
+                Ao concluir este laboratório, você terá processado o equivalente
+                a meses de estudo autodidata em poucas horas de prática
+                intensiva. A meta é que, ao abrir o caderno de provas no domingo
+                do exame, o seu cérebro execute o{" "}
+                <strong>algoritmo de concordância</strong> de forma automática,
+                permitindo que você foque toda a sua atenção na interpretação
+                estratégica do conteúdo e na garantia da sua vaga.
+              </p>
+            </div>
+
             <div className="flex flex-wrap justify-center gap-4">
               <div className="p-4 bg-primary/10 rounded-2xl border border-primary/20 min-w-[150px]">
                 <p className="text-3xl font-bold text-primary">10</p>
@@ -5205,7 +5695,7 @@ export default function AulaConcordancia({
               <div className="p-4 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 min-w-[150px]">
                 <p className="text-3xl font-bold text-emerald-600">85%</p>
                 <p className="text-lg uppercase tracking-widest font-bold opacity-70">
-                  Meta Elite
+                  Meta Avançado
                 </p>
               </div>
             </div>
@@ -5216,16 +5706,16 @@ export default function AulaConcordancia({
               index={2}
               title="Resumo Final e Revisão"
               className="mb-8"
-          variant={mv[5]}
-        />
+              variant={mv[5]}
+            />
 
             <LessonTabs
               tabs={[
                 {
                   id: "resumo",
                   label: "Resumo Visual",
-                  icon:LuBookOpen,
-                  content:(
+                  icon: LuBookOpen,
+                  content: (
                     <ModuleSummaryCarouselNew
                       moduloNome="Laboratório Cesgranrio"
                       tituloAula="Concordância"
@@ -5269,6 +5759,59 @@ export default function AulaConcordancia({
             />
           </section>
 
+          <ModuleConsolidation
+            index={5}
+            video={{
+              videoId: "laboratorio-cesgranrio-v4",
+              title: "Laboratório Final: O Padrão Petrobras",
+              duration: "18:45",
+              thumbnail:
+                "/assets/images/portugues/concordancia/thumb_laboratorio.png",
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 5",
+              tituloAula: "Laboratório Cesgranrio",
+              materia: "Língua Portuguesa",
+              images: [
+                {
+                  title: "Infográfico: O DNA da Banca",
+                  type: "Visão Geral",
+                  placeholderColor: "bg-slate-900/10",
+                  imageUrl:
+                    "/assets/images/portugues/concordancia/infografico_dna_banca.png",
+                },
+              ],
+            }}
+            sinteseEstrategica={{
+              title: "Check-out de Elite",
+              content: (
+                <>
+                  <div className="text-6xl my-6 animate-pulse">🏆 🛡️</div>
+                  <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto">
+                    "Você agora possui o algoritmo de correção automática. Sua
+                    visão não lê apenas palavras, ela enxerga as conexões
+                    sintáticas."
+                  </p>
+                  <div className="bg-primary/10 p-6 rounded-2xl border border-primary/20 mt-8">
+                    <h4 className="text-xl font-black italic uppercase tracking-tighter mb-4">
+                      Mantra da Aprovação
+                    </h4>
+                    <p className="text-lg italic opacity-90">
+                      "Verbo busca Sujeito. Adjetivo busca Substantivo. Eu busco
+                      a minha vaga."
+                    </p>
+                  </div>
+                </>
+              ),
+            }}
+            audio={{
+              audioUrl: "",
+              titulo: "Laboratório Cesgranrio",
+              artista: "Petrobras Quest",
+            }}
+            variant={mv[5] || "rose"}
+          />
+
           <section id="quiz-modulo-5" className="mt-16">
             <QuizInterativo
               questoes={quizFinalQuestions}
@@ -5276,8 +5819,8 @@ export default function AulaConcordancia({
               icone="🏆"
               numero={3}
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          variant={mv[5]}
-        />
+              variant={mv[5]}
+            />
           </section>
 
           {completedModules.has("modulo-5") && (
@@ -5290,11 +5833,12 @@ export default function AulaConcordancia({
                   🎓
                 </div>
                 <h3 className="text-4xl font-black italic tracking-tighter">
-                  CERTIFICADO DE ELITE
+                  CERTIFICADO DE Avançado
                 </h3>
                 <p className="text-xl opacity-90 max-w-xl mx-auto">
                   Parabéns! Você dominou a Concordância Verbal e Nominal. Seu
-                  radar contra pegadinhas está calibrado para a Petrobras.
+                  radar contra pontos de atenção está calibrado para a
+                  Petrobras.
                 </p>
               </div>
             </div>
@@ -5304,15 +5848,3 @@ export default function AulaConcordancia({
     </AulaTemplate>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
