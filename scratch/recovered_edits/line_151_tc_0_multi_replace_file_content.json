@@ -1,0 +1,8 @@
+{
+  "Description": "\"Adicionar a div wrapper da intro ao redor dos 10 parágrafos.\"",
+  "Instruction": "\"Adicionar o wrapper div correto para envolver os 10 parágrafos da intro.\"",
+  "ReplacementChunks": "[{\"AllowMultiple\":false,\"EndLine\":205,\"ReplacementContent\":\"            />\\n\\n          <div className=\\\"space-y-6 text-lg text-justify text-foreground/85 leading-relaxed\\\">\\n          {/* C — Contexto (parágrafos 1 e 2) */}\\n          <p>A <strong>Administração</strong>\",\"StartLine\":203,\"TargetContent\":\"            />\\n          {/* C — Contexto (parágrafos 1 e 2) */}\\n          <p>A <strong>Administração</strong>\"}]",
+  "TargetFile": "\"c:\\\\Workspace\\\\petrobras-quest\\\\src\\\\components\\\\aulas\\\\administracao\\\\AulaAdministracaoGeralSuprimento.tsx\"",
+  "toolAction": "\"Adding div wrapper\"",
+  "toolSummary": "\"Add div wrapper to intro\""
+}

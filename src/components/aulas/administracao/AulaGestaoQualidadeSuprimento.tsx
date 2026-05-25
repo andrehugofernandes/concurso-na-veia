@@ -167,56 +167,53 @@ export default function AulaGestaoQualidadeSuprimento({
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader index="INTRO" variant={mv[1]} title="O que é Qualidade?" description="Da conformidade ao encantamento — as múltiplas dimensões do conceito." />
-          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
-            <p>
-              <strong>Qualidade</strong> é um conceito multidimensional. Para <strong>Juran</strong>, é &quot;adequação ao uso&quot;. Para <strong>Crosby</strong>, é
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p><strong>Qualidade</strong> é um conceito multidimensional. Para <strong>Juran</strong>, é &quot;adequação ao uso&quot;. Para <strong>Crosby</strong>, é
               &quot;conformidade com requisitos&quot;. Para <strong>Deming</strong>, é &quot;o grau de satisfação do cliente a um custo previsível&quot;. A ISO 9000:2015
               define como &quot;grau em que um conjunto de características inerentes de um objeto satisfaz requisitos&quot;. Na Petrobras, qualidade
               significa que uma válvula deve suportar 10.000 PSI, um duto deve resistir a corrosão por 25 anos, e um EPI deve proteger o
-              trabalhador offshore em condições extremas — sem exceção.
-            </p>
-            <p>
-              <strong>David Garvin</strong> identificou <strong>5 abordagens</strong> da qualidade: (1) <strong>Transcendental</strong> — qualidade é reconhecida
+              trabalhador offshore em condições extremas — sem exceção.</p>
+            <p>Nas provas da CESGRANRIO, as cinco dimensões de David Garvin são cobradas associando definições como qualidade baseada na produção (Crosby) ou baseada no usuário (Juran).</p>
+            <p><strong>David Garvin</strong> identificou <strong>5 abordagens</strong> da qualidade: (1) <strong>Transcendental</strong> — qualidade é reconhecida
               intuitivamente, não pode ser definida (como arte); (2) <strong>Baseada no Produto</strong> — qualidade é mensurável, atributo do produto;
               (3) <strong>Baseada no Usuário</strong> — qualidade é o que o cliente quer (Juran); (4) <strong>Baseada na Produção</strong> — qualidade é
               conformidade com especificações (Crosby); (5) <strong>Baseada no Valor</strong> — qualidade é desempenho a um preço aceitável. A CESGRANRIO
-              cobra frequentemente a associação entre abordagem e autor.
-            </p>
-            <p>
-              O <strong>ciclo PDCA (Plan-Do-Check-Act)</strong> é a ferramenta universal de melhoria contínua. <strong>Plan</strong>: identificar o problema,
+              cobra frequentemente a associação entre abordagem e autor.</p>
+            <p>O planejamento sistemático (Plan) no ciclo PDCA precede qualquer ação executiva para que os limites de variação do processo sejam devidamente mapeados e controlados.</p>
+            <p>O <strong>ciclo PDCA (Plan-Do-Check-Act)</strong> é a ferramenta universal de melhoria contínua. <strong>Plan</strong>: identificar o problema,
               analisar causas, definir plano de ação. <strong>Do</strong>: executar o plano, treinar equipe. <strong>Check</strong>: verificar resultados,
               comparar com metas. <strong>Act</strong>: padronizar o que funcionou ou corrigir o que falhou. O PDCA é cíclico — nunca para. Na Petrobras,
-              cada unidade operacional roda PDCAs trimestrais para melhoria de processos de SMS.
-            </p>
-            <p>
-              Os <strong>custos da qualidade</strong> se dividem em 4 categorias: (1) <strong>Prevenção</strong> — treinamento, planejamento, manutenção
+              cada unidade operacional roda PDCAs trimestrais para melhoria de processos de SMS.</p>
+            <p>Um exemplo clássico de custos da qualidade reside no equilíbrio entre gastos preventivos de testes e custos de falhas externas após o produto atingir o consumidor final.</p>
+            <p>Os <strong>custos da qualidade</strong> se dividem em 4 categorias: (1) <strong>Prevenção</strong> — treinamento, planejamento, manutenção
               preventiva; (2) <strong>Avaliação</strong> — inspeções, testes, auditorias; (3) <strong>Falhas internas</strong> — retrabalho, sucata, parada
               de máquina (antes de chegar ao cliente); (4) <strong>Falhas externas</strong> — garantia, recall, multas, perda de reputação (após chegar
-              ao cliente). Regra: investir em prevenção REDUZ os custos de falhas. Falhas externas são 10-100x mais caras que prevenção.
-            </p>
-            <p>
-              A <strong>Gestão da Qualidade Total (TQM)</strong> é a filosofia de que a qualidade é responsabilidade de TODOS na organização, não
+              ao cliente). Regra: investir em prevenção REDUZ os custos de falhas. Falhas externas são 10-100x mais caras que prevenção.</p>
+            <p>A transição do controle de fim de linha para o TQM (Gestão da Qualidade Total) consolida a responsabilidade coletiva da cadeia sobre a integridade dos bens.</p>
+            <p>A <strong>Gestão da Qualidade Total (TQM)</strong> é a filosofia de que a qualidade é responsabilidade de TODOS na organização, não
               apenas do departamento de controle de qualidade. TQM envolve: foco no cliente, melhoria contínua (kaizen), envolvimento total dos
               funcionários, decisão baseada em dados e gestão por processos. Na Petrobras, o TQM se manifesta no Sistema de Gestão Integrada (SGI)
-              que une qualidade (ISO 9001), meio ambiente (ISO 14001) e segurança (ISO 45001) em um único sistema.
-            </p>
+              que une qualidade (ISO 9001), meio ambiente (ISO 14001) e segurança (ISO 45001) em um único sistema.</p>
+            <p>Na Petrobras, o SGI unifica as diretrizes de SMS e qualidade (ISO 9001) para blindar operações contra não-conformidades críticas em tubulações submarinas.</p>
             <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">As 5 Abordagens de Garvin</h4>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-2 text-sm text-center">
-                <div className="p-2 bg-blue-500/10 rounded-lg"><p className="font-bold text-xs">Transcendental</p><p className="text-muted-foreground text-xs">Intuição</p></div>
-                <div className="p-2 bg-blue-500/10 rounded-lg"><p className="font-bold text-xs">Produto</p><p className="text-muted-foreground text-xs">Mensurável</p></div>
-                <div className="p-2 bg-blue-500/10 rounded-lg"><p className="font-bold text-xs">Usuário</p><p className="text-muted-foreground text-xs">Juran</p></div>
-                <div className="p-2 bg-blue-500/10 rounded-lg"><p className="font-bold text-xs">Produção</p><p className="text-muted-foreground text-xs">Crosby</p></div>
-                <div className="p-2 bg-blue-500/10 rounded-lg"><p className="font-bold text-xs">Valor</p><p className="text-muted-foreground text-xs">Custo-benefício</p></div>
+                <div className="p-2 bg-blue-500/10 rounded-lg"><span className="font-bold text-xs">Transcendental</span><span className="text-muted-foreground text-xs">Intuição</span></div>
+                <div className="p-2 bg-blue-500/10 rounded-lg"><span className="font-bold text-xs">Produto</span><span className="text-muted-foreground text-xs">Mensurável</span></div>
+                <div className="p-2 bg-blue-500/10 rounded-lg"><span className="font-bold text-xs">Usuário</span><span className="text-muted-foreground text-xs">Juran</span></div>
+                <div className="p-2 bg-blue-500/10 rounded-lg"><span className="font-bold text-xs">Produção</span><span className="text-muted-foreground text-xs">Crosby</span></div>
+                <div className="p-2 bg-blue-500/10 rounded-lg"><span className="font-bold text-xs">Valor</span><span className="text-muted-foreground text-xs">Custo-benefício</span></div>
               </div>
             </div>
+          
+          
+          
           </div>
         </section>
 
         <div className="space-y-6">
           <ModuleSectionHeader index={1} variant={mv[1]} title="Análise C.E.D.E." description="Fundamentos que caem toda prova." />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: PDCA em Detalhe",
                 icone: <LuBrain />,
@@ -313,35 +310,30 @@ export default function AulaGestaoQualidadeSuprimento({
         <ModuleBanner numero={2} titulo="As 4 Eras da Qualidade" variant={mv[2]} descricao="Da inspeção artesanal à gestão estratégica — a evolução do conceito de qualidade." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} variant={mv[2]} title="Evolução Histórica" description="Como a qualidade saiu do chão de fábrica e chegou à sala da diretoria." />
-          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
-            <p>
-              A <strong>1ª Era — Inspeção (até 1930)</strong> é a fase mais primitiva: o artesão inspecionava CADA peça individualmente, separando
+          <ModuleSectionHeader index="INTRO" variant={mv[2]} title="Evolução Histórica" description="Como a qualidade saiu do chão de fábrica e chegou à sala da diretoria." />
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A <strong>1ª Era — Inspeção (até 1930)</strong> é a fase mais primitiva: o artesão inspecionava CADA peça individualmente, separando
               as boas das ruins. Não havia prevenção — apenas detecção pós-produção. Com a Revolução Industrial, a inspeção 100% tornou-se
-              inviável pelo volume. Resultado: surgimento de inspetores especializados, separados da produção.
-            </p>
-            <p>
-              A <strong>2ª Era — Controle Estatístico (1930-1950)</strong> surge com <strong>Walter Shewhart</strong> e os gráficos de controle.
+              inviável pelo volume. Resultado: surgimento de inspetores especializados, separados da produção.</p>
+            <p>A banca exige discernir as eras da qualidade: da mera inspeção visual focada no produto, passando pelo controle estatístico, até a garantia e gestão estratégica.</p>
+            <p>A <strong>2ª Era — Controle Estatístico (1930-1950)</strong> surge com <strong>Walter Shewhart</strong> e os gráficos de controle.
               Em vez de inspecionar 100% da produção, usa-se amostragem estatística. Conceitos-chave: limites de controle (LSC/LIC),
               variabilidade natural vs. variabilidade especial, e cartas de controle. Dodge e Romig criaram as tabelas de amostragem.
-              A qualidade passa a ser um problema TÉCNICO, baseado em dados — não mais em julgamento visual.
-            </p>
-            <p>
-              A <strong>3ª Era — Garantia da Qualidade (1950-1980)</strong> amplia o foco: qualidade não é só controle estatístico, mas PREVENÇÃO.
+              A qualidade passa a ser um problema TÉCNICO, baseado em dados — não mais em julgamento visual.</p>
+            <p>A evolução histórica das eras demonstra que a qualidade deixou de ser um departamento isolado para tornar-se vantagem competitiva e foco estratégico corporativo.</p>
+            <p>A <strong>3ª Era — Garantia da Qualidade (1950-1980)</strong> amplia o foco: qualidade não é só controle estatístico, mas PREVENÇÃO.
               Surge a engenharia da qualidade com <strong>Juran</strong> (Trilogia: Planejamento, Controle, Melhoria) e <strong>Feigenbaum</strong> (TQC —
               Total Quality Control, que envolve todos os departamentos). A qualidade sai do chão de fábrica e entra no projeto, nas compras,
-              na logística. Custos da qualidade são quantificados pela primeira vez.
-            </p>
-            <p>
-              A <strong>4ª Era — Gestão Estratégica / TQM (1980+)</strong> é a era atual: qualidade como <strong>vantagem competitiva</strong>. O CEO
+              na logística. Custos da qualidade são quantificados pela primeira vez.</p>
+            <p>Enquanto na era da inspeção aceitava-se um nível pré-determinado de refugo, o TQM moderno exige a busca contínua por taxas próximas de zero defeito.</p>
+            <p>A <strong>4ª Era — Gestão Estratégica / TQM (1980+)</strong> é a era atual: qualidade como <strong>vantagem competitiva</strong>. O CEO
               lidera a qualidade. Ferramentas: benchmarking, BSC, Six Sigma, Lean, ISO 9001. A qualidade é responsabilidade de TODOS —
-              do porteiro ao presidente. Na Petrobras, isso se reflete no SGI e no Prêmio Nacional da Qualidade (PNQ).
-            </p>
-            <p>
-              Na CESGRANRIO, a pergunta mais comum é: &quot;Em qual era da qualidade o foco passou a ser a PREVENÇÃO, não apenas a detecção?&quot;
+              do porteiro ao presidente. Na Petrobras, isso se reflete no SGI e no Prêmio Nacional da Qualidade (PNQ).</p>
+            <p>A era da garantia de qualidade introduziu manuais de procedimentos e auditorias de processos para prever falhas antes que elas alcancem a linha de produção.</p>
+            <p>Na CESGRANRIO, a pergunta mais comum é: &quot;Em qual era da qualidade o foco passou a ser a PREVENÇÃO, não apenas a detecção?&quot;
               Resposta: <strong>3ª Era (Garantia)</strong>. Outra armadilha: o TQC de Feigenbaum (3ª era) ≠ TQM (4ª era). TQC é controle total
-              por todos os departamentos; TQM é gestão estratégica com foco no cliente.
-            </p>
+              por todos os departamentos; TQM é gestão estratégica com foco no cliente.</p>
+            <p>Em refinarias da Petrobras, os processos de conformidade evoluíram de inspeções físicas de soldas para monitoramentos preditivos digitais e automatizados de vazão.</p>
             <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">Timeline das Eras</h4>
               <div className="flex flex-wrap items-center justify-center gap-2 text-sm font-medium">
@@ -354,13 +346,15 @@ export default function AulaGestaoQualidadeSuprimento({
                 <span className="px-3 py-1 bg-blue-500/10 rounded-full font-bold">4ª TQM</span>
               </div>
             </div>
+          
+          
+          
           </div>
         </section>
 
         <div className="space-y-6">
           <ModuleSectionHeader index={2} variant={mv[2]} title="Análise C.E.D.E." description="As Eras que mais caem na CESGRANRIO." />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: De Inspeção a Estratégia",
                 icone: <LuBrain />,
@@ -441,53 +435,50 @@ export default function AulaGestaoQualidadeSuprimento({
         <ModuleBanner numero={3} titulo="Os Gurus da Qualidade" variant={mv[3]} descricao="Deming, Juran, Crosby, Ishikawa e Feigenbaum — os pais da gestão da qualidade moderna." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} variant={mv[3]} title="Os 5 Mestres" description="Cada guru trouxe uma contribuição única — e a CESGRANRIO adora cobrar quem fez o quê." />
-          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
-            <p>
-              <strong>W. Edwards Deming</strong> é o guru mais cobrado. Contribuições: <strong>14 pontos da qualidade</strong> (eliminar medo, acabar com
+          <ModuleSectionHeader index="INTRO" variant={mv[3]} title="Os 5 Mestres" description="Cada guru trouxe uma contribuição única — e a CESGRANRIO adora cobrar quem fez o quê." />
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p><strong>W. Edwards Deming</strong> é o guru mais cobrado. Contribuições: <strong>14 pontos da qualidade</strong> (eliminar medo, acabar com
               dependência de inspeção, instituir treinamento, etc.), popularização do <strong>ciclo PDCA</strong> (criado por Shewhart), o conceito de
               <strong>variabilidade</strong> (causas comuns vs. especiais) e o <strong>Sistema de Conhecimento Profundo</strong> (pensamento sistêmico,
-              conhecimento de variação, teoria do conhecimento, psicologia). Deming levou a qualidade ao Japão no pós-guerra.
-            </p>
-            <p>
-              <strong>Joseph Juran</strong> definiu qualidade como &quot;adequação ao uso&quot; e criou a <strong>Trilogia da Qualidade</strong>: (1) Planejamento
+              conhecimento de variação, teoria do conhecimento, psicologia). Deming levou a qualidade ao Japão no pós-guerra.</p>
+            <p>Questões costumam associar diretamente os gurus aos seus lemas fundamentais: Crosby defende Zero Defeitos e Deming é o criador dos quatorze pontos da administração.</p>
+            <p><strong>Joseph Juran</strong> definiu qualidade como &quot;adequação ao uso&quot; e criou a <strong>Trilogia da Qualidade</strong>: (1) Planejamento
               (definir metas + meios); (2) Controle (medir desempenho vs. meta); (3) Melhoria (elevar o patamar). Também aplicou o <strong>Princípio
-              de Pareto 80/20</strong> à qualidade: 80% dos problemas vêm de 20% das causas — os &quot;poucos vitais&quot; vs. os &quot;muitos triviais&quot;.
-            </p>
-            <p>
-              <strong>Philip Crosby</strong> é o guru do <strong>Zero Defeitos</strong>. Para ele, qualidade é conformidade com requisitos (não excelência
+              de Pareto 80/20</strong> à qualidade: 80% dos problemas vêm de 20% das causas — os &quot;poucos vitais&quot; vs. os &quot;muitos triviais&quot;.</p>
+            <p>A Trilogia de Juran segmenta as ações estratégicas em planejamento (metas), controle (medir desempenho atual frente aos padrões) e melhoria contínua da capacidade.</p>
+            <p><strong>Philip Crosby</strong> é o guru do <strong>Zero Defeitos</strong>. Para ele, qualidade é conformidade com requisitos (não excelência
               abstrata), e o padrão de desempenho deve ser zero defeitos (não &quot;nível aceitável de defeitos&quot;). Criou os <strong>4 Absolutos
               da Qualidade</strong>: (1) qualidade = conformidade; (2) prevenção, não inspeção; (3) padrão = zero defeitos; (4) custo da
-              não-conformidade como medida da qualidade. Famoso pela frase: &quot;A qualidade é investimento, não é custo&quot;.
-            </p>
-            <p>
-              <strong>Kaoru Ishikawa</strong> democratizou a qualidade no Japão. Contribuições: <strong>Diagrama de Causa e Efeito</strong> (espinha de
+              não-conformidade como medida da qualidade. Famoso pela frase: &quot;A qualidade é investimento, não é custo&quot;.</p>
+            <p>Ishikawa inovou ao estruturar o Diagrama Causa-Efeito (espinha de peixe), organizando as causas de falhas operacionais em seis eixos conhecidos como 6M.</p>
+            <p><strong>Kaoru Ishikawa</strong> democratizou a qualidade no Japão. Contribuições: <strong>Diagrama de Causa e Efeito</strong> (espinha de
               peixe, com os 6M: Mão de Obra, Máquina, Material, Método, Meio Ambiente, Medida), os <strong>Círculos de Controle de Qualidade
               (CCQ)</strong> — grupos voluntários de trabalhadores que se reúnem para resolver problemas — e as <strong>7 ferramentas básicas</strong>
-              da qualidade. O CCQ simboliza a participação operária na melhoria da qualidade.
-            </p>
-            <p>
-              <strong>Armand Feigenbaum</strong> criou o conceito de <strong>TQC (Total Quality Control)</strong>: a qualidade é responsabilidade de
+              da qualidade. O CCQ simboliza a participação operária na melhoria da qualidade.</p>
+            <p>Armand Feigenbaum introduziu o TQC (Total Quality Control), provando que a qualidade do produto requer o engajamento direto de setores de compras e design.</p>
+            <p><strong>Armand Feigenbaum</strong> criou o conceito de <strong>TQC (Total Quality Control)</strong>: a qualidade é responsabilidade de
               todos os departamentos, não apenas do controle de qualidade. O TQC integra marketing, engenharia, produção e assistência técnica
-              em torno da satisfação do cliente. Atenção: TQC (Feigenbaum, 3ª Era) ≠ TQM (4ª Era). O TQC é mais operacional; o TQM é estratégico.
-            </p>
+              em torno da satisfação do cliente. Atenção: TQC (Feigenbaum, 3ª Era) ≠ TQM (4ª Era). O TQC é mais operacional; o TQM é estratégico.</p>
+            <p>Os manuais de SMS da Petrobras aplicam o princípio de Deming de eliminar o medo organizacional para incentivar o reporte proativo de quase-acidentes operacionais.</p>
             <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">Guru → Contribuição Principal</h4>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-2 text-sm text-center">
-                <div className="p-2 bg-emerald-500/10 rounded-lg"><p className="font-bold text-xs">Deming</p><p className="text-muted-foreground text-xs">14 Pontos + PDCA</p></div>
-                <div className="p-2 bg-emerald-500/10 rounded-lg"><p className="font-bold text-xs">Juran</p><p className="text-muted-foreground text-xs">Trilogia + 80/20</p></div>
-                <div className="p-2 bg-emerald-500/10 rounded-lg"><p className="font-bold text-xs">Crosby</p><p className="text-muted-foreground text-xs">Zero Defeitos</p></div>
-                <div className="p-2 bg-emerald-500/10 rounded-lg"><p className="font-bold text-xs">Ishikawa</p><p className="text-muted-foreground text-xs">Diagrama + CCQ</p></div>
-                <div className="p-2 bg-emerald-500/10 rounded-lg"><p className="font-bold text-xs">Feigenbaum</p><p className="text-muted-foreground text-xs">TQC</p></div>
+                <div className="p-2 bg-emerald-500/10 rounded-lg"><span className="font-bold text-xs">Deming</span><span className="text-muted-foreground text-xs">14 Pontos + PDCA</span></div>
+                <div className="p-2 bg-emerald-500/10 rounded-lg"><span className="font-bold text-xs">Juran</span><span className="text-muted-foreground text-xs">Trilogia + 80/20</span></div>
+                <div className="p-2 bg-emerald-500/10 rounded-lg"><span className="font-bold text-xs">Crosby</span><span className="text-muted-foreground text-xs">Zero Defeitos</span></div>
+                <div className="p-2 bg-emerald-500/10 rounded-lg"><span className="font-bold text-xs">Ishikawa</span><span className="text-muted-foreground text-xs">Diagrama + CCQ</span></div>
+                <div className="p-2 bg-emerald-500/10 rounded-lg"><span className="font-bold text-xs">Feigenbaum</span><span className="text-muted-foreground text-xs">TQC</span></div>
               </div>
             </div>
+          
+          
+          
           </div>
         </section>
 
         <div className="space-y-6">
           <ModuleSectionHeader index={3} variant={mv[3]} title="Análise C.E.D.E." description="Quem fez o quê? A CESGRANRIO ama cobrar isso." />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Trilogia de Juran",
                 icone: <LuBrain />,
@@ -568,57 +559,54 @@ export default function AulaGestaoQualidadeSuprimento({
         <ModuleBanner numero={4} titulo="Ferramentas da Qualidade" variant={mv[4]} descricao="As 7 ferramentas básicas, Ishikawa (6M), Pareto, Histograma, 5W2H e Brainstorming." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={4} variant={mv[4]} title="O Arsenal da Qualidade" description="7 ferramentas que resolvem 95% dos problemas de qualidade no chão de fábrica." />
-          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
-            <p>
-              As <strong>7 ferramentas básicas da qualidade</strong> foram sistematizadas por <strong>Ishikawa</strong>: (1) <strong>Diagrama de Pareto</strong> — gráfico
+          <ModuleSectionHeader index="INTRO" variant={mv[4]} title="O Arsenal da Qualidade" description="7 ferramentas que resolvem 95% dos problemas de qualidade no chão de fábrica." />
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>As <strong>7 ferramentas básicas da qualidade</strong> foram sistematizadas por <strong>Ishikawa</strong>: (1) <strong>Diagrama de Pareto</strong> — gráfico
               de barras que ordena causas por frequência (80/20); (2) <strong>Diagrama de Causa e Efeito (Ishikawa/Espinha de Peixe)</strong> — identifica
               causas raiz usando os 6M; (3) <strong>Histograma</strong> — distribuição de frequência de dados; (4) <strong>Folha de Verificação</strong> —
               formulário para coleta padronizada de dados; (5) <strong>Diagrama de Dispersão</strong> — correlação entre duas variáveis;
               (6) <strong>Fluxograma</strong> — mapeamento visual do processo; (7) <strong>Carta de Controle (CEP)</strong> — monitoramento da
-              variabilidade ao longo do tempo.
-            </p>
-            <p>
-              O <strong>Diagrama de Ishikawa (Espinha de Peixe)</strong> é a ferramenta mais cobrada. Os <strong>6M</strong> representam as categorias de
+              variabilidade ao longo do tempo.</p>
+            <p>A banca cobra a correta indicação de ferramentas para cada problema: Pareto serve para priorização e Ishikawa para investigação detalhada de causas raiz.</p>
+            <p>O <strong>Diagrama de Ishikawa (Espinha de Peixe)</strong> é a ferramenta mais cobrada. Os <strong>6M</strong> representam as categorias de
               causas: <strong>Mão de Obra</strong> (habilidade, treinamento), <strong>Máquina</strong> (equipamento, manutenção), <strong>Material</strong>
               (insumo, fornecedor), <strong>Método</strong> (procedimento, processo), <strong>Meio Ambiente</strong> (condições externas) e
-              <strong>Medida</strong> (instrumentos, calibração). Na Petrobras, o diagrama é usado em análises de falha de equipamentos offshore.
-            </p>
-            <p>
-              O <strong>Diagrama de Pareto</strong> aplica o princípio 80/20 de Juran: um gráfico de barras decrescentes com linha de percentual
+              <strong>Medida</strong> (instrumentos, calibração). Na Petrobras, o diagrama é usado em análises de falha de equipamentos offshore.</p>
+            <p>As sete ferramentas clássicas compreendem formulários estruturados como folhas de verificação, gráficos de frequência como histogramas e cartas de controle estatístico.</p>
+            <p>O <strong>Diagrama de Pareto</strong> aplica o princípio 80/20 de Juran: um gráfico de barras decrescentes com linha de percentual
               acumulado. Permite identificar os &quot;poucos vitais&quot; — as poucas causas que geram a maioria dos problemas. Na Petrobras,
-              análises de Pareto em paradas não programadas revelam que 3-4 tipos de falha respondem por 70%+ das ocorrências.
-            </p>
-            <p>
-              Além das 7 ferramentas básicas, existem as <strong>7 ferramentas gerenciais</strong> (para problemas mais complexos): Diagrama de
+              análises de Pareto em paradas não programadas revelam que 3-4 tipos de falha respondem por 70%+ das ocorrências.</p>
+            <p>A aplicação prática do Diagrama de Pareto em compras industriais revela que 80% dos atrasos de entrega derivam de apenas 20% dos fornecedores cadastrados.</p>
+            <p>Além das 7 ferramentas básicas, existem as <strong>7 ferramentas gerenciais</strong> (para problemas mais complexos): Diagrama de
               Afinidade, Diagrama de Relações, Diagrama em Árvore, Diagrama Matricial, Matriz de Priorização, PDPC e Diagrama de Rede.
-              E ferramentas complementares como o <strong>5W2H</strong> (What, Why, Where, When, Who, How, How much) e o <strong>Brainstorming</strong>.
-            </p>
-            <p>
-              Para a CESGRANRIO, saiba associar cada ferramenta ao seu propósito: investigar CAUSAS = Ishikawa; PRIORIZAR causas = Pareto;
+              E ferramentas complementares como o <strong>5W2H</strong> (What, Why, Where, When, Who, How, How much) e o <strong>Brainstorming</strong>.</p>
+            <p>O Diagrama de Dispersão quantifica a relação estatística entre duas variáveis de processo, como temperatura do banho térmico e resistência mecânica de vedações.</p>
+            <p>Para a CESGRANRIO, saiba associar cada ferramenta ao seu propósito: investigar CAUSAS = Ishikawa; PRIORIZAR causas = Pareto;
               COLETAR dados = Folha de Verificação; VER distribuição = Histograma; MONITORAR processo = Carta de Controle; VER correlação =
-              Dispersão; MAPEAR processo = Fluxograma.
-            </p>
+              Dispersão; MAPEAR processo = Fluxograma.</p>
+            <p>Almoxarifes da Petrobras em Macaé preenchem folhas de verificação para registrar avarias físicas em contêineres e cestas de carga antes do embarque.</p>
             <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">As 7 Ferramentas Básicas</h4>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm text-center">
-                <div className="p-2 bg-rose-500/10 rounded-lg"><p className="font-bold text-xs">Pareto</p><p className="text-muted-foreground text-xs">Priorizar</p></div>
-                <div className="p-2 bg-rose-500/10 rounded-lg"><p className="font-bold text-xs">Ishikawa</p><p className="text-muted-foreground text-xs">Causas raiz</p></div>
-                <div className="p-2 bg-rose-500/10 rounded-lg"><p className="font-bold text-xs">Histograma</p><p className="text-muted-foreground text-xs">Distribuição</p></div>
-                <div className="p-2 bg-rose-500/10 rounded-lg"><p className="font-bold text-xs">Folha Verif.</p><p className="text-muted-foreground text-xs">Coletar dados</p></div>
-                <div className="p-2 bg-rose-500/10 rounded-lg"><p className="font-bold text-xs">Dispersão</p><p className="text-muted-foreground text-xs">Correlação</p></div>
-                <div className="p-2 bg-rose-500/10 rounded-lg"><p className="font-bold text-xs">Fluxograma</p><p className="text-muted-foreground text-xs">Mapear processo</p></div>
-                <div className="p-2 bg-rose-500/10 rounded-lg"><p className="font-bold text-xs">Carta CEP</p><p className="text-muted-foreground text-xs">Monitorar</p></div>
-                <div className="p-2 bg-amber-500/10 rounded-lg"><p className="font-bold text-xs">+ 5W2H</p><p className="text-muted-foreground text-xs">Plano de ação</p></div>
+                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-xs">Pareto</span><span className="text-muted-foreground text-xs">Priorizar</span></div>
+                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-xs">Ishikawa</span><span className="text-muted-foreground text-xs">Causas raiz</span></div>
+                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-xs">Histograma</span><span className="text-muted-foreground text-xs">Distribuição</span></div>
+                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-xs">Folha Verif.</span><span className="text-muted-foreground text-xs">Coletar dados</span></div>
+                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-xs">Dispersão</span><span className="text-muted-foreground text-xs">Correlação</span></div>
+                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-xs">Fluxograma</span><span className="text-muted-foreground text-xs">Mapear processo</span></div>
+                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-xs">Carta CEP</span><span className="text-muted-foreground text-xs">Monitorar</span></div>
+                <div className="p-2 bg-amber-500/10 rounded-lg"><span className="font-bold text-xs">+ 5W2H</span><span className="text-muted-foreground text-xs">Plano de ação</span></div>
               </div>
             </div>
+          
+          
+          
           </div>
         </section>
 
         <div className="space-y-6">
           <ModuleSectionHeader index={4} variant={mv[4]} title="Análise C.E.D.E." description="Ferramentas que caem toda prova de qualidade." />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Os 6M de Ishikawa",
                 icone: <LuBrain />,
@@ -698,44 +686,39 @@ export default function AulaGestaoQualidadeSuprimento({
         <ModuleBanner numero={5} titulo="Normas ISO e Certificação" variant={mv[5]} descricao="ISO 9001 (Qualidade), ISO 14001 (Ambiental), ISO 45001 (Segurança) e o SGI." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={5} variant={mv[5]} title="O Selo de Excelência" description="As normas ISO como framework global de gestão da qualidade." />
-          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
-            <p>
-              A <strong>ISO (International Organization for Standardization)</strong> é o organismo internacional que publica normas técnicas.
+          <ModuleSectionHeader index="INTRO" variant={mv[5]} title="O Selo de Excelência" description="As normas ISO como framework global de gestão da qualidade." />
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A <strong>ISO (International Organization for Standardization)</strong> é o organismo internacional que publica normas técnicas.
               A família <strong>ISO 9000</strong> trata da qualidade: a <strong>ISO 9001:2015</strong> é a norma certificável que estabelece requisitos
               para o SGQ (Sistema de Gestão da Qualidade). Seus 7 princípios: foco no cliente, liderança, engajamento de pessoas, abordagem
               de processo, melhoria, decisão baseada em evidência e gestão de relacionamento. A ISO 9000 (vocabulário) e ISO 9004 (diretrizes
-              para melhoria) complementam mas NÃO são certificáveis.
-            </p>
-            <p>
-              A <strong>ISO 14001:2015</strong> trata do <strong>Sistema de Gestão Ambiental (SGA)</strong> — poluição, resíduos, emissões. A
+              para melhoria) complementam mas NÃO são certificáveis.</p>
+            <p>Questões sobre normas ISO 9001 abordam os princípios de liderança, foco no cliente, abordagem por processos e a mentalidade preventiva de gestão de riscos.</p>
+            <p>A <strong>ISO 14001:2015</strong> trata do <strong>Sistema de Gestão Ambiental (SGA)</strong> — poluição, resíduos, emissões. A
               <strong>ISO 45001:2018</strong> substitui a OHSAS 18001 e trata do <strong>Sistema de Gestão de Saúde e Segurança Ocupacional</strong>.
               Na Petrobras, as três normas são integradas no <strong>SGI (Sistema de Gestão Integrada)</strong>, que une qualidade + meio ambiente
-              + segurança em um único framework de gestão.
-            </p>
-            <p>
-              A estrutura HLS (High Level Structure) da ISO garante que todas as normas sigam os mesmos 10 capítulos:
+              + segurança em um único framework de gestão.</p>
+            <p>A estrutura de alto nível das normas ISO unifica definições, exigindo a elaboração de procedimentos de auditorias internas e registros de não-conformidade.</p>
+            <p>A estrutura HLS (High Level Structure) da ISO garante que todas as normas sigam os mesmos 10 capítulos:
               Escopo, Referências, Termos, Contexto, Liderança, Planejamento, Apoio, Operação, Avaliação de Desempenho e Melhoria.
               Isso facilita a integração (SGI) e a auditoria combinada. A abordagem é baseada em <strong>Risco</strong> (mentalidade de risco)
-              e <strong>PDCA</strong> está embutido na estrutura.
-            </p>
-            <p>
-              A <strong>certificação</strong> é realizada por organismos acreditados (no Brasil, acreditados pelo INMETRO). Tipos de auditoria:
+              e <strong>PDCA</strong> está embutido na estrutura.</p>
+            <p>Uma auditoria técnica de certificação da ISO 9001 avalia a aderência prática aos processos documentados por meio de evidências objetivas e auditorias em loco.</p>
+            <p>A <strong>certificação</strong> é realizada por organismos acreditados (no Brasil, acreditados pelo INMETRO). Tipos de auditoria:
               <strong>1ª parte</strong> (interna, autoavaliação), <strong>2ª parte</strong> (cliente audita fornecedor) e <strong>3ª parte</strong>
               (organismo certificador independente — a única que concede o certificado ISO). Na Petrobras, fornecedores de materiais críticos
-              DEVEM ter ISO 9001 para participar de licitações.
-            </p>
-            <p>
-              Para a CESGRANRIO, atenção: a ISO 9001 NÃO garante qualidade do produto — garante que existe um SISTEMA de gestão. O certificado
-              prova que a empresa tem processos padronizados, monitora indicadores e busca melhoria contínua, mas não significa &quot;zero defeitos&quot;.
-            </p>
+              DEVEM ter ISO 9001 para participar de licitações.</p>
+            <p>O SGI (Sistema de Gestão Integrada) minimiza redundâncias operacionais ao unificar as normas ISO 9001, ISO 14001 (ambiental) e ISO 45001 (segurança e saúde).</p>
+            <p>Para a CESGRANRIO, atenção: a ISO 9001 NÃO garante qualidade do produto — garante que existe um SISTEMA de gestão. O certificado
+              prova que a empresa tem processos padronizados, monitora indicadores e busca melhoria contínua, mas não significa &quot;zero defeitos&quot;.</p>
+            <p>A Petrobras exige que fabricantes de válvulas e sobressalentes submarinos possuam certificação ISO 9001 para participar de cotações em seu cadastro corporativo.</p>
+            
           </div>
         </section>
 
         <div className="space-y-6">
           <ModuleSectionHeader index={5} variant={mv[5]} title="Análise C.E.D.E." description="ISO na prova de Suprimento." />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: A Família ISO 9000",
                 icone: <LuBrain />,
@@ -814,42 +797,37 @@ export default function AulaGestaoQualidadeSuprimento({
         <ModuleBanner numero={6} titulo="Six Sigma e Lean Manufacturing" variant={mv[6]} descricao="DMAIC, Belts, Kaizen, os 7 desperdícios (Muda) e a integração Lean Six Sigma." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={6} variant={mv[6]} title="Precisão + Velocidade" description="Six Sigma elimina variação; Lean elimina desperdício. Juntos, são imbatíveis." />
-          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
-            <p>
-              O <strong>Six Sigma</strong> é uma metodologia estatística que busca reduzir a variabilidade de processos a no máximo
+          <ModuleSectionHeader index="INTRO" variant={mv[6]} title="Precisão + Velocidade" description="Six Sigma elimina variação; Lean elimina desperdício. Juntos, são imbatíveis." />
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O <strong>Six Sigma</strong> é uma metodologia estatística que busca reduzir a variabilidade de processos a no máximo
               <strong>3,4 defeitos por milhão de oportunidades (DPMO)</strong>. O &quot;sigma&quot; refere-se ao desvio-padrão: quanto mais sigmas
               entre a média e o limite de especificação, menos defeitos. O método segue o ciclo <strong>DMAIC</strong>: Define (definir o problema),
-              Measure (medir o desempenho atual), Analyze (analisar causas raiz), Improve (implementar melhorias), Control (controlar para manter).
-            </p>
-            <p>
-              A <strong>hierarquia de Belts</strong> organiza os profissionais Six Sigma: <strong>White Belt</strong> (conceitos básicos),
+              Measure (medir o desempenho atual), Analyze (analisar causas raiz), Improve (implementar melhorias), Control (controlar para manter).</p>
+            <p>A banca exige familiaridade com o ciclo DMAIC do Six Sigma e o foco do Lean na redução sistemática dos oito desperdícios da cadeia produtiva.</p>
+            <p>A <strong>hierarquia de Belts</strong> organiza os profissionais Six Sigma: <strong>White Belt</strong> (conceitos básicos),
               <strong>Yellow Belt</strong> (participa de projetos), <strong>Green Belt</strong> (lidera projetos pequenos, dedica ~25% do tempo),
               <strong>Black Belt</strong> (lidera projetos complexos, dedicação integral) e <strong>Master Black Belt</strong> (mentor de Black Belts,
-              estrategista). Na Petrobras, projetos Six Sigma são liderados por Black Belts em refinarias.
-            </p>
-            <p>
-              O <strong>Lean Manufacturing</strong> (ou Produção Enxuta) originou-se no <strong>Sistema Toyota de Produção (STP)</strong>. Seu foco
+              estrategista). Na Petrobras, projetos Six Sigma são liderados por Black Belts em refinarias.</p>
+            <p>O Six Sigma utiliza métodos estatísticos para reduzir a variabilidade de processos a 3,4 defeitos por milhão; o Lean acelera o fluxo agregando valor.</p>
+            <p>O <strong>Lean Manufacturing</strong> (ou Produção Enxuta) originou-se no <strong>Sistema Toyota de Produção (STP)</strong>. Seu foco
               é eliminar os <strong>7 desperdícios (Muda)</strong>: (1) Superprodução, (2) Espera, (3) Transporte, (4) Processamento excessivo,
-              (5) Estoque, (6) Movimentação desnecessária e (7) Defeitos. Ferramentas Lean: 5S, Kanban, Poka-Yoke, Kaizen, VSM (Value Stream Mapping).
-            </p>
-            <p>
-              O <strong>Kaizen</strong> é a filosofia de melhoria contínua incremental — pequenas melhorias todos os dias. Diferente de Kaikaku
+              (5) Estoque, (6) Movimentação desnecessária e (7) Defeitos. Ferramentas Lean: 5S, Kanban, Poka-Yoke, Kaizen, VSM (Value Stream Mapping).</p>
+            <p>A implementação prática do 5S em almoxarifados diminui sensivelmente o tempo de separação de sobressalentes ao otimizar o arranjo físico das peças.</p>
+            <p>O <strong>Kaizen</strong> é a filosofia de melhoria contínua incremental — pequenas melhorias todos os dias. Diferente de Kaikaku
               (inovação radical). O <strong>5S</strong> (Seiri, Seiton, Seiso, Seiketsu, Shitsuke = Utilização, Organização, Limpeza, Saúde, Autodisciplina)
-              é a base do Lean. Na Petrobras, programas 5S são obrigatórios em todas as unidades operacionais.
-            </p>
-            <p>
-              O <strong>Lean Six Sigma</strong> combina o melhor dos dois mundos: usa DMAIC (Six Sigma) com foco em eliminação de desperdícios (Lean).
+              é a base do Lean. Na Petrobras, programas 5S são obrigatórios em todas as unidades operacionais.</p>
+            <p>O mapeamento do fluxo de valor (VSM) identifica desperdícios invisíveis como excesso de movimentação interna e paradas não planejadas de equipamentos de refino.</p>
+            <p>O <strong>Lean Six Sigma</strong> combina o melhor dos dois mundos: usa DMAIC (Six Sigma) com foco em eliminação de desperdícios (Lean).
               Na CESGRANRIO, atenção: DMAIC é para MELHORAR processos existentes; <strong>DMADV</strong> (Define, Measure, Analyze, Design, Verify)
-              é para CRIAR novos processos/produtos. Não confundir!
-            </p>
+              é para CRIAR novos processos/produtos. Não confundir!</p>
+            <p>A Petrobras adota conceitos Lean em oficinas mecânicas offshore de plataformas para reduzir o tempo de manutenção de geradores e turbocompressores.</p>
+            
           </div>
         </section>
 
         <div className="space-y-6">
           <ModuleSectionHeader index={6} variant={mv[6]} title="Análise C.E.D.E." description="Six Sigma e Lean para a prova." />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: DMAIC vs DMADV",
                 icone: <LuBrain />,
@@ -928,41 +906,36 @@ export default function AulaGestaoQualidadeSuprimento({
         <ModuleBanner numero={7} titulo="Controle Estatístico de Processo (CEP)" variant={mv[7]} descricao="Cartas de controle, LSC/LIC, variabilidade especial vs. comum e capabilidade (Cp/Cpk)." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={7} variant={mv[7]} title="O Processo sob Controle" description="CEP: detectar variação ANTES de gerar defeitos." />
-          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
-            <p>
-              O <strong>CEP (Controle Estatístico de Processo)</strong> monitora a variabilidade do processo ao longo do tempo usando
+          <ModuleSectionHeader index="INTRO" variant={mv[7]} title="O Processo sob Controle" description="CEP: detectar variação ANTES de gerar defeitos." />
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O <strong>CEP (Controle Estatístico de Processo)</strong> monitora a variabilidade do processo ao longo do tempo usando
               <strong>cartas de controle</strong>. Uma carta tem: linha central (média), <strong>LSC (Limite Superior de Controle)</strong> e
               <strong>LIC (Limite Inferior de Controle)</strong>, calculados a ±3 desvios-padrão da média. Pontos dentro dos limites = processo
-              sob controle. Pontos fora = causa especial que precisa ser investigada.
-            </p>
-            <p>
-              Existem dois tipos de variação: <strong>Causas comuns</strong> (aleatórias, intrínsecas ao processo, previsíveis) e <strong>Causas
+              sob controle. Pontos fora = causa especial que precisa ser investigada.</p>
+            <p>CESGRANRIO cobra a análise gráfica de cartas de controle, exigindo discernimento entre causas comuns (naturais do processo) e causas especiais (anomalias).</p>
+            <p>Existem dois tipos de variação: <strong>Causas comuns</strong> (aleatórias, intrínsecas ao processo, previsíveis) e <strong>Causas
               especiais</strong> (identificáveis, externas, imprevisíveis). Um processo é &quot;sob controle estatístico&quot; quando apresenta APENAS
-              causas comuns. Se há causas especiais, o processo está &quot;fora de controle&quot; e precisa de ação corretiva imediata.
-            </p>
-            <p>
-              A <strong>capabilidade do processo</strong> é medida pelos índices <strong>Cp</strong> (potencial) e <strong>Cpk</strong> (real,
+              causas comuns. Se há causas especiais, o processo está &quot;fora de controle&quot; e precisa de ação corretiva imediata.</p>
+            <p>Os limites estatísticos de controle (LSC e LIC) definem a faixa de variabilidade previsível do processo; não os confunda com limites de tolerância de projeto.</p>
+            <p>A <strong>capabilidade do processo</strong> é medida pelos índices <strong>Cp</strong> (potencial) e <strong>Cpk</strong> (real,
               considerando centralização). Cp = (LSE - LIE) / 6σ. Cpk ≥ 1,33 é considerado capaz. Se Cp é alto mas Cpk é baixo, o processo
-              tem potencial mas está descentalizado — precisa de ajuste na média.
-            </p>
-            <p>
-              As <strong>regras de Western Electric</strong> (sinais de descontrole) vão além de &quot;ponto fora do limite&quot;: 2 de 3 pontos
+              tem potencial mas está descentalizado — precisa de ajuste na média.</p>
+            <p>O cálculo dos índices de capacidade (Cp e Cpk) avalia se o processo de envase de fluidos químicos é capaz de atender às especificações estipuladas.</p>
+            <p>As <strong>regras de Western Electric</strong> (sinais de descontrole) vão além de &quot;ponto fora do limite&quot;: 2 de 3 pontos
               consecutivos além de 2σ, 4 de 5 além de 1σ, 7 pontos consecutivos de um mesmo lado da média (tendência), ou padrão cíclico.
-              Na Petrobras, cartas de controle monitoram octanagem, viscosidade de lubrificantes e espessura de parede de dutos.
-            </p>
-            <p>
-              Para a CESGRANRIO: <strong>limites de controle ≠ limites de especificação</strong>. Limites de controle são calculados pelo processo
+              Na Petrobras, cartas de controle monitoram octanagem, viscosidade de lubrificantes e espessura de parede de dutos.</p>
+            <p>A presença de pontos fora dos limites de controle sinaliza desestabilização por causas especiais, requerendo interrupção imediata para correções operacionais.</p>
+            <p>Para a CESGRANRIO: <strong>limites de controle ≠ limites de especificação</strong>. Limites de controle são calculados pelo processo
               (estatísticos). Limites de especificação são definidos pelo cliente/norma (engenharia). Um processo pode estar sob controle
-              estatístico mas produzir fora da especificação (Cp baixo).
-            </p>
+              estatístico mas produzir fora da especificação (Cp baixo).</p>
+            <p>Nas refinarias da Petrobras, o CEP monitora em tempo real a pureza de combustíveis e óleos lubrificantes para garantir a qualidade requerida pela ANP.</p>
+            
           </div>
         </section>
 
         <div className="space-y-6">
           <ModuleSectionHeader index={7} variant={mv[7]} title="Análise C.E.D.E." description="CEP e cartas de controle na prova." />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Causas Comuns vs Especiais",
                 icone: <LuBrain />,
@@ -1041,40 +1014,35 @@ export default function AulaGestaoQualidadeSuprimento({
         <ModuleBanner numero={8} titulo="Auditoria e Conformidade" variant={mv[8]} descricao="Tipos de auditoria (1ª, 2ª, 3ª parte), não conformidades, ações corretivas e o ciclo de auditoria." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={8} variant={mv[8]} title="O Olho da Qualidade" description="Auditoria: verificar se o que está documentado é o que está sendo feito." />
-          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
-            <p>
-              <strong>Auditoria da qualidade</strong> é um processo sistemático, independente e documentado para verificar se o SGQ está
+          <ModuleSectionHeader index="INTRO" variant={mv[8]} title="O Olho da Qualidade" description="Auditoria: verificar se o que está documentado é o que está sendo feito." />
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p><strong>Auditoria da qualidade</strong> é um processo sistemático, independente e documentado para verificar se o SGQ está
               funcionando conforme planejado. Não é &quot;caça às bruxas&quot; — é uma ferramenta de melhoria. O auditor verifica evidências
-              objetivas (registros, documentos, observações) contra critérios definidos (norma ISO, procedimentos internos).
-            </p>
-            <p>
-              <strong>Tipos de auditoria:</strong> (1) <strong>1ª parte</strong> — auditoria INTERNA, feita pela própria organização (autoavaliação);
+              objetivas (registros, documentos, observações) contra critérios definidos (norma ISO, procedimentos internos).</p>
+            <p>A prova exige o conhecimento dos tipos de auditoria: interna (primeira parte), fornecedor (segunda parte) e por organismo certificador independente (terceira parte).</p>
+            <p><strong>Tipos de auditoria:</strong> (1) <strong>1ª parte</strong> — auditoria INTERNA, feita pela própria organização (autoavaliação);
               (2) <strong>2ª parte</strong> — auditoria de FORNECEDOR, feita pelo cliente no fornecedor; (3) <strong>3ª parte</strong> — auditoria
-              EXTERNA, feita por organismo certificador independente (CERTIFICAÇÃO). Apenas a 3ª parte concede o selo ISO.
-            </p>
-            <p>
-              <strong>Não conformidades</strong> são classificadas em: <strong>Maior</strong> (falha sistêmica que compromete o SGQ — impede
+              EXTERNA, feita por organismo certificador independente (CERTIFICAÇÃO). Apenas a 3ª parte concede o selo ISO.</p>
+            <p>A condução de auditorias técnicas baseia-se em relatórios de conformidade e coleta de evidências robustas frente aos critérios normativos definidos.</p>
+            <p><strong>Não conformidades</strong> são classificadas em: <strong>Maior</strong> (falha sistêmica que compromete o SGQ — impede
               certificação), <strong>Menor</strong> (falha pontual, isolada — não impede certificação se corrigida) e <strong>Observação</strong>
               (ponto de melhoria, sem falha de requisito). Após a auditoria, a organização define <strong>ações corretivas</strong> (eliminar a
-              CAUSA da não conformidade) e <strong>ações preventivas</strong> (evitar que a não conformidade OCORRA).
-            </p>
-            <p>
-              O <strong>ciclo de auditoria</strong> segue: Planejamento → Preparação (checklist) → Reunião de abertura → Execução (coleta de
+              CAUSA da não conformidade) e <strong>ações preventivas</strong> (evitar que a não conformidade OCORRA).</p>
+            <p>O relatório de não-conformidade formal descreve o desvio identificado, a evidência de campo correspondente e o requisito normativo infringido.</p>
+            <p>O <strong>ciclo de auditoria</strong> segue: Planejamento → Preparação (checklist) → Reunião de abertura → Execução (coleta de
               evidências) → Relatório (achados + não conformidades) → Reunião de encerramento → Acompanhamento (verificação das ações
-              corretivas). Na Petrobras, auditorias internas acontecem semestralmente em cada unidade operacional.
-            </p>
-            <p>
-              Para a CESGRANRIO: <strong>ação corretiva ≠ correção</strong>. Correção = resolver o EFEITO (apagar incêndio). Ação corretiva
-              = resolver a CAUSA (instalar detector de fumaça). Ação preventiva = evitar que aconteça (eliminar material inflamável).
-            </p>
+              corretivas). Na Petrobras, auditorias internas acontecem semestralmente em cada unidade operacional.</p>
+            <p>O tratamento de desvios de auditoria exige a busca da causa raiz e a implementação de planos de ações corretivas com posterior validação de eficácia.</p>
+            <p>Para a CESGRANRIO: <strong>ação corretiva ≠ correção</strong>. Correção = resolver o EFEITO (apagar incêndio). Ação corretiva
+              = resolver a CAUSA (instalar detector de fumaça). Ação preventiva = evitar que aconteça (eliminar material inflamável).</p>
+            <p>Auditores técnicos da Petrobras fiscalizam estaleiros contratados para garantir a conformidade técnica dos marcos físicos e cronograma de FPSOs.</p>
+            
           </div>
         </section>
 
         <div className="space-y-6">
           <ModuleSectionHeader index={8} variant={mv[8]} title="Análise C.E.D.E." description="Auditoria e conformidade na prova." />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: 1ª, 2ª e 3ª Parte",
                 icone: <LuBrain />,
@@ -1153,41 +1121,36 @@ export default function AulaGestaoQualidadeSuprimento({
         <ModuleBanner numero={9} titulo="Qualidade na Petrobras" variant={mv[9]} descricao="SGI, SMS, especificações técnicas, qualificação de fornecedores e excelência operacional." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={9} variant={mv[9]} title="Excelência no O&G" description="Como a maior empresa da América Latina gerencia qualidade em operações de altíssimo risco." />
-          <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
-            <p>
-              A Petrobras opera em um dos ambientes mais exigentes do mundo: <strong>águas ultraprofundas (pré-sal, 2.000-7.000m)</strong>,
+          <ModuleSectionHeader index="INTRO" variant={mv[9]} title="Excelência no O&G" description="Como a maior empresa da América Latina gerencia qualidade em operações de altíssimo risco." />
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A Petrobras opera em um dos ambientes mais exigentes do mundo: <strong>águas ultraprofundas (pré-sal, 2.000-7.000m)</strong>,
               refinarias com processos a alta temperatura/pressão, e dutos que cruzam milhares de km. Qualquer falha pode ter consequências
               catastróficas (explosão, vazamento ambiental, perda de vidas). Por isso, a qualidade na Petrobras vai muito além do
-              &quot;satisfazer o cliente&quot; — é questão de <strong>segurança operacional</strong>.
-            </p>
-            <p>
-              O <strong>SGI (Sistema de Gestão Integrada)</strong> da Petrobras unifica: ISO 9001 (qualidade), ISO 14001 (meio ambiente) e
+              &quot;satisfazer o cliente&quot; — é questão de <strong>segurança operacional</strong>.</p>
+            <p>Questões sobre a estatal focam nos processos de qualificação de fornecedores, avaliação de SMS e conformidade contratual técnica de suprimentos.</p>
+            <p>O <strong>SGI (Sistema de Gestão Integrada)</strong> da Petrobras unifica: ISO 9001 (qualidade), ISO 14001 (meio ambiente) e
               ISO 45001 (segurança). O <strong>SMS (Saúde, Meio Ambiente e Segurança)</strong> é a <strong>prioridade ZERO</strong> — superior a
-              qualquer meta de produção ou financeira. &quot;Se não é seguro, não fazemos&quot; é o lema.
-            </p>
-            <p>
-              A <strong>qualificação de fornecedores</strong> segue o CRCC (Certificado de Registro e Classificação Cadastral) via portal
+              qualquer meta de produção ou financeira. &quot;Se não é seguro, não fazemos&quot; é o lema.</p>
+            <p>O PRODEP (Programa de Desenvolvimento de Fornecedores da Petrobras) eleva a capacitação da cadeia produtiva nacional exigindo padrões internacionais.</p>
+            <p>A <strong>qualificação de fornecedores</strong> segue o CRCC (Certificado de Registro e Classificação Cadastral) via portal
               Petronect. Requisitos: ISO 9001 válida, capacidade técnica comprovada, atendimento às especificações técnicas Petrobras
-              (ET), histórico de desempenho e avaliação de risco financeiro. Fornecedores são auditados periodicamente (2ª parte).
-            </p>
-            <p>
-              As <strong>Especificações Técnicas (ET)</strong> da Petrobras são documentos internos que definem requisitos de qualidade para
+              (ET), histórico de desempenho e avaliação de risco financeiro. Fornecedores são auditados periodicamente (2ª parte).</p>
+            <p>O indicador IDF (Índice de Desempenho de Fornecedor) monitora a qualidade técnica e pontualidade de entregas das empresas contratadas pela estatal.</p>
+            <p>As <strong>Especificações Técnicas (ET)</strong> da Petrobras são documentos internos que definem requisitos de qualidade para
               materiais e serviços. São mais rigorosas que normas ISO ou ABNT. Exemplo: uma válvula aprovada por norma ASME pode ser
-              REPROVADA pela ET Petrobras se não atender requisitos adicionais de corrosão por H2S (ambiente de pré-sal).
-            </p>
-            <p>
-              A <strong>inspeção de fabricação</strong> é realizada por inspetores Petrobras (ou terceiros acreditados) DENTRO da fábrica do
+              REPROVADA pela ET Petrobras se não atender requisitos adicionais de corrosão por H2S (ambiente de pré-sal).</p>
+            <p>A manutenção do status ativo de fornecedor qualificado exige o cumprimento das diretrizes corporativas de compliance de integridade.</p>
+            <p>A <strong>inspeção de fabricação</strong> é realizada por inspetores Petrobras (ou terceiros acreditados) DENTRO da fábrica do
               fornecedor, acompanhando a produção em tempo real. Testes: ensaios não destrutivos (ultrassom, raio-X, líquido penetrante),
-              testes hidrostáticos, análise química de materiais e testes mecânicos (tração, impacto Charpy).
-            </p>
+              testes hidrostáticos, análise química de materiais e testes mecânicos (tração, impacto Charpy).</p>
+            <p>O cadastro CRCC da Petrobras avalia exaustivamente as dimensões técnica, legal, econômico-financeira e de SMS de empresas interessadas em fornecer para o pré-sal.</p>
+            
           </div>
         </section>
 
         <div className="space-y-6">
           <ModuleSectionHeader index={9} variant={mv[9]} title="Análise C.E.D.E." description="Qualidade Petrobras para a prova." />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: SMS é Prioridade Zero",
                 icone: <LuBrain />,
@@ -1263,10 +1226,94 @@ export default function AulaGestaoQualidadeSuprimento({
         <QuizInterativo questoes={mapQuizQuestions("modulo-9")} titulo="QUIZ: Qualidade na Petrobras" numero={9} variant={mv[9]} onComplete={(s) => handleModuleComplete("modulo-9", s)} />
       </TabsContent>
 
-      <TabsContent value="modulo-10" className="mt-0 space-y-12">
-        <ModuleBanner numero={10} titulo={MODULE_DEFS[9].title} variant={mv[10]} descricao="Provando seu conhecimento." />
-        <AlertBox tipo="success" titulo="Simulado">Resolva 15 questões integradas para concluir este tópico.</AlertBox>
-        <QuizInterativo questoes={mapQuizQuestions("modulo-10")} titulo="Simulado Final" numero={10} variant={mv[10]} onComplete={(s) => handleModuleComplete("modulo-10", s)} />
+      <TabsContent value="modulo-10" className="space-y-12 mt-0 outline-none">
+        <ModuleBanner
+          numero={10}
+          titulo="Simulado Geral"
+          descricao="Teste final abrangente. Aprovação destrava a XP completa da Missão Geração Ouro da CESGRANRIO focada em concursos Petrobras."
+          variant={getModuleVariant(10)}
+        />
+
+        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+          <ModuleSectionHeader
+            index="INTRO"
+            title="Simulado Geral: Gestão da Qualidade"
+            description="Avaliação integrada consolidando todos os conceitos estudados nesta aula."
+            variant={getModuleVariant(10)}
+          />
+
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O Simulado Geral é a avaliação integradora que sintetiza tudo que você aprendeu nos 9 módulos anteriores de Gestão da Qualidade. Diferente dos quizzes individuais de cada módulo que focam em conceitos específicos de forma isolada, o simulado combina múltiplos domínios em questões de alta complexidade. Uma questão pode começar descrevendo uma falha de qualidade em um lote de suprimentos, pedir para identificar as causas raiz usando os 6M, e em seguida solicitar que você trace o plano de ação corretivo no ciclo PDCA.</p>
+            <p>A estrutura do simulado inclui questões que testam de forma ampla os conceitos clássicos exigidos pelas principais bancas de concurso público. A meta de aprovação de 70% reflete a exigência de eficiência teórica e operacional. O tempo sugerido de resolução simula a restrição de tempo real de prova, preparando você para tomar decisões rápidas sob pressão.</p>
+            <p>Os cenários avaliados envolvem auditorias de qualidade na cadeia logística, certificações de fornecedores e controle estatístico de processos. A aplicação prática de ferramentas como Pareto, Ishikawa e cartas de controle é trazida para testar sua capacidade de análise quantitativa e tomada de decisão fundamentada em dados.</p>
+            <p>A teoria da qualidade, desde os pioneiros Deming, Juran e Crosby, estabelece o ciclo PDCA e a gestão da qualidade total (TQM) como alicerces de melhoria contínua de processos.</p>
+            <p>A estratégia de resolução exige leitura crítica de enunciados extensos, onde pequenos detalhes alteram a classificação da não-conformidade. O candidato deve identificar primeiro o objetivo central da questão e descartar alternativas tecnicamente inconsistentes com os conceitos dos principais gurus da qualidade.</p>
+            <p>Um exemplo prático é o mapeamento de falhas por Diagrama de Pareto, mostrando que 80% das perdas operacionais em compras vêm de apenas 20% das causas recorrentes.</p>
+            <p>A preparação direcionada à Petrobras consolida a visão de que a gestão de qualidade total (TQM) e a conformidade com as normas ISO 9001 são fundamentais para a segurança operacional offshore e a integridade dos processos licitatórios governamentais.</p>
+            <p>Em níveis mais complexos, as diretrizes da certificação ISO 9001 exigem controle documental estrito, auditorias periódicas de conformidade e tratamento de não-conformidades de fornecedores.</p>
+            <p>Na Petrobras, o controle de qualidade de materiais comprados é auditado com rigor para evitar falhas em equipamentos críticos offshore, em linha com as exigências de SMS e preservação da vida.</p>
+            <p>Atingir a pontuação mínima valida que você desenvolveu o raciocínio crítico necessário para atuar na companhia.</p>
+          </div>
+        </section>
+
+        <ContentAccordion mode="stacked" slides={[
+            {
+              titulo: "Visão Integrada de Conceitos",
+              icone: <LuBrain />,
+              conteudo: <p className="text-lg text-justify">O simulado exige que você conecte as teorias, os processos práticos de suporte e a conformidade ética em cenários realistas de auditorias e concorrência.</p>
+            },
+            {
+              titulo: "Tempo e Estratégia",
+              icone: <LuFileText />,
+              conteudo: <p className="text-lg text-justify">Treine a resolução de questões sob a média de 3 minutos por item. Aprenda a identificar as pegadinhas da banca e a eliminar alternativas incorretas rapidamente.</p>
+            },
+            {
+              titulo: "Padrão CESGRANRIO",
+              icone: <LuBookOpen />,
+              conteudo: <p className="text-lg text-justify">As questões simulam fielmente as provas recentes da Petrobras, cobrando o discernimento entre casos práticos e a legislação em vigor.</p>
+            },
+            {
+              titulo: "Calibração de Desempenho",
+              icone: <LuSearch />,
+              conteudo: <p className="text-lg text-justify">Utilize o resultado do simulado para identificar quais módulos requerem revisão ativa. Focar nas suas fraquezas agora garante os pontos decisivos no dia da prova.</p>
+            }
+          ]}
+        />
+
+        <ModuleConsolidation
+          index={10}
+          variant={getModuleVariant(10)}
+          video={{
+            videoId: "dQw4w9WgXcQ",
+            title: "Revisão e Simulado Geral de Gestão de Qualidade",
+            duration: "25:15"
+          }}
+          resumoVisual={{
+            moduloNome: "Simulado Final",
+            tituloAula: "Gestão de Qualidade",
+            materia: "Suprimento",
+            images: [
+              { title: "Mapa Mental Geral de Revisão", type: "infográfico", placeholderColor: "bg-rose-500/20" }
+            ]
+          }}
+          sinteseEstrategica={{
+            title: "O Ponto Final",
+            content: <div className="text-center"><span className="text-6xl my-6 animate-pulse inline-block">🎓 🏆</span><p className="text-lg italic text-center">"O Técnico de Suprimentos zela pela conformidade técnica de cada processo operacional."</p></div>
+          }}
+          audio={{
+            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+            titulo: "Podcast: Sucesso no Concurso Petrobras",
+            artista: "Prof. Suprimentos"
+          }}
+        />
+
+        <QuizInterativo
+          titulo="Simulado Final: Gestão de Qualidade"
+          numero={10}
+          variant={getModuleVariant(10)}
+          questoes={mapQuizQuestions('modulo-10')}
+          onComplete={(score: number) => handleModuleComplete("modulo-10", score)}
+        />
       </TabsContent>
     </AulaTemplate>
   );

@@ -135,40 +135,34 @@ export default function AulaRLCP(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             variant={mv[1]}
             title="Princípios Fundamentais do RLCP"
             description="O framework de licitações transparentes e competitivas da Petrobras."
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-            <p>
-              O <strong>RLCP (Regulamento de Licitações e Contratos da Petrobras)</strong> é o documento que disciplina como a Petrobras contrata obras, serviços, compras e aluguel.
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O <strong>RLCP (Regulamento de Licitações e Contratos da Petrobras)</strong> é o documento que disciplina como a Petrobras contrata obras, serviços, compras e aluguel.
               Baseia-se na <strong>Lei 13.303/2016</strong> (Lei das Estatais), que exige que empresas públicas sigam procedimentos competitivos, transparentes e éticos. O RLCP não é capricho —
-              é obrigação legal que garante que cada real gasto em licitação é destinado ao melhor custo-benefício.
-            </p>
-            <p>
-              O RLCP é aplicável a <strong>Petrobras Holding e suas subsidiárias integrais</strong> (empresas 100% Petrobras). Toda contratação acima de um piso mínimo (variam por
+              é obrigação legal que garante que cada real gasto em licitação é destinado ao melhor custo-benefício.</p>
+            <p>CESGRANRIO cobra as novidades do RLCP derivado da Lei 13.303/16, destacando a isonomia e a busca pela proposta que ofereça maior retorno econômico.</p>
+            <p>O RLCP é aplicável a <strong>Petrobras Holding e suas subsidiárias integrais</strong> (empresas 100% Petrobras). Toda contratação acima de um piso mínimo (variam por
               categoria) deve seguir RLCP: compra de aço para plataformas, contratação de empreiteiros para manutenção, aluguel de escritórios. Exceções existem (emergências, contratos
-              já estabelecidos com fornecedores) mas precisam de justificativa documentada e aprovação de gestor autorizado.
-            </p>
-            <p>
-              Os <strong>cinco princípios fundamentais</strong> do RLCP são: (1) <strong>Eficiência</strong> — melhor resultado com menor custo; (2) <strong>Economicidade</strong> — prudência
+              já estabelecidos com fornecedores) mas precisam de justificativa documentada e aprovação de gestor autorizado.</p>
+            <p>O regulamento interno disciplina as diretrizes de contratação da Petrobras, substituindo a incidência direta da lei federal clássica de licitações.</p>
+            <p>Os <strong>cinco princípios fundamentais</strong> do RLCP são: (1) <strong>Eficiência</strong> — melhor resultado com menor custo; (2) <strong>Economicidade</strong> — prudência
               fiscal, evitar desperdício; (3) <strong>Publicidade</strong> — transparência, edital publicado, participação aberta; (4) <strong>Moralidade</strong> — ética, combate a corrupção,
-              sem favoritismo; (5) <strong>Igualdade</strong> — todos fornecedores tratados justamente, sem discriminação. Esses princípios estão no cerne de Lei 13.303.
-            </p>
-            <p>
-              Historicamente, antes do RLCP, empresas estatais compravam sem critério de mercado — eram "caixas preta" onde gestores escolhiam fornecedores amigos. Lei 13.303 (2016) mudou
+              sem favoritismo; (5) <strong>Igualdade</strong> — todos fornecedores tratados justamente, sem discriminação. Esses princípios estão no cerne de Lei 13.303.</p>
+            <p>Como exemplo prático, o RLCP flexibiliza as negociações de preços em certames eletrônicos, permitindo que a comissão pleiteie melhores descontos.</p>
+            <p>Historicamente, antes do RLCP, empresas estatais compravam sem critério de mercado — eram "caixas preta" onde gestores escolhiam fornecedores amigos. Lei 13.303 (2016) mudou
               radicalmente: obrigou abertura de licitação pública (salvo exceções), estabeleceu critérios objetivos de julgamento, criou direitos de fornecedores. RLCP é a implementação
-              técnica dessa exigência legal na Petrobras.
-            </p>
-            <p>
-              Neste módulo, você aprenderá os princípios nucleares, o escopo de aplicação (quem segue, que tipos de contratação), as exceções legais (emergências, contratos de pessoal),
-              e como esses princípios aparecem em questões CESGRANRIO. Será o fundamento para todos os módulos subsequentes.
-            </p>
-
-            <div className="bg-indigo-500/10 border-l-4 border-indigo-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-indigo-600 dark:text-indigo-400 text-lg mb-2">⚖️ Cinco Princípios do RLCP</p>
+              técnica dessa exigência legal na Petrobras.</p>
+            <p>Os princípios orientadores compreendem: publicidade, impessoalidade, moralidade, economicidade, celeridade e eficiência operacional.</p>
+            <p>Neste módulo, você aprenderá os princípios nucleares, o escopo de aplicação (quem segue, que tipos de contratação), as exceções legais (emergências, contratos de pessoal),
+              e como esses princípios aparecem em questões CESGRANRIO. Será o fundamento para todos os módulos subsequentes.</p>
+            <p>Fiscais de contrato da Petrobras seguem as regras formais do RLCP para atestar a integridade de medições técnicas efetuadas em campo.</p>
+            <div className="bg-cyan-500/10 border-l-4 border-cyan-500 p-5 rounded-r-xl mt-6">
+              <span className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">⚖️ Cinco Princípios do RLCP</span>
               <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Eficiência:</strong> Melhor resultado; menor custo</li>
                 <li>✓ <strong>Economicidade:</strong> Prudência fiscal; sem desperdício</li>
@@ -177,6 +171,9 @@ export default function AulaRLCP(props: AulaProps) {
                 <li>✓ <strong>Igualdade:</strong> Todos fornecedores tratados justamente</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -186,8 +183,7 @@ export default function AulaRLCP(props: AulaProps) {
             variant={variant}
             title="Conceitos e Âmbito de Aplicação"
           />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: A Origem do RLCP",
                 icone: <LuBrain />,
@@ -266,7 +262,7 @@ export default function AulaRLCP(props: AulaProps) {
               {
                 title: "Princípios",
                 type: "Base",
-                placeholderColor: "indigo",
+                placeholderColor: "cyan",
                 imageUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800",
               },
               {
@@ -313,39 +309,33 @@ export default function AulaRLCP(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             variant={mv[2]}
             title="Modalidades de Licitação"
             description="Concorrência, Tomada de Preços, Convite — escolher a modalidade correta é crítico."
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-            <p>
-              Lei 13.303 e RLCP definem <strong>4 modalidades de licitação</strong>, cada uma apropriada para um cenário diferente: (1) <strong>Concorrência</strong> — maior publicidade,
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>Lei 13.303 e RLCP definem <strong>4 modalidades de licitação</strong>, cada uma apropriada para um cenário diferente: (1) <strong>Concorrência</strong> — maior publicidade,
               qualquer fornecedor, prazos longos, ideal para grandes valores; (2) <strong>Tomada de Preços</strong> — fornecedores pré-qualificados, prazos médios, valor médio;
-              (3) <strong>Convite</strong> — fornecedores convidados diretos, prazos curtos, baixo valor; (4) <strong>Dispensa/Inexigibilidade</strong> — exceções (emergência, fornecedor único).
-            </p>
-            <p>
-              A <strong>Concorrência</strong> é a modalidade padrão, mais rigorosa e aberta. Qualquer fornecedor pode participar — Petrobras publica edital em jornal, edital da Petrobras (site),
+              (3) <strong>Convite</strong> — fornecedores convidados diretos, prazos curtos, baixo valor; (4) <strong>Dispensa/Inexigibilidade</strong> — exceções (emergência, fornecedor único).</p>
+            <p>A banca exige distinguir as modalidades de licitação pública e as regras do RLCP, com destaque para a celeridade do pregão eletrônico.</p>
+            <p>A <strong>Concorrência</strong> é a modalidade padrão, mais rigorosa e aberta. Qualquer fornecedor pode participar — Petrobras publica edital em jornal, edital da Petrobras (site),
               e aguarda propostas. Prazo mínimo: 5 dias úteis. Usada para grandes valores (compra de equipamentos de milhões, empreitada de construção). A Concorrência atende melhor ao
-              princípio de igualdade (ninguém favorecido) e economicidade (máxima competição = menor preço).
-            </p>
-            <p>
-              A <strong>Tomada de Preços</strong> é "meio termo" — participantes devem estar no cadastro de fornecedores da Petrobras (pré-qualificados em termos de capacidade técnica/financeira).
+              princípio de igualdade (ninguém favorecido) e economicidade (máxima competição = menor preço).</p>
+            <p>O regulamento unifica os procedimentos licitatórios em rito comum eletrônico com ampla publicidade eletrônica no portal Petronect.</p>
+            <p>A <strong>Tomada de Preços</strong> é "meio termo" — participantes devem estar no cadastro de fornecedores da Petrobras (pré-qualificados em termos de capacidade técnica/financeira).
               Prazo mínimo: 3 dias úteis. Usada para valores médios e contratações com fornecedores já conhecidos. Exemplo: Petrobras precisa de peças de reposição — convida seus fornecedores
-              cadastrados a apresentar propostas. Menos formalidade que Concorrência, mas ainda competitiva.
-            </p>
-            <p>
-              O <strong>Convite</strong> é "fast-track" para pequenas compras. Petrobras convida 3+ fornecedores cadastrados a enviar propostas. Prazo: 1 dia útil. Exemplo: compra de
-              material de escritório, peças pequenas, serviços menores. O Convite é ágil mas menos competitivo (só fornecedores convidados participam). Lei 13.303 permite porque é baixo risco/valor.
-            </p>
-            <p>
-              Neste módulo, você aprenderá quando cada modalidade se aplica (valores-limite por modalidade), procedimentos específicos de cada uma, prazos, e critérios de julgamento.
-              Questões CESGRANRIO frequentemente perguntam: "Qual modalidade para compra de R$ 500mil?" ou "Concorrência vs Tomada de Preços: qual diferença?" Dominar isso é essencial.
-            </p>
-
+              cadastrados a apresentar propostas. Menos formalidade que Concorrência, mas ainda competitiva.</p>
+            <p>A adoção do modo de disputa aberto permite lances sucessivos de fornecedores; o modo fechado preserva o sigilo comercial das propostas.</p>
+            <p>O <strong>Convite</strong> é "fast-track" para pequenas compras. Petrobras convida 3+ fornecedores cadastrados a enviar propostas. Prazo: 1 dia útil. Exemplo: compra de
+              material de escritório, peças pequenas, serviços menores. O Convite é ágil mas menos competitivo (só fornecedores convidados participam). Lei 13.303 permite porque é baixo risco/valor.</p>
+            <p>A contratação direta sem licitação exige parecer jurídico consistente ou enquadramento exato em hipóteses de dispensa ou inexigibilidade de lei.</p>
+            <p>Neste módulo, você aprenderá quando cada modalidade se aplica (valores-limite por modalidade), procedimentos específicos de cada uma, prazos, e critérios de julgamento.
+              Questões CESGRANRIO frequentemente perguntam: "Qual modalidade para compra de R$ 500mil?" ou "Concorrência vs Tomada de Preços: qual diferença?" Dominar isso é essencial.</p>
+            <p>A Petrobras utiliza cotações eletrônicas no Petronect para selecionar prestadores de serviços de SMS em refinarias operacionais.</p>
             <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">📋 Quatro Modalidades</p>
+              <span className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">📋 Quatro Modalidades</span>
               <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Concorrência:</strong> Aberta a todos; 5 dias; grandes valores</li>
                 <li>✓ <strong>Tomada Preços:</strong> Pré-qualificados; 3 dias; médios valores</li>
@@ -353,6 +343,9 @@ export default function AulaRLCP(props: AulaProps) {
                 <li>✓ <strong>Dispensa:</strong> Emergência ou fornecedor único; exceção</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -362,8 +355,7 @@ export default function AulaRLCP(props: AulaProps) {
             variant={variant}
             title="Tipos de Licitação"
           />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Modalidades Ágeis",
                 icone: <LuBrain />,
@@ -491,41 +483,35 @@ export default function AulaRLCP(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             variant={mv[3]}
             title="Procedimento Licitatório: Fases"
             description="Preparação, publicidade, julgamento, adjudicação — roteiro de uma licitação completa."
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-            <p>
-              Uma licitação completa segue <strong>4 fases bem definidas</strong>: (1) <strong>Preparatória</strong> — definir o que comprar, estimar custos, elaborar Termo de Referência;
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>Uma licitação completa segue <strong>4 fases bem definidas</strong>: (1) <strong>Preparatória</strong> — definir o que comprar, estimar custos, elaborar Termo de Referência;
               (2) <strong>Publicação/Inscrição</strong> — publicar edital, deixar aberto para inscrição de interessados, fornecer informações; (3) <strong>Julgamento</strong> — abrir propostas,
-              analisar conformidade, avaliar técnica e preço; (4) <strong>Adjudicação/Homologação</strong> — declarar vencedor, finalizar contrato, iniciar execução.
-            </p>
-            <p>
-              A <strong>Fase Preparatória</strong> é interna à Petrobras. Gestor identifica necessidade ("precisamos renovar equipamento de perfuração"). Prepara especificação técnica detalhada
+              analisar conformidade, avaliar técnica e preço; (4) <strong>Adjudicação/Homologação</strong> — declarar vencedor, finalizar contrato, iniciar execução.</p>
+            <p>Questões abordam as fases cronológicas do procedimento. Lembre-se: no RLCP a fase de julgamento precede a análise da documentação de habilitação.</p>
+            <p>A <strong>Fase Preparatória</strong> é interna à Petrobras. Gestor identifica necessidade ("precisamos renovar equipamento de perfuração"). Prepara especificação técnica detalhada
               (dimensões, funcionalidades, padrões). Estima custos (quanto deveria custar no mercado). Elabora <strong>Termo de Referência</strong> — documento que define exatamente o que
-              será licitado, critérios de aceitação, SLAs, prazos. Escolhe a modalidade apropriada (Concorrência se grande valor, Convite se pequeno).
-            </p>
-            <p>
-              A <strong>Fase de Publicação</strong> ocorre após aprovação interna. Edital é publicado (jornal, site Petrobras, B3). Fornecedores têm tempo para se inscrever e tirar dúvidas.
+              será licitado, critérios de aceitação, SLAs, prazos. Escolhe a modalidade apropriada (Concorrência se grande valor, Convite se pequeno).</p>
+            <p>O rito inicia-se na fase preparatória (especificação técnica), progride para a divulgação, apresentação de propostas, julgamento, habilitação e homologação.</p>
+            <p>A <strong>Fase de Publicação</strong> ocorre após aprovação interna. Edital é publicado (jornal, site Petrobras, B3). Fornecedores têm tempo para se inscrever e tirar dúvidas.
               Petrobras realiza reunião "pós-edital" para esclarecer: "O que significaa cláusula 5.2?" ou "Qual é a especificação técnica mínima?" Essa transparência garante que fornecedores
-              compreendem exatamente o que é esperado — não há surpresa depois.
-            </p>
-            <p>
-              A <strong>Fase de Julgamento</strong> é onde decisões importantes acontecem. Propostas recebidas são analisadas em duas dimensões: (1) <strong>Conformidade</strong> — atende aos
+              compreendem exatamente o que é esperado — não há surpresa depois.</p>
+            <p>Como demonstração prática, a comissão avalia e classifica as propostas de preços comerciais antes de abrir certidões fiscais de concorrentes.</p>
+            <p>A <strong>Fase de Julgamento</strong> é onde decisões importantes acontecem. Propostas recebidas são analisadas em duas dimensões: (1) <strong>Conformidade</strong> — atende aos
               requisitos técnicos do Termo de Referência? (2) <strong>Mérito</strong> — qual melhor preço? Qual melhor técnica? Critério mais comum é "menor preço" (economicidade), mas em
-              alguns casos usa-se "técnica + preço" (para projetos complexos onde qualidade técnica importa mais que apenas preço mais baixo).
-            </p>
-            <p>
-              A <strong>Fase de Adjudicação/Homologação</strong> fecha o processo. Vencedor é declarado e comunicado. Há período de "recurso" onde outros fornecedores podem contestar ("achamos
+              alguns casos usa-se "técnica + preço" (para projetos complexos onde qualidade técnica importa mais que apenas preço mais baixo).</p>
+            <p>A inversão de fases otimiza o tempo administrativo ao exigir análise documental apenas da empresa classificada em primeiro lugar.</p>
+            <p>A <strong>Fase de Adjudicação/Homologação</strong> fecha o processo. Vencedor é declarado e comunicado. Há período de "recurso" onde outros fornecedores podem contestar ("achamos
               que o julgamento foi injusto"). Resolvidos recursos, a licitação é "homologada" (aprovada formalmente). Contrato é assinado, adiantamento eventualmente liberado, e execução (entrega,
-              serviço) começa. Neste módulo aprenderá essas 4 fases em detalhe com exemplos reais Petrobras.
-            </p>
-
-            <div className="bg-violet-500/10 border-l-4 border-violet-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-violet-600 dark:text-violet-400 text-lg mb-2">🔄 Quatro Fases do Procedimento</p>
+              serviço) começa. Neste módulo aprenderá essas 4 fases em detalhe com exemplos reais Petrobras.</p>
+            <p>Em bases de suprimentos da Petrobras, a inversão de fases no Petronect acelera a aquisição de sobressalentes mecânicos para exploração offshore.</p>
+            <div className="bg-teal-500/10 border-l-4 border-teal-500 p-5 rounded-r-xl mt-6">
+              <span className="font-bold text-teal-600 dark:text-teal-400 text-lg mb-2">🔄 Quatro Fases do Procedimento</span>
               <ol className="text-lg space-y-1 text-foreground list-decimal list-inside">
                 <li><strong>Preparatória:</strong> Termo de Referência, especificação, estimativa, modalidade</li>
                 <li><strong>Publicação:</strong> Edital publicado, inscrição aberta, esclarecimentos</li>
@@ -533,6 +519,9 @@ export default function AulaRLCP(props: AulaProps) {
                 <li><strong>Adjudicação:</strong> Vencedor declarado, recursos resolvidos, contrato assinado</li>
               </ol>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -542,8 +531,7 @@ export default function AulaRLCP(props: AulaProps) {
             variant={variant}
             title="As Fases da Licitação"
           />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: O Rito Processual",
                 icone: <LuBrain />,
@@ -670,47 +658,44 @@ export default function AulaRLCP(props: AulaProps) {
         <div>
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
-              index={1}
+              index="INTRO"
               variant={mv[4]}
               title="Termo de Referência e Edital"
               description="Os documentos-mestres que definem o que será licitado e como."
             />
 
-            <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-              <p>
-                O <strong>Termo de Referência (TR)</strong> e o <strong>Edital</strong> são os "pilares documentais" de uma licitação. TR é o documento técnico (O QUÊ será contratado?);
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O <strong>Termo de Referência (TR)</strong> e o <strong>Edital</strong> são os "pilares documentais" de uma licitação. TR é o documento técnico (O QUÊ será contratado?);
                 Edital é o documento legal/administrativo (COMO será o processo?). Sem ambos bem elaborados, licitação fracassa: fornecedores não entendem, propostas são inconformes, processos
-                são contestados em justiça.
-              </p>
-              <p>
-                O <strong>Termo de Referência (TR)</strong> descreve em detalhe técnico a necessidade: especificação de produto (dimensões, funcionalidades, padrões), ou descrição de serviço
+                são contestados em justiça.</p>
+            <p>CESGRANRIO exige a distinção entre Edital (regras do certame) e Termo de Referência (especificações técnicas completas dos bens).</p>
+            <p>O <strong>Termo de Referência (TR)</strong> descreve em detalhe técnico a necessidade: especificação de produto (dimensões, funcionalidades, padrões), ou descrição de serviço
                 (escopo, SLAs, tempo de execução, critérios de aceitação). TR deve ser tão claro que qualquer fornecedor do mercado consegue entender exatamente o que será avaliado. Exemplo:
-                "Compra de 100 toneladas de aço ASTM A36 com tolerância ±2mm nas dimensões". Não pode ser vago: "Compra de aço de boa qualidade".
-              </p>
-              <p>
-                O <strong>Edital</strong> é o "contrato de processo" — define as regras do jogo: qual modalidade (Concorrência, Convite), prazos de inscrição e entrega, forma de julgamento
+                "Compra de 100 toneladas de aço ASTM A36 com tolerância ±2mm nas dimensões". Não pode ser vago: "Compra de aço de boa qualidade".</p>
+            <p>O edital deve conter critérios objetivos de julgamento e habilitação, vedando especificações direcionadas que limitem a ampla concorrência.</p>
+            <p>O <strong>Edital</strong> é o "contrato de processo" — define as regras do jogo: qual modalidade (Concorrência, Convite), prazos de inscrição e entrega, forma de julgamento
                 (menor preço, técnica+preço, melhor técnica), critérios de desempate, cronograma. Edital também especifica documentação exigida (registros, certificações, atestados de clientes
-                anteriores), responsabilidades das partes, penalidades por descumprimento.
-              </p>
-              <p>
-                <strong>Diferença crítica:</strong> TR responde "O quê?" (o bem/serviço); Edital responde "Como?" (o processo). Um fornecedor que entende bem o TR sabe se consegue fornecer.
+                anteriores), responsabilidades das partes, penalidades por descumprimento.</p>
+            <p>O Termo de Referência (TR) detalha os prazos, locais de entrega e as características de qualidade exigidas para o fornecimento do material.</p>
+            <p><strong>Diferença crítica:</strong> TR responde "O quê?" (o bem/serviço); Edital responde "Como?" (o processo). Um fornecedor que entende bem o TR sabe se consegue fornecer.
                 Um fornecedor que entende bem o Edital sabe como participar e em que condições será julgado. Ambos precisam estar alinhados — se Edital exige TR detalhado mas TR é vago,
-                fornecedor fica confuso.
-              </p>
-              <p>
-                Lei 13.303 e RLCP exigem que TR e Edital sejam publicados com antecedência (mínimo 3-5 dias) para que fornecedores preparem propostas adequadas. Neste módulo, você aprenderá
-                a estrutura exata de TR (especificações técnicas, critérios de aceitação, SLAs), de Edital (modalidade, prazos, julgamento), e como redigir ambos de forma clara e defensável.
-              </p>
-
-              <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-                <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📄 Termo de Referência vs Edital</p>
+                fornecedor fica confuso.</p>
+            <p>A impugnação de edital é direito de licitantes e cidadãos que identificarem irregularidades ou vedações ilegais de concorrência.</p>
+            <p>Lei 13.303 e RLCP exigem que TR e Edital sejam publicados com antecedência (mínimo 3-5 dias) para que fornecedores preparem propostas adequadas. Neste módulo, você aprenderá
+                a estrutura exata de TR (especificações técnicas, critérios de aceitação, SLAs), de Edital (modalidade, prazos, julgamento), e como redigir ambos de forma clara e defensável.</p>
+            <p>Técnicos de suprimentos da Petrobras auxiliam na elaboração técnica de termos de referência para contratação de insumos para bacias.</p>
+            <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
+                <span className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📄 Termo de Referência vs Edital</span>
                 <ul className="text-lg space-y-1 text-foreground">
                   <li>✓ <strong>TR:</strong> Técnico; O QUÊ será contratado; Especificações, SLAs, critérios aceitação</li>
                   <li>✓ <strong>Edital:</strong> Legal; COMO será o processo; Modalidade, prazos, julgamento, documentação</li>
                   <li>✓ <strong>Ambos:</strong> Devem ser claros, sem ambiguidade, publicados antecipadamente</li>
                 </ul>
               </div>
-            </div>
+            
+          
+          
+          </div>
           </section>
 
           <ModuleConsolidation
@@ -734,7 +719,7 @@ export default function AulaRLCP(props: AulaProps) {
                 {
                   title: "O Edital",
                   type: "Convocação",
-                  placeholderColor: "bg-indigo-500/10",
+                  placeholderColor: "bg-cyan-500/10",
                 },
               ],
             }}
@@ -746,8 +731,8 @@ export default function AulaRLCP(props: AulaProps) {
                     <h6 className="font-bold text-blue-600 mb-1">Termo de Referência (TR)</h6>
                     <p className="text-lg text-muted-foreground">O "O QUE" será comprado. Especificações técnicas, quantidades e prazos.</p>
                   </div>
-                  <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/10">
-                    <h6 className="font-bold text-indigo-600 mb-1">Edital</h6>
+                  <div className="p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/10">
+                    <h6 className="font-bold text-cyan-600 mb-1">Edital</h6>
                     <p className="text-lg text-muted-foreground">As "REGRAS DO JOGO". Como será a licitação, prazos e julgamento.</p>
                   </div>
                 </div>
@@ -776,22 +761,25 @@ export default function AulaRLCP(props: AulaProps) {
       <TabsContent value="modulo-5" className="space-y-12">
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             variant={variant}
             title="Julgamento de Propostas"
             description="Como a Petrobras decide quem vence: do menor preço à melhor técnica."
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground">
-            <p>
-              O <strong>julgamento</strong> é a fase onde a Petrobras analisa as propostas comerciais e técnicas. O critério principal, no RLCP, é a busca pela <strong>proposta mais vantajosa</strong>, que nem sempre é apenas o menor valor nominal, mas o melhor custo-benefício (ciclo de vida do produto).
-            </p>
-            <p>
-              Os critérios comuns são: <strong>Menor Preço</strong> (padronizados), <strong>Melhor Técnica</strong> (complexos), ou <strong>Técnica e Preço</strong> (equilíbrio). Após o julgamento, ocorre a verificação de <strong>exequibilidade</strong>: se o preço for absurdamente baixo, o licitante deve provar que consegue entregar, para evitar abandono de contrato.
-            </p>
-
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O <strong>julgamento</strong> é a fase onde a Petrobras analisa as propostas comerciais e técnicas. O critério principal, no RLCP, é a busca pela <strong>proposta mais vantajosa</strong>, que nem sempre é apenas o menor valor nominal, mas o melhor custo-benefício (ciclo de vida do produto).</p>
+            <p>A prova aborda os critérios de julgamento: menor preço, melhor técnica, melhor combinação técnica-preço e maior retorno econômico.</p>
+            <p>Os critérios comuns são: <strong>Menor Preço</strong> (padronizados), <strong>Melhor Técnica</strong> (complexos), ou <strong>Técnica e Preço</strong> (equilíbrio). Após o julgamento, ocorre a verificação de <strong>exequibilidade</strong>: se o preço for absurdamente baixo, o licitante deve provar que consegue entregar, para evitar abandono de contrato.</p>
+            <p>O julgamento comercial rejeita propostas inexequíveis com preços irrisórios ou propostas com valores manifestamente superiores aos orçados.</p>
+            <p>O julgamento comercial rejeita propostas inexequíveis com preços irrisórios ou manifestamente superiores ao valor de referência orçado pela equipe técnica da comissão contratante.</p>
+            <p>A adjudicação transfere o objeto do certame al licitante vencedor homologado, gerando a expectativa de celebração formal do contrato.</p>
+            <p>A adjudicação do objeto ao licitante vencedor homologado gera a expectativa legítima de celebração do contrato, criando para a estatal a obrigação de formalizar o instrumento contratual.</p>
+            <p>Os critérios de desempate priorizam empresas locais de médio e pequeno porte ou prestadores que comprovem investimentos em tecnologia nacional.</p>
+            <p>Os critérios de desempate no RLCP priorizam empresas de médio e pequeno porte cadastradas regionalmente ou prestadores que comprovem investimentos certificados em tecnologia nacional.</p>
+            <p>Nas grandes licitações de refino da Petrobras, a análise comercial no Petronect aponta a proposta vencedora conforme critérios pré-edital.</p>
             <div className="bg-blue-500/10 border-l-4 border-blue-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-blue-600 dark:text-blue-400 text-lg mb-2">⚖️ Critérios de Julgamento</p>
+              <span className="font-bold text-blue-600 dark:text-blue-400 text-lg mb-2">⚖️ Critérios de Julgamento</span>
               <ul className="text-lg space-y-1">
                 <li>✓ <strong>Menor Preço:</strong> Quando o objeto é comum e bem definido</li>
                 <li>✓ <strong>Maior Desconto:</strong> Variável do menor preço (comum em serviços)</li>
@@ -799,6 +787,9 @@ export default function AulaRLCP(props: AulaProps) {
                 <li>✓ <strong>Técnica e Preço:</strong> Ponderação entre custo e expertise</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -809,9 +800,7 @@ export default function AulaRLCP(props: AulaProps) {
             title="Conformidade e Exequibilidade"
             description="Garantindo que a proposta seja realista e atenda ao edital."
           />
-          <ContentAccordion
-            mode="stacked"
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 title: "Conformidade Técnica",
                 conteudo: "Verificação se a proposta atende a todos os requisitos do Termo de Referência. Propostas fora da especificação são eliminadas.",
@@ -878,28 +867,34 @@ export default function AulaRLCP(props: AulaProps) {
       <TabsContent value="modulo-6" className="space-y-12">
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             variant={variant}
             title="Recursos e Impugnações"
             description="Como contestar o edital ou o resultado da licitação."
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground">
-            <p>
-              O direito de <strong>impugnar</strong> e <strong>recorrer</strong> garante a transparência. A impugnação ocorre ANTES da abertura, contra o edital. O recurso ocorre DEPOIS, contra o resultado.
-            </p>
-            <p>
-              Há direitos claros: ser ouvido, acessar documentos e obter resposta motivada. A Petrobras deve responder em prazos rígidos, garantindo que o processo não seja maculado por erros administrativos.
-            </p>
-
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O direito de <strong>impugnar</strong> e <strong>recorrer</strong> garante a transparência. A impugnação ocorre ANTES da abertura, contra o edital. O recurso ocorre DEPOIS, contra o resultado.</p>
+            <p>Questões sobre recursos cobram os prazos unificados de manifestação e a necessidade de comprovar prejuízo jurídico real nas impugnações.</p>
+            <p>Há direitos claros: ser ouvido, acessar documentos e obter resposta motivada. A Petrobras deve responder em prazos rígidos, garantindo que o processo não seja maculado por erros administrativos.</p>
+            <p>O rito de recurso no RLCP adota fase única recursal pós-julgamento de habilitados, concentrando todos os questionamentos em peça única administrativa.</p>
+            <p>O recurso administrativo no RLCP deve ser interposto no prazo previsto no edital, com motivação objetiva e comprovação do interesse jurídico do recorrente.</p>
+            <p>A interposição de recurso suspende o andamento licitatório apenas se houver manifesto risco de dano irreparável ao erário municipal ou estatal.</p>
+            <p>A decisão proferida em grau de recurso vincula as partes e integra o processo administrativo, podendo ser objeto de controle externo pelo TCU ou pela CGU.</p>
+            <p>A comissão avalia os argumentos recursais e pode reconsiderar sua decisão prévia ou encaminhar a peça para julgamento de alçada superior.</p>
+            <p>A preclusão processual no certame garante a celeridade das contratações ao impedir a reabertura de fases já superadas sem motivo legal fundamentado.</p>
+            <p>A equipe jurídica da Petrobras analisa impugnações de fornecedores derrotados, garantindo a lisura técnica de contratos celebrados.</p>
             <div className="bg-cyan-500/10 border-l-4 border-cyan-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">⚖️ Impugnação vs Recurso</p>
+              <span className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">⚖️ Impugnação vs Recurso</span>
               <ul className="text-lg space-y-1">
                 <li>✓ <strong>Impugnação:</strong> Contra as REGRAS do edital (Prazo: até 2 dias úteis antes)</li>
                 <li>✓ <strong>Recurso:</strong> Contra o RESULTADO (Prazo: 5 dias úteis após publicação)</li>
                 <li>✓ <strong>Formal:</strong> Por escrito, fundamentado em lei ou no RLCP</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -910,9 +905,7 @@ export default function AulaRLCP(props: AulaProps) {
             title="Direito de Defesa"
             description="Mecanismos para garantir a legalidade."
           />
-          <ContentAccordion
-            mode="stacked"
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 title: "Prazos",
                 conteudo: "Essenciais para não perder o direito. Impugnação é prévia, recurso é a posteriori.",
@@ -977,23 +970,33 @@ export default function AulaRLCP(props: AulaProps) {
       <TabsContent value="modulo-7" className="space-y-12">
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             variant={variant}
             title="Contratos e Execução"
             description="Da assinatura ao encerramento: obrigações e fiscalização."
           />
-          <div className="space-y-6 text-lg leading-relaxed text-foreground">
-            <p>
-              O <strong>contrato</strong> é o selo final da licitação. Ele define os prazos, formas de pagamento, garantias e punições. A Petrobras exige fiscalização rigorosa em cada entrega.
-            </p>
-            <div className="bg-indigo-500/10 border-l-4 border-indigo-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-indigo-600 dark:text-indigo-400 text-lg mb-2">📝 Pilares da Execução</p>
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O <strong>contrato</strong> é o selo final da licitação. Ele define os prazos, formas de pagamento, garantias e punições. A Petrobras exige fiscalização rigorosa em cada entrega.</p>
+            <p>A banca cobra o regime jurídico dos contratos celebrados no RLCP, as regras de alteração unilateral e reajustes anuais de preços.</p>
+            <p>Os contratos celebrados sob o RLCP disciplinam com clareza as obrigações das partes, os indicadores de desempenho, os critérios de medição e os mecanismos de reajuste.</p>
+            <p>Os contratos administrativos das estatais seguem regras de direito privado mitigadas por cláusulas de privilégio público de fiscalização.</p>
+            <p>A garantia contratual — caução, seguro-garantia ou fiança bancária — protege a estatal de eventuais inadimplementos do contratado durante a execução do objeto.</p>
+            <p>O contratado é obrigado a aceitar acréscimos ou supressões qualitativas no objeto do contrato nos tetos e percentuais definidos em lei.</p>
+            <p>As sanções administrativas previstas no RLCP — advertência, multa, suspensão — são aplicadas proporcionalmente à gravidade do descumprimento contratual comprovado.</p>
+            <p>A rescisão amigável ou judicial do contrato ocorre em casos de inadimplemento prolongado das obrigações ou por razões de força maior comprovadas.</p>
+            <p>O controle de riscos licitatórios monitora variações abruptas de escopo e preços de mercado, atestando a lisura ética e a moralidade administrativa de todos os processos de concorrência.</p>
+            <p>Fiscais da Petrobras acompanham medições físicas mensais de prestação de serviços logísticos de forma impessoal nas refinarias.</p>
+            <div className="bg-cyan-500/10 border-l-4 border-cyan-500 p-5 rounded-r-xl mt-6">
+              <span className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">📝 Pilares da Execução</span>
               <ul className="text-lg space-y-1">
                 <li>✓ <strong>Fiscalização:</strong> Obrigatória por lei para garantir qualidade</li>
                 <li>✓ <strong>Sanções:</strong> Multas e suspensões por descumprimento</li>
                 <li>✓ <strong>Prazos:</strong> Cronogramas rígidos de entrega e pagamento</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -1004,9 +1007,7 @@ export default function AulaRLCP(props: AulaProps) {
             title="Gestão de Contratos"
             description="Como a Petrobras garante o que foi comprado."
           />
-          <ContentAccordion
-            mode="stacked"
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 title: "Fiscal do Contrato",
                 conteudo: "Designado formalmente pela Petrobras para validar entregas e conformidade técnica.",
@@ -1036,14 +1037,14 @@ export default function AulaRLCP(props: AulaProps) {
                 {
                   title: "Fiscalização Ativa",
                   type: "Campo",
-                  placeholderColor: "bg-indigo-500/10",
+                  placeholderColor: "bg-cyan-500/10",
                 },
               ],
             }}
             sinteseEstrategica={{
               title: "Regra do Fiscal",
               content: (
-                 <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-center">
+                 <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20 text-center">
                    <p className="text-lg">Não aceita? Não paga. O fiscal é o guardião do TR.</p>
                  </div>
               ),
@@ -1071,26 +1072,33 @@ export default function AulaRLCP(props: AulaProps) {
       <TabsContent value="modulo-8" className="space-y-12">
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             variant={variant}
             title="Inabilitação e Desclassificação"
             description="Diferenças entre problemas no licitante e problemas na proposta."
           />
-          <div className="space-y-6 text-lg leading-relaxed text-foreground">
-            <p>
-              <strong>Inabilitação:</strong> Problema no Licitante (CPF/CNPJ, certidões negativas, capacidade técnica/financeira). É a exclusão do sujeito.
-            </p>
-            <p>
-              <strong>Desclassificação:</strong> Problema na Proposta (Preço excessivo, especificações erradas no TR). É a exclusão do objeto ofertado.
-            </p>
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p><strong>Inabilitação:</strong> Problema no Licitante (CPF/CNPJ, certidões negativas, capacidade técnica/financeira). É a exclusão do sujeito.</p>
+            <p>Provas abordam as hipóteses de inabilitação de concorrentes por descumprimento de certidões fiscais ou insolvência financeira atestada.</p>
+            <p><strong>Desclassificação:</strong> Problema na Proposta (Preço excessivo, especificações erradas no TR). É a exclusão do objeto ofertado.</p>
+            <p>A habilitação contábil analisa índices de liquidez corrente gerais das empresas; a habilitação jurídica atesta a regularidade cadastral.</p>
+            <p>A habilitação jurídica comprova a regularidade constitutiva da empresa; a habilitação técnica atesta a experiência em objeto idêntico ao licitado com acervo comprovado.</p>
+            <p>Licitantes em recuperação judicial podem participar de certames estatais se comprovarem viabilidade financeira de executar a obra.</p>
+            <p>A habilitação econômico-financeira analisa os índices de liquidez corrente e o patrimônio líquido mínimo para evitar a contratação de empresas insolventes.</p>
+            <p>A inabilitação decorre de falsidade documental declarada ou inaptidão técnica comprovada por diligência técnica de fiscalização.</p>
+            <p>Documentos vencidos no momento da fase de habilitação geram inabilitação imediata do licitante, vedada a substituição posterior durante o certame ativo.</p>
+            <p>Na Petrobras, a verificação documental no Petronect assegura que apenas empresas solventes e idôneas celebrem termos de fornecimento.</p>
             <div className="bg-red-500/10 border-l-4 border-red-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-red-600 dark:text-red-400 text-lg mb-2">🚫 Causas Comuns</p>
+              <span className="font-bold text-red-600 dark:text-red-400 text-lg mb-2">🚫 Causas Comuns</span>
               <ul className="text-lg space-y-1">
                 <li>✓ <strong>Falha Técnica:</strong> Não atender ao TR (Elimina a Proposta)</li>
                 <li>✓ <strong>Falha Fiscal:</strong> Certidão vencida (Inabilita o Licitante)</li>
                 <li>✓ <strong>Ilegalidade:</strong> Fraude ou conluio detectado</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -1101,9 +1109,7 @@ export default function AulaRLCP(props: AulaProps) {
             title="Critérios de Exclusão"
             description="Padrões objetivos de rejeição."
           />
-          <ContentAccordion
-            mode="stacked"
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 title: "Desempate",
                 conteudo: "Quando preços são iguais, usa-se critérios de técnica, experiência ou, por fim, sorteio.",
@@ -1168,23 +1174,33 @@ export default function AulaRLCP(props: AulaProps) {
       <TabsContent value="modulo-9" className="space-y-12">
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             variant={variant}
             title="RLCP na Prática Petrobras"
             description="Casos reais, estrutura organizacional e compliance."
           />
-          <div className="space-y-6 text-lg leading-relaxed text-foreground">
-            <p>
-              A Petrobras realiza centenas de licitações por ano usando o RLCP. Toda licitação passa por Suprimentos e Compliance para evitar fraudes e garantir eficiência.
-            </p>
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A Petrobras realiza centenas de licitações por ano usando o RLCP. Toda licitação passa por Suprimentos e Compliance para evitar fraudes e garantir eficiência.</p>
+            <p>Questões sobre o RLCP prático na Petrobras exigem familiaridade com o portal Petronect e o controle externo exercido pelo TCU.</p>
+            <p>O controle externo das contratações da Petrobras é exercido pelo TCU, que pode determinar a anulação de contratos eivados de vícios de legalidade ou de superfaturamento.</p>
+            <p>O portal Petronect garante a publicidade integral das concorrências e a celeridade operacional da cadeia logística nacional da companhia.</p>
+            <p>Os portais de transparência publicam os contratos celebrados, os valores pagos e os resultados de auditorias, garantindo o acesso público à rastreabilidade das compras.</p>
+            <p>Diligências de conformidade técnica são efetuadas por equipes colegiadas para certificar a regularidade fabril de tubulações submarinas.</p>
+            <p>O compliance contratual na Petrobras exige que fornecedores declarem ausência de conflito de interesses e aderência ao programa de integridade da companhia.</p>
+            <p>O controle de riscos licitatórios monitora variações abruptas de escopo e atesta a lisura ética de todos os processos de concorrência.</p>
+            <p>O monitoramento de riscos de execução contratual identifica desvios de prazo e escopo de forma antecipada, permitindo a adoção de planos de ação corretivos.</p>
+            <p>Auditorias anuais preventivas do TCU avaliam a aderência de compras e contratos da Petrobras às regras do Regulamento de Licitações.</p>
             <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">🏢 Organização Interna</p>
+              <span className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">🏢 Organização Interna</span>
               <ul className="text-lg space-y-1">
                 <li>✓ <strong>Unidade Solicitante:</strong> Define a necessidade inicial</li>
                 <li>✓ <strong>Suprimentos:</strong> Conduz a licitação tecnicamente</li>
                 <li>✓ <strong>Jurídico:</strong> Valida o edital e o contrato final</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -1246,12 +1262,12 @@ export default function AulaRLCP(props: AulaProps) {
       <TabsContent value="modulo-10" className="space-y-12">
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={1}
+            index="INTRO"
             variant={variant}
             title="Simulado Geral RLCP"
             description="Desafio final integrando todos os conceitos do curso."
           />
-          <div className="space-y-6 text-lg leading-relaxed text-foreground">
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
               Agora é a hora da verdade. O Simulado Geral traz questões no padrão CESGRANRIO que misturam princípios, modalidades e execução contratual. Prepare-se para pensar como um Técnico de Suprimento da Petrobras.
             </p>

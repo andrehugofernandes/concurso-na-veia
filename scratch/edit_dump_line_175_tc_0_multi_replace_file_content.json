@@ -1,0 +1,7 @@
+{
+  "line": 175,
+  "source": "MODEL",
+  "type": "PLANNER_RESPONSE",
+  "tool_name": "multi_replace_file_content",
+  "arguments": {}
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
   AlertBox,
@@ -172,37 +172,31 @@ export default function AulaLei13303(props: AulaProps) {
             variant="cyan"
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-            <p>
-              A <strong>Lei 13.303/2016</strong>, conhecida como "Lei das Estatais" ou "Lei de Governança das Empresas Públicas",
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A <strong>Lei 13.303/2016</strong>, conhecida como "Lei das Estatais" ou "Lei de Governança das Empresas Públicas",
               é o principal estatuto jurídico que disciplina o funcionamento das empresas públicas e das sociedades de economia mista
               brasileiras, incluindo a Petrobras. Promulgada em junho de 2016, ela consolidou regras de governança, transparência e
-              controle que antes eram dispersas em diferentes normativas, criando um marco único de accountability.
-            </p>
-            <p>
-              Por que essa lei importa para a Petrobras? Porque a empresa é <strong>sociedade de economia mista</strong> — significa
+              controle que antes eram dispersas em diferentes normativas, criando um marco único de accountability.</p>
+            <p>CESGRANRIO adora a aplicabilidade da Lei 13.303. Lembre-se: ela rege empresas públicas e sociedades de economia mista, abrangendo suas subsidiárias integrais.</p>
+            <p>Por que essa lei importa para a Petrobras? Porque a empresa é <strong>sociedade de economia mista</strong> — significa
               que a União é controladora (mais de 50% das ações), mas há também acionistas privados. A Lei 13.303 obriga a Petrobras
               a manter padrões rigorosos de governança, mesmo tendo uma trajetória já consolidada. Na CESGRANRIO, essa lei é frequente
-              em provas para cargos administrativos, pois define direitos e deveres que afetam toda operação interna.
-            </p>
-            <p>
-              A lei se aplica a todas as empresas públicas federais (Caixa, BNDES, Correios, etc.) e sociedades de economia mista
+              em provas para cargos administrativos, pois define direitos e deveres que afetam toda operação interna.</p>
+            <p>O estatuto jurídico estabelece o regime de concorrência com o mercado de capitais ao mesmo tempo em que preserva a função social pública das estatais.</p>
+            <p>A lei se aplica a todas as empresas públicas federais (Caixa, BNDES, Correios, etc.) e sociedades de economia mista
               (Petrobras, Eletrobras, Banco do Brasil). Ela não aplica a empresas estaduais ou municipais — essas têm suas próprias leis.
-              A Petrobras, como estatal federal em regime de economia mista, está 100% submetida a Lei 13.303 e suas regulamentações.
-            </p>
-            <p>
-              Os <strong>principais objetivos</strong> da lei são: (1) aumentar transparência das operações estatais; (2) melhorar a
+              A Petrobras, como estatal federal em regime de economia mista, está 100% submetida a Lei 13.303 e suas regulamentações.</p>
+            <p>Como exemplo prático, a Lei das Estatais unifica as diretrizes de governança societária e transparência a serem respeitadas por dirigentes nomeados.</p>
+            <p>Os <strong>principais objetivos</strong> da lei são: (1) aumentar transparência das operações estatais; (2) melhorar a
               eficiência de gestão; (3) proteger o interesse público e da União; (4) assegurar direitos dos acionistas minoritários;
-              (5) prevenir conflitos de interesse; (6) estabelecer mecanismos de fiscalização interna e externa.
-            </p>
-            <p>
-              Neste módulo, você aprenderá o contexto histórico (por que a lei foi criada em 2016), sua estrutura (10 capítulos principais),
+              (5) prevenir conflitos de interesse; (6) estabelecer mecanismos de fiscalização interna e externa.</p>
+            <p>A lei veda qualquer tipo de intervenção lesiva de acionistas controladores na condução profissional da companhia em prol de interesses meramente políticos.</p>
+            <p>Neste módulo, você aprenderá o contexto histórico (por que a lei foi criada em 2016), sua estrutura (10 capítulos principais),
               seu campo de aplicação (quem é obrigado a seguir), e como se relaciona com outras normas (Lei de Licitações, Lei de Acesso
-              à Informação, Lei Sarbanes-Oxley). Vamos começar pelo porquê antes de nos aprofundar no como.
-            </p>
-
+              à Informação, Lei Sarbanes-Oxley). Vamos começar pelo porquê antes de nos aprofundar no como.</p>
+            <p>A Petrobras incorporou as regras da Lei 13.303 em seu próprio estatuto social, implementando rigorosos controles prévios de conformidade corporativa.</p>
             <div className="bg-cyan-500/10 border-l-4 border-cyan-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">📋 Escopo da Lei 13.303</p>
+              <span className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">📋 Escopo da Lei 13.303</span>
               <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ Aplicável a empresas públicas federais</li>
                 <li>✓ Aplicável a sociedades de economia mista federais</li>
@@ -210,6 +204,9 @@ export default function AulaLei13303(props: AulaProps) {
                 <li>✓ Não se aplica a empresas privadas ou estatais estaduais/municipais</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -269,8 +266,7 @@ export default function AulaLei13303(props: AulaProps) {
             title="Análise Técnica C.E.D.E."
             description="Explorando a profundidade pedagógica dos fundamentos da lei."
           />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: A Gênese da Lei",
                 conteudo: (
@@ -417,48 +413,45 @@ export default function AulaLei13303(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={2}
+            index="INTRO"
             title="Tipologia de Empresas Estatais"
             description="Empresa Pública vs Sociedade de Economia Mista — estrutura de capital e implicações."
             variant="emerald"
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-            <p>
-              A Lei 13.303 define <strong>dois tipos de empresas estatais</strong>: <strong>Empresa Pública (EP)</strong> e
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A Lei 13.303 define <strong>dois tipos de empresas estatais</strong>: <strong>Empresa Pública (EP)</strong> e
               <strong> Sociedade de Economia Mista (SEM)</strong>. A diferença é exclusivamente no <strong>capital (estrutura de propriedade)</strong>.
               Empresa Pública tem capital 100% público; SEM tem capital dividido entre setor público (controlador) e setor privado (minoritários).
-              Essa distinção afeta direitos dos acionistas, estrutura de votação, e estratégia de gestão.
-            </p>
-            <p>
-              A Petrobras é uma <strong>Sociedade de Economia Mista</strong>, específificamente uma S.A. (Sociedade Anônima) com mais de 50% das
+              Essa distinção afeta direitos dos acionistas, estrutura de votação, e estratégia de gestão.</p>
+            <p>A banca exige discernir as estatais: Empresas Públicas possuem capital 100% público; Sociedades de Economia Mista são S.A. com maioria de voto público.</p>
+            <p>A Petrobras é uma <strong>Sociedade de Economia Mista</strong>, específificamente uma S.A. (Sociedade Anônima) com mais de 50% das
               ações com direito a voto (ordinárias) pertencentes à União Federal. Isso significa que existem acionistas privados que possuem ações
               da Petrobras (preferenciais e ordinárias minoritárias). Essa estrutura mista é frequente em megaempresas: Eletrobras, Caixa (EP), BNDES (EP),
-              Banco do Brasil (SEM), Correios (EP).
-            </p>
-            <p>
-              Por que a Petrobras é SEM e não EP? Porque a Lei 13.303 permite que empresas estratégicas brasileiras captem capital privado (via bolsa)
+              Banco do Brasil (SEM), Correios (EP).</p>
+            <p>As subsidiárias de empresas estatais também se submetem integralmente às regras de licitações e governança ditadas pela Lei das Estatais.</p>
+            <p>Por que a Petrobras é SEM e não EP? Porque a Lei 13.303 permite que empresas estratégicas brasileiras captem capital privado (via bolsa)
               sem perder o controle estatal. Assim, a União mantém controle ({'>'}50%) mas também atrai investidores institucionais (fundos, bancos) que compram
-              ações minoritárias. Isso diversifica riscos e aumenta a capitalização sem abrir mão do comando.
-            </p>
-            <p>
-              As implicações práticas são significativas: em uma EP pura (ex.: Caixa), não há votação de acionistas privados — decisões são 100% governamentais.
+              ações minoritárias. Isso diversifica riscos e aumenta a capitalização sem abrir mão do comando.</p>
+            <p>Como demonstração prática, empresas públicas podem ser unipessoais, enquanto sociedades de economia mista adotam obrigatoriamente a forma de S.A.</p>
+            <p>As implicações práticas são significativas: em uma EP pura (ex.: Caixa), não há votação de acionistas privados — decisões são 100% governamentais.
               Em uma SEM (Petrobras), há Assembleia Geral de Acionistas onde acionistas minoritários votam, exigem transparência, questionam dividendos. A Lei 13.303
-              protege esses direitos minoritários — é a garantia que acionistas privados têm de que seus direitos não serão arbitrariamente suprimidos.
-            </p>
-            <p>
-              Neste módulo, você aprenderá a diferenciar EP de SEM, entender a estrutura de capital da Petrobras, reconhecer as implicações para governança,
-              e dominar a nomenclatura exata que aparece em provas CESGRANRIO. Será simples se você focar na distinção: <strong>capital 100% público = EP; capital dividido = SEM</strong>.
-            </p>
-
+              protege esses direitos minoritários — é a garantia que acionistas privados têm de que seus direitos não serão arbitrariamente suprimidos.</p>
+            <p>A constituição de estatais e suas subsidiárias exige autorização legislativa expressa, delimitando o objeto social e a área de atuação econômica.</p>
+            <p>Neste módulo, você aprenderá a diferenciar EP de SEM, entender a estrutura de capital da Petrobras, reconhecer as implicações para governança,
+              e dominar a nomenclatura exata que aparece em provas CESGRANRIO. Será simples se você focar na distinção: <strong>capital 100% público = EP; capital dividido = SEM</strong>.</p>
+            <p>A Transpetro, subsidiária integral da Petrobras, submete-se de forma idêntica à Lei 13.303 em todas as suas concorrências e contratos.</p>
             <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">🏢 Diferenças Principais</p>
+              <span className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">🏢 Diferenças Principais</span>
               <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>EP:</strong> Capital 100% público; Sem acionistas privados; Decisões 100% governamentais</li>
                 <li>✓ <strong>SEM:</strong> Capital público ({'>'}50%) + privado ({'<'}50%); Tem acionistas privados; Assembleia Geral com votação</li>
                 <li>✓ <strong>Petrobras:</strong> SEM (S.A.); União detém {'>'}50%; Ações negociadas em bolsa</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -518,8 +511,7 @@ export default function AulaLei13303(props: AulaProps) {
             title="Masterclass de Diferenciação"
             description="Entenda os detalhes técnicos que separam as entidades no concurso."
           />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: A Origem do Capital",
                 conteudo: (
@@ -659,51 +651,48 @@ export default function AulaLei13303(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={3}
+            index="INTRO"
             title="Direitos e Proteção do Acionista"
             description="Voto, informação, fiscalização — o tripé de proteção dos investidores em empresas estatais."
             variant="emerald"
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-            <p>
-              Na Petrobras (SEM), existem dois tipos de acionistas: (1) <strong>União Federal</strong> (controladora, {'>'}50% das ordinárias);
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>Na Petrobras (SEM), existem dois tipos de acionistas: (1) <strong>União Federal</strong> (controladora, {'>'}50% das ordinárias);
               (2) <strong>Acionistas privados/minoritários</strong> (detêm ordinárias minoritárias e/ou preferenciais). A Lei 13.303 garante que
               acionistas minoritários não sejam arbitrariamente prejudicados por decisões do controlador. Essa proteção é fundamental para que
-              investidores privados confiem em empresas estatais.
-            </p>
-            <p>
-              Os principais <strong>direitos do acionista</strong> são: (1) <strong>Direito de Voto</strong> — participar da Assembleia e votar em
+              investidores privados confiem em empresas estatais.</p>
+            <p>Questões sobre minoritários abordam os canais de fiscalização societária e o direito de voto proporcional na eleição de conselheiros de administração.</p>
+            <p>Os principais <strong>direitos do acionista</strong> são: (1) <strong>Direito de Voto</strong> — participar da Assembleia e votar em
               decisões estratégicas (ações ordinárias têm voto; preferenciais não); (2) <strong>Direito a Dividendos</strong> — receber parte dos lucros
               distribuídos proporcionalmente ao número de ações; (3) <strong>Direito de Fiscalização</strong> — acessar relatórios, questionar diretoria,
-              pedir auditoria; (4) <strong>Direito à Informação</strong> — receber balanços, atas de reuniões, comunicados sobre fatos relevantes.
-            </p>
-            <p>
-              Na Petrobras, a proteção de minoritários é crítica porque a União é controladora. Se a Lei 13.303 não existisse, a União poderia:
+              pedir auditoria; (4) <strong>Direito à Informação</strong> — receber balanços, atas de reuniões, comunicados sobre fatos relevantes.</p>
+            <p>A proteção de acionistas minoritários exige a ampla divulgação de atas de reuniões de conselho e informações relevantes em portais públicos.</p>
+            <p>Na Petrobras, a proteção de minoritários é crítica porque a União é controladora. Se a Lei 13.303 não existisse, a União poderia:
               tomar dividendos sem retribuição, nomear diretores incompetentes, aprovar operações que beneficiam apenas interesses governamentais.
               A lei impede isso ao exigir: (1) quórum mínimo em Assembleias; (2) votação separada para assuntos que afetam minoritários; (3) conselho fiscal;
-              (4) publicidade de fatos relevantes.
-            </p>
-            <p>
-              Deveres do acionista também existem — não é tudo direito. O acionista deve: (1) honrar compromissos de integralização de capital;
+              (4) publicidade de fatos relevantes.</p>
+            <p>A eleição de membros independentes para o Conselho de Administração resguarda a companhia contra decisões que privilegiem apenas o controlador público.</p>
+            <p>Deveres do acionista também existem — não é tudo direito. O acionista deve: (1) honrar compromissos de integralização de capital;
               (2) respeitar as normas estatutárias; (3) não exercer voto de forma abusiva (votação que prejudica intencionalmente a empresa); (4) pagar
               taxas/contribuições se exigidas. Especificamente acionistas minoritários têm direito de <strong>aprovação separada</strong> em questões-chave
-              (venda de ativos, mudança de estatuto, dissolução).
-            </p>
-            <p>
-              Neste módulo, você aprenderá a diferença entre direitos e deveres, reconhecer situações de violação de direitos minoritários, dominar os
+              (venda de ativos, mudança de estatuto, dissolução).</p>
+            <p>O direito de fiscalizar a gestão contábil é exercido por meio do Conselho Fiscal e da comissão externa de auditoria de forma independente.</p>
+            <p>Neste módulo, você aprenderá a diferença entre direitos e deveres, reconhecer situações de violação de direitos minoritários, dominar os
               mecanismos de proteção (Conselho Fiscal, Assembleia), e entender como esses direitos funcionam especificamente na Petrobras com base em seu
-              Estatuto Social (que segue Lei 13.303).
-            </p>
-
+              Estatuto Social (que segue Lei 13.303).</p>
+            <p>A Petrobras, como sociedade de economia mista com ações na Bolsa de Valores, atende a rígidos regulamentos da CVM de proteção aos minoritários.</p>
             <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">⚖️ Direitos vs Deveres</p>
+              <span className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">⚖️ Direitos vs Deveres</span>
               <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Direitos:</strong> Voto (ordinárias), Dividendos, Fiscalização, Informação</li>
                 <li>✓ <strong>Deveres:</strong> Integralizar capital, Respeitar estatuto, Não votar abusivamente</li>
                 <li>✓ <strong>Proteção Minoritária:</strong> Votação separada, Conselho Fiscal, Publicidade</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -751,8 +740,7 @@ export default function AulaLei13303(props: AulaProps) {
             title="Análise C.E.D.E. do Acionista"
             description="Explorando a relação capital-estado."
           />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: A Natureza do Investimento",
                 conteudo: (
@@ -879,46 +867,43 @@ export default function AulaLei13303(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={4}
+            index="INTRO"
             title="Estrutura Institucional de Governança"
             description="Assembleia Geral, Conselho de Administração, Diretoria — a hierarquia de poder e responsabilidades."
             variant="amber"
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-            <p>
-              A Lei 13.303 estabelece uma <strong>estrutura de governança de três níveis</strong> para estatais: (1) <strong>Assembleia Geral de Acionistas</strong> —
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A Lei 13.303 estabelece uma <strong>estrutura de governança de três níveis</strong> para estatais: (1) <strong>Assembleia Geral de Acionistas</strong> —
               órgão supremo de decisão (poder legislativo corporativo); (2) <strong>Conselho de Administração</strong> — órgão de controle estratégico (poder executivo + fiscalização);
-              (3) <strong>Diretoria Executiva</strong> — órgão de gestão operacional (poder administrativo). Essa tripartição segue o modelo de "checks and balances": nenhum órgão tem poder absoluto.
-            </p>
-            <p>
-              A <strong>Assembleia Geral</strong> é suprema porque reúne todos os acionistas (ou seus representantes) e aprova: alterações estatutárias, orçamentos anuais,
+              (3) <strong>Diretoria Executiva</strong> — órgão de gestão operacional (poder administrativo). Essa tripartição segue o modelo de "checks and balances": nenhum órgão tem poder absoluto.</p>
+            <p>CESGRANRIO cobra as atribuições dos órgãos de governança das estatais: Assembleia Geral, Conselho de Administração e a Diretoria Executiva formal.</p>
+            <p>A <strong>Assembleia Geral</strong> é suprema porque reúne todos os acionistas (ou seus representantes) e aprova: alterações estatutárias, orçamentos anuais,
               distribuição de lucros, eleição do Conselho, temas estratégicos (venda de ativos, fusões). A Assembleia vota por maioria simples (exceto quando lei exige maioria qualificada).
-              Acionistas minoritários têm direito de votação separada em temas que os prejudicariam (ex.: venda de divisão inteira).
-            </p>
-            <p>
-              O <strong>Conselho de Administração</strong> é a ponte entre acionistas e operação. Eleito pela Assembleia, o Conselho aprova estratégias, supervisiona diretores,
+              Acionistas minoritários têm direito de votação separada em temas que os prejudicariam (ex.: venda de divisão inteira).</p>
+            <p>A governança corporativa exige a segregação de funções entre o Conselho de Administração (estratégico) e a Diretoria Executiva (gestão tática).</p>
+            <p>O <strong>Conselho de Administração</strong> é a ponte entre acionistas e operação. Eleito pela Assembleia, o Conselho aprova estratégias, supervisiona diretores,
               monitora riscos. Na Petrobras, o Conselho é obrigatório (Lei 13.303) e tem entre 5 e 11 membros (depende do estatuto). A maioria deve ser independente (não é executiva).
-              O presidente do Conselho geralmente não é o CEO — essa separação evita concentração de poder.
-            </p>
-            <p>
-              A <strong>Diretoria Executiva</strong> é indicada pelo Conselho e responsável pela operação do dia a dia. O CEO (Presidente Executivo) reporta-se ao Conselho e responde
+              O presidente do Conselho geralmente não é o CEO — essa separação evita concentração de poder.</p>
+            <p>O Comitê de Auditoria Estatutário assessora o conselho na fiscalização preventiva de fraudes e na revisão de relatórios contábeis oficiais.</p>
+            <p>A <strong>Diretoria Executiva</strong> é indicada pelo Conselho e responsável pela operação do dia a dia. O CEO (Presidente Executivo) reporta-se ao Conselho e responde
               pelos resultados operacionais. Diferentemente do Conselho (que é de controle), a Diretoria é de ação. Lei 13.303 exige que Diretores assinem termos de responsabilidade
-              e cumpram regras de conflito de interesse (não podem ter conflitos com a empresa).
-            </p>
-            <p>
-              Neste módulo, você aprenderá a estrutura exata, as competências de cada órgão, a hierarquia de poder, os limites de autoridade, e como esses órgãos funcionam
-              especificamente na Petrobras. Entender governança é entender o organograma do poder corporativo — essencial para qualquer cargo administrativo.
-            </p>
-
+              e cumpram regras de conflito de interesse (não podem ter conflitos com a empresa).</p>
+            <p>A gestão de riscos e controles internos é monitorada por área técnica independente que se reporta diretamente ao comitê consultivo estatutário.</p>
+            <p>Neste módulo, você aprenderá a estrutura exata, as competências de cada órgão, a hierarquia de poder, os limites de autoridade, e como esses órgãos funcionam
+              especificamente na Petrobras. Entender governança é entender o organograma do poder corporativo — essencial para qualquer cargo administrativo.</p>
+            <p>Os conselheiros da Petrobras passam por crivo prévio de indicação técnica que atesta os anos de experiência e a idoneidade profissional.</p>
             <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">🏛️ Três Órgãos — Três Papéis</p>
+              <span className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">🏛️ Três Órgãos — Três Papéis</span>
               <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Assembleia Geral:</strong> Suprema; Aprova estratégia, orçamento, dividendos; Elege Conselho</li>
                 <li>✓ <strong>Conselho Admin:</strong> Controle estratégico; Supervisiona diretores; Maioria independente</li>
                 <li>✓ <strong>Diretoria:</strong> Operação; Reporta ao Conselho; Responsável por resultados</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -966,8 +951,7 @@ export default function AulaLei13303(props: AulaProps) {
             title="Dossiê C.E.D.E. de Órgãos Sociais"
             description="Entenda a intersecção entre os poderes da empresa."
           />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: A Trindade da Governança",
                 conteudo: (
@@ -1095,42 +1079,36 @@ export default function AulaLei13303(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={5}
+            index="INTRO"
             title="Assembleia Geral: Poder Supremo dos Acionistas"
             description="Competências, convocação, quórum, votação — regras do fórum soberano."
             variant="rose"
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-            <p>
-              A <strong>Assembleia Geral de Acionistas</strong> é o órgão supremo de qualquer empresa (Lei 6.404/76 — Lei de S.A.). Na Petrobras (SEM), a Assembleia reúne
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A <strong>Assembleia Geral de Acionistas</strong> é o órgão supremo de qualquer empresa (Lei 6.404/76 — Lei de S.A.). Na Petrobras (SEM), a Assembleia reúne
               todos os acionistas (ou seus procuradores) para deliberar sobre questões estratégicas. Existem dois tipos: (1) <strong>Assembleia Ordinária</strong> — acontece
               obrigatoriamente uma vez por ano (até 4 meses após fim do ano fiscal) para aprovar contas e eleger conselheiros; (2) <strong>Assembleia Extraordinária</strong> —
-              convocada quando há temas urgentes ou que não podem esperar (venda de ativos, fusões, mudança de estatuto).
-            </p>
-            <p>
-              As <strong>competências da Assembleia</strong> (temas que APENAS ela pode decidir) incluem: (1) alterar o estatuto social; (2) eleger/destituir conselheiros;
+              convocada quando há temas urgentes ou que não podem esperar (venda de ativos, fusões, mudança de estatuto).</p>
+            <p>A prova aborda a soberania da Assembleia Geral de Acionistas e suas competências exclusivas de reforma estatutária e destituição de dirigentes.</p>
+            <p>As <strong>competências da Assembleia</strong> (temas que APENAS ela pode decidir) incluem: (1) alterar o estatuto social; (2) eleger/destituir conselheiros;
               (3) aprovar demonstrações contábeis (balanço, DRE, fluxo de caixa); (4) deliberar sobre distribuição de dividendos; (5) autorizar venda de bens do ativo permanente
               (máquinas, prédios); (6) deliberar sobre fusão, cisão ou dissolução; (7) nomear/destituir auditores independentes. Nenhum outro órgão (nem Conselho, nem Diretoria)
-              pode decidir esses temas — são do poder da Assembleia.
-            </p>
-            <p>
-              A <strong>convocação da Assembleia</strong> é feita pelo Conselho de Administração (normalmente). O edital de convocação deve ser publicado em jornal de grande circulação
+              pode decidir esses temas — são do poder da Assembleia.</p>
+            <p>A Assembleia Geral reúne ordinariamente os acionistas uma vez ao ano para julgar as contas dos administradores e aprovar a destinação de dividendos.</p>
+            <p>A <strong>convocação da Assembleia</strong> é feita pelo Conselho de Administração (normalmente). O edital de convocação deve ser publicado em jornal de grande circulação
               e em site da empresa (para Petrobras, site da B3 também). Lei 13.303 exige que minoritários tenham acesso antecipado à documentação (relatórios, contas, propostas).
-              O quórum (número mínimo para iniciar) é de 25% do capital com direito a voto (Lei 6.404). Se não atingir, a Assembleia é adiada por 15 dias e pode acontecer com qualquer número.
-            </p>
-            <p>
-              A <strong>votação em Assembleia</strong> segue princípio de uma ação = um voto (para ordinárias). Ações preferenciais não votam (salvo exceções de não-pagamento de dividendos).
+              O quórum (número mínimo para iniciar) é de 25% do capital com direito a voto (Lei 6.404). Se não atingir, a Assembleia é adiada por 15 dias e pode acontecer com qualquer número.</p>
+            <p>A convocação de assembleias extraordinárias é prerrogativa do conselho ou de acionistas minoritários com percentuais mínimos de ações votantes.</p>
+            <p>A <strong>votação em Assembleia</strong> segue princípio de uma ação = um voto (para ordinárias). Ações preferenciais não votam (salvo exceções de não-pagamento de dividendos).
               Lei 13.303 exige que acionistas minoritários tenham votação <strong>separada e específica</strong> em temas que os prejudicariam (ex.: venda de ativos). Decisões de interesse
-              social requerem maioria simples; decisões de estatuto/dissolução requerem maioria de 2/3. A Lei 13.303 proíbe voto abusivo (votação que prejudica intencionalmente a empresa).
-            </p>
-            <p>
-              Neste módulo, você aprenderá a estrutura de Assembleia, os temas que cabem a ela (vs. Conselho/Diretoria), os direitos de convocação (acionistas com 5%+ podem convocar),
-              a mecânica de quórum e votação, e casos práticos de Assembleia na Petrobras. Será fundamental para entender como decisões estratégicas são tomadas na empresa.
-            </p>
-
+              social requerem maioria simples; decisões de estatuto/dissolução requerem maioria de 2/3. A Lei 13.303 proíbe voto abusivo (votação que prejudica intencionalmente a empresa).</p>
+            <p>As atas das assembleias gerais de sociedades de economia mista devem ser arquivadas no registro público mercantil e publicadas em jornais de grande circulação.</p>
+            <p>Neste módulo, você aprenderá a estrutura de Assembleia, os temas que cabem a ela (vs. Conselho/Diretoria), os direitos de convocação (acionistas com 5%+ podem convocar),
+              a mecânica de quórum e votação, e casos práticos de Assembleia na Petrobras. Será fundamental para entender como decisões estratégicas são tomadas na empresa.</p>
+            <p>A Assembleia Geral de Acionistas da Petrobras decide anualmente a distribuição de resultados e elege representantes do Conselho de Administração.</p>
             <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-rose-600 dark:text-rose-400 text-lg mb-2">📋 Competências da Assembleia (EXCLUSIVAS)</p>
+              <span className="font-bold text-rose-600 dark:text-rose-400 text-lg mb-2">📋 Competências da Assembleia (EXCLUSIVAS)</span>
               <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ Alterar estatuto social</li>
                 <li>✓ Eleger/destituir conselheiros e auditores</li>
@@ -1139,6 +1117,9 @@ export default function AulaLei13303(props: AulaProps) {
                 <li>✓ Deliberar fusão, cisão, dissolução</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -1186,8 +1167,7 @@ export default function AulaLei13303(props: AulaProps) {
             title="Mergulho C.E.D.E."
             description="A dinâmica das deliberações sociais."
           />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: O Ritual Democrático",
                 conteudo: (
@@ -1346,40 +1326,34 @@ export default function AulaLei13303(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={6}
+            index="INTRO"
             title="Conselho de Administração: Estrutura e Competências"
             description="Quem senta na mesa das decisões? Como são escolhidos? Que responsabilidades carregam?"
             variant="cyan"
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-            <p>
-              O <strong>Conselho de Administração</strong> é a "ponte" entre acionistas (via Assembleia) e gerência (Diretoria). Eleito pela Assembleia, o Conselho tem
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O <strong>Conselho de Administração</strong> é a "ponte" entre acionistas (via Assembleia) e gerência (Diretoria). Eleito pela Assembleia, o Conselho tem
               competências de <strong>supervisão estratégica, aprovação de investimentos e monitoramento de riscos</strong>. Na Petrobras, o Conselho é obrigatório (Lei 13.303)
-              e tem entre 7 e 11 membros (sendo pelo menos um representante de empregados e um de acionistas minoritários). Mandatos duram até 2 anos (Lei 13.303).
-            </p>
-            <p>
-              A <strong>composição do Conselho</strong> segue regras rigorosas de Lei 13.303: (1) maioria deve ser <strong>conselheiros independentes</strong> (não são executivos,
+              e tem entre 7 e 11 membros (sendo pelo menos um representante de empregados e um de acionistas minoritários). Mandatos duram até 2 anos (Lei 13.303).</p>
+            <p>Questões sobre o Conselho de Administração focam em sua função de definir diretrizes estratégicas e fiscalizar preventivamente as ações da diretoria.</p>
+            <p>A <strong>composição do Conselho</strong> segue regras rigorosas de Lei 13.303: (1) maioria deve ser <strong>conselheiros independentes</strong> (não são executivos,
               não têm conflitos com empresa); (2) pelo menos um representante de empregados (eleito via voto secreto); (3) pelo menos um representante de acionistas minoritários;
-              (4) todos devem ter reputação ilibada, competência profissional e disponibilidade. Executivos podem estar no Conselho, mas não devem ser maioria.
-            </p>
-            <p>
-              <strong>Competências do Conselho:</strong> (1) aprovar estratégia de longo prazo e planos anuais; (2) aprovar investimentos acima de certo valor;
+              (4) todos devem ter reputação ilibada, competência profissional e disponibilidade. Executivos podem estar no Conselho, mas não devem ser maioria.</p>
+            <p>O Conselho de Administração de estatais deve possuir uma cota mínima de membros independentes qualificados para garantir a isenção de julgamentos.</p>
+            <p><strong>Competências do Conselho:</strong> (1) aprovar estratégia de longo prazo e planos anuais; (2) aprovar investimentos acima de certo valor;
               (3) nomear/destituir Diretores-Executivos; (4) fiscalizar Diretoria (auditar, questionar, pedir explicações); (5) avaliar risco de corrupção, fraude, conflito de interesse;
-              (6) aprovar políticas de compliance, remuneração executiva, relacionamento com stakeholders. O Conselho também ratifica decisões que afetam acionistas minoritários.
-            </p>
-            <p>
-              <strong>Vedações e Incompatibilidades:</strong> Lei 13.303 proíbe conselheiros de: (1) ser fornecedor/cliente da empresa (conflito); (2) exercer cargos em concorrentes;
+              (6) aprovar políticas de compliance, remuneração executiva, relacionamento com stakeholders. O Conselho também ratifica decisões que afetam acionistas minoritários.</p>
+            <p>O Conselho de Administração aprova orçamentos corporativos e marcos de investimentos anuais de exploração petrolífera estratégica.</p>
+            <p><strong>Vedações e Incompatibilidades:</strong> Lei 13.303 proíbe conselheiros de: (1) ser fornecedor/cliente da empresa (conflito); (2) exercer cargos em concorrentes;
               (3) ter condenação criminal (reputação); (4) ter interesse pecuniário em decisões (conflito). Essas restrições existem para evitar que conselheiros usem a posição para
-              benefício próprio em detrimento da empresa. Violações de vedações podem levar a responsabilização civil/criminal.
-            </p>
-            <p>
-              Neste módulo, você aprenderá a estrutura exata do Conselho da Petrobras, o processo de eleição, as vedações legais, as responsabilidades dos conselheiros,
-              e como o Conselho funciona na prática (reuniões, aprovações, documentação). Essencial para entender o controle corporativo em empresas estatais.
-            </p>
-
+              benefício próprio em detrimento da empresa. Violações de vedações podem levar a responsabilização civil/criminal.</p>
+            <p>A lei veda a nomeação para o conselho de dirigentes sindicais, ocupantes de cargos políticos ou pessoas com conflito de interesses mercantis.</p>
+            <p>Neste módulo, você aprenderá a estrutura exata do Conselho da Petrobras, o processo de eleição, as vedações legais, as responsabilidades dos conselheiros,
+              e como o Conselho funciona na prática (reuniões, aprovações, documentação). Essencial para entender o controle corporativo em empresas estatais.</p>
+            <p>O Conselho de Administração da Petrobras orienta o plano de negócios e zela pela conformidade técnica de investimentos no refino.</p>
             <div className="bg-cyan-500/10 border-l-4 border-cyan-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">📊 Conselho de Administração (Lei 13.303)</p>
+              <span className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">📊 Conselho de Administração (Lei 13.303)</span>
               <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Tamanho:</strong> 7-11 membros; Maioria independentes</li>
                 <li>✓ <strong>Representação:</strong> 1+ empregado; 1+ minoritário</li>
@@ -1388,6 +1362,9 @@ export default function AulaLei13303(props: AulaProps) {
                 <li>✓ <strong>Vedações:</strong> Conflito de interesse, fornecimento, condenação criminal</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -1435,8 +1412,7 @@ export default function AulaLei13303(props: AulaProps) {
             title="Trilha C.E.D.E. de Gestão"
             description="Requisitos técnicos e vedações políticas."
           />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: A Blindagem Política",
                 conteudo: (
@@ -1577,40 +1553,34 @@ export default function AulaLei13303(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={7}
+            index="INTRO"
             title="Diretoria Executiva e Conselho Fiscal"
             description="Quem executa? Quem fiscaliza? Separação clara de responsabilidades."
             variant="cyan"
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-            <p>
-              A <strong>Diretoria Executiva (ou Diretoria)</strong> é responsável pela <strong>gestão operacional</strong> da Petrobras. Indicada pelo Conselho de Administração,
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A <strong>Diretoria Executiva (ou Diretoria)</strong> é responsável pela <strong>gestão operacional</strong> da Petrobras. Indicada pelo Conselho de Administração,
               a Diretoria implementa as estratégias aprovadas pelo Conselho, toma decisões do dia a dia, e reporta-se ao Conselho regularmente. Na Petrobras, a Diretoria é colegiada
-              (múltiplos diretores) e é liderada pelo CEO/Presidente Executivo, que responde pessoalmente perante o Conselho pelos resultados e conformidade.
-            </p>
-            <p>
-              Os <strong>Diretores</strong> Lei 13.303 definem como pessoas responsáveis pela representação legal e gestão. Devem ter: (1) reputação ilibada; (2) conhecimento
+              (múltiplos diretores) e é liderada pelo CEO/Presidente Executivo, que responde pessoalmente perante o Conselho pelos resultados e conformidade.</p>
+            <p>A banca exige diferenciar a Diretoria Executiva (órgão de representação ativa) do Conselho Fiscal (órgão fiscalizador permanente de contas).</p>
+            <p>Os <strong>Diretores</strong> Lei 13.303 definem como pessoas responsáveis pela representação legal e gestão. Devem ter: (1) reputação ilibada; (2) conhecimento
               específico na área (para diretor de operações, Petróleo; para diretor de finanças, Contabilidade); (3) disponibilidade para o cargo. Diretores assinam <strong>Termo de
-              Responsabilidade</strong> confirmando que conhecem Lei 13.303, regras de compliance, conflito de interesse. Violações podem levar a responsabilidade civil/criminal.
-            </p>
-            <p>
-              O <strong>Conselho Fiscal</strong> é órgão <strong>obrigatório e permanente</strong> em estatais abertas (Petrobras). Diferente do Conselho de Administração (que é
+              Responsabilidade</strong> confirmando que conhecem Lei 13.303, regras de compliance, conflito de interesse. Violações podem levar a responsabilidade civil/criminal.</p>
+            <p>A Diretoria Executiva executa a gestão diária dos negócios sob a liderança do Presidente, prestando contas de metas de desempenho ao conselho.</p>
+            <p>O <strong>Conselho Fiscal</strong> é órgão <strong>obrigatório e permanente</strong> em estatais abertas (Petrobras). Diferente do Conselho de Administração (que é
               estratégico), o Fiscal é <strong>especializad em auditoria e conformidade financeira</strong>. Tem 3 a 5 membros, todos independentes (não podem ser administradores há 3 anos).
-              A Lei 13.303 exigiu a criação desse órgão para aumentar transparência financeira em estatais.
-            </p>
-            <p>
-              As <strong>competências do Conselho Fiscal</strong> são: (1) examinar livros e registros contábeis; (2) verificar funcionamento de controles internos;
+              A Lei 13.303 exigiu a criação desse órgão para aumentar transparência financeira em estatais.</p>
+            <p>O Conselho Fiscal avalia trimestralmente os balancetes contábeis e emite parecer técnico formal a ser submetido à Assembleia de Acionistas.</p>
+            <p>As <strong>competências do Conselho Fiscal</strong> são: (1) examinar livros e registros contábeis; (2) verificar funcionamento de controles internos;
               (3) acompanhar auditoria independente; (4) opinião sobre relatórios financeiros; (5) denunciar fraude/irregularidade (obrigação legal). O Conselho Fiscal tem direito de
-              acesso irrestrito a documentos, contatos com auditores, e participação em Assembleia (apenas para informar/responder, sem voto).
-            </p>
-            <p>
-              Neste módulo, você aprenderá a diferença crucial: Diretoria EXECUTA, Conselho Fiscal FISCALIZA. Essa separação (system of checks and balances) evita que executivos
-              façam fraude sem supervisão. Você entenderá as responsabilidades de cada um, obrigações legais, e como funcionam na prática na Petrobras.
-            </p>
-
+              acesso irrestrito a documentos, contatos com auditores, e participação em Assembleia (apenas para informar/responder, sem voto).</p>
+            <p>Os membros da Diretoria Executiva respondem pessoalmente por atos praticados com manifesto abuso de poder ou violação direta de estatuto de lei.</p>
+            <p>Neste módulo, você aprenderá a diferença crucial: Diretoria EXECUTA, Conselho Fiscal FISCALIZA. Essa separação (system of checks and balances) evita que executivos
+              façam fraude sem supervisão. Você entenderá as responsabilidades de cada um, obrigações legais, e como funcionam na prática na Petrobras.</p>
+            <p>A Diretoria Executiva da Petrobras lidera a implementação operacional do plano estratégico de sustentabilidade e refino em território nacional.</p>
             <div className="bg-cyan-500/10 border-l-4 border-cyan-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">⚖️ Diretoria vs Conselho Fiscal</p>
+              <span className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">⚖️ Diretoria vs Conselho Fiscal</span>
               <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Diretoria:</strong> Executa, implementa estratégia, toma decisões operacionais</li>
                 <li>✓ <strong>Conselho Fiscal:</strong> Fiscaliza, examina contas, denúncia fraude, obrigatório em estatais</li>
@@ -1618,6 +1588,9 @@ export default function AulaLei13303(props: AulaProps) {
                 <li>✓ <strong>Responsabilidade:</strong> Diretores assinam Termo de Responsabilidade (Lei 13.303)</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -1665,8 +1638,7 @@ export default function AulaLei13303(props: AulaProps) {
             title="Dossiê Técnico C.E.D.E."
             description="Prazos, mandatos e vedações operacionais."
           />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: A Diretoria Colegiada",
                 conteudo: (
@@ -1785,40 +1757,34 @@ export default function AulaLei13303(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={8}
+            index="INTRO"
             title="Conflito de Interesses na Lei 13.303"
             description="Impedimentos, vedações e punições para proteger a integridade corporativa."
             variant="emerald"
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-            <p>
-              <strong>Conflito de interesse</strong> é quando um administrador (conselheiro, diretor) tem interesse pessoal que entra em choque com o interesse da empresa.
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p><strong>Conflito de interesse</strong> é quando um administrador (conselheiro, diretor) tem interesse pessoal que entra em choque com o interesse da empresa.
               Exemplo: um Conselheiro que é sócio de uma fornecedora da Petrobras tem conflito ao votar sobre contratar essa fornecedora. Lei 13.303 proíbe essa situação porque
-              o conselheiro tenderia a votar a favor da fornecedora (benefício pessoal) e não pelo melhor para a Petrobras (melhor preço, qualidade).
-            </p>
-            <p>
-              Lei 13.303 define <strong>impedimentos específicos</strong>: administrador NÃO PODE: (1) participar de deliberação onde tenha interesse pessoal (direto ou indireto);
+              o conselheiro tenderia a votar a favor da fornecedora (benefício pessoal) e não pelo melhor para a Petrobras (melhor preço, qualidade).</p>
+            <p>Provas abordam a prevenção do conflito de interesses na indicação de administradores públicos e as restrições da Lei das Estatais.</p>
+            <p>Lei 13.303 define <strong>impedimentos específicos</strong>: administrador NÃO PODE: (1) participar de deliberação onde tenha interesse pessoal (direto ou indireto);
               (2) usar informação privilegiada para ganho pessoal ou de terceiros (insider trading); (3) aproveitar oportunidade de negócio que conhece pelo cargo; (4) receber
-              vantagem de terceiros para favorecer; (5) ter relacionamento de sócios/parentes com fornecedores sem divulgar. Essas proibições protegem a empresa de fraude.
-            </p>
-            <p>
-              O <strong>procedimento correto</strong> é: (1) administrador identifica conflito; (2) divulga para Conselho/Diretoria ("tenho conflito neste assunto"); (3) retira-se da sala
+              vantagem de terceiros para favorecer; (5) ter relacionamento de sócios/parentes com fornecedores sem divulgar. Essas proibições protegem a empresa de fraude.</p>
+            <p>O conflito de interesses materializa-se quando o dirigente possui relações comerciais, familiares ou associativas com licitantes da companhia.</p>
+            <p>O <strong>procedimento correto</strong> é: (1) administrador identifica conflito; (2) divulga para Conselho/Diretoria ("tenho conflito neste assunto"); (3) retira-se da sala
               e não participa nem influencia a deliberação; (4) fato consta na Ata da reunião. A Lei 13.303 exige que a divulgação e recusa de voto conste em registro formal — não é
-              opcional, é obrigação legal.
-            </p>
-            <p>
-              <strong>Punições por violação:</strong> Lei 13.303 estabelece responsabilidades civil e administrativa. Administrador que viola pode ser: (1) responsabilizado por perdas
+              opcional, é obrigação legal.</p>
+            <p>A exigência de quarentena impede que ex-ministros ou ocupantes de cargos em partidos políticos assumam diretorias de estatais de forma imediata.</p>
+            <p><strong>Punições por violação:</strong> Lei 13.303 estabelece responsabilidades civil e administrativa. Administrador que viola pode ser: (1) responsabilizado por perdas
               e danos causados à empresa; (2) obrigado a devolver vantagem recebida indevidamente; (3) destituído do cargo (removido); (4) preso (em casos de fraude/peculato).
-              A CVM (Comissão de Valores Mobiliários) fiscaliza rigorosamente conflitos em estatais abertas como Petrobras.
-            </p>
-            <p>
-              Neste módulo, você aprenderá a identificar conflitos de interesse em cenários práticos, entender o procedimento correto de divulgação, reconhecer violações comuns,
-              e dominar a jurisprudência de Lei 13.303 sobre conflito. Essencial para qualquer cargo de governança ou supervisão.
-            </p>
-
+              A CVM (Comissão de Valores Mobiliários) fiscaliza rigorosamente conflitos em estatais abertas como Petrobras.</p>
+            <p>O comitê de elegibilidade interno verifica a conformidade jurídica dos currículos de todos os candidatos indicados para cargos de liderança.</p>
+            <p>Neste módulo, você aprenderá a identificar conflitos de interesse em cenários práticos, entender o procedimento correto de divulgação, reconhecer violações comuns,
+              e dominar a jurisprudência de Lei 13.303 sobre conflito. Essencial para qualquer cargo de governança ou supervisão.</p>
+            <p>Na Petrobras, conselheiros e diretores assinam termo de confidencialidade e declarações anuais de não-conflito para garantir impessoalidade.</p>
             <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">⚠️ Impedimentos Lei 13.303</p>
+              <span className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">⚠️ Impedimentos Lei 13.303</span>
               <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ Participar deliberação com interesse pessoal conflitante</li>
                 <li>✓ Usar informação privilegiada (insider trading)</li>
@@ -1828,6 +1794,9 @@ export default function AulaLei13303(props: AulaProps) {
                 <li>✓ <strong>Punição:</strong> Responsabilidade civil, destituição, prisão (fraude)</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -1875,8 +1844,7 @@ export default function AulaLei13303(props: AulaProps) {
             title="Exame C.E.D.E. de Integridade"
             description="Transparência e reporte de conflitos."
           />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: O Dever de Lealdade",
                 conteudo: (
@@ -1998,40 +1966,34 @@ export default function AulaLei13303(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={9}
+            index="INTRO"
             title="Aplicação Prática na Petrobras"
             description="Da lei para a realidade corporativa: como Lei 13.303 funciona no dia a dia da maior empresa brasileira."
             variant="emerald"
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-            <p>
-              A Petrobras é a <strong>maior empresa brasileira e uma das maiores do mundo</strong> em capitalização. Como Sociedade de Economia Mista federal, ela está 100% submetida
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A Petrobras é a <strong>maior empresa brasileira e uma das maiores do mundo</strong> em capitalização. Como Sociedade de Economia Mista federal, ela está 100% submetida
               à Lei 13.303. Seu <strong>Estatuto Social</strong> (documento máster de governança) incorpora todas as exigências da lei e as detalha em 10 artigos específicos. Entender
-              Lei 13.303 é entender o funcionamento real da Petrobras.
-            </p>
-            <p>
-              A <strong>estrutura de governança da Petrobras</strong> segue Lei 13.303: (1) Assembleia Geral (acionistas) — acontece anualmente em maio para aprovar contas e eleger
+              Lei 13.303 é entender o funcionamento real da Petrobras.</p>
+            <p>Questões sobre a Petrobras focam no seu modelo de integridade corporativa pós-Lei das Estatais e na fiscalização exercida pelo TCU.</p>
+            <p>A <strong>estrutura de governança da Petrobras</strong> segue Lei 13.303: (1) Assembleia Geral (acionistas) — acontece anualmente em maio para aprovar contas e eleger
               Conselho; (2) Conselho de Administração — 9 membros (incluindo 1 representante de empregados, 1 de minoritários, 1 presidente independente); (3) Diretoria Executiva —
-              5 diretores+ CEO, todos indicados pelo Conselho; (4) Conselho Fiscal — 3-5 auditores permanentes. Essa estrutura garante controle e transparência.
-            </p>
-            <p>
-              A Petrobras mantém <strong>Comitês de Apoio</strong> ao Conselho: Auditoria (supervisor de riscos financeiros), Gestão de Pessoas (remuneração/compliance), Estratégia
+              5 diretores+ CEO, todos indicados pelo Conselho; (4) Conselho Fiscal — 3-5 auditores permanentes. Essa estrutura garante controle e transparência.</p>
+            <p>A governança da Petrobras integra canais de denúncia externos e independentes com investigações internas corporativas rápidas de SMS.</p>
+            <p>A Petrobras mantém <strong>Comitês de Apoio</strong> ao Conselho: Auditoria (supervisor de riscos financeiros), Gestão de Pessoas (remuneração/compliance), Estratégia
               (planos de longo prazo), Finanças (orçamento anual). Esses comitês ajudam o Conselho a direcionar a empresa complexa (centenas de plataformas, refinarias, terminais globais).
-              Lei 13.303 não exige Comitês explicitamente, mas empresas grandes como Petrobras os criam para eficiência.
-            </p>
-            <p>
-              Um ponto crítico é o <strong>Programa Petrobras Integra</strong> — programa de compliance (conformidade com leis). Lei 13.303 exige que estatais tenham canais de denúncia,
+              Lei 13.303 não exige Comitês explicitamente, mas empresas grandes como Petrobras os criam para eficiência.</p>
+            <p>A comissão de integridade avalia preventivamente todas as propostas comerciais de fornecimento estratégico para afastar riscos legais.</p>
+            <p>Um ponto crítico é o <strong>Programa Petrobras Integra</strong> — programa de compliance (conformidade com leis). Lei 13.303 exige que estatais tenham canais de denúncia,
               treinamento anticorrupção, investigação de irregularidades. Petrobras Integra é um dos mais robustos do mundo: denúncias anônimas, investigação independente, proteção ao denunciante,
-              relatório público anual. Isso protege a empresa de fraude e atrai investidores (confiança).
-            </p>
-            <p>
-              Neste módulo, você estudará o Estatuto Social real da Petrobras, casos de controversias (conflito de interesse, voto de acionista minoritário, indicação de conselheiro),
-              decisões reais de Assembleia e Conselho, e como Lei 13.303 funciona na prática. Será essencial para responder questões CESGRANRIO que citam contextos da Petrobras.
-            </p>
-
+              relatório público anual. Isso protege a empresa de fraude e atrai investidores (confiança).</p>
+            <p>O plano de integridade da estatal monitora a transparência em licitações e atesta a conformidade das contratações de engenharia submarina.</p>
+            <p>Neste módulo, você estudará o Estatuto Social real da Petrobras, casos de controversias (conflito de interesse, voto de acionista minoritário, indicação de conselheiro),
+              decisões reais de Assembleia e Conselho, e como Lei 13.303 funciona na prática. Será essencial para responder questões CESGRANRIO que citam contextos da Petrobras.</p>
+            <p>A Petrobras divulga relatórios periódicos de sustentabilidade e governança para manter acionistas minoritários e o TCU informados de seus riscos.</p>
             <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-              <p className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">🏢 Petrobras: Modelo de Lei 13.303</p>
+              <span className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">🏢 Petrobras: Modelo de Lei 13.303</span>
               <ul className="text-lg space-y-1 text-foreground">
                 <li>✓ <strong>Assembleia Geral:</strong> Maio, aprova contas e elege Conselho</li>
                 <li>✓ <strong>Conselho Admin:</strong> 9 membros; presidente independente; representantes empregados/minoritários</li>
@@ -2040,6 +2002,9 @@ export default function AulaLei13303(props: AulaProps) {
                 <li>✓ <strong>Programa Integra:</strong> Compliance, denúncias anônimas, investigação independente</li>
               </ul>
             </div>
+          
+          
+          
           </div>
         </section>
 
@@ -2087,8 +2052,7 @@ export default function AulaLei13303(props: AulaProps) {
             title="Dossiê Petrobras C.E.D.E."
             description="A realidade operacional da governança."
           />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: O Acionista União",
                 conteudo: (
@@ -2240,13 +2204,13 @@ export default function AulaLei13303(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
-            index={10}
+            index="INTRO"
             title="Simulado Geral: Lei 13.303 Integrada"
             description="Consolidação de todos os 9 módulos em questões CESGRANRIO autênticas."
             variant="amber"
           />
 
-          <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
               Você completou 9 módulos de Lei 13.303: conceitos fundamentais, empresa estatal, direitos de acionista, órgãos de governança, assembleia, conselho de administração,
               diretoria/fiscal, conflito de interesse, e aplicação na Petrobras. Agora é hora de <strong>consolidar tudo</strong> em um <strong>Simulado Geral</strong> que reflete

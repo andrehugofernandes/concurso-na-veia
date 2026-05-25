@@ -1,0 +1,8 @@
+{
+  "Description": "\"Corrigir a prop description da ModuleSectionHeader e remover o trecho solto na linha 233.\"",
+  "Instruction": "\"1. Restaurar a description da ModuleSectionHeader. 2. Remover a linha solta com texto corrupte.\"",
+  "ReplacementChunks": "[{\"AllowMultiple\":false,\"EndLine\":202,\"ReplacementContent\":\"              description=\\\"Os conceitos fundamentais que sustentam toda a prática administrativa moderna.\\\"\\n            />\",\"StartLine\":202,\"TargetContent\":\"              description=\\\"Os conceitos fundamentais que sustentam toda a prática adminis        <div className=\\\"space-y-6 text-lg text-justify text-foreground/85 leading-relaxed\\\">\"},{\"AllowMultiple\":false,\"EndLine\":235,\"ReplacementContent\":\"          </div>\",\"StartLine\":233,\"TargetContent\":\"        </div>a Petrobras e o estilo de cobrança da CESGRANRIO é sua vantagem competitiva.</p>\\n          </div>\\n        </div>\"}]",
+  "TargetFile": "\"c:\\\\Workspace\\\\petrobras-quest\\\\src\\\\components\\\\aulas\\\\administracao\\\\AulaAdministracaoGeralSuprimento.tsx\"",
+  "toolAction": "\"Fixing corrupt lines\"",
+  "toolSummary": "\"Fix corrupt lines\""
+}

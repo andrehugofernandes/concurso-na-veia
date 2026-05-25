@@ -1,0 +1,25 @@
+import os
+
+files = [
+    "AulaGestaoQualidadeSuprimento.tsx",
+    "AulaLogisticaSuprimento.tsx",
+    "AulaComprasSuprimento.tsx",
+    "AulaLei13303.tsx",
+    "AulaRLCP.tsx",
+    "AulaAdministrativoTributario.tsx",
+    "AulaContabilidadeBasica.tsx",
+    "AulaDireitoTributario.tsx",
+    "AulaAdministracaoTributaria.tsx"
+]
+
+dir_path = "src/components/aulas/administracao"
+
+for f_name in files:
+    f_path = os.path.join(dir_path, f_name)
+    if not os.path.exists(f_path):
+        continue
+    with open(f_path, "r", encoding="utf-8") as f:
+        content = f.read()
+    
+    uses_helpers = "renderModulo1" in content or "renderModulo9" in content
+    print(f"{f_name:<35} | Uses renderModulo helper: {uses_helpers}")

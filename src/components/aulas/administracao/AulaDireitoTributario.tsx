@@ -128,25 +128,19 @@ export default function AulaDireitoTributario(props: AulaProps) {
           variant={getModuleVariant(1)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-          <p>
-            O <strong>Direito Tributário</strong> é um ramo do direito público que regula a relação jurídica entre o Estado (fisco) e o cidadão (contribuinte) no tocante à arrecadação de tributos. Diferentemente do direito privado, que busca equilíbrio entre partes iguais, o direito tributário existe numa relação desigual: o Estado tem autoridade para cobrar, e o contribuinte tem obrigação de pagar. Mas essa desigualdade não é arbitrária — ela é limitada por princípios constitucionais rigorosos que protegem os direitos do cidadão contra abuso estatal.
-          </p>
-          <p>
-            Por que estudamos Direito Tributário? Porque todo movimento de dinheiro numa empresa gera consequências tributárias. Quando você vende um produto, há imposto. Quando paga funcionário, há contribuições sociais. Como técnico em suprimento de Petrobras, você contratará serviços, negociará preços e precisará entender o impacto fiscal dessas decisões. A ignorância tributária custa milhões às empresas e pode resultar em multas severas ao responsável pela operação.
-          </p>
-          <p>
-            A base legal brasileira é o <strong>Código Tributário Nacional (CTN)</strong>, Lei 5.172 de 1966. O CTN é a lei fundamental que define o que é tributo, como surge a obrigação tributária, quem pode cobrar, e quais são os direitos e deveres de contribuintes e Estado. Toda lei tributária posterior (IRPJ, ICMS, COFINS, etc.) está subordinada aos princípios do CTN. Conhecer o CTN é fundamental porque qualquer violação a seus princípios torna a lei tributária inconstitucional.
-          </p>
-          <p>
-            A Constituição Federal de 1988 estabelece <strong>princípios tributários intocáveis</strong>: (1) Legalidade — imposto só é cobrado se uma lei específica autoriza; (2) Irretroatividade — não se cobra imposto com efeito para trás; (3) Igualdade — situações iguais recebem tratamento igual; (4) Capacidade Contributiva — imposto respeita a capacidade de pagar do cidadão; (5) Segurança Jurídica — regras são claras e previsíveis. Esses princípios são a defesa legal do contribuinte contra abusos.
-          </p>
-          <p>
-            Neste módulo, você aprenderá a estrutura fundamental: conceito de tributo (que não inclui multas ou taxas de serviço específico), diferença entre impostos/taxas/contribuições, e como a obrigação tributária nasce quando um fato previsto em lei ocorre. Você entenderá também o papel do CTN e como princípios constitucionais limitam o poder de tributar, criando equilíbrio entre interesse público (arrecadação) e direitos individuais (proteção do patrimônio).
-          </p>
-
-          <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-rose-600 dark:text-rose-400 text-lg mb-2">⚖️ Pilares Fundamentais</p>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O <strong>Direito Tributário</strong> é um ramo do direito público que regula a relação jurídica entre o Estado (fisco) e o cidadão (contribuinte) no tocante à arrecadação de tributos. Diferentemente do direito privado, que busca equilíbrio entre partes iguais, o direito tributário existe numa relação desigual: o Estado tem autoridade para cobrar, e o contribuinte tem obrigação de pagar. Mas essa desigualdade não é arbitrária — ela é limitada por princípios constitucionais rigorosos que protegem os direitos do cidadão contra abuso estatal.</p>
+            <p>CESGRANRIO exige o entendimento dos limites constitucionais do poder de tributar e os princípios gerais do Direito Tributário Nacional.</p>
+            <p>Por que estudamos Direito Tributário? Porque todo movimento de dinheiro numa empresa gera consequências tributárias. Quando você vende um produto, há imposto. Quando paga funcionário, há contribuições sociais. Como técnico em suprimento de Petrobras, você contratará serviços, negociará preços e precisará entender o impacto fiscal dessas decisões. A ignorância tributária custa milhões às empresas e pode resultar em multas severas ao responsável pela operação.</p>
+            <p>A relação jurídica tributária vincula o sujeito ativo (entes estatais cobradores) ao sujeito passivo (contribuintes e responsáveis tributários).</p>
+            <p>A base legal brasileira é o <strong>Código Tributário Nacional (CTN)</strong>, Lei 5.172 de 1966. O CTN é a lei fundamental que define o que é tributo, como surge a obrigação tributária, quem pode cobrar, e quais são os direitos e deveres de contribuintes e Estado. Toda lei tributária posterior (IRPJ, ICMS, COFINS, etc.) está subordinada aos princípios do CTN. Conhecer o CTN é fundamental porque qualquer violação a seus princípios torna a lei tributária inconstitucional.</p>
+            <p>O princípio da legalidade estrita veda a instituição ou o aumento de qualquer modalidade de tributo sem lei formal prévia autorizativa.</p>
+            <p>A Constituição Federal de 1988 estabelece <strong>princípios tributários intocáveis</strong>: (1) Legalidade — imposto só é cobrado se uma lei específica autoriza; (2) Irretroatividade — não se cobra imposto com efeito para trás; (3) Igualdade — situações iguais recebem tratamento igual; (4) Capacidade Contributiva — imposto respeita a capacidade de pagar do cidadão; (5) Segurança Jurídica — regras são claras e previsíveis. Esses princípios são a defesa legal do contribuinte contra abusos.</p>
+            <p>O princípio da anterioridade anual e nonagesimal resguarda a segurança jurídica ao impedir a cobrança imediata de novos impostos instituídos.</p>
+            <p>Neste módulo, você aprenderá a estrutura fundamental: conceito de tributo (que não inclui multas ou taxas de serviço específico), diferença entre impostos/taxas/contribuições, e como a obrigação tributária nasce quando um fato previsto em lei ocorre. Você entenderá também o papel do CTN e como princípios constitucionais limitam o poder de tributar, criando equilíbrio entre interesse público (arrecadação) e direitos individuais (proteção do patrimônio).</p>
+            <p>A diretoria jurídica da Petrobras analisa preventivamente a constitucionalidade de novas leis estaduais que busquem tributar extrações.</p>
+            <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
+            <span className="font-bold text-rose-600 dark:text-rose-400 text-lg mb-2">⚖️ Pilares Fundamentais</span>
             <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Tributo é receita pública derivada (compulsória, por lei, não retributiva)</li>
               <li>✓ CTN é a lei geral, fonte de todos os princípios tributários</li>
@@ -155,7 +149,9 @@ export default function AulaDireitoTributario(props: AulaProps) {
               <li>✓ Contribuinte é quem sofre o fato gerador; fisco é quem cobra</li>
             </ul>
           </div>
-        </div>
+        
+          
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -171,8 +167,8 @@ export default function AulaDireitoTributario(props: AulaProps) {
           tituloAula: "Direito Tributário",
           materia: "Administração",
           images: [
-            { title: "Hierarquia Legal", type: "Diagrama", placeholderColor: "bg-indigo-500/20" },
-            { title: "Entes Federativos", type: "Mapa Mental", placeholderColor: "bg-indigo-500/20" },
+            { title: "Hierarquia Legal", type: "Diagrama", placeholderColor: "bg-cyan-500/20" },
+            { title: "Entes Federativos", type: "Mapa Mental", placeholderColor: "bg-cyan-500/20" },
           ],
         }}
         sinteseEstrategica={{
@@ -185,7 +181,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
           artista: "Prof. Direito"
         }}
       />
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         titulo="📖 Explicação Detalhada"
         icone="⚖️"
         slides={[
@@ -212,17 +208,17 @@ export default function AulaDireitoTributario(props: AulaProps) {
             {
               title: "IPVA Petrobras",
               descricao: "A frota de veículos da Petrobras paga IPVA para os Estados onde estão licenciados, exemplificando a competência estadual.",
-              corFundo: "bg-indigo-100 dark:bg-indigo-900/30"
+              corFundo: "bg-cyan-100 dark:bg-cyan-900/30"
             },
             {
               title: "Taxas de Fiscalização",
               descricao: "A ANP cobra taxas de fiscalização para monitorar as atividades de exploração e produção de petróleo.",
-              corFundo: "bg-indigo-100 dark:bg-indigo-900/30"
+              corFundo: "bg-cyan-100 dark:bg-cyan-900/30"
             },
             {
               title: "Contribuições Sociais",
               descricao: "A Petrobras, como empregadora, é um dos maiores contribuintes da Seguridade Social no Brasil.",
-              corFundo: "bg-indigo-100 dark:bg-indigo-900/30"
+              corFundo: "bg-cyan-100 dark:bg-cyan-900/30"
             }
           ]}
         />
@@ -248,20 +244,25 @@ export default function AulaDireitoTributario(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={2}
+          index="INTRO"
           title="IRPJ, CSLL e Impostos de Comércio Exterior"
           description="Os tributos que incidem diretamente sobre o lucro e as operações internacionais."
           variant={getModuleVariant(2)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-          <p>
-            A União detém a competência para os impostos que mais pesam no caixa das grandes corporações. O <strong>Imposto de Renda Pessoa Jurídica (IRPJ)</strong> e a <strong>Contribuição Social sobre o Lucro Líquido (CSLL)</strong> incidem sobre o resultado financeiro positivo da empresa. Para a Petrobras, que opera com bilhões em lucro, o planejamento tributário correto nessas áreas é vital para a sustentabilidade do negócio.
-          </p>
-          <p>
-            Além do lucro, a União tributa o comércio internacional. O <strong>Imposto de Importação (II)</strong> incide quando a Petrobras traz tecnologia ou equipamentos do exterior. Já o <strong>Imposto sobre Exportação (IE)</strong> pode incidir na saída de petróleo bruto, dependendo das políticas de mercado do governo federal. Esses tributos são extrafiscais, ou seja, servem mais para regular a economia do que propriamente para arrecadar dinheiro.
-          </p>
-        </div>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A União detém a competência para os impostos que mais pesam no caixa das grandes corporações. O <strong>Imposto de Renda Pessoa Jurídica (IRPJ)</strong> e a <strong>Contribuição Social sobre o Lucro Líquido (CSLL)</strong> incidem sobre o resultado financeiro positivo da empresa. Para a Petrobras, que opera com bilhões em lucro, o planejamento tributário correto nessas áreas é vital para a sustentabilidade do negócio.</p>
+            <p>A banca exige discernimento de impostos federais da União. Lembre-se: imposto de importação (II) e exportação (IE) regulam o comércio externo.</p>
+            <p>Além do lucro, a União tributa o comércio internacional. O <strong>Imposto de Importação (II)</strong> incide quando a Petrobras traz tecnologia ou equipamentos do exterior. Já o <strong>Imposto sobre Exportação (IE)</strong> pode incidir na saída de petróleo bruto, dependendo das políticas de mercado do governo federal. Esses tributos são extrafiscais, ou seja, servem mais para regular a economia do que propriamente para arrecadar dinheiro.</p>
+            <p>O Imposto sobre Operações Financeiras (IOF) incide sobre transações de crédito, câmbio e seguros, operando como termômetro de liquidez.</p>
+            <p>O princípio da legalidade tributária exige que todo tributo seja criado ou majorado exclusivamente por lei formal, vedando a delegação dessa competência ao Executivo.</p>
+            <p>O Imposto de Renda Pessoa Jurídica (IRPJ) e a Contribuição Social (CSLL) incidem diretamente sobre a renda líquida e o lucro obtido.</p>
+            <p>A irretroatividade tributária protege o contribuinte ao proibir a cobrança de tributos sobre fatos geradores anteriores à vigência da lei que os instituiu.</p>
+            <p>A alíquota regressiva e progressiva é aplicada em impostos diretos federais para atender ao princípio constitucional da capacidade contributiva.</p>
+            <p>O princípio da anterioridade anual garante que o tributo criado em determinado exercício só possa ser cobrado a partir do exercício fiscal subsequente completo.</p>
+            <p>O Repetro simplifica o recolhimento de tributos federais incidentes sobre importação temporária de plataformas de perfuração da Petrobras.</p>
+            
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -277,8 +278,8 @@ export default function AulaDireitoTributario(props: AulaProps) {
           tituloAula: "Direito Tributário",
           materia: "Administração",
           images: [
-            { title: "Impostos sobre Lucro", type: "Tabela", placeholderColor: "bg-indigo-500/20" },
-            { title: "Comércio Exterior", type: "Fluxograma", placeholderColor: "bg-indigo-500/20" },
+            { title: "Impostos sobre Lucro", type: "Tabela", placeholderColor: "bg-cyan-500/20" },
+            { title: "Comércio Exterior", type: "Fluxograma", placeholderColor: "bg-cyan-500/20" },
           ],
         }}
         sinteseEstrategica={{
@@ -292,7 +293,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
         }}
       />
 
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         titulo="Detalhamento Técnico"
         slides={[
           {
@@ -316,7 +317,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
           {
             title: "Exportação de Óleo",
             descricao: "A Petrobras monitora as alíquotas de IE na venda de barris para o mercado chinês.",
-            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+            corFundo: "bg-teal-100 dark:bg-teal-900/30"
           },
           {
             title: "Lucro da Holding",
@@ -347,20 +348,25 @@ export default function AulaDireitoTributario(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={3}
+          index="INTRO"
           title="ICMS, ISS e Contribuições incidentes"
           description="A tributação indireta que afeta a circulação de bens e serviços."
           variant={getModuleVariant(3)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-          <p>
-            Os <strong>tributos sobre consumo</strong> são aqueles que incidem sobre a circulação de mercadorias e a prestação de serviços. São chamados "indiretos" porque o fabricante/prestador paga ao fisco, mas repassa o custo ao consumidor final via preço.
-          </p>
-          <p>
-            O <strong>ICMS</strong> é estadual e incide sobre circulação de mercadorias. Já o <strong>ISS</strong> é municipal e incide sobre serviços. Para a Petrobras, a substituição tributária no ICMS é um tema central, onde a empresa retém e paga o imposto por toda a cadeia.
-          </p>
-        </div>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>Os <strong>tributos sobre consumo</strong> são aqueles que incidem sobre a circulação de mercadorias e a prestação de serviços. São chamados "indiretos" porque o fabricante/prestador paga ao fisco, mas repassa o custo ao consumidor final via preço.</p>
+            <p>A banca cobra com frequência a incidência de tributos sobre consumo: ICMS (estadual), IPI (federal) e ISS (competência municipal).</p>
+            <p>O <strong>ICMS</strong> é estadual e incide sobre circulação de mercadorias. Já o <strong>ISS</strong> é municipal e incide sobre serviços. Para a Petrobras, a substituição tributária no ICMS é um tema central, onde a empresa retém e paga o imposto por toda a cadeia.</p>
+            <p>O ICMS incide sobre operações de circulação física de mercadorias e serviços de transporte interestadual, intermunicipal e comunicações.</p>
+            <p>O fato gerador da obrigação tributária é a situação concreta prevista em lei que, ao se realizar, faz nascer o vínculo jurídico entre o sujeito ativo e o passivo.</p>
+            <p>O ISS é de competência dos Municípios e do DF, incidindo sobre a prestação de serviços técnicos listados na Lei Complementar 116/03.</p>
+            <p>A base de cálculo e a alíquota são os elementos quantitativos fundamentais que, aplicados conjuntamente, determinam o valor exato do tributo a recolher.</p>
+            <p>A não-cumulatividade constitucional do ICMS assegura a compensação tributária do imposto cobrado em cada etapa anterior de transações.</p>
+            <p>O lançamento tributário formaliza a exigência do crédito pelo Fisco, podendo ser de ofício, por declaração do contribuinte ou por homologação de autolançamento.</p>
+            <p>Em refinarias da Petrobras, a circulação física interestadual de derivados de combustíveis exige cálculo fiscal preciso de retenções estaduais.</p>
+            
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -391,7 +397,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
         }}
       />
 
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         titulo="Detalhamento Técnico"
         slides={[
           {
@@ -415,7 +421,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
           {
             title: "Consultoria Técnica",
             descricao: "A Petrobras retém o ISS do prestador e repassa à prefeitura da sede do serviço.",
-            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+            corFundo: "bg-teal-100 dark:bg-teal-900/30"
           }
         ]}
       />
@@ -441,20 +447,25 @@ export default function AulaDireitoTributario(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={4}
+          index="INTRO"
           title="Financiamento da Seguridade e Intervenção Econômica"
           description="O impacto do PIS e da COFINS no faturamento e a incidência da CIDE-Combustíveis."
           variant={getModuleVariant(4)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-          <p>
-            As contribuições sociais (PIS/PASEP e COFINS) incidem sobre a receita bruta das empresas e são fundamentais para o financiamento da seguridade social. Para uma empresa do porte da Petrobras, essas contribuições representam volumes gigantescos de recursos.
-          </p>
-          <p>
-            Existe ainda a <strong>CIDE-Combustíveis</strong>, que incide sobre a importação e a comercialização de petróleo e derivados. Ela tem finalidade extrafiscal, servindo para ajustar preços de mercado.
-          </p>
-        </div>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>As contribuições sociais (PIS/PASEP e COFINS) incidem sobre a receita bruta das empresas e são fundamentais para o financiamento da seguridade social. Para uma empresa do porte da Petrobras, essas contribuições representam volumes gigantescos de recursos.</p>
+            <p>CESGRANRIO exige diferenciar contribuições de seguridade social (PIS/COFINS) de taxas estatais de serviços. Atente-se ao regime cumulativo e não-cumulativo.</p>
+            <p>Existe ainda a <strong>CIDE-Combustíveis</strong>, que incide sobre a importação e a comercialização de petróleo e derivados. Ela tem finalidade extrafiscal, servindo para ajustar preços de mercado.</p>
+            <p>O PIS e a COFINS destinam-se ao financiamento da seguridade social, recaindo diretamente sobre o faturamento de pessoas jurídicas.</p>
+            <p>A responsabilidade tributária pode ser atribuída a terceiros por lei, como no caso dos administradores de empresas que respondem por infrações cometidas com excesso de poderes.</p>
+            <p>O regime não-cumulativo do PIS e COFINS aplica alíquotas de 1,65% e 7,60%, respectivamente, autorizando créditos sobre insumos industriais.</p>
+            <p>A solidariedade tributária vincula múltiplos devedores ao pagamento integral do crédito, sem benefício de ordem entre os coobrigados perante o Fisco.</p>
+            <p>A CIDE-Combustíveis é a contribuição de intervenção no domínio econômico incidente sobre importação e comercialização de derivados de petróleo.</p>
+            <p>A substituição tributária progressiva concentra a obrigação de recolhimento nas refinarias, simplificando a fiscalização ao longo de toda a cadeia de distribuição.</p>
+            <p>A Petrobras calcula créditos fiscais de PIS e COFINS sobre contratos de afretamento marítimo de plataformas de exploração pré-sal.</p>
+            
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -470,8 +481,8 @@ export default function AulaDireitoTributario(props: AulaProps) {
           tituloAula: "Direito Tributário",
           materia: "Administração",
           images: [
-            { title: "Financiamento Social", type: "Diagrama", placeholderColor: "bg-violet-500/20" },
-            { title: "CIDE-Combustíveis", type: "Fluxograma", placeholderColor: "bg-violet-500/20" },
+            { title: "Financiamento Social", type: "Diagrama", placeholderColor: "bg-teal-500/20" },
+            { title: "CIDE-Combustíveis", type: "Fluxograma", placeholderColor: "bg-teal-500/20" },
           ],
         }}
         sinteseEstrategica={{
@@ -485,7 +496,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
         }}
       />
 
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         titulo="Detalhamento Técnico"
         slides={[
           {
@@ -509,7 +520,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
           {
             title: "Regulação de Preços",
             descricao: "A CIDE pode ser zerada ou aumentada pelo governo para estabilizar preços de bomba.",
-            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+            corFundo: "bg-teal-100 dark:bg-teal-900/30"
           }
         ]}
       />
@@ -535,20 +546,25 @@ export default function AulaDireitoTributario(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={5}
+          index="INTRO"
           title="Fato Gerador e Lançamento"
           description="A jornada desde a ocorrência do fato até a constituição definitiva do crédito."
           variant={getModuleVariant(5)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-          <p>
-            A <strong>obrigação tributária</strong> nasce com o <strong>Fato Gerador</strong>: uma situação prevista em lei que, ao ocorrer, obriga o pagamento do tributo. Por exemplo, vender gasolina é o fato gerador do ICMS. Uma vez ocorrido, o tributo deve ser quantificado e formalizado através do <strong>Lançamento</strong>.
-          </p>
-          <p>
-            O <strong>crédito tributário</strong> é o direito do Estado de receber o valor. Ele pode ser extinto pelo pagamento, mas também por compensação, anistia ou decisão judicial. Entender esses processos é crucial para evitar a inadimplência fiscal.
-          </p>
-        </div>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A <strong>obrigação tributária</strong> nasce com o <strong>Fato Gerador</strong>: uma situação prevista em lei que, ao ocorrer, obriga o pagamento do tributo. Por exemplo, vender gasolina é o fato gerador do ICMS. Uma vez ocorrido, o tributo deve ser quantificado e formalizado através do <strong>Lançamento</strong>.</p>
+            <p>Questões sobre obrigações acessórias focam na sua finalidade instrumental de permitir que o fisco audite a apuração da obrigação tributária principal.</p>
+            <p>O <strong>crédito tributário</strong> é o direito do Estado de receber o valor. Ele pode ser extinto pelo pagamento, mas também por compensação, anistia ou decisão judicial. Entender esses processos é crucial para evitar a inadimplência fiscal.</p>
+            <p>A obrigação principal surge com o fato gerador e visa ao recolhimento do tributo; a obrigação acessória visa a obrigações formais.</p>
+            <p>A exclusão do crédito tributário ocorre pela isenção — renúncia prévia em lei — e pela anistia — perdão das penalidades anteriores ao lançamento definitivo.</p>
+            <p>A emissão e o armazenamento eletrônico de Notas Fiscais Eletrônicas (NF-e) constituem obrigações acessórias de observância obrigatória.</p>
+            <p>A compensação extingue o crédito tributário quando o contribuinte possui créditos líquidos e certos reconhecidos em lei a serem confrontados com o débito existente.</p>
+            <p>O descumprimento de prazos para entrega de declarações fiscais digitais (como SPED) enseja aplicação imediata de multas administrativas.</p>
+            <p>A decadência extingue o direito do Fisco de lançar o tributo após cinco anos; a prescrição extingue o direito de ajuizar a execução fiscal do crédito já lançado.</p>
+            <p>Técnicos de suprimentos da Petrobras conferem a regularidade formal de notas fiscais recebidas nas bases terrestres de estocagem.</p>
+            
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -579,7 +595,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
         }}
       />
 
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         titulo="Processos Administrativos"
         slides={[
           {
@@ -603,7 +619,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
           {
             title: "Parcelamento",
             descricao: "Uso de REFIS para regularizar débitos tributários antigos e suspender a cobrança.",
-            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+            corFundo: "bg-teal-100 dark:bg-teal-900/30"
           },
           {
             title: "Decadência",
@@ -634,20 +650,25 @@ export default function AulaDireitoTributario(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={6}
+          index="INTRO"
           title="Poder de Império e Garantias do Contribuinte"
           description="Como ocorrem os procedimentos fiscais e quais os limites da autoridade tributária."
           variant={getModuleVariant(6)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-          <p>
-            O Fisco tem o poder de fiscalizar permanentemente todos os atos dos contribuintes. No entanto, esse poder não é absoluto; o fiscal deve seguir ritos legais e respeitar o sigilo de dados não tributários.
-          </p>
-          <p>
-            As infrações podem ser por falta de pagamento ou por erro em obrigações acessórias. As <strong>multas</strong> podem ser moratórias ou punitivas.
-          </p>
-        </div>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O Fisco tem o poder de fiscalizar permanentemente todos os atos dos contribuintes. No entanto, esse poder não é absoluto; o fiscal deve seguir ritos legais e respeitar o sigilo de dados não tributários.</p>
+            <p>A prova cobra as modalidades de extinção do crédito tributário (pagamento, compensação, decadência, prescrição) e suspensão de exigibilidade.</p>
+            <p>As infrações podem ser por falta de pagamento ou por erro em obrigações acessórias. As <strong>multas</strong> podem ser moratórias ou punitivas.</p>
+            <p>A decadência tributária extingue o direito do fisco de constituir o crédito tributário após o decurso do prazo de cinco anos de lei.</p>
+            <p>O ICMS — imposto de competência estadual — incide sobre circulação de mercadorias, prestações de serviço de comunicação e transporte interestadual e intermunicipal.</p>
+            <p>A interposição de recurso administrativo ou a concessão de liminar judicial suspendem a exigibilidade de cobrança ativa de tributo.</p>
+            <p>A guerra fiscal entre estados ocorre quando entes federativos concedem incentivos ilegais de ICMS para atrair investimentos ao arrepio das normas do CONFAZ.</p>
+            <p>A execução fiscal é a ação judicial promovida pela Fazenda Pública para realizar a cobrança de Certidões de Dívida Ativa (CDA).</p>
+            <p>O diferencial de alíquota do ICMS (DIFAL) regula as operações interestaduais com consumidor final não contribuinte, equilibrando a partilha entre estados de origem e destino.</p>
+            <p>A diretoria tributária da Petrobras gerencia defesas fiscais contra autos de infração estaduais de ICMS cobrados indevidamente.</p>
+            
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -678,7 +699,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
         }}
       />
 
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         titulo="Ritos de Fiscalização"
         slides={[
           {
@@ -702,7 +723,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
           {
             title: "CARF",
             descricao: "Conselho onde a Petrobras discute administrativamente cobranças bilionárias da Receita.",
-            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+            corFundo: "bg-teal-100 dark:bg-teal-900/30"
           }
         ]}
       />
@@ -728,17 +749,25 @@ export default function AulaDireitoTributario(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={7}
+          index="INTRO"
           title="Normas de Incidência"
           description="A estrutura fundamental que define o nascimento e o valor da obrigação tributária."
           variant={getModuleVariant(7)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-          <p>
-            A <strong>Norma de Incidência Tributária</strong> é a regra que estrutura como um imposto é cobrado. Toda norma tributária tem três componentes essenciais: (1) <strong>Fato Gerador</strong>; (2) <strong>Base de Cálculo</strong>; (3) <strong>Alíquota</strong>.
-          </p>
-        </div>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A <strong>Norma de Incidência Tributária</strong> é a regra que estrutura como um imposto é cobrado. Toda norma tributária tem três componentes essenciais: (1) <strong>Fato Gerador</strong>; (2) <strong>Base de Cálculo</strong>; (3) <strong>Alíquota</strong>.</p>
+            <p>A banca exige conhecimentos das normas de incidência tributária, isenções legais, imunidades constitucionais e hipóteses de não-incidência.</p>
+            <p>O ISS é um tributo municipal que incide sobre a prestação de serviços definidos na Lei Complementar 116/2003, com alíquotas variando de 2% a 5% por município.</p>
+            <p>As imunidades são vedações constitucionais absolutas de cobrança de impostos; as isenções são dispensas legais concedidas por lei ordinária.</p>
+            <p>Os serviços de engenharia de manutenção prestados por empresas contratadas pela Petrobras estão sujeitos à retenção do ISS no município onde são executados.</p>
+            <p>A importação temporária de máquinas para exploração petrolífera goza de suspensão ou isenção fiscal sob o regime especial Repetro.</p>
+            <p>O conflito de competência entre ICMS e ISS surge nas chamadas operações mistas, em que há tanto fornecimento de mercadorias quanto prestação de serviços associados.</p>
+            <p>A interpretação de isenções tributárias no Código Tributário Nacional (CTN) deve ser efetuada de forma literal e restritiva de lei.</p>
+            <p>Os serviços de engenharia de manutenção prestados por empresas contratadas pela Petrobras estão sujeitos à retenção do ISS no município onde são efetivamente executados pelo contratado.</p>
+            <p>A Petrobras usufrui de regimes especiais federais para desonerar a montagem e importação de componentes para sondas submarinas.</p>
+            
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -768,7 +797,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
         }}
       />
 
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         titulo="Detalhamento Técnico"
         slides={[
           {
@@ -792,7 +821,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
           {
             title: "Ganho de Capital",
             descricao: "Fato Gerador: Venda de ativo com lucro. Base: Lucro obtido. Alíquota: 15%.",
-            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+            corFundo: "bg-teal-100 dark:bg-teal-900/30"
           },
           {
             title: "Serviço Prestado",
@@ -823,17 +852,25 @@ export default function AulaDireitoTributario(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={8}
+          index="INTRO"
           title="Operações de Óleo e Gás"
           description="Do poço ao posto: como a Petrobras lida com a carga tributária do setor."
           variant={getModuleVariant(8)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-          <p>
-            A <strong>tributação da Petrobras</strong> envolve Royalties e Participações Especiais, além dos impostos convencionais. Os <strong>Royalties</strong> são uma compensação financeira pela exploração de recursos não renováveis.
-          </p>
-        </div>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A <strong>tributação da Petrobras</strong> envolve Royalties e Participações Especiais, além dos impostos convencionais. Os <strong>Royalties</strong> são uma compensação financeira pela exploração de recursos não renováveis.</p>
+            <p>Questões de tributos da Petrobras focam no Repetro-Sped e na incidência tributária complexa do setor de exploração de hidrocarbonetos.</p>
+            <p>O planejamento tributário lícito — elisão fiscal — utiliza as lacunas e alternativas previstas em lei para reduzir a carga tributária antes da ocorrência do fato gerador.</p>
+            <p>O setor de petróleo e gás submete-se a regime especial de recolhimento de royalties e incidência de participações especiais governamentais.</p>
+            <p>A evasão fiscal é ato ilícito que ocorre após o fato gerador, mediante fraude, simulação ou omissão dolosa nas declarações apresentadas ao fisco competente.</p>
+            <p>A apuração tributária de operações na Bacia de Campos exige controle fiscal estrito sobre a divisa física de águas territoriais estaduais.</p>
+            <p>O abuso de forma e o propósito negocial são critérios adotados pela jurisprudência do CARF para desconsiderar operações de planejamento tributário agressivo.</p>
+            <p>As autuações de ICMS por transporte interestadual de gás natural são objeto de disputas judiciais complexas entre estados produtores.</p>
+            <p>A evasão fiscal é ato ilícito que ocorre após a materialização do fato gerador, mediante fraude, simulação ou omissão dolosa nas declarações apresentadas ao órgão fiscalizador competente.</p>
+            <p>A Petrobras atua como substituta tributária e recolhe bilhões de reais em impostos retidos na comercialização nacional de combustíveis.</p>
+            
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -863,7 +900,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
         }}
       />
 
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         titulo="Detalhamento do Setor"
         slides={[
           {
@@ -887,7 +924,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
           {
             title: "Navios-Sonda",
             descricao: "Equipamentos importados sob regime de suspensão tributária (REPETRO).",
-            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+            corFundo: "bg-teal-100 dark:bg-teal-900/30"
           }
         ]}
       />
@@ -913,17 +950,25 @@ export default function AulaDireitoTributario(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={9}
+          index="INTRO"
           title="Elisão vs Evasão"
           description="A diferença entre reduzir impostos legalmente e cometer crime fiscal."
           variant={getModuleVariant(9)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
-          <p>
-            O <strong>Planejamento Tributário (Elisão)</strong> é o uso de meios lícitos para reduzir o ônus fiscal. A <strong>Evasão</strong>, por outro lado, é ilegal.
-          </p>
-        </div>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O <strong>Planejamento Tributário (Elisão)</strong> é o uso de meios lícitos para reduzir o ônus fiscal. A <strong>Evasão</strong>, por outro lado, é ilegal.</p>
+            <p>Provas abordam a legitimidade do planejamento tributário elisivo, distinguindo-o de simulações com abuso de formas jurídicas (fraude fiscal).</p>
+            <p>O processo administrativo tributário federal assegura ao contribuinte o direito de impugnar o lançamento e recorrer em duas instâncias antes da inscrição em dívida ativa.</p>
+            <p>A elisão fiscal legítima busca reestruturar operações para se enquadrar em regimes tributários que gozem de alíquotas ou bases reduzidas.</p>
+            <p>A execução fiscal regida pela Lei 6.830/80 permite à Fazenda Pública cobrar judicialmente o crédito inscrito em Certidão de Dívida Ativa com presunção de certeza.</p>
+            <p>A importação de peças industriais por drawback suspende tributos de insumos que serão exportados após acoplados na plataforma.</p>
+            <p>A Súmula Vinculante e os Temas de Repercussão Geral do STF uniformizam a interpretação das normas tributárias, reduzindo a insegurança jurídica dos contribuintes.</p>
+            <p>A desconsideração de negócios jurídicos pelo fisco ocorre quando identificada simulação que busque unicamente a sonegação tributária.</p>
+            <p>A Súmula Vinculante e os Temas de Repercussão Geral do STF uniformizam a interpretação das normas tributárias em todo o território nacional, reduzindo a insegurança jurídica dos contribuintes.</p>
+            <p>O comitê tributário interno da Petrobras estuda anualmente rotas logísticas mais eficientes para mitigar custos de ICMS de distribuição.</p>
+            
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -953,7 +998,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
         }}
       />
 
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         titulo="Detalhamento do Planejamento"
         slides={[
           {
@@ -977,7 +1022,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
           {
             title: "Isenções Setoriais",
             descricao: "Uso de benefícios fiscais concedidos por lei para atividades de pesquisa e inovação.",
-            corFundo: "bg-violet-100 dark:bg-violet-900/30"
+            corFundo: "bg-teal-100 dark:bg-teal-900/30"
           }
         ]}
       />
@@ -1003,13 +1048,13 @@ export default function AulaDireitoTributario(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={10}
+          index="INTRO"
           title="Avaliação Final"
           description="Questões selecionadas para simular o nível de dificuldade do concurso."
           variant={getModuleVariant(10)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground prose-invert">
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
           <p>
             O <strong>Simulado Geral</strong> é a avaliação consolidada de todo o conteúdo de Direito Tributário. Este módulo reúne questões que abrangem todos os tópicos estudados: fundamentos do sistema tributário nacional, tributos federais, estaduais e municipais, obrigações tributárias, fiscalização, normas de incidência e planejamento tributário lícito. A dificuldade das questões reflete o padrão cobrado em concursos Cesgranrio para a posição de Técnico em Suprimento.
           </p>
@@ -1061,7 +1106,7 @@ export default function AulaDireitoTributario(props: AulaProps) {
         }}
       />
 
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         titulo="Tópicos-Chave para Revisão"
         slides={[
           {

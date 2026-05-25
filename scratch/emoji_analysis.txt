@@ -1,0 +1,280 @@
+Linha 53 (FlipCard=False): { id: "modulo-2", label: "Módulo 2", title: "Skimming — Leitura Panorâmica" }, | Emojis: —
+Linha 54 (FlipCard=False): { id: "modulo-3", label: "Módulo 3", title: "Scanning — Localização Precisa" }, | Emojis: —
+Linha 123 (FlipCard=False): // Variantes de cor pré-computadas — usa mv[N] ao invés de hardcodar getModuleVariant(N) | Emojis: —
+Linha 134 (FlipCard=False): titulo={titulo || "Text Comprehension — 8 Estratégias de Leitura em Inglês"} | Emojis: —
+Linha 149 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 150 (FlipCard=False): {/* MODULE 1 — DECODING QUESTION TYPES */} | Emojis: —
+Linha 151 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 158 (FlipCard=False): description="CESGRANRIO sempre testa: (1) Main Idea — qual é o tema central? (2) Detail — qual detalhe específico? (3) Inference — o que está implicado?" | Emojis: ———
+Linha 212 (FlipCard=False): titulo: "① Conceituação: Os 3 Tipos de Questão", | Emojis: ①
+Linha 217 (FlipCard=False): <strong>Main Idea Question (Pergunta de Ideia Central):</strong> Testa se você entende o TEMA GERAL do texto. Não é sobre um detalhe específico — é sobre qual é o propósito ou mensagem geral. Exemplos de sinais linguísticos: "What is the main purpose...?", "Which statement best summarizes...?", "The passage is primarily about...?", "What is the author's main concern...?" A estratégia é nunca ler o texto inteiro palavra-por-palavra. Em vez disso: (1) Leia o título (se houver), (2) Leia a primeira sentença do primeiro parágrafo (topic sentence), (3) Leia a última sentença de cada parágrafo subsequente, (4) Procure por palavras repetidas que indicam o tema central. Depois responda a pergunta mental: "Sobre qual tema geral fala este texto?" Opções muito específicas são armadilhas — recuse qualquer opção que pareça ser apenas uma PARTE do texto. | Emojis: ——
+Linha 221 (FlipCard=False): <strong>Detail Question (Pergunta de Detalhe):</strong> Testa se você consegue LOCALIZAR informação específica no texto. A resposta EXISTE no texto, em preto e branco. Exemplos de sinais: "According to the text...", "The author mentions that...", "When did X occur?", "How many...?", "What did the author say about...?" A estratégia é SCANNING puro: (1) Leia a pergunta e identifique a palavra-chave, (2) Procure aquela palavra no texto (use Ctrl+F em testes digitais se possível), (3) Quando achar, releia a sentença e o contexto ao redor, (4) Valide que aquela informação responde a pergunta, (5) Responda e avance. Detail questions são RÁPIDAS quando você escaneia em vez de ler. A pegadinha: a palavra-chave pode aparecer em múltiplas linhas — procure aquela que realmente responde a pergunta específica. | Emojis: —
+Linha 225 (FlipCard=False): <strong>Inference Question (Pergunta de Inferência):</strong> Testa se você consegue DEDUZIR logicamente algo que não está dito explicitamente. Exemplos de sinais: "The author implies that...", "It can be inferred that...", "What does the author suggest about...?", "What would the author probably agree with...?" A resposta NÃO aparece palavra-por-palavra — você precisa deduzir. A estratégia é: (1) Leia o contexto completo ao redor da questão, (2) Procure por CAUSA-EFEITO (because, therefore, as a result, since, due to), (3) Procure por CONTRASTE (but, however, yet, although), (4) Procure por EVIDÊNCIA que suporta uma conclusão lógica, (5) Deduza qual conclusão o texto suportaria. A diferença crítica: inferência é DEDUÇÃO LÓGICA, não ADIVINHAÇÃO. A resposta pode não estar palavra-por-palavra, mas deve ser APOIADA logicamente pelo texto. Se você não consegue achar evidência no texto, é especulação, não inferência. | Emojis: —
+Linha 231 (FlipCard=False): <div>• <strong>Main Idea</strong> = tema GERAL (cobre todo o texto)</div> | Emojis: •
+Linha 232 (FlipCard=False): <div>• <strong>Detail</strong> = fato ESPECÍFICO (está no texto, achado!)</div> | Emojis: •
+Linha 233 (FlipCard=False): <div>• <strong>Inference</strong> = conclusão DEDUZIDA (não está dita, mas apoiada)</div> | Emojis: •
+Linha 234 (FlipCard=False): <div>• Main Idea ≠ opinião do autor, apenas fato do que é discutido</div> | Emojis: •≠
+Linha 235 (FlipCard=False): <div>• Detail ≠ interpretação, apenas localização de fatos</div> | Emojis: •≠
+Linha 236 (FlipCard=False): <div>• Inference ≠ adivinhação, apenas dedução lógica suportada</div> | Emojis: •≠
+Linha 243 (FlipCard=False): titulo: "② Exemplificação: Textos Técnicos Petrobras", | Emojis: ②
+Linha 250 (FlipCard=False): <p className="text-lg text-foreground/80 mt-2">❓ Pergunta: "What is the primary purpose of this passage?"</p> | Emojis: ❓
+Linha 251 (FlipCard=False): <p className="text-lg text-green-600 font-semibold mt-1">✅ Resposta correta: "To describe a safety protocol and its effectiveness"</p> | Emojis: ✅
+Linha 252 (FlipCard=False): <p className="text-lg text-foreground/70 mt-1">❌ Armadilha: "Daily inspections are required" (detalhe, não ideia principal)</p> | Emojis: ❌
+Linha 258 (FlipCard=False): <p className="text-lg text-foreground/80 mt-2">❓ Pergunta: "When did the technician discover the compressor malfunction?"</p> | Emojis: ❓
+Linha 259 (FlipCard=False): <p className="text-lg text-green-600 font-semibold mt-1">✅ Resposta correta: "At 2 PM"</p> | Emojis: ✅
+Linha 260 (FlipCard=False): <p className="text-lg text-foreground/70 mt-1">Estratégia: Procura "discovered" → resposta está ali, 2 PM</p> | Emojis: →
+Linha 266 (FlipCard=False): <p className="text-lg text-foreground/80 mt-2">❓ Pergunta: "What can be inferred about the effectiveness of the pipeline upgrade?"</p> | Emojis: ❓
+Linha 267 (FlipCard=False): <p className="text-lg text-green-600 font-semibold mt-1">✅ Resposta correta: "The upgrade was effective because production increased"</p> | Emojis: ✅
+Linha 268 (FlipCard=False): <p className="text-lg text-foreground/70 mt-1">Estratégia: Causa (upgrade) → Efeito (15% aumento) → Inferência de efetividade</p> | Emojis: →→
+Linha 274 (FlipCard=False): titulo: "③ Dicas: Reconheça os Sinais Linguísticos", | Emojis: ③
+Linha 281 (FlipCard=False): descricao: "Procure por sinais: 'main idea', 'primarily', 'best summarizes', 'main purpose'. Nunca leia tudo — léia estrategicamente. Título + primeira sentença + última sentença de cada parágrafo = 80% da ideia.", | Emojis: —
+Linha 282 (FlipCard=False): exemplo: "✓ 'What is the passage mainly about?' → Lê título primeiro", | Emojis: ✓→
+Linha 287 (FlipCard=False): exemplo: "✓ 'When did X happen?' → Procura 'X' → encontra a sentença → extrai a data", | Emojis: ✓→→→
+Linha 292 (FlipCard=False): exemplo: "✓ 'What does the author suggest?' → Procura contexto + causa-efeito → deduz", | Emojis: ✓→→
+Linha 297 (FlipCard=False): exemplo: "❌ Pergunta 'main idea' → Resposta 'daily inspections' (muito específico)", | Emojis: ❌→
+Linha 302 (FlipCard=False): exemplo: "❌ Texto não menciona 'CEO é generoso' → Não pode inferir apenas porque parece lógico", | Emojis: ❌→
+Linha 309 (FlipCard=False): titulo: "④ Exceções & Pegadinhas CESGRANRIO", | Emojis: ④
+Linha 345 (FlipCard=False): items={["'The CEO announced a raise → O CEO é uma pessoa muito generosa' (não suportado)"]} | Emojis: →
+Linha 350 (FlipCard=False): items={["'Production increased after upgrade → O upgrade foi efetivo' (causa-efeito apoiado)"]} | Emojis: →
+Linha 446 (FlipCard=True): <p>"To describe a major upgrade and its positive impact on production" — NÃO é "O upgrade custou $50M" (detalhe específico)</p> | Emojis: —
+Linha 461 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 462 (FlipCard=False): {/* MODULE 2 — SKIMMING */} | Emojis: —
+Linha 463 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 468 (FlipCard=False): titulo="Skimming — Leitura Panorâmica Rápida" | Emojis: —
+Linha 478 (FlipCard=False): description="Skimming é leitura seletiva — você lê ALGUNS partes do texto, muito rapidamente, apenas para entender o tema geral" | Emojis: —
+Linha 487 (FlipCard=False): A técnica é simples: (1) Leia o TÍTULO primeiro (se houver) — isto te dá um preview, (2) Leia a PRIMEIRA SENTENÇA do primeiro parágrafo (topic sentence) — isto te diz o assunto, (3) PULE os parágrafos do meio, apenas lendo a primeira sentença de cada, (4) Leia a ÚLTIMA SENTENÇA do último parágrafo (conclusão) — isto te diz como o autor termina. Tempo total: 30-60 segundos. Você agora ENTENDE o texto sem ter lido 80% dele. Esta é a razão pela qual Main Idea questions são respondidas rapidamente — é apenas skimming + resposta. | Emojis: ————
+Linha 503 (FlipCard=False): <div>Leia o TÍTULO — isto te diz o tópico geral</div> | Emojis: —
+Linha 507 (FlipCard=False): <div>Leia a 1ª sentença do 1º parágrafo — isto é a topic sentence</div> | Emojis: —
+Linha 511 (FlipCard=False): <div>Pule os parágrafos do meio, leia apenas a 1ª sentença de cada — pega a estrutura</div> | Emojis: —
+Linha 515 (FlipCard=False): <div>Leia a última sentença do último parágrafo — isto é a conclusão</div> | Emojis: —
+Linha 528 (FlipCard=False): titulo: "① Conceituação: Skimming vs Leitura Profunda", | Emojis: ①
+Linha 533 (FlipCard=False): Skimming é uma técnica onde você lê SELETIVAMENTE apenas partes-chave do texto, muito rapidamente, para captar a IDEIA GERAL sem entender cada palavra ou detalhe. É diferente de ler para aprofundamento. Quando você lê uma livro sobre um tópico que interessa, você lê lentamente, palavra-por-palavra, para APRENDER tudo. Quando você skim (escaneia rapidamente), você está apenas procurando responder "Sobre o que fala este texto?" — a resposta é suficiente se você puder responder perguntas de main idea. | Emojis: —
+Linha 544 (FlipCard=False): <div className="text-lg text-foreground/80">— Te diz o assunto geral em uma linha. Exemplo: "Petrobras Improves Pipeline Safety with New Monitoring System"</div> | Emojis: —
+Linha 546 (FlipCard=False): <div className="text-lg text-foreground/80">— A primeira sentença resume toda a ideia do parágrafo. Resto = detalhes de suporte.</div> | Emojis: —
+Linha 548 (FlipCard=False): <div className="text-lg text-foreground/80">— Leia apenas 1ª sentença de cada (topic) e pule o resto. Se uma pergunta pede detalhes deste parágrafo, volta depois.</div> | Emojis: —
+Linha 550 (FlipCard=False): <div className="text-lg text-foreground/80">— Última sentença resume o conclusion ou implicação. Leia esta para entender como o autor termina.</div> | Emojis: —
+Linha 559 (FlipCard=False): <strong>Quando usar skimming:</strong> (1) Main idea questions, (2) Quando você tem MUITO texto e POUCO tempo, (3) Quando você quer prioridade — entender o geral antes dos detalhes. <strong>Quando NÃO usar APENAS skimming:</strong> (1) Detail questions, (2) Inference questions, (3) Vocabulary questions — estes exigem leitura mais profunda. | Emojis: ——
+Linha 565 (FlipCard=False): titulo: "② Exemplificação: 4 Textos Técnicos Petrobras", | Emojis: ②
+Linha 572 (FlipCard=False): <p className="text-lg font-semibold">Skim: Lê título → 1ª sentença → Pula meio → Última sentença</p> | Emojis: →→→
+Linha 578 (FlipCard=False): <p className="text-green-600 font-semibold mt-2">✓ Ideia geral: Petrobras improved production efficiency with successful results</p> | Emojis: ✓
+Linha 591 (FlipCard=False): <p className="text-green-600 font-semibold mt-2">✓ Ideia geral: Safety procedures were updated and training is required</p> | Emojis: ✓
+Linha 598 (FlipCard=False): titulo: "③ Dicas: Sinais Visuais de Skimming", | Emojis: ③
+Linha 606 (FlipCard=False): exemplo: "✓ Lê título em 5 segundos, já sabe 50% do tema", | Emojis: ✓
+Linha 611 (FlipCard=False): exemplo: "✓ 1ª sentença = resumo do parágrafo | Resto = details", | Emojis: ✓
+Linha 616 (FlipCard=False): exemplo: "✓ Pula 5 parágrafos em 15 segundos → volta apenas se pergunta pede", | Emojis: ✓→
+Linha 621 (FlipCard=False): exemplo: "✓ Última sentença = como o autor fecha o raciocínio", | Emojis: ✓
+Linha 625 (FlipCard=False): descricao: "Quando você skim, seus olhos naturalmente pegam números (15%, 2023) e palavras em negrito/caps (CRITICAL, IMPORTANT). Use isto — números e destaque indicam informação importante.", | Emojis: —
+Linha 626 (FlipCard=False): exemplo: "✓ '15% increase', 'URGENT', 'deadline' = pega naturalmente ao skim", | Emojis: ✓
+Linha 633 (FlipCard=False): titulo: "④ Exceções: Quando Skimming Não É Suficiente", | Emojis: ④
+Linha 651 (FlipCard=False): FASE 1: Skim o texto inteiro (40s) — entenda a ideia geral. FASE 2: Responda Main Idea questions (30s). FASE 3: Se Detail/Inference/Vocabulary, volta ao texto específico (1-2 min). | Emojis: —
+Linha 698 (FlipCard=True): <p>Skimming é perfeito para 'What is the main purpose?' Não é suficiente para Detail ou Inference — volta e releia.</p> | Emojis: —
+Linha 712 (FlipCard=True): <p>Skim em 1 min → entenda ideia geral → use 1 min restante para responder perguntas ou releia contexto específico.</p> | Emojis: →→
+Linha 726 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 727 (FlipCard=False): {/* MODULE 3 — SCANNING */} | Emojis: —
+Linha 728 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 733 (FlipCard=False): titulo="Scanning — Localização Precisa de Informação" | Emojis: —
+Linha 743 (FlipCard=False): description="Scanning é diferente de skimming — você NÃO quer ideia geral, você quer UM DADO ESPECÍFICO" | Emojis: —
+Linha 748 (FlipCard=False): Scanning é uma técnica de leitura onde você procura por UMA PALAVRA-CHAVE ou NÚMERO específico no texto, muito rapidamente. Você não lê o texto linearmente — você PROCURA. A diferença entre skimming e scanning é crítica: skimming é "leia o tema geral", scanning é "ache-me este número ou esta palavra". Exemplo: "According to the text, when did the project start?" — Você procura pela palavra "start" ou data no texto. Quando achar, relê a sentença ao redor e extrai a resposta. Tempo: 15-30 segundos. | Emojis: ——
+Linha 793 (FlipCard=False): titulo: "① Conceituação: Scanning vs Leitura Linear", | Emojis: ①
+Linha 798 (FlipCard=False): Scanning é uma técnica de leitura não-linear. Ao invés de ler da primeira palavra até a última (leitura linear), você PROCURA por uma palavra-chave específica em qualquer lugar do texto. É como usar Ctrl+F em um documento digital — você procura por "2023" e o computador te mostra onde "2023" aparece, sem você ler o resto. Em uma prova física, você pode fazer isto com os olhos — procurar rapidamente pela palavra. | Emojis: ——
+Linha 824 (FlipCard=False): <div className="text-lg text-foreground/80">Pergunta: "What about safety?" → Procura: "safety"</div> | Emojis: →
+Linha 835 (FlipCard=False): titulo: "② Exemplificação: Scanning Prático", | Emojis: ②
+Linha 847 (FlipCard=False): <p className="text-green-600 font-semibold mt-2">✓ Resposta: "January 2023"</p> | Emojis: ✓
+Linha 859 (FlipCard=False): <p className="text-green-600 font-semibold mt-2">✓ Resposta: "$50 million"</p> | Emojis: ✓
+Linha 871 (FlipCard=False): <p className="text-green-600 font-semibold mt-2">✓ Resposta: "Rig #3" (ou possível múltiplos se pergunta pede "which rigs")</p> | Emojis: ✓
+Linha 878 (FlipCard=False): titulo: "③ Dicas: Otimize o Scanning", | Emojis: ③
+Linha 886 (FlipCard=False): exemplo: "✓ Pergunta 'When began?' → procura 'began' OU data (2023, Jan, XX/XX)", | Emojis: ✓→
+Linha 890 (FlipCard=False): descricao: "Símbolos como $ % # são FÁCEIS de notar ao escanear. Seus olhos naturalmente pegam números entre texto de palavras. Use isto — procura por '2023' é mais rápido que 'year'.", | Emojis: —
+Linha 891 (FlipCard=False): exemplo: "✓ Pergunta 'How much?' → procura '$' ou número grande, não palavra 'money'", | Emojis: ✓→
+Linha 896 (FlipCard=False): exemplo: "✓ Encontra '$50 million' → marca essa sentença → relê completo", | Emojis: ✓→→
+Linha 900 (FlipCard=False): descricao: "Não confie apenas na palavra-chave. A resposta pode exigir contexto. Pergunta 'When?' → encontra a data, mas relê a sentença para validar que é a data certa.", | Emojis: →
+Linha 901 (FlipCard=False): exemplo: "✓ Encontra '2023' mas precisa validar se é a data do início ou fim do projeto", | Emojis: ✓
+Linha 906 (FlipCard=False): exemplo: "✓ 'When started?' → procura 'started' não acha → procura 'began' → encontra", | Emojis: ✓→→→
+Linha 913 (FlipCard=False): titulo: "④ Exceções: Quando Scanning Falha", | Emojis: ④
+Linha 920 (FlipCard=False): descricao="A palavra que você procura pode aparecer 3-4 vezes no texto, em contextos diferentes. Procurar por 'cost' e encontrar a primeira menção pode não ser a resposta — valida que aquela menção responde a pergunta específica." | Emojis: —
+Linha 923 (FlipCard=False): lado1={{ label: "❌ Pegadinha", content: "'cost' aparece 3x: 1) initial cost, 2) maintenance cost, 3) total cost — qual é a correta?" }} | Emojis: ❌—
+Linha 924 (FlipCard=False): lado2={{ label: "✅ Solução", content: "Pergunta 'What was the project cost?' → procura 'project cost' ou valida no contexto qual 'cost' responde" }} | Emojis: ✅→
+Linha 931 (FlipCard=False): descricao="Pergunta diz 'When started?' mas o texto diz 'When commenced?' ou 'When began?'. Você procura 'started' e não acha. Tenta 'commenced' ou 'began' — encontra. Prepare-se mentalmente para sinônimos." | Emojis: —
+Linha 934 (FlipCard=False): lado1={{ label: "Pergunta usa", content: "'started' ou 'began' ou 'commenced' — sinônimos" }} | Emojis: —
+Linha 935 (FlipCard=False): lado2={{ label: "Texto pode usar", content: "'began' enquanto pergunta usa 'started' — procura ambas as formas" }} | Emojis: —
+Linha 980 (FlipCard=True): <p>"According to...", "When...", "Who...", "What...", "How much..." — procura a resposta específica.</p> | Emojis: —
+Linha 1022 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 1023 (FlipCard=False): {/* MODULE 4 — VOCABULARY IN CONTEXT */} | Emojis: —
+Linha 1024 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 1029 (FlipCard=False): titulo="Vocabulary in Context — Deduzindo Significado" | Emojis: —
+Linha 1044 (FlipCard=False): Vocabulary in Context é diferente de memorizar palavras isoladas. A prova não pergunta "O que significa 'mitigate'?" — ela coloca a palavra em uma frase técnica e pergunta qual opção melhor descreve seu significado NAQUELA FRASE. Exemplo: "The new safety protocol mitigates excessive pressure events." — Qual é o significado de "mitigate" aqui? Não é memorização, é DEDUÇÃO pela estrutura. | Emojis: ——
+Linha 1048 (FlipCard=False): A estratégia é procurar por PISTAS no contexto: (1) Preposições ao redor (in, with, from, by), (2) Verbos vizinhos (helps, prevents, causes, increases), (3) Adjetivos descritivos (excessive, critical, dangerous), (4) Conectores (because, although, as a result). Se a sentença é "The system prevented equipment failure by reducing pressure surges", você não precisa saber "surges" — você deduz que é algo NEGATIVO que precisa ser reduzido. Logo, "surge" = aumento rápido/pico (wave, spike). | Emojis: —
+Linha 1052 (FlipCard=False): A pegadinha mais comum é palavras com MÚLTIPLOS significados. "Pressure" pode significar força física, stress mental, ou demanda urgente. Em contexto técnico, é força física. "Run" pode significar executar, correr, ou funcionar. Em "The equipment runs 24/7", é "funcionar". O contexto SEMPRE clarifica qual significado. Você não traduz da forma mais comum — você traduz para o significado que FAZ SENTIDO naquela frase. | Emojis: —
+Linha 1081 (FlipCard=False): titulo: "① Técnica de Dedução Contextual", | Emojis: ①
+Linha 1086 (FlipCard=False): Quando você encontra uma palavra desconhecida em um texto, NÃO PÂNICO. A maioria das palavras em testes CESGRANRIO pode ser deduzida pelo contexto. Você não precisa conhecer a definição exata — você precisa entender o significado NAQUELA FRASE. O processo é: (1) Leia a sentença completa, (2) Procure por preposições, verbos, adjetivos ao redor, (3) Deduza se a palavra é positiva/negativa/neutra, (4) Deduza se é um verbo/nome/adjetivo, (5) Procure por sinônimos nas opções que FAZ SENTIDO no contexto. | Emojis: —
+Linha 1093 (FlipCard=False): <div><strong>Passo 1:</strong> Você não conhece "mitigate" — leia a sentença completa</div> | Emojis: —
+Linha 1096 (FlipCard=False): • "worked to" = verbo de ação | Emojis: •
+Linha 1098 (FlipCard=False): • "excessive pressure" = algo ruim/problemático (excessive = demais) | Emojis: •
+Linha 1100 (FlipCard=False): • "mitigate the excessive pressure" = fazer algo COM o pressure | Emojis: •
+Linha 1115 (FlipCard=False): titulo: "② Exemplos de Vocabulário Técnico Petrobras", | Emojis: ②
+Linha 1139 (FlipCard=False): titulo: "③ Dicas Rápidas para Vocabulário", | Emojis: ③
+Linha 1147 (FlipCard=False): exemplo: "✓ Sentença: 'reduce excessive' → Opções: 'minimize', 'decrease', 'lower' (todos sinônimos de reduzir)", | Emojis: ✓→
+Linha 1152 (FlipCard=False): exemplo: "✓ 'Implement' = implementar (cognato verdadeiro), 'Actual' = atual (falso cognato, significa 'real')", | Emojis: ✓
+Linha 1157 (FlipCard=False): exemplo: "✓ 'Team' + 'crisis' = alguém resolveu algo ruim → mitigate = resolver/aliviar", | Emojis: ✓→
+Linha 1162 (FlipCard=False): exemplo: "✓ Contexto 'equipment' + 'runs' = funciona (não corre)", | Emojis: ✓
+Linha 1169 (FlipCard=False): titulo: "④ Pegadinhas: Falsos Cognatos e Armadilhas", | Emojis: ④
+Linha 1179 (FlipCard=False): lado1={{ label: "❌ Falso Cognato", content: "'The actual reason was...' = NÃO 'a razão atual' → 'a razão REAL'" }} | Emojis: ❌→
+Linha 1180 (FlipCard=False): lado2={{ label: "✅ Correto", content: "'The actual reason' = 'A razão VERDADEIRA/REAL' (não tempo presente)" }} | Emojis: ✅
+Linha 1197 (FlipCard=False): Uma opção pode ser um sinônimo válido, mas não faz sentido NAQUELA FRASE. 'Reduce excessive pressure' — opções 'minimize', 'destroy', 'eliminate'. Destroy parece certo, mas em contexto, 'minimize' é melhor. | Emojis: —
+Linha 1246 (FlipCard=True): <p className="font-semibold text-purple-600">❌ FALSO COGNATO</p> | Emojis: ❌
+Linha 1276 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 1277 (FlipCard=False): {/* MODULE 5 — PARAGRAPH STRUCTURE */} | Emojis: —
+Linha 1278 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 1283 (FlipCard=False): titulo="Paragraph Structure — Topic Sentences & Supporting Details" | Emojis: —
+Linha 1298 (FlipCard=False): Textos técnicos e acadêmicos seguem uma estrutura MUITO previsível: cada parágrafo começa com uma TOPIC SENTENCE (sentença temática) que resume o ponto principal do parágrafo. O resto do parágrafo fornece SUPPORTING DETAILS (exemplos, números, evidência, explicação) que sustentam aquela topic sentence. Quando você entende esta estrutura, você consegue entender 80% de um texto apenas lendo as topic sentences de cada parágrafo — sem ler os detalhes. Isto é o fundamento de skimming. | Emojis: —
+Linha 1302 (FlipCard=False): Exemplo: Parágrafo sobre "Pipeline Safety" poderia ser: "The new pipeline safety protocol has three main components. (1) Daily pressure monitoring reduces failure risk by 95%. (2) Automated shutoffs prevent spillage within seconds. (3) Remote sensors alert operators immediately of anomalies." — A topic sentence é "has three main components". O resto são os três componentes (supporting details). Se você só lê a topic sentence, já entende "este parágrafo é sobre três componentes de segurança". Se você precisa de detalhes específicos, você relê aquele componente. | Emojis: —
+Linha 1310 (FlipCard=False): A pegadinha mais comum é quando a topic sentence NÃO está na primeira posição. Em alguns casos, a topic sentence está no MEIO ou FIM do parágrafo. Você precisa estar alerta para isto. Em textos acadêmicos, a topic sentence é geralmente primeira, mas em narrativa técnica complexa ou respostas argumentativas, pode estar em outro lugar. A dica é procurar pela sentença que RESUME ou SINTETIZA as outras — aquela é a topic sentence, independente de posição. | Emojis: —
+Linha 1318 (FlipCard=False): <div><strong>Topic Sentence</strong> — resume o ponto principal</div> | Emojis: —
+Linha 1322 (FlipCard=False): <div><strong>Supporting Details</strong> — exemplos, números, evidência</div> | Emojis: —
+Linha 1326 (FlipCard=False): <div><strong>Transição ou Síntese</strong> — conecta ao próximo parágrafo ou resume</div> | Emojis: —
+Linha 1335 (FlipCard=False): titulo: "① Topic Sentences: Como Identificar", | Emojis: ①
+Linha 1347 (FlipCard=False): <div className="font-semibold">✓ Topic Sentence:</div> | Emojis: ✓
+Linha 1349 (FlipCard=False): <div className="font-semibold">✓ Supporting Details:</div> | Emojis: ✓
+Linha 1351 (FlipCard=False): • Pressure valve was corroded<br/> | Emojis: •
+Linha 1352 (FlipCard=False): • No inspection in 18 months<br/> | Emojis: •
+Linha 1353 (FlipCard=False): • Monitoring system was offline | Emojis: •
+Linha 1365 (FlipCard=False): titulo: "② Supporting Details: Como Extrair", | Emojis: ②
+Linha 1390 (FlipCard=False): titulo: "③ Dicas: Reconheça o Padrão", | Emojis: ③
+Linha 1398 (FlipCard=False): exemplo: "✓ 'The protocol has three components. (1)...' — 1ª é topic, resto são detalhes", | Emojis: ✓—
+Linha 1403 (FlipCard=False): exemplo: "✓ Topic: 'three factors' → Procura (1), (2), (3) ou 'First', 'Second', 'Third'", | Emojis: ✓→
+Linha 1408 (FlipCard=False): exemplo: "✓ Número indica que é um detail, não a topic sentence", | Emojis: ✓
+Linha 1413 (FlipCard=False): exemplo: "✓ Topic: 'controls pressure' | Detail: 'is brass'", | Emojis: ✓
+Linha 1420 (FlipCard=False): titulo: "④ Pegadinhas: Topic Sentence Não-óbvia", | Emojis: ④
+Linha 1462 (FlipCard=True): <p className="font-semibold text-green-600">✓ "The project had two phases"</p> | Emojis: ✓
+Linha 1477 (FlipCard=True): <p className="font-semibold text-green-600">✓ "Equipment breakdowns decreased by 40%"</p> | Emojis: ✓
+Linha 1520 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 1521 (FlipCard=False): {/* MODULE 6 — REFERENCE WORDS & TEXT COHESION */} | Emojis: —
+Linha 1522 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 1542 (FlipCard=False): Reference words (pronomes como he, it, they, this, that, the) conectam frases ao referenciarem algo mencionado anteriormente. Exemplo: "The equipment failed. It was corroded." — 'It' refere-se a 'equipment'. Sem entender esta referência, você pensa que 'It' refere-se a outra coisa. A pegadinha mais comum é quando o pronome está distante do antecedente (a palavra que refencia). Você precisa procurar pelo NOUN mais próximo do MESMO GÊNERO E NÚMERO. | Emojis: —
+Linha 1546 (FlipCard=False): Regra importante: pronomes precisam combinar em GÊNERO (male/female/neutral) e NÚMERO (singular/plural). "He submitted the report. It was comprehensive." — 'He' é singular, masculino (refere-se a person). 'It' é singular, neutro (refere-se a 'report'). Você não pode dizer "He was submitted" (confundir person com report). Em textos técnicos, maioria dos pronomes é 'it' (equipamentos, não pessoas). "The valve controls the pressure. It prevents overpressure." — 'It' = valve (singular, neutro). | Emojis: ——
+Linha 1550 (FlipCard=False): Demonstratives (this, that, these, those) também criam referência. 'This' geralmente refere-se a algo RECÉM mencionado (perto). 'That' refere-se a algo mencionado há mais tempo (longe). "The project lasted 18 months. During this period, three incidents occurred. Before that, the facility was incident-free." — 'This period' = os 18 meses. 'That' = o tempo anterior. | Emojis: —
+Linha 1579 (FlipCard=False): titulo: "① Pronomes: Combinação de Gênero e Número", | Emojis: ①
+Linha 1584 (FlipCard=False): Pronomes substitúem nomes para evitar repetição. "The technician inspected the equipment. He found a leak. The leak was small. He repaired it." — 'He' = technician, 'it' = leak. O desafio é que o pronome pode estar longe do noun original, ou pode haver múltiplos nouns próximos (ambiguidade). Quando você vê um pronome, procure por: (1) Qual noun é mais próximo? (2) Qual noun combina em gênero? (3) Qual noun combina em número (singular/plural)? | Emojis: —
+Linha 1593 (FlipCard=False): • Valve (singular, neutro) — combina!<br/> | Emojis: •—
+Linha 1594 (FlipCard=False): • Regulator (singular, neutro) — combina!<br/> | Emojis: •—
+Linha 1595 (FlipCard=False): • Qual é mais próximo? Regulator (última noun antes de 'It')<br/> | Emojis: •
+Linha 1596 (FlipCard=False): • Qual faz SENTIDO? "Regulator monitors pressure" faz sentido<br/> | Emojis: •
+Linha 1597 (FlipCard=False): <strong>✓ Resposta: 'It' = regulator</strong> | Emojis: ✓
+Linha 1609 (FlipCard=False): titulo: "② Demonstratives & Definite Articles", | Emojis: ②
+Linha 1636 (FlipCard=False): titulo: "③ Dicas: Identifique Coesão", | Emojis: ③
+Linha 1644 (FlipCard=False): exemplo: "✓ 'The equipment failed. It was corroded.' → 'It' = equipment", | Emojis: ✓→
+Linha 1648 (FlipCard=False): descricao: "'The system failed. She was offline.' — ERRADO! Sistema é neutro ('it'), não feminino ('she'). Deve ser 'It was offline.'", | Emojis: —
+Linha 1649 (FlipCard=False): exemplo: "✓ He = pessoa (singular, masc) | It = objeto (singular, neutro) | They = plural", | Emojis: ✓
+Linha 1653 (FlipCard=False): descricao: "Se dois nouns combinam, use contexto para escolher qual faz sentido. 'The valve and regulator... It monitors pressure.' — Qual monitora? Valve (mais common na Petrobras).", | Emojis: —
+Linha 1654 (FlipCard=False): exemplo: "✓ Valve monitora → 'It' = valve (não regulator)", | Emojis: ✓→
+Linha 1659 (FlipCard=False): exemplo: "✓ This = agora, That = antes", | Emojis: ✓
+Linha 1666 (FlipCard=False): titulo: "④ Pegadinhas: Referência Ambígua", | Emojis: ④
+Linha 1676 (FlipCard=False): lado1={{ label: "Frases separadas", content: "'The pipeline was repaired. The team also inspected the valve. It was corroded.' — O que é 'It'? Valve (última coisa mencionada)" }} | Emojis: —
+Linha 1683 (FlipCard=False): 'The technician and the engineer inspected the system. He identified the problem.' — Qual é 'He'? Pode ser technician OU engineer (ambos masculinos). Use CONTEXTO para escolher. | Emojis: —
+Linha 1689 (FlipCard=False): Às vezes um pronome refere-se não a um noun específico, mas a uma IDEIA inteira: 'Production failed. This was unexpected.' — 'This' refere-se a 'failure', não a 'production'. | Emojis: —
+Linha 1768 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 1769 (FlipCard=False): {/* MODULE 7 — TONE & AUTHOR'S PURPOSE */} | Emojis: —
+Linha 1770 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 1790 (FlipCard=False): Tone é a ATITUDE do autor ao escrever — formal, informal, crítico, neutro, entusiasmado, céptico. Purpose é o OBJETIVO — informar, persuadir, criticar, avisar, explicar. Textos técnicos Petrobras frequentemente têm tone FORMAL/NEUTRO (porque é documentação) e purpose INFORMATIVO (porque está descrevendo processo). Mas um relatório executivo pode ter tone PERSUASIVO (porque quer convincer investidores) e purpose PERSUASIVO (vender a ideia do projeto). | Emojis: ——
+Linha 1819 (FlipCard=False): titulo: "① Identificando Tone (Atitude)", | Emojis: ①
+Linha 1832 (FlipCard=False): <p className="text-lg text-foreground/80">"The equipment failed due to corrosion." — Factual, sem julgamento</p> | Emojis: —
+Linha 1836 (FlipCard=False): <p className="text-lg text-foreground/80">"The new protocol brilliantly solved the problem!" — Palavras como "brilliantly", exclamação</p> | Emojis: —
+Linha 1840 (FlipCard=False): <p className="text-lg text-foreground/80">"The equipment failed miserably, revealing poor maintenance practices." — Julgamento negativo</p> | Emojis: —
+Linha 1844 (FlipCard=False): <p className="text-lg text-foreground/80">"The project allegedly met deadlines, though data suggests otherwise." — Dúvida/desconfiança</p> | Emojis: —
+Linha 1856 (FlipCard=False): titulo: "② Identificando Purpose (Objetivo)", | Emojis: ②
+Linha 1887 (FlipCard=False): titulo: "③ Dicas: Reconheça Tone & Purpose", | Emojis: ③
+Linha 1895 (FlipCard=False): exemplo: "✓ Adjetivo = pista de tone", | Emojis: ✓
+Linha 1900 (FlipCard=False): exemplo: "✓ Lê título para adivinhar purpose antes de ler texto", | Emojis: ✓
+Linha 1905 (FlipCard=False): exemplo: "✓ Palavra + contexto contrário = indireto/irónico", | Emojis: ✓
+Linha 1910 (FlipCard=False): exemplo: "✓ Purpose do texto inteiro = informar. Uma sentença pode ser crítica, mas overall é informativa.", | Emojis: ✓
+Linha 1917 (FlipCard=False): titulo: "④ Pegadinhas: Tone/Purpose Sutis", | Emojis: ④
+Linha 1924 (FlipCard=False): descricao="Tone é HOW (como escreve), opinion é WHAT (o que acredita). Um autor pode escrever de forma NEUTRA enquanto exprime opinião crítica: 'The procedure is inefficient.' — Tone neutro, pero opinion é crítica." | Emojis: —
+Linha 1945 (FlipCard=False): 'The procedure worked wonderfully — it only caused three explosions.' — Tone parece positivo (wonderfully), pero é IRÓNICO/sarcástico. Context determina true tone. | Emojis: ——
+Linha 2004 (FlipCard=True): <p className="text-lg italic">"The procedure worked wonderfully—it only delayed us 6 months."</p> | Emojis: —
+Linha 2024 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 2025 (FlipCard=False): {/* MODULE 8 — INFERENCE & IMPLICIT INFORMATION */} | Emojis: —
+Linha 2026 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 2046 (FlipCard=False): Inferência é uma conclusão lógica derivada de evidência no texto, mas NÃO DITA explicitamente. Exemplo: "The company reported record profits. The CEO announced a raise for all employees." — Isto NÃO diz "profit causou raise", mas você infere isto porque causa-efeito faz sentido lógico. A diferença crítica entre inferência VÁLIDA e ESPECULAÇÃO: inferência é suportada por evidência no texto. Especulação é pura fantasia sem suporte. | Emojis: —
+Linha 2050 (FlipCard=False): Sinais de questões de inferência: "What does the author imply?", "It can be inferred that...", "What would the author probably agree with?", "The author suggests that...", "Which statement is most likely true based on the passage?" — Quando vê estas frases, a resposta NÃO está palavra-por-palavra. Você precisa ler o contexto, procurar por PISTAS (causa-efeito, contraste, evidência), e DEDUZIR uma conclusão que o texto suportaria. | Emojis: —
+Linha 2083 (FlipCard=False): titulo: "① Diferença: Inferência vs Especulação", | Emojis: ①
+Linha 2088 (FlipCard=False): INFERÊNCIA é uma conclusão lógica suportada por evidência no texto. ESPECULAÇÃO é uma ideia que você tem, mas o texto não a suporta. Exemplo: "The company announced a 50% cost reduction." — Você PODE inferir "The company made difficult decisions" (porque cost reduction geralmente exige decisões difíceis). Você NÃO PODE inferir "The CEO is a genius" (porque texto não menciona CEO, inteligência, ou qualidade de decisão — é pura especulação). | Emojis: ——
+Linha 2095 (FlipCard=False): <div className="font-semibold text-green-600">✓ INFERÊNCIA VÁLIDA:</div> | Emojis: ✓
+Linha 2098 (FlipCard=False): <div className="font-semibold text-red-600">❌ ESPECULAÇÃO:</div> | Emojis: ❌
+Linha 2111 (FlipCard=False): titulo: "② Sinais de Causa-Efeito & Contexto", | Emojis: ②
+Linha 2118 (FlipCard=False): <div>• <strong>Because, since, due to, caused by</strong> = introduz causa</div> | Emojis: •
+Linha 2119 (FlipCard=False): <div>• <strong>Therefore, as a result, consequently, thus</strong> = introduz efeito</div> | Emojis: •
+Linha 2120 (FlipCard=False): <div>• <strong>If...then, leads to, results in</strong> = relação causal</div> | Emojis: •
+Linha 2130 (FlipCard=False): <div className="text-lg text-foreground/70 mt-1">✓ Infer: "The effectiveness of the protocol caused widespread adoption."</div> | Emojis: ✓
+Linha 2134 (FlipCard=False): <div className="text-lg text-foreground/70 mt-1">✓ Infer: "Lack of maintenance caused rapid degradation."</div> | Emojis: ✓
+Linha 2142 (FlipCard=False): titulo: "③ Dicas: Faça Inferências Válidas", | Emojis: ③
+Linha 2150 (FlipCard=False): exemplo: "✓ 'Production failed BECAUSE the valve malfunctioned' = causa-efeito óbvio para inferência", | Emojis: ✓
+Linha 2155 (FlipCard=False): exemplo: "✓ Não infere baseado em 1 sentença isolada", | Emojis: ✓
+Linha 2160 (FlipCard=False): exemplo: "✓ Opção A é suportada? Opção B? Qual é melhor?", | Emojis: ✓
+Linha 2165 (FlipCard=False): exemplo: "❌ 'CEO is smart' — não suportado. ✓ 'Protocol prevents failures' — suportado", | Emojis: ❌—✓—
+Linha 2172 (FlipCard=False): titulo: "④ Pegadinhas: Inferência Inválida", | Emojis: ④
+Linha 2179 (FlipCard=False): descricao="'Company reported profits. CEO announced raise.' — Você pode inferir que lucros causaram raise. Você NÃO pode inferir 'CEO adora funcionários' (over-reach)." | Emojis: —
+Linha 2182 (FlipCard=False): lado1={{ label: "✓ Inferência Válida", content: "Lucros causaram raise (causa-efeito suportado)" }} | Emojis: ✓
+Linha 2183 (FlipCard=False): lado2={{ label: "❌ Over-Inference", content: "CEO é generoso (nenhuma evidência, especulação)" }} | Emojis: ❌
+Linha 2190 (FlipCard=False): descricao="'The protocol prevents 95% of failures.' — Você infere que 'o protocol é efetivo'. Você NÃO pode inferir que '100% de failures são prevenidas' — porque o texto diz 95%, não 100%." | Emojis: ——
+Linha 2193 (FlipCard=False): lado1={{ label: "✓ Inferência", content: "'Protocol é efetivo' (95% suporta isto)" }} | Emojis: ✓
+Linha 2194 (FlipCard=False): lado2={{ label: "❌ Over-inference", content: "'Protocol é perfeito' (apenas 95%, não 100%)" }} | Emojis: ❌
+Linha 2200 (FlipCard=False): Você sabe que valves precisam de manutenção regular. Texto não menciona isto. Você NÃO pode inferir 'valve precisa manutenção' apenas porque você sabe isto — tem que estar no texto. | Emojis: —
+Linha 2234 (FlipCard=True): <p className="font-semibold text-cyan-600">❌ ESPECULAÇÃO</p> | Emojis: ❌
+Linha 2248 (FlipCard=True): <p className="font-semibold text-cyan-600">✓ Negócio foi bem-sucedido</p> | Emojis: ✓
+Linha 2249 (FlipCard=True): <p>✓ Decisões gerenciais funcionaram</p> | Emojis: ✓
+Linha 2250 (FlipCard=True): <p>❌ CEO é gênio (over-inference)</p> | Emojis: ❌
+Linha 2279 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 2280 (FlipCard=False): {/* MODULE 9 — READING COMPREHENSION EM PROVAS CESGRANRIO */} | Emojis: —
+Linha 2281 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 2305 (FlipCard=False): Os textos são geralmente: (1) RELATÓRIO TÉCNICO — sobre processo, equipamento, performance, (2) NOTÍCIA — sobre anúncio, projeto, mudança, (3) DESCRIÇÃO DE PROCESSO — passo-a-passo como algo funciona. Todos seguem estrutura clara: introdução (contexto), desenvolvimento (detalhes/corpo), conclusão (síntese/resultado). Todos usam vocabulário técnico moderado (não extremamente difícil, mas exige conhecimento contextual). | Emojis: ———
+Linha 2309 (FlipCard=False): As questões CESGRANRIO seguem distribuição previsível: 1 MAIN IDEA, 2-3 DETAILS, 1 INFERENCE, 1 VOCABULARY (opcional). Isto significa você pode ANTECIPAR que uma questão será sobre main idea — você sabe ler para isto logo, você não lê a 50% de profundidade. | Emojis: —
+Linha 2338 (FlipCard=False): titulo: "① Estratégia de Prova: 4 Passos Rápidos", | Emojis: ①
+Linha 2363 (FlipCard=False): titulo: "② Antecipação: Qual Tipo de Questão?", | Emojis: ②
+Linha 2385 (FlipCard=False): titulo: "③ Dicas: Maximize Sua Performance", | Emojis: ③
+Linha 2393 (FlipCard=False): exemplo: "✓ 60s skim → 5min responder = mais rápido que 3min ler tudo + 3min responder", | Emojis: ✓→
+Linha 2398 (FlipCard=False): exemplo: "✓ Sabe procurar '1990' se pergunta é 'When?' | Sabe procurar cause-efeito se pergunta é 'What implies?'", | Emojis: ✓
+Linha 2403 (FlipCard=False): exemplo: "✓ Pergunta 'According to text, when did X happen?' → Procura 'X' → encontra data → responde", | Emojis: ✓→→→
+Linha 2408 (FlipCard=False): exemplo: "✓ 30s main idea + 90s details + 20s vocabulary = 140s = 2 min para 4 questões", | Emojis: ✓
+Linha 2415 (FlipCard=False): titulo: "④ Armadilhas Comuns em Prova Real", | Emojis: ④
+Linha 2515 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 2516 (FlipCard=False): {/* MODULE 10 — SIMULADO MESTRE (FINAL) */} | Emojis: —
+Linha 2517 (FlipCard=False): {/* ═══════════════════════════════════════════════════════════════════════ */} | Emojis: ═══════════════════════════════════════════════════════════════════════
+Linha 2522 (FlipCard=False): titulo="Simulado Mestre — Consolidação Final" | Emojis: —
+Linha 2537 (FlipCard=False): Você dominou 8 estratégias: (1) Decoding question types, (2) Skimming, (3) Scanning, (4) Vocabulary in context, (5) Paragraph structure, (6) Reference words, (7) Tone & purpose, (8) Inference. Agora você precisa INTEGRAR todas numa rotina automática. Quando você vê um texto novo em prova, você não pensa "qual estratégia uso?" — você AUTOMATICAMENTE skim → read questions → scan para answers → inference where needed. | Emojis: —→→→
+Linha 2583 (FlipCard=False): titulo: "① Tabela de Referência: 8 Estratégias Rápidas", | Emojis: ①
+Linha 2590 (FlipCard=False): <div><strong>Pergunta 'Main idea'?</strong> → Skim (título + 1ª/última) = 30 seg</div> | Emojis: →
+Linha 2591 (FlipCard=False): <div><strong>Pergunta 'According to text' (Detail)?</strong> → Scan palavra-chave = 30 seg</div> | Emojis: →
+Linha 2592 (FlipCard=False): <div><strong>Pergunta 'What does author imply'?</strong> → Lê contexto + causa-efeito = 60 seg</div> | Emojis: →
+Linha 2593 (FlipCard=False): <div><strong>Pergunta 'What does X mean'?</strong> → Contexto: preposições/verbos/adjetivos = 20 seg</div> | Emojis: →
+Linha 2594 (FlipCard=False): <div><strong>Pergunta 'What is the tone'?</strong> → Procura adjetivos emocionais = 30 seg</div> | Emojis: →
+Linha 2595 (FlipCard=False): <div><strong>Pergunta 'Topic sentence of paragraph'?</strong> → 1ª sentença = 10 seg</div> | Emojis: →
+Linha 2596 (FlipCard=False): <div><strong>Pergunta 'What does pronoun refer to'?</strong> → Procura noun anterior (gênero/número) = 20 seg</div> | Emojis: →
+Linha 2597 (FlipCard=False): <div><strong>Pergunta 'What can be inferred'?</strong> → Contexto + validação = 60 seg</div> | Emojis: →
+Linha 2609 (FlipCard=False): titulo: "② Checklist Final: Antes de Prova Real", | Emojis: ②
+Linha 2614 (FlipCard=False): <p className="font-semibold">✓ Você consegue...</p> | Emojis: ✓
+Linha 2616 (FlipCard=False): <div>□ Identificar tipos de questão (main idea, detail, inference, vocabulary, tone)?</div> | Emojis: □
+Linha 2617 (FlipCard=False): <div>□ Skim um texto de 300 palavras em 60 segundos?</div> | Emojis: □
+Linha 2618 (FlipCard=False): <div>□ Scan para uma palavra-chave em 30 segundos?</div> | Emojis: □
+Linha 2619 (FlipCard=False): <div>□ Deduzir significado de palavra por contexto?</div> | Emojis: □
+Linha 2620 (FlipCard=False): <div>□ Identificar topic sentence de parágrafo?</div> | Emojis: □
+Linha 2621 (FlipCard=False): <div>□ Resolver referência de pronome (o que 'it' refere)?</div> | Emojis: □
+Linha 2622 (FlipCard=False): <div>□ Identificar tone do texto (formal, crítico, neutro)?</div> | Emojis: □
+Linha 2623 (FlipCard=False): <div>□ Fazer inferência válida (suportada pelo texto)?</div> | Emojis: □
+Linha 2624 (FlipCard=False): <div>□ Completar 4 questões em 6 minutos?</div> | Emojis: □
+Linha 2625 (FlipCard=False): <div>□ Eliminar opções obviamente erradas?</div> | Emojis: □
+Linha 2637 (FlipCard=False): titulo: "③ Dicas Finais de Prova", | Emojis: ③
+Linha 2645 (FlipCard=False): exemplo: "✓ 3 min skim todos os 3 textos. Depois 27 min responder detalhes = melhor distribuição", | Emojis: ✓
+Linha 2650 (FlipCard=False): exemplo: "✓ Ler 2x = entender. Ler 3x+ = desperdício de tempo", | Emojis: ✓
+Linha 2655 (FlipCard=False): exemplo: "✓ Adivinhação com eliminação = 50% chance. Deixar em branco = 0% chance", | Emojis: ✓
+Linha 2660 (FlipCard=False): exemplo: "✓ Faz 3 rápidas em 2 min. Volta para 1 difícil com 4 min restantes", | Emojis: ✓
+Linha 2667 (FlipCard=False): titulo: "④ Sucesso: Você é MESTRE em Reading Comprehension!", | Emojis: ④
+Linha 2680 (FlipCard=False): <p className="text-center font-bold text-lg">🏆 ESPECIALISTA EM READING COMPREHENSION 🏆</p> | Emojis: 🏆🏆
+Linha 2683 (FlipCard=False): <p>✅ Decoding Question Types — você identifica se é main idea, detail ou inference</p> | Emojis: ✅—
+Linha 2684 (FlipCard=False): <p>✅ Skimming — você entende textos em 60 segundos</p> | Emojis: ✅—
+Linha 2685 (FlipCard=False): <p>✅ Scanning — você localiza informação específica rapidamente</p> | Emojis: ✅—
+Linha 2686 (FlipCard=False): <p>✅ Vocabulary in Context — você deduz significados desconhecidos</p> | Emojis: ✅—
+Linha 2687 (FlipCard=False): <p>✅ Paragraph Structure — você encontra topic sentences e detalhes</p> | Emojis: ✅—
+Linha 2688 (FlipCard=False): <p>✅ Reference Words — você resolve pronomes e coesão textual</p> | Emojis: ✅—
+Linha 2689 (FlipCard=False): <p>✅ Tone & Purpose — você identifica atitude e objetivo do autor</p> | Emojis: ✅—
+Linha 2690 (FlipCard=False): <p>✅ Inference — você faz deduções lógicas suportadas</p> | Emojis: ✅—
+Linha 2743 (FlipCard=True): <p className="font-semibold text-green-600">Skim → Questões → Scan → Responde</p> | Emojis: →→→

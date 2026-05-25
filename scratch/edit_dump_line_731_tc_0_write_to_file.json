@@ -1,0 +1,7 @@
+{
+  "line": 731,
+  "source": "MODEL",
+  "type": "PLANNER_RESPONSE",
+  "tool_name": "write_to_file",
+  "arguments": {}
+}

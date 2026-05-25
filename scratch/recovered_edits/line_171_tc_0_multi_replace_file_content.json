@@ -1,0 +1,8 @@
+{
+  "Description": "\"Corrigir linha solta na linha 971 e remover FlipCards básicos antigos no Módulo 2.\"",
+  "Instruction": "\"1. Remover o texto solto após o grid de FlipCards premium. 2. Remover os FlipCards antigos (linhas 991-996).\"",
+  "ReplacementChunks": "[{\"AllowMultiple\":false,\"EndLine\":976,\"ReplacementContent\":\"        </div>\",\"StartLine\":971,\"TargetContent\":\"        </div>os resultados e correções\\r\\n                    </p>\\r\\n                  </div>\\r\\n                </div>\\r\\n              ),\\r\\n            }}\"},{\"AllowMultiple\":false,\"EndLine\":996,\"ReplacementContent\":\"\",\"StartLine\":990,\"TargetContent\":\"        <div className=\\\"grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 mb-8\\\">\\n          <FlipCard frente=\\\"Planejamento\\\" verso=\\\"Define os objetivos e os meios para alcançá-los. Voltado para o futuro.\\\" />\\n          <FlipCard frente=\\\"Organização\\\" verso=\\\"Alocação de recursos e estruturação do trabalho. Divisão de tarefas.\\\" />\\n          <FlipCard frente=\\\"Direção\\\" verso=\\\"Liderança, motivação e comunicação com as pessoas para executar o planejado.\\\" />\\n          <FlipCard frente=\\\"Controle\\\" verso=\\\"Monitoramento, avaliação e correção do desempenho em relação Ã s metas.\\\" />\\n        </div>\"}]",
+  "TargetFile": "\"c:\\\\Workspace\\\\petrobras-quest\\\\src\\\\components\\\\aulas\\\\administracao\\\\AulaAdministracaoGeralSuprimento.tsx\"",
+  "toolAction": "\"Fixing garbled lines Module 2\"",
+  "toolSummary": "\"Fix garbled Module 2\""
+}

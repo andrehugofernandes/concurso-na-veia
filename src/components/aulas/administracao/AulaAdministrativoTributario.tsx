@@ -142,61 +142,57 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
             description="Equação contábil, demonstrações financeiras e papel no ambiente empresarial."
             variant={mv[1]}
           />
-          <div className="space-y-6 text-lg leading-relaxed text-foreground">
-            <p>
-              <strong>Contabilidade</strong> é a ciência que identifica, mensura, registra e comunica informações econômico-financeiras sobre entidades, permitindo que usuários internos e externos tomem decisões
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p><strong>Contabilidade</strong> é a ciência que identifica, mensura, registra e comunica informações econômico-financeiras sobre entidades, permitindo que usuários internos e externos tomem decisões
               fundamentadas. Seu objeto são os <em>fenômenos patrimoniais</em> — variações qualitativas e quantitativas que ocorrem no patrimônio de uma entidade ao longo do tempo. No contexto da Petrobras,
               empresa com receita bruta superior a R$ 500 bilhões anuais, a contabilidade é o alicerce de todas as decisões estratégicas, desde investimentos em exploração de petróleo até o pagamento de dividendos
-              aos acionistas.
-            </p>
-            <p>
-              A <strong>Equação Fundamental da Contabilidade</strong> expressa matematicamente a estrutura patrimonial de qualquer empresa:
+              aos acionistas.</p>
+            <p>Questões de exames exigem domínio das equações patrimoniais clássicas. Bens e direitos constituem Ativos; as obrigações compõem Passivo e Patrimônio Líquido.</p>
+            <p>A <strong>Equação Fundamental da Contabilidade</strong> expressa matematicamente a estrutura patrimonial de qualquer empresa:
               <strong> Ativo = Passivo + Patrimônio Líquido</strong>. O <em>Ativo</em> representa tudo que a empresa <strong>possui</strong> (bens e direitos com valor econômico): caixa, estoques, máquinas,
               créditos a receber. O <em>Passivo</em> representa o que a empresa <strong>deve</strong> a terceiros: fornecedores, empréstimos bancários, salários a pagar. O <em>Patrimônio Líquido (PL)</em>
-              é a diferença — o que sobra para os proprietários após quitar todas as dívidas. Toda transação contábil mantém essa equação em equilíbrio, sem exceções.
-            </p>
-            <p>
-              As três <strong>demonstrações financeiras principais</strong> são: (1) <strong>Balanço Patrimonial (BP)</strong> — "fotografia" do patrimônio em data específica, listando todos os Ativos,
+              é a diferença — o que sobra para os proprietários após quitar todas as dívidas. Toda transação contábil mantém essa equação em equilíbrio, sem exceções.</p>
+            <p>A contabilidade básica apoia a administração ao registrar e interpretar de forma cronológica as movimentações econômicas de bens.</p>
+            <p>As três <strong>demonstrações financeiras principais</strong> são: (1) <strong>Balanço Patrimonial (BP)</strong> — "fotografia" do patrimônio em data específica, listando todos os Ativos,
               Passivos e PL; (2) <strong>Demonstração do Resultado do Exercício (DRE)</strong> — "filme" do desempenho no período, mostrando Receita Bruta, deduções, custos, despesas e Lucro Líquido;
               (3) <strong>Demonstração dos Fluxos de Caixa (DFC)</strong> — mostra entradas e saídas efetivas de dinheiro, separadas em atividades operacionais, de investimento e de financiamento.
-              A Petrobras, por ser companhia aberta, publica essas demonstrações trimestralmente para o mercado.
-            </p>
-            <p>
-              Os <strong>Princípios Contábeis</strong> fundamentais (CFC NBC TG ESTRUTURA CONCEITUAL) incluem: <em>Entidade</em> (patrimônio da empresa é separado do patrimônio dos sócios);
+              A Petrobras, por ser companhia aberta, publica essas demonstrações trimestralmente para o mercado.</p>
+            <p>A aquisição de matérias-primas e insumos industriais com pagamento faturado gera o registro de débito em Ativo e crédito correspondente em Passivo.</p>
+            <p>Os <strong>Princípios Contábeis</strong> fundamentais (CFC NBC TG ESTRUTURA CONCEITUAL) incluem: <em>Entidade</em> (patrimônio da empresa é separado do patrimônio dos sócios);
               <em>Continuidade</em> (empresa opera indefinidamente, a não ser que haja evidência contrária); <em>Oportunidade</em> (registros devem ser feitos no momento do fato gerador);
               <em>Registro pelo valor original</em> (ativos registrados pelo custo de aquisição); <em>Competência</em> (receitas e despesas reconhecidas no período em que ocorrem, independente do caixa).
-              A CESGRANRIO cobra especialmente o <strong>Princípio da Competência</strong> vs. Regime de Caixa.
-            </p>
-            <p>
-              A <strong>CESGRANRIO costuma cobrar</strong> questões sobre: identificar o tipo de demonstrativo (BP, DRE ou DFC) a partir de descrição, calcular o PL dado Ativo e Passivo,
+              A CESGRANRIO cobra especialmente o <strong>Princípio da Competência</strong> vs. Regime de Caixa.</p>
+            <p>Os fatos contábeis classificam-se em permutativos, modificativos (que alteram o valor total de patrimônio líquido) ou fatos mistos.</p>
+            <p>A <strong>CESGRANRIO costuma cobrar</strong> questões sobre: identificar o tipo de demonstrativo (BP, DRE ou DFC) a partir de descrição, calcular o PL dado Ativo e Passivo,
               distinguir Princípio da Competência do Regime de Caixa, e classificar elementos como Ativo Circulante vs. Não-Circulante. Candidatos frequentemente erram ao confundir "Ativo" com "dinheiro"
-              — Ativo inclui todo bem ou direito com valor econômico, não apenas caixa.
-            </p>
-
+              — Ativo inclui todo bem ou direito com valor econômico, não apenas caixa.</p>
+            <p>As demonstrações financeiras oficiais da Petrobras seguem o padrão IFRS para satisfazer exigências legais do mercado de capitais.</p>
             <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-xl border border-amber-200 dark:border-amber-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground text-lg uppercase tracking-wide">Equação Fundamental + Demonstrativos</h4>
               <div className="grid md:grid-cols-3 gap-4 text-lg">
                 <div className="bg-amber-100 dark:bg-amber-900/40 rounded-lg p-4">
-                  <p className="font-bold text-amber-700 dark:text-amber-300 mb-2">ATIVO = PASSIVO + PL</p>
-                  <p className="text-foreground/80">Toda transação mantém essa equação equilibrada. Sempre.</p>
+                  <span className="font-bold text-amber-700 dark:text-amber-300 mb-2">ATIVO = PASSIVO + PL</span>
+                  <span className="text-foreground/80">Toda transação mantém essa equação equilibrada. Sempre.</span>
                 </div>
                 <div className="bg-amber-100 dark:bg-amber-900/40 rounded-lg p-4">
-                  <p className="font-bold text-amber-700 dark:text-amber-300 mb-2">BP — Balanço Patrimonial</p>
-                  <p className="text-foreground/80">Foto estática: o que a empresa tem e deve em uma data.</p>
+                  <span className="font-bold text-amber-700 dark:text-amber-300 mb-2">BP — Balanço Patrimonial</span>
+                  <span className="text-foreground/80">Foto estática: o que a empresa tem e deve em uma data.</span>
                 </div>
                 <div className="bg-amber-100 dark:bg-amber-900/40 rounded-lg p-4">
-                  <p className="font-bold text-amber-700 dark:text-amber-300 mb-2">DRE — Resultado</p>
-                  <p className="text-foreground/80">Receita − Custos − Despesas = Lucro Líquido (período).</p>
+                  <span className="font-bold text-amber-700 dark:text-amber-300 mb-2">DRE — Resultado</span>
+                  <span className="text-foreground/80">Receita − Custos − Despesas = Lucro Líquido (período).</span>
                 </div>
               </div>
             </div>
+          
+          
+          
           </div>
         </section>
 
         <div className="space-y-6">
           <ModuleSectionHeader index={2} title="C.E.D.E. — Contabilidade Básica" variant={mv[1]} />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação",
                 icone: <LuBookOpen />,
@@ -301,40 +297,34 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader index="INTRO" title="Sistema de Partidas Dobradas" description="Como toda transação é registrada: débito, crédito, equilíbrio permanente." variant={mv[2]} />
-          <div className="space-y-6 text-lg leading-relaxed text-foreground">
-            <p>
-              O <strong>Sistema de Partidas Dobradas</strong> (Double-Entry Bookkeeping), criado por Luca Pacioli em 1494, é a base técnica da contabilidade moderna. O princípio é simples e absoluto:
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O <strong>Sistema de Partidas Dobradas</strong> (Double-Entry Bookkeeping), criado por Luca Pacioli em 1494, é a base técnica da contabilidade moderna. O princípio é simples e absoluto:
               <strong> toda transação financeira afeta PELO MENOS DUAS contas</strong>, sempre com o total de débitos igual ao total de créditos. Isso garante que a equação A = P + PL nunca se desequilibre.
-              Na Petrobras, cada um dos milhares de lançamentos diários — desde pagamento de salário a operadores até compra de plataformas offshore — segue essa regra sem exceção.
-            </p>
-            <p>
-              <strong>Débito e Crédito</strong> não são "bom e ruim" — são simplesmente <em>lados opostos</em> do lançamento contábil. As regras variam por tipo de conta:
+              Na Petrobras, cada um dos milhares de lançamentos diários — desde pagamento de salário a operadores até compra de plataformas offshore — segue essa regra sem exceção.</p>
+            <p>A banca exige associar lançamentos às suas respectivas demonstrações fiscais regulamentadas: Balanço Patrimonial e DRE anual.</p>
+            <p><strong>Débito e Crédito</strong> não são "bom e ruim" — são simplesmente <em>lados opostos</em> do lançamento contábil. As regras variam por tipo de conta:
               Para <strong>Contas de Ativo</strong>: Débito = aumenta, Crédito = diminui.
               Para <strong>Contas de Passivo e PL</strong>: Débito = diminui, Crédito = aumenta.
               Para <strong>Contas de Despesa</strong>: Débito = aumenta (reduz o PL).
               Para <strong>Contas de Receita</strong>: Crédito = aumenta (aumenta o PL).
-              Memorize: <em>Ativos e Despesas ficam à esquerda (D), Passivos, PL e Receitas ficam à direita (C)</em>.
-            </p>
-            <p>
-              O <strong>Plano de Contas (Chart of Accounts)</strong> é a lista estruturada e numerada de todas as contas que uma empresa utiliza. A Petrobras tem um CoA próprio com milhares de contas,
+              Memorize: <em>Ativos e Despesas ficam à esquerda (D), Passivos, PL e Receitas ficam à direita (C)</em>.</p>
+            <p>A escrituração do livro Diário e do livro Razão permite consolidar balancetes de verificação periódicos fundamentais para auditorias.</p>
+            <p>O <strong>Plano de Contas (Chart of Accounts)</strong> é a lista estruturada e numerada de todas as contas que uma empresa utiliza. A Petrobras tem um CoA próprio com milhares de contas,
               organizadas hierarquicamente: Classe 1 (Ativo), Classe 2 (Passivo), Classe 3 (PL), Classe 4 (Receitas), Classe 5 (Custos e Despesas). Cada transação deve ser registrada nas contas
-              específicas do CoA, garantindo padronização, rastreabilidade e facilidade de auditoria.
-            </p>
-            <p>
-              Os <strong>Razonetes (T-Accounts)</strong> são representações gráficas em formato de "T" utilizadas para visualizar o saldo de uma conta específica ao longo do tempo. O lado esquerdo
+              específicas do CoA, garantindo padronização, rastreabilidade e facilidade de auditoria.</p>
+            <p>O fechamento de período contábil transfere saldos de contas de despesas e receitas para apuração da conta de resultado de exercício.</p>
+            <p>Os <strong>Razonetes (T-Accounts)</strong> são representações gráficas em formato de "T" utilizadas para visualizar o saldo de uma conta específica ao longo do tempo. O lado esquerdo
               do T registra os débitos, o lado direito registra os créditos. O saldo final é a diferença entre a soma dos débitos e a soma dos créditos. Essa ferramenta é fundamental em estudos contábeis
-              para rastrear como uma conta evolui ao longo de múltiplas transações.
-            </p>
-            <p>
-              A <strong>CESGRANRIO costuma cobrar</strong>: identificar o lançamento contábil correto para uma transação descrita, reconhecer quais contas são debitadas e creditadas, e calcular o saldo
-              final de um razonete após múltiplos lançamentos. Candidatos frequentemente erram ao inverter as regras de débito/crédito para Passivos — lembre: em Passivo, <em>crédito aumenta</em>.
-            </p>
-
+              para rastrear como uma conta evolui ao longo de múltiplas transações.</p>
+            <p>Demonstrações obrigatórias como a DRE determinam o lucro líquido com a dedução ordenada de despesas operacionais e tributos incidentes.</p>
+            <p>A <strong>CESGRANRIO costuma cobrar</strong>: identificar o lançamento contábil correto para uma transação descrita, reconhecer quais contas são debitadas e creditadas, e calcular o saldo
+              final de um razonete após múltiplos lançamentos. Candidatos frequentemente erram ao inverter as regras de débito/crédito para Passivos — lembre: em Passivo, <em>crédito aumenta</em>.</p>
+            <p>Almoxarifados da Petrobras lançam eletronicamente os dados de entrada de insumos no sistema SAP ERP com reflexos contábeis imediatos.</p>
             <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-xl border border-blue-200 dark:border-blue-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground text-lg uppercase tracking-wide">Regras de Débito e Crédito</h4>
               <div className="grid md:grid-cols-2 gap-4 text-lg">
                 <div className="space-y-2">
-                  <p className="font-semibold text-blue-600 dark:text-blue-400">Débito aumenta (D+):</p>
+                  <span className="font-semibold text-blue-600 dark:text-blue-400">Débito aumenta (D+):</span>
                   <ul className="space-y-1 text-foreground/80 list-disc list-inside">
                     <li>Contas de Ativo</li>
                     <li>Contas de Despesa e Custo</li>
@@ -342,7 +332,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
                   </ul>
                 </div>
                 <div className="space-y-2">
-                  <p className="font-semibold text-blue-600 dark:text-blue-400">Crédito aumenta (C+):</p>
+                  <span className="font-semibold text-blue-600 dark:text-blue-400">Crédito aumenta (C+):</span>
                   <ul className="space-y-1 text-foreground/80 list-disc list-inside">
                     <li>Contas de Passivo</li>
                     <li>Patrimônio Líquido</li>
@@ -351,13 +341,15 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
                 </div>
               </div>
             </div>
+          
+          
+          
           </div>
         </section>
 
         <div className="space-y-6">
           <ModuleSectionHeader index={2} title="C.E.D.E. — Partidas Dobradas" variant={mv[2]} />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação",
                 icone: <LuBookOpen />,
@@ -442,59 +434,55 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader index="INTRO" title="Sistema Tributário Nacional (STN)" description="Base legal: CTN, Constituição Federal, espécies de tributos e princípios." variant={mv[3]} />
-          <div className="space-y-6 text-lg leading-relaxed text-foreground">
-            <p>
-              O <strong>Sistema Tributário Nacional (STN)</strong> é o conjunto de normas constitucionais e infraconstitucionais que regulamentam a instituição, arrecadação e fiscalização de tributos no Brasil.
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O <strong>Sistema Tributário Nacional (STN)</strong> é o conjunto de normas constitucionais e infraconstitucionais que regulamentam a instituição, arrecadação e fiscalização de tributos no Brasil.
               Sua base é o <strong>Código Tributário Nacional (CTN — Lei nº 5.172/1966)</strong>, recepcionado pela Constituição Federal de 1988 com status de Lei Complementar. O CTN define tributo
               no art. 3º: <em>"Tributo é toda prestação pecuniária compulsória, em moeda ou cujo valor nela se possa exprimir, que não constitua sanção de ato ilícito, instituída em lei e cobrada
-              mediante atividade administrativa plenamente vinculada."</em> Para o Técnico de Suprimento, entender tributos é crítico: toda compra da Petrobras envolve ICMS, IPI, PIS, COFINS e ISS.
-            </p>
-            <p>
-              O art. 5º do CTN define as <strong>espécies tributárias</strong>: <em>Impostos, Taxas e Contribuições de Melhoria</em>. A doutrina e o STF ampliaram esse rol para 5 espécies,
+              mediante atividade administrativa plenamente vinculada."</em> Para o Técnico de Suprimento, entender tributos é crítico: toda compra da Petrobras envolve ICMS, IPI, PIS, COFINS e ISS.</p>
+            <p>Provas abordam a competência e repartição de receitas fiscais entre entes federativos da União, Estados e Prefeituras Municipais.</p>
+            <p>O art. 5º do CTN define as <strong>espécies tributárias</strong>: <em>Impostos, Taxas e Contribuições de Melhoria</em>. A doutrina e o STF ampliaram esse rol para 5 espécies,
               incluindo <em>Empréstimos Compulsórios</em> e <em>Contribuições Especiais</em> (PIS, COFINS, CSLL, contribuições previdenciárias). Os <strong>Impostos</strong> são tributos
               <em>não vinculados</em> — não exigem contraprestação estatal específica (ICMS, IR, IPI). As <strong>Taxas</strong> são vinculadas ao exercício do poder de polícia ou serviço público
-              específico. As <strong>Contribuições de Melhoria</strong> decorrem de obra pública que valoriza imóvel do contribuinte.
-            </p>
-            <p>
-              Os <strong>Princípios Constitucionais Tributários</strong> são limitações ao poder de tributar, previstos nos arts. 150-152 da CF/88:
+              específico. As <strong>Contribuições de Melhoria</strong> decorrem de obra pública que valoriza imóvel do contribuinte.</p>
+            <p>A relação jurídica tributária estabelece as competências de instituição de impostos, taxas regulatórias e contribuições de seguridade social.</p>
+            <p>Os <strong>Princípios Constitucionais Tributários</strong> são limitações ao poder de tributar, previstos nos arts. 150-152 da CF/88:
               <strong> Legalidade</strong> (tributo só por lei); <strong>Anterioridade</strong> (tributo não pode ser cobrado no mesmo exercício em que foi instituído — exceção: IPI, IOF, II, IE);
               <strong>Irretroatividade</strong> (lei tributária não pode atingir fatos passados); <strong>Isonomia</strong> (tratamento igual para contribuintes em situação equivalente);
-              <strong>Capacidade Contributiva</strong> (tributar mais quem pode mais); <strong>Vedação ao Confisco</strong> (tributo não pode ser confiscatório).
-            </p>
-            <p>
-              A <strong>Competência Tributária</strong> define qual ente federativo pode instituir cada tributo: <strong>União</strong>: II, IE, IR, IPI, IOF, ITR, IGF, empréstimos compulsórios, PIS, COFINS, CSLL.
+              <strong>Capacidade Contributiva</strong> (tributar mais quem pode mais); <strong>Vedação ao Confisco</strong> (tributo não pode ser confiscatório).</p>
+            <p>Enquanto impostos são tributos com destinação não vinculada pelo Estado, taxas decorrem de prestação efetiva de serviços públicos.</p>
+            <p>A <strong>Competência Tributária</strong> define qual ente federativo pode instituir cada tributo: <strong>União</strong>: II, IE, IR, IPI, IOF, ITR, IGF, empréstimos compulsórios, PIS, COFINS, CSLL.
               <strong>Estados/DF</strong>: ICMS, IPVA, ITCMD. <strong>Municípios</strong>: ISS, IPTU, ITBI. A Petrobras, como empresa nacional com operações em todos os estados, lida simultaneamente com
-              tributos federais, estaduais e municipais em cada transação comercial.
-            </p>
-            <p>
-              A <strong>CESGRANRIO cobra</strong>: classificar espécies tributárias (imposto vs. taxa vs. contribuição), identificar violações a princípios constitucionais, reconhecer a competência
-              de cada tributo (federal/estadual/municipal), e interpretar artigos do CTN. pontos de atenção comum: confundir <em>anterioridade anual</em> com <em>anterioridade nonagesimal</em> (90 dias).
-            </p>
-
+              tributos federais, estaduais e municipais em cada transação comercial.</p>
+            <p>O fato gerador de obrigações tributárias principais refere-se ao dever de pagar tributo; obrigações acessórias referem-se a deveres formais.</p>
+            <p>A <strong>CESGRANRIO cobra</strong>: classificar espécies tributárias (imposto vs. taxa vs. contribuição), identificar violações a princípios constitucionais, reconhecer a competência
+              de cada tributo (federal/estadual/municipal), e interpretar artigos do CTN. pontos de atenção comum: confundir <em>anterioridade anual</em> com <em>anterioridade nonagesimal</em> (90 dias).</p>
+            <p>A companhia recolhe royalties expressivos aos estados produtores de petróleo e gás pela extração em blocos marítimos.</p>
             <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-xl border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground text-lg uppercase tracking-wide">Competência Tributária — Resumo</h4>
               <div className="grid md:grid-cols-3 gap-3 text-lg">
                 <div className="bg-emerald-100 dark:bg-emerald-900/40 rounded-lg p-3">
-                  <p className="font-bold text-emerald-700 dark:text-emerald-300 mb-1">UNIÃO (Federal)</p>
-                  <p className="text-foreground/80 text-lg">IR, IPI, IOF, II, IE, ITR, PIS, COFINS, CSLL, CIDE</p>
+                  <span className="font-bold text-emerald-700 dark:text-emerald-300 mb-1">UNIÃO (Federal)</span>
+                  <span className="text-foreground/80 text-lg">IR, IPI, IOF, II, IE, ITR, PIS, COFINS, CSLL, CIDE</span>
                 </div>
                 <div className="bg-emerald-100 dark:bg-emerald-900/40 rounded-lg p-3">
-                  <p className="font-bold text-emerald-700 dark:text-emerald-300 mb-1">ESTADOS (Estadual)</p>
-                  <p className="text-foreground/80 text-lg">ICMS, IPVA, ITCMD (herança e doação)</p>
+                  <span className="font-bold text-emerald-700 dark:text-emerald-300 mb-1">ESTADOS (Estadual)</span>
+                  <span className="text-foreground/80 text-lg">ICMS, IPVA, ITCMD (herança e doação)</span>
                 </div>
                 <div className="bg-emerald-100 dark:bg-emerald-900/40 rounded-lg p-3">
-                  <p className="font-bold text-emerald-700 dark:text-emerald-300 mb-1">MUNICÍPIOS</p>
-                  <p className="text-foreground/80 text-lg">ISS, IPTU, ITBI (transmissão de bens imóveis)</p>
+                  <span className="font-bold text-emerald-700 dark:text-emerald-300 mb-1">MUNICÍPIOS</span>
+                  <span className="text-foreground/80 text-lg">ISS, IPTU, ITBI (transmissão de bens imóveis)</span>
                 </div>
               </div>
             </div>
+          
+          
+          
           </div>
         </section>
 
         <div className="space-y-6">
           <ModuleSectionHeader index={2} title="C.E.D.E. — Sistema Tributário Nacional" variant={mv[3]} />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação",
                 icone: <LuScale />,
@@ -581,39 +569,33 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader index="INTRO" title="ICMS — Imposto sobre Circulação de Mercadorias e Serviços" description="O principal tributo estadual: alíquotas, não-cumulatividade, fato gerador." variant={mv[4]} />
-          <div className="space-y-6 text-lg leading-relaxed text-foreground">
-            <p>
-              O <strong>ICMS (Imposto sobre Circulação de Mercadorias e Serviços)</strong>, previsto no art. 155, II da CF/88 e regulamentado pela Lei Complementar nº 87/1996 (Lei Kandir),
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O <strong>ICMS (Imposto sobre Circulação de Mercadorias e Serviços)</strong>, previsto no art. 155, II da CF/88 e regulamentado pela Lei Complementar nº 87/1996 (Lei Kandir),
               é o tributo de maior arrecadação no Brasil. Incide sobre: circulação de mercadorias, prestação de serviços de transporte interestadual e intermunicipal, e serviços de comunicação.
               Para a Petrobras, o ICMS é crítico em toda a cadeia: na extração (máquinas e insumos comprados), no refino (combustíveis produzidos), e na distribuição (venda para postos e indústrias).
-              A alíquota interna varia de 12% a 25% conforme o estado e o produto.
-            </p>
-            <p>
-              O principal mecanismo do ICMS é a <strong>não-cumulatividade</strong>: o imposto pago nas etapas anteriores da cadeia produtiva pode ser abatido (creditado) do imposto devido na etapa seguinte.
+              A alíquota interna varia de 12% a 25% conforme o estado e o produto.</p>
+            <p>A banca cobra o princípio de não-cumulatividade do ICMS e do IPI, regulando a compensação de tributos pagos nas fases de compras.</p>
+            <p>O principal mecanismo do ICMS é a <strong>não-cumulatividade</strong>: o imposto pago nas etapas anteriores da cadeia produtiva pode ser abatido (creditado) do imposto devido na etapa seguinte.
               Isso evita o "efeito cascata" — tributar o tributo. Exemplo: Petrobras compra aço com ICMS de R$ 1.000 (crédito). Vende refinaria com ICMS de R$ 3.000 (débito). ICMS a recolher = R$ 3.000 − R$ 1.000 = R$ 2.000.
-              Este crédito é chamado de <strong>crédito fiscal de ICMS</strong> e aparece no balanço como ativo tributário.
-            </p>
-            <p>
-              O <strong>IPI (Imposto sobre Produtos Industrializados)</strong> é de competência federal (CF art. 153, IV) e incide sobre produtos industrializados nacionais e importados.
+              Este crédito é chamado de <strong>crédito fiscal de ICMS</strong> e aparece no balanço como ativo tributário.</p>
+            <p>O ICMS incide sobre operações de circulação física de mercadorias; o IPI recai sobre a industrialização e desembaraço de produtos.</p>
+            <p>O <strong>IPI (Imposto sobre Produtos Industrializados)</strong> é de competência federal (CF art. 153, IV) e incide sobre produtos industrializados nacionais e importados.
               Tem caráter <strong>extrafiscal</strong> — além de arrecadar, serve como instrumento de política econômica (governo reduz IPI para estimular indústria). Assim como o ICMS, o IPI
               também é <strong>não-cumulativo</strong>: crédito na entrada, débito na saída. A alíquota varia enormemente — de 0% (alimentos básicos) a 300% (cigarros). É exceção ao princípio
-              da anterioridade anual: pode ter alíquota alterada por decreto do Executivo com vigência imediata.
-            </p>
-            <p>
-              A diferença fundamental: <strong>ICMS</strong> incide sobre circulação de mercadorias e alguns serviços (transporte/comunicação), é <em>estadual</em>; <strong>IPI</strong> incide
+              da anterioridade anual: pode ter alíquota alterada por decreto do Executivo com vigência imediata.</p>
+            <p>O aproveitamento de créditos fiscais de ICMS sobre insumos de refino de petróleo requer estrita conformidade técnica com o fisco estadual.</p>
+            <p>A diferença fundamental: <strong>ICMS</strong> incide sobre circulação de mercadorias e alguns serviços (transporte/comunicação), é <em>estadual</em>; <strong>IPI</strong> incide
               especificamente sobre produtos industrializados, é <em>federal</em>. Ambos são não-cumulativos. Nas compras da Petrobras para uso na produção (insumos), ambos geram crédito fiscal,
-              reduzindo o custo efetivo da aquisição — relevante para a área de Suprimento.
-            </p>
-            <p>
-              A <strong>CESGRANRIO cobra</strong>: calcular ICMS a recolher pelo método crédito-débito, identificar operações não-tributadas pelo ICMS (ex: exportações são imunes), distinguir
-              ICMS de ISS (ISS é municipal, incide sobre serviços em geral), e reconhecer as exceções à anterioridade do IPI.
-            </p>
-
+              reduzindo o custo efetivo da aquisição — relevante para a área de Suprimento.</p>
+            <p>A substituição tributária nos combustíveis centraliza o recolhimento nas refinarias de origem, otimizando a fiscalização tributária.</p>
+            <p>A <strong>CESGRANRIO cobra</strong>: calcular ICMS a recolher pelo método crédito-débito, identificar operações não-tributadas pelo ICMS (ex: exportações são imunes), distinguir
+              ICMS de ISS (ISS é municipal, incide sobre serviços em geral), e reconhecer as exceções à anterioridade do IPI.</p>
+            <p>A área fiscal da Petrobras gerencia créditos complexos de ICMS acumulados na compra de equipamentos industriais pesados.</p>
             <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-xl border border-rose-200 dark:border-rose-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground text-lg uppercase tracking-wide">ICMS vs IPI — Comparativo</h4>
               <div className="grid md:grid-cols-2 gap-4 text-lg">
                 <div className="space-y-2">
-                  <p className="font-semibold text-rose-600 dark:text-rose-400">ICMS</p>
+                  <span className="font-semibold text-rose-600 dark:text-rose-400">ICMS</span>
                   <ul className="space-y-1 text-foreground/80 text-lg list-disc list-inside">
                     <li>Competência: <strong>Estadual</strong></li>
                     <li>Base: Circulação de mercadorias + transporte + comunicação</li>
@@ -623,7 +605,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
                   </ul>
                 </div>
                 <div className="space-y-2">
-                  <p className="font-semibold text-rose-600 dark:text-rose-400">IPI</p>
+                  <span className="font-semibold text-rose-600 dark:text-rose-400">IPI</span>
                   <ul className="space-y-1 text-foreground/80 text-lg list-disc list-inside">
                     <li>Competência: <strong>Federal</strong></li>
                     <li>Base: Produtos industrializados</li>
@@ -634,13 +616,15 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
                 </div>
               </div>
             </div>
+          
+          
+          
           </div>
         </section>
 
         <div className="space-y-6">
           <ModuleSectionHeader index={2} title="C.E.D.E. — ICMS e IPI" variant={mv[4]} />
-          <ContentAccordion
-            slides={[
+          <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação",
                 icone: <LuFileText />,
@@ -718,25 +702,34 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         <ModuleBanner numero={5} titulo="Impostos de Renda (IRPJ e CSLL)" descricao="Tributacao do lucro: regimes, base de calculo e aliquotas." variant={mv[5]} />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader index="INTRO" title="IRPJ e CSLL — Tributos sobre o Lucro" description="Como grandes empresas calculam imposto sobre o lucro." variant={mv[5]} />
-          <div className="space-y-6 text-lg leading-relaxed text-foreground">
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>O <strong>IRPJ</strong> tem aliquota de <strong>15%</strong>, mais <strong>adicional de 10%</strong> sobre lucro acima de R$ 240.000/ano. A <strong>CSLL</strong> tem aliquota de <strong>9%</strong>. Juntos: <strong>34%</strong> sobre o lucro tributavel — o que a Petrobras paga sobre seus bilhoes de lucro anual.</p>
+            <p>A banca exige familiaridade com a tributação do Lucro Real e cálculo anual ou trimestral de estimativas mensais obrigatórias.</p>
             <p>Tres <strong>regimes</strong>: (1) <strong>Lucro Real</strong> — obrigatorio acima de R$ 78 milhoes/ano (Petrobras); base = lucro contabil ajustado pelo LALUR com adicoes e exclusoes; (2) <strong>Lucro Presumido</strong> — opcional ate R$ 78 milhoes; aplica percentual de presuncao sobre receita (8% comercio, 32% servicos); (3) <strong>Lucro Arbitrado</strong> — irregularidade contabil ou fraude.</p>
+            <p>O Imposto de Renda Pessoa Jurídica (IRPJ) e a CSLL incidem sobre o lucro real líquido ajustado por adições e exclusões fiscais.</p>
             <p>No <strong>LALUR</strong>: Lucro Contabil + Adicoes (despesas nao-dedutiveis: multas, brindes) menos Exclusoes (receitas nao-tributaveis) = Lucro Real. Aplica-se IRPJ 25% + CSLL 9% = 34%.</p>
+            <p>Estatais de grande porte enquadram-se obrigatoriamente no regime de Lucro Real, apurando impostos a partir do resultado societário LALUR.</p>
             <p>A <strong>CESGRANRIO cobra</strong>: regime correto por faturamento, calculo Lucro Presumido, adicoes/exclusoes no LALUR, e que IRPJ respeita anterioridade anual mas NAO a nonagesimal.</p>
-            <div className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 rounded-xl border border-violet-200 dark:border-violet-800 p-6 space-y-3">
+            <p>O aproveitamento de prejuízos fiscais acumulados de exercícios anteriores sujeita-se à trava de dedução máxima de trinta por cento.</p>
+            <p>O Lucro Real apura o IRPJ sobre o resultado societário ajustado pelas adições e exclusões do LALUR, sendo obrigatório para empresas com faturamento acima do limite legal.</p>
+            <p>A Petrobras apura de forma rigorosa as bases tributárias do IRPJ anual integrando o controle de auditorias independentes.</p>
+            <div className="bg-gradient-to-br from-teal-50 to-blue-50 dark:from-teal-950/30 dark:to-blue-950/30 rounded-xl border border-teal-200 dark:border-teal-800 p-6 space-y-3">
               <h4 className="font-bold text-foreground text-lg uppercase tracking-wide">Regimes de Tributacao do Lucro</h4>
               <div className="grid md:grid-cols-3 gap-3 text-lg">
-                <div className="bg-violet-100 dark:bg-violet-900/40 rounded-lg p-3"><p className="font-bold text-violet-700 dark:text-violet-300 mb-1">Lucro Real</p><p className="text-foreground/80 text-lg">Obrigatorio acima R$78M. LALUR. Petrobras usa este.</p></div>
-                <div className="bg-violet-100 dark:bg-violet-900/40 rounded-lg p-3"><p className="font-bold text-violet-700 dark:text-violet-300 mb-1">Lucro Presumido</p><p className="text-foreground/80 text-lg">Ate R$78M. 8% comercio ou 32% servicos x receita.</p></div>
-                <div className="bg-violet-100 dark:bg-violet-900/40 rounded-lg p-3"><p className="font-bold text-violet-700 dark:text-violet-300 mb-1">Lucro Arbitrado</p><p className="text-foreground/80 text-lg">Fraude ou escrituracao irregular. Fisco arbitra.</p></div>
+                <div className="bg-teal-100 dark:bg-teal-900/40 rounded-lg p-3"><span className="font-bold text-teal-700 dark:text-teal-300 mb-1">Lucro Real</span><span className="text-foreground/80 text-lg">Obrigatorio acima R$78M. LALUR. Petrobras usa este.</span></div>
+                <div className="bg-teal-100 dark:bg-teal-900/40 rounded-lg p-3"><span className="font-bold text-teal-700 dark:text-teal-300 mb-1">Lucro Presumido</span><span className="text-foreground/80 text-lg">Ate R$78M. 8% comercio ou 32% servicos x receita.</span></div>
+                <div className="bg-teal-100 dark:bg-teal-900/40 rounded-lg p-3"><span className="font-bold text-teal-700 dark:text-teal-300 mb-1">Lucro Arbitrado</span><span className="text-foreground/80 text-lg">Fraude ou escrituracao irregular. Fisco arbitra.</span></div>
               </div>
-              <p className="text-lg font-semibold text-violet-700 dark:text-violet-300">IRPJ 15% + adicional 10% + CSLL 9% = <strong>34%</strong> sobre o lucro</p>
+              <span className="text-lg font-semibold text-teal-700 dark:text-teal-300">IRPJ 15% + adicional 10% + CSLL 9% = <strong>34%</strong> sobre o lucro</span>
             </div>
+          
+          
+          
           </div>
         </section>
         <div className="space-y-6">
           <ModuleSectionHeader index={2} title="C.E.D.E. — IRPJ e CSLL" variant={mv[5]} />
-          <ContentAccordion slides={[
+          <ContentAccordion mode="stacked" slides={[
             { titulo: "Conceituacao", icone: <LuBriefcase />, conteudo: (<div className="space-y-2 text-lg"><p><strong>IRPJ:</strong> 15% + 10% adicional (lucro acima R$240k/ano). Federal. <strong>CSLL:</strong> 9% sobre lucro. Lucro Real obrigatorio acima R$78M.</p></div>) },
             { titulo: "Exemplificacao", icone: <LuCalculator />, conteudo: (<div className="space-y-2 text-lg"><p><strong>Lucro Presumido comercio:</strong> Receita R$10M x 8% = R$800k. IRPJ = R$800k x 15% = R$120k.</p><p><strong>Petrobras Lucro Real:</strong> Lucro R$101bi x 34% = R$34,34bi de IRPJ+CSLL.</p></div>) },
             { titulo: "Dicas", icone: <LuTrendingUp />, conteudo: (<div className="space-y-2 text-lg"><p>Petrobras = Lucro Real obrigatorio. IRPJ: anterioridade anual, NAO nonagesimal. Prejuizo: compensavel em ate 30% do lucro futuro.</p></div>) },
@@ -744,7 +737,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           ]} />
         </div>
         
-<ModuleConsolidation index={3} variant={mv[5]} video={{ videoId: "dQw4w9WgXcQ", title: "IRPJ e CSLL — Regimes", duration: "13:00" }} resumoVisual={{ moduloNome: "Módulo 5", tituloAula: "IRPJ e CSLL", materia: "Administracao", images: [{ title: "Regimes vs Faturamento", type: "Comparativo", placeholderColor: "bg-violet-500/20" }] }} sinteseEstrategica={{ title: "34% sobre o lucro", content: (<div className="p-4 bg-violet-500/10 border border-violet-500/20 rounded-xl text-lg"><p className="font-bold text-violet-600 dark:text-violet-400">IRPJ 25% + CSLL 9% = 34% sobre o lucro</p><p className="text-lg text-foreground/70">Lucro Real obrigatorio acima R$78M (Petrobras)</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Audio IRPJ e CSLL", artista: "Resumo Petrobras" }} />
+<ModuleConsolidation index={3} variant={mv[5]} video={{ videoId: "dQw4w9WgXcQ", title: "IRPJ e CSLL — Regimes", duration: "13:00" }} resumoVisual={{ moduloNome: "Módulo 5", tituloAula: "IRPJ e CSLL", materia: "Administracao", images: [{ title: "Regimes vs Faturamento", type: "Comparativo", placeholderColor: "bg-teal-500/20" }] }} sinteseEstrategica={{ title: "34% sobre o lucro", content: (<div className="p-4 bg-teal-500/10 border border-teal-500/20 rounded-xl text-lg"><p className="font-bold text-teal-600 dark:text-teal-400">IRPJ 25% + CSLL 9% = 34% sobre o lucro</p><p className="text-lg text-foreground/70">Lucro Real obrigatorio acima R$78M (Petrobras)</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Audio IRPJ e CSLL", artista: "Resumo Petrobras" }} />
 
                 <QuizInterativo questoes={[
           { id: "m5q1", pergunta: "Qual regime e OBRIGATORIO para a Petrobras?", opcoes: [{ label: "Lucro Presumido", valor: "a" }, { label: "Lucro Real", valor: "b" }, { label: "Simples Nacional", valor: "c" }, { label: "Lucro Arbitrado", valor: "d" }], correta: "b", explicacao: "Lucro Real e obrigatorio para receita bruta superior a R$78M/ano." },
@@ -758,22 +751,32 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         <ModuleBanner numero={6} titulo="Contribuicoes Sociais (PIS e COFINS)" descricao="Contribuicoes sobre a receita: cumulativo e nao-cumulativo." variant={mv[6]} />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader index="INTRO" title="PIS e COFINS — Sobre a Receita Bruta" description="Regimes, aliquotas e creditos para a Petrobras." variant={mv[6]} />
-          <div className="space-y-6 text-lg leading-relaxed text-foreground">
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>O <strong>PIS</strong> e a <strong>COFINS</strong> sao contribuicoes federais sobre a <em>receita bruta</em>, nao sobre o lucro. Financiam a seguridade social. Para a Petrobras, representam bilhoes anuais em recolhimento sobre cada real de receita de vendas.</p>
+            <p>Questões sobre PIS e COFINS cobram a distinção entre a sistemática cumulativa clássica e o regime de incidência não-cumulativa.</p>
             <p>Dois regimes: (1) <strong>Cumulativo</strong> (Lucro Presumido): PIS 0,65%, COFINS 3%, sem creditos; (2) <strong>Nao-Cumulativo</strong> (Lucro Real — Petrobras): PIS 1,65%, COFINS 7,6%, COM creditos sobre compras de insumos, energia e ativos. Formula: a recolher = debito sobre receitas menos credito sobre compras.</p>
+            <p>O PIS e a COFINS não-cumulativos apresentam alíquotas maiores, permitindo compensar despesas operacionais atreladas aos insumos de refino.</p>
             <p><strong>Distincao critica:</strong> PIS/COFINS incidem sobre <em>RECEITA</em>. IRPJ/CSLL incidem sobre <em>LUCRO</em>. Confundir isso e o erro mais cobrado pela CESGRANRIO neste tema.</p>
+            <p>Nas operações de importação de insumos submarinos, há incidência de PIS/COFINS-Importação no momento do desembaraço aduaneiro.</p>
+            <p>O PIS e a COFINS não-cumulativos permitem o desconto de créditos sobre insumos e serviços adquiridos, tornando o custo tributário menor para empresas que compram muito.</p>
+            <p>A alíquota regressiva do PIS e COFINS cumulativo incide de forma direta sobre o faturamento bruto, sem compensações de créditos.</p>
+            <p>A diferenciação entre o regime cumulativo — aplicado para empresas menores — e o não-cumulativo é ponto frequente em questões da CESGRANRIO sobre tributação federal.</p>
+            <p>A estatal compensa massivos créditos de PIS/COFINS incidentes sobre os contratos de afretamento marítimo de plataformas.</p>
             <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-xl border border-amber-200 dark:border-amber-800 p-6 space-y-3">
               <h4 className="font-bold text-foreground text-lg uppercase tracking-wide">Aliquotas PIS/COFINS por Regime</h4>
               <div className="grid md:grid-cols-2 gap-4 text-lg">
-                <div className="space-y-1 bg-amber-100 dark:bg-amber-900/40 rounded-lg p-3"><p className="font-semibold text-amber-700 dark:text-amber-300">Cumulativo (Lucro Presumido)</p><p className="text-lg text-foreground/80">PIS 0,65% + COFINS 3% = 3,65%. Sem credito.</p></div>
-                <div className="space-y-1 bg-amber-100 dark:bg-amber-900/40 rounded-lg p-3"><p className="font-semibold text-amber-700 dark:text-amber-300">Nao-Cumulativo (Lucro Real)</p><p className="text-lg text-foreground/80">PIS 1,65% + COFINS 7,6% = 9,25%. COM credito.</p></div>
+                <div className="space-y-1 bg-amber-100 dark:bg-amber-900/40 rounded-lg p-3"><span className="font-semibold text-amber-700 dark:text-amber-300">Cumulativo (Lucro Presumido)</span><span className="text-lg text-foreground/80">PIS 0,65% + COFINS 3% = 3,65%. Sem credito.</span></div>
+                <div className="space-y-1 bg-amber-100 dark:bg-amber-900/40 rounded-lg p-3"><span className="font-semibold text-amber-700 dark:text-amber-300">Nao-Cumulativo (Lucro Real)</span><span className="text-lg text-foreground/80">PIS 1,65% + COFINS 7,6% = 9,25%. COM credito.</span></div>
               </div>
             </div>
+          
+          
+          
           </div>
         </section>
         <div className="space-y-6">
           <ModuleSectionHeader index={2} title="C.E.D.E. — PIS e COFINS" variant={mv[6]} />
-          <ContentAccordion slides={[
+          <ContentAccordion mode="stacked" slides={[
             { titulo: "Conceituacao", icone: <LuShield />, conteudo: (<div className="space-y-2 text-lg"><p>PIS + COFINS = sobre RECEITA (nao lucro). Cumulativo: 3,65% sem credito. Nao-cum: 9,25% com credito sobre compras.</p></div>) },
             { titulo: "Exemplificacao", icone: <LuCalculator />, conteudo: (<div className="space-y-2 text-lg"><p>Petrobras nao-cum.: Receita R$100M, compras R$60M. COFINS debito: 7,6%xR$100M=R$7,6M. Credito: 7,6%xR$60M=R$4,56M. A recolher: R$3,04M.</p></div>) },
             { titulo: "Dicas", icone: <LuTrendingUp />, conteudo: (<div className="space-y-2 text-lg"><p>PIS/COFINS = RECEITA. CSLL/IRPJ = LUCRO. Exportacoes: imunes. Petrobras = nao-cumulativo obrigatorio (Lucro Real).</p></div>) },
@@ -795,24 +798,33 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         <ModuleBanner numero={7} titulo="Administracao Tributaria" descricao="Fiscalizacao, obrigacoes acessorias, lancamento e processo administrativo fiscal." variant={mv[7]} />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader index="INTRO" title="Fiscalizacao e Obrigacoes Tributarias" description="Como o Estado fiscaliza, cobra e os contribuintes se defendem." variant={mv[7]} />
-          <div className="space-y-6 text-lg leading-relaxed text-foreground">
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>A <strong>Administracao Tributaria</strong> e exercida pela <strong>Receita Federal do Brasil</strong> (tributos federais), pelas <strong>SEFAZ estaduais</strong> (ICMS, IPVA) e pelas <strong>Secretarias Municipais</strong> (ISS, IPTU). A Petrobras, maior contribuinte do Brasil, e fiscalizada pelos tres orgaos simultaneamente.</p>
+            <p>A prova avalia a gestão de obrigações acessórias tributárias como SPED, ECF e a emissão de notas fiscais eletrônicas de forma tempestiva.</p>
             <p>Obrigacoes tributarias: (1) <strong>Principal</strong> — pagar o tributo ou penalidade (obrigacao de dar dinheiro); (2) <strong>Acessoria</strong> — escriturar, declarar, informar (SPED, DCTF, DIRF, RAIS). Descumprimento de acessoria gera multa que se converte em obrigacao principal.</p>
+            <p>A conformidade com obrigações tributárias acessórias mitiga o risco de aplicação de multas punitivas por parte dos órgãos fiscalizadores.</p>
             <p>O <strong>Lancamento Tributario</strong> (CTN art. 142) constitui o credito tributario. Tres modalidades: <strong>De Oficio</strong> — fisco age unilateralmente (IPTU, IPVA, autos de infracao); <strong>Por Declaracao</strong> — contribuinte informa, fisco lanca (ITBI, ITD); <strong>Por Homologacao</strong> — contribuinte apura e paga, fisco homologa (IRPJ, ICMS, PIS/COFINS) — o mais comum.</p>
+            <p>A certidão negativa de débitos (CND) atesta a regularidade fiscal de fornecedores em licitações e contratos celebrados com as estatais.</p>
             <p>Prazos: <strong>Decadencia = 5 anos</strong> para o fisco lancar (CTN art. 173). <strong>Prescricao = 5 anos</strong> para cobrar judicialmente apos lancamento definitivo. A <strong>CESGRANRIO cobra</strong>: modalidades de lancamento, distincao acessoria/principal, prazos decadencial e prescricional.</p>
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-xl border border-blue-200 dark:border-blue-800 p-6 space-y-3">
+            <p>O SPED Fiscal (Sistema Público de Escrituração Digital) centraliza em formato digital auditável todas as movimentações fiscais de compras.</p>
+            <p>As obrigações acessórias tributárias — SPED Fiscal, ECF, NF-e — são instrumentos de controle digital que permitem ao fisco cruzar automaticamente dados de fornecedores e compradores.</p>
+            <p>A Petrobras cumpre rigorosos cronogramas de entrega de declarações de SPED à Receita Federal para assegurar regularidade.</p>
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-xl border border-blue-200 dark:border-blue-800 p-6 space-y-3">
               <h4 className="font-bold text-foreground text-lg uppercase tracking-wide">3 Modalidades de Lancamento</h4>
               <div className="grid md:grid-cols-3 gap-3 text-lg">
-                <div className="bg-blue-100 dark:bg-blue-900/40 rounded-lg p-3"><p className="font-bold text-blue-700 dark:text-blue-300 mb-1">De Oficio</p><p className="text-lg text-foreground/80">Fisco age sozinho. IPTU, IPVA, autos de infracao.</p></div>
-                <div className="bg-blue-100 dark:bg-blue-900/40 rounded-lg p-3"><p className="font-bold text-blue-700 dark:text-blue-300 mb-1">Por Declaracao</p><p className="text-lg text-foreground/80">Contribuinte informa; fisco lanca. ITBI, ITD.</p></div>
-                <div className="bg-blue-100 dark:bg-blue-900/40 rounded-lg p-3"><p className="font-bold text-blue-700 dark:text-blue-300 mb-1">Por Homologacao</p><p className="text-lg text-foreground/80">Contribuinte paga; fisco homologa. IRPJ, ICMS, PIS/COFINS. O mais comum.</p></div>
+                <div className="bg-blue-100 dark:bg-blue-900/40 rounded-lg p-3"><span className="font-bold text-blue-700 dark:text-blue-300 mb-1">De Oficio</span><span className="text-lg text-foreground/80">Fisco age sozinho. IPTU, IPVA, autos de infracao.</span></div>
+                <div className="bg-blue-100 dark:bg-blue-900/40 rounded-lg p-3"><span className="font-bold text-blue-700 dark:text-blue-300 mb-1">Por Declaracao</span><span className="text-lg text-foreground/80">Contribuinte informa; fisco lanca. ITBI, ITD.</span></div>
+                <div className="bg-blue-100 dark:bg-blue-900/40 rounded-lg p-3"><span className="font-bold text-blue-700 dark:text-blue-300 mb-1">Por Homologacao</span><span className="text-lg text-foreground/80">Contribuinte paga; fisco homologa. IRPJ, ICMS, PIS/COFINS. O mais comum.</span></div>
               </div>
             </div>
+          
+          
+          
           </div>
         </section>
         <div className="space-y-6">
           <ModuleSectionHeader index={2} title="C.E.D.E. — Administracao Tributaria" variant={mv[7]} />
-          <ContentAccordion slides={[
+          <ContentAccordion mode="stacked" slides={[
             { titulo: "Conceituacao", icone: <LuFileText />, conteudo: (<div className="space-y-2 text-lg"><p>Principal: pagar tributo. Acessoria: escriturar, declarar. Lancamento: oficio / declaracao / homologacao.</p></div>) },
             { titulo: "Exemplificacao", icone: <LuBuilding />, conteudo: (<div className="space-y-2 text-lg"><p>Petrobras apura IRPJ mensalmente via DARF (homologacao). Fisco homologa em ate 5 anos. Auto de infracao SEFAZ: impugnacao 30 dias, DRJ, CARF.</p></div>) },
             { titulo: "Dicas", icone: <LuTrendingUp />, conteudo: (<div className="space-y-2 text-lg"><p>Decadencia = 5 anos para LANCAR. Prescricao = 5 anos para COBRAR apos lancamento. Acessoria nao cumprida = multa = obrigacao principal.</p></div>) },
@@ -834,23 +846,32 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         <ModuleBanner numero={8} titulo="Planejamento Tributario" descricao="Elisao vs. evasao fiscal, estrategias legais e limites eticos." variant={mv[8]} />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader index="INTRO" title="Elisao vs. Evasao Fiscal" description="A linha entre planejamento legal e crime tributario." variant={mv[8]} />
-          <div className="space-y-6 text-lg leading-relaxed text-foreground">
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p><strong>Planejamento Tributario</strong> e a reducao legal da carga tributaria — atividade completamente legitima. A Petrobras tem diretoria dedicada que economiza bilhoes anualmente.</p>
+            <p>Questões diferenciam a elisão fiscal (planejamento lícito prévio) da evasão fiscal (fraude deliberada pós-fato gerador).</p>
             <p><strong>Elisao Fiscal</strong> (licita): reducao por meios <em>legais</em>, <em>antes</em> do fato gerador. Exemplos: escolher Lucro Presumido vs. Real; usar JCP para deduzir IRPJ/CSLL; instalar unidade na Zona Franca de Manaus para isencao de IPI; compensar prejuizos fiscais (ate 30% do lucro).</p>
+            <p>O planejamento tributário legítimo utiliza caminhos autorizados em lei para minimizar ou diferir a carga tributária do processo.</p>
             <p><strong>Evasao Fiscal</strong> (ilicita): suprimir tributo por meios <em>ilegais</em> — notas fiscais frias, fraude, simulacao, caixa 2. Crime: Lei 8.137/1990, pena 2 a 5 anos. Sonegacao = evasao.</p>
+            <p>A adoção do regime aduaneiro especial drawback exonera compras de materiais que serão incorporados em produtos voltados à exportação.</p>
             <p>A <strong>CESGRANRIO cobra</strong>: distinguir elisao de evasao com exemplos concretos, identificar crime tributario, norma antielisiva CTN art. 116 paragrafo unico, e diferenca entre sonegacao e inadimplencia.</p>
+            <p>A simulação fraudulenta que busque unicamente ocultar fatos geradores tributários autoriza a autuação fiscal de ofício de fraudes.</p>
+            <p>O Lucro Real apura o IRPJ sobre o resultado societário ajustado pelas adições e exclusões previstas na legislação do LALUR, sendo obrigatório para empresas com receita acima do limite legal vigente.</p>
+            <p>A Petrobras adota o regime Repetro para desonerar a importação de sondas e equipamentos especiais destinados à exploração do pré-sal.</p>
             <div className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/30 dark:to-green-950/30 rounded-xl border border-emerald-200 dark:border-emerald-800 p-6 space-y-3">
               <h4 className="font-bold text-foreground text-lg uppercase tracking-wide">Elisao vs Evasao</h4>
               <div className="grid md:grid-cols-2 gap-4 text-lg">
-                <div className="bg-emerald-100 dark:bg-emerald-900/40 rounded-lg p-4"><p className="font-bold text-emerald-700 dark:text-emerald-300 mb-2">ELISAO (Licita)</p><ul className="text-lg space-y-1 list-disc list-inside text-foreground/80"><li>Antes do fato gerador</li><li>Meios legais e legitimos</li><li>JCP, ZFM, escolha de regime</li></ul></div>
-                <div className="bg-red-100 dark:bg-red-900/40 rounded-lg p-4"><p className="font-bold text-red-700 dark:text-red-300 mb-2">EVASAO (Crime)</p><ul className="text-lg space-y-1 list-disc list-inside text-foreground/80"><li>Apos o fato gerador</li><li>Fraude, notas frias, caixa 2</li><li>Lei 8.137/90: pena 2-5 anos</li></ul></div>
+                <div className="bg-emerald-100 dark:bg-emerald-900/40 rounded-lg p-4"><span className="font-bold text-emerald-700 dark:text-emerald-300 mb-2">ELISAO (Licita)</span><ul className="text-lg space-y-1 list-disc list-inside text-foreground/80"><li>Antes do fato gerador</li><li>Meios legais e legitimos</li><li>JCP, ZFM, escolha de regime</li></ul></div>
+                <div className="bg-red-100 dark:bg-red-900/40 rounded-lg p-4"><span className="font-bold text-red-700 dark:text-red-300 mb-2">EVASAO (Crime)</span><ul className="text-lg space-y-1 list-disc list-inside text-foreground/80"><li>Apos o fato gerador</li><li>Fraude, notas frias, caixa 2</li><li>Lei 8.137/90: pena 2-5 anos</li></ul></div>
               </div>
             </div>
+          
+          
+          
           </div>
         </section>
         <div className="space-y-6">
           <ModuleSectionHeader index={2} title="C.E.D.E. — Planejamento Tributario" variant={mv[8]} />
-          <ContentAccordion slides={[
+          <ContentAccordion mode="stacked" slides={[
             { titulo: "Conceituacao", icone: <LuCircleCheck />, conteudo: (<div className="space-y-2 text-lg"><p>Elisao: legal, ANTES do FG. Evasao: ilegal, APOS. Sonegacao = evasao = crime tributario.</p></div>) },
             { titulo: "Exemplificacao", icone: <LuBriefcase />, conteudo: (<div className="space-y-2 text-lg"><p>Elisao: Petrobras usa JCP para remunerar acionistas e deduzir IRPJ. Evasao: empresa emite nota fiscal fria para inflar custos — fraude e crime.</p></div>) },
             { titulo: "Dicas", icone: <LuTrendingUp />, conteudo: (<div className="space-y-2 text-lg"><p>Elisao = ANTES + legal. Evasao = APOS + ilegal. Sonegacao ≠ inadimplencia (inadimplencia nao e crime; sonegacao sim).</p></div>) },
@@ -872,18 +893,28 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         <ModuleBanner numero={9} titulo="Tributos na Petrobras" descricao="Participacoes governamentais e impacto tributario em Suprimentos." variant={mv[9]} />
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader index="INTRO" title="Tributos Especificos do Setor Petrolifero" description="Participacoes governamentais e creditos tributarios em Suprimentos." variant={mv[9]} />
-          <div className="space-y-6 text-lg leading-relaxed text-foreground">
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>A <strong>Petrobras e o maior contribuinte individual do Brasil</strong>, pagando mais de R$ 100 bilhoes/ano. Para o Tecnico de Suprimento, toda aquisicao carrega tributos que afetam o custo final.</p>
+            <p>Provas abordam a tributação do setor de petróleo, incidência de royalties governamentais e as diretrizes fiscais das refinarias.</p>
             <p><strong>Participacoes Governamentais</strong> (Lei 9.478/1997 e Lei 12.351/2010): (1) <strong>Royalties</strong> — compensacao pela exploracao de petroleo/gas, 5%-40% da producao; (2) <strong>Participacao Especial</strong> — sobre lucros extraordinarios de campos grandes, ate 40%; (3) <strong>Bonus de Assinatura</strong> — pagamento unico pela concessao; (4) <strong>CIDE Combustiveis</strong> — contribuicao federal sobre comercializacao de derivados.</p>
+            <p>A exploração e lavra de hidrocarbonetos geram obrigações de repasse de royalties federais aos municípios e estados produtores.</p>
             <p>Em <strong>Suprimentos</strong>: ao comprar equipamentos, a Petrobras gera creditos de IPI, ICMS e PIS/COFINS. Custo efetivo = preco menos creditos recuperaveis (pode ser 20-30% menor que o valor nominal da nota).</p>
+            <p>A apuração de impostos em contratos interestaduais de gás exige controle fiscal minucioso de retenções e divisas geográficas.</p>
+            <p>O PIS e a COFINS não-cumulativos permitem o desconto de créditos sobre insumos e serviços adquiridos, tornando o custo tributário efetivo menor para empresas com alta intensidade de compras industriais.</p>
+            <p>As autuações de fiscos estaduais sobre circulação física de gás são objetos de disputas tributárias avaliadas em tribunais superiores.</p>
+            <p>A diferenciação entre o regime cumulativo — aplicado a empresas menores enquadradas no Lucro Presumido — e o não-cumulativo é ponto frequente em questões da CESGRANRIO sobre tributação federal.</p>
+            <p>Compradores da Petrobras retêm tributos devidos na fonte ao liquidar notas fiscais de serviços prestados por empreiteiras parceiras.</p>
             <AlertBox tipo="info" titulo="Creditos em uma Compra Tipica de Suprimentos">
-              <div className="space-y-1 text-lg"><p>Valvulas R$1.000.000: IPI 5%=R$50k + ICMS 12%=R$120k + PIS/COFINS 9,25%=R$92,5k = R$262.500 em creditos.</p><p className="font-bold">Custo efetivo: aproximadamente R$737.500</p></div>
+              <div className="space-y-1 text-lg"><span>Valvulas R$1.000.000: IPI 5%=R$50k + ICMS 12%=R$120k + PIS/COFINS 9,25%=R$92,5k = R$262.500 em creditos.</span><span className="font-bold">Custo efetivo: aproximadamente R$737.500</span></div>
             </AlertBox>
+          
+          
+          
           </div>
         </section>
         <div className="space-y-6">
           <ModuleSectionHeader index={2} title="C.E.D.E. — Tributos na Petrobras" variant={mv[9]} />
-          <ContentAccordion slides={[
+          <ContentAccordion mode="stacked" slides={[
             { titulo: "Conceituacao", icone: <LuBuilding />, conteudo: (<div className="space-y-2 text-lg"><p>Participacoes Governamentais: Royalties, Part. Especial, Bonus Assinatura, CIDE. Creditos (IPI+ICMS+PIS/COFINS) nas compras reduzem custo efetivo em Suprimentos.</p></div>) },
             { titulo: "Exemplificacao", icone: <LuCalculator />, conteudo: (<div className="space-y-2 text-lg"><p>Royalties Campo Tupi: 500k bbl/dia x 15% x preco Brent = bilhoes/ano. CIDE: Petrobras recolhe ao vender gasolina — receita destinada a infraestrutura de transporte.</p></div>) },
             { titulo: "Dicas", icone: <LuTrendingUp />, conteudo: (<div className="space-y-2 text-lg"><p>Royalties nao sao tributos stricto sensu (compensacao financeira, Lei 9.478). Custo efetivo = preco menos creditos tributarios recuperaveis (IPI+ICMS+PIS/COFINS).</p></div>) },
@@ -922,7 +953,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           <p className="text-lg">12 questoes no padrao CESGRANRIO. Precisa de 70% para completar a aula. Boa sorte, futuro Tecnico de Suprimento da Petrobras!</p>
         </AlertBox>
         
-<ModuleConsolidation index={2} variant={mv[10]} video={{ videoId: "dQw4w9WgXcQ", title: "Revisao Geral — Adm. Tributario", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 10", tituloAula: "Simulado Geral", materia: "Administracao", images: [{ title: "Mapa Mental Completo", type: "Sintese", placeholderColor: "bg-violet-500/20" }] }} sinteseEstrategica={{ title: "Resumo Total", content: (<div className="p-4 bg-violet-500/10 border border-violet-500/20 rounded-xl text-lg"><p className="font-bold text-violet-600 dark:text-violet-400">Lucro: IRPJ 25% + CSLL 9% = 34%</p><p className="font-bold text-violet-600 dark:text-violet-400">Receita: PIS 1,65% + COFINS 7,6%</p><p className="text-lg text-foreground/70">ICMS=Estado | IPI=Uniao | ISS=Municipio</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", titulo: "Audio Revisao Geral", artista: "Resumo Petrobras" }} />
+<ModuleConsolidation index={2} variant={mv[10]} video={{ videoId: "dQw4w9WgXcQ", title: "Revisao Geral — Adm. Tributario", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 10", tituloAula: "Simulado Geral", materia: "Administracao", images: [{ title: "Mapa Mental Completo", type: "Sintese", placeholderColor: "bg-teal-500/20" }] }} sinteseEstrategica={{ title: "Resumo Total", content: (<div className="p-4 bg-teal-500/10 border border-teal-500/20 rounded-xl text-lg"><p className="font-bold text-teal-600 dark:text-teal-400">Lucro: IRPJ 25% + CSLL 9% = 34%</p><p className="font-bold text-teal-600 dark:text-teal-400">Receita: PIS 1,65% + COFINS 7,6%</p><p className="text-lg text-foreground/70">ICMS=Estado | IPI=Uniao | ISS=Municipio</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", titulo: "Audio Revisao Geral", artista: "Resumo Petrobras" }} />
 
                 <QuizInterativo questoes={[
           { id: "m10q1", pergunta: "A equacao fundamental da contabilidade e:", opcoes: [{ label: "Receita menos Custos = Lucro", valor: "a" }, { label: "Ativo = Passivo + Patrimonio Liquido", valor: "b" }, { label: "Caixa = AC menos PC", valor: "c" }, { label: "Lucro = Ativo menos Dividas", valor: "d" }], correta: "b", explicacao: "Ativo = Passivo + PL. Toda transacao contabil mantem esse equilibrio sem excecao." },
@@ -939,10 +970,10 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           { id: "m10q12", pergunta: "Empresa comercio, Lucro Presumido, receita R$2M. Base IRPJ:", opcoes: [{ label: "R$2.000.000", valor: "a" }, { label: "R$640.000 (32%)", valor: "b" }, { label: "R$160.000 (8%)", valor: "c" }, { label: "O lucro contabil real", valor: "d" }], correta: "c", explicacao: "Lucro Presumido comercio = 8% x receita. R$2M x 8% = R$160k. IRPJ = 15% x R$160k = R$24k." },
         ]} titulo="QUIZ: Módulo Nº 10" numero={3} variant={mv[10]} icone="🏆" onComplete={(score) => handleModuleComplete("modulo-10", score)} />
         {completedModules.has("modulo-10") && (
-          <div className="rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-700 p-8 text-center text-white shadow-xl">
+          <div className="rounded-2xl bg-gradient-to-br from-teal-600 to-cyan-700 p-8 text-center text-white shadow-xl">
             <LuCrown className="w-16 h-16 mx-auto mb-4 text-yellow-300" />
             <h2 className="text-2xl font-bold mb-2">ESPECIALISTA EM TRIBUTARIO</h2>
-            <p className="text-violet-100 text-lg max-w-md mx-auto">Parabens! Voce dominou Contabilidade Basica, Sistema Tributario e Administracao Tributaria — o arsenal completo para o Tecnico de Suprimento da Petrobras.</p>
+            <p className="text-teal-100 text-lg max-w-md mx-auto">Parabens! Voce dominou Contabilidade Basica, Sistema Tributario e Administracao Tributaria — o arsenal completo para o Tecnico de Suprimento da Petrobras.</p>
           </div>
         )}
       </TabsContent>

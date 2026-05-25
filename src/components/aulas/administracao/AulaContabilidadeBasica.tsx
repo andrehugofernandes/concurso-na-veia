@@ -126,29 +126,19 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           variant={getModuleVariant(1)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground">
-          <p>
-            A <strong>contabilidade</strong> é a ciência social que estuda e pratica as funções de orientação, controle e registro dos atos e fatos administrativos de uma entidade. Diferente do que muitos pensam, ela não é apenas um conjunto de cálculos financeiros, mas uma <strong>ferramenta estratégica de gestão</strong> que fornece informações essenciais para tomada de decisão. Em organizações como a Petrobras, a contabilidade rastreia não apenas caixa, mas operações complexas envolvendo exploração, refino, distribuição e comercialização de derivados de petróleo.
-          </p>
-
-          <p>
-            A contabilidade serve a <strong>múltiplos usuários</strong>, cada um com necessidades específicas. Usuários internos como gerentes, diretores e proprietários precisam de informações frequentes (diárias, mensais) para decisões operacionais. Usuários externos como bancos, governo, fornecedores e investidores necessitam de informações consolidadas (anuais ou trimestrais) para avaliar saúde financeira. Na Petrobras, esse público é ainda mais amplo: acionistas (privados e governamentais), órgãos reguladores como CVM e IBAMA, credores internacionais e a sociedade civil que acompanha sustentabilidade corporativa.
-          </p>
-
-          <p>
-            A contabilidade obedece a <strong>princípios fundamentais</strong> que garantem confiabilidade e comparabilidade das informações. O Princípio da Competência determina que receitas e despesas sejam reconhecidas quando ocorrem, não quando dinheiro entra ou sai. O Princípio da Continuidade pressupõe que a empresa continuará operando indefinidamente (não será liquidada). O Princípio da Oportunidade exige registro oportuno dos fatos contábeis. O Princípio da Periodicidade divide a operação em períodos regulares (meses, trimestres, anos) para fins de relatório. Esses princípios, consolidados nas normas IFRS (International Financial Reporting Standards) que a Petrobras adota, garantem que qualquer pessoa ao redor do mundo possa interpretar as demonstrações financeiras.
-          </p>
-
-          <p>
-            A profissão contábil utiliza <strong>técnicas específicas</strong> para cumprir sua missão. A Escrituração registra cada operação em livros contábeis seguindo o método das partidas dobradas (veremos em detalhe depois). As Demonstrações consolidam essas informações em relatórios estruturados (balanço patrimonial, demonstração de resultado). A Análise interpreta esses dados através de índices e tendências. A Auditoria verifica a fidelidade dos registros, garantindo conformidade com normas. Juntas, essas técnicas criam um sistema de informação confiável.
-          </p>
-
-          <p>
-            Para a <strong>Petrobras especificamente</strong>, a contabilidade desempenha papel estratégico. Como empresa de capital aberto e economia mista, deve seguir Lei 13.303, regulação da CVM e normas IFRS. Registra operações complexas: exploração de campos de petróleo (com custos variáveis por barril e amortização de investimentos), refino (com custos de processamento), armazenagem e distribuição. As informações contábeis impactam decisões de expansão, manutenção de poços, investimento em tecnologia de exploração e composição de portfólio energético.
-          </p>
-
-          <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Escopo da Contabilidade</p>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A <strong>contabilidade</strong> é a ciência social que estuda e pratica as funções de orientação, controle e registro dos atos e fatos administrativos de uma entidade. Diferente do que muitos pensam, ela não é apenas um conjunto de cálculos financeiros, mas uma <strong>ferramenta estratégica de gestão</strong> que fornece informações essenciais para tomada de decisão. Em organizações como a Petrobras, a contabilidade rastreia não apenas caixa, mas operações complexas envolvendo exploração, refino, distribuição e comercialização de derivados de petróleo.</p>
+            <p>Nas provas da CESGRANRIO, lembre-se: Ativo representa aplicação de recursos; Passivo e Patrimônio Líquido representam as fontes.</p>
+            <p>A contabilidade serve a <strong>múltiplos usuários</strong>, cada um com necessidades específicas. Usuários internos como gerentes, diretores e proprietários precisam de informações frequentes (diárias, mensais) para decisões operacionais. Usuários externos como bancos, governo, fornecedores e investidores necessitam de informações consolidadas (anuais ou trimestrais) para avaliar saúde financeira. Na Petrobras, esse público é ainda mais amplo: acionistas (privados e governamentais), órgãos reguladores como CVM e IBAMA, credores internacionais e a sociedade civil que acompanha sustentabilidade corporativa.</p>
+            <p>A ciência contábil estuda, registra e interpreta as variações quantitativas e qualitativas do patrimônio de entidades comerciais.</p>
+            <p>A contabilidade obedece a <strong>princípios fundamentais</strong> que garantem confiabilidade e comparabilidade das informações. O Princípio da Competência determina que receitas e despesas sejam reconhecidas quando ocorrem, não quando dinheiro entra ou sai. O Princípio da Continuidade pressupõe que a empresa continuará operando indefinidamente (não será liquidada). O Princípio da Oportunidade exige registro oportuno dos fatos contábeis. O Princípio da Periodicidade divide a operação em períodos regulares (meses, trimestres, anos) para fins de relatório. Esses princípios, consolidados nas normas IFRS (International Financial Reporting Standards) que a Petrobras adota, garantem que qualquer pessoa ao redor do mundo possa interpretar as demonstrações financeiras.</p>
+            <p>A compra à vista de equipamentos operacionais altera apenas a composição qualitativa de Ativos permutativos de balanço.</p>
+            <p>A profissão contábil utiliza <strong>técnicas específicas</strong> para cumprir sua missão. A Escrituração registra cada operação em livros contábeis seguindo o método das partidas dobradas (veremos em detalhe depois). As Demonstrações consolidam essas informações em relatórios estruturados (balanço patrimonial, demonstração de resultado). A Análise interpreta esses dados através de índices e tendências. A Auditoria verifica a fidelidade dos registros, garantindo conformidade com normas. Juntas, essas técnicas criam um sistema de informação confiável.</p>
+            <p>O Patrimônio Líquido é o valor residual que pertence aos proprietários, englobando capital social e as reservas de lucros retidos.</p>
+            <p>Para a <strong>Petrobras especificamente</strong>, a contabilidade desempenha papel estratégico. Como empresa de capital aberto e economia mista, deve seguir Lei 13.303, regulação da CVM e normas IFRS. Registra operações complexas: exploração de campos de petróleo (com custos variáveis por barril e amortização de investimentos), refino (com custos de processamento), armazenagem e distribuição. As informações contábeis impactam decisões de expansão, manutenção de poços, investimento em tecnologia de exploração e composição de portfólio energético.</p>
+            <p>A Petrobras divulga seus balanços de contabilidade auditados sob o padrão IFRS para satisfazer acionistas do mercado internacional.</p>
+            <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
+            <span className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Escopo da Contabilidade</span>
             <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Controla o patrimônio através de técnicas de escrituração</li>
               <li>✓ Fornece informações para decisões gerenciais e de investimento</li>
@@ -157,7 +147,9 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
               <li>✓ Base para conformidade regulatória, especialmente em Petrobras (Lei 13.303, CVM, IFRS)</li>
             </ul>
           </div>
-        </div>
+        
+          
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -179,7 +171,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         }}
         audio={{ audioUrl: "#", titulo: "Introdução à Contabilidade", artista: "Prof. Contabilidade" }}
       />
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         slides={[
           {
             title: "O que é Contabilidade?",
@@ -239,35 +231,25 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={2}
+          index="INTRO"
           title="Equação Contábil"
           description="A base matemática que sustenta toda a contabilidade: Ativo = Passivo + Patrimônio Líquido."
           variant={getModuleVariant(2)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground">
-          <p>
-            A <strong>equação contábil fundamental</strong> é a espinha dorsal de toda a contabilidade: Ativo = Passivo + Patrimônio Líquido. Esta equação não é meramente teórica; é uma <strong>representação matemática da realidade econômica</strong> de qualquer empresa. Ela expressa que todos os recursos da empresa (ativo) têm origem em fontes de financiamento: obrigações com terceiros (passivo) ou capital investido pelos sócios (patrimônio líquido). Essa equação deve estar <strong>sempre em equilíbrio</strong>, uma propriedade fundamental que permite que a contabilidade detecte erros de registro.
-          </p>
-
-          <p>
-            O <strong>Ativo</strong> compreende tudo que a empresa possui e tem direito a receber. Bens incluem caixa em espécie, contas bancárias, estoques de produtos, imóveis, máquinas e equipamentos. Direitos incluem contas a receber de clientes (ainda não recebidos), empréstimos concedidos a funcionários, depósitos em garantia. O ativo é organizado em dois grupos: Circulante (conversível em dinheiro dentro de até 12 meses) e Não-Circulante (longo prazo, como imóveis e equipamentos). Na Petrobras, o ativo é imenso: plataformas de exploração, dutos de transporte, refinarias, estoques de óleo e derivados, depósitos em dólar e outras moedas estrangeiras.
-          </p>
-
-          <p>
-            O <strong>Passivo</strong> representa todas as obrigações da empresa com terceiros. Inclui contas a pagar a fornecedores (matéria-prima, serviços), empréstimos bancários para financiar operações, salários a pagar, impostos a recolher, aluguel de equipamentos. O passivo também se divide em Circulante (exigível em até 12 meses) e Não-Circulante (longo prazo, como empréstimos de longo prazo para expansão). Em Petrobras, isso inclui financiamentos para construção de novas plataformas, debêntures (títulos de dívida), e passivos ambientais relacionados à descontaminação de áreas exploradas.
-          </p>
-
-          <p>
-            O <strong>Patrimônio Líquido</strong> é a diferença entre ativo e passivo, representando o valor que pertence aos sócios. Também chamado de "capital dos sócios", aumenta quando a empresa gera lucro e diminui quando sofre prejuízo. Divide-se em: Capital Social (aporte inicial dos sócios), Lucros ou Prejuízos Acumulados, e Reservas de Lucros (lucros retidos para futuras necessidades). Em Petrobras, o patrimônio líquido é afetado pelo pagamento de dividendos à União (controladora) e a acionistas privados, reduzindo patrimônio, assim como retenção de lucros que aumenta patrimônio.
-          </p>
-
-          <p>
-            A <strong>variação da equação</strong> acontece continuamente conforme a empresa opera. Quando compra máquinas à vista, o ativo aumenta (máquinas) mas também diminui (caixa sai): mantém equilíbrio. Quando toma empréstimo, ativo aumenta (caixa entra) e passivo aumenta (dívida cresce): mantém equilíbrio. Quando empresa é lucrativa, patrimônio aumenta. Quando é deficitária, patrimônio diminui. A beleza dessa equação é que ela nos permite verificar se qualquer operação foi registrada corretamente: se equação desiquilibra, há erro de lançamento que deve ser identificado e corrigido antes de publicar demonstrações financeiras.
-          </p>
-
-          <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Estrutura da Equação Contábil</p>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A <strong>equação contábil fundamental</strong> é a espinha dorsal de toda a contabilidade: Ativo = Passivo + Patrimônio Líquido. Esta equação não é meramente teórica; é uma <strong>representação matemática da realidade econômica</strong> de qualquer empresa. Ela expressa que todos os recursos da empresa (ativo) têm origem em fontes de financiamento: obrigações com terceiros (passivo) ou capital investido pelos sócios (patrimônio líquido). Essa equação deve estar <strong>sempre em equilíbrio</strong>, uma propriedade fundamental que permite que a contabilidade detecte erros de registro.</p>
+            <p>A banca costuma cobrar as variações patrimoniais causadas pelos fatos contábeis: permutativos, modificativos ou mistos.</p>
+            <p>O <strong>Ativo</strong> compreende tudo que a empresa possui e tem direito a receber. Bens incluem caixa em espécie, contas bancárias, estoques de produtos, imóveis, máquinas e equipamentos. Direitos incluem contas a receber de clientes (ainda não recebidos), empréstimos concedidos a funcionários, depósitos em garantia. O ativo é organizado em dois grupos: Circulante (conversível em dinheiro dentro de até 12 meses) e Não-Circulante (longo prazo, como imóveis e equipamentos). Na Petrobras, o ativo é imenso: plataformas de exploração, dutos de transporte, refinarias, estoques de óleo e derivados, depósitos em dólar e outras moedas estrangeiras.</p>
+            <p>Fatos contábeis modificativos alteram diretamente o valor do Patrimônio Líquido por registrar despesas operacionais ou receitas líquidas.</p>
+            <p>O <strong>Passivo</strong> representa todas as obrigações da empresa com terceiros. Inclui contas a pagar a fornecedores (matéria-prima, serviços), empréstimos bancários para financiar operações, salários a pagar, impostos a recolher, aluguel de equipamentos. O passivo também se divide em Circulante (exigível em até 12 meses) e Não-Circulante (longo prazo, como empréstimos de longo prazo para expansão). Em Petrobras, isso inclui financiamentos para construção de novas plataformas, debêntures (títulos de dívida), e passivos ambientais relacionados à descontaminação de áreas exploradas.</p>
+            <p>O registro do vencimento mensal de salários de operadores de refinarias caracteriza fato contábil modificativo diminutivo.</p>
+            <p>O <strong>Patrimônio Líquido</strong> é a diferença entre ativo e passivo, representando o valor que pertence aos sócios. Também chamado de "capital dos sócios", aumenta quando a empresa gera lucro e diminui quando sofre prejuízo. Divide-se em: Capital Social (aporte inicial dos sócios), Lucros ou Prejuízos Acumulados, e Reservas de Lucros (lucros retidos para futuras necessidades). Em Petrobras, o patrimônio líquido é afetado pelo pagamento de dividendos à União (controladora) e a acionistas privados, reduzindo patrimônio, assim como retenção de lucros que aumenta patrimônio.</p>
+            <p>Os fatos contábeis mistos reúnem trocas qualitativas de ativos e passivos com impactos diretos no lucro líquido do período fiscal.</p>
+            <p>A <strong>variação da equação</strong> acontece continuamente conforme a empresa opera. Quando compra máquinas à vista, o ativo aumenta (máquinas) mas também diminui (caixa sai): mantém equilíbrio. Quando toma empréstimo, ativo aumenta (caixa entra) e passivo aumenta (dívida cresce): mantém equilíbrio. Quando empresa é lucrativa, patrimônio aumenta. Quando é deficitária, patrimônio diminui. A beleza dessa equação é que ela nos permite verificar se qualquer operação foi registrada corretamente: se equação desiquilibra, há erro de lançamento que deve ser identificado e corrigido antes de publicar demonstrações financeiras.</p>
+            <p>Analistas contábeis na Petrobras controlam baixas de ativos imobilizados decorrentes de obsolescência de turbinas e compressores.</p>
+            <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
+            <span className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Estrutura da Equação Contábil</span>
             <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Ativo = Bens + Direitos (recursos da empresa)</li>
               <li>✓ Passivo = Obrigações (financiamento de terceiros)</li>
@@ -276,7 +258,9 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
               <li>✓ Desequilíbrio indica erro de lançamento que deve ser corrigido</li>
             </ul>
           </div>
-        </div>
+        
+          
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -298,7 +282,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         }}
         audio={{ audioUrl: "#", titulo: "Equação Patrimonial", artista: "Prof. Contabilidade" }}
       />
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         slides={[
           {
             title: "Estrutura Básica do Balanço",
@@ -358,35 +342,25 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={3}
+          index="INTRO"
           title="Plano de Contas"
           description="O mapa estruturado que organiza todas as contas contábeis de uma empresa."
           variant={getModuleVariant(3)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground">
-          <p>
-            O <strong>plano de contas</strong> é um documento normativo que lista e codifica todas as contas que uma empresa utilizará para registrar suas operações. Funciona como um <strong>índice de referência estruturado e hierárquico</strong>, facilitando a localização de contas para lançamento e garantindo uniformidade de registro. Sem plano de contas padronizado, diferentes áreas da empresa poderiam registrar mesma operação de formas distintas, tornando impossível consolidar informações para demonstrações financeiras confiáveis. O plano de contas garante que "Caixa" significa a mesma coisa em São Paulo, no Rio e em Houston (plataformas marítimas).
-          </p>
-
-          <p>
-            A <strong>estrutura hierárquica</strong> do plano de contas é essencial para sua funcionalidade. O primeiro nível é a Classe: 1-Ativo, 2-Passivo, 3-Patrimônio Líquido, 4-Receitas, 5-Despesas. O segundo nível é Grupo, especificando dentro da classe: Ativo Circulante, Ativo Não-Circulante. O terceiro nível é Subgrupo: Caixa (dentro de Ativo Circulante), Estoques, Contas a Receber. O quarto nível é a Conta propriamente dita: Caixa em Reais, Caixa em Dólares, Caixa em Euros. Alguns planos vão além para um quinto nível de Subconta, permitindo segregação ainda maior. Essa hierarquia permite que demonstrações consolidem dados em níveis mais altos, oferecendo tanto detalhe operacional quanto síntese executiva.
-          </p>
-
-          <p>
-            A <strong>codificação de contas</strong> segue padrão numérico que reflete a hierarquia. Tipicamente, primeira cifra indica classe (1=Ativo, 2=Passivo, 3=Patrimônio, 4=Receita, 5=Despesa). Cifras subsequentes indicam nível hierárquico. Exemplo: 1.1.1.01 = Classe 1 (Ativo) {'>'} Grupo 1 (Circulante) {'>'} Subgrupo 1 (Disponibilidades) {'>'} Conta 01 (Caixa em Reais). Essa codificação é tão importante que sistemas contábeis usam-na para validação automática: não é possível lançar em conta inexistente no plano. Um contador não precisa memorizar códigos; sistema contábil oferece dropdown com contas válidas filtradas por hierarquia.
-          </p>
-
-          <p>
-            O <strong>plano de contas em Petrobras</strong> é particularmente complexo por natureza da operação. Petrobras mantém contas específicas para exploração (Custos de Perfuração, Custos de Completação de Poços, Custos de Operação de Plataforma), refino (Custo de Processamento de Óleo Bruto, Custos de Catalisadores, Custos de Manutenção de Refinaria), comercialização (Receita de Venda de Óleo, Receita de Venda de Derivados, Receita de Exportação). Deve estar em conformidade com regulação internacional IFRS, permitindo apresentação de demonstrações em padrão global reconhecido. Auditores internacionais verificam que plano de contas implementa corretamente normas contábeis aplicáveis ao segmento de óleo e gás.
-          </p>
-
-          <p>
-            A <strong>manutenção do plano de contas</strong> é responsabilidade contínua. Conforme empresa evolui ou operações mudam, novas contas podem ser criadas (exemplo: conta para receita de energia eólica quando Petrobras entra nesse segmento). Contas obsoletas são inativadas (não apagadas, pois dados históricos precisam ser preservados para auditoria). Periódico (anual ou bienal), revisão garante que contas correspondem à realidade operacional, que estrutura hierárquica reflete como empresa realmente opera e gerencia, e que codificação é compreensível para novos contadores.
-          </p>
-
-          <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Estrutura do Plano de Contas</p>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O <strong>plano de contas</strong> é um documento normativo que lista e codifica todas as contas que uma empresa utilizará para registrar suas operações. Funciona como um <strong>índice de referência estruturado e hierárquico</strong>, facilitando a localização de contas para lançamento e garantindo uniformidade de registro. Sem plano de contas padronizado, diferentes áreas da empresa poderiam registrar mesma operação de formas distintas, tornando impossível consolidar informações para demonstrações financeiras confiáveis. O plano de contas garante que "Caixa" significa a mesma coisa em São Paulo, no Rio e em Houston (plataformas marítimas).</p>
+            <p>CESGRANRIO exige a correta estruturação do Plano de Contas. Contas patrimoniais têm saldos reais; contas de resultado são temporárias.</p>
+            <p>A <strong>estrutura hierárquica</strong> do plano de contas é essencial para sua funcionalidade. O primeiro nível é a Classe: 1-Ativo, 2-Passivo, 3-Patrimônio Líquido, 4-Receitas, 5-Despesas. O segundo nível é Grupo, especificando dentro da classe: Ativo Circulante, Ativo Não-Circulante. O terceiro nível é Subgrupo: Caixa (dentro de Ativo Circulante), Estoques, Contas a Receber. O quarto nível é a Conta propriamente dita: Caixa em Reais, Caixa em Dólares, Caixa em Euros. Alguns planos vão além para um quinto nível de Subconta, permitindo segregação ainda maior. Essa hierarquia permite que demonstrações consolidem dados em níveis mais altos, oferecendo tanto detalhe operacional quanto síntese executiva.</p>
+            <p>O Plano de Contas unifica a classificação dos lançamentos; livros Diário e Razão estruturam as demonstrações obrigatórias de período.</p>
+            <p>A <strong>codificação de contas</strong> segue padrão numérico que reflete a hierarquia. Tipicamente, primeira cifra indica classe (1=Ativo, 2=Passivo, 3=Patrimônio, 4=Receita, 5=Despesa). Cifras subsequentes indicam nível hierárquico. Exemplo: 1.1.1.01 = Classe 1 (Ativo) {'>'} Grupo 1 (Circulante) {'>'} Subgrupo 1 (Disponibilidades) {'>'} Conta 01 (Caixa em Reais). Essa codificação é tão importante que sistemas contábeis usam-na para validação automática: não é possível lançar em conta inexistente no plano. Um contador não precisa memorizar códigos; sistema contábil oferece dropdown com contas válidas filtradas por hierarquia.</p>
+            <p>A conta Caixa e Bancos possui natureza devedora e compõe o Ativo Circulante; a conta Fornecedores possui saldo credor no Passivo.</p>
+            <p>O <strong>plano de contas em Petrobras</strong> é particularmente complexo por natureza da operação. Petrobras mantém contas específicas para exploração (Custos de Perfuração, Custos de Completação de Poços, Custos de Operação de Plataforma), refino (Custo de Processamento de Óleo Bruto, Custos de Catalisadores, Custos de Manutenção de Refinaria), comercialização (Receita de Venda de Óleo, Receita de Venda de Derivados, Receita de Exportação). Deve estar em conformidade com regulação internacional IFRS, permitindo apresentação de demonstrações em padrão global reconhecido. Auditores internacionais verificam que plano de contas implementa corretamente normas contábeis aplicáveis ao segmento de óleo e gás.</p>
+            <p>Contas redutoras de Ativo, como depreciação acumulada, apresentam saldo devedor invertido em natureza credora preventiva.</p>
+            <p>A <strong>manutenção do plano de contas</strong> é responsabilidade contínua. Conforme empresa evolui ou operações mudam, novas contas podem ser criadas (exemplo: conta para receita de energia eólica quando Petrobras entra nesse segmento). Contas obsoletas são inativadas (não apagadas, pois dados históricos precisam ser preservados para auditoria). Periódico (anual ou bienal), revisão garante que contas correspondem à realidade operacional, que estrutura hierárquica reflete como empresa realmente opera e gerencia, e que codificação é compreensível para novos contadores.</p>
+            <p>O plano contábil da Petrobras é padronizado no ERP SAP para unificar a escrituração de todas as refinarias e bases de exploração.</p>
+            <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
+            <span className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Estrutura do Plano de Contas</span>
             <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Primeiro nível: Classe (1=Ativo, 2=Passivo, 3=Patrimônio, 4=Receita, 5=Despesa)</li>
               <li>✓ Segundo nível: Grupo (Circulante, Não-Circulante, etc)</li>
@@ -395,7 +369,9 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
               <li>✓ Codificação numérica reflete hierarquia para facilitar consulta e validação</li>
             </ul>
           </div>
-        </div>
+        
+          
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -411,8 +387,8 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           tituloAula: "Contabilidade Básica",
           materia: "Administração",
           images: [
-            { title: "Plano de Contas", type: "Estrutura", placeholderColor: "bg-violet-500/20" },
-            { title: "Codificação", type: "Regra", placeholderColor: "bg-violet-500/20" },
+            { title: "Plano de Contas", type: "Estrutura", placeholderColor: "bg-teal-500/20" },
+            { title: "Codificação", type: "Regra", placeholderColor: "bg-teal-500/20" },
           ],
         }}
         sinteseEstrategica={{
@@ -425,7 +401,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           artista: "Prof. Contabilidade"
         }}
       />
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         slides={[
           {
             title: "O que é um Plano de Contas?",
@@ -485,35 +461,25 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={4}
+          index="INTRO"
           title="Lançamentos Contábeis"
           description="Como registrar operações através do método das partidas dobradas."
           variant={getModuleVariant(4)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground">
-          <p>
-            O <strong>método das partidas dobradas</strong> é o fundamento da contabilidade moderna. Ele estabelece que cada operação gera um débito e um crédito de igual valor. Essa simetria não é coincidência; reflete que toda operação econômica tem duas dimensões: de onde vieram os recursos (fonte de financiamento) e para onde foram (aplicação). Quando você compra máquina à vista, máquina é a aplicação (débito em ativo) e caixa que sai é a fonte (crédito em ativo), mantendo equação balanceada. Quando toma empréstimo, caixa que entra é a aplicação e dívida que assume é a fonte, novamente balanceado.
-          </p>
-
-          <p>
-            A mecânica de <strong>débitos e créditos</strong> segue regras simples mas críticas. Para contas de <strong>ATIVO</strong> (caixa, estoques, máquinas): débito aumenta, crédito diminui. Para contas de <strong>PASSIVO</strong> (contas a pagar, empréstimos): débito diminui, crédito aumenta. Para <strong>PATRIMÔNIO LÍQUIDO</strong> (capital, lucros acumulados): débito diminui, crédito aumenta. Para contas de <strong>RECEITA</strong> (vendas, rendimentos): débito diminui, crédito aumenta (receita é redução de passivo ou aumento de ativo). Para contas de <strong>DESPESA</strong> (custos, gastos): débito aumenta, crédito diminui (despesa é redução de receita potencial). Muitos aprendem mnemônico: "DEB Ativo", "CRE Passivo" para memorizar quando cada um aumenta.
-          </p>
-
-          <p>
-            Um <strong>exemplo prático</strong> clarifica o método. Empresa compra equipamento por R$ 10.000 em dinheiro. Dois lançamentos: (1) Débito: Máquinas e Equipamentos (ativo) R$ 10.000. (2) Crédito: Caixa (ativo) R$ 10.000. Total débitos = Total créditos = R$ 10.000, equação mantém-se: ativo mudou de forma (caixa para máquina) mas valor total permanece. Outro exemplo: Venda de produto por R$ 50.000 a prazo. (1) Débito: Contas a Receber (ativo) R$ 50.000. (2) Crédito: Receita de Vendas (receita) R$ 50.000. Ativo aumenta (contas a receber) e receita é registrada, ambos aumentando patrimônio.
-          </p>
-
-          <p>
-            Os <strong>lançamentos em Petrobras</strong> têm particularidades operacionais. Compra de tubulação para perfuração: Débito em Ativo Imobilizado (equipamento), Crédito em Contas a Pagar (dívida contraída). Venda de óleo por R$ 1 milhão: Débito em Caixa (dinheiro recebido), Crédito em Receita de Vendas (reconhecimento de venda). Pagamento de salários: Débito em Despesa de Pessoal, Crédito em Caixa ou Salários a Pagar (se a prazo). Cada operação, por complexa que seja, reduz-se a débito-crédito balanceado.
-          </p>
-
-          <p>
-            A <strong>escrituração</strong> é o processo formal de registrar lançamentos em livros contábeis. Historicamente feito em livros físicos (Diário e Razão), hoje é realizado em sistemas contábeis integrados. O Diário registra cada lançamento cronologicamente (ordem de data). O Razão agrupa lançamentos por conta, mostrando todos os débitos e créditos de cada conta. Sistema contábil moderno gera automaticamente ambos a partir de lançamento único. Auditores analisam livros contábeis para verificar se todas as operações foram registradas corretamente e se equação mantém-se balanceada.
-          </p>
-
-          <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Regras de Débito e Crédito</p>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O <strong>método das partidas dobradas</strong> é o fundamento da contabilidade moderna. Ele estabelece que cada operação gera um débito e um crédito de igual valor. Essa simetria não é coincidência; reflete que toda operação econômica tem duas dimensões: de onde vieram os recursos (fonte de financiamento) e para onde foram (aplicação). Quando você compra máquina à vista, máquina é a aplicação (débito em ativo) e caixa que sai é a fonte (crédito em ativo), mantendo equação balanceada. Quando toma empréstimo, caixa que entra é a aplicação e dívida que assume é a fonte, novamente balanceado.</p>
+            <p>A banca exige domínio do método das partidas dobradas: não há débito sem crédito correspondente de igual valor no lançamento.</p>
+            <p>A mecânica de <strong>débitos e créditos</strong> segue regras simples mas críticas. Para contas de <strong>ATIVO</strong> (caixa, estoques, máquinas): débito aumenta, crédito diminui. Para contas de <strong>PASSIVO</strong> (contas a pagar, empréstimos): débito diminui, crédito aumenta. Para <strong>PATRIMÔNIO LÍQUIDO</strong> (capital, lucros acumulados): débito diminui, crédito aumenta. Para contas de <strong>RECEITA</strong> (vendas, rendimentos): débito diminui, crédito aumenta (receita é redução de passivo ou aumento de ativo). Para contas de <strong>DESPESA</strong> (custos, gastos): débito aumenta, crédito diminui (despesa é redução de receita potencial). Muitos aprendem mnemônico: "DEB Ativo", "CRE Passivo" para memorizar quando cada um aumenta.</p>
+            <p>A escrituração utiliza lançamentos de Diário registrando de forma cronológica as contas devedoras, credoras, histórico e valor.</p>
+            <p>Um <strong>exemplo prático</strong> clarifica o método. Empresa compra equipamento por R$ 10.000 em dinheiro. Dois lançamentos: (1) Débito: Máquinas e Equipamentos (ativo) R$ 10.000. (2) Crédito: Caixa (ativo) R$ 10.000. Total débitos = Total créditos = R$ 10.000, equação mantém-se: ativo mudou de forma (caixa para máquina) mas valor total permanece. Outro exemplo: Venda de produto por R$ 50.000 a prazo. (1) Débito: Contas a Receber (ativo) R$ 50.000. (2) Crédito: Receita de Vendas (receita) R$ 50.000. Ativo aumenta (contas a receber) e receita é registrada, ambos aumentando patrimônio.</p>
+            <p>A quitação de duplicatas financeiras a pagar gera lançamento de débito em fornecedores (Passivo) e crédito em bancos (Ativo).</p>
+            <p>Os <strong>lançamentos em Petrobras</strong> têm particularidades operacionais. Compra de tubulação para perfuração: Débito em Ativo Imobilizado (equipamento), Crédito em Contas a Pagar (dívida contraída). Venda de óleo por R$ 1 milhão: Débito em Caixa (dinheiro recebido), Crédito em Receita de Vendas (reconhecimento de venda). Pagamento de salários: Débito em Despesa de Pessoal, Crédito em Caixa ou Salários a Pagar (se a prazo). Cada operação, por complexa que seja, reduz-se a débito-crédito balanceado.</p>
+            <p>Retificações de erros de lançamentos contábeis originais devem ser registradas através de estorno ou lançamentos complementares.</p>
+            <p>A <strong>escrituração</strong> é o processo formal de registrar lançamentos em livros contábeis. Historicamente feito em livros físicos (Diário e Razão), hoje é realizado em sistemas contábeis integrados. O Diário registra cada lançamento cronologicamente (ordem de data). O Razão agrupa lançamentos por conta, mostrando todos os débitos e créditos de cada conta. Sistema contábil moderno gera automaticamente ambos a partir de lançamento único. Auditores analisam livros contábeis para verificar se todas as operações foram registradas corretamente e se equação mantém-se balanceada.</p>
+            <p>Técnicos de contabilidade na Petrobras realizam conciliações bancárias mensais para garantir a exatidão de saldos de caixa.</p>
+            <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
+            <span className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Regras de Débito e Crédito</span>
             <ul className="text-lg space-y-1 text-foreground">
               <li>✓ ATIVO: Débito aumenta, Crédito diminui</li>
               <li>✓ PASSIVO: Débito diminui, Crédito aumenta</li>
@@ -523,7 +489,9 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
               <li>✓ Cada lançamento: Total Débitos = Total Créditos</li>
             </ul>
           </div>
-        </div>
+        
+          
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -553,7 +521,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           artista: "Prof. Contabilidade"
         }}
       />
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         slides={[
           {
             title: "Método das Partidas Dobradas",
@@ -613,35 +581,25 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={5}
+          index="INTRO"
           title="Balancete de Verificação"
           description="Ferramenta de auditoria interna que verifica integridade dos registros contábeis."
           variant={getModuleVariant(5)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground">
-          <p>
-            O <strong>balancete de verificação</strong> é uma demonstração contábil que lista o saldo de todas as contas abertas em determinada data. Serve como <strong>ferramenta de controle interno</strong> para verificar a integridade dos registros contábeis antes da elaboração das demonstrações financeiras oficiais. Não é obrigatório publicar balancete (apenas balanço patrimonial, DRE, etc.), mas é imprescindível gerar internamente para auditoria. Um balancete desequilibrado (débitos ≠ créditos) sinaliza erro que deve ser encontrado e corrigido antes de publicar demonstrações.
-          </p>
-
-          <p>
-            A <strong>estrutura do balancete</strong> é simples mas poderosa. Cabeçalho contém nome da empresa, período referente (exemplo: "31 de dezembro de 2024"), data de emissão. Primeira coluna lista código e nome de cada conta do plano de contas. Segunda coluna mostra saldo devedor (débitos acumulados). Terceira coluna mostra saldo credor (créditos acumulados). Linha de total verifica se soma de saldo devedor = soma de saldo credor. Igualdade entre esses totais confirma que não há erros grosseiros de lançamento (embora erros mais sutis possam ter ocorrido).
-          </p>
-
-          <p>
-            O balancete funciona como <strong>função de auditoria interna</strong> contínua. Elaborado mensalmente em empresas bem estruturadas, identifica erros antes de publicar demonstrações. Quando débitos ≠ créditos, sinaliza que operação foi lançada incorretamente: talvez lançada em conta errada, ou débito registrado sem correspondente crédito. Equipe contábil analisa operações do mês, encontra erro (exemplo: lançamento de R$ 50.000 que deveria estar em Caixa foi lançado em Contas a Receber), faz lançamento de correção antes do fechamento do mês. Permite correção de erros no período contábil ainda aberto.
-          </p>
-
-          <p>
-            O <strong>balancete em Petrobras</strong> tem particularidades operacionais importantes. Petrobras elabora balancetes mensais para cada unidade de negócio (Exploração, Refino, Distribuição, Internacional). Permite acompanhamento de performance operacional com frequência superior a relatórios trimestrais publicados. Identifica variações anormais em custos de produção antes do fechamento do período (exemplo: se custo de produção de uma plataforma subir 20% em um mês, balancete sinaliza para investigação antes de consolidar resultado). Facilita elaboração de relatórios de gestão para diretoria que precisam tomar decisões sobre alocação de recursos.
-          </p>
-
-          <p>
-            O <strong>balancete também prepara dados</strong> para elaboração de demonstrações financeiras. Saldos de contas de ativo e passivo no balancete correspondem aos saldos no balanço patrimonial. Saldos de contas de receita e despesa correspondem aos valores na demonstração de resultado. Esse elo entre balancete e demonstrações garante que números publicados estão baseados em registros balanceados. Se empresa tem política de divulgar mensalmente demonstrações ao mercado (como Petrobras), balancete de cada mês é o ponto de partida.
-          </p>
-
-          <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Função do Balancete</p>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>O <strong>balancete de verificação</strong> é uma demonstração contábil que lista o saldo de todas as contas abertas em determinada data. Serve como <strong>ferramenta de controle interno</strong> para verificar a integridade dos registros contábeis antes da elaboração das demonstrações financeiras oficiais. Não é obrigatório publicar balancete (apenas balanço patrimonial, DRE, etc.), mas é imprescindível gerar internamente para auditoria. Um balancete desequilibrado (débitos ≠ créditos) sinaliza erro que deve ser encontrado e corrigido antes de publicar demonstrações.</p>
+            <p>Questões sobre balancetes exigem o entendimento de sua finalidade de verificar a precisão dos lançamentos de débito e crédito.</p>
+            <p>A <strong>estrutura do balancete</strong> é simples mas poderosa. Cabeçalho contém nome da empresa, período referente (exemplo: "31 de dezembro de 2024"), data de emissão. Primeira coluna lista código e nome de cada conta do plano de contas. Segunda coluna mostra saldo devedor (débitos acumulados). Terceira coluna mostra saldo credor (créditos acumulados). Linha de total verifica se soma de saldo devedor = soma de saldo credor. Igualdade entre esses totais confirma que não há erros grosseiros de lançamento (embora erros mais sutis possam ter ocorrido).</p>
+            <p>O Balancete de Verificação compila saldos devedores e credores extraídos do livro Razão para testar o equilíbrio das partidas dobradas.</p>
+            <p>O balancete funciona como <strong>função de auditoria interna</strong> contínua. Elaborado mensalmente em empresas bem estruturadas, identifica erros antes de publicar demonstrações. Quando débitos ≠ créditos, sinaliza que operação foi lançada incorretamente: talvez lançada em conta errada, ou débito registrado sem correspondente crédito. Equipe contábil analisa operações do mês, encontra erro (exemplo: lançamento de R$ 50.000 que deveria estar em Caixa foi lançado em Contas a Receber), faz lançamento de correção antes do fechamento do mês. Permite correção de erros no período contábil ainda aberto.</p>
+            <p>A identificação de erros de escrituração contábil ocorre quando o balancete de verificação apresenta soma de devedores diferente dos credores.</p>
+            <p>O <strong>balancete em Petrobras</strong> tem particularidades operacionais importantes. Petrobras elabora balancetes mensais para cada unidade de negócio (Exploração, Refino, Distribuição, Internacional). Permite acompanhamento de performance operacional com frequência superior a relatórios trimestrais publicados. Identifica variações anormais em custos de produção antes do fechamento do período (exemplo: se custo de produção de uma plataforma subir 20% em um mês, balancete sinaliza para investigação antes de consolidar resultado). Facilita elaboração de relatórios de gestão para diretoria que precisam tomar decisões sobre alocação de recursos.</p>
+            <p>O balancete de verificação de oito colunas detalha saldos iniciais, movimentações de débito e crédito e os saldos remanescentes.</p>
+            <p>O <strong>balancete também prepara dados</strong> para elaboração de demonstrações financeiras. Saldos de contas de ativo e passivo no balancete correspondem aos saldos no balanço patrimonial. Saldos de contas de receita e despesa correspondem aos valores na demonstração de resultado. Esse elo entre balancete e demonstrações garante que números publicados estão baseados em registros balanceados. Se empresa tem política de divulgar mensalmente demonstrações ao mercado (como Petrobras), balancete de cada mês é o ponto de partida.</p>
+            <p>Gerentes da Petrobras analisam balancetes gerenciais de custos mensais para monitorar o orçamento de projetos de engenharia offshore.</p>
+            <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
+            <span className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Função do Balancete</span>
             <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Verifica integridade matemática: débitos = créditos</li>
               <li>✓ Identifica erros de lançamento antes de publicar demonstrações</li>
@@ -650,7 +608,9 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
               <li>✓ Em Petrobras, elaborado mensalmente por unidade de negócio para acompanhamento operacional</li>
             </ul>
           </div>
-        </div>
+        
+          
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -680,7 +640,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           artista: "Prof. Contabilidade"
         }}
       />
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         slides={[
           {
             title: "Conceito de Balancete",
@@ -740,35 +700,25 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={6}
+          index="INTRO"
           title="Demonstrações Contábeis"
           description="As peças principais que comunicam situação financeira ao mercado e stakeholders."
           variant={getModuleVariant(6)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground">
-          <p>
-            As <strong>demonstrações contábeis</strong> são relatórios estruturados que consolidam informações contábeis em formato padronizado, permitindo que qualquer pessoa ao redor do mundo compreenda posição financeira, performance operacional e fluxos de caixa de uma empresa. São mandatórias por lei (Lei das S.A., Lei 13.303 para estatais), normas contábeis (IFRS), regulação de mercado (CVM para empresas abertas) e são essenciais para que mercado de capitais funcione de forma informada. Sem demonstrações confiáveis, investidores não teriam informação para avaliar valor de uma ação, credores não saberiam avaliar risco de emprestar.
-          </p>
-
-          <p>
-            O <strong>Balanço Patrimonial</strong> é a demonstração que retrata posição financeira da empresa em determinada data. Apresenta situação estática (como fotografia em um momento específico, tipicamente 31 de dezembro). Estrutura: lado esquerdo mostra Ativo (tudo que empresa possui), lado direito mostra Passivo (obrigações) e Patrimônio Líquido (capital dos sócios). A equação balanceia-se: Ativo = Passivo + Patrimônio. Balanço permite avaliação de solidez: empresa tem ativos suficientes para cobrir dívidas? Patrimônio cresceu ou encolheu em relação ao período anterior? Qual a proporção de financiamento por terceiros versus capital próprio?
-          </p>
-
-          <p>
-            A <strong>Demonstração de Resultado do Exercício (DRE)</strong> é dinâmica: mostra performance em período (mês, trimestre, ano). Estrutura cascata: Receitas Operacionais (venda de produtos/serviços) menos Custos de Produção resulta em Lucro Bruto. Lucro Bruto menos Despesas Operacionais (administração, vendas, pesquisa) resulta em Lucro Operacional. Lucro Operacional mais/menos itens não-operacionais (juros, ganhos/perdas em câmbio) resulta em Lucro antes de Impostos. Lucro antes de Impostos menos Impostos (IR, CSLL) resulta em Lucro Líquido. Análise de DRE permite entender rentabilidade: qual a margem de lucro? Despesas operacionais estão controladas? Houve itens extraordinários que distorcem resultado normal?
-          </p>
-
-          <p>
-            A <strong>Demonstração de Mutações do Patrimônio Líquido (DMPL)</strong> explica como patrimônio mudou durante período. Começa com saldo inicial de patrimônio, adiciona lucro gerado no período, subtrai dividendos pagos aos sócios, e resulta em saldo final. Muito importante para análise de rentabilidade sobre capital investido: se patrimônio aumentou de R$ 100 para R$ 115 graças a lucro de R$ 20 menos dividendos de R$ 5, entende-se que empresa foi lucrativa mas conservadora em distribuição de lucros. Em Petrobras, DMPL mostra impacto de dividendos pagos à União (controladora) e a acionistas privados.
-          </p>
-
-          <p>
-            A <strong>Demonstração de Fluxo de Caixa</strong> rastreia movimento de dinheiro. Divide-se em Atividades Operacionais (caixa gerado pela operação normal), Atividades de Investimento (caixa gasto com aquisição de ativos, caixa recebido de venda de ativos), Atividades de Financiamento (caixa recebido de empréstimos, caixa gasto para pagamento de dívidas, dividendos). Fluxo de caixa operacional positivo significa empresa está gerando dinheiro de suas operações. Fluxo de investimento negativo é normal: empresa investe em crescimento. Fluxo de financiamento depende de política de distribuição de resultados. Juntos, esses fluxos explicam como caixa mudou de ano para ano.
-          </p>
-
-          <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Principais Demonstrações</p>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>As <strong>demonstrações contábeis</strong> são relatórios estruturados que consolidam informações contábeis em formato padronizado, permitindo que qualquer pessoa ao redor do mundo compreenda posição financeira, performance operacional e fluxos de caixa de uma empresa. São mandatórias por lei (Lei das S.A., Lei 13.303 para estatais), normas contábeis (IFRS), regulação de mercado (CVM para empresas abertas) e são essenciais para que mercado de capitais funcione de forma informada. Sem demonstrações confiáveis, investidores não teriam informação para avaliar valor de uma ação, credores não saberiam avaliar risco de emprestar.</p>
+            <p>A CESGRANRIO cobra a estrutura do Balanço Patrimonial e da DRE (Demonstração do Resultado do Exercício) conforme a Lei 6.404/76.</p>
+            <p>O <strong>Balanço Patrimonial</strong> é a demonstração que retrata posição financeira da empresa em determinada data. Apresenta situação estática (como fotografia em um momento específico, tipicamente 31 de dezembro). Estrutura: lado esquerdo mostra Ativo (tudo que empresa possui), lado direito mostra Passivo (obrigações) e Patrimônio Líquido (capital dos sócios). A equação balanceia-se: Ativo = Passivo + Patrimônio. Balanço permite avaliação de solidez: empresa tem ativos suficientes para cobrir dívidas? Patrimônio cresceu ou encolheu em relação ao período anterior? Qual a proporção de financiamento por terceiros versus capital próprio?</p>
+            <p>O Balanço Patrimonial divide Ativo e Passivo em Circulante e Não Circulante, organizados conforme o grau de liquidez de realização.</p>
+            <p>A <strong>Demonstração de Resultado do Exercício (DRE)</strong> é dinâmica: mostra performance em período (mês, trimestre, ano). Estrutura cascata: Receitas Operacionais (venda de produtos/serviços) menos Custos de Produção resulta em Lucro Bruto. Lucro Bruto menos Despesas Operacionais (administração, vendas, pesquisa) resulta em Lucro Operacional. Lucro Operacional mais/menos itens não-operacionais (juros, ganhos/perdas em câmbio) resulta em Lucro antes de Impostos. Lucro antes de Impostos menos Impostos (IR, CSLL) resulta em Lucro Líquido. Análise de DRE permite entender rentabilidade: qual a margem de lucro? Despesas operacionais estão controladas? Houve itens extraordinários que distorcem resultado normal?</p>
+            <p>A DRE deduz do faturamento bruto as devoluções, impostos sobre vendas e deduções para apurar a receita líquida e lucro operacional.</p>
+            <p>A <strong>Demonstração de Mutações do Patrimônio Líquido (DMPL)</strong> explica como patrimônio mudou durante período. Começa com saldo inicial de patrimônio, adiciona lucro gerado no período, subtrai dividendos pagos aos sócios, e resulta em saldo final. Muito importante para análise de rentabilidade sobre capital investido: se patrimônio aumentou de R$ 100 para R$ 115 graças a lucro de R$ 20 menos dividendos de R$ 5, entende-se que empresa foi lucrativa mas conservadora em distribuição de lucros. Em Petrobras, DMPL mostra impacto de dividendos pagos à União (controladora) e a acionistas privados.</p>
+            <p>A DFC (Demonstração dos Fluxos de Caixa) divide variações de caixa entre atividades operacionais, investimentos e financiamentos obtidos.</p>
+            <p>A <strong>Demonstração de Fluxo de Caixa</strong> rastreia movimento de dinheiro. Divide-se em Atividades Operacionais (caixa gerado pela operação normal), Atividades de Investimento (caixa gasto com aquisição de ativos, caixa recebido de venda de ativos), Atividades de Financiamento (caixa recebido de empréstimos, caixa gasto para pagamento de dívidas, dividendos). Fluxo de caixa operacional positivo significa empresa está gerando dinheiro de suas operações. Fluxo de investimento negativo é normal: empresa investe em crescimento. Fluxo de financiamento depende de política de distribuição de resultados. Juntos, esses fluxos explicam como caixa mudou de ano para ano.</p>
+            <p>A Petrobras divulga o Balanço Patrimonial certificado por auditores externos, garantindo transparência junto à Bolsa de Valores.</p>
+            <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
+            <span className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Principais Demonstrações</span>
             <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Balanço Patrimonial: posição estática (ativo, passivo, patrimônio)</li>
               <li>✓ DRE: performance dinâmica (receitas, custos, despesas, lucro)</li>
@@ -777,7 +727,9 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
               <li>✓ Todas obrigatórias para empresas abertas (CVM) e estatais (Lei 13.303)</li>
             </ul>
           </div>
-        </div>
+        
+          
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -789,8 +741,8 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           tituloAula: "Contabilidade Básica",
           materia: "Administração",
           images: [
-            { title: "Balanço Patrimonial", type: "Estrutura", placeholderColor: "bg-violet-500/20" },
-            { title: "DRE", type: "Resultado", placeholderColor: "bg-violet-500/20" },
+            { title: "Balanço Patrimonial", type: "Estrutura", placeholderColor: "bg-teal-500/20" },
+            { title: "DRE", type: "Resultado", placeholderColor: "bg-teal-500/20" },
           ],
         }}
         sinteseEstrategica={{
@@ -799,7 +751,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         }}
         audio={{ audioUrl: "#", titulo: "Relatórios Contábeis", artista: "Prof. Contabilidade" }}
       />
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         slides={[
           {
             title: "Balanço Patrimonial",
@@ -859,35 +811,25 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={7}
+          index="INTRO"
           title="Análise de Demonstrações"
           description="Interpretação de dados financeiros através de índices e tendências."
           variant={getModuleVariant(7)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground">
-          <p>
-            A <strong>análise de demonstrações contábeis</strong> é a arte de extrair significado dos números brutos para compreender saúde financeira, performance operacional e perspectivas futuras de uma empresa. Números absolutos (Ativo Total R$ 800 bilhões) dizem pouco isolados; precisam ser contextualizados. Análise consegue isso através de índices (rácios) que comparam contas relacionadas, tendências que comparam períodos, e benchmarking que compara com concorrentes ou padrão de setor. Um gerente que lê apenas números brutos vê crise; um analista que calcula índices pode distinguir se é crise estrutural ou flutuação temporal.
-          </p>
-
-          <p>
-            Os <strong>índices de liquidez</strong> medem capacidade da empresa de pagar dívidas de curto prazo. Liquidez Corrente = Ativo Circulante / Passivo Circulante: se resultado {'>'} 1, empresa tem mais ativo circulante que dívida circulante (bom). Liquidez Seca = (Ativo Circulante - Estoques) / Passivo Circulante: mais conservador, exclui estoques (que podem ser de difícil venda). Liquidez Imediata = Caixa e Equivalentes / Passivo Circulante: capacidade de pagar imediatamente (mais restritivo). Exemplo prático: se empresa tem LC=2.0, significa que para cada R$ 1 de dívida curto prazo, tem R$ 2 de ativo circulante — liquidez confortável.
-          </p>
-
-          <p>
-            Os <strong>índices de solvência</strong> avaliam capacidade de pagar todas as dívidas (curto e longo prazo). Solvência Geral = Ativo Total / Passivo Total: se {'>'} 1, ativo excede passivo (solvente). Endividamento = Passivo Total / Ativo Total: percentual do ativo financiado por terceiros; inferior a 50% é conservador. Cobertura de Juros = Lucro Operacional / Despesa de Juros: quantas vezes lucro operacional cobre despesa com juros; superior a 3 é saudável. Esses índices interessam a credores: banco que vai emprestar quer garantia de que empresa conseguirá pagar.
-          </p>
-
-          <p>
-            Os <strong>índices de rentabilidade</strong> medem quanto de lucro a empresa gera. ROA (Return on Assets) = Lucro Líquido / Ativo Total: quanto de lucro cada real de ativo gera. ROE (Return on Equity) = Lucro Líquido / Patrimônio Líquido: quanto de lucro cada real de capital dos sócios gera. Margem Líquida = Lucro Líquido / Receita Total: que porcentagem de cada venda vira lucro. Giro do Ativo = Receita Total / Ativo Total: quantas vezes ativo "roda" para gerar receita. Exemplo: empresa com ROE=15% significa que para cada R$ 100 de patrimônio, gera R$ 15 de lucro anualmente — acima da média é positivo.
-          </p>
-
-          <p>
-            A <strong>análise de tendência em Petrobras</strong> é particularmente relevante. Análise Horizontal compara mesma conta entre períodos (2023 vs 2024): se receita cresceu 10%, custos cresceram 8%, margem bruta melhorou. Análise Vertical estrutura balanço em percentuais (caixa é 5% do ativo total, contas a receber é 20%): revela estrutura de aplicação de recursos. Identifica concentração de riscos (se 80% de receita vem de um cliente, risco é alto). Eficiência operacional ao longo do tempo (despesas operacionais diminuindo como % de receita = empresa ficando mais eficiente). Esses dados informam decisões estratégicas: deve Petrobras investir mais em refino (se margens estão caindo) ou exploração (se rentabilidade está melhor)?
-          </p>
-
-          <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Principais Análises</p>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A <strong>análise de demonstrações contábeis</strong> é a arte de extrair significado dos números brutos para compreender saúde financeira, performance operacional e perspectivas futuras de uma empresa. Números absolutos (Ativo Total R$ 800 bilhões) dizem pouco isolados; precisam ser contextualizados. Análise consegue isso através de índices (rácios) que comparam contas relacionadas, tendências que comparam períodos, e benchmarking que compara com concorrentes ou padrão de setor. Um gerente que lê apenas números brutos vê crise; um analista que calcula índices pode distinguir se é crise estrutural ou flutuação temporal.</p>
+            <p>A prova exige o cálculo de índices de liquidez (corrente, seca, imediata) e indicadores de estrutura de capital (endividamento total).</p>
+            <p>Os <strong>índices de liquidez</strong> medem capacidade da empresa de pagar dívidas de curto prazo. Liquidez Corrente = Ativo Circulante / Passivo Circulante: se resultado {'>'} 1, empresa tem mais ativo circulante que dívida circulante (bom). Liquidez Seca = (Ativo Circulante - Estoques) / Passivo Circulante: mais conservador, exclui estoques (que podem ser de difícil venda). Liquidez Imediata = Caixa e Equivalentes / Passivo Circulante: capacidade de pagar imediatamente (mais restritivo). Exemplo prático: se empresa tem LC=2.0, significa que para cada R$ 1 de dívida curto prazo, tem R$ 2 de ativo circulante — liquidez confortável.</p>
+            <p>O índice de Liquidez Corrente mede a capacidade de honrar obrigações de curto prazo dividindo Ativo Circulante por Passivo Circulante.</p>
+            <p>Os <strong>índices de solvência</strong> avaliam capacidade de pagar todas as dívidas (curto e longo prazo). Solvência Geral = Ativo Total / Passivo Total: se {'>'} 1, ativo excede passivo (solvente). Endividamento = Passivo Total / Ativo Total: percentual do ativo financiado por terceiros; inferior a 50% é conservador. Cobertura de Juros = Lucro Operacional / Despesa de Juros: quantas vezes lucro operacional cobre despesa com juros; superior a 3 é saudável. Esses índices interessam a credores: banco que vai emprestar quer garantia de que empresa conseguirá pagar.</p>
+            <p>A Liquidez Seca difere da corrente ao subtrair o valor de estoques do Ativo Circulante, refletindo capacidade líquida de pagamento.</p>
+            <p>Os <strong>índices de rentabilidade</strong> medem quanto de lucro a empresa gera. ROA (Return on Assets) = Lucro Líquido / Ativo Total: quanto de lucro cada real de ativo gera. ROE (Return on Equity) = Lucro Líquido / Patrimônio Líquido: quanto de lucro cada real de capital dos sócios gera. Margem Líquida = Lucro Líquido / Receita Total: que porcentagem de cada venda vira lucro. Giro do Ativo = Receita Total / Ativo Total: quantas vezes ativo "roda" para gerar receita. Exemplo: empresa com ROE=15% significa que para cada R$ 100 de patrimônio, gera R$ 15 de lucro anualmente — acima da média é positivo.</p>
+            <p>Métricas de endividamento avaliam a proporção de capitais de terceiros financiando ativos frente aos recursos próprios de acionistas.</p>
+            <p>A <strong>análise de tendência em Petrobras</strong> é particularmente relevante. Análise Horizontal compara mesma conta entre períodos (2023 vs 2024): se receita cresceu 10%, custos cresceram 8%, margem bruta melhorou. Análise Vertical estrutura balanço em percentuais (caixa é 5% do ativo total, contas a receber é 20%): revela estrutura de aplicação de recursos. Identifica concentração de riscos (se 80% de receita vem de um cliente, risco é alto). Eficiência operacional ao longo do tempo (despesas operacionais diminuindo como % de receita = empresa ficando mais eficiente). Esses dados informam decisões estratégicas: deve Petrobras investir mais em refino (se margens estão caindo) ou exploração (se rentabilidade está melhor)?</p>
+            <p>A tesouraria da Petrobras monitora índices de liquidez para manter o rating de grau de investimento em agências internacionais de risco.</p>
+            <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
+            <span className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Principais Análises</span>
             <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Índices de Liquidez: capacidade pagar dívidas curto prazo</li>
               <li>✓ Índices de Solvência: capacidade pagar todas dívidas</li>
@@ -896,7 +838,9 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
               <li>✓ Análise Vertical: estrutura percentual (composição de ativo, receita)</li>
             </ul>
           </div>
-        </div>
+        
+          
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -926,7 +870,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           artista: "Prof. Contabilidade"
         }}
       />
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         slides={[
           {
             title: "Índices de Liquidez",
@@ -986,35 +930,25 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={8}
+          index="INTRO"
           title="Contabilidade de Custos"
           description="Análise de custos para otimizar operações e decisões de produção."
           variant={getModuleVariant(8)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground">
-          <p>
-            A <strong>contabilidade de custos</strong> é especialização da contabilidade dedicada a acumular, analisar e interpretar custos de produção e operação. Diferente de contabilidade geral (que registra todas as transações), contabilidade de custos foca especificamente em custos: quanto custa produzir cada unidade? Qual é a margem de lucro por produto? Onde estão os maiores gastos? Essas informações são <strong>críticas para decisões operacionais</strong> que contabilidade geral não fornece. Um gerente de produção em Petrobras precisa saber custo por barril de óleo produzido para decidir se continua operação de um poço (se preço de mercado for menor que custo de produção, melhor parar).
-          </p>
-
-          <p>
-            Os <strong>custos de produção</strong> dividem-se em três categorias. Matéria-Prima é material que entra no produto final (óleo bruto é matéria-prima para refino, aço é matéria-prima para máquinas). Mão-de-Obra Direta são salários de quem fabrica o produto (engenheiro na plataforma que opera equipamento é mão-de-obra direta). Custos Indiretos de Fabricação (CIF) são custos que não podem ser rastreados diretamente a um produto (aluguel da fábrica, depreciação de máquinas, energia elétrica da fábrica). Soma desses três = Custo de Produção. Diferente de Despesa, que são gastos fora de produção (salário de gerente administrativo, publicidade, seguros corporativos).
-          </p>
-
-          <p>
-            A <strong>distinção entre custo e despesa</strong> é crítica. Custo entra no produto: quando você vende o produto, o custo sai do balanço (via COGS - Custo dos Produtos Vendidos) e afeta resultado. Se você produz 100 unidades mas vende apenas 50, custo das 50 não vendidas fica em estoque (ativo), esperando venda. Despesa não entra no produto: quando você incorre em despesa, ela imediatamente afeta resultado. Salário de vendedor é despesa de vendas, não custo de produção. Publicidade é despesa de marketing. Essa separação é essencial para que análise de resultado faça sentido: margens bruta vs operacional versus líquida.
-          </p>
-
-          <p>
-            A <strong>análise Custo-Volume-Lucro (CVL)</strong> integra custos com volume de produção e resultado. Ponto de Equilíbrio (Break-Even) é volume onde receita total = custo total (lucro = zero). Abaixo disso, prejuízo; acima, lucro. Margem de Contribuição é receita menos custos variáveis — quanto cada unidade contribui para cobrir custos fixos e gerar lucro. Em Petrobras, se plataforma tem custos fixos de R$ 100 milhões/ano (aluguel, pessoal mínimo) e custos variáveis de R$ 50/barril, e preço é R$ 80/barril, margem de contribuição é R$ 30/barril. Ponto de equilíbrio = R$ 100 mi / R$ 30 per barrel = 3.33 milhões de barris. Se produzir menos, prejudicial; se mais, lucrativo.
-          </p>
-
-          <p>
-            Os <strong>custos em Petrobras</strong> têm dimensões especiais. Exploração inclui custos de perfuração (construir poço), completação (preparar poço para produção), operação (manter poço produzindo). Refino inclui custos de processamento (energia, catalisadores, manutenção de equipamento). Distribuição inclui custos de logística, transporte, armazenagem. Custos fixos de infraestrutura (plataformas, refinarias) são depreciados ao longo de anos. Análise crítica de custos informa decisões estratégicas: se custo de óleo pesado na Bacia de Santos é R$ 60/barril e preço caiu para R$ 55/barril, é preferível parar produção (cortando custos operacionais variáveis) e manter apenas custos fixos, esperando recuperação de preço?
-          </p>
-
-          <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Elementos de Custo</p>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A <strong>contabilidade de custos</strong> é especialização da contabilidade dedicada a acumular, analisar e interpretar custos de produção e operação. Diferente de contabilidade geral (que registra todas as transações), contabilidade de custos foca especificamente em custos: quanto custa produzir cada unidade? Qual é a margem de lucro por produto? Onde estão os maiores gastos? Essas informações são <strong>críticas para decisões operacionais</strong> que contabilidade geral não fornece. Um gerente de produção em Petrobras precisa saber custo por barril de óleo produzido para decidir se continua operação de um poço (se preço de mercado for menor que custo de produção, melhor parar).</p>
+            <p>Questões de contabilidade de custos cobram a distinção de custos diretos/indiretos e despesas, além de métodos de custeio (absorção vs variável).</p>
+            <p>Os <strong>custos de produção</strong> dividem-se em três categorias. Matéria-Prima é material que entra no produto final (óleo bruto é matéria-prima para refino, aço é matéria-prima para máquinas). Mão-de-Obra Direta são salários de quem fabrica o produto (engenheiro na plataforma que opera equipamento é mão-de-obra direta). Custos Indiretos de Fabricação (CIF) são custos que não podem ser rastreados diretamente a um produto (aluguel da fábrica, depreciação de máquinas, energia elétrica da fábrica). Soma desses três = Custo de Produção. Diferente de Despesa, que são gastos fora de produção (salário de gerente administrativo, publicidade, seguros corporativos).</p>
+            <p>Custos diretos são atribuídos de forma objetiva ao produto; custos indiretos exigem rateios estruturados para sua correta alocação.</p>
+            <p>A <strong>distinção entre custo e despesa</strong> é crítica. Custo entra no produto: quando você vende o produto, o custo sai do balanço (via COGS - Custo dos Produtos Vendidos) e afeta resultado. Se você produz 100 unidades mas vende apenas 50, custo das 50 não vendidas fica em estoque (ativo), esperando venda. Despesa não entra no produto: quando você incorre em despesa, ela imediatamente afeta resultado. Salário de vendedor é despesa de vendas, não custo de produção. Publicidade é despesa de marketing. Essa separação é essencial para que análise de resultado faça sentido: margens bruta vs operacional versus líquida.</p>
+            <p>O custeio por absorção apropria todos os custos de fabricação (fixos e variáveis) aos produtos, sendo aceito para fins fiscais.</p>
+            <p>A <strong>análise Custo-Volume-Lucro (CVL)</strong> integra custos com volume de produção e resultado. Ponto de Equilíbrio (Break-Even) é volume onde receita total = custo total (lucro = zero). Abaixo disso, prejuízo; acima, lucro. Margem de Contribuição é receita menos custos variáveis — quanto cada unidade contribui para cobrir custos fixos e gerar lucro. Em Petrobras, se plataforma tem custos fixos de R$ 100 milhões/ano (aluguel, pessoal mínimo) e custos variáveis de R$ 50/barril, e preço é R$ 80/barril, margem de contribuição é R$ 30/barril. Ponto de equilíbrio = R$ 100 mi / R$ 30 per barrel = 3.33 milhões de barris. Se produzir menos, prejudicial; se mais, lucrativo.</p>
+            <p>O custeio variável lança custos fixos diretamente no resultado de período, sendo ferramenta gerencial de tomada de decisão.</p>
+            <p>Os <strong>custos em Petrobras</strong> têm dimensões especiais. Exploração inclui custos de perfuração (construir poço), completação (preparar poço para produção), operação (manter poço produzindo). Refino inclui custos de processamento (energia, catalisadores, manutenção de equipamento). Distribuição inclui custos de logística, transporte, armazenagem. Custos fixos de infraestrutura (plataformas, refinarias) são depreciados ao longo de anos. Análise crítica de custos informa decisões estratégicas: se custo de óleo pesado na Bacia de Santos é R$ 60/barril e preço caiu para R$ 55/barril, é preferível parar produção (cortando custos operacionais variáveis) e manter apenas custos fixos, esperando recuperação de preço?</p>
+            <p>Refinarias da Petrobras utilizam rateios avançados de custos de utilidades para alocar custos de energia entre derivados de refino.</p>
+            <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
+            <span className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Elementos de Custo</span>
             <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Matéria-Prima: material que entra no produto</li>
               <li>✓ Mão-de-Obra Direta: salários de quem produz</li>
@@ -1024,7 +958,9 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
               <li>✓ Análise CVL: Ponto de Equilíbrio e Margem de Contribuição</li>
             </ul>
           </div>
-        </div>
+        
+          
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -1054,7 +990,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           artista: "Prof. Contabilidade"
         }}
       />
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         slides={[
           {
             title: "Classificação de Custos",
@@ -1114,35 +1050,25 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={9}
+          index="INTRO"
           title="Contabilidade na Petrobras"
           description="Aplicação prática de contabilidade em contexto de estatal de capital aberto."
           variant={getModuleVariant(9)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground">
-          <p>
-            A <strong>Petrobras é empresa estatal de capital aberto</strong>, combinação que a submete a múltiplas camadas de regulação. Como estatal, segue Lei 13.303/2016 (Lei das Empresas Estatais), que estabelece regras rígidas de governança, auditoria e transparência. Como capital aberto (listada na B3 e NYSE), segue regulação da CVM (Comissão de Valores Mobiliários), que exige divulgação ampla de informações financeiras e não-financeiras. Como empresa privada, segue Lei das S.A. (6.404/76) e normas contábeis internacionais (IFRS). Essa confluência de regulações garante que Petrobras é uma das empresas mais auditadas e transparentes do Brasil, mas também a mais complexa contabilmente.
-          </p>
-
-          <p>
-            A <strong>adoção de IFRS (International Financial Reporting Standards)</strong> é obrigatória para Petrobras. IFRS são normas de contabilidade aceitas globalmente que permitem que investidores em qualquer país entendam demonstrações financeiras com metodologia uniforme. IFRS 6 trata especificamente de Exploração e Avaliação de Recursos Minerais — relevantíssimo para Petrobras que precisa contabilizar poços explorados, descobertas e avaliação de recursos. IFRS 16 trata de Arrendamentos — Petrobras contabiliza muitos contratos de aluguel de equipamentos offshore. IFRS 9 trata de Instrumentos Financeiros — relevante para derivativos (hedge de risco de câmbio e preço de petróleo) que Petrobras utiliza. Mensuração de ativos ao valor justo é princípio IFRS que afeta como Petrobras avalia estoques de óleo e propriedades de exploração.
-          </p>
-
-          <p>
-            A <strong>auditoria em Petrobras</strong> é processo robusto. Auditoria Interna é equipe de Petrobras que monitora conformidade contínua com políticas e normas. Auditoria Externa é contratada de firma independente (Big 4: Deloitte, EY, KPMG, PwC) que opina sobre fidedignidade das demonstrações financeiras. Conselho Fiscal é órgão colegiado (composto por acionistas) que opina sobre adequação das demonstrações e recomenda aprovação ou rejeição em assembleia. CVM monitora divulgação pública e fiscaliza se empresa está cumprindo regulação de mercado de capitais. Essa tríplice auditoria (interna, externa independente, regulatória) garante que números são confiáveis.
-          </p>
-
-          <p>
-            A <strong>divulgação e transparência</strong> em Petrobras é extensa. Petrobras divulga demonstrações financeiras trimestrais (4 vezes ao ano) e anuais (1 vez ao ano) no site corporativo, em português e inglês. Relatório Integrado combina informações financeiras com informações sociais (pessoas, comunidades) e ambientais (emissões, impactos ecológicos), alinhado com padrões ESG. Conference calls trimestrais com analistas de mercado explicam resultados e respondem perguntas. Atendimento a requisitos de governança corporativa (Código Brasileiro de Governança Corporativa) e ESG (Environmental, Social, Governance) que investidores globais exigem. Essa transparência é possível apenas porque contabilidade está em ordem, auditada e confiável.
-          </p>
-
-          <p>
-            A <strong>conformidade regulatória específica</strong> em Petrobras merece destaque. Lei 13.303 exige que contratações acima de certo valor sejam aprovadas por áreas específicas e auditadas internamente. SARBANES-OXLEY (lei americana que Petrobras adota voluntariamente por estar listada na NYSE) exige certificação de CFO e CEO sobre confiabilidade de informações financeiras — é responsabilidade pessoal do executivo, não apenas da área contábil. IFAC (International Federation of Accountants) standards de auditoria são seguidas. Adesão a Extractive Industries Transparency Initiative (EITI) exige divulgação de pagamentos feitos ao governo brasileiro (royalties, impostos), aumentando accountability por uso de recursos naturais.
-          </p>
-
-          <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <p className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Regulação Contábil em Petrobras</p>
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <p>A <strong>Petrobras é empresa estatal de capital aberto</strong>, combinação que a submete a múltiplas camadas de regulação. Como estatal, segue Lei 13.303/2016 (Lei das Empresas Estatais), que estabelece regras rígidas de governança, auditoria e transparência. Como capital aberto (listada na B3 e NYSE), segue regulação da CVM (Comissão de Valores Mobiliários), que exige divulgação ampla de informações financeiras e não-financeiras. Como empresa privada, segue Lei das S.A. (6.404/76) e normas contábeis internacionais (IFRS). Essa confluência de regulações garante que Petrobras é uma das empresas mais auditadas e transparentes do Brasil, mas também a mais complexa contabilmente.</p>
+            <p>Questões sobre contabilidade na Petrobras cobram o reconhecimento contábil de passivos ambientais e impairment de ativos de exploração.</p>
+            <p>A <strong>adoção de IFRS (International Financial Reporting Standards)</strong> é obrigatória para Petrobras. IFRS são normas de contabilidade aceitas globalmente que permitem que investidores em qualquer país entendam demonstrações financeiras com metodologia uniforme. IFRS 6 trata especificamente de Exploração e Avaliação de Recursos Minerais — relevantíssimo para Petrobras que precisa contabilizar poços explorados, descobertas e avaliação de recursos. IFRS 16 trata de Arrendamentos — Petrobras contabiliza muitos contratos de aluguel de equipamentos offshore. IFRS 9 trata de Instrumentos Financeiros — relevante para derivativos (hedge de risco de câmbio e preço de petróleo) que Petrobras utiliza. Mensuração de ativos ao valor justo é princípio IFRS que afeta como Petrobras avalia estoques de óleo e propriedades de exploração.</p>
+            <p>O teste de impairment avalia anualmente o valor recuperável de ativos imobilizados de refino para calibrar eventuais perdas no balanço.</p>
+            <p>A <strong>auditoria em Petrobras</strong> é processo robusto. Auditoria Interna é equipe de Petrobras que monitora conformidade contínua com políticas e normas. Auditoria Externa é contratada de firma independente (Big 4: Deloitte, EY, KPMG, PwC) que opina sobre fidedignidade das demonstrações financeiras. Conselho Fiscal é órgão colegiado (composto por acionistas) que opina sobre adequação das demonstrações e recomenda aprovação ou rejeição em assembleia. CVM monitora divulgação pública e fiscaliza se empresa está cumprindo regulação de mercado de capitais. Essa tríplice auditoria (interna, externa independente, regulatória) garante que números são confiáveis.</p>
+            <p>O provisionamento de custos futuros com desmobilização de sondas e poços esgotados é classificado como passivo não circulante contábil.</p>
+            <p>A <strong>divulgação e transparência</strong> em Petrobras é extensa. Petrobras divulga demonstrações financeiras trimestrais (4 vezes ao ano) e anuais (1 vez ao ano) no site corporativo, em português e inglês. Relatório Integrado combina informações financeiras com informações sociais (pessoas, comunidades) e ambientais (emissões, impactos ecológicos), alinhado com padrões ESG. Conference calls trimestrais com analistas de mercado explicam resultados e respondem perguntas. Atendimento a requisitos de governança corporativa (Código Brasileiro de Governança Corporativa) e ESG (Environmental, Social, Governance) que investidores globais exigem. Essa transparência é possível apenas porque contabilidade está em ordem, auditada e confiável.</p>
+            <p>Os estoques de petróleo cru são mensurados pelo menor valor entre o custo histórico ponderado de extração e o valor líquido de venda.</p>
+            <p>A <strong>conformidade regulatória específica</strong> em Petrobras merece destaque. Lei 13.303 exige que contratações acima de certo valor sejam aprovadas por áreas específicas e auditadas internamente. SARBANES-OXLEY (lei americana que Petrobras adota voluntariamente por estar listada na NYSE) exige certificação de CFO e CEO sobre confiabilidade de informações financeiras — é responsabilidade pessoal do executivo, não apenas da área contábil. IFAC (International Federation of Accountants) standards de auditoria são seguidas. Adesão a Extractive Industries Transparency Initiative (EITI) exige divulgação de pagamentos feitos ao governo brasileiro (royalties, impostos), aumentando accountability por uso de recursos naturais.</p>
+            <p>A equipe de auditoria interna da Petrobras revisa notas explicativas contábeis sobre disputas tributárias e passivos de SMS.</p>
+            <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
+            <span className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">📋 Regulação Contábil em Petrobras</span>
             <ul className="text-lg space-y-1 text-foreground">
               <li>✓ Lei 13.303/2016: Estatuto das Estatais (governança, transparência)</li>
               <li>✓ Lei 6.404/76: Lei das S.A. (direito societário)</li>
@@ -1152,7 +1078,9 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
               <li>✓ ESG: Environmental, Social, Governance (responsabilidade corporativa)</li>
             </ul>
           </div>
-        </div>
+        
+          
+          </div>
       </section>
 
       <ModuleConsolidation
@@ -1174,7 +1102,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         }}
         audio={{ audioUrl: "#", titulo: "Petrobras Contábil", artista: "Prof. Contabilidade" }}
       />
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         slides={[
           {
             title: "Regras de Contabilidade em Petrobras",
@@ -1234,13 +1162,13 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
 
       <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
         <ModuleSectionHeader
-          index={10}
+          index="INTRO"
           title="Simulado Geral"
           description="Avaliação integrada consolidando todos os conceitos de contabilidade básica."
           variant={getModuleVariant(10)}
         />
 
-        <div className="space-y-6 text-lg leading-relaxed text-foreground">
+        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
           <p>
             O <strong>Simulado Geral é avaliação integradora</strong> que sintetiza tudo que você aprendeu em 9 módulos anteriores. Diferente de quizzes de cada módulo (que focam conceitos específicos), simulado combina múltiplos domínios em <strong>questões de alta complexidade</strong>. Uma questão pode começar descrevendo lançamento contábil, pedir cálculo de índice de liquidez da empresa, e então questionar implicações para decisão de investimento. Requer que você entenda não apenas "o que é", mas também "como funciona em contexto integrado". Simulado Geral em CESGRANRIO é tipicamente assim: questões exigem compreensão de múltiplos conceitos e capacidade de análise crítica, não simples memorização.
           </p>
@@ -1302,7 +1230,7 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           artista: "Prof. Contabilidade"
         }}
       />
-      <ContentAccordion
+      <ContentAccordion mode="stacked" 
         slides={[
           {
             title: "Integração de Conceitos",

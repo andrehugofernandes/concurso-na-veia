@@ -1,0 +1,21 @@
+refactor(curriculum): padronização didática premium v3, persistência de estado e correções de tipagem nas aulas
+
+Esta mudança consolida uma reestruturação pedagógica profunda e a estabilização completa do compilador TypeScript para o ecossistema de aulas do Petrobras Quest.
+
+PRINCIPAIS ALTERAÇÕES:
+
+1. Inglês (Estabilização & Conectividade):
+   - Injetado `useEffect` reativo para mapeamento dinâmico de progresso local para o callback reativo `onUpdateProgress` nas aulas de compreensão textual e falsos cognatos.
+   - Removido o componente obsoleto e vazio `<ModuleConsolidation>` dessas aulas, liberando 3.6KB de código redundante e sanando erros de propriedades obrigatórias ausentes.
+   - Injetada a propriedade obrigatória `titulo="Quiz Interativo"` nos quizzes de todos os módulos.
+   - Substituída a diretiva antiga `ComparisonSide` pelo novo componente premium unificado `<Comparison>` de `shared.tsx`.
+   - Limpeza da propriedade inválida `onComplete` e do callback `onScoreSubmit` nas chamadas aos componentes em `AulaVerbTenses.tsx`.
+
+2. Administração (Persistência no localStorage):
+   - Implementação de persistência em lote no `localStorage` sob SSR seguro (previne quebra no servidor Next.js) para salvar o estado de `activeTab`, `unlockedModules` e `completedModules` de 17 aulas com chaves prefixadas e exclusivas.
+   - Adicionada a importação do gancho `useEffect` que faltava em `AulaLei13303.tsx`.
+
+3. Didática Premium e Harmonização Visual:
+   - Configurado o `<ContentAccordion>` em modo empilhado (`mode="stacked"`) em lote, otimizando drasticamente a legibilidade e desempenho didático no celular.
+   - Atualizados os FlipCards da plataforma estendendo o gap do contêiner de `gap-4` para `gap-6`, melhorando a estabilidade de exibição em resoluções retina e mantendo a consistência cromática unificada com o `moduleColors.ts`.
+   - Normalizado o parâmetro legado `maceteVisual` para `sinteseEstrategica` e corrigido o `onComplete` em `AulaTrigonometria.tsx` e outras aulas de Matemática.
