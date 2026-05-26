@@ -94,9 +94,14 @@ Se o texto contiver enumerações ou tópicos do tipo `(1) isso, (2) aquilo`, ex
 ### B. Uma Imagem Clicável com Lightbox por Módulo
 Cada introdução deve conter exatamente uma imagem ilustrativa relevante posicionada em layout assimétrico (texto correndo ao lado). A imagem deve suportar zoom interativo por modal/lightbox:
 
-1. **Estado do Componente:** Declare `const [isImageZoomed, setIsImageZoomed] = useState(false);` no topo do arquivo da aula.
+1. **Estado do Componente:** Declare `const [zoomedImage, setZoomedImage] = useState<string | null>(null);` no topo do arquivo da aula para gerenciar a ampliação dinâmica de qualquer imagem na página.
 2. **Nomenclatura Genérica (Caminho Padrão):** O arquivo de imagem deve seguir a nomenclatura genérica `/assets/images/matematica/[topico]/modulo-[N]/m[N]-intro.png`.
-3. **Prescrição e Prompt no Código:**
+3. **Proibição Absoluta de Textos em Inglês (Nano Banana):**
+   - As imagens geradas via IA (Nano Banana) **NUNCA** devem conter palavras, termos ou textos em inglês.
+   - Todo e qualquer elemento textual na imagem deve estar em **Português do Brasil** ou usar **apenas notações e símbolos matemáticos universais** (ex: ℕ, ℤ, ℚ, ℝ, ∪, ∩, ∅, A ⊂ B, etc.).
+   - Nos prompts enviados para geração, instrua a IA explicitamente a evitar palavras em inglês e a desenhar símbolos puros ou textos em português.
+   - Exemplo de instrução a ser inserida no prompt: `"strict rules: all labels and text in the image must be in Portuguese or use pure mathematical symbols, absolutely no English words allowed."`
+4. **Prescrição e Prompt no Código:**
    ```tsx
    <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start my-8">
      <div className="space-y-4">
@@ -109,11 +114,11 @@ Cada introdução deve conter exatamente uma imagem ilustrativa relevante posici
      <div className="shrink-0 space-y-2 w-full max-w-[320px] mx-auto lg:mx-0">
        <div 
          className="cursor-zoom-in hover:scale-[1.02] transition-transform duration-200"
-         onClick={() => setIsImageZoomed(true)}
+         onClick={() => setZoomedImage("/assets/images/matematica/[topico]/modulo-[N]/m[N]-intro.png")}
        >
          <img
            src="/assets/images/matematica/[topico]/modulo-[N]/m[N]-intro.png"
-           // PROMPT: [MANDATÓRIO] Descreva o que aparecerá na imagem gerada pelo Nano Banana. Estilo Dark Premium, fundo (#0a0f1d), proporção 1:1.
+           // PROMPT: [MANDATÓRIO] Descreva o que aparecerá na imagem gerada pelo Nano Banana. Estilo Dark Premium, fundo (#0a0f1d), proporção 1:1. NÃO inclua textos em inglês sob nenhuma hipótese.
            alt="Legenda de acessibilidade"
            className="w-full rounded-2xl border border-border/20 shadow-lg"
          />
@@ -122,20 +127,20 @@ Cada introdução deve conter exatamente uma imagem ilustrativa relevante posici
      </div>
    </div>
    ```
-4. **Modal Lightbox (ao final do JSX, antes de `</AulaTemplate>`):**
+5. **Modal Lightbox (ao final do JSX, antes de `</AulaTemplate>`):**
    ```tsx
-   {isImageZoomed && (
+   {zoomedImage && (
      <div 
        className="fixed inset-0 z-[100] flex items-center justify-center bg-background/90 backdrop-blur-md cursor-zoom-out p-4 md:p-8"
-       onClick={() => setIsImageZoomed(false)}
+       onClick={() => setZoomedImage(null)}
      >
        <div className="relative max-w-4xl max-h-[90vh] w-full h-full flex items-center justify-center">
          <img
-           src="/assets/images/matematica/[topico]/modulo-1/m1-intro.png" // Ajuste dinamicamente se houver várias imagens
+           src={zoomedImage}
            alt="Imagem ampliada"
            className="max-w-full max-h-full object-contain rounded-2xl border border-border/40 shadow-2xl animate-in fade-in zoom-in-95 duration-200"
          />
-         <button className="absolute top-4 right-4 p-3 bg-muted/80 backdrop-blur-md rounded-full text-foreground" onClick={() => setIsImageZoomed(false)}>
+         <button className="absolute top-4 right-4 p-3 bg-muted/80 backdrop-blur-md rounded-full text-foreground hover:bg-muted transition-colors" onClick={() => setZoomedImage(null)}>
            <LuX className="w-6 h-6" />
          </button>
        </div>
