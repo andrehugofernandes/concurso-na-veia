@@ -70,7 +70,7 @@ export default function AulaConjuntos({
   const [completedModules, setCompletedModules] = useState<Set<string>>(
     new Set(),
   );
-  const [isImageZoomed, setIsImageZoomed] = useState(false);
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
   const [quizFundamentos] = useState(() =>
     getRandomQuestions(QUIZ_M1_CONCEITOS, 6),
@@ -289,7 +289,7 @@ export default function AulaConjuntos({
                 <div className="shrink-0 space-y-2 w-full max-w-[320px] mx-auto lg:mx-0">
                   <div 
                     className="cursor-zoom-in hover:scale-[1.02] transition-transform duration-200"
-                    onClick={() => setIsImageZoomed(true)}
+                    onClick={() => setZoomedImage("/assets/images/matematica/conjuntos/modulo-1/m1-intro.png")}
                   >
                     <img
                       src="/assets/images/matematica/conjuntos/modulo-1/m1-intro.png"
@@ -1116,86 +1116,104 @@ export default function AulaConjuntos({
             variant={mv[2]}
           />
 
-          <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              Operações com conjuntos são procedimentos que combinam dois ou
-              mais conjuntos para gerar novos conjuntos. Assim como a Aritmética
-              trabalha com números (adição, subtração, multiplicação), a teoria
-              dos conjuntos trabalha com conjuntos através de operações bem
-              definidas. As quatro operações fundamentais são: União (∪),
-              Interseção (∩), Diferença (-) e Complemento (ou Complementar) (').
-              Cada uma delas possui propriedades específicas que facilitam a
-              resolução de problemas. A álgebra de conjuntos é isomórfica à
-              álgebra booleana, que é base para toda a Ciência da Computação e
-              Engenharia Eletrônica — razão pela qual a CESGRANRIO valoriza essa
-              competência em concursos para níveis técnicos e administrativos.
+              As operações com conjuntos constituem os procedimentos fundamentais para manipular e relacionar diferentes agrupamentos de dados na Matemática moderna. Assim como a aritmética tradicional utiliza operadores como soma e subtração para gerar novos valores numéricos, a teoria dos conjuntos opera sobre coleções de elementos usando ferramentas lógicas específicas. As quatro operações que estruturam toda essa dinâmica são a união (∪), a interseção (∩), a diferença (-) e o complementar ('). A compreensão aprofundada destas operações é de suma importância para provas técnicas da banca CESGRANRIO, que valoriza a habilidade do candidato em transitar com segurança entre definições formais, notações simbólicas e aplicações práticas.
             </p>
 
             <p>
-              A União de dois conjuntos A e B, denotada por A ∪ B, é o conjunto
-              que contém todos os elementos que pertencem a A, OU pertencem a B,
-              OU pertencem a ambos. Em linguagem simbólica: A ∪ B = {"{"}x | x ∈
-              A OU x ∈ B{"}"}. Importante: na união, cada elemento é contado
-              apenas uma vez, mesmo que apareça em ambos os conjuntos. Se A ={" "}
-              {"{"}1, 2, 3{"}"} e B = {"{"}3, 4, 5{"}"}', então A ∪ B = {"{"}1,
-              2, 3, 4, 5{"}"} — note que o '3' aparece uma só vez. A Interseção
-              A ∩ B é o conjunto contendo apenas os elementos que pertencem
-              simultaneamente a A E a B. A ∩ B = {"{"}x | x ∈ A E x ∈ B{"}"}. No
-              exemplo anterior, A ∩ B = {"{"}3{"}"}, pois apenas o 3 está em
-              ambos. Quando dois conjuntos não compartilham elementos, sua
-              interseção é o conjunto vazio: A ∩ B = ∅. Tais conjuntos são
-              chamados disjuntos.
+              Em cenários industriais e administrativos de grande escala, como os encontrados rotineiramente na Petrobras, as operações de conjuntos funcionam como as engrenagens de grandes sistemas de consulta a bancos de dados. A manipulação adequada de grandes volumes de informação de refino, manutenção de poços ou alocação de equipes operacionais exige a aplicação sistemática de filtros de inclusão e exclusão de conjuntos. O domínio de suas leis e propriedades algébricas, portanto, vai muito além do simples cálculo de elementos, estendendo-se à lógica booleana que governa a programação de algoritmos e as consultas SQL.
             </p>
 
             <p>
-              A Diferença de A por B, denotada por A - B (ou A \\ B), contém
-              todos os elementos que estão em A mas não estão em B. A - B ={" "}
-              {"{"}x | x ∈ A E x ∉ B{"}"}. Continuando o exemplo: A - B = {"{"}
-              1, 2{"}"} pois removemos o 3 (que está em B) de A. Note que A - B
-              ≠ B - A em geral: B - A = {"{"}4, 5{"}"}. O Complemento de um
-              conjunto A (em relação a um conjunto universal U) é o conjunto de
-              todos os elementos em U que não estão em A. Denotado por A' ou
-              A^c: A' = {"{"}x | x ∈ U E x ∉ A{"}"}. O conjunto universal U deve
-              ser especificado no contexto — não existe complemento absoluto. Em
-              contexto Petrobras, se U = {"{"}todos os funcionários da empresa
-              {"}"}' e A = {"{"}funcionários com certificação NR-35{"}"}', então
-              A' = {"{"}funcionários SEM certificação NR-35{"}"}'. Isso é
-              crucial para segurança no trabalho: qualificar pessoas é
-              essencial.
+              A operação de união (A ∪ B) consiste na consolidação de todos os elementos contidos no conjunto A, no conjunto B, ou em ambos, sem que haja qualquer duplicação na listagem final. Matematicamente, dizemos que A ∪ B = {"{"}x | x ∈ A ∨ x ∈ B{"}"}. Por outro lado, a interseção (A ∩ B) restringe o resultado apenas aos elementos comuns, isto é, aqueles que pertencem simultaneamente a ambos os conjuntos: A ∩ B = {"{"}x | x ∈ A ∧ x ∈ B{"}"}. Quando não há elementos compartilhados (A ∩ B = ∅), os conjuntos são chamados disjuntos.
             </p>
 
             <p>
-              Na prática Petrobras, operações com conjuntos resolvem problemas
-              reais constantemente. Suponha que U = todas as plataformas, A =
-              plataformas em Campos, B = plataformas com sistema de contingência
-              ativo. Então: A ∩ B = plataformas em Campos COM contingência
-              (segurança crítica), A - B = plataformas em Campos SEM
-              contingência (prioridade de upgrade), B - A = plataformas fora de
-              Campos COM contingência (possível redundância). Operações com
-              conjuntos permitem alocar recursos com precisão. Em dados
-              corporativos, interseções e diferenças são fundamentais para
-              relatórios: quantos funcionários trabalham simultaneamente em duas
-              operações? Quantos projetos estão atrasados mas dentro do
-              orçamento? Quantos poços produziram além da meta? Essas perguntas
-              exigem pensamento de conjuntos.
+              A diferença entre dois conjuntos (A - B) resulta no conjunto contendo os elementos exclusivos de A que não possuem qualquer vínculo com B: A - B = {"{"}x | x ∈ A ∧ x ∉ B{"}"}. Esta operação é assimétrica, ou seja, A - B geralmente difere de B - A. Já o complementar (A' ou A^c) representa todos os elementos pertencentes ao conjunto universal U que não estão contidos no conjunto A. O complementar é sempre relativo a esse universo predefinido: A' = {"{"}x ∈ U | x ∉ A{"}"}.
             </p>
 
-            <p>
-              A CESGRANRIO frequentemente testa operações com conjuntos usando
-              diagramas de Venn — representações visuais onde círculos
-              representam conjuntos e sobreposições representam interseções. O
-              método mais seguro é preencher o diagrama de dentro para fora:
-              começar pela interseção de todos os conjuntos, depois as
-              interseções dois a dois, depois as regiões exclusivas, e
-              finalmente a região externa (elementos em nenhum conjunto). Erros
-              comuns incluem: (1) contar elementos repetidos na união, (2)
-              confundir união com interseção, (3) esquecer que a união de A com
-              seu complemento é o universal (A ∪ A' = U), e (4) não reconhecer
-              que a interseção de A com seu complemento é vazia (A ∩ A' = ∅).
-              Questões CESGRANRIO frequentemente envolvem três ou mais
-              conjuntos, exigindo cuidado no preenchimento sistemático do
-              diagrama.
-            </p>
+            <div className="space-y-6">
+              <p>
+                A banca <strong>CESGRANRIO</strong> costuma cobrar esses conceitos a partir de três abordagens operacionais críticas, exigindo do candidato o reconhecimento rápido de cada propriedade e a aplicação de equivalências lógicas:
+              </p>
+
+              {/* Grid de Cards das Operações */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+                {[
+                  { num: "1", title: "União vs Interseção", text: "Separar claramente a inclusão ampla de elementos (conectivo lógico 'OU') da restrição simultânea (conectivo lógico 'E')." },
+                  { num: "2", title: "Diferença Simétrica", text: "Diferenciar a exclusão simples de elementos comuns (A - B) da união das exclusões exclusivas bilaterais." },
+                  { num: "3", title: "Leis de De Morgan", text: "Aplicar a negação lógica da união ou interseção, transformando-as em suas operações duais equivalentes." }
+                ].map((item) => (
+                  <div key={item.num} className="flex gap-4 p-4 bg-muted/30 border border-border/10 rounded-xl">
+                    <span className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500/10 text-blue-400 font-extrabold text-lg shrink-0">
+                      {item.num}
+                    </span>
+                    <div className="space-y-1">
+                      <h5 className="font-bold text-foreground text-xl">{item.title}</h5>
+                      <p className="text-lg text-muted-foreground leading-relaxed">{item.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Grid Assimétrico com Imagem (Estilo Revista) */}
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start my-8">
+                <div className="space-y-4">
+                  <h4 className="font-bold text-foreground text-xl flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-cyan-500"></span>
+                    Representação Visual das Operações
+                  </h4>
+                  <p>
+                    O uso do <strong>diagrama de Venn</strong> é a forma mais segura de mapear e resolver as interseções. Na prova, o preenchimento deve ocorrer sempre da interseção de maior grau para as regiões externas periféricas.
+                  </p>
+                  <p>
+                    Para resolver problemas descritivos de três conjuntos (A, B e C), comece preenchendo a interseção tríplice (A ∩ B ∩ C). Subtraia esse valor das interseções duplas correspondentes para evitar a dupla contagem e, na sequência, isole os elementos pertencentes exclusivamente a cada conjunto.
+                  </p>
+                </div>
+                <div className="shrink-0 space-y-2 w-full max-w-[320px] mx-auto lg:mx-0">
+                  <div 
+                    className="cursor-zoom-in hover:scale-[1.02] transition-transform duration-200"
+                    onClick={() => setZoomedImage("/assets/images/matematica/conjuntos/modulo-2/m2-intro.png")}
+                  >
+                    <img
+                      src="/assets/images/matematica/conjuntos/modulo-2/m2-intro.png"
+                      // PROMPT: [MANDATÓRIO] Infográfico educacional limpo ilustrando as 4 operações de conjuntos (união, interseção, diferença e complementar). Estilo Dark Premium, fundo escuro (#0a0f1d). Os conjuntos possuem contornos finos brilhantes neon em azul-celeste, ciano e verde-esmeralda. As áreas operadas aparecem preenchidas com um gradiente luminoso suave.
+                      alt="Legenda: As 4 operações fundamentais em diagramas de Venn"
+                      className="w-full rounded-2xl border border-border/20 shadow-lg"
+                    />
+                  </div>
+                  <p className="text-lg text-muted-foreground text-center">Fig 1. Relações de pertinência nas 4 operações básicas.</p>
+                </div>
+              </div>
+
+              {/* Grid Comparativo de Erros Frequentes */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                <div className="p-5 bg-rose-500/10 border border-rose-500/20 rounded-xl space-y-2">
+                  <h5 className="font-bold text-rose-400 flex items-center gap-2 text-xl">
+                    <svg className="w-5 h-5 shrink-0 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                    Erro Comum: Contagem Dupla na União
+                  </h5>
+                  <p className="text-lg text-foreground/85 leading-relaxed">
+                    Somar simplesmente a cardinalidade de A com a de B para achar a união: <code>n(A ∪ B) = n(A) + n(B)</code>. Isso gera contagem dupla dos elementos comuns! O correto é sempre subtrair a interseção: <code>n(A ∪ B) = n(A) + n(B) - n(A ∩ B)</code>.
+                  </p>
+                </div>
+
+                <div className="p-5 bg-amber-500/10 border border-amber-500/20 rounded-xl space-y-2">
+                  <h5 className="font-bold text-amber-400 flex items-center gap-2 text-xl">
+                    <svg className="w-5 h-5 shrink-0 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Cuidado com o Complementar de A'
+                  </h5>
+                  <p className="text-lg text-foreground/85 leading-relaxed">
+                    Esquecer que o complementar do complementar de um conjunto o retorna ao estado original: <code>(A')' = A</code>. Essa lei da involução é extremamente útil para simplificar enunciados com negações duplas ou redundantes da CESGRANRIO.
+                  </p>
+                </div>
+              </div>
+            </div>
 
             <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">
@@ -1207,12 +1225,10 @@ export default function AulaConjuntos({
                     União (A ∪ B)
                   </div>
                   <div className="text-sm">
-                    Todos os elementos de A OU B: A ∪ B = {"{"}x | x ∈ A ∨ x ∈ B
-                    {"}"}
+                    Todos os elementos de A OU B: A ∪ B = {"{"}x | x ∈ A ∨ x ∈ B{"}"}
                   </div>
                   <div className="text-sm italic">
-                    Exemplo: {"{"}1,2{"}"} ∪ {"{"}2,3{"}"} = {"{"}1,2,3
-                    {"}"}{" "}
+                    Exemplo: {"{"}1,2{"}"} ∪ {"{"}2,3{"}"} = {"{"}1,2,3{"}"}
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -1220,11 +1236,10 @@ export default function AulaConjuntos({
                     Interseção (A ∩ B)
                   </div>
                   <div className="text-sm">
-                    Apenas elementos em AMBOS: A ∩ B = {"{"}x | x ∈ A ∧ x ∈ B
-                    {"}"}
+                    Apenas elementos em AMBOS: A ∩ B = {"{"}x | x ∈ A ∧ x ∈ B{"}"}
                   </div>
                   <div className="text-sm italic">
-                    Exemplo: {"{"}1,2{"}"} ∩ {"{"}2,3{"}"} = {"{"}2{"}"}{" "}
+                    Exemplo: {"{"}1,2{"}"} ∩ {"{"}2,3{"}"} = {"{"}2{"}"}
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -1232,11 +1247,10 @@ export default function AulaConjuntos({
                     Diferença (A - B)
                   </div>
                   <div className="text-sm">
-                    Elementos em A mas não em B: A - B = {"{"}x | x ∈ A ∧ x ∉ B
-                    {"}"}
+                    Elementos em A mas não em B: A - B = {"{"}x | x ∈ A ∧ x ∉ B{"}"}
                   </div>
                   <div className="text-sm italic">
-                    Exemplo: {"{"}1,2{"}"} - {"{"}2,3{"}"} = {"{"}1{"}"}{" "}
+                    Exemplo: {"{"}1,2{"}"} - {"{"}2,3{"}"} = {"{"}1{"}"}
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -1247,8 +1261,7 @@ export default function AulaConjuntos({
                     Tudo que NÃO está em A: A' = {"{"}x | x ∈ U ∧ x ∉ A{"}"}
                   </div>
                   <div className="text-sm italic">
-                    Se U={"{"}1,2,3{"}"} e A={"{"}1,2{"}"}, então A'={"{"}3
-                    {"}"}{" "}
+                    Se U={"{"}1,2,3{"}"} e A={"{"}1,2{"}"}, então A'={"{"}3{"}"}
                   </div>
                 </div>
               </div>
@@ -5638,20 +5651,20 @@ export default function AulaConjuntos({
       </TabsContent>
 
       {/* Lightbox / Visualização Ampliada da Imagem de Introdução */}
-      {isImageZoomed && (
+      {zoomedImage && (
         <div 
           className="fixed inset-0 z-[100] flex items-center justify-center bg-background/90 backdrop-blur-md cursor-zoom-out p-4 md:p-8"
-          onClick={() => setIsImageZoomed(false)}
+          onClick={() => setZoomedImage(null)}
         >
           <div className="relative max-w-4xl max-h-[90vh] w-full h-full flex items-center justify-center">
             <img
-              src="/assets/images/matematica/conjuntos/modulo-1/m1-intro.png"
-              alt="Diagrama de Venn ampliado"
+              src={zoomedImage}
+              alt="Legenda: Visualização ampliada do infográfico"
               className="max-w-full max-h-full object-contain rounded-2xl border border-border/40 shadow-2xl animate-in fade-in zoom-in-95 duration-200"
             />
             <button 
               className="absolute top-4 right-4 p-3 bg-muted/80 backdrop-blur-md rounded-full text-foreground hover:bg-muted transition-colors"
-              onClick={() => setIsImageZoomed(false)}
+              onClick={() => setZoomedImage(null)}
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
