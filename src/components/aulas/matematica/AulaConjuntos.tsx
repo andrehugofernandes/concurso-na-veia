@@ -1554,88 +1554,108 @@ export default function AulaConjuntos({
             variant={mv[3]}
           />
 
-          <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
+          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
-              Um diagrama de Venn é uma representação gráfica de conjuntos
-              usando curvas fechadas (usualmente círculos) em um plano. Cada
-              círculo representa um conjunto, e o interior do círculo representa
-              os elementos desse conjunto. Quando círculos se sobrepõem, a
-              região de sobreposição representa a interseção dos conjuntos
-              correspondentes. O matemático inglês John Venn introduziu este
-              método em 1880 como uma forma intuitiva de visualizar
-              relacionamentos entre conjuntos. A beleza do diagrama de Venn está
-              em sua simplicidade: problemas que pareceriam complicados em forma
-              simbólica tornam-se triviais quando visualizados graficamente.
-              Para um diagrama com 2 conjuntos, há 4 regiões (somente A, somente
-              B, A ∩ B, e fora de ambos). Para 3 conjuntos, há 8 regiões. Para 4
-              ou mais, os diagramas tornam-se complexos, mas o princípio
-              permanece: cada região representa uma combinação única de
-              pertencimento/não pertencimento aos conjuntos.
+              Os diagramas de Venn representam a ferramenta visual mais poderosa e intuitiva para o estudo da teoria dos conjuntos e suas relações de cardinalidade. Ao traduzir operações algébricas abstratas em formas geométricas simples, como círculos sobrepostos contidos em um plano retangular que delimita o conjunto universo, o diagrama simplifica a visualização lógica de interseções complexas. O matemático e filósofo John Venn concebeu essa abordagem sistemática em 1880, e desde então ela tem sido a base para a resolução de problemas de probabilidade, estatística e lógica sentencial em exames de alto nível.
             </p>
 
             <p>
-              A cardinalidade de um conjunto, denotada por |A| ou n(A), é a
-              quantidade de elementos que ele contém. Para conjuntos finitos, é
-              simplesmente contar os elementos. O conjunto vazio tem
-              cardinalidade 0: |∅| = 0. Um conjunto finito com n elementos tem
-              2^n subconjuntos (incluindo o conjunto vazio e o próprio
-              conjunto). Por exemplo, se A = {"{"}1, 2, 3{"}"}, então |A| = 3 e
-              o número de subconjuntos é 2³ = 8: {"{"}∅, {"{"}1{"}"}, {"{"}2
-              {"}"}, {"{"}3{"}"}, {"{"}1,2{"}"}, {"{"}1,3{"}"}, {"{"}2,3{"}"},{" "}
-              {"{"}1,2,3{"}"}
-              {"}"}. A fórmula crucial para problemas com Venn é: |A ∪ B| = |A|
-              + |B| - |A ∩ B|. Esta fórmula garante que não contamos elementos
-              da interseção duas vezes. Se |A| = 10, |B| = 15, e |A ∩ B| = 4,
-              então |A ∪ B| = 10 + 15 - 4 = 21, não 25.
+              A importância acadêmica e prática dos diagramas reside na sua capacidade de estruturar o raciocínio analítico. Em problemas de concurso, especialmente na banca CESGRANRIO, as informações costumam ser transmitidas de maneira sobreposta e dispersa no enunciado. Sem uma ferramenta de mapeamento geográfico das informações, o candidato corre o risco de cair em armadilhas de contagem repetida de elementos. A correta distribuição espacial dos dados no diagrama serve, portanto, como um escudo de precisão matemática e agilidade de prova.
             </p>
 
             <p>
-              Para três conjuntos, a fórmula se expande: |A ∪ B ∪ C| = |A| + |B|
-              + |C| - |A ∩ B| - |A ∩ C| - |B ∩ C| + |A ∩ B ∩ C|. Esta é a
-              fórmula de inclusão-exclusão, um dos conceitos mais testados da
-              CESGRANRIO em provas técnicas. A razão é que essa fórmula modela
-              situações reais: se você quer saber quantas pessoas numa empresa
-              têm alergia a alguma coisa (alimentos, medicamentos, ambiente), o
-              cálculo exige levar em conta quantas têm alergia A, quantas têm B,
-              quantas têm ambas, etc. Em contexto Petrobras, imagine contar
-              funcionários que: possuem certificação NR-35 (A), possuem
-              certificação NR-33 (B), e possuem certificação NR-10 (C). O número
-              total de certificados únicos é dado exatamente por essa fórmula.
+              A cardinalidade de um conjunto, denotada simbolicamente por |A| ou n(A), expressa a quantidade exata de elementos pertencentes àquele agrupamento. Para conjuntos finitos, a cardinalidade é calculada por contagem simples, enquanto o conjunto vazio (∅) possui cardinalidade zero. Um dos teoremas fundamentais relacionados a essa métrica é o fato de que um conjunto finito composto por 'n' elementos distintos é capaz de gerar exatamente 2^n subconjuntos. Esse agrupamento de todos os subconjuntos possíveis forma o chamado Conjunto das Partes, P(A), cuja cardinalidade cresce exponencialmente à medida que adicionamos novos elementos à base original.
             </p>
 
             <p>
-              A método mais seguro para resolver um problema de Venn é: (1)
-              desenhar o diagrama com a quantidade correta de regiões, (2)
-              preencher do interior para o exterior começando pela interseção de
-              TODOS os conjuntos, (3) depois as interseções de pares, (4) depois
-              as regiões exclusivas de cada conjunto, e (5) finalmente verificar
-              se a soma total bate com os dados fornecidos. Na prática
-              Petrobras, Venn aparece em segurança do trabalho (funcionários com
-              múltiplas certificações), em planejamento (projetos que usam
-              múltiplos recursos), e em análise de dados (funcionários que
-              atendem critérios múltiplos). Um erro comum é interpretar mal o
-              problema: ler atentamente o enunciado distinguindo entre "pessoas
-              que têm A OU B" (união), "pessoas que têm A E B" (interseção), e
-              "pessoas que têm A mas não B" (diferença) é crítico.
+              Para relacionar as cardinalidades de conjuntos que se intersectam, utilizamos o Teorema da Inclusão-Exclusão. Em sua forma mais simples, aplicável a dois conjuntos A e B, a fórmula estabelece que a cardinalidade da união é a soma dos totais individuais subtraída de sua interseção comum: |A ∪ B| = |A| + |B| - |A ∩ B|. Essa subtração é o mecanismo matemático necessário para anular a dupla contagem dos elementos que pertencem simultaneamente a ambos os grupos, garantindo um resultado estatístico exato.
             </p>
 
-            <p>
-              A CESGRANRIO frequentemente testa Venn através de questões de
-              álgebra (simplifique (A ∪ B)' usando leis de De Morgan), questões
-              de contagem (preencha o diagrama com números), e questões
-              conceituais (qual é a cardinalidade de A ∩ B ∩ C?). Um erro muito
-              frequente é esquecer a fórmula de inclusão-exclusão e tentar somar
-              cardinalidades diretamente — isso leva a supercontagem. Outro erro
-              é não reconhecer equivalências: A - B = A ∩ B' (a diferença é a
-              interseção do primeiro com o complemento do segundo). Dominar
-              essas manipulações algébricas junto com a visualização gráfica é a
-              chave para acertar questões complexas de Venn em provas
-              CESGRANRIO.
-            </p>
+            <div className="space-y-6">
+              <p>
+                O preenchimento eficaz de um diagrama de Venn de três conjuntos requer uma estratégia procedural rigorosa. A regra fundamental é executar a distribuição de dados sempre **de dentro para fora**, seguindo estes quatro passos estruturados:
+              </p>
+
+              {/* Grid de Passos de Preenchimento */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-6">
+                {[
+                  { num: "1", title: "Interseção Tríplice", text: "Identifique e preencha primeiro a região central (A ∩ B ∩ C), que pertence a todos os grupos." },
+                  { num: "2", title: "Interseções Duplas", text: "Complete as interseções de dois conjuntos, lembrando de subtrair o valor já preenchido na interseção tríplice." },
+                  { num: "3", title: "Elementos Exclusivos", text: "Preencha as regiões externas de cada círculo, subtraindo todas as interseções já calculadas do total do conjunto." },
+                  { num: "4", title: "Universo Externo", text: "Calcule a região externa aos círculos, subtraindo a união dos três conjuntos do total do universo de dados." }
+                ].map((item) => (
+                  <div key={item.num} className="flex gap-4 p-4 bg-muted/30 border border-border/10 rounded-xl">
+                    <span className="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 font-extrabold text-lg shrink-0">
+                      {item.num}
+                    </span>
+                    <div className="space-y-1">
+                      <h5 className="font-bold text-foreground text-xl">{item.title}</h5>
+                      <p className="text-lg text-muted-foreground leading-relaxed">{item.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Grid Assimétrico com Imagem (Estilo Revista) */}
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start my-8">
+                <div className="space-y-4">
+                  <h4 className="font-bold text-foreground text-xl flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    Mapeando as 8 Regiões de Prova
+                  </h4>
+                  <p>
+                    Ao trabalhar com três conjuntos, o diagrama divide o espaço universal em exatamente **oito regiões disjuntas**. Cada uma delas carrega um significado lógico e operacional específico.
+                  </p>
+                  <p>
+                    Na prática, em problemas da Petrobras sobre múltiplos critérios de qualidade ou certificações de segurança, essas regiões correspondem aos diferentes perfis dos funcionários, poços ou plantas analisadas. Identificar se o enunciado refere-se ao termo restritivo "somente" ou ao termo amplo "pelo menos" define o sucesso da resolução.
+                  </p>
+                </div>
+                <div className="shrink-0 space-y-2 w-full max-w-[320px] mx-auto lg:mx-0">
+                  <div 
+                    className="cursor-zoom-in hover:scale-[1.02] transition-transform duration-200"
+                    onClick={() => setZoomedImage("/assets/images/matematica/conjuntos/modulo-3/m3-intro.png")}
+                  >
+                    <img
+                      src="/assets/images/matematica/conjuntos/modulo-3/m3-intro.png"
+                      alt="Legenda: Divisão clássica de 8 regiões no diagrama de Venn"
+                      className="w-full rounded-2xl border border-border/20 shadow-lg"
+                    />
+                  </div>
+                  <p className="text-lg text-muted-foreground text-center">Fig 1. Mapeamento das 8 sub-regiões exclusivas.</p>
+                </div>
+              </div>
+
+              {/* Grid Comparativo de Erros Frequentes */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                <div className="p-5 bg-rose-500/10 border border-rose-500/20 rounded-xl space-y-2">
+                  <h5 className="font-bold text-rose-400 flex items-center gap-2 text-xl">
+                    <svg className="w-5 h-5 shrink-0 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                    Erro Fatal: Soma Direta de Totais
+                  </h5>
+                  <p className="text-lg text-foreground/85 leading-relaxed">
+                    Somar cruamente as cardinalidades de cada grupo informadas na prova sem realizar as deduções das interseções. Isso infla o total e gera resultados errôneos maiores que o próprio conjunto universo.
+                  </p>
+                </div>
+
+                <div className="p-5 bg-amber-500/10 border border-amber-500/20 rounded-xl space-y-2">
+                  <h5 className="font-bold text-amber-400 flex items-center gap-2 text-xl">
+                    <svg className="w-5 h-5 shrink-0 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Dica de Prova: Cuidado com a Palavra "Apenas"
+                  </h5>
+                  <p className="text-lg text-foreground/85 leading-relaxed">
+                    "Apenas A" refere-se à região isolada de A. "Conjunto A" engloba todas as interseções em que A participa. Sempre deduza as interseções ao preencher regiões denominadas apenas por sua letra de origem.
+                  </p>
+                </div>
+              </div>
+            </div>
 
             <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">
-                Fórmulas de Cardinalidade
+                Fórmulas Fundamentais de Cardinalidade
               </h4>
               <div className="space-y-3">
                 <div className="p-3 bg-white/50 dark:bg-black/20 rounded border border-emerald-200 dark:border-emerald-700">
@@ -1643,26 +1663,23 @@ export default function AulaConjuntos({
                     |A ∪ B| = |A| + |B| - |A ∩ B|
                   </p>
                   <p className="text-sm mt-1">
-                    Inclua-exclua: conte A, conte B, subtraia a interseção
-                    (contada duas vezes)
+                    Cardinalidade de dois conjuntos: soma dos totais subtraída da interseção simples.
                   </p>
                 </div>
                 <div className="p-3 bg-white/50 dark:bg-black/20 rounded border border-emerald-200 dark:border-emerald-700">
                   <p className="font-mono text-sm font-semibold">
-                    |A ∪ B ∪ C| = |A| + |B| + |C| - |A ∩ B| - |A ∩ C| - |B ∩ C|
-                    + |A ∩ B ∩ C|
+                    |A ∪ B ∪ C| = |A| + |B| + |C| - |A ∩ B| - |A ∩ C| - |B ∩ C| + |A ∩ B ∩ C|
                   </p>
                   <p className="text-sm mt-1">
-                    Três conjuntos: some tudo, subtraia interseções duplas,
-                    adicione interseção tripla
+                    Teorema de inclusão-exclusão para três conjuntos: some individuais, deduza interseções duplas e reinsira a interseção tríplice central.
                   </p>
                 </div>
                 <div className="p-3 bg-white/50 dark:bg-black/20 rounded border border-emerald-200 dark:border-emerald-700">
                   <p className="font-mono text-sm font-semibold">
-                    |A'| = |U| - |A|
+                    n(Subconjuntos) = 2^n
                   </p>
                   <p className="text-sm mt-1">
-                    Complemento: total universal menos o conjunto
+                    Total de combinações de subconjuntos possíveis com base na cardinalidade original do conjunto.
                   </p>
                 </div>
               </div>
