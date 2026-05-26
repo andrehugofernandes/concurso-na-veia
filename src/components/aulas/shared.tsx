@@ -31,7 +31,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { LuChevronDown, LuChevronLeft, LuChevronRight } from "react-icons/lu";
+import {
+  LuChevronDown,
+  LuChevronLeft,
+  LuChevronRight,
+  LuInfo,
+} from "react-icons/lu";
 import {
   Dialog,
   DialogContent,
@@ -360,7 +365,9 @@ export function CardCarousel({
               <div
                 className={cn(
                   "bg-card rounded-2xl border border-border flex flex-col group/card hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500",
-                  nested ? "p-4 md:p-5 shadow-sm" : "px-5 md:px-6 py-4 md:py-5 shadow-md",
+                  nested
+                    ? "p-4 md:p-5 shadow-sm"
+                    : "px-5 md:px-6 py-4 md:py-5 shadow-md",
                 )}
               >
                 <div className="flex items-start gap-4 mb-4">
@@ -932,7 +939,7 @@ export function FlipCard({
  */
 export function QuizInterativo({
   questoes,
-  titulo,
+  titulo = "Quiz de Fixação",
   icone,
   numero,
   variant = "indigo",
@@ -940,8 +947,8 @@ export function QuizInterativo({
   descricao = "Teste seus conhecimentos para consolidar o aprendizado.",
 }: {
   questoes: QuizQuestion[];
-  titulo: string;
-  icone?: string;
+  titulo?: string;
+  icone?: React.ReactNode;
   numero?: number;
   variant?:
     | "indigo"
@@ -1433,27 +1440,6 @@ export function Comparison({
   );
 }
 
-export function LuInfo(props: any) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      <circle cx="12" cy="12" r="10" />
-      <path d="M12 16v-4" />
-      <path d="M12 8h.01" />
-    </svg>
-  );
-}
-
 // ── Module Skin Colors ──────────────────────────────────────────────────
 // Sistema de cores padrão para os módulos. Cada posição de módulo (1-5)
 // tem uma cor fixa que deve ser usada por TODOS os cards daquele módulo.
@@ -1486,6 +1472,10 @@ export const MODULE_SKIN_COLORS = [
   {
     variant: "blue" as const,
     gradiente: "bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700",
+  },
+  {
+    variant: "slate" as const,
+    gradiente: "bg-gradient-to-br from-slate-600 via-slate-700 to-slate-800",
   },
 ];
 
@@ -1980,15 +1970,7 @@ export function LessonTabs({
   tabs: LessonTabItem[];
   defaultTab?: string;
   className?: string;
-  variant?:
-    | "indigo"
-    | "violet"
-    | "emerald"
-    | "amber"
-    | "rose"
-    | "blue"
-    | "cyan"
-    | "slate";
+  variant?: ModuleSkinVariant | "slate";
 }) {
   const variantClasses: Record<string, string> = {
     indigo:
@@ -2002,6 +1984,8 @@ export function LessonTabs({
     rose: "bg-rose-500/10 border-rose-500/20 text-rose-600 dark:text-rose-400",
     blue: "bg-blue-500/10 border-blue-500/20 text-blue-600 dark:text-blue-400",
     cyan: "bg-cyan-500/10 border-cyan-500/20 text-cyan-600 dark:text-cyan-400",
+    slate:
+      "bg-slate-500/10 border-slate-500/20 text-slate-600 dark:text-slate-400",
   };
   const selectedClass = variant
     ? variantClasses[variant]
@@ -2257,16 +2241,16 @@ export function ModuleSummaryCarouselNew({
                       type: img.type,
                     })
                   }
-                  className={`aspect-[3/4] rounded-xl ${img.placeholderColor} border border-border/50 flex flex-col items-center justify-center p-0 text-center shadow-sm hover:shadow-xl transition-all group/card cursor-pointer relative overflow-hidden`}
+                  className={`aspect-[9/16] rounded-xl ${img.placeholderColor} border border-border/50 flex flex-col items-center justify-center p-0 text-center shadow-sm hover:shadow-xl transition-all group/card cursor-pointer relative overflow-hidden`}
                 >
                   {img.imageUrl ? (
-                    <div className="absolute inset-0 w-full h-full">
+                    <div className="absolute inset-0 w-full h-full bg-slate-900/50">
                       <img
                         src={img.imageUrl}
                         alt={img.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110"
+                        className="w-full h-full object-contain transition-transform duration-700 group-hover/card:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
                     </div>
                   ) : (
                     <>
@@ -2277,12 +2261,12 @@ export function ModuleSummaryCarouselNew({
                     </>
                   )}
 
-                  <div className="z-10 relative mt-auto p-6 w-full text-left">
+                  <div className="z-10 relative mt-auto p-6 w-full text-left bg-gradient-to-t from-black/90 to-transparent pt-12">
                     <span
                       className={cn(
                         "text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full mb-2 inline-block",
                         img.imageUrl
-                          ? "bg-white/20 text-white backdrop-blur-md"
+                          ? "bg-white/25 text-white backdrop-blur-md"
                           : "bg-background/50 text-foreground/60",
                       )}
                     >
@@ -2332,11 +2316,11 @@ export function ModuleSummaryCarouselNew({
         open={!!selectedImage}
         onOpenChange={(open) => !open && setSelectedImage(null)}
       >
-        <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-black/95 border-0 overflow-hidden flex flex-col items-center justify-center">
+        <DialogContent className="max-w-[95vw] md:max-w-[500px] h-[90vh] p-0 bg-black/95 border-0 overflow-hidden flex flex-col items-center justify-center">
           {/* Botão de Fechar CTA - Posicionamento Fixo Superior Direito */}
           <button
             onClick={() => setSelectedImage(null)}
-            className="absolute top-4 right-4 z-[60] flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-md border border-white/20 transition-all active:scale-95 group"
+            className="absolute top-4 right-4 z-[60] flex items-center gap-2 px-4 py-2 bg-black/60 hover:bg-black/80 text-white rounded-full backdrop-blur-md border border-white/20 transition-all active:scale-95 group shadow-lg"
           >
             <span className="text-sm font-bold uppercase tracking-wider">
               Fechar
@@ -2349,28 +2333,28 @@ export function ModuleSummaryCarouselNew({
 
           {selectedImage && (
             <>
-              <DialogHeader className="absolute top-0 left-0 right-0 z-50 p-6 bg-gradient-to-b from-black/80 via-black/40 to-transparent">
+              <DialogHeader className="absolute top-0 left-0 right-0 z-50 p-6 bg-gradient-to-b from-black/90 via-black/40 to-transparent">
                 <div className="flex flex-col">
                   <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--primary)] mb-1 filter brightness-150">
                     {selectedImage.type}
                   </span>
-                  <DialogTitle className="text-white text-xl md:text-3xl font-bold tracking-tight">
+                  <DialogTitle className="text-white text-xl font-bold tracking-tight">
                     {selectedImage.title}
                   </DialogTitle>
                 </div>
               </DialogHeader>
 
-              <div className="w-full h-full flex items-center justify-center p-4 md:p-12 overflow-auto custom-scrollbar z-10 relative">
+              <div className="w-full h-full flex items-center justify-center p-2 pt-24 pb-16 overflow-hidden z-10 relative">
                 <img
                   src={selectedImage.url}
                   alt={selectedImage.title}
-                  className="max-w-full max-h-full object-contain shadow-[0_0_50px_rgba(0,0,0,0.5)] rounded-md animate-in zoom-in-95 duration-500 ring-1 ring-white/10"
+                  className="max-w-full max-h-full aspect-[9/16] object-contain shadow-[0_0_50px_rgba(0,0,0,0.8)] rounded-md animate-in zoom-in-95 duration-300 ring-1 ring-white/10"
                 />
               </div>
 
               {/* Dica no rodapé */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-black/40 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/5 pointer-events-none whitespace-nowrap">
-                <span className="text-[10px] font-medium text-white/40 uppercase tracking-[0.2em]">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-black/60 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/10 pointer-events-none whitespace-nowrap">
+                <span className="text-[10px] font-medium text-white/60 uppercase tracking-[0.2em]">
                   Esc para fechar
                 </span>
               </div>
@@ -2561,7 +2545,7 @@ export function AulaTemplate({
   return (
     <div className="min-h-screen bg-background pb-20 relative">
       {/* Container principal sem padding lateral por padrão para permitir barras full-width */}
-      <div className="max-w-7xl mx-auto px-0 md:px-6">
+      <div className="w-full px-0 md:px-[80px]">
         <div className="flex flex-col">
           {/* 1. Barra de Progresso de Leitura (Scroll) */}
           <div className="h-1.5 w-full">
@@ -3242,15 +3226,7 @@ export function ModuleSectionHeader({
   index: number | string;
   title: string;
   description?: string;
-  variant?:
-    | "indigo"
-    | "violet"
-    | "emerald"
-    | "amber"
-    | "rose"
-    | "blue"
-    | "cyan"
-    | "slate";
+  variant?: ModuleSkinVariant;
   className?: string;
 }) {
   const isIntro = String(index).toUpperCase() === "INTRO";
@@ -3334,17 +3310,10 @@ export function ModuleConsolidation({
   resumoVisual,
   sinteseEstrategica,
   audio,
+  moduloNumero,
 }: {
   index: number;
-  variant:
-    | "indigo"
-    | "violet"
-    | "emerald"
-    | "amber"
-    | "rose"
-    | "blue"
-    | "cyan"
-    | "slate";
+  variant: ModuleSkinVariant | "slate";
   video?: {
     videoId: string;
     title: string;
@@ -3370,6 +3339,7 @@ export function ModuleConsolidation({
     capaUrl?: string;
     lyrics?: string;
   };
+  moduloNumero?: number;
 }) {
   const tabs = [
     video && {
@@ -3428,7 +3398,7 @@ export function ModuleConsolidation({
     <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10">
       <ModuleSectionHeader
         index={index}
-        title={`Resumo do Módulo ${index}`}
+        title={`Resumo do Módulo ${moduloNumero ?? index}`}
         variant={variant}
         description="Fixação rápida de conteúdo antes do desafio final."
       />
@@ -3454,7 +3424,7 @@ export function TextAnalysisLab({
   subtitulo?: string;
   texto: React.ReactNode;
   legenda: { cor: string; label: string }[];
-  variant?: any;
+  variant?: ModuleSkinVariant | "slate";
 }) {
   return (
     <section className="bg-card rounded-3xl border border-border p-8 md:p-12 shadow-sm space-y-10 my-12">
