@@ -1,5 +1,6 @@
 import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -13,7 +14,7 @@ import {
   AulaTemplate,
   ModuleSectionHeader,
   ModuleConsolidation,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   QUIZ_M1_POLIEDROS,
   QUIZ_M2_PRISMAS,
@@ -46,9 +47,8 @@ export default function AulaGeometriaEspacial({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_POLIEDROS, 6));
   const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_PRISMAS, 6));
@@ -65,11 +65,9 @@ export default function AulaGeometriaEspacial({
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
-      setCompletedModules((prev) => {
-        const n = new Set(prev);
-        n.add(moduleId);
-        return n;
-      });
+      const nextCompleted = new Set(completedModules);
+      nextCompleted.add(moduleId);
+      updateCompletedModules(Array.from(nextCompleted));
       const modules = Array.from({ length: 10 }, (_, i) => `modulo-${i + 1}`);
       const idx = modules.findIndex((m) => m === moduleId);
       const pct = Math.round(((idx + 1) / 10) * 100);
@@ -83,7 +81,7 @@ export default function AulaGeometriaEspacial({
       const count = Math.floor((currentProgress / 100) * 10);
       const s = new Set<string>();
       for (let i = 1; i <= count; i++) s.add(`modulo-${i}`);
-      setCompletedModules(s);
+      updateCompletedModules(Array.from(s));
     }
   }, [currentProgress]);
 
@@ -105,6 +103,8 @@ export default function AulaGeometriaEspacial({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={MODULE_DEFS}
@@ -234,14 +234,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={1}
           titulo="Poliedros e a Relação de Euler"
           descricao="Identifique vértices, arestas e faces de sólidos geométricos e aplique a relação V − A + F = 2 para resolver questões CESGRANRIO."
-           variant={mv[1]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="O que é um Poliedro?"
               description="Sólidos com faces planas — a base da geometria espacial."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -420,7 +420,31 @@ export default function AulaGeometriaEspacial({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um silo de armazenamento de cereais tem formato piramidal de base quadrada 6 m × 6 m e altura 4 m. Qual seu volume?"
+          alternativas={[
+              { letra: "A", texto: "36 m³", correta: false },
+              { letra: "B", texto: "42 m³", correta: false },
+              { letra: "C", texto: "48 m³", correta: true },
+              { letra: "D", texto: "54 m³", correta: false },
+              { letra: "E", texto: "60 m³", correta: false }
+            ]}
+          dicaEstrategica="O fator 1/3 é a grande diferença entre a pirâmide e o prisma de mesma base e altura."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Volume de pirâmide = (1/3) × Área_base × altura = (1/3) × 36 × 4 = (1/3) × 144 = 48 m³." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
             variant="indigo"
             video={{
@@ -458,7 +482,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Poliedros e Euler"
               icone="🔷"
               numero={4}
-              variant="cyan"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
@@ -472,14 +496,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={2}
           titulo="Prismas: Volume e Área Total"
           descricao="Calcule volumes e áreas de prismas retos e oblíquos — de containers a dutos industriais da Petrobras."
-           variant={mv[2]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Volume do Prisma: V = A_base × h"
               description="A fórmula universal que conecta geometria plana com geometria espacial."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -589,9 +613,33 @@ export default function AulaGeometriaEspacial({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
+          alternativas={[
+              { letra: "A", texto: "168 m³", correta: false },
+              { letra: "B", texto: "192 m³", correta: true },
+              { letra: "C", texto: "200 m³", correta: false },
+              { letra: "D", texto: "210 m³", correta: false },
+              { letra: "E", texto: "224 m³", correta: false }
+            ]}
+          dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Volume do paralelepípedo (prisma retangular) = comprimento × largura × altura = 8 × 6 × 4 = 192 m³." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "7K8VgX2sXMc",
               title: "Prismas: Volume, Área Lateral e Total",
@@ -627,7 +675,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Prismas"
               icone="📦"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -641,7 +689,7 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={3}
           titulo="Pirâmides: Volume e Área Lateral"
           descricao="O fator 1/3 que muda tudo. Domine volumes e áreas laterais de pirâmides regulares e aplique em estruturas industriais."
-           variant={mv[3]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -752,9 +800,33 @@ export default function AulaGeometriaEspacial({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
+          alternativas={[
+              { letra: "A", texto: "168 m³", correta: false },
+              { letra: "B", texto: "192 m³", correta: true },
+              { letra: "C", texto: "200 m³", correta: false },
+              { letra: "D", texto: "210 m³", correta: false },
+              { letra: "E", texto: "224 m³", correta: false }
+            ]}
+          dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Volume do paralelepípedo (prisma retangular) = comprimento × largura × altura = 8 × 6 × 4 = 192 m³." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "4lLu2Kj2W0A",
               title: "Pirâmides: Apótema, Volume e Área Lateral",
@@ -790,7 +862,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Pirâmides"
               icone="🔺"
               numero={3}
-              variant="cyan"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -804,14 +876,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={4}
           titulo="Cilindro: Volume e Área"
           descricao="O sólido mais presente na indústria petrolífera. Domine os cálculos de tanques, dutos e vasos de pressão cilíndricos."
-           variant={mv[4]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Volume e Área do Cilindro"
               description="As três fórmulas essenciais que todo técnico Petrobras precisa dominar."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -908,7 +980,31 @@ export default function AulaGeometriaEspacial({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
+          alternativas={[
+              { letra: "A", texto: "168 m³", correta: false },
+              { letra: "B", texto: "192 m³", correta: true },
+              { letra: "C", texto: "200 m³", correta: false },
+              { letra: "D", texto: "210 m³", correta: false },
+              { letra: "E", texto: "224 m³", correta: false }
+            ]}
+          dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Volume do paralelepípedo (prisma retangular) = comprimento × largura × altura = 8 × 6 × 4 = 192 m³." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{
@@ -946,7 +1042,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Cilindro"
               icone="🛢️"
               numero={3}
-              variant="cyan"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -960,14 +1056,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={5}
           titulo="Cone: Volume e Área"
           descricao="Silos, funis e coberturas cônicas — calcule volume, área lateral e geratriz com precisão de engenharia."
-           variant={mv[5]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Volume e Área do Cone de Revolução"
               description="O cone como pirâmide circular — 1/3 do cilindro correspondente."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1058,9 +1154,33 @@ export default function AulaGeometriaEspacial({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
+          alternativas={[
+              { letra: "A", texto: "168 m³", correta: false },
+              { letra: "B", texto: "192 m³", correta: true },
+              { letra: "C", texto: "200 m³", correta: false },
+              { letra: "D", texto: "210 m³", correta: false },
+              { letra: "E", texto: "224 m³", correta: false }
+            ]}
+          dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Volume do paralelepípedo (prisma retangular) = comprimento × largura × altura = 8 × 6 × 4 = 192 m³." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "Gn7r8JTqPO8",
               title: "Cone: Geratriz, Planificação e Volume",
@@ -1096,7 +1216,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Cone"
               icone="🔻"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -1110,7 +1230,7 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={6}
           titulo="Esfera: Volume e Área"
           descricao="Tanques esféricos de GLP, boias de sondagem e vasos de pressão — as fórmulas da esfera são indispensáveis na engenharia offshore."
-           variant={mv[6]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1218,9 +1338,33 @@ export default function AulaGeometriaEspacial({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
+          alternativas={[
+              { letra: "A", texto: "168 m³", correta: false },
+              { letra: "B", texto: "192 m³", correta: true },
+              { letra: "C", texto: "200 m³", correta: false },
+              { letra: "D", texto: "210 m³", correta: false },
+              { letra: "E", texto: "224 m³", correta: false }
+            ]}
+          dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Volume do paralelepípedo (prisma retangular) = comprimento × largura × altura = 8 × 6 × 4 = 192 m³." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="rose"
+            variant="blue"
             video={{
               videoId: "5P6jf8dO1Zc",
               title: "Esfera: Volume, Área e Secções Esféricas",
@@ -1270,14 +1414,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={7}
           titulo="Troncos: Cone e Pirâmide"
           descricao="Barris, silos decantadores e reservatórios troncocônicos — as fórmulas dos troncos resolvem problemas reais de armazenamento industrial."
-           variant={mv[7]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Volume dos Troncos"
               description="A fórmula de Heron generalizada — conecta as duas bases com a média geométrica."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1369,7 +1513,31 @@ export default function AulaGeometriaEspacial({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
+          alternativas={[
+              { letra: "A", texto: "168 m³", correta: false },
+              { letra: "B", texto: "192 m³", correta: true },
+              { letra: "C", texto: "200 m³", correta: false },
+              { letra: "D", texto: "210 m³", correta: false },
+              { letra: "E", texto: "224 m³", correta: false }
+            ]}
+          dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Volume do paralelepípedo (prisma retangular) = comprimento × largura × altura = 8 × 6 × 4 = 192 m³." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="indigo"
             video={{
@@ -1407,7 +1575,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Troncos"
               icone="🪣"
               numero={3}
-              variant="cyan"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -1421,7 +1589,7 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={8}
           titulo="Sólidos Compostos"
           descricao="Silos, torres e tanques capsulares são combinações de sólidos. Domine a estratégia de decompor e calcular parte por parte."
-           variant={mv[8]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1533,9 +1701,33 @@ export default function AulaGeometriaEspacial({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
+          alternativas={[
+              { letra: "A", texto: "168 m³", correta: false },
+              { letra: "B", texto: "192 m³", correta: true },
+              { letra: "C", texto: "200 m³", correta: false },
+              { letra: "D", texto: "210 m³", correta: false },
+              { letra: "E", texto: "224 m³", correta: false }
+            ]}
+          dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Volume do paralelepípedo (prisma retangular) = comprimento × largura × altura = 8 × 6 × 4 = 192 m³." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "EZ9KF3dK8Hg",
               title: "Sólidos Compostos: Decomposição e Volume",
@@ -1585,14 +1777,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={9}
           titulo="Aplicações Petrobras: Tanques e Reservatórios"
           descricao="Geometria espacial aplicada diretamente ao dia a dia da indústria petrolífera — oleodutos, tanques de lastro, vasos de pressão e silos de refinaria."
-           variant={mv[9]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Geometria na Indústria Petrolífera"
               description="Cada sólido tem uma aplicação real — reconheça e calcule no contexto industrial."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1697,9 +1889,33 @@ export default function AulaGeometriaEspacial({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
+          alternativas={[
+              { letra: "A", texto: "168 m³", correta: false },
+              { letra: "B", texto: "192 m³", correta: true },
+              { letra: "C", texto: "200 m³", correta: false },
+              { letra: "D", texto: "210 m³", correta: false },
+              { letra: "E", texto: "224 m³", correta: false }
+            ]}
+          dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Volume do paralelepípedo (prisma retangular) = comprimento × largura × altura = 8 × 6 × 4 = 192 m³." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "zW7j2P5kK9I",
               title: "Geometria Espacial na Petrobras: Tanques e Tubulações",
@@ -1735,7 +1951,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Tanques e Reservatórios"
               icone="🛢️"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -1749,7 +1965,7 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={10}
           titulo="Simulado CESGRANRIO — Geometria Espacial"
           descricao="Questões no estilo e nível de dificuldade da banca CESGRANRIO. Teste tudo que você aprendeu nos 9 módulos anteriores."
-           variant={mv[10]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1855,7 +2071,31 @@ export default function AulaGeometriaEspacial({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
+          alternativas={[
+              { letra: "A", texto: "168 m³", correta: false },
+              { letra: "B", texto: "192 m³", correta: true },
+              { letra: "C", texto: "200 m³", correta: false },
+              { letra: "D", texto: "210 m³", correta: false },
+              { letra: "E", texto: "224 m³", correta: false }
+            ]}
+          dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Volume do paralelepípedo (prisma retangular) = comprimento × largura × altura = 8 × 6 × 4 = 192 m³." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{
@@ -1909,8 +2149,8 @@ export default function AulaGeometriaEspacial({
             numero={0}
             titulo="Recursos Complementares — Geometria Espacial 3D"
             descricao="Aprenda estratégias avançadas, como resolver problemas de visualização 3D e conversão entre unidades."
-            icone="📚"
-            variant="purple"
+
+            variant="blue"
           />
 
           <AlertBox tipo="info" titulo="Como Usar Esta Seção de Recursos">

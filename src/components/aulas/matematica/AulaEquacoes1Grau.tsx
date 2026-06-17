@@ -1,5 +1,6 @@
 import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -19,8 +20,7 @@ import {
   ModuleSummaryCarouselNew,
   FunctionGraph,
   type FunctionPlot,
-
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 
 import {
   LuBookOpen,
@@ -82,9 +82,8 @@ export default function AulaEquacoes1Grau({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   const [quizM1, setQuizM1] = useState<typeof QUIZ_M1_CONCEITOS>([]);
   const [quizM2, setQuizM2] = useState<typeof QUIZ_M2_FRACOES>([]);
@@ -120,7 +119,7 @@ export default function AulaEquacoes1Grau({
       for (let i = 0; i < doneCount; i++) {
         newDone.add(MODULE_DEFS[i].id);
       }
-      setCompletedModules(newDone);
+      updateCompletedModules(Array.from(newDone));
       setHasSyncedInitial(true);
     } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
       setHasSyncedInitial(true);
@@ -145,7 +144,7 @@ export default function AulaEquacoes1Grau({
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
       const newSet = new Set(completedModules).add(moduleId);
-      setCompletedModules(newSet);
+      updateCompletedModules(Array.from(newSet));
 
       const total = MODULE_DEFS.length;
       const done = newSet.size;
@@ -174,6 +173,8 @@ export default function AulaEquacoes1Grau({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={(val) => {
         const idx = MODULE_DEFS.findIndex((m) => m.id === val);
@@ -204,7 +205,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={1}
             titulo="Fundamentos & Princípio da Balança"
             descricao="A base: isolar a incógnita na balança invisível. Operação inversa é LEI."
-          variant={mv[1]}
+          variant="blue"
         />
 
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
@@ -213,7 +214,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Equação de 1º Grau: A Linguagem Algébrica da Balança"
               description="O conceito fundamental que permite resolver qualquer problema com uma incógnita desconhecida"
-          variant={mv[1]}
+          variant="blue"
         />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -257,7 +258,7 @@ export default function AulaEquacoes1Grau({
               index={2}
               title="Protocolo de Três Passos para Resolver Qualquer Equação de 1º Grau"
               description="A sequência mecânica que SEMPRE funciona, sem exceção"
-          variant={mv[1]}
+          variant="blue"
         />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -292,7 +293,7 @@ export default function AulaEquacoes1Grau({
               index={3}
               title="A Mecânica das Equações de 1º Grau"
               description="Dominando a balança matemática: o que você faz de um lado, faz do outro."
-          variant={mv[1]}
+          variant="blue"
         />
 
             <p className="text-muted-foreground leading-relaxed text-lg">
@@ -515,7 +516,31 @@ export default function AulaEquacoes1Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A solução da inequação 3x - 5 > 7 é:"
+          alternativas={[
+              { letra: "A", texto: "x > 4", correta: true },
+              { letra: "B", texto: "x > 3", correta: false },
+              { letra: "C", texto: "x < 4", correta: false },
+              { letra: "D", texto: "x < 3", correta: false },
+              { letra: "E", texto: "x ≥ 4", correta: false }
+            ]}
+          dicaEstrategica="Desigualdade estrita (>) se mantém pois dividimos por número positivo (3)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "3x - 5 > 7 → 3x > 12 → x > 4." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={4}
             video={{
               videoId: "h3S9XW1WzIk",
@@ -548,7 +573,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant={mv[1]}
+          variant="blue"
         />
 
                     <QuizInterativo
@@ -557,7 +582,7 @@ export default function AulaEquacoes1Grau({
             numero={5}
             icone="🧠"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          variant={mv[1]}
+          variant="blue"
         />
 
           <div className="space-y-8 bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
@@ -585,7 +610,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={2}
             titulo="Tradução de Problemas: Português → Matemática"
             descricao="A habilidade que separa os 70% dos 90%: ler e converter em equação."
-          variant={mv[2]}
+          variant="blue"
         />
 
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
@@ -594,7 +619,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Do Português para a Linguagem Algébrica: A Tradução Crítica"
               description="Converter palavras em símbolos matemáticos — a barreira entre ler um problema e resolvê-lo"
-          variant={mv[2]}
+          variant="blue"
         />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -636,7 +661,7 @@ export default function AulaEquacoes1Grau({
               index={2}
               title="O Dicionário Operacional"
               description="Como a CESGRANRIO pensa em português e a gente converte para x."
-          variant={mv[2]}
+          variant="blue"
         />
 
             <ContentAccordion
@@ -895,7 +920,31 @@ export default function AulaEquacoes1Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A solução da inequação 3x - 5 > 7 é:"
+          alternativas={[
+              { letra: "A", texto: "x > 4", correta: true },
+              { letra: "B", texto: "x > 3", correta: false },
+              { letra: "C", texto: "x < 4", correta: false },
+              { letra: "D", texto: "x < 3", correta: false },
+              { letra: "E", texto: "x ≥ 4", correta: false }
+            ]}
+          dicaEstrategica="Desigualdade estrita (>) se mantém pois dividimos por número positivo (3)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "3x - 5 > 7 → 3x > 12 → x > 4." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={4}
             video={{
               videoId: "h3S9XW1WzIk",
@@ -928,7 +977,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant={mv[2]}
+          variant="blue"
         />
 
                     <QuizInterativo
@@ -937,7 +986,7 @@ export default function AulaEquacoes1Grau({
             numero={5}
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          variant={mv[2]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -947,7 +996,7 @@ export default function AulaEquacoes1Grau({
           index={3}
           title="Interpretação Avançada: Pegadinhas Comuns de Tradução"
           description="Onde candidatos escorregam (e como você vai se safar)"
-          variant={mv[2]}
+          variant="blue"
         />
 
         <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -983,7 +1032,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={3}
             titulo="Equações com Frações: O Aniquilador de Denominador"
             descricao="Como destruir frações em um único golpe: MMC. Nunca mais sofrer com ÷."
-          variant={mv[3]}
+          variant="blue"
         />
 
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
@@ -992,7 +1041,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Equações com Frações: Eliminando o Denominador Antes de Começar"
               description="O segredo para eliminar 90% da complexidade — multiplicar tudo pelo MMC no primeiro passo"
-          variant={mv[3]}
+          variant="blue"
         />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1035,7 +1084,7 @@ export default function AulaEquacoes1Grau({
               index={2}
               title="Limpando Frações Rápidamente"
               description="Frações atraem erros. Seu objetivo: eliminá-las no PRIMEIRO passo."
-          variant={mv[3]}
+          variant="blue"
         />
 
             <ContentAccordion
@@ -1199,7 +1248,31 @@ export default function AulaEquacoes1Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A solução da inequação 3x - 5 > 7 é:"
+          alternativas={[
+              { letra: "A", texto: "x > 4", correta: true },
+              { letra: "B", texto: "x > 3", correta: false },
+              { letra: "C", texto: "x < 4", correta: false },
+              { letra: "D", texto: "x < 3", correta: false },
+              { letra: "E", texto: "x ≥ 4", correta: false }
+            ]}
+          dicaEstrategica="Desigualdade estrita (>) se mantém pois dividimos por número positivo (3)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "3x - 5 > 7 → 3x > 12 → x > 4." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={4}
             video={{
               videoId: "h3S9XW1WzIk",
@@ -1232,7 +1305,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant={mv[3]}
+          variant="blue"
         />
 
                     <QuizInterativo
@@ -1241,7 +1314,7 @@ export default function AulaEquacoes1Grau({
             numero={5}
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          variant={mv[3]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -1251,7 +1324,7 @@ export default function AulaEquacoes1Grau({
           index={3}
           title="Casos Especiais: Equações Degeneradas e Indeterminadas"
           description="Quando MMC é apenas meia história"
-          variant={mv[3]}
+          variant="blue"
         />
 
         <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1285,7 +1358,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={4}
             titulo="Sistemas Lineares 2x2"
             descricao="Duas equações, duas incógnitas. Método da Adição vs Substituição."
-          variant={mv[4]}
+          variant="blue"
         />
 
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
@@ -1294,7 +1367,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Sistemas de Duas Equações e Duas Incógnitas"
               description="Quando você tem dois valores desconhecidos e duas pistas — usar múltiplas informações simultaneamente"
-          variant={mv[4]}
+          variant="blue"
         />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1337,7 +1410,7 @@ export default function AulaEquacoes1Grau({
               index={2}
               title="Dominando X e Y"
               description="Quando você tem duas balas para dois alvos."
-          variant={mv[4]}
+          variant="blue"
         />
 
             <ContentAccordion
@@ -1486,7 +1559,31 @@ export default function AulaEquacoes1Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A idade de um operador é o dobro da idade do estagiário. A soma das idades é 54. Qual a idade do operador?"
+          alternativas={[
+              { letra: "A", texto: "27", correta: false },
+              { letra: "B", texto: "32", correta: false },
+              { letra: "C", texto: "36", correta: true },
+              { letra: "D", texto: "40", correta: false },
+              { letra: "E", texto: "18", correta: false }
+            ]}
+          dicaEstrategica="Operador = 36."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Seja e = idade do estagiário." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Operador = 2e." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "2e + e = 54 → 3e = 54 → e = 18." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
             video={{
               videoId: "h3S9XW1WzIk",
@@ -1519,7 +1616,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant={mv[4]}
+          variant="blue"
         />
 
                     <QuizInterativo
@@ -1528,7 +1625,7 @@ export default function AulaEquacoes1Grau({
             numero={4}
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          variant={mv[4]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -1539,7 +1636,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={5}
             titulo="Simulado Parcial"
             descricao="Reúna tudo dos Módulos 1-4. Você está no caminho certo?"
-          variant={mv[5]}
+          variant="blue"
         />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1547,7 +1644,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Checkpoint: Revisão Progressiva"
               description="Teste seus conhecimentos antes de avançar para inequações e sistemas avançados."
-          variant={mv[5]}
+          variant="blue"
         />
 
             <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
@@ -1632,7 +1729,31 @@ export default function AulaEquacoes1Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolvendo (x+1)/3 = (2x-1)/5, o valor de x é:"
+          alternativas={[
+              { letra: "A", texto: "4", correta: false },
+              { letra: "B", texto: "6", correta: false },
+              { letra: "C", texto: "8", correta: true },
+              { letra: "D", texto: "10", correta: false },
+              { letra: "E", texto: "12", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Multiplicando cruzado: 5(x+1) = 3(2x-1) → 5x+5 = 6x-3 → 5+3 = 6x-5x → x = 8." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             video={{
               videoId: "h3S9XW1WzIk",
@@ -1665,7 +1786,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant={mv[5]}
+          variant="blue"
         />
 
                     <QuizInterativo
@@ -1674,7 +1795,7 @@ export default function AulaEquacoes1Grau({
             numero={3}
             icone="📋"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          variant={mv[5]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -1687,7 +1808,7 @@ export default function AulaEquacoes1Grau({
             descricao={
               "Equações ao contrário: > e <. Regra do Sinal INVERTE ao dividir por negativo."
             }
-          variant={mv[6]}
+          variant="blue"
         />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1697,7 +1818,7 @@ export default function AulaEquacoes1Grau({
               description={
                 "Quando a igualdade (=) vira desigualdade (>, <, ≥, ≤)."
               }
-          variant={mv[6]}
+          variant="blue"
         />
 
             <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
@@ -1907,7 +2028,31 @@ export default function AulaEquacoes1Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolvendo (x+1)/3 = (2x-1)/5, o valor de x é:"
+          alternativas={[
+              { letra: "A", texto: "4", correta: false },
+              { letra: "B", texto: "6", correta: false },
+              { letra: "C", texto: "8", correta: true },
+              { letra: "D", texto: "10", correta: false },
+              { letra: "E", texto: "12", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Multiplicando cruzado: 5(x+1) = 3(2x-1) → 5x+5 = 6x-3 → 5+3 = 6x-5x → x = 8." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             video={{
               videoId: "h3S9XW1WzIk",
@@ -1940,7 +2085,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant={mv[6]}
+          variant="blue"
         />
 
                     <QuizInterativo
@@ -1949,7 +2094,7 @@ export default function AulaEquacoes1Grau({
             numero={3}
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
-          variant={mv[6]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -1960,7 +2105,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={7}
             titulo="Sistemas Lineares Avançados (3x3)"
             descricao="Três equações, três incógnitas. Eliminação de Gauss (simplificado)."
-          variant={mv[7]}
+          variant="blue"
         />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1968,7 +2113,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Da Dimensão 2x2 para 3x3"
               description="Mesma estratégia: isolar incógnitas progressivamente."
-          variant={mv[7]}
+          variant="blue"
         />
 
             <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
@@ -2151,7 +2296,31 @@ export default function AulaEquacoes1Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolvendo (x+1)/3 = (2x-1)/5, o valor de x é:"
+          alternativas={[
+              { letra: "A", texto: "4", correta: false },
+              { letra: "B", texto: "6", correta: false },
+              { letra: "C", texto: "8", correta: true },
+              { letra: "D", texto: "10", correta: false },
+              { letra: "E", texto: "12", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Multiplicando cruzado: 5(x+1) = 3(2x-1) → 5x+5 = 6x-3 → 5+3 = 6x-5x → x = 8." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             video={{
               videoId: "h3S9XW1WzIk",
@@ -2184,7 +2353,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant={mv[7]}
+          variant="blue"
         />
 
                     <QuizInterativo
@@ -2193,7 +2362,7 @@ export default function AulaEquacoes1Grau({
             numero={3}
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
-          variant={mv[7]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -2204,7 +2373,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={8}
             titulo="Resolução Reversa e Verificação"
             descricao="Trabalhe de trás para frente: dado o resultado, é a solução certa?"
-          variant={mv[8]}
+          variant="blue"
         />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2212,7 +2381,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Técnica de Prova: Substituição na Equação Original"
               description="A verificação não é luxo, é necessidade na CESGRANRIO."
-          variant={mv[8]}
+          variant="blue"
         />
 
             <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
@@ -2446,7 +2615,31 @@ export default function AulaEquacoes1Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolvendo (x+1)/3 = (2x-1)/5, o valor de x é:"
+          alternativas={[
+              { letra: "A", texto: "4", correta: false },
+              { letra: "B", texto: "6", correta: false },
+              { letra: "C", texto: "8", correta: true },
+              { letra: "D", texto: "10", correta: false },
+              { letra: "E", texto: "12", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Multiplicando cruzado: 5(x+1) = 3(2x-1) → 5x+5 = 6x-3 → 5+3 = 6x-5x → x = 8." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             video={{
               videoId: "h3S9XW1WzIk",
@@ -2479,7 +2672,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant={mv[8]}
+          variant="blue"
         />
 
                     <QuizInterativo
@@ -2488,7 +2681,7 @@ export default function AulaEquacoes1Grau({
             numero={3}
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
-          variant={mv[8]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -2499,7 +2692,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={9}
             titulo="Aplicações Petrobras & Contextos Reais"
             descricao="Onde as equações vivem: RNEST, RPBC, caldeiras, licitações, folha de pagamento."
-          variant={mv[9]}
+          variant="blue"
         />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2507,7 +2700,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Problemas Contextualizados Petrobras"
               description="A CESGRANRIO adora disfarçar equações em situações reais da empresa."
-          variant={mv[9]}
+          variant="blue"
         />
 
             <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
@@ -2774,7 +2967,31 @@ export default function AulaEquacoes1Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolvendo (x+1)/3 = (2x-1)/5, o valor de x é:"
+          alternativas={[
+              { letra: "A", texto: "4", correta: false },
+              { letra: "B", texto: "6", correta: false },
+              { letra: "C", texto: "8", correta: true },
+              { letra: "D", texto: "10", correta: false },
+              { letra: "E", texto: "12", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Multiplicando cruzado: 5(x+1) = 3(2x-1) → 5x+5 = 6x-3 → 5+3 = 6x-5x → x = 8." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             video={{
               videoId: "h3S9XW1WzIk",
@@ -2807,7 +3024,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant={mv[9]}
+          variant="blue"
         />
 
                     <QuizInterativo
@@ -2816,7 +3033,7 @@ export default function AulaEquacoes1Grau({
             numero={3}
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
-          variant={mv[9]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -2827,7 +3044,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre — Elite Masterclass"
             descricao="Reúna TUDO: balança, sistemas, inequações, contextos. 90+ = domínio total."
-          variant={mv[10]}
+          variant="blue"
         />
 
           {showCompletionBadge ? (
@@ -2853,7 +3070,7 @@ export default function AulaEquacoes1Grau({
                   index={1}
                   title="Avaliação Final Compreensiva"
                   description="Este simulado cobre TODOS os tópicos: M1 até M9. Mínimo 75% para aprovação."
-          variant={mv[10]}
+          variant="blue"
         />
 
                 <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
@@ -2938,7 +3155,31 @@ export default function AulaEquacoes1Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolvendo (x+1)/3 = (2x-1)/5, o valor de x é:"
+          alternativas={[
+              { letra: "A", texto: "4", correta: false },
+              { letra: "B", texto: "6", correta: false },
+              { letra: "C", texto: "8", correta: true },
+              { letra: "D", texto: "10", correta: false },
+              { letra: "E", texto: "12", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Multiplicando cruzado: 5(x+1) = 3(2x-1) → 5x+5 = 6x-3 → 5+3 = 6x-5x → x = 8." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             video={{
               videoId: "h3S9XW1WzIk",
@@ -2971,7 +3212,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant={mv[10]}
+          variant="blue"
         />
 
                         <QuizInterativo
@@ -2980,7 +3221,7 @@ export default function AulaEquacoes1Grau({
                 icone="🏆"
                 numero={3}
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
-          variant={mv[10]}
+          variant="blue"
         />
             </section>
           )}

@@ -1,5 +1,6 @@
 import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -13,7 +14,7 @@ import {
   AulaTemplate,
   ModuleSectionHeader,
   ModuleConsolidation,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   QUIZ_M1_JUROS_SIMPLES,
   QUIZ_M2_MONTANTE_SIMPLES,
@@ -46,9 +47,8 @@ export default function AulaMatematicaFinanceira({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_JUROS_SIMPLES, 6));
   const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_MONTANTE_SIMPLES, 6));
@@ -65,11 +65,9 @@ export default function AulaMatematicaFinanceira({
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
-      setCompletedModules((prev) => {
-        const n = new Set(prev);
-        n.add(moduleId);
-        return n;
-      });
+      const nextCompleted = new Set(completedModules);
+      nextCompleted.add(moduleId);
+      updateCompletedModules(Array.from(nextCompleted));
       const modules = Array.from({ length: 10 }, (_, i) => `modulo-${i + 1}`);
       const idx = modules.findIndex((m) => m === moduleId);
       const pct = Math.round(((idx + 1) / 10) * 100);
@@ -83,7 +81,7 @@ export default function AulaMatematicaFinanceira({
       const count = Math.floor((currentProgress / 100) * 10);
       const s = new Set<string>();
       for (let i = 1; i <= count; i++) s.add(`modulo-${i}`);
-      setCompletedModules(s);
+      updateCompletedModules(Array.from(s));
     }
   }, [currentProgress]);
 
@@ -105,6 +103,8 @@ export default function AulaMatematicaFinanceira({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={MODULE_DEFS}
@@ -131,7 +131,7 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={1}
           titulo="Juros Simples: J = C · i · t"
           descricao="Compreenda o regime de capitalização simples, onde os juros incidem sempre sobre o capital inicial — base de descontos e operações de curto prazo."
-           variant={mv[1]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -232,7 +232,7 @@ export default function AulaMatematicaFinanceira({
               index={2}
               title="Comparação: Simples vs. Composto"
               description="Entenda desde já a diferença crítica — a base de muitas pegadinhas da CESGRANRIO."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -281,7 +281,31 @@ export default function AulaMatematicaFinanceira({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Em juros compostos, os juros de cada período são calculados sobre:"
+          alternativas={[
+              { letra: "A", texto: "Apenas o capital inicial", correta: false },
+              { letra: "B", texto: "O montante acumulado até aquele período", correta: true },
+              { letra: "C", texto: "A média entre capital e montante final", correta: false },
+              { letra: "D", texto: "O dobro do capital inicial", correta: false },
+              { letra: "E", texto: "A taxa de juros simples equivalente", correta: false }
+            ]}
+          dicaEstrategica="Isso gera o efeito"
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Em juros compostos, os juros de cada período incidem sobre o montante do período anterior (capital + juros acumulados)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
             variant="indigo"
             video={{
@@ -365,14 +389,14 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={2}
           titulo="Montante em Juros Simples: M = C + J"
           descricao="Calcule o valor total retornado ao final de uma aplicação simples e interprete graficamente o crescimento linear."
-           variant={mv[2]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="M = C(1 + i·t): A Fórmula do Montante"
               description="O montante unifica capital e juros em uma única expressão compacta."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -456,7 +480,7 @@ export default function AulaMatematicaFinanceira({
               index={2}
               title="Relações Inversas: Desconto Simples"
               description="Calcular o Valor Presente (PV) a partir do Valor Futuro (FV) em juros simples."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <div className="space-y-4">
@@ -490,9 +514,33 @@ export default function AulaMatematicaFinanceira({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Em juros compostos, os juros de cada período são calculados sobre:"
+          alternativas={[
+              { letra: "A", texto: "Apenas o capital inicial", correta: false },
+              { letra: "B", texto: "O montante acumulado até aquele período", correta: true },
+              { letra: "C", texto: "A média entre capital e montante final", correta: false },
+              { letra: "D", texto: "O dobro do capital inicial", correta: false },
+              { letra: "E", texto: "A taxa de juros simples equivalente", correta: false }
+            ]}
+          dicaEstrategica="Isso gera o efeito"
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Em juros compostos, os juros de cada período incidem sobre o montante do período anterior (capital + juros acumulados)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "kL8nLz8zqWg",
               title: "Montante Simples: Resgate e Capitalização Linear",
@@ -560,7 +608,7 @@ export default function AulaMatematicaFinanceira({
               titulo="QUIZ: Montante Simples"
               icone="📈"
               numero={4}
-              variant="cyan"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -574,14 +622,14 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={3}
           titulo="Juros Compostos: Juros sobre Juros"
           descricao="O regime dominante no mercado financeiro: os juros se incorporam ao capital a cada período, gerando crescimento exponencial."
-           variant={mv[3]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="O Mecanismo da Capitalização Composta"
               description="Entenda como os juros se acumulam sobre si mesmos a cada período."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -681,9 +729,33 @@ export default function AulaMatematicaFinanceira({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
+          alternativas={[
+              { letra: "A", texto: "R$ 2.240.000", correta: true },
+              { letra: "B", texto: "R$ 2.280.000", correta: false },
+              { letra: "C", texto: "R$ 2.320.000", correta: false },
+              { letra: "D", texto: "R$ 2.180.000", correta: false },
+              { letra: "E", texto: "R$ 2.400.000", correta: false }
+            ]}
+          dicaEstrategica="O montante inclui capital + juros."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "M = C(1 + i·t) = 2.000.000 × (1 + 0,015 × 8) = 2.000.000 × 1,12 = R$ 2.240.000." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "h5FYmYW-I6Y",
               title: "Juros Compostos: Capitalização Exponencial e Poder do Tempo",
@@ -751,7 +823,7 @@ export default function AulaMatematicaFinanceira({
               titulo="QUIZ: Juros Compostos"
               icone="📊"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -765,7 +837,7 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={4}
           titulo="Montante Composto: M = C·(1+i)^t"
           descricao="Aplique a fórmula exponencial para calcular montantes, encontrar capitais presentes e determinar prazos em operações de longo prazo."
-           variant={mv[4]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -867,7 +939,31 @@ export default function AulaMatematicaFinanceira({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
+          alternativas={[
+              { letra: "A", texto: "R$ 2.240.000", correta: true },
+              { letra: "B", texto: "R$ 2.280.000", correta: false },
+              { letra: "C", texto: "R$ 2.320.000", correta: false },
+              { letra: "D", texto: "R$ 2.180.000", correta: false },
+              { letra: "E", texto: "R$ 2.400.000", correta: false }
+            ]}
+          dicaEstrategica="O montante inclui capital + juros."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "M = C(1 + i·t) = 2.000.000 × (1 + 0,015 × 8) = 2.000.000 × 1,12 = R$ 2.240.000." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{
@@ -950,14 +1046,14 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={5}
           titulo="Desconto Simples: Comercial e Racional"
           descricao="Aprenda a calcular o valor presente de títulos (duplicatas, cheques) antecipando seus vencimentos — operação central no dia a dia das empresas."
-           variant={mv[5]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Dois Tipos de Desconto Simples"
               description="Desconto Comercial (por fora) vs. Desconto Racional (por dentro) — saiba a diferença."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1054,9 +1150,33 @@ export default function AulaMatematicaFinanceira({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
+          alternativas={[
+              { letra: "A", texto: "R$ 2.240.000", correta: true },
+              { letra: "B", texto: "R$ 2.280.000", correta: false },
+              { letra: "C", texto: "R$ 2.320.000", correta: false },
+              { letra: "D", texto: "R$ 2.180.000", correta: false },
+              { letra: "E", texto: "R$ 2.400.000", correta: false }
+            ]}
+          dicaEstrategica="O montante inclui capital + juros."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "M = C(1 + i·t) = 2.000.000 × (1 + 0,015 × 8) = 2.000.000 × 1,12 = R$ 2.240.000." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "S8xPFP1lU4w",
               title: "Desconto Simples: Antecipação de Fluxos e Duplicatas",
@@ -1127,7 +1247,7 @@ export default function AulaMatematicaFinanceira({
               titulo="QUIZ: Desconto"
               icone="🏦"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -1141,7 +1261,7 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={6}
           titulo="Equivalência de Capitais"
           descricao="Compare e substitua dívidas transportando capitais para uma mesma data focal — habilidade essencial em renegociações e contratos da Petrobras."
-           variant={mv[6]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1236,9 +1356,33 @@ export default function AulaMatematicaFinanceira({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
+          alternativas={[
+              { letra: "A", texto: "R$ 2.240.000", correta: true },
+              { letra: "B", texto: "R$ 2.280.000", correta: false },
+              { letra: "C", texto: "R$ 2.320.000", correta: false },
+              { letra: "D", texto: "R$ 2.180.000", correta: false },
+              { letra: "E", texto: "R$ 2.400.000", correta: false }
+            ]}
+          dicaEstrategica="O montante inclui capital + juros."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "M = C(1 + i·t) = 2.000.000 × (1 + 0,015 × 8) = 2.000.000 × 1,12 = R$ 2.240.000." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="rose"
+            variant="blue"
             video={{
               videoId: "kGZVW7zDV2Y",
               title: "Equivalência de Capitais: Comparar Fluxos em Datas Diferentes",
@@ -1308,14 +1452,14 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={7}
           titulo="Taxa Nominal vs. Taxa Efetiva"
           descricao="Entenda a diferença entre a taxa anunciada e a taxa que realmente incide sobre seu capital — fonte de inúmeras pegadinhas da CESGRANRIO."
-           variant={mv[7]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Nominal, Efetiva e Equivalente"
               description="Três conceitos que muitos confundem — domine-os e nunca erre esse tipo de questão."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1426,7 +1570,31 @@ export default function AulaMatematicaFinanceira({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
+          alternativas={[
+              { letra: "A", texto: "R$ 2.240.000", correta: true },
+              { letra: "B", texto: "R$ 2.280.000", correta: false },
+              { letra: "C", texto: "R$ 2.320.000", correta: false },
+              { letra: "D", texto: "R$ 2.180.000", correta: false },
+              { letra: "E", texto: "R$ 2.400.000", correta: false }
+            ]}
+          dicaEstrategica="O montante inclui capital + juros."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "M = C(1 + i·t) = 2.000.000 × (1 + 0,015 × 8) = 2.000.000 × 1,12 = R$ 2.240.000." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="indigo"
             video={{
@@ -1482,7 +1650,7 @@ export default function AulaMatematicaFinanceira({
               titulo="QUIZ: Taxas Nominal e Efetiva"
               icone="📊"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -1496,7 +1664,7 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={8}
           titulo="Séries de Pagamento (Anuidades)"
           descricao="Calcule financiamentos, parcelas e valores presentes de fluxos de caixa periódicos — base para contratos de longo prazo e planos de investimento."
-           variant={mv[8]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1594,9 +1762,33 @@ export default function AulaMatematicaFinanceira({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
+          alternativas={[
+              { letra: "A", texto: "R$ 2.240.000", correta: true },
+              { letra: "B", texto: "R$ 2.280.000", correta: false },
+              { letra: "C", texto: "R$ 2.320.000", correta: false },
+              { letra: "D", texto: "R$ 2.180.000", correta: false },
+              { letra: "E", texto: "R$ 2.400.000", correta: false }
+            ]}
+          dicaEstrategica="O montante inclui capital + juros."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "M = C(1 + i·t) = 2.000.000 × (1 + 0,015 × 8) = 2.000.000 × 1,12 = R$ 2.240.000." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "CXW5V4zDvWY",
               title: "Séries de Pagamento: Anuidades Postecipadas e Antecipadas",
@@ -1664,14 +1856,14 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={9}
           titulo="Aplicações Petrobras: Financiamentos e Contratos"
           descricao="Questões integradas com contexto real da indústria petrolífera: arrendamentos, PLR, financiamentos de equipamentos, debêntures e fundos de renovação."
-           variant={mv[9]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Matemática Financeira no Setor Petrolífero"
               description="Como os conceitos se aplicam nos processos reais de investimento e financiamento da Petrobras."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1759,9 +1951,33 @@ export default function AulaMatematicaFinanceira({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
+          alternativas={[
+              { letra: "A", texto: "R$ 2.240.000", correta: true },
+              { letra: "B", texto: "R$ 2.280.000", correta: false },
+              { letra: "C", texto: "R$ 2.320.000", correta: false },
+              { letra: "D", texto: "R$ 2.180.000", correta: false },
+              { letra: "E", texto: "R$ 2.400.000", correta: false }
+            ]}
+          dicaEstrategica="O montante inclui capital + juros."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "M = C(1 + i·t) = 2.000.000 × (1 + 0,015 × 8) = 2.000.000 × 1,12 = R$ 2.240.000." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "2HYVqU1Kgdg",
               title: "Matemática Financeira em Projetos Petrobras: VPL e TIR",
@@ -1817,7 +2033,7 @@ export default function AulaMatematicaFinanceira({
               titulo="QUIZ: Aplicações Petrobras"
               icone="🛢️"
               numero={3}
-              variant="cyan"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -1831,7 +2047,7 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={10}
           titulo="Simulado Final CESGRANRIO"
           descricao="Questões integradas no nível e estilo CESGRANRIO, cobrindo todos os tópicos de Matemática Financeira — o teste definitivo antes da prova real."
-           variant={mv[10]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1948,7 +2164,31 @@ export default function AulaMatematicaFinanceira({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
+          alternativas={[
+              { letra: "A", texto: "R$ 2.240.000", correta: true },
+              { letra: "B", texto: "R$ 2.280.000", correta: false },
+              { letra: "C", texto: "R$ 2.320.000", correta: false },
+              { letra: "D", texto: "R$ 2.180.000", correta: false },
+              { letra: "E", texto: "R$ 2.400.000", correta: false }
+            ]}
+          dicaEstrategica="O montante inclui capital + juros."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "M = C(1 + i·t) = 2.000.000 × (1 + 0,015 × 8) = 2.000.000 × 1,12 = R$ 2.240.000." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{

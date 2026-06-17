@@ -1,5 +1,6 @@
 import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect, useCallback } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -27,7 +28,7 @@ import {
   ModuleSummaryCarouselNew,
   AulaProps,
   AulaTemplate,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   LuCheck,
   LuBookOpen,
@@ -690,20 +691,8 @@ export default function AulaSintaxe({
     return "modulo-1";
   });
 
-  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
-      if (saved) {
-        try {
-          const arr = JSON.parse(saved);
-          return new Set(arr);
-        } catch (e) {
-          return new Set();
-        }
-      }
-    }
-    return new Set();
-  });
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -711,14 +700,7 @@ export default function AulaSintaxe({
     }
   }, [activeTab]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `${STORAGE_KEY_PREFIX}completed_modules`,
-        JSON.stringify(Array.from(completedModules))
-      );
-    }
-  }, [completedModules]);
+  
   const [showCompletionBadge, setShowCompletionBadge] = useState(false);
 
   // Sincronizar progresso inicial do estado global (apenas uma vez na carga)
@@ -738,7 +720,7 @@ export default function AulaSintaxe({
       for (let i = 0; i < doneCount; i++) {
         newDone.add(MODULE_DEFS[i].id);
       }
-      setCompletedModules(newDone);
+      updateCompletedModules(Array.from(newDone));
       setHasSyncedInitial(true);
       if (currentProgress >= 100) setShowCompletionBadge(true);
     } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
@@ -749,7 +731,7 @@ export default function AulaSintaxe({
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
       const newSet = new Set(completedModules).add(moduleId);
-      setCompletedModules(newSet);
+      updateCompletedModules(Array.from(newSet));
 
       const total = MODULE_DEFS.length;
       const done = newSet.size;
@@ -775,6 +757,8 @@ export default function AulaSintaxe({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       onComplete={onComplete}
       activeTab={activeTab}
       setActiveTab={setActiveTab}
@@ -1199,7 +1183,7 @@ export default function AulaSintaxe({
           numero={5}
           titulo="Síntese Estratégica"
           descricao="Resumo visual, mapas mentais e ferramentas de fixação rápida para não esquecer mais."
-          variant={mv[5]}
+          variant="blue"
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
@@ -1207,7 +1191,7 @@ export default function AulaSintaxe({
               index="INTRO"
               title="Resumo e Multimídia"
               description="Visão panorâmica de toda a Sintaxe da Oração."
-          variant={mv[5]}
+          variant="blue"
         />
 
             <div className="bg-rose-500/5 border border-rose-500/20 p-6 rounded-xl">
@@ -1268,7 +1252,7 @@ export default function AulaSintaxe({
             </div>
 
             <LessonTabs
-              variant="rose"
+              variant="blue"
               tabs={[
                 {
                   id: "video",

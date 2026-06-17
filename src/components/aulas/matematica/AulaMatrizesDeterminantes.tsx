@@ -1,5 +1,6 @@
 import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -13,7 +14,7 @@ import {
   AulaTemplate,
   ModuleSectionHeader,
   ModuleConsolidation,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   QUIZ_M1_CONCEITO_MATRIZES,
   QUIZ_M2_TIPOS_MATRIZES,
@@ -46,9 +47,8 @@ export default function AulaMatrizesDeterminantes({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   const [quizM1] = useState(() =>
     getRandomQuestions(QUIZ_M1_CONCEITO_MATRIZES, 6),
@@ -81,11 +81,9 @@ export default function AulaMatrizesDeterminantes({
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
-      setCompletedModules((prev) => {
-        const n = new Set(prev);
-        n.add(moduleId);
-        return n;
-      });
+      const nextCompleted = new Set(completedModules);
+      nextCompleted.add(moduleId);
+      updateCompletedModules(Array.from(nextCompleted));
       const modules = Array.from({ length: 10 }, (_, i) => `modulo-${i + 1}`);
       const idx = modules.findIndex((m) => m === moduleId);
       const pct = Math.round(((idx + 1) / 10) * 100);
@@ -99,7 +97,7 @@ export default function AulaMatrizesDeterminantes({
       const count = Math.floor((currentProgress / 100) * 10);
       const s = new Set<string>();
       for (let i = 1; i <= count; i++) s.add(`modulo-${i}`);
-      setCompletedModules(s);
+      updateCompletedModules(Array.from(s));
     }
   }, [currentProgress]);
 
@@ -121,6 +119,8 @@ export default function AulaMatrizesDeterminantes({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={MODULE_DEFS}
@@ -147,7 +147,7 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={1}
           titulo="Conceito e Notação de Matrizes"
           descricao="Entenda o que é uma matriz, como ler sua dimensão e interpretar seus elementos — a base de toda álgebra linear aplicada à engenharia."
-           variant={mv[1]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -410,7 +410,31 @@ export default function AulaMatrizesDeterminantes({
           <section id="quiz-modulo-1" className="mt-16">
             
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
+          alternativas={[
+              { letra: "A", texto: "Retangular", correta: false },
+              { letra: "B", texto: "Quadrada de ordem 5", correta: true },
+              { letra: "C", texto: "Linha", correta: false },
+              { letra: "D", texto: "Coluna", correta: false },
+              { letra: "E", texto: "Nula", correta: false }
+            ]}
+          dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A ordem é o número de linhas (ou colunas)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Uma matriz 5×5 é quadrada de ordem 5." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={2}
               variant="indigo"
               video={{
@@ -486,14 +510,14 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={2}
           titulo="Tipos Especiais de Matrizes"
           descricao="Identidade, nula, diagonal, simétrica, triangular — cada tipo tem propriedades únicas exploradas pela banca examinadora."
-           variant={mv[2]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Classificação das Matrizes Especiais"
               description="Reconheça cada tipo rapidamente — economia de tempo na prova."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -731,9 +755,33 @@ export default function AulaMatrizesDeterminantes({
           <section id="quiz-modulo-2" className="mt-16">
             
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
+          alternativas={[
+              { letra: "A", texto: "Retangular", correta: false },
+              { letra: "B", texto: "Quadrada de ordem 5", correta: true },
+              { letra: "C", texto: "Linha", correta: false },
+              { letra: "D", texto: "Coluna", correta: false },
+              { letra: "E", texto: "Nula", correta: false }
+            ]}
+          dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A ordem é o número de linhas (ou colunas)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Uma matriz 5×5 é quadrada de ordem 5." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={2}
-              variant="emerald"
+              variant="blue"
               video={{
                 videoId: "ZjxCqCrHT48",
                 title: "Matrizes Especiais: Diagonal, Nula, Identidade",
@@ -793,7 +841,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="QUIZ: Tipos de Matrizes"
               icone="🔢"
               numero={3}
-              variant="cyan"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -807,14 +855,14 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={3}
           titulo="Adição e Subtração de Matrizes"
           descricao="Opere entre matrizes de mesma ordem e aplique multiplicação por escalar — operações fundamentais em análise de dados industriais."
-           variant={mv[3]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Regras de Adição e Multiplicação Escalar"
               description="Elemento a elemento — simples, mas com pegadinhas de dimensão."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1040,9 +1088,33 @@ export default function AulaMatrizesDeterminantes({
           <section id="quiz-modulo-3" className="mt-16">
             
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
+          alternativas={[
+              { letra: "A", texto: "Retangular", correta: false },
+              { letra: "B", texto: "Quadrada de ordem 5", correta: true },
+              { letra: "C", texto: "Linha", correta: false },
+              { letra: "D", texto: "Coluna", correta: false },
+              { letra: "E", texto: "Nula", correta: false }
+            ]}
+          dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A ordem é o número de linhas (ou colunas)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Uma matriz 5×5 é quadrada de ordem 5." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={2}
-              variant="cyan"
+              variant="blue"
               video={{
                 videoId: "3v8FqU29m_c",
                 title: "Operações com Matrizes: Adição, Subtração e Escalar",
@@ -1102,7 +1174,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="QUIZ: Adição e Subtração"
               icone="➕"
               numero={3}
-              variant="cyan"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -1116,7 +1188,7 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={4}
           titulo="Multiplicação de Matrizes"
           descricao="A operação mais poderosa — e mais cobrada. Entenda a condição de existência, o processo linha-coluna e por que A·B ≠ B·A."
-           variant={mv[4]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1310,7 +1382,31 @@ export default function AulaMatrizesDeterminantes({
           <section id="quiz-modulo-4" className="mt-16">
             
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
+          alternativas={[
+              { letra: "A", texto: "Retangular", correta: false },
+              { letra: "B", texto: "Quadrada de ordem 5", correta: true },
+              { letra: "C", texto: "Linha", correta: false },
+              { letra: "D", texto: "Coluna", correta: false },
+              { letra: "E", texto: "Nula", correta: false }
+            ]}
+          dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A ordem é o número de linhas (ou colunas)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Uma matriz 5×5 é quadrada de ordem 5." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={2}
               variant="blue"
               video={{
@@ -1388,7 +1484,7 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={5}
           titulo="Matriz Transposta e Inversa"
           descricao="Duas operações essenciais: a transposta reorganiza linhas em colunas; a inversa 'desfaz' a multiplicação — base para resolver sistemas matriciais."
-           variant={mv[5]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1583,9 +1679,33 @@ export default function AulaMatrizesDeterminantes({
           <section id="quiz-modulo-5" className="mt-16">
             
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
+          alternativas={[
+              { letra: "A", texto: "Retangular", correta: false },
+              { letra: "B", texto: "Quadrada de ordem 5", correta: true },
+              { letra: "C", texto: "Linha", correta: false },
+              { letra: "D", texto: "Coluna", correta: false },
+              { letra: "E", texto: "Nula", correta: false }
+            ]}
+          dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A ordem é o número de linhas (ou colunas)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Uma matriz 5×5 é quadrada de ordem 5." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={2}
-              variant="amber"
+              variant="blue"
               video={{
                 videoId: "mD7_Q_LhE6Y",
                 title: "Matriz Inversa e Transposta",
@@ -1647,7 +1767,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="QUIZ: Transposta e Inversa"
               icone="🔄"
               numero={3}
-              variant="amber"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -1661,7 +1781,7 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={6}
           titulo="Determinante de Ordem 2"
           descricao="O número que revela tudo sobre uma matriz 2×2 — invertibilidade, sistemas lineares e a regra de Cramer. Domine em 5 minutos."
-           variant={mv[6]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1852,9 +1972,33 @@ export default function AulaMatrizesDeterminantes({
           <section id="quiz-modulo-6" className="mt-16">
             
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
+          alternativas={[
+              { letra: "A", texto: "Retangular", correta: false },
+              { letra: "B", texto: "Quadrada de ordem 5", correta: true },
+              { letra: "C", texto: "Linha", correta: false },
+              { letra: "D", texto: "Coluna", correta: false },
+              { letra: "E", texto: "Nula", correta: false }
+            ]}
+          dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A ordem é o número de linhas (ou colunas)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Uma matriz 5×5 é quadrada de ordem 5." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={2}
-              variant="rose"
+              variant="blue"
               video={{
                 videoId: "6hL5Mp9Rq2W",
                 title: "Determinante 2×2: Fórmula Simples de Cramer",
@@ -1914,7 +2058,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="QUIZ: Determinante 2×2"
               icone="🔢"
               numero={3}
-              variant="rose"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -1928,14 +2072,14 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={7}
           titulo="Determinante 3×3 — Regra de Sarrus"
           descricao="O método visual das 6 diagonais — 3 positivas e 3 negativas. Aprenda o passo a passo e resolva qualquer determinante 3×3 em menos de 2 minutos."
-           variant={mv[7]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="A Regra de Sarrus: Passo a Passo"
               description="6 diagonais, 3 com sinal + e 3 com sinal −."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -2133,7 +2277,31 @@ export default function AulaMatrizesDeterminantes({
           <section id="quiz-modulo-7" className="mt-16">
             
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
+          alternativas={[
+              { letra: "A", texto: "Retangular", correta: false },
+              { letra: "B", texto: "Quadrada de ordem 5", correta: true },
+              { letra: "C", texto: "Linha", correta: false },
+              { letra: "D", texto: "Coluna", correta: false },
+              { letra: "E", texto: "Nula", correta: false }
+            ]}
+          dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A ordem é o número de linhas (ou colunas)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Uma matriz 5×5 é quadrada de ordem 5." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={2}
               variant="indigo"
               video={{
@@ -2213,7 +2381,7 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={8}
           titulo="Cofatores e Desenvolvimento de Laplace"
           descricao="O método mais poderoso para determinantes de qualquer ordem: expanda por linhas ou colunas com mais zeros e reduza o trabalho ao mínimo."
-           variant={mv[8]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2397,9 +2565,33 @@ export default function AulaMatrizesDeterminantes({
           <section id="quiz-modulo-8" className="mt-16">
             
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
+          alternativas={[
+              { letra: "A", texto: "Retangular", correta: false },
+              { letra: "B", texto: "Quadrada de ordem 5", correta: true },
+              { letra: "C", texto: "Linha", correta: false },
+              { letra: "D", texto: "Coluna", correta: false },
+              { letra: "E", texto: "Nula", correta: false }
+            ]}
+          dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A ordem é o número de linhas (ou colunas)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Uma matriz 5×5 é quadrada de ordem 5." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={2}
-              variant="emerald"
+              variant="blue"
               video={{
                 videoId: "5cJ7Nx2Lm8R",
                 title: "Cofatores, Menor e Adjunta: Inversa Passo a Passo",
@@ -2460,7 +2652,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="QUIZ: Cofatores"
               icone="🔬"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -2474,14 +2666,14 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={9}
           titulo="Aplicações na Petrobras e Indústria"
           descricao="Sistemas de equações, transformações de coordenadas, redes de dutos e criptografia — matrizes e determinantes resolvendo problemas reais da indústria petrolífera."
-           variant={mv[9]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Sistemas Lineares e Transformações Industriais"
               description="Álgebra matricial aplicada ao dia a dia da engenharia de petróleo."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -2659,9 +2851,33 @@ export default function AulaMatrizesDeterminantes({
           <section id="quiz-modulo-9" className="mt-16">
             
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
+          alternativas={[
+              { letra: "A", texto: "Retangular", correta: false },
+              { letra: "B", texto: "Quadrada de ordem 5", correta: true },
+              { letra: "C", texto: "Linha", correta: false },
+              { letra: "D", texto: "Coluna", correta: false },
+              { letra: "E", texto: "Nula", correta: false }
+            ]}
+          dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A ordem é o número de linhas (ou colunas)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Uma matriz 5×5 é quadrada de ordem 5." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={2}
-              variant="cyan"
+              variant="blue"
               video={{
                 videoId: "9lP8Qs1Xw5Y",
                 title:
@@ -2723,7 +2939,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="QUIZ: Aplicações Petrobras"
               icone="🏭"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -2737,7 +2953,7 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={10}
           titulo="Simulado CESGRANRIO — Nível Mestre"
           descricao="Questões no padrão exato da banca examinadora da Petrobras. Teste tudo que aprendeu sobre matrizes e determinantes em condições reais de prova."
-           variant={mv[10]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -3116,7 +3332,31 @@ export default function AulaMatrizesDeterminantes({
           <section id="quiz-modulo-10" className="mt-8">
             
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
+          alternativas={[
+              { letra: "A", texto: "Retangular", correta: false },
+              { letra: "B", texto: "Quadrada de ordem 5", correta: true },
+              { letra: "C", texto: "Linha", correta: false },
+              { letra: "D", texto: "Coluna", correta: false },
+              { letra: "E", texto: "Nula", correta: false }
+            ]}
+          dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A ordem é o número de linhas (ou colunas)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Uma matriz 5×5 é quadrada de ordem 5." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={2}
               variant="blue"
               video={{

@@ -1,6 +1,7 @@
 import { getAllModuleVariants } from "@/lib/moduleColors";
 // Last modified: 2026-03-13 - Upgraded with ModuleConsolidation (4-tab system) and C.E.D.E. pedagogy
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -18,7 +19,7 @@ import {
   FunctionGraph,
   ModuleConsolidation,
   type FunctionPlot,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 
 import {
   LuBookOpen,
@@ -76,9 +77,8 @@ export default function AulaEquacoes2Grau({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_CONCEITOS, 4));
   const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_BHASKARA, 4));
@@ -116,7 +116,7 @@ export default function AulaEquacoes2Grau({
       for (let i = 0; i < doneCount; i++) {
         newDone.add(MODULE_DEFS[i].id);
       }
-      setCompletedModules(newDone);
+      updateCompletedModules(Array.from(newDone));
       setHasSyncedInitial(true);
     } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
       setHasSyncedInitial(true);
@@ -126,7 +126,7 @@ export default function AulaEquacoes2Grau({
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
       const newSet = new Set(completedModules).add(moduleId);
-      setCompletedModules(newSet);
+      updateCompletedModules(Array.from(newSet));
 
       const total = MODULE_DEFS.length;
       const done = newSet.size;
@@ -155,6 +155,8 @@ export default function AulaEquacoes2Grau({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={(val) => {
         const idx = MODULE_DEFS.findIndex((m) => m.id === val);
@@ -185,7 +187,7 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={1}
             titulo="Conceitos Fundamentais"
             descricao="Desvendando a estrutura das equações do 2º grau."
-             variant={mv[1]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -369,7 +371,31 @@ export default function AulaEquacoes2Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="As raízes de x² - 7x + 12 = 0 são:"
+          alternativas={[
+              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+              { letra: "B", texto: "x = -3 e x = -4", correta: false },
+              { letra: "C", texto: "x = 2 e x = 6", correta: false },
+              { letra: "D", texto: "x = -2 e x = -6", correta: false },
+              { letra: "E", texto: "x = 1 e x = 12", correta: false }
+            ]}
+          dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "x = (7±1)/2 → x₁ = 4, x₂ = 3." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{
@@ -443,14 +469,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={2}
             titulo="Fórmula de Bhaskara"
             descricao="A fórmula mais famosa da Matemática. Dominando o a, b e c."
-             variant={mv[2]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="O Coração do 2º Grau"
               description="Bhaskara: a fórmula que resolve tudo quando bem compreendida."
-              variant="emerald"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -621,9 +647,33 @@ export default function AulaEquacoes2Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="As raízes de x² - 7x + 12 = 0 são:"
+          alternativas={[
+              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+              { letra: "B", texto: "x = -3 e x = -4", correta: false },
+              { letra: "C", texto: "x = 2 e x = 6", correta: false },
+              { letra: "D", texto: "x = -2 e x = -6", correta: false },
+              { letra: "E", texto: "x = 1 e x = 12", correta: false }
+            ]}
+          dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "x = (7±1)/2 → x₁ = 4, x₂ = 3." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "RFKjZ2FLSrk",
               title: "Fórmula de Bhaskara: Passo a Passo",
@@ -679,7 +729,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM2}
               titulo="QUIZ: Fórmula de Bhaskara"
               numero={3}
-              variant="emerald"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -693,14 +743,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={3}
             titulo="Equações Avançadas"
             descricao="Problemas físicos e geométricos que geram equações de 2º grau."
-             variant={mv[3]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Tradução Física das Raízes"
               description="Ninguém desenha uma parábola sem motivo de prova."
-              variant="amber"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -839,9 +889,33 @@ export default function AulaEquacoes2Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="As raízes de x² - 7x + 12 = 0 são:"
+          alternativas={[
+              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+              { letra: "B", texto: "x = -3 e x = -4", correta: false },
+              { letra: "C", texto: "x = 2 e x = 6", correta: false },
+              { letra: "D", texto: "x = -2 e x = -6", correta: false },
+              { letra: "E", texto: "x = 1 e x = 12", correta: false }
+            ]}
+          dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "x = (7±1)/2 → x₁ = 4, x₂ = 3." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "lkK4kZWglOk",
               title: "Problemas Contextualizados com Equações 2º Grau",
@@ -899,7 +973,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM3}
               titulo="QUIZ: Equações Avançadas"
               numero={3}
-              variant="amber"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -913,14 +987,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={4}
             titulo="O Gráfico e os Vértices"
             descricao="Encontrando o limite absoluto: Lucro Máximo e Altura Máxima."
-             variant={mv[4]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="O Ápice da Parábola"
               description="Identificando o pico e o fundo do poço sem precisar desenhar o gráfico."
-              variant="cyan"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1058,9 +1132,33 @@ export default function AulaEquacoes2Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="As raízes de x² - 7x + 12 = 0 são:"
+          alternativas={[
+              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+              { letra: "B", texto: "x = -3 e x = -4", correta: false },
+              { letra: "C", texto: "x = 2 e x = 6", correta: false },
+              { letra: "D", texto: "x = -2 e x = -6", correta: false },
+              { letra: "E", texto: "x = 1 e x = 12", correta: false }
+            ]}
+          dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "x = (7±1)/2 → x₁ = 4, x₂ = 3." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "bPfYCGCYRN8",
               title: "Vértice e Otimização: Máximos e Mínimos",
@@ -1123,7 +1221,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM4}
               titulo="QUIZ: Problemas Contextualizados"
               numero={3}
-              variant="cyan"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1137,14 +1235,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={5}
             titulo="Desafio Parcial"
             descricao="Consolidando os conhecimentos dos primeiros 4 módulos."
-             variant={mv[5]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Revisão Estratégica"
               description="Antes de avançar para técnicas mais sofisticadas, teste seu domínio."
-              variant="violet"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1215,9 +1313,33 @@ export default function AulaEquacoes2Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="As raízes de x² - 7x + 12 = 0 são:"
+          alternativas={[
+              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+              { letra: "B", texto: "x = -3 e x = -4", correta: false },
+              { letra: "C", texto: "x = 2 e x = 6", correta: false },
+              { letra: "D", texto: "x = -2 e x = -6", correta: false },
+              { letra: "E", texto: "x = 1 e x = 12", correta: false }
+            ]}
+          dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "x = (7±1)/2 → x₁ = 4, x₂ = 3." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="violet"
+            variant="blue"
             video={{
               videoId: "SJ-S32r9GUo",
               title: "Revisão: Equações 2º Grau Completas",
@@ -1274,7 +1396,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM5}
               titulo="QUIZ: Desafio Parcial"
               numero={3}
-              variant="violet"
+              variant="blue"
               icone="📊"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1288,14 +1410,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={6}
             titulo="Soma e Produto (Relações de Vieta)"
             descricao="Os atalhos dos ninjas: descubra raízes sem Bhaskara."
-             variant={mv[6]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Relações de Vieta"
               description="Soma e produto das raízes."
-              variant="emerald"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1400,9 +1522,33 @@ export default function AulaEquacoes2Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="As raízes de x² - 7x + 12 = 0 são:"
+          alternativas={[
+              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+              { letra: "B", texto: "x = -3 e x = -4", correta: false },
+              { letra: "C", texto: "x = 2 e x = 6", correta: false },
+              { letra: "D", texto: "x = -2 e x = -6", correta: false },
+              { letra: "E", texto: "x = 1 e x = 12", correta: false }
+            ]}
+          dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "x = (7±1)/2 → x₁ = 4, x₂ = 3." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "8mR0h4Ymfuo",
               title: "Soma e Produto: Relações de Vieta",
@@ -1458,7 +1604,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM6}
               titulo="QUIZ: Soma e Produto (Atalhos)"
               numero={3}
-              variant="emerald"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1472,14 +1618,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={7}
             titulo="Gráficos e Parábolas"
             descricao="Visualizando raízes, vértices e o comportamento das parábolas."
-             variant={mv[7]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="O Ápice da Parábola"
               description="Encontrando máximos e mínimos."
-              variant="cyan"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1597,9 +1743,33 @@ export default function AulaEquacoes2Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="As raízes de x² - 7x + 12 = 0 são:"
+          alternativas={[
+              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+              { letra: "B", texto: "x = -3 e x = -4", correta: false },
+              { letra: "C", texto: "x = 2 e x = 6", correta: false },
+              { letra: "D", texto: "x = -2 e x = -6", correta: false },
+              { letra: "E", texto: "x = 1 e x = 12", correta: false }
+            ]}
+          dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "x = (7±1)/2 → x₁ = 4, x₂ = 3." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "qAHgWGWZhGs",
               title: "Gráficos de Parábolas: Visualização Completa",
@@ -1657,7 +1827,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM7}
               titulo="QUIZ: Gráficos e Parábolas"
               numero={3}
-              variant="cyan"
+              variant="blue"
               icone="📈"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1671,14 +1841,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={8}
             titulo="Resolução Reversa"
             descricao="Do resultado para a equação: encontre coeficientes e parâmetros."
-             variant={mv[8]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Pensamento Inverso"
               description="Quando a banca dá as raízes, ache a equação."
-              variant="rose"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1790,9 +1960,33 @@ export default function AulaEquacoes2Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="As raízes de x² - 7x + 12 = 0 são:"
+          alternativas={[
+              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+              { letra: "B", texto: "x = -3 e x = -4", correta: false },
+              { letra: "C", texto: "x = 2 e x = 6", correta: false },
+              { letra: "D", texto: "x = -2 e x = -6", correta: false },
+              { letra: "E", texto: "x = 1 e x = 12", correta: false }
+            ]}
+          dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "x = (7±1)/2 → x₁ = 4, x₂ = 3." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="rose"
+            variant="blue"
             video={{
               videoId: "v8HEYcH0WeM",
               title: "Resolução Reversa: Das Raízes à Equação",
@@ -1850,7 +2044,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM8}
               titulo="QUIZ: Resolução Reversa"
               numero={3}
-              variant="rose"
+              variant="blue"
               icone="🔄"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1864,14 +2058,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={9}
             titulo="Aplicações Petrobras"
             descricao="Problemas reais de otimização em operações de petróleo e gás."
-             variant={mv[9]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Contexto Industrial"
               description="Equações que resolvem problemas verdadeiros."
-              variant="amber"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1984,9 +2178,33 @@ export default function AulaEquacoes2Grau({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="As raízes de x² - 7x + 12 = 0 são:"
+          alternativas={[
+              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+              { letra: "B", texto: "x = -3 e x = -4", correta: false },
+              { letra: "C", texto: "x = 2 e x = 6", correta: false },
+              { letra: "D", texto: "x = -2 e x = -6", correta: false },
+              { letra: "E", texto: "x = 1 e x = 12", correta: false }
+            ]}
+          dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "x = (7±1)/2 → x₁ = 4, x₂ = 3." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Aplicações Reais: Otimização na Indústria",
@@ -2044,7 +2262,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM9}
               titulo="QUIZ: Aplicações Petrobras"
               numero={3}
-              variant="amber"
+              variant="blue"
               icone="⚙️"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -2058,7 +2276,7 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="Teste seu domínio absoluto sobre Equações do 2º Grau."
-             variant={mv[10]}/>
+             variant="blue"/>
 
           {showCompletionBadge ? (
             <div className="flex flex-col items-center gap-6 py-10 mt-10">
@@ -2078,7 +2296,7 @@ export default function AulaEquacoes2Grau({
                 titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={1}
-                variant="slate"
+                variant="blue"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

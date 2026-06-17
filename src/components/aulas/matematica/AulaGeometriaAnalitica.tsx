@@ -1,4 +1,5 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -14,7 +15,7 @@ import {
   FunctionGraph,
   type FunctionPlot,
   ModuleConsolidation,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   QUIZ_M1_PONTO_PLANO,
   QUIZ_M2_DISTANCIA_MEDIO,
@@ -48,9 +49,8 @@ export default function AulaGeometriaAnalitica({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_PONTO_PLANO, 6));
   const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_DISTANCIA_MEDIO, 6));
@@ -67,11 +67,9 @@ export default function AulaGeometriaAnalitica({
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
-      setCompletedModules((prev) => {
-        const n = new Set(prev);
-        n.add(moduleId);
-        return n;
-      });
+      const nextCompleted = new Set(completedModules);
+      nextCompleted.add(moduleId);
+      updateCompletedModules(Array.from(nextCompleted));
       const modules = Array.from({ length: 10 }, (_, i) => `modulo-${i + 1}`);
       const idx = modules.findIndex((m) => m === moduleId);
       const pct = Math.round(((idx + 1) / 10) * 100);
@@ -85,7 +83,7 @@ export default function AulaGeometriaAnalitica({
       const count = Math.floor((currentProgress / 100) * 10);
       const s = new Set<string>();
       for (let i = 1; i <= count; i++) s.add(`modulo-${i}`);
-      setCompletedModules(s);
+      updateCompletedModules(Array.from(s));
     }
   }, [currentProgress]);
 
@@ -107,6 +105,8 @@ export default function AulaGeometriaAnalitica({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={MODULE_DEFS}
@@ -133,7 +133,7 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={1}
           titulo="Ponto no Plano Cartesiano"
           descricao="Domine o sistema de coordenadas, quadrantes, simetrias e a localização de pontos — base de toda a Geometria Analítica."
-           variant={mv[1]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -248,7 +248,31 @@ export default function AulaGeometriaAnalitica({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
+          alternativas={[
+              { letra: "A", texto: "8", correta: false },
+              { letra: "B", texto: "10", correta: true },
+              { letra: "C", texto: "12", correta: false },
+              { letra: "D", texto: "14", correta: false },
+              { letra: "E", texto: "6", correta: false }
+            ]}
+          dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "d = √[(8-2)² + (13-5)²] = √[36 + 64] = √100 = 10 km." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="indigo"
             video={{
@@ -285,8 +309,7 @@ export default function AulaGeometriaAnalitica({
 
                     <QuizInterativo
             questoes={quizM1}
-            moduleId="modulo-1"
-            onComplete={handleModuleComplete}
+            onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
       </TabsContent>
@@ -298,7 +321,7 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={2}
           titulo="Distância entre Pontos e Ponto Médio"
           descricao="As fórmulas essenciais para medir separação e encontrar o centro entre dois pontos — aplicadas em mapeamento de dutos e plataformas."
-           variant={mv[2]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -433,9 +456,33 @@ export default function AulaGeometriaAnalitica({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
+          alternativas={[
+              { letra: "A", texto: "8", correta: false },
+              { letra: "B", texto: "10", correta: true },
+              { letra: "C", texto: "12", correta: false },
+              { letra: "D", texto: "14", correta: false },
+              { letra: "E", texto: "6", correta: false }
+            ]}
+          dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "d = √[(8-2)² + (13-5)²] = √[36 + 64] = √100 = 10 km." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "pFZjMKqKZEQ",
               title: "Distância entre Pontos e Ponto Médio",
@@ -470,8 +517,7 @@ export default function AulaGeometriaAnalitica({
 
                     <QuizInterativo
             questoes={quizM2}
-            moduleId="modulo-2"
-            onComplete={handleModuleComplete}
+            onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </div>
       </TabsContent>
@@ -483,7 +529,7 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={3}
           titulo="Equação da Reta"
           descricao="Forme reduzida, geral e segmentária — entenda o coeficiente angular e linear para modelar qualquer trajetória linear."
-           variant={mv[3]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -634,9 +680,33 @@ export default function AulaGeometriaAnalitica({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
+          alternativas={[
+              { letra: "A", texto: "8", correta: false },
+              { letra: "B", texto: "10", correta: true },
+              { letra: "C", texto: "12", correta: false },
+              { letra: "D", texto: "14", correta: false },
+              { letra: "E", texto: "6", correta: false }
+            ]}
+          dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "d = √[(8-2)² + (13-5)²] = √[36 + 64] = √100 = 10 km." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "oSbX2VVjkts",
               title: "Equação da Reta: Reduzida e Geral",
@@ -671,8 +741,7 @@ export default function AulaGeometriaAnalitica({
 
                     <QuizInterativo
             questoes={quizM3}
-            moduleId="modulo-3"
-            onComplete={handleModuleComplete}
+            onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>
       </TabsContent>
@@ -684,7 +753,7 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={4}
           titulo="Posição Relativa entre Retas"
           descricao="Paralelas, perpendiculares, coincidentes ou secantes — aprenda a classificar retas e encontrar pontos de interseção."
-           variant={mv[4]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -789,7 +858,31 @@ export default function AulaGeometriaAnalitica({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
+          alternativas={[
+              { letra: "A", texto: "8", correta: false },
+              { letra: "B", texto: "10", correta: true },
+              { letra: "C", texto: "12", correta: false },
+              { letra: "D", texto: "14", correta: false },
+              { letra: "E", texto: "6", correta: false }
+            ]}
+          dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "d = √[(8-2)² + (13-5)²] = √[36 + 64] = √100 = 10 km." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{
@@ -826,8 +919,7 @@ export default function AulaGeometriaAnalitica({
 
                     <QuizInterativo
             questoes={quizM4}
-            moduleId="modulo-4"
-            onComplete={handleModuleComplete}
+            onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </div>
       </TabsContent>
@@ -839,7 +931,7 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={5}
           titulo="Distância de um Ponto a uma Reta"
           descricao="A fórmula mais testada em concursos — fundamental para calcular afastamentos de equipamentos a gasodutos e zonas de segurança."
-           variant={mv[5]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -950,9 +1042,33 @@ export default function AulaGeometriaAnalitica({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
+          alternativas={[
+              { letra: "A", texto: "8", correta: false },
+              { letra: "B", texto: "10", correta: true },
+              { letra: "C", texto: "12", correta: false },
+              { letra: "D", texto: "14", correta: false },
+              { letra: "E", texto: "6", correta: false }
+            ]}
+          dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "d = √[(8-2)² + (13-5)²] = √[36 + 64] = √100 = 10 km." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "D4FZQBmYzFU",
               title: "Distância de um Ponto a uma Reta",
@@ -987,8 +1103,7 @@ export default function AulaGeometriaAnalitica({
 
                     <QuizInterativo
             questoes={quizM5}
-            moduleId="modulo-5"
-            onComplete={handleModuleComplete}
+            onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
         </div>
       </TabsContent>
@@ -1000,7 +1115,7 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={6}
           titulo="Circunferência: Equação e Posições Relativas"
           descricao="Modele tanques, zonas de segurança e áreas de influência com a equação da circunferência e analise posições de pontos e retas."
-           variant={mv[6]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1127,9 +1242,33 @@ export default function AulaGeometriaAnalitica({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
+          alternativas={[
+              { letra: "A", texto: "8", correta: false },
+              { letra: "B", texto: "10", correta: true },
+              { letra: "C", texto: "12", correta: false },
+              { letra: "D", texto: "14", correta: false },
+              { letra: "E", texto: "6", correta: false }
+            ]}
+          dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "d = √[(8-2)² + (13-5)²] = √[36 + 64] = √100 = 10 km." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="rose"
+            variant="blue"
             video={{
               videoId: "8YS-4Zj1JVo",
               title: "Circunferência: Centro, Raio e Equação",
@@ -1164,8 +1303,7 @@ export default function AulaGeometriaAnalitica({
 
                     <QuizInterativo
             questoes={quizM6}
-            moduleId="modulo-6"
-            onComplete={handleModuleComplete}
+            onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
         </div>
       </TabsContent>
@@ -1177,7 +1315,7 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={7}
           titulo="Parábola"
           descricao="Vértice, eixo de simetria, raízes e concavidade — a cônica mais presente em trajetórias, câmaras e otimizações industriais."
-           variant={mv[7]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1313,7 +1451,31 @@ export default function AulaGeometriaAnalitica({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
+          alternativas={[
+              { letra: "A", texto: "8", correta: false },
+              { letra: "B", texto: "10", correta: true },
+              { letra: "C", texto: "12", correta: false },
+              { letra: "D", texto: "14", correta: false },
+              { letra: "E", texto: "6", correta: false }
+            ]}
+          dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "d = √[(8-2)² + (13-5)²] = √[36 + 64] = √100 = 10 km." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="indigo"
             video={{
@@ -1350,8 +1512,7 @@ export default function AulaGeometriaAnalitica({
 
                     <QuizInterativo
             questoes={quizM7}
-            moduleId="modulo-7"
-            onComplete={handleModuleComplete}
+            onComplete={(score) => handleModuleComplete("modulo-7", score)}
           />
         </div>
       </TabsContent>
@@ -1363,7 +1524,7 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={8}
           titulo="Interseções e Sistemas"
           descricao="Combine retas, circunferências e parábolas em sistemas — encontre pontos de cruzamento com precisão analítica."
-           variant={mv[8]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1465,9 +1626,33 @@ export default function AulaGeometriaAnalitica({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
+          alternativas={[
+              { letra: "A", texto: "8", correta: false },
+              { letra: "B", texto: "10", correta: true },
+              { letra: "C", texto: "12", correta: false },
+              { letra: "D", texto: "14", correta: false },
+              { letra: "E", texto: "6", correta: false }
+            ]}
+          dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "d = √[(8-2)² + (13-5)²] = √[36 + 64] = √100 = 10 km." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "hCHWEFQgQPw",
               title: "Interseções: Reta com Reta, Reta com Circunferência",
@@ -1502,8 +1687,7 @@ export default function AulaGeometriaAnalitica({
 
                     <QuizInterativo
             questoes={quizM8}
-            moduleId="modulo-8"
-            onComplete={handleModuleComplete}
+            onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
         </div>
       </TabsContent>
@@ -1515,7 +1699,7 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={9}
           titulo="Aplicações Petrobras — Coordenadas Industriais"
           descricao="Plataformas, dutos, FPSOs e zonas de exclusão: Geometria Analítica no cenário real dos concursos CESGRANRIO para a Petrobras."
-           variant={mv[9]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1644,9 +1828,33 @@ export default function AulaGeometriaAnalitica({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
+          alternativas={[
+              { letra: "A", texto: "8", correta: false },
+              { letra: "B", texto: "10", correta: true },
+              { letra: "C", texto: "12", correta: false },
+              { letra: "D", texto: "14", correta: false },
+              { letra: "E", texto: "6", correta: false }
+            ]}
+          dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "d = √[(8-2)² + (13-5)²] = √[36 + 64] = √100 = 10 km." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "SflP4vQ0jEE",
               title: "Geometria Analítica na Indústria Petrolífera",
@@ -1681,8 +1889,7 @@ export default function AulaGeometriaAnalitica({
 
                     <QuizInterativo
             questoes={quizM9}
-            moduleId="modulo-9"
-            onComplete={handleModuleComplete}
+            onComplete={(score) => handleModuleComplete("modulo-9", score)}
           />
         </div>
       </TabsContent>
@@ -1694,7 +1901,7 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={10}
           titulo="Simulado Final — Padrão CESGRANRIO"
           descricao="Questões no nível e estilo exatos da banca CESGRANRIO. Integre todos os conceitos de Geometria Analítica com velocidade e precisão."
-           variant={mv[10]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1832,7 +2039,31 @@ export default function AulaGeometriaAnalitica({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
+          alternativas={[
+              { letra: "A", texto: "8", correta: false },
+              { letra: "B", texto: "10", correta: true },
+              { letra: "C", texto: "12", correta: false },
+              { letra: "D", texto: "14", correta: false },
+              { letra: "E", texto: "6", correta: false }
+            ]}
+          dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "d = √[(8-2)² + (13-5)²] = √[36 + 64] = √100 = 10 km." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{
@@ -1869,8 +2100,7 @@ export default function AulaGeometriaAnalitica({
 
                     <QuizInterativo
             questoes={quizM10}
-            moduleId="modulo-10"
-            onComplete={handleModuleComplete}
+            onComplete={(score) => handleModuleComplete("modulo-10", score)}
           />
         </div>
       </TabsContent>

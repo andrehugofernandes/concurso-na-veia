@@ -1,5 +1,6 @@
 // Last modified: 2026-03-13 - Upgraded with ModuleConsolidation
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -16,7 +17,7 @@ import {
   FunctionGraph,
   ModuleConsolidation,
   type FunctionPlot,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 
 import {
   LuBookOpen,
@@ -74,9 +75,8 @@ export default function AulaFuncoesExponenciais({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   const [quizM1] = useState(() =>
     getRandomQuestions(QUIZ_M1_POTENCIACAO, 4),
@@ -128,7 +128,7 @@ export default function AulaFuncoesExponenciais({
       for (let i = 0; i < doneCount; i++) {
         newDone.add(MODULE_DEFS[i].id);
       }
-      setCompletedModules(newDone);
+      updateCompletedModules(Array.from(newDone));
       setHasSyncedInitial(true);
     } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
       setHasSyncedInitial(true);
@@ -138,7 +138,7 @@ export default function AulaFuncoesExponenciais({
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
       const newSet = new Set(completedModules).add(moduleId);
-      setCompletedModules(newSet);
+      updateCompletedModules(Array.from(newSet));
 
       const total = MODULE_DEFS.length;
       const done = newSet.size;
@@ -167,6 +167,8 @@ export default function AulaFuncoesExponenciais({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={(val) => {
         const idx = MODULE_DEFS.findIndex((m) => m.id === val);
@@ -197,14 +199,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={1}
             titulo="Potenciação Base"
             descricao="Onde tudo começa. Dominar as potências é o degrau principal."
-             variant={mv[1]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Fundamentos da Potenciação"
               description="A base teórica que sustenta toda a matemática exponencial"
-              variant={mv[1]}
+              variant="blue"
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -426,7 +428,31 @@ export default function AulaFuncoesExponenciais({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Se 2ˣ⁺¹ = 32, então x vale:"
+          alternativas={[
+              { letra: "A", texto: "3", correta: false },
+              { letra: "B", texto: "4", correta: true },
+              { letra: "C", texto: "5", correta: false },
+              { letra: "D", texto: "6", correta: false },
+              { letra: "E", texto: "15", correta: false }
+            ]}
+          dicaEstrategica="Técnica: igualar as bases e comparar os expoentes."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "32 = 2⁵." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Logo 2ˣ⁺¹ = 2⁵ → x+1 = 5 → x = 4." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
             variant="indigo"
             video={{
@@ -481,14 +507,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={2}
             titulo="Gráficos e Comportamento"
             descricao="Entenda como a base controla o crescimento ou decaimento visual da curva exponencial."
-             variant={mv[2]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Função Exponencial: Definição e Domínio"
               description="f(x) = aˣ onde a > 0 e a ≠ 1"
-              variant={mv[2]}
+              variant="blue"
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -540,7 +566,7 @@ export default function AulaFuncoesExponenciais({
               index={2}
               title="Leitura e Interpretação de Gráficos"
               description="A forma do gráfico depende essencialmente da base escolhida."
-              variant={mv[2]}
+              variant="blue"
             />
 
             <ContentAccordion
@@ -676,9 +702,33 @@ export default function AulaFuncoesExponenciais({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Se 2ˣ⁺¹ = 32, então x vale:"
+          alternativas={[
+              { letra: "A", texto: "3", correta: false },
+              { letra: "B", texto: "4", correta: true },
+              { letra: "C", texto: "5", correta: false },
+              { letra: "D", texto: "6", correta: false },
+              { letra: "E", texto: "15", correta: false }
+            ]}
+          dicaEstrategica="Técnica: igualar as bases e comparar os expoentes."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "32 = 2⁵." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Logo 2ˣ⁺¹ = 2⁵ → x+1 = 5 → x = 4." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "xsW3q0DTJJ4",
               title: "Gráficos Exponenciais: Crescimento vs Decaimento",
@@ -717,7 +767,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM2}
               titulo="QUIZ: Gráficos e Comportamento"
               numero={4}
-              variant="emerald"
+              variant="blue"
               icone="📈"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -731,14 +781,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={3}
             titulo="Equações Exponenciais"
             descricao="Isolando a variável no expoente para encontrar respostas definitivas."
-             variant={mv[3]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Arte de Cortar as Bases"
               description="Quando o 'x' está no céu, e você precisa puxá-lo pra terra."
-              variant="cyan"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -834,7 +884,7 @@ export default function AulaFuncoesExponenciais({
             questoes={quizM3}
             titulo="QUIZ: Equações Exponenciais"
             numero={2}
-            variant="cyan"
+            variant="blue"
             icone="⚡"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
@@ -847,7 +897,7 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={4}
             titulo="Crescimento e Decaimento"
             descricao="Aplicações do mundo real onde a exponencial modela fenômenos naturais e financeiros."
-             variant={mv[4]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -963,7 +1013,31 @@ export default function AulaFuncoesExponenciais({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A função f(x) = 2ˣ é:"
+          alternativas={[
+              { letra: "A", texto: "Crescente para todo x", correta: true },
+              { letra: "B", texto: "Decrescente para todo x", correta: false },
+              { letra: "C", texto: "Crescente para x>0 e decrescente para x<0", correta: false },
+              { letra: "D", texto: "Constante", correta: false },
+              { letra: "E", texto: "Crescente apenas para x>1", correta: false }
+            ]}
+          dicaEstrategica="A exponencial nunca muda de comportamento: ou é sempre crescente, ou sempre decrescente."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Base a=2>1 → função SEMPRE crescente." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Se 0<a<1, seria decrescente." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{
@@ -1019,14 +1093,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={5}
             titulo="Desafio Parcial"
             descricao="Teste seus conhecimentos em problemas mistos de exponenciais."
-             variant={mv[5]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Revisão Estratégica"
               description="Sintetizando os conceitos dos módulos anteriores."
-              variant="amber"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1141,9 +1215,33 @@ export default function AulaFuncoesExponenciais({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A função f(x) = 2ˣ é:"
+          alternativas={[
+              { letra: "A", texto: "Crescente para todo x", correta: true },
+              { letra: "B", texto: "Decrescente para todo x", correta: false },
+              { letra: "C", texto: "Crescente para x>0 e decrescente para x<0", correta: false },
+              { letra: "D", texto: "Constante", correta: false },
+              { letra: "E", texto: "Crescente apenas para x>1", correta: false }
+            ]}
+          dicaEstrategica="A exponencial nunca muda de comportamento: ou é sempre crescente, ou sempre decrescente."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Base a=2>1 → função SEMPRE crescente." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Se 0<a<1, seria decrescente." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "8ydBPLXF0sE",
               title: "Desafio Parcial: Integrando Tudo de Exponenciais",
@@ -1183,7 +1281,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM5}
               titulo="QUIZ: Desafio Parcial"
               numero={3}
-              variant="amber"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1197,14 +1295,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={6}
             titulo="Número e e Logaritmo Natural"
             descricao="A base mais importante do cálculo: Euler e seus mistérios."
-             variant={mv[6]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="O Número e"
               description="Compreendendo a constante mais importante além de π."
-              variant="rose"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1314,9 +1412,33 @@ export default function AulaFuncoesExponenciais({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A função f(x) = 2ˣ é:"
+          alternativas={[
+              { letra: "A", texto: "Crescente para todo x", correta: true },
+              { letra: "B", texto: "Decrescente para todo x", correta: false },
+              { letra: "C", texto: "Crescente para x>0 e decrescente para x<0", correta: false },
+              { letra: "D", texto: "Constante", correta: false },
+              { letra: "E", texto: "Crescente apenas para x>1", correta: false }
+            ]}
+          dicaEstrategica="A exponencial nunca muda de comportamento: ou é sempre crescente, ou sempre decrescente."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Base a=2>1 → função SEMPRE crescente." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Se 0<a<1, seria decrescente." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="rose"
+            variant="blue"
             video={{
               videoId: "W5t6yP6sZWg",
               title: "O Número e: A Constante da Natureza",
@@ -1355,7 +1477,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM6}
               titulo="QUIZ: Número e e Logaritmo"
               numero={3}
-              variant="rose"
+              variant="blue"
               icone="🌌"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1369,7 +1491,7 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={7}
             titulo="Transformações e Deslocamentos"
             descricao="Manipulando gráficos: translações, ampliações e reflexões."
-             variant={mv[7]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1530,7 +1652,31 @@ export default function AulaFuncoesExponenciais({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A função f(x) = 2ˣ é:"
+          alternativas={[
+              { letra: "A", texto: "Crescente para todo x", correta: true },
+              { letra: "B", texto: "Decrescente para todo x", correta: false },
+              { letra: "C", texto: "Crescente para x>0 e decrescente para x<0", correta: false },
+              { letra: "D", texto: "Constante", correta: false },
+              { letra: "E", texto: "Crescente apenas para x>1", correta: false }
+            ]}
+          dicaEstrategica="A exponencial nunca muda de comportamento: ou é sempre crescente, ou sempre decrescente."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Base a=2>1 → função SEMPRE crescente." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Se 0<a<1, seria decrescente." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="indigo"
             video={{
@@ -1587,14 +1733,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={8}
             titulo="Sistemas Exponenciais"
             descricao="Combinando múltiplas bases e resolvendo problemas complexos."
-             variant={mv[8]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Resolução de Sistemas"
               description="Quando duas ou mais exponenciais se encontram."
-              variant="emerald"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1702,9 +1848,33 @@ export default function AulaFuncoesExponenciais({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A função f(x) = 2ˣ é:"
+          alternativas={[
+              { letra: "A", texto: "Crescente para todo x", correta: true },
+              { letra: "B", texto: "Decrescente para todo x", correta: false },
+              { letra: "C", texto: "Crescente para x>0 e decrescente para x<0", correta: false },
+              { letra: "D", texto: "Constante", correta: false },
+              { letra: "E", texto: "Crescente apenas para x>1", correta: false }
+            ]}
+          dicaEstrategica="A exponencial nunca muda de comportamento: ou é sempre crescente, ou sempre decrescente."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Base a=2>1 → função SEMPRE crescente." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Se 0<a<1, seria decrescente." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "vBgCJqNaK_I",
               title: "Sistemas de Equações Exponenciais Resolvidos",
@@ -1745,7 +1915,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM8}
               titulo="QUIZ: Sistemas Exponenciais"
               numero={3}
-              variant="emerald"
+              variant="blue"
               icone="⚙️"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1759,14 +1929,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={9}
             titulo="Aplicações Petrobras"
             descricao="Decaimento radioativo, depreciação e otimização em operações reais."
-             variant={mv[9]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Exponenciais no Contexto Industrial"
               description="Como grandes empresas usam esses modelos."
-              variant="amber"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1888,9 +2058,33 @@ export default function AulaFuncoesExponenciais({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A função f(x) = 2ˣ é:"
+          alternativas={[
+              { letra: "A", texto: "Crescente para todo x", correta: true },
+              { letra: "B", texto: "Decrescente para todo x", correta: false },
+              { letra: "C", texto: "Crescente para x>0 e decrescente para x<0", correta: false },
+              { letra: "D", texto: "Constante", correta: false },
+              { letra: "E", texto: "Crescente apenas para x>1", correta: false }
+            ]}
+          dicaEstrategica="A exponencial nunca muda de comportamento: ou é sempre crescente, ou sempre decrescente."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Base a=2>1 → função SEMPRE crescente." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Se 0<a<1, seria decrescente." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "j0zXdqVhNFA",
               title: "Exponenciais no Contexto de Petróleo e Gás",
@@ -1931,7 +2125,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM9}
               titulo="QUIZ: Aplicações Petrobras"
               numero={3}
-              variant="amber"
+              variant="blue"
               icone="🏭"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1945,14 +2139,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="Teste seu domínio completo de funções exponenciais."
-             variant={mv[10]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Checklist Final"
               description="Revise todos os 9 módulos em um só lugar."
-              variant="slate"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -2097,9 +2291,33 @@ export default function AulaFuncoesExponenciais({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A função f(x) = 2ˣ é:"
+          alternativas={[
+              { letra: "A", texto: "Crescente para todo x", correta: true },
+              { letra: "B", texto: "Decrescente para todo x", correta: false },
+              { letra: "C", texto: "Crescente para x>0 e decrescente para x<0", correta: false },
+              { letra: "D", texto: "Constante", correta: false },
+              { letra: "E", texto: "Crescente apenas para x>1", correta: false }
+            ]}
+          dicaEstrategica="A exponencial nunca muda de comportamento: ou é sempre crescente, ou sempre decrescente."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Base a=2>1 → função SEMPRE crescente." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Se 0<a<1, seria decrescente." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="slate"
+            variant="blue"
             video={{
               videoId: "2N4tYGJZfr8",
               title: "Simulado Mestre: Revisão Completa de Exponenciais",
@@ -2139,7 +2357,7 @@ export default function AulaFuncoesExponenciais({
                 titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={3}
-                variant="slate"
+                variant="blue"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

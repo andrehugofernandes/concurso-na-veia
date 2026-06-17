@@ -1,5 +1,6 @@
 import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -13,7 +14,7 @@ import {
   AulaTemplate,
   ModuleSectionHeader,
   ModuleConsolidation,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   QUIZ_M1_CONCEITO_SL,
   QUIZ_M2_SUBSTITUICAO,
@@ -46,9 +47,8 @@ export default function AulaSistemasLineares({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_CONCEITO_SL, 6));
   const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_SUBSTITUICAO, 6));
@@ -65,11 +65,9 @@ export default function AulaSistemasLineares({
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
-      setCompletedModules((prev) => {
-        const n = new Set(prev);
-        n.add(moduleId);
-        return n;
-      });
+      const nextCompleted = new Set(completedModules);
+      nextCompleted.add(moduleId);
+      updateCompletedModules(Array.from(nextCompleted));
       const modules = Array.from({ length: 10 }, (_, i) => `modulo-${i + 1}`);
       const idx = modules.findIndex((m) => m === moduleId);
       const pct = Math.round(((idx + 1) / 10) * 100);
@@ -83,7 +81,7 @@ export default function AulaSistemasLineares({
       const count = Math.floor((currentProgress / 100) * 10);
       const s = new Set<string>();
       for (let i = 1; i <= count; i++) s.add(`modulo-${i}`);
-      setCompletedModules(s);
+      updateCompletedModules(Array.from(s));
     }
   }, [currentProgress]);
 
@@ -105,6 +103,8 @@ export default function AulaSistemasLineares({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={MODULE_DEFS}
@@ -131,7 +131,7 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={1}
           titulo="Conceito e Classificação de Sistemas Lineares"
           descricao="Entenda o que é um sistema linear, como classificá-lo em SPD, SI ou SPI, e por que isso é essencial nos processos da Petrobras."
-           variant={mv[1]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -286,7 +286,31 @@ export default function AulaSistemasLineares({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolva por adição: 2x + y = 10 e 3x − y = 15. Na distribuição de carga em dois dutos da RPBC, o valor de x (pressão, bar) é:"
+          alternativas={[
+              { letra: "A", texto: "3", correta: false },
+              { letra: "B", texto: "4", correta: false },
+              { letra: "C", texto: "5", correta: true },
+              { letra: "D", texto: "6", correta: false },
+              { letra: "E", texto: "7", correta: false }
+            ]}
+          dicaEstrategica="O método da adição elimina y pois +y e −y se cancelam."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Somando as equações: (2x+y)+(3x−y)=10+15 → 5x=25 → x=5." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Então y=10−2(5)=0." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Verificação: 3(5)−0=15✓." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
             variant="indigo"
             video={{
@@ -343,14 +367,14 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={2}
           titulo="Método de Substituição"
           descricao="Isole, substitua e resolva: o método mais intuitivo para sistemas 2×2, ideal quando um coeficiente é 1 ou −1."
-           variant={mv[2]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Passo a Passo do Método de Substituição"
               description="Três etapas simples que resolvem qualquer sistema linear 2×2."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -426,7 +450,7 @@ export default function AulaSistemasLineares({
               index={2}
               title="Aplicação em Misturas Petrobras"
               description="O método de substituição é a ferramenta preferida em problemas de mistura industrial."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -479,9 +503,33 @@ export default function AulaSistemasLineares({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolva por adição: 2x + y = 10 e 3x − y = 15. Na distribuição de carga em dois dutos da RPBC, o valor de x (pressão, bar) é:"
+          alternativas={[
+              { letra: "A", texto: "3", correta: false },
+              { letra: "B", texto: "4", correta: false },
+              { letra: "C", texto: "5", correta: true },
+              { letra: "D", texto: "6", correta: false },
+              { letra: "E", texto: "7", correta: false }
+            ]}
+          dicaEstrategica="O método da adição elimina y pois +y e −y se cancelam."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Somando as equações: (2x+y)+(3x−y)=10+15 → 5x=25 → x=5." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Então y=10−2(5)=0." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Verificação: 3(5)−0=15✓." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "Fqfh_jCEVpE",
               title: "Método de Substituição em Sistemas Lineares",
@@ -523,7 +571,7 @@ export default function AulaSistemasLineares({
               titulo="QUIZ: Módulo Nº 2"
               icone="🔄"
               numero={4}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -537,14 +585,14 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={3}
           titulo="Método da Adição (Eliminação)"
           descricao="Elimine variáveis somando equações multiplicadas por escalares adequados — o método mais poderoso para sistemas com coeficientes complexos."
-           variant={mv[3]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="A Estratégia da Eliminação"
               description="Multiplique equações por escalares para que os coeficientes de uma variável se cancelem."
-              variant="amber"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -654,9 +702,33 @@ export default function AulaSistemasLineares({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
+          alternativas={[
+              { letra: "A", texto: "20 m³/h", correta: false },
+              { letra: "B", texto: "30 m³/h", correta: true },
+              { letra: "C", texto: "40 m³/h", correta: false },
+              { letra: "D", texto: "25 m³/h", correta: false },
+              { letra: "E", texto: "35 m³/h", correta: false }
+            ]}
+          dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Substituindo na 2ª: (50−y) − y = 10 → 50 − 2y = 10 → 2y = 40 → y = 20." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Então x = 50 − 20 = 30 m³/h." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "K0gU5VJMVzc",
               title: "Método da Adição (Eliminação)",
@@ -699,7 +771,7 @@ export default function AulaSistemasLineares({
               titulo="QUIZ: Módulo Nº 3"
               icone="➕"
               numero={3}
-              variant="amber"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -713,7 +785,7 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={4}
           titulo="Regra de Cramer e Determinantes"
           descricao="Use determinantes para resolver sistemas de forma sistemática e elegante — o método favorito da CESGRANRIO para sistemas com coeficientes não unitários."
-           variant={mv[4]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -840,7 +912,31 @@ export default function AulaSistemasLineares({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
+          alternativas={[
+              { letra: "A", texto: "20 m³/h", correta: false },
+              { letra: "B", texto: "30 m³/h", correta: true },
+              { letra: "C", texto: "40 m³/h", correta: false },
+              { letra: "D", texto: "25 m³/h", correta: false },
+              { letra: "E", texto: "35 m³/h", correta: false }
+            ]}
+          dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Substituindo na 2ª: (50−y) − y = 10 → 50 − 2y = 10 → 2y = 40 → y = 20." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Então x = 50 − 20 = 30 m³/h." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{
@@ -899,7 +995,7 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={5}
           titulo="Sistemas Impossíveis e Indeterminados"
           descricao="Domine a identificação de SI e SPI — tópico que a CESGRANRIO explora em questões de múltipla interpretação para testar a profundidade do conhecimento."
-           variant={mv[5]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1006,9 +1102,33 @@ export default function AulaSistemasLineares({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
+          alternativas={[
+              { letra: "A", texto: "20 m³/h", correta: false },
+              { letra: "B", texto: "30 m³/h", correta: true },
+              { letra: "C", texto: "40 m³/h", correta: false },
+              { letra: "D", texto: "25 m³/h", correta: false },
+              { letra: "E", texto: "35 m³/h", correta: false }
+            ]}
+          dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Substituindo na 2ª: (50−y) − y = 10 → 50 − 2y = 10 → 2y = 40 → y = 20." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Então x = 50 − 20 = 30 m³/h." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "rVBKiBv0Eek",
               title: "Identificando Sistemas Impossíveis e Indeterminados",
@@ -1050,7 +1170,7 @@ export default function AulaSistemasLineares({
               titulo="QUIZ: Módulo Nº 5"
               icone="⚠️"
               numero={3}
-              variant="rose"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -1064,14 +1184,14 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={6}
           titulo="Sistemas com 3 Variáveis"
           descricao="Amplie o domínio para 3 incógnitas: balanços de massa em torres de destilação, fluxos em redes de tubulação e muito mais."
-           variant={mv[6]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Escalonamento de Sistemas 3×3"
               description="O método de Gauss aplicado a três equações e três incógnitas."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1163,9 +1283,33 @@ export default function AulaSistemasLineares({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
+          alternativas={[
+              { letra: "A", texto: "20 m³/h", correta: false },
+              { letra: "B", texto: "30 m³/h", correta: true },
+              { letra: "C", texto: "40 m³/h", correta: false },
+              { letra: "D", texto: "25 m³/h", correta: false },
+              { letra: "E", texto: "35 m³/h", correta: false }
+            ]}
+          dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Substituindo na 2ª: (50−y) − y = 10 → 50 − 2y = 10 → 2y = 40 → y = 20." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Então x = 50 − 20 = 30 m³/h." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="rose"
+            variant="blue"
             video={{
               videoId: "4A8F6DWe9b8",
               title: "Sistemas 3×3: Substituição e Cramer",
@@ -1208,7 +1352,7 @@ export default function AulaSistemasLineares({
               titulo="QUIZ: Módulo Nº 6"
               icone="3️⃣"
               numero={3}
-              variant="cyan"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -1222,7 +1366,7 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={7}
           titulo="Interpretação Geométrica de Sistemas"
           descricao="Visualize sistemas lineares como interseções de retas no plano — uma perspectiva que torna intuitiva a classificação e resolução de qualquer sistema."
-           variant={mv[7]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1336,7 +1480,31 @@ export default function AulaSistemasLineares({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
+          alternativas={[
+              { letra: "A", texto: "20 m³/h", correta: false },
+              { letra: "B", texto: "30 m³/h", correta: true },
+              { letra: "C", texto: "40 m³/h", correta: false },
+              { letra: "D", texto: "25 m³/h", correta: false },
+              { letra: "E", texto: "35 m³/h", correta: false }
+            ]}
+          dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Substituindo na 2ª: (50−y) − y = 10 → 50 − 2y = 10 → 2y = 40 → y = 20." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Então x = 50 − 20 = 30 m³/h." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="indigo"
             video={{
@@ -1394,14 +1562,14 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={8}
           titulo="Sistemas de Inequações e Programação Linear"
           descricao="Quando as restrições são 'no máximo' e 'no mínimo': domine a Programação Linear, base das decisões de otimização na indústria do petróleo."
-           variant={mv[8]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Região Viável e Programação Linear"
               description="A intersecção de semiplanos define a região onde todas as restrições são satisfeitas."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1500,9 +1668,33 @@ export default function AulaSistemasLineares({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
+          alternativas={[
+              { letra: "A", texto: "20 m³/h", correta: false },
+              { letra: "B", texto: "30 m³/h", correta: true },
+              { letra: "C", texto: "40 m³/h", correta: false },
+              { letra: "D", texto: "25 m³/h", correta: false },
+              { letra: "E", texto: "35 m³/h", correta: false }
+            ]}
+          dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Substituindo na 2ª: (50−y) − y = 10 → 50 − 2y = 10 → 2y = 40 → y = 20." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Então x = 50 − 20 = 30 m³/h." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "Z4jDh7iG1J0",
               title: "Sistemas de Inequações: Solução Gráfica",
@@ -1545,7 +1737,7 @@ export default function AulaSistemasLineares({
               titulo="QUIZ: Módulo Nº 8"
               icone="≤"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -1559,14 +1751,14 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={9}
           titulo="Aplicações Petrobras — Misturas e Balanços"
           descricao="Sistemas lineares em ação real: blending de derivados, balanços energéticos, distribuição de vazão e problemas de proporcionalidade industrial."
-           variant={mv[9]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Modelagem de Problemas Industriais"
               description="A arte de transformar um enunciado técnico em um sistema de equações solucionável."
-              variant="amber"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1663,9 +1855,33 @@ export default function AulaSistemasLineares({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
+          alternativas={[
+              { letra: "A", texto: "20 m³/h", correta: false },
+              { letra: "B", texto: "30 m³/h", correta: true },
+              { letra: "C", texto: "40 m³/h", correta: false },
+              { letra: "D", texto: "25 m³/h", correta: false },
+              { letra: "E", texto: "35 m³/h", correta: false }
+            ]}
+          dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Substituindo na 2ª: (50−y) − y = 10 → 50 − 2y = 10 → 2y = 40 → y = 20." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Então x = 50 − 20 = 30 m³/h." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "tM_JEGxWnvQ",
               title: "Sistemas Lineares em Engenharia: Fluxo em Redes",
@@ -1708,7 +1924,7 @@ export default function AulaSistemasLineares({
               titulo="QUIZ: Módulo Nº 9"
               icone="🛢️"
               numero={3}
-              variant="amber"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -1722,7 +1938,7 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={10}
           titulo="Simulado Final CESGRANRIO"
           descricao="Questões no padrão exato da banca: sistemas lineares, Cramer, classificação, inequações e aplicações industriais — tudo integrado em um simulado definitivo."
-           variant={mv[10]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1843,7 +2059,31 @@ export default function AulaSistemasLineares({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
+          alternativas={[
+              { letra: "A", texto: "20 m³/h", correta: false },
+              { letra: "B", texto: "30 m³/h", correta: true },
+              { letra: "C", texto: "40 m³/h", correta: false },
+              { letra: "D", texto: "25 m³/h", correta: false },
+              { letra: "E", texto: "35 m³/h", correta: false }
+            ]}
+          dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Substituindo na 2ª: (50−y) − y = 10 → 50 − 2y = 10 → 2y = 40 → y = 20." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Então x = 50 − 20 = 30 m³/h." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{

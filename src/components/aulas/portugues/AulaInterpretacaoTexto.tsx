@@ -1,4 +1,5 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
@@ -18,7 +19,7 @@ import {
   MusicPlayerCard,
   ModuleConsolidation,
   TextAnalysisLab,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 
 import {
   Carousel,
@@ -108,20 +109,8 @@ export default function AulaInterpretacaoTexto({
     return "modulo-1";
   });
 
-  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
-      if (saved) {
-        try {
-          const arr = JSON.parse(saved);
-          return new Set(arr);
-        } catch (e) {
-          return new Set();
-        }
-      }
-    }
-    return new Set();
-  });
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -129,14 +118,7 @@ export default function AulaInterpretacaoTexto({
     }
   }, [activeTab]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `${STORAGE_KEY_PREFIX}completed_modules`,
-        JSON.stringify(Array.from(completedModules))
-      );
-    }
-  }, [completedModules]);
+  
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
 
   const [quizM1, setQuizM1] = useState(QUIZ_M1_POOL);
@@ -179,7 +161,7 @@ export default function AulaInterpretacaoTexto({
       for (let i = 0; i < doneCount; i++) {
         newDone.add(MODULE_DEFS[i].id);
       }
-      setCompletedModules(newDone);
+      updateCompletedModules(Array.from(newDone));
       setHasSyncedInitial(true);
     } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
       setHasSyncedInitial(true);
@@ -190,7 +172,7 @@ export default function AulaInterpretacaoTexto({
     if (score >= 70) {
       const newSet = new Set(completedModules);
       newSet.add(moduleId);
-      setCompletedModules(newSet);
+      updateCompletedModules(Array.from(newSet));
 
       const percent = Math.round((newSet.size / MODULE_DEFS.length) * 100);
       if (onUpdateProgress) onUpdateProgress(percent);
@@ -216,6 +198,8 @@ export default function AulaInterpretacaoTexto({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={(val) => {
         const idx = MODULE_DEFS.findIndex((m) => m.id === val);
@@ -242,7 +226,7 @@ export default function AulaInterpretacaoTexto({
           numero={1}
           titulo="Fundamentos e Distinções Críticas"
           descricao="Guia Técnico de Compreensão vs. Interpretação. A fronteira exata entre o que o texto afirma e o que a banca induz."
-          variant={mv[1]}
+          variant="blue"
         />
 
         {/* ★ NOVO: Rich Intro Section */}
@@ -251,7 +235,7 @@ export default function AulaInterpretacaoTexto({
             index="INTRO"
             title="A Fronteira do Sentido: Compreensão vs. Interpretação"
             description="O checklist mental obrigatório para assegurar sua pontuação contra armadilhas das alternativas 'quase' certas."
-            variant={mv[1]}
+            variant="blue"
           />
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
             <p>
@@ -330,7 +314,7 @@ export default function AulaInterpretacaoTexto({
             index={1}
             title="A Natureza do Processo"
             description="Para a CESGRANRIO, o maior erro do candidato é 'viajar' para além dos limites do texto. Vamos fundamentar sua leitura agora."
-            variant={mv[1]}
+            variant="blue"
           />
 
           <ContentAccordion
@@ -479,7 +463,7 @@ export default function AulaInterpretacaoTexto({
         {/* LABORATÓRIO TÁTICO M1 */}
         <TextAnalysisLab
           index={2}
-          variant={mv[1]}
+          variant="blue"
           titulo="Dossiê Técnico: O Relatório da Refinaria"
           subtitulo="Aplique os conceitos de explícito vs. implícito num fragmento real de manual industrial."
           legenda={[
@@ -516,7 +500,7 @@ export default function AulaInterpretacaoTexto({
             index={3}
             title="Laboratório de Gabarito: Certo vs Errado"
             description="Teste sua percepção crítica nas armadilhas comuns da CESGRANRIO."
-            variant={mv[1]}
+            variant="blue"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -592,6 +576,30 @@ export default function AulaInterpretacaoTexto({
             />
           </div>
         </section>
+
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual a tipologia predominante em um manual de segurança da Petrobras?"
+          alternativas={[
+              { letra: "A", texto: "Narrativa.", correta: false },
+              { letra: "B", texto: "Injuntiva (Instrucional).", correta: true },
+              { letra: "C", texto: "Descritiva poética.", correta: false },
+              { letra: "D", texto: "Religiosa.", correta: false },
+              { letra: "E", texto: "Ficcional.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Manuais dão ordens e instruções, usando verbos no imperativo ou infinitivo (" },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
 
         <ModuleConsolidation
           index={4}
@@ -678,7 +686,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Intro] - O segredo está em não projetar seus medos no texto...",
           }}
-          variant={mv[1]}
+          variant="blue"
         />
 
         <QuizInterativo
@@ -687,7 +695,7 @@ export default function AulaInterpretacaoTexto({
           icone="🛡️"
           numero={5}
           onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          variant={mv[1]}
+          variant="blue"
         />
       </TabsContent>
 
@@ -697,7 +705,7 @@ export default function AulaInterpretacaoTexto({
           numero={2}
           titulo="O Tópico Frasal"
           descricao="A técnica cirúrgica para encontrar a ideia central do parágrafo em segundos, ignorando o ruído visual."
-          variant={mv[2]}
+          variant="blue"
         />
 
         {/* ★ NOVO: Rich Intro Section */}
@@ -706,7 +714,7 @@ export default function AulaInterpretacaoTexto({
             index="INTRO"
             title="O Coração Estrutural da Mensagem"
             description="Localize e extraia a ideia central (O Tópico Frasal) sem ser consumido por desvios e distrações."
-            variant={mv[2]}
+            variant="blue"
           />
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
             <p>
@@ -781,7 +789,7 @@ export default function AulaInterpretacaoTexto({
             index={1}
             title="Métodos de Construção"
             description="Como os parágrafos são arquitetados na prática técnica."
-            variant={mv[2]}
+            variant="blue"
           />
 
           <ContentAccordion
@@ -872,7 +880,7 @@ export default function AulaInterpretacaoTexto({
 
         <TextAnalysisLab
           index={2}
-          variant={mv[2]}
+          variant="blue"
           titulo="Raio-X do Parágrafo Técnico"
           subtitulo="Identifique a 'Viga Mestra' e como ela sustenta os 'Adornos' (detalhes)."
           legenda={[
@@ -904,7 +912,7 @@ export default function AulaInterpretacaoTexto({
             index={3}
             title="Prática de Combate: Localização"
             description="Onde está o coração do texto?"
-            variant={mv[2]}
+            variant="blue"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -991,7 +999,7 @@ export default function AulaInterpretacaoTexto({
 
         <TextAnalysisLab
           index={4}
-          variant={mv[2]}
+          variant="blue"
           titulo="Laboratório: O Tópico Frasal"
           subtitulo="Identificando a espinha dorsal do parágrafo técnico."
           legenda={[
@@ -1018,6 +1026,30 @@ export default function AulaInterpretacaoTexto({
               </span>
             </>
           }
+        />
+
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={5}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O que é 'Referenciação' em um texto?"
+          alternativas={[
+              { letra: "A", texto: "A lista de livros no final do trabalho.", correta: false },
+              { letra: "B", texto: "O uso de termos para retomar ou antecipar outros no texto.", correta: true },
+              { letra: "C", texto: "O uso de citações diretas entre aspas.", correta: false },
+              { letra: "D", texto: "A contagem de parágrafos.", correta: false },
+              { letra: "E", texto: "O nome do autor citado.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Mecanismos de coesão que evitam repetições desnecessárias (pronomes, sinônimos)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
         />
 
         <ModuleConsolidation
@@ -1097,7 +1129,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Host] - Se você ler apenas a primeira frase de cada parágrafo...",
           }}
-          variant={mv[2]}
+          variant="blue"
         />
 
         <QuizInterativo
@@ -1106,7 +1138,7 @@ export default function AulaInterpretacaoTexto({
           icone="🏗️"
           numero={6}
           onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          variant={mv[2]}
+          variant="blue"
         />
       </TabsContent>
 
@@ -1116,7 +1148,7 @@ export default function AulaInterpretacaoTexto({
           numero={3}
           titulo="Coesão e Argumentação"
           descricao="A 'Cola' que une as ideias e os 'Martelos' que as sustentam. Domine a lógica invisível preferida da Cesgranrio."
-          variant={mv[3]}
+          variant="blue"
         />
 
         {/* ★ NOVO: Rich Intro Section */}
@@ -1125,7 +1157,7 @@ export default function AulaInterpretacaoTexto({
             index="INTRO"
             title="As Engrenagens do Argumento"
             description="Como autores costuram palavras para induzir lógicas e provar teorias."
-            variant={mv[3]}
+            variant="blue"
           />
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
             <p>
@@ -1321,7 +1353,7 @@ export default function AulaInterpretacaoTexto({
             index={2}
             title="Dossiê de Conectivos"
             description="Memorização rápida para os termos que a Cesgranrio 'adora'."
-            variant={mv[3]}
+            variant="blue"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
@@ -1428,7 +1460,7 @@ export default function AulaInterpretacaoTexto({
 
         <TextAnalysisLab
           index={2}
-          variant={mv[3]}
+          variant="blue"
           titulo="Rastreamento de Referentes"
           subtitulo="A quem este pronome está servindo? Evite a armadilha do referente mais próximo."
           legenda={[
@@ -1455,6 +1487,30 @@ export default function AulaInterpretacaoTexto({
               </div>
             </div>
           }
+        />
+
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A técnica de 'Skimming' consiste em:"
+          alternativas={[
+              { letra: "A", texto: "Ler o texto de trás para frente.", correta: false },
+              { letra: "B", texto: "Fazer uma leitura rápida para captar o sentido geral e o tema.", correta: true },
+              { letra: "C", texto: "Grifar todas as palavras que você não conhece.", correta: false },
+              { letra: "D", texto: "Contar quantas vezes a palavra 'Petrobras' aparece.", correta: false },
+              { letra: "E", texto: "Ler apenas os conectivos.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Skimming é o" },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
         />
 
         <ModuleConsolidation
@@ -1533,7 +1589,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Host] - Se vir um 'Embora', saiba que a ideia principal vem depois da vírgula...",
           }}
-          variant={mv[3]}
+          variant="blue"
         />
 
         <QuizInterativo
@@ -1542,7 +1598,7 @@ export default function AulaInterpretacaoTexto({
           icone="🧠"
           numero={4}
           onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          variant={mv[3]}
+          variant="blue"
         />
       </TabsContent>
 
@@ -1552,7 +1608,7 @@ export default function AulaInterpretacaoTexto({
           numero={4}
           titulo="Tipologia Textual"
           descricao="O DNA do Texto. Identifique o gênero e o tipo predominante para antecipar a intenção da Cesgranrio."
-          variant={mv[4]}
+          variant="blue"
         />
 
         {/* ★ NOVO: Rich Intro Section */}
@@ -1561,7 +1617,7 @@ export default function AulaInterpretacaoTexto({
             index="INTRO"
             title="O DNA do Texto: Arquitetura Tipológica"
             description="Categorize o fluxo de informação e antecipe as perguntas da CESGRANRIO com base na estrutura do gênero."
-            variant={mv[4]}
+            variant="blue"
           />
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
             <p>
@@ -1637,7 +1693,7 @@ export default function AulaInterpretacaoTexto({
             index={1}
             title="A Matriz de Tipos: O Filtro Petrobras"
             description="As provas focam em Dissertação e Injunção. Mas as armadilhas estão nos textos Narrativos disfarçados."
-            variant={mv[4]}
+            variant="blue"
           />
 
           <ContentAccordion
@@ -1773,7 +1829,7 @@ export default function AulaInterpretacaoTexto({
             index={2}
             title="Duelo de Gêneros & Tipos"
             description="Testando sua percepção tática de predominância."
-            variant={mv[4]}
+            variant="blue"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center max-w-4xl mx-auto">
@@ -1858,7 +1914,7 @@ export default function AulaInterpretacaoTexto({
 
         <TextAnalysisLab
           index={3}
-          variant={mv[4]}
+          variant="blue"
           titulo="Identificando o DNA"
           subtitulo="Qual a intenção primária do autor neste fragmento?"
           legenda={[
@@ -1885,6 +1941,30 @@ export default function AulaInterpretacaoTexto({
               </div>
             </div>
           }
+        />
+
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual a tipologia predominante em um manual de segurança da Petrobras?"
+          alternativas={[
+              { letra: "A", texto: "Narrativa.", correta: false },
+              { letra: "B", texto: "Injuntiva (Instrucional).", correta: true },
+              { letra: "C", texto: "Descritiva poética.", correta: false },
+              { letra: "D", texto: "Religiosa.", correta: false },
+              { letra: "E", texto: "Ficcional.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Manuais dão ordens e instruções, usando verbos no imperativo ou infinitivo (" },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
         />
 
         <ModuleConsolidation
@@ -1948,7 +2028,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Host] - Tipologia não é gênero. Gênero é o frasco, Tipologia é o conteúdo...",
           }}
-          variant={mv[4]}
+          variant="blue"
         />
 
         <QuizInterativo
@@ -1957,7 +2037,7 @@ export default function AulaInterpretacaoTexto({
           icone="🧬"
           numero={5}
           onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          variant={mv[4]}
+          variant="blue"
         />
       </TabsContent>
 
@@ -1967,7 +2047,7 @@ export default function AulaInterpretacaoTexto({
           numero={5}
           titulo="Vícios e Velocidade"
           descricao="Elimine as âncoras que te impedem de ler os textos técnicos da Petrobras em tempo recorde."
-          variant={mv[5]}
+          variant="blue"
         />
 
         {/* ★ NOVO: Rich Intro Section */}
@@ -1976,7 +2056,7 @@ export default function AulaInterpretacaoTexto({
             index="INTRO"
             title="O Fator Velocidade: Leitura em Fluxo"
             description="Corte as âncoras cognitivas que atrasam seu processamento e ganhe os minutos preciosos que definem a classificação."
-            variant={mv[5]}
+            variant="blue"
           />
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
             <p>
@@ -2049,7 +2129,7 @@ export default function AulaInterpretacaoTexto({
             index={1}
             title="As Âncoras do Candidato"
             description="Para ler rápido, não é preciso ler 'correndo', mas sim ler sem carregar peso desnecessário."
-            variant={mv[5]}
+            variant="blue"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center max-w-4xl mx-auto mt-8">
@@ -2244,7 +2324,7 @@ export default function AulaInterpretacaoTexto({
 
         <TextAnalysisLab
           index={2}
-          variant={mv[5]}
+          variant="blue"
           titulo="Laboratório de Velocidade"
           subtitulo="Tente captar o sentido dos blocos destacados sem subvocalizar."
           legenda={[
@@ -2269,6 +2349,30 @@ export default function AulaInterpretacaoTexto({
               </span>
             </div>
           }
+        />
+
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A técnica de 'Skimming' consiste em:"
+          alternativas={[
+              { letra: "A", texto: "Ler o texto de trás para frente.", correta: false },
+              { letra: "B", texto: "Fazer uma leitura rápida para captar o sentido geral e o tema.", correta: true },
+              { letra: "C", texto: "Grifar todas as palavras que você não conhece.", correta: false },
+              { letra: "D", texto: "Contar quantas vezes a palavra 'Petrobras' aparece.", correta: false },
+              { letra: "E", texto: "Ler apenas os conectivos.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Skimming é o" },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
         />
 
         <ModuleConsolidation
@@ -2348,7 +2452,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Host] - Ler rápido não é correr, é saber o que ignorar...",
           }}
-          variant={mv[5]}
+          variant="blue"
         />
 
         <QuizInterativo
@@ -2357,7 +2461,7 @@ export default function AulaInterpretacaoTexto({
           icone="⚡"
           numero={4}
           onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          variant={mv[5]}
+          variant="blue"
         />
       </TabsContent>
 
@@ -2367,7 +2471,7 @@ export default function AulaInterpretacaoTexto({
           numero={6}
           titulo="As Entrelinhas (Inferência)"
           descricao="A arte de ler o que não foi escrito, mas foi 'pago' para ser entendido. Pressupostos vs Subentendidos."
-          variant={mv[6]}
+          variant="blue"
         />
 
         {/* ★ NOVO: Rich Intro Section */}
@@ -2376,7 +2480,7 @@ export default function AulaInterpretacaoTexto({
             index="INTRO"
             title="As Entrelinhas: A Subjetividade Objetiva"
             description="Aprenda a ler o que não foi escrito com tinta, mas está assinado pela intenção do autor."
-            variant={mv[6]}
+            variant="blue"
           />
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
             <p>
@@ -2449,7 +2553,7 @@ export default function AulaInterpretacaoTexto({
             index={1}
             title="Lógica de Detecção"
             description="Não é 'achismo'. É dedução lógica baseada em marcas gramaticais."
-            variant={mv[6]}
+            variant="blue"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center max-w-4xl mx-auto mt-8">
@@ -2561,7 +2665,7 @@ export default function AulaInterpretacaoTexto({
 
         <TextAnalysisLab
           index={2}
-          variant={mv[6]}
+          variant="blue"
           titulo="Laboratório de Inferência"
           subtitulo="Extraia o pressuposto oculto na frase operacional."
           legenda={[{ cor: "bg-cyan-500", label: "Marca de Pressuposto" }]}
@@ -2574,6 +2678,30 @@ export default function AulaInterpretacaoTexto({
               investindo em refino sustentável." (Pressuposto: Já investe hoje).
             </>
           }
+        />
+
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A técnica de 'Skimming' consiste em:"
+          alternativas={[
+              { letra: "A", texto: "Ler o texto de trás para frente.", correta: false },
+              { letra: "B", texto: "Fazer uma leitura rápida para captar o sentido geral e o tema.", correta: true },
+              { letra: "C", texto: "Grifar todas as palavras que você não conhece.", correta: false },
+              { letra: "D", texto: "Contar quantas vezes a palavra 'Petrobras' aparece.", correta: false },
+              { letra: "E", texto: "Ler apenas os conectivos.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Skimming é o" },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
         />
 
         <ModuleConsolidation
@@ -2655,7 +2783,7 @@ export default function AulaInterpretacaoTexto({
             lyrics:
               "[Dica] - Se o autor diz que algo 'parou', pressupõe-se que ocorria antes...",
           }}
-          variant={mv[6]}
+          variant="blue"
         />
 
         <QuizInterativo
@@ -2664,7 +2792,7 @@ export default function AulaInterpretacaoTexto({
           icone="🕵️"
           numero={4}
           onComplete={(score) => handleModuleComplete("modulo-6", score)}
-          variant={mv[6]}
+          variant="blue"
         />
       </TabsContent>
 
@@ -2674,7 +2802,7 @@ export default function AulaInterpretacaoTexto({
           numero={7}
           titulo="As Ameaças Triplas"
           descricao="Redução, Extrapolação e Contradição. Detecte os venenos das alternativas falsas lógicas."
-          variant={mv[7]}
+          variant="blue"
         />
 
         {/* ★ NOVO: Rich Intro Section */}
@@ -2683,7 +2811,7 @@ export default function AulaInterpretacaoTexto({
             index="INTRO"
             title="A Trindade do Erro: Detectando Venenos"
             description="Mapeie os caminhos falsos da banca e blinde sua mente contra Redução, Extrapolação e Contradição."
-            variant={mv[7]}
+            variant="blue"
           />
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
             <p>
@@ -2755,7 +2883,7 @@ export default function AulaInterpretacaoTexto({
             index={1}
             title="A Trindade do Erro"
             description="As três formas clássicas que a Cesgranrio usa para invalidar uma interpretação correta."
-            variant={mv[7]}
+            variant="blue"
           />
 
           <div className="max-w-5xl mx-auto mt-8">
@@ -2907,7 +3035,7 @@ export default function AulaInterpretacaoTexto({
 
         <TextAnalysisLab
           index={3}
-          variant={mv[7]}
+          variant="blue"
           titulo="Scanner de Ameaças"
           subtitulo="Identifique por que as alternativas abaixo seriam invalidadas."
           legenda={[{ cor: "bg-red-500", label: "Contradição Direta" }]}
@@ -2921,6 +3049,30 @@ export default function AulaInterpretacaoTexto({
               de custos."
             </>
           }
+        />
+
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual a tipologia predominante em um manual de segurança da Petrobras?"
+          alternativas={[
+              { letra: "A", texto: "Narrativa.", correta: false },
+              { letra: "B", texto: "Injuntiva (Instrucional).", correta: true },
+              { letra: "C", texto: "Descritiva poética.", correta: false },
+              { letra: "D", texto: "Religiosa.", correta: false },
+              { letra: "E", texto: "Ficcional.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Manuais dão ordens e instruções, usando verbos no imperativo ou infinitivo (" },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
         />
 
         <ModuleConsolidation
@@ -3026,7 +3178,7 @@ Não caia no truque dessa miragem
 Fique no texto, siga o que foi dito 
 E vença esse jogo, que hoje tá bonito!`,
           }}
-          variant={mv[7]}
+          variant="blue"
         />
 
         <QuizInterativo
@@ -3035,7 +3187,7 @@ E vença esse jogo, que hoje tá bonito!`,
           icone="🚫"
           numero={5}
           onComplete={(score) => handleModuleComplete("modulo-7", score)}
-          variant={mv[7]}
+          variant="blue"
         />
       </TabsContent>
 
@@ -3045,7 +3197,7 @@ E vença esse jogo, que hoje tá bonito!`,
           numero={8}
           titulo="Intenção Autoral"
           descricao="Para que o texto foi escrito? Decifre a finalidade principal e o tom do autor."
-          variant={mv[8]}
+          variant="blue"
         />
 
         {/* ★ NOVO: Rich Intro Section */}
@@ -3054,7 +3206,7 @@ E vença esse jogo, que hoje tá bonito!`,
             index="INTRO"
             title="Intenção Autoral: O 'Porquê' Invisível"
             description="Decifre a finalidade real do texto para antecipar o gabarito. O autor quer informar, convencer ou apenas criticar?"
-            variant={mv[8]}
+            variant="blue"
           />
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
             <p>
@@ -3125,7 +3277,7 @@ E vença esse jogo, que hoje tá bonito!`,
             index={1}
             title="A Vontade por Trás das Palavras"
             description="Identificar o objetivo (informativo, persuasivo ou crítico) é 50% da questão."
-            variant={mv[8]}
+            variant="blue"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
@@ -3211,7 +3363,7 @@ E vença esse jogo, que hoje tá bonito!`,
 
         <TextAnalysisLab
           index={2}
-          variant={mv[8]}
+          variant="blue"
           titulo="Laboratório de Tom"
           subtitulo="Identifique se o autor está sendo irônico, sério ou apenas relatando."
           legenda={[{ cor: "bg-blue-500", label: "Marca de Intencionalidade" }]}
@@ -3225,6 +3377,30 @@ E vença esse jogo, que hoje tá bonito!`,
               ética." (Tom: Irônico/Crítico).
             </>
           }
+        />
+
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A técnica de 'Skimming' consiste em:"
+          alternativas={[
+              { letra: "A", texto: "Ler o texto de trás para frente.", correta: false },
+              { letra: "B", texto: "Fazer uma leitura rápida para captar o sentido geral e o tema.", correta: true },
+              { letra: "C", texto: "Grifar todas as palavras que você não conhece.", correta: false },
+              { letra: "D", texto: "Contar quantas vezes a palavra 'Petrobras' aparece.", correta: false },
+              { letra: "E", texto: "Ler apenas os conectivos.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Skimming é o" },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
         />
 
         <ModuleConsolidation
@@ -3328,7 +3504,7 @@ Entre o fato puro e a subjetividade
 Decifre o tom, ganhe a questão 
 E mostre pro mundo sua superação!`,
           }}
-          variant={mv[8]}
+          variant="blue"
         />
 
         <QuizInterativo
@@ -3337,7 +3513,7 @@ E mostre pro mundo sua superação!`,
           icone="🎯"
           numero={4}
           onComplete={(score) => handleModuleComplete("modulo-8", score)}
-          variant={mv[8]}
+          variant="blue"
         />
       </TabsContent>
 
@@ -3347,7 +3523,7 @@ E mostre pro mundo sua superação!`,
           numero={9}
           titulo="A Lógica Cesgranrio"
           descricao="O DNA das questões. Mapeamento de sinônimos técnicos e eixos temáticos repetitivos."
-          variant={mv[9]}
+          variant="blue"
         />
 
         {/* ★ NOVO: Rich Intro Section */}
@@ -3356,7 +3532,7 @@ E mostre pro mundo sua superação!`,
             index="INTRO"
             title="Algoritmo da Aprovação: Checklist Operacional"
             description="Passe do olhar selvagem para uma arquitetura robótica inabalável de validação analítica."
-            variant={mv[9]}
+            variant="blue"
           />
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
             <p>
@@ -3439,7 +3615,7 @@ E mostre pro mundo sua superação!`,
             index={1}
             title="Arsenal Lexical da CESGRANRIO"
             description="Mapeie sinônimos técnicos e eixos temáticos que a banca repete sistematicamente nas provas da Petrobras."
-            variant={mv[9]}
+            variant="blue"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
@@ -3488,7 +3664,7 @@ E mostre pro mundo sua superação!`,
 
         <TextAnalysisLab
           index={2}
-          variant={mv[9]}
+          variant="blue"
           titulo="Scanner de Sinônimos"
           subtitulo="Mapeie as trocas permitidas pela banca."
           legenda={[{ cor: "bg-blue-500", label: "Equivalência Semântica" }]}
@@ -3505,6 +3681,30 @@ E mostre pro mundo sua superação!`,
               ..."
             </>
           }
+        />
+
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A técnica de 'Skimming' consiste em:"
+          alternativas={[
+              { letra: "A", texto: "Ler o texto de trás para frente.", correta: false },
+              { letra: "B", texto: "Fazer uma leitura rápida para captar o sentido geral e o tema.", correta: true },
+              { letra: "C", texto: "Grifar todas as palavras que você não conhece.", correta: false },
+              { letra: "D", texto: "Contar quantas vezes a palavra 'Petrobras' aparece.", correta: false },
+              { letra: "E", texto: "Ler apenas os conectivos.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Skimming é o" },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
         />
 
         <ModuleConsolidation
@@ -3614,7 +3814,7 @@ Faz com que a questão rápido apareça
 Mude a palavra, segure o valor 
 E saia da prova como um vencedor!`,
           }}
-          variant={mv[9]}
+          variant="blue"
         />
 
         <QuizInterativo
@@ -3623,7 +3823,7 @@ E saia da prova como um vencedor!`,
           icone="🧠"
           numero={4}
           onComplete={(score) => handleModuleComplete("modulo-9", score)}
-          variant={mv[9]}
+          variant="blue"
         />
       </TabsContent>
 
@@ -3633,7 +3833,7 @@ E saia da prova como um vencedor!`,
           numero={10}
           titulo="Avaliação de Fixação Avançada"
           descricao="A prova final. O Checklist de Blindagem antes do grande desafio."
-          variant={mv[10]}
+          variant="blue"
         />
 
         {/* ★ NOVO: Rich Intro Section */}
@@ -3642,7 +3842,7 @@ E saia da prova como um vencedor!`,
             index="INTRO"
             title="Avaliação de Fixação Avançada: Blindagem Final"
             description="O checklist de pré-combate para garantir que nenhum vício ou pontos de atenção te tire do topo da lista."
-            variant={mv[10]}
+            variant="blue"
           />
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
             <p>
@@ -3709,7 +3909,7 @@ E saia da prova como um vencedor!`,
             index="ESTRATÉGIA"
             title="Checklist de Blindagem Final"
             description="Revise os 5 mandamentos da interpretação Cesgranrio antes de começar."
-            variant={mv[10]}
+            variant="blue"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -3842,6 +4042,30 @@ E saia da prova como um vencedor!`,
           </div>
         </section>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O 'Tópico Frasal' de um parágrafo técnico costuma ser:"
+          alternativas={[
+              { letra: "A", texto: "A última palavra do texto.", correta: false },
+              { letra: "B", texto: "Uma frase que resume a ideia central daquele parágrafo.", correta: true },
+              { letra: "C", texto: "Um erro de digitação comum.", correta: false },
+              { letra: "D", texto: "A assinatura do autor.", correta: false },
+              { letra: "E", texto: "A lista de referências bibliográficas.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O tópico frasal orienta o leitor sobre o assunto principal que será desenvolvido no parágrafo." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
           index={2}
           video={{
@@ -3945,7 +4169,7 @@ Uma nova etapa na sua vida
 Confia no treino, use a estratégia 
 E brilhe na prova, saia da média!`,
           }}
-          variant={mv[10]}
+          variant="blue"
         />
 
         <QuizInterativo
@@ -3954,7 +4178,7 @@ E brilhe na prova, saia da média!`,
           icone="👑"
           numero={3}
           onComplete={(score) => handleModuleComplete("modulo-10", score)}
-          variant={mv[10]}
+          variant="blue"
         />
       </TabsContent>
     </AulaTemplate>

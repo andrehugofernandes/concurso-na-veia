@@ -1,5 +1,6 @@
 import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -13,7 +14,7 @@ import {
   AulaTemplate,
   ModuleSectionHeader,
   ModuleConsolidation,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   QUIZ_M1_POLIGONOS,
   QUIZ_M2_TRIANGULOS,
@@ -46,9 +47,8 @@ export default function AulaGeometriaPlana({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_POLIGONOS, 6));
   const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_TRIANGULOS, 6));
@@ -65,11 +65,9 @@ export default function AulaGeometriaPlana({
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
-      setCompletedModules((prev) => {
-        const n = new Set(prev);
-        n.add(moduleId);
-        return n;
-      });
+      const nextCompleted = new Set(completedModules);
+      nextCompleted.add(moduleId);
+      updateCompletedModules(Array.from(nextCompleted));
       const modules = Array.from({ length: 10 }, (_, i) => `modulo-${i + 1}`);
       const idx = modules.findIndex((m) => m === moduleId);
       const pct = Math.round(((idx + 1) / 10) * 100);
@@ -83,7 +81,7 @@ export default function AulaGeometriaPlana({
       const count = Math.floor((currentProgress / 100) * 10);
       const s = new Set<string>();
       for (let i = 1; i <= count; i++) s.add(`modulo-${i}`);
-      setCompletedModules(s);
+      updateCompletedModules(Array.from(s));
     }
   }, [currentProgress]);
 
@@ -105,6 +103,8 @@ export default function AulaGeometriaPlana({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={MODULE_DEFS}
@@ -131,7 +131,7 @@ export default function AulaGeometriaPlana({
         <ModuleBanner numero={1}
           titulo="Polígonos: Classificação e Propriedades"
           descricao="Domine a classificação de polígonos, soma dos ângulos internos e externos — fundamentos que a CESGRANRIO cobra todo concurso."
-           variant={mv[1]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -262,7 +262,7 @@ export default function AulaGeometriaPlana({
               index={2}
               title="Diagonais e Classificação"
               description="Conte diagonais e classifique polígonos quanto à convexidade e regularidade."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -362,7 +362,31 @@ export default function AulaGeometriaPlana({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um triângulo de suporte de plataforma tem base 6 m e altura 4 m. Qual a sua área?"
+          alternativas={[
+              { letra: "A", texto: "10 m²", correta: false },
+              { letra: "B", texto: "12 m²", correta: true },
+              { letra: "C", texto: "24 m²", correta: false },
+              { letra: "D", texto: "6 m²", correta: false },
+              { letra: "E", texto: "8 m²", correta: false }
+            ]}
+          dicaEstrategica="Atenção: a altura deve ser perpendicular à base."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "A = (base × altura) / 2 = (6 × 4) / 2 = 24 / 2 = 12 m²." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Nunca use o lado oblíquo como altura." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
             variant="indigo"
             video={{
@@ -458,14 +482,14 @@ export default function AulaGeometriaPlana({
         <ModuleBanner numero={2}
           titulo="Triângulos: Tipos e Propriedades"
           descricao="Classifique triângulos quanto aos lados e ângulos, aplique a desigualdade triangular e o teorema do ângulo externo."
-           variant={mv[2]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Classificação dos Triângulos"
               description="Quanto aos lados e quanto aos ângulos — dois critérios independentes."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -583,9 +607,33 @@ export default function AulaGeometriaPlana({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
+          alternativas={[
+              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+              { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
+              { letra: "C", texto: "Retângulo e equilátero", correta: false },
+              { letra: "D", texto: "Acutângulo e isósceles", correta: false },
+              { letra: "E", texto: "Retângulo e escaleno", correta: false }
+            ]}
+          dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Com dois ângulos iguais (45°), os dois lados opostos são iguais, portanto é isósceles." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "xhEQa-uECe0",
               title: "Triângulos: Classificação, Desigualdade Triangular e Altura",
@@ -637,7 +685,7 @@ export default function AulaGeometriaPlana({
               titulo="QUIZ: Triângulos"
               icone="🔺"
               numero={3}
-              variant="cyan"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -671,14 +719,14 @@ export default function AulaGeometriaPlana({
         <ModuleBanner numero={3}
           titulo="Área do Triângulo"
           descricao="Calcule áreas com a fórmula clássica, pela Fórmula de Heron e casos especiais: retângulo, equilátero e isósceles."
-           variant={mv[3]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Fórmulas de Área do Triângulo"
               description="Da fórmula básica à Fórmula de Heron — domínio completo para qualquer situação."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -787,9 +835,33 @@ export default function AulaGeometriaPlana({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
+          alternativas={[
+              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+              { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
+              { letra: "C", texto: "Retângulo e equilátero", correta: false },
+              { letra: "D", texto: "Acutângulo e isósceles", correta: false },
+              { letra: "E", texto: "Retângulo e escaleno", correta: false }
+            ]}
+          dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Com dois ângulos iguais (45°), os dois lados opostos são iguais, portanto é isósceles." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "K7eVVVHGDe4",
               title: "Cálculo de Áreas de Triângulos: Fórmulas Principais e Casos Especiais",
@@ -845,7 +917,7 @@ export default function AulaGeometriaPlana({
               titulo="QUIZ: Área do Triângulo"
               icone="📐"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -884,7 +956,7 @@ export default function AulaGeometriaPlana({
         <ModuleBanner numero={4}
           titulo="Quadriláteros: Tipos e Áreas"
           descricao="Domine retângulo, quadrado, losango, paralelogramo e trapézio — com todas as fórmulas de área e propriedades para a prova."
-           variant={mv[4]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -997,7 +1069,7 @@ export default function AulaGeometriaPlana({
               index={2}
               title="Tabela Resumo das Fórmulas"
               description="Consulta rápida para a prova — todas as áreas em um só lugar."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
@@ -1059,7 +1131,31 @@ export default function AulaGeometriaPlana({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um triângulo de suporte de plataforma tem base 6 m e altura 4 m. Qual a sua área?"
+          alternativas={[
+              { letra: "A", texto: "10 m²", correta: false },
+              { letra: "B", texto: "12 m²", correta: true },
+              { letra: "C", texto: "24 m²", correta: false },
+              { letra: "D", texto: "6 m²", correta: false },
+              { letra: "E", texto: "8 m²", correta: false }
+            ]}
+          dicaEstrategica="Atenção: a altura deve ser perpendicular à base."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "A = (base × altura) / 2 = (6 × 4) / 2 = 24 / 2 = 12 m²." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Nunca use o lado oblíquo como altura." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
             variant="blue"
             video={{
@@ -1155,14 +1251,14 @@ export default function AulaGeometriaPlana({
         <ModuleBanner numero={5}
           titulo="Círculo e Circunferência"
           descricao="Área, comprimento, setores e coroas circulares — fundamento para cálculo de seções de dutos, tanques e vedações."
-           variant={mv[5]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Fórmulas Fundamentais do Círculo"
               description="Área, circunferência, setor e coroa — tudo que a CESGRANRIO cobra."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1268,9 +1364,33 @@ export default function AulaGeometriaPlana({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
+          alternativas={[
+              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+              { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
+              { letra: "C", texto: "Retângulo e equilátero", correta: false },
+              { letra: "D", texto: "Acutângulo e isósceles", correta: false },
+              { letra: "E", texto: "Retângulo e escaleno", correta: false }
+            ]}
+          dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Com dois ângulos iguais (45°), os dois lados opostos são iguais, portanto é isósceles." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "p-e5Ot_BDOA",
               title: "Círculo e Circunferência: Perímetro, Área, Setor e Coroa Circular",
@@ -1322,7 +1442,7 @@ export default function AulaGeometriaPlana({
               titulo="QUIZ: Círculo e Circunferência"
               icone="⭕"
               numero={3}
-              variant="cyan"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -1362,14 +1482,14 @@ export default function AulaGeometriaPlana({
         <ModuleBanner numero={6}
           titulo="Semelhança de Triângulos"
           descricao="Critérios AA, LAL e LLL, escalas de plantas industriais e razões de lados, áreas e volumes em figuras semelhantes."
-           variant={mv[6]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Critérios de Semelhança"
               description="Três critérios para provar que dois triângulos são semelhantes."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1463,9 +1583,33 @@ export default function AulaGeometriaPlana({
 
 
           <section id="quiz-modulo-6" className="mt-16">
-          <ModuleConsolidation
+                  {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
+          alternativas={[
+              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+              { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
+              { letra: "C", texto: "Retângulo e equilátero", correta: false },
+              { letra: "D", texto: "Acutângulo e isósceles", correta: false },
+              { letra: "E", texto: "Retângulo e escaleno", correta: false }
+            ]}
+          dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Com dois ângulos iguais (45°), os dois lados opostos são iguais, portanto é isósceles." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="rose"
+            variant="blue"
             video={{
               videoId: "t4WdZDvp8Ps",
               title: "Semelhança de Triângulos: Critérios AA, LAL, LLL e Teorema de Thales",
@@ -1517,7 +1661,7 @@ export default function AulaGeometriaPlana({
               titulo="QUIZ: Semelhança"
               icone="🔍"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -1531,7 +1675,7 @@ export default function AulaGeometriaPlana({
         <ModuleBanner numero={7}
           titulo="Teorema de Pitágoras e Aplicações"
           descricao="O teorema mais usado em engenharia: cabos, diagonais, alturas e ternas pitagóricas essenciais para concursos."
-           variant={mv[7]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1643,7 +1787,31 @@ export default function AulaGeometriaPlana({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
+          alternativas={[
+              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+              { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
+              { letra: "C", texto: "Retângulo e equilátero", correta: false },
+              { letra: "D", texto: "Acutângulo e isósceles", correta: false },
+              { letra: "E", texto: "Retângulo e escaleno", correta: false }
+            ]}
+          dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Com dois ângulos iguais (45°), os dois lados opostos são iguais, portanto é isósceles." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="indigo"
             video={{
@@ -1712,14 +1880,14 @@ export default function AulaGeometriaPlana({
         <ModuleBanner numero={8}
           titulo="Razão de Semelhança e Áreas"
           descricao="Domine a relação entre razão de semelhança, áreas e volumes — a mais cobrada em questões avançadas de Geometria Plana."
-           variant={mv[8]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Razão de Semelhança × Áreas × Volumes"
               description="O triplo de proporção: lados, superfícies e espaços."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1838,9 +2006,33 @@ export default function AulaGeometriaPlana({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
+          alternativas={[
+              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+              { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
+              { letra: "C", texto: "Retângulo e equilátero", correta: false },
+              { letra: "D", texto: "Acutângulo e isósceles", correta: false },
+              { letra: "E", texto: "Retângulo e escaleno", correta: false }
+            ]}
+          dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Com dois ângulos iguais (45°), os dois lados opostos são iguais, portanto é isósceles." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "JQuBrpJv2K8",
               title: "Razão de Semelhança: Aplicação em Áreas e Volumes de Figuras Semelhantes",
@@ -1893,7 +2085,7 @@ export default function AulaGeometriaPlana({
               titulo="QUIZ: Razão de Semelhança"
               icone="📊"
               numero={3}
-              variant="cyan"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -1907,14 +2099,14 @@ export default function AulaGeometriaPlana({
         <ModuleBanner numero={9}
           titulo="Aplicações Industriais Petrobras"
           descricao="Seções de dutos, plantas de refinaria, maquetes de plataforma e cálculo de área útil — Geometria Plana no contexto real da Petrobras."
-           variant={mv[9]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Geometria Plana na Indústria de Petróleo"
               description="Como as fórmulas de área e perímetro se aplicam em situações reais da Petrobras."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -2027,9 +2219,33 @@ export default function AulaGeometriaPlana({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
+          alternativas={[
+              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+              { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
+              { letra: "C", texto: "Retângulo e equilátero", correta: false },
+              { letra: "D", texto: "Acutângulo e isósceles", correta: false },
+              { letra: "E", texto: "Retângulo e escaleno", correta: false }
+            ]}
+          dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Com dois ângulos iguais (45°), os dois lados opostos são iguais, portanto é isósceles." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "xKh0_l-Wevs",
               title: "Aplicações Petrobras: Cálculo de Áreas de Concessão, Plataformas e Tanques",
@@ -2082,7 +2298,7 @@ export default function AulaGeometriaPlana({
               titulo="QUIZ: Aplicações Industriais"
               icone="🏭"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -2096,7 +2312,7 @@ export default function AulaGeometriaPlana({
         <ModuleBanner numero={10}
           titulo="Simulado Final CESGRANRIO"
           descricao="Questões no padrão CESGRANRIO integrando todos os tópicos de Geometria Plana. Prove que você está pronto para a prova real."
-           variant={mv[10]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2161,7 +2377,31 @@ export default function AulaGeometriaPlana({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
+          alternativas={[
+              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+              { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
+              { letra: "C", texto: "Retângulo e equilátero", correta: false },
+              { letra: "D", texto: "Acutângulo e isósceles", correta: false },
+              { letra: "E", texto: "Retângulo e escaleno", correta: false }
+            ]}
+          dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Com dois ângulos iguais (45°), os dois lados opostos são iguais, portanto é isósceles." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{

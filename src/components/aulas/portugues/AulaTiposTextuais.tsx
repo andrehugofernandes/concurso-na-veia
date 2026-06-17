@@ -1,4 +1,5 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useCallback, useEffect } from "react";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
@@ -39,7 +40,7 @@ import {
   AulaTemplate,
   QuizQuestion,
   getRandomQuestions,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import { getAllModuleVariants } from "@/lib/moduleColors";
 
 const mv = [undefined, ...getAllModuleVariants()];
@@ -270,20 +271,8 @@ export default function AulaTiposTextuais({
     return "modulo-1";
   });
 
-  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
-      if (saved) {
-        try {
-          const arr = JSON.parse(saved);
-          return new Set(arr);
-        } catch (e) {
-          return new Set();
-        }
-      }
-    }
-    return new Set();
-  });
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -291,14 +280,7 @@ export default function AulaTiposTextuais({
     }
   }, [activeTab]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `${STORAGE_KEY_PREFIX}completed_modules`,
-        JSON.stringify(Array.from(completedModules))
-      );
-    }
-  }, [completedModules]);
+  
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
 
   // Estados dos Quizzes
@@ -327,7 +309,7 @@ export default function AulaTiposTextuais({
       for (let i = 0; i < doneCount; i++) {
         newDone.add(MODULE_DEFS[i].id);
       }
-      setCompletedModules(newDone);
+      updateCompletedModules(Array.from(newDone));
       setHasSyncedInitial(true);
     } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
       setHasSyncedInitial(true);
@@ -337,7 +319,7 @@ export default function AulaTiposTextuais({
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
       const newSet = new Set(completedModules).add(moduleId);
-      setCompletedModules(newSet);
+      updateCompletedModules(Array.from(newSet));
       if (onUpdateProgress) {
         onUpdateProgress(Math.round((newSet.size / MODULE_DEFS.length) * 100));
       }
@@ -355,6 +337,8 @@ export default function AulaTiposTextuais({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={Array.from(MODULE_DEFS)}
@@ -462,7 +446,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={2}
-          variant="emerald"
+          variant="blue"
           video={{ videoId: "2-0mD4J7X1I", title: "Descrição Técnica", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 2", materia: "Português", tituloAula: "Descrição",
@@ -506,7 +490,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={3}
-          variant="violet"
+          variant="blue"
           video={{ videoId: "3-pE9M4zS3Y", title: "Exposição Pura", duration: "11:00" }}
           resumoVisual={{
             moduloNome: "Módulo 3", materia: "Português", tituloAula: "Exposição",
@@ -597,7 +581,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={5}
-          variant="amber"
+          variant="blue"
           video={{ videoId: "5-pE9M4zS3Y", title: "Guia de Injunção", duration: "09:00" }}
           resumoVisual={{
             moduloNome: "Módulo 5", materia: "Português", tituloAula: "Injunção",
@@ -641,7 +625,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={6}
-          variant="rose"
+          variant="blue"
           video={{ videoId: "6-pE9M4zS3Y", title: "Diálogo em Prova", duration: "08:00" }}
           resumoVisual={{
             moduloNome: "Módulo 6", materia: "Português", tituloAula: "Modo Dialogal",
@@ -685,7 +669,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={7}
-          variant="cyan"
+          variant="blue"
           video={{ videoId: "7-pE9M4zS3Y", title: "Gêneros na Prática", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 7", materia: "Português", tituloAula: "Gêneros",
@@ -773,7 +757,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={9}
-          variant="emerald"
+          variant="blue"
           video={{ videoId: "9-pE9M4zS3Y", title: "Dicas de Ouro", duration: "15:00" }}
           resumoVisual={{
             moduloNome: "Módulo 9", materia: "Português", tituloAula: "Laboratório",
@@ -808,7 +792,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={10}
-          variant="violet"
+          variant="blue"
           video={{ videoId: "10-pE9M4zS3Y", title: "Review Geral", duration: "20:00" }}
           resumoVisual={{
             moduloNome: "Módulo 10", materia: "Português", tituloAula: "Simulado",

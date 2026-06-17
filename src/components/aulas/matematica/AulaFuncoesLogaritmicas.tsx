@@ -1,6 +1,7 @@
 import { getAllModuleVariants } from "@/lib/moduleColors";
 // Last modified: 2026-03-13 - Upgraded with ModuleConsolidation (4-tab system) and C.E.D.E. pedagogy
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -16,7 +17,7 @@ import {
   FunctionGraph,
   ModuleConsolidation,
   type FunctionPlot,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 
 import {
   LuBookOpen,
@@ -74,9 +75,8 @@ export default function AulaFuncoesLogaritmicas({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_CONCEITOS, 4));
   const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_PROPRIEDADES, 4));
@@ -110,7 +110,7 @@ export default function AulaFuncoesLogaritmicas({
       for (let i = 0; i < doneCount; i++) {
         newDone.add(MODULE_DEFS[i].id);
       }
-      setCompletedModules(newDone);
+      updateCompletedModules(Array.from(newDone));
       setHasSyncedInitial(true);
     } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
       setHasSyncedInitial(true);
@@ -120,7 +120,7 @@ export default function AulaFuncoesLogaritmicas({
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
       const newSet = new Set(completedModules).add(moduleId);
-      setCompletedModules(newSet);
+      updateCompletedModules(Array.from(newSet));
 
       const total = MODULE_DEFS.length;
       const done = newSet.size;
@@ -149,6 +149,8 @@ export default function AulaFuncoesLogaritmicas({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={(val) => {
         const idx = MODULE_DEFS.findIndex((m) => m.id === val);
@@ -179,7 +181,7 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={1}
             titulo="O Conceito de Logaritmo"
             descricao="Números colossais encolhem em números menores através da pergunta fundamental."
-             variant={mv[1]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -340,7 +342,31 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
+          alternativas={[
+              { letra: "A", texto: "7", correta: true },
+              { letra: "B", texto: "2", correta: false },
+              { letra: "C", texto: "13", correta: false },
+              { letra: "D", texto: "25/3", correta: false },
+              { letra: "E", texto: "10", correta: false }
+            ]}
+          dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Depois, a regra do tombo no a²: 2×log(a) - log(b)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="indigo"
             video={{
@@ -397,14 +423,14 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={2}
             titulo="Propriedades Operacionais"
             descricao="Multiplicação encolhe para soma e potência descende como o tombo."
-             variant={mv[2]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Vantagem Algébrica"
               description="Manobras lícitas que convertem calvários em passeios."
-              variant="emerald"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -521,9 +547,33 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
+          alternativas={[
+              { letra: "A", texto: "7", correta: true },
+              { letra: "B", texto: "2", correta: false },
+              { letra: "C", texto: "13", correta: false },
+              { letra: "D", texto: "25/3", correta: false },
+              { letra: "E", texto: "10", correta: false }
+            ]}
+          dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Depois, a regra do tombo no a²: 2×log(a) - log(b)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "WFQDrp84Hxc",
               title: "Propriedades dos Logaritmos Explicadas Passo a Passo",
@@ -566,7 +616,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM2}
               titulo="QUIZ: Propriedades Fundamentais"
               numero={3}
-              variant="emerald"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -580,14 +630,14 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={3}
             titulo="Equações Logarítmicas"
             descricao="X nas cordas e logs somando e subtraindo do lado."
-             variant={mv[3]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Eliminando o Logaritmo"
               description="Para eliminar a palavra log da equação, a base inferior tem que se sacrificar."
-              variant="cyan"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -698,9 +748,33 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
+          alternativas={[
+              { letra: "A", texto: "7", correta: true },
+              { letra: "B", texto: "2", correta: false },
+              { letra: "C", texto: "13", correta: false },
+              { letra: "D", texto: "25/3", correta: false },
+              { letra: "E", texto: "10", correta: false }
+            ]}
+          dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Depois, a regra do tombo no a²: 2×log(a) - log(b)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "w5YdI5OXpGg",
               title: "Resolvendo Equações Logarítmicas: Técnicas Essenciais",
@@ -740,7 +814,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM3}
               titulo="QUIZ: Equações Logarítmicas"
               numero={3}
-              variant="cyan"
+              variant="blue"
               icone="⚙️"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -754,7 +828,7 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={4}
             titulo="Condições de Existência"
             descricao="Bancas colocam raízes falsas que não existem na vida real."
-             variant={mv[4]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -906,7 +980,31 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
+          alternativas={[
+              { letra: "A", texto: "7", correta: true },
+              { letra: "B", texto: "2", correta: false },
+              { letra: "C", texto: "13", correta: false },
+              { letra: "D", texto: "25/3", correta: false },
+              { letra: "E", texto: "10", correta: false }
+            ]}
+          dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Depois, a regra do tombo no a²: 2×log(a) - log(b)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{
@@ -966,14 +1064,14 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={5}
             titulo="Desafio Integrado"
             descricao="Combine todo o conhecimento em questões de média dificuldade."
-             variant={mv[5]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Consolidação do Conhecimento"
               description="Revisão de conceitos, propriedades, equações e domínios combinados."
-              variant="amber"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1084,9 +1182,33 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
+          alternativas={[
+              { letra: "A", texto: "7", correta: true },
+              { letra: "B", texto: "2", correta: false },
+              { letra: "C", texto: "13", correta: false },
+              { letra: "D", texto: "25/3", correta: false },
+              { letra: "E", texto: "10", correta: false }
+            ]}
+          dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Depois, a regra do tombo no a²: 2×log(a) - log(b)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "fJXCR-K8DxQ",
               title: "Problemas Integrados com Logaritmos: Estratégias Completas",
@@ -1122,7 +1244,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM5}
               titulo="QUIZ: Desafio Integrado"
               numero={3}
-              variant="amber"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1136,14 +1258,14 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={6}
             titulo="Funções Logarítmicas"
             descricao="Transformações, composições e o domínio das curvas que subem com cuidado."
-             variant={mv[6]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Forma Padrão das Funções Log"
               description="Como as funções logarítmicas se comportam quando transformadas."
-              variant="rose"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1300,9 +1422,33 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
+          alternativas={[
+              { letra: "A", texto: "7", correta: true },
+              { letra: "B", texto: "2", correta: false },
+              { letra: "C", texto: "13", correta: false },
+              { letra: "D", texto: "25/3", correta: false },
+              { letra: "E", texto: "10", correta: false }
+            ]}
+          dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Depois, a regra do tombo no a²: 2×log(a) - log(b)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="rose"
+            variant="blue"
             video={{
               videoId: "TL_LjVyT_Xk",
               title: "Gráficos de Funções Logarítmicas e Suas Transformações",
@@ -1341,7 +1487,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM6}
               titulo="QUIZ: Funções Logarítmicas"
               numero={3}
-              variant="rose"
+              variant="blue"
               icone="📊"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1355,7 +1501,7 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={7}
             titulo="Sistemas e Inequações"
             descricao="Quando múltiplas equações logarítmicas se encontram numa mesma arena."
-             variant={mv[7]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1491,7 +1637,31 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
+          alternativas={[
+              { letra: "A", texto: "7", correta: true },
+              { letra: "B", texto: "2", correta: false },
+              { letra: "C", texto: "13", correta: false },
+              { letra: "D", texto: "25/3", correta: false },
+              { letra: "E", texto: "10", correta: false }
+            ]}
+          dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Depois, a regra do tombo no a²: 2×log(a) - log(b)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="indigo"
             video={{
@@ -1547,14 +1717,14 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={8}
             titulo="Resolução Reversa"
             descricao="Desconstruir problemas complexos até seus componentes logarítmicos primitivos."
-             variant={mv[8]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Decomposição de Problemas"
               description="Inverta a lógica: comece pelo resultado e trabalhe para trás até o argumento."
-              variant="emerald"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1662,9 +1832,33 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
+          alternativas={[
+              { letra: "A", texto: "7", correta: true },
+              { letra: "B", texto: "2", correta: false },
+              { letra: "C", texto: "13", correta: false },
+              { letra: "D", texto: "25/3", correta: false },
+              { letra: "E", texto: "10", correta: false }
+            ]}
+          dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Depois, a regra do tombo no a²: 2×log(a) - log(b)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "K8oQAHHmXYQ",
               title: "Resolução Reversa: Convertendo Exponencial para Logaritmo",
@@ -1707,7 +1901,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM8}
               titulo="QUIZ: Resolução Reversa"
               numero={3}
-              variant="emerald"
+              variant="blue"
               icone="🔄"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1721,7 +1915,7 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={9}
             titulo="Aplicações Petrobras"
             descricao="Onde os logaritmos vivem na indústria de petróleo e gás natural."
-             variant={mv[9]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1851,7 +2045,31 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
+          alternativas={[
+              { letra: "A", texto: "7", correta: true },
+              { letra: "B", texto: "2", correta: false },
+              { letra: "C", texto: "13", correta: false },
+              { letra: "D", texto: "25/3", correta: false },
+              { letra: "E", texto: "10", correta: false }
+            ]}
+          dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Depois, a regra do tombo no a²: 2×log(a) - log(b)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{
@@ -1910,14 +2128,14 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="O teste final combinando todo o conhecimento de logaritmos. Prepare-se para a prova real."
-             variant={mv[10]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Integração Completa de Conhecimento"
               description="Questões que combinam múltiplos conceitos em um único desafio."
-              variant="violet"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -2047,9 +2265,33 @@ export default function AulaFuncoesLogaritmicas({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
+          alternativas={[
+              { letra: "A", texto: "7", correta: true },
+              { letra: "B", texto: "2", correta: false },
+              { letra: "C", texto: "13", correta: false },
+              { letra: "D", texto: "25/3", correta: false },
+              { letra: "E", texto: "10", correta: false }
+            ]}
+          dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Depois, a regra do tombo no a²: 2×log(a) - log(b)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="violet"
+            variant="blue"
             video={{
               videoId: "mUFv1Y-JkjE",
               title: "Revisão Completa de Logaritmos: Preparação para Prova",
@@ -2096,7 +2338,7 @@ export default function AulaFuncoesLogaritmicas({
                 titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={3}
-                variant="violet"
+                variant="blue"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

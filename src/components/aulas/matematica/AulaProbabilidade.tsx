@@ -1,6 +1,7 @@
 import { getAllModuleVariants } from "@/lib/moduleColors";
 // Last modified: 2026-03-13 - Upgraded with ModuleConsolidation (4-tab system) and C.E.D.E. pedagogy
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -14,7 +15,7 @@ import {
   AulaTemplate,
   ModuleSectionHeader,
   ModuleConsolidation,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 
 import {
   LuBookOpen,
@@ -73,9 +74,8 @@ export default function AulaProbabilidade({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_FUNDAMENTOS, 4));
   const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_LAPLACE, 4));
@@ -109,7 +109,7 @@ export default function AulaProbabilidade({
       for (let i = 0; i < doneCount; i++) {
         newDone.add(MODULE_DEFS[i].id);
       }
-      setCompletedModules(newDone);
+      updateCompletedModules(Array.from(newDone));
       setHasSyncedInitial(true);
     } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
       setHasSyncedInitial(true);
@@ -119,7 +119,7 @@ export default function AulaProbabilidade({
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
       const newSet = new Set(completedModules).add(moduleId);
-      setCompletedModules(newSet);
+      updateCompletedModules(Array.from(newSet));
 
       const total = MODULE_DEFS.length;
       const done = newSet.size;
@@ -148,6 +148,8 @@ export default function AulaProbabilidade({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={(val) => {
         const idx = MODULE_DEFS.findIndex((m) => m.id === val);
@@ -179,7 +181,7 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={1}
             titulo="Fundamentos da Probabilidade"
             descricao="O alicerce: experimentos aleatórios, espaço amostral e eventos."
-             variant={mv[1]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -280,7 +282,31 @@ export default function AulaProbabilidade({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
+          alternativas={[
+              { letra: "A", texto: "1/4", correta: false },
+              { letra: "B", texto: "2/5", correta: false },
+              { letra: "C", texto: "3/5", correta: false },
+              { letra: "D", texto: "2/3", correta: false },
+              { letra: "E", texto: "4/6", correta: false }
+            ]}
+          dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "n(A) = 4 bolas vermelhas; n(S) = 4 + 6 = 10 bolas no total." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "P(vermelha) = 4/10 = 2/5." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{
@@ -350,14 +376,14 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={2}
             titulo="Lei de Laplace"
             descricao="P(E) = (casos favoráveis) / (casos totais). A fórmula mágica!"
-             variant={mv[2]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Fórmula da Probabilidade"
               description="Quando todos os eventos são igualmente prováveis."
-              variant="emerald"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -451,9 +477,33 @@ export default function AulaProbabilidade({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
+          alternativas={[
+              { letra: "A", texto: "1/4", correta: false },
+              { letra: "B", texto: "2/5", correta: false },
+              { letra: "C", texto: "3/5", correta: false },
+              { letra: "D", texto: "2/3", correta: false },
+              { letra: "E", texto: "4/6", correta: false }
+            ]}
+          dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "n(A) = 4 bolas vermelhas; n(S) = 4 + 6 = 10 bolas no total." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "P(vermelha) = 4/10 = 2/5." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "2Aq7p7-VgEU",
               title: "Lei de Laplace Explicada",
@@ -508,7 +558,7 @@ export default function AulaProbabilidade({
               questoes={quizM2}
               titulo="QUIZ: Lei de Laplace"
               numero={3}
-              variant="emerald"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -522,14 +572,14 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={3}
             titulo="União e Interseção de Eventos"
             descricao="Quando combinar probabilidades: regra da adição."
-             variant={mv[3]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Operações Entre Eventos"
               description="OU = União (+), E = Interseção (×)."
-              variant="amber"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -625,9 +675,33 @@ export default function AulaProbabilidade({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
+          alternativas={[
+              { letra: "A", texto: "1/4", correta: false },
+              { letra: "B", texto: "2/5", correta: false },
+              { letra: "C", texto: "3/5", correta: false },
+              { letra: "D", texto: "2/3", correta: false },
+              { letra: "E", texto: "4/6", correta: false }
+            ]}
+          dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "n(A) = 4 bolas vermelhas; n(S) = 4 + 6 = 10 bolas no total." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "P(vermelha) = 4/10 = 2/5." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "4KzE9R6zWzY",
               title: "União e Interseção de Eventos",
@@ -683,7 +757,7 @@ export default function AulaProbabilidade({
               questoes={quizM3}
               titulo="QUIZ: União e Interseção"
               numero={3}
-              variant="amber"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -700,14 +774,14 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={4}
             titulo="Probabilidade Condicional"
             descricao="P(A|B) = Quando um evento depende de outro ter ocorrido."
-             variant={mv[4]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Eventos Dependentes"
               description="A probabilidade muda quando há informação prévia."
-              variant="cyan"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -796,9 +870,33 @@ export default function AulaProbabilidade({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
+          alternativas={[
+              { letra: "A", texto: "1/4", correta: false },
+              { letra: "B", texto: "2/5", correta: false },
+              { letra: "C", texto: "3/5", correta: false },
+              { letra: "D", texto: "2/3", correta: false },
+              { letra: "E", texto: "4/6", correta: false }
+            ]}
+          dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "n(A) = 4 bolas vermelhas; n(S) = 4 + 6 = 10 bolas no total." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "P(vermelha) = 4/10 = 2/5." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "7Pg5MZV2XqU",
               title: "Probabilidade Condicional",
@@ -854,7 +952,7 @@ export default function AulaProbabilidade({
               questoes={quizM4}
               titulo="QUIZ: Probabilidade Condicional"
               numero={3}
-              variant="cyan"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -868,14 +966,14 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={5}
             titulo="Distribuição Binomial"
             descricao="Repetir n tentativas de 2 resultados (sucesso/fracasso)."
-             variant={mv[5]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Experimentos Repetidos"
               description="Exatamente k sucessos em n tentativas."
-              variant="violet"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -960,9 +1058,33 @@ export default function AulaProbabilidade({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
+          alternativas={[
+              { letra: "A", texto: "1/4", correta: false },
+              { letra: "B", texto: "2/5", correta: false },
+              { letra: "C", texto: "3/5", correta: false },
+              { letra: "D", texto: "2/3", correta: false },
+              { letra: "E", texto: "4/6", correta: false }
+            ]}
+          dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "n(A) = 4 bolas vermelhas; n(S) = 4 + 6 = 10 bolas no total." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "P(vermelha) = 4/10 = 2/5." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="violet"
+            variant="blue"
             video={{
               videoId: "tZzgzUaHdCw",
               title: "Distribuição Binomial",
@@ -1018,7 +1140,7 @@ export default function AulaProbabilidade({
               questoes={quizM5}
               titulo="QUIZ: Probabilidade Binomial"
               numero={3}
-              variant="violet"
+              variant="blue"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1032,14 +1154,14 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={6}
             titulo="Evento Complementar"
             descricao="P(Eᶜ) = 1 - P(E). O atalho mais lindo!"
-             variant={mv[6]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Negação de Eventos"
               description="Às vezes é mais fácil calcular o oposto."
-              variant="cyan"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1128,9 +1250,33 @@ export default function AulaProbabilidade({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
+          alternativas={[
+              { letra: "A", texto: "1/4", correta: false },
+              { letra: "B", texto: "2/5", correta: false },
+              { letra: "C", texto: "3/5", correta: false },
+              { letra: "D", texto: "2/3", correta: false },
+              { letra: "E", texto: "4/6", correta: false }
+            ]}
+          dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "n(A) = 4 bolas vermelhas; n(S) = 4 + 6 = 10 bolas no total." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "P(vermelha) = 4/10 = 2/5." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "9KZg0LdwAg4",
               title: "Evento Complementar",
@@ -1186,7 +1332,7 @@ export default function AulaProbabilidade({
               questoes={quizM6}
               titulo="QUIZ: Complementar"
               numero={3}
-              variant="cyan"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1200,7 +1346,7 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={7}
             titulo="Probabilidade Geométrica"
             descricao="Razão de áreas/comprimentos para eventos contínuos."
-             variant={mv[7]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1301,7 +1447,31 @@ export default function AulaProbabilidade({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
+          alternativas={[
+              { letra: "A", texto: "1/4", correta: false },
+              { letra: "B", texto: "2/5", correta: false },
+              { letra: "C", texto: "3/5", correta: false },
+              { letra: "D", texto: "2/3", correta: false },
+              { letra: "E", texto: "4/6", correta: false }
+            ]}
+          dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "n(A) = 4 bolas vermelhas; n(S) = 4 + 6 = 10 bolas no total." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "P(vermelha) = 4/10 = 2/5." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="indigo"
             video={{
@@ -1373,14 +1543,14 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={8}
             titulo="Independência de Eventos"
             descricao="Quando P(A ∩ B) = P(A) × P(B). Nenhuma interferência!"
-             variant={mv[8]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Eventos Sem Correlação"
               description="Multiplicação simples: P(A e B) = P(A) × P(B)."
-              variant="rose"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1474,9 +1644,33 @@ export default function AulaProbabilidade({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
+          alternativas={[
+              { letra: "A", texto: "1/4", correta: false },
+              { letra: "B", texto: "2/5", correta: false },
+              { letra: "C", texto: "3/5", correta: false },
+              { letra: "D", texto: "2/3", correta: false },
+              { letra: "E", texto: "4/6", correta: false }
+            ]}
+          dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "n(A) = 4 bolas vermelhas; n(S) = 4 + 6 = 10 bolas no total." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "P(vermelha) = 4/10 = 2/5." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="rose"
+            variant="blue"
             video={{
               videoId: "2xQr4vZ5M1I",
               title: "Independência de Eventos",
@@ -1532,7 +1726,7 @@ export default function AulaProbabilidade({
               questoes={quizM8}
               titulo="QUIZ: Independência"
               numero={3}
-              variant="rose"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1546,14 +1740,14 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={9}
             titulo="Engenharia de Riscos (Petrobras)"
             descricao="Confiabilidade, falhas e estratégias de redundância."
-             variant={mv[9]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Probabilidade na Indústria"
               description="Análise de risco e confiabilidade de sistemas."
-              variant="amber"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1644,9 +1838,33 @@ export default function AulaProbabilidade({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
+          alternativas={[
+              { letra: "A", texto: "1/4", correta: false },
+              { letra: "B", texto: "2/5", correta: false },
+              { letra: "C", texto: "3/5", correta: false },
+              { letra: "D", texto: "2/3", correta: false },
+              { letra: "E", texto: "4/6", correta: false }
+            ]}
+          dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "n(A) = 4 bolas vermelhas; n(S) = 4 + 6 = 10 bolas no total." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "P(vermelha) = 4/10 = 2/5." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "4KzE9R6zWzY",
               title: "Engenharia de Riscos",
@@ -1702,7 +1920,7 @@ export default function AulaProbabilidade({
               questoes={quizM9}
               titulo="QUIZ: Engenharia de Riscos"
               numero={3}
-              variant="amber"
+              variant="blue"
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1716,7 +1934,7 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="Teste final: integre todos os conceitos de probabilidade."
-             variant={mv[10]}/>
+             variant="blue"/>
 
           {showCompletionBadge ? (
             <div className="flex flex-col items-center gap-6 py-10 mt-10">
@@ -1736,7 +1954,7 @@ export default function AulaProbabilidade({
                 titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={1}
-                variant="slate"
+                variant="blue"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

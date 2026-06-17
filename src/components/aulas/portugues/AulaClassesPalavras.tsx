@@ -1,4 +1,5 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -21,7 +22,7 @@ import {
   Comparison,
   MusicPlayerCard,
   ModuleConsolidation,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import { getModuleVariant } from "@/lib/moduleColors";
 import {
   QUIZ_M1_SUBSTANTIVO,
@@ -141,20 +142,8 @@ export default function AulaClassesPalavras({
     return "modulo-1";
   });
 
-  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
-      if (saved) {
-        try {
-          const arr = JSON.parse(saved);
-          return new Set(arr);
-        } catch (e) {
-          return new Set();
-        }
-      }
-    }
-    return new Set();
-  });
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -162,14 +151,7 @@ export default function AulaClassesPalavras({
     }
   }, [activeTab]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `${STORAGE_KEY_PREFIX}completed_modules`,
-        JSON.stringify(Array.from(completedModules))
-      );
-    }
-  }, [completedModules]);
+  
   const [qMod1, setQMod1] = useState<QuizQuestion[]>([]);
   const [qMod2, setQMod2] = useState<QuizQuestion[]>([]);
   const [qMod3, setQMod3] = useState<QuizQuestion[]>([]);
@@ -197,7 +179,7 @@ export default function AulaClassesPalavras({
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
       const newSet = new Set(completedModules).add(moduleId);
-      setCompletedModules(newSet);
+      updateCompletedModules(Array.from(newSet));
       if (onUpdateProgress) {
         onUpdateProgress(Math.round((newSet.size / MODULE_DEFS.length) * 100));
       }
@@ -211,6 +193,8 @@ export default function AulaClassesPalavras({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={Array.from(MODULE_DEFS)}
@@ -236,7 +220,7 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={1}
           titulo="O Substantivo"
           descricao="A base de toda a nomeação e o núcleo dos termos da oração."
-          variant={mv[1]}
+          variant="blue"
         />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
@@ -245,7 +229,7 @@ export default function AulaClassesPalavras({
             index="INTRO"
             title="A Fundamentação dos Substantivos"
             description="Domine a classe de palavras que nomeia o mundo e estrutura o pensamento"
-            variant={mv[1]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
@@ -337,7 +321,7 @@ export default function AulaClassesPalavras({
             index={1}
             title="Fundamentos Morfológicos"
             description="A base científica e a distinção entre Morfologia e Sintaxe"
-            variant={mv[1]}
+            variant="blue"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg text-muted-foreground leading-relaxed text-justify">
             <div className="space-y-4">
@@ -362,7 +346,7 @@ export default function AulaClassesPalavras({
             index={2}
             title="Classificações Estratégicas"
             description="Os 4 eixos fundamentais de oposição exigidos pela Cesgranrio"
-            variant={mv[1]}
+            variant="blue"
           />
           <ContentAccordion
             mode="stacked"
@@ -445,7 +429,7 @@ export default function AulaClassesPalavras({
             index={3}
             title="Fenômenos de Substantivação"
             description="O Efeito Rei Midas e a Derivação Imprópria"
-            variant={mv[1]}
+            variant="blue"
           />
           <div className="bg-amber-500/10 border-l-4 border-amber-500 p-6 rounded-xl mb-6 text-lg text-foreground/90 italic">
             "Qualquer palavra precedida de artigo perde sua classe original e torna-se um substantivo."
@@ -480,7 +464,7 @@ export default function AulaClassesPalavras({
                 </div>
               }
               categoria="Verbo Substantivado"
-              variant="amber"
+              variant="blue"
             />
             <FlipCard
               frente={
@@ -542,7 +526,7 @@ export default function AulaClassesPalavras({
                 </div>
               }
               categoria="Adjetivo Substantivado"
-              variant="amber"
+              variant="blue"
             />
           </div>
         </section>
@@ -552,7 +536,7 @@ export default function AulaClassesPalavras({
             index={4}
             title="Plural de Compostos e Coletivos"
             description="Zonas críticas para Cesgranrio e concursos Petrobras"
-            variant={mv[1]}
+            variant="blue"
           />
           <ContentAccordion
             mode="stacked"
@@ -607,9 +591,33 @@ export default function AulaClassesPalavras({
           </AlertBox>
         </section>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={5}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual frase apresenta um verbo na VOZ PASSIVA?"
+          alternativas={[
+              { letra: "A", texto: "O técnico consertou a bomba.", correta: false },
+              { letra: "B", texto: "A bomba foi consertada pelo técnico.", correta: true },
+              { letra: "C", texto: "O técnico se feriu.", correta: false },
+              { letra: "D", texto: "O técnico chegou à plataforma.", correta: false },
+              { letra: "E", texto: "O técnico trabalha muito.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A voz passiva analítica é formada por Verbo Auxiliar + Particípio." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
           index={5}
-          variant={mv[1]}
+          variant="blue"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Substantivo: O Nomeador",
@@ -654,7 +662,7 @@ export default function AulaClassesPalavras({
             icone="🎯"
             numero={6}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-            variant={mv[1]}
+            variant="blue"
           />
         </section>
       </TabsContent>
@@ -664,7 +672,7 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={2}
           titulo="O Adjetivo"
           descricao="O qualificador que define a concordância e a nuance do texto."
-          variant={mv[2]}
+          variant="blue"
         />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
@@ -673,7 +681,7 @@ export default function AulaClassesPalavras({
             index="INTRO"
             title="A Arte da Qualificação: O Adjetivo"
             description="Explore as nuances e especificações que o adjetivo confere ao substantivo"
-            variant={mv[2]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
@@ -775,7 +783,7 @@ export default function AulaClassesPalavras({
             index={1}
             title="Classificação e Flexão"
             description="As regras de variação e as locuções adjetivas"
-            variant={mv[2]}
+            variant="blue"
           />
           <ContentAccordion
             mode="stacked"
@@ -816,9 +824,33 @@ export default function AulaClassesPalavras({
           />
         </section>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Em 'Contrataram um **bom** engenheiro"
+          alternativas={[
+              { letra: "A", texto: "Qualidade objetiva", correta: false },
+              { letra: "B", texto: "Opinião subjetiva", correta: true },
+              { letra: "C", texto: "Estado físico", correta: false },
+              { letra: "D", texto: "Origem geográfica", correta: false },
+              { letra: "E", texto: "Quantidade", correta: false }
+            ]}
+          dicaEstrategica="Adjetivos valorativos antes do substantivo geralmente indicam a opinião do emissor."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Analisar as alternativas e eliminar distratores com erros óbvios." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
           index={2}
-          variant={mv[2]}
+          variant="blue"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Adjetivo: O Qualificador",
@@ -867,7 +899,7 @@ export default function AulaClassesPalavras({
             icone="✨"
             numero={2}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-            variant={mv[2]}
+            variant="blue"
           />
         </section>
       </TabsContent>
@@ -877,7 +909,7 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={3}
           titulo="O Artigo"
           descricao="O determinante que define a substantivação e a concordância."
-          variant={mv[3]}
+          variant="blue"
         />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
@@ -886,7 +918,7 @@ export default function AulaClassesPalavras({
             index="INTRO"
             title="O Poder do Artigo: Definindo o Nome"
             description="Entenda como os menores termos da língua exercem o maior impacto na estruturação do texto"
-            variant={mv[3]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
@@ -981,9 +1013,33 @@ export default function AulaClassesPalavras({
           </div>
         </section>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O artigo 'O' em 'O saber não ocupa lugar' tem a função de:"
+          alternativas={[
+              { letra: "A", texto: "Definir um objeto", correta: false },
+              { letra: "B", texto: "Substantivar o verbo 'saber'", correta: true },
+              { letra: "C", texto: "Indicar o masculino", correta: false },
+              { letra: "D", texto: "Enfatizar a frase", correta: false },
+              { letra: "E", texto: "Substituir um pronome", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O artigo tem o poder de transformar outras classes em substantivo (derivação imprópria)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
           index={3}
-          variant={mv[3]}
+          variant="blue"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Artigo: O Determinante",
@@ -1033,7 +1089,7 @@ export default function AulaClassesPalavras({
             icone="🎯"
             numero={3}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-            variant={mv[3]}
+            variant="blue"
           />
         </section>
       </TabsContent>
@@ -1043,7 +1099,7 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={4}
           titulo="O Pronome"
           descricao="O substituto estratégico e o mestre da coesão textual."
-          variant={mv[4]}
+          variant="blue"
         />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
@@ -1052,7 +1108,7 @@ export default function AulaClassesPalavras({
             index="INTRO"
             title="O Pronome: O Arquiteto da Coesão"
             description="Domine a classe que substitui, retoma e organiza as relações no texto"
-            variant={mv[4]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
@@ -1148,7 +1204,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Pessoais: Reto vs Oblíquo"
-            variant={mv[4]}
+            variant="blue"
           />
           <div className="overflow-hidden rounded-xl border border-border bg-muted/30">
             <table className="w-full text-lg text-left">
@@ -1182,9 +1238,33 @@ export default function AulaClassesPalavras({
           </AlertBox>
         </section>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Em 'O projeto **cujo** autor fomos nós"
+          alternativas={[
+              { letra: "A", texto: "Lugar", correta: false },
+              { letra: "B", texto: "Posse", correta: true },
+              { letra: "C", texto: "Causa", correta: false },
+              { letra: "D", texto: "Finalidade", correta: false },
+              { letra: "E", texto: "Modo", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O pronome relativo" },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
           index={4}
-          variant={mv[4]}
+          variant="blue"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Pronome: O Substituto Estratégico",
@@ -1234,7 +1314,7 @@ export default function AulaClassesPalavras({
             icone="👤"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-            variant={mv[4]}
+            variant="blue"
           />
         </section>
       </TabsContent>
@@ -1244,7 +1324,7 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={5}
           titulo="O Verbo"
           descricao="A classe mais complexa e importante da língua portuguesa."
-          variant={mv[5]}
+          variant="blue"
         />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
@@ -1253,7 +1333,7 @@ export default function AulaClassesPalavras({
             index="INTRO"
             title="O Verbo: O Motor da Oração"
             description="Domine a classe mais dinâmica e complexa, essencial para a construção do sentido e da temporalidade"
-            variant={mv[5]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
@@ -1343,7 +1423,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Conceito e Classificação dos Verbos"
-            variant={mv[5]}
+            variant="blue"
           />
           <p className="text-lg text-muted-foreground">
             O <strong>Verbo</strong> é a classe de palavra que exprime{" "}
@@ -1395,7 +1475,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Vozes Verbais e Passiva Pronominal"
-            variant={mv[5]}
+            variant="blue"
           />
           <Comparison
             title="Ativa vs Passiva Analítica vs Passiva Sintética"
@@ -1423,7 +1503,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Verbos Impessoais (Haver e Fazer)"
-            variant={mv[5]}
+            variant="blue"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="p-8 rounded-2xl bg-slate-950 text-white space-y-6">
@@ -1479,7 +1559,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={5}
             title="Modos Verbais — Indicativo, Subjuntivo e Imperativo"
-            variant={mv[5]}
+            variant="blue"
           />
           <ContentAccordion
             mode="stacked"
@@ -1517,7 +1597,7 @@ export default function AulaClassesPalavras({
             index={5}
             title="Laboratório de Conjugações Verbais"
             description="Explore os modelos de conjugação regular e irregular divididos pelos três modos fundamentais"
-            variant={mv[5]}
+            variant="blue"
           />
           
           {/* MODO INDICATIVO */}
@@ -1727,7 +1807,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={6}
             title="Resumo e Multimídia"
-            variant={mv[5]}
+            variant="blue"
           />
           <LessonTabs
             tabs={[
@@ -1770,7 +1850,7 @@ export default function AulaClassesPalavras({
             titulo="QUIZ: Verbo: O Motor da Oração"
             icone="⚡"
             numero={7}
-            variant={mv[5]}
+            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
         </section>
@@ -1781,7 +1861,7 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={6}
           titulo="O Advérbio"
           descricao="O modificador invariável e as armadilhas das palavras camaleão."
-          variant={mv[6]}
+          variant="blue"
         />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
@@ -1790,7 +1870,7 @@ export default function AulaClassesPalavras({
             index="INTRO"
             title="O Advérbio: A Precisão da Circunstância"
             description="Domine a classe invariável que ajusta o sentido do verbo, do adjetivo e do próprio advérbio"
-            variant={mv[6]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
@@ -1887,7 +1967,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={1}
             title="Conceito e o Teste do 'Muito'"
-            variant={mv[6]}
+            variant="blue"
           />
           <p className="text-lg text-muted-foreground">
             O <strong>Advérbio</strong> é a classe <strong>invariável</strong>{" "}
@@ -1908,7 +1988,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Palavras Camaleão"
-            variant={mv[6]}
+            variant="blue"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-4 bg-muted/30 rounded-xl border border-border">
@@ -1930,7 +2010,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Locuções Adverbiais e Classificação"
-            variant={mv[6]}
+            variant="blue"
           />
           <ContentAccordion
             mode="stacked"
@@ -1990,7 +2070,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant={mv[6]}
+            variant="blue"
           />
           <LessonTabs
             tabs={[
@@ -2038,7 +2118,7 @@ export default function AulaClassesPalavras({
             titulo="QUIZ: Advérbio: A Circunstância"
             icone="🏃"
             numero={5}
-            variant={mv[6]}
+            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
         </section>
@@ -2049,7 +2129,7 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={7}
           titulo="A Preposição"
           descricao="O elo de subordinação essencial para a regência e a crase."
-          variant={mv[7]}
+          variant="blue"
         />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
@@ -2058,7 +2138,7 @@ export default function AulaClassesPalavras({
             index="INTRO"
             title="A Preposição: O Elo de Ferro"
             description="Entenda a classe que subordina termos e cria as pontes sintáticas do texto"
-            variant={mv[7]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
@@ -2151,7 +2231,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={1}
             title="Conceito e Contrações"
-            variant={mv[7]}
+            variant="blue"
           />
           <p className="text-lg text-muted-foreground">
             A <strong>Preposição</strong> liga dois termos, estabelecendo uma
@@ -2174,7 +2254,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Preposições Essenciais vs Acidentais"
-            variant={mv[7]}
+            variant="blue"
           />
           <ContentAccordion
             mode="stacked"
@@ -2219,7 +2299,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Preposição e Regência — Os Verbos Mais Cobrados"
-            variant={mv[7]}
+            variant="blue"
           />
           <p className="text-lg text-muted-foreground leading-relaxed text-justify">
             A <strong>regência verbal</strong> define qual preposição o verbo exige para ligar seu complemento. Errar a preposição na regência é um dos erros mais cobrados na Cesgranrio em questões de correção e reescrita.
@@ -2251,7 +2331,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant={mv[7]}
+            variant="blue"
           />
           <LessonTabs
             tabs={[
@@ -2296,7 +2376,7 @@ export default function AulaClassesPalavras({
             titulo="QUIZ: Preposição: O Elo de Ligação"
             icone="🔗"
             numero={5}
-            variant={mv[7]}
+            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
           />
         </section>
@@ -2307,7 +2387,7 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={8}
           titulo="A Conjunção"
           descricao="Os conectivos que articulam as ideias e as orações."
-          variant={mv[8]}
+          variant="blue"
         />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
@@ -2316,7 +2396,7 @@ export default function AulaClassesPalavras({
             index="INTRO"
             title="A Conjunção: A Engrenagem do Raciocínio"
             description="Domine a classe que conecta orações e estabelece as complexas relações lógicas do discurso"
-            variant={mv[8]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
@@ -2416,7 +2496,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={1}
             title="Coordenativas vs Subordinativas"
-            variant={mv[8]}
+            variant="blue"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-4">
@@ -2438,7 +2518,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Conjunções Coordenativas em Detalhe"
-            variant={mv[8]}
+            variant="blue"
           />
           <ContentAccordion
             mode="stacked"
@@ -2484,7 +2564,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Conjunções Subordinativas — O Mapa Semântico"
-            variant={mv[8]}
+            variant="blue"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FlipCard
@@ -2534,7 +2614,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Resumo e Multimídia"
-            variant={mv[8]}
+            variant="blue"
           />
           <LessonTabs
             tabs={[
@@ -2579,7 +2659,7 @@ export default function AulaClassesPalavras({
             titulo="QUIZ: Conjunção: A Engrenagem"
             icone="🔗"
             numero={5}
-            variant={mv[8]}
+            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
         </section>
@@ -2590,7 +2670,7 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={9}
           titulo="A Interjeição"
           descricao="A expressão das emoções e as regras sutis de pontuação."
-          variant={mv[9]}
+          variant="blue"
         />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
@@ -2599,7 +2679,7 @@ export default function AulaClassesPalavras({
             index="INTRO"
             title="A Interjeição: O Clamor da Linguagem"
             description="Entenda a classe invariável que vocaliza emoções, estados de espírito e apelos diretos"
-            variant={mv[9]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
@@ -2692,7 +2772,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Classificação por Sentimento e Locuções Interjetivas"
-            variant={mv[9]}
+            variant="blue"
           />
           <ContentAccordion
             mode="stacked"
@@ -2736,7 +2816,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Resumo e Multimídia"
-          variant={mv[9]}
+          variant="blue"
         />
           <LessonTabs
             tabs={[
@@ -2779,7 +2859,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Interjeição no Texto — Análise de Efeitos de Sentido"
-            variant={mv[9]}
+            variant="blue"
           />
           <p className="text-lg text-muted-foreground leading-relaxed text-justify">
             Na Cesgranrio, a interjeição aparece principalmente em questões de <strong>interpretação de texto</strong> e <strong>análise de efeitos de sentido</strong>. O examinador quer saber qual emoção ou intenção comunicativa a interjeição expressa no contexto específico.
@@ -2811,7 +2891,7 @@ export default function AulaClassesPalavras({
             titulo="QUIZ: Interjeição: A Emoção"
             icone="⚡"
             numero={6}
-            variant={mv[9]}
+            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
           />
         </section>
@@ -2822,7 +2902,7 @@ export default function AulaClassesPalavras({
         <ModuleBanner numero={10}
           titulo="O Numeral"
           descricao="Quantidades, ordens e a pontos de atenção do numeral dual."
-          variant={mv[10]}
+          variant="blue"
         />
 
         {/* ★ RICH INTRO SECTION - PADRÃO ULTIMATE */}
@@ -2831,7 +2911,7 @@ export default function AulaClassesPalavras({
             index="INTRO"
             title="O Numeral: A Precisão Quantitativa"
             description="Explore a classe que define quantidades exatas, ordens, frações e multiplicações"
-            variant={mv[10]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
@@ -2924,7 +3004,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={2}
             title="Cardinais vs Ordinais"
-            variant={mv[10]}
+            variant="blue"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-6 bg-muted/30 rounded-xl">
@@ -2946,7 +3026,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={3}
             title="Multiplicativos, Fracionários e Coletivos"
-            variant={mv[10]}
+            variant="blue"
           />
           <ContentAccordion
             mode="stacked"
@@ -3004,7 +3084,7 @@ export default function AulaClassesPalavras({
           <ModuleSectionHeader
             index={4}
             title="Revisão Express — As 10 Classes de Palavras"
-            variant={mv[10]}
+            variant="blue"
           />
           <ContentAccordion
             mode="stacked"
@@ -3048,7 +3128,7 @@ export default function AulaClassesPalavras({
             titulo="QUIZ: Numeral: A Quantidade"
             icone="🔢"
             numero={6}
-            variant={mv[10]}
+            variant="blue"
             onComplete={(score) => handleModuleComplete("modulo-10", score)}
           />
         </section>

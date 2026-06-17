@@ -1,4 +1,5 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 import { getAllModuleVariants } from "@/lib/moduleColors";
 
 import { useState, useCallback, useEffect } from "react";
@@ -48,7 +49,7 @@ import {
   AulaTemplate,
   Comparison,
   ModuleConsolidation,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 
 import {
   QUIZ_M1_PONTUACAO,
@@ -104,20 +105,8 @@ export default function AulaPontuacao({
     return "modulo-1";
   });
 
-  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
-      if (saved) {
-        try {
-          const arr = JSON.parse(saved);
-          return new Set(arr);
-        } catch (e) {
-          return new Set();
-        }
-      }
-    }
-    return new Set();
-  });
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -125,14 +114,7 @@ export default function AulaPontuacao({
     }
   }, [activeTab]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `${STORAGE_KEY_PREFIX}completed_modules`,
-        JSON.stringify(Array.from(completedModules))
-      );
-    }
-  }, [completedModules]);
+  
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
   const [showCompletionBadge, setShowCompletionBadge] = useState(false);
 
@@ -150,7 +132,7 @@ export default function AulaPontuacao({
       for (let i = 0; i < count; i++) {
         s.add(MODULE_DEFS[i].id);
       }
-      setCompletedModules(s);
+      updateCompletedModules(Array.from(s));
       if (count < totalModulos) {
         setActiveTab(MODULE_DEFS[count].id);
       } else {
@@ -162,11 +144,9 @@ export default function AulaPontuacao({
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
-      setCompletedModules((prev) => {
-        const n = new Set(prev);
-        n.add(moduleId);
-        return n;
-      });
+      const nextCompleted = new Set(completedModules);
+      nextCompleted.add(moduleId);
+      updateCompletedModules(Array.from(nextCompleted));
 
       const idx = MODULE_DEFS.findIndex((m) => m.id === moduleId);
       onUpdateProgress?.(Math.round(((idx + 1) / totalModulos) * 100));
@@ -187,6 +167,8 @@ export default function AulaPontuacao({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={(val) => {
         const idx = MODULE_DEFS.findIndex((m) => m.id === val);
@@ -216,13 +198,13 @@ export default function AulaPontuacao({
             numero={1}
             titulo="Visão Geral e Funções"
             descricao="Pontuar não é apenas pausar para respirar; é garantir a clareza e a coesão do texto técnico."
-          variant={mv[1]}
+          variant="blue"
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="As Finalidades da Pontuação"
-              variant={mv[1]}
+              variant="blue"
             />
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -303,7 +285,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Os Sinais e Suas Funções"
-          variant={mv[1]}
+          variant="blue"
         />
             <ContentAccordion
               slides={[
@@ -414,7 +396,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Pontuação Normativa × Pontuação Expressiva"
-          variant={mv[1]}
+          variant="blue"
         />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -470,7 +452,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          variant={mv[1]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -482,13 +464,13 @@ export default function AulaPontuacao({
             numero={2}
             titulo="Vírgula: Restrições de Uso"
             descricao="O que NUNCA fazer se você quiser ser aprovado. Erros que zeram questões de gramática."
-          variant={mv[2]}
+          variant="blue"
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="As Proibições Absolutas da Vírgula"
-              variant={mv[2]}
+              variant="blue"
             />
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -534,7 +516,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Scanner de Erros Fatais"
-          variant={mv[2]}
+          variant="blue"
         />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <AlertBox tipo="danger" titulo="Não Separe o Sujeito">
@@ -568,7 +550,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Catálogo Completo das Proibições"
-          variant={mv[2]}
+          variant="blue"
         />
             <ContentAccordion
               slides={[
@@ -701,7 +683,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={3}
               title="Teste Rápido: Certo ou Errado?"
-          variant={mv[2]}
+          variant="blue"
         />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -767,7 +749,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={5}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          variant={mv[2]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -779,13 +761,13 @@ export default function AulaPontuacao({
             numero={3}
             titulo="Vírgula: Termos Essenciais"
             descricao="Enumerações, repetições e a organização básica da frase."
-          variant={mv[3]}
+          variant="blue"
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="O Efeito Organizacional da Vírgula"
-              variant={mv[3]}
+              variant="blue"
             />
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -829,7 +811,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Listas e Repetições"
-          variant={mv[3]}
+          variant="blue"
         />
             <ContentAccordion
               slides={[
@@ -877,7 +859,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Regras SVO e Enumeração"
-          variant={mv[3]}
+          variant="blue"
         />
             <ContentAccordion
               slides={[
@@ -978,7 +960,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={5}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          variant={mv[3]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -990,13 +972,13 @@ export default function AulaPontuacao({
             numero={4}
             titulo="Vírgula: Aposto e Vocativo"
             descricao="Isole quem você chama e explique o que você cita."
-          variant={mv[4]}
+          variant="blue"
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="Isolamento de Termos Acessórios"
-              variant={mv[4]}
+              variant="blue"
             />
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -1021,7 +1003,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Chamamento e Explicação"
-          variant={mv[4]}
+          variant="blue"
         />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -1083,7 +1065,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Tipos de Aposto e Posição do Vocativo"
-          variant={mv[4]}
+          variant="blue"
         />
             <ContentAccordion
               slides={[
@@ -1193,7 +1175,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={6}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          variant={mv[4]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -1205,13 +1187,13 @@ export default function AulaPontuacao({
             numero={5}
             titulo="Vírgula: Adjuntos Deslocados"
             descricao="Quando o advérbio sai do seu lugar original e exige o sinal."
-          variant={mv[5]}
+          variant="blue"
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="O Deslocamento do Adjunto"
-              variant={mv[5]}
+              variant="blue"
             />
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -1236,7 +1218,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="A Regra do Comprimento"
-              variant={mv[5]}
+              variant="blue"
             />
             <AlertBox tipo="warning" titulo="Destaque Estratégico (Cesgranrio)">
               A banca avalia se o adjunto é **Longo** (obrigatória) ou **Curto**
@@ -1268,7 +1250,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="O Que É um Adjunto Adverbial Deslocado?"
-              variant={mv[5]}
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -1386,7 +1368,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={7}
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          variant={mv[5]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -1398,13 +1380,13 @@ export default function AulaPontuacao({
             numero={6}
             titulo="Vírgula: Orações Coordenadas"
             descricao="O fetiche da Cesgranrio: vírgulas antes de MAS, PORÉM e o polêmico E."
-          variant={mv[6]}
+          variant="blue"
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="Vírgula entre Orações Coordenadas"
-              variant={mv[6]}
+              variant="blue"
             />
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -1429,7 +1411,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="A Conjunção 'E'"
-              variant={mv[6]}
+              variant="blue"
             />
             <p className="text-muted-foreground text-lg">
               Geralmente o 'E' não pede vírgula, mas em 3 situações ele é seu
@@ -1460,7 +1442,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Tipos de Orações Coordenadas"
-              variant={mv[6]}
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -1615,7 +1597,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={8}
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
-          variant={mv[6]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -1627,13 +1609,13 @@ export default function AulaPontuacao({
             numero={7}
             titulo="Vírgula: Orações Subordinadas"
             descricao="A diferença vital entre explicar para todos ou restringir para alguns."
-          variant={mv[7]}
+          variant="blue"
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="A Pontuação nas Orações Subordinadas"
-              variant={mv[7]}
+              variant="blue"
             />
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -1658,7 +1640,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Explicativa vs Restritiva"
-              variant={mv[7]}
+              variant="blue"
             />
             <Comparison
               title="Impacto Semântico"
@@ -1683,7 +1665,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Tipos de Orações Subordinadas e a Vírgula"
-              variant={mv[7]}
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -1802,7 +1784,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={9}
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
-          variant={mv[7]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -1814,13 +1796,13 @@ export default function AulaPontuacao({
             numero={8}
             titulo="Ponto e Ponto e Vírgula"
             descricao="Organização de listas e períodos extensos que já possuem vírgulas internas."
-          variant={mv[8]}
+          variant="blue"
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="As Pausas Maiores"
-              variant={mv[8]}
+              variant="blue"
             />
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -1845,7 +1827,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="O ponto-e-vírgula"
-              variant={mv[8]}
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -1873,7 +1855,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Ponto Final, Ponto e Vírgula e Dois-Pontos"
-              variant={mv[8]}
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -2035,7 +2017,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={10}
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
-          variant={mv[8]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -2047,13 +2029,13 @@ export default function AulaPontuacao({
             numero={9}
             titulo="Sinais Complementares"
             descricao="Dois-pontos, Travessões e Parênteses: a estética da explicação."
-          variant={mv[9]}
+          variant="blue"
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="Marcadores Especiais"
-              variant={mv[9]}
+              variant="blue"
             />
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -2078,7 +2060,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Além da Vírgula"
-              variant={mv[9]}
+              variant="blue"
             />
             <div className="grid gap-4 md:grid-cols-2">
               <FlipCard
@@ -2096,7 +2078,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Todos os Sinais Complementares"
-              variant={mv[9]}
+              variant="blue"
             />
             <CardCarousel
               cards={[
@@ -2250,7 +2232,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={11}
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
-          variant={mv[9]}
+          variant="blue"
         />
         </div>
       </TabsContent>
@@ -2262,13 +2244,13 @@ export default function AulaPontuacao({
             numero={10}
             titulo="Simulado Final"
             descricao="Teste seu domínio perante uma bateria definitiva focada em Pontuação Global Cesgranrio."
-          variant={mv[10]}
+          variant="blue"
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={11}
               title="Mapa Mental: Revisão Completa"
-          variant={mv[10]}
+          variant="blue"
         />
             <ContentAccordion
               slides={[
@@ -2486,7 +2468,7 @@ export default function AulaPontuacao({
               icone="🏆"
               numero={12}
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
-          variant={mv[10]}
+          variant="blue"
         />
           )}
         </div>

@@ -1,4 +1,5 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -14,7 +15,7 @@ import {
   AulaTemplate,
   ModuleSectionHeader,
   ModuleConsolidation,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   QUIZ_M1_PRINCIPIO_CONTAGEM,
   QUIZ_M2_FATORIAL,
@@ -47,9 +48,8 @@ export default function AulaAnaliseCombinatoria({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_PRINCIPIO_CONTAGEM, 6));
   const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_FATORIAL, 6));
@@ -66,11 +66,9 @@ export default function AulaAnaliseCombinatoria({
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
-      setCompletedModules((prev) => {
-        const n = new Set(prev);
-        n.add(moduleId);
-        return n;
-      });
+      const nextCompleted = new Set(completedModules);
+      nextCompleted.add(moduleId);
+      updateCompletedModules(Array.from(nextCompleted));
       const modules = Array.from({ length: 10 }, (_, i) => `modulo-${i + 1}`);
       const idx = modules.findIndex((m) => m === moduleId);
       const pct = Math.round(((idx + 1) / 10) * 100);
@@ -84,7 +82,7 @@ export default function AulaAnaliseCombinatoria({
       const count = Math.floor((currentProgress / 100) * 10);
       const s = new Set<string>();
       for (let i = 1; i <= count; i++) s.add(`modulo-${i}`);
-      setCompletedModules(s);
+      updateCompletedModules(Array.from(s));
     }
   }, [currentProgress]);
 
@@ -106,6 +104,8 @@ export default function AulaAnaliseCombinatoria({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={MODULE_DEFS}
@@ -132,7 +132,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={1}
           titulo="Princípio Fundamental da Contagem"
           descricao="A base de toda análise combinatória: quando multiplicar as possibilidades para contar corretamente sem listar cada caso."
-           variant={mv[1]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Princípio Fundamental da Contagem */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -140,7 +140,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Fundamentos: O Princípio Fundamental da Contagem"
               description="Como contar sequências de escolhas independentes sem listar todas as possibilidades"
-              variant={mv[1]}
+              variant="blue"
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -282,7 +282,31 @@ export default function AulaAnaliseCombinatoria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="De quantas formas distintas 5 técnicos da REPLAN podem se organizar em fila para receber treinamento?"
+          alternativas={[
+              { letra: "A", texto: "25", correta: false },
+              { letra: "B", texto: "60", correta: false },
+              { letra: "C", texto: "120", correta: true },
+              { letra: "D", texto: "240", correta: false },
+              { letra: "E", texto: "720", correta: false }
+            ]}
+          dicaEstrategica="Aqui: 5 × 4 × 3 × 2 × 1 = 120."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "P(5) = 5!" },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "= 120." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Em permutação simples, trocamos TODOS os n elementos, e o número de arranjos é n!." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
             variant="indigo"
             video={{
@@ -341,7 +365,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={2}
           titulo="Fatorial e Notação"
           descricao="Domine a operação fundamental que sustenta todas as fórmulas de análise combinatória: o fatorial."
-           variant={mv[2]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Fatorial */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -349,7 +373,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Fundamentos: A Notação Fatorial"
               description="Entenda o operador ! que aparece em todas as fórmulas de permutações, arranjos e combinações"
-              variant={mv[2]}
+              variant="blue"
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -403,7 +427,7 @@ export default function AulaAnaliseCombinatoria({
               index={2}
               title="Definição de Fatorial"
               description="n! representa o produto de todos os inteiros positivos de 1 até n."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -513,9 +537,33 @@ export default function AulaAnaliseCombinatoria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="De quantas formas distintas 5 técnicos da REPLAN podem se organizar em fila para receber treinamento?"
+          alternativas={[
+              { letra: "A", texto: "25", correta: false },
+              { letra: "B", texto: "60", correta: false },
+              { letra: "C", texto: "120", correta: true },
+              { letra: "D", texto: "240", correta: false },
+              { letra: "E", texto: "720", correta: false }
+            ]}
+          dicaEstrategica="Aqui: 5 × 4 × 3 × 2 × 1 = 120."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "P(5) = 5!" },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "= 120." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Em permutação simples, trocamos TODOS os n elementos, e o número de arranjos é n!." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "iG0_F6gW2QY",
               title: "Fatorial: A Operação das Multipicações",
@@ -558,7 +606,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="QUIZ: Fatorial"
               icone="❗"
               numero={4}
-              variant="cyan"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -572,7 +620,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={3}
           titulo="Permutação Simples"
           descricao="Quando a ordem importa e usamos todos os elementos: quantas formas distintas de organizar n objetos diferentes."
-           variant={mv[3]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Permutação Simples */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -580,7 +628,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Fundamentos: Permutações Simples"
               description="Contando ordenações quando a ordem é essencial e todos os elementos são usados"
-              variant={mv[3]}
+              variant="blue"
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -625,7 +673,7 @@ export default function AulaAnaliseCombinatoria({
               index={2}
               title="P(n) = n! — A Fórmula da Permutação"
               description="O número de arranjos de n elementos distintos em todos os n lugares é n fatorial."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -740,9 +788,33 @@ export default function AulaAnaliseCombinatoria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="De quantas formas distintas 5 técnicos da REPLAN podem se organizar em fila para receber treinamento?"
+          alternativas={[
+              { letra: "A", texto: "25", correta: false },
+              { letra: "B", texto: "60", correta: false },
+              { letra: "C", texto: "120", correta: true },
+              { letra: "D", texto: "240", correta: false },
+              { letra: "E", texto: "720", correta: false }
+            ]}
+          dicaEstrategica="Aqui: 5 × 4 × 3 × 2 × 1 = 120."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "P(5) = 5!" },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "= 120." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Em permutação simples, trocamos TODOS os n elementos, e o número de arranjos é n!." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "h6V7j6b7M0I",
               title: "Permutação Simples: Mudando Tudo de Lugar",
@@ -783,7 +855,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="QUIZ: Permutação Simples"
               icone="🔀"
               numero={4}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -797,7 +869,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={4}
           titulo="Permutação com Repetição"
           descricao="Quando alguns elementos são idênticos, organizações que parecem distintas são na verdade iguais. Aprenda a corrigir a contagem."
-           variant={mv[4]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Permutação com Repetição */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -805,7 +877,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Fundamentos: Permutações com Elementos Repetidos"
               description="Ajustando contagens quando alguns elementos são indistinguíveis entre si"
-              variant={mv[4]}
+              variant="blue"
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -842,7 +914,7 @@ export default function AulaAnaliseCombinatoria({
               index={2}
               title="P(n; n₁, n₂, ...) = n! / (n₁! × n₂! × ...)"
               description="Divida pelo fatorial de cada grupo de elementos repetidos para eliminar contagens duplicadas."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -934,7 +1006,31 @@ export default function AulaAnaliseCombinatoria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="De quantas formas distintas 5 técnicos da REPLAN podem se organizar em fila para receber treinamento?"
+          alternativas={[
+              { letra: "A", texto: "25", correta: false },
+              { letra: "B", texto: "60", correta: false },
+              { letra: "C", texto: "120", correta: true },
+              { letra: "D", texto: "240", correta: false },
+              { letra: "E", texto: "720", correta: false }
+            ]}
+          dicaEstrategica="Aqui: 5 × 4 × 3 × 2 × 1 = 120."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "P(5) = 5!" },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "= 120." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Em permutação simples, trocamos TODOS os n elementos, e o número de arranjos é n!." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
             variant="indigo"
             video={{
@@ -991,7 +1087,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={5}
           titulo="Arranjo Simples"
           descricao="Selecionar e ordenar p elementos de um conjunto de n: a ordem importa e cada elemento é usado no máximo uma vez."
-           variant={mv[5]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Arranjo Simples */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -999,7 +1095,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Fundamentos: Arranjos Simples"
               description="Selecionando e ordenando um subconjunto de elementos de um conjunto maior"
-              variant={mv[5]}
+              variant="blue"
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -1149,7 +1245,31 @@ export default function AulaAnaliseCombinatoria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="De quantas formas distintas 5 técnicos da REPLAN podem se organizar em fila para receber treinamento?"
+          alternativas={[
+              { letra: "A", texto: "25", correta: false },
+              { letra: "B", texto: "60", correta: false },
+              { letra: "C", texto: "120", correta: true },
+              { letra: "D", texto: "240", correta: false },
+              { letra: "E", texto: "720", correta: false }
+            ]}
+          dicaEstrategica="Aqui: 5 × 4 × 3 × 2 × 1 = 120."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "P(5) = 5!" },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "= 120." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Em permutação simples, trocamos TODOS os n elementos, e o número de arranjos é n!." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
             variant="indigo"
             video={{
@@ -1209,7 +1329,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={6}
           titulo="Combinação Simples"
           descricao="Selecionar p elementos de n sem se preocupar com a ordem: equipes, grupos, subconjuntos — o conceito mais cobrado em provas."
-           variant={mv[6]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Combinação Simples */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1217,7 +1337,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Fundamentos: Combinações Simples"
               description="Selecionando subconjuntos quando a ordem de seleção não importa"
-              variant={mv[6]}
+              variant="blue"
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -1361,7 +1481,31 @@ export default function AulaAnaliseCombinatoria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="De quantas formas distintas 5 técnicos da REPLAN podem se organizar em fila para receber treinamento?"
+          alternativas={[
+              { letra: "A", texto: "25", correta: false },
+              { letra: "B", texto: "60", correta: false },
+              { letra: "C", texto: "120", correta: true },
+              { letra: "D", texto: "240", correta: false },
+              { letra: "E", texto: "720", correta: false }
+            ]}
+          dicaEstrategica="Aqui: 5 × 4 × 3 × 2 × 1 = 120."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "P(5) = 5!" },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "= 120." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Em permutação simples, trocamos TODOS os n elementos, e o número de arranjos é n!." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
             variant="indigo"
             video={{
@@ -1421,7 +1565,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={7}
           titulo="Combinação com Repetição"
           descricao="Quando é permitido escolher o mesmo elemento mais de uma vez: o mais difícil dos problemas de combinatória."
-           variant={mv[7]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Combinação com Repetição */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1429,7 +1573,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Fundamentos: Combinações com Repetição"
               description="Selecionando elementos quando múltiplas cópias de cada elemento podem ser escolhidas"
-              variant={mv[7]}
+              variant="blue"
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -1469,7 +1613,7 @@ export default function AulaAnaliseCombinatoria({
               index={2}
               title="CR(n,p) = C(n+p−1, p)"
               description="A fórmula que transforma um problema com repetição em uma combinação simples de ordem maior."
-              variant="cyan"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1600,9 +1744,33 @@ export default function AulaAnaliseCombinatoria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="De quantas formas distintas 5 técnicos da REPLAN podem se organizar em fila para receber treinamento?"
+          alternativas={[
+              { letra: "A", texto: "25", correta: false },
+              { letra: "B", texto: "60", correta: false },
+              { letra: "C", texto: "120", correta: true },
+              { letra: "D", texto: "240", correta: false },
+              { letra: "E", texto: "720", correta: false }
+            ]}
+          dicaEstrategica="Aqui: 5 × 4 × 3 × 2 × 1 = 120."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "P(5) = 5!" },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "= 120." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Em permutação simples, trocamos TODOS os n elementos, e o número de arranjos é n!." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "jX_l5X7V9QY",
               title: "Combinação com Repetição: O Método Bolinha-Traço",
@@ -1642,7 +1810,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="QUIZ: Combinação com Repetição"
               icone="♻️"
               numero={4}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -1656,7 +1824,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={8}
           titulo="Propriedades e Identidades"
           descricao="As relações entre combinações que permitem resolver problemas complexos rapidamente: simetria, Pascal e o Teorema Binomial."
-           variant={mv[8]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1777,7 +1945,31 @@ export default function AulaAnaliseCombinatoria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é o valor de 6! (seis fatorial)?"
+          alternativas={[
+              { letra: "A", texto: "36", correta: false },
+              { letra: "B", texto: "120", correta: false },
+              { letra: "C", texto: "720", correta: true },
+              { letra: "D", texto: "5040", correta: false },
+              { letra: "E", texto: "360", correta: false }
+            ]}
+          dicaEstrategica="Memorize: 1!=1, 2!=2, 3!=6, 4!=24, 5!=120, 6!=720, 7!=5040."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "6!" },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "= 6 × 5 × 4 × 3 × 2 × 1 = 720. Por definição, n! = n × (n−1) × ..." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "× 2 × 1." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="indigo"
             video={{
@@ -1833,14 +2025,14 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={9}
           titulo="Aplicações Petrobras"
           descricao="Equipes, senhas, rotas, comissões: os cenários reais mais cobrados pela CESGRANRIO com contexto de operações petrolíferas."
-           variant={mv[9]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Problemas Compostos e Estratégia de Resolução"
               description="Como decompor enunciados complexos em etapas simples de combinatória — a habilidade mais exigida na CESGRANRIO."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1945,9 +2137,33 @@ export default function AulaAnaliseCombinatoria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é o valor de 6! (seis fatorial)?"
+          alternativas={[
+              { letra: "A", texto: "36", correta: false },
+              { letra: "B", texto: "120", correta: false },
+              { letra: "C", texto: "720", correta: true },
+              { letra: "D", texto: "5040", correta: false },
+              { letra: "E", texto: "360", correta: false }
+            ]}
+          dicaEstrategica="Memorize: 1!=1, 2!=2, 3!=6, 4!=24, 5!=120, 6!=720, 7!=5040."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "6!" },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "= 6 × 5 × 4 × 3 × 2 × 1 = 720. Por definição, n! = n × (n−1) × ..." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "× 2 × 1." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "p8I2-9Z9R9U",
               title: "Aplicações Petrobras: Estratégias de Prova",
@@ -1987,7 +2203,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="QUIZ: Aplicações Petrobras"
               icone="🏭"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -2001,7 +2217,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={10}
           titulo="Simulado CESGRANRIO"
           descricao="Questões no estilo exato da banca: enunciados elaborados, múltiplas restrições, armadilhas clássicas. Teste sua preparação completa."
-           variant={mv[10]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2117,7 +2333,31 @@ export default function AulaAnaliseCombinatoria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é o valor de 6! (seis fatorial)?"
+          alternativas={[
+              { letra: "A", texto: "36", correta: false },
+              { letra: "B", texto: "120", correta: false },
+              { letra: "C", texto: "720", correta: true },
+              { letra: "D", texto: "5040", correta: false },
+              { letra: "E", texto: "360", correta: false }
+            ]}
+          dicaEstrategica="Memorize: 1!=1, 2!=2, 3!=6, 4!=24, 5!=120, 6!=720, 7!=5040."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "6!" },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "= 6 × 5 × 4 × 3 × 2 × 1 = 720. Por definição, n! = n × (n−1) × ..." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "× 2 × 1." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="indigo"
             video={{

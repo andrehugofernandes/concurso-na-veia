@@ -1,5 +1,6 @@
 import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -13,7 +14,7 @@ import {
   AulaTemplate,
   ModuleSectionHeader,
   ModuleConsolidation,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   QUIZ_M1_RAZOES_TRIG,
   QUIZ_M2_ANGULOS_NOTAVEIS,
@@ -46,9 +47,8 @@ export default function AulaTrigonometria({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_RAZOES_TRIG, 6));
   const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_ANGULOS_NOTAVEIS, 6));
@@ -65,11 +65,9 @@ export default function AulaTrigonometria({
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
-      setCompletedModules((prev) => {
-        const n = new Set(prev);
-        n.add(moduleId);
-        return n;
-      });
+      const nextCompleted = new Set(completedModules);
+      nextCompleted.add(moduleId);
+      updateCompletedModules(Array.from(nextCompleted));
       const modules = Array.from({ length: 10 }, (_, i) => `modulo-${i + 1}`);
       const idx = modules.findIndex((m) => m === moduleId);
       const pct = Math.round(((idx + 1) / 10) * 100);
@@ -83,7 +81,7 @@ export default function AulaTrigonometria({
       const count = Math.floor((currentProgress / 100) * 10);
       const s = new Set<string>();
       for (let i = 1; i <= count; i++) s.add(`modulo-${i}`);
-      setCompletedModules(s);
+      updateCompletedModules(Array.from(s));
     }
   }, [currentProgress]);
 
@@ -105,6 +103,8 @@ export default function AulaTrigonometria({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={MODULE_DEFS}
@@ -131,7 +131,7 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={1}
           titulo="Razões Trigonométricas no Triângulo Retângulo"
           descricao="Domine seno, cosseno e tangente — a base de toda a trigonometria aplicada à engenharia e inspeção industrial."
-           variant={mv[1]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -338,7 +338,31 @@ export default function AulaTrigonometria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é o valor exato de sen 60°?"
+          alternativas={[
+              { letra: "A", texto: "1/2", correta: false },
+              { letra: "B", texto: "√2/2", correta: false },
+              { letra: "C", texto: "√3/2", correta: true },
+              { letra: "D", texto: "1", correta: false },
+              { letra: "E", texto: "√3", correta: false }
+            ]}
+          dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Tabela: sen 30°=1/2, sen 45°=√2/2, sen 60°=√3/2, sen 90°=1." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="indigo"
             video={{
@@ -393,14 +417,14 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={2}
           titulo="Ângulos Notáveis: 30°, 45°, 60° e 90°"
           descricao="Memorize os valores exatos que aparecem em 90% das questões de concurso — sem calculadora!"
-           variant={mv[2]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Tabela dos Ângulos Notáveis"
               description="Os valores que você deve saber de cor para a prova da CESGRANRIO."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -634,9 +658,33 @@ export default function AulaTrigonometria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é o valor exato de sen 60°?"
+          alternativas={[
+              { letra: "A", texto: "1/2", correta: false },
+              { letra: "B", texto: "√2/2", correta: false },
+              { letra: "C", texto: "√3/2", correta: true },
+              { letra: "D", texto: "1", correta: false },
+              { letra: "E", texto: "√3", correta: false }
+            ]}
+          dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Tabela: sen 30°=1/2, sen 45°=√2/2, sen 60°=√3/2, sen 90°=1." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "V0xjO3M0q0s",
               title: "Ângulos Notáveis: 30°, 45°, 60°",
@@ -674,7 +722,7 @@ export default function AulaTrigonometria({
               titulo="QUIZ: Ângulos Notáveis"
               icone="📊"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -688,7 +736,7 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={3}
           titulo="Círculo Trigonométrico"
           descricao="Entenda o círculo unitário — a ferramenta que unifica seno, cosseno e tangente para todos os ângulos."
-           variant={mv[3]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -881,9 +929,33 @@ export default function AulaTrigonometria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é o valor exato de sen 60°?"
+          alternativas={[
+              { letra: "A", texto: "1/2", correta: false },
+              { letra: "B", texto: "√2/2", correta: false },
+              { letra: "C", texto: "√3/2", correta: true },
+              { letra: "D", texto: "1", correta: false },
+              { letra: "E", texto: "√3", correta: false }
+            ]}
+          dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Tabela: sen 30°=1/2, sen 45°=√2/2, sen 60°=√3/2, sen 90°=1." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "0PqJ_MN0n8U",
               title: "Circunferência Unitária e Radianos",
@@ -936,14 +1008,14 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={4}
           titulo="Funções Trigonométricas"
           descricao="Seno, cosseno e tangente como funções reais — amplitude, período e gráficos aplicados à engenharia."
-           variant={mv[4]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Amplitude, Período e Deslocamento"
               description="Os parâmetros que controlam o comportamento de funções trigonométricas."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1128,7 +1200,31 @@ export default function AulaTrigonometria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é o valor exato de sen 60°?"
+          alternativas={[
+              { letra: "A", texto: "1/2", correta: false },
+              { letra: "B", texto: "√2/2", correta: false },
+              { letra: "C", texto: "√3/2", correta: true },
+              { letra: "D", texto: "1", correta: false },
+              { letra: "E", texto: "√3", correta: false }
+            ]}
+          dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Tabela: sen 30°=1/2, sen 45°=√2/2, sen 60°=√3/2, sen 90°=1." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{
@@ -1170,7 +1266,7 @@ export default function AulaTrigonometria({
               titulo="QUIZ: Funções Trigonométricas"
               icone="📈"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -1184,7 +1280,7 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={5}
           titulo="Identidades Trigonométricas Fundamentais"
           descricao="As equações que são verdadeiras para todos os ângulos — ferramentas de simplificação e prova."
-           variant={mv[5]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1356,9 +1452,33 @@ export default function AulaTrigonometria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é o valor exato de sen 60°?"
+          alternativas={[
+              { letra: "A", texto: "1/2", correta: false },
+              { letra: "B", texto: "√2/2", correta: false },
+              { letra: "C", texto: "√3/2", correta: true },
+              { letra: "D", texto: "1", correta: false },
+              { letra: "E", texto: "√3", correta: false }
+            ]}
+          dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Tabela: sen 30°=1/2, sen 45°=√2/2, sen 60°=√3/2, sen 90°=1." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "1Ixnl1bN3yg",
               title: "Identidades Trigonométricas Fundamentais",
@@ -1411,14 +1531,14 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={6}
           titulo="Lei dos Senos"
           descricao="Resolva qualquer triângulo quando você conhece ângulos e lados opostos — essencial para triangulação em campo."
-           variant={mv[6]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Fórmula e Aplicações da Lei dos Senos"
               description="Quando e como usar a Lei dos Senos em problemas industriais."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1582,9 +1702,33 @@ export default function AulaTrigonometria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é o valor exato de sen 60°?"
+          alternativas={[
+              { letra: "A", texto: "1/2", correta: false },
+              { letra: "B", texto: "√2/2", correta: false },
+              { letra: "C", texto: "√3/2", correta: true },
+              { letra: "D", texto: "1", correta: false },
+              { letra: "E", texto: "√3", correta: false }
+            ]}
+          dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Tabela: sen 30°=1/2, sen 45°=√2/2, sen 60°=√3/2, sen 90°=1." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="rose"
+            variant="blue"
             video={{
               videoId: "FAp9XvJNc0I",
               title: "Lei dos Senos: a/sen(A) = b/sen(B) = c/sen(C)",
@@ -1622,7 +1766,7 @@ export default function AulaTrigonometria({
               titulo="QUIZ: Lei dos Senos"
               icone="⚖️"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -1636,7 +1780,7 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={7}
           titulo="Lei dos Cossenos"
           descricao="A generalização do Teorema de Pitágoras — resolva triângulos quando você conhece três lados ou dois lados e o ângulo entre eles."
-           variant={mv[7]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1801,7 +1945,31 @@ export default function AulaTrigonometria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é o valor exato de sen 60°?"
+          alternativas={[
+              { letra: "A", texto: "1/2", correta: false },
+              { letra: "B", texto: "√2/2", correta: false },
+              { letra: "C", texto: "√3/2", correta: true },
+              { letra: "D", texto: "1", correta: false },
+              { letra: "E", texto: "√3", correta: false }
+            ]}
+          dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Tabela: sen 30°=1/2, sen 45°=√2/2, sen 60°=√3/2, sen 90°=1." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="indigo"
             video={{
@@ -1855,7 +2023,7 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={8}
           titulo="Equações Trigonométricas"
           descricao="Encontre todos os ângulos que satisfazem uma equação — incluindo a solução geral com periodicidade."
-           variant={mv[8]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2020,9 +2188,33 @@ export default function AulaTrigonometria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é o valor exato de sen 60°?"
+          alternativas={[
+              { letra: "A", texto: "1/2", correta: false },
+              { letra: "B", texto: "√2/2", correta: false },
+              { letra: "C", texto: "√3/2", correta: true },
+              { letra: "D", texto: "1", correta: false },
+              { letra: "E", texto: "√3", correta: false }
+            ]}
+          dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Tabela: sen 30°=1/2, sen 45°=√2/2, sen 60°=√3/2, sen 90°=1." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "jOpTkIwmJqE",
               title: "Equações Trigonométricas: Resolvendo sin(x)=a, cos(x)=a, tan(x)=a",
@@ -2075,14 +2267,14 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={9}
           titulo="Aplicações Industriais Petrobras"
           descricao="Trigonometria aplicada em rampas offshore, dutos submarinos, triangulação, içamento de cargas e inspeções industriais."
-           variant={mv[9]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Cenários Reais da Indústria de Petróleo"
               description="As situações que a CESGRANRIO recria em suas questões contextualizadas."
-              variant="emerald"
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -2280,9 +2472,33 @@ export default function AulaTrigonometria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é o valor exato de sen 60°?"
+          alternativas={[
+              { letra: "A", texto: "1/2", correta: false },
+              { letra: "B", texto: "√2/2", correta: false },
+              { letra: "C", texto: "√3/2", correta: true },
+              { letra: "D", texto: "1", correta: false },
+              { letra: "E", texto: "√3", correta: false }
+            ]}
+          dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Tabela: sen 30°=1/2, sen 45°=√2/2, sen 60°=√3/2, sen 90°=1." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "2mQ8V3vAVPs",
               title: "Aplicações Reais: Trigonometria em Engenharia e Indústria",
@@ -2322,7 +2538,7 @@ export default function AulaTrigonometria({
               titulo="QUIZ: Aplicações Industriais"
               icone="⚙️"
               numero={3}
-              variant="emerald"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -2336,7 +2552,7 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={10}
           titulo="Simulado Final — Estilo CESGRANRIO"
           descricao="Questões de nível concurso integrando todos os tópicos de trigonometria. Prove que está pronto para a prova!"
-           variant={mv[10]}/>
+           variant="blue"/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2574,7 +2790,31 @@ export default function AulaTrigonometria({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é o valor exato de sen 60°?"
+          alternativas={[
+              { letra: "A", texto: "1/2", correta: false },
+              { letra: "B", texto: "√2/2", correta: false },
+              { letra: "C", texto: "√3/2", correta: true },
+              { letra: "D", texto: "1", correta: false },
+              { letra: "E", texto: "√3", correta: false }
+            ]}
+          dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Tabela: sen 30°=1/2, sen 45°=√2/2, sen 60°=√3/2, sen 90°=1." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{

@@ -1,6 +1,7 @@
 import { getAllModuleVariants } from "@/lib/moduleColors";
 // Last modified: 2026-03-13 - Upgraded with ModuleConsolidation (4-tab system) and C.E.D.E. pedagogy
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -15,7 +16,7 @@ import {
   ModuleSectionHeader,
   ModuleConsolidation,
   type FunctionPlot,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 
 import {
   LuBookOpen,
@@ -74,9 +75,8 @@ export default function AulaProgressoesPa({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_CONCEITO_PA, 4));
   const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_TERMO_GERAL, 4));
@@ -110,7 +110,7 @@ export default function AulaProgressoesPa({
       for (let i = 0; i < doneCount; i++) {
         newDone.add(MODULE_DEFS[i].id);
       }
-      setCompletedModules(newDone);
+      updateCompletedModules(Array.from(newDone));
       setHasSyncedInitial(true);
     } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
       setHasSyncedInitial(true);
@@ -120,7 +120,7 @@ export default function AulaProgressoesPa({
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
       const newSet = new Set(completedModules).add(moduleId);
-      setCompletedModules(newSet);
+      updateCompletedModules(Array.from(newSet));
 
       const total = MODULE_DEFS.length;
       const done = newSet.size;
@@ -149,6 +149,8 @@ export default function AulaProgressoesPa({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={(val) => {
         const idx = MODULE_DEFS.findIndex((m) => m.id === val);
@@ -179,7 +181,7 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={1}
             titulo="Conceitos Fundamentais de PA"
             descricao="A diferença que se repete: progressão aritmética explicada."
-             variant={mv[1]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -475,7 +477,31 @@ export default function AulaProgressoesPa({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
+          alternativas={[
+              { letra: "A", texto: "77", correta: false },
+              { letra: "B", texto: "81", correta: true },
+              { letra: "C", texto: "85", correta: false },
+              { letra: "D", texto: "73", correta: false },
+              { letra: "E", texto: "89", correta: false }
+            ]}
+          dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₂₀ = 5 + (20-1)·4 = 5 + 76 = 81." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁ + (n-1)·r." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="blue"
             video={{
@@ -545,14 +571,14 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={2}
             titulo="Termo Geral da PA"
             descricao="A fórmula para encontrar qualquer termo sem calcular todos."
-             variant={mv[2]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Fórmula do Termo Geral"
               description="aₙ = a₁ + (n-1)r"
-              variant="emerald"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -647,9 +673,33 @@ export default function AulaProgressoesPa({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
+          alternativas={[
+              { letra: "A", texto: "77", correta: false },
+              { letra: "B", texto: "81", correta: true },
+              { letra: "C", texto: "85", correta: false },
+              { letra: "D", texto: "73", correta: false },
+              { letra: "E", texto: "89", correta: false }
+            ]}
+          dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₂₀ = 5 + (20-1)·4 = 5 + 76 = 81." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁ + (n-1)·r." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "2Aq7p7-VgEU",
               title: "PA: Termo Geral Explicado",
@@ -703,7 +753,7 @@ export default function AulaProgressoesPa({
               questoes={quizM2}
               titulo="QUIZ: Termo Geral"
               numero={3}
-              variant="emerald"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -717,14 +767,14 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={3}
             titulo="Soma de Termos (Finita)"
             descricao="Calcule a soma dos primeiros n termos de uma PA."
-             variant={mv[3]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Soma dos Primeiros n Termos"
               description="Fórmula e aplicações práticas."
-              variant="amber"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -822,9 +872,33 @@ export default function AulaProgressoesPa({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
+          alternativas={[
+              { letra: "A", texto: "77", correta: false },
+              { letra: "B", texto: "81", correta: true },
+              { letra: "C", texto: "85", correta: false },
+              { letra: "D", texto: "73", correta: false },
+              { letra: "E", texto: "89", correta: false }
+            ]}
+          dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₂₀ = 5 + (20-1)·4 = 5 + 76 = 81." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁ + (n-1)·r." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "4KzE9R6zWzY",
               title: "PA: Soma Finita",
@@ -880,7 +954,7 @@ export default function AulaProgressoesPa({
               questoes={quizM3}
               titulo="QUIZ: Soma Finita"
               numero={3}
-              variant="amber"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -894,14 +968,14 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={4}
             titulo="Propriedades Especiais de PA"
             descricao="Relações e padrões únicos das progressões aritméticas."
-             variant={mv[4]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Propriedades Importantes"
               description="Termos equidistantes, meios aritméticos e simetria."
-              variant="cyan"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1003,9 +1077,33 @@ export default function AulaProgressoesPa({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
+          alternativas={[
+              { letra: "A", texto: "77", correta: false },
+              { letra: "B", texto: "81", correta: true },
+              { letra: "C", texto: "85", correta: false },
+              { letra: "D", texto: "73", correta: false },
+              { letra: "E", texto: "89", correta: false }
+            ]}
+          dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₂₀ = 5 + (20-1)·4 = 5 + 76 = 81." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁ + (n-1)·r." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "9KZg0LdwAg4",
               title: "PA: Propriedades Especiais",
@@ -1060,7 +1158,7 @@ export default function AulaProgressoesPa({
               questoes={quizM4}
               titulo="QUIZ: Propriedades"
               numero={3}
-              variant="cyan"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1074,14 +1172,14 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={5}
             titulo="Interpolação Aritmética"
             descricao="Insira termos entre dois números para formar uma PA."
-             variant={mv[5]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Inserindo Termos em PA"
               description="Encontre a razão para formar progressão completa."
-              variant="violet"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1185,9 +1283,33 @@ export default function AulaProgressoesPa({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
+          alternativas={[
+              { letra: "A", texto: "77", correta: false },
+              { letra: "B", texto: "81", correta: true },
+              { letra: "C", texto: "85", correta: false },
+              { letra: "D", texto: "73", correta: false },
+              { letra: "E", texto: "89", correta: false }
+            ]}
+          dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₂₀ = 5 + (20-1)·4 = 5 + 76 = 81." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁ + (n-1)·r." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="violet"
+            variant="blue"
             video={{
               videoId: "5Rw9KzK3jqA",
               title: "Interpolação Aritmética",
@@ -1243,7 +1365,7 @@ export default function AulaProgressoesPa({
               questoes={quizM5}
               titulo="QUIZ: Interpolação"
               numero={3}
-              variant="violet"
+              variant="blue"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1257,14 +1379,14 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={6}
             titulo="PA e Funções Afim"
             descricao="Conexão entre progressões aritméticas e funções do 1º grau."
-             variant={mv[6]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="PA Como Restrição de Função Afim"
               description="Quando n é número natural, f(n) forma uma PA."
-              variant="cyan"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1373,9 +1495,33 @@ export default function AulaProgressoesPa({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
+          alternativas={[
+              { letra: "A", texto: "77", correta: false },
+              { letra: "B", texto: "81", correta: true },
+              { letra: "C", texto: "85", correta: false },
+              { letra: "D", texto: "73", correta: false },
+              { letra: "E", texto: "89", correta: false }
+            ]}
+          dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₂₀ = 5 + (20-1)·4 = 5 + 76 = 81." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁ + (n-1)·r." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "tZzgzUaHdCw",
               title: "PA e Funções Afim: Conexão",
@@ -1431,7 +1577,7 @@ export default function AulaProgressoesPa({
               questoes={quizM6}
               titulo="QUIZ: PA e Funções Afim"
               numero={3}
-              variant="cyan"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1445,7 +1591,7 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={7}
             titulo="Prática Integrada"
             descricao="Combine tudo: fórmulas, propriedades e aplicações."
-             variant={mv[7]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1544,7 +1690,31 @@ export default function AulaProgressoesPa({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
+          alternativas={[
+              { letra: "A", texto: "77", correta: false },
+              { letra: "B", texto: "81", correta: true },
+              { letra: "C", texto: "85", correta: false },
+              { letra: "D", texto: "73", correta: false },
+              { letra: "E", texto: "89", correta: false }
+            ]}
+          dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₂₀ = 5 + (20-1)·4 = 5 + 76 = 81." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁ + (n-1)·r." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
             variant="indigo"
             video={{
@@ -1614,14 +1784,14 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={8}
             titulo="Desafios Avançados"
             descricao="Problemas complexos e integrações com outros conceitos."
-             variant={mv[8]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Nível Avançado"
               description="Sistemas, inequações e aplicações múltiplas."
-              variant="rose"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1728,9 +1898,33 @@ export default function AulaProgressoesPa({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
+          alternativas={[
+              { letra: "A", texto: "77", correta: false },
+              { letra: "B", texto: "81", correta: true },
+              { letra: "C", texto: "85", correta: false },
+              { letra: "D", texto: "73", correta: false },
+              { letra: "E", texto: "89", correta: false }
+            ]}
+          dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₂₀ = 5 + (20-1)·4 = 5 + 76 = 81." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁ + (n-1)·r." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="rose"
+            variant="blue"
             video={{
               videoId: "4KzE9R6zWzY",
               title: "PA Avançada: Desafios",
@@ -1785,7 +1979,7 @@ export default function AulaProgressoesPa({
               questoes={quizM8}
               titulo="QUIZ: Desafios Avançados"
               numero={3}
-              variant="rose"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1799,14 +1993,14 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={9}
             titulo="Aplicações Petrobras"
             descricao="Cronogramas, investimentos e programação linear."
-             variant={mv[9]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="PA na Indústria"
               description="Cronogramas, depreciação, e programação."
-              variant="amber"
+              variant="blue"
             />
 
             <ContentAccordion
@@ -1916,9 +2110,33 @@ export default function AulaProgressoesPa({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
+          alternativas={[
+              { letra: "A", texto: "77", correta: false },
+              { letra: "B", texto: "81", correta: true },
+              { letra: "C", texto: "85", correta: false },
+              { letra: "D", texto: "73", correta: false },
+              { letra: "E", texto: "89", correta: false }
+            ]}
+          dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₂₀ = 5 + (20-1)·4 = 5 + 76 = 81." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁ + (n-1)·r." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "9KZg0LdwAg4",
               title: "PA na Petrobras: Cronogramas",
@@ -1972,7 +2190,7 @@ export default function AulaProgressoesPa({
               questoes={quizM9}
               titulo="QUIZ: Aplicações Petrobras"
               numero={3}
-              variant="amber"
+              variant="blue"
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1986,7 +2204,7 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="Teste final: integre todos os conceitos de progressões aritméticas."
-             variant={mv[10]}/>
+             variant="blue"/>
 
           {showCompletionBadge ? (
             <div className="flex flex-col items-center gap-6 py-10 mt-10">
@@ -2006,7 +2224,7 @@ export default function AulaProgressoesPa({
                 titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={1}
-                variant="slate"
+                variant="blue"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

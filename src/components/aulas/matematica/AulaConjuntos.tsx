@@ -1,4 +1,5 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -19,7 +20,7 @@ import {
   AulaTemplate,
   ModuleSectionHeader,
   ModuleSkinVariant,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import { getModuleVariant, getAllModuleVariants } from "@/lib/moduleColors";
 import {
   LuBookOpen,
@@ -67,9 +68,8 @@ export default function AulaConjuntos({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(
-    new Set(),
-  );
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
   const [quizFundamentos] = useState(() =>
@@ -103,11 +103,9 @@ export default function AulaConjuntos({
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
-      setCompletedModules((prev) => {
-        const n = new Set(prev);
-        n.add(moduleId);
-        return n;
-      });
+      const nextCompleted = new Set(completedModules);
+      nextCompleted.add(moduleId);
+      updateCompletedModules(Array.from(nextCompleted));
       const idx = [
         "modulo-1",
         "modulo-2",
@@ -131,7 +129,7 @@ export default function AulaConjuntos({
       const count = Math.floor((currentProgress / 100) * 10);
       const s = new Set<string>();
       for (let i = 1; i <= count; i++) s.add(`modulo-${i}`);
-      setCompletedModules(s);
+      updateCompletedModules(Array.from(s));
     }
   }, [currentProgress]);
 
@@ -150,6 +148,8 @@ export default function AulaConjuntos({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={MODULE_DEFS}
@@ -175,7 +175,7 @@ export default function AulaConjuntos({
           numero={1}
           titulo="Fundamentos de Conjuntos"
           descricao="Domine os conceitos fundamentais: notação, pertinência, subconjuntos e propriedades."
-          variant={mv[1]}
+          variant="blue"
         />
 
         {/* ═══ RICH INTRO SECTION M1 ═══ */}
@@ -184,7 +184,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Conceito Fundamental de Conjunto"
             description="A pedra angular da Matemática moderna e seu lugar no edital CESGRANRIO"
-            variant={mv[1]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -289,10 +289,10 @@ export default function AulaConjuntos({
                 <div className="shrink-0 space-y-2 w-full max-w-[320px] mx-auto lg:mx-0">
                   <div 
                     className="cursor-zoom-in hover:scale-[1.02] transition-transform duration-200"
-                    onClick={() => setZoomedImage("/assets/images/matematica/conjuntos/modulo-1/m1-intro.png")}
+                    onClick={() => setZoomedImage("/assets/images/matematica/conjuntos/modulo-1/intro.png")}
                   >
                     <img
-                      src="/assets/images/matematica/conjuntos/modulo-1/m1-intro.png"
+                      src="/assets/images/matematica/conjuntos/modulo-1/intro.png"
                       // PROMPT: [MANDATÓRIO] Infográfico educacional limpo mostrando Diagrama de Venn com 3 conjuntos intersectados. Estilo Dark Premium, fundo escuro (#0a0f1d). Os círculos devem ter bordas brilhantes neon em azul-celeste, ciano e verde-esmeralda. No centro da interseção há um ícone de raio brilhante.
                       alt="Diagrama de Venn com três conjuntos intersectados"
                       className="w-full rounded-2xl border border-border/20 shadow-lg"
@@ -373,7 +373,7 @@ export default function AulaConjuntos({
               index={1}
               title="O que é um Conjunto?"
               description="A pedra fundamental da Matemática para concursos."
-              variant={mv[1]}
+              variant="blue"
               className="mb-6"
             />
             {/* ACORDEON 1: DEFINIÇÃO DE CONJUNTO */}
@@ -710,7 +710,7 @@ export default function AulaConjuntos({
               index={2}
               title="Subconjuntos e Conjunto Potência"
               description="A hierarquia das coleções: de um único elemento ao poder total dos conjuntos das partes."
-              variant={mv[1]}
+              variant="blue"
               className="mb-8"
             />
 
@@ -770,7 +770,7 @@ export default function AulaConjuntos({
             {/* GRID DE FLIPCARDS PREMIUM */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <FlipCard
-                variant={mv[1]}
+                variant="blue"
                 frente={
                   <div className="flex flex-col items-center text-center space-y-4">
                     <div className="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center text-3xl text-amber-600">
@@ -803,7 +803,7 @@ export default function AulaConjuntos({
                 }
               />
               <FlipCard
-                variant={mv[1]}
+                variant="blue"
                 frente={
                   <div className="flex flex-col items-center text-center space-y-4">
                     <div className="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center text-3xl text-amber-600">
@@ -834,7 +834,7 @@ export default function AulaConjuntos({
                 }
               />
               <FlipCard
-                variant={mv[1]}
+                variant="blue"
                 frente={
                   <div className="flex flex-col items-center text-center space-y-4">
                     <div className="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center text-3xl text-amber-600">
@@ -864,7 +864,7 @@ export default function AulaConjuntos({
                 }
               />
               <FlipCard
-                variant={mv[1]}
+                variant="blue"
                 frente={
                   <div className="flex flex-col items-center text-center space-y-4">
                     <div className="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center text-3xl text-amber-600">
@@ -998,10 +998,34 @@ export default function AulaConjuntos({
           </section>
 
           <section id="quiz-modulo-1" className="mt-16">
-            <ModuleConsolidation
+                    {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A relação CORRETA de inclusão entre conjuntos numéricos é:"
+          alternativas={[
+              { letra: "A", texto: "ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ", correta: true },
+              { letra: "B", texto: "ℤ ⊂ ℕ ⊂ ℚ ⊂ ℝ", correta: false },
+              { letra: "C", texto: "ℚ ⊂ ℤ ⊂ ℕ ⊂ ℝ", correta: false },
+              { letra: "D", texto: "ℕ ⊂ ℚ ⊂ ℤ ⊂ ℝ", correta: false },
+              { letra: "E", texto: "ℝ ⊂ ℚ ⊂ ℤ ⊂ ℕ", correta: false }
+            ]}
+          dicaEstrategica="Cada conjunto"
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Naturais (ℕ) ⊂ Inteiros (ℤ) ⊂ Racionais (ℚ) ⊂ Reais (ℝ)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={3}
               moduloNumero={1}
-              variant={mv[1]}
+              variant="blue"
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 1",
@@ -1091,7 +1115,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Fundamentos"
               icone="🧠"
               numero={4}
-              variant={mv[1]}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
@@ -1104,7 +1128,7 @@ export default function AulaConjuntos({
           numero={2}
           titulo="Operações com Conjuntos"
           descricao="União, interseção, diferença e complementar: as 4 operações que a CESGRANRIO adora cobrar."
-          variant={mv[2]}
+          variant="blue"
         />
 
         {/* ═══ RICH INTRO SECTION M2 ═══ */}
@@ -1113,7 +1137,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Operações com Conjuntos: Fundamentos e Aplicações"
             description="Dominando união, interseção, diferença e complemento"
-            variant={mv[2]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
@@ -1174,10 +1198,10 @@ export default function AulaConjuntos({
                 <div className="shrink-0 space-y-2 w-full max-w-[320px] mx-auto lg:mx-0">
                   <div 
                     className="cursor-zoom-in hover:scale-[1.02] transition-transform duration-200"
-                    onClick={() => setZoomedImage("/assets/images/matematica/conjuntos/modulo-2/m2-intro.png")}
+                    onClick={() => setZoomedImage("/assets/images/matematica/conjuntos/modulo-2/intro.png")}
                   >
                     <img
-                      src="/assets/images/matematica/conjuntos/modulo-2/m2-intro.png"
+                      src="/assets/images/matematica/conjuntos/modulo-2/intro.png"
                       // PROMPT: [MANDATÓRIO] Infográfico educacional limpo ilustrando as 4 operações de conjuntos (união, interseção, diferença e complementar). Estilo Dark Premium, fundo escuro (#0a0f1d). Os conjuntos possuem contornos finos brilhantes neon em azul-celeste, ciano e verde-esmeralda. As áreas operadas aparecem preenchidas com um gradiente luminoso suave.
                       alt="Legenda: As 4 operações fundamentais em diagramas de Venn"
                       className="w-full rounded-2xl border border-border/20 shadow-lg"
@@ -1274,7 +1298,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={1}
               title="União (∪) e Interseção (∩)"
-              variant={mv[2]}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1346,7 +1370,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={2}
               title="Diferença e Complementar"
-              variant={mv[2]}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1425,10 +1449,34 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-2" className="mt-16">
-            <ModuleConsolidation
+                    {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A relação CORRETA de inclusão entre conjuntos numéricos é:"
+          alternativas={[
+              { letra: "A", texto: "ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ", correta: true },
+              { letra: "B", texto: "ℤ ⊂ ℕ ⊂ ℚ ⊂ ℝ", correta: false },
+              { letra: "C", texto: "ℚ ⊂ ℤ ⊂ ℕ ⊂ ℝ", correta: false },
+              { letra: "D", texto: "ℕ ⊂ ℚ ⊂ ℤ ⊂ ℝ", correta: false },
+              { letra: "E", texto: "ℝ ⊂ ℚ ⊂ ℤ ⊂ ℕ", correta: false }
+            ]}
+          dicaEstrategica="Cada conjunto"
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Naturais (ℕ) ⊂ Inteiros (ℤ) ⊂ Racionais (ℚ) ⊂ Reais (ℝ)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={3}
               moduloNumero={2}
-              variant={mv[2]}
+              variant="blue"
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 2",
@@ -1529,7 +1577,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Operações"
               icone="⚙️"
               numero={3}
-              variant={mv[2]}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -1542,7 +1590,7 @@ export default function AulaConjuntos({
           numero={3}
           titulo="Diagramas de Venn e Cardinalidade"
           descricao="A ferramenta visual mais poderosa para conjuntos. Domine a fórmula da cardinalidade."
-          variant={mv[3]}
+          variant="blue"
         />
 
         {/* ═══ RICH INTRO SECTION M3 ═══ */}
@@ -1551,7 +1599,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Diagramas de Venn: Linguagem Visual de Conjuntos"
             description="Ferramentas gráficas para resolver problemas com precisão"
-            variant={mv[3]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
@@ -1613,10 +1661,10 @@ export default function AulaConjuntos({
                 <div className="shrink-0 space-y-2 w-full max-w-[320px] mx-auto lg:mx-0">
                   <div 
                     className="cursor-zoom-in hover:scale-[1.02] transition-transform duration-200"
-                    onClick={() => setZoomedImage("/assets/images/matematica/conjuntos/modulo-3/m3-intro.png")}
+                    onClick={() => setZoomedImage("/assets/images/matematica/conjuntos/modulo-3/intro.png")}
                   >
                     <img
-                      src="/assets/images/matematica/conjuntos/modulo-3/m3-intro.png"
+                      src="/assets/images/matematica/conjuntos/modulo-3/intro.png"
                       alt="Legenda: Divisão clássica de 8 regiões no diagrama de Venn"
                       className="w-full rounded-2xl border border-border/20 shadow-lg"
                     />
@@ -1693,7 +1741,7 @@ export default function AulaConjuntos({
               index={1}
               title="Diagramas de Venn"
               description="Transforme problemas complexos em simples."
-              variant={mv[3]}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1787,7 +1835,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={2}
               title="Fórmula da Cardinalidade"
-              variant={mv[3]}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -1874,10 +1922,34 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-3" className="mt-16">
-            <ModuleConsolidation
+                    {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A relação CORRETA de inclusão entre conjuntos numéricos é:"
+          alternativas={[
+              { letra: "A", texto: "ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ", correta: true },
+              { letra: "B", texto: "ℤ ⊂ ℕ ⊂ ℚ ⊂ ℝ", correta: false },
+              { letra: "C", texto: "ℚ ⊂ ℤ ⊂ ℕ ⊂ ℝ", correta: false },
+              { letra: "D", texto: "ℕ ⊂ ℚ ⊂ ℤ ⊂ ℝ", correta: false },
+              { letra: "E", texto: "ℝ ⊂ ℚ ⊂ ℤ ⊂ ℕ", correta: false }
+            ]}
+          dicaEstrategica="Cada conjunto"
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Naturais (ℕ) ⊂ Inteiros (ℤ) ⊂ Racionais (ℚ) ⊂ Reais (ℝ)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={3}
               moduloNumero={3}
-              variant={mv[3]}
+              variant="blue"
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 3",
@@ -1978,7 +2050,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Diagramas de Venn"
               icone="⭕"
               numero={3}
-              variant={mv[3]}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -1991,7 +2063,7 @@ export default function AulaConjuntos({
           numero={4}
           titulo="Conjuntos Numéricos e Intervalos"
           descricao="ℕ, ℤ, ℚ, 𝕀, ℝ — a hierarquia dos números e intervalos na reta real."
-          variant={mv[4]}
+          variant="blue"
         />
 
         {/* ═══ RICH INTRO SECTION M4 ═══ */}
@@ -2000,7 +2072,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Conjuntos Numéricos: A Hierarquia dos Números"
             description="De naturais a reais: construindo a estrutura do sistema numérico"
-            variant={mv[4]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -2122,7 +2194,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={1}
               title="Os 5 Conjuntos Numéricos"
-              variant={mv[4]}
+              variant="blue"
               className="mb-6"
             />
             <CardCarousel
@@ -2172,7 +2244,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={2}
               title="Intervalos na Reta Real"
-              variant={mv[4]}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -2248,10 +2320,34 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-4" className="mt-16">
-            <ModuleConsolidation
+                    {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A relação CORRETA de inclusão entre conjuntos numéricos é:"
+          alternativas={[
+              { letra: "A", texto: "ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ", correta: true },
+              { letra: "B", texto: "ℤ ⊂ ℕ ⊂ ℚ ⊂ ℝ", correta: false },
+              { letra: "C", texto: "ℚ ⊂ ℤ ⊂ ℕ ⊂ ℝ", correta: false },
+              { letra: "D", texto: "ℕ ⊂ ℚ ⊂ ℤ ⊂ ℝ", correta: false },
+              { letra: "E", texto: "ℝ ⊂ ℚ ⊂ ℤ ⊂ ℕ", correta: false }
+            ]}
+          dicaEstrategica="Cada conjunto"
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Naturais (ℕ) ⊂ Inteiros (ℤ) ⊂ Racionais (ℚ) ⊂ Reais (ℝ)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={3}
               moduloNumero={4}
-              variant={mv[4]}
+              variant="blue"
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 4",
@@ -2348,7 +2444,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Conj. Numéricos"
               icone="🔢"
               numero={4}
-              variant={mv[4]}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -2361,7 +2457,7 @@ export default function AulaConjuntos({
           numero={5}
           titulo="Subconjuntos e Potência"
           descricao="Entenda o que são subconjuntos, como calcular o conjunto das partes e as relações de inclusão que caem na sua prova."
-          variant={mv[5]}
+          variant="blue"
         />
 
         {/* ═══ RICH INTRO SECTION M5 ═══ */}
@@ -2370,7 +2466,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Relações e Propriedades Especiais de Conjuntos"
             description="Subconjuntos, inclusão, igualdade e as leis que governam as operações"
-            variant={mv[5]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -2489,7 +2585,7 @@ export default function AulaConjuntos({
               index={1}
               title="Subconjuntos e Relação de Inclusão"
               description="Entenda a diferença crucial entre pertencer (∈) e estar contido (⊂) — a pegadinha número 1 da CESGRANRIO."
-              variant={mv[5]}
+              variant="blue"
               className="mb-6"
             />
 
@@ -2698,7 +2794,7 @@ export default function AulaConjuntos({
               index={2}
               title="Conjunto Potência — ℘(A) e a Fórmula 2ⁿ"
               description="O conjunto de TODOS os subconjuntos possíveis — e por que o número de combinações cresce de forma explosiva."
-              variant={mv[5]}
+              variant="blue"
               className="mb-6"
             />
 
@@ -2859,7 +2955,7 @@ export default function AulaConjuntos({
               index={3}
               title="Propriedades Algébricas das Operações"
               description="As leis que governam União, Interseção e Complementação — o kit de ferramentas para simplificar qualquer expressão."
-              variant={mv[5]}
+              variant="blue"
               className="mb-6"
             />
 
@@ -3129,10 +3225,34 @@ export default function AulaConjuntos({
           </section>
 
           <section id="quiz-modulo-5" className="mt-16">
-            <ModuleConsolidation
+                    {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Em pesquisa com 200 pessoas sobre uso de combustíveis: 100 usam gasolina (G), 80 usam etanol (E), 50 usam GNV, 30 usam G e E, 20 usam G e GNV, 15 usam E e GNV, 10 usam os três. Quantas usam apenas gasolina?"
+          alternativas={[
+              { letra: "A", texto: "50", correta: false },
+              { letra: "B", texto: "60", correta: true },
+              { letra: "C", texto: "70", correta: false },
+              { letra: "D", texto: "80", correta: false },
+              { letra: "E", texto: "100", correta: false }
+            ]}
+          dicaEstrategica="Na fórmula de Venn com 3 conjuntos, somamos a tripla interseção porque ela foi subtraída duas vezes."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Apenas G = n(G) - n(G∩E) - n(G∩GNV) + n(G∩E∩GNV) = 100 - 30 - 20 + 10 = 60." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={4}
               moduloNumero={5}
-              variant={mv[5]}
+              variant="blue"
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 5",
@@ -3228,7 +3348,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Subconjuntos"
               icone="🏆"
               numero={4}
-              variant={mv[5]}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -3241,7 +3361,7 @@ export default function AulaConjuntos({
           numero={6}
           titulo="Fórmula de Inclusão-Exclusão"
           descricao="A ferramenta mestra para calcular cardinalidade de uniões sem contar dois vezes — e o coração das questões de Conjuntos da CESGRANRIO."
-          variant={mv[6]}
+          variant="blue"
         />
 
         {/* ═══ RICH INTRO SECTION M6 ═══ */}
@@ -3250,7 +3370,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="O Princípio de Inclusão-Exclusão: Contagem Sem Dupla Contagem"
             description="A ferramenta mais poderosa para resolver problemas de conjuntos"
-            variant={mv[6]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -3366,7 +3486,7 @@ export default function AulaConjuntos({
               index={1}
               title="Fórmula para 2 Conjuntos"
               description="O princípio base: contar sem duplicar."
-              variant={mv[6]}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -3475,7 +3595,7 @@ export default function AulaConjuntos({
               index={2}
               title="Extensão para 3 Conjuntos"
               description="A fórmula completa — e a favorita das provas difíceis."
-              variant={mv[6]}
+              variant="blue"
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -3559,7 +3679,7 @@ export default function AulaConjuntos({
               index={3}
               title="Casos Especiais"
               description="Quando a geometria dos conjuntos simplifica o cálculo."
-              variant={mv[6]}
+              variant="blue"
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -3622,10 +3742,34 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-6" className="mt-16">
-            <ModuleConsolidation
+                    {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Em pesquisa com 200 pessoas sobre uso de combustíveis: 100 usam gasolina (G), 80 usam etanol (E), 50 usam GNV, 30 usam G e E, 20 usam G e GNV, 15 usam E e GNV, 10 usam os três. Quantas usam apenas gasolina?"
+          alternativas={[
+              { letra: "A", texto: "50", correta: false },
+              { letra: "B", texto: "60", correta: true },
+              { letra: "C", texto: "70", correta: false },
+              { letra: "D", texto: "80", correta: false },
+              { letra: "E", texto: "100", correta: false }
+            ]}
+          dicaEstrategica="Na fórmula de Venn com 3 conjuntos, somamos a tripla interseção porque ela foi subtraída duas vezes."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Apenas G = n(G) - n(G∩E) - n(G∩GNV) + n(G∩E∩GNV) = 100 - 30 - 20 + 10 = 60." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={4}
               moduloNumero={6}
-              variant={mv[6]}
+              variant="blue"
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 6",
@@ -3727,7 +3871,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Inclusão-Exclusão"
               icone="🧮"
               numero={5}
-              variant={mv[6]}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -3740,7 +3884,7 @@ export default function AulaConjuntos({
           numero={7}
           titulo="ℕ, ℤ, ℚ em Profundidade"
           descricao="Os três primeiros degraus da hierarquia dos números reais — com contexto industrial Petrobras e as pegadinhas favoritas da CESGRANRIO."
-          variant={mv[7]}
+          variant="blue"
         />
 
         {/* ═══ RICH INTRO SECTION M7 ═══ */}
@@ -3749,7 +3893,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Conjuntos Numéricos Discretos: Naturais, Inteiros e Racionais"
             description="Aprofundando-se nos primeiros degraus da hierarquia"
-            variant={mv[7]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -3882,7 +4026,7 @@ export default function AulaConjuntos({
               index={1}
               title="Naturais (ℕ): A Origem dos Números"
               description="Os primeiros números que existiram — e que a CESGRANRIO usa para criar armadilhas."
-              variant={mv[7]}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -3942,7 +4086,7 @@ export default function AulaConjuntos({
               index={2}
               title="Inteiros (ℤ): Incluindo os Negativos"
               description="O que acontece quando a medição pode ser abaixo do zero?"
-              variant={mv[7]}
+              variant="blue"
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -4057,7 +4201,7 @@ export default function AulaConjuntos({
               index={3}
               title="Racionais (ℚ): Frações e Dízimas"
               description="Todo número que pode ser escrito como fração p/q."
-              variant={mv[7]}
+              variant="blue"
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -4144,10 +4288,34 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-7" className="mt-16">
-            <ModuleConsolidation
+                    {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Em pesquisa com 200 pessoas sobre uso de combustíveis: 100 usam gasolina (G), 80 usam etanol (E), 50 usam GNV, 30 usam G e E, 20 usam G e GNV, 15 usam E e GNV, 10 usam os três. Quantas usam apenas gasolina?"
+          alternativas={[
+              { letra: "A", texto: "50", correta: false },
+              { letra: "B", texto: "60", correta: true },
+              { letra: "C", texto: "70", correta: false },
+              { letra: "D", texto: "80", correta: false },
+              { letra: "E", texto: "100", correta: false }
+            ]}
+          dicaEstrategica="Na fórmula de Venn com 3 conjuntos, somamos a tripla interseção porque ela foi subtraída duas vezes."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Apenas G = n(G) - n(G∩E) - n(G∩GNV) + n(G∩E∩GNV) = 100 - 30 - 20 + 10 = 60." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={4}
               moduloNumero={7}
-              variant={mv[7]}
+              variant="blue"
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 7",
@@ -4251,7 +4419,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: ℕ, ℤ, ℚ"
               icone="🔢"
               numero={5}
-              variant={mv[7]}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -4264,7 +4432,7 @@ export default function AulaConjuntos({
           numero={8}
           titulo="Irracionais e ℝ"
           descricao="Os números que 'escapam' das frações: dízimas infinitas e não periódicas, a reta real completa e as pegadinhas da CESGRANRIO."
-          variant={mv[8]}
+          variant="blue"
         />
 
         {/* ═══ RICH INTRO SECTION M8 ═══ */}
@@ -4273,7 +4441,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Números Irracionais e o Conjunto dos Reais"
             description="As lacunas em ℚ e a completude do contínuo"
-            variant={mv[8]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -4397,7 +4565,7 @@ export default function AulaConjuntos({
               index={1}
               title="Números Irracionais"
               description="Dízimas infinitas sem padrão — impossíveis de escrever como fração."
-              variant={mv[8]}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -4466,7 +4634,7 @@ export default function AulaConjuntos({
               index={2}
               title="ℝ = ℚ ∪ Irracionais"
               description="A reta real completa — sem lacunas, sem buracos."
-              variant={mv[8]}
+              variant="blue"
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -4550,7 +4718,7 @@ export default function AulaConjuntos({
               index={3}
               title="Raízes: Quando √n é Irracional?"
               description="Regra rápida para classificar raízes em prova."
-              variant={mv[8]}
+              variant="blue"
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -4618,10 +4786,34 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-8" className="mt-16">
-            <ModuleConsolidation
+                    {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Em pesquisa com 200 pessoas sobre uso de combustíveis: 100 usam gasolina (G), 80 usam etanol (E), 50 usam GNV, 30 usam G e E, 20 usam G e GNV, 15 usam E e GNV, 10 usam os três. Quantas usam apenas gasolina?"
+          alternativas={[
+              { letra: "A", texto: "50", correta: false },
+              { letra: "B", texto: "60", correta: true },
+              { letra: "C", texto: "70", correta: false },
+              { letra: "D", texto: "80", correta: false },
+              { letra: "E", texto: "100", correta: false }
+            ]}
+          dicaEstrategica="Na fórmula de Venn com 3 conjuntos, somamos a tripla interseção porque ela foi subtraída duas vezes."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Apenas G = n(G) - n(G∩E) - n(G∩GNV) + n(G∩E∩GNV) = 100 - 30 - 20 + 10 = 60." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={4}
               moduloNumero={8}
-              variant={mv[8]}
+              variant="blue"
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 8",
@@ -4720,7 +4912,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Irracionais e ℝ"
               icone="∞"
               numero={5}
-              variant={mv[8]}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -4733,7 +4925,7 @@ export default function AulaConjuntos({
           numero={9}
           titulo="Leis de De Morgan"
           descricao="As duas leis que transformam complementares de operações — imprescindíveis para simplificar expressões e resolver questões avançadas da CESGRANRIO."
-          variant={mv[9]}
+          variant="blue"
         />
         {/* ═══ RICH INTRO SECTION M9 ═══ */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -4741,7 +4933,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Leis de De Morgan: O Coração da Lógica"
             description="Entenda o que são e por que elas dominam as questões avançadas da CESGRANRIO."
-            variant={mv[9]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
@@ -4781,7 +4973,7 @@ export default function AulaConjuntos({
               index={1}
               title="1ª Lei de De Morgan: (A ∪ B)ᶜ"
               description="O complementar da UNIÃO é a INTERSEÇÃO dos complementares."
-              variant={mv[9]}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -4862,7 +5054,7 @@ export default function AulaConjuntos({
               index={2}
               title="2ª Lei de De Morgan: (A ∩ B)ᶜ"
               description="O complementar da INTERSEÇÃO é a UNIÃO dos complementares."
-              variant={mv[9]}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -4912,7 +5104,7 @@ export default function AulaConjuntos({
               index={3}
               title="Simplificação em Cascata"
               description="Aplicando De Morgan duas vezes — o nível avançado das provas."
-              variant={mv[9]}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -5017,10 +5209,34 @@ export default function AulaConjuntos({
             />
           </section>
           <section id="quiz-modulo-9" className="mt-16">
-            <ModuleConsolidation
+                    {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Em pesquisa com 200 pessoas sobre uso de combustíveis: 100 usam gasolina (G), 80 usam etanol (E), 50 usam GNV, 30 usam G e E, 20 usam G e GNV, 15 usam E e GNV, 10 usam os três. Quantas usam apenas gasolina?"
+          alternativas={[
+              { letra: "A", texto: "50", correta: false },
+              { letra: "B", texto: "60", correta: true },
+              { letra: "C", texto: "70", correta: false },
+              { letra: "D", texto: "80", correta: false },
+              { letra: "E", texto: "100", correta: false }
+            ]}
+          dicaEstrategica="Na fórmula de Venn com 3 conjuntos, somamos a tripla interseção porque ela foi subtraída duas vezes."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Apenas G = n(G) - n(G∩E) - n(G∩GNV) + n(G∩E∩GNV) = 100 - 30 - 20 + 10 = 60." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={4}
               moduloNumero={9}
-              variant={mv[9]}
+              variant="blue"
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 9",
@@ -5123,7 +5339,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: De Morgan"
               icone="🔁"
               numero={4}
-              variant={mv[9]}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -5136,7 +5352,7 @@ export default function AulaConjuntos({
           numero={10}
           titulo="Simulado Final — Teoria dos Conjuntos"
           descricao="Revisão express de todas as fórmulas e estratégias de prova, seguida de 10 questões no estilo CESGRANRIO para você sair daqui pronto para gabaritar."
-          variant={mv[10]}
+          variant="blue"
         />
         {/* ═══ RICH INTRO SECTION M10 ═══ */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -5144,7 +5360,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="A Arte do Gabarito: Sintetizando Conjuntos"
             description="Chegou a hora de reunir todo o conhecimento e transformá-lo em pontos na sua prova."
-            variant={mv[10]}
+            variant="blue"
           />
 
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
@@ -5181,7 +5397,7 @@ export default function AulaConjuntos({
               index={1}
               title="Revisão Express — Todas as Fórmulas"
               description="Cole na mente antes de entrar na prova."
-              variant={mv[10]}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -5298,7 +5514,7 @@ export default function AulaConjuntos({
               index={2}
               title="Estratégias de Prova CESGRANRIO"
               description="Como resolver qualquer questão de conjuntos em 90 segundos."
-              variant={mv[10]}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -5431,7 +5647,7 @@ export default function AulaConjuntos({
               index={3}
               title="Campo Minado: As 5 Armadilhas Clássicas"
               description="Atenção total onde os candidatos mais erram."
-              variant={mv[10]}
+              variant="blue"
               className="mb-6"
             />
             <ContentAccordion
@@ -5536,10 +5752,34 @@ export default function AulaConjuntos({
 
           {/* ═══ MODULE CONSOLIDATION E QUIZ ═══ */}
           <section id="quiz-modulo-10" className="mt-16">
-            <ModuleConsolidation
+                    {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Em pesquisa com 200 pessoas sobre uso de combustíveis: 100 usam gasolina (G), 80 usam etanol (E), 50 usam GNV, 30 usam G e E, 20 usam G e GNV, 15 usam E e GNV, 10 usam os três. Quantas usam apenas gasolina?"
+          alternativas={[
+              { letra: "A", texto: "50", correta: false },
+              { letra: "B", texto: "60", correta: true },
+              { letra: "C", texto: "70", correta: false },
+              { letra: "D", texto: "80", correta: false },
+              { letra: "E", texto: "100", correta: false }
+            ]}
+          dicaEstrategica="Na fórmula de Venn com 3 conjuntos, somamos a tripla interseção porque ela foi subtraída duas vezes."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Apenas G = n(G) - n(G∩E) - n(G∩GNV) + n(G∩E∩GNV) = 100 - 30 - 20 + 10 = 60." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
               index={4}
               moduloNumero={10}
-              variant={mv[10]}
+              variant="blue"
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 10",
@@ -5641,7 +5881,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Simulado Final"
               icone="🏆"
               numero={5}
-              variant={mv[10]}
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>

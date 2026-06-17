@@ -1,5 +1,6 @@
 import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useCallback, useEffect } from "react";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
@@ -40,7 +41,7 @@ import {
   SectionTitle,
   TabbedContent,
   ModuleConsolidation,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 
 const MODULE_DEFS = [
   { id: "modulo-1", label: "Módulo 1", title: "Encontros Vocálicos e Sílabas" },
@@ -754,20 +755,8 @@ export default function AulaOrtografia({
     return "modulo-1";
   });
 
-  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
-      if (saved) {
-        try {
-          const arr = JSON.parse(saved);
-          return new Set(arr);
-        } catch (e) {
-          return new Set();
-        }
-      }
-    }
-    return new Set();
-  });
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -775,14 +764,7 @@ export default function AulaOrtografia({
     }
   }, [activeTab]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `${STORAGE_KEY_PREFIX}completed_modules`,
-        JSON.stringify(Array.from(completedModules))
-      );
-    }
-  }, [completedModules]);
+  
 
   const [qMod1, setQMod1] = useState<QuizQuestion[]>([]);
   const [qMod2, setQMod2] = useState<QuizQuestion[]>([]);
@@ -841,7 +823,7 @@ export default function AulaOrtografia({
       for (let i = 0; i < doneCount; i++) {
         newDone.add(MODULE_DEFS[i].id);
       }
-      setCompletedModules(newDone);
+      updateCompletedModules(Array.from(newDone));
       setHasSyncedInitial(true);
     } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
       setHasSyncedInitial(true);
@@ -861,7 +843,7 @@ export default function AulaOrtografia({
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
       const newSet = new Set(completedModules).add(moduleId);
-      setCompletedModules(newSet);
+      updateCompletedModules(Array.from(newSet));
 
       const total = MODULE_DEFS.length;
       const done = newSet.size;
@@ -882,6 +864,8 @@ export default function AulaOrtografia({
   };
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={Array.from(MODULE_DEFS)}
@@ -914,7 +898,7 @@ export default function AulaOrtografia({
           numero={1}
           titulo="Encontros Vocálicos e Sílabas"
           descricao="A base da fonética: entenda ditongos, tritongos, hiatos e como separar as sílabas corretamente."
-          variant={mv[1]}
+          variant="blue"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -922,7 +906,7 @@ export default function AulaOrtografia({
             index="INTRO"
             title="Encontros Vocálicos"
             description="A fundação da fonética: compreenda a união e a separação de sons vocálicos nas palavras."
-          variant={mv[1]}
+          variant="blue"
         />
 
           <AlertBox tipo="info" titulo="O que são?">
@@ -1000,7 +984,7 @@ export default function AulaOrtografia({
           <ModuleSectionHeader
             index={2}
             title="Resumo e Multimídia"
-          variant={mv[1]}
+          variant="blue"
         />
           <LessonTabs
             tabs={[
@@ -1110,7 +1094,7 @@ Ditongo é junto, hiato é separação!
             icone="🎯"
             numero={3}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-            variant={mv[1]}
+            variant="blue"
           />
         </section>
 
@@ -1185,7 +1169,7 @@ Ditongo é junto, hiato é separação!
           numero={2}
           titulo="Fundamentos da Acentuação"
           descricao="As 4 regras de ouro para dominar oxítonas, paroxítonas, proparoxítonas e monossílabos."
-          variant={mv[2]}
+          variant="blue"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -1193,7 +1177,7 @@ Ditongo é junto, hiato é separação!
             index="INTRO"
             title="Classificação da Sílaba Tônica"
             description="Aprenda a identificar o coração sonoro das palavras para aplicar as regras de acento."
-          variant={mv[2]}
+          variant="blue"
         />
 
           <AlertBox tipo="info" titulo="O que é a Sílaba Tônica?">
@@ -1374,7 +1358,7 @@ Ditongo é junto, hiato é separação!
             index={2}
             title="Resumo e Multimídia"
             description="Ferramentas práticas para memorizar as 4 regras de ouro da acentuação."
-          variant={mv[2]}
+          variant="blue"
         />
           <LessonTabs
             tabs={[
@@ -1484,7 +1468,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             icone="⚡"
             numero={3}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-            variant={mv[2]}
+            variant="blue"
           />
         </section>
 
@@ -1621,7 +1605,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
       </TabsContent>
 
       <TabsContent value="modulo-5" className="space-y-12 mt-12">
-        <ModuleBanner numero={5} titulo="Mal vs Mau" descricao="Opostos que derrubam candidatos." variant="rose" />
+        <ModuleBanner numero={5} titulo="Mal vs Mau" descricao="Opostos que derrubam candidatos." variant="blue" />
         <section className="bg-card rounded-3xl border p-8 space-y-6">
            <AlertBox tipo="warning" titulo="Mal x Mau">
               <strong>Mal:</strong> Oposto de BEM.<br/><strong>Mau:</strong> Oposto de BOM.
@@ -1629,7 +1613,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         </section>
         <ModuleConsolidation 
           index={5} 
-          variant="rose" 
+          variant="blue" 
           video={{videoId:"dQw4w9WgXcQ", title:"Opostos", duration:"05:00"}} 
           resumoVisual={{moduloNome:"Opostos", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Tabela", placeholderColor:"bg-rose-100"}]}}
           sinteseEstrategica={{
@@ -1638,11 +1622,11 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           }}
           audio={{ audioUrl: "#", titulo: "AudioAula: Mal vs Mau", artista: "Prof. André" }}
         />
-        <QuizInterativo questoes={qMod5} titulo="QUIZ: Opostos" icone="⚖️" numero={5} onComplete={(s) => handleModuleComplete("modulo-5", s)} variant="rose" />
+        <QuizInterativo questoes={qMod5} titulo="QUIZ: Opostos" icone="⚖️" numero={5} onComplete={(s) => handleModuleComplete("modulo-5", s)} variant="blue" />
       </TabsContent>
 
       <TabsContent value="modulo-6" className="space-y-12 mt-12">
-        <ModuleBanner numero={6} titulo="Os Porquês" descricao="Regra definitiva." variant="amber" />
+        <ModuleBanner numero={6} titulo="Os Porquês" descricao="Regra definitiva." variant="blue" />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
            {["Por que", "Por quê", "Porque", "Porquê"].map((p,i) => (
              <div key={i} className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-center font-bold text-amber-600">{p}</div>
@@ -1650,7 +1634,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         </div>
         <ModuleConsolidation 
           index={6} 
-          variant="amber" 
+          variant="blue" 
           video={{videoId:"dQw4w9WgXcQ", title:"Os Porquês", duration:"04:00"}} 
           resumoVisual={{moduloNome:"Porquês", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Mapa", placeholderColor:"bg-amber-100"}]}}
           sinteseEstrategica={{
@@ -1659,17 +1643,17 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           }}
           audio={{ audioUrl: "#", titulo: "AudioAula: Porquês", artista: "Prof. André" }}
         />
-        <QuizInterativo questoes={qMod6} titulo="QUIZ: Porquês" icone="❓" numero={6} onComplete={(s) => handleModuleComplete("modulo-6", s)} variant="amber" />
+        <QuizInterativo questoes={qMod6} titulo="QUIZ: Porquês" icone="❓" numero={6} onComplete={(s) => handleModuleComplete("modulo-6", s)} variant="blue" />
       </TabsContent>
 
       <TabsContent value="modulo-7" className="space-y-12 mt-12">
-        <ModuleBanner numero={7} titulo="Uso do Hífen" descricao="Magnetismo Gráfico." variant="violet" />
+        <ModuleBanner numero={7} titulo="Uso do Hífen" descricao="Magnetismo Gráfico." variant="blue" />
         <section className="bg-card rounded-3xl border p-8 text-center space-y-4">
            <p className="text-xl font-bold">IGUAIS (-) | DIFERENTES (+)</p>
         </section>
         <ModuleConsolidation 
           index={7} 
-          variant="violet" 
+          variant="blue" 
           video={{videoId:"dQw4w9WgXcQ", title:"Hífen", duration:"06:00"}} 
           resumoVisual={{moduloNome:"Hífen", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Tabela", placeholderColor:"bg-violet-100"}]}}
           sinteseEstrategica={{
@@ -1678,14 +1662,14 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           }}
           audio={{ audioUrl: "#", titulo: "AudioAula: Hífen", artista: "Prof. André" }}
         />
-        <QuizInterativo questoes={qMod7} titulo="QUIZ: Hífen" icone="🧲" numero={7} onComplete={(s) => handleModuleComplete("modulo-7", s)} variant="violet" />
+        <QuizInterativo questoes={qMod7} titulo="QUIZ: Hífen" icone="🧲" numero={7} onComplete={(s) => handleModuleComplete("modulo-7", s)} variant="blue" />
       </TabsContent>
 
       <TabsContent value="modulo-8" className="space-y-12 mt-12">
-        <ModuleBanner numero={8} titulo="Semântica" descricao="Homônimos e Parônimos." variant="emerald" />
+        <ModuleBanner numero={8} titulo="Semântica" descricao="Homônimos e Parônimos." variant="blue" />
         <ModuleConsolidation 
           index={8} 
-          variant="emerald" 
+          variant="blue" 
           video={{videoId:"dQw4w9WgXcQ", title:"Semântica", duration:"07:00"}} 
           resumoVisual={{moduloNome:"Semântica", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Lista", placeholderColor:"bg-emerald-100"}]}}
           sinteseEstrategica={{
@@ -1694,7 +1678,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           }}
           audio={{ audioUrl: "#", titulo: "AudioAula: Semântica", artista: "Prof. André" }}
         />
-        <QuizInterativo questoes={qMod8} titulo="QUIZ: Semântica" icone="🎭" numero={8} onComplete={(s) => handleModuleComplete("modulo-8", s)} variant="emerald" />
+        <QuizInterativo questoes={qMod8} titulo="QUIZ: Semântica" icone="🎭" numero={8} onComplete={(s) => handleModuleComplete("modulo-8", s)} variant="blue" />
       </TabsContent>
 
       <TabsContent value="modulo-9" className="space-y-12 mt-12">

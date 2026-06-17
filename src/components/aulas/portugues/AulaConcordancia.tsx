@@ -1,4 +1,5 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 import { getAllModuleVariants } from "@/lib/moduleColors";
 
 import { useState, useEffect } from "react";
@@ -56,7 +57,7 @@ import {
   AulaTemplate,
   ModuleSectionHeader,
   ModuleConsolidation,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   LuImage,
   LuPlay,
@@ -2064,20 +2065,8 @@ export default function AulaConcordancia({
     return "modulo-1";
   });
 
-  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
-      if (saved) {
-        try {
-          const arr = JSON.parse(saved);
-          return new Set(arr);
-        } catch (e) {
-          return new Set();
-        }
-      }
-    }
-    return new Set();
-  });
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -2085,14 +2074,7 @@ export default function AulaConcordancia({
     }
   }, [activeTab]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `${STORAGE_KEY_PREFIX}completed_modules`,
-        JSON.stringify(Array.from(completedModules))
-      );
-    }
-  }, [completedModules]);
+  
   const [challengeIndex, setChallengeIndex] = useState(0);
   const [currentExample, setCurrentExample] = useState(CONCEPT_EXAMPLES[0]);
 
@@ -2133,7 +2115,7 @@ export default function AulaConcordancia({
       for (let i = 0; i < doneCount; i++) {
         newDone.add(MODULE_DEFS[i].id);
       }
-      setCompletedModules(newDone);
+      updateCompletedModules(Array.from(newDone));
       setHasSyncedInitial(true);
     } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
       setHasSyncedInitial(true);
@@ -2143,7 +2125,7 @@ export default function AulaConcordancia({
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
       const newSet = new Set(completedModules).add(moduleId);
-      setCompletedModules(newSet);
+      updateCompletedModules(Array.from(newSet));
 
       const total = MODULE_DEFS.length;
       const done = newSet.size;
@@ -2171,6 +2153,8 @@ export default function AulaConcordancia({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={Array.from(MODULE_DEFS)}
@@ -2205,7 +2189,7 @@ export default function AulaConcordancia({
               index="INTRO"
               title="Fundamentos da Concordância Verbal"
               className="mb-8"
-              variant={mv[1]}
+              variant="blue"
             />
 
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
@@ -2320,7 +2304,7 @@ export default function AulaConcordancia({
               index={1}
               title="A Lógica da Concordância (O Contrato Verbal)"
               className="mb-8"
-              variant={mv[1]}
+              variant="blue"
             />
 
             <div className="space-y-6">
@@ -2443,7 +2427,7 @@ export default function AulaConcordancia({
               index={2}
               title="Revisão Relâmpago: Transitividade Verbal"
               className="mb-8"
-              variant={mv[1]}
+              variant="blue"
             />
             <p className="text-muted-foreground">
               Para entender a concordância com a partícula{" "}
@@ -3066,7 +3050,7 @@ export default function AulaConcordancia({
               index={3}
               title="Sujeito Composto"
               className="mb-8"
-              variant={mv[1]}
+              variant="blue"
             />
             <p className="text-muted-foreground">
               Quando o sujeito tem{" "}
@@ -3305,7 +3289,7 @@ export default function AulaConcordancia({
               index={4}
               title='O "Calcanhar de Aquiles": Verbos Impessoais'
               className="mb-8"
-              variant={mv[1]}
+              variant="blue"
             />
 
             <AlertBox tipo="danger" titulo="🚫 ERRO MORTAL Nº 1">
@@ -3644,7 +3628,7 @@ export default function AulaConcordancia({
               index={5}
               title='Complexidade Técnica: Partícula "SE"'
               className="mb-8"
-              variant={mv[1]}
+              variant="blue"
             />
             <p className="text-muted-foreground">
               Aqui é onde a transitividade (Módulo 2) é fundamental para o
@@ -3929,7 +3913,7 @@ export default function AulaConcordancia({
               index={6}
               title="Resumo e Multimídia"
               className="mb-8"
-              variant={mv[1]}
+              variant="blue"
             />
 
             <LessonTabs
@@ -4130,7 +4114,7 @@ export default function AulaConcordancia({
               icone="📝"
               numero={7}
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
-              variant={mv[1]}
+              variant="blue"
             />
             {!completedModules.has("modulo-1") && (
               <div className="mt-8 p-4 bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200 rounded-lg text-center border border-yellow-200 dark:border-yellow-800/50">
@@ -4156,7 +4140,7 @@ export default function AulaConcordancia({
               index="INTRO"
               title="O Conceito Central"
               className="mb-2"
-              variant={mv[2]}
+              variant="blue"
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
               <p>
@@ -4292,7 +4276,7 @@ export default function AulaConcordancia({
               title="Palavras Perigosas (Decore Agora!)"
               description="Baseado nas palavras mais cobradas pela CESGRANRIO em provas de 2020 a 2024 (Petrobras, Transpetro, Banco do Brasil)."
               className="mb-8"
-              variant={mv[2]}
+              variant="blue"
             />
             <CardCarousel cards={PALAVRAS_PERIGOSAS_CARDS} />
           </section>
@@ -4303,7 +4287,7 @@ export default function AulaConcordancia({
               index={3}
               title="Palavras Invari&aacute;veis e Arm&aacute;veis"
               className="mb-6"
-              variant={mv[2]}
+              variant="blue"
             />
             <p className="text-muted-foreground">
               Existem palavras que{" "}
@@ -4615,7 +4599,7 @@ export default function AulaConcordancia({
               index={4}
               title="Resumo e Multimídia"
               className="mb-8"
-              variant={mv[2]}
+              variant="blue"
             />
 
             <LessonTabs
@@ -4808,7 +4792,7 @@ export default function AulaConcordancia({
               icone="🧠"
               numero={5}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
-              variant={mv[2]}
+              variant="blue"
             />
             {!completedModules.has("modulo-2") && (
               <div className="mt-8 p-4 bg-emerald-100 dark:bg-emerald-900/20 text-emerald-800 dark:text-emerald-200 rounded-lg text-center border border-emerald-200 dark:border-emerald-800/50">
@@ -4834,7 +4818,7 @@ export default function AulaConcordancia({
               index="INTRO"
               title="O Algoritmo da Aprovação"
               className="mb-6"
-              variant={mv[3]}
+              variant="blue"
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
               <p>
@@ -5125,7 +5109,7 @@ export default function AulaConcordancia({
               index={2}
               title="Desafio Prático: Identifique o Erro"
               className="mb-8"
-              variant={mv[3]}
+              variant="blue"
             />
 
             {shuffledChallenges.length > 0 && (
@@ -5210,7 +5194,7 @@ export default function AulaConcordancia({
               index={3}
               title="Resumo e Multimídia"
               className="mb-8"
-              variant={mv[3]}
+              variant="blue"
             />
 
             <LessonTabs
@@ -5333,7 +5317,7 @@ export default function AulaConcordancia({
               icone="🏆"
               numero={4}
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
-              variant={mv[3]}
+              variant="blue"
             />
           </section>
         </div>
@@ -5353,7 +5337,7 @@ export default function AulaConcordancia({
               index="INTRO"
               title="Porcentagens e Frações"
               className="mb-8"
-              variant={mv[4]}
+              variant="blue"
             />
 
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed mb-10">
@@ -5452,7 +5436,7 @@ export default function AulaConcordancia({
               index={2}
               title="Pronomes Relativos: QUE e QUEM"
               className="mb-8"
-              variant={mv[4]}
+              variant="blue"
             />
             <div className="space-y-4">
               <div className="p-6 bg-red-500/5 rounded-xl border border-red-500/10">
@@ -5489,7 +5473,7 @@ export default function AulaConcordancia({
               index={3}
               title="Resumo e Multimídia"
               className="mb-8"
-              variant={mv[4]}
+              variant="blue"
             />
 
             <LessonTabs
@@ -5614,7 +5598,7 @@ export default function AulaConcordancia({
               icone="🔥"
               numero={4}
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
-              variant={mv[4]}
+              variant="blue"
             />
           </section>
         </div>
@@ -5634,7 +5618,7 @@ export default function AulaConcordancia({
               index="INTRO"
               title="Laboratório Cesgranrio"
               className="mb-8"
-              variant={mv[5]}
+              variant="blue"
             />
 
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed mb-10">
@@ -5706,7 +5690,7 @@ export default function AulaConcordancia({
               index={2}
               title="Resumo Final e Revisão"
               className="mb-8"
-              variant={mv[5]}
+              variant="blue"
             />
 
             <LessonTabs
@@ -5819,7 +5803,7 @@ export default function AulaConcordancia({
               icone="🏆"
               numero={3}
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
-              variant={mv[5]}
+              variant="blue"
             />
           </section>
 

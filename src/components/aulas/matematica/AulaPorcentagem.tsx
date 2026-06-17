@@ -1,5 +1,6 @@
 import { getAllModuleVariants } from "@/lib/moduleColors";
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
@@ -19,8 +20,7 @@ import {
   ModuleSummaryCarouselNew,
   FunctionGraph,
   type FunctionPlot,
-
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   LuBookOpen,
   LuPercent,
@@ -84,7 +84,8 @@ export default function AulaPorcentagem({
   nextTopico,
 }: AulaProps) {
   const [activeTab, setActiveTab] = useState("modulo-1");
-  const [completedModules, setCompletedModules] = useState<Set<string>>(new Set());
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_CONCEITOS, 4));
   const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_AUMENTOS, 4));
@@ -101,11 +102,9 @@ export default function AulaPorcentagem({
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
-      setCompletedModules((prev) => {
-        const n = new Set(prev);
-        n.add(moduleId);
-        return n;
-      });
+      const nextCompleted = new Set(completedModules);
+      nextCompleted.add(moduleId);
+      updateCompletedModules(Array.from(nextCompleted));
       const idx = MODULE_DEFS.findIndex((m) => m.id === moduleId);
       onUpdateProgress?.(Math.round(((idx + 1) / totalModulos) * 100));
       if (idx < totalModulos - 1) {
@@ -121,7 +120,7 @@ export default function AulaPorcentagem({
       const count = Math.floor((currentProgress / 100) * totalModulos);
       const s = new Set<string>();
       for (let i = 1; i <= count; i++) s.add(`modulo-${i}`);
-      setCompletedModules(s);
+      updateCompletedModules(Array.from(s));
     }
   }, [currentProgress, totalModulos]);
 
@@ -132,6 +131,8 @@ export default function AulaPorcentagem({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={(val) => {
         const idx = MODULE_DEFS.findIndex((m) => m.id === val);
@@ -162,7 +163,7 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={1}
             titulo="Fundamentos de Porcentagem"
             descricao="O alicerce: conversões, cálculos e a lógica por trás do símbolo %."
-             variant={mv[1]}/>
+             variant="blue"/>
 
           {/* SEÇÃO 1: Conceito Central */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -170,7 +171,7 @@ export default function AulaPorcentagem({
               index={1}
               title="A Linguagem Universal dos Números"
               description="Porcentagem está em todo relatório técnico, toda proposta comercial, todo indicador Petrobras."
-              variant="emerald"
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -319,7 +320,7 @@ export default function AulaPorcentagem({
               index={2}
               title="Flashcards de Elite"
               description="Resposta rápida. Clique para revelar o raciocínio completo."
-              variant="emerald"
+              variant="blue"
             />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FlipCard
@@ -414,7 +415,31 @@ export default function AulaPorcentagem({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Em uma prova da CESGRANRIO com 60 questões, a nota mínima para aprovação é 50%. O candidato precisa acertar, no mínimo:"
+          alternativas={[
+              { letra: "A", texto: "25 questões", correta: false },
+              { letra: "B", texto: "28 questões", correta: false },
+              { letra: "C", texto: "30 questões", correta: true },
+              { letra: "D", texto: "32 questões", correta: false },
+              { letra: "E", texto: "35 questões", correta: false }
+            ]}
+          dicaEstrategica="Tipo de questão muito comum: transformar percentual em valor absoluto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "50% de 60 = 0,50 × 60 = 30 questões." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={4}
             variant="indigo"
             video={{
@@ -454,7 +479,7 @@ export default function AulaPorcentagem({
               questoes={quizM1}
               titulo="QUIZ: Fundamentos"
               numero={5}
-              variant="emerald"
+              variant="blue"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -504,7 +529,7 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={2}
             titulo="Aumentos e Descontos"
             descricao="O fator multiplicador: a arma secreta que elimina 3 passos de cálculo."
-             variant={mv[2]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -673,9 +698,33 @@ export default function AulaPorcentagem({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Em uma prova da CESGRANRIO com 60 questões, a nota mínima para aprovação é 50%. O candidato precisa acertar, no mínimo:"
+          alternativas={[
+              { letra: "A", texto: "25 questões", correta: false },
+              { letra: "B", texto: "28 questões", correta: false },
+              { letra: "C", texto: "30 questões", correta: true },
+              { letra: "D", texto: "32 questões", correta: false },
+              { letra: "E", texto: "35 questões", correta: false }
+            ]}
+          dicaEstrategica="Tipo de questão muito comum: transformar percentual em valor absoluto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "50% de 60 = 0,50 × 60 = 30 questões." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={4}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 2",
@@ -757,14 +806,14 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={3}
             titulo="Variação Percentual"
             descricao="Calcule quanto subiu ou caiu em relação ao valor inicial — sem errar a base."
-             variant={mv[3]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="A Fórmula Inviolável"
               description="Onde 90% dos candidatos erram: confundem base inicial com base final."
-              variant="amber"
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -891,9 +940,33 @@ export default function AulaPorcentagem({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O preço do gás natural subiu de R$ 50 para R$ 65. A variação percentual foi de:"
+          alternativas={[
+              { letra: "A", texto: "15%", correta: false },
+              { letra: "B", texto: "23%", correta: false },
+              { letra: "C", texto: "30%", correta: true },
+              { letra: "D", texto: "20%", correta: false },
+              { letra: "E", texto: "35%", correta: false }
+            ]}
+          dicaEstrategica="A alternativa (A) 15% é pegadinha: é a diferença absoluta (15 reais), não a percentual."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Variação = (Vf - Vi)/Vi × 100 = (65-50)/50 × 100 = 15/50 × 100 = 30%." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 3",
@@ -931,7 +1004,7 @@ export default function AulaPorcentagem({
               questoes={quizM3}
               titulo="QUIZ: Variação %"
               numero={4}
-              variant="amber"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -975,14 +1048,14 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={4}
             titulo="Aplicações Industriais"
             descricao="Eficiência de equipamentos, misturas de substâncias e metas operacionais."
-             variant={mv[4]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Porcentagem no Chão de Fábrica"
               description="Como a Petrobras usa % para medir eficiência, pureza e produtividade."
-              variant="cyan"
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -1105,7 +1178,31 @@ export default function AulaPorcentagem({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O preço do gás natural subiu de R$ 50 para R$ 65. A variação percentual foi de:"
+          alternativas={[
+              { letra: "A", texto: "15%", correta: false },
+              { letra: "B", texto: "23%", correta: false },
+              { letra: "C", texto: "30%", correta: true },
+              { letra: "D", texto: "20%", correta: false },
+              { letra: "E", texto: "35%", correta: false }
+            ]}
+          dicaEstrategica="A alternativa (A) 15% é pegadinha: é a diferença absoluta (15 reais), não a percentual."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Variação = (Vf - Vi)/Vi × 100 = (65-50)/50 × 100 = 15/50 × 100 = 30%." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
             variant="blue"
             video={{
@@ -1145,7 +1242,7 @@ export default function AulaPorcentagem({
               questoes={quizM4}
               titulo="QUIZ: Aplicações Industriais"
               numero={4}
-              variant="cyan"
+              variant="blue"
               icone="🔥"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1189,14 +1286,14 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={5}
             titulo="Simulado — Metade da Jornada"
             descricao="Teste integrado dos módulos 1 a 4. Mínimo 60% para avançar."
-             variant={mv[5]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Revisão Express"
               description="Os 4 conceitos que mais aparecem nas questões do simulado."
-              variant="rose"
+              variant="blue"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
@@ -1237,9 +1334,33 @@ export default function AulaPorcentagem({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O salário base de um técnico da Petrobras é R$ 4.000. Após reajuste de 15%, o novo salário será de:"
+          alternativas={[
+              { letra: "A", texto: "R$ 4.150", correta: false },
+              { letra: "B", texto: "R$ 4.400", correta: false },
+              { letra: "C", texto: "R$ 4.600", correta: true },
+              { letra: "D", texto: "R$ 4.500", correta: false },
+              { letra: "E", texto: "R$ 5.000", correta: false }
+            ]}
+          dicaEstrategica="A alternativa (A) R$4.150 é pegadinha para quem calculou 15% de 1.000 em vez de 4.000."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Fator multiplicador: 1 + 15/100 = 1,15." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Novo salário: 4.000 × 1,15 = R$ 4.600." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant="amber"
+            variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 5",
@@ -1277,7 +1398,7 @@ export default function AulaPorcentagem({
               questoes={quizM5}
               titulo="QUIZ: Simulado Parcial"
               numero={3}
-              variant="rose"
+              variant="blue"
               icone="🏆"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1293,7 +1414,7 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={6}
             titulo="Porcentagem Composta"
             descricao="Juros sobre juros, depreciação exponencial e a potência do tempo."
-             variant={mv[6]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1538,9 +1659,33 @@ export default function AulaPorcentagem({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={5}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um investimento rendeu 5% no primeiro mês e 8% no segundo mês (sobre o montante atualizado). Se o capital inicial era R$ 10.000, o montante ao final dos dois meses é:"
+          alternativas={[
+              { letra: "A", texto: "R$ 11.300", correta: false },
+              { letra: "B", texto: "R$ 11.340", correta: true },
+              { letra: "C", texto: "R$ 11.400", correta: false },
+              { letra: "D", texto: "R$ 11.500", correta: false },
+              { letra: "E", texto: "R$ 11.200", correta: false }
+            ]}
+          dicaEstrategica="Note como 5+8=13% mas o rendimento real é 13,4% — esse é o efeito dos juros compostos."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Mês 1: 10.000 × 1,05 = 10.500." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Mês 2: 10.500 × 1,08 = 11.340." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fator único: 1,05 × 1,08 = 1,134." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={5}
-            variant="rose"
+            variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 6",
@@ -1628,14 +1773,14 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={7}
             titulo="O Cálculo Reverso"
             descricao="Encontrar o valor original quando se conhece o resultado e a taxa aplicada."
-             variant={mv[7]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Desfazendo a Manipulação"
               description="A lógica de dividir pelo fator — não subtrair a taxa do resultado."
-              variant="emerald"
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -1747,7 +1892,7 @@ export default function AulaPorcentagem({
               index={2}
               title="Treino Mental — Reverso"
               description="Calcule o valor original rapidamente."
-              variant="emerald"
+              variant="blue"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FlipCard
@@ -1817,7 +1962,31 @@ export default function AulaPorcentagem({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"indigo"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Em uma prova da CESGRANRIO com 60 questões, a nota mínima para aprovação é 50%. O candidato precisa acertar, no mínimo:"
+          alternativas={[
+              { letra: "A", texto: "25 questões", correta: false },
+              { letra: "B", texto: "28 questões", correta: false },
+              { letra: "C", texto: "30 questões", correta: true },
+              { letra: "D", texto: "32 questões", correta: false },
+              { letra: "E", texto: "35 questões", correta: false }
+            ]}
+          dicaEstrategica="Tipo de questão muito comum: transformar percentual em valor absoluto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "50% de 60 = 0,50 × 60 = 30 questões." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={4}
             variant="indigo"
             video={{
@@ -1857,7 +2026,7 @@ export default function AulaPorcentagem({
               questoes={quizM7}
               titulo="QUIZ: Cálculo Reverso"
               numero={5}
-              variant="emerald"
+              variant="blue"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1901,14 +2070,14 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={8}
             titulo="Regra de Três e Porcentagem"
             descricao="Quando o fator multiplicador não basta: alinhamento de grandezas proporcionais."
-             variant={mv[8]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Regra de Três: Quando Usar"
               description="Nem toda questão de porcentagem se resolve com fator. Saiba identificar."
-              variant="amber"
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -2018,9 +2187,33 @@ export default function AulaPorcentagem({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O preço do gás natural subiu de R$ 50 para R$ 65. A variação percentual foi de:"
+          alternativas={[
+              { letra: "A", texto: "15%", correta: false },
+              { letra: "B", texto: "23%", correta: false },
+              { letra: "C", texto: "30%", correta: true },
+              { letra: "D", texto: "20%", correta: false },
+              { letra: "E", texto: "35%", correta: false }
+            ]}
+          dicaEstrategica="A alternativa (A) 15% é pegadinha: é a diferença absoluta (15 reais), não a percentual."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Variação = (Vf - Vi)/Vi × 100 = (65-50)/50 × 100 = 15/50 × 100 = 30%." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
-            variant="emerald"
+            variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 8",
@@ -2058,7 +2251,7 @@ export default function AulaPorcentagem({
               questoes={quizM8}
               titulo="QUIZ: Regra de Três %"
               numero={4}
-              variant="amber"
+              variant="blue"
               icone="🔥"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -2102,14 +2295,14 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={9}
             titulo="Aplicações Financeiras"
             descricao="Salários, impostos, CDI, INSS e descontos embutidos do mundo real."
-             variant={mv[9]}/>
+             variant="blue"/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Porcentagem no Mercado Financeiro"
               description="Os indicadores econômicos que aparecem nas questões de raciocínio quantitativo."
-              variant="emerald"
+              variant="blue"
             />
             <ContentAccordion
               slides={[
@@ -2243,7 +2436,7 @@ export default function AulaPorcentagem({
               index={2}
               title="Visualização: Juros Simples vs. Compostos"
               description="Compare o crescimento linear e exponencial com a mesma taxa de 10% ao período."
-              variant="emerald"
+              variant="blue"
             />
             <FunctionGraph
               title="Comparação: Juros Simples vs. Compostos"
@@ -2287,9 +2480,33 @@ export default function AulaPorcentagem({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Em uma prova da CESGRANRIO com 60 questões, a nota mínima para aprovação é 50%. O candidato precisa acertar, no mínimo:"
+          alternativas={[
+              { letra: "A", texto: "25 questões", correta: false },
+              { letra: "B", texto: "28 questões", correta: false },
+              { letra: "C", texto: "30 questões", correta: true },
+              { letra: "D", texto: "32 questões", correta: false },
+              { letra: "E", texto: "35 questões", correta: false }
+            ]}
+          dicaEstrategica="Tipo de questão muito comum: transformar percentual em valor absoluto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "50% de 60 = 0,50 × 60 = 30 questões." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={4}
-            variant="cyan"
+            variant="blue"
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 9",
@@ -2327,7 +2544,7 @@ export default function AulaPorcentagem({
               questoes={quizM9}
               titulo="QUIZ: Financeiro"
               numero={5}
-              variant="emerald"
+              variant="blue"
               icone="🔥"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -2377,7 +2594,7 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre — Porcentagem"
             descricao="Todas as competências postas à prova. Nível CESGRANRIO real."
-             variant={mv[10]}/>
+             variant="blue"/>
 
           {/* Revisão rápida final */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -2432,7 +2649,31 @@ export default function AulaPorcentagem({
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"blue"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O preço do gás natural subiu de R$ 50 para R$ 65. A variação percentual foi de:"
+          alternativas={[
+              { letra: "A", texto: "15%", correta: false },
+              { letra: "B", texto: "23%", correta: false },
+              { letra: "C", texto: "30%", correta: true },
+              { letra: "D", texto: "20%", correta: false },
+              { letra: "E", texto: "35%", correta: false }
+            ]}
+          dicaEstrategica="A alternativa (A) 15% é pegadinha: é a diferença absoluta (15 reais), não a percentual."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Variação = (Vf - Vi)/Vi × 100 = (65-50)/50 × 100 = 15/50 × 100 = 30%." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
             variant="blue"
             video={{
@@ -2473,7 +2714,7 @@ export default function AulaPorcentagem({
               titulo="QUIZ: Simulado Final"
               icone="🏆"
               numero={4}
-              variant="slate"
+              variant="blue"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>
