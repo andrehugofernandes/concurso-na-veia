@@ -2493,6 +2493,29 @@ export default function AulaLei13303(props: AulaProps) {
           </div>
         </section>
 
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Lei 13.303/2016 disciplina o funcionamento de empresas públicas e de economia mista. Qual é o seu objetivo PRINCIPAL?"
+          alternativas={[
+            { label: "A", valor: "Substituir completamente a Lei 6.404/76 para todas as sociedades anônimas." },
+                { label: "B", valor: "Estabelecer regras de governança corporativa, garantindo eficiência, transparência e respeito aos acionistas em empresas estatais." },
+                { label: "C", valor: "Eliminar a necessidade de Conselho de Administração nas empresas públicas." },
+                { label: "D", valor: "Privatizar todas as empresas do setor público brasileiro." },
+                { label: "E", valor: "Impedir que acionistas privados participem de economia mista." }
+          ]}
+          correta="B"
+          passos={[
+            "Lei 13.303 estabelece normas específicas de governança para estatais: transparência, conformidade, responsabilidade.",
+            "Petrobras segue rigorosamente estas normas.",
+            "Gabarito confirmado."
+          ]}
+        />
         <QuizInterativo
           questoes={getQuiz("modulo-10")}
           titulo="QUIZ: Simulado Geral"

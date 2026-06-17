@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
   AlertBox,
-  QuizInterativo,
+  QuizInterativo, QuestaoResolvidaStepByStep,
   ModuleBanner,
   getRandomQuestions,
   AulaProps,
@@ -465,7 +465,30 @@ export default function AulaPlanejamentoEstrategico({
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Conceitos de PE", artista: "Prof. Administração" }}
           />
 
-                      <QuizInterativo questoes={quizM1} titulo="QUIZ: Conceitos Fundamentais" numero={3} variant="blue" icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
+          alternativas={[
+            { label: "A", valor: "Visão de Futuro" },
+                { label: "B", valor: "Valores Corporativos" },
+                { label: "C", valor: "Missão Organizacional" },
+                { label: "D", valor: "Objetivos Estratégicos" },
+                { label: "E", valor: "Metas Operacionais" }
+          ]}
+          correta="C"
+          passos={[
+            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
+            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
+            "Gabarito confirmado."
+          ]}
+        />
+        <QuizInterativo questoes={quizM1} titulo="QUIZ: Conceitos Fundamentais" numero={3} variant="blue" icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
           </section>
         </div>
       </TabsContent>
@@ -624,7 +647,30 @@ export default function AulaPlanejamentoEstrategico({
 
 <ModuleConsolidation index={2} variant="blue" video={{ videoId: "iV7hKYv0fDc", title: "SWOT Completo", duration: "15:00" }} resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "Quadrantes SWOT", type: "Conceito", placeholderColor: "bg-emerald-500/20" }, { title: "Interno vs Externo", type: "Classificação", placeholderColor: "bg-teal-500/20" }, { title: "Cruzamento TOWS", type: "Estratégia", placeholderColor: "bg-green-500/20" }] }} sinteseEstrategica={{ title: "SWOT: S e W = INTERNO, O e T = EXTERNO", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Força e Fraqueza você controla. Oportunidade e Ameaça você enfrenta."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "SWOT Descomplicado", artista: "Prof. Administração" }} />
 
-                      <QuizInterativo questoes={quizM2} titulo="QUIZ: Análise SWOT" numero={3} variant="blue" icone="🎯" onComplete={(score) => handleModuleComplete("modulo-2", score)} />
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
+          alternativas={[
+            { label: "A", valor: "Visão de Futuro" },
+                { label: "B", valor: "Valores Corporativos" },
+                { label: "C", valor: "Missão Organizacional" },
+                { label: "D", valor: "Objetivos Estratégicos" },
+                { label: "E", valor: "Metas Operacionais" }
+          ]}
+          correta="C"
+          passos={[
+            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
+            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
+            "Gabarito confirmado."
+          ]}
+        />
+        <QuizInterativo questoes={quizM2} titulo="QUIZ: Análise SWOT" numero={3} variant="blue" icone="🎯" onComplete={(score) => handleModuleComplete("modulo-2", score)} />
           </section>
         </div>
       </TabsContent>
@@ -750,7 +796,30 @@ export default function AulaPlanejamentoEstrategico({
 
 <ModuleConsolidation index={2} variant="blue" video={{ videoId: "iV7hKYv0fDc", title: "BSC Explicado", duration: "16:00" }} resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "4 Perspectivas BSC", type: "Conceito", placeholderColor: "bg-amber-500/20" }, { title: "Mapa Estratégico", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Causa e Efeito", type: "Relação", placeholderColor: "bg-yellow-500/20" }] }} sinteseEstrategica={{ title: "BSC: F-C-P-A (Finanças Com Processos Aprendidos)", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Kaplan e Norton criaram em 1992. 4 perspectivas. Mapa estratégico."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "BSC na Prática", artista: "Prof. Administração" }} />
 
-                      <QuizInterativo questoes={quizM3} titulo="QUIZ: Balanced Scorecard (BSC)" numero={3} variant="blue" icone="📊" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
+          alternativas={[
+            { label: "A", valor: "Visão de Futuro" },
+                { label: "B", valor: "Valores Corporativos" },
+                { label: "C", valor: "Missão Organizacional" },
+                { label: "D", valor: "Objetivos Estratégicos" },
+                { label: "E", valor: "Metas Operacionais" }
+          ]}
+          correta="C"
+          passos={[
+            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
+            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
+            "Gabarito confirmado."
+          ]}
+        />
+        <QuizInterativo questoes={quizM3} titulo="QUIZ: Balanced Scorecard (BSC)" numero={3} variant="blue" icone="📊" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
           </section>
         </div>
       </TabsContent>
@@ -874,7 +943,30 @@ export default function AulaPlanejamentoEstrategico({
 
 <ModuleConsolidation index={2} variant="blue" video={{ videoId: "iV7hKYv0fDc", title: "Estratégias de Porter", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "5 Forças de Porter", type: "Relação", placeholderColor: "bg-rose-500/20" }, { title: "Estratégias Genéricas", type: "Opções", placeholderColor: "bg-pink-500/20" }, { title: "Matriz Ansoff", type: "Crescimento", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "PORTER: Custo, Diferenciação ou Foco", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Ou você é barato, ou é especial, ou foca em um bando."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Estratégias Competitivas", artista: "Prof. Administração" }} />
 
-                      <QuizInterativo questoes={quizM4} titulo="QUIZ: Formulação Estratégica" numero={3} variant="blue" icone="⚔️" onComplete={(score) => handleModuleComplete("modulo-4", score)} />
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
+          alternativas={[
+            { label: "A", valor: "Visão de Futuro" },
+                { label: "B", valor: "Valores Corporativos" },
+                { label: "C", valor: "Missão Organizacional" },
+                { label: "D", valor: "Objetivos Estratégicos" },
+                { label: "E", valor: "Metas Operacionais" }
+          ]}
+          correta="C"
+          passos={[
+            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
+            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
+            "Gabarito confirmado."
+          ]}
+        />
+        <QuizInterativo questoes={quizM4} titulo="QUIZ: Formulação Estratégica" numero={3} variant="blue" icone="⚔️" onComplete={(score) => handleModuleComplete("modulo-4", score)} />
           </section>
         </div>
       </TabsContent>
@@ -1025,7 +1117,30 @@ export default function AulaPlanejamentoEstrategico({
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Táticas de Implementação", artista: "Prof. Administração" }} 
           />
 
-                      <QuizInterativo questoes={quizM5} titulo="QUIZ: Implementação Estratégica" numero={3} variant="blue" icone="🎯" onComplete={(score) => handleModuleComplete("modulo-5", score)} />
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
+          alternativas={[
+            { label: "A", valor: "Visão de Futuro" },
+                { label: "B", valor: "Valores Corporativos" },
+                { label: "C", valor: "Missão Organizacional" },
+                { label: "D", valor: "Objetivos Estratégicos" },
+                { label: "E", valor: "Metas Operacionais" }
+          ]}
+          correta="C"
+          passos={[
+            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
+            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
+            "Gabarito confirmado."
+          ]}
+        />
+        <QuizInterativo questoes={quizM5} titulo="QUIZ: Implementação Estratégica" numero={3} variant="blue" icone="🎯" onComplete={(score) => handleModuleComplete("modulo-5", score)} />
           </section>
         </div>
       </TabsContent>
@@ -1175,7 +1290,30 @@ export default function AulaPlanejamentoEstrategico({
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "A Arte de Medir", artista: "Prof. Administração" }} 
           />
 
-                      <QuizInterativo questoes={quizM6} titulo="QUIZ: Controle e Avaliação" numero={3} variant="blue" icone="📈" onComplete={(score) => handleModuleComplete("modulo-6", score)} />
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
+          alternativas={[
+            { label: "A", valor: "Visão de Futuro" },
+                { label: "B", valor: "Valores Corporativos" },
+                { label: "C", valor: "Missão Organizacional" },
+                { label: "D", valor: "Objetivos Estratégicos" },
+                { label: "E", valor: "Metas Operacionais" }
+          ]}
+          correta="C"
+          passos={[
+            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
+            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
+            "Gabarito confirmado."
+          ]}
+        />
+        <QuizInterativo questoes={quizM6} titulo="QUIZ: Controle e Avaliação" numero={3} variant="blue" icone="📈" onComplete={(score) => handleModuleComplete("modulo-6", score)} />
           </section>
         </div>
       </TabsContent>
@@ -1309,7 +1447,30 @@ export default function AulaPlanejamentoEstrategico({
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Público vs Privado", artista: "Prof. Administração" }} 
           />
 
-                      <QuizInterativo questoes={quizM7} titulo="QUIZ: Empresas Públicas" numero={3} variant="blue" icone="🏛️" onComplete={(score) => handleModuleComplete("modulo-7", score)} />
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
+          alternativas={[
+            { label: "A", valor: "Visão de Futuro" },
+                { label: "B", valor: "Valores Corporativos" },
+                { label: "C", valor: "Missão Organizacional" },
+                { label: "D", valor: "Objetivos Estratégicos" },
+                { label: "E", valor: "Metas Operacionais" }
+          ]}
+          correta="C"
+          passos={[
+            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
+            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
+            "Gabarito confirmado."
+          ]}
+        />
+        <QuizInterativo questoes={quizM7} titulo="QUIZ: Empresas Públicas" numero={3} variant="blue" icone="🏛️" onComplete={(score) => handleModuleComplete("modulo-7", score)} />
           </section>
         </div>
       </TabsContent>
@@ -1444,7 +1605,30 @@ export default function AulaPlanejamentoEstrategico({
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Prospectiva Estratégica", artista: "Prof. Administração" }} 
           />
 
-                      <QuizInterativo questoes={quizM8} titulo="QUIZ: Cenários e Prospectiva" numero={3} variant="blue" icone="🔮" onComplete={(score) => handleModuleComplete("modulo-8", score)} />
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
+          alternativas={[
+            { label: "A", valor: "Visão de Futuro" },
+                { label: "B", valor: "Valores Corporativos" },
+                { label: "C", valor: "Missão Organizacional" },
+                { label: "D", valor: "Objetivos Estratégicos" },
+                { label: "E", valor: "Metas Operacionais" }
+          ]}
+          correta="C"
+          passos={[
+            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
+            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
+            "Gabarito confirmado."
+          ]}
+        />
+        <QuizInterativo questoes={quizM8} titulo="QUIZ: Cenários e Prospectiva" numero={3} variant="blue" icone="🔮" onComplete={(score) => handleModuleComplete("modulo-8", score)} />
           </section>
         </div>
       </TabsContent>
@@ -1588,7 +1772,30 @@ export default function AulaPlanejamentoEstrategico({
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Estratégia Petrobras 2024", artista: "Prof. Administração" }} 
           />
 
-                      <QuizInterativo questoes={quizM9} titulo="QUIZ: Aplicações Petrobras" numero={3} variant="blue" icone="🛢️" onComplete={(score) => handleModuleComplete("modulo-9", score)} />
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
+          alternativas={[
+            { label: "A", valor: "Visão de Futuro" },
+                { label: "B", valor: "Valores Corporativos" },
+                { label: "C", valor: "Missão Organizacional" },
+                { label: "D", valor: "Objetivos Estratégicos" },
+                { label: "E", valor: "Metas Operacionais" }
+          ]}
+          correta="C"
+          passos={[
+            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
+            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
+            "Gabarito confirmado."
+          ]}
+        />
+        <QuizInterativo questoes={quizM9} titulo="QUIZ: Aplicações Petrobras" numero={3} variant="blue" icone="🛢️" onComplete={(score) => handleModuleComplete("modulo-9", score)} />
           </section>
         </div>
       </TabsContent>
@@ -1663,7 +1870,30 @@ export default function AulaPlanejamentoEstrategico({
             audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", titulo: "Dicas Finais", artista: "Prof. Administração" }} 
           />
 
-                      <QuizInterativo questoes={quizM10} titulo="QUIZ: Simulado Geral" numero={3} variant="blue" icone="👑" onComplete={(score) => handleModuleComplete("modulo-10", score)} />
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
+          alternativas={[
+            { label: "A", valor: "Visão de Futuro" },
+                { label: "B", valor: "Valores Corporativos" },
+                { label: "C", valor: "Missão Organizacional" },
+                { label: "D", valor: "Objetivos Estratégicos" },
+                { label: "E", valor: "Metas Operacionais" }
+          ]}
+          correta="C"
+          passos={[
+            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
+            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
+            "Gabarito confirmado."
+          ]}
+        />
+        <QuizInterativo questoes={quizM10} titulo="QUIZ: Simulado Geral" numero={3} variant="blue" icone="👑" onComplete={(score) => handleModuleComplete("modulo-10", score)} />
           </section>
         </div>
       </TabsContent>
