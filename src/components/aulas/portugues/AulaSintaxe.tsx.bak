@@ -757,8 +757,6 @@ export default function AulaSintaxe({
 
   return (
     <AulaTemplate
-      canComplete={completedModules.size >= MODULE_DEFS.length}
-      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       onComplete={onComplete}
       activeTab={activeTab}
       setActiveTab={setActiveTab}
@@ -852,29 +850,7 @@ export default function AulaSintaxe({
         </section>
 
         <section className="mt-16">
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Na frase 'Alugam-se plataformas offshore', o sujeito é:"
-          alternativas={[
-            { label: "A", valor: "Indeterminado" },
-                { label: "B", valor: "Plataformas offshore (Sujeito Paciente)" },
-                { label: "C", valor: "Inexistente" },
-                { label: "D", valor: "Oculto" }
-          ]}
-          correta="B"
-          passos={[
-            "VTD (alugar) + SE (partícula apassivadora).",
-            "O termo 'plataformas' é o sujeito que sofre a ação.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={getRandomQuestions(QUIZ_MOD1_POOL, 2)}
             titulo="QUIZ: Fundamentos e Sujeito"
             icone="🎯"
@@ -987,29 +963,7 @@ export default function AulaSintaxe({
         </section>
 
         <section className="mt-16">
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Em 'A Petrobras acredita no potencial do Brasil', o verbo acredita é:"
-          alternativas={[
-            { label: "A", valor: "VTD (Transitivo Direto)" },
-                { label: "B", valor: "VTI (Transitivo Indireto)" },
-                { label: "C", valor: "De ligação" },
-                { label: "D", valor: "Intransitivo" }
-          ]}
-          correta="B"
-          passos={[
-            "Quem acredita, acredita EM algo.",
-            "A preposição 'em' (no = em+o) marca a transitividade indireta.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={getRandomQuestions(QUIZ_MOD2_POOL, 1)}
             titulo="QUIZ: Predicação Verbal"
             icone="🔗"
@@ -1111,29 +1065,7 @@ export default function AulaSintaxe({
         </section>
 
         <section className="mt-16">
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Qual o tipo de predicado em 'Os operários trabalham felizes'?"
-          alternativas={[
-            { label: "A", valor: "Verbal" },
-                { label: "B", valor: "Nominal" },
-                { label: "C", valor: "Verbo-Nominal" },
-                { label: "D", valor: "Inexistente" }
-          ]}
-          correta="C"
-          passos={[
-            "Tem ação (trabalham) e estado do sujeito (felizes).",
-            "Portanto, Verbo-Nominal.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={getRandomQuestions(QUIZ_MOD3_POOL, 1)}
             titulo="QUIZ: Predicado e Predicativo"
             icone="🎭"
@@ -1233,29 +1165,7 @@ export default function AulaSintaxe({
         </section>
 
         <section className="mt-16">
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Em 'A Petrobras comprou novos equipamentos', o termo em negrito é:"
-          alternativas={[
-            { label: "A", valor: "Objeto Direto" },
-                { label: "B", valor: "Objeto Indireto" },
-                { label: "C", valor: "Sujeito" },
-                { label: "D", valor: "Adjunto" }
-          ]}
-          correta="A"
-          passos={[
-            "Comprou (o quê?) -> novos equipamentos.",
-            "Ligação direta sem preposição.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={getRandomQuestions(QUIZ_MOD4_POOL, 2)}
             titulo="QUIZ: Objetos Verbais"
             icone="🎯"
@@ -1266,12 +1176,12 @@ export default function AulaSintaxe({
         </section>
       </TabsContent>
 
-      <TabsContent value="modulo-sintese" className="space-y-[50px]">
+      <TabsContent value="modulo-5" className="space-y-[50px]">
         <ModuleBanner
           numero={5}
           titulo="Síntese Estratégica"
           descricao="Resumo visual, mapas mentais e ferramentas de fixação rápida para não esquecer mais."
-          variant="blue"
+          variant={mv[5]}
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
@@ -1279,7 +1189,7 @@ export default function AulaSintaxe({
               index="INTRO"
               title="Resumo e Multimídia"
               description="Visão panorâmica de toda a Sintaxe da Oração."
-          variant="blue"
+          variant={mv[5]}
         />
 
             <div className="bg-rose-500/5 border border-rose-500/20 p-6 rounded-xl">
@@ -1340,7 +1250,7 @@ export default function AulaSintaxe({
             </div>
 
             <LessonTabs
-              variant="blue"
+              variant="rose"
               tabs={[
                 {
                   id: "video",
@@ -1499,29 +1409,7 @@ export default function AulaSintaxe({
         </section>
 
         <section className="mt-16">
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Assinale o Complemento Nominal:"
-          alternativas={[
-            { label: "A", valor: "A construção do navio demorou." },
-                { label: "B", valor: "O navio de aço partiu." },
-                { label: "C", valor: "Vimos o navio." },
-                { label: "D", valor: "O navio é grande." }
-          ]}
-          correta="A"
-          passos={[
-            "O navio é o alvo da construção (sentido passivo).",
-            "Completa o substantivo abstrato 'construção'.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={getRandomQuestions(QUIZ_MOD5_POOL, 3)}
             titulo="QUIZ: Complemento Nominal"
             icone="🧠"
@@ -1624,29 +1512,7 @@ export default function AulaSintaxe({
         </section>
 
         <section className="mt-16">
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Na frase 'O poço foi selado pela equipe', o termo sublinhado é:"
-          alternativas={[
-            { label: "A", valor: "Objeto Indireto" },
-                { label: "B", valor: "Agente da Passiva" },
-                { label: "C", valor: "Adjunto Adverbial" },
-                { label: "D", valor: "Sujeito" }
-          ]}
-          correta="B"
-          passos={[
-            "Na voz passiva analítica, 'pela equipe' é quem executa a ação.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={getRandomQuestions(QUIZ_MOD6_POOL, 2)}
             titulo="QUIZ: Agente da Passiva"
             icone="🛡️"
@@ -1724,29 +1590,7 @@ export default function AulaSintaxe({
         </section>
 
         <section className="mt-16">
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Em 'Trabalhamos muito ontem', os termos indicam respectivamente:"
-          alternativas={[
-            { label: "A", valor: "Intensidade e Tempo" },
-                { label: "B", valor: "Modo e Lugar" },
-                { label: "C", valor: "Tempo e Causa" },
-                { label: "D", valor: "Negação e Dúvida" }
-          ]}
-          correta="A"
-          passos={[
-            "Muito (intensidade) e Ontem (tempo).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={getRandomQuestions(QUIZ_MOD7_POOL, 2)}
             titulo="QUIZ: Adjunto Adnominal"
             icone="👗"
@@ -1824,29 +1668,7 @@ export default function AulaSintaxe({
         </section>
 
         <section className="mt-16">
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Em 'Trabalhamos muito ontem', os termos indicam respectivamente:"
-          alternativas={[
-            { label: "A", valor: "Intensidade e Tempo" },
-                { label: "B", valor: "Modo e Lugar" },
-                { label: "C", valor: "Tempo e Causa" },
-                { label: "D", valor: "Negação e Dúvida" }
-          ]}
-          correta="A"
-          passos={[
-            "Muito (intensidade) e Ontem (tempo).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={getRandomQuestions(QUIZ_MOD8_POOL, 2)}
             titulo="QUIZ: Adjunto Adverbial"
             icone="⌚"
@@ -1902,29 +1724,7 @@ export default function AulaSintaxe({
         </section>
 
         <section className="mt-16">
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Na frase 'André, traga os relatórios', o termo André é:"
-          alternativas={[
-            { label: "A", valor: "Sujeito" },
-                { label: "B", valor: "Vocativo" },
-                { label: "C", valor: "Aposto" },
-                { label: "D", valor: "Objeto" }
-          ]}
-          correta="B"
-          passos={[
-            "É um chamamento independente da estrutura oracional.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={getRandomQuestions(QUIZ_MOD9_POOL, 2)}
             titulo="QUIZ: Aposto e Vocativo"
             icone="🗣️"
@@ -1952,29 +1752,7 @@ export default function AulaSintaxe({
         </section>
 
         <section className="mt-16">
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Na frase 'Alugam-se plataformas offshore', o sujeito é:"
-          alternativas={[
-            { label: "A", valor: "Indeterminado" },
-                { label: "B", valor: "Plataformas offshore (Sujeito Paciente)" },
-                { label: "C", valor: "Inexistente" },
-                { label: "D", valor: "Oculto" }
-          ]}
-          correta="B"
-          passos={[
-            "VTD (alugar) + SE (partícula apassivadora).",
-            "O termo 'plataformas' é o sujeito que sofre a ação.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={getRandomQuestions(QUIZ_MOD10_POOL, 5)}
             titulo="SIMULADO DE SÍNTESE: Sintaxe Completa"
             icone="⚔️"

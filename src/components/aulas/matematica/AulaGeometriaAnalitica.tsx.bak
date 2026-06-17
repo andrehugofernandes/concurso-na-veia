@@ -1,0 +1,1877 @@
+"use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
+
+import { useState, useEffect } from "react";
+import { TabsContent } from "@/components/ui/tabs";
+import {
+  AlertBox,
+  QuizInterativo,
+  ModuleBanner,
+  getRandomQuestions,
+  AulaProps,
+  ContentAccordion,
+  AulaTemplate,
+  ModuleSectionHeader,
+  FunctionGraph,
+  type FunctionPlot,
+  ModuleConsolidation,
+  QuestaoResolvidaStepByStep} from "../shared";
+import {
+  QUIZ_M1_PONTO_PLANO,
+  QUIZ_M2_DISTANCIA_MEDIO,
+  QUIZ_M3_EQUACAO_RETA,
+  QUIZ_M4_POSICAO_RETAS,
+  QUIZ_M5_DISTANCIA_PONTO_RETA,
+  QUIZ_M6_CIRCUNFERENCIA,
+  QUIZ_M7_PARABOLA,
+  QUIZ_M8_INTERSECOES,
+  QUIZ_M9_APLICACOES_PETROBRAS,
+  QUIZ_M10_SIMULADO,
+} from "./data/geometria-analitica-quizzes";
+import { getModuleVariant, getAllModuleVariants } from "@/lib/moduleColors";
+
+const mv = [undefined, ...getAllModuleVariants()];
+
+export default function AulaGeometriaAnalitica({
+  onComplete,
+  isCompleted,
+  loading,
+  xpGanho = 50,
+  currentProgress,
+  onUpdateProgress,
+  titulo,
+  descricao,
+  duracao,
+  materiaNome,
+  materiaCor,
+  materiaId,
+  prevTopico,
+  nextTopico,
+}: AulaProps) {
+  const [activeTab, setActiveTab] = useState("modulo-1");
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
+
+  const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_PONTO_PLANO, 6));
+  const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_DISTANCIA_MEDIO, 6));
+  const [quizM3] = useState(() => getRandomQuestions(QUIZ_M3_EQUACAO_RETA, 6));
+  const [quizM4] = useState(() => getRandomQuestions(QUIZ_M4_POSICAO_RETAS, 6));
+  const [quizM5] = useState(() => getRandomQuestions(QUIZ_M5_DISTANCIA_PONTO_RETA, 6));
+  const [quizM6] = useState(() => getRandomQuestions(QUIZ_M6_CIRCUNFERENCIA, 6));
+  const [quizM7] = useState(() => getRandomQuestions(QUIZ_M7_PARABOLA, 6));
+  const [quizM8] = useState(() => getRandomQuestions(QUIZ_M8_INTERSECOES, 6));
+  const [quizM9] = useState(() => getRandomQuestions(QUIZ_M9_APLICACOES_PETROBRAS, 6));
+  const [quizM10] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO, 6));
+
+  const isModuleUnlocked = (_index: number) => true; // ✅ TODOS OS MÓDULOS DESBLOQUEADOS
+
+  const handleModuleComplete = (moduleId: string, score: number) => {
+    if (score >= 60) {
+      const nextCompleted = new Set(completedModules);
+      nextCompleted.add(moduleId);
+      updateCompletedModules(Array.from(nextCompleted));
+      const modules = Array.from({ length: 10 }, (_, i) => `modulo-${i + 1}`);
+      const idx = modules.findIndex((m) => m === moduleId);
+      const pct = Math.round(((idx + 1) / 10) * 100);
+      onUpdateProgress?.(pct);
+      if (idx < 9) setTimeout(() => setActiveTab(`modulo-${idx + 2}`), 1500);
+    }
+  };
+
+  useEffect(() => {
+    if (currentProgress && currentProgress > 0) {
+      const count = Math.floor((currentProgress / 100) * 10);
+      const s = new Set<string>();
+      for (let i = 1; i <= count; i++) s.add(`modulo-${i}`);
+      updateCompletedModules(Array.from(s));
+    }
+  }, [currentProgress]);
+
+  const MODULE_DEFS = [
+    { id: "modulo-1", label: "Módulo 1", titulo: "Ponto no Plano" },
+    { id: "modulo-2", label: "Módulo 2", titulo: "Distância e Ponto Médio" },
+    { id: "modulo-3", label: "Módulo 3", titulo: "Equação da Reta" },
+    { id: "modulo-4", label: "Módulo 4", titulo: "Posições Relativas" },
+    { id: "modulo-5", label: "Módulo 5", titulo: "Distância Ponto-Reta" },
+    { id: "modulo-6", label: "Módulo 6", titulo: "Circunferência" },
+    { id: "modulo-7", label: "Módulo 7", titulo: "Parábola" },
+    { id: "modulo-8", label: "Módulo 8", titulo: "Interseções" },
+    { id: "modulo-9", label: "Módulo 9", titulo: "Aplicações Petrobras" },
+    { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Final" },
+  ];
+
+    
+
+
+  return (
+    <AulaTemplate
+      activeTab={activeTab}
+      setActiveTab={setActiveTab}
+      modules={MODULE_DEFS}
+      completedModules={completedModules}
+      isModuleUnlocked={isModuleUnlocked}
+      titulo={titulo}
+      descricao={descricao}
+      duracao={duracao}
+      materiaNome={materiaNome}
+      materiaCor={materiaCor}
+      materiaId={materiaId}
+      isCompleted={isCompleted}
+      prevTopico={prevTopico}
+      nextTopico={nextTopico}
+      currentProgress={currentProgress}
+      onComplete={onComplete}
+      loading={loading}
+      xpGanho={xpGanho}
+    >
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* MÓDULO 1: PONTO NO PLANO CARTESIANO                              */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <TabsContent value="modulo-1" className="space-y-[50px]">
+        <ModuleBanner numero={1}
+          titulo="Ponto no Plano Cartesiano"
+          descricao="Domine o sistema de coordenadas, quadrantes, simetrias e a localização de pontos — base de toda a Geometria Analítica."
+           variant={mv[1]}/>
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={1}
+              title="O Plano Cartesiano e os Quadrantes"
+              description="O mapa de coordenadas que organiza o espaço geométrico."
+              variant="blue"
+              className="mb-6"
+            />
+            <ContentAccordion
+              titulo="Sistema de Coordenadas"
+              icone="📐"
+              corIndicador="bg-blue-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "O que é o Plano Cartesiano?",
+                  icone: "🗺️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        O <strong>plano cartesiano</strong> é formado por dois eixos perpendiculares: o eixo das abscissas (<strong>eixo x</strong>, horizontal) e o eixo das ordenadas (<strong>eixo y</strong>, vertical). A interseção é chamada de <strong>origem O(0, 0)</strong>.
+                      </p>
+                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
+                        <p className="text-sm font-mono text-center">
+                          P(x, y) — abscissa x, ordenada y
+                        </p>
+                      </div>
+                      <AlertBox tipo="info" titulo="Contexto Petrobras">
+                        Mapas de campos petrolíferos usam sistemas de coordenadas UTM — uma adaptação do plano cartesiano para escala geográfica. Localizar plataformas P-36, P-52 e P-66 em mapas operacionais segue exatamente esse raciocínio.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Os Quatro Quadrantes",
+                  icone: "🔢",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>Os eixos dividem o plano em <strong>quatro quadrantes</strong>:</p>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-center">
+                          <p className="text-xs font-bold text-emerald-500">1º Quadrante</p>
+                          <p className="text-sm font-mono">(+, +)</p>
+                          <p className="text-xs text-muted-foreground">x{">"} 0, y{">"} 0</p>
+                        </div>
+                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl text-center">
+                          <p className="text-xs font-bold text-cyan-500">2º Quadrante</p>
+                          <p className="text-sm font-mono">(−, +)</p>
+                          <p className="text-xs text-muted-foreground">x{"<"} 0, y{">"} 0</p>
+                        </div>
+                        <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl text-center">
+                          <p className="text-xs font-bold text-blue-500">3º Quadrante</p>
+                          <p className="text-sm font-mono">(−, −)</p>
+                          <p className="text-xs text-muted-foreground">x{"<"} 0, y{"<"} 0</p>
+                        </div>
+                        <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-center">
+                          <p className="text-xs font-bold text-amber-500">4º Quadrante</p>
+                          <p className="text-sm font-mono">(+, −)</p>
+                          <p className="text-xs text-muted-foreground">x{">"} 0, y{"<"} 0</p>
+                        </div>
+                      </div>
+                      <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
+                        Pontos sobre os eixos (como (3, 0) ou (0, -5)) <strong>não pertencem a nenhum quadrante</strong>. A banca costuma incluir esses pontos para testar se o candidato sabe distinguir eixos de quadrantes.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Simetrias no Plano",
+                  icone: "🪞",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>Um ponto pode ter <strong>três tipos de simétrico</strong> no plano cartesiano:</p>
+                      <div className="space-y-3">
+                        <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                          <p className="text-sm font-bold text-blue-400">Simetria em relação ao eixo x</p>
+                          <p className="text-sm font-mono">P(a, b) → P&apos;(a, −b)</p>
+                          <p className="text-xs text-muted-foreground">Inverte o sinal de y</p>
+                        </div>
+                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                          <p className="text-sm font-bold text-cyan-400">Simetria em relação ao eixo y</p>
+                          <p className="text-sm font-mono">P(a, b) → P&apos;(−a, b)</p>
+                          <p className="text-xs text-muted-foreground">Inverte o sinal de x</p>
+                        </div>
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                          <p className="text-sm font-bold text-emerald-400">Simetria em relação à origem</p>
+                          <p className="text-sm font-mono">P(a, b) → P&apos;(−a, −b)</p>
+                          <p className="text-xs text-muted-foreground">Inverte ambos os sinais</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ModuleConsolidation
+            index={2}
+            variant="indigo"
+            video={{
+              videoId: "6coNvK0rMoE",
+              title: "Geometria Analítica - O Ponto no Plano",
+              duration: "12:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 1",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Coordenadas (x, y)", type: "diagram", placeholderColor: "bg-indigo-500/20", imageUrl: "/temp-img.png" },
+                { title: "Simetria e Quadrantes", type: "diagram", placeholderColor: "bg-blue-500/20", imageUrl: "/temp-img.png" },
+                { title: "Distância d = √[(x₂-x₁)² + (y₂-y₁)²]", type: "formula", placeholderColor: "bg-purple-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Lembre dos 4 quadrantes:</p>
+                  <p>Q1: (+,+) | Q2: (-,+) | Q3: (-,-) | Q4: (+,-)</p>
+                  <p className="text-sm text-muted-foreground mt-2">Comece pelo lado direito (Q1) e siga no sentido anti-horário!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              titulo: "O Ritmo do Plano Cartesiano",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+                    <QuizInterativo
+            questoes={quizM1}
+            moduleId="modulo-1"
+            onComplete={handleModuleComplete}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* MÓDULO 2: DISTÂNCIA ENTRE PONTOS E PONTO MÉDIO                   */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <TabsContent value="modulo-2" className="space-y-[50px]">
+        <ModuleBanner numero={2}
+          titulo="Distância entre Pontos e Ponto Médio"
+          descricao="As fórmulas essenciais para medir separação e encontrar o centro entre dois pontos — aplicadas em mapeamento de dutos e plataformas."
+           variant={mv[2]}/>
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={1}
+              title="Fórmula da Distância entre Dois Pontos"
+              description="Derivada do Teorema de Pitágoras — mede o comprimento do segmento AB."
+              variant="blue"
+              className="mb-6"
+            />
+            <ContentAccordion
+              titulo="Distância e Ponto Médio"
+              icone="📏"
+              corIndicador="bg-cyan-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Fórmula da Distância",
+                  icone: "📐",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        Dados dois pontos A(x₁, y₁) e B(x₂, y₂), a distância entre eles é calculada pelo <strong>Teorema de Pitágoras generalizado</strong>:
+                      </p>
+                      <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 text-center">
+                        <p className="text-lg font-mono font-bold">
+                          d(A, B) = √[(x₂ − x₁)² + (y₂ − y₁)²]
+                        </p>
+                      </div>
+                      <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4">
+                        <p className="text-xs font-bold text-blue-400 mb-2">Exemplo resolvido passo a passo</p>
+                        <p className="text-sm">A plataforma P-36 está em A(2, 5) e a P-52 em B(8, 13).</p>
+                        <div className="mt-2 space-y-1 text-sm font-mono">
+                          <p>d = √[(8 − 2)² + (13 − 5)²]</p>
+                          <p>d = √[6² + 8²]</p>
+                          <p>d = √[36 + 64]</p>
+                          <p>d = √100 = <strong>10 km</strong></p>
+                        </div>
+                      </div>
+                      <AlertBox tipo="info" titulo="Triplos Pitagóricos — Atalho de Prova">
+                        Memorize os triplos mais usados na CESGRANRIO: (3,4,5), (5,12,13), (6,8,10), (8,15,17) e (10,24,26). Quando as diferenças de coordenadas formam esses pares, a distância é um número inteiro — economize tempo de cálculo!
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Fórmula do Ponto Médio",
+                  icone: "⚖️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        O ponto médio M entre A(x₁, y₁) e B(x₂, y₂) é a <strong>média aritmética das coordenadas</strong>:
+                      </p>
+                      <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 text-center">
+                        <p className="text-lg font-mono font-bold">
+                          M = ((x₁ + x₂) / 2, (y₁ + y₂) / 2)
+                        </p>
+                      </div>
+                      <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-4">
+                        <p className="text-xs font-bold text-emerald-400 mb-2">Aplicação industrial</p>
+                        <p className="text-sm">Um duto vai de A(1, 1) a B(7, 9). A estação de bombeamento intermediária ficará em:</p>
+                        <div className="mt-2 space-y-1 text-sm font-mono">
+                          <p>M = ((1+7)/2, (1+9)/2)</p>
+                          <p>M = (8/2, 10/2)</p>
+                          <p>M = <strong>(4, 5)</strong></p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Distância à Origem",
+                  icone: "🎯",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        A distância de um ponto P(x, y) à <strong>origem O(0,0)</strong> é um caso especial:
+                      </p>
+                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 text-center">
+                        <p className="font-mono text-lg font-bold">d(O, P) = √(x² + y²)</p>
+                      </div>
+                      <p className="text-sm">
+                        Um sensor em S(3, 4) está a d = √(9+16) = √25 = <strong>5 unidades</strong> da base de controle na origem.
+                      </p>
+                      <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
+                        A distância de P(a, b) ao <strong>eixo x</strong> é |b| (ordenada). A distância ao <strong>eixo y</strong> é |a| (abscissa). Candidatos confundem os eixos e erram a questão.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <FunctionGraph
+            title="Distância entre Pontos: Interpretação Visual"
+            functions={[
+              {
+                id: "reta-ab",
+                label: "Segmento A(2,5) → B(8,13)",
+                color: "#06b6d4",
+                fn: (x: number) => (4 / 3) * x + 7 / 3,
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+              {
+                id: "eixo-ref",
+                label: "Eixo de referência y=0",
+                color: "#3b82f6",
+                fn: (_x: number) => 0,
+                strokeWidth: 1,
+              } satisfies FunctionPlot,
+            ]}
+            xMin={0}
+            xMax={10}
+            yMin={-2}
+            yMax={15}
+            points={200}
+          />
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ModuleConsolidation
+            index={2}
+            variant="emerald"
+            video={{
+              videoId: "pFZjMKqKZEQ",
+              title: "Distância entre Pontos e Ponto Médio",
+              duration: "14:15"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 2",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Fórmula Distância: d = √[(Δx)² + (Δy)²]", type: "formula", placeholderColor: "bg-emerald-500/20", imageUrl: "/temp-img.png" },
+                { title: "Ponto Médio: M = ((x₁+x₂)/2, (y₁+y₂)/2)", type: "formula", placeholderColor: "bg-teal-500/20", imageUrl: "/temp-img.png" },
+                { title: "Aplicação em Mapeamento de Dutos", type: "diagram", placeholderColor: "bg-green-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Distância é o Pitagoras do Plano!</p>
+                  <p>Se A(1,1) e B(4,5): d = √[(4-1)² + (5-1)²] = √[9+16] = 5</p>
+                  <p className="text-sm text-muted-foreground mt-2">Ponto Médio é a média aritmética das coordenadas!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+              titulo: "Distância e Proporção",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+                    <QuizInterativo
+            questoes={quizM2}
+            moduleId="modulo-2"
+            onComplete={handleModuleComplete}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* MÓDULO 3: EQUAÇÃO DA RETA                                        */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <TabsContent value="modulo-3" className="space-y-[50px]">
+        <ModuleBanner numero={3}
+          titulo="Equação da Reta"
+          descricao="Forme reduzida, geral e segmentária — entenda o coeficiente angular e linear para modelar qualquer trajetória linear."
+           variant={mv[3]}/>
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={1}
+              title="Formas da Equação da Reta"
+              description="Três formas equivalentes — cada uma útil em contextos diferentes."
+              variant="blue"
+              className="mb-6"
+            />
+            <ContentAccordion
+              titulo="Equações da Reta"
+              icone="📏"
+              corIndicador="bg-blue-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Forma Reduzida: y = mx + b",
+                  icone: "📈",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        A <strong>forma reduzida</strong> é a mais usada em provas: <strong>y = mx + b</strong>, onde:
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                          <p className="text-xs font-bold text-blue-400 mb-1">m = coeficiente angular</p>
+                          <p className="text-sm">Mede a <strong>inclinação</strong> da reta.</p>
+                          <p className="text-sm font-mono mt-2">m = (y₂ − y₁) / (x₂ − x₁)</p>
+                          <p className="text-xs mt-1 text-muted-foreground">m {">"} 0: crescente | m {"<"} 0: decrescente | m = 0: horizontal</p>
+                        </div>
+                        <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                          <p className="text-xs font-bold text-emerald-400 mb-1">b = coeficiente linear</p>
+                          <p className="text-sm">Onde a reta <strong>cruza o eixo y</strong>.</p>
+                          <p className="text-sm font-mono mt-2">Ponto: (0, b)</p>
+                          <p className="text-xs mt-1 text-muted-foreground">É a ordenada na origem</p>
+                        </div>
+                      </div>
+                      <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4">
+                        <p className="text-xs font-bold text-blue-400 mb-2">Exemplo passo a passo</p>
+                        <p className="text-sm">Um duto passa pelos pontos (0, 2) e (4, 6).</p>
+                        <div className="mt-2 space-y-1 text-sm font-mono">
+                          <p>m = (6 − 2) / (4 − 0) = 4/4 = <strong>1</strong></p>
+                          <p>b = 2 (intercepto no eixo y)</p>
+                          <p>Equação: <strong>y = x + 2</strong></p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Forma Geral: ax + by + c = 0",
+                  icone: "🔢",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        A <strong>forma geral</strong> é mais conveniente para calcular distâncias e trabalhar com sistemas de equações:
+                      </p>
+                      <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 text-center">
+                        <p className="font-mono text-lg font-bold">ax + by + c = 0</p>
+                      </div>
+                      <div className="space-y-2 text-sm">
+                        <p><strong>Conversão:</strong> da forma reduzida y = mx + b para a geral: subtraia y de ambos os lados:</p>
+                        <div className="font-mono bg-muted/50 rounded-lg p-3 space-y-1">
+                          <p>y = 2x + 3</p>
+                          <p>-y + 2x + 3 = 0</p>
+                          <p><strong>2x - y + 3 = 0</strong></p>
+                        </div>
+                      </div>
+                      <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
+                        Na forma geral ax + by + c = 0, o coeficiente angular é <strong>m = -a/b</strong> (não é simplesmente a nem b). Candidatos erram quando tentam ler m diretamente da forma geral.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Equação a partir de Dois Pontos",
+                  icone: "✏️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>Para encontrar a equação da reta passando por A(x₁, y₁) e B(x₂, y₂):</p>
+                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 text-center">
+                        <p className="font-mono">
+                          (y − y₁) / (y₂ − y₁) = (x − x₁) / (x₂ − x₁)
+                        </p>
+                      </div>
+                      <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-4">
+                        <p className="text-xs font-bold text-emerald-400 mb-2">Exemplo — Rota do Drone</p>
+                        <p className="text-sm">Drone parte de A(1, 2) e chega em B(7, 14).</p>
+                        <div className="mt-2 space-y-1 text-sm font-mono">
+                          <p>m = (14−2)/(7−1) = 12/6 = 2</p>
+                          <p>y − 2 = 2(x − 1)</p>
+                          <p>y = 2x − 2 + 2</p>
+                          <p><strong>y = 2x</strong></p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <FunctionGraph
+            title="Retas com Diferentes Coeficientes Angulares"
+            functions={[
+              {
+                id: "reta-m2",
+                label: "y = 2x + 1 (m=2, crescente)",
+                color: "#3b82f6",
+                fn: (x: number) => 2 * x + 1,
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+              {
+                id: "reta-m-1",
+                label: "y = -x + 4 (m=-1, decrescente)",
+                color: "#06b6d4",
+                fn: (x: number) => -x + 4,
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+              {
+                id: "reta-m0",
+                label: "y = 2 (m=0, horizontal)",
+                color: "#10b981",
+                fn: (_x: number) => 2,
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+            ]}
+            xMin={-3}
+            xMax={5}
+            yMin={-3}
+            yMax={8}
+            points={200}
+          />
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ModuleConsolidation
+            index={2}
+            variant="cyan"
+            video={{
+              videoId: "oSbX2VVjkts",
+              title: "Equação da Reta: Reduzida e Geral",
+              duration: "15:45"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 3",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Forma Reduzida: y = mx + n", type: "formula", placeholderColor: "bg-cyan-500/20", imageUrl: "/temp-img.png" },
+                { title: "Forma Geral: ax + by + c = 0", type: "formula", placeholderColor: "bg-sky-500/20", imageUrl: "/temp-img.png" },
+                { title: "Coeficiente Angular m = Δy/Δx", type: "diagram", placeholderColor: "bg-blue-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">y = mx + n é mais fácil que ax + by + c = 0!</p>
+                  <p>m = inclinação da reta | n = onde cruza o eixo y</p>
+                  <p className="text-sm text-muted-foreground mt-2">Dois pontos → encontre m → substitua em y = mx + n</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+              titulo: "A Reta que Melhor Encaixa",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+                    <QuizInterativo
+            questoes={quizM3}
+            moduleId="modulo-3"
+            onComplete={handleModuleComplete}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* MÓDULO 4: POSIÇÃO RELATIVA ENTRE RETAS                           */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <TabsContent value="modulo-4" className="space-y-[50px]">
+        <ModuleBanner numero={4}
+          titulo="Posição Relativa entre Retas"
+          descricao="Paralelas, perpendiculares, coincidentes ou secantes — aprenda a classificar retas e encontrar pontos de interseção."
+           variant={mv[4]}/>
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={1}
+              title="Classificação das Posições Relativas"
+              description="Três casos possíveis para duas retas no plano."
+              variant="blue"
+              className="mb-6"
+            />
+            <ContentAccordion
+              titulo="Posições Relativas"
+              icone="🔀"
+              corIndicador="bg-emerald-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Paralelas, Coincidentes e Secantes",
+                  icone: "➕",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>Dadas r: y = m₁x + b₁ e s: y = m₂x + b₂:</p>
+                      <div className="space-y-3">
+                        <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                          <p className="text-sm font-bold text-blue-400">Paralelas distintas</p>
+                          <p className="text-sm font-mono">m₁ = m₂ e b₁ ≠ b₂</p>
+                          <p className="text-xs text-muted-foreground mt-1">Mesma inclinação, nunca se cruzam.</p>
+                        </div>
+                        <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                          <p className="text-sm font-bold text-emerald-400">Coincidentes</p>
+                          <p className="text-sm font-mono">m₁ = m₂ e b₁ = b₂</p>
+                          <p className="text-xs text-muted-foreground mt-1">São a mesma reta — infinitos pontos em comum.</p>
+                        </div>
+                        <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                          <p className="text-sm font-bold text-cyan-400">Secantes</p>
+                          <p className="text-sm font-mono">m₁ ≠ m₂</p>
+                          <p className="text-xs text-muted-foreground mt-1">Se cruzam em exatamente um ponto.</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Retas Perpendiculares",
+                  icone: "⊥",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        Duas retas são <strong>perpendiculares</strong> quando o produto de seus coeficientes angulares é −1:
+                      </p>
+                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 text-center">
+                        <p className="text-lg font-mono font-bold">m₁ · m₂ = −1</p>
+                      </div>
+                      <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-4">
+                        <p className="text-xs font-bold text-emerald-400 mb-2">Exemplo industrial</p>
+                        <p className="text-sm">Tubulação principal: y = 2x + 1 (m₁ = 2).</p>
+                        <p className="text-sm">Ramal perpendicular: m₂ = −1/m₁ = −1/2.</p>
+                        <p className="text-sm mt-1">Equação do ramal passando por (0,0): <strong>y = −x/2</strong>.</p>
+                      </div>
+                      <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
+                        A reta vertical (x = k) não tem coeficiente angular definido. Sua perpendicular é a reta horizontal (y = c), e vice-versa. Não aplique a fórmula m₁·m₂ = -1 nesses casos especiais.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Encontrando Interseção entre Retas",
+                  icone: "🎯",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>Para encontrar o ponto de interseção de duas retas secantes, resolva o <strong>sistema de equações</strong>:</p>
+                      <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4">
+                        <p className="text-xs font-bold text-blue-400 mb-2">Exemplo — Cruzamento de Dutos</p>
+                        <div className="space-y-1 text-sm font-mono">
+                          <p>r: y = −x + 3</p>
+                          <p>s: y = x + 1</p>
+                          <p>−x + 3 = x + 1</p>
+                          <p>2 = 2x → x = 1</p>
+                          <p>y = 1 + 1 = 2</p>
+                          <p><strong>Cruzamento: (1, 2)</strong></p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ModuleConsolidation
+            index={2}
+            variant="blue"
+            video={{
+              videoId: "QJL5J6LjqFE",
+              title: "Posições Relativas entre Retas",
+              duration: "13:50"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 4",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Paralelas: m₁ = m₂", type: "diagram", placeholderColor: "bg-blue-500/20", imageUrl: "/temp-img.png" },
+                { title: "Perpendiculares: m₁ × m₂ = -1", type: "diagram", placeholderColor: "bg-indigo-500/20", imageUrl: "/temp-img.png" },
+                { title: "Secantes: m₁ ≠ m₂ (um ponto de interseção)", type: "diagram", placeholderColor: "bg-violet-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Paralelismo = Mesma inclinação!</p>
+                  <p>Perpendiculares = Inclinações são opostas e inversas (m₁·m₂ = -1)</p>
+                  <p className="text-sm text-muted-foreground mt-2">Dois valores de m? Nunca são paralelas → buscam o ponto de cruzamento!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+              titulo: "Retas que se Encontram",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+                    <QuizInterativo
+            questoes={quizM4}
+            moduleId="modulo-4"
+            onComplete={handleModuleComplete}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* MÓDULO 5: DISTÂNCIA PONTO-RETA                                   */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <TabsContent value="modulo-5" className="space-y-[50px]">
+        <ModuleBanner numero={5}
+          titulo="Distância de um Ponto a uma Reta"
+          descricao="A fórmula mais testada em concursos — fundamental para calcular afastamentos de equipamentos a gasodutos e zonas de segurança."
+           variant={mv[5]}/>
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={1}
+              title="A Fórmula da Distância Ponto-Reta"
+              description="Direta e eficiente — basta substituir as coordenadas do ponto na equação da reta."
+              variant="blue"
+              className="mb-6"
+            />
+            <ContentAccordion
+              titulo="Distância Ponto-Reta"
+              icone="📐"
+              corIndicador="bg-blue-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "A Fórmula Completa",
+                  icone: "🔢",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        A distância de um ponto P(x₀, y₀) à reta r: ax + by + c = 0 é:
+                      </p>
+                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 text-center">
+                        <p className="text-xl font-mono font-bold">
+                          d = |ax₀ + by₀ + c| / √(a² + b²)
+                        </p>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                          <p className="font-bold text-cyan-400 text-xs mb-1">Numerador</p>
+                          <p>|ax₀ + by₀ + c| — substitua as coord. do ponto na equação da reta</p>
+                        </div>
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                          <p className="font-bold text-emerald-400 text-xs mb-1">Denominador</p>
+                          <p>√(a²+b²) — módulo do vetor normal à reta</p>
+                        </div>
+                        <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                          <p className="font-bold text-blue-400 text-xs mb-1">Resultado</p>
+                          <p>Sempre positivo (valor absoluto no numerador)</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Exemplo Resolvido Passo a Passo",
+                  icone: "✍️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="font-medium">
+                        Uma válvula está em V(3, 4) e o oleoduto segue 3x + 4y − 50 = 0. Qual é a distância mínima da válvula ao oleoduto?
+                      </p>
+                      <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4 space-y-2 text-sm font-mono">
+                        <p>a = 3, b = 4, c = −50</p>
+                        <p>x₀ = 3, y₀ = 4</p>
+                        <p>Numerador: |3·3 + 4·4 + (−50)|</p>
+                        <p>= |9 + 16 − 50|</p>
+                        <p>= |−25| = 25</p>
+                        <p>Denominador: √(3² + 4²) = √(9+16) = √25 = 5</p>
+                        <p className="font-bold text-blue-400">d = 25 / 5 = 5 unidades</p>
+                      </div>
+                      <AlertBox tipo="info" titulo="Dica de velocidade">
+                        Sempre reescreva a reta na forma geral (ax + by + c = 0) antes de aplicar a fórmula. Se a reta estiver na forma y = mx + b, passe tudo para o lado esquerdo: mx − y + b = 0.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Casos Especiais",
+                  icone: "⚡",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>Dois casos que simplificam muito o cálculo:</p>
+                      <div className="space-y-3">
+                        <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                          <p className="text-sm font-bold text-cyan-400">Distância ao eixo x (y = 0)</p>
+                          <p className="text-sm font-mono">d(P, eixo x) = |y₀|</p>
+                        </div>
+                        <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                          <p className="text-sm font-bold text-blue-400">Distância ao eixo y (x = 0)</p>
+                          <p className="text-sm font-mono">d(P, eixo y) = |x₀|</p>
+                        </div>
+                      </div>
+                      <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
+                        Se a distância é ZERO, o ponto <strong>pertence à reta</strong>. Questões pedem para verificar se um equipamento está exatamente sobre um duto — basta substituir as coordenadas na equação e verificar se o resultado é zero.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ModuleConsolidation
+            index={2}
+            variant="amber"
+            video={{
+              videoId: "D4FZQBmYzFU",
+              title: "Distância de um Ponto a uma Reta",
+              duration: "14:20"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 5",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Fórmula: d = |ax₀ + by₀ + c| / √(a² + b²)", type: "formula", placeholderColor: "bg-amber-500/20", imageUrl: "/temp-img.png" },
+                { title: "Reta em forma: ax + by + c = 0", type: "diagram", placeholderColor: "bg-yellow-500/20", imageUrl: "/temp-img.png" },
+                { title: "Aplicação: Distância equipamento-duto", type: "diagram", placeholderColor: "bg-orange-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">A Reta DEVE estar em forma geral (ax + by + c = 0)!</p>
+                  <p>Substitua (x₀,y₀) no numerador, calcule √(a²+b²) no denominador</p>
+                  <p className="text-sm text-muted-foreground mt-2">Distância ZERO = ponto está sobre a reta!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+              titulo: "A Menor Distância",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+                    <QuizInterativo
+            questoes={quizM5}
+            moduleId="modulo-5"
+            onComplete={handleModuleComplete}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* MÓDULO 6: CIRCUNFERÊNCIA                                         */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <TabsContent value="modulo-6" className="space-y-[50px]">
+        <ModuleBanner numero={6}
+          titulo="Circunferência: Equação e Posições Relativas"
+          descricao="Modele tanques, zonas de segurança e áreas de influência com a equação da circunferência e analise posições de pontos e retas."
+           variant={mv[6]}/>
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={1}
+              title="Equação da Circunferência"
+              description="Forma reduzida e geral — e como identificar centro e raio rapidamente."
+              variant="blue"
+              className="mb-6"
+            />
+            <ContentAccordion
+              titulo="Equação da Circunferência"
+              icone="⭕"
+              corIndicador="bg-cyan-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Forma Reduzida",
+                  icone: "🎯",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        A circunferência de <strong>centro C(a, b)</strong> e <strong>raio r</strong> tem equação:
+                      </p>
+                      <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 text-center">
+                        <p className="text-xl font-mono font-bold">(x − a)² + (y − b)² = r²</p>
+                      </div>
+                      <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4">
+                        <p className="text-xs font-bold text-blue-400 mb-2">Exemplo — Tanque Circular</p>
+                        <p className="text-sm">Centro C(3, 4), raio r = 5.</p>
+                        <p className="text-sm font-mono mt-2">(x − 3)² + (y − 4)² = 25</p>
+                        <p className="text-xs mt-1 text-muted-foreground">Verifique o ponto (6, 8): (6-3)²+(8-4)²=9+16=25=r² ✓ (sobre a circunferência)</p>
+                      </div>
+                      <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
+                        Em (x−a)²+(y−b)²=r², o raio é r = √(lado direito), <strong>não</strong> o próprio valor. Se a equação for (x-2)²+(y-3)²=25, o raio é √25 = 5, não 25.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Forma Geral e Completando Quadrados",
+                  icone: "🔢",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        A <strong>forma geral</strong> é x² + y² + Dx + Ey + F = 0. Para encontrar centro e raio, <strong>complete os quadrados</strong>:
+                      </p>
+                      <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4 space-y-2 text-sm font-mono">
+                        <p>x² + y² − 6x + 4y − 12 = 0</p>
+                        <p>(x² − 6x + 9) + (y² + 4y + 4) = 12 + 9 + 4</p>
+                        <p>(x − 3)² + (y + 2)² = 25</p>
+                        <p className="font-bold text-cyan-400">C(3, −2), r = 5</p>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        Passo a passo: agrupe os termos em x e em y, adicione o quadrado de metade dos coeficientes de x e y em ambos os lados.
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Posição de Ponto em Relação à Circunferência",
+                  icone: "🔍",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>Para verificar se P(x₀, y₀) é interior, pertence ou é exterior à circunferência de centro C(a,b) e raio r:</p>
+                      <div className="space-y-3">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                          <p className="text-sm font-bold text-emerald-400">Interior: d(C,P) {"<"} r</p>
+                          <p className="text-xs text-muted-foreground">(x₀−a)²+(y₀−b)² {"<"} r²</p>
+                        </div>
+                        <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                          <p className="text-sm font-bold text-blue-400">Sobre a circunferência: d(C,P) = r</p>
+                          <p className="text-xs text-muted-foreground">(x₀−a)²+(y₀−b)² = r²</p>
+                        </div>
+                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                          <p className="text-sm font-bold text-cyan-400">Exterior: d(C,P) {">"} r</p>
+                          <p className="text-xs text-muted-foreground">(x₀−a)²+(y₀−b)² {">"} r²</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <FunctionGraph
+            title="Visualização: Circunferência x² + y² = 25 (centro origem, raio 5)"
+            functions={[
+              {
+                id: "circ-top",
+                label: "Arco superior √(25 − x²)",
+                color: "#06b6d4",
+                fn: (x: number) => Math.sqrt(Math.max(0, 25 - x * x)),
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+              {
+                id: "circ-bot",
+                label: "Arco inferior −√(25 − x²)",
+                color: "#3b82f6",
+                fn: (x: number) => -Math.sqrt(Math.max(0, 25 - x * x)),
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+            ]}
+            xMin={-6}
+            xMax={6}
+            yMin={-6}
+            yMax={6}
+            points={300}
+          />
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ModuleConsolidation
+            index={2}
+            variant="rose"
+            video={{
+              videoId: "8YS-4Zj1JVo",
+              title: "Circunferência: Centro, Raio e Equação",
+              duration: "15:05"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 6",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Equação Reduzida: (x-a)² + (y-b)² = r²", type: "formula", placeholderColor: "bg-rose-500/20", imageUrl: "/temp-img.png" },
+                { title: "Centro C(a,b) e Raio r", type: "diagram", placeholderColor: "bg-pink-500/20", imageUrl: "/temp-img.png" },
+                { title: "Circunferência no Mapeamento de Campos", type: "diagram", placeholderColor: "bg-red-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">(x-a)² + (y-b)² = r² é a FORMA BONITA!</p>
+                  <p>Centro = (a, b) | Raio = r (tirando a raiz quadrada do lado direito)</p>
+                  <p className="text-sm text-muted-foreground mt-2">Se pede a equação geral, expanda: x² + y² - 2ax - 2by + (a²+b²-r²) = 0</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+              titulo: "O Círculo Perfeito",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+                    <QuizInterativo
+            questoes={quizM6}
+            moduleId="modulo-6"
+            onComplete={handleModuleComplete}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* MÓDULO 7: PARÁBOLA                                               */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <TabsContent value="modulo-7" className="space-y-[50px]">
+        <ModuleBanner numero={7}
+          titulo="Parábola"
+          descricao="Vértice, eixo de simetria, raízes e concavidade — a cônica mais presente em trajetórias, câmaras e otimizações industriais."
+           variant={mv[7]}/>
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={1}
+              title="Equação, Vértice e Propriedades da Parábola"
+              description="De y = ax² + bx + c ao vértice e raízes — tudo de forma sistemática."
+              variant="blue"
+              className="mb-6"
+            />
+            <ContentAccordion
+              titulo="Parábola"
+              icone="📡"
+              corIndicador="bg-blue-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Forma Geral e Concavidade",
+                  icone: "🔢",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        A parábola na forma <strong>y = ax² + bx + c</strong> tem:
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                          <p className="text-xs font-bold text-blue-400 mb-1">a {">"} 0</p>
+                          <p className="text-sm">Concavidade para <strong>cima</strong> (∪)</p>
+                          <p className="text-xs text-muted-foreground mt-1">Vértice é ponto de <strong>mínimo</strong></p>
+                        </div>
+                        <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                          <p className="text-xs font-bold text-cyan-400 mb-1">a {"<"} 0</p>
+                          <p className="text-sm">Concavidade para <strong>baixo</strong> (∩)</p>
+                          <p className="text-xs text-muted-foreground mt-1">Vértice é ponto de <strong>máximo</strong></p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Vértice e Eixo de Simetria",
+                  icone: "📍",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>O <strong>vértice V(xᵥ, yᵥ)</strong> é o ponto de máximo ou mínimo da parábola:</p>
+                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 text-center space-y-2">
+                        <p className="font-mono font-bold">xᵥ = −b / (2a)</p>
+                        <p className="font-mono font-bold">yᵥ = f(xᵥ) = −Δ / (4a)</p>
+                      </div>
+                      <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-4">
+                        <p className="text-xs font-bold text-emerald-400 mb-2">Exemplo — Pico de pressão</p>
+                        <p className="text-sm">Pressão: y = −t² + 8t. Qual o pico e quando ocorre?</p>
+                        <div className="mt-2 space-y-1 text-sm font-mono">
+                          <p>a = −1, b = 8, c = 0</p>
+                          <p>tᵥ = −8/(2·(−1)) = 4 segundos</p>
+                          <p>yᵥ = −(4)² + 8·4 = −16 + 32 = <strong>16</strong></p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Zeros (Raízes) da Parábola",
+                  icone: "✂️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>As raízes são os pontos onde a parábola cruza o eixo x (y = 0). Use a <strong>fórmula de Bhaskara</strong>:</p>
+                      <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 text-center space-y-2">
+                        <p className="font-mono font-bold">Δ = b² − 4ac</p>
+                        <p className="font-mono font-bold">x = (−b ± √Δ) / (2a)</p>
+                      </div>
+                      <div className="grid grid-cols-3 gap-3 text-sm text-center">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                          <p className="font-bold text-emerald-400">Δ {">"} 0</p>
+                          <p>2 raízes reais</p>
+                        </div>
+                        <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                          <p className="font-bold text-blue-400">Δ = 0</p>
+                          <p>1 raiz dupla</p>
+                        </div>
+                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                          <p className="font-bold text-cyan-400">Δ {"<"} 0</p>
+                          <p>Sem raiz real</p>
+                        </div>
+                      </div>
+                      <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
+                        Quando a questão pede o <strong>valor máximo/mínimo</strong> da parábola, não é as raízes — é o yᵥ do vértice! Questões com "maximize a produção" ou "minimize o custo" pedem o vértice, não as raízes.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <FunctionGraph
+            title="Parábolas: Concavidade e Vértices"
+            functions={[
+              {
+                id: "parab-up",
+                label: "y = x² − 4 (abre para cima, mínimo em (0,-4))",
+                color: "#3b82f6",
+                fn: (x: number) => x * x - 4,
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+              {
+                id: "parab-down",
+                label: "y = −x² + 6x − 5 (abre para baixo, máximo em (3,4))",
+                color: "#06b6d4",
+                fn: (x: number) => -x * x + 6 * x - 5,
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+            ]}
+            xMin={-3}
+            xMax={7}
+            yMin={-6}
+            yMax={6}
+            points={250}
+          />
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ModuleConsolidation
+            index={2}
+            variant="indigo"
+            video={{
+              videoId: "F3T0xZZz9nE",
+              title: "Parábola: Vértice, Foco e Diretriz",
+              duration: "16:30"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 7",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Forma: (y-k)² = 4p(x-h) ou (x-h)² = 4p(y-k)", type: "formula", placeholderColor: "bg-indigo-500/20", imageUrl: "/temp-img.png" },
+                { title: "Vértice V(h,k), Foco F, Diretriz (reta)", type: "diagram", placeholderColor: "bg-purple-500/20", imageUrl: "/temp-img.png" },
+                { title: "Parâmetro p = distância vértice-foco", type: "diagram", placeholderColor: "bg-violet-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Parábola = Lugar geométrico de distâncias iguais!</p>
+                  <p>Todo ponto P da parábola satisfaz: distância(P,foco) = distância(P,diretriz)</p>
+                  <p className="text-sm text-muted-foreground mt-2">Se 4p &gt; 0 → abre para cima/direita | Se 4p &lt; 0 → abre para baixo/esquerda</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+              titulo: "A Trajetória Parabólica",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+                    <QuizInterativo
+            questoes={quizM7}
+            moduleId="modulo-7"
+            onComplete={handleModuleComplete}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* MÓDULO 8: INTERSEÇÕES E SISTEMAS                                 */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <TabsContent value="modulo-8" className="space-y-[50px]">
+        <ModuleBanner numero={8}
+          titulo="Interseções e Sistemas"
+          descricao="Combine retas, circunferências e parábolas em sistemas — encontre pontos de cruzamento com precisão analítica."
+           variant={mv[8]}/>
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={1}
+              title="Interseção de Curvas"
+              description="A estratégia de substituição resolve todos os casos."
+              variant="blue"
+              className="mb-6"
+            />
+            <ContentAccordion
+              titulo="Sistemas e Interseções"
+              icone="🔗"
+              corIndicador="bg-emerald-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Reta e Circunferência",
+                  icone: "⭕",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>Para encontrar os pontos de interseção de uma reta com uma circunferência, <strong>substitua a equação da reta na equação da circunferência</strong>:</p>
+                      <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4">
+                        <p className="text-xs font-bold text-blue-400 mb-2">Exemplo — Duto x Reservatório</p>
+                        <p className="text-sm">Reta: y = x + 2. Circunferência: x² + y² = 10.</p>
+                        <div className="mt-2 space-y-1 text-sm font-mono">
+                          <p>x² + (x+2)² = 10</p>
+                          <p>x² + x² + 4x + 4 = 10</p>
+                          <p>2x² + 4x − 6 = 0</p>
+                          <p>x² + 2x − 3 = 0</p>
+                          <p>(x+3)(x−1) = 0</p>
+                          <p><strong>x = −3 ou x = 1</strong></p>
+                          <p>Pontos: (−3, −1) e (1, 3)</p>
+                        </div>
+                      </div>
+                      <p className="text-sm">
+                        O <strong>discriminante</strong> do sistema determina quantos pontos: Δ {">"} 0 (secante, 2 pts), Δ = 0 (tangente, 1 pt), Δ {"<"} 0 (sem interseção).
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Reta e Parábola",
+                  icone: "📡",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>Substitua a equação da reta na parábola e resolva a equação do 2º grau resultante:</p>
+                      <div className="bg-cyan-500/5 border border-cyan-500/20 rounded-xl p-4">
+                        <p className="text-xs font-bold text-cyan-400 mb-2">Parábola y = x² e reta y = x + 2</p>
+                        <div className="space-y-1 text-sm font-mono">
+                          <p>x² = x + 2</p>
+                          <p>x² − x − 2 = 0</p>
+                          <p>(x−2)(x+1) = 0</p>
+                          <p>x = 2 → y = 4: ponto <strong>(2, 4)</strong></p>
+                          <p>x = −1 → y = 1: ponto <strong>(−1, 1)</strong></p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Sistemas de Retas — Método da Adição",
+                  icone: "➕",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>Para dois dutos retos, resolva o sistema linear por <strong>substituição</strong> ou <strong>adição</strong>:</p>
+                      <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4">
+                        <p className="text-xs font-bold text-blue-400 mb-2">Cruzamento de oleodutos</p>
+                        <div className="space-y-1 text-sm font-mono">
+                          <p>2x + y = 7  ... (I)</p>
+                          <p>x − y = −1  ... (II)</p>
+                          <p>Somando: 3x = 6 → x = 2</p>
+                          <p>y = 2 − (−1) = 3... aguarda: y = x+1 = 3</p>
+                          <p><strong>Cruzamento: (2, 3)</strong></p>
+                        </div>
+                      </div>
+                      <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
+                        Quando a questão pede "ponto de interseção" mas as retas são paralelas, <strong>não há solução</strong>. Se são coincidentes, há <strong>infinitas soluções</strong>. A banca adora colocar esse caso nas alternativas como "nenhum ponto" ou "todos os pontos".
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ModuleConsolidation
+            index={2}
+            variant="emerald"
+            video={{
+              videoId: "hCHWEFQgQPw",
+              title: "Interseções: Reta com Reta, Reta com Circunferência",
+              duration: "14:40"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 8",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Reta ∩ Reta: Resolver sistema 2×2", type: "diagram", placeholderColor: "bg-emerald-500/20", imageUrl: "/temp-img.png" },
+                { title: "Reta ∩ Circunferência: Substituir e resolver equação", type: "diagram", placeholderColor: "bg-teal-500/20", imageUrl: "/temp-img.png" },
+                { title: "Discriminante Δ: 0, 1 ou 2 soluções", type: "formula", placeholderColor: "bg-green-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Sempre resolva sistemas algebricamente!</p>
+                  <p>Para reta ∩ circunferência: substitua a equação da reta na circunferência</p>
+                  <p className="text-sm text-muted-foreground mt-2">Δ &gt; 0 = 2 pontos | Δ = 0 = tangente (1 ponto) | Δ &lt; 0 = nenhum ponto</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+              titulo: "Encontros e Cruzamentos",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+                    <QuizInterativo
+            questoes={quizM8}
+            moduleId="modulo-8"
+            onComplete={handleModuleComplete}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* MÓDULO 9: APLICAÇÕES PETROBRAS                                   */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <TabsContent value="modulo-9" className="space-y-[50px]">
+        <ModuleBanner numero={9}
+          titulo="Aplicações Petrobras — Coordenadas Industriais"
+          descricao="Plataformas, dutos, FPSOs e zonas de exclusão: Geometria Analítica no cenário real dos concursos CESGRANRIO para a Petrobras."
+           variant={mv[9]}/>
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={1}
+              title="Problemas Típicos do Contexto Petrobras"
+              description="Aprenda a reconhecer e resolver cada tipo de questão contextualizada."
+              variant="blue"
+              className="mb-6"
+            />
+            <ContentAccordion
+              titulo="Cenários Industriais"
+              icone="🛢️"
+              corIndicador="bg-blue-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Distância entre Plataformas",
+                  icone: "🚢",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        Questões sobre distância entre plataformas usam a <strong>fórmula da distância</strong> com coordenadas dadas no enunciado. Identifique os pontos, aplique a fórmula e procure triplos pitagóricos.
+                      </p>
+                      <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4">
+                        <p className="text-xs font-bold text-blue-400 mb-2">Exemplo típico</p>
+                        <p className="text-sm">P-54 em (10, 0) e P-58 em (0, 24). Distância direta:</p>
+                        <div className="mt-2 space-y-1 text-sm font-mono">
+                          <p>d = √[(10−0)² + (0−24)²]</p>
+                          <p>d = √[100 + 576]</p>
+                          <p>d = √676 = <strong>26 km</strong></p>
+                          <p className="text-emerald-400">(triplo 10, 24, 26 → derivado de 5, 12, 13)</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Rotas de Drones e Embarcações",
+                  icone: "✈️",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        Rotas de inspeção são modeladas como <strong>equações da reta</strong>. O enunciado dá dois pontos (origem e destino) e pede a equação, inclinação ou ponto de cruzamento.
+                      </p>
+                      <div className="bg-cyan-500/5 border border-cyan-500/20 rounded-xl p-4">
+                        <p className="text-xs font-bold text-cyan-400 mb-2">Estratégia</p>
+                        <div className="space-y-1 text-sm">
+                          <p>1. Calcule m = (y₂−y₁)/(x₂−x₁)</p>
+                          <p>2. Use ponto-inclinação: y−y₁ = m(x−x₁)</p>
+                          <p>3. Simplifique para y = mx + b</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Zonas de Exclusão Circulares",
+                  icone: "🚫",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p>
+                        Zonas de segurança ao redor de plataformas são <strong>regiões circulares</strong>. O enunciado dá o centro (posição da plataforma) e o raio (distância de segurança).
+                      </p>
+                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
+                        <p className="text-sm font-bold text-blue-400">Para verificar se uma embarcação E(x₀, y₀) está na zona de exclusão:</p>
+                        <p className="text-sm">Calcule d(C, E) = √[(x₀−a)²+(y₀−b)²]</p>
+                        <p className="text-sm">Se d {"<"} r → <strong>dentro</strong> (zona proibida)</p>
+                        <p className="text-sm">Se d = r → <strong>na fronteira</strong></p>
+                        <p className="text-sm">Se d {">"} r → <strong>fora</strong> (seguro)</p>
+                      </div>
+                      <AlertBox tipo="info" titulo="Aplicação real CESGRANRIO">
+                        Em provas anteriores, a banca descreveu zonas de proteção ambiental, raios de influência de explosões controladas e áreas de operação de ROVs (veículos subaquáticos) usando exatamente a equação da circunferência.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <FunctionGraph
+            title="Mapa de Campo Petrolífero: Rotas e Zonas"
+            functions={[
+              {
+                id: "rota-drone",
+                label: "Rota do drone: y = 2x (A→B)",
+                color: "#3b82f6",
+                fn: (x: number) => 2 * x,
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+              {
+                id: "gasoduto",
+                label: "Gasoduto: y = 0.5x + 10",
+                color: "#06b6d4",
+                fn: (x: number) => 0.5 * x + 10,
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+              {
+                id: "zona-circ",
+                label: "Limite de zona circular (raio)",
+                color: "#10b981",
+                fn: (x: number) => Math.sqrt(Math.max(0, 25 - (x - 5) * (x - 5))) + 5,
+                strokeWidth: 2,
+              } satisfies FunctionPlot,
+            ]}
+            xMin={0}
+            xMax={15}
+            yMin={0}
+            yMax={20}
+            points={250}
+          />
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ModuleConsolidation
+            index={2}
+            variant="cyan"
+            video={{
+              videoId: "SflP4vQ0jEE",
+              title: "Geometria Analítica na Indústria Petrolífera",
+              duration: "17:00"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 9",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Coordenadas UTM para Poços Exploratórios", type: "diagram", placeholderColor: "bg-cyan-500/20", imageUrl: "/temp-img.png" },
+                { title: "Perímetro de Concessão (Circunferências/Elipses)", type: "diagram", placeholderColor: "bg-sky-500/20", imageUrl: "/temp-img.png" },
+                { title: "Otimização de Rotas de Oleodutos", type: "diagram", placeholderColor: "bg-blue-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Poços são PONTOS no plano! Calcule distâncias entre eles.</p>
+                  <p>Campos de produção = CIRCUNFERÊNCIAS. Encontre raio máximo permitido.</p>
+                  <p className="text-sm text-muted-foreground mt-2">Dutos são RETAS. Distância ponto-reta = proximidade de obstáculos!</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+              titulo: "Geometria do Petróleo",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+                    <QuizInterativo
+            questoes={quizM9}
+            moduleId="modulo-9"
+            onComplete={handleModuleComplete}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* MÓDULO 10: SIMULADO CESGRANRIO                                   */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      <TabsContent value="modulo-10" className="space-y-[50px]">
+        <ModuleBanner numero={10}
+          titulo="Simulado Final — Padrão CESGRANRIO"
+          descricao="Questões no nível e estilo exatos da banca CESGRANRIO. Integre todos os conceitos de Geometria Analítica com velocidade e precisão."
+           variant={mv[10]}/>
+        <div className="space-y-[50px]">
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
+            <ModuleSectionHeader
+              index={1}
+              title="Revisão Geral — Fórmulas Essenciais"
+              description="Consolide tudo antes do simulado final."
+              variant="blue"
+              className="mb-6"
+            />
+            <ContentAccordion
+              titulo="Formulário de Geometria Analítica"
+              icone="📋"
+              corIndicador="bg-blue-500"
+              defaultOpen={true}
+              slides={[
+                {
+                  titulo: "Fórmulas Fundamentais",
+                  icone: "📐",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="font-bold text-blue-400">Resumo completo para a prova:</p>
+                      <div className="space-y-3">
+                        <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                          <p className="text-xs font-bold text-blue-400">Distância entre pontos</p>
+                          <p className="text-sm font-mono">d = √[(x₂−x₁)² + (y₂−y₁)²]</p>
+                        </div>
+                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                          <p className="text-xs font-bold text-cyan-400">Ponto médio</p>
+                          <p className="text-sm font-mono">M = ((x₁+x₂)/2, (y₁+y₂)/2)</p>
+                        </div>
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                          <p className="text-xs font-bold text-emerald-400">Coeficiente angular</p>
+                          <p className="text-sm font-mono">m = (y₂−y₁)/(x₂−x₁)</p>
+                        </div>
+                        <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                          <p className="text-xs font-bold text-blue-400">Equação da reta (reduzida)</p>
+                          <p className="text-sm font-mono">y = mx + b</p>
+                        </div>
+                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                          <p className="text-xs font-bold text-cyan-400">Perpendicularidade</p>
+                          <p className="text-sm font-mono">m₁ · m₂ = −1</p>
+                        </div>
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                          <p className="text-xs font-bold text-emerald-400">Distância ponto-reta</p>
+                          <p className="text-sm font-mono">d = |ax₀+by₀+c| / √(a²+b²)</p>
+                        </div>
+                        <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                          <p className="text-xs font-bold text-blue-400">Circunferência</p>
+                          <p className="text-sm font-mono">(x−a)²+(y−b)² = r²</p>
+                        </div>
+                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                          <p className="text-xs font-bold text-cyan-400">Vértice da parábola</p>
+                          <p className="text-sm font-mono">xᵥ = −b/(2a), yᵥ = −Δ/(4a)</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Erros Mais Comuns na CESGRANRIO",
+                  icone: "⚠️",
+                  conteudo: (
+                    <div className="space-y-3">
+                      <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl">
+                        <p className="text-sm font-bold text-rose-400">❌ Erro 1</p>
+                        <p className="text-sm">Usar r em vez de r² na equação da circunferência.</p>
+                      </div>
+                      <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl">
+                        <p className="text-sm font-bold text-amber-400">❌ Erro 2</p>
+                        <p className="text-sm">Esquecer o valor absoluto na fórmula distância ponto-reta.</p>
+                      </div>
+                      <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl">
+                        <p className="text-sm font-bold text-rose-400">❌ Erro 3</p>
+                        <p className="text-sm">Confundir retas paralelas (mesmo m, b diferente) com coincidentes (mesmo m e b).</p>
+                      </div>
+                      <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl">
+                        <p className="text-sm font-bold text-amber-400">❌ Erro 4</p>
+                        <p className="text-sm">Calcular a distância ao eixo como se fosse à origem.</p>
+                      </div>
+                      <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl">
+                        <p className="text-sm font-bold text-rose-400">❌ Erro 5</p>
+                        <p className="text-sm">Achar que o vértice da parábola é um zero (raiz) da equação.</p>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Estratégia de Prova em 3 Etapas",
+                  icone: "🏆",
+                  conteudo: (
+                    <div className="space-y-4">
+                      <div className="space-y-3">
+                        <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl flex gap-3">
+                          <span className="text-2xl">1️⃣</span>
+                          <div>
+                            <p className="font-bold text-blue-400">Identifique o tema</p>
+                            <p className="text-sm">Leia o enunciado e classifique: é distância? reta? circunferência? parábola? sistema?</p>
+                          </div>
+                        </div>
+                        <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl flex gap-3">
+                          <span className="text-2xl">2️⃣</span>
+                          <div>
+                            <p className="font-bold text-cyan-400">Selecione a fórmula</p>
+                            <p className="text-sm">Aplique a fórmula correta e substitua os valores — sem pular etapas.</p>
+                          </div>
+                        </div>
+                        <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex gap-3">
+                          <span className="text-2xl">3️⃣</span>
+                          <div>
+                            <p className="font-bold text-emerald-400">Confira nas alternativas</p>
+                            <p className="text-sm">Se o resultado não bate, verifique sinais, quadrados e módulos — erros pontuais são os mais frequentes.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ModuleConsolidation
+            index={2}
+            variant="blue"
+            video={{
+              videoId: "7U2Vh_7y3BE",
+              title: "Geometria Analítica - Simulado Final Completo",
+              duration: "18:45"
+            }}
+            resumoVisual={{
+              moduloNome: "Módulo 10",
+              tituloAula: "Geometria Analítica",
+              materia: "Matemática",
+              images: [
+                { title: "Revisão: Pontos, Retas e Distâncias", type: "diagram", placeholderColor: "bg-blue-500/20", imageUrl: "/temp-img.png" },
+                { title: "Cônicas: Circunferência, Parábola, Elipse e Hipérbola", type: "diagram", placeholderColor: "bg-indigo-500/20", imageUrl: "/temp-img.png" },
+                { title: "Estratégia de Prova CESGRANRIO", type: "diagram", placeholderColor: "bg-cyan-500/20", imageUrl: "/temp-img.png" }
+              ]
+            }}
+            maceteVisual={{
+              title: "Pulo do Gato",
+              content: (
+                <div className="space-y-3">
+                  <p className="font-semibold">Em prova: Desenhe sempre! Esboçar ajuda a eliminar alternativas.</p>
+                  <p>Fórmulas mais usadas: d=√[(Δx)²+(Δy)²], (x-a)²+(y-b)²=r², y=mx+n</p>
+                  <p className="text-sm text-muted-foreground mt-2">Sem calculadora? Use aproximações: √2≈1.4, √3≈1.7, π≈3.14</p>
+                </div>
+              )
+            }}
+            audio={{
+              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+              titulo: "A Jornada Geométrica Completa",
+              artista: "Prof. Rítmico"
+            }}
+          />
+
+                    <QuizInterativo
+            questoes={quizM10}
+            moduleId="modulo-10"
+            onComplete={handleModuleComplete}
+          />
+        </div>
+      </TabsContent>
+    </AulaTemplate>
+  );
+}

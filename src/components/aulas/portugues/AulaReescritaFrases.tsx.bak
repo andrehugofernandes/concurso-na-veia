@@ -1,7 +1,6 @@
-"use client";
-
-import { useAulaProgress } from "@/hooks/useAulaProgress";
 import { getAllModuleVariants } from "@/lib/moduleColors";
+("use client");
+
 import { useState, useEffect, useCallback } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
@@ -191,8 +190,6 @@ export default function AulaReescritaFrases({
 
   return (
     <AulaTemplate
-      canComplete={completedModules.size >= MODULE_DEFS.length}
-      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={(val) => {
         const idx = MODULE_DEFS.findIndex((m) => m.id === val);
@@ -223,7 +220,7 @@ export default function AulaReescritaFrases({
           numero={1}
           titulo="A Arte da Paráfrase"
           descricao="Entenda o binômio da reescrita perfeita: Sentido Intacto e Norma Culta Plena."
-          variant="blue"
+          variant={mv[1]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 1 */}
@@ -232,7 +229,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Fundamentação da Paráfrase"
             description="Os pilares da equivalência semântica e da manutenção do sentido original segundo a norma gramatical padrão."
-            variant="blue"
+            variant={mv[1]}
           />
 
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
@@ -347,7 +344,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="O Conceito de Reescritura"
               description="A mecânica da reescritura e os limites da transformação textual sem perda informativa."
-              variant="blue"
+              variant={mv[1]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -457,7 +454,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Tipos de Reescrita Cobrados pela Banca"
               description="O mapeamento das operações de substituição, reordenação e mudança estrutural exigidas pela banca."
-              variant="blue"
+              variant={mv[1]}
             />
             <p className="text-muted-foreground leading-relaxed text-lg">
               Na reescrita, há dois planos independentes que podem ser alterados
@@ -553,7 +550,7 @@ export default function AulaReescritaFrases({
               index="{3}"
               title="Tipos de Reescrita Cobrados pela Banca"
               description="A taxonomia das transformações textuais que garantem a aprovação no concurso."
-              variant="blue"
+              variant={mv[1]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -597,7 +594,7 @@ export default function AulaReescritaFrases({
               index={4}
               title="O Que a CESGRANRIO Realmente Avalia"
               description="Desvendando o checklist de equivalência semântica e correção gramatical usado pelos examinadores."
-              variant="blue"
+              variant={mv[1]}
             />
             <Comparison
               title="Questão Mal Respondida vs Bem Respondida"
@@ -630,36 +627,13 @@ export default function AulaReescritaFrases({
             </AlertBox>
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Segundo o padrão Cesgranrio, o que define uma reescritura como 'correta'?"
-          alternativas={[
-            { label: "A", valor: "Apenas a manutenção do sentido original, mesmo com desvios gramaticais." },
-                { label: "B", valor: "Apenas a correção gramatical rigorosa, independentemente da semântica." },
-                { label: "C", valor: "O binômio indissociável: Sentido Original Intacto + Norma Culta Plena." },
-                { label: "D", valor: "A simplificação do texto para torná-lo mais acessível ao leigo." },
-                { label: "E", valor: "O uso obrigatório de sinônimos eruditos para elevar o nível do texto." }
-          ]}
-          correta="C"
-          passos={[
-            "A banca exige que a nova frase diga EXATAMENTE o que a original disse, sem perder um átomo de sentido, e que esteja 100% dentro das regras gramaticais.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={quizM1}
             titulo="QUIZ: A Arte da Paráfrase"
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-            variant="blue"
+            variant={mv[1]}
           />
         </div>
       </TabsContent>
@@ -670,7 +644,7 @@ export default function AulaReescritaFrases({
           numero={2}
           titulo="Sinonímia e Campo Semântico"
           descricao="Troque palavras mantendo a precisão técnica necessária para a indústria de energia."
-          variant="blue"
+          variant={mv[2]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 2 */}
@@ -679,7 +653,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Arte da Substituição Lexical"
             description="O domínio do vocabulário formal e técnico da Petrobras como ferramenta de precisão na reescrita."
-            variant="blue"
+            variant={mv[2]}
           />
 
           <div className="space-y-6 text-base text-justify text-foreground/85 leading-relaxed">
@@ -789,7 +763,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="A Precisão das Palavras"
               description="Como escolher o termo exato que preserva a carga semântica e a elegância do registro culto."
-              variant="blue"
+              variant={mv[2]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -909,7 +883,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Sinonímia: Sentido Formal vs Informal"
               description="A transposição entre registros linguísticos mantendo a integridade da mensagem técnica."
-              variant="blue"
+              variant={mv[2]}
             />
             <Comparison
               title="Equivalência de Registro — Exemplo Prático"
@@ -941,7 +915,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Pares de Palavras que a Banca Adora Confundir"
               description="As armadilhas de paronímia que a CESGRANRIO utiliza para induzir ao erro."
-              variant="blue"
+              variant={mv[2]}
             />
             <div className="space-y-12">
               <Comparison
@@ -983,7 +957,7 @@ export default function AulaReescritaFrases({
               index={4}
               title="Léxico Técnico Petrobras"
               description="O vocabulário específico da indústria aplicado a questões de reescrita."
-              variant="blue"
+              variant={mv[2]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -1002,36 +976,13 @@ export default function AulaReescritaFrases({
             />
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Ao substituir 'O gerente ratificou a decisão' por 'O gerente retificou a decisão', o que ocorre?"
-          alternativas={[
-            { label: "A", valor: "O sentido é preservado integralmente." },
-                { label: "B", valor: "O sentido é invertido (confirmar vira corrigir)." },
-                { label: "C", valor: "Apenas o som da palavra muda, mas o campo semântico é o mesmo." },
-                { label: "D", valor: "A frase torna-se agramatical." },
-                { label: "E", valor: "A regência do verbo muda obrigatoriamente." }
-          ]}
-          correta="B"
-          passos={[
-            "Ratificar = Confirmar.",
-            "Retificar = Corrigir.",
-            "São parônimos perigosos em provas de reescrita."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={quizM2}
             titulo="QUIZ: Sinonímia e Campo Semântico"
             icone="🎯"
             numero={2}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-            variant="blue"
+            variant={mv[2]}
           />
         </div>
       </TabsContent>
@@ -1042,7 +993,7 @@ export default function AulaReescritaFrases({
           numero={3}
           titulo="Vozes Verbais"
           descricao="A travessia entre Ativa e Passiva é o tema predileto da banca. Aprenda a não perder o tempo."
-          variant="blue"
+          variant={mv[3]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 3 */}
@@ -1051,7 +1002,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Mecânica da Transformação Verbal"
             description="A arquitetura da transposição entre ativa e passiva, focando na concordância e no tempo verbal."
-            variant="blue"
+            variant={mv[3]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1166,7 +1117,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="A Travessia (Vozes)"
               description="O passo a passo para converter estruturas sem alterar o foco da ação ou a polaridade da frase."
-              variant="blue"
+              variant={mv[3]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -1309,7 +1260,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Armadilha CESGRANRIO: Passiva em Forma de Nominalização"
               description="Como a banca oculta a voz passiva em estruturas nominais para testar sua percepção sintática."
-              variant="blue"
+              variant={mv[3]}
             />
             <AlertBox
               tipo="danger"
@@ -1410,7 +1361,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Casos Especiais de Voz Passiva"
               description="A análise de verbos que não admitem passiva e a função do 'se' como partícula apassivadora."
-              variant="blue"
+              variant={mv[3]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -1569,36 +1520,13 @@ export default function AulaReescritaFrases({
             />
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Transpondo 'A equipe de manutenção realizou a inspeção' para a voz passiva, obtemos:"
-          alternativas={[
-            { label: "A", valor: "A inspeção seria realizada pela equipe." },
-                { label: "B", valor: "A inspeção foi realizada pela equipe." },
-                { label: "C", valor: "Realizou-se a inspeção pela equipe." },
-                { label: "D", valor: "A equipe havia realizado a inspeção." },
-                { label: "E", valor: "Estará sendo realizada a inspeção." }
-          ]}
-          correta="B"
-          passos={[
-            "O verbo 'realizou' está no pretérito perfeito.",
-            "A voz passiva correspondente exige o auxiliar 'ser' no pretérito perfeito (foi realizada).",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={quizM3}
             titulo="QUIZ: Vozes Verbais"
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-            variant="blue"
+            variant={mv[3]}
           />
         </div>
       </TabsContent>
@@ -1609,7 +1537,7 @@ export default function AulaReescritaFrases({
           numero={4}
           titulo="O Discurso sob Controle"
           descricao="Direto para Indireto: ajuste pronomes, tempos e advérbios sem titubear."
-          variant="blue"
+          variant={mv[4]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 4 */}
@@ -1618,7 +1546,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Arte da Reportagem Verbal"
             description="A arte da reportagem verbal e o recuo temporal na transposição discursiva."
-            variant="blue"
+            variant={mv[4]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1749,7 +1677,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="Direto & Indireto"
               description="A mecânica da transposição entre os discursos direto e indireto."
-              variant="blue"
+              variant={mv[4]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -1891,7 +1819,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Exemplo Completo: Direto → Indireto"
               description="Exemplo prático de transposição e análise de equivalência semântica."
-              variant="blue"
+              variant={mv[4]}
             />
             <Comparison
               title="Discurso Direto vs Indireto — Caso Real"
@@ -1929,7 +1857,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Mapa de Advérbios Temporais"
               description="Mapeamento dos advérbios de tempo e lugar no discurso reportado."
-              variant="blue"
+              variant={mv[4]}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -2089,7 +2017,7 @@ export default function AulaReescritaFrases({
               index={4}
               title="Verbos Introdutores de Discurso Indireto"
               description="A função dos verbos de elocução (dicendi) na estruturação do discurso indireto."
-              variant="blue"
+              variant={mv[4]}
             />
             <p className="text-muted-foreground text-lg leading-relaxed">
               O verbo que introduz o discurso indireto determina como a
@@ -2139,36 +2067,13 @@ export default function AulaReescritaFrases({
             </AlertBox>
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Ao transpor 'Eu pretendo investir agora' para o discurso indireto, temos:"
-          alternativas={[
-            { label: "A", valor: "Ele disse que eu pretendo investir agora." },
-                { label: "B", valor: "Ele afirmou que pretendia investir naquele momento." },
-                { label: "C", valor: "Ele declarou que pretende investir ontem." },
-                { label: "D", valor: "Dizia ele que pretendia investir agora." },
-                { label: "E", valor: "A e B são sinônimos." }
-          ]}
-          correta="B"
-          passos={[
-            "No discurso indireto, o tempo 'presente' vira 'pretérito imperfeito' e o advérbio 'agora' vira 'naquele momento'.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={quizM4}
             titulo="QUIZ: O Discurso sob Controle"
             icone="🎯"
             numero={5}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-            variant="blue"
+            variant={mv[4]}
           />
         </div>
       </TabsContent>
@@ -2179,7 +2084,7 @@ export default function AulaReescritaFrases({
           numero={5}
           titulo="Nominalização"
           descricao="Transforme verbos em substantivos para dar densidade técnica e profissional ao seu texto."
-          variant="blue"
+          variant={mv[5]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 5 */}
@@ -2188,7 +2093,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Arte da Substantivação de Ações"
             description="A arte da substantivação de ações para densidade técnica e profissional."
-            variant="blue"
+            variant={mv[5]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -2320,7 +2225,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="Verbo para Substantivo"
               description="A mecânica da conversão verbo-substantivo na linguagem técnica."
-              variant="blue"
+              variant={mv[5]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -2436,7 +2341,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Nominalização: Antes e Depois"
               description="Análise comparativa entre estruturas verbais e nominais."
-              variant="blue"
+              variant={mv[5]}
             />
             <Comparison
               title="Frase Verbal vs Frase Nominalizada"
@@ -2463,7 +2368,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Léxico de Nominalizações Frequentes"
               description="Léxico de nominalizações frequentes em documentos técnicos da Petrobras."
-              variant="blue"
+              variant={mv[5]}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <FlipCard
@@ -2604,7 +2509,7 @@ export default function AulaReescritaFrases({
               index={4}
               title="Sufixos Nominalizadores — Como Identificar o Substantivo Correto"
               description="Identificação dos sufixos nominalizadores e precisão terminológica."
-              variant="blue"
+              variant={mv[5]}
             />
             <p className="text-muted-foreground text-lg leading-relaxed">
               Em provas de reescrita, a banca às vezes apresenta uma
@@ -2693,36 +2598,13 @@ export default function AulaReescritaFrases({
             />
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="A frase 'É fundamental que o Brasil produza energia' vira:"
-          alternativas={[
-            { label: "A", valor: "Fundamental é produzir energia no Brasil." },
-                { label: "B", valor: "A produção de energia pelo Brasil é fundamental." },
-                { label: "C", valor: "O Brasil deve produzir energia fundamentalmente." },
-                { label: "D", valor: "Energia o Brasil produz fundamentalmente." },
-                { label: "E", valor: "O Brasil produzindo energia é algo fundamental." }
-          ]}
-          correta="B"
-          passos={[
-            "A oração subjetiva 'que o Brasil produza' foi convertida no sintagma nominal 'A produção...",
-            "pelo Brasil'.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={quizM5}
             titulo="QUIZ: Troca de Classes (Nominalização)"
             icone="🎯"
             numero={5}
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
-            variant="blue"
+            variant={mv[5]}
           />
         </div>
       </TabsContent>
@@ -2733,7 +2615,7 @@ export default function AulaReescritaFrases({
           numero={6}
           titulo="Equivalência Conjuntiva"
           descricao="Domine os conectivos causais, temporais e condicionais. A alma da reescrita sequencial."
-          variant="blue"
+          variant={mv[6]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 6 */}
@@ -2741,7 +2623,7 @@ export default function AulaReescritaFrases({
           <ModuleSectionHeader
             index="INTRO"
             title="A Arquitetura da Coesão Textual"
-            variant="blue"
+            variant={mv[6]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -2875,7 +2757,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="Nexos Equivalentes"
               description="O mapeamento dos nexos lógicos e a substituição de conectivos sem perda de sentido."
-              variant="blue"
+              variant={mv[6]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -3026,7 +2908,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Conectivos Causais: Registro Informal vs Formal"
               description="A distinção de registro entre conectivos causais na linguagem formal e técnica."
-              variant="blue"
+              variant={mv[6]}
             />
             <Comparison
               title="Substituição de Causal — Diferença de Registro"
@@ -3133,7 +3015,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Mapa Completo de Conjunções por Valor Lógico"
               description="Guia completo de equivalência conjuntiva por valor lógico e semântico."
-              variant="blue"
+              variant={mv[6]}
             />
             <p className="text-muted-foreground text-lg leading-relaxed">
               Em reescrita, a equivalência conjuntiva só é válida dentro do
@@ -3198,36 +3080,13 @@ export default function AulaReescritaFrases({
             </AlertBox>
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="A substituição de 'Portanto' por 'Por conseguinte' mantém o sentido?"
-          alternativas={[
-            { label: "A", valor: "Sim, ambos são conclusivos." },
-                { label: "B", valor: "Não, um é conclusivo e o outro causal." },
-                { label: "C", valor: "Sim, mas um pede vírgula e o outro não." },
-                { label: "D", valor: "Não, " },
-                { label: "E", valor: "Varia conforme o sujeito da frase." }
-          ]}
-          correta="A"
-          passos={[
-            "São conectivos sinônimos de valor conclusivo.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={quizM6}
             titulo="QUIZ: Equivalência Conjuntiva"
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
-            variant="blue"
+            variant={mv[6]}
           />
         </div>
       </TabsContent>
@@ -3238,7 +3097,7 @@ export default function AulaReescritaFrases({
           numero={7}
           titulo="O Duelo Concessivo"
           descricao="Embora vs Mas. A troca mais perigosa e frequente da banca Cesgranrio."
-          variant="blue"
+          variant={mv[7]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 7 */}
@@ -3247,7 +3106,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Arte da Concessão Estratégica"
             description="A arte da concessão estratégica e o domínio das relações de oposição atenuada."
-            variant="blue"
+            variant={mv[7]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -3377,7 +3236,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="Embora x Mas — O Duelo Concessivo"
               description="A complexa transposição entre adversidade (mas) e concessão (embora)."
-              variant="blue"
+              variant={mv[7]}
             />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <FlipCard
@@ -3511,7 +3370,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Comparação: Adversativa vs Concessiva na Prática"
               description="Análise prática da mudança de modo verbal e ênfase argumentativa."
-              variant="blue"
+              variant={mv[7]}
             />
             <Comparison
               title="Mesma ideia — estruturas diferentes"
@@ -3539,7 +3398,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Concessão com Gerúndio e Infinitivo"
               description="Estruturas concessivas reduzidas de gerúndio e infinitivo."
-              variant="blue"
+              variant={mv[7]}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -3615,36 +3474,13 @@ export default function AulaReescritaFrases({
             </div>
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Ao remover as vírgulas de 'Os técnicos, que usam EPI, estão seguros', o sentido:"
-          alternativas={[
-            { label: "A", valor: "Não muda." },
-                { label: "B", valor: "Muda: de " },
-                { label: "C", valor: "Muda: " },
-                { label: "D", valor: "Torna-se gramaticalmente errado." },
-                { label: "E", valor: "Enfatiza a segurança." }
-          ]}
-          correta="B"
-          passos={[
-            "Com vírgula = Explicativa (generaliza).",
-            "Sem vírgula = Restritiva (especifica um grupo).",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={getRandomQuestions(QUIZ_M7_PONTUACAO, 4)}
             titulo="QUIZ: O Duelo Concessivo"
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
-            variant="blue"
+            variant={mv[7]}
           />
         </div>
       </TabsContent>
@@ -3655,7 +3491,7 @@ export default function AulaReescritaFrases({
           numero={8}
           titulo="Pontuação e Sentido"
           descricao="A vírgula não é apenas uma pausa; ela é o interruptor do sentido explicativo/restritivo."
-          variant="blue"
+          variant={mv[8]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 8 */}
@@ -3664,7 +3500,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Arquitetura da Pontuação Semântica"
             description="A função lógica da vírgula e o impacto semântico da pontuação na reescrita."
-            variant="blue"
+            variant={mv[8]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -3797,7 +3633,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="O Poder da Vírgula"
               description="Aprofundamento prático na distinção entre explicações e restrições."
-              variant="blue"
+              variant={mv[8]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -3918,7 +3754,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Vírgula que Muda Tudo"
               description="Comparação prática entre o uso e omissão da vírgula em contextos operacionais."
-              variant="blue"
+              variant={mv[8]}
             />
             <Comparison
               title="Presença vs Ausência de Vírgula — Mudança de Sentido"
@@ -3956,7 +3792,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Outros Sinais de Pontuação na Reescrita"
               description="O impacto semântico de outros sinais de pontuação em contextos de reescrita."
-              variant="blue"
+              variant={mv[8]}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -4122,36 +3958,13 @@ export default function AulaReescritaFrases({
             </AlertBox>
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Qual dessas reescritas de 'Embora fizesse calor, ele corria' mantém a oposição?"
-          alternativas={[
-            { label: "A", valor: "Apesar de fazer calor, ele corria." },
-                { label: "B", valor: "Visto que fazia calor, ele corria." },
-                { label: "C", valor: "Caso fizesse calor, ele corria." },
-                { label: "D", valor: "Conforme fazia calor, ele corria." },
-                { label: "E", valor: "Pelo fato de fazer calor, ele corria." }
-          ]}
-          correta="A"
-          passos={[
-            "A oposição (concessão) é mantida pela locução 'Apesar de'.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={quizM8}
             titulo="QUIZ: Pontuação e Sentido"
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
-            variant="blue"
+            variant={mv[8]}
           />
         </div>
       </TabsContent>
@@ -4162,7 +3975,7 @@ export default function AulaReescritaFrases({
           numero={9}
           titulo="Laboratório CESGRANRIO"
           descricao="Analise as 5 trocas que a banca mais ama e que derrubam 90% dos candidatos."
-          variant="blue"
+          variant={mv[9]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 9 */}
@@ -4171,7 +3984,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Anatomia da pontos de atenção"
             description="A anatomia das pontos de atenção da banca e o checklist de sobrevivência do candidato."
-            variant="blue"
+            variant={mv[9]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -4299,7 +4112,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="As 5 Substituições Favoritas da CESGRANRIO"
               description="Os padrões de Avançado e as trocas favoritas da CESGRANRIO em provas técnicas."
-              variant="blue"
+              variant={mv[9]}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -4450,7 +4263,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Os 5 Erros que Derrubam Candidatos"
               description="Análise dos erros recorrentes da banca para evitar armadilhas comuns."
-              variant="blue"
+              variant={mv[9]}
             />
             <AlertBox
               tipo="danger"
@@ -4515,7 +4328,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Comparação de Reescritas — Laboratório Prático"
               description="Laboratório prático de comparação de reescritas e detecção de erros sutis."
-              variant="blue"
+              variant={mv[9]}
             />
             <Comparison
               title="Armadilha: Pronome Relativo 'Onde' vs 'Em que'"
@@ -4557,36 +4370,13 @@ export default function AulaReescritaFrases({
             />
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="A banca costuma trocar 'Onde' por 'Aonde' em frases de lugar fixo. Isso é:"
-          alternativas={[
-            { label: "A", valor: "Uma reescrita válida." },
-                { label: "B", valor: "Um erro de regência (Aonde exige movimento)." },
-                { label: "C", valor: "Apenas uma variação regional." },
-                { label: "D", valor: "Correto se houver preposição " },
-                { label: "E", valor: "Obrigatório no início de frases." }
-          ]}
-          correta="B"
-          passos={[
-            "Aonde = Para onde (movimento).",
-            "Onde = Em que lugar (estático).",
-            "A banca adora testar essa troca."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={quizM9}
             titulo="QUIZ: Laboratório CESGRANRIO"
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
-            variant="blue"
+            variant={mv[9]}
           />
         </div>
       </TabsContent>
@@ -4597,7 +4387,7 @@ export default function AulaReescritaFrases({
           numero={10}
           titulo="Avaliação de Fixação Avançada"
           descricao="Simulado Final: 10 questões de reescrita global. O teste definitivo de sua semântica."
-          variant="blue"
+          variant={mv[10]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 10 */}
@@ -4606,7 +4396,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Síntese da Maestria Linguística"
             description="A síntese da maestria linguística e a integração de todas as técnicas de reescrita."
-            variant="blue"
+            variant={mv[10]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -4741,7 +4531,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="Revisão Express — Todas as Técnicas"
               description="Revisão express de todas as técnicas fundamentais para o simulado final."
-              variant="blue"
+              variant={mv[10]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -4863,7 +4653,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Estratégia de Prova"
               description="Conselhos táticos e gestão de tempo para o dia do concurso."
-              variant="blue"
+              variant={mv[10]}
             />
             <AlertBox tipo="info" titulo="Recapitulação Final">
               A reescrita bem-sucedida é aquela em que você leria a frase nova
@@ -5039,36 +4829,13 @@ export default function AulaReescritaFrases({
             momento de alta performance.
           </AlertBox>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Qual dessas reescritas de 'Embora a refinaria seja moderna, precisa de ajustes' é a MAIS completa e correta?"
-          alternativas={[
-            { label: "A", valor: "A refinaria é moderna, mas precisa de ajustes." },
-                { label: "B", valor: "Pelo fato de ser moderna, a refinaria precisa de ajustes." },
-                { label: "C", valor: "Malgrado a modernidade da refinaria, ajustes são necessários." },
-                { label: "D", valor: "A refinaria precisa de ajustes pois é moderna." },
-                { label: "E", valor: "Se a refinaria for moderna, precisará de ajustes." }
-          ]}
-          correta="C"
-          passos={[
-            "A reescrita 'C' usa nominalização ('modernidade'), mantém a concessão ('malgrado') e a passiva ('são necessários').",
-            "É o nível 'Elite' da banca.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={quizM10}
             titulo="QUIZ: Avaliação de Fixação Avançada"
             icone="🏆"
             numero={3}
             onComplete={(score) => handleModuleComplete("modulo-10", score)}
-            variant="blue"
+            variant={mv[10]}
           />
         </div>
       </TabsContent>

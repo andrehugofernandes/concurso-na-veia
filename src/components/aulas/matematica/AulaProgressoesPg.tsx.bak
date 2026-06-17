@@ -148,8 +148,6 @@ export default function AulaProgressoesPg({
 
   return (
     <AulaTemplate
-      canComplete={completedModules.size >= MODULE_DEFS.length}
-      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={(val) => {
         const idx = MODULE_DEFS.findIndex((m) => m.id === val);
@@ -180,7 +178,7 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={1}
             titulo="Conceitos Fundamentais de PG"
             descricao="A razão que multiplica: progressão geométrica explicada."
-             variant="blue"/>
+             variant={mv[1]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -289,31 +287,7 @@ export default function AulaProgressoesPg({
 
 
 
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant={"blue"}
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
-          alternativas={[
-              { letra: "A", texto: "384", correta: true },
-              { letra: "B", texto: "192", correta: false },
-              { letra: "C", texto: "768", correta: false },
-              { letra: "D", texto: "96", correta: false },
-              { letra: "E", texto: "1536", correta: false }
-            ]}
-          dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₈ = 3·2⁷ = 3·128 = 384." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁·q^(n−1)." }
-          ]}
-        />
-
-        <ModuleConsolidation
+<ModuleConsolidation
             index={2}
             variant="blue"
             video={{
@@ -383,14 +357,14 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={2}
             titulo="Termo Geral da PG"
             descricao="A fórmula para encontrar qualquer termo sem calcular todos."
-             variant="blue"/>
+             variant={mv[2]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Fórmula do Termo Geral"
               description="aₙ = a₁ × q^(n-1)"
-              variant="blue"
+              variant="emerald"
             />
 
             <ContentAccordion
@@ -485,33 +459,9 @@ export default function AulaProgressoesPg({
 
 
 
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
-          alternativas={[
-              { letra: "A", texto: "384", correta: true },
-              { letra: "B", texto: "192", correta: false },
-              { letra: "C", texto: "768", correta: false },
-              { letra: "D", texto: "96", correta: false },
-              { letra: "E", texto: "1536", correta: false }
-            ]}
-          dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₈ = 3·2⁷ = 3·128 = 384." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁·q^(n−1)." }
-          ]}
-        />
-
-        <ModuleConsolidation
+<ModuleConsolidation
             index={2}
-            variant="blue"
+            variant="emerald"
             video={{
               videoId: "2Aq7p7-VgEU",
               title: "PG: Termo Geral Explicado",
@@ -565,7 +515,7 @@ export default function AulaProgressoesPg({
               questoes={quizM2}
               titulo="QUIZ: Termo Geral"
               numero={3}
-              variant="blue"
+              variant="emerald"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -579,14 +529,14 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={3}
             titulo="Soma de Termos (Finita)"
             descricao="Calcule a soma dos primeiros n termos de uma PG."
-             variant="blue"/>
+             variant={mv[3]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Soma dos Primeiros n Termos"
               description="Fórmula e aplicações práticas."
-              variant="blue"
+              variant="amber"
             />
 
             <ContentAccordion
@@ -689,33 +639,9 @@ export default function AulaProgressoesPg({
 
 
 
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
-          alternativas={[
-              { letra: "A", texto: "384", correta: true },
-              { letra: "B", texto: "192", correta: false },
-              { letra: "C", texto: "768", correta: false },
-              { letra: "D", texto: "96", correta: false },
-              { letra: "E", texto: "1536", correta: false }
-            ]}
-          dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₈ = 3·2⁷ = 3·128 = 384." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁·q^(n−1)." }
-          ]}
-        />
-
-        <ModuleConsolidation
+<ModuleConsolidation
             index={2}
-            variant="blue"
+            variant="amber"
             video={{
               videoId: "4KzE9R6zWzY",
               title: "PG: Soma Finita",
@@ -771,7 +697,7 @@ export default function AulaProgressoesPg({
               questoes={quizM3}
               titulo="QUIZ: Soma Finita"
               numero={3}
-              variant="blue"
+              variant="amber"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -785,14 +711,14 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={4}
             titulo="Soma Infinita (Série PG)"
             descricao="O limite da soma quando n tende ao infinito."
-             variant="blue"/>
+             variant={mv[4]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Série Geométrica Infinita"
               description="Convergência e limite da série."
-              variant="blue"
+              variant="cyan"
             />
 
             <ContentAccordion
@@ -907,33 +833,9 @@ export default function AulaProgressoesPg({
 
 
 
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
-          alternativas={[
-              { letra: "A", texto: "384", correta: true },
-              { letra: "B", texto: "192", correta: false },
-              { letra: "C", texto: "768", correta: false },
-              { letra: "D", texto: "96", correta: false },
-              { letra: "E", texto: "1536", correta: false }
-            ]}
-          dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₈ = 3·2⁷ = 3·128 = 384." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁·q^(n−1)." }
-          ]}
-        />
-
-        <ModuleConsolidation
+<ModuleConsolidation
             index={2}
-            variant="blue"
+            variant="cyan"
             video={{
               videoId: "9KZg0LdwAg4",
               title: "PG Infinita: Série Convergente",
@@ -987,7 +889,7 @@ export default function AulaProgressoesPg({
               questoes={quizM4}
               titulo="QUIZ: Soma Infinita"
               numero={3}
-              variant="blue"
+              variant="cyan"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1001,14 +903,14 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={5}
             titulo="Propriedades Especiais de PG"
             descricao="Relações e padrões únicos das progressões geométricas."
-             variant="blue"/>
+             variant={mv[5]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Propriedades Importantes"
               description="Produtos, meios geométricos e simetrias."
-              variant="blue"
+              variant="violet"
             />
 
             <ContentAccordion
@@ -1110,33 +1012,9 @@ export default function AulaProgressoesPg({
 
 
 
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
-          alternativas={[
-              { letra: "A", texto: "384", correta: true },
-              { letra: "B", texto: "192", correta: false },
-              { letra: "C", texto: "768", correta: false },
-              { letra: "D", texto: "96", correta: false },
-              { letra: "E", texto: "1536", correta: false }
-            ]}
-          dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₈ = 3·2⁷ = 3·128 = 384." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁·q^(n−1)." }
-          ]}
-        />
-
-        <ModuleConsolidation
+<ModuleConsolidation
             index={2}
-            variant="blue"
+            variant="violet"
             video={{
               videoId: "7Pg5MZV2XqU",
               title: "PG: Propriedades Especiais",
@@ -1191,7 +1069,7 @@ export default function AulaProgressoesPg({
               questoes={quizM5}
               titulo="QUIZ: Propriedades"
               numero={3}
-              variant="blue"
+              variant="violet"
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1205,14 +1083,14 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={6}
             titulo="Crescimento e Decaimento"
             descricao="Exponencial na natureza: população, radioatividade, juros."
-             variant="blue"/>
+             variant={mv[6]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="PG Aplicada a Fenômenos Naturais"
               description="Exponencial explica crescimento rápido ou decaimento lento."
-              variant="blue"
+              variant="cyan"
             />
 
             <ContentAccordion
@@ -1322,33 +1200,9 @@ export default function AulaProgressoesPg({
 
 
 
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
-          alternativas={[
-              { letra: "A", texto: "384", correta: true },
-              { letra: "B", texto: "192", correta: false },
-              { letra: "C", texto: "768", correta: false },
-              { letra: "D", texto: "96", correta: false },
-              { letra: "E", texto: "1536", correta: false }
-            ]}
-          dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₈ = 3·2⁷ = 3·128 = 384." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁·q^(n−1)." }
-          ]}
-        />
-
-        <ModuleConsolidation
+<ModuleConsolidation
             index={2}
-            variant="blue"
+            variant="cyan"
             video={{
               videoId: "tZzgzUaHdCw",
               title: "Crescimento Exponencial: Aplicações",
@@ -1402,7 +1256,7 @@ export default function AulaProgressoesPg({
               questoes={quizM6}
               titulo="QUIZ: Crescimento/Decaimento"
               numero={3}
-              variant="blue"
+              variant="cyan"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1416,7 +1270,7 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={7}
             titulo="Matemática Financeira com PG"
             descricao="Juros compostos, prestações e investimentos."
-             variant="blue"/>
+             variant={mv[7]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1535,31 +1389,7 @@ export default function AulaProgressoesPg({
 
 
 
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant={"indigo"}
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
-          alternativas={[
-              { letra: "A", texto: "384", correta: true },
-              { letra: "B", texto: "192", correta: false },
-              { letra: "C", texto: "768", correta: false },
-              { letra: "D", texto: "96", correta: false },
-              { letra: "E", texto: "1536", correta: false }
-            ]}
-          dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₈ = 3·2⁷ = 3·128 = 384." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁·q^(n−1)." }
-          ]}
-        />
-
-        <ModuleConsolidation
+<ModuleConsolidation
             index={2}
             variant="indigo"
             video={{
@@ -1630,14 +1460,14 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={8}
             titulo="Comparação: PA vs PG"
             descricao="Diferenças fundamentais entre progressão aritmética e geométrica."
-             variant="blue"/>
+             variant={mv[8]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Duas Famílias de Sequências"
               description="Quando usar PA, quando usar PG."
-              variant="blue"
+              variant="rose"
             />
 
             <ContentAccordion
@@ -1744,33 +1574,9 @@ export default function AulaProgressoesPg({
 
 
 
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
-          alternativas={[
-              { letra: "A", texto: "384", correta: true },
-              { letra: "B", texto: "192", correta: false },
-              { letra: "C", texto: "768", correta: false },
-              { letra: "D", texto: "96", correta: false },
-              { letra: "E", texto: "1536", correta: false }
-            ]}
-          dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₈ = 3·2⁷ = 3·128 = 384." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁·q^(n−1)." }
-          ]}
-        />
-
-        <ModuleConsolidation
+<ModuleConsolidation
             index={2}
-            variant="blue"
+            variant="rose"
             video={{
               videoId: "2xQr4vZ5M1I",
               title: "PA vs PG: Comparação Completa",
@@ -1826,7 +1632,7 @@ export default function AulaProgressoesPg({
               questoes={quizM8}
               titulo="QUIZ: PA vs PG"
               numero={3}
-              variant="blue"
+              variant="rose"
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1840,14 +1646,14 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={9}
             titulo="Aplicações Petrobras"
             descricao="Produção, reservas e investimentos em óleo e gás."
-             variant="blue"/>
+             variant={mv[9]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Progressões Geométricas na Indústria"
               description="Crescimento de produção, depleção de reservas."
-              variant="blue"
+              variant="amber"
             />
 
             <ContentAccordion
@@ -1961,33 +1767,9 @@ export default function AulaProgressoesPg({
 
 
 
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
-          alternativas={[
-              { letra: "A", texto: "384", correta: true },
-              { letra: "B", texto: "192", correta: false },
-              { letra: "C", texto: "768", correta: false },
-              { letra: "D", texto: "96", correta: false },
-              { letra: "E", texto: "1536", correta: false }
-            ]}
-          dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "a₈ = 3·2⁷ = 3·128 = 384." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Fórmula: aₙ = a₁·q^(n−1)." }
-          ]}
-        />
-
-        <ModuleConsolidation
+<ModuleConsolidation
             index={2}
-            variant="blue"
+            variant="amber"
             video={{
               videoId: "4KzE9R6zWzY",
               title: "PG na Petrobras: Produção e Reservas",
@@ -2041,7 +1823,7 @@ export default function AulaProgressoesPg({
               questoes={quizM9}
               titulo="QUIZ: Aplicações Petrobras"
               numero={3}
-              variant="blue"
+              variant="amber"
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -2055,7 +1837,7 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="Teste final: integre todos os conceitos de progressões geométricas."
-             variant="blue"/>
+             variant={mv[10]}/>
 
           {showCompletionBadge ? (
             <div className="flex flex-col items-center gap-6 py-10 mt-10">
@@ -2070,35 +1852,12 @@ export default function AulaProgressoesPg({
             </div>
           ) : (
             <section id="quiz-modulo-10" className="mt-8">
-              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Na PG (x, 12, y), se x·y = 144, os valores de x e y podem ser:"
-          alternativas={[
-            { label: "A", valor: "x=6, y=24" },
-                { label: "B", valor: "x=4, y=36" },
-                { label: "C", valor: "x=8, y=18" },
-                { label: "D", valor: "Todas as anteriores" },
-                { label: "E", valor: "Apenas A e B" }
-          ]}
-          correta="D"
-          passos={[
-            "Em PG: 12² = x·y → x·y = 144 ✓.",
-            "Qualquer par (x,y) com x·y=144 e 12/x = y/12 funciona.",
-            "(A): q=2 ✓ (B): q=3 ✓ (C): q=1,5 ✓. Todas são PGs válidas."
-          ]}
-        />
-        <QuizInterativo
+              <QuizInterativo
                 questoes={quizM10}
                 titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={1}
-                variant="blue"
+                variant="slate"
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

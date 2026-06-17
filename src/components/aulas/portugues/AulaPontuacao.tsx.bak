@@ -167,8 +167,6 @@ export default function AulaPontuacao({
 
   return (
     <AulaTemplate
-      canComplete={completedModules.size >= MODULE_DEFS.length}
-      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={(val) => {
         const idx = MODULE_DEFS.findIndex((m) => m.id === val);
@@ -198,13 +196,13 @@ export default function AulaPontuacao({
             numero={1}
             titulo="Visão Geral e Funções"
             descricao="Pontuar não é apenas pausar para respirar; é garantir a clareza e a coesão do texto técnico."
-          variant="blue"
+          variant={mv[1]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="As Finalidades da Pontuação"
-              variant="blue"
+              variant={mv[1]}
             />
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -285,7 +283,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Os Sinais e Suas Funções"
-          variant="blue"
+          variant={mv[1]}
         />
             <ContentAccordion
               slides={[
@@ -396,7 +394,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Pontuação Normativa × Pontuação Expressiva"
-          variant="blue"
+          variant={mv[1]}
         />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -446,35 +444,13 @@ export default function AulaPontuacao({
             </AlertBox>
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Qual a função primordial do sistema de pontuação na escrita?"
-          alternativas={[
-            { label: "A", valor: "Marcar as pausas para a respiração do leitor." },
-                { label: "B", valor: "Indicar o nível de coesão entre as estruturas e manifestar propriedades da fala." },
-                { label: "C", valor: "Diferenciar substantivos próprios de comuns." },
-                { label: "D", valor: "Obrigar o leitor a ler mais devagar." }
-          ]}
-          correta="B"
-          passos={[
-            "A pontuação organiza a sintaxe e a clareza, indo muito além de simples pausas respiratórias.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={QUIZ_M1_PONTUACAO}
             titulo="QUIZ: Módulo Nº 1"
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          variant="blue"
+          variant={mv[1]}
         />
         </div>
       </TabsContent>
@@ -486,13 +462,13 @@ export default function AulaPontuacao({
             numero={2}
             titulo="Vírgula: Restrições de Uso"
             descricao="O que NUNCA fazer se você quiser ser aprovado. Erros que zeram questões de gramática."
-          variant="blue"
+          variant={mv[2]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="As Proibições Absolutas da Vírgula"
-              variant="blue"
+              variant={mv[2]}
             />
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -538,7 +514,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Scanner de Erros Fatais"
-          variant="blue"
+          variant={mv[2]}
         />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <AlertBox tipo="danger" titulo="Não Separe o Sujeito">
@@ -572,7 +548,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Catálogo Completo das Proibições"
-          variant="blue"
+          variant={mv[2]}
         />
             <ContentAccordion
               slides={[
@@ -705,7 +681,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={3}
               title="Teste Rápido: Certo ou Errado?"
-          variant="blue"
+          variant={mv[2]}
         />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -765,35 +741,13 @@ export default function AulaPontuacao({
             </div>
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Assinale a alternativa que apresenta um erro de pontuação (vírgula proibida):"
-          alternativas={[
-            { label: "A", valor: "Os diretores da Petrobras, decidiram o novo plano." },
-                { label: "B", valor: "Ontem, decidiram o plano." },
-                { label: "C", valor: "Decidiram, conforme o previsto, o plano." },
-                { label: "D", valor: "O plano, enfim, foi decidido." }
-          ]}
-          correta="A"
-          passos={[
-            "Nunca se separa o sujeito (Os diretores...) do verbo (decidiram) por vírgula simples.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={QUIZ_M2_PONTUACAO}
             titulo="QUIZ: Módulo Nº 2"
             icone="🎯"
             numero={5}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          variant="blue"
+          variant={mv[2]}
         />
         </div>
       </TabsContent>
@@ -805,13 +759,13 @@ export default function AulaPontuacao({
             numero={3}
             titulo="Vírgula: Termos Essenciais"
             descricao="Enumerações, repetições e a organização básica da frase."
-          variant="blue"
+          variant={mv[3]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="O Efeito Organizacional da Vírgula"
-              variant="blue"
+              variant={mv[3]}
             />
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -855,7 +809,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Listas e Repetições"
-          variant="blue"
+          variant={mv[3]}
         />
             <ContentAccordion
               slides={[
@@ -903,7 +857,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Regras SVO e Enumeração"
-          variant="blue"
+          variant={mv[3]}
         />
             <ContentAccordion
               slides={[
@@ -998,35 +952,13 @@ export default function AulaPontuacao({
             </AlertBox>
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Em 'Comprei tubos, válvulas, conexões e flanges', as vírgulas separam:"
-          alternativas={[
-            { label: "A", valor: "Apostos explicativos." },
-                { label: "B", valor: "Elementos de uma enumeração." },
-                { label: "C", valor: "Vocativos." },
-                { label: "D", valor: "Adjuntos adverbiais longos." }
-          ]}
-          correta="B"
-          passos={[
-            "A vírgula é usada para separar itens listados (enumeração).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={QUIZ_M3_PONTUACAO}
             titulo="QUIZ: Módulo Nº 3"
             icone="🎯"
             numero={5}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          variant="blue"
+          variant={mv[3]}
         />
         </div>
       </TabsContent>
@@ -1038,13 +970,13 @@ export default function AulaPontuacao({
             numero={4}
             titulo="Vírgula: Aposto e Vocativo"
             descricao="Isole quem você chama e explique o que você cita."
-          variant="blue"
+          variant={mv[4]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="Isolamento de Termos Acessórios"
-              variant="blue"
+              variant={mv[4]}
             />
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -1069,7 +1001,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Chamamento e Explicação"
-          variant="blue"
+          variant={mv[4]}
         />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -1131,7 +1063,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Tipos de Aposto e Posição do Vocativo"
-          variant="blue"
+          variant={mv[4]}
         />
             <ContentAccordion
               slides={[
@@ -1235,35 +1167,13 @@ export default function AulaPontuacao({
             </AlertBox>
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Qual a pontuação correta para o vocativo na frase abaixo?"
-          alternativas={[
-            { label: "A", valor: "Mário entregue o relatório." },
-                { label: "B", valor: "Mário, entregue o relatório." },
-                { label: "C", valor: "Mário entregue, o relatório." },
-                { label: "D", valor: "Entregue o relatório Mário." }
-          ]}
-          correta="B"
-          passos={[
-            "O vocativo (chamamento) deve ser sempre isolado por vírgula.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={QUIZ_M4_PONTUACAO}
             titulo="QUIZ: Módulo Nº 4"
             icone="🎯"
             numero={6}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          variant="blue"
+          variant={mv[4]}
         />
         </div>
       </TabsContent>
@@ -1275,13 +1185,13 @@ export default function AulaPontuacao({
             numero={5}
             titulo="Vírgula: Adjuntos Deslocados"
             descricao="Quando o advérbio sai do seu lugar original e exige o sinal."
-          variant="blue"
+          variant={mv[5]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="O Deslocamento do Adjunto"
-              variant="blue"
+              variant={mv[5]}
             />
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -1306,7 +1216,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="A Regra do Comprimento"
-              variant="blue"
+              variant={mv[5]}
             />
             <AlertBox tipo="warning" titulo="Destaque Estratégico (Cesgranrio)">
               A banca avalia se o adjunto é **Longo** (obrigatória) ou **Curto**
@@ -1338,7 +1248,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="O Que É um Adjunto Adverbial Deslocado?"
-              variant="blue"
+              variant={mv[5]}
             />
             <ContentAccordion
               slides={[
@@ -1450,35 +1360,13 @@ export default function AulaPontuacao({
             />
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Sobre o adjunto adverbial deslocado para o início da frase, a vírgula é OBRIGATÓRIA quando:"
-          alternativas={[
-            { label: "A", valor: "O adjunto for curto (uma ou duas palavras)." },
-                { label: "B", valor: "O adjunto for longo (geralmente 3 ou mais palavras)." },
-                { label: "C", valor: "Nunca é obrigatória, apenas facultativa." },
-                { label: "D", valor: "Sempre que houver um verbo na frase." }
-          ]}
-          correta="B"
-          passos={[
-            "Adjuntos adverbiais longos deslocados exigem vírgula para manter a clareza.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={QUIZ_M5_PONTUACAO}
             titulo="QUIZ: Módulo Nº 5"
             icone="🎯"
             numero={7}
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          variant="blue"
+          variant={mv[5]}
         />
         </div>
       </TabsContent>
@@ -1490,13 +1378,13 @@ export default function AulaPontuacao({
             numero={6}
             titulo="Vírgula: Orações Coordenadas"
             descricao="O fetiche da Cesgranrio: vírgulas antes de MAS, PORÉM e o polêmico E."
-          variant="blue"
+          variant={mv[6]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="Vírgula entre Orações Coordenadas"
-              variant="blue"
+              variant={mv[6]}
             />
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -1521,7 +1409,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="A Conjunção 'E'"
-              variant="blue"
+              variant={mv[6]}
             />
             <p className="text-muted-foreground text-lg">
               Geralmente o 'E' não pede vírgula, mas em 3 situações ele é seu
@@ -1552,7 +1440,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Tipos de Orações Coordenadas"
-              variant="blue"
+              variant={mv[6]}
             />
             <ContentAccordion
               slides={[
@@ -1701,35 +1589,13 @@ export default function AulaPontuacao({
             </AlertBox>
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Usa-se vírgula antes da conjunção 'E' quando:"
-          alternativas={[
-            { label: "A", valor: "As orações apresentam sujeitos diferentes." },
-                { label: "B", valor: "A conjunção é repetida (polissíndeto)." },
-                { label: "C", valor: "O " },
-                { label: "D", valor: "Todas as alternativas anteriores." }
-          ]}
-          correta="D"
-          passos={[
-            "São os três casos clássicos de vírgula antes do 'E'.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={QUIZ_M6_PONTUACAO}
             titulo="QUIZ: Módulo Nº 6"
             icone="🎯"
             numero={8}
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
-          variant="blue"
+          variant={mv[6]}
         />
         </div>
       </TabsContent>
@@ -1741,13 +1607,13 @@ export default function AulaPontuacao({
             numero={7}
             titulo="Vírgula: Orações Subordinadas"
             descricao="A diferença vital entre explicar para todos ou restringir para alguns."
-          variant="blue"
+          variant={mv[7]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="A Pontuação nas Orações Subordinadas"
-              variant="blue"
+              variant={mv[7]}
             />
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -1772,7 +1638,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Explicativa vs Restritiva"
-              variant="blue"
+              variant={mv[7]}
             />
             <Comparison
               title="Impacto Semântico"
@@ -1797,7 +1663,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Tipos de Orações Subordinadas e a Vírgula"
-              variant="blue"
+              variant={mv[7]}
             />
             <ContentAccordion
               slides={[
@@ -1910,35 +1776,13 @@ export default function AulaPontuacao({
             </AlertBox>
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="A oração adjetiva explicativa diferencia-se da restritiva pelo uso de:"
-          alternativas={[
-            { label: "A", valor: "Ponto final." },
-                { label: "B", valor: "Vírgulas." },
-                { label: "C", valor: "Aspas." },
-                { label: "D", valor: "Travessão simples apenas no final." }
-          ]}
-          correta="B"
-          passos={[
-            "Explicativas vêm entre vírgulas; restritivas aparecem sem vírgulas.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={QUIZ_M7_PONTUACAO}
             titulo="QUIZ: Módulo Nº 7"
             icone="🎯"
             numero={9}
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
-          variant="blue"
+          variant={mv[7]}
         />
         </div>
       </TabsContent>
@@ -1950,13 +1794,13 @@ export default function AulaPontuacao({
             numero={8}
             titulo="Ponto e Ponto e Vírgula"
             descricao="Organização de listas e períodos extensos que já possuem vírgulas internas."
-          variant="blue"
+          variant={mv[8]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="As Pausas Maiores"
-              variant="blue"
+              variant={mv[8]}
             />
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -1981,7 +1825,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="O ponto-e-vírgula"
-              variant="blue"
+              variant={mv[8]}
             />
             <ContentAccordion
               slides={[
@@ -2009,7 +1853,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Ponto Final, Ponto e Vírgula e Dois-Pontos"
-              variant="blue"
+              variant={mv[8]}
             />
             <ContentAccordion
               slides={[
@@ -2165,35 +2009,13 @@ export default function AulaPontuacao({
             </AlertBox>
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Para que serve o ponto e vírgula em enumerações complexas?"
-          alternativas={[
-            { label: "A", valor: "Para confundir o leitor." },
-                { label: "B", valor: "Para separar itens de uma lista que já possuem vírgulas internas." },
-                { label: "C", valor: "Para substituir o ponto final permanentemente." },
-                { label: "D", valor: "Para indicar uma pergunta sem ponto de interrogação." }
-          ]}
-          correta="B"
-          passos={[
-            "O ponto e vírgula organiza a hierarquia de pausas em frases longas ou listas segmentadas.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={QUIZ_M8_PONTUACAO}
             titulo="QUIZ: Módulo Nº 8"
             icone="🎯"
             numero={10}
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
-          variant="blue"
+          variant={mv[8]}
         />
         </div>
       </TabsContent>
@@ -2205,13 +2027,13 @@ export default function AulaPontuacao({
             numero={9}
             titulo="Sinais Complementares"
             descricao="Dois-pontos, Travessões e Parênteses: a estética da explicação."
-          variant="blue"
+          variant={mv[9]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="Marcadores Especiais"
-              variant="blue"
+              variant={mv[9]}
             />
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -2236,7 +2058,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Além da Vírgula"
-              variant="blue"
+              variant={mv[9]}
             />
             <div className="grid gap-4 md:grid-cols-2">
               <FlipCard
@@ -2254,7 +2076,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Todos os Sinais Complementares"
-              variant="blue"
+              variant={mv[9]}
             />
             <CardCarousel
               cards={[
@@ -2402,35 +2224,13 @@ export default function AulaPontuacao({
             </AlertBox>
           </section>
 
-          {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Os dois-pontos podem ser usados para:"
-          alternativas={[
-            { label: "A", valor: "Introduzir uma citação direta." },
-                { label: "B", valor: "Anunciar uma enumeração." },
-                { label: "C", valor: "Apresentar um esclarecimento ou síntese." },
-                { label: "D", valor: "Todas as alternativas anteriores." }
-          ]}
-          correta="D"
-          passos={[
-            "Dois-pontos possuem função explicativa, enumerativa ou citativa.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+          <QuizInterativo
             questoes={QUIZ_M9_PONTUACAO}
             titulo="QUIZ: Módulo Nº 9"
             icone="🎯"
             numero={11}
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
-          variant="blue"
+          variant={mv[9]}
         />
         </div>
       </TabsContent>
@@ -2442,13 +2242,13 @@ export default function AulaPontuacao({
             numero={10}
             titulo="Simulado Final"
             descricao="Teste seu domínio perante uma bateria definitiva focada em Pontuação Global Cesgranrio."
-          variant="blue"
+          variant={mv[10]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={11}
               title="Mapa Mental: Revisão Completa"
-          variant="blue"
+          variant={mv[10]}
         />
             <ContentAccordion
               slides={[
@@ -2660,35 +2460,13 @@ export default function AulaPontuacao({
               </p>
             </div>
           ) : (
-            {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Assinale a alternativa em que a pontuação está RIGOROSAMENTE CORRETA:"
-          alternativas={[
-            { label: "A", valor: "A Petrobras, embora seja uma estatal, compete no mercado global." },
-                { label: "B", valor: "Petrobras embora seja uma estatal compete no mercado global." },
-                { label: "C", valor: "A Petrobras embora seja uma estatal, compete no mercado global." },
-                { label: "D", valor: "A Petrobras, embora seja uma estatal compete, no mercado global." }
-          ]}
-          correta="A"
-          passos={[
-            "A oração concessiva intercalada 'embora seja uma estatal' deve estar entre vírgulas.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
-        <QuizInterativo
+            <QuizInterativo
               questoes={QUIZ_FINAL_PONTUACAO}
               titulo="QUIZ: Módulo Nº 10"
               icone="🏆"
               numero={12}
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
-          variant="blue"
+          variant={mv[10]}
         />
           )}
         </div>

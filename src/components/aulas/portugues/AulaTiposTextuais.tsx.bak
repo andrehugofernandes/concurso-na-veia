@@ -337,8 +337,6 @@ export default function AulaTiposTextuais({
 
   return (
     <AulaTemplate
-      canComplete={completedModules.size >= MODULE_DEFS.length}
-      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={Array.from(MODULE_DEFS)}
@@ -408,28 +406,6 @@ export default function AulaTiposTextuais({
           audio={{ audioUrl: "#", titulo: "Ritmo Narrativo", artista: "Prof. André" }}
         />
 
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
-          alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
-          ]}
-          correta="C"
-          passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
         <QuizInterativo
           questoes={quizzes["modulo-1"] || []}
           titulo="QUIZ: Narração"
@@ -468,7 +444,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={2}
-          variant="blue"
+          variant="emerald"
           video={{ videoId: "2-0mD4J7X1I", title: "Descrição Técnica", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 2", materia: "Português", tituloAula: "Descrição",
@@ -476,28 +452,6 @@ export default function AulaTiposTextuais({
           }}
           sinteseEstrategica={{ title: "Congelar o Tempo", content: "A descrição para o relógio para pintar o cenário." }}
           audio={{ audioUrl: "#", titulo: "Texturas do Texto", artista: "Prof. André" }}
-        />
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
-          alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
-          ]}
-          correta="C"
-          passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
         />
         <QuizInterativo
           questoes={quizzes["modulo-2"] || []}
@@ -534,7 +488,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={3}
-          variant="blue"
+          variant="violet"
           video={{ videoId: "3-pE9M4zS3Y", title: "Exposição Pura", duration: "11:00" }}
           resumoVisual={{
             moduloNome: "Módulo 3", materia: "Português", tituloAula: "Exposição",
@@ -542,28 +496,6 @@ export default function AulaTiposTextuais({
           }}
           sinteseEstrategica={{ title: "Ensinar vs Brigar", content: "Expor é dar uma aula. Argumentar é dar um sermão." }}
           audio={{ audioUrl: "#", titulo: "Voz Didática", artista: "Prof. André" }}
-        />
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
-          alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
-          ]}
-          correta="C"
-          passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
         />
         <QuizInterativo
           questoes={quizzes["modulo-3"] || []}
@@ -612,28 +544,6 @@ export default function AulaTiposTextuais({
           sinteseEstrategica={{ title: "Vender a Ideia", content: "Imagine que cada parágrafo argumentativo é um 'vendedor' da sua tese." }}
           audio={{ audioUrl: "#", titulo: "Retórica de Concurso", artista: "Prof. André" }}
         />
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
-          alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
-          ]}
-          correta="C"
-          passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
         <QuizInterativo
           questoes={quizzes["modulo-4"] || []}
           titulo="QUIZ: Argumentação"
@@ -669,7 +579,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={5}
-          variant="blue"
+          variant="amber"
           video={{ videoId: "5-pE9M4zS3Y", title: "Guia de Injunção", duration: "09:00" }}
           resumoVisual={{
             moduloNome: "Módulo 5", materia: "Português", tituloAula: "Injunção",
@@ -677,28 +587,6 @@ export default function AulaTiposTextuais({
           }}
           sinteseEstrategica={{ title: "Mão na Massa", content: "Injunção = Passo a Passo para o leitor agir." }}
           audio={{ audioUrl: "#", titulo: "Comandos Verbais", artista: "Prof. André" }}
-        />
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
-          alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
-          ]}
-          correta="C"
-          passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
         />
         <QuizInterativo
           questoes={quizzes["modulo-5"] || []}
@@ -735,7 +623,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={6}
-          variant="blue"
+          variant="rose"
           video={{ videoId: "6-pE9M4zS3Y", title: "Diálogo em Prova", duration: "08:00" }}
           resumoVisual={{
             moduloNome: "Módulo 6", materia: "Português", tituloAula: "Modo Dialogal",
@@ -743,28 +631,6 @@ export default function AulaTiposTextuais({
           }}
           sinteseEstrategica={{ title: "Tênis Textual", content: "O diálogo é como uma partida de tênis: a bola (fala) vai e volta." }}
           audio={{ audioUrl: "#", titulo: "Vozes Cruzadas", artista: "Prof. André" }}
-        />
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
-          alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
-          ]}
-          correta="C"
-          passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
         />
         <QuizInterativo
           questoes={quizzes["modulo-6"] || []}
@@ -801,7 +667,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={7}
-          variant="blue"
+          variant="cyan"
           video={{ videoId: "7-pE9M4zS3Y", title: "Gêneros na Prática", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 7", materia: "Português", tituloAula: "Gêneros",
@@ -809,28 +675,6 @@ export default function AulaTiposTextuais({
           }}
           sinteseEstrategica={{ title: "Andaime e Prédio", content: "Tipo = Andaime (estrutura); Gênero = Prédio pronto (uso)." }}
           audio={{ audioUrl: "#", titulo: "Comunicação Social", artista: "Prof. André" }}
-        />
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
-          alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
-          ]}
-          correta="C"
-          passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
         />
         <QuizInterativo
           questoes={quizzes["modulo-7"] || []}
@@ -876,28 +720,6 @@ export default function AulaTiposTextuais({
           sinteseEstrategica={{ title: "Tipo Camaleão", content: "O texto muda de 'cor' (tipo) conforme a necessidade do autor." }}
           audio={{ audioUrl: "#", titulo: "Harmonia Textual", artista: "Prof. André" }}
         />
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
-          alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
-          ]}
-          correta="C"
-          passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
-        />
         <QuizInterativo
           questoes={quizzes["modulo-8"] || []}
           titulo="QUIZ: Hibridismo"
@@ -933,7 +755,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={9}
-          variant="blue"
+          variant="emerald"
           video={{ videoId: "9-pE9M4zS3Y", title: "Dicas de Ouro", duration: "15:00" }}
           resumoVisual={{
             moduloNome: "Módulo 9", materia: "Português", tituloAula: "Laboratório",
@@ -941,28 +763,6 @@ export default function AulaTiposTextuais({
           }}
           sinteseEstrategica={{ title: "Detetive de Texto", content: "Procure as 'pegadas' gramaticais que definem o tipo." }}
           audio={{ audioUrl: "#", titulo: "Tática de Prova", artista: "Prof. André" }}
-        />
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
-          alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
-          ]}
-          correta="C"
-          passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
         />
         <QuizInterativo
           questoes={quizzes["modulo-9"] || []}
@@ -990,7 +790,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={10}
-          variant="blue"
+          variant="violet"
           video={{ videoId: "10-pE9M4zS3Y", title: "Review Geral", duration: "20:00" }}
           resumoVisual={{
             moduloNome: "Módulo 10", materia: "Português", tituloAula: "Simulado",
@@ -998,28 +798,6 @@ export default function AulaTiposTextuais({
           }}
           sinteseEstrategica={{ title: "Foco Total", content: "A prova é um jogo de paciência e aplicação de técnica." }}
           audio={{ audioUrl: "#", titulo: "Mentalidade Estratégica", artista: "Prof. André" }}
-        />
-        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
-          alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
-          ]}
-          correta="C"
-          passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
-          ]}
         />
         <QuizInterativo
           questoes={quizzes["modulo-10"] || []}
