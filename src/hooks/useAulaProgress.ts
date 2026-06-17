@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
+import { useParams } from 'next/navigation';
 
 interface ProgressData {
     progress_percent: number;
@@ -13,15 +14,22 @@ interface ProgressData {
 interface UseAulaProgressReturn {
     progress: number;
     completed: boolean;
+    completedModules: string[];
     loading: boolean;
     error: string | null;
     updateProgress: (percent: number) => Promise<void>;
+    updateCompletedModules: (modules: string[]) => Promise<void>;
     completeAula: () => Promise<{ success: boolean; xp_awarded: number }>;
 }
 
-export function useAulaProgress(materiaId: string, topicoId: string): UseAulaProgressReturn {
+export function useAulaProgress(materiaId?: string, topicoId?: string): UseAulaProgressReturn {
+    const params = useParams();
+    const resolvedMateriaId = materiaId || (params?.materia as string) || '';
+    const resolvedTopicoId = topicoId || (params?.topico as string) || '';
+
     const [progress, setProgress] = useState(0);
     const [completed, setCompleted] = useState(false);
+    const [completedModules, setCompletedModules] = useState<string[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -32,6 +40,10 @@ export function useAulaProgress(materiaId: string, topicoId: string): UseAulaPro
         let isMounted = true;
 
         const loadProgress = async () => {
+            if (!resolvedMateriaId || !resolvedTopicoId) {
+                setLoading(false);
+                return;
+            }
             try {
                 if (isMounted) setLoading(true);
                 const { data: { user } } = await supabase.auth.getUser();
@@ -43,10 +55,10 @@ export function useAulaProgress(materiaId: string, topicoId: string): UseAulaPro
 
                 const { data, error: fetchError } = await supabase
                     .from('aulas_progress')
-                    .select('progress_percent, completed, completed_at, xp_awarded')
+                    .select('progress_percent, completed, completed_at, xp_awarded, completed_modules')
                     .eq('user_id', user.id)
-                    .eq('materia_id', materiaId)
-                    .eq('topico_id', topicoId)
+                    .eq('materia_id', resolvedMateriaId)
+                    .eq('topico_id', resolvedTopicoId)
                     .single();
 
                 if (fetchError && fetchError.code !== 'PGRST116') {
@@ -56,6 +68,7 @@ export function useAulaProgress(materiaId: string, topicoId: string): UseAulaPro
                 if (data && isMounted) {
                     setProgress(data.progress_percent);
                     setCompleted(data.completed);
+                    setCompletedModules(data.completed_modules || []);
                 }
             } catch (err: any) {
                 // Silently ignore abort errors as they are usually component unmounts or re-renders
@@ -80,11 +93,11 @@ export function useAulaProgress(materiaId: string, topicoId: string): UseAulaPro
 
         loadProgress();
         return () => { isMounted = false; };
-    }, [materiaId, topicoId, supabase]);
+    }, [resolvedMateriaId, resolvedTopicoId, supabase]);
 
     // Atualizar progresso (debounced no componente que usa)
     const updateProgress = useCallback(async (percent: number) => {
-        if (completed) return; // Não atualizar se já completou
+        if (completed || !resolvedMateriaId || !resolvedTopicoId) return; // Não atualizar se já completou
 
         try {
             const { data: { user } } = await supabase.auth.getUser();
@@ -99,8 +112,8 @@ export function useAulaProgress(materiaId: string, topicoId: string): UseAulaPro
                 .from('aulas_progress')
                 .upsert({
                     user_id: user.id,
-                    materia_id: materiaId,
-                    topico_id: topicoId,
+                    materia_id: resolvedMateriaId,
+                    topico_id: resolvedTopicoId,
                     progress_percent: newProgress,
                     completed: false
                 }, {
@@ -112,19 +125,44 @@ export function useAulaProgress(materiaId: string, topicoId: string): UseAulaPro
         } catch (err) {
             console.error('Error updating progress:', JSON.stringify(err, null, 2));
         }
-    }, [materiaId, topicoId, completed, supabase, progress]);
+    }, [resolvedMateriaId, resolvedTopicoId, completed, supabase, progress]);
+
+    // Atualizar módulos concluídos
+    const updateCompletedModules = useCallback(async (modules: string[]) => {
+        setCompletedModules(modules);
+        if (!resolvedMateriaId || !resolvedTopicoId) return;
+        try {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (!user) return;
+
+            const { error: upsertError } = await supabase
+                .from('aulas_progress')
+                .upsert({
+                    user_id: user.id,
+                    materia_id: resolvedMateriaId,
+                    topico_id: resolvedTopicoId,
+                    completed_modules: modules,
+                }, {
+                    onConflict: 'user_id,materia_id,topico_id'
+                });
+
+            if (upsertError) throw upsertError;
+        } catch (err) {
+            console.error('Error updating completed modules:', JSON.stringify(err, null, 2));
+        }
+    }, [resolvedMateriaId, resolvedTopicoId, supabase]);
 
     // Marcar aula como concluída e ganhar XP
     const completeAula = useCallback(async (): Promise<{ success: boolean; xp_awarded: number }> => {
-        if (completed) {
+        if (completed || !resolvedMateriaId || !resolvedTopicoId) {
             return { success: false, xp_awarded: 0 };
         }
 
         try {
             const { data, error: rpcError } = await supabase
                 .rpc('complete_aula_and_award_xp', {
-                    p_materia_id: materiaId,
-                    p_topico_id: topicoId,
+                    p_materia_id: resolvedMateriaId,
+                    p_topico_id: resolvedTopicoId,
                     p_xp_amount: 50
                 });
 
@@ -142,14 +180,16 @@ export function useAulaProgress(materiaId: string, topicoId: string): UseAulaPro
             setError('Erro ao completar aula');
             return { success: false, xp_awarded: 0 };
         }
-    }, [materiaId, topicoId, completed, supabase]);
+    }, [resolvedMateriaId, resolvedTopicoId, completed, supabase]);
 
     return {
         progress,
         completed,
+        completedModules,
         loading,
         error,
         updateProgress,
+        updateCompletedModules,
         completeAula
     };
 }

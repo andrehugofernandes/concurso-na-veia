@@ -1,4 +1,5 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 /**
  * AulaDireitoTributario
@@ -16,7 +17,8 @@
  */
 
 import { useState, useEffect } from "react";
-import { AulaProps, QuizQuestion } from "../shared";
+import { AulaProps, QuizQuestion,
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   ModuleConsolidation,
   ContentAccordion,
@@ -65,20 +67,8 @@ export default function AulaDireitoTributario(props: AulaProps) {
     return "modulo-1";
   });
 
-  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
-      if (saved) {
-        try {
-          const arr = JSON.parse(saved);
-          return new Set(arr);
-        } catch (e) {
-          return new Set();
-        }
-      }
-    }
-    return new Set();
-  });
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -86,20 +76,15 @@ export default function AulaDireitoTributario(props: AulaProps) {
     }
   }, [activeTab]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `${STORAGE_KEY_PREFIX}completed_modules`,
-        JSON.stringify(Array.from(completedModules))
-      );
-    }
-  }, [completedModules]);
+  
 
   const handleQuizComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
-      setCompletedModules((prev) => new Set([...prev, moduleId]));
+      const nextCompleted = new Set(completedModules);
+      nextCompleted.add(moduleId);
+      updateCompletedModules(Array.from(nextCompleted));
       const progress = Math.round(
-        (completedModules.size / (MODULE_DEFS.length - 1)) * 100,
+        (nextCompleted.size / (MODULE_DEFS.length - 1)) * 100
       );
       props.onUpdateProgress?.(progress);
     }
@@ -154,7 +139,31 @@ export default function AulaDireitoTributario(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={1}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O Estado institui a cobrança compulsória de valores decorrentes do exercício do poder de polícia sobre a fiscalização de estabelecimentos comerciais. Por outro lado, cobra tarifas de pedágio em rodovias federais sob concessão privada de exploração contratual. Essas cobranças classificam-se, respectivamente, como:"
+          alternativas={[
+              { letra: "A", texto: "taxa (receita tributária) e preço público (receita não tributária)", correta: true },
+              { letra: "B", texto: "imposto (receita tributária) e taxa (receita tributária)", correta: false },
+              { letra: "C", texto: "contribuição (receita tributária) e imposto (receita tributária)", correta: false },
+              { letra: "D", texto: "preço público (receita não tributária) e taxa (receita tributária)", correta: false },
+              { letra: "E", texto: "tarifa (receita não tributária) e contribuição (receita tributária)", correta: false }
+            ]}
+          dicaEstrategica="O pedágio sob concessão contratual classifica-se como preço público/tarifa (natureza não tributária e contratual)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A taxa decorrente do poder de polícia é tributo (compulsória e de direito público)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa A como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={1}
         variant={getModuleVariant(1)}
         video={{
@@ -265,7 +274,31 @@ export default function AulaDireitoTributario(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O Imposto de Renda (IR) incide sobre:"
+          alternativas={[
+              { letra: "A", texto: "Apenas salários", correta: false },
+              { letra: "B", texto: "Renda e proventos de qualquer natureza (salários, aluguéis, lucros, ganhos)", correta: true },
+              { letra: "C", texto: "Apenas pessoas jurídicas", correta: false },
+              { letra: "D", texto: "Apenas vendas de produtos", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "IR tem campo amplo: renda (salários), proventos (aluguéis, dividendos), ganhos de capital (venda de imóvel), prêmios, heranças acima de certos valores." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={2}
         variant={getModuleVariant(2)}
         video={{
@@ -369,7 +402,31 @@ export default function AulaDireitoTributario(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="ICMS (Imposto sobre Circulação de Mercadorias) é um tributo:"
+          alternativas={[
+              { letra: "A", texto: "Federal coletado pela Receita Federal", correta: false },
+              { letra: "B", texto: "Estadual legislado por cada estado", correta: true },
+              { letra: "C", texto: "Municipal coletado pela prefeitura", correta: false },
+              { letra: "D", texto: "Internacional", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Arrecadação vai para o estado onde ocorre a operação."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "ICMS é tributo estadual." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Cada estado legisla sua alíquota (varia 7-18%)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={3}
         variant={getModuleVariant(3)}
         video={{
@@ -468,7 +525,31 @@ export default function AulaDireitoTributario(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="INSS (Instituto Nacional Seguridade Social) é uma contribuição de:"
+          alternativas={[
+              { letra: "A", texto: "Apenas empregador", correta: false },
+              { letra: "B", texto: "Empregado e empregador", correta: true },
+              { letra: "C", texto: "Apenas governo", correta: false },
+              { letra: "D", texto: "Não é obrigatória", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Autônomo: 20% de sua renda."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "INSS: contribuição dupla." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Empregado: 8-11% do salário." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Empregador: 20% sobre folha." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={4}
         variant={getModuleVariant(4)}
         video={{
@@ -567,7 +648,31 @@ export default function AulaDireitoTributario(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={5}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A obrigação tributária principal é:"
+          alternativas={[
+              { letra: "A", texto: "Registrar operações", correta: false },
+              { letra: "B", texto: "Pagar o tributo ao fisco", correta: true },
+              { letra: "C", texto: "Informar dados", correta: false },
+              { letra: "D", texto: "Manter documentos", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="É pessoal de quem sofreu o fato gerador."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Obrigação Principal: dever de pagar tributo." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Surge quando ocorre fato gerador (evento definido em lei)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={5}
         variant={getModuleVariant(5)}
         video={{
@@ -671,7 +776,31 @@ export default function AulaDireitoTributario(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={6}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O processo de auditoria fiscal começa quando:"
+          alternativas={[
+              { letra: "A", texto: "Sempre que há operação", correta: false },
+              { letra: "B", texto: "Fisco seleciona empresa para verificação de documentos e registros", correta: true },
+              { letra: "C", texto: "Empresa solicita", correta: false },
+              { letra: "D", texto: "Nunca ocorre", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Pode ser por sorteio, seleção de risco, ou denúncia."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Auditoria fiscal: fisco realiza verificação de livros, notas fiscais, documentos." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={6}
         variant={getModuleVariant(6)}
         video={{
@@ -770,7 +899,31 @@ export default function AulaDireitoTributario(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={7}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Fato Gerador é a situação legal/factual que:"
+          alternativas={[
+              { letra: "A", texto: "Cancela obrigação tributária", correta: false },
+              { letra: "B", texto: "Origina direito do fisco de cobrar tributo", correta: true },
+              { letra: "C", texto: "Reduz tributo", correta: false },
+              { letra: "D", texto: "Não afeta tributação", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Momento de ocorrência é crítico (define qual ano/período é tributado)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Fato Gerador: evento definido em lei que gera direito de tributar." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={7}
         variant={getModuleVariant(7)}
         video={{
@@ -873,7 +1026,31 @@ export default function AulaDireitoTributario(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={8}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Royalties de petróleo em Petrobras são:"
+          alternativas={[
+              { letra: "A", texto: "Despesa operacional comum", correta: false },
+              { letra: "B", texto: "Contribuição mínima de 5% da produção mensal ao Estado (proprietário da reserva)", correta: true },
+              { letra: "C", texto: "Imposto de renda", correta: false },
+              { letra: "D", texto: "Taxa de refino", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Calculado sobre produção valorizada."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Royalties: percentual mínimo da produção (5%) que Petrobras paga ao Estado pela exploração do recurso natural." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={8}
         variant={getModuleVariant(8)}
         video={{
@@ -971,7 +1148,31 @@ export default function AulaDireitoTributario(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={9}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Planejamento Tributário Lícito é:"
+          alternativas={[
+              { letra: "A", texto: "Sempre ilegal", correta: false },
+              { letra: "B", texto: "Organizar negócio legalmente para minimizar carga tributária", correta: true },
+              { letra: "C", texto: "Fraude de impostos", correta: false },
+              { letra: "D", texto: "Não é permitido", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Planejamento Lícito: uso inteligente de estrutura jurídica/contratual permitida por lei para reduzir imposto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Diferente de fraude (proibida)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={9}
         variant={getModuleVariant(9)}
         video={{
@@ -1079,7 +1280,31 @@ export default function AulaDireitoTributario(props: AulaProps) {
         </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={10}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Empresa fatura R$ 2 milhões. Lucro 20%. Incide IRPJ 25%, COFINS 7,65%, PIS 1,65%. Total de tributos ="
+          alternativas={[
+              { letra: "A", texto: "R$ 200 mil", correta: false },
+              { letra: "B", texto: "R$ 400 mil", correta: false },
+              { letra: "C", texto: "R$ 650 mil", correta: true },
+              { letra: "D", texto: "R$ 1 milhão", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Opção mais próxima é R$ 650 (pode incluir outros tributos)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "IRPJ: 2.000k × 20% = 400k × 25% = 100k." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "COFINS: 2.000k × 7,65% = 153k. PIS: 2.000k × 1,65% = 33k." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Total = 286k." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={10}
         variant={getModuleVariant(10)}
         video={{
@@ -1160,6 +1385,8 @@ export default function AulaDireitoTributario(props: AulaProps) {
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={MODULE_DEFS}

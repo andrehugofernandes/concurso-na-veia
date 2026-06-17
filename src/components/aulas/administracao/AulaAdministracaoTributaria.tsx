@@ -1,4 +1,5 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 /**
  * AulaAdministracaoTributaria
@@ -14,7 +15,8 @@
  */
 
 import { useState, useEffect } from "react";
-import { AulaProps, QuizQuestion } from "../shared";
+import { AulaProps, QuizQuestion,
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   ModuleConsolidation,
   ContentAccordion,
@@ -63,20 +65,8 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
     return "modulo-1";
   });
 
-  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
-      if (saved) {
-        try {
-          const arr = JSON.parse(saved);
-          return new Set(arr);
-        } catch (e) {
-          return new Set();
-        }
-      }
-    }
-    return new Set();
-  });
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -84,20 +74,15 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
     }
   }, [activeTab]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `${STORAGE_KEY_PREFIX}completed_modules`,
-        JSON.stringify(Array.from(completedModules))
-      );
-    }
-  }, [completedModules]);
+  
 
   const handleQuizComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
-      setCompletedModules((prev) => new Set([...prev, moduleId]));
+      const nextCompleted = new Set(completedModules);
+      nextCompleted.add(moduleId);
+      updateCompletedModules(Array.from(nextCompleted));
       const progress = Math.round(
-        (completedModules.size / (MODULE_DEFS.length - 1)) * 100,
+        (nextCompleted.size / (MODULE_DEFS.length - 1)) * 100
       );
       props.onUpdateProgress?.(progress);
     }
@@ -146,7 +131,31 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={1}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Durante procedimento fiscal regular na Petrobras, o auditor da Receita Federal do Brasil (RFB) intima o representante legal a apresentar os livros comerciais e fiscais da empresa. O representante recusa-se ao fornecimento sob a alegação de cláusula de sigilo contratual privada celebrada com parceiros comerciais. Nos termos do Código Tributário Nacional (CTN), a conduta do representante é:"
+          alternativas={[
+              { letra: "A", texto: "legítima, pois o sigilo comercial privado se sobrepõe ao interesse arrecadatório estatal.", correta: false },
+              { letra: "B", texto: "ilegítima, pois a fiscalização dos livros comerciais pela autoridade tributária não está sujeita a limitações constantes de leis ou contratos privados.", correta: true },
+              { letra: "C", texto: "legítima, desde que haja parecer prévio do conselho fiscal da sociedade anônima.", correta: false },
+              { letra: "D", texto: "ilegítima, dependendo, contudo, de mandado de busca judicial para prosseguimento do exame.", correta: false },
+              { letra: "E", texto: "legítima, cabendo à Receita Federal requerer as informações diretamente aos parceiros internacionais.", correta: false }
+            ]}
+          dicaEstrategica="195 do CTN, para efeitos da legislação tributária, não têm aplicação quaisquer disposições legais limitativas do direito de examinar livros, arquivos, papéis e efeitos comerciais dos comerciantes ou industriais."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Conforme o Art." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={1}
         variant={getModuleVariant(1)}
         video={{ videoId: "dQw4w9WgXcQ", title: "Administração Tributária: Conceitos", duration: "12:00" }}
@@ -230,7 +239,31 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Receita Federal do Brasil (RFB) arrecada principalmente:"
+          alternativas={[
+              { letra: "A", texto: "ICMS", correta: false },
+              { letra: "B", texto: "IR, IPI, COFINS, PIS e outros tributos federais", correta: true },
+              { letra: "C", texto: "ISS", correta: false },
+              { letra: "D", texto: "IPTU", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "RFB: órgão federal que arrecada tributos federais (IR, IPI, impostos aduaneiros, contribuições sociais federais)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={2}
         variant={getModuleVariant(2)}
         video={{ videoId: "dQw4w9WgXcQ", title: "Órgãos Arrecadadores", duration: "12:00" }}
@@ -314,7 +347,31 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Nota Fiscal Eletrônica (NF-e) é obrigatória para:"
+          alternativas={[
+              { letra: "A", texto: "Apenas grandes empresas", correta: false },
+              { letra: "B", texto: "Circulação de mercadoria (desde 2006 para maioria)", correta: true },
+              { letra: "C", texto: "Nunca é obrigatória", correta: false },
+              { letra: "D", texto: "Apenas importação", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Emitida eletronicamente, autorizada pela SEFAZ, rastreada digitalmente."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "NF-e: obrigatória para circulação de mercadoria." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={3}
         variant={getModuleVariant(3)}
         video={{ videoId: "dQw4w9WgXcQ", title: "Registros e Documentos Fiscais", duration: "12:00" }}
@@ -398,7 +455,31 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="DIPJ (Declaração Imposto Pessoa Jurídica) é apresentada:"
+          alternativas={[
+              { letra: "A", texto: "Mensalmente", correta: false },
+              { letra: "B", texto: "Anualmente (até 30 de abril)", correta: true },
+              { letra: "C", texto: "Nunca", correta: false },
+              { letra: "D", texto: "A cada 3 anos", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Prazo: até 30 de abril do ano seguinte."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "DIPJ: declaração anual de IR de PJ." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Apresenta receitas, custos, despesas, cálculo de IR." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={4}
         variant={getModuleVariant(4)}
         video={{ videoId: "dQw4w9WgXcQ", title: "Declarações Tributárias", duration: "12:00" }}
@@ -482,7 +563,31 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={5}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Prazo de recolhimento de ICMS é até:"
+          alternativas={[
+              { letra: "A", texto: "Dia 7", correta: false },
+              { letra: "B", texto: "Dia 15 (estadual, pode variar por estado)", correta: true },
+              { letra: "C", texto: "Dia 21", correta: false },
+              { letra: "D", texto: "Final do mês", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Atraso = multa 0,5% ao mês + juros."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "ICMS: apuração mensal, recolhimento até dia 15 (alguns estados 21)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={5}
         variant={getModuleVariant(5)}
         video={{ videoId: "dQw4w9WgXcQ", title: "Prazos e Obrigações", duration: "12:00" }}
@@ -566,7 +671,31 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={6}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Planejamento Tributário Integrado envolve:"
+          alternativas={[
+              { letra: "A", texto: "Apenas vender mais", correta: false },
+              { letra: "B", texto: "Analisar operações e estruturar para minimizar imposto de forma lícita", correta: true },
+              { letra: "C", texto: "Fraudar impostos", correta: false },
+              { letra: "D", texto: "Não envolve nada", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Ilícito = frauda."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Planejamento: análise de qual operação/estrutura gera menos imposto." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Lícito = usa opções da lei." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={6}
         variant={getModuleVariant(6)}
         video={{ videoId: "dQw4w9WgXcQ", title: "Gestão de Impostos", duration: "12:00" }}
@@ -650,7 +779,31 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={7}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Crédito ICMS gera direito de:"
+          alternativas={[
+              { letra: "A", texto: "Não pagar ICMS nunca", correta: false },
+              { letra: "B", texto: "Abater ICMS pago em compra no ICMS devido em venda", correta: true },
+              { letra: "C", texto: "Fraude", correta: false },
+              { letra: "D", texto: "Sem relação", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Precisa de documentação (NF correta)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Crédito ICMS: direito inato (vem da lei)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Compra com ICMS = nasce crédito." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={7}
         variant={getModuleVariant(7)}
         video={{ videoId: "dQw4w9WgXcQ", title: "Controle de Créditos", duration: "12:00" }}
@@ -734,7 +887,31 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={8}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="NF-e (Nota Fiscal Eletrônica) é emitida:"
+          alternativas={[
+              { letra: "A", texto: "Em papel", correta: false },
+              { letra: "B", texto: "Eletronicamente via software, autorizada pela SEFAZ", correta: true },
+              { letra: "C", texto: "Verbalmente", correta: false },
+              { letra: "D", texto: "Sem sistema", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Rastreado."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "NF-e: processo eletrônico." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Empresa emite em software, envia a SEFAZ, SEFAZ autoriza e gera código de segurança." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={8}
         variant={getModuleVariant(8)}
         video={{ videoId: "dQw4w9WgXcQ", title: "Sistemas de Informação", duration: "12:00" }}
@@ -818,7 +995,31 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={9}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Complexidade tributária em Petrobras vem de:"
+          alternativas={[
+              { letra: "A", texto: "Nada complexo", correta: false },
+              { letra: "B", texto: "Múltiplos estados, tributos integrados (ICMS em cascata), royalties, PE, volume bilionário", correta: true },
+              { letra: "C", texto: "Apenas ICMS", correta: false },
+              { letra: "D", texto: "Sem complexidade", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Além disso: royalties, PE (participações), IR, PIS, COFINS."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Petrobras opera em 5+ estados." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Cada ICMS diferente." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={9}
         variant={getModuleVariant(9)}
         video={{ videoId: "dQw4w9WgXcQ", title: "Tributação em Petrobras", duration: "12:00" }}
@@ -905,7 +1106,31 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
         </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={10}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Empresa tem ICMS a pagar R$ 50 mil, INSS R$ 20 mil, IR R$ 30 mil. Qual é total e por onde começa pagamento?"
+          alternativas={[
+              { letra: "A", texto: "R$ 100 mil, começar por IR", correta: false },
+              { letra: "B", texto: "R$ 100 mil total. Ordem: FGTS (dia 7) > INSS (dia 15) > ICMS (dia 15) > IR (dia 21) conforme vencimentos", correta: true },
+              { letra: "C", texto: "R$ 50 mil apenas", correta: false },
+              { letra: "D", texto: "Sem ordem", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="FGTS venceu primeiro."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Gestão de prazos: respeitar vencimento de cada tributo." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Ordem não é escolha, é lei." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={10}
         variant={getModuleVariant(10)}
         video={{ videoId: "dQw4w9WgXcQ", title: "Simulado Geral", duration: "12:00" }}
@@ -954,6 +1179,8 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={MODULE_DEFS}

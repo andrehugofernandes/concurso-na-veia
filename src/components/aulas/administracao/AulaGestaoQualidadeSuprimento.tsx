@@ -1,4 +1,5 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import {
@@ -12,7 +13,7 @@ import {
   QuizInterativo,
   AulaProps,
   CardCarousel,
-} from "@/components/aulas/shared";
+  QuestaoResolvidaStepByStep} from "@/components/aulas/shared";
 import { TabsContent } from "@/components/ui/tabs";
 import {
   LuFileText,
@@ -61,20 +62,8 @@ export default function AulaGestaoQualidadeSuprimento({
     return "modulo-1";
   });
 
-  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
-      if (saved) {
-        try {
-          const arr = JSON.parse(saved);
-          return new Set(arr);
-        } catch (e) {
-          return new Set();
-        }
-      }
-    }
-    return new Set();
-  });
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -82,14 +71,7 @@ export default function AulaGestaoQualidadeSuprimento({
     }
   }, [activeTab]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `${STORAGE_KEY_PREFIX}completed_modules`,
-        JSON.stringify(Array.from(completedModules))
-      );
-    }
-  }, [completedModules]);
+  
 
   const MODULE_DEFS = [
     { id: "modulo-1", label: "M1", title: "Fundamentos da Qualidade" },
@@ -142,6 +124,8 @@ export default function AulaGestaoQualidadeSuprimento({
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       completedModules={completedModules}
@@ -163,10 +147,10 @@ export default function AulaGestaoQualidadeSuprimento({
     >
       {/* ==================== MÓDULO 1 ==================== */}
       <TabsContent value="modulo-1" className="mt-0 space-y-12">
-        <ModuleBanner numero={1} titulo="Fundamentos da Qualidade" variant={mv[1]} descricao="Conceitos, abordagens de Garvin, ciclo PDCA e custos da qualidade." />
+        <ModuleBanner numero={1} titulo="Fundamentos da Qualidade" variant="blue" descricao="Conceitos, abordagens de Garvin, ciclo PDCA e custos da qualidade." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[1]} title="O que é Qualidade?" description="Da conformidade ao encantamento — as múltiplas dimensões do conceito." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="O que é Qualidade?" description="Da conformidade ao encantamento — as múltiplas dimensões do conceito." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p><strong>Qualidade</strong> é um conceito multidimensional. Para <strong>Juran</strong>, é &quot;adequação ao uso&quot;. Para <strong>Crosby</strong>, é
               &quot;conformidade com requisitos&quot;. Para <strong>Deming</strong>, é &quot;o grau de satisfação do cliente a um custo previsível&quot;. A ISO 9000:2015
@@ -212,7 +196,7 @@ export default function AulaGestaoQualidadeSuprimento({
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={1} variant={mv[1]} title="Análise C.E.D.E." description="Fundamentos que caem toda prova." />
+          <ModuleSectionHeader index={1} variant="blue" title="Análise C.E.D.E." description="Fundamentos que caem toda prova." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: PDCA em Detalhe",
@@ -265,8 +249,31 @@ export default function AulaGestaoQualidadeSuprimento({
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={1}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Segundo a ISO 8402, a definição mais completa de qualidade é:"
+          alternativas={[
+              { letra: "A", texto: "Ausência total de defeitos no produto final", correta: false },
+              { letra: "B", texto: "Totalidade das características que satisfazem necessidades explícitas e implícitas do cliente", correta: true },
+              { letra: "C", texto: "Conformidade com as especificações técnicas internas da empresa", correta: false },
+              { letra: "D", texto: "Grau de perfeição alcançado no processo de fabricação", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A ISO 8402 define qualidade como" },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
-          index={1} variant={mv[1]}
+          index={1} variant="blue"
           video={{ videoId: "Q1", title: "Fundamentos da Qualidade", duration: "12:00" }}
           resumoVisual={{ moduloNome: "M1", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Ciclo PDCA", type: "Diagrama", placeholderColor: "bg-blue-500/20" }, { title: "Custos da Qualidade", type: "Gráfico", placeholderColor: "bg-amber-500/20" }] }}
           sinteseEstrategica={{
@@ -303,14 +310,14 @@ export default function AulaGestaoQualidadeSuprimento({
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Podcast: Fundamentos", artista: "Prof. Qualidade" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-1")} titulo="QUIZ: Fundamentos da Qualidade" numero={1} variant={mv[1]} onComplete={(s) => handleModuleComplete("modulo-1", s)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-1")} titulo="QUIZ: Fundamentos da Qualidade" numero={1} variant="blue" onComplete={(s) => handleModuleComplete("modulo-1", s)} />
       </TabsContent>
 
       <TabsContent value="modulo-2" className="mt-0 space-y-12">
-        <ModuleBanner numero={2} titulo="As 4 Eras da Qualidade" variant={mv[2]} descricao="Da inspeção artesanal à gestão estratégica — a evolução do conceito de qualidade." />
+        <ModuleBanner numero={2} titulo="As 4 Eras da Qualidade" variant="blue" descricao="Da inspeção artesanal à gestão estratégica — a evolução do conceito de qualidade." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[2]} title="Evolução Histórica" description="Como a qualidade saiu do chão de fábrica e chegou à sala da diretoria." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="Evolução Histórica" description="Como a qualidade saiu do chão de fábrica e chegou à sala da diretoria." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>A <strong>1ª Era — Inspeção (até 1930)</strong> é a fase mais primitiva: o artesão inspecionava CADA peça individualmente, separando
               as boas das ruins. Não havia prevenção — apenas detecção pós-produção. Com a Revolução Industrial, a inspeção 100% tornou-se
@@ -353,7 +360,7 @@ export default function AulaGestaoQualidadeSuprimento({
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={2} variant={mv[2]} title="Análise C.E.D.E." description="As Eras que mais caem na CESGRANRIO." />
+          <ModuleSectionHeader index={2} variant="blue" title="Análise C.E.D.E." description="As Eras que mais caem na CESGRANRIO." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: De Inspeção a Estratégia",
@@ -406,8 +413,31 @@ export default function AulaGestaoQualidadeSuprimento({
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A estrutura de Alto Nível (HLS) da ISO 9001:2015 organiza seus requisitos em quantas cláusulas?"
+          alternativas={[
+              { letra: "A", texto: "7 cláusulas", correta: false },
+              { letra: "B", texto: "8 cláusulas", correta: false },
+              { letra: "C", texto: "10 cláusulas", correta: true },
+              { letra: "D", texto: "12 cláusulas", correta: false }
+            ]}
+          dicaEstrategica="Essa estrutura é comum a todas as normas ISO de sistemas de gestão."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A ISO 9001:2015 usa a Estrutura de Alto Nível (High Level Structure - HLS) com 10 cláusulas: 1-Escopo, 2-Referências normativas, 3-Termos e definições, 4-Contexto, 5-Liderança, 6-Planejamento, 7-Apoio, 8-Operação, 9-Avaliação de desempenho, 10-Melhoria." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
-          index={2} variant={mv[2]}
+          index={2} variant="blue"
           video={{ videoId: "Q2", title: "As 4 Eras da Qualidade", duration: "10:00" }}
           resumoVisual={{ moduloNome: "M2", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Timeline Eras", type: "Timeline", placeholderColor: "bg-amber-500/20" }, { title: "Evolução do Foco", type: "Diagrama", placeholderColor: "bg-blue-500/20" }] }}
           sinteseEstrategica={{
@@ -428,14 +458,14 @@ export default function AulaGestaoQualidadeSuprimento({
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "Podcast: Eras", artista: "Prof. Qualidade" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-2")} titulo="QUIZ: Eras da Qualidade" numero={2} variant={mv[2]} onComplete={(s) => handleModuleComplete("modulo-2", s)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-2")} titulo="QUIZ: Eras da Qualidade" numero={2} variant="blue" onComplete={(s) => handleModuleComplete("modulo-2", s)} />
       </TabsContent>
 
       <TabsContent value="modulo-3" className="mt-0 space-y-12">
-        <ModuleBanner numero={3} titulo="Os Gurus da Qualidade" variant={mv[3]} descricao="Deming, Juran, Crosby, Ishikawa e Feigenbaum — os pais da gestão da qualidade moderna." />
+        <ModuleBanner numero={3} titulo="Os Gurus da Qualidade" variant="blue" descricao="Deming, Juran, Crosby, Ishikawa e Feigenbaum — os pais da gestão da qualidade moderna." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[3]} title="Os 5 Mestres" description="Cada guru trouxe uma contribuição única — e a CESGRANRIO adora cobrar quem fez o quê." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="Os 5 Mestres" description="Cada guru trouxe uma contribuição única — e a CESGRANRIO adora cobrar quem fez o quê." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p><strong>W. Edwards Deming</strong> é o guru mais cobrado. Contribuições: <strong>14 pontos da qualidade</strong> (eliminar medo, acabar com
               dependência de inspeção, instituir treinamento, etc.), popularização do <strong>ciclo PDCA</strong> (criado por Shewhart), o conceito de
@@ -477,7 +507,7 @@ export default function AulaGestaoQualidadeSuprimento({
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={3} variant={mv[3]} title="Análise C.E.D.E." description="Quem fez o quê? A CESGRANRIO ama cobrar isso." />
+          <ModuleSectionHeader index={3} variant="blue" title="Análise C.E.D.E." description="Quem fez o quê? A CESGRANRIO ama cobrar isso." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Trilogia de Juran",
@@ -532,8 +562,31 @@ export default function AulaGestaoQualidadeSuprimento({
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O Diagrama de Ishikawa (espinha de peixe) é utilizado para:"
+          alternativas={[
+              { letra: "A", texto: "Medir a frequência de ocorrência de defeitos ao longo do tempo", correta: false },
+              { letra: "B", texto: "Identificar e organizar as causas potenciais de um problema ou efeito", correta: true },
+              { letra: "C", texto: "Mostrar a correlação entre duas variáveis numéricas", correta: false },
+              { letra: "D", texto: "Apresentar a distribuição estatística dos dados de processo", correta: false }
+            ]}
+          dicaEstrategica="É usado em brainstorming para identificar raízes de problemas."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "O Diagrama de Ishikawa (também chamado Diagrama de Causa-Efeito ou espinha de peixe) organiza visualmente as causas de um problema." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "As 6 categorias (6M) são: Mão de obra, Máquina, Método, Material, Meio ambiente e Medição." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
-          index={3} variant={mv[3]}
+          index={3} variant="blue"
           video={{ videoId: "Q3", title: "Os Gurus da Qualidade", duration: "15:00" }}
           resumoVisual={{ moduloNome: "M3", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Tabela Gurus", type: "Tabela", placeholderColor: "bg-emerald-500/20" }, { title: "Diagrama Ishikawa", type: "Diagrama", placeholderColor: "bg-amber-500/20" }] }}
           sinteseEstrategica={{
@@ -552,14 +605,14 @@ export default function AulaGestaoQualidadeSuprimento({
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "Podcast: Os Mestres", artista: "Prof. Qualidade" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-3")} titulo="QUIZ: Gurus da Qualidade" numero={3} variant={mv[3]} onComplete={(s) => handleModuleComplete("modulo-3", s)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-3")} titulo="QUIZ: Gurus da Qualidade" numero={3} variant="blue" onComplete={(s) => handleModuleComplete("modulo-3", s)} />
       </TabsContent>
 
       <TabsContent value="modulo-4" className="mt-0 space-y-12">
-        <ModuleBanner numero={4} titulo="Ferramentas da Qualidade" variant={mv[4]} descricao="As 7 ferramentas básicas, Ishikawa (6M), Pareto, Histograma, 5W2H e Brainstorming." />
+        <ModuleBanner numero={4} titulo="Ferramentas da Qualidade" variant="blue" descricao="As 7 ferramentas básicas, Ishikawa (6M), Pareto, Histograma, 5W2H e Brainstorming." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[4]} title="O Arsenal da Qualidade" description="7 ferramentas que resolvem 95% dos problemas de qualidade no chão de fábrica." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="O Arsenal da Qualidade" description="7 ferramentas que resolvem 95% dos problemas de qualidade no chão de fábrica." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>As <strong>7 ferramentas básicas da qualidade</strong> foram sistematizadas por <strong>Ishikawa</strong>: (1) <strong>Diagrama de Pareto</strong> — gráfico
               de barras que ordena causas por frequência (80/20); (2) <strong>Diagrama de Causa e Efeito (Ishikawa/Espinha de Peixe)</strong> — identifica
@@ -605,7 +658,7 @@ export default function AulaGestaoQualidadeSuprimento({
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={4} variant={mv[4]} title="Análise C.E.D.E." description="Ferramentas que caem toda prova de qualidade." />
+          <ModuleSectionHeader index={4} variant="blue" title="Análise C.E.D.E." description="Ferramentas que caem toda prova de qualidade." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Os 6M de Ishikawa",
@@ -659,8 +712,31 @@ export default function AulaGestaoQualidadeSuprimento({
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Gestão Total da Qualidade (TQM) se diferencia das abordagens anteriores porque:"
+          alternativas={[
+              { letra: "A", texto: "Foca exclusivamente no controle estatístico da linha de produção", correta: false },
+              { letra: "B", texto: "Envolve toda a organização — todos os departamentos e colaboradores — na responsabilidade pela qualidade", correta: true },
+              { letra: "C", texto: "Delega a qualidade apenas ao departamento de controle de qualidade", correta: false },
+              { letra: "D", texto: "Aplica-se somente a empresas de manufatura, não a serviços", correta: false }
+            ]}
+          dicaEstrategica="A palavra"
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "TQM (Total Quality Management) é uma filosofia de gestão onde qualidade não é responsabilidade de um setor específico, mas de TODOS." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Cada colaborador, do CEO ao operador, tem papel na qualidade." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
-          index={4} variant={mv[4]}
+          index={4} variant="blue"
           video={{ videoId: "Q4", title: "Ferramentas da Qualidade", duration: "18:00" }}
           resumoVisual={{ moduloNome: "M4", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "7 Ferramentas", type: "Dashboard", placeholderColor: "bg-rose-500/20" }, { title: "6M Ishikawa", type: "Diagrama", placeholderColor: "bg-blue-500/20" }] }}
           sinteseEstrategica={{
@@ -679,14 +755,14 @@ export default function AulaGestaoQualidadeSuprimento({
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Podcast: Ferramentas", artista: "Prof. Qualidade" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-4")} titulo="QUIZ: Ferramentas da Qualidade" numero={4} variant={mv[4]} onComplete={(s) => handleModuleComplete("modulo-4", s)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-4")} titulo="QUIZ: Ferramentas da Qualidade" numero={4} variant="blue" onComplete={(s) => handleModuleComplete("modulo-4", s)} />
       </TabsContent>
 
       <TabsContent value="modulo-5" className="mt-0 space-y-12">
-        <ModuleBanner numero={5} titulo="Normas ISO e Certificação" variant={mv[5]} descricao="ISO 9001 (Qualidade), ISO 14001 (Ambiental), ISO 45001 (Segurança) e o SGI." />
+        <ModuleBanner numero={5} titulo="Normas ISO e Certificação" variant="blue" descricao="ISO 9001 (Qualidade), ISO 14001 (Ambiental), ISO 45001 (Segurança) e o SGI." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[5]} title="O Selo de Excelência" description="As normas ISO como framework global de gestão da qualidade." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="O Selo de Excelência" description="As normas ISO como framework global de gestão da qualidade." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>A <strong>ISO (International Organization for Standardization)</strong> é o organismo internacional que publica normas técnicas.
               A família <strong>ISO 9000</strong> trata da qualidade: a <strong>ISO 9001:2015</strong> é a norma certificável que estabelece requisitos
@@ -717,7 +793,7 @@ export default function AulaGestaoQualidadeSuprimento({
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={5} variant={mv[5]} title="Análise C.E.D.E." description="ISO na prova de Suprimento." />
+          <ModuleSectionHeader index={5} variant="blue" title="Análise C.E.D.E." description="ISO na prova de Suprimento." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: A Família ISO 9000",
@@ -770,8 +846,31 @@ export default function AulaGestaoQualidadeSuprimento({
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={5}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="No CEP, qual é a diferença entre 'causas comuns' e 'causas especiais' de variação?"
+          alternativas={[
+              { letra: "A", texto: "Causas comuns são graves e exigem ação imediata; causas especiais são normais do processo", correta: false },
+              { letra: "B", texto: "Causas comuns são variações aleatórias inerentes ao processo; causas especiais são variações identificáveis e controláveis", correta: true },
+              { letra: "C", texto: "Causas comuns vêm dos operadores; causas especiais vêm das máquinas", correta: false },
+              { letra: "D", texto: "Causas comuns são externas à empresa; causas especiais são internas", correta: false }
+            ]}
+          dicaEstrategica="O processo está"
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Variação por causas comuns (ou aleatórias) é inerente ao processo — resultado de muitos fatores pequenos e inevitáveis." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
-          index={5} variant={mv[5]}
+          index={5} variant="blue"
           video={{ videoId: "Q5", title: "Normas ISO e Certificação", duration: "14:00" }}
           resumoVisual={{ moduloNome: "M5", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Família ISO", type: "Selo", placeholderColor: "bg-blue-500/20" }, { title: "SGI", type: "Diagrama", placeholderColor: "bg-emerald-500/20" }] }}
           sinteseEstrategica={{
@@ -790,14 +889,14 @@ export default function AulaGestaoQualidadeSuprimento({
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Podcast: ISO", artista: "Prof. Qualidade" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-5")} titulo="QUIZ: Normas ISO" numero={5} variant={mv[5]} onComplete={(s) => handleModuleComplete("modulo-5", s)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-5")} titulo="QUIZ: Normas ISO" numero={5} variant="blue" onComplete={(s) => handleModuleComplete("modulo-5", s)} />
       </TabsContent>
 
       <TabsContent value="modulo-6" className="mt-0 space-y-12">
-        <ModuleBanner numero={6} titulo="Six Sigma e Lean Manufacturing" variant={mv[6]} descricao="DMAIC, Belts, Kaizen, os 7 desperdícios (Muda) e a integração Lean Six Sigma." />
+        <ModuleBanner numero={6} titulo="Six Sigma e Lean Manufacturing" variant="blue" descricao="DMAIC, Belts, Kaizen, os 7 desperdícios (Muda) e a integração Lean Six Sigma." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[6]} title="Precisão + Velocidade" description="Six Sigma elimina variação; Lean elimina desperdício. Juntos, são imbatíveis." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="Precisão + Velocidade" description="Six Sigma elimina variação; Lean elimina desperdício. Juntos, são imbatíveis." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>O <strong>Six Sigma</strong> é uma metodologia estatística que busca reduzir a variabilidade de processos a no máximo
               <strong>3,4 defeitos por milhão de oportunidades (DPMO)</strong>. O &quot;sigma&quot; refere-se ao desvio-padrão: quanto mais sigmas
@@ -826,7 +925,7 @@ export default function AulaGestaoQualidadeSuprimento({
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={6} variant={mv[6]} title="Análise C.E.D.E." description="Six Sigma e Lean para a prova." />
+          <ModuleSectionHeader index={6} variant="blue" title="Análise C.E.D.E." description="Six Sigma e Lean para a prova." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: DMAIC vs DMADV",
@@ -879,8 +978,31 @@ export default function AulaGestaoQualidadeSuprimento({
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={6}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Na classificação das auditorias da qualidade, uma auditoria de certificação ISO 9001 realizada por organismo acreditado é auditoria de:"
+          alternativas={[
+              { letra: "A", texto: "Primeira parte (auditoria interna)", correta: false },
+              { letra: "B", texto: "Segunda parte (auditoria de fornecedor)", correta: false },
+              { letra: "C", texto: "Terceira parte (auditoria de certificação)", correta: true },
+              { letra: "D", texto: "Quarta parte (auditoria governamental)", correta: false }
+            ]}
+          dicaEstrategica="Auditorias de 3ª parte têm maior credibilidade por serem imparciais."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "As auditorias são classificadas em: 1ª parte = interna (a empresa audita a si mesma); 2ª parte = de cliente (um cliente audita seu fornecedor) ou de fornecedor; 3ª parte = independente por organismo acreditado para certificação (ex: ISO 9001)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
-          index={6} variant={mv[6]}
+          index={6} variant="blue"
           video={{ videoId: "Q6", title: "Six Sigma e Lean", duration: "16:00" }}
           resumoVisual={{ moduloNome: "M6", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "DMAIC", type: "Infográfico", placeholderColor: "bg-blue-500/20" }, { title: "7 Desperdícios", type: "Diagrama", placeholderColor: "bg-amber-500/20" }] }}
           sinteseEstrategica={{
@@ -899,14 +1021,14 @@ export default function AulaGestaoQualidadeSuprimento({
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "Podcast: Lean Sigma", artista: "Prof. Qualidade" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-6")} titulo="QUIZ: Six Sigma e Lean" numero={6} variant={mv[6]} onComplete={(s) => handleModuleComplete("modulo-6", s)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-6")} titulo="QUIZ: Six Sigma e Lean" numero={6} variant="blue" onComplete={(s) => handleModuleComplete("modulo-6", s)} />
       </TabsContent>
 
       <TabsContent value="modulo-7" className="mt-0 space-y-12">
-        <ModuleBanner numero={7} titulo="Controle Estatístico de Processo (CEP)" variant={mv[7]} descricao="Cartas de controle, LSC/LIC, variabilidade especial vs. comum e capabilidade (Cp/Cpk)." />
+        <ModuleBanner numero={7} titulo="Controle Estatístico de Processo (CEP)" variant="blue" descricao="Cartas de controle, LSC/LIC, variabilidade especial vs. comum e capabilidade (Cp/Cpk)." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[7]} title="O Processo sob Controle" description="CEP: detectar variação ANTES de gerar defeitos." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="O Processo sob Controle" description="CEP: detectar variação ANTES de gerar defeitos." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>O <strong>CEP (Controle Estatístico de Processo)</strong> monitora a variabilidade do processo ao longo do tempo usando
               <strong>cartas de controle</strong>. Uma carta tem: linha central (média), <strong>LSC (Limite Superior de Controle)</strong> e
@@ -934,7 +1056,7 @@ export default function AulaGestaoQualidadeSuprimento({
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={7} variant={mv[7]} title="Análise C.E.D.E." description="CEP e cartas de controle na prova." />
+          <ModuleSectionHeader index={7} variant="blue" title="Análise C.E.D.E." description="CEP e cartas de controle na prova." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Causas Comuns vs Especiais",
@@ -987,8 +1109,31 @@ export default function AulaGestaoQualidadeSuprimento({
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={7}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O modelo SERVQUAL, desenvolvido por Parasuraman, Zeithaml e Berry, avalia a qualidade em serviços por meio de:"
+          alternativas={[
+              { letra: "A", texto: "7 dimensões de qualidade adaptadas do modelo de Garvin para serviços", correta: false },
+              { letra: "B", texto: "5 dimensões: Tangíveis, Confiabilidade, Responsividade, Segurança e Empatia", correta: true },
+              { letra: "C", texto: "3 gaps principais entre expectativa do cliente e desempenho da empresa", correta: false },
+              { letra: "D", texto: "10 critérios baseados nas normas ISO 9001 aplicadas ao setor de serviços", correta: false }
+            ]}
+          dicaEstrategica="O SERVQUAL mede a qualidade de serviço por 5 dimensões: (1) Tangíveis — instalações físicas, equipamentos, aparência do pessoal; (2) Confiabilidade — capacidade de entregar o serviço prometido com precisão; (3) Responsividade — disposição para ajudar e fornecer serviço rápido; (4) Segurança (Assurance) — conhecimento e cortesia, capacidade de inspirar confiança; (5) Empatia — atenção individualizada ao cliente."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Analisar as alternativas e eliminar distratores com erros óbvios." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
-          index={7} variant={mv[7]}
+          index={7} variant="blue"
           video={{ videoId: "Q7", title: "CEP e Cartas de Controle", duration: "14:00" }}
           resumoVisual={{ moduloNome: "M7", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Carta de Controle", type: "Gráfico", placeholderColor: "bg-amber-500/20" }, { title: "Cp/Cpk", type: "Fórmula", placeholderColor: "bg-blue-500/20" }] }}
           sinteseEstrategica={{
@@ -1007,14 +1152,14 @@ export default function AulaGestaoQualidadeSuprimento({
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Podcast: CEP", artista: "Prof. Qualidade" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-7")} titulo="QUIZ: Controle Estatístico" numero={7} variant={mv[7]} onComplete={(s) => handleModuleComplete("modulo-7", s)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-7")} titulo="QUIZ: Controle Estatístico" numero={7} variant="blue" onComplete={(s) => handleModuleComplete("modulo-7", s)} />
       </TabsContent>
 
       <TabsContent value="modulo-8" className="mt-0 space-y-12">
-        <ModuleBanner numero={8} titulo="Auditoria e Conformidade" variant={mv[8]} descricao="Tipos de auditoria (1ª, 2ª, 3ª parte), não conformidades, ações corretivas e o ciclo de auditoria." />
+        <ModuleBanner numero={8} titulo="Auditoria e Conformidade" variant="blue" descricao="Tipos de auditoria (1ª, 2ª, 3ª parte), não conformidades, ações corretivas e o ciclo de auditoria." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[8]} title="O Olho da Qualidade" description="Auditoria: verificar se o que está documentado é o que está sendo feito." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="O Olho da Qualidade" description="Auditoria: verificar se o que está documentado é o que está sendo feito." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p><strong>Auditoria da qualidade</strong> é um processo sistemático, independente e documentado para verificar se o SGQ está
               funcionando conforme planejado. Não é &quot;caça às bruxas&quot; — é uma ferramenta de melhoria. O auditor verifica evidências
@@ -1041,7 +1186,7 @@ export default function AulaGestaoQualidadeSuprimento({
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={8} variant={mv[8]} title="Análise C.E.D.E." description="Auditoria e conformidade na prova." />
+          <ModuleSectionHeader index={8} variant="blue" title="Análise C.E.D.E." description="Auditoria e conformidade na prova." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: 1ª, 2ª e 3ª Parte",
@@ -1094,8 +1239,31 @@ export default function AulaGestaoQualidadeSuprimento({
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={8}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma 'não-conformidade' no contexto da gestão da qualidade é definida como:"
+          alternativas={[
+              { letra: "A", texto: "Qualquer falha que cause prejuízo financeiro significativo à empresa", correta: false },
+              { letra: "B", texto: "Não atendimento a um requisito especificado (norma, especificação, procedimento ou regulamento)", correta: true },
+              { letra: "C", texto: "Defeito encontrado exclusivamente na inspeção final de produto acabado", correta: false },
+              { letra: "D", texto: "Divergência de opinião entre departamentos sobre procedimentos internos", correta: false }
+            ]}
+          dicaEstrategica="Uma NC pode ser detectada em auditoria, inspeção de processo, reclamação de cliente ou auto-inspeção."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Não-conformidade (NC) = não atendimento a um requisito." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O requisito pode ser: especificação técnica de produto, procedimento operacional padrão, cláusula de norma ISO, regulação legal, requisito do cliente." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
-          index={8} variant={mv[8]}
+          index={8} variant="blue"
           video={{ videoId: "Q8", title: "Auditoria e Conformidade", duration: "12:00" }}
           resumoVisual={{ moduloNome: "M8", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Tipos de Auditoria", type: "Diagrama", placeholderColor: "bg-emerald-500/20" }, { title: "Não Conformidades", type: "Tabela", placeholderColor: "bg-rose-500/20" }] }}
           sinteseEstrategica={{
@@ -1114,14 +1282,14 @@ export default function AulaGestaoQualidadeSuprimento({
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Podcast: Auditoria", artista: "Prof. Qualidade" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-8")} titulo="QUIZ: Auditoria" numero={8} variant={mv[8]} onComplete={(s) => handleModuleComplete("modulo-8", s)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-8")} titulo="QUIZ: Auditoria" numero={8} variant="blue" onComplete={(s) => handleModuleComplete("modulo-8", s)} />
       </TabsContent>
 
       <TabsContent value="modulo-9" className="mt-0 space-y-12">
-        <ModuleBanner numero={9} titulo="Qualidade na Petrobras" variant={mv[9]} descricao="SGI, SMS, especificações técnicas, qualificação de fornecedores e excelência operacional." />
+        <ModuleBanner numero={9} titulo="Qualidade na Petrobras" variant="blue" descricao="SGI, SMS, especificações técnicas, qualificação de fornecedores e excelência operacional." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[9]} title="Excelência no O&G" description="Como a maior empresa da América Latina gerencia qualidade em operações de altíssimo risco." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="Excelência no O&G" description="Como a maior empresa da América Latina gerencia qualidade em operações de altíssimo risco." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>A Petrobras opera em um dos ambientes mais exigentes do mundo: <strong>águas ultraprofundas (pré-sal, 2.000-7.000m)</strong>,
               refinarias com processos a alta temperatura/pressão, e dutos que cruzam milhares de km. Qualquer falha pode ter consequências
@@ -1149,7 +1317,7 @@ export default function AulaGestaoQualidadeSuprimento({
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={9} variant={mv[9]} title="Análise C.E.D.E." description="Qualidade Petrobras para a prova." />
+          <ModuleSectionHeader index={9} variant="blue" title="Análise C.E.D.E." description="Qualidade Petrobras para a prova." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: SMS é Prioridade Zero",
@@ -1203,8 +1371,31 @@ export default function AulaGestaoQualidadeSuprimento({
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={9}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O Sistema de Gestão Integrado (SGI) da Petrobras integra três sistemas de gestão. Quais são eles?"
+          alternativas={[
+              { letra: "A", texto: "Qualidade, Finanças e Recursos Humanos", correta: false },
+              { letra: "B", texto: "Qualidade (ISO 9001), Meio Ambiente (ISO 14001) e Saúde e Segurança (ISO 45001)", correta: true },
+              { letra: "C", texto: "Qualidade, Produção e Logística", correta: false },
+              { letra: "D", texto: "ISO 9001, ISO 27001 e ISO 50001", correta: false }
+            ]}
+          dicaEstrategica="Essencial em O&G onde QSE (Qualidade, Segurança e Meio Ambiente) são inseparáveis."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "O SGI da Petrobras integra: (1) Gestão da Qualidade — ISO 9001; (2) Gestão Ambiental — ISO 14001; (3) Gestão de Saúde e Segurança Ocupacional — ISO 45001." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A integração permite uma visão sistêmica, evitando conflitos entre sistemas, reduzindo duplicidade de auditorias e criando sinergias." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
-          index={9} variant={mv[9]}
+          index={9} variant="blue"
           video={{ videoId: "Q9", title: "Qualidade na Petrobras", duration: "10:00" }}
           resumoVisual={{ moduloNome: "M9", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "SGI Petrobras", type: "Diagrama", placeholderColor: "bg-blue-500/20" }, { title: "SMS", type: "Infográfico", placeholderColor: "bg-emerald-500/20" }] }}
           sinteseEstrategica={{
@@ -1223,7 +1414,7 @@ export default function AulaGestaoQualidadeSuprimento({
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Podcast: Petrobras", artista: "Prof. Qualidade" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-9")} titulo="QUIZ: Qualidade na Petrobras" numero={9} variant={mv[9]} onComplete={(s) => handleModuleComplete("modulo-9", s)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-9")} titulo="QUIZ: Qualidade na Petrobras" numero={9} variant="blue" onComplete={(s) => handleModuleComplete("modulo-9", s)} />
       </TabsContent>
 
       <TabsContent value="modulo-10" className="space-y-12 mt-0 outline-none">
@@ -1277,6 +1468,29 @@ export default function AulaGestaoQualidadeSuprimento({
               icone: <LuSearch />,
               conteudo: <p className="text-lg text-justify">Utilize o resultado do simulado para identificar quais módulos requerem revisão ativa. Focar nas suas fraquezas agora garante os pontos decisivos no dia da prova.</p>
             }
+          ]}
+        />
+
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={10}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma empresa de serviços de manutenção industrial implementou um SGQ ISO 9001:2015. Na última auditoria interna, o auditor identificou que os operadores realizam inspeções visuais sem seguir o procedimento documentado (PRO-INS-01), embora produzam resultados aceitáveis. Esta situação é classificada como:"
+          alternativas={[
+              { letra: "A", texto: "Oportunidade de melhoria, pois os resultados são aceitáveis", correta: false },
+              { letra: "B", texto: "Não-conformidade, pois há não atendimento a um requisito (procedimento documentado)", correta: true },
+              { letra: "C", texto: "Observação sem necessidade de ação corretiva", correta: false },
+              { letra: "D", texto: "Conformidade condicionada, válida apenas se os resultados forem aprovados", correta: false }
+            ]}
+          dicaEstrategica="O resultado satisfatório não elimina a NC — a causa raiz (não seguimento do procedimento) deve ser investigada e corrigida."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Mesmo com resultados aceitáveis, o não seguimento do procedimento documentado é uma NÃO-CONFORMIDADE." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A ISO 9001 exige que a organização siga seus próprios procedimentos e controles documentados (cláusula 8.1)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
           ]}
         />
 

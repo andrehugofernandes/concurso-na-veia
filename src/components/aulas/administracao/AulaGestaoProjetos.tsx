@@ -210,7 +210,7 @@ export default function AulaGestaoProjetos({
               index="INTRO" 
               title="A Essência do Projeto" 
               description="Definição PMBOK, características e a Tríplice Restrição." 
-              variant={mv[1]} 
+              variant="blue" 
             />
             
             <ContentAccordion slides={[
@@ -295,7 +295,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation 
             index={2} 
-            variant={mv[1]} 
+            variant="blue" 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "Fundamentação de Projetos", 
@@ -331,7 +331,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM1} 
               titulo="QUIZ: Conceitos de Projetos" 
               numero={3} 
-              variant={mv[1]} 
+              variant="blue" 
               icone="🧩" 
               onComplete={(score) => handleModuleComplete("modulo-1", score)} 
             />
@@ -354,7 +354,7 @@ export default function AulaGestaoProjetos({
               index="INTRO" 
               title="A Visão 360 do Projeto" 
               description="Do Escopo às Partes Interessadas." 
-              variant={mv[2]} 
+              variant="blue" 
             />
             
             <ContentAccordion slides={[
@@ -423,7 +423,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation 
             index={2} 
-            variant={mv[2]} 
+            variant="blue" 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "Navegando pelas 10 Áreas", 
@@ -457,7 +457,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM2} 
               titulo="QUIZ: Áreas do PMBOK" 
               numero={3} 
-              variant={mv[2]} 
+              variant="blue" 
               icone="🎯" 
               onComplete={(score) => handleModuleComplete("modulo-2", score)} 
             />
@@ -480,7 +480,7 @@ export default function AulaGestaoProjetos({
               index="INTRO" 
               title="O Fluxo da Vida de um Projeto" 
               description="Esqueça as fases, foque nos grupos de processos." 
-              variant={mv[3]} 
+              variant="blue" 
             />
             
             <ContentAccordion slides={[
@@ -555,7 +555,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation 
             index={2} 
-            variant={mv[3]} 
+            variant="blue" 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "A Jornada do Projeto", 
@@ -587,7 +587,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM3} 
               titulo="QUIZ: Grupos de Processos" 
               numero={3} 
-              variant={mv[3]} 
+              variant="blue" 
               icone="⚙️" 
               onComplete={(score) => handleModuleComplete("modulo-3", score)} 
             />
@@ -610,7 +610,7 @@ export default function AulaGestaoProjetos({
               index="INTRO" 
               title="Planejamento de Entrega" 
               description="A estrutura da EAP e o domínio do cronograma." 
-              variant={mv[4]} 
+              variant="blue" 
             />
             
             <ContentAccordion slides={[
@@ -682,7 +682,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation 
             index={2} 
-            variant={mv[4]} 
+            variant="blue" 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "Técnicas de Escopo e Tempo", 
@@ -716,7 +716,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM4} 
               titulo="QUIZ: Escopo e Tempo" 
               numero={3} 
-              variant={mv[4]} 
+              variant="blue" 
               icone="📅" 
               onComplete={(score) => handleModuleComplete("modulo-4", score)} 
             />
@@ -739,7 +739,7 @@ export default function AulaGestaoProjetos({
               index="INTRO" 
               title="O Valor do Dinheiro e da Entrega" 
               description="EVA, CPI, SPI e métricas de qualidade." 
-              variant={mv[5]} 
+              variant="blue" 
             />
             
             <ContentAccordion slides={[
@@ -816,7 +816,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation 
             index={2} 
-            variant={mv[5]} 
+            variant="blue" 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "Dominando o EVA", 
@@ -848,7 +848,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM5} 
               titulo="QUIZ: Custos e Qualidade" 
               numero={3} 
-              variant={mv[5]} 
+              variant="blue" 
               icone="💰" 
               onComplete={(score) => handleModuleComplete("modulo-5", score)} 
             />
@@ -871,7 +871,7 @@ export default function AulaGestaoProjetos({
               index="INTRO" 
               title="O Gerenciamento da Incerteza" 
               description="Identificação, análise e resposta aos riscos." 
-              variant={mv[6]} 
+              variant="blue" 
             />
             
             <ContentAccordion slides={[
@@ -939,7 +939,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation 
             index={2} 
-            variant={mv[6]} 
+            variant="blue" 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "Gestão de Riscos na Prática", 
@@ -973,7 +973,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM6} 
               titulo="QUIZ: Gestão de Riscos" 
               numero={3} 
-              variant={mv[6]} 
+              variant="blue" 
               icone="⚠️" 
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -996,7 +996,7 @@ export default function AulaGestaoProjetos({
               index="INTRO"
               title="A Revolução Ágil"
               description="Adaptabilidade, iteração e entrega contínua de valor."
-              variant={mv[7]}
+              variant="blue"
             />
 
             <ContentAccordion slides={[
@@ -1066,7 +1066,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation
             index={2}
-            variant={mv[7]}
+            variant="blue"
             video={{
               videoId: "jZkUiVDgNWA",
               title: "Scrum Masterclass",
@@ -1101,7 +1101,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM7}
               titulo="QUIZ: Metodologias Ágeis"
               numero={3}
-              variant={mv[7]}
+              variant="blue"
               icone="⚡"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1124,7 +1124,7 @@ export default function AulaGestaoProjetos({
               index="INTRO"
               title="Estrutura de Governança"
               description="PMO, Portfolio e Alinhamento com a Estratégia."
-              variant={mv[8]}
+              variant="blue"
             />
 
             <ContentAccordion slides={[
@@ -1198,7 +1198,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation
             index={2}
-            variant={mv[8]}
+            variant="blue"
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Governance & PMO na Prática",
@@ -1233,7 +1233,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM8}
               titulo="QUIZ: PMO e Governança"
               numero={3}
-              variant={mv[8]}
+              variant="blue"
               icone="🏛️"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1256,7 +1256,7 @@ export default function AulaGestaoProjetos({
               index="INTRO"
               title="Realidade Petrobras"
               description="Megaprojetos, Regulação e Stakeholders."
-              variant={mv[9]}
+              variant="blue"
             />
 
             <ContentAccordion slides={[
@@ -1328,7 +1328,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation
             index={2}
-            variant={mv[9]}
+            variant="blue"
             video={{
               videoId: "5_aXSc9KZVc",
               title: "Megaprojetos e Inovação",
@@ -1363,7 +1363,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM9}
               titulo="QUIZ: Petrobras na Prática"
               numero={3}
-              variant={mv[9]}
+              variant="blue"
               icone="🛢️"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1386,7 +1386,7 @@ export default function AulaGestaoProjetos({
               index="INTRO"
               title="Revisão Completa & Simulado"
               description="Consolidação de todos os conceitos em um simulado integrado."
-              variant={mv[10]}
+              variant="blue"
             />
 
             <ContentAccordion slides={[
@@ -1445,7 +1445,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation
             index={2}
-            variant={mv[10]}
+            variant="blue"
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Revisão Geral - Tudo que Você Precisa Saber",
@@ -1480,7 +1480,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM10}
               titulo="Simulado Geral: Gestão de Projetos"
               numero={3}
-              variant={mv[10]}
+              variant="blue"
               icone="🏆"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />

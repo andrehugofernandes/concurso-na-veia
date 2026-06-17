@@ -1,4 +1,5 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 /**
  * AulaContabilidadeBasica
@@ -14,7 +15,8 @@
  */
 
 import { useState, useEffect } from "react";
-import { AulaProps, QuizQuestion } from "../shared";
+import { AulaProps, QuizQuestion,
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   ModuleConsolidation,
   ContentAccordion,
@@ -63,20 +65,8 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
     return "modulo-1";
   });
 
-  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
-      if (saved) {
-        try {
-          const arr = JSON.parse(saved);
-          return new Set(arr);
-        } catch (e) {
-          return new Set();
-        }
-      }
-    }
-    return new Set();
-  });
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -84,20 +74,15 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
     }
   }, [activeTab]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `${STORAGE_KEY_PREFIX}completed_modules`,
-        JSON.stringify(Array.from(completedModules))
-      );
-    }
-  }, [completedModules]);
+  
 
   const handleQuizComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
-      setCompletedModules((prev) => new Set([...prev, moduleId]));
+      const nextCompleted = new Set(completedModules);
+      nextCompleted.add(moduleId);
+      updateCompletedModules(Array.from(nextCompleted));
       const progress = Math.round(
-        (completedModules.size / (MODULE_DEFS.length - 1)) * 100,
+        (nextCompleted.size / (MODULE_DEFS.length - 1)) * 100
       );
       props.onUpdateProgress?.(progress);
     }
@@ -152,7 +137,31 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={1}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="No Balanço Patrimonial de uma empresa comercial, a conta de Depreciação Acumulada classifica-se como conta redutora (retificadora) do ativo não circulante. Quanto à sua natureza de saldo e comportamento de lançamentos, essa conta apresenta:"
+          alternativas={[
+              { letra: "A", texto: "saldo devedor, sendo aumentada por débitos contábeis.", correta: false },
+              { letra: "B", texto: "saldo credor, sendo aumentada por créditos contábeis.", correta: true },
+              { letra: "C", texto: "saldo nulo, sendo zerada a cada encerramento de exercício.", correta: false },
+              { letra: "D", texto: "saldo misto, variando conforme a depreciação real do bem.", correta: false },
+              { letra: "E", texto: "saldo devedor, funcionando como provisão no passivo.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "As contas retificadoras do Ativo (como Depreciação Acumulada) funcionam de forma inversa às contas patrimoniais do Ativo comuns, possuindo saldo de natureza credora, e aumentando seu valor por meio de créditos." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={1}
         variant={getModuleVariant(1)}
         video={{ videoId: "cont-m1", title: "O que é Contabilidade", duration: "10:00" }}
@@ -263,7 +272,31 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Equação Fundamental da Contabilidade é:"
+          alternativas={[
+              { letra: "A", texto: "Ativo = Passivo", correta: false },
+              { letra: "B", texto: "Ativo = Passivo + Patrimônio Líquido", correta: true },
+              { letra: "C", texto: "Receita = Despesa", correta: false },
+              { letra: "D", texto: "Caixa = Resultado", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Esta equação expressa o equilíbrio do balanço patrimonial e é a base de toda contabilidade."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "ATIVO = PASSIVO + PATRIMÔNIO LÍQUIDO." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={2}
         variant={getModuleVariant(2)}
         video={{ videoId: "cont-m2", title: "Equação Contábil", duration: "12:00" }}
@@ -374,7 +407,31 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um Plano de Contas é:"
+          alternativas={[
+              { letra: "A", texto: "Um gráfico de receitas e despesas", correta: false },
+              { letra: "B", texto: "Uma estrutura hierárquica de contas para registrar operações contábeis", correta: true },
+              { letra: "C", texto: "Um documento de cobrança de clientes", correta: false },
+              { letra: "D", texto: "Uma lista de fornecedores", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Plano de Contas é um documento que lista e codifica todas as contas que a empresa utilizará para registrar suas operações, organizado hierarquicamente." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={3}
         variant={getModuleVariant(3)}
         video={{
@@ -494,7 +551,31 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O método das Partidas Dobradas em contabilidade significa:"
+          alternativas={[
+              { letra: "A", texto: "Registrar duas operações por dia", correta: false },
+              { letra: "B", texto: "Cada operação gera um débito e um crédito de igual valor", correta: true },
+              { letra: "C", texto: "Toda conta deve ter saldo devedor", correta: false },
+              { letra: "D", texto: "Operações devem ser registradas uma única vez", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Partidas Dobradas: cada operação afeta no mínimo 2 contas, mantendo a equação contábil equilibrada (débitos = créditos)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={4}
         variant={getModuleVariant(4)}
         video={{
@@ -613,7 +694,31 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={5}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O Balancete de Verificação é utilizado principalmente para:"
+          alternativas={[
+              { letra: "A", texto: "Calcular lucro ou prejuízo da empresa", correta: false },
+              { letra: "B", texto: "Verificar se débitos = créditos e identificar erros de lançamento", correta: true },
+              { letra: "C", texto: "Pagar impostos ao governo", correta: false },
+              { letra: "D", texto: "Determinar preço de vendas", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Balancete é ferramenta de controle para verificar integridade dos registros contábeis antes de elaborar demonstrações financeiras." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={5}
         variant={getModuleVariant(5)}
         video={{
@@ -732,7 +837,31 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={6}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O Balanço Patrimonial apresenta:"
+          alternativas={[
+              { letra: "A", texto: "Receitas e despesas do período", correta: false },
+              { letra: "B", texto: "Posição financeira em determinada data", correta: true },
+              { letra: "C", texto: "Movimentação de caixa", correta: false },
+              { letra: "D", texto: "Análise de competidores", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Balanço mostra Ativo (recursos), Passivo (obrigações) e Patrimônio Líquido (capital) em momento específico." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={6}
         variant={getModuleVariant(6)}
         video={{ videoId: "cont-m6", title: "Demonstrações Contábeis", duration: "16:00" }}
@@ -843,7 +972,31 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={7}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual índice mede capacidade de empresa pagar dívidas de curto prazo?"
+          alternativas={[
+              { letra: "A", texto: "ROE", correta: false },
+              { letra: "B", texto: "Liquidez Corrente", correta: true },
+              { letra: "C", texto: "Endividamento", correta: false },
+              { letra: "D", texto: "Giro do Ativo", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Acima de 1 indica capacidade de pagar débitos em até 1 ano."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Liquidez Corrente = Ativo Circulante / Passivo Circulante." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={7}
         variant={getModuleVariant(7)}
         video={{
@@ -963,7 +1116,31 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={8}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é a diferença fundamental entre Custo e Despesa?"
+          alternativas={[
+              { letra: "A", texto: "Não existe diferença", correta: false },
+              { letra: "B", texto: "Custo entra no produto, Despesa não entra no produto", correta: true },
+              { letra: "C", texto: "Custo é sempre maior que Despesa", correta: false },
+              { letra: "D", texto: "Despesa nunca é registrada", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Despesa: gasto que não entra no produto (afeta resultado imediatamente)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Custo: gasto com produção de bens (está no produto, afeta estoque)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={8}
         variant={getModuleVariant(8)}
         video={{
@@ -1083,7 +1260,31 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={9}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Petrobras é uma empresa:"
+          alternativas={[
+              { letra: "A", texto: "Privada com ações minoritárias públicas", correta: false },
+              { letra: "B", texto: "Estatal de capital aberto", correta: true },
+              { letra: "C", texto: "Cooperativa de produtores", correta: false },
+              { letra: "D", texto: "Empresa familiar", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Sujeita a Lei 13.303 e regulação CVM."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Petrobras é empresa estatal (controlada pela União) mas de capital aberto na Bolsa." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={9}
         variant={getModuleVariant(9)}
         video={{ videoId: "cont-m9", title: "Contabilidade na Petrobras", duration: "15:00" }}
@@ -1203,7 +1404,31 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={10}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Empresa inicia com Capital de R$ 100.000. Compra máquina R$ 40.000 em dinheiro, compra estoque R$ 30.000 a prazo. Qual é o Patrimônio Líquido após operações?"
+          alternativas={[
+              { letra: "A", texto: "R$ 60.000", correta: false },
+              { letra: "B", texto: "R$ 100.000", correta: true },
+              { letra: "C", texto: "R$ 70.000", correta: false },
+              { letra: "D", texto: "R$ 130.000", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="PL = R$ 100.000"
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Capital inicial = PL inicial R$ 100.000." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Máquina (ativo por ativo) não altera PL." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Estoque a prazo (ativo/passivo) não altera PL." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={10}
         variant={getModuleVariant(10)}
         video={{
@@ -1281,6 +1506,8 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={MODULE_DEFS}

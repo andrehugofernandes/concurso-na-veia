@@ -1,4 +1,5 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import React, { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -12,7 +13,7 @@ import {
   ModuleSectionHeader,
   CardCarousel,
   ModuleConsolidation,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   LuBookOpen,
   LuScale,
@@ -93,20 +94,8 @@ export default function AulaLei13303(props: AulaProps) {
     return "modulo-1";
   });
 
-  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
-      if (saved) {
-        try {
-          const arr = JSON.parse(saved);
-          return new Set(arr);
-        } catch (e) {
-          return new Set();
-        }
-      }
-    }
-    return new Set();
-  });
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -114,14 +103,7 @@ export default function AulaLei13303(props: AulaProps) {
     }
   }, [activeTab]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `${STORAGE_KEY_PREFIX}completed_modules`,
-        JSON.stringify(Array.from(completedModules))
-      );
-    }
-  }, [completedModules]);
+  
 
   const getQuiz = (mod: string) => QUIZ_LEI_13303[mod] || [];
 
@@ -139,6 +121,8 @@ export default function AulaLei13303(props: AulaProps) {
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={MODULE_DEFS}
@@ -345,7 +329,36 @@ export default function AulaLei13303(props: AulaProps) {
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={1}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Lei 13.303/2016 disciplina o funcionamento de empresas públicas e de economia mista. Qual é o seu objetivo PRINCIPAL?"
+          alternativas={[
+              { letra: "A", texto: "A", correta: false },
+              { letra: "B", texto: "Substituir completamente a Lei 6.404/76 para todas as sociedades anônimas.", correta: true },
+              { letra: "C", texto: "B", correta: false },
+              { letra: "D", texto: "Estabelecer regras de governança corporativa, garantindo eficiência, transparência e respeito aos acionistas em empresas estatais.", correta: false },
+              { letra: "E", texto: "C", correta: false },
+              { letra: "F", texto: "Eliminar a necessidade de Conselho de Administração nas empresas públicas.", correta: false },
+              { letra: "G", texto: "D", correta: false },
+              { letra: "H", texto: "Privatizar todas as empresas do setor público brasileiro.", correta: false },
+              { letra: "I", texto: "E", correta: false },
+              { letra: "J", texto: "Impedir que acionistas privados participem de economia mista.", correta: false }
+            ]}
+          dicaEstrategica="Petrobras segue rigorosamente estas normas."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Lei 13.303 estabelece normas específicas de governança para estatais: transparência, conformidade, responsabilidade." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
           index={1}
           variant={getBannerVariant(1)}
           video={{
@@ -592,7 +605,36 @@ export default function AulaLei13303(props: AulaProps) {
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual definição MELHOR descreve uma Empresa Estatal segundo Lei 13.303?"
+          alternativas={[
+              { letra: "A", texto: "A", correta: false },
+              { letra: "B", texto: "Qualquer empresa que tenha acionistas privados.", correta: true },
+              { letra: "C", texto: "B", correta: false },
+              { letra: "D", texto: "Entidade criada para exercer atividade econômica, com patrimônio pertencente à União, Estados ou Municípios, sob controle estatal.", correta: false },
+              { letra: "E", texto: "C", correta: false },
+              { letra: "F", texto: "Uma cooperativa de trabalhadores do setor público.", correta: false },
+              { letra: "G", texto: "D", correta: false },
+              { letra: "H", texto: "Organização não-governamental que recebe financiamento público.", correta: false },
+              { letra: "I", texto: "E", correta: false },
+              { letra: "J", texto: "Uma filial de empresa estrangeira com sócio brasileiro.", correta: false }
+            ]}
+          dicaEstrategica="Petrobras é modelo: empresa pública que atua em exploração de petróleo, refino e distribuição."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Empresa Estatal é entidade de economia mista ou empresa pública que exerce atividade econômica." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
           index={2}
           variant={getBannerVariant(2)}
           video={{
@@ -810,7 +852,36 @@ export default function AulaLei13303(props: AulaProps) {
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Segundo Lei 13.303, qual é o direito PRINCIPAL de um acionista em Empresa Estatal?"
+          alternativas={[
+              { letra: "A", texto: "A", correta: false },
+              { letra: "B", texto: "Aprovar pessoalmente todos os contratos da empresa.", correta: true },
+              { letra: "C", texto: "B", correta: false },
+              { letra: "D", texto: "Participar de Assembleia Geral, votar, receber dividendos conforme participação acionária.", correta: false },
+              { letra: "E", texto: "C", correta: false },
+              { letra: "F", texto: "Garantia de emprego na empresa para familiares.", correta: false },
+              { letra: "G", texto: "D", correta: false },
+              { letra: "H", texto: "Direito de modificar unilateralmente a estratégia da empresa.", correta: false },
+              { letra: "I", texto: "E", correta: false },
+              { letra: "J", texto: "Isenção de impostos por investir em empresa estatal.", correta: false }
+            ]}
+          dicaEstrategica="Lei 13.303 garante esses direitos."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Direitos acionistas: participar de decisões na Assembleia Geral, votar em eleições de conselheiros, receber dividendos proporcionais." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
           index={3}
           variant={getBannerVariant(3)}
           video={{
@@ -1022,7 +1093,36 @@ export default function AulaLei13303(props: AulaProps) {
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Quantos órgãos de governança PRINCIPAIS uma Empresa Estatal deve ter conforme Lei 13.303?"
+          alternativas={[
+              { letra: "A", texto: "A", correta: false },
+              { letra: "B", texto: "Um único órgão (Diretoria Geral).", correta: true },
+              { letra: "C", texto: "B", correta: false },
+              { letra: "D", texto: "Três: Assembleia Geral de Acionistas, Conselho de Administração e Diretoria.", correta: false },
+              { letra: "E", texto: "C", correta: false },
+              { letra: "F", texto: "Apenas Conselho e Diretoria; Assembleia é opcional.", correta: false },
+              { letra: "G", texto: "D", correta: false },
+              { letra: "H", texto: "Cinco: Assembleia, Conselho, Diretoria, Conselho Fiscal e Auditoria.", correta: false },
+              { letra: "I", texto: "E", correta: false },
+              { letra: "J", texto: "Lei 13.303 não define órgãos; cada empresa decide.", correta: false }
+            ]}
+          dicaEstrategica="Conselho Fiscal é opcional mas recomendado."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Lei 13.303: 3 órgãos obrigatórios: Assembleia Geral (decisões máximas), Conselho de Administração (governance), Diretoria (execução)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
           index={4}
           variant={getBannerVariant(4)}
           video={{
@@ -1266,7 +1366,36 @@ export default function AulaLei13303(props: AulaProps) {
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={5}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é a frequência MÍNIMA de reuniões da Assembleia Geral conforme Lei 13.303?"
+          alternativas={[
+              { letra: "A", texto: "A", correta: false },
+              { letra: "B", texto: "Mensalmente.", correta: false },
+              { letra: "C", texto: "B", correta: true },
+              { letra: "D", texto: "Trimestralmente.", correta: false },
+              { letra: "E", texto: "C", correta: false },
+              { letra: "F", texto: "Uma vez por ano (obrigatória) + extraordinárias quando necessário.", correta: false },
+              { letra: "G", texto: "D", correta: false },
+              { letra: "H", texto: "Raramente; pode ficar anos sem se reunir.", correta: false },
+              { letra: "I", texto: "E", correta: false },
+              { letra: "J", texto: "Lei 13.303 não exige nenhuma reunião específica.", correta: false }
+            ]}
+          dicaEstrategica="Transparência obrigatória."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Lei 13.303: Assembleia ordinária anual (até 120 dias após encerramento do exercício) para aprova de contas." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Assembleias extraordinárias conforme necessidade." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
           index={5}
           variant={getBannerVariant(5)}
           video={{
@@ -1497,7 +1626,36 @@ export default function AulaLei13303(props: AulaProps) {
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={6}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é o papel PRINCIPAL do Conselho de Administração em Empresa Estatal?"
+          alternativas={[
+              { letra: "A", texto: "A", correta: false },
+              { letra: "B", texto: "Executar todas as operações da empresa diariamente.", correta: true },
+              { letra: "C", texto: "B", correta: false },
+              { letra: "D", texto: "Definir estratégia, supervisionar Diretoria, garantir conformidade com Lei 13.303 e melhor interesse da empresa.", correta: false },
+              { letra: "E", texto: "C", correta: false },
+              { letra: "F", texto: "Aprovar cada transação de compra ou venda da empresa.", correta: false },
+              { letra: "G", texto: "D", correta: false },
+              { letra: "H", texto: "Substituir Diretoria em qualquer momento.", correta: false },
+              { letra: "I", texto: "E", correta: false },
+              { letra: "J", texto: "Executar operações financeiras diretas.", correta: false }
+            ]}
+          dicaEstrategica="Funciona como"
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Conselho define política estratégica, supervisiona Diretoria, verifica conformidade." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
           index={6}
           variant={getBannerVariant(6)}
           video={{
@@ -1703,7 +1861,36 @@ export default function AulaLei13303(props: AulaProps) {
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={7}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é a responsabilidade PRINCIPAL da Diretoria Executiva conforme Lei 13.303?"
+          alternativas={[
+              { letra: "A", texto: "A", correta: false },
+              { letra: "B", texto: "Supervisionar o Conselho de Administração.", correta: true },
+              { letra: "C", texto: "B", correta: false },
+              { letra: "D", texto: "Executar estratégia aprovada pelo Conselho, gerir operações, responder perante Conselho e acionistas.", correta: false },
+              { letra: "E", texto: "C", correta: false },
+              { letra: "F", texto: "Eleger novos conselheiros.", correta: false },
+              { letra: "G", texto: "D", correta: false },
+              { letra: "H", texto: "Modificar estatuto da empresa.", correta: false },
+              { letra: "I", texto: "E", correta: false },
+              { letra: "J", texto: "Aprovar relatórios do Conselho Fiscal.", correta: false }
+            ]}
+          dicaEstrategica="Responde por violações à Lei 13.303."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Diretoria: órgão executivo." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Implementa decisões do Conselho, gerencia dia a dia, reporta resultados." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Presidente é principal executivo." }
+          ]}
+        />
+
+        <ModuleConsolidation
           index={7}
           variant={getBannerVariant(7)}
           video={{
@@ -1912,7 +2099,36 @@ export default function AulaLei13303(props: AulaProps) {
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={8}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é a definição de 'conflito de interesse' conforme Lei 13.303?"
+          alternativas={[
+              { letra: "A", texto: "A", correta: false },
+              { letra: "B", texto: "Qualquer desacordo entre administrador e acionistas.", correta: true },
+              { letra: "C", texto: "B", correta: false },
+              { letra: "D", texto: "Situação em que administrador tem interesse pessoal/familiar que conflita com dever para com empresa.", correta: false },
+              { letra: "E", texto: "C", correta: false },
+              { letra: "F", texto: "Quando administrador trabalha em mais de uma empresa.", correta: false },
+              { letra: "G", texto: "D", correta: false },
+              { letra: "H", texto: "Não existe conflito de interesse em empresa estatal.", correta: false },
+              { letra: "I", texto: "E", correta: false },
+              { letra: "J", texto: "Lei 13.303 não define conflito de interesse.", correta: false }
+            ]}
+          dicaEstrategica="Ex: conselheiro votando em contrato com sua própria empresa."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Lei 13.303: conflito de interesse é situação onde dever profissional entra em conflito com interesse pessoal/familiar." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
           index={8}
           variant={getBannerVariant(8)}
           video={{
@@ -2150,7 +2366,36 @@ export default function AulaLei13303(props: AulaProps) {
 
 
 
-<ModuleConsolidation
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={9}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Como Lei 13.303 é aplicada em contexto ESPECÍFICO da Petrobras?"
+          alternativas={[
+              { letra: "A", texto: "A", correta: false },
+              { letra: "B", texto: "Petrobras não precisa cumprir Lei 13.303.", correta: true },
+              { letra: "C", texto: "B", correta: false },
+              { letra: "D", texto: "Petrobras (empresa pública federal) segue rigorosamente Lei 13.303 em governança, estrutura de órgãos sociais, divulgação de informações.", correta: false },
+              { letra: "E", texto: "C", correta: false },
+              { letra: "F", texto: "Apenas parcialmente; particularidades de petróleo justificam exceções.", correta: false },
+              { letra: "G", texto: "D", correta: false },
+              { letra: "H", texto: "Lei 13.303 é supletiva; Petrobras pode ignorar.", correta: false },
+              { letra: "I", texto: "E", correta: false },
+              { letra: "J", texto: "Petrobras tem Lei própria que substitui Lei 13.303.", correta: false }
+            ]}
+          dicaEstrategica="Exemplar em governança corporativa."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Petrobras é empresa pública federal que cumpre Lei 13.303." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Tem Assembleia Geral, Conselho de Administração eleito democraticamente, Diretoria, Conselho Fiscal." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
           index={9}
           variant={getBannerVariant(9)}
           video={{

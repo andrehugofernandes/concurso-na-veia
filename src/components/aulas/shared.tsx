@@ -71,6 +71,7 @@ import {
   LuShieldAlert,
   LuBrain,
   LuCpu,
+  LuListChecks,
 } from "react-icons/lu";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -465,6 +466,7 @@ export function ContentAccordion({
   icone,
   corIndicador = "bg-emerald-500",
   slides,
+  items,
   defaultOpen = false,
   slidesPerView,
   mode = "carousel",
@@ -472,22 +474,24 @@ export function ContentAccordion({
   titulo?: string;
   icone?: React.ReactNode;
   corIndicador?: string;
-  slides: ContentSlide[];
+  slides?: ContentSlide[];
+  items?: ContentSlide[];
   defaultOpen?: boolean;
   slidesPerView?: 1 | 2;
   mode?: "carousel" | "stacked";
 }) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
+  const finalSlides = slides || items || [];
 
   const content =
     mode === "carousel" ? (
       <div className="w-full md:bg-muted/20 md:rounded-xl md:border md:border-border/50 md:p-6">
         <Carousel className="w-full" opts={{ loop: true, align: "start" }}>
           <CarouselContent className="-ml-4">
-            {slides.map((slide, index) => (
+            {finalSlides.map((slide, index) => (
               <CarouselItem
                 key={index}
-                className={`pl-4 basis-full ${slidesPerView === 1 ? "" : slides.length > 1 ? "md:basis-1/2 lg:basis-1/2" : ""}`}
+                className={`pl-4 basis-full ${slidesPerView === 1 ? "" : finalSlides.length > 1 ? "md:basis-1/2 lg:basis-1/2" : ""}`}
               >
                 <div className="bg-card rounded-2xl border border-border p-5 md:p-8 shadow-sm h-full flex flex-col space-y-5 md:space-y-6 group/slide hover:border-primary/40 transition-all duration-500">
                   <div className="flex items-start gap-5">
@@ -525,7 +529,7 @@ export function ContentAccordion({
           <div className="flex items-center justify-between mt-8 pt-4 border-t border-border/40">
             <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground/60 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-primary/40" />
-              {slides.length} tópicos disponíveis
+              {finalSlides.length} tópicos disponíveis
             </span>
             <div className="flex gap-2">
               <CarouselPrevious className="static translate-y-0 h-10 w-10 rounded-xl hover:bg-primary/5 hover:text-primary transition-colors border-border/60" />
@@ -541,7 +545,7 @@ export function ContentAccordion({
           collapsible
           className="space-y-2 md:space-y-1.5"
         >
-          {slides.map((slide, index) => (
+          {finalSlides.map((slide, index) => (
             <AccordionItem
               key={index}
               value={`item-${index}`}
@@ -560,7 +564,7 @@ export function ContentAccordion({
               <AccordionContent className="p-0 border border-t-0 border-border rounded-b-xl overflow-hidden animate-in slide-in-from-top-2">
                 <div className="p-4 md:p-8 space-y-6 bg-card flex flex-col group/slide transition-all duration-500">
                   <div className="text-base text-muted-foreground leading-relaxed flex-1 space-y-4 font-medium">
-                    {slide.conteudo}
+                    {slide.conteudo || slide.content}
                   </div>
                   {slide.exemplo && (
                     <div className="pt-8 border-t border-border/50">
@@ -609,7 +613,7 @@ export function ContentAccordion({
           </div>
           <div className="flex items-center gap-2">
             <span className="text-xs text-muted-foreground hidden sm:inline">
-              {slides.length} {slides.length === 1 ? "tópico" : "tópicos"}
+              {finalSlides.length} {finalSlides.length === 1 ? "tópico" : "tópicos"}
             </span>
             <LuChevronDown
               className={`h-5 w-5 text-muted-foreground transition-transform duration-300 ${
@@ -2453,6 +2457,8 @@ export function AulaTemplate({
   showCompletionBadge = false,
   completionBadgeText,
   children,
+  canComplete = true,
+  lockMessage = "Você precisa responder a todos os quizzes desta aula para finalizá-la.",
 }: {
   activeTab: string;
   setActiveTab: (val: string) => void;
@@ -2475,6 +2481,8 @@ export function AulaTemplate({
   showCompletionBadge?: boolean;
   completionBadgeText?: string;
   children?: React.ReactNode;
+  canComplete?: boolean;
+  lockMessage?: string;
 }) {
   // Helper function to get correct breadcrumb name based on materiaId
   const getBreadcrumbName = (id: string, fallbackName: string) => {
@@ -2688,11 +2696,24 @@ export function AulaTemplate({
                         </div>
                       </div>
 
+                      {/* Feedback de trava caso o usuário tente finalizar sem responder todos os quizzes */}
+                      {!canComplete && lockMessage && (
+                        <div className="flex items-center gap-2 p-4 mb-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 text-sm font-semibold max-w-md mx-auto justify-center">
+                          <LuLock className="w-4 h-4 shrink-0" />
+                          <span>{lockMessage}</span>
+                        </div>
+                      )}
+
                       <Button
                         size="lg"
                         onClick={onComplete}
-                        disabled={loading}
-                        className="h-16 px-12 text-xl font-black rounded-2xl shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/40 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
+                        disabled={loading || !canComplete}
+                        className={cn(
+                          "h-16 px-12 text-xl font-black rounded-2xl shadow-xl transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]",
+                          !canComplete
+                            ? "bg-slate-300 dark:bg-slate-800 text-slate-400 dark:text-slate-600 border border-slate-200 dark:border-slate-800 shadow-none cursor-not-allowed hover:scale-100"
+                            : "shadow-primary/25 hover:shadow-2xl hover:shadow-primary/40"
+                        )}
                       >
                         {loading ? "Processando..." : "MARCAR COMO CONCLUÍDA"}
                       </Button>
@@ -3309,6 +3330,7 @@ export function ModuleConsolidation({
   video,
   resumoVisual,
   sinteseEstrategica,
+  maceteVisual,
   audio,
   moduloNumero,
 }: {
@@ -3331,7 +3353,8 @@ export function ModuleConsolidation({
       imageUrl?: string;
     }[];
   };
-  sinteseEstrategica: { title: string; content: React.ReactNode };
+  sinteseEstrategica?: { title: string; content: React.ReactNode };
+  maceteVisual?: { title: string; content: React.ReactNode };
   audio?: {
     audioUrl: string;
     titulo: string;
@@ -3364,12 +3387,12 @@ export function ModuleConsolidation({
       id: "visual",
       label: "Síntese Estratégica",
       icon: LuImage,
-      content: sinteseEstrategica ? (
+      content: (sinteseEstrategica || maceteVisual) ? (
         <div className="text-center p-8 space-y-6">
           <h3 className="text-xl font-bold text-foreground">
-            {sinteseEstrategica.title}
+            {(sinteseEstrategica || maceteVisual)?.title}
           </h3>
-          {sinteseEstrategica.content}
+          {(sinteseEstrategica || maceteVisual)?.content}
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center p-12 text-center">
@@ -3472,6 +3495,220 @@ export function TextAnalysisLab({
           </p>
         </div>
       </div>
+    </section>
+  );
+}
+
+// ── QuestaoResolvidaStepByStep ───────────────────────────────────────────
+
+export function QuestaoResolvidaStepByStep({
+  index,
+  titulo = "Questão Resolvida Passo a Passo",
+  variant,
+  banca,
+  ano,
+  concurso,
+  enunciado,
+  alternativas,
+  dicaEstrategica,
+  passos,
+}: {
+  index: number;
+  titulo?: string;
+  variant?: ModuleSkinVariant | "slate";
+  banca: string;
+  ano: string;
+  concurso: string;
+  enunciado: string | React.ReactNode;
+  alternativas: { letra: string; texto: string; correta: boolean }[];
+  dicaEstrategica?: string;
+  passos: { titulo: string; conteudo: string | React.ReactNode }[];
+}) {
+  const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
+  const [showExplanation, setShowExplanation] = useState(false);
+
+  const colorMap: Record<string, { badge: string; accent: string; border: string; bg: string }> = {
+    indigo: {
+      badge: "bg-indigo-500/10 text-indigo-500 border-indigo-500/20",
+      accent: "bg-indigo-500 text-white hover:bg-indigo-600",
+      border: "border-indigo-500/30",
+      bg: "bg-indigo-500/5",
+    },
+    emerald: {
+      badge: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20",
+      accent: "bg-emerald-500 text-white hover:bg-emerald-600",
+      border: "border-emerald-500/30",
+      bg: "bg-emerald-500/5",
+    },
+    blue: {
+      badge: "bg-blue-500/10 text-blue-500 border-blue-500/20",
+      accent: "bg-blue-500 text-white hover:bg-blue-600",
+      border: "border-blue-500/30",
+      bg: "bg-blue-500/5",
+    },
+    slate: {
+      badge: "bg-slate-500/10 text-slate-500 border-slate-500/20",
+      accent: "bg-slate-600 text-white hover:bg-slate-700",
+      border: "border-slate-500/30",
+      bg: "bg-slate-500/5",
+    },
+  };
+
+  const currentVariant = typeof variant === "string" && colorMap[variant] ? variant : "blue";
+
+  const handleSelect = (letra: string) => {
+    setSelectedLetter(letra);
+    setShowExplanation(true);
+  };
+
+  return (
+    <section className="bg-card rounded-3xl border border-border p-6 md:p-10 shadow-sm space-y-8 my-10 overflow-hidden relative">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-primary/2 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border/50 pb-6">
+        <div className="flex items-center gap-3">
+          <span className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center font-bold text-primary shrink-0 shadow-inner">
+            Q{index}
+          </span>
+          <div>
+            <h3 className="font-bold text-lg md:text-xl text-foreground">
+              {titulo}
+            </h3>
+            <p className="text-xs text-muted-foreground font-semibold uppercase tracking-wider">
+              Resolução Comentada para Fixação
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-2">
+          <span className="px-3 py-1 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20">
+            {banca}
+          </span>
+          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border border-border">
+            {concurso}
+          </span>
+          <span className="px-3 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground/80">
+            {ano}
+          </span>
+        </div>
+      </div>
+
+      {/* Enunciado */}
+      <div className="text-base md:text-lg text-foreground/90 font-medium leading-relaxed bg-muted/20 p-5 rounded-2xl border border-border/30">
+        {enunciado}
+      </div>
+
+      {/* Alternativas */}
+      <div className="space-y-3">
+        {alternativas.map((alt) => {
+          const isSelected = selectedLetter === alt.letra;
+          const isCorrect = alt.correta;
+          const hasSelectedAny = selectedLetter !== null;
+
+          let btnClass = "border-border hover:border-primary/40 hover:bg-muted/30";
+          let badgeClass = "bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary";
+
+          if (hasSelectedAny) {
+            if (isCorrect) {
+              btnClass = "border-green-500 bg-green-500/5 dark:bg-green-950/10 text-green-700 dark:text-green-400 font-bold shadow-md shadow-green-500/5";
+              badgeClass = "bg-green-500 text-white";
+            } else if (isSelected) {
+              btnClass = "border-red-500 bg-red-500/5 dark:bg-red-950/10 text-red-700 dark:text-red-400 shadow-md shadow-red-500/5";
+              badgeClass = "bg-red-500 text-white";
+            } else {
+              btnClass = "border-border opacity-50";
+              badgeClass = "bg-muted text-muted-foreground/50";
+            }
+          }
+
+          return (
+            <button
+              key={alt.letra}
+              onClick={() => !hasSelectedAny && handleSelect(alt.letra)}
+              disabled={hasSelectedAny}
+              className={cn(
+                "w-full text-left p-4 rounded-2xl border flex items-start gap-4 transition-all duration-300 group relative",
+                btnClass
+              )}
+            >
+              <span
+                className={cn(
+                  "w-8 h-8 rounded-xl flex items-center justify-center text-sm font-bold shrink-0 transition-colors duration-300",
+                  badgeClass
+                )}
+              >
+                {alt.letra}
+              </span>
+              <span className="text-sm md:text-base pt-1 flex-1 leading-normal font-medium">
+                {alt.texto}
+              </span>
+              {hasSelectedAny && isCorrect && (
+                <LuCheck className="w-5 h-5 text-green-500 shrink-0 self-center animate-in zoom-in-50 duration-300" />
+              )}
+              {hasSelectedAny && isSelected && !isCorrect && (
+                <X className="w-5 h-5 text-red-500 shrink-0 self-center animate-in zoom-in-50 duration-300" />
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Dica Estratégica e Passos */}
+      <AnimatePresence>
+        {showExplanation && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="space-y-6 pt-6 border-t border-border/50 overflow-hidden"
+          >
+            {dicaEstrategica && (
+              <div className="p-5 rounded-2xl bg-amber-500/5 border border-amber-500/20 text-foreground/85 relative overflow-hidden flex gap-4">
+                <div className="absolute left-0 top-0 w-1 h-full bg-amber-500" />
+                <div className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-500 shrink-0 shadow-inner">
+                  <LuBrain className="w-5 h-5" />
+                </div>
+                <div className="flex-1 space-y-1">
+                  <strong className="text-sm font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400 block">
+                    Radar CESGRANRIO
+                  </strong>
+                  <p className="text-sm leading-relaxed italic">
+                    "{dicaEstrategica}"
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <div className="space-y-4">
+              <h4 className="font-bold text-foreground text-sm uppercase tracking-widest flex items-center gap-2 mb-2">
+                <LuListChecks className="w-5 h-5 text-primary" />
+                Resolução Passo a Passo
+              </h4>
+
+              <div className="relative border-l border-border/80 pl-6 ml-3 space-y-6">
+                {passos.map((passo, i) => (
+                  <div key={i} className="relative group/step">
+                    <div className="absolute -left-[35px] top-0.5 w-6.5 h-6.5 rounded-full bg-background border border-border group-hover/step:border-primary/50 flex items-center justify-center text-xs font-bold text-muted-foreground group-hover/step:text-primary transition-colors duration-300">
+                      {i + 1}
+                    </div>
+
+                    <div className="space-y-1">
+                      <h5 className="font-bold text-foreground text-base">
+                        {passo.titulo}
+                      </h5>
+                      <div className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                        {passo.conteudo}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

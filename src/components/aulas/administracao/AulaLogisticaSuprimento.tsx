@@ -1,4 +1,5 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import {
@@ -12,7 +13,7 @@ import {
   AulaProps,
   CardCarousel,
   getRandomQuestions,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import { TabsContent } from "@/components/ui/tabs";
 import {
   LuZap,
@@ -45,20 +46,8 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
     return "modulo-1";
   });
 
-  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
-      if (saved) {
-        try {
-          const arr = JSON.parse(saved);
-          return new Set(arr);
-        } catch (e) {
-          return new Set();
-        }
-      }
-    }
-    return new Set();
-  });
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -66,14 +55,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
     }
   }, [activeTab]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `${STORAGE_KEY_PREFIX}completed_modules`,
-        JSON.stringify(Array.from(completedModules))
-      );
-    }
-  }, [completedModules]);
+  
 
   const MODULE_DEFS = [
     { id: "modulo-1", label: "Módulo 1", title: "Fundamentos e Cadeia de Suprimentos" },
@@ -124,6 +106,8 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       completedModules={completedModules}
@@ -146,13 +130,13 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           numero={1}
           titulo="Fundamentos e Cadeia de Suprimentos"
           descricao="O papel estratégico da logística na criação de valor e a evolução do Supply Chain Management."
-          variant={mv[1]}
+          variant="blue"
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index="INTRO"
-            variant={mv[1]}
+            variant="blue"
             title="A Missão Estratégica da Logística"
             description="Muito além de transportar: como a logística cria valor competitivo para a Petrobras."
           />
@@ -195,7 +179,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader
             index={1}
-            variant={mv[1]}
+            variant="blue"
             title="Pilares Logísticos"
             description="Os fundamentos que sustentam toda a cadeia de suprimentos."
           />
@@ -214,7 +198,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader
             index={1}
-            variant={mv[1]}
+            variant="blue"
             title="Análise Técnica C.E.D.E."
             description="Conceituação, Exemplificação, Dicas e Exceções dos fundamentos logísticos."
           />
@@ -290,9 +274,33 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={1}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Na gestão de estoques de suprimentos de uma refinaria de petróleo, o cálculo do Lote Econômico de Compras (LEC) busca minimizar o Custo Total de Estoque. Conceitualmente, o ponto ideal onde o lote econômico é atingido representa a intersecção de quais curvas de custos?"
+          alternativas={[
+              { letra: "A", texto: "Custo de aquisição de bens e custo de oportunidade do capital", correta: false },
+              { letra: "B", texto: "Custo de pedido (emissão) e custo de posse (armazenagem e capital imobilizado)", correta: true },
+              { letra: "C", texto: "Custo de transporte de suprimentos e custo de armazenagem física", correta: false },
+              { letra: "D", texto: "Custo de falta de estoque e custo de seguro do inventário", correta: false },
+              { letra: "E", texto: "Custo de movimentação interna e custo administrativo de notas fiscais", correta: false }
+            ]}
+          dicaEstrategica="A intersecção destas curvas indica o custo total mínimo."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O LEC equilibra o custo de pedir (que cai com lotes maiores) com o custo de manter o estoque (que sobe com lotes maiores)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
           index={1}
-          variant={mv[1]}
+          variant="blue"
           video={{ videoId: "LOG1_V", title: "Fundamentos da Logística", duration: "15:00" }}
           resumoVisual={{
             moduloNome: "Módulo 1",
@@ -319,17 +327,17 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           questoes={mapQuizQuestions("modulo-1")}
           titulo="QUIZ: Fundamentos e Cadeia de Suprimentos"
           numero={1}
-          variant={mv[1]}
+          variant="blue"
           onComplete={(score) => handleModuleComplete("modulo-1", score)}
         />
       </TabsContent>
 
       {/* ==================== MÓDULO 2 ==================== */}
       <TabsContent value="modulo-2" className="space-y-12 mt-0">
-        <ModuleBanner numero={2} titulo="Gestão Integrada de Estoques" variant={mv[2]} descricao="Curva ABC, classificação XYZ, Ponto de Pedido e Lote Econômico de Compra." />
+        <ModuleBanner numero={2} titulo="Gestão Integrada de Estoques" variant="blue" descricao="Curva ABC, classificação XYZ, Ponto de Pedido e Lote Econômico de Compra." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[2]} title="A Ciência do Estoque" description="Quanto manter, quando repor e como classificar — o trio de ouro da gestão de materiais." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="A Ciência do Estoque" description="Quanto manter, quando repor e como classificar — o trio de ouro da gestão de materiais." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p><strong>Gestão de estoques</strong> é a arte de equilibrar dois extremos: ter material demais (capital parado, custo
               de armazenagem) vs. ter material de menos (risco de parada operacional, perda de receita). Na Petrobras, esse
@@ -365,7 +373,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={2} variant={mv[2]} title="Ferramentas de Estoques" description="As técnicas que a CESGRANRIO cobra em toda prova de Suprimento." />
+          <ModuleSectionHeader index={2} variant="blue" title="Ferramentas de Estoques" description="As técnicas que a CESGRANRIO cobra em toda prova de Suprimento." />
           <CardCarousel
             cards={[
               { titulo: "Curva ABC (Pareto)", descricao: "20% dos itens representam 80% do valor — foque neles.", icone: <LuActivity />, corFundo: "bg-blue-500/10" },
@@ -377,7 +385,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </div>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={2} variant={mv[2]} title="Análise C.E.D.E." description="Dominando estoques para a prova CESGRANRIO." />
+          <ModuleSectionHeader index={2} variant="blue" title="Análise C.E.D.E." description="Dominando estoques para a prova CESGRANRIO." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Tipos de Estoque",
@@ -432,9 +440,33 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A fórmula da Quantidade Econômica de Pedido (EOQ) é EOQ = √(2DS/H), onde D = demanda anual, S = custo por pedido e H = custo de manutenção por unidade por período. Se uma empresa tem D = 10.000 unidades/ano, S = R$ 200/pedido e H = R$ 50/unidade/ano, qual é o EOQ?"
+          alternativas={[
+              { letra: "A", texto: "100 unidades", correta: false },
+              { letra: "B", texto: "200 unidades", correta: true },
+              { letra: "C", texto: "283 unidades", correta: false },
+              { letra: "D", texto: "400 unidades", correta: false },
+              { letra: "E", texto: "500 unidades", correta: false }
+            ]}
+          dicaEstrategica="O EOQ minimiza o custo total de estoque (custo de pedido + custo de manutenção), ponto onde os dois custos se igualam."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "EOQ = √(2 × 10.000 × 200 / 50) = √(4.000.000 / 50) = √80.000 ≈ 283." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Portanto, a alternativa correta é 283 unidades." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
           index={2}
-          variant={mv[2]}
+          variant="blue"
           video={{ videoId: "LOG2_V", title: "Gestão Integrada de Estoques", duration: "16:00" }}
           resumoVisual={{
             moduloNome: "Módulo 2",
@@ -461,17 +493,17 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           questoes={mapQuizQuestions("modulo-2")}
           titulo="QUIZ: Gestão Integrada de Estoques"
           numero={2}
-          variant={mv[2]}
+          variant="blue"
           onComplete={(score) => handleModuleComplete("modulo-2", score)}
         />
       </TabsContent>
 
       {/* ==================== MÓDULO 3 ==================== */}
       <TabsContent value="modulo-3" className="space-y-12 mt-0">
-        <ModuleBanner numero={3} titulo="Armazenagem e Centros de Distribuição" variant={mv[3]} descricao="Layouts de armazém, WMS, FIFO/LIFO e técnicas de picking industrial." />
+        <ModuleBanner numero={3} titulo="Armazenagem e Centros de Distribuição" variant="blue" descricao="Layouts de armazém, WMS, FIFO/LIFO e técnicas de picking industrial." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[3]} title="A Ciência da Armazenagem" description="Muito mais que guardar: como o layout e a tecnologia maximizam eficiência." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="A Ciência da Armazenagem" description="Muito mais que guardar: como o layout e a tecnologia maximizam eficiência." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p><strong>Armazenagem</strong> é a atividade logística que gerencia o espaço físico necessário para manter estoques.
               Inclui recebimento, conferência, endereçamento, estocagem, separação (picking), embalagem e expedição.
@@ -503,7 +535,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={3} variant={mv[3]} title="Estrutura do CD" description="Como funciona um Centro de Distribuição por dentro." />
+          <ModuleSectionHeader index={3} variant="blue" title="Estrutura do CD" description="Como funciona um Centro de Distribuição por dentro." />
           <CardCarousel
             cards={[
               { titulo: "Layout em U", descricao: "Recebi e expedi pelo mesmo lado — ideal para cross-docking.", icone: <LuRepeat />, corFundo: "bg-emerald-500/10" },
@@ -515,7 +547,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </div>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={3} variant={mv[3]} title="Análise C.E.D.E." description="Dominando armazenagem para a prova." />
+          <ModuleSectionHeader index={3} variant="blue" title="Análise C.E.D.E." description="Dominando armazenagem para a prova." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Funções da Armazenagem",
@@ -570,22 +602,46 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="As funções básicas de um armazém, em ordem sequencial de fluxo, são:"
+          alternativas={[
+              { letra: "A", texto: "Expedição → armazenagem → recebimento → separação.", correta: false },
+              { letra: "B", texto: "Recebimento → conferência → armazenagem → separação (picking) → embalagem → expedição.", correta: true },
+              { letra: "C", texto: "Compras → transporte → estoque → vendas.", correta: false },
+              { letra: "D", texto: "Planejamento → execução → controle → melhoria.", correta: false },
+              { letra: "E", texto: "Entrada → processamento → saída → devolução.", correta: false }
+            ]}
+          dicaEstrategica="Esse fluxo é cobrado pela CESGRANRIO em questões de logística."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O fluxo padrão de um armazém é: (1) Recebimento dos fornecedores, (2) Conferência física e documental, (3) Armazenagem no endereço correto, (4) Separação (picking) por pedido, (5) Embalagem/unitização, (6) Expedição ao cliente." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
-          index={3} variant={mv[3]}
+          index={3} variant="blue"
           video={{ videoId: "LOG3_V", title: "Armazenagem e Centros de Distribuição", duration: "14:00" }}
           resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Armazenagem", materia: "Logística", images: [{ title: "Layout em U", type: "Esquema", placeholderColor: "bg-emerald-500/20" }, { title: "Fluxo WMS", type: "Diagrama", placeholderColor: "bg-cyan-500/20" }] }}
           sinteseEstrategica={{ title: "Regra de Ouro do Picking", content: (<div className="text-center text-lg font-bold"><p>Mais GIRO = Mais PERTO da porta</p><p className="text-muted-foreground font-normal text-sm mt-1">Itens classe A ficam na zona nobre do armazém</p></div>) }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "Podcast: Dentro do CD", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-3")} titulo="QUIZ: Armazenagem e CDs" numero={3} variant={mv[3]} onComplete={(score) => handleModuleComplete("modulo-3", score)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-3")} titulo="QUIZ: Armazenagem e CDs" numero={3} variant="blue" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 4 ==================== */}
       <TabsContent value="modulo-4" className="space-y-12 mt-0">
-        <ModuleBanner numero={4} titulo="Modais e Gestão de Transportes" variant={mv[4]} descricao="Os 5 modais de transporte, intermodalidade, multimodalidade e o papel do dutoviário na Petrobras." />
+        <ModuleBanner numero={4} titulo="Modais e Gestão de Transportes" variant="blue" descricao="Os 5 modais de transporte, intermodalidade, multimodalidade e o papel do dutoviário na Petrobras." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[4]} title="Os 5 Modais de Transporte" description="Rodoviário, ferroviário, aquaviário, dutoviário e aéreo — características e trade-offs." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="Os 5 Modais de Transporte" description="Rodoviário, ferroviário, aquaviário, dutoviário e aéreo — características e trade-offs." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>O Brasil possui uma <strong>matriz de transporte desequilibrada</strong>: ~60% rodoviário, ~21% ferroviário, ~14% aquaviário,
               ~4% dutoviário, ~1% aéreo. Na Petrobras, o <strong>dutoviário</strong> é o modal estratégico — a malha de oleodutos e gasodutos
@@ -617,7 +673,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={4} variant={mv[4]} title="Comparativo de Modais" description="Vantagens e desvantagens de cada modal de transporte." />
+          <ModuleSectionHeader index={4} variant="blue" title="Comparativo de Modais" description="Vantagens e desvantagens de cada modal de transporte." />
           <CardCarousel
             cards={[
               { titulo: "Rodoviário", descricao: "Flexível, porta-a-porta, mas alto custo por t/km e dependência de infraestrutura viária.", icone: <LuActivity />, corFundo: "bg-amber-500/10" },
@@ -630,7 +686,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </div>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={4} variant={mv[4]} title="Análise C.E.D.E." description="Dominando transportes para prova de Suprimento." />
+          <ModuleSectionHeader index={4} variant="blue" title="Análise C.E.D.E." description="Dominando transportes para prova de Suprimento." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Inter vs Multi",
@@ -685,23 +741,47 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual modal de transporte apresenta maior capilaridade (acesso a qualquer ponto do território), sendo o mais utilizado no Brasil para cargas fracionadas e de médio prazo?"
+          alternativas={[
+              { letra: "A", texto: "Ferroviário.", correta: false },
+              { letra: "B", texto: "Aquaviário de cabotagem.", correta: false },
+              { letra: "C", texto: "Rodoviário.", correta: true },
+              { letra: "D", texto: "Aéreo.", correta: false },
+              { letra: "E", texto: "Dutoviário.", correta: false }
+            ]}
+          dicaEstrategica="Desvantagem: custo mais alto por tonelada/km em comparação ao ferroviário e aquaviário."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "O modal rodoviário domina o Brasil: representa ~65% da matriz de transporte de cargas." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Sua principal vantagem é a capilaridade (acessa qualquer ponto com estrada), flexibilidade de volume e velocidade para médias distâncias." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
-          index={4} variant={mv[4]}
+          index={4} variant="blue"
           video={{ videoId: "LOG4_V", title: "Modais e Gestão de Transportes", duration: "18:00" }}
           resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Transportes", materia: "Logística", images: [{ title: "Matriz Modal BR", type: "Infográfico", placeholderColor: "bg-amber-500/20" }, { title: "Malha Dutoviária", type: "Mapa", placeholderColor: "bg-emerald-500/20" }] }}
           sinteseEstrategica={{ title: "Hierarquia de Custo", content: (<div className="text-center text-lg font-bold space-y-1"><p className="text-emerald-400">Dutoviário 💰</p><p className="text-blue-400">Aquaviário 💰💰</p><p className="text-cyan-400">Ferroviário 💰💰💰</p><p className="text-amber-400">Rodoviário 💰💰💰💰</p><p className="text-rose-400">Aéreo 💰💰💰💰💰</p></div>) }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Podcast: Modais Brasileiros", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-4")} titulo="QUIZ: Modais e Transportes" numero={4} variant={mv[4]} onComplete={(score) => handleModuleComplete("modulo-4", score)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-4")} titulo="QUIZ: Modais e Transportes" numero={4} variant="blue" onComplete={(score) => handleModuleComplete("modulo-4", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 5 ==================== */}
       <TabsContent value="modulo-5" className="space-y-12 mt-0">
-        <ModuleBanner numero={5} titulo="Logística Inbound e Outbound" variant={mv[5]} descricao="Fluxos de entrada e saída, Milk Run, Cross-Docking, Last Mile e Postponement." />
+        <ModuleBanner numero={5} titulo="Logística Inbound e Outbound" variant="blue" descricao="Fluxos de entrada e saída, Milk Run, Cross-Docking, Last Mile e Postponement." />
 
         {/* ★ RICH INTRO SECTION */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[5]} title="Fluxos de Entrada e Saída" description="Como os materiais chegam à empresa e como os produtos alcançam o cliente final." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="Fluxos de Entrada e Saída" description="Como os materiais chegam à empresa e como os produtos alcançam o cliente final." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>A logística se divide em dois grandes fluxos: <strong>Inbound</strong> (logística de entrada) e <strong>Outbound</strong> (logística de saída).
               O <strong>Inbound</strong> abrange todas as atividades desde o fornecedor até a empresa — compras, recebimento, conferência, armazenagem de matérias-primas.
@@ -756,7 +836,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
         {/* ★ C.E.D.E. */}
         <div className="space-y-6">
-          <ModuleSectionHeader index={5} variant={mv[5]} title="Análise C.E.D.E." description="Conceituação, Exemplificação, Dicas e Exceções sobre fluxos logísticos." />
+          <ModuleSectionHeader index={5} variant="blue" title="Análise C.E.D.E." description="Conceituação, Exemplificação, Dicas e Exceções sobre fluxos logísticos." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Os 3 Fluxos Logísticos",
@@ -811,9 +891,33 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </div>
 
         {/* COMPONENTES EXISTENTES PRESERVADOS */}
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={5}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A logística inbound refere-se ao fluxo de materiais e componentes que entram na empresa vindo dos fornecedores. Qual das seguintes atividades faz parte da logística inbound?"
+          alternativas={[
+              { letra: "A", texto: "Distribuição do produto acabado ao cliente final.", correta: false },
+              { letra: "B", texto: "Separação de pedidos no centro de distribuição.", correta: false },
+              { letra: "C", texto: "Negociação de frete de entrada, recebimento, conferência e integração dos materiais ao sistema de estoque.", correta: true },
+              { letra: "D", texto: "Emissão de nota fiscal de venda ao cliente.", correta: false },
+              { letra: "E", texto: "Roteirização de entregas ao varejo.", correta: false }
+            ]}
+          dicaEstrategica="Seu desempenho impacta diretamente o lead time de produção e o nível de estoque."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Logística inbound gerencia o fluxo de ENTRADA: negociação e consolidação de fretes de fornecedores, janelas de entrega nas docas, recebimento físico, conferência quantitativa e qualitativa, integração ao WMS/ERP e armazenagem." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
           index={5}
-          variant={mv[5]}
+          variant="blue"
           video={{ videoId: "LOG5_V", title: "Logística Inbound e Outbound", duration: "14:00" }}
           resumoVisual={{
             moduloNome: "Módulo 5",
@@ -856,17 +960,17 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           questoes={mapQuizQuestions("modulo-5")}
           titulo="QUIZ: Logística Inbound e Outbound"
           numero={5}
-          variant={mv[5]}
+          variant="blue"
           onComplete={(score) => handleModuleComplete("modulo-5", score)}
         />
       </TabsContent>
 
       {/* ==================== MÓDULO 6 ==================== */}
       <TabsContent value="modulo-6" className="space-y-12 mt-0">
-        <ModuleBanner numero={6} titulo="Supply Chain Management (SCM)" variant={mv[6]} descricao="VMI, Efeito Chicote, CPFR, ECR e a gestão colaborativa da cadeia de suprimentos." />
+        <ModuleBanner numero={6} titulo="Supply Chain Management (SCM)" variant="blue" descricao="VMI, Efeito Chicote, CPFR, ECR e a gestão colaborativa da cadeia de suprimentos." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[6]} title="A Cadeia como Organismo Vivo" description="Supply Chain Management é a coordenação estratégica entre TODAS as empresas envolvidas." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="A Cadeia como Organismo Vivo" description="Supply Chain Management é a coordenação estratégica entre TODAS as empresas envolvidas." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p><strong>Supply Chain Management (SCM)</strong> é a gestão integrada de todos os elos da cadeia de suprimentos — desde o fornecedor
               do fornecedor até o cliente do cliente. Enquanto a <strong>logística</strong> foca no fluxo físico dentro de uma empresa, o SCM amplia
@@ -916,7 +1020,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={6} variant={mv[6]} title="Análise C.E.D.E." description="Dominando Supply Chain Management para a prova." />
+          <ModuleSectionHeader index={6} variant="blue" title="Análise C.E.D.E." description="Dominando Supply Chain Management para a prova." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Os 8 Processos-Chave do SCM",
@@ -970,8 +1074,32 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={6}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Qual é a principal diferença entre Logística e Supply Chain Management (SCM)?"
+          alternativas={[
+              { letra: "A", texto: "São conceitos idênticos e intercambiáveis.", correta: false },
+              { letra: "B", texto: "Logística foca no fluxo físico interno; SCM é a integração estratégica de processos de múltiplas organizações ao longo de toda a cadeia de valor, do fornecedor da matéria-prima ao consumidor final.", correta: true },
+              { letra: "C", texto: "SCM é uma subárea da logística operacional.", correta: false },
+              { letra: "D", texto: "Logística é mais ampla e estratégica que SCM.", correta: false },
+              { letra: "E", texto: "SCM refere-se apenas à gestão de fornecedores diretos.", correta: false }
+            ]}
+          dicaEstrategica="A logística é um componente do SCM."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Logística = fluxo físico eficiente de materiais e informações DENTRO da empresa (perspectiva interna)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "SCM = integração estratégica de processos de negócio entre múltiplas organizações (fornecedores, fabricantes, distribuidores, varejistas) para criar valor para o cliente final." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
-          index={6} variant={mv[6]}
+          index={6} variant="blue"
           video={{ videoId: "LOG6_V", title: "Supply Chain Management", duration: "16:00" }}
           resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "SCM", materia: "Logística", images: [{ title: "Bullwhip Effect", type: "Gráfico", placeholderColor: "bg-amber-500/20" }, { title: "Modelo CPFR", type: "Diagrama", placeholderColor: "bg-blue-500/20" }] }}
           sinteseEstrategica={{
@@ -1002,15 +1130,15 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "Podcast: Efeito Chicote", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-6")} titulo="QUIZ: Supply Chain Management" numero={6} variant={mv[6]} onComplete={(score) => handleModuleComplete("modulo-6", score)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-6")} titulo="QUIZ: Supply Chain Management" numero={6} variant="blue" onComplete={(score) => handleModuleComplete("modulo-6", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 7 ==================== */}
       <TabsContent value="modulo-7" className="space-y-12 mt-0">
-        <ModuleBanner numero={7} titulo="Indicadores de Desempenho (KPIs)" variant={mv[7]} descricao="OTIF, Fill Rate, Lead Time, Nível de Serviço e Custo Logístico Total." />
+        <ModuleBanner numero={7} titulo="Indicadores de Desempenho (KPIs)" variant="blue" descricao="OTIF, Fill Rate, Lead Time, Nível de Serviço e Custo Logístico Total." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[7]} title="Medir para Gerenciar" description="Se você não mede, não gerencia — os KPIs que definem a eficiência logística." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="Medir para Gerenciar" description="Se você não mede, não gerencia — os KPIs que definem a eficiência logística." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p><strong>KPIs (Key Performance Indicators)</strong> são métricas quantificáveis que avaliam a eficiência e eficácia das operações
               logísticas. Na Petrobras, os KPIs logísticos são monitorados em dashboards de gestão para garantir que os suprimentos cheguem
@@ -1052,7 +1180,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={7} variant={mv[7]} title="Análise C.E.D.E." description="KPIs que caem na prova CESGRANRIO." />
+          <ModuleSectionHeader index={7} variant="blue" title="Análise C.E.D.E." description="KPIs que caem na prova CESGRANRIO." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Família de KPIs",
@@ -1107,8 +1235,32 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={7}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O OTIF (On Time In Full) é um dos KPIs mais importantes da logística. Uma empresa realizou 1.000 entregas. Em 850, o produto chegou no prazo; em 800, chegou na quantidade correta; e em 750, atendeu ambos os critérios simultaneamente. Qual é o OTIF?"
+          alternativas={[
+              { letra: "A", texto: "85%", correta: false },
+              { letra: "B", texto: "80%", correta: false },
+              { letra: "C", texto: "75%", correta: true },
+              { letra: "D", texto: "70%", correta: false },
+              { letra: "E", texto: "90%", correta: false }
+            ]}
+          dicaEstrategica="Valores de referência: acima de 95% é considerado excelente."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "OTIF = pedidos entregues no prazo E na quantidade correta / total de pedidos." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "OTIF = 750 / 1.000 = 75%. Notar: OTIF exige que AMBAS as condições sejam atendidas simultaneamente." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Não é a média de On Time e In Full separadamente." }
+          ]}
+        />
+
         <ModuleConsolidation
-          index={7} variant={mv[7]}
+          index={7} variant="blue"
           video={{ videoId: "LOG7_V", title: "KPIs Logísticos", duration: "14:00" }}
           resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "KPIs", materia: "Logística", images: [{ title: "Dashboard KPIs", type: "Tabela", placeholderColor: "bg-blue-500/20" }, { title: "Fórmula OTIF", type: "Esquema", placeholderColor: "bg-rose-500/20" }] }}
           sinteseEstrategica={{
@@ -1139,15 +1291,15 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Podcast: Métricas que Importam", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-7")} titulo="QUIZ: Indicadores de Desempenho" numero={7} variant={mv[7]} onComplete={(score) => handleModuleComplete("modulo-7", score)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-7")} titulo="QUIZ: Indicadores de Desempenho" numero={7} variant="blue" onComplete={(score) => handleModuleComplete("modulo-7", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 8 ==================== */}
       <TabsContent value="modulo-8" className="space-y-12 mt-0">
-        <ModuleBanner numero={8} titulo="Logística Reversa e Sustentabilidade" variant={mv[8]} descricao="PNRS (Lei 12.305/10), responsabilidade compartilhada, economia circular e descarte industrial." />
+        <ModuleBanner numero={8} titulo="Logística Reversa e Sustentabilidade" variant="blue" descricao="PNRS (Lei 12.305/10), responsabilidade compartilhada, economia circular e descarte industrial." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[8]} title="O Caminho de Volta" description="Logística reversa: quando o produto faz o percurso contrário — do consumidor de volta ao fabricante." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="O Caminho de Volta" description="Logística reversa: quando o produto faz o percurso contrário — do consumidor de volta ao fabricante." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p><strong>Logística Reversa</strong> é o processo de planejar, implementar e controlar o fluxo de matérias-primas, estoque em processamento,
               produtos acabados e informações relacionadas, do <strong>ponto de consumo ao ponto de origem</strong>, com o propósito de recapturar valor
@@ -1195,7 +1347,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={8} variant={mv[8]} title="Análise C.E.D.E." description="Logística Reversa para a prova de Suprimento." />
+          <ModuleSectionHeader index={8} variant="blue" title="Análise C.E.D.E." description="Logística Reversa para a prova de Suprimento." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Pós-Venda vs Pós-Consumo",
@@ -1249,8 +1401,32 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={8}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Lei 12.305/2010 (Política Nacional de Resíduos Sólidos — PNRS) institui o conceito de responsabilidade compartilhada pelo ciclo de vida dos produtos. O que isso significa para as empresas?"
+          alternativas={[
+              { letra: "A", texto: "Apenas os consumidores são responsáveis pelo descarte correto.", correta: false },
+              { letra: "B", texto: "Fabricantes, importadores, distribuidores e comerciantes têm responsabilidade conjunta pela destinação ambientalmente adequada dos resíduos gerados por seus produtos.", correta: true },
+              { letra: "C", texto: "A responsabilidade é exclusiva do poder público municipal.", correta: false },
+              { letra: "D", texto: "Apenas produtos perigosos estão sujeitos à lei.", correta: false },
+              { letra: "E", texto: "A lei se aplica apenas a embalagens plásticas.", correta: false }
+            ]}
+          dicaEstrategica="Criou os Sistemas de Logística Reversa obrigatórios para: embalagens em geral, agrotóxicos, pneus, óleos lubrificantes, lâmpadas fluorescentes, pilhas e baterias, eletroeletrônicos."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A PNRS (Lei 12.305/2010) estabelece a responsabilidade compartilhada: fabricantes, importadores, distribuidores E comerciantes são co-responsáveis pela destinação dos resíduos pós-consumo." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
-          index={8} variant={mv[8]}
+          index={8} variant="blue"
           video={{ videoId: "LOG8_V", title: "Logística Reversa e Sustentabilidade", duration: "15:00" }}
           resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Reversa", materia: "Logística", images: [{ title: "Ciclo Reverso", type: "Diagrama", placeholderColor: "bg-emerald-500/20" }, { title: "Hierarquia PNRS", type: "Infográfico", placeholderColor: "bg-amber-500/20" }] }}
           sinteseEstrategica={{
@@ -1281,15 +1457,15 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Podcast: O Caminho de Volta", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-8")} titulo="QUIZ: Logística Reversa" numero={8} variant={mv[8]} onComplete={(score) => handleModuleComplete("modulo-8", score)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-8")} titulo="QUIZ: Logística Reversa" numero={8} variant="blue" onComplete={(score) => handleModuleComplete("modulo-8", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 9 ==================== */}
       <TabsContent value="modulo-9" className="space-y-12 mt-0">
-        <ModuleBanner numero={9} titulo="Logística Offshore Petrobras" variant={mv[9]} descricao="PSV, AHTS, FPSO, Bacias de Campos e Santos, bases terrestres e desafios operacionais no mar." />
+        <ModuleBanner numero={9} titulo="Logística Offshore Petrobras" variant="blue" descricao="PSV, AHTS, FPSO, Bacias de Campos e Santos, bases terrestres e desafios operacionais no mar." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant={mv[9]} title="Logística no Alto-Mar" description="A cadeia de suprimentos mais desafiadora do Brasil: abastecer plataformas a 300 km da costa." />
+          <ModuleSectionHeader index="INTRO" variant="blue" title="Logística no Alto-Mar" description="A cadeia de suprimentos mais desafiadora do Brasil: abastecer plataformas a 300 km da costa." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>A <strong>logística offshore da Petrobras</strong> é uma das operações mais complexas do mundo: enviar suprimentos, equipamentos,
               alimentos, químicos e pessoas para plataformas de petróleo localizadas em alto-mar, a distâncias de 100 a 300 km da costa.
@@ -1335,7 +1511,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={9} variant={mv[9]} title="Análise C.E.D.E." description="Logística offshore que cai na prova de Suprimento." />
+          <ModuleSectionHeader index={9} variant="blue" title="Análise C.E.D.E." description="Logística offshore que cai na prova de Suprimento." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Ciclo Logístico Offshore",
@@ -1391,8 +1567,32 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           />
         </div>
 
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={9}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Macaé (RJ) é considerada o maior polo logístico offshore do Brasil. Por que essa cidade tem essa posição estratégica?"
+          alternativas={[
+              { letra: "A", texto: "Por ser o maior porto marítimo do Brasil em volume de contêineres.", correta: false },
+              { letra: "B", texto: "Por ser a base de apoio logístico mais próxima dos campos de petróleo do pré-sal e pós-sal da Bacia de Campos, concentrando bases de supply boats, heliponto, almoxarifados e empresas de serviços.", correta: true },
+              { letra: "C", texto: "Por possuir o maior refinaria da América Latina.", correta: false },
+              { letra: "D", texto: "Por ser o centro de distribuição de combustíveis para o Rio de Janeiro.", correta: false },
+              { letra: "E", texto: "Por ter o maior aeroporto de cargas do país.", correta: false }
+            ]}
+          dicaEstrategica="Sua posição geográfica é privilegiada para acesso à Bacia de Campos (principal produtora histórica do Brasil)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Macaé é a capital do petróleo brasileiro: concentra as bases de apoio offshore (bases logísticas que abastecem as plataformas), heliportos para rotação de pessoal, almoxarifados de materiais críticos, escritórios das principais operadoras e empresas de serviços." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
         <ModuleConsolidation
-          index={9} variant={mv[9]}
+          index={9} variant="blue"
           video={{ videoId: "LOG9_V", title: "Logística Offshore Petrobras", duration: "20:00" }}
           resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Petrobras", materia: "Offshore", images: [{ title: "Mapa Bacias", type: "Mapa", placeholderColor: "bg-blue-500/20" }, { title: "Frota PSV/AHTS", type: "Infográfico", placeholderColor: "bg-amber-500/20" }] }}
           sinteseEstrategica={{
@@ -1423,7 +1623,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Podcast: No Mar", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-9")} titulo="QUIZ: Logística Offshore Petrobras" numero={9} variant={mv[9]} onComplete={(score) => handleModuleComplete("modulo-9", score)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-9")} titulo="QUIZ: Logística Offshore Petrobras" numero={9} variant="blue" onComplete={(score) => handleModuleComplete("modulo-9", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 10 ==================== */}
@@ -1478,6 +1678,30 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
               icone: <LuSearch />,
               conteudo: <p className="text-lg text-justify">Utilize o resultado do simulado para identificar quais módulos requerem revisão ativa. Focar nas suas fraquezas agora garante os pontos decisivos no dia da prova.</p>
             }
+          ]}
+        />
+
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={10}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Uma empresa de distribuição de derivados de petróleo analisa sua operação logística e identifica os seguintes dados anuais: demanda de 24.000 unidades, custo por pedido de R$ 300, custo de manutenção de R$ 120/unidade/ano, e estoque de segurança de 200 unidades. Considerando EOQ = √(2DS/H), qual é o ponto de pedido se o lead time médio é de 15 dias e a demanda diária é de 65 unidades?"
+          alternativas={[
+              { letra: "A", texto: "775 unidades.", correta: false },
+              { letra: "B", texto: "875 unidades", correta: false },
+              { letra: "C", texto: "975 unidades", correta: true },
+              { letra: "D", texto: "1.175 unidades", correta: false },
+              { letra: "E", texto: "1.375 unidades", correta: false }
+            ]}
+          dicaEstrategica="O PP indica o nível de estoque em que deve ser acionado um novo pedido para não haver ruptura durante o lead time."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Ponto de Pedido = (Demanda diária × Lead time) + Estoque de segurança = (65 × 15) + 200 = 975 + 200 = 1.175 unidades." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O EOQ seria: √(2 × 24.000 × 300 / 120) = √120.000 ≈ 346 unidades." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
           ]}
         />
 

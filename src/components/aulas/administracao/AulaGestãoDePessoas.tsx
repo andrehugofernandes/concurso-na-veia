@@ -190,13 +190,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           numero={1}
           titulo="Fundamentos de Gestão de Pessoas"
           descricao="A evolução do DP ao RH Estratégico: entendendo o capital humano como o ativo mais valioso da Petrobras."
-          variant={mv[1]}
+          variant="blue"
         />
 
         <div className="space-y-6">
           <ModuleSectionHeader
             index="INTRO"
-            variant={mv[1]}
+            variant="blue"
             title="Dossiê de Fundamentos"
             description="Entenda as dimensões da Gestão de Pessoas no cenário industrial moderno."
           />
@@ -237,7 +237,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader
             index={2}
-            variant={mv[1]}
+            variant="blue"
             title="Análise Técnica C.E.D.E."
             description="Explorando a profundidade pedagógica dos fundamentos de GP."
           />
@@ -441,13 +441,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           numero={2}
           titulo="Recrutamento e Seleção"
           descricao="A ciência de atrair o talento certo e a técnica de escolher o perfil ideal para a cultura Petrobras."
-          variant={mv[2]}
+          variant="blue"
         />
 
         <div className="space-y-6">
           <ModuleSectionHeader
             index="INTRO"
-            variant={mv[2]}
+            variant="blue"
             title="Dossiê de Atração"
             description="Processos vitais para a renovação do capital intelectual."
           />
@@ -488,7 +488,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader
             index={2}
-            variant={mv[2]}
+            variant="blue"
             title="Análise Técnica C.E.D.E."
             description="O funil estratégico: do anúncio à decisão final."
           />
@@ -599,7 +599,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
         <ModuleConsolidation
           index={3}
-          variant={mv[2]}
+          variant="blue"
           video={{
             videoId: "7c-YVly_C9o",
             title: "Recrutamento e Seleção Estratégico",
@@ -649,7 +649,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           questoes={quizM2}
           titulo="QUIZ: Recrutamento e Seleção"
           numero={4}
-          variant={mv[2]}
+          variant="blue"
           onComplete={(score: number) =>
             handleModuleComplete("modulo-2", score)
           }
@@ -664,13 +664,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           numero={3}
           titulo="Admissão e Integração"
           descricao="A jornada de transformação do candidato em colaborador: do contrato ao aculturamento."
-          variant={mv[3]}
+          variant="blue"
         />
 
         <div className="space-y-6">
           <ModuleSectionHeader
             index="INTRO"
-            variant={mv[3]}
+            variant="blue"
             title="Dossiê de Boas-Vindas"
             description="Os primeiros passos críticos para a retenção de talentos."
           />
@@ -711,7 +711,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader
             index={2}
-            variant={mv[3]}
+            variant="blue"
             title="Análise Técnica C.E.D.E."
             description="Transformando o recém-chegado em um parceiro de valor."
           />
@@ -809,7 +809,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
         <ModuleConsolidation
           index={3}
-          variant={mv[3]}
+          variant="blue"
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Onboarding de Sucesso",
@@ -859,7 +859,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           questoes={quizM3}
           titulo="QUIZ: Admissão e Integração"
           numero={4}
-          variant={mv[3]}
+          variant="blue"
           onComplete={(score: number) =>
             handleModuleComplete("modulo-3", score)
           }

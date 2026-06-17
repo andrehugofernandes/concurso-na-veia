@@ -1,7 +1,9 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
-import { AulaProps, QuizQuestion } from "../shared";
+import { AulaProps, QuizQuestion,
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   ModuleConsolidation,
   ContentAccordion,
@@ -63,20 +65,8 @@ export default function AulaComprasSuprimento(props: AulaProps) {
     return "modulo-1";
   });
 
-  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
-      if (saved) {
-        try {
-          const arr = JSON.parse(saved);
-          return new Set(arr);
-        } catch (e) {
-          return new Set();
-        }
-      }
-    }
-    return new Set();
-  });
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -84,14 +74,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
     }
   }, [activeTab]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `${STORAGE_KEY_PREFIX}completed_modules`,
-        JSON.stringify(Array.from(completedModules))
-      );
-    }
-  }, [completedModules]);
+  
 
   const handleQuizComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
@@ -154,7 +137,31 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={1}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Durante o processo de seleção de um novo fornecedor de válvulas industriais para refinarias da Petrobras, a equipe de suprimento optou por um modelo cujo preço de aquisição na nota fiscal era 15% superior à menor oferta do mercado. A justificativa residiu no menor consumo energético do equipamento e no maior intervalo entre manutenções preventivas, o que reduz custos operacionais totais. Essa decisão ampara-se no conceito de:"
+          alternativas={[
+              { letra: "A", texto: "Lote Econômico de Compras (LEC)", correta: false },
+              { letra: "B", texto: "Custo Total de Propriedade (TCO)", correta: true },
+              { letra: "C", texto: "Just-in-Time (JIT)", correta: false },
+              { letra: "D", texto: "Valor de Face Operacional", correta: false },
+              { letra: "E", texto: "Ponto de Ressuprimento Dinâmico", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O Custo Total de Propriedade (TCO) analisa todos os custos do ciclo de vida de um bem (aquisição, operação, manutenção e descarte) e não apenas o preço de compra inicial na nota fiscal." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={1}
         variant={getModuleVariant(1)}
         video={{
@@ -290,7 +297,31 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O ciclo do pedido é a sequência formal de etapas do processo de compras. Qual é a ordem correta das etapas iniciais?"
+          alternativas={[
+              { letra: "A", texto: "Emissão do PO → Cotação → Requisição → Aprovação.", correta: false },
+              { letra: "B", texto: "Requisição interna → Aprovação → Definição de especificação → Pesquisa de fornecedores → Solicitação de cotação (RFQ).", correta: true },
+              { letra: "C", texto: "Pagamento → Recebimento → Pedido → Negociação.", correta: false },
+              { letra: "D", texto: "Auditoria → Compliance → Pagamento → Entrega.", correta: false },
+              { letra: "E", texto: "Contrato → Especificação → Pedido → Aprovação.", correta: false }
+            ]}
+          dicaEstrategica="Essa sequência garante que o processo seja planejado e aprovado antes de qualquer comprometimento financeiro."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O ciclo do pedido começa com a Requisição de Compra (RC) pela área solicitante, passa pela aprovação por alçada, depois pela definição técnica do item, pesquisa de fornecedores qualificados, e por fim pela emissão da RFQ (Request for Quotation)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={2}
         variant={getModuleVariant(2)}
         video={{
@@ -422,7 +453,31 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A homologação de fornecedores é um processo formal que antecede o primeiro pedido. Qual é seu objetivo principal?"
+          alternativas={[
+              { letra: "A", texto: "Reduzir o preço de compra ao mínimo possível.", correta: false },
+              { letra: "B", texto: "Verificar e certificar que o fornecedor atende aos requisitos técnicos, financeiros, legais e de qualidade antes de ser incluído na base de fornecedores.", correta: true },
+              { letra: "C", texto: "Substituir fornecedores nacionais por internacionais.", correta: false },
+              { letra: "D", texto: "Automatizar o processo de cotação.", correta: false },
+              { letra: "E", texto: "Garantir exclusividade de fornecimento.", correta: false }
+            ]}
+          dicaEstrategica="Somente fornecedores homologados podem receber pedidos."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A homologação (ou qualificação) de fornecedores avalia previamente se o candidato tem capacidade técnica (equipamentos, processos, certificações), saúde financeira (para cumprir contratos), conformidade legal (certidões, regularidade fiscal) e alinhamento com os padrões de qualidade do comprador." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={3}
         variant={getModuleVariant(3)}
         video={{
@@ -556,7 +611,31 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O conceito de BATNA (Best Alternative to a Negotiated Agreement) na negociação de compras refere-se a:"
+          alternativas={[
+              { letra: "A", texto: "O melhor preço obtido na última cotação realizada.", correta: false },
+              { letra: "B", texto: "A melhor alternativa que o negociador tem caso a negociação atual falhe — define o poder de barganha.", correta: true },
+              { letra: "C", texto: "O contrato padrão utilizado como referência pelo departamento jurídico.", correta: false },
+              { letra: "D", texto: "A estratégia de ancoragem inicial na negociação.", correta: false },
+              { letra: "E", texto: "O limite máximo de desconto que o fornecedor pode oferecer.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "BATNA é sua" },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={4}
         variant={getModuleVariant(4)}
         video={{
@@ -688,7 +767,31 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={5}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A compra emergencial difere da compra programada principalmente porque:"
+          alternativas={[
+              { letra: "A", texto: "A compra emergencial é sempre mais barata.", correta: false },
+              { letra: "B", texto: "A compra emergencial é realizada sem planejamento prévio, em situação urgente, geralmente resultando em custos mais altos, menos fornecedores consultados e menor poder de negociação.", correta: true },
+              { letra: "C", texto: "A compra programada não exige cotação.", correta: false },
+              { letra: "D", texto: "A compra emergencial usa sempre pagamento à vista.", correta: false },
+              { letra: "E", texto: "A compra programada é exclusiva para materiais de MRO.", correta: false }
+            ]}
+          dicaEstrategica="Uma análise da Petrobras mostrou que compras emergenciais custam em média 20-40% a mais que compras programadas equivalentes."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Compras emergenciais (ou de urgência) ocorrem quando o planejamento falhou ou houve consumo inesperado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Como o tempo é crítico, o comprador aceita pagar mais caro, consulta menos fornecedores e tem menor poder de negociação." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={5}
         variant={getModuleVariant(5)}
         video={{
@@ -819,7 +922,31 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={6}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O SLA (Service Level Agreement) em contratos de fornecimento define:"
+          alternativas={[
+              { letra: "A", texto: "O preço mínimo garantido ao fornecedor.", correta: false },
+              { letra: "B", texto: "As métricas de desempenho contratadas — indicadores mensuráveis de qualidade, prazo e disponibilidade que o fornecedor se compromete a cumprir.", correta: true },
+              { letra: "C", texto: "O prazo de pagamento acordado entre as partes.", correta: false },
+              { letra: "D", texto: "A cláusula de rescisão unilateral do contrato.", correta: false },
+              { letra: "E", texto: "O índice de reajuste de preços aplicável.", correta: false }
+            ]}
+          dicaEstrategica="A Petrobras inclui SLAs rigorosos em contratos de manutenção e tecnologia."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "O SLA é o coração do contrato de serviço: define métricas como disponibilidade do sistema (99,9%), tempo de resposta a incidentes (4h), índice de qualidade mínimo (99,5% de conformidade), prazo de entrega (95% no prazo)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Sem SLA claro, é impossível mensurar desempenho e aplicar penalidades." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={6}
         variant={getModuleVariant(6)}
         video={{
@@ -950,7 +1077,31 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={7}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O leilão reverso (reverse auction) eletrônico é uma modalidade em que:"
+          alternativas={[
+              { letra: "A", texto: "O comprador aumenta o preço progressivamente para atrair fornecedores.", correta: false },
+              { letra: "B", texto: "Fornecedores concorrem em tempo real reduzindo seus preços para vencer a disputa — o menor preço ganha.", correta: true },
+              { letra: "C", texto: "A empresa leiloa seus ativos para compradores externos.", correta: false },
+              { letra: "D", texto: "O preço é fixado pelo sistema eletronicamente sem negociação.", correta: false },
+              { letra: "E", texto: "Apenas um fornecedor pode participar por rodada.", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "No leilão reverso, os papéis são invertidos em relação ao leilão tradicional: os fornecedores são os que" },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={7}
         variant={getModuleVariant(7)}
         video={{
@@ -1081,7 +1232,31 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={8}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O conflito de interesse em compras ocorre quando:"
+          alternativas={[
+              { letra: "A", texto: "O comprador discorda do preço proposto pelo fornecedor.", correta: false },
+              { letra: "B", texto: "O responsável pela decisão de compra tem interesse pessoal (financeiro, familiar ou afetivo) no resultado que pode comprometer sua imparcialidade.", correta: true },
+              { letra: "C", texto: "Dois fornecedores apresentam preços iguais.", correta: false },
+              { letra: "D", texto: "O departamento jurídico questiona cláusulas contratuais.", correta: false },
+              { letra: "E", texto: "O comprador negocia com fornecedor estrangeiro.", correta: false }
+            ]}
+          dicaEstrategica="A falta de disclosure é uma das principais causas de corrupção corporativa em compras."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Conflito de interesse em compras ocorre quando o decisor tem relação pessoal que pode influenciar sua objetividade: familiar que é sócio do fornecedor, participação societária em empresa fornecedora, amizade que leva a favorecer um concorrente." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O correto é declarar o conflito e se recusar do processo." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={8}
         variant={getModuleVariant(8)}
         video={{
@@ -1212,7 +1387,31 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           </div>
       </section>
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={9}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O RLCP (Regulamento de Licitações e Contratações da Petrobras) determina que:"
+          alternativas={[
+              { letra: "A", texto: "Todas as compras devem ser realizadas exclusivamente por licitação pública aberta.", correta: false },
+              { letra: "B", texto: "Contratações acima de determinados pisos de valor devem seguir processo competitivo formal, garantindo transparência, isonomia e economicidade.", correta: true },
+              { letra: "C", texto: "A Petrobras pode contratar diretamente qualquer fornecedor sem processo competitivo.", correta: false },
+              { letra: "D", texto: "Somente fornecedores brasileiros podem participar de licitações.", correta: false },
+              { letra: "E", texto: "O processo de compras deve ser auditado mensalmente pelo TCU.", correta: false }
+            ]}
+          dicaEstrategica="Garante que o processo seja competitivo, transparente e alinhado à governança corporativa."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O RLCP (Regulamento de Licitações e Contratações da Petrobras) é o instrumento normativo interno que, baseado na Lei 13.303/2016, define as regras para contratações: modalidades (convite, tomada de preços, concorrência), limites de valor para dispensa, critérios de habilitação, julgamento de propostas e gestão contratual." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={9}
         variant={getModuleVariant(9)}
         video={{
@@ -1358,7 +1557,31 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         ]}
       />
 
-      <ModuleConsolidation
+              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={10}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um Técnico de Suprimento da Petrobras recebe uma requisição emergencial para aquisição de uma válvula crítica de segurança para uma plataforma offshore. O processo padrão levaria 30 dias, mas a parada de produção está gerando prejuízo de R$ 2 milhões/dia. O técnico deve:"
+          alternativas={[
+              { letra: "A", texto: "Aguardar o processo padrão de 30 dias para garantir compliance total.", correta: false },
+              { letra: "B", texto: "Acionar o procedimento de compra emergencial previsto no RLCP, que permite processo simplificado com prazo reduzido, documentando e justificando formalmente a urgência.", correta: true },
+              { letra: "C", texto: "Comprar diretamente do fornecedor sem qualquer documentação para agilizar.", correta: false },
+              { letra: "D", texto: "Transferir a responsabilidade para o fornecedor resolver.", correta: false },
+              { letra: "E", texto: "Cancelar a requisição e utilizar equipamento substituto sem análise técnica.", correta: false }
+            ]}
+          dicaEstrategica="O compliance não é eliminado na emergência; é adaptado."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O RLCP prevê procedimentos de compra emergencial com processo simplificado — menos fornecedores consultados, prazo de cotação reduzido, aprovação em circuito acelerado — mas ainda com documentação formal da urgência, justificativa técnica e econômica (prejuízo por parada), e registro de todas as etapas para auditoria posterior." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
         index={10}
         variant={getModuleVariant(10)}
         video={{
@@ -1403,6 +1626,8 @@ export default function AulaComprasSuprimento(props: AulaProps) {
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       completedModules={completedModules}
@@ -1482,6 +1707,30 @@ export default function AulaComprasSuprimento(props: AulaProps) {
               icone: <LuSearch />,
               conteudo: <p className="text-lg text-justify">Utilize o resultado do simulado para identificar quais módulos requerem revisão activa. Focar nas suas fraquezas agora garante os pontos decisivos no dia da prova.</p>
             }
+          ]}
+        />
+
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={10}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant={"10"}
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um Técnico de Suprimento da Petrobras recebe uma requisição emergencial para aquisição de uma válvula crítica de segurança para uma plataforma offshore. O processo padrão levaria 30 dias, mas a parada de produção está gerando prejuízo de R$ 2 milhões/dia. O técnico deve:"
+          alternativas={[
+              { letra: "A", texto: "Aguardar o processo padrão de 30 dias para garantir compliance total.", correta: false },
+              { letra: "B", texto: "Acionar o procedimento de compra emergencial previsto no RLCP, que permite processo simplificado com prazo reduzido, documentando e justificando formalmente a urgência.", correta: true },
+              { letra: "C", texto: "Comprar diretamente do fornecedor sem qualquer documentação para agilizar.", correta: false },
+              { letra: "D", texto: "Transferir a responsabilidade para o fornecedor resolver.", correta: false },
+              { letra: "E", texto: "Cancelar a requisição e utilizar equipamento substituto sem análise técnica.", correta: false }
+            ]}
+          dicaEstrategica="O compliance não é eliminado na emergência; é adaptado."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O RLCP prevê procedimentos de compra emergencial com processo simplificado — menos fornecedores consultados, prazo de cotação reduzido, aprovação em circuito acelerado — mas ainda com documentação formal da urgência, justificativa técnica e econômica (prejuízo por parada), e registro de todas as etapas para auditoria posterior." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
           ]}
         />
 

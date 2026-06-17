@@ -1,4 +1,5 @@
 "use client";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
 
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -13,7 +14,7 @@ import {
   ModuleSectionHeader,
   ModuleConsolidation,
   CardCarousel,
-} from "../shared";
+  QuestaoResolvidaStepByStep} from "../shared";
 import {
   LuAward,
   LuShieldAlert,
@@ -112,20 +113,8 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
     return "modulo-1";
   });
 
-  const [completedModules, setCompletedModules] = useState<Set<string>>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}completed_modules`);
-      if (saved) {
-        try {
-          const arr = JSON.parse(saved);
-          return new Set(arr);
-        } catch (e) {
-          return new Set();
-        }
-      }
-    }
-    return new Set();
-  });
+  const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
+  const completedModules = new Set(completedModulesList);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -133,20 +122,14 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
     }
   }, [activeTab]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        `${STORAGE_KEY_PREFIX}completed_modules`,
-        JSON.stringify(Array.from(completedModules))
-      );
-    }
-  }, [completedModules]);
+  
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 60) {
-      setCompletedModules((prev) => new Set([...prev, moduleId]));
+      const newSet = new Set(completedModules).add(moduleId);
+      updateCompletedModules(Array.from(newSet));
       const progress = Math.round(
-        (completedModules.size / (MODULE_DEFS.length - 1)) * 100
+        (newSet.size / MODULE_DEFS.length) * 100
       );
       props.onUpdateProgress?.(progress);
     }
@@ -186,6 +169,8 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
 
   return (
     <AulaTemplate
+      canComplete={completedModules.size >= MODULE_DEFS.length}
+      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       modules={MODULE_DEFS}
@@ -209,13 +194,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={1}
             titulo="Fundamentos de Administração"
             descricao="Entenda a essência da administração como processo de planejar, organizar, dirigir e controlar recursos para atingir objetivos organizacionais."
-            variant={mv[1]}
+            variant="blue"
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant={mv[1]}
+              variant="blue"
               title="Definição e Pilares da Administração"
               description="Os conceitos fundamentais que sustentam toda a prática administrativa moderna."
             />
@@ -266,7 +251,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant={mv[1]}
+              variant="blue"
               title="Habilidades e Papéis Gerenciais no Contexto Administrativo"
               description="Explorando a profundidade pedagógica dos fundamentos de administração."
             />
@@ -435,7 +420,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={3}
-              variant={mv[1]}
+              variant="blue"
               title="Exemplos Práticos Petrobras"
               description="Como esses conceitos fundamentais se aplicam na realidade da empresa."
             />
@@ -461,9 +446,33 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             </div>
           </div>
 
-          <ModuleConsolidation
+                  {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={1}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Em um mercado altamente competitivo de suprimentos, uma empresa estabelece descontos progressivos e cartões de fidelidade baseados em pontos acumulados para incentivar a recompra por seus parceiros de negócios. De acordo com a literatura clássica de marketing de relacionamento, essa ação estratégica representa um laço de fidelidade baseado em aspectos:"
+          alternativas={[
+              { letra: "A", texto: "sociais", correta: false },
+              { letra: "B", texto: "financeiros", correta: true },
+              { letra: "C", texto: "estruturais", correta: false },
+              { letra: "D", texto: "interativos", correta: false },
+              { letra: "E", texto: "cognitivos", correta: false }
+            ]}
+          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Os descontos progressivos e programas de pontos são incentivos puramente econômicos, classificando-se como laços de fidelidade de nível financeiro (nível 1 de Berry e Parasuraman)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={1}
-            variant={mv[1]}
+            variant="blue"
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Fundamentos de Administração - Visão Geral",
@@ -521,7 +530,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-1")}
             titulo="QUIZ: Fundamentos de Administração"
             numero={1}
-            variant={mv[1]}
+            variant="blue"
             onComplete={(score: number) => handleModuleComplete("modulo-1", score)}
           />
         </TabsContent>
@@ -534,13 +543,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={2}
             titulo="Funções Administrativas PODC"
             descricao="Aprofunde nas quatro funções que sustentam a administração: Planejamento, Organização, Direção e Controle."
-            variant={mv[2]}
+            variant="blue"
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant={mv[2]}
+              variant="blue"
               title="Dossiê das Funções Administrativas"
               description="Entenda como cada função se desdobra em técnicas e ferramentas específicas."
             />
@@ -591,7 +600,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant={mv[2]}
+              variant="blue"
               title="Aprofundamento Funcional do Ciclo Administrativo"
               description="Desdobramentos técnicos de cada função administrativa."
             />
@@ -726,9 +735,33 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             />
           </div>
 
-          <ModuleConsolidation
+                  {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O planejamento estratégico, tático e operacional diferem principalmente em qual aspecto?"
+          alternativas={[
+              { letra: "A", texto: "Pela área funcional que cada um cobre (RH, Finanças, Operações)", correta: false },
+              { letra: "B", texto: "Pelo horizonte temporal e nível hierárquico: longo prazo/alta direção, médio/média gerência, curto/operacional", correta: true },
+              { letra: "C", texto: "Pelo grau de formalidade exigido pela legislação vigente", correta: false },
+              { letra: "D", texto: "Pelo número de pessoas envolvidas no processo de decisão", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Planejamento operacional: curto prazo (dias/meses), nível operacional, define tarefas específicas."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Planejamento estratégico: longo prazo (3-5+ anos), alta direção, define missão/visão/objetivos macro." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Planejamento tático: médio prazo (1-2 anos), gerência média, define planos por área." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={2}
-            variant={mv[2]}
+            variant="blue"
             video={{
               videoId: "7c-YVly_C9o",
               title: "PODC - Desdobramento Prático",
@@ -782,7 +815,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-2")}
             titulo="QUIZ: Funções Administrativas PODC"
             numero={2}
-            variant={mv[2]}
+            variant="blue"
             onComplete={(score: number) => handleModuleComplete("modulo-2", score)}
           />
         </TabsContent>
@@ -795,13 +828,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={3}
             titulo="Estruturas Organizacionais"
             descricao="Conheça os principais modelos de estrutura organizacional e como a Petrobras se organiza para otimizar processos e decisões."
-            variant={mv[3]}
+            variant="blue"
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant={mv[3]}
+              variant="blue"
               title="Dossiê de Modelos Estruturais"
               description="Das estruturas clássicas às contemporâneas: compreendendo as linhas de força e as escolhas de design organizacional."
             />
@@ -852,7 +885,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant={mv[3]}
+              variant="blue"
               title="Modelagem e Análise do Design Organizacional"
               description="Análise profunda de cada modelo estrutural."
             />
@@ -971,9 +1004,33 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             />
           </div>
 
-          <ModuleConsolidation
+                  {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={3}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A estrutura organizacional funcional organiza a empresa principalmente por:"
+          alternativas={[
+              { letra: "A", texto: "Produtos ou linhas de negócio distintas", correta: false },
+              { letra: "B", texto: "Regiões geográficas de atuação da empresa", correta: false },
+              { letra: "C", texto: "Funções ou especialidades (RH, Finanças, Operações, Marketing)", correta: true },
+              { letra: "D", texto: "Projetos temporários com times multidisciplinares", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Desvantagem: silos funcionais e comunicação lateral difícil."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Na estrutura funcional, departamentos são organizados por especialidade: RH, Finanças, Marketing, Operações etc." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "É a mais comum em empresas tradicionais." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Vantagem: especialização e economia de escala." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={3}
-            variant={mv[3]}
+            variant="blue"
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Estruturas Organizacionais",
@@ -1027,7 +1084,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-3")}
             titulo="QUIZ: Estruturas Organizacionais"
             numero={3}
-            variant={mv[3]}
+            variant="blue"
             onComplete={(score: number) => handleModuleComplete("modulo-3", score)}
           />
         </TabsContent>
@@ -1040,13 +1097,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={4}
             titulo="Comportamento Organizacional"
             descricao="Entenda como as pessoas atuam dentro das organizações: motivação, liderança, comunicação, trabalho em equipe e cultura organizacional."
-            variant={mv[4]}
+            variant="blue"
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant={mv[4]}
+              variant="blue"
               title="Dossiê Comportamental"
               description="Os fatores psicossociais que impactam desempenho e satisfação nas organizações."
             />
@@ -1097,7 +1154,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant={mv[4]}
+              variant="blue"
               title="Vetores da Dinâmica Humana nas Organizações"
               description="Aprofundamento em conceitos de comportamento organizacional."
             />
@@ -1197,9 +1254,33 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             />
           </div>
 
-          <ModuleConsolidation
+                  {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={4}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Pirâmide de Maslow hierarquiza necessidades humanas. Qual é a ordem correta da base ao topo?"
+          alternativas={[
+              { letra: "A", texto: "Estima → Segurança → Fisiológicas → Social → Autorrealização", correta: false },
+              { letra: "B", texto: "Fisiológicas → Segurança → Social (pertencimento) → Estima → Autorrealização", correta: true },
+              { letra: "C", texto: "Autorrealização → Estima → Social → Segurança → Fisiológicas", correta: false },
+              { letra: "D", texto: "Social → Fisiológicas → Estima → Segurança → Autorrealização", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Necessidades inferiores devem ser minimamente atendidas antes das superiores."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Maslow: base (mais urgente) = Fisiológicas (alimento, abrigo) → Segurança (emprego, estabilidade) → Social (pertencimento, amizades) → Estima (reconhecimento, status) → Autorrealização (realização do potencial)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={4}
-            variant={mv[4]}
+            variant="blue"
             video={{
               videoId: "7c-YVly_C9o",
               title: "Comportamento Organizacional",
@@ -1257,7 +1338,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-4")}
             titulo="QUIZ: Comportamento Organizacional"
             numero={4}
-            variant={mv[4]}
+            variant="blue"
             onComplete={(score: number) => handleModuleComplete("modulo-4", score)}
           />
         </TabsContent>
@@ -1270,13 +1351,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={5}
             titulo="Gestão por Processos"
             descricao="Aprenda a mapear, analisar e otimizar processos de negócios corporativos, promovendo a integração horizontal e eliminando gargalos."
-            variant={mv[5]}
+            variant="blue"
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant={mv[5]}
+              variant="blue"
               title="Dossiê de Gestão de Processos BPM"
               description="A quebra de silos e o gerenciamento horizontal voltado à entrega de valor."
             />
@@ -1327,7 +1408,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant={mv[5]}
+              variant="blue"
               title="Metodologia e Ciclos de Melhoria BPM"
               description="Estruturação, mapeamento e modelagem horizontal de fluxos de valor."
             />
@@ -1425,9 +1506,33 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             />
           </div>
 
-          <ModuleConsolidation
+                  {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={5}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O ciclo PDCA (Plan-Do-Check-Act) é uma ferramenta de melhoria contínua. O que representa a fase 'Check'?"
+          alternativas={[
+              { letra: "A", texto: "Definir objetivos, metas e o plano de ação para a melhoria", correta: false },
+              { letra: "B", texto: "Implementar o plano definido na fase anterior em escala piloto", correta: false },
+              { letra: "C", texto: "Verificar e analisar os resultados obtidos, comparando com o planejado e identificando desvios", correta: true },
+              { letra: "D", texto: "Padronizar as melhorias confirmadas e corrigir o plano se necessário", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="O ciclo recomeça continuamente."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "PDCA: Plan (planejar: definir objetivo e como alcançar) → Do (executar: implementar o plano) → Check (verificar: medir resultados e comparar com metas) → Act (agir: padronizar se funcionou, ou corrigir e replanejar se não)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={5}
-            variant={mv[5]}
+            variant="blue"
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Gestão por Processos",
@@ -1485,7 +1590,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-5")}
             titulo="QUIZ: Gestão por Processos"
             numero={5}
-            variant={mv[5]}
+            variant="blue"
             onComplete={(score: number) => handleModuleComplete("modulo-5", score)}
           />
         </TabsContent>
@@ -1498,13 +1603,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={6}
             titulo="Teoria das Organizações"
             descricao="Evolução histórica do pensamento administrativo: de Taylor à Contingência. Escolas, correntes e como elas moldaram a administração moderna."
-            variant={mv[6]}
+            variant="blue"
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant={mv[6]}
+              variant="blue"
               title="Dossiê Histórico-Teórico"
               description="As grandes escolas e teorias que fundamentam a administração contemporânea."
             />
@@ -1555,7 +1660,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant={mv[6]}
+              variant="blue"
               title="Fundamentos Históricos e Escolas de Pensamento"
               description="Comparação crítica entre as grandes escolas administrativas."
             />
@@ -1679,9 +1784,33 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             />
           </div>
 
-          <ModuleConsolidation
+                  {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={6}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Max Weber propôs o modelo burocrático de organização. Qual é a principal característica desse modelo?"
+          alternativas={[
+              { letra: "A", texto: "Ênfase em relações informais e cultura organizacional para guiar o comportamento", correta: false },
+              { letra: "B", texto: "Racionalidade legal-racional: autoridade baseada em normas formais, cargos, procedimentos escritos e impessoalidade", correta: true },
+              { letra: "C", texto: "Foco na eficiência das tarefas operacionais por meio de padronização de movimentos", correta: false },
+              { letra: "D", texto: "Adaptação constante ao ambiente externo, sem estrutura formal definida", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Ideal weberiano de racionalidade."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Weber identificou três tipos de autoridade: tradicional (costumes), carismática (personalidade do líder) e legal-racional (normas)." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A burocracia é baseada na legal-racional: cargos (não pessoas), normas escritas, impessoalidade, hierarquia definida, competência técnica." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={6}
-            variant={mv[6]}
+            variant="blue"
             video={{
               videoId: "7c-YVly_C9o",
               title: "Escolas Administrativas - Linha do Tempo",
@@ -1739,7 +1868,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-6")}
             titulo="QUIZ: Teoria das Organizações"
             numero={6}
-            variant={mv[6]}
+            variant="blue"
             onComplete={(score: number) => handleModuleComplete("modulo-6", score)}
           />
         </TabsContent>
@@ -1752,13 +1881,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={7}
             titulo="Comunicação e Conflitos"
             descricao="A comunicação como processo vital. Canais, barreiras, feedback. Conflitos: naturais, necessários, podem ser construtivos ou destrutivos."
-            variant={mv[7]}
+            variant="blue"
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant={mv[7]}
+              variant="blue"
               title="Dossiê de Comunicação e Conflitos"
               description="Fundamentos teóricos e dinâmicas relacionais nas organizações contemporâneas."
             />
@@ -1780,7 +1909,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant={mv[7]}
+              variant="blue"
               title="Mecanismos de Diálogo e Gestão de Conflitos"
               description="Aprofundamento técnico nos processos comunicacionais e na mediação corporativa."
             />
@@ -1998,9 +2127,33 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             />
           </div>
 
-          <ModuleConsolidation
+                  {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={7}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O processo de comunicação organizacional inclui vários elementos. O 'ruído' nesse processo refere-se a:"
+          alternativas={[
+              { letra: "A", texto: "O volume sonoro nos ambientes de trabalho que dificulta reuniões presenciais", correta: false },
+              { letra: "B", texto: "Qualquer interferência que distorce ou impede a transmissão fiel da mensagem do emissor ao receptor", correta: true },
+              { letra: "C", texto: "A falta de canais digitais de comunicação interna na organização", correta: false },
+              { letra: "D", texto: "O desalinhamento entre comunicação formal e informal dentro da empresa", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Pode ser físico (barulho), semântico (palavras com múltiplos sentidos), psicológico (preconceitos, emoções), organizacional (hierarquia excessiva) ou tecnológico (falhas no sistema)."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Ruído na comunicação: qualquer fator que distorce, bloqueia ou distrai a transmissão da mensagem." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={7}
-            variant={mv[7]}
+            variant="blue"
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Comunicação e Conflitos Organizacionais",
@@ -2058,7 +2211,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-7")}
             titulo="QUIZ: Comunicação e Conflitos"
             numero={7}
-            variant={mv[7]}
+            variant="blue"
             onComplete={(score: number) => handleModuleComplete("modulo-7", score)}
           />
         </TabsContent>
@@ -2071,13 +2224,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={8}
             titulo="Decisão e Inovação"
             descricao="Processo decisório nas organizações: tipos, modelos, técnicas. Inovação: necessidade estratégica na era do conhecimento."
-            variant={mv[8]}
+            variant="blue"
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant={mv[8]}
+              variant="blue"
               title="Dossiê Decisório e Inovação"
               description="Racionalidade limitada, espiral do conhecimento e armadilhas mentais na tomada de decisão."
             />
@@ -2099,7 +2252,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant={mv[8]}
+              variant="blue"
               title="Racionalidade Decisória e Vetores de Inovação"
               description="Modelos de tomada de decisão e gestão estratégica do conhecimento."
             />
@@ -2288,9 +2441,34 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             />
           </div>
 
-          <ModuleConsolidation
+                  {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={8}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O modelo de 'racionalidade limitada' de Herbert Simon contradiz o modelo racional clássico ao propor que:"
+          alternativas={[
+              { letra: "A", texto: "Gestores têm acesso a toda informação relevante e sempre escolhem a opção ótima", correta: false },
+              { letra: "B", texto: "As decisões são irracionais e baseadas exclusivamente em emoções e intuições pessoais", correta: false },
+              { letra: "C", texto: "Gestores tomam decisões com informação limitada, tempo limitado e capacidade cognitiva limitada, buscando solução ", correta: true },
+              { letra: "D", texto: " (satisficing), não a ótima", correta: false },
+              { letra: "E", texto: "A tomada de decisão deve ser sempre delegada a especialistas externos à organização", correta: false },
+              { letra: "F", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Buscam"
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Simon (Nobel de Economia, 1978): na realidade, gestores não têm informação perfeita, tempo ilimitado nem capacidade de processar todas as alternativas." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa C como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={8}
-            variant={mv[8]}
+            variant="blue"
             video={{
               videoId: "7c-YVly_C9o",
               title: "Decisão Administrativa e Inovação",
@@ -2352,7 +2530,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-8")}
             titulo="QUIZ: Decisão e Inovação"
             numero={8}
-            variant={mv[8]}
+            variant="blue"
             onComplete={(score: number) => handleModuleComplete("modulo-8", score)}
           />
         </TabsContent>
@@ -2365,13 +2543,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={9}
             titulo="Administração na Petrobras"
             descricao="Aplicação prática: desafios únicos de suprimento em uma estatal de energia. Leis 13.303 e 14.133, processos, fornecedores, sustentabilidade."
-            variant={mv[9]}
+            variant="blue"
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant={mv[9]}
+              variant="blue"
               title="Dossiê Petrobras: Marco Regulatório Legal"
               description="Domine a complexidade jurídica e a comparação crítica dos regimes de contratações estatais e públicas."
             />
@@ -2393,7 +2571,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index="LICITAÇÕES"
-              variant={mv[9]}
+              variant="blue"
               title="Lei das Estatais (13.303) vs. Nova Lei de Licitações (14.133)"
               description="Comparativo definitivo exigido pela banca CESGRANRIO para o cargo de Técnico de Suprimentos."
             />
@@ -2495,7 +2673,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant={mv[9]}
+              variant="blue"
               title="Direito Administrativo Aplicado à Sociedade de Economia Mista"
               description="Desafios e soluções administrativas na realidade Petrobras."
             />
@@ -2654,9 +2832,33 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             />
           </div>
 
-          <ModuleConsolidation
+                  {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={9}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A Lei 13.303/2016 (Lei das Estatais) impôs diversas obrigações de governança à Petrobras. Qual das alternativas descreve corretamente uma dessas exigências?"
+          alternativas={[
+              { letra: "A", texto: "Proibição total de contratar executivos com experiência no setor privado", correta: false },
+              { letra: "B", texto: "Obrigatoriedade de Conselho de Administração com maioria de membros independentes e Comitê de Auditoria Estatutário", correta: true },
+              { letra: "C", texto: "Eliminação do processo licitatório para compras abaixo de R$ 10 milhões", correta: false },
+              { letra: "D", texto: "Vedação de qualquer parceria com empresas estrangeiras no setor de E&P", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Objetivo: aumentar transparência, accountability e reduzir interferência política."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Lei 13.303/2016: exige Conselho de Administração com 25%+ de membros independentes, Comitê de Auditoria Estatutário, Comitê de Elegibilidade (perfil dos conselheiros), código de conduta, ouvidoria." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={9}
-            variant={mv[9]}
+            variant="blue"
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Administração Pública e Lei 13.303",
@@ -2714,7 +2916,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-9")}
             titulo="QUIZ: Administração na Petrobras"
             numero={9}
-            variant={mv[9]}
+            variant="blue"
             onComplete={(score: number) => handleModuleComplete("modulo-9", score)}
           />
         </TabsContent>
@@ -2727,13 +2929,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={10}
             titulo="Simulado Geral"
             descricao="Consolidação de todos os 9 módulos anteriores. 10 questões integradas cobrindo fundamentos, teorias, processos e contexto Petrobras."
-            variant={mv[10]}
+            variant="blue"
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant={mv[10]}
+              variant="blue"
               title="Síntese Integradora"
               description="Antes do simulado: revise os conceitos-chave de cada módulo."
             />
@@ -2746,7 +2948,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant={mv[10]}
+              variant="blue"
               title="Checklist de Preparação"
               description="Antes de iniciar o simulado, certifique-se que você domina os pilares estratégicos:"
             />
@@ -2764,9 +2966,33 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             </div>
           </div>
 
-          <ModuleConsolidation
+                  {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={10}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um gestor da área de manutenção da Petrobras identifica que a taxa de falhas em equipamentos aumentou 15% no último trimestre. Ele define metas de redução, redesenha o processo de manutenção preventiva, lidera a equipe na implementação e monitora os resultados. Quais funções do PODC estão sendo exercidas, respectivamente?"
+          alternativas={[
+              { letra: "A", texto: "Controlar → Organizar → Planejar → Dirigir", correta: false },
+              { letra: "B", texto: "Planejar (metas) → Organizar (redesenho de processo) → Dirigir (liderança) → Controlar (monitoramento)", correta: true },
+              { letra: "C", texto: "Dirigir → Planejar → Controlar → Organizar", correta: false },
+              { letra: "D", texto: "Organizar → Planejar → Controlar → Dirigir", correta: false },
+              { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
+            ]}
+          dicaEstrategica="Compreender o PODC em situações práticas é essencial na CESGRANRIO."
+          passos={[
+            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
+            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Esse cenário percorre o PODC completo: Planejar (define metas de redução de falhas) → Organizar (redesenha o processo de manutenção preventiva) → Dirigir (lidera a equipe na implementação) → Controlar (monitora resultados)." },
+            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
+          ]}
+        />
+
+        <ModuleConsolidation
             index={10}
-            variant={mv[10]}
+            variant="blue"
             video={{
               videoId: "7c-YVly_C9o",
               title: "Revisão Geral - Administração Completa",
@@ -2839,7 +3065,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={quizM10}
             titulo="Simulado Geral: Administração Geral Completa"
             numero={10}
-            variant={mv[10]}
+            variant="blue"
             onComplete={(score: number) => handleModuleComplete("modulo-10", score)}
           />
         </TabsContent>
