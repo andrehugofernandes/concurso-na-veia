@@ -39,7 +39,7 @@ const COURSES: Course[] = [
     description: "Prepare-se para o concurso de Técnico de Operações da Petrobras com simulados baseados no padrão CESGRANRIO.",
     href: "/cursos/petrobras",
     color: "from-yellow-500 to-orange-600",
-    icon: <LuAward className="w-6 h-6" />,
+    icon: <img src="/assets/images/logos/petrobras-icon.png" alt="Petrobras" className="w-full h-full object-contain rounded" />,
   },
   {
     id: "caixa",
@@ -53,7 +53,7 @@ const COURSES: Course[] = [
     description: "Domine as provas de Técnico Bancário da Caixa com foco em Conhecimentos Bancários e Atendimento.",
     href: "/cursos/caixa",
     color: "from-blue-500 to-blue-700",
-    icon: <LuTrendingUp className="w-6 h-6" />,
+    icon: <img src="/assets/images/logos/caixa-economica-federal-icon.png" alt="Caixa Econômica" className="w-full h-full object-contain rounded" />,
   },
   {
     id: "bb",
@@ -67,7 +67,7 @@ const COURSES: Course[] = [
     description: "Prepare-se para o cargo de Escriturário do Banco do Brasil com questões atualizadas e comentadas.",
     href: "/cursos/banco-brasil",
     color: "from-green-500 to-emerald-600",
-    icon: <LuUsers className="w-6 h-6" />,
+    icon: <img src="/assets/images/logos/banco-do-brasil-icon.png" alt="Banco do Brasil" className="w-full h-full object-contain rounded" />,
   },
   {
     id: "correios",
@@ -80,8 +80,8 @@ const COURSES: Course[] = [
     successRate: "42%",
     description: "Estude para o concurso de Agente de Correios com simulados ilimitados e aulas ao vivo.",
     href: "/cursos/correios",
-    color: "from-red-500 to-red-700",
-    icon: <LuClock className="w-6 h-6" />,
+    color: "from-yellow-400 to-blue-600",
+    icon: <img src="/assets/images/logos/correios-icon.png" alt="Correios" className="w-full h-full object-contain rounded" />,
   },
   {
     id: "ibge",
@@ -94,8 +94,8 @@ const COURSES: Course[] = [
     successRate: "48%",
     description: "Prepare-se para o IBGE com conteúdo focado em Estatística e Metodologia de Pesquisa.",
     href: "/cursos/ibge",
-    color: "from-purple-500 to-indigo-600",
-    icon: <LuTrendingUp className="w-6 h-6" />,
+    color: "from-blue-400 to-indigo-600",
+    icon: <img src="/assets/images/logos/ibge-icon.png" alt="IBGE" className="w-full h-full object-contain rounded" />,
   },
   {
     id: "inss",
@@ -108,8 +108,8 @@ const COURSES: Course[] = [
     successRate: "35%",
     description: "Domine as legislações e procedimentos do INSS para o cargo de Técnico do Seguro Social.",
     href: "/cursos/inss",
-    color: "from-cyan-500 to-blue-500",
-    icon: <LuAward className="w-6 h-6" />,
+    color: "from-blue-600 to-blue-800",
+    icon: <img src="/assets/images/logos/inss-icon.png" alt="INSS" className="w-full h-full object-contain rounded" />,
   },
 ];
 
@@ -147,7 +147,7 @@ export default function CourseShowcase() {
   }, []);
 
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
+    <section id="cursos" className="py-24 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] pointer-events-none" />
 
@@ -160,11 +160,12 @@ export default function CourseShowcase() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <p className="text-primary font-mono text-sm tracking-[0.3em] uppercase mb-4">
+            <div className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4 shadow-sm">
               Vitrine de Cursos
-            </p>
+            </div>
             <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
-              Escolha seu Concurso
+              Escolha seu{" "}
+              <span className="text-primary">Concurso</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Explore nossos cursos para os principais concursos públicos de nível médio no Brasil. 
@@ -192,32 +193,34 @@ export default function CourseShowcase() {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
               
-              <div className="relative bg-card border border-border rounded-2xl p-6 h-full flex flex-col shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
+              <Link href={`/register?concurso=${course.id}`} className="relative block bg-card border border-border rounded-2xl p-6 h-full flex flex-col shadow-sm group-hover:shadow-lg transition-all duration-300 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 {/* Gradient background accent */}
                 <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${course.color} opacity-5 rounded-full -mr-16 -mt-16 group-hover:opacity-10 transition-opacity`} />
 
                 {/* Content */}
                 <div className="relative z-10">
-                  {/* Icon and Organization */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className={`p-3 rounded-lg bg-gradient-to-br ${course.color} text-white shadow-md`}>
+                  {/* Difficulty badge — absolute top-right, não interfere no layout */}
+                  <span className={`absolute top-0 right-0 text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl ${
+                    course.difficulty === "Fácil"
+                      ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                      : course.difficulty === "Médio"
+                      ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400"
+                      : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+                  }`}>
+                    {course.difficulty}
+                  </span>
+
+                  {/* Logo + Nome do concurso alinhados pixel perfect */}
+                  <div className="flex items-center gap-3 mb-3 pr-16">
+                    <div className="shrink-0 p-1.5 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700 w-12 h-12 flex items-center justify-center">
                       {course.icon}
                     </div>
-                    <span className={`text-xs font-bold px-3 py-1 rounded-full ${
-                      course.difficulty === "Fácil" 
-                        ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                        : course.difficulty === "Médio"
-                        ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400"
-                        : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
-                    }`}>
-                      {course.difficulty}
-                    </span>
+                    <h3 className="text-[1.45rem] leading-tight font-black text-foreground tracking-tight">
+                      {course.name}
+                    </h3>
                   </div>
 
-                  {/* Course Name */}
-                  <h3 className="text-2xl font-bold text-foreground mb-1">
-                    {course.name}
-                  </h3>
+                  {/* Cargo/Organização */}
                   <p className="text-sm text-muted-foreground mb-4">
                     {course.organization}
                   </p>
@@ -251,14 +254,13 @@ export default function CourseShowcase() {
                 </div>
 
                 {/* CTA Button */}
-                <Link
-                  href={course.href}
-                  className="mt-auto relative z-10 w-full py-3 px-4 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary font-bold transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                <div
+                  className="mt-auto relative z-10 w-full py-3 px-4 rounded-lg bg-primary/10 group-hover:bg-primary/20 text-primary font-bold transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   Começar Curso
-                  <LuArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </Link>
-              </div>
+                  <LuArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
             </motion.div>
           ))}
         </div>

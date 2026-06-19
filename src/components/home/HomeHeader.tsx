@@ -5,7 +5,7 @@ import PetrobrasLogo from '../PetrobrasLogo';
 import { LuLayoutGrid, LuX, LuMouse } from 'react-icons/lu';
 import { AuthThemeToggle } from '../auth/AuthThemeToggle';
 
-export default function FeloHeader() {
+export default function HomeHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const bgColor = "bg-slate-50 dark:bg-primary";
 
@@ -33,7 +33,7 @@ export default function FeloHeader() {
           >
             <div className="flex flex-col gap-2">
               <Link href="#cursos" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 hover:bg-slate-50 hover:text-primary rounded-lg font-medium transition">
-                Plataforma
+                Cursos
               </Link>
               <Link href="#resultados" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 hover:bg-slate-50 hover:text-primary rounded-lg font-medium transition">
                 Resultados

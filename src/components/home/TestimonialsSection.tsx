@@ -42,7 +42,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-24 bg-slate-50 dark:bg-muted/20 border-y border-slate-200 dark:border-white/5 relative overflow-hidden">
+    <section className="py-24 bg-slate-50 dark:bg-primary/5 border-y border-slate-200 dark:border-white/5 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
 
@@ -63,7 +63,7 @@ export default function TestimonialsSection() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-black tracking-tight mb-6"
           >
-            Aprovados pelo <span className="text-primary">A VAGA EH MINHA</span>
+            Aprovados pelo <span className="text-primary whitespace-nowrap">A VAGA EH MINHA</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

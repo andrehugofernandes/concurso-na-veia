@@ -16,13 +16,14 @@ export interface MateriaConteudo {
     cor: string;
     requiredPlan: PlanType;
     topicos: Topico[];
+    concursos?: string[]; // Lista de slugs de concursos aos quais se aplica. Se undefined, aplica-se a todos (ex: português, matemática).
 }
 
 export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
     {
         id: 'portugues',
         nome: 'Língua Portuguesa',
-        descricao: 'Gramática e interpretação de texto conforme Edital Petrobras 2026',
+        descricao: 'Gramática e interpretação de texto para concursos de nível médio',
         icone: '📝',
         cor: 'from-blue-500 to-cyan-500',
         requiredPlan: 'Bronze',
@@ -31,19 +32,19 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'coesao-coerencia', titulo: 'Coesão e Coerência', descricao: 'Aprenda a conectar ideias de forma lógica', duracao: '21 min', ordem: 2 },
             { id: 'reescrita-frases', titulo: 'Reescrita de Frases', descricao: 'Técnicas para reescrever mantendo o sentido', duracao: '25 min', ordem: 3 },
             { id: 'crase', titulo: 'Crase', descricao: 'Quando usar e não usar a crase', duracao: '10 min', ordem: 4 },
-            { id: 'pontuacao', titulo: 'Pontuação', descricao: 'Domine a vírgula (não é respiração!) e outros sinais', duracao: '19 min', ordem: 5 },
+            { id: 'pontuacao', titulo: 'Pontuação', descricao: 'Domine a vírgula e outros sinais', duracao: '19 min', ordem: 5 },
             { id: 'concordancia', titulo: 'Concordância Verbal e Nominal', descricao: 'Regras de concordância gramatical', duracao: '36 min', ordem: 6 },
             { id: 'regencia', titulo: 'Regência Verbal e Nominal', descricao: 'Uso correto das preposições', duracao: '26 min', ordem: 7 },
             { id: 'sintaxe', titulo: 'Sintaxe', descricao: 'Análise sintática e estrutura das orações', duracao: '17 min', ordem: 8 },
-            { id: 'classes-palavras', titulo: 'Classes de Palavras', descricao: 'As 10 classes gramaticais: Verbo, Substantivo, Pronome, Adjetivo, Conjunção, Preposição, Advérbio, Artigo, Numeral e Interjeição', duracao: '33 min', ordem: 9 },
-            { id: 'tipos-textuais', titulo: 'Tipos Textuais', descricao: 'Aprenda Tipologia: Narração, Descrição, Injunção e Dissertação', duracao: '21 min', ordem: 10 },
-            { id: 'ortografia', titulo: 'Ortografia e Acentuação', descricao: 'Hífen, Expressões Problemáticas, Novo Acordo e Acentuação', duracao: '19 min', ordem: 11 },
+            { id: 'classes-palavras', titulo: 'Classes de Palavras', descricao: 'Substantivo, verbo, pronome, conjunção, etc.', duracao: '33 min', ordem: 9 },
+            { id: 'tipos-textuais', titulo: 'Tipos Textuais', descricao: 'Narração, descrição, injunção e dissertação', duracao: '21 min', ordem: 10 },
+            { id: 'ortografia', titulo: 'Ortografia e Acentuação', descricao: 'Hífen, novo acordo ortográfico e regras de acentuação', duracao: '19 min', ordem: 11 },
         ]
     },
     {
         id: 'matematica',
         nome: 'Matemática',
-        descricao: 'Raciocínio lógico-quantitativo conforme Edital Petrobras 2026',
+        descricao: 'Raciocínio lógico-quantitativo essencial para concursos',
         icone: '🔢',
         cor: 'from-purple-500 to-pink-500',
         requiredPlan: 'Bronze',
@@ -76,6 +77,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         icone: '⚡',
         cor: 'from-yellow-500 to-orange-500',
         requiredPlan: 'Prata',
+        concursos: ['petrobras'],
         topicos: [
             { id: 'cinematica', titulo: 'Cinemática', descricao: 'MRU, MRUV e movimento circular', duracao: '10 min', ordem: 1 },
             { id: 'dinamica', titulo: 'Dinâmica', descricao: 'Leis de Newton e aplicações', duracao: '10 min', ordem: 2 },
@@ -92,6 +94,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         icone: '🧪',
         cor: 'from-green-500 to-emerald-500',
         requiredPlan: 'Prata',
+        concursos: ['petrobras'],
         topicos: [
             { id: 'atomos', titulo: 'Estrutura Atômica', descricao: 'Modelos atômicos e distribuição eletrônica', duracao: '8 min', ordem: 1 },
             { id: 'tabela-periodica', titulo: 'Tabela Periódica', descricao: 'Propriedades periódicas e famílias', duracao: '7 min', ordem: 2 },
@@ -103,7 +106,6 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'petroleo', titulo: 'Petróleo e Derivados', descricao: 'Refino e produtos do petróleo', duracao: '10 min', ordem: 8 },
         ]
     },
-    // ===== CONHECIMENTOS ESPECÍFICOS - ADMINISTRAÇÃO =====
     {
         id: 'especifica-bloco-i-gestao-estrategica',
         nome: 'Bloco I - Gestão Estratégica',
@@ -111,6 +113,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         icone: '📚',
         cor: 'from-blue-600 to-indigo-600',
         requiredPlan: 'Ouro',
+        concursos: ['petrobras'],
         topicos: [
             { id: 'planejamento-estrategico', titulo: 'Planejamento Estratégico', descricao: 'Análise SWOT, BSC, formulação e implementação de estratégias corporativas', duracao: '60 min', ordem: 1 },
             { id: 'gestao-de-processos', titulo: 'Gestão de Processos', descricao: 'BPM, mapeamento, modelagem BPMN, melhoria contínua e indicadores', duracao: '60 min', ordem: 2 },
@@ -125,6 +128,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         icone: '🇺🇸',
         cor: 'from-red-500 to-pink-500',
         requiredPlan: 'Ouro',
+        concursos: ['petrobras', 'bb'],
         topicos: [
             { id: 'petrolingo', titulo: 'Petro-Lingo', descricao: 'Aprenda inglês técnico com gamificação no estilo Duolingo', duracao: 'Prática Livre', ordem: 1 },
             { id: 'reading-strategies', titulo: 'Reading Strategies', descricao: 'Técnicas de leitura e skimming', duracao: '6 min', ordem: 2 },
@@ -135,7 +139,6 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'comprehension', titulo: 'Text Comprehension', descricao: 'Interpretação de textos técnicos', duracao: '8 min', ordem: 7 },
         ]
     },
-    // ===== BLOCO II - GESTÃO DE PESSOAS E MARKETING (NÍVEL SUPERIOR) =====
     {
         id: 'especifica-bloco-ii-gestao-de-pessoas-e-marketing',
         nome: 'Bloco II - Gestão de Pessoas e Marketing',
@@ -143,20 +146,21 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         icone: '👥',
         cor: 'from-indigo-500 to-purple-500',
         requiredPlan: 'Ouro',
+        concursos: ['petrobras'],
         topicos: [
             { id: 'gestao-pessoas', titulo: 'Gestão de Pessoas', descricao: 'Recrutamento, desenvolvimento, retenção e gestão de talentos', duracao: '18 min', ordem: 1 },
-            { id: 'gestao-recursos-humanos', titulo: 'Gestão de Recursos Humanos', descricao: 'Estratégia, organização e métricas de RH', duracao: '18 min', ordem: 2 },
+            { id: 'gestao-recursos-humanos', titulo: 'Gestão de Recursos Humanos', descricao: 'Estrategia, organização e métricas de RH', duracao: '18 min', ordem: 2 },
             { id: 'marketing-gerencial', titulo: 'Marketing Gerencial', descricao: 'Estratégia de marketing, segmentação e comunicação integrada', duracao: '18 min', ordem: 3 },
         ]
     },
-    // ===== BLOCO I - ADMINISTRAÇÃO (NÍVEL TÉCNICO) =====
     {
         id: 'especifica-bloco-i-administracao-suprimento',
         nome: 'Bloco I - Administração (Suprimento)',
-        descricao: 'Conhecimentos específicos para Técnico de Suprimento de Bens e Serviços - Administração - Administração Geral, Qualidade, Logística e Compras',
+        descricao: 'Técnico de Suprimento de Bens e Serviços - Administração Geral, Qualidade, Logística e Compras',
         icone: '📁',
         cor: 'from-blue-500 to-indigo-600',
         requiredPlan: 'Ouro',
+        concursos: ['petrobras'],
         topicos: [
             { id: 'administracao-geral-suprimento', titulo: 'Administração Geral', descricao: 'Conceitos fundamentais, funções administrativas e comportamento organizacional', duracao: '17 min', ordem: 1 },
             { id: 'gestao-qualidade-suprimento', titulo: 'Gestão de Qualidade', descricao: 'Princípios da qualidade, ferramentas e melhoria de processos', duracao: '16 min', ordem: 2 },
@@ -168,42 +172,42 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'gestao-estoques-almoxarifados-suprimento', titulo: 'Almoxarifado e Estoques', descricao: 'Funções do almoxarifado, inventário, controle e gestão', duracao: '19 min', ordem: 8 },
         ]
     },
-    // ===== BLOCO II - LEGISLAÇÃO E TRIBUTOS (NÍVEL TÉCNICO/MÉDIO) =====
     {
         id: 'especifica-bloco-ii-legislacao-tributos',
         nome: 'Bloco II - Legislação e Tributos',
-        descricao: 'Conhecimentos específicos em Lei 13.303, RLCP e Direito Tributário para Técnico de Suprimento de Bens e Serviços - Administração',
+        descricao: 'Conhecimentos específicos em Lei 13.303, RLCP e Direito Tributário',
         icone: '⚖️',
         cor: 'from-violet-500 to-fuchsia-500',
         requiredPlan: 'Ouro',
+        concursos: ['petrobras'],
         topicos: [
             { id: 'lei-13303', titulo: 'Lei 13.303 - Empresa Estatal', descricao: 'Lei Federal que disciplina funcionamento e governança de empresas públicas', duracao: '18 min', ordem: 1 },
             { id: 'rlcp', titulo: 'RLCP - Regulamento de Licitações Petrobras', descricao: 'Procedimentos transparentes de compras e contratações', duracao: '18 min', ordem: 2 },
             { id: 'administrativo-tributario', titulo: 'Administrativo e Tributário', descricao: 'Contabilidade básica, direito tributário e administração tributária', duracao: '17 min', ordem: 3 },
         ]
     },
-    // ===== BLOCO III - TRIBUTOS (NÍVEL TÉCNICO) =====
     {
         id: 'especifica-bloco-iii-tributos-suprimento',
         nome: 'Bloco III - Tributos (Suprimento)',
-        descricao: 'Contabilidade básica, Direito tributário e Administração tributária aplicada para Técnico de Suprimento de Bens e Serviços - Administração',
+        descricao: 'Contabilidade básica, Direito tributário e Administração tributária aplicada',
         icone: '💰',
         cor: 'from-emerald-500 to-teal-600',
         requiredPlan: 'Ouro',
+        concursos: ['petrobras'],
         topicos: [
             { id: 'contabilidade-basica-suprimento', titulo: 'Contabilidade Básica', descricao: 'Fundamentos contábeis, balanço e lançamentos', duracao: '18 min', ordem: 1 },
             { id: 'direito-tributario-suprimento', titulo: 'Direito Tributário', descricao: 'Princípios tributários, impostos e obrigações', duracao: '18 min', ordem: 2 },
             { id: 'administracao-tributaria-suprimento', titulo: 'Administração Tributária', descricao: 'Processos administrativos e fiscalização', duracao: '18 min', ordem: 3 },
         ]
     },
-    // ===== SEGURANÇA DO TRABALHO =====
     {
         id: 'nrs',
         nome: 'Normas Regulamentadoras (NRs)',
-        descricao: 'Estudo aprofundado das principais NRs aplicadas à Petrobras e à indústria.',
+        descricao: 'Estudo aprofundado das principais NRs aplicadas à indústria',
         icone: '👷',
         cor: 'from-emerald-500 to-green-600',
         requiredPlan: 'Prata',
+        concursos: ['petrobras'],
         topicos: [
             { id: 'nr10', titulo: 'NR-10 (Elétrica)', descricao: 'Segurança em Instalações e Serviços em Eletricidade', duracao: '90 min', ordem: 1 },
             { id: 'nr13', titulo: 'NR-13 (Vasos e Caldeiras)', descricao: 'Caldeiras, Vasos de Pressão e Tubulações', duracao: '90 min', ordem: 2 },
@@ -211,19 +215,129 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'nr35', titulo: 'NR-35 (Trabalho em Altura)', descricao: 'Requisitos e medidas de proteção para trabalho em altura', duracao: '90 min', ordem: 4 },
         ]
     },
-    // ===== MANUTENÇÃO INDUSTRIAL (CLUSTER BASE) =====
     {
         id: 'manutencao',
         nome: 'Manutenção Industrial',
-        descricao: 'Conhecimentos básicos de mecânica, metrologia e desenho técnico para técnicos de manutenção e inspeção.',
+        descricao: 'Conhecimentos básicos de mecânica, metrologia e desenho técnico',
         icone: '🛠️',
         cor: 'from-blue-600 to-indigo-700',
         requiredPlan: 'Prata',
+        concursos: ['petrobras'],
         topicos: [
             { id: 'metrologia', titulo: 'Metrologia Industrial', descricao: 'Medição com paquímetro, micrômetro e tolerâncias ISO', duracao: '120 min', ordem: 1 },
             { id: 'desenho-tecnico', titulo: 'Desenho Técnico', descricao: 'Projeção ortográfica, cortes e representação industrial', duracao: '120 min', ordem: 2 },
         ]
     },
+    // ===== NOVAS MATÉRIAS - OUTROS CONCURSOS =====
+    {
+        id: 'conhecimentos-bancarios',
+        nome: 'Conhecimentos Bancários',
+        descricao: 'Sistema Financeiro Nacional, Mercado e Produtos Bancários',
+        icone: '🏦',
+        cor: 'from-emerald-600 to-teal-600',
+        requiredPlan: 'Bronze',
+        concursos: ['caixa', 'bb'],
+        topicos: [
+            { id: 'sfn', titulo: 'Sistema Financeiro Nacional', descricao: 'Estrutura, órgãos reguladores e fiscalizadores', duracao: '25 min', ordem: 1 },
+            { id: 'produtos-bancarios', titulo: 'Produtos e Serviços Bancários', descricao: 'Contas, investimentos, cartões e garantias', duracao: '30 min', ordem: 2 },
+            { id: 'garantias', titulo: 'Garantias do Sistema Financeiro', descricao: 'Aval, fiança, hipoteca e penhor', duracao: '20 min', ordem: 3 },
+        ]
+    },
+    {
+        id: 'atendimento-vendas',
+        nome: 'Atendimento e Vendas',
+        descricao: 'Técnicas de vendas, marketing e Código de Defesa do Consumidor',
+        icone: '🤝',
+        cor: 'from-orange-500 to-amber-500',
+        requiredPlan: 'Bronze',
+        concursos: ['caixa', 'bb', 'correios'],
+        topicos: [
+            { id: 'qualidade-atendimento', titulo: 'Qualidade no Atendimento', descricao: 'Postura, empatia e satisfação do cliente', duracao: '20 min', ordem: 1 },
+            { id: 'tecnicas-vendas', titulo: 'Técnicas de Vendas e Negociação', descricao: 'Abordagem, objeções e fechamento de vendas', duracao: '25 min', ordem: 2 },
+            { id: 'cdc', titulo: 'Código de Defesa do Consumidor', descricao: 'Direitos básicos e regras para serviços financeiros', duracao: '15 min', ordem: 3 },
+        ]
+    },
+    {
+        id: 'tecnologia-informacao',
+        nome: 'Tecnologia da Informação',
+        descricao: 'TI, banco de dados, segurança e comportamento digital',
+        icone: '💻',
+        cor: 'from-blue-500 to-indigo-500',
+        requiredPlan: 'Prata',
+        concursos: ['caixa', 'bb'],
+        topicos: [
+            { id: 'seguranca-informacao', titulo: 'Segurança da Informação', descricao: 'Criptografia, malwares, senhas e boas práticas', duracao: '22 min', ordem: 1 },
+            { id: 'banco-dados', titulo: 'Conceitos de Banco de Dados', descricao: 'Modelagem, SQL, Big Data e Analytics', duracao: '30 min', ordem: 2 },
+            { id: 'comportamento-digital', titulo: 'Comportamento e Cultura Digital', descricao: 'Open Finance, PIX, transformação digital e IA', duracao: '18 min', ordem: 3 },
+        ]
+    },
+    {
+        id: 'conhecimentos-postais',
+        nome: 'Conhecimentos Postais',
+        descricao: 'Serviços postais, regulamento e logística dos Correios',
+        icone: '📦',
+        cor: 'from-yellow-600 to-yellow-500',
+        requiredPlan: 'Bronze',
+        concursos: ['correios'],
+        topicos: [
+            { id: 'servicos-postais', titulo: 'Serviços Postais e Logística', descricao: 'Envio, SEDEX, PAC, telegramas e logística reversa', duracao: '25 min', ordem: 1 },
+            { id: 'regulamento-postal', titulo: 'Regulamento do Serviço Postal', descricao: 'Legislação e diretrizes da ECT', duracao: '20 min', ordem: 2 },
+        ]
+    },
+    {
+        id: 'censo-tecnico',
+        nome: 'Conhecimentos Técnicos do Censo',
+        descricao: 'Conceitos censitários e coleta de dados do IBGE',
+        icone: '🗺️',
+        cor: 'from-teal-500 to-cyan-500',
+        requiredPlan: 'Bronze',
+        concursos: ['ibge'],
+        topicos: [
+            { id: 'manual-recenseador', titulo: 'Manual de Coleta e Censo', descricao: 'Fluxo de entrevista e captação de dados no formulário', duracao: '35 min', ordem: 1 },
+            { id: 'entrevista-campo', titulo: 'Técnicas de Entrevista', descricao: 'Abordagem de moradores e tratamento de recusas', duracao: '20 min', ordem: 2 },
+        ]
+    },
+    {
+        id: 'etica-servico-publico',
+        nome: 'Ética no Serviço Público',
+        descricao: 'Código de ética profissional e Regime Disciplinar',
+        icone: '⚖️',
+        cor: 'from-purple-500 to-indigo-500',
+        requiredPlan: 'Bronze',
+        concursos: ['ibge', 'inss'],
+        topicos: [
+            { id: 'codigo-etica', titulo: 'Código de Ética Profissional', descricao: 'Deveres, vedações e comissões de ética do servidor', duracao: '15 min', ordem: 1 },
+            { id: 'lei-8112', titulo: 'Regime Jurídico Único (Lei 8.112/90)', descricao: 'Deveres, proibições e penalidades aplicadas ao servidor', duracao: '25 min', ordem: 2 },
+        ]
+    },
+    {
+        id: 'direito-previdenciario',
+        nome: 'Direito Previdenciário',
+        descricao: 'Seguridade Social, RGPS, benefícios e custeio do INSS',
+        icone: '🛡️',
+        cor: 'from-rose-600 to-red-600',
+        requiredPlan: 'Prata',
+        concursos: ['inss'],
+        topicos: [
+            { id: 'seguridade-social', titulo: 'Conceitos da Seguridade Social', descricao: 'Saúde, Assistência Social e Previdência Social', duracao: '30 min', ordem: 1 },
+            { id: 'rgps', titulo: 'Regime Geral de Previdência Social', descricao: 'Segurados, dependentes e período de graça', duracao: '40 min', ordem: 2 },
+            { id: 'beneficios', titulo: 'Benefícios em Espécie do RGPS', descricao: 'Aposentadorias, auxílios e pensões do INSS', duracao: '45 min', ordem: 3 },
+        ]
+    },
+    {
+        id: 'direito-administrativo-constitucional',
+        nome: 'Direito Administrativo e Constitucional',
+        descricao: 'Princípios administrativos, atos, servidores e direitos constitucionais',
+        icone: '🏛️',
+        cor: 'from-amber-600 to-amber-700',
+        requiredPlan: 'Prata',
+        concursos: ['inss'],
+        topicos: [
+            { id: 'principios-adm', titulo: 'Princípios da Administração Pública', descricao: 'Legalidade, Impessoalidade, Moralidade, Publicidade e Eficiência', duracao: '20 min', ordem: 1 },
+            { id: 'atos-administrativos', titulo: 'Atos Administrativos', descricao: 'Requisitos, atributos e extinção de atos públicos', duracao: '25 min', ordem: 2 },
+            { id: 'direitos-fundamentais', titulo: 'Direitos e Garantias Fundamentais', descricao: 'Artigo 5º da CF/88 e remédios constitucionais', duracao: '30 min', ordem: 3 },
+        ]
+    }
 ];
 
 export function getMateriaById(id: string): MateriaConteudo | undefined {

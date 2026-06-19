@@ -62,6 +62,32 @@ export async function proxy(request: NextRequest) {
         return NextResponse.redirect(url)
     }
 
+    // Configuração de Content Security Policy (CSP)
+    const cspHeader = `
+        default-src 'self';
+        script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com https://www.gstatic.com https://js.stripe.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        img-src 'self' blob: data: https://firebasestorage.googleapis.com https://*.supabase.co https://lh3.googleusercontent.com;
+        font-src 'self' https://fonts.gstatic.com;
+        connect-src 'self' https://*.supabase.co wss://*.supabase.co https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firebasestorage.googleapis.com https://api.stripe.com;
+        frame-src 'self' https://js.stripe.com https://hooks.stripe.com;
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+        frame-ancestors 'none';
+        upgrade-insecure-requests;
+    `.replace(/\s{2,}/g, ' ').trim();
+
+    supabaseResponse.headers.set('Content-Security-Policy', cspHeader);
+    supabaseResponse.headers.set('X-Content-Type-Options', 'nosniff');
+    supabaseResponse.headers.set('X-Frame-Options', 'DENY');
+    supabaseResponse.headers.set('X-XSS-Protection', '1; mode=block');
+    supabaseResponse.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  
+    if (process.env.NODE_ENV === 'production') {
+        supabaseResponse.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+    }
+
     return supabaseResponse
 }
 

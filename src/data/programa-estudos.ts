@@ -28,41 +28,47 @@ const BLOCO_COLORS = [
 const BLOCO_ICONS = ['📚', '🔧', '🧠', '⚙️', '🔬'];
 
 export function getProgramaDeEstudos(cargoId?: string, isElite?: boolean): MateriaConteudo[] {
-    // 1. Se for Elite Total, retorna todas as matérias disponíveis
+    const normalizedCargoId = cargoId ? (CARGO_ID_MAP[cargoId] || cargoId) : undefined;
+    const profissao = normalizedCargoId ? getProfissaoById(normalizedCargoId) : undefined;
+    const userConcursoSlug = profissao?.concurso || "petrobras";
+
+    // Filtrar matérias pelo concurso do usuário
+    const filteredMaterias = CONTEUDO_MATERIAS.filter((m) => {
+        if (!m.concursos) return true; // Matérias comuns (Português, Matemática)
+        return m.concursos.includes(userConcursoSlug);
+    });
+
+    // 1. Se for Elite Total, retorna todas as matérias disponíveis para esse concurso
     if (isElite) {
-        return CONTEUDO_MATERIAS;
+        return filteredMaterias;
     }
 
     // 2. Matérias Básicas (Sempre presentes para usuários comuns)
     const programa: MateriaConteudo[] = [
-        CONTEUDO_MATERIAS.find(m => m.id === 'portugues')!,
-        CONTEUDO_MATERIAS.find(m => m.id === 'matematica')!,
-    ];
+        filteredMaterias.find(m => m.id === 'portugues')!,
+        filteredMaterias.find(m => m.id === 'matematica')!,
+    ].filter(Boolean);
 
     // Se não tiver cargo selecionado, retorna o básico padrão
     if (!cargoId) {
         return programa;
     }
 
-    // Mapear ID do legado/usuário para ID do edital
-    const normalizedCargoId = CARGO_ID_MAP[cargoId] || cargoId;
-    const profissao = getProfissaoById(normalizedCargoId);
-
     if (!profissao) {
         return programa;
     }
 
-    // 3. Adicionar Inglês se for Nível Superior
+    // 3. Adicionar Inglês se for Nível Superior e a matéria estiver disponível no concurso
     if (profissao.nivel === 'superior') {
-        const ingles = CONTEUDO_MATERIAS.find(m => m.id === 'ingles');
+        const ingles = filteredMaterias.find(m => m.id === 'ingles');
         if (ingles && !programa.find(p => p.id === 'ingles')) {
             programa.push(ingles);
         }
     }
 
     // 4. Adicionar Matérias Específicas
-    // Tenta encontrar blocos pré-definidos em CONTEUDO_MATERIAS primeiro (Ex: Suprimento-ADM)
-    const blocosPreDefinidos = CONTEUDO_MATERIAS.filter(m => 
+    // Tenta encontrar blocos pré-definidos em filteredMaterias primeiro
+    const blocosPreDefinidos = filteredMaterias.filter(m => 
         m.id.startsWith(`especifica-bloco`) && 
         m.descricao.toLowerCase().includes(profissao.nome.toLowerCase())
     );
@@ -89,7 +95,8 @@ export function getProgramaDeEstudos(cargoId?: string, isElite?: boolean): Mater
                 icone: BLOCO_ICONS[index % BLOCO_ICONS.length],
                 cor: BLOCO_COLORS[index % BLOCO_COLORS.length],
                 requiredPlan: 'Ouro',
-                topicos: topicos
+                topicos: topicos,
+                concursos: [userConcursoSlug]
             };
 
             programa.push(novaMateria);

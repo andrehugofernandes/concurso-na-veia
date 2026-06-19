@@ -3,6 +3,7 @@
 import { Simulado, Usuario, Questao } from '@/lib/types';
 import { formatarTempo, cn } from '@/lib/utils';
 import { AnimatedBorder } from '@/components/ui/animated-border';
+import DOMPurify from 'isomorphic-dompurify';
 
 interface Props {
     simulado: Simulado;
@@ -167,7 +168,7 @@ export default function SimuladoScreen({
                         {/* Question Text */}
                         <div
                             className="text-xl md:text-2xl font-bold text-foreground mb-10 leading-relaxed tracking-tight"
-                            dangerouslySetInnerHTML={{ __html: questao.enunciado }}
+                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questao.enunciado) }}
                         />
 
                         {/* Alternatives */}
@@ -190,7 +191,7 @@ export default function SimuladoScreen({
                                     </span>
                                     <span
                                         className="flex-1 pt-1.5 text-base md:text-lg font-medium leading-normal"
-                                        dangerouslySetInnerHTML={{ __html: alternativa }}
+                                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(alternativa) }}
                                     />
                                     {mostrarResultado && index === questao.correta && (
                                         <div className="w-8 h-8 rounded-full bg-green-500 shadow-lg shadow-green-500/30 flex items-center justify-center text-white shrink-0 animate-in zoom-in duration-300">
@@ -225,7 +226,7 @@ export default function SimuladoScreen({
                         </h3>
                         <div
                             className="text-muted-foreground leading-relaxed text-lg"
-                            dangerouslySetInnerHTML={{ __html: questao.explicacao }}
+                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questao.explicacao) }}
                         />
                     </div>
                 )}

@@ -1660,7 +1660,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           numero={10}
           titulo="Simulado Geral"
           descricao="Teste final abrangente. Aprovação destrava a XP completa da Missão Geração Ouro da CESGRANRIO focada em concursos Petrobras."
-          variant={10}
+          variant={getModuleVariant(10)}
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1668,7 +1668,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
             index="INTRO"
             title="Simulado Geral: Compras"
             description="Avaliação integrada consolidando todos os conceitos estudados nesta aula."
-            variant={10}
+            variant={getModuleVariant(10)}
           />
 
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
@@ -1714,7 +1714,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={10}
           titulo="Na Prática: Como a Banca Cobra"
-          variant={"10"}
+          variant="blue"
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1736,7 +1736,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
           index={10}
-          variant={10}
+          variant={getModuleVariant(10)}
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Revisão e Simulado Geral de Suprimentos",
@@ -1764,8 +1764,8 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         <QuizInterativo
           titulo="Simulado Final: Suprimentos"
           numero={10}
-          variant={10}
-          questoes={[toQQ(COMPRAS_QUIZZES["modulo-10"])]}
+          variant={getModuleVariant(10)}
+          questoes={toQQ(COMPRAS_QUIZZES["modulo-10"])}
           onComplete={(score: number) => handleQuizComplete("modulo-10", score)}
         />
       </TabsContent>

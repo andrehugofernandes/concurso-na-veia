@@ -37,6 +37,7 @@ interface UserData {
   nivelConcurso?: string;
   diasRestantesTrial?: number;
   simuladosHoje?: number;
+  user_metadata?: any;
 }
 
 export default function DashboardPage() {
@@ -90,16 +91,34 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!loadingProgress) {
-      // Calculate stats
-      let totalLessons = 0;
-      CONTEUDO_MATERIAS.forEach((m) => (totalLessons += m.topicos.length));
+      // Obter o concurso do usuário baseado no cargo ou metadata
+      const userCargo = user?.cargo || "operacao";
+      const userConcursoSlug = getProfissaoById(userCargo)?.concurso || user?.user_metadata?.concurso || "petrobras";
 
-      // Calculate directly instead of using unstable dependency function
-      const completedCount = Object.values(allContentProgress).filter(
-        (p) => p.completed,
+      const filtered = CONTEUDO_MATERIAS.filter((m) => {
+        if (!m.concursos) return true; // Matérias comuns
+        return m.concursos.includes(userConcursoSlug);
+      });
+
+      let totalLessons = 0;
+      filtered.forEach((m) => (totalLessons += m.topicos.length));
+
+      // Filtrar progressos que pertencem às matérias do concurso do usuário
+      const completedCount = Object.entries(allContentProgress).filter(
+        ([key, p]) => {
+          const [materiaId] = key.split("/");
+          const belongsToContest = filtered.some((m) => m.id === materiaId);
+          return belongsToContest && p.completed;
+        }
       ).length;
-      const inProgressCount =
-        Object.keys(allContentProgress).length - completedCount;
+
+      const inProgressCount = Object.entries(allContentProgress).filter(
+        ([key, p]) => {
+          const [materiaId] = key.split("/");
+          const belongsToContest = filtered.some((m) => m.id === materiaId);
+          return belongsToContest && !p.completed && p.progress_percent > 0;
+        }
+      ).length;
 
       setStats({
         completed: completedCount,
@@ -107,7 +126,7 @@ export default function DashboardPage() {
         total: totalLessons > 0 ? totalLessons : 10,
       });
     }
-  }, [loadingProgress, allContentProgress]);
+  }, [loadingProgress, allContentProgress, user]);
 
   const taxaAcerto = user
     ? user.questoes_certas + user.questoes_erradas > 0
@@ -171,6 +190,57 @@ export default function DashboardPage() {
         diasRestantesTrial: 7,
         simuladosHoje: 0,
       };
+
+  const userCargo = userData.cargo || "operacao";
+  const userConcursoSlug = getProfissaoById(userCargo)?.concurso || userData.user_metadata?.concurso || "petrobras";
+
+  const filtered = CONTEUDO_MATERIAS.filter((m) => {
+    if (!m.concursos) return true;
+    return m.concursos.includes(userConcursoSlug);
+  });
+
+  let lastStudiedTopic = {
+    materiaId: "portugues",
+    topicoId: "interpretacao-texto",
+    titulo: "Interpretação de Texto",
+    materiaNome: "Língua Portuguesa"
+  };
+
+  if (filtered.length > 0) {
+    const progressList = Object.entries(allContentProgress).filter(([key]) => {
+      const [materiaId] = key.split("/");
+      return filtered.some((m) => m.id === materiaId);
+    });
+
+    if (progressList.length > 0) {
+      const inProgress = progressList.find(([_, p]) => !p.completed && p.progress_percent > 0);
+      const chosen = inProgress || progressList[0];
+      if (chosen) {
+        const [materiaId, topicoId] = chosen[0].split("/");
+        const mat = filtered.find((m) => m.id === materiaId);
+        const top = mat?.topicos.find((t) => t.id === topicoId);
+        if (mat && top) {
+          lastStudiedTopic = {
+            materiaId,
+            topicoId,
+            titulo: top.titulo,
+            materiaNome: mat.nome
+          };
+        }
+      }
+    } else {
+      const firstMat = filtered[0];
+      const firstTop = firstMat.topicos[0];
+      if (firstMat && firstTop) {
+        lastStudiedTopic = {
+          materiaId: firstMat.id,
+          topicoId: firstTop.id,
+          titulo: firstTop.titulo,
+          materiaNome: firstMat.nome
+        };
+      }
+    }
+  }
 
   const handleSimuladoClick = (tipo: string, nome: string, cor: string) => {
     if (userData.plan === "free") {
@@ -426,13 +496,13 @@ export default function DashboardPage() {
                       <p className="text-muted-foreground text-sm mt-2 max-w-xs">
                         Você estava estudando{" "}
                         <strong className="text-indigo-400">
-                          Interpretação de Texto
-                        </strong>
-                        .
+                          {lastStudiedTopic.titulo}
+                        </strong>{" "}
+                        em <span className="text-muted-foreground">{lastStudiedTopic.materiaNome}</span>.
                       </p>
                     </div>
                     <Link
-                      href="/aulas/portugues/interpretacao-texto"
+                      href={`/aulas/${lastStudiedTopic.materiaId}/${lastStudiedTopic.topicoId}`}
                       className="w-full xs:w-auto text-center px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition shadow-lg shadow-indigo-500/20 active:scale-95"
                     >
                       Retomar Aula
@@ -440,21 +510,8 @@ export default function DashboardPage() {
                   </div>
                   <div className="bg-background/50 rounded-xl p-4 border border-border/50">
                     {(() => {
-                      // Find interpretacao-texto progress (Now mapped to portugues/interpretacao)
-                      // Note: In CONTEUDO_MATERIAS, Interpretacao ID is 'interpretacao', Materia ID is 'portugues'
-                      const progress =
-                        allContentProgress["portugues/interpretacao-texto"];
-
-                      // For specific module tracking we would need granular checks, but useAllAulasProgress
-                      // currently returns aggregated per topic in its map logic?
-                      // Wait, useAllAulasProgress maps key = `${item.materia_id}/${item.topico_id}`
-                      // and value is just { progress_percent, completed ... }.
-                      // It doesn't seem to store PER MODULE data in the map, OR the query returns multiple rows?
-                      // The hook code:
-                      // progressMap[key] = { ...item }
-                      // If multiple modules exist for same topic, they overwrite each other in the map!
-                      // This is a limitation of the current hook if we want module-level detail here.
-                      // However, for the dashboard summary, we just need the % or "Concluído".
+                      const progressKey = `${lastStudiedTopic.materiaId}/${lastStudiedTopic.topicoId}`;
+                      const progress = allContentProgress[progressKey];
 
                       let percent = progress?.progress_percent || 0;
                       let moduleName = "Continuar Estudando";

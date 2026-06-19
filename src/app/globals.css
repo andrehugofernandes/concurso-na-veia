@@ -102,6 +102,19 @@
     font-size: 0.875em;
   }
 
+  /* Estilização premium para termos sublinhados/destacados nas questões (tags <u>) */
+  u {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+    text-decoration-color: #ff8500; /* Cor laranja do tema */
+    background-color: rgba(255, 133, 0, 0.15); /* Fundo marca-texto sutil */
+    padding: 1px 4px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration-skip-ink: none;
+  }
+
   h1,
   h2,
   h3,

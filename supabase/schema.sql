@@ -7,6 +7,23 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- ============================================
+-- TABELA: concursos
+-- ============================================
+CREATE TABLE IF NOT EXISTS public.concursos (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  nome TEXT NOT NULL,
+  slug TEXT UNIQUE NOT NULL,
+  orgao TEXT NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Habilitar RLS para concursos
+ALTER TABLE public.concursos ENABLE ROW LEVEL SECURITY;
+
+-- Política de leitura pública para concursos
+CREATE POLICY "Public read concursos" ON public.concursos FOR SELECT USING (true);
+
+-- ============================================
 -- TABELA: users (estende auth.users do Supabase)
 -- ============================================
 CREATE TABLE IF NOT EXISTS public.profiles (
@@ -24,6 +41,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
   maior_sequencia INTEGER DEFAULT 0,
   conquistas TEXT[] DEFAULT '{}',
   questoes_geradas INTEGER DEFAULT 0,
+  concurso_id UUID REFERENCES public.concursos(id) ON DELETE SET NULL,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
@@ -39,6 +57,7 @@ CREATE TABLE IF NOT EXISTS public.cargos (
   descricao TEXT,
   materias_basicas TEXT[] NOT NULL,
   materias_especificas TEXT[] NOT NULL,
+  concurso_id UUID REFERENCES public.concursos(id) ON DELETE CASCADE,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
@@ -255,10 +274,34 @@ CREATE POLICY "Anyone can read materias" ON public.materias
 -- Função para criar perfil automaticamente após signup
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$
+DECLARE
+    concurso_id_var UUID;
 BEGIN
-  INSERT INTO public.profiles (id, nome, email)
-  VALUES (NEW.id, COALESCE(NEW.raw_user_meta_data->>'nome', 'Usuário'), NEW.email);
-  RETURN NEW;
+    -- Obter concurso_id pelo slug contido na metadata (com fallback para 'petrobras')
+    SELECT id INTO concurso_id_var
+    FROM public.concursos
+    WHERE slug = COALESCE(NEW.raw_user_meta_data->>'concurso', 'petrobras')
+    LIMIT 1;
+
+    INSERT INTO public.profiles (
+        id, 
+        nome, 
+        email, 
+        nivel, 
+        cargo, 
+        plan, 
+        concurso_id
+    )
+    VALUES (
+        NEW.id, 
+        COALESCE(NEW.raw_user_meta_data->>'nome', 'Usuário'), 
+        NEW.email,
+        NEW.raw_user_meta_data->>'nivel',
+        NEW.raw_user_meta_data->>'cargo',
+        COALESCE(NEW.raw_user_meta_data->>'plan', 'free'),
+        concurso_id_var
+    );
+    RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 

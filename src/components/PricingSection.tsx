@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { 
   LuTarget, 
   LuBrain, 
@@ -93,7 +94,7 @@ export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="py-24 bg-slate-50/50 dark:bg-background border-t border-border relative overflow-hidden"
+      className="py-24 bg-muted/30 dark:bg-muted/10 border-t border-slate-200 dark:border-white/5 relative overflow-hidden"
     >
       {/* Background subtle glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/[0.03] rounded-full blur-[150px] pointer-events-none" />
@@ -101,23 +102,28 @@ export default function PricingSection() {
       <div className="container mx-auto px-6 relative z-10 max-w-6xl">
         {/* Header */}
         <div className="text-center mb-12">
-          <p className="text-primary font-mono text-sm tracking-[0.3em] uppercase mb-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block mb-4 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary text-sm font-bold tracking-wider uppercase"
+          >
             Planos & Preços
-          </p>
+          </motion.div>
           <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
-            Escolha seu plano
+            Escolha seu <span className="text-primary">plano</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-none mx-auto whitespace-nowrap">
             Selecione seu nível e veja os preços ajustados para o seu concurso.
           </p>
         </div>
 
         {/* Level Toggle */}
         <div className="flex justify-center mb-14">
-          <div className="relative bg-muted border border-border rounded-full p-1 flex gap-1">
+          <div className="relative bg-muted border border-border rounded-full p-1 inline-grid grid-cols-2 gap-1">
             <button
               onClick={() => setNivel("medio")}
-              className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-black transition-all duration-300 flex items-center gap-2 ${
+              className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-black transition-all duration-300 flex items-center justify-center gap-2 ${
                 nivel === "medio"
                   ? "text-primary-foreground"
                   : "text-muted-foreground hover:text-foreground"
@@ -127,7 +133,7 @@ export default function PricingSection() {
             </button>
             <button
               onClick={() => setNivel("superior")}
-              className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-black transition-all duration-300 flex items-center gap-2 ${
+              className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-black transition-all duration-300 flex items-center justify-center gap-2 ${
                 nivel === "superior"
                   ? "text-primary-foreground"
                   : "text-muted-foreground hover:text-foreground"
@@ -139,8 +145,8 @@ export default function PricingSection() {
             <div
               className={`absolute top-1 bottom-1 bg-primary rounded-full transition-all duration-300 ease-out ${
                 nivel === "medio"
-                  ? "left-1 w-[calc(50%-2px)]"
-                  : "left-[calc(50%+2px)] w-[calc(50%-2px)]"
+                  ? "left-1 w-[calc(50%-6px)]"
+                  : "left-[calc(50%+2px)] w-[calc(50%-6px)]"
               }`}
             />
           </div>

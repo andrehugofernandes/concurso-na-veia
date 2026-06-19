@@ -12,6 +12,7 @@ export interface Profissao {
     nivel: 'tecnico' | 'superior';
     area: string;
     blocos: BlocoConteudo[];
+    concurso?: string;
 }
 
 // Conhecimentos Básicos (Comum a Todas as Profissões)
@@ -616,6 +617,112 @@ export const PROFISSOES: Profissao[] = [
             {
                 nome: 'Bloco III - Física da Terra',
                 topicos: ['Física da Terra sólida', 'Propriedades físicas das rochas', 'Perfilagem de poços'],
+            },
+        ],
+    },
+    // ===== OUTROS CONCURSOS (VITRINE) =====
+    {
+        id: 'caixa-tecnico',
+        nome: 'Caixa - Técnico Bancário',
+        nivel: 'tecnico',
+        area: 'Bancária',
+        concurso: 'caixa',
+        blocos: [
+            {
+                nome: 'Bloco I - Conhecimentos Bancários',
+                topicos: ['Sistema Financeiro Nacional', 'Mercado Financeiro', 'Produtos Bancários', 'Garantias do SFN'],
+            },
+            {
+                nome: 'Bloco II - Atendimento e TI',
+                topicos: ['Atendimento ao cliente', 'Diversidade e Inclusão', 'Tecnologia da Informação', 'Segurança da Informação'],
+            },
+            {
+                nome: 'Bloco III - Digital e Vendas',
+                topicos: ['Comportamento digital', 'Técnicas de vendas', 'Ética e Conduta Caixa', 'Legislação Anticorrupção'],
+            },
+        ],
+    },
+    {
+        id: 'bb-escriturario',
+        nome: 'Banco do Brasil - Escriturário',
+        nivel: 'tecnico',
+        area: 'Bancária',
+        concurso: 'bb',
+        blocos: [
+            {
+                nome: 'Bloco I - Conhecimentos Bancários',
+                topicos: ['Estrutura do SFN', 'Mercado de Câmbio', 'Títulos de Crédito', 'Criptoativos e Open Finance'],
+            },
+            {
+                nome: 'Bloco II - Vendas e Negociação',
+                topicos: ['Marketing de relacionamento', 'Técnicas de vendas no setor bancário', 'Resolução CMN 4.860', 'CDC'],
+            },
+            {
+                nome: 'Bloco III - Informática e Finanças',
+                topicos: ['Noções de informática', 'Banco de Dados e Analytics', 'Matemática Financeira', 'Sistemas Operacionais'],
+            },
+        ],
+    },
+    {
+        id: 'correios-agente',
+        nome: 'Correios - Agente de Correios',
+        nivel: 'tecnico',
+        area: 'Operacional',
+        concurso: 'correios',
+        blocos: [
+            {
+                nome: 'Bloco I - Conhecimentos Postais',
+                topicos: ['Serviços postais básicos', 'Regulamento do Serviço Postal', 'Endereçamento de correspondências'],
+            },
+            {
+                nome: 'Bloco II - Atendimento e Vendas',
+                topicos: ['Qualidade no atendimento', 'Técnicas de abordagem', 'Código de Ética dos Correios'],
+            },
+            {
+                nome: 'Bloco III - Informática e Logística',
+                topicos: ['Noções de informática', 'Operações logísticas básicas', 'Organização de correspondências'],
+            },
+        ],
+    },
+    {
+        id: 'ibge-recenseador',
+        nome: 'IBGE - Recenseador/Agente',
+        nivel: 'tecnico',
+        area: 'Pesquisa',
+        concurso: 'ibge',
+        blocos: [
+            {
+                nome: 'Bloco I - Conhecimentos Técnicos do Censo',
+                topicos: ['Manual do Recenseador', 'Estrutura dos setores censitários', 'Entrevista de campo', 'Coleta de dados'],
+            },
+            {
+                nome: 'Bloco II - Ética no Serviço Público',
+                topicos: ['Código de Ética do IBGE', 'Lei 8.112/90 (Regime Disciplinar)', 'Sigilo estatístico'],
+            },
+            {
+                nome: 'Bloco III - Geografia e Matemática',
+                topicos: ['Geografia do Brasil', 'Leitura de mapas e croquis', 'Matemática básica', 'Cálculo de taxas de resposta'],
+            },
+        ],
+    },
+    {
+        id: 'inss-tecnico',
+        nome: 'INSS - Técnico do Seguro Social',
+        nivel: 'tecnico',
+        area: 'Previdenciária',
+        concurso: 'inss',
+        blocos: [
+            {
+                nome: 'Bloco I - Direito Previdenciário',
+                topicos: ['Seguridade Social na Constituição', 'Regime Geral de Previdência Social', 'Segurados e dependentes', 'Benefícios previdenciários'],
+            },
+            {
+                nome: 'Bloco II - Direito Administrativo e Constitucional',
+                topicos: ['Princípios da Administração Pública', 'Atos Administrativos', 'Servidores Públicos', 'Direitos e garantias fundamentais'],
+            },
+            {
+                nome: 'Bloco III - Informática e Raciocínio Lógico',
+                topicos: ['Segurança da informação', 'Ferramentas de escritório (Word/Excel)', 'Proposições lógicas', 'Resolução de problemas quantitativos'],
             },
         ],
     },

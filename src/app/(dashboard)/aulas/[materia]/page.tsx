@@ -62,11 +62,17 @@ export default function MateriaPage({ params }: PageProps) {
 
   useEffect(() => {
     const loadMateriaData = async () => {
+      const userCargo = usuario?.cargo || "operacao";
+      const userConcursoSlug = getProfissaoById(userCargo)?.concurso || (usuario as any)?.user_metadata?.concurso || "petrobras";
+
       // 1. Verificar se é uma matéria padrão
       const materiaEncontrada = getMateriaById(materiaId);
 
       if (materiaEncontrada) {
-        setMateria(materiaEncontrada);
+        const belongsToContest = !materiaEncontrada.concursos || materiaEncontrada.concursos.includes(userConcursoSlug);
+        if (belongsToContest) {
+          setMateria(materiaEncontrada);
+        }
       }
 
       // 2. Se for matéria específica (especifica-bloco-*), resolver via programa de estudos
@@ -83,12 +89,11 @@ export default function MateriaPage({ params }: PageProps) {
           }
 
           // Fallback: Se não encontrou no cargo do usuário (ou usuário não carregado), 
-          // procurar em todas as profissões para garantir que a URL seja válida
+          // procurar nas profissões do mesmo concurso para garantir que a URL seja válida
           if (!materia) {
             const { PROFISSOES } = await import("@/lib/profissoes-edital");
-            // Nota: Import dinâmico para não inflar o bundle inicial se não necessário
             
-            for (const p of PROFISSOES) {
+            for (const p of PROFISSOES.filter(prof => (prof.concurso || 'petrobras') === userConcursoSlug)) {
               const programa = getProgramaDeEstudos(p.id);
               const especifica = programa.find(m => m.id === materiaId);
               if (especifica) {

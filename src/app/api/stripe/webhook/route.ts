@@ -34,6 +34,11 @@ export async function POST(req: NextRequest) {
   // Em dev sem webhook secret, apenas loga (não valida assinatura)
   let event: Stripe.Event;
 
+  if (process.env.NODE_ENV === 'production' && (!webhookSecret || !sig)) {
+    console.error('[Webhook] Em produção, a assinatura e o secret são OBRIGATÓRIOS.');
+    return NextResponse.json({ error: 'Acesso negado. Assinatura obrigatória.' }, { status: 400 });
+  }
+
   if (webhookSecret && sig) {
     try {
       event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
@@ -42,10 +47,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Assinatura inválida' }, { status: 400 });
     }
   } else {
-    // Dev mode sem secret
+    // Apenas em dev sem secret
     try {
       event = JSON.parse(body) as Stripe.Event;
-      console.warn('[Webhook] AVISO: STRIPE_WEBHOOK_SECRET não configurado — sem validação');
+      console.warn('[Webhook] AVISO: STRIPE_WEBHOOK_SECRET não configurado — rodando sem validação (aceito apenas em dev)');
     } catch {
       return NextResponse.json({ error: 'Payload inválido' }, { status: 400 });
     }

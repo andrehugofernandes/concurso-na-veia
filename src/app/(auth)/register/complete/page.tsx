@@ -24,6 +24,7 @@ function CompleteContent() {
     nivel: "",
     cargo: "",
     plan: plan || "free",
+    concurso: "petrobras",
   });
 
   const [loading, setLoading] = useState(true);
@@ -52,6 +53,7 @@ function CompleteContent() {
             nivel: data.metadata?.user_nivel || "",
             cargo: data.metadata?.user_cargo || "",
             plan: data.metadata?.app_plan || plan || "free",
+            concurso: data.metadata?.user_concurso || data.metadata?.concurso || "petrobras",
           }));
         } else {
           setError("Erro ao carregar dados da sessão");

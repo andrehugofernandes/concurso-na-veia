@@ -46,4 +46,11 @@ export const CARGO_ID_MAP: Record<string, string> = {
     'geologia': 'geologia',
     'geologo': 'geologia', // Legacy mapping
     'geofisica': 'geofisica',
+
+    // Novos Concursos (Vitrine)
+    'caixa-tecnico': 'caixa-tecnico',
+    'bb-escriturario': 'bb-escriturario',
+    'correios-agente': 'correios-agente',
+    'ibge-recenseador': 'ibge-recenseador',
+    'inss-tecnico': 'inss-tecnico',
 };

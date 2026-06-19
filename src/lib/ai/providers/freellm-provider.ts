@@ -54,8 +54,8 @@ REGRAS DE FORMATAÇÃO E COERÊNCIA:
 - COERÊNCIA TOTAL: Se o enunciado pede um conceito (ex: Pronome), as alternativas devem ser desse conceito.
 - Use tags HTML para destaque visual: <b>negrito</b>, <u>sublinhado</u>, <i>itálico</i>.
 - NÃO use Markdown no texto.
-- ⚠️ SUBLINHADO: NUNCA use underscores (_texto_) para sublinhar. Use EXCLUSIVAMENTE a tag HTML <u>texto</u>.
-- ⚠️ COERÊNCIA LINGUÍSTICA: Se o enunciado pede "a PALAVRA sublinhada", sublinhe UMA ÚNICA PALAVRA. Se o destaque for uma LOCUÇÃO (2+ palavras), use "a EXPRESSÃO sublinhada" no enunciado.`;
+- ⚠️ SUBLINHADO/DESTAQUE DE PALAVRAS: Sempre que o enunciado fizer referência a termos, expressões, palavras ou trechos "destacados", "sublinhados" ou "em negrito", você DEVE, OBRIGATORIAMENTE, aplicar a tag HTML correspondente ao redor desse termo no texto da frase citada. Exemplo: Se o enunciado diz "apresenta duas palavras destacadas", envolva as duas palavras alvo com a tag <u> (ex: "apresenta duas palavras destacadas: a primeira é <u>rapidamente</u> e a segunda..."). Nunca use underscores (_texto_) para sublinhar. Use EXCLUSIVAMENTE a tag HTML <u>texto</u>.
+- ⚠️ COERÊNCIA LINGUÍSTICA: Se o enunciado pede "a PALAVRA sublinhada/destacada", sublinhe/destaque UMA ÚNICA PALAVRA. Se o destaque for uma LOCUÇÃO (2+ palavras), use "a EXPRESSÃO sublinhada/destacada" ou "o TRECHO sublinhado/destacado".`;
 
     const start = Date.now();
     try {
@@ -141,8 +141,12 @@ REGRAS DE FORMATAÇÃO E COERÊNCIA:
     5. UNICIDADE: Cada questão deste lote deve ter enunciado COMPLETAMENTE diferente das demais. PROIBIDO repetir o mesmo trecho no enunciado de duas questões.
     6. COERÊNCIA: O enunciado e as alternativas devem tratar rigorosamente do mesmo conceito.
     7. REGRA ABSOLUTA DE GABARITO: O índice informado no campo "correta" (0 a 4) DEVE corresponder EXATAMENTE à posição dentro do array "alternativas". Omitir essa checagem causará erro de gabarito para os alunos.
-    8. Retorne APENAS um JSON que seja um ARRAY de objetos.
-    9. NÃO adicione texto explicativo fora do JSON.
+    8. REGRAS DE FORMATAÇÃO E COERÊNCIA:
+       - Use tags HTML para destaque visual: <b>negrito</b>, <u>sublinhado</u>, <i>itálico</i>. NÃO use Markdown.
+       - ⚠️ SUBLINHADO/DESTAQUE DE PALAVRAS: Sempre que o enunciado fizer referência a termos, expressões, palavras ou trechos "destacados", "sublinhados" ou "em negrito", você DEVE, OBRIGATORIAMENTE, aplicar a tag HTML correspondente (ex: <u>texto</u>) ao redor desse termo no texto da frase citada.
+       - ⚠️ COERÊNCIA LINGUÍSTICA: Se o enunciado pede "a PALAVRA sublinhada/destacada", sublinhe/destaque UMA ÚNICA PALAVRA. Se o destaque for uma LOCUÇÃO (2+ palavras), use "a EXPRESSÃO sublinhada/destacada" ou "o TRECHO sublinhado/destacado".
+    9. Retorne APENAS um JSON que seja um ARRAY de objetos.
+    10. NÃO adicione texto explicativo fora do JSON.
 
     Formato esperado:
     [

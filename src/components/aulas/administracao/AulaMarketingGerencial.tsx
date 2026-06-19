@@ -947,6 +947,21 @@ export default function AulaMarketingGerencial(props: AulaProps) {
     }
   };
 
+  const mapQuizQuestions = (modId: string) => {
+    const quiz = MARKETING_QUIZZES[modId as keyof typeof MARKETING_QUIZZES];
+    if (!quiz) return [];
+    return quiz.map((q: any) => ({
+      id: q.id,
+      pergunta: q.pergunta,
+      opcoes: Object.entries(q.opcoes).map(([key, value]) => ({
+        label: key,
+        valor: value as React.ReactNode,
+      })),
+      correta: q.correta,
+      explicacao: q.explicacao,
+    }));
+  };
+
   const currentModule = MODULE_DEFS.find((m) => m.id === activeTab);
   const moduleContent = MODULE_CONTENTS[activeTab as keyof typeof MODULE_CONTENTS];
   const isCompleted = completedModules.includes(activeTab);
@@ -1032,7 +1047,7 @@ export default function AulaMarketingGerencial(props: AulaProps) {
                 */}
 
                 <QuizInterativo
-                  questoes={MARKETING_QUIZZES[activeTab as keyof typeof MARKETING_QUIZZES] || []}
+                  questoes={mapQuizQuestions(activeTab)}
                   titulo={`Quiz: ${mod.title}`}
                   onComplete={() => handleModuleComplete(activeTab)}
                   variant={variant}

@@ -22,6 +22,7 @@ const registerSchema = z.object({
   nivel: z.string(),
   cargo: z.string(),
   plan: z.string().optional().default('free'),
+  concurso: z.string().optional().default('petrobras'),
 });
 
 /**
@@ -114,6 +115,7 @@ export async function registerAction(
           nivel: validated.nivel,
           cargo: validated.cargo,
           plan: validated.plan,
+          concurso: validated.concurso,
           mfa_enabled: true,
         },
         emailRedirectTo: `${origin}/auth/callback`,
@@ -148,7 +150,8 @@ export async function registerAction(
       nome: validated.nome,
       nivel: validated.nivel,
       cargo: validated.cargo,
-      plan: validated.plan
+      plan: validated.plan,
+      concurso: validated.concurso
     });
   } catch (error: any) {
     if (error instanceof z.ZodError) {

@@ -12,7 +12,8 @@ import {
   Topico,
 } from "@/data/conteudo";
 import { getProgramaDeEstudos } from "@/data/programa-estudos";
-import { PROFISSOES } from "@/lib/profissoes-edital";
+import { PROFISSOES, getProfissaoById } from "@/lib/profissoes-edital";
+import { getCurrentUserAction } from "@/lib/actions/auth";
 import { notFound } from "next/navigation";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 import { AulaProps } from "@/components/aulas/shared";
@@ -780,40 +781,67 @@ export default function TopicoPage({ params }: PageProps) {
   const [isResolving, setIsResolving] = useState(true);
 
   useEffect(() => {
-    let resolvedMateria = getMateriaById(materiaId);
-    let resolvedTopico = getTopicoById(materiaId, topicoId);
-
-    // Se é uma matéria específica, buscar nos programas de estudo das profissões
-    if (!resolvedMateria && materiaId.startsWith("especifica-")) {
-      for (const p of PROFISSOES) {
-        const programa = getProgramaDeEstudos(p.id);
-        const match = programa.find((m) => m.id === materiaId);
-        if (match) {
-          resolvedMateria = match;
-          resolvedTopico = match.topicos.find((t) => t.id === topicoId);
-          break;
+    const resolveContent = async () => {
+      try {
+        const userRes = await getCurrentUserAction();
+        let userConcursoSlug = "petrobras";
+        if (userRes.status === "success" && userRes.data) {
+          const user = userRes.data;
+          userConcursoSlug = getProfissaoById(user.cargo)?.concurso || user.user_metadata?.concurso || "petrobras";
         }
-      }
-    }
 
-    if (resolvedMateria) {
-      setMateria(resolvedMateria);
-      setTopico(resolvedTopico || null);
+        let resolvedMateria = getMateriaById(materiaId);
+        let resolvedTopico = getTopicoById(materiaId, topicoId);
 
-      // Resolve Next/Prev for dynamic materia
-      const currentIndex = resolvedMateria.topicos.findIndex(
-        (t) => t.id === topicoId,
-      );
-      if (currentIndex !== -1) {
-        setNextTopico(resolvedMateria.topicos[currentIndex + 1]);
-        setPrevTopico(resolvedMateria.topicos[currentIndex - 1]);
-      } else {
-        // Fallback for non-dynamic lessons
-        setNextTopico(getNextTopico(materiaId, topicoId));
-        setPrevTopico(getPrevTopico(materiaId, topicoId));
+        // Se é uma matéria específica, buscar nos programas de estudo das profissões associadas ao concurso do usuário
+        if (!resolvedMateria && materiaId.startsWith("especifica-")) {
+          for (const p of PROFISSOES) {
+            const profConcurso = p.concurso || "petrobras";
+            if (profConcurso !== userConcursoSlug) continue;
+
+            const programa = getProgramaDeEstudos(p.id);
+            const match = programa.find((m) => m.id === materiaId);
+            if (match) {
+              resolvedMateria = match;
+              resolvedTopico = match.topicos.find((t) => t.id === topicoId);
+              break;
+            }
+          }
+        }
+
+        // Validar restrição de concurso na matéria resolvida
+        if (resolvedMateria && resolvedMateria.concursos) {
+          if (!resolvedMateria.concursos.includes(userConcursoSlug)) {
+            resolvedMateria = undefined;
+            resolvedTopico = undefined;
+          }
+        }
+
+        if (resolvedMateria) {
+          setMateria(resolvedMateria);
+          setTopico(resolvedTopico || null);
+
+          // Resolve Next/Prev for dynamic materia
+          const currentIndex = resolvedMateria.topicos.findIndex(
+            (t) => t.id === topicoId,
+          );
+          if (currentIndex !== -1) {
+            setNextTopico(resolvedMateria.topicos[currentIndex + 1]);
+            setPrevTopico(resolvedMateria.topicos[currentIndex - 1]);
+          } else {
+            // Fallback for non-dynamic lessons
+            setNextTopico(getNextTopico(materiaId, topicoId));
+            setPrevTopico(getPrevTopico(materiaId, topicoId));
+          }
+        }
+      } catch (err) {
+        console.error("Erro ao carregar tópico da aula:", err);
+      } finally {
+        setIsResolving(false);
       }
-    }
-    setIsResolving(false);
+    };
+
+    resolveContent();
   }, [materiaId, topicoId]);
 
   // Definir título da página no cabeçalho

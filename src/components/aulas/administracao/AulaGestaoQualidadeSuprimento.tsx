@@ -91,14 +91,15 @@ export default function AulaGestaoQualidadeSuprimento({
   ) as any;
 
   const handleModuleComplete = (modId: string, score: number) => {
-    setCompletedModules((prev) => {
-      const newSet = new Set(prev).add(modId);
-      const percent = Math.round((newSet.size / MODULE_DEFS.length) * 100);
+    if (score >= 70) {
+      updateCompletedModules([...completedModulesList, modId]);
+      const percent = Math.round(
+        ((completedModules.size + (completedModules.has(modId) ? 0 : 1)) / MODULE_DEFS.length) * 100
+      );
       onUpdateProgress?.(percent);
-      return newSet;
-    });
-    if (modId === "modulo-10" && score >= 70) {
-      onComplete();
+      if (modId === "modulo-10") {
+        onComplete();
+      }
     }
   };
 

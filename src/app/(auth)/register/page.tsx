@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, Suspense, useEffect } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { registerAction } from "@/lib/actions/auth";
@@ -27,6 +27,11 @@ const CARGOS = {
     { id: "administracao", nome: "Suprimentos/Administração" },
     { id: "logistica", nome: "Logística de Transportes" },
     { id: "quimica", nome: "Química de Petróleo" },
+    { id: "caixa-tecnico", nome: "Caixa - Técnico Bancário" },
+    { id: "bb-escriturario", nome: "Banco do Brasil - Escriturário" },
+    { id: "correios-agente", nome: "Correios - Agente de Correios" },
+    { id: "ibge-recenseador", nome: "IBGE - Recenseador/Agente" },
+    { id: "inss-tecnico", nome: "INSS - Técnico do Seguro Social" },
   ],
   superior: [
     { id: "eng-petroleo", nome: "Engenheiro de Petróleo" },
@@ -122,6 +127,7 @@ function RegisterForm() {
     nivel: "",
     cargo: "",
     plan: planFromUrl,
+    concurso: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -130,6 +136,59 @@ function RegisterForm() {
   
   // Checkout Embutido
   const [clientSecret, setClientSecret] = useState<string | null>(null);
+
+  const concursoFromUrl = searchParams.get("concurso") || "";
+
+  useEffect(() => {
+    if (concursoFromUrl) {
+      let nivel = "";
+      let cargo = "";
+
+      if (concursoFromUrl === "petrobras") {
+        nivel = "medio";
+        cargo = "operacao";
+      } else if (concursoFromUrl === "caixa") {
+        nivel = "medio";
+        cargo = "caixa-tecnico";
+      } else if (concursoFromUrl === "bb") {
+        nivel = "medio";
+        cargo = "bb-escriturario";
+      } else if (concursoFromUrl === "correios") {
+        nivel = "medio";
+        cargo = "correios-agente";
+      } else if (concursoFromUrl === "ibge") {
+        nivel = "medio";
+        cargo = "ibge-recenseador";
+      } else if (concursoFromUrl === "inss") {
+        nivel = "medio";
+        cargo = "inss-tecnico";
+      }
+
+      if (nivel && cargo) {
+        setFormData((prev) => ({
+          ...prev,
+          nivel,
+          cargo,
+          concurso: concursoFromUrl,
+        }));
+      }
+    }
+  }, [concursoFromUrl]);
+
+  const handleCargoSelect = (cargoId: string) => {
+    let concurso = "petrobras";
+    if (cargoId === "caixa-tecnico") concurso = "caixa";
+    else if (cargoId === "bb-escriturario") concurso = "bb";
+    else if (cargoId === "correios-agente") concurso = "correios";
+    else if (cargoId === "ibge-recenseador") concurso = "ibge";
+    else if (cargoId === "inss-tecnico") concurso = "inss";
+
+    setFormData((prev) => ({
+      ...prev,
+      cargo: cargoId,
+      concurso,
+    }));
+  };
 
   const getPlanosByNivel = () => {
     if (formData.nivel === "medio") {
@@ -365,7 +424,7 @@ function RegisterForm() {
                     <button
                       key={cargo.id}
                       type="button"
-                      onClick={() => setFormData({ ...formData, cargo: cargo.id })}
+                      onClick={() => handleCargoSelect(cargo.id)}
                       className={`px-3 py-2.5 rounded-lg border text-left text-sm transition-all ${
                         formData.cargo === cargo.id
                           ? "border-primary bg-primary/10 text-foreground font-medium"

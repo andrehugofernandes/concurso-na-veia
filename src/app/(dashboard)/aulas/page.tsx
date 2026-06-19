@@ -9,6 +9,7 @@ import { AnimatedBorder } from '@/components/ui/animated-border';
 import { useSetPageTitle } from '@/contexts/UIContext';
 import { useAllAulasProgress } from '@/hooks/useAulaProgress';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
+import { CARGO_ID_MAP } from '@/lib/cargos-map';
 
 import { PROFISSOES, Profissao } from '@/lib/profissoes-edital';
 
@@ -33,7 +34,10 @@ export default function AulasPage() {
     const eliteTecnico: { nome: string, materias: MateriaConteudo[] }[] = [];
 
     if (isElite) {
-        PROFISSOES.forEach((prof: Profissao) => {
+        const userCargoId = user?.cargo || 'operacao';
+        const userConcursoSlug = PROFISSOES.find(p => p.id === userCargoId)?.concurso || (user as any)?.user_metadata?.concurso || 'petrobras';
+
+        PROFISSOES.filter(prof => (prof.concurso || 'petrobras') === userConcursoSlug).forEach((prof: Profissao) => {
             // Ignorar a profissão que o usuário já está cursando (já aparece na seção principal)
             if (user?.cargo === prof.id || user?.cargo === prof.nome) return;
 
@@ -379,5 +383,3 @@ export default function AulasPage() {
         </div>
     );
 }
-
-import { CARGO_ID_MAP } from '@/lib/cargos-map';

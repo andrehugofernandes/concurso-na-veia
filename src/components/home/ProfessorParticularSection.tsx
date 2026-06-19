@@ -4,7 +4,7 @@ import { LuHand, LuBrain } from 'react-icons/lu';
 
 export default function ProfessorParticularSection() {
   return (
-    <section className="py-24 bg-white dark:bg-background relative overflow-hidden border-t border-slate-100 dark:border-white/5">
+    <section className="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden border-t border-slate-100 dark:border-white/5">
       {/* Background elements */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-30 dark:opacity-10 pointer-events-none" />
 

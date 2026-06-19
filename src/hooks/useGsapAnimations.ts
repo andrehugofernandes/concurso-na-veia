@@ -143,14 +143,14 @@ export const useGsapAnimations = () => {
     gsap.registerPlugin(ScrollTrigger);
     
     // Proxy para smooth scroll
-    let proxy = { skew: 0, skewSetter(value) { this.skew = value; }, getCurrentSkew() { return this.skew; }, onUpdate: () => {} },
+    let proxy = { skew: 0, skewSetter(value: number) { this.skew = value; }, getCurrentSkew() { return this.skew; }, onUpdate: () => {} },
       skewSetter = gsap.quickSetter(proxy, "skew", "deg"),
       clamp = gsap.utils.clamp(-20, 20);
 
     gsap.set(document.body, { transformOrigin: "center center", force3D: true });
 
     gsap.ticker.add(() => {
-      let skew = clamp(gsap.getProperty(window, "scrollVelocity"));
+      let skew = clamp(gsap.getProperty(window, "scrollVelocity") as number);
       if (Math.abs(skew) > Math.abs(proxy.skew)) {
         proxy.skew = skew;
         skewSetter(skew);

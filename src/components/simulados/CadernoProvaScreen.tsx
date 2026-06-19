@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { Simulado, Usuario, Questao, RespostaQuestao } from '@/lib/types';
 import { formatarTempo, cn } from '@/lib/utils';
+import DOMPurify from 'isomorphic-dompurify';
 
 interface CadernoProvaScreenProps {
   simulado: Simulado;
@@ -299,7 +300,7 @@ export default function CadernoProvaScreen({
                 {/* Enunciado */}
                 <div
                   className="text-base md:text-lg font-medium text-foreground mb-6 leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: questao.enunciado }}
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questao.enunciado) }}
                 />
 
                 {/* Alternativas */}
@@ -327,7 +328,7 @@ export default function CadernoProvaScreen({
                         </span>
                         <span
                           className="flex-1 pt-0.5 text-sm md:text-base font-medium leading-normal"
-                          dangerouslySetInnerHTML={{ __html: alt }}
+                          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(alt) }}
                         />
                       </button>
                     );
