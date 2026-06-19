@@ -26,7 +26,6 @@ yarn-error.log*
 .env*.local
 .env
 temp_new_reference/
-
 temp_reference_repo/
 
 # vercel
@@ -39,3 +38,18 @@ next-env.d.ts
 
 # claude
 .claude/
+
+# lixo e temporários (arquivos de debug e scripts de referencia)
+/tmp/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+*.log
+ts_errors.*
+tsc_errors.*
+tsc_output.*
+*.py
+uncomplete.js
+update_shared*.js
+update_shared*.py
