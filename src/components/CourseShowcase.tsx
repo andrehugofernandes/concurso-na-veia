@@ -193,7 +193,7 @@ export default function CourseShowcase() {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
               
-              <Link href={`/register?concurso=${course.id}`} className="relative block bg-card border border-border rounded-2xl p-6 h-full flex flex-col shadow-sm group-hover:shadow-lg transition-all duration-300 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+              <Link href={`/register?concurso=${course.id}`} className="relative bg-card border border-border rounded-2xl p-6 h-full flex flex-col shadow-sm group-hover:shadow-lg transition-all duration-300 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 {/* Gradient background accent */}
                 <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${course.color} opacity-5 rounded-full -mr-16 -mt-16 group-hover:opacity-10 transition-opacity`} />
 
