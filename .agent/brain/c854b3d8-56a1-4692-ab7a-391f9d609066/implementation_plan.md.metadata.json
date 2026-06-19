@@ -1,0 +1,7 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plano para unificação de scripts e padronização definitiva da UI/UX das aulas de matemática. O objetivo é criar um \"Master Script\" que resolva indexação, consistência de cores, remoção de legado e correção de sintaxe JSX em uma única execução em todas as 19 aulas.",
+  "updatedAt": "2026-03-28T14:27:35.733501Z",
+  "version": "3",
+  "requestFeedback": true
+}

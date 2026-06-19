@@ -1,0 +1,8 @@
+# Tarefas: Resolução de Layouts e Grade Elite Total
+
+- [ ] Pesquisar implementação atual do "Elite Total" na rota `/aulas` [/]
+- [ ] Investigar por que as matérias de "Suprimento-ADM" não aparecem completas [/]
+- [ ] Brainstorming de soluções para unificar a grade Elite Total conforme solicitado
+- [ ] Implementar melhorias no layout para Elite Total
+- [ ] Validar a visualização de todas as profissões para Elite Total
+- [ ] Corrigir a exibição da grade Suprimento-ADM

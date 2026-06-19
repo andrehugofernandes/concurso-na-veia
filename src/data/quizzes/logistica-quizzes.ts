@@ -18,6 +18,19 @@ export const LOGISTICA_QUIZZES: Record<string, Quiz> = {
     moduleNumber: 1,
     questions: [
       {
+        id: 999,
+        question: "Na gestão de estoques de suprimentos de uma refinaria de petróleo, o cálculo do Lote Econômico de Compras (LEC) busca minimizar o Custo Total de Estoque. Conceitualmente, o ponto ideal onde o lote econômico é atingido representa a intersecção de quais curvas de custos?",
+        options: [
+          "Custo de aquisição de bens e custo de oportunidade do capital",
+          "Custo de pedido (emissão) e custo de posse (armazenagem e capital imobilizado)",
+          "Custo de transporte de suprimentos e custo de armazenagem física",
+          "Custo de falta de estoque e custo de seguro do inventário",
+          "Custo de movimentação interna e custo administrativo de notas fiscais"
+        ],
+        correct: 1,
+        explanation: "O LEC equilibra o custo de pedir (que cai com lotes maiores) com o custo de manter o estoque (que sobe com lotes maiores). A intersecção destas curvas indica o custo total mínimo."
+      },
+      {
         id: 101,
         question:
           "De acordo com o Council of Logistics Management (CLM), logística é o processo de planejar, implementar e controlar o fluxo eficiente e eficaz de bens, serviços e informações do ponto de origem ao ponto de consumo. Qual alternativa melhor descreve a evolução histórica da logística?",

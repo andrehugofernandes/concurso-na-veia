@@ -1,0 +1,13 @@
+# Debugging /agressores page
+
+## Plan
+1. [x] Navigate to http://localhost:3000/agressores.
+2. [x] Check for visible error messages on the page.
+3. [x] Capture browser console logs.
+4. [ ] Analyze errors and report findings.
+
+## Findings
+- Visible error: "Erro ao carregar agressores" on the table.
+- Console error: Syntax error in `denuncia-wizard-denunciante.tsx`: `the name onBack is bound more than once in this parameter list`.
+- The page `/agressores` is accessible but data fetching seems to be failing, likely due to a runtime error or an API issue.
+- The syntax error in `denuncia-wizard-denunciante.tsx` might be preventing the build or causing issues if it's imported in the modal used on this page.

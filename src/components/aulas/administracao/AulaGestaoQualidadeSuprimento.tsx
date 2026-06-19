@@ -259,11 +259,11 @@ export default function AulaGestaoQualidadeSuprimento({
           concurso="Processo Seletivo Petrobras"
           enunciado="Segundo a ISO 8402, a definição mais completa de qualidade é:"
           alternativas={[
-              { letra: "A", texto: "Ausência total de defeitos no produto final", correta: false },
+            { letra: "A", texto: "Ausência total de defeitos no produto final", correta: false },
               { letra: "B", texto: "Totalidade das características que satisfazem necessidades explícitas e implícitas do cliente", correta: true },
               { letra: "C", texto: "Conformidade com as especificações técnicas internas da empresa", correta: false },
               { letra: "D", texto: "Grau de perfeição alcançado no processo de fabricação", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -423,11 +423,11 @@ export default function AulaGestaoQualidadeSuprimento({
           concurso="Processo Seletivo Petrobras"
           enunciado="A estrutura de Alto Nível (HLS) da ISO 9001:2015 organiza seus requisitos em quantas cláusulas?"
           alternativas={[
-              { letra: "A", texto: "7 cláusulas", correta: false },
+            { letra: "A", texto: "7 cláusulas", correta: false },
               { letra: "B", texto: "8 cláusulas", correta: false },
               { letra: "C", texto: "10 cláusulas", correta: true },
               { letra: "D", texto: "12 cláusulas", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Essa estrutura é comum a todas as normas ISO de sistemas de gestão."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -572,11 +572,11 @@ export default function AulaGestaoQualidadeSuprimento({
           concurso="Processo Seletivo Petrobras"
           enunciado="O Diagrama de Ishikawa (espinha de peixe) é utilizado para:"
           alternativas={[
-              { letra: "A", texto: "Medir a frequência de ocorrência de defeitos ao longo do tempo", correta: false },
+            { letra: "A", texto: "Medir a frequência de ocorrência de defeitos ao longo do tempo", correta: false },
               { letra: "B", texto: "Identificar e organizar as causas potenciais de um problema ou efeito", correta: true },
               { letra: "C", texto: "Mostrar a correlação entre duas variáveis numéricas", correta: false },
               { letra: "D", texto: "Apresentar a distribuição estatística dos dados de processo", correta: false }
-            ]}
+          ]}
           dicaEstrategica="É usado em brainstorming para identificar raízes de problemas."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "O Diagrama de Ishikawa (também chamado Diagrama de Causa-Efeito ou espinha de peixe) organiza visualmente as causas de um problema." },
@@ -722,11 +722,11 @@ export default function AulaGestaoQualidadeSuprimento({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Gestão Total da Qualidade (TQM) se diferencia das abordagens anteriores porque:"
           alternativas={[
-              { letra: "A", texto: "Foca exclusivamente no controle estatístico da linha de produção", correta: false },
+            { letra: "A", texto: "Foca exclusivamente no controle estatístico da linha de produção", correta: false },
               { letra: "B", texto: "Envolve toda a organização — todos os departamentos e colaboradores — na responsabilidade pela qualidade", correta: true },
               { letra: "C", texto: "Delega a qualidade apenas ao departamento de controle de qualidade", correta: false },
               { letra: "D", texto: "Aplica-se somente a empresas de manufatura, não a serviços", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A palavra"
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "TQM (Total Quality Management) é uma filosofia de gestão onde qualidade não é responsabilidade de um setor específico, mas de TODOS." },
@@ -856,11 +856,11 @@ export default function AulaGestaoQualidadeSuprimento({
           concurso="Processo Seletivo Petrobras"
           enunciado="No CEP, qual é a diferença entre 'causas comuns' e 'causas especiais' de variação?"
           alternativas={[
-              { letra: "A", texto: "Causas comuns são graves e exigem ação imediata; causas especiais são normais do processo", correta: false },
+            { letra: "A", texto: "Causas comuns são graves e exigem ação imediata; causas especiais são normais do processo", correta: false },
               { letra: "B", texto: "Causas comuns são variações aleatórias inerentes ao processo; causas especiais são variações identificáveis e controláveis", correta: true },
               { letra: "C", texto: "Causas comuns vêm dos operadores; causas especiais vêm das máquinas", correta: false },
               { letra: "D", texto: "Causas comuns são externas à empresa; causas especiais são internas", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O processo está"
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -988,11 +988,11 @@ export default function AulaGestaoQualidadeSuprimento({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na classificação das auditorias da qualidade, uma auditoria de certificação ISO 9001 realizada por organismo acreditado é auditoria de:"
           alternativas={[
-              { letra: "A", texto: "Primeira parte (auditoria interna)", correta: false },
+            { letra: "A", texto: "Primeira parte (auditoria interna)", correta: false },
               { letra: "B", texto: "Segunda parte (auditoria de fornecedor)", correta: false },
               { letra: "C", texto: "Terceira parte (auditoria de certificação)", correta: true },
               { letra: "D", texto: "Quarta parte (auditoria governamental)", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Auditorias de 3ª parte têm maior credibilidade por serem imparciais."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1119,11 +1119,11 @@ export default function AulaGestaoQualidadeSuprimento({
           concurso="Processo Seletivo Petrobras"
           enunciado="O modelo SERVQUAL, desenvolvido por Parasuraman, Zeithaml e Berry, avalia a qualidade em serviços por meio de:"
           alternativas={[
-              { letra: "A", texto: "7 dimensões de qualidade adaptadas do modelo de Garvin para serviços", correta: false },
+            { letra: "A", texto: "7 dimensões de qualidade adaptadas do modelo de Garvin para serviços", correta: false },
               { letra: "B", texto: "5 dimensões: Tangíveis, Confiabilidade, Responsividade, Segurança e Empatia", correta: true },
               { letra: "C", texto: "3 gaps principais entre expectativa do cliente e desempenho da empresa", correta: false },
               { letra: "D", texto: "10 critérios baseados nas normas ISO 9001 aplicadas ao setor de serviços", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O SERVQUAL mede a qualidade de serviço por 5 dimensões: (1) Tangíveis — instalações físicas, equipamentos, aparência do pessoal; (2) Confiabilidade — capacidade de entregar o serviço prometido com precisão; (3) Responsividade — disposição para ajudar e fornecer serviço rápido; (4) Segurança (Assurance) — conhecimento e cortesia, capacidade de inspirar confiança; (5) Empatia — atenção individualizada ao cliente."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1249,11 +1249,11 @@ export default function AulaGestaoQualidadeSuprimento({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma 'não-conformidade' no contexto da gestão da qualidade é definida como:"
           alternativas={[
-              { letra: "A", texto: "Qualquer falha que cause prejuízo financeiro significativo à empresa", correta: false },
+            { letra: "A", texto: "Qualquer falha que cause prejuízo financeiro significativo à empresa", correta: false },
               { letra: "B", texto: "Não atendimento a um requisito especificado (norma, especificação, procedimento ou regulamento)", correta: true },
               { letra: "C", texto: "Defeito encontrado exclusivamente na inspeção final de produto acabado", correta: false },
               { letra: "D", texto: "Divergência de opinião entre departamentos sobre procedimentos internos", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Uma NC pode ser detectada em auditoria, inspeção de processo, reclamação de cliente ou auto-inspeção."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Não-conformidade (NC) = não atendimento a um requisito." },
@@ -1381,11 +1381,11 @@ export default function AulaGestaoQualidadeSuprimento({
           concurso="Processo Seletivo Petrobras"
           enunciado="O Sistema de Gestão Integrado (SGI) da Petrobras integra três sistemas de gestão. Quais são eles?"
           alternativas={[
-              { letra: "A", texto: "Qualidade, Finanças e Recursos Humanos", correta: false },
+            { letra: "A", texto: "Qualidade, Finanças e Recursos Humanos", correta: false },
               { letra: "B", texto: "Qualidade (ISO 9001), Meio Ambiente (ISO 14001) e Saúde e Segurança (ISO 45001)", correta: true },
               { letra: "C", texto: "Qualidade, Produção e Logística", correta: false },
               { letra: "D", texto: "ISO 9001, ISO 27001 e ISO 50001", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Essencial em O&G onde QSE (Qualidade, Segurança e Meio Ambiente) são inseparáveis."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "O SGI da Petrobras integra: (1) Gestão da Qualidade — ISO 9001; (2) Gestão Ambiental — ISO 14001; (3) Gestão de Saúde e Segurança Ocupacional — ISO 45001." },
@@ -1481,11 +1481,11 @@ export default function AulaGestaoQualidadeSuprimento({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma empresa de serviços de manutenção industrial implementou um SGQ ISO 9001:2015. Na última auditoria interna, o auditor identificou que os operadores realizam inspeções visuais sem seguir o procedimento documentado (PRO-INS-01), embora produzam resultados aceitáveis. Esta situação é classificada como:"
           alternativas={[
-              { letra: "A", texto: "Oportunidade de melhoria, pois os resultados são aceitáveis", correta: false },
+            { letra: "A", texto: "Oportunidade de melhoria, pois os resultados são aceitáveis", correta: false },
               { letra: "B", texto: "Não-conformidade, pois há não atendimento a um requisito (procedimento documentado)", correta: true },
               { letra: "C", texto: "Observação sem necessidade de ação corretiva", correta: false },
               { letra: "D", texto: "Conformidade condicionada, válida apenas se os resultados forem aprovados", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O resultado satisfatório não elimina a NC — a causa raiz (não seguimento do procedimento) deve ser investigada e corrigida."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Mesmo com resultados aceitáveis, o não seguimento do procedimento documentado é uma NÃO-CONFORMIDADE." },

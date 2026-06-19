@@ -63,6 +63,7 @@ const ALL_MENU_SECTIONS: MenuSection[] = [
     title: "Estudo",
     items: [
       { id: "aulas", label: "Aulas", href: "/aulas", icon: LuBookOpen },
+      { id: "plano-estudos", label: "Plano de Estudos", href: "/plano-estudos", icon: LuList },
       {
         id: "petrolingo",
         label: "PetroLingo",
@@ -217,17 +218,22 @@ export function AdminSidebar({
 
   // Adiciona a seção de Suporte para o usuário comum se não for admin
   if (!isAdmin) {
+    const suporteItems = [
+      {
+        id: "tickets",
+        label: "Abertura de Ticket",
+        href: "/tickets",
+        icon: LuLifeBuoy,
+      },
+    ];
+
+    if (userPlan !== "elite-total") {
+      suporteItems.unshift({ id: "seja-pro", label: "Seja Pro", href: "/seja-pro", icon: LuZap });
+    }
+
     menuSections.push({
       title: "Suporte",
-      items: [
-        { id: "seja-pro", label: "Seja Pro", href: "/seja-pro", icon: LuZap },
-        {
-          id: "tickets",
-          label: "Abertura de Ticket",
-          href: "/tickets",
-          icon: LuLifeBuoy,
-        },
-      ],
+      items: suporteItems,
     });
   }
 

@@ -1,0 +1,35 @@
+# Plano de Upgrade ULTIMATE: Aula de Classes de Palavras
+
+Este plano visa aplicar manualmente as melhorias do script `fix-single-ultimate.js` que não foram capturadas automaticamente devido a variações estruturais no arquivo `AulaClassesPalavras.tsx`.
+
+## Proposta de Mudanças
+
+### [Componente] [AulaClassesPalavras.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaClassesPalavras.tsx) [MODIFY]
+
+#### 1. Padronização de Tipografia (Legibilidade Pro)
+- Alterar todos os containers de texto de `text-base` para `text-lg`.
+- Adicionar a classe `text-justify` em parágrafos longos para um visual editorial premium.
+- Aplicar `font-bold` nos títulos de seção (`ModuleSectionHeader`) onde apropriado.
+
+#### 2. Sincronização de Gradientes (Fidelidade Visual)
+Garantir que os 10 módulos sigam a paleta definida no sistema do projeto:
+- **M1 (Substantivo)**: Amber Light (Amber 300/500/400)
+- **M2 (Adjetivo)**: Blue Light (Blue 300/500/400)
+- **M3 (Artigo)**: Emerald Light (Emerald 300/500/400)
+- **M4 (Pronome)**: Rose Light (Rose 300/500/400)
+- **M5 (Verbo)**: Violet Light (Violet 300/500/400)
+- **M6 (Advérbio)**: Amber Dark (Amber 900/500/800)
+- **M7 (Preposição)**: Blue Dark (Blue 900/500/800)
+- **M8 (Conjunção)**: Emerald Dark (Emerald 900/500/800)
+- **M9 (Interjeição)**: Rose Dark (Rose 900/500/800)
+- **M10 (Numeral)**: Violet Dark (Violet 900/500/800)
+
+#### 3. Auditoria de Indexação
+- Verificar se a numeração dos módulos nos `ModuleBanner` e dos índices nos `ModuleSectionHeader` está sequencial e correta.
+
+## Plano de Verificação
+
+### Verificação Manual
+1.  Validar visualmente em `http://localhost:3000/aulas/portugues/classes-palavras`.
+2.  Checar se a tipografia `text-lg` não causou quebras de layout em dispositivos móveis.
+3.  Confirmar que os 10 gradientes estão distintos e seguindo a ordem correta.

@@ -1,0 +1,23 @@
+# Plano de Testes PMAVV
+
+## Passo 1: Login
+- [ ] Navegar para `http://localhost:3000/login`
+- [ ] Inserir credenciais (`andre.hugo` / `Mvvas@18261405`)
+- [ ] Tratar 2FA (se necessário)
+- [ ] Verificar se o login foi bem-sucedido
+
+## Passo 2: Verificação da DataTable
+- [ ] Navegar para `/denuncias`
+- [ ] Verificar coluna "PROTOCOLO" (120px, sticky left)
+- [ ] Verificar coluna "AÇÕES" (102px, sticky right)
+- [ ] Capturar screenshot da tabela com scroll horizontal
+
+## Passo 3: Verificação do Fix (Wizard)
+- [ ] Abrir modal "Nova Denúncia"
+- [ ] No Step 1, clicar em "OUTROS" (Formas de Violência)
+- [ ] Verificar se o erro "Maximum update depth exceeded" foi resolvido
+- [ ] Capturar screenshot do Step 1 com "OUTROS" selecionado
+
+## Informações Adicionais
+- Credenciais: andre.hugo / Mvvas@18261405
+- URL: http://localhost:3000

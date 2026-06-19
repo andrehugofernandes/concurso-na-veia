@@ -601,12 +601,12 @@ export default function AulaRazaoProporcao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em um mapa de escala 1:25.000, duas refinarias distam 8 cm. A distância real entre elas é:"
           alternativas={[
-              { letra: "A", texto: "200 m", correta: false },
+            { letra: "A", texto: "200 m", correta: false },
               { letra: "B", texto: "2 km", correta: true },
               { letra: "C", texto: "20 km", correta: false },
               { letra: "D", texto: "200 km", correta: false },
               { letra: "E", texto: "0,2 km", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Conversões: ÷100 → metros, ÷1000 → km."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1054,12 +1054,12 @@ export default function AulaRazaoProporcao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Dividir R$ 180.000 entre três setores na razão 2:3:4. O setor que fica com a maior parte receberá:"
           alternativas={[
-              { letra: "A", texto: "R$ 40.000", correta: false },
+            { letra: "A", texto: "R$ 40.000", correta: false },
               { letra: "B", texto: "R$ 60.000", correta: false },
               { letra: "C", texto: "R$ 72.000", correta: false },
               { letra: "D", texto: "R$ 80.000", correta: true },
               { letra: "E", texto: "R$ 90.000", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Maior (4 partes): 4×20.000 = R$ 80.000."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "2+3+4 = 9 partes." },
@@ -1560,12 +1560,12 @@ export default function AulaRazaoProporcao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Dividir R$ 240.000 entre 3 plataformas da Petrobras nas proporções 1:2:3. A plataforma com maior cota recebe:"
           alternativas={[
-              { letra: "A", texto: "R$ 40.000", correta: false },
+            { letra: "A", texto: "R$ 40.000", correta: false },
               { letra: "B", texto: "R$ 60.000", correta: false },
               { letra: "C", texto: "R$ 80.000", correta: false },
               { letra: "D", texto: "R$ 120.000", correta: true },
               { letra: "E", texto: "R$ 100.000", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Maior (3 partes): 3×40.000=R$120.000."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "1+2+3=6 partes." },
@@ -1960,12 +1960,12 @@ export default function AulaRazaoProporcao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Dividir R$ 180.000 entre três setores na razão 2:3:4. O setor que fica com a maior parte receberá:"
           alternativas={[
-              { letra: "A", texto: "R$ 40.000", correta: false },
+            { letra: "A", texto: "R$ 40.000", correta: false },
               { letra: "B", texto: "R$ 60.000", correta: false },
               { letra: "C", texto: "R$ 72.000", correta: false },
               { letra: "D", texto: "R$ 80.000", correta: true },
               { letra: "E", texto: "R$ 90.000", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Maior (4 partes): 4×20.000 = R$ 80.000."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "2+3+4 = 9 partes." },
@@ -2532,12 +2532,12 @@ export default function AulaRazaoProporcao({
           concurso="Processo Seletivo Petrobras"
           enunciado="A média proporcional entre 4 e 16 é:"
           alternativas={[
-              { letra: "A", texto: "6", correta: false },
+            { letra: "A", texto: "6", correta: false },
               { letra: "B", texto: "8", correta: true },
               { letra: "C", texto: "10", correta: false },
               { letra: "D", texto: "12", correta: false },
               { letra: "E", texto: "4", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Diferente da média aritmética (4+16)/2=10."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2940,12 +2940,12 @@ export default function AulaRazaoProporcao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Dividir R$ 180.000 entre três setores na razão 2:3:4. O setor que fica com a maior parte receberá:"
           alternativas={[
-              { letra: "A", texto: "R$ 40.000", correta: false },
+            { letra: "A", texto: "R$ 40.000", correta: false },
               { letra: "B", texto: "R$ 60.000", correta: false },
               { letra: "C", texto: "R$ 72.000", correta: false },
               { letra: "D", texto: "R$ 80.000", correta: true },
               { letra: "E", texto: "R$ 90.000", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Maior (4 partes): 4×20.000 = R$ 80.000."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "2+3+4 = 9 partes." },
@@ -3346,12 +3346,12 @@ export default function AulaRazaoProporcao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Dividir R$ 180.000 entre três setores na razão 2:3:4. O setor que fica com a maior parte receberá:"
           alternativas={[
-              { letra: "A", texto: "R$ 40.000", correta: false },
+            { letra: "A", texto: "R$ 40.000", correta: false },
               { letra: "B", texto: "R$ 60.000", correta: false },
               { letra: "C", texto: "R$ 72.000", correta: false },
               { letra: "D", texto: "R$ 80.000", correta: true },
               { letra: "E", texto: "R$ 90.000", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Maior (4 partes): 4×20.000 = R$ 80.000."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "2+3+4 = 9 partes." },
@@ -3823,12 +3823,12 @@ export default function AulaRazaoProporcao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em um mapa de escala 1:25.000, duas refinarias distam 8 cm. A distância real entre elas é:"
           alternativas={[
-              { letra: "A", texto: "200 m", correta: false },
+            { letra: "A", texto: "200 m", correta: false },
               { letra: "B", texto: "2 km", correta: true },
               { letra: "C", texto: "20 km", correta: false },
               { letra: "D", texto: "200 km", correta: false },
               { letra: "E", texto: "0,2 km", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Conversões: ÷100 → metros, ÷1000 → km."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -4222,12 +4222,12 @@ export default function AulaRazaoProporcao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Dividir R$ 180.000 entre três setores na razão 2:3:4. O setor que fica com a maior parte receberá:"
           alternativas={[
-              { letra: "A", texto: "R$ 40.000", correta: false },
+            { letra: "A", texto: "R$ 40.000", correta: false },
               { letra: "B", texto: "R$ 60.000", correta: false },
               { letra: "C", texto: "R$ 72.000", correta: false },
               { letra: "D", texto: "R$ 80.000", correta: true },
               { letra: "E", texto: "R$ 90.000", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Maior (4 partes): 4×20.000 = R$ 80.000."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "2+3+4 = 9 partes." },
@@ -4573,12 +4573,12 @@ export default function AulaRazaoProporcao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em um mapa de escala 1:25.000, duas refinarias distam 8 cm. A distância real entre elas é:"
           alternativas={[
-              { letra: "A", texto: "200 m", correta: false },
+            { letra: "A", texto: "200 m", correta: false },
               { letra: "B", texto: "2 km", correta: true },
               { letra: "C", texto: "20 km", correta: false },
               { letra: "D", texto: "200 km", correta: false },
               { letra: "E", texto: "0,2 km", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Conversões: ÷100 → metros, ÷1000 → km."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },

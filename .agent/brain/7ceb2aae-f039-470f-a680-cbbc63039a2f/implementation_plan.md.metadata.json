@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Plano de implementação para padronizar os 10 Rich Intros da AulaCoesaoCoerencia.tsx. Diagnóstico completo mostrando as diferenças entre o padrão modelo (Interpretação de Texto — 4-5 parágrafos corridos + caixa de destaque) e o padrão atual (Coesão — grid 2 colunas com imagem + apenas 2 parágrafos + RichIntro wrapper). Inclui template JSX exato, plano de execução faseado (5+5 módulos), e questões abertas sobre QuizDiagnostic e import do RichIntro.",
+  "updatedAt":  "2026-04-21T18:40:14.974132Z",
+  "requestFeedback":  true
+}

@@ -1,0 +1,7 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Plano atualizado para o sticky nav. Foco em efeito vidro fosco (blur + opacidade equilibrada), remoção de gaps laterais e correção do 'pulo' de conteúdo ao fixar a barra.",
+  "updatedAt":  "2026-04-03T00:00:16.696185400Z",
+  "version":  "1",
+  "requestFeedback":  true
+}

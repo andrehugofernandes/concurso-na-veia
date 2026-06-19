@@ -1,0 +1,27 @@
+# Walkthrough: Melhorias de UI/UX e Modo Light
+
+Resolvi os problemas visuais reportados no modo Light e restaurei o funcionamento do sistema após um erro de build detectado.
+
+## Correções Implementadas
+
+### 1. Sticky Footer no Wizard
+O rodapé dos botões (Avançar/Voltar) agora é **Sticky**. Ele fica permanentemente visível na base do modal, eliminando a necessidade de dar scroll em formulários longos para encontrar o botão de ação.
+
+### 2. Contraste no Modo Light (Checkboxes)
+Aumentei a opacidade do background (`bg-primary/20`) e das bordas nos campos selecionados no modo Light. Agora, ao marcar um item, a seleção é vibrante e clara, garantindo legibilidade total.
+
+### 3. Build Error Fix (Módulo Bairros)
+Corrigi um erro de importação em [cadastros/bairros/page.tsx](file:///c:/GSW/PMAVV/PMAVV/src/app/%28app%29/cadastros/bairros/page.tsx) que estava gerando um overlay de erro no Next.js e bloqueando o uso do sistema.
+
+## Evidências de Validação (Modo Light)
+
+> [!TIP]
+> Usei o navegador para validar que as marcações agora aparecem nitidamente conforme você solicitou.
+
+![Wizard Step 1 - Modo Light](file:///C:/Users/andre.hugo/.gemini/antigravity/brain/048bee17-69a4-4794-9846-97bea042c0df/step_1_result_1776265050004.png)
+*Note que o botão de "Continuar para Vítima" está fixo no rodapé e as marcações azuis estão bem visíveis.*
+
+## Como Testar
+1. Acesse o sistema e mude para o modo Light.
+2. Abra o modal de "Nova Denúncia".
+3. Observe que os botões "Avançar" estão sempre visíveis e os itens selecionados têm destaque azul claro nítido.

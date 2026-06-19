@@ -1,0 +1,38 @@
+# Walkthrough: Refatoração do Fluxo de Denúncias PMAVV
+
+Concluí a migração completa e a estabilização do sistema de denúncias, atingindo paridade total com o legado e superando em UX e performance.
+
+## Entregas Principais
+
+### 1. Wizard de Denúncias (4 Steps)
+Fluxo guiado via Side-Sheet:
+- **Step 1: Denúncia**: Geração imediata de protocolo `{ID}/{AA}`.
+- **Step 2: Vítimas**: Lista dinâmica com autocompletar de bairros.
+- **Step 3: Agressor (Opcional)**: Habilitado via toggle.
+- **Step 4: Denunciante**: Registro de dados do reportante.
+
+![Wizard Step 1 - Seleção de Outros](file:///C:/Users/andre.hugo/.gemini/antigravity/brain/048bee17-69a4-4794-9846-97bea042c0df/wizard_step1_outros_selected_1776264404322.png)
+*O erro de loop infinito foi corrigido e os campos dependentes ("Especifique") aparecem instantaneamente.*
+
+### 2. Tabbed DataTable (Sticky Layout)
+Interface otimizada para visualização de grandes volumes de dados:
+- **Protocolo**: Fixado à esquerda (120px).
+- **Ações**: Fixadas à direita (102px).
+- **Efeito Gloss**: Colunas fixas com `backdrop-blur` e sombras para profundidade.
+
+![DataTable Sticky Protocolo](file:///C:/Users/andre.hugo/.gemini/antigravity/brain/048bee17-69a4-4794-9846-97bea042c0df/datatable_sticky_columns_1776264221181.png)
+*Protocolo fixado à esquerda durante o scroll.*
+
+![DataTable Sticky Ações](file:///C:/Users/andre.hugo/.gemini/antigravity/brain/048bee17-69a4-4794-9846-97bea042c0df/datatable_acoes_sticky_right_1776264333384.png)
+*Ações fixadas à direita, garantindo que o CTA esteja sempre visível.*
+
+## Bug Fixes e Estabilização Final
+- **Recursividade no MultiCheckField**: Resolvido o erro `Maximum update depth exceeded` eliminando handlers duplicados de clique.
+- **Server Action Compliance**: Migração de funções síncronas para utilitários externos.
+- **Hydration & Hook Stability**: Remoção de componentes experimentais em favor de padrões estáveis do Radix UI.
+
+## Verificação Técnica
+- [x] Wizard persistindo dados entre passos.
+- [x] Tabela com scroll horizontal suave e colunas ancoradas.
+- [x] Sem erros de console ou loops de renderização.
+- [x] 100% TypeScript Typings.

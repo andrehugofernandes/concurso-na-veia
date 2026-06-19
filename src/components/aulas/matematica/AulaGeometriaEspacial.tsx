@@ -430,12 +430,12 @@ export default function AulaGeometriaEspacial({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um silo de armazenamento de cereais tem formato piramidal de base quadrada 6 m × 6 m e altura 4 m. Qual seu volume?"
           alternativas={[
-              { letra: "A", texto: "36 m³", correta: false },
+            { letra: "A", texto: "36 m³", correta: false },
               { letra: "B", texto: "42 m³", correta: false },
               { letra: "C", texto: "48 m³", correta: true },
               { letra: "D", texto: "54 m³", correta: false },
               { letra: "E", texto: "60 m³", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O fator 1/3 é a grande diferença entre a pirâmide e o prisma de mesma base e altura."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -623,12 +623,12 @@ export default function AulaGeometriaEspacial({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
           alternativas={[
-              { letra: "A", texto: "168 m³", correta: false },
+            { letra: "A", texto: "168 m³", correta: false },
               { letra: "B", texto: "192 m³", correta: true },
               { letra: "C", texto: "200 m³", correta: false },
               { letra: "D", texto: "210 m³", correta: false },
               { letra: "E", texto: "224 m³", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -810,12 +810,12 @@ export default function AulaGeometriaEspacial({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
           alternativas={[
-              { letra: "A", texto: "168 m³", correta: false },
+            { letra: "A", texto: "168 m³", correta: false },
               { letra: "B", texto: "192 m³", correta: true },
               { letra: "C", texto: "200 m³", correta: false },
               { letra: "D", texto: "210 m³", correta: false },
               { letra: "E", texto: "224 m³", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -990,12 +990,12 @@ export default function AulaGeometriaEspacial({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
           alternativas={[
-              { letra: "A", texto: "168 m³", correta: false },
+            { letra: "A", texto: "168 m³", correta: false },
               { letra: "B", texto: "192 m³", correta: true },
               { letra: "C", texto: "200 m³", correta: false },
               { letra: "D", texto: "210 m³", correta: false },
               { letra: "E", texto: "224 m³", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1164,12 +1164,12 @@ export default function AulaGeometriaEspacial({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
           alternativas={[
-              { letra: "A", texto: "168 m³", correta: false },
+            { letra: "A", texto: "168 m³", correta: false },
               { letra: "B", texto: "192 m³", correta: true },
               { letra: "C", texto: "200 m³", correta: false },
               { letra: "D", texto: "210 m³", correta: false },
               { letra: "E", texto: "224 m³", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1348,12 +1348,12 @@ export default function AulaGeometriaEspacial({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
           alternativas={[
-              { letra: "A", texto: "168 m³", correta: false },
+            { letra: "A", texto: "168 m³", correta: false },
               { letra: "B", texto: "192 m³", correta: true },
               { letra: "C", texto: "200 m³", correta: false },
               { letra: "D", texto: "210 m³", correta: false },
               { letra: "E", texto: "224 m³", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1523,12 +1523,12 @@ export default function AulaGeometriaEspacial({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
           alternativas={[
-              { letra: "A", texto: "168 m³", correta: false },
+            { letra: "A", texto: "168 m³", correta: false },
               { letra: "B", texto: "192 m³", correta: true },
               { letra: "C", texto: "200 m³", correta: false },
               { letra: "D", texto: "210 m³", correta: false },
               { letra: "E", texto: "224 m³", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1711,12 +1711,12 @@ export default function AulaGeometriaEspacial({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
           alternativas={[
-              { letra: "A", texto: "168 m³", correta: false },
+            { letra: "A", texto: "168 m³", correta: false },
               { letra: "B", texto: "192 m³", correta: true },
               { letra: "C", texto: "200 m³", correta: false },
               { letra: "D", texto: "210 m³", correta: false },
               { letra: "E", texto: "224 m³", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1899,12 +1899,12 @@ export default function AulaGeometriaEspacial({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
           alternativas={[
-              { letra: "A", texto: "168 m³", correta: false },
+            { letra: "A", texto: "168 m³", correta: false },
               { letra: "B", texto: "192 m³", correta: true },
               { letra: "C", texto: "200 m³", correta: false },
               { letra: "D", texto: "210 m³", correta: false },
               { letra: "E", texto: "224 m³", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2081,12 +2081,12 @@ export default function AulaGeometriaEspacial({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um tanque prismático retangular na REPLAN tem dimensões 8 m × 6 m × 4 m. Qual é sua capacidade em metros cúbicos?"
           alternativas={[
-              { letra: "A", texto: "168 m³", correta: false },
+            { letra: "A", texto: "168 m³", correta: false },
               { letra: "B", texto: "192 m³", correta: true },
               { letra: "C", texto: "200 m³", correta: false },
               { letra: "D", texto: "210 m³", correta: false },
               { letra: "E", texto: "224 m³", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Esta fórmula é um caso particular de V = Área_base × altura."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },

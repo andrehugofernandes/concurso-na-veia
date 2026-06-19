@@ -1,0 +1,10 @@
+# Verificação da Aula de Interpretação de Texto
+
+## Tarefas:
+- [ ] Acessar http://localhost:3000/aulas/portugues/interpretacao-texto
+- [ ] Localizar o Módulo 7 "As Ameaças Triplas" e a seção "A Trindade do Erro"
+- [ ] Verificar o layout do carrossel (2 cards por vez no desktop)
+- [ ] Capturar screenshot do carrossel
+- [ ] Clicar em um flip card para ver o verso
+- [ ] Verificar a ausência de barra de rolagem vertical no verso
+- [ ] Capturar screenshot do verso do card

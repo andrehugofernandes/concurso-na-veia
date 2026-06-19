@@ -1,0 +1,12 @@
+- [x] Correção do TypeError em `src/components/aulas/shared.tsx` (sanitização de `titulo` em `QuizInterativo`)
+- [ ] Correção de Mojibake em `AulaReadingStrategies.tsx` via script Python
+- [ ] Correção das chamadas do `QuizInterativo` em `src/components/aulas/ingles/AulaTextComprehension.tsx` (passando o `titulo` correto)
+- [ ] Correção do `AlertBox` em `src/components/aulas/ingles/AulaTextComprehension.tsx` (migrar propriedade `descricao` para children)
+- [ ] Correção do `ComparisonSide` em `src/components/aulas/ingles/AulaTextComprehension.tsx` (converter chamadas lado1/lado2 para grid de duas colunas com instâncias individuais)
+- [ ] Adaptação das introduções de módulo em `AulaTextComprehension.tsx` para o padrão C.E.D.E.A (index="INTRO" e 5 parágrafos estruturados)
+- [ ] Substituição de emojis e símbolos especiais por ícones Lucide em `AulaTextComprehension.tsx`
+- [ ] Migração de `maceteVisual` para `sinteseEstrategica` no componente `ModuleConsolidation` em `AulaTextComprehension.tsx`
+- [ ] Padronização da cor visual para `variant={mv[1]}` nos 10 módulos de `AulaTextComprehension.tsx`
+- [ ] Padronização da cor visual para `variant={mv[1]}` e higienização de emojis/símbolos em todas as outras aulas de inglês (`AulaVocabulary.tsx`, `AulaVerbTenses.tsx`, `AulaReadingStrategies.tsx`, `AulaFalseCognates.tsx`, `AulaConnectors.tsx`)
+- [ ] Atualização do guia do desenvolvedor `docs/GUIA_CRIACAO_AULAS.md` para remover referências a APIs obsoletas e incluir regra de cor única para inglês
+- [ ] Verificação da compilação e qualidade do código com `npx tsc --noEmit`

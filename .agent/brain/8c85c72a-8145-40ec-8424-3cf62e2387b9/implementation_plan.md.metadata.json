@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plan to fix the character corruption (redundant `º` and `Nº`) across multiple React components in the English, TI, and Other course modules.",
+  "updatedAt": "2026-05-19T18:40:22.845324600Z"
+}

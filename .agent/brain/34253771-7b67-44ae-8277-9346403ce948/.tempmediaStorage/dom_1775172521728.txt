@@ -1,0 +1,18 @@
+[0] (64,33)<a aria-label='Voltar às Aulas' class='mt-2 w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors' href='/aulas/portugues' />
+[1] (936,33)<button aria-label='Mostrar cabeçalho' class='mt-2 w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0' />
+Módulo
+1
+Concordância Verbal
+Estudo sistemático das normas que regem a harmonia entre o verbo e o seu sujeito, fundamentado na gramática normativa de Bechara para garantir a precisão do texto técnico.
+📚
+Fundamentos da Concordância Verbal
+A concordância verbal é o mecanismo sintático pelo qual o verbo se flexiona para ajustar-se ao seu sujeito. Segundo Bechara, o princípio fundamental é que o verbo concorde em número e pessoa com o núcleo do sujeito, garantindo a unidade lógica da oração.
+[2] (932,827)<button aria-label='Voltar ao topo' class='fixed bottom-[106px] md:bottom-8 z-[100] p-2.5 md:p-4 rounded-full bg-primary text-primary-foreground shadow-2xl transition-all duration-500 hover:scale-110 active:scale-95 group cursor-pointer flex items-center justify-center right-4 md:right-8 left-auto opacity-100 translate-y-0' />
+[3] (100,973)<span >Aulas />
+Simulados
+[4] (497,920)<a class='flex flex-col items-center gap-0.5 -mt-[52px]' href='/dashboard'>Dashboard />
+	[5] (497,908)<div  />
+	Dashboard
+Provas
+[6] (874,956)<a class='flex flex-col items-center gap-1 px-3 py-2 rounded transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100' href='/maratona-100' />
+	[7] (874,973)<span >Maratona />

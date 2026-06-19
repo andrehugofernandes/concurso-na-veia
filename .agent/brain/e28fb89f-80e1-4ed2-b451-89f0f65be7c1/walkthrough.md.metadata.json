@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Restauração dos botões mobile e correção definitiva da visibilidade do cabeçalho no modo desktop. Inclui prova visual de funcionamento e conformidade com o sistema de peles (skins).",
+  "updatedAt": "2026-04-18T02:48:17.648078500Z",
+  "version": "1"
+}

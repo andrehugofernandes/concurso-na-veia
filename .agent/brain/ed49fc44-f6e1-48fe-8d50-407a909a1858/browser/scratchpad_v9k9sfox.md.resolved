@@ -1,0 +1,10 @@
+# Task: Verificação visual do StickyModuleNav
+
+## Checklist
+- [ ] Abrir navegador com 1366x768
+- [ ] Navegar para http://localhost:3000/aulas/matematica/conjuntos
+- [ ] Tirar print da página inicial (focando no StickyModuleNav)
+- [ ] Rolar a página para ativar o estado sticky
+- [ ] Tirar print com o nav fixo (sticky)
+- [ ] Analisar espaçamentos horizontais (sidebar vs scrollbar)
+- [ ] Relatar resultados ao Jetski

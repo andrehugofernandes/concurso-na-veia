@@ -141,12 +141,12 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Durante procedimento fiscal regular na Petrobras, o auditor da Receita Federal do Brasil (RFB) intima o representante legal a apresentar os livros comerciais e fiscais da empresa. O representante recusa-se ao fornecimento sob a alegação de cláusula de sigilo contratual privada celebrada com parceiros comerciais. Nos termos do Código Tributário Nacional (CTN), a conduta do representante é:"
           alternativas={[
-              { letra: "A", texto: "legítima, pois o sigilo comercial privado se sobrepõe ao interesse arrecadatório estatal.", correta: false },
+            { letra: "A", texto: "legítima, pois o sigilo comercial privado se sobrepõe ao interesse arrecadatório estatal.", correta: false },
               { letra: "B", texto: "ilegítima, pois a fiscalização dos livros comerciais pela autoridade tributária não está sujeita a limitações constantes de leis ou contratos privados.", correta: true },
               { letra: "C", texto: "legítima, desde que haja parecer prévio do conselho fiscal da sociedade anônima.", correta: false },
               { letra: "D", texto: "ilegítima, dependendo, contudo, de mandado de busca judicial para prosseguimento do exame.", correta: false },
               { letra: "E", texto: "legítima, cabendo à Receita Federal requerer as informações diretamente aos parceiros internacionais.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="195 do CTN, para efeitos da legislação tributária, não têm aplicação quaisquer disposições legais limitativas do direito de examinar livros, arquivos, papéis e efeitos comerciais dos comerciantes ou industriais."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -249,12 +249,12 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Receita Federal do Brasil (RFB) arrecada principalmente:"
           alternativas={[
-              { letra: "A", texto: "ICMS", correta: false },
+            { letra: "A", texto: "ICMS", correta: false },
               { letra: "B", texto: "IR, IPI, COFINS, PIS e outros tributos federais", correta: true },
               { letra: "C", texto: "ISS", correta: false },
               { letra: "D", texto: "IPTU", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -357,12 +357,12 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Nota Fiscal Eletrônica (NF-e) é obrigatória para:"
           alternativas={[
-              { letra: "A", texto: "Apenas grandes empresas", correta: false },
+            { letra: "A", texto: "Apenas grandes empresas", correta: false },
               { letra: "B", texto: "Circulação de mercadoria (desde 2006 para maioria)", correta: true },
               { letra: "C", texto: "Nunca é obrigatória", correta: false },
               { letra: "D", texto: "Apenas importação", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Emitida eletronicamente, autorizada pela SEFAZ, rastreada digitalmente."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -465,12 +465,12 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="DIPJ (Declaração Imposto Pessoa Jurídica) é apresentada:"
           alternativas={[
-              { letra: "A", texto: "Mensalmente", correta: false },
+            { letra: "A", texto: "Mensalmente", correta: false },
               { letra: "B", texto: "Anualmente (até 30 de abril)", correta: true },
               { letra: "C", texto: "Nunca", correta: false },
               { letra: "D", texto: "A cada 3 anos", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Prazo: até 30 de abril do ano seguinte."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "DIPJ: declaração anual de IR de PJ." },
@@ -573,12 +573,12 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Prazo de recolhimento de ICMS é até:"
           alternativas={[
-              { letra: "A", texto: "Dia 7", correta: false },
+            { letra: "A", texto: "Dia 7", correta: false },
               { letra: "B", texto: "Dia 15 (estadual, pode variar por estado)", correta: true },
               { letra: "C", texto: "Dia 21", correta: false },
               { letra: "D", texto: "Final do mês", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Atraso = multa 0,5% ao mês + juros."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -681,12 +681,12 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Planejamento Tributário Integrado envolve:"
           alternativas={[
-              { letra: "A", texto: "Apenas vender mais", correta: false },
+            { letra: "A", texto: "Apenas vender mais", correta: false },
               { letra: "B", texto: "Analisar operações e estruturar para minimizar imposto de forma lícita", correta: true },
               { letra: "C", texto: "Fraudar impostos", correta: false },
               { letra: "D", texto: "Não envolve nada", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Ilícito = frauda."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Planejamento: análise de qual operação/estrutura gera menos imposto." },
@@ -789,12 +789,12 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Crédito ICMS gera direito de:"
           alternativas={[
-              { letra: "A", texto: "Não pagar ICMS nunca", correta: false },
+            { letra: "A", texto: "Não pagar ICMS nunca", correta: false },
               { letra: "B", texto: "Abater ICMS pago em compra no ICMS devido em venda", correta: true },
               { letra: "C", texto: "Fraude", correta: false },
               { letra: "D", texto: "Sem relação", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Precisa de documentação (NF correta)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Crédito ICMS: direito inato (vem da lei)." },
@@ -897,12 +897,12 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="NF-e (Nota Fiscal Eletrônica) é emitida:"
           alternativas={[
-              { letra: "A", texto: "Em papel", correta: false },
+            { letra: "A", texto: "Em papel", correta: false },
               { letra: "B", texto: "Eletronicamente via software, autorizada pela SEFAZ", correta: true },
               { letra: "C", texto: "Verbalmente", correta: false },
               { letra: "D", texto: "Sem sistema", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Rastreado."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "NF-e: processo eletrônico." },
@@ -1005,12 +1005,12 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Complexidade tributária em Petrobras vem de:"
           alternativas={[
-              { letra: "A", texto: "Nada complexo", correta: false },
+            { letra: "A", texto: "Nada complexo", correta: false },
               { letra: "B", texto: "Múltiplos estados, tributos integrados (ICMS em cascata), royalties, PE, volume bilionário", correta: true },
               { letra: "C", texto: "Apenas ICMS", correta: false },
               { letra: "D", texto: "Sem complexidade", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Além disso: royalties, PE (participações), IR, PIS, COFINS."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Petrobras opera em 5+ estados." },

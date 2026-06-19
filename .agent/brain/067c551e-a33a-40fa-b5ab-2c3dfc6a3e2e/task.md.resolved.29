@@ -1,0 +1,7 @@
+# Tarefa: Verificar Configuração do Stripe
+
+- [x] Pesquisar por dependências do Stripe no [package.json](file:///c:/Workspace/petrobras-quest/package.json)
+- [x] Pesquisar por chaves de API ou variáveis de ambiente relacionadas ao Stripe
+- [x] Verificar o status da conta Stripe via MCP
+- [x] Analisar a integração no codebase (webhooks, checkout, etc.)
+- [x] Relatar o status final da configuração

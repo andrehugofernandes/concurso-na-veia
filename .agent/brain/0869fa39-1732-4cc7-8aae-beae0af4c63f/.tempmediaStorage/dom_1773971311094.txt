@@ -1,0 +1,144 @@
+AV
+A VAGA
+É MINHA
+Simulador de Concursos
+[0] (66,125)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/dashboard' />
+	[1] (15,125)<div  />
+	[2] (45,125)<span >Dashboard />
+Estudo
+[3] (66,200)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90' href='/aulas' />
+	[4] (15,200)<div  />
+	[5] (35,200)<span >Aulas />
+[6] (66,248)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-rapido' />
+	[7] (15,248)<div  />
+	[8] (60,248)<span >Simulados Rápidos />
+[9] (66,296)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-especifico' />
+	[10] (15,296)<div  />
+	[11] (65,296)<span >Simulados Específicos />
+[12] (66,345)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/maratona-100' />
+	[13] (15,345)<div  />
+	[14] (50,345)<span >Maratona 100 />
+[15] (66,393)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/historico' />
+	[16] (15,393)<div  />
+	[17] (41,393)<span >Histórico />
+[18] (66,441)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/rankings' />
+	[19] (15,441)<div  />
+	[20] (41,441)<span >Rankings />
+Suporte
+[21] (66,516)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/seja-pro' />
+	[22] (15,516)<div  />
+	[23] (40,516)<span >Seja Pro />
+[24] (66,564)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/tickets' />
+	[25] (15,564)<div  />
+	[26] (58,564)<span >Abertura de Ticket />
+[27] (300,280)<a class='group relative flex flex-col bg-slate-50/50 dark:bg-card backdrop-blur-lg rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/10 overflow-hidden' href='/aulas/portugues' />
+	[28] (300,161)<div  />
+		[29] (300,111)<div  />
+			[30] (207,111)<div >📝 />
+			[31] (386,94)<span >11
+Tópicos />
+		[32] (300,188)<h2 >Língua Portuguesa />
+		[33] (300,238)<p >Gramática e interpretação de texto conforme Edital Petrobras 2026 />
+	[34] (300,396)<div  />
+		[35] (300,306)<div  />
+			[36] (194,306)<div  />
+			[37] (305,306)<span >Interpretação de Texto />
+		[38] (300,341)<div  />
+			[39] (194,341)<div  />
+			[40] (305,341)<span >Coesão e Coerência />
+		[41] (300,377)<div  />
+			[42] (194,377)<div  />
+			[43] (305,377)<span >Reescrita de Frases />
+		[44] (300,412)<div  />
+			[45] (194,412)<div  />
+			[46] (305,412)<span >Crase />
+		[47] (300,447)<div  />
+			[48] (194,447)<div  />
+			[49] (305,447)<span >Pontuação />
+		[50] (300,484)<div >+
+6
+outros tópicos... />
+[51] (567,280)<a class='group relative flex flex-col bg-slate-50/50 dark:bg-card backdrop-blur-lg rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/10 overflow-hidden' href='/aulas/matematica' />
+	[52] (567,161)<div  />
+		[53] (567,111)<div  />
+			[54] (473,111)<div >🔢 />
+			[55] (651,94)<span >19
+Tópicos />
+		[56] (567,188)<h2 >Matemática />
+		[57] (567,238)<p >Raciocínio lógico-quantitativo conforme Edital Petrobras 2026 />
+	[58] (567,396)<div  />
+		[59] (567,306)<div  />
+			[60] (460,306)<div  />
+			[61] (571,306)<span >Teoria dos Conjuntos />
+		[62] (567,341)<div  />
+			[63] (460,341)<div  />
+			[64] (571,341)<span >Razão e Proporção />
+		[65] (567,377)<div  />
+			[66] (460,377)<div  />
+			[67] (571,377)<span >Porcentagem />
+		[68] (567,412)<div  />
+			[69] (460,412)<div  />
+			[70] (571,412)<span >Equações de 1º Grau />
+		[71] (567,447)<div  />
+			[72] (460,447)<div  />
+			[73] (571,447)<span >Equações de 2º Grau />
+		[74] (567,484)<div >+
+14
+outros tópicos... />
+[75] (833,280)<a class='group relative flex flex-col bg-slate-50/50 dark:bg-card backdrop-blur-lg rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/10 overflow-hidden' href='/aulas/especifica-bloco-i-fundamentos' />
+	[76] (833,150)<div  />
+		[77] (833,111)<div  />
+			[78] (740,111)<div >📚 />
+			[79] (919,94)<span >3
+Tópicos />
+		[80] (833,188)<h2 >Bloco I - Fundamentos />
+		[81] (833,227)<p >Conhecimentos específicos para Técnico de Operação />
+	[82] (833,385)<div  />
+		[83] (833,284)<div  />
+			[84] (727,284)<div  />
+			[85] (838,284)<span >Termodinâmica />
+		[86] (833,319)<div  />
+			[87] (727,319)<div  />
+			[88] (838,319)<span >Mecânica dos fluidos />
+		[89] (833,355)<div  />
+			[90] (727,355)<div  />
+			[91] (838,355)<span >Operações unitárias />
+[92] (300,739)<a class='group relative flex flex-col bg-slate-50/50 dark:bg-card backdrop-blur-lg rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/10 overflow-hidden' href='/aulas/especifica-bloco-ii-processos' />
+	[93] (300,658)<div  />
+		[94] (300,618)<div  />
+			[95] (207,618)<div >🔧 />
+			[96] (386,602)<span >4
+Tópicos />
+		[97] (300,695)<h2 >Bloco II - Processos />
+		[98] (300,734)<p >Conhecimentos específicos para Técnico de Operação />
+	[99] (300,844)<div  />
+		[100] (300,791)<div  />
+			[101] (194,791)<div  />
+			[102] (305,791)<span >Processos de refino />
+		[103] (300,827)<div  />
+			[104] (194,827)<div  />
+			[105] (305,827)<span >Química orgânica />
+		[106] (300,862)<div  />
+			[107] (194,862)<div  />
+			[108] (305,862)<span >Petroquímica />
+		[109] (300,897)<div  />
+			[110] (194,897)<div  />
+			[111] (305,897)<span >Processos de separação />
+[112] (567,739)<a class='group relative flex flex-col bg-slate-50/50 dark:bg-card backdrop-blur-lg rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/10 overflow-hidden' href='/aulas/especifica-bloco-iii-seguranca' />
+	[113] (567,658)<div  />
+		[114] (567,618)<div  />
+			[115] (473,618)<div >🧠 />
+			[116] (653,602)<span >3
+Tópicos />
+		[117] (567,695)<h2 >Bloco III - Segurança />
+		[118] (567,734)<p >Conhecimentos específicos para Técnico de Operação />
+	[119] (567,844)<div  />
+		[120] (567,791)<div  />
+			[121] (460,791)<div  />
+			[122] (571,791)<span >Segurança de processo />
+		[123] (567,827)<div  />
+			[124] (460,827)<div  />
+			[125] (571,827)<span >Controle de processos />
+		[126] (567,862)<div  />
+			[127] (460,862)<div  />
+			[128] (571,862)<span >Equipamentos industriais />

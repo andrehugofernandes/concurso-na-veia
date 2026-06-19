@@ -1,0 +1,22 @@
+# Tarefa: Upgrade ULTIMATE - Aula de Interpretação de Texto
+
+Esta tarefa consiste na inserção de textos introdutórios de alto valor (Rich Intros), de acordo com o padrão estabelecido no workflow `aula-ultimate.md`, para todos os 10 módulos do arquivo `AulaInterpretacaoTexto.tsx`.
+
+## Regras
+
+- Nunca apagar os componentes existentes.
+- O Rich Intro vai logo após o `ModuleBanner`.
+- O `ModuleSectionHeader` do Rich Intro NÃO vai ter numeração, usaremos `index="INTRO"`.
+
+## Módulos
+
+- [ ] Módulo 1: A Diferença Letal
+- [ ] Módulo 2: O Tópico Frasal
+- [ ] Módulo 3: Coesão e Argumentação
+- [ ] Módulo 4: Tipologia Textual
+- [ ] Módulo 5: Coesão Referencial
+- [ ] Módulo 6: Pistas e Entrelinhas
+- [ ] Módulo 7: As Ameaças Triplas
+- [ ] Módulo 8: A Lógica CESGRANRIO
+- [ ] Módulo 9: Checklist Tático
+- [ ] Módulo 10: Arena de Elite

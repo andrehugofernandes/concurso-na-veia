@@ -149,12 +149,12 @@ export default function AulaDireitoTributario(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O Estado institui a cobrança compulsória de valores decorrentes do exercício do poder de polícia sobre a fiscalização de estabelecimentos comerciais. Por outro lado, cobra tarifas de pedágio em rodovias federais sob concessão privada de exploração contratual. Essas cobranças classificam-se, respectivamente, como:"
           alternativas={[
-              { letra: "A", texto: "taxa (receita tributária) e preço público (receita não tributária)", correta: true },
+            { letra: "A", texto: "taxa (receita tributária) e preço público (receita não tributária)", correta: true },
               { letra: "B", texto: "imposto (receita tributária) e taxa (receita tributária)", correta: false },
               { letra: "C", texto: "contribuição (receita tributária) e imposto (receita tributária)", correta: false },
               { letra: "D", texto: "preço público (receita não tributária) e taxa (receita tributária)", correta: false },
               { letra: "E", texto: "tarifa (receita não tributária) e contribuição (receita tributária)", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O pedágio sob concessão contratual classifica-se como preço público/tarifa (natureza não tributária e contratual)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -284,12 +284,12 @@ export default function AulaDireitoTributario(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O Imposto de Renda (IR) incide sobre:"
           alternativas={[
-              { letra: "A", texto: "Apenas salários", correta: false },
+            { letra: "A", texto: "Apenas salários", correta: false },
               { letra: "B", texto: "Renda e proventos de qualquer natureza (salários, aluguéis, lucros, ganhos)", correta: true },
               { letra: "C", texto: "Apenas pessoas jurídicas", correta: false },
               { letra: "D", texto: "Apenas vendas de produtos", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -412,12 +412,12 @@ export default function AulaDireitoTributario(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="ICMS (Imposto sobre Circulação de Mercadorias) é um tributo:"
           alternativas={[
-              { letra: "A", texto: "Federal coletado pela Receita Federal", correta: false },
+            { letra: "A", texto: "Federal coletado pela Receita Federal", correta: false },
               { letra: "B", texto: "Estadual legislado por cada estado", correta: true },
               { letra: "C", texto: "Municipal coletado pela prefeitura", correta: false },
               { letra: "D", texto: "Internacional", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Arrecadação vai para o estado onde ocorre a operação."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "ICMS é tributo estadual." },
@@ -535,12 +535,12 @@ export default function AulaDireitoTributario(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="INSS (Instituto Nacional Seguridade Social) é uma contribuição de:"
           alternativas={[
-              { letra: "A", texto: "Apenas empregador", correta: false },
+            { letra: "A", texto: "Apenas empregador", correta: false },
               { letra: "B", texto: "Empregado e empregador", correta: true },
               { letra: "C", texto: "Apenas governo", correta: false },
               { letra: "D", texto: "Não é obrigatória", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Autônomo: 20% de sua renda."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "INSS: contribuição dupla." },
@@ -658,12 +658,12 @@ export default function AulaDireitoTributario(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="A obrigação tributária principal é:"
           alternativas={[
-              { letra: "A", texto: "Registrar operações", correta: false },
+            { letra: "A", texto: "Registrar operações", correta: false },
               { letra: "B", texto: "Pagar o tributo ao fisco", correta: true },
               { letra: "C", texto: "Informar dados", correta: false },
               { letra: "D", texto: "Manter documentos", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="É pessoal de quem sofreu o fato gerador."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Obrigação Principal: dever de pagar tributo." },
@@ -786,12 +786,12 @@ export default function AulaDireitoTributario(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O processo de auditoria fiscal começa quando:"
           alternativas={[
-              { letra: "A", texto: "Sempre que há operação", correta: false },
+            { letra: "A", texto: "Sempre que há operação", correta: false },
               { letra: "B", texto: "Fisco seleciona empresa para verificação de documentos e registros", correta: true },
               { letra: "C", texto: "Empresa solicita", correta: false },
               { letra: "D", texto: "Nunca ocorre", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Pode ser por sorteio, seleção de risco, ou denúncia."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -909,12 +909,12 @@ export default function AulaDireitoTributario(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Fato Gerador é a situação legal/factual que:"
           alternativas={[
-              { letra: "A", texto: "Cancela obrigação tributária", correta: false },
+            { letra: "A", texto: "Cancela obrigação tributária", correta: false },
               { letra: "B", texto: "Origina direito do fisco de cobrar tributo", correta: true },
               { letra: "C", texto: "Reduz tributo", correta: false },
               { letra: "D", texto: "Não afeta tributação", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Momento de ocorrência é crítico (define qual ano/período é tributado)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1036,12 +1036,12 @@ export default function AulaDireitoTributario(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Royalties de petróleo em Petrobras são:"
           alternativas={[
-              { letra: "A", texto: "Despesa operacional comum", correta: false },
+            { letra: "A", texto: "Despesa operacional comum", correta: false },
               { letra: "B", texto: "Contribuição mínima de 5% da produção mensal ao Estado (proprietário da reserva)", correta: true },
               { letra: "C", texto: "Imposto de renda", correta: false },
               { letra: "D", texto: "Taxa de refino", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Calculado sobre produção valorizada."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1158,12 +1158,12 @@ export default function AulaDireitoTributario(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Planejamento Tributário Lícito é:"
           alternativas={[
-              { letra: "A", texto: "Sempre ilegal", correta: false },
+            { letra: "A", texto: "Sempre ilegal", correta: false },
               { letra: "B", texto: "Organizar negócio legalmente para minimizar carga tributária", correta: true },
               { letra: "C", texto: "Fraude de impostos", correta: false },
               { letra: "D", texto: "Não é permitido", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Planejamento Lícito: uso inteligente de estrutura jurídica/contratual permitida por lei para reduzir imposto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1290,12 +1290,12 @@ export default function AulaDireitoTributario(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Empresa fatura R$ 2 milhões. Lucro 20%. Incide IRPJ 25%, COFINS 7,65%, PIS 1,65%. Total de tributos ="
           alternativas={[
-              { letra: "A", texto: "R$ 200 mil", correta: false },
+            { letra: "A", texto: "R$ 200 mil", correta: false },
               { letra: "B", texto: "R$ 400 mil", correta: false },
               { letra: "C", texto: "R$ 650 mil", correta: true },
               { letra: "D", texto: "R$ 1 milhão", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Opção mais próxima é R$ 650 (pode incluir outros tributos)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "IRPJ: 2.000k × 20% = 400k × 25% = 100k." },

@@ -1,0 +1,51 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+AV
+A VAGA
+EH MINHA
+Simulador de Concursos
+[0] (946,47)<button aria-label='Ativar modo claro' class='p-2 rounded-full text-gray-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors' />
+[1] (968,47)<button aria-label='Abrir seletor de cores' class='w-8 h-8 rounded-full transition-transform hover:scale-110' />
+Entrar na sua conta
+[2] (250,324)<input class='peer w-full border px-3 py-3 text-base outline-none transition-colors focus:ring-offset-4 focus:ring-offset-white dark:focus:ring-offset-slate-900 focus:ring-2 focus:border-primary placeholder-transparent pl-10 bg-white dark:bg-slate-700/50 border-gray-200 dark:border-slate-600 text-gray-900 dark:text-white rounded-xl' id='username' placeholder=' ' />
+Nome de Usuário
+[3] (250,406)<input class='peer w-full border px-3 py-3 text-base outline-none transition-colors focus:ring-offset-4 focus:ring-offset-white dark:focus:ring-offset-slate-900 focus:ring-2 focus:border-primary placeholder-transparent pl-10 pr-12 bg-white dark:bg-slate-700/50 border-gray-200 dark:border-slate-600 text-gray-900 dark:text-white rounded-xl' id='password' placeholder=' ' />
+Senha
+[4] (338,402)<button class='text-gray-400 hover:text-gray-600 dark:hover:text-white transition' />
+[5] (187,470)<label class='flex items-center gap-2'>Lembrar de mim />
+	[6] (155,470)<input class='w-4 h-4 rounded border-gray-300 dark:border-slate-600 bg-gray-100 dark:bg-slate-700 text-primary focus:ring-primary' />
+	Lembrar de mim
+[7] (314,470)<a class='text-sm text-primary hover:text-primary/80 transition' href='#'>Esqueceu a senha? />
+Entrando...
+Não tem uma conta?
+[8] (290,612)<a class='text-primary font-semibold hover:text-primary/80 transition' href='/register'>Criar conta grátis />
+ou continue com
+[9] (181,734)<button class='flex items-center justify-center p-3 border border-gray-200 dark:border-slate-600 rounded-xl text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-700/50 transition' />
+[10] (250,734)<button class='flex items-center justify-center p-3 border border-gray-200 dark:border-slate-600 rounded-xl text-[#1877F2] hover:bg-gray-50 dark:hover:bg-slate-700/50 transition' />
+[11] (319,734)<button class='flex items-center justify-center p-3 border border-gray-200 dark:border-slate-600 rounded-xl text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-700/50 transition' />
+[12] (250,837)<a class='text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition hidden md:inline-flex items-center gap-2' href='/'>Voltar para o início />
+🛢️ Seu futuro na Petrobras começa aqui
++2.500
+Questões
+·
+94%
+Aprovação
+·
+120+
+Aulas
+📋 Próximo Concurso Petrobras
+2026
+Previsão
+·
+6.412
+Vagas
+🎓 Comunidade de Estudos
+15k+
+Alunos
+·
+4.8★
+Avaliação
+
+</current_dom>

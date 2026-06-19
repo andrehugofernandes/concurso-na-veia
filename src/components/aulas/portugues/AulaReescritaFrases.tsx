@@ -640,17 +640,16 @@ export default function AulaReescritaFrases({
           concurso="Processo Seletivo Petrobras"
           enunciado="Segundo o padrão Cesgranrio, o que define uma reescritura como 'correta'?"
           alternativas={[
-            { label: "A", valor: "Apenas a manutenção do sentido original, mesmo com desvios gramaticais." },
-                { label: "B", valor: "Apenas a correção gramatical rigorosa, independentemente da semântica." },
-                { label: "C", valor: "O binômio indissociável: Sentido Original Intacto + Norma Culta Plena." },
-                { label: "D", valor: "A simplificação do texto para torná-lo mais acessível ao leigo." },
-                { label: "E", valor: "O uso obrigatório de sinônimos eruditos para elevar o nível do texto." }
+            { letra: "A", texto: "Apenas a manutenção do sentido original, mesmo com desvios gramaticais.", correta: false },
+                { letra: "B", texto: "Apenas a correção gramatical rigorosa, independentemente da semântica.", correta: false },
+                { letra: "C", texto: "O binômio indissociável: Sentido Original Intacto + Norma Culta Plena.", correta: true },
+                { letra: "D", texto: "A simplificação do texto para torná-lo mais acessível ao leigo.", correta: false },
+                { letra: "E", texto: "O uso obrigatório de sinônimos eruditos para elevar o nível do texto.", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A banca exige que a nova frase diga EXATAMENTE o que a original disse, sem perder um átomo de sentido, e que esteja 100% dentro das regras gramaticais.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A banca exige que a nova frase diga EXATAMENTE o que a original disse, sem perder um átomo de sentido, e que esteja 100% dentro das regras gramaticais." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1012,17 +1011,16 @@ export default function AulaReescritaFrases({
           concurso="Processo Seletivo Petrobras"
           enunciado="Ao substituir 'O gerente ratificou a decisão' por 'O gerente retificou a decisão', o que ocorre?"
           alternativas={[
-            { label: "A", valor: "O sentido é preservado integralmente." },
-                { label: "B", valor: "O sentido é invertido (confirmar vira corrigir)." },
-                { label: "C", valor: "Apenas o som da palavra muda, mas o campo semântico é o mesmo." },
-                { label: "D", valor: "A frase torna-se agramatical." },
-                { label: "E", valor: "A regência do verbo muda obrigatoriamente." }
+            { letra: "A", texto: "O sentido é preservado integralmente.", correta: false },
+                { letra: "B", texto: "O sentido é invertido (confirmar vira corrigir).", correta: true },
+                { letra: "C", texto: "Apenas o som da palavra muda, mas o campo semântico é o mesmo.", correta: false },
+                { letra: "D", texto: "A frase torna-se agramatical.", correta: false },
+                { letra: "E", texto: "A regência do verbo muda obrigatoriamente.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Ratificar = Confirmar.",
-            "Retificar = Corrigir.",
-            "São parônimos perigosos em provas de reescrita."
+            { titulo: "Passo 1", conteudo: "Ratificar = Confirmar." },
+            { titulo: "Passo 2", conteudo: "Retificar = Corrigir." },
+            { titulo: "Passo 3", conteudo: "São parônimos perigosos em provas de reescrita." }
           ]}
         />
         <QuizInterativo
@@ -1579,17 +1577,16 @@ export default function AulaReescritaFrases({
           concurso="Processo Seletivo Petrobras"
           enunciado="Transpondo 'A equipe de manutenção realizou a inspeção' para a voz passiva, obtemos:"
           alternativas={[
-            { label: "A", valor: "A inspeção seria realizada pela equipe." },
-                { label: "B", valor: "A inspeção foi realizada pela equipe." },
-                { label: "C", valor: "Realizou-se a inspeção pela equipe." },
-                { label: "D", valor: "A equipe havia realizado a inspeção." },
-                { label: "E", valor: "Estará sendo realizada a inspeção." }
+            { letra: "A", texto: "A inspeção seria realizada pela equipe.", correta: false },
+                { letra: "B", texto: "A inspeção foi realizada pela equipe.", correta: true },
+                { letra: "C", texto: "Realizou-se a inspeção pela equipe.", correta: false },
+                { letra: "D", texto: "A equipe havia realizado a inspeção.", correta: false },
+                { letra: "E", texto: "Estará sendo realizada a inspeção.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "O verbo 'realizou' está no pretérito perfeito.",
-            "A voz passiva correspondente exige o auxiliar 'ser' no pretérito perfeito (foi realizada).",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "O verbo 'realizou' está no pretérito perfeito." },
+            { titulo: "Passo 2", conteudo: "A voz passiva correspondente exige o auxiliar 'ser' no pretérito perfeito (foi realizada)." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -2149,17 +2146,16 @@ export default function AulaReescritaFrases({
           concurso="Processo Seletivo Petrobras"
           enunciado="Ao transpor 'Eu pretendo investir agora' para o discurso indireto, temos:"
           alternativas={[
-            { label: "A", valor: "Ele disse que eu pretendo investir agora." },
-                { label: "B", valor: "Ele afirmou que pretendia investir naquele momento." },
-                { label: "C", valor: "Ele declarou que pretende investir ontem." },
-                { label: "D", valor: "Dizia ele que pretendia investir agora." },
-                { label: "E", valor: "A e B são sinônimos." }
+            { letra: "A", texto: "Ele disse que eu pretendo investir agora.", correta: false },
+                { letra: "B", texto: "Ele afirmou que pretendia investir naquele momento.", correta: true },
+                { letra: "C", texto: "Ele declarou que pretende investir ontem.", correta: false },
+                { letra: "D", texto: "Dizia ele que pretendia investir agora.", correta: false },
+                { letra: "E", texto: "A e B são sinônimos.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "No discurso indireto, o tempo 'presente' vira 'pretérito imperfeito' e o advérbio 'agora' vira 'naquele momento'.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "No discurso indireto, o tempo 'presente' vira 'pretérito imperfeito' e o advérbio 'agora' vira 'naquele momento'." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -2703,17 +2699,16 @@ export default function AulaReescritaFrases({
           concurso="Processo Seletivo Petrobras"
           enunciado="A frase 'É fundamental que o Brasil produza energia' vira:"
           alternativas={[
-            { label: "A", valor: "Fundamental é produzir energia no Brasil." },
-                { label: "B", valor: "A produção de energia pelo Brasil é fundamental." },
-                { label: "C", valor: "O Brasil deve produzir energia fundamentalmente." },
-                { label: "D", valor: "Energia o Brasil produz fundamentalmente." },
-                { label: "E", valor: "O Brasil produzindo energia é algo fundamental." }
+            { letra: "A", texto: "Fundamental é produzir energia no Brasil.", correta: false },
+                { letra: "B", texto: "A produção de energia pelo Brasil é fundamental.", correta: true },
+                { letra: "C", texto: "O Brasil deve produzir energia fundamentalmente.", correta: false },
+                { letra: "D", texto: "Energia o Brasil produz fundamentalmente.", correta: false },
+                { letra: "E", texto: "O Brasil produzindo energia é algo fundamental.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "A oração subjetiva 'que o Brasil produza' foi convertida no sintagma nominal 'A produção...",
-            "pelo Brasil'.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A oração subjetiva 'que o Brasil produza' foi convertida no sintagma nominal 'A produção..." },
+            { titulo: "Passo 2", conteudo: "pelo Brasil'." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -3208,17 +3203,16 @@ export default function AulaReescritaFrases({
           concurso="Processo Seletivo Petrobras"
           enunciado="A substituição de 'Portanto' por 'Por conseguinte' mantém o sentido?"
           alternativas={[
-            { label: "A", valor: "Sim, ambos são conclusivos." },
-                { label: "B", valor: "Não, um é conclusivo e o outro causal." },
-                { label: "C", valor: "Sim, mas um pede vírgula e o outro não." },
-                { label: "D", valor: "Não, " },
-                { label: "E", valor: "Varia conforme o sujeito da frase." }
+            { letra: "A", texto: "Sim, ambos são conclusivos.", correta: true },
+                { letra: "B", texto: "Não, um é conclusivo e o outro causal.", correta: false },
+                { letra: "C", texto: "Sim, mas um pede vírgula e o outro não.", correta: false },
+                { letra: "D", texto: "Não, ", correta: false },
+                { letra: "E", texto: "Varia conforme o sujeito da frase.", correta: false }
           ]}
-          correta="A"
           passos={[
-            "São conectivos sinônimos de valor conclusivo.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "São conectivos sinônimos de valor conclusivo." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -3625,17 +3619,16 @@ export default function AulaReescritaFrases({
           concurso="Processo Seletivo Petrobras"
           enunciado="Ao remover as vírgulas de 'Os técnicos, que usam EPI, estão seguros', o sentido:"
           alternativas={[
-            { label: "A", valor: "Não muda." },
-                { label: "B", valor: "Muda: de " },
-                { label: "C", valor: "Muda: " },
-                { label: "D", valor: "Torna-se gramaticalmente errado." },
-                { label: "E", valor: "Enfatiza a segurança." }
+            { letra: "A", texto: "Não muda.", correta: false },
+                { letra: "B", texto: "Muda: de ", correta: true },
+                { letra: "C", texto: "Muda: ", correta: false },
+                { letra: "D", texto: "Torna-se gramaticalmente errado.", correta: false },
+                { letra: "E", texto: "Enfatiza a segurança.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Com vírgula = Explicativa (generaliza).",
-            "Sem vírgula = Restritiva (especifica um grupo).",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Com vírgula = Explicativa (generaliza)." },
+            { titulo: "Passo 2", conteudo: "Sem vírgula = Restritiva (especifica um grupo)." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -4132,17 +4125,16 @@ export default function AulaReescritaFrases({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual dessas reescritas de 'Embora fizesse calor, ele corria' mantém a oposição?"
           alternativas={[
-            { label: "A", valor: "Apesar de fazer calor, ele corria." },
-                { label: "B", valor: "Visto que fazia calor, ele corria." },
-                { label: "C", valor: "Caso fizesse calor, ele corria." },
-                { label: "D", valor: "Conforme fazia calor, ele corria." },
-                { label: "E", valor: "Pelo fato de fazer calor, ele corria." }
+            { letra: "A", texto: "Apesar de fazer calor, ele corria.", correta: true },
+                { letra: "B", texto: "Visto que fazia calor, ele corria.", correta: false },
+                { letra: "C", texto: "Caso fizesse calor, ele corria.", correta: false },
+                { letra: "D", texto: "Conforme fazia calor, ele corria.", correta: false },
+                { letra: "E", texto: "Pelo fato de fazer calor, ele corria.", correta: false }
           ]}
-          correta="A"
           passos={[
-            "A oposição (concessão) é mantida pela locução 'Apesar de'.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A oposição (concessão) é mantida pela locução 'Apesar de'." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -4567,17 +4559,16 @@ export default function AulaReescritaFrases({
           concurso="Processo Seletivo Petrobras"
           enunciado="A banca costuma trocar 'Onde' por 'Aonde' em frases de lugar fixo. Isso é:"
           alternativas={[
-            { label: "A", valor: "Uma reescrita válida." },
-                { label: "B", valor: "Um erro de regência (Aonde exige movimento)." },
-                { label: "C", valor: "Apenas uma variação regional." },
-                { label: "D", valor: "Correto se houver preposição " },
-                { label: "E", valor: "Obrigatório no início de frases." }
+            { letra: "A", texto: "Uma reescrita válida.", correta: false },
+                { letra: "B", texto: "Um erro de regência (Aonde exige movimento).", correta: true },
+                { letra: "C", texto: "Apenas uma variação regional.", correta: false },
+                { letra: "D", texto: "Correto se houver preposição ", correta: false },
+                { letra: "E", texto: "Obrigatório no início de frases.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Aonde = Para onde (movimento).",
-            "Onde = Em que lugar (estático).",
-            "A banca adora testar essa troca."
+            { titulo: "Passo 1", conteudo: "Aonde = Para onde (movimento)." },
+            { titulo: "Passo 2", conteudo: "Onde = Em que lugar (estático)." },
+            { titulo: "Passo 3", conteudo: "A banca adora testar essa troca." }
           ]}
         />
         <QuizInterativo
@@ -5049,17 +5040,16 @@ export default function AulaReescritaFrases({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual dessas reescritas de 'Embora a refinaria seja moderna, precisa de ajustes' é a MAIS completa e correta?"
           alternativas={[
-            { label: "A", valor: "A refinaria é moderna, mas precisa de ajustes." },
-                { label: "B", valor: "Pelo fato de ser moderna, a refinaria precisa de ajustes." },
-                { label: "C", valor: "Malgrado a modernidade da refinaria, ajustes são necessários." },
-                { label: "D", valor: "A refinaria precisa de ajustes pois é moderna." },
-                { label: "E", valor: "Se a refinaria for moderna, precisará de ajustes." }
+            { letra: "A", texto: "A refinaria é moderna, mas precisa de ajustes.", correta: false },
+                { letra: "B", texto: "Pelo fato de ser moderna, a refinaria precisa de ajustes.", correta: false },
+                { letra: "C", texto: "Malgrado a modernidade da refinaria, ajustes são necessários.", correta: true },
+                { letra: "D", texto: "A refinaria precisa de ajustes pois é moderna.", correta: false },
+                { letra: "E", texto: "Se a refinaria for moderna, precisará de ajustes.", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A reescrita 'C' usa nominalização ('modernidade'), mantém a concessão ('malgrado') e a passiva ('são necessários').",
-            "É o nível 'Elite' da banca.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A reescrita 'C' usa nominalização ('modernidade'), mantém a concessão ('malgrado') e a passiva ('são necessários')." },
+            { titulo: "Passo 2", conteudo: "É o nível 'Elite' da banca." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo

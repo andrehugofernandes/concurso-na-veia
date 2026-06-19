@@ -1,0 +1,11 @@
+# Checklist de Validação - StickyModuleNav Pixel Perfect
+
+- [ ] Configurar Viewport para 390x844
+- [ ] Acessar http://localhost:3000/aulas/portugues/concordancia
+- [ ] Validar Estado Inicial:
+    - [ ] Toca ambas as bordas (esquerda e direita) exatamente?
+- [ ] Validar Estado Fixo (Sticky):
+    - [ ] Toca ambas as bordas exatamente?
+    - [ ] Bordas inferior com transparência de 50%?
+    - [ ] Efeito glass (blur + transparência) visível?
+    - [ ] Sem sobreposição indevida (verificar Spacer)?

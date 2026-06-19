@@ -1,0 +1,30 @@
+# Plano de Correção de Erro de Build - AulaRLCP.tsx
+
+Resolver o erro de parsing "Unexpected token. Did you mean `{'>'}` or `&gt;`?" que impede o build da aplicação.
+
+## Problemas Identificados
+
+1. **Caracteres não escapados:** Uso de `>` e `<` como operadores de comparação ou texto simples dentro de blocos JSX (fora de strings ou chaves).
+
+Locais identificados:
+- Linha 764: `Qualidade > preço`
+- Linha 927: `85 > 80`
+- Linha 1226: [(9 < 12)](file:///c:/Workspace/petrobras-quest/src/lib/utils.ts#6-9)
+
+## Mudanças Propostas
+
+### Aula RLCP
+
+#### [MODIFY] [AulaRLCP.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaRLCP.tsx)
+
+- Substituir `>` por `&gt;` ou `{'>'}`.
+- Substituir `<` por `&lt;` ou `{'<'}`.
+
+## Plano de Verificação
+
+### Testes Automatizados
+- Executar `pnpm dev` e verificar se o erro de parsing desaparece no console/navegador.
+- Rodar `tsc` ou `npm run build` (opcional se for muito lento, mas `pnpm dev` com Turbopack já valida o parsing).
+
+### Manual Verification
+- Acessar a página da aula e verificar se os símbolos aparecem corretamente no texto.

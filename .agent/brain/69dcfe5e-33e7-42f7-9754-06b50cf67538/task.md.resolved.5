@@ -1,0 +1,9 @@
+- `[x]` **Módulo 1 a 3**: Injeção de "Rich Intro" + "ModuleConsolidation" em `AulaTiposTextuais.tsx`
+- `[x]` **Módulo 4 a 6**: Injeção de "Rich Intro" + "ModuleConsolidation" em `AulaTiposTextuais.tsx`
+- `[x]` **Módulo 7 a 10**: Injeção de "Rich Intro" + "ModuleConsolidation" em `AulaTiposTextuais.tsx` (Finalizado)
+- `[ ]` **Aula de Sintaxe (Ultimate V4.1)**:
+    - `[ ]` Expansão de MODULE_DEFS para 10 itens.
+    - `[ ]` Injeção Módulos 1-3 (Sujeito e Predicação).
+    - `[ ]` Injeção Módulos 4-6 (Integrantes e Vozes).
+    - `[ ]` Injeção Módulos 7-9 (Acessórios e Colocação).
+    - `[ ]` Módulo 10 (Simulado) e Estabilização Final.

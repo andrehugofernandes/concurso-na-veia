@@ -1,0 +1,37 @@
+# Plano de Implementação: Otimização de Responsividade - Dashboard e Pricing
+
+Este plano visa corrigir problemas de layout e responsividade no Dashboard e na Seção de Preços, além de destacar o plano Elite Total.
+
+## Mudanças Propostas
+
+### 1. Dashboard (`/dashboard`)
+- **Simulados Rápidos**:
+    - Alterar o layout dos cards para `flex-col` em dispositivos móveis, removendo o empilhamento horizontal precoce (`xs:flex-row`).
+    - Reduzir o tamanho dos ícones (`text-4xl` -> `text-3xl`) e ajustar paddings para evitar esmagamento lateral do texto.
+    - Garantir que o título e a descrição ocupem bem a largura do card.
+
+### 2. Seção de Preços (`PricingSection.tsx`)
+- **Grid de 4 Colunas**:
+    - Manter o grid de 4 colunas no desktop, mas ajustar o layout para que o "Elite Total" seja o plano de maior destaque.
+- **Destaque "Elite Total"**:
+    - Aplicar fundo destacado (ex: gradiente ou cor primária forte).
+    - Aumentar a escala (`scale-110` ou `scale-115`) e a altura mínima.
+    - Ajustar tipografia e cores para garantir legibilidade em modo light/dark seguindo o sistema de skins.
+- **Responsividade**:
+    - No mobile, garantir que os cards não fiquem excessivamente longos e que os ícones tenham proporção adequada com o texto.
+
+## Arquivos a serem Modificados
+
+#### [MODIFY] [page.tsx](file:///c:/Workspace/petrobras-quest/src/app/(dashboard)/dashboard/page.tsx)
+- Ajustar classes de layout nos cards de simulados (linhas 548, 578, 612).
+
+#### [MODIFY] [PricingSection.tsx](file:///c:/Workspace/petrobras-quest/src/components/PricingSection.tsx)
+- Refatorar o card do Elite Total (linha 260) para ser o destaque principal.
+- Ajustar escalas dos cards Elite e Elite Total.
+
+## Plano de Verificação
+
+### Verificação Manual
+- Validar no Dashboard se os cards de simulado empilham verticalmente de forma elegante no mobile.
+- Validar no Pricing se o Elite Total é o plano mais visível e se o grid de 4 colunas funciona bem em 1920px/1366px.
+- Testar em resoluções de tablet (768px, 1024px).

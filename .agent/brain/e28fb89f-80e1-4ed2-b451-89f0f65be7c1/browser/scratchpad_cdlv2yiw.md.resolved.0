@@ -1,0 +1,12 @@
+# Verificação de Erro de Build e Conteúdo
+
+## Checklist
+- [ ] Navegar para a página da aula de interpretação de texto.
+- [ ] Verificar se há erro de build.
+- [ ] Verificar se o conteúdo do Módulo 3 (Coesão e Argumentação) está visível.
+- [ ] Reportar resultados.
+
+## Notas
+- URL: http://localhost:3000/aulas/portugues/interpretacao-texto
+- Arquivo afetado: `AulaInterpretacaoTexto.tsx`
+- Erro anterior: "Expected '</', got 'jsx text'" na linha 1033.

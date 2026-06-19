@@ -162,6 +162,10 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'gestao-qualidade-suprimento', titulo: 'Gestão de Qualidade', descricao: 'Princípios da qualidade, ferramentas e melhoria de processos', duracao: '16 min', ordem: 2 },
             { id: 'logistica-suprimento', titulo: 'Logística', descricao: 'Cadeia de suprimentos, armazenagem e distribuição', duracao: '17 min', ordem: 3 },
             { id: 'compras-suprimento', titulo: 'Compras', descricao: 'Processos de aquisição, seleção de fornecedores e negociação', duracao: '18 min', ordem: 4 },
+            { id: 'atendimento-cliente-suprimento', titulo: 'Atendimento ao Cliente', descricao: 'Conceito, importância, qualidade e fidelização do cliente', duracao: '16 min', ordem: 5 },
+            { id: 'estrategias-negociacao-suprimento', titulo: 'Estratégias de Negociação', descricao: 'Tipos, etapas, BATNA e técnicas', duracao: '18 min', ordem: 6 },
+            { id: 'gestao-contratos-suprimento', titulo: 'Gestão de Contratos', descricao: 'Gestão, fiscalização e controle de contratos administrativos', duracao: '17 min', ordem: 7 },
+            { id: 'gestao-estoques-almoxarifados-suprimento', titulo: 'Almoxarifado e Estoques', descricao: 'Funções do almoxarifado, inventário, controle e gestão', duracao: '19 min', ordem: 8 },
         ]
     },
     // ===== BLOCO II - LEGISLAÇÃO E TRIBUTOS (NÍVEL TÉCNICO/MÉDIO) =====

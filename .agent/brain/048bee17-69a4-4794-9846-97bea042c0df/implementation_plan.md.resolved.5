@@ -1,0 +1,233 @@
+# Refatoração Completa: Formulário de Denúncias + DataTable
+
+## Contexto e Problema
+
+O ScriptCase implementa o cadastro de denúncias como um **fluxo sequencial de 6 telas** que vai revelando campos à medida que o usuário preenche. Nosso formulário atual é um **formulário plano** com apenas os campos da `tbl_denuncia`, sem:
+- ❌ Fluxo Wizard (Step-by-step)
+- ❌ Geração automática de Protocolo
+- ❌ Cadastro de Vítimas vinculadas
+- ❌ Cadastro de Agressores vinculados
+- ❌ Cadastro de Denunciantes vinculados
+- ❌ Campos faltantes (Formas de Violência como multi-select, "Existe Agressor?", "Existe Denunciante?")
+
+### Mapeamento do Fluxo ScriptCase (6 telas)
+
+| Tela | Entidade | Campos |
+|------|----------|--------|
+| **Step 1** | Denúncia (parte 1) | Órgão de Origem (multi-checkbox: 8 opções), Data de Recebimento*, Nº Origem, Pertinente NAVV* (SIM/NÃO) |
+| **Step 2** | Denúncia (parte 2) | Formas de Violência* (multi-checkbox: 11 opções), Existe Agressor?* (SIM/NÃO), Existe Denunciante?* (SIM/NÃO) |
+| **Step 3** | Vítima (grid N) | Protocolo (auto), Nome*, Apelido, Endereço*, Bairro* (dropdown), Regional (auto-fill), Classificação* (multi-check: 6 opções) |
+| **Step 4** | Agressor (grid N) | Protocolo (auto), Nome, Endereço, Regional (dropdown), Relação c/ Vítima* (dropdown), Outra Relação |
+| **Step 5** | Denunciante | Protocolo (auto), Nome, Telefone, Relação c/ Vítima (radio: PAI/MÃE/IRMÃ/IRMÃO/NENHUM/OUTROS) |
+| **Step 6** | Confirmação | Alert: "Denúncia cadastrada com sucesso! Número do protocolo: XXXXXXX/AA" |
+
+### Formato do Protocolo
+```
+XXXXXXX/AA
+│       │
+│       └── Últimos 2 dígitos do ano vigente (2026 → 26)
+└────────── Sequencial auto-increment (ID da denúncia no banco)
+```
+
+### Valores de Referência (ScriptCase vs. Nosso Formulário)
+
+**Órgãos de Origem (ScriptCase):**
+`OUVIDORIA MUNICIPAL` | `DISQUE ESTADUAL` | `DISQUE 100` | `DH` | `MINISTÉRIO PÚBLICO` | `ESPONTÂNEA` | `CIAPPI` | `OUTRO`
+
+**Nosso formulário atual (incompleto):**
+`DPCAM` | `DPCA` | `Conselho Tutelar` | `Secretaria de Saúde` | `CRAS` | `CREAS` | `Polícia Militar` | `Ministério Público` | `Defensoria Pública` | `Ouvidoria` | `Outros`
+
+> [!WARNING]
+> Os órgãos no nosso formulário NÃO correspondem aos do ScriptCase. Precisamos alinhar com os valores reais do banco de dados.
+
+**Formas de Violência (ScriptCase):**
+`AUTONEGLIGÊNCIA` | `INSTITUCIONAL` | `NEGLIGÊNCIA` | `ABANDONO` | `FÍSICA` | `OUTROS` | `MEDICAMENTOSA` | `PSICOLÓGICA` | `FINANCEIRA` | `SEXUAL` | `MORAL`
+
+**Classificação da Vítima (ScriptCase):**
+`PESSOA COM DEFICIÊNCIA` | `DISCRIMINAÇÃO RACIAL` | `INTOLERÂNCIA RELIGIOSA` | `PESSOA IDOSA` | `LGBT`
+
+**Parentesco Denunciante (ScriptCase):**
+`PAI` | `MÃE` | `IRMÃ` | `IRMÃO` | `NENHUM` | `OUTROS`
+
+**Relação Agressor-Vítima (ScriptCase):**
+`NENHUM` + outros (dropdown, precisa verificar valores no banco)
+
+---
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Órgãos de Origem:** Os valores no ScriptCase são diferentes dos que temos no formulário atual. Qual lista devemos usar? Preciso que confirme se devemos seguir os do ScriptCase (OUVIDORIA MUNICIPAL, DISQUE 100, etc.) ou manter os atuais.
+
+> [!IMPORTANT]
+> **Relação Agressor-Vítima:** No ScriptCase é um dropdown com opções como "NENHUM". Preciso dos valores completos. Posso fazer uma query no banco para extraí-los.
+
+> [!IMPORTANT]
+> **Comportamento Condicional:** No ScriptCase, os Steps 4 e 5 (Agressor/Denunciante) só aparecem se o usuário marcar "SIM" nos campos "Existe Agressor?" e "Existe Denunciante?". Devemos manter esse comportamento condicional no wizard?
+
+---
+
+## Proposed Changes
+
+### Arquitetura: Wizard Multi-Step dentro do Side-Sheet
+
+O modal Side-Sheet (440px) mantém seu formato, mas internamente usa um **Stepper Wizard** com 4 steps. O estado do wizard é gerenciado via `useReducer`.
+
+```
+┌─ Side-Sheet (440px, fixed right) ──────────────────┐
+│ ┌─ Header ──────────────────────────────────────┐  │
+│ │ 📝 Nova Denúncia              [✕]             │  │
+│ └───────────────────────────────────────────────┘  │
+│                                                     │
+│  ① Denúncia  ② Vítima  ③ Agressor  ④ Denunciante  │ ← Progress Steps
+│  ━━━━━━━━━━  ─────────  ─────────   ─────────────  │
+│                                                     │
+│ ┌─ Step Content ────────────────────────────────┐  │
+│ │                                               │  │
+│ │  [Campos do Step Ativo]                       │  │
+│ │                                               │  │
+│ │  Scroll vertical interno                      │  │
+│ │                                               │  │
+│ └───────────────────────────────────────────────┘  │
+│                                                     │
+│ ┌─ Footer (sticky) ────────────────────────────┐  │
+│ │  [Limpar]          [Voltar] [Próximo/Salvar]  │  │
+│ └───────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────┘
+```
+
+---
+
+### Componente: Wizard Stepper
+
+#### [NEW] [wizard-stepper.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/wizard-stepper.tsx)
+
+Componente visual de progresso com 4 steps. Cada step mostra ícone, label e estado (ativo/completo/pendente). Clicável para navegação direta (somente para steps já completados).
+
+---
+
+### Step 1: Denúncia
+
+#### [MODIFY] [denuncia-form.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-form.tsx)
+
+Refatorar para ser o **Step 1** do wizard. Campos:
+
+| Campo | Tipo | Obrigatório | Comportamento |
+|-------|------|-------------|---------------|
+| Órgão de Origem | Multi-checkbox (8 opções) | ✅ | Grid 3x3 com badges |
+| Data de Recebimento | DatePicker | ✅ | `data_rcbimento_dnuncia` |
+| Nº Origem | Input numérico | ❌ | Com tooltip explicativo |
+| Pertinente NAVV? | Radio SIM/NÃO | ✅ | `ptinente_trabalho_avv` |
+| Formas de Violência | Multi-checkbox (11 opções) | ✅ | Grid 3x4 com badges coloridas |
+| Encaminhamento | Select | ❌ | `encaminhamento` |
+| Existe Agressor? | Select SIM/NÃO | ✅ | Controla exibição do Step 3 |
+| Existe Denunciante? | Select SIM/NÃO | ✅ | Controla exibição do Step 4 |
+
+> Ao clicar "Próximo", persiste os dados da denúncia no banco, gera o protocolo e avança ao Step 2.
+
+---
+
+### Step 2: Vítima(s)
+
+#### [NEW] [denuncia-wizard-vitima.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-wizard-vitima.tsx)
+
+Formulário para cadastrar 1 ou mais vítimas vinculadas ao protocolo. Usa um padrão de **lista dinâmica** (botão "+ Adicionar Vítima") em vez do grid de 10 slots do ScriptCase.
+
+| Campo | Tipo | Obrigatório |
+|-------|------|-------------|
+| Nome Completo | Input | ✅ |
+| Apelido | Input | ❌ |
+| Endereço | Input | ✅ |
+| Bairro | Autocomplete (168 bairros) | ✅ |
+| Regional | Auto-fill (pelo bairro) | Auto |
+| Classificação | Multi-checkbox (5 opções) | ✅ |
+
+---
+
+### Step 3: Agressor(es) — Condicional
+
+#### [NEW] [denuncia-wizard-agressor.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-wizard-agressor.tsx)
+
+Somente exibido se "Existe Agressor = SIM". Lista dinâmica.
+
+| Campo | Tipo | Obrigatório |
+|-------|------|-------------|
+| Nome | Input | ❌ |
+| Endereço | Input | ❌ |
+| Regional | Autocomplete | ❌ |
+| Relação c/ Vítima | Select (dropdown) | ✅ |
+| Outra Relação | Input (condicional) | Se "OUTROS" |
+
+---
+
+### Step 4: Denunciante — Condicional
+
+#### [NEW] [denuncia-wizard-denunciante.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-wizard-denunciante.tsx)
+
+Somente exibido se "Existe Denunciante = SIM". Formulário simples (1 registro).
+
+| Campo | Tipo | Obrigatório |
+|-------|------|-------------|
+| Nome | Input | ❌ |
+| Telefone | Input (máscara) | ❌ |
+| Relação c/ Vítima | Radio (6 opções) | ❌ |
+
+---
+
+### Geração de Protocolo
+
+#### [MODIFY] [denuncias-actions.ts](file:///c:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/denuncias-actions.ts)
+
+Nova função `generateProtocolo`:
+
+```typescript
+function generateProtocolo(denunciaId: number): string {
+  const year = new Date().getFullYear().toString().slice(-2); // "26"
+  return `${denunciaId}/${year}`; // "1351404/26"
+}
+```
+
+O protocolo é gerado **após** o insert da denúncia (usa o [id](file:///c:/GSW/PMAVV/wp2nextjs-migrator/packages/dashboard-core/components/sidebar.tsx#37-101) auto-increment) e gravado no campo `protocolo` via [update](file:///c:/GSW/PMAVV/wp2nextjs-migrator/packages/dashboard-core/app/admin/posts/actions.ts#326-358).
+
+---
+
+### Modal Wrapper
+
+#### [MODIFY] [denuncia-form-modal.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-form-modal.tsx)
+
+Refatorar para orquestrar o wizard:
+- Gerencia o `currentStep` via `useReducer`
+- Persiste dados no banco em **cada step** (não ao final)
+- Pula steps condicionais (Agressor/Denunciante)
+- Exibe protocolo no header após Step 1
+
+---
+
+### DataTable com Tabs de Campos
+
+#### [MODIFY] [denuncia-table.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-table.tsx)
+
+Conforme o plano anterior, implementar tabs no header da tabela para alternar entre grupos de colunas:
+
+| Tab | Colunas Dinâmicas |
+|-----|-------------------|
+| **Denúncia** | Órgão, Violência, Data, Encaminhamento |
+| **Vítima** | Nome (1º), Classificação, Bairro, Regional |
+| **Agressor** | Nome (1º), Endereço, Parentesco |
+| **Denunciante** | Nome, Telefone, Parentesco |
+
+Colunas fixas: **Protocolo** (sticky left) + **Ações** (sticky right).
+
+---
+
+## Verification Plan
+
+### Automated Tests
+- `npx tsc --noEmit` — Tipagem de todos os novos componentes
+- Validação Zod em cada step do wizard
+
+### Manual Verification
+- Cadastrar uma denúncia completa e verificar protocolo gerado
+- Testar fluxo condicional (sem agressor, sem denunciante)
+- Verificar DataTable com tabs alternando entre grupos
+- Testar com denúncias que têm múltiplos registros (N vítimas)

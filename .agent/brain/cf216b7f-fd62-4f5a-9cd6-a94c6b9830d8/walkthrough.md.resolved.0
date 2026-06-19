@@ -1,0 +1,22 @@
+# Walkthrough: Ativação do Google Gemini
+
+A transição para o motor Google Gemini foi concluída com sucesso.
+
+## Mudanças Realizadas
+
+1. **Configuração de Ambiente**:
+   - Arquivo [.env.local](file:///C:/Workspace/petrobras-quest/.env.local) atualizado: `AI_PROVIDER=gemini`.
+
+## Como Testar
+
+1. **Geração de Questão**:
+   - Vá para qualquer aula (ex: Matemática > Porcentagem).
+   - Clique no botão de gerar questão.
+   - O sistema deve carregar a questão rapidamente usando o modelo **Gemini 1.5 Flash**.
+
+2. **Maratona**:
+   - Tente iniciar uma maratona. O sistema usará o Gemini para gerar os lotes de questões.
+
+## Notas Técnicas
+- O Gemini 1.5 Flash é extremamente rápido e possui uma janela de contexto enorme, sendo ideal para gerar lotes de questões sem estourar limites de tokens.
+- O modo JSON nativo do Gemini garante que as questões venham sempre no formato correto.

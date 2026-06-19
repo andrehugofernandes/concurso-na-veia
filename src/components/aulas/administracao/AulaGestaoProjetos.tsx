@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
   AlertBox,
-  QuizInterativo,
+  QuizInterativo, QuestaoResolvidaStepByStep,
   ModuleBanner,
   getRandomQuestions,
   AulaProps,
@@ -327,7 +327,29 @@ export default function AulaGestaoProjetos({
             }} 
           />
 
-                      <QuizInterativo 
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um projeto é, por definição:"
+          alternativas={[
+            { letra: "A", texto: "Uma operação contínua e repetitiva", correta: false },
+                { letra: "B", texto: "Um esforço temporário para criar um resultado exclusivo", correta: true },
+                { letra: "C", texto: "Um processo permanente da organização", correta: false },
+                { letra: "D", texto: "Uma atividade rotineira do dia a dia", correta: false },
+                { letra: "E", texto: "Um plano estratégico de longo prazo", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Segundo o PMBOK, projeto é um 'esforço temporário empreendido para criar um produto, serviço ou resultado exclusivo'." },
+            { titulo: "Passo 2", conteudo: "Temporário = início e fim definidos." },
+            { titulo: "Passo 3", conteudo: "Exclusivo = resultado único." }
+          ]}
+        />
+        <QuizInterativo 
               questoes={quizM1} 
               titulo="QUIZ: Conceitos de Projetos" 
               numero={3} 
@@ -453,7 +475,29 @@ export default function AulaGestaoProjetos({
             }} 
           />
 
-                      <QuizInterativo 
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um projeto é, por definição:"
+          alternativas={[
+            { letra: "A", texto: "Uma operação contínua e repetitiva", correta: false },
+                { letra: "B", texto: "Um esforço temporário para criar um resultado exclusivo", correta: true },
+                { letra: "C", texto: "Um processo permanente da organização", correta: false },
+                { letra: "D", texto: "Uma atividade rotineira do dia a dia", correta: false },
+                { letra: "E", texto: "Um plano estratégico de longo prazo", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Segundo o PMBOK, projeto é um 'esforço temporário empreendido para criar um produto, serviço ou resultado exclusivo'." },
+            { titulo: "Passo 2", conteudo: "Temporário = início e fim definidos." },
+            { titulo: "Passo 3", conteudo: "Exclusivo = resultado único." }
+          ]}
+        />
+        <QuizInterativo 
               questoes={quizM2} 
               titulo="QUIZ: Áreas do PMBOK" 
               numero={3} 
@@ -583,7 +627,29 @@ export default function AulaGestaoProjetos({
             }} 
           />
 
-                      <QuizInterativo 
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um projeto é, por definição:"
+          alternativas={[
+            { letra: "A", texto: "Uma operação contínua e repetitiva", correta: false },
+                { letra: "B", texto: "Um esforço temporário para criar um resultado exclusivo", correta: true },
+                { letra: "C", texto: "Um processo permanente da organização", correta: false },
+                { letra: "D", texto: "Uma atividade rotineira do dia a dia", correta: false },
+                { letra: "E", texto: "Um plano estratégico de longo prazo", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Segundo o PMBOK, projeto é um 'esforço temporário empreendido para criar um produto, serviço ou resultado exclusivo'." },
+            { titulo: "Passo 2", conteudo: "Temporário = início e fim definidos." },
+            { titulo: "Passo 3", conteudo: "Exclusivo = resultado único." }
+          ]}
+        />
+        <QuizInterativo 
               questoes={quizM3} 
               titulo="QUIZ: Grupos de Processos" 
               numero={3} 
@@ -712,7 +778,29 @@ export default function AulaGestaoProjetos({
             }} 
           />
 
-                      <QuizInterativo 
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um projeto é, por definição:"
+          alternativas={[
+            { letra: "A", texto: "Uma operação contínua e repetitiva", correta: false },
+                { letra: "B", texto: "Um esforço temporário para criar um resultado exclusivo", correta: true },
+                { letra: "C", texto: "Um processo permanente da organização", correta: false },
+                { letra: "D", texto: "Uma atividade rotineira do dia a dia", correta: false },
+                { letra: "E", texto: "Um plano estratégico de longo prazo", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Segundo o PMBOK, projeto é um 'esforço temporário empreendido para criar um produto, serviço ou resultado exclusivo'." },
+            { titulo: "Passo 2", conteudo: "Temporário = início e fim definidos." },
+            { titulo: "Passo 3", conteudo: "Exclusivo = resultado único." }
+          ]}
+        />
+        <QuizInterativo 
               questoes={quizM4} 
               titulo="QUIZ: Escopo e Tempo" 
               numero={3} 
@@ -844,7 +932,29 @@ export default function AulaGestaoProjetos({
             }} 
           />
 
-                      <QuizInterativo 
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um projeto é, por definição:"
+          alternativas={[
+            { letra: "A", texto: "Uma operação contínua e repetitiva", correta: false },
+                { letra: "B", texto: "Um esforço temporário para criar um resultado exclusivo", correta: true },
+                { letra: "C", texto: "Um processo permanente da organização", correta: false },
+                { letra: "D", texto: "Uma atividade rotineira do dia a dia", correta: false },
+                { letra: "E", texto: "Um plano estratégico de longo prazo", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Segundo o PMBOK, projeto é um 'esforço temporário empreendido para criar um produto, serviço ou resultado exclusivo'." },
+            { titulo: "Passo 2", conteudo: "Temporário = início e fim definidos." },
+            { titulo: "Passo 3", conteudo: "Exclusivo = resultado único." }
+          ]}
+        />
+        <QuizInterativo 
               questoes={quizM5} 
               titulo="QUIZ: Custos e Qualidade" 
               numero={3} 
@@ -969,7 +1079,29 @@ export default function AulaGestaoProjetos({
             }} 
           />
 
-                      <QuizInterativo 
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um projeto é, por definição:"
+          alternativas={[
+            { letra: "A", texto: "Uma operação contínua e repetitiva", correta: false },
+                { letra: "B", texto: "Um esforço temporário para criar um resultado exclusivo", correta: true },
+                { letra: "C", texto: "Um processo permanente da organização", correta: false },
+                { letra: "D", texto: "Uma atividade rotineira do dia a dia", correta: false },
+                { letra: "E", texto: "Um plano estratégico de longo prazo", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Segundo o PMBOK, projeto é um 'esforço temporário empreendido para criar um produto, serviço ou resultado exclusivo'." },
+            { titulo: "Passo 2", conteudo: "Temporário = início e fim definidos." },
+            { titulo: "Passo 3", conteudo: "Exclusivo = resultado único." }
+          ]}
+        />
+        <QuizInterativo 
               questoes={quizM6} 
               titulo="QUIZ: Gestão de Riscos" 
               numero={3} 
@@ -1097,7 +1229,29 @@ export default function AulaGestaoProjetos({
             }}
           />
 
-                      <QuizInterativo
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um projeto é, por definição:"
+          alternativas={[
+            { letra: "A", texto: "Uma operação contínua e repetitiva", correta: false },
+                { letra: "B", texto: "Um esforço temporário para criar um resultado exclusivo", correta: true },
+                { letra: "C", texto: "Um processo permanente da organização", correta: false },
+                { letra: "D", texto: "Uma atividade rotineira do dia a dia", correta: false },
+                { letra: "E", texto: "Um plano estratégico de longo prazo", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Segundo o PMBOK, projeto é um 'esforço temporário empreendido para criar um produto, serviço ou resultado exclusivo'." },
+            { titulo: "Passo 2", conteudo: "Temporário = início e fim definidos." },
+            { titulo: "Passo 3", conteudo: "Exclusivo = resultado único." }
+          ]}
+        />
+        <QuizInterativo
               questoes={quizM7}
               titulo="QUIZ: Metodologias Ágeis"
               numero={3}
@@ -1229,7 +1383,29 @@ export default function AulaGestaoProjetos({
             }}
           />
 
-                      <QuizInterativo
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um projeto é, por definição:"
+          alternativas={[
+            { letra: "A", texto: "Uma operação contínua e repetitiva", correta: false },
+                { letra: "B", texto: "Um esforço temporário para criar um resultado exclusivo", correta: true },
+                { letra: "C", texto: "Um processo permanente da organização", correta: false },
+                { letra: "D", texto: "Uma atividade rotineira do dia a dia", correta: false },
+                { letra: "E", texto: "Um plano estratégico de longo prazo", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Segundo o PMBOK, projeto é um 'esforço temporário empreendido para criar um produto, serviço ou resultado exclusivo'." },
+            { titulo: "Passo 2", conteudo: "Temporário = início e fim definidos." },
+            { titulo: "Passo 3", conteudo: "Exclusivo = resultado único." }
+          ]}
+        />
+        <QuizInterativo
               questoes={quizM8}
               titulo="QUIZ: PMO e Governança"
               numero={3}
@@ -1359,7 +1535,29 @@ export default function AulaGestaoProjetos({
             }}
           />
 
-                      <QuizInterativo
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um projeto é, por definição:"
+          alternativas={[
+            { letra: "A", texto: "Uma operação contínua e repetitiva", correta: false },
+                { letra: "B", texto: "Um esforço temporário para criar um resultado exclusivo", correta: true },
+                { letra: "C", texto: "Um processo permanente da organização", correta: false },
+                { letra: "D", texto: "Uma atividade rotineira do dia a dia", correta: false },
+                { letra: "E", texto: "Um plano estratégico de longo prazo", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Segundo o PMBOK, projeto é um 'esforço temporário empreendido para criar um produto, serviço ou resultado exclusivo'." },
+            { titulo: "Passo 2", conteudo: "Temporário = início e fim definidos." },
+            { titulo: "Passo 3", conteudo: "Exclusivo = resultado único." }
+          ]}
+        />
+        <QuizInterativo
               questoes={quizM9}
               titulo="QUIZ: Petrobras na Prática"
               numero={3}
@@ -1476,7 +1674,29 @@ export default function AulaGestaoProjetos({
             }}
           />
 
-                      <QuizInterativo
+                      {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Um projeto é, por definição:"
+          alternativas={[
+            { letra: "A", texto: "Uma operação contínua e repetitiva", correta: false },
+                { letra: "B", texto: "Um esforço temporário para criar um resultado exclusivo", correta: true },
+                { letra: "C", texto: "Um processo permanente da organização", correta: false },
+                { letra: "D", texto: "Uma atividade rotineira do dia a dia", correta: false },
+                { letra: "E", texto: "Um plano estratégico de longo prazo", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Segundo o PMBOK, projeto é um 'esforço temporário empreendido para criar um produto, serviço ou resultado exclusivo'." },
+            { titulo: "Passo 2", conteudo: "Temporário = início e fim definidos." },
+            { titulo: "Passo 3", conteudo: "Exclusivo = resultado único." }
+          ]}
+        />
+        <QuizInterativo
               questoes={quizM10}
               titulo="Simulado Geral: Gestão de Projetos"
               numero={3}

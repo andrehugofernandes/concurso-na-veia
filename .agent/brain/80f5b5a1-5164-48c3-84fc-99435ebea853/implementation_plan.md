@@ -1,0 +1,49 @@
+# Padrão de Implementação: Server Actions (Backend)
+
+Este plano propõe a padronização das interações de backend no PMAVV utilizando **Next.js Server Actions** com a biblioteca **next-safe-action**, garantindo segurança, validação de tipos de ponta a ponta e tratamento de erros consistente.
+
+## Motivação
+Embora o PRD foque no "O quê" (funcionalidades), o "Como" técnico precisa de padronização para as Epics de "Cadastros Básicos" e "Wizard de Denúncia". O uso de Server Actions simplifica a comunicação entre Client e Server sem a necessidade de APIs REST explícitas para operações internas.
+
+## Mudanças Propostas
+
+### 1. Infraestrutura de Ações
+Padronizar o `src/lib/actions/safe-action.ts` para incluir middlewares comuns (ex: autenticação, logging).
+
+#### [MODIFY] [safe-action.ts](file:///c:/GSW/PMAVV/PMAVV/src/lib/actions/safe-action.ts)
+- Adicionar middleware de proteção para rotas autenticadas.
+- Definir um `authAction` que verifica a sessão do usuário antes de executar a lógica.
+
+### 2. Estrutura de Arquivos para Módulos
+Para cada novo módulo (ex: Vítimas, Acompanhamentos), seguiremos a estrutura:
+- `src/app/(app)/[modulo]/actions/`: Arquivos `.ts` com as Server Actions.
+- `src/app/(app)/[modulo]/schemas/`: Validações Zod (compartilhadas entre client e server).
+
+### 3. Padrão de Implementação (Exemplo)
+```typescript
+// Exemplo de Action para Criação de Vítima
+export const createVictimAction = authAction
+  .schema(victimSchema) // Validação Zod automática
+  .action(async ({ parsedInput, ctx }) => {
+    // ctx.user estará disponível via middleware
+    const result = await prisma.vitima.create({ data: parsedInput });
+    return result;
+  });
+```
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Autenticação**: As Actions usarão um middleware centralizado que consulta o token JWT dos cookies. Você concorda em mover a lógica de verificação de sessão do `layout.tsx` para dentro das Actions autenticadas para maior segurança?
+
+> [!NOTE]
+> **Tratamento de Erros**: O padrão de retorno será unificado (status, data, error), facilitando o uso do componente `sonner` para notificações no frontend.
+
+## Plano de Verificação
+
+### Testes Automatizados
+- Executar `pnpm lint` para garantir que o uso de `useAction` no frontend está tipado corretamente.
+- Criar um teste básico com `vitest` simulando uma chamada de Action com input inválido.
+
+### Verificação Manual
+- Implementar a primeira Action do módulo "Cadastros Básicos" (ex: Cadastro de Unidade) e testar o fluxo de erro (validação) e sucesso no navegador.

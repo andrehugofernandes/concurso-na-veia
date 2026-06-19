@@ -1,0 +1,7 @@
+# Task: Fix Build Error in AulaEquacoes1Grau.tsx
+
+- [ ] Analyze the error in [src/components/aulas/matematica/AulaEquacoes1Grau.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/AulaEquacoes1Grau.tsx) <!-- id: 0 -->
+- [ ] Create implementation plan <!-- id: 1 -->
+- [ ] Fix unescaped characters in JSX text <!-- id: 2 -->
+- [ ] Verify fix and check for similar issues <!-- id: 3 -->
+- [ ] Final walkthrough <!-- id: 4 -->

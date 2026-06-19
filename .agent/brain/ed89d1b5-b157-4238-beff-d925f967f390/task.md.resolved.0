@@ -1,0 +1,16 @@
+# Checklist de Unificação Visual
+
+- [ ] Preparar ambiente e revisar variáveis CSS
+- [/] Refatorar `src/app/page.tsx`
+    - [ ] Atualizar Navegação (bg-background, border-border)
+    - [ ] Atualizar Hero Section (gradientes primary, cores de texto muted)
+    - [ ] Atualizar Seção de Pain Points (cores de ícones e fundos)
+    - [ ] Atualizar Seção de Features (bg-muted, border-primary)
+    - [ ] Atualizar Seção Elite (substituir roxo por primary)
+- [ ] Refatorar `src/components/PricingSection.tsx`
+    - [ ] Atualizar Glows de fundo (bg-primary/5)
+    - [ ] Atualizar Badges e Labels (text-primary)
+    - [ ] Atualizar Card Elite Total (remover gradiente fixo)
+- [ ] Ajustar `src/components/HeroCarousel.tsx`
+    - [ ] Atualizar Barra de Progresso (bg-primary)
+- [ ] Verificação Final (Light/Dark e Skins)

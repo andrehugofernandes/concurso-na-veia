@@ -1,0 +1,15 @@
+# Plano de Verificação de Layout
+
+- [/] Acessar http://localhost:3000/vitimas (Bloqueado por login)
+- [ ] Verificar PageHeader (busca à direita)
+- [ ] Verificar FilterBar (pills e CTA à direita)
+- [ ] Verificar Sidebar (cor ativa da skin - azul)
+- [ ] Tirar screenshot da página inteira
+- [ ] Salvar screenshot em `C:\GSW\PMAVV\PMAVV\artifacts\layout_standardization_verification.webp`
+
+**Notas:**
+
+- A página redirects para `/login`.
+- Tentativas falhas: `admin/admin`, `bruno.silva/123456`, `admin/password`, `bruno.silva/bruno.silva`, `admin/admin123`.
+- O console log mostra HMR conectado, mas nenhuma pista de credenciais.
+- Vou tentar uma última rodada observando as requisições de rede.

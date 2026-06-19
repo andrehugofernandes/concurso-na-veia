@@ -601,12 +601,12 @@ export default function AulaClassesPalavras({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual frase apresenta um verbo na VOZ PASSIVA?"
           alternativas={[
-              { letra: "A", texto: "O técnico consertou a bomba.", correta: false },
+            { letra: "A", texto: "O técnico consertou a bomba.", correta: false },
               { letra: "B", texto: "A bomba foi consertada pelo técnico.", correta: true },
               { letra: "C", texto: "O técnico se feriu.", correta: false },
               { letra: "D", texto: "O técnico chegou à plataforma.", correta: false },
               { letra: "E", texto: "O técnico trabalha muito.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -834,12 +834,12 @@ export default function AulaClassesPalavras({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em 'Contrataram um **bom** engenheiro"
           alternativas={[
-              { letra: "A", texto: "Qualidade objetiva", correta: false },
+            { letra: "A", texto: "Qualidade objetiva", correta: false },
               { letra: "B", texto: "Opinião subjetiva", correta: true },
               { letra: "C", texto: "Estado físico", correta: false },
               { letra: "D", texto: "Origem geográfica", correta: false },
               { letra: "E", texto: "Quantidade", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Adjetivos valorativos antes do substantivo geralmente indicam a opinião do emissor."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1023,12 +1023,12 @@ export default function AulaClassesPalavras({
           concurso="Processo Seletivo Petrobras"
           enunciado="O artigo 'O' em 'O saber não ocupa lugar' tem a função de:"
           alternativas={[
-              { letra: "A", texto: "Definir um objeto", correta: false },
+            { letra: "A", texto: "Definir um objeto", correta: false },
               { letra: "B", texto: "Substantivar o verbo 'saber'", correta: true },
               { letra: "C", texto: "Indicar o masculino", correta: false },
               { letra: "D", texto: "Enfatizar a frase", correta: false },
               { letra: "E", texto: "Substituir um pronome", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1248,12 +1248,12 @@ export default function AulaClassesPalavras({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em 'O projeto **cujo** autor fomos nós"
           alternativas={[
-              { letra: "A", texto: "Lugar", correta: false },
+            { letra: "A", texto: "Lugar", correta: false },
               { letra: "B", texto: "Posse", correta: true },
               { letra: "C", texto: "Causa", correta: false },
               { letra: "D", texto: "Finalidade", correta: false },
               { letra: "E", texto: "Modo", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1855,17 +1855,16 @@ export default function AulaClassesPalavras({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em 'A Petrobras atingiu um novo **patamar**', a palavra destacada é:"
           alternativas={[
-            { label: "A", valor: "Substantivo concreto" },
-                { label: "B", valor: "Substantivo abstrato" },
-                { label: "C", valor: "Adjetivo" },
-                { label: "D", valor: "Verbo" },
-                { label: "E", valor: "Advérbio" }
+            { letra: "A", texto: "Substantivo concreto", correta: false },
+                { letra: "B", texto: "Substantivo abstrato", correta: true },
+                { letra: "C", texto: "Adjetivo", correta: false },
+                { letra: "D", texto: "Verbo", correta: false },
+                { letra: "E", texto: "Advérbio", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Patamar, neste contexto, indica um estado ou nível atingido, sendo um substantivo abstrato.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Patamar, neste contexto, indica um estado ou nível atingido, sendo um substantivo abstrato." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -2146,17 +2145,16 @@ export default function AulaClassesPalavras({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em 'A Petrobras atingiu um novo **patamar**', a palavra destacada é:"
           alternativas={[
-            { label: "A", valor: "Substantivo concreto" },
-                { label: "B", valor: "Substantivo abstrato" },
-                { label: "C", valor: "Adjetivo" },
-                { label: "D", valor: "Verbo" },
-                { label: "E", valor: "Advérbio" }
+            { letra: "A", texto: "Substantivo concreto", correta: false },
+                { letra: "B", texto: "Substantivo abstrato", correta: true },
+                { letra: "C", texto: "Adjetivo", correta: false },
+                { letra: "D", texto: "Verbo", correta: false },
+                { letra: "E", texto: "Advérbio", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Patamar, neste contexto, indica um estado ou nível atingido, sendo um substantivo abstrato.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Patamar, neste contexto, indica um estado ou nível atingido, sendo um substantivo abstrato." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -2427,17 +2425,16 @@ export default function AulaClassesPalavras({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em 'A Petrobras atingiu um novo **patamar**', a palavra destacada é:"
           alternativas={[
-            { label: "A", valor: "Substantivo concreto" },
-                { label: "B", valor: "Substantivo abstrato" },
-                { label: "C", valor: "Adjetivo" },
-                { label: "D", valor: "Verbo" },
-                { label: "E", valor: "Advérbio" }
+            { letra: "A", texto: "Substantivo concreto", correta: false },
+                { letra: "B", texto: "Substantivo abstrato", correta: true },
+                { letra: "C", texto: "Adjetivo", correta: false },
+                { letra: "D", texto: "Verbo", correta: false },
+                { letra: "E", texto: "Advérbio", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Patamar, neste contexto, indica um estado ou nível atingido, sendo um substantivo abstrato.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Patamar, neste contexto, indica um estado ou nível atingido, sendo um substantivo abstrato." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -2733,17 +2730,16 @@ export default function AulaClassesPalavras({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em 'A Petrobras atingiu um novo **patamar**', a palavra destacada é:"
           alternativas={[
-            { label: "A", valor: "Substantivo concreto" },
-                { label: "B", valor: "Substantivo abstrato" },
-                { label: "C", valor: "Adjetivo" },
-                { label: "D", valor: "Verbo" },
-                { label: "E", valor: "Advérbio" }
+            { letra: "A", texto: "Substantivo concreto", correta: false },
+                { letra: "B", texto: "Substantivo abstrato", correta: true },
+                { letra: "C", texto: "Adjetivo", correta: false },
+                { letra: "D", texto: "Verbo", correta: false },
+                { letra: "E", texto: "Advérbio", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Patamar, neste contexto, indica um estado ou nível atingido, sendo um substantivo abstrato.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Patamar, neste contexto, indica um estado ou nível atingido, sendo um substantivo abstrato." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -2988,17 +2984,16 @@ export default function AulaClassesPalavras({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em 'A Petrobras atingiu um novo **patamar**', a palavra destacada é:"
           alternativas={[
-            { label: "A", valor: "Substantivo concreto" },
-                { label: "B", valor: "Substantivo abstrato" },
-                { label: "C", valor: "Adjetivo" },
-                { label: "D", valor: "Verbo" },
-                { label: "E", valor: "Advérbio" }
+            { letra: "A", texto: "Substantivo concreto", correta: false },
+                { letra: "B", texto: "Substantivo abstrato", correta: true },
+                { letra: "C", texto: "Adjetivo", correta: false },
+                { letra: "D", texto: "Verbo", correta: false },
+                { letra: "E", texto: "Advérbio", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Patamar, neste contexto, indica um estado ou nível atingido, sendo um substantivo abstrato.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Patamar, neste contexto, indica um estado ou nível atingido, sendo um substantivo abstrato." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -3248,17 +3243,16 @@ export default function AulaClassesPalavras({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em 'A Petrobras atingiu um novo **patamar**', a palavra destacada é:"
           alternativas={[
-            { label: "A", valor: "Substantivo concreto" },
-                { label: "B", valor: "Substantivo abstrato" },
-                { label: "C", valor: "Adjetivo" },
-                { label: "D", valor: "Verbo" },
-                { label: "E", valor: "Advérbio" }
+            { letra: "A", texto: "Substantivo concreto", correta: false },
+                { letra: "B", texto: "Substantivo abstrato", correta: true },
+                { letra: "C", texto: "Adjetivo", correta: false },
+                { letra: "D", texto: "Verbo", correta: false },
+                { letra: "E", texto: "Advérbio", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Patamar, neste contexto, indica um estado ou nível atingido, sendo um substantivo abstrato.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Patamar, neste contexto, indica um estado ou nível atingido, sendo um substantivo abstrato." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo

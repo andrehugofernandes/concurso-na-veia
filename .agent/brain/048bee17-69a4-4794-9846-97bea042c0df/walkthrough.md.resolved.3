@@ -1,0 +1,40 @@
+# Walkthrough: Refatoração do Fluxo de Denúncias PMAVV
+
+Concluí a migração do sistema legado de denúncias (ScriptCase) para uma arquitetura moderna em Next.js, focada em performance, UX premium e organização de dados.
+
+## Principais Entregas
+
+### 1. Wizard de Denúncias (4 Steps)
+Implementei um fluxo sequencial que guia o usuário através do registro completo, garantindo que o protocolo seja gerado imediatamente.
+
+- **Step 1: Denúncia**: Captura dados principais, órgãos e formas de violência.
+- **Step 2: Vítimas**: Lista dinâmica que permite adicionar múltiplas vítimas com autocompletar de bairros.
+- **Step 3: Agressor (Opcional)**: Habilitado via toggle, permite identificar os agressores.
+- **Step 4: Denunciante (Opcional)**: Finaliza o registro com os dados de quem reportou.
+
+### 2. Tabbed DataTable (Padrão Inovador)
+Para resolver a poluição visual de +40 campos, criei a [TabbedDataTable](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/tabbed-data-table.tsx#32-257). Ela agrupa as colunas por entidade, permitindo alternar entre abas enquanto mantém o **Protocolo** e as **Ações** fixos (sticky).
+
+- **Abas**: Denúncia | Vítimas | Agressores | Denunciante.
+- **Sticky Columns**: Funcionalidade de ancoragem para colunas críticas.
+
+### 3. Novos Componentes de Orquestra
+- **WizardStepper**: Indicador visual de progresso.
+- **MultiCheckField**: Sistema de seleção em grid para categorias extensas (ex: Órgãos).
+- **Abstração M:N**: Server Actions preparadas para a normalização do banco (Dual-Schema Ready).
+
+## Arquivos Criados/Modificados
+
+- [denuncias-actions.ts](file:///c:/GSW\PMAVV\PMAVV\src\app\actions\cadastros\denuncias-actions.ts): Lógica de persistência e orquestração.
+- [denuncia-form-modal.tsx](file:///c:/GSW\PMAVV\PMAVV\src\components\denuncias\denuncia-form-modal.tsx): Orquestrador do Wizard.
+- [denuncia-table.tsx](file:///c:/GSW\PMAVV\PMAVV\src\components\denuncias\denuncia-table.tsx): Listagem tabulada.
+- [tabbed-data-table.tsx](file:///c:/GSW\PMAVV\PMAVV\src\components\pmavv\tabbed-data-table.tsx): Componente core da nova tabela.
+
+## Verificação Técnica
+- [x] Geração de protocolo no formato `{ID}/{AA}`.
+- [x] Persistência entre steps do Wizard.
+- [x] Instalação de dependências Radix (`Switch`, `RadioGroup`).
+- [x] Tipagem completa (TypeScript) em todos os componentes.
+
+> [!NOTE]
+> O sistema está pronto para a migração M:N do DBA. A UI já trabalha com arrays, facilitando a transição futura.

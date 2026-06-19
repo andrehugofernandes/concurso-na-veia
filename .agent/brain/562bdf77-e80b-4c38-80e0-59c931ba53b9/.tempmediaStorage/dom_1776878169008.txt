@@ -1,0 +1,168 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+PMAVV
+Programa de Monitoramento
+dos Atendimentos a
+Vítimas de Violência
+Resumo/Dash
+Monitoramento
+Denúncias
+Vítimas
+Agressores
+Denunciantes
+Visitas
+Estrutura Local
+Regionais
+Bairros
+Extração
+Consultas
+Relatórios
+Administração
+Usuários
+Configurações
+Denuncias
+AL
+[0] (567,539)<main class='flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8' scrollable='true' />
+	Denúncias
+	Gerencie todas as denúncias do sistema
+	Buscar
+	1464
+	Total de Denúncias
+	29
+	Este Ano
+	29
+	Este Mês
+	10
+	Órgãos Ativos
+	Todas
+	1464
+	Este Ano
+	Urgentes
+	Itens:
+	10
+	20
+	50
+	TODOS
+	Modo de Seleção
+	Nova Denúncia
+	Denúncia
+	Vítimas
+	Agressores
+	Denunciante
+	Protocolo
+	Órgão de Origem
+	Formas de Violência
+	Data Denúncia
+	Encaminhamento
+	Ações
+	5561809/23
+	DISQUE 100
+	PSICOLÓGICA
+	OUTROS
+	—
+	—
+	1464/26
+	—
+	ABANDONO
+	21/04/2026
+	—
+	1463/26
+	—
+	FÍSICA
+	21/04/2026
+	—
+	1461/26
+	—
+	FINANCEIRA
+	21/04/2026
+	—
+	1460/26
+	—
+	FÍSICA
+	19/04/2026
+	—
+	1459/26
+	—
+	FÍSICA
+	19/04/2026
+	—
+	1458/26
+	—
+	FÍSICA
+	19/04/2026
+	—
+	1457/26
+	—
+	ABANDONO
+	19/04/2026
+	—
+	1456/26
+	—
+	FINANCEIRA
+	19/04/2026
+	—
+	1455/26
+	—
+	FINANCEIRA
+	19/04/2026
+	—
+Nova Denúncia
+Nova Denúncia
+Inicie o registro da denúncia e gere o protocolo.
+[1] (956,80)<button aria-label='Fechar modal' class='flex items-center justify-center w-10 h-10 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors' />
+[2] (698,163)<button class='w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-black transition-all duration-300 relative z-10 border-[var(--primary,#0037C1)] bg-[var(--primary,#0037C1)] text-white shadow-lg scale-110'>1 />
+	[3] (698,163)<div  />
+	1
+Denúncia
+2
+Vítima
+3
+Agressor
+4
+Denunciante
+[4] (823,591)<div class='flex-1 overflow-y-auto px-10 pt-4 pb-0 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-800' scrollable='true' />
+	IDENTIFICAÇÃO E ORIGEM
+	[5] (819,318)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2 transition-colors'>ÓRGÃO(S) DE ORIGEM />
+	[6] (736,384)<label class='flex items-center justify-center text-center min-h-[48px] gap-2 cursor-pointer group p-2 rounded-xl border transition-all duration-200 bg-[var(--primary,#0037C1)] border-[var(--primary,#0037C1)] text-white shadow-md relative z-10' />
+		[7] (736,384)<span >CIAPPI />
+	[8] (791,384)<label class='flex items-center justify-center text-center min-h-[48px] gap-2 cursor-pointer group p-2 rounded-xl border transition-all duration-200 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-900/40 dark:hover:border-white/40 hover:text-slate-900 dark:hover:text-white' />
+		[9] (791,384)<span >DISQUE 100 />
+	[10] (847,384)<label class='flex items-center justify-center text-center min-h-[48px] gap-2 cursor-pointer group p-2 rounded-xl border transition-all duration-200 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-900/40 dark:hover:border-white/40 hover:text-slate-900 dark:hover:text-white' />
+		[11] (847,384)<span >DISQUE ESTADUAL />
+	[12] (902,384)<label class='flex items-center justify-center text-center min-h-[48px] gap-2 cursor-pointer group p-2 rounded-xl border transition-all duration-200 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-900/40 dark:hover:border-white/40 hover:text-slate-900 dark:hover:text-white' />
+		[13] (902,384)<span >ESPONTÂNEA />
+	[14] (736,438)<label class='flex items-center justify-center text-center min-h-[48px] gap-2 cursor-pointer group p-2 rounded-xl border transition-all duration-200 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-900/40 dark:hover:border-white/40 hover:text-slate-900 dark:hover:text-white' />
+		[15] (736,438)<span >MINISTÉRIO PÚBLICO />
+	[16] (791,438)<label class='flex items-center justify-center text-center min-h-[48px] gap-2 cursor-pointer group p-2 rounded-xl border transition-all duration-200 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-900/40 dark:hover:border-white/40 hover:text-slate-900 dark:hover:text-white' />
+		[17] (791,438)<span >OUTRO />
+	[18] (847,438)<label class='flex items-center justify-center text-center min-h-[48px] gap-2 cursor-pointer group p-2 rounded-xl border transition-all duration-200 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-900/40 dark:hover:border-white/40 hover:text-slate-900 dark:hover:text-white' />
+		[19] (847,438)<span >OUVIDORIA MUNICIPAL />
+	[20] (757,512)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2 transition-colors'>DATA DE RECEBIMENTO />
+	[21] (757,552)<input class='w-full px-4 py-2.5 rounded-xl border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-950 text-sm font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all placeholder:text-slate-300 outline-none appearance-none cursor-pointer' />
+	[22] (881,512)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2 transition-colors'>PERTINENTE AO NAVV? />
+	[23] (851,558)<label class='flex-1 text-center py-2 px-8 rounded-lg text-xs font-bold leading-tight uppercase cursor-pointer border-2 transition-all bg-[var(--primary,#0037C1)] border-[var(--primary,#0037C1)] text-white shadow-md relative z-10'>SIM />
+	[24] (903,558)<label class='flex-1 text-center py-2 px-8 rounded-lg text-xs font-bold leading-tight uppercase cursor-pointer border-2 transition-all bg-transparent border-transparent text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700'>NÃO />
+	DETALHAMENTO DA VIOLÊNCIA
+	[25] (819,716)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2 transition-colors'>FORMAS DE VIOLÊNCIA />
+	[26] (758,766)<div  />
+		[27] (714,766)<button class='peer shrink-0 rounded-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors h-5 w-5 border-2 border-[var(--primary,#0037C1)] data-[state=checked]:bg-[var(--primary,#0037C1)] data-[state=checked]:text-white' id='ABANDONO' role='checkbox' />
+		[28] (766,766)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-bold cursor-pointer leading-tight flex-1 py-1 transition-colors text-[var(--primary,#0037C1)]'>ABANDONO />
+	[29] (880,766)<div  />
+		[30] (836,766)<button class='peer shrink-0 rounded-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors h-5 w-5 border-2 data-[state=checked]:bg-[var(--primary,#0037C1)] data-[state=checked]:text-white border-slate-300 dark:border-slate-600' id='AUTONEGLIGÊNCIA' role='checkbox' />
+		[31] (888,766)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-bold cursor-pointer leading-tight flex-1 py-1 transition-colors text-slate-600 dark:text-slate-400'>AUTONEGLIGÊNCIA />
+	[32] (758,831)<div  />
+		[33] (714,831)<button class='peer shrink-0 rounded-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors h-5 w-5 border-2 data-[state=checked]:bg-[var(--primary,#0037C1)] data-[state=checked]:text-white border-slate-300 dark:border-slate-600' id='FINANCEIRA' role='checkbox' />
+		[34] (766,831)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-bold cursor-pointer leading-tight flex-1 py-1 transition-colors text-slate-600 dark:text-slate-400'>FINANCEIRA />
+	[35] (880,831)<div  />
+		[36] (836,831)<button class='peer shrink-0 rounded-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors h-5 w-5 border-2 data-[state=checked]:bg-[var(--primary,#0037C1)] data-[state=checked]:text-white border-slate-300 dark:border-slate-600' id='FÍSICA' role='checkbox' />
+		[37] (888,831)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-bold cursor-pointer leading-tight flex-1 py-1 transition-colors text-slate-600 dark:text-slate-400'>FÍSICA />
+	INSTITUCIONAL
+	MEDICAMENTOSA
+	MORAL
+	NEGLIGÊNCIA
+	[38] (713,916)<button class='px-6 py-2.5 rounded-xl border-2 border-[var(--primary,#0037C1)]/20 bg-background text-[var(--primary,#0037C1)] font-bold text-sm hover:opacity-80 transition-all'>CANCELAR />
+	[39] (857,916)<button class='flex-1 px-6 py-2.5 rounded-xl bg-[var(--primary,#0037C1)] text-white font-bold text-sm hover:scale-[1.02] hover:shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:hover:scale-100 disabled:hover:shadow-none'>Prosseguir → />
+
+</current_dom>

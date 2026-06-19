@@ -1,0 +1,55 @@
+# Plano de Refatoração: Módulos 1 e 2 de `AulaOrtografia.tsx`
+
+Este plano detalha a reestruturação e o polimento dos **Módulos 1 e 2** do componente `AulaOrtografia.tsx` para seguir o padrão visual **Rich Intro & Premium FlipCards Builder** (framework C.E.D.E.A de 5 parágrafos e grid de FlipCards interativos com ícones Lucide).
+
+---
+
+## 🎯 Objetivos
+
+1. **Substituir componentes legados:** Eliminar o uso de `AlertBox` e `ContentAccordion`/`CardCarousel` genéricos na introdução e conceituação dos módulos 1 e 2.
+2. **Aplicar o Framework C.E.D.E.A:** Construir introduções densas com exatamente 5 parágrafos formais baseados na estrutura **C**ontexto, **E**xplicação, **D**emonstração, **E**xpansão e **A**plicação.
+3. **Implantar FlipCards Premium:** Desenhar grids responsivos (`gap-6`) com FlipCards temáticos, utilizando ícones Lucide (`react-icons/lu`), subtítulos pedagógicos explícitos (sem clichês) e cabeçalhos estilizados no verso com contraste (Exemplos ✅ e ❌).
+4. **Respeitar as Cores Temáticas (`mv[N]`):**
+   - Módulo 1 (Encontros Vocálicos): `mv[1]` (`amber`)
+   - Módulo 2 (Acentuação Gráfica): `mv[2]` (`blue`)
+
+---
+
+## ⚙️ Alterações Propostas
+
+### [Componente Português] (src/components/aulas/portugues)
+
+#### [MODIFY] [AulaOrtografia.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaOrtografia.tsx)
+
+*   **Módulo 1: Encontros Vocálicos e Sílabas**
+    *   Mudar o `ModuleSectionHeader` inicial para usar `index="INTRO"`.
+    *   Substituir a seção conceitual introdutória (linhas 945–1013) por uma div de introdução de 5 parágrafos **C.E.D.E.A** altamente qualificada para concursos.
+    *   Substituir o accordion legado por uma nova seção estruturada `Conceito` contendo o `ModuleSectionHeader index={1}` e um grid de **3 FlipCards Premium**:
+        *   **Ditongo:** Foco em conceito de união vocálica e classificação (Crescente vs Decrescente) com ícone `LuLayers`.
+        *   **Tritongo:** Foco no trio fonético unido silabicamente com ícone `LuRepeat2`.
+        *   **Hiato:** Foco no corte silábico de vogais autônomas com ícone `LuSplit`.
+    *   Corrigir o `ModuleConsolidation` do Módulo 1 se necessário.
+
+*   **Módulo 2: Fundamentos da Acentuação**
+    *   Mudar o `ModuleSectionHeader` inicial para usar `index="INTRO"`.
+    *   Substituir o `AlertBox` inicial por uma introdução de 5 parágrafos **C.E.D.E.A** focada nas regras de ouro da acentuação e na métrica fonética.
+    *   Substituir o `ContentAccordion` legado (linhas 1232–1386) por uma nova seção estruturada `Conceito` com `ModuleSectionHeader index={1}` e um grid de **4 FlipCards Premium**:
+        *   **Proparoxítonas:** A regra imbatível e absoluta sem exceções com ícone `LuAward`.
+        *   **Paroxítonas:** A maioria silenciosa com o mnemônico ROUXINOL e ditongos com ícone `LuBookOpen`.
+        *   **Oxítonas & Monossílabos:** Terminações A, E, O com ícone `LuTarget`.
+        *   **Hiato Tônico:** Regra especial do I e U tônicos com ícone `LuShield`.
+    *   Ajustar o `ModuleConsolidation` do Módulo 2 para manter a conformidade cromática do Petrobras Quest.
+
+---
+
+## 🔬 Plano de Verificação
+
+### Testes de Compilação
+- Executaremos `npx tsc --noEmit` especificando o arquivo ou no projeto geral para garantir que nenhuma importação foi quebrada ou que existam erros de propriedades JSX nos FlipCards refatorados.
+
+### Validação Visual (UX Checklist)
+- [ ] Grid utiliza `gap-6` em vez de `gap-4`.
+- [ ] Todos os cards contêm ícones Lucide no padrão de container `p-4 bg-{color}-500/10 rounded-full shadow-inner ring-1 ring-{color}-500/20 text-{color}-500`.
+- [ ] Verso com cabeçalho de contraste usando `LuCheck` e texto em caixa alta `tracking-widest uppercase text-xs`.
+- [ ] Nenhum emoji utilizado nos novos cards ou introduções conceituais.
+- [ ] Ausência de termos como "Ponto de Atenção" nos subtítulos.

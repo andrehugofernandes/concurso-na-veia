@@ -1,0 +1,31 @@
+# Walkthrough: Integração Gemini Pro e ApiFreeLLM
+
+Implementamos uma arquitetura robusta de múltiplos provedores de IA para geração de questões, priorizando o custo zero ou mínimo.
+
+## Mudanças Realizadas
+
+### 1. Infraestrutura de Provedores
+Criamos uma estrutura de classes em `src/lib/ai` para suportar diferentes provedores de forma transparente:
+- `GeminiProvider`: Utiliza o SDK oficial `@google/generative-ai` (Gemini 1.5 Flash).
+- `FreeLLMProvider`: Compatível com a API do `ApiFreeLLM` (LLaMA 3.3).
+- `AnthropicProvider`: Refatoração da lógica antiga do Claude.
+
+### 2. Fábrica de Provedores (`AIProviderFactory`)
+A lógica de seleção agora é inteligente:
+1. Verifica `AI_PROVIDER` no `.env.local`.
+2. Se não definido, tenta a ordem: **Gemini (Grátis/Baixo Custo)** -> **ApiFreeLLM (Grátis)** -> **Anthropic (Pago)**.
+
+### 3. Ambiente e Configuração
+O arquivo `.env.local` foi atualizado:
+- `ANTHROPIC_API_KEY`: Comentada para evitar custos acidentais.
+- `GEMINI_API_KEY`: Já configurada com sua chave.
+- `FREE_LLM_API_KEY`: Placeholder adicionado.
+- `AI_PROVIDER=gemini`: Configurado para usar o Gemini por padrão.
+
+## Como obter sua chave ApiFreeLLM
+Para utilizar o ApiFreeLLM como redundância gratuita, acesse:
+[apifreellm.com](https://apifreellm.com)
+
+## Verificação
+- O sistema foi refatorado para garantir que o formato JSON de saída seja idêntico para todos os provedores, mantendo a compatibilidade com o frontend atual.
+- A lógica de embaralhamento de questões foi movida para um ponto comum na rota da API, garantindo imparcialidade independente de qual IA gerou a questão.

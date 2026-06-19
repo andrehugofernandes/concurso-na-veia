@@ -1,0 +1,20 @@
+# Plano de Implementação: Unificação de Layout e Branding
+
+O objetivo é trazer o layout limpo do header administrativo para a landing page e garantir que a nova logomarca (ícone em overlay + texto) seja usada em todos os lugares.
+
+## Mudanças Propostas
+
+### 1. Logo [PetrobrasLogo.tsx](file:///c:/Workspace/petrobras-quest/src/components/PetrobrasLogo.tsx)
+- Mudar texto para "A VAGA **EH** MINHA" (conforme screenshot).
+- Refinar tipografia para ficar idêntica à do admin.
+
+### 2. Dashboard Admin [admin-sidebar.tsx](file:///c:/Workspace/petrobras-quest/src/components/admin/admin-sidebar.tsx)
+- Substituir o bloco de logo manual (que usa "AV" em texto) pelo componente `<PetrobrasLogo />`.
+- Ajustar contêiner para suportar o efeito de overlay do ícone.
+
+### 3. Landing Page [page.tsx](file:///c:/Workspace/petrobras-quest/src/app/page.tsx)
+- Ajustar altura do header para `h-16 md:h-20` (padrão admin).
+- Replicar o estilo de borda e transparência do admin.
+
+## Verificação
+- Comparar visualmente admin e landing page para garantir unidade visual.

@@ -1,0 +1,19 @@
+# Plano de Teste do Modal de Denúncias
+
+- [x] Realizar login em http://localhost:3000/login
+- [x] Navegar para http://localhost:3000/denuncias
+- [x] Clicar no botão "+ Nova Denúncia"
+- [x] Capturar screenshot do modal
+- [x] Validar centralização e overlay (escuro + blur)
+- [x] Validar labels (sem quebra de linha em desktop) -> FALHOU (quebra de linha detectada)
+- [x] Validar botões fixos no rodapé (botão Limpar presente) -> OK
+- [x] Validar borda animada (Modo Dark) -> FALHOU (não visível)
+- [x] Reportar resultados
+
+## Observações Finais
+1. **Overlay**: Escurecimento e blur estão funcionando corretamente.
+2. **Centralização**: O modal está bem centralizado na tela.
+3. **Labels**: A label "Pertinente ao Trabalho AVV?" está quebrando linha, o que quebra o alinhamento pixel perfect entre as colunas.
+4. **Rodapé**: O botão "Limpar" foi adicionado e os botões estão no rodapé, mas a estrutura do modal compacta o rodapé logo abaixo do conteúdo em vez de fixá-lo na base do viewport se o conteúdo for pequeno.
+5. **Borda Animada**: Não foi observada nenhuma animação de borda no modo dark.
+6. **Abertura do Modal**: Inicialmente o botão "+ Nova Denúncia" não respondeu, mas após abrir o modal de edição e tentar novamente, ele funcionou.

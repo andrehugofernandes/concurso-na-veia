@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Plano para adicionar max-w-5xl mx-auto no wrapper desktop interno do StickyModuleNav, criando respiro horizontal sem alterar a div externa ou qualquer lógica. Commit de rollback: b108032.",
+  "updatedAt":  "2026-03-09T18:22:37.089238200Z"
+}

@@ -1,0 +1,11 @@
+- [ ] Refinar Hero da página `/aulas`
+    - [ ] Ajustar tipografia (tamanho e peso) para preencher melhor o espaço em 1920/1366px
+    - [ ] Reduzir proeminência do ícone e aumentar a do texto
+    - [ ] Remover espaços vazios laterais e inferiores desnecessários
+- [ ] Refinar `PricingSection.tsx`
+    - [ ] Validar 4 colunas em `lg:`
+    - [ ] Ajustar escala e destaque do card Elite Total
+    - [ ] Garantir compatibilidade light/dark e skins
+- [ ] Validação Final
+    - [ ] Testar em resoluções 1920px e 1366px
+    - [ ] Testar responsividade mobile

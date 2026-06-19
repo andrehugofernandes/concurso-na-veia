@@ -487,12 +487,12 @@ export default function AulaProgressoesPa({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
           alternativas={[
-              { letra: "A", texto: "77", correta: false },
+            { letra: "A", texto: "77", correta: false },
               { letra: "B", texto: "81", correta: true },
               { letra: "C", texto: "85", correta: false },
               { letra: "D", texto: "73", correta: false },
               { letra: "E", texto: "89", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
@@ -683,12 +683,12 @@ export default function AulaProgressoesPa({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
           alternativas={[
-              { letra: "A", texto: "77", correta: false },
+            { letra: "A", texto: "77", correta: false },
               { letra: "B", texto: "81", correta: true },
               { letra: "C", texto: "85", correta: false },
               { letra: "D", texto: "73", correta: false },
               { letra: "E", texto: "89", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
@@ -882,12 +882,12 @@ export default function AulaProgressoesPa({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
           alternativas={[
-              { letra: "A", texto: "77", correta: false },
+            { letra: "A", texto: "77", correta: false },
               { letra: "B", texto: "81", correta: true },
               { letra: "C", texto: "85", correta: false },
               { letra: "D", texto: "73", correta: false },
               { letra: "E", texto: "89", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
@@ -1087,12 +1087,12 @@ export default function AulaProgressoesPa({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
           alternativas={[
-              { letra: "A", texto: "77", correta: false },
+            { letra: "A", texto: "77", correta: false },
               { letra: "B", texto: "81", correta: true },
               { letra: "C", texto: "85", correta: false },
               { letra: "D", texto: "73", correta: false },
               { letra: "E", texto: "89", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
@@ -1293,12 +1293,12 @@ export default function AulaProgressoesPa({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
           alternativas={[
-              { letra: "A", texto: "77", correta: false },
+            { letra: "A", texto: "77", correta: false },
               { letra: "B", texto: "81", correta: true },
               { letra: "C", texto: "85", correta: false },
               { letra: "D", texto: "73", correta: false },
               { letra: "E", texto: "89", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
@@ -1505,12 +1505,12 @@ export default function AulaProgressoesPa({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
           alternativas={[
-              { letra: "A", texto: "77", correta: false },
+            { letra: "A", texto: "77", correta: false },
               { letra: "B", texto: "81", correta: true },
               { letra: "C", texto: "85", correta: false },
               { letra: "D", texto: "73", correta: false },
               { letra: "E", texto: "89", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
@@ -1700,12 +1700,12 @@ export default function AulaProgressoesPa({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
           alternativas={[
-              { letra: "A", texto: "77", correta: false },
+            { letra: "A", texto: "77", correta: false },
               { letra: "B", texto: "81", correta: true },
               { letra: "C", texto: "85", correta: false },
               { letra: "D", texto: "73", correta: false },
               { letra: "E", texto: "89", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
@@ -1908,12 +1908,12 @@ export default function AulaProgressoesPa({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
           alternativas={[
-              { letra: "A", texto: "77", correta: false },
+            { letra: "A", texto: "77", correta: false },
               { letra: "B", texto: "81", correta: true },
               { letra: "C", texto: "85", correta: false },
               { letra: "D", texto: "73", correta: false },
               { letra: "E", texto: "89", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
@@ -2120,12 +2120,12 @@ export default function AulaProgressoesPa({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PA (5, 9, 13, ...), qual é o 20º termo?"
           alternativas={[
-              { letra: "A", texto: "77", correta: false },
+            { letra: "A", texto: "77", correta: false },
               { letra: "B", texto: "81", correta: true },
               { letra: "C", texto: "85", correta: false },
               { letra: "D", texto: "73", correta: false },
               { letra: "E", texto: "89", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre subtraia 1 do n antes de multiplicar pela razão."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=5, r=4." },
@@ -2229,17 +2229,16 @@ export default function AulaProgressoesPa({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PA (2, x, y, 14), os valores de x e y são:"
           alternativas={[
-            { label: "A", valor: "x=6, y=10" },
-                { label: "B", valor: "x=5, y=9" },
-                { label: "C", valor: "x=4, y=8" },
-                { label: "D", valor: "x=8, y=12" },
-                { label: "E", valor: "x=6, y=11" }
+            { letra: "A", texto: "x=6, y=10", correta: true },
+                { letra: "B", texto: "x=5, y=9", correta: false },
+                { letra: "C", texto: "x=4, y=8", correta: false },
+                { letra: "D", texto: "x=8, y=12", correta: false },
+                { letra: "E", texto: "x=6, y=11", correta: false }
           ]}
-          correta="A"
           passos={[
-            "PA com 4 termos: r = (14-2)/3 = 4.",
-            "x = 2+4 = 6, y = 6+4 = 10.",
-            "Fórmula: r = (último-primeiro)/(nº de termos - 1)."
+            { titulo: "Passo 1", conteudo: "PA com 4 termos: r = (14-2)/3 = 4." },
+            { titulo: "Passo 2", conteudo: "x = 2+4 = 6, y = 6+4 = 10." },
+            { titulo: "Passo 3", conteudo: "Fórmula: r = (último-primeiro)/(nº de termos - 1)." }
           ]}
         />
         <QuizInterativo

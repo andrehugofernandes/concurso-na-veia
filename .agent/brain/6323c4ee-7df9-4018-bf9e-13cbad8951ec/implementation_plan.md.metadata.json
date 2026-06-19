@@ -1,0 +1,7 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Plano de implementação detalhado para a refatoração do Módulo 1 da Aula de Ortografia no Petrobras Quest, incluindo a reordenação aritmética das seções para preservar o conteúdo de fonologia/sílabas e a introdução da nova INTRO geral via framework C.E.D.E.A de 5 parágrafos.",
+  "updatedAt":  "2026-05-18T19:55:52.097273100Z",
+  "version":  "1",
+  "requestFeedback":  true
+}

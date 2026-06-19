@@ -1,0 +1,6 @@
+- [ ] Implementar Sentinel/Spacer div em `StickyModuleNav`
+- [ ] Refatorar Layout Fixo (Fixed Breakout) para 100% Edge-to-Edge
+- [ ] Aplicar Efeito Vidro (Glassmorphism): `bg-background/80` + `backdrop-blur-md`
+- [ ] Remover cantos arredondados quando pinned
+- [ ] Aumentar contraste das bordas no Dark Mode
+- [ ] Validar com Browser Subagent (390px e Desktop)

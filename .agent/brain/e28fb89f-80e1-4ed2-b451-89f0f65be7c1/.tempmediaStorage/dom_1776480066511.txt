@@ -1,0 +1,72 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+AV
+A VAGA
+É MINHA
+Simulador de Concursos
+[0] (87,552)<nav class='flex-1 px-2 py-4 overflow-y-hidden' scrollable='true' />
+	[1] (87,143)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/dashboard' title='Dashboard' />
+		[2] (87,143)<div  />
+	[3] (87,227)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90 justify-center px-2' href='/aulas' title='Aulas' />
+		[4] (87,227)<div  />
+	[5] (87,299)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/aulas/ingles/petrolingo' title='PetroLingo' />
+		[6] (87,299)<div  />
+		[7] (147,277)<span >ELITE TOTAL />
+	[8] (87,372)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/simulado-rapido' title='Simulados Rápidos' />
+		[9] (87,372)<div  />
+	[10] (87,445)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/simulado-especifico' title='Simulados Específicos' />
+		[11] (87,445)<div  />
+	[12] (87,517)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/maratona-100' title='Maratona 100' />
+		[13] (87,517)<div  />
+	[14] (87,590)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/historico' title='Histórico' />
+		[15] (87,590)<div  />
+	[16] (87,663)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/rankings' title='Rankings' />
+		[17] (87,663)<div  />
+	[18] (87,754)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/seja-pro' title='Seja Pro' />
+		[19] (87,754)<div  />
+	[20] (87,827)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/tickets' title='Abertura de Ticket' />
+		[21] (87,827)<div  />
+[22] (245,45)<button aria-label='Expandir menu' class='p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300 flex-shrink-0' />
+Interpretação de Texto
+[23] (660,45)<button aria-label='Notificações' class='flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' id='radix-_r_6_' />
+[24] (748,45)<button aria-label='Tema Escuro' class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' />
+[25] (836,45)<button class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors' id='radix-_r_8_' />
+	[26] (836,45)<div  />
+[27] (928,45)<button class='relative h-10 w-10 rounded-full border-2 border-primary' id='radix-_r_a_' />
+	[28] (928,45)<span  />
+		[29] (928,45)<img  />
+[30] (344,187)<a class='px-3 py-2 rounded-lg bg-secondary/80 dark:bg-slate-700 text-secondary-foreground dark:text-slate-200 hover:bg-secondary transition flex items-center gap-2 font-medium border border-border/50 shrink-0 text-left leading-tight' href='/aulas/portugues' />
+	[31] (265,187)<span >← />
+	[32] (372,187)<span >Português />
+[33] (861,187)<a class='px-3 py-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center justify-center gap-2 shadow-sm border border-border/50 text-[10px] md:text-xs min-w-[80px]' href='/aulas/portugues/coesao-coerencia'>Próximo />
+	[34] (912,187)<span >→ />
+Língua Portuguesa
+Interpretação de Texto
+Compreensão de textos de gêneros variados
+[35] (435,488)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 py-1.5 px-1 rounded-lg border border-transparent dark:border-white/10 shadow-md dark:shadow-none border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-primary/40 data-[state=active]:border-b-primary data-[state=active]:dark:border-white/40 disabled:opacity-40 disabled:cursor-not-allowed group min-w-0' id='radix-_r_c_-trigger-modulo-1' role='tab' />
+	[36] (435,486)<div  />
+		[37] (435,486)<span >MÓDULO
+01 />
+[38] (742,488)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 py-1.5 px-1 rounded-lg border border-transparent dark:border-white/10 shadow-md dark:shadow-none border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-primary/40 data-[state=active]:border-b-primary data-[state=active]:dark:border-white/40 disabled:opacity-40 disabled:cursor-not-allowed group min-w-0' id='radix-_r_c_-trigger-modulo-2' role='tab' />
+	[39] (742,486)<div  />
+		[40] (742,486)<span >MÓDULO
+02 />
+[41] (938,488)<button aria-label='Próximos módulos' class='w-7 h-7 shrink-0 flex items-center justify-center rounded-lg border transition-all duration-200 border-border/50 bg-background text-foreground/80 shadow-sm' />
+[42] (536,555)<a aria-label='Voltar às Aulas' class='mt-2 w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors' href='/aulas/portugues' />
+[43] (640,555)<button aria-label='Mostrar cabeçalho' class='mt-2 w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0' />
+Módulo
+1
+A Diferença Letal
+O Dossiê Premium de Compreensão vs. Interpretação. A fronteira exata entre o que o texto afirma e o que a banca induz.
+[44] (100,973)<span >Aulas />
+Simulados
+[45] (497,920)<a class='flex flex-col items-center gap-0.5 -mt-[52px]' href='/dashboard'>Dashboard />
+	[46] (497,908)<div  />
+	Dashboard
+Provas
+[47] (874,956)<a class='flex flex-col items-center gap-1 px-3 py-2 rounded transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100' href='/maratona-100' />
+	[48] (874,973)<span >Maratona />
+
+</current_dom>

@@ -1,0 +1,46 @@
+# Padronização de Rich Intros - Currículo de Português
+
+Este plano visa unificar a experiência pedagógica de todas as aulas de Português para o padrão **Ultimate V4.1**, implementando introduções ricas (Rich Intro) baseadas no padrão C.E.D.E. (Conceito, Exemplo, Detalhe, Estratégia) nas aulas que ainda utilizam estruturas legadas.
+
+## User Review Required
+
+> [!IMPORTANT]
+> A implementação da "Rich Intro" altera a estrutura inicial de cada módulo. Embora não quebre a lógica, ela adiciona uma carga de conteúdo pedagógico densa e premium no início de cada aula.
+
+## Proposed Changes
+
+### [UI/UX] Padronização de Componentes
+
+Upgrade das introduções para incluir seções narrativas de alto impacto, garantindo que o aluno tenha o contexto teórico completo antes de entrar nos sub-módulos.
+
+#### [MODIFY] [AulaInterpretacaoTexto.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaInterpretacaoTexto.tsx)
+- Adicionar rótulo `{/* RICH INTRO */}`.
+- Refatorar a introdução para o padrão C.E.D.E.
+
+#### [MODIFY] [AulaConcordancia.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaConcordancia.tsx)
+- Implementar seção Rich Intro antes do Módulo 1.
+
+#### [MODIFY] [AulaPontuacao.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaPontuacao.tsx)
+- Implementar seção Rich Intro pedagógica.
+
+#### [MODIFY] [AulaTiposTextuais.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaTiposTextuais.tsx)
+- Enriquecer a introdução com estratégias específicas da banca.
+
+#### [MODIFY] [AulaOrtografia.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaOrtografia.tsx)
+- Ajustes finais para aderir ao padrão visual das outras aulas premium.
+
+## Open Questions
+
+- Você gostaria que eu focasse em alguma dessas aulas especificamente primeiro, ou posso seguir a ordem lógica do currículo (Interpretacao -> Concordancia -> Pontuacao...)?
+
+## Verification Plan
+
+### Manual Verification
+- Verificar visualmente se a seção "Rich Intro" aparece corretamente no topo de cada aula.
+- Validar se o texto gerado respeita o tom de voz "Sertanejo de Elite / Elite Class".
+
+### Automated Tests
+- Verificação visual de sintaxe JSX após a inserção.
+
+### Manual Verification
+- Abrir a aula e navegar por todos os 10 módulos, verificando se cada `ModuleConsolidation` exibe a letra da música correta no player de áudio.

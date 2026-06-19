@@ -1,0 +1,93 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+AV
+A VAGA
+É MINHA
+Simulador de Concursos
+[0] (67,120)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/dashboard' />
+	[1] (15,120)<div  />
+	[2] (46,120)<span >Dashboard />
+Estudo
+[3] (67,191)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90' href='/aulas' />
+	[4] (15,191)<div  />
+	[5] (35,191)<span >Aulas />
+[6] (67,238)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-rapido' />
+	[7] (15,238)<div  />
+	[8] (60,238)<span >Simulados Rápidos />
+[9] (67,284)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-especifico' />
+	[10] (15,284)<div  />
+	[11] (66,284)<span >Simulados Específicos />
+[12] (67,330)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/maratona-100' />
+	[13] (15,330)<div  />
+	[14] (50,330)<span >Maratona 100 />
+[15] (67,376)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/historico' />
+	[16] (15,376)<div  />
+	[17] (41,376)<span >Histórico />
+[18] (67,423)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/rankings' />
+	[19] (15,423)<div  />
+	[20] (42,423)<span >Rankings />
+Suporte
+[21] (67,494)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/seja-pro' />
+	[22] (15,494)<div  />
+	[23] (40,494)<span >Seja Pro />
+[24] (67,540)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/tickets' />
+	[25] (15,540)<div  />
+	[26] (59,540)<span >Abertura de Ticket />
+[27] (161,42)<button aria-label='Colapsar menu' class='p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300 flex-shrink-0' />
+Reading Strategies
+[28] (890,42)<button aria-label='Notificações' class='flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' id='radix-_r_6_' />
+[29] (917,42)<button aria-label='Tema Escuro' class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' />
+[30] (944,42)<button class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors' id='radix-_r_8_' />
+	[31] (944,42)<div  />
+[32] (973,42)<button class='relative h-10 w-10 rounded-full border-2 border-primary' id='radix-_r_a_' />
+	[33] (973,42)<span  />
+		[34] (973,42)<span >AT />
+[35] (291,186)<a class='px-3 py-2 rounded-lg bg-secondary/80 dark:bg-slate-700 text-secondary-foreground dark:text-slate-200 hover:bg-secondary transition flex items-center gap-2 font-medium border border-border/50 shrink-0 text-left leading-tight' href='/aulas/ingles' />
+	[36] (263,186)<span >← />
+	[37] (299,186)<span  />
+		[38] (284,186)<span >Língua />
+		[39] (312,186)<span >Inglesa />
+/
+Reading Strategies
+[40] (833,186)<a class='px-3 py-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center justify-center gap-2 shadow-sm border border-border/50 text-[10px] md:text-xs min-w-[80px]' href='/aulas/ingles/verb-tenses'>Próximo />
+	[41] (841,186)<span >:
+Verb Tenses />
+	[42] (872,186)<span >→ />
+Língua Inglesa
+Reading Strategies
+Técnicas de leitura e skimming
+6 min
+[43] (174,517)<a class='w-10 h-10 md:w-11 md:h-11 flex items-center justify-center rounded-full border border-border/50 bg-background shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0' href='/aulas/ingles' />
+[44] (268,517)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-1' role='tab' />
+	[45] (268,515)<div  />
+		[46] (247,506)<span >Módulo 1 />
+		[47] (268,527)<span  />
+			[48] (268,527)<span >Prediction & Context />
+[49] (425,517)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-2' role='tab' />
+	[50] (425,515)<div  />
+		[51] (404,506)<span >Módulo 2 />
+		[52] (425,527)<span  />
+			[53] (425,527)<span >Skimming (The Gist) />
+[54] (581,517)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-3' role='tab' />
+	[55] (581,515)<div  />
+		[56] (557,506)<span >Módulo 3 />
+		[57] (581,527)<span  />
+			[58] (581,527)<span >Scanning (The Details) />
+[59] (738,517)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-4' role='tab' />
+	[60] (738,515)<div  />
+		[61] (712,506)<span >Módulo 4 />
+		[62] (738,527)<span  />
+			[63] (738,527)<span >Vocabulary & Cognates />
+[64] (895,517)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-5' role='tab' />
+	[65] (895,515)<div  />
+		[66] (885,506)<span >Módulo 5 />
+		[67] (895,527)<span  />
+			[68] (895,527)<span >Simulado Final />
+Módulo
+1
+Prediction & Pre-Reading
+Aqueça o cérebro antes de ler: use títulos, imagens e seu conhecimento de mundo para antecipar o texto.
+
+</current_dom>

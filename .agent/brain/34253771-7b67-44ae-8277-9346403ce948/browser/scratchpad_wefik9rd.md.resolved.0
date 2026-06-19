@@ -1,0 +1,7 @@
+# StickyModuleNav Verification Checklist
+- [x] Set viewport to 390x844 (Mobile)
+- [ ] Initial render: Check left/right edges (edge-to-edge)
+- [ ] Sticky state: Check left/right edges after scrolling 600px
+- [ ] Dark mode: Verify module tab borders are visible
+- [ ] Light mode: Verify module tab shadows
+- [ ] Navigation arrows: Check visibility and centering

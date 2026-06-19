@@ -1,0 +1,40 @@
+# Plano de Implementação: Sticky Nav Pixel-Perfect (Mobile)
+
+O objetivo é garantir que a barra de navegação de módulos seja verdadeiramente "edge-to-edge" (encostando nas bordas do dispositivo e da sidebar), sem cantos arredondados quando fixa, e com visibilidade perfeita em ambos os temas.
+
+## Problemas Identificados
+1. **Gaps Laterais**: O uso de `-mx-2` não está sendo suficiente em todos os cenários.
+2. **Sobreposição de Conteúdo**: O layout fixo atual não respeita o fluxo da página, ocultando títulos e descrição.
+3. **Sangramento de Texto**: A transparência da barra permite que o conteúdo da aula "brigue" com os botões.
+4. **Detalhamento Estético**: Cantos arredondados no estado fixo quebram a ilusão de continuidade com o topo da tela.
+
+## Mudanças Propostas
+
+### 1. [Componente] StickyModuleNav (shared.tsx)
+Mudança estrutural para garantir que a barra preencha 100% da largura visual.
+
+- **Breakout Visual (Mobile/Desktop)**:
+  - Usar `w-screen` com `left: 0` quando fixo, compensando o `left` apenas se a sidebar estiver visível.
+  - No estado **inicial** (estático), utilizaremos `w-[calc(100%+16px)]` e `-mx-2` com `rounded-2xl`.
+  - No estado **fixo** (stuck), utilizaremos `rounded-none`, `shadow-lg` e zero transparência (`bg-background`).
+
+- **Z-Index e Layering**: 
+  - Fixar o `z-index` em 51 para garantir que fique acima do conteúdo mas abaixo de modais.
+
+### 2. Cabeçalho Principal (admin-dashboard-layout.tsx)
+- No mobile, para evitar o conflito de dois headers grudados, o `AdminHeader` deve idealmente desaparecer ao atingir o estado de sticky (já está parcialmente configurado como `isHidden`, vou revisar).
+
+## Perguntas Abertas
+> [!IMPORTANT]
+> 1. No desktop, você também quer o comportamento "edge-to-edge" total ou apenas no mobile?
+> 2. Posso remover o arredondamento dos cantos completamente quando ela estiver fixa no topo para um visual mais "Premium Desktop App"?
+
+## Plano de Verificação
+### Testes Automatizados (Browser Subagent)
+1. Abrir em 390px.
+2. Screenshot inicial (gaps nas bordas?).
+3. Scroll profundo (stuck?).
+4. Validar se o texto da aula está sobreposto/ilegível abaixo da barra.
+
+### Verificação Manual
+- Validar se o transição de arredondamento para reto é suave.

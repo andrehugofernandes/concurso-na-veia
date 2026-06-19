@@ -1,0 +1,10 @@
+# Login PMAVV Task Breakdown
+
+- [ ] Reload page at http://localhost:3000/login
+- [ ] Find selectors for username, password, and login button
+- [ ] Fill username: andre.hugo
+- [ ] Fill password: AndyBelle@20082021*
+- [ ] Click login button
+- [ ] Wait for redirection to /dashboard
+- [ ] Take screenshot of dashboard
+- [ ] List modules in sidebar

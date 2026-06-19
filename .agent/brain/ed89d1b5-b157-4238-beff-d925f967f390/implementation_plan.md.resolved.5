@@ -1,0 +1,35 @@
+# Plano de Implementação: Otimização de Responsividade - Página de Aulas
+
+Este plano visa corrigir problemas de layout e aproveitamento de espaço na rota `/aulas`, conforme solicitado pelo usuário.
+
+## Mudanças Propostas
+
+### 1. Hero Section (Header de Aulas)
+- **Desktop**: Remover a restrição `max-w-3xl` da descrição para permitir que o conteúdo ocupe a largura total, eliminando espaços vazios em resoluções de 1920px e 1366px.
+- **Mobile**: 
+    - Reduzir o tamanho do ícone (📚) para não dominar visualmente a informação escrita.
+    - Ajustar os espaçamentos (`gap`) e paddings para evitar "espaços gigantes" em branco.
+    - Garantir que o título (`h1`) e a descrição tenham maior peso visual em relação ao ícone.
+
+### 2. MateriaCard (Cards de Matéria)
+- **Mobile**:
+    - Refatorar a estrutura do `renderMateriaCard` para dispositivos móveis.
+    - Reduzir o tamanho do container do ícone.
+    - Garantir que o título e a descrição não fiquem "espremidos" lateralmente pelo ícone.
+- **Desktop**:
+    - Remover ou aumentar a restrição `max-w-5xl` nas grids de matérias (quando há poucas matérias) para que os cards se expandam ou ocupem melhor a largura da página.
+
+## Arquivos a serem Modificados
+
+#### [MODIFY] [page.tsx](file:///c:/Workspace/petrobras-quest/src/app/(dashboard)/aulas/page.tsx)
+- Linha 207: Ajustar paddings do `header`.
+- Linha 216: Reduzir tamanho do ícone no mobile.
+- Linha 234: Remover `max-w-3xl`.
+- Linha 124: Reduzir tamanho do ícone do card no mobile (`w-14 h-14` para algo menor).
+- Linhas 259, 275, 302, 351: Remover ou ajustar `max-w-5xl`.
+
+## Plano de Verificação
+
+### Verificação Manual
+- Validar em resolução de desktop (1920px e 1366px) se o conteúdo preenche o espaço horizontal.
+- Validar em dispositivos móveis (simulação no navegador) se o ícone não está "espremendo" o texto e se os espaços verticais estão equilibrados.

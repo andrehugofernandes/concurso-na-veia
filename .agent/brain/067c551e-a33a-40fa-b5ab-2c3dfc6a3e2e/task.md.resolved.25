@@ -1,0 +1,25 @@
+# Tarefas: Expansão de Aula - Bloco 1
+
+## Planejamento Estratégico (Concluído)
+- [x] Auditoria Inicial e Diagnóstico C.E.D.E.
+- [x] Enriquecimento de Conteúdo (10 módulos)
+- [x] Expansão de Quizzes em [planejamento-quizzes.ts](file:///c:/Workspace/petrobras-quest/src/data/quizzes/planejamento-quizzes.ts)
+
+- [x] Gestão de Processos (Concluída - ~1750 linhas)
+  - [x] Auditoria Inicial
+  - [x] Enriquecimento Total (10 módulos)
+  - [x] Correção de ícones e lint
+
+- [x] Gestão de Projetos (Concluída - ~2500 linhas)
+  - [x] Auditoria Inicial: [AulaGestaoProjetos.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestaoProjetos.tsx) (189 linhas)
+  - [x] Enriquecimento de Conteúdo (C.E.D.E. Standard)
+    - [x] Módulos 1-3: Conceitos, PMBOK e Ciclo de Vida
+    - [x] Módulos 4-6: Escopo, Tempo e Custos (EVA)
+    - [x] Módulos 7-9: Riscos, Ágil e Petrobras
+    - [x] Módulo 10: Simulado Mestre
+- [ ] Governança Corporativa (Pendente)
+- [ ] Reorganização Técnica (Quizzes externos)
+- [ ] Validação Final (checklist.py)
+- [ ] Governança Corporativa (Pendente)
+- [ ] Reorganização Técnica (Quizzes externos)
+- [ ] Validação Final (checklist.py)

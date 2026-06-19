@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan to reset the 2FA status for user andrehugofernandes@gmail.com by deleting their MFA factors in the Supabase database.",
+  "updatedAt": "2026-03-16T14:56:48.455025200Z"
+}

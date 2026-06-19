@@ -1,0 +1,19 @@
+# Tarefa: Enriquecimento de Conteúdo Premium - AulaConjuntos.tsx
+
+- [ ] Fase 1: Planejamento e Socratic Gate [/]
+    - [ ] Realizar Socratic Gate com 3 perguntas estratégicas [/]
+    - [ ] Criar Implementation Plan detalhado [ ]
+- [ ] Fase 2: Padronização das Introduções (C.E.D.E.A) [ ]
+    - [ ] Revisar Módulo 1 [ ]
+    - [ ] Revisar Módulo 2 [ ]
+    - [ ] ... (até o Módulo 10)
+- [ ] Fase 3: Implementação de FlipCards Premium [ ]
+    - [ ] Adicionar FlipCards no Módulo 1 (Símbolos e Notações) [ ]
+    - [ ] Adicionar FlipCards no Módulo 2 (Operações) [ ]
+    - [ ] ...
+- [ ] Fase 4: Refinamento das Mesas de Consolidação [ ]
+    - [ ] Expandir `sinteseEstrategica` de cada módulo [ ]
+    - [ ] Validar IDs de vídeo e placeholders de áudio [ ]
+- [ ] Fase 5: Verificação Final [ ]
+    - [ ] Executar `tsc --noEmit` [ ]
+    - [ ] Auditoria visual via Browser Tool (opcional se disponível) [ ]

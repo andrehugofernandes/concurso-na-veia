@@ -196,6 +196,41 @@ export const QUIZ_LEI_13303: Record<string, QuizQuestion[]> = {
       explicacao:
         "Lei 13.303 se baseia em 3 pilares: Sustentabilidade (retorno + responsabilidade), Governança (transparência e controle) e Conformidade (cumprimento de regulações). Petrobras exemplifica esses princípios.",
     },
+    {
+      id: 107,
+      pergunta:
+        "Segundo o Artigo 34 da Lei nº 13.303/2016 (Lei das Estatais), o valor estimado do contrato a ser licitado pela Petrobras possui qual regime de sigilo?",
+      opcoes: [
+        {
+          label: "A",
+          valor:
+            "Deve ser obrigatoriamente divulgado no edital de licitação em todos os casos, sob pena de nulidade.",
+        },
+        {
+          label: "B",
+          valor:
+            "Será preferencialmente sigiloso, sem prejuízo da divulgação do detalhamento dos quantitativos e das demais informações necessárias para a elaboração das propostas.",
+        },
+        {
+          label: "C",
+          valor:
+            "É sempre mantido em sigilo absoluto, inclusive para os órgãos de controle externo e interno.",
+        },
+        {
+          label: "D",
+          valor:
+            "Deve ser sigiloso apenas para os órgãos de controle, sendo público para todos os licitantes desde o início.",
+        },
+        {
+          label: "E",
+          valor:
+            "Só poderá ser divulgado após a assinatura do contrato e o início de sua execução física.",
+        },
+      ],
+      correta: "B",
+      explicacao:
+        "Nos termos do Art. 34 da Lei 13.303/16, o valor estimado do contrato terá caráter preferencialmente sigiloso, sendo obrigatório disponibilizar o detalhamento dos quantitativos. O sigilo não se aplica aos órgãos de controle (tribunais de contas). A CESGRANRIO costuma cobrar essa regra alegando que o sigilo é absoluto ou proibido.",
+    },
   ],
 
   "modulo-2": [

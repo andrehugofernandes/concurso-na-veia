@@ -372,12 +372,12 @@ export default function AulaGeometriaPlana({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um triângulo de suporte de plataforma tem base 6 m e altura 4 m. Qual a sua área?"
           alternativas={[
-              { letra: "A", texto: "10 m²", correta: false },
+            { letra: "A", texto: "10 m²", correta: false },
               { letra: "B", texto: "12 m²", correta: true },
               { letra: "C", texto: "24 m²", correta: false },
               { letra: "D", texto: "6 m²", correta: false },
               { letra: "E", texto: "8 m²", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Atenção: a altura deve ser perpendicular à base."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "A = (base × altura) / 2 = (6 × 4) / 2 = 24 / 2 = 12 m²." },
@@ -617,12 +617,12 @@ export default function AulaGeometriaPlana({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
           alternativas={[
-              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+            { letra: "A", texto: "Retângulo e isósceles", correta: true },
               { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
               { letra: "C", texto: "Retângulo e equilátero", correta: false },
               { letra: "D", texto: "Acutângulo e isósceles", correta: false },
               { letra: "E", texto: "Retângulo e escaleno", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },
@@ -845,12 +845,12 @@ export default function AulaGeometriaPlana({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
           alternativas={[
-              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+            { letra: "A", texto: "Retângulo e isósceles", correta: true },
               { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
               { letra: "C", texto: "Retângulo e equilátero", correta: false },
               { letra: "D", texto: "Acutângulo e isósceles", correta: false },
               { letra: "E", texto: "Retângulo e escaleno", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },
@@ -1141,12 +1141,12 @@ export default function AulaGeometriaPlana({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um triângulo de suporte de plataforma tem base 6 m e altura 4 m. Qual a sua área?"
           alternativas={[
-              { letra: "A", texto: "10 m²", correta: false },
+            { letra: "A", texto: "10 m²", correta: false },
               { letra: "B", texto: "12 m²", correta: true },
               { letra: "C", texto: "24 m²", correta: false },
               { letra: "D", texto: "6 m²", correta: false },
               { letra: "E", texto: "8 m²", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Atenção: a altura deve ser perpendicular à base."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "A = (base × altura) / 2 = (6 × 4) / 2 = 24 / 2 = 12 m²." },
@@ -1374,12 +1374,12 @@ export default function AulaGeometriaPlana({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
           alternativas={[
-              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+            { letra: "A", texto: "Retângulo e isósceles", correta: true },
               { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
               { letra: "C", texto: "Retângulo e equilátero", correta: false },
               { letra: "D", texto: "Acutângulo e isósceles", correta: false },
               { letra: "E", texto: "Retângulo e escaleno", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },
@@ -1593,12 +1593,12 @@ export default function AulaGeometriaPlana({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
           alternativas={[
-              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+            { letra: "A", texto: "Retângulo e isósceles", correta: true },
               { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
               { letra: "C", texto: "Retângulo e equilátero", correta: false },
               { letra: "D", texto: "Acutângulo e isósceles", correta: false },
               { letra: "E", texto: "Retângulo e escaleno", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },
@@ -1797,12 +1797,12 @@ export default function AulaGeometriaPlana({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
           alternativas={[
-              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+            { letra: "A", texto: "Retângulo e isósceles", correta: true },
               { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
               { letra: "C", texto: "Retângulo e equilátero", correta: false },
               { letra: "D", texto: "Acutângulo e isósceles", correta: false },
               { letra: "E", texto: "Retângulo e escaleno", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },
@@ -2016,12 +2016,12 @@ export default function AulaGeometriaPlana({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
           alternativas={[
-              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+            { letra: "A", texto: "Retângulo e isósceles", correta: true },
               { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
               { letra: "C", texto: "Retângulo e equilátero", correta: false },
               { letra: "D", texto: "Acutângulo e isósceles", correta: false },
               { letra: "E", texto: "Retângulo e escaleno", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },
@@ -2229,12 +2229,12 @@ export default function AulaGeometriaPlana({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
           alternativas={[
-              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+            { letra: "A", texto: "Retângulo e isósceles", correta: true },
               { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
               { letra: "C", texto: "Retângulo e equilátero", correta: false },
               { letra: "D", texto: "Acutângulo e isósceles", correta: false },
               { letra: "E", texto: "Retângulo e escaleno", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },
@@ -2387,12 +2387,12 @@ export default function AulaGeometriaPlana({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um suporte triangular de plataforma offshore tem ângulos internos de 90°, 45° e 45°. Como esse triângulo é classificado quanto aos ângulos e quanto aos lados?"
           alternativas={[
-              { letra: "A", texto: "Retângulo e isósceles", correta: true },
+            { letra: "A", texto: "Retângulo e isósceles", correta: true },
               { letra: "B", texto: "Obtusângulo e escaleno", correta: false },
               { letra: "C", texto: "Retângulo e equilátero", correta: false },
               { letra: "D", texto: "Acutângulo e isósceles", correta: false },
               { letra: "E", texto: "Retângulo e escaleno", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Um triângulo retângulo-isósceles é muito comum em estruturas de suporte."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Com ângulo de 90° é retângulo." },

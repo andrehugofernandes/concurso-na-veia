@@ -1,0 +1,90 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+AV
+A VAGA
+É MINHA
+Simulador de Concursos
+[0] (94,178)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/dashboard' />
+	[1] (21,178)<div  />
+	[2] (65,178)<span >Dashboard />
+Estudo
+[3] (94,285)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90' href='/aulas' />
+	[4] (21,285)<div  />
+	[5] (50,285)<span >Aulas />
+[6] (94,354)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-rapido' />
+	[7] (21,354)<div  />
+	[8] (85,354)<span >Simulados Rápidos />
+[9] (94,423)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-especifico' />
+	[10] (21,423)<div  />
+	[11] (93,423)<span >Simulados Específicos />
+[12] (94,491)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/maratona-100' />
+	[13] (21,491)<div  />
+	[14] (71,491)<span >Maratona 100 />
+[15] (94,560)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/historico' />
+	[16] (21,560)<div  />
+	[17] (58,560)<span >Histórico />
+[18] (94,629)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/rankings' />
+	[19] (21,629)<div  />
+	[20] (59,629)<span >Rankings />
+Suporte
+[21] (94,736)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/seja-pro' />
+	[22] (21,736)<div  />
+	[23] (56,736)<span >Seja Pro />
+[24] (94,804)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/tickets' />
+	[25] (21,804)<div  />
+	[26] (83,804)<span >Abertura de Ticket />
+[27] (227,62)<button aria-label='Colapsar menu' class='p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300 flex-shrink-0' />
+Teoria dos Conjuntos
+[28] (780,62)<a class='hidden md:flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black text-[11px] font-black rounded-full transition-all shadow-sm hover:shadow-yellow-500/20 active:scale-95 border border-yellow-200/50' href='/seja-pro' />
+	[29] (788,62)<span >SEJA PRO />
+[30] (844,62)<button aria-label='Notificações' class='flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' id='radix-_r_6_' />
+[31] (883,62)<button aria-label='Tema Escuro' class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' />
+[32] (921,62)<button class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors' id='radix-_r_8_' />
+	[33] (921,62)<div  />
+[34] (961,62)<button class='relative h-10 w-10 rounded-full border-2 border-primary' id='radix-_r_a_' />
+	[35] (961,62)<span  />
+		[36] (961,62)<span >U />
+[37] (269,277)<a class='px-3 py-2 rounded-lg bg-secondary/80 dark:bg-slate-700 text-secondary-foreground dark:text-slate-200 hover:bg-secondary transition flex items-center gap-2 font-medium border border-border/50 shrink-0 text-left leading-tight' href='/aulas/matematica' />
+	[38] (234,277)<span >← />
+	[39] (279,277)<span  />
+		[40] (279,277)<span >Matemática />
+/
+Teoria dos Conjuntos
+[41] (886,277)<a class='px-3 py-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center justify-center gap-2 shadow-sm border border-border/50 text-[10px] md:text-xs min-w-[80px]' href='/aulas/matematica/razao-proporcao'>Próximo />
+	[42] (897,277)<span >:
+Razão e Proporção />
+	[43] (955,277)<span >→ />
+Matemática
+Teoria dos Conjuntos
+Operações, diagramas de Venn e conjuntos numéricos
+7 min
+[44] (259,770)<a class='w-10 h-10 md:w-11 md:h-11 flex items-center justify-center rounded-full border border-border/50 bg-background shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0' href='/aulas/matematica' />
+[45] (332,770)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground shrink-0 py-2 px-4 md:px-5 rounded-2xl border-b-3 border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:rounded-b-none data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-1' role='tab' />
+	[46] (332,770)<div  />
+		[47] (319,753)<span >Módulo 1 />
+		[48] (332,787)<span >Fundamentos />
+[49] (428,770)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground shrink-0 py-2 px-4 md:px-5 rounded-2xl border-b-3 border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:rounded-b-none data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-2' role='tab' />
+	[50] (428,770)<div  />
+		[51] (423,753)<span >Módulo 2 />
+		[52] (428,787)<span >Operações />
+[53] (538,770)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground shrink-0 py-2 px-4 md:px-5 rounded-2xl border-b-3 border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:rounded-b-none data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-3' role='tab' />
+	[54] (538,770)<div  />
+		[55] (511,753)<span >Módulo 3 />
+		[56] (538,787)<span >Diagramas de Venn />
+[57] (662,770)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground shrink-0 py-2 px-4 md:px-5 rounded-2xl border-b-3 border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:rounded-b-none data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-4' role='tab' />
+	[58] (662,770)<div  />
+		[59] (644,753)<span >Módulo 4 />
+		[60] (662,787)<span >Conj. Numéricos />
+[61] (771,770)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground shrink-0 py-2 px-4 md:px-5 rounded-2xl border-b-3 border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:rounded-b-none data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-5' role='tab' />
+	[62] (771,770)<div  />
+		[63] (760,753)<span >Módulo 5 />
+		[64] (771,787)<span >Subconjuntos />
+[65] (886,770)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground shrink-0 py-2 px-4 md:px-5 rounded-2xl border-b-3 border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:rounded-b-none data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-6' role='tab' />
+	[66] (886,770)<div  />
+		[67] (862,753)<span >Módulo 6 />
+		[68] (886,787)<span >Inclusão-Exclusão />
+[69] (969,770)<button aria-label='Próximos módulos' class='w-9 h-9 flex items-center justify-center rounded-2xl border border-border/50 bg-background transition-all duration-200 text-foreground/80 hover:bg-muted shadow-sm cursor-pointer' />
+
+</current_dom>

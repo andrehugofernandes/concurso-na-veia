@@ -1,0 +1,52 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+P
+[0] (168,706)<nav class='flex-1 px-2 py-4 overflow-y-auto custom-scrollbar' scrollable='true' />
+	[1] (155,180)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/dashboard' />
+		[2] (155,180)<div  />
+	[3] (155,276)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group bg-blue-600 text-white shadow-sm justify-center px-2' href='/denuncias' title='Denúncias' />
+		[4] (155,276)<div  />
+	[5] (155,353)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/vitimas' title='Vítimas' />
+		[6] (155,353)<div  />
+	[7] (155,431)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/agressores' title='Agressores' />
+		[8] (155,431)<div  />
+	[9] (155,508)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/denunciantes' title='Denunciantes' />
+		[10] (155,508)<div  />
+	[11] (155,586)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/cadastros/visita' title='Visitas' />
+		[12] (155,586)<div  />
+	[13] (155,694)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/cadastros/regionais' title='Regionais' />
+		[14] (155,694)<div  />
+	[15] (155,772)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/cadastros/bairros' title='Bairros' />
+		[16] (155,772)<div  />
+	[17] (155,881)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/consultas/denuncia' title='Consultas' />
+		[18] (155,881)<div  />
+	[19] (155,958)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/relatorios' title='Relatórios' />
+		[20] (155,958)<div  />
+[21] (376,60)<button aria-label='Expandir menu' class='p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' />
+Denuncias
+[22] (1091,560)<main class='flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8' scrollable='true' />
+	Denúncias
+	Gerencie todas as denúncias do sistema
+	[23] (627,295)<input class='w-full pl-10 pr-9 py-2 rounded-lg bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-700 text-gray-900 dark:text-slate-100 placeholder-gray-400 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] transition-shadow' placeholder='Buscar por protocolo, órgão...' />
+	[24] (982,295)<button class='px-6 py-2 rounded-lg bg-[var(--primary)] hover:opacity-90 text-white font-semibold transition-all shadow-md shadow-[var(--primary)]/10'>Buscar />
+	1435
+	Total de Denúncias
+	0
+	Este Mês
+	[25] (582,709)<button class='flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap bg-[var(--primary)] text-white shadow-md shadow-[var(--primary)]/20' />
+		[26] (563,709)<span >Todas />
+		[27] (646,709)<span >1435 />
+	[28] (808,709)<button class='flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-800' />
+		[29] (829,709)<span >Este Ano />
+	Urgentes
+	[30] (464,908)<button class='inline-flex items-center justify-center white-nowrap rounded-sm py-1.5 ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground text-[10px] uppercase font-bold tracking-wider px-4 h-8 data-[state=active]:bg-background data-[state=active]:shadow-sm' id='radix-_r_6_-trigger-denuncia' role='tab'>Denúncia />
+	[31] (605,908)<button class='inline-flex items-center justify-center white-nowrap rounded-sm py-1.5 ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground text-[10px] uppercase font-bold tracking-wider px-4 h-8 data-[state=active]:bg-background data-[state=active]:shadow-sm' id='radix-_r_6_-trigger-vitima' role='tab'>Vítimas />
+	[32] (762,908)<button class='inline-flex items-center justify-center white-nowrap rounded-sm py-1.5 ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground text-[10px] uppercase font-bold tracking-wider px-4 h-8 data-[state=active]:bg-background data-[state=active]:shadow-sm' id='radix-_r_6_-trigger-agressor' role='tab'>Agressores />
+	[33] (946,908)<button class='inline-flex items-center justify-center white-nowrap rounded-sm py-1.5 ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-foreground text-[10px] uppercase font-bold tracking-wider px-4 h-8 data-[state=active]:bg-background data-[state=active]:shadow-sm' id='radix-_r_6_-trigger-denunciante' role='tab'>Denunciante />
+	Protocolo
+	Órgão de Origem
+	Formas de Violência
+
+</current_dom>

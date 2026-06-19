@@ -1,0 +1,7 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Novo plano de ação para a padronização e persistência de estado das aulas de administração, adaptando-as ao padrão Aula Master v3 e utilizando a mesma paleta de cores harmonizada de referência da Aula de Interpretação de Texto, juntamente com persistência no localStorage.",
+  "updatedAt":  "2026-05-18T16:07:10.841993900Z",
+  "version":  "2",
+  "requestFeedback":  true
+}

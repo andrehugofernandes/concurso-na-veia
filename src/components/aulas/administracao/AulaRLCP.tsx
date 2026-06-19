@@ -93,12 +93,9 @@ export default function AulaRLCP(props: AulaProps) {
 
   const handleModuleComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
-      setCompletedModules((prev) => {
-        const newSet = new Set([...prev, moduleId]);
-        const progress = Math.round((newSet.size / MODULE_DEFS.length) * 100);
-        props.onUpdateProgress?.(progress);
-        return newSet;
-      });
+      updateCompletedModules([...completedModules, moduleId]);
+      const progress = Math.round(((completedModules.size + 1) / MODULE_DEFS.length) * 100);
+      props.onUpdateProgress?.(progress);
     }
   };
 
@@ -232,18 +229,18 @@ export default function AulaRLCP(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant={"variant"}
+          variant={variant}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
           enunciado="Quais são as principais fases de um procedimento licitatório em RLCP?"
           alternativas={[
-              { letra: "A", texto: "Apenas publicação do edital e recebimento de propostas", correta: false },
+            { letra: "A", texto: "Apenas publicação do edital e recebimento de propostas", correta: false },
               { letra: "B", texto: "Edital, publicidade, recebimento de propostas, julgamento, homologação, adjudicação", correta: true },
               { letra: "C", texto: "Conversa informal com fornecedores e escolha direta", correta: false },
               { letra: "D", texto: "Apenas lançamento do edital, sem etapas subsequentes", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Procedimento RLCP: 1) Edital (publicação e prazos), 2) Publicidade (divulgação clara), 3) Recebimento (propostas em data/hora), 4) Julgamento (análise por critério), 5) Homologação (confirmação formal), 6) Adjudicação (contrato)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -432,18 +429,18 @@ export default function AulaRLCP(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant={"variant"}
+          variant={variant}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
           enunciado="Quais são as principais fases de um procedimento licitatório em RLCP?"
           alternativas={[
-              { letra: "A", texto: "Apenas publicação do edital e recebimento de propostas", correta: false },
+            { letra: "A", texto: "Apenas publicação do edital e recebimento de propostas", correta: false },
               { letra: "B", texto: "Edital, publicidade, recebimento de propostas, julgamento, homologação, adjudicação", correta: true },
               { letra: "C", texto: "Conversa informal com fornecedores e escolha direta", correta: false },
               { letra: "D", texto: "Apenas lançamento do edital, sem etapas subsequentes", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Procedimento RLCP: 1) Edital (publicação e prazos), 2) Publicidade (divulgação clara), 3) Recebimento (propostas em data/hora), 4) Julgamento (análise por critério), 5) Homologação (confirmação formal), 6) Adjudicação (contrato)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -629,18 +626,18 @@ export default function AulaRLCP(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant={"variant"}
+          variant={variant}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
           enunciado="Quais são as principais fases de um procedimento licitatório em RLCP?"
           alternativas={[
-              { letra: "A", texto: "Apenas publicação do edital e recebimento de propostas", correta: false },
+            { letra: "A", texto: "Apenas publicação do edital e recebimento de propostas", correta: false },
               { letra: "B", texto: "Edital, publicidade, recebimento de propostas, julgamento, homologação, adjudicação", correta: true },
               { letra: "C", texto: "Conversa informal com fornecedores e escolha direta", correta: false },
               { letra: "D", texto: "Apenas lançamento do edital, sem etapas subsequentes", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Procedimento RLCP: 1) Edital (publicação e prazos), 2) Publicidade (divulgação clara), 3) Recebimento (propostas em data/hora), 4) Julgamento (análise por critério), 5) Homologação (confirmação formal), 6) Adjudicação (contrato)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -756,18 +753,18 @@ export default function AulaRLCP(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={5}
           titulo="Na Prática: Como a Banca Cobra"
-          variant={"variant"}
+          variant={variant}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é a comissão responsável pelo julgamento em uma Licitação RLCP?"
           alternativas={[
-              { letra: "A", texto: "Apenas o Diretor da empresa", correta: false },
+            { letra: "A", texto: "Apenas o Diretor da empresa", correta: false },
               { letra: "B", texto: "Comissão de Licitação (membros designados, multidisciplinar)", correta: true },
               { letra: "C", texto: "Qualquer funcionário de Petrobras", correta: false },
               { letra: "D", texto: "Uma pessoa apenas para garantir sigilo", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Atas registram decisões."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Comissão de Licitação: grupo multidisciplinar (engenharia, financeiro, legal, etc.) designado para julgamento." },
@@ -896,18 +893,18 @@ export default function AulaRLCP(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={5}
           titulo="Na Prática: Como a Banca Cobra"
-          variant={"variant"}
+          variant={variant}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é a comissão responsável pelo julgamento em uma Licitação RLCP?"
           alternativas={[
-              { letra: "A", texto: "Apenas o Diretor da empresa", correta: false },
+            { letra: "A", texto: "Apenas o Diretor da empresa", correta: false },
               { letra: "B", texto: "Comissão de Licitação (membros designados, multidisciplinar)", correta: true },
               { letra: "C", texto: "Qualquer funcionário de Petrobras", correta: false },
               { letra: "D", texto: "Uma pessoa apenas para garantir sigilo", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Atas registram decisões."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Comissão de Licitação: grupo multidisciplinar (engenharia, financeiro, legal, etc.) designado para julgamento." },
@@ -1025,18 +1022,18 @@ export default function AulaRLCP(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={6}
           titulo="Na Prática: Como a Banca Cobra"
-          variant={"variant"}
+          variant={variant}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é a diferença entre 'Impugnação de Edital' e 'Recurso de Resultado'?"
           alternativas={[
-              { letra: "A", texto: "São a mesma coisa", correta: false },
+            { letra: "A", texto: "São a mesma coisa", correta: false },
               { letra: "B", texto: "Impugnação: desafio ao Edital antes do julgamento. Recurso: desafio ao resultado após julgamento", correta: true },
               { letra: "C", texto: "Impugnação é mais rápida que recurso", correta: false },
               { letra: "D", texto: "Recurso não é permitido em RLCP", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1151,18 +1148,18 @@ export default function AulaRLCP(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={7}
           titulo="Na Prática: Como a Banca Cobra"
-          variant={"variant"}
+          variant={variant}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é o passo imediatamente após adjudicação em RLCP?"
           alternativas={[
-              { letra: "A", texto: "Fornecedor começa a trabalhar imediatamente", correta: false },
+            { letra: "A", texto: "Fornecedor começa a trabalhar imediatamente", correta: false },
               { letra: "B", texto: "Celebração de contrato entre Petrobras e fornecedor adjudicado", correta: true },
               { letra: "C", texto: "Publicação em jornal, sem contrato", correta: false },
               { letra: "D", texto: "Pagamento antecipado", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Após adjudicação: Petrobras convida fornecedor a assinar contrato."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1277,18 +1274,18 @@ export default function AulaRLCP(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={8}
           titulo="Na Prática: Como a Banca Cobra"
-          variant={"variant"}
+          variant={variant}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é a principal razão para inabilitar um licitante em RLCP?"
           alternativas={[
-              { letra: "A", texto: "Porque Petrobras não gostou do fornecedor", correta: false },
+            { letra: "A", texto: "Porque Petrobras não gostou do fornecedor", correta: false },
               { letra: "B", texto: "Falta de documentação exigida, capacidade técnica insuficiente ou problemas legais/financeiros", correta: true },
               { letra: "C", texto: "Porque fornecedor é pequeno demais", correta: false },
               { letra: "D", texto: "Inabilitação não existe em RLCP", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sem habilitação, proposta não é nem analisada."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Inabilitação: licitante não atende requisitos de habilitação (documentação, registro, solvência)." },
@@ -1389,18 +1386,18 @@ export default function AulaRLCP(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={9}
           titulo="Na Prática: Como a Banca Cobra"
-          variant={"variant"}
+          variant={variant}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
           enunciado="Como Petrobras aplica RLCP em suas licitações internacionais?"
           alternativas={[
-              { letra: "A", texto: "RLCP não se aplica fora do Brasil", correta: false },
+            { letra: "A", texto: "RLCP não se aplica fora do Brasil", correta: false },
               { letra: "B", texto: "RLCP se aplica com ajustes para legislação local; Petrobras publica editais em português e inglês", correta: true },
               { letra: "C", texto: "Apenas Lei 6.404/76 é usada no exterior", correta: false },
               { letra: "D", texto: "Petrobras não faz compras internacionais", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Critérios de julgamento respeitam legislação local quando necessário."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "RLCP em Exterior: Petrobras aplica princípios RLCP (transparência, igualdade, publicidade) conforme Lei 13.303." },
@@ -1483,18 +1480,18 @@ export default function AulaRLCP(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={10}
           titulo="Na Prática: Como a Banca Cobra"
-          variant={"variant"}
+          variant={variant}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
           enunciado="Um licitante questiona o Edital alegando critério de desempate prejudicial. Qual é o procedimento correto?"
           alternativas={[
-              { letra: "A", texto: "Ignorar questionamento e prosseguir licitação", correta: false },
+            { letra: "A", texto: "Ignorar questionamento e prosseguir licitação", correta: false },
               { letra: "B", texto: "Licitante pode impugnar edital (até 2 dias úteis antes do recebimento). Petrobras analisa e, se válida, corrige e republica edital", correta: true },
               { letra: "C", texto: "Desqualificar licitante que impugna", correta: false },
               { letra: "D", texto: "Criar novo edital sem informar ao licitante", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Se licitante identifica vício (ex:"
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },

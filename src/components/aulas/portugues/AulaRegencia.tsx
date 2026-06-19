@@ -496,16 +496,15 @@ export default function AulaRegencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="No contexto da gramática normativa, o que define a 'Regência'?"
           alternativas={[
-            { label: "A", valor: "A concordância entre o sujeito e o verbo em número e pessoa." },
-                { label: "B", valor: "A maneira como um termo (regente) exige outro (regido), com ou sem preposição." },
-                { label: "C", valor: "O uso obrigatório de letras maiúsculas no início de frases técnicas." },
-                { label: "D", valor: "A colocação dos pronomes oblíquos antes ou depois do verbo." }
+            { letra: "A", texto: "A concordância entre o sujeito e o verbo em número e pessoa.", correta: false },
+                { letra: "B", texto: "A maneira como um termo (regente) exige outro (regido), com ou sem preposição.", correta: true },
+                { letra: "C", texto: "O uso obrigatório de letras maiúsculas no início de frases técnicas.", correta: false },
+                { letra: "D", texto: "A colocação dos pronomes oblíquos antes ou depois do verbo.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Regência é a relação de subordinação entre um nome/verbo (regente) e seu complemento (regido).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Regência é a relação de subordinação entre um nome/verbo (regente) e seu complemento (regido)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -742,16 +741,15 @@ export default function AulaRegencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="O adjetivo 'acessível' exige qual preposição em sua regência normativa?"
           alternativas={[
-            { label: "A", valor: "com" },
-                { label: "B", valor: "a" },
-                { label: "C", valor: "em" },
-                { label: "D", valor: "por" }
+            { letra: "A", texto: "com", correta: false },
+                { letra: "B", texto: "a", correta: true },
+                { letra: "C", texto: "em", correta: false },
+                { letra: "D", texto: "por", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Dizemos que algo é 'acessível A' alguém ou a algum lugar.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Dizemos que algo é 'acessível A' alguém ou a algum lugar." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -994,16 +992,15 @@ export default function AulaRegencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="O substantivo 'aversão' pode reger quais preposições?"
           alternativas={[
-            { label: "A", valor: "apenas " },
-                { label: "B", valor: "apenas " },
-                { label: "C", valor: "a, para com ou por" },
-                { label: "D", valor: "de ou em" }
+            { letra: "A", texto: "apenas ", correta: false },
+                { letra: "B", texto: "apenas ", correta: false },
+                { letra: "C", texto: "a, para com ou por", correta: true },
+                { letra: "D", texto: "de ou em", correta: false }
           ]}
-          correta="C"
           passos={[
-            "'Aversão a', 'Aversão para com' e 'Aversão por' são todas formas aceitas.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "'Aversão a', 'Aversão para com' e 'Aversão por' são todas formas aceitas." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1247,16 +1244,15 @@ export default function AulaRegencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Com o sentido de 'pretender, objetivar', qual o padrão de regência do verbo visar?"
           alternativas={[
-            { label: "A", valor: "Visar o êxito (VTD)." },
-                { label: "B", valor: "Visar ao êxito (VTI)." },
-                { label: "C", valor: "Visar pelo êxito." },
-                { label: "D", valor: "Visar com o êxito." }
+            { letra: "A", texto: "Visar o êxito (VTD).", correta: false },
+                { letra: "B", texto: "Visar ao êxito (VTI).", correta: true },
+                { letra: "C", texto: "Visar pelo êxito.", correta: false },
+                { letra: "D", texto: "Visar com o êxito.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Visar = almejar exige preposição 'a'.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Visar = almejar exige preposição 'a'." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1447,16 +1443,15 @@ export default function AulaRegencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="O verbo 'custar', no sentido de 'ser penoso/difícil', deve ser usado como:"
           alternativas={[
-            { label: "A", valor: "Eu custei a entender." },
-                { label: "B", valor: "Custou-me entender (ou Custou-me a entender)." },
-                { label: "C", valor: "Nós custamos para chegar." },
-                { label: "D", valor: "Eles custaram muito a aceitar." }
+            { letra: "A", texto: "Eu custei a entender.", correta: false },
+                { letra: "B", texto: "Custou-me entender (ou Custou-me a entender).", correta: true },
+                { letra: "C", texto: "Nós custamos para chegar.", correta: false },
+                { letra: "D", texto: "Eles custaram muito a aceitar.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "O sujeito deve ser a coisa (entender) e não a pessoa (Eu/Nós).",
-            "O correto é 'Custou-me entender'.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "O sujeito deve ser a coisa (entender) e não a pessoa (Eu/Nós)." },
+            { titulo: "Passo 2", conteudo: "O correto é 'Custou-me entender'." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1667,16 +1662,15 @@ export default function AulaRegencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Os verbos 'Pagar' e 'Perdoar' regem preposição quando:"
           alternativas={[
-            { label: "A", valor: "O objeto é uma coisa." },
-                { label: "B", valor: "O objeto é uma pessoa." },
-                { label: "C", valor: "Sempre." },
-                { label: "D", valor: "Nunca." }
+            { letra: "A", texto: "O objeto é uma coisa.", correta: false },
+                { letra: "B", texto: "O objeto é uma pessoa.", correta: true },
+                { letra: "C", texto: "Sempre.", correta: false },
+                { letra: "D", texto: "Nunca.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Pagar a alguém (pessoa = VTI); Pagar algo (coisa = VTD).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Pagar a alguém (pessoa = VTI); Pagar algo (coisa = VTD)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1894,16 +1888,15 @@ export default function AulaRegencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na norma culta, verbos de movimento como 'Ir' ou 'Chegar' regem a preposição:"
           alternativas={[
-            { label: "A", valor: "em (ex: Chegou em casa)." },
-                { label: "B", valor: "a (ex: Chegou a casa)." },
-                { label: "C", valor: "para (ex: Foi para o Rio)." },
-                { label: "D", valor: "B e C (dependendo da duração da estadia)." }
+            { letra: "A", texto: "em (ex: Chegou em casa).", correta: false },
+                { letra: "B", texto: "a (ex: Chegou a casa).", correta: false },
+                { letra: "C", texto: "para (ex: Foi para o Rio).", correta: false },
+                { letra: "D", texto: "B e C (dependendo da duração da estadia).", correta: true }
           ]}
-          correta="D"
           passos={[
-            "Ir/Chegar regem 'A' para destino momentâneo e 'PARA' para destino definitivo.",
-            "'EM' é coloquial.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Ir/Chegar regem 'A' para destino momentâneo e 'PARA' para destino definitivo." },
+            { titulo: "Passo 2", conteudo: "'EM' é coloquial." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -2165,16 +2158,15 @@ export default function AulaRegencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="O verbo 'implicar' no sentido de 'acarretar' (consequência) rege:"
           alternativas={[
-            { label: "A", valor: "preposição " },
-                { label: "B", valor: "preposição " },
-                { label: "C", valor: "nenhuma preposição (VTD)" },
-                { label: "D", valor: "preposição " }
+            { letra: "A", texto: "preposição ", correta: false },
+                { letra: "B", texto: "preposição ", correta: false },
+                { letra: "C", texto: "nenhuma preposição (VTD)", correta: true },
+                { letra: "D", texto: "preposição ", correta: false }
           ]}
-          correta="C"
           passos={[
-            "Erro comum: 'Isso implica EM mudanças' (Errado).",
-            "Correto: 'Isso implica mudanças'.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Erro comum: 'Isso implica EM mudanças' (Errado)." },
+            { titulo: "Passo 2", conteudo: "Correto: 'Isso implica mudanças'." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -2413,16 +2405,15 @@ export default function AulaRegencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em 'Este é o autor ___ livros gosto muito', qual a forma correta?"
           alternativas={[
-            { label: "A", valor: "que os" },
-                { label: "B", valor: "cujos" },
-                { label: "C", valor: "de cujos" },
-                { label: "D", valor: "dos quais" }
+            { letra: "A", texto: "que os", correta: false },
+                { letra: "B", texto: "cujos", correta: false },
+                { letra: "C", texto: "de cujos", correta: true },
+                { letra: "D", texto: "dos quais", correta: false }
           ]}
-          correta="C"
           passos={[
-            "Quem gosta, gosta DE.",
-            "O termo 'livros' pertence ao 'autor' (cujo).",
-            "Logo: 'DE CUJOS'."
+            { titulo: "Passo 1", conteudo: "Quem gosta, gosta DE." },
+            { titulo: "Passo 2", conteudo: "O termo 'livros' pertence ao 'autor' (cujo)." },
+            { titulo: "Passo 3", conteudo: "Logo: 'DE CUJOS'." }
           ]}
         />
         <QuizInterativo
@@ -2678,6 +2669,7 @@ export default function AulaRegencia({
               </p>
             </div>
           ) : (
+            <>
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -2688,16 +2680,15 @@ export default function AulaRegencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Assinale a alternativa que apresenta plena correção quanto à regência verbal:"
           alternativas={[
-            { label: "A", valor: "O aluno aspirava o sucesso no concurso." },
-                { label: "B", valor: "O curso visa o aprimoramento profissional." },
-                { label: "C", valor: "Chegamos no laboratório às oito horas." },
-                { label: "D", valor: "Assistimos aos novos episódios da série técnica." }
+            { letra: "A", texto: "O aluno aspirava o sucesso no concurso.", correta: false },
+                { letra: "B", texto: "O curso visa o aprimoramento profissional.", correta: false },
+                { letra: "C", texto: "Chegamos no laboratório às oito horas.", correta: false },
+                { letra: "D", texto: "Assistimos aos novos episódios da série técnica.", correta: true }
           ]}
-          correta="D"
           passos={[
-            "Assistir (ver) exige 'a'.",
-            "Aspirar (desejar) e Visar (objetivar) também exigem 'a'.",
-            "Chegar exige 'a'."
+            { titulo: "Passo 1", conteudo: "Assistir (ver) exige 'a'." },
+            { titulo: "Passo 2", conteudo: "Aspirar (desejar) e Visar (objetivar) também exigem 'a'." },
+            { titulo: "Passo 3", conteudo: "Chegar exige 'a'." }
           ]}
         />
         <QuizInterativo
@@ -2708,6 +2699,7 @@ export default function AulaRegencia({
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
           variant="blue"
         />
+            </>
           )}
         </div>
       </TabsContent>

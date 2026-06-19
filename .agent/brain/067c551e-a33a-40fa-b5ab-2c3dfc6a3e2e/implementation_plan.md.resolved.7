@@ -1,0 +1,29 @@
+# Plano de Correção do Layout Admin
+
+Corrigir os erros de importação (módulos não encontrados) e um erro de tipo detectados pelo compilador.
+
+## Problemas Identificados
+
+1. **Importações Quebradas:** O alias `@/` em [admin-template/app/(admin)/admin/layout.tsx](file:///c:/Workspace/petrobras-quest/admin-template/app/%28admin%29/admin/layout.tsx) não está sendo resolvido corretamente pelo ambiente de compilação atual para este arquivo específico.
+2. **Erro de Tipo:** Na linha 317, a variável `t` do mapeamento de `availableThemes` é tratada como `unknown`.
+
+## Mudanças Propostas
+
+### Admin Layout
+
+#### [MODIFY] [layout.tsx](file:///c:/Workspace/petrobras-quest/admin-template/app/(admin)/admin/layout.tsx)
+
+- Ajustar as importações para caminhos relativos:
+  - `@/components/ui/*` -> `../../../../../src/components/ui/*`
+  - `@/components/providers/*` -> `../../../../../src/components/providers/*`
+  - `@/hooks/useAuth` -> `../../../../../src/hooks/useAuth`
+  - `@/lib/utils` -> `../../../../../src/lib/utils`
+  - `@/lib/themes` -> `../../../../../src/lib/themes`
+- Corrigir o erro de tipo na linha 317:
+  - Adicionar tipagem explícita no `Object.entries(availableThemes).map(([key, t]) => ...)` usando `as [string, any][]` ou definindo a interface.
+
+## Plano de Verificação
+
+### Testes Manuais
+- O usuário deve verificar se os erros do IDE/Lint desaparecem após a aplicação dos caminhos relativos.
+- Verificar se a aplicação `pnpm dev` reinicia sem erros de módulo.

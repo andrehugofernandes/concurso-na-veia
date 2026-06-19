@@ -1,0 +1,123 @@
+# DataTable com Navegação por Tabs de Campos
+
+## Problema
+
+O ScriptCase condensa **~30 colunas** de 4 entidades (Denúncia, Vítima, Agressor, Denunciante) em uma única tabela horizontal, tornando os dados ilegíveis e impossíveis de usar em telas menores.
+
+Nossa tabela atual mostra apenas **5 colunas** (Protocolo, Órgão, Violência, Data, Vínculos), ocultando campos fundamentais como:
+- Encaminhamento, Pertinente ao Trabalho AVV, Data de Recebimento (da Denúncia)
+- Nome, Endereço, Classificação da Vítima
+- Nome, Parentesco do Agressor
+- Nome, Telefone, Parentesco do Denunciante
+
+## Proposta: Tabbed Column Groups
+
+Em vez de uma tabela infinitamente larga, a DataTable terá **tabs de navegação no header** que alternam os grupos de colunas visíveis, mantendo **duas colunas fixas** (Protocolo à esquerda, Ações à direita).
+
+### Arquitetura Visual
+
+```
+┌──────────────────────────────────────────────────────────────────┐
+│  [Denúncia]  [Vítima]  [Agressor]  [Denunciante]                │ ← Tabs (header)
+├──────────┬──────────┬──────────┬──────────┬──────────┬──────────┤
+│Protocolo │ Campo 1  │ Campo 2  │ Campo 3  │ Campo 4  │  Ações   │
+│ (FIXO)   │          │          │          │          │  (FIXO)  │
+├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+│ 5561809  │   ...    │   ...    │   ...    │   ...    │  ✏️ 🗑️   │
+│ 1435191  │   ...    │   ...    │   ...    │   ...    │  ✏️ 🗑️   │
+└──────────┴──────────┴──────────┴──────────┴──────────┴──────────┘
+```
+
+### Grupos de Tabs (4 campos dinâmicos por tab)
+
+| Tab | Campos | Fonte |
+|-----|--------|-------|
+| **Denúncia** (default) | Órgão Origem, Forma Violência, Data Denúncia, Encaminhamento | `tbl_denuncia` |
+| **Vítima** | Nome, Classificação, Bairro, Regional | `tbl_vitima` (1º registro) |
+| **Agressor** | Nome, Endereço, Parentesco, Regional | `tbl_agressor` (1º registro) |
+| **Denunciante** | Nome, Telefone, Parentesco, Outro Parentesco | `tbl_denuciante` (1º registro) |
+
+> **Nota:** Quando há múltiplos registros (N vítimas, N agressores), a tab mostra o 1º registro + badge com contagem `+N`.
+
+### Colunas Fixas (sticky)
+
+| Posição | Coluna | Comportamento |
+|---------|--------|---------------|
+| Esquerda | **Protocolo** | `sticky left-0`, sempre visível, link para detalhe |
+| Direita | **Ações** | `sticky right-0`, sempre visível (👁️ ✏️ 🗑️) |
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Decisão de Design: 4 campos por tab**
+> Escolhi 4 campos dinâmicos por tab para manter a legibilidade e evitar scroll horizontal. Se quiser mais ou menos campos por página, posso ajustar facilmente.
+
+> [!WARNING]
+> **Dados Relacionados (1:N)**
+> Vítima, Agressor e Denunciante são relações 1:N com a Denúncia. Na tab, mostro apenas o **primeiro registro**. Para ver todos, o usuário deve clicar no botão 👁️ (Visualizar) que abre o Side-Sheet com os detalhes completos. Alternativa: expandir a linha com um accordion.
+
+## Proposed Changes
+
+### Componente Base: Tabbed DataTable
+
+#### [NEW] [tabbed-data-table.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/tabbed-data-table.tsx)
+
+Componente wrapper que:
+1. Recebe a definição de `ColumnGroup[]` (cada grupo = 1 tab)
+2. Renderiza tabs de navegação no header da tabela
+3. Alterna as colunas visíveis com `<Activity mode="visible"|"hidden">`
+4. Mantém colunas fixas (Protocolo + Ações) via CSS `sticky`
+5. Usa `React.startTransition` para troca de tabs sem bloquear a UI
+
+```tsx
+interface ColumnGroup {
+  id: string;
+  label: string;
+  icon: React.ElementType;
+  columns: ColumnDef<any>[];
+}
+
+interface TabbedDataTableProps<T> {
+  data: T[];
+  columnGroups: ColumnGroup[];
+  fixedStartColumns: ColumnDef<T>[];  // Protocolo
+  fixedEndColumns: ColumnDef<T>[];    // Ações
+  // ... props padrão da DataTable
+}
+```
+
+---
+
+### Atualização da Tabela de Denúncias
+
+#### [MODIFY] [denuncia-table.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-table.tsx)
+
+Refatorar para usar o `TabbedDataTable`, definindo os 4 grupos de colunas com seus respectivos campos e badges de contagem para relações N.
+
+---
+
+### Server Action: Query Enriquecida
+
+#### [MODIFY] [denuncias-actions.ts](file:///c:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/denuncias-actions.ts)
+
+Atualizar [listDenuncias](file:///c:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/denuncias-actions.ts#62-128) para incluir os campos das relações (vítima, agressor, denunciante) via `include` do Prisma com `take: 1` para performance:
+
+```prisma
+include: {
+  tbl_vitima: { take: 1, select: { nome, classificacao, tbl_bairro: { select: { nome } } } },
+  tbl_agressor: { take: 1, select: { nome, endereco, parentesco_vitima } },
+  tbl_denuciante: { take: 1, select: { nome, telefone, parentesco } },
+  _count: { select: { tbl_vitima, tbl_agressor, tbl_denuciante } }
+}
+```
+
+## Verification Plan
+
+### Automated Tests
+- `npx tsc --noEmit` — Validar tipagem dos novos componentes
+- Verificar no browser que as tabs alternam corretamente e as colunas fixas permanecem visíveis
+
+### Manual Verification
+- Comparar visualmente com a imagem do ScriptCase para garantir paridade de informação
+- Testar com denúncias que têm múltiplos registros (N vítimas, N agressores)
+- Verificar responsividade em telas menores

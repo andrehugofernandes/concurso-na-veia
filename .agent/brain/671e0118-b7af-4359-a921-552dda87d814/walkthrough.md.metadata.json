@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Walkthrough of the fix for the build error in AulaEquacoes1Grau.tsx.\nDetails the identification and correction of unescaped curly braces in JSX text content.",
+  "updatedAt": "2026-03-27T18:33:58.788482200Z"
+}

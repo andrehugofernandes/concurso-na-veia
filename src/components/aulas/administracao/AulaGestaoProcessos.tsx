@@ -440,17 +440,16 @@ export default function AulaGestaoProcessos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na gestão de processos, como se define um 'processo de negócio'?"
           alternativas={[
-            { label: "A", valor: "Conjunto de tarefas isoladas sem relação entre si" },
-                { label: "B", valor: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor" },
-                { label: "C", valor: "Apenas atividades operacionais de baixo nível" },
-                { label: "D", valor: "Um documento técnico obrigatório" },
-                { label: "E", valor: "Sinônimo de procedimento administrativo" }
+            { letra: "A", texto: "Conjunto de tarefas isoladas sem relação entre si", correta: false },
+                { letra: "B", texto: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor", correta: true },
+                { letra: "C", texto: "Apenas atividades operacionais de baixo nível", correta: false },
+                { letra: "D", texto: "Um documento técnico obrigatório", correta: false },
+                { letra: "E", texto: "Sinônimo de procedimento administrativo", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico.",
-            "Cada atividade adiciona valor ao processo.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico." },
+            { titulo: "Passo 2", conteudo: "Cada atividade adiciona valor ao processo." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -666,17 +665,16 @@ export default function AulaGestaoProcessos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na gestão de processos, como se define um 'processo de negócio'?"
           alternativas={[
-            { label: "A", valor: "Conjunto de tarefas isoladas sem relação entre si" },
-                { label: "B", valor: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor" },
-                { label: "C", valor: "Apenas atividades operacionais de baixo nível" },
-                { label: "D", valor: "Um documento técnico obrigatório" },
-                { label: "E", valor: "Sinônimo de procedimento administrativo" }
+            { letra: "A", texto: "Conjunto de tarefas isoladas sem relação entre si", correta: false },
+                { letra: "B", texto: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor", correta: true },
+                { letra: "C", texto: "Apenas atividades operacionais de baixo nível", correta: false },
+                { letra: "D", texto: "Um documento técnico obrigatório", correta: false },
+                { letra: "E", texto: "Sinônimo de procedimento administrativo", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico.",
-            "Cada atividade adiciona valor ao processo.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico." },
+            { titulo: "Passo 2", conteudo: "Cada atividade adiciona valor ao processo." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo 
@@ -895,17 +893,16 @@ export default function AulaGestaoProcessos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na gestão de processos, como se define um 'processo de negócio'?"
           alternativas={[
-            { label: "A", valor: "Conjunto de tarefas isoladas sem relação entre si" },
-                { label: "B", valor: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor" },
-                { label: "C", valor: "Apenas atividades operacionais de baixo nível" },
-                { label: "D", valor: "Um documento técnico obrigatório" },
-                { label: "E", valor: "Sinônimo de procedimento administrativo" }
+            { letra: "A", texto: "Conjunto de tarefas isoladas sem relação entre si", correta: false },
+                { letra: "B", texto: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor", correta: true },
+                { letra: "C", texto: "Apenas atividades operacionais de baixo nível", correta: false },
+                { letra: "D", texto: "Um documento técnico obrigatório", correta: false },
+                { letra: "E", texto: "Sinônimo de procedimento administrativo", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico.",
-            "Cada atividade adiciona valor ao processo.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico." },
+            { titulo: "Passo 2", conteudo: "Cada atividade adiciona valor ao processo." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo 
@@ -1118,17 +1115,16 @@ export default function AulaGestaoProcessos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na gestão de processos, como se define um 'processo de negócio'?"
           alternativas={[
-            { label: "A", valor: "Conjunto de tarefas isoladas sem relação entre si" },
-                { label: "B", valor: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor" },
-                { label: "C", valor: "Apenas atividades operacionais de baixo nível" },
-                { label: "D", valor: "Um documento técnico obrigatório" },
-                { label: "E", valor: "Sinônimo de procedimento administrativo" }
+            { letra: "A", texto: "Conjunto de tarefas isoladas sem relação entre si", correta: false },
+                { letra: "B", texto: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor", correta: true },
+                { letra: "C", texto: "Apenas atividades operacionais de baixo nível", correta: false },
+                { letra: "D", texto: "Um documento técnico obrigatório", correta: false },
+                { letra: "E", texto: "Sinônimo de procedimento administrativo", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico.",
-            "Cada atividade adiciona valor ao processo.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico." },
+            { titulo: "Passo 2", conteudo: "Cada atividade adiciona valor ao processo." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo 
@@ -1350,17 +1346,16 @@ export default function AulaGestaoProcessos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na gestão de processos, como se define um 'processo de negócio'?"
           alternativas={[
-            { label: "A", valor: "Conjunto de tarefas isoladas sem relação entre si" },
-                { label: "B", valor: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor" },
-                { label: "C", valor: "Apenas atividades operacionais de baixo nível" },
-                { label: "D", valor: "Um documento técnico obrigatório" },
-                { label: "E", valor: "Sinônimo de procedimento administrativo" }
+            { letra: "A", texto: "Conjunto de tarefas isoladas sem relação entre si", correta: false },
+                { letra: "B", texto: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor", correta: true },
+                { letra: "C", texto: "Apenas atividades operacionais de baixo nível", correta: false },
+                { letra: "D", texto: "Um documento técnico obrigatório", correta: false },
+                { letra: "E", texto: "Sinônimo de procedimento administrativo", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico.",
-            "Cada atividade adiciona valor ao processo.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico." },
+            { titulo: "Passo 2", conteudo: "Cada atividade adiciona valor ao processo." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo 
@@ -1544,17 +1539,16 @@ export default function AulaGestaoProcessos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na gestão de processos, como se define um 'processo de negócio'?"
           alternativas={[
-            { label: "A", valor: "Conjunto de tarefas isoladas sem relação entre si" },
-                { label: "B", valor: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor" },
-                { label: "C", valor: "Apenas atividades operacionais de baixo nível" },
-                { label: "D", valor: "Um documento técnico obrigatório" },
-                { label: "E", valor: "Sinônimo de procedimento administrativo" }
+            { letra: "A", texto: "Conjunto de tarefas isoladas sem relação entre si", correta: false },
+                { letra: "B", texto: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor", correta: true },
+                { letra: "C", texto: "Apenas atividades operacionais de baixo nível", correta: false },
+                { letra: "D", texto: "Um documento técnico obrigatório", correta: false },
+                { letra: "E", texto: "Sinônimo de procedimento administrativo", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico.",
-            "Cada atividade adiciona valor ao processo.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico." },
+            { titulo: "Passo 2", conteudo: "Cada atividade adiciona valor ao processo." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo 
@@ -1720,17 +1714,16 @@ export default function AulaGestaoProcessos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na gestão de processos, como se define um 'processo de negócio'?"
           alternativas={[
-            { label: "A", valor: "Conjunto de tarefas isoladas sem relação entre si" },
-                { label: "B", valor: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor" },
-                { label: "C", valor: "Apenas atividades operacionais de baixo nível" },
-                { label: "D", valor: "Um documento técnico obrigatório" },
-                { label: "E", valor: "Sinônimo de procedimento administrativo" }
+            { letra: "A", texto: "Conjunto de tarefas isoladas sem relação entre si", correta: false },
+                { letra: "B", texto: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor", correta: true },
+                { letra: "C", texto: "Apenas atividades operacionais de baixo nível", correta: false },
+                { letra: "D", texto: "Um documento técnico obrigatório", correta: false },
+                { letra: "E", texto: "Sinônimo de procedimento administrativo", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico.",
-            "Cada atividade adiciona valor ao processo.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico." },
+            { titulo: "Passo 2", conteudo: "Cada atividade adiciona valor ao processo." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo 
@@ -1895,17 +1888,16 @@ export default function AulaGestaoProcessos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na gestão de processos, como se define um 'processo de negócio'?"
           alternativas={[
-            { label: "A", valor: "Conjunto de tarefas isoladas sem relação entre si" },
-                { label: "B", valor: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor" },
-                { label: "C", valor: "Apenas atividades operacionais de baixo nível" },
-                { label: "D", valor: "Um documento técnico obrigatório" },
-                { label: "E", valor: "Sinônimo de procedimento administrativo" }
+            { letra: "A", texto: "Conjunto de tarefas isoladas sem relação entre si", correta: false },
+                { letra: "B", texto: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor", correta: true },
+                { letra: "C", texto: "Apenas atividades operacionais de baixo nível", correta: false },
+                { letra: "D", texto: "Um documento técnico obrigatório", correta: false },
+                { letra: "E", texto: "Sinônimo de procedimento administrativo", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico.",
-            "Cada atividade adiciona valor ao processo.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico." },
+            { titulo: "Passo 2", conteudo: "Cada atividade adiciona valor ao processo." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo 
@@ -2054,17 +2046,16 @@ export default function AulaGestaoProcessos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na gestão de processos, como se define um 'processo de negócio'?"
           alternativas={[
-            { label: "A", valor: "Conjunto de tarefas isoladas sem relação entre si" },
-                { label: "B", valor: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor" },
-                { label: "C", valor: "Apenas atividades operacionais de baixo nível" },
-                { label: "D", valor: "Um documento técnico obrigatório" },
-                { label: "E", valor: "Sinônimo de procedimento administrativo" }
+            { letra: "A", texto: "Conjunto de tarefas isoladas sem relação entre si", correta: false },
+                { letra: "B", texto: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor", correta: true },
+                { letra: "C", texto: "Apenas atividades operacionais de baixo nível", correta: false },
+                { letra: "D", texto: "Um documento técnico obrigatório", correta: false },
+                { letra: "E", texto: "Sinônimo de procedimento administrativo", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico.",
-            "Cada atividade adiciona valor ao processo.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico." },
+            { titulo: "Passo 2", conteudo: "Cada atividade adiciona valor ao processo." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo 
@@ -2185,17 +2176,16 @@ export default function AulaGestaoProcessos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na gestão de processos, como se define um 'processo de negócio'?"
           alternativas={[
-            { label: "A", valor: "Conjunto de tarefas isoladas sem relação entre si" },
-                { label: "B", valor: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor" },
-                { label: "C", valor: "Apenas atividades operacionais de baixo nível" },
-                { label: "D", valor: "Um documento técnico obrigatório" },
-                { label: "E", valor: "Sinônimo de procedimento administrativo" }
+            { letra: "A", texto: "Conjunto de tarefas isoladas sem relação entre si", correta: false },
+                { letra: "B", texto: "Sequência de atividades inter-relacionadas que transformam entradas em saídas de valor", correta: true },
+                { letra: "C", texto: "Apenas atividades operacionais de baixo nível", correta: false },
+                { letra: "D", texto: "Um documento técnico obrigatório", correta: false },
+                { letra: "E", texto: "Sinônimo de procedimento administrativo", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico.",
-            "Cada atividade adiciona valor ao processo.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Um processo de negócio é um conjunto de atividades estruturadas, ordenadas no tempo e no espaço, que convergem para criar um resultado de valor (produto ou serviço) para um cliente específico." },
+            { titulo: "Passo 2", conteudo: "Cada atividade adiciona valor ao processo." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo 

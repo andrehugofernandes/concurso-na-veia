@@ -299,12 +299,12 @@ export default function AulaProgressoesPg({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
           alternativas={[
-              { letra: "A", texto: "384", correta: true },
+            { letra: "A", texto: "384", correta: true },
               { letra: "B", texto: "192", correta: false },
               { letra: "C", texto: "768", correta: false },
               { letra: "D", texto: "96", correta: false },
               { letra: "E", texto: "1536", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
@@ -495,12 +495,12 @@ export default function AulaProgressoesPg({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
           alternativas={[
-              { letra: "A", texto: "384", correta: true },
+            { letra: "A", texto: "384", correta: true },
               { letra: "B", texto: "192", correta: false },
               { letra: "C", texto: "768", correta: false },
               { letra: "D", texto: "96", correta: false },
               { letra: "E", texto: "1536", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
@@ -699,12 +699,12 @@ export default function AulaProgressoesPg({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
           alternativas={[
-              { letra: "A", texto: "384", correta: true },
+            { letra: "A", texto: "384", correta: true },
               { letra: "B", texto: "192", correta: false },
               { letra: "C", texto: "768", correta: false },
               { letra: "D", texto: "96", correta: false },
               { letra: "E", texto: "1536", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
@@ -917,12 +917,12 @@ export default function AulaProgressoesPg({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
           alternativas={[
-              { letra: "A", texto: "384", correta: true },
+            { letra: "A", texto: "384", correta: true },
               { letra: "B", texto: "192", correta: false },
               { letra: "C", texto: "768", correta: false },
               { letra: "D", texto: "96", correta: false },
               { letra: "E", texto: "1536", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
@@ -1120,12 +1120,12 @@ export default function AulaProgressoesPg({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
           alternativas={[
-              { letra: "A", texto: "384", correta: true },
+            { letra: "A", texto: "384", correta: true },
               { letra: "B", texto: "192", correta: false },
               { letra: "C", texto: "768", correta: false },
               { letra: "D", texto: "96", correta: false },
               { letra: "E", texto: "1536", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
@@ -1332,12 +1332,12 @@ export default function AulaProgressoesPg({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
           alternativas={[
-              { letra: "A", texto: "384", correta: true },
+            { letra: "A", texto: "384", correta: true },
               { letra: "B", texto: "192", correta: false },
               { letra: "C", texto: "768", correta: false },
               { letra: "D", texto: "96", correta: false },
               { letra: "E", texto: "1536", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
@@ -1545,12 +1545,12 @@ export default function AulaProgressoesPg({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
           alternativas={[
-              { letra: "A", texto: "384", correta: true },
+            { letra: "A", texto: "384", correta: true },
               { letra: "B", texto: "192", correta: false },
               { letra: "C", texto: "768", correta: false },
               { letra: "D", texto: "96", correta: false },
               { letra: "E", texto: "1536", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
@@ -1754,12 +1754,12 @@ export default function AulaProgressoesPg({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
           alternativas={[
-              { letra: "A", texto: "384", correta: true },
+            { letra: "A", texto: "384", correta: true },
               { letra: "B", texto: "192", correta: false },
               { letra: "C", texto: "768", correta: false },
               { letra: "D", texto: "96", correta: false },
               { letra: "E", texto: "1536", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
@@ -1971,12 +1971,12 @@ export default function AulaProgressoesPg({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PG (3, 6, 12, ...), qual é o 8º termo?"
           alternativas={[
-              { letra: "A", texto: "384", correta: true },
+            { letra: "A", texto: "384", correta: true },
               { letra: "B", texto: "192", correta: false },
               { letra: "C", texto: "768", correta: false },
               { letra: "D", texto: "96", correta: false },
               { letra: "E", texto: "1536", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O expoente é (n−1), não n — mesmo cuidado que na PA."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "a₁=3, q=2." },
@@ -2080,17 +2080,16 @@ export default function AulaProgressoesPg({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na PG (x, 12, y), se x·y = 144, os valores de x e y podem ser:"
           alternativas={[
-            { label: "A", valor: "x=6, y=24" },
-                { label: "B", valor: "x=4, y=36" },
-                { label: "C", valor: "x=8, y=18" },
-                { label: "D", valor: "Todas as anteriores" },
-                { label: "E", valor: "Apenas A e B" }
+            { letra: "A", texto: "x=6, y=24", correta: false },
+                { letra: "B", texto: "x=4, y=36", correta: false },
+                { letra: "C", texto: "x=8, y=18", correta: false },
+                { letra: "D", texto: "Todas as anteriores", correta: true },
+                { letra: "E", texto: "Apenas A e B", correta: false }
           ]}
-          correta="D"
           passos={[
-            "Em PG: 12² = x·y → x·y = 144 ✓.",
-            "Qualquer par (x,y) com x·y=144 e 12/x = y/12 funciona.",
-            "(A): q=2 ✓ (B): q=3 ✓ (C): q=1,5 ✓. Todas são PGs válidas."
+            { titulo: "Passo 1", conteudo: "Em PG: 12² = x·y → x·y = 144 ✓." },
+            { titulo: "Passo 2", conteudo: "Qualquer par (x,y) com x·y=144 e 12/x = y/12 funciona." },
+            { titulo: "Passo 3", conteudo: "(A): q=2 ✓ (B): q=3 ✓ (C): q=1,5 ✓. Todas são PGs válidas." }
           ]}
         />
         <QuizInterativo

@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Refatoração da aula de Reescrita de Frases para substituir ContentAccordion por CardCarousel, seguindo o padrão Ultimate V4.1 e tornando o conteúdo mais direto.",
+  "updatedAt":  "2026-04-23T07:52:43.484285Z",
+  "requestFeedback":  true
+}

@@ -1,0 +1,42 @@
+# Unificação Visual da Home Page (Temas e Skins)
+
+Este plano visa integrar completamente a Home Page ao sistema de design da aplicação, permitindo que o Modo Claro/Escuro e as Skins de cores reflitam em todas as seções da landing page.
+
+## Alterações Propostas
+
+### [P0] Refatoração da Home Page (`src/app/page.tsx`)
+
+Substituir todas as instâncias de cores hardcoded por classes semânticas.
+
+- **Navegação**: Ajustar transparências e bordas para usar `bg-background/80` e `border-border`.
+- **Hero Section**: 
+  - Ajustar o gradiente do título para usar `from-primary to-primary/50`.
+  - Tornar o overlay do Hero responsivo ao tema (ou garantir que o contraste seja mantido em ambos os modos).
+  - Substituir `text-gray-300` e similares por `text-muted-foreground`.
+- **Pain Points & Features**:
+  - Mapear cores de ícones (red, orange, yellow) para variações de `primary` ou manter como acentos neutros se necessário, mas preferencialmente usar tons de `primary` para fortalecer a marca.
+  - Substituir fundos `bg-muted/50` por classes consistentes.
+- **Demo & Elite Sections**:
+  - Substituir o tema "Purple" da seção Elite pela cor `primary` da skin atual.
+
+### [P0] Refinement do Pricing Section (`src/components/PricingSection.tsx`)
+
+- **Glows de Fundo**: Substituir `bg-yellow-500/[0.03]` por `bg-primary/5`.
+- **Badges e Labels**: Substituir `text-yellow-400` por `text-primary`.
+- **Elite Total Card**: Refatorar o gradiente "rainbow" para usar a paleta da skin (`primary` e variações).
+- **Consistência**: Garantir que todos os textos `gray-500` usem `muted-foreground`.
+
+### [P1] Ajuste no Hero Carousel (`src/components/HeroCarousel.tsx`)
+
+- Substituir a barra de progresso `bg-yellow-500/50` por `bg-primary/50`.
+- Garantir que o overlay não quebre a legibilidade no Modo Claro.
+
+## Verificação
+
+### Testes Manuais
+- Alternar entre Modo Claro e Escuro e verificar legibilidade em todas as seções.
+- Mudar as Skins no `AuthThemeToggle` e confirmar que as cores primárias (botões, gradientes, ícones) mudam em toda a Home Page.
+- Verificar responsividade do Header com o novo toggle.
+
+### Verificação de Acessibilidade
+- Garantir contraste mínimo nos textos `muted-foreground` sobre fundos `muted`.

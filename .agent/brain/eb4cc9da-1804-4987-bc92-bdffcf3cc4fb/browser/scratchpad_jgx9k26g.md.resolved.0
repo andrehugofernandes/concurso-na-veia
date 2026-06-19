@@ -1,0 +1,16 @@
+# Task: Test "Nova Denúncia" Modal
+
+## Checklist
+- [ ] Navigate to http://localhost:3000/denuncias
+- [ ] Login (if needed)
+- [ ] Click "+ Nova Denúncia"
+- [ ] Capture screenshot of the modal
+- [ ] Verify modal layout:
+    - [ ] Centered on screen
+    - [ ] Dark overlay with blur
+    - [ ] Action buttons at the bottom
+    - [ ] Labels without line breaks (desktop)
+    - [ ] Animated border in dark mode (if applicable)
+
+## Findings
+- 

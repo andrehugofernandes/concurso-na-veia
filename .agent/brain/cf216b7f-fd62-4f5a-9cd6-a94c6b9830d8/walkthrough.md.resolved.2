@@ -1,0 +1,31 @@
+# Walkthrough: Ativação do Google Gemini
+
+A transição para o motor Google Gemini foi concluída com sucesso.
+
+## Mudanças Realizadas
+
+1. **Configuração de Ambiente**:
+   - Arquivo [.env.local](file:///C:/Workspace/petrobras-quest/.env.local) atualizado: `AI_PROVIDER=gemini`.
+
+## Como Testar
+
+1. **Geração de Questão**:
+   - Vá para qualquer aula (ex: Matemática > Porcentagem).
+   - Clique no botão de gerar questão.
+   - O sistema deve carregar a questão rapidamente usando o modelo **Gemini 1.5 Flash**.
+
+## Melhorias de Resiliência
+
+1. **Tratamento de Rate Limit (429)**:
+   - O sistema agora detecta automaticamente quando o Gemini está "cansado" e aguarda 15-20 segundos antes de tentar novamente.
+   - Isso evita que a maratona falhe completamente se o limite de requisições por minuto for atingido.
+
+2. **Parsing Inteligente**:
+   - O parser de JSON foi robustecido para ignorar ruídos na resposta da IA, garantindo que os dados da questão sejam lidos corretamente.
+
+3. **Feedback Visual**:
+   - A tela de carregamento agora mostra uma **contagem regressiva** quando o sistema entra em modo de espera, mantendo o usuário informado.
+
+4. **Última Geração (3.1 Pro)**:
+   - Com base na documentação mais recente de **Fevereiro de 2026**, migramos para o `gemini-3.1-pro-preview`.
+   - Este modelo oferece o melhor raciocínio da categoria e suporte total a respostas estruturadas e API de Lote (Batch).

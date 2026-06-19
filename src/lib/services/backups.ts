@@ -28,7 +28,7 @@ export const backupsService = {
     const total = await db.backupJob.count();
 
     return {
-      jobs: jobs.map((job) => ({
+      jobs: jobs.map((job: any) => ({
         id: job.id,
         type: job.type as BackupType,
         status: job.status as BackupJobStatus,
@@ -68,7 +68,7 @@ export const backupsService = {
       errorMsg: job.errorMsg,
       triggeredBy: job.triggeredBy,
       createdAt: job.createdAt.toISOString(),
-      auditLogs: job.auditLogs.map((log) => ({
+      auditLogs: job.auditLogs.map((log: any) => ({
         id: log.id,
         action: log.action,
         status: log.status,

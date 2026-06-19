@@ -1,0 +1,9 @@
+# Plano de Teste - Função Editável
+
+- [ ] Abrir URL: http://localhost:3000/aulas/matematica/funcoes-afim-quadratica
+- [ ] Localizar o formulário "Experimente sua Própria Equação"
+- [ ] Testar equação `x^2 - 4`
+- [ ] Tirar screenshot da parábola (raízes em 2 e -2)
+- [ ] Testar equação `2x + 1`
+- [ ] Tirar screenshot da reta
+- [ ] Confirmar se a linha é roxa e o gráfico atualiza corretamente

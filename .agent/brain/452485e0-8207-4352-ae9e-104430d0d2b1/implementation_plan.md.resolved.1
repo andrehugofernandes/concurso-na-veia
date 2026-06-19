@@ -1,0 +1,29 @@
+# Plano de Recuperação Estrutural - AulaRLCP.tsx
+
+O arquivo `AulaRLCP.tsx` sofreu corrupção de sintaxe JSX durante a migração para o padrão Ultimate V4.1. O build está quebrado com erros de fechamento de tags e variáveis não encontradas.
+
+## User Review Required
+
+> [!IMPORTANT]
+> Vou realizar uma substituição massiva de código (linhas 720 a 1618) para garantir o balanceamento de chaves e tags. Isso removerá temporariamente as tentativas de migração parciais e restaurará o arquivo para um estado estável "buildable".
+
+## Proposta de Mudanças
+
+### [Componente] AulaRLCP (Aulas / Administração)
+
+#### [MODIFY] [AulaRLCP.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaRLCP.tsx)
+- **Restauração de Contexto**: Corrigir a injeção indevida na linha 780.
+- **Módulo 5 (Fix)**: Implementar definitivamente o Módulo 5 com a propriedade `audio` (que estava faltando e quebrando o TypeScript).
+- **Saneamento de Chaves**: Garantir que cada função `renderModuloX` esteja corretamente fechada dentro do escopo do componente pai.
+
+## Open Questions
+
+- Nenhuma no momento. O objetivo é puramente destrevar o build.
+
+## Plano de Verificação
+
+### Testes Automatizados
+- Executar `pnpm build` ou verificar o log do `pnpm dev` (que já está rodando) para confirmar a ausência de erros de lint "Expression expected" ou "Unexpected token".
+
+### Verificação Manual
+- Navegar pelos módulos 1 a 5 na interface para garantir que o conteúdo C.E.D.E. está renderizando corretamente.

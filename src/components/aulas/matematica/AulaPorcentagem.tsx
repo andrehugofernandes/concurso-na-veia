@@ -425,12 +425,12 @@ export default function AulaPorcentagem({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em uma prova da CESGRANRIO com 60 questões, a nota mínima para aprovação é 50%. O candidato precisa acertar, no mínimo:"
           alternativas={[
-              { letra: "A", texto: "25 questões", correta: false },
+            { letra: "A", texto: "25 questões", correta: false },
               { letra: "B", texto: "28 questões", correta: false },
               { letra: "C", texto: "30 questões", correta: true },
               { letra: "D", texto: "32 questões", correta: false },
               { letra: "E", texto: "35 questões", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Tipo de questão muito comum: transformar percentual em valor absoluto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -708,12 +708,12 @@ export default function AulaPorcentagem({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em uma prova da CESGRANRIO com 60 questões, a nota mínima para aprovação é 50%. O candidato precisa acertar, no mínimo:"
           alternativas={[
-              { letra: "A", texto: "25 questões", correta: false },
+            { letra: "A", texto: "25 questões", correta: false },
               { letra: "B", texto: "28 questões", correta: false },
               { letra: "C", texto: "30 questões", correta: true },
               { letra: "D", texto: "32 questões", correta: false },
               { letra: "E", texto: "35 questões", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Tipo de questão muito comum: transformar percentual em valor absoluto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -950,12 +950,12 @@ export default function AulaPorcentagem({
           concurso="Processo Seletivo Petrobras"
           enunciado="O preço do gás natural subiu de R$ 50 para R$ 65. A variação percentual foi de:"
           alternativas={[
-              { letra: "A", texto: "15%", correta: false },
+            { letra: "A", texto: "15%", correta: false },
               { letra: "B", texto: "23%", correta: false },
               { letra: "C", texto: "30%", correta: true },
               { letra: "D", texto: "20%", correta: false },
               { letra: "E", texto: "35%", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A alternativa (A) 15% é pegadinha: é a diferença absoluta (15 reais), não a percentual."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1188,12 +1188,12 @@ export default function AulaPorcentagem({
           concurso="Processo Seletivo Petrobras"
           enunciado="O preço do gás natural subiu de R$ 50 para R$ 65. A variação percentual foi de:"
           alternativas={[
-              { letra: "A", texto: "15%", correta: false },
+            { letra: "A", texto: "15%", correta: false },
               { letra: "B", texto: "23%", correta: false },
               { letra: "C", texto: "30%", correta: true },
               { letra: "D", texto: "20%", correta: false },
               { letra: "E", texto: "35%", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A alternativa (A) 15% é pegadinha: é a diferença absoluta (15 reais), não a percentual."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1344,12 +1344,12 @@ export default function AulaPorcentagem({
           concurso="Processo Seletivo Petrobras"
           enunciado="O salário base de um técnico da Petrobras é R$ 4.000. Após reajuste de 15%, o novo salário será de:"
           alternativas={[
-              { letra: "A", texto: "R$ 4.150", correta: false },
+            { letra: "A", texto: "R$ 4.150", correta: false },
               { letra: "B", texto: "R$ 4.400", correta: false },
               { letra: "C", texto: "R$ 4.600", correta: true },
               { letra: "D", texto: "R$ 4.500", correta: false },
               { letra: "E", texto: "R$ 5.000", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A alternativa (A) R$4.150 é pegadinha para quem calculou 15% de 1.000 em vez de 4.000."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Fator multiplicador: 1 + 15/100 = 1,15." },
@@ -1669,12 +1669,12 @@ export default function AulaPorcentagem({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um investimento rendeu 5% no primeiro mês e 8% no segundo mês (sobre o montante atualizado). Se o capital inicial era R$ 10.000, o montante ao final dos dois meses é:"
           alternativas={[
-              { letra: "A", texto: "R$ 11.300", correta: false },
+            { letra: "A", texto: "R$ 11.300", correta: false },
               { letra: "B", texto: "R$ 11.340", correta: true },
               { letra: "C", texto: "R$ 11.400", correta: false },
               { letra: "D", texto: "R$ 11.500", correta: false },
               { letra: "E", texto: "R$ 11.200", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Note como 5+8=13% mas o rendimento real é 13,4% — esse é o efeito dos juros compostos."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Mês 1: 10.000 × 1,05 = 10.500." },
@@ -1972,12 +1972,12 @@ export default function AulaPorcentagem({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em uma prova da CESGRANRIO com 60 questões, a nota mínima para aprovação é 50%. O candidato precisa acertar, no mínimo:"
           alternativas={[
-              { letra: "A", texto: "25 questões", correta: false },
+            { letra: "A", texto: "25 questões", correta: false },
               { letra: "B", texto: "28 questões", correta: false },
               { letra: "C", texto: "30 questões", correta: true },
               { letra: "D", texto: "32 questões", correta: false },
               { letra: "E", texto: "35 questões", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Tipo de questão muito comum: transformar percentual em valor absoluto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2197,12 +2197,12 @@ export default function AulaPorcentagem({
           concurso="Processo Seletivo Petrobras"
           enunciado="O preço do gás natural subiu de R$ 50 para R$ 65. A variação percentual foi de:"
           alternativas={[
-              { letra: "A", texto: "15%", correta: false },
+            { letra: "A", texto: "15%", correta: false },
               { letra: "B", texto: "23%", correta: false },
               { letra: "C", texto: "30%", correta: true },
               { letra: "D", texto: "20%", correta: false },
               { letra: "E", texto: "35%", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A alternativa (A) 15% é pegadinha: é a diferença absoluta (15 reais), não a percentual."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2490,12 +2490,12 @@ export default function AulaPorcentagem({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em uma prova da CESGRANRIO com 60 questões, a nota mínima para aprovação é 50%. O candidato precisa acertar, no mínimo:"
           alternativas={[
-              { letra: "A", texto: "25 questões", correta: false },
+            { letra: "A", texto: "25 questões", correta: false },
               { letra: "B", texto: "28 questões", correta: false },
               { letra: "C", texto: "30 questões", correta: true },
               { letra: "D", texto: "32 questões", correta: false },
               { letra: "E", texto: "35 questões", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Tipo de questão muito comum: transformar percentual em valor absoluto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2659,12 +2659,12 @@ export default function AulaPorcentagem({
           concurso="Processo Seletivo Petrobras"
           enunciado="O preço do gás natural subiu de R$ 50 para R$ 65. A variação percentual foi de:"
           alternativas={[
-              { letra: "A", texto: "15%", correta: false },
+            { letra: "A", texto: "15%", correta: false },
               { letra: "B", texto: "23%", correta: false },
               { letra: "C", texto: "30%", correta: true },
               { letra: "D", texto: "20%", correta: false },
               { letra: "E", texto: "35%", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A alternativa (A) 15% é pegadinha: é a diferença absoluta (15 reais), não a percentual."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },

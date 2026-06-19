@@ -1,0 +1,41 @@
+# Padronização de Layout e Filtros (Ref. Dashboard Core)
+
+Este plano visa alinhar as páginas de entidade do PMAVV com o layout profissional do `dashboard-core`, incluindo a barra de filtros lateral, reposicionamento do botão "+ Novo" e ajuste de skin da Sidebar.
+
+## User Review Required
+
+> [!IMPORTANT]
+> - **Filtros:** Serão implementados como "pills" (tabs) em uma barra abaixo dos stats.
+> - **CTA (+ Novo [Entidade]):** Mudará do header para a extremidade direita da barra de filtros.
+> - **Busca:** Ficará no [PageHeader](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/page-header.tsx#16-70), posicionada à direita, conforme Image 1.
+> - **Sidebar:** Será refatorada para usar variáveis dinâmicas de skin (`--primary`) em vez de cores hardcoded.
+
+## Proposed Changes
+
+### [UI Components]
+#### [MODIFY] [page-header.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/page-header.tsx)
+- Reorganizar layout para colocar a busca à direita.
+- Remover o botão "+ Novo" (que irá para a barra de filtros).
+
+#### [NEW/MODIFY] [filter-bar.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/filter-bar.tsx)
+- Implementar barra com ícone de filtro, tabs/pills de categorias, e o botão CTA principal.
+- Integrar os controles de "Modo de Seleção".
+
+#### [MODIFY] [sidebar.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/sidebar/sidebar.tsx) (ou equivalente)
+- Substituir cores fixas (ex: `bg-blue-600`) por variáveis de skin (ex: `bg-[var(--primary)]`).
+
+### [Entidades]
+#### [MODIFY] [page.tsx](file:///c:/GSW/PMAVV/PMAVV/src/app/(app)/vitimas/page.tsx)
+- Integrar a nova `FilterBar`.
+- Ajustar os filtros e o CTA.
+
+#### [MODIFY] [page.tsx](file:///c:/GSW/PMAVV/PMAVV/src/app/(app)/denuncias/page.tsx)
+- Replicar a mesma lógica de layout de Vítimas.
+
+## Verification Plan
+
+### Manual Verification
+- Confirmar se a barra de busca está no topo à direita.
+- Confirmar se o botão "+ Novo" aparece alinhado à direita dos filtros.
+- Verificar se a Sidebar muda de cor conforme a skin do sistema.
+- Comparar visualmente com as imagens fornecidas pelo usuário.

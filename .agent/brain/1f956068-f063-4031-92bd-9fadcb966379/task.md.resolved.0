@@ -1,0 +1,7 @@
+# Tarefas de Ajuste de Layout do Título 2FA
+
+- [/] Criar plano de implementação e obter aprovação do usuário
+- [ ] Ajustar [AuthLayout](file:///c:/GSW/PMAVV/PMAVV/src/components/layouts/auth-layout.tsx#21-233) para reduzir o tamanho da fonte do título
+- [ ] Corrigir o corte do caractere "o" no título "Verificação"
+- [ ] Garantir que o título ocupe no máximo 2 linhas
+- [ ] Verificar as alterações visualmente

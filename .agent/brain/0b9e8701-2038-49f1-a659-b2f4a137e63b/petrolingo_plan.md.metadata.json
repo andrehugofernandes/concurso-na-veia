@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan for the Petro-Lingo Sentence Builder feature. This premium feature allows students to build technical English sentences by clicking on scrambled words, mimicking Duolingo's primary mechanic but focused on Petrobras/Cesgranrio exam content. The plan includes the UI/UX design rationale, technical architecture using React & Framer Motion, and a roadmap for mobile-first implementation.",
+  "updatedAt": "2026-03-20T13:38:39.802902Z"
+}

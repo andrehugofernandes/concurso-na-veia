@@ -1,0 +1,12 @@
+# Tarefa de Verificação - Aula de Classes de Palavras
+
+## Checklist de Verificação
+- [ ] Verificar se a página carrega SEM ERROS DE CONSOLE (especialmente SyntaxErrors).
+- [ ] Navegar pelos módulos 4, 7 e 10.
+- [ ] Garantir que cada módulo termina com a "Mesa de Revisão" (4 abas: Vídeo, Resumo, Macete, Música).
+- [ ] Verificar se a "Rich Intro" (5 parágrafos) está presente nos módulos 4-10.
+- [ ] Capturar prints para o Walkthrough final.
+
+## Notas
+- A URL é http://localhost:3000/aulas/portugues/classes-palavras.
+- Componente afetado por scripts recentemente: `AulaClassesPalavras.tsx`.

@@ -1,0 +1,7 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plano de migração da `AulaComprasSuprimento.tsx` para o padrão Ultimate V4.1, detalhando a expansão de 5 para 10 abas, criação de textos longos e remoção das estruturas dinâmicas.",
+  "updatedAt": "2026-03-31T02:04:10.988179700Z",
+  "version": "3",
+  "requestFeedback": true
+}

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
   AlertBox,
-  QuizInterativo,
+  QuizInterativo, QuestaoResolvidaStepByStep,
   ModuleBanner,
   getRandomQuestions,
   AulaProps,
@@ -194,7 +194,29 @@ export default function AulaGovernancaCorporativa({
 
           <section id="quiz-modulo-1" className="mt-16">
             <ModuleConsolidation index={1} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Governança Corporativa: Fundamentos", duration: "18:00" }} resumoVisual={{ moduloNome: "Módulo 1", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "4 Princípios IBGC", type: "Conceito", placeholderColor: "bg-blue-500/20" }, { title: "Problema de Agência", type: "Teoria", placeholderColor: "bg-sky-500/20" }, { title: "Agentes de Governança", type: "Estrutura", placeholderColor: "bg-cyan-500/20" }] }} sinteseEstrategica={{ title: "TEPR: Transparência, Equidade, Prestação de Contas, Responsabilidade", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Principal quer lucro, Agente quer salário. Governança alinha os dois."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Governança: Fundamentos", artista: "Prof. Administração" }} />
-            <QuizInterativo questoes={quizM1} titulo="QUIZ: Conceitos de Governança" numero={1} variant="blue" icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
+            {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Governança corporativa tem como principal objetivo:"
+          alternativas={[
+            { letra: "A", texto: "Maximizar lucros a qualquer custo", correta: false },
+                { letra: "B", texto: "Alinhar interesses entre gestores e stakeholders", correta: true },
+                { letra: "C", texto: "Reduzir o número de funcionários", correta: false },
+                { letra: "D", texto: "Eliminar todos os riscos", correta: false },
+                { letra: "E", texto: "Centralizar decisões na diretoria", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "A governança corporativa visa alinhar os interesses dos gestores (agentes) com os dos acionistas e demais stakeholders (principais), mitigando o problema de agência." },
+            { titulo: "Passo 2", conteudo: "Não se trata de maximizar lucros a qualquer custo, mas de fazê-lo de forma ética e transparente." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={quizM1} titulo="QUIZ: Conceitos de Governança" numero={1} variant="blue" icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
           </section>
         </div>
       </TabsContent>
@@ -214,7 +236,29 @@ export default function AulaGovernancaCorporativa({
           </section>
           <section id="quiz-modulo-2" className="mt-16">
             <ModuleConsolidation index={2} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Compliance e Ética Empresarial", duration: "16:00" }} resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "6 Pilares de Compliance", type: "Estrutura", placeholderColor: "bg-emerald-500/20" }, { title: "Lava Jato - Petrobras", type: "Caso Real", placeholderColor: "bg-emerald-500/20" }, { title: "Conflitos de Interesse", type: "Risco", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "CÓDIGO-POLÍTICAS-TREINAMENTO-DENÚNCIA-INVESTIGAÇÃO-DISCIPLINA", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Compliance é cultura, não apenas regra."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Compliance e Ética", artista: "Prof. Administração" }} />
-            <QuizInterativo questoes={quizM2} titulo="QUIZ: Compliance e Ética" numero={2} variant="blue" icone="✅" onComplete={(score) => handleModuleComplete("modulo-2", score)} />
+            {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Governança corporativa tem como principal objetivo:"
+          alternativas={[
+            { letra: "A", texto: "Maximizar lucros a qualquer custo", correta: false },
+                { letra: "B", texto: "Alinhar interesses entre gestores e stakeholders", correta: true },
+                { letra: "C", texto: "Reduzir o número de funcionários", correta: false },
+                { letra: "D", texto: "Eliminar todos os riscos", correta: false },
+                { letra: "E", texto: "Centralizar decisões na diretoria", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "A governança corporativa visa alinhar os interesses dos gestores (agentes) com os dos acionistas e demais stakeholders (principais), mitigando o problema de agência." },
+            { titulo: "Passo 2", conteudo: "Não se trata de maximizar lucros a qualquer custo, mas de fazê-lo de forma ética e transparente." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={quizM2} titulo="QUIZ: Compliance e Ética" numero={2} variant="blue" icone="✅" onComplete={(score) => handleModuleComplete("modulo-2", score)} />
           </section>
         </div>
       </TabsContent>
@@ -234,7 +278,29 @@ export default function AulaGovernancaCorporativa({
           </section>
           <section id="quiz-modulo-3" className="mt-16">
             <ModuleConsolidation index={3} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Gestão de Riscos COSO ERM", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "8 Componentes COSO", type: "Framework", placeholderColor: "bg-amber-500/20" }, { title: "Matriz de Riscos", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Risco Bruto vs Residual", type: "Conceito", placeholderColor: "bg-yellow-500/20" }] }} sinteseEstrategica={{ title: "COSO ERM: 8 Passos Integrados", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Risco bem gerenciado = Oportunidade bem aproveitada"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Gestão de Riscos COSO", artista: "Prof. Administração" }} />
-            <QuizInterativo questoes={quizM3} titulo="QUIZ: Gestão de Riscos" numero={3} variant="blue" icone="⚠️" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
+            {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Governança corporativa tem como principal objetivo:"
+          alternativas={[
+            { letra: "A", texto: "Maximizar lucros a qualquer custo", correta: false },
+                { letra: "B", texto: "Alinhar interesses entre gestores e stakeholders", correta: true },
+                { letra: "C", texto: "Reduzir o número de funcionários", correta: false },
+                { letra: "D", texto: "Eliminar todos os riscos", correta: false },
+                { letra: "E", texto: "Centralizar decisões na diretoria", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "A governança corporativa visa alinhar os interesses dos gestores (agentes) com os dos acionistas e demais stakeholders (principais), mitigando o problema de agência." },
+            { titulo: "Passo 2", conteudo: "Não se trata de maximizar lucros a qualquer custo, mas de fazê-lo de forma ética e transparente." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={quizM3} titulo="QUIZ: Gestão de Riscos" numero={3} variant="blue" icone="⚠️" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
           </section>
         </div>
       </TabsContent>
@@ -254,7 +320,29 @@ export default function AulaGovernancaCorporativa({
           </section>
           <section id="quiz-modulo-4" className="mt-16">
             <ModuleConsolidation index={4} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Controles Internos COSO", duration: "18:00" }} resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "5 Componentes COSO IC", type: "Framework", placeholderColor: "bg-rose-500/20" }, { title: "Segregação de Funções", type: "Controle", placeholderColor: "bg-pink-500/20" }, { title: "Limitações Inerentes", type: "Risco", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "COSO IC: Ambiente → Risco → Atividades → Info → Monitoramento", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Controle não é restrição, é proteção"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Controles Internos", artista: "Prof. Administração" }} />
-            <QuizInterativo questoes={quizM4} titulo="QUIZ: Controles Internos" numero={4} variant="blue" icone="🔐" onComplete={(score) => handleModuleComplete("modulo-4", score)} />
+            {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Governança corporativa tem como principal objetivo:"
+          alternativas={[
+            { letra: "A", texto: "Maximizar lucros a qualquer custo", correta: false },
+                { letra: "B", texto: "Alinhar interesses entre gestores e stakeholders", correta: true },
+                { letra: "C", texto: "Reduzir o número de funcionários", correta: false },
+                { letra: "D", texto: "Eliminar todos os riscos", correta: false },
+                { letra: "E", texto: "Centralizar decisões na diretoria", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "A governança corporativa visa alinhar os interesses dos gestores (agentes) com os dos acionistas e demais stakeholders (principais), mitigando o problema de agência." },
+            { titulo: "Passo 2", conteudo: "Não se trata de maximizar lucros a qualquer custo, mas de fazê-lo de forma ética e transparente." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={quizM4} titulo="QUIZ: Controles Internos" numero={4} variant="blue" icone="🔐" onComplete={(score) => handleModuleComplete("modulo-4", score)} />
           </section>
         </div>
       </TabsContent>
@@ -274,7 +362,29 @@ export default function AulaGovernancaCorporativa({
           </section>
           <section id="quiz-modulo-5" className="mt-16">
             <ModuleConsolidation index={5} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Lei Sarbanes-Oxley SOX", duration: "17:00" }} resumoVisual={{ moduloNome: "Módulo 5", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Seções Principais SOX", type: "Lei", placeholderColor: "bg-violet-500/20" }, { title: "Caso Enron", type: "História", placeholderColor: "bg-purple-500/20" }, { title: "Impacto Petrobras", type: "Aplicação", placeholderColor: "bg-indigo-500/20" }] }} sinteseEstrategica={{ title: "SOX 302/404/906: Certificação, Controles, Responsabilidade", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Com grande poder vem grande responsabilidade (criminal)"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Lei Sarbanes-Oxley", artista: "Prof. Administração" }} />
-            <QuizInterativo questoes={quizM5} titulo="QUIZ: Lei Sarbanes-Oxley" numero={5} variant="blue" icone="⚖️" onComplete={(score) => handleModuleComplete("modulo-5", score)} />
+            {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Governança corporativa tem como principal objetivo:"
+          alternativas={[
+            { letra: "A", texto: "Maximizar lucros a qualquer custo", correta: false },
+                { letra: "B", texto: "Alinhar interesses entre gestores e stakeholders", correta: true },
+                { letra: "C", texto: "Reduzir o número de funcionários", correta: false },
+                { letra: "D", texto: "Eliminar todos os riscos", correta: false },
+                { letra: "E", texto: "Centralizar decisões na diretoria", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "A governança corporativa visa alinhar os interesses dos gestores (agentes) com os dos acionistas e demais stakeholders (principais), mitigando o problema de agência." },
+            { titulo: "Passo 2", conteudo: "Não se trata de maximizar lucros a qualquer custo, mas de fazê-lo de forma ética e transparente." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={quizM5} titulo="QUIZ: Lei Sarbanes-Oxley" numero={5} variant="blue" icone="⚖️" onComplete={(score) => handleModuleComplete("modulo-5", score)} />
           </section>
         </div>
       </TabsContent>
@@ -294,7 +404,29 @@ export default function AulaGovernancaCorporativa({
           </section>
           <section id="quiz-modulo-6" className="mt-16">
             <ModuleConsolidation index={6} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Conselho de Administração", duration: "19:00" }} resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Composição CA", type: "Estrutura", placeholderColor: "bg-amber-500/20" }, { title: "Comitês Especializados", type: "Governance", placeholderColor: "bg-amber-600/20" }, { title: "Independência", type: "Qualidade", placeholderColor: "bg-amber-400/20" }] }} sinteseEstrategica={{ title: "CA: Estratégia, Supervisão, Proteção - Mínimo 30% Independentes", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Bom conselho desconfia, não delega cegamente"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Conselho de Administração", artista: "Prof. Administração" }} />
-            <QuizInterativo questoes={quizM6} titulo="QUIZ: Conselho de Administração" numero={6} variant="blue" icone="👥" onComplete={(score) => handleModuleComplete("modulo-6", score)} />
+            {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Governança corporativa tem como principal objetivo:"
+          alternativas={[
+            { letra: "A", texto: "Maximizar lucros a qualquer custo", correta: false },
+                { letra: "B", texto: "Alinhar interesses entre gestores e stakeholders", correta: true },
+                { letra: "C", texto: "Reduzir o número de funcionários", correta: false },
+                { letra: "D", texto: "Eliminar todos os riscos", correta: false },
+                { letra: "E", texto: "Centralizar decisões na diretoria", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "A governança corporativa visa alinhar os interesses dos gestores (agentes) com os dos acionistas e demais stakeholders (principais), mitigando o problema de agência." },
+            { titulo: "Passo 2", conteudo: "Não se trata de maximizar lucros a qualquer custo, mas de fazê-lo de forma ética e transparente." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={quizM6} titulo="QUIZ: Conselho de Administração" numero={6} variant="blue" icone="👥" onComplete={(score) => handleModuleComplete("modulo-6", score)} />
           </section>
         </div>
       </TabsContent>
@@ -314,7 +446,29 @@ export default function AulaGovernancaCorporativa({
           </section>
           <section id="quiz-modulo-7" className="mt-16">
             <ModuleConsolidation index={7} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Transparência e Prestação de Contas", duration: "16:00" }} resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Tipos de Relatórios", type: "Disclosure", placeholderColor: "bg-blue-500/20" }, { title: "Relatório Integrado", type: "Comunicação", placeholderColor: "bg-cyan-500/20" }, { title: "Informação Material", type: "Conceito", placeholderColor: "bg-sky-500/20" }] }} sinteseEstrategica={{ title: "Transparência: Financeiro + Ambiental + Social + Governança", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Transparência total reduz custos de capital"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Transparência e Disclosure", artista: "Prof. Administração" }} />
-            <QuizInterativo questoes={quizM7} titulo="QUIZ: Transparência" numero={7} variant="blue" icone="📊" onComplete={(score) => handleModuleComplete("modulo-7", score)} />
+            {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Governança corporativa tem como principal objetivo:"
+          alternativas={[
+            { letra: "A", texto: "Maximizar lucros a qualquer custo", correta: false },
+                { letra: "B", texto: "Alinhar interesses entre gestores e stakeholders", correta: true },
+                { letra: "C", texto: "Reduzir o número de funcionários", correta: false },
+                { letra: "D", texto: "Eliminar todos os riscos", correta: false },
+                { letra: "E", texto: "Centralizar decisões na diretoria", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "A governança corporativa visa alinhar os interesses dos gestores (agentes) com os dos acionistas e demais stakeholders (principais), mitigando o problema de agência." },
+            { titulo: "Passo 2", conteudo: "Não se trata de maximizar lucros a qualquer custo, mas de fazê-lo de forma ética e transparente." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={quizM7} titulo="QUIZ: Transparência" numero={7} variant="blue" icone="📊" onComplete={(score) => handleModuleComplete("modulo-7", score)} />
           </section>
         </div>
       </TabsContent>
@@ -334,7 +488,29 @@ export default function AulaGovernancaCorporativa({
           </section>
           <section id="quiz-modulo-8" className="mt-16">
             <ModuleConsolidation index={8} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Lei 13.303 - Estatais", duration: "17:00" }} resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Lei 13.303/2016", type: "Regulação", placeholderColor: "bg-emerald-500/20" }, { title: "Lava Jato", type: "Contexto", placeholderColor: "bg-red-500/20" }, { title: "Governança Petrobras", type: "Aplicação", placeholderColor: "bg-emerald-600/20" }] }} sinteseEstrategica={{ title: "Lei 13.303: 50% Independência, Auditoria Rigorosa, Integridade Total", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Estatal que governa bem atrai investidores"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Lei 13.303 e Estatais", artista: "Prof. Administração" }} />
-            <QuizInterativo questoes={quizM8} titulo="QUIZ: Lei 13.303" numero={8} variant="blue" icone="📜" onComplete={(score) => handleModuleComplete("modulo-8", score)} />
+            {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Governança corporativa tem como principal objetivo:"
+          alternativas={[
+            { letra: "A", texto: "Maximizar lucros a qualquer custo", correta: false },
+                { letra: "B", texto: "Alinhar interesses entre gestores e stakeholders", correta: true },
+                { letra: "C", texto: "Reduzir o número de funcionários", correta: false },
+                { letra: "D", texto: "Eliminar todos os riscos", correta: false },
+                { letra: "E", texto: "Centralizar decisões na diretoria", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "A governança corporativa visa alinhar os interesses dos gestores (agentes) com os dos acionistas e demais stakeholders (principais), mitigando o problema de agência." },
+            { titulo: "Passo 2", conteudo: "Não se trata de maximizar lucros a qualquer custo, mas de fazê-lo de forma ética e transparente." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={quizM8} titulo="QUIZ: Lei 13.303" numero={8} variant="blue" icone="📜" onComplete={(score) => handleModuleComplete("modulo-8", score)} />
           </section>
         </div>
       </TabsContent>
@@ -354,7 +530,29 @@ export default function AulaGovernancaCorporativa({
           </section>
           <section id="quiz-modulo-9" className="mt-16">
             <ModuleConsolidation index={9} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Governança Petrobras na Prática", duration: "18:00" }} resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Estrutura Governança Petrobras", type: "Organograma", placeholderColor: "bg-rose-500/20" }, { title: "Lava Jato: Lições", type: "Caso Real", placeholderColor: "bg-red-500/20" }, { title: "Programa de Integridade", type: "Compliance", placeholderColor: "bg-rose-600/20" }] }} sinteseEstrategica={{ title: "Petrobras: 50% Estado, 50% Mercado, Governança Mundial", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Governança forte protege empresa E acionistas"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Governança Petrobras", artista: "Prof. Administração" }} />
-            <QuizInterativo questoes={quizM9} titulo="QUIZ: Aplicações Petrobras" numero={9} variant="blue" icone="🏢" onComplete={(score) => handleModuleComplete("modulo-9", score)} />
+            {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Governança corporativa tem como principal objetivo:"
+          alternativas={[
+            { letra: "A", texto: "Maximizar lucros a qualquer custo", correta: false },
+                { letra: "B", texto: "Alinhar interesses entre gestores e stakeholders", correta: true },
+                { letra: "C", texto: "Reduzir o número de funcionários", correta: false },
+                { letra: "D", texto: "Eliminar todos os riscos", correta: false },
+                { letra: "E", texto: "Centralizar decisões na diretoria", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "A governança corporativa visa alinhar os interesses dos gestores (agentes) com os dos acionistas e demais stakeholders (principais), mitigando o problema de agência." },
+            { titulo: "Passo 2", conteudo: "Não se trata de maximizar lucros a qualquer custo, mas de fazê-lo de forma ética e transparente." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={quizM9} titulo="QUIZ: Aplicações Petrobras" numero={9} variant="blue" icone="🏢" onComplete={(score) => handleModuleComplete("modulo-9", score)} />
           </section>
         </div>
       </TabsContent>
@@ -374,7 +572,29 @@ export default function AulaGovernancaCorporativa({
           </section>
           <section id="quiz-modulo-10" className="mt-16">
             <ModuleConsolidation index={10} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Simulado Final Governança", duration: "22:00" }} resumoVisual={{ moduloNome: "Módulo 10 - Simulado", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "9 Módulos Integrados", type: "Consolidação", placeholderColor: "bg-violet-500/20" }, { title: "10 Questões CESGRANRIO", type: "Simulado", placeholderColor: "bg-purple-500/20" }, { title: "Score ≥70% = Aprovado", type: "Critério", placeholderColor: "bg-indigo-500/20" }] }} sinteseEstrategica={{ title: "Governança Corporativa Masterclass: 10 Módulos Concluídos!", content: (<div className="space-y-2 text-left"><p className="text-lg italic font-bold">"A melhor governança é aquela que funciona em crise"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Simulado Final Governança", artista: "Prof. Administração" }} />
-            <QuizInterativo questoes={quizM10} titulo="👑 Simulado Geral - Governança Corporativa" numero={10} variant="blue" icone="👑" onComplete={(score) => handleModuleComplete("modulo-10", score)} />
+            {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="Governança corporativa tem como principal objetivo:"
+          alternativas={[
+            { letra: "A", texto: "Maximizar lucros a qualquer custo", correta: false },
+                { letra: "B", texto: "Alinhar interesses entre gestores e stakeholders", correta: true },
+                { letra: "C", texto: "Reduzir o número de funcionários", correta: false },
+                { letra: "D", texto: "Eliminar todos os riscos", correta: false },
+                { letra: "E", texto: "Centralizar decisões na diretoria", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "A governança corporativa visa alinhar os interesses dos gestores (agentes) com os dos acionistas e demais stakeholders (principais), mitigando o problema de agência." },
+            { titulo: "Passo 2", conteudo: "Não se trata de maximizar lucros a qualquer custo, mas de fazê-lo de forma ética e transparente." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={quizM10} titulo="👑 Simulado Geral - Governança Corporativa" numero={10} variant="blue" icone="👑" onComplete={(score) => handleModuleComplete("modulo-10", score)} />
           </section>
         </div>
       </TabsContent>

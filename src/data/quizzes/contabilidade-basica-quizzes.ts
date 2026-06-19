@@ -12,13 +12,27 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
     moduleNumber: 1,
     questions: [
       {
+        id: 999,
+        question: "No Balanço Patrimonial de uma empresa comercial, a conta de Depreciação Acumulada classifica-se como conta redutora (retificadora) do ativo não circulante. Quanto à sua natureza de saldo e comportamento de lançamentos, essa conta apresenta:",
+        options: [
+          "saldo devedor, sendo aumentada por débitos contábeis.",
+          "saldo credor, sendo aumentada por créditos contábeis.",
+          "saldo nulo, sendo zerada a cada encerramento de exercício.",
+          "saldo misto, variando conforme a depreciação real do bem.",
+          "saldo devedor, funcionando como provisão no passivo."
+        ],
+        correct: 1,
+        explanation: "As contas retificadoras do Ativo (como Depreciação Acumulada) funcionam de forma inversa às contas patrimoniais do Ativo comuns, possuindo saldo de natureza credora, e aumentando seu valor por meio de créditos."
+      },
+      {
         id: 101,
         question: "A contabilidade é definida como:",
         options: [
           "Uma arte de registrar apenas transações de caixa",
           "Uma ciência social que estuda o patrimônio das empresas",
           "Um departamento financeiro das empresas",
-          "Um sistema de cobrança de impostos"
+          "Um sistema de cobrança de impostos",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "A contabilidade é uma ciência social que estuda o patrimônio das empresas, sua composição, variações e equilíbrio. É mais abrangente que apenas registros de caixa."
@@ -30,7 +44,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Minimizar impostos da empresa",
           "Fornecer informações para decisões gerenciais",
           "Aumentar o faturamento da empresa",
-          "Controlar a assiduidade dos funcionários"
+          "Controlar a assiduidade dos funcionários",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "O objetivo principal é fornecer informações úteis, oportunas e confiáveis para que administradores, proprietários e terceiros tomem decisões econômicas racionais."
@@ -42,7 +57,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Governo para fins tributários",
           "Bancos para análise de crédito",
           "Gerentes internos da empresa",
-          "Fornecedores para avaliar solvência"
+          "Fornecedores para avaliar solvência",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Gerentes internos são usuários internos. Usuários externos incluem governo, bancos, fornecedores, clientes, sindicatos e investidores externos."
@@ -54,7 +70,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Registrar operações apenas quando há movimento de caixa",
           "Registrar despesas e receitas quando ocorrem, não quando há fluxo de caixa",
           "Competência do contador em fazer os registros",
-          "Competência entre empresas rivais"
+          "Competência entre empresas rivais",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Princípio da Competência: receitas são registradas quando auferidas (direito) e despesas quando incorridas (obrigação), independentemente do fluxo de caixa."
@@ -66,7 +83,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Registrar apenas vendas de derivados",
           "Controlar gastos com perfuração, produção e transporte, fornecendo informações para análise de rentabilidade por campo",
           "Contabilizar apenas despesas administrativas",
-          "Registrar movimentação de caixa diária sem análise"
+          "Registrar movimentação de caixa diária sem análise",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Petrobras utiliza contabilidade para registrar e analisar custos de exploração (perfuração), produção e escoamento, permitindo decisões de investimento e otimização operacional."
@@ -78,7 +96,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Escrituração",
           "Análise",
           "Demonstrações",
-          "Auditoria"
+          "Auditoria",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Análise é a técnica que interpreta e examina dados contábeis para avaliar situação financeira, rentabilidade, liquidez e outras métricas da empresa."
@@ -90,7 +109,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Financeira é mais importante que gerencial",
           "Financeira segue normas obrigatórias; gerencial é interna e flexível",
           "Não há diferença entre elas",
-          "Gerencial só existe em grandes empresas"
+          "Gerencial só existe em grandes empresas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Contabilidade Financeira: obedece normas (IFRS, Lei das S.A.), gera demonstrações para terceiros. Gerencial: interna, flexível, voltada para decisões da administração."
@@ -102,7 +122,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "A empresa continuará operando indefinidamente",
           "As operações de caixa são contínuas",
           "Os sócios permanecerão os mesmos",
-          "Os produtos serão sempre iguais"
+          "Os produtos serão sempre iguais",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 0,
         explanation: "Princípio da Continuidade: pressupõe que a empresa continuará operando em futuro previsível, justificando como se avalia e classifica ativos e passivos."
@@ -114,7 +135,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Registrar transações econômicas",
           "Elaborar demonstrações financeiras",
           "Gerenciar relacionamento com clientes",
-          "Analisar resultados operacionais"
+          "Analisar resultados operacionais",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Gerenciar relacionamento com clientes é função do CRM/Marketing, não da contabilidade. A contabilidade registra, analisa e comunica informações financeiras."
@@ -133,7 +155,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Ativo = Passivo",
           "Ativo = Passivo + Patrimônio Líquido",
           "Receita = Despesa",
-          "Caixa = Resultado"
+          "Caixa = Resultado",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "ATIVO = PASSIVO + PATRIMÔNIO LÍQUIDO. Esta equação expressa o equilíbrio do balanço patrimonial e é a base de toda contabilidade."
@@ -145,7 +168,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Apenas dinheiro em caixa",
           "Bens e direitos da empresa",
           "Todas as obrigações da empresa",
-          "Apenas imóveis e terrenos"
+          "Apenas imóveis e terrenos",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Ativo compreende bens (caixa, estoques, máquinas, imóveis) e direitos (contas a receber, empréstimos a terceiros)."
@@ -157,7 +181,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Máquinas e equipamentos",
           "Contas a receber de clientes",
           "Contas a pagar a fornecedores e empréstimos",
-          "Estoque de produtos"
+          "Estoque de produtos",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Passivo representa obrigações da empresa: dívidas com fornecedores, empréstimos, contas a pagar, salários a pagar, impostos a pagar."
@@ -169,7 +194,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "R$ 600.000",
           "R$ 400.000",
           "R$ 1.600.000",
-          "Não pode ser determinado"
+          "Não pode ser determinado",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Aplicando equação: PL = Ativo - Passivo = R$ 1.000.000 - R$ 600.000 = R$ 400.000"
@@ -181,7 +207,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "A empresa tem dívidas",
           "A empresa gera lucro",
           "A empresa paga impostos",
-          "A empresa compra estoque"
+          "A empresa compra estoque",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Patrimônio Líquido = Capital Inicial + Lucros - Prejuízos - Dividendos. Aumenta com lucros acumulados."
@@ -193,7 +220,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Apenas contas correntes bancárias",
           "Plataformas de produção, dutos, refinarias e estoques de óleo",
           "Apenas edifícios administrativos",
-          "Apenas contas a receber"
+          "Apenas contas a receber",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Os principais ativos de Petrobras são infraestrutura de exploração (plataformas, dutos), refino (refinarias), armazenagem (tanques) e estoques de óleo e derivados."
@@ -205,7 +233,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Empresas nunca podem ter PL negativo",
           "A empresa tem mais ativos que passivos",
           "Passivo > Ativo (insolvência técnica)",
-          "A empresa tem muito dinheiro"
+          "A empresa tem muito dinheiro",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "PL negativo (Passivo > Ativo) indica que credores têm direitos superiores aos ativos, situação de insolvência técnica ou negócio com prejuízos acumulados."
@@ -217,7 +246,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Compra de máquina a vista",
           "Compra de máquina a prazo (aumento de passivo)",
           "Venda de máquina",
-          "Recebimento de cliente"
+          "Recebimento de cliente",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Compra a prazo: Ativo aumenta (máquina), Passivo aumenta (dívida). Ativo total = R$ 100k, Passivo = R$ 60k (antes), Passivo = R$ 90k (depois). Equação continua equilibrada."
@@ -229,7 +259,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Ativo = R$ 0, Passivo = R$ 50.000, PL = R$ 0",
           "Ativo = R$ 50.000, Passivo = R$ 0, PL = R$ 50.000",
           "Ativo = R$ 50.000, Passivo = R$ 50.000, PL = R$ 0",
-          "Ativo = R$ 100.000, Passivo = R$ 50.000, PL = R$ 50.000"
+          "Ativo = R$ 100.000, Passivo = R$ 50.000, PL = R$ 50.000",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Capital investido é Patrimônio Líquido. Caixa (ativo) R$ 50k. Nenhuma dívida (passivo zero). PL = R$ 50k. Ativo = Passivo + PL → 50k = 0 + 50k ✓"
@@ -248,7 +279,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Um gráfico de receitas e despesas",
           "Uma estrutura hierárquica de contas para registrar operações contábeis",
           "Um documento de cobrança de clientes",
-          "Uma lista de fornecedores"
+          "Uma lista de fornecedores",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Plano de Contas é um documento que lista e codifica todas as contas que a empresa utilizará para registrar suas operações, organizado hierarquicamente."
@@ -260,7 +292,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "O nível de detalhamento máximo",
           "O primeiro nível hierárquico (Ativo, Passivo, PL, Receitas, Despesas)",
           "Um tipo específico de fornecedor",
-          "A codificação do produto"
+          "A codificação do produto",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Classe é o 1º nível hierárquico: 1-Ativo, 2-Passivo, 3-Patrimônio Líquido, 4-Receitas, 5-Despesas. Define a grande categoria."
@@ -272,7 +305,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Uma despesa de administração",
           "Uma conta do Passivo",
           "Caixa em Reais (Ativo Circulante > Disponibilidades > Caixa)",
-          "Uma receita de vendas"
+          "Uma receita de vendas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Começa com '1' = Ativo. '1.1' = Ativo Circulante. '1.1.1' = Disponibilidades. '.01' = Caixa em Reais especificamente."
@@ -284,7 +318,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Contas de Plataformas de Produção",
           "Contas de Estoques de Óleo Bruto",
           "Contas de Contas a Receber de Clientes",
-          "Contas de Receita de Vendas de Ações na Bolsa"
+          "Contas de Receita de Vendas de Ações na Bolsa",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 3,
         explanation: "Venda de ações não é operação que aparece em contas de receita operacional. Petrobras teria conta em PL para aumento de capital, não em receita."
@@ -296,7 +331,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Determina quanto lucro a empresa terá",
           "Facilita localização de contas, padroniza registros e evita duplicações",
           "Determina quanto de imposto a empresa pagará",
-          "Define o preço de venda dos produtos"
+          "Define o preço de venda dos produtos",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Plano de Contas padroniza registro de operações, evita duplicações e facilita localização de contas para lançamentos e consultas."
@@ -308,7 +344,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Apenas óleo bruto",
           "Estoques de Matérias-Primas, Produtos em Processo, Produtos Acabados (derivados), Combustíveis",
           "Apenas produtos acabados",
-          "Nenhuma informação de estoque"
+          "Nenhuma informação de estoque",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Estoque em Petrobras é diverso: óleo bruto (exploração), produtos em refino (processo), derivados prontos (gasolina, diesel, nafta), combustíveis para operação."
@@ -320,7 +357,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Ativo (porque é dinheiro)",
           "Passivo (porque é obrigação)",
           "Despesas (porque reduz resultado)",
-          "Receita (porque traz informação)"
+          "Receita (porque traz informação)",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Multas e penalidades são despesas que reduzem o lucro. Devem estar em classe 5 (Despesas Operacionais ou Extraordinárias)."
@@ -332,7 +370,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Apenas o cumprimento de leis",
           "Lançamentos contábeis, análises, auditoria e geração de relatórios",
           "Apenas aumentar vendas",
-          "Reduzir despesas"
+          "Reduzir despesas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Plano bem estruturado melhora: padronização de lançamentos, rapidez na busca de informações, qualidade de análises, facilita auditoria, melhora relatórios."
@@ -344,7 +383,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Caixa em Reais",
           "Contas a Receber",
           "Plataformas de Produção, Dutos, Refinarias",
-          "Fornecedores a Pagar"
+          "Fornecedores a Pagar",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Ativo Imobilizado inclui bens de longo prazo: infraestrutura de exploração (plataformas, dutos), refino (refinarias), armazenagem (tanques)."
@@ -363,7 +403,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Registrar duas operações por dia",
           "Cada operação gera um débito e um crédito de igual valor",
           "Toda conta deve ter saldo devedor",
-          "Operações devem ser registradas uma única vez"
+          "Operações devem ser registradas uma única vez",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Partidas Dobradas: cada operação afeta no mínimo 2 contas, mantendo a equação contábil equilibrada (débitos = créditos)."
@@ -375,7 +416,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Débito diminui, crédito aumenta",
           "Débito aumenta, crédito diminui",
           "Ambos aumentam o saldo",
-          "Ambos diminuem o saldo"
+          "Ambos diminuem o saldo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Contas de ATIVO: Débito = AUMENTA, Crédito = DIMINUI. Operação inversa das contas de Passivo."
@@ -387,7 +429,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Débito Caixa / Crédito Máquinas e Equipamentos",
           "Débito Máquinas e Equipamentos / Crédito Caixa",
           "Débito Caixa / Crédito Fornecedores",
-          "Débito Fornecedores / Crédito Máquinas"
+          "Débito Fornecedores / Crédito Máquinas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Aumenta máquinas (débito em ativo) e diminui caixa (crédito em ativo). Total ativo permanece R$ 50k a menos em caixa, mas +R$ 50k em máquinas."
@@ -399,7 +442,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Débito Caixa / Crédito Receita de Vendas",
           "Débito Receita de Vendas / Crédito Caixa",
           "Débito Contas a Receber / Crédito Receita de Vendas",
-          "Débito Caixa / Crédito Contas a Receber"
+          "Débito Caixa / Crédito Contas a Receber",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "A prazo gera direito (conta a receber, débito em ativo) e receita (crédito em receita que aumenta resultado). Caixa ainda não entrada."
@@ -411,7 +455,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Débito Fornecedores / Crédito Caixa",
           "Débito Caixa / Crédito Fornecedores",
           "Débito Despesa / Crédito Caixa",
-          "Débito Caixa / Crédito Receita"
+          "Débito Caixa / Crédito Receita",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 0,
         explanation: "Pagamento diminui dívida com fornecedor (débito em passivo) e diminui caixa (crédito em ativo). Ambas são reduções."
@@ -423,7 +468,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Ato de escrever textos",
           "Processo de registrar lançamentos contábeis em livros ou sistemas",
           "Assinatura de documentos",
-          "Arquivo de documentos fiscais"
+          "Arquivo de documentos fiscais",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Escrituração é o processo técnico de registrar operações contábeis seguindo o método das partidas dobradas em livros diários e razão."
@@ -435,7 +481,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Débito Caixa / Crédito Fornecedores",
           "Débito Despesa de Combustível / Crédito Caixa",
           "Débito Estoque de Combustível / Crédito Caixa",
-          "Débito Receita / Crédito Caixa"
+          "Débito Receita / Crédito Caixa",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Se combustível será usado (consumido), é despesa operacional (débito). Se armazenado para uso, seria estoque. Como é combustível de operação, débito despesa."
@@ -447,7 +494,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "R$ 25.000 (metade)",
           "R$ 50.000 (igual)",
           "R$ 100.000 (dobro)",
-          "Não precisa existir crédito"
+          "Não precisa existir crédito",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Método das Partidas Dobradas exige que soma de débitos = soma de créditos em cada lançamento. Fundamental para equilíbrio contábil."
@@ -459,7 +507,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Débito Caixa / Crédito Receita de Vendas",
           "Débito Caixa / Crédito Adiantamento de Clientes (Passivo)",
           "Débito Receita / Crédito Caixa",
-          "Débito Despesa / Crédito Caixa"
+          "Débito Despesa / Crédito Caixa",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Adiantamento é obrigação (passivo) até que produtos sejam entregues. Débito Caixa (ativo aumenta), Crédito Adiantamento (passivo aumenta)."
@@ -478,7 +527,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Calcular lucro ou prejuízo da empresa",
           "Verificar se débitos = créditos e identificar erros de lançamento",
           "Pagar impostos ao governo",
-          "Determinar preço de vendas"
+          "Determinar preço de vendas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Balancete é ferramenta de controle para verificar integridade dos registros contábeis antes de elaborar demonstrações financeiras."
@@ -490,7 +540,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Todas contas têm saldo positivo",
           "Total de débitos = Total de créditos",
           "Ativo = Passivo",
-          "Não existem contas com saldo zero"
+          "Não existem contas com saldo zero",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Balancete equilibrado significa soma de saldos devedores = soma de saldos credores, indicando que partidas dobradas foram respeitadas."
@@ -502,7 +553,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Balancete está correto",
           "Existe erro de R$ 50.000 que precisa ser localizado e corrigido",
           "A empresa tem lucro de R$ 50.000",
-          "Caixa tem saldo de R$ 50.000"
+          "Caixa tem saldo de R$ 50.000",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Diferença entre débitos e créditos indica erro de lançamento. Deve-se investigar qual conta ou período foi lançado incorretamente."
@@ -514,7 +566,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Apenas ao final do ano",
           "Mensalmente, durante e após período contábil",
           "Diariamente",
-          "Nunca é necessário"
+          "Nunca é necessário",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Balancetes são preparados periodicamente (geralmente mensais) para controle, antes de encerramento de período para elaboração de demonstrações."
@@ -526,7 +579,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Exatamente 100",
           "Menos de 100 (apenas contas com saldo)",
           "Mais de 100",
-          "Não é possível determinar"
+          "Não é possível determinar",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Balancete inclui apenas contas com saldo (movimentadas ou com saldo inicial). Contas zeradas no período não aparecem no balancete."
@@ -538,7 +592,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Saldo de cada conta",
           "Total de débitos e créditos",
           "Lucro ou prejuízo do período",
-          "Erros de lançamento duplo"
+          "Erros de lançamento duplo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Balancete lista saldos de contas, não calcula resultado. Resultado (lucro/prejuízo) é calculado na DRE, elaborada após balancete."
@@ -550,7 +605,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Apenas cumprir requisito legal",
           "Monitorar performance operacional, identificar variações anormais em custos antes do fechamento",
           "Determinar dividendos para acionistas",
-          "Calcular bônus de gerentes"
+          "Calcular bônus de gerentes",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Balancetes de Petrobras permitem acompanhamento mensal por unidade de negócio, detectando variações anormais de custos operacionais."
@@ -562,7 +618,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Ajustar números até equilibrar",
           "Ignorar a diferença",
           "Investigar lançamentos para localizar erro",
-          "Publicar balancete mesmo assim"
+          "Publicar balancete mesmo assim",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Deve-se investigar qual lançamento foi feito incorretamente. Comum: invertão de débito/crédito, erro de digitação, duplicação de lançamento."
@@ -574,7 +631,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "A empresa tem R$ 100.000 em caixa",
           "A empresa está com saque a descoberto de R$ 100.000",
           "Caixa foi lançado inversamente (erro provável)",
-          "A empresa deve R$ 100.000"
+          "A empresa deve R$ 100.000",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Caixa (ativo) sempre deve ter saldo devedor. Se tem crédito, indica erro: ou saque a descoberto registrado incorretamente ou lançamento invertido."
@@ -593,7 +651,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Receitas e despesas do período",
           "Posição financeira em determinada data",
           "Movimentação de caixa",
-          "Análise de competidores"
+          "Análise de competidores",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Balanço mostra Ativo (recursos), Passivo (obrigações) e Patrimônio Líquido (capital) em momento específico."
@@ -605,7 +664,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Posição patrimonial",
           "Resultado econômico (receitas - despesas) do período",
           "Movimentação de caixa",
-          "Histórico de dividendos pagos"
+          "Histórico de dividendos pagos",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "DRE demonstra resultado: Receitas - Custos = Lucro Bruto, Lucro Bruto - Despesas = Lucro Operacional, Lucro Operacional +/- Extraordinário = Lucro Líquido."
@@ -617,7 +677,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Ambos são idênticos",
           "Fluxo registra caixa real, DRE registra por competência (vendas a prazo, por exemplo)",
           "DRE é mais importante que Fluxo",
-          "Fluxo é apenas para empresas grandes"
+          "Fluxo é apenas para empresas grandes",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "DRE segue Princípio da Competência (venda a prazo = receita). Fluxo de Caixa registra quando dinheiro entra/sai efetivamente."
@@ -629,7 +690,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "R$ 100.000",
           "R$ 40.000",
           "R$ 20.000",
-          "R$ 80.000"
+          "R$ 80.000",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Lucro Líquido = Receita - Custos - Despesas = 100k - 60k - 20k = R$ 20.000"
@@ -641,7 +703,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Apenas capital inicial",
           "Movimento de patrimônio (capital + lucros - dividendos)",
           "Apenas despesas",
-          "Apenas receitas"
+          "Apenas receitas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "DMPL mostra: Saldo Inicial + Lucro Líquido - Dividendos - Prejuízos = Saldo Final do Patrimônio Líquido."
@@ -653,7 +716,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Critério do contador",
           "IFRS (International Financial Reporting Standards) ou normas locais equivalentes",
           "Conforme o proprietário deseja",
-          "Sem qualquer padrão específico"
+          "Sem qualquer padrão específico",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Empresas abertas (como Petrobras) são obrigadas a seguir IFRS ou normas equivalentes de seu país para garantir comparabilidade."
@@ -665,7 +729,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Apenas anualmente",
           "Trimestralmente (intermediárias) e anualmente",
           "Mensalmente",
-          "Quando o governo solicita"
+          "Quando o governo solicita",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Petrobras divulga resultados trimestrais (demonstrações intermediárias) e relatório completo anual, conforme exigência da CVM."
@@ -677,7 +742,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Balanço Patrimonial",
           "DRE",
           "Fluxo de Caixa",
-          "Balancete"
+          "Balancete",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Fluxo de Caixa mostra se há caixa disponível para pagar dividendos após operações e investimentos."
@@ -689,7 +755,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "A empresa está funcionando normalmente",
           "Existe erro na contabilidade",
           "Possível: vendas a prazo não recebidas ou investimentos grandes realizados",
-          "A empresa é fraudulenta"
+          "A empresa é fraudulenta",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Possível quando: vendas a prazo geram lucro mas não entrada de caixa, ou investimentos em ativos consumem caixa mas não afetam lucro operacional."
@@ -708,7 +775,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "ROE",
           "Liquidez Corrente",
           "Endividamento",
-          "Giro do Ativo"
+          "Giro do Ativo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Liquidez Corrente = Ativo Circulante / Passivo Circulante. Acima de 1 indica capacidade de pagar débitos em até 1 ano."
@@ -720,7 +788,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Situação financeira excelente",
           "Risco de não conseguir pagar dívidas curto prazo (LC < 1)",
           "Capacidade ótima de pagamento",
-          "Empresa não tem dívidas"
+          "Empresa não tem dívidas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "LC = 0,8 significa que para cada R$ 1 de dívida curto prazo, tem apenas R$ 0,80 de ativo circulante. Situação de risco."
@@ -732,7 +801,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Capacidade de pagar todos os débitos",
           "Percentual de ativos financiados por passivo (dívida vs total)",
           "Resultado operacional",
-          "Velocidade de venda"
+          "Velocidade de venda",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Endividamento = Passivo Total / Ativo Total. Indica proporção de recursos obtidos via dívida vs recursos próprios."
@@ -744,7 +814,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "A empresa perdeu 12%",
           "Para cada R$ 100 de patrimônio, gera R$ 12 de lucro ao ano",
           "Patrimônio aumentará 12%",
-          "Dividendos serão 12%"
+          "Dividendos serão 12%",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "ROE = Lucro Líquido / Patrimônio Líquido. Mostra retorno sobre capital investido pelos sócios."
@@ -756,7 +827,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Contas do mesmo período",
           "Mesma conta em períodos diferentes (2023 vs 2024)",
           "Empresa com concorrente",
-          "Ativo com Passivo"
+          "Ativo com Passivo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Análise Horizontal: evolução temporal de contas. Análise Vertical: estrutura de balanço em percentuais do período."
@@ -768,7 +840,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Lucro é 50% da receita",
           "Para cada R$ 100 de receita, gera R$ 5 de lucro líquido",
           "Empresa está em prejuízo",
-          "Despesas representam 5% da receita"
+          "Despesas representam 5% da receita",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Margem Líquida = Lucro Líquido / Receita. Indica eficiência em converter vendas em lucro após todos custos e despesas."
@@ -780,7 +853,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Apenas vendas",
           "Giro de Ativo (eficiência em usar infraestrutura para gerar receita)",
           "Apenas número de funcionários",
-          "Apenas volume de óleo produzido"
+          "Apenas volume de óleo produzido",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Petrobras monitora Giro do Ativo: Receita / Ativo Total. Indica eficiência em usar bilhões em infraestrutura para gerar receita."
@@ -792,7 +866,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Análise Vertical",
           "Comparação com concorrente",
           "Fluxo de Caixa e DRE",
-          "Apenas Balancete"
+          "Apenas Balancete",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Fluxo de Caixa mostra saídas (investimentos, financiamentos pagos). DRE mostra lucro por competência. Comparação explica discrepância."
@@ -804,7 +879,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Juro a pagar ao final do período",
           "Capacidade de empresa pagar juros de empréstimos",
           "Quantidade de clientes",
-          "Taxa de juros do mercado"
+          "Taxa de juros do mercado",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Cobertura de Juros = Lucro Operacional / Despesa de Juros. Acima de 2,5x é considerado saudável (consegue pagar juros com folga)."
@@ -823,7 +899,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Não existe diferença",
           "Custo entra no produto, Despesa não entra no produto",
           "Custo é sempre maior que Despesa",
-          "Despesa nunca é registrada"
+          "Despesa nunca é registrada",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Custo: gasto com produção de bens (está no produto, afeta estoque). Despesa: gasto que não entra no produto (afeta resultado imediatamente)."
@@ -835,7 +912,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Salário do gerente administrativo",
           "Energia para processar óleo bruto",
           "Publicidade dos produtos",
-          "Aluguel do prédio administrativo"
+          "Aluguel do prédio administrativo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Energia é CIF (Custo Indireto de Fabricação), essencial para produção. Gerente administrativo é despesa de administração."
@@ -847,7 +925,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Empresa tem lucro máximo",
           "Receita Total = Custos Totais (lucro = zero)",
           "Empresa fecha as portas",
-          "Custos fixos = lucro"
+          "Custos fixos = lucro",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Break-Even Point: volume de vendas onde receita cobre todos custos (fixos + variáveis). Acima desse ponto = lucro."
@@ -859,7 +938,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "5.000 barris",
           "10.000 barris",
           "2.500 barris",
-          "25.000 barris"
+          "25.000 barris",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Break-Even = Custos Fixos / Margem de Contribuição = 500.000 / 50 = 10.000 barris"
@@ -871,7 +951,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Apenas matéria-prima",
           "Aluguel fábrica, energia produção, depreciação máquinas",
           "Apenas mão-de-obra",
-          "Apenas gastos administrativos"
+          "Apenas gastos administrativos",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "CIF: gastos relacionados à produção que não são identificáveis direto no produto (rateio necessário)."
@@ -883,7 +964,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Absorver apenas custos variáveis",
           "Absorver custos fixos + variáveis no custo do produto",
           "Não incluir custos no produto",
-          "Absorver apenas despesas"
+          "Absorver apenas despesas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Custeio por Absorção: todos custos (fixos + variáveis) são incluídos no custo do produto. Método obrigatório para relatórios externos."
@@ -895,7 +977,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "R$ 80",
           "R$ 50",
           "R$ 30",
-          "R$ 130"
+          "R$ 130",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "MC = Preço - Custo Variável = 80 - 50 = R$ 30 por barril"
@@ -907,7 +990,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Apenas volume de óleo",
           "Se preço de venda < custo variável (prejuízo por barril)",
           "Apenas política governamental",
-          "Apenas demanda de mercado"
+          "Apenas demanda de mercado",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Se preço de venda cai abaixo de custo variável, cada barril vendido gera prejuízo. Melhor parar produção que vender com prejuízo."
@@ -919,7 +1003,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Apenas volume de produção",
           "Custos, Volume de Produção e Lucro Resultante",
           "Apenas lucro",
-          "Apenas despesas administrativas"
+          "Apenas despesas administrativas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "CVL integra: Custos Fixos, Custos Variáveis Unitários, Preço de Venda e Volume de Produção para análise de viabilidade."
@@ -938,7 +1023,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Privada com ações minoritárias públicas",
           "Estatal de capital aberto",
           "Cooperativa de produtores",
-          "Empresa familiar"
+          "Empresa familiar",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Petrobras é empresa estatal (controlada pela União) mas de capital aberto na Bolsa. Sujeita a Lei 13.303 e regulação CVM."
@@ -950,7 +1036,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Governo exige",
           "Facilita comparação internacional e é exigido para empresas abertas",
           "Reduz impostos",
-          "É mais fácil que contabilidade brasileira"
+          "É mais fácil que contabilidade brasileira",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "IFRS (International Financial Reporting Standards) é adotado por empresas abertas para comparabilidade global e conforme exigência regulatória."
@@ -962,7 +1049,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Lei que regula explorações agrícolas",
           "Lei Federal que disciplina funcionamento de empresas estatais",
           "Lei que regulamenta apenas bancos",
-          "Lei de direito civil"
+          "Lei de direito civil",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Lei 13.303/2016 estabelece regras de governança, licitações, contratações e operação de empresas estatais como Petrobras."
@@ -974,7 +1062,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Apenas funcionários internos",
           "Big 4 ou firma de auditoria contratada, observando independência",
           "Governo federal",
-          "Não faz auditoria"
+          "Não faz auditoria",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Auditoria Externa: empresa de auditoria independente contratada para opinar sobre demonstrações financeiras. Obrigatória para empresas abertas."
@@ -986,7 +1075,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Apenas relatórios internos",
           "Demonstrações trimestrais/anuais, conference calls, relatório integrado",
           "Nenhuma divulgação",
-          "Apenas para acionistas majoritários"
+          "Apenas para acionistas majoritários",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Petrobras divulga resultados trimestrais e anuais, realiza conference calls e publica relatório integrado com dados financeiros e não-financeiros."
@@ -998,7 +1088,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Produção de óleo",
           "Divulgação de informações financeiras e governança corporativa",
           "Relacionamento com fornecedores",
-          "Segurança do trabalho"
+          "Segurança do trabalho",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "CVM é autarquia reguladora que fiscaliza divulgação de informações, conformidade com normas e governança corporativa de empresas abertas."
@@ -1010,7 +1101,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Apenas pagamento de salários",
           "Aprovações de contratações, licitações transparentes, limites de delegação",
           "Apenas produção de óleo",
-          "Não existe conformidade especial"
+          "Não existe conformidade especial",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Lei 13.303 exige: licitações públicas para contratos, comissões de avaliação, transparência, limites de autorização por cargo."
@@ -1022,7 +1114,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Sigla para empresa de suprimentos",
           "Environmental, Social, Governance - sustentabilidade e governança",
           "Apenas fatores econômicos",
-          "Energia e gás (combustível)"
+          "Energia e gás (combustível)",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "ESG: Environmental (impacto ambiental), Social (responsabilidade social), Governance (governança corporativa). Petrobras divulga essas métricas."
@@ -1034,7 +1127,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Gerir operações de produção",
           "Opinar sobre demonstrações financeiras e conformidade de gestão",
           "Vender produtos",
-          "Fazer auditoria operacional"
+          "Fazer auditoria operacional",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Conselho Fiscal é órgão que opina sobre demonstrações financeiras, conformidade e eficácia de controles internos. Independente da administração."
@@ -1053,7 +1147,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "R$ 60.000",
           "R$ 100.000",
           "R$ 70.000",
-          "R$ 130.000"
+          "R$ 130.000",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Capital inicial = PL inicial R$ 100.000. Máquina (ativo por ativo) não altera PL. Estoque a prazo (ativo/passivo) não altera PL. PL = R$ 100.000"
@@ -1065,7 +1160,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Publicar balancete mesmo assim",
           "Investigar erro de R$ 20.000 antes de prosseguir",
           "Ajustar números forçosamente",
-          "Ignorar diferença"
+          "Ignorar diferença",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Desequilíbrio indica erro de lançamento. Deve-se investigar qual conta foi lançada inversamente ou duplicada."
@@ -1077,7 +1173,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "R$ 1.000.000",
           "R$ 400.000",
           "R$ 100.000",
-          "R$ 150.000"
+          "R$ 150.000",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Lucro = Receita - Custos - Despesas Operacionais - Despesas Financeiras = 1.000k - 600k - 250k - 50k = R$ 100.000"
@@ -1089,7 +1186,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Erro contábil",
           "Vendas a prazo geram lucro mas sem entrada de caixa, ou investimentos grandes (capex) consomem caixa",
           "Fraude",
-          "Contabilidade errada"
+          "Contabilidade errada",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Diferença comum em empresas grandes: receitas de período atual mas recebimento em períodos futuros, ou investimentos em infraestrutura."
@@ -1101,7 +1199,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "ROE do fornecedor",
           "Liquidez Corrente (capacidade de cumprir prazos de pagamento)",
           "Margem Líquida",
-          "Giro do Ativo"
+          "Giro do Ativo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Liquidez Corrente indica se fornecedor consegue cumprir prazos e não terá problemas financeiros durante contrato."
@@ -1113,7 +1212,8 @@ export const CONTABILIDADE_BASICA_QUIZZES: Record<string, Quiz> = {
           "Balanço Patrimonial",
           "Fluxo de Caixa (para verificar capacidade de pagamento de juros e principal)",
           "Apenas DRE",
-          "Balancete"
+          "Balancete",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Fluxo de Caixa mostra se empresa gerará caixa suficiente para pagar juros e amortizações do novo endividamento."

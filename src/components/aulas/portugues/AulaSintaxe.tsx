@@ -862,16 +862,15 @@ export default function AulaSintaxe({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na frase 'Alugam-se plataformas offshore', o sujeito é:"
           alternativas={[
-            { label: "A", valor: "Indeterminado" },
-                { label: "B", valor: "Plataformas offshore (Sujeito Paciente)" },
-                { label: "C", valor: "Inexistente" },
-                { label: "D", valor: "Oculto" }
+            { letra: "A", texto: "Indeterminado", correta: false },
+                { letra: "B", texto: "Plataformas offshore (Sujeito Paciente)", correta: true },
+                { letra: "C", texto: "Inexistente", correta: false },
+                { letra: "D", texto: "Oculto", correta: false }
           ]}
-          correta="B"
           passos={[
-            "VTD (alugar) + SE (partícula apassivadora).",
-            "O termo 'plataformas' é o sujeito que sofre a ação.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "VTD (alugar) + SE (partícula apassivadora)." },
+            { titulo: "Passo 2", conteudo: "O termo 'plataformas' é o sujeito que sofre a ação." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -997,16 +996,15 @@ export default function AulaSintaxe({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em 'A Petrobras acredita no potencial do Brasil', o verbo acredita é:"
           alternativas={[
-            { label: "A", valor: "VTD (Transitivo Direto)" },
-                { label: "B", valor: "VTI (Transitivo Indireto)" },
-                { label: "C", valor: "De ligação" },
-                { label: "D", valor: "Intransitivo" }
+            { letra: "A", texto: "VTD (Transitivo Direto)", correta: false },
+                { letra: "B", texto: "VTI (Transitivo Indireto)", correta: true },
+                { letra: "C", texto: "De ligação", correta: false },
+                { letra: "D", texto: "Intransitivo", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Quem acredita, acredita EM algo.",
-            "A preposição 'em' (no = em+o) marca a transitividade indireta.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Quem acredita, acredita EM algo." },
+            { titulo: "Passo 2", conteudo: "A preposição 'em' (no = em+o) marca a transitividade indireta." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1121,16 +1119,15 @@ export default function AulaSintaxe({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual o tipo de predicado em 'Os operários trabalham felizes'?"
           alternativas={[
-            { label: "A", valor: "Verbal" },
-                { label: "B", valor: "Nominal" },
-                { label: "C", valor: "Verbo-Nominal" },
-                { label: "D", valor: "Inexistente" }
+            { letra: "A", texto: "Verbal", correta: false },
+                { letra: "B", texto: "Nominal", correta: false },
+                { letra: "C", texto: "Verbo-Nominal", correta: true },
+                { letra: "D", texto: "Inexistente", correta: false }
           ]}
-          correta="C"
           passos={[
-            "Tem ação (trabalham) e estado do sujeito (felizes).",
-            "Portanto, Verbo-Nominal.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Tem ação (trabalham) e estado do sujeito (felizes)." },
+            { titulo: "Passo 2", conteudo: "Portanto, Verbo-Nominal." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1243,16 +1240,15 @@ export default function AulaSintaxe({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em 'A Petrobras comprou novos equipamentos', o termo em negrito é:"
           alternativas={[
-            { label: "A", valor: "Objeto Direto" },
-                { label: "B", valor: "Objeto Indireto" },
-                { label: "C", valor: "Sujeito" },
-                { label: "D", valor: "Adjunto" }
+            { letra: "A", texto: "Objeto Direto", correta: true },
+                { letra: "B", texto: "Objeto Indireto", correta: false },
+                { letra: "C", texto: "Sujeito", correta: false },
+                { letra: "D", texto: "Adjunto", correta: false }
           ]}
-          correta="A"
           passos={[
-            "Comprou (o quê?) -> novos equipamentos.",
-            "Ligação direta sem preposição.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Comprou (o quê?) -> novos equipamentos." },
+            { titulo: "Passo 2", conteudo: "Ligação direta sem preposição." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1509,16 +1505,15 @@ export default function AulaSintaxe({
           concurso="Processo Seletivo Petrobras"
           enunciado="Assinale o Complemento Nominal:"
           alternativas={[
-            { label: "A", valor: "A construção do navio demorou." },
-                { label: "B", valor: "O navio de aço partiu." },
-                { label: "C", valor: "Vimos o navio." },
-                { label: "D", valor: "O navio é grande." }
+            { letra: "A", texto: "A construção do navio demorou.", correta: true },
+                { letra: "B", texto: "O navio de aço partiu.", correta: false },
+                { letra: "C", texto: "Vimos o navio.", correta: false },
+                { letra: "D", texto: "O navio é grande.", correta: false }
           ]}
-          correta="A"
           passos={[
-            "O navio é o alvo da construção (sentido passivo).",
-            "Completa o substantivo abstrato 'construção'.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "O navio é o alvo da construção (sentido passivo)." },
+            { titulo: "Passo 2", conteudo: "Completa o substantivo abstrato 'construção'." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1634,16 +1629,15 @@ export default function AulaSintaxe({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na frase 'O poço foi selado pela equipe', o termo sublinhado é:"
           alternativas={[
-            { label: "A", valor: "Objeto Indireto" },
-                { label: "B", valor: "Agente da Passiva" },
-                { label: "C", valor: "Adjunto Adverbial" },
-                { label: "D", valor: "Sujeito" }
+            { letra: "A", texto: "Objeto Indireto", correta: false },
+                { letra: "B", texto: "Agente da Passiva", correta: true },
+                { letra: "C", texto: "Adjunto Adverbial", correta: false },
+                { letra: "D", texto: "Sujeito", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Na voz passiva analítica, 'pela equipe' é quem executa a ação.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Na voz passiva analítica, 'pela equipe' é quem executa a ação." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1734,16 +1728,15 @@ export default function AulaSintaxe({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em 'Trabalhamos muito ontem', os termos indicam respectivamente:"
           alternativas={[
-            { label: "A", valor: "Intensidade e Tempo" },
-                { label: "B", valor: "Modo e Lugar" },
-                { label: "C", valor: "Tempo e Causa" },
-                { label: "D", valor: "Negação e Dúvida" }
+            { letra: "A", texto: "Intensidade e Tempo", correta: true },
+                { letra: "B", texto: "Modo e Lugar", correta: false },
+                { letra: "C", texto: "Tempo e Causa", correta: false },
+                { letra: "D", texto: "Negação e Dúvida", correta: false }
           ]}
-          correta="A"
           passos={[
-            "Muito (intensidade) e Ontem (tempo).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Muito (intensidade) e Ontem (tempo)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1834,16 +1827,15 @@ export default function AulaSintaxe({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em 'Trabalhamos muito ontem', os termos indicam respectivamente:"
           alternativas={[
-            { label: "A", valor: "Intensidade e Tempo" },
-                { label: "B", valor: "Modo e Lugar" },
-                { label: "C", valor: "Tempo e Causa" },
-                { label: "D", valor: "Negação e Dúvida" }
+            { letra: "A", texto: "Intensidade e Tempo", correta: true },
+                { letra: "B", texto: "Modo e Lugar", correta: false },
+                { letra: "C", texto: "Tempo e Causa", correta: false },
+                { letra: "D", texto: "Negação e Dúvida", correta: false }
           ]}
-          correta="A"
           passos={[
-            "Muito (intensidade) e Ontem (tempo).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Muito (intensidade) e Ontem (tempo)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1912,16 +1904,15 @@ export default function AulaSintaxe({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na frase 'André, traga os relatórios', o termo André é:"
           alternativas={[
-            { label: "A", valor: "Sujeito" },
-                { label: "B", valor: "Vocativo" },
-                { label: "C", valor: "Aposto" },
-                { label: "D", valor: "Objeto" }
+            { letra: "A", texto: "Sujeito", correta: false },
+                { letra: "B", texto: "Vocativo", correta: true },
+                { letra: "C", texto: "Aposto", correta: false },
+                { letra: "D", texto: "Objeto", correta: false }
           ]}
-          correta="B"
           passos={[
-            "É um chamamento independente da estrutura oracional.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "É um chamamento independente da estrutura oracional." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1962,16 +1953,15 @@ export default function AulaSintaxe({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na frase 'Alugam-se plataformas offshore', o sujeito é:"
           alternativas={[
-            { label: "A", valor: "Indeterminado" },
-                { label: "B", valor: "Plataformas offshore (Sujeito Paciente)" },
-                { label: "C", valor: "Inexistente" },
-                { label: "D", valor: "Oculto" }
+            { letra: "A", texto: "Indeterminado", correta: false },
+                { letra: "B", texto: "Plataformas offshore (Sujeito Paciente)", correta: true },
+                { letra: "C", texto: "Inexistente", correta: false },
+                { letra: "D", texto: "Oculto", correta: false }
           ]}
-          correta="B"
           passos={[
-            "VTD (alugar) + SE (partícula apassivadora).",
-            "O termo 'plataformas' é o sujeito que sofre a ação.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "VTD (alugar) + SE (partícula apassivadora)." },
+            { titulo: "Passo 2", conteudo: "O termo 'plataformas' é o sujeito que sofre a ação." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo

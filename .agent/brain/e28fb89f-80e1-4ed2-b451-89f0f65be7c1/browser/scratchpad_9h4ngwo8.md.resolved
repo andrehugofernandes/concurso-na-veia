@@ -1,0 +1,15 @@
+# Tarefa: Testar botões Home e Menu no mobile - CONCLUÍDO
+
+- [x] Redimensionar para mobile (375x812)
+- [x] Acessar http://localhost:3000/aulas/portugues/interpretacao-texto
+- [x] Verificar botões "Home" e "Menu" (estado inicial)
+- [x] Verificar botões em estado sticky (scroll down)
+- [x] Testar clique no botão "Menu" (Mostrar Cabeçalho)
+- [x] Verificar se barra e botões descem juntos
+- [x] Verificar se botão "Home" (ícone House) é clicável
+
+**Resultados:**
+- Os botões aparecem corretamente logo abaixo da barra fixa de módulos (MÓDULO 01, MÓDULO 02).
+- Durante o scroll, ambos permanecem visíveis e acompanham a barra.
+- Ao clicar em "Menu" (hamburger), o cabeçalho do sistema surge no topo e empurra a barra de módulos (e os botões) para baixo suavemente, sem sobreposição.
+- O botão "Home" (ícone de casa) redireciona corretamente para a página da matéria (/aulas/portugues).

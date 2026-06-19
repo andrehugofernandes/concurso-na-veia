@@ -97,10 +97,33 @@ export function usePetroLingoProgress(unitIds: string[]) {
     }
   };
 
+  const resetProgress = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return { success: false };
+
+      const { error } = await supabase
+        .from('aulas_progress')
+        .delete()
+        .eq('user_id', user.id)
+        .eq('materia_id', 'ingles')
+        .in('topico_id', unitIds);
+
+      if (error) throw error;
+
+      await loadProgress();
+      return { success: true };
+    } catch (err) {
+      console.error('Error resetting PetroLingo progress:', err);
+      return { success: false };
+    }
+  };
+
   return {
     progress,
     loading,
     completeUnit,
+    resetProgress,
     refresh: loadProgress
   };
 }

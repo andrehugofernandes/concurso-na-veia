@@ -78,7 +78,7 @@ export default function AulaComprasSuprimento(props: AulaProps) {
 
   const handleQuizComplete = (moduleId: string, score: number) => {
     if (score >= 70) {
-      setCompletedModules((prev) => new Set([...prev, moduleId]));
+      updateCompletedModules([...completedModules, moduleId]);
       const progress = Math.round(
         (completedModules.size / (MODULE_DEFS.length - 1)) * 100,
       );
@@ -147,12 +147,12 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Durante o processo de seleção de um novo fornecedor de válvulas industriais para refinarias da Petrobras, a equipe de suprimento optou por um modelo cujo preço de aquisição na nota fiscal era 15% superior à menor oferta do mercado. A justificativa residiu no menor consumo energético do equipamento e no maior intervalo entre manutenções preventivas, o que reduz custos operacionais totais. Essa decisão ampara-se no conceito de:"
           alternativas={[
-              { letra: "A", texto: "Lote Econômico de Compras (LEC)", correta: false },
+            { letra: "A", texto: "Lote Econômico de Compras (LEC)", correta: false },
               { letra: "B", texto: "Custo Total de Propriedade (TCO)", correta: true },
               { letra: "C", texto: "Just-in-Time (JIT)", correta: false },
               { letra: "D", texto: "Valor de Face Operacional", correta: false },
               { letra: "E", texto: "Ponto de Ressuprimento Dinâmico", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -307,12 +307,12 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O ciclo do pedido é a sequência formal de etapas do processo de compras. Qual é a ordem correta das etapas iniciais?"
           alternativas={[
-              { letra: "A", texto: "Emissão do PO → Cotação → Requisição → Aprovação.", correta: false },
+            { letra: "A", texto: "Emissão do PO → Cotação → Requisição → Aprovação.", correta: false },
               { letra: "B", texto: "Requisição interna → Aprovação → Definição de especificação → Pesquisa de fornecedores → Solicitação de cotação (RFQ).", correta: true },
               { letra: "C", texto: "Pagamento → Recebimento → Pedido → Negociação.", correta: false },
               { letra: "D", texto: "Auditoria → Compliance → Pagamento → Entrega.", correta: false },
               { letra: "E", texto: "Contrato → Especificação → Pedido → Aprovação.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Essa sequência garante que o processo seja planejado e aprovado antes de qualquer comprometimento financeiro."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -463,12 +463,12 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="A homologação de fornecedores é um processo formal que antecede o primeiro pedido. Qual é seu objetivo principal?"
           alternativas={[
-              { letra: "A", texto: "Reduzir o preço de compra ao mínimo possível.", correta: false },
+            { letra: "A", texto: "Reduzir o preço de compra ao mínimo possível.", correta: false },
               { letra: "B", texto: "Verificar e certificar que o fornecedor atende aos requisitos técnicos, financeiros, legais e de qualidade antes de ser incluído na base de fornecedores.", correta: true },
               { letra: "C", texto: "Substituir fornecedores nacionais por internacionais.", correta: false },
               { letra: "D", texto: "Automatizar o processo de cotação.", correta: false },
               { letra: "E", texto: "Garantir exclusividade de fornecimento.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Somente fornecedores homologados podem receber pedidos."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -621,12 +621,12 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O conceito de BATNA (Best Alternative to a Negotiated Agreement) na negociação de compras refere-se a:"
           alternativas={[
-              { letra: "A", texto: "O melhor preço obtido na última cotação realizada.", correta: false },
+            { letra: "A", texto: "O melhor preço obtido na última cotação realizada.", correta: false },
               { letra: "B", texto: "A melhor alternativa que o negociador tem caso a negociação atual falhe — define o poder de barganha.", correta: true },
               { letra: "C", texto: "O contrato padrão utilizado como referência pelo departamento jurídico.", correta: false },
               { letra: "D", texto: "A estratégia de ancoragem inicial na negociação.", correta: false },
               { letra: "E", texto: "O limite máximo de desconto que o fornecedor pode oferecer.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -777,12 +777,12 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="A compra emergencial difere da compra programada principalmente porque:"
           alternativas={[
-              { letra: "A", texto: "A compra emergencial é sempre mais barata.", correta: false },
+            { letra: "A", texto: "A compra emergencial é sempre mais barata.", correta: false },
               { letra: "B", texto: "A compra emergencial é realizada sem planejamento prévio, em situação urgente, geralmente resultando em custos mais altos, menos fornecedores consultados e menor poder de negociação.", correta: true },
               { letra: "C", texto: "A compra programada não exige cotação.", correta: false },
               { letra: "D", texto: "A compra emergencial usa sempre pagamento à vista.", correta: false },
               { letra: "E", texto: "A compra programada é exclusiva para materiais de MRO.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Uma análise da Petrobras mostrou que compras emergenciais custam em média 20-40% a mais que compras programadas equivalentes."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Compras emergenciais (ou de urgência) ocorrem quando o planejamento falhou ou houve consumo inesperado." },
@@ -932,12 +932,12 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O SLA (Service Level Agreement) em contratos de fornecimento define:"
           alternativas={[
-              { letra: "A", texto: "O preço mínimo garantido ao fornecedor.", correta: false },
+            { letra: "A", texto: "O preço mínimo garantido ao fornecedor.", correta: false },
               { letra: "B", texto: "As métricas de desempenho contratadas — indicadores mensuráveis de qualidade, prazo e disponibilidade que o fornecedor se compromete a cumprir.", correta: true },
               { letra: "C", texto: "O prazo de pagamento acordado entre as partes.", correta: false },
               { letra: "D", texto: "A cláusula de rescisão unilateral do contrato.", correta: false },
               { letra: "E", texto: "O índice de reajuste de preços aplicável.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A Petrobras inclui SLAs rigorosos em contratos de manutenção e tecnologia."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "O SLA é o coração do contrato de serviço: define métricas como disponibilidade do sistema (99,9%), tempo de resposta a incidentes (4h), índice de qualidade mínimo (99,5% de conformidade), prazo de entrega (95% no prazo)." },
@@ -1087,12 +1087,12 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O leilão reverso (reverse auction) eletrônico é uma modalidade em que:"
           alternativas={[
-              { letra: "A", texto: "O comprador aumenta o preço progressivamente para atrair fornecedores.", correta: false },
+            { letra: "A", texto: "O comprador aumenta o preço progressivamente para atrair fornecedores.", correta: false },
               { letra: "B", texto: "Fornecedores concorrem em tempo real reduzindo seus preços para vencer a disputa — o menor preço ganha.", correta: true },
               { letra: "C", texto: "A empresa leiloa seus ativos para compradores externos.", correta: false },
               { letra: "D", texto: "O preço é fixado pelo sistema eletronicamente sem negociação.", correta: false },
               { letra: "E", texto: "Apenas um fornecedor pode participar por rodada.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1242,12 +1242,12 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O conflito de interesse em compras ocorre quando:"
           alternativas={[
-              { letra: "A", texto: "O comprador discorda do preço proposto pelo fornecedor.", correta: false },
+            { letra: "A", texto: "O comprador discorda do preço proposto pelo fornecedor.", correta: false },
               { letra: "B", texto: "O responsável pela decisão de compra tem interesse pessoal (financeiro, familiar ou afetivo) no resultado que pode comprometer sua imparcialidade.", correta: true },
               { letra: "C", texto: "Dois fornecedores apresentam preços iguais.", correta: false },
               { letra: "D", texto: "O departamento jurídico questiona cláusulas contratuais.", correta: false },
               { letra: "E", texto: "O comprador negocia com fornecedor estrangeiro.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A falta de disclosure é uma das principais causas de corrupção corporativa em compras."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Conflito de interesse em compras ocorre quando o decisor tem relação pessoal que pode influenciar sua objetividade: familiar que é sócio do fornecedor, participação societária em empresa fornecedora, amizade que leva a favorecer um concorrente." },
@@ -1397,12 +1397,12 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O RLCP (Regulamento de Licitações e Contratações da Petrobras) determina que:"
           alternativas={[
-              { letra: "A", texto: "Todas as compras devem ser realizadas exclusivamente por licitação pública aberta.", correta: false },
+            { letra: "A", texto: "Todas as compras devem ser realizadas exclusivamente por licitação pública aberta.", correta: false },
               { letra: "B", texto: "Contratações acima de determinados pisos de valor devem seguir processo competitivo formal, garantindo transparência, isonomia e economicidade.", correta: true },
               { letra: "C", texto: "A Petrobras pode contratar diretamente qualquer fornecedor sem processo competitivo.", correta: false },
               { letra: "D", texto: "Somente fornecedores brasileiros podem participar de licitações.", correta: false },
               { letra: "E", texto: "O processo de compras deve ser auditado mensalmente pelo TCU.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Garante que o processo seja competitivo, transparente e alinhado à governança corporativa."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1567,12 +1567,12 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Um Técnico de Suprimento da Petrobras recebe uma requisição emergencial para aquisição de uma válvula crítica de segurança para uma plataforma offshore. O processo padrão levaria 30 dias, mas a parada de produção está gerando prejuízo de R$ 2 milhões/dia. O técnico deve:"
           alternativas={[
-              { letra: "A", texto: "Aguardar o processo padrão de 30 dias para garantir compliance total.", correta: false },
+            { letra: "A", texto: "Aguardar o processo padrão de 30 dias para garantir compliance total.", correta: false },
               { letra: "B", texto: "Acionar o procedimento de compra emergencial previsto no RLCP, que permite processo simplificado com prazo reduzido, documentando e justificando formalmente a urgência.", correta: true },
               { letra: "C", texto: "Comprar diretamente do fornecedor sem qualquer documentação para agilizar.", correta: false },
               { letra: "D", texto: "Transferir a responsabilidade para o fornecedor resolver.", correta: false },
               { letra: "E", texto: "Cancelar a requisição e utilizar equipamento substituto sem análise técnica.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O compliance não é eliminado na emergência; é adaptado."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1720,12 +1720,12 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Um Técnico de Suprimento da Petrobras recebe uma requisição emergencial para aquisição de uma válvula crítica de segurança para uma plataforma offshore. O processo padrão levaria 30 dias, mas a parada de produção está gerando prejuízo de R$ 2 milhões/dia. O técnico deve:"
           alternativas={[
-              { letra: "A", texto: "Aguardar o processo padrão de 30 dias para garantir compliance total.", correta: false },
+            { letra: "A", texto: "Aguardar o processo padrão de 30 dias para garantir compliance total.", correta: false },
               { letra: "B", texto: "Acionar o procedimento de compra emergencial previsto no RLCP, que permite processo simplificado com prazo reduzido, documentando e justificando formalmente a urgência.", correta: true },
               { letra: "C", texto: "Comprar diretamente do fornecedor sem qualquer documentação para agilizar.", correta: false },
               { letra: "D", texto: "Transferir a responsabilidade para o fornecedor resolver.", correta: false },
               { letra: "E", texto: "Cancelar a requisição e utilizar equipamento substituto sem análise técnica.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O compliance não é eliminado na emergência; é adaptado."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },

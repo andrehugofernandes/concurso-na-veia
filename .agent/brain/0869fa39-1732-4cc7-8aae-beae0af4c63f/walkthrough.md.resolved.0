@@ -1,0 +1,34 @@
+# Correção de Autenticação dos Usuários de Teste
+
+## Problema
+Os 17 usuários de teste criados via SQL direto (`INSERT INTO auth.users`) não conseguiam logar — retornavam "Usuário ou senha incorretos".
+
+## Causa Raiz (3 problemas)
+
+1. **`search_path` na RPC** — A função `get_email_by_username` era `SECURITY DEFINER` sem `SET search_path = public`, causando `Database error querying schema`.
+2. **Registros corrompidos** — Usuários criados via SQL direto ficaram com `auth.identities` e hashes de senha incompatíveis com o GoTrue do Supabase.
+3. **Planos incorretos** — Todos estavam como `free` em vez de `elite-medio` / `elite-superior`.
+
+## Correções Aplicadas
+
+| Ação | Método |
+|------|--------|
+| Fix `search_path` na RPC | MCP Supabase SQL |
+| Deletar usuários corrompidos | MCP Supabase SQL |
+| Recriar 17 usuários | Script Node.js via `supabase.auth.admin.createUser` |
+| Atualizar documentação | Edição de [usuarios-teste.md](file:///c:/Workspace/petrobras-quest/source/usuarios-teste.md) |
+
+## Verificação
+
+Login testado via Playwright com `andrehugo-analista-sistemas-sup`:
+
+![Login bem-sucedido — credenciais preenchidas](C:/Users/andre.hugo/.gemini/antigravity/brain/0869fa39-1732-4cc7-8aae-beae0af4c63f/.system_generated/click_feedback/click_feedback_1773957328683.png)
+
+> ✅ Redirecionou para `/dashboard` com saudação "Olá, Andre! 👋"
+
+![Gravação do teste de login](C:/Users/andre.hugo/.gemini/antigravity/brain/0869fa39-1732-4cc7-8aae-beae0af4c63f/login_final_test_1773957303131.webp)
+
+## Lição Aprendida
+
+> [!CAUTION]
+> **Nunca criar usuários via SQL direto** no Supabase. O GoTrue exige formato específico em `auth.identities` e hashes de senha. Sempre usar `supabase.auth.admin.createUser()`.

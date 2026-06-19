@@ -1,0 +1,33 @@
+# Walkthrough: Contingência de Login e Reset de Senha
+
+Concluímos a implementação de um mecanismo de segurança robusto que protege o acesso ao PMAVV contra falhas na API externa de autenticação municipal.
+
+## O que foi feito
+
+### 1. Implementação de Segurança (Bcrypt)
+Removemos os `TODOs` do sistema e integramos o **Bcrypt** para criptografia de senhas locais.
+- **Arquivo**: [usuarios-actions.ts](file:///c:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/usuarios-actions.ts)
+- **Ganho**: As senhas não são mais armazenadas em texto simples ou MD5 vulnerável.
+
+### 2. Mecanismo de Fallback (Contingência)
+Atualizamos o fluxo de login para ser resiliente a falhas de rede.
+- **Arquivo**: [login-action.ts](file:///c:/GSW/PMAVV/PMAVV/src/app/(auth)/actions/login-action.ts)
+- **Comportamento**: O sistema tenta o AD primeiro. Se houver **Timeout** ou erro de conexão, ele valida automaticamente contra a senha local no banco.
+
+### 3. Recuperação de Acesso
+Executamos o reset da sua senha para garantir que você possa usar o fallback imediatamente.
+- **Login**: `andre.hugo`
+- **Senha**: `Mvvas@18261405`
+
+## Validação Realizada
+
+Testamos o login no navegador durante o período de timeout da API municipal:
+1. Inserção das credenciais localmente.
+2. Identificação automática da falha do servidor municipal.
+3. Validação local bem-sucedida.
+4. Redirecionamento para a tela de **2FA**.
+
+![Login Redirect Success](file:///C:/Users/andre.hugo/.gemini/antigravity/brain/048bee17-69a4-4794-9846-97bea042c0df/.system_generated/click_feedback/click_feedback_1776186914891.png)
+
+> [!TIP]
+> Você pode logar agora mesmo usando sua senha nova. O sistema cuidará de tentar o AD e usar o banco local se necessário.

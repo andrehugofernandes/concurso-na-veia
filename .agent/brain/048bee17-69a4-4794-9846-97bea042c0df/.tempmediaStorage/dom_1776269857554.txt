@@ -1,0 +1,211 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+P
+PMAVV
+Jaboatão — Monitoramento
+Resumo/Dash
+Monitoramento
+Denúncias
+Vítimas
+Agressores
+Denunciantes
+Visitas
+Estrutura Local
+Regionais
+Bairros
+Extração
+Consultas
+Relatórios
+Documentos (CI)
+Encaminhamentos
+Ofícios
+Administração
+Usuários
+Configurações
+Denuncias
+AL
+[0] (567,539)<main class='flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8' scrollable='true' />
+	Denúncias
+	Gerencie todas as denúncias do sistema
+	Buscar
+	1435
+	Total de Denúncias
+	0
+	Este Ano
+	0
+	Este Mês
+	95
+	Órgãos Ativos
+	Todas
+	1435
+	Este Ano
+	Urgentes
+	Itens:
+	10
+	20
+	50
+	TODOS
+	Modo de Seleção
+	(
+	1435
+	)
+	Nova Denúncia
+	Denúncia
+	Vítimas
+	Agressores
+	Denunciante
+	Protocolo
+	Órgão de Origem
+	Formas de Violência
+	Data Denúncia
+	Encaminhamento
+	Ações
+	5561809/23
+	DISQUE 100
+	PSICOLÓGICA
+	OUTROS
+	—
+	—
+	14351911/25
+	MINISTÉRIO PÚBLICO
+	NEGLIGÊNCIA
+	18/11/2025
+	—
+	14341911/25
+	DISQUE 100
+	PSICOLÓGICA
+	FINANCEIRA
+	FÍSICA
+	18/11/2025
+	—
+	14331911/25
+	DISQUE 100
+	AUTONEGLIGÊNCIA
+	18/11/2025
+	—
+	14321911/25
+	DISQUE 100
+	FINANCEIRA
+	18/11/2025
+	—
+	14311911/25
+	DISQUE 100
+	NEGLIGÊNCIA
+	18/11/2025
+	—
+	14301911/25
+	DISQUE 100
+	NEGLIGÊNCIA
+	18/11/2025
+	—
+	14291911/25
+	DISQUE 100
+	PSICOLÓGICA
+	NEGLIGÊNCIA
+	18/11/2025
+	—
+	14281911/25
+	DISQUE 100
+	FINANCEIRA
+	18/11/2025
+	—
+	14271911/25
+	DISQUE 100
+	NEGLIGÊNCIA
+	18/11/2025
+	—
+Nova Denúncia
+Nova Denúncia
+Inicie o registro da denúncia e gere o protocolo.
+[1] (956,80)<button aria-label='Fechar modal' class='flex items-center justify-center w-10 h-10 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors' />
+[2] (696,159)<button class='w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-all border-primary bg-primary text-primary-foreground scale-110' />
+	[3] (696,159)<span >1 />
+Denúncia
+2
+Vítima
+3
+Agressor
+4
+Denunciante
+[4] (823,583)<div class='flex-1 overflow-y-auto px-10 py-4 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-800' scrollable='true' />
+	2
+	Detalhes da Violência
+	Formas de Violência
+	AUTONEGLIGÊNCIA
+	INSTITUCIONAL
+	NEGLIGÊNCIA
+	[5] (729,240)<div  />
+		[6] (699,240)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='ABANDONO' role='checkbox' />
+		[7] (735,240)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>ABANDONO />
+	[8] (819,240)<div  />
+		[9] (789,240)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='FÍSICA' role='checkbox' />
+		[10] (825,240)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>FÍSICA />
+	[11] (909,240)<div  />
+		[12] (879,240)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='OUTROS' role='checkbox' />
+		[13] (915,240)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>OUTROS />
+	[14] (729,303)<div  />
+		[15] (699,303)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='MEDICAMENTOSA' role='checkbox' />
+		[16] (735,303)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>MEDICAMENTOSA />
+	[17] (819,303)<div  />
+		[18] (789,303)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='PSICOLÓGICA' role='checkbox' />
+		[19] (825,303)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>PSICOLÓGICA />
+	[20] (909,303)<div  />
+		[21] (879,303)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='FINANCEIRA' role='checkbox' />
+		[22] (915,303)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>FINANCEIRA />
+	[23] (729,366)<div  />
+		[24] (699,366)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='SEXUAL' role='checkbox' />
+		[25] (735,366)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>SEXUAL />
+	[26] (819,366)<div  />
+		[27] (789,366)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='MORAL' role='checkbox' />
+		[28] (825,366)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>MORAL />
+	NEGLIGÊNCIA
+	FÍSICA
+	PSICOLÓGICA
+	[29] (819,463)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-sm font-semibold text-gray-700 dark:text-slate-300 mb-2'>Pertinente ao Trabalho AVV? />
+	[30] (819,506)<select class='w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm focus:ring-2 focus:ring-primary transition-all' id='ptinente_trabalho_avv' />
+	3
+	Encaminhamento (Pré-definido)
+	[31] (729,634)<div  />
+		[32] (699,634)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='ALTA COMPLEXIDADE' role='checkbox' />
+		[33] (735,634)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>ALTA COMPLEXIDADE />
+	[34] (819,634)<div  />
+		[35] (789,634)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='MEDIA COMPLEXIDADE' role='checkbox' />
+		[36] (825,634)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>MEDIA COMPLEXIDADE />
+	[37] (909,634)<div  />
+		[38] (879,634)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='CASO PONTUAL' role='checkbox' />
+		[39] (915,634)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>CASO PONTUAL />
+	[40] (729,712)<div  />
+		[41] (699,712)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='CENTRO POP' role='checkbox' />
+		[42] (735,712)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>CENTRO POP />
+	[43] (819,712)<div  />
+		[44] (789,712)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='CONSELHO TUTELAR - DIRETO' role='checkbox' />
+		[45] (825,712)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>CONSELHO TUTELAR - DIRETO />
+	[46] (909,712)<div  />
+		[47] (879,712)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='CRAS' role='checkbox' />
+		[48] (915,712)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>CRAS />
+	[49] (729,782)<div  />
+		[50] (699,782)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='MULHER' role='checkbox' />
+		[51] (735,782)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>MULHER />
+	[52] (819,782)<div  />
+		[53] (789,782)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='NASF' role='checkbox' />
+		[54] (825,782)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>NASF />
+	[55] (909,782)<div  />
+		[56] (879,782)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='PERICULOSIDADE' role='checkbox' />
+		[57] (915,782)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>PERICULOSIDADE />
+	[58] (729,853)<div  />
+		[59] (699,853)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='POLÍTICA SOBRE DROGAS' role='checkbox' />
+		[60] (735,853)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>POLÍTICA SOBRE DROGAS />
+	[61] (819,853)<div  />
+		[62] (789,853)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='SAÚDE DO IDOSO' role='checkbox' />
+		[63] (825,853)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>SAÚDE DO IDOSO />
+	[64] (909,853)<div  />
+		[65] (879,853)<button class='peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground transition-colors' id='SAÚDE MENTAL' role='checkbox' />
+		[66] (915,853)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-xs font-semibold cursor-pointer leading-tight flex-1 py-1'>SAÚDE MENTAL />
+	CASO PONTUAL
+	Configurar Fluxo do Cadastro
+	[67] (746,911)<button class='flex-1 px-4 py-2 rounded-lg border font-medium text-sm hover:bg-muted transition-colors'>Cancelar />
+	[68] (893,911)<button class='flex-1 px-4 py-2 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 disabled:opacity-50 shadow-sm transition-all'>Continuar para Vítima → />
+
+</current_dom>

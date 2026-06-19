@@ -1,0 +1,15 @@
+# Progress Tracker
+
+## Task: Verify Visual Changes to StickyModuleNav
+
+- [ ] Navigate to `http://localhost:3000/aulas/matematica/conjuntos` (1366x768)
+- [ ] Wait for page to load
+- [ ] Capture initial screenshot (Module navigation bar area)
+- [ ] Verify colored bottom border on active tab (Initial state)
+- [ ] Scroll down to activate sticky mode
+- [ ] Capture sticky state screenshot
+- [ ] Verify colored bottom border on active tab (Sticky state)
+- [ ] Report observations
+
+## Observations
+- 

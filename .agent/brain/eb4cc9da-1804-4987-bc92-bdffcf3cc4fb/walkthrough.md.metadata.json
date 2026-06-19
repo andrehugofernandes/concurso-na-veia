@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Resumo da padronização do modal de denúncias: implementação de painel lateral direito com 40px de gap, labels pixel-perfect, borda animada (dark mode), efeito de glassmorphism no overlay e botão de limpar formulário. Inclui evidências visuais de alta fidelidade.",
+  "updatedAt": "2026-04-14T18:06:50.276217300Z",
+  "version": "1"
+}

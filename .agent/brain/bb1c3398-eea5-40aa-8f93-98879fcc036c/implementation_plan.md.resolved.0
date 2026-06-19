@@ -1,0 +1,60 @@
+# Plano de Implementação - Correção de Login e Badge de Autenticação
+
+Este plano visa resolver o erro persistente de sincronização do Prisma (P2022) causado pela ausência de permissões no banco de dados V2 e implementar o rastreamento do método de autenticação (Active Directory vs Fallback Local) com exibição visual no sistema.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Limitação de Permissão no Banco de Dados**: Identificamos que o usuário de banco de dados `pmavv_dev` não possui permissões de OWNER (dono) sobre a tabela `tbl_usuario` no banco `db_pmavv_dev_v2`. Por isso, não conseguimos adicionar as colunas de TOTP (`totp_secret`, `totp_enabled`) agora.
+>
+> **Solução Temporária**: Manteremos o bypass no OTP (qualquer código será aceito) até que um administrador do banco (DBA) adicione as colunas manualmente.
+
+> [!NOTE]
+> **Rastreamento de Origem**: Adicionaremos o campo `authMethod` ao JWT para que o sistema saiba se você entrou via AD ou via Senha Local de Fallback.
+
+## Proposed Changes
+
+### 1. Infraestrutura e Database (Prisma)
+
+#### [MODIFY] [schema.prisma](file:///C:/GSW/PMAVV/PMAVV/prisma/schema.prisma)
+- Garantir que o esquema esteja limpo (sem as colunas que o banco rejeitou) para evitar o erro P2022.
+
+### 2. Fluxo de Autenticação (Auth Logic)
+
+#### [MODIFY] [login-action.ts](file:///C:/GSW/PMAVV/PMAVV/src/app/(auth)/actions/login-action.ts)
+- Detectar se a autenticação foi bem-sucedida pelo AD ou pelo Catch (Fallback).
+- Incluir `authMethod` ('AD' ou 'LOCAL') no token temporário gerado pelo `signTemp2FAToken()`.
+
+#### [MODIFY] [verify-2fa/route.ts](file:///C:/GSW/PMAVV/PMAVV/src/app/api/auth/verify-2fa/route.ts)
+- Recuperar o `authMethod` do token temporário.
+- Incluir este valor no token de acesso definitivo (`accessToken`).
+
+#### [MODIFY] [auth-ad.ts](file:///C:/GSW/PMAVV/PMAVV/src/lib/auth-ad.ts)
+- Atualizar a interface `AuthUser` e a função `getAuthUserFromRequest` para extrair o `authMethod` do JWT.
+
+#### [MODIFY] [api/auth/me/route.ts](file:///C:/GSW/PMAVV/PMAVV/src/app/api/auth/me/route.ts)
+- Retornar o `authMethod` na resposta JSON para que o Frontend possa consumi-lo.
+
+### 3. Interface Visual (UI)
+
+#### [MODIFY] [admin-header.tsx](file:///C:/GSW/PMAVV/PMAVV/src/components/admin/admin-header.tsx)
+- Capturar o `authMethod` do `fetch('/api/auth/me')`.
+- Exibir um Badge visual discreto no menu do usuário (ex: dentro do Dropdown ao lado do login) indicando a origem.
+
+## Open Questions
+
+> [!WARNING]
+> 1. Deseja que o Badge seja exibido permanentemente no topo (ao lado do nome) ou apenas quando o usuário clica no avatar para abrir o menu?
+> 2. Qual cor prefere para os badges? Sugestão: `Verde` para AD (Oficial) e `Laranja` para LOCAL (Fallback).
+
+## Verification Plan
+
+### Automated Tests
+- Execução de `npx prisma generate` e limpeza forçada de `.next` para garantir que o erro P2022 sumiu.
+- Teste de login com as credenciais fornecidas (`andre.hugo`).
+
+### Manual Verification
+1. Realizar o login via AD.
+2. Verificar se o Badge exibe "AD Auth".
+3. Simular erro de AD (mudando URL no env) para forçar fallback local.
+4. Verificar se o Badge exibe "Fallback Local".

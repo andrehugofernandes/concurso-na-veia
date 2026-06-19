@@ -1,0 +1,5 @@
+- [ ] Corrigir `vitimas-actions.ts` (Interface e Include)
+- [ ] Corrigir `vitima-table.tsx` (Accessor e Renderização)
+- [ ] Corrigir `denuncias-actions.ts` (Include da Regional no listDenuncias)
+- [ ] Adicionar coluna Regional em `denuncia-table.tsx`
+- [ ] Corrigir `agressores-actions.ts` (Interface e Include)

@@ -1,0 +1,42 @@
+# Plano de Recuperação e Finalização: Aula Ortografia
+
+Recuperar o arquivo `AulaOrtografia.tsx` de erros de sintaxe e lints, implementando os 10 módulos no padrão **Ultimate V4.1 (C.E.D.E.)**.
+
+## User Review Required
+
+> [!IMPORTANT]
+> O arquivo `AulaOrtografia.tsx` sofreu corrupção estrutural (tags abertas e duplicadas). Vou realizar uma limpeza profunda do Módulo 4 ao 10.
+
+> [!NOTE]
+> Vou padronizar o componente `ModuleConsolidation` para o formato "Dossiê Premium" (4 abas: Vídeo, Resumo, Macete, Áudio), conforme definido no `shared.tsx`.
+
+## Proposed Changes
+
+### [Component] Português - Ortografia
+
+#### [MODIFY] [AulaOrtografia.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaOrtografia.tsx)
+- **Limpeza Estrutural**: Remover blocos redundantes e corrigir o fechamento da função principal e do `AulaTemplate`.
+- **Correção de Props**:
+    - `FlipCard`: Mudar `frontTitle`/`backTitle` para `frente`/`verso`.
+    - `ModuleConsolidation`: Implementar com o objeto completo (`video`, `resumoVisual`, `maceteVisual`, `audio`).
+    - `ModuleSectionHeader`: Remover prop `items` inexistente.
+- **Conteúdo Pedagógico (Módulos 4-10)**:
+    - **Mód 4**: Grafia (G/J, S/Z) + Quiz + Consolidação.
+    - **Mód 5**: Dificuldades (Mal/Mau, Onde/Aonde) + Quiz + Consolidação.
+    - **Mód 6**: Porquês + Quiz + Consolidação.
+    - **Mód 7**: Hifenização (Regra do Ímã/R-S) + Quiz + Consolidação.
+    - **Mód 8**: Homônimos/Parônimos + Quiz + Consolidação.
+    - **Mód 9**: Ortografia Contextual (A fim de / Afim) + Quiz + Consolidação.
+    - **Mód 10**: Maratona Petrobras (Simulado Final).
+
+## Open Questions
+1. Deseja que eu mantenha os vídeos e áudios como placeholders (Rick Astley/Cepa genérica) ou apenas referências comentadas? (Vou manter placeholders funcionais para não quebrar o design).
+
+## Verification Plan
+
+### Automated Tests
+- Verificar lints na IDE após a aplicação.
+- Executar `.agent/scripts/lint_runner.py` se disponível.
+
+### Manual Verification
+- O usuário deve abrir a aula de Ortografia e navegar pelos 10 módulos, verificando se o "Dossiê de Consolidação" aparece corretamente com as abas interativas antes de cada quiz ou como resumo final.

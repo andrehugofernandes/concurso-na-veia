@@ -1,0 +1,8 @@
+# Task List: Fix Mobile Layout for Coesão e Coerência
+
+- [ ] Investigate the component structure of Module 3 in [AulaCoesaoCoerencia.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaCoesaoCoerencia.tsx).
+- [ ] Read frontend-specialist agent guidelines to ensure compliance with UI/UX rules.
+- [ ] Identify redundant containers and excessive paddings causing text to squeeze on mobile.
+- [ ] Propose layout adjustments in `implementation_plan.md`.
+- [ ] Apply CSS/Tailwind class adjustments for better responsiveness.
+- [ ] Verify the fix visually using the browser subagent if needed.

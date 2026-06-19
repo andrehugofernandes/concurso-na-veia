@@ -147,12 +147,12 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="No Balanço Patrimonial de uma empresa comercial, a conta de Depreciação Acumulada classifica-se como conta redutora (retificadora) do ativo não circulante. Quanto à sua natureza de saldo e comportamento de lançamentos, essa conta apresenta:"
           alternativas={[
-              { letra: "A", texto: "saldo devedor, sendo aumentada por débitos contábeis.", correta: false },
+            { letra: "A", texto: "saldo devedor, sendo aumentada por débitos contábeis.", correta: false },
               { letra: "B", texto: "saldo credor, sendo aumentada por créditos contábeis.", correta: true },
               { letra: "C", texto: "saldo nulo, sendo zerada a cada encerramento de exercício.", correta: false },
               { letra: "D", texto: "saldo misto, variando conforme a depreciação real do bem.", correta: false },
               { letra: "E", texto: "saldo devedor, funcionando como provisão no passivo.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -282,12 +282,12 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="A Equação Fundamental da Contabilidade é:"
           alternativas={[
-              { letra: "A", texto: "Ativo = Passivo", correta: false },
+            { letra: "A", texto: "Ativo = Passivo", correta: false },
               { letra: "B", texto: "Ativo = Passivo + Patrimônio Líquido", correta: true },
               { letra: "C", texto: "Receita = Despesa", correta: false },
               { letra: "D", texto: "Caixa = Resultado", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Esta equação expressa o equilíbrio do balanço patrimonial e é a base de toda contabilidade."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -417,12 +417,12 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Um Plano de Contas é:"
           alternativas={[
-              { letra: "A", texto: "Um gráfico de receitas e despesas", correta: false },
+            { letra: "A", texto: "Um gráfico de receitas e despesas", correta: false },
               { letra: "B", texto: "Uma estrutura hierárquica de contas para registrar operações contábeis", correta: true },
               { letra: "C", texto: "Um documento de cobrança de clientes", correta: false },
               { letra: "D", texto: "Uma lista de fornecedores", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -561,12 +561,12 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O método das Partidas Dobradas em contabilidade significa:"
           alternativas={[
-              { letra: "A", texto: "Registrar duas operações por dia", correta: false },
+            { letra: "A", texto: "Registrar duas operações por dia", correta: false },
               { letra: "B", texto: "Cada operação gera um débito e um crédito de igual valor", correta: true },
               { letra: "C", texto: "Toda conta deve ter saldo devedor", correta: false },
               { letra: "D", texto: "Operações devem ser registradas uma única vez", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -704,12 +704,12 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O Balancete de Verificação é utilizado principalmente para:"
           alternativas={[
-              { letra: "A", texto: "Calcular lucro ou prejuízo da empresa", correta: false },
+            { letra: "A", texto: "Calcular lucro ou prejuízo da empresa", correta: false },
               { letra: "B", texto: "Verificar se débitos = créditos e identificar erros de lançamento", correta: true },
               { letra: "C", texto: "Pagar impostos ao governo", correta: false },
               { letra: "D", texto: "Determinar preço de vendas", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -847,12 +847,12 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O Balanço Patrimonial apresenta:"
           alternativas={[
-              { letra: "A", texto: "Receitas e despesas do período", correta: false },
+            { letra: "A", texto: "Receitas e despesas do período", correta: false },
               { letra: "B", texto: "Posição financeira em determinada data", correta: true },
               { letra: "C", texto: "Movimentação de caixa", correta: false },
               { letra: "D", texto: "Análise de competidores", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -982,12 +982,12 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual índice mede capacidade de empresa pagar dívidas de curto prazo?"
           alternativas={[
-              { letra: "A", texto: "ROE", correta: false },
+            { letra: "A", texto: "ROE", correta: false },
               { letra: "B", texto: "Liquidez Corrente", correta: true },
               { letra: "C", texto: "Endividamento", correta: false },
               { letra: "D", texto: "Giro do Ativo", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Acima de 1 indica capacidade de pagar débitos em até 1 ano."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1126,12 +1126,12 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é a diferença fundamental entre Custo e Despesa?"
           alternativas={[
-              { letra: "A", texto: "Não existe diferença", correta: false },
+            { letra: "A", texto: "Não existe diferença", correta: false },
               { letra: "B", texto: "Custo entra no produto, Despesa não entra no produto", correta: true },
               { letra: "C", texto: "Custo é sempre maior que Despesa", correta: false },
               { letra: "D", texto: "Despesa nunca é registrada", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Despesa: gasto que não entra no produto (afeta resultado imediatamente)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1270,12 +1270,12 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Petrobras é uma empresa:"
           alternativas={[
-              { letra: "A", texto: "Privada com ações minoritárias públicas", correta: false },
+            { letra: "A", texto: "Privada com ações minoritárias públicas", correta: false },
               { letra: "B", texto: "Estatal de capital aberto", correta: true },
               { letra: "C", texto: "Cooperativa de produtores", correta: false },
               { letra: "D", texto: "Empresa familiar", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sujeita a Lei 13.303 e regulação CVM."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1414,12 +1414,12 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Empresa inicia com Capital de R$ 100.000. Compra máquina R$ 40.000 em dinheiro, compra estoque R$ 30.000 a prazo. Qual é o Patrimônio Líquido após operações?"
           alternativas={[
-              { letra: "A", texto: "R$ 60.000", correta: false },
+            { letra: "A", texto: "R$ 60.000", correta: false },
               { letra: "B", texto: "R$ 100.000", correta: true },
               { letra: "C", texto: "R$ 70.000", correta: false },
               { letra: "D", texto: "R$ 130.000", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="PL = R$ 100.000"
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Capital inicial = PL inicial R$ 100.000." },

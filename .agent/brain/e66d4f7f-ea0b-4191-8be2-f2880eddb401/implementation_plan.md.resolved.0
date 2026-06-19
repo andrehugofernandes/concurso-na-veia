@@ -1,0 +1,24 @@
+# Plano de Implementação - Correção de Tipagem em fix_consolidation_position.py
+
+Este plano visa corrigir os erros de linting/tipagem reportados no script Python que gerencia a posição do componente `ModuleConsolidation` nas aulas.
+
+## Mudanças Propostas
+
+### Script Python
+
+#### [MODIFY] [fix_consolidation_position.py](file:///c:/Workspace/petrobras-quest/fix_consolidation_position.py)
+- Adicionar `from typing import Tuple, List, Optional`.
+- Mover `import re` para o topo do arquivo.
+- Adicionar type hints aos parâmetros das funções [parse_jsx_element](file:///c:/Workspace/petrobras-quest/fix_consolidation_position.py#4-71), [process_file](file:///c:/Workspace/petrobras-quest/fix_consolidation_position.py#72-90) e [custom_reorder](file:///c:/Workspace/petrobras-quest/fix_consolidation_position.py#91-145).
+- Garantir que `content` e `part` sejam tipados como `str` para satisfazer o verificador de tipos (Pyright).
+- Corrigir a lógica de indexação onde o linter está reclamando por falta de clareza de tipos.
+
+## Plano de Verificação
+
+### Testes Automatizados
+- Executar o script com um "dry run" (opcional - posso adicionar um modo de simulação) para garantir que não quebra em runtime.
+- Verificar a sintaxe usando `python -m py_compile fix_consolidation_position.py`.
+- Se possível, rodar um teste em um arquivo TSX temporário.
+
+### Verificação Manual
+- Observar se os erros no IDE desaparecem após a aplicação dos type hints.

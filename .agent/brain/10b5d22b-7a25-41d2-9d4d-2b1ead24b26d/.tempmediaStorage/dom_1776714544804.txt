@@ -1,0 +1,142 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+PMAVV
+Programa de Monitoramento
+dos Atendimentos a
+Vítimas de Violência
+Resumo/Dash
+Monitoramento
+Denúncias
+Vítimas
+Agressores
+Denunciantes
+Visitas
+Estrutura Local
+Regionais
+Bairros
+Extração
+Consultas
+Relatórios
+Administração
+Usuários
+Configurações
+Denuncias
+AL
+[0] (567,544)<main class='flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8' scrollable='true' />
+	Denúncias
+	Gerencie todas as denúncias do sistema
+	Buscar
+	1459
+	Total de Denúncias
+	24
+	Este Ano
+	24
+	Este Mês
+	10
+	Órgãos Ativos
+	Todas
+	1459
+	Este Ano
+	Urgentes
+	Itens:
+	10
+	20
+	50
+	TODOS
+	Modo de Seleção
+	(
+	1459
+	)
+	Nova Denúncia
+	Denúncia
+	Vítimas
+	Agressores
+	Denunciante
+	Protocolo
+	Órgão de Origem
+	Formas de Violência
+	Data Denúncia
+	Encaminhamento
+	Ações
+	5561809/23
+	DISQUE 100
+	OUTROS
+	PSICOLÓGICA
+	—
+	—
+	1459/26
+	—
+	FÍSICA
+	19/04/2026
+	—
+	1458/26
+	—
+	FÍSICA
+	19/04/2026
+	—
+	1457/26
+	—
+	ABANDONO
+	19/04/2026
+	—
+	1456/26
+	—
+	FINANCEIRA
+	19/04/2026
+	—
+	1455/26
+	—
+	FINANCEIRA
+	19/04/2026
+	—
+	1454/26
+	—
+	PSICOLÓGICA
+	19/04/2026
+	—
+	1453/26
+	—
+	AUTONEGLIGÊNCIA
+	19/04/2026
+	—
+Protocolo: 1459/26
+Protocolo: 1459/26
+Inicie o registro da denúncia e gere o protocolo.
+[1] (956,90)<button aria-label='Fechar modal' class='flex items-center justify-center w-10 h-10 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors' />
+[2] (698,184)<button class='w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-black transition-all duration-300 relative z-10 border-[var(--primary,#0037C1)] bg-[var(--primary,#0037C1)] text-white shadow-lg scale-110'>1 />
+	[3] (698,184)<div  />
+	1
+Denúncia
+2
+Vítima
+3
+Agressor
+4
+Denunciante
+[4] (823,603)<div class='flex-1 overflow-y-auto px-10 pt-4 pb-0 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-800' scrollable='true' />
+	[5] (819,375)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2 transition-colors' />
+	[6] (736,450)<label class='flex items-center justify-center text-center min-h-[48px] gap-2 cursor-pointer group p-2 rounded-xl border transition-all duration-200 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-900/40 dark:hover:border-white/40 hover:text-slate-900 dark:hover:text-white' />
+		[7] (736,450)<span  />
+	[8] (791,450)<label class='flex items-center justify-center text-center min-h-[48px] gap-2 cursor-pointer group p-2 rounded-xl border transition-all duration-200 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-900/40 dark:hover:border-white/40 hover:text-slate-900 dark:hover:text-white' />
+		[9] (791,450)<span  />
+	[10] (847,450)<label class='flex items-center justify-center text-center min-h-[48px] gap-2 cursor-pointer group p-2 rounded-xl border transition-all duration-200 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-900/40 dark:hover:border-white/40 hover:text-slate-900 dark:hover:text-white' />
+		[11] (847,450)<span  />
+	[12] (902,450)<label class='flex items-center justify-center text-center min-h-[48px] gap-2 cursor-pointer group p-2 rounded-xl border transition-all duration-200 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-900/40 dark:hover:border-white/40 hover:text-slate-900 dark:hover:text-white' />
+		[13] (902,450)<span  />
+	[14] (736,512)<label class='flex items-center justify-center text-center min-h-[48px] gap-2 cursor-pointer group p-2 rounded-xl border transition-all duration-200 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-900/40 dark:hover:border-white/40 hover:text-slate-900 dark:hover:text-white' />
+		[15] (736,512)<span  />
+	[16] (791,512)<label class='flex items-center justify-center text-center min-h-[48px] gap-2 cursor-pointer group p-2 rounded-xl border transition-all duration-200 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-900/40 dark:hover:border-white/40 hover:text-slate-900 dark:hover:text-white' />
+		[17] (791,512)<span  />
+	[18] (847,512)<label class='flex items-center justify-center text-center min-h-[48px] gap-2 cursor-pointer group p-2 rounded-xl border transition-all duration-200 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-900/40 dark:hover:border-white/40 hover:text-slate-900 dark:hover:text-white' />
+		[19] (847,512)<span  />
+	[20] (757,595)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2 transition-colors' />
+	[21] (757,640)<input class='w-full px-4 py-2.5 rounded-xl border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-950 text-sm font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all placeholder:text-slate-300 outline-none appearance-none cursor-pointer' />
+	[22] (881,595)<label class='peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2 transition-colors' />
+	[23] (851,647)<label class='flex-1 text-center py-2 px-8 rounded-lg text-xs font-bold leading-tight uppercase cursor-pointer border-2 transition-all bg-transparent border-transparent text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700' />
+	[24] (903,647)<label class='flex-1 text-center py-2 px-8 rounded-lg text-xs font-bold leading-tight uppercase cursor-pointer border-2 transition-all bg-transparent border-transparent text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700' />
+	[25] (713,911)<button class='px-6 py-2.5 rounded-xl border-2 border-[var(--primary,#0037C1)]/20 bg-background text-[var(--primary,#0037C1)] font-bold text-sm hover:opacity-80 transition-all'>CANCELAR />
+	[26] (857,911)<button class='flex-1 px-6 py-2.5 rounded-xl bg-[var(--primary,#0037C1)] text-white font-bold text-sm hover:scale-[1.02] hover:shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:hover:scale-100 disabled:hover:shadow-none'>Prosseguir → />
+
+</current_dom>

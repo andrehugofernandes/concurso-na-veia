@@ -420,12 +420,12 @@ export default function AulaMatrizesDeterminantes({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
           alternativas={[
-              { letra: "A", texto: "Retangular", correta: false },
+            { letra: "A", texto: "Retangular", correta: false },
               { letra: "B", texto: "Quadrada de ordem 5", correta: true },
               { letra: "C", texto: "Linha", correta: false },
               { letra: "D", texto: "Coluna", correta: false },
               { letra: "E", texto: "Nula", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
@@ -765,12 +765,12 @@ export default function AulaMatrizesDeterminantes({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
           alternativas={[
-              { letra: "A", texto: "Retangular", correta: false },
+            { letra: "A", texto: "Retangular", correta: false },
               { letra: "B", texto: "Quadrada de ordem 5", correta: true },
               { letra: "C", texto: "Linha", correta: false },
               { letra: "D", texto: "Coluna", correta: false },
               { letra: "E", texto: "Nula", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
@@ -1098,12 +1098,12 @@ export default function AulaMatrizesDeterminantes({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
           alternativas={[
-              { letra: "A", texto: "Retangular", correta: false },
+            { letra: "A", texto: "Retangular", correta: false },
               { letra: "B", texto: "Quadrada de ordem 5", correta: true },
               { letra: "C", texto: "Linha", correta: false },
               { letra: "D", texto: "Coluna", correta: false },
               { letra: "E", texto: "Nula", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
@@ -1392,12 +1392,12 @@ export default function AulaMatrizesDeterminantes({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
           alternativas={[
-              { letra: "A", texto: "Retangular", correta: false },
+            { letra: "A", texto: "Retangular", correta: false },
               { letra: "B", texto: "Quadrada de ordem 5", correta: true },
               { letra: "C", texto: "Linha", correta: false },
               { letra: "D", texto: "Coluna", correta: false },
               { letra: "E", texto: "Nula", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
@@ -1689,12 +1689,12 @@ export default function AulaMatrizesDeterminantes({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
           alternativas={[
-              { letra: "A", texto: "Retangular", correta: false },
+            { letra: "A", texto: "Retangular", correta: false },
               { letra: "B", texto: "Quadrada de ordem 5", correta: true },
               { letra: "C", texto: "Linha", correta: false },
               { letra: "D", texto: "Coluna", correta: false },
               { letra: "E", texto: "Nula", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
@@ -1982,12 +1982,12 @@ export default function AulaMatrizesDeterminantes({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
           alternativas={[
-              { letra: "A", texto: "Retangular", correta: false },
+            { letra: "A", texto: "Retangular", correta: false },
               { letra: "B", texto: "Quadrada de ordem 5", correta: true },
               { letra: "C", texto: "Linha", correta: false },
               { letra: "D", texto: "Coluna", correta: false },
               { letra: "E", texto: "Nula", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
@@ -2287,12 +2287,12 @@ export default function AulaMatrizesDeterminantes({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
           alternativas={[
-              { letra: "A", texto: "Retangular", correta: false },
+            { letra: "A", texto: "Retangular", correta: false },
               { letra: "B", texto: "Quadrada de ordem 5", correta: true },
               { letra: "C", texto: "Linha", correta: false },
               { letra: "D", texto: "Coluna", correta: false },
               { letra: "E", texto: "Nula", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
@@ -2575,12 +2575,12 @@ export default function AulaMatrizesDeterminantes({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
           alternativas={[
-              { letra: "A", texto: "Retangular", correta: false },
+            { letra: "A", texto: "Retangular", correta: false },
               { letra: "B", texto: "Quadrada de ordem 5", correta: true },
               { letra: "C", texto: "Linha", correta: false },
               { letra: "D", texto: "Coluna", correta: false },
               { letra: "E", texto: "Nula", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
@@ -2861,12 +2861,12 @@ export default function AulaMatrizesDeterminantes({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
           alternativas={[
-              { letra: "A", texto: "Retangular", correta: false },
+            { letra: "A", texto: "Retangular", correta: false },
               { letra: "B", texto: "Quadrada de ordem 5", correta: true },
               { letra: "C", texto: "Linha", correta: false },
               { letra: "D", texto: "Coluna", correta: false },
               { letra: "E", texto: "Nula", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },
@@ -3342,12 +3342,12 @@ export default function AulaMatrizesDeterminantes({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma matriz quadrada tem a mesma quantidade de linhas e colunas. Uma matriz 5×5 é:"
           alternativas={[
-              { letra: "A", texto: "Retangular", correta: false },
+            { letra: "A", texto: "Retangular", correta: false },
               { letra: "B", texto: "Quadrada de ordem 5", correta: true },
               { letra: "C", texto: "Linha", correta: false },
               { letra: "D", texto: "Coluna", correta: false },
               { letra: "E", texto: "Nula", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na Petrobras, matrizes de transformação para coordenadas geoespaciais são frequentemente quadradas."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Matriz quadrada é aquela com m=n." },

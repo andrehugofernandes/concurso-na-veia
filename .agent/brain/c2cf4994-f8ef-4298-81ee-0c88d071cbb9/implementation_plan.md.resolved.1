@@ -1,0 +1,26 @@
+# Planejamento: Gráficos Interativos
+
+Para permitir que o usuário digite suas próprias equações (como `2x² + 2x - 3 = 5`) e o gráfico as desenhe em tempo real, precisaremos construir uma mecânica de parsing matemático segura dentro do React.
+
+## Mudanças Propostas
+
+### 1. Atualizar o `<FunctionGraph>` (em [shared/FunctionGraph.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared/FunctionGraph.tsx))
+O componente passará a receber a propriedade opcional `interactive?: boolean`. Quando `true`, ele renderizará um campo de input acima do gráfico.
+
+**Mecânica de Parsing:**
+- Substituiremos expressões naturais como `2x` para `2*x`.
+- Interpretaremos `x^2` ou `x**2` corretamente usando a conversão literal para `**`.
+- Caso o usuário forneça algo com o sinal de =, ex: `2x^2 + 2x = 5`, nós dividiremos a expressão em dois lados e criaremos graficamente: `y = (Lado Esquerdo) - (Lado Direito)`. Desta forma o cruzamento no Eixo X (Raízes) trará exatamente a resposta para a equação fornecida!
+- A função gerada (ex: `customFn(x)`) fará parte da listagem de funções ativas em tempo real no `LineChart` usando uma cor de destaque roxa (`#a855f7`).
+
+### 2. Ativar a interatividade nas Aulas (Aba de Módulo de Gráficos)
+Vou injetar `interactive={true}` nos [FunctionGraph](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared/FunctionGraph.tsx#38-141) das seguintes aulas para dar vida à experiência do aluno:
+- [MODIFY] [AulaFuncoesAfimQuadratica.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/AulaFuncoesAfimQuadratica.tsx)
+- [MODIFY] [AulaFuncoesExponenciais.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/AulaFuncoesExponenciais.tsx)
+- [MODIFY] [AulaFuncoesLogaritmicas.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/AulaFuncoesLogaritmicas.tsx)
+
+## Plano de Verificação
+- Compilar o React com `pnpm dev`.
+- Acessar `http://localhost:3000/aulas/matematica/funcoes-afim-quadratica`.
+- Checar se o input aparece. Digitar `x^2 - 4 = 0` e confirmar que a parábola corta o eixo Y em `-4` e o eixo X em `+2` e `-2`.
+- Digitar sintaxes com erros e não deixar o aplicativo ou o React quebrar (utilizando blocos try/catch e neutralizando exceções).

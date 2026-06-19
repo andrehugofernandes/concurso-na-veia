@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Resumo da implementação do fluxo de login com Active Directory e Autenticação de Dois Fatores (2FA) no projeto PMAVV. Inclui detalhes sobre a nova estrutura de rotas, componentes de UI, APIs de backend e instruções para atualização do banco de dados.",
+  "updatedAt": "2026-03-11T19:45:07.147458100Z"
+}

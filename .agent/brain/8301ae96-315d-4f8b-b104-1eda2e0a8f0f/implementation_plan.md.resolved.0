@@ -1,0 +1,32 @@
+# Plano de Implementação: Enriquecimento de Conteúdo Premium - AulaConjuntos.tsx
+
+Este plano visa elevar a densidade pedagógica e a qualidade visual da aula de Conjuntos, alinhando-a aos padrões mais recentes do design system ("Premium").
+
+## Mudanças Propostas
+
+### [Componente] AulaConjuntos.tsx
+
+#### [MODIFY] [AulaConjuntos.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/AulaConjuntos.tsx)
+
+- **Padronização C.E.D.E.A (Introduções)**:
+    - Reestruturar as seções de introdução de cada um dos 10 módulos para conter exatamente 5 parágrafos (Contexto, Explicação, Demonstração, Expansão, Aplicação).
+    - Garantir que o `ModuleSectionHeader` use `index="INTRO"`.
+- **FlipCards Premium**:
+    - Implementar grids de `FlipCard` (substituindo ou complementando `ContentAccordion`) em pontos estratégicos.
+    - Utilizar ícones da biblioteca `lucide-react` (ex: `LuPackage`, `LuLayers`, `LuTarget`) em vez de emojis.
+    - Manter o `gap-6` e as cores semânticas da matéria (Amber para Matemática).
+- **Consolidação Estratégica**:
+    - Expandir a propriedade `sinteseEstrategica` no componente `ModuleConsolidation` de cada módulo, focando em "Dicas de Ouro" para a banca CESGRANRIO.
+    - Padronizar links de áudio e IDs de vídeo.
+
+## Plano de Verificação
+
+### Testes Automatizados
+- Executar a verificação de tipos do TypeScript para garantir que nenhuma propriedade obrigatória foi omitida ou renomeada incorretamente:
+  ```powershell
+  npx tsc --noEmit
+  ```
+
+### Verificação Manual
+- Validar visualmente o layout no navegador (se possível) para garantir que o grid de FlipCards está responsivo.
+- Verificar se a estrutura de 5 parágrafos mantém a fluidez de leitura.

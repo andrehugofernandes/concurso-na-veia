@@ -473,6 +473,38 @@ const AulaComprasSuprimento = dynamic<AulaProps>(
   },
 );
 
+const AulaAtendimentoCliente = dynamic<AulaProps>(
+  () => import("@/components/aulas/administracao/AulaAtendimentoCliente"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaEstrategiasNegociacao = dynamic<AulaProps>(
+  () => import("@/components/aulas/administracao/AulaEstrategiasNegociacao"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaGestaoContratos = dynamic<AulaProps>(
+  () => import("@/components/aulas/administracao/AulaGestaoContratos"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaGestaoAlmoxarifado = dynamic<AulaProps>(
+  () => import("@/components/aulas/administracao/AulaGestaoAlmoxarifado"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
 const AulaEngenhariaSoftware = dynamic<AulaProps>(
   () => import("@/components/aulas/ti/AulaEngenhariaSoftware"),
   {
@@ -1775,6 +1807,78 @@ export default function TopicoPage({ params }: PageProps) {
             ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
               topicoId === "compras-suprimento" ? (
               <AulaComprasSuprimento
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
+              topicoId === "atendimento-cliente-suprimento" ? (
+              <AulaAtendimentoCliente
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
+              topicoId === "estrategias-negociacao-suprimento" ? (
+              <AulaEstrategiasNegociacao
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
+              topicoId === "gestao-contratos-suprimento" ? (
+              <AulaGestaoContratos
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
+              topicoId === "gestao-estoques-almoxarifados-suprimento" ? (
+              <AulaGestaoAlmoxarifado
                 onComplete={handleCompleteAula}
                 isCompleted={isCompleted}
                 loading={loading}

@@ -1,0 +1,32 @@
+# Plano de Implementação: Restauração do Estilo 'Macete Visual' (Emojis)
+
+Este plano atende à solicitação do usuário de reverter a proibição total de emojis, permitindo-os especificamente no componente de Síntese Estratégica ("Macete Visual"), onde o impacto visual é prioridade pedagógica.
+
+## Mudanças Propostas
+
+### 1. Componente AulaConjuntos.tsx
+
+- **Onde**: Módulo 1 (`ModuleConsolidation`).
+- **O que**: Atualizar `sinteseEstrategica` para incluir:
+  - Grupo de emojis animados: 🎯 🔍 📦.
+  - Frase de impacto centralizada: "O Elemento (∈) entra na casa, mas o Subconjunto (⊂) leva a casa inteira nas costas."
+  - Grid de 2 colunas com cores `amber` e `emerald` para contraste didático.
+
+### 2. Atualização de Padrões (.agent/ & docs/)
+
+- **[MODIFY] [GUIA_CRIACAO_AULAS.md](file:///c:/Workspace/petrobras-quest/docs/GUIA_CRIACAO_AULAS.md)**: Adicionar parágrafo permitindo e incentivando emojis na seção "Mesa de Consolidação > Síntese Estratégica".
+- **[MODIFY] [criar-aula-premium.md](file:///c:/Workspace/petrobras-quest/.agent/workflows/criar-aula-premium.md)**: Ajustar a Fase 3 para mencionar a liberdade criativa com emojis na Síntese.
+- **[MODIFY] [SKILL.md](file:///c:/Workspace/petrobras-quest/.agent/skills/rich-intro-premium-flips-builder/SKILL.md)**: Retirar a proibição de emojis (`text-3xl`) especificamente para a prop `sinteseEstrategica`.
+
+### 4. Recuperação de Contexto e Emojis Animados
+
+- ** emojis**: Usar `animate-bounce` ou `animate-pulse` nos ícones iniciais da Síntese Estratégica para dar o aspecto "premium" solicitado.
+- **Riqueza de Informação**: Para evitar a "perda de informação" mencionada pelo usuário, a Síntese Estratégica não será apenas uma grid de 4 itens, mas incluirá:
+  - Uma frase de impacto pedagógica (Macete).
+  - Um parágrafo de síntese estratégica que conecte as imagens do Resumo Virtual.
+  - Cards de detalhamento com cores vibrantes.
+
+## Plano de Verificação
+
+- Validar visualmente o layout na `AulaConjuntos`.
+- Garantir que a regra de proibição de emojis continue valendo para os `FlipCards` (onde Lucide é mandatório), mantendo o equilíbrio entre modernidade e didática.

@@ -1,0 +1,9 @@
+# Plano de Ação - Validação de Vítimas
+
+- [ ] Acessar http://localhost:3000/vitimas e verificar carregamento.
+- [ ] Localizar e clicar no botão "Nova Vítima".
+- [ ] Validar o layout do modal (Side-Sheet, 440px, gap).
+- [ ] Tirar screenshot do modal aberto.
+
+## Observações
+- Verificando se o erro de sintaxe em `vitimas-actions.ts` foi resolvido e a página carrega.

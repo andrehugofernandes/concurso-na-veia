@@ -1,0 +1,7 @@
+# Teste e Integração do Stripe
+
+- [/] Entender o escopo do teste com o usuário (Gateway Socrático)
+- [ ] Definir arquitetura da integração (Checkout, Webhooks, etc.)
+- [ ] Instalar dependências e configurar chaves de API
+- [ ] Implementar fluxo no código
+- [ ] Realizar testes de ponta a ponta

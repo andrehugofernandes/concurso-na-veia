@@ -1,0 +1,6 @@
+- [x] Identificar e corrigir chaves de conjuntos no Módulo 2 (Linha 1002)
+- [x] Identificar e corrigir chaves de conjuntos no Módulo 3 (Linha 1344)
+- [x] Corrigir tokens inesperados (closing braces) no Módulo 7/8 (Linhas 2456, 2459, 2462)
+- [x] Auditoria de outros macetes (Módulos 1, 4-6, 9-10) buscando chaves sem escape
+- [ ] Validar build com pnpm tsc (ou observando lints)
+- [x] Finalizar walkthrough

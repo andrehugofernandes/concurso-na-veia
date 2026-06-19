@@ -1,0 +1,7 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Plano de implementação atualizado para a padronização premium das aulas de inglês, incluindo remoção de mojibake e sanitização de caracteres especiais/emojis.",
+  "updatedAt":  "2026-05-19T16:11:00.732138900Z",
+  "version":  "2",
+  "requestFeedback":  true
+}

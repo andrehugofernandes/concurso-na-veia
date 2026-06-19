@@ -1307,31 +1307,31 @@ export default function AulaFalseCognates({
 
             <div className="space-y-6">
               <TimelineItem
-                step={1}
+                passo={1}
                 titulo="Veja a Palavra → Desconfia Primeiro"
                 descricao="Se parece cognato com português, pode ser falso. ACTUALLY parece 'atualmente'? Sim, pode ser falso. Procure contexto antes de decidir."
               />
 
               <TimelineItem
-                step={2}
+                passo={2}
                 titulo="Procure o Contexto"
                 descricao="Qual significado faz sentido NESTA frase? 'Actually, the pressure...' = qualificação (de fato) ou 'Now, the pressure...' = tempo (agora)."
               />
 
               <TimelineItem
-                step={3}
+                passo={3}
                 titulo="Elimine pelo Português"
                 descricao="Qual 'português errado' é tentador? Se 'atualmente' faz sentido em português aqui, cuidado — em inglês pode ser ACTUALLY (de fato) OU CURRENTLY (agora)."
               />
 
               <TimelineItem
-                step={4}
+                passo={4}
                 titulo="Valide pela Estrutura"
                 descricao="Gramática marca sentido? 'Eventually' é advérbio de tempo (future será). 'Actually' é advérbio qualificador (qualquer tempo). Estrutura linguística é pista."
               />
 
               <TimelineItem
-                step={5}
+                passo={5}
                 titulo="Releia e Valide"
                 descricao="Leia a frase inteira com sua resposta. Faz sentido perfeitamente? Se não, volte aos passos 2-4. Confiança vem de validação completa."
               />

@@ -1,0 +1,12 @@
+# Task: Fix Build Error and Data Corruption in English Lesson
+
+- [/] Planning and investigation <!-- id: 0 -->
+    - [x] Identify the cause of the `QUIZ_M1_SIMPLE_PRESENºT` export error <!-- id: 1 -->
+    - [x] Map out all files affected by the `Nº` corruption <!-- id: 2 -->
+    - [ ] Create implementation plan and get approval <!-- id: 3 -->
+- [ ] Execution: Fixing Corruption <!-- id: 4 -->
+    - [ ] Remove `Nº` corruption from [src/components/aulas/ingles/AulaVerbTenses.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/ingles/AulaVerbTenses.tsx) <!-- id: 5 -->
+    - [ ] Remove `Nº` corruption from all other affected files <!-- id: 6 -->
+- [ ] Verification <!-- id: 7 -->
+    - [ ] Run `pnpm build` to verify no more compilation errors <!-- id: 8 -->
+    - [ ] Check affected files for any remaining typos <!-- id: 9 -->

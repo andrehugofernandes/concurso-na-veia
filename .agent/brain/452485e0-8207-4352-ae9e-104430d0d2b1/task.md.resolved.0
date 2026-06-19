@@ -1,0 +1,41 @@
+# Upgrade ULTIMATE: Logística e Gestão da Qualidade
+
+## Arquivo: `AulaLogisticaSuprimento.tsx`
+**Caminho:** `src/components/aulas/administracao/AulaLogisticaSuprimento.tsx`
+**Workflow:** `/aula-ultimate` (Preservação Absoluta)
+
+### Progresso por Módulo
+
+- [x] **M1** — Fundamentos e Cadeia de Suprimentos (Rich Intro + C.E.D.E. + Macete Visual)
+- [x] **M2** — Gestão Integrada de Estoques (Curva ABC, XYZ, PP, LEC)
+- [x] **M3** — Armazenagem e Centros de Distribuição (Layouts, WMS, FIFO/LIFO)
+- [x] **M4** — Modais e Gestão de Transportes (5 modais, Inter/Multi, Dutoviário)
+- [x] **M5** — Logística Inbound e Outbound (Milk Run, Cross-Docking, Last Mile)
+- [x] **M6** — Supply Chain Management (VMI, Efeito Chicote, CPFR, ECR)
+- [ ] **M7** — Indicadores de Desempenho / KPIs (OTIF, Fill Rate, Lead Time)
+- [ ] **M8** — Logística Reversa e Sustentabilidade (PNRS, Ciclo de Vida)
+- [ ] **M9** — Logística Offshore Petrobras (PSV, AHTS, Bacias, FPSO)
+- [ ] **M10** — Simulado Mestre (já tem AlertBox + Quiz, apenas revisar)
+
+### Contagem de Linhas (Validação PASSO 3)
+- **ANTES do upgrade:** 369 linhas
+- **Após M1-M6:** ~960 linhas (crescimento contínuo ✅)
+- **Meta final:** 1500+ linhas
+
+---
+
+## Arquivo: `AulaGestaoQualidadeSuprimento.tsx`
+**Caminho:** `src/components/aulas/administracao/AulaGestaoQualidadeSuprimento.tsx`
+**Status:** ⏳ Aguardando conclusão de Logística
+
+### Progresso por Módulo
+- [ ] **M1** — Fundamentos da Qualidade (PDCA, conceito)
+- [ ] **M2** — Era da Qualidade (Inspeção → TQM)
+- [ ] **M3** — Gurus da Qualidade (Deming, Juran, Crosby, Ishikawa)
+- [ ] **M4** — Ferramentas de Qualidade (7 ferramentas, Ishikawa, Pareto)
+- [ ] **M5** — Normas ISO e Certificação (9001, 14001, 45001)
+- [ ] **M6** — Six Sigma e Lean (DMAIC, Kaizen, Muda)
+- [ ] **M7** — Controle Estatístico (CEP, LSC/LIC)
+- [ ] **M8** — Auditoria e Conformidade (1ª/2ª/3ª parte)
+- [ ] **M9** — Qualidade na Petrobras (SMS, especificações)
+- [ ] **M10** — Simulado Mestre (já tem AlertBox + Quiz)

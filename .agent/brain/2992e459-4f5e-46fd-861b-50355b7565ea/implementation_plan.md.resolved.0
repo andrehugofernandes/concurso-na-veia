@@ -1,0 +1,28 @@
+# Plano de Implementação: Correção de TypeError em NavHeader
+
+Este plano visa resolver o erro `Cannot read properties of undefined (reading 'includes')` no cabeçalho de navegação das aulas.
+
+## 🔴 User Review Required
+
+> [!IMPORTANT]
+> Verifique se as aulas `AulaInterpretacaoTexto`, `AulaConcordancia`, etc., devem manter valores fixos ou se o repasse total de props via `TopicoPage` é desejado para todas.
+
+## Proposed Changes
+
+### 🛠️ Componente Compartilhado (`shared.tsx`)
+
+#### [MODIFY] [shared.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx)
+- Adicionar proteção no destructuring: `{ materiaNome = "", ...rest }`.
+- Usar optional chaining em `materiaNome?.includes(" ")`.
+
+### 📚 Aula de Português (`AulaClassesPalavras.tsx`)
+
+#### [MODIFY] [AulaClassesPalavras.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaClassesPalavras.tsx)
+- Receber `props: AulaProps`.
+- Passar `{...props}` para `AulaTemplate`.
+
+## Verification Plan
+
+### Manual Verification
+- Acessar `http://localhost:3000/aulas/portugues/classes-palavras`.
+- Validar se o crash desapareceu.

@@ -1,0 +1,42 @@
+# Checkout Embutido no Registro (Stripe)
+
+O objetivo desta implementação é trazer a experiência de pagamento do Stripe para dentro da própria página de registro, sem redirecionar o usuário para fora do site. Isso será feito utilizando o **Stripe Embedded Checkout**.
+
+## Alterações Propostas
+
+### 1. Atualizar Ações do Servidor (Backend Stripe)
+Para usar o checkout embutido, a sessão do Stripe deve ser criada com `ui_mode: "embedded"` em vez de redirecionamento. Precisamos retornar o `client_secret` dessa sessão.
+
+#### [MODIFY] [src/lib/actions/stripe.ts](file:///c:/Workspace/petrobras-quest/src/lib/actions/stripe.ts)
+- Alterar [createCheckoutSession](file:///c:/Workspace/petrobras-quest/src/lib/actions/stripe.ts#19-74) para incluir `ui_mode: "embedded"` e `return_url` em vez de `success_url` e `cancel_url`.
+- Retornar o `clientSecret` da sessão recém-criada, pois o front-end precisará dele para renderizar o iframe do Stripe.
+
+### 2. Criar Componente StripeEmbeddedCheckout (Frontend)
+Um novo componente de interface (client-side) precisa ser construído para carregar o Stripe.js e o componente React oficial do Stripe Embedded Checkout.
+
+#### [NEW] `src/components/stripe/StripeEmbeddedCheckout.tsx`
+- Inicializar o Stripe promise através de `@stripe/stripe-js`.
+- Utilizar os componentes `<EmbeddedCheckoutProvider>` e `<EmbeddedCheckout>` do pacote `@stripe/react-stripe-js`.
+- O componente receberá o `clientSecret` como prop e cuidará da renderização do iframe de pagamento de forma fluida (herdando as fontes e layout definidos nas configurações globais do Stripe no dashboard, ou via Appearance API se configurado no provider).
+
+### 3. Atualizar a Página de Registro (Frontend)
+A página de registro precisará mudar seu fluxo no passo 3 (Pagamento). Em vez de chamar a *server action* e redirecionar pelo `window.location.assign`, ela chamará a *server action*, pegará o `clientSecret` e mostrará o componente de checkout ali mesmo.
+
+#### [MODIFY] [src/app/(auth)/register/page.tsx](file:///c:/Workspace/petrobras-quest/src/app/%28auth%29/register/page.tsx)
+- Adicionar estado na [RegisterForm](file:///c:/Workspace/petrobras-quest/src/app/%28auth%29/register/page.tsx#108-552) para gerenciar o `clientSecret` (ex: `const [clientSecret, setClientSecret] = useState<string | null>(null)`).
+- Modificar o handler `handleCheckout` (ou a lógica do "Continuar" no Step 3): se for um plano pago, buscar o `clientSecret` usando a ação [createCheckoutSession](file:///c:/Workspace/petrobras-quest/src/lib/actions/stripe.ts#19-74) atualizada e definir no estado.
+- Alterar a renderização do Step 3:
+  - Se `clientSecret` estiver presente, não renderizar o resumo normal, mas sim montar o `<StripeEmbeddedCheckout clientSecret={clientSecret} />`.
+  - O Stripe Embedded lidará com a confirmação do pagamento e redirecionará para a `return_url` (a página de success).
+
+## Plano de Verificação
+
+### Verificação Manual
+1. Iniciar o servidor localmente com `pnpm dev`.
+2. Navegar para a página de registro (`/register`).
+3. Preencher os passos 1 e 2 com dados fictícios de teste.
+4. No passo 3, selecionar um plano pago (mensal ou semestral).
+5. Clicar em "Ir para pagamento".
+6. **Resultado Esperado:** A interface deve transicionar suavemente para exibir o iframe do Stripe Embedded Checkout DENTRO da própria interface de registro, substituindo o conteúdo do Step 3, sem abrir uma nova aba ou mudar a URL.
+7. O layout escuro/claro e o espaçamento deverão respeitar o container de *card* do AuthLayout.
+8. (Opcional se chaves de teste estiverem configuradas): Completar o pagamento de teste usando um cartão do Stripe (`4242...`) e verificar o redirecionamento para a página de sucesso correta.

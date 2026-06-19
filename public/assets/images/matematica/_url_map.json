@@ -1,0 +1,990 @@
+{
+  "conjuntos": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/conjuntos/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/conjuntos/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/conjuntos/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/conjuntos/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/conjuntos/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/conjuntos/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/conjuntos/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/conjuntos/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/conjuntos/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/conjuntos/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/conjuntos/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/conjuntos/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/conjuntos/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/conjuntos/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/conjuntos/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/conjuntos/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/conjuntos/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/conjuntos/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/conjuntos/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/conjuntos/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/conjuntos/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/conjuntos/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/conjuntos/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/conjuntos/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/conjuntos/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/conjuntos/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/conjuntos/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/conjuntos/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/conjuntos/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/conjuntos/modulo-10/m10-dicas.png"
+    }
+  },
+  "porcentagem": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/porcentagem/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/porcentagem/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/porcentagem/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/porcentagem/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/porcentagem/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/porcentagem/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/porcentagem/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/porcentagem/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/porcentagem/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/porcentagem/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/porcentagem/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/porcentagem/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/porcentagem/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/porcentagem/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/porcentagem/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/porcentagem/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/porcentagem/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/porcentagem/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/porcentagem/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/porcentagem/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/porcentagem/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/porcentagem/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/porcentagem/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/porcentagem/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/porcentagem/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/porcentagem/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/porcentagem/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/porcentagem/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/porcentagem/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/porcentagem/modulo-10/m10-dicas.png"
+    }
+  },
+  "razao-proporcao": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/razao-proporcao/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/razao-proporcao/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/razao-proporcao/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/razao-proporcao/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/razao-proporcao/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/razao-proporcao/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/razao-proporcao/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/razao-proporcao/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/razao-proporcao/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/razao-proporcao/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/razao-proporcao/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/razao-proporcao/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/razao-proporcao/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/razao-proporcao/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/razao-proporcao/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/razao-proporcao/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/razao-proporcao/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/razao-proporcao/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/razao-proporcao/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/razao-proporcao/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/razao-proporcao/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/razao-proporcao/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/razao-proporcao/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/razao-proporcao/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/razao-proporcao/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/razao-proporcao/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/razao-proporcao/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/razao-proporcao/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/razao-proporcao/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/razao-proporcao/modulo-10/m10-dicas.png"
+    }
+  },
+  "equacoes-1-grau": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/equacoes-1-grau/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-1-grau/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-1-grau/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/equacoes-1-grau/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-1-grau/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-1-grau/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/equacoes-1-grau/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-1-grau/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-1-grau/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/equacoes-1-grau/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-1-grau/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-1-grau/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/equacoes-1-grau/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-1-grau/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-1-grau/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/equacoes-1-grau/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-1-grau/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-1-grau/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/equacoes-1-grau/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-1-grau/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-1-grau/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/equacoes-1-grau/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-1-grau/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-1-grau/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/equacoes-1-grau/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-1-grau/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-1-grau/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/equacoes-1-grau/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-1-grau/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-1-grau/modulo-10/m10-dicas.png"
+    }
+  },
+  "equacoes-2-grau": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/equacoes-2-grau/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-2-grau/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-2-grau/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/equacoes-2-grau/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-2-grau/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-2-grau/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/equacoes-2-grau/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-2-grau/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-2-grau/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/equacoes-2-grau/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-2-grau/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-2-grau/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/equacoes-2-grau/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-2-grau/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-2-grau/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/equacoes-2-grau/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-2-grau/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-2-grau/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/equacoes-2-grau/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-2-grau/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-2-grau/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/equacoes-2-grau/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-2-grau/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-2-grau/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/equacoes-2-grau/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-2-grau/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-2-grau/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/equacoes-2-grau/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/equacoes-2-grau/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/equacoes-2-grau/modulo-10/m10-dicas.png"
+    }
+  },
+  "sistemas-lineares": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/sistemas-lineares/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/sistemas-lineares/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/sistemas-lineares/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/sistemas-lineares/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/sistemas-lineares/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/sistemas-lineares/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/sistemas-lineares/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/sistemas-lineares/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/sistemas-lineares/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/sistemas-lineares/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/sistemas-lineares/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/sistemas-lineares/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/sistemas-lineares/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/sistemas-lineares/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/sistemas-lineares/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/sistemas-lineares/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/sistemas-lineares/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/sistemas-lineares/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/sistemas-lineares/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/sistemas-lineares/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/sistemas-lineares/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/sistemas-lineares/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/sistemas-lineares/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/sistemas-lineares/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/sistemas-lineares/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/sistemas-lineares/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/sistemas-lineares/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/sistemas-lineares/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/sistemas-lineares/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/sistemas-lineares/modulo-10/m10-dicas.png"
+    }
+  },
+  "funcoes-afim-quadratica": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/funcoes-afim-quadratica/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-afim-quadratica/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-afim-quadratica/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/funcoes-afim-quadratica/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-afim-quadratica/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-afim-quadratica/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/funcoes-afim-quadratica/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-afim-quadratica/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-afim-quadratica/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/funcoes-afim-quadratica/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-afim-quadratica/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-afim-quadratica/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/funcoes-afim-quadratica/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-afim-quadratica/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-afim-quadratica/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/funcoes-afim-quadratica/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-afim-quadratica/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-afim-quadratica/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/funcoes-afim-quadratica/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-afim-quadratica/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-afim-quadratica/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/funcoes-afim-quadratica/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-afim-quadratica/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-afim-quadratica/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/funcoes-afim-quadratica/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-afim-quadratica/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-afim-quadratica/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/funcoes-afim-quadratica/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-afim-quadratica/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-afim-quadratica/modulo-10/m10-dicas.png"
+    }
+  },
+  "funcoes-exponenciais": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/funcoes-exponenciais/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-exponenciais/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-exponenciais/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/funcoes-exponenciais/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-exponenciais/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-exponenciais/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/funcoes-exponenciais/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-exponenciais/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-exponenciais/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/funcoes-exponenciais/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-exponenciais/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-exponenciais/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/funcoes-exponenciais/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-exponenciais/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-exponenciais/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/funcoes-exponenciais/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-exponenciais/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-exponenciais/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/funcoes-exponenciais/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-exponenciais/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-exponenciais/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/funcoes-exponenciais/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-exponenciais/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-exponenciais/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/funcoes-exponenciais/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-exponenciais/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-exponenciais/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/funcoes-exponenciais/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-exponenciais/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-exponenciais/modulo-10/m10-dicas.png"
+    }
+  },
+  "funcoes-logaritmicas": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/funcoes-logaritmicas/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-logaritmicas/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-logaritmicas/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/funcoes-logaritmicas/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-logaritmicas/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-logaritmicas/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/funcoes-logaritmicas/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-logaritmicas/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-logaritmicas/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/funcoes-logaritmicas/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-logaritmicas/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-logaritmicas/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/funcoes-logaritmicas/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-logaritmicas/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-logaritmicas/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/funcoes-logaritmicas/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-logaritmicas/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-logaritmicas/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/funcoes-logaritmicas/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-logaritmicas/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-logaritmicas/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/funcoes-logaritmicas/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-logaritmicas/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-logaritmicas/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/funcoes-logaritmicas/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-logaritmicas/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-logaritmicas/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/funcoes-logaritmicas/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/funcoes-logaritmicas/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/funcoes-logaritmicas/modulo-10/m10-dicas.png"
+    }
+  },
+  "matrizes-determinantes": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/matrizes-determinantes/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/matrizes-determinantes/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/matrizes-determinantes/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/matrizes-determinantes/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/matrizes-determinantes/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/matrizes-determinantes/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/matrizes-determinantes/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/matrizes-determinantes/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/matrizes-determinantes/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/matrizes-determinantes/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/matrizes-determinantes/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/matrizes-determinantes/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/matrizes-determinantes/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/matrizes-determinantes/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/matrizes-determinantes/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/matrizes-determinantes/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/matrizes-determinantes/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/matrizes-determinantes/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/matrizes-determinantes/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/matrizes-determinantes/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/matrizes-determinantes/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/matrizes-determinantes/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/matrizes-determinantes/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/matrizes-determinantes/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/matrizes-determinantes/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/matrizes-determinantes/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/matrizes-determinantes/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/matrizes-determinantes/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/matrizes-determinantes/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/matrizes-determinantes/modulo-10/m10-dicas.png"
+    }
+  },
+  "progressoes-pa": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/progressoes-pa/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pa/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pa/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/progressoes-pa/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pa/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pa/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/progressoes-pa/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pa/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pa/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/progressoes-pa/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pa/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pa/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/progressoes-pa/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pa/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pa/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/progressoes-pa/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pa/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pa/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/progressoes-pa/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pa/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pa/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/progressoes-pa/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pa/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pa/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/progressoes-pa/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pa/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pa/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/progressoes-pa/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pa/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pa/modulo-10/m10-dicas.png"
+    }
+  },
+  "progressoes-pg": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/progressoes-pg/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pg/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pg/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/progressoes-pg/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pg/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pg/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/progressoes-pg/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pg/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pg/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/progressoes-pg/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pg/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pg/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/progressoes-pg/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pg/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pg/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/progressoes-pg/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pg/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pg/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/progressoes-pg/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pg/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pg/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/progressoes-pg/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pg/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pg/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/progressoes-pg/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pg/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pg/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/progressoes-pg/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/progressoes-pg/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/progressoes-pg/modulo-10/m10-dicas.png"
+    }
+  },
+  "analise-combinatoria": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/analise-combinatoria/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/analise-combinatoria/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/analise-combinatoria/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/analise-combinatoria/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/analise-combinatoria/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/analise-combinatoria/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/analise-combinatoria/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/analise-combinatoria/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/analise-combinatoria/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/analise-combinatoria/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/analise-combinatoria/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/analise-combinatoria/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/analise-combinatoria/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/analise-combinatoria/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/analise-combinatoria/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/analise-combinatoria/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/analise-combinatoria/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/analise-combinatoria/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/analise-combinatoria/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/analise-combinatoria/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/analise-combinatoria/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/analise-combinatoria/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/analise-combinatoria/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/analise-combinatoria/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/analise-combinatoria/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/analise-combinatoria/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/analise-combinatoria/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/analise-combinatoria/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/analise-combinatoria/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/analise-combinatoria/modulo-10/m10-dicas.png"
+    }
+  },
+  "probabilidade": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/probabilidade/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/probabilidade/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/probabilidade/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/probabilidade/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/probabilidade/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/probabilidade/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/probabilidade/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/probabilidade/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/probabilidade/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/probabilidade/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/probabilidade/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/probabilidade/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/probabilidade/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/probabilidade/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/probabilidade/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/probabilidade/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/probabilidade/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/probabilidade/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/probabilidade/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/probabilidade/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/probabilidade/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/probabilidade/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/probabilidade/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/probabilidade/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/probabilidade/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/probabilidade/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/probabilidade/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/probabilidade/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/probabilidade/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/probabilidade/modulo-10/m10-dicas.png"
+    }
+  },
+  "matematica-financeira": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/matematica-financeira/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/matematica-financeira/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/matematica-financeira/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/matematica-financeira/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/matematica-financeira/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/matematica-financeira/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/matematica-financeira/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/matematica-financeira/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/matematica-financeira/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/matematica-financeira/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/matematica-financeira/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/matematica-financeira/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/matematica-financeira/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/matematica-financeira/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/matematica-financeira/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/matematica-financeira/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/matematica-financeira/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/matematica-financeira/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/matematica-financeira/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/matematica-financeira/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/matematica-financeira/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/matematica-financeira/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/matematica-financeira/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/matematica-financeira/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/matematica-financeira/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/matematica-financeira/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/matematica-financeira/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/matematica-financeira/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/matematica-financeira/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/matematica-financeira/modulo-10/m10-dicas.png"
+    }
+  },
+  "geometria-plana": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/geometria-plana/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/geometria-plana/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/geometria-plana/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/geometria-plana/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/geometria-plana/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/geometria-plana/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/geometria-plana/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/geometria-plana/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/geometria-plana/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/geometria-plana/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/geometria-plana/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/geometria-plana/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/geometria-plana/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/geometria-plana/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/geometria-plana/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/geometria-plana/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/geometria-plana/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/geometria-plana/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/geometria-plana/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/geometria-plana/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/geometria-plana/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/geometria-plana/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/geometria-plana/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/geometria-plana/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/geometria-plana/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/geometria-plana/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/geometria-plana/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/geometria-plana/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/geometria-plana/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/geometria-plana/modulo-10/m10-dicas.png"
+    }
+  },
+  "geometria-espacial": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/geometria-espacial/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/geometria-espacial/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/geometria-espacial/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/geometria-espacial/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/geometria-espacial/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/geometria-espacial/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/geometria-espacial/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/geometria-espacial/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/geometria-espacial/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/geometria-espacial/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/geometria-espacial/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/geometria-espacial/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/geometria-espacial/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/geometria-espacial/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/geometria-espacial/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/geometria-espacial/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/geometria-espacial/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/geometria-espacial/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/geometria-espacial/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/geometria-espacial/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/geometria-espacial/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/geometria-espacial/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/geometria-espacial/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/geometria-espacial/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/geometria-espacial/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/geometria-espacial/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/geometria-espacial/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/geometria-espacial/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/geometria-espacial/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/geometria-espacial/modulo-10/m10-dicas.png"
+    }
+  },
+  "geometria-analitica": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/geometria-analitica/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/geometria-analitica/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/geometria-analitica/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/geometria-analitica/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/geometria-analitica/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/geometria-analitica/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/geometria-analitica/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/geometria-analitica/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/geometria-analitica/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/geometria-analitica/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/geometria-analitica/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/geometria-analitica/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/geometria-analitica/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/geometria-analitica/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/geometria-analitica/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/geometria-analitica/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/geometria-analitica/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/geometria-analitica/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/geometria-analitica/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/geometria-analitica/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/geometria-analitica/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/geometria-analitica/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/geometria-analitica/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/geometria-analitica/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/geometria-analitica/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/geometria-analitica/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/geometria-analitica/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/geometria-analitica/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/geometria-analitica/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/geometria-analitica/modulo-10/m10-dicas.png"
+    }
+  },
+  "trigonometria": {
+    "modulo-1": {
+      "conceito": "/assets/images/matematica/trigonometria/modulo-1/m1-conceito.png",
+      "formula": "/assets/images/matematica/trigonometria/modulo-1/m1-formula.png",
+      "dicas": "/assets/images/matematica/trigonometria/modulo-1/m1-dicas.png"
+    },
+    "modulo-2": {
+      "conceito": "/assets/images/matematica/trigonometria/modulo-2/m2-conceito.png",
+      "formula": "/assets/images/matematica/trigonometria/modulo-2/m2-formula.png",
+      "dicas": "/assets/images/matematica/trigonometria/modulo-2/m2-dicas.png"
+    },
+    "modulo-3": {
+      "conceito": "/assets/images/matematica/trigonometria/modulo-3/m3-conceito.png",
+      "formula": "/assets/images/matematica/trigonometria/modulo-3/m3-formula.png",
+      "dicas": "/assets/images/matematica/trigonometria/modulo-3/m3-dicas.png"
+    },
+    "modulo-4": {
+      "conceito": "/assets/images/matematica/trigonometria/modulo-4/m4-conceito.png",
+      "formula": "/assets/images/matematica/trigonometria/modulo-4/m4-formula.png",
+      "dicas": "/assets/images/matematica/trigonometria/modulo-4/m4-dicas.png"
+    },
+    "modulo-5": {
+      "conceito": "/assets/images/matematica/trigonometria/modulo-5/m5-conceito.png",
+      "formula": "/assets/images/matematica/trigonometria/modulo-5/m5-formula.png",
+      "dicas": "/assets/images/matematica/trigonometria/modulo-5/m5-dicas.png"
+    },
+    "modulo-6": {
+      "conceito": "/assets/images/matematica/trigonometria/modulo-6/m6-conceito.png",
+      "formula": "/assets/images/matematica/trigonometria/modulo-6/m6-formula.png",
+      "dicas": "/assets/images/matematica/trigonometria/modulo-6/m6-dicas.png"
+    },
+    "modulo-7": {
+      "conceito": "/assets/images/matematica/trigonometria/modulo-7/m7-conceito.png",
+      "formula": "/assets/images/matematica/trigonometria/modulo-7/m7-formula.png",
+      "dicas": "/assets/images/matematica/trigonometria/modulo-7/m7-dicas.png"
+    },
+    "modulo-8": {
+      "conceito": "/assets/images/matematica/trigonometria/modulo-8/m8-conceito.png",
+      "formula": "/assets/images/matematica/trigonometria/modulo-8/m8-formula.png",
+      "dicas": "/assets/images/matematica/trigonometria/modulo-8/m8-dicas.png"
+    },
+    "modulo-9": {
+      "conceito": "/assets/images/matematica/trigonometria/modulo-9/m9-conceito.png",
+      "formula": "/assets/images/matematica/trigonometria/modulo-9/m9-formula.png",
+      "dicas": "/assets/images/matematica/trigonometria/modulo-9/m9-dicas.png"
+    },
+    "modulo-10": {
+      "conceito": "/assets/images/matematica/trigonometria/modulo-10/m10-conceito.png",
+      "formula": "/assets/images/matematica/trigonometria/modulo-10/m10-formula.png",
+      "dicas": "/assets/images/matematica/trigonometria/modulo-10/m10-dicas.png"
+    }
+  }
+}

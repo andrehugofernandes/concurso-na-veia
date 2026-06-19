@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Plano detalhado para implementar o componente <Activity> do React 19.2 no formulário de denúncia. Cobre: (1) substituição da renderização condicional por <Activity mode>, (2) lógica de detecção de mudança via editKey para resetar/preservar estados, (3) nova server action getDenunciaForEdit() para buscar dados completos, (4) funções de mapeamento Prisma → FormData para pré-popular todos os steps do wizard em modo edição.",
+  "updatedAt":  "2026-04-22T16:38:18.985775500Z",
+  "requestFeedback":  true
+}

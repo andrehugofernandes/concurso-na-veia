@@ -1,0 +1,98 @@
+Dashboard - Petrobras Quest
+AV
+A VAGA
+É MINHA
+Simulador de Concursos
+[0] (66,125)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4 bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90' href='/dashboard' />
+	[1] (15,125)<div  />
+	[2] (45,125)<span >Dashboard />
+Estudo
+[3] (66,200)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/aulas' />
+	[4] (15,200)<div  />
+	[5] (35,200)<span >Aulas />
+[6] (66,248)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/aulas/ingles/petrolingo' />
+	[7] (15,248)<div  />
+	[8] (44,248)<span >PetroLingo />
+	[9] (101,248)<span >ELITE TOTAL />
+[10] (66,296)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-rapido' />
+	[11] (15,296)<div  />
+	[12] (60,296)<span >Simulados Rápidos />
+[13] (66,345)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-especifico' />
+	[14] (15,345)<div  />
+	[15] (65,345)<span >Simulados Específicos />
+[16] (66,393)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/maratona-100' />
+	[17] (15,393)<div  />
+	[18] (50,393)<span >Maratona 100 />
+[19] (66,441)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/historico' />
+	[20] (15,441)<div  />
+	[21] (41,441)<span >Histórico />
+[22] (66,490)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/rankings' />
+	[23] (15,490)<div  />
+	[24] (41,490)<span >Rankings />
+Suporte
+[25] (66,564)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/seja-pro' />
+	[26] (15,564)<div  />
+	[27] (40,564)<span >Seja Pro />
+[28] (66,613)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/tickets' />
+	[29] (15,613)<div  />
+	[30] (58,613)<span >Abertura de Ticket />
+[31] (159,43)<button aria-label='Colapsar menu' class='p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300 flex-shrink-0' />
+Dashboard
+[32] (891,43)<button aria-label='Notificações' class='flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' id='radix-_r_0_' />
+[33] (918,43)<button aria-label='Tema Escuro' class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' />
+[34] (945,43)<button class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors' id='radix-_r_2_' />
+	[35] (945,43)<div  />
+[36] (973,43)<button class='relative h-10 w-10 rounded-full border-2 border-primary' id='radix-_r_4_' />
+	[37] (973,43)<span  />
+		[38] (973,43)<img  />
+Olá,
+André
+! 👋
+Pronto para superar seus limites hoje?
+[39] (174,248)<button class='pb-4 px-1 text-sm font-bold transition-all relative whitespace-nowrap text-primary'>Visão Geral />
+	[40] (174,266)<div  />
+[41] (227,248)<button class='pb-4 px-1 text-sm font-bold transition-all relative whitespace-nowrap text-muted-foreground hover:text-foreground'>Ranking />
+⚡
+Sequência
+0
+dias
+🎯
+Precisão
+0
+%
+📝
+Questões
+0
+🏆
+Nível
+Estagiário
+📊
+Meu Progresso Geral
+[42] (285,623)<div  />
+	Concluído
+	Restante
+11
+%
+Concluído
+▶️
+Continue de onde parou
+Você estava estudando
+Interpretação de Texto
+.
+[43] (936,550)<a class='w-full sm:w-auto text-center px-4 py-2.5 sm:py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg transition text-sm shadow-lg shadow-indigo-500/20' href='/aulas/portugues/interpretacao-texto'>Retomar Aula />
+Não iniciado
+0
+% Concluído
+📚
+Conteúdo Teórico e Aulas
+[44] (362,967)<a class='group bg-card backdrop-blur-lg rounded-xl p-6 border border-border shadow-lg hover:border-blue-500/50 transition-all hover:transform hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10' href='/aulas'>Acessar Aulas />
+	[45] (362,945)<div  />
+		[46] (193,945)<div >📖 />
+		[47] (363,945)<div  />
+			[48] (363,932)<h3 >Conteúdo Teórico />
+			[49] (363,963)<p >Aulas completas organizadas por edital, com acompanhamento de progresso. />
+	Acessar Aulas
+🎯
+Plano de Estudos
+Cronograma personalizado baseado no seu tempo disponível.
+Em desenvolvimento

@@ -1,0 +1,44 @@
+# Plano de Auditoria e Correção das Páginas de Aulas
+
+O usuário relatou problemas (como erros 404) ao acessar "Especifica Bloco III Arquitetura e BD" e queixas de layout de uma página que devem ser evitadas, referindo-se aos conteúdos específicos que ainda não possuem as aulas criadas.
+
+O objetivo do plano é criar os componentes necessários, ajustar o roteamento e padronizar a página "em construção" (placeholder) para as matérias que ainda não foram gravadas.
+
+## Relatório de Auditoria Atual (Causa do Problema)
+A investigação no código mostrou que **não há necessidade de "criar" diretórios para as matérias ou tópicos faltantes**, pois o Next.js já utiliza as rotas dinâmicas `/aulas/[materia]/page.tsx` e `/aulas/[materia]/[topico]/page.tsx`.
+
+No entanto, o erro **404 (Not Found)** acontece por conta da seguinte lógica em `/aulas/[materia]/page.tsx`:
+- Quando a `materiaId` passada pela URL é `especifica-bloco-iii-...`, o sistema busca a grade do usuário **através da propriedade `cargo` do profile logado**. 
+- Se a varíavel `usuario?.cargo` demorar a carregar, for nula ou não bater exatamente como configurado em `CARGO_ID_MAP`, o código define a `materia` como nulo e **imediatamente chama `notFound()` do Next.js**.
+
+Além disso, a página que dita a renderização da aula em si (`[topico]/page.tsx`) apresenta um bloco genérico "Em Desenvolvimento" 🏗️. Para evitar que esse seja o "layout a se evitar" (devido a formatações simplistas que quebram a estética da aplicação), faremos uma mudança de design no placeholder.
+
+## Proposed Changes
+
+### 1. [src/app/(dashboard)/aulas/[materia]/page.tsx](file:///c:/Workspace/petrobras-quest/src/app/%28dashboard%29/aulas/%5Bmateria%5D/page.tsx)
+#### [MODIFY] Melhorar a estabilidade da busca da matéria 
+Atualizar o *data fetching* da matéria para localizar as matérias específicas iterando diretamente em [profissoes-edital.ts](file:///c:/Workspace/petrobras-quest/src/lib/profissoes-edital.ts) caso o atalho de progresso do aluno local falhe.
+Isso impede que atrasos no fetch do `usuario` ou trocas manuais de URL disparem um 404 injustificado se o *slug* da matéria realmente existir dentro das regras do edital.
+Remover a dependência estrita do `usuario?.cargo` para visualizar a lista de tópicos de uma disciplina específica (embora o bloqueio por `requiredPlan` deva continuar valendo).
+
+### 2. [src/app/(dashboard)/aulas/[materia]/[topico]/page.tsx](file:///c:/Workspace/petrobras-quest/src/app/%28dashboard%29/aulas/%5Bmateria%5D/%5Btopico%5D/page.tsx)
+#### [MODIFY] Melhoria Estética do Fallback
+Ao invés do container estático listando "*Conteúdo em Desenvolvimento* 🚧", iremos substituir o fallback por um layout **Placeholder Premium**, no mesmo estilo das aulas criadas, incluindo:
+- Título da lição original.
+- Animação (pulsar e ícones dinâmicos de construção).
+- Botão desabilitado de marcação com XP.
+Isso evita que a página pareça "quebrada" ou incompleta.
+
+### 3. Scripts de Mapeamento (Novo Relatório de Auditoria)
+Criaremos um relatório final via script no terminal ou markdown no diretório raiz atestando que todas as profissões de [usuarios-teste.md](file:///c:/Workspace/petrobras-quest/source/usuarios-teste.md) resultam em rotas geráveis de aulas sem *gaps*. 
+
+## Verification Plan
+### Automated Tests
+1. Gerar scripts via Node (`test-aulas-routes.js`) para simular os slugs de todas as ocupações do edital extraindo os blocos III e II e verificando a exatidão das strings criadas.
+
+### Manual Verification
+1. Fazer login no sistema pelo Playwright com um personagem de TI (por ex: `andrehugo-analista-sistemas-eng-software-sup`).
+2. Clicar em Dashboard -> Aulas.
+3. Clicar no Bloco III ("Arquitetura e BD").
+4. Clicar em um dos primeiros tópicos.
+5. Observar (visual e logs de rede) se o 404 foi extinto e o *Placeholder* Premium é exibido confortavelmente na página de conteúdo de aula em construção, garantindo total conformidade com a primeira imagem de exemplo.

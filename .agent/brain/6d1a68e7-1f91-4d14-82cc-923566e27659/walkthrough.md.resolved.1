@@ -1,0 +1,26 @@
+# Walkthrough: Unificação de Branding e Layout
+
+Nesta etapa, consolidamos a identidade visual "A VAGA EH MINHA" e unificamos a experiência de navegação entre a Landing Page e o Painel Administrativo.
+
+## Mudanças Realizadas
+
+### 1. Logomarca Premium ([PetrobrasLogo.tsx](file:///c:/Workspace/petrobras-quest/src/components/PetrobrasLogo.tsx))
+- **Texto Atualizado**: Alterado de "É MINHA" para "EH MINHA", seguindo o padrão de branding do admin.
+- **Efeito Visual**: Mantido o ícone em overlay de 260% com badge preto, criando um efeito tridimensional impactante.
+- **Tipografia**: Ajustada para garantir consistência total com o sistema.
+
+### 2. Painel Administrativo ([admin-sidebar.tsx](file:///c:/Workspace/petrobras-quest/src/components/admin/admin-sidebar.tsx))
+- **Integração**: Substituímos a logo manual (baseada em texto "AV") pelo novo componente `<PetrobrasLogo />`.
+- **Estado Retraído**: Implementamos um tratamento especial para o menu retraído, exibindo apenas o ícone com o efeito de extravasação para manter a identidade mesmo em espaços reduzidos.
+
+### 3. Landing Page ([page.tsx](file:///c:/Workspace/petrobras-quest/src/app/page.tsx))
+- **Altura do Header**: Ajustada para `h-16 md:h-20`, espelhando exatamente a altura do header do admin para uma transição suave.
+- **Estilo de Navegação**: Refinamos os paddings e escalas para que a logo e os links de navegação fiquem perfeitamente alinhados ao novo grid.
+
+## Verificação Visual
+
+Abaixo, a representação do novo layout unificado:
+
+- [x] Texto "EH MINHA" em todas as instâncias.
+- [x] Header com altura consistente (80px no desktop).
+- [x] Logo com ícone grande em overlay.

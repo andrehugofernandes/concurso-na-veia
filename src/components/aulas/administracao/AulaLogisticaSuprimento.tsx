@@ -72,7 +72,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
   const handleModuleComplete = (modId: string, score: number) => {
     if (score >= 60) {
-      setCompletedModules((prev) => new Set([...prev, modId]));
+      updateCompletedModules([...completedModules, modId]);
       const progress = Math.round((completedModules.size / (MODULE_DEFS.length - 1)) * 100);
       props.onUpdateProgress?.(progress);
     }
@@ -284,12 +284,12 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Na gestão de estoques de suprimentos de uma refinaria de petróleo, o cálculo do Lote Econômico de Compras (LEC) busca minimizar o Custo Total de Estoque. Conceitualmente, o ponto ideal onde o lote econômico é atingido representa a intersecção de quais curvas de custos?"
           alternativas={[
-              { letra: "A", texto: "Custo de aquisição de bens e custo de oportunidade do capital", correta: false },
+            { letra: "A", texto: "Custo de aquisição de bens e custo de oportunidade do capital", correta: false },
               { letra: "B", texto: "Custo de pedido (emissão) e custo de posse (armazenagem e capital imobilizado)", correta: true },
               { letra: "C", texto: "Custo de transporte de suprimentos e custo de armazenagem física", correta: false },
               { letra: "D", texto: "Custo de falta de estoque e custo de seguro do inventário", correta: false },
               { letra: "E", texto: "Custo de movimentação interna e custo administrativo de notas fiscais", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A intersecção destas curvas indica o custo total mínimo."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -450,12 +450,12 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="A fórmula da Quantidade Econômica de Pedido (EOQ) é EOQ = √(2DS/H), onde D = demanda anual, S = custo por pedido e H = custo de manutenção por unidade por período. Se uma empresa tem D = 10.000 unidades/ano, S = R$ 200/pedido e H = R$ 50/unidade/ano, qual é o EOQ?"
           alternativas={[
-              { letra: "A", texto: "100 unidades", correta: false },
+            { letra: "A", texto: "100 unidades", correta: false },
               { letra: "B", texto: "200 unidades", correta: true },
               { letra: "C", texto: "283 unidades", correta: false },
               { letra: "D", texto: "400 unidades", correta: false },
               { letra: "E", texto: "500 unidades", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O EOQ minimiza o custo total de estoque (custo de pedido + custo de manutenção), ponto onde os dois custos se igualam."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "EOQ = √(2 × 10.000 × 200 / 50) = √(4.000.000 / 50) = √80.000 ≈ 283." },
@@ -612,12 +612,12 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="As funções básicas de um armazém, em ordem sequencial de fluxo, são:"
           alternativas={[
-              { letra: "A", texto: "Expedição → armazenagem → recebimento → separação.", correta: false },
+            { letra: "A", texto: "Expedição → armazenagem → recebimento → separação.", correta: false },
               { letra: "B", texto: "Recebimento → conferência → armazenagem → separação (picking) → embalagem → expedição.", correta: true },
               { letra: "C", texto: "Compras → transporte → estoque → vendas.", correta: false },
               { letra: "D", texto: "Planejamento → execução → controle → melhoria.", correta: false },
               { letra: "E", texto: "Entrada → processamento → saída → devolução.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Esse fluxo é cobrado pela CESGRANRIO em questões de logística."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -751,12 +751,12 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual modal de transporte apresenta maior capilaridade (acesso a qualquer ponto do território), sendo o mais utilizado no Brasil para cargas fracionadas e de médio prazo?"
           alternativas={[
-              { letra: "A", texto: "Ferroviário.", correta: false },
+            { letra: "A", texto: "Ferroviário.", correta: false },
               { letra: "B", texto: "Aquaviário de cabotagem.", correta: false },
               { letra: "C", texto: "Rodoviário.", correta: true },
               { letra: "D", texto: "Aéreo.", correta: false },
               { letra: "E", texto: "Dutoviário.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Desvantagem: custo mais alto por tonelada/km em comparação ao ferroviário e aquaviário."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "O modal rodoviário domina o Brasil: representa ~65% da matriz de transporte de cargas." },
@@ -901,12 +901,12 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="A logística inbound refere-se ao fluxo de materiais e componentes que entram na empresa vindo dos fornecedores. Qual das seguintes atividades faz parte da logística inbound?"
           alternativas={[
-              { letra: "A", texto: "Distribuição do produto acabado ao cliente final.", correta: false },
+            { letra: "A", texto: "Distribuição do produto acabado ao cliente final.", correta: false },
               { letra: "B", texto: "Separação de pedidos no centro de distribuição.", correta: false },
               { letra: "C", texto: "Negociação de frete de entrada, recebimento, conferência e integração dos materiais ao sistema de estoque.", correta: true },
               { letra: "D", texto: "Emissão de nota fiscal de venda ao cliente.", correta: false },
               { letra: "E", texto: "Roteirização de entregas ao varejo.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Seu desempenho impacta diretamente o lead time de produção e o nível de estoque."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1084,12 +1084,12 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é a principal diferença entre Logística e Supply Chain Management (SCM)?"
           alternativas={[
-              { letra: "A", texto: "São conceitos idênticos e intercambiáveis.", correta: false },
+            { letra: "A", texto: "São conceitos idênticos e intercambiáveis.", correta: false },
               { letra: "B", texto: "Logística foca no fluxo físico interno; SCM é a integração estratégica de processos de múltiplas organizações ao longo de toda a cadeia de valor, do fornecedor da matéria-prima ao consumidor final.", correta: true },
               { letra: "C", texto: "SCM é uma subárea da logística operacional.", correta: false },
               { letra: "D", texto: "Logística é mais ampla e estratégica que SCM.", correta: false },
               { letra: "E", texto: "SCM refere-se apenas à gestão de fornecedores diretos.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A logística é um componente do SCM."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Logística = fluxo físico eficiente de materiais e informações DENTRO da empresa (perspectiva interna)." },
@@ -1245,12 +1245,12 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O OTIF (On Time In Full) é um dos KPIs mais importantes da logística. Uma empresa realizou 1.000 entregas. Em 850, o produto chegou no prazo; em 800, chegou na quantidade correta; e em 750, atendeu ambos os critérios simultaneamente. Qual é o OTIF?"
           alternativas={[
-              { letra: "A", texto: "85%", correta: false },
+            { letra: "A", texto: "85%", correta: false },
               { letra: "B", texto: "80%", correta: false },
               { letra: "C", texto: "75%", correta: true },
               { letra: "D", texto: "70%", correta: false },
               { letra: "E", texto: "90%", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Valores de referência: acima de 95% é considerado excelente."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "OTIF = pedidos entregues no prazo E na quantidade correta / total de pedidos." },
@@ -1411,12 +1411,12 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="A Lei 12.305/2010 (Política Nacional de Resíduos Sólidos — PNRS) institui o conceito de responsabilidade compartilhada pelo ciclo de vida dos produtos. O que isso significa para as empresas?"
           alternativas={[
-              { letra: "A", texto: "Apenas os consumidores são responsáveis pelo descarte correto.", correta: false },
+            { letra: "A", texto: "Apenas os consumidores são responsáveis pelo descarte correto.", correta: false },
               { letra: "B", texto: "Fabricantes, importadores, distribuidores e comerciantes têm responsabilidade conjunta pela destinação ambientalmente adequada dos resíduos gerados por seus produtos.", correta: true },
               { letra: "C", texto: "A responsabilidade é exclusiva do poder público municipal.", correta: false },
               { letra: "D", texto: "Apenas produtos perigosos estão sujeitos à lei.", correta: false },
               { letra: "E", texto: "A lei se aplica apenas a embalagens plásticas.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Criou os Sistemas de Logística Reversa obrigatórios para: embalagens em geral, agrotóxicos, pneus, óleos lubrificantes, lâmpadas fluorescentes, pilhas e baterias, eletroeletrônicos."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1577,12 +1577,12 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Macaé (RJ) é considerada o maior polo logístico offshore do Brasil. Por que essa cidade tem essa posição estratégica?"
           alternativas={[
-              { letra: "A", texto: "Por ser o maior porto marítimo do Brasil em volume de contêineres.", correta: false },
+            { letra: "A", texto: "Por ser o maior porto marítimo do Brasil em volume de contêineres.", correta: false },
               { letra: "B", texto: "Por ser a base de apoio logístico mais próxima dos campos de petróleo do pré-sal e pós-sal da Bacia de Campos, concentrando bases de supply boats, heliponto, almoxarifados e empresas de serviços.", correta: true },
               { letra: "C", texto: "Por possuir o maior refinaria da América Latina.", correta: false },
               { letra: "D", texto: "Por ser o centro de distribuição de combustíveis para o Rio de Janeiro.", correta: false },
               { letra: "E", texto: "Por ter o maior aeroporto de cargas do país.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sua posição geográfica é privilegiada para acesso à Bacia de Campos (principal produtora histórica do Brasil)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1691,12 +1691,12 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma empresa de distribuição de derivados de petróleo analisa sua operação logística e identifica os seguintes dados anuais: demanda de 24.000 unidades, custo por pedido de R$ 300, custo de manutenção de R$ 120/unidade/ano, e estoque de segurança de 200 unidades. Considerando EOQ = √(2DS/H), qual é o ponto de pedido se o lead time médio é de 15 dias e a demanda diária é de 65 unidades?"
           alternativas={[
-              { letra: "A", texto: "775 unidades.", correta: false },
+            { letra: "A", texto: "775 unidades.", correta: false },
               { letra: "B", texto: "875 unidades", correta: false },
               { letra: "C", texto: "975 unidades", correta: true },
               { letra: "D", texto: "1.175 unidades", correta: false },
               { letra: "E", texto: "1.375 unidades", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O PP indica o nível de estoque em que deve ser acionado um novo pedido para não haver ruptura durante o lead time."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Ponto de Pedido = (Demanda diária × Lead time) + Estoque de segurança = (65 × 15) + 200 = 975 + 200 = 1.175 unidades." },

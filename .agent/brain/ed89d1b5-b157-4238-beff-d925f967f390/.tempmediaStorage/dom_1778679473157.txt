@@ -1,0 +1,114 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (66,42)<a class='flex items-center gap-6 md:gap-3 group hover:opacity-90 transition-opacity scale-75 md:scale-[0.80] origin-left' href='/' />
+	[1] (18,42)<div  />
+		[2] (18,37)<img  />
+	[3] (79,42)<div  />
+		[4] (79,36)<h1  />
+			[5] (52,36)<span >A VAGA />
+			[6] (98,36)<span >EH MINHA />
+		[7] (79,60)<span >Simulador de Concursos />
+[8] (67,120)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/dashboard' />
+	[9] (15,120)<div  />
+	[10] (46,120)<span >Dashboard />
+Estudo
+[11] (67,191)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90' href='/aulas' />
+	[12] (15,191)<div  />
+	[13] (35,191)<span >Aulas />
+[14] (67,238)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/aulas/ingles/petrolingo' />
+	[15] (15,238)<div  />
+	[16] (44,238)<span >PetroLingo />
+	[17] (102,238)<span >ELITE TOTAL />
+[18] (67,284)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-rapido' />
+	[19] (15,284)<div  />
+	[20] (60,284)<span >Simulados Rápidos />
+[21] (67,330)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-especifico' />
+	[22] (15,330)<div  />
+	[23] (66,330)<span >Simulados Específicos />
+[24] (67,376)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/maratona-100' />
+	[25] (15,376)<div  />
+	[26] (50,376)<span >Maratona 100 />
+[27] (67,423)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/historico' />
+	[28] (15,423)<div  />
+	[29] (41,423)<span >Histórico />
+[30] (67,469)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/rankings' />
+	[31] (15,469)<div  />
+	[32] (42,469)<span >Rankings />
+Suporte
+[33] (67,540)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/seja-pro' />
+	[34] (15,540)<div  />
+	[35] (40,540)<span >Seja Pro />
+[36] (67,587)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/tickets' />
+	[37] (15,587)<div  />
+	[38] (59,587)<span >Abertura de Ticket />
+[39] (161,42)<button aria-label='Colapsar menu' class='p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300 flex-shrink-0' />
+Aulas
+[40] (890,42)<button aria-label='Notificações' class='flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' id='radix-_r_6_' />
+[41] (917,42)<button aria-label='Tema Escuro' class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' />
+[42] (944,42)<button class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors' id='radix-_r_8_' />
+	[43] (944,42)<div  />
+[44] (973,42)<button class='relative h-10 w-10 rounded-full border-2 border-primary' id='radix-_r_a_' />
+	[45] (973,42)<span  />
+		[46] (973,42)<img  />
+[47] (228,181)<a class='inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition mb-8 group font-semibold' href='/dashboard'>Voltar ao Dashboard />
+	[48] (181,181)<span >← />
+📚
+Jornada de
+Aulas
+💎 ELITE TOTAL
+Sua Grade Completa para:
+Técnico de Suprimento de Bens e Serviços - Administração - Administração Geral, Qualidade, Logística e Compras
+Teoria Completa
+Prática Intensiva
+Conhecimentos Básicos
+[49] (307,879)<a class='group relative flex flex-col h-full bg-slate-50/50 dark:bg-card/40 backdrop-blur-xl rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-500 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/20 overflow-hidden' href='/aulas/portugues' />
+	[50] (307,775)<div  />
+		[51] (307,771)<div  />
+			[52] (211,771)<div  />
+				[53] (211,754)<div >📝 />
+				[54] (211,810)<span >11
+TÓPICOS />
+			[55] (331,744)<div  />
+				[56] (331,740)<h2 >Língua Portuguesa />
+			[57] (331,799)<div  />
+				[58] (331,795)<p >Gramática e interpretação de texto conforme Edital Petrobras 2026 />
+	[59] (307,967)<div  />
+		[60] (307,890)<div  />
+			[61] (196,890)<div  />
+			[62] (312,890)<span >Interpretação de Texto />
+		[63] (307,920)<div  />
+			[64] (196,920)<div  />
+			[65] (312,920)<span >Coesão e Coerência />
+		[66] (307,949)<div  />
+			[67] (196,949)<div  />
+			[68] (312,949)<span >Reescrita de Frases />
+		[69] (307,978)<div  />
+			[70] (196,978)<div  />
+			[71] (312,978)<span >Crase />
+		Pontuação
+[72] (584,879)<a class='group relative flex flex-col h-full bg-slate-50/50 dark:bg-card/40 backdrop-blur-xl rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-500 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/20 overflow-hidden' href='/aulas/matematica' />
+	[73] (584,775)<div  />
+		[74] (584,771)<div  />
+			[75] (489,771)<div  />
+				[76] (489,754)<div >🔢 />
+				[77] (489,810)<span >19
+TÓPICOS />
+			[78] (609,744)<div  />
+				[79] (609,740)<h2 >Matemática />
+			[80] (609,799)<div  />
+				[81] (609,795)<p >Raciocínio lógico-quantitativo conforme Edital Petrobras 2026 />
+	[82] (584,967)<div  />
+		[83] (584,893)<div  />
+			[84] (580,890)<span >Teoria dos Conjuntos />
+			[85] (691,893)<span >✓ />
+		[86] (584,926)<div  />
+			[87] (589,926)<span >Razão e Proporção />
+		[88] (584,955)<div  />
+			[89] (589,955)<span >Porcentagem />
+		[90] (584,985)<div  />
+			[91] (473,985)<div  />
+			[92] (589,985)<span >Equações de 1º Grau />
+
+</current_dom>

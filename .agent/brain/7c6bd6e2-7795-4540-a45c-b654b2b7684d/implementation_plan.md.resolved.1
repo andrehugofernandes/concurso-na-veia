@@ -1,0 +1,32 @@
+# Plano de Implementação - Integração de Músicas Suno AI (Módulos 1-6)
+
+Este plano visa concluir a integração das letras de músicas pedagógicas estilo "Sertanejo de Elite" nos módulos 1 a 6 da aula de Interpretação de Texto, garantindo que todo o curso esteja padronizado com o sistema musical.
+
+## Proposed Changes
+
+### [Frontend] AulaInterpretacaoTexto.tsx
+
+Atualização dos blocos de áudio nos ModulesConsolidation para refletir as letras e metadados pedagógicos finais.
+
+#### [MODIFY] [AulaInterpretacaoTexto.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaInterpretacaoTexto.tsx)
+
+Substituição dos objetos `audio={{...}}` nos seguintes módulos:
+
+1.  **Módulo 1:** Atualizar para "A Diferença Letal" (Compreensão vs. Interpretação).
+2.  **Módulo 2:** Atualizar para "A Viga Mestra" (Tópico Frasal).
+3.  **Módulo 3:** Atualizar para "A Cola das Ideias" (Coesão e Conectivos).
+4.  **Módulo 4:** Atualizar para "O DNA do Texto" (Tipologia Textual).
+5.  **Módulo 5:** Atualizar para "Turbina a Leitura" (Vícios e Velocidade).
+6.  **Módulo 6:** Atualizar para "O Detetive das Entrelinhas" (Inferência/Pressupostos).
+
+> [!NOTE]
+> Os módulos 7, 8, 9 e 10 já foram verificados e estão com as letras integradas corretamente.
+
+## Verification Plan
+
+### Automated Tests
+- Verificação visual de sintaxe JSX após a inserção.
+- `npm run lint` (se disponível) ou verificação manual de erros de compilação.
+
+### Manual Verification
+- Abrir a aula e navegar por todos os 10 módulos, verificando se cada `ModuleConsolidation` exibe a letra da música correta no player de áudio.

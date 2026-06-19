@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
   AlertBox,
-  QuizInterativo,
+  QuizInterativo, QuestaoResolvidaStepByStep,
   ModuleBanner,
   getRandomQuestions,
   AulaProps,
@@ -422,6 +422,28 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           }}
         />
 
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O modelo de competências da Petrobras é fundamentado no tripé C.H.A. O que representa a letra 'A'?"
+          alternativas={[
+            { letra: "A", texto: "Aptidão", correta: false },
+                { letra: "B", texto: "Atitude", correta: true },
+                { letra: "C", texto: "Aprendizado", correta: false },
+                { letra: "D", texto: "Agilidade", correta: false },
+                { letra: "E", texto: "Autoridade", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Atitude representa o 'querer fazer', ou seja, o aspecto comportamental e motivacional da competência." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
         <QuizInterativo
           questoes={quizM1}
           titulo="QUIZ: Fundamentos de Gestão de Pessoas"
@@ -645,6 +667,28 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           }}
         />
 
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O modelo de competências da Petrobras é fundamentado no tripé C.H.A. O que representa a letra 'A'?"
+          alternativas={[
+            { letra: "A", texto: "Aptidão", correta: false },
+                { letra: "B", texto: "Atitude", correta: true },
+                { letra: "C", texto: "Aprendizado", correta: false },
+                { letra: "D", texto: "Agilidade", correta: false },
+                { letra: "E", texto: "Autoridade", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Atitude representa o 'querer fazer', ou seja, o aspecto comportamental e motivacional da competência." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
         <QuizInterativo
           questoes={quizM2}
           titulo="QUIZ: Recrutamento e Seleção"
@@ -855,6 +899,28 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           }}
         />
 
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O modelo de competências da Petrobras é fundamentado no tripé C.H.A. O que representa a letra 'A'?"
+          alternativas={[
+            { letra: "A", texto: "Aptidão", correta: false },
+                { letra: "B", texto: "Atitude", correta: true },
+                { letra: "C", texto: "Aprendizado", correta: false },
+                { letra: "D", texto: "Agilidade", correta: false },
+                { letra: "E", texto: "Autoridade", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Atitude representa o 'querer fazer', ou seja, o aspecto comportamental e motivacional da competência." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
         <QuizInterativo
           questoes={quizM3}
           titulo="QUIZ: Admissão e Integração"
@@ -974,6 +1040,28 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           }}
         />
 
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O modelo de competências da Petrobras é fundamentado no tripé C.H.A. O que representa a letra 'A'?"
+          alternativas={[
+            { letra: "A", texto: "Aptidão", correta: false },
+                { letra: "B", texto: "Atitude", correta: true },
+                { letra: "C", texto: "Aprendizado", correta: false },
+                { letra: "D", texto: "Agilidade", correta: false },
+                { letra: "E", texto: "Autoridade", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Atitude representa o 'querer fazer', ou seja, o aspecto comportamental e motivacional da competência." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
         <QuizInterativo
           questoes={quizM4}
           titulo="QUIZ: Desenvolvimento e Capacitação"
@@ -1088,6 +1176,28 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           }}
         />
 
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O modelo de competências da Petrobras é fundamentado no tripé C.H.A. O que representa a letra 'A'?"
+          alternativas={[
+            { letra: "A", texto: "Aptidão", correta: false },
+                { letra: "B", texto: "Atitude", correta: true },
+                { letra: "C", texto: "Aprendizado", correta: false },
+                { letra: "D", texto: "Agilidade", correta: false },
+                { letra: "E", texto: "Autoridade", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Atitude representa o 'querer fazer', ou seja, o aspecto comportamental e motivacional da competência." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
         <QuizInterativo
           questoes={quizM5}
           titulo="QUIZ: Avaliação de Desempenho"
@@ -1179,6 +1289,28 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           }}
         />
 
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O modelo de competências da Petrobras é fundamentado no tripé C.H.A. O que representa a letra 'A'?"
+          alternativas={[
+            { letra: "A", texto: "Aptidão", correta: false },
+                { letra: "B", texto: "Atitude", correta: true },
+                { letra: "C", texto: "Aprendizado", correta: false },
+                { letra: "D", texto: "Agilidade", correta: false },
+                { letra: "E", texto: "Autoridade", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Atitude representa o 'querer fazer', ou seja, o aspecto comportamental e motivacional da competência." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
         <QuizInterativo
           questoes={quizM6}
           titulo="QUIZ: Gestão Salarial e Benefícios"
@@ -1382,6 +1514,28 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           }}
         />
 
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O modelo de competências da Petrobras é fundamentado no tripé C.H.A. O que representa a letra 'A'?"
+          alternativas={[
+            { letra: "A", texto: "Aptidão", correta: false },
+                { letra: "B", texto: "Atitude", correta: true },
+                { letra: "C", texto: "Aprendizado", correta: false },
+                { letra: "D", texto: "Agilidade", correta: false },
+                { letra: "E", texto: "Autoridade", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Atitude representa o 'querer fazer', ou seja, o aspecto comportamental e motivacional da competência." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
         <QuizInterativo
           questoes={quizM7}
           titulo="QUIZ: Relações Trabalhistas"
@@ -1584,6 +1738,28 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           }}
         />
 
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O modelo de competências da Petrobras é fundamentado no tripé C.H.A. O que representa a letra 'A'?"
+          alternativas={[
+            { letra: "A", texto: "Aptidão", correta: false },
+                { letra: "B", texto: "Atitude", correta: true },
+                { letra: "C", texto: "Aprendizado", correta: false },
+                { letra: "D", texto: "Agilidade", correta: false },
+                { letra: "E", texto: "Autoridade", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Atitude representa o 'querer fazer', ou seja, o aspecto comportamental e motivacional da competência." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
         <QuizInterativo
           questoes={quizM8}
           titulo="QUIZ: Gestão de Conflitos"
@@ -1775,6 +1951,28 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           }}
         />
 
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O modelo de competências da Petrobras é fundamentado no tripé C.H.A. O que representa a letra 'A'?"
+          alternativas={[
+            { letra: "A", texto: "Aptidão", correta: false },
+                { letra: "B", texto: "Atitude", correta: true },
+                { letra: "C", texto: "Aprendizado", correta: false },
+                { letra: "D", texto: "Agilidade", correta: false },
+                { letra: "E", texto: "Autoridade", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Atitude representa o 'querer fazer', ou seja, o aspecto comportamental e motivacional da competência." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
         <QuizInterativo
           questoes={quizM9}
           titulo="QUIZ: Gestão de Pessoas na Petrobras"
@@ -1971,6 +2169,28 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           }}
         />
 
+        {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="O modelo de competências da Petrobras é fundamentado no tripé C.H.A. O que representa a letra 'A'?"
+          alternativas={[
+            { letra: "A", texto: "Aptidão", correta: false },
+                { letra: "B", texto: "Atitude", correta: true },
+                { letra: "C", texto: "Aprendizado", correta: false },
+                { letra: "D", texto: "Agilidade", correta: false },
+                { letra: "E", texto: "Autoridade", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Atitude representa o 'querer fazer', ou seja, o aspecto comportamental e motivacional da competência." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
         <QuizInterativo
           questoes={quizM10}
           titulo="QUIZ: Simulado Geral"

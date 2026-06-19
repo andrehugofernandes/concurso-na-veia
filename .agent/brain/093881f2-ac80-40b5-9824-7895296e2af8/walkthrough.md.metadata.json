@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Resumo da correção do erro de tipo no arquivo de listagem de galerias. O problema foi resolvido garantindo que um objeto padrão seja usado caso os dados da action estejam ausentes.",
+  "updatedAt": "2026-04-10T23:36:10.902456600Z"
+}

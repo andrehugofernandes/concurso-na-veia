@@ -1,0 +1,50 @@
+# Plano de Reparo e Expansão ULTIMATE: Aula Classes de Palavras
+
+O arquivo `AulaClassesPalavras.tsx` apresenta erros de sintaxe JSX críticos (tags truncadas e sobrepostas) entre os Módulos 3 e 4. Este plano detalha a restauração da integridade do código e a finalização da padronização SAAS/ULTIMATE.
+
+## User Review Required
+
+> [!IMPORTANT]
+> O arquivo de aula está atualmente **quebrado** (não compila). O reparo envolverá uma substituição em larga escala dos blocos dos Módulos 4 a 10 para garantir que todos sigam o padrão de "Rich Intro" (5 parágrafos) aprovado.
+
+## Mudanças Propostas
+
+### 🛠️ Estratégia de Saneamento Crítico (Cleanup & Render)
+Para restaurar a funcionalidade da aula e garantir que o padrão ULTIMATE seja visível, executaremos os seguintes passos:
+
+1. **Correção de Dependências**:
+   - Adicionar `LuMonitor` e `LuCirclePlay as LuPlayCircle` aos imports do `react-icons/lu`.
+   - Garantir que todos os componentes de ícones usados na "Mesa de Revisão" estejam disponíveis.
+
+2. **Limpeza de Sintaxe (Regex-Based)**:
+   - Remover todos os blocos de comentários JSX `{/* ... */}` que foram inseridos indevidamente dentro de objetos ou props.
+   - Corrigir a estrutura do Módulo 3 (linha 1025) e Módulo 7 (linha 1519), onde o parser JSX está falhando.
+
+3. **Re-Unificação Estrutural (Manual/Precision)**:
+   - Em vez de scripts agressivos, usaremos `replace_file_content` para injetar cirurgicamente os blocos de "Mesa de Revisão" e "Rich Intro" nos locais corretos, validando o fechamento de tags em cada passo.
+
+### 📚 Conteúdo por Módulo (Standard SAAS)
+| Módulo | Nome | Rich Intro | Mnemônico |
+| :--- | :--- | :--- | :--- |
+| **M4** | Pronome | Reescrito (5 parágrafos) | **SUB.RE.** |
+| **M5** | Verbo | Reescrito (5 parágrafos) | **F.E.A.** |
+| **M6** | Advérbio | Reescrito (5 parágrafos) | **C.I.L.A.** |
+| **M7** | Preposição | Reescrito (5 parágrafos) | **L.I.G.A.** |
+| **M8** | Conjunção | Reescrito (5 parágrafos) | **C.O.N.E.** |
+| **M9** | Interjeição | Reescrito (5 parágrafos) | **E.M.O.** |
+| **M10** | Numeral | Reescrito (5 parágrafos) | **C.O.F.M.** |
+
+### 🤖 Automação V4 (Mesa de Revisão)
+- O script `ultimate-fixer.js` V4 será executado novamente (após o reparo manual da sintaxe) para garantir que todas as abas de "Macete Visual" contenham os mnemônicos acima.
+
+## Plano de Verificação
+
+### Testes Automatizados
+- `npm run lint`: Verificar se todos os erros de sintaxe foram eliminados.
+- `npm run dev`: Validar se a página carrega sem erros de runtime "mv is not defined".
+
+### Verificação Manual
+- Navegar pelos 10 módulos e confirmar:
+  1. A presença dos 5 parágrafos densos por módulo.
+  2. O mnemônico gigante na aba "Macete Visual".
+  3. A inexistência de cores "hardcoded" (todas devem seguir o padrão mv[N]).

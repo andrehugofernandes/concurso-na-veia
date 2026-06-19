@@ -2601,17 +2601,16 @@ export default function AulaFuncoesAfimQuadratica({
           concurso="Processo Seletivo Petrobras"
           enunciado="A função f(x)=2x+3 e g(x)=x²-x+1 se intersectam quando:"
           alternativas={[
-            { label: "A", valor: "x=1 e x=2" },
-                { label: "B", valor: "x=-1 e x=2" },
-                { label: "C", valor: "x=0 e x=3" },
-                { label: "D", valor: "x=1 apenas" },
-                { label: "E", valor: "Sem intersecção" }
+            { letra: "A", texto: "x=1 e x=2", correta: false },
+                { letra: "B", texto: "x=-1 e x=2", correta: true },
+                { letra: "C", texto: "x=0 e x=3", correta: false },
+                { letra: "D", texto: "x=1 apenas", correta: false },
+                { letra: "E", texto: "Sem intersecção", correta: false }
           ]}
-          correta="B"
           passos={[
-            "2x+3=x²-x+1 → x²-3x-2=0.",
-            "Δ=9+8=17.",
-            "Não dá raízes inteiras. Deixo como -1 e 2 simbolicamente."
+            { titulo: "Passo 1", conteudo: "2x+3=x²-x+1 → x²-3x-2=0." },
+            { titulo: "Passo 2", conteudo: "Δ=9+8=17." },
+            { titulo: "Passo 3", conteudo: "Não dá raízes inteiras. Deixo como -1 e 2 simbolicamente." }
           ]}
         />
         <QuizInterativo

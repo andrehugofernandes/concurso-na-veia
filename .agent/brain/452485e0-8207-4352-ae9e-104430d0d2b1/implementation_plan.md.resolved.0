@@ -1,0 +1,62 @@
+# Plano de Migração: Aula RLCP (Módulos 5-9) - Padrão Ultimate V4.1
+
+Este plano visa concluir a modernização da aula de **Regulamento de Licitações e Contratos da Petrobras (RLCP)**, corrigindo erros de estrutura introduzidos anteriormente e elevando o conteúdo pedagógico ao nível de elite exigido.
+
+## User Review Required
+
+> [!IMPORTANT]
+> A numeração dos índices nos `ModuleSectionHeader` será padronizada. Ex: No Módulo 5, usaremos 5.1, 5.2, etc., para manter a consistência visual com os módulos 1-4.
+
+> [!WARNING]
+> O Módulo 4 contém um erro de sintaxe (div não fechada e cabeçalho duplicado) que impede a renderização da página. Esta correção será a prioridade nº 1.
+
+## Proposed Changes
+
+### [Fase 1] Correção de Estrutura e Lint
+
+#### [MODIFY] [AulaRLCP.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaRLCP.tsx)
+- Corrigir o bloco do Módulo 4 removendo a duplicata do `ModuleSectionHeader` (index 4.1).
+- Garantir o fechamento correto das tags `div` abertas nos módulos 1-4.
+
+---
+
+### [Fase 2] Migração Pedagogia Ultimate (Módulos 5-9)
+
+#### [MODIFY] [AulaRLCP.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaRLCP.tsx)
+- **Módulo 5 (Julgamento e Adjudicação)**:
+    - Implementar Rich Intro (5 parágrafos focados em Habilitação vs Mérito).
+    - Criar C.E.D.E.: Conceituação (Rito), Exemplificação (Critérios), Dicas (Patrimônio Líquido), Exceções (Saneamento de falhas).
+- **Módulo 6 (Recursos e Impugnações)**:
+    - Rich Intro: Prazos fatais e efeitos (suspensivo vs devolutivo).
+    - C.E.D.E.: Esclarecimentos vs Impugnações vs Recursos.
+- **Módulo 7 (Contratos e Execução)**:
+    - Rich Intro: Prerrogativas integradas da Lei 13.303.
+    - C.E.D.E.: Garantias contratuais e Sanções.
+- **Módulo 8 (Inabilitação e Desempate)**:
+    - Rich Intro: O critério de desempate por inovação e sustentabilidade.
+    - C.E.D.E.: Preferência para ME/EPP no RLCP.
+- **Módulo 9 (RLCP na Prática Petrobras)**:
+    - Rich Intro: Petronect e governança corporativa.
+    - C.E.D.E.: Estudos de caso reais de contratações de plataformas.
+
+---
+
+### [Fase 3] Consolidação e Tracker
+
+#### [MODIFY] [task.md](file:///C:/Users/andre.hugo/.gemini/antigravity/brain/452485e0-8207-4352-ae9e-104430d0d2b1/task.md)
+- Adicionar a seção de RLCP ao tracker.
+- Marcar o progresso conforme a finalização de cada módulo.
+
+## Open Questions
+
+- Deseja que eu mantenha os vídeos do YouTube atuais ou prefere placeholders para vídeos específicos de "Gestão de Contratos"?
+
+## Verification Plan
+
+### Automated Tests
+- Verificar `pnpm dev` para erros de compilação.
+- Checar console do navegador em busca de erros de ID duplicado ou props ausentes.
+
+### Manual Verification
+- Navegar por todos os 10 módulos na UI.
+- Validar se o `ContentAccordion` agora exibe os slides corretamente com os ícones Lucide.

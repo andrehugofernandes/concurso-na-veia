@@ -1,0 +1,73 @@
+# Plano de Implementação - Correção ModuleConsolidation (AulaOrtografia)
+
+Este plano descreve a correção do erro de TypeScript em `AulaOrtografia.tsx` relacionado ao componente `ModuleConsolidation`.
+
+## Problema Identificado
+O componente `ModuleConsolidation` no Módulo 1 de `AulaOrtografia.tsx` está utilizando uma propriedade legada `items`, enquanto a definição atual em `shared.tsx` espera um conjunto de objetos estruturados (`video`, `resumoVisual`, `maceteVisual` e `audio`).
+
+## Mudanças Propostas
+
+### 1. Refatoração em AulaOrtografia.tsx
+Refatorar a chamada do componente `ModuleConsolidation` na linha 1082 para o novo formato de propriedades estruturadas.
+
+#### [MODIFY] [AulaOrtografia.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaOrtografia.tsx)
+O código será alterado de:
+```tsx
+<ModuleConsolidation
+  items={[
+    "Ditongo: V + SV (ou SV + V) na mesma sílaba.",
+    "Hiato: Vogais que se separam na divisão silábica.",
+    "Tritongo: SV + V + SV sempre unidos.",
+    "Separação silábica: Base essencial para acentuação."
+  ]}
+  variant={mv[1] || "blue"}
+/>
+```
+Para:
+```tsx
+<ModuleConsolidation
+  index={1}
+  variant={mv[1] || "amber"}
+  video={{
+    videoId: "dQw4w9WgXcQ",
+    title: "Encontros Vocálicos na Prática",
+    duration: "08:00"
+  }}
+  resumoVisual={{
+    moduloNome: "Encontros Vocálicos",
+    tituloAula: "Ortografia",
+    materia: "Português",
+    images: [
+      {
+        title: "Ditongos e Hiatos",
+        type: "Mapa Mental",
+        placeholderColor: "bg-amber-100",
+      },
+      {
+        title: "Tritongos e Separação",
+        type: "Diagrama",
+        placeholderColor: "bg-blue-100",
+      },
+    ],
+  }}
+  maceteVisual={{
+    title: "O Trio Parada Dura",
+    content: (
+      <div className="space-y-2">
+        <p><strong>Ditongo:</strong> Juntos na mesma sílaba.</p>
+        <p><strong>Hiato:</strong> Separados em sílabas vizinhas.</p>
+        <p><strong>Tritongo:</strong> Três vogais que nunca se largam.</p>
+      </div>
+    ),
+  }}
+  audio={{
+    audioUrl: "#",
+    titulo: "Resumo: Encontros Vocálicos",
+    artista: "Prof. André",
+  }}
+/>
+```
+
+## Verificação
+1. **Compilação**: Verificar no terminal (pnpm dev) se o erro de `Type Mismatch` foi eliminado.
+2. **Visual**: Testar a navegação entre as abas (Vídeo, Resumo, Macete, Áudio) no primeiro módulo da aula de Ortografia.

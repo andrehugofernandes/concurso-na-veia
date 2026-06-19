@@ -1,0 +1,70 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+AV
+A VAGA
+É MINHA
+Simulador de Concursos
+[0] (194,553)<nav class='flex-1 px-2 py-4 overflow-y-hidden' scrollable='true' />
+	[1] (194,143)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/dashboard' title='Dashboard' />
+		[2] (194,143)<div  />
+	[3] (194,227)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90 justify-center px-2' href='/aulas' title='Aulas' />
+		[4] (194,227)<div  />
+	[5] (194,299)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/simulado-rapido' title='Simulados Rápidos' />
+		[6] (194,299)<div  />
+	[7] (194,372)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/simulado-especifico' title='Simulados Específicos' />
+		[8] (194,372)<div  />
+	[9] (194,445)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/maratona-100' title='Maratona 100' />
+		[10] (194,445)<div  />
+	[11] (194,517)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/historico' title='Histórico' />
+		[12] (194,517)<div  />
+	[13] (194,590)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/rankings' title='Rankings' />
+		[14] (194,590)<div  />
+	[15] (194,681)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/seja-pro' title='Seja Pro' />
+		[16] (194,681)<div  />
+	[17] (194,754)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/tickets' title='Abertura de Ticket' />
+		[18] (194,754)<div  />
+[19] (457,45)<button aria-label='Expandir menu' class='p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300 flex-shrink-0' />
+Reading Strategies
+[20] (660,45)<button aria-label='Notificações' class='flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' id='radix-_r_6_' />
+[21] (748,45)<button aria-label='Tema Escuro' class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' />
+[22] (836,45)<button class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors' id='radix-_r_8_' />
+	[23] (836,45)<div  />
+[24] (928,45)<button class='relative h-10 w-10 rounded-full border-2 border-primary' id='radix-_r_a_' />
+	[25] (928,45)<span  />
+		[26] (928,45)<span >AT />
+[27] (536,199)<a class='px-3 py-2 rounded-lg bg-secondary/80 dark:bg-slate-700 text-secondary-foreground dark:text-slate-200 hover:bg-secondary transition flex items-center gap-2 font-medium border border-border/50 shrink-0 text-left leading-tight' href='/aulas/ingles' />
+	[28] (477,199)<span >← />
+	[29] (564,199)<span  />
+		[30] (564,187)<span >Língua />
+		[31] (564,211)<span >Inglesa />
+[32] (861,187)<a class='px-3 py-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center justify-center gap-2 shadow-sm border border-border/50 text-[10px] md:text-xs min-w-[80px]' href='/aulas/ingles/verb-tenses'>Próximo />
+	[33] (912,187)<span >→ />
+Língua Inglesa
+Reading Strategies
+Técnicas de leitura e skimming
+[34] (558,519)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 py-1.5 px-2 rounded-lg border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group min-w-0' id='radix-_r_c_-trigger-modulo-1' role='tab' />
+	[35] (558,517)<div  />
+		[36] (558,507)<span >Módulo 1 />
+		[37] (558,533)<span >Prediction & Context />
+[38] (831,519)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 py-1.5 px-2 rounded-lg border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group min-w-0' id='radix-_r_c_-trigger-modulo-2' role='tab' />
+	[39] (831,517)<div  />
+		[40] (831,507)<span >Módulo 2 />
+		[41] (831,533)<span >Skimming (The Gist) />
+[42] (643,596)<a aria-label='Voltar às Aulas' class='mt-2 w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors' href='/aulas/ingles' />
+[43] (747,596)<button aria-label='Mostrar cabeçalho' class='mt-2 w-10 h-10 flex items-center justify-center rounded-full border border-border/50 bg-background/95 backdrop-blur shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0' />
+Módulo
+1
+Prediction & Pre-Reading
+Aqueça o cérebro antes de ler: use títulos, imagens e seu conhecimento de mundo para antecipar o texto.
+[44] (100,973)<span >Aulas />
+Simulados
+[45] (497,920)<a class='flex flex-col items-center gap-0.5 -mt-[52px]' href='/dashboard'>Dashboard />
+	[46] (497,908)<div  />
+	Dashboard
+Provas
+[47] (874,956)<a class='flex flex-col items-center gap-1 px-3 py-2 rounded transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100' href='/maratona-100' />
+	[48] (874,973)<span >Maratona />
+
+</current_dom>

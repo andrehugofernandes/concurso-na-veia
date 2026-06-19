@@ -1,0 +1,30 @@
+# Implementação: Login AD + 2FA — PMAVV
+
+## Fase A — Reorganizar rota
+- [x] Mover/recriar `app/(auth)/login/page.tsx` com fluxo completo
+- [x] Verificar/criar `app/(auth)/layout.tsx`
+- [x] Remover [app/login/page.tsx](file:///c:/GSW/PMAVV/PMAVV/app/login/page.tsx) (rota antiga)
+
+## Fase B — Componentes de UI
+- [x] [components/layouts/auth-layout.tsx](file:///c:/GSW/PMAVV/PMAVV/components/layouts/auth-layout.tsx)
+- [x] [components/auth/LoginForm.tsx](file:///c:/GSW/PMAVV/PMAVV/components/auth/LoginForm.tsx)
+- [x] [components/auth/TwoFactorVerifyForm.tsx](file:///c:/GSW/PMAVV/PMAVV/components/auth/TwoFactorVerifyForm.tsx)
+- [x] [components/auth/TwoFactorSetupForm.tsx](file:///c:/GSW/PMAVV/PMAVV/components/auth/TwoFactorSetupForm.tsx)
+
+## Fase C — Adaptar [login-action.ts](file:///c:/GSW/PMAVV/PMAVV/app/%28auth%29/actions/login-action.ts)
+- [x] Remover geração direta de accessToken/refreshToken
+- [x] Usar [signTemp2FAToken](file:///c:/GSW/PMAVV/PMAVV/lib/auth-ad.ts#65-69) ao validar AD com sucesso
+- [x] Retornar `{ requires2FA: true, tempToken }`
+
+## Fase D — APIs de 2FA
+- [x] [app/api/auth/2fa/status/route.ts](file:///c:/GSW/PMAVV/PMAVV/app/api/auth/2fa/status/route.ts) — verifica se usuário precisa de setup
+- [x] [app/api/auth/2fa/setup/route.ts](file:///c:/GSW/PMAVV/PMAVV/app/api/auth/2fa/setup/route.ts) — gera QR code TOTP
+- [x] [app/api/auth/2fa/enable/route.ts](file:///c:/GSW/PMAVV/PMAVV/app/api/auth/2fa/enable/route.ts) — ativa 2FA após primeiro código válido
+- [x] [app/api/auth/verify-2fa/route.ts](file:///c:/GSW/PMAVV/PMAVV/app/api/auth/verify-2fa/route.ts) — valida código TOTP e cria sessão real
+
+## Fase E — Proteção de rotas (sem middleware)
+- [x] Adaptar `app/(app)/layout.tsx` — verificação de `accessToken` via `cookies()` + `redirect('/login')` sem middleware
+- [x] Adicionar `totp_secret` e `totp_enabled` ao schema Prisma + `prisma generate`
+- [x] Instalar `otplib@12` e `qrcode` + `@types/qrcode`
+- [x] Exportar [verifyTemp2FAToken](file:///c:/GSW/PMAVV/PMAVV/lib/auth-ad.ts#70-73) de [lib/auth-ad.ts](file:///c:/GSW/PMAVV/PMAVV/lib/auth-ad.ts)
+- [x] Remover rota `app/login/` antiga

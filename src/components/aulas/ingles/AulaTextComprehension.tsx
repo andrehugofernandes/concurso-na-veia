@@ -2519,27 +2519,27 @@ export default function AulaTextComprehension({
                 <h4 className="font-bold text-foreground">O Pipeline de 5 Passos (Automático)</h4>
                 <div className="space-y-3 text-lg">
                   <TimelineItem
-                    numero={1}
+                    passo={1}
                     titulo="SKIM (60 segundos)"
                     descricao="Lê título + 1ª sentença + última. Entende tema geral e estrutura."
                   />
                   <TimelineItem
-                    numero={2}
+                    passo={2}
                     titulo="LÊ QUESTÕES (60 segundos)"
                     descricao="Identifica tipos de questão. Sabe O QUÊ procurar (main idea, detail, etc)."
                   />
                   <TimelineItem
-                    numero={3}
+                    passo={3}
                     titulo="SCAN + RELEIA CONTEXTO (180 segundos)"
                     descricao="Para Detail: procura palavra-chave. Para Inference: relê contexto. Para Main Idea: valida com skim."
                   />
                   <TimelineItem
-                    numero={4}
+                    passo={4}
                     titulo="DEDUZ SIGNIFICADO (Inline)"
                     descricao="Para Vocabulary: deduz por contexto (pré-posições, verbos, adjetivos). Para Tone: procura adjetivos."
                   />
                   <TimelineItem
-                    numero={5}
+                    passo={5}
                     titulo="RESPONDE + ELIMINA (30 segundos/questão)"
                     descricao="Marca a opção. Se dúvida, usa processo de eliminação. Avança."
                   />

@@ -1,0 +1,21 @@
+# Walkthrough: Rollout do Macete Visual & Correção de Imagens
+
+Concluí a restauração completa da Aula de Conjuntos, resolvendo o problema das imagens que não apareciam no novo componente de consolidação.
+
+## Melhorias e Correções Realizadas
+
+### 1. Restauração Total de Imagens
+- **O Problema**: O componente [ModuleConsolidation](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#3302-3407) utiliza internamente o campo `imageUrl` para exibir as figuras no "Resumo Virtual", mas o código estava enviando os links através do campo `src` (ou apenas placeholders).
+- **A Solução**: Atualizei todos os **10 módulos** da [AulaConjuntos.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/AulaConjuntos.tsx), mapeando e restaurando as imagens originais que haviam sido removidas das seções antigas.
+- **Resultado**: As abas de "Resumo Virtual" agora exibem corretamente os Mapas Mentais, Esquemas e Fórmulas de cada tema.
+
+### 2. Padronização "Macete Visual"
+- **Design de Elite**: Todos os módulos agora possuem a Síntese Estratégica em 2 colunas com suporte a emojis.
+- **Foco Pedagógico**: O conteúdo visual foi ajustado para ser pertinente a cada módulo (ex: Operações, Venn, Conjuntos Numéricos, etc.).
+
+### 3. Ajustes Técnicos Residais
+- **JSX Syntax**: Mantive as proteções para chaves de conjuntos `{"{...}"}` para evitar erros de compilação.
+- **Performance**: Removi as seções redundantes de "Resumo" e "Multimídia" antigas, centralizando tudo no [ModuleConsolidation](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#3302-3407).
+
+## Próximos Passos
+- A Aula de Conjuntos agora serve como o **Modelo de Ouro** para o rollout nas demais disciplinas, conforme detalhado no [Plano de Rollout](file:///C:/Users/andre.hugo/.gemini/antigravity/brain/8301ae96-315d-4f8b-b104-1eda2e0a8f0f/rollout_plan_macete_visual.md).

@@ -24,6 +24,19 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
     moduleNumber: 1,
     questions: [
       {
+        id: 999,
+        question: "No Regulamento de Licitações e Contratos da Petrobras (RLCP), a contratação direta por dispensa de licitação para atendimento de situações de emergência ou de calamidade pública tem prazo de vigência contratual limitado a:",
+        options: [
+          "90 dias consecutivos, vedada a prorrogação.",
+          "180 dias consecutivos, vedada a prorrogação baseada na mesma emergência.",
+          "365 dias, permitida uma única prorrogação por igual período.",
+          "5 anos, condicionado à aprovação anual da diretoria.",
+          "120 dias, com possibilidade de prorrogação em caso de força maior."
+        ],
+        correct: 1,
+        explanation: "A dispensa de licitação por emergência na Lei 13.303/16 (e RLCP) limita o contrato a 180 dias consecutivos e impede a sua prorrogação sob a mesma justificativa emergencial."
+      },
+      {
         id: 101,
         question:
           "O que significa RLCP e qual é sua relação com a Lei 13.303?",
@@ -32,6 +45,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Regulação de Lucros e Custos Petrolíferos, independente de Lei 13.303",
           "Relação de Limites de Contratos da Petrobras, não vinculado a legislação",
           "Regulação Legal de Contratos Privados, aplicável apenas a S.A. privadas",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 0,
         explanation:
@@ -45,6 +59,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Definir procedimentos transparentes, eficientes e legais para contratações de bens e serviços",
           "Reduzir custos operacionais independentemente de qualidade",
           "Permitir compras diretas sem processo competitivo",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -58,6 +73,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Publicidade (transparência em todos os atos)",
           "Sigilo das propostas apresentadas",
           "Preferência por fornecedores conhecidos",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -72,6 +88,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Licitação pública abre competição a todos; dispensa ocorre em casos específicos (emergência, fornecedor único)",
           "Dispensa de licitação é mais transparente que licitação pública",
           "Não há diferença entre os dois procedimentos",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -86,6 +103,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Aplica-se apenas a Petrobras e suas subsidiárias diretas",
           "Aplica-se a Petrobras em todas suas operações (Brasil e exterior) conforme Lei 13.303",
           "Aplica-se apenas a licitações acima de R$ 10 milhões",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 2,
         explanation:
@@ -99,6 +117,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Permitindo que Petrobras escolha arbitrariamente qualquer licitante",
           "Impedindo empresas pequenas de participar",
           "Garantindo que todas as propostas recebam o mesmo preço",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 0,
         explanation:
@@ -120,6 +139,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Concorrência é aberta a todos os interessados; Tomada de Preços exige cadastro/qualificação prévia",
           "Não há diferença prática entre as duas",
           "Concorrência é mais barata que Tomada de Preços",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -133,6 +153,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Para pequenas compras de baixo valor e fornecedores conhecidos",
           "Nunca, pois viola princípio de igualdade",
           "Apenas para contratações de consultoria internacional",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -147,6 +168,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Julgamento onde qualidade técnica é mais importante que preço (ex: consultoria, pesquisa, projetos complexos)",
           "Licitação restrita a empresas com mais de 20 anos",
           "Não existe essa modalidade em RLCP",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -161,6 +183,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Técnica+Preço é sempre mais barato",
           "Menor Preço garante melhor qualidade",
           "Não há diferença, são sinônimos",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 0,
         explanation:
@@ -175,6 +198,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Mínimo de 3 licitantes",
           "Mínimo de 5 licitantes",
           "Todos os cadastrados devem ser convidados",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -189,6 +213,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Dispensa de Licitação (por emergência/calamidade) ou Convite acelerado",
           "Nenhuma modalidade, Petrobras decide diretamente",
           "Sempre Melhor Técnica",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -210,6 +235,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Edital, publicidade, recebimento de propostas, julgamento, homologação, adjudicação",
           "Conversa informal com fornecedores e escolha direta",
           "Apenas lançamento do edital, sem etapas subsequentes",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -224,6 +250,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "5 dias úteis (para Concorrência, prazo maior que Tomada de Preços)",
           "30 dias corridos",
           "Não há prazo mínimo definido",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -238,6 +265,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Confirmação formal pela autoridade de que o julgamento foi correto e legal",
           "Assinatura do contrato com o fornecedor",
           "Recebimento do bem ou serviço",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -252,6 +280,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Julgamento: análise das propostas e escolha do vencedor. Adjudicação: formalização legal do contrato com o vencedor",
           "Julgamento é confidencial, adjudicação é pública",
           "Adjudicação é antes de julgamento",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -266,6 +295,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Celebração de contrato entre Petrobras e fornecedor vencedor",
           "Sugestão para futuro uso de fornecedor",
           "Recomendação não-vinculante",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -280,6 +310,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Cancelar licitação e republicar edital corrigido com novo prazo",
           "Corrigir edital secretamente durante julgamento",
           "Penalizar licitantes por não notarem o erro",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -301,6 +332,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Documento que descreve especificações técnicas, quantidade, prazos e critérios de qualidade do bem/serviço",
           "Contrato final assinado com fornecedor",
           "Parecer jurídico do departamento legal",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -314,6 +346,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Publicar regras claras, critérios de julgamento e informações de participação",
           "Favorecer fornecedores conhecidos",
           "Reduzir número de participantes",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -328,6 +361,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Objeto da compra, modalidade, critério de julgamento, prazos, TR, requisitos técnicos, preço estimado",
           "Nenhuma informação específica, apenas convite informal",
           "Apenas lista de fornecedores pré-aprovados",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -342,6 +376,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Estimativa de Petrobras sobre custo justo da compra (baseada em pesquisa de mercado)",
           "Preço secreto que não pode ser divulgado",
           "Preço máximo que qualquer fornecedor pode cobrar",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -356,6 +391,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "TR é anexo ao Edital e detalha especificações técnicas",
           "Edital é anexo do TR",
           "Não há relação prática",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -370,6 +406,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Garante clareza, reduz dúvidas, evita interpretações conflitantes e facilita julgamento justo",
           "Permite Petrobras escolher fornecedor preferido",
           "Não tem importância prática",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -391,6 +428,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Comissão de Licitação (membros designados, multidisciplinar)",
           "Qualquer funcionário de Petrobras",
           "Uma pessoa apenas para garantir sigilo",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -405,6 +443,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Proposta com menor preço que atenda especificações técnicas é vencedora",
           "Preço é secreto e não influencia",
           "Qualquer preço é aceito",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -419,6 +458,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Verificação de que licitante é idôneo, tem capacidade técnica e financeira",
           "Assinatura do contrato",
           "Entrega do bem ou serviço",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -433,6 +473,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Proposta é eliminada; próxima proposta qualificada é analisada",
           "Fornecedor é impedido de futuras licitações",
           "Petrobras paga parcialmente pelo que não atende",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -447,6 +488,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Formalização legal de que o vencedor é adjudicatário; realizada por autoridade de Petrobras",
           "Entrega final do produto",
           "Publicação em jornal oficial",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -461,6 +503,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Aplicar critérios de desempate estabelecidos no Edital (ex: técnica, localização, prazo)",
           "Dividir contrato entre as duas",
           "Rejeitar ambas e licitar novamente",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -482,6 +525,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Impugnação: desafio ao Edital antes do julgamento. Recurso: desafio ao resultado após julgamento",
           "Impugnação é mais rápida que recurso",
           "Recurso não é permitido em RLCP",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -496,6 +540,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Até 2 dias úteis antes do recebimento de propostas",
           "Não há prazo definido",
           "Apenas no dia do julgamento",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -510,6 +555,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Corrigir o edital, republicar e conceder novo prazo a todos",
           "Aceitar a impugnação mas não mudar o edital",
           "Desqualificar o licitante que impugnou",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -524,6 +570,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Até 2 dias úteis após publicação do resultado",
           "Nenhum prazo, recurso pode ser apresentado sempre",
           "Apenas 1 hora após resultado",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -538,6 +585,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Petrobras aguarda julgamento do recurso antes de formalizar adjudicação (contrato não é celebrado)",
           "Fornecedor vencedor recebe o contrato mesmo assim",
           "Recurso não tem efeito suspensivo em RLCP",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -552,6 +600,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Garantir conformidade com Lei 13.303 e transparência; proteger direitos de licitantes",
           "Aumentar custos de Petrobras",
           "Favorecer empresa que perdeu a licitação",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -573,6 +622,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Celebração de contrato entre Petrobras e fornecedor adjudicado",
           "Publicação em jornal, sem contrato",
           "Pagamento antecipado",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -587,6 +637,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Verificação inicial que bem/serviço foi entregue conforme especificações; permite período de testes",
           "Aceitação final sem direito a devolução",
           "Documento de rescisão de contrato",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -601,6 +652,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Fin do contrato sempre sem consequências",
           "Fornecedor recebe bônus por rescindir",
           "Rescisão não é permitida em contratos com Petrobras",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 0,
         explanation:
@@ -615,6 +667,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Segurança financeira de que fornecedor cumprirá obrigações (caução, seguro, fiança)",
           "Contrato não tem garantia",
           "Apenas para contratos acima de R$ 1 bilhão",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -629,6 +682,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Cláusula obrigatória em todos os contratos Petrobras",
           "Cláusula que proíbe modificações ao contrato",
           "Cláusula em latim que não existe em direito brasileiro",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 0,
         explanation:
@@ -643,6 +697,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Responsável por vícios/defeitos descobertos (período de garantia contratual)",
           "Petrobras volta a fazer licitação imediatamente",
           "Fornecedor pode voltar e mudar o que entregou",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -664,6 +719,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Falta de documentação exigida, capacidade técnica insuficiente ou problemas legais/financeiros",
           "Porque fornecedor é pequeno demais",
           "Inabilitação não existe em RLCP",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -678,6 +734,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Situação legal que proíbe licitante de participar (ex: servidor Petrobras, sócio de gestor público, vencedor que descumpriu contrato anterior)",
           "Impedimento não existe em legislação",
           "Apenas uma sugestão de Petrobras",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -692,6 +749,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Inabilitação imediata; proposta não segue para análise de preço",
           "Inabilitação apenas após análise de preço",
           "Inabilitado pode participar da próxima licitação sem revisão",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -706,6 +764,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Critérios estabelecidos no Edital (ex: menor prazo, melhor localização, preferência por empresa pequena)",
           "Aquele com maior preço vence",
           "Não há critério, Petrobras escolhe",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -720,6 +779,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Proposta NÃO atende especificações técnicas do Termo de Referência",
           "Fornecedor é estrangeiro",
           "Proposta chegou 1 minuto atrasada",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -734,6 +794,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Inabilitação: licitante não qualificado (habilitação). Desclassificação: proposta não atende (técnica/preço)",
           "Desclassificação é mais grave",
           "Não há diferença prática entre as duas",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -755,6 +816,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "RLCP se aplica com ajustes para legislação local; Petrobras publica editais em português e inglês",
           "Apenas Lei 6.404/76 é usada no exterior",
           "Petrobras não faz compras internacionais",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -769,6 +831,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Edital deve prever cláusulas de reajuste indexado para proteger Petrobras e fornecedor de volatilidade",
           "Petrobras sempre rescinde contratos caros",
           "Preço não importa em RLCP",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -783,6 +846,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Edital pode exigir critérios de sustentabilidade (ex: fornecedor certificado ISO 14001) e aplicar como critério de desempate",
           "Petrobras sempre escolhe fornecedor mais barato, independente de sustentabilidade",
           "Sustentabilidade é penalizada em RLCP",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -797,6 +861,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Transparência é PRINCÍPIO FUNDAMENTAL: editais públicos, critérios claros, atas de julgamento divulgadas",
           "Transparência reduz competição",
           "Petrobras pode manter editais confidenciais",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -811,6 +876,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Mantém arquivo com edital, proposta, atas de julgamento, decisões de recurso, homologação, adjudicação",
           "Apenas preço final é registrado",
           "Documentação é destruída após 3 meses",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -825,6 +891,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "RLCP garante procedimento transparente, reduz discricionariedade, previne fraude e corrupção",
           "Anticorrupção é mais importante que RLCP",
           "Transparência em licitação não previne corrupção",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -846,6 +913,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Licitante pode impugnar edital (até 2 dias úteis antes do recebimento). Petrobras analisa e, se válida, corrige e republica edital",
           "Desqualificar licitante que impugna",
           "Criar novo edital sem informar ao licitante",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -860,6 +928,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Adjudicação pode ser cassada; Petrobras convida próximo vencedor (ou relicita)",
           "Contrato é automaticamente assinado",
           "Fornecedor é multado mas contrato segue",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -874,6 +943,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Aplicar multa contratual por atraso; se atraso continua, rescindir contrato",
           "Solicitar aumento de preço ao fornecedor",
           "Aceitar entrega sem multa, mas descontar do próximo contrato",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -888,6 +958,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Anular licitação; servidor tem impedimento legal de participar indiretamente (através de sócio)",
           "Permitir contrato, mas aumentar preço",
           "Apenas avisar ao servidor",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -902,6 +973,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Desclassificar como preço manifestamente excessivo; continuar julgando outras propostas",
           "Obrigar fornecedor a reduzir preço",
           "Pagar preço máximo que Petrobras considera justo",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:
@@ -916,6 +988,7 @@ export const QUIZ_RLCP: Record<string, Quiz> = {
           "Mínimo de 5 anos: período de garantia e arquivo obrigatório de documentação",
           "Apenas 1 ano",
           "Contrato é destruído após 6 meses",
+          "Nenhuma das alternativas anteriores está correta.",
         ],
         correct: 1,
         explanation:

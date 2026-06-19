@@ -1,0 +1,64 @@
+# Plano de Finalização: Português 100% (Ultimate V4.1 - Cesgranrio Edition)
+
+Este plano visa garantir que todas as aulas de Português estejam em conformidade com o padrão **Ultimate V4.1**, apresentando uma "Rich Intro" impactante e seguindo a metodologia **C.E.D.E.** (Conteúdo, Engajamento, Design, Avaliação), com foco total no Edital Petrobras/Transpetro 2023.2.
+
+> [!IMPORTANT]
+> **Segurança de Dados**: Todas as alterações serão cirúrgicas. Não haverá deleção de conteúdo pedagógico consolidado. Novos módulos e componentes serão integrados mantendo o que já foi aprovado.
+
+## Auditoria de Status Atual
+
+| Aula | Módulos | Rich Intro | C.E.D.E. | Quiz Pool | Status |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| Sintaxe | 10 | ✅ | ⚠️ Parcial | ⚠️ Pequeno | Pendente Consolidação |
+| Tipos Textuais | 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Engajamento |
+| **Ortografia** | **6** | ✅ | ⚠️ Parcial | ✅ Grande | **Expansão (6 -> 10)** |
+| Concordância | 10 | ✅ | ✅ | ✅ | Foco Revisão Final |
+| Coesão/Coerência| 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Consolidação |
+| Pontuação | 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Consolidação |
+| Regência | 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Consolidação |
+| Crase | 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Consolidação |
+| Classes de Palavras| 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Consolidação |
+| Interpretação | 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Consolidação |
+| Reescrita Frases | 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Consolidação |
+
+## Mudanças Propostas
+
+### 1. Expansão Estratégica: Aula de Ortografia (6 -> 10 Módulos)
+Adicionaremos 4 módulos focados nas exigências da Cesgranrio:
+- **Módulo 7: Acentuação Gráfica (Novo Acordo)**: Regras das oxítonas, paroxítonas e proparoxítonas + Mudanças do Acordo.
+- **Módulo 8: Hifenização Progressiva**: Uso do hífen com prefixos e em compostos.
+- **Módulo 9: Grafia de Conectivos e Parônimos**: Porquês, onde/aonde, mal/mau, mas/mais.
+- **Módulo 10: Laboratório de Ortografia Cesgranrio**: Simulado de revisão com "pegadinhas" históricas da banca.
+
+### 2. Padronização C.E.D.E. (Componentes de Engajamento)
+Inserção do componente `ModuleConsolidation` em **todos** os módulos de Português. Ele servirá como o "Check-out" pedagógico antes do Quiz.
+
+### 3. Reforço de Quizzes
+- Integração das pools existentes nos arquivos `/data/*.ts` para garantir aleatoriedade (5 questões por rodada).
+- Criação de questões autorais para os novos módulos de Ortografia.
+
+---
+
+## Cronograma de Execução
+
+1. **Sprint 1 (Ortografia)**: Expansão para 10 módulos e refatoração completa.
+2. **Sprint 2 (Sintaxe & Classes)**: Adição de Consolidação e preenchimento de Quiz Pools.
+3. **Sprint 3 (Morfossintaxe)**: Concordância, Regência, Crase e Pontuação.
+4. **Sprint 4 (Texto)**: Interpretação, Coesão/Coerência e Reescritura.
+
+## Perguntas Abertas (User Review Required)
+
+> [!NOTE]
+> Você confirmou a **Opção Recomendada**. Vou trabalhar módulo por módulo para evitar gargalos de contexto e garantir a integridade dos dados. Alguma outra prioridade antes de começarmos a Sprint 1 (Ortografia)?
+
+---
+
+## Plano de Verificação
+
+### Testes Manuais
+- Navegação fluida entre os 10 módulos de cada aula.
+- Verificação visual dos `ModuleBanner` e `ModuleConsolidation`.
+- Teste de aleatoriedade dos Quizzes (clicar em 'Recomeçar' e ver questões novas).
+
+### Auditoria de Código
+- `python .agent/scripts/checklist.py` após cada Sprint.

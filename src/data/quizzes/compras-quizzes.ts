@@ -18,6 +18,19 @@ export const COMPRAS_QUIZZES: Record<string, Quiz> = {
     moduleNumber: 1,
     questions: [
       {
+        id: 999,
+        question: "Durante o processo de seleção de um novo fornecedor de válvulas industriais para refinarias da Petrobras, a equipe de suprimento optou por um modelo cujo preço de aquisição na nota fiscal era 15% superior à menor oferta do mercado. A justificativa residiu no menor consumo energético do equipamento e no maior intervalo entre manutenções preventivas, o que reduz custos operacionais totais. Essa decisão ampara-se no conceito de:",
+        options: [
+          "Lote Econômico de Compras (LEC)",
+          "Custo Total de Propriedade (TCO)",
+          "Just-in-Time (JIT)",
+          "Valor de Face Operacional",
+          "Ponto de Ressuprimento Dinâmico"
+        ],
+        correct: 1,
+        explanation: "O Custo Total de Propriedade (TCO) analisa todos os custos do ciclo de vida de um bem (aquisição, operação, manutenção e descarte) e não apenas o preço de compra inicial na nota fiscal."
+      },
+      {
         id: 101,
         question:
           "A função de compras é definida como a atividade responsável por adquirir materiais, equipamentos e serviços nas condições certas. Qual dos seguintes conceitos resume os objetivos centrais da área de compras?",

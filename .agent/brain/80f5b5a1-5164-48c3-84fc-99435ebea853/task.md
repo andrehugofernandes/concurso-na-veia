@@ -1,0 +1,18 @@
+# Task: Definição do Padrão de Backend (Server Actions)
+
+- [x] Pesquisa e Diagnóstico
+    - [x] Verificar dependências relacionadas (`next-safe-action`, `zod`)
+    - [x] Analisar Server Actions existentes (`src/app/(auth)/actions`)
+    - [x] Revisar PRD em busca de diretrizes implícitas
+    - [x] Localizar classes Tailwind do título (AuthLayout)
+- [x] Configuração de Ambiente
+    - [x] Configurar user.name e user.email do Git
+- [ ] Planejamento
+    - [x] Criar `implementation_plan.md` para o padrão de Server Actions
+    - [x] Definir estrutura de pastas para Actions (Action Types, Validations, Handlers)
+    - [ ] Definir padrão de tratamento de erros e logs
+- [ ] Execução (Exemplo/Base)
+    - [ ] Implementar uma Action de exemplo seguindo o novo padrão
+- [ ] Verificação
+    - [ ] Validar fluxo de erro/sucesso no frontend
+    - [ ] Criar `walkthrough.md` com a documentação do padrão

@@ -1,0 +1,18 @@
+# Tarefa: Ajustar Prompt e Músicas Suno AI para Versões Curtas
+
+## Planejamento
+
+- [x] Criar plano de implementação e validar com o usuário <!-- id: 1 -->
+- [x] Atualizar `source/PROMPT_MUSICA_SUNO.md` com o novo padrão "Versão Curta" <!-- id: 2 -->
+- [x] Refatorar os 10 arquivos de música em `public/assets/suno/portugues/interpretacao-texto/` <!-- id: 3 -->
+
+## Execução
+
+- [x] Aplicar mudanças no arquivo de sistema de prompts <!-- id: 4 -->
+- [x] Aplicar mudanças nos arquivos de música individuais <!-- id: 5 -->
+
+## Verificação
+
+- [x] Validar estrutura dos arquivos markdown <!-- id: 6 -->
+- [x] Verificar consistência do prompt adicional <!-- id: 7 -->
+- [x] Criar walkthrough final <!-- id: 8 -->

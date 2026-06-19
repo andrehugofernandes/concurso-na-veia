@@ -1,0 +1,139 @@
+# Análise de Aulas Faltantes e Plano de Ação
+
+## 🔍 Varredura de Profissões e Aulas (Gap Analysis)
+
+Analisando a estrutura do sistema (arquivos [profissoes-edital.ts](file:///c:/Workspace/petrobras-quest/src/lib/profissoes-edital.ts) e [cargos.ts](file:///c:/Workspace/petrobras-quest/src/data/cargos.ts)) e o diretório de componentes `src/components/aulas/`, identifiquei o seguinte cenário sobre as aulas específicas (além das básicas Português, Matemática e Inglês):
+
+### ✅ Profissões com Aulas já Iniciadas ou Construídas
+1. **Analista de Sistemas (TI)**: Coberto pelas aulas na pasta `ti/` (Engenharia de Software, Banco de Dados, Infraestrutura, etc.).
+2. **Administração / Suprimento (Administração)**: Coberto extensivamente na pasta `administracao/` (Gestão de Processos, Projetos, Pessoas, Lei 13.303, etc.).
+3. **Técnico de Operação**: Parcialmente coberto na pasta `operacao/` com aulas de Termodinâmica e Mecânica dos Fluidos.
+
+### ❌ Profissões com Aulas Específicas Faltantes
+Considerando a lista de 17 profissões mencionada (foco principal do edital), as seguintes áreas ainda **não possuem pastas nem aulas específicas construídas** no sistema:
+
+- **Saúde e Segurança:**
+  - Técnico de Enfermagem do Trabalho
+  - Técnico de Segurança do Trabalho
+- **Manutenção e Inspeção:**
+  - Técnico de Manutenção - Caldeiraria
+  - Técnico de Manutenção - Elétrica
+  - Técnico de Manutenção - Mecânica
+  - Técnico de Manutenção - Instrumentação
+  - Técnico de Inspeção de Equipamentos e Instalações
+- **Projetos, Construção e Montagem:**
+  - Técnico em Edificações
+  - Técnico de PCM - Elétrica
+  - Técnico de PCM - Mecânica
+  - Técnico de PCM - Instrumentação
+- **Logística e Química:**
+  - Técnico de Logística de Transportes
+  - Técnico de Química de Petróleo
+- **Engenharias (Nível Superior faltantes):**
+  - Engenharia de Petróleo
+  - Engenharia Mecânica
+  - Engenharia Elétrica / Civil / Segurança
+- **Operação de Lastro:** Faltam conteúdos específicos de navegação e estabilidade.
+
+---
+
+## 🧠 Brainstorm: Estratégia de Criação de Aulas
+
+Conforme solicitado, utilizaremos o protocolo `@[.agent/workflows/brainstorm.md]` e o novo padrão **ULTIMATE** definido em `@[.agent/workflows/aula-ultimate.md]` para traçar as estratégias de implantação.
+
+### Contexto
+Temos um passivo considerável de aulas específicas para cobrir 17 profissões. O processo de criação de cada aula é extremamente denso (mínimo de 3500 linhas no padrão ULTIMATE, exigindo um **Rich Intro Section** de 80-150 linhas por módulo + formato C.E.D.E como reforço). Precisamos de uma abordagem escalável.
+
+---
+
+### Opção A: Foco Horizontal (Módulos Introdutórios por Profissão)
+Criar primeiramente a "Aula 1" de Conhecimentos Específicos para TODAS as profissões faltantes antes de aprofundar em# [Clustering Strategy] Petrobras Technical Roles - Safety Modules
+
+This plan outlines the implementation of shared safety modules (NR-10, NR-35) for all technical job roles (Maintenance, Inspection, Project/Edifications), following the **ULTIMATE** content standard.
+
+## Proposed Changes
+
+---
+
+### [Component] Safety & Regulatory Standards Cluster
+
+Summary: Upgrading existing NR-10 to ULTIMATE and creating a comprehensive NR-35 module from scratch. These modules will be shared across 17+ job roles.
+
+#### [MODIFY] [AulaNr10.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/seguranca/AulaNr10.tsx)
+- **Upgrade to ULTIMATE**:
+    - Expand modules from 5 to 10 if necessary (Adding SEP detailed, First Aid, Fire Safety).
+    - Fill all `ModuleConsolidation` blocks (Video, Visual Summary, Macetes, Audio).
+    - Ensure 4 C.E.D.E. accordions per module.
+    - Enrich introductory texts (Rich Intro) to reach 80-150 lines per module.
+- **Fix Props**: Resolve all TypeScript/Lint errors in shared components.
+
+#### [NEW] [AulaNr35.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/seguranca/AulaNr35.tsx)
+- **Implementation (10 Modules)**:
+    - M1: Objective/Definitions (2023 update).
+    - M2: Responsabilities.
+    - M3: Training & Certification.
+    - M4: AR/PT & Impeding Conditions.
+    - M5: SPCO vs SPCQ.
+    - M6: Equipment (Harness, Lanyards, SRL).
+    - M7: Anchors (Annex II).
+    - M8: Ladders (Annex III - NEW).
+    - M9: Emergency & Rescue.
+    - M10: Master Simulation (Cesgranrio focus).
+- **Format**: Full ULTIMATE pattern from the start.
+
+#### [NEW] [nr35-quizzes.ts](file:///c:/Workspace/petrobras-quest/src/components/aulas/seguranca/data/nr35-quizzes.ts)
+- Create a pool of 40+ questions (8 per module) based on the latest NR-35 standard and Cesgranrio style.
+
+## Verification Plan
+
+### Automated Tests
+- `npx tsc --noEmit` to verify type safety across shared components.
+- Audit scripts from `aula-ultimate.md` workflow.
+
+### Manual Verification
+- Verify text-to-quiz coverage (100% rule).
+- check visual responsiveness of new comparison tables and accordions.
+ Base Comum Expandida (Clustering)
+Muitas profissões compartilham módulos. Exemplo: "Metrologia" e "Resistência dos Materiais" servem tanto para Manutenção Mecânica quanto para Inspeção de Equipamentos. O plano é criar as aulas "compartilhadas" primeiro.
+- ✅ **Prós:** Otimização brutal do tempo. Uma aula criada atende 3 ou 4 cargos simultaneamente.
+- ❌ **Contras:** Pode ser necessário refinar muito bem os textos introdutórios futuros para que a aula não pareça "genérica" ao cargo.
+- 📊 **Esforço:** Baixo/Médio (Eficiência máxima de reuso de componentes).
+
+---
+
+### Opção B: Foco Vertical por Demanda (Priorização de Editais Anteriores)
+Priorizar a criação completa (Blocos I, II e III) das profissões com maior número de vagas históricas ou de maior apelo na plataforma (ex: Mecânica, Elétrica, Segurança do Trabalho).
+- ✅ **Prós:** Cria trilhas completas, garantindo que o usuário de uma profissão popular tenha material até a data da prova. Consistência e fluidez para a IA que gerará o conteúdo.
+- ❌ **Contras:** Profissões "menores" (ex: Op. de Lastro, Caldeiraria) ficarão sem conteúdo por um tempo maior.
+- 📊 **Esforço:** Médio (Menos trocas de contexto).
+
+---
+
+### Opção C: Framework de Base Comum Expandida (Clustering)
+Muitas profissões compartilham módulos. Exemplo: "Metrologia" e "Resistência dos Materiais" servem tanto para Manutenção Mecânica quanto para Inspeção de Equipamentos. O plano é criar as aulas "compartilhadas" primeiro.
+- ✅ **Prós:** Otimização brutal do tempo. Uma aula criada atende 3 ou 4 cargos simultaneamente.
+- ❌ **Contras:** Pode ser necessário refinar muito bem os textos introdutórios futuros para que a aula não pareça "genérica" ao cargo.
+- 📊 **Esforço:** Baixo/Médio (Eficiência máxima de reuso de componentes).
+
+---
+
+## 💡 Estratégia Escolhida: Opção C (Clustering)
+
+O usuário optou pela estratégia de eficiência máxima: criar aulas que atendam múltiplas profissões simultaneamente.
+
+### Próximos Passos Imediatos:
+
+#### 1. Mapeamento de Frequência (Cluster Map)
+- **Top 1: Metrologia e Instrumentação** (Aparece em: Caldeiraria, Mecânica, Instrumentação, Inspeção).
+- **Top 2: Normas Regulamentadoras (NRs)** (Aparece em: Segurança, Enfermagem, Elétrica, Operação, Edificações).
+- **Top 3: Desenho Técnico** (Aparece em: Caldeiraria, Mecânica, Inspeção, Edificações).
+- **Top 4: Resistência dos Materiais** (Aparece em: Caldeiraria, Mecânica, Engenharias).
+
+#### 2. Execução: Aula de Metrologia (Primeiro Alvo)
+Vamos iniciar a construção da **Aula de Metrologia e Medições**, pois ela é o pré-requisito técnico para o maior número de cargos de nível técnico.
+
+### Checklist ULTIMATE para cada Aula:
+- [ ] Criar arquivo `AulaMetrologia.tsx` na pasta `src/components/aulas/shared/` ou de uma área mestre.
+- [ ] Aplicar **Rich Intro Section** (80-150 linhas por módulo).
+- [ ] Integrar **C.E.D.E.** e **Quizzes** validados.
+- [ ] Rodar `fix_tags` e sanitização.

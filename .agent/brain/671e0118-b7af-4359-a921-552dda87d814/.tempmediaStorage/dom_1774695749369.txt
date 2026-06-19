@@ -1,0 +1,221 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+AV
+A VAGA
+É MINHA
+Simulador de Concursos
+[0] (66,111)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/dashboard' />
+	[1] (15,111)<div  />
+	[2] (45,111)<span >Dashboard />
+Estudo
+[3] (66,177)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90' href='/aulas' />
+	[4] (15,177)<div  />
+	[5] (35,177)<span >Aulas />
+[6] (66,219)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/aulas/ingles/petrolingo' />
+	[7] (15,219)<div  />
+	[8] (44,219)<span >PetroLingo />
+	[9] (101,219)<span >ELITE TOTAL />
+[10] (66,262)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-rapido' />
+	[11] (15,262)<div  />
+	[12] (60,262)<span >Simulados Rápidos />
+[13] (66,305)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-especifico' />
+	[14] (15,305)<div  />
+	[15] (65,305)<span >Simulados Específicos />
+[16] (66,347)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/maratona-100' />
+	[17] (15,347)<div  />
+	[18] (50,347)<span >Maratona 100 />
+[19] (66,390)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/historico' />
+	[20] (15,390)<div  />
+	[21] (41,390)<span >Histórico />
+[22] (66,433)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/rankings' />
+	[23] (15,433)<div  />
+	[24] (41,433)<span >Rankings />
+Suporte
+[25] (66,499)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/seja-pro' />
+	[26] (15,499)<div  />
+	[27] (40,499)<span >Seja Pro />
+[28] (66,541)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/tickets' />
+	[29] (15,541)<div  />
+	[30] (58,541)<span >Abertura de Ticket />
+[31] (159,38)<button aria-label='Colapsar menu' class='p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300 flex-shrink-0' />
+Aulas
+[32] (891,38)<button aria-label='Notificações' class='flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' id='radix-_r_6_' />
+[33] (918,38)<button aria-label='Tema Escuro' class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' />
+[34] (945,38)<button class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors' id='radix-_r_8_' />
+	[35] (945,38)<div  />
+[36] (973,38)<button class='relative h-10 w-10 rounded-full border-2 border-primary' id='radix-_r_a_' />
+	[37] (973,38)<span  />
+		[38] (973,38)<img  />
+[39] (300,160)<a class='group relative flex flex-col h-full bg-slate-50/50 dark:bg-card/40 backdrop-blur-xl rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-500 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/20 overflow-hidden' href='/aulas/especifica-bloco-i-administracao' />
+	[40] (300,94)<div  />
+		[41] (300,90)<div  />
+			[42] (217,90)<div >📚 />
+				📚
+				[43] (217,142)<span >4
+TÓPICOS />
+			[44] (331,88)<div >Bloco I - Administração />
+				Bloco I - Administração
+				[45] (331,124)<p >Conhecimentos específicos para Técnico de Suprimento de Bens e Serviços - Administração />
+	[46] (300,259)<div  />
+		[47] (300,218)<div  />
+			[48] (194,218)<div  />
+			[49] (305,218)<span >Administração geral />
+		[50] (300,245)<div  />
+			[51] (194,245)<div  />
+			[52] (305,245)<span >Gestão de qualidade />
+		[53] (300,273)<div  />
+			[54] (194,273)<div  />
+			[55] (305,273)<span >Logística />
+		[56] (300,300)<div  />
+			[57] (194,300)<div  />
+			[58] (305,300)<span >Compras />
+[59] (567,160)<a class='group relative flex flex-col h-full bg-slate-50/50 dark:bg-card/40 backdrop-blur-xl rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-500 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/20 overflow-hidden' href='/aulas/especifica-bloco-ii-legislacao' />
+	[60] (567,94)<div  />
+		[61] (567,90)<div  />
+			[62] (484,90)<div >🔧 />
+				🔧
+				[63] (484,142)<span >2
+TÓPICOS />
+			[64] (598,88)<div >Bloco II - Legislação />
+				Bloco II - Legislação
+				[65] (598,124)<p >Conhecimentos específicos para Técnico de Suprimento de Bens e Serviços - Administração />
+	[66] (567,259)<div  />
+		[67] (567,218)<div  />
+			[68] (461,218)<div  />
+			[69] (572,218)<span >Lei 13.303 (Art. 28-91) />
+		[70] (567,245)<div  />
+			[71] (461,245)<div  />
+			[72] (572,245)<span >Regulamento de Licitações Petrobras (RLCP) />
+[73] (833,160)<a class='group relative flex flex-col h-full bg-slate-50/50 dark:bg-card/40 backdrop-blur-xl rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-500 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/20 overflow-hidden' href='/aulas/especifica-bloco-iii-tributos' />
+	[74] (833,94)<div  />
+		[75] (833,90)<div  />
+			[76] (751,90)<div >🧠 />
+				🧠
+				[77] (751,142)<span >3
+TÓPICOS />
+			[78] (865,88)<div >Bloco III - Tributos />
+				Bloco III - Tributos
+				[79] (865,124)<p >Conhecimentos específicos para Técnico de Suprimento de Bens e Serviços - Administração />
+	[80] (833,259)<div  />
+		[81] (833,218)<div  />
+			[82] (728,218)<div  />
+			[83] (839,218)<span >Contabilidade básica />
+		[84] (833,245)<div  />
+			[85] (728,245)<div  />
+			[86] (839,245)<span >Direito tributário />
+		[87] (833,273)<div  />
+			[88] (728,273)<div  />
+			[89] (839,273)<span >Administração tributária />
+Catálogo Elite - Nível Superior
+Bases Nível Superior (Catálogo Elite)
+[90] (299,814)<a class='group relative flex flex-col h-full bg-slate-50/50 dark:bg-card/40 backdrop-blur-xl rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-500 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/20 overflow-hidden' href='/aulas/portugues' />
+	[91] (299,718)<div  />
+		[92] (299,714)<div  />
+			[93] (218,714)<div  />
+				[94] (218,696)<div >📝 />
+				[95] (218,767)<span >11
+TÓPICOS />
+			[96] (330,704)<div  />
+				[97] (330,683)<h2 >Língua Portuguesa />
+				[98] (330,741)<p >Gramática e interpretação de texto conforme Edital Petrobras 2026 />
+	[99] (299,914)<div  />
+		[100] (299,843)<div  />
+			[101] (195,843)<div  />
+			[102] (304,843)<span >Interpretação de Texto />
+		[103] (299,870)<div  />
+			[104] (195,870)<div  />
+			[105] (304,870)<span >Coesão e Coerência />
+		[106] (299,897)<div  />
+			[107] (195,897)<div  />
+			[108] (304,897)<span >Reescrita de Frases />
+		[109] (299,924)<div  />
+			[110] (195,924)<div  />
+			[111] (304,924)<span >Crase />
+		[112] (299,952)<div  />
+			[113] (195,952)<div  />
+			[114] (304,952)<span >Pontuação />
+		[115] (299,979)<div >+
+6
+outros tópicos />
+			[116] (265,981)<span >→ />
+[117] (554,814)<a class='group relative flex flex-col h-full bg-slate-50/50 dark:bg-card/40 backdrop-blur-xl rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-500 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/20 overflow-hidden' href='/aulas/matematica' />
+	[118] (554,718)<div  />
+		[119] (554,714)<div  />
+			[120] (473,714)<div  />
+				[121] (473,696)<div >🔢 />
+				[122] (473,767)<span >19
+TÓPICOS />
+			[123] (585,689)<div  />
+				[124] (585,668)<h2 >Matemática />
+				[125] (585,711)<p >Raciocínio lógico-quantitativo conforme Edital Petrobras 2026 />
+	[126] (554,914)<div >+
+14
+outros tópicos />
+		[127] (554,846)<div  />
+			[128] (450,843)<div  />
+			[129] (551,843)<span >Teoria dos Conjuntos />
+			[130] (655,846)<span >✓ />
+		[131] (554,876)<div  />
+			[132] (450,876)<div  />
+			[133] (559,876)<span >Razão e Proporção />
+		[134] (554,903)<div  />
+			[135] (450,903)<div  />
+			[136] (559,903)<span >Porcentagem />
+		[137] (554,930)<div  />
+			[138] (450,930)<div  />
+			[139] (559,930)<span >Equações de 1º Grau />
+		[140] (554,957)<div  />
+			[141] (450,957)<div  />
+			[142] (559,957)<span >Equações de 2º Grau />
+		+
+		14
+		outros tópicos
+		→
+[143] (809,810)<a class='group relative flex flex-col h-full bg-slate-50/50 dark:bg-card/40 backdrop-blur-xl rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-500 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/20 overflow-hidden' href='/aulas/ingles' />
+	[144] (809,714)<div  />
+		[145] (809,710)<div  />
+			[146] (728,710)<div  />
+				[147] (728,692)<div >🇺🇸 />
+				[148] (728,763)<span >7
+TÓPICOS />
+			[149] (841,685)<div  />
+				[150] (841,664)<h2 >Língua Inglesa />
+				[151] (841,707)<p >Interpretação de textos técnicos em inglês />
+	[152] (809,909)<div  />
+		[153] (809,839)<div  />
+			[154] (705,839)<div  />
+			[155] (815,839)<span >Petro-Lingo />
+		[156] (809,866)<div  />
+			[157] (705,866)<div  />
+			[158] (815,866)<span >Reading Strategies />
+		[159] (809,893)<div  />
+			[160] (705,893)<div  />
+			[161] (815,893)<span >Verb Tenses />
+		[162] (809,920)<div  />
+			[163] (705,920)<div  />
+			[164] (815,920)<span >Connectors />
+		[165] (809,947)<div  />
+			[166] (705,947)<div  />
+			[167] (815,947)<span >Technical Vocabulary />
+		[168] (809,974)<div >+
+2
+outros tópicos />
+			[169] (775,976)<span >→ />
+⚡
+6
+TÓPICOS
+Cinemática
+Dinâmica
+Energia e Trabalho
+Termodinâmica
+Hidrostática
++
+1
+outros tópicos
+[170] (160,814)<button aria-label='Anterior' class='inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 absolute -left-12 top-1/2 -translate-y-1/2' />
+[171] (973,814)<button aria-label='Próximo' class='inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 absolute -right-12 top-1/2 -translate-y-1/2' />
+[172] (969,942)<button aria-label='Voltar ao topo' class='fixed bottom-[106px] md:bottom-8 z-[100] p-2.5 md:p-4 rounded-full bg-primary text-primary-foreground shadow-2xl transition-all duration-500 hover:scale-110 active:scale-95 group cursor-pointer flex items-center justify-center right-4 md:right-8 left-auto opacity-100 translate-y-0' />
+
+</current_dom>

@@ -1,0 +1,233 @@
+# Migração PMAVV — Padronização das Entidades no Modelo Dashboard-Core
+
+## Contexto
+
+O PMAVV é um sistema de monitoramento de atendimentos a vítimas de violência (Prefeitura de Jaboatão dos Guararapes) sendo migrado do **ScriptCase → Next.js 16 (App Router)**. O repositório `wp2nextjs-migrator/packages/dashboard-core` serve como template de UI, e o padrão da entidade `/posts` deve ser replicado em todas as entidades do PMAVV.
+
+### Estado Atual — Diagnóstico
+
+| Aspecto | Estado Atual | Problema |
+|---|---|---|
+| **Componentes UI** | Stubs inline (`const Card = ...`, `const Badge = ...`) duplicados em cada página | Não usa os componentes `shadcn/ui` já instalados no projeto |
+| **Tabelas** | HTML `<table>` manual | PRD exige `@tanstack/react-table` em todas as listagens |
+| **Formulários** | Inputs inline básicos sem validação | PRD exige `React Hook Form + Zod + @hookform/resolvers` |
+| **Server Actions** | Chamadas diretas para actions sem padrão consistente | PRD exige `next-safe-action` com validação Zod |
+| **Modais de CRUD** | Dialog primitivo inline | Deve usar `Dialog` shadcn/ui + `ModalHeader` pattern |
+| **Erros TypeScript** | ~30+ erros de compilação | Módulos importando componentes inexistentes, tipos inválidos |
+| **Sidebar** | ✅ Funcional e bem estruturada | Rotas apontam p/ `/cadastros/*` mas muitas entidades ficam em `/(app)/*` — inconsistência |
+| **Prisma Schema** | ✅ Completo e funcional | 13 models mapeados corretamente para o PostgreSQL |
+| **Actions existentes** | 5 actions (bairros, denuncias, regionais, usuarios, vitimas) | Funcionais mas precisam de padronização |
+
+---
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Decisão sobre Rotas:** O sidebar atual aponta para `/cadastros/denuncias`, `/cadastros/vitimas`, etc. Mas no sistema atual as páginas estão em `/(app)/denuncias`, `/(app)/vitimas`. **Preciso alinhar** — qual é a preferência?
+> - **Opção A:** Tudo dentro de `/(app)/` e a sidebar aponta para lá (como está no filesystem)
+> - **Opção B:** Mover tudo p/ `/(app)/cadastros/*` conforme a sidebar define (como o PRD especifica)
+
+> [!WARNING]  
+> **Entidade Agressores:** A página `agressores/page.tsx` importa componentes que não existem (`AggressorTable`, `AggressorFormModal`). Será reconstruída do zero no padrão dashboard-core.
+
+> [!IMPORTANT]
+> **Prioridade das Entidades:** Vou propor a seguinte ordem de migração com base no impacto funcional. Confirme ou reordene:
+> 1. **Denúncias** (entidade central — tudo gira em torno do protocolo)
+> 2. **Vítimas** (maior volume: ~255 registros, segunda mais usada)
+> 3. **Agressores** (dependente de denúncia, está broken)
+> 4. **Visitas** (dependente de denúncia, pós-save em histórico)
+> 5. **Denunciantes** (42 registros, dependente de denúncia)
+> 6. **Regionais** (8 registros, mais simples — pode ser 1º para validar o pattern)
+> 7. **Bairros** (168 registros, dependente de regional)
+
+---
+
+## Padrão de Referência: Anatomia da entidade `/posts` no dashboard-core
+
+O `/posts` segue esta arquitetura de 4 camadas que será replicada:
+
+```
+📁 app/admin/posts/
+├── page.tsx          ← Página principal (client component)
+├── actions.ts        ← Server Actions com validação Zod
+└── [id]/             ← Rota de detalhe (se necessário)
+
+📁 components/posts/
+├── post-table.tsx    ← Tabela com props tipadas (interface PostTableProps)
+├── post-form.tsx     ← Formulário com React Hook Form + Zod
+├── post-form-modal.tsx ← Dialog wrapper com ModalHeader
+└── image-upload.tsx  ← Componente específico da entidade
+```
+
+### Padrão Visual da Página (Posts > PMAVV):
+
+```
+┌─────────────────────────────────────────┐
+│  Header (h1 + descrição + SearchBar)     │
+├─────────────────────────────────────────┤
+│  Stats Cards (grid 2-4 cards métricas)   │
+├─────────────────────────────────────────┤
+│  Toolbar (Filtros | Itens/pág | Actions) │
+├─────────────────────────────────────────┤
+│  DataTable com paginação server-side     │
+├─────────────────────────────────────────┤
+│  PaginationControls                      │
+└─────────────────────────────────────────┘
+│  Modal CRUD (Activity-wrapped)           │
+```
+
+---
+
+## Proposed Changes
+
+### Fase 0 — Infraestrutura e Correção de Erros
+
+Resolver os bloqueios antes de construir as entidades.
+
+---
+
+#### [MODIFY] [admin-sidebar.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/admin/admin-sidebar.tsx)
+- Alinhar as rotas do sidebar com o filesystem real (ou mover os arquivos)
+- Adicionar item **Agressores** e **Denunciantes** que faltam no menu
+
+#### [DELETE] Scripts legados do dashboard-core
+- `scripts/debug-post-stats.ts` — referencia `db.content` que não existe no PMAVV
+- `scripts/validate-migration.ts` — mesma situação 
+- Estes scripts geram os erros de TS mais ruidosos
+
+#### [MODIFY] Limpeza de imports quebrados
+- `agressores/page.tsx` — remover imports de componentes inexistentes
+- `cadastros/denuncias/listagem.tsx` — corrigir tipo de `setDenuncias`
+- `cadastros/usuarios/page.tsx` — corrigir tipos de `nivel` e `status_user`
+
+---
+
+### Fase 1 — Componentes Base Reutilizáveis (Padrão Dashboard-Core)
+
+Criar os blocos de construção compartilhados que **todas** as entidades usarão.
+
+---
+
+#### [NEW] [page-header.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/page-header.tsx)
+```
+PageHeader: título + descrição + contagem + SearchBar inline
+Props: title, description, total, searchValue, onSearchChange, children (slot p/ botões)
+```
+
+#### [NEW] [stats-grid.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/stats-grid.tsx)
+```
+StatsGrid: renderiza N cards de métricas em grid responsivo
+Props: stats: Array<{ label, value, icon, color }>
+Segue o padrão visual dos Stats Cards do /posts
+```
+
+#### [NEW] [data-table.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/data-table.tsx)
+```
+DataTable genérico usando @tanstack/react-table
+Props: columns, data, onEdit, onDelete, selectable, selectedIds, onSelectionChange
+Substitui todas as tables HTML inline
+```
+
+#### [NEW] [entity-toolbar.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/entity-toolbar.tsx)
+```
+EntityToolbar: filtros + controle de itens/página + botão "Novo [X]" + modo seleção
+Props: filters, showFilters, onToggleFilters, pageSizeOptions, selectionMode, etc.
+```
+
+#### [NEW] [entity-form-modal.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/entity-form-modal.tsx)
+```
+EntityFormModal: wrapper genérico com Dialog shadcn + ModalHeader
+Props: isOpen, onClose, onSuccess, title, description, icon, children
+```
+
+#### [NEW] [bulk-selection-bar.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/bulk-selection-bar.tsx)
+```
+BulkSelectionBar: barra sticky de seleção em massa
+Props: selectedCount, total, onDelete, onClearSelection, isBulkDeleting, entityName
+```
+
+---
+
+### Fase 2 — Primeira Entidade Modelo: Denúncias
+
+Reconstruir Denúncias como a entidade de referência do PMAVV.
+
+---
+
+#### [MODIFY] [denuncias-actions.ts](file:///c:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/denuncias-actions.ts)
+- Padronizar com `ActionResponse<T>` tipado
+- Adicionar `getDenunciaStats()` para os cards de métricas
+- Paginação server-side com `skip/take` do Prisma
+- Validação Zod em todos os inputs
+
+#### [NEW] [denuncia-table.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-table.tsx)
+- `@tanstack/react-table` com colunas: Protocolo, Órgão de Origem (Badge), Forma de Violência (Badge), Data, Relacionamentos (contagem Ag/De/Vt), Ações
+- Suporte a seleção múltipla
+- Status badges com cores
+
+#### [NEW] [denuncia-form.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-form.tsx)
+- React Hook Form + Zod
+- Campos: `orgao_origem` (MultiSelectBadges), `data_denuncia` (date picker), `numero_origem`, `ptinente_trabalho_avv` (radio SIM/NÃO)
+- Usa componentes shadcn/ui reais (Input, Select, etc.)
+
+#### [NEW] [denuncia-form-modal.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-form-modal.tsx)
+- Wrapper usando `EntityFormModal` + `DenunciaForm`
+- Slide-in panel do lado direito (padrão dashboard-core)
+
+#### [MODIFY] [denuncias/page.tsx](file:///c:/GSW/PMAVV/PMAVV/src/app/(app)/denuncias/page.tsx) ou `cadastros/denuncias/page.tsx`
+- Reescrever usando os componentes base:
+  - `PageHeader` + `StatsGrid` + `EntityToolbar` + `DataTable` + `PaginationControls`
+  - Modal com `Activity` wrapper (React 19)
+- **Zero stubs inline** — todos os componentes importados da lib
+
+---
+
+### Fase 3 — Demais Entidades (mesmo padrão)
+
+Cada entidade seguirá exatamente o mesmo pattern de Denúncias:
+
+| Entidade | Componentes Específicos | Observações |
+|---|---|---|
+| **Vítimas** | `vitima-table.tsx`, `vitima-form.tsx`, `vitima-form-modal.tsx` | Classificação como `MultiSelectBadges`, `BairroAutocomplete` |
+| **Agressores** | `agressor-table.tsx`, `agressor-form.tsx`, `agressor-form-modal.tsx` | Parentesco dropdown, vinculado a denúncia |
+| **Visitas** | `visita-table.tsx`, `visita-form.tsx`, `visita-form-modal.tsx` | Pós-save → `tbl_historico_visita` (auditoria) |
+| **Denunciantes** | `denunciante-table.tsx`, `denunciante-form.tsx`, `denunciante-form-modal.tsx` | Múltiplos por denúncia |
+| **Regionais** | `regional-table.tsx`, `regional-form.tsx`, `regional-form-modal.tsx` | CRUD simples (nome único) |
+| **Bairros** | `bairro-table.tsx`, `bairro-form.tsx`, `bairro-form-modal.tsx` | Dropdown de Regional com autocomplete |
+
+---
+
+## Open Questions
+
+> [!IMPORTANT]
+> 1. **Rotas:** Manter `/(app)/denuncias` ou mover para `/(app)/cadastros/denuncias`? O sidebar atualmente mistura os dois.
+> 2. **Ordem de implementação:** Começar pela mais simples (Regionais — 8 registros, validar pattern) ou pela mais importante (Denúncias — entidade central)?
+> 3. **Scripts legados:** Posso deletar `scripts/debug-post-stats.ts` e `scripts/validate-migration.ts` que referenciam o schema antigo do dashboard-core?
+
+---
+
+## Verification Plan
+
+### Automated Tests
+```bash
+# 1. TypeScript compila sem erros
+npx tsc --noEmit
+
+# 2. Lint passa
+pnpm lint
+
+# 3. Dev server roda sem crashes
+pnpm dev
+```
+
+### Manual Verification
+- Navegar por cada entidade no sidebar e verificar:
+  - ✅ Stats Cards renderizam com dados reais
+  - ✅ Tabela filtra e pagina server-side
+  - ✅ Modal de criar/editar abre e salva
+  - ✅ Dark mode funciona em todas as telas
+  - ✅ Responsivo (sidebar colapsa, tabela scrollável)
+
+### Browser Test
+- Abrir cada rota do menu e verificar visualmente que seguem o padrão `/posts`
+- Testar criação e edição de registros em Denúncias (entidade modelo)

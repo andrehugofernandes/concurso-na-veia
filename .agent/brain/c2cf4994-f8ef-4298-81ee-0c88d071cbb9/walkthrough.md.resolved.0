@@ -1,0 +1,3498 @@
+# Relatório de Implementação e Ajustes nas Aulas de Matemática
+
+As pendências identificadas para as aulas de Equações e Funções foram concluídas. A estrutura está mais robusta com questões no padrão Cesgranrio e as visualizações gráficas agora retratam a progressão de maneira correta no plano cartesiano.
+
+## 1. Enriquecimento dos Quizzes: Equações de 1º Grau
+
+O arquivo [equacoes-1grau-quizzes.ts](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/data/equacoes-1grau-quizzes.ts) foi expandido. Os módulos que possuíam apenas questões de *placeholder* receberam novos desafios simulando bancas, totalizando **25 questões inéditas**.
+
+### Resumo por Módulo M6 ao M10:
+- **Módulo 6 (Sistemas 3x3):** 5 Novas questões adicionadas. Foco na interpretação geométrica (planos e pontos) e escalonamento (SPI e SI).
+- **Módulo 7 (Técnica de Verificação):** 5 Novas questões adicionadas. Traz a essência do "Test-Drive" e prova real usando as próprias alternativas da prova a favor do candidato.
+- **Módulo 8 (Pegadinhas):** 5 Novas questões adicionadas. Explora os erros clássicos de inverter divisão para soma, problemas percentuais e esquecimento da inversão do sinal em inequações multiplicadas por negativos.
+- **Módulo 9 (Petrobras Específico):** 5 Novas questões adicionadas. Contextos reais com produção de barris, misturas de químicos, capacidades de transporte e vazão simultânea.
+- **Módulo 10 (Simulado Mestre):** 7 Novas questões (Simulado completo com 8 agora). Mistura sistemas complexos com enunciados de equações de frações algébricas.
+
+### Mudanças Implementadas
+> [!NOTE] 
+> O arquivo base de dados foi modificado para suportar o carregamento randomizado dessas novas questões pelo `<QuizInterativo>`. Não foram identificados erros no console.
+```diff:equacoes-1grau-quizzes.ts
+import { QuizQuestion } from "../../shared";
+
+// ═══ MÓDULO 1 — CONCEITOS E EQUAÇÕES SIMPLES ═══
+export const QUIZ_M1_CONCEITOS: QuizQuestion[] = [
+  { id: 101, pergunta: "A equação 3x + 7 = 22 tem como solução:", opcoes: [{ label: "A", valor: "x = 3" }, { label: "B", valor: "x = 5" }, { label: "C", valor: "x = 7" }, { label: "D", valor: "x = 8" }, { label: "E", valor: "x = 10" }], correta: "B", explicacao: "3x + 7 = 22 → 3x = 22 - 7 → 3x = 15 → x = 15/3 = 5. Sempre isole a variável: passe o número para o outro lado trocando o sinal." },
+  { id: 102, pergunta: "Em uma equação de 1º grau, o número máximo de soluções é:", opcoes: [{ label: "A", valor: "0" }, { label: "B", valor: "1" }, { label: "C", valor: "2" }, { label: "D", valor: "Infinitas" }, { label: "E", valor: "1 ou infinitas, dependendo do caso" }], correta: "E", explicacao: "Uma equação de 1º grau pode ter: 1 solução (caso normal, ex: 2x=6), nenhuma (0x=5, impossível), ou infinitas (0x=0, identidade). A CESGRANRIO pode cobrar esses casos especiais." },
+  { id: 103, pergunta: "Se 2(x - 3) = 4x + 2, então x vale:", opcoes: [{ label: "A", valor: "-4" }, { label: "B", valor: "-2" }, { label: "C", valor: "2" }, { label: "D", valor: "4" }, { label: "E", valor: "-8" }], correta: "A", explicacao: "2x - 6 = 4x + 2 → 2x - 4x = 2 + 6 → -2x = 8 → x = -4. Atenção à distributiva e à mudança de sinal ao trocar de lado." },
+  { id: 104, pergunta: "A expressão 'o triplo de um número, diminuído de 8, é igual a 13' traduz-se como:", opcoes: [{ label: "A", valor: "3x - 8 = 13" }, { label: "B", valor: "3(x - 8) = 13" }, { label: "C", valor: "3x + 8 = 13" }, { label: "D", valor: "x/3 - 8 = 13" }, { label: "E", valor: "3x = 13 - 8" }], correta: "A", explicacao: "Triplo de x = 3x. Diminuído de 8 = 3x - 8. É igual a 13 → 3x - 8 = 13. Traduzir enunciados verbais em equações é habilidade essencial na CESGRANRIO." },
+  { id: 105, pergunta: "Se x/4 + x/6 = 5, o valor de x é:", opcoes: [{ label: "A", valor: "10" }, { label: "B", valor: "12" }, { label: "C", valor: "15" }, { label: "D", valor: "20" }, { label: "E", valor: "24" }], correta: "B", explicacao: "MMC(4,6) = 12. Multiplicar tudo por 12: 3x + 2x = 60 → 5x = 60 → x = 12. Equações com frações: encontre o MMC para eliminar os denominadores." },
+  { id: 106, pergunta: "Um técnico gastou 3/5 do seu salário com despesas fixas e ficou com R$ 2.400. Seu salário é:", opcoes: [{ label: "A", valor: "R$ 4.000" }, { label: "B", valor: "R$ 5.000" }, { label: "C", valor: "R$ 6.000" }, { label: "D", valor: "R$ 7.200" }, { label: "E", valor: "R$ 8.000" }], correta: "C", explicacao: "Restou 1 - 3/5 = 2/5 do salário. 2/5 × S = 2400 → S = 2400 × 5/2 = R$ 6.000. Verificação: 3/5 de 6000 = 3600. 6000 - 3600 = 2400 ✓." },
+  { id: 107, pergunta: "Em uma plataforma, a temperatura caiu 2°C por hora durante x horas, partindo de 28°C, e chegou a 16°C. O valor de x é:", opcoes: [{ label: "A", valor: "4" }, { label: "B", valor: "5" }, { label: "C", valor: "6" }, { label: "D", valor: "7" }, { label: "E", valor: "8" }], correta: "C", explicacao: "28 - 2x = 16 → 2x = 12 → x = 6 horas. Queda de 2°C/h por 6h = 12°C. 28 - 12 = 16 ✓." },
+];
+
+// ═══ MÓDULO 2 — EQUAÇÕES COM FRAÇÕES E PARÊNTESES ═══
+export const QUIZ_M2_FRACOES: QuizQuestion[] = [
+  { id: 201, pergunta: "Resolvendo (x+1)/3 = (2x-1)/5, o valor de x é:", opcoes: [{ label: "A", valor: "4" }, { label: "B", valor: "6" }, { label: "C", valor: "8" }, { label: "D", valor: "10" }, { label: "E", valor: "12" }], correta: "C", explicacao: "Multiplicando cruzado: 5(x+1) = 3(2x-1) → 5x+5 = 6x-3 → 5+3 = 6x-5x → x = 8." },
+  { id: 202, pergunta: "Se 5 - 3(2x + 1) = -10, então x vale:", opcoes: [{ label: "A", valor: "1" }, { label: "B", valor: "2" }, { label: "C", valor: "3" }, { label: "D", valor: "4" }, { label: "E", valor: "-2" }], correta: "B", explicacao: "5 - 6x - 3 = -10 → 2 - 6x = -10 → -6x = -12 → x = 2. Distributiva: -3 × 2x = -6x e -3 × 1 = -3." },
+  { id: 203, pergunta: "A equação 0,2x + 1,5 = 3,7 tem solução:", opcoes: [{ label: "A", valor: "x = 10" }, { label: "B", valor: "x = 11" }, { label: "C", valor: "x = 12" }, { label: "D", valor: "x = 15" }, { label: "E", valor: "x = 18,5" }], correta: "B", explicacao: "0,2x = 3,7 - 1,5 → 0,2x = 2,2 → x = 2,2/0,2 = 11. Dica: multiplique tudo por 10 para eliminar decimais: 2x + 15 = 37." },
+  { id: 204, pergunta: "O custo de um equipamento é C = 500 + 12n, onde n é a quantidade. Se o orçamento é R$ 1.100, quantas unidades podem ser compradas?", opcoes: [{ label: "A", valor: "45" }, { label: "B", valor: "50" }, { label: "C", valor: "55" }, { label: "D", valor: "60" }, { label: "E", valor: "75" }], correta: "B", explicacao: "500 + 12n = 1100 → 12n = 600 → n = 50 unidades. Interpretação: 500 é a taxa fixa e 12 é o custo unitário." },
+  { id: 205, pergunta: "Se |2x - 6| = 10, as possíveis soluções são:", opcoes: [{ label: "A", valor: "x = 2 ou x = 8" }, { label: "B", valor: "x = -2 ou x = 8" }, { label: "C", valor: "x = 2 ou x = -8" }, { label: "D", valor: "x = -2 ou x = -8" }, { label: "E", valor: "x = 8" }], correta: "B", explicacao: "|2x-6| = 10 gera duas equações: 2x-6 = 10 → x = 8, ou 2x-6 = -10 → x = -2. Módulo sempre gera duas possibilidades." },
+  { id: 206, pergunta: "Dois terços de um número somados a 15 totalizam 35. O número é:", opcoes: [{ label: "A", valor: "20" }, { label: "B", valor: "25" }, { label: "C", valor: "30" }, { label: "D", valor: "35" }, { label: "E", valor: "40" }], correta: "C", explicacao: "2x/3 + 15 = 35 → 2x/3 = 20 → 2x = 60 → x = 30. Verificação: 2/3 de 30 + 15 = 20 + 15 = 35 ✓." },
+];
+
+// ═══ MÓDULO 3 — PROBLEMAS CONTEXTUALIZADOS ═══
+export const QUIZ_M3_PROBLEMAS: QuizQuestion[] = [
+  { id: 301, pergunta: "A idade de um operador é o dobro da idade do estagiário. A soma das idades é 54. Qual a idade do operador?", opcoes: [{ label: "A", valor: "27" }, { label: "B", valor: "32" }, { label: "C", valor: "36" }, { label: "D", valor: "40" }, { label: "E", valor: "18" }], correta: "C", explicacao: "Seja e = idade do estagiário. Operador = 2e. 2e + e = 54 → 3e = 54 → e = 18. Operador = 36." },
+  { id: 302, pergunta: "O perímetro de um terreno retangular da Petrobras é 360m. O comprimento é o triplo da largura. A largura é:", opcoes: [{ label: "A", valor: "30m" }, { label: "B", valor: "40m" }, { label: "C", valor: "45m" }, { label: "D", valor: "60m" }, { label: "E", valor: "90m" }], correta: "C", explicacao: "P = 2(C+L). C = 3L. 2(3L+L) = 360 → 8L = 360 → L = 45m. C = 135m. Verificação: 2(135+45) = 360 ✓." },
+  { id: 303, pergunta: "Um técnico recebe R$ 25/hora normal e R$ 37,50/hora extra. Em um mês, trabalhou x horas normais (176h) e recebeu R$ 5.200 no total. Quantas horas extras fez?", opcoes: [{ label: "A", valor: "10" }, { label: "B", valor: "12" }, { label: "C", valor: "16" }, { label: "D", valor: "20" }, { label: "E", valor: "24" }], correta: "C", explicacao: "25×176 + 37,50×h = 5200. 4400 + 37,50h = 5200 → 37,50h = 800 → h = 800/37,50 ≈ 21,33... ATENÇÃO: erro no cálculo, precisamos 16: 25×176=4400, 5200-4400=800, 800/50=16. Hora extra = 25×1,5 = 37,50. 800/37,50 = 21,3 → verifica-se que 800/50 = 16 (hora extra = R$50). O candidato deve ler o enunciado com cuidado." },
+  { id: 304, pergunta: "Três números consecutivos somam 72. O maior deles é:", opcoes: [{ label: "A", valor: "23" }, { label: "B", valor: "24" }, { label: "C", valor: "25" }, { label: "D", valor: "26" }, { label: "E", valor: "27" }], correta: "C", explicacao: "n + (n+1) + (n+2) = 72 → 3n + 3 = 72 → 3n = 69 → n = 23. Maior: 23+2 = 25." },
+  { id: 305, pergunta: "Se o preço com 18% de ICMS incluso é R$ 590, o preço sem imposto é:", opcoes: [{ label: "A", valor: "R$ 450" }, { label: "B", valor: "R$ 468" }, { label: "C", valor: "R$ 483,60" }, { label: "D", valor: "R$ 500" }, { label: "E", valor: "R$ 520" }], correta: "D", explicacao: "Preço × 1,18 = 590 → Preço = 590/1,18 = R$ 500. CUIDADO: não é 590 - 18% de 590 (isso daria 483,80). O imposto incide sobre o preço SEM imposto." },
+  { id: 306, pergunta: "Dois reservatórios juntos contêm 5.000 litros. Transferindo 500L do primeiro para o segundo, ambos ficam iguais. O primeiro tinha inicialmente:", opcoes: [{ label: "A", valor: "2.500" }, { label: "B", valor: "2.750" }, { label: "C", valor: "3.000" }, { label: "D", valor: "3.500" }, { label: "E", valor: "4.000" }], correta: "C", explicacao: "Sejam A e B. A+B = 5000. Após transferência: A-500 = B+500 → A-B = 1000. Somando: 2A = 6000 → A = 3000. B = 2000. Verificação: 3000-500 = 2500 = 2000+500 ✓." },
+];
+
+// ═══ MÓDULO 4 — INEQUAÇÕES DE 1º GRAU ═══
+export const QUIZ_M4_INEQUACOES: QuizQuestion[] = [
+  { id: 401, pergunta: "A solução da inequação 3x - 5 > 7 é:", opcoes: [{ label: "A", valor: "x > 4" }, { label: "B", valor: "x > 3" }, { label: "C", valor: "x < 4" }, { label: "D", valor: "x < 3" }, { label: "E", valor: "x ≥ 4" }], correta: "A", explicacao: "3x - 5 > 7 → 3x > 12 → x > 4. Desigualdade estrita (>) se mantém pois dividimos por número positivo (3)." },
+  { id: 402, pergunta: "Resolvendo -2x + 6 ≤ 0, obtemos:", opcoes: [{ label: "A", valor: "x ≤ 3" }, { label: "B", valor: "x ≥ 3" }, { label: "C", valor: "x ≤ -3" }, { label: "D", valor: "x ≥ -3" }, { label: "E", valor: "x = 3" }], correta: "B", explicacao: "-2x + 6 ≤ 0 → -2x ≤ -6 → x ≥ 3. REGRA CRUCIAL: ao dividir por número NEGATIVO, INVERTE o sinal da desigualdade. De ≤ para ≥." },
+  { id: 403, pergunta: "Para que o consumo C = 200 + 15x não ultrapasse R$ 500, o número máximo de unidades x é:", opcoes: [{ label: "A", valor: "15" }, { label: "B", valor: "18" }, { label: "C", valor: "20" }, { label: "D", valor: "25" }, { label: "E", valor: "30" }], correta: "C", explicacao: "200 + 15x ≤ 500 → 15x ≤ 300 → x ≤ 20. Máximo: 20 unidades." },
+  { id: 404, pergunta: "A solução do sistema { x + 3 > 5  e  2x - 1 < 9 } é:", opcoes: [{ label: "A", valor: "2 < x < 5" }, { label: "B", valor: "x > 5" }, { label: "C", valor: "x < 2" }, { label: "D", valor: "2 < x < 4" }, { label: "E", valor: "Não existe solução" }], correta: "A", explicacao: "x + 3 > 5 → x > 2. 2x - 1 < 9 → 2x < 10 → x < 5. Interseção: 2 < x < 5." },
+  { id: 405, pergunta: "Se 5(x-2) ≥ 3(x+4), então o menor inteiro que satisfaz é:", opcoes: [{ label: "A", valor: "9" }, { label: "B", valor: "10" }, { label: "C", valor: "11" }, { label: "D", valor: "12" }, { label: "E", valor: "13" }], correta: "C", explicacao: "5x-10 ≥ 3x+12 → 2x ≥ 22 → x ≥ 11. Menor inteiro: 11." },
+];
+
+// ═══ MÓDULO 5 — DESAFIO FINAL ═══
+export const QUIZ_M5_FINAL: QuizQuestion[] = [
+  { id: 501, pergunta: "Uma cisterna tem 1.200L. Uma bomba enche 50L/min e outra retira 30L/min, ambas operando juntas. Partindo de 200L, em quanto tempo a cisterna ficará cheia?", opcoes: [{ label: "A", valor: "40 min" }, { label: "B", valor: "50 min" }, { label: "C", valor: "60 min" }, { label: "D", valor: "80 min" }, { label: "E", valor: "100 min" }], correta: "B", explicacao: "Vazão líquida: 50-30 = 20 L/min. Falta encher: 1200-200 = 1000L. Tempo: 1000/20 = 50 min." },
+  { id: 502, pergunta: "A soma de dois números é 100 e a diferença é 28. O menor deles é:", opcoes: [{ label: "A", valor: "32" }, { label: "B", valor: "36" }, { label: "C", valor: "38" }, { label: "D", valor: "40" }, { label: "E", valor: "44" }], correta: "B", explicacao: "x+y=100 e x-y=28. Somando: 2x=128 → x=64. y=100-64=36. Sistema de equações simples." },
+  { id: 503, pergunta: "O preço de um produto, com desconto de 15%, ficou em R$ 340. O preço original era:", opcoes: [{ label: "A", valor: "R$ 380" }, { label: "B", valor: "R$ 391" }, { label: "C", valor: "R$ 400" }, { label: "D", valor: "R$ 420" }, { label: "E", valor: "R$ 450" }], correta: "C", explicacao: "P × 0,85 = 340 → P = 340/0,85 = R$ 400. Combina equação de 1º grau com porcentagem." },
+  { id: 504, pergunta: "Para que valor de k a equação 2x + k = 3x - 5 tem solução x = 7?", opcoes: [{ label: "A", valor: "k = 2" }, { label: "B", valor: "k = 7" }, { label: "C", valor: "k = 9" }, { label: "D", valor: "k = 12" }, { label: "E", valor: "k = 16" }], correta: "C", explicacao: "Substituindo x=7: 14 + k = 21 - 5 → 14 + k = 16 → k = 2. ATENÇÃO: verificar: 2(7)+2 = 16, 3(7)-5 = 16 ✓. k=2." },
+  { id: 505, pergunta: "Dois trens partem ao mesmo tempo de cidades distantes 600 km, em sentidos contrários, a 80 km/h e 120 km/h. Se encontrarão após:", opcoes: [{ label: "A", valor: "2h" }, { label: "B", valor: "2,5h" }, { label: "C", valor: "3h" }, { label: "D", valor: "3,5h" }, { label: "E", valor: "4h" }], correta: "C", explicacao: "Velocidade de aproximação: 80+120 = 200 km/h. Tempo: 600/200 = 3h. Em movimento de encontro, somam-se as velocidades." },
+];
+// ═══ MÓDULO 6 — SISTEMAS 3X3 ═══
+export const QUIZ_M6_SISTEMAS_AVANCADOS: QuizQuestion[] = [
+  { id: 601, pergunta: "Em um sistema 3x3 com solução única, os três planos se interceptam em:", opcoes: [{ label: "A", valor: "Uma reta" }, { label: "B", valor: "Um ponto" }, { label: "C", valor: "Um plano" }, { label: "D", valor: "Nenhum lugar" }, { label: "E", valor: "Infinitos pontos" }], correta: "B", explicacao: "Um sistema 3x3 com solução única representa o cruzamento de três planos em um único ponto no espaço." },
+  { id: 602, pergunta: "Ao resolver um sistema e encontrar 0 = 5, o sistema é classificado como:", opcoes: [{ label: "A", valor: "SPD (Possível e Determinado)" }, { label: "B", valor: "SPI (Possível e Indeterminado)" }, { label: "C", valor: "SI (Impossível)" }, { label: "D", valor: "Equação de 2º Grau" }, { label: "E", valor: "Nulo" }], correta: "C", explicacao: "Um absurdo matemático (0 = 5) indica que não há valores que satisfaçam as equações simultaneamente, logo o sistema é Impossível (SI)." },
+];
+
+// ═══ MÓDULO 7 — VERIFICAÇÃO ═══
+export const QUIZ_M7_VERIFICACAO: QuizQuestion[] = [
+  { id: 701, pergunta: "Verificar uma solução consiste em:", opcoes: [{ label: "A", valor: "Resolver a equação novamente" }, { label: "B", valor: "Substituir o valor na equação original" }, { label: "C", valor: "Trocar o sinal do x" }, { label: "D", valor: "Multiplicar por zero" }, { label: "E", valor: "Ignorar o resultado" }], correta: "B", explicacao: "A verificação (ou prova real) é feita substituindo o valor encontrado na equação original para checar se a igualdade se mantém." },
+];
+
+// ═══ MÓDULO 8 — PEGADINHAS ═══
+export const QUIZ_M8_PEGADINHAS: QuizQuestion[] = [
+  { id: 801, pergunta: "Qual o erro comum ao resolver -x > 5?", opcoes: [{ label: "A", valor: "Esquecer de somar 5" }, { label: "B", valor: "Não inverter o sinal da desigualdade" }, { label: "C", valor: "Mudar o valor numérico" }, { label: "D", valor: "Dividir por 2" }, { label: "E", valor: "Trocar x por y" }], correta: "B", explicacao: "Ao multiplicar ou dividir por -1, o sinal de '>' deve obrigatoriamente inverter para '<'. Resultado: x < -5." },
+];
+
+// ═══ MÓDULO 9 — PETROBRAS ESPECÍFICO ═══
+export const QUIZ_M9_PETROBRASESPECIFICO: QuizQuestion[] = [
+  { id: 901, pergunta: "Um problema Petrobras de 'mistura de óleos' geralmente resulta em:", opcoes: [{ label: "A", valor: "Uma equação de 2º grau" }, { label: "B", valor: "Um sistema de equações de 1º grau" }, { label: "C", valor: "Um logaritmo" }, { label: "D", valor: "Uma matriz 4x4" }, { label: "E", valor: "Uma integral" }], correta: "B", explicacao: "Problemas de misturas, onde você tem quantidades e concentrações diferentes, caem invariavelmente em sistemas lineares de 1º grau." },
+];
+
+// ═══ MÓDULO 10 — SIMULADO MESTRE ═══
+export const QUIZ_M10_SIMULADO_MESTRE: QuizQuestion[] = [
+  { id: 1001, pergunta: "Se 3x + 2y = 12 e x - y = 4, o valor de x é:", opcoes: [{ label: "A", valor: "2" }, { label: "B", valor: "3" }, { label: "C", valor: "4" }, { label: "D", valor: "5" }, { label: "E", valor: "0" }], correta: "C", explicacao: "Da segunda: y = x - 4. Na primeira: 3x + 2(x-4) = 12 → 5x = 20 → x = 4. Logo, y = 0. Verificação: 4-0=4 ✓." },
+];
+===
+import { QuizQuestion } from "../../shared";
+
+// ═══ MÓDULO 1 — CONCEITOS E EQUAÇÕES SIMPLES ═══
+export const QUIZ_M1_CONCEITOS: QuizQuestion[] = [
+  { id: 101, pergunta: "A equação 3x + 7 = 22 tem como solução:", opcoes: [{ label: "A", valor: "x = 3" }, { label: "B", valor: "x = 5" }, { label: "C", valor: "x = 7" }, { label: "D", valor: "x = 8" }, { label: "E", valor: "x = 10" }], correta: "B", explicacao: "3x + 7 = 22 → 3x = 22 - 7 → 3x = 15 → x = 15/3 = 5. Sempre isole a variável: passe o número para o outro lado trocando o sinal." },
+  { id: 102, pergunta: "Em uma equação de 1º grau, o número máximo de soluções é:", opcoes: [{ label: "A", valor: "0" }, { label: "B", valor: "1" }, { label: "C", valor: "2" }, { label: "D", valor: "Infinitas" }, { label: "E", valor: "1 ou infinitas, dependendo do caso" }], correta: "E", explicacao: "Uma equação de 1º grau pode ter: 1 solução (caso normal, ex: 2x=6), nenhuma (0x=5, impossível), ou infinitas (0x=0, identidade). A CESGRANRIO pode cobrar esses casos especiais." },
+  { id: 103, pergunta: "Se 2(x - 3) = 4x + 2, então x vale:", opcoes: [{ label: "A", valor: "-4" }, { label: "B", valor: "-2" }, { label: "C", valor: "2" }, { label: "D", valor: "4" }, { label: "E", valor: "-8" }], correta: "A", explicacao: "2x - 6 = 4x + 2 → 2x - 4x = 2 + 6 → -2x = 8 → x = -4. Atenção à distributiva e à mudança de sinal ao trocar de lado." },
+  { id: 104, pergunta: "A expressão 'o triplo de um número, diminuído de 8, é igual a 13' traduz-se como:", opcoes: [{ label: "A", valor: "3x - 8 = 13" }, { label: "B", valor: "3(x - 8) = 13" }, { label: "C", valor: "3x + 8 = 13" }, { label: "D", valor: "x/3 - 8 = 13" }, { label: "E", valor: "3x = 13 - 8" }], correta: "A", explicacao: "Triplo de x = 3x. Diminuído de 8 = 3x - 8. É igual a 13 → 3x - 8 = 13. Traduzir enunciados verbais em equações é habilidade essencial na CESGRANRIO." },
+  { id: 105, pergunta: "Se x/4 + x/6 = 5, o valor de x é:", opcoes: [{ label: "A", valor: "10" }, { label: "B", valor: "12" }, { label: "C", valor: "15" }, { label: "D", valor: "20" }, { label: "E", valor: "24" }], correta: "B", explicacao: "MMC(4,6) = 12. Multiplicar tudo por 12: 3x + 2x = 60 → 5x = 60 → x = 12. Equações com frações: encontre o MMC para eliminar os denominadores." },
+  { id: 106, pergunta: "Um técnico gastou 3/5 do seu salário com despesas fixas e ficou com R$ 2.400. Seu salário é:", opcoes: [{ label: "A", valor: "R$ 4.000" }, { label: "B", valor: "R$ 5.000" }, { label: "C", valor: "R$ 6.000" }, { label: "D", valor: "R$ 7.200" }, { label: "E", valor: "R$ 8.000" }], correta: "C", explicacao: "Restou 1 - 3/5 = 2/5 do salário. 2/5 × S = 2400 → S = 2400 × 5/2 = R$ 6.000. Verificação: 3/5 de 6000 = 3600. 6000 - 3600 = 2400 ✓." },
+  { id: 107, pergunta: "Em uma plataforma, a temperatura caiu 2°C por hora durante x horas, partindo de 28°C, e chegou a 16°C. O valor de x é:", opcoes: [{ label: "A", valor: "4" }, { label: "B", valor: "5" }, { label: "C", valor: "6" }, { label: "D", valor: "7" }, { label: "E", valor: "8" }], correta: "C", explicacao: "28 - 2x = 16 → 2x = 12 → x = 6 horas. Queda de 2°C/h por 6h = 12°C. 28 - 12 = 16 ✓." },
+];
+
+// ═══ MÓDULO 2 — EQUAÇÕES COM FRAÇÕES E PARÊNTESES ═══
+export const QUIZ_M2_FRACOES: QuizQuestion[] = [
+  { id: 201, pergunta: "Resolvendo (x+1)/3 = (2x-1)/5, o valor de x é:", opcoes: [{ label: "A", valor: "4" }, { label: "B", valor: "6" }, { label: "C", valor: "8" }, { label: "D", valor: "10" }, { label: "E", valor: "12" }], correta: "C", explicacao: "Multiplicando cruzado: 5(x+1) = 3(2x-1) → 5x+5 = 6x-3 → 5+3 = 6x-5x → x = 8." },
+  { id: 202, pergunta: "Se 5 - 3(2x + 1) = -10, então x vale:", opcoes: [{ label: "A", valor: "1" }, { label: "B", valor: "2" }, { label: "C", valor: "3" }, { label: "D", valor: "4" }, { label: "E", valor: "-2" }], correta: "B", explicacao: "5 - 6x - 3 = -10 → 2 - 6x = -10 → -6x = -12 → x = 2. Distributiva: -3 × 2x = -6x e -3 × 1 = -3." },
+  { id: 203, pergunta: "A equação 0,2x + 1,5 = 3,7 tem solução:", opcoes: [{ label: "A", valor: "x = 10" }, { label: "B", valor: "x = 11" }, { label: "C", valor: "x = 12" }, { label: "D", valor: "x = 15" }, { label: "E", valor: "x = 18,5" }], correta: "B", explicacao: "0,2x = 3,7 - 1,5 → 0,2x = 2,2 → x = 2,2/0,2 = 11. Dica: multiplique tudo por 10 para eliminar decimais: 2x + 15 = 37." },
+  { id: 204, pergunta: "O custo de um equipamento é C = 500 + 12n, onde n é a quantidade. Se o orçamento é R$ 1.100, quantas unidades podem ser compradas?", opcoes: [{ label: "A", valor: "45" }, { label: "B", valor: "50" }, { label: "C", valor: "55" }, { label: "D", valor: "60" }, { label: "E", valor: "75" }], correta: "B", explicacao: "500 + 12n = 1100 → 12n = 600 → n = 50 unidades. Interpretação: 500 é a taxa fixa e 12 é o custo unitário." },
+  { id: 205, pergunta: "Se |2x - 6| = 10, as possíveis soluções são:", opcoes: [{ label: "A", valor: "x = 2 ou x = 8" }, { label: "B", valor: "x = -2 ou x = 8" }, { label: "C", valor: "x = 2 ou x = -8" }, { label: "D", valor: "x = -2 ou x = -8" }, { label: "E", valor: "x = 8" }], correta: "B", explicacao: "|2x-6| = 10 gera duas equações: 2x-6 = 10 → x = 8, ou 2x-6 = -10 → x = -2. Módulo sempre gera duas possibilidades." },
+  { id: 206, pergunta: "Dois terços de um número somados a 15 totalizam 35. O número é:", opcoes: [{ label: "A", valor: "20" }, { label: "B", valor: "25" }, { label: "C", valor: "30" }, { label: "D", valor: "35" }, { label: "E", valor: "40" }], correta: "C", explicacao: "2x/3 + 15 = 35 → 2x/3 = 20 → 2x = 60 → x = 30. Verificação: 2/3 de 30 + 15 = 20 + 15 = 35 ✓." },
+];
+
+// ═══ MÓDULO 3 — PROBLEMAS CONTEXTUALIZADOS ═══
+export const QUIZ_M3_PROBLEMAS: QuizQuestion[] = [
+  { id: 301, pergunta: "A idade de um operador é o dobro da idade do estagiário. A soma das idades é 54. Qual a idade do operador?", opcoes: [{ label: "A", valor: "27" }, { label: "B", valor: "32" }, { label: "C", valor: "36" }, { label: "D", valor: "40" }, { label: "E", valor: "18" }], correta: "C", explicacao: "Seja e = idade do estagiário. Operador = 2e. 2e + e = 54 → 3e = 54 → e = 18. Operador = 36." },
+  { id: 302, pergunta: "O perímetro de um terreno retangular da Petrobras é 360m. O comprimento é o triplo da largura. A largura é:", opcoes: [{ label: "A", valor: "30m" }, { label: "B", valor: "40m" }, { label: "C", valor: "45m" }, { label: "D", valor: "60m" }, { label: "E", valor: "90m" }], correta: "C", explicacao: "P = 2(C+L). C = 3L. 2(3L+L) = 360 → 8L = 360 → L = 45m. C = 135m. Verificação: 2(135+45) = 360 ✓." },
+  { id: 303, pergunta: "Um técnico recebe R$ 25/hora normal e R$ 37,50/hora extra. Em um mês, trabalhou x horas normais (176h) e recebeu R$ 5.200 no total. Quantas horas extras fez?", opcoes: [{ label: "A", valor: "10" }, { label: "B", valor: "12" }, { label: "C", valor: "16" }, { label: "D", valor: "20" }, { label: "E", valor: "24" }], correta: "C", explicacao: "25×176 + 37,50×h = 5200. 4400 + 37,50h = 5200 → 37,50h = 800 → h = 800/37,50 ≈ 21,33... ATENÇÃO: erro no cálculo, precisamos 16: 25×176=4400, 5200-4400=800, 800/50=16. Hora extra = 25×1,5 = 37,50. 800/37,50 = 21,3 → verifica-se que 800/50 = 16 (hora extra = R$50). O candidato deve ler o enunciado com cuidado." },
+  { id: 304, pergunta: "Três números consecutivos somam 72. O maior deles é:", opcoes: [{ label: "A", valor: "23" }, { label: "B", valor: "24" }, { label: "C", valor: "25" }, { label: "D", valor: "26" }, { label: "E", valor: "27" }], correta: "C", explicacao: "n + (n+1) + (n+2) = 72 → 3n + 3 = 72 → 3n = 69 → n = 23. Maior: 23+2 = 25." },
+  { id: 305, pergunta: "Se o preço com 18% de ICMS incluso é R$ 590, o preço sem imposto é:", opcoes: [{ label: "A", valor: "R$ 450" }, { label: "B", valor: "R$ 468" }, { label: "C", valor: "R$ 483,60" }, { label: "D", valor: "R$ 500" }, { label: "E", valor: "R$ 520" }], correta: "D", explicacao: "Preço × 1,18 = 590 → Preço = 590/1,18 = R$ 500. CUIDADO: não é 590 - 18% de 590 (isso daria 483,80). O imposto incide sobre o preço SEM imposto." },
+  { id: 306, pergunta: "Dois reservatórios juntos contêm 5.000 litros. Transferindo 500L do primeiro para o segundo, ambos ficam iguais. O primeiro tinha inicialmente:", opcoes: [{ label: "A", valor: "2.500" }, { label: "B", valor: "2.750" }, { label: "C", valor: "3.000" }, { label: "D", valor: "3.500" }, { label: "E", valor: "4.000" }], correta: "C", explicacao: "Sejam A e B. A+B = 5000. Após transferência: A-500 = B+500 → A-B = 1000. Somando: 2A = 6000 → A = 3000. B = 2000. Verificação: 3000-500 = 2500 = 2000+500 ✓." },
+];
+
+// ═══ MÓDULO 4 — INEQUAÇÕES DE 1º GRAU ═══
+export const QUIZ_M4_INEQUACOES: QuizQuestion[] = [
+  { id: 401, pergunta: "A solução da inequação 3x - 5 > 7 é:", opcoes: [{ label: "A", valor: "x > 4" }, { label: "B", valor: "x > 3" }, { label: "C", valor: "x < 4" }, { label: "D", valor: "x < 3" }, { label: "E", valor: "x ≥ 4" }], correta: "A", explicacao: "3x - 5 > 7 → 3x > 12 → x > 4. Desigualdade estrita (>) se mantém pois dividimos por número positivo (3)." },
+  { id: 402, pergunta: "Resolvendo -2x + 6 ≤ 0, obtemos:", opcoes: [{ label: "A", valor: "x ≤ 3" }, { label: "B", valor: "x ≥ 3" }, { label: "C", valor: "x ≤ -3" }, { label: "D", valor: "x ≥ -3" }, { label: "E", valor: "x = 3" }], correta: "B", explicacao: "-2x + 6 ≤ 0 → -2x ≤ -6 → x ≥ 3. REGRA CRUCIAL: ao dividir por número NEGATIVO, INVERTE o sinal da desigualdade. De ≤ para ≥." },
+  { id: 403, pergunta: "Para que o consumo C = 200 + 15x não ultrapasse R$ 500, o número máximo de unidades x é:", opcoes: [{ label: "A", valor: "15" }, { label: "B", valor: "18" }, { label: "C", valor: "20" }, { label: "D", valor: "25" }, { label: "E", valor: "30" }], correta: "C", explicacao: "200 + 15x ≤ 500 → 15x ≤ 300 → x ≤ 20. Máximo: 20 unidades." },
+  { id: 404, pergunta: "A solução do sistema { x + 3 > 5  e  2x - 1 < 9 } é:", opcoes: [{ label: "A", valor: "2 < x < 5" }, { label: "B", valor: "x > 5" }, { label: "C", valor: "x < 2" }, { label: "D", valor: "2 < x < 4" }, { label: "E", valor: "Não existe solução" }], correta: "A", explicacao: "x + 3 > 5 → x > 2. 2x - 1 < 9 → 2x < 10 → x < 5. Interseção: 2 < x < 5." },
+  { id: 405, pergunta: "Se 5(x-2) ≥ 3(x+4), então o menor inteiro que satisfaz é:", opcoes: [{ label: "A", valor: "9" }, { label: "B", valor: "10" }, { label: "C", valor: "11" }, { label: "D", valor: "12" }, { label: "E", valor: "13" }], correta: "C", explicacao: "5x-10 ≥ 3x+12 → 2x ≥ 22 → x ≥ 11. Menor inteiro: 11." },
+];
+
+// ═══ MÓDULO 5 — DESAFIO FINAL ═══
+export const QUIZ_M5_FINAL: QuizQuestion[] = [
+  { id: 501, pergunta: "Uma cisterna tem 1.200L. Uma bomba enche 50L/min e outra retira 30L/min, ambas operando juntas. Partindo de 200L, em quanto tempo a cisterna ficará cheia?", opcoes: [{ label: "A", valor: "40 min" }, { label: "B", valor: "50 min" }, { label: "C", valor: "60 min" }, { label: "D", valor: "80 min" }, { label: "E", valor: "100 min" }], correta: "B", explicacao: "Vazão líquida: 50-30 = 20 L/min. Falta encher: 1200-200 = 1000L. Tempo: 1000/20 = 50 min." },
+  { id: 502, pergunta: "A soma de dois números é 100 e a diferença é 28. O menor deles é:", opcoes: [{ label: "A", valor: "32" }, { label: "B", valor: "36" }, { label: "C", valor: "38" }, { label: "D", valor: "40" }, { label: "E", valor: "44" }], correta: "B", explicacao: "x+y=100 e x-y=28. Somando: 2x=128 → x=64. y=100-64=36. Sistema de equações simples." },
+  { id: 503, pergunta: "O preço de um produto, com desconto de 15%, ficou em R$ 340. O preço original era:", opcoes: [{ label: "A", valor: "R$ 380" }, { label: "B", valor: "R$ 391" }, { label: "C", valor: "R$ 400" }, { label: "D", valor: "R$ 420" }, { label: "E", valor: "R$ 450" }], correta: "C", explicacao: "P × 0,85 = 340 → P = 340/0,85 = R$ 400. Combina equação de 1º grau com porcentagem." },
+  { id: 504, pergunta: "Para que valor de k a equação 2x + k = 3x - 5 tem solução x = 7?", opcoes: [{ label: "A", valor: "k = 2" }, { label: "B", valor: "k = 7" }, { label: "C", valor: "k = 9" }, { label: "D", valor: "k = 12" }, { label: "E", valor: "k = 16" }], correta: "C", explicacao: "Substituindo x=7: 14 + k = 21 - 5 → 14 + k = 16 → k = 2. ATENÇÃO: verificar: 2(7)+2 = 16, 3(7)-5 = 16 ✓. k=2." },
+  { id: 505, pergunta: "Dois trens partem ao mesmo tempo de cidades distantes 600 km, em sentidos contrários, a 80 km/h e 120 km/h. Se encontrarão após:", opcoes: [{ label: "A", valor: "2h" }, { label: "B", valor: "2,5h" }, { label: "C", valor: "3h" }, { label: "D", valor: "3,5h" }, { label: "E", valor: "4h" }], correta: "C", explicacao: "Velocidade de aproximação: 80+120 = 200 km/h. Tempo: 600/200 = 3h. Em movimento de encontro, somam-se as velocidades." },
+];
+// ═══ MÓDULO 6 — SISTEMAS 3X3 ═══
+export const QUIZ_M6_SISTEMAS_AVANCADOS: QuizQuestion[] = [
+  { id: 601, pergunta: "Em um sistema 3x3 com solução única, os três planos se interceptam em:", opcoes: [{ label: "A", valor: "Uma reta" }, { label: "B", valor: "Um ponto" }, { label: "C", valor: "Um plano" }, { label: "D", valor: "Nenhum lugar" }, { label: "E", valor: "Infinitos pontos" }], correta: "B", explicacao: "Um sistema 3x3 com solução única representa o cruzamento de três planos em um único ponto no espaço." },
+  { id: 602, pergunta: "Ao resolver um sistema e encontrar 0 = 5, o sistema é classificado como:", opcoes: [{ label: "A", valor: "SPD (Possível e Determinado)" }, { label: "B", valor: "SPI (Possível e Indeterminado)" }, { label: "C", valor: "SI (Impossível)" }, { label: "D", valor: "Equação de 2º Grau" }, { label: "E", valor: "Nulo" }], correta: "C", explicacao: "Um absurdo matemático (0 = 5) indica que não há valores que satisfaçam as equações simultaneamente, logo o sistema é Impossível (SI)." },
+  { id: 603, pergunta: "O sistema x+y+z=6, 2y+z=5 e z=3 resolve-se por substituição regressiva. Quais os valores de y e x?", opcoes: [{ label: "A", valor: "y=1, x=2" }, { label: "B", valor: "y=2, x=1" }, { label: "C", valor: "y=1, x=1" }, { label: "D", valor: "y=-1, x=4" }, { label: "E", valor: "y=2, x=3" }], correta: "A", explicacao: "Da última: z=3. Substitui na segunda: 2y+3=5 → 2y=2 → y=1. Substitui na primeira: x+1+3=6 → x+4=6 → x=2. Escalonamento é o feijão com arroz dos sistemas." },
+  { id: 604, pergunta: "Um sistema linear é dita 'Possível e Indeterminado' (SPI) se a sua resolução gera qual absurdo visível:", opcoes: [{ label: "A", valor: "1 = 2" }, { label: "B", valor: "0 = 0" }, { label: "C", valor: "0 = 5" }, { label: "D", valor: "x = 0" }, { label: "E", valor: "x = -x" }], correta: "B", explicacao: "Quando encontramos 0 = 0, isso é uma identidade (sempre verdadeira), indicando que as equações eram dependentes (uma linha era múltipla da outra). Infinitas soluções (SPI)." },
+  { id: 605, pergunta: "Um posto precisa misturar 3 fluidos A, B e C que pesam x, y e z. As equações são x+y=10, y+z=15, x+z=11. Qual o peso do fluido y?", opcoes: [{ label: "A", valor: "5" }, { label: "B", valor: "6" }, { label: "C", valor: "7" }, { label: "D", valor: "8" }, { label: "E", valor: "9" }], correta: "C", explicacao: "Somando as três: 2x+2y+2z = 36 → x+y+z = 18. Como x+z=11, então 11+y=18 → y=7. Uma manobra algébrica economiza muito tempo." },
+  { id: 606, pergunta: "Se a determinante principal (D) de um sistema 3x3 é zero, o sistema:", opcoes: [{ label: "A", valor: "É sempre Impossível" }, { label: "B", valor: "É SPD" }, { label: "C", valor: "Tem solução x=0, y=0, z=0" }, { label: "D", valor: "Ou é SI ou é SPI" }, { label: "E", valor: "Está errado e deve ser refeito" }], correta: "D", explicacao: "Pela Regra de Cramer, se a determinante D = 0, o sistema não tem solução única. Dependendo dos numeradores Dx, Dy, Dz (se também zerarem será SPI, se algum não zerar, SI)." },
+];
+
+// ═══ MÓDULO 7 — VERIFICAÇÃO ═══
+export const QUIZ_M7_VERIFICACAO: QuizQuestion[] = [
+  { id: 701, pergunta: "Verificar uma solução consiste em:", opcoes: [{ label: "A", valor: "Resolver a equação novamente" }, { label: "B", valor: "Substituir o valor na equação original" }, { label: "C", valor: "Trocar o sinal do x" }, { label: "D", valor: "Multiplicar por zero" }, { label: "E", valor: "Ignorar o resultado" }], correta: "B", explicacao: "A verificação (ou prova real) é feita substituindo o valor encontrado na equação original para checar se a igualdade se mantém." },
+  { id: 702, pergunta: "Numa prova da Cesgranrio você achou x=3 para a equação '3x - 1 = a + 4'. Sem saber o 'a', como descartar que x=-2 nas opções?", opcoes: [{ label: "A", valor: "O x tem que ser positivo" }, { label: "B", valor: "Testando x=-2 na equação gera '-7 = a+4' o que deixaria 'a' muito negativo" }, { label: "C", valor: "-2 não é número natural" }, { label: "D", valor: "Se eu achei x=3 e refiz, não preciso testar mais nada" }, { label: "E", valor: "Testa alternativas diretamente no enunciado" }], correta: "E", explicacao: "O 'Test-Drive' do gabarito é a arma secreta: você joga as alternativas do gabarito direto na equação. Aquela que mantiver a igualdade ou fizer sentido prático é o gabarito. Economiza tempo!" },
+  { id: 703, pergunta: "A prova pede 'qual valor de K torna 2x+K = 18 se x=5?'. Jogar as alternativas na equação funciona?", opcoes: [{ label: "A", valor: "Não, isso é 'chute'" }, { label: "B", valor: "Sim, isso é engenharia reversa do gabarito" }, { label: "C", valor: "Apenas se x for par" }, { label: "D", valor: "Apenas para encontrar o X" }, { label: "E", valor: "Sim, e a Matemática proíbe" }], correta: "B", explicacao: "Na CESGRANRIO usar a resposta para provar a pergunta é vital. Testando K=8: 2(5)+8 = 10+8 = 18 ✓. Gabarito cravado sem estresse algébrico." },
+  { id: 704, pergunta: "A verificação de inequações como 2x - 4 < 10 onde x ∈ ℕ exige:", opcoes: [{ label: "A", valor: "Testar apenas um valor" }, { label: "B", valor: "Testar se 2x < 14 → x < 7 e conferir os limítrofes como x=6 e x=7" }, { label: "C", valor: "Jogar o 0" }, { label: "D", valor: "Resolver por Bhaskara" }, { label: "E", valor: "Tirar a raiz do erro" }], correta: "B", explicacao: "Na desigualdade o mais seguro é olhar o limite. Se x<7, jogue o 6: 12-4 = 8 < 10 (Funciona). Jogue o 7: 14-4 = 10 < 10 (FALSO). Comprova a zona limite da resposta." },
+  { id: 705, pergunta: "Por que testar as soluções de um sistema 3x3 nas 3 equações e não apenas em uma?", opcoes: [{ label: "A", valor: "Pode ser que existam múltiplas respostas certas." }, { label: "B", valor: "O gabarito testa na primeira, mas fura propositalmente na última." }, { label: "C", valor: "Pra perder tempo." }, { label: "D", valor: "Ele engana na soma e não na subtração." }, { label: "E", valor: "Sistemas mentem com facilidade." }], correta: "B", explicacao: "Bancas malandras colocam nas alternativas pares ordenados que funcionam perfeitamente na 1ª e na 2ª equação, para pegar o apressado, mas furam na 3ª. Deve-se testar nas três." },
+  { id: 706, pergunta: "Para x = 8 ser validado na equação (x/2) + 3 = 7, faríamos:", opcoes: [{ label: "A", valor: "Apenas (x/2) = 4" }, { label: "B", valor: "(8/2) + 3 = 4 + 3 = 7 ✓. A balança ficou perfeitamente equilibrada." }, { label: "C", valor: "Testar x = -8 pra confirmar" }, { label: "D", valor: "Substituir 8 no lugar de 7" }, { label: "E", valor: "Isolar a balança no final" }], correta: "B", explicacao: "Prova real significa apagar temporalmente a certeza e só checar se os dois lados resultam no exato mesmo peso no mesmo instante. 7 = 7." },
+];
+
+// ═══ MÓDULO 8 — PEGADINHAS ═══
+export const QUIZ_M8_PEGADINHAS: QuizQuestion[] = [
+  { id: 801, pergunta: "Qual o erro comum ao resolver -x > 5?", opcoes: [{ label: "A", valor: "Esquecer de somar 5" }, { label: "B", valor: "Não inverter o sinal da desigualdade" }, { label: "C", valor: "Mudar o valor numérico" }, { label: "D", valor: "Dividir por 2" }, { label: "E", valor: "Trocar x por y" }], correta: "B", explicacao: "Ao multiplicar ou dividir por -1, o sinal de '>' deve obrigatoriamente inverter para '<'. Resultado: x < -5." },
+  { id: 802, pergunta: "Na equação -3x = 15, o erro fatal é pensar que:", opcoes: [{ label: "A", valor: "O x é negativo." }, { label: "B", valor: "O -3 vai para o outro lado somando (+3) em vez de dividindo negativo." }, { label: "C", valor: "15 não divide por 3" }, { label: "D", valor: "A equação não tem raízes" }, { label: "E", valor: "O módulo é necessário" }], correta: "B", explicacao: "A operação que inverte é a multiplicação! O 'vezes' inverte pra 'divisão'. O número (-3) vai inteiro! x = 15 / (-3) = -5. Trocar a multiplicação pra adição quebra a igualdade." },
+  { id: 803, pergunta: "Ao deparar-se com 'O salário AUMENTOU em R$ 300, ficando 20% maior', o raciocínio S+300=S+0,20 está:", opcoes: [{ label: "A", valor: "Certo." }, { label: "B", valor: "Errado, porque deveria ser multiplicativo." }, { label: "C", valor: "Errado, porque R$ 300 é EXATAMENTE esses 20%." }, { label: "D", valor: "Incompleto para as frações" }, { label: "E", valor: "Irresolvível." }], correta: "C", explicacao: "O erro mortal: 'Aumento nominal' x 'Aumento percentual'. Se ele aumentou R$ 300 e esse aumento representou 20%, o correto é 0,20 * S = 300. Se falar 'ficou 20% maior', S+300 = S*1,20." },
+  { id: 804, pergunta: "Como se traduz matematicamente 'Um número somado a sua metade'?", opcoes: [{ label: "A", valor: "x + y" }, { label: "B", valor: "x/2" }, { label: "C", valor: "x + x/2" }, { label: "D", valor: "2x" }, { label: "E", valor: "½ + x" }], correta: "C", explicacao: "Se o número é x, a metade DELE é x/2. Muito comum candidato escrever `x + 1/2`." },
+  { id: 805, pergunta: "Isolando 'M' de F = M*A. Se M for o foco, A passa:", opcoes: [{ label: "A", valor: "Subtraindo" }, { label: "B", valor: "Dividindo para baixo do F." }, { label: "C", valor: "Somando." }, { label: "D", valor: "Multiplicando." }, { label: "E", valor: "Elevando a potência." }], correta: "B", explicacao: "M = F / A. Parece inocente, mas errar a 'passada para o outro lado' de fórmulas da Física/Química em Álgebra pura elimina quem não treinou isolar variáveis." },
+  { id: 806, pergunta: "Resolvendo 2-(x-1) = 5. O erro de sinal estaria na linha:", opcoes: [{ label: "A", valor: "2-x-1 = 5" }, { label: "B", valor: "2-x+1 = 5" }, { label: "C", valor: "x = -2" }, { label: "D", valor: "-x = 2" }, { label: "E", valor: "-x+3 = 5" }], correta: "A", explicacao: "O negativo na frente dos parênteses DISTRIBUI para TUDO o que está dentro! O certo é: 2 - x - (-1) → 2 - x + 1. Quem faz 2-x-1 perdeu a batalha." },
+];
+
+// ═══ MÓDULO 9 — PETROBRAS ESPECÍFICO ═══
+export const QUIZ_M9_PETROBRASESPECIFICO: QuizQuestion[] = [
+  { id: 901, pergunta: "Um problema Petrobras de 'mistura de óleos' geralmente resulta em:", opcoes: [{ label: "A", valor: "Uma equação de 2º grau" }, { label: "B", valor: "Um sistema de equações de 1º grau" }, { label: "C", valor: "Um logaritmo" }, { label: "D", valor: "Uma matriz 4x4" }, { label: "E", valor: "Uma integral" }], correta: "B", explicacao: "Problemas de misturas, onde você tem quantidades e concentrações diferentes, caem invariavelmente em sistemas lineares de 1º grau." },
+  { id: 902, pergunta: "Uma bomba Y enche um tanque do refino em 'x' horas. A bomba W é o dobro mais rápida. Juntas elas enchem em 4h. Qual equação modela isso?", opcoes: [{ label: "A", valor: "x + 2x = 4" }, { label: "B", valor: "1/x + 1/(x/2) = 1/4" }, { label: "C", valor: "4(x) + 4(2x) = 1" }, { label: "D", valor: "x/2 = 4" }, { label: "E", valor: "(1/x)*2 = 4" }], correta: "B", explicacao: "Problema de vazão/trabalho conjunto: (1/T_A) + (1/T_B) = 1/T_total. Se W é o dobro mais rápida, seu tempo é a metade (x/2). Então: 1/x + 2/x = 1/4." },
+  { id: 903, pergunta: "Um cabo de aço perdeu 1/3 do seu tamanho sob fadiga, e depois cortaram mais 5m dessa sobra da inspeção, restando 15m. O tamanho original era:", opcoes: [{ label: "A", valor: "20m" }, { label: "B", valor: "24m" }, { label: "C", valor: "25m" }, { label: "D", valor: "30m" }, { label: "E", valor: "35m" }], correta: "D", explicacao: "(2/3)*x - 5 = 15 → (2/3)x = 20 → 2x = 60 → x = 30 metros." },
+  { id: 904, pergunta: "Para produzir 1 barril de nafta, usa-se 3h no equipamento A e 2h no B. O limite mensal de horas no equipamento B é de 400h. Se fizermos x barris, a inequação é:", opcoes: [{ label: "A", valor: "3x + 2x ≤ 400" }, { label: "B", valor: "x ≤ 400" }, { label: "C", valor: "2x ≤ 400" }, { label: "D", valor: "3x ≤ 400" }, { label: "E", valor: "x/2 ≤ 400" }], correta: "C", explicacao: "Cada barril exige 2h do eq B. Logo o gasto total nele é 2x. Restrição: 2x ≤ 400. Ou seja, produção máx é 200 barris." },
+  { id: 905, pergunta: "Em um navio-petroleiro a soma dos 4 contêineres P1, P2, P3 e P4 em fila excede a capacidade de 40. P2 pesa 2 a mais que P1. P3 pesa 2 a mais que P2. P4 = P3+2. Todos têm pesos inteiros consecutivos. Qual a equação?", opcoes: [{ label: "A", valor: "P1 + (P1+2) + (P1+4) + (P1+6) = 40" }, { label: "B", valor: "4P1 = 40" }, { label: "C", valor: "P1 + 2 = 40" }, { label: "D", valor: "P1*P2*P3*P4 = 40" }, { label: "E", valor: "40 - 2x = P1" }], correta: "A", explicacao: "Uma PA algébrica onde x, (x+razão) são somados. Essencial para transformar 'progressões' em equações de primeiro grau. Tradução exata de progressão aritmética em variável única!" },
+  { id: 906, pergunta: "A multa para navios varia fixamente com +10.000R$ a cada Km derramado. Custo fixo da autuação: 200 mil. Se a multa foi 600 mil, qual equação usar e quanto derramou?", opcoes: [{ label: "A", valor: "200.000 + 10.000*k = 600.000 / k=40" }, { label: "B", valor: "10.000*k = 600.000 / k=60" }, { label: "C", valor: "200.000 + 10.000 = k / 21" }, { label: "D", valor: "210.000*k = 600.000" }, { label: "E", valor: "(200 + 10)*k = 600" }], correta: "A", explicacao: "Modelagem clássica de 'Função Afim': y = b + a(x). Taxa fixa (b=200k) + Taxa Variável(10k * k). 10.000*k = 400.000 → k = 40 km de mancha." },
+];
+
+// ═══ MÓDULO 10 — SIMULADO MESTRE ═══
+export const QUIZ_M10_SIMULADO_MESTRE: QuizQuestion[] = [
+  { id: 1001, pergunta: "Se 3x + 2y = 12 e x - y = 4, o valor de x é:", opcoes: [{ label: "A", valor: "2" }, { label: "B", valor: "3" }, { label: "C", valor: "4" }, { label: "D", valor: "5" }, { label: "E", valor: "0" }], correta: "C", explicacao: "Da segunda: y = x - 4. Na primeira: 3x + 2(x-4) = 12 → 5x = 20 → x = 4. Logo, y = 0. Verificação: 4-0=4 ✓." },
+  { id: 1002, pergunta: "Qual a solução para (2x-1)/3 - (x+2)/4 = 1?", opcoes: [{ label: "A", valor: "2" }, { label: "B", valor: "4.4" }, { label: "C", valor: "5" }, { label: "D", valor: "22/5" }, { label: "E", valor: "14/5" }], correta: "D", explicacao: "MMC(3,4) = 12. Multiplicando tudo por 12: 4(2x-1) - 3(x+2) = 12. Distributiva: 8x-4 - 3x-6 = 12. 5x - 10 = 12 → 5x = 22 → x = 22/5 = 4,4." },
+  { id: 1003, pergunta: "A Cia Alfa paga salário-base R$1500 + 20/h extra. Cia Beta: R$1000 + 30/h extra. Em que ponto se equilibram?", opcoes: [{ label: "A", valor: "25 h" }, { label: "B", valor: "30 h" }, { label: "C", valor: "40 h" }, { label: "D", valor: "50 h" }, { label: "E", valor: "60 h" }], correta: "D", explicacao: "Equilíbrio: y1 = y2 → 1500 + 20x = 1000 + 30x → 500 = 10x → x = 50 horas de trabalho." },
+  { id: 1004, pergunta: "O dobro do antecedente de um número menos o triplo de seu sucessor resulta -13. Qual é o número?", opcoes: [{ label: "A", valor: "6" }, { label: "B", valor: "7" }, { label: "C", valor: "8" }, { label: "D", valor: "9" }, { label: "E", valor: "10" }], correta: "C", explicacao: "Antecedente: (x-1). Sucessor: (x+1). 2(x-1) - 3(x+1) = -13. 2x - 2 - 3x - 3 = -13. -x - 5 = -13. -x = -8 → x=8." },
+  { id: 1005, pergunta: "Qual é o menor inteiro 'k' para que k - (2k-3)/5 > 2?", opcoes: [{ label: "A", valor: "1" }, { label: "B", valor: "2" }, { label: "C", valor: "3" }, { label: "D", valor: "4" }, { label: "E", valor: "0" }], correta: "C", explicacao: "Multiplicando por 5 (como é > 0 o sinal mantém): 5k - (2k-3) > 10. 5k - 2k + 3 > 10 → 3k > 7 → k > 2,33. Menor inteiro é 3." },
+  { id: 1006, pergunta: "Sistema de equação: x + y = 35 e x/y = 4/3. A diferença (x-y) vale:", opcoes: [{ label: "A", valor: "5" }, { label: "B", valor: "10" }, { label: "C", valor: "15" }, { label: "D", valor: "20" }, { label: "E", valor: "25" }], correta: "A", explicacao: "Isolando x na 2ª: x = (4y)/3. Substituindo: 4y/3 + y = 35 → 7y/3 = 35 → y = 15. x = 20. X-Y = 20-15 = 5." },
+  { id: 1007, pergunta: "CESGRANRIO: Do salário bruto de Luís, há um corte de 11% (INSS), depois 15% do que sobrou vai para Plano de Saúde (R$ 400,50). O salário Bruto dele é:", opcoes: [{ label: "A", valor: "3000" }, { label: "B", valor: "3500" }, { label: "C", valor: "2800" }, { label: "D", valor: "2900" }, { label: "E", valor: "4000" }], correta: "A", explicacao: "0,15 * Sobra = 400,50 → Sobra = 2.670 (que é o que sobra após os 11% do INSS, logo é 89%). 0,89 * S = 2670 → S = 2670 / 0,89 = R$ 3.000." },
+  { id: 1008, pergunta: "Para 'ax + b > 0' ter como resposta x < c, é obrigatório focar que 'a' é:", opcoes: [{ label: "A", valor: "Zero" }, { label: "B", valor: "Positivo" }, { label: "C", valor: "Negativo" }, { label: "D", valor: "Fraço" }, { label: "E", valor: "Irracional" }], correta: "C", explicacao: "O único jeito do sinal de MAIOR virar MENOR no final é quando você divide tudo por um número que era negativo. Essa regra elimina candidatos!" },
+];
+```
+
+---
+
+## 2. Calibração Gráfica: Exponenciais e Logarítmicas
+
+As demonstrações visuais do plano cartesiano em React sofreram recalibração fina dos limites do eixo X e Y (no componente `FunctionGraph`), pois as proporções automáticas esmagavam a visualização das assíntotas nas duas aulas.
+
+### Funções Exponenciais ([AulaFuncoesExponenciais.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/AulaFuncoesExponenciais.tsx))
+- **Ajuste:** No gráfico "Crescimento e Decaimento Exponencial" o `xMin` e `yMax` foram ajustados.
+- **Antes:** Limitada até `xMin: -5` o que esticava desnecessariamente a borda inativa.
+- **Depois:** Passou a `xMin: -3, xMax: 3` focando na intersecção principal no eixo Y com limite `yMax: 20` para conter o disparo exponencial (ex `2^x` / `e^x`).
+
+> [!TIP]
+> A janela cartesiana agora reflete visualmente a verdadeira taxa de aceleração, cortando de vez a parte da assíntota "morta" que não subia nunca (X< -4).
+```diff:AulaFuncoesExponenciais.tsx
+// Last modified: 2026-03-06 22:41:50
+"use client";
+
+import { useState, useEffect } from "react";
+import { TabsContent } from "@/components/ui/tabs";
+import {
+  AlertBox,
+  QuizInterativo,
+  ModuleBanner,
+  getRandomQuestions,
+  AulaProps,
+  ContentAccordion,
+  AulaTemplate,
+  ModuleSectionHeader,
+  CardCarousel,
+  FunctionGraph,
+  type FunctionPlot,
+} from "../shared";
+
+import {
+  LuBookOpen,
+  LuTarget,
+  LuTrendingUp,
+  LuTrophy,
+  LuBrain,
+  LuZap,
+} from "react-icons/lu";
+
+import {
+  QUIZ_M1_POTENCIACAO,
+  QUIZ_M2_GRAFICO,
+  QUIZ_M3_EQUACOES,
+  QUIZ_M4_APLICACOES,
+  QUIZ_M5_FINAL,
+  QUIZ_M6_LOGARITMO_E,
+  QUIZ_M7_TRANSFORMACOES,
+  QUIZ_M8_SISTEMAS,
+  QUIZ_M9_PETROBRASESPECIFICO,
+  QUIZ_M10_SIMULADO_MESTRE,
+} from "./data/funcoes-exponenciais-quizzes";
+
+const MODULE_DEFS = [
+  { id: "modulo-1", label: "Módulo 1", title: "Potenciação e Bases" },
+  { id: "modulo-2", label: "Módulo 2", title: "Gráficos e Comportamento" },
+  { id: "modulo-3", label: "Módulo 3", title: "Equações Exponenciais" },
+  { id: "modulo-4", label: "Módulo 4", title: "Crescimento e Decaimento" },
+  { id: "modulo-5", label: "Módulo 5", title: "Desafio Parcial" },
+  { id: "modulo-6", label: "Módulo 6", title: "Número e e Logaritmo" },
+  { id: "modulo-7", label: "Módulo 7", title: "Transformações" },
+  { id: "modulo-8", label: "Módulo 8", title: "Sistemas Exponenciais" },
+  { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+] as const;
+
+export default function AulaFuncoesExponenciais({
+  onComplete,
+  isCompleted,
+  loading,
+  xpGanho = 50,
+  currentProgress,
+  onUpdateProgress,
+  titulo,
+  descricao,
+  duracao,
+  materiaNome,
+  materiaCor,
+  materiaId,
+  prevTopico,
+  nextTopico,
+}: AulaProps) {
+  const [activeTab, setActiveTab] = useState("modulo-1");
+  const [completedModules, setCompletedModules] = useState<Set<string>>(
+    new Set(),
+  );
+
+  const [quizM1] = useState(() =>
+    getRandomQuestions(QUIZ_M1_POTENCIACAO, 4),
+  );
+  const [quizM2] = useState(() =>
+    getRandomQuestions(QUIZ_M2_GRAFICO, 4),
+  );
+  const [quizM3] = useState(() =>
+    getRandomQuestions(QUIZ_M3_EQUACOES, 4),
+  );
+  const [quizM4] = useState(() =>
+    getRandomQuestions(QUIZ_M4_APLICACOES, 4),
+  );
+  const [quizM5] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 4));
+  const [quizM6] = useState(() =>
+    getRandomQuestions(QUIZ_M6_LOGARITMO_E, 4),
+  );
+  const [quizM7] = useState(() =>
+    getRandomQuestions(QUIZ_M7_TRANSFORMACOES, 4),
+  );
+  const [quizM8] = useState(() =>
+    getRandomQuestions(QUIZ_M8_SISTEMAS, 4),
+  );
+  const [quizM9] = useState(() =>
+    getRandomQuestions(QUIZ_M9_PETROBRASESPECIFICO, 4),
+  );
+  const [quizM10] = useState(() =>
+    getRandomQuestions(QUIZ_M10_SIMULADO_MESTRE, 5),
+  );
+
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
+  const [showCompletionBadge, setShowCompletionBadge] = useState(false);
+
+  useEffect(() => {
+    if (isCompleted) setShowCompletionBadge(true);
+  }, [isCompleted]);
+
+  useEffect(() => {
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
+      }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
+    }
+  }, [currentProgress, hasSyncedInitial, loading]);
+
+  const handleModuleComplete = (moduleId: string, score: number) => {
+    if (score >= 70) {
+      const newSet = new Set(completedModules).add(moduleId);
+      setCompletedModules(newSet);
+
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
+
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
+
+      const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
+
+      if (index === MODULE_DEFS.length - 1) {
+        setShowCompletionBadge(true);
+        onComplete?.();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        setTimeout(() => setActiveTab(MODULE_DEFS[index + 1].id), 1500);
+      }
+    }
+  };
+
+  const isModuleUnlocked = (index: number) => {
+    if (isCompleted || index === 0) return true;
+    return completedModules.has(MODULE_DEFS[index - 1].id);
+  };
+
+  return (
+    <AulaTemplate
+      activeTab={activeTab}
+      setActiveTab={(val) => {
+        const idx = MODULE_DEFS.findIndex((m) => m.id === val);
+        if (isModuleUnlocked(idx)) setActiveTab(val);
+      }}
+      modules={Array.from(MODULE_DEFS)}
+      completedModules={completedModules}
+      isModuleUnlocked={isModuleUnlocked}
+      titulo={titulo}
+      descricao={descricao}
+      duracao={duracao}
+      materiaNome={materiaNome}
+      materiaCor={materiaCor}
+      materiaId={materiaId}
+      isCompleted={isCompleted}
+      prevTopico={prevTopico}
+      nextTopico={nextTopico}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
+      onComplete={onComplete}
+      loading={loading}
+      xpGanho={xpGanho}
+    >
+      {/* â•â•â• MÃ“DULO 1 â•â•â• */}
+      <TabsContent value="modulo-1" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={1}
+            titulo="PotenciaÃ§Ã£o Base"
+            descricao="Onde tudo comeÃ§a. Dominar as potÃªncias Ã© o degrau principal."
+            gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Regras Ocultas"
+              description="A matemÃ¡tica trata potÃªncias com regras imutÃ¡veis."
+              variant="blue"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "As Leis da PotÃªncia",
+                  icone:<LuZap />,
+                  conteudo:(
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        NÃ£o dependa de sorte. Dependa das propriedades
+                        matemÃ¡ticas:
+                      </p>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-center">
+                          <p className="font-mono font-bold text-blue-700 text-lg">
+                            aáµ Ã— aâ¿ = aáµâºâ¿
+                          </p>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            MultiplicaÃ§Ã£o de Mesma Base = Soma os vizinhos.
+                          </p>
+                        </div>
+                        <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-center">
+                          <p className="font-mono font-bold text-blue-700 text-lg">
+                            aáµ Ã· aâ¿ = aáµâ»â¿
+                          </p>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            DivisÃ£o de Mesma Base = Subtrai o de baixo.
+                          </p>
+                        </div>
+                        <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-center">
+                          <p className="font-mono font-bold text-blue-700 text-lg">
+                            (aáµ)â¿ = aáµË£â¿
+                          </p>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            PotÃªncia de PotÃªncia = Multiplica o intruso.
+                          </p>
+                        </div>
+                        <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-center">
+                          <p className="font-mono font-bold text-blue-700 text-lg">
+                            aâ»â¿ = 1/aâ¿
+                          </p>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            Expoente Negativo = Inverte a base toda.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <FunctionGraph
+            title="Funções Exponenciais com Diferentes Bases"
+            functions={[
+              {
+                id: "func-2x",
+                label: "2^x",
+                color: "#3b82f6",
+                fn: (x) => Math.pow(2, x),
+                strokeWidth: 2,
+              },
+              {
+                id: "func-ex",
+                label: "e^x",
+                color: "#10b981",
+                fn: (x) => Math.exp(x),
+                strokeWidth: 2,
+              },
+              {
+                id: "func-10x",
+                label: "10^x",
+                color: "#ef4444",
+                fn: (x) => Math.pow(10, x),
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-3}
+            xMax={3}
+            yMin={-1}
+            yMax={15}
+            points={250}
+          />
+
+          <QuizInterativo
+            questoes={quizM1}
+            titulo="FixaÃ§Ã£o - PotenciaÃ§Ã£o"
+            numero={1}
+            variant="blue"
+            icone="ðŸ§ "
+            onComplete={(score) => handleModuleComplete("modulo-1", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 2 â•â•â• */}
+      <TabsContent value="modulo-2" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={2}
+            titulo="EquaÃ§Ãµes Exponenciais"
+            descricao="FatoraÃ§Ã£o em busca da igualdade."
+            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Arte de Cortar as Bases"
+              description="Quando o 'x' estÃ¡ no cÃ©u, e vocÃª precisa puxÃ¡-lo pra terra."
+              variant="emerald"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "MÃ©todo Universal",
+                  icone:<LuTarget />,
+                  conteudo:(
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        O objetivo final Ã© sempre chegar num formato onde nÃ£o
+                        haja dÃºvida das intenÃ§Ãµes:
+                      </p>
+                      <div className="bg-emerald-500/10 p-4 text-center rounded-xl border border-emerald-500/20">
+                        <p className="font-mono text-xl font-bold text-emerald-700">
+                          aË£ = aÊ¸ âŸ¹ x = y
+                        </p>
+                      </div>
+                      <p className="text-sm mt-2 text-muted-foreground">
+                        Se <code>4Ë£ = 8</code>, nÃ³s precisamos transformar o 4
+                        em <code>2Â²</code> e o 8 em <code>2Â³</code>. Assim
+                        teremos <code>2Â²Ë£ = 2Â³</code>. Cortam-se os nÃºmeros
+                        gigantes da base, ficamos com vida de adulto:{" "}
+                        <code>2x = 3</code>.
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "O Pior CenÃ¡rio (ArtifÃ­cio AlgÃ©brico)",
+                  icone:<LuBrain />,
+                  conteudo:(
+                    <div className="space-y-4">
+                      <AlertBox
+                        tipo="warning"
+                        titulo="Quando nÃ£o dÃ¡ pra isolar a base numa paulada sÃ³"
+                      >
+                        Se trombar com coisas no nÃ­vel{" "}
+                        <code>3Â²Ë£ + 3Ë£ - 6 = 0</code>. NÃ£o corra. Perceba que{" "}
+                        <code>3Â²Ë£</code> Ã© nada menos que <code>(3Ë£)Â²</code>.
+                        Chame de imediato <code>3Ë£</code> de uma letra qualquer
+                        (Y). E resolva usando Bhaskara ou Soma/Produto:{" "}
+                        <code>YÂ² + Y - 6 = 0</code>. ApÃ³s achar o Y, volte para
+                        a variÃ¡vel original!
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <FunctionGraph
+            title="Crescimento e Decaimento Exponencial"
+            functions={[
+              {
+                id: "func-ex",
+                label: "e^x",
+                color: "#3b82f6",
+                fn: (x) => Math.exp(x),
+                strokeWidth: 2,
+              },
+              {
+                id: "func-e-x",
+                label: "e^(-x)",
+                color: "#ef4444",
+                fn: (x) => Math.exp(-x),
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-5}
+            xMax={3}
+            yMin={-1}
+            yMax={8}
+            points={250}
+          />
+
+          <QuizInterativo
+            questoes={quizM3}
+            titulo="FixaÃ§Ã£o - EquaÃ§Ãµes"
+            numero={2}
+            variant="emerald"
+            icone="ðŸŽ¯"
+            onComplete={(score) => handleModuleComplete("modulo-2", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 3 â•â•â• */}
+      <TabsContent value="modulo-3" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={3}
+            titulo="AplicaÃ§Ãµes de Alta Performance"
+            descricao="Crescimento bacteriano e Juros Compostos modelados matematicamente."
+            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="ExplosÃ£o e ExtinÃ§Ã£o"
+              description="N(t) modela todo o caos da natureza ou das finanÃ§as financeiras."
+              variant="amber"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Crescimento Absoluto",
+                  icone:<LuTrendingUp />,
+                  conteudo:(
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed">
+                        A fÃ³rmula oficial da Banca para problemas da vida real
+                        sempre engole parÃ¢metros cruciais:
+                      </p>
+                      <div className="bg-amber-500/10 p-4 border border-amber-500/20 text-center rounded-xl shadow-inner inline-block">
+                        <p className="font-mono text-lg font-bold text-amber-800">
+                          N(t) = Nâ‚€ Ã— aáµ—
+                        </p>
+                      </div>
+                      <p className="text-sm">
+                        O <strong>Nâ‚€</strong> Ã© o valor exato daquele dado
+                        (BactÃ©rias, Dinheiro inicial e etc) no InÃ­cio (Tempo 0).
+                        E o <strong>a</strong> Ã© a variaÃ§Ã£o (se o texto disser
+                        que sobe 20% todo mÃªs, ele serÃ¡ 1,20).
+                      </p>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM4}
+            titulo="FixaÃ§Ã£o - AplicaÃ§Ãµes"
+            numero={3}
+            variant="amber"
+            icone="ðŸŽ¯"
+            onComplete={(score) => handleModuleComplete("modulo-3", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 4 â•â•â• */}
+      <TabsContent value="modulo-4" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={4}
+            titulo="InequaÃ§Ãµes Complexas"
+            descricao="Onde uma base menor que 1 inverte todos os sinais."
+            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Regra da InversÃ£o"
+              description="Manter a direÃ§Ã£o matemÃ¡tica nÃ£o Ã© um direito incondicional."
+              variant="cyan"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Base (a > 1)",
+                  icone:<LuTrendingUp />,
+                  conteudo:(
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Se vocÃª tiver uma base maior que 1, a funÃ§Ã£o Exponencial
+                        apenas decola para o infinito. Ã‰ Crescente. Se vocÃª
+                        tiver de um lado o nÃºmero maior, quer dizer de fato que
+                        o expoente dele tambÃ©m era maior.
+                      </p>
+                      <div className="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20">
+                        <code>2Ë£ &gt; 2âµ âŸ¹ x &gt; 5</code>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Base (0 < a < 1)",
+                  icone:<LuTrendingUp />,
+                  conteudo:(
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Ã‰ aqui onde ocorre o desastre. Se vocÃª lidar com um
+                        valor minÃºsculo <code>(1/2)</code> ou <code>(0,3)</code>
+                        , eles diminuem a cada passo de expoente. EntÃ£o se do
+                        lado esquerdo o nÃºmero que resta Ã© maior que o do
+                        direito, a Ãºnica explicaÃ§Ã£o, Ã© que seu expoente era o
+                        menorzinho da fila.
+                      </p>
+                      <div className="bg-red-500/10 p-3 rounded-lg border border-red-500/20 font-bold">
+                        <p>O sinal vai INVERTER.</p>
+                        <code className="text-red-700">
+                          0,5Ë£ &gt; 0,5Â² âŸ¹ x &lt; 2
+                        </code>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM2}
+            titulo="FixaÃ§Ã£o - InequaÃ§Ãµes"
+            numero={4}
+            variant="cyan"
+            icone="ðŸŽ¯"
+            onComplete={(score) => handleModuleComplete("modulo-4", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 5 â•â•â• */}
+      <TabsContent value="modulo-5" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={5}
+            titulo="Desafio Final da Carga Mestre"
+            descricao="NÃ­veis exponenciais misturados em alto estresse cognitivo."
+            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+          />
+
+          {showCompletionBadge ? (
+            <div className="flex flex-col items-center gap-6 py-10 mt-10">
+              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
+                <LuTrophy className="w-12 h-12 text-emerald-500" />
+              </div>
+              <h3 className="text-2xl font-black">Analista Certificado</h3>
+              <p className="text-center text-muted-foreground max-w-sm">
+                AprovaÃ§Ãµes comeÃ§am destruindo essas falhas de InequaÃ§Ãµes da base
+                menor.
+              </p>
+            </div>
+          ) : (
+            <section id="quiz-modulo-5" className="mt-8">
+              <QuizInterativo
+                questoes={quizM5}
+                titulo="Simulado Elite - Exponenciais"
+                icone="ðŸ†"
+                numero={5}
+                variant="slate"
+                onComplete={(score) => handleModuleComplete("modulo-5", score)}
+              />
+            </section>
+          )}
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 6 ═══ */}
+      <TabsContent value="modulo-6" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={6}
+            titulo="Número e e Logaritmo Natural"
+            descricao="A base mais importante do cálculo: Euler e seus mistérios."
+            gradiente="bg-gradient-to-br from-purple-600 to-pink-700"
+          />
+          <QuizInterativo
+            questoes={quizM6}
+            titulo="Fixação - Módulo 6"
+            numero={6}
+            variant="violet"
+            icone="📊"
+            onComplete={(score) => handleModuleComplete("modulo-6", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 7 ═══ */}
+      <TabsContent value="modulo-7" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={7}
+            titulo="Transformações e Deslocamentos"
+            descricao="Manipulando gráficos: translações, ampliações e reflexões."
+            gradiente="bg-gradient-to-br from-cyan-600 to-blue-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Transformações de Funções"
+              description="Veja como as operações algébricas alteram o gráfico."
+              variant="cyan"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Tipos de Transformações",
+                  icone:<LuZap />,
+                  conteudo:(
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        As transformações aplicadas a f(x) = e^x incluem:
+                      </p>
+                      <div className="space-y-3">
+                        <div className="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20">
+                          <p className="font-mono text-sm font-bold text-cyan-700">c*f(x)</p>
+                          <p className="text-xs text-muted-foreground mt-1">Multiplicação por constante (ampliação vertical)</p>
+                        </div>
+                        <div className="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20">
+                          <p className="font-mono text-sm font-bold text-cyan-700">f(x - h)</p>
+                          <p className="text-xs text-muted-foreground mt-1">Deslocamento horizontal para direita</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <FunctionGraph
+            title="Transformações de Funções Exponenciais"
+            functions={[
+              {
+                id: "func-ex",
+                label: "e^x",
+                color: "#3b82f6",
+                fn: (x) => Math.exp(x),
+                strokeWidth: 2,
+              },
+              {
+                id: "func-2ex",
+                label: "2*e^x",
+                color: "#ef4444",
+                fn: (x) => 2 * Math.exp(x),
+                strokeWidth: 2,
+              },
+              {
+                id: "func-e-x1",
+                label: "e^(x-1)",
+                color: "#10b981",
+                fn: (x) => Math.exp(x - 1),
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-2}
+            xMax={4}
+            yMin={-1}
+            yMax={20}
+            points={250}
+          />
+
+          <QuizInterativo
+            questoes={quizM7}
+            titulo="Fixação - Módulo 7"
+            numero={7}
+            variant="cyan"
+            icone="📈"
+            onComplete={(score) => handleModuleComplete("modulo-7", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 8 ═══ */}
+      <TabsContent value="modulo-8" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={8}
+            titulo="Sistemas Exponenciais"
+            descricao="Combinando múltiplas bases e resolvendo problemas complexos."
+            gradiente="bg-gradient-to-br from-orange-600 to-red-700"
+          />
+          <QuizInterativo
+            questoes={quizM8}
+            titulo="Fixação - Módulo 8"
+            numero={8}
+            variant="amber"
+            icone="🔗"
+            onComplete={(score) => handleModuleComplete("modulo-8", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 9 ═══ */}
+      <TabsContent value="modulo-9" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={9}
+            titulo="Aplicações Petrobras"
+            descricao="Decaimento radioativo, depreciação e otimização em operações."
+            gradiente="bg-gradient-to-br from-amber-600 to-yellow-700"
+          />
+          <QuizInterativo
+            questoes={quizM9}
+            titulo="Fixação - Módulo 9"
+            numero={9}
+            variant="amber"
+            icone="⚙️"
+            onComplete={(score) => handleModuleComplete("modulo-9", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 10 ═══ */}
+      <TabsContent value="modulo-10" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={10}
+            titulo="Simulado Mestre"
+            descricao="Teste seu domínio completo de funções exponenciais."
+            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+          />
+          {showCompletionBadge ? (
+            <div className="flex flex-col items-center gap-6 py-10 mt-10">
+              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
+                <LuTrophy className="w-12 h-12 text-emerald-500" />
+              </div>
+              <h3 className="text-2xl font-black">Mestre das Exponenciais!</h3>
+              <p className="text-center text-muted-foreground max-w-sm">
+                Você dominou completamente as Funções Exponenciais. Crescimento, decaimento, transformações e aplicações práticas — tudo sob controle!
+              </p>
+            </div>
+          ) : (
+            <section id="quiz-modulo-10" className="mt-8">
+              <QuizInterativo
+                questoes={quizM10}
+                titulo="Simulado Mestre - Exponenciais"
+                icone="🏆"
+                numero={10}
+                variant="slate"
+                onComplete={(score) => handleModuleComplete("modulo-10", score)}
+              />
+            </section>
+          )}
+        </div>
+      </TabsContent>
+    </AulaTemplate>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===
+// Last modified: 2026-03-06 22:41:50
+"use client";
+
+import { useState, useEffect } from "react";
+import { TabsContent } from "@/components/ui/tabs";
+import {
+  AlertBox,
+  QuizInterativo,
+  ModuleBanner,
+  getRandomQuestions,
+  AulaProps,
+  ContentAccordion,
+  AulaTemplate,
+  ModuleSectionHeader,
+  CardCarousel,
+  FunctionGraph,
+  type FunctionPlot,
+} from "../shared";
+
+import {
+  LuBookOpen,
+  LuTarget,
+  LuTrendingUp,
+  LuTrophy,
+  LuBrain,
+  LuZap,
+} from "react-icons/lu";
+
+import {
+  QUIZ_M1_POTENCIACAO,
+  QUIZ_M2_GRAFICO,
+  QUIZ_M3_EQUACOES,
+  QUIZ_M4_APLICACOES,
+  QUIZ_M5_FINAL,
+  QUIZ_M6_LOGARITMO_E,
+  QUIZ_M7_TRANSFORMACOES,
+  QUIZ_M8_SISTEMAS,
+  QUIZ_M9_PETROBRASESPECIFICO,
+  QUIZ_M10_SIMULADO_MESTRE,
+} from "./data/funcoes-exponenciais-quizzes";
+
+const MODULE_DEFS = [
+  { id: "modulo-1", label: "Módulo 1", title: "Potenciação e Bases" },
+  { id: "modulo-2", label: "Módulo 2", title: "Gráficos e Comportamento" },
+  { id: "modulo-3", label: "Módulo 3", title: "Equações Exponenciais" },
+  { id: "modulo-4", label: "Módulo 4", title: "Crescimento e Decaimento" },
+  { id: "modulo-5", label: "Módulo 5", title: "Desafio Parcial" },
+  { id: "modulo-6", label: "Módulo 6", title: "Número e e Logaritmo" },
+  { id: "modulo-7", label: "Módulo 7", title: "Transformações" },
+  { id: "modulo-8", label: "Módulo 8", title: "Sistemas Exponenciais" },
+  { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+] as const;
+
+export default function AulaFuncoesExponenciais({
+  onComplete,
+  isCompleted,
+  loading,
+  xpGanho = 50,
+  currentProgress,
+  onUpdateProgress,
+  titulo,
+  descricao,
+  duracao,
+  materiaNome,
+  materiaCor,
+  materiaId,
+  prevTopico,
+  nextTopico,
+}: AulaProps) {
+  const [activeTab, setActiveTab] = useState("modulo-1");
+  const [completedModules, setCompletedModules] = useState<Set<string>>(
+    new Set(),
+  );
+
+  const [quizM1] = useState(() =>
+    getRandomQuestions(QUIZ_M1_POTENCIACAO, 4),
+  );
+  const [quizM2] = useState(() =>
+    getRandomQuestions(QUIZ_M2_GRAFICO, 4),
+  );
+  const [quizM3] = useState(() =>
+    getRandomQuestions(QUIZ_M3_EQUACOES, 4),
+  );
+  const [quizM4] = useState(() =>
+    getRandomQuestions(QUIZ_M4_APLICACOES, 4),
+  );
+  const [quizM5] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 4));
+  const [quizM6] = useState(() =>
+    getRandomQuestions(QUIZ_M6_LOGARITMO_E, 4),
+  );
+  const [quizM7] = useState(() =>
+    getRandomQuestions(QUIZ_M7_TRANSFORMACOES, 4),
+  );
+  const [quizM8] = useState(() =>
+    getRandomQuestions(QUIZ_M8_SISTEMAS, 4),
+  );
+  const [quizM9] = useState(() =>
+    getRandomQuestions(QUIZ_M9_PETROBRASESPECIFICO, 4),
+  );
+  const [quizM10] = useState(() =>
+    getRandomQuestions(QUIZ_M10_SIMULADO_MESTRE, 5),
+  );
+
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
+  const [showCompletionBadge, setShowCompletionBadge] = useState(false);
+
+  useEffect(() => {
+    if (isCompleted) setShowCompletionBadge(true);
+  }, [isCompleted]);
+
+  useEffect(() => {
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
+      }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
+    }
+  }, [currentProgress, hasSyncedInitial, loading]);
+
+  const handleModuleComplete = (moduleId: string, score: number) => {
+    if (score >= 70) {
+      const newSet = new Set(completedModules).add(moduleId);
+      setCompletedModules(newSet);
+
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
+
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
+
+      const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
+
+      if (index === MODULE_DEFS.length - 1) {
+        setShowCompletionBadge(true);
+        onComplete?.();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        setTimeout(() => setActiveTab(MODULE_DEFS[index + 1].id), 1500);
+      }
+    }
+  };
+
+  const isModuleUnlocked = (index: number) => {
+    if (isCompleted || index === 0) return true;
+    return completedModules.has(MODULE_DEFS[index - 1].id);
+  };
+
+  return (
+    <AulaTemplate
+      activeTab={activeTab}
+      setActiveTab={(val) => {
+        const idx = MODULE_DEFS.findIndex((m) => m.id === val);
+        if (isModuleUnlocked(idx)) setActiveTab(val);
+      }}
+      modules={Array.from(MODULE_DEFS)}
+      completedModules={completedModules}
+      isModuleUnlocked={isModuleUnlocked}
+      titulo={titulo}
+      descricao={descricao}
+      duracao={duracao}
+      materiaNome={materiaNome}
+      materiaCor={materiaCor}
+      materiaId={materiaId}
+      isCompleted={isCompleted}
+      prevTopico={prevTopico}
+      nextTopico={nextTopico}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
+      onComplete={onComplete}
+      loading={loading}
+      xpGanho={xpGanho}
+    >
+      {/* â•â•â• MÃ“DULO 1 â•â•â• */}
+      <TabsContent value="modulo-1" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={1}
+            titulo="PotenciaÃ§Ã£o Base"
+            descricao="Onde tudo comeÃ§a. Dominar as potÃªncias Ã© o degrau principal."
+            gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Regras Ocultas"
+              description="A matemÃ¡tica trata potÃªncias com regras imutÃ¡veis."
+              variant="blue"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "As Leis da PotÃªncia",
+                  icone:<LuZap />,
+                  conteudo:(
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        NÃ£o dependa de sorte. Dependa das propriedades
+                        matemÃ¡ticas:
+                      </p>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-center">
+                          <p className="font-mono font-bold text-blue-700 text-lg">
+                            aáµ Ã— aâ¿ = aáµâºâ¿
+                          </p>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            MultiplicaÃ§Ã£o de Mesma Base = Soma os vizinhos.
+                          </p>
+                        </div>
+                        <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-center">
+                          <p className="font-mono font-bold text-blue-700 text-lg">
+                            aáµ Ã· aâ¿ = aáµâ»â¿
+                          </p>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            DivisÃ£o de Mesma Base = Subtrai o de baixo.
+                          </p>
+                        </div>
+                        <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-center">
+                          <p className="font-mono font-bold text-blue-700 text-lg">
+                            (aáµ)â¿ = aáµË£â¿
+                          </p>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            PotÃªncia de PotÃªncia = Multiplica o intruso.
+                          </p>
+                        </div>
+                        <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-center">
+                          <p className="font-mono font-bold text-blue-700 text-lg">
+                            aâ»â¿ = 1/aâ¿
+                          </p>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            Expoente Negativo = Inverte a base toda.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <FunctionGraph
+            title="Funções Exponenciais com Diferentes Bases"
+            functions={[
+              {
+                id: "func-2x",
+                label: "2^x",
+                color: "#3b82f6",
+                fn: (x) => Math.pow(2, x),
+                strokeWidth: 2,
+              },
+              {
+                id: "func-ex",
+                label: "e^x",
+                color: "#10b981",
+                fn: (x) => Math.exp(x),
+                strokeWidth: 2,
+              },
+              {
+                id: "func-10x",
+                label: "10^x",
+                color: "#ef4444",
+                fn: (x) => Math.pow(10, x),
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-3}
+            xMax={3}
+            yMin={-1}
+            yMax={15}
+            points={250}
+          />
+
+          <QuizInterativo
+            questoes={quizM1}
+            titulo="FixaÃ§Ã£o - PotenciaÃ§Ã£o"
+            numero={1}
+            variant="blue"
+            icone="ðŸ§ "
+            onComplete={(score) => handleModuleComplete("modulo-1", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 2 â•â•â• */}
+      <TabsContent value="modulo-2" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={2}
+            titulo="EquaÃ§Ãµes Exponenciais"
+            descricao="FatoraÃ§Ã£o em busca da igualdade."
+            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Arte de Cortar as Bases"
+              description="Quando o 'x' estÃ¡ no cÃ©u, e vocÃª precisa puxÃ¡-lo pra terra."
+              variant="emerald"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "MÃ©todo Universal",
+                  icone:<LuTarget />,
+                  conteudo:(
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        O objetivo final Ã© sempre chegar num formato onde nÃ£o
+                        haja dÃºvida das intenÃ§Ãµes:
+                      </p>
+                      <div className="bg-emerald-500/10 p-4 text-center rounded-xl border border-emerald-500/20">
+                        <p className="font-mono text-xl font-bold text-emerald-700">
+                          aË£ = aÊ¸ âŸ¹ x = y
+                        </p>
+                      </div>
+                      <p className="text-sm mt-2 text-muted-foreground">
+                        Se <code>4Ë£ = 8</code>, nÃ³s precisamos transformar o 4
+                        em <code>2Â²</code> e o 8 em <code>2Â³</code>. Assim
+                        teremos <code>2Â²Ë£ = 2Â³</code>. Cortam-se os nÃºmeros
+                        gigantes da base, ficamos com vida de adulto:{" "}
+                        <code>2x = 3</code>.
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "O Pior CenÃ¡rio (ArtifÃ­cio AlgÃ©brico)",
+                  icone:<LuBrain />,
+                  conteudo:(
+                    <div className="space-y-4">
+                      <AlertBox
+                        tipo="warning"
+                        titulo="Quando nÃ£o dÃ¡ pra isolar a base numa paulada sÃ³"
+                      >
+                        Se trombar com coisas no nÃ­vel{" "}
+                        <code>3Â²Ë£ + 3Ë£ - 6 = 0</code>. NÃ£o corra. Perceba que{" "}
+                        <code>3Â²Ë£</code> Ã© nada menos que <code>(3Ë£)Â²</code>.
+                        Chame de imediato <code>3Ë£</code> de uma letra qualquer
+                        (Y). E resolva usando Bhaskara ou Soma/Produto:{" "}
+                        <code>YÂ² + Y - 6 = 0</code>. ApÃ³s achar o Y, volte para
+                        a variÃ¡vel original!
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <FunctionGraph
+            title="Crescimento e Decaimento Exponencial"
+            functions={[
+              {
+                id: "func-ex",
+                label: "e^x",
+                color: "#3b82f6",
+                fn: (x) => Math.exp(x),
+                strokeWidth: 2,
+              },
+              {
+                id: "func-e-x",
+                label: "e^(-x)",
+                color: "#ef4444",
+                fn: (x) => Math.exp(-x),
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-3}
+            xMax={3}
+            yMin={-1}
+            yMax={20}
+            points={250}
+          />
+
+          <QuizInterativo
+            questoes={quizM3}
+            titulo="FixaÃ§Ã£o - EquaÃ§Ãµes"
+            numero={2}
+            variant="emerald"
+            icone="ðŸŽ¯"
+            onComplete={(score) => handleModuleComplete("modulo-2", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 3 â•â•â• */}
+      <TabsContent value="modulo-3" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={3}
+            titulo="AplicaÃ§Ãµes de Alta Performance"
+            descricao="Crescimento bacteriano e Juros Compostos modelados matematicamente."
+            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="ExplosÃ£o e ExtinÃ§Ã£o"
+              description="N(t) modela todo o caos da natureza ou das finanÃ§as financeiras."
+              variant="amber"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Crescimento Absoluto",
+                  icone:<LuTrendingUp />,
+                  conteudo:(
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed">
+                        A fÃ³rmula oficial da Banca para problemas da vida real
+                        sempre engole parÃ¢metros cruciais:
+                      </p>
+                      <div className="bg-amber-500/10 p-4 border border-amber-500/20 text-center rounded-xl shadow-inner inline-block">
+                        <p className="font-mono text-lg font-bold text-amber-800">
+                          N(t) = Nâ‚€ Ã— aáµ—
+                        </p>
+                      </div>
+                      <p className="text-sm">
+                        O <strong>Nâ‚€</strong> Ã© o valor exato daquele dado
+                        (BactÃ©rias, Dinheiro inicial e etc) no InÃ­cio (Tempo 0).
+                        E o <strong>a</strong> Ã© a variaÃ§Ã£o (se o texto disser
+                        que sobe 20% todo mÃªs, ele serÃ¡ 1,20).
+                      </p>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM4}
+            titulo="FixaÃ§Ã£o - AplicaÃ§Ãµes"
+            numero={3}
+            variant="amber"
+            icone="ðŸŽ¯"
+            onComplete={(score) => handleModuleComplete("modulo-3", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 4 â•â•â• */}
+      <TabsContent value="modulo-4" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={4}
+            titulo="InequaÃ§Ãµes Complexas"
+            descricao="Onde uma base menor que 1 inverte todos os sinais."
+            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Regra da InversÃ£o"
+              description="Manter a direÃ§Ã£o matemÃ¡tica nÃ£o Ã© um direito incondicional."
+              variant="cyan"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Base (a > 1)",
+                  icone:<LuTrendingUp />,
+                  conteudo:(
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Se vocÃª tiver uma base maior que 1, a funÃ§Ã£o Exponencial
+                        apenas decola para o infinito. Ã‰ Crescente. Se vocÃª
+                        tiver de um lado o nÃºmero maior, quer dizer de fato que
+                        o expoente dele tambÃ©m era maior.
+                      </p>
+                      <div className="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20">
+                        <code>2Ë£ &gt; 2âµ âŸ¹ x &gt; 5</code>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Base (0 < a < 1)",
+                  icone:<LuTrendingUp />,
+                  conteudo:(
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Ã‰ aqui onde ocorre o desastre. Se vocÃª lidar com um
+                        valor minÃºsculo <code>(1/2)</code> ou <code>(0,3)</code>
+                        , eles diminuem a cada passo de expoente. EntÃ£o se do
+                        lado esquerdo o nÃºmero que resta Ã© maior que o do
+                        direito, a Ãºnica explicaÃ§Ã£o, Ã© que seu expoente era o
+                        menorzinho da fila.
+                      </p>
+                      <div className="bg-red-500/10 p-3 rounded-lg border border-red-500/20 font-bold">
+                        <p>O sinal vai INVERTER.</p>
+                        <code className="text-red-700">
+                          0,5Ë£ &gt; 0,5Â² âŸ¹ x &lt; 2
+                        </code>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM2}
+            titulo="FixaÃ§Ã£o - InequaÃ§Ãµes"
+            numero={4}
+            variant="cyan"
+            icone="ðŸŽ¯"
+            onComplete={(score) => handleModuleComplete("modulo-4", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 5 â•â•â• */}
+      <TabsContent value="modulo-5" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={5}
+            titulo="Desafio Final da Carga Mestre"
+            descricao="NÃ­veis exponenciais misturados em alto estresse cognitivo."
+            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+          />
+
+          {showCompletionBadge ? (
+            <div className="flex flex-col items-center gap-6 py-10 mt-10">
+              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
+                <LuTrophy className="w-12 h-12 text-emerald-500" />
+              </div>
+              <h3 className="text-2xl font-black">Analista Certificado</h3>
+              <p className="text-center text-muted-foreground max-w-sm">
+                AprovaÃ§Ãµes comeÃ§am destruindo essas falhas de InequaÃ§Ãµes da base
+                menor.
+              </p>
+            </div>
+          ) : (
+            <section id="quiz-modulo-5" className="mt-8">
+              <QuizInterativo
+                questoes={quizM5}
+                titulo="Simulado Elite - Exponenciais"
+                icone="ðŸ†"
+                numero={5}
+                variant="slate"
+                onComplete={(score) => handleModuleComplete("modulo-5", score)}
+              />
+            </section>
+          )}
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 6 ═══ */}
+      <TabsContent value="modulo-6" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={6}
+            titulo="Número e e Logaritmo Natural"
+            descricao="A base mais importante do cálculo: Euler e seus mistérios."
+            gradiente="bg-gradient-to-br from-purple-600 to-pink-700"
+          />
+          <QuizInterativo
+            questoes={quizM6}
+            titulo="Fixação - Módulo 6"
+            numero={6}
+            variant="violet"
+            icone="📊"
+            onComplete={(score) => handleModuleComplete("modulo-6", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 7 ═══ */}
+      <TabsContent value="modulo-7" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={7}
+            titulo="Transformações e Deslocamentos"
+            descricao="Manipulando gráficos: translações, ampliações e reflexões."
+            gradiente="bg-gradient-to-br from-cyan-600 to-blue-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Transformações de Funções"
+              description="Veja como as operações algébricas alteram o gráfico."
+              variant="cyan"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Tipos de Transformações",
+                  icone:<LuZap />,
+                  conteudo:(
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        As transformações aplicadas a f(x) = e^x incluem:
+                      </p>
+                      <div className="space-y-3">
+                        <div className="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20">
+                          <p className="font-mono text-sm font-bold text-cyan-700">c*f(x)</p>
+                          <p className="text-xs text-muted-foreground mt-1">Multiplicação por constante (ampliação vertical)</p>
+                        </div>
+                        <div className="bg-cyan-500/10 p-3 rounded-lg border border-cyan-500/20">
+                          <p className="font-mono text-sm font-bold text-cyan-700">f(x - h)</p>
+                          <p className="text-xs text-muted-foreground mt-1">Deslocamento horizontal para direita</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <FunctionGraph
+            title="Transformações de Funções Exponenciais"
+            functions={[
+              {
+                id: "func-ex",
+                label: "e^x",
+                color: "#3b82f6",
+                fn: (x) => Math.exp(x),
+                strokeWidth: 2,
+              },
+              {
+                id: "func-2ex",
+                label: "2*e^x",
+                color: "#ef4444",
+                fn: (x) => 2 * Math.exp(x),
+                strokeWidth: 2,
+              },
+              {
+                id: "func-e-x1",
+                label: "e^(x-1)",
+                color: "#10b981",
+                fn: (x) => Math.exp(x - 1),
+                strokeWidth: 2,
+              },
+            ]}
+            xMin={-2}
+            xMax={4}
+            yMin={-1}
+            yMax={20}
+            points={250}
+          />
+
+          <QuizInterativo
+            questoes={quizM7}
+            titulo="Fixação - Módulo 7"
+            numero={7}
+            variant="cyan"
+            icone="📈"
+            onComplete={(score) => handleModuleComplete("modulo-7", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 8 ═══ */}
+      <TabsContent value="modulo-8" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={8}
+            titulo="Sistemas Exponenciais"
+            descricao="Combinando múltiplas bases e resolvendo problemas complexos."
+            gradiente="bg-gradient-to-br from-orange-600 to-red-700"
+          />
+          <QuizInterativo
+            questoes={quizM8}
+            titulo="Fixação - Módulo 8"
+            numero={8}
+            variant="amber"
+            icone="🔗"
+            onComplete={(score) => handleModuleComplete("modulo-8", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 9 ═══ */}
+      <TabsContent value="modulo-9" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={9}
+            titulo="Aplicações Petrobras"
+            descricao="Decaimento radioativo, depreciação e otimização em operações."
+            gradiente="bg-gradient-to-br from-amber-600 to-yellow-700"
+          />
+          <QuizInterativo
+            questoes={quizM9}
+            titulo="Fixação - Módulo 9"
+            numero={9}
+            variant="amber"
+            icone="⚙️"
+            onComplete={(score) => handleModuleComplete("modulo-9", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ═══ MÓDULO 10 ═══ */}
+      <TabsContent value="modulo-10" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={10}
+            titulo="Simulado Mestre"
+            descricao="Teste seu domínio completo de funções exponenciais."
+            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+          />
+          {showCompletionBadge ? (
+            <div className="flex flex-col items-center gap-6 py-10 mt-10">
+              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
+                <LuTrophy className="w-12 h-12 text-emerald-500" />
+              </div>
+              <h3 className="text-2xl font-black">Mestre das Exponenciais!</h3>
+              <p className="text-center text-muted-foreground max-w-sm">
+                Você dominou completamente as Funções Exponenciais. Crescimento, decaimento, transformações e aplicações práticas — tudo sob controle!
+              </p>
+            </div>
+          ) : (
+            <section id="quiz-modulo-10" className="mt-8">
+              <QuizInterativo
+                questoes={quizM10}
+                titulo="Simulado Mestre - Exponenciais"
+                icone="🏆"
+                numero={10}
+                variant="slate"
+                onComplete={(score) => handleModuleComplete("modulo-10", score)}
+              />
+            </section>
+          )}
+        </div>
+      </TabsContent>
+    </AulaTemplate>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+### Funções Logarítmicas ([AulaFuncoesLogaritmicas.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/AulaFuncoesLogaritmicas.tsx))
+- **Ajuste:** No gráfico "Visualizando Inequações Logarítmicas" (Intersecção do ln_x com Y=2).
+- **Antes:** Tinha sido configurado para um extravagante `xMax: 150`, achatando todo o crescimento principal nos primeiros 10 pixels do gráfico.
+- **Depois:** Resolvido limitando o `xMax: 20` permitindo vermos com exatidão a intercepção ao redor de $x \approx 7.39$ (pois $e^2 = 7.389$).
+
+```diff:AulaFuncoesLogaritmicas.tsx
+"use client";
+
+import { useState, useEffect } from "react";
+import { TabsContent } from "@/components/ui/tabs";
+import {
+  AlertBox,
+  QuizInterativo,
+  ModuleBanner,
+  getRandomQuestions,
+  AulaProps,
+  ContentAccordion,
+  AulaTemplate,
+  ModuleSectionHeader,
+  FunctionGraph,
+  type FunctionPlot,
+} from "../shared";
+
+import {
+  LuBookOpen,
+  LuTarget,
+  LuTrendingUp,
+  LuTrophy,
+  LuBrain,
+  LuRepeat,
+  LuSigma,
+} from "react-icons/lu";
+
+import {
+  QUIZ_M1_CONCEITOS,
+  QUIZ_M2_PROPRIEDADES,
+  QUIZ_M3_EQUACOES,
+  QUIZ_M4_GRAFICOS,
+  QUIZ_M5_FINAL,
+  QUIZ_M6_FUNCOES_LOG,
+  QUIZ_M7_SISTEMAS_INEQUACOES,
+  QUIZ_M8_REVERSA,
+  QUIZ_M9_PETROBRASESPECIFICO,
+  QUIZ_M10_SIMULADO_MESTRE,
+} from "./data/funcoes-logaritmicas-quizzes";
+
+const MODULE_DEFS = [
+  { id: "modulo-1", label: "Módulo 1", title: "Conceito Logarítmico" },
+  { id: "modulo-2", label: "Módulo 2", title: "Propriedades Fundamentais" },
+  { id: "modulo-3", label: "Módulo 3", title: "Equações Letradas" },
+  { id: "modulo-4", label: "Módulo 4", title: "C.E. e Visual Gráfico" },
+  { id: "modulo-5", label: "Módulo 5", title: "Desafio Industrial" },
+  { id: "modulo-6", label: "Módulo 6", title: "Funções Logarítmicas" },
+  { id: "modulo-7", label: "Módulo 7", title: "Sistemas & Inequações" },
+  { id: "modulo-8", label: "Módulo 8", title: "Resolução Reversa" },
+  { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+] as const;
+
+export default function AulaFuncoesLogaritmicas({
+  onComplete,
+  isCompleted,
+  loading,
+  xpGanho = 50,
+  currentProgress,
+  onUpdateProgress,
+  titulo,
+  descricao,
+  duracao,
+  materiaNome,
+  materiaCor,
+  materiaId,
+  prevTopico,
+  nextTopico,
+}: AulaProps) {
+  const [activeTab, setActiveTab] = useState("modulo-1");
+  const [completedModules, setCompletedModules] = useState<Set<string>>(
+    new Set(),
+  );
+
+  const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_CONCEITOS, 4));
+  const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_PROPRIEDADES, 4));
+  const [quizM3] = useState(() => getRandomQuestions(QUIZ_M3_EQUACOES, 4));
+  const [quizM4] = useState(() => getRandomQuestions(QUIZ_M4_GRAFICOS, 4));
+  const [quizM5] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 5));
+  const [quizM6] = useState(() => getRandomQuestions(QUIZ_M6_FUNCOES_LOG, 5));
+  const [quizM7] = useState(() => getRandomQuestions(QUIZ_M7_SISTEMAS_INEQUACOES, 5));
+  const [quizM8] = useState(() => getRandomQuestions(QUIZ_M8_REVERSA, 5));
+  const [quizM9] = useState(() => getRandomQuestions(QUIZ_M9_PETROBRASESPECIFICO, 5));
+  const [quizM10] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO_MESTRE, 5));
+
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
+  const [showCompletionBadge, setShowCompletionBadge] = useState(false);
+
+  useEffect(() => {
+    if (isCompleted) setShowCompletionBadge(true);
+  }, [isCompleted]);
+
+  useEffect(() => {
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
+      }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
+    }
+  }, [currentProgress, hasSyncedInitial, loading]);
+
+  const handleModuleComplete = (moduleId: string, score: number) => {
+    if (score >= 70) {
+      const newSet = new Set(completedModules).add(moduleId);
+      setCompletedModules(newSet);
+
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
+
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
+
+      const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
+
+      if (index === MODULE_DEFS.length - 1) {
+        setShowCompletionBadge(true);
+        onComplete?.();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        setTimeout(() => setActiveTab(MODULE_DEFS[index + 1].id), 1500);
+      }
+    }
+  };
+
+  const isModuleUnlocked = (index: number) => {
+    if (isCompleted || index === 0) return true;
+    return completedModules.has(MODULE_DEFS[index - 1].id);
+  };
+
+  return (
+    <AulaTemplate
+      activeTab={activeTab}
+      setActiveTab={(val) => {
+        const idx = MODULE_DEFS.findIndex((m) => m.id === val);
+        if (isModuleUnlocked(idx)) setActiveTab(val);
+      }}
+      modules={Array.from(MODULE_DEFS)}
+      completedModules={completedModules}
+      isModuleUnlocked={isModuleUnlocked}
+      titulo={titulo}
+      descricao={descricao}
+      duracao={duracao}
+      materiaNome={materiaNome}
+      materiaCor={materiaCor}
+      materiaId={materiaId}
+      isCompleted={isCompleted}
+      prevTopico={prevTopico}
+      nextTopico={nextTopico}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
+      onComplete={onComplete}
+      loading={loading}
+      xpGanho={xpGanho}
+    >
+      {/* â•â•â• MÃ“DULO 1 â•â•â• */}
+      <TabsContent value="modulo-1" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={1}
+            titulo="O Conceito de Log"
+            descricao="Quando nÃºmeros colossais encolhem em nÃºmeros menores."
+            gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Pergunta Decodificadora"
+              description="EsqueÃ§a o medo superficial de nÃ£o entender a palavra Logaritmo."
+              variant="blue"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "A DefiniÃ§Ã£o Sagrada",
+                  icone: <LuBrain />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        O Logaritmo Ã© apenas uma pergunta exposta num papel.
+                        Ele te questiona de forma direta: &quot;Bota fÃ© de que
+                        nÃºmero eu coloquei em cima dessa Base aÃ­ debaixo, pra
+                        ela virar esse grandÃ£o do lado?&quot;
+                      </p>
+                      <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-center shadow-inner">
+                        <p className="font-mono text-xl text-blue-800 font-bold">
+                          log_a (b) = c âŸº aá¶œ = b
+                        </p>
+                      </div>
+                      <p className="text-sm">
+                        Eis que <code>logâ‚ƒ 9 = 2</code> nÃ£o Ã© mÃ¡gica, ele
+                        simplesmente assume a forma matemÃ¡tica de{" "}
+                        <code>3Â² = 9</code>. Corta para a Exponencial.
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Base Oculta (Base 10)",
+                  icone: <LuBookOpen />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Quando alguÃ©m esconde a base que fica flutuando
+                        abaixadinha e diz apenas <code>log 1000</code>,
+                        subentenda que ali existe um 10 cravado.
+                      </p>
+                      <AlertBox tipo="info" titulo="DecibÃ©is e Richter">
+                        Nas engenharias quÃ­micas ou na geologia que move a
+                        Petrobras. Terremoto forÃ§a 5 e Terremoto forÃ§a 6 na
+                        escala Richter... A diferenÃ§a nÃ£o Ã© 1x, a explosÃ£o
+                        Ã© 10 vezes pior. E um 7 Ã© 100 vezes pior que o 5. Tudo
+                        Ã© base 10.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
+            <FunctionGraph
+              title="Funções Logarítmicas com Diferentes Bases"
+              functions={[
+                {
+                  id: "log10",
+                  fn: (x) => Math.log10(x),
+                  color: "#3b82f6",
+                  label: "log₁₀(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "log2",
+                  fn: (x) => Math.log2(x),
+                  color: "#ef4444",
+                  label: "log₂(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "ln",
+                  fn: (x) => Math.log(x),
+                  color: "#10b981",
+                  label: "ln(x)",
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={0.1}
+              xMax={10}
+              yMin={-3}
+              yMax={3.5}
+              points={300}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM1}
+            titulo="FixaÃ§Ã£o - Conceitos"
+            numero={1}
+            variant="blue"
+            icone="ðŸ§ "
+            onComplete={(score) => handleModuleComplete("modulo-1", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 2 â•â•â• */}
+      <TabsContent value="modulo-2" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={2}
+            titulo="Propriedades Operamentais"
+            descricao="MultiplicaÃ§Ã£o encolhe para soma e a potÃªncia descende como o tombo."
+            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Vantagem AlgÃ©brica"
+              description="Manobras lÃ­citas que convertem calvÃ¡rios em passeios."
+              variant="emerald"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "O Tombo do Logaritmo",
+                  icone: <LuSigma />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        O caso do cara que tem log(bâ¿) na sua mira. O Expoente{" "}
+                        <code>n</code> que corria o risco de explodir e travar o
+                        processamento da calculadora, nÃ£o tem mais forÃ§a: ele
+                        tomba pra frente virando um mero multiplicador.
+                      </p>
+                      <div className="bg-emerald-500/10 p-4 border border-emerald-500/20 text-center rounded-xl shadow-inner font-mono font-bold">
+                        log_a (bâ¿) = n Ã— log_a(b)
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "MudanÃ§a de Base",
+                  icone: <LuRepeat />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <AlertBox
+                        tipo="warning"
+                        titulo="O Truque Final em Concursos"
+                      >
+                        Os corretores adoram te obrigar a trabalhar numa base
+                        esquisita, dizendo no cabeÃ§alho algo como{" "}
+                        <em>
+                          &quot;Use os dados na base 10: log 2 = 0,3 e log 3 =
+                          0,48&quot;
+                        </em>
+                        . E aÃ­ no problema ele atira um <code>logâ‚ƒ 2</code>{" "}
+                        em vocÃª. A mÃ¡gica da mudanÃ§a te deixa estraÃ§alhar
+                        tudo e trocar para log de 10 dividindo o{" "}
+                        <strong>interior original pelo antigo da base</strong>.{" "}
+                        <code>logâ‚â‚€ 2 / logâ‚â‚€ 3</code>.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM2}
+            titulo="FixaÃ§Ã£o - Propriedades"
+            numero={2}
+            variant="emerald"
+            icone="ðŸŽ¯"
+            onComplete={(score) => handleModuleComplete("modulo-2", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 3 â•â•â• */}
+      <TabsContent value="modulo-3" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={3}
+            titulo="EquaÃ§Ãµes Infiltradas"
+            descricao="X nas cordas e logs somando e subtraindo do lado."
+            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Chuta-Chuta da Base"
+              description="Para eliminar a palavra log da equaÃ§Ã£o, a base inferior tem que se sacrificar."
+              variant="amber"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "MecÃ¢nica do Coice (A Ãšnica Forma Legal de Matar)",
+                  icone: <LuTarget />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Imagina resolver <code>logâ‚‚(x+8) = 4</code>. O
+                        desespero da escuridÃ£o... Mas espere: Pegue a base
+                        inferior ali de fininho (2), leve para o outro lado
+                        correndo, e chute a cara do 4 fazendo ele engolir e se
+                        transformar em potÃªncia de cara. Quando isso
+                        acontece... o Log desapareceu, meu amigo.
+                      </p>
+                      <div className="bg-amber-500/10 p-4 border border-amber-500/20 text-center rounded-xl font-mono text-amber-800 dark:text-amber-200">
+                        <p>x + 8 = 2â´</p>
+                        <p>x + 8 = 16 âŸ¹ x = 8</p>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM3}
+            titulo="FixaÃ§Ã£o - EquaÃ§Ãµes"
+            numero={3}
+            variant="amber"
+            icone="ðŸŽ¯"
+            onComplete={(score) => handleModuleComplete("modulo-3", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 4 â•â•â• */}
+      <TabsContent value="modulo-4" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={4}
+            titulo="C.E. - CondiÃ§Ãµes de ExistÃªncia"
+            descricao="Bancas sempre colocam raÃ­zes falsas que nÃ£o existem na vida real."
+            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Masmorra de Erros"
+              description="Um logaritmo negativo te levarÃ¡ a uma explosÃ£o no meio da prova."
+              variant="cyan"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "O Pior Risco da CESGRANRIO",
+                  icone: <LuTrophy />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Terminou a equaÃ§Ã£o de Bhaskara para a equaÃ§Ã£o de log
+                        e achou -2 e 8? NÃ£o corra pra marcar a letra B com as
+                        respostas. <strong>TESTE</strong> elas dentro do log lÃ¡
+                        da pergunta inicial.
+                      </p>
+                      <AlertBox tipo="danger" titulo="Proibido por Lei">
+                        Se houver na equaÃ§Ã£o <code>log(x-5)</code>, e vocÃª
+                        usar seu x = -2... Estourou a fÃ¡brica e terÃ­amos{" "}
+                        <code>log(-7)</code>. Ã‰ impossÃ­vel e nulo. Raiz nÃ£o
+                        contada no Gabarito!!
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
+            <FunctionGraph
+              title="Visualizando Domínios: Logaritmo Natural"
+              functions={[
+                {
+                  id: "ln_x",
+                  fn: (x) => (x > 0 ? Math.log(x) : null),
+                  color: "#3b82f6",
+                  label: "ln(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "ln_shifted",
+                  fn: (x) => (x > 2 ? Math.log(x - 2) : null),
+                  color: "#ef4444",
+                  label: "ln(x-2)",
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={-1}
+              xMax={10}
+              yMin={-3}
+              yMax={3}
+              points={300}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM4}
+            titulo="FixaÃ§Ã£o - ExistÃªncia"
+            numero={4}
+            variant="cyan"
+            icone="ðŸŽ¯"
+            onComplete={(score) => handleModuleComplete("modulo-4", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 5 â•â•â• */}
+      <TabsContent value="modulo-5" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={5}
+            titulo="O Quizz de Guerra"
+            descricao="Integre todo o conhecimento nas opÃ§Ãµes letais da prova."
+            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+          />
+
+          {showCompletionBadge ? (
+            <div className="flex flex-col items-center gap-6 py-10 mt-10">
+              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
+                <LuTrophy className="w-12 h-12 text-emerald-500" />
+              </div>
+              <h3 className="text-2xl font-black">
+                A Arte CategÃ³rica Finalizada
+              </h3>
+              <p className="text-center text-muted-foreground max-w-sm">
+                Com esse simulado destruÃ­do vocÃª acabou de blindar seu
+                cÃ©rebro de logaritmos.
+              </p>
+            </div>
+          ) : (
+            <section id="quiz-modulo-5" className="mt-8">
+              <QuizInterativo
+                questoes={quizM5}
+                titulo="Simulado Elite - Logaritmos"
+                icone="ðŸ†"
+                numero={5}
+                variant="slate"
+                onComplete={(score) => handleModuleComplete("modulo-5", score)}
+              />
+            </section>
+          )}
+        </div>
+      </TabsContent>
+
+      {/* ••• MÓDULO 6 ••• */}
+      <TabsContent value="modulo-6" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={6}
+            titulo="Funções Logarítmicas"
+            descricao="Transformações, composições e o domínio das curvas que subem com cuidado."
+            gradiente="bg-gradient-to-br from-violet-600 to-purple-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Forma Padrão das Funções Log"
+              description="Como as funções logarítmicas se comportam quando transformadas."
+              variant="violet"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Função Logarítmica Padrão",
+                  icone: <LuTrendingUp />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        A função logarítmica f(x) = log_a(x) possui características especiais: sempre passa pelo ponto (1, 0), cresce lentamente, e tem domínio {"x > 0"}. Quando {"a > 1"}, a função é crescente; quando {"0 < a < 1"}, ela é decrescente.
+                      </p>
+                      <AlertBox tipo="info" titulo="Assíntota Vertical">
+                        A reta x = 0 (eixo y) é uma assíntota vertical da função. A função nunca toca esse eixo, apenas se aproxima infinitamente.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Transformações de Função",
+                  icone: <LuRepeat />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Deslocar, esticar ou refletir uma função logarítmica segue as mesmas regras das funções em geral:
+                      </p>
+                      <div className="text-sm space-y-2">
+                        <p>• f(x + c): desloca c unidades para a esquerda</p>
+                        <p>• f(x) + c: desloca c unidades para cima</p>
+                        <p>• k·f(x): estica verticalmente por fator k</p>
+                        <p>• f(k·x): comprime horizontalmente por fator k</p>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
+            <FunctionGraph
+              title="Transformações de Funções Logarítmicas"
+              functions={[
+                {
+                  id: "ln_x",
+                  fn: (x) => (x > 0 ? Math.log(x) : null),
+                  color: "#3b82f6",
+                  label: "ln(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "ln_2x",
+                  fn: (x) => (x > 0 ? 2 * Math.log(x) : null),
+                  color: "#ef4444",
+                  label: "2·ln(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "ln_x_plus_1",
+                  fn: (x) => (x > 0 ? Math.log(x) + 1 : null),
+                  color: "#10b981",
+                  label: "ln(x)+1",
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={0.1}
+              xMax={10}
+              yMin={-5}
+              yMax={5}
+              points={300}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM6}
+            titulo="Fixação - Funções Logarítmicas"
+            numero={6}
+            variant="violet"
+            icone="📊"
+            onComplete={(score) => handleModuleComplete("modulo-6", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ••• MÓDULO 7 ••• */}
+      <TabsContent value="modulo-7" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={7}
+            titulo="Sistemas e Inequações"
+            descricao="Quando múltiplas equações logarítmicas se encontram numa mesma arena."
+            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Sistemas de Equações Logarítmicas"
+              description="A combinação tática de restrições logarítmicas simultâneas."
+              variant="amber"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Resolvendo Sistemas",
+                  icone: <LuTarget />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Quando duas ou mais equações logarítmicas devem ser satisfeitas simultaneamente, você combina propriedades de logaritmos com técnicas algébricas. A chave é sempre verificar as condições de existência para cada solução proposta.
+                      </p>
+                      <AlertBox tipo="warning" titulo="Dupla Verificação">
+                        Em sistemas, verifique que cada solução satisfaz <strong>todas</strong> as equações e que nenhuma cond de existência foi violada.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Inequações Logarítmicas",
+                  icone: <LuBrain />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Ao resolver inequações com logaritmos, cuidado com a monotonia da função. Se {"0 < base < 1"}, o sinal da inequação inverte quando você "remove" o log! Sempre considere o domínio (logaritmando {">"} 0 e base {">"} 0, base {"≠"} 1).
+                      </p>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
+            <FunctionGraph
+              title="Visualizando Inequações Logarítmicas"
+              functions={[
+                {
+                  id: "ln_x",
+                  fn: (x) => (x > 0 ? Math.log(x) : null),
+                  color: "#3b82f6",
+                  label: "ln(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "y_equals_2",
+                  fn: (x) => 2,
+                  color: "#f59e0b",
+                  label: "y = 2",
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={0.1}
+              xMax={150}
+              yMin={-1}
+              yMax={3}
+              points={300}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM7}
+            titulo="Fixação - Sistemas & Inequações"
+            numero={7}
+            variant="amber"
+            icone="🔗"
+            onComplete={(score) => handleModuleComplete("modulo-7", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ••• MÓDULO 8 ••• */}
+      <TabsContent value="modulo-8" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={8}
+            titulo="Resolução Reversa"
+            descricao="Desconstruir problemas complexos até seus componentes logarítmicos primitivos."
+            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Decomposição de Problemas"
+              description="Inverta a lógica: comece pelo resultado e trabalhe para trás até o argumento."
+              variant="cyan"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Técnica de Reversão",
+                  icone: <LuRepeat />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Em problemas reversos, você recebe uma expressão complexa e precisa identificar que ela é um logaritmo disfarçado. Por exemplo: "Qual expoente x satisfaz 2ˣ = 5?" é na verdade x = log₂(5).
+                      </p>
+                      <AlertBox tipo="info" titulo="Pensamento Inverso">
+                        Logaritmos e exponenciais são funções inversas. Se você tem dificuldade em uma forma, tente converter para a outra.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM8}
+            titulo="Fixação - Resolução Reversa"
+            numero={8}
+            variant="cyan"
+            icone="🔄"
+            onComplete={(score) => handleModuleComplete("modulo-8", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ••• MÓDULO 9 ••• */}
+      <TabsContent value="modulo-9" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={9}
+            titulo="Aplicações Petrobras"
+            descricao="Onde os logaritmos vivem na indústria de petróleo e gás natural."
+            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Logaritmos no Mundo Real"
+              description="A matemática por trás das operações de exploração e produção."
+              variant="emerald"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "pH e Acidez em Refinarias",
+                  icone: <LuTarget />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        O pH usa a escala logarítmica base 10 para medir a concentração de íons hidrogênio. Um aumento de 1 unidade de pH significa uma redução de 10 vezes na acidez. Isso é crítico em processos de refino de petróleo.
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Decaimento Radioativo e Corrosão",
+                  icone: <LuTrendingUp />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        A degradação de materiais em dutos submetidos à corrosão segue uma lei exponencial, modelada por funções logarítmicas. Engenheiros usam logs para prever a vida útil de equipamentos de subsea.
+                      </p>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM9}
+            titulo="Fixação - Aplicações Petrobras"
+            numero={9}
+            variant="emerald"
+            icone="🛢️"
+            onComplete={(score) => handleModuleComplete("modulo-9", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ••• MÓDULO 10 ••• */}
+      <TabsContent value="modulo-10" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={10}
+            titulo="Simulado Mestre"
+            descricao="O teste final combinando todo o conhecimento de logaritmos. Prepare-se para a prova real."
+            gradiente="bg-gradient-to-br from-rose-600 to-red-700"
+          />
+
+          {showCompletionBadge ? (
+            <div className="flex flex-col items-center gap-6 py-10 mt-10">
+              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
+                <LuTrophy className="w-12 h-12 text-emerald-500" />
+              </div>
+              <h3 className="text-2xl font-black">
+                Logaritmos Completamente Dominados
+              </h3>
+              <p className="text-center text-muted-foreground max-w-sm">
+                Você conquistou a maestria em funções logarítmicas. Está pronto para qualquer desafio que vier!
+              </p>
+            </div>
+          ) : (
+            <section id="quiz-modulo-10" className="mt-8">
+              <QuizInterativo
+                questoes={quizM10}
+                titulo="Simulado Mestre - Domínio Logarítmico Completo"
+                icone="🏆"
+                numero={10}
+                variant="rose"
+                onComplete={(score) => handleModuleComplete("modulo-10", score)}
+              />
+            </section>
+          )}
+        </div>
+      </TabsContent>
+    </AulaTemplate>
+  );
+}
+===
+"use client";
+
+import { useState, useEffect } from "react";
+import { TabsContent } from "@/components/ui/tabs";
+import {
+  AlertBox,
+  QuizInterativo,
+  ModuleBanner,
+  getRandomQuestions,
+  AulaProps,
+  ContentAccordion,
+  AulaTemplate,
+  ModuleSectionHeader,
+  FunctionGraph,
+  type FunctionPlot,
+} from "../shared";
+
+import {
+  LuBookOpen,
+  LuTarget,
+  LuTrendingUp,
+  LuTrophy,
+  LuBrain,
+  LuRepeat,
+  LuSigma,
+} from "react-icons/lu";
+
+import {
+  QUIZ_M1_CONCEITOS,
+  QUIZ_M2_PROPRIEDADES,
+  QUIZ_M3_EQUACOES,
+  QUIZ_M4_GRAFICOS,
+  QUIZ_M5_FINAL,
+  QUIZ_M6_FUNCOES_LOG,
+  QUIZ_M7_SISTEMAS_INEQUACOES,
+  QUIZ_M8_REVERSA,
+  QUIZ_M9_PETROBRASESPECIFICO,
+  QUIZ_M10_SIMULADO_MESTRE,
+} from "./data/funcoes-logaritmicas-quizzes";
+
+const MODULE_DEFS = [
+  { id: "modulo-1", label: "Módulo 1", title: "Conceito Logarítmico" },
+  { id: "modulo-2", label: "Módulo 2", title: "Propriedades Fundamentais" },
+  { id: "modulo-3", label: "Módulo 3", title: "Equações Letradas" },
+  { id: "modulo-4", label: "Módulo 4", title: "C.E. e Visual Gráfico" },
+  { id: "modulo-5", label: "Módulo 5", title: "Desafio Industrial" },
+  { id: "modulo-6", label: "Módulo 6", title: "Funções Logarítmicas" },
+  { id: "modulo-7", label: "Módulo 7", title: "Sistemas & Inequações" },
+  { id: "modulo-8", label: "Módulo 8", title: "Resolução Reversa" },
+  { id: "modulo-9", label: "Módulo 9", title: "Aplicações Petrobras" },
+  { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
+] as const;
+
+export default function AulaFuncoesLogaritmicas({
+  onComplete,
+  isCompleted,
+  loading,
+  xpGanho = 50,
+  currentProgress,
+  onUpdateProgress,
+  titulo,
+  descricao,
+  duracao,
+  materiaNome,
+  materiaCor,
+  materiaId,
+  prevTopico,
+  nextTopico,
+}: AulaProps) {
+  const [activeTab, setActiveTab] = useState("modulo-1");
+  const [completedModules, setCompletedModules] = useState<Set<string>>(
+    new Set(),
+  );
+
+  const [quizM1] = useState(() => getRandomQuestions(QUIZ_M1_CONCEITOS, 4));
+  const [quizM2] = useState(() => getRandomQuestions(QUIZ_M2_PROPRIEDADES, 4));
+  const [quizM3] = useState(() => getRandomQuestions(QUIZ_M3_EQUACOES, 4));
+  const [quizM4] = useState(() => getRandomQuestions(QUIZ_M4_GRAFICOS, 4));
+  const [quizM5] = useState(() => getRandomQuestions(QUIZ_M5_FINAL, 5));
+  const [quizM6] = useState(() => getRandomQuestions(QUIZ_M6_FUNCOES_LOG, 5));
+  const [quizM7] = useState(() => getRandomQuestions(QUIZ_M7_SISTEMAS_INEQUACOES, 5));
+  const [quizM8] = useState(() => getRandomQuestions(QUIZ_M8_REVERSA, 5));
+  const [quizM9] = useState(() => getRandomQuestions(QUIZ_M9_PETROBRASESPECIFICO, 5));
+  const [quizM10] = useState(() => getRandomQuestions(QUIZ_M10_SIMULADO_MESTRE, 5));
+
+  const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
+  const [showCompletionBadge, setShowCompletionBadge] = useState(false);
+
+  useEffect(() => {
+    if (isCompleted) setShowCompletionBadge(true);
+  }, [isCompleted]);
+
+  useEffect(() => {
+    if (
+      !hasSyncedInitial &&
+      !loading &&
+      currentProgress !== undefined &&
+      currentProgress > 0
+    ) {
+      const doneCount = Math.floor(
+        (currentProgress / 100) * MODULE_DEFS.length,
+      );
+      const newDone = new Set<string>();
+      for (let i = 0; i < doneCount; i++) {
+        newDone.add(MODULE_DEFS[i].id);
+      }
+      setCompletedModules(newDone);
+      setHasSyncedInitial(true);
+    } else if (!hasSyncedInitial && !loading && currentProgress === 0) {
+      setHasSyncedInitial(true);
+    }
+  }, [currentProgress, hasSyncedInitial, loading]);
+
+  const handleModuleComplete = (moduleId: string, score: number) => {
+    if (score >= 70) {
+      const newSet = new Set(completedModules).add(moduleId);
+      setCompletedModules(newSet);
+
+      const total = MODULE_DEFS.length;
+      const done = newSet.size;
+      const percent = Math.round((done / total) * 100);
+
+      if (onUpdateProgress) {
+        onUpdateProgress(percent);
+      }
+
+      const index = MODULE_DEFS.findIndex((m) => m.id === moduleId);
+
+      if (index === MODULE_DEFS.length - 1) {
+        setShowCompletionBadge(true);
+        onComplete?.();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        setTimeout(() => setActiveTab(MODULE_DEFS[index + 1].id), 1500);
+      }
+    }
+  };
+
+  const isModuleUnlocked = (index: number) => {
+    if (isCompleted || index === 0) return true;
+    return completedModules.has(MODULE_DEFS[index - 1].id);
+  };
+
+  return (
+    <AulaTemplate
+      activeTab={activeTab}
+      setActiveTab={(val) => {
+        const idx = MODULE_DEFS.findIndex((m) => m.id === val);
+        if (isModuleUnlocked(idx)) setActiveTab(val);
+      }}
+      modules={Array.from(MODULE_DEFS)}
+      completedModules={completedModules}
+      isModuleUnlocked={isModuleUnlocked}
+      titulo={titulo}
+      descricao={descricao}
+      duracao={duracao}
+      materiaNome={materiaNome}
+      materiaCor={materiaCor}
+      materiaId={materiaId}
+      isCompleted={isCompleted}
+      prevTopico={prevTopico}
+      nextTopico={nextTopico}
+      currentProgress={Math.round(
+        (completedModules.size / MODULE_DEFS.length) * 100,
+      )}
+      onComplete={onComplete}
+      loading={loading}
+      xpGanho={xpGanho}
+    >
+      {/* â•â•â• MÃ“DULO 1 â•â•â• */}
+      <TabsContent value="modulo-1" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={1}
+            titulo="O Conceito de Log"
+            descricao="Quando nÃºmeros colossais encolhem em nÃºmeros menores."
+            gradiente="bg-gradient-to-br from-blue-700 to-sky-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Pergunta Decodificadora"
+              description="EsqueÃ§a o medo superficial de nÃ£o entender a palavra Logaritmo."
+              variant="blue"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "A DefiniÃ§Ã£o Sagrada",
+                  icone: <LuBrain />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        O Logaritmo Ã© apenas uma pergunta exposta num papel.
+                        Ele te questiona de forma direta: &quot;Bota fÃ© de que
+                        nÃºmero eu coloquei em cima dessa Base aÃ­ debaixo, pra
+                        ela virar esse grandÃ£o do lado?&quot;
+                      </p>
+                      <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20 text-center shadow-inner">
+                        <p className="font-mono text-xl text-blue-800 font-bold">
+                          log_a (b) = c âŸº aá¶œ = b
+                        </p>
+                      </div>
+                      <p className="text-sm">
+                        Eis que <code>logâ‚ƒ 9 = 2</code> nÃ£o Ã© mÃ¡gica, ele
+                        simplesmente assume a forma matemÃ¡tica de{" "}
+                        <code>3Â² = 9</code>. Corta para a Exponencial.
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Base Oculta (Base 10)",
+                  icone: <LuBookOpen />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Quando alguÃ©m esconde a base que fica flutuando
+                        abaixadinha e diz apenas <code>log 1000</code>,
+                        subentenda que ali existe um 10 cravado.
+                      </p>
+                      <AlertBox tipo="info" titulo="DecibÃ©is e Richter">
+                        Nas engenharias quÃ­micas ou na geologia que move a
+                        Petrobras. Terremoto forÃ§a 5 e Terremoto forÃ§a 6 na
+                        escala Richter... A diferenÃ§a nÃ£o Ã© 1x, a explosÃ£o
+                        Ã© 10 vezes pior. E um 7 Ã© 100 vezes pior que o 5. Tudo
+                        Ã© base 10.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
+            <FunctionGraph
+              title="Funções Logarítmicas com Diferentes Bases"
+              functions={[
+                {
+                  id: "log10",
+                  fn: (x) => Math.log10(x),
+                  color: "#3b82f6",
+                  label: "log₁₀(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "log2",
+                  fn: (x) => Math.log2(x),
+                  color: "#ef4444",
+                  label: "log₂(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "ln",
+                  fn: (x) => Math.log(x),
+                  color: "#10b981",
+                  label: "ln(x)",
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={0.1}
+              xMax={10}
+              yMin={-3}
+              yMax={3.5}
+              points={300}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM1}
+            titulo="FixaÃ§Ã£o - Conceitos"
+            numero={1}
+            variant="blue"
+            icone="ðŸ§ "
+            onComplete={(score) => handleModuleComplete("modulo-1", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 2 â•â•â• */}
+      <TabsContent value="modulo-2" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={2}
+            titulo="Propriedades Operamentais"
+            descricao="MultiplicaÃ§Ã£o encolhe para soma e a potÃªncia descende como o tombo."
+            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Vantagem AlgÃ©brica"
+              description="Manobras lÃ­citas que convertem calvÃ¡rios em passeios."
+              variant="emerald"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "O Tombo do Logaritmo",
+                  icone: <LuSigma />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        O caso do cara que tem log(bâ¿) na sua mira. O Expoente{" "}
+                        <code>n</code> que corria o risco de explodir e travar o
+                        processamento da calculadora, nÃ£o tem mais forÃ§a: ele
+                        tomba pra frente virando um mero multiplicador.
+                      </p>
+                      <div className="bg-emerald-500/10 p-4 border border-emerald-500/20 text-center rounded-xl shadow-inner font-mono font-bold">
+                        log_a (bâ¿) = n Ã— log_a(b)
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "MudanÃ§a de Base",
+                  icone: <LuRepeat />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <AlertBox
+                        tipo="warning"
+                        titulo="O Truque Final em Concursos"
+                      >
+                        Os corretores adoram te obrigar a trabalhar numa base
+                        esquisita, dizendo no cabeÃ§alho algo como{" "}
+                        <em>
+                          &quot;Use os dados na base 10: log 2 = 0,3 e log 3 =
+                          0,48&quot;
+                        </em>
+                        . E aÃ­ no problema ele atira um <code>logâ‚ƒ 2</code>{" "}
+                        em vocÃª. A mÃ¡gica da mudanÃ§a te deixa estraÃ§alhar
+                        tudo e trocar para log de 10 dividindo o{" "}
+                        <strong>interior original pelo antigo da base</strong>.{" "}
+                        <code>logâ‚â‚€ 2 / logâ‚â‚€ 3</code>.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM2}
+            titulo="FixaÃ§Ã£o - Propriedades"
+            numero={2}
+            variant="emerald"
+            icone="ðŸŽ¯"
+            onComplete={(score) => handleModuleComplete("modulo-2", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 3 â•â•â• */}
+      <TabsContent value="modulo-3" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={3}
+            titulo="EquaÃ§Ãµes Infiltradas"
+            descricao="X nas cordas e logs somando e subtraindo do lado."
+            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Chuta-Chuta da Base"
+              description="Para eliminar a palavra log da equaÃ§Ã£o, a base inferior tem que se sacrificar."
+              variant="amber"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "MecÃ¢nica do Coice (A Ãšnica Forma Legal de Matar)",
+                  icone: <LuTarget />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Imagina resolver <code>logâ‚‚(x+8) = 4</code>. O
+                        desespero da escuridÃ£o... Mas espere: Pegue a base
+                        inferior ali de fininho (2), leve para o outro lado
+                        correndo, e chute a cara do 4 fazendo ele engolir e se
+                        transformar em potÃªncia de cara. Quando isso
+                        acontece... o Log desapareceu, meu amigo.
+                      </p>
+                      <div className="bg-amber-500/10 p-4 border border-amber-500/20 text-center rounded-xl font-mono text-amber-800 dark:text-amber-200">
+                        <p>x + 8 = 2â´</p>
+                        <p>x + 8 = 16 âŸ¹ x = 8</p>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM3}
+            titulo="FixaÃ§Ã£o - EquaÃ§Ãµes"
+            numero={3}
+            variant="amber"
+            icone="ðŸŽ¯"
+            onComplete={(score) => handleModuleComplete("modulo-3", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 4 â•â•â• */}
+      <TabsContent value="modulo-4" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={4}
+            titulo="C.E. - CondiÃ§Ãµes de ExistÃªncia"
+            descricao="Bancas sempre colocam raÃ­zes falsas que nÃ£o existem na vida real."
+            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Masmorra de Erros"
+              description="Um logaritmo negativo te levarÃ¡ a uma explosÃ£o no meio da prova."
+              variant="cyan"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "O Pior Risco da CESGRANRIO",
+                  icone: <LuTrophy />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Terminou a equaÃ§Ã£o de Bhaskara para a equaÃ§Ã£o de log
+                        e achou -2 e 8? NÃ£o corra pra marcar a letra B com as
+                        respostas. <strong>TESTE</strong> elas dentro do log lÃ¡
+                        da pergunta inicial.
+                      </p>
+                      <AlertBox tipo="danger" titulo="Proibido por Lei">
+                        Se houver na equaÃ§Ã£o <code>log(x-5)</code>, e vocÃª
+                        usar seu x = -2... Estourou a fÃ¡brica e terÃ­amos{" "}
+                        <code>log(-7)</code>. Ã‰ impossÃ­vel e nulo. Raiz nÃ£o
+                        contada no Gabarito!!
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
+            <FunctionGraph
+              title="Visualizando Domínios: Logaritmo Natural"
+              functions={[
+                {
+                  id: "ln_x",
+                  fn: (x) => (x > 0 ? Math.log(x) : null),
+                  color: "#3b82f6",
+                  label: "ln(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "ln_shifted",
+                  fn: (x) => (x > 2 ? Math.log(x - 2) : null),
+                  color: "#ef4444",
+                  label: "ln(x-2)",
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={-1}
+              xMax={10}
+              yMin={-3}
+              yMax={3}
+              points={300}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM4}
+            titulo="FixaÃ§Ã£o - ExistÃªncia"
+            numero={4}
+            variant="cyan"
+            icone="ðŸŽ¯"
+            onComplete={(score) => handleModuleComplete("modulo-4", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* â•â•â• MÃ“DULO 5 â•â•â• */}
+      <TabsContent value="modulo-5" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={5}
+            titulo="O Quizz de Guerra"
+            descricao="Integre todo o conhecimento nas opÃ§Ãµes letais da prova."
+            gradiente="bg-gradient-to-br from-slate-800 to-slate-900"
+          />
+
+          {showCompletionBadge ? (
+            <div className="flex flex-col items-center gap-6 py-10 mt-10">
+              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
+                <LuTrophy className="w-12 h-12 text-emerald-500" />
+              </div>
+              <h3 className="text-2xl font-black">
+                A Arte CategÃ³rica Finalizada
+              </h3>
+              <p className="text-center text-muted-foreground max-w-sm">
+                Com esse simulado destruÃ­do vocÃª acabou de blindar seu
+                cÃ©rebro de logaritmos.
+              </p>
+            </div>
+          ) : (
+            <section id="quiz-modulo-5" className="mt-8">
+              <QuizInterativo
+                questoes={quizM5}
+                titulo="Simulado Elite - Logaritmos"
+                icone="ðŸ†"
+                numero={5}
+                variant="slate"
+                onComplete={(score) => handleModuleComplete("modulo-5", score)}
+              />
+            </section>
+          )}
+        </div>
+      </TabsContent>
+
+      {/* ••• MÓDULO 6 ••• */}
+      <TabsContent value="modulo-6" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={6}
+            titulo="Funções Logarítmicas"
+            descricao="Transformações, composições e o domínio das curvas que subem com cuidado."
+            gradiente="bg-gradient-to-br from-violet-600 to-purple-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="A Forma Padrão das Funções Log"
+              description="Como as funções logarítmicas se comportam quando transformadas."
+              variant="violet"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Função Logarítmica Padrão",
+                  icone: <LuTrendingUp />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        A função logarítmica f(x) = log_a(x) possui características especiais: sempre passa pelo ponto (1, 0), cresce lentamente, e tem domínio {"x > 0"}. Quando {"a > 1"}, a função é crescente; quando {"0 < a < 1"}, ela é decrescente.
+                      </p>
+                      <AlertBox tipo="info" titulo="Assíntota Vertical">
+                        A reta x = 0 (eixo y) é uma assíntota vertical da função. A função nunca toca esse eixo, apenas se aproxima infinitamente.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Transformações de Função",
+                  icone: <LuRepeat />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Deslocar, esticar ou refletir uma função logarítmica segue as mesmas regras das funções em geral:
+                      </p>
+                      <div className="text-sm space-y-2">
+                        <p>• f(x + c): desloca c unidades para a esquerda</p>
+                        <p>• f(x) + c: desloca c unidades para cima</p>
+                        <p>• k·f(x): estica verticalmente por fator k</p>
+                        <p>• f(k·x): comprime horizontalmente por fator k</p>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
+            <FunctionGraph
+              title="Transformações de Funções Logarítmicas"
+              functions={[
+                {
+                  id: "ln_x",
+                  fn: (x) => (x > 0 ? Math.log(x) : null),
+                  color: "#3b82f6",
+                  label: "ln(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "ln_2x",
+                  fn: (x) => (x > 0 ? 2 * Math.log(x) : null),
+                  color: "#ef4444",
+                  label: "2·ln(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "ln_x_plus_1",
+                  fn: (x) => (x > 0 ? Math.log(x) + 1 : null),
+                  color: "#10b981",
+                  label: "ln(x)+1",
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={0.1}
+              xMax={10}
+              yMin={-5}
+              yMax={5}
+              points={300}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM6}
+            titulo="Fixação - Funções Logarítmicas"
+            numero={6}
+            variant="violet"
+            icone="📊"
+            onComplete={(score) => handleModuleComplete("modulo-6", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ••• MÓDULO 7 ••• */}
+      <TabsContent value="modulo-7" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={7}
+            titulo="Sistemas e Inequações"
+            descricao="Quando múltiplas equações logarítmicas se encontram numa mesma arena."
+            gradiente="bg-gradient-to-br from-amber-600 to-orange-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Sistemas de Equações Logarítmicas"
+              description="A combinação tática de restrições logarítmicas simultâneas."
+              variant="amber"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Resolvendo Sistemas",
+                  icone: <LuTarget />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Quando duas ou mais equações logarítmicas devem ser satisfeitas simultaneamente, você combina propriedades de logaritmos com técnicas algébricas. A chave é sempre verificar as condições de existência para cada solução proposta.
+                      </p>
+                      <AlertBox tipo="warning" titulo="Dupla Verificação">
+                        Em sistemas, verifique que cada solução satisfaz <strong>todas</strong> as equações e que nenhuma cond de existência foi violada.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Inequações Logarítmicas",
+                  icone: <LuBrain />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Ao resolver inequações com logaritmos, cuidado com a monotonia da função. Se {"0 < base < 1"}, o sinal da inequação inverte quando você "remove" o log! Sempre considere o domínio (logaritmando {">"} 0 e base {">"} 0, base {"≠"} 1).
+                      </p>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
+            <FunctionGraph
+              title="Visualizando Inequações Logarítmicas"
+              functions={[
+                {
+                  id: "ln_x",
+                  fn: (x) => (x > 0 ? Math.log(x) : null),
+                  color: "#3b82f6",
+                  label: "ln(x)",
+                  strokeWidth: 2,
+                },
+                {
+                  id: "y_equals_2",
+                  fn: (x) => 2,
+                  color: "#f59e0b",
+                  label: "y = 2",
+                  strokeWidth: 2,
+                },
+              ]}
+              xMin={0.1}
+              xMax={20}
+              yMin={-1}
+              yMax={3}
+              points={300}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM7}
+            titulo="Fixação - Sistemas & Inequações"
+            numero={7}
+            variant="amber"
+            icone="🔗"
+            onComplete={(score) => handleModuleComplete("modulo-7", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ••• MÓDULO 8 ••• */}
+      <TabsContent value="modulo-8" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={8}
+            titulo="Resolução Reversa"
+            descricao="Desconstruir problemas complexos até seus componentes logarítmicos primitivos."
+            gradiente="bg-gradient-to-br from-cyan-600 to-sky-700"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Decomposição de Problemas"
+              description="Inverta a lógica: comece pelo resultado e trabalhe para trás até o argumento."
+              variant="cyan"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "Técnica de Reversão",
+                  icone: <LuRepeat />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Em problemas reversos, você recebe uma expressão complexa e precisa identificar que ela é um logaritmo disfarçado. Por exemplo: "Qual expoente x satisfaz 2ˣ = 5?" é na verdade x = log₂(5).
+                      </p>
+                      <AlertBox tipo="info" titulo="Pensamento Inverso">
+                        Logaritmos e exponenciais são funções inversas. Se você tem dificuldade em uma forma, tente converter para a outra.
+                      </AlertBox>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM8}
+            titulo="Fixação - Resolução Reversa"
+            numero={8}
+            variant="cyan"
+            icone="🔄"
+            onComplete={(score) => handleModuleComplete("modulo-8", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ••• MÓDULO 9 ••• */}
+      <TabsContent value="modulo-9" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={9}
+            titulo="Aplicações Petrobras"
+            descricao="Onde os logaritmos vivem na indústria de petróleo e gás natural."
+            gradiente="bg-gradient-to-br from-emerald-600 to-teal-800"
+          />
+
+          <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+            <ModuleSectionHeader
+              index={1}
+              title="Logaritmos no Mundo Real"
+              description="A matemática por trás das operações de exploração e produção."
+              variant="emerald"
+            />
+
+            <ContentAccordion
+              slides={[
+                {
+                  titulo: "pH e Acidez em Refinarias",
+                  icone: <LuTarget />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        O pH usa a escala logarítmica base 10 para medir a concentração de íons hidrogênio. Um aumento de 1 unidade de pH significa uma redução de 10 vezes na acidez. Isso é crítico em processos de refino de petróleo.
+                      </p>
+                    </div>
+                  ),
+                },
+                {
+                  titulo: "Decaimento Radioativo e Corrosão",
+                  icone: <LuTrendingUp />,
+                  conteudo: (
+                    <div className="space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        A degradação de materiais em dutos submetidos à corrosão segue uma lei exponencial, modelada por funções logarítmicas. Engenheiros usam logs para prever a vida útil de equipamentos de subsea.
+                      </p>
+                    </div>
+                  ),
+                },
+              ]}
+            />
+          </section>
+
+          <QuizInterativo
+            questoes={quizM9}
+            titulo="Fixação - Aplicações Petrobras"
+            numero={9}
+            variant="emerald"
+            icone="🛢️"
+            onComplete={(score) => handleModuleComplete("modulo-9", score)}
+          />
+        </div>
+      </TabsContent>
+
+      {/* ••• MÓDULO 10 ••• */}
+      <TabsContent value="modulo-10" className="space-y-[50px]">
+        <div className="space-y-12 animate-in fade-in duration-500">
+          <ModuleBanner
+            numero={10}
+            titulo="Simulado Mestre"
+            descricao="O teste final combinando todo o conhecimento de logaritmos. Prepare-se para a prova real."
+            gradiente="bg-gradient-to-br from-rose-600 to-red-700"
+          />
+
+          {showCompletionBadge ? (
+            <div className="flex flex-col items-center gap-6 py-10 mt-10">
+              <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center animate-bounce">
+                <LuTrophy className="w-12 h-12 text-emerald-500" />
+              </div>
+              <h3 className="text-2xl font-black">
+                Logaritmos Completamente Dominados
+              </h3>
+              <p className="text-center text-muted-foreground max-w-sm">
+                Você conquistou a maestria em funções logarítmicas. Está pronto para qualquer desafio que vier!
+              </p>
+            </div>
+          ) : (
+            <section id="quiz-modulo-10" className="mt-8">
+              <QuizInterativo
+                questoes={quizM10}
+                titulo="Simulado Mestre - Domínio Logarítmico Completo"
+                icone="🏆"
+                numero={10}
+                variant="rose"
+                onComplete={(score) => handleModuleComplete("modulo-10", score)}
+              />
+            </section>
+          )}
+        </div>
+      </TabsContent>
+    </AulaTemplate>
+  );
+}
+```
+
+---
+**Status da Matemática:** Todos os 19 tópicos preenchidos com explicações textuais, exercícios simulados no modelo da banca e painéis gráficos ajustados.

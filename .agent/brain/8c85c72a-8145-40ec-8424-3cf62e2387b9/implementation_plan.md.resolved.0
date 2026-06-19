@@ -1,0 +1,47 @@
+# Plano de Implementação: Correção de Corrupção de Dados (Nº/º)
+
+Este plano visa corrigir um erro de build causado pela exportação inexistente `QUIZ_M1_SIMPLE_PRESENºT` em [AulaVerbTenses.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/ingles/AulaVerbTenses.tsx). A investigação revelou que múltiplos arquivos do projeto sofreram uma corrupção onde o caractere `º` foi inserido erroneamente, principalmente após a letra `N`.
+
+## Mudanças Propostas
+
+### Correção Global de Corrupção [Componentes de Aula]
+
+A corrupção afeta principalmente os componentes localizados em `src/components/aulas/`. O padrão identificado é a inserção de `º` em palavras como `className` (tornando-se `classNºame`), `JSON` (tornando-se `JSONº`), e em constantes de quiz.
+
+#### [MODIFY] [AulaVerbTenses.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/ingles/AulaVerbTenses.tsx)
+- Corrigir todas as ocorrências de `Nº` para `N`.
+- Corrigir todas as ocorrências de `classNºame` para `className`.
+- Corrigir importações de exportações inexistentes (ex: `QUIZ_M1_SIMPLE_PRESENºT` -> `QUIZ_M1_SIMPLE_PRESENT`).
+
+#### [MODIFY] Diversos Arquivos Adicionais
+Os seguintes arquivos também serão limpos de corrupção `Nº`:
+- `src/components/aulas/ti/AulaWeb.tsx`
+- `src/components/aulas/ti/AulaSegurancaInformacao.tsx`
+- `src/components/aulas/ti/AulaMobile.tsx`
+- `src/components/aulas/ti/AulaInfraestruturaTI.tsx`
+- `src/components/aulas/ti/AulaBancoDados.tsx`
+- `src/components/aulas/seguranca/AulaNr35.tsx`
+- `src/components/aulas/seguranca/AulaNr10.tsx`
+- `src/components/aulas/operacao/AulaTermodinamica.tsx`
+- `src/components/aulas/portugues/AulaPontuacao.tsx`
+- `src/components/aulas/portugues/AulaConcordancia.tsx`
+- `src/components/aulas/operacao/AulaMecanicaFluidos.tsx`
+- `src/components/aulas/manutencao/AulaMetrologia.tsx`
+- `src/components/aulas/manutencao/AulaDesenhoTecnico.tsx`
+- `src/components/aulas/portugues/AulaRegencia.tsx`
+- `src/components/aulas/ingles/AulaVocabulary.tsx`
+- `src/components/aulas/ingles/AulaFalseCognates.tsx`
+- `src/components/aulas/administracao/AulaAdministrativoTributario.tsx`
+- `src/components/aulas/administracao/AulaGestaoProcessos.tsx`
+- `src/components/aulas/administracao/AulaGestãoDePessoas.tsx`
+- `src/components/aulas/matematica/AulaSistemasLineares.tsx`
+
+## Plano de Verificação
+
+### Testes Automatizados
+- Executar `pnpm build` para garantir que os erros de compilação relacionados a exportações inexistentes foram resolvidos.
+- Executar linting para garantir que `className` e outros termos React/JS estão corretos.
+
+### Verificação Manual
+- Abrir a aula de Inglês (Verb Tenses) no navegador e verificar se o quiz carrega corretamente (isso confirmará que a importação do quiz está funcionando).
+- Verificar visualmente se não há caracteres `º` estranhos no texto das aulas.

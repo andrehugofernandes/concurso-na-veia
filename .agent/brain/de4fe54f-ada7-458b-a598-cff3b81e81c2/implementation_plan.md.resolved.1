@@ -1,0 +1,53 @@
+# Plano de Implementação: Upgrade ULTIMATE - Aulas de Inglês
+
+Este plano detalha a padronização das aulas de inglês para o nível **ULTIMATE**, conforme definido no workflow [aula-ultimate.md](file:///c:/Workspace/petrobras-quest/.agent/workflows/aula-ultimate.md). O objetivo é transformar componentes interativos em lições ricas em conteúdo textual, garantindo que 100% dos tópicos dos quizzes sejam cobertos pela base teórica.
+
+## User Review Required
+
+> [!IMPORTANT]
+> O upgrade envolverá a expansão massiva do código (de ~1500-2800 para 3500+ linhas por arquivo). 
+> O conteúdo textual será focado no padrão **Cesgranrio** e no contexto da **Petrobras** (Óleo & Gás, Segurança, Engenharia).
+> Nenhum componente existente será removido; apenas enriquecido ou reordenado.
+
+## Proposed Changes
+
+### 2. Ajustes de Design e Shared Components
+
+#### [MODIFY] [shared.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx)
+- [NEW] Criar componente `RichIntro` para padronizar os parágrafos iniciais das aulas.
+- Definir o tamanho da fonte como `text-xl` (ou `text-lg` conforme legibilidade) para os parágrafos de introdução, atendendo à solicitação do usuário.
+- Garantir `leading-relaxed` para melhor legibilidade em textos longos.
+
+### 3. Núcleo de Inglês (src/components/aulas/ingles/)
+
+#### [MODIFY] [AulaReadingStrategies.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/ingles/AulaReadingStrategies.tsx)
+- Mover o conteúdo do "Apêndice/Dossiê" (atualmente em comentários JSDoc no fim do arquivo) para dentro das `TabsContent` de cada módulo.
+- Expandir a introdução de cada módulo para 4-6 parágrafos (80-150 linhas de JSX).
+- Aplicar a estrutura C.E.D.E. (Conceituação, Exemplificação, Dicas, Exceções) no [ContentAccordion](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#421-587).
+- Garantir [ModuleConsolidation](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#3050-3157) antes do [QuizInterativo](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#889-1085).
+
+#### [MODIFY] [AulaConnectors.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/ingles/AulaConnectors.tsx)
+- Expansão da introdução teórica (atualmente em ~1600 linhas, precisa chegar a 3500+).
+- Inserção de exemplos práticos voltados para relatórios técnicos da Petrobras.
+
+#### [MODIFY] [AulaVocabulary.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/ingles/AulaVocabulary.tsx)
+- Enriquecimento textual com foco em cognatos e falsos cognatos técnicos.
+
+#### [MODIFY] [Outras Aulas de Inglês]
+- [AulaFalseCognates.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/ingles/AulaFalseCognates.tsx), [AulaTextComprehension.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/ingles/AulaTextComprehension.tsx): Revisão final para garantir que seguem os 7 blocos obrigatórios e a densidade ULTIMATE.
+
+## Scripts de Padronização
+Serão executados após as alterações manuais:
+- `node .agent/scripts/fix-module-variants.js`
+- `python .agent/scripts/fix_consolidation_position.py`
+
+## Verification Plan
+
+### Automated Tests
+- Execução do script de auditoria: `python .agent/scripts/checklist.py .`
+- Verificação visual via browser para garantir que os acordeões e banners estão com as cores corretas (`variant` prop).
+
+### Manual Verification
+- Verificar se a contagem de linhas aumentou significativamente.
+- Confirmar que o [QuizInterativo](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#889-1085) é sempre a última seção de cada módulo.
+- Verificar a presença de pelo menos 4 parágrafos robustos antes do primeiro componente interativo em cada aba.

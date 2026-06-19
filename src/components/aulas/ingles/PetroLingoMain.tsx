@@ -449,7 +449,7 @@ export default function PetroLingoMain() {
 
   // Hook de persistência customizado para PetroLingo
   const unitIds = useMemo(() => MASTER_UNITS_DATA.map(u => u.id), []);
-  const { progress, loading, completeUnit } = usePetroLingoProgress(unitIds);
+  const { progress, loading, completeUnit, resetProgress } = usePetroLingoProgress(unitIds);
 
   // Une os dados da trilha estática com o progresso do banco
   const units = useMemo(() => {
@@ -502,10 +502,22 @@ export default function PetroLingoMain() {
                 </div>
                 <h2 className="text-xl font-black uppercase tracking-tight">Trilha de Inglês Instrumental</h2>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed font-medium">
+              <p className="text-sm text-muted-foreground leading-relaxed font-medium mb-4">
                 Esta trilha foi desenhada seguindo o padrão **Cesgranrio** das suas aulas de Inglês.
                 Módulos de gramática aplicada, conectores e estratégias de leitura para garantir sua nota mínima (ou máxima!) no edital.
               </p>
+              <div className="flex justify-end mt-2">
+                <button 
+                  onClick={async () => {
+                    if (confirm("Tem certeza que deseja zerar toda a trilha e recomeçar? (O XP ganho será mantido)")) {
+                      await resetProgress();
+                    }
+                  }}
+                  className="px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-500 border border-rose-500/20 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5"
+                >
+                  Recomeçar Trilha
+                </button>
+              </div>
             </div>
           </div>
           <PetroLingoPath 

@@ -1,0 +1,7 @@
+# Debugging /agressores page
+
+## Plan
+1. [ ] Navigate to http://localhost:3000/agressores.
+2. [ ] Check for visible error messages on the page.
+3. [ ] Capture browser console logs.
+4. [ ] Analyze errors and report findings.

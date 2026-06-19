@@ -258,12 +258,12 @@ export default function AulaGeometriaAnalitica({
           concurso="Processo Seletivo Petrobras"
           enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
           alternativas={[
-              { letra: "A", texto: "8", correta: false },
+            { letra: "A", texto: "8", correta: false },
               { letra: "B", texto: "10", correta: true },
               { letra: "C", texto: "12", correta: false },
               { letra: "D", texto: "14", correta: false },
               { letra: "E", texto: "6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -466,12 +466,12 @@ export default function AulaGeometriaAnalitica({
           concurso="Processo Seletivo Petrobras"
           enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
           alternativas={[
-              { letra: "A", texto: "8", correta: false },
+            { letra: "A", texto: "8", correta: false },
               { letra: "B", texto: "10", correta: true },
               { letra: "C", texto: "12", correta: false },
               { letra: "D", texto: "14", correta: false },
               { letra: "E", texto: "6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -690,12 +690,12 @@ export default function AulaGeometriaAnalitica({
           concurso="Processo Seletivo Petrobras"
           enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
           alternativas={[
-              { letra: "A", texto: "8", correta: false },
+            { letra: "A", texto: "8", correta: false },
               { letra: "B", texto: "10", correta: true },
               { letra: "C", texto: "12", correta: false },
               { letra: "D", texto: "14", correta: false },
               { letra: "E", texto: "6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -868,12 +868,12 @@ export default function AulaGeometriaAnalitica({
           concurso="Processo Seletivo Petrobras"
           enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
           alternativas={[
-              { letra: "A", texto: "8", correta: false },
+            { letra: "A", texto: "8", correta: false },
               { letra: "B", texto: "10", correta: true },
               { letra: "C", texto: "12", correta: false },
               { letra: "D", texto: "14", correta: false },
               { letra: "E", texto: "6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1052,12 +1052,12 @@ export default function AulaGeometriaAnalitica({
           concurso="Processo Seletivo Petrobras"
           enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
           alternativas={[
-              { letra: "A", texto: "8", correta: false },
+            { letra: "A", texto: "8", correta: false },
               { letra: "B", texto: "10", correta: true },
               { letra: "C", texto: "12", correta: false },
               { letra: "D", texto: "14", correta: false },
               { letra: "E", texto: "6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1252,12 +1252,12 @@ export default function AulaGeometriaAnalitica({
           concurso="Processo Seletivo Petrobras"
           enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
           alternativas={[
-              { letra: "A", texto: "8", correta: false },
+            { letra: "A", texto: "8", correta: false },
               { letra: "B", texto: "10", correta: true },
               { letra: "C", texto: "12", correta: false },
               { letra: "D", texto: "14", correta: false },
               { letra: "E", texto: "6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1461,12 +1461,12 @@ export default function AulaGeometriaAnalitica({
           concurso="Processo Seletivo Petrobras"
           enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
           alternativas={[
-              { letra: "A", texto: "8", correta: false },
+            { letra: "A", texto: "8", correta: false },
               { letra: "B", texto: "10", correta: true },
               { letra: "C", texto: "12", correta: false },
               { letra: "D", texto: "14", correta: false },
               { letra: "E", texto: "6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1636,12 +1636,12 @@ export default function AulaGeometriaAnalitica({
           concurso="Processo Seletivo Petrobras"
           enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
           alternativas={[
-              { letra: "A", texto: "8", correta: false },
+            { letra: "A", texto: "8", correta: false },
               { letra: "B", texto: "10", correta: true },
               { letra: "C", texto: "12", correta: false },
               { letra: "D", texto: "14", correta: false },
               { letra: "E", texto: "6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1838,12 +1838,12 @@ export default function AulaGeometriaAnalitica({
           concurso="Processo Seletivo Petrobras"
           enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
           alternativas={[
-              { letra: "A", texto: "8", correta: false },
+            { letra: "A", texto: "8", correta: false },
               { letra: "B", texto: "10", correta: true },
               { letra: "C", texto: "12", correta: false },
               { letra: "D", texto: "14", correta: false },
               { letra: "E", texto: "6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2049,12 +2049,12 @@ export default function AulaGeometriaAnalitica({
           concurso="Processo Seletivo Petrobras"
           enunciado="A plataforma P-36 está nas coordenadas (2, 5) e a P-52 em (8, 13). Qual é a distância entre elas (em km)?"
           alternativas={[
-              { letra: "A", texto: "8", correta: false },
+            { letra: "A", texto: "8", correta: false },
               { letra: "B", texto: "10", correta: true },
               { letra: "C", texto: "12", correta: false },
               { letra: "D", texto: "14", correta: false },
               { letra: "E", texto: "6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Sempre use: d = √[(x₂-x₁)² + (y₂-y₁)²]."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },

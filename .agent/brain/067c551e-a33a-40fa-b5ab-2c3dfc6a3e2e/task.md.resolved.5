@@ -1,0 +1,31 @@
+# Verificação e Enriquecimento das Aulas - Bloco 1 (Gestão Estratégica)
+
+[x] Auditoria Inicial das Aulas do Bloco 1
+    [x] [AulaPlanejamentoEstrategico.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaPlanejamentoEstrategico.tsx): 354 linhas (Abaixo da meta)
+    [x] [AulaGestaoProcessos.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestaoProcessos.tsx): 359 linhas (Abaixo da meta)
+    [x] [AulaGestaoProjetos.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestaoProjetos.tsx): 189 linhas (Abaixo da meta)
+    [x] [AulaGovernancaCorporativa.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGovernancaCorporativa.tsx): 189 linhas (Abaixo da meta)
+[x] Diagnóstico de Conformidade C.E.D.E.
+    [x] Conteúdo identificado como superficial/esqueleto em todos os tópicos
+    [x] Quizzes estão inline (Devem ser movidos para `src/data/quizzes/*.ts`)
+    [x] Design segue o padrão visual, mas falta densidade de conteúdo premium
+[/] Enriquecimento de Conteúdo (Meta: ~2500 linhas por aula)
+    [ ] Expandir módulos de Planejamento Estratégico (10 módulos)
+    [ ] Expandir módulos de Gestão de Processos (10 módulos)
+    [ ] Expandir módulos de Gestão de Projetos (10 módulos)
+    [ ] Expandir módulos de Governança Corporativa (10 módulos)
+[ ] Reorganização Técnica
+    [ ] Criar arquivos de quizzes externos para cada aula
+    [ ] Vincular quizzes corretamente usando [QuizInterativo](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#886-1079)
+[x] Migração do Avatar para Supabase
+    [x] Identificar bucket do Supabase (`petropbras-quest`)
+    [x] Refatorar [getInitials](file:///c:/Workspace/petrobras-quest/src/lib/firebase-storage.ts#5-12) para [src/lib/utils.ts](file:///c:/Workspace/petrobras-quest/src/lib/utils.ts)
+    [x] Criar utilitário de storage do Supabase ([src/lib/services/supabase-storage.ts](file:///c:/Workspace/petrobras-quest/src/lib/services/supabase-storage.ts))
+    [x] Migrar Server Action [uploadAvatarAction](file:///c:/Workspace/petrobras-quest/src/app/%28dashboard%29/profile/actions.ts#6-43) para Supabase
+    [x] Corrigir imports no componente [UserAvatar.tsx](file:///c:/Workspace/petrobras-quest/src/components/ui/UserAvatar.tsx)
+    [x] Verificar e atualizar [use-avatar-upload.ts](file:///c:/Workspace/petrobras-quest/src/lib/hooks/use-avatar-upload.ts) se necessário (Confirmado como não utilizado)
+    [x] Limpar referências obsoletas ao Firebase Storage (Removido componente duplicado)
+[ ] Validação Final
+    [ ] Contagem final de linhas (~2500 p/ aula)
+    [ ] Checklist `@aula.md` (Acessibilidade, Sem Roxo, Glassmorphism)
+    [ ] Teste de navegação e interatividade

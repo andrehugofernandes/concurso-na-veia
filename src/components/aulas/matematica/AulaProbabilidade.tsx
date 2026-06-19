@@ -292,12 +292,12 @@ export default function AulaProbabilidade({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
           alternativas={[
-              { letra: "A", texto: "1/4", correta: false },
+            { letra: "A", texto: "1/4", correta: false },
               { letra: "B", texto: "2/5", correta: false },
               { letra: "C", texto: "3/5", correta: false },
               { letra: "D", texto: "2/3", correta: false },
               { letra: "E", texto: "4/6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
@@ -487,12 +487,12 @@ export default function AulaProbabilidade({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
           alternativas={[
-              { letra: "A", texto: "1/4", correta: false },
+            { letra: "A", texto: "1/4", correta: false },
               { letra: "B", texto: "2/5", correta: false },
               { letra: "C", texto: "3/5", correta: false },
               { letra: "D", texto: "2/3", correta: false },
               { letra: "E", texto: "4/6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
@@ -685,12 +685,12 @@ export default function AulaProbabilidade({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
           alternativas={[
-              { letra: "A", texto: "1/4", correta: false },
+            { letra: "A", texto: "1/4", correta: false },
               { letra: "B", texto: "2/5", correta: false },
               { letra: "C", texto: "3/5", correta: false },
               { letra: "D", texto: "2/3", correta: false },
               { letra: "E", texto: "4/6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
@@ -880,12 +880,12 @@ export default function AulaProbabilidade({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
           alternativas={[
-              { letra: "A", texto: "1/4", correta: false },
+            { letra: "A", texto: "1/4", correta: false },
               { letra: "B", texto: "2/5", correta: false },
               { letra: "C", texto: "3/5", correta: false },
               { letra: "D", texto: "2/3", correta: false },
               { letra: "E", texto: "4/6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
@@ -1068,12 +1068,12 @@ export default function AulaProbabilidade({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
           alternativas={[
-              { letra: "A", texto: "1/4", correta: false },
+            { letra: "A", texto: "1/4", correta: false },
               { letra: "B", texto: "2/5", correta: false },
               { letra: "C", texto: "3/5", correta: false },
               { letra: "D", texto: "2/3", correta: false },
               { letra: "E", texto: "4/6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
@@ -1260,12 +1260,12 @@ export default function AulaProbabilidade({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
           alternativas={[
-              { letra: "A", texto: "1/4", correta: false },
+            { letra: "A", texto: "1/4", correta: false },
               { letra: "B", texto: "2/5", correta: false },
               { letra: "C", texto: "3/5", correta: false },
               { letra: "D", texto: "2/3", correta: false },
               { letra: "E", texto: "4/6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
@@ -1457,12 +1457,12 @@ export default function AulaProbabilidade({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
           alternativas={[
-              { letra: "A", texto: "1/4", correta: false },
+            { letra: "A", texto: "1/4", correta: false },
               { letra: "B", texto: "2/5", correta: false },
               { letra: "C", texto: "3/5", correta: false },
               { letra: "D", texto: "2/3", correta: false },
               { letra: "E", texto: "4/6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
@@ -1654,12 +1654,12 @@ export default function AulaProbabilidade({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
           alternativas={[
-              { letra: "A", texto: "1/4", correta: false },
+            { letra: "A", texto: "1/4", correta: false },
               { letra: "B", texto: "2/5", correta: false },
               { letra: "C", texto: "3/5", correta: false },
               { letra: "D", texto: "2/3", correta: false },
               { letra: "E", texto: "4/6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
@@ -1848,12 +1848,12 @@ export default function AulaProbabilidade({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma urna contém 4 bolas vermelhas e 6 bolas azuis. Retirando-se uma bola ao acaso, qual a probabilidade de ela ser vermelha?"
           alternativas={[
-              { letra: "A", texto: "1/4", correta: false },
+            { letra: "A", texto: "1/4", correta: false },
               { letra: "B", texto: "2/5", correta: false },
               { letra: "C", texto: "3/5", correta: false },
               { letra: "D", texto: "2/3", correta: false },
               { letra: "E", texto: "4/6", correta: false }
-            ]}
+          ]}
           dicaEstrategica="A opção E (4/6) é o erro clássico de usar apenas as azuis no denominador."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Pela Lei de Laplace, P(A) = n(A) / n(S)." },
@@ -1959,17 +1959,16 @@ export default function AulaProbabilidade({
           concurso="Processo Seletivo Petrobras"
           enunciado="Uma urna tem 5 bolas brancas e 3 vermelhas. Retiram-se duas bolas sem reposição. Qual a probabilidade de a primeira ser branca e a segunda ser vermelha?"
           alternativas={[
-            { label: "A", valor: "15/56" },
-                { label: "B", valor: "5/8" },
-                { label: "C", valor: "15/64" },
-                { label: "D", valor: "3/8" },
-                { label: "E", valor: "15/28" }
+            { letra: "A", texto: "15/56", correta: false },
+                { letra: "B", texto: "5/8", correta: false },
+                { letra: "C", texto: "15/64", correta: false },
+                { letra: "D", texto: "3/8", correta: false },
+                { letra: "E", texto: "15/28", correta: false }
           ]}
-          correta="15/56"
           passos={[
-            "P(1ª branca) = 5/8.",
-            "Dado isso, restam 7 bolas, 3 vermelhas.",
-            "P(2ª vermelha | 1ª branca) = 3/7. P = (5/8)·(3/7) = 15/56."
+            { titulo: "Passo 1", conteudo: "P(1ª branca) = 5/8." },
+            { titulo: "Passo 2", conteudo: "Dado isso, restam 7 bolas, 3 vermelhas." },
+            { titulo: "Passo 3", conteudo: "P(2ª vermelha | 1ª branca) = 3/7. P = (5/8)·(3/7) = 15/56." }
           ]}
         />
         <QuizInterativo

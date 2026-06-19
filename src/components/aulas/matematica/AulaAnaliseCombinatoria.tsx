@@ -292,12 +292,12 @@ export default function AulaAnaliseCombinatoria({
           concurso="Processo Seletivo Petrobras"
           enunciado="De quantas formas distintas 5 técnicos da REPLAN podem se organizar em fila para receber treinamento?"
           alternativas={[
-              { letra: "A", texto: "25", correta: false },
+            { letra: "A", texto: "25", correta: false },
               { letra: "B", texto: "60", correta: false },
               { letra: "C", texto: "120", correta: true },
               { letra: "D", texto: "240", correta: false },
               { letra: "E", texto: "720", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Aqui: 5 × 4 × 3 × 2 × 1 = 120."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "P(5) = 5!" },
@@ -547,12 +547,12 @@ export default function AulaAnaliseCombinatoria({
           concurso="Processo Seletivo Petrobras"
           enunciado="De quantas formas distintas 5 técnicos da REPLAN podem se organizar em fila para receber treinamento?"
           alternativas={[
-              { letra: "A", texto: "25", correta: false },
+            { letra: "A", texto: "25", correta: false },
               { letra: "B", texto: "60", correta: false },
               { letra: "C", texto: "120", correta: true },
               { letra: "D", texto: "240", correta: false },
               { letra: "E", texto: "720", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Aqui: 5 × 4 × 3 × 2 × 1 = 120."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "P(5) = 5!" },
@@ -798,12 +798,12 @@ export default function AulaAnaliseCombinatoria({
           concurso="Processo Seletivo Petrobras"
           enunciado="De quantas formas distintas 5 técnicos da REPLAN podem se organizar em fila para receber treinamento?"
           alternativas={[
-              { letra: "A", texto: "25", correta: false },
+            { letra: "A", texto: "25", correta: false },
               { letra: "B", texto: "60", correta: false },
               { letra: "C", texto: "120", correta: true },
               { letra: "D", texto: "240", correta: false },
               { letra: "E", texto: "720", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Aqui: 5 × 4 × 3 × 2 × 1 = 120."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "P(5) = 5!" },
@@ -1016,12 +1016,12 @@ export default function AulaAnaliseCombinatoria({
           concurso="Processo Seletivo Petrobras"
           enunciado="De quantas formas distintas 5 técnicos da REPLAN podem se organizar em fila para receber treinamento?"
           alternativas={[
-              { letra: "A", texto: "25", correta: false },
+            { letra: "A", texto: "25", correta: false },
               { letra: "B", texto: "60", correta: false },
               { letra: "C", texto: "120", correta: true },
               { letra: "D", texto: "240", correta: false },
               { letra: "E", texto: "720", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Aqui: 5 × 4 × 3 × 2 × 1 = 120."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "P(5) = 5!" },
@@ -1255,12 +1255,12 @@ export default function AulaAnaliseCombinatoria({
           concurso="Processo Seletivo Petrobras"
           enunciado="De quantas formas distintas 5 técnicos da REPLAN podem se organizar em fila para receber treinamento?"
           alternativas={[
-              { letra: "A", texto: "25", correta: false },
+            { letra: "A", texto: "25", correta: false },
               { letra: "B", texto: "60", correta: false },
               { letra: "C", texto: "120", correta: true },
               { letra: "D", texto: "240", correta: false },
               { letra: "E", texto: "720", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Aqui: 5 × 4 × 3 × 2 × 1 = 120."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "P(5) = 5!" },
@@ -1491,12 +1491,12 @@ export default function AulaAnaliseCombinatoria({
           concurso="Processo Seletivo Petrobras"
           enunciado="De quantas formas distintas 5 técnicos da REPLAN podem se organizar em fila para receber treinamento?"
           alternativas={[
-              { letra: "A", texto: "25", correta: false },
+            { letra: "A", texto: "25", correta: false },
               { letra: "B", texto: "60", correta: false },
               { letra: "C", texto: "120", correta: true },
               { letra: "D", texto: "240", correta: false },
               { letra: "E", texto: "720", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Aqui: 5 × 4 × 3 × 2 × 1 = 120."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "P(5) = 5!" },
@@ -1754,12 +1754,12 @@ export default function AulaAnaliseCombinatoria({
           concurso="Processo Seletivo Petrobras"
           enunciado="De quantas formas distintas 5 técnicos da REPLAN podem se organizar em fila para receber treinamento?"
           alternativas={[
-              { letra: "A", texto: "25", correta: false },
+            { letra: "A", texto: "25", correta: false },
               { letra: "B", texto: "60", correta: false },
               { letra: "C", texto: "120", correta: true },
               { letra: "D", texto: "240", correta: false },
               { letra: "E", texto: "720", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Aqui: 5 × 4 × 3 × 2 × 1 = 120."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "P(5) = 5!" },
@@ -1955,12 +1955,12 @@ export default function AulaAnaliseCombinatoria({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é o valor de 6! (seis fatorial)?"
           alternativas={[
-              { letra: "A", texto: "36", correta: false },
+            { letra: "A", texto: "36", correta: false },
               { letra: "B", texto: "120", correta: false },
               { letra: "C", texto: "720", correta: true },
               { letra: "D", texto: "5040", correta: false },
               { letra: "E", texto: "360", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Memorize: 1!=1, 2!=2, 3!=6, 4!=24, 5!=120, 6!=720, 7!=5040."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "6!" },
@@ -2147,12 +2147,12 @@ export default function AulaAnaliseCombinatoria({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é o valor de 6! (seis fatorial)?"
           alternativas={[
-              { letra: "A", texto: "36", correta: false },
+            { letra: "A", texto: "36", correta: false },
               { letra: "B", texto: "120", correta: false },
               { letra: "C", texto: "720", correta: true },
               { letra: "D", texto: "5040", correta: false },
               { letra: "E", texto: "360", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Memorize: 1!=1, 2!=2, 3!=6, 4!=24, 5!=120, 6!=720, 7!=5040."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "6!" },
@@ -2343,12 +2343,12 @@ export default function AulaAnaliseCombinatoria({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é o valor de 6! (seis fatorial)?"
           alternativas={[
-              { letra: "A", texto: "36", correta: false },
+            { letra: "A", texto: "36", correta: false },
               { letra: "B", texto: "120", correta: false },
               { letra: "C", texto: "720", correta: true },
               { letra: "D", texto: "5040", correta: false },
               { letra: "E", texto: "360", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Memorize: 1!=1, 2!=2, 3!=6, 4!=24, 5!=120, 6!=720, 7!=5040."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "6!" },

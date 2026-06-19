@@ -1,0 +1,13 @@
+# Debug de Erro no Login por OTP
+
+## Objetivo
+
+Identificar e corrigir o erro que impede o login via OTP, restaurando a funcionalidade que foi possivelmente alterada/quebrada recentemente.
+
+## Tarefas
+
+- [x] Localizar lógica de OTP e autenticação
+- [x] Analisar logs do terminal e mensagens de erro
+- [x] Identificar alterações recentes problemáticas
+- [x] Restaurar funcionalidade e testar (Resolvido pelo usuário)
+

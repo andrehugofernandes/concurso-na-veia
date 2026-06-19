@@ -1,0 +1,46 @@
+# Walkthrough: Módulo de Desenvolvimento Mobile
+
+Este walkthrough detalha a implementação completa do módulo **"Desenvolvimento Mobile"**, projetado para cobrir o edital da Petrobras (CESGRANRIO) com alto nível de interatividade e profundidade técnica.
+
+## 📱 Visão Geral
+
+O componente [AulaMobile.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/ti/AulaMobile.tsx) foi transformado em uma experiência de aprendizado "Premium", dividida em 10 módulos lógicos que cobrem desde o ecossistema básico até práticas avançadas de CI/CD e hardware.
+
+## 🛠️ O que foi implementado
+
+### 1. Componente [AulaMobile.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/ti/AulaMobile.tsx) (Enfase em UI/UX)
+- **10 Módulos Completos**: Cada aba contém conteúdo denso e específico.
+- **Componentes Interativos**:
+  - [Comparison](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#1150-1235): Usado para contrastar Android vs iOS, Híbrido vs PWA, e Provider vs BLoC.
+  - [TimelineItem](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#1086-1114): Utilizado para explicar o Ciclo de Vida do Android e o fluxo de publicação em lojas.
+  - [FlipCard](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#751-888): Cartões de memorização para linguagens (Kotlin/Swift) e componentes base do React Native.
+  - [ContentAccordion](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#421-587): Organização de conceitos complexos como a Árvore de Widgets do Flutter.
+  - [AlertBox](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#121-163): Dicas estratégicas para a prova (ex: uso de Service Workers em PWAs).
+
+### 2. Base de Dados de Quizzes ([mobile-quizzes.ts](file:///c:/Workspace/petrobras-quest/src/components/aulas/ti/data/mobile-quizzes.ts))
+- **50 Questões Inéditas**: 5 questões por módulo, totalizando 10 'checkpoints'.
+- **Estilo CESGRANRIO**: Focado em pegadinhas comuns, termos técnicos em inglês e situações práticas de desenvolvimento corporativo.
+- **Feedbacks Detalhados**: Cada questão possui uma explicação técnica robusta para reforço do aprendizado.
+
+## 📚 Estrutura Curricular
+
+1.  **Ecossistema Mobile**: Fragmentação, ART, AOSP, iOS.
+2.  **Desenvolvimento Nativo**: Kotlin, Swift, Lifecycle (onCreate, onStop).
+3.  **Híbridos e PWAs**: WebViews, Manifest, Service Workers.
+4.  **React Native Core**: Yoga Engine, Bridge, JSI, View/Text/FlatList.
+5.  **RN Navigation & State**: Stack/Tabs/Drawer, Redux, Context API.
+6.  **Flutter & Dart**: Skia Engine, Widgets (Stateless vs Stateful).
+7.  **Flutter State Management**: Provider, BLoC, Cubit.
+8.  **Hardware & Native APIs**: Permissões, Push (FCM/APNs), Biometria.
+9.  **UX/UI Design**: Material Design, HIG, Safe Area, Acessibilidade.
+10. **Publicação e CI/CD**: Keystores, App Thinning, TestFlight, Fastlane.
+
+## ✅ Verificação
+
+- [x] **Consistência de Props**: Validado o uso de `passo`, `titulo`, `descricao` em todos os componentes compartilhados.
+- [x] **Fluxo de Progresso**: O sistema de desbloqueio de módulos está funcional via [AulaTemplate](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#2226-2490).
+- [x] **Dark Mode**: Estilos testados para compatibilidade com o tema escuro do projeto.
+- [x] **Linting**: Código limpo e livre de erros de tipagem.
+
+---
+*Este módulo está pronto para ser integrado ao roteiro de estudos principal.*

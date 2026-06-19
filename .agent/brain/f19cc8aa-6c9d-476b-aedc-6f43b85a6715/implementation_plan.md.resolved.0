@@ -1,0 +1,73 @@
+# Brainstorm: Layout Elite Total e Grade Suprimento-ADM
+
+## Contexto
+O usuário Elite Total precisa ter acesso a todas as aulas de todas as profissões, enquanto usuários normais veem apenas sua grade básica + específica. Algumas matérias são comuns a todas as profissões e devem ser "aglutinadas". Além disso, a grade de Suprimento-ADM está incompleta por uma trava no código.
+
+---
+
+### Opção A: Seções Hierárquicas (Aglutinação por Categoria)
+Dividir a página em três seções claras:
+1. **Conhecimentos Básicos (Aglutinados)**: Português, Matemática e Inglês (sempre visíveis).
+2. **Minha Especialidade**: Blocos específicos do cargo escolhido pelo usuário.
+3. **Outras Especialidades (Elite Total)**: Uma seção adicional (talvez em grid menor ou acordeon) com todas as outras matérias de outras profissões.
+
+✅ **Prós:**
+- Mantém o foco no cargo de inscrição do usuário.
+- Organização clara entre o que é comum e o que é específico.
+- Valoriza o plano Elite Total ao mostrar o volume de conteúdo extra.
+
+❌ **Cons:**
+- A página pode ficar muito longa se listar tudo de uma vez.
+
+📊 **Esforço:** Médio
+
+---
+
+### Opção B: Toggles de Visão (Foco vs. Exploração)
+Um seletor no topo da página:
+- **[Minha Grade]** (Default): Mostra Básicas + Específicas do cargo.
+- **[Catálogo Completo]** (Elite Only): Mostra todas as matérias de todas as profissões em ordem alfabética ou por área (Saúde, Manutenção, etc).
+
+✅ **Prós:**
+- Interface limpa e sem distrações.
+- Experiência de "Premium" com o catálogo completo.
+
+❌ **Cons:**
+- Esconde o benefício "Elite" por trás de um clique.
+- Mais complexidade de estado no frontend.
+
+📊 **Esforço:** Médio
+
+---
+
+### Opção C: Grid Unificado com Filtros Inteligentes
+Um único grid de aulas, mas com badges e filtros:
+- Badges como "Básica", "Sua Profissão", "Elite".
+- Filtros laterais ou superiores para selecionar por Profissão ou Área.
+- Elite Total começa com "Todos" selecionado ou "Sua Profissão + Básicas".
+
+✅ **Prós:**
+- Flexibilidade total para o usuário.
+- Design moderno e interativo.
+
+❌ **Cons:**
+- Maior carga cognitiva se não houver boa hierarquia visual.
+
+📊 **Esforço:** Alto
+
+---
+
+## 💡 Recomendação
+
+**Opção A (Seções Hierárquicas)** é a mais alinhada com o que o usuário descreveu ("aglutinar em uma a parte da seção onde mostra as matérias da profissão de inscrição"). Ela permite resolver o problema da visualização prioritária mantendo o acesso total para os Elite.
+
+---
+
+## 🛠️ Correção Suprimento-ADM
+Para o problema de Suprimento-ADM, a solução é:
+1. Remover o bypass manual em [getProgramaDeEstudos](file:///c:/Workspace/petrobras-quest/src/data/programa-estudos.ts#30-110).
+2. Adicionar as matérias "Bloco I - Administração" e "Bloco III - Tributos" em `CONTEUDO_MATERIAS`.
+3. Garantir que o mapeamento de slugs funcione corretamente para essas novas matérias.
+
+O usuário quer focar em "Resolver esses layouts. Começando do Elite Total e indo para o mais simples deles."
+Vou preparar o plano técnico detalhado.

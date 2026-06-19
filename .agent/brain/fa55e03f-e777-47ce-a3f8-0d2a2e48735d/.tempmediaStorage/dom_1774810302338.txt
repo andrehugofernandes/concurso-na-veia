@@ -1,0 +1,112 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+AV
+A VAGA
+É MINHA
+Simulador de Concursos
+[0] (66,111)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/dashboard' />
+	[1] (15,111)<div  />
+	[2] (45,111)<span >Dashboard />
+Estudo
+[3] (66,177)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90' href='/aulas' />
+	[4] (15,177)<div  />
+	[5] (35,177)<span >Aulas />
+[6] (66,219)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/aulas/ingles/petrolingo' />
+	[7] (15,219)<div  />
+	[8] (44,219)<span >PetroLingo />
+	[9] (101,219)<span >ELITE TOTAL />
+[10] (66,262)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-rapido' />
+	[11] (15,262)<div  />
+	[12] (60,262)<span >Simulados Rápidos />
+[13] (66,305)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-especifico' />
+	[14] (15,305)<div  />
+	[15] (65,305)<span >Simulados Específicos />
+[16] (66,347)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/maratona-100' />
+	[17] (15,347)<div  />
+	[18] (50,347)<span >Maratona 100 />
+[19] (66,390)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/historico' />
+	[20] (15,390)<div  />
+	[21] (41,390)<span >Histórico />
+[22] (66,433)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/rankings' />
+	[23] (15,433)<div  />
+	[24] (41,433)<span >Rankings />
+Suporte
+[25] (66,499)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/seja-pro' />
+	[26] (15,499)<div  />
+	[27] (40,499)<span >Seja Pro />
+[28] (66,541)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/tickets' />
+	[29] (15,541)<div  />
+	[30] (58,541)<span >Abertura de Ticket />
+Classes de Palavras
+[31] (169,38)<button aria-label='Módulos anteriores' class='w-9 h-9 flex items-center justify-center rounded-2xl border border-border/50 bg-background transition-all duration-200 text-foreground/80 hover:bg-muted shadow-sm cursor-pointer' />
+[32] (196,38)<button class='w-10 h-10 md:w-11 md:h-11 flex items-center justify-center rounded-full border border-border/50 bg-background shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0' />
+[33] (226,38)<a class='w-10 h-10 md:w-11 md:h-11 flex items-center justify-center rounded-full border border-border/50 bg-background shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0' href='/aulas/portugues' />
+[34] (312,38)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_9k_-trigger-modulo-6' role='tab' />
+	[35] (312,37)<div  />
+		[36] (303,28)<span >M6: Advérbio />
+		[37] (312,48)<span  />
+			[38] (312,48)<span >Advérbio: A Circunstância />
+[39] (454,38)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_9k_-trigger-modulo-7' role='tab' />
+	[40] (454,37)<div  />
+		[41] (448,28)<span >M7: Preposição />
+		[42] (454,48)<span  />
+			[43] (454,48)<span >Preposição: O Elo de Ligação />
+[44] (596,38)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_9k_-trigger-modulo-8' role='tab' />
+	[45] (596,37)<div  />
+		[46] (591,28)<span >M8: Conjunção />
+		[47] (596,48)<span  />
+			[48] (596,48)<span >Conjunção: O Cimento do Texto />
+[49] (738,38)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_9k_-trigger-modulo-9' role='tab' />
+	[50] (738,37)<div  />
+		[51] (733,28)<span >M9: Interjeição />
+		[52] (738,48)<span  />
+			[53] (738,48)<span >Interjeição: A Emoção />
+[54] (880,38)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_9k_-trigger-modulo-10' role='tab' />
+	[55] (880,37)<div  />
+		[56] (870,28)<span >M10: Numeral />
+		[57] (880,48)<span  />
+			[58] (880,48)<span >Numeral: A Quantidade />
+ASSISTIR com sentido de 'ver/presenciar' é INDIRETO: exige preposição A: "Assisti AO acidente" (nunca "assisti o acidente"). ASSISTIR com sentido de 'prestar assistência' também é indireto: "O médico assistiu AO paciente". Apenas no sentido de 'morar' é intransitivo: "Assiste em São Paulo". A Cesgranrio frequentemente propõe reescritas que suprimem a preposição para verificar o conhecimento de regência.
+Outros verbos de regência clássica: AGRADAR (satisfazer) + A; IMPLICAR (envolver) + EM; PROCEDER (originar) + DE; PROCEDER (agir) = intransitivo.
+🔗
+QUIZ: Preposição: O Elo de Ligação
+1
+.
+A contração 'pelo' é a soma de:
+[59] (567,327)<button class='w-full text-left px-4 py-3 rounded-lg border-2 border-border hover:border-indigo-500 text-foreground text-sm transition-all duration-200'>Para + o />
+	[60] (282,327)<span >A
+) />
+[61] (567,381)<button class='w-full text-left px-4 py-3 rounded-lg border-2 border-border hover:border-indigo-500 text-foreground text-sm transition-all duration-200'>Per + o (por + o) />
+	[62] (281,381)<span >B
+) />
+[63] (567,436)<button class='w-full text-left px-4 py-3 rounded-lg border-2 border-border hover:border-indigo-500 text-foreground text-sm transition-all duration-200'>Pode + o />
+	[64] (282,436)<span >C
+) />
+[65] (567,490)<button class='w-full text-left px-4 py-3 rounded-lg border-2 border-border hover:border-indigo-500 text-foreground text-sm transition-all duration-200'>A + o />
+	[66] (281,490)<span >D
+) />
+[67] (567,544)<button class='w-full text-left px-4 py-3 rounded-lg border-2 border-border hover:border-indigo-500 text-foreground text-sm transition-all duration-200'>De + o />
+	[68] (281,544)<span >E
+) />
+2
+.
+O numeral 'SÉTIMO' é do tipo:
+[69] (567,682)<button class='w-full text-left px-4 py-3 rounded-lg border-2 border-border hover:border-indigo-500 text-foreground text-sm transition-all duration-200'>Cardinal />
+	[70] (282,682)<span >A
+) />
+[71] (567,736)<button class='w-full text-left px-4 py-3 rounded-lg border-2 border-border hover:border-indigo-500 text-foreground text-sm transition-all duration-200'>Ordinal />
+	[72] (281,736)<span >B
+) />
+[73] (567,791)<button class='w-full text-left px-4 py-3 rounded-lg border-2 border-border hover:border-indigo-500 text-foreground text-sm transition-all duration-200'>Fracionário />
+	[74] (282,791)<span >C
+) />
+[75] (567,845)<button class='w-full text-left px-4 py-3 rounded-lg border-2 border-border hover:border-indigo-500 text-foreground text-sm transition-all duration-200'>Multiplicativo />
+	[76] (281,845)<span >D
+) />
+[77] (567,899)<button class='w-full text-left px-4 py-3 rounded-lg border-2 border-border hover:border-indigo-500 text-foreground text-sm transition-all duration-200'>Coletivo />
+	[78] (281,899)<span >E
+) />
+
+</current_dom>

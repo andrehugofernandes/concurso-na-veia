@@ -1182,7 +1182,7 @@ export default function AulaReadingStrategies({
           titulo="CRITICAL READING & TONE"
           descricao="Identifique intenção do autor, tom, atitude e implicações implícitas."
           gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800"
-          variant="lime"
+          variant="emerald"
         />
 
         <RichIntro>
@@ -1302,7 +1302,7 @@ export default function AulaReadingStrategies({
               titulo="QUIZ: Critical Reading & Tone"
               icone="🔎"
               numero={3}
-              variant="lime"
+              variant="emerald"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -1316,7 +1316,7 @@ export default function AulaReadingStrategies({
           titulo="TEXT STRUCTURE & ORGANIZATION"
           descricao="Recognize padrões de organização textual: causa-efeito, comparação, cronologia, problema-solução."
           gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800"
-          variant="teal"
+          variant="cyan"
         />
 
         <RichIntro>
@@ -1453,7 +1453,7 @@ export default function AulaReadingStrategies({
               titulo="QUIZ: Text Structure"
               icone="🏗️"
               numero={3}
-              variant="teal"
+              variant="cyan"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -1613,7 +1613,7 @@ export default function AulaReadingStrategies({
           titulo="Simulado Geral: CESGRANRIO MASTER EXAM"
           descricao="Teste final: integração completa de todas as 9 estratégias em um simulado autêntico."
           gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800"
-          variant="purple"
+          variant="violet"
         />
 
         <RichIntro>
@@ -1698,7 +1698,7 @@ export default function AulaReadingStrategies({
               titulo="QUIZ: Simulado Geral"
               icone="👑"
               numero={3}
-              variant="purple"
+              variant="violet"
               onComplete={(score) => {
                 handleModuleComplete("modulo-10", score);
                 if (score >= 60) onComplete?.();

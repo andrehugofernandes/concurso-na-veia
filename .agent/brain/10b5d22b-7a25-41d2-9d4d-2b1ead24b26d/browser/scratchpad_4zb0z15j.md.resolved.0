@@ -1,0 +1,19 @@
+# Plano de Investigação - BairroAutocomplete
+
+## Checklist
+- [ ] Navegar para http://localhost:3000/pmavv
+- [ ] Realizar login (se necessário)
+- [ ] Ir para 'Nova Denúncia'
+- [ ] Preencher Passo 1 e clicar em 'Prosseguir'
+- [ ] Localizar 'Selecione um bairro...'
+- [ ] Capturar logs iniciais
+- [ ] Clicar no combobox
+- [ ] Esperar 2 segundos
+- [ ] Capturar logs finais
+- [ ] Verificar DOM (PopoverContent/CommandItem)
+- [ ] Tirar screenshot
+- [ ] Analisar e reportar descobertas
+
+## Notas
+- Credenciais: andre.hugo / Mvvas@18261405
+- Focar em logs do prefixo `[BairroAutocomplete]`

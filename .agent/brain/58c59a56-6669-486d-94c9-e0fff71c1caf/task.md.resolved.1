@@ -1,0 +1,7 @@
+# Fixing isModuleUnlocked TypeError
+
+- [x] Analyze the stack trace and identify the source of the crash
+- [x] Verify where `isModuleUnlocked` is missing (AulaVerbTenses.tsx)
+- [x] Add `isModuleUnlocked={(index) => true}` (or the correct logic) to [AulaVerbTenses.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/ingles/AulaVerbTenses.tsx)
+- [x] Add an optional default fallback to [AulaTemplate](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#2226-2490) and [StickyModuleNav](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#2497-2908) in [shared.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx) to prevent future crashes: `isModuleUnlocked = () => true`
+- [ ] Fix the remaining TypeScript prop errors in [AulaVerbTenses.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/ingles/AulaVerbTenses.tsx) (e.g. `modulo`, `questions`)

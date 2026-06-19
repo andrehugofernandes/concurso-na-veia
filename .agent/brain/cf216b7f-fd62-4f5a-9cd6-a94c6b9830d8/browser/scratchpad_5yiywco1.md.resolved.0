@@ -1,0 +1,13 @@
+# Task: Fix Profile Photo Rendering and Verify Supabase Storage
+
+## Checklist
+- [ ] Verify Supabase configuration in `.env.local`
+- [ ] Analyze `UserAvatar` and `useUserProfile` components
+- [ ] Implement or fix Supabase storage service if needed
+- [ ] Check `profiles` table schema and data
+- [ ] Verify Supabase bucket and file existence
+
+## Findings
+- User stated they are using Supabase for storage, not Firebase.
+- Recent changes might have broken avatar rendering.
+- `useUserProfile` hooks uses `avatar_url`.

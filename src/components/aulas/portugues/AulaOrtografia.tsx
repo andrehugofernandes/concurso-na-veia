@@ -1098,16 +1098,15 @@ Ditongo é junto, hiato é separação!
           concurso="Processo Seletivo Petrobras"
           enunciado="A palavra 'Paraguai' apresenta qual tipo de encontro vocálico?"
           alternativas={[
-            { label: "A", valor: "Ditongo crescente" },
-                { label: "B", valor: "Ditongo decrescente" },
-                { label: "C", valor: "Tritongo (SV + V + SV)" },
-                { label: "D", valor: "Hiato" }
+            { letra: "A", texto: "Ditongo crescente", correta: false },
+                { letra: "B", texto: "Ditongo decrescente", correta: false },
+                { letra: "C", texto: "Tritongo (SV + V + SV)", correta: true },
+                { letra: "D", texto: "Hiato", correta: false }
           ]}
-          correta="C"
           passos={[
-            "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1494,16 +1493,15 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           concurso="Processo Seletivo Petrobras"
           enunciado="A palavra 'Paraguai' apresenta qual tipo de encontro vocálico?"
           alternativas={[
-            { label: "A", valor: "Ditongo crescente" },
-                { label: "B", valor: "Ditongo decrescente" },
-                { label: "C", valor: "Tritongo (SV + V + SV)" },
-                { label: "D", valor: "Hiato" }
+            { letra: "A", texto: "Ditongo crescente", correta: false },
+                { letra: "B", texto: "Ditongo decrescente", correta: false },
+                { letra: "C", texto: "Tritongo (SV + V + SV)", correta: true },
+                { letra: "D", texto: "Hiato", correta: false }
           ]}
-          correta="C"
           passos={[
-            "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1593,16 +1591,15 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           concurso="Processo Seletivo Petrobras"
           enunciado="A palavra 'Paraguai' apresenta qual tipo de encontro vocálico?"
           alternativas={[
-            { label: "A", valor: "Ditongo crescente" },
-                { label: "B", valor: "Ditongo decrescente" },
-                { label: "C", valor: "Tritongo (SV + V + SV)" },
-                { label: "D", valor: "Hiato" }
+            { letra: "A", texto: "Ditongo crescente", correta: false },
+                { letra: "B", texto: "Ditongo decrescente", correta: false },
+                { letra: "C", texto: "Tritongo (SV + V + SV)", correta: true },
+                { letra: "D", texto: "Hiato", correta: false }
           ]}
-          correta="C"
           passos={[
-            "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1669,16 +1666,15 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           concurso="Processo Seletivo Petrobras"
           enunciado="A palavra 'Paraguai' apresenta qual tipo de encontro vocálico?"
           alternativas={[
-            { label: "A", valor: "Ditongo crescente" },
-                { label: "B", valor: "Ditongo decrescente" },
-                { label: "C", valor: "Tritongo (SV + V + SV)" },
-                { label: "D", valor: "Hiato" }
+            { letra: "A", texto: "Ditongo crescente", correta: false },
+                { letra: "B", texto: "Ditongo decrescente", correta: false },
+                { letra: "C", texto: "Tritongo (SV + V + SV)", correta: true },
+                { letra: "D", texto: "Hiato", correta: false }
           ]}
-          correta="C"
           passos={[
-            "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1720,16 +1716,15 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           concurso="Processo Seletivo Petrobras"
           enunciado="A palavra 'Paraguai' apresenta qual tipo de encontro vocálico?"
           alternativas={[
-            { label: "A", valor: "Ditongo crescente" },
-                { label: "B", valor: "Ditongo decrescente" },
-                { label: "C", valor: "Tritongo (SV + V + SV)" },
-                { label: "D", valor: "Hiato" }
+            { letra: "A", texto: "Ditongo crescente", correta: false },
+                { letra: "B", texto: "Ditongo decrescente", correta: false },
+                { letra: "C", texto: "Tritongo (SV + V + SV)", correta: true },
+                { letra: "D", texto: "Hiato", correta: false }
           ]}
-          correta="C"
           passos={[
-            "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={qMod5} titulo="QUIZ: Opostos" icone="⚖️" numero={5} onComplete={(s) => handleModuleComplete("modulo-5", s)} variant="blue" />
@@ -1763,16 +1758,15 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           concurso="Processo Seletivo Petrobras"
           enunciado="A palavra 'Paraguai' apresenta qual tipo de encontro vocálico?"
           alternativas={[
-            { label: "A", valor: "Ditongo crescente" },
-                { label: "B", valor: "Ditongo decrescente" },
-                { label: "C", valor: "Tritongo (SV + V + SV)" },
-                { label: "D", valor: "Hiato" }
+            { letra: "A", texto: "Ditongo crescente", correta: false },
+                { letra: "B", texto: "Ditongo decrescente", correta: false },
+                { letra: "C", texto: "Tritongo (SV + V + SV)", correta: true },
+                { letra: "D", texto: "Hiato", correta: false }
           ]}
-          correta="C"
           passos={[
-            "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={qMod6} titulo="QUIZ: Porquês" icone="❓" numero={6} onComplete={(s) => handleModuleComplete("modulo-6", s)} variant="blue" />
@@ -1804,16 +1798,15 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           concurso="Processo Seletivo Petrobras"
           enunciado="A palavra 'Paraguai' apresenta qual tipo de encontro vocálico?"
           alternativas={[
-            { label: "A", valor: "Ditongo crescente" },
-                { label: "B", valor: "Ditongo decrescente" },
-                { label: "C", valor: "Tritongo (SV + V + SV)" },
-                { label: "D", valor: "Hiato" }
+            { letra: "A", texto: "Ditongo crescente", correta: false },
+                { letra: "B", texto: "Ditongo decrescente", correta: false },
+                { letra: "C", texto: "Tritongo (SV + V + SV)", correta: true },
+                { letra: "D", texto: "Hiato", correta: false }
           ]}
-          correta="C"
           passos={[
-            "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={qMod7} titulo="QUIZ: Hífen" icone="🧲" numero={7} onComplete={(s) => handleModuleComplete("modulo-7", s)} variant="blue" />
@@ -1842,16 +1835,15 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           concurso="Processo Seletivo Petrobras"
           enunciado="A palavra 'Paraguai' apresenta qual tipo de encontro vocálico?"
           alternativas={[
-            { label: "A", valor: "Ditongo crescente" },
-                { label: "B", valor: "Ditongo decrescente" },
-                { label: "C", valor: "Tritongo (SV + V + SV)" },
-                { label: "D", valor: "Hiato" }
+            { letra: "A", texto: "Ditongo crescente", correta: false },
+                { letra: "B", texto: "Ditongo decrescente", correta: false },
+                { letra: "C", texto: "Tritongo (SV + V + SV)", correta: true },
+                { letra: "D", texto: "Hiato", correta: false }
           ]}
-          correta="C"
           passos={[
-            "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={qMod8} titulo="QUIZ: Semântica" icone="🎭" numero={8} onComplete={(s) => handleModuleComplete("modulo-8", s)} variant="blue" />
@@ -1880,16 +1872,15 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           concurso="Processo Seletivo Petrobras"
           enunciado="A palavra 'Paraguai' apresenta qual tipo de encontro vocálico?"
           alternativas={[
-            { label: "A", valor: "Ditongo crescente" },
-                { label: "B", valor: "Ditongo decrescente" },
-                { label: "C", valor: "Tritongo (SV + V + SV)" },
-                { label: "D", valor: "Hiato" }
+            { letra: "A", texto: "Ditongo crescente", correta: false },
+                { letra: "B", texto: "Ditongo decrescente", correta: false },
+                { letra: "C", texto: "Tritongo (SV + V + SV)", correta: true },
+                { letra: "D", texto: "Hiato", correta: false }
           ]}
-          correta="C"
           passos={[
-            "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={qMod9} titulo="QUIZ: Conectivos" icone="🧬" numero={9} onComplete={(s) => handleModuleComplete("modulo-9", s)} variant="blue" />
@@ -1908,16 +1899,15 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           concurso="Processo Seletivo Petrobras"
           enunciado="A palavra 'Paraguai' apresenta qual tipo de encontro vocálico?"
           alternativas={[
-            { label: "A", valor: "Ditongo crescente" },
-                { label: "B", valor: "Ditongo decrescente" },
-                { label: "C", valor: "Tritongo (SV + V + SV)" },
-                { label: "D", valor: "Hiato" }
+            { letra: "A", texto: "Ditongo crescente", correta: false },
+                { letra: "B", texto: "Ditongo decrescente", correta: false },
+                { letra: "C", texto: "Tritongo (SV + V + SV)", correta: true },
+                { letra: "D", texto: "Hiato", correta: false }
           ]}
-          correta="C"
           passos={[
-            "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "No tritongo, temos uma semivogal, uma vogal e outra semivogal na mesma sílaba (Pa-ra-guai)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={qMod10} titulo="SIMULADO FINAL" icone="🏆" numero={10} onComplete={(s) => handleModuleComplete("modulo-10", s)} variant="blue" />

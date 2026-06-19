@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_OTHER",
+  "summary": "Brainstorm estruturado de reestruturação do banco de dados PMAVV com análise de 10 anti-patterns identificados no schema legado Scriptcase/PostgreSQL. Apresenta 3 opções: (A) Normalização Incremental com Views de Compatibilidade, (B) Arrays + ENUMs nativos PostgreSQL, (C) Schema Dual com Materialized Views. Inclui tabela comparativa de performance, schemas SQL propostos, e recomendação fundamentada para Opção A com priorização de migração.",
+  "updatedAt": "2026-04-15T12:37:48.767228400Z"
+}

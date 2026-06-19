@@ -1,0 +1,12 @@
+# Task: Debug Denúncia Creation Error
+
+## Progress
+- [ ] Open http://localhost:3000
+- [ ] Login with andre.hugo / Mvvas@18261405
+- [ ] Handle OTP if present
+- [ ] Navigate to /denuncias
+- [ ] Reproduce the error in Step 4 (Denunciante)
+- [ ] Check console logs for errors
+
+## Findings
+- 

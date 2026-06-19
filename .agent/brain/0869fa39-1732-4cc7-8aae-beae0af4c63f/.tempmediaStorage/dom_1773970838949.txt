@@ -1,0 +1,46 @@
+A Vaga eh Minha - Domine seu Futuro
+AV
+A VAGA
+EH MINHA
+Simulador de Concursos
+[0] (946,47)<button aria-label='Ativar modo claro' class='p-2 rounded-full text-gray-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors' />
+[1] (968,47)<button aria-label='Abrir seletor de cores' class='w-8 h-8 rounded-full transition-transform hover:scale-110' />
+Acesse sua conta
+Bem-vindo de volta! Continue sua jornada.
+[2] (250,350)<input class='peer w-full border px-3 py-3 text-base outline-none transition-colors focus:ring-offset-4 focus:ring-offset-background focus:ring-2 placeholder-transparent pl-10 bg-background border-border text-foreground rounded-xl focus:border-primary focus:ring-primary/20' id='username' placeholder=' ' />
+Nome de Usuário
+[3] (250,431)<input class='peer w-full border px-3 py-3 text-base outline-none transition-colors focus:ring-offset-4 focus:ring-offset-background focus:ring-2 placeholder-transparent pl-10 pr-12 bg-background border-border text-foreground rounded-xl focus:border-primary focus:ring-primary/20' id='password' placeholder=' ' />
+Senha
+[4] (338,427)<button class='text-gray-400 hover:text-gray-600 dark:hover:text-white transition' />
+[5] (187,496)<label class='flex items-center gap-2'>Lembrar de mim />
+	[6] (155,496)<input class='w-4 h-4 rounded border-gray-300 dark:border-slate-600 bg-gray-100 dark:bg-slate-700 text-primary focus:ring-primary' />
+	Lembrar de mim
+[7] (314,496)<a class='text-sm text-primary hover:text-primary/80 transition' href='#'>Esqueceu a senha? />
+[8] (250,564)<button class='w-full py-4 bg-primary text-primary-foreground font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed'>Entrar />
+Não tem uma conta?
+[9] (290,632)<a class='text-primary font-semibold hover:text-primary/80 transition' href='/register'>Criar conta grátis />
+ou continue com
+[10] (198,754)<button class='flex items-center justify-center p-3 border border-border rounded-xl text-foreground hover:bg-accent transition' />
+[11] (302,754)<button class='flex items-center justify-center p-3 border border-gray-200 dark:border-slate-600 rounded-xl text-[#1877F2] hover:bg-gray-50 dark:hover:bg-slate-700/50 transition' />
+[12] (250,855)<a class='text-muted-foreground hover:text-foreground transition inline-flex items-center gap-2 text-sm' href='/'>Voltar para o início />
+🛢️ Seu futuro na Petrobras começa aqui
++2.500
+Questões
+·
+94%
+Aprovação
+·
+120+
+Aulas
+📋 Próximo Concurso Petrobras
+2026
+Previsão
+·
+6.412
+Vagas
+🎓 Comunidade de Estudos
+15k+
+Alunos
+·
+4.8★
+Avaliação

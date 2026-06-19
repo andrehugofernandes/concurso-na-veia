@@ -1,0 +1,21 @@
+# Plano de Limpeza Estrutural RLCP
+
+Este plano visa remover as tags `</div>` órfãs inseridas durante a reconstrução dos módulos 4 ao 10 no arquivo `AulaRLCP.tsx`. Essas tags estão impedindo a compilação final (TSC).
+
+## User Review Required
+
+> [!IMPORTANT]
+> A correção é puramente estrutural e não afeta o conteúdo pedagógico. O objetivo é apenas restaurar o balanceamento das tags JSX.
+
+## Proposed Changes
+
+### [AulaRLCP.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaRLCP.tsx)
+
+#### [MODIFY] [AulaRLCP.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaRLCP.tsx)
+
+- Remover `</div>` órfão localizado antes de cada `</TabsContent>` nas funções `renderModulo4` até `renderModulo10`.
+
+## Verification Plan
+
+### Automated Tests
+- Executar `npx tsc c:\Workspace\petrobras-quest\src\components\aulas\administracao\AulaRLCP.tsx --noEmit --esModuleInterop --jsx react-jsx --skipLibCheck`.

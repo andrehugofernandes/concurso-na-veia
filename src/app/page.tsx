@@ -111,6 +111,12 @@ export default function LandingPage() {
           <div className="flex items-center gap-4 md:gap-8">
             <AuthThemeToggle isScrolled={scrolled} />
             <Link
+              href="/felo"
+              className="text-sm font-semibold hover:text-primary transition-colors hidden sm:block"
+            >
+              Felo AI Page
+            </Link>
+            <Link
               href="/login"
               className={`px-5 py-2 rounded-xl text-sm font-black transition-all shadow-sm flex items-center justify-center border ${
                 scrolled 
@@ -128,7 +134,7 @@ export default function LandingPage() {
             >
               <Link
                 href="/register"
-                className="bg-primary text-primary-foreground px-6 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition whitespace-nowrap shadow-lg shadow-primary/20"
+                className="bg-primary text-primary-foreground hover:text-primary-foreground px-6 py-2.5 rounded-full text-sm font-bold hover:opacity-90 transition whitespace-nowrap shadow-lg shadow-primary/20"
               >
                 Criar Conta
               </Link>
@@ -192,7 +198,7 @@ export default function LandingPage() {
             >
               <Link
                 href="/register"
-                className="px-8 py-4 bg-primary text-primary-foreground text-lg font-bold rounded-full hover:shadow-lg hover:shadow-primary/30 transition-all transform hover:scale-105"
+                className="px-8 py-4 bg-primary text-primary-foreground hover:text-primary-foreground text-lg font-bold rounded-full hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 transition-all transform hover:scale-105"
               >
                 Começar Grátis
               </Link>

@@ -1,0 +1,41 @@
+# Refinamento de UX/UI da Dashboard: Responsividade e Hierarquia
+
+Este plano visa corrigir falhas críticas de layout na Dashboard, onde ícones estão recebendo peso excessivo em relação ao conteúdo textual, resultando em layouts "espremidos" em dispositivos móveis.
+
+## User Review Required
+
+> [!IMPORTANT]
+> Mudança no padrão visual de cards: Em vez de ícones gigantes à esquerda em `flex-row`, adotaremos um padrão `flex-col` no mobile ou ícones em containers reduzidos (`shrink-0`) para priorizar o texto.
+
+## Propostas de Mudanças
+
+### Dashboard [Componente Principal]
+
+#### [MODIFY] [Dashboard Page](file:///c:/Workspace/petrobras-quest/src/app/%28dashboard%29/dashboard/page.tsx)
+
+1.  **Seção "Conteúdo Teórico" (Card de Aulas)**:
+    *   Substituir `flex items-center gap-4` por um layout que se adapte melhor ao mobile.
+    *   Reduzir o tamanho do emoji/ícone (de `text-5xl` para algo mais equilibrado, como `text-3xl` em container).
+    *   Garantir que o texto tenha largura total em telas pequenas.
+
+2.  **Seção "Simulados Rápidos"**:
+    *   Ajustar os headers dos cards de simulado. Atualmente usam `flex items-center gap-4` com ícones grandes que quebram o título em múltiplas linhas desnecessariamente no mobile.
+    *   Implementar `shrink-0` no container do ícone.
+
+3.  **Seção "Treino Intensivo"**:
+    *   Corrigir o posicionamento dos ícones decorativos que podem estar sobrepondo o texto em viewports estreitos.
+
+4.  **Cabeçalho (Trial/Upgrade)**:
+    *   Melhorar o alinhamento do contador de dias e do botão "Seja PRO" para evitar empilhamento desajeitado.
+
+---
+
+## Plano de Verificação
+
+### Automated Tests
+- N/A (Ajustes Visuais)
+
+### Manual Verification
+1.  **Mobile Audit (375px - 500px)**: Verificar se o texto "Conteúdo Teórico" não está mais espremido e se o ícone não cria espaços vazios excessivos.
+2.  **Desktop Audit (1440px)**: Garantir que a expansão para desktop continue harmônica.
+3.  **Dark Mode**: Validar se as bordas e gradientes ajustados mantêm o contraste.

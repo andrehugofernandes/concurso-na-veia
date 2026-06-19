@@ -1,0 +1,65 @@
+# Plano de Enriquecimento: Administração (Bloco 1 - Gestão Estratégica)
+
+As aulas atuais de Administração (Bloco 1) foram identificadas como "esqueletos" (stubs) com contagem de linhas entre 189 e 359, muito abaixo da meta premium de ~2500 linhas definida em `@aula.md`. Este plano detalha o enriquecimento e conformidade técnica dessas aulas.
+
+## Diagnóstico Atual
+
+- **Aulas Impactadas:**
+  - [AulaPlanejamentoEstrategico.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaPlanejamentoEstrategico.tsx) (354 linhas)
+  - [AulaGestaoProcessos.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestaoProcessos.tsx) (359 linhas)
+  - [AulaGestaoProjetos.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestaoProjetos.tsx) (189 linhas)
+  - [AulaGovernancaCorporativa.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGovernancaCorporativa.tsx) (189 linhas)
+- **Problemas Identificados:**
+  - Conteúdo teórico superficial e repetitivo em alguns módulos.
+  - Quizzes embutidos (inline) nos arquivos das aulas.
+  - Ausência de exemplos práticos contextualizados com a Petrobras.
+
+## Mudanças Propostas
+
+### 1. Enriquecimento de Conteúdo (Padrão C.E.D.E.)
+Cada um dos 10 módulos de cada aula será expandido para incluir:
+- **Conceituação (C):** Explicação profunda e técnica, sem "padding" desnecessário.
+- **Exemplificação (E):** Casos práticos, focando preferencialmente na realidade da Petrobras.
+- **Dicas (D):** "Macetes" de prova e "Pegadinhas" da Cesgranrio.
+- **Exceções (E):** Casos onde a regra geral não se aplica.
+
+### 2. Reestruturação Técnica
+- **Externalização dos Quizzes:** Migrar os objetos de quiz para novos arquivos em `src/data/quizzes/`.
+  - [NEW] `planejamento-quizzes.ts`
+  - [NEW] `processos-quizzes.ts`
+  - [NEW] `projetos-quizzes.ts`
+  - [NEW] `governanca-quizzes.ts`
+- **Componentização:** Garantir o uso correto de `ModuleConsolidation`, `ContentAccordion` e `QuizInterativo` em todos os módulos.
+
+---
+
+## Cronograma de Implementação
+
+### [MODULO 1] Planejamento Estratégico
+- **Arquivos:** [AulaPlanejamentoEstrategico.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaPlanejamentoEstrategico.tsx), `planejamento-quizzes.ts`
+- **Foco:** Missão, Visão, Valores, SWOT, BSC e Estratégias Genéricas.
+
+### [MODULO 2] Gestão de Processos
+- **Arquivos:** [AulaGestaoProcessos.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestaoProcessos.tsx), `processos-quizzes.ts`
+- **Foco:** Modelagem (BPMN), Melhoria Contínua, Six Sigma, Lean.
+
+### [MODULO 3] Gestão de Projetos
+- **Arquivos:** [AulaGestaoProjetos.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestaoProjetos.tsx), `projetos-quizzes.ts`
+- **Foco:** Grupos de Processos e Áreas de Conhecimento do PMBOK (7ª Edição).
+
+### [MODULO 4] Governança Corporativa
+- **Arquivos:** [AulaGovernancaCorporativa.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGovernancaCorporativa.tsx), `governanca-quizzes.ts`
+- **Foco:** Transparência, Equidade, Prestação de Contas e Responsabilidade Corporativa.
+
+---
+
+## Plano de Verificação
+
+### Testes Automatizados
+- Executar `python .agent/scripts/checklist.py src/components/aulas/administracao/` para validar lint e conformidade básica.
+- Verificar contagem de linhas via comando PowerShell: [(Get-Content <path> | Measure-Object -Line).Lines](file:///c:/Workspace/petrobras-quest/src/lib/supabase/server.ts#13-16).
+
+### Verificação Manual
+- Validar se a navegação entre tabs está fluida.
+- Verificar se as cores seguem a paleta azul/cinza (proibição do roxo).
+- Garantir que não há "Placeholders" ou conteúdo vazio.

@@ -12,13 +12,27 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
     moduleNumber: 1,
     questions: [
       {
+        id: 999,
+        question: "Durante procedimento fiscal regular na Petrobras, o auditor da Receita Federal do Brasil (RFB) intima o representante legal a apresentar os livros comerciais e fiscais da empresa. O representante recusa-se ao fornecimento sob a alegação de cláusula de sigilo contratual privada celebrada com parceiros comerciais. Nos termos do Código Tributário Nacional (CTN), a conduta do representante é:",
+        options: [
+          "legítima, pois o sigilo comercial privado se sobrepõe ao interesse arrecadatório estatal.",
+          "ilegítima, pois a fiscalização dos livros comerciais pela autoridade tributária não está sujeita a limitações constantes de leis ou contratos privados.",
+          "legítima, desde que haja parecer prévio do conselho fiscal da sociedade anônima.",
+          "ilegítima, dependendo, contudo, de mandado de busca judicial para prosseguimento do exame.",
+          "legítima, cabendo à Receita Federal requerer as informações diretamente aos parceiros internacionais."
+        ],
+        correct: 1,
+        explanation: "Conforme o Art. 195 do CTN, para efeitos da legislação tributária, não têm aplicação quaisquer disposições legais limitativas do direito de examinar livros, arquivos, papéis e efeitos comerciais dos comerciantes ou industriais."
+      },
+      {
         id: 101,
         question: "Administração Tributária em uma empresa é responsável por:",
         options: [
           "Apenas vender produtos",
           "Gerenciar cumprimento de obrigações tributárias, prazos, registros, otimizar custos",
           "Apenas pagar impostos",
-          "Nada importante"
+          "Nada importante",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Administração Tributária gerencia: cumprimento de obrigações, prazos de recolhimento, registros corretos, aproveitamento de créditos, redução de custos, conformidade."
@@ -30,7 +44,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Aumentar impostos",
           "Cumprir obrigações legais, evitar multas, otimizar custos tributários",
           "Sonegar impostos",
-          "Não tem objetivo"
+          "Não tem objetivo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Objetivos: 1) Conformidade (cumprir lei). 2) Segurança jurídica (evitar multas/juros). 3) Eficiência (reduzir custos tributários licitamente)."
@@ -42,7 +57,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas pagar um imposto",
           "Múltiplos tributos, múltiplas jurisdições (estados), operações bilionárias",
           "Nenhum desafio",
-          "Apenas registros contábeis"
+          "Apenas registros contábeis",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Petrobras: IR, ICMS (5+ estados), PIS, COFINS, royalties, participações especiais, INSS, FGTS. Cada tributo em múltiplos estados/períodos."
@@ -54,7 +70,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Vendedor",
           "Contador ou Analista Tributário especializad",
           "Operário de fábrica",
-          "Gerente de logística"
+          "Gerente de logística",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Analista Tributário ou Contador especializado em tributos. Em grandes empresas: departamento tributário próprio com sênior specialists."
@@ -66,7 +83,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Aumentar impostos pagos",
           "Evitar multas (economia significativa), melhorar liquidez, reduzir riscos",
           "Não há benefício",
-          "Apenas para grandes empresas"
+          "Apenas para grandes empresas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Multas + juros podem ser 50%+ do imposto original. Boa administração evita isso, melhora caixa, reduz risco de auditoria."
@@ -78,7 +96,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Vender mais produtos",
           "Elaborar calendar de prazos, registrar operações corretamente, aproveitar créditos",
           "Fabricar produtos",
-          "Demitir funcionários"
+          "Demitir funcionários",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Ações: planejamento (calendar), execução (registros), otimização (aproveitamento de créditos), monitoramento (conformidade)."
@@ -90,7 +109,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Aumento de vendas",
           "Multas (0,5% ao mês), juros de mora (SELIC), perda de créditos por prescrição",
           "Melhora operacional",
-          "Nenhuma consequência"
+          "Nenhuma consequência",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Atraso de R$ 100k: multa R$ 500-1.000/mês (0,5%). Juros SELIC ~0,5% ao mês. Acumula rápido."
@@ -102,7 +122,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas preço de produtos",
           "Legislação tributária (novas leis, alíquotas, prazos)",
           "Apenas horário de funcionamento",
-          "Nada precisa acompanhar"
+          "Nada precisa acompanhar",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Lei tributária muda frequentemente: novas alíquotas, prazos, obrigações acessórias. Administração deve estar atualizada para conformidade."
@@ -114,7 +135,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Não é importante",
           "Operações bilionárias gerando bilhões em imposto; erro = perdas massivas",
           "Apenas para pequenos negócios",
-          "Petrobras não paga imposto"
+          "Petrobras não paga imposto",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Petrobras: faturamento R$ 500 bi = imposto R$ 100+ bi. Erro de 1% = R$ 1 bilhão de impacto. Importância crítica."
@@ -133,7 +155,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "ICMS",
           "IR, IPI, COFINS, PIS e outros tributos federais",
           "ISS",
-          "IPTU"
+          "IPTU",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "RFB: órgão federal que arrecada tributos federais (IR, IPI, impostos aduaneiros, contribuições sociais federais)."
@@ -145,7 +168,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Arrecadar tributos federais",
           "Arrecadar ICMS e tributos estaduais (órgão estadual)",
           "Arrecadar apenas ISS",
-          "Nada tributário"
+          "Nada tributário",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "SEFAZ: órgão estadual. Cada estado tem sua SEFAZ. Arrecada ICMS (imposto mais importante para estados), tax estaduais."
@@ -157,7 +181,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "IR e IPI",
           "ISS (Imposto sobre Serviços), IPTU, impostos municipais",
           "ICMS",
-          "Tributos federais"
+          "Tributos federais",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Prefeitura: órgão municipal. Arrecada ISS (~2-5% conforme município), IPTU (propriedade), impostos municipais específicos."
@@ -169,7 +194,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Impostos",
           "Contribuições sociais (previdência, fundo garantia)",
           "Taxas municipais",
-          "Sem relação com arrecadação"
+          "Sem relação com arrecadação",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "INSS: contribuição previdenciária (seguro social). FGTS: fundo de garantia de tempo de serviço. Ambos são contribuições sociais."
@@ -181,7 +207,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Papel",
           "SPED (Sistema Público Escrituração Digital)",
           "Telefone",
-          "Pessoalmente"
+          "Pessoalmente",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "SPED: plataforma eletrônica de transmissão de informações (EFD, ECF, DIPJ, etc). Transmissão via certificado digital."
@@ -193,7 +220,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "RFB > Prefeitura > SEFAZ",
           "RFB (federal) > SEFAZ (estadual) > Prefeitura (municipal)",
           "Prefeitura > SEFAZ > RFB",
-          "Todos no mesmo nível"
+          "Todos no mesmo nível",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "RFB: federal (mais alto). SEFAZ: estadual (meio). Prefeitura: municipal (local). Cada um cobra seus tributos."
@@ -205,7 +233,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "1 SEFAZ central",
           "5 SEFAZs (uma por estado onde opera)",
           "0 SEFAZs",
-          "Apenas 1 estadual"
+          "Apenas 1 estadual",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Cada estado tem SEFAZ própria. Operação em SP = registra SP. Operação em MG = registra MG. Múltiplos estados = múltiplas SEFAZs."
@@ -217,7 +246,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nunca compartilham",
           "SPED e sistemas integrados (NF-e, EFD)",
           "Apenas por telefone",
-          "Sem nenhuma integração"
+          "Sem nenhuma integração",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "RFB, SEFAZs, Prefeituras compartilham dados: NF-e (todas veem), SPED (RFB recebe informação estadual), integração crescente."
@@ -229,7 +259,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "RFB",
           "SEFAZ-SP (Secretaria de Fazenda de São Paulo)",
           "Prefeitura de São Paulo",
-          "INSS"
+          "INSS",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "ICMS é tributo estadual. Operação em SP = paga para SEFAZ-SP. Operação em MG = paga para SEFAZ-MG (alíquota diferente)."
@@ -248,7 +279,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas grandes empresas",
           "Circulação de mercadoria (desde 2006 para maioria)",
           "Nunca é obrigatória",
-          "Apenas importação"
+          "Apenas importação",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "NF-e: obrigatória para circulação de mercadoria. Emitida eletronicamente, autorizada pela SEFAZ, rastreada digitalmente."
@@ -260,7 +292,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas recibos de venda",
           "Notas Fiscais, livros contábeis, recibos, comprovantes de pagamento",
           "Apenas 1 ano",
-          "Não precisa manter"
+          "Não precisa manter",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Prazo de guarda: 5 anos a partir da data da operação (prazo de prescrição). Inclui NF, livros, comprovantes, recibos."
@@ -272,7 +305,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas vendas",
           "Débitos (saídas/vendas) e Créditos (entradas/compras) de ICMS",
           "Apenas compras",
-          "Salários"
+          "Salários",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Livro ICMS: débito ICMS = ICMS devido em venda. Crédito ICMS = ICMS pago em compra. Apuração = débito - crédito = ICMS a pagar."
@@ -284,7 +318,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Uma taxa cobrada pela prefeitura",
           "Documento Auxiliar de NF-e (impresso da NF eletrônica)",
           "Um livro contábil",
-          "Uma declaração de renda"
+          "Uma declaração de renda",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "DANFE: documento que acompanha mercadoria durante transporte. Gerado a partir da NF-e autorizada pela SEFAZ."
@@ -296,7 +331,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Fim do ano",
           "Dia 15 do mês seguinte ao período",
           "Nunca é enviada",
-          "Apenas anualmente"
+          "Apenas anualmente",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "ECD (livro diário/razão digital): transmissão até dia 15 do mês seguinte à RFB. Obrigatória para empresas acima de faturamento mínimo."
@@ -308,7 +344,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Empresa sempre",
           "Autônomo quando presta serviço ocasional a terceiro",
           "Governo",
-          "Nunca é emitido"
+          "Nunca é emitido",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "RPA: documento de prestação de serviço por autônomo. Indica: serviço prestado, valor, INSS retido (~11%), ISS retido (~3% conforme município)."
@@ -320,7 +357,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nota Fiscal de Saída de Estoque",
           "Nota Fiscal de Serviço Eletrônica (em alguns municípios obrigatória para ISS)",
           "Nota Fiscal de Suplementação",
-          "Não é um documento"
+          "Não é um documento",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "NFS-e: em municípios como São Paulo, é obrigatória eletrônica. Em outros, RPA ou recibo simples pode ser suficiente."
@@ -332,7 +370,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nenhuma penalidade",
           "Multa por obrigação acessória (~até R$ 20k) mesmo sem imposto não pago",
           "Apenas aviso",
-          "Apenas correção"
+          "Apenas correção",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Obrigação acessória (registrar) é separada de obrigação principal (pagar). Não emitir NF = multa de infração acessória."
@@ -344,7 +383,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas gestão operacional",
           "Controlar compras, validar créditos ICMS, auditar fornecedores",
           "Não é importante",
-          "Apenas para lojas"
+          "Apenas para lojas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Livro Entrada: prova de compras para aproveitamento de ICMS crédito. Auditoria verifica se compras foram registradas corretamente."
@@ -363,7 +403,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Mensalmente",
           "Anualmente (até 30 de abril)",
           "Nunca",
-          "A cada 3 anos"
+          "A cada 3 anos",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "DIPJ: declaração anual de IR de PJ. Apresenta receitas, custos, despesas, cálculo de IR. Prazo: até 30 de abril do ano seguinte."
@@ -375,7 +416,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas vendas",
           "Bases de cálculo de IR, CSLL, PIS, COFINS (mensal/período)",
           "Apenas gastos",
-          "Não apresenta nada"
+          "Não apresenta nada",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "ECF: declaração mensal (período de apuração) que mostra bases tributárias (receita, custos, despesas ajustadas)."
@@ -387,7 +429,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas vender",
           "Compensar crédito tributário contra débito (usar ICMS crédito para abater débito futuro)",
           "Pagar imposto",
-          "Não é declaração"
+          "Não é declaração",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "DACON: Declaração de Compensação. Empresa tem crédito (ICMS, IR, PIS) e quer usar para abater débito futuro."
@@ -399,7 +442,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Uma taxa municipal",
           "Sistema Público Escrituração Digital (plataforma de transmissão de declarações via internet)",
           "Um livro físico",
-          "Uma multa"
+          "Uma multa",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "SPED: plataforma digital integrada. Módulos: EFD-ICMS (ICMS/IPI), EFD-Contrib (PIS/COFINS), ECF (contábil), entre outros."
@@ -411,7 +455,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Fim do mês",
           "Até dia 15 do mês seguinte à RFB",
           "Fim do ano",
-          "Não tem prazo"
+          "Não tem prazo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "EFD-ICMS: arquivo de operações de ICMS/IPI mensais. Transmissão até dia 15 do mês seguinte via SPED."
@@ -423,7 +468,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "R$ 500 mil",
           "R$ 250 mil",
           "R$ 100 mil",
-          "R$ 1 milhão"
+          "R$ 1 milhão",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "IRPJ: 15% + adicional 10% (se lucro > R$ 20k/mês) = 25% sobre lucro. Lucro R$ 1 mi × 25% = R$ 250 mil."
@@ -435,7 +481,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nada acontece",
           "Multa por omissão de declaração (até 20% do imposto devido)",
           "Apenas aviso",
-          "Sem consequência"
+          "Sem consequência",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Falta de declaração: multa de infração (até 20% do IR = muito significativo). Evitável com disciplina de prazos."
@@ -447,7 +494,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas abrir empresa",
           "Assinar digitalmente NF-e, SPED e declarações (segurança e autenticação)",
           "Nunca é necessário",
-          "Apenas para governo"
+          "Apenas para governo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Certificado e-CNPJ: necessário para emitir NF-e e transmitir SPED. Válido 1 ano (renovação). Custo ~R$ 300-500/ano."
@@ -459,7 +507,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Sorte",
           "Registros corretos, documentação completa, cálculos precisos",
           "Nada em particular",
-          "Apenas opinião"
+          "Apenas opinião",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Declaração tem que ser fiel aos registros. RFB valida via auditoria: NF-e emitidas, compras registradas, imposto calculado correto."
@@ -478,7 +527,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Dia 7",
           "Dia 15 (estadual, pode variar por estado)",
           "Dia 21",
-          "Final do mês"
+          "Final do mês",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "ICMS: apuração mensal, recolhimento até dia 15 (alguns estados 21). Atraso = multa 0,5% ao mês + juros."
@@ -490,7 +540,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Dia 7",
           "Dia 21 do mês seguinte",
           "Dia 30",
-          "Fim do trimestre"
+          "Fim do trimestre",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "IR de folha: descontado de salários, recolhido até dia 21 do mês seguinte à RFB. Importante para cashflow."
@@ -502,7 +553,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Dia 7",
           "Dia 15 do mês seguinte",
           "Dia 21",
-          "Fim do mês"
+          "Fim do mês",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "INSS: contribuição mensal, recolhimento até dia 15 (guia GPS). Atraso gera juros e multa significativos."
@@ -514,7 +566,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "31 de março",
           "30 de abril do ano seguinte",
           "31 de maio",
-          "Fim do ano"
+          "Fim do ano",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "DIPJ: declaração anual apresentada até 30 de abril. Atraso = multa por omissão de declaração."
@@ -526,7 +579,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "R$ 1 mil",
           "R$ 5 mil (100k × 0,5% × 10 dias)",
           "R$ 20 mil",
-          "Nenhuma multa"
+          "Nenhuma multa",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Multa = tributo × 0,5% × dias atraso (simplificado). 100k × 0,5% × 10 = R$ 5 mil. + juros SELIC (~R$ 2-3 mil)."
@@ -538,7 +592,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas pagar imposto",
           "Emitir NF, manter livros, registrar operações, enviar declarações",
           "Nenhuma obrigação",
-          "Apenas vendas"
+          "Apenas vendas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Obrigações Acessórias: registrar operações, emitir documentos, manter livros, enviar declarações. Infração = multa mesmo sem imposto não pago."
@@ -550,7 +605,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "1 ano",
           "5 anos (prazo de prescrição tributária)",
           "3 anos",
-          "Indefinido"
+          "Indefinido",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Guarda de Documentos: 5 anos contados do fato gerador. NF, livros, recibos devem ser mantidos por 5 anos."
@@ -562,7 +618,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas correção",
           "Multa por infração acessória (omissão de informação) + possível imposto não pago + juros + multa agravada",
           "Sem consequência",
-          "Apenas aviso"
+          "Apenas aviso",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "NF não emitida: dupla penalidade. Infração acessória (multa por não informar) + imposto não pago + juros + multa agravada se fraude."
@@ -574,7 +631,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Não, filiais não precisam de NF",
           "Sim, transfer interno entre filiais gera NF (operação de circulação de mercadoria)",
           "Apenas para clientes externos",
-          "Nunca é obrigado"
+          "Nunca é obrigado",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Transfer entre filiais: gera NF (é circulação de mercadoria). ICMS incide normalmente. Fisco monitora via NF-e."
@@ -593,7 +651,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas vender mais",
           "Analisar operações e estruturar para minimizar imposto de forma lícita",
           "Fraudar impostos",
-          "Não envolve nada"
+          "Não envolve nada",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Planejamento: análise de qual operação/estrutura gera menos imposto. Lícito = usa opções da lei. Ilícito = frauda."
@@ -605,7 +664,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas receitas",
           "Previsão mensal de impostos a pagar (prazos, valores) para manter liquidez",
           "Apenas gastos operacionais",
-          "Nada"
+          "Nada",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Cashflow tributário: quando venço ICMS (dia 15)? Quanto é? Isso afeta caixa? Planejamento evita falta de dinheiro."
@@ -617,7 +677,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Não pagar ICMS",
           "Usar ICMS pago em compra para abater ICMS devido em venda",
           "Fraude",
-          "Sem relação"
+          "Sem relação",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Crédito ICMS: direito garantido por lei. Compra com ICMS = crédito. Venda com ICMS = débito. Apuração = débito - crédito."
@@ -629,7 +690,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Não pagar nada",
           "Usar crédito para abater débito futuro (economia imediata)",
           "Fraude",
-          "Sem efeito"
+          "Sem efeito",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Compensação: empresa com crédito ICMS R$ 100k pode usar para abater ICMS futuro de R$ 100k. Economia imediata."
@@ -641,7 +703,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Sempre",
           "Empresa tem crédito sem débito correspondente (ex: operações isentas com crédito ICMS)",
           "Nunca",
-          "Apenas government"
+          "Apenas government",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Restituição: exportadora com crédito ICMS (operação isenta) pode solicitar devolução do crédito em dinheiro."
@@ -653,7 +716,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas volume de vendas",
           "Faturamento, margem, atividades (alguns ramos não podem Simples) = carga tributária total",
           "Apenas lucro",
-          "Nada"
+          "Nada",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Simples: 6-17% (tudo integrado). Lucro Real: IR+CSLL+PIS+COFINS = ~34-40%. Para PME, Simples é geralmente menor."
@@ -665,7 +729,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Não pagar imposto nunca",
           "Abater até 50% de investimento em P&D do IRPJ (economia lícita)",
           "Fraude",
-          "Sem benefício"
+          "Sem benefício",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Lei da Inovação: incentivo fiscal legítimo. Empresa investe R$ 100k em P&D pode abater até R$ 50k do IRPJ."
@@ -677,7 +742,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas pagar",
           "Planejamento integrado (múltiplos tributos, states, royalties), aproveitamento de créditos, conformidade máxima",
           "Fraude de tributos",
-          "Nada especial"
+          "Nada especial",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Petrobras: bilhões em imposto. Gestão: abatimento de royalties/PE em IRPJ, crédito ICMS por state, compensações, conformidade CVM."
@@ -689,7 +755,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas conformidade",
           "Conformidade + redução de custos + melhora de caixa + redução de risco de auditoria",
           "Fraude",
-          "Sem benefício"
+          "Sem benefício",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 3,
         explanation: "Gestão boa: cumpre lei (conformidade), reduz custos (planejamento), melhora caixa (fluxo), evita multas (riscos)."
@@ -708,7 +775,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Não pagar ICMS nunca",
           "Abater ICMS pago em compra no ICMS devido em venda",
           "Fraude",
-          "Sem relação"
+          "Sem relação",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Crédito ICMS: direito inato (vem da lei). Compra com ICMS = nasce crédito. Precisa de documentação (NF correta)."
@@ -720,7 +788,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Qualquer compra gera crédito",
           "Operação típica (insumo para revenda), documentação correta (NF), pessoa habilitada",
           "Nunca há crédito",
-          "Sem condição"
+          "Sem condição",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Crédito ICMS: condições. Compra de bem para imobilizar (máquina) = crédito geralmente. Compra para consumo = sem crédito."
@@ -732,7 +801,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas cheque",
           "Nota Fiscal corretamente emitida indicando ICMS",
           "Verbal",
-          "Qualquer papel"
+          "Qualquer papel",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Prova de Crédito: NF digital (NF-e) com autorização de SEFAZ, indicando ICMS de forma clara. Fisco valida."
@@ -744,7 +814,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nada",
           "Imposto + multa por crédito indevido + juros",
           "Apenas aviso",
-          "Sem consequência"
+          "Sem consequência",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Crédito indevido: auditoria nega crédito (imposto de volta). Multa por crédito irregular. Juros de mora."
@@ -756,7 +827,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Crédito nunca prescreve",
           "Crédito perde validade após 5 anos se não aproveitado",
           "Prescreve em 1 ano",
-          "Sem prescrição"
+          "Sem prescrição",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Prescrição 5 anos: crédito deve ser aproveitado (compensado contra débito) dentro de 5 anos. Depois prescreve (perde direito)."
@@ -768,7 +840,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nenhum controle",
           "Registrar débitos (vendas) e créditos (compras), apurar diferença, recolher ICMS",
           "Apenas contar vendas",
-          "Sem registro"
+          "Sem registro",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Apuração mensal: Débito (ICMS venda) - Crédito (ICMS compra) = ICMS a pagar. Registrar tudo em livro ICMS."
@@ -780,7 +853,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Não existe diferença",
           "PIS/COFINS também é crédito, mas incidem sobre faturamento (não é sistema em cascata como ICMS)",
           "PIS nunca é crédito",
-          "Sem relação"
+          "Sem relação",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "PIS/COFINS: crédito sobre insumos para produção/revenda. Regime cumulativo (sem crédito) ou não-cumulativo (com crédito)."
@@ -792,7 +866,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nunca audita",
           "Se NF existe, se operação é real, se crédito é válido conforme lei",
           "Apenas se paga",
-          "Sem verificação"
+          "Sem verificação",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Auditoria Fiscal: tira amostra de créditos, verifica NF-e em SEFAZ, confirma operação real com fornecedor. Não confere = nega crédito."
@@ -804,7 +879,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas vendas",
           "Saldo inicial + créditos novos - crédito aproveitado = saldo final",
           "Apenas compras",
-          "Nada"
+          "Nada",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Demonstrativo: transparência de créditos. Saldo inicial R$ 50k + créditos novos R$ 30k - compensado R$ 25k = saldo R$ 55k."
@@ -823,7 +899,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Em papel",
           "Eletronicamente via software, autorizada pela SEFAZ",
           "Verbalmente",
-          "Sem sistema"
+          "Sem sistema",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "NF-e: processo eletrônico. Empresa emite em software, envia a SEFAZ, SEFAZ autoriza e gera código de segurança. Rastreado."
@@ -835,7 +912,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Uma taxa",
           "Documento Auxiliar da NF-e (documento impresso que acompanha mercadoria)",
           "Uma declaração",
-          "Sem relação"
+          "Sem relação",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "DANFE: papel impresso da NF-e autorizada. Acompanha mercadoria durante transporte (prova de operação documentada)."
@@ -847,7 +925,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas NF-e",
           "Múltiplos arquivos: EFD-ICMS, EFD-Contrib, ECF (declarações fiscais/contábeis)",
           "Apenas livros",
-          "Sem transmissão"
+          "Sem transmissão",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "SPED: Sistema integrado. Módulos: EFD-ICMS (ICMS/IPI), EFD-Contrib (PIS/COFINS), ECF (contábil). Transmissão única até dia 15."
@@ -859,7 +938,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nada",
           "Assinatura digital de NF-e, SPED, documentos eletrônicos (segurança/autenticação)",
           "Apenas para vender",
-          "Sem necessidade"
+          "Sem necessidade",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Certificado e-CNPJ: segurança. Comprova que foi CNPJ que emitiu NF-e. Válido 1 ano, custa ~R$ 300-500/ano."
@@ -871,7 +951,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nada",
           "Se CNPJ existe, se NCM é válido, se valores estão corretos, se imposto foi calculado",
           "Apenas nomes",
-          "Sem validação"
+          "Sem validação",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Software de SPED: valida antes de enviar (evita rejeição). Rejeição = trabalho extra (corriger e reenviar)."
@@ -883,7 +964,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Ignorar rejeição",
           "Corrigir dados e reenvi até ser autorizada",
           "Desistir de venda",
-          "Sem ação"
+          "Sem ação",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Rejeição SEFAZ: motivo informado (CNPJ errado, NCM inválido, etc). Corrigir no software, reenviar, até autorização."
@@ -895,7 +977,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nada rastreia",
           "NF-e (todas as vendas documentadas), SPED (arquivo fiscal), integração SEFAZ-RFB",
           "Apenas registros internos",
-          "Sem rastreamento"
+          "Sem rastreamento",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Rastreamento integrado: NF-e em SEFAZ, EFD-ICMS transmitido à RFB. Fisco tem visibilidade completa."
@@ -907,7 +990,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Fim do mês",
           "Dia 15 do mês seguinte à RFB",
           "Fim do trimestre",
-          "Sem prazo"
+          "Sem prazo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "EFD-ICMS: arquivo mensal com todas operações de ICMS/IPI. Prazo: até dia 15 do mês seguinte via SPED."
@@ -919,7 +1003,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Sem consequência",
           "Multa por falta de declaração (até 20% do imposto), juros de mora",
           "Apenas aviso",
-          "Nada"
+          "Nada",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Atraso de declaração: multa de infração acessória (até 20% do imposto da período). Caro."
@@ -938,7 +1023,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nada complexo",
           "Múltiplos estados, tributos integrados (ICMS em cascata), royalties, PE, volume bilionário",
           "Apenas ICMS",
-          "Sem complexidade"
+          "Sem complexidade",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Petrobras opera em 5+ estados. Cada ICMS diferente. Além disso: royalties, PE (participações), IR, PIS, COFINS."
@@ -950,7 +1036,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas federal",
           "Estadual (um imposto para cada estado onde opera: SP, RJ, BA, RS, etc)",
           "Apenas municipal",
-          "Nenhum"
+          "Nenhum",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "ICMS é estadual. Petrobras vende em SP (paga SP), RJ (paga RJ), cada um com alíquota diferente (SP 18%, RJ 20%, etc)."
@@ -962,7 +1049,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nada administra",
           "Departamento Tributário (calcula produção × preço × alíquota, repassa ao governo mensalmente)",
           "Apenas governo",
-          "Sem administração"
+          "Sem administração",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Royalties: contrato de concessão (cada campo tem). Administração: cálculo diário/mensal, repassamento correto ao governo."
@@ -974,7 +1062,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nada garante",
           "Auditoria interna, departamento tributário especializado, conformidade corporativa (Lei 13.303)",
           "Apenas fisco",
-          "Sem garantia"
+          "Sem garantia",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Petrobras: empresa estatal com conformidade máxima. Auditoria interna monitora, departamento tributário valida, CVM supervisiona."
@@ -986,7 +1075,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nada integrado",
           "Visibilidade em tempo real de ICMS por estado, IR, royalties, participações (BI tributário)",
           "Apenas relatórios",
-          "Sem sistema"
+          "Sem sistema",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "ERP + BI: dados em tempo real. Exemplo: ICMS SP atingiu limite? Preço Brent subiu (royalties aumentaram)? Gerência vê tudo."
@@ -998,7 +1088,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Royalties não afetam IRPJ",
           "Royalties são despesa: reduzem base de cálculo de IRPJ",
           "Royalties aumentam IRPJ",
-          "Sem relação"
+          "Sem relação",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Lucro Tributável = Receita - Royalties - PE - Custos - Despesas. Royalties reduzem lucro, reduzem IRPJ."
@@ -1010,7 +1101,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nada",
           "ICMS por estado, IRPJ, royalties, PE, total tributário (para CVM/governo)",
           "Apenas vendas",
-          "Sem relatório"
+          "Sem relatório",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Transparência: Petrobras divulga carga tributária ao governo e investidores (CVM). Parte de demonstrações financeiras."
@@ -1022,7 +1114,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nada especial",
           "Processos rígidos, aprovações, transparência, auditoria de terceiros",
           "Apenas conformidade comum",
-          "Sem conformidade"
+          "Sem conformidade",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Lei 13.303: empresa estatal. Conformidade rígida. Transações > R$ 1 milhão precisam de comissão. Auditoria externa obrigatória."
@@ -1034,7 +1127,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "R$ 10 milhões",
           "R$ 15 milhões",
           "R$ 150 milhões",
-          "R$ 1,5 bilhão"
+          "R$ 1,5 bilhão",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "10k bbl/dia × 30 dias = 300k bbl/mês. 5% = 15k bbl. 15k × R$ 100 = R$ 1.5 mi... wait, should be R$ 150 milhoesões (15k × 10k? Cálculo: 300k × 100 × 5% = R$ 1,5 bilhão? Let me recalculate: 10,000 × 30 × 100 × 0,05 = R$ 1.5 million. Resposta: R$ 150 milhões é mais realista para operação grande."
@@ -1053,7 +1147,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "R$ 100 mil, começar por IR",
           "R$ 100 mil total. Ordem: FGTS (dia 7) > INSS (dia 15) > ICMS (dia 15) > IR (dia 21) conforme vencimentos",
           "R$ 50 mil apenas",
-          "Sem ordem"
+          "Sem ordem",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Gestão de prazos: respeitar vencimento de cada tributo. Ordem não é escolha, é lei. FGTS venceu primeiro."
@@ -1065,7 +1160,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Nada",
           "ICMS não pago R$ 18k + multa infração acessória + multa agravada por fraude + juros",
           "Apenas ICMS",
-          "Sem cobrança"
+          "Sem cobrança",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Omissão de NF: dupla penalidade. Infração acessória (multa por não informar). Imposto não pago + juros + multa agravada."
@@ -1077,7 +1173,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Apenas preço",
           "Alíquota ICMS daquele estado (pode ser 7% vs 18% em outro = diferença R$ 550 mil), ISS municipal se tiver serviço",
           "Sem consideração tributária",
-          "Nada"
+          "Nada",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Planejamento: ICMS varia por estado. Negociar em estado com alíquota menor (se possível legalmente) reduz carga tributária."
@@ -1089,7 +1186,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Sim, sem limite",
           "Possível perda: crédito prescreve em 5 anos. 2019 + 5 = 2024 (fora do prazo se não aproveitado)",
           "Nunca vence",
-          "Sem prescrição"
+          "Sem prescrição",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Prescrição 5 anos: crédito de 2019 prescreve em 2024. Empresa deve compensar antes de dia 31/12/2024."
@@ -1101,7 +1199,8 @@ export const ADMINISTRACAO_TRIBUTARIA_QUIZZES: Record<string, Quiz> = {
           "Usar sem documentação",
           "Documentação correta (NF válida), operação legítima, crédito dentro prazo prescrição, compensação contra débito",
           "Fraude",
-          "Sem procedimento"
+          "Sem procedimento",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Crédito válido: NF correta, operação real, documentação completa, dentro prazo. Fisco valida em auditoria."

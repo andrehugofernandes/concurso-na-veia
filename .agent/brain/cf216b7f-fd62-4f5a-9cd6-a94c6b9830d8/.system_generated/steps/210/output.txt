@@ -1,0 +1,205 @@
+### GenerationConfig.responseMimeType Property API Definition and Type Signature
+
+Source: https://github.com/google-gemini/deprecated-generative-ai-js/blob/main/docs/reference/main/generative-ai.generationconfig.responsemimetype.md
+
+This snippet provides the API documentation and TypeScript type signature for the `responseMimeType` property, which is part of the `GenerationConfig` interface in the `@google/generative-ai` library. It specifies the expected MIME type for the generated model output.
+
+```APIDOC
+GenerationConfig:
+  properties:
+    responseMimeType:
+      type: string
+      optional: true
+      description: Output response mimetype of the generated candidate text.
+      supported_mimetypes:
+        - text/plain (default): Text output.
+        - application/json: JSON response in the candidates.
+```
+
+```TypeScript
+responseMimeType?: string;
+```
+
+--------------------------------
+
+### Process Text and Images with Generative AI in JavaScript
+
+Source: https://github.com/google-gemini/deprecated-generative-ai-js/blob/main/samples/web/index.html
+
+This snippet showcases a full client-side implementation for sending text prompts and image files to a Generative AI model (gemini-1.5-flash) and processing its streamed response. It includes utilities for converting files to a Generative Part format, updating the UI with results, and managing image previews from file inputs. The code sets up event listeners for file selection and form submission to trigger the AI interaction.
+
+```JavaScript
+import { getGenerativeModel, fileToGenerativePart, updateUI, } from "./utils/shared.js";
+
+async function run(prompt, files) {
+  const imageParts = await Promise.all(
+    [...files].map(fileToGenerativePart),
+  );
+  const model = await getGenerativeModel({ model: "gemini-1.5-flash", });
+  return model.generateContentStream([...imageParts, prompt]);
+}
+
+const fileInputEl = document.querySelector("input[type=file]");
+const thumbnailsEl = document.querySelector("#thumbnails");
+
+fileInputEl.addEventListener("input", () => {
+  thumbnailsEl.innerHTML = "";
+  for (const file of fileInputEl.files) {
+    const url = URL.createObjectURL(file);
+    thumbnailsEl.innerHTML += `<img class="thumb" src="${url}" onload="window.URL.revokeObjectURL(this.src)" />`;
+  }
+});
+
+document
+  .querySelector("#form")
+  .addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const promptEl = document.querySelector("#prompt");
+    const resultEl = document.querySelector("#result");
+    updateUI(
+      resultEl,
+      () => run(promptEl.value, fileInputEl.files),
+      true,
+    );
+  });
+```
+
+--------------------------------
+
+### Example Gemini API Function Call Response Payload
+
+Source: https://github.com/google-gemini/deprecated-generative-ai-js/blob/main/test-utils/mock-responses/streaming-success-function-call-short.txt
+
+This snippet displays a complete JSON response received from the Google Gemini API. It highlights the `functionCall` object, which specifies a tool call (e.g., `getTemperature` with `city: San Jose`), embedded within the `candidates.content.parts` array. The response also includes metadata such as `finishReason`, `index`, `safetyRatings`, and `promptFeedback`.
+
+```JSON
+{"candidates": [{"content": {"parts": [{ "functionCall": { "name": "getTemperature", "args": { "city": "San Jose" } } }]}, "finishReason": "STOP","index": 0,"safetyRatings": [{"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT","probability": "NEGLIGIBLE"},{"category": "HARM_CATEGORY_HATE_SPEECH","probability": "NEGLIGIBLE"},{"category": "HARM_CATEGORY_HARASSMENT","probability": "NEGLIGIBLE"},{"category": "HARM_CATEGORY_DANGEROUS_CONTENT","probability": "NEGLIGIBLE"}]}],"promptFeedback": {"safetyRatings": [{"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT","probability": "NEGLIGIBLE"},{"category": "HARM_CATEGORY_HATE_SPEECH","probability": "NEGLIGIBLE"},{"category": "HARM_CATEGORY_HARASSMENT","probability": "NEGLIGIBLE"},{"category": "HARM_CATEGORY_DANGEROUS_CONTENT","probability": "NEGLIGIBLE"}]}}
+```
+
+--------------------------------
+
+### Example Gemini API Text Generation Response
+
+Source: https://github.com/google-gemini/deprecated-generative-ai-js/blob/main/test-utils/mock-responses/streaming-success-basic-reply-short.txt
+
+This JSON snippet provides a concrete example of the data structure returned by the Google Gemini API after a text generation request. It shows how candidate content, finish reasons, and safety ratings are structured within the response, along with safety feedback for the prompt itself.
+
+```JSON
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Cheyenne"
+          }
+        ]
+      },
+      "finishReason": "STOP",
+      "index": 0,
+      "safetyRatings": [
+        {
+          "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+          "probability": "NEGLIGIBLE"
+        },
+        {
+          "category": "HARM_CATEGORY_HATE_SPEECH",
+          "probability": "NEGLIGIBLE"
+        },
+        {
+          "category": "HARM_CATEGORY_HARASSMENT",
+          "probability": "NEGLIGIBLE"
+        },
+        {
+          "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+          "probability": "NEGLIGIBLE"
+        }
+      ]
+    }
+  ],
+  "promptFeedback": {
+    "safetyRatings": [
+      {
+        "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+        "probability": "NEGLIGIBLE"
+      },
+      {
+        "category": "HARM_CATEGORY_HATE_SPEECH",
+        "probability": "NEGLIGIBLE"
+      },
+      {
+        "category": "HARM_CATEGORY_HARASSMENT",
+        "probability": "NEGLIGIBLE"
+      },
+      {
+        "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+        "probability": "NEGLIGIBLE"
+      }
+    ]
+  }
+}
+```
+
+--------------------------------
+
+### Google Gemini API Safety Rating JSON Response Structure
+
+Source: https://github.com/google-gemini/deprecated-generative-ai-js/blob/main/test-utils/mock-responses/streaming-failure-finish-reason-safety.txt
+
+This JSON object illustrates the structure of a response from the Google Gemini API, including `candidates` with `content` and `safetyRatings`, and `promptFeedback` with its own `safetyRatings`. It shows how safety categories like HARM_CATEGORY_HATE_SPEECH and their probabilities (e.g., HIGH, NEGLIGIBLE) are reported for both generated content and the input prompt.
+
+```JSON
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "No"
+          }
+        ]
+      },
+      "finishReason": "SAFETY",
+      "index": 0,
+      "safetyRatings": [
+        {
+          "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+          "probability": "NEGLIGIBLE"
+        },
+        {
+          "category": "HARM_CATEGORY_HATE_SPEECH",
+          "probability": "HIGH"
+        },
+        {
+          "category": "HARM_CATEGORY_HARASSMENT",
+          "probability": "NEGLIGIBLE"
+        },
+        {
+          "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+          "probability": "NEGLIGIBLE"
+        }
+      ]
+    }
+  ],
+  "promptFeedback": {
+    "safetyRatings": [
+      {
+        "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+        "probability": "NEGLIGIBLE"
+      },
+      {
+        "category": "HARM_CATEGORY_HATE_SPEECH",
+        "probability": "NEGLIGIBLE"
+      },
+      {
+        "category": "HARM_CATEGORY_HARASSMENT",
+        "probability": "NEGLIGIBLE"
+      },
+      {
+        "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+        "probability": "NEGLIGIBLE"
+      }
+    ]
+  }
+}
+```

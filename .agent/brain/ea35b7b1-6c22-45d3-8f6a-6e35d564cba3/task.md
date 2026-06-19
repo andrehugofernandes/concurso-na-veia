@@ -1,0 +1,23 @@
+# Projeto PMAVV - Plano de Trabalho
+
+- [/] Planejamento e Refinamento de Fluxo
+    - [ ] Analisar padrão Dashboard-Core (/posts)
+    - [ ] Mapear telas em `source/telas`
+    - [ ] Atualizar `PMAVV_PRD.md` com novo padrão de fluxo (Modais/Cards)
+    - [ ] Criar `implementation_plan.md` e validar com usuário
+- [ ] Base de Componentes PMAVV
+    - [ ] Criar `ModulePageHeader` genérico (Título + Botão Novo)
+    - [ ] Criar `ModuleModalForm` base (Dialog wrapper)
+    - [ ] Implementar `MultiSelectBadges` (conforme PRD)
+- [ ] Implementação de Módulos (Seguindo novo padrão)
+    - [ ] Módulo Regionais (CRUD em Modal)
+    - [ ] Módulo Bairros (CRUD em Modal)
+    - [ ] Módulo Usuários (CRUD em Modal)
+- [ ] Fluxos Complexos (Search-First + Modais)
+    - [ ] Módulo Denúncia (Wizard em Modal ou Página dedicada se muito longo)
+    - [ ] Módulo Vítima
+    - [ ] Módulo Visitas
+- [ ] Extração e Documentos
+    - [ ] Consultas (Listagem + Filtros + Export)
+    - [ ] Relatórios (Recharts)
+    - [ ] Encaminhamentos/Ofícios (Forms + PDF)

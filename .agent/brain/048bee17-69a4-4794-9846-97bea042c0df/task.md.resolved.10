@@ -1,0 +1,35 @@
+# Task: Refatoração Completa do Formulário de Denúncias
+
+## Fase 1: Análise e Planejamento
+- [x] Analisar todas as 6 telas do ScriptCase (fluxo sequencial)
+- [x] Mapear campos do schema Prisma (Denúncia + Vítima + Agressor + Denunciante)
+- [x] Comparar valores de referência (Órgãos, Violência, Classificação)
+- [x] Criar plano de implementação detalhado
+- [ ] Obter aprovação do plano pelo usuário
+
+## Fase 2: Componentes Base
+- [ ] Criar `wizard-stepper.tsx` (componente de progresso visual)
+- [ ] Implementar `generateProtocolo()` no server action
+- [ ] Alinhar listas de valores (Órgãos, Violência, Classificação) com o banco
+
+## Fase 3: Wizard Steps
+- [ ] Step 1: Refatorar [denuncia-form.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-form.tsx) (campos + multi-checks + condicionais)
+- [ ] Step 2: Criar `denuncia-wizard-vitima.tsx` (lista dinâmica)
+- [ ] Step 3: Criar `denuncia-wizard-agressor.tsx` (condicional)
+- [ ] Step 4: Criar `denuncia-wizard-denunciante.tsx` (condicional)
+
+## Fase 4: Orquestração
+- [ ] Refatorar [denuncia-form-modal.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-form-modal.tsx) (wizard com useReducer)
+- [ ] Implementar persistência por step (cada step salva no banco)
+- [ ] Implementar lógica de skip para steps condicionais
+
+## Fase 5: DataTable com Tabs
+- [ ] Criar `tabbed-data-table.tsx` (wrapper com tabs de colunas)
+- [ ] Refatorar [denuncia-table.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-table.tsx) (4 grupos de colunas)
+- [ ] Atualizar [denuncias-actions.ts](file:///c:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/denuncias-actions.ts) (include Prisma enriquecido)
+
+## Fase 6: Verificação
+- [ ] Type-check (`tsc --noEmit`)
+- [ ] Testar fluxo completo (cadastro → protocolo → consulta)
+- [ ] Testar fluxo condicional (sem agressor / sem denunciante)
+- [ ] Commit e push

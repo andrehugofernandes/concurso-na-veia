@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Upgrade total do componente AulaClassesPalavras.tsx para o padrão ULTIMATE, corrigindo textos para text-lg, adicionando text-justify e sincronizando os 10 gradientes de módulos.",
+  "updatedAt": "2026-03-29T14:18:44.100788800Z",
+  "requestFeedback": true
+}

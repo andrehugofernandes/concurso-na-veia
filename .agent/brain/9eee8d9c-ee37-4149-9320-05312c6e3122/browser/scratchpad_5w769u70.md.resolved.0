@@ -1,0 +1,14 @@
+# Tarefa de Verificação: Aula Reescrita de Frases
+
+## Plano de Ação
+- [ ] Abrir http://localhost:3000/aulas/portugues/reescrita-frases
+- [ ] Verificar se a página carrega sem erros críticos
+- [ ] Verificar logs do console
+- [ ] Capturar screenshot do primeiro módulo
+- [ ] Confirmar o uso de `CardCarousel` e a ausência de `ContentAccordion`
+- [ ] Relatar status final
+
+## Observações
+- A aula passou por uma refatoração massiva de `ContentAccordion` para `CardCarousel`.
+- O import de `ContentAccordion` foi removido.
+- O objetivo é garantir que nada quebrou.

@@ -1,0 +1,5 @@
+- [ ] Adicionar suporte a `showCompletionBadge` e `completionBadgeText` no `AulaTemplate` em `shared.tsx`
+- [ ] Restaurar props no `AulaVocabulary.tsx`
+- [ ] Validar tipos com `tsc`
+- [ ] Commitar correções
+- [ ] Tentar `git push` (com correções de buffer se necessário)

@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plano para resolver erro de TypeScript no AulaTemplate e realizar o push solicitado. O plano inclui a adição de suporte a selos de conclusão personalizados no template compartilhado e a tentativa de superar a falha de conexão no push.",
+  "updatedAt": "2026-03-29T11:22:11.204481800Z",
+  "requestFeedback": true
+}

@@ -381,12 +381,12 @@ export default function AulaEquacoes2Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="As raízes de x² - 7x + 12 = 0 são:"
           alternativas={[
-              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+            { letra: "A", texto: "x = 3 e x = 4", correta: true },
               { letra: "B", texto: "x = -3 e x = -4", correta: false },
               { letra: "C", texto: "x = 2 e x = 6", correta: false },
               { letra: "D", texto: "x = -2 e x = -6", correta: false },
               { letra: "E", texto: "x = 1 e x = 12", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
@@ -657,12 +657,12 @@ export default function AulaEquacoes2Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="As raízes de x² - 7x + 12 = 0 são:"
           alternativas={[
-              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+            { letra: "A", texto: "x = 3 e x = 4", correta: true },
               { letra: "B", texto: "x = -3 e x = -4", correta: false },
               { letra: "C", texto: "x = 2 e x = 6", correta: false },
               { letra: "D", texto: "x = -2 e x = -6", correta: false },
               { letra: "E", texto: "x = 1 e x = 12", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
@@ -899,12 +899,12 @@ export default function AulaEquacoes2Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="As raízes de x² - 7x + 12 = 0 são:"
           alternativas={[
-              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+            { letra: "A", texto: "x = 3 e x = 4", correta: true },
               { letra: "B", texto: "x = -3 e x = -4", correta: false },
               { letra: "C", texto: "x = 2 e x = 6", correta: false },
               { letra: "D", texto: "x = -2 e x = -6", correta: false },
               { letra: "E", texto: "x = 1 e x = 12", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
@@ -1142,12 +1142,12 @@ export default function AulaEquacoes2Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="As raízes de x² - 7x + 12 = 0 são:"
           alternativas={[
-              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+            { letra: "A", texto: "x = 3 e x = 4", correta: true },
               { letra: "B", texto: "x = -3 e x = -4", correta: false },
               { letra: "C", texto: "x = 2 e x = 6", correta: false },
               { letra: "D", texto: "x = -2 e x = -6", correta: false },
               { letra: "E", texto: "x = 1 e x = 12", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
@@ -1323,12 +1323,12 @@ export default function AulaEquacoes2Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="As raízes de x² - 7x + 12 = 0 são:"
           alternativas={[
-              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+            { letra: "A", texto: "x = 3 e x = 4", correta: true },
               { letra: "B", texto: "x = -3 e x = -4", correta: false },
               { letra: "C", texto: "x = 2 e x = 6", correta: false },
               { letra: "D", texto: "x = -2 e x = -6", correta: false },
               { letra: "E", texto: "x = 1 e x = 12", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
@@ -1532,12 +1532,12 @@ export default function AulaEquacoes2Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="As raízes de x² - 7x + 12 = 0 são:"
           alternativas={[
-              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+            { letra: "A", texto: "x = 3 e x = 4", correta: true },
               { letra: "B", texto: "x = -3 e x = -4", correta: false },
               { letra: "C", texto: "x = 2 e x = 6", correta: false },
               { letra: "D", texto: "x = -2 e x = -6", correta: false },
               { letra: "E", texto: "x = 1 e x = 12", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
@@ -1753,12 +1753,12 @@ export default function AulaEquacoes2Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="As raízes de x² - 7x + 12 = 0 são:"
           alternativas={[
-              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+            { letra: "A", texto: "x = 3 e x = 4", correta: true },
               { letra: "B", texto: "x = -3 e x = -4", correta: false },
               { letra: "C", texto: "x = 2 e x = 6", correta: false },
               { letra: "D", texto: "x = -2 e x = -6", correta: false },
               { letra: "E", texto: "x = 1 e x = 12", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
@@ -1970,12 +1970,12 @@ export default function AulaEquacoes2Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="As raízes de x² - 7x + 12 = 0 são:"
           alternativas={[
-              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+            { letra: "A", texto: "x = 3 e x = 4", correta: true },
               { letra: "B", texto: "x = -3 e x = -4", correta: false },
               { letra: "C", texto: "x = 2 e x = 6", correta: false },
               { letra: "D", texto: "x = -2 e x = -6", correta: false },
               { letra: "E", texto: "x = 1 e x = 12", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
@@ -2188,12 +2188,12 @@ export default function AulaEquacoes2Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="As raízes de x² - 7x + 12 = 0 são:"
           alternativas={[
-              { letra: "A", texto: "x = 3 e x = 4", correta: true },
+            { letra: "A", texto: "x = 3 e x = 4", correta: true },
               { letra: "B", texto: "x = -3 e x = -4", correta: false },
               { letra: "C", texto: "x = 2 e x = 6", correta: false },
               { letra: "D", texto: "x = -2 e x = -6", correta: false },
               { letra: "E", texto: "x = 1 e x = 12", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação por Soma e Produto: S = 3+4 = 7 = -b/a ✓, P = 3×4 = 12 = c/a ✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Δ = 49 - 48 = 1." },
@@ -2301,17 +2301,16 @@ export default function AulaEquacoes2Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolvendo x² + x - 20 = 0 pela fórmula de Bhaskara:"
           alternativas={[
-            { label: "A", valor: "x = 4 e x = -5" },
-                { label: "B", valor: "x = 5 e x = -4" },
-                { label: "C", valor: "x = -4 e x = -5" },
-                { label: "D", valor: "x = 4 e x = 5" },
-                { label: "E", valor: "Nenhuma solução real" }
+            { letra: "A", texto: "x = 4 e x = -5", correta: true },
+                { letra: "B", texto: "x = 5 e x = -4", correta: false },
+                { letra: "C", texto: "x = -4 e x = -5", correta: false },
+                { letra: "D", texto: "x = 4 e x = 5", correta: false },
+                { letra: "E", texto: "Nenhuma solução real", correta: false }
           ]}
-          correta="A"
           passos={[
-            "Δ = 1 + 80 = 81 = 9².",
-            "x = (-1±9)/2.",
-            "x₁ = 4, x₂ = -5. Verificação: 4+(-5)=-1=-b/a ✓, 4×(-5)=-20=c/a ✓."
+            { titulo: "Passo 1", conteudo: "Δ = 1 + 80 = 81 = 9²." },
+            { titulo: "Passo 2", conteudo: "x = (-1±9)/2." },
+            { titulo: "Passo 3", conteudo: "x₁ = 4, x₂ = -5. Verificação: 4+(-5)=-1=-b/a ✓, 4×(-5)=-20=c/a ✓." }
           ]}
         />
         <QuizInterativo

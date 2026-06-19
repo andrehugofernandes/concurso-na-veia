@@ -1,0 +1,31 @@
+# Walkthrough: Refatoração do Fluxo de Denúncias PMAVV
+
+Concluí a migração completa do sistema legado de denúncias para uma arquitetura Next.js de alta performance e UX premium.
+
+## Entregas Principais
+
+### 1. Wizard de Denúncias (4 Steps)
+Fluxo guia sequencial no formato side-sheet modal:
+- **Step 1: Denúncia**: Geração imediata de protocolo `{ID}/{AA}`.
+- **Step 2: Vítimas**: Lista dinâmica com autocompletar de bairros e regionais.
+- **Step 3: Agressor**: Identificação opcional via toggle.
+- **Step 4: Denunciante**: Registro de dados do reportante.
+
+### 2. Tabbed DataTable
+Organização de +40 campos em abas temáticas (Denúncia | Vítimas | Agressores | Denunciante).
+- **Sticky Columns**: Protocolo e Ações permanecem fixos durante o scroll horizontal.
+- **Data relations**: Carregamento otimizado com Prisma `include` para evitar N+1 queries.
+
+## Bug Fixes e Estabilização (Post-Mortem)
+Durante a implementação, resolvi problemas críticos que afetavam o build:
+- **Client/Server boundary**: Helpers de multi-select movidos para utilitários independentes ([src/lib/multi-select.ts](file:///c:/GSW/PMAVV/PMAVV/src/lib/multi-select.ts)) para evitar erros de RPC.
+- **Resolução de Hooks**: Removi o componente experimental `<Activity>`, garantindo que o Modal funcione de forma estável e performática.
+
+## Verificação Técnica
+- [x] Geração de protocolo funcional.
+- [x] Persistência sequencial garantida.
+- [x] Tipagem TypeScript rigorosa em 100% dos novos componentes.
+- [x] Build limpo no Next.js.
+
+> [!IMPORTANT]
+> A UI está preparada para a futura normalização M:N do banco de dados, trabalhando nativamente com coleções.

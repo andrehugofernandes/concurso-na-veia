@@ -1,0 +1,274 @@
+# 🧠 Brainstorm: Reestruturação do Banco de Dados PMAVV
+
+🤖 **Aplicando conhecimento de `@database-architect` + `@performance-optimizer`**
+
+---
+
+## Contexto
+
+O banco de dados PMAVV é um PostgreSQL legado, originalmente modelado pelo **Scriptcase** (low-code), com 13 tabelas que gerenciam denúncias, vítimas, agressores, visitas e encaminhamentos de violência doméstica.
+
+### Problemas Diagnosticados
+
+| # | Anti-Pattern | Onde | Impacto |
+|---|-------------|------|---------|
+| 1 | **Campos multi-select como string** com separador `;` | `form_violencia`, `tipo_encaminhamento`, `parentesco_vitima`, `classificacao`, `encaminhamento` | Impossível indexar, filtrar ou agregar corretamente |
+| 2 | **Tudo é `VarChar(255)`** | Praticamente todos os campos de texto | Desperdício de storage, sem validação de domínio |
+| 3 | **Ausência de ENUMs** | Campos com domínios fixos (sim/não, status, níveis) | Dados inconsistentes, sem integridade referencial |
+| 4 | **Tabelas `_check` como auditoria artesanal** | `tbl_denuncia_check`, `tbl_vitima_check`, `tbl_encaminhamento_check` | Design frágil, sem padrão, sem trigger automático |
+| 5 | **Duplicação de colunas Visita ↔ HistoricoVisita** | `tbl_visita` vs `tbl_historico_visita` | Cópia manual de colunas, propensa a dessincronização |
+| 6 | **Campo `outro_*` como workaround** | `outro_parentesco`, `outra_forma_violencia`, `outros_encaminhamentos` | Campos livres que circundam a falta de normalização |
+| 7 | **Erros de nomenclatura** | `tbl_denuciante` (denunciante), `ptinente_trabalho_avv`, `motv_n_localizacao` | Dificulta manutenção e onboarding |
+| 8 | **Nullable em tudo** | Quase todos os campos são `String?` | Zero enforcement de dados obrigatórios |
+| 9 | **Sem índice composto** | Buscas por `denuncia_id + data` são frequentes mas sem índice | Full table scans desnecessários |
+| 10 | **FK ausente em `HistoricoVisita.denuncia_id`** | `denuncia_id` sem foreign key | Integridade referencial quebrada |
+
+---
+
+## Option A: Normalização Incremental (com Views de Compatibilidade)
+
+Reestruturar o banco **gradualmente**, criando tabelas normalizadas em paralelo e usando **views** para manter compatibilidade com o Scriptcase e o frontend Next.js durante a migração.
+
+### Etapas
+
+```
+Fase 1: Criar tabelas de domínio (enums como tabelas)
+  → tbl_tipo_violencia, tbl_tipo_encaminhamento, tbl_tipo_parentesco
+  
+Fase 2: Criar tabelas associativas (M:N)
+  → tbl_denuncia_violencia (denuncia_id, tipo_violencia_id)
+  → tbl_denuncia_encaminhamento (denuncia_id, tipo_encaminhamento_id)
+  
+Fase 3: Migrar dados existentes (split ";" → INSERT nas novas tabelas)
+
+Fase 4: Criar VIEWS que recriam o formato antigo "PSICOLÓGICA;FÍSICA"
+  → v_denuncia_compat → SELECT com STRING_AGG
+
+Fase 5: Apontar o Scriptcase para as views (read-only)
+
+Fase 6: Migrar o Next.js para queries normalizadas
+
+Fase 7: Deprecar e remover campos antigos
+```
+
+### Schema Proposto (Fase 1-2)
+
+```sql
+-- Tabelas de domínio
+CREATE TABLE tipo_violencia (
+  id    SERIAL PRIMARY KEY,
+  nome  VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE tipo_encaminhamento (
+  id    SERIAL PRIMARY KEY,
+  nome  VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE tipo_parentesco (
+  id    SERIAL PRIMARY KEY,
+  nome  VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- Tabelas associativas
+CREATE TABLE denuncia_violencia (
+  denuncia_id       INT NOT NULL REFERENCES tbl_denuncia(id),
+  tipo_violencia_id INT NOT NULL REFERENCES tipo_violencia(id),
+  PRIMARY KEY (denuncia_id, tipo_violencia_id)
+);
+
+-- View de compatibilidade
+CREATE VIEW v_denuncia_form_violencia AS
+SELECT 
+  d.id,
+  STRING_AGG(tv.nome, ';' ORDER BY tv.nome) AS form_violencia
+FROM tbl_denuncia d
+LEFT JOIN denuncia_violencia dv ON d.id = dv.denuncia_id
+LEFT JOIN tipo_violencia tv ON dv.tipo_violencia_id = tv.id
+GROUP BY d.id;
+```
+
+✅ **Prós:**
+- Zero perda de dados — migração com rollback total
+- Scriptcase continua funcionando via views
+- Cada fase é testável e reversível
+- O Next.js migra gradualmente
+- Performance de queries melhora imediatamente com JOINs indexados
+- Possibilita filtros e agregações corretas (dashboard by tipo_violencia)
+
+❌ **Contras:**
+- Mais trabalhoso (7 fases)
+- Views podem ter performance inferior se Scriptcase fizer queries complexas sobre elas
+- Precisa manter dois caminhos (legado + normalizado) durante a transição
+
+📊 **Esforço:** Médio-Alto (cada fase ~2-4h, total ~20-30h)
+
+---
+
+## Option B: PostgreSQL Arrays + ENUMs (Modernização Sem Tabelas Extras)
+
+Usar **recursos nativos do PostgreSQL** para substituir as strings com `;` sem criar tabelas associativas. Converter os campos multi-select para `TEXT[]` (arrays) e os domínios fixos para `ENUMs`.
+
+### Schema Proposto
+
+```sql
+-- ENUMs para domínios fixos
+CREATE TYPE tipo_violencia_enum AS ENUM (
+  'PSICOLÓGICA', 'NEGLIGÊNCIA', 'FÍSICA', 'SEXUAL', 
+  'FINANCEIRA', 'INSTITUCIONAL', 'AUTOPROVOCADA'
+);
+
+CREATE TYPE tipo_parentesco_enum AS ENUM (
+  'FILHO(A)', 'NETO(A)', 'ESPOSO(A)/COMPANHEIRO(A)',
+  'VIZINHO(A)', 'CUIDADOR(A)', 'DESCONHECIDO(A)'
+);
+
+-- Migração de coluna
+ALTER TABLE tbl_denuncia
+  ADD COLUMN form_violencia_new tipo_violencia_enum[];
+
+-- Migração de dados
+UPDATE tbl_denuncia 
+SET form_violencia_new = string_to_array(form_violencia, ';')::tipo_violencia_enum[];
+
+-- Índice GIN para busca em arrays
+CREATE INDEX idx_denuncia_violencia ON tbl_denuncia USING GIN (form_violencia_new);
+```
+
+✅ **Prós:**
+- Sem tabelas extras — schema mais enxuto
+- Tipo de dado validado pelo banco (enum rejeita valores inválidos)
+- Índice GIN permite buscas `@>` ("contém") extremamente rápidas
+- Migração mais simples (ADD COLUMN + UPDATE + DROP COLUMN)
+- PostgreSQL nativo — sem overhead de JOINs
+
+❌ **Contras:**
+- O Prisma tem **suporte limitado** a arrays de enums (precisa de raw queries ou extensão)
+- ENUMs são **imutáveis** em nome (é necessário `ALTER TYPE ... ADD VALUE` para novos valores)
+- O Scriptcase pode **não entender** arrays nativos do PostgreSQL
+- Menos flexível que tabelas normalizadas se precisar adicionar metadados (ex: data de cada tipo de violência)
+
+📊 **Esforço:** Médio (total ~10-15h)
+
+---
+
+## Option C: Schema Dual — Normalizado para Next.js, Views Materializadas para Scriptcase
+
+Criar um schema **totalmente normalizado** para o Next.js e **views materializadas** que espelham o formato original para o Scriptcase continuar operando inalterado.
+
+### Arquitetura
+
+```
+                   ┌──────────────────────┐
+                   │  PostgreSQL          │
+                   │                      │
+  Next.js ────────►│  Schema Normalizado  │◄── JOINs otimizados
+                   │  (tabelas reais)     │
+                   │                      │
+                   │  ┌──────────────┐    │
+  Scriptcase ─────►│  │ Materialized │    │◄── Refresh periódico
+                   │  │ Views        │    │
+                   │  │ (formato ;)  │    │
+                   │  └──────────────┘    │
+                   └──────────────────────┘
+```
+
+### Adicional: Auditoria Modernizada
+
+```sql
+-- Substituir tabelas _check por trigger genérico
+CREATE TABLE audit_log (
+  id          SERIAL PRIMARY KEY,
+  tabela      VARCHAR(50) NOT NULL,
+  registro_id INT NOT NULL,
+  operacao    VARCHAR(10) NOT NULL, -- INSERT, UPDATE, DELETE
+  dados_antes JSONB,
+  dados_depois JSONB,
+  usuario_id  INT,
+  ip          INET,
+  timestamp   TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE OR REPLACE FUNCTION audit_trigger() RETURNS TRIGGER AS $$
+BEGIN
+  INSERT INTO audit_log (tabela, registro_id, operacao, dados_antes, dados_depois, usuario_id)
+  VALUES (
+    TG_TABLE_NAME,
+    COALESCE(NEW.id, OLD.id),
+    TG_OP,
+    CASE WHEN TG_OP != 'INSERT' THEN row_to_json(OLD) END,
+    CASE WHEN TG_OP != 'DELETE' THEN row_to_json(NEW) END,
+    current_setting('app.user_id', true)::INT
+  );
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+✅ **Prós:**
+- **Melhor solução técnica** — normalização total + compatibilidade total
+- Views materializadas são performáticas para o Scriptcase (snapshot)
+- Auditoria via trigger substitui as 3 tabelas `_check` por 1 solução genérica
+- O Next.js opera com schema limpo e rápido
+- Permite evolução futura sem restrições do legado
+
+❌ **Contras:**
+- **Maior esforço** de implementação
+- Views materializadas precisam de `REFRESH` periódico (ou trigger on-change)
+- Se o Scriptcase fizer `INSERT/UPDATE` pelas views, precisa de `INSTEAD OF` triggers
+- Complexidade operacional com dois "paradigmas" rodando em paralelo
+
+📊 **Esforço:** Alto (total ~35-50h)
+
+---
+
+## Análise Comparativa de Performance
+
+| Cenário | Atual (`;` string) | Opção A (Tabelas N:M) | Opção B (Arrays) | Opção C (Normalizado + MV) |
+|---------|---------------------|----------------------|------------------|---------------------------|
+| Buscar denúncias por tipo violência | `LIKE '%FÍSICA%'` (full scan) | JOIN indexado | `@> ARRAY['FÍSICA']` (GIN index) | JOIN indexado |
+| Agregar por tipo violência (dashboard) | Impossível corretamente | `GROUP BY` nativo | `unnest()` + GROUP BY | `GROUP BY` nativo |
+| Adicionar novo tipo | INSERT string (sem validação) | INSERT na tabela domínio | `ALTER TYPE ADD VALUE` | INSERT na tabela domínio |
+| Compatibilidade Scriptcase | ✅ Nativa | ✅ Via views | ⚠️ Limitada | ✅ Via materialized views |
+| Compatibilidade Prisma | ✅ Nativa | ✅ Nativa | ⚠️ Limitada (raw queries) | ✅ Nativa |
+| Tempo de migração | — | ~20-30h | ~10-15h | ~35-50h |
+
+---
+
+## 💡 Recomendação
+
+**Opção A: Normalização Incremental** — porque:
+
+1. **Risco zero** — cada fase é reversível e testável independentemente
+2. **Compatibilidade** — Scriptcase e Next.js coexistem durante toda a migração
+3. **Pragmatismo** — resolve os problemas mais críticos (multi-select, integridade, performance) sem a complexidade de materialized views
+4. **Evolução** — depois da Opção A estar estável, pode-se adicionar a auditoria da Opção C como fase bônus
+
+### Ordem de Prioridade de Migração
+
+| Prioridade | Campo | Tabela Nova | Impacto |
+|-----------|-------|-------------|---------|
+| 🔴 P1 | `form_violencia` | `tipo_violencia` + `denuncia_violencia` | Dashboard + Filtros + Relatórios |
+| 🔴 P1 | `tipo_encaminhamento` | `tipo_encaminhamento` + `encaminhamento_tipo` | Rastreabilidade |
+| 🟡 P2 | `parentesco_vitima` | `tipo_parentesco` | Categorização |
+| 🟡 P2 | `classificacao` (vitima) | `tipo_classificacao` | Filtros |
+| 🟢 P3 | Tabelas `_check` | `audit_log` (genérica) | Manutenibilidade |
+| 🟢 P3 | `HistoricoVisita` duplicação | Eliminar campos duplicados | Schema limpo |
+
+---
+
+## Perguntas para Decidir
+
+1. **O Scriptcase ainda será usado para escrita/inserção de dados, ou só consulta?**
+   - Se só consulta → Opção A é perfeita
+   - Se escreve → Precisamos de `INSTEAD OF` triggers nas views
+
+2. **O dashboard precisa de métricas em tempo real ou batch periódico é aceitável?**
+   - Tempo real → Opção A (views normais)
+   - Batch → Opção C ganha vantagem com materialized views
+
+3. **Quantos registros existem hoje no banco?**
+   - < 10k → O ganho de performance é mais de integridade que de velocidade
+   - > 100k → A normalização tem impacto real em performance de queries
+
+Qual direção gostaria de explorar?

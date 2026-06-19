@@ -132,13 +132,15 @@ export function getRandomQuestions(
 export function AlertBox({
   tipo,
   titulo,
+  descricao,
   className,
   children,
 }: {
   tipo: "info" | "warning" | "danger" | "success";
   titulo: string;
+  descricao?: string | React.ReactNode;
   className?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }) {
   const styles: Record<string, { bg: string; border: string; icon: string }> = {
     info: { bg: "bg-blue-500/10", border: "border-blue-500", icon: "💡" },
@@ -158,15 +160,14 @@ export function AlertBox({
         className,
       )}
     >
-      <div className="flex gap-3 items-start">
+      <div className="flex gap-4 items-start">
         <span className="text-2xl">{s.icon}</span>
-        <div>
-          <strong className="text-foreground block mb-2 text-lg">
+        <div className="space-y-2 flex-1">
+          <strong className="text-foreground block text-lg leading-tight">
             {titulo}
           </strong>
-          <div className="text-muted-foreground text-base leading-relaxed">
-            {children}
-          </div>
+          {descricao && <div className="text-muted-foreground text-base leading-relaxed">{descricao}</div>}
+          {children && <div className="text-muted-foreground text-base leading-relaxed">{children}</div>}
         </div>
       </div>
     </div>
@@ -1327,11 +1328,23 @@ export function ComparisonSide({
   tipo,
   titulo,
   items,
+  lado1,
+  lado2
 }: {
-  tipo: "correct" | "incorrect";
-  titulo: string;
-  items: string[];
+  tipo?: "correct" | "incorrect";
+  titulo?: string;
+  items?: string[];
+  lado1?: { label: string; content: string };
+  lado2?: { label: string; content: string };
 }) {
+  if (lado1 && lado2) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+        <ComparisonSide tipo="incorrect" titulo={lado1.label} items={[lado1.content]} />
+        <ComparisonSide tipo="correct" titulo={lado2.label} items={[lado2.content]} />
+      </div>
+    );
+  }
   const isCorrect = tipo === "correct";
   return (
     <div
@@ -1347,7 +1360,7 @@ export function ComparisonSide({
         {isCorrect ? "✅" : "❌"} {titulo}
       </div>
       <ul className="space-y-2 text-sm text-muted-foreground">
-        {items.map((item, i) => (
+        {(items ?? []).map((item, i) => (
           <li key={i} className="flex gap-2">
             <span>•</span>
             <span>{item}</span>
@@ -1487,20 +1500,29 @@ export type ModuleSkinVariant = (typeof MODULE_SKIN_COLORS)[number]["variant"];
 
 export function ModuleBanner({
   numero,
+  modulo,
   titulo,
   descricao,
   gradiente,
-  variant = "indigo",
+  variant,
+  corModulo,
+  icone,
 }: {
-  numero: number;
+  numero?: number;
+  modulo?: number;
   titulo: string;
   descricao: string;
   gradiente?: string;
   variant?: ModuleSkinVariant;
+  corModulo?: ModuleSkinVariant;
+  icone?: React.ReactNode;
 }) {
+  const finalNumero = numero ?? modulo ?? 0;
+  const finalVariant = variant ?? corModulo ?? "indigo";
+  
   const finalGradient =
     gradiente ||
-    MODULE_SKIN_COLORS.find((c) => c.variant === variant)?.gradiente ||
+    MODULE_SKIN_COLORS.find((c) => c.variant === finalVariant)?.gradiente ||
     MODULE_SKIN_COLORS[0].gradiente;
 
   return (
@@ -1510,9 +1532,10 @@ export function ModuleBanner({
       {/* Decorative elements */}
       <div className="absolute -top-16 -right-16 w-48 h-48 bg-white/10 rounded-full blur-2xl" />
       <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-white/10 rounded-full blur-2xl" />
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col items-center">
+        {icone && <div className="mb-4 bg-white/20 p-3 rounded-2xl">{icone}</div>}
         <span className="inline-block text-xs md:text-sm uppercase tracking-[0.2em] font-bold bg-white/20 px-3 md:px-4 py-1.5 rounded-full mb-3 md:mb-4">
-          Módulo {numero}
+          Módulo {finalNumero}
         </span>
         <h2 className="text-xl md:text-4xl font-extrabold mt-2 leading-tight">
           {titulo}

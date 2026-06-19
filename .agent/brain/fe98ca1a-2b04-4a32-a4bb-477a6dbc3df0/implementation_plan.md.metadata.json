@@ -1,0 +1,7 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Plano para corrigir erros de TypeScript, sintaxe JSX e variantes de cores no componente AulaOrtografia.tsx, alinhando-o com o sistema Ultimate V4.1 em shared.tsx.",
+  "updatedAt":  "2026-04-06T15:20:38.054585500Z",
+  "version":  "3",
+  "requestFeedback":  true
+}

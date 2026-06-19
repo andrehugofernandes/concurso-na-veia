@@ -1,0 +1,48 @@
+# Walkthrough: Padronização do Modal de Denúncias (Padrão Premium)
+
+Nesta sessão, implementamos uma nova arquitetura padrão para modais de entidade no sistema PMAVV, focada em estética premium e usabilidade.
+
+## ✨ Destaques da Implementação
+
+### 1. Layout Lateral (Right-Side Panel)
+O modal foi transformado em um painel lateral direito com posicionamento fixo e **40px de margem** (topo, direita e base), proporcionando um visual moderno e limpo.
+
+### 2. Alinhamento Pixel Perfect
+Garantimos que todas as labels do formulário utilizem `whitespace-nowrap`. Isso impede quebras de linha em resoluções desktop, mantendo o alinhamento perfeito entre as colunas, mesmo com labels extensas como "Pertinente ao Trabalho AVV?".
+
+### 3. Overlay Glassmorphism
+Atualizamos o componente global [Dialog](file:///c:/GSW/PMAVV/PMAVV/src/components/ui/dialog.tsx#10-13) para incluir:
+- **Cor mais escura**: `bg-black/40` para maior destaque do conteúdo.
+- **Efeito de Blur**: `backdrop-blur-md` aplicado ao fundo, criando o efeito de vidro fosco (glassmorphism).
+
+### 4. Borda Animada (Modo Dark)
+Integramos o componente [AnimatedBorder](file:///c:/GSW/PMAVV/PMAVV/src/components/ui/animated-border.tsx#11-132) que, no modo escuro, exibe um brilho orbital suave utilizando a cor da *skin* do usuário (`--primary`).
+
+### 5. Funcionalidade "Limpar"
+Adicionamos um botão **Limpar** fixo no rodapé, permitindo resetar instantaneamente todos os campos do formulário via `react-hook-form`.
+
+---
+
+## 📸 Evidências Visuais
+
+````carousel
+![Layout Lateral Dark Mode](file:///C:/Users/andre.hugo/.gemini/antigravity/brain/eb4cc9da-1804-4987-bc92-bdffcf3cc4fb/modal_denuncia_edit_dark_mode_1776189931640.png)
+<!-- slide -->
+![Estrutura e Labels](file:///C:/Users/andre.hugo/.gemini/antigravity/brain/eb4cc9da-1804-4987-bc92-bdffcf3cc4fb/modal_final_check_labels_1776189572264.png)
+````
+
+## 🎬 Gravação da Verificação
+Abaixo, a gravação do processo de validação realizado via navegador:
+
+[Gravação da Verificação](file:///C:/Users/andre.hugo/.gemini/antigravity/brain/eb4cc9da-1804-4987-bc92-bdffcf3cc4fb/verify_side_modal_layout_1776189796716.webp)
+
+---
+
+## 🛠️ Alterações por Arquivo
+
+- [dialog.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/ui/dialog.tsx): Atualização do overlay com blur e escurecimento.
+- [denuncia-form-modal.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-form-modal.tsx): Reestruturação completa do modal para painel lateral, integração da borda animada e ajuste de camadas (z-index).
+- [denuncia-form.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-form.tsx): Ajuste de labels, adição do botão limpar e padronização de props (`isLoading`).
+- [tailwind.config.ts](file:///c:/GSW/PMAVV/PMAVV/tailwind.config.ts): Inclusão da animação `border-spin` necessária para o brilho orbital.
+
+A implementação está consolidada e pronta para ser replicada nas demais entidades do sistema.

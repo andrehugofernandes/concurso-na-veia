@@ -1,0 +1,20 @@
+# Tarefas: Expansão de Aula Planejamento Estratégico
+
+- [x] Auditoria Inicial das Aulas do Bloco 1
+- [x] Diagnóstico de Conformidade C.E.D.E.
+- [/] Enriquecimento de Conteúdo (Meta: ~2500 linhas)
+  - [x] Corrigir erros de sintaxe iniciais (Módulos 1 e 2)
+  - [x] Expandir módulos de Planejamento Estratégico (10 módulos)
+    - [x] Módulo 1: Conceitos Fundamentais
+    - [x] Módulo 2: Análise SWOT
+    - [x] Módulo 3: Balanced Scorecard
+    - [x] Módulo 4: Formulação Estratégica
+    - [x] Módulo 5: Implementação Estratégica
+    - [x] Módulo 6: Controle e Avaliação
+    - [x] Módulo 7: PE em Empresas Públicas
+    - [x] Módulo 8: Cenários e Prospectiva
+    - [x] Módulo 9: Aplicações Petrobras
+    - [x] Módulo 10: Simulado Mestre
+- [/] Reorganização Técnica
+  - [x] Expandir [planejamento-quizzes.ts](file:///c:/Workspace/petrobras-quest/src/data/quizzes/planejamento-quizzes.ts) com mais questões
+- [ ] Validação Final (checklist.py)

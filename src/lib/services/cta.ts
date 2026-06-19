@@ -22,7 +22,7 @@ export const ctaService = {
       orderBy: { createdAt: 'desc' },
     });
 
-    return popups.map((popup) => ({
+    return popups.map((popup: any) => ({
       id: popup.id,
       title: popup.title,
       imageUrl: popup.imageUrl || undefined,
@@ -163,7 +163,7 @@ export const ctaService = {
     });
 
     return popups
-      .filter((popup) => {
+      .filter((popup: any) => {
         if (popup.excludePages) {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const excluded = JSON.parse(popup.excludePages) as any;
@@ -176,7 +176,7 @@ export const ctaService = {
         }
         return true;
       })
-      .map((popup) => ({
+      .map((popup: any) => ({
         id: popup.id,
         title: popup.title,
         imageUrl: popup.imageUrl || undefined,

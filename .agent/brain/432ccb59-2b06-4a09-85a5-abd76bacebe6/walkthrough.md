@@ -1,0 +1,63 @@
+# Walkthrough: Login AD + 2FA
+
+Implementação completa do fluxo de autenticação segura para o PMAVV, integrando o Active Directory municipal com verificação em dois fatores (TOTP/Google Authenticator).
+
+## 🚀 O que mudou
+
+### 1. Novo Fluxo de Autenticação
+O login agora é dividido em etapas, garantindo que usuários AD só acessem o sistema após validarem o código 2FA:
+- **Passo 1:** Login com credenciais de rede (E-mail/Usuário + Senha).
+- **Passo 2:** Verificação de status do 2FA.
+- **Passo 3 (Primeiro Acesso):** Exibição de QR Code para configuração do autenticador.
+- **Passo 3 (Acessos Posteriores):** Campo para digitação do código TOTP de 6 dígitos.
+
+### 2. Proteção de Rotas (Sem Middleware)
+Conforme solicitado, não utilizamos `middleware.ts`. A proteção foi implementada diretamente no Server Component de layout:
+- `app/(app)/layout.tsx`: Verifica a presença e validade do `accessToken` em cada navegação. Caso inválido, redireciona para `/login`.
+
+### 3. Componentes de UI Premium
+Recriamos os componentes visuais baseados no padrão do `frontend-imune-mais`:
+- `AuthLayout`: Estrutura visual elegante com brasão e gradientes.
+- `LoginForm`: Validação via Zod e `react-hook-form`.
+- `TwoFactorVerifyForm` & `TwoFactorSetupForm`: Inputs OTP segmentados com navegação inteligente.
+
+---
+
+## 🛠️ Arquivos Criados/Modificados
+
+### Frontend & Ações
+- [page.tsx](file:///c:/GSW/PMAVV/PMAVV/app/(auth)/login/page.tsx) — Orquestrador do fluxo.
+- [login-action.ts](file:///c:/GSW/PMAVV/PMAVV/app/(auth)/actions/login-action.ts) — Agora emite apenas um `tempToken` após validar AD.
+- `components/auth/` — Todos os novos formulários.
+
+### API (Backend)
+- `/api/auth/2fa/status` — Verifica se o usuário já tem 2FA ativo.
+- `/api/auth/2fa/setup` — Gera QR Code.
+- `/api/auth/2fa/enable` — Ativa o 2FA no banco.
+- `/api/auth/verify-2fa` — Valida o TOTP e cria a sessão final (**accessToken**).
+
+---
+
+## ❗ Ação Necessária: Banco de Dados
+
+Identificamos que o usuário `pmavv_dev` não tem permissão para alterar a estrutura da tabela (`must be owner`). 
+
+**Por favor, execute o script abaixo manualmente em sua ferramenta de banco (ex: DBeaver, pgAdmin) com um usuário administrador:**
+
+[setup_2fa_manual.sql](file:///c:/GSW/PMAVV/PMAVV/scripts/setup_2fa_manual.sql)
+
+```sql
+ALTER TABLE tbl_usuario 
+ADD COLUMN IF NOT EXISTS totp_secret VARCHAR(255),
+ADD COLUMN IF NOT EXISTS totp_enabled BOOLEAN DEFAULT FALSE;
+```
+
+---
+
+## 🧪 Como Testar
+
+1. **Inicie o servidor dev:** `npm run dev`
+2. **Acesse:** `http://localhost:3000/login`
+3. **Login:** Use suas credenciais de rede.
+4. **2FA:** Se for seu primeiro acesso, escaneie o QR Code com o Google Authenticator e insira o código.
+5. **Acesso:** Você será redirecionado para o Dashboard com a sessão protegida.

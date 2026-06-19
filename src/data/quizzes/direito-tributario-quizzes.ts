@@ -12,13 +12,27 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
     moduleNumber: 1,
     questions: [
       {
+        id: 999,
+        question: "O Estado institui a cobrança compulsória de valores decorrentes do exercício do poder de polícia sobre a fiscalização de estabelecimentos comerciais. Por outro lado, cobra tarifas de pedágio em rodovias federais sob concessão privada de exploração contratual. Essas cobranças classificam-se, respectivamente, como:",
+        options: [
+          "taxa (receita tributária) e preço público (receita não tributária)",
+          "imposto (receita tributária) e taxa (receita tributária)",
+          "contribuição (receita tributária) e imposto (receita tributária)",
+          "preço público (receita não tributária) e taxa (receita tributária)",
+          "tarifa (receita não tributária) e contribuição (receita tributária)"
+        ],
+        correct: 0,
+        explanation: "A taxa decorrente do poder de polícia é tributo (compulsória e de direito público). O pedágio sob concessão contratual classifica-se como preço público/tarifa (natureza não tributária e contratual)."
+      },
+      {
         id: 101,
         question: "De acordo com o Código Tributário Nacional, tributo é:",
         options: [
           "Um favor do governo às empresas",
           "Prestação pecuniária compulsória, instituída por lei, cobrada pela administração tributária",
           "Uma taxa cobrada voluntariamente",
-          "Um empréstimo que o contribuinte faz ao governo"
+          "Um empréstimo que o contribuinte faz ao governo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "CTN define tributo como prestação pecuniária (em dinheiro) compulsória (obrigatória) instituída por lei, cobrada pela administração tributária no exercício de suas atribuições."
@@ -30,7 +44,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Governo pode cobrar imposto via decreto",
           "Legalidade - imposto só pode ser cobrado por lei",
           "Governo pode fazer retroativo",
-          "Todos pagam exatamente igual"
+          "Todos pagam exatamente igual",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Princípio da Legalidade é fundamental: nenhum tributo pode ser cobrado senão em virtude de lei. Decreto, portaria, não podem instituir tributo."
@@ -42,7 +57,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Imposto volta para o passado",
           "Lei não pode cobrar retroativamente sobre fatos passados",
           "Imposto retroage sempre",
-          "Não existe este princípio"
+          "Não existe este princípio",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Irretroatividade: lei tributária não afeta fatos geradores já ocorridos. Se você ganhou renda em 2023, a nova lei de 2024 não retroage sobre essa renda."
@@ -54,7 +70,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Apenas a Receita Federal",
           "Fisco (Estado), contribuinte, terceiros interessados (bancos, fornecedores)",
           "Apenas o contribuinte",
-          "Apenas as empresas"
+          "Apenas as empresas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Direito tributário envolve: fisco (cobra), contribuinte (paga), e terceiros (bancos que analisam solvência via pagamento de impostos)."
@@ -66,7 +83,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Lei menor que outras leis tributárias",
           "Lei geral tributária brasileira que estabelece conceitos e regras fundamentais",
           "Apenas um guia informativo",
-          "Um documento internacional"
+          "Um documento internacional",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Lei 5.172/66 (CTN) é lei complementar que estabelece normas gerais de direito tributário, aplicável em nível federal, estadual e municipal."
@@ -78,7 +96,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Toda pessoa tem capacidade de contribuir",
           "Imposto deve considerar a renda/patrimônio de quem paga",
           "Governo escolhe quem paga",
-          "Não existe este princípio"
+          "Não existe este princípio",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Princípio implícito: imposto deve ser proporcional à capacidade econômica. Pessoa com renda maior paga mais que pessoa com renda menor."
@@ -90,7 +109,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Não há diferença",
           "Imposto é geral, taxa é específica por serviço, contribuição é para seguridade",
           "São termos sinônimos",
-          "Não é possível diferenciar"
+          "Não é possível diferenciar",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Imposto: genérico, sem contraprestação (IR). Taxa: contraprestação de serviço público (taxa de limpeza). Contribuição: para fins específicos (INSS)."
@@ -102,7 +122,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Apenas a Constituição",
           "Lei, decretos, resoluções, jurisprudência, e costumes",
           "Apenas jurisprudência",
-          "Opinião dos contribuintes"
+          "Opinião dos contribuintes",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Fontes: Lei (principal), Decretos/Resoluções (regulamentam lei), Jurisprudência (decisões de tribunais), Costumes (práticas aceitas), Doutrina (estudos de especialistas)."
@@ -114,7 +135,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Legalidade e Irretroatividade",
           "Capacidade Contributiva e Igualdade",
           "Segurança Jurídica",
-          "Todas as alternativas acima estão corretas"
+          "Todas as alternativas acima estão corretas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 3,
         explanation: "Todos esses princípios protegem: Legalidade (lei clara), Irretroatividade (não retroage), Capacidade (proporcional), Igualdade (igual tratamento), Segurança (regras previsíveis)."
@@ -133,7 +155,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Apenas salários",
           "Renda e proventos de qualquer natureza (salários, aluguéis, lucros, ganhos)",
           "Apenas pessoas jurídicas",
-          "Apenas vendas de produtos"
+          "Apenas vendas de produtos",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "IR tem campo amplo: renda (salários), proventos (aluguéis, dividendos), ganhos de capital (venda de imóvel), prêmios, heranças acima de certos valores."
@@ -145,7 +168,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Todos pagam o mesmo percentual",
           "Percentual aumenta conforme renda (quanto maior renda, maior alíquota)",
           "Percentual diminui conforme renda",
-          "Não existe progressividade"
+          "Não existe progressividade",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Tabela progressiva: 0% até R$ 2.112 (isento), 7,5% até R$ 2.826, 15% até R$ 3.751, 22,5% até R$ 4.664, 27,5% acima. Alíquota efetiva aumenta com renda."
@@ -157,7 +181,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Gastos com lazer",
           "Despesa com dependentes, contribuição INSS, despesa com instrução",
           "Gastos com viagens",
-          "Nenhuma dedução é permitida"
+          "Nenhuma dedução é permitida",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Deduções: dependentes (R$ 2.275/ano), contribuição INSS/FAPI, despesas com instrução (educação), doações a entidades filantrópicas."
@@ -169,7 +194,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Todas as pessoas",
           "Apenas empresas com lucro",
           "Pessoas jurídicas sobre lucro líquido",
-          "Não é tributo federal"
+          "Não é tributo federal",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "IRPJ: pessoa jurídica paga sobre lucro real ou lucro presumido. Alíquota 15% + adicional 10% sobre lucro > R$ 20k/mês."
@@ -181,7 +207,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Um imposto geral sobre toda mercadoria",
           "Imposto seletivo (alíquota varia por produto) sobre industrialização",
           "Um imposto sobre importações",
-          "Cobrado apenas em São Paulo"
+          "Cobrado apenas em São Paulo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "IPI é seletivo: produtos prejudiciais (cigarro 40%) têm alíquota alta, produtos essenciais têm alíquota baixa ou zero (alimentos)."
@@ -193,7 +220,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Renda bruta sem descontos",
           "Renda bruta menos deduções legais",
           "Apenas renda de salário",
-          "Patrimônio da pessoa"
+          "Patrimônio da pessoa",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Base = Renda bruta - deduções permitidas (dependentes, INSS, instrução, etc). Sobre essa base aplica-se a tabela progressiva."
@@ -205,7 +233,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Uma presunção de lucro",
           "Resultado contábil com ajustes fiscais (adições e exclusões)",
           "Lucro que a empresa declara",
-          "Não tem relação com IRPJ"
+          "Não tem relação com IRPJ",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Lucro Real: resultado contábil (contabilidade) + ajustes fiscais (deduções/adições legais). Método mais preciso e obrigatório para grandes empresas."
@@ -217,7 +246,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "15%",
           "25%",
           "10%",
-          "35%"
+          "35%",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "IRPJ: 15% sobre R$ 100k = R$ 15k. Sem adicional (que é apenas sobre lucro > R$ 20k/mês). Alíquota efetiva: 15%."
@@ -229,7 +259,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Royalties não são dedutíveis",
           "Royalties reduzem a base de cálculo de IRPJ",
           "Royalties aumentam o IRPJ",
-          "Petrobras não paga IRPJ"
+          "Petrobras não paga IRPJ",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Royalties são custos operacionais: reduzem lucro tributável. Lucro Tributável = Receita - Custos (incluindo Royalties) - Despesas."
@@ -248,7 +279,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Federal coletado pela Receita Federal",
           "Estadual legislado por cada estado",
           "Municipal coletado pela prefeitura",
-          "Internacional"
+          "Internacional",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "ICMS é tributo estadual. Cada estado legisla sua alíquota (varia 7-18%). Arrecadação vai para o estado onde ocorre a operação."
@@ -260,7 +292,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Sempre paga ICMS integral",
           "Empresa paga ICMS na venda, mas abate ICMS que pagou na compra",
           "ICMS não tem incidência em cadeia",
-          "Cada etapa paga sobre o total"
+          "Cada etapa paga sobre o total",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Crédito: ICMS pago em compra. Débito: ICMS devido em venda. ICMS a pagar = débito - crédito. Evita tributação em cascata."
@@ -272,7 +305,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "5%",
           "12%",
           "18%",
-          "25%"
+          "25%",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "São Paulo usa alíquota de 18% para maioria das mercadorias. Produtos específicos têm alíquotas reduzidas (7% para alimentos básicos)."
@@ -284,7 +318,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Federal sobre serviços",
           "Estadual sobre serviços",
           "Municipal legislado pela prefeitura (alíquota 2-5%)",
-          "Não é um tributo existente"
+          "Não é um tributo existente",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "ISS é municipal: cada prefeitura define alíquota (2-5%). Incide sobre prestação de serviços (consultoria, reparos, limpeza, etc)."
@@ -296,7 +331,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "ISS nunca é retido",
           "Quem contrata retém ISS e repassa à prefeitura",
           "Quem presta serviço retém",
-          "Não existe retenção"
+          "Não existe retenção",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Obrigação de reter: empresa que contrata serviço retém ISS (~3%) e repassa à prefeitura. Prestador recebe valor líquido."
@@ -308,7 +344,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Cobrada pela Receita Estadual",
           "Cobrada pela Receita Federal sobre faturamento (alíquota 1,65%)",
           "Não é um tributo",
-          "Cobrada apenas em janeiro"
+          "Cobrada apenas em janeiro",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "PIS é contribuição federal sobre faturamento: 1,65% (ou 0,75% em regime cumulativo). Algumas empresas têm alíquota diferenciada."
@@ -320,7 +357,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Seguro desemprego",
           "Seguridade Social (saúde, previdência, assistência)",
           "Educação",
-          "Não financia nada específico"
+          "Não financia nada específico",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "COFINS: Contribuição para Financiamento da Seguridade Social. Alíquota 7,65% (ou 3% regime cumulativo). Receita vai para INSS, saúde pública, assistência."
@@ -332,7 +370,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "R$ 18",
           "R$ 1,65",
           "R$ 19,65",
-          "R$ 10"
+          "R$ 10",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "ICMS R$ 100 × 18% = R$ 18. PIS R$ 100 × 1,65% = R$ 1,65. Total tributos = R$ 19,65 (19,65% de carga tributária)."
@@ -344,7 +383,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Apenas ICMS",
           "ICMS (por estado), PIS, COFINS e CIDE em combustíveis",
           "Apenas PIS",
-          "Nenhum tributo"
+          "Nenhum tributo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Combustível tem tributação complexa: ICMS (estadual), PIS, COFINS (federal), CIDE (contribuição específica de combustíveis). Carga total pode exceder 50% do preço."
@@ -363,7 +403,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Apenas empregador",
           "Empregado e empregador",
           "Apenas governo",
-          "Não é obrigatória"
+          "Não é obrigatória",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "INSS: contribuição dupla. Empregado: 8-11% do salário. Empregador: 20% sobre folha. Autônomo: 20% de sua renda."
@@ -375,7 +416,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "1% a 5%",
           "5% a 10%",
           "8% a 11%",
-          "15% a 20%"
+          "15% a 20%",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Empregado: 8% até R$ 1.693,72, 9% até R$ 2.822,90, 10% até R$ 5.645,80, 11% acima (até teto). Quanto maior salário, maior alíquota."
@@ -387,7 +429,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Receber salário adicional",
           "Empresa depositar 8% mensalmente em conta individual para saque em demissão/aposentadoria",
           "Não receber contribuições",
-          "Receber dobrado na rescisão"
+          "Receber dobrado na rescisão",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "FGTS: empresa deposita 8% do salário em conta do trabalhador (Caixa Econômica Federal). Saque em demissão sem justa causa, aposentadoria, compra de imóvel."
@@ -399,7 +442,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "5-10%",
           "20-25%",
           "40-50%",
-          "Nenhum (não são custos)"
+          "Nenhum (não são custos)",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "INSS empregador 20% + FGTS 8% + outros encargos (seguro acidente, etc) = aproximadamente 25-35% de custo adicional sobre salário."
@@ -411,7 +455,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Cobrada mensalmente",
           "Cobrada uma vez ao ano (equivalente a 1 dia de salário)",
           "Opcional",
-          "Não existe mais"
+          "Não existe mais",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Contribuição Sindical: desconto anual no mês de março, equivalente a 1 dia de salário. Destinada ao sindicato da categoria."
@@ -423,7 +468,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "R$ 240",
           "R$ 300",
           "R$ 330",
-          "R$ 450"
+          "R$ 450",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "R$ 3.000 está na faixa de 9% (entre R$ 1.693,72 e R$ 2.822,90), aumento para 10% acima de R$ 2.822,90. INSS ≈ R$ 300-330 dependendo cálculo progressivo exato."
@@ -435,7 +481,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Aumento de salário automático",
           "Aposentadoria, auxílio-doença, pensão por morte, auxílio acidente",
           "Férias remuneradas",
-          "Bônus anual"
+          "Bônus anual",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "INSS garante cobertura de riscos sociais: aposentadoria por tempo de serviço/idade, auxílio-doença, pensão por morte, auxílio acidente, reabilitação."
@@ -447,7 +494,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Apenas salário",
           "Salário + INSS + FGTS + contribuições + seguro de vida + benefícios",
           "Nenhum impacto",
-          "Apenas impostos"
+          "Apenas impostos",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Petrobras calcula custo total: salário-base + encargos (INSS, FGTS) + benefícios (vale refeição, transporte, seguro saúde) + bônus variáveis."
@@ -459,7 +507,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Pago pelo empregado",
           "Pago pelo empregador (~2,5% de folha)",
           "Pago pelo governo",
-          "Não é obrigatório"
+          "Não é obrigatório",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Seguro Acidental do Trabalho é obrigação do empregador. Alíquota varia por risco da atividade (0,5% a 3% de folha). Cobre acidentes laborais."
@@ -478,7 +527,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Registrar operações",
           "Pagar o tributo ao fisco",
           "Informar dados",
-          "Manter documentos"
+          "Manter documentos",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Obrigação Principal: dever de pagar tributo. Surge quando ocorre fato gerador (evento definido em lei). É pessoal de quem sofreu o fato gerador."
@@ -490,7 +540,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Pagar multa quando não cumpre principal",
           "Registrar, informar, manter documentos (obrigações de fazer)",
           "Pagamento de juros",
-          "Não é importante"
+          "Não é importante",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Obrigação Acessória: dever de fazer (escrituração, emissão de nota, declaração, informações). Infração gera multa mesmo sem imposto a pagar."
@@ -502,7 +553,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Qualquer situação",
           "A situação legal ou de fato definida em lei que origina direito de tributar",
           "O momento de pagamento",
-          "Não existe fato gerador"
+          "Não existe fato gerador",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Fato Gerador: situação prevista em lei que gera direito de tributar. IR: auferição de renda. ICMS: saída de mercadoria. Momento crítico para determinar."
@@ -514,7 +566,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Apenas o devedor original é responsável",
           "Responsável responde junto com devedor original (fisco pode cobrar de qualquer um)",
           "Responsável nunca é cobrado",
-          "Não existe responsabilidade solidária"
+          "Não existe responsabilidade solidária",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Responsabilidade Solidária: fisco pode cobrar do devedor principal ou do responsável solidário indistintamente. Ambos têm obrigação igual."
@@ -526,7 +579,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Fisco cobra antes do devedor principal",
           "Fisco cobra apenas se devedor principal não pagar",
           "Responsável nunca paga",
-          "É sinônimo de solidária"
+          "É sinônimo de solidária",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Responsabilidade Subsidiária: fisco cobra do responsável apenas se devedor principal não pagar. Ordem: primeiro cobra do principal, depois do subsidiário."
@@ -538,7 +592,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Contribuinte que paga",
           "Fisco (Estado) que cobra",
           "Bancos que concedem empréstimos",
-          "Fornecedores"
+          "Fornecedores",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Sujeito Ativo: quem tem direito de receber (fisco = União, estado ou município conforme o tributo)."
@@ -550,7 +605,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "O Estado",
           "O contribuinte (pessoa sobre quem incide obrigação)",
           "O banqueiro",
-          "O vendedor"
+          "O vendedor",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Sujeito Passivo: obrigado ao pagamento (contribuinte original que sofreu fato gerador, ou responsável tributário)."
@@ -562,7 +618,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Nenhuma responsabilidade",
           "Pessoal pela infração (pode responder criminalmente)",
           "Apenas a empresa responde",
-          "Responsabilidade limitada"
+          "Responsabilidade limitada",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Responsabilidade Pessoal: por infração à lei tributária (fraude, sonegação). Pessoa física que cometeu infração pode responder criminalmente além de civil."
@@ -574,7 +631,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Não há diferença",
           "Ativo = fisco (cobra); Passivo = contribuinte (paga)",
           "Ativo = contribuinte; Passivo = fisco",
-          "Ativo é melhor que Passivo"
+          "Ativo é melhor que Passivo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Relação tributária tem dois polos: Ativo (fisco com direito de cobrar), Passivo (contribuinte com dever de pagar)."
@@ -593,7 +651,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Sempre que há operação",
           "Fisco seleciona empresa para verificação de documentos e registros",
           "Empresa solicita",
-          "Nunca ocorre"
+          "Nunca ocorre",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Auditoria fiscal: fisco realiza verificação de livros, notas fiscais, documentos. Pode ser por sorteio, seleção de risco, ou denúncia."
@@ -605,7 +664,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Um imposto a pagar",
           "Documento que fisco lavra ao encontrar irregularidade tributária",
           "Uma notificação de cobrança",
-          "Um recibo de pagamento"
+          "Um recibo de pagamento",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Auto de Infração: documento administrativo que fisco emite descrevendo irregularidade encontrada. Inicia processo de cobrança."
@@ -617,7 +677,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Fixa (sempre R$ 1.000)",
           "Variável: 0,5% ao mês sobre imposto devido, máximo 20%",
           "0,1% sobre receita",
-          "Inexistente"
+          "Inexistente",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Multa de Ofício: 0,5% ao mês de atraso (juros de mora). Máximo 20% do imposto. Se em atraso 12 meses = 6% + 20% penalidade."
@@ -629,7 +690,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Mesma multa de imposto não pago",
           "Multa específica por infração (até R$ 20 mil) independente de imposto",
           "Não existe multa",
-          "Apenas advertência"
+          "Apenas advertência",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Multa por Infração Acessória: gera multa mesmo que não haja imposto a pagar. Objetivo: cumprir obrigação de informar (nota, registro)."
@@ -641,7 +703,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Igual à multa de ofício",
           "Agravada (75-150% do imposto) por deliberada ocultação de informações",
           "Inexistente",
-          "Simples multa administrativa"
+          "Simples multa administrativa",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Fraude: ocultação deliberada, falsificação de documentos. Multa agravada 75-150% + possível processo criminal contra responsável."
@@ -653,7 +716,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "1 ano",
           "3 anos",
           "5 anos",
-          "Indefinido"
+          "Indefinido",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Prazo de Cobrança: 5 anos a partir do fato gerador. Após 5 anos sem ação do fisco, débito prescreve (não pode mais cobrar)."
@@ -665,7 +729,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Inexistente",
           "Deve apresentar defesa/impugnação antes de decisão final",
           "Apenas na justiça",
-          "Apenas para grandes empresas"
+          "Apenas para grandes empresas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Garantia do Contraditório: contribuinte tem direito de apresentar defesa argumentativa contra auto. Fisco deve considerar defesa."
@@ -677,7 +742,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Impossível",
           "Possível: contribuinte pode recorrer para órgão superior do fisco",
           "Apenas judicial",
-          "Não existe recurso"
+          "Não existe recurso",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Recursos Administrativos: cabe impugnação para Junta de Recursos Federais (JRF), Delegacia da Receita. Depois, via judicial (Justiça Federal)."
@@ -689,7 +755,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Apenas aplicar multa civil",
           "Cobrar tributo + multa + juros + encaminhar para processo criminal",
           "Nada fazer",
-          "Apenas avisar"
+          "Apenas avisar",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Fraude: consequências duplas. Civil (multa, juros). Criminal (processo contra responsável por crime de sonegação fiscal - até 2 anos prisão)."
@@ -708,7 +775,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Cancela obrigação tributária",
           "Origina direito do fisco de cobrar tributo",
           "Reduz tributo",
-          "Não afeta tributação"
+          "Não afeta tributação",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Fato Gerador: evento definido em lei que gera direito de tributar. Momento de ocorrência é crítico (define qual ano/período é tributado)."
@@ -720,7 +788,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "O percentual de alíquota",
           "O valor sobre qual se aplica a alíquota",
           "O local onde tributo é cobrado",
-          "O responsável pelo pagamento"
+          "O responsável pelo pagamento",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Base de Cálculo: grandeza (dinheiro, quantidade) sobre a qual alíquota incide. IR: valor de renda. ICMS: preço operação. Determina valor final."
@@ -732,7 +801,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "O montante em reais a pagar",
           "O percentual ou taxa aplicado à base de cálculo",
           "O período de cobrança",
-          "O responsável pelo recolhimento"
+          "O responsável pelo recolhimento",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Alíquota: percentual (%) ou valor fixo aplicado à base. Definido em lei. Não pode ser alterado arbitrariamente. Tributo = Base × Alíquota."
@@ -744,7 +814,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "R$ 750",
           "R$ 675",
           "R$ 500",
-          "R$ 300"
+          "R$ 300",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Base = Renda bruta - deduções = 5.000 - 500 = 4.500. IR = 4.500 × 15% = R$ 675."
@@ -756,7 +827,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "R$ 18",
           "R$ 82",
           "R$ 100",
-          "R$ 118"
+          "R$ 118",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 0,
         explanation: "ICMS = Base × Alíquota = 100 × 18% = R$ 18. Preço ao consumidor: 100 + 18 = R$ 118."
@@ -768,7 +840,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Mesma alíquota para todos",
           "Alíquota aumenta conforme a base de cálculo (mais renda = maior alíquota)",
           "Alíquota diminui com o tempo",
-          "Não existe progressividade"
+          "Não existe progressividade",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Progressividade: quanto maior a base, maior a alíquota. IR é progressivo (0% até 27,5%). Objetivo: fairness (quem ganha mais paga proporcionalmente mais)."
@@ -780,7 +853,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Compra da mercadoria",
           "Saída de mercadoria do estabelecimento",
           "Fabricação do produto",
-          "Publicidade do produto"
+          "Publicidade do produto",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "ICMS: fato gerador é a saída da mercadoria (circulação). Incide quando produto sai do fabricante, distribuidor ou varejista."
@@ -792,7 +866,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Determina local do tributo",
           "Determina em qual período o tributo é devido (qual exercício)",
           "Determina o valor do tributo",
-          "Não é importante"
+          "Não é importante",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Momento crítico: fato gerador ocorreu em dezembro de 2023? Tributo é devido em 2023 (mesmo que pago em 2024). Afeta qual ano é tributado."
@@ -804,7 +879,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Renda auferida",
           "Base × Alíquota = Renda (depois deduções) × alíquota conforme faixa",
           "Apenas alíquota",
-          "Não há tributo"
+          "Não há tributo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "IR: Fato Gerador (renda auferida) → Base (renda - deduções) → Alíquota (conforme faixa progressiva) → Tributo (Base × Alíquota)."
@@ -823,7 +899,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Despesa operacional comum",
           "Contribuição mínima de 5% da produção mensal ao Estado (proprietário da reserva)",
           "Imposto de renda",
-          "Taxa de refino"
+          "Taxa de refino",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Royalties: percentual mínimo da produção (5%) que Petrobras paga ao Estado pela exploração do recurso natural. Calculado sobre produção valorizada."
@@ -835,7 +912,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Sempre em qualquer produção",
           "Campo de petróleo é super-lucrativo (receita ultrapassa certos patamares)",
           "Nunca são cobradas",
-          "Apenas em exploração terrestre"
+          "Apenas em exploração terrestre",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "PE: tributo extraordinário cobrado sobre lucros anormais. Alíquota progressiva (até 40%). Garante Estado participe de super-lucros em campos rentáveis."
@@ -847,7 +925,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Faturamento total",
           "Lucro real (após abatimento de royalties, custos, despesas)",
           "Produção de barris",
-          "Sempre 15% sobre receita"
+          "Sempre 15% sobre receita",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "IRPJ Petrobras: alíquota 15% + adicional 10% (sobre lucro > R$ 20k/mês). Base: Lucro Real = Receita - Custos (incluindo royalties/PE) - Despesas."
@@ -859,7 +938,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "R$ 40 mil",
           "R$ 4 mil",
           "R$ 80 mil",
-          "R$ 400 mil"
+          "R$ 400 mil",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 0,
         explanation: "Royalties = Produção × Preço × Alíquota = 1.000 × 80 × 5% = R$ 4.000... wait, 1.000 × 80 = 80.000 × 5% = R$ 4.000. Resposta corrigida: R$ 4.000, mas opção é R$ 40 mil (se forem 10.000 barris)."
@@ -871,7 +951,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Petrobras não paga ICMS",
           "Petrobras (nas operações) paga ICMS ao estado onde ocorre a saída",
           "Apenas governo",
-          "Distribuidoras apenas"
+          "Distribuidoras apenas",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "ICMS: Petrobras é sujeito passivo. Paga ICMS (12-18% conforme estado) quando vende combustível à distribuidora. Crédito aproveita na compra de insumos."
@@ -883,7 +964,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Custos operacionais",
           "Faturamento (receita bruta)",
           "Apenas lucro",
-          "Dividendos"
+          "Dividendos",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "PIS (1,65%) e COFINS (7,65%): incidem sobre faturamento (receita bruta). Contribuições federais sobre a receita de venda de óleo/derivados."
@@ -895,7 +977,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "10% do preço",
           "20-25% do preço",
           "Mais de 40% do preço",
-          "Nenhuma carga"
+          "Nenhuma carga",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Estrutura: ICMS (~18%) + COFINS (~7,6%) + PIS (~1,65%) + royalties/PE (~3-5%) = aproximadamente 30-40% de carga tributária."
@@ -907,7 +990,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Royalties não reduzem base de IRPJ",
           "Royalties são custos operacionais que reduzem lucro tributável",
           "Royalties aumentam IRPJ",
-          "Não existe abatibilidade"
+          "Não existe abatibilidade",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Royalties e PE são custos desfavoráveis: Lucro = Receita - Royalties - Custos - Despesas. Reduzem base de cálculo de IRPJ."
@@ -919,7 +1003,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "R$ 1 bilhão",
           "R$ 400 mi",
           "R$ 250 mi",
-          "R$ 150 mi"
+          "R$ 150 mi",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Lucro = Receita - Custos - Royalties - PE = 1.000 - 600 - 50 - 100 = R$ 250 milhões. IRPJ = 250 × 25% (15% + adicional) = R$ 62,5 mi."
@@ -938,7 +1023,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Sempre ilegal",
           "Organizar negócio legalmente para minimizar carga tributária",
           "Fraude de impostos",
-          "Não é permitido"
+          "Não é permitido",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Planejamento Lícito: uso inteligente de estrutura jurídica/contratual permitida por lei para reduzir imposto. Diferente de fraude (proibida)."
@@ -950,7 +1036,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Crime de não pagar imposto",
           "Redução legal de imposto usando brechas/opções da lei",
           "Pagamento de imposto",
-          "Multa tributária"
+          "Multa tributária",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Elisão: uso lícito de opções previstas em lei para reduzir tributação. Exemplo: escolher regime tributário (Simples é menos tributado que Real)."
@@ -962,7 +1049,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Não há diferença",
           "Elisão é legal, Evasão é ilegal (fraude/ocultação)",
           "Evasão é legal, Elisão ilegal",
-          "Ambas são ilegais"
+          "Ambas são ilegais",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Elisão (legal): usar legalidades. Evasão (ilegal): fraudar, ocultar, falsificar. Fisco pune evasão com multas civis e até criminais."
@@ -974,7 +1062,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Sempre Lucro Real",
           "Simples Nacional (se micro/PME) = menor tributação que Lucro Real",
           "Não importa qual regime",
-          "Nenhum regime é planejamento"
+          "Nenhum regime é planejamento",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Simples Nacional: alíquota ~6-17% (tudo integrado). Lucro Real: IR + CSLL + PIS + COFINS = ~34-40%. Para PME, Simples é mais favorável."
@@ -986,7 +1075,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Qualquer contrato vale",
           "Contrato é executado conforme termos legais (não há simulação/fraude)",
           "Não existe estruturação legal",
-          "Todos contratos são fraudes"
+          "Todos contratos são fraudes",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Estruturação: contrato deve refletir operação real (não simulação). Forma jurídica correta determina tributação. Se real, é lícito."
@@ -998,7 +1088,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Planejamento tributário",
           "Evasão de impostos (fraude, crime)",
           "Lícito",
-          "Apenas risco administrativo"
+          "Apenas risco administrativo",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Fraude: emitir NF falsa, ocultar renda, falsificar documentos. Crime de sonegação fiscal (até 2 anos prisão + multa). Diferente de planejamento legal."
@@ -1010,7 +1101,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Não pagar imposto",
           "Abater gastos em pesquisa/desenvolvimento do IRPJ (até 50% do investimento)",
           "Fraude sem punição",
-          "Não existem incentivos"
+          "Não existem incentivos",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Lei de Inovação: abatimento fiscal de 50% de investimento em P&D. Empresas usam licitamente esse incentivo. É planejamento dentro da lei."
@@ -1022,7 +1114,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Ilegal",
           "Estratégia lícita de planejamento",
           "Fraude",
-          "Não é possível"
+          "Não é possível",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Timing: realizar operação em período que minimize tributação. Exemplo: realizar venda em período de prejuízo (compensa). É lícito."
@@ -1034,7 +1127,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Fraude de tributos",
           "Aproveitamento de abatimentos (royalties, PE em IRPJ), estrutura de contratos internacionais",
           "Ocultação de informações",
-          "Falsificação de documentos"
+          "Falsificação de documentos",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Planejamento Petrobras: abatimento de royalties/PE no cálculo de IRPJ, estrutura de contratos (permanente vs. ocasional), aproveitamento de compensação de prejuízos. Tudo dentro de conformidade máxima."
@@ -1053,7 +1147,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "R$ 200 mil",
           "R$ 400 mil",
           "R$ 650 mil",
-          "R$ 1 milhão"
+          "R$ 1 milhão",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "IRPJ: 2.000k × 20% = 400k × 25% = 100k. COFINS: 2.000k × 7,65% = 153k. PIS: 2.000k × 1,65% = 33k. Total = 286k. Opção mais próxima é R$ 650 (pode incluir outros tributos)."
@@ -1065,7 +1160,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Nenhum direito, deve pagar",
           "Apresentar defesa argumentada ao fisco",
           "Pagar imediatamente sem questionar",
-          "Esconder o auto"
+          "Esconder o auto",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Direito do Contraditório: contribuinte pode apresentar impugnação/defesa contra auto, explicando sua posição. Fisco obrigado a considerar."
@@ -1077,7 +1173,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Nenhuma retenção",
           "Empresa retém R$ 2.500 de ISS e repassa à prefeitura",
           "R$ 5 mil",
-          "R$ 10 mil"
+          "R$ 10 mil",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "ISS: quem contrata retém ISS (~2,5% em Rio). Retém R$ 2.500, repassa à prefeitura, fornecedor recebe R$ 97.500."
@@ -1089,7 +1186,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "R$ 125 mi",
           "R$ 50 mi",
           "R$ 25 mi",
-          "R$ 10 mi"
+          "R$ 10 mi",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 2,
         explanation: "Lucro = 500 - 300 - (500 × 5% = 25) = 175. PE = 175 × 20% = 35. Lucro após PE = 140. IRPJ = 140 × 25% = R$ 35 mi. Opção mais próxima é R$ 25 mi (cálculo simplificado)."
@@ -1101,7 +1199,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Ambas são iguais",
           "Planejamento usa legalidades, Evasão frauda (crime)",
           "Evasão é mais segura",
-          "Não há diferença legal"
+          "Não há diferença legal",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "Planejamento (legal): estrutura contrato corretamente, escolhe regime tributário favorável. Evasão (ilegal): emite NF falsa, oculta renda, falsifica. Evasão gera crime."
@@ -1113,7 +1212,8 @@ export const DIREITO_TRIBUTARIO_QUIZZES: Record<string, Quiz> = {
           "Quando mercadoria é comprada",
           "Quando mercadoria sai do estabelecimento (circula)",
           "Quando mercadoria é produzida",
-          "Apenas no consumidor final"
+          "Apenas no consumidor final",
+          "Nenhuma das alternativas anteriores está correta."
         ],
         correct: 1,
         explanation: "ICMS: fato gerador é a circulação (saída) de mercadoria. Incide em cada etapa da cadeia: fabricante → distribuidor → varejista."

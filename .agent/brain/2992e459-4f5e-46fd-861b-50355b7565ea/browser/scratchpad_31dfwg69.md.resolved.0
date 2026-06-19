@@ -1,0 +1,11 @@
+# Verificação de Correção: Aula Classes de Palavras
+
+## Checklist
+- [ ] Acessar http://localhost:3000/aulas/portugues/classes-palavras
+- [ ] Verificar ausência de erro 'Cannot read properties of undefined (reading \'includes\')'
+- [ ] Confirmar exibição do nome da matéria "Português" no NavHeader
+- [ ] Confirmar exibição do título "As 10 Classes de Palavras"
+- [ ] Capturar screenshot para comprovação
+
+## Observações
+- O erro original ocorria no componente `NavHeader` em `src/components/aulas/shared.tsx:2313:28`.

@@ -1,0 +1,78 @@
+# Plano de Implementação: Otimização e Padronização Massiva de Aulas de Administração
+
+Este plano descreve a estratégia para reestruturar, otimizar a performance e padronizar o estilo estético corporativo em todas as **15 aulas de administração** restantes no projeto Petrobras Quest.
+
+---
+
+## 🔍 Objetivos Principais
+
+1. **Otimização de Performance Extrema (INP & FCP)**: Integrar renderização condicional estrita de abas `{activeTab === "modulo-N" && ( ... )}` em todos os arquivos de aula restantes. Isso reduzirá drasticamente o inchaço de DOM do navegador.
+2. **Higienização Cromática (Purple Ban)**: Remover por completo todas as ocorrências de classes de cores restritas (`violet`, `purple`, `fuchsia`) substituindo-as pela paleta corporativa premium Petrobras (Cyan, Emerald, Indigo, Amber, Slate).
+3. **Garantia de Integridade de Tipagem**: Validar e resolver quaisquer problemas de TypeScript resultantes das migrações de ícones e dados de simulados de fixação.
+
+---
+
+## ⚠️ Perguntas Estratégicas para o Usuário (Socratic Gate)
+
+> [!IMPORTANT]
+> Devido ao grande volume de código a ser modificado (15 arquivos que somam mais de 22.000 linhas de JSX e lógica), responda às seguintes perguntas chave antes de prosseguirmos:
+
+1. **Abordagem em Lotes/Fases**: Para evitar estouro de contexto e permitir testes incrementais de compilação sem quebrar a aplicação, você concorda em realizarmos a migração em **4 Fases/Lotes** (de 3 a 4 aulas por lote), validando cada lote antes de avançar?
+2. **Correção de Tipagens Legadas**: Algumas aulas restantes (como `AulaMarketingGerencial.tsx`) já possuem erros de tipagem TypeScript legados em seus simulados. Gostaria que já realizássemos a correção completa de todas as tipagens legadas à medida que otimizamos cada arquivo?
+3. **Escopo Estético Avançado (Tabelas)**: Além da performance (Abas Condicionais) e cores (Purple Ban), devemos converter todas as tabelas comparativas encontradas nessas aulas para o padrão premium responsivo (tabela detalhada no desktop e cards dinâmicos no mobile) implementado na aula de Suprimentos?
+
+---
+
+## 📅 Plano de Ação por Fases (Lotes Propostos)
+
+Para máxima confiabilidade e controle de regressões de tipagem, dividiremos o trabalho nos seguintes lotes lógicos:
+
+### 🔴 Lote 1: Aulas Críticas e Extensas (Fase 1)
+Arquivos de altíssimo impacto no DOM e na performance geral do app:
+1. 📄 **[AulaGestãoDePessoas.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestãoDePessoas.tsx)** (3.637 linhas - Crítico, incha o DOM severamente e abusa de cores banidas).
+2. 📄 **[AulaPlanejamentoEstrategico.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaPlanejamentoEstrategico.tsx)** (2.401 linhas - Crítico, sem condicional e violações de cores).
+3. 📄 **[AulaLei13303.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaLei13303.tsx)** (2.242 linhas - Elevado impacto no carregamento).
+4. 📄 **[AulaGestaoProcessos.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestaoProcessos.tsx)** (1.933 linhas - Gestão por Processos / BPM).
+
+---
+
+### 🟡 Lote 2: Aulas Médio-Altas (Fase 2)
+Arquivos de médio-alto volume que possuem inconsistências de performance e estilo:
+1. 📄 **[AulaGestaoProjetos.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestaoProjetos.tsx)** (1.465 linhas).
+2. 📄 **[AulaLogisticaSuprimento.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaLogisticaSuprimento.tsx)** (1.408 linhas).
+3. 📄 **[AulaContabilidadeBasica.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaContabilidadeBasica.tsx)** (1.368 linhas).
+4. 📄 **[AulaComprasSuprimento.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaComprasSuprimento.tsx)** (1.363 linhas).
+
+---
+
+### 🟢 Lote 3: Aulas de Média Complexidade (Fase 3)
+Arquivos complementares com pendências de performance:
+1. 📄 **[AulaRLCP.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaRLCP.tsx)** (1.312 linhas).
+2. 📄 **[AulaGestaoQualidadeSuprimento.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestaoQualidadeSuprimento.tsx)** (1.237 linhas).
+3. 📄 **[AulaDireitoTributario.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaDireitoTributario.tsx)** (1.130 linhas).
+4. 📄 **[AulaMarketingGerencial.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaMarketingGerencial.tsx)** (1.002 linhas - Possui erro de tipagem legado).
+
+---
+
+### 🔵 Lote 4: Aulas Leves (Fase 4)
+Arquivos mais rápidos que finalizam a padronização:
+1. 📄 **[AulaAdministracaoTributaria.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaAdministracaoTributaria.tsx)** (996 linhas).
+2. 📄 **[AulaAdministrativoTributario.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaAdministrativoTributario.tsx)** (915 linhas).
+3. 📄 **[AulaGovernancaCorporativa.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGovernancaCorporativa.tsx)** (347 linhas).
+
+---
+
+## 🧪 Plano de Verificação
+
+### Testes Automatizados
+* A cada fase (lote de arquivos modificado) executaremos o compilador de TypeScript para assegurar compatibilidade absoluta:
+  ```bash
+  pnpm exec tsc --noEmit
+  ```
+* Execução do linter unificado:
+  ```bash
+  python .agent/skills/lint-and-validate/scripts/lint_runner.py
+  ```
+
+### Testes Manuais
+* Validar no console se não existem regressões ou quebras ao transitar entre abas nos arquivos otimizados.

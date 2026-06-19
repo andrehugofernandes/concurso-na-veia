@@ -1,0 +1,44 @@
+# Sanitização Global de Direitos Autorais
+
+Remover 100% das referências nominais a autores contemporâneos e privados em todas as disciplinas (Português, Administração, TI, Matemática, etc.), garantindo que o conteúdo seja juridicamente neutro e institucional.
+
+## User Review Required
+
+> [!IMPORTANT]
+> Esta alteração afetará o tom de voz pedagógico. As citações diretas de "autoridades" serão transformadas em "autoridades conceituais" (ex: "A gramática normativa" em vez de "Bechara", "As teorias clássicas de administração" em vez de "Chiavenato").
+
+## Proposed Changes
+
+### [Component] Administração
+
+#### [MODIFY] [AulaGestãoDePessoas.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestãoDePessoas.tsx)
+- Linha 211: Remover "Evolução de Chiavenato" -> "Evolução Conceitual".
+- Linha 2559: Remover referência bibliográfica direta ao livro de Chiavenato.
+
+#### [MODIFY] [AulaAdministracaoGeralSuprimento.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaAdministracaoGeralSuprimento.tsx)
+- Linha 235: Remover "Chiavenato define:" -> "A bibliografia técnica define:".
+- Linha 726: Remover "Definição Chiavenato" -> "Definição Técnica".
+
+### [Component] Matemática
+
+#### [MODIFY] [AulaFuncoesExponenciais.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/AulaFuncoesExponenciais.tsx)
+- Linha 218: Remover "como os apresentados em livros de Gelson Iezzi e Dante Alighieri" -> "conforme a bibliografia clássica e manuais técnicos".
+
+### [Component] Auditoria por Matéria (Sweep Final)
+
+#### [AUDIT] TI e Operação
+- Varredura em busca de Tanenbaum, Forouzan, Stallings, Pressman, Sommerville.
+
+#### [AUDIT] Português
+- Verificação final por Bechara, Rocha Lima, Celso Cunha.
+
+#### [AUDIT] Segurança e Manutenção
+- Varredura por manuais de fabricantes específicos que possam ter copyright (substituir por "Normas Regulamentadoras" ou "Manuais Técnicos").
+
+## Verification Plan
+
+### Automated Tests
+- Rodar `grep` global em `src/components/aulas/` após as edições para confirmar **zero** ocorrências dos nomes proibidos.
+
+### Manual Verification
+- Leitura aleatória de 3 módulos de cada matéria para garantir que o texto flui bem sem os nomes dos autores.

@@ -1,0 +1,83 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+AV
+A VAGA
+É MINHA
+Simulador de Concursos
+[0] (66,111)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/dashboard' />
+	[1] (15,111)<div  />
+	[2] (45,111)<span >Dashboard />
+Estudo
+[3] (66,177)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90' href='/aulas' />
+	[4] (15,177)<div  />
+	[5] (35,177)<span >Aulas />
+[6] (66,219)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/aulas/ingles/petrolingo' />
+	[7] (15,219)<div  />
+	[8] (44,219)<span >PetroLingo />
+	[9] (101,219)<span >ELITE TOTAL />
+[10] (66,262)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-rapido' />
+	[11] (15,262)<div  />
+	[12] (60,262)<span >Simulados Rápidos />
+[13] (66,305)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-especifico' />
+	[14] (15,305)<div  />
+	[15] (65,305)<span >Simulados Específicos />
+[16] (66,347)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/maratona-100' />
+	[17] (15,347)<div  />
+	[18] (50,347)<span >Maratona 100 />
+[19] (66,390)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/historico' />
+	[20] (15,390)<div  />
+	[21] (41,390)<span >Histórico />
+[22] (66,433)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/rankings' />
+	[23] (15,433)<div  />
+	[24] (41,433)<span >Rankings />
+Suporte
+[25] (66,499)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/seja-pro' />
+	[26] (15,499)<div  />
+	[27] (40,499)<span >Seja Pro />
+[28] (66,541)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/tickets' />
+	[29] (15,541)<div  />
+	[30] (58,541)<span >Abertura de Ticket />
+[31] (159,38)<button aria-label='Colapsar menu' class='p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300 flex-shrink-0' />
+Contabilidade Básica
+[32] (891,38)<button aria-label='Notificações' class='flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' id='radix-_r_6_' />
+[33] (918,38)<button aria-label='Tema Escuro' class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' />
+[34] (945,38)<button class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors' id='radix-_r_8_' />
+	[35] (945,38)<div  />
+[36] (973,38)<button class='relative h-10 w-10 rounded-full border-2 border-primary' id='radix-_r_a_' />
+	[37] (973,38)<span  />
+		[38] (973,38)<img  />
+Exemplos de Aplicação
+Petrobras Exploração
+Contabilidade registra todos os gastos com perfuração, produção e transporte de óleo, fornecendo informações para análise de rentabilidade por campo.
+Decisão de Investimento
+Gerentes da Petrobras usam demonstrações contábeis para decidir se investir em novas plataformas ou modernizar refinarias.
+Conformidade Regulatória
+Governo fiscaliza os registros contábeis da Petrobras para garantir cumprimento de leis tributárias e regulatórias.
+3
+tópicos disponíveis
+1
+QUIZ: Fundamentos da Profissão
+Teste seus conhecimentos para consolidar o aprendizado.
+1
+.
+A contabilidade é definida como:
+[39] (567,713)<button class='w-full text-left px-4 py-3 rounded-lg border-2 border-border hover:border-indigo-500 text-foreground text-sm transition-all duration-200'>Uma arte de registrar apenas transações de caixa />
+	[40] (260,713)<span >Uma arte de registrar apenas transações de caixa
+) />
+[41] (567,767)<button class='w-full text-left px-4 py-3 rounded-lg border-2 border-border hover:border-indigo-500 text-foreground text-sm transition-all duration-200'>Uma ciência social que estuda o patrimônio das empresas />
+	[42] (276,767)<span >Uma ciência social que estuda o patrimônio das empresas
+) />
+[43] (567,821)<button class='w-full text-left px-4 py-3 rounded-lg border-2 border-border hover:border-indigo-500 text-foreground text-sm transition-all duration-200'>Um departamento financeiro das empresas />
+	[44] (249,821)<span >Um departamento financeiro das empresas
+) />
+[45] (567,876)<button class='w-full text-left px-4 py-3 rounded-lg border-2 border-border hover:border-indigo-500 text-foreground text-sm transition-all duration-200'>Um sistema de cobrança de impostos />
+	[46] (237,876)<span >Um sistema de cobrança de impostos
+) />
+2
+.
+Qual é o principal objetivo da contabilidade?
+[47] (969,942)<button aria-label='Voltar ao topo' class='fixed bottom-[106px] md:bottom-8 z-[100] p-2.5 md:p-4 rounded-full bg-primary text-primary-foreground shadow-2xl transition-all duration-500 hover:scale-110 active:scale-95 group cursor-pointer flex items-center justify-center right-4 md:right-8 left-auto opacity-100 translate-y-0' />
+
+</current_dom>

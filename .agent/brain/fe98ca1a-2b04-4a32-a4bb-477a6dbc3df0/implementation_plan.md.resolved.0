@@ -1,0 +1,77 @@
+# Plano de Finalização: Português 100% (Ultimate V4.1)
+
+Este plano visa garantir que todas as aulas de Português estejam em conformidade com o padrão **Ultimate V4.1**, apresentando uma "Rich Intro" impactante e seguindo a metodologia **C.E.D.E.** (Conteúdo, Engajamento, Design, Avaliação).
+
+## Auditoria de Status Atual
+
+| Aula | Módulos | Rich Intro | C.E.D.E. | Quiz Pool | Status |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| Sintaxe | 10 | ✅ | ⚠️ Parcial | ⚠️ Pequeno | Pendente Consolidação |
+| Tipos Textuais | 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Engajamento |
+| Ortografia | **6** | ✅ | ⚠️ Parcial | ✅ Grande | **Crítico (Faltam 4 módulos)** |
+| Concordância | 10 | ✅ | ✅ | ✅ | **Quase Pronto** |
+| Coesão/Coerência| 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Revisão |
+| Pontuação | 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Revisão |
+| Regência | 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Revisão |
+| Crase | 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Revisão |
+| Classes de Palavras| 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Revisão |
+| Interpretação | 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Revisão |
+| Reescrita Frases | 10 | ✅ | ⚠️ Parcial | ✅ Médio | Pendente Revisão |
+
+## Mudanças Propostas
+
+### 1. Padronização de Estrutura (Uniformidade de 10 Módulos)
+- **[CRÍTICO] Ortografia**: Expandir de 6 para 10 módulos para manter a consistência visual do currículo.
+  - Novos módulos: *Hifenização Avançada*, *Siglas e Abreviaturas*, *Grafia de Nomes Próprios/Topônimos*, *Revisão Geral CESGRANRIO*.
+
+### 2. Implementação do Padrão C.E.D.E. Completo
+Para cada módulo de cada aula, garantiremos a presença de:
+- **Design (D)**: `ModuleBanner` com ícone temático e gradiente premium.
+- **Conteúdo (C)**: Texto pedagógico estruturado com `ModuleSectionHeader`.
+- **Engajamento (E)**: 
+  - `FlipCard` para conceitos rápidos.
+  - `ContentAccordion` para detalhes técnicos.
+  - `MusicPlayerCard` ou `VideoModal` onde for pertinente.
+  - `ModuleConsolidation` (Obrigatório ao final de cada módulo).
+- **Avaliação (E)**: `QuizInterativo` com pool mínima de 5 questões por módulo (usando `getRandomQuestions`).
+
+### 3. Rich Intro & Consolidação
+- Refatorar aulas que ainda utilizam estruturas legadas de texto simples para usar `ModuleSectionHeader`.
+- Adicionar o componente `ModuleConsolidation` em todos os módulos para reforçar o aprendizado antes do quiz.
+
+---
+
+## Detalhes por Componente
+
+### [Aula Sintaxe](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaSintaxe.tsx)
+- **[MODIFY]**: Adicionar `ModuleConsolidation` em cada um dos 10 módulos.
+- **[MODIFY]**: Expandir `QUIZ_MOD7_POOL` a `QUIZ_MOD10_POOL` (atualmente vazios ou placeholders).
+
+### [Aula Ortografia](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaOrtografia.tsx)
+- **[MODIFY]**: Refatorar para usar `AulaTemplate` (se ainda houver resquícios de TabbedContent puro).
+- **[NEW]**: Implementar Módulos 7, 8, 9 e 10.
+- **[MODIFY]**: Adicionar `ModuleConsolidation`.
+
+### [Todas as outras listas]
+- **[MODIFY]**: Verificar presença de `ModuleBanner` e `ModuleConsolidation`.
+- **[MODIFY]**: Garantir que o Quiz use `getRandomQuestions(pool, 5)`.
+
+---
+
+## Perguntas Abertas (User Review Required)
+
+> [!IMPORTANT]
+> 1. **Ortografia**: Para os 4 novos módulos de Ortografia, você tem preferência por algum tema específico ou posso seguir com a sugestão (Hífen II, Siglas, Topônimos e Revisão Geral)?
+> 2. **Quiz Pools**: Algumas pools inline estão pequenas. Devo priorizar a criação de novas questões autorais ou posso consolidar das bases de dados `.ts` existentes?
+
+---
+
+## Plano de Verificação
+
+### Testes Manuais (Navegação)
+- Verificar se o `StickyModuleNav` exibe corretamente os 10 botões em todas as aulas.
+- Testar a transição entre módulos e o carregamento aleatório dos quizzes.
+- Validar a renderização dos `FlipCards` (evitando overflow).
+
+### Auditoria de Código
+- Executar `python .agent/scripts/checklist.py` ao final para validar Integridade e Lint.

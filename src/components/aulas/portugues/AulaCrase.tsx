@@ -479,11 +479,11 @@ export default function AulaCrase({
           concurso="Processo Seletivo Petrobras"
           enunciado="A crase é a fusão de quais elementos gramaticais?"
           alternativas={[
-              { letra: "A", texto: "Preposição \"a\" + Artigo definido \"a\"", correta: true },
+            { letra: "A", texto: "Preposição \"a\" + Artigo definido \"a\"", correta: true },
               { letra: "B", texto: "Preposição \"a\" + Pronome pessoal \"ela\"", correta: false },
               { letra: "C", texto: "Artigo \"a\" + Verbo haver", correta: false },
               { letra: "D", texto: "Preposição \"para\" + Artigo \"a\"", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -795,11 +795,11 @@ export default function AulaCrase({
           concurso="Processo Seletivo Petrobras"
           enunciado='Qual é a "Regra de Ouro" para identificar crase?'
           alternativas={[
-              { letra: "A", texto: "Trocar por masculino e ver se vira \"AO\"", correta: true },
+            { letra: "A", texto: "Trocar por masculino e ver se vira \"AO\"", correta: true },
               { letra: "B", texto: "Trocar por plural", correta: false },
               { letra: "C", texto: "Ver se a palavra termina em a", correta: false },
               { letra: "D", texto: "Sempre usar crase antes de feminino", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1084,11 +1084,11 @@ export default function AulaCrase({
           concurso="Processo Seletivo Petrobras"
           enunciado="Nunca ocorre crase antes de:"
           alternativas={[
-              { letra: "A", texto: "Palavras femininas", correta: false },
+            { letra: "A", texto: "Palavras femininas", correta: false },
               { letra: "B", texto: "Verbos", correta: true },
               { letra: "C", texto: "Horas", correta: false },
               { letra: "D", texto: "Locuções adverbiais", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1356,11 +1356,11 @@ export default function AulaCrase({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual frase está CORRETA quanto ao uso de crase com pronomes?"
           alternativas={[
-              { letra: "A", texto: "Referi-me a ela com respeito", correta: true },
+            { letra: "A", texto: "Referi-me a ela com respeito", correta: true },
               { letra: "B", texto: "Referi-me à ela com respeito", correta: false },
               { letra: "C", texto: "Referi-me à Vossa Senhoria", correta: false },
               { letra: "D", texto: "Dedico isso à você", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1637,11 +1637,11 @@ export default function AulaCrase({
           concurso="Processo Seletivo Petrobras"
           enunciado="Antes de nomes próprios femininos, o uso da crase é:"
           alternativas={[
-              { letra: "A", texto: "Obrigatório", correta: false },
+            { letra: "A", texto: "Obrigatório", correta: false },
               { letra: "B", texto: "Proibido", correta: false },
               { letra: "C", texto: "Facultativo", correta: true },
               { letra: "D", texto: "Obrigatório no plural", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1809,11 +1809,11 @@ export default function AulaCrase({
           concurso="Processo Seletivo Petrobras"
           enunciado="Antes de possessivos femininos, a crase é:"
           alternativas={[
-              { letra: "A", texto: "Obrigatória", correta: false },
+            { letra: "A", texto: "Obrigatória", correta: false },
               { letra: "B", texto: "Proibida", correta: false },
               { letra: "C", texto: "Facultativa", correta: true },
               { letra: "D", texto: "Inexistente", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2072,11 +2072,11 @@ export default function AulaCrase({
           concurso="Processo Seletivo Petrobras"
           enunciado='Em "A reunião é ___ 14h30"'
           alternativas={[
-              { letra: "A", texto: "a 14h30", correta: false },
+            { letra: "A", texto: "a 14h30", correta: false },
               { letra: "B", texto: "à 14h30", correta: false },
               { letra: "C", texto: "às 14h30", correta: true },
               { letra: "D", texto: "em 14h30", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Indicação de hora:"
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2332,11 +2332,11 @@ export default function AulaCrase({
           concurso="Processo Seletivo Petrobras"
           enunciado='Em "Vou ____ casa"'
           alternativas={[
-              { letra: "A", texto: "Vou à casa (com crase)", correta: false },
+            { letra: "A", texto: "Vou à casa (com crase)", correta: false },
               { letra: "B", texto: "Vou a casa (sem crase)", correta: true },
               { letra: "C", texto: "Vou casa (sem preposição)", correta: false },
               { letra: "D", texto: "Vou na casa (preposição diferente)", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2592,11 +2592,11 @@ export default function AulaCrase({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual alternativa está CORRETA com pronomes demonstrativos?"
           alternativas={[
-              { letra: "A", texto: "Aludi àquilo que você disse", correta: false },
+            { letra: "A", texto: "Aludi àquilo que você disse", correta: false },
               { letra: "B", texto: "Aludi àquele documento", correta: false },
               { letra: "C", texto: "Aludi àqueles rapazes", correta: false },
               { letra: "D", texto: "Todas as alternativas estão corretas", correta: true }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2855,11 +2855,11 @@ export default function AulaCrase({
           concurso="Processo Seletivo Petrobras"
           enunciado='Em "A Petrobras dedica-se ____ inovação e ____ desenvolvimento"'
           alternativas={[
-              { letra: "A", texto: "a / a", correta: false },
+            { letra: "A", texto: "a / a", correta: false },
               { letra: "B", texto: "à / à", correta: false },
               { letra: "C", texto: "a / à", correta: true },
               { letra: "D", texto: "à / a", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Desenvolvimento é masculino (a desenvolvimento)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },

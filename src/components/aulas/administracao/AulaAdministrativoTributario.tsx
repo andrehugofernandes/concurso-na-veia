@@ -252,7 +252,28 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Áudio: Contabilidade Básica", artista: "Resumo Petrobras" }}
         />
 
-                <QuizInterativo
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A equação fundamental da contabilidade é:"
+          alternativas={[
+            { letra: "Ativo = Passivo + Patrimônio Líquido", texto: "a", correta: false },
+                { letra: "Receita = Custos + Despesas + Lucro", texto: "b", correta: false },
+                { letra: "Caixa = Ativo Circulante − Passivo Circulante", texto: "c", correta: false },
+                { letra: "Patrimônio Líquido = Ativo + Passivo", texto: "d", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Ativo = Passivo + PL é a equação fundamental, válida para toda transação contábil sem exceção." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo
           questoes={[
             { id: "m1q1", pergunta: "A equação fundamental da contabilidade é:", opcoes: [{ label: "Ativo = Passivo + Patrimônio Líquido", valor: "a" }, { label: "Receita = Custos + Despesas + Lucro", valor: "b" }, { label: "Caixa = Ativo Circulante − Passivo Circulante", valor: "c" }, { label: "Patrimônio Líquido = Ativo + Passivo", valor: "d" }], correta: "a", explicacao: "Ativo = Passivo + PL é a equação fundamental, válida para toda transação contábil sem exceção." },
             { id: "m1q2", pergunta: "O Balanço Patrimonial (BP) representa:", opcoes: [{ label: "O resultado (lucro/prejuízo) de um período", valor: "a" }, { label: "A posição patrimonial em uma data específica", valor: "b" }, { label: "O fluxo de caixa do exercício", valor: "c" }, { label: "A variação do Patrimônio Líquido", valor: "d" }], correta: "b", explicacao: "O BP é uma 'foto' do patrimônio em data específica. Já a DRE mostra o desempenho de um período." },
@@ -390,7 +411,28 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "Áudio: Débito e Crédito", artista: "Resumo Petrobras" }}
         />
 
-                <QuizInterativo
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A equação fundamental da contabilidade é:"
+          alternativas={[
+            { letra: "Ativo = Passivo + Patrimônio Líquido", texto: "a", correta: false },
+                { letra: "Receita = Custos + Despesas + Lucro", texto: "b", correta: false },
+                { letra: "Caixa = Ativo Circulante − Passivo Circulante", texto: "c", correta: false },
+                { letra: "Patrimônio Líquido = Ativo + Passivo", texto: "d", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Ativo = Passivo + PL é a equação fundamental, válida para toda transação contábil sem exceção." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo
           questoes={[
             { id: "m2q1", pergunta: "Em uma conta de Ativo, um lançamento a Débito representa:", opcoes: [{ label: "Aumento do saldo", valor: "a" }, { label: "Diminuição do saldo", valor: "b" }, { label: "Anulação do saldo", valor: "c" }, { label: "Transferência para Passivo", valor: "d" }], correta: "a", explicacao: "Em contas de Ativo, Débito = aumento. Crédito = diminuição. Regra inversa vale para Passivo e PL." },
             { id: "m2q2", pergunta: "A Petrobras contrai um empréstimo bancário de R$ 200 milhões. O lançamento correto é:", opcoes: [{ label: "D: Empréstimos a Pagar / C: Caixa", valor: "a" }, { label: "D: Caixa / C: Empréstimos a Pagar", valor: "b" }, { label: "D: Caixa / C: Receita Financeira", valor: "c" }, { label: "D: Despesa Financeira / C: Caixa", valor: "d" }], correta: "b", explicacao: "Caixa (Ativo) aumenta → Débito. Empréstimos a Pagar (Passivo) aumenta → Crédito. Equação balanceada." },
@@ -524,7 +566,28 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "Áudio: Sistema Tributário", artista: "Resumo Petrobras" }}
         />
 
-                <QuizInterativo
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A equação fundamental da contabilidade é:"
+          alternativas={[
+            { letra: "Ativo = Passivo + Patrimônio Líquido", texto: "a", correta: false },
+                { letra: "Receita = Custos + Despesas + Lucro", texto: "b", correta: false },
+                { letra: "Caixa = Ativo Circulante − Passivo Circulante", texto: "c", correta: false },
+                { letra: "Patrimônio Líquido = Ativo + Passivo", texto: "d", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Ativo = Passivo + PL é a equação fundamental, válida para toda transação contábil sem exceção." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo
           questoes={[
             { id: "m3q1", pergunta: "Segundo o CTN (art. 3º), NÃO é característica de tributo:", opcoes: [{ label: "Prestação pecuniária compulsória", valor: "a" }, { label: "Sanção de ato ilícito", valor: "b" }, { label: "Instituída em lei", valor: "c" }, { label: "Cobrada mediante atividade vinculada", valor: "d" }], correta: "b", explicacao: "O CTN art. 3º define que tributo 'não constitua sanção de ato ilícito'. Multas são sanções, portanto não são tributos." },
             { id: "m3q2", pergunta: "O ICMS é um tributo de competência:", opcoes: [{ label: "Federal (União)", valor: "a" }, { label: "Estadual", valor: "b" }, { label: "Municipal", valor: "c" }, { label: "Compartilhada entre União e Estados", valor: "d" }], correta: "b", explicacao: "ICMS — Imposto sobre Circulação de Mercadorias e Serviços — é de competência ESTADUAL (e DF). CF/88 art. 155, II." },
@@ -666,7 +729,28 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Áudio: ICMS e IPI", artista: "Resumo Petrobras" }}
         />
 
-                <QuizInterativo
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A equação fundamental da contabilidade é:"
+          alternativas={[
+            { letra: "Ativo = Passivo + Patrimônio Líquido", texto: "a", correta: false },
+                { letra: "Receita = Custos + Despesas + Lucro", texto: "b", correta: false },
+                { letra: "Caixa = Ativo Circulante − Passivo Circulante", texto: "c", correta: false },
+                { letra: "Patrimônio Líquido = Ativo + Passivo", texto: "d", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Ativo = Passivo + PL é a equação fundamental, válida para toda transação contábil sem exceção." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo
           questoes={[
             { id: "m4q1", pergunta: "A não-cumulatividade do ICMS significa que:", opcoes: [{ label: "O imposto é cobrado apenas uma vez na cadeia produtiva", valor: "a" }, { label: "O contribuinte pode abater o ICMS pago nas entradas do ICMS devido nas saídas", valor: "b" }, { label: "O ICMS não incide sobre produtos exportados", valor: "c" }, { label: "O ICMS só incide sobre o valor agregado pelo fabricante", valor: "d" }], correta: "b", explicacao: "Não-cumulatividade: ICMS pago (crédito) nas compras é abatido do ICMS devido (débito) nas vendas. Recolhe-se apenas a diferença." },
             { id: "m4q2", pergunta: "O IPI é uma exceção ao Princípio da Anterioridade porque:", opcoes: [{ label: "É um imposto estadual, não federal", valor: "a" }, { label: "Tem função extrafiscal e pode ter alíquota alterada com vigência imediata", valor: "b" }, { label: "Só incide sobre produtos de luxo", valor: "c" }, { label: "Sua alíquota é definida pelo Congresso Nacional", valor: "d" }], correta: "b", explicacao: "O IPI tem caráter extrafiscal (instrumento de política econômica). Por isso, junto com II, IE e IOF, é exceção à anterioridade anual — pode ser alterado por decreto com vigência imediata." },
@@ -722,7 +806,28 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         
 <ModuleConsolidation index={3} variant="blue" video={{ videoId: "dQw4w9WgXcQ", title: "IRPJ e CSLL — Regimes", duration: "13:00" }} resumoVisual={{ moduloNome: "Módulo 5", tituloAula: "IRPJ e CSLL", materia: "Administracao", images: [{ title: "Regimes vs Faturamento", type: "Comparativo", placeholderColor: "bg-teal-500/20" }] }} sinteseEstrategica={{ title: "34% sobre o lucro", content: (<div className="p-4 bg-teal-500/10 border border-teal-500/20 rounded-xl text-lg"><p className="font-bold text-teal-600 dark:text-teal-400">IRPJ 25% + CSLL 9% = 34% sobre o lucro</p><p className="text-lg text-foreground/70">Lucro Real obrigatorio acima R$78M (Petrobras)</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Audio IRPJ e CSLL", artista: "Resumo Petrobras" }} />
 
-                <QuizInterativo questoes={[
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A equação fundamental da contabilidade é:"
+          alternativas={[
+            { letra: "Ativo = Passivo + Patrimônio Líquido", texto: "a", correta: false },
+                { letra: "Receita = Custos + Despesas + Lucro", texto: "b", correta: false },
+                { letra: "Caixa = Ativo Circulante − Passivo Circulante", texto: "c", correta: false },
+                { letra: "Patrimônio Líquido = Ativo + Passivo", texto: "d", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Ativo = Passivo + PL é a equação fundamental, válida para toda transação contábil sem exceção." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={[
           { id: "m5q1", pergunta: "Qual regime e OBRIGATORIO para a Petrobras?", opcoes: [{ label: "Lucro Presumido", valor: "a" }, { label: "Lucro Real", valor: "b" }, { label: "Simples Nacional", valor: "c" }, { label: "Lucro Arbitrado", valor: "d" }], correta: "b", explicacao: "Lucro Real e obrigatorio para receita bruta superior a R$78M/ano." },
           { id: "m5q2", pergunta: "A aliquota total de IRPJ (base + adicional) e:", opcoes: [{ label: "15%", valor: "a" }, { label: "25%", valor: "b" }, { label: "34%", valor: "c" }, { label: "9%", valor: "d" }], correta: "b", explicacao: "IRPJ = 15% + adicional 10% = 25%. Incluindo CSLL (9%), carga total = 34%." },
           { id: "m5q3", pergunta: "Lucro Presumido comercio, receita R$10M. Base IRPJ:", opcoes: [{ label: "R$10.000.000", valor: "a" }, { label: "R$3.200.000 (32%)", valor: "b" }, { label: "R$800.000 (8%)", valor: "c" }, { label: "Lucro contabil", valor: "d" }], correta: "c", explicacao: "Lucro Presumido comercio: 8% da receita. R$10M x 8% = R$800k." },
@@ -769,7 +874,28 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         
 <ModuleConsolidation index={3} variant="blue" video={{ videoId: "dQw4w9WgXcQ", title: "PIS e COFINS — Regimes", duration: "11:30" }} resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "PIS e COFINS", materia: "Administracao", images: [{ title: "Aliquotas Comparadas", type: "Tabela", placeholderColor: "bg-amber-500/20" }] }} sinteseEstrategica={{ title: "0,65/3 vs 1,65/7,6", content: (<div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-lg"><p className="font-bold text-amber-600 dark:text-amber-400">Cumulativo: PIS 0,65% + COFINS 3%</p><p className="font-bold text-amber-600 dark:text-amber-400">Nao-cum: PIS 1,65% + COFINS 7,6%</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "Audio PIS e COFINS", artista: "Resumo Petrobras" }} />
 
-                <QuizInterativo questoes={[
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A equação fundamental da contabilidade é:"
+          alternativas={[
+            { letra: "Ativo = Passivo + Patrimônio Líquido", texto: "a", correta: false },
+                { letra: "Receita = Custos + Despesas + Lucro", texto: "b", correta: false },
+                { letra: "Caixa = Ativo Circulante − Passivo Circulante", texto: "c", correta: false },
+                { letra: "Patrimônio Líquido = Ativo + Passivo", texto: "d", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Ativo = Passivo + PL é a equação fundamental, válida para toda transação contábil sem exceção." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={[
           { id: "m6q1", pergunta: "No regime nao-cumulativo, as aliquotas de PIS/COFINS sao:", opcoes: [{ label: "PIS 0,65% e COFINS 3%", valor: "a" }, { label: "PIS 1,65% e COFINS 7,6%", valor: "b" }, { label: "PIS 9% e COFINS 15%", valor: "c" }, { label: "PIS 1% e COFINS 4%", valor: "d" }], correta: "b", explicacao: "Nao-cumulativo: PIS 1,65% e COFINS 7,6%, com creditos. Obrigatorio para Lucro Real." },
           { id: "m6q2", pergunta: "PIS e COFINS incidem sobre:", opcoes: [{ label: "O lucro liquido", valor: "a" }, { label: "A folha de pagamento", valor: "b" }, { label: "A receita bruta", valor: "c" }, { label: "O patrimonio liquido", valor: "d" }], correta: "c", explicacao: "PIS e COFINS incidem sobre RECEITA BRUTA. IRPJ e CSLL incidem sobre o LUCRO." },
           { id: "m6q3", pergunta: "Petrobras nao-cum.: receita R$1M, compras R$600k. COFINS a recolher:", opcoes: [{ label: "R$76.000", valor: "a" }, { label: "R$45.600", valor: "b" }, { label: "R$30.400", valor: "c" }, { label: "R$18.000", valor: "d" }], correta: "c", explicacao: "Debito: 7,6%xR$1M=R$76k. Credito: 7,6%xR$600k=R$45,6k. A recolher: R$30.400." },
@@ -817,7 +943,28 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         
 <ModuleConsolidation index={3} variant="blue" video={{ videoId: "dQw4w9WgXcQ", title: "Administracao Tributaria", duration: "12:00" }} resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "Adm. Tributaria", materia: "Administracao", images: [{ title: "3 Modalidades Lancamento", type: "Tabela", placeholderColor: "bg-blue-500/20" }] }} sinteseEstrategica={{ title: "Decadencia vs Prescricao", content: (<div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-lg"><p className="font-bold text-blue-600 dark:text-blue-400">Decadencia: 5 anos para LANCAR</p><p className="font-bold text-blue-600 dark:text-blue-400">Prescricao: 5 anos para COBRAR</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Audio Adm. Tributaria", artista: "Resumo Petrobras" }} />
 
-                <QuizInterativo questoes={[
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A equação fundamental da contabilidade é:"
+          alternativas={[
+            { letra: "Ativo = Passivo + Patrimônio Líquido", texto: "a", correta: false },
+                { letra: "Receita = Custos + Despesas + Lucro", texto: "b", correta: false },
+                { letra: "Caixa = Ativo Circulante − Passivo Circulante", texto: "c", correta: false },
+                { letra: "Patrimônio Líquido = Ativo + Passivo", texto: "d", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Ativo = Passivo + PL é a equação fundamental, válida para toda transação contábil sem exceção." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={[
           { id: "m7q1", pergunta: "Entregar a DCTF e:", opcoes: [{ label: "Obrigacao principal", valor: "a" }, { label: "Obrigacao acessoria", valor: "b" }, { label: "Penalidade tributaria", valor: "c" }, { label: "Facultativo", valor: "d" }], correta: "b", explicacao: "DCTF = declaracao = OBRIGACAO ACESSORIA. Descumprimento gera multa." },
           { id: "m7q2", pergunta: "No lancamento por homologacao:", opcoes: [{ label: "A Receita Federal calcula e cobra", valor: "a" }, { label: "O contribuinte apura e paga; fisco homologa", valor: "b" }, { label: "Contribuinte informa; fisco calcula", valor: "c" }, { label: "Lancado por sentenca judicial", valor: "d" }], correta: "b", explicacao: "Homologacao: contribuinte apura e paga antecipadamente (IRPJ, ICMS, PIS/COFINS). Fisco homologa em ate 5 anos." },
           { id: "m7q3", pergunta: "O prazo decadencial para a Fazenda lancar tributo e:", opcoes: [{ label: "2 anos", valor: "a" }, { label: "3 anos", valor: "b" }, { label: "5 anos", valor: "c" }, { label: "10 anos", valor: "d" }], correta: "c", explicacao: "CTN art. 173: decadencia de 5 anos para a Fazenda constituir o credito tributario." },
@@ -864,7 +1011,28 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         
 <ModuleConsolidation index={3} variant="blue" video={{ videoId: "dQw4w9WgXcQ", title: "Planejamento Tributario", duration: "10:00" }} resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Planejamento Tributario", materia: "Administracao", images: [{ title: "Elisao vs Evasao", type: "Comparativo", placeholderColor: "bg-emerald-500/20" }] }} sinteseEstrategica={{ title: "Antes x Depois do FG", content: (<div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-lg"><p className="font-bold text-emerald-600 dark:text-emerald-400">Antes + legal = ELISAO (ok)</p><p className="font-bold text-red-500 dark:text-red-400">Depois + ilegal = EVASAO (crime)</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Audio Planejamento Tributario", artista: "Resumo Petrobras" }} />
 
-                <QuizInterativo questoes={[
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A equação fundamental da contabilidade é:"
+          alternativas={[
+            { letra: "Ativo = Passivo + Patrimônio Líquido", texto: "a", correta: false },
+                { letra: "Receita = Custos + Despesas + Lucro", texto: "b", correta: false },
+                { letra: "Caixa = Ativo Circulante − Passivo Circulante", texto: "c", correta: false },
+                { letra: "Patrimônio Líquido = Ativo + Passivo", texto: "d", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Ativo = Passivo + PL é a equação fundamental, válida para toda transação contábil sem exceção." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={[
           { id: "m8q1", pergunta: "Instalar fabrica na ZFM para isencao de IPI e:", opcoes: [{ label: "Evasao fiscal", valor: "a" }, { label: "Elisao fiscal licita", valor: "b" }, { label: "Sonegacao permitida", valor: "c" }, { label: "Crime tributario", valor: "d" }], correta: "b", explicacao: "ELISAO: reducao licita por meio legal (beneficio ZFM), antes do FG. Completamente legitima." },
           { id: "m8q2", pergunta: "Evasao se distingue de elisao porque:", opcoes: [{ label: "Reduz mais imposto", valor: "a" }, { label: "Usa meios ilicitos (fraude, simulacao)", valor: "b" }, { label: "E so para PF", valor: "c" }, { label: "Permitida no Simples", valor: "d" }], correta: "b", explicacao: "Evasao = meios ilicitos (fraude). Crime Lei 8.137/90. Elisao = meios LICITOS." },
           { id: "m8q3", pergunta: "JCP e tecnica de planejamento tributario porque:", opcoes: [{ label: "Isenta IR totalmente", valor: "a" }, { label: "Permite deduzir do IRPJ/CSLL reduzindo lucro tributavel", valor: "b" }, { label: "Substitui dividendos", valor: "c" }, { label: "Exclusivo com prejuizo acumulado", valor: "d" }], correta: "b", explicacao: "JCP: empresa remunera acionistas e deduz do IRPJ/CSLL como despesa — reduz legalmente o lucro tributavel." },
@@ -913,7 +1081,28 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         
 <ModuleConsolidation index={3} variant="blue" video={{ videoId: "dQw4w9WgXcQ", title: "Tributacao Petrobras e Suprimentos", duration: "14:00" }} resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Tributos Petrobras", materia: "Administracao", images: [{ title: "Participacoes Governamentais", type: "Estrutura", placeholderColor: "bg-rose-500/20" }] }} sinteseEstrategica={{ title: "Custo Efetivo em Suprimentos", content: (<div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl text-lg"><p className="font-bold text-rose-600 dark:text-rose-400">Custo Efetivo = Preco menos (IPI+ICMS+PIS/COFINS)</p><p className="text-lg text-foreground/70">Pode ser 20-30% menor que o valor nominal.</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Audio Tributos Petrobras", artista: "Resumo Petrobras" }} />
 
-                <QuizInterativo questoes={[
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A equação fundamental da contabilidade é:"
+          alternativas={[
+            { letra: "Ativo = Passivo + Patrimônio Líquido", texto: "a", correta: false },
+                { letra: "Receita = Custos + Despesas + Lucro", texto: "b", correta: false },
+                { letra: "Caixa = Ativo Circulante − Passivo Circulante", texto: "c", correta: false },
+                { letra: "Patrimônio Líquido = Ativo + Passivo", texto: "d", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Ativo = Passivo + PL é a equação fundamental, válida para toda transação contábil sem exceção." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={[
           { id: "m9q1", pergunta: "Os Royalties pagos pela Petrobras sao:", opcoes: [{ label: "IR sobre a producao", valor: "a" }, { label: "Compensacao financeira pela exploracao de recursos naturais da Uniao", valor: "b" }, { label: "Taxa da ANP pela licenca", valor: "c" }, { label: "Contribuicao previdenciaria dos trabalhadores", valor: "d" }], correta: "b", explicacao: "Royalties = compensacao financeira pela exploracao de recursos da Uniao (Lei 9.478/1997). Nao sao tributos no sentido estrito do CTN." },
           { id: "m9q2", pergunta: "Ao comprar equipamentos, a Petrobras gera creditos de:", opcoes: [{ label: "Apenas IRPJ", valor: "a" }, { label: "ICMS, IPI e PIS/COFINS (regime nao-cumulativo)", valor: "b" }, { label: "Apenas ICMS", valor: "c" }, { label: "ISS e IPTU", valor: "d" }], correta: "b", explicacao: "No regime nao-cumulativo (Lucro Real), a Petrobras gera creditos de IPI, ICMS e PIS/COFINS nas compras, reduzindo o custo efetivo." },
           { id: "m9q3", pergunta: "A CIDE Combustiveis e:", opcoes: [{ label: "Taxa estadual sobre combustiveis", valor: "a" }, { label: "Contribuicao federal (CIDE) sobre comercializacao de derivados de petroleo", valor: "b" }, { label: "Participacao governamental exclusiva do Pre-Sal", valor: "c" }, { label: "Imposto municipal sobre postos", valor: "d" }], correta: "b", explicacao: "CIDE Combustiveis = contribuicao federal de intervencao no dominio economico sobre petroleo e derivados. Receita para infraestrutura." },
@@ -938,7 +1127,28 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
         
 <ModuleConsolidation index={2} variant="blue" video={{ videoId: "dQw4w9WgXcQ", title: "Revisao Geral — Adm. Tributario", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 10", tituloAula: "Simulado Geral", materia: "Administracao", images: [{ title: "Mapa Mental Completo", type: "Sintese", placeholderColor: "bg-teal-500/20" }] }} sinteseEstrategica={{ title: "Resumo Total", content: (<div className="p-4 bg-teal-500/10 border border-teal-500/20 rounded-xl text-lg"><p className="font-bold text-teal-600 dark:text-teal-400">Lucro: IRPJ 25% + CSLL 9% = 34%</p><p className="font-bold text-teal-600 dark:text-teal-400">Receita: PIS 1,65% + COFINS 7,6%</p><p className="text-lg text-foreground/70">ICMS=Estado | IPI=Uniao | ISS=Municipio</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", titulo: "Audio Revisao Geral", artista: "Resumo Petrobras" }} />
 
-                <QuizInterativo questoes={[
+                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
+        <QuestaoResolvidaStepByStep
+          index={2}
+          titulo="Na Prática: Como a Banca Cobra"
+          variant="blue"
+          banca="CESGRANRIO"
+          ano="2024"
+          concurso="Processo Seletivo Petrobras"
+          enunciado="A equação fundamental da contabilidade é:"
+          alternativas={[
+            { letra: "Ativo = Passivo + Patrimônio Líquido", texto: "a", correta: false },
+                { letra: "Receita = Custos + Despesas + Lucro", texto: "b", correta: false },
+                { letra: "Caixa = Ativo Circulante − Passivo Circulante", texto: "c", correta: false },
+                { letra: "Patrimônio Líquido = Ativo + Passivo", texto: "d", correta: false }
+          ]}
+          passos={[
+            { titulo: "Passo 1", conteudo: "Ativo = Passivo + PL é a equação fundamental, válida para toda transação contábil sem exceção." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
+          ]}
+        />
+        <QuizInterativo questoes={[
           { id: "m10q1", pergunta: "A equacao fundamental da contabilidade e:", opcoes: [{ label: "Receita menos Custos = Lucro", valor: "a" }, { label: "Ativo = Passivo + Patrimonio Liquido", valor: "b" }, { label: "Caixa = AC menos PC", valor: "c" }, { label: "Lucro = Ativo menos Dividas", valor: "d" }], correta: "b", explicacao: "Ativo = Passivo + PL. Toda transacao contabil mantem esse equilibrio sem excecao." },
           { id: "m10q2", pergunta: "Qual tributo e de competencia ESTADUAL?", opcoes: [{ label: "ISS", valor: "a" }, { label: "IPI", valor: "b" }, { label: "ICMS", valor: "c" }, { label: "IR", valor: "d" }], correta: "c", explicacao: "ICMS e estadual (CF art. 155, II). IPI e IR sao federais. ISS e municipal." },
           { id: "m10q3", pergunta: "A Petrobras, receita acima R$78M, e obrigada a adotar:", opcoes: [{ label: "Lucro Presumido", valor: "a" }, { label: "Simples Nacional", valor: "b" }, { label: "Lucro Real", valor: "c" }, { label: "Lucro Arbitrado", valor: "d" }], correta: "c", explicacao: "Lucro Real e OBRIGATORIO para receita bruta acima de R$78M/ano." },

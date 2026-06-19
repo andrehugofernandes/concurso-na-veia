@@ -1,0 +1,22 @@
+# Walkthrough - AulaEquacoes1Grau.tsx Build Fix
+
+Resolvi o erro de compilação no componente `AulaEquacoes1Grau.tsx` causado por caracteres especiais do JSX não escapados em blocos de texto.
+
+## Mudanças Realizadas
+
+### Matemática
+
+#### [AulaEquacoes1Grau.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/AulaEquacoes1Grau.tsx)
+
+- Escapei as chaves `{` e `}` em uma notação de conjunto matemático para evitar que o parser do JSX as interpretasse como expressões JavaScript.
+
+```diff
+- Por exemplo, x ≤ 5 é satisfeito por {..., 3, 4, 5} inteiros, mas também por 5, 4.9, 4.999, etc. em reais.
++ Por exemplo, x ≤ 5 é satisfeito por &#123;..., 3, 4, 5&#125; inteiros, mas também por 5, 4.9, 4.999, etc. em reais.
+```
+
+## Verificação Realizada
+
+- **Revisão Manual:** Analisei todas as 3035 linhas do arquivo em busca de outros caracteres não escapados (`<`, `{`, `}`).
+- **Busca Automatizada:** Executei um `grep` para encontrar padrões de tags `<p>` contendo `<` ou `{` literais.
+- **Conformidade:** O arquivo agora segue as normas de segurança de sintaxe do JSX/React, o que deve permitir que o Turbopack complete o build com sucesso.

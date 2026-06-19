@@ -1,0 +1,14 @@
+- [x] Remover 'Encaminhamentos' e 'Ofícios' do [admin-sidebar.tsx](file:///C:/GSW/PMAVV/PMAVV/src/components/admin/admin-sidebar.tsx)
+- [x] Construir novo Dashboard Moderno com botões de Ações Rápidas
+- [x] Atualizar Schemas e Actions ([denuncias-actions.ts](file:///C:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/denuncias-actions.ts)), removendo `numero_origem` e `encaminhamentos`
+- [x] Atualizar Formulário Aba/Step Denúncia: Remover `numero_origem`, e adicionar 'Breve Relato' se `pertinente_trabalho_avv` === NÃO
+- [x] Atualizar Formulário Aba/Step Vítima: Adicionar Quantidade + Iteração
+- [x] Atualizar Formulário Aba/Step Agressor: Adicionar Quantidade + Iteração
+- [x] Remover Steps/Lógicas visuais de Encaminhamentos e Ofícios
+- [x] Corrigir erros de Hidratação e Nesting de Botões (Base UI)
+- [x] Refinar layout do formulário de denúncia (Pertinente NÃO)
+- [x] Implementar Órgãos de Origem como Checkboxes (Multi-select)
+- [x] Restaurar Encaminhamentos como Checkboxes no Formulário
+- [x] Sincronizar Banco de Dados para Suporte a Múltiplas Origens
+- [x] Adicionar campo 'OUTROS' condicional para Origens e Encaminhamentos
+- [x] Garantir que Seção 2 e 3 permaneçam visíveis em todos os casos

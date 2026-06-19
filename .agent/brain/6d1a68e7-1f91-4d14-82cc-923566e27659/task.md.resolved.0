@@ -1,0 +1,7 @@
+# Tarefa: Ajustar Badge do Logo
+
+- [ ] Modificar [PetrobrasLogo.tsx](file:///c:/Workspace/petrobras-quest/src/components/PetrobrasLogo.tsx)
+    - [ ] Cor de fundo: Branco
+    - [ ] Arredondamento: `rounded-md`
+    - [ ] Ajustar sombra para harmonizar com fundo branco
+- [ ] Validar visual final

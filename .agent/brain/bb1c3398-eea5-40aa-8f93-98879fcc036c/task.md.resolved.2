@@ -1,0 +1,9 @@
+- [x] Restaurar MFA (2FA) Real (Owner Perms)
+    - [x] Adicionar colunas `totp_secret` e `totp_enabled` no `schema.prisma`
+    - [x] Executar `npx prisma db push`
+- [x] Remover Bypasses de Segurança
+    - [x] Restaurar lógica real em `2fa/status/route.ts`
+    - [x] Restaurar lógica real em `verify-2fa/route.ts`
+- [/] Verificação Final
+    - [ ] Confirmar que o QR Code é exibido para novos logins
+    - [ ] Validar Badge "Active Directory" ou "Senha Local" continua funcionando

@@ -1,0 +1,38 @@
+# Padronização do MusicPlayerCard como Placeholder
+
+Este plano visa substituir o placeholder estático de música por um componente `MusicPlayerCard` visualmente funcional (estilo Spotify), conforme solicitado, garantindo que o design premium seja mantido mesmo para conteúdos em produção.
+
+## User Review Required
+
+> [!IMPORTANT]
+> A mudança afetará a geração de todas as novas aulas e a estrutura da aula de Classes de Palavras.
+> O `MusicPlayerCard` será renderizado com dados de "Em Breve" mas com a interface de player real.
+
+## Proposed Changes
+
+### [Workflow]
+
+#### [MODIFY] [aula-ultimate.md](file:///c:/Workspace/petrobras-quest/.agent/workflows/aula-ultimate.md)
+- Atualizar a documentação do Bloco 5 para incluir o `MusicPlayerCard`.
+
+### [Scripts]
+
+#### [MODIFY] [ultimate-sanitizer.js](file:///c:/Workspace/petrobras-quest/scripts/ultimate-sanitizer.js)
+- Alterar a função `generateMesaRevisao` para retornar o `MusicPlayerCard` na aba de áudio.
+
+### [Componentes]
+
+#### [MODIFY] [AulaClassesPalavras.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaClassesPalavras.tsx)
+- Substituir a `div` estática pelo componente `MusicPlayerCard` em todos os módulos.
+
+## Open Questions
+
+- Existe alguma preferência por imagem de capa para o placeholder? (Usarei uma padrão do Unsplash relacionada a música/estudo).
+
+## Verification Plan
+
+### Automated Tests
+- Verificar se o build continua passando após a substituição.
+
+### Manual Verification
+- Visualizar a Aula de Classes de Palavras no navegador e confirmar se a aba de Música exibe o player estilo Spotify.

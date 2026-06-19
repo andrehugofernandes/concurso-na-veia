@@ -18,6 +18,7 @@ import { useSetPageTitle } from "@/contexts/UIContext";
 import { CARGO_ID_MAP } from "@/lib/cargos-map";
 import { getRankingAction } from "@/lib/actions/ranking";
 import { getCurrentUserAction } from "@/lib/actions/auth";
+import { useTelemetry } from "@/hooks/useTelemetry";
 
 interface UserData {
   nome: string;
@@ -43,6 +44,7 @@ export default function DashboardPage() {
   const [user, setUser] = useState<UserData | null>(null);
   const [loadingUser, setLoadingUser] = useState(true);
   const [stats, setStats] = useState({ completed: 0, inProgress: 0, total: 0 });
+  const { fetchProfile, profile: telemetryProfile, isLoadingProfile } = useTelemetry();
 
   const { progressData: allContentProgress, loading: loadingProgress } =
     useAllAulasProgress();
@@ -75,6 +77,7 @@ export default function DashboardPage() {
         if (result.status === "success") {
           setUser(result.data);
         }
+        await fetchProfile();
       } catch (error) {
         console.error("Error loading user:", error);
       } finally {
@@ -124,19 +127,20 @@ export default function DashboardPage() {
     );
   }
 
-  // Safe user data handling
+  // Mix Auth profile with Gamification profile
   const userData: UserData = user
     ? {
         ...user,
         conquistas: user.conquistas || [],
         questoes_certas: user.questoes_certas || 0,
         questoes_erradas: user.questoes_erradas || 0,
-        xp: user.xp || 0,
-        sequencia_atual: user.sequencia_atual || 0,
+        xp: telemetryProfile?.current_xp ?? (user.xp || 0),
+        sequencia_atual: telemetryProfile?.streak_days ?? (user.sequencia_atual || 0),
         questoes_geradas: user.questoes_geradas || 0,
         nivel: user.nivel || "medio",
         cargo: user.cargo || "operacao",
         plan: user.plan || "free",
+        nivel_jogador: telemetryProfile?.current_level ?? "Estagiário",
         nome:
           user.nome ||
           (user as any).user_metadata?.full_name ||
@@ -155,14 +159,14 @@ export default function DashboardPage() {
         nivel: "medio",
         cargo: "operacao",
         plan: "free",
-        xp: 150,
-        nivel_jogador: "Estagiário",
-        questoes_certas: 8,
-        questoes_erradas: 2,
-        sequencia_atual: 3,
-        maior_sequencia: 5,
+        xp: telemetryProfile?.current_xp ?? 0,
+        nivel_jogador: telemetryProfile?.current_level ?? "Estagiário",
+        questoes_certas: 0,
+        questoes_erradas: 0,
+        sequencia_atual: telemetryProfile?.streak_days ?? 0,
+        maior_sequencia: 0,
         conquistas: [],
-        questoes_geradas: 10,
+        questoes_geradas: 0,
         nivelConcurso: "medio",
         diasRestantesTrial: 7,
         simuladosHoje: 0,
@@ -192,14 +196,59 @@ export default function DashboardPage() {
   return (
     <div className="p-4 md:p-8 space-y-8">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-        <div className="animate-in fade-in slide-in-from-left duration-500">
-          <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-1">
-            Olá, {userData.nome.split(" ")[0]}! 👋
-          </h1>
-          <p className="text-muted-foreground">
-            Pronto para superar seus limites hoje?
-          </p>
+        <div className="animate-in fade-in slide-in-from-left duration-500 flex-1">
+          <div className="flex items-center gap-3 mb-1">
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
+              Olá, {userData.nome.split(" ")[0]}! 👋
+            </h1>
+            {userData.plan === 'elite-total' && (
+              <span className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-widest shadow-sm shadow-yellow-500/20">
+                PRO ELITE
+              </span>
+            )}
+          </div>
+          
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-4">
+            {/* Gamification Badge - Streak */}
+            <div className="flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 px-3 py-1.5 rounded-lg w-fit">
+              <span className={`text-xl ${userData.sequencia_atual > 0 ? 'animate-pulse drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] text-orange-500' : 'text-zinc-500 grayscale'}`}>
+                🔥
+              </span>
+              <div className="flex flex-col leading-none">
+                <span className="text-[10px] text-orange-600 dark:text-orange-400 font-bold uppercase tracking-wider">
+                  Ofensiva
+                </span>
+                <span className="text-sm font-black text-foreground">
+                  {userData.sequencia_atual} dias
+                </span>
+              </div>
+            </div>
+
+            {/* Gamification - XP Bar */}
+            <div className="flex-1 max-w-sm">
+              <div className="flex justify-between items-end mb-1">
+                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
+                  Nível {userData.nivel_jogador}
+                </span>
+                <span className="text-xs font-black text-primary">
+                  {userData.xp} XP
+                </span>
+              </div>
+              <div className="h-2.5 bg-muted rounded-full overflow-hidden border border-border/50">
+                <div 
+                  className="h-full bg-gradient-to-r from-primary to-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)] transition-all duration-1000 ease-out relative"
+                  style={{ width: `${Math.min(100, Math.max(5, (userData.xp % 1000) / 10))}%` }}
+                >
+                  <div className="absolute top-0 right-0 bottom-0 w-4 bg-white/20 blur-[2px] animate-pulse"></div>
+                </div>
+              </div>
+              <p className="text-[9px] text-muted-foreground mt-1 text-right">
+                Próximo nível em {1000 - (userData.xp % 1000)} XP
+              </p>
+            </div>
+          </div>
         </div>
+
         {userData.plan === "free" && (
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full md:w-auto">
             <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-start bg-card/50 sm:bg-transparent px-3 py-2 sm:p-0 rounded-xl border border-border/50 sm:border-none">
@@ -486,7 +535,7 @@ export default function DashboardPage() {
                 </Link>
 
                 <Link
-                  href="/dashboard/maratona-100"
+                  href="/plano-estudos"
                   className="group bg-card backdrop-blur-lg rounded-xl p-6 border border-border shadow-lg hover:border-emerald-500/50 transition-all hover:transform hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/10"
                 >
                   <div className="flex flex-col xs:flex-row items-center xs:items-start gap-4">

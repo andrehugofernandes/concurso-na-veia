@@ -1,0 +1,39 @@
+# Sanitização Global de Direitos Autorais
+
+Remover 100% das referências nominais a autores contemporâneos e privados em todas as disciplinas (Português, Administração, TI, Matemática, etc.), garantindo que o conteúdo seja juridicamente neutro e institucional.
+
+## User Review Required
+
+> [!IMPORTANT]
+> Esta alteração afetará o tom de voz pedagógico. As citações diretas de "autoridades" serão transformadas em "autoridades conceituais" (ex: "A gramática normativa" em vez de "Bechara", "As teorias clássicas de administração" em vez de "Chiavenato").
+
+## Proposed Changes
+
+### [Component] Administração
+
+#### [MODIFY] [AulaGestãoDePessoas.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestãoDePessoas.tsx)
+- Linha 211: Remover "Evolução de Chiavenato" -> "Evolução Conceitual".
+- Linha 2559: Remover referência bibliográfica direta ao livro de Chiavenato.
+
+#### [MODIFY] [AulaAdministracaoGeralSuprimento.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaAdministracaoGeralSuprimento.tsx)
+- Linha 235: Remover "Chiavenato define:" -> "A bibliografia técnica define:".
+- Linha 726: Remover "Definição Chiavenato" -> "Definição Técnica".
+
+### [Component] Outras Matérias
+
+#### [AUDIT] TI
+- Varredura manual em `AulaEngenhariaSoftware.tsx` e `AulaRedesComputadores.tsx` (se houver) para remover referências a Pressman, Sommerville, Tanenbaum e Kurose.
+
+#### [AUDIT] Matemática
+- Varredura em busca de Iezzi, Dante e Paiva.
+
+#### [AUDIT] Inglês
+- Varredura por referências a Oxford/Cambridge.
+
+## Verification Plan
+
+### Automated Tests
+- Rodar `grep` global em `src/components/aulas/` após as edições para confirmar **zero** ocorrências dos nomes proibidos.
+
+### Manual Verification
+- Leitura aleatória de 3 módulos de cada matéria para garantir que o texto flui bem sem os nomes dos autores.

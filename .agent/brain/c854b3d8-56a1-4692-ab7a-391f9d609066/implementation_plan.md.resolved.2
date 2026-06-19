@@ -1,0 +1,41 @@
+# Plano de Reparo: Indexação e Realocação Ultimate
+
+Identificamos que a falha na indexação foi causada por um bug no script `fix-module-variants.js`, que "desistia" de processar componentes que continham tags internas (como o novo Macete Visual rico que usa `<>`, `<div>`, etc.). Além disso, os scripts de realocação de resumos precisam ser sincronizados com a indexação global.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Automação de Quizzes:** Propomos que o script de variantes também ajuste o `numero={...}` do Quiz para que ele seja SEMPRE o último card do módulo (Total + 1), eliminando a necessidade de rodar dois scripts separados.
+
+## Proposed Changes
+
+### 1. Script de Variantes e Indexação
+#### [MODIFY] [fix-module-variants.js](file:///c:/Workspace/petrobras-quest/scripts/fix-module-variants.js)
+- **Correção da Tag End:** Remover a restrição que abortava o processamento ao encontrar `<` interno. Agora o script confiará apenas no balanceamento de chaves e na sequência `/>` no nível zero de chaves.
+- **Indexação de Quizzes:** Adicionar loop para encontrar `<QuizInterativo` e atribuir `numero={index + 1}`.
+- **Robustez:** Melhorar a regex para capturar `index={...}` e `numero={...}` mesmo com espaços.
+
+### 2. Script de Resumo e Multimídia
+#### [MODIFY] [fix-resumo-multimedia.js](file:///c:/Workspace/petrobras-quest/scripts/fix-resumo-multimedia.js)
+- **Formatação:** Ajustar para que a inserção de imagens siga a nova indentação premium, facilitando a leitura e a manutenção futura.
+
+## Open Questions
+
+- Você concorda em unificar a lógica de indexação de Quizzes dentro do script de variantes para evitar inconsistências futuras?
+
+## Verification Plan
+
+### Automated Tests
+1. **Executar Scripts:**
+   ```bash
+   node scripts/fix-module-variants.js --force
+   node scripts/fix-resumo-multimedia.js --force
+   node scripts/fix-module-variants.js --force  # Re-fazer indexação após remoção
+   ```
+2. **Auditoria de Código:**
+   - Verificar `AulaConjuntos.tsx` via `grep` para confirmar sequência 1, 2, 3, 4, 5.
+   - Diagnosticar se o `ModuleConsolidation` agora possui o índice correto (ex: 4).
+
+### Manual Verification
+1. Abrir `http://localhost:3000/aulas/matematica/conjuntos` no navegador.
+2. Confirmar visualmente se todos os cards estão numerados do 1 ao fim sem saltos ou repetições.

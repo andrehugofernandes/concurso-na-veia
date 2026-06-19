@@ -1,0 +1,16 @@
+# Tarefa: Teste Ostensivo de Login e Aulas - Engenharia de Petróleo
+
+## Plano de Ação
+- [ ] 1. Acessar `http://localhost:3000/login`
+- [ ] 2. Logar com `andrehugo-eng-petroleo-sup` / `andrehugo-eng-petroleo-sup`
+- [ ] 3. Navegar para `/aulas`
+- [ ] 4. Verificar cabeçalho "Conteúdo personalizado para: Engenharia de Petróleo"
+- [ ] 5. Verificar cards dos Blocos I, II e III
+- [ ] 6. Clicar no Bloco I e verificar ementa ('Perfuração', 'Cimentação')
+- [ ] 7. Clicar em 'Perfuração' e confirmar "placeholder premium"
+- [ ] 8. Gerar relatório final
+
+## Observações
+- Usuário: `andrehugo-eng-petroleo-sup`
+- Senha: `andrehugo-eng-petroleo-sup`
+- Rota alvo: `/aulas`

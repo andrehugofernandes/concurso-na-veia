@@ -1,0 +1,72 @@
+# Plano de Implementação: Integração do Google Gemini Pro
+
+Este plano descreve a integração oficial do Google Gemini Pro para a geração de questões de simulados, utilizando o SDK `@google/generative-ai` e um padrão de provedores unificado.
+
+## Proposta de Mudanças
+
+### 0. Gerenciamento de Custos (Prioridade)
+
+- **Priorizar Gemini Pro (Free Tier)**: O Gemini no Google AI Studio oferece um generoso plano gratuito (15 requisições por minuto no modelo Flash).
+- **Adicionar ApiFreeLLM (Fallback/Alternativa)**: Suporte para o provedor ApiFreeLLM (baseado em LLaMA 3.3) que é totalmente gratuito.
+
+### 1. Dependências
+
+- Instalar o pacote oficial do Google: `@google/generative-ai`.
+- Instalar `openai` SDK (ou usar fetch) para compatibilidade com ApiFreeLLM.
+
+---
+
+### 2. Infraestrutura de IA (Provedores)
+
+- **[NOVO] [src/lib/ai/provider.ts](file:///c:/Workspace/petrobras-quest/src/lib/ai/provider.ts)**: Fábrica de provedores que decide qual serviço usar. Ordem de prioridade: Gemini -> ApiFreeLLM -> Anthropic (último caso).
+- **[NOVO] [src/lib/ai/providers/base-provider.ts](file:///c:/Workspace/petrobras-quest/src/lib/ai/providers/base-provider.ts)**: Interface comum para garantir# Debugging e Otimização da Geração de Simulados
+
+Este plano foca em resolver os erros persistentes na geração de questões e garantir que os simulados completos (ex: 20 questões) sejam gerados corretamente, sem falhas no loop de requisições.
+
+## User Review Required
+
+> [!IMPORTANT]
+> A geração de 20 questões em sequência pode levar de 30 a 60 segundos devido à natureza gratuita das APIs e à necessidade de evitar rate limits. Adicionaremos uma barra de progresso visual.
+
+## Proposed Changes
+
+### Backend (AI System)
+
+---
+
+#### [MODIFY] [freellm-provider.ts](file:///c:/Workspace/petrobras-quest/src/lib/ai/providers/freellm-provider.ts)
+- Melhorar o regex de captura de JSON para lidar com textos extras da IA.
+- Adicionar logs de performance (tempo de resposta).
+
+#### [MODIFY] [route.ts](file:///c:/Workspace/petrobras-quest/src/app/api/gerar-questao/route.ts)
+- Aumentar o timeout da rota (se possível no ambiente local) para evitar cortes prematuros.
+- Melhorar a limpeza de logs de debug para produção.
+
+### Frontend (Dashboard)
+
+---
+
+#### [MODIFY] [page.tsx](file:///c:/Workspace/petrobras-quest/src/app/(dashboard)/simulado-rapido/page.tsx)
+- Corrigir a lógica do loop em [gerarQuestoes](file:///c:/Workspace/petrobras-quest/src/app/%28dashboard%29/simulado-rapido/page.tsx#155-284) para não "desistir" na primeira falha.
+- Aumentar o `setTimeout` entre requisições para 500ms (evitar 429/Rate Limit).
+- Melhorar o tratamento de erro no [gerarQuestaoIA](file:///c:/Workspace/petrobras-quest/src/app/%28dashboard%29/simulado-rapido/page.tsx#122-154) para capturar e exibir a mensagem real da API.
+- Adicionar um estado de progresso (`questoesGeradasCount`) para feedback em tempo real.
+
+## Verification Plan
+
+### Automated Tests
+- Usar [tmp/test-api.js](file:///c:/Workspace/petrobras-quest/tmp/test-api.js) para validar a geração múltipla via script.
+- Verificar logs do servidor durante a geração do simulado de 20 questões.
+
+### Manual Verification
+- Iniciar um Simulado Completo (20 q) no dashboard.
+- Verficar se a barra de progresso avança e se todas as 20 questões aparecem no final.
+4. Alternar o provedor padrão (via `.env`) e validar se a geração continua funcional com o Gemini.
+
+### Testes de Script
+
+1. Criar um script temporário em `/tmp/test-ai.ts` para validar a resposta de ambos os provedores.
+2. Executar via `npx tsx /tmp/test-ai.ts` (se disponível) ou via rota de teste temporária.
+
+> [!IMPORTANT]
+> A integração com o Gemini via SDK é mais resiliente do que o fetch manual, pois lida melhor com retentativas e formatação de resposta.

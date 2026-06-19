@@ -456,16 +456,15 @@ export default function AulaPontuacao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual a função primordial do sistema de pontuação na escrita?"
           alternativas={[
-            { label: "A", valor: "Marcar as pausas para a respiração do leitor." },
-                { label: "B", valor: "Indicar o nível de coesão entre as estruturas e manifestar propriedades da fala." },
-                { label: "C", valor: "Diferenciar substantivos próprios de comuns." },
-                { label: "D", valor: "Obrigar o leitor a ler mais devagar." }
+            { letra: "A", texto: "Marcar as pausas para a respiração do leitor.", correta: false },
+                { letra: "B", texto: "Indicar o nível de coesão entre as estruturas e manifestar propriedades da fala.", correta: true },
+                { letra: "C", texto: "Diferenciar substantivos próprios de comuns.", correta: false },
+                { letra: "D", texto: "Obrigar o leitor a ler mais devagar.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "A pontuação organiza a sintaxe e a clareza, indo muito além de simples pausas respiratórias.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A pontuação organiza a sintaxe e a clareza, indo muito além de simples pausas respiratórias." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -775,16 +774,15 @@ export default function AulaPontuacao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Assinale a alternativa que apresenta um erro de pontuação (vírgula proibida):"
           alternativas={[
-            { label: "A", valor: "Os diretores da Petrobras, decidiram o novo plano." },
-                { label: "B", valor: "Ontem, decidiram o plano." },
-                { label: "C", valor: "Decidiram, conforme o previsto, o plano." },
-                { label: "D", valor: "O plano, enfim, foi decidido." }
+            { letra: "A", texto: "Os diretores da Petrobras, decidiram o novo plano.", correta: true },
+                { letra: "B", texto: "Ontem, decidiram o plano.", correta: false },
+                { letra: "C", texto: "Decidiram, conforme o previsto, o plano.", correta: false },
+                { letra: "D", texto: "O plano, enfim, foi decidido.", correta: false }
           ]}
-          correta="A"
           passos={[
-            "Nunca se separa o sujeito (Os diretores...) do verbo (decidiram) por vírgula simples.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Nunca se separa o sujeito (Os diretores...) do verbo (decidiram) por vírgula simples." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1008,16 +1006,15 @@ export default function AulaPontuacao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em 'Comprei tubos, válvulas, conexões e flanges', as vírgulas separam:"
           alternativas={[
-            { label: "A", valor: "Apostos explicativos." },
-                { label: "B", valor: "Elementos de uma enumeração." },
-                { label: "C", valor: "Vocativos." },
-                { label: "D", valor: "Adjuntos adverbiais longos." }
+            { letra: "A", texto: "Apostos explicativos.", correta: false },
+                { letra: "B", texto: "Elementos de uma enumeração.", correta: true },
+                { letra: "C", texto: "Vocativos.", correta: false },
+                { letra: "D", texto: "Adjuntos adverbiais longos.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "A vírgula é usada para separar itens listados (enumeração).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A vírgula é usada para separar itens listados (enumeração)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1245,16 +1242,15 @@ export default function AulaPontuacao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual a pontuação correta para o vocativo na frase abaixo?"
           alternativas={[
-            { label: "A", valor: "Mário entregue o relatório." },
-                { label: "B", valor: "Mário, entregue o relatório." },
-                { label: "C", valor: "Mário entregue, o relatório." },
-                { label: "D", valor: "Entregue o relatório Mário." }
+            { letra: "A", texto: "Mário entregue o relatório.", correta: false },
+                { letra: "B", texto: "Mário, entregue o relatório.", correta: true },
+                { letra: "C", texto: "Mário entregue, o relatório.", correta: false },
+                { letra: "D", texto: "Entregue o relatório Mário.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "O vocativo (chamamento) deve ser sempre isolado por vírgula.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "O vocativo (chamamento) deve ser sempre isolado por vírgula." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1460,16 +1456,15 @@ export default function AulaPontuacao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Sobre o adjunto adverbial deslocado para o início da frase, a vírgula é OBRIGATÓRIA quando:"
           alternativas={[
-            { label: "A", valor: "O adjunto for curto (uma ou duas palavras)." },
-                { label: "B", valor: "O adjunto for longo (geralmente 3 ou mais palavras)." },
-                { label: "C", valor: "Nunca é obrigatória, apenas facultativa." },
-                { label: "D", valor: "Sempre que houver um verbo na frase." }
+            { letra: "A", texto: "O adjunto for curto (uma ou duas palavras).", correta: false },
+                { letra: "B", texto: "O adjunto for longo (geralmente 3 ou mais palavras).", correta: true },
+                { letra: "C", texto: "Nunca é obrigatória, apenas facultativa.", correta: false },
+                { letra: "D", texto: "Sempre que houver um verbo na frase.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Adjuntos adverbiais longos deslocados exigem vírgula para manter a clareza.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Adjuntos adverbiais longos deslocados exigem vírgula para manter a clareza." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1711,16 +1706,15 @@ export default function AulaPontuacao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Usa-se vírgula antes da conjunção 'E' quando:"
           alternativas={[
-            { label: "A", valor: "As orações apresentam sujeitos diferentes." },
-                { label: "B", valor: "A conjunção é repetida (polissíndeto)." },
-                { label: "C", valor: "O " },
-                { label: "D", valor: "Todas as alternativas anteriores." }
+            { letra: "A", texto: "As orações apresentam sujeitos diferentes.", correta: false },
+                { letra: "B", texto: "A conjunção é repetida (polissíndeto).", correta: false },
+                { letra: "C", texto: "O ", correta: false },
+                { letra: "D", texto: "Todas as alternativas anteriores.", correta: true }
           ]}
-          correta="D"
           passos={[
-            "São os três casos clássicos de vírgula antes do 'E'.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "São os três casos clássicos de vírgula antes do 'E'." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1920,16 +1914,15 @@ export default function AulaPontuacao({
           concurso="Processo Seletivo Petrobras"
           enunciado="A oração adjetiva explicativa diferencia-se da restritiva pelo uso de:"
           alternativas={[
-            { label: "A", valor: "Ponto final." },
-                { label: "B", valor: "Vírgulas." },
-                { label: "C", valor: "Aspas." },
-                { label: "D", valor: "Travessão simples apenas no final." }
+            { letra: "A", texto: "Ponto final.", correta: false },
+                { letra: "B", texto: "Vírgulas.", correta: true },
+                { letra: "C", texto: "Aspas.", correta: false },
+                { letra: "D", texto: "Travessão simples apenas no final.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Explicativas vêm entre vírgulas; restritivas aparecem sem vírgulas.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Explicativas vêm entre vírgulas; restritivas aparecem sem vírgulas." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -2175,16 +2168,15 @@ export default function AulaPontuacao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Para que serve o ponto e vírgula em enumerações complexas?"
           alternativas={[
-            { label: "A", valor: "Para confundir o leitor." },
-                { label: "B", valor: "Para separar itens de uma lista que já possuem vírgulas internas." },
-                { label: "C", valor: "Para substituir o ponto final permanentemente." },
-                { label: "D", valor: "Para indicar uma pergunta sem ponto de interrogação." }
+            { letra: "A", texto: "Para confundir o leitor.", correta: false },
+                { letra: "B", texto: "Para separar itens de uma lista que já possuem vírgulas internas.", correta: true },
+                { letra: "C", texto: "Para substituir o ponto final permanentemente.", correta: false },
+                { letra: "D", texto: "Para indicar uma pergunta sem ponto de interrogação.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "O ponto e vírgula organiza a hierarquia de pausas em frases longas ou listas segmentadas.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "O ponto e vírgula organiza a hierarquia de pausas em frases longas ou listas segmentadas." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -2412,16 +2404,15 @@ export default function AulaPontuacao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Os dois-pontos podem ser usados para:"
           alternativas={[
-            { label: "A", valor: "Introduzir uma citação direta." },
-                { label: "B", valor: "Anunciar uma enumeração." },
-                { label: "C", valor: "Apresentar um esclarecimento ou síntese." },
-                { label: "D", valor: "Todas as alternativas anteriores." }
+            { letra: "A", texto: "Introduzir uma citação direta.", correta: false },
+                { letra: "B", texto: "Anunciar uma enumeração.", correta: false },
+                { letra: "C", texto: "Apresentar um esclarecimento ou síntese.", correta: false },
+                { letra: "D", texto: "Todas as alternativas anteriores.", correta: true }
           ]}
-          correta="D"
           passos={[
-            "Dois-pontos possuem função explicativa, enumerativa ou citativa.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Dois-pontos possuem função explicativa, enumerativa ou citativa." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -2660,6 +2651,7 @@ export default function AulaPontuacao({
               </p>
             </div>
           ) : (
+            <>
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -2670,16 +2662,15 @@ export default function AulaPontuacao({
           concurso="Processo Seletivo Petrobras"
           enunciado="Assinale a alternativa em que a pontuação está RIGOROSAMENTE CORRETA:"
           alternativas={[
-            { label: "A", valor: "A Petrobras, embora seja uma estatal, compete no mercado global." },
-                { label: "B", valor: "Petrobras embora seja uma estatal compete no mercado global." },
-                { label: "C", valor: "A Petrobras embora seja uma estatal, compete no mercado global." },
-                { label: "D", valor: "A Petrobras, embora seja uma estatal compete, no mercado global." }
+            { letra: "A", texto: "A Petrobras, embora seja uma estatal, compete no mercado global.", correta: true },
+                { letra: "B", texto: "Petrobras embora seja uma estatal compete no mercado global.", correta: false },
+                { letra: "C", texto: "A Petrobras embora seja uma estatal, compete no mercado global.", correta: false },
+                { letra: "D", texto: "A Petrobras, embora seja uma estatal compete, no mercado global.", correta: false }
           ]}
-          correta="A"
           passos={[
-            "A oração concessiva intercalada 'embora seja uma estatal' deve estar entre vírgulas.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A oração concessiva intercalada 'embora seja uma estatal' deve estar entre vírgulas." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -2690,6 +2681,7 @@ export default function AulaPontuacao({
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
           variant="blue"
         />
+            </>
           )}
         </div>
       </TabsContent>

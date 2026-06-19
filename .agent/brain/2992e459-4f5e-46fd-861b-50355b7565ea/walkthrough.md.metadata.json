@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Resumo da correção do erro de runtime no NavHeader e reestruturação do componente AulaClassesPalavras.tsx para conformidade com o sistema de design \"Ultimate\".",
+  "updatedAt": "2026-03-29T19:10:16.213367500Z"
+}

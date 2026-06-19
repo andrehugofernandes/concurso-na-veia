@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Plano para corrigir erro de tipagem no arquivo `page.tsx` das galerias de imagens. O erro ocorre porque o TypeScript não consegue garantir que `result.data` não seja `undefined` quando o status da action é `success`.",
+  "updatedAt":  "2026-04-08T17:59:44.884343900Z",
+  "requestFeedback":  true
+}

@@ -418,16 +418,15 @@ export default function AulaTiposTextuais({
           concurso="Processo Seletivo Petrobras"
           enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
           alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
+            { letra: "A", texto: "A descrição minuciosa do cenário físico.", correta: false },
+                { letra: "B", texto: "A presença de uma tese defendida pelo autor.", correta: false },
+                { letra: "C", texto: "A progressão temporal das ações (mudança de estado).", correta: true },
+                { letra: "D", texto: "O uso exclusivo da primeira pessoa do singular.", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -487,16 +486,15 @@ export default function AulaTiposTextuais({
           concurso="Processo Seletivo Petrobras"
           enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
           alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
+            { letra: "A", texto: "A descrição minuciosa do cenário físico.", correta: false },
+                { letra: "B", texto: "A presença de uma tese defendida pelo autor.", correta: false },
+                { letra: "C", texto: "A progressão temporal das ações (mudança de estado).", correta: true },
+                { letra: "D", texto: "O uso exclusivo da primeira pessoa do singular.", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -553,16 +551,15 @@ export default function AulaTiposTextuais({
           concurso="Processo Seletivo Petrobras"
           enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
           alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
+            { letra: "A", texto: "A descrição minuciosa do cenário físico.", correta: false },
+                { letra: "B", texto: "A presença de uma tese defendida pelo autor.", correta: false },
+                { letra: "C", texto: "A progressão temporal das ações (mudança de estado).", correta: true },
+                { letra: "D", texto: "O uso exclusivo da primeira pessoa do singular.", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -622,16 +619,15 @@ export default function AulaTiposTextuais({
           concurso="Processo Seletivo Petrobras"
           enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
           alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
+            { letra: "A", texto: "A descrição minuciosa do cenário físico.", correta: false },
+                { letra: "B", texto: "A presença de uma tese defendida pelo autor.", correta: false },
+                { letra: "C", texto: "A progressão temporal das ações (mudança de estado).", correta: true },
+                { letra: "D", texto: "O uso exclusivo da primeira pessoa do singular.", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -688,16 +684,15 @@ export default function AulaTiposTextuais({
           concurso="Processo Seletivo Petrobras"
           enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
           alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
+            { letra: "A", texto: "A descrição minuciosa do cenário físico.", correta: false },
+                { letra: "B", texto: "A presença de uma tese defendida pelo autor.", correta: false },
+                { letra: "C", texto: "A progressão temporal das ações (mudança de estado).", correta: true },
+                { letra: "D", texto: "O uso exclusivo da primeira pessoa do singular.", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -754,16 +749,15 @@ export default function AulaTiposTextuais({
           concurso="Processo Seletivo Petrobras"
           enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
           alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
+            { letra: "A", texto: "A descrição minuciosa do cenário físico.", correta: false },
+                { letra: "B", texto: "A presença de uma tese defendida pelo autor.", correta: false },
+                { letra: "C", texto: "A progressão temporal das ações (mudança de estado).", correta: true },
+                { letra: "D", texto: "O uso exclusivo da primeira pessoa do singular.", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -820,16 +814,15 @@ export default function AulaTiposTextuais({
           concurso="Processo Seletivo Petrobras"
           enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
           alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
+            { letra: "A", texto: "A descrição minuciosa do cenário físico.", correta: false },
+                { letra: "B", texto: "A presença de uma tese defendida pelo autor.", correta: false },
+                { letra: "C", texto: "A progressão temporal das ações (mudança de estado).", correta: true },
+                { letra: "D", texto: "O uso exclusivo da primeira pessoa do singular.", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -886,16 +879,15 @@ export default function AulaTiposTextuais({
           concurso="Processo Seletivo Petrobras"
           enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
           alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
+            { letra: "A", texto: "A descrição minuciosa do cenário físico.", correta: false },
+                { letra: "B", texto: "A presença de uma tese defendida pelo autor.", correta: false },
+                { letra: "C", texto: "A progressão temporal das ações (mudança de estado).", correta: true },
+                { letra: "D", texto: "O uso exclusivo da primeira pessoa do singular.", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -952,16 +944,15 @@ export default function AulaTiposTextuais({
           concurso="Processo Seletivo Petrobras"
           enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
           alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
+            { letra: "A", texto: "A descrição minuciosa do cenário físico.", correta: false },
+                { letra: "B", texto: "A presença de uma tese defendida pelo autor.", correta: false },
+                { letra: "C", texto: "A progressão temporal das ações (mudança de estado).", correta: true },
+                { letra: "D", texto: "O uso exclusivo da primeira pessoa do singular.", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1009,16 +1000,15 @@ export default function AulaTiposTextuais({
           concurso="Processo Seletivo Petrobras"
           enunciado="Para que um texto seja considerado uma narração no padrão CESGRANRIO, qual elemento é indispensável?"
           alternativas={[
-            { label: "A", valor: "A descrição minuciosa do cenário físico." },
-                { label: "B", valor: "A presença de uma tese defendida pelo autor." },
-                { label: "C", valor: "A progressão temporal das ações (mudança de estado)." },
-                { label: "D", valor: "O uso exclusivo da primeira pessoa do singular." }
+            { letra: "A", texto: "A descrição minuciosa do cenário físico.", correta: false },
+                { letra: "B", texto: "A presença de uma tese defendida pelo autor.", correta: false },
+                { letra: "C", texto: "A progressão temporal das ações (mudança de estado).", correta: true },
+                { letra: "D", texto: "O uso exclusivo da primeira pessoa do singular.", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A narração exige o 'motor' do tempo: fatos que acontecem uns após os outros, gerando uma mudança de estado." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo

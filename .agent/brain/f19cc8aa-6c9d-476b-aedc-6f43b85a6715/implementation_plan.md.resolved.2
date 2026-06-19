@@ -1,0 +1,30 @@
+# Plano de Implementação - Refinamento Elite Total & Níveis do Edital
+
+Este plano detalha a reorganização da página de aulas para agrupar profissões por nível (Técnico/Superior) e otimizar o posicionamento da Língua Inglesa.
+
+## Mudanças Propostas
+
+### 1. Camada de Dados (`src/data`)
+- **Inglês para Nível Técnico**: Garantir que as matérias de Inglês continuem disponíveis para usuários Elite, mesmo que seu cargo base seja de nível Técnico.
+
+### 2. Interface do Usuário (`src/app/(dashboard)/aulas/page.tsx`)
+
+#### Seção de Bases
+- **Bases Comuns**: Exibir apenas Português e Matemática para cargos de Nível Técnico.
+- **Bases Nível Superior**: Mover Inglês para uma subseção de "Bases Nível Superior" se o usuário for desse nível.
+- **Acesso Elite (Inglês)**: Se o usuário for Técnico mas Elite, exibir Inglês como uma matéria de acesso premium destacada.
+
+#### Catálogo Elite
+- **Agrupamento por Nível**: Dividir o catálogo em dois grupos principais:
+    - `Cargos de Nível Superior`
+    - `Cargos de Nível Técnico`
+- **Áreas Temáticas**: Dentro de cada nível, manter o cabeçalho das profissões conforme implementado.
+
+## Plano de Verificação
+
+### Testes Manuais
+1. **Usuário Técnico (Padrão)**: Deve ver apenas Português e Matemática nas bases.
+2. **Usuário Superior (Padrão/Elite)**: Deve ver Português, Matemática e Inglês nas bases.
+3. **Usuário Técnico (Elite)**: Deve encontrar Inglês na seção Elite ou em destaque, além das bases comuns.
+4. **Catálogo**: Verificar se a divisão entre "Nível Superior" e "Nível Técnico" está clara e correta.
+

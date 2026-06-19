@@ -1,0 +1,36 @@
+# Walkthrough - Correção das Regionais
+
+Concluí as alterações necessárias para normalizar a exibição das regionais em todo o sistema e atender ao pedido de inclusão da coluna na tela de denúncias.
+
+## Alterações Realizadas
+
+### 1. Normalização de Dados (Backend)
+Padronizei o acesso ao campo de nome da regional em todas as Server Actions envolvidas:
+- **[vitimas-actions.ts](file:///c:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/vitimas-actions.ts)**: Atualizada interface e include.
+- **[agressores-actions.ts](file:///c:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/agressores-actions.ts)**: Atualizada interface e include.
+- **[denuncias-actions.ts](file:///c:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/denuncias-actions.ts)**: Adicionado carregamento da regional da vítima no `listDenuncias`.
+
+### 2. Correção da Interface (Frontend)
+- **[vitima-table.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/vitimas/vitima-table.tsx)**: Corrigido o acesso ao campo `.nome` para eliminar o valor "Não informado".
+- **[denuncia-table.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-table.tsx)**: 
+  - Incluída a coluna **Regional** na aba de Vítimas.
+  - Corrigida a exibição da **Classificação**.
+  - **Aba Agressores**: Adicionados campos de **Endereço** e **Regional**.
+  - **Aba Denunciante**: Adicionado campo de **Relação Com a Vítima**.
+  - **Padronização Visual**: Implementado o componente `CellText` para uniformizar o tamanho (11px), peso (bold) e estilo (uppercase) de todos os textos das tabelas.
+
+- **[filter-bar.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/filter-bar.tsx)**: Redesenhado o CTA de **Modo de Seleção** para alinhar com a identidade visual (Skin) do sistema.
+  - Estado normal: Fundo branco, borda e texto em `var(--primary)`.
+  - Estado ativo/hover: Fundo preenchido e texto branco.
+  - Incluída a label "MODO DE SELEÇÃO" em caixa alta.
+
+### 4. Padronização Global
+- **[vitima-table.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/vitimas/vitima-table.tsx)**: Aplicada a mesma padronização de fontes e inclusão de badges.
+- **[denuncias-actions.ts](file:///c:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/denuncias-actions.ts)**: Atualizado o `include` do Prisma para carregar os dados de endereço e regional dos agressores.
+
+## Resultados
+- **Interface Completa**: As abas de Agressores e Denunciante agora exibem todas as informações essenciais.
+- **Dados Corretos**: Todos os campos solicitados estão sendo carregados do banco de dados e exibidos com a nova padronização visual.
+
+> [!TIP]
+> Recomendo recarregar a página para que as novas definições de colunas e dados do servidor sejam aplicadas.

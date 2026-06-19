@@ -1,0 +1,13 @@
+- `[x]` Atualizar do Script `ultimate-fixer.js` para V4 (Orchestrator) 🤖
+- `[x]` Reparar Sintaxe JSX na `AulaClassesPalavras.tsx` (M3/M4). 🩹
+- `[/]` Implementar Rich Intros (5 parágrafos) Módulos 4-10. 📝
+    - `[x]` M4: Pronome (SUBRE)
+    - `[ ]` M5: Verbo (FEA)
+    - `[ ]` M6: Advérbio (CILA)
+    - `[ ]` M7: Preposição (LIGA)
+    - `[ ]` M8: Conjunção (CONE)
+    - `[ ]` M9: Interjeição (EMO)
+    - `[ ]` M10: Numeral (COFM)
+- `[ ]` Rodar Motor V4 na aula completa. 🚀
+- `[ ]` Sincronizar o Workflow `.agent/workflows/aula-ultimate.md`. 🔄
+- `[ ]` Validação Visual Final via Browser. 📸

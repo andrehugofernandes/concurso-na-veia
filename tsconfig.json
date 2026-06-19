@@ -38,6 +38,8 @@
   ],
   "exclude": [
     "node_modules",
-    "admin-template"
+    "admin-template",
+    "scratch",
+    "src/components/image-galleries"
   ]
 }

@@ -28,6 +28,7 @@ export function useAulaProgress(materiaId?: string, topicoId?: string): UseAulaP
     const resolvedTopicoId = topicoId || (params?.topico as string) || '';
 
     const [progress, setProgress] = useState(0);
+    const [pendingProgress, setPendingProgress] = useState<number | null>(null);
     const [completed, setCompleted] = useState(false);
     const [completedModules, setCompletedModules] = useState<string[]>([]);
     const [loading, setLoading] = useState(true);
@@ -95,37 +96,66 @@ export function useAulaProgress(materiaId?: string, topicoId?: string): UseAulaP
         return () => { isMounted = false; };
     }, [resolvedMateriaId, resolvedTopicoId, supabase]);
 
-    // Atualizar progresso (debounced no componente que usa)
+    // Efeito para debounce de progresso (2 segundos)
+    useEffect(() => {
+        if (pendingProgress === null || completed || !resolvedMateriaId || !resolvedTopicoId) return;
+
+        const timer = setTimeout(async () => {
+            try {
+                const { data: { user } } = await supabase.auth.getUser();
+                if (!user) return;
+                
+                const { error: upsertError } = await supabase
+                    .from('aulas_progress')
+                    .upsert({
+                        user_id: user.id,
+                        materia_id: resolvedMateriaId,
+                        topico_id: resolvedTopicoId,
+                        progress_percent: pendingProgress,
+                        completed: false
+                    }, { onConflict: 'user_id,materia_id,topico_id' });
+                
+                if (upsertError) throw upsertError;
+                setPendingProgress(null); // Limpa após salvar
+            } catch (err) {
+                console.error('Error in progress debounce:', err);
+            }
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, [pendingProgress, completed, resolvedMateriaId, resolvedTopicoId, supabase]);
+
+    // Salva-vidas: Garante envio imediato caso a janela perca a visibilidade (fechamento, troca de aba)
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.visibilityState === 'hidden' && pendingProgress !== null && !completed) {
+                 supabase.auth.getUser().then(({ data: { user } }) => {
+                     if (user) {
+                         supabase.from('aulas_progress').upsert({
+                             user_id: user.id,
+                             materia_id: resolvedMateriaId,
+                             topico_id: resolvedTopicoId,
+                             progress_percent: pendingProgress,
+                             completed: false
+                         }, { onConflict: 'user_id,materia_id,topico_id' }).then();
+                     }
+                 });
+            }
+        };
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+    }, [pendingProgress, completed, resolvedMateriaId, resolvedTopicoId, supabase]);
+
+    // Atualizar progresso (atualiza estado local e programa debounce)
     const updateProgress = useCallback(async (percent: number) => {
-        if (completed || !resolvedMateriaId || !resolvedTopicoId) return; // Não atualizar se já completou
+        if (completed || !resolvedMateriaId || !resolvedTopicoId) return; 
 
-        try {
-            const { data: { user } } = await supabase.auth.getUser();
-            if (!user) return;
+        const newProgress = Math.min(Math.round(percent), 100);
+        if (newProgress === progress && percent !== 0) return;
 
-            // Progress follows UI logic accurately
-            const newProgress = Math.min(Math.round(percent), 100);
-
-            if (newProgress === progress && percent !== 0) return;
-
-            const { error: upsertError } = await supabase
-                .from('aulas_progress')
-                .upsert({
-                    user_id: user.id,
-                    materia_id: resolvedMateriaId,
-                    topico_id: resolvedTopicoId,
-                    progress_percent: newProgress,
-                    completed: false
-                }, {
-                    onConflict: 'user_id,materia_id,topico_id'
-                });
-
-            if (upsertError) throw upsertError;
-            setProgress(newProgress);
-        } catch (err) {
-            console.error('Error updating progress:', JSON.stringify(err, null, 2));
-        }
-    }, [resolvedMateriaId, resolvedTopicoId, completed, supabase, progress]);
+        setProgress(newProgress);
+        setPendingProgress(newProgress);
+    }, [completed, resolvedMateriaId, resolvedTopicoId, progress]);
 
     // Atualizar módulos concluídos
     const updateCompletedModules = useCallback(async (modules: string[]) => {

@@ -1,0 +1,9 @@
+# Checklist - Carousel Verification
+- [ ] Find the first carousel in "Reescrita de Frases"
+- [ ] Verify if it shows 2 items per view
+- [ ] Take a screenshot for verification
+
+# Notes
+- Page: http://localhost:3000/aulas/portugues/reescrita-frases
+- Current module: 1 (O Conceito de Reescritura)
+- Need to scroll to find the first CardCarousel.

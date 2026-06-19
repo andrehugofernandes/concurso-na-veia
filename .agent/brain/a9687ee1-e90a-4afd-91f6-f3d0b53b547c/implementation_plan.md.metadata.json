@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Plano de implementação detalhado para unificar as regras didáticas, visuais e de design na criação de aulas premium no Petrobras Quest. O plano propõe a criação de docs/GUIA_CRIACAO_AULAS.md, a restauração/aprimoramento da skill criar-aula-premium e a criação do workflow automatizado de criação de aulas.",
+  "updatedAt":  "2026-05-19T13:33:06.271130500Z",
+  "requestFeedback":  true
+}

@@ -1,0 +1,42 @@
+# Walkthrough: Expansão do Bloco 1 (Administração)
+
+Nesta fase, finalizamos a expansão das três principais aulas do Bloco 1, elevando-as ao padrão **Premium C.E.D.E.** (Componentização, Estética, Dinamismo e Engajamento).
+
+## Aulas Expandidas
+
+### 1. Planejamento Estratégico
+- **Status:** Concluída (~1500 linhas).
+- **Destaques:** Inclusão de cenários prospectivos, Cisne Negro e Plano Estratégico Petrobras 2024-2028.
+
+### 2. Gestão de Processos
+- **Status:** Concluída (~1750 linhas).
+- **Destaques:** BPMN 2.0, Cadeia de Valor de Porter e melhoria contínua (PDCA/Six Sigma).
+
+### 3. Gestão de Projetos 🚀 (Mais Recente)
+- **Status:** Concluída (~2500 linhas).
+- **Local:** [AulaGestaoProjetos.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestaoProjetos.tsx)
+- **Implementações:**
+  - **Módulos 1-3:** Fundamentos, 10 áreas do PMBOK e Grupos de Processos.
+  - **Módulos 4-6:** Foco técnico em **EVA (Earned Value Analysis)**, CPI, SPI e Caminho Crítico (CPM/PERT).
+  - **Módulos 7-9:** Metodologias Ágeis (Scrum/Kanban), Tipos de PMO e Aplicações Reais Petrobras (FPSO/Paradas).
+  - **Módulo 10:** Simulado Mestre com táticas de prova CESGRANRIO.
+
+## Melhorias Técnicas e Refatoração
+
+1. **Correção de Ícones:**
+   - Substituição de `LuAlertCircle` e `LuAlertTriangle` por ícones exportados válidos (`LuTriangle`).
+   - Sincronização de importações para evitar erros de lint.
+2. **Componentização Modular:**
+   - Uso intensivo de `ContentAccordion` e `ModuleConsolidation`.
+   - Implementação de `AlertBox` para dicas de prova ("Insights CESGRANRIO").
+3. **Quizzes Integrados:**
+   - Cada módulo possui um quiz de fixação dedicado, preparando o terreno para a migração para arquivos JSON/TS externos futuramente.
+
+## Verificação de Qualidade
+
+- [x] O arquivo `AulaGestaoProjetos.tsx` agora possui densidade premium, superando as 2000 linhas de código rico.
+- [x] Variantes de cores (`getModuleVariant`) aplicadas corretamente em todos os 10 módulos.
+- [x] Resumos visuais e áudios configurados como placeholders prontos para conteúdo de mídia final.
+
+---
+**Próximo Passo:** Iniciar a expansão da aula de **Governança Corporativa**.

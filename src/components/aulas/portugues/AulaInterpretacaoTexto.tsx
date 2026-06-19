@@ -587,12 +587,12 @@ export default function AulaInterpretacaoTexto({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual a tipologia predominante em um manual de segurança da Petrobras?"
           alternativas={[
-              { letra: "A", texto: "Narrativa.", correta: false },
+            { letra: "A", texto: "Narrativa.", correta: false },
               { letra: "B", texto: "Injuntiva (Instrucional).", correta: true },
               { letra: "C", texto: "Descritiva poética.", correta: false },
               { letra: "D", texto: "Religiosa.", correta: false },
               { letra: "E", texto: "Ficcional.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1038,12 +1038,12 @@ export default function AulaInterpretacaoTexto({
           concurso="Processo Seletivo Petrobras"
           enunciado="O que é 'Referenciação' em um texto?"
           alternativas={[
-              { letra: "A", texto: "A lista de livros no final do trabalho.", correta: false },
+            { letra: "A", texto: "A lista de livros no final do trabalho.", correta: false },
               { letra: "B", texto: "O uso de termos para retomar ou antecipar outros no texto.", correta: true },
               { letra: "C", texto: "O uso de citações diretas entre aspas.", correta: false },
               { letra: "D", texto: "A contagem de parágrafos.", correta: false },
               { letra: "E", texto: "O nome do autor citado.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1499,12 +1499,12 @@ export default function AulaInterpretacaoTexto({
           concurso="Processo Seletivo Petrobras"
           enunciado="A técnica de 'Skimming' consiste em:"
           alternativas={[
-              { letra: "A", texto: "Ler o texto de trás para frente.", correta: false },
+            { letra: "A", texto: "Ler o texto de trás para frente.", correta: false },
               { letra: "B", texto: "Fazer uma leitura rápida para captar o sentido geral e o tema.", correta: true },
               { letra: "C", texto: "Grifar todas as palavras que você não conhece.", correta: false },
               { letra: "D", texto: "Contar quantas vezes a palavra 'Petrobras' aparece.", correta: false },
               { letra: "E", texto: "Ler apenas os conectivos.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1953,12 +1953,12 @@ export default function AulaInterpretacaoTexto({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual a tipologia predominante em um manual de segurança da Petrobras?"
           alternativas={[
-              { letra: "A", texto: "Narrativa.", correta: false },
+            { letra: "A", texto: "Narrativa.", correta: false },
               { letra: "B", texto: "Injuntiva (Instrucional).", correta: true },
               { letra: "C", texto: "Descritiva poética.", correta: false },
               { letra: "D", texto: "Religiosa.", correta: false },
               { letra: "E", texto: "Ficcional.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2361,12 +2361,12 @@ export default function AulaInterpretacaoTexto({
           concurso="Processo Seletivo Petrobras"
           enunciado="A técnica de 'Skimming' consiste em:"
           alternativas={[
-              { letra: "A", texto: "Ler o texto de trás para frente.", correta: false },
+            { letra: "A", texto: "Ler o texto de trás para frente.", correta: false },
               { letra: "B", texto: "Fazer uma leitura rápida para captar o sentido geral e o tema.", correta: true },
               { letra: "C", texto: "Grifar todas as palavras que você não conhece.", correta: false },
               { letra: "D", texto: "Contar quantas vezes a palavra 'Petrobras' aparece.", correta: false },
               { letra: "E", texto: "Ler apenas os conectivos.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2690,12 +2690,12 @@ export default function AulaInterpretacaoTexto({
           concurso="Processo Seletivo Petrobras"
           enunciado="A técnica de 'Skimming' consiste em:"
           alternativas={[
-              { letra: "A", texto: "Ler o texto de trás para frente.", correta: false },
+            { letra: "A", texto: "Ler o texto de trás para frente.", correta: false },
               { letra: "B", texto: "Fazer uma leitura rápida para captar o sentido geral e o tema.", correta: true },
               { letra: "C", texto: "Grifar todas as palavras que você não conhece.", correta: false },
               { letra: "D", texto: "Contar quantas vezes a palavra 'Petrobras' aparece.", correta: false },
               { letra: "E", texto: "Ler apenas os conectivos.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -3061,12 +3061,12 @@ export default function AulaInterpretacaoTexto({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual a tipologia predominante em um manual de segurança da Petrobras?"
           alternativas={[
-              { letra: "A", texto: "Narrativa.", correta: false },
+            { letra: "A", texto: "Narrativa.", correta: false },
               { letra: "B", texto: "Injuntiva (Instrucional).", correta: true },
               { letra: "C", texto: "Descritiva poética.", correta: false },
               { letra: "D", texto: "Religiosa.", correta: false },
               { letra: "E", texto: "Ficcional.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -3389,12 +3389,12 @@ E vença esse jogo, que hoje tá bonito!`,
           concurso="Processo Seletivo Petrobras"
           enunciado="A técnica de 'Skimming' consiste em:"
           alternativas={[
-              { letra: "A", texto: "Ler o texto de trás para frente.", correta: false },
+            { letra: "A", texto: "Ler o texto de trás para frente.", correta: false },
               { letra: "B", texto: "Fazer uma leitura rápida para captar o sentido geral e o tema.", correta: true },
               { letra: "C", texto: "Grifar todas as palavras que você não conhece.", correta: false },
               { letra: "D", texto: "Contar quantas vezes a palavra 'Petrobras' aparece.", correta: false },
               { letra: "E", texto: "Ler apenas os conectivos.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -3693,12 +3693,12 @@ E mostre pro mundo sua superação!`,
           concurso="Processo Seletivo Petrobras"
           enunciado="A técnica de 'Skimming' consiste em:"
           alternativas={[
-              { letra: "A", texto: "Ler o texto de trás para frente.", correta: false },
+            { letra: "A", texto: "Ler o texto de trás para frente.", correta: false },
               { letra: "B", texto: "Fazer uma leitura rápida para captar o sentido geral e o tema.", correta: true },
               { letra: "C", texto: "Grifar todas as palavras que você não conhece.", correta: false },
               { letra: "D", texto: "Contar quantas vezes a palavra 'Petrobras' aparece.", correta: false },
               { letra: "E", texto: "Ler apenas os conectivos.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -4052,12 +4052,12 @@ E saia da prova como um vencedor!`,
           concurso="Processo Seletivo Petrobras"
           enunciado="O 'Tópico Frasal' de um parágrafo técnico costuma ser:"
           alternativas={[
-              { letra: "A", texto: "A última palavra do texto.", correta: false },
+            { letra: "A", texto: "A última palavra do texto.", correta: false },
               { letra: "B", texto: "Uma frase que resume a ideia central daquele parágrafo.", correta: true },
               { letra: "C", texto: "Um erro de digitação comum.", correta: false },
               { letra: "D", texto: "A assinatura do autor.", correta: false },
               { letra: "E", texto: "A lista de referências bibliográficas.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },

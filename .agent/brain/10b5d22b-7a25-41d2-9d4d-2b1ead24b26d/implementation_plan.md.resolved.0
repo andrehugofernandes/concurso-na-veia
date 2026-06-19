@@ -1,0 +1,49 @@
+# Plano de Implementação: Melhorias Form PMAVV (Reunião Usuários)
+
+Este plano detalha as alterações no formulário de denúncia para atender às solicitações da reunião com os usuários, incluindo lógica condicional, novos campos e expansão do endereço.
+
+## 1. Banco de Dados (Migração SQL)
+Precisamos adicionar campos que não existem no schema atual:
+- `tbl_denuncia`: Adicionar `observacao` (TEXT).
+- `tbl_endereco`: Adicionar `ponto_referencia` (VARCHAR 255).
+
+## 2. Step 1: Denúncia (`DenunciaForm.tsx`)
+- **Lógica de Pertinência**:
+  - Adicionar opção "OUTROS" ao campo `pertinente_trabalho_avv`.
+  - O campo `relato_breve` (Textarea) deve aparecer se selecionado "NÃO" ou "OUTROS".
+- **Novos Campos**:
+  - Adicionar campo `observacao` (Textarea) ao final da seção, conforme solicitado em [pmavv.txt](file:///c:/GSW/PMAVV/source/workflow-rotas/pmavv.txt).
+- **Backend ([denuncias-actions.ts](file:///C:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/denuncias-actions.ts))**:
+  - Atualizar `denunciaCreateSchema` e `denunciaUpdateSchema` para incluir `observacao`.
+
+## 3. Step 2: Vítima (`DenunciaWizardVitima.tsx`)
+- **Expansão do Endereço**:
+  - Criar campos individuais para:
+    - `cep` (Input)
+    - `logradouro` (Input - substitui o rótulo "Endereço Completo")
+    - `numero` (Input)
+    - `complemento` (Input)
+    - `bairro_id` (Manter Autocomplete/Select)
+    - `ponto_referencia` (Input)
+- **Backend ([denuncias-actions.ts](file:///C:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/denuncias-actions.ts))**:
+  - Atualizar a lógica de [addVitimas](file:///C:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/denuncias-actions.ts#256-287) para mapear esses novos campos para a `tbl_endereco`.
+
+## 4. Verificação Plan
+
+### Automated Tests
+- Não existem testes E2E automatizados configurados para este fluxo específico no momento. Focaremos em validação manual e logs.
+
+### Manual Verification
+1. **Fluxo Pertinência**:
+   - Marcar "SIM" -> O campo "Relato Breve" deve sumir.
+   - Marcar "NÃO" -> O campo "Relato Breve" deve aparecer.
+   - Marcar "OUTROS" -> O campo "Relato Breve" deve aparecer.
+2. **Dados de Endereço**:
+   - Cadastrar uma vítima preenchendo todos os campos (CEP, Nº, etc.).
+   - Verificar no banco de dados (via Prisma Studio ou SQL) se a `tbl_endereco` salvou todos os campos corretamente.
+3. **Observação**:
+   - Digitar um texto no campo Observação e verificar se ele persiste ao salvar a denúncia.
+
+---
+> [!IMPORTANT]
+> A migração do banco de dados é necessária antes de testar o salvamento.

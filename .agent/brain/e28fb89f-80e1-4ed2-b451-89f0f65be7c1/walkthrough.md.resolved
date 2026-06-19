@@ -1,0 +1,30 @@
+# Walkthrough: Restauração de Navegação e Correção de Cabeçalho
+
+Concluí a restauração dos botões de navegação mobile e a correção de sobreposição do cabeçalho no modo desktop. A aplicação agora mantém a usabilidade consistente em todos os dispositivos.
+
+## Mudanças Realizadas
+
+### 📱 Restauração Mobile
+Os botões **"Voltar às Aulas"** (Home) e **"Mostrar Cabeçalho"** (Menu) foram reintegrados ao modo mobile.
+- **Posicionamento Fixo**: Agora os botões estão dentro do contêiner `fixed`, garantindo que acompanhem a rolagem.
+- **Layout Flutuante**: Utilizei `absolute top-full` para que os botões flutuem logo abaixo da barra de módulos de forma harmoniosa.
+
+### 💻 Correção Desktop
+Resolvido o conflito onde a barra de módulos cobria o cabeçalho do sistema.
+- **Deslocamento Dinâmico**: A barra de módulos agora desce automaticamente para `top-20` (80px) quando o cabeçalho é ativado, evitando sobreposição de elementos com `z-index` conflitante.
+
+## Verificação Visual
+
+````carousel
+![Botões mobile restaurados e funcionais](file:///C:/Users/andre.hugo/.gemini/antigravity/brain/e28fb89f-80e1-4ed2-b451-89f0f65be7c1/verify_mobile_buttons_restored_1776480388575.webp)
+<!-- slide -->
+![Cabeçalho aparecendo corretamente no desktop sem sobreposição](file:///C:/Users/andre.hugo/.gemini/antigravity/brain/e28fb89f-80e1-4ed2-b451-89f0f65be7c1/verify_header_fix_1776476008638.webp)
+````
+
+## Testes Realizados
+- [x] Verificado redirecionamento do botão Home no mobile.
+- [x] Verificado toggle do cabeçalho no mobile.
+- [x] Verificado toggle do cabeçalho no desktop (com barra fixa).
+- [x] Validada a transição suave de opacidade e posição.
+
+Os arquivos foram commitados e submetidos ao repositório.

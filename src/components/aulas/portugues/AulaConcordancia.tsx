@@ -4118,17 +4118,16 @@ export default function AulaConcordancia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual a frase correta quanto à concordância verbal?"
           alternativas={[
-            { label: "A", valor: "Fazem cinco anos que não o vejo." },
-                { label: "B", valor: "Houveram muitos problemas na obra." },
-                { label: "C", valor: "Deve haver muitas pessoas interessadas." },
-                { label: "D", valor: "Aluga-se quartos para estudantes." },
-                { label: "E", valor: "Tratam-se de questões complexas." }
+            { letra: "A", texto: "Fazem cinco anos que não o vejo.", correta: false },
+                { letra: "B", texto: "Houveram muitos problemas na obra.", correta: false },
+                { letra: "C", texto: "Deve haver muitas pessoas interessadas.", correta: true },
+                { letra: "D", texto: "Aluga-se quartos para estudantes.", correta: false },
+                { letra: "E", texto: "Tratam-se de questões complexas.", correta: false }
           ]}
-          correta="C"
           passos={[
-            "O verbo 'haver' (sentido de existir) é impessoal e transmite a impessoalidade para o auxiliar 'deve'.",
-            "Logo, 'Deve haver' fica no singular.",
-            "Opção E está errada pois 'tratar-se de' é impessoal (VTI+SE)."
+            { titulo: "Passo 1", conteudo: "O verbo 'haver' (sentido de existir) é impessoal e transmite a impessoalidade para o auxiliar 'deve'." },
+            { titulo: "Passo 2", conteudo: "Logo, 'Deve haver' fica no singular." },
+            { titulo: "Passo 3", conteudo: "Opção E está errada pois 'tratar-se de' é impessoal (VTI+SE)." }
           ]}
         />
         <QuizInterativo
@@ -4819,17 +4818,16 @@ export default function AulaConcordancia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Complete: 'Ela estava ______ nervosa e tomou ______ água.'"
           alternativas={[
-            { label: "A", valor: "meio / meia" },
-                { label: "B", valor: "meia / meio" },
-                { label: "C", valor: "meio / meio" },
-                { label: "D", valor: "meia / meia" },
-                { label: "E", valor: "meios / meias" }
+            { letra: "A", texto: "meio / meia", correta: true },
+                { letra: "B", texto: "meia / meio", correta: false },
+                { letra: "C", texto: "meio / meio", correta: false },
+                { letra: "D", texto: "meia / meia", correta: false },
+                { letra: "E", texto: "meios / meias", correta: false }
           ]}
-          correta="A"
           passos={[
-            "'Meio' = 'um pouco' (advérbio) -> Invariável ('meio nervosa').",
-            "'Meia' = 'metade' (numeral/adjetivo) -> Concorda com o substantivo ('meia água' = metade do copo, ou 'meia garrafa').",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "'Meio' = 'um pouco' (advérbio) -> Invariável ('meio nervosa')." },
+            { titulo: "Passo 2", conteudo: "'Meia' = 'metade' (numeral/adjetivo) -> Concorda com o substantivo ('meia água' = metade do copo, ou 'meia garrafa')." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -5367,17 +5365,15 @@ export default function AulaConcordancia({
           concurso="Processo Seletivo Petrobras"
           enunciado="(CESGRANRIO Adaptada) A concordância verbal está correta em:"
           alternativas={[
-            { label: "A", valor: "Sobrava razões para a demissão." },
-                { label: "B", valor: "Faltam resolver os problemas." },
-                { label: "C", valor: "Deve haver soluções melhores." },
-                { label: "D", valor: "Podem haver soluções melhores." },
-                { label: "E", valor: "Houveram muitos acidentes." }
+            { letra: "A", texto: "Sobrava razões para a demissão.", correta: false },
+                { letra: "B", texto: "Faltam resolver os problemas.", correta: false },
+                { letra: "C", texto: "Deve haver soluções melhores.", correta: true },
+                { letra: "D", texto: "Podem haver soluções melhores.", correta: false },
+                { letra: "E", texto: "Houveram muitos acidentes.", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A: 'Sobravam razões'.",
-            "B: 'Falta resolver' (quem falta?",
-            "Resolver os problemas falta. Sujeito oracional -> verbo singular). C: Correta (Haver sentido existir = impessoal + auxiliar singular 'deve'). D: 'Pode haver' (auxiliar concorda com a impessoalidade do principal). E: 'Houve'."
+            { titulo: "Passo 1", conteudo: "A: 'Sobravam razões'." },
+            { titulo: "Passo 2", conteudo: "B: 'Falta resolver' (quem falta? Resolver os problemas falta. Sujeito oracional -> verbo singular). C: Correta (Haver sentido existir = impessoal + auxiliar singular 'deve'). D: 'Pode haver' (auxiliar concorda com a impessoalidade do principal). E: 'Houve'." }
           ]}
         />
         <QuizInterativo
@@ -5671,17 +5667,16 @@ export default function AulaConcordancia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em 'Fui eu quem ... o projeto', qual a forma correta?"
           alternativas={[
-            { label: "A", valor: "aprovou" },
-                { label: "B", valor: "aprovei" },
-                { label: "C", valor: "aprovamos" },
-                { label: "D", valor: "A e B estão corretas" },
-                { label: "E", valor: "aprovasses" }
+            { letra: "A", texto: "aprovou", correta: false },
+                { letra: "B", texto: "aprovei", correta: false },
+                { letra: "C", texto: "aprovamos", correta: false },
+                { letra: "D", texto: "A e B estão corretas", correta: true },
+                { letra: "E", texto: "aprovasses", correta: false }
           ]}
-          correta="D"
           passos={[
-            "Com o pronome 'QUEM', o verbo pode concordar com o antecedente ('eu' -> 'aprovei') ou ficar na 3ª pessoa do singular ('aprovou').",
-            "Ambas corretas.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Com o pronome 'QUEM', o verbo pode concordar com o antecedente ('eu' -> 'aprovei') ou ficar na 3ª pessoa do singular ('aprovou')." },
+            { titulo: "Passo 2", conteudo: "Ambas corretas." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -5899,17 +5894,16 @@ export default function AulaConcordancia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Questão de Avançado: 'Mais de um operário ... se.'"
           alternativas={[
-            { label: "A", valor: "feriu" },
-                { label: "B", valor: "feriram" },
-                { label: "C", valor: "feriram-se (se houver reciprocidade)" },
-                { label: "D", valor: "A e C estão corretas" },
-                { label: "E", valor: "ferissem-se" }
+            { letra: "A", texto: "feriu", correta: false },
+                { letra: "B", texto: "feriram", correta: false },
+                { letra: "C", texto: "feriram-se (se houver reciprocidade)", correta: false },
+                { letra: "D", texto: "A e C estão corretas", correta: true },
+                { letra: "E", texto: "ferissem-se", correta: false }
           ]}
-          correta="D"
           passos={[
-            "Com 'mais de um', a regra geral é singular.",
-            "Porém, se houver ideia de reciprocidade ou o número for repetido, vai para o plural.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "Com 'mais de um', a regra geral é singular." },
+            { titulo: "Passo 2", conteudo: "Porém, se houver ideia de reciprocidade ou o número for repetido, vai para o plural." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo

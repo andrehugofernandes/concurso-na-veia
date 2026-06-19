@@ -1,0 +1,226 @@
+# Refatoração Completa: Formulário de Denúncias + DataTable
+
+## 1. Contexto
+
+### Problema Atual
+
+O formulário de denúncias é um **formulário plano** com apenas campos da `tbl_denuncia`. Falta:
+
+- ❌ Fluxo Wizard (Denúncia → Vítima → Agressor → Denunciante)
+- ❌ Geração automática de Protocolo (`ID/AA`)
+- ❌ Multi-select para campos categóricos
+- ❌ Steps condicionais (Agressor/Denunciante opcionais)
+
+### Reestruturação do Banco em Andamento
+
+O relatório [reestruturacao-banco-pmavv.md](file:///c:/GSW/PMAVV/PMAVV/docs/dba/reestruturacao-banco-pmavv.md) documenta uma migração de 7 fases (Opção A: Normalização Incremental) que transformará campos `string;string` em tabelas associativas M:N.
+
+**Implicação:** O formulário precisa de uma **camada de abstração (Data Access Layer)** que funcione com o schema atual e migre suavemente para o normalizado.
+
+---
+
+## 2. Estratégia: Dual-Schema Ready
+
+```
+┌─ UI (Formulário/DataTable) ──────────────────────────┐
+│  Multi-checkbox com labels (strings)                  │
+│  Selects com options fixas                            │
+└───────────────────┬──────────────────────────────────┘
+                    │ string[] (sempre)
+┌───────────────────▼──────────────────────────────────┐
+│  Data Access Layer (Server Actions)                   │
+│                                                       │
+│  AGORA:  join(';')  → VARCHAR     (schema atual)     │
+│  DEPOIS: map(toId)  → tabela M:N  (schema futuro)   │
+└──────────────────────────────────────────────────────┘
+```
+
+A UI **sempre trabalha com `string[]`** (ex: `['FÍSICA', 'PSICOLÓGICA']`). A conversão para o formato do banco é responsabilidade da camada de server actions. Quando o DBA completar a Fase 6, só precisamos trocar a implementação nas actions — **zero mudança na UI**.
+
+---
+
+## 3. Análise Multi-Agente
+
+### 🤖 `@frontend-specialist` — UX/UI
+
+- Wizard de 4 steps dentro do Side-Sheet (440px)
+- Progress stepper visual com steps condicionais (tracejados)
+- Lista dinâmica para entidades N (Vítimas, Agressores) em vez do grid fixo de 10 slots
+- Multi-checkbox com badges coloridas para categorias
+
+### 🤖 `@database-architect` — Data Layer
+
+- Server actions com [serializeMultiSelect(string[])](file:///c:/GSW/PMAVV/PMAVV/src/lib/multi-select.ts#7-11) → `join(';')` (agora)
+- Server actions com [deserializeMultiSelect(string)](file:///c:/GSW/PMAVV/PMAVV/src/lib/multi-select.ts#12-16) → `split(';')` (agora)
+- Preparado para trocar por `prisma.denunciaViolencia.createMany()` (futuro)
+- Protocolo: `${id}/${year.slice(-2)}`
+
+### 🤖 `@security-auditor` — Validação
+
+- Validação Zod em cada step (server-side) — nunca confiar no client
+- Sanitização de inputs (TRIM, UPPER para enums)
+- Proteção contra criação de denúncias sem autenticação
+
+### 🤖 `@performance-optimizer` — Performance
+
+- Persistência step-by-step (não acumular tudo para o final)
+- `take: 1` + `_count` para include na listagem
+- Colunas sticky via CSS (`position: sticky`) sem JS
+
+---
+
+## 4. Valores de Referência (Banco Real)
+
+| Campo                    | Valores Atômicos                                                                                                                                                                                                                                                                                  | Tipo no Form   |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
+| **Órgão Origem**         | OUVIDORIA MUNICIPAL, DISQUE ESTADUAL, DISQUE 100, DH, MINISTÉRIO PÚBLICO, ESPONTÂNEA, CIAPPI, OUTRO, CRAS, CAPS AD, CENTRO POP, ALTA COMPLEXIDADE, MEDIA COMPLEXIDADE, SAÚDE MENTAL, SAÚDE DO IDOSO, MULHER, PERICULOSIDADE, POLÍTICA SOBRE DROGAS, CASO PONTUAL, NASF, CONSELHO TUTELAR - DIRETO | Multi-checkbox |
+| **Formas Violência**     | AUTONEGLIGÊNCIA, INSTITUCIONAL, NEGLIGÊNCIA, ABANDONO, FÍSICA, OUTROS, MEDICAMENTOSA, PSICOLÓGICA, FINANCEIRA, SEXUAL, MORAL                                                                                                                                                                      | Multi-checkbox |
+| **Classificação Vítima** | PESSOA COM DEFICIÊNCIA, DISCRIMINAÇÃO RACIAL, INTOLERÂNCIA RELIGIOSA, PESSOA IDOSA, LGBT                                                                                                                                                                                                          | Multi-checkbox |
+| **Parentesco**           | PAI, MÃE, IRMÃ, IRMÃO, NENHUM, OUTROS                                                                                                                                                                                                                                                             | Radio/Select   |
+| **Encaminhamento**       | ALTA COMPLEXIDADE, MEDIA COMPLEXIDADE, CASO PONTUAL, CENTRO POP, CONSELHO TUTELAR - DIRETO, CRAS, MULHER, NASF, PERICULOSIDADE, POLÍTICA SOBRE DROGAS, SAÚDE DO IDOSO, SAÚDE MENTAL                                                                                                               | Multi-checkbox |
+
+> Formato de armazenamento atual: `"VALOR1;VALOR2;VALOR3"` (strings concatenadas com `;`)
+
+---
+
+## 5. Proposed Changes
+
+### 5.1 Componentes Base
+
+#### [NEW] [wizard-stepper.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/wizard-stepper.tsx)
+
+Progress stepper com 4 steps. Steps condicionais mostram estilo tracejado. Clicável para navegação entre steps já completados.
+
+#### [NEW] [multi-check-field.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/multi-check-field.tsx)
+
+Componente reutilizável de multi-checkbox com grid responsivo + badges coloridas. Recebe `options: string[]` e retorna `string[]`. Substitui todos os multi-selects do sistema (violência, classificação, órgão, encaminhamento).
+
+---
+
+### 5.2 Wizard Steps (dentro do Side-Sheet)
+
+#### [MODIFY] [denuncia-form.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-form.tsx)
+
+**Step 1: Dados da Denúncia**
+
+| Campo                 | Componente                  | Obrig. |
+| --------------------- | --------------------------- | ------ |
+| Órgão de Origem       | [MultiCheckField](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/multi-check-field.tsx#16-82) (21 opts) | ✅     |
+| Data Recebimento      | DatePicker                  | ✅     |
+| Nº Origem             | Input numérico              | ❌     |
+| Pertinente NAVV?      | Radio SIM/NÃO               | ✅     |
+| Formas de Violência   | [MultiCheckField](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/multi-check-field.tsx#16-82) (11 opts) | ✅     |
+| Outra Forma Violência | Input (se "OUTROS")         | Cond.  |
+| Encaminhamento        | [MultiCheckField](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/multi-check-field.tsx#16-82) (12 opts) | ❌     |
+| Existe Agressor?      | Toggle SIM/NÃO              | ✅     |
+| Existe Denunciante?   | Toggle SIM/NÃO              | ✅     |
+
+#### [NEW] [denuncia-wizard-vitima.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-wizard-vitima.tsx)
+
+**Step 2: Vítima(s)** — Lista dinâmica com "+ Adicionar Vítima"
+
+| Campo         | Componente                 | Obrig. |
+| ------------- | -------------------------- | ------ |
+| Nome Completo | Input                      | ✅     |
+| Apelido       | Input                      | ❌     |
+| Endereço      | Input                      | ✅     |
+| Bairro        | Autocomplete (168 bairros) | ✅     |
+| Regional      | Auto-fill pelo bairro      | Auto   |
+| Classificação | [MultiCheckField](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/multi-check-field.tsx#16-82) (5 opts) | ✅     |
+
+#### [NEW] [denuncia-wizard-agressor.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-wizard-agressor.tsx)
+
+**Step 3: Agressor(es)** — Condicional. Lista dinâmica.
+
+| Campo             | Componente          | Obrig. |
+| ----------------- | ------------------- | ------ |
+| Nome              | Input               | ❌     |
+| Endereço          | Input               | ❌     |
+| Regional          | Autocomplete        | ❌     |
+| Relação c/ Vítima | Select (6 opts)     | ✅     |
+| Outra Relação     | Input (se "OUTROS") | Cond.  |
+
+#### [NEW] [denuncia-wizard-denunciante.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-wizard-denunciante.tsx)
+
+**Step 4: Denunciante** — Condicional. Formulário simples.
+
+| Campo             | Componente          | Obrig. |
+| ----------------- | ------------------- | ------ |
+| Nome              | Input               | ❌     |
+| Telefone          | Input (máscara)     | ❌     |
+| Relação c/ Vítima | Radio (6 opts)      | ❌     |
+| Outro Parentesco  | Input (se "OUTROS") | Cond.  |
+
+---
+
+### 5.3 Server Actions
+
+#### [MODIFY] [denuncias-actions.ts](file:///c:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/denuncias-actions.ts)
+
+Funções com camada de abstração dual-schema:
+
+```typescript
+// Helpers (trocar implementação na Fase 6 do DBA)
+const serialize = (arr: string[]) => arr.join(';');
+const deserialize = (str: string) => str.split(';').map(s => s.trim());
+
+// Actions
+createDenuncia(data) → insert + generateProtocolo(id)
+addVitimas(denunciaId, vitimas[]) → createMany
+addAgressores(denunciaId, agressores[]) → createMany
+addDenunciante(denunciaId, data) → create
+listDenuncias() → include { tbl_vitima: take 1, tbl_agressor: take 1, _count }
+```
+
+---
+
+### 5.4 Modal Wrapper
+
+#### [MODIFY] [denuncia-form-modal.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-form-modal.tsx)
+
+Orquestrador do wizard com `useReducer`:
+
+- Gerencia `currentStep`, `denunciaId`, `protocolo`
+- Persiste no banco a cada step
+- Pula steps condicionais
+- Exibe protocolo no header após Step 1
+
+---
+
+### 5.5 DataTable com Tabs
+
+#### [MODIFY] [denuncia-table.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-table.tsx)
+
+Tabs no header alternando colunas, com Protocolo (sticky left) + Ações (sticky right):
+
+| Tab             | Colunas                                |
+| --------------- | -------------------------------------- |
+| **Denúncia**    | Órgão, Violência, Data, Encaminhamento |
+| **Vítima**      | Nome (1º), Classificação, Bairro       |
+| **Agressor**    | Nome (1º), Parentesco, Endereço        |
+| **Denunciante** | Nome, Telefone, Parentesco             |
+
+---
+
+## 5.6 Refinamento da DataTable (Sticky Columns)
+
+Implementação de controle fino sobre as colunas de extremidade:
+
+| Coluna        | Posição | Largura | Estilo                                      |
+| ------------- | ------- | ------- | ------------------------------------------- |
+| **Protocolo** | Left    | 120px   | Sticky, border-r, shadow-right, font-bold   |
+| **Ações**     | Right   | 102px   | Sticky, border-l, shadow-left, justify-right |
+
+**Alterações Técnicas:**
+- [TabbedDataTable](file:///c:/GSW/PMAVV/PMAVV/src/components/pmavv/tabbed-data-table.tsx#32-257): Injetar `style={{ width, minWidth, maxWidth }}` baseado no `column.columnDef.meta`.
+- [DenunciaTable](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-table.tsx#44-232): Passar meta-informação nas colunas âncoras.
+
+---
+
+## 6. Verificação
+
+- `npx tsc --noEmit` — Tipagem completa
+- Cadastro de denúncia completa (4 steps) com protocolo gerado
+- Fluxo condicional (sem agressor / sem denunciante)
+- DataTable com tabs alternando corretamente
+- Comparação visual com ScriptCase para paridade funcional

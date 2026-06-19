@@ -1,0 +1,41 @@
+# Planejamento: Refinamentos em Matemática
+
+O objetivo deste planejamento é concluir o desenvolvimento do conteúdo dos exercícios nas aulas de Equações do 1º Grau e calibrar graficamente as visualizações em componentes de Funções (Exponenciais e Logarítmicas) conforme identificado.
+
+## Mudanças Propostas
+
+### 1. Enriquecimento de Quizzes (Equações do 1º Grau)
+Atualmente, os módulos avançados de Equações de 1º Grau (Módulos 6 ao 10) contêm apenas 1 a 2 questões placeholder. Irei adicionar questões inéditas focadas no estilo CESGRANRIO.
+
+#### [MODIFY] [equacoes-1grau-quizzes.ts](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/data/equacoes-1grau-quizzes.ts)
+- **M6 (Sistemas Avançados):** Adicionar 4 novas questões envolvendo sistemas 3x3 e interpretação de sistemas impossíveis/indeterminados.
+- **M7 (Verificação):** Adicionar 5 novas questões sobre estratégias de verificação de prova e prova real rápida em provas de concurso.
+- **M8 (Pegadinhas):** Adicionar 5 novas questões abordando principalmente os erros de sinal nas divisões de inequações e inversão de operação.
+- **M9 (Petrobras Específico):** Adicionar 5 novas questões com o tema de produção e petróleo, como misturas de fluidos e vazão em sistemas lineares 1º grau.
+- **M10 (Simulado Mestre):** Adicionar 7 novas questões robustas que exijam passo a passo e domínio completo do tema, misturando conceitos.
+
+### 2. Calibragem de Gráficos de Funções
+Foi identificado que alguns gráficos (do componente `FunctionGraph`) possuem limites (`xMax`, `yMax`, etc.) que cortam o visual de forma errônea ou deixam curvas muito estreitas ou irreais para o contexto do exemplo.
+
+#### [MODIFY] [AulaFuncoesExponenciais.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/AulaFuncoesExponenciais.tsx)
+- **Componente: "Crescimento e Decaimento Exponencial"**
+  - Ajustar domínio (X) e imagem (Y) para equilibrar as curvas de `e^x` e `e^-x`.
+  - Mudar limites de exibição de `-5 a 3` no eixo X e `yMax=8` para limites mais consistentes baseados no corte: `xMin=-3`, `xMax=3`, `yMax=20`.
+
+#### [MODIFY] [AulaFuncoesLogaritmicas.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/AulaFuncoesLogaritmicas.tsx)
+- **Componente: "Visualizando Inequações Logarítmicas"**
+  - Resolver o `xMax=150` que esmaga o visualógico atual. Mudar para `xMax=20` ou inferior.
+  - Como a intersecção buscada ocorre perto de `x ≈ 7.39` (onde `ln(x) = 2`), um `xMax=20` focará a visualização na intersecção com a linha limitadora `y=2`.
+
+## Plano de Verificação
+
+### Testes Automatizados (Build / TypeScript)
+- A primeira validação ocorrerá garantindo que a compilação do TypeScript execute sem erros através do processo existente do terminal `pnpm dev`.
+- As questões do `QUIZ` e os objetos de `FunctionGraph` não podem conter erros de sintaxe ou tipos não correspondentes perante a base de dados em [shared.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx).
+
+### Verificação Visual (Browser)
+Será feito um teste visual pelo preview do navegador (http://localhost:3000/aulas/matematica/funcoes-logaritmicas e expo) rolando até os módulos correspondentes aos gráficos atualizados e validando se eles geram um layout mais perceptivo visualmente.
+- **Aulas a Verificar:**
+  - `http://localhost:3000/aulas/matematica/funcoes-exponenciais` (Aba Módulo 2 / Módulo 4)
+  - `http://localhost:3000/aulas/matematica/funcoes-logaritmicas` (Aba Módulo 7)
+  - `http://localhost:3000/aulas/matematica/equacoes-1grau` (Aba Simulado Ouro / Módulos de 6 a 10) para ver as novas questões sendo sorteadas randômicamente corretamente.

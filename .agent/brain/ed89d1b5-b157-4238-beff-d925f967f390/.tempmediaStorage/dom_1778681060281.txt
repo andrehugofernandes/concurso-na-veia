@@ -1,0 +1,83 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (55,545)<nav class='flex-1 px-2 py-4 overflow-y-hidden' scrollable='true' />
+	[1] (55,143)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/dashboard' title='Dashboard' />
+		[2] (55,143)<div  />
+	[3] (55,227)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90 justify-center px-2' href='/aulas' title='Aulas' />
+		[4] (55,227)<div  />
+	[5] (55,299)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/aulas/ingles/petrolingo' title='PetroLingo' />
+		[6] (55,299)<div  />
+	[7] (55,372)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/simulado-rapido' title='Simulados Rápidos' />
+		[8] (55,372)<div  />
+	[9] (55,445)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/simulado-especifico' title='Simulados Específicos' />
+		[10] (55,445)<div  />
+	[11] (55,517)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/maratona-100' title='Maratona 100' />
+		[12] (55,517)<div  />
+	[13] (55,590)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/historico' title='Histórico' />
+		[14] (55,590)<div  />
+	[15] (55,663)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/rankings' title='Rankings' />
+		[16] (55,663)<div  />
+	[17] (55,754)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/seja-pro' title='Seja Pro' />
+		[18] (55,754)<div  />
+	[19] (55,827)<a class='flex items-center py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 justify-center px-2' href='/tickets' title='Abertura de Ticket' />
+		[20] (55,827)<div  />
+[21] (180,44)<button aria-label='Expandir menu' class='p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300 flex-shrink-0' />
+Aulas
+[22] (660,44)<button aria-label='Notificações' class='flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' id='radix-_r_6_' />
+[23] (748,44)<button aria-label='Tema Escuro' class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' />
+[24] (836,44)<button class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors' id='radix-_r_8_' />
+	[25] (836,44)<div  />
+[26] (928,44)<button class='relative h-10 w-10 rounded-full border-2 border-primary' id='radix-_r_a_' />
+	[27] (928,44)<span  />
+		[28] (928,44)<img  />
+Razão e Proporção
+Porcentagem
+[29] (556,102)<div  />
+	[30] (234,102)<div  />
+	[31] (576,102)<span >Equações de 1º Grau />
+[32] (556,141)<div  />
+	[33] (234,141)<div  />
+	[34] (576,141)<span >Equações de 2º Grau />
+[35] (556,180)<div >+
+14
+outros tópicos />
+	[36] (513,183)<span >→ />
+Conhecimentos Específicos
+[37] (556,650)<a class='group relative flex flex-col h-full bg-slate-50/50 dark:bg-card/40 backdrop-blur-xl rounded-3xl border border-border/50 dark:border-white/5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-500 hover:transform hover:-translate-y-2 shadow-xl hover:shadow-primary/20 overflow-hidden' href='/aulas/especifica-bloco-i-administracao-suprimento' />
+	[38] (556,555)<div  />
+		[39] (556,555)<div  />
+			[40] (556,480)<div  />
+				[41] (242,460)<div >📁 />
+				[42] (620,480)<div  />
+					[43] (620,461)<h2 >Bloco I - Administração (Suprimento) />
+					[44] (394,519)<span >4
+TÓPICOS />
+			[45] (556,620)<p >Conhecimentos específicos para Técnico de Suprimento de Bens e Serviços - Administração - Administração Geral, Qualidade, Logística e Compras />
+	[46] (556,801)<div  />
+		[47] (556,742)<div  />
+			[48] (234,742)<div  />
+			[49] (576,742)<span >Administração Geral />
+		[50] (556,781)<div  />
+			[51] (234,781)<div  />
+			[52] (576,781)<span >Gestão de Qualidade />
+		[53] (556,820)<div  />
+			[54] (234,820)<div  />
+			[55] (576,820)<span >Logística />
+		[56] (556,860)<div  />
+			[57] (234,860)<div  />
+			[58] (576,860)<span >Compras />
+⚖️
+Bloco II - Legislação e Tributos
+[59] (932,827)<button aria-label='Voltar ao topo' class='fixed bottom-[106px] md:bottom-8 z-[100] p-2.5 md:p-4 rounded-full bg-primary text-primary-foreground shadow-2xl transition-all duration-500 hover:scale-110 active:scale-95 group cursor-pointer flex items-center justify-center right-4 md:right-8 left-auto opacity-100 translate-y-0' />
+[60] (100,973)<span >Aulas />
+Simulados
+[61] (497,920)<a class='flex flex-col items-center gap-0.5 -mt-[52px]' href='/dashboard'>Dashboard />
+	[62] (497,908)<div  />
+	Dashboard
+Provas
+[63] (874,956)<a class='flex flex-col items-center gap-1 px-3 py-2 rounded transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100' href='/maratona-100' />
+	[64] (874,973)<span >Maratona />
+
+</current_dom>

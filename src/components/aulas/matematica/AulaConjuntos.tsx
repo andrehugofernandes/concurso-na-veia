@@ -1008,12 +1008,12 @@ export default function AulaConjuntos({
           concurso="Processo Seletivo Petrobras"
           enunciado="A relação CORRETA de inclusão entre conjuntos numéricos é:"
           alternativas={[
-              { letra: "A", texto: "ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ", correta: true },
+            { letra: "A", texto: "ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ", correta: true },
               { letra: "B", texto: "ℤ ⊂ ℕ ⊂ ℚ ⊂ ℝ", correta: false },
               { letra: "C", texto: "ℚ ⊂ ℤ ⊂ ℕ ⊂ ℝ", correta: false },
               { letra: "D", texto: "ℕ ⊂ ℚ ⊂ ℤ ⊂ ℝ", correta: false },
               { letra: "E", texto: "ℝ ⊂ ℚ ⊂ ℤ ⊂ ℕ", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Cada conjunto"
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1459,12 +1459,12 @@ export default function AulaConjuntos({
           concurso="Processo Seletivo Petrobras"
           enunciado="A relação CORRETA de inclusão entre conjuntos numéricos é:"
           alternativas={[
-              { letra: "A", texto: "ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ", correta: true },
+            { letra: "A", texto: "ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ", correta: true },
               { letra: "B", texto: "ℤ ⊂ ℕ ⊂ ℚ ⊂ ℝ", correta: false },
               { letra: "C", texto: "ℚ ⊂ ℤ ⊂ ℕ ⊂ ℝ", correta: false },
               { letra: "D", texto: "ℕ ⊂ ℚ ⊂ ℤ ⊂ ℝ", correta: false },
               { letra: "E", texto: "ℝ ⊂ ℚ ⊂ ℤ ⊂ ℕ", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Cada conjunto"
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1932,12 +1932,12 @@ export default function AulaConjuntos({
           concurso="Processo Seletivo Petrobras"
           enunciado="A relação CORRETA de inclusão entre conjuntos numéricos é:"
           alternativas={[
-              { letra: "A", texto: "ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ", correta: true },
+            { letra: "A", texto: "ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ", correta: true },
               { letra: "B", texto: "ℤ ⊂ ℕ ⊂ ℚ ⊂ ℝ", correta: false },
               { letra: "C", texto: "ℚ ⊂ ℤ ⊂ ℕ ⊂ ℝ", correta: false },
               { letra: "D", texto: "ℕ ⊂ ℚ ⊂ ℤ ⊂ ℝ", correta: false },
               { letra: "E", texto: "ℝ ⊂ ℚ ⊂ ℤ ⊂ ℕ", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Cada conjunto"
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2330,12 +2330,12 @@ export default function AulaConjuntos({
           concurso="Processo Seletivo Petrobras"
           enunciado="A relação CORRETA de inclusão entre conjuntos numéricos é:"
           alternativas={[
-              { letra: "A", texto: "ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ", correta: true },
+            { letra: "A", texto: "ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ", correta: true },
               { letra: "B", texto: "ℤ ⊂ ℕ ⊂ ℚ ⊂ ℝ", correta: false },
               { letra: "C", texto: "ℚ ⊂ ℤ ⊂ ℕ ⊂ ℝ", correta: false },
               { letra: "D", texto: "ℕ ⊂ ℚ ⊂ ℤ ⊂ ℝ", correta: false },
               { letra: "E", texto: "ℝ ⊂ ℚ ⊂ ℤ ⊂ ℕ", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Cada conjunto"
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -3235,12 +3235,12 @@ export default function AulaConjuntos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em pesquisa com 200 pessoas sobre uso de combustíveis: 100 usam gasolina (G), 80 usam etanol (E), 50 usam GNV, 30 usam G e E, 20 usam G e GNV, 15 usam E e GNV, 10 usam os três. Quantas usam apenas gasolina?"
           alternativas={[
-              { letra: "A", texto: "50", correta: false },
+            { letra: "A", texto: "50", correta: false },
               { letra: "B", texto: "60", correta: true },
               { letra: "C", texto: "70", correta: false },
               { letra: "D", texto: "80", correta: false },
               { letra: "E", texto: "100", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na fórmula de Venn com 3 conjuntos, somamos a tripla interseção porque ela foi subtraída duas vezes."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -3752,12 +3752,12 @@ export default function AulaConjuntos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em pesquisa com 200 pessoas sobre uso de combustíveis: 100 usam gasolina (G), 80 usam etanol (E), 50 usam GNV, 30 usam G e E, 20 usam G e GNV, 15 usam E e GNV, 10 usam os três. Quantas usam apenas gasolina?"
           alternativas={[
-              { letra: "A", texto: "50", correta: false },
+            { letra: "A", texto: "50", correta: false },
               { letra: "B", texto: "60", correta: true },
               { letra: "C", texto: "70", correta: false },
               { letra: "D", texto: "80", correta: false },
               { letra: "E", texto: "100", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na fórmula de Venn com 3 conjuntos, somamos a tripla interseção porque ela foi subtraída duas vezes."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -4298,12 +4298,12 @@ export default function AulaConjuntos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em pesquisa com 200 pessoas sobre uso de combustíveis: 100 usam gasolina (G), 80 usam etanol (E), 50 usam GNV, 30 usam G e E, 20 usam G e GNV, 15 usam E e GNV, 10 usam os três. Quantas usam apenas gasolina?"
           alternativas={[
-              { letra: "A", texto: "50", correta: false },
+            { letra: "A", texto: "50", correta: false },
               { letra: "B", texto: "60", correta: true },
               { letra: "C", texto: "70", correta: false },
               { letra: "D", texto: "80", correta: false },
               { letra: "E", texto: "100", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na fórmula de Venn com 3 conjuntos, somamos a tripla interseção porque ela foi subtraída duas vezes."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -4796,12 +4796,12 @@ export default function AulaConjuntos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em pesquisa com 200 pessoas sobre uso de combustíveis: 100 usam gasolina (G), 80 usam etanol (E), 50 usam GNV, 30 usam G e E, 20 usam G e GNV, 15 usam E e GNV, 10 usam os três. Quantas usam apenas gasolina?"
           alternativas={[
-              { letra: "A", texto: "50", correta: false },
+            { letra: "A", texto: "50", correta: false },
               { letra: "B", texto: "60", correta: true },
               { letra: "C", texto: "70", correta: false },
               { letra: "D", texto: "80", correta: false },
               { letra: "E", texto: "100", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na fórmula de Venn com 3 conjuntos, somamos a tripla interseção porque ela foi subtraída duas vezes."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -5219,12 +5219,12 @@ export default function AulaConjuntos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em pesquisa com 200 pessoas sobre uso de combustíveis: 100 usam gasolina (G), 80 usam etanol (E), 50 usam GNV, 30 usam G e E, 20 usam G e GNV, 15 usam E e GNV, 10 usam os três. Quantas usam apenas gasolina?"
           alternativas={[
-              { letra: "A", texto: "50", correta: false },
+            { letra: "A", texto: "50", correta: false },
               { letra: "B", texto: "60", correta: true },
               { letra: "C", texto: "70", correta: false },
               { letra: "D", texto: "80", correta: false },
               { letra: "E", texto: "100", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na fórmula de Venn com 3 conjuntos, somamos a tripla interseção porque ela foi subtraída duas vezes."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -5762,12 +5762,12 @@ export default function AulaConjuntos({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em pesquisa com 200 pessoas sobre uso de combustíveis: 100 usam gasolina (G), 80 usam etanol (E), 50 usam GNV, 30 usam G e E, 20 usam G e GNV, 15 usam E e GNV, 10 usam os três. Quantas usam apenas gasolina?"
           alternativas={[
-              { letra: "A", texto: "50", correta: false },
+            { letra: "A", texto: "50", correta: false },
               { letra: "B", texto: "60", correta: true },
               { letra: "C", texto: "70", correta: false },
               { letra: "D", texto: "80", correta: false },
               { letra: "E", texto: "100", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Na fórmula de Venn com 3 conjuntos, somamos a tripla interseção porque ela foi subtraída duas vezes."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },

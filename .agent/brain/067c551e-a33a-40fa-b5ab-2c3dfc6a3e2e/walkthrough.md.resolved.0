@@ -1,0 +1,28 @@
+# Walkthrough: Remoção de Letras Redundantes nas Alternativas
+
+Corrigi o problema onde a IA incluía letras (A, B, C, D, E) no início das alternativas, o que causava duplicidade na interface.
+
+## Mudanças Realizadas
+
+### 1. Atualização de Prompts
+Atualizei os prompts de sistema de todos os provedores ([Gemini](file:///c:/Workspace/petrobras-quest/src/lib/ai/providers/gemini-provider.ts#5-189), [FreeLLM](file:///c:/Workspace/petrobras-quest/src/lib/ai/providers/freellm-provider.ts#4-253) e [Anthropic](file:///c:/Workspace/petrobras-quest/src/lib/ai/providers/anthropic-provider.ts#5-157)) com a seguinte instrução explícita:
+> "NUNCA inclua letras (A, B, C, D, E), números ou prefixos no início das alternativas. O JSON deve conter apenas o texto puro da opção."
+
+### 2. Sanitização Defensiva (Code)
+Adicionei um regex de limpeza em todos os `parsers` de resposta:
+```typescript
+alt.replace(/^[A-Ea-e][\s).:-]+/, "").trim()
+```
+Isso garante que, mesmo que a IA ignore o prompt, as letras sejam removidas antes de chegarem à interface.
+
+### 3. Correção do AnthropicProvider
+- Implementei o método [generateQuestionsBatch](file:///c:/Workspace/petrobras-quest/src/lib/ai/providers/gemini-provider.ts#73-147) que estava faltando (resolvendo erros de Lint).
+- Garanti a consistência dos parsers entre questões individuais e em lote.
+
+## Arquivos Modificados
+- [gemini-provider.ts](file:///c:/Workspace/petrobras-quest/src/lib/ai/providers/gemini-provider.ts)
+- [freellm-provider.ts](file:///c:/Workspace/petrobras-quest/src/lib/ai/providers/freellm-provider.ts)
+- [anthropic-provider.ts](file:///c:/Workspace/petrobras-quest/src/lib/ai/providers/anthropic-provider.ts)
+
+## Verificação
+- Os simulados gerados por qualquer um dos provedores agora devem exibir apenas o texto das alternativas, sem "A) ", "B) ", etc.

@@ -1,0 +1,49 @@
+# Plano de Implementação: Adequação Estratégica CESGRANRIO (Pré-Edital)
+
+Este plano visa alinhar o currículo do SAAS com os insights das pesquisas históricas da CESGRANRIO, focando nos pontos de maior peso (Conectores) e na tendência de modernização (Inglês Técnico).
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Priorização de Conteúdo:** O foco será deslocado do "motor de prova" (já adequado) para a profundidade pedagógica da **CESGRANRIO**.
+> **Tendência Inglês:** Criaremos o módulo de Inglês Técnico mesmo para o nível médio, tratando-o como "Bônus Estratégico" para antecipar a tendência observada em 2024 (Caixa/BB).
+
+## Proposed Changes
+
+### [Componente de Português]
+
+#### [MODIFY] [AulaCoesaoCoerencia.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaCoesaoCoerencia.tsx)
+- Refinar os 10 módulos focando massivamente em **Conjunções**.
+- Adicionar tabelas de substituição semântica usando o componente `Comparison` em todos os módulos de conectivos.
+- Atualizar o `ModuleConsolidation` dos módulos 6 e 7 (os mais críticos para a banca).
+
+### [Componente de Inglês]
+
+#### [NEW] [AulaInglesInstrumental.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/ingles/AulaInglesInstrumental.tsx)
+- Estrutura base de 10 módulos no padrão Ultimate V4.1.
+- Módulos iniciais focados em:
+    1. Estratégias de Leitura (Skimming/Scanning).
+    2. Grupos Nominais Técnicos (Petrobras/Energia).
+    3. Falsos Cognatos na Engenharia.
+
+### [Infraestrutura de Dados]
+
+#### [NEW] [ingles-instrumental-quizzes.ts](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/data/ingles-instrumental-quizzes.ts)
+- Base de dados de questões inéditas no padrão A-E focado em interpretação técnica.
+
+---
+
+## Open Questions
+
+1. **Escopo do Inglês**: Você prefere que o foco inicial do Inglês seja totalmente técnico-operacional (Petrobras) ou gramática básica com textos técnicos?
+2. **Prioridade de Português**: Podemos considerar as aulas de *Coesão e Coerência* e *Sintaxe* como as "Vitrines" do seu SAAS por serem o coração da CESGRANRIO?
+
+## Verification Plan
+
+### Automated Tests
+- `npm run dev` para validar a renderização das novas tabelas de comparação.
+- `npx tsc` para garantir integridade de tipagem nas novas aulas.
+
+### Manual Verification
+- Navegar pelos módulos de Coesão para garantir que os macetes visuais sobre conectores estão impactantes.
+- Testar o `QuizInterativo` nos novos módulos para validar a seleção aleatória de questões padrão Cesgranrio.

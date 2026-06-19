@@ -1,0 +1,7 @@
+# Checklist de Testes - Auditoria Ostensiva
+
+- [ ] Acessar `http://localhost:3000/login` e logar com `andrehugo-enfermagem-trabalho-tec`
+- [ ] Validar cabeçalho: "Conteúdo personalizado para: Enfermagem do Trabalho"
+- [ ] Validar presença de "Bloco I", "Bloco II" e "Bloco III"
+- [ ] Clicar no Bloco I e validar tópicos
+- [ ] Clicar em um tópico e validar "Placeholder Premium"

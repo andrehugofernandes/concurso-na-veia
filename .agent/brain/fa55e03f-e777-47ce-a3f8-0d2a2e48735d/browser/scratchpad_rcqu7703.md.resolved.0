@@ -1,0 +1,14 @@
+# Checklist de Validação de Cores - Aula de Classes de Palavras
+
+- [ ] Acessar http://localhost:3000/aulas/portugues/classes-palavras
+- [ ] Validar Módulo 2 (Adjetivo):
+    - [ ] Banner Azul (mv[2] = blue)
+    - [ ] Header 'Conceito Científico' Azul
+    - [ ] Outros Headers Azul
+- [ ] Validar Módulo 3 (Artigo):
+    - [ ] Banner Verde (mv[3] = emerald?)
+    - [ ] Headers internos Verdes
+- [ ] Validar Módulo 4 (Pronome):
+    - [ ] Banner Rosa (mv[4] = rose?)
+    - [ ] Headers internos Rosa (não Roxos)
+- [ ] Reportar status final.

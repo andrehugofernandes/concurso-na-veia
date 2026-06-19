@@ -1,0 +1,11 @@
+# Depuração de Duplicatas no Seletor
+
+- [x] Analisar implementação do Gemini Provider
+- [x] Configurar Gemini como Provedor Principal
+- [x] Corrigir duplicação no SimuladoHome
+- [x] Implementar deduplicação no SimuladoConfigModal
+- [x] Corrigir tratamento de erro no GeminiProvider (Rate Limit)
+- [x] Robustecer parser de JSON do Gemini
+- [x] Adicionar feedback de contagem regressiva na Maratona
+- [x] Migrar para Gemini 2.0 Flash (Versão 2026)
+- [ ] Testar geração e comparar qualidade (Aguardando Usuário)

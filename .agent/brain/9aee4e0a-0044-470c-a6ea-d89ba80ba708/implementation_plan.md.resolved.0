@@ -1,0 +1,49 @@
+# Plano de Implementação - Padronização e Densificação da Aula de Concordância
+
+Este plano visa padronizar e densificar o conteúdo da aula de Concordância no componente `AulaConcordancia.tsx`, seguindo o padrão `rich-intro-premium-flips-builder` e o framework pedagógico C.E.D.E.A (5 parágrafos densos por seção), com foco total na banca Cesgranrio para o concurso da Petrobras.
+
+## User Review Required
+
+> [!IMPORTANT]
+> O conteúdo será significativamente densificado para atingir o nível "premium" exigido. Isso aumentará o volume de leitura por módulo, mas garantirá a profundidade necessária para a Cesgranrio.
+
+> [!NOTE]
+> As regras de cores originais de cada módulo serão preservadas conforme solicitado.
+
+## Propostos Mudanças
+
+### [Componente AulaConcordancia](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaConcordancia.tsx)
+
+#### [MODIFY] [AulaConcordancia.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaConcordancia.tsx)
+
+1. **Padronização de Cabeçalhos**:
+   - Alterar todos os `ModuleSectionHeader` para usar `index="INTRO"` em vez de emojis ou números.
+   - Garantir que todos os títulos sejam impactantes e técnicos.
+
+2. **Densificação C.E.D.E.A (Módulo 1 - Concordância Verbal)**:
+   - Revisar as seções introdutórias e fundamentais.
+   - Expandir o texto para 5 parágrafos densos, cobrindo: Contexto, Explicação, Detalhamento, Exemplo e Aplicação (C.E.D.E.A).
+   - Focar em pegadinhas da Cesgranrio: Sujeito oracional, verbos impessoais em locuções, partícula SE como IIS vs PA.
+
+3. **Padronização e Densificação (Módulo 2 - Concordância Nominal)**:
+   - Aplicar o padrão de 5 parágrafos na introdução.
+   - Detalhar casos críticos: Adjetivos como predicativo, palavras "meio", "bastante", "anexo", "só", "mesmo".
+   - Focar na variação de cores e adjetivos compostos (frequentes na Cesgranrio).
+
+4. **Refino dos Módulos 3, 4 e 5**:
+   - **Módulo 3 (Prática)**: Densificar a explicação de como abordar questões da banca.
+   - **Módulo 4 (Avançado)**: Focar em concordância ideológica (silepse) e casos raros que a Cesgranrio usa para desempate.
+   - **Módulo 5 (Laboratório Cesgranrio)**: Densificar a análise de tendências recentes da banca (2023-2025).
+
+5. **Verificação de Acessibilidade e Performance**:
+   - Garantir que a densificação não prejudique a legibilidade (usar espaçamento adequado e tipografia `text-lg`).
+
+## Plano de Verificação
+
+### Automated Tests
+- Executar lint para garantir que não restaram erros de import ou sintaxe.
+- Verificar o render no browser (se possível) para validar o layout glassmorphism.
+
+### Manual Verification
+- Revisão textual de cada bloco C.E.D.E.A para garantir que há exatamente 5 parágrafos de alta qualidade técnica.
+- Verificar se os `ModuleSectionHeader` estão todos com `index="INTRO"`.

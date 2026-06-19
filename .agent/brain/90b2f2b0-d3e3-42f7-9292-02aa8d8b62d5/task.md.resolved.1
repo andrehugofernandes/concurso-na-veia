@@ -1,0 +1,19 @@
+# Task: Plano de Implementação de 2FA Obrigatório e Validação de E-mail
+
+## Objetivos
+- [/] Investigar por que `sophiabeatriz` conseguiu logar sem 2FA.
+- [ ] Validar a configuração de metadados de MFA para novos usuários.
+- [ ] Implementar a obrigatoriedade de 2FA no fluxo de registro.
+- [ ] Garantir que o "bypass" de validação de e-mail não comprometa a segurança, mas resolva o erro de link expirado.
+
+## Etapas
+- [ ] Pesquisa e Diagnóstico:
+    - [ ] Verificar metadados e perfil de `sophiabeatriz` no Supabase.
+    - [ ] Revisar [registerAction](file:///c:/Workspace/petrobras-quest/src/lib/actions/auth.ts#84-154) para incluir `mfa_enabled: true` por padrão.
+- [ ] Implementação Técnica:
+    - [ ] Atualizar [registerAction](file:///c:/Workspace/petrobras-quest/src/lib/actions/auth.ts#84-154) para setar `mfa_enabled` tanto no Auth quanto no Profile.
+    - [ ] Verificar se o redirecionamento para `/auth/setup-2fa` está funcionando corretamente após o primeiro login.
+- [ ] Verificação:
+    - [ ] Testar fluxo completo de registro com um novo usuário teste.
+    - [ ] Validar se o login bloqueia o acesso sem o 2FA configurado.
+    - [ ] Gerar walkthrough.md com os resultados.

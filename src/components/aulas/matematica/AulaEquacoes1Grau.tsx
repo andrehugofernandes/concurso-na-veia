@@ -1569,12 +1569,12 @@ export default function AulaEquacoes1Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="A idade de um operador é o dobro da idade do estagiário. A soma das idades é 54. Qual a idade do operador?"
           alternativas={[
-              { letra: "A", texto: "27", correta: false },
+            { letra: "A", texto: "27", correta: false },
               { letra: "B", texto: "32", correta: false },
               { letra: "C", texto: "36", correta: true },
               { letra: "D", texto: "40", correta: false },
               { letra: "E", texto: "18", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Operador = 36."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Seja e = idade do estagiário." },
@@ -1739,12 +1739,12 @@ export default function AulaEquacoes1Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolvendo (x+1)/3 = (2x-1)/5, o valor de x é:"
           alternativas={[
-              { letra: "A", texto: "4", correta: false },
+            { letra: "A", texto: "4", correta: false },
               { letra: "B", texto: "6", correta: false },
               { letra: "C", texto: "8", correta: true },
               { letra: "D", texto: "10", correta: false },
               { letra: "E", texto: "12", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2038,12 +2038,12 @@ export default function AulaEquacoes1Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolvendo (x+1)/3 = (2x-1)/5, o valor de x é:"
           alternativas={[
-              { letra: "A", texto: "4", correta: false },
+            { letra: "A", texto: "4", correta: false },
               { letra: "B", texto: "6", correta: false },
               { letra: "C", texto: "8", correta: true },
               { letra: "D", texto: "10", correta: false },
               { letra: "E", texto: "12", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2306,12 +2306,12 @@ export default function AulaEquacoes1Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolvendo (x+1)/3 = (2x-1)/5, o valor de x é:"
           alternativas={[
-              { letra: "A", texto: "4", correta: false },
+            { letra: "A", texto: "4", correta: false },
               { letra: "B", texto: "6", correta: false },
               { letra: "C", texto: "8", correta: true },
               { letra: "D", texto: "10", correta: false },
               { letra: "E", texto: "12", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2625,12 +2625,12 @@ export default function AulaEquacoes1Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolvendo (x+1)/3 = (2x-1)/5, o valor de x é:"
           alternativas={[
-              { letra: "A", texto: "4", correta: false },
+            { letra: "A", texto: "4", correta: false },
               { letra: "B", texto: "6", correta: false },
               { letra: "C", texto: "8", correta: true },
               { letra: "D", texto: "10", correta: false },
               { letra: "E", texto: "12", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2977,12 +2977,12 @@ export default function AulaEquacoes1Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolvendo (x+1)/3 = (2x-1)/5, o valor de x é:"
           alternativas={[
-              { letra: "A", texto: "4", correta: false },
+            { letra: "A", texto: "4", correta: false },
               { letra: "B", texto: "6", correta: false },
               { letra: "C", texto: "8", correta: true },
               { letra: "D", texto: "10", correta: false },
               { letra: "E", texto: "12", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -3165,12 +3165,12 @@ export default function AulaEquacoes1Grau({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolvendo (x+1)/3 = (2x-1)/5, o valor de x é:"
           alternativas={[
-              { letra: "A", texto: "4", correta: false },
+            { letra: "A", texto: "4", correta: false },
               { letra: "B", texto: "6", correta: false },
               { letra: "C", texto: "8", correta: true },
               { letra: "D", texto: "10", correta: false },
               { letra: "E", texto: "12", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },

@@ -130,6 +130,11 @@ When user's prompt is NOT in English:
 - Skills: `.agent/skills/` (Project)
 - Runtime Scripts: `.agent/skills/<skill>/scripts/`
 
+### 🕰️ Contexto Histórico Obrigatório (Context History Rule)
+
+> 🔴 **MANDATORY:** Toda vez que o usuário iniciar uma tarefa de desenvolvimento de aulas premium, banco de dados ou backend, o agente DEVE rodar automaticamente o script `scripts/get_context.py` usando termos-chave adequados à solicitação para ler o histórico das discussões e respeitar as preferências consolidadas do desenvolvedor.
+
+
 ### 🧠 Read → Understand → Apply
 
 ```

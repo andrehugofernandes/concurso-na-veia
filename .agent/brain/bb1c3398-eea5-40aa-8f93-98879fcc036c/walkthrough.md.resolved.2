@@ -1,0 +1,62 @@
+# Modernização do Fluxo PMAVV - Walkthrough
+
+Este documento resume as alterações realizadas para modernizar o sistema PMAVV, implementando as novas regras de negócio e corrigindo erros técnicos críticos.
+
+## 🚀 Alterações Realizadas
+
+### 1. Dashboard de Ações Rápidas
+
+Reconstruímos o dashboard utilizando um layout **Bento Grid** moderno, focado em produtividade.
+
+- **Ações Rápidas**: Atalhos para Nova Denúncia, Nova Visita e Relatórios.
+- **Animações**: Feedback visual fluido com `framer-motion`.
+- **Estética**: Alinhamento com o padrão visual _Imune+_.
+
+### 2. Modernização do Cadastro de Denúncias
+
+O formulário de denúncias foi simplificado para reduzir a burocracia:
+
+- **Remoção de Campos Obsoletos**: Eliminamos 'Número de Origem', 'Encaminhamentos' e 'Ofícios'.
+- **Fluxo Condicional**: Adição do campo **Relato Breve** (textarea) quando a denúncia não é pertinente ao trabalho do NAVV.
+- **Wizards de Vítimas e Agressores**:
+  - Implementação de seletor de quantidade (1-10).
+  - Geração automática de formulários via `useFieldArray`.
+  - Melhoria na usabilidade eliminando botões manuais de "Adicionar Mais".
+
+### 3. Integração e Backend (V2)
+
+- **Database**: Migração do Prisma para remover colunas deletadas e adicionar o campo `relato_breve`.
+- **Actions**: Refatoração completa das [denuncias-actions.ts](file:///C:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/denuncias-actions.ts) para suportar o novo payload simplificado.
+- **Vínculos**: Limpeza de tabelas de relacionamento legadas (Encaminhamentos).
+
+### 4. Correções de Hidratação e DOM Nesting
+
+Corrigimos o erro crítico `In HTML, <button> cannot be a descendant of <button>`.
+
+- **Causa**: O uso da prop `asChild` em componentes baseados em **Base UI** (@base-ui/react) gerava aninhamento involuntário de botões.
+- **Solução**: Substituímos `asChild` pela propriedade `render` nos componentes [DialogTrigger](file:///C:/GSW/PMAVV/PMAVV/src/components/ui/dialog.tsx#14-17) e [DialogClose](file:///C:/GSW/PMAVV/PMAVV/src/components/ui/dialog.tsx#22-25).
+- **Arquivos Corrigidos**:
+  - [listagem.tsx](<file:///C:/GSW/PMAVV/PMAVV/src/app/(app)/cadastros/denuncias/listagem.tsx>)
+  - [user-form-modal.tsx](file:///C:/GSW/PMAVV/PMAVV/src/components/users/user-form-modal.tsx)
+  - [category-form-modal.tsx](file:///C:/GSW/PMAVV/PMAVV/src/components/categories/category-form-modal.tsx)
+
+### 5. Restauração do Fluxo Legado (Checkboxes)
+- **Órgão de Origem**: Agora utiliza um sistema de múltipla escolha (checkboxes) em vez de menu suspenso, permitindo selecionar múltiplos órgãos.
+- **Encaminhamentos**: Re-introduzimos a seção de órgãos repassadores (CRAS, CREAS, etc.) como checkboxes, visíveis tanto em casos pertinentes quanto não pertinentes.
+- **Campos Condicionais**: Implementação de lógica para exibir campos de texto ao selecionar "OUTROS" em qualquer uma das seções.
+
+### 6. Refinamento do Layout da Denúncia
+
+Ajustamos a lógica de visibilidade para evitar a ocultação de campos importantes:
+
+- **Campos Persistentes**: As "Formas de Violência" e os controles de "Fluxo de Cadastro" agora permanecem visíveis mesmo quando a denúncia é marcada como "NÃO pertinente" ao NAVV.
+- **Posicionamento**: O campo "Relato Breve" foi movido para o final da segunda seção, aparecendo somente sob demanda, sem quebrar o fluxo do formulário.
+
+## 🛠️ Verificação Realizada
+
+- **Lints**: Verificamos os erros de nesting e hidratação através da análise do código e dos logs do terminal.
+- **UX**: Validamos o novo fluxo dinâmico de vítimas e agressores.
+
+---
+
+_Tarefa finalizada com sucesso._

@@ -1,0 +1,43 @@
+# Upgrade Bloco I - Suprimento (Estrito aula-ultimate.md)
+
+Este plano detalha a atualização das aulas do Bloco I de Administração (Suprimento) em **estrita conformidade** com o workflow central `aula-ultimate.md`. O objetivo fundamental será cumprido sem desvios: *"O texto introdutório é a AULA. Os componentes são o REFORÇO."*
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Adição, Nunca Subtração:** Cada aula crescerá significativamente, superando a marca de ~3000 linhas via ADIÇÃO estrita. Nenhum `ContentAccordion`, `FlipCard` ou lógica existente será removida.
+
+## Proposed Changes
+
+---
+
+### [Component] Aulas de Administração (Suprimento)
+
+Avançaremos aula por aula, aplicando a anatomia rígida de 7 blocos exigida pelo workflow.
+
+#### [MODIFY] [AulaComprasSuprimento.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaComprasSuprimento.tsx)
+#### [MODIFY] [AulaAdministracaoGeralSuprimento.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaAdministracaoGeralSuprimento.tsx)
+#### [MODIFY] [AulaGestaoQualidadeSuprimento.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestaoQualidadeSuprimento.tsx)
+#### [MODIFY] [AulaLogisticaSuprimento.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaLogisticaSuprimento.tsx)
+
+**Para cada Módulo dentro dos arquivos, a estrutura final será:**
+1. **ModuleBanner:** Mantido e padronizado com `numero={N}` e `variant={mv[N]}` (zero hardcode).
+2. **[NEW] Rich Intro Section:** Inserida IMEDIATAMENTE após o Banner. O código usará exatamente o boilerplate exigido na documentação (`<section className="bg-card rounded-2xl...">`).
+   * 5 parágrafos (Acadêmico, Intuitivo, Framework/Regras, Contexto Petrobras, CESGRANRIO).
+   * 1 Caixa de Destaque com gradiente de cor `variant`.
+   * Cobertura teórica obrigatória de *zero gaps* para as perguntas do quiz.
+3. **ContentAccordion (C.E.D.E.):** Elementos existentes serão mantidos intactos, mas assegurados sob as regras `mode="stacked"`.
+4. **Resumo / ModuleConsolidation:** Atualizado para incluir as 4 abas (incluindo "Macete Visual" com JSX dinâmico e "Música/Suno"). Será posicionado rigorosamente **antes** do Quiz.
+5. **QuizInterativo:** O último componente do módulo. Terá a estrutura nomeada dinamicamente, ex: `[Último Nº de Card] QUIZ: COMPRAS NO SETOR PÚBLICO`.
+
+## Verification Plan
+
+### Automated Verification
+Após cada modificação de aula, executaremos o motor *Ultimate Engine* para limpar redundâncias e blindar erros:
+- `node scripts/ultimate-fixer.js src/components/aulas/administracao/[arquivo.tsx]`
+- Inspeção por CLI via `wc -l` para comprovar que o arquivo obteve incremento de densidade exigido (Mínimo de ~3000 linhas por aula).
+
+### Manual Verification
+- Walkthrough completo pelas 4 aulas no sistema via navegador executando `pnpm dev`.
+- Simulação de leitura do texto rico e validação de que o "Macete Visual" não quebra.
+- Aceitação e salvamento dos Quizzes sem erro de posicionamento na renderização.

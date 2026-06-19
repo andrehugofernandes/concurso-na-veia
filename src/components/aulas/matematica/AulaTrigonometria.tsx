@@ -348,12 +348,12 @@ export default function AulaTrigonometria({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é o valor exato de sen 60°?"
           alternativas={[
-              { letra: "A", texto: "1/2", correta: false },
+            { letra: "A", texto: "1/2", correta: false },
               { letra: "B", texto: "√2/2", correta: false },
               { letra: "C", texto: "√3/2", correta: true },
               { letra: "D", texto: "1", correta: false },
               { letra: "E", texto: "√3", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
@@ -668,12 +668,12 @@ export default function AulaTrigonometria({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é o valor exato de sen 60°?"
           alternativas={[
-              { letra: "A", texto: "1/2", correta: false },
+            { letra: "A", texto: "1/2", correta: false },
               { letra: "B", texto: "√2/2", correta: false },
               { letra: "C", texto: "√3/2", correta: true },
               { letra: "D", texto: "1", correta: false },
               { letra: "E", texto: "√3", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
@@ -939,12 +939,12 @@ export default function AulaTrigonometria({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é o valor exato de sen 60°?"
           alternativas={[
-              { letra: "A", texto: "1/2", correta: false },
+            { letra: "A", texto: "1/2", correta: false },
               { letra: "B", texto: "√2/2", correta: false },
               { letra: "C", texto: "√3/2", correta: true },
               { letra: "D", texto: "1", correta: false },
               { letra: "E", texto: "√3", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
@@ -1210,12 +1210,12 @@ export default function AulaTrigonometria({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é o valor exato de sen 60°?"
           alternativas={[
-              { letra: "A", texto: "1/2", correta: false },
+            { letra: "A", texto: "1/2", correta: false },
               { letra: "B", texto: "√2/2", correta: false },
               { letra: "C", texto: "√3/2", correta: true },
               { letra: "D", texto: "1", correta: false },
               { letra: "E", texto: "√3", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
@@ -1462,12 +1462,12 @@ export default function AulaTrigonometria({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é o valor exato de sen 60°?"
           alternativas={[
-              { letra: "A", texto: "1/2", correta: false },
+            { letra: "A", texto: "1/2", correta: false },
               { letra: "B", texto: "√2/2", correta: false },
               { letra: "C", texto: "√3/2", correta: true },
               { letra: "D", texto: "1", correta: false },
               { letra: "E", texto: "√3", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
@@ -1712,12 +1712,12 @@ export default function AulaTrigonometria({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é o valor exato de sen 60°?"
           alternativas={[
-              { letra: "A", texto: "1/2", correta: false },
+            { letra: "A", texto: "1/2", correta: false },
               { letra: "B", texto: "√2/2", correta: false },
               { letra: "C", texto: "√3/2", correta: true },
               { letra: "D", texto: "1", correta: false },
               { letra: "E", texto: "√3", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
@@ -1955,12 +1955,12 @@ export default function AulaTrigonometria({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é o valor exato de sen 60°?"
           alternativas={[
-              { letra: "A", texto: "1/2", correta: false },
+            { letra: "A", texto: "1/2", correta: false },
               { letra: "B", texto: "√2/2", correta: false },
               { letra: "C", texto: "√3/2", correta: true },
               { letra: "D", texto: "1", correta: false },
               { letra: "E", texto: "√3", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
@@ -2198,12 +2198,12 @@ export default function AulaTrigonometria({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é o valor exato de sen 60°?"
           alternativas={[
-              { letra: "A", texto: "1/2", correta: false },
+            { letra: "A", texto: "1/2", correta: false },
               { letra: "B", texto: "√2/2", correta: false },
               { letra: "C", texto: "√3/2", correta: true },
               { letra: "D", texto: "1", correta: false },
               { letra: "E", texto: "√3", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
@@ -2482,12 +2482,12 @@ export default function AulaTrigonometria({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é o valor exato de sen 60°?"
           alternativas={[
-              { letra: "A", texto: "1/2", correta: false },
+            { letra: "A", texto: "1/2", correta: false },
               { letra: "B", texto: "√2/2", correta: false },
               { letra: "C", texto: "√3/2", correta: true },
               { letra: "D", texto: "1", correta: false },
               { letra: "E", texto: "√3", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },
@@ -2800,12 +2800,12 @@ export default function AulaTrigonometria({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual é o valor exato de sen 60°?"
           alternativas={[
-              { letra: "A", texto: "1/2", correta: false },
+            { letra: "A", texto: "1/2", correta: false },
               { letra: "B", texto: "√2/2", correta: false },
               { letra: "C", texto: "√3/2", correta: true },
               { letra: "D", texto: "1", correta: false },
               { letra: "E", texto: "√3", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Observe que sen 30° = cos 60° e sen 60° = cos 30° (ângulos complementares)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "sen 60° = √3/2 ≈ 0,866." },

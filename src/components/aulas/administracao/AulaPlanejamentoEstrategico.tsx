@@ -475,17 +475,16 @@ export default function AulaPlanejamentoEstrategico({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
           alternativas={[
-            { label: "A", valor: "Visão de Futuro" },
-                { label: "B", valor: "Valores Corporativos" },
-                { label: "C", valor: "Missão Organizacional" },
-                { label: "D", valor: "Objetivos Estratégicos" },
-                { label: "E", valor: "Metas Operacionais" }
+            { letra: "A", texto: "Visão de Futuro", correta: false },
+                { letra: "B", texto: "Valores Corporativos", correta: false },
+                { letra: "C", texto: "Missão Organizacional", correta: true },
+                { letra: "D", texto: "Objetivos Estratégicos", correta: false },
+                { letra: "E", texto: "Metas Operacionais", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
-            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente." },
+            { titulo: "Passo 2", conteudo: "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={quizM1} titulo="QUIZ: Conceitos Fundamentais" numero={3} variant="blue" icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
@@ -657,17 +656,16 @@ export default function AulaPlanejamentoEstrategico({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
           alternativas={[
-            { label: "A", valor: "Visão de Futuro" },
-                { label: "B", valor: "Valores Corporativos" },
-                { label: "C", valor: "Missão Organizacional" },
-                { label: "D", valor: "Objetivos Estratégicos" },
-                { label: "E", valor: "Metas Operacionais" }
+            { letra: "A", texto: "Visão de Futuro", correta: false },
+                { letra: "B", texto: "Valores Corporativos", correta: false },
+                { letra: "C", texto: "Missão Organizacional", correta: true },
+                { letra: "D", texto: "Objetivos Estratégicos", correta: false },
+                { letra: "E", texto: "Metas Operacionais", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
-            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente." },
+            { titulo: "Passo 2", conteudo: "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={quizM2} titulo="QUIZ: Análise SWOT" numero={3} variant="blue" icone="🎯" onComplete={(score) => handleModuleComplete("modulo-2", score)} />
@@ -806,17 +804,16 @@ export default function AulaPlanejamentoEstrategico({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
           alternativas={[
-            { label: "A", valor: "Visão de Futuro" },
-                { label: "B", valor: "Valores Corporativos" },
-                { label: "C", valor: "Missão Organizacional" },
-                { label: "D", valor: "Objetivos Estratégicos" },
-                { label: "E", valor: "Metas Operacionais" }
+            { letra: "A", texto: "Visão de Futuro", correta: false },
+                { letra: "B", texto: "Valores Corporativos", correta: false },
+                { letra: "C", texto: "Missão Organizacional", correta: true },
+                { letra: "D", texto: "Objetivos Estratégicos", correta: false },
+                { letra: "E", texto: "Metas Operacionais", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
-            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente." },
+            { titulo: "Passo 2", conteudo: "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={quizM3} titulo="QUIZ: Balanced Scorecard (BSC)" numero={3} variant="blue" icone="📊" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
@@ -953,17 +950,16 @@ export default function AulaPlanejamentoEstrategico({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
           alternativas={[
-            { label: "A", valor: "Visão de Futuro" },
-                { label: "B", valor: "Valores Corporativos" },
-                { label: "C", valor: "Missão Organizacional" },
-                { label: "D", valor: "Objetivos Estratégicos" },
-                { label: "E", valor: "Metas Operacionais" }
+            { letra: "A", texto: "Visão de Futuro", correta: false },
+                { letra: "B", texto: "Valores Corporativos", correta: false },
+                { letra: "C", texto: "Missão Organizacional", correta: true },
+                { letra: "D", texto: "Objetivos Estratégicos", correta: false },
+                { letra: "E", texto: "Metas Operacionais", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
-            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente." },
+            { titulo: "Passo 2", conteudo: "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={quizM4} titulo="QUIZ: Formulação Estratégica" numero={3} variant="blue" icone="⚔️" onComplete={(score) => handleModuleComplete("modulo-4", score)} />
@@ -1127,17 +1123,16 @@ export default function AulaPlanejamentoEstrategico({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
           alternativas={[
-            { label: "A", valor: "Visão de Futuro" },
-                { label: "B", valor: "Valores Corporativos" },
-                { label: "C", valor: "Missão Organizacional" },
-                { label: "D", valor: "Objetivos Estratégicos" },
-                { label: "E", valor: "Metas Operacionais" }
+            { letra: "A", texto: "Visão de Futuro", correta: false },
+                { letra: "B", texto: "Valores Corporativos", correta: false },
+                { letra: "C", texto: "Missão Organizacional", correta: true },
+                { letra: "D", texto: "Objetivos Estratégicos", correta: false },
+                { letra: "E", texto: "Metas Operacionais", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
-            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente." },
+            { titulo: "Passo 2", conteudo: "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={quizM5} titulo="QUIZ: Implementação Estratégica" numero={3} variant="blue" icone="🎯" onComplete={(score) => handleModuleComplete("modulo-5", score)} />
@@ -1300,17 +1295,16 @@ export default function AulaPlanejamentoEstrategico({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
           alternativas={[
-            { label: "A", valor: "Visão de Futuro" },
-                { label: "B", valor: "Valores Corporativos" },
-                { label: "C", valor: "Missão Organizacional" },
-                { label: "D", valor: "Objetivos Estratégicos" },
-                { label: "E", valor: "Metas Operacionais" }
+            { letra: "A", texto: "Visão de Futuro", correta: false },
+                { letra: "B", texto: "Valores Corporativos", correta: false },
+                { letra: "C", texto: "Missão Organizacional", correta: true },
+                { letra: "D", texto: "Objetivos Estratégicos", correta: false },
+                { letra: "E", texto: "Metas Operacionais", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
-            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente." },
+            { titulo: "Passo 2", conteudo: "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={quizM6} titulo="QUIZ: Controle e Avaliação" numero={3} variant="blue" icone="📈" onComplete={(score) => handleModuleComplete("modulo-6", score)} />
@@ -1457,17 +1451,16 @@ export default function AulaPlanejamentoEstrategico({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
           alternativas={[
-            { label: "A", valor: "Visão de Futuro" },
-                { label: "B", valor: "Valores Corporativos" },
-                { label: "C", valor: "Missão Organizacional" },
-                { label: "D", valor: "Objetivos Estratégicos" },
-                { label: "E", valor: "Metas Operacionais" }
+            { letra: "A", texto: "Visão de Futuro", correta: false },
+                { letra: "B", texto: "Valores Corporativos", correta: false },
+                { letra: "C", texto: "Missão Organizacional", correta: true },
+                { letra: "D", texto: "Objetivos Estratégicos", correta: false },
+                { letra: "E", texto: "Metas Operacionais", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
-            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente." },
+            { titulo: "Passo 2", conteudo: "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={quizM7} titulo="QUIZ: Empresas Públicas" numero={3} variant="blue" icone="🏛️" onComplete={(score) => handleModuleComplete("modulo-7", score)} />
@@ -1615,17 +1608,16 @@ export default function AulaPlanejamentoEstrategico({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
           alternativas={[
-            { label: "A", valor: "Visão de Futuro" },
-                { label: "B", valor: "Valores Corporativos" },
-                { label: "C", valor: "Missão Organizacional" },
-                { label: "D", valor: "Objetivos Estratégicos" },
-                { label: "E", valor: "Metas Operacionais" }
+            { letra: "A", texto: "Visão de Futuro", correta: false },
+                { letra: "B", texto: "Valores Corporativos", correta: false },
+                { letra: "C", texto: "Missão Organizacional", correta: true },
+                { letra: "D", texto: "Objetivos Estratégicos", correta: false },
+                { letra: "E", texto: "Metas Operacionais", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
-            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente." },
+            { titulo: "Passo 2", conteudo: "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={quizM8} titulo="QUIZ: Cenários e Prospectiva" numero={3} variant="blue" icone="🔮" onComplete={(score) => handleModuleComplete("modulo-8", score)} />
@@ -1782,17 +1774,16 @@ export default function AulaPlanejamentoEstrategico({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
           alternativas={[
-            { label: "A", valor: "Visão de Futuro" },
-                { label: "B", valor: "Valores Corporativos" },
-                { label: "C", valor: "Missão Organizacional" },
-                { label: "D", valor: "Objetivos Estratégicos" },
-                { label: "E", valor: "Metas Operacionais" }
+            { letra: "A", texto: "Visão de Futuro", correta: false },
+                { letra: "B", texto: "Valores Corporativos", correta: false },
+                { letra: "C", texto: "Missão Organizacional", correta: true },
+                { letra: "D", texto: "Objetivos Estratégicos", correta: false },
+                { letra: "E", texto: "Metas Operacionais", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
-            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente." },
+            { titulo: "Passo 2", conteudo: "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={quizM9} titulo="QUIZ: Aplicações Petrobras" numero={3} variant="blue" icone="🛢️" onComplete={(score) => handleModuleComplete("modulo-9", score)} />
@@ -1880,17 +1871,16 @@ export default function AulaPlanejamentoEstrategico({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras, ao definir sua 'Razão de Ser' no Plano Estratégico 2024-2028, está estabelecendo qual componente fundamental do planejamento?"
           alternativas={[
-            { label: "A", valor: "Visão de Futuro" },
-                { label: "B", valor: "Valores Corporativos" },
-                { label: "C", valor: "Missão Organizacional" },
-                { label: "D", valor: "Objetivos Estratégicos" },
-                { label: "E", valor: "Metas Operacionais" }
+            { letra: "A", texto: "Visão de Futuro", correta: false },
+                { letra: "B", texto: "Valores Corporativos", correta: false },
+                { letra: "C", texto: "Missão Organizacional", correta: true },
+                { letra: "D", texto: "Objetivos Estratégicos", correta: false },
+                { letra: "E", texto: "Metas Operacionais", correta: false }
           ]}
-          correta="C"
           passos={[
-            "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente.",
-            "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A Missão representa a razão de existir da organização, sua identidade e o que ela faz no presente." },
+            { titulo: "Passo 2", conteudo: "No caso da Petrobras, sua missão foca em atuar na indústria de energia de forma segura e sustentável." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo questoes={quizM10} titulo="QUIZ: Simulado Geral" numero={3} variant="blue" icone="👑" onComplete={(score) => handleModuleComplete("modulo-10", score)} />

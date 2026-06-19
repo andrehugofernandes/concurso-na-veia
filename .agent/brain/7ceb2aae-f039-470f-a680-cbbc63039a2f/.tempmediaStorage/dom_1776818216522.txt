@@ -1,0 +1,99 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (66,43)<a class='flex items-center gap-6 md:gap-3 group hover:opacity-90 transition-opacity scale-75 md:scale-[0.80] origin-left' href='/' />
+	[1] (18,43)<div  />
+		[2] (17,38)<img  />
+	[3] (78,43)<div  />
+		[4] (78,37)<h1  />
+			[5] (52,37)<span >A VAGA />
+			[6] (97,37)<span >EH MINHA />
+		[7] (78,63)<span >Simulador de Concursos />
+[8] (66,125)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group mb-4 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/dashboard' />
+	[9] (15,125)<div  />
+	[10] (45,125)<span >Dashboard />
+Estudo
+[11] (66,200)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90' href='/aulas' />
+	[12] (15,200)<div  />
+	[13] (35,200)<span >Aulas />
+[14] (66,248)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-rapido' />
+	[15] (15,248)<div  />
+	[16] (60,248)<span >Simulados Rápidos />
+[17] (66,296)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/simulado-especifico' />
+	[18] (15,296)<div  />
+	[19] (65,296)<span >Simulados Específicos />
+[20] (66,345)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/maratona-100' />
+	[21] (15,345)<div  />
+	[22] (50,345)<span >Maratona 100 />
+[23] (66,393)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/historico' />
+	[24] (15,393)<div  />
+	[25] (41,393)<span >Histórico />
+[26] (66,441)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/rankings' />
+	[27] (15,441)<div  />
+	[28] (41,441)<span >Rankings />
+Suporte
+[29] (66,516)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/seja-pro' />
+	[30] (15,516)<div  />
+	[31] (40,516)<span >Seja Pro />
+[32] (66,564)<a class='flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' href='/tickets' />
+	[33] (15,564)<div  />
+	[34] (58,564)<span >Abertura de Ticket />
+[35] (159,43)<button aria-label='Colapsar menu' class='p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300 flex-shrink-0' />
+Interpretação de Texto
+[36] (845,43)<a class='hidden md:flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black text-[11px] font-black rounded-full transition-all shadow-sm hover:shadow-yellow-500/20 active:scale-95 border border-yellow-200/50' href='/seja-pro' />
+	[37] (851,43)<span >SEJA PRO />
+[38] (891,43)<button aria-label='Notificações' class='flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' id='radix-_r_6_' />
+[39] (918,43)<button aria-label='Tema Escuro' class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300' />
+[40] (945,43)<button class='flex p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors' id='radix-_r_8_' />
+	[41] (945,43)<div  />
+[42] (973,43)<button class='relative h-10 w-10 rounded-full border-2 border-primary' id='radix-_r_a_' />
+	[43] (973,43)<span  />
+		[44] (973,43)<span >U />
+[45] (285,194)<a class='px-3 py-2 rounded-lg bg-secondary/80 dark:bg-slate-700 text-secondary-foreground dark:text-slate-200 hover:bg-secondary transition flex items-center gap-2 font-medium border border-border/50 shrink-0 text-left leading-tight' href='/aulas/portugues' />
+	[46] (265,194)<span >← />
+	[47] (292,194)<span >Português />
+/
+Interpretação de Texto
+[48] (818,194)<a class='px-3 py-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all font-bold flex items-center justify-center gap-2 shadow-sm border border-border/50 text-[10px] md:text-xs min-w-[80px]' href='/aulas/portugues/coesao-coerencia'>Próximo />
+	[49] (826,194)<span >:
+Coesão e Coerência />
+	[50] (869,194)<span >→ />
+Língua Portuguesa
+Interpretação de Texto
+Compreensão de textos de gêneros variados
+22 min
+[51] (282,541)<button aria-label='Módulos anteriores' class='w-9 h-9 flex items-center justify-center rounded-2xl border border-border/50 bg-background transition-all duration-200 text-foreground/80 hover:bg-muted shadow-sm cursor-pointer' />
+[52] (309,541)<a class='w-10 h-10 md:w-11 md:h-11 flex items-center justify-center rounded-full border border-border/50 bg-background shadow-md text-muted-foreground hover:text-foreground transition-colors shrink-0' href='/aulas/portugues' />
+[53] (375,541)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border border-transparent dark:border-border/40 shadow-sm dark:shadow-none border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary data-[state=active]:dark:border-border/60 disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-2' role='tab' />
+	[54] (375,540)<div  />
+		[55] (366,530)<span >Módulo 2 />
+		[56] (375,552)<span  />
+			[57] (375,552)<span >O Tópico Frasal />
+[58] (478,541)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border border-transparent dark:border-border/40 shadow-sm dark:shadow-none border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary data-[state=active]:dark:border-border/60 disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-3' role='tab' />
+	[59] (478,540)<div  />
+		[60] (454,530)<span >Módulo 3 />
+		[61] (478,552)<span  />
+			[62] (478,552)<span >Coesão e Argumentação />
+[63] (581,541)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border border-transparent dark:border-border/40 shadow-sm dark:shadow-none border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary data-[state=active]:dark:border-border/60 disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-4' role='tab' />
+	[64] (581,540)<div  />
+		[65] (569,530)<span >Módulo 4 />
+		[66] (581,552)<span  />
+			[67] (581,552)<span >Tipologia Textual />
+[68] (683,541)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border border-transparent dark:border-border/40 shadow-sm dark:shadow-none border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary data-[state=active]:dark:border-border/60 disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-5' role='tab' />
+	[69] (683,540)<div  />
+		[70] (668,530)<span >Módulo 5 />
+		[71] (683,552)<span  />
+			[72] (683,552)<span >Coesão Referencial />
+[73] (786,541)<button class='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=active]:text-foreground flex-1 min-w-0 py-2 px-3 md:px-4 rounded-xl border border-transparent dark:border-border/40 shadow-sm dark:shadow-none border-b-[3px] border-b-transparent transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-lg data-[state=active]:ring-1 data-[state=active]:ring-border/20 data-[state=active]:border-b-primary data-[state=active]:dark:border-border/60 disabled:opacity-40 disabled:cursor-not-allowed group' id='radix-_r_c_-trigger-modulo-6' role='tab' />
+	[74] (786,540)<div  />
+		[75] (771,530)<span >Módulo 6 />
+		[76] (786,552)<span  />
+			[77] (786,552)<span >Pistas e Entrelinhas />
+[78] (852,541)<button aria-label='Próximos módulos' class='w-9 h-9 flex items-center justify-center rounded-2xl border border-border/50 bg-background transition-all duration-200 text-foreground/80 hover:bg-muted shadow-sm cursor-pointer' />
+Módulo
+1
+A Diferença Letal
+O Dossiê Premium de Compreensão vs. Interpretação. A fronteira exata entre o que o texto afirma e o que a banca induz.
+
+</current_dom>

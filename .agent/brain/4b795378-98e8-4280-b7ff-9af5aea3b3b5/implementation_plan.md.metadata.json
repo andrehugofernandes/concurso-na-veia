@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plano detalhado para a migração e implementação do sistema PMAVV, focando na integração de autenticação AD/2FA e na construção dos módulos seguindo o padrão Search-First.",
+  "updatedAt": "2026-03-10T20:22:54.807646100Z"
+}

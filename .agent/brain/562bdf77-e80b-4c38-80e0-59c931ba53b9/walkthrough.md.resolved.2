@@ -1,0 +1,28 @@
+# Walkthrough - Correção das Regionais
+
+Concluí as alterações necessárias para normalizar a exibição das regionais em todo o sistema e atender ao pedido de inclusão da coluna na tela de denúncias.
+
+## Alterações Realizadas
+
+### 1. Normalização de Dados (Backend)
+Padronizei o acesso ao campo de nome da regional em todas as Server Actions envolvidas:
+- **[vitimas-actions.ts](file:///c:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/vitimas-actions.ts)**: Atualizada interface e include.
+- **[agressores-actions.ts](file:///c:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/agressores-actions.ts)**: Atualizada interface e include.
+- **[denuncias-actions.ts](file:///c:/GSW/PMAVV/PMAVV/src/app/actions/cadastros/denuncias-actions.ts)**: Adicionado carregamento da regional da vítima no `listDenuncias`.
+
+### 2. Correção da Interface (Frontend)
+- **[vitima-table.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/vitimas/vitima-table.tsx)**: Corrigido o acesso ao campo `.nome` para eliminar o valor "Não informado".
+- **[denuncia-table.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/denuncias/denuncia-table.tsx)**: 
+  - Incluída a coluna **Regional** na aba de Vítimas.
+  - Corrigida a exibição da **Classificação**.
+  - **Padronização Visual**: Implementado o componente `CellText` para uniformizar o tamanho (11px), peso (bold) e estilo (uppercase) de todos os textos das tabelas, garantindo um visual premium e consistente em todas as abas.
+
+### 3. Padronização Global
+- **[vitima-table.tsx](file:///c:/GSW/PMAVV/PMAVV/src/components/vitimas/vitima-table.tsx)**: Aplicada a mesma padronização de fontes (`CellText`) e inclusão de badges para manter a identidade visual em todo o módulo de cadastros.
+
+## Resultados
+- **Interface Uniforme**: Todos os dados nas tabelas de denúncias e vítimas agora seguem o mesmo padrão tipográfico.
+- **Dados Corretos**: Regional e Classificação aparecem perfeitamente na aba de vítimas.
+
+> [!TIP]
+> Recomendo recarregar a página para que as novas definições de colunas e dados do servidor sejam aplicadas.

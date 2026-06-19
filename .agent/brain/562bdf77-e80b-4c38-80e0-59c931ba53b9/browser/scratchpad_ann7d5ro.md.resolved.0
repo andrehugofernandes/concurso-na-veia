@@ -1,0 +1,15 @@
+# Tarefa: Testar criação de denúncia e investigar erro no Passo 4 (Denunciante)
+
+## Checklist
+- [ ] Navegar para /denuncias
+- [ ] Abrir modal "Nova Denúncia"
+- [ ] Preencher Passo 1: Denúncia
+- [ ] Preencher Passo 2: Vítimas
+- [ ] Preencher Passo 3: Agressores
+- [ ] Preencher Passo 4: Denunciante e submeter
+- [ ] Verificar logs do console e erros
+- [ ] Relatar resultados
+
+## Notas
+- Credenciais: andre.hugo / Mvvas@18261405
+- Logs de interesse: [WIZARD STEP4] e [SERVER]

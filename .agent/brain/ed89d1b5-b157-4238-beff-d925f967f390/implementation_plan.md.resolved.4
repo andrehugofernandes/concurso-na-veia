@@ -1,0 +1,40 @@
+# Refinamento de Responsividade Mobile - Dashboard
+
+Este plano visa resolver os problemas de layout nos cards da Dashboard em dispositivos móveis, onde os ícones estão ocupando espaço excessivo e espremendo o conteúdo textual, além de gerarem espaços vazios indesejados.
+
+## User Review Required
+
+> [!IMPORTANT]
+> As alterações serão aplicadas exclusivamente para resoluções mobile (breakpoints abaixo de `sm` ou `xs`). O layout desktop permanecerá inalterado para preservar a experiência atual em telas grandes.
+
+## Proposed Changes
+
+### Dashboard Component
+
+#### [MODIFY] [page.tsx](file:///c:/Workspace/petrobras-quest/src/app/(dashboard)/dashboard/page.tsx)
+
+1.  **Card "Conteúdo Teórico"**:
+    *   Ajustar o container principal para usar um layout que não esprema o texto no mobile.
+    *   Reduzir o tamanho do ícone no mobile (`text-2xl` em vez de `text-4xl`).
+    *   Garantir alinhamento consistente com o título.
+
+2.  **Card "Plano de Estudos"**:
+    *   Alterar de `flex` horizontal para `flex-col` no mobile para evitar o esmagamento lateral do texto.
+    *   Ajustar o tamanho do ícone 🎯 para ser condizente com o novo layout.
+
+3.  **Cards de "Simulados Rápidos" (Português, Matemática, Específicos)**:
+    *   Refatorar o header interno dos cards para priorizar o título.
+    *   No mobile, o ícone será posicionado de forma a não "empurrar" o título para fora da tela ou espremê-lo.
+
+4.  **Ajustes Gerais de Espaçamento**:
+    *   Revisar `gap` e `padding` nos containers mobile para eliminar o "espaço gigante em baixo" mencionado pelo usuário.
+
+## Verification Plan
+
+### Automated Tests
+- Executar auditoria visual via browser subagent em resoluções de 320px, 375px e 414px.
+- Verificar se não há scroll horizontal.
+
+### Manual Verification
+- O usuário deve validar se a leitura dos títulos e descrições ficou mais fluida no celular.
+- Confirmar se o layout desktop continua com os ícones grandes e impactantes como desejado originalmente.

@@ -1,0 +1,15 @@
+# Plano de Teste do Modal de Denúncias
+
+- [ ] Realizar login em http://localhost:3000/login
+- [ ] Navegar para http://localhost:3000/denuncias
+- [ ] Clicar no botão "+ Nova Denúncia"
+- [ ] Capturar screenshot do modal
+- [ ] Validar centralização e overlay (escuro + blur)
+- [ ] Validar labels (sem quebra de linha em desktop)
+- [ ] Validar botões fixos no rodapé (botão Limpar presente)
+- [ ] Validar borda animada (Modo Dark)
+- [ ] Reportar resultados
+
+## Observações
+- Usuário: andre.hugo
+- Senha: [REDACTED]

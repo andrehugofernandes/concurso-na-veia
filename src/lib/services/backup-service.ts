@@ -224,7 +224,7 @@ export async function restoreBackupData(backupData: BackupData): Promise<Restore
     let restoredRecords = 0;
 
     // Usar transação para garantir atomicidade
-    await prisma.$transaction(async (tx) => {
+    await prisma.$transaction(async (tx: any) => {
       // Ordem de restauração importante por causa das foreign keys
       // 1. Primeiro tabelas sem dependências
       // 2. Depois tabelas com dependências

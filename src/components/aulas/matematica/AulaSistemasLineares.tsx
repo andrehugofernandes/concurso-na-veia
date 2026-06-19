@@ -296,12 +296,12 @@ export default function AulaSistemasLineares({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolva por adição: 2x + y = 10 e 3x − y = 15. Na distribuição de carga em dois dutos da RPBC, o valor de x (pressão, bar) é:"
           alternativas={[
-              { letra: "A", texto: "3", correta: false },
+            { letra: "A", texto: "3", correta: false },
               { letra: "B", texto: "4", correta: false },
               { letra: "C", texto: "5", correta: true },
               { letra: "D", texto: "6", correta: false },
               { letra: "E", texto: "7", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O método da adição elimina y pois +y e −y se cancelam."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Somando as equações: (2x+y)+(3x−y)=10+15 → 5x=25 → x=5." },
@@ -513,12 +513,12 @@ export default function AulaSistemasLineares({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolva por adição: 2x + y = 10 e 3x − y = 15. Na distribuição de carga em dois dutos da RPBC, o valor de x (pressão, bar) é:"
           alternativas={[
-              { letra: "A", texto: "3", correta: false },
+            { letra: "A", texto: "3", correta: false },
               { letra: "B", texto: "4", correta: false },
               { letra: "C", texto: "5", correta: true },
               { letra: "D", texto: "6", correta: false },
               { letra: "E", texto: "7", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O método da adição elimina y pois +y e −y se cancelam."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Somando as equações: (2x+y)+(3x−y)=10+15 → 5x=25 → x=5." },
@@ -712,12 +712,12 @@ export default function AulaSistemasLineares({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
           alternativas={[
-              { letra: "A", texto: "20 m³/h", correta: false },
+            { letra: "A", texto: "20 m³/h", correta: false },
               { letra: "B", texto: "30 m³/h", correta: true },
               { letra: "C", texto: "40 m³/h", correta: false },
               { letra: "D", texto: "25 m³/h", correta: false },
               { letra: "E", texto: "35 m³/h", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },
@@ -922,12 +922,12 @@ export default function AulaSistemasLineares({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
           alternativas={[
-              { letra: "A", texto: "20 m³/h", correta: false },
+            { letra: "A", texto: "20 m³/h", correta: false },
               { letra: "B", texto: "30 m³/h", correta: true },
               { letra: "C", texto: "40 m³/h", correta: false },
               { letra: "D", texto: "25 m³/h", correta: false },
               { letra: "E", texto: "35 m³/h", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },
@@ -1112,12 +1112,12 @@ export default function AulaSistemasLineares({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
           alternativas={[
-              { letra: "A", texto: "20 m³/h", correta: false },
+            { letra: "A", texto: "20 m³/h", correta: false },
               { letra: "B", texto: "30 m³/h", correta: true },
               { letra: "C", texto: "40 m³/h", correta: false },
               { letra: "D", texto: "25 m³/h", correta: false },
               { letra: "E", texto: "35 m³/h", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },
@@ -1293,12 +1293,12 @@ export default function AulaSistemasLineares({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
           alternativas={[
-              { letra: "A", texto: "20 m³/h", correta: false },
+            { letra: "A", texto: "20 m³/h", correta: false },
               { letra: "B", texto: "30 m³/h", correta: true },
               { letra: "C", texto: "40 m³/h", correta: false },
               { letra: "D", texto: "25 m³/h", correta: false },
               { letra: "E", texto: "35 m³/h", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },
@@ -1490,12 +1490,12 @@ export default function AulaSistemasLineares({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
           alternativas={[
-              { letra: "A", texto: "20 m³/h", correta: false },
+            { letra: "A", texto: "20 m³/h", correta: false },
               { letra: "B", texto: "30 m³/h", correta: true },
               { letra: "C", texto: "40 m³/h", correta: false },
               { letra: "D", texto: "25 m³/h", correta: false },
               { letra: "E", texto: "35 m³/h", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },
@@ -1678,12 +1678,12 @@ export default function AulaSistemasLineares({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
           alternativas={[
-              { letra: "A", texto: "20 m³/h", correta: false },
+            { letra: "A", texto: "20 m³/h", correta: false },
               { letra: "B", texto: "30 m³/h", correta: true },
               { letra: "C", texto: "40 m³/h", correta: false },
               { letra: "D", texto: "25 m³/h", correta: false },
               { letra: "E", texto: "35 m³/h", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },
@@ -1865,12 +1865,12 @@ export default function AulaSistemasLineares({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
           alternativas={[
-              { letra: "A", texto: "20 m³/h", correta: false },
+            { letra: "A", texto: "20 m³/h", correta: false },
               { letra: "B", texto: "30 m³/h", correta: true },
               { letra: "C", texto: "40 m³/h", correta: false },
               { letra: "D", texto: "25 m³/h", correta: false },
               { letra: "E", texto: "35 m³/h", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },
@@ -2069,12 +2069,12 @@ export default function AulaSistemasLineares({
           concurso="Processo Seletivo Petrobras"
           enunciado="Resolva por substituição: x + y = 50 e x − y = 10. Em um oleoduto, x é a vazão no ramal A e y no ramal B (m³/h). A vazão no ramal A é:"
           alternativas={[
-              { letra: "A", texto: "20 m³/h", correta: false },
+            { letra: "A", texto: "20 m³/h", correta: false },
               { letra: "B", texto: "30 m³/h", correta: true },
               { letra: "C", texto: "40 m³/h", correta: false },
               { letra: "D", texto: "25 m³/h", correta: false },
               { letra: "E", texto: "35 m³/h", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Verificação: 30+20=50✓, 30−20=10✓."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Da 1ª equação: x = 50 − y." },

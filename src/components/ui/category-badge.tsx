@@ -16,9 +16,10 @@ interface CategoryBadgeProps {
  * Uses solid text color, translucent border/background for soft appearance.
  */
 export function CategoryBadge({ name, color, className, title }: CategoryBadgeProps) {
-  const border = hexToRgba(color ?? undefined, 0.4);
-  const bg = hexToRgba(color ?? undefined, 0.10);
-  const text = color ?? "#475569"; // slate-600 fallback
+  const safeColor = color ?? "#475569"; // slate-600 fallback
+  const border = hexToRgba(safeColor, 0.4);
+  const bg = hexToRgba(safeColor, 0.10);
+  const text = safeColor;
 
   return (
     <Badge

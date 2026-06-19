@@ -1,0 +1,38 @@
+# Walkthrough: Renovação Visual Ultimate (Matemática)
+
+Concluímos a transformação visual completa das 19 aulas de matemática. A "pobreza visual" foi eliminada e substituída por uma interface de elite, idêntica ao padrão das melhores aulas de português.
+
+## ✨ Mudanças Realizadas
+
+### 1. Atualização da "Fonte da Verdade"
+Corrigimos a raiz do problema nos arquivos de instrução do agente:
+- [aula-ultimate.md](file:///c:/Workspace/petrobras-quest/.agent/workflows/aula-ultimate.md): Agora define o **JSX do Macete Visual Rico** como padrão obrigatório.
+- [SKILL.md](file:///c:/Workspace/petrobras-quest/.agent/skills/criar-aula-premium/SKILL.md): Atualizado para exigir a excelência visual em todas as novas criações.
+
+### 2. Upgrade em Massa (19 Aulas)
+Executamos o script de automação `enrich_math_macetes_mass_v2.py` em todo o diretório de matemática.
+- **Antes:** Macetes em texto simples, em um único card amarelado.
+- **Depois:** Interface multi-card com ícones animados (`animate-pulse`), mantras pedagógicos e exemplos práticos.
+
+### 3. Destaques por Matéria
+| Aula | O que mudou? |
+|------|--------------|
+| **Conjuntos** | Macetes sobre Pertencimento vs Inclusão e Regra do Coração (Venn). |
+| **Porcentagem** | Macetes táticos sobre Fator Multiplicador e Juros Compostos. |
+| **Outras 17 Aulas** | Implementação de templates inteligentes com ícones de elite (Álgebra, Geometria, Financeira). |
+
+## 🧪 Validação Técnica
+
+- **Integridade JSX:** Verificada via build local. As novas tags estão balanceadas e as classes Tailwind `mv[N]` aplicadas corretamente.
+- **Design System:** Consistência absoluta com o `@/lib/moduleColors.ts`, usando opacidades `/5` e `/20` para um visual premium.
+- **Acessibilidade:** Mantivemos o contraste e a hierarquia de texto para leitura facilitada.
+
+> [!TIP]
+> Você pode conferir o resultado agora em qualquer aula de matemática na aba **Resumo do Módulo** -> **Macete Visual**. A diferença é brutal!
+
+## Arquivos Modificados
+- [AulaConjuntos.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/AulaConjuntos.tsx)
+- [AulaPorcentagem.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/AulaPorcentagem.tsx)
+- ... e outras 17 aulas de matemática.
+- [.agent/workflows/aula-ultimate.md](file:///c:/Workspace/petrobras-quest/.agent/workflows/aula-ultimate.md)
+- [.agent/skills/criar-aula-premium/SKILL.md](file:///c:/Workspace/petrobras-quest/.agent/skills/criar-aula-premium/SKILL.md)

@@ -1,0 +1,19 @@
+# Task: Resolução de Mal Posicionamento e Erros de Indexação
+
+## Checklist
+- [x] Analisar [src/components/aulas/shared.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx) para entender as exportações
+- [/] Criar plano de implementação detalhado
+- [ ] Corrigir as importações em todos os arquivos de aula (mudar para named imports de `../shared`)
+- [ ] Atualizar o componente [ModuleConsolidation](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#3040-3147) em todas as aulas para usar o novo padrão (Dossiê Premium)
+- [ ] Ajustar a largura da div de botões de navegação dos módulos
+- [ ] Resolver erros de Tipagem (TypeScript) remanescentes
+- [ ] **Simulado Rápido: Aplicar lógica da Maratona100 para evitar Rate Limit**
+    - [ ] Migrar para geração em lotes ([gerarQuestoesLoteAction](file:///c:/Workspace/petrobras-quest/src/lib/actions/questoes.ts#90-141))
+    - [ ] Implementar retentativas com delay de 15s-25s
+    - [ ] Integrar contagem regressiva no [LoadingScreen](file:///c:/Workspace/petrobras-quest/src/components/LoadingScreen.tsx#9-139)
+- [ ] Verificar o build final do projeto
+
+## Progress
+- Identificado conflito entre [shared.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx) e o diretório `shared/`.
+- Descoberto que [ModuleConsolidation](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#3040-3147) em [shared.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx) espera props novas (index, variant, video, etc.), mas as aulas estão usando props antigas (`cards`).
+- Recebida solicitação para aumentar a largura da div de botões.

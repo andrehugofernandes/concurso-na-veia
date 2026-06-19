@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Task list for resetting the user's 2FA status in Supabase. Includes identifying the project, user, checking existing factors, and performing the reset.",
+  "updatedAt": "2026-03-16T14:55:45.313835800Z"
+}

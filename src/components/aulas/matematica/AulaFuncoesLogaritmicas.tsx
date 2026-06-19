@@ -352,12 +352,12 @@ export default function AulaFuncoesLogaritmicas({
           concurso="Processo Seletivo Petrobras"
           enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
           alternativas={[
-              { letra: "A", texto: "7", correta: true },
+            { letra: "A", texto: "7", correta: true },
               { letra: "B", texto: "2", correta: false },
               { letra: "C", texto: "13", correta: false },
               { letra: "D", texto: "25/3", correta: false },
               { letra: "E", texto: "10", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
@@ -557,12 +557,12 @@ export default function AulaFuncoesLogaritmicas({
           concurso="Processo Seletivo Petrobras"
           enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
           alternativas={[
-              { letra: "A", texto: "7", correta: true },
+            { letra: "A", texto: "7", correta: true },
               { letra: "B", texto: "2", correta: false },
               { letra: "C", texto: "13", correta: false },
               { letra: "D", texto: "25/3", correta: false },
               { letra: "E", texto: "10", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
@@ -758,12 +758,12 @@ export default function AulaFuncoesLogaritmicas({
           concurso="Processo Seletivo Petrobras"
           enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
           alternativas={[
-              { letra: "A", texto: "7", correta: true },
+            { letra: "A", texto: "7", correta: true },
               { letra: "B", texto: "2", correta: false },
               { letra: "C", texto: "13", correta: false },
               { letra: "D", texto: "25/3", correta: false },
               { letra: "E", texto: "10", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
@@ -990,12 +990,12 @@ export default function AulaFuncoesLogaritmicas({
           concurso="Processo Seletivo Petrobras"
           enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
           alternativas={[
-              { letra: "A", texto: "7", correta: true },
+            { letra: "A", texto: "7", correta: true },
               { letra: "B", texto: "2", correta: false },
               { letra: "C", texto: "13", correta: false },
               { letra: "D", texto: "25/3", correta: false },
               { letra: "E", texto: "10", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
@@ -1192,12 +1192,12 @@ export default function AulaFuncoesLogaritmicas({
           concurso="Processo Seletivo Petrobras"
           enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
           alternativas={[
-              { letra: "A", texto: "7", correta: true },
+            { letra: "A", texto: "7", correta: true },
               { letra: "B", texto: "2", correta: false },
               { letra: "C", texto: "13", correta: false },
               { letra: "D", texto: "25/3", correta: false },
               { letra: "E", texto: "10", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
@@ -1432,12 +1432,12 @@ export default function AulaFuncoesLogaritmicas({
           concurso="Processo Seletivo Petrobras"
           enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
           alternativas={[
-              { letra: "A", texto: "7", correta: true },
+            { letra: "A", texto: "7", correta: true },
               { letra: "B", texto: "2", correta: false },
               { letra: "C", texto: "13", correta: false },
               { letra: "D", texto: "25/3", correta: false },
               { letra: "E", texto: "10", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
@@ -1647,12 +1647,12 @@ export default function AulaFuncoesLogaritmicas({
           concurso="Processo Seletivo Petrobras"
           enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
           alternativas={[
-              { letra: "A", texto: "7", correta: true },
+            { letra: "A", texto: "7", correta: true },
               { letra: "B", texto: "2", correta: false },
               { letra: "C", texto: "13", correta: false },
               { letra: "D", texto: "25/3", correta: false },
               { letra: "E", texto: "10", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
@@ -1842,12 +1842,12 @@ export default function AulaFuncoesLogaritmicas({
           concurso="Processo Seletivo Petrobras"
           enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
           alternativas={[
-              { letra: "A", texto: "7", correta: true },
+            { letra: "A", texto: "7", correta: true },
               { letra: "B", texto: "2", correta: false },
               { letra: "C", texto: "13", correta: false },
               { letra: "D", texto: "25/3", correta: false },
               { letra: "E", texto: "10", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
@@ -2055,12 +2055,12 @@ export default function AulaFuncoesLogaritmicas({
           concurso="Processo Seletivo Petrobras"
           enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
           alternativas={[
-              { letra: "A", texto: "7", correta: true },
+            { letra: "A", texto: "7", correta: true },
               { letra: "B", texto: "2", correta: false },
               { letra: "C", texto: "13", correta: false },
               { letra: "D", texto: "25/3", correta: false },
               { letra: "E", texto: "10", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },
@@ -2275,12 +2275,12 @@ export default function AulaFuncoesLogaritmicas({
           concurso="Processo Seletivo Petrobras"
           enunciado="Se log a = 5 e log b = 3, qual é o valor de log(a² / b)?"
           alternativas={[
-              { letra: "A", texto: "7", correta: true },
+            { letra: "A", texto: "7", correta: true },
               { letra: "B", texto: "2", correta: false },
               { letra: "C", texto: "13", correta: false },
               { letra: "D", texto: "25/3", correta: false },
               { letra: "E", texto: "10", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Substituindo: 2×(5) - 3 = 10 - 3 = 7."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Aplicando as propriedades: log(a² / b) = log(a²) - log(b)." },

@@ -1,0 +1,51 @@
+# Sala de Guerra: Revisão e Padronização das Aulas
+
+O objetivo desta "Sala de Guerra" é revisar meticulosamente **43 arquivos de aulas** (11 de Português, 19 de Matemática e 13 Específicas) para garantir que possuam um padrão rigoroso de UI e UX, sem perder nenhum conteúdo didático, operando sob a skill `@[frontend-specialist]`.
+
+## 📌 Critérios de Sucesso e Revisão (Checklist por Aula)
+
+Para cada um dos 43 arquivos, executaremos as seguintes verificações e alterações:
+
+1. **Ordenação dos Cards (Indexação)**: 
+   - Verificar se todos os componentes `CardHeader` e similares têm a prop `number` indexada sequencialmente, sem números repetidos ou fora de ordem dentro do mesmo módulo.
+   - Cada novo módulo **sempre reiniciará a indexação**, independentemente da estrutura, e **NÃO continuará uma contagem global**. A contagem dos cards é puramente local e pertencente ao escopo do seu próprio módulo.
+
+2. **Sistema de Cores por Módulo**:
+   - O `CardHeader` (seja o principal ou numerado) deve utilizar as variáveis/classes CSS que representam o módulo atual.
+   - O `banner inicial` (ou componente [ModuleConsolidation](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#3040-3147) / Título do Módulo) **deve** compartilhar e refletir exatamente a mesma cor do header dos cards numéricos correspondentes àquele módulo (`bg-{cor}-500/10`, `text-{cor}-500`, etc).
+
+3. **Restrição do Resumo do Módulo (Consolidação)**:
+   - Deve existir **exatamente 1 (um)** [ModuleConsolidation](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#3040-3147) por módulo.
+   - Ele deve ser posicionado sempre como a **penúltima sessão** de conteúdo do módulo (imediatamente antes do [QuizInterativo](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#886-1079)).
+   - Deve conter obrigatoriamente as 4 abas (tabs) possíveis configuradas: `video`, `resumoVisual`, `maceteVisual` e `audio`. 
+
+4. **Regras Estruturais do Quiz ([QuizInterativo](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#886-1079))**:
+   - Deve ser localizado **logo após** o [ModuleConsolidation](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#3040-3147) (exibido como o último card funcional do módulo).
+   - O `index` (ou prop iterativa semelhante do componente [QuizInterativo](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#886-1079)) deve refletir "a quantidade de cards que há no módulo", indicando onde ele se posiciona visualmente, **mas não deve receber props como `modulo={X}` se for resultar na exibição do texto "Módulo X" dentro do card**. O Card do Quiz deve ser independente da assinatura textual de módulo no seu cabeçalho.
+
+5. **Responsividade de Conteúdo Denso e Limite Espacial (As 2500 linhas)**:
+   - Será verificado o `tamanho do componente`. O arquivo `Aula*.tsx` não pode exceder 2500 linhas.
+   - Caso um arquivo exceda (devido à imensa quantidade de arrays de alternativas/questões de quiz embarcadas nele), os dados dos quizzes ou conteúdos hiper de longo texto **serão externalizados** para pastas `data/` (ex: [analise-combinatoria-quizzes.ts](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/data/analise-combinatoria-quizzes.ts)), seguindo o padrão atual das aulas matemáticas. *Nota: não perderemos uma única vírgula de conteúdo nesse processo.*
+   - Para seções inteiras onde há Acordeões muito longos ou apertados ("espremidos"), implementaremos incondicionalmente a skill **`@[.agent/skills/acordeon-carrossel/SKILL.md]`**. Separaremos itens complementares/opostos permitindo scroll 1 a 1 por carrossel vertical/horizontal dentro do acordeon.
+
+6. **Regra de Ouro da Sala de Guerra**: 
+   - **Toda alteração deve ser uma transição suave de estado refatorado.**
+   - O componente [StickyModuleNav](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#2487-2898) **NÃO DEVE SOFRER NENHUM TIPO DE ALTERAÇÃO**. Está finalizado e sagrado.
+   - Absolutamente **NENHUM CONTEÚDO** será deletado, sumarizado, abstraído ou recriado através de chaves menores geradas por IA. Textos originais serão transportados integralmente [1:1](file:///c:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaAdministracaoTributaria.tsx#57-116).
+
+## 🛠️ Plano de Execução
+
+1. **Fase 1: Auditoria Diagnóstica**
+   - Iniciar revisão lote a lote (Ex: Português primeiro -> Específicas -> Matemática).
+   - Identificar arquivos que superam as 2500 linhas e gerar a extração dos dados (arquivos `*-quizzes.ts`).
+
+2. **Fase 2: Refatoração Visual (Indexação, Cores, Módulo e Quiz)**
+   - Corrigir as listagens de `<TabsContent>`.
+   - Implementar os ajustes minuciosos e alinhamentos cromáticos.
+   - Assegurar que os relatórios de Acordeon-Carrossel sejam ativados onde couber.
+
+3. **Fase 3: Quality Check Cíclico**
+   - Atualizar a [task.md](file:///C:/Users/andre.hugo/.gemini/antigravity/brain/cd644821-6f79-474a-8b2e-ab6ab42d5242/task.md) à medida que cada aula for convertida para o estado "Pronto para Módulo Gold".
+
+---
+*Status Inicial*: Aguardando Aprovação para abrir fogo e começar as auditorias.

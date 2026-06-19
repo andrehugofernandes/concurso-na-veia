@@ -1,0 +1,15 @@
+# User role verification (Analista de Sistemas - Geociencias/TI)
+- [ ] 1. Navigates to `http://localhost:3000/login`
+- [ ] 2. Login with `andrehugo-analista-sistemas-sup` / `andrehugo-analista-sistemas-sup`
+- [ ] 3. Logged successfully
+- [ ] 4. Navigate to `/aulas`
+- [ ] 5. Verify materials match for Analista de Sistemas
+- [ ] 6. Search for 'Bloco III - Arquitetura e BD'
+- [ ] 7. Access topics list for 'Bloco III - Arquitetura e BD'
+- [ ] 8. Verify the presence of topics (ex: Lógica de programação)
+- [ ] 9. Navigate to a topic page (e.g. 'Lógica de programação')
+- [ ] 10. Verify premium placeholder layout
+- [ ] 11. Screenshot ementa page
+- [ ] 12. Screenshot placeholder page
+- [ ] 13. Test direct access to `/aulas/especifica-bloco-iii-arquitetura-e-bd` (404 fallback check)
+- [ ] 14. Report findings and confirm UI matches requirements

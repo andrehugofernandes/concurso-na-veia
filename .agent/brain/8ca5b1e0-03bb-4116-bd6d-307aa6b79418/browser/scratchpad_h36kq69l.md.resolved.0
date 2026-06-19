@@ -1,0 +1,13 @@
+# Verificação do Sistema de Skins (Logo)
+
+## Tarefas
+- [ ] Navegar para http://localhost:3000/aulas
+- [ ] Abrir o seletor de temas no cabeçalho
+- [ ] Alternar entre temas (Laranja, Verde, Verde Claro)
+- [ ] Verificar se o fundo do logo 'AV' e o texto 'A VAGA' acompanham a cor do tema
+- [ ] Tirar screenshots dos temas testados
+- [ ] Verificar sincronização das variáveis CSS no console
+
+## Observações
+- Usuário relatou que o logo ficava laranja mesmo em outros temas.
+- Correção aplicada: uso de `hsl(var(--primary))` e sincronização de `--primary-hex`.

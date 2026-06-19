@@ -1,0 +1,17 @@
+# Tarefa: Análise de Layout da Rota /aulas
+
+## Objetivo
+Analisar o layout da rota `/aulas` em duas resoluções: 1920x1080 (Desktop) e 375x812 (Mobile), focando na seção Hero e no primeiro MateriaCard.
+
+## Checklist
+- [ ] Abrir `http://localhost:3000/aulas`
+- [ ] Configurar resolução para 1920x1080
+- [ ] Capturar screenshot (Desktop) e analisar:
+    - Espaço em branco à direita no Hero/Cards
+- [ ] Configurar resolução para 375x812
+- [ ] Capturar screenshot (Mobile) e analisar:
+    - Tamanho do ícone vs Texto espremido no Hero/Cards
+- [ ] Documentar conclusões finais
+
+## Notas e Descobertas
+- 

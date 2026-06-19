@@ -150,6 +150,15 @@
     border-color: hsl(var(--ring));
     box-shadow: 0 0 0 3px hsl(var(--ring) / 0.1);
   }
+
+  /* Fix for browser autofill background color */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: hsl(var(--foreground)) !important;
+  }
 }
 
 @layer components {
@@ -263,6 +272,11 @@
   [data-theme-color="#00BDFF"].dot-theme {
     background-color: #00bdff !important;
     border-color: #00bdff !important;
+  }
+
+  /* Forçar logo em branco no modo escuro */
+  .dark .petrobras-logo-text-primary {
+    color: #ffffff !important;
   }
 }
 

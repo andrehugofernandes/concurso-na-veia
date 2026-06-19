@@ -291,12 +291,12 @@ export default function AulaMatematicaFinanceira({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em juros compostos, os juros de cada período são calculados sobre:"
           alternativas={[
-              { letra: "A", texto: "Apenas o capital inicial", correta: false },
+            { letra: "A", texto: "Apenas o capital inicial", correta: false },
               { letra: "B", texto: "O montante acumulado até aquele período", correta: true },
               { letra: "C", texto: "A média entre capital e montante final", correta: false },
               { letra: "D", texto: "O dobro do capital inicial", correta: false },
               { letra: "E", texto: "A taxa de juros simples equivalente", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Isso gera o efeito"
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -524,12 +524,12 @@ export default function AulaMatematicaFinanceira({
           concurso="Processo Seletivo Petrobras"
           enunciado="Em juros compostos, os juros de cada período são calculados sobre:"
           alternativas={[
-              { letra: "A", texto: "Apenas o capital inicial", correta: false },
+            { letra: "A", texto: "Apenas o capital inicial", correta: false },
               { letra: "B", texto: "O montante acumulado até aquele período", correta: true },
               { letra: "C", texto: "A média entre capital e montante final", correta: false },
               { letra: "D", texto: "O dobro do capital inicial", correta: false },
               { letra: "E", texto: "A taxa de juros simples equivalente", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Isso gera o efeito"
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -739,12 +739,12 @@ export default function AulaMatematicaFinanceira({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
           alternativas={[
-              { letra: "A", texto: "R$ 2.240.000", correta: true },
+            { letra: "A", texto: "R$ 2.240.000", correta: true },
               { letra: "B", texto: "R$ 2.280.000", correta: false },
               { letra: "C", texto: "R$ 2.320.000", correta: false },
               { letra: "D", texto: "R$ 2.180.000", correta: false },
               { letra: "E", texto: "R$ 2.400.000", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O montante inclui capital + juros."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -949,12 +949,12 @@ export default function AulaMatematicaFinanceira({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
           alternativas={[
-              { letra: "A", texto: "R$ 2.240.000", correta: true },
+            { letra: "A", texto: "R$ 2.240.000", correta: true },
               { letra: "B", texto: "R$ 2.280.000", correta: false },
               { letra: "C", texto: "R$ 2.320.000", correta: false },
               { letra: "D", texto: "R$ 2.180.000", correta: false },
               { letra: "E", texto: "R$ 2.400.000", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O montante inclui capital + juros."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1160,12 +1160,12 @@ export default function AulaMatematicaFinanceira({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
           alternativas={[
-              { letra: "A", texto: "R$ 2.240.000", correta: true },
+            { letra: "A", texto: "R$ 2.240.000", correta: true },
               { letra: "B", texto: "R$ 2.280.000", correta: false },
               { letra: "C", texto: "R$ 2.320.000", correta: false },
               { letra: "D", texto: "R$ 2.180.000", correta: false },
               { letra: "E", texto: "R$ 2.400.000", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O montante inclui capital + juros."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1366,12 +1366,12 @@ export default function AulaMatematicaFinanceira({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
           alternativas={[
-              { letra: "A", texto: "R$ 2.240.000", correta: true },
+            { letra: "A", texto: "R$ 2.240.000", correta: true },
               { letra: "B", texto: "R$ 2.280.000", correta: false },
               { letra: "C", texto: "R$ 2.320.000", correta: false },
               { letra: "D", texto: "R$ 2.180.000", correta: false },
               { letra: "E", texto: "R$ 2.400.000", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O montante inclui capital + juros."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1580,12 +1580,12 @@ export default function AulaMatematicaFinanceira({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
           alternativas={[
-              { letra: "A", texto: "R$ 2.240.000", correta: true },
+            { letra: "A", texto: "R$ 2.240.000", correta: true },
               { letra: "B", texto: "R$ 2.280.000", correta: false },
               { letra: "C", texto: "R$ 2.320.000", correta: false },
               { letra: "D", texto: "R$ 2.180.000", correta: false },
               { letra: "E", texto: "R$ 2.400.000", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O montante inclui capital + juros."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1772,12 +1772,12 @@ export default function AulaMatematicaFinanceira({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
           alternativas={[
-              { letra: "A", texto: "R$ 2.240.000", correta: true },
+            { letra: "A", texto: "R$ 2.240.000", correta: true },
               { letra: "B", texto: "R$ 2.280.000", correta: false },
               { letra: "C", texto: "R$ 2.320.000", correta: false },
               { letra: "D", texto: "R$ 2.180.000", correta: false },
               { letra: "E", texto: "R$ 2.400.000", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O montante inclui capital + juros."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1961,12 +1961,12 @@ export default function AulaMatematicaFinanceira({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
           alternativas={[
-              { letra: "A", texto: "R$ 2.240.000", correta: true },
+            { letra: "A", texto: "R$ 2.240.000", correta: true },
               { letra: "B", texto: "R$ 2.280.000", correta: false },
               { letra: "C", texto: "R$ 2.320.000", correta: false },
               { letra: "D", texto: "R$ 2.180.000", correta: false },
               { letra: "E", texto: "R$ 2.400.000", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O montante inclui capital + juros."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2174,12 +2174,12 @@ export default function AulaMatematicaFinanceira({
           concurso="Processo Seletivo Petrobras"
           enunciado="A Petrobras aplicou R$ 2.000.000 a juros simples de 1,5% ao mês por 8 meses. Qual o montante ao final?"
           alternativas={[
-              { letra: "A", texto: "R$ 2.240.000", correta: true },
+            { letra: "A", texto: "R$ 2.240.000", correta: true },
               { letra: "B", texto: "R$ 2.280.000", correta: false },
               { letra: "C", texto: "R$ 2.320.000", correta: false },
               { letra: "D", texto: "R$ 2.180.000", correta: false },
               { letra: "E", texto: "R$ 2.400.000", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O montante inclui capital + juros."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },

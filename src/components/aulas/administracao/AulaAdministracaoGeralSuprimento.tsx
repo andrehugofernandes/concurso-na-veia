@@ -456,12 +456,12 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Em um mercado altamente competitivo de suprimentos, uma empresa estabelece descontos progressivos e cartões de fidelidade baseados em pontos acumulados para incentivar a recompra por seus parceiros de negócios. De acordo com a literatura clássica de marketing de relacionamento, essa ação estratégica representa um laço de fidelidade baseado em aspectos:"
           alternativas={[
-              { letra: "A", texto: "sociais", correta: false },
+            { letra: "A", texto: "sociais", correta: false },
               { letra: "B", texto: "financeiros", correta: true },
               { letra: "C", texto: "estruturais", correta: false },
               { letra: "D", texto: "interativos", correta: false },
               { letra: "E", texto: "cognitivos", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -745,12 +745,12 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O planejamento estratégico, tático e operacional diferem principalmente em qual aspecto?"
           alternativas={[
-              { letra: "A", texto: "Pela área funcional que cada um cobre (RH, Finanças, Operações)", correta: false },
+            { letra: "A", texto: "Pela área funcional que cada um cobre (RH, Finanças, Operações)", correta: false },
               { letra: "B", texto: "Pelo horizonte temporal e nível hierárquico: longo prazo/alta direção, médio/média gerência, curto/operacional", correta: true },
               { letra: "C", texto: "Pelo grau de formalidade exigido pela legislação vigente", correta: false },
               { letra: "D", texto: "Pelo número de pessoas envolvidas no processo de decisão", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Planejamento operacional: curto prazo (dias/meses), nível operacional, define tarefas específicas."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Planejamento estratégico: longo prazo (3-5+ anos), alta direção, define missão/visão/objetivos macro." },
@@ -1014,12 +1014,12 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="A estrutura organizacional funcional organiza a empresa principalmente por:"
           alternativas={[
-              { letra: "A", texto: "Produtos ou linhas de negócio distintas", correta: false },
+            { letra: "A", texto: "Produtos ou linhas de negócio distintas", correta: false },
               { letra: "B", texto: "Regiões geográficas de atuação da empresa", correta: false },
               { letra: "C", texto: "Funções ou especialidades (RH, Finanças, Operações, Marketing)", correta: true },
               { letra: "D", texto: "Projetos temporários com times multidisciplinares", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Desvantagem: silos funcionais e comunicação lateral difícil."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Na estrutura funcional, departamentos são organizados por especialidade: RH, Finanças, Marketing, Operações etc." },
@@ -1264,12 +1264,12 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="A Pirâmide de Maslow hierarquiza necessidades humanas. Qual é a ordem correta da base ao topo?"
           alternativas={[
-              { letra: "A", texto: "Estima → Segurança → Fisiológicas → Social → Autorrealização", correta: false },
+            { letra: "A", texto: "Estima → Segurança → Fisiológicas → Social → Autorrealização", correta: false },
               { letra: "B", texto: "Fisiológicas → Segurança → Social (pertencimento) → Estima → Autorrealização", correta: true },
               { letra: "C", texto: "Autorrealização → Estima → Social → Segurança → Fisiológicas", correta: false },
               { letra: "D", texto: "Social → Fisiológicas → Estima → Segurança → Autorrealização", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Necessidades inferiores devem ser minimamente atendidas antes das superiores."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1516,12 +1516,12 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O ciclo PDCA (Plan-Do-Check-Act) é uma ferramenta de melhoria contínua. O que representa a fase 'Check'?"
           alternativas={[
-              { letra: "A", texto: "Definir objetivos, metas e o plano de ação para a melhoria", correta: false },
+            { letra: "A", texto: "Definir objetivos, metas e o plano de ação para a melhoria", correta: false },
               { letra: "B", texto: "Implementar o plano definido na fase anterior em escala piloto", correta: false },
               { letra: "C", texto: "Verificar e analisar os resultados obtidos, comparando com o planejado e identificando desvios", correta: true },
               { letra: "D", texto: "Padronizar as melhorias confirmadas e corrigir o plano se necessário", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="O ciclo recomeça continuamente."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -1794,12 +1794,12 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Max Weber propôs o modelo burocrático de organização. Qual é a principal característica desse modelo?"
           alternativas={[
-              { letra: "A", texto: "Ênfase em relações informais e cultura organizacional para guiar o comportamento", correta: false },
+            { letra: "A", texto: "Ênfase em relações informais e cultura organizacional para guiar o comportamento", correta: false },
               { letra: "B", texto: "Racionalidade legal-racional: autoridade baseada em normas formais, cargos, procedimentos escritos e impessoalidade", correta: true },
               { letra: "C", texto: "Foco na eficiência das tarefas operacionais por meio de padronização de movimentos", correta: false },
               { letra: "D", texto: "Adaptação constante ao ambiente externo, sem estrutura formal definida", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Ideal weberiano de racionalidade."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Weber identificou três tipos de autoridade: tradicional (costumes), carismática (personalidade do líder) e legal-racional (normas)." },
@@ -2137,12 +2137,12 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O processo de comunicação organizacional inclui vários elementos. O 'ruído' nesse processo refere-se a:"
           alternativas={[
-              { letra: "A", texto: "O volume sonoro nos ambientes de trabalho que dificulta reuniões presenciais", correta: false },
+            { letra: "A", texto: "O volume sonoro nos ambientes de trabalho que dificulta reuniões presenciais", correta: false },
               { letra: "B", texto: "Qualquer interferência que distorce ou impede a transmissão fiel da mensagem do emissor ao receptor", correta: true },
               { letra: "C", texto: "A falta de canais digitais de comunicação interna na organização", correta: false },
               { letra: "D", texto: "O desalinhamento entre comunicação formal e informal dentro da empresa", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Pode ser físico (barulho), semântico (palavras com múltiplos sentidos), psicológico (preconceitos, emoções), organizacional (hierarquia excessiva) ou tecnológico (falhas no sistema)."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2451,13 +2451,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="O modelo de 'racionalidade limitada' de Herbert Simon contradiz o modelo racional clássico ao propor que:"
           alternativas={[
-              { letra: "A", texto: "Gestores têm acesso a toda informação relevante e sempre escolhem a opção ótima", correta: false },
+            { letra: "A", texto: "Gestores têm acesso a toda informação relevante e sempre escolhem a opção ótima", correta: false },
               { letra: "B", texto: "As decisões são irracionais e baseadas exclusivamente em emoções e intuições pessoais", correta: false },
               { letra: "C", texto: "Gestores tomam decisões com informação limitada, tempo limitado e capacidade cognitiva limitada, buscando solução ", correta: true },
               { letra: "D", texto: " (satisficing), não a ótima", correta: false },
               { letra: "E", texto: "A tomada de decisão deve ser sempre delegada a especialistas externos à organização", correta: false },
               { letra: "F", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Buscam"
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2842,12 +2842,12 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="A Lei 13.303/2016 (Lei das Estatais) impôs diversas obrigações de governança à Petrobras. Qual das alternativas descreve corretamente uma dessas exigências?"
           alternativas={[
-              { letra: "A", texto: "Proibição total de contratar executivos com experiência no setor privado", correta: false },
+            { letra: "A", texto: "Proibição total de contratar executivos com experiência no setor privado", correta: false },
               { letra: "B", texto: "Obrigatoriedade de Conselho de Administração com maioria de membros independentes e Comitê de Auditoria Estatutário", correta: true },
               { letra: "C", texto: "Eliminação do processo licitatório para compras abaixo de R$ 10 milhões", correta: false },
               { letra: "D", texto: "Vedação de qualquer parceria com empresas estrangeiras no setor de E&P", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Objetivo: aumentar transparência, accountability e reduzir interferência política."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
@@ -2976,12 +2976,12 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           concurso="Processo Seletivo Petrobras"
           enunciado="Um gestor da área de manutenção da Petrobras identifica que a taxa de falhas em equipamentos aumentou 15% no último trimestre. Ele define metas de redução, redesenha o processo de manutenção preventiva, lidera a equipe na implementação e monitora os resultados. Quais funções do PODC estão sendo exercidas, respectivamente?"
           alternativas={[
-              { letra: "A", texto: "Controlar → Organizar → Planejar → Dirigir", correta: false },
+            { letra: "A", texto: "Controlar → Organizar → Planejar → Dirigir", correta: false },
               { letra: "B", texto: "Planejar (metas) → Organizar (redesenho de processo) → Dirigir (liderança) → Controlar (monitoramento)", correta: true },
               { letra: "C", texto: "Dirigir → Planejar → Controlar → Organizar", correta: false },
               { letra: "D", texto: "Organizar → Planejar → Controlar → Dirigir", correta: false },
               { letra: "E", texto: "Nenhuma das alternativas anteriores está correta.", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Compreender o PODC em situações práticas é essencial na CESGRANRIO."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },

@@ -1,0 +1,8 @@
+# Task: Unify Card Headers
+
+- [ ] Analyze [ModuleSectionHeader](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#3074-3164) and [TextAnalysisLab](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaInterpretacaoTexto.tsx#172-243) headers <!-- id: 0 -->
+- [ ] Research other aulas for similar inconsistencies <!-- id: 1 -->
+- [ ] Create implementation plan <!-- id: 2 -->
+- [ ] Implement refactored [TextAnalysisLab](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaInterpretacaoTexto.tsx#172-243) or a universal header component <!-- id: 3 -->
+- [ ] Verify changes in [AulaInterpretacaoTexto.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaInterpretacaoTexto.tsx) <!-- id: 4 -->
+- [ ] Verify changes in other affected files <!-- id: 5 -->

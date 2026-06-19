@@ -1,0 +1,23 @@
+# Petrobras Quest AI - Controle de Tarefas
+
+## Status Geral: [/] Em Progresso (2026-03-15)
+
+## Objetivos Atuais
+- [x] Resolver erro 404 do Gemini (Migrado para Gemini 3.1 Pro Preview)
+- [x] Melhorar resiliência a Rate Limit (429) com tratamento automático e feedback visual
+- [x] Corrigir erro de importação de `AulaPontuacao`
+- [/] Realizar upgrade do plano do usuário `andrehugofernandes` para "Ouro"
+- [/] Corrigir erro de build [AulaGestaoProcessos](file:///C:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestaoProcessos.tsx#53-359) não encontrada
+
+## Checklist de Implementação
+- [x] Atualizar [gemini-provider.ts](file:///C:/Workspace/petrobras-quest/src/lib/ai/providers/gemini-provider.ts) para usar o motor `gemini-3.1-pro-preview`
+- [x] Adicionar lógica de retry dinâmico com delay (15-20s) na página de maratona
+- [x] Implementar contador regressivo UI para feedback de rate limit
+- [x] Corrigir importação do componente `AulaPontuacao`
+- [ ] Aplicar upgrade de plano no Supabase via MCP/SQL
+- [ ] Resolver conflito de importação do componente [AulaGestaoProcessos](file:///C:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestaoProcessos.tsx#53-359)
+
+## Verificação
+- [x] Testar geração de lote com Gemini 3.1 (Simulado 5 questões)
+- [ ] Validar acesso do usuário `andrehugofernandes` aos conteúdos "Ouro"
+- [ ] Verificar build completo da aplicação (Turbopack)

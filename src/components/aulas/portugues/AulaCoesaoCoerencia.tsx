@@ -762,18 +762,15 @@ export default function AulaCoesaoCoerencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Sobre a diferença entre coesão e coerência, assinale a alternativa correta:"
           alternativas={[
-            { label: "A", valor: "Um texto coeso é obrigatoriamente um texto coerente." },
-                { label: "B", valor: "A coesão trata da estrutura gramatical, enquanto a coerência trata da unidade de sentido." },
-                { label: "C", valor: "A coerência é um recurso puramente linguístico, independente do conhecimento de mundo." },
-                { label: "D", valor: "A coesão é o conteúdo e a coerência é a forma." }
+            { letra: "A", texto: "Um texto coeso é obrigatoriamente um texto coerente.", correta: false },
+                { letra: "B", texto: "A coesão trata da estrutura gramatical, enquanto a coerência trata da unidade de sentido.", correta: false },
+                { letra: "C", texto: "A coerência é um recurso puramente linguístico, independente do conhecimento de mundo.", correta: false },
+                { letra: "D", texto: "A coesão é o conteúdo e a coerência é a forma.", correta: false }
           ]}
-          correta=",
-    opcoes: [
-      { label: "
           passos={[
-            "A coesão é a conexão material (palavras, conectivos) e a coerência é a harmonia das ideias (sentido).",
-            "É possível ter coesão sem coerência, mas não o contrário em textos eficazes.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A coesão é a conexão material (palavras, conectivos) e a coerência é a harmonia das ideias (sentido)." },
+            { titulo: "Passo 2", conteudo: "É possível ter coesão sem coerência, mas não o contrário em textos eficazes." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1076,16 +1073,15 @@ export default function AulaCoesaoCoerencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na frase 'A Petrobras foca em tecnologia offshore. ESSA estratégia visa o pré-sal', o termo em destaque é:"
           alternativas={[
-            { label: "A", valor: "Um termo catafórico" },
-                { label: "B", valor: "Um termo anafórico" },
-                { label: "C", valor: "Um elemento de oposição" },
-                { label: "D", valor: "Um advérbio de tempo" }
+            { letra: "A", texto: "Um termo catafórico", correta: false },
+                { letra: "B", texto: "Um termo anafórico", correta: true },
+                { letra: "C", texto: "Um elemento de oposição", correta: false },
+                { letra: "D", texto: "Um advérbio de tempo", correta: false }
           ]}
-          correta="B"
           passos={[
-            "'Essa' retoma a 'tecnologia offshore' citada anteriormente (anáfora).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "'Essa' retoma a 'tecnologia offshore' citada anteriormente (anáfora)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1397,16 +1393,15 @@ export default function AulaCoesaoCoerencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Identifique a frase que apresenta CATÁFORA:"
           alternativas={[
-            { label: "A", valor: "Os funcionários chegaram; eles estavam cansados." },
-                { label: "B", valor: "O aviso é ESTE: usem o capacete sempre." },
-                { label: "C", valor: "Estudou muito, mas não passou." },
-                { label: "D", valor: "A Petrobras é nossa; preservemo-la." }
+            { letra: "A", texto: "Os funcionários chegaram; eles estavam cansados.", correta: false },
+                { letra: "B", texto: "O aviso é ESTE: usem o capacete sempre.", correta: true },
+                { letra: "C", texto: "Estudou muito, mas não passou.", correta: false },
+                { letra: "D", texto: "A Petrobras é nossa; preservemo-la.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "O pronome 'ESTE' antecipa a informação que virá após os dois-pontos (catáfora).",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "O pronome 'ESTE' antecipa a informação que virá após os dois-pontos (catáfora)." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -1711,16 +1706,15 @@ export default function AulaCoesaoCoerencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Na frase 'Eles preferem o presencial; nós, o remoto.', ocorre qual tipo de mecanismo coesivo?"
           alternativas={[
-            { label: "A", valor: "Catáfora pronominal" },
-                { label: "B", valor: "Zêugma (elipse de um termo já mencionado)" },
-                { label: "C", valor: "Sinonímia perfeita" },
-                { label: "D", valor: "Hiperonímia" }
+            { letra: "A", texto: "Catáfora pronominal", correta: false },
+                { letra: "B", texto: "Zêugma (elipse de um termo já mencionado)", correta: true },
+                { letra: "C", texto: "Sinonímia perfeita", correta: false },
+                { letra: "D", texto: "Hiperonímia", correta: false }
           ]}
-          correta="B"
           passos={[
-            "A vírgula após 'nós' indica a omissão do verbo 'preferimos', que já apareceu anteriormente na frase.",
-            "Isso é um Zêugma.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A vírgula após 'nós' indica a omissão do verbo 'preferimos', que já apareceu anteriormente na frase." },
+            { titulo: "Passo 2", conteudo: "Isso é um Zêugma." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -2068,16 +2062,15 @@ export default function AulaCoesaoCoerencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="O que caracteriza a coesão por 'Nominalização'?"
           alternativas={[
-            { label: "A", valor: "O uso de adjetivos explicativos." },
-                { label: "B", valor: "A transformação de um processo verbal em um nome (substantivo)." },
-                { label: "C", valor: "A repetição de nomes próprios." },
-                { label: "D", valor: "O uso de cognomes." }
+            { letra: "A", texto: "O uso de adjetivos explicativos.", correta: false },
+                { letra: "B", texto: "A transformação de um processo verbal em um nome (substantivo).", correta: true },
+                { letra: "C", texto: "A repetição de nomes próprios.", correta: false },
+                { letra: "D", texto: "O uso de cognomes.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "Nominalização é quando usamos um substantivo para retomar uma ação verbal anterior.",
-            "Ex: 'O navio atracou.",
-            "A atracação foi rápida.'"
+            { titulo: "Passo 1", conteudo: "Nominalização é quando usamos um substantivo para retomar uma ação verbal anterior." },
+            { titulo: "Passo 2", conteudo: "Ex: 'O navio atracou." },
+            { titulo: "Passo 3", conteudo: "A atracação foi rápida.'" }
           ]}
         />
         <QuizInterativo
@@ -2433,16 +2426,15 @@ export default function AulaCoesaoCoerencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Assinale a alternativa que preenche corretamente a lacuna: 'O projeto é audacioso, ______ traz riscos operacionais.'"
           alternativas={[
-            { label: "A", valor: "portanto (conclusão)" },
-                { label: "B", valor: "porém (oposição)" },
-                { label: "C", valor: "conforme (conformidade)" },
-                { label: "D", valor: "visto que (causa)" }
+            { letra: "A", texto: "portanto (conclusão)", correta: false },
+                { letra: "B", texto: "porém (oposição)", correta: true },
+                { letra: "C", texto: "conforme (conformidade)", correta: false },
+                { letra: "D", texto: "visto que (causa)", correta: false }
           ]}
-          correta="B"
           passos={[
-            "O contexto pede um conectivo adversativo para contrastar a qualidade ('audacioso') com o defeito ('riscos').",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "O contexto pede um conectivo adversativo para contrastar a qualidade ('audacioso') com o defeito ('riscos')." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -2795,16 +2787,15 @@ export default function AulaCoesaoCoerencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Qual a principal diferença entre MAS e EMBORA no argumento?"
           alternativas={[
-            { label: "A", valor: "Nenhuma, são sinônimos." },
-                { label: "B", valor: "O " },
-                { label: "C", valor: "O " },
-                { label: "D", valor: "O " }
+            { letra: "A", texto: "Nenhuma, são sinônimos.", correta: false },
+                { letra: "B", texto: "O ", correta: true },
+                { letra: "C", texto: "O ", correta: false },
+                { letra: "D", texto: "O ", correta: false }
           ]}
-          correta="B"
           passos={[
-            "O conectivo adversativo (Mas) destaca a informação oposta.",
-            "O concessivo (Embora) minimiza a oposição para destacar a principal.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "O conectivo adversativo (Mas) destaca a informação oposta." },
+            { titulo: "Passo 2", conteudo: "O concessivo (Embora) minimiza a oposição para destacar a principal." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -3127,16 +3118,15 @@ export default function AulaCoesaoCoerencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="O princípio da não-contradição afirma que:"
           alternativas={[
-            { label: "A", valor: "O texto pode mudar de opinião no meio se avisar." },
-                { label: "B", valor: "Não se deve afirmar algo e, depois, negar o que foi dito sem lógica." },
-                { label: "C", valor: "O autor deve sempre usar a primeira pessoa." },
-                { label: "D", valor: "O texto deve ter exatamente 30 linhas." }
+            { letra: "A", texto: "O texto pode mudar de opinião no meio se avisar.", correta: false },
+                { letra: "B", texto: "Não se deve afirmar algo e, depois, negar o que foi dito sem lógica.", correta: true },
+                { letra: "C", texto: "O autor deve sempre usar a primeira pessoa.", correta: false },
+                { letra: "D", texto: "O texto deve ter exatamente 30 linhas.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "A coerência exige que o texto seja um corpo único de ideias que não se anulam mutuamente.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A coerência exige que o texto seja um corpo único de ideias que não se anulam mutuamente." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -3460,16 +3450,15 @@ export default function AulaCoesaoCoerencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Um texto redundante, que repete a mesma ideia várias vezes sem nada acrescentar, fere o princípio da:"
           alternativas={[
-            { label: "A", valor: "Continuidade." },
-                { label: "B", valor: "Progressão (Pauperismo informativo)." },
-                { label: "C", valor: "Não-contradição." },
-                { label: "D", valor: "Injunção." }
+            { letra: "A", texto: "Continuidade.", correta: false },
+                { letra: "B", texto: "Progressão (Pauperismo informativo).", correta: true },
+                { letra: "C", texto: "Não-contradição.", correta: false },
+                { letra: "D", texto: "Injunção.", correta: false }
           ]}
-          correta="B"
           passos={[
-            "A progressão exige que cada parágrafo traga uma 'novidade' para o desenvolvimento do raciocínio.",
-            "Análise da alternativa correta com base no contexto.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "A progressão exige que cada parágrafo traga uma 'novidade' para o desenvolvimento do raciocínio." },
+            { titulo: "Passo 2", conteudo: "Análise da alternativa correta com base no contexto." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo
@@ -3614,16 +3603,15 @@ export default function AulaCoesaoCoerencia({
           concurso="Processo Seletivo Petrobras"
           enunciado="Cesgranrio (Adaptada): 'Apesar de a economia estar instável, o setor de petróleo atrai capitais.' A oração destacada é:"
           alternativas={[
-            { label: "A", valor: "Concessiva, indicando uma ideia que se opõe mas não impede a principal." },
-                { label: "B", valor: "Causal, explicando o motivo da atração de capitais." },
-                { label: "C", valor: "Consecutiva, mostrando o efeito da instabilidade." },
-                { label: "D", valor: "Adversativa pura." }
+            { letra: "A", texto: "Concessiva, indicando uma ideia que se opõe mas não impede a principal.", correta: true },
+                { letra: "B", texto: "Causal, explicando o motivo da atração de capitais.", correta: false },
+                { letra: "C", texto: "Consecutiva, mostrando o efeito da instabilidade.", correta: false },
+                { letra: "D", texto: "Adversativa pura.", correta: false }
           ]}
-          correta="A"
           passos={[
-            "'Apesar de' é locução prepositiva de valor concessivo.",
-            "O fato de a economia estar ruim não impediu o investimento.",
-            "Gabarito confirmado."
+            { titulo: "Passo 1", conteudo: "'Apesar de' é locução prepositiva de valor concessivo." },
+            { titulo: "Passo 2", conteudo: "O fato de a economia estar ruim não impediu o investimento." },
+            { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
         <QuizInterativo

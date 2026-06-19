@@ -438,12 +438,12 @@ export default function AulaFuncoesExponenciais({
           concurso="Processo Seletivo Petrobras"
           enunciado="Se 2ˣ⁺¹ = 32, então x vale:"
           alternativas={[
-              { letra: "A", texto: "3", correta: false },
+            { letra: "A", texto: "3", correta: false },
               { letra: "B", texto: "4", correta: true },
               { letra: "C", texto: "5", correta: false },
               { letra: "D", texto: "6", correta: false },
               { letra: "E", texto: "15", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Técnica: igualar as bases e comparar os expoentes."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "32 = 2⁵." },
@@ -712,12 +712,12 @@ export default function AulaFuncoesExponenciais({
           concurso="Processo Seletivo Petrobras"
           enunciado="Se 2ˣ⁺¹ = 32, então x vale:"
           alternativas={[
-              { letra: "A", texto: "3", correta: false },
+            { letra: "A", texto: "3", correta: false },
               { letra: "B", texto: "4", correta: true },
               { letra: "C", texto: "5", correta: false },
               { letra: "D", texto: "6", correta: false },
               { letra: "E", texto: "15", correta: false }
-            ]}
+          ]}
           dicaEstrategica="Técnica: igualar as bases e comparar os expoentes."
           passos={[
             { titulo: "Passo 1: Identificar o Contexto", conteudo: "32 = 2⁵." },
@@ -890,17 +890,16 @@ export default function AulaFuncoesExponenciais({
           concurso="Processo Seletivo Petrobras"
           enunciado="Se 2ˣ⁺¹ = 32, então x vale:"
           alternativas={[
-            { label: "A", valor: "3" },
-                { label: "B", valor: "4" },
-                { label: "C", valor: "5" },
-                { label: "D", valor: "6" },
-                { label: "E", valor: "15" }
+            { letra: "A", texto: "3", correta: false },
+                { letra: "B", texto: "4", correta: true },
+                { letra: "C", texto: "5", correta: false },
+                { letra: "D", texto: "6", correta: false },
+                { letra: "E", texto: "15", correta: false }
           ]}
-          correta="B"
           passos={[
-            "32 = 2⁵.",
-            "Logo 2ˣ⁺¹ = 2⁵ → x+1 = 5 → x = 4.",
-            "Técnica: igualar as bases e comparar os expoentes."
+            { titulo: "Passo 1", conteudo: "32 = 2⁵." },
+            { titulo: "Passo 2", conteudo: "Logo 2ˣ⁺¹ = 2⁵ → x+1 = 5 → x = 4." },
+            { titulo: "Passo 3", conteudo: "Técnica: igualar as bases e comparar os expoentes." }
           ]}
         />
         <QuizInterativo

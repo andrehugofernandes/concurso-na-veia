@@ -1,0 +1,11 @@
+# PMAVV Login Task
+
+## Checklist
+- [ ] Navigate to http://localhost:3000/login
+- [ ] Reload the page
+- [ ] Clear 'Usuário Municipal' and type 'andre.hugo'
+- [ ] Clear 'Senha' and type 'AndyBelle@20082021*'
+- [ ] Click 'Entrar'
+- [ ] Wait for redirection to '/dashboard'
+- [ ] Screenshot dashboard and list modules (if success)
+- [ ] Describe error (if failure)

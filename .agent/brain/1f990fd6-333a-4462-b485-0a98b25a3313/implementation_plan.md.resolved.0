@@ -1,0 +1,31 @@
+# Plano de Implementação: Padronização de Cabeçalhos de Laboratório
+
+O objetivo é unificar o design dos cabeçalhos dos cards educacionais, especificamente o "Laboratório de Aplicação Prática" (TextAnalysisLab), para que sigam o padrão [ModuleSectionHeader](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#3077-3167) estabelecido no sistema Ultimate V4.1.
+
+## Proposed Changes
+
+### [Componentes Compartilhados]
+
+#### [MODIFY] [shared.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx)
+- [NEW] Adicionar o componente [TextAnalysisLab](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaInterpretacaoTexto.tsx#172-243) (extraído de [AulaInterpretacaoTexto.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaInterpretacaoTexto.tsx)) como um componente compartilhado.
+- [MODIFY] Refatorar [TextAnalysisLab](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaInterpretacaoTexto.tsx#172-243) para utilizar [ModuleSectionHeader](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#3077-3167) como seu cabeçalho principal, removendo a implementação customizada anterior.
+- [MODIFY] Garantir que o componente aceite a prop `variant` para manter a paridade de cores com o módulo atual.
+
+### [Aulas]
+
+#### [MODIFY] [AulaInterpretacaoTexto.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaInterpretacaoTexto.tsx)
+- [DELETE] Remover a definição local de [TextAnalysisLab](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaInterpretacaoTexto.tsx#172-243).
+- [MODIFY] Importar [TextAnalysisLab](file:///c:/Workspace/petrobras-quest/src/components/aulas/portugues/AulaInterpretacaoTexto.tsx#172-243) de `../shared`.
+- [MODIFY] Atualizar todas as 10 chamadas do componente para garantir que passem a `variant` correta (ex: `variant={mv[1]}`).
+
+## Verification Plan
+
+### Automated Tests
+- N/A (UI visual change).
+
+### Manual Verification
+- Iniciar o servidor de desenvolvimento (`npm run dev`).
+- Acessar a aula de Interpretação de Texto (`/aulas/portugues/interpretacao-texto`).
+- Verificar se o Módulo 1, Card 2 ("Laboratório Tático") agora possui um cabeçalho com fundo colorido (gradiente), badge centralizado e tipografia idêntica aos cards 1 e 3.
+- Navegar por todos os 10 módulos e confirmar a consistência do cabeçalho em cada instância do Laboratório.
+- Verificar se não houve perda de conteúdo (legenda, texto de análise, caixa de especialista).
