@@ -67,40 +67,56 @@ export function getProgramaDeEstudos(cargoId?: string, isElite?: boolean): Mater
     }
 
     // 4. Adicionar Matérias Específicas
-    // Tenta encontrar blocos pré-definidos em filteredMaterias primeiro
-    const blocosPreDefinidos = filteredMaterias.filter(m => 
-        m.id.startsWith(`especifica-bloco`) && 
-        m.descricao.toLowerCase().includes(profissao.nome.toLowerCase())
-    );
-
-    if (blocosPreDefinidos.length > 0) {
-        programa.push(...blocosPreDefinidos);
-    } else if (profissao.blocos) {
-        // Se não houver pré-definido, gera dinamicamente a partir de PROFISSOES
+    if (profissao.blocos) {
         profissao.blocos.forEach((bloco, index) => {
-            const materiaId = `especifica-${slugify(bloco.nome)}`;
+            const numRoman = index === 0 ? 'I' : index === 1 ? 'II' : 'III';
             
-            const topicos: Topico[] = bloco.topicos.map((topicoTitulo, tIndex) => ({
-                id: slugify(topicoTitulo),
-                titulo: topicoTitulo,
-                descricao: `Tópico específico de ${profissao.nome}`,
-                duracao: '30 min',
-                ordem: tIndex + 1
-            }));
+            // Tenta achar bloco pré-definido para este bloco específico
+            const blocoPreDefinido = filteredMaterias.find(m => 
+                m.id.startsWith(`especifica-bloco`) && 
+                (
+                    (m.profissoes && m.profissoes.includes(profissao.id) && m.nome.includes(`Bloco ${numRoman}`)) ||
+                    (!m.profissoes && m.descricao.toLowerCase().includes(profissao.nome.toLowerCase()) && m.nome.includes(`Bloco ${numRoman}`))
+                )
+            );
 
-            const novaMateria: MateriaConteudo = {
-                id: materiaId,
-                nome: bloco.nome,
-                descricao: `Conhecimentos específicos para ${profissao.nome}`,
-                icone: BLOCO_ICONS[index % BLOCO_ICONS.length],
-                cor: BLOCO_COLORS[index % BLOCO_COLORS.length],
-                requiredPlan: 'Ouro',
-                topicos: topicos,
-                concursos: [userConcursoSlug]
-            };
+            if (blocoPreDefinido) {
+                programa.push(blocoPreDefinido);
+            } else {
+                // Se não houver pré-definido para este bloco, gera dinamicamente a partir de PROFISSOES
+                const materiaId = `especifica-${slugify(bloco.nome)}`;
+                
+                const topicos: Topico[] = bloco.topicos.map((topicoTitulo, tIndex) => ({
+                    id: slugify(topicoTitulo),
+                    titulo: topicoTitulo,
+                    descricao: `Tópico específico de ${profissao.nome}`,
+                    duracao: '30 min',
+                    ordem: tIndex + 1
+                }));
 
-            programa.push(novaMateria);
+                const novaMateria: MateriaConteudo = {
+                    id: materiaId,
+                    nome: bloco.nome,
+                    descricao: `Conhecimentos específicos para ${profissao.nome}`,
+                    icone: BLOCO_ICONS[index % BLOCO_ICONS.length],
+                    cor: BLOCO_COLORS[index % BLOCO_COLORS.length],
+                    requiredPlan: 'Ouro',
+                    topicos: topicos,
+                    concursos: [userConcursoSlug]
+                };
+
+                programa.push(novaMateria);
+            }
         });
+    } else {
+        // Fallback legado caso a profissão não tenha a propriedade blocos
+        const blocosPreDefinidos = filteredMaterias.filter(m => 
+            m.id.startsWith(`especifica-bloco`) && 
+            m.descricao.toLowerCase().includes(profissao.nome.toLowerCase())
+        );
+        if (blocosPreDefinidos.length > 0) {
+            programa.push(...blocosPreDefinidos);
+        }
     }
 
     return programa;

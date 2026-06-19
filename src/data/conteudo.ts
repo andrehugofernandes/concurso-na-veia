@@ -17,6 +17,7 @@ export interface MateriaConteudo {
     requiredPlan: PlanType;
     topicos: Topico[];
     concursos?: string[]; // Lista de slugs de concursos aos quais se aplica. Se undefined, aplica-se a todos (ex: português, matemática).
+    profissoes?: string[]; // Lista de IDs de profissões às quais este bloco se aplica (ex: 'suprimento-adm').
 }
 
 export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
@@ -161,6 +162,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         cor: 'from-blue-500 to-indigo-600',
         requiredPlan: 'Ouro',
         concursos: ['petrobras'],
+        profissoes: ['suprimento-adm'],
         topicos: [
             { id: 'administracao-geral-suprimento', titulo: 'Administração Geral', descricao: 'Conceitos fundamentais, funções administrativas e comportamento organizacional', duracao: '17 min', ordem: 1 },
             { id: 'gestao-qualidade-suprimento', titulo: 'Gestão de Qualidade', descricao: 'Princípios da qualidade, ferramentas e melhoria de processos', duracao: '16 min', ordem: 2 },
@@ -180,6 +182,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         cor: 'from-violet-500 to-fuchsia-500',
         requiredPlan: 'Ouro',
         concursos: ['petrobras'],
+        profissoes: ['suprimento-adm'],
         topicos: [
             { id: 'lei-13303', titulo: 'Lei 13.303 - Empresa Estatal', descricao: 'Lei Federal que disciplina funcionamento e governança de empresas públicas', duracao: '18 min', ordem: 1 },
             { id: 'rlcp', titulo: 'RLCP - Regulamento de Licitações Petrobras', descricao: 'Procedimentos transparentes de compras e contratações', duracao: '18 min', ordem: 2 },
@@ -194,6 +197,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         cor: 'from-emerald-500 to-teal-600',
         requiredPlan: 'Ouro',
         concursos: ['petrobras'],
+        profissoes: ['suprimento-adm'],
         topicos: [
             { id: 'contabilidade-basica-suprimento', titulo: 'Contabilidade Básica', descricao: 'Fundamentos contábeis, balanço e lançamentos', duracao: '18 min', ordem: 1 },
             { id: 'direito-tributario-suprimento', titulo: 'Direito Tributário', descricao: 'Princípios tributários, impostos e obrigações', duracao: '18 min', ordem: 2 },
