@@ -17,7 +17,7 @@ export default function HomeHeader() {
       <div className={`hidden md:flex absolute -top-[1px] left-12 ${bgColor} rounded-b-[24px] px-6 py-4 items-center gap-3 z-[60]`}>
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="flex items-center gap-2 text-slate-900 dark:text-white hover:text-primary dark:hover:text-white/80 transition-colors"
+          className="flex items-center gap-2 text-slate-900 dark:text-primary-foreground hover:text-primary dark:hover:text-primary-foreground/80 transition-colors"
         >
           {isMenuOpen ? <LuX className="w-5 h-5" /> : <LuLayoutGrid className="w-5 h-5" />}
           <span className="font-bold">Menu</span>
@@ -26,7 +26,7 @@ export default function HomeHeader() {
 
       {/* Logo Tab (Top Center) - Mais larga e mais alta */}
       <div className={`hidden md:flex absolute -top-[1px] left-1/2 -translate-x-1/2 ${bgColor} rounded-b-[32px] px-12 py-5 items-center justify-center gap-3 z-[60] min-w-[300px]`}>
-        <PetrobrasLogo variant="default" />
+        <PetrobrasLogo variant="hero-tab" />
       </div>
 
       {/* Right Actions (Floating in dark area) */}

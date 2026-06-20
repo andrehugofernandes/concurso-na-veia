@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-export default function PetrobrasLogo({ className, variant }: { className?: string; variant?: "default" | "white" | "home-top" }) {
+export default function PetrobrasLogo({ className, variant }: { className?: string; variant?: "default" | "white" | "home-top" | "hero-tab" }) {
   return (
     <Link 
       href="/" 
@@ -25,18 +25,18 @@ export default function PetrobrasLogo({ className, variant }: { className?: stri
       <div className="flex flex-col justify-center leading-none ml-1">
         <h1 className="font-bebas font-bold text-[36px] md:text-[36px] tracking-tight leading-[1.1] whitespace-nowrap flex items-baseline gap-1">
           <span 
-            className={`${(variant === "white" || variant === "home-top") ? "text-white" : "text-foreground dark:text-white"} transition-colors duration-300`}
+            className={`${(variant === "white" || variant === "home-top") ? "text-white" : variant === "hero-tab" ? "text-foreground dark:text-primary-foreground" : "text-foreground dark:text-white"} transition-colors duration-300`}
           >
             A VAGA
           </span>
           <span 
-            className="petrobras-logo-text-primary transition-colors duration-300 dark:text-white"
-            style={{ color: "var(--primary-hex)" }}
+            className={`transition-colors duration-300 ${variant === "hero-tab" ? "dark:text-primary-foreground" : "dark:text-white"}`}
+            style={variant === "hero-tab" ? undefined : { color: "var(--primary-hex)" }}
           >
             EH MINHA
           </span>
         </h1>
-        <span className={`font-sans text-[11.2px] md:text-[10px] font-black uppercase tracking-[0.34em] ${(variant === "white" || variant === "home-top") ? "text-white/80" : "text-foreground/80 dark:text-white/80"} md:mt-1 -mt-0.5 whitespace-nowrap transition-colors duration-300`}>
+        <span className={`font-sans text-[11.2px] md:text-[10px] font-black uppercase tracking-[0.34em] ${(variant === "white" || variant === "home-top") ? "text-white/80" : variant === "hero-tab" ? "text-foreground/80 dark:text-primary-foreground/80" : "text-foreground/80 dark:text-white/80"} md:mt-1 -mt-0.5 whitespace-nowrap transition-colors duration-300`}>
           Simulador de Concursos
         </span>
       </div>

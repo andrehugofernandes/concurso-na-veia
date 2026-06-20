@@ -14,6 +14,9 @@ export default function TrustedBySection() {
   return (
     <section className="py-10 bg-slate-100 dark:bg-slate-900 border-b border-slate-200 dark:border-white/5">
       <div className="container mx-auto px-6 text-center">
+        <p className="md:hidden text-slate-500 dark:text-slate-400 text-sm font-medium mb-8">
+          Mais de <strong className="text-slate-900 dark:text-white">12.000+ candidatos</strong> já estudaram com a plataforma
+        </p>
         <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
           {logos.map((logo, idx) => (
             <motion.div
