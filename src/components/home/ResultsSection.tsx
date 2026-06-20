@@ -41,7 +41,7 @@ const stats = [
 
 export default function ResultsSection() {
   return (
-    <section id="resultados" className="py-24 bg-slate-50 dark:bg-primary/10 relative overflow-hidden">
+    <section id="resultados" className="py-24 bg-slate-100 dark:bg-slate-900 relative overflow-hidden border-t border-slate-200 dark:border-white/5">
       {/* Radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
 

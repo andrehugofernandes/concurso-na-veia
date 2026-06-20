@@ -147,7 +147,7 @@ export default function CourseShowcase() {
   }, []);
 
   return (
-    <section id="cursos" className="py-24 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
+    <section id="cursos" className="py-24 bg-white dark:bg-slate-950 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] pointer-events-none" />
 
@@ -179,49 +179,28 @@ export default function CourseShowcase() {
           ref={containerRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
         >
-          {COURSES.map((course, index) => (
-            <motion.div
-              key={course.id}
-              custom={index}
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              data-animate
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="group relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-              
-              <Link href={`/register?concurso=${course.id}`} className="relative bg-card border border-border rounded-2xl p-6 h-full flex flex-col shadow-sm group-hover:shadow-lg transition-all duration-300 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+          {COURSES.map((course, index) => {
+            const isAvailable = course.id === "petrobras";
+            
+            const content = (
+              <>
                 {/* Gradient background accent */}
-                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${course.color} opacity-5 rounded-full -mr-16 -mt-16 group-hover:opacity-10 transition-opacity`} />
+                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${course.color} opacity-5 rounded-full -mr-16 -mt-16 ${isAvailable ? "group-hover:opacity-10" : ""} transition-opacity`} />
 
                 {/* Content */}
                 <div className="relative z-10">
-                  {/* Difficulty badge — absolute top-right, não interfere no layout */}
-                  <span className={`absolute top-0 right-0 text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl ${
-                    course.difficulty === "Fácil"
-                      ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                      : course.difficulty === "Médio"
-                      ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400"
-                      : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
-                  }`}>
-                    {course.difficulty}
-                  </span>
-
                   {/* Logo + Nome do concurso alinhados pixel perfect */}
-                  <div className="flex items-center gap-3 mb-3 pr-16">
+                  <div className="flex items-center gap-3 mb-3">
                     <div className="shrink-0 p-1.5 rounded-xl bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700 w-12 h-12 flex items-center justify-center">
                       {course.icon}
                     </div>
-                    <h3 className="text-[1.45rem] leading-tight font-black text-foreground tracking-tight">
+                    <h3 className="text-2xl md:text-3xl leading-tight font-black text-foreground tracking-tight">
                       {course.name}
                     </h3>
                   </div>
 
                   {/* Cargo/Organização */}
-                  <p className="text-sm text-muted-foreground mb-4">
+                  <p className="text-base text-muted-foreground mb-4 font-medium">
                     {course.organization}
                   </p>
 
@@ -231,38 +210,80 @@ export default function CourseShowcase() {
                   </p>
 
                   {/* Stats */}
-                  <div className="grid grid-cols-3 gap-4 mb-6 py-4 border-t border-border">
+                  <div className="grid grid-cols-4 gap-2 mb-6 py-4 border-t border-border">
+                    <div className="text-center flex flex-col items-center justify-center">
+                      <span className={`text-xs font-bold px-2 py-0.5 rounded-md ${
+                        course.difficulty === "Fácil"
+                          ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                          : course.difficulty === "Médio"
+                          ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400"
+                          : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+                      }`}>
+                        {course.difficulty}
+                      </span>
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1">Nível</div>
+                    </div>
                     <div className="text-center">
                       <div className="text-lg font-bold text-foreground">
                         {course.estimatedHours}h
                       </div>
-                      <div className="text-xs text-muted-foreground">Estimado</div>
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1">Estimado</div>
                     </div>
                     <div className="text-center">
                       <div className="text-lg font-bold text-foreground">
                         {course.students}
                       </div>
-                      <div className="text-xs text-muted-foreground">Alunos</div>
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1">Alunos</div>
                     </div>
                     <div className="text-center">
                       <div className="text-lg font-bold text-primary">
                         {course.successRate}
                       </div>
-                      <div className="text-xs text-muted-foreground">Taxa</div>
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1">Taxa</div>
                     </div>
                   </div>
                 </div>
 
                 {/* CTA Button */}
                 <div
-                  className="mt-auto relative z-10 w-full py-3 px-4 rounded-lg bg-primary/10 group-hover:bg-primary/20 text-primary font-bold transition-all duration-300 flex items-center justify-center gap-2"
+                  className={`mt-auto relative z-10 w-full py-3 px-4 rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
+                    isAvailable 
+                      ? "bg-primary/10 group-hover:bg-primary/20 text-primary" 
+                      : "bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500"
+                  }`}
                 >
-                  Começar Curso
-                  <LuArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  {isAvailable ? "Começar Curso" : "Em Breve"}
+                  {isAvailable && <LuArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
                 </div>
-              </Link>
-            </motion.div>
-          ))}
+              </>
+            );
+
+            return (
+              <motion.div
+                key={course.id}
+                custom={index}
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                data-animate
+                whileHover={isAvailable ? { y: -8, transition: { duration: 0.3 } } : {}}
+                className={`group relative ${!isAvailable ? "opacity-80" : ""}`}
+              >
+                <div className={`absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 transition-opacity duration-300 rounded-2xl ${isAvailable ? "group-hover:opacity-100" : ""}`} />
+                
+                {isAvailable ? (
+                  <Link href={`/register?concurso=${course.id}`} className="relative bg-card border border-border rounded-2xl p-6 h-full flex flex-col shadow-sm group-hover:shadow-lg transition-all duration-300 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                    {content}
+                  </Link>
+                ) : (
+                  <div className="relative bg-card border border-border rounded-2xl p-6 h-full flex flex-col shadow-sm transition-all duration-300 overflow-hidden cursor-not-allowed">
+                    {content}
+                  </div>
+                )}
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* CTA Section */}

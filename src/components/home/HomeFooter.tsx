@@ -7,9 +7,9 @@ export default function HomeFooter() {
   return (
     <footer className="bg-slate-950 pt-20 pb-10 border-t border-white/5">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-y-12 gap-x-8 lg:gap-8 mb-16">
           {/* Brand & Info */}
-          <div className="lg:col-span-2">
+          <div className="col-span-2 lg:col-span-2">
             <div className="mb-6 inline-block dark">
               <PetrobrasLogo variant="default" />
             </div>
@@ -33,9 +33,9 @@ export default function HomeFooter() {
           </div>
 
           {/* Links: Produto */}
-          <div>
+          <div className="col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">
             <h4 className="text-white font-bold mb-6">Produto</h4>
-            <ul className="space-y-4 text-sm text-slate-400">
+            <ul className="space-y-4 text-sm text-slate-400 flex flex-col items-center lg:items-start">
               <li><Link href="#features" className="hover:text-primary transition-colors">Funcionalidades</Link></li>
               <li><Link href="#pricing" className="hover:text-primary transition-colors">Planos e Preços</Link></li>
               <li><Link href="#resultados" className="hover:text-primary transition-colors">Metodologia</Link></li>
@@ -45,9 +45,9 @@ export default function HomeFooter() {
           </div>
 
           {/* Links: Empresa */}
-          <div>
+          <div className="col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">
             <h4 className="text-white font-bold mb-6">Empresa</h4>
-            <ul className="space-y-4 text-sm text-slate-400">
+            <ul className="space-y-4 text-sm text-slate-400 flex flex-col items-center lg:items-start">
               <li><Link href="#" className="hover:text-primary transition-colors">Sobre Nós</Link></li>
               <li><Link href="#" className="hover:text-primary transition-colors">Blog</Link></li>
               <li><Link href="#" className="hover:text-primary transition-colors">Carreiras</Link></li>
@@ -57,9 +57,9 @@ export default function HomeFooter() {
           </div>
 
           {/* Links: Legal */}
-          <div>
+          <div className="col-span-2 lg:col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">
             <h4 className="text-white font-bold mb-6">Legal</h4>
-            <ul className="space-y-4 text-sm text-slate-400">
+            <ul className="space-y-4 text-sm text-slate-400 flex flex-col items-center lg:items-start">
               <li><Link href="#" className="hover:text-primary transition-colors">Termos de Uso</Link></li>
               <li><Link href="#" className="hover:text-primary transition-colors">Política de Privacidade</Link></li>
               <li><Link href="#" className="hover:text-primary transition-colors">Garantia de 7 dias</Link></li>

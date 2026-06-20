@@ -81,7 +81,7 @@ export default function DemoSection() {
   };
 
   return (
-    <section id="demo" className="py-24 bg-white dark:bg-background relative overflow-hidden">
+    <section id="demo" className="py-24 bg-slate-100 dark:bg-slate-900 relative overflow-hidden">
       <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
@@ -129,7 +129,7 @@ export default function DemoSection() {
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
-                className={`flex-1 md:flex-initial flex items-center justify-center gap-3 px-5 py-4 rounded-xl text-sm font-bold border transition-all shrink-0 ${
+                className={`flex-none md:flex-initial flex items-center justify-center gap-3 px-5 py-4 rounded-xl text-sm font-bold border transition-all shrink-0 ${
                   activeTab === tab.id
                     ? 'border-primary/30 text-white shadow-lg shadow-primary/20 bg-primary'
                     : 'border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:border-primary/30 bg-white dark:bg-zinc-800'

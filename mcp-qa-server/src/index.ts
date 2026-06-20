@@ -38,7 +38,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   };
 });
 
-server.setRequestHandler(CallToolRequestSchema, async (request) => {
+server.setRequestHandler(CallToolRequestSchema, async (request: any) => {
   if (request.params.name === "run_security_tests") {
     try {
       // Runs the tests on the parent directory

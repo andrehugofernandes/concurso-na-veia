@@ -94,7 +94,7 @@ export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="py-24 bg-muted/30 dark:bg-muted/10 border-t border-slate-200 dark:border-white/5 relative overflow-hidden"
+      className="py-24 bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-white/5 relative overflow-hidden"
     >
       {/* Background subtle glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/[0.03] rounded-full blur-[150px] pointer-events-none" />
@@ -246,7 +246,7 @@ export default function PricingSection() {
               <ul className="space-y-3.5 mb-10">
                 {planos.elite.features.map((f, i) => (
                   <li key={i} className={`flex items-center gap-3 text-sm font-medium ${f.included ? "opacity-100" : "opacity-40"}`}>
-                    <span className={`p-1 rounded-full ${f.included ? "bg-white/20 text-white" : "bg-white/5"}`}>
+                    <span className={`p-1 rounded-full ${f.included ? "bg-primary-foreground/20 text-primary-foreground" : "bg-primary-foreground/10 text-primary-foreground"}`}>
                       {f.included ? (f.highlight ? <LuZap size={14} /> : <LuCheck size={14} />) : <LuX size={14} />}
                     </span>
                     {f.text}

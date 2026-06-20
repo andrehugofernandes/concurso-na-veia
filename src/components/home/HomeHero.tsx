@@ -11,9 +11,9 @@ export default function HomeHero() {
   };
 
   return (
-    <section className="bg-slate-50 dark:bg-primary pt-4 px-4 pb-0">
+    <section className="bg-slate-100 dark:bg-primary pt-4 px-4 pb-0">
       {/* Container principal do Hero com bordas arredondadas simulando o frame */}
-      <div className="relative h-[calc(100vh-16px)] flex flex-col items-center justify-center overflow-hidden bg-slate-950 rounded-[30px] md:rounded-[40px] shadow-2xl">
+      <div className="relative h-[calc(100vh-16px)] flex flex-col items-center justify-start md:justify-center pt-20 xs:pt-24 md:pt-0 pb-12 md:pb-0 overflow-hidden bg-slate-950 rounded-[30px] md:rounded-[40px] shadow-2xl">
         
         {/* Header embutido para fazer o efeito de recortes "cutout" na borda */}
         <HomeHeader />
@@ -37,7 +37,7 @@ export default function HomeHero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-3 md:mb-8"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/80 opacity-75"></span>
@@ -53,7 +53,7 @@ export default function HomeHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="max-w-4xl mx-auto text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.1] mb-8"
+            className="max-w-4xl mx-auto text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.1] mb-4 md:mb-8"
           >
             <span 
               className="block bg-clip-text text-transparent pb-2"
@@ -71,7 +71,7 @@ export default function HomeHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="max-w-2xl mx-auto text-lg md:text-xl text-white/70 leading-relaxed font-medium mb-12"
+            className="max-w-2xl mx-auto text-base md:text-xl text-white/70 leading-relaxed font-medium mb-5 md:mb-12"
           >
             Simulados inteligentes baseados no padrão CESGRANRIO. Estude os temas com maior recorrência nas provas e evolua seu desempenho com análise de IA.
           </motion.p>
@@ -81,37 +81,40 @@ export default function HomeHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center gap-6"
+            className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 w-full sm:w-auto px-4 sm:px-0"
           >
             <Link
               href="/register"
-              className="px-8 py-4 text-white hover:text-white font-bold rounded-full hover:shadow-xl hover:shadow-primary/30 hover:scale-105 transition-all text-lg"
+              className="w-full sm:w-auto px-8 py-3.5 md:py-4 text-white hover:text-white font-bold rounded-full hover:shadow-xl hover:shadow-primary/30 hover:scale-105 transition-all text-base md:text-lg text-center"
               style={{ backgroundImage: "var(--primary-gradient)" }}
             >
               Começar Grátis →
             </Link>
             <a
               href="#cursos"
-              className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white hover:text-white font-semibold rounded-full hover:bg-white/20 transition-all text-lg flex items-center gap-2"
+              className="w-full sm:w-auto px-8 py-3.5 md:py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white hover:text-white font-semibold rounded-full hover:bg-white/20 transition-all text-base md:text-lg flex items-center justify-center gap-2"
             >
               Explorar Cursos <span className="text-xl">→</span>
             </a>
           </motion.div>
         </div>
 
-        {/* Scroll Indicator (Icon Only & Clickable) */}
+        {/* Scroll Indicator (Icon Only & Clickable) - Oculto no Mobile */}
         <motion.button 
           onClick={scrollToNext}
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-20 left-1/2 -translate-x-1/2 z-[60] w-14 h-14 flex items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors cursor-pointer text-white"
+          className="hidden md:flex absolute bottom-20 left-1/2 -translate-x-1/2 z-[60] w-14 h-14 items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors cursor-pointer text-white"
           aria-label="Rolar para baixo"
         >
           <LuMouse className="w-6 h-6" />
         </motion.button>
         
         {/* Curved cutout effect for the bottom section (Trusted By) */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-11/12 md:w-3/4 max-w-4xl h-12 bg-slate-50 dark:bg-primary rounded-t-[30px] z-[50] flex items-center justify-center">
+        <div className="flex absolute bottom-0 left-1/2 -translate-x-1/2 w-[95%] md:w-3/4 max-w-4xl min-h-12 py-2 md:py-0 bg-slate-100 dark:bg-primary rounded-t-[24px] md:rounded-t-[30px] z-[50] items-center justify-center text-center px-4">
+          <p className="text-slate-900 dark:text-primary-foreground text-[11px] md:text-sm font-medium">
+            Mais de <strong className="font-bold">12.000+ candidatos</strong> já estudaram com a plataforma
+          </p>
         </div>
       </div>
     </section>

@@ -4,14 +4,14 @@ import { LuHand, LuBrain } from 'react-icons/lu';
 
 export default function ProfessorParticularSection() {
   return (
-    <section className="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden border-t border-slate-100 dark:border-white/5">
+    <section id="ia" className="py-24 bg-white dark:bg-slate-950 relative overflow-hidden border-t border-slate-200 dark:border-white/5">
       {/* Background elements */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-30 dark:opacity-10 pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16 max-w-6xl mx-auto">
           {/* Left Column - Content */}
-          <div className="lg:w-1/2">
+          <div className="lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-black uppercase tracking-widest mb-6">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/80 opacity-75"></span>
@@ -30,13 +30,13 @@ export default function ProfessorParticularSection() {
               </span>
             </h2>
 
-            <p className="text-lg text-slate-500 dark:text-slate-400 mb-8 leading-relaxed font-medium">
+            <p className="text-lg text-slate-500 dark:text-slate-400 mb-8 leading-relaxed font-medium max-w-xl">
               Participe de <strong>Webinars Interativos</strong> onde um
               Avatar de IA ministra aulas completas sobre qualquer ponto do
               edital.
             </p>
 
-            <ul className="space-y-6 mb-10">
+            <ul className="space-y-6 mb-10 w-full max-w-md text-left">
               <li className="flex items-start gap-4">
                 <div 
                   className="w-12 h-12 rounded-xl flex items-center justify-center shadow-md border border-primary/10 text-primary bg-primary/5 flex-shrink-0"

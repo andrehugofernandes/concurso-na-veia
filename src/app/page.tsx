@@ -35,7 +35,7 @@ export default function HomeLandingPage() {
   }, [router]);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-foreground selection:bg-primary selection:text-white overflow-x-hidden">
+    <div className="min-h-screen bg-slate-100 dark:bg-slate-950 text-foreground selection:bg-primary selection:text-white overflow-x-hidden">
       {/* Sticky header — aparece ao rolar, com glassmorphism e animação spring */}
       <StickyHeader />
 
@@ -61,7 +61,7 @@ export default function HomeLandingPage() {
       <TestimonialsSection />
 
       {/* Planos de Preço */}
-      <div id="pricing" className="bg-white dark:bg-slate-900">
+      <div id="pricing" className="bg-white dark:bg-slate-950">
         <PricingSection />
       </div>
 

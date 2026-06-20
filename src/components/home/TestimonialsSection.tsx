@@ -42,7 +42,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-24 bg-slate-50 dark:bg-primary/5 border-y border-slate-200 dark:border-white/5 relative overflow-hidden">
+    <section id="depoimentos" className="py-24 bg-white dark:bg-slate-950 border-y border-slate-100 dark:border-white/5 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
 
