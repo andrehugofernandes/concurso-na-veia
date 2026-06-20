@@ -113,7 +113,7 @@ export default function PricingSection() {
           <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
             Escolha seu <span className="text-primary">plano</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-none mx-auto whitespace-nowrap">
+          <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
             Selecione seu nível e veja os preços ajustados para o seu concurso.
           </p>
         </div>
