@@ -767,7 +767,7 @@ export default function AulaMobile({
                   <h6 className="text-lg font-bold uppercase text-blue-500">
                     JSI (JavaScript Interface)
                   </h6>
-                  <p className="text-sm text-slate-400 leading-relaxed">
+                  <p className="text-xl text-slate-400 leading-relaxed text-foreground/85">
                     Uma camada leve escrita em C++ que permite ao motor JS manter referências diretas a métodos e objetos nativos (**Host Objects**). Elimina o overhead de JSON e permite chamadas síncronas.
                   </p>
                 </div>
@@ -775,7 +775,7 @@ export default function AulaMobile({
                   <h6 className="text-lg font-bold uppercase text-blue-500">
                     Fabric Rendering Engine
                   </h6>
-                  <p className="text-sm text-slate-400 leading-relaxed">
+                  <p className="text-xl text-slate-400 leading-relaxed text-foreground/85">
                     O novo sistema de renderização que opera diretamente via JSI. Oferece priorização de atualizações de UI, renderização síncrona em casos críticos (ex: inputs) e melhor integração com o motor Yoga.
                   </p>
                 </div>
@@ -783,7 +783,7 @@ export default function AulaMobile({
                   <h6 className="text-lg font-bold uppercase text-blue-500">
                     Turbo Modules
                   </h6>
-                  <p className="text-sm text-slate-400 leading-relaxed">
+                  <p className="text-xl text-slate-400 leading-relaxed text-foreground/85">
                     Evolução dos Native Modules. Permitem carregamento **Lazy** (sob demanda) e são fortemente tipados através do **Codegen**, garantindo segurança de interface entre JS e C++/Java/Swift.
                   </p>
                 </div>
@@ -791,7 +791,7 @@ export default function AulaMobile({
                   <h6 className="text-lg font-bold uppercase text-blue-500">
                     Hermes Engine
                   </h6>
-                  <p className="text-sm text-slate-400 leading-relaxed">
+                  <p className="text-xl text-slate-400 leading-relaxed text-foreground/85">
                     Motor JS otimizado para dispositivos móveis. Realiza compilação **Ahead-of-Time (AOT)** para Bytecode, reduzindo drasticamente o tempo de boot e o consumo de memória.
                   </p>
                 </div>
@@ -1696,7 +1696,7 @@ export default function AulaMobile({
                     <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                     Consistência Multi-Plataforma
                   </h5>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-xl text-muted-foreground leading-relaxed text-foreground/85">
                     Uso de bibliotecas de componentes que abstraem as diferenças entre <strong>Material Design</strong> (Android) e <strong>Human Interface Guidelines</strong> (iOS), mantendo a experiência do usuário coesa sem perder o <em>feeling</em> nativo de cada SO.
                   </p>
                 </div>
@@ -1705,7 +1705,7 @@ export default function AulaMobile({
                     <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
                     Layouts Adaptativos
                   </h5>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-xl text-muted-foreground leading-relaxed text-foreground/85">
                     Estratégias de <strong>Fluid Layouts</strong> para lidar com a fragmentação de telas: desde smartphones compactos até tablets e dispositivos dobráveis, utilizando <em>Media Queries</em> programáticas e <em>Flexbox/Grid</em>.
                   </p>
                 </div>
@@ -1894,14 +1894,14 @@ export default function AulaMobile({
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-3 p-5 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                    <h6 className="text-red-400 font-bold uppercase text-xs tracking-widest italic">Match (Security First)</h6>
-                    <p className="text-sm text-slate-400">
+                    <h6 className="text-red-400 font-bold uppercase text-lg text-foreground/85 leading-relaxed tracking-widest italic">Match (Security First)</h6>
+                    <p className="text-xl text-slate-400 text-foreground/85 leading-relaxed">
                       Criptografia de ponta a ponta para <strong>Certificados</strong> e <strong>Provisioning Profiles</strong>. Armazena as chaves num repositório Git privado, garantindo que todo o time use a mesma assinatura sem conflitos.
                     </p>
                   </div>
                   <div className="space-y-3 p-5 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                    <h6 className="text-blue-400 font-bold uppercase text-xs tracking-widest italic">App Thinning & Slicing</h6>
-                    <p className="text-sm text-slate-400">
+                    <h6 className="text-blue-400 font-bold uppercase text-lg text-foreground/85 leading-relaxed tracking-widest italic">App Thinning & Slicing</h6>
+                    <p className="text-xl text-slate-400 text-foreground/85 leading-relaxed">
                       Processo onde a loja gera binários otimizados para cada dispositivo. O usuário baixa apenas os assets (densidade de tela, arquitetura CPU) necessários, economizando dados e espaço.
                     </p>
                   </div>
@@ -1955,19 +1955,19 @@ export default function AulaMobile({
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="p-6 bg-muted/50 rounded-xl border border-border group hover:bg-muted transition-colors">
                     <h6 className="font-bold text-lg mb-2">TestFlight / Beta App</h6>
-                    <p className="text-sm text-muted-foreground leading-snug">
+                    <p className="text-xl text-muted-foreground leading-snug text-foreground/85 leading-relaxed">
                       Ambiente de <em>Sandboxing</em> para até 10.000 usuários externos antes do release público.
                     </p>
                   </div>
                   <div className="p-6 bg-muted/50 rounded-xl border border-border group hover:bg-muted transition-colors">
                     <h6 className="font-bold text-lg mb-2">Staged Rollouts</h6>
-                    <p className="text-sm text-muted-foreground leading-snug">
+                    <p className="text-xl text-muted-foreground leading-snug text-foreground/85 leading-relaxed">
                       Lançamento gradual (ex: 1% {"->"} 5% {"->"} 20% {"->"} 100%). Permite abortar o release caso métricas de <em>crash</em> subam no Firebase Crashlytics.
                     </p>
                   </div>
                   <div className="p-6 bg-muted/50 rounded-xl border border-border group hover:bg-muted transition-colors">
                     <h6 className="font-bold text-lg mb-2">Store Presence (ASO)</h6>
-                    <p className="text-sm text-muted-foreground leading-snug">
+                    <p className="text-xl text-muted-foreground leading-snug text-foreground/85 leading-relaxed">
                       Otimização de keywords, screenshots e vídeos para conversão orgânica e descoberta na loja.
                     </p>
                   </div>
