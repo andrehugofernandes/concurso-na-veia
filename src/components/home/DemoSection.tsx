@@ -576,6 +576,24 @@ export default function DemoSection() {
                                     <p className="text-xs text-blue-100 mt-1">Dominando o Esqueleto da Oração: aprenda a identificar quem manda no verbo.</p>
                                   </div>
 
+                                  {/* Video Player Mock */}
+                                  <div className="w-full aspect-video bg-slate-900 rounded-2xl flex items-center justify-center relative overflow-hidden group shadow-lg border border-slate-800">
+                                    <div className="absolute inset-0 bg-slate-800 opacity-50"></div>
+                                    <button className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center z-10 group-hover:scale-110 group-hover:bg-blue-500 transition-all shadow-xl">
+                                      <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[16px] border-l-white border-b-[10px] border-b-transparent ml-1"></div>
+                                    </button>
+                                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white/80 font-bold z-10">
+                                      <span>00:00 / 18:45</span>
+                                      <div className="flex items-center gap-4">
+                                        <span>1x</span>
+                                        <span>HD</span>
+                                      </div>
+                                    </div>
+                                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
+                                      <div className="h-full bg-blue-500 w-1/3"></div>
+                                    </div>
+                                  </div>
+
                                   {/* Lesson Content Body */}
                                   <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200 dark:border-white/5 p-6 space-y-6 leading-relaxed">
                                     <h3 className="text-sm font-black border-l-4 border-l-blue-500 pl-3">A Anatomia da Oração</h3>
@@ -608,7 +626,8 @@ export default function DemoSection() {
                                           { index: 0, text: 'Inexistente' },
                                           { index: 1, text: 'Graves falhas (Correto - O verbo ocorrer é pessoal)' },
                                           { index: 2, text: 'A bacia do Pré-sal' },
-                                          { index: 3, text: 'Indeterminado' }
+                                          { index: 3, text: 'Indeterminado' },
+                                          { index: 4, text: 'Oculto (Nós)' }
                                         ].map((opt) => {
                                           const isSelected = portuguesAnswer === opt.index;
                                           const isCorrect = opt.index === 1;
@@ -665,6 +684,24 @@ export default function DemoSection() {
                                     <p className="text-xs text-purple-100 mt-1">O alicerce dos números: conversões e cálculo mental rápido.</p>
                                   </div>
 
+                                  {/* Video Player Mock */}
+                                  <div className="w-full aspect-video bg-slate-900 rounded-2xl flex items-center justify-center relative overflow-hidden group shadow-lg border border-slate-800">
+                                    <div className="absolute inset-0 bg-slate-800 opacity-50"></div>
+                                    <button className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center z-10 group-hover:scale-110 group-hover:bg-purple-500 transition-all shadow-xl">
+                                      <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[16px] border-l-white border-b-[10px] border-b-transparent ml-1"></div>
+                                    </button>
+                                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white/80 font-bold z-10">
+                                      <span>00:00 / 12:30</span>
+                                      <div className="flex items-center gap-4">
+                                        <span>1x</span>
+                                        <span>HD</span>
+                                      </div>
+                                    </div>
+                                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
+                                      <div className="h-full bg-purple-500 w-1/4"></div>
+                                    </div>
+                                  </div>
+
                                   {/* Lesson Content Body */}
                                   <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200 dark:border-white/5 p-6 space-y-6 leading-relaxed">
                                     <h3 className="text-sm font-black border-l-4 border-l-purple-500 pl-3">A Linguagem Universal do Edital</h3>
@@ -713,7 +750,8 @@ export default function DemoSection() {
                                           { index: 0, text: '60' },
                                           { index: 1, text: '70 (Correto - 30% é 60 e 5% é 10)' },
                                           { index: 2, text: '80' },
-                                          { index: 3, text: '50' }
+                                          { index: 3, text: '50' },
+                                          { index: 4, text: '65' }
                                         ].map((opt) => {
                                           const isSelected = matematicaAnswer === opt.index;
                                           const isCorrect = opt.index === 1;
@@ -770,6 +808,24 @@ export default function DemoSection() {
                                     <p className="text-xs text-emerald-100 mt-1">Domine a diretriz normativa essencial para operações e prevenção de quedas.</p>
                                   </div>
 
+                                  {/* Video Player Mock */}
+                                  <div className="w-full aspect-video bg-slate-900 rounded-2xl flex items-center justify-center relative overflow-hidden group shadow-lg border border-slate-800">
+                                    <div className="absolute inset-0 bg-slate-800 opacity-50"></div>
+                                    <button className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center z-10 group-hover:scale-110 group-hover:bg-emerald-500 transition-all shadow-xl">
+                                      <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[16px] border-l-white border-b-[10px] border-b-transparent ml-1"></div>
+                                    </button>
+                                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white/80 font-bold z-10">
+                                      <span>00:00 / 22:15</span>
+                                      <div className="flex items-center gap-4">
+                                        <span>1x</span>
+                                        <span>HD</span>
+                                      </div>
+                                    </div>
+                                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
+                                      <div className="h-full bg-emerald-500 w-1/2"></div>
+                                    </div>
+                                  </div>
+
                                   {/* Lesson Content Body */}
                                   <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200 dark:border-white/5 p-6 space-y-6 leading-relaxed">
                                     <h3 className="text-sm font-black border-l-4 border-l-emerald-500 pl-3">Gestão, Planejamento e Organização</h3>
@@ -803,7 +859,8 @@ export default function DemoSection() {
                                           { index: 0, text: '1,50 metros' },
                                           { index: 1, text: '2,00 metros (Correto - Limite fixado pela norma)' },
                                           { index: 2, text: '2,50 metros' },
-                                          { index: 3, text: '3,00 metros' }
+                                          { index: 3, text: '3,00 metros' },
+                                          { index: 4, text: '3,50 metros' }
                                         ].map((opt) => {
                                           const isSelected = especificasAnswer === opt.index;
                                           const isCorrect = opt.index === 1;
@@ -898,7 +955,8 @@ export default function DemoSection() {
                                 { label: 'A', text: 'Haviam muitos candidatos inscritos no concurso da Petrobras.' },
                                 { label: 'B', text: 'Fazem cinco anos que a Petrobras não realiza este certame.' },
                                 { label: 'C', text: 'Deve haver outras vagas disponíveis para técnico de enfermagem.' },
-                                { label: 'D', text: 'Choveram vagas para o nível médio neste edital.' }
+                                { label: 'D', text: 'Choveram vagas para o nível médio neste edital.' },
+                                { label: 'E', text: 'Os candidatos se houveram muito bem nas provas discursivas.' }
                               ].map((opt, index) => {
                                 const isSelected = selectedOption === index;
                                 const isCorrectOption = index === 2; // C is correct
@@ -942,6 +1000,27 @@ export default function DemoSection() {
                                 );
                               })}
                             </div>
+
+                            {/* Explanation Box */}
+                            {isAnswered && (
+                              <div className={`p-4 rounded-xl border ${selectedOption === 2 ? 'bg-emerald-500/10 border-emerald-500/20' : 'bg-red-500/10 border-red-500/20'} animate-in fade-in slide-in-from-bottom-2 duration-300`}>
+                                <h4 className={`text-xs font-bold mb-2 flex items-center gap-2 ${selectedOption === 2 ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'}`}>
+                                  {selectedOption === 2 ? <LuCheck size={16} /> : <LuX size={16} />}
+                                  {selectedOption === 2 ? 'Você acertou!' : 'Você errou.'}
+                                </h4>
+                                <div className="text-xs text-slate-700 dark:text-slate-300 space-y-2 leading-relaxed">
+                                  <p>
+                                    <strong className="text-slate-900 dark:text-white">Gabarito: Letra C.</strong> O verbo <strong>"haver"</strong>, quando empregado no sentido de existir ou ocorrer, é impessoal (não possui sujeito). 
+                                    Essa impessoalidade é transmitida ao verbo auxiliar da locução verbal. Logo, a expressão <strong>"deve haver"</strong> fica obrigatoriamente no singular.
+                                  </p>
+                                  <p className="opacity-80 pt-2 border-t border-slate-300 dark:border-white/10 mt-2">
+                                    <strong>Erros nas demais:</strong><br />
+                                    A) O correto é "Havia muitos..." (haver no sentido de existir fica no singular).<br />
+                                    B) O correto é "Faz cinco anos..." (fazer indicando tempo transcorrido é impessoal).
+                                  </p>
+                                </div>
+                              </div>
+                            )}
 
                             {/* Action Button */}
                             <div className="pt-2">
