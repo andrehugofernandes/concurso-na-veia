@@ -390,7 +390,7 @@ export default function AulaTiposTextuais({
             <p>
               Para gabaritar, procure marcas temporais e a presença de conflito. Lembre-se: se o texto descreve uma cena parada, ele é <strong>Descritivo</strong>. Se ele relata um "filme", ele é <strong>Narrativo</strong>.
             </p>
-            <div className="bg-amber-500/10 p-6 rounded-xl border border-amber-500/20 text-sm italic">
+            <div className="bg-amber-500/10 p-6 rounded-xl border border-amber-500/20 text-xl italic text-foreground/85 leading-relaxed">
               <strong>Dica Premium:</strong> O teste do "E Então" é infalível. Se as frases aceitarem essa conexão mantendo a lógica cronológica, há forte indício de narração.
             </div>
           </div>
@@ -460,7 +460,7 @@ export default function AulaTiposTextuais({
             <p>
               Em provas, identifique a abundância de <strong>adjetivos</strong> e verbos de estado (ser, estar, parecer). A descrição pode ser <strong>Objetiva</strong> (laudos técnicos) ou <strong>Subjetiva</strong> (literária).
             </p>
-            <div className="bg-emerald-500/10 p-6 rounded-xl border border-emerald-500/20 text-sm italic">
+            <div className="bg-emerald-500/10 p-6 rounded-xl border border-emerald-500/20 text-xl italic text-foreground/85 leading-relaxed">
               <strong>Dica:</strong> Se você pode desenhar o que está lendo em um único quadro, sem o tempo passar, é descrição.
             </div>
           </div>
@@ -593,7 +593,7 @@ export default function AulaTiposTextuais({
             <p>
               Identifique a tese procurando por marcas de subjetividade: adjetivos valorativos ('lamentável', 'benéfico') e advérbios de opinião. O corpo do texto será composto por estratégias argumentativas, como o <strong>Argumento de Autoridade</strong>, <strong>Causa e Consequência</strong> e <strong>Dados Estatísticos</strong>.
             </p>
-            <div className="bg-blue-500/10 p-6 rounded-xl border border-blue-500/20 text-sm italic">
+            <div className="bg-blue-500/10 p-6 rounded-xl border border-blue-500/20 text-xl italic text-foreground/85 leading-relaxed">
               <strong>Olho no Gato:</strong> Diferencie fatos de opiniões. Se houver um julgamento sobre o fato, o texto é argumentativo.
             </div>
           </div>

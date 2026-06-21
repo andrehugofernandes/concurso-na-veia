@@ -314,7 +314,7 @@ export default function AulaReescritaFrases({
               <h4 className="font-bold text-foreground">
                 A Fórmula da Paráfrase CESGRANRIO
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xl text-foreground/85 leading-relaxed">
                 <div className="text-center">
                   <div className="text-2xl mb-2">🔄</div>
                   <strong>Substituição</strong>
@@ -331,7 +331,7 @@ export default function AulaReescritaFrases({
                   <p>Gramaticalmente impecável</p>
                 </div>
               </div>
-              <div className="mt-4 p-3 bg-amber-100 dark:bg-amber-900/30 rounded text-sm">
+              <div className="mt-4 p-3 bg-amber-100 dark:bg-amber-900/30 rounded text-xl text-foreground/85 leading-relaxed">
                 <strong>Regra de Ouro:</strong> Se a frase original expressa
                 dúvida, a reescrita não pode expressar certeza. Se causa, não
                 pode virar consequência. Se concessão, não pode virar
@@ -474,7 +474,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Manutenção de Sentido
                     </span>
-                    <span className="text-sm text-emerald-500/80 font-medium">
+                    <span className="text-xl text-emerald-500/80 font-medium text-foreground/85 leading-relaxed">
                       O Checklist de Identidade Semântica
                     </span>
                   </div>
@@ -483,18 +483,18 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Dossiê de Equivalência
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       A manutenção do sentido não é apenas "parecer igual".
                       Exige a preservação da <strong>modalidade</strong>{" "}
                       (certeza vs. possibilidade), da{" "}
                       <strong>polaridade</strong> (afirmação vs. negação) e da{" "}
                       <strong>carga semântica</strong> dos conectivos.
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Para a CESGRANRIO, qualquer alteração nas relações de
                       causa e consequência invalida a reescrita. O verso da
                       moeda é a precisão: se o autor original usou "pode", você
@@ -514,7 +514,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Adequação de Registro
                     </span>
-                    <span className="text-sm text-blue-500/80 font-medium">
+                    <span className="text-xl text-blue-500/80 font-medium text-foreground/85 leading-relaxed">
                       A Camaleão da Formalidade
                     </span>
                   </div>
@@ -523,18 +523,18 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Variação Diafásica
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       A reescrita permite mudar o "tom" da conversa sem ferir o
                       conteúdo. É a transição entre o registro{" "}
                       <strong>coloquial</strong> e o{" "}
                       <strong>culto padrão</strong>. Na Petrobras, prioriza-se a
                       clareza técnica e a impessoalidade administrativa.
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Exemplo CESGRANRIO: "A gente precisa de mais óleo"
                       (Informal) → "Torna-se imperativa a ampliação da extração
                       petrolífera" (Formal). O sentido é idêntico, mas a
@@ -756,7 +756,7 @@ export default function AulaReescritaFrases({
               <h4 className="font-bold text-foreground">
                 O Teste dos Três Filtros da Substituição
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xl text-foreground/85 leading-relaxed">
                 <div className="text-center">
                   <div className="text-2xl mb-2">🎯</div>
                   <strong>Sentido</strong>
@@ -773,7 +773,7 @@ export default function AulaReescritaFrases({
                   <p>Mesma regência e sintaxe?</p>
                 </div>
               </div>
-              <div className="mt-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded text-sm">
+              <div className="mt-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded text-xl text-foreground/85 leading-relaxed">
                 <strong>Alerta Parônimos:</strong> Ratificar/Retificar |
                 Descrição/Discrição | Emergir/Emergir | Infligir/Infringir |
                 Mandado/Mandato
@@ -1131,7 +1131,7 @@ export default function AulaReescritaFrases({
               <h4 className="font-bold text-foreground">
                 O Algoritmo das Três Etapas
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xl text-foreground/85 leading-relaxed">
                 <div className="text-center">
                   <div className="text-2xl mb-2">🔄</div>
                   <strong>Identifique</strong>
@@ -1148,7 +1148,7 @@ export default function AulaReescritaFrases({
                   <p>Tempo verbal e concordância</p>
                 </div>
               </div>
-              <div className="mt-4 p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded text-sm">
+              <div className="mt-4 p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded text-xl text-foreground/85 leading-relaxed">
                 <strong>Regra Crítica:</strong> Se o verbo na ativa está no
                 futuro, a passiva usa "ser" no futuro (será feito). Se no
                 pretérito perfeito, "ser" vai para o pretérito perfeito (foi
@@ -1329,7 +1329,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Estrutura da V.P.A.
                     </span>
-                    <span className="text-sm text-emerald-500/80 font-medium">
+                    <span className="text-xl text-emerald-500/80 font-medium text-foreground/85 leading-relaxed">
                       O Verbo SER como Âncora
                     </span>
                   </div>
@@ -1338,17 +1338,17 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Mecânica Analítica
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Na voz passiva analítica, o verbo auxiliar{" "}
                       <strong>SER</strong> é quem carrega toda a
                       responsabilidade temporal. Ele deve espelhar exatamente o
                       tempo e modo do verbo original na voz ativa.
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Ex: "A banca <strong>elaborará</strong> (Futuro do
                       Presente) o edital" → "O edital <strong>será</strong>{" "}
                       (Futuro do Presente) <strong>elaborado</strong>". O verbo
@@ -1368,7 +1368,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Particípio Abundante
                     </span>
-                    <span className="text-sm text-amber-500/80 font-medium">
+                    <span className="text-xl text-amber-500/80 font-medium text-foreground/85 leading-relaxed">
                       O Equilíbrio das Formas
                     </span>
                   </div>
@@ -1377,11 +1377,11 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-amber-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Regra de Ouro: T.H.A.S.
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Muitos verbos possuem duas formas de particípio. Use o{" "}
                       <strong>Regular</strong> (-ado/-ido) com os auxiliares{" "}
                       <strong>TER</strong> ou <strong>HAVER</strong> (Tem
@@ -1389,7 +1389,7 @@ export default function AulaReescritaFrases({
                       com <strong>SER</strong> ou <strong>ESTAR</strong> (É
                       aceito).
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       A CESGRANRIO tenta induzir ao erro de eufonia: "O contrato
                       foi <i>imprimido</i>" (Errado) vs "O contrato foi{" "}
                       <strong>impresso</strong>" (Correto). Em reescritas, a
@@ -1696,7 +1696,7 @@ export default function AulaReescritaFrases({
               <h4 className="font-bold text-foreground">
                 O Mapa da Transposição Discursiva
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xl text-foreground/85 leading-relaxed">
                 <div className="text-center">
                   <div className="text-2xl mb-2">⏰</div>
                   <strong>Tempos</strong>
@@ -1731,7 +1731,7 @@ export default function AulaReescritaFrases({
                   </p>
                 </div>
               </div>
-              <div className="mt-4 p-3 bg-violet-100 dark:bg-violet-900/30 rounded text-sm">
+              <div className="mt-4 p-3 bg-violet-100 dark:bg-violet-900/30 rounded text-xl text-foreground/85 leading-relaxed">
                 <strong>Regra de Ouro:</strong> Se o verbo de elocução está no
                 passado, todos os outros tempos "recuam" um degrau na linha do
                 tempo, exceto o mais-que-perfeito.
@@ -1938,7 +1938,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Hoje / Agora
                     </span>
-                    <span className="text-sm text-emerald-500/80 font-medium">
+                    <span className="text-xl text-emerald-500/80 font-medium text-foreground/85 leading-relaxed">
                       Presente Imediato
                     </span>
                   </div>
@@ -1947,17 +1947,17 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Deslocamento Temporal
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       No discurso indireto, o <strong>Presente</strong> do
                       falante ("hoje") deve ser reportado como um ponto estático
                       no passado do narrador: <strong>Naquele dia</strong> ou{" "}
                       <strong>Naquele momento</strong>.
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       A banca CESGRANRIO invalida reescritas que mantêm "hoje"
                       no discurso indireto, pois isso cria um anacronismo lógico
                       no relato.
@@ -1975,7 +1975,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Amanhã / Depois
                     </span>
-                    <span className="text-sm text-blue-500/80 font-medium">
+                    <span className="text-xl text-blue-500/80 font-medium text-foreground/85 leading-relaxed">
                       Projeção Futura
                     </span>
                   </div>
@@ -1984,17 +1984,17 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Futuro do Relato
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       O que era futuro para quem falou ("amanhã") torna-se uma{" "}
                       <strong>projeção posterior</strong> no relato:{" "}
                       <strong>No dia seguinte</strong> ou{" "}
                       <strong>Posteriormente</strong>.
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Essa mudança é obrigatória para manter a coesão
                       cronológica. Se o autor disse "Virei amanhã", o relato
                       correto é "Ele disse que viria no dia seguinte".
@@ -2012,7 +2012,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Ontem
                     </span>
-                    <span className="text-sm text-amber-500/80 font-medium">
+                    <span className="text-xl text-amber-500/80 font-medium text-foreground/85 leading-relaxed">
                       Passado Recente
                     </span>
                   </div>
@@ -2021,17 +2021,17 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-amber-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Antecedência
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       O <strong>Ontem</strong> (passado em relação ao momento da
                       fala) converte-se em <strong>No dia anterior</strong> ou{" "}
                       <strong>Na véspera</strong> (passado em relação ao momento
                       do relato).
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       O uso de "ontem" no discurso indireto é um erro comum de
                       "cola" do texto original que a Petrobras costuma cobrar em
                       itens de reescrita incorreta.
@@ -2049,7 +2049,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Aqui / Cá
                     </span>
-                    <span className="text-sm text-purple-500/80 font-medium">
+                    <span className="text-xl text-purple-500/80 font-medium text-foreground/85 leading-relaxed">
                       Referência Espacial
                     </span>
                   </div>
@@ -2058,17 +2058,17 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-purple-500 font-bold border-b border-purple-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Eixo Locativo
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Os advérbios de lugar que indicam proximidade do falante
                       ("aqui", "este") devem ser convertidos para formas de
                       distanciamento: <strong>Ali</strong>, <strong>Lá</strong>{" "}
                       ou <strong>Aquele lugar</strong>.
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       A reescrita de "Estou aqui" para "Ele disse que estava
                       aqui" só é válida se o narrador estiver no exato mesmo
                       lugar físico. Caso contrário, o correto é "Ele disse que
@@ -2266,7 +2266,7 @@ export default function AulaReescritaFrases({
               <h4 className="font-bold text-foreground">
                 O Laboratório de Sufixos Nominalizadores
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xl text-foreground/85 leading-relaxed">
                 <div className="text-center">
                   <div className="text-2xl mb-2">🏭</div>
                   <strong>-ção/-são</strong>
@@ -2301,7 +2301,7 @@ export default function AulaReescritaFrases({
                   </p>
                 </div>
               </div>
-              <div className="mt-4 p-3 bg-amber-100 dark:bg-amber-900/30 rounded text-sm">
+              <div className="mt-4 p-3 bg-amber-100 dark:bg-amber-900/30 rounded text-xl text-foreground/85 leading-relaxed">
                 <strong>Regra de Ouro:</strong> Nominalização remove o agente e
                 foca no fato. "Eles decidiram" (foco nos agentes) → "A decisão"
                 (foco no fato).
@@ -2474,13 +2474,13 @@ export default function AulaReescritaFrases({
                   </div>
                 }
                 verso={
-                  <div className="space-y-3 p-4 flex flex-col justify-center h-full text-sm">
+                  <div className="space-y-3 p-4 flex flex-col justify-center h-full text-xl text-foreground/85 leading-relaxed">
                     <p className="leading-relaxed text-muted-foreground">
                       <strong>Aplicação Técnica:</strong> "O{" "}
                       <em>aperfeiçoamento</em> contínuo dos processos é exigido
                       pelas normas ISO adotadas pela Petrobras."
                     </p>
-                    <p className="text-xs text-blue-500/80 font-medium italic">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-blue-500/80 font-medium italic">
                       Dica: O sufixo -mento indica o processo ou o resultado da
                       ação de melhorar.
                     </p>
@@ -2500,13 +2500,13 @@ export default function AulaReescritaFrases({
                   </div>
                 }
                 verso={
-                  <div className="space-y-3 p-4 flex flex-col justify-center h-full text-sm">
+                  <div className="space-y-3 p-4 flex flex-col justify-center h-full text-xl text-foreground/85 leading-relaxed">
                     <p className="leading-relaxed text-muted-foreground">
                       <strong>Aplicação Técnica:</strong> "A <em>conexão</em>{" "}
                       adequada dos cabos submarinos deve ser verificada antes do
                       início da operação."
                     </p>
-                    <p className="text-xs text-emerald-500/80 font-medium italic">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-emerald-500/80 font-medium italic">
                       Dica: Verbos terminados em -ctar geralmente geram
                       substantivos em -xão.
                     </p>
@@ -2526,13 +2526,13 @@ export default function AulaReescritaFrases({
                   </div>
                 }
                 verso={
-                  <div className="space-y-3 p-4 flex flex-col justify-center h-full text-sm">
+                  <div className="space-y-3 p-4 flex flex-col justify-center h-full text-xl text-foreground/85 leading-relaxed">
                     <p className="leading-relaxed text-muted-foreground">
                       <strong>Aplicação Técnica:</strong> "A <em>atracação</em>{" "}
                       do navio de suporte em águas profundas levou mais tempo
                       que o previsto."
                     </p>
-                    <p className="text-xs text-amber-500/80 font-medium italic">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-amber-500/80 font-medium italic">
                       Dica: Sufixo -ção é o mais produtivo para ações que
                       ocorrem em portos e plataformas.
                     </p>
@@ -2552,13 +2552,13 @@ export default function AulaReescritaFrases({
                   </div>
                 }
                 verso={
-                  <div className="space-y-3 p-4 flex flex-col justify-center h-full text-sm">
+                  <div className="space-y-3 p-4 flex flex-col justify-center h-full text-xl text-foreground/85 leading-relaxed">
                     <p className="leading-relaxed text-muted-foreground">
                       <strong>Aplicação Técnica:</strong> "A <em>inspeção</em>{" "}
                       periódica das plataformas é obrigatória conforme a
                       regulamentação da ANP."
                     </p>
-                    <p className="text-xs text-purple-500/80 font-medium italic">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-purple-500/80 font-medium italic">
                       Dica: Note a perda do 'r' e a adição do sufixo. Essencial
                       para relatórios de conformidade.
                     </p>
@@ -2578,13 +2578,13 @@ export default function AulaReescritaFrases({
                   </div>
                 }
                 verso={
-                  <div className="space-y-3 p-4 flex flex-col justify-center h-full text-sm">
+                  <div className="space-y-3 p-4 flex flex-col justify-center h-full text-xl text-foreground/85 leading-relaxed">
                     <p className="leading-relaxed text-muted-foreground">
                       <strong>Aplicação Técnica:</strong> "O processo de{" "}
                       <em>contratação</em> de novos fornecedores seguiu os
                       critérios de compliance."
                     </p>
-                    <p className="text-xs text-indigo-500/80 font-medium italic">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-indigo-500/80 font-medium italic">
                       Dica: Nominalização muito usada para evitar mencionar quem
                       contratou, focando no processo.
                     </p>
@@ -2820,7 +2820,7 @@ export default function AulaReescritaFrases({
               <h4 className="font-bold text-foreground">
                 O Sistema de Equivalências Conectivas
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xl text-foreground/85 leading-relaxed">
                 <div className="text-center">
                   <div className="text-2xl mb-2">🔗</div>
                   <strong>Causais</strong>
@@ -2855,7 +2855,7 @@ export default function AulaReescritaFrases({
                   </p>
                 </div>
               </div>
-              <div className="mt-4 p-3 bg-indigo-100 dark:bg-indigo-900/30 rounded text-sm">
+              <div className="mt-4 p-3 bg-indigo-100 dark:bg-indigo-900/30 rounded text-xl text-foreground/85 leading-relaxed">
                 <strong>Regra Crítica:</strong> "Mas" exige indicativo + orações
                 independentes. "Embora" exige subjuntivo + oração subordinada. A
                 troca exige reestruturação completa.
@@ -3052,7 +3052,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Conectivos Causais
                     </span>
-                    <span className="text-sm text-orange-500/80 font-medium">
+                    <span className="text-xl text-orange-500/80 font-medium text-foreground/85 leading-relaxed">
                       O Gatilho da Motivação
                     </span>
                   </div>
@@ -3061,18 +3061,18 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-orange-500 font-bold border-b border-orange-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Arqueologia Causal
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Os conectivos causais (
                       <em>porque, uma vez que, visto que, porquanto</em>)
                       indicam o motivo que gerou a ação principal. Em
                       reescritas, a substituição por "porquanto" é a favorita da
                       banca para testar vocabulário erudito.
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Atenção: A causa sempre ocorre cronologicamente{" "}
                       <strong>antes</strong> do efeito. Se a reescrita inverter
                       essa lógica temporal, o sentido foi alterado e a opção
@@ -3091,7 +3091,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       A Bifurcação do "Pois"
                     </span>
-                    <span className="text-sm text-blue-500/80 font-medium">
+                    <span className="text-xl text-blue-500/80 font-medium text-foreground/85 leading-relaxed">
                       Causal vs Explicativo
                     </span>
                   </div>
@@ -3100,17 +3100,17 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Diferença de Escopo
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       O <strong>Pois Causal</strong> introduz a causa real
                       ("Faltou, pois estava doente"). O{" "}
                       <strong>Pois Explicativo</strong> justifica uma ordem ou
                       suposição ("Saia, pois está tarde").
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Para a CESGRANRIO, o explicativo costuma vir após
                       imperativos. A troca de um pelo outro em reescrita pode
                       ser sutil, mas altera a natureza da relação entre as
@@ -3323,7 +3323,7 @@ export default function AulaReescritaFrases({
             {/* CAIXA DE DESTAQUE: Duelo Concessivo */}
             <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">O Mapa da Concessão</h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xl text-foreground/85 leading-relaxed">
                 <div className="text-center">
                   <div className="text-2xl mb-2">⚔️</div>
                   <strong>Coordenativas</strong>
@@ -3357,7 +3357,7 @@ export default function AulaReescritaFrases({
                   </p>
                 </div>
               </div>
-              <div className="mt-4 p-3 bg-rose-100 dark:bg-rose-900/30 rounded text-sm">
+              <div className="mt-4 p-3 bg-rose-100 dark:bg-rose-900/30 rounded text-xl text-foreground/85 leading-relaxed">
                 <strong>Regra de Ouro:</strong> Coordenativa = Indicativo (fato
                 certo). Concessiva = Subjuntivo (fato admitido mas incerto).
               </div>
@@ -3383,7 +3383,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Mudança de Modo
                     </span>
-                    <span className="text-sm text-rose-500/80 font-medium">
+                    <span className="text-xl text-rose-500/80 font-medium text-foreground/85 leading-relaxed">
                       O Gatilho do Subjuntivo
                     </span>
                   </div>
@@ -3392,18 +3392,18 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-rose-500 font-bold border-b border-rose-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Regra de Ouro
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Ao trocar um conectivo adversativo (<strong>mas</strong>)
                       por um concessivo (<strong>embora</strong>), a força da
                       frase muda e o modo verbal{" "}
                       <strong>obrigatoriamente</strong> migra do Indicativo para
                       o Subjuntivo.
                     </p>
-                    <div className="bg-muted/50 p-2 rounded border border-border text-xs italic">
+                    <div className="bg-muted/50 p-2 rounded border border-border text-lg text-foreground/85 leading-relaxed italic">
                       "Mas produziu" (Certo) → "Embora produzisse" (Hipótese
                       admitida)
                     </div>
@@ -3420,7 +3420,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Arsenal Concessivo
                     </span>
-                    <span className="text-sm text-indigo-500/80 font-medium">
+                    <span className="text-xl text-indigo-500/80 font-medium text-foreground/85 leading-relaxed">
                       Substitutos de Avançado
                     </span>
                   </div>
@@ -3429,7 +3429,7 @@ export default function AulaReescritaFrases({
                   <div className="space-y-3 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-indigo-500 font-bold border-b border-indigo-500/10 pb-2">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Equivalências
                       </span>
                     </div>
@@ -3469,7 +3469,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       O Choque de Ênfase
                     </span>
-                    <span className="text-sm text-orange-500/80 font-medium">
+                    <span className="text-xl text-orange-500/80 font-medium text-foreground/85 leading-relaxed">
                       Onde mora o Sentido
                     </span>
                   </div>
@@ -3478,7 +3478,7 @@ export default function AulaReescritaFrases({
                   <div className="space-y-3 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-orange-500 font-bold border-b border-orange-500/10 pb-2">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Análise de Peso
                       </span>
                     </div>
@@ -3545,7 +3545,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Concessão Reduzida
                     </span>
-                    <span className="text-sm text-emerald-500/80 font-medium">
+                    <span className="text-xl text-emerald-500/80 font-medium text-foreground/85 leading-relaxed">
                       O Poder do Gerúndio
                     </span>
                   </div>
@@ -3554,17 +3554,17 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Formas Nominais
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       A concessão pode ignorar conjunções usando gerúndio ou
                       locuções prepositivas. <strong>"Apesar de"</strong> é o
                       coringa para transformar qualquer oração em concessiva sem
                       erro.
                     </p>
-                    <div className="bg-emerald-500/5 p-2 rounded border border-emerald-500/10 text-xs italic">
+                    <div className="bg-emerald-500/5 p-2 rounded border border-emerald-500/10 text-lg text-foreground/85 leading-relaxed italic">
                       "Mesmo tendo falhado..." = "Embora tivesse falhado..."
                     </div>
                   </div>
@@ -3580,7 +3580,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Real vs Hipotético
                     </span>
-                    <span className="text-sm text-amber-500/80 font-medium">
+                    <span className="text-xl text-amber-500/80 font-medium text-foreground/85 leading-relaxed">
                       Embora vs Mesmo que
                     </span>
                   </div>
@@ -3589,17 +3589,17 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-amber-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Nuance Semântica
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       <strong>Embora</strong> foca em fatos concretos (estava
                       chovendo). <strong>Mesmo que</strong> foca em
                       possibilidades (pode ser que chova). A banca testa essa
                       distinção em questões de alta complexidade.
                     </p>
-                    <div className="bg-amber-500/5 p-2 rounded border border-amber-500/10 text-xs italic">
+                    <div className="bg-amber-500/5 p-2 rounded border border-amber-500/10 text-lg text-foreground/85 leading-relaxed italic">
                       Embora estivesse (Real) ≠ Mesmo que esteja (Hipótese)
                     </div>
                   </div>
@@ -3741,7 +3741,7 @@ export default function AulaReescritaFrases({
               <h4 className="font-bold text-foreground">
                 O Interruptor de Sentidos
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xl text-foreground/85 leading-relaxed">
                 <div className="text-center">
                   <div className="text-2xl mb-2">💡</div>
                   <strong>COM Vírgula</strong>
@@ -3776,7 +3776,7 @@ export default function AulaReescritaFrases({
                   </p>
                 </div>
               </div>
-              <div className="mt-4 p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded text-sm">
+              <div className="mt-4 p-3 bg-cyan-100 dark:bg-cyan-900/30 rounded text-xl text-foreground/85 leading-relaxed">
                 <strong>Regra de Ouro:</strong> Vírgula = Expansão do universo.
                 Sem vírgula = Restrição do universo.
               </div>
@@ -3961,7 +3961,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Dois-Pontos & Travessão
                     </span>
-                    <span className="text-sm text-emerald-500/80 font-medium">
+                    <span className="text-xl text-emerald-500/80 font-medium text-foreground/85 leading-relaxed">
                       A Voz do Relato
                     </span>
                   </div>
@@ -3970,18 +3970,18 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Mecânica do Discurso
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Na reescrita, os <strong>dois-pontos</strong> que
                       introduzem o discurso direto desaparecem na transição para
                       o indireto. O <strong>travessão</strong> de diálogo também
                       é eliminado em favor de conjunções integrantes (
                       <em>que</em>).
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground italic border-l-2 border-emerald-500/20 pl-3">
+                    <p className="text-xl leading-relaxed text-muted-foreground italic border-l-2 border-emerald-500/20 pl-3 text-foreground/85">
                       "Ele disse: — Irei" → "Ele disse que iria". O travessão
                       explicativo (usado como parênteses) mantém o sentido se
                       substituído por vírgulas.
@@ -3999,7 +3999,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Ponto-e-Vírgula
                     </span>
-                    <span className="text-sm text-blue-500/80 font-medium">
+                    <span className="text-xl text-blue-500/80 font-medium text-foreground/85 leading-relaxed">
                       Hierarquia e Extensão
                     </span>
                   </div>
@@ -4008,18 +4008,18 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Pausa Intermediária
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       O <strong>ponto-e-vírgula</strong> separa orações
                       coordenadas extensas ou itens de uma enumeração técnica.
                       Em reescritas, substituir uma vírgula por ponto-e-vírgula
                       é gramaticalmente aceitável para evitar a fragmentação do
                       texto.
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Dica de Ouro: No padrão Petrobras, o ponto-e-vírgula é
                       comum em listas de obrigações contratuais ou manuais
                       técnicos, garantindo que o fim de um item não seja
@@ -4038,7 +4038,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Parênteses e Travessões
                     </span>
-                    <span className="text-sm text-amber-500/80 font-medium">
+                    <span className="text-xl text-amber-500/80 font-medium text-foreground/85 leading-relaxed">
                       O Isolamento do Aposto
                     </span>
                   </div>
@@ -4047,18 +4047,18 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-amber-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Equivalência de Isolamento
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Na reescrita, o <strong>par de travessões</strong> é
                       semanticamente equivalente ao{" "}
                       <strong>par de parênteses</strong> ou ao{" "}
                       <strong>par de vírgulas</strong> para isolar apostos
                       explicativos.
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Atenção: A banca pode propor trocar um pelo outro. O
                       sentido se mantém, mas o <strong>ênfase</strong> muda:
                       travessões destacam a informação, parênteses a "escondem"
@@ -4077,7 +4077,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Reticências & Ponto
                     </span>
-                    <span className="text-sm text-purple-500/80 font-medium">
+                    <span className="text-xl text-purple-500/80 font-medium text-foreground/85 leading-relaxed">
                       A Quebra da Intenção
                     </span>
                   </div>
@@ -4086,18 +4086,18 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-purple-500 font-bold border-b border-purple-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Modalidade do Enunciado
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       As <strong>reticências</strong> indicam suspensão de
                       pensamento, hesitação ou ironia. Substituí-las por um{" "}
                       <strong>ponto final</strong> na reescrita altera a
                       modalidade do discurso de "subjetivo/hesitante" para
                       "objetivo/categórico".
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Para a CESGRANRIO, essa mudança invalida a manutenção do
                       sentido original, pois altera a atitude do autor perante o
                       enunciado.
@@ -4241,7 +4241,7 @@ export default function AulaReescritaFrases({
             {/* CAIXA DE DESTAQUE: Laboratório de pontos de atenção */}
             <div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 rounded-lg border border-red-200 dark:border-red-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">O Arsenal da Banca</h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xl text-foreground/85 leading-relaxed">
                 <div className="text-center">
                   <div className="text-2xl mb-2">📍</div>
                   <strong>Onde vs Aonde</strong>
@@ -4276,7 +4276,7 @@ export default function AulaReescritaFrases({
                   </p>
                 </div>
               </div>
-              <div className="mt-4 p-3 bg-red-100 dark:bg-red-900/30 rounded text-sm">
+              <div className="mt-4 p-3 bg-red-100 dark:bg-red-900/30 rounded text-xl text-foreground/85 leading-relaxed">
                 <strong>Regra de Sobrevivência:</strong> Se a troca parece fácil
                 demais, provavelmente é pontos de atenção. Desconfie de substituições
                 diretas sem análise.
@@ -4303,7 +4303,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       A Armadilha do Onde
                     </span>
-                    <span className="text-sm text-red-500/80 font-medium">
+                    <span className="text-xl text-red-500/80 font-medium text-foreground/85 leading-relaxed">
                       Lugar Físico vs Abstrato
                     </span>
                   </div>
@@ -4312,11 +4312,11 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-red-500 font-bold border-b border-red-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Foco no Referente
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       <strong>Onde</strong> só aceita antecedentes espaciais
                       físicos. Para reuniões, contratos ou processos, a
                       reescrita correta exige <strong>"em que"</strong> ou{" "}
@@ -4339,7 +4339,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Posto vs Contanto
                     </span>
-                    <span className="text-sm text-indigo-500/80 font-medium">
+                    <span className="text-xl text-indigo-500/80 font-medium text-foreground/85 leading-relaxed">
                       Concessão vs Condição
                     </span>
                   </div>
@@ -4348,11 +4348,11 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-indigo-500 font-bold border-b border-indigo-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Lógica Oposta
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       <strong>Posto que</strong> é concessivo (= embora).{" "}
                       <strong>Contanto que</strong> é condicional (= se). Trocar
                       um pelo outro altera drasticamente a relação lógica do
@@ -4374,7 +4374,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       O Enigma do Cujo
                     </span>
-                    <span className="text-sm text-amber-500/80 font-medium">
+                    <span className="text-xl text-amber-500/80 font-medium text-foreground/85 leading-relaxed">
                       Posse e Concordância
                     </span>
                   </div>
@@ -4383,11 +4383,11 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-amber-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Regras Rígidas
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Nunca use artigo após <strong>Cujo</strong>. Ele concorda
                       com o que vem depois (possuído), mas se refere ao que veio
                       antes (possuidor).
@@ -4409,7 +4409,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Conteúdo Integrado
                     </span>
-                    <span className="text-sm text-emerald-500/80 font-medium">
+                    <span className="text-xl text-emerald-500/80 font-medium text-foreground/85 leading-relaxed">
                       Passiva + Nominalização
                     </span>
                   </div>
@@ -4418,11 +4418,11 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Transformação Dupla
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       A banca ama reescrever verbos como nomes em estruturas
                       passivas. "Aprovou o plano" vira "A aprovação do plano".
                       Mantenha a clareza do agente!
@@ -4487,13 +4487,13 @@ export default function AulaReescritaFrases({
                       <div className="p-3 bg-red-500/10 rounded-full ring-1 ring-red-500/20">
                         <LuTriangleAlert className="w-8 h-8 text-red-500" />
                       </div>
-                      <span className="text-sm font-bold uppercase tracking-wider">{err.title}</span>
+                      <span className="text-xl font-bold uppercase tracking-wider text-foreground/85 leading-relaxed">{err.title}</span>
                     </div>
                   }
                   verso={
                     <div className="p-4 flex flex-col justify-center h-full space-y-2">
                       <div className="text-red-500 font-bold text-[10px] uppercase border-b border-red-500/10 pb-1">Armadilha #{i+1}</div>
-                      <p className="text-xs leading-relaxed text-muted-foreground">{err.desc}</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">{err.desc}</p>
                     </div>
                   }
                   categoria="Alerta de Erro"
@@ -4682,7 +4682,7 @@ export default function AulaReescritaFrases({
               <h4 className="font-bold text-foreground">
                 O Check-list da Maestria
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xl text-foreground/85 leading-relaxed">
                 <div className="text-center">
                   <div className="text-2xl mb-2">🎯</div>
                   <strong>Sentido Preservado?</strong>
@@ -4717,7 +4717,7 @@ export default function AulaReescritaFrases({
                   </p>
                 </div>
               </div>
-              <div className="mt-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded text-sm">
+              <div className="mt-4 p-3 bg-purple-100 dark:bg-purple-900/30 rounded text-xl text-foreground/85 leading-relaxed">
                 <strong>Regra Final:</strong> Se a reescrita parece "fácil
                 demais", provavelmente há pontos de atenção. Se parece "complexa
                 demais", verifique se é necessária.
@@ -4881,7 +4881,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Filtro Gramatical
                     </span>
-                    <span className="text-sm text-red-500/80 font-medium">
+                    <span className="text-xl text-red-500/80 font-medium text-foreground/85 leading-relaxed">
                       Estratégia de Eliminação
                     </span>
                   </div>
@@ -4890,17 +4890,17 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-red-500 font-bold border-b border-red-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Peneira Inicial
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Antes de gastar energia com o sentido, procure{" "}
                       <strong>erros de norma culta</strong>. A banca CESGRANRIO
                       adora colocar opções com sentido perfeito, mas com erro de
                       crase ou concordância para eliminar os desatentos.
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Regência errada invalida a opção na hora. Se você achou um
                       erro gramatical, pare a análise semântica e passe para a
                       próxima alternativa.
@@ -4918,7 +4918,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Eco Semântico
                     </span>
-                    <span className="text-sm text-blue-500/80 font-medium">
+                    <span className="text-xl text-blue-500/80 font-medium text-foreground/85 leading-relaxed">
                       O Teste da Voz Mental
                     </span>
                   </div>
@@ -4927,18 +4927,18 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Sintonia Fina
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Leia a paráfrase candidata mentalmente e sinta se ela
                       "soa" como o original. Se a versão nova parece{" "}
                       <strong>mais enfática</strong> ou{" "}
                       <strong>mais vaga</strong> que o texto base, provavelmente
                       houve distorção.
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       A reescrita perfeita não deve adicionar "sentimentos" ou
                       "opiniões" que não estavam no original. Cuidado com o uso
                       de adjetivos extras.
@@ -4956,7 +4956,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Rastreio de Peso
                     </span>
-                    <span className="text-sm text-amber-500/80 font-medium">
+                    <span className="text-xl text-amber-500/80 font-medium text-foreground/85 leading-relaxed">
                       Certeza vs Possibilidade
                     </span>
                   </div>
@@ -4965,17 +4965,17 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-amber-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Foco na Modalidade
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       O alvo favorito da banca é a <strong>Modalidade</strong>.
                       "Ele deve vir" (Obrigação) ≠ "Ele pode vir"
                       (Possibilidade) ≠ "Ele virá" (Certeza). Essas trocas
                       invalidam qualquer reescrita técnica.
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground italic border-l-2 border-amber-500/20 pl-3">
+                    <p className="text-xl leading-relaxed text-muted-foreground italic border-l-2 border-amber-500/20 pl-3 text-foreground/85">
                       Verifique sempre se o verbo auxiliar de modalidade foi
                       mantido com o mesmo peso semântico original.
                     </p>
@@ -4992,7 +4992,7 @@ export default function AulaReescritaFrases({
                     <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                       Espelhamento Lógico
                     </span>
-                    <span className="text-sm text-emerald-500/80 font-medium">
+                    <span className="text-xl text-emerald-500/80 font-medium text-foreground/85 leading-relaxed">
                       A Matemática da Frase
                     </span>
                   </div>
@@ -5001,16 +5001,16 @@ export default function AulaReescritaFrases({
                   <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
                       <LuCheck className="w-5 h-5 shrink-0" />
-                      <span className="tracking-widest uppercase text-xs">
+                      <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                         Equivalência Formal
                       </span>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Cuidado com a <strong>dupla negação</strong>. Em
                       reescritas, "Não é incomum" equivale a "É comum". A banca
                       usa essas voltas lógicas para cansar o candidato.
                     </p>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                       Desenhe mentalmente a seta da causa para a consequência:
                       se na frase original a causa era X, na reescrita a causa
                       DEVE continuar sendo X. Se inverteram, está errado.

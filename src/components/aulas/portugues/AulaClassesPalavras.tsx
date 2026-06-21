@@ -295,7 +295,7 @@ export default function AulaClassesPalavras({
                   <p className="font-semibold text-amber-700 dark:text-amber-300">
                     Gênero e Número
                   </p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• Biformes: mudam de forma (menino/menina).</li>
                     <li>• Uniformes: uma forma (sobrecomum, epiceno).</li>
                     <li>• Plural dos Compostos: regra do "varia ou não".</li>
@@ -305,7 +305,7 @@ export default function AulaClassesPalavras({
                   <p className="font-semibold text-amber-700 dark:text-amber-300">
                     Grau (Aumentativo/Diminutivo)
                   </p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• Sintético: sufixos (casarão, casinha).</li>
                     <li>• Analítico: adjetivos (casa grande, casa pequena).</li>
                     <li>• Valor Afetivo ou Pejorativo (fogaça, livreco).</li>
@@ -361,16 +361,16 @@ export default function AulaClassesPalavras({
                   <div className="space-y-4">
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="bg-amber-500/5 rounded-lg p-4 border border-amber-500/20">
-                        <h4 className="font-bold text-amber-600 dark:text-amber-400 mb-2 uppercase text-sm tracking-widest">Concreto</h4>
-                        <p className="text-sm">Existência física ou independente, perceptível pelos sentidos.</p>
-                        <div className="mt-2 text-xs bg-background/50 rounded p-2 border border-border/50 font-medium">
+                        <h4 className="font-bold text-amber-600 dark:text-amber-400 mb-2 uppercase text-xl tracking-widest text-foreground/85 leading-relaxed">Concreto</h4>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Existência física ou independente, perceptível pelos sentidos.</p>
+                        <div className="mt-2 text-lg text-foreground/85 leading-relaxed bg-background/50 rounded p-2 border border-border/50 font-medium">
                           EX: plataforma, petróleo, mar, funcionário, vento, anjo.
                         </div>
                       </div>
                       <div className="bg-orange-500/5 rounded-lg p-4 border border-orange-500/20">
-                        <h4 className="font-bold text-orange-600 dark:text-orange-400 mb-2 uppercase text-sm tracking-widest">Abstrato</h4>
-                        <p className="text-sm">Qualidades, estados, ações e sentimentos. Dependem de um ser para existir.</p>
-                        <div className="mt-2 text-xs bg-background/50 rounded p-2 border border-border/50 font-medium">
+                        <h4 className="font-bold text-orange-600 dark:text-orange-400 mb-2 uppercase text-xl tracking-widest text-foreground/85 leading-relaxed">Abstrato</h4>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Qualidades, estados, ações e sentimentos. Dependem de um ser para existir.</p>
+                        <div className="mt-2 text-lg text-foreground/85 leading-relaxed bg-background/50 rounded p-2 border border-border/50 font-medium">
                           EX: beleza, eficiência, segurança, produção, saudade.
                         </div>
                       </div>
@@ -384,10 +384,10 @@ export default function AulaClassesPalavras({
                 conteudo: (
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="p-4 border-l-2 border-amber-500 bg-muted/30">
-                      <p className="text-sm"><strong>Próprio:</strong> Individualiza (Petrobras, Rio). Sempre Maiúsculo.</p>
+                      <p className="text-xl text-foreground/85 leading-relaxed"><strong>Próprio:</strong> Individualiza (Petrobras, Rio). Sempre Maiúsculo.</p>
                     </div>
                     <div className="p-4 border-l-2 border-orange-500 bg-muted/30">
-                      <p className="text-sm"><strong>Comum:</strong> Generaliza (empresa, cidade). Minúsculo.</p>
+                      <p className="text-xl text-foreground/85 leading-relaxed"><strong>Comum:</strong> Generaliza (empresa, cidade). Minúsculo.</p>
                     </div>
                   </div>
                 ),
@@ -398,10 +398,10 @@ export default function AulaClassesPalavras({
                 conteudo: (
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="p-4 border-l-2 border-amber-500 bg-muted/30">
-                      <p className="text-sm"><strong>Simples:</strong> Um radical (mar, gás, poço).</p>
+                      <p className="text-xl text-foreground/85 leading-relaxed"><strong>Simples:</strong> Um radical (mar, gás, poço).</p>
                     </div>
                     <div className="p-4 border-l-2 border-orange-500 bg-muted/30">
-                      <p className="text-sm"><strong>Composto:</strong> Dois radicais (passatempo, guarda-chuva).</p>
+                      <p className="text-xl text-foreground/85 leading-relaxed"><strong>Composto:</strong> Dois radicais (passatempo, guarda-chuva).</p>
                     </div>
                   </div>
                 ),
@@ -412,10 +412,10 @@ export default function AulaClassesPalavras({
                 conteudo: (
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="p-4 border-l-2 border-amber-500 bg-muted/30">
-                      <p className="text-sm"><strong>Primitivo:</strong> Não vem de outra palavra (pedra, mar).</p>
+                      <p className="text-xl text-foreground/85 leading-relaxed"><strong>Primitivo:</strong> Não vem de outra palavra (pedra, mar).</p>
                     </div>
                     <div className="p-4 border-l-2 border-orange-500 bg-muted/30">
-                      <p className="text-sm"><strong>Derivado:</strong> Vem de outra (pedreira, marinheiro).</p>
+                      <p className="text-xl text-foreground/85 leading-relaxed"><strong>Derivado:</strong> Vem de outra (pedreira, marinheiro).</p>
                     </div>
                   </div>
                 ),
@@ -444,7 +444,7 @@ export default function AulaClassesPalavras({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Verbo → Subst.
                   </span>
-                  <span className="text-sm text-amber-500/80 font-medium">
+                  <span className="text-xl text-amber-500/80 font-medium text-foreground/85 leading-relaxed">
                     Verbo Substantivado
                   </span>
                 </div>
@@ -453,12 +453,12 @@ export default function AulaClassesPalavras({
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                   <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-amber-500/10 pb-3">
                     <LuCheck className="w-5 h-5 shrink-0" />
-                    <span className="tracking-widest uppercase text-xs">Exemplo</span>
+                    <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Exemplo</span>
                   </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                     "<strong>O cantar</strong> dos pássaros é sinal de chuva."
                   </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                     Aqui, o artigo "O" substantivou a ação.
                   </p>
                 </div>
@@ -475,7 +475,7 @@ export default function AulaClassesPalavras({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Advérbio → Subst.
                   </span>
-                  <span className="text-sm text-orange-500/80 font-medium">
+                  <span className="text-xl text-orange-500/80 font-medium text-foreground/85 leading-relaxed">
                     Advérbio Substantivado
                   </span>
                 </div>
@@ -484,12 +484,12 @@ export default function AulaClassesPalavras({
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                   <div className="flex items-center gap-2 text-orange-500 font-bold border-b border-orange-500/10 pb-3">
                     <LuCheck className="w-5 h-5 shrink-0" />
-                    <span className="tracking-widest uppercase text-xs">Exemplo</span>
+                    <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Exemplo</span>
                   </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                     "Recebemos <strong>um não</strong> rotundo da gerência."
                   </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                     O artigo indefinido "UM" operou a mudança.
                   </p>
                 </div>
@@ -506,7 +506,7 @@ export default function AulaClassesPalavras({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Adjetivo → Subst.
                   </span>
-                  <span className="text-sm text-amber-500/80 font-medium">
+                  <span className="text-xl text-amber-500/80 font-medium text-foreground/85 leading-relaxed">
                     Adjetivo Substantivado
                   </span>
                 </div>
@@ -515,12 +515,12 @@ export default function AulaClassesPalavras({
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                   <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-amber-500/10 pb-3">
                     <LuCheck className="w-5 h-5 shrink-0" />
-                    <span className="tracking-widest uppercase text-xs">Exemplo</span>
+                    <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Exemplo</span>
                   </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                     "<strong>O azul</strong> do mar na Bacia de Campos."
                   </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                     A cor tornou-se o objeto da frase.
                   </p>
                 </div>
@@ -549,16 +549,16 @@ export default function AulaClassesPalavras({
                 icone: "🔄",
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-sm font-semibold text-orange-600 mb-2">Regra de Ouro: Varia ou Não?</p>
+                    <p className="text-xl font-semibold text-orange-600 mb-2 text-foreground/85 leading-relaxed">Regra de Ouro: Varia ou Não?</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       <div className="p-3 rounded border border-border bg-background/50">
-                        <p className="text-xs"><strong>Variam:</strong> Subst, Adj, Numeral, Pronome.</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed"><strong>Variam:</strong> Subst, Adj, Numeral, Pronome.</p>
                       </div>
                       <div className="p-3 rounded border border-border bg-background/50">
-                        <p className="text-xs"><strong>NÃO Variam:</strong> Verbo, Advérbio, Interjeição.</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed"><strong>NÃO Variam:</strong> Verbo, Advérbio, Interjeição.</p>
                       </div>
                     </div>
-                    <div className="text-xs italic text-muted-foreground mt-2">
+                    <div className="text-lg text-foreground/85 leading-relaxed italic text-muted-foreground mt-2">
                       EX: Guarda-chuva (V+S) → Guarda-chuvas | Couve-flor (S+S) → Couves-flores.
                     </div>
                   </div>
@@ -570,15 +570,15 @@ export default function AulaClassesPalavras({
                 conteudo: (
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     <div className="p-2 border border-border rounded text-center">
-                      <p className="text-xs font-bold">Frota</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed font-bold">Frota</p>
                       <p className="text-[10px] text-muted-foreground">Navios/Veículos</p>
                     </div>
                     <div className="p-2 border border-border rounded text-center">
-                      <p className="text-xs font-bold">Resíduo</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed font-bold">Resíduo</p>
                       <p className="text-[10px] text-muted-foreground">Conjunto de detritos</p>
                     </div>
                     <div className="p-2 border border-border rounded text-center">
-                      <p className="text-xs font-bold">Acervo</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed font-bold">Acervo</p>
                       <p className="text-[10px] text-muted-foreground">Livros/Obras</p>
                     </div>
                   </div>
@@ -756,7 +756,7 @@ export default function AulaClassesPalavras({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-blue-700 dark:text-blue-300">Indústria e Natureza</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• De petróleo → Petroglífico / Petroleiro</li>
                     <li>• De chuva → Pluvial</li>
                     <li>• De rio → Fluvial</li>
@@ -765,7 +765,7 @@ export default function AulaClassesPalavras({
                 </div>
                 <div>
                   <p className="font-semibold text-blue-700 dark:text-blue-300">Tempo e Estado</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• Da tarde → Vespertino</li>
                     <li>• Da noite → Noturno</li>
                     <li>• Do gelo → Glacial</li>
@@ -796,9 +796,9 @@ export default function AulaClassesPalavras({
                 icone: "1️⃣",
                 conteudo: (
                   <div className="space-y-4">
-                    <p className="text-sm">Em adjetivos compostos, a regra geral é que <strong>apenas o último elemento varia</strong>.</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Em adjetivos compostos, a regra geral é que <strong>apenas o último elemento varia</strong>.</p>
                     <div className="bg-blue-500/5 rounded-lg p-4 border border-blue-500/20">
-                      <p className="text-xs font-mono">EX: Acordos econômico-financeiros | Camisas azul-escuras.</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed font-mono">EX: Acordos econômico-financeiros | Camisas azul-escuras.</p>
                       <p className="text-[10px] mt-2 text-muted-foreground italic">*Exceções: Surdo-mudo (ambos variam) e Azul-marinho/Azul-celeste (invariáveis).</p>
                     </div>
                   </div>
@@ -810,12 +810,12 @@ export default function AulaClassesPalavras({
                 conteudo: (
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="p-3 border rounded bg-muted/30">
-                      <p className="text-xs"><strong>De anjo:</strong> Angelical</p>
-                      <p className="text-xs"><strong>De guerra:</strong> Bélico</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed"><strong>De anjo:</strong> Angelical</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed"><strong>De guerra:</strong> Bélico</p>
                     </div>
                     <div className="p-3 border rounded bg-muted/30">
-                      <p className="text-xs"><strong>De chumbo:</strong> Plúmbeo</p>
-                      <p className="text-xs"><strong>De fígado:</strong> Hepático</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed"><strong>De chumbo:</strong> Plúmbeo</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed"><strong>De fígado:</strong> Hepático</p>
                     </div>
                   </div>
                 ),
@@ -994,7 +994,7 @@ export default function AulaClassesPalavras({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-emerald-700 dark:text-emerald-300">Concordância Rígida</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• É proibida A entrada. (Certo)</li>
                     <li>• É proibido entrada. (Certo)</li>
                     <li>• É proibido A entrada. (Errado)</li>
@@ -1002,7 +1002,7 @@ export default function AulaClassesPalavras({
                 </div>
                 <div>
                   <p className="font-semibold text-emerald-700 dark:text-emerald-300">Presença de Artigo (Países)</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• O Brasil, A França, OS EUA</li>
                     <li>• Portugal, Cuba, Israel (Sem artigo)</li>
                     <li>• A Bahia, O Rio (Cidades com artigo)</li>
@@ -1181,7 +1181,7 @@ export default function AulaClassesPalavras({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-rose-700 dark:text-rose-300">O Pronome Cujo (Posse)</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• Concorda com o possuído: "Cujas mãos".</li>
                     <li>• Proibido artigo: "Cujo o" (Nunca!).</li>
                     <li>• Liga dois substantivos em relação de posse.</li>
@@ -1189,7 +1189,7 @@ export default function AulaClassesPalavras({
                 </div>
                 <div>
                   <p className="font-semibold text-rose-700 dark:text-rose-300">O Pronome Onde (Lugar)</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• Somente lugar: "A casa onde moro".</li>
                     <li>• Para conceitos: "A situação EM QUE estou".</li>
                     <li>• Aonde: Movimento (Aonde você vai?).</li>
@@ -1400,7 +1400,7 @@ export default function AulaClassesPalavras({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-violet-700 dark:text-violet-300">Tempo & Modo</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• Correlação: Imperfeito Subj. + Fut. Pretérito.</li>
                     <li>• Futuro do Subjuntivo (VIR, TIVER, PUDER).</li>
                     <li>• Imperativo (Ordens e Procedimentos).</li>
@@ -1408,7 +1408,7 @@ export default function AulaClassesPalavras({
                 </div>
                 <div>
                   <p className="font-semibold text-violet-700 dark:text-violet-300">Vozes & Impessoalidade</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• HAVER (Existir) = Singular Sempre.</li>
                     <li>• Transposição de Vozes (VTD → Voz Passiva).</li>
                     <li>• Particípios Abundantes (Pago/Pagado).</li>
@@ -1613,7 +1613,7 @@ export default function AulaClassesPalavras({
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* REGULARES INDICATIVO */}
                     <div className="space-y-4">
-                      <p className="font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider text-sm">Modelos Regulares</p>
+                      <p className="font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider text-xl text-foreground/85 leading-relaxed">Modelos Regulares</p>
                       <div className="p-5 bg-white/5 border border-border rounded-xl space-y-6">
                         <div>
                           <p className="font-bold text-lg mb-2">-AR: Cantar (Pret. Perfeito)</p>
@@ -1632,7 +1632,7 @@ export default function AulaClassesPalavras({
 
                     {/* IRREGULARES INDICATIVO */}
                     <div className="md:col-span-2 space-y-4">
-                      <p className="font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider text-sm">Modelos Irregulares (Alto Impacto)</p>
+                      <p className="font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider text-xl text-foreground/85 leading-relaxed">Modelos Irregulares (Alto Impacto)</p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="p-5 bg-rose-500/5 border border-rose-500/20 rounded-xl space-y-6">
                           <div>
@@ -1642,7 +1642,7 @@ export default function AulaClassesPalavras({
                           <div className="pt-4 border-t border-rose-500/10">
                             <p className="font-black text-lg text-rose-700 dark:text-rose-300 mb-2">✦ TER (Pres. Indicativo)</p>
                             {renderConj("tenho", "tens", "tem", "temos", "tendes", "têm")}
-                            <p className="text-xs text-muted-foreground mt-2 italic">Atenção ao acento diferencial no plural!</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2 italic">Atenção ao acento diferencial no plural!</p>
                           </div>
                         </div>
                         <div className="p-5 bg-rose-500/5 border border-rose-500/20 rounded-xl space-y-6">
@@ -1653,7 +1653,7 @@ export default function AulaClassesPalavras({
                           <div className="pt-4 border-t border-rose-500/10">
                             <p className="font-black text-lg text-rose-700 dark:text-rose-300 mb-2">✦ VER (Pres. Indicativo)</p>
                             {renderConj("vejo", "vês", "vê", "vemos", "vedes", "veem")}
-                            <p className="text-xs text-muted-foreground mt-2 italic font-bold">🚫 Não tem acento em 'veem' (Novo Acordo).</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2 italic font-bold">🚫 Não tem acento em 'veem' (Novo Acordo).</p>
                           </div>
                         </div>
                       </div>
@@ -1680,7 +1680,7 @@ export default function AulaClassesPalavras({
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* REGULARES SUBJUNTIVO */}
                     <div className="space-y-4">
-                      <p className="font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider text-sm">Modelos Regulares</p>
+                      <p className="font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider text-xl text-foreground/85 leading-relaxed">Modelos Regulares</p>
                       <div className="p-5 bg-white/5 border border-border rounded-xl space-y-6">
                         <div>
                           <p className="font-bold text-lg mb-2">-AR: Estudar (Presente)</p>
@@ -1699,7 +1699,7 @@ export default function AulaClassesPalavras({
 
                     {/* IRREGULARES SUBJUNTIVO */}
                     <div className="md:col-span-2 space-y-4">
-                      <p className="font-bold text-amber-800 dark:text-amber-200 uppercase tracking-wider text-sm">Modelos Irregulares (Onde a Banca Ataca)</p>
+                      <p className="font-bold text-amber-800 dark:text-amber-200 uppercase tracking-wider text-xl text-foreground/85 leading-relaxed">Modelos Irregulares (Onde a Banca Ataca)</p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="p-5 bg-amber-500/5 border border-amber-500/20 rounded-xl space-y-6">
                           <div>
@@ -1709,7 +1709,7 @@ export default function AulaClassesPalavras({
                           <div className="pt-4 border-t border-amber-500/10">
                             <p className="font-black text-lg text-amber-700 dark:text-amber-300 mb-2">✦ TIVER (Verbo Ter)</p>
                             {renderConj("tiver", "tiveres", "tiver", "tivermos", "tiverdes", "tiverem", "quando")}
-                            <p className="text-xs text-muted-foreground mt-2 italic">Atenção: Não confunda com 'tenha'!</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2 italic">Atenção: Não confunda com 'tenha'!</p>
                           </div>
                         </div>
                         <div className="p-5 bg-amber-500/5 border border-amber-500/20 rounded-xl space-y-6">
@@ -1720,7 +1720,7 @@ export default function AulaClassesPalavras({
                           <div className="pt-4 border-t border-amber-500/10">
                             <p className="font-black text-lg text-amber-700 dark:text-amber-300 mb-2">✦ VIER (Verbo Vir)</p>
                             {renderConj("vier", "vieres", "vier", "viermos", "vierdes", "vierem", "quando")}
-                            <p className="text-xs text-muted-foreground mt-2 italic text-rose-500 font-bold">⚠️ VIER (Vir) vs VER (Ver).</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2 italic text-rose-500 font-bold">⚠️ VIER (Vir) vs VER (Ver).</p>
                           </div>
                         </div>
                       </div>
@@ -1757,13 +1757,13 @@ export default function AulaClassesPalavras({
                       <div className="grid grid-cols-2 gap-4">
                         <div className="p-4 bg-white/5 rounded-xl border border-white/10">
                           <p className="text-rose-400 font-bold mb-1">Afirmativo</p>
-                          <p className="text-sm font-mono italic">Canta tu!</p>
-                          <p className="text-sm font-mono italic">Cante você!</p>
+                          <p className="text-xl font-mono italic text-foreground/85 leading-relaxed">Canta tu!</p>
+                          <p className="text-xl font-mono italic text-foreground/85 leading-relaxed">Cante você!</p>
                         </div>
                         <div className="p-4 bg-white/5 rounded-xl border border-white/10">
                           <p className="text-rose-400 font-bold mb-1">Negativo</p>
-                          <p className="text-sm font-mono italic">Não cantes tu!</p>
-                          <p className="text-sm font-mono italic">Não cante você!</p>
+                          <p className="text-xl font-mono italic text-foreground/85 leading-relaxed">Não cantes tu!</p>
+                          <p className="text-xl font-mono italic text-foreground/85 leading-relaxed">Não cante você!</p>
                         </div>
                       </div>
                     </div>
@@ -1966,7 +1966,7 @@ export default function AulaClassesPalavras({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-amber-700 dark:text-amber-300">O Teste Infalível</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• Trabalham RÁPIDO (Trabalham muito). ✓</li>
                     <li>• São homens RÁPIDOS (muitos). = Adjetivo.</li>
                     <li>• Advérbio nunca pluraliza!</li>
@@ -1974,7 +1974,7 @@ export default function AulaClassesPalavras({
                 </div>
                 <div>
                   <p className="font-semibold text-amber-700 dark:text-amber-300">O Camaleão "MEIO"</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• Ela está MEIO cansada (Um pouco). ✓</li>
                     <li>• Comeu MEIA maçã (Metade - Numeral). ✓</li>
                     <li>• Meio + Adjetivo = INVARIÁVEL.</li>
@@ -2253,13 +2253,13 @@ export default function AulaClassesPalavras({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-blue-700 dark:text-blue-300">As 18 Essenciais</p>
-                  <p className="text-xs font-mono leading-relaxed p-2 bg-blue-500/5 rounded">
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono leading-relaxed p-2 bg-blue-500/5 rounded">
                     A, ANTE, APÓS, ATÉ, COM, CONTRA, DE, DESDE, EM, ENTRE, PARA, PERANTE, POR, SEM, SOB, SOBRE, TRÁS.
                   </p>
                 </div>
                 <div>
                   <p className="font-semibold text-blue-700 dark:text-blue-300">Regência Crítica</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• Aspirar A (Desejar)</li>
                     <li>• Obedecer A (Norma)</li>
                     <li>• Visar A (Objetivo)</li>
@@ -2537,7 +2537,7 @@ export default function AulaClassesPalavras({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-emerald-700 dark:text-emerald-300">Concessivas (O Desafio)</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• Embora = Conquanto</li>
                     <li>• Ainda que = Posto que</li>
                     <li>• Malgrado = Apesar de que</li>
@@ -2546,7 +2546,7 @@ export default function AulaClassesPalavras({
                 </div>
                 <div>
                   <p className="font-semibold text-emerald-700 dark:text-emerald-300">Causais (O Porquê)</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• Porque = Visto que</li>
                     <li>• Já que = Uma vez que</li>
                     <li>• Porquanto = Como (início)</li>
@@ -2837,7 +2837,7 @@ export default function AulaClassesPalavras({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-rose-700 dark:text-rose-300">Contexto e Sentido</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• Ah! (Alegria/Alívio)</li>
                     <li>• Ah! (Espanto/Susto)</li>
                     <li>• Ah! (Desprezo/Ironia)</li>
@@ -2845,7 +2845,7 @@ export default function AulaClassesPalavras({
                 </div>
                 <div>
                   <p className="font-semibold text-rose-700 dark:text-rose-300">Locuções Comuns</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• Cruz Credo!</li>
                     <li>• Vale-me Deus!</li>
                     <li>• Quem dera!</li>
@@ -3091,7 +3091,7 @@ export default function AulaClassesPalavras({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-violet-700 dark:text-violet-300">Concordância de Gigantes</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• Milhões / Bilhares (Masculinos).</li>
                     <li>• "As duas milhões" - ERRO. ✗</li>
                     <li>• "Os dois milhões" - CERTO. ✓</li>
@@ -3099,7 +3099,7 @@ export default function AulaClassesPalavras({
                 </div>
                 <div>
                   <p className="font-semibold text-violet-700 dark:text-violet-300">O Numeral "Ambos"</p>
-                  <ul className="space-y-1 mt-2 text-sm">
+                  <ul className="space-y-1 mt-2 text-xl text-foreground/85 leading-relaxed">
                     <li>• Significa: "os dois" e "as duas".</li>
                     <li>• Exige artigo: ambos OS poços.</li>
                     <li>• É um numeral de dualidade.</li>

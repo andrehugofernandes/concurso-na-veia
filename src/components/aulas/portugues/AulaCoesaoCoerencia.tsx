@@ -642,7 +642,7 @@ export default function AulaCoesaoCoerencia({
                       <p className="text-blue-100 font-medium z-10 text-lg">
                         Assistir: Diferença Crítica na CESGRANRIO
                       </p>
-                      <p className="text-blue-300/80 text-sm z-10 mt-1">
+                      <p className="text-blue-300/80 text-xl z-10 mt-1 text-foreground/85 leading-relaxed">
                         11:45 • Revisão Turbo
                       </p>
                     </div>
@@ -722,7 +722,7 @@ export default function AulaCoesaoCoerencia({
                         <p className="font-medium text-foreground">
                           Princípio Fundamental das Alternativas
                         </p>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                           Nas questões de coesão, nunca busque apenas a palavra
                           semelhante. Substitua no texto e{" "}
                           <strong>leia o período inteiro</strong> para
@@ -1036,7 +1036,7 @@ export default function AulaCoesaoCoerencia({
                           E<strong className="text-white">SS</strong>E = PA
                           <strong className="text-white">SS</strong>ADO
                         </h3>
-                        <p className="text-cyan-50/90 text-sm">
+                        <p className="text-cyan-50/90 text-xl text-foreground/85 leading-relaxed">
                           Na leitura de textos complexos, se encontrar algo como
                           'desse', 'nesses' ou 'isso', volte as linhas. O
                           elemento citado reside no passado da leitura.
@@ -1355,7 +1355,7 @@ export default function AulaCoesaoCoerencia({
                           E<strong className="text-white">ST</strong>E = O QUE E
                           <strong className="text-white">ST</strong>Á POR VIR
                         </h3>
-                        <p className="text-emerald-50/90 text-sm">
+                        <p className="text-emerald-50/90 text-xl text-foreground/85 leading-relaxed">
                           Use o ST para ligar ao FU
                           <strong className="text-emerald-400">T</strong>URO. A
                           Catáfora gera tensão no parágrafo, pois o leitor
@@ -1668,7 +1668,7 @@ export default function AulaCoesaoCoerencia({
                           E<strong className="text-white">L/Z</strong> =
                           Escondido, mas Óbvio
                         </h3>
-                        <p className="text-rose-50/90 text-sm">
+                        <p className="text-rose-50/90 text-xl text-foreground/85 leading-relaxed">
                           Elipse = Termo Inédito mas implícito (ex: sujeito
                           oculto). Zêugma = Termo Reciclado (já apareceu antes).
                           Ambas constroem uma trama textual elegante que escapa
@@ -1867,7 +1867,7 @@ export default function AulaCoesaoCoerencia({
                       </p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="p-4 bg-violet-500/10 border border-violet-500/20 rounded-xl">
-                          <p className="text-xs font-bold opacity-70 uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold opacity-70 uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-1">
                             Ação Dispersa
                           </p>
                           <p className="text-base md:text-lg italic text-foreground">
@@ -1879,7 +1879,7 @@ export default function AulaCoesaoCoerencia({
                           </p>
                         </div>
                         <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
-                          <p className="text-xs font-bold opacity-70 uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold opacity-70 uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-1">
                             Retomada Nominalizada
                           </p>
                           <p className="text-base md:text-lg italic text-foreground">
@@ -2012,7 +2012,7 @@ export default function AulaCoesaoCoerencia({
                         <h3 className="text-violet-100 font-bold mb-4">
                           HIPER = GIGANTE
                         </h3>
-                        <p className="text-violet-50/90 text-sm">
+                        <p className="text-violet-50/90 text-xl text-foreground/85 leading-relaxed">
                           Lembre do supermercado. Um Hipermercado é gigante. Um
                           Hiperônimo é uma palavra "gigante" (Móvel) que engloba
                           as pequenas (Cadeira, Mesa - Hipônimos).
@@ -2025,7 +2025,7 @@ export default function AulaCoesaoCoerencia({
                         <p className="font-medium text-foreground">
                           O Troque-Tudo
                         </p>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                           Termos como "problema", "fato", "situação" e "este"
                           formam o cinturão de segurança da coesão. São
                           palavras-sumário que compactam o que foi dito.
@@ -2239,7 +2239,7 @@ export default function AulaCoesaoCoerencia({
                           </strong>
                           , o conselho aprovou a perfuração."
                         </p>
-                        <p className="text-sm mt-2 font-bold text-amber-700/80 dark:text-amber-400/80">
+                        <p className="text-xl mt-2 font-bold text-amber-700/80 dark:text-amber-400/80 text-foreground/85 leading-relaxed">
                           (O conectivo 'logo' não é enfeite; ele estabelece um
                           corolário/conclusão).
                         </p>
@@ -2386,7 +2386,7 @@ export default function AulaCoesaoCoerencia({
                         <h3 className="text-red-100 font-bold mb-4">
                           PORQUANTO vs PORTANTO
                         </h3>
-                        <p className="text-red-50/90 text-sm">
+                        <p className="text-red-50/90 text-xl text-foreground/85 leading-relaxed">
                           Eles se parecem, mas são inimigos mortais na lógica.
                           <br />
                           <br />
@@ -2596,7 +2596,7 @@ export default function AulaCoesaoCoerencia({
                           mas
                         </strong>{" "}
                         a manutenção estava em dia."
-                        <span className="block text-sm mt-2 font-bold text-red-700/80 dark:text-red-400/80 not-italic">
+                        <span className="block text-xl mt-2 font-bold text-red-700/80 dark:text-red-400/80 not-italic text-foreground/85 leading-relaxed">
                           (O foco da comunicação: A PLATAFORMA PODE OPERAR. O
                           'mas' empodera a manutenção e anula a idade).
                         </span>
@@ -2623,7 +2623,7 @@ export default function AulaCoesaoCoerencia({
                         </strong>{" "}
                         o mar estivesse categoria 5, o resgate foi concluído com
                         sucesso."
-                        <span className="block text-sm mt-2 font-bold text-emerald-700/80 dark:text-emerald-400/80 not-italic">
+                        <span className="block text-xl mt-2 font-bold text-emerald-700/80 dark:text-emerald-400/80 not-italic text-foreground/85 leading-relaxed">
                           (O foco da comunicação: O RESGATE FOI UM SUCESSO. O
                           'embora' rebaixa a tempestade a um mero detalhe
                           superado).
@@ -2639,7 +2639,7 @@ export default function AulaCoesaoCoerencia({
               'Mas' por 'Embora' <strong>obriga</strong> a mudança de modo
               verbal. Concessivas exigem o <strong>Subjuntivo</strong> (campo do
               hipotético/concedido), nunca o Indicativo (campo do real):
-              <div className="mt-4 p-4 bg-background border border-red-500/20 rounded-lg font-mono text-sm space-y-2">
+              <div className="mt-4 p-4 bg-background border border-red-500/20 rounded-lg font-mono text-xl space-y-2 text-foreground/85 leading-relaxed">
                 <p className="text-red-600/90 dark:text-red-400/90">
                   ❌ <strong>Mas</strong> o mar ESTAVA revolto... (Indicativo
                   OBRIGA a ser Adversativa)
@@ -2743,7 +2743,7 @@ export default function AulaCoesaoCoerencia({
                         <h3 className="text-rose-100 font-bold mb-4">
                           Princípio Fundamental BIFURCADA
                         </h3>
-                        <p className="text-rose-50/90 text-sm">
+                        <p className="text-rose-50/90 text-xl text-foreground/85 leading-relaxed">
                           Acese a luz de alerta verbal quando essas conjunções
                           aparecerem:
                           <br />
@@ -2951,14 +2951,14 @@ export default function AulaCoesaoCoerencia({
                         discursiva.
                       </p>
                       <div className="p-4 bg-red-500/10 border-l-4 border-red-500 rounded-r-xl">
-                        <p className="text-xs font-bold uppercase tracking-widest text-red-600 dark:text-red-400 mb-1">
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold uppercase tracking-widest text-red-600 dark:text-red-400 mb-1">
                           A Incoerência Fatal (Falta Lógica)
                         </p>
                         <p className="italic text-base md:text-lg text-foreground">
                           "A empresa defende a segurança total em alto mar, mas
                           flexibiliza o uso de EPIs em áreas de risco grave."
                         </p>
-                        <p className="text-sm mt-2 text-muted-foreground">
+                        <p className="text-xl mt-2 text-muted-foreground text-foreground/85 leading-relaxed">
                           (Sintaticamente coeso, mas logicamente insano).
                         </p>
                       </div>
@@ -2979,7 +2979,7 @@ export default function AulaCoesaoCoerencia({
                       <div className="p-4 bg-emerald-500/10 border-l-4 border-emerald-500 rounded-r-xl italic text-base md:text-lg text-foreground">
                         "Enviamos três submarinos atômicos para perfurar o
                         núcleo do Sol."
-                        <span className="block text-sm mt-2 font-bold text-emerald-700/80 dark:text-emerald-400/80 not-italic">
+                        <span className="block text-xl mt-2 font-bold text-emerald-700/80 dark:text-emerald-400/80 not-italic text-foreground/85 leading-relaxed">
                           (Coesão gramatical: Nota 10. Coerência pragmática:
                           Absoluto zero. O texto não resiste à gravidade do
                           mundo real).
@@ -3078,7 +3078,7 @@ export default function AulaCoesaoCoerencia({
                         <h3 className="text-emerald-100 font-bold mb-4">
                           A METÁFORA DO EDIFÍCIO
                         </h3>
-                        <p className="text-emerald-50/90 text-sm">
+                        <p className="text-emerald-50/90 text-xl text-foreground/85 leading-relaxed">
                           A <strong>Coesão</strong> é o cimento, o ferro e o
                           tijolo (os elementos gramaticais visíveis). A{" "}
                           <strong>Coerência</strong> é a prumo, o nível e a
@@ -3308,7 +3308,7 @@ export default function AulaCoesaoCoerencia({
                         "O viés de confirmação ocorre porque os funcionários
                         confirmam repetidamente as próprias suspeitas
                         enviesadas."
-                        <span className="block text-sm mt-2 font-bold text-red-700/80 dark:text-red-400/80 not-italic">
+                        <span className="block text-xl mt-2 font-bold text-red-700/80 dark:text-red-400/80 not-italic text-foreground/85 leading-relaxed">
                           (Rodou, rodou e não saiu do lugar. Incoerência por
                           falta de progressão).
                         </span>
@@ -3412,7 +3412,7 @@ export default function AulaCoesaoCoerencia({
                         <h3 className="text-fuchsia-100 font-bold mb-4">
                           A ESCADA DO TEXTO
                         </h3>
-                        <p className="text-fuchsia-50/90 text-sm">
+                        <p className="text-fuchsia-50/90 text-xl text-foreground/85 leading-relaxed">
                           Na leitura, busque sempre o verbo principal da oração.
                           Aquilo que vem antes é quase sempre a retomada (Tema)
                           e aquilo que se afirma como novidade é o (Rema). Sem
@@ -3636,7 +3636,7 @@ export default function AulaCoesaoCoerencia({
                   Coerência.
                 </p>
               </div>
-              <p className="text-sm opacity-70">
+              <p className="text-xl opacity-70 text-foreground/85 leading-relaxed">
                 Certifique-se de ter concluído todos os quizzes para garantir
                 seu XP total.
               </p>

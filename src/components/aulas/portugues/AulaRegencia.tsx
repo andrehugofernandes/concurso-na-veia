@@ -553,7 +553,7 @@ export default function AulaRegencia({
               </p>
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 border border-blue-200 dark:border-blue-800 rounded-xl p-6 space-y-4">
                 <h4 className="font-bold text-blue-900 dark:text-blue-100 text-xl">As 4 Famílias Preposicionais dos Adjetivos</h4>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xl text-foreground/85 leading-relaxed">
                   <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3">
                     <div className="font-bold text-blue-700 dark:text-blue-300 mb-1">Preposição A</div>
                     <div className="text-foreground/70">acessível, apto, atento, avesso, favorável, idêntico, nocivo, relativo, superior, inferior</div>
@@ -798,7 +798,7 @@ export default function AulaRegencia({
               </p>
               <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 border border-emerald-200 dark:border-emerald-800 rounded-xl p-6 space-y-4">
                 <h4 className="font-bold text-emerald-900 dark:text-emerald-100 text-xl">Substantivos de Alta Frequência na CESGRANRIO</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xl text-foreground/85 leading-relaxed">
                   <div className="space-y-2">
                     <div className="font-semibold text-emerald-700 dark:text-emerald-300">Múltiplas preposições aceitas:</div>
                     <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-1 text-foreground/80">
@@ -1049,7 +1049,7 @@ export default function AulaRegencia({
               </p>
               <div className="bg-gradient-to-br from-rose-50 to-orange-50 dark:from-rose-950/30 dark:to-orange-950/30 border border-rose-200 dark:border-rose-800 rounded-xl p-6 space-y-4">
                 <h4 className="font-bold text-rose-900 dark:text-rose-100 text-xl">Mapa de Regência — Verbos de Avançado I</h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xl text-foreground/85 leading-relaxed">
                   <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
                     <div className="font-bold text-rose-700 dark:text-rose-300">ASSISTIR</div>
                     <div className="text-foreground/75"><em>Ver/presenciar:</em> VTI (A) → assisti ao show</div>
@@ -1301,7 +1301,7 @@ export default function AulaRegencia({
               </p>
               <div className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 border border-violet-200 dark:border-violet-800 rounded-xl p-6 space-y-4">
                 <h4 className="font-bold text-violet-900 dark:text-violet-100 text-xl">Regras Rápidas — Verbos de Avançado II</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xl text-foreground/85 leading-relaxed">
                   <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
                     <div className="font-bold text-violet-700 dark:text-violet-300">CUSTAR (ser difícil)</div>
                     <div className="text-red-600 dark:text-red-400">❌ "Custei para entender"</div>
@@ -1500,7 +1500,7 @@ export default function AulaRegencia({
               </p>
               <div className="bg-gradient-to-br from-cyan-50 to-sky-50 dark:from-cyan-950/30 dark:to-sky-950/30 border border-cyan-200 dark:border-cyan-800 rounded-xl p-6 space-y-4">
                 <h4 className="font-bold text-cyan-900 dark:text-cyan-100 text-xl">Critério Pessoa/Coisa — Mapa Rápido</h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xl text-foreground/85 leading-relaxed">
                   <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
                     <div className="font-bold text-cyan-700 dark:text-cyan-300">PAGAR</div>
                     <div className="text-foreground/75">Coisa (VTD): pagou <em>o boleto</em></div>
@@ -1719,12 +1719,12 @@ export default function AulaRegencia({
               </p>
               <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 border border-amber-200 dark:border-amber-800 rounded-xl p-6 space-y-4">
                 <h4 className="font-bold text-amber-900 dark:text-amber-100 text-xl">Resumo: Movimento e Pronominais</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xl text-foreground/85 leading-relaxed">
                   <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
                     <div className="font-bold text-amber-700 dark:text-amber-300">Verbos de Movimento (destino → A)</div>
                     <div className="text-red-600 dark:text-red-400">❌ Fui no mercado / cheguei em casa</div>
                     <div className="text-green-600 dark:text-green-400">✅ Fui ao mercado / cheguei a casa</div>
-                    <div className="text-foreground/75 text-xs mt-1">"EM" só para permanência: "Estou em casa"</div>
+                    <div className="text-foreground/75 text-lg text-foreground/85 leading-relaxed mt-1">"EM" só para permanência: "Estou em casa"</div>
                   </div>
                   <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
                     <div className="font-bold text-yellow-700 dark:text-yellow-300">Lembrar/Esquecer</div>
@@ -1945,7 +1945,7 @@ export default function AulaRegencia({
               </p>
               <div className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/30 dark:to-green-950/30 border border-emerald-200 dark:border-emerald-800 rounded-xl p-6 space-y-4">
                 <h4 className="font-bold text-emerald-900 dark:text-emerald-100 text-xl">Verbos Peculiares — Gabarito Rápido</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xl text-foreground/85 leading-relaxed">
                   <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
                     <div className="font-bold text-emerald-700 dark:text-emerald-300">IMPLICAR (causar)</div>
                     <div className="text-red-600 dark:text-red-400">❌ implica em riscos</div>
@@ -2215,7 +2215,7 @@ export default function AulaRegencia({
               </p>
               <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 border border-rose-200 dark:border-rose-800 rounded-xl p-6 space-y-4">
                 <h4 className="font-bold text-rose-900 dark:text-rose-100 text-xl">Regência + Relativos: Casos de Alta Frequência</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xl text-foreground/85 leading-relaxed">
                   <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-2">
                     <div className="font-bold text-rose-700 dark:text-rose-300">Com verbo exigindo A:</div>
                     <div className="text-foreground/75">"os dados <em>a que</em> me refiro"</div>
@@ -2462,7 +2462,7 @@ export default function AulaRegencia({
               </p>
               <div className="bg-gradient-to-br from-indigo-50 to-violet-50 dark:from-indigo-950/30 dark:to-violet-950/30 border border-indigo-200 dark:border-indigo-800 rounded-xl p-6 space-y-4">
                 <h4 className="font-bold text-indigo-900 dark:text-indigo-100 text-xl">Checklist Final de Regência</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xl text-foreground/85 leading-relaxed">
                   <div className="bg-white/70 dark:bg-white/10 rounded-lg p-3 space-y-1">
                     <div className="font-semibold text-indigo-700 dark:text-indigo-300 mb-2">Verbos VTI com A:</div>
                     <div className="text-foreground/75">✓ assistir (ver), aspirar (desejar), visar (objetivar)</div>

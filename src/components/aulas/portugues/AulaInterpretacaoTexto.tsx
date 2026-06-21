@@ -370,10 +370,10 @@ export default function AulaInterpretacaoTexto({
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
                       <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                        <span className="font-bold text-blue-600 dark:text-blue-400 block mb-2 uppercase tracking-wider text-sm">
+                        <span className="font-bold text-blue-600 dark:text-blue-400 block mb-2 uppercase tracking-wider text-xl text-foreground/85 leading-relaxed">
                           Anáfora (Resgate)
                         </span>
-                        <p className="text-sm leading-relaxed text-muted-foreground">
+                        <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                           O elemento anafórico olha para o{" "}
                           <strong>passado</strong> do texto. Ele retoma uma
                           palavra ou ideia já apresentada para evitar repetição
@@ -386,17 +386,17 @@ export default function AulaInterpretacaoTexto({
                             irreversíveis."
                           </em>
                           <br />
-                          <span className="text-xs opacity-70">
+                          <span className="text-lg text-foreground/85 leading-relaxed opacity-70">
                             (Neste caso, 'Ela' ancora-se sintaticamente em
                             'segurança').
                           </span>
                         </p>
                       </div>
                       <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <span className="font-bold text-emerald-600 dark:text-emerald-400 block mb-2 uppercase tracking-wider text-sm">
+                        <span className="font-bold text-emerald-600 dark:text-emerald-400 block mb-2 uppercase tracking-wider text-xl text-foreground/85 leading-relaxed">
                           Catáfora (Antecipação)
                         </span>
-                        <p className="text-sm leading-relaxed text-muted-foreground">
+                        <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                           O elemento catafórico atua como um holofote que
                           ilumina o <strong>futuro</strong> do texto. Ele
                           anuncia uma informação que o autor ainda vai entregar,
@@ -408,7 +408,7 @@ export default function AulaInterpretacaoTexto({
                             prospecção imediata no pré-sal."
                           </em>
                           <br />
-                          <span className="text-xs opacity-70">
+                          <span className="text-lg text-foreground/85 leading-relaxed opacity-70">
                             (O pronome 'este' atua cataforicamente apontando
                             para frente).
                           </span>
@@ -513,7 +513,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Falsa Conclusão Financeira
                   </span>
-                  <span className="text-sm text-red-500/80 font-medium">
+                  <span className="text-xl text-red-500/80 font-medium text-foreground/85 leading-relaxed">
                     Contradição Direta
                   </span>
                 </div>
@@ -522,17 +522,17 @@ export default function AulaInterpretacaoTexto({
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                   <div className="flex items-center gap-2 text-red-500 font-bold border-b border-red-500/10 pb-3">
                     <LuShieldAlert className="w-5 h-5 shrink-0" />
-                    <span className="tracking-widest uppercase text-xs">
+                    <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                       Alerta de Contradição
                     </span>
                   </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                     O texto afirma taxativamente que a paralisia <strong>"não decorreu de falta de verba"</strong>.
                   </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                     Bancas exploram o senso comum (crise = falta de dinheiro) para induzir ao erro.
                   </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                     ❌ "A escassez de recursos foi o principal <strong>gargalo</strong> da manutenção."
                   </p>
                 </div>
@@ -548,7 +548,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Gargalo Interno e Humano
                   </span>
-                  <span className="text-sm text-emerald-500/80 font-medium">
+                  <span className="text-xl text-emerald-500/80 font-medium text-foreground/85 leading-relaxed">
                     Inferência Lícita
                   </span>
                 </div>
@@ -557,17 +557,17 @@ export default function AulaInterpretacaoTexto({
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                   <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
                     <LuCheck className="w-5 h-5 shrink-0" />
-                    <span className="tracking-widest uppercase text-xs">
+                    <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">
                       Dedução Autorizada
                     </span>
                   </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                     Ao contrastar "crise de gestão" com "peças estocadas", o autor circunscreve o erro operacional.
                   </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                     Mesmo sem usar a palavra "humano", deduzir isso é uma inferência <strong>corretíssima</strong>.
                   </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                     ✅ "A falha reside nas <strong>engrenagens operacionais</strong> e de processos."
                   </p>
                 </div>
@@ -658,7 +658,7 @@ export default function AulaInterpretacaoTexto({
                     <p className="text-lg text-muted-foreground italic">
                       "O autor afirma que..."
                     </p>
-                    <p className="text-sm mt-2 font-medium text-emerald-700 dark:text-emerald-300">
+                    <p className="text-xl mt-2 font-medium text-emerald-700 dark:text-emerald-300 text-foreground/85 leading-relaxed">
                       BUSCA: Copia e cola / Paráfrase. ✅
                     </p>
                   </div>
@@ -669,7 +669,7 @@ export default function AulaInterpretacaoTexto({
                     <p className="text-lg text-muted-foreground italic">
                       "Infere-se que..."
                     </p>
-                    <p className="text-sm mt-2 font-medium text-blue-700 dark:text-blue-300">
+                    <p className="text-xl mt-2 font-medium text-blue-700 dark:text-blue-300 text-foreground/85 leading-relaxed">
                       BUSCA: Conclusão lógica autorizada. ✅
                     </p>
                   </div>
@@ -823,7 +823,7 @@ export default function AulaInterpretacaoTexto({
                       <strong>Exemplo prático:</strong> "A transição para o
                       hidrogênio verde exige maciça infraestrutura prévia."{" "}
                       <br />
-                      <span className="text-xs text-muted-foreground uppercase tracking-widest mt-1 block">
+                      <span className="text-lg text-foreground/85 leading-relaxed text-muted-foreground uppercase tracking-widest mt-1 block">
                         (Fim da leitura essencial. Daqui pra frente são adereços
                         de sustentação).
                       </span>
@@ -925,7 +925,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Tópico Frasal: Sempre na cabeça?
                   </span>
-                  <span className="text-sm text-emerald-500/80 font-medium">
+                  <span className="text-xl text-emerald-500/80 font-medium text-foreground/85 leading-relaxed">
                     A primeira regra da localização
                   </span>
                 </div>
@@ -934,7 +934,7 @@ export default function AulaInterpretacaoTexto({
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                   <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
                     <LuCheck className="w-5 h-5 shrink-0" />
-                    <span className="tracking-widest uppercase text-sm">
+                    <span className="tracking-widest uppercase text-xl text-foreground/85 leading-relaxed">
                       Predominantemente SIM
                     </span>
                   </div>
@@ -964,7 +964,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Tem tópico implícito?
                   </span>
-                  <span className="text-sm text-amber-500/80 font-medium">
+                  <span className="text-xl text-amber-500/80 font-medium text-foreground/85 leading-relaxed">
                     Parágrafos sem centro claro
                   </span>
                 </div>
@@ -973,7 +973,7 @@ export default function AulaInterpretacaoTexto({
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                   <div className="flex items-center gap-2 text-amber-500 font-bold border-b border-amber-500/10 pb-3">
                     <LuShieldAlert className="w-5 h-5 shrink-0" />
-                    <span className="tracking-widest uppercase text-sm">
+                    <span className="tracking-widest uppercase text-xl text-foreground/85 leading-relaxed">
                       SIM (Diluído Oculto)
                     </span>
                   </div>
@@ -1205,7 +1205,7 @@ export default function AulaInterpretacaoTexto({
               <h4 className="font-bold text-foreground flex items-center gap-2">
                 A Tríade de Conectivos Perigosos CESGRANRIO
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm mt-3">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xl mt-3 text-foreground/85 leading-relaxed">
                 <div className="bg-white dark:bg-black/20 p-3 rounded-lg shadow-sm border border-border">
                   <strong className="block text-indigo-600 dark:text-indigo-400">
                     Embora / Conquanto
@@ -1265,14 +1265,14 @@ export default function AulaInterpretacaoTexto({
                     </p>
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
-                        <p className="font-bold text-amber-600 dark:text-amber-400 mb-2 uppercase tracking-tight text-sm">
+                        <p className="font-bold text-amber-600 dark:text-amber-400 mb-2 uppercase tracking-tight text-xl text-foreground/85 leading-relaxed">
                           Adversativa (Foco no Obstáculo):
                         </p>
                         <p className="italic text-sm md:text-base text-foreground/90">
                           "O pré-sal é altamente promissor, <strong>mas</strong>{" "}
                           a pressão extrema exige metalurgia caríssima."
                         </p>
-                        <ul className="mt-2 text-xs md:text-sm list-disc pl-4 space-y-1">
+                        <ul className="mt-2 text-lg text-foreground/85 leading-relaxed md:text-xl list-disc pl-4 space-y-1 text-foreground/85 leading-relaxed">
                           <li>
                             O autor vence o argumento focando na dificuldade
                             técnica.
@@ -1281,7 +1281,7 @@ export default function AulaInterpretacaoTexto({
                         </ul>
                       </div>
                       <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
-                        <p className="font-bold text-blue-600 dark:text-blue-400 mb-2 uppercase tracking-tight text-sm">
+                        <p className="font-bold text-blue-600 dark:text-blue-400 mb-2 uppercase tracking-tight text-xl text-foreground/85 leading-relaxed">
                           Concessiva (Foco no Destino Superado):
                         </p>
                         <p className="italic text-sm md:text-base text-foreground/90">
@@ -1289,7 +1289,7 @@ export default function AulaInterpretacaoTexto({
                           metalurgia caríssima, o pré-sal é altamente
                           promissor."
                         </p>
-                        <ul className="mt-2 text-xs md:text-sm list-disc pl-4 space-y-1">
+                        <ul className="mt-2 text-lg text-foreground/85 leading-relaxed md:text-xl list-disc pl-4 space-y-1 text-foreground/85 leading-relaxed">
                           <li>
                             A dificuldade existe, mas não impede o sucesso.
                             Destacou a glória.
@@ -1314,7 +1314,7 @@ export default function AulaInterpretacaoTexto({
                     </p>
                     <div className="space-y-3">
                       <div className="p-4 bg-slate-500/10 rounded-xl border border-slate-500/20">
-                        <p className="font-bold mb-1 text-slate-700 dark:text-slate-300 uppercase tracking-widest text-xs">
+                        <p className="font-bold mb-1 text-slate-700 dark:text-slate-300 uppercase tracking-widest text-lg text-foreground/85 leading-relaxed">
                           Vestindo a Capa da CAUSA:
                         </p>
                         <p className="text-sm md:text-base opacity-90">
@@ -1327,7 +1327,7 @@ export default function AulaInterpretacaoTexto({
                         </p>
                       </div>
                       <div className="p-4 bg-slate-500/10 rounded-xl border border-slate-500/20">
-                        <p className="font-bold mb-1 text-slate-700 dark:text-slate-300 uppercase tracking-widest text-xs">
+                        <p className="font-bold mb-1 text-slate-700 dark:text-slate-300 uppercase tracking-widest text-lg text-foreground/85 leading-relaxed">
                           Vestindo a Capa da CONSEQUÊNCIA:
                         </p>
                         <p className="text-sm md:text-base opacity-90">
@@ -1366,14 +1366,14 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-widest text-foreground">
                     Porquanto
                   </span>
-                  <span className="text-sm text-emerald-500/80 font-medium">
+                  <span className="text-xl text-emerald-500/80 font-medium text-foreground/85 leading-relaxed">
                     Equação do Passado
                   </span>
                 </div>
               }
               verso={
                 <div className="space-y-3 p-2 flex flex-col justify-center h-full text-left">
-                  <p className="font-bold text-emerald-500 flex items-center gap-2 border-b border-emerald-500/10 pb-2 uppercase tracking-wide text-sm">
+                  <p className="font-bold text-emerald-500 flex items-center gap-2 border-b border-emerald-500/10 pb-2 uppercase tracking-wide text-xl text-foreground/85 leading-relaxed">
                     <LuCheck className="w-4 h-4" /> CAUSAL EXPLICATIVA
                   </p>
                   <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
@@ -1381,7 +1381,7 @@ export default function AulaInterpretacaoTexto({
                     o motivo gerador lógico de um acontecimento. Evite travar a
                     leitura; traduza mentalmente para "uma vez que".
                   </p>
-                  <p className="text-sm bg-muted/40 p-3 rounded-lg border-l-2 border-emerald-500 italic mt-2 text-foreground/80">
+                  <p className="text-xl bg-muted/40 p-3 rounded-lg border-l-2 border-emerald-500 italic mt-2 text-foreground/80 leading-relaxed">
                     "A torre foi evacuada <strong>porquanto</strong> os sensores
                     indicaram alta concentração de H2S."
                   </p>
@@ -1398,14 +1398,14 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-widest text-foreground">
                     Conquanto
                   </span>
-                  <span className="text-sm text-indigo-500/80 font-medium">
+                  <span className="text-xl text-indigo-500/80 font-medium text-foreground/85 leading-relaxed">
                     A pontos de atenção Suprema
                   </span>
                 </div>
               }
               verso={
                 <div className="space-y-3 p-2 flex flex-col justify-center h-full text-left">
-                  <p className="font-bold text-indigo-500 flex items-center gap-2 border-b border-indigo-500/10 pb-2 uppercase tracking-wide text-sm">
+                  <p className="font-bold text-indigo-500 flex items-center gap-2 border-b border-indigo-500/10 pb-2 uppercase tracking-wide text-xl text-foreground/85 leading-relaxed">
                     <LuCheck className="w-4 h-4" /> CONCESSIVA
                   </p>
                   <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
@@ -1414,7 +1414,7 @@ export default function AulaInterpretacaoTexto({
                     (conclusiva). O conquanto sempre abre alas para uma objeção
                     secundária superada.
                   </p>
-                  <p className="text-sm bg-muted/40 p-3 rounded-lg border-l-2 border-indigo-500 italic mt-2 text-foreground/80">
+                  <p className="text-xl bg-muted/40 p-3 rounded-lg border-l-2 border-indigo-500 italic mt-2 text-foreground/80 leading-relaxed">
                     "<strong>Conquanto</strong> o barril de brent caísse de
                     preço, o lucro local superou estimativas."
                   </p>
@@ -1431,14 +1431,14 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-widest text-foreground">
                     Aliás
                   </span>
-                  <span className="text-sm text-amber-500/80 font-medium">
+                  <span className="text-xl text-amber-500/80 font-medium text-foreground/85 leading-relaxed">
                     Reajuste de Rotas
                   </span>
                 </div>
               }
               verso={
                 <div className="space-y-3 p-2 flex flex-col justify-center h-full text-left">
-                  <p className="font-bold text-amber-500 flex items-center gap-2 border-b border-amber-500/10 pb-2 uppercase tracking-wide text-sm">
+                  <p className="font-bold text-amber-500 flex items-center gap-2 border-b border-amber-500/10 pb-2 uppercase tracking-wide text-xl text-foreground/85 leading-relaxed">
                     <LuCheck className="w-4 h-4" /> RETIFICAÇÃO / ACRÉSCIMO
                   </p>
                   <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
@@ -1447,7 +1447,7 @@ export default function AulaInterpretacaoTexto({
                     levemente o que foi dito, amplificando seu efeito
                     pragmático.
                   </p>
-                  <p className="text-sm bg-muted/40 p-3 rounded-lg border-l-2 border-amber-500 italic mt-2 text-foreground/80">
+                  <p className="text-xl bg-muted/40 p-3 rounded-lg border-l-2 border-amber-500 italic mt-2 text-foreground/80 leading-relaxed">
                     "Nossos navios são os mais seguros do mar transatlântico;{" "}
                     <strong>aliás</strong>, detemos certificação máxima global."
                   </p>
@@ -1667,7 +1667,7 @@ export default function AulaInterpretacaoTexto({
               <h4 className="font-bold text-foreground flex items-center gap-2">
                 ⚠️ Tática de Tipologia: O Pêndulo de Análise
               </h4>
-              <p className="text-sm italic">
+              <p className="text-xl italic text-foreground/85 leading-relaxed">
                 Ao ler as primeiras 5 linhas, pergunte-se:
               </p>
               <ul className="list-disc list-inside space-y-2 mt-2">
@@ -1808,7 +1808,7 @@ export default function AulaInterpretacaoTexto({
                       </p>
                     </div>
                     <AlertBox tipo="warning" titulo="O Raio-X do Verbo">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         A "alma" da Injunção é o verbo. Ele pode estar no{" "}
                         <strong>Imperativo</strong> ("Abra", "Feche") ou
                         ancorado no{" "}
@@ -1842,14 +1842,14 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
                     O Editorial
                   </span>
-                  <span className="text-sm font-medium text-indigo-500/80">
+                  <span className="text-xl font-medium text-indigo-500/80 text-foreground/85 leading-relaxed">
                     Jornais e Revistas
                   </span>
                 </div>
               }
               verso={
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
-                  <p className="font-bold text-indigo-500 flex items-center gap-2 border-b border-indigo-500/10 pb-3 uppercase tracking-wide text-sm">
+                  <p className="font-bold text-indigo-500 flex items-center gap-2 border-b border-indigo-500/10 pb-3 uppercase tracking-wide text-xl text-foreground/85 leading-relaxed">
                     <LuCheck className="w-5 h-5" /> DISSERTATIVO-ARGUMENTATIVO
                   </p>
                   <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
@@ -1859,10 +1859,10 @@ export default function AulaInterpretacaoTexto({
                     política pública.
                   </p>
                   <div className="bg-muted/40 p-4 rounded-xl border-l-2 border-indigo-500">
-                    <p className="text-sm font-semibold text-foreground mb-1">
+                    <p className="text-xl font-semibold text-foreground mb-1 leading-relaxed">
                       A Regra da Prova:
                     </p>
-                    <p className="text-sm italic opacity-90">
+                    <p className="text-xl italic opacity-90 text-foreground/85 leading-relaxed">
                       Ao ver a fonte "Editora X / Jornal Y (Editorial)",
                       imediatamente cace a TESE nas primeiras linhas do texto.
                     </p>
@@ -1880,14 +1880,14 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
                     Manual Técnico
                   </span>
-                  <span className="text-sm font-medium text-orange-500/80">
+                  <span className="text-xl font-medium text-orange-500/80 text-foreground/85 leading-relaxed">
                     Normas e Procedimentos
                   </span>
                 </div>
               }
               verso={
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
-                  <p className="font-bold text-orange-500 flex items-center gap-2 border-b border-orange-500/10 pb-3 uppercase tracking-wide text-sm">
+                  <p className="font-bold text-orange-500 flex items-center gap-2 border-b border-orange-500/10 pb-3 uppercase tracking-wide text-xl text-foreground/85 leading-relaxed">
                     <LuCheck className="w-5 h-5" /> TEXTO INJUNTIVO
                   </p>
                   <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
@@ -1896,10 +1896,10 @@ export default function AulaInterpretacaoTexto({
                     pular os passos de segurança previstos.
                   </p>
                   <div className="bg-muted/40 p-4 rounded-xl border-l-2 border-orange-500">
-                    <p className="text-sm font-semibold text-foreground mb-1">
+                    <p className="text-xl font-semibold text-foreground mb-1 leading-relaxed">
                       A Regra da Prova:
                     </p>
-                    <p className="text-sm italic opacity-90">
+                    <p className="text-xl italic opacity-90 text-foreground/85 leading-relaxed">
                       Leia sublinhando verbos imperativos. Identificar quem
                       realiza e a quem a ordem se destina é alvo carimbado de
                       questões.
@@ -2142,14 +2142,14 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
                     Subvocalização
                   </span>
-                  <span className="text-sm font-medium text-red-500/80">
+                  <span className="text-xl font-medium text-red-500/80 text-foreground/85 leading-relaxed">
                     O Freio da Mente
                   </span>
                 </div>
               }
               verso={
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
-                  <p className="font-bold text-red-500 flex items-center gap-2 border-b border-red-500/10 pb-3 uppercase tracking-wide text-sm">
+                  <p className="font-bold text-red-500 flex items-center gap-2 border-b border-red-500/10 pb-3 uppercase tracking-wide text-xl text-foreground/85 leading-relaxed">
                     <LuShieldAlert className="w-5 h-5" /> VÍCIO DE LENTIDÃO
                   </p>
                   <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
@@ -2159,10 +2159,10 @@ export default function AulaInterpretacaoTexto({
                     perda de contexto.
                   </p>
                   <div className="bg-muted/40 p-4 rounded-xl border-l-2 border-red-500">
-                    <p className="text-sm font-semibold text-foreground mb-1">
+                    <p className="text-xl font-semibold text-foreground mb-1 leading-relaxed">
                       A Cura:
                     </p>
-                    <p className="text-sm italic opacity-90">
+                    <p className="text-xl italic opacity-90 text-foreground/85 leading-relaxed">
                       Evite mover os lábios (mesmo sem som). Force os olhos a
                       saltarem por blocos de 3 a 5 palavras. Com o tempo, o
                       nervo óptico envia a imagem que logo se converte em
@@ -2182,14 +2182,14 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
                     Regressão Ocular
                   </span>
-                  <span className="text-sm font-medium text-orange-500/80">
+                  <span className="text-xl font-medium text-orange-500/80 text-foreground/85 leading-relaxed">
                     A Ansiedade do Entendimento
                   </span>
                 </div>
               }
               verso={
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
-                  <p className="font-bold text-orange-500 flex items-center gap-2 border-b border-orange-500/10 pb-3 uppercase tracking-wide text-sm">
+                  <p className="font-bold text-orange-500 flex items-center gap-2 border-b border-orange-500/10 pb-3 uppercase tracking-wide text-xl text-foreground/85 leading-relaxed">
                     <LuShieldAlert className="w-5 h-5" /> DESTRUTOR DE FLUXO
                   </p>
                   <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
@@ -2199,10 +2199,10 @@ export default function AulaInterpretacaoTexto({
                     peças chegam.
                   </p>
                   <div className="bg-muted/40 p-4 rounded-xl border-l-2 border-orange-500">
-                    <p className="text-sm font-semibold text-foreground mb-1">
+                    <p className="text-xl font-semibold text-foreground mb-1 leading-relaxed">
                       A Cura:
                     </p>
-                    <p className="text-sm italic opacity-90">
+                    <p className="text-xl italic opacity-90 text-foreground/85 leading-relaxed">
                       Leia com o guia visual e "empurre" os olhos
                       implacavelmente à frente. Aceite a ambiguidade temporária.
                       Geralmente, o sentido morava no final daquele mesmo
@@ -2566,14 +2566,14 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
                     Pressuposto
                   </span>
-                  <span className="text-sm font-medium text-cyan-500/80">
+                  <span className="text-xl font-medium text-cyan-500/80 text-foreground/85 leading-relaxed">
                     A Matemática do Texto
                   </span>
                 </div>
               }
               verso={
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
-                  <p className="font-bold text-cyan-500 flex items-center gap-2 border-b border-cyan-500/10 pb-3 uppercase tracking-wide text-sm">
+                  <p className="font-bold text-cyan-500 flex items-center gap-2 border-b border-cyan-500/10 pb-3 uppercase tracking-wide text-xl text-foreground/85 leading-relaxed">
                     <LuCheck className="w-5 h-5" /> DEDUÇÃO OBRIGATÓRIA
                   </p>
                   <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
@@ -2582,7 +2582,7 @@ export default function AulaInterpretacaoTexto({
                     (verbos e advérbios). Negá-la destrói o sentido original.
                   </p>
                   <div className="bg-muted/40 p-4 rounded-xl border-l-2 border-cyan-500">
-                    <p className="text-sm italic opacity-90">
+                    <p className="text-xl italic opacity-90 text-foreground/85 leading-relaxed">
                       "O vazamento na P-53 <strong>voltou</strong> a preocupar."{" "}
                       <br />→ Pressuposto cravado: Antes já havia preocupado.
                     </p>
@@ -2600,14 +2600,14 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
                     Subentendido
                   </span>
-                  <span className="text-sm font-medium text-teal-500/80">
+                  <span className="text-xl font-medium text-teal-500/80 text-foreground/85 leading-relaxed">
                     O Perigo da Insinuação
                   </span>
                 </div>
               }
               verso={
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full text-left">
-                  <p className="font-bold text-teal-500 flex items-center gap-2 border-b border-teal-500/10 pb-3 uppercase tracking-wide text-sm">
+                  <p className="font-bold text-teal-500 flex items-center gap-2 border-b border-teal-500/10 pb-3 uppercase tracking-wide text-xl text-foreground/85 leading-relaxed">
                     <LuShieldAlert className="w-5 h-5" /> DEDUÇÃO PROVÁVEL
                   </p>
                   <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
@@ -2616,7 +2616,7 @@ export default function AulaInterpretacaoTexto({
                     utilizam para induzir a quebra de foco.
                   </p>
                   <div className="bg-muted/40 p-4 rounded-xl border-l-2 border-teal-500">
-                    <p className="text-sm italic opacity-90">
+                    <p className="text-xl italic opacity-90 text-foreground/85 leading-relaxed">
                       A CESGRANRIO usa subentendidos gritantes nas alternativas
                       A e B. Eles parecem fazer sentido na via lógica, mas sem a
                       prova material, ignore-os. Recuse a "criatividade".
@@ -2633,7 +2633,7 @@ export default function AulaInterpretacaoTexto({
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="p-5 bg-cyan-50 dark:bg-cyan-950/30 rounded-xl border border-cyan-200 dark:border-cyan-800 shadow-sm transition hover:shadow-md">
-                <span className="font-extrabold text-cyan-700 dark:text-cyan-400 block mb-2 uppercase tracking-wide text-xs">
+                <span className="font-extrabold text-cyan-700 dark:text-cyan-400 block mb-2 uppercase tracking-wide text-lg text-foreground/85 leading-relaxed">
                   Verbos Mutadores
                 </span>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
@@ -2642,7 +2642,7 @@ export default function AulaInterpretacaoTexto({
                 </p>
               </div>
               <div className="p-5 bg-sky-50 dark:bg-sky-950/30 rounded-xl border border-sky-200 dark:border-sky-800 shadow-sm transition hover:shadow-md">
-                <span className="font-extrabold text-sky-700 dark:text-sky-400 block mb-2 uppercase tracking-wide text-xs">
+                <span className="font-extrabold text-sky-700 dark:text-sky-400 block mb-2 uppercase tracking-wide text-lg text-foreground/85 leading-relaxed">
                   Advérbios Condutores
                 </span>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
@@ -2651,7 +2651,7 @@ export default function AulaInterpretacaoTexto({
                 </p>
               </div>
               <div className="p-5 bg-teal-50 dark:bg-teal-950/30 rounded-xl border border-teal-200 dark:border-teal-800 shadow-sm transition hover:shadow-md">
-                <span className="font-extrabold text-teal-700 dark:text-teal-400 block mb-2 uppercase tracking-wide text-xs">
+                <span className="font-extrabold text-teal-700 dark:text-teal-400 block mb-2 uppercase tracking-wide text-lg text-foreground/85 leading-relaxed">
                   Ajetivos Avaliativos
                 </span>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
@@ -2754,7 +2754,7 @@ export default function AulaInterpretacaoTexto({
                     <p className="text-lg text-muted-foreground italic">
                       "A Petrobras **voltou** a crescer."
                     </p>
-                    <p className="text-sm mt-2 font-medium text-cyan-700 dark:text-cyan-300">
+                    <p className="text-xl mt-2 font-medium text-cyan-700 dark:text-cyan-300 text-foreground/85 leading-relaxed">
                       INDICADOR: O verbo 'voltar' garante que ela não crescia.
                       ✅
                     </p>
@@ -2766,7 +2766,7 @@ export default function AulaInterpretacaoTexto({
                     <p className="text-lg text-muted-foreground italic">
                       "Está calor aqui dentro, não acha?"
                     </p>
-                    <p className="text-sm mt-2 font-medium text-teal-700 dark:text-teal-300">
+                    <p className="text-xl mt-2 font-medium text-teal-700 dark:text-teal-300 text-foreground/85 leading-relaxed">
                       INDICADOR: Sugestão de abrir a janela. Pode ser negado. ✅
                     </p>
                   </div>
@@ -2900,23 +2900,23 @@ export default function AulaInterpretacaoTexto({
                         <span className="text-xl font-black uppercase tracking-widest text-foreground mt-2">
                           1. Redução
                         </span>
-                        <span className="text-sm font-medium text-orange-500/80">
+                        <span className="text-xl font-medium text-orange-500/80 text-foreground/85 leading-relaxed">
                           O &quot;Meio-Certo&quot;
                         </span>
                       </div>
                     }
                     verso={
                       <div className="space-y-4 flex flex-col justify-center h-full text-left">
-                        <p className="font-bold text-orange-500 flex items-center gap-2 border-b border-orange-500/10 pb-3 uppercase tracking-wide text-xs">
+                        <p className="font-bold text-orange-500 flex items-center gap-2 border-b border-orange-500/10 pb-3 uppercase tracking-wide text-lg text-foreground/85 leading-relaxed">
                           <LuCheck className="w-4 h-4" /> VERDADE INCOMPLETA
                         </p>
-                        <p className="text-sm leading-relaxed text-muted-foreground">
+                        <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                           A afirmação está no texto, porém foca apenas em uma{" "}
                           <strong>fração minoritária</strong> do argumento principal,
                           ignorando a conclusão macroecônomica ou central.
                         </p>
                         <div className="bg-muted/40 p-3 rounded-xl border-l-2 border-orange-500">
-                          <p className="text-sm italic opacity-90">
+                          <p className="text-xl italic opacity-90 text-foreground/85 leading-relaxed">
                             Ao restringir a ideia do autor, a banca cria uma resposta
                             que não abrange a magnitude do enunciado.
                           </p>
@@ -2937,23 +2937,23 @@ export default function AulaInterpretacaoTexto({
                         <span className="text-xl font-black uppercase tracking-widest text-foreground mt-2">
                           2. Extrapolação
                         </span>
-                        <span className="text-sm font-medium text-red-500/80">
+                        <span className="text-xl font-medium text-red-500/80 text-foreground/85 leading-relaxed">
                           A Ilusão Lógica
                         </span>
                       </div>
                     }
                     verso={
                       <div className="space-y-4 flex flex-col justify-center h-full text-left">
-                        <p className="font-bold text-red-500 flex items-center gap-2 border-b border-red-500/10 pb-3 uppercase tracking-wide text-xs">
+                        <p className="font-bold text-red-500 flex items-center gap-2 border-b border-red-500/10 pb-3 uppercase tracking-wide text-lg text-foreground/85 leading-relaxed">
                           <LuShieldAlert className="w-4 h-4" /> O ACHISMO GOURMET
                         </p>
-                        <p className="text-sm leading-relaxed text-muted-foreground">
+                        <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                           Traz informações verídicas sobre o Brasil ou o mundo que
                           fazem total sentido, mas que{" "}
                           <strong>jamais foram citadas</strong> no texto original.
                         </p>
                         <div className="bg-muted/40 p-3 rounded-xl border-l-2 border-red-500">
-                          <p className="text-sm italic opacity-90">
+                          <p className="text-xl italic opacity-90 text-foreground/85 leading-relaxed">
                             O avaliador explora o ego do candidato que tenta
                             demonstrar conhecimentos gerais ao invés de se ater ao
                             documento base.
@@ -2975,23 +2975,23 @@ export default function AulaInterpretacaoTexto({
                         <span className="text-xl font-black uppercase tracking-widest text-foreground mt-2">
                           3. Contradição
                         </span>
-                        <span className="text-sm font-medium text-rose-500/80">
+                        <span className="text-xl font-medium text-rose-500/80 text-foreground/85 leading-relaxed">
                           A Rota Oposta
                         </span>
                       </div>
                     }
                     verso={
                       <div className="space-y-4 flex flex-col justify-center h-full text-left">
-                        <p className="font-bold text-rose-500 flex items-center gap-2 border-b border-rose-500/10 pb-3 uppercase tracking-wide text-xs">
+                        <p className="font-bold text-rose-500 flex items-center gap-2 border-b border-rose-500/10 pb-3 uppercase tracking-wide text-lg text-foreground/85 leading-relaxed">
                           <LuShieldAlert className="w-4 h-4" /> INVERSÃO DE VALORES
                         </p>
-                        <p className="text-sm leading-relaxed text-muted-foreground">
+                        <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                           A afirmação cruza perpendicularmente a tese do autor,
                           normalmente ocultando uma negação ou alterando o escopo por
                           intermédio de restritivos (somente, nada).
                         </p>
                         <div className="bg-muted/40 p-3 rounded-xl border-l-2 border-rose-500">
-                          <p className="text-sm italic opacity-90">
+                          <p className="text-xl italic opacity-90 text-foreground/85 leading-relaxed">
                             Geralmente, o autor cita o ponto falso durante o
                             embasamento apenas para refutá-lo como &quot;falácia&quot; nas
                             linhas vitais.
@@ -3005,7 +3005,7 @@ export default function AulaInterpretacaoTexto({
               </CarouselContent>
               <div className="flex items-center justify-center mt-6 gap-3">
                 <CarouselPrevious className="static translate-y-0 h-10 w-10 rounded-xl hover:bg-primary/5 hover:text-primary transition-colors border-border/60" />
-                <span className="text-xs text-muted-foreground font-medium">3 cards · deslize para ver</span>
+                <span className="text-lg text-foreground/85 leading-relaxed text-muted-foreground font-medium">3 cards · deslize para ver</span>
                 <CarouselNext className="static translate-y-0 h-10 w-10 rounded-xl hover:bg-primary/5 hover:text-primary transition-colors border-border/60" />
               </div>
             </Carousel>
@@ -3126,7 +3126,7 @@ export default function AulaInterpretacaoTexto({
                       "A energia nuclear é o futuro do Brasil." (O texto só
                       citou que é uma opção).
                     </p>
-                    <p className="text-sm mt-2 font-medium text-orange-700 dark:text-orange-300">
+                    <p className="text-xl mt-2 font-medium text-orange-700 dark:text-orange-300 text-foreground/85 leading-relaxed">
                       PERIGO: Parece lógico, mas NÃO está no texto. ❌
                     </p>
                   </div>
@@ -3137,7 +3137,7 @@ export default function AulaInterpretacaoTexto({
                     <p className="text-lg text-muted-foreground italic">
                       "A energia nuclear é uma das opções citadas."
                     </p>
-                    <p className="text-sm mt-2 font-medium text-rose-700 dark:text-rose-300">
+                    <p className="text-xl mt-2 font-medium text-rose-700 dark:text-rose-300 text-foreground/85 leading-relaxed">
                       INDICADOR: Limita-se ao que foi DE fato escrito. ✅
                     </p>
                   </div>
@@ -3290,7 +3290,7 @@ E vença esse jogo, que hoje tá bonito!`,
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Informativo vs. Persuasivo
                   </span>
-                  <span className="text-sm text-blue-500/80 font-medium">
+                  <span className="text-xl text-blue-500/80 font-medium text-foreground/85 leading-relaxed">
                     ALVO DISCURSIVO
                   </span>
                 </div>
@@ -3299,14 +3299,14 @@ E vença esse jogo, que hoje tá bonito!`,
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                   <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
                     <LuCheck className="w-5 h-5 shrink-0" />
-                    <span className="tracking-widest uppercase text-xs">ALVO AUTORAL</span>
+                    <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">ALVO AUTORAL</span>
                   </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                     O texto <strong>informativo</strong> apenas relata fatos de forma neutra. O
                     <strong>persuasivo</strong> busca moldar a opinião ou convencer de uma
                     tese subjetiva.
                   </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground italic">
+                  <p className="text-xl leading-relaxed text-muted-foreground italic text-foreground/85">
                     ✅ "Relatórios da Petrobras costumam ser Informativos, mas com tom 'Institucional'."
                   </p>
                 </div>
@@ -3322,7 +3322,7 @@ E vença esse jogo, que hoje tá bonito!`,
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Crítico vs. Elogioso
                   </span>
-                  <span className="text-sm text-indigo-500/80 font-medium">
+                  <span className="text-xl text-indigo-500/80 font-medium text-foreground/85 leading-relaxed">
                     MODALIZAÇÃO DE TOM
                   </span>
                 </div>
@@ -3331,13 +3331,13 @@ E vença esse jogo, que hoje tá bonito!`,
                 <div className="space-y-4 p-4 flex flex-col justify-center h-full">
                   <div className="flex items-center gap-2 text-indigo-500 font-bold border-b border-indigo-500/10 pb-3">
                     <LuCheck className="w-5 h-5 shrink-0" />
-                    <span className="tracking-widest uppercase text-xs">MARCAS DE TOM</span>
+                    <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">MARCAS DE TOM</span>
                   </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
                     A escolha de adjetivos indica o tom. O uso de <strong>aspas</strong>
                     quase sempre sinaliza ironia ou um distanciamento crítico por parte do autor.
                   </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground italic">
+                  <p className="text-xl leading-relaxed text-muted-foreground italic text-foreground/85">
                     ⚠️ "A Cesgranrio foca muito no 'efeito de sentido' de termos entre aspas."
                   </p>
                 </div>
@@ -3452,7 +3452,7 @@ E vença esse jogo, que hoje tá bonito!`,
                     <p className="text-lg text-muted-foreground italic">
                       "O 'genial' plano resultou em prejuízo."
                     </p>
-                    <p className="text-sm mt-2 font-medium text-blue-700 dark:text-blue-300">
+                    <p className="text-xl mt-2 font-medium text-blue-700 dark:text-blue-300 text-foreground/85 leading-relaxed">
                       INDICADOR: Aspas no 'genial' desmentem o elogio. ✅
                     </p>
                   </div>
@@ -3463,7 +3463,7 @@ E vença esse jogo, que hoje tá bonito!`,
                     <p className="text-lg text-muted-foreground italic">
                       "A empresa registrou lucro de 10%."
                     </p>
-                    <p className="text-sm mt-2 font-medium text-sky-700 dark:text-sky-300">
+                    <p className="text-xl mt-2 font-medium text-sky-700 dark:text-sky-300 text-foreground/85 leading-relaxed">
                       INDICADOR: Fatos matemáticos sem adjetivos. ✅
                     </p>
                   </div>
@@ -3762,7 +3762,7 @@ E mostre pro mundo sua superação!`,
                     <p className="text-lg text-muted-foreground italic">
                       "É preciso fomentar o debate."
                     </p>
-                    <p className="text-sm mt-2 font-medium text-blue-700 dark:text-blue-300">
+                    <p className="text-xl mt-2 font-medium text-blue-700 dark:text-blue-300 text-foreground/85 leading-relaxed">
                       EQUIVALENTE: Estimular / Promover. ✅
                     </p>
                   </div>
@@ -3773,7 +3773,7 @@ E mostre pro mundo sua superação!`,
                     <p className="text-lg text-muted-foreground italic">
                       "A gestão negligenciou os dados."
                     </p>
-                    <p className="text-sm mt-2 font-medium text-indigo-700 dark:text-indigo-300">
+                    <p className="text-xl mt-2 font-medium text-indigo-700 dark:text-indigo-300 text-foreground/85 leading-relaxed">
                       EQUIVALENTE: Omitir / Desconsiderar. ✅
                     </p>
                   </div>
@@ -3921,7 +3921,7 @@ E saia da prova como um vencedor!`,
                     <div className="p-4 rounded-full bg-blue-500/10 border border-blue-500/20">
                       <LuEye className="w-10 h-10 text-blue-600 dark:text-blue-400" />
                     </div>
-                    <span className="font-bold uppercase tracking-widest text-sm text-blue-600 dark:text-blue-400 text-center">
+                    <span className="font-bold uppercase tracking-widest text-xl text-blue-600 dark:text-blue-400 text-center text-foreground/85 leading-relaxed">
                       1. Olhar de Raio-X
                     </span>
                   </div>
@@ -3936,13 +3936,13 @@ E saia da prova como um vencedor!`,
                     </span>
                   </div>
                   <div className="flex-1 p-6 space-y-4">
-                    <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    <p className="text-xl leading-relaxed text-zinc-700 dark:text-zinc-300 text-foreground/85">
                       Sua primeira missão é identificar se a questão pede o
                       <strong>sentido global</strong> (o texto todo) ou <strong>localizado</strong> (uma
                       linha específica).
                     </p>
                     <div className="p-3 bg-blue-500/10 rounded-xl border border-blue-500/20">
-                      <p className="text-xs font-bold text-blue-700 dark:text-blue-300">
+                      <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-700 dark:text-blue-300">
                         PROTOCOLO: Leia o comando da questão 2x antes de ir ao texto. ✅
                       </p>
                     </div>
@@ -3959,7 +3959,7 @@ E saia da prova como um vencedor!`,
                     <div className="p-4 rounded-full bg-indigo-500/10 border border-indigo-500/20">
                       <LuShieldAlert className="w-10 h-10 text-indigo-600 dark:text-indigo-400" />
                     </div>
-                    <span className="font-bold uppercase tracking-widest text-sm text-indigo-600 dark:text-indigo-400 text-center">
+                    <span className="font-bold uppercase tracking-widest text-xl text-indigo-600 dark:text-indigo-400 text-center text-foreground/85 leading-relaxed">
                       2. Filtro Anti-Achismo
                     </span>
                   </div>
@@ -3974,13 +3974,13 @@ E saia da prova como um vencedor!`,
                     </span>
                   </div>
                   <div className="flex-1 p-6 space-y-4">
-                    <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    <p className="text-xl leading-relaxed text-zinc-700 dark:text-zinc-300 text-foreground/85">
                       Corte toda informação que não está escrita. Se a alternativa
                       fizer sentido mas <strong>não tiver prova no texto</strong>, ela é
                       considerada Extrapolação.
                     </p>
                     <div className="p-3 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
-                      <p className="text-xs font-bold text-indigo-700 dark:text-indigo-300">
+                      <p className="text-lg text-foreground/85 leading-relaxed font-bold text-indigo-700 dark:text-indigo-300">
                         REGRA: O texto é sua única verdade. O que você sabe "de fora" não conta. 🛡️
                       </p>
                     </div>
@@ -3997,7 +3997,7 @@ E saia da prova como um vencedor!`,
                     <div className="p-4 rounded-full bg-amber-500/10 border border-amber-500/20">
                       <LuTarget className="w-10 h-10 text-amber-600 dark:text-amber-400" />
                     </div>
-                    <span className="font-bold uppercase tracking-widest text-sm text-amber-600 dark:text-amber-400 text-center">
+                    <span className="font-bold uppercase tracking-widest text-xl text-amber-600 dark:text-amber-400 text-center text-foreground/85 leading-relaxed">
                       3. Radar de Sinônimos
                     </span>
                   </div>
@@ -4012,13 +4012,13 @@ E saia da prova como um vencedor!`,
                     </span>
                   </div>
                   <div className="flex-1 p-6 space-y-4">
-                    <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    <p className="text-xl leading-relaxed text-zinc-700 dark:text-zinc-300 text-foreground/85">
                       Fique atento à troca de verbos técnicos. A banca substitui
                       termos para testar sua <strong>equivalência semântica</strong>
                       em contextos operacionais/industriais.
                     </p>
                     <div className="p-3 bg-amber-500/10 rounded-xl border border-amber-500/20">
-                      <p className="text-xs font-bold text-amber-700 dark:text-amber-300">
+                      <p className="text-lg text-foreground/85 leading-relaxed font-bold text-amber-700 dark:text-amber-300">
                         FOCO: Domine verbos como 'viabilizar', 'fomentar' e 'negligenciar'. 🎯
                       </p>
                     </div>
@@ -4118,7 +4118,7 @@ E saia da prova como um vencedor!`,
                     <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 mb-2">
                       A Estratégia do Descarte Técnica
                     </h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                       Não busque a certa, elimine as erradas por Redução,
                       Extrapolação ou Contradição. Sobrará a verdade.
                     </p>
@@ -4127,7 +4127,7 @@ E saia da prova como um vencedor!`,
                     <h4 className="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-2">
                       Foco no Comando
                     </h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                       Responda o que o enunciado pediu, não o que o texto diz em
                       outras partes. O comando é soberano.
                     </p>

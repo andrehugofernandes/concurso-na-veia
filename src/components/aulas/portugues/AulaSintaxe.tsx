@@ -833,7 +833,7 @@ export default function AulaSintaxe({
                 descricao: (
                   <div className="space-y-2 text-lg">
                     <p>Vem após o verbo. Típico de orações com verbos como <em>existir, ocorrer, faltar</em>.</p>
-                    <p className="text-sm italic opacity-80 mt-2 text-indigo-600">Ex: "Faltaram <strong>insumos básicos</strong> no setor."</p>
+                    <p className="text-xl italic opacity-80 mt-2 text-indigo-600 text-foreground/85 leading-relaxed">Ex: "Faltaram <strong>insumos básicos</strong> no setor."</p>
                   </div>
                 ),
               },
@@ -843,7 +843,7 @@ export default function AulaSintaxe({
                 descricao: (
                   <div className="space-y-2 text-lg">
                     <p>VTD + SE. Transforma o que seria objeto em sujeito paciente.</p>
-                    <p className="text-sm italic opacity-80 mt-2 text-indigo-600">Ex: "Consertaram-se <strong>as válvulas</strong>." (As válvulas foram consertadas).</p>
+                    <p className="text-xl italic opacity-80 mt-2 text-indigo-600 text-foreground/85 leading-relaxed">Ex: "Consertaram-se <strong>as válvulas</strong>." (As válvulas foram consertadas).</p>
                   </div>
                 ),
               },
@@ -910,14 +910,14 @@ export default function AulaSintaxe({
                 <h4 className="text-emerald-700 dark:text-emerald-400 font-bold mb-3 flex items-center gap-2">
                    <LuZap /> Verbos Intransitivos (VI)
                 </h4>
-                <p className="text-sm">Têm sentido completo. Podem vir sozinhos ou com adjuntos (circunstâncias).</p>
+                <p className="text-xl text-foreground/85 leading-relaxed">Têm sentido completo. Podem vir sozinhos ou com adjuntos (circunstâncias).</p>
                 <p className="italic mt-2 text-indigo-600 dark:text-indigo-400">Ex: "O lucro <strong>caiu</strong> (ontem)."</p>
               </div>
               <div className="bg-blue-500/5 p-6 rounded-xl border border-blue-500/20">
                 <h4 className="text-blue-700 dark:text-blue-400 font-bold mb-3 flex items-center gap-2">
                    <LuLayers /> Verbos Transitivos (VT)
                 </h4>
-                <p className="text-sm">São verbos 'incompletos'. Exigem um alvo (Objeto) para fazerem sentido.</p>
+                <p className="text-xl text-foreground/85 leading-relaxed">São verbos 'incompletos'. Exigem um alvo (Objeto) para fazerem sentido.</p>
                 <p className="italic mt-2 text-indigo-600 dark:text-indigo-400">Ex: "A empresa <strong>comprou</strong> (o quê?) <u>novas sondas</u>."</p>
               </div>
             </div>
@@ -941,13 +941,13 @@ export default function AulaSintaxe({
               frente={
                 <div className="text-center">
                   <h4 className="font-bold text-lg mb-2">Transitivo Direto (VTD)</h4>
-                  <p className="text-sm opacity-80">Ponte sem pedágio (Sem Preposição).</p>
+                  <p className="text-xl opacity-80 text-foreground/85 leading-relaxed">Ponte sem pedágio (Sem Preposição).</p>
                 </div>
               }
               verso={
                 <div className="text-center p-4">
                   <p className="font-bold mb-2">Exige Objeto Direto</p>
-                  <p className="text-sm italic">Ex: "Analisei o relatório". (O quê?)</p>
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">Ex: "Analisei o relatório". (O quê?)</p>
                 </div>
               }
               variant={mv[2] as any}
@@ -956,13 +956,13 @@ export default function AulaSintaxe({
               frente={
                 <div className="text-center">
                   <h4 className="font-bold text-lg mb-2">Transitivo Indireto (VTI)</h4>
-                  <p className="text-sm opacity-80">Ponte com pedágio (Com Preposição).</p>
+                  <p className="text-xl opacity-80 text-foreground/85 leading-relaxed">Ponte com pedágio (Com Preposição).</p>
                 </div>
               }
               verso={
                 <div className="text-center p-4">
                   <p className="font-bold mb-2">Exige Objeto Indireto</p>
-                  <p className="text-sm italic">Ex: "Acredito em (preposição) você".</p>
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">Ex: "Acredito em (preposição) você".</p>
                 </div>
               }
               variant={mv[2] as any}
@@ -971,13 +971,13 @@ export default function AulaSintaxe({
               frente={
                 <div className="text-center">
                   <h4 className="font-bold text-lg mb-2">Direto e Indireto (VTDI)</h4>
-                  <p className="text-sm opacity-80">Ponte Dupla.</p>
+                  <p className="text-xl opacity-80 text-foreground/85 leading-relaxed">Ponte Dupla.</p>
                 </div>
               }
               verso={
                 <div className="text-center p-4">
                   <p className="font-bold mb-2">Dois Objetos</p>
-                  <p className="text-sm italic">Ex: "Entregou o projeto ao gerente".</p>
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">Ex: "Entregou o projeto ao gerente".</p>
                 </div>
               }
               variant={mv[2] as any}
@@ -1046,13 +1046,13 @@ export default function AulaSintaxe({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                    <p className="font-bold border-b border-amber-500/20 pb-2 mb-2">Predicado Verbal</p>
-                   <p className="text-sm">O núcleo é o <strong>Verbo</strong> de ação.</p>
-                   <p className="italic text-sm opacity-80 mt-1">Ex: "A Petrobras <u>bateu</u> recordes."</p>
+                   <p className="text-xl text-foreground/85 leading-relaxed">O núcleo é o <strong>Verbo</strong> de ação.</p>
+                   <p className="italic text-xl opacity-80 mt-1 text-foreground/85 leading-relaxed">Ex: "A Petrobras <u>bateu</u> recordes."</p>
                 </div>
                 <div>
                    <p className="font-bold border-b border-amber-500/20 pb-2 mb-2">Predicado Nominal</p>
-                   <p className="text-sm">O núcleo é o <strong>Predicativo</strong> (a qualidade).</p>
-                   <p className="italic text-sm opacity-80 mt-1">Ex: "A equipe <u>estava</u> <strong>cansada</strong>."</p>
+                   <p className="text-xl text-foreground/85 leading-relaxed">O núcleo é o <strong>Predicativo</strong> (a qualidade).</p>
+                   <p className="italic text-xl opacity-80 mt-1 text-foreground/85 leading-relaxed">Ex: "A equipe <u>estava</u> <strong>cansada</strong>."</p>
                 </div>
               </div>
             </div>
@@ -1080,7 +1080,7 @@ export default function AulaSintaxe({
                 descricao: (
                   <div className="space-y-2">
                     <p>O foco é a <strong>ação</strong>. O verbo é VTD, VTI, VTDI ou VI.</p>
-                    <p className="text-xs opacity-70 italic">Ex: "A sonda perfurou o poço."</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed opacity-70 italic">Ex: "A sonda perfurou o poço."</p>
                   </div>
                 ),
               },
@@ -1090,7 +1090,7 @@ export default function AulaSintaxe({
                 descricao: (
                   <div className="space-y-2">
                     <p>O foco é o <strong>estado</strong>. O verbo é apenas uma ponte (V. Ligação).</p>
-                    <p className="text-xs opacity-70 italic">Ex: "O projeto é rentável."</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed opacity-70 italic">Ex: "O projeto é rentável."</p>
                   </div>
                 ),
               },
@@ -1100,7 +1100,7 @@ export default function AulaSintaxe({
                 descricao: (
                   <div className="space-y-2">
                     <p><strong>Ação + Estado</strong>. Tem dois núcleos: o verbo e o nome.</p>
-                    <p className="text-xs opacity-70 italic">Ex: "Os funcionários saíram satisfeitos."</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed opacity-70 italic">Ex: "Os funcionários saíram satisfeitos."</p>
                   </div>
                 ),
               },
@@ -1166,17 +1166,17 @@ export default function AulaSintaxe({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
                  <p className="font-bold text-emerald-700 dark:text-emerald-400">Objeto Direto</p>
-                 <p className="text-sm">VTD + Complemento (Sem preposição)</p>
-                 <p className="italic text-xs mt-2">Ex: "A Petrobras <u>alugou</u> <strong>a plataforma</strong>."</p>
+                 <p className="text-xl text-foreground/85 leading-relaxed">VTD + Complemento (Sem preposição)</p>
+                 <p className="italic text-lg text-foreground/85 leading-relaxed mt-2">Ex: "A Petrobras <u>alugou</u> <strong>a plataforma</strong>."</p>
               </div>
               <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
                  <p className="font-bold text-amber-700 dark:text-amber-400">Objeto Indireto</p>
-                 <p className="text-sm">VTI + Complemento (Com preposição)</p>
-                 <p className="italic text-xs mt-2">Ex: "A empresa <u>necessita</u> <strong>de técnicos</strong>."</p>
+                 <p className="text-xl text-foreground/85 leading-relaxed">VTI + Complemento (Com preposição)</p>
+                 <p className="italic text-lg text-foreground/85 leading-relaxed mt-2">Ex: "A empresa <u>necessita</u> <strong>de técnicos</strong>."</p>
               </div>
             </div>
 
-            <p className="text-sm font-semibold text-rose-500">
+            <p className="text-xl font-semibold text-rose-500 text-foreground/85 leading-relaxed">
                🚨 Foco Cesgranrio: O Objeto Direto Preposicionado. Ocorre por ênfase ou clareza. Ex: "Amei <u>a</u> Deus". O verbo amar é VTD, mas a preposição é usada por respeito.
             </p>
           </div>
@@ -1197,14 +1197,14 @@ export default function AulaSintaxe({
                 <div className="text-center">
                    <h4 className="font-bold text-lg mb-2">Pronomes O/A/OS/AS</h4>
                    <LuTarget className="w-10 h-10 mx-auto text-emerald-500 mb-2" />
-                   <p className="text-sm">Função exclusiva.</p>
+                   <p className="text-xl text-foreground/85 leading-relaxed">Função exclusiva.</p>
                 </div>
               }
               verso={
                 <div className="text-center p-4">
                    <p className="font-bold mb-2">Objeto Direto</p>
-                   <p className="text-sm italic">Substituem complementos sem preposição.</p>
-                   <p className="text-xs font-mono mt-2 bg-muted p-2 rounded">Ex: "Vendi a sonda" &rarr; "Vendi-a".</p>
+                   <p className="text-xl italic text-foreground/85 leading-relaxed">Substituem complementos sem preposição.</p>
+                   <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-2 bg-muted p-2 rounded">Ex: "Vendi a sonda" &rarr; "Vendi-a".</p>
                 </div>
               }
               variant={mv[4] as any}
@@ -1214,14 +1214,14 @@ export default function AulaSintaxe({
                 <div className="text-center">
                    <h4 className="font-bold text-lg mb-2">Pronome LHE/LHES</h4>
                    <LuTarget className="w-10 h-10 mx-auto text-amber-500 mb-2" />
-                   <p className="text-sm">Função exclusiva.</p>
+                   <p className="text-xl text-foreground/85 leading-relaxed">Função exclusiva.</p>
                 </div>
               }
               verso={
                 <div className="text-center p-4">
                    <p className="font-bold mb-2">Objeto Indireto</p>
-                   <p className="text-sm italic">Substituem complementos COM preposição (geralmente 'a' ou 'para').</p>
-                   <p className="text-xs font-mono mt-2 bg-muted p-2 rounded">Ex: "Obedeço ao mestre" &rarr; "Obedeço-lhe".</p>
+                   <p className="text-xl italic text-foreground/85 leading-relaxed">Substituem complementos COM preposição (geralmente 'a' ou 'para').</p>
+                   <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-2 bg-muted p-2 rounded">Ex: "Obedeço ao mestre" &rarr; "Obedeço-lhe".</p>
                 </div>
               }
               variant={mv[4] as any}
@@ -1547,16 +1547,16 @@ export default function AulaSintaxe({
               Na Voz Passiva, o Sujeito sofre a ação. Mas quem a pratica? O <strong>Agente da Passiva</strong>! Ele geralmente é introduzido pela preposição <strong>POR</strong> (ou suas contrações: Pelo/Pela).
             </p>
             <div className="bg-emerald-500/5 p-6 rounded-xl border border-emerald-500/20 flex flex-col items-center">
-               <p className="text-sm font-bold opacity-70 mb-2">Transposição Clássica:</p>
+               <p className="text-xl font-bold opacity-70 mb-2 text-foreground/85 leading-relaxed">Transposição Clássica:</p>
                <div className="flex flex-col md:flex-row items-center gap-4 text-center">
                   <div className="p-3 bg-card border border-border rounded-lg shadow-sm">
                      <p className="font-bold">Ativa</p>
-                     <p className="text-sm italic">O técnico perfurou o poço.</p>
+                     <p className="text-xl italic text-foreground/85 leading-relaxed">O técnico perfurou o poço.</p>
                   </div>
                   <LuArrowRight className="hidden md:block w-6 h-6 text-emerald-500" />
                   <div className="p-3 bg-card border border-border rounded-lg shadow-sm font-bold text-emerald-600 dark:text-emerald-400">
                      <p>Passiva</p>
-                     <p className="text-sm italic font-normal">O poço foi perfurado <strong>pelo técnico</strong>.</p>
+                     <p className="text-xl italic font-normal text-foreground/85 leading-relaxed">O poço foi perfurado <strong>pelo técnico</strong>.</p>
                   </div>
                </div>
             </div>
@@ -1586,14 +1586,14 @@ export default function AulaSintaxe({
                 <div className="text-center">
                    <h4 className="font-bold text-lg mb-2">Sujeito Paciente</h4>
                    <LuTarget className="w-10 h-10 mx-auto text-rose-500 mb-2" />
-                   <p className="text-sm">O que sofre a ação.</p>
+                   <p className="text-xl text-foreground/85 leading-relaxed">O que sofre a ação.</p>
                 </div>
               }
               verso={
                 <div className="text-center p-4">
                    <p className="font-bold mb-2">Identificação</p>
-                   <p className="text-sm italic">O termo que se torna foco na voz passiva.</p>
-                   <p className="text-xs font-mono mt-2 bg-muted p-2 rounded">Ex: "O relatório foi lido".</p>
+                   <p className="text-xl italic text-foreground/85 leading-relaxed">O termo que se torna foco na voz passiva.</p>
+                   <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-2 bg-muted p-2 rounded">Ex: "O relatório foi lido".</p>
                 </div>
               }
               variant={mv[6] as any}
@@ -1603,14 +1603,14 @@ export default function AulaSintaxe({
                 <div className="text-center">
                    <h4 className="font-bold text-lg mb-2">Agente da Passiva</h4>
                    <LuZap className="w-10 h-10 mx-auto text-amber-500 mb-2" />
-                   <p className="text-sm">O batedor da ação.</p>
+                   <p className="text-xl text-foreground/85 leading-relaxed">O batedor da ação.</p>
                 </div>
               }
               verso={
                 <div className="text-center p-4">
                    <p className="font-bold mb-2">Identificação</p>
-                   <p className="text-sm italic">Sempre preposicionado (POR/DE).</p>
-                   <p className="text-xs font-mono mt-2 bg-muted p-2 rounded">Ex: "... lido por nós".</p>
+                   <p className="text-xl italic text-foreground/85 leading-relaxed">Sempre preposicionado (POR/DE).</p>
+                   <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-2 bg-muted p-2 rounded">Ex: "... lido por nós".</p>
                 </div>
               }
               variant={mv[6] as any}
@@ -1867,17 +1867,17 @@ export default function AulaSintaxe({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
              <div className="bg-muted/40 p-6 rounded-xl border border-border">
                 <h4 className="font-bold mb-3">O Aposto (Explica)</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-xl text-muted-foreground leading-relaxed text-foreground/85">
                    Tem relação sintática com um termo da oração. Sua função é explicar, resumir ou especificar um nome.
                 </p>
-                <p className="text-xs font-mono mt-4 text-emerald-600 bg-emerald-500/5 p-2 rounded">Ex: "João, <strong>o engenheiro</strong>, chegou."</p>
+                <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-4 text-emerald-600 bg-emerald-500/5 p-2 rounded">Ex: "João, <strong>o engenheiro</strong>, chegou."</p>
              </div>
              <div className="bg-muted/40 p-6 rounded-xl border border-border">
                 <h4 className="font-bold mb-3">O Vocativo (Chama)</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-xl text-muted-foreground leading-relaxed text-foreground/85">
                    Não possui relação sintática com os outros termos. É um chamamento isolado, um apelo ao interlocutor.
                 </p>
-                <p className="text-xs font-mono mt-4 text-rose-600 bg-rose-500/5 p-2 rounded">Ex: "<strong>Sr. Engenheiro</strong>, chegue aqui!"</p>
+                <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-4 text-rose-600 bg-rose-500/5 p-2 rounded">Ex: "<strong>Sr. Engenheiro</strong>, chegue aqui!"</p>
              </div>
           </div>
         </section>
