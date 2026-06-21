@@ -46,11 +46,6 @@ export default function TrustedBySection() {
   return (
     <section className="py-12 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-white/5 overflow-hidden relative">
       <div className="w-full text-center">
-        {/* Subtítulo centralizado para dar contexto de autoridade */}
-        <p className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-8 px-6">
-          Mais de <strong className="text-slate-900 dark:text-white font-extrabold">12.000+ candidatos</strong> já se prepararam com nossa plataforma
-        </p>
-
         {/* Container do Carrossel de Logos */}
         <div className="w-full relative py-2 overflow-hidden">
           {/* Fades laterais para um visual elegante de sumiço gradual */}
