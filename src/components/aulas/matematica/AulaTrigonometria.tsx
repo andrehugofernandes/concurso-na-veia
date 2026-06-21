@@ -161,23 +161,23 @@ export default function AulaTrigonometria({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20 text-center">
-                          <p className="text-xs font-bold text-blue-500 mb-2">SENO</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-2">SENO</p>
                           <p className="text-lg font-mono font-bold">sen θ = CO/Hip</p>
-                          <p className="text-xs text-muted-foreground mt-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
                             Cateto Oposto ÷ Hipotenusa
                           </p>
                         </div>
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-center">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">COSSENO</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">COSSENO</p>
                           <p className="text-lg font-mono font-bold">cos θ = CA/Hip</p>
-                          <p className="text-xs text-muted-foreground mt-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
                             Cateto Adjacente ÷ Hipotenusa
                           </p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20 text-center">
-                          <p className="text-xs font-bold text-cyan-500 mb-2">TANGENTE</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-500 mb-2">TANGENTE</p>
                           <p className="text-lg font-mono font-bold">tan θ = CO/CA</p>
-                          <p className="text-xs text-muted-foreground mt-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
                             Cateto Oposto ÷ Cateto Adjacente
                           </p>
                         </div>
@@ -217,22 +217,22 @@ export default function AulaTrigonometria({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">Exemplo Industrial</p>
-                          <p className="text-sm">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">Exemplo Industrial</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Duto inclinado: altura=6m, base=8m, comprimento=10m
                           </p>
-                          <p className="text-sm mt-1">
+                          <p className="text-xl mt-1 text-foreground/85 leading-relaxed">
                             sen θ = 6/10 = 0,6 | cos θ = 8/10 = 0,8
                           </p>
-                          <p className="text-sm mt-1 font-bold">
+                          <p className="text-xl mt-1 font-bold text-foreground/85 leading-relaxed">
                             tan θ = 6/8 = 0,75 = 0,6/0,8 ✓
                           </p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-500 mb-2">Trio Pitagórico (3,4,5)</p>
-                          <p className="text-sm">Triângulo: catetos 3m e 4m, hipotenusa 5m</p>
-                          <p className="text-sm mt-1">sen θ = 3/5 | cos θ = 4/5</p>
-                          <p className="text-sm mt-1 font-bold">tan θ = 3/4</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-500 mb-2">Trio Pitagórico (3,4,5)</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Triângulo: catetos 3m e 4m, hipotenusa 5m</p>
+                          <p className="text-xl mt-1 text-foreground/85 leading-relaxed">sen θ = 3/5 | cos θ = 4/5</p>
+                          <p className="text-xl mt-1 font-bold text-foreground/85 leading-relaxed">tan θ = 3/4</p>
                         </div>
                       </div>
                     </div>
@@ -249,10 +249,10 @@ export default function AulaTrigonometria({
                         de içamento e ângulos de inspeção. O protocolo padrão:
                       </p>
                       <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-blue-500">
+                        <p className="text-xl font-bold text-blue-500 text-foreground/85 leading-relaxed">
                           Passo a passo para problemas de triângulo retângulo:
                         </p>
-                        <ol className="list-decimal list-inside space-y-1 text-sm">
+                        <ol className="list-decimal list-inside space-y-1 text-xl text-foreground/85 leading-relaxed">
                           <li>Identifique o ângulo θ conhecido</li>
                           <li>Identifique o dado conhecido (hipotenusa, CO ou CA)</li>
                           <li>Identifique o que se quer calcular</li>
@@ -288,11 +288,11 @@ export default function AulaTrigonometria({
                     <div className="space-y-4">
                       <p className="font-semibold">Um observador no chão a 100m de distância de uma estrutura observa o topo desta a um ângulo de elevação de 30°. Qual é a altura da estrutura?</p>
                       <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
-                        <p className="text-sm mb-2"><strong>Solução:</strong></p>
-                        <p className="text-sm">1. Identifique: CA = 100m (cateto adjacente), θ = 30°, CO = altura (incógnita)</p>
-                        <p className="text-sm">2. Use: tg(30°) = CO/CA</p>
-                        <p className="text-sm">3. tg(30°) = √3/3, então: √3/3 = h/100</p>
-                        <p className="text-sm">4. h = 100 · √3/3 ≈ 57,7m</p>
+                        <p className="text-xl mb-2 text-foreground/85 leading-relaxed"><strong>Solução:</strong></p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">1. Identifique: CA = 100m (cateto adjacente), θ = 30°, CO = altura (incógnita)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">2. Use: tg(30°) = CO/CA</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">3. tg(30°) = √3/3, então: √3/3 = h/100</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">4. h = 100 · √3/3 ≈ 57,7m</p>
                       </div>
                       <AlertBox tipo="success" titulo="Ângulo de Elevação">
                         Lembre: o ângulo de elevação é sempre medido do chão para cima, formando um triângulo retângulo com o observador no solo.
@@ -307,11 +307,11 @@ export default function AulaTrigonometria({
                     <div className="space-y-4">
                       <p className="font-semibold">Uma rampa de acesso tem comprimento de 15m (hipotenusa) e forma um ângulo de 20° com o solo. Calcule a altura vertical da rampa.</p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
-                        <p className="text-sm mb-2"><strong>Solução:</strong></p>
-                        <p className="text-sm">1. Identifique: Hip = 15m, θ = 20°, CO = altura (incógnita)</p>
-                        <p className="text-sm">2. Use: sen(20°) = CO/Hip</p>
-                        <p className="text-sm">3. sen(20°) ≈ 0,342, então: 0,342 = h/15</p>
-                        <p className="text-sm">4. h ≈ 5,13m (altura vertical da rampa)</p>
+                        <p className="text-xl mb-2 text-foreground/85 leading-relaxed"><strong>Solução:</strong></p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">1. Identifique: Hip = 15m, θ = 20°, CO = altura (incógnita)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">2. Use: sen(20°) = CO/Hip</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">3. sen(20°) ≈ 0,342, então: 0,342 = h/15</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">4. h ≈ 5,13m (altura vertical da rampa)</p>
                       </div>
                       <AlertBox tipo="info" titulo="Aplicação em Plataformas">
                         Esta é uma aplicação comum em inspeções de segurança de rampas de acesso em plataformas de petróleo.
@@ -388,7 +388,7 @@ export default function AulaTrigonometria({
                 <p>• Seno = Oposto/Hipotenusa (SOH)</p>
                 <p>• Cosseno = Adjacente/Hipotenusa (CAH)</p>
                 <p>• Tangente = Oposto/Adjacente (TOA)</p>
-                <p className="text-sm italic pt-2">Lembre: em um triângulo retângulo, sempre há uma hipotenusa e dois catetos (oposto e adjacente).</p>
+                <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Lembre: em um triângulo retângulo, sempre há uma hipotenusa e dois catetos (oposto e adjacente).</p>
               </div>)
             }}
             audio={{
@@ -443,7 +443,7 @@ export default function AulaTrigonometria({
                         <strong>todas as questões de trigonometria</strong>:
                       </p>
                       <div className="overflow-x-auto">
-                        <table className="w-full text-sm border-collapse">
+                        <table className="w-full text-xl border-collapse text-foreground/85 leading-relaxed">
                           <thead>
                             <tr className="bg-emerald-500/10">
                               <th className="border border-emerald-500/20 p-3 text-left">Ângulo</th>
@@ -505,34 +505,34 @@ export default function AulaTrigonometria({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-500 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-2">
                             Triângulo 45°-45°-90° (Isósceles Retângulo)
                           </p>
-                          <p className="text-sm">Catetos: 1 e 1 | Hipotenusa: √2</p>
-                          <p className="text-sm mt-2">
+                          <p className="text-xl text-foreground/85 leading-relaxed">Catetos: 1 e 1 | Hipotenusa: √2</p>
+                          <p className="text-xl mt-2 text-foreground/85 leading-relaxed">
                             sen 45° = 1/√2 = <strong>√2/2</strong>
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             cos 45° = 1/√2 = <strong>√2/2</strong>
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             tan 45° = 1/1 = <strong>1</strong>
                           </p>
                         </div>
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">
                             Triângulo 30°-60°-90° (Equilátero dividido)
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Catetos: 1 e √3 | Hipotenusa: 2
                           </p>
-                          <p className="text-sm mt-2">
+                          <p className="text-xl mt-2 text-foreground/85 leading-relaxed">
                             sen 30° = 1/2 | cos 30° = <strong>√3/2</strong>
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             sen 60° = <strong>√3/2</strong> | cos 60° = 1/2
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             tan 30° = 1/√3 | tan 60° = <strong>√3</strong>
                           </p>
                         </div>
@@ -553,22 +553,22 @@ export default function AulaTrigonometria({
                       </p>
                       <div className="space-y-3">
                         <div className="p-3 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-500">Rampa a 30°</p>
-                          <p className="text-sm">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-500">Rampa a 30°</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Comprimento 20m → Altura = 20 × sen30° = 20 × 0,5 ={" "}
                             <strong>10m</strong>
                           </p>
                         </div>
                         <div className="p-3 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-500">Cabo a 45°</p>
-                          <p className="text-sm">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500">Cabo a 45°</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Comprimento 10m → Altura = 10 × sen45° = 10 × (√2/2)
                             = <strong>5√2 ≈ 7,07m</strong>
                           </p>
                         </div>
                         <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500">Flare Tower a 60°</p>
-                          <p className="text-sm">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500">Flare Tower a 60°</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Base horizontal 50m → Altura = 50 × tan60° = 50√3 ≈{" "}
                             <strong>86,6m</strong>
                           </p>
@@ -602,7 +602,7 @@ export default function AulaTrigonometria({
                     <div className="space-y-4">
                       <p>A tabela de ângulos notáveis (30°, 45°, 60°) é fundamental para resolver rapidamente em provas:</p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
-                        <table className="w-full text-sm">
+                        <table className="w-full text-xl text-foreground/85 leading-relaxed">
                           <thead>
                             <tr className="border-b border-emerald-500/30">
                               <th className="text-left p-2">Ângulo</th>
@@ -707,7 +707,7 @@ export default function AulaTrigonometria({
                 <p className="font-semibold">Decorar em sequência numérica (√n/2):</p>
                 <p>sen: √1, √2, √3 (÷2) → 1/2, √2/2, √3/2</p>
                 <p>cos: √3, √2, √1 (÷2) → √3/2, √2/2, 1/2</p>
-                <p className="text-sm italic pt-2">Seno AUMENTA de 0° a 90°. Cosseno DIMINUI de 0° a 90°.</p>
+                <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Seno AUMENTA de 0° a 90°. Cosseno DIMINUI de 0° a 90°.</p>
               </div>)
             }}
             audio={{
@@ -787,11 +787,11 @@ export default function AulaTrigonometria({
                             <p className={`text-xs font-bold text-${q.color}-500`}>
                               {q.quad} Quadrante
                             </p>
-                            <p className="text-xs text-muted-foreground">{q.range}</p>
-                            <p className="text-sm mt-2">
+                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">{q.range}</p>
+                            <p className="text-xl mt-2 text-foreground/85 leading-relaxed">
                               sen: <strong>{q.sen}</strong> | cos: <strong>{q.cos}</strong>
                             </p>
-                            <p className="text-sm">
+                            <p className="text-xl text-foreground/85 leading-relaxed">
                               tan: <strong>{q.tan}</strong>
                             </p>
                           </div>
@@ -823,10 +823,10 @@ export default function AulaTrigonometria({
                             key={item.angulo}
                             className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg border border-border"
                           >
-                            <span className="text-sm font-bold w-12 shrink-0">
+                            <span className="text-xl font-bold w-12 shrink-0 text-foreground/85 leading-relaxed">
                               {item.angulo}
                             </span>
-                            <span className="text-xs text-muted-foreground font-mono flex-1">
+                            <span className="text-lg text-foreground/85 leading-relaxed text-muted-foreground font-mono flex-1">
                               {item.ponto}
                             </span>
                           </div>
@@ -852,7 +852,7 @@ export default function AulaTrigonometria({
                           radianos × (180°/π) = graus
                         </p>
                       </div>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-sm">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-xl text-foreground/85 leading-relaxed">
                         {[
                           { g: "30°", r: "π/6" },
                           { g: "45°", r: "π/4" },
@@ -899,10 +899,10 @@ export default function AulaTrigonometria({
                     <div className="space-y-4">
                       <p><strong>Radianos</strong> medem o comprimento do arco em relação ao raio. Em um círculo unitário (raio = 1), o comprimento do arco = medida em radianos.</p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm"><strong>Conversões Essenciais:</strong></p>
-                        <p className="text-sm">π rad = 180° → 1 rad ≈ 57.3°</p>
-                        <p className="text-sm">2π rad = 360° (volta completa)</p>
-                        <p className="text-sm">π/2 rad = 90°, π/3 rad = 60°, π/4 rad = 45°</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed"><strong>Conversões Essenciais:</strong></p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">π rad = 180° → 1 rad ≈ 57.3°</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">2π rad = 360° (volta completa)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">π/2 rad = 90°, π/3 rad = 60°, π/4 rad = 45°</p>
                       </div>
                       <AlertBox tipo="info" titulo="Por que Radianos?">
                         Em cálculo e física, radianos são preferidos porque simplificam muitas fórmulas (derivadas de sen(x) é cos(x) quando x está em radianos).
@@ -979,7 +979,7 @@ export default function AulaTrigonometria({
                 <p>• π/6 = 30°, π/4 = 45°, π/3 = 60°, π/2 = 90°</p>
                 <p>• Quadrante I: 0 a π/2 (sen+ cos+)</p>
                 <p>• Quadrante II: π/2 a π (sen+ cos-)</p>
-                <p className="text-sm italic pt-2">Use ângulo de referência: sempre use distância para eixo mais próximo.</p>
+                <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Use ângulo de referência: sempre use distância para eixo mais próximo.</p>
               </div>)
             }}
             audio={{
@@ -1035,32 +1035,32 @@ export default function AulaTrigonometria({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-500 mb-2">|A| — Amplitude</p>
-                          <p className="text-sm">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-2">|A| — Amplitude</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Valor máximo da oscilação. A função varia entre −|A|
                             e +|A|. Em sensores de pressão: amplitude = variação
                             de pressão.
                           </p>
                         </div>
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">T = 2π/B — Período</p>
-                          <p className="text-sm">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">T = 2π/B — Período</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Intervalo para um ciclo completo. Quanto maior B,
                             menor o período (oscilação mais rápida). Em turbinas:
                             T = 1/frequência.
                           </p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-500 mb-2">C/B — Deslocamento horizontal</p>
-                          <p className="text-sm">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-500 mb-2">C/B — Deslocamento horizontal</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Desloca o gráfico horizontalmente. Chamado de fase
                             em engenharia elétrica. Crucial em análise de ondas
                             em cabos submarinos.
                           </p>
                         </div>
                         <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                          <p className="text-xs font-bold text-indigo-500 mb-2">D — Deslocamento vertical</p>
-                          <p className="text-sm">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-indigo-500 mb-2">D — Deslocamento vertical</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Eleva ou abaixa o gráfico. Representa o valor médio
                             da oscilação. Ex: pressão média de 10 bar com
                             amplitude de ±2 bar.
@@ -1078,19 +1078,19 @@ export default function AulaTrigonometria({
                       <p>As funções trigonométricas têm simetrias importantes:</p>
                       <div className="space-y-3">
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-sm font-bold text-emerald-500">
+                          <p className="text-xl font-bold text-emerald-500 text-foreground/85 leading-relaxed">
                             Cosseno — Função PAR
                           </p>
-                          <p className="text-sm mt-1">
+                          <p className="text-xl mt-1 text-foreground/85 leading-relaxed">
                             cos(−x) = cos(x). Simétrica ao eixo y. O gráfico é
                             espelhado em relação ao eixo vertical.
                           </p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-sm font-bold text-blue-500">
+                          <p className="text-xl font-bold text-blue-500 text-foreground/85 leading-relaxed">
                             Seno e Tangente — Funções ÍMPARES
                           </p>
-                          <p className="text-sm mt-1">
+                          <p className="text-xl mt-1 text-foreground/85 leading-relaxed">
                             sen(−x) = −sen(x) | tan(−x) = −tan(x). Simétricas à
                             origem. O gráfico tem rotação de 180° em relação ao
                             centro.
@@ -1113,7 +1113,7 @@ export default function AulaTrigonometria({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="overflow-x-auto">
-                        <table className="w-full text-sm border-collapse">
+                        <table className="w-full text-xl border-collapse text-foreground/85 leading-relaxed">
                           <thead>
                             <tr className="bg-blue-500/10">
                               <th className="border border-blue-500/20 p-3 text-left">Função</th>
@@ -1137,7 +1137,7 @@ export default function AulaTrigonometria({
                             </tr>
                             <tr>
                               <td className="border border-border p-3 font-bold">y = tan(x)</td>
-                              <td className="border border-border p-3 text-center text-xs">ℝ \ {"{π/2 + kπ}"}</td>
+                              <td className="border border-border p-3 text-center text-lg text-foreground/85 leading-relaxed">ℝ \ {"{π/2 + kπ}"}</td>
                               <td className="border border-border p-3 text-center">ℝ</td>
                               <td className="border border-border p-3 text-center">π</td>
                             </tr>
@@ -1170,10 +1170,10 @@ export default function AulaTrigonometria({
                     <div className="space-y-4">
                       <p><strong>Transformações básicas:</strong> y = a·sen(bx + c) + d</p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm">• <strong>a</strong>: amplitude (altura máxima - valor central)</p>
-                        <p className="text-sm">• <strong>b</strong>: afeta período (período = 2π/b)</p>
-                        <p className="text-sm">• <strong>c</strong>: deslocamento horizontal (defasagem)</p>
-                        <p className="text-sm">• <strong>d</strong>: deslocamento vertical</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">• <strong>a</strong>: amplitude (altura máxima - valor central)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">• <strong>b</strong>: afeta período (período = 2π/b)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">• <strong>c</strong>: deslocamento horizontal (defasagem)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">• <strong>d</strong>: deslocamento vertical</p>
                       </div>
                       <AlertBox tipo="success" titulo="Exemplo Completo">
                         Exemplo: y = 2·sen(3x - π/2) + 1 tem amplitude 2, período 2π/3, deslocamento horizontal π/6 à direita, e desloca 1 unidade para cima.
@@ -1251,7 +1251,7 @@ export default function AulaTrigonometria({
                 <p>• Período de tg(x): π</p>
                 <p>• Amplitude de sen(x) e cos(x): [-1, 1]</p>
                 <p>• sen(x) é ÍMPAR, cos(x) é PAR</p>
-                <p className="text-sm italic pt-2">Deslocamento: sen(x+π/2) = cos(x)</p>
+                <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Deslocamento: sen(x+π/2) = cos(x)</p>
               </div>)
             }}
             audio={{
@@ -1306,7 +1306,7 @@ export default function AulaTrigonometria({
                       </p>
                       <div className="space-y-3">
                         <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
-                          <p className="text-sm font-bold text-indigo-400 mb-1">
+                          <p className="text-xl font-bold text-indigo-400 mb-1 text-foreground/85 leading-relaxed">
                             Identidade Fundamental:
                           </p>
                           <p className="text-xl font-mono text-center">
@@ -1314,7 +1314,7 @@ export default function AulaTrigonometria({
                           </p>
                         </div>
                         <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
-                          <p className="text-sm font-bold text-blue-400 mb-1">
+                          <p className="text-xl font-bold text-blue-400 mb-1 text-foreground/85 leading-relaxed">
                             Dividindo por cos²θ:
                           </p>
                           <p className="text-xl font-mono text-center">
@@ -1322,7 +1322,7 @@ export default function AulaTrigonometria({
                           </p>
                         </div>
                         <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
-                          <p className="text-sm font-bold text-cyan-400 mb-1">
+                          <p className="text-xl font-bold text-cyan-400 mb-1 text-foreground/85 leading-relaxed">
                             Dividindo por sen²θ:
                           </p>
                           <p className="text-xl font-mono text-center">
@@ -1415,16 +1415,16 @@ export default function AulaTrigonometria({
                     <div className="space-y-4">
                       <p><strong>De uma identidade, derivamos todas as outras:</strong></p>
                       <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 space-y-3">
-                        <div className="text-sm">
+                        <div className="text-xl text-foreground/85 leading-relaxed">
                           <p className="font-bold mb-1">Identidade Fundamental:</p>
                           <p className="font-mono">sen²θ + cos²θ = 1</p>
                         </div>
-                        <div className="text-sm">
+                        <div className="text-xl text-foreground/85 leading-relaxed">
                           <p className="font-bold mb-1">Divida por cos²θ:</p>
                           <p className="font-mono">sen²θ/cos²θ + 1 = 1/cos²θ</p>
                           <p className="font-mono">tg²θ + 1 = sec²θ</p>
                         </div>
-                        <div className="text-sm">
+                        <div className="text-xl text-foreground/85 leading-relaxed">
                           <p className="font-bold mb-1">Divida por sen²θ:</p>
                           <p className="font-mono">1 + cos²θ/sen²θ = 1/sen²θ</p>
                           <p className="font-mono">1 + cotg²θ = cossec²θ</p>
@@ -1502,7 +1502,7 @@ export default function AulaTrigonometria({
                 <p>1) sen²θ + cos²θ = 1 (Pitagórica)</p>
                 <p>2) 1 + tg²θ = sec²θ</p>
                 <p>3) 1 + cotg²θ = cossec²θ</p>
-                <p className="text-sm italic pt-2">Tip: Deduza a partir da primeira! Divida por cos² ou sen².</p>
+                <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Tip: Deduza a partir da primeira! Divida por cos² ou sen².</p>
               </div>)
             }}
             audio={{
@@ -1560,23 +1560,23 @@ export default function AulaTrigonometria({
                         <p className="text-xl font-mono font-bold">
                           a/sen A = b/sen B = c/sen C = 2R
                         </p>
-                        <p className="text-sm text-muted-foreground mt-2">
+                        <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">
                           onde R é o raio da circunferência circunscrita ao triângulo
                         </p>
                       </div>
                       <p>Use a Lei dos Senos quando conhecer:</p>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                         <div className="p-3 bg-blue-500/5 rounded-xl border border-blue-500/20 text-center">
-                          <p className="text-xs font-bold text-blue-500">AAS</p>
-                          <p className="text-sm">Dois ângulos + lado não incluso</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500">AAS</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Dois ângulos + lado não incluso</p>
                         </div>
                         <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-center">
-                          <p className="text-xs font-bold text-emerald-500">ASA</p>
-                          <p className="text-sm">Dois ângulos + lado incluso</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500">ASA</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Dois ângulos + lado incluso</p>
                         </div>
                         <div className="p-3 bg-cyan-500/5 rounded-xl border border-cyan-500/20 text-center">
-                          <p className="text-xs font-bold text-cyan-500">SSA</p>
-                          <p className="text-sm">Dois lados + ângulo oposto</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-500">SSA</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Dois lados + ângulo oposto</p>
                         </div>
                       </div>
                     </div>
@@ -1593,10 +1593,10 @@ export default function AulaTrigonometria({
                         altura, estruturas submarinas). O método:
                       </p>
                       <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-blue-500">
+                        <p className="text-xl font-bold text-blue-500 text-foreground/85 leading-relaxed">
                           Procedimento de Triangulação:
                         </p>
-                        <ol className="list-decimal list-inside space-y-1 text-sm">
+                        <ol className="list-decimal list-inside space-y-1 text-xl text-foreground/85 leading-relaxed">
                           <li>Estabeleça uma base de medição (lado conhecido)</li>
                           <li>Meça os ângulos de dois pontos da base ao alvo</li>
                           <li>Calcule o terceiro ângulo (180° − soma dos dois)</li>
@@ -1618,17 +1618,17 @@ export default function AulaTrigonometria({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="bg-indigo-500/5 border border-indigo-500/20 rounded-xl p-4">
-                        <p className="text-sm font-bold text-indigo-400 mb-3">
+                        <p className="text-xl font-bold text-indigo-400 mb-3 text-foreground/85 leading-relaxed">
                           Problema:
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Dois técnicos estão na base de uma plataforma, separados
                           por 40m. O técnico A mede ângulo de 70° e o técnico B
                           mede ângulo de 60° para o topo de uma estrutura. Qual a
                           distância do técnico B ao topo?
                         </p>
                       </div>
-                      <div className="space-y-2 text-sm">
+                      <div className="space-y-2 text-xl text-foreground/85 leading-relaxed">
                         <p>
                           <strong>Passo 1:</strong> Terceiro ângulo C = 180° − 70°
                           − 60° = 50°
@@ -1672,10 +1672,10 @@ export default function AulaTrigonometria({
                     <div className="space-y-4">
                       <p><strong>Exemplo:</strong> Em um triângulo, A = 60°, B = 45°, e lado c = 10. Encontre lado a.</p>
                       <div className="bg-rose-500/10 border border-rose-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm">1. Primeiro, encontre C: C = 180° - 60° - 45° = 75°</p>
-                        <p className="text-sm">2. Aplique Lei dos Senos: a/sen(A) = c/sen(C)</p>
-                        <p className="text-sm">3. a/sen(60°) = 10/sen(75°)</p>
-                        <p className="text-sm">4. a = 10·sen(60°)/sen(75°) = 10·(√3/2)/0,966 ≈ 8,93</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">1. Primeiro, encontre C: C = 180° - 60° - 45° = 75°</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">2. Aplique Lei dos Senos: a/sen(A) = c/sen(C)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">3. a/sen(60°) = 10/sen(75°)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">4. a = 10·sen(60°)/sen(75°) = 10·(√3/2)/0,966 ≈ 8,93</p>
                       </div>
                       <AlertBox tipo="success" titulo="Caso Mais Comum">
                         Este é o caso mais comum em testes: use Lei dos Senos quando conhecer uma medida de lado com seu ângulo oposto.
@@ -1751,7 +1751,7 @@ export default function AulaTrigonometria({
                 <p className="font-semibold">Lei dos Senos: lado/seno oposto</p>
                 <p>a/sen(A) = b/sen(B) = c/sen(C) = 2R</p>
                 <p>Onde R é o raio da circunferência circunscrita.</p>
-                <p className="text-sm italic pt-2">Use quando: conhecer 2 ângulos + 1 lado (AAS ou ASA)</p>
+                <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Use quando: conhecer 2 ângulos + 1 lado (AAS ou ASA)</p>
               </div>)
             }}
             audio={{
@@ -1843,13 +1843,13 @@ export default function AulaTrigonometria({
                         </p>
                       </div>
                       <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4">
-                        <p className="text-sm font-bold text-blue-500 mb-2">
+                        <p className="text-xl font-bold text-blue-500 mb-2 text-foreground/85 leading-relaxed">
                           Exemplo: Triângulo com lados 5, 7, 8
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           cos A = (7²+8²−5²)/(2·7·8) = (49+64−25)/112 = 88/112 = 11/14
                         </p>
-                        <p className="text-sm mt-1">
+                        <p className="text-xl mt-1 text-foreground/85 leading-relaxed">
                           A = arccos(11/14) ≈ 38,2°
                         </p>
                       </div>
@@ -1869,20 +1869,20 @@ export default function AulaTrigonometria({
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-3">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-3">
                             USE LEI DOS SENOS quando:
                           </p>
-                          <ul className="text-sm space-y-1 list-disc list-inside">
+                          <ul className="text-xl space-y-1 list-disc list-inside text-foreground/85 leading-relaxed">
                             <li>AAS: dois ângulos e lado oposto</li>
                             <li>ASA: dois ângulos e lado incluso</li>
                             <li>SSA: dois lados e ângulo oposto</li>
                           </ul>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-500 mb-3">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-3">
                             USE LEI DOS COSSENOS quando:
                           </p>
-                          <ul className="text-sm space-y-1 list-disc list-inside">
+                          <ul className="text-xl space-y-1 list-disc list-inside text-foreground/85 leading-relaxed">
                             <li>LAL: dois lados e ângulo incluso</li>
                             <li>LLL: três lados (para achar ângulos)</li>
                             <li>Ângulo obtuso com dois lados</li>
@@ -1915,10 +1915,10 @@ export default function AulaTrigonometria({
                     <div className="space-y-4">
                       <p><strong>Exemplo:</strong> Dois lados de um triângulo medem 5 e 7, com ângulo entre eles de 60°. Encontre o terceiro lado.</p>
                       <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm">Aplique Lei dos Cossenos: c² = 5² + 7² - 2(5)(7)cos(60°)</p>
-                        <p className="text-sm">c² = 25 + 49 - 70(1/2)</p>
-                        <p className="text-sm">c² = 74 - 35 = 39</p>
-                        <p className="text-sm">c = √39 ≈ 6,24</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Aplique Lei dos Cossenos: c² = 5² + 7² - 2(5)(7)cos(60°)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">c² = 25 + 49 - 70(1/2)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">c² = 74 - 35 = 39</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">c = √39 ≈ 6,24</p>
                       </div>
                       <AlertBox tipo="info" titulo="Quando Usar Lei dos Cossenos">
                         Quando você conhece dois lados e o ângulo ENTRE eles, sempre use Lei dos Cossenos (SAS).
@@ -1994,7 +1994,7 @@ export default function AulaTrigonometria({
                 <p className="font-semibold">Lei dos Cossenos (Pitágoras Generalizada):</p>
                 <p>a² = b² + c² - 2bc·cos(A)</p>
                 <p>Use quando: 3 lados (SSS) ou 2 lados + ângulo entre (SAS)</p>
-                <p className="text-sm italic pt-2">Se cos(A) = 0 (A = 90°), vira a² = b² + c² (Pitágoras!).</p>
+                <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Se cos(A) = 0 (A = 90°), vira a² = b² + c² (Pitágoras!).</p>
               </div>)
             }}
             audio={{
@@ -2051,26 +2051,26 @@ export default function AulaTrigonometria({
                       </p>
                       <div className="space-y-3">
                         <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
-                          <p className="text-sm font-bold text-blue-400 mb-1">
+                          <p className="text-xl font-bold text-blue-400 mb-1 text-foreground/85 leading-relaxed">
                             sen(x) = k (|k| ≤ 1):
                           </p>
-                          <p className="font-mono text-sm">
+                          <p className="font-mono text-xl text-foreground/85 leading-relaxed">
                             x = arcsen(k) + 360°n, ou x = 180° − arcsen(k) + 360°n
                           </p>
                         </div>
                         <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
-                          <p className="text-sm font-bold text-emerald-400 mb-1">
+                          <p className="text-xl font-bold text-emerald-400 mb-1 text-foreground/85 leading-relaxed">
                             cos(x) = k (|k| ≤ 1):
                           </p>
-                          <p className="font-mono text-sm">
+                          <p className="font-mono text-xl text-foreground/85 leading-relaxed">
                             x = ±arccos(k) + 360°n
                           </p>
                         </div>
                         <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
-                          <p className="text-sm font-bold text-cyan-400 mb-1">
+                          <p className="text-xl font-bold text-cyan-400 mb-1 text-foreground/85 leading-relaxed">
                             tan(x) = k:
                           </p>
-                          <p className="font-mono text-sm">
+                          <p className="font-mono text-xl text-foreground/85 leading-relaxed">
                             x = arctan(k) + 180°n
                           </p>
                         </div>
@@ -2099,10 +2099,10 @@ export default function AulaTrigonometria({
                             key={item.passo}
                             className="flex items-start gap-3 p-3 bg-muted/30 rounded-lg border border-border"
                           >
-                            <span className="flex-shrink-0 w-7 h-7 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                            <span className="flex-shrink-0 w-7 h-7 bg-blue-500 text-white rounded-full flex items-center justify-center text-xl font-bold text-foreground/85 leading-relaxed">
                               {item.passo}
                             </span>
-                            <p className="text-sm pt-0.5">{item.desc}</p>
+                            <p className="text-xl pt-0.5 text-foreground/85 leading-relaxed">{item.desc}</p>
                           </div>
                         ))}
                       </div>
@@ -2119,16 +2119,16 @@ export default function AulaTrigonometria({
                         o intervalo de busca:
                       </p>
                       <div className="bg-indigo-500/5 border border-indigo-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-indigo-400">
+                        <p className="text-xl font-bold text-indigo-400 text-foreground/85 leading-relaxed">
                           Exemplo: sen(2x) = 1/2 em [0°, 360°]
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Seja u = 2x. Como x ∈ [0°, 360°], então u ∈ [0°, 720°].
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           sen(u) = 1/2 → u = 30°, 150°, 390°, 510° (em [0°, 720°])
                         </p>
-                        <p className="text-sm font-bold">
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">
                           x = u/2 = 15°, 75°, 195°, 255° → 4 soluções!
                         </p>
                       </div>
@@ -2157,11 +2157,11 @@ export default function AulaTrigonometria({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm">1. Isole sin(x): sin(x) = √3/2</p>
-                        <p className="text-sm">2. Ache os ângulos: sin(x) = √3/2 quando x = π/3 ou x = 2π/3</p>
-                        <p className="text-sm">3. No intervalo [0, 2π):</p>
-                        <p className="text-sm ml-4">• Primeira volta: x = π/3 (60°) ou x = 2π/3 (120°)</p>
-                        <p className="text-sm">4. Solução geral: x = π/3 + 2πk ou x = 2π/3 + 2πk, onde k ∈ Z</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">1. Isole sin(x): sin(x) = √3/2</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">2. Ache os ângulos: sin(x) = √3/2 quando x = π/3 ou x = 2π/3</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">3. No intervalo [0, 2π):</p>
+                        <p className="text-xl ml-4 text-foreground/85 leading-relaxed">• Primeira volta: x = π/3 (60°) ou x = 2π/3 (120°)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">4. Solução geral: x = π/3 + 2πk ou x = 2π/3 + 2πk, onde k ∈ Z</p>
                       </div>
                       <AlertBox tipo="success" titulo="Soluções no Intervalo">
                         Lembre: se sin(x) = a, então x = arcsin(a) ou x = π - arcsin(a) (ambas soluções no intervalo [0, 2π)).
@@ -2238,7 +2238,7 @@ export default function AulaTrigonometria({
                 <p>1) Isole a função (sen, cos ou tg)</p>
                 <p>2) Encontre ângulos de referência</p>
                 <p>3) Aplique a periodicidade (adicione 2πk ou πk)</p>
-                <p className="text-sm italic pt-2">Lembre: Sen e Cos têm período 2π; Tangente tem período π.</p>
+                <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Lembre: Sen e Cos têm período 2π; Tangente tem período π.</p>
               </div>)
             }}
             audio={{
@@ -2296,41 +2296,41 @@ export default function AulaTrigonometria({
                       </p>
                       <div className="space-y-3">
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">
                             Rampa/Duto Inclinado
                           </p>
-                          <p className="text-sm font-mono">
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                             Altura = comprimento × sen(θ)
                           </p>
-                          <p className="text-sm font-mono">
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                             Projeção horizontal = comprimento × cos(θ)
                           </p>
-                          <p className="text-sm mt-2 text-muted-foreground">
+                          <p className="text-xl mt-2 text-muted-foreground text-foreground/85 leading-relaxed">
                             Ex: Duto de 100m a 30° → Altura = 50m, Horiz = 50√3m
                           </p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-500 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-500 mb-2">
                             Cabo de Içamento
                           </p>
-                          <p className="text-sm font-mono">
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                             Tensão horizontal = T × cos(θ)
                           </p>
-                          <p className="text-sm font-mono">
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                             Tensão vertical = T × sen(θ)
                           </p>
-                          <p className="text-sm mt-2 text-muted-foreground">
+                          <p className="text-xl mt-2 text-muted-foreground text-foreground/85 leading-relaxed">
                             Onde T é a tensão no cabo e θ é o ângulo com a vertical
                           </p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-500 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-2">
                             Flare Tower — Ângulo de Elevação
                           </p>
-                          <p className="text-sm font-mono">
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                             Altura = distância_horizontal × tan(θ_elevação)
                           </p>
-                          <p className="text-sm mt-2 text-muted-foreground">
+                          <p className="text-xl mt-2 text-muted-foreground text-foreground/85 leading-relaxed">
                             Medição indireta: técnico mede ângulo a distância segura
                           </p>
                         </div>
@@ -2349,20 +2349,20 @@ export default function AulaTrigonometria({
                         vasos de pressão e estruturas:
                       </p>
                       <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4 space-y-3">
-                        <p className="text-sm font-bold text-blue-500">
+                        <p className="text-xl font-bold text-blue-500 text-foreground/85 leading-relaxed">
                           Inspeção por Ultrassom — Localização de Defeito:
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Um transdutor emite onda a 60° da superfície. O eco retorna
                           em t=2μs. Se v=5000m/s:
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Distância percorrida = v × t/2 = 5000 × 1μs = 5mm
                         </p>
-                        <p className="text-sm font-bold">
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">
                           Profundidade = 5 × sen(60°) = 5 × (√3/2) ≈ 4,33mm
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Posição lateral = 5 × cos(60°) = 5 × 0,5 = 2,5mm
                         </p>
                       </div>
@@ -2388,30 +2388,30 @@ export default function AulaTrigonometria({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">
                             Decomposição de Correntes Marítimas
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Corrente de 3 nós a 45°:
                           </p>
-                          <p className="text-sm font-mono mt-1">
+                          <p className="text-xl font-mono mt-1 text-foreground/85 leading-relaxed">
                             N-S: 3 × cos(45°) = 3√2/2 nós
                           </p>
-                          <p className="text-sm font-mono">
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                             L-O: 3 × sen(45°) = 3√2/2 nós
                           </p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-500 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-500 mb-2">
                             Força dos Propulsores (Thrusters)
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Propulsor de 100kN a 30° da proa:
                           </p>
-                          <p className="text-sm font-mono mt-1">
+                          <p className="text-xl font-mono mt-1 text-foreground/85 leading-relaxed">
                             Fx = 100 × cos(30°) = 50√3 kN
                           </p>
-                          <p className="text-sm font-mono">
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                             Fy = 100 × sen(30°) = 50 kN
                           </p>
                         </div>
@@ -2442,10 +2442,10 @@ export default function AulaTrigonometria({
                     <div className="space-y-4">
                       <p><strong>Um poço desviado tem comprimento vertical de 2000m e comprimento total (ao longo do poço) de 2500m. Qual é o ângulo de desvio em relação à vertical?</strong></p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm">1. Identifique: CO (comprimento vertical) = 2000m</p>
-                        <p className="text-sm">2. Hip (comprimento total do poço) = 2500m</p>
-                        <p className="text-sm">3. Use: cos(θ) = CO/Hip = 2000/2500 = 0,8</p>
-                        <p className="text-sm">4. θ = arccos(0,8) ≈ 36,87°</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">1. Identifique: CO (comprimento vertical) = 2000m</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">2. Hip (comprimento total do poço) = 2500m</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">3. Use: cos(θ) = CO/Hip = 2000/2500 = 0,8</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">4. θ = arccos(0,8) ≈ 36,87°</p>
                       </div>
                       <AlertBox tipo="success" titulo="Engenharia de Poços">
                         Este cálculo é essencial em engenharia de poços para verificar se o desvio está dentro dos parâmetros operacionais (geralmente 0-60° dependendo da zona).
@@ -2523,7 +2523,7 @@ export default function AulaTrigonometria({
                 <p>• Deflexão em trajetos: alterações de direção calculadas por senos</p>
                 <p>• Força resultante: decomposição vetorial em componentes perpendiculares</p>
                 <p>• Coordenadas geográficas: latitude/longitude em navegação offshore</p>
-                <p className="text-sm italic pt-2">Tip: Desenhe sempre o triângulo ou diagrama vetorial!</p>
+                <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Tip: Desenhe sempre o triângulo ou diagrama vetorial!</p>
               </div>)
             }}
             audio={{
@@ -2595,7 +2595,7 @@ export default function AulaTrigonometria({
                             >
                               {item.item}
                             </span>
-                            <p className="text-sm pt-0.5">{item.desc}</p>
+                            <p className="text-xl pt-0.5 text-foreground/85 leading-relaxed">{item.desc}</p>
                           </div>
                         ))}
                       </div>
@@ -2638,10 +2638,10 @@ export default function AulaTrigonometria({
                             key={i}
                             className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20"
                           >
-                            <p className="text-sm font-bold text-amber-500 mb-1">
+                            <p className="text-xl font-bold text-amber-500 mb-1 text-foreground/85 leading-relaxed">
                               ⚠️ {p.trap}
                             </p>
-                            <p className="text-sm text-muted-foreground">{p.detail}</p>
+                            <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">{p.detail}</p>
                           </div>
                         ))}
                       </div>
@@ -2659,38 +2659,38 @@ export default function AulaTrigonometria({
                       </p>
                       <div className="space-y-3">
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-sm font-bold text-blue-500 mb-2">
+                          <p className="text-xl font-bold text-blue-500 mb-2 text-foreground/85 leading-relaxed">
                             1. Leia o enunciado e desenhe o triângulo (30s)
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Marque os dados: ângulos, lados, o que é pedido. O
                             desenho evita 80% dos erros de interpretação.
                           </p>
                         </div>
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-sm font-bold text-emerald-500 mb-2">
+                          <p className="text-xl font-bold text-emerald-500 mb-2 text-foreground/85 leading-relaxed">
                             2. Identifique o ângulo e a relação necessária (30s)
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             É triângulo retângulo? Use SOH-CAH-TOA. Não é
                             retângulo? Escolha Lei dos Senos ou Cossenos.
                           </p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-sm font-bold text-cyan-500 mb-2">
+                          <p className="text-xl font-bold text-cyan-500 mb-2 text-foreground/85 leading-relaxed">
                             3. Substitua e calcule (2-3 min)
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Use os valores notáveis memorizados. Não tente
                             calcular senos de ângulos não-notáveis — a banca
                             sempre dá valores que simplificam.
                           </p>
                         </div>
                         <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                          <p className="text-sm font-bold text-indigo-500 mb-2">
+                          <p className="text-xl font-bold text-indigo-500 mb-2 text-foreground/85 leading-relaxed">
                             4. Verifique se a resposta faz sentido físico (30s)
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             A altura pode ser maior que o comprimento da rampa?
                             Não! Se seu resultado viola o senso comum, revise o
                             ângulo de referência.
@@ -2722,23 +2722,23 @@ export default function AulaTrigonometria({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-3">
-                        <div className="text-sm">
+                        <div className="text-xl text-foreground/85 leading-relaxed">
                           <p className="font-bold mb-1">Triângulo Retângulo:</p>
                           <p>Você conhece um ângulo agudo e um lado? Use SOH-CAH-TOA</p>
                         </div>
-                        <div className="text-sm">
+                        <div className="text-xl text-foreground/85 leading-relaxed">
                           <p className="font-bold mb-1">2 ângulos + 1 lado (AAS/ASA):</p>
                           <p>Use Lei dos Senos: a/sen(A) = b/sen(B)</p>
                         </div>
-                        <div className="text-sm">
+                        <div className="text-xl text-foreground/85 leading-relaxed">
                           <p className="font-bold mb-1">2 lados + ângulo entre (SAS):</p>
                           <p>Use Lei dos Cossenos: a² = b² + c² - 2bc·cos(A)</p>
                         </div>
-                        <div className="text-sm">
+                        <div className="text-xl text-foreground/85 leading-relaxed">
                           <p className="font-bold mb-1">3 lados (SSS):</p>
                           <p>Use Lei dos Cossenos para achar ângulos</p>
                         </div>
-                        <div className="text-sm">
+                        <div className="text-xl text-foreground/85 leading-relaxed">
                           <p className="font-bold mb-1">Equação do tipo sin(x)=a:</p>
                           <p>Isole, ache o ângulo de referência, aplique periodicidade</p>
                         </div>
@@ -2755,7 +2755,7 @@ export default function AulaTrigonometria({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
-                        <div className="text-sm space-y-2">
+                        <div className="text-xl space-y-2 text-foreground/85 leading-relaxed">
                           <p>☐ Decorei a tabela de ângulos notáveis (30°, 45°, 60°)?</p>
                           <p>☐ Lembro dos sinais por quadrante (ASTC)?</p>
                           <p>☐ Sei quando usar Lei dos Senos vs Cossenos?</p>
@@ -2871,7 +2871,7 @@ export default function AulaTrigonometria({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-white/50 rounded-lg p-4">
                   <p className="font-semibold mb-3">O que você aprendeu:</p>
-                  <ul className="text-sm space-y-2 list-disc list-inside">
+                  <ul className="text-xl space-y-2 list-disc list-inside text-foreground/85 leading-relaxed">
                     <li>Razões trigonométricas em triângulos</li>
                     <li>Tabela de ângulos notáveis</li>
                     <li>Círculo trigonométrico e radianos</li>
@@ -2884,7 +2884,7 @@ export default function AulaTrigonometria({
                 </div>
                 <div className="bg-white/50 rounded-lg p-4">
                   <p className="font-semibold mb-3">Como você pode usar:</p>
-                  <ul className="text-sm space-y-2 list-disc list-inside">
+                  <ul className="text-xl space-y-2 list-disc list-inside text-foreground/85 leading-relaxed">
                     <li>Resolver problemas de inclinação de estruturas</li>
                     <li>Calcular distâncias em levantamentos</li>
                     <li>Analisar movimentos periódicos</li>
@@ -2897,8 +2897,8 @@ export default function AulaTrigonometria({
                 </div>
               </div>
               <div className="mt-8 p-6 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
-                <p className="text-center text-sm font-semibold mb-4">Próximos Passos Recomendados:</p>
-                <ol className="text-sm space-y-2 list-decimal list-inside">
+                <p className="text-center text-xl font-semibold mb-4 text-foreground/85 leading-relaxed">Próximos Passos Recomendados:</p>
+                <ol className="text-xl space-y-2 list-decimal list-inside text-foreground/85 leading-relaxed">
                   <li>Completar todos os 10 módulos do simulado</li>
                   <li>Refazer os exercícios com ângulos diferentes</li>
                   <li>Resolver problemas reais da Petrobras (buscar em editais)</li>

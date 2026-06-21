@@ -342,7 +342,7 @@ export default function AulaRazaoProporcao({
                   icone: "📖",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm leading-relaxed">
+                      <p className="text-xl leading-relaxed text-foreground/85">
                         <strong>Razão</strong> é o quociente entre dois números
                         reais, indicando quantas vezes um valor cabe no outro. A
                         razão entre <em>a</em> e <em>b</em>
@@ -350,7 +350,7 @@ export default function AulaRazaoProporcao({
                         <strong>a:b</strong> ou <strong>a para b</strong>.
                       </p>
                       <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
-                        <p className="font-bold text-blue-700 dark:text-blue-400 text-sm mb-2">
+                        <p className="font-bold text-blue-700 dark:text-blue-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Fórmula Central:
                         </p>
                         <p className="font-mono text-center text-lg font-bold">
@@ -372,35 +372,35 @@ export default function AulaRazaoProporcao({
                   icone: "🏭",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm leading-relaxed">
+                      <p className="text-xl leading-relaxed text-foreground/85">
                         Razão aparece em inúmeros contextos operacionais:
                       </p>
                       <div className="grid gap-3">
                         <div className="p-3 bg-sky-500/10 rounded-lg border border-sky-500/20">
-                          <p className="font-bold text-sky-700 dark:text-sky-400 text-xs mb-1">
+                          <p className="font-bold text-sky-700 dark:text-sky-400 text-lg text-foreground/85 leading-relaxed mb-1">
                             Exemplo 1 — Equipe de Campo
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Uma equipe tem 15 técnicos e 5 engenheiros. A razão
                             técnicos:engenheiros = 15:5 = <strong>3:1</strong>.
                             Para cada engenheiro, há 3 técnicos sob coordenação.
                           </p>
                         </div>
                         <div className="p-3 bg-sky-500/10 rounded-lg border border-sky-500/20">
-                          <p className="font-bold text-sky-700 dark:text-sky-400 text-xs mb-1">
+                          <p className="font-bold text-sky-700 dark:text-sky-400 text-lg text-foreground/85 leading-relaxed mb-1">
                             Exemplo 2 — Densidade de Fluido
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Densidade = Massa / Volume = 840 kg / 1 m³ ={" "}
                             <strong>840 kg/m³</strong>. Toda densidade é uma
                             razão massa/volume.
                           </p>
                         </div>
                         <div className="p-3 bg-sky-500/10 rounded-lg border border-sky-500/20">
-                          <p className="font-bold text-sky-700 dark:text-sky-400 text-xs mb-1">
+                          <p className="font-bold text-sky-700 dark:text-sky-400 text-lg text-foreground/85 leading-relaxed mb-1">
                             Exemplo 3 — Escala de Projeto
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Planta de refinaria escala 1:200 → 1 cm no papel =
                             200 cm (2 m) na realidade. Se um equipamento mede
                             4,5 cm no desenho, tem{" "}
@@ -417,15 +417,15 @@ export default function AulaRazaoProporcao({
                   icone: "🎯",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm leading-relaxed">
+                      <p className="text-xl leading-relaxed text-foreground/85">
                         A CESGRANRIO cobra dois pontos de atenção sobre razão:
                       </p>
                       <div className="space-y-3">
                         <div className="p-3 bg-amber-500/10 rounded-lg border border-amber-500/20">
-                          <p className="font-bold text-amber-700 dark:text-amber-400 text-xs mb-1">
+                          <p className="font-bold text-amber-700 dark:text-amber-400 text-lg text-foreground/85 leading-relaxed mb-1">
                             Dica 1 — Ordem da Leitura
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             <strong>
                               "A razão entre derivados e petróleo"
                             </strong>{" "}
@@ -434,16 +434,16 @@ export default function AulaRazaoProporcao({
                           </p>
                         </div>
                         <div className="p-3 bg-amber-500/10 rounded-lg border border-amber-500/20">
-                          <p className="font-bold text-amber-700 dark:text-amber-400 text-xs mb-1">
+                          <p className="font-bold text-amber-700 dark:text-amber-400 text-lg text-foreground/85 leading-relaxed mb-1">
                             Dica 2 — Simplificação Obrigatória
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             210.000/300.000 = 21/30 = <strong>7/10</strong>. A
                             CESGRANRIO sempre cobra a forma simplificada. Se a
                             alternativa tiver 21/30 e 7/10, a correta é 7/10.
                           </p>
                         </div>
-                        <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary">
+                        <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-lg text-foreground/85 leading-relaxed text-primary">
                           <strong>Pulo do Gato:</strong> Quando a questão diz
                           "razão entre A e B", A está no numerador. Quando diz
                           "quantas vezes A cabe em B", é B/A.
@@ -467,7 +467,7 @@ export default function AulaRazaoProporcao({
                         não se simplifica a unidade de ambos os termos —
                         mantém-se a unidade composta (ex: kg/m³).
                       </AlertBox>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Razão áurea (φ ≈ 1,618): Uma razão irracional famosa que
                         aparece em arquitetura e design. Em provas: segmento de
                         10 dividido na razão áurea → parte maior = 10 ×
@@ -496,22 +496,22 @@ export default function AulaRazaoProporcao({
                     <h6 className="text-xl font-bold uppercase tracking-tight">
                       Rendimento
                     </h6>
-                    <p className="font-medium text-muted-foreground text-sm">
+                    <p className="font-medium text-muted-foreground text-xl text-foreground/85 leading-relaxed">
                       Como calcular o rendimento de uma bomba ou refinaria?
                     </p>
                   </div>
                 }
                 verso={
                   <div className="space-y-4 text-left">
-                    <p className="text-xs font-bold text-emerald-400 border-b border-border/30 pb-2">
+                    <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 border-b border-border/30 pb-2">
                       Rendimento = Saída Útil / Entrada Total
                     </p>
-                    <p className="text-xs text-zinc-100 leading-relaxed">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-zinc-100 leading-relaxed">
                       Razão entre o que sai útil e o que entrou. Bomba com
                       2.000W de entrada e 1.600W úteis tem rendimento 1600/2000
                       = 0,80 = 80%.
                     </p>
-                    <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary">
+                    <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-lg text-foreground/85 leading-relaxed text-primary">
                       <strong>Dica de Elite:</strong> Rendimento nunca
                       ultrapassa 1 (100%). Se o resultado der maior que 1, você
                       inverteu a fração.
@@ -529,21 +529,21 @@ export default function AulaRazaoProporcao({
                     <h6 className="text-xl font-bold uppercase tracking-tight">
                       Escala
                     </h6>
-                    <p className="font-medium text-muted-foreground text-sm">
+                    <p className="font-medium text-muted-foreground text-xl text-foreground/85 leading-relaxed">
                       O que significa a escala 1:50.000 em um mapa?
                     </p>
                   </div>
                 }
                 verso={
                   <div className="space-y-4 text-left">
-                    <p className="text-xs font-bold text-emerald-400 border-b border-border/30 pb-2">
+                    <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 border-b border-border/30 pb-2">
                       Escala = Medida no Mapa / Medida Real
                     </p>
-                    <p className="text-xs text-zinc-100 leading-relaxed">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-zinc-100 leading-relaxed">
                       1:50.000 significa que 1 unidade no mapa representa 50.000
                       unidades na realidade. 3 cm no mapa = 1,5 km na realidade.
                     </p>
-                    <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary">
+                    <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-lg text-foreground/85 leading-relaxed text-primary">
                       <strong>Dica de Elite:</strong> SEMPRE use a mesma unidade
                       nos dois lados. Converta km para cm ANTES de dividir.
                     </div>
@@ -560,21 +560,21 @@ export default function AulaRazaoProporcao({
                     <h6 className="text-xl font-bold uppercase tracking-tight">
                       Razão de Mistura
                     </h6>
-                    <p className="font-medium text-muted-foreground text-sm">
+                    <p className="font-medium text-muted-foreground text-xl text-foreground/85 leading-relaxed">
                       Qual a razão em uma mistura 70% gasolina e 30% etanol?
                     </p>
                   </div>
                 }
                 verso={
                   <div className="space-y-4 text-left">
-                    <p className="text-xs font-bold text-emerald-400 border-b border-border/30 pb-2">
+                    <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 border-b border-border/30 pb-2">
                       Razão Gasolina:Etanol = 7:3
                     </p>
-                    <p className="text-xs text-zinc-100 leading-relaxed">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-zinc-100 leading-relaxed">
                       70% e 30% = razão 7:3. Em 50 litros: gasolina = 7/10 × 50
                       = 35L; etanol = 3/10 × 50 = 15L.
                     </p>
-                    <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary">
+                    <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-lg text-foreground/85 leading-relaxed text-primary">
                       <strong>Dica de Elite:</strong> Razão em mistura é
                       parte/parte, não parte/total. Distinguir dos percentuais.
                     </div>
@@ -653,7 +653,7 @@ export default function AulaRazaoProporcao({
                       <p className="font-bold text-indigo-600 dark:text-indigo-400">
                         Padrão Essencial
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Memorize a estrutura-chave deste módulo.
                       </p>
                     </div>
@@ -853,7 +853,7 @@ export default function AulaRazaoProporcao({
                 <h4 className="font-bold text-foreground">
                   Definição Formal & Propriedade Fundamental
                 </h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                   <p>
                     <strong>Proporção:</strong> a/b = c/d (lê-se "a para b assim
                     como c para d")
@@ -903,20 +903,20 @@ export default function AulaRazaoProporcao({
                   icone: "📖",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm leading-relaxed">
+                      <p className="text-xl leading-relaxed text-foreground/85">
                         Uma <strong>proporção</strong> é a igualdade entre duas
                         razões:
                         <strong> a/b = c/d</strong>, onde a e d são os{" "}
                         <em>extremos</em> e b e c são os <em>meios</em>.
                       </p>
                       <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
-                        <p className="font-bold text-indigo-700 dark:text-indigo-400 text-sm mb-3">
+                        <p className="font-bold text-indigo-700 dark:text-indigo-400 text-xl mb-3 text-foreground/85 leading-relaxed">
                           Propriedade Fundamental:
                         </p>
                         <p className="font-mono text-center text-xl font-bold mb-2">
                           a × d = b × c
                         </p>
-                        <p className="text-xs text-center text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-center text-muted-foreground">
                           (produto dos extremos = produto dos meios)
                         </p>
                       </div>
@@ -936,22 +936,22 @@ export default function AulaRazaoProporcao({
                     <div className="space-y-4">
                       <div className="space-y-3">
                         <div className="p-3 bg-violet-500/10 rounded-lg border border-violet-500/20">
-                          <p className="font-bold text-violet-700 dark:text-violet-400 text-xs mb-2">
+                          <p className="font-bold text-violet-700 dark:text-violet-400 text-lg text-foreground/85 leading-relaxed mb-2">
                             Exemplo 1 — Encontrar o Termo Faltante
                           </p>
-                          <p className="text-sm font-mono">x/3 = 12/9</p>
-                          <p className="text-sm mt-1">
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">x/3 = 12/9</p>
+                          <p className="text-xl mt-1 text-foreground/85 leading-relaxed">
                             → x × 9 = 3 × 12 → 9x = 36 → <strong>x = 4</strong>
                           </p>
-                          <p className="text-xs text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
                             Alternativa: 12/9 = 4/3, logo x/3 = 4/3, x = 4.
                           </p>
                         </div>
                         <div className="p-3 bg-violet-500/10 rounded-lg border border-violet-500/20">
-                          <p className="font-bold text-violet-700 dark:text-violet-400 text-xs mb-2">
+                          <p className="font-bold text-violet-700 dark:text-violet-400 text-lg text-foreground/85 leading-relaxed mb-2">
                             Exemplo 2 — Divisão de Lucro Proporcional
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Se a/2 = b/3 = c/5 e a+b+c = 100, então usando k:
                             <br />
                             a=2k, b=3k, c=5k → 10k=100 → k=10 →{" "}
@@ -959,10 +959,10 @@ export default function AulaRazaoProporcao({
                           </p>
                         </div>
                         <div className="p-3 bg-violet-500/10 rounded-lg border border-violet-500/20">
-                          <p className="font-bold text-violet-700 dark:text-violet-400 text-xs mb-2">
+                          <p className="font-bold text-violet-700 dark:text-violet-400 text-lg text-foreground/85 leading-relaxed mb-2">
                             Exemplo 3 — Quarta Proporcional
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Dados 3, 5 e 9, encontrar d tal que 3:5 = 9:d
                             <br />3 × d = 5 × 9 → 3d = 45 →{" "}
                             <strong>d = 15</strong>
@@ -979,33 +979,33 @@ export default function AulaRazaoProporcao({
                     <div className="space-y-4">
                       <div className="space-y-3">
                         <div className="p-3 bg-amber-500/10 rounded-lg border border-amber-500/20">
-                          <p className="font-bold text-amber-700 dark:text-amber-400 text-xs mb-1">
+                          <p className="font-bold text-amber-700 dark:text-amber-400 text-lg text-foreground/85 leading-relaxed mb-1">
                             Dica 1 — Verificação por Cruzamento
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Para verificar se a/b = c/d, cheque se a×d = b×c. Se
                             for igual, é proporção válida.
                           </p>
                         </div>
                         <div className="p-3 bg-amber-500/10 rounded-lg border border-amber-500/20">
-                          <p className="font-bold text-amber-700 dark:text-amber-400 text-xs mb-1">
+                          <p className="font-bold text-amber-700 dark:text-amber-400 text-lg text-foreground/85 leading-relaxed mb-1">
                             Dica 2 — Propriedade da Soma
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Se a/b = c/d = k, então (a+c)/(b+d) = k também. Útil
                             para somar proporções.
                           </p>
                         </div>
                         <div className="p-3 bg-amber-500/10 rounded-lg border border-amber-500/20">
-                          <p className="font-bold text-amber-700 dark:text-amber-400 text-xs mb-1">
+                          <p className="font-bold text-amber-700 dark:text-amber-400 text-lg text-foreground/85 leading-relaxed mb-1">
                             Dica 3 — Troca de Posição
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Se a/b = c/d, então também: b/a = d/c (invertendo
                             ambos) e a/c = b/d (invertendo alternadamente).
                           </p>
                         </div>
-                        <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary">
+                        <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-lg text-foreground/85 leading-relaxed text-primary">
                           <strong>Pulo do Gato:</strong> Na CESGRANRIO, quando
                           aparecer "a/b = k", use sempre k como constante de
                           proporcionalidade e substitua: a = kb, c = kd, etc.
@@ -1028,7 +1028,7 @@ export default function AulaRazaoProporcao({
                         FALSA em geral). Exemplo: 2/3 = 4/6. Cruzado: 2×6 = 3×4
                         = 12 ✓. Soma: 2+6 ≠ 3+4 ✗.
                       </AlertBox>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Outra pegadinha: "Se a/b = c/d, então a/c = b/d" — isso
                         É verdadeiro (alternado). Mas "a+b = c+d" só vale se a
                         razão for 1.
@@ -1106,7 +1106,7 @@ export default function AulaRazaoProporcao({
                       <p className="font-bold text-emerald-600 dark:text-emerald-400">
                         Padrão Essencial
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Memorize a estrutura-chave deste módulo.
                       </p>
                     </div>
@@ -1274,7 +1274,7 @@ export default function AulaRazaoProporcao({
                 <h4 className="font-bold text-foreground">
                   Método das Setas & Resolução
                 </h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                   <p>
                     <strong>Passo 1:</strong> Identifique as duas grandezas e
                     coloque setas (↑ ou ↓) conforme variam
@@ -1321,7 +1321,7 @@ export default function AulaRazaoProporcao({
                   icone: "📖",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm leading-relaxed">
+                      <p className="text-xl leading-relaxed text-foreground/85">
                         Usa-se Regra de Três quando há{" "}
                         <strong>duas grandezas</strong> e conhecemos três
                         valores, querendo descobrir o quarto. A relação entre as
@@ -1330,20 +1330,20 @@ export default function AulaRazaoProporcao({
                       </p>
                       <div className="grid grid-cols-2 gap-3">
                         <div className="p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20 text-center">
-                          <p className="font-bold text-emerald-700 dark:text-emerald-400 text-xs mb-1">
+                          <p className="font-bold text-emerald-700 dark:text-emerald-400 text-lg text-foreground/85 leading-relaxed mb-1">
                             DIRETA
                           </p>
-                          <p className="text-sm">A sobe → B sobe</p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-xl text-foreground/85 leading-relaxed">A sobe → B sobe</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                             Mais tempo = Mais produção
                           </p>
                         </div>
                         <div className="p-3 bg-rose-500/10 rounded-lg border border-rose-500/20 text-center">
-                          <p className="font-bold text-rose-700 dark:text-rose-400 text-xs mb-1">
+                          <p className="font-bold text-rose-700 dark:text-rose-400 text-lg text-foreground/85 leading-relaxed mb-1">
                             INVERSA
                           </p>
-                          <p className="text-sm">A sobe → B desce</p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-xl text-foreground/85 leading-relaxed">A sobe → B desce</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                             Mais operadores = Menos tempo
                           </p>
                         </div>
@@ -1357,14 +1357,14 @@ export default function AulaRazaoProporcao({
                   conteudo: (
                     <div className="space-y-5">
                       <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
-                        <p className="font-bold text-amber-700 dark:text-amber-400 text-sm mb-3">
+                        <p className="font-bold text-amber-700 dark:text-amber-400 text-xl mb-3 text-foreground/85 leading-relaxed">
                           Exemplo 1 — DIRETA (Bomba e Litros)
                         </p>
-                        <p className="text-sm mb-2">
+                        <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                           Uma bomba enche 6.000 L em 4 horas. Quanto tempo para
                           9.000 L?
                         </p>
-                        <div className="font-mono text-xs space-y-1 bg-muted/30 p-3 rounded-lg">
+                        <div className="font-mono text-lg text-foreground/85 leading-relaxed space-y-1 bg-muted/30 p-3 rounded-lg">
                           <p>Litros ↑ | Tempo ↑ (DIRETA)</p>
                           <p>6.000 → 4 horas</p>
                           <p>9.000 → x horas</p>
@@ -1374,13 +1374,13 @@ export default function AulaRazaoProporcao({
                         </div>
                       </div>
                       <div className="p-4 bg-rose-500/10 rounded-xl border border-rose-500/20">
-                        <p className="font-bold text-rose-700 dark:text-rose-400 text-sm mb-3">
+                        <p className="font-bold text-rose-700 dark:text-rose-400 text-xl mb-3 text-foreground/85 leading-relaxed">
                           Exemplo 2 — INVERSA (Operadores e Dias)
                         </p>
-                        <p className="text-sm mb-2">
+                        <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                           8 trabalhadores levam 15 dias. Com 12, quantos dias?
                         </p>
-                        <div className="font-mono text-xs space-y-1 bg-muted/30 p-3 rounded-lg">
+                        <div className="font-mono text-lg text-foreground/85 leading-relaxed space-y-1 bg-muted/30 p-3 rounded-lg">
                           <p>Trabalhadores ↑ | Dias ↓ (INVERSA)</p>
                           <p>8 trab → 15 dias</p>
                           <p>12 trab → x dias</p>
@@ -1397,10 +1397,10 @@ export default function AulaRazaoProporcao({
                   icone: "🎯",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         O método das setas elimina erros de classificação:
                       </p>
-                      <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20 font-mono text-sm">
+                      <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20 font-mono text-xl text-foreground/85 leading-relaxed">
                         <p className="mb-2">
                           <strong>1.</strong> Monte a tabela com as grandezas
                           lado a lado
@@ -1418,7 +1418,7 @@ export default function AulaRazaoProporcao({
                           Inversa: inverte o segundo par.
                         </p>
                       </div>
-                      <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary">
+                      <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-lg text-foreground/85 leading-relaxed text-primary">
                         <strong>Pulo do Gato:</strong> Velocidade × Tempo =
                         Distância (constante). Logo velocidade e tempo são
                         SEMPRE inversamente proporcionais para o mesmo percurso.
@@ -1474,30 +1474,30 @@ export default function AulaRazaoProporcao({
                   icone: "🔑",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm leading-relaxed">
+                      <p className="text-xl leading-relaxed text-foreground/85">
                         Na Regra de Três Composta, todas as <em>causas</em>{" "}
                         (produtores do trabalho) ficam no numerador e o{" "}
                         <em>efeito</em> (trabalho produzido) no denominador. A
                         razão causas/efeito é constante nos dois cenários.
                       </p>
                       <div className="p-4 bg-orange-500/10 rounded-xl border border-orange-500/20">
-                        <p className="font-bold text-orange-700 dark:text-orange-400 text-sm mb-2">
+                        <p className="font-bold text-orange-700 dark:text-orange-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Fórmula Geral:
                         </p>
-                        <p className="font-mono text-center text-sm">
+                        <p className="font-mono text-center text-xl text-foreground/85 leading-relaxed">
                           (A₁ × B₁ × C₁) / Efeito₁ = (A₂ × B₂ × C₂) / Efeito₂
                         </p>
                       </div>
                       <div className="p-4 bg-orange-500/10 rounded-xl border border-orange-500/20">
-                        <p className="font-bold text-orange-700 dark:text-orange-400 text-sm mb-2">
+                        <p className="font-bold text-orange-700 dark:text-orange-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Exemplo Petrobras:
                         </p>
-                        <p className="text-sm mb-2">
+                        <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                           5 máquinas, 4 horas/dia, 8 dias → 200 peças.
                           <br />
                           Quantas máquinas para 300 peças em 6h/dia, 5 dias?
                         </p>
-                        <p className="font-mono text-xs">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                           (5 × 4 × 8) / 200 = (x × 6 × 5) / 300
                           <br />
                           160/200 = 30x/300
@@ -1612,7 +1612,7 @@ export default function AulaRazaoProporcao({
                       <p className="font-bold text-cyan-600 dark:text-cyan-400">
                         Padrão Essencial
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Memorize a estrutura-chave deste módulo.
                       </p>
                     </div>
@@ -1782,7 +1782,7 @@ export default function AulaRazaoProporcao({
                 <h4 className="font-bold text-foreground">
                   Protocolo de 3 Passos & Inversão
                 </h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                   <p>
                     <strong>PASSO 1:</strong> Some as partes da razão:
                     Total_partes = r₁ + r₂ + r₃ + ...
@@ -1828,17 +1828,17 @@ export default function AulaRazaoProporcao({
                   icone: "📖",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm leading-relaxed">
+                      <p className="text-xl leading-relaxed text-foreground/85">
                         Dividir um valor V em partes{" "}
                         <strong>diretamente proporcionais</strong> a razões r₁,
                         r₂, r₃... significa que cada parte recebe uma fração de
                         V proporcional à sua razão no total.
                       </p>
                       <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
-                        <p className="font-bold text-emerald-700 dark:text-emerald-400 text-sm mb-2">
+                        <p className="font-bold text-emerald-700 dark:text-emerald-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Passo a Passo:
                         </p>
-                        <ol className="text-sm space-y-2 list-decimal list-inside">
+                        <ol className="text-xl space-y-2 list-decimal list-inside text-foreground/85 leading-relaxed">
                           <li>Some as partes da razão: total = r₁ + r₂ + r₃</li>
                           <li>
                             Calcule o valor de cada "parte": p = V / total
@@ -1867,15 +1867,15 @@ export default function AulaRazaoProporcao({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="p-4 bg-teal-500/10 rounded-xl border border-teal-500/20">
-                        <p className="font-bold text-teal-700 dark:text-teal-400 text-sm mb-2">
+                        <p className="font-bold text-teal-700 dark:text-teal-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Situação:
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Três técnicos trabalharam 10h, 15h e 25h em um
                           projeto. A gratificação de R$ 5.000 é proporcional às
                           horas.
                         </p>
-                        <p className="text-sm mt-2 font-mono">
+                        <p className="text-xl mt-2 font-mono text-foreground/85 leading-relaxed">
                           Total: 50h → p = 5.000/50 = 100/h
                           <br />
                           Técnico 10h: 10×100 = R$ 1.000
@@ -1893,16 +1893,16 @@ export default function AulaRazaoProporcao({
                   icone: "🎯",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Na divisão <strong>inversamente proporcional</strong>,
                         quem tem o menor número recebe a MAIOR parte. O truque é
                         inverter a razão antes de dividir.
                       </p>
                       <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
-                        <p className="font-bold text-amber-700 dark:text-amber-400 text-sm mb-2">
+                        <p className="font-bold text-amber-700 dark:text-amber-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Exemplo — Bônus Inversamente Prop. a Faltas
                         </p>
-                        <p className="text-sm font-mono">
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                           Faltas: 2, 4, 8 → Inv. prop. = 1/2, 1/4, 1/8 = 4, 2, 1
                           <br />
                           Total: 7 partes → p = 2.800/7 = 400
@@ -1911,7 +1911,7 @@ export default function AulaRazaoProporcao({
                           <strong>R$ 1.600 (maior!)</strong>
                         </p>
                       </div>
-                      <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary">
+                      <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-lg text-foreground/85 leading-relaxed text-primary">
                         <strong>Pulo do Gato:</strong> Inversamente proporcional
                         a {"{2,4,8}"} = diretamente proporcional a{" "}
                         {"{1/2, 1/4, 1/8}"} = diretamente proporcional a{" "}
@@ -1934,7 +1934,7 @@ export default function AulaRazaoProporcao({
                         define a razão A:B = 3:1. Some as partes (3+1=4) e
                         divida proporcionalmente como de costume.
                       </AlertBox>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Outro caso especial: "A e B dividem R$ 2.400 de modo que
                         A recebe o triplo." A=3B → A+B=2.400 → 4B=2.400 → B=600,
                         A=1.800. (Razão 3:1 confirmada.)
@@ -2012,7 +2012,7 @@ export default function AulaRazaoProporcao({
                       <p className="font-bold text-blue-600 dark:text-blue-400">
                         Padrão Essencial
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Memorize a estrutura-chave deste módulo.
                       </p>
                     </div>
@@ -2185,7 +2185,7 @@ export default function AulaRazaoProporcao({
                 <h4 className="font-bold text-foreground">
                   Identificação Clara: Direta vs. Inversa
                 </h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                   <p>
                     <strong>DIRETAMENTE PROPORCIONAL:</strong> y/x = k
                     (constante) ⟺ y = k·x
@@ -2234,17 +2234,17 @@ export default function AulaRazaoProporcao({
                   icone: "📈",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm leading-relaxed">
+                      <p className="text-xl leading-relaxed text-foreground/85">
                         Duas grandezas são{" "}
                         <strong>diretamente proporcionais</strong> quando a
                         razão entre elas é constante: y/x = k (constante). Se x
                         dobra, y dobra. Se x cai à metade, y cai à metade.
                       </p>
                       <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20">
-                        <p className="font-bold text-cyan-700 dark:text-cyan-400 text-sm mb-2">
+                        <p className="font-bold text-cyan-700 dark:text-cyan-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Exemplos Industriais (Diretas):
                         </p>
-                        <ul className="text-sm space-y-1 list-disc list-inside">
+                        <ul className="text-xl space-y-1 list-disc list-inside text-foreground/85 leading-relaxed">
                           <li>Número de barris processados × Receita</li>
                           <li>Horas de operação × Consumo de energia</li>
                           <li>Número de separadores ativos × Produção/hora</li>
@@ -2259,17 +2259,17 @@ export default function AulaRazaoProporcao({
                   icone: "📉",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm leading-relaxed">
+                      <p className="text-xl leading-relaxed text-foreground/85">
                         Duas grandezas são{" "}
                         <strong>inversamente proporcionais</strong> quando o
                         produto entre elas é constante: x × y = k. Se x dobra, y
                         cai à metade. Se x cai para 1/3, y triplica.
                       </p>
                       <div className="p-4 bg-rose-500/10 rounded-xl border border-rose-500/20">
-                        <p className="font-bold text-rose-700 dark:text-rose-400 text-sm mb-2">
+                        <p className="font-bold text-rose-700 dark:text-rose-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Exemplos Industriais (Inversas):
                         </p>
-                        <ul className="text-sm space-y-1 list-disc list-inside">
+                        <ul className="text-xl space-y-1 list-disc list-inside text-foreground/85 leading-relaxed">
                           <li>
                             Número de operadores × Tempo para concluir tarefa
                           </li>
@@ -2287,20 +2287,20 @@ export default function AulaRazaoProporcao({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20">
-                        <p className="font-bold text-cyan-700 dark:text-cyan-400 text-sm mb-2">
+                        <p className="font-bold text-cyan-700 dark:text-cyan-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Exemplo 1 — FPSO e Separadores
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           6 separadores → 2.400 m³/h. Com 9 separadores: 6/9 =
                           2400/x → x = 9×2400/6 = <strong>3.600 m³/h</strong>{" "}
                           (direta)
                         </p>
                       </div>
                       <div className="p-4 bg-rose-500/10 rounded-xl border border-rose-500/20">
-                        <p className="font-bold text-rose-700 dark:text-rose-400 text-sm mb-2">
+                        <p className="font-bold text-rose-700 dark:text-rose-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Exemplo 2 — Navio e Velocidade
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Pressão 120 Pa com diâmetro 8 cm. Com diâmetro 6 cm:
                           8×120 = 6×x → x = 960/6 = <strong>160 Pa</strong>{" "}
                           (inversa)
@@ -2315,22 +2315,22 @@ export default function AulaRazaoProporcao({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
-                        <p className="font-bold text-amber-700 dark:text-amber-400 text-sm mb-2">
+                        <p className="font-bold text-amber-700 dark:text-amber-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Teste Rápido:
                         </p>
-                        <p className="text-sm mb-2">
+                        <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                           Multiplique os dois valores dos pares. Se o produto
                           for constante → INVERSA. Se a razão (divisão) for
                           constante → DIRETA.
                         </p>
-                        <p className="font-mono text-xs">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                           Pares: (8, 120) e (6, x):
                           <br />
                           8×120 = 960, 6×x = 6x. Se 6x=960 → x=160. PRODUTO
                           constante → INVERSA.
                         </p>
                       </div>
-                      <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary">
+                      <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-lg text-foreground/85 leading-relaxed text-primary">
                         <strong>Pulo do Gato:</strong> v × t = d (distância
                         constante). Portanto velocidade e tempo são sempre
                         INVERSAS. Nunca erre essa pegadinha clássica.
@@ -2352,7 +2352,7 @@ export default function AulaRazaoProporcao({
                         adicional. A CESGRANRIO foca nas relações elementares de
                         Razão e Proporção, não em leis dos gases.
                       </AlertBox>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Outro caso não proporcional: Lucro e tempo de projeto.
                         Mais tempo de projeto não significa necessariamente mais
                         ou menos lucro — depende de outros fatores. Nesses
@@ -2422,7 +2422,7 @@ export default function AulaRazaoProporcao({
                     <h6 className="text-xl font-bold uppercase tracking-tight">
                       Velocidade × Tempo
                     </h6>
-                    <p className="font-medium text-muted-foreground text-sm">
+                    <p className="font-medium text-muted-foreground text-xl text-foreground/85 leading-relaxed">
                       Para a mesma distância: se a velocidade dobra, o tempo faz
                       o quê?
                     </p>
@@ -2430,14 +2430,14 @@ export default function AulaRazaoProporcao({
                 }
                 verso={
                   <div className="space-y-4 text-left">
-                    <p className="text-xs font-bold text-emerald-400 border-b border-border/30 pb-2">
+                    <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 border-b border-border/30 pb-2">
                       INVERSA — Tempo cai à metade
                     </p>
-                    <p className="text-xs text-zinc-100 leading-relaxed">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-zinc-100 leading-relaxed">
                       v × t = d (constante). Se v dobra (×2), t precisa ser ÷2
                       para o produto continuar igual. São grandezas INVERSAS.
                     </p>
-                    <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary">
+                    <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-lg text-foreground/85 leading-relaxed text-primary">
                       <strong>Dica de Elite:</strong> Produto constante =
                       INVERSA. Razão constante = DIRETA.
                     </div>
@@ -2454,7 +2454,7 @@ export default function AulaRazaoProporcao({
                     <h6 className="text-xl font-bold uppercase tracking-tight">
                       Operadores × Produção
                     </h6>
-                    <p className="font-medium text-muted-foreground text-sm">
+                    <p className="font-medium text-muted-foreground text-xl text-foreground/85 leading-relaxed">
                       Dobrar o número de operadores (mesma produtividade) afeta
                       a produção como?
                     </p>
@@ -2462,15 +2462,15 @@ export default function AulaRazaoProporcao({
                 }
                 verso={
                   <div className="space-y-4 text-left">
-                    <p className="text-xs font-bold text-emerald-400 border-b border-border/30 pb-2">
+                    <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 border-b border-border/30 pb-2">
                       DIRETA — Produção dobra
                     </p>
-                    <p className="text-xs text-zinc-100 leading-relaxed">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-zinc-100 leading-relaxed">
                       Mais operadores = mais produção (mesma eficiência
                       individual). Produção/Operadores = constante. É uma
                       relação DIRETA.
                     </p>
-                    <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary">
+                    <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 text-lg text-foreground/85 leading-relaxed text-primary">
                       <strong>Dica de Elite:</strong> A chave é &apos;mesma
                       produtividade&apos;. Se a eficiência muda, não é mais
                       proporcional simples.
@@ -2584,7 +2584,7 @@ export default function AulaRazaoProporcao({
                       <p className="font-bold text-amber-600 dark:text-amber-400">
                         Padrão Essencial
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Memorize a estrutura-chave deste módulo.
                       </p>
                     </div>
@@ -2748,7 +2748,7 @@ export default function AulaRazaoProporcao({
                 <h4 className="font-bold text-foreground">
                   Métodos Avançados: Combinado & Dedução
                 </h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                   <p>
                     <strong>Divisão Combinada (Múltiplos Critérios):</strong>
                   </p>
@@ -2801,7 +2801,7 @@ export default function AulaRazaoProporcao({
                   icone: "📖",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm leading-relaxed">
+                      <p className="text-xl leading-relaxed text-foreground/85">
                         Em casos avançados, a distribuição pode ser{" "}
                         <strong>
                           diretamente proporcional a um critério e inversamente
@@ -2811,13 +2811,13 @@ export default function AulaRazaoProporcao({
                         calculado combinando os dois critérios.
                       </p>
                       <div className="p-4 bg-violet-500/10 rounded-xl border border-violet-500/20">
-                        <p className="font-bold text-violet-700 dark:text-violet-400 text-sm mb-2">
+                        <p className="font-bold text-violet-700 dark:text-violet-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Fórmula Combinada:
                         </p>
-                        <p className="font-mono text-sm text-center">
+                        <p className="font-mono text-xl text-center text-foreground/85 leading-relaxed">
                           cᵢ = (critério direto)ᵢ / (critério inverso)ᵢ
                         </p>
-                        <p className="text-xs text-muted-foreground text-center mt-1">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground text-center mt-1">
                           Depois normaliza: xᵢ = (cᵢ / Σcⱼ) × V
                         </p>
                       </div>
@@ -2830,10 +2830,10 @@ export default function AulaRazaoProporcao({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="p-4 bg-violet-500/10 rounded-xl border border-violet-500/20">
-                        <p className="font-bold text-violet-700 dark:text-violet-400 text-sm mb-2">
+                        <p className="font-bold text-violet-700 dark:text-violet-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Exemplo 1 — Divisão com Diferença Conhecida
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           R$ 90.000 entre A e B na razão 5:4. Quanto A recebe a
                           mais que B?
                           <br />
@@ -2841,16 +2841,16 @@ export default function AulaRazaoProporcao({
                           <br />
                           <strong>Diferença = 1 parte = R$ 10.000</strong>
                         </p>
-                        <p className="text-xs text-muted-foreground mt-1">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
                           Atalho: diferença = (5-4)/9 × 90.000 = 1/9 × 90.000 =
                           R$ 10.000.
                         </p>
                       </div>
                       <div className="p-4 bg-violet-500/10 rounded-xl border border-violet-500/20">
-                        <p className="font-bold text-violet-700 dark:text-violet-400 text-sm mb-2">
+                        <p className="font-bold text-violet-700 dark:text-violet-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Exemplo 2 — Maior Cota Conhecida
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Quatro setores na razão 2:3:4:6 e o maior recebe R$
                           180.000. Total:
                           <br />
@@ -2860,10 +2860,10 @@ export default function AulaRazaoProporcao({
                         </p>
                       </div>
                       <div className="p-4 bg-violet-500/10 rounded-xl border border-violet-500/20">
-                        <p className="font-bold text-violet-700 dark:text-violet-400 text-sm mb-2">
+                        <p className="font-bold text-violet-700 dark:text-violet-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Exemplo 3 — Bônus Inverso a Faltas
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Faltas: 2, 4, 8 → bônus inv. proporcional. Total R$
                           2.800.
                           <br />
@@ -2881,23 +2881,23 @@ export default function AulaRazaoProporcao({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="p-3 bg-amber-500/10 rounded-lg border border-amber-500/20">
-                        <p className="font-bold text-amber-700 dark:text-amber-400 text-xs mb-1">
+                        <p className="font-bold text-amber-700 dark:text-amber-400 text-lg text-foreground/85 leading-relaxed mb-1">
                           Atalho 1 — Diferença entre Partes
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           diferença = (r_maior - r_menor) / r_total × V
                         </p>
                       </div>
                       <div className="p-3 bg-amber-500/10 rounded-lg border border-amber-500/20">
-                        <p className="font-bold text-amber-700 dark:text-amber-400 text-xs mb-1">
+                        <p className="font-bold text-amber-700 dark:text-amber-400 text-lg text-foreground/85 leading-relaxed mb-1">
                           Atalho 2 — Total a partir de Uma Parte
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Se uma parte vale X e tem razão r, o valor de cada
                           unidade = X/r → Total = (Σr) × (X/r)
                         </p>
                       </div>
-                      <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary">
+                      <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-lg text-foreground/85 leading-relaxed text-primary">
                         <strong>Pulo do Gato:</strong> Em divisão inversamente
                         proporcional, sempre converta para MMC comum antes de
                         somar. Ex: {"{1/2, 1/3}"} → {"{3/6, 2/6}"} → razão 3:2.
@@ -2992,7 +2992,7 @@ export default function AulaRazaoProporcao({
                       <p className="font-bold text-rose-600 dark:text-rose-400">
                         Padrão Essencial
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Memorize a estrutura-chave deste módulo.
                       </p>
                     </div>
@@ -3159,7 +3159,7 @@ export default function AulaRazaoProporcao({
                 <h4 className="font-bold text-foreground">
                   Definições: Contínua, Terceira, Quarta & Média
                 </h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                   <p>
                     <strong>Proporção Contínua:</strong> a:b = b:c ⟹ b² = a×c ⟹
                     b = √(a×c) (média geométrica)
@@ -3203,7 +3203,7 @@ export default function AulaRazaoProporcao({
                   icone: "📖",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm leading-relaxed">
+                      <p className="text-xl leading-relaxed text-foreground/85">
                         Em uma <strong>proporção contínua</strong> a:b = b:c, o
                         termo do meio (b) aparece em ambas as razões. Pela
                         propriedade fundamental: b² = a × c. Logo{" "}
@@ -3212,10 +3212,10 @@ export default function AulaRazaoProporcao({
                         (ou média proporcional) entre a e c.
                       </p>
                       <div className="p-4 bg-rose-500/10 rounded-xl border border-rose-500/20">
-                        <p className="font-bold text-rose-700 dark:text-rose-400 text-sm mb-2">
+                        <p className="font-bold text-rose-700 dark:text-rose-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Fórmulas Essenciais:
                         </p>
-                        <ul className="font-mono text-sm space-y-1">
+                        <ul className="font-mono text-xl space-y-1 text-foreground/85 leading-relaxed">
                           <li>Média proporcional (geométrica): x = √(a × b)</li>
                           <li>Terceira proporcional: a:b = b:x → x = b²/a</li>
                           <li>
@@ -3232,32 +3232,32 @@ export default function AulaRazaoProporcao({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="p-3 bg-pink-500/10 rounded-lg border border-pink-500/20">
-                        <p className="font-bold text-pink-700 dark:text-pink-400 text-xs mb-1">
+                        <p className="font-bold text-pink-700 dark:text-pink-400 text-lg text-foreground/85 leading-relaxed mb-1">
                           Exemplo 1 — Média Proporcional entre 4 e 16
                         </p>
-                        <p className="text-sm font-mono">
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                           x = √(4 × 16) = √64 = <strong>8</strong>
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           Diferente da média aritmética: (4+16)/2 = 10.
                         </p>
                       </div>
                       <div className="p-3 bg-pink-500/10 rounded-lg border border-pink-500/20">
-                        <p className="font-bold text-pink-700 dark:text-pink-400 text-xs mb-1">
+                        <p className="font-bold text-pink-700 dark:text-pink-400 text-lg text-foreground/85 leading-relaxed mb-1">
                           Exemplo 2 — Proporção Contínua a:b = b:c, a=3, c=27
                         </p>
-                        <p className="text-sm font-mono">
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                           b² = 3 × 27 = 81 → b = <strong>9</strong>
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           Verificação: 3:9 = 9:27 = 1:3 ✓
                         </p>
                       </div>
                       <div className="p-3 bg-pink-500/10 rounded-lg border border-pink-500/20">
-                        <p className="font-bold text-pink-700 dark:text-pink-400 text-xs mb-1">
+                        <p className="font-bold text-pink-700 dark:text-pink-400 text-lg text-foreground/85 leading-relaxed mb-1">
                           Exemplo 3 — Quarta Proporcional de 5, 8 e 15
                         </p>
-                        <p className="text-sm font-mono">
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                           5:8 = 15:x → 5x = 8×15 = 120 → x = <strong>24</strong>
                         </p>
                       </div>
@@ -3270,10 +3270,10 @@ export default function AulaRazaoProporcao({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
-                        <p className="font-bold text-amber-700 dark:text-amber-400 text-sm mb-2">
+                        <p className="font-bold text-amber-700 dark:text-amber-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Não confunda:
                         </p>
-                        <ul className="text-sm space-y-1">
+                        <ul className="text-xl space-y-1 text-foreground/85 leading-relaxed">
                           <li>
                             Média <strong>aritmética</strong> entre 4 e 16:
                             (4+16)/2 = <strong>10</strong>
@@ -3285,16 +3285,16 @@ export default function AulaRazaoProporcao({
                         </ul>
                       </div>
                       <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
-                        <p className="font-bold text-amber-700 dark:text-amber-400 text-sm mb-2">
+                        <p className="font-bold text-amber-700 dark:text-amber-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Razão Composta:
                         </p>
-                        <p className="text-sm font-mono">
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                           Se a:b = 3:4 e b:c = 6:5 →<br />
                           a:c = (a/b) × (b/c) = (3/4) × (6/5) = 18/20 ={" "}
                           <strong>9:10</strong>
                         </p>
                       </div>
-                      <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary">
+                      <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-lg text-foreground/85 leading-relaxed text-primary">
                         <strong>Pulo do Gato:</strong> Em uma PG com razão q, o
                         termo do meio é sempre a média geométrica dos vizinhos:
                         b = √(a × c).
@@ -3307,12 +3307,12 @@ export default function AulaRazaoProporcao({
                   icone: "✨",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         A <strong>razão áurea</strong> (φ ≈ 1,618) é um caso
                         especial de proporção onde a/b = (a+b)/a. Questões
                         pedem: "segmento de 10 dividido na razão áurea".
                       </p>
-                      <div className="p-3 bg-yellow-500/10 rounded-lg border border-yellow-500/20 font-mono text-sm">
+                      <div className="p-3 bg-yellow-500/10 rounded-lg border border-yellow-500/20 font-mono text-xl text-foreground/85 leading-relaxed">
                         <p>
                           Parte maior = 10 × φ/(1+φ) = 10 × 1,618/2,618 ≈{" "}
                           <strong>6,18</strong>
@@ -3398,7 +3398,7 @@ export default function AulaRazaoProporcao({
                       <p className="font-bold text-indigo-600 dark:text-indigo-400">
                         Padrão Essencial
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Memorize a estrutura-chave deste módulo.
                       </p>
                     </div>
@@ -3567,7 +3567,7 @@ export default function AulaRazaoProporcao({
                 <h4 className="font-bold text-foreground">
                   Definição & Conversões Essenciais
                 </h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                   <p>
                     <strong>Escala:</strong> E = d_mapa / d_real | Forma 1:N (1
                     unidade no mapa = N unidades na realidade)
@@ -3616,7 +3616,7 @@ export default function AulaRazaoProporcao({
                   icone: "📖",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm leading-relaxed">
+                      <p className="text-xl leading-relaxed text-foreground/85">
                         <strong>Escala</strong> é a razão entre a medida no mapa
                         (ou planta) e a medida real correspondente: E = d_mapa /
                         d_real. A escala 1:N significa que 1 unidade no papel =
@@ -3624,22 +3624,22 @@ export default function AulaRazaoProporcao({
                       </p>
                       <div className="grid grid-cols-2 gap-3">
                         <div className="p-3 bg-teal-500/10 rounded-lg border border-teal-500/20">
-                          <p className="font-bold text-teal-700 dark:text-teal-400 text-xs mb-1">
+                          <p className="font-bold text-teal-700 dark:text-teal-400 text-lg text-foreground/85 leading-relaxed mb-1">
                             Escala Grande (mais detalhe)
                           </p>
-                          <p className="text-sm font-mono">1:200 → mais zoom</p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">1:200 → mais zoom</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                             Plantas de equipamentos
                           </p>
                         </div>
                         <div className="p-3 bg-teal-500/10 rounded-lg border border-teal-500/20">
-                          <p className="font-bold text-teal-700 dark:text-teal-400 text-xs mb-1">
+                          <p className="font-bold text-teal-700 dark:text-teal-400 text-lg text-foreground/85 leading-relaxed mb-1">
                             Escala Pequena (menos detalhe)
                           </p>
-                          <p className="text-sm font-mono">
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                             1:500.000 → mais distância
                           </p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                             Mapas de regiões
                           </p>
                         </div>
@@ -3659,10 +3659,10 @@ export default function AulaRazaoProporcao({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20">
-                        <p className="font-bold text-cyan-700 dark:text-cyan-400 text-sm mb-2">
+                        <p className="font-bold text-cyan-700 dark:text-cyan-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Tipo 1 — Mapa → Real
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Escala 1:50.000. Distância no mapa: 3 cm.
                           <br />
                           Real = 3 × 50.000 = 150.000 cm ÷ 100.000 ={" "}
@@ -3670,10 +3670,10 @@ export default function AulaRazaoProporcao({
                         </p>
                       </div>
                       <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20">
-                        <p className="font-bold text-cyan-700 dark:text-cyan-400 text-sm mb-2">
+                        <p className="font-bold text-cyan-700 dark:text-cyan-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Tipo 2 — Real → Mapa
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Escala 1:24.000. Distância real: 1,2 km.
                           <br />
                           1,2 km = 120.000 cm. No mapa: 120.000 ÷ 24.000 ={" "}
@@ -3681,10 +3681,10 @@ export default function AulaRazaoProporcao({
                         </p>
                       </div>
                       <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20">
-                        <p className="font-bold text-cyan-700 dark:text-cyan-400 text-sm mb-2">
+                        <p className="font-bold text-cyan-700 dark:text-cyan-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Tipo 3 — Mudança de Escala
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Duto mede 3 m na escala 1:50. Na escala 1:150:
                           <br />
                           Real = 3 × 50 = 150 m → na 1:150: 150/150 ={" "}
@@ -3700,18 +3700,18 @@ export default function AulaRazaoProporcao({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
-                        <p className="font-bold text-amber-700 dark:text-amber-400 text-sm mb-2">
+                        <p className="font-bold text-amber-700 dark:text-amber-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Tabela de Conversão Essencial:
                         </p>
-                        <table className="text-sm w-full">
+                        <table className="text-xl w-full text-foreground/85 leading-relaxed">
                           <thead>
-                            <tr className="text-amber-600 font-bold text-xs">
+                            <tr className="text-amber-600 font-bold text-lg text-foreground/85 leading-relaxed">
                               <th className="text-left pb-1">De</th>
                               <th className="text-left pb-1">Para cm</th>
                               <th className="text-left pb-1">Para m</th>
                             </tr>
                           </thead>
-                          <tbody className="font-mono text-xs space-y-1">
+                          <tbody className="font-mono text-lg text-foreground/85 leading-relaxed space-y-1">
                             <tr>
                               <td>1 km</td>
                               <td>100.000 cm</td>
@@ -3730,7 +3730,7 @@ export default function AulaRazaoProporcao({
                           </tbody>
                         </table>
                       </div>
-                      <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary">
+                      <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-lg text-foreground/85 leading-relaxed text-primary">
                         <strong>Pulo do Gato:</strong> Sempre converta TUDO para
                         a mesma unidade (cm) antes de aplicar a escala. Só
                         converta para a unidade final pedida ao terminar.
@@ -3753,7 +3753,7 @@ export default function AulaRazaoProporcao({
                         (1:50.000 {">"} 1:100.000) = mais detalhe = mais cm no
                         papel.
                       </AlertBox>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         A confusão ocorre porque "dobrar a escala" pode ser
                         interpretada como dobrar N (de 1:50.000 para 1:100.000,
                         o que afasta) ou dobrar o detalhe (de 1:100.000 para
@@ -3875,7 +3875,7 @@ export default function AulaRazaoProporcao({
                       <p className="font-bold text-emerald-600 dark:text-emerald-400">
                         Padrão Essencial
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Memorize a estrutura-chave deste módulo.
                       </p>
                     </div>
@@ -4037,7 +4037,7 @@ export default function AulaRazaoProporcao({
                 <h4 className="font-bold text-foreground">
                   Contextos Reais Petrobras: Checklist
                 </h4>
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-xl text-foreground/85 leading-relaxed">
                   <p>
                     ✓ <strong>Rendimento/Eficiência:</strong> Barris úteis /
                     barris brutos, energia saída / energia entrada, m³ produzido
@@ -4089,7 +4089,7 @@ export default function AulaRazaoProporcao({
                   icone: "⚙️",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm leading-relaxed">
+                      <p className="text-xl leading-relaxed text-foreground/85">
                         Na Petrobras, razão e proporção são fundamentais para
                         calcular
                         <strong> rendimento de refinarias</strong> (barris úteis
@@ -4101,29 +4101,29 @@ export default function AulaRazaoProporcao({
                       </p>
                       <div className="grid gap-3">
                         <div className="p-3 bg-slate-500/10 rounded-lg border border-slate-500/20">
-                          <p className="font-bold text-slate-300 text-xs mb-1">
+                          <p className="font-bold text-slate-300 text-lg text-foreground/85 leading-relaxed mb-1">
                             Exemplo 1 — Rendimento de Refinaria
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             80.000 barris brutos entram, rendimento 75%.
                             Derivados = 80.000 × 0,75 ={" "}
                             <strong>60.000 barris</strong>.
                           </p>
                         </div>
                         <div className="p-3 bg-slate-500/10 rounded-lg border border-slate-500/20">
-                          <p className="font-bold text-slate-300 text-xs mb-1">
+                          <p className="font-bold text-slate-300 text-lg text-foreground/85 leading-relaxed mb-1">
                             Exemplo 2 — Produção de FPSO
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             6 separadores → 2.400 m³/h. Com 9 separadores: 9/6 ×
                             2.400 = <strong>3.600 m³/h</strong>.
                           </p>
                         </div>
                         <div className="p-3 bg-slate-500/10 rounded-lg border border-slate-500/20">
-                          <p className="font-bold text-slate-300 text-xs mb-1">
+                          <p className="font-bold text-slate-300 text-lg text-foreground/85 leading-relaxed mb-1">
                             Exemplo 3 — Custo de Perfuração
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             500 m custa R$ 3.000.000 (diretamente proporcional à
                             profundidade). 1.200 m: 1200/500 × 3.000.000 ={" "}
                             <strong>R$ 7.200.000</strong>.
@@ -4139,15 +4139,15 @@ export default function AulaRazaoProporcao({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="p-4 bg-slate-500/10 rounded-xl border border-slate-500/20">
-                        <p className="font-bold text-slate-300 text-sm mb-2">
+                        <p className="font-bold text-slate-300 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Situação: Aumento de Produção Proporcional
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Unidades A, B, C têm capacidade 15.000, 25.000, 10.000
                           barris/dia. Um aumento de 60.000 barris é distribuído
                           proporcionalmente.
                         </p>
-                        <p className="text-sm mt-2 font-mono">
+                        <p className="text-xl mt-2 font-mono text-foreground/85 leading-relaxed">
                           Total: 50.000. Partes:
                           <br />
                           A: 15/50 × 60.000 = 18.000
@@ -4166,10 +4166,10 @@ export default function AulaRazaoProporcao({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
-                        <p className="font-bold text-amber-700 dark:text-amber-400 text-sm mb-2">
+                        <p className="font-bold text-amber-700 dark:text-amber-400 text-xl mb-2 text-foreground/85 leading-relaxed">
                           Relações Inversas na Petrobras:
                         </p>
-                        <ul className="text-sm space-y-1 list-disc list-inside">
+                        <ul className="text-xl space-y-1 list-disc list-inside text-foreground/85 leading-relaxed">
                           <li>Diâmetro de tubulação × Pressão (inversa)</li>
                           <li>
                             Número de técnicos × Tempo de inspeção (inversa)
@@ -4179,7 +4179,7 @@ export default function AulaRazaoProporcao({
                           </li>
                         </ul>
                       </div>
-                      <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-xs text-primary">
+                      <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-lg text-foreground/85 leading-relaxed text-primary">
                         <strong>Pulo do Gato:</strong> Em questões com múltiplas
                         grandezas (técnicos + horas + equipamentos), use a Regra
                         de Três COMPOSTA: causas/efeito = constante.
@@ -4274,7 +4274,7 @@ export default function AulaRazaoProporcao({
                       <p className="font-bold text-cyan-600 dark:text-cyan-400">
                         Padrão Essencial
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Memorize a estrutura-chave deste módulo.
                       </p>
                     </div>
@@ -4439,7 +4439,7 @@ export default function AulaRazaoProporcao({
                 <h4 className="font-bold text-foreground">
                   Estratégia de Resolução: 5 Passos
                 </h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                   <p>
                     <strong>PASSO 1: Leitura atenta</strong> — Identifique o
                     tipo de problema (razão, proporção, escala, divisão, etc.)
@@ -4625,7 +4625,7 @@ export default function AulaRazaoProporcao({
                       <p className="font-bold text-blue-600 dark:text-blue-400">
                         Padrão Essencial
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Memorize a estrutura-chave deste módulo.
                       </p>
                     </div>

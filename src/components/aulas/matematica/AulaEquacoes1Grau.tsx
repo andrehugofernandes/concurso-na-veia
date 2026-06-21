@@ -240,7 +240,7 @@ export default function AulaEquacoes1Grau({
 
               <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Definição Formal & Operações Inversas</h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                   <p><strong>Equação de 1º Grau:</strong> Igualdade da forma ax + b = c (a ≠ 0) com uma incógnita x</p>
                   <p><strong>Solução (Raiz):</strong> O valor de x que torna a igualdade verdadeira</p>
                   <p><strong>Operações Inversas (CRÍTICAS):</strong></p>
@@ -276,7 +276,7 @@ export default function AulaEquacoes1Grau({
 
               <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Checklist de Resolução (Faça Sempre)</h4>
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-xl text-foreground/85 leading-relaxed">
                   <p><strong>□ Identifique a equação original</strong> (ex: 3x + 5 = 20)</p>
                   <p><strong>□ Passo 1: Isole x</strong> usando operações inversas (3x = 15)</p>
                   <p><strong>□ Passo 2: Simplifique</strong> (3x = 15 → já está)</p>
@@ -321,10 +321,10 @@ export default function AulaEquacoes1Grau({
                         invertendo a operação".
                       </p>
                       <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20">
-                        <p className="text-sm font-bold text-blue-700 mb-3">
+                        <p className="text-xl font-bold text-blue-700 mb-3 text-foreground/85 leading-relaxed">
                           Operações Inversas (A Base):
                         </p>
-                        <ul className="space-y-2 text-sm">
+                        <ul className="space-y-2 text-xl text-foreground/85 leading-relaxed">
                           <li>
                             <strong>+ inverte para -</strong> (e vice-versa)
                           </li>
@@ -344,7 +344,7 @@ export default function AulaEquacoes1Grau({
                   icone: <LuPlay />,
                   conteudo: (
                     <div className="space-y-4">
-                      <div className="bg-blue-500/10 p-5 rounded-xl border border-blue-500/20 font-mono text-sm space-y-3">
+                      <div className="bg-blue-500/10 p-5 rounded-xl border border-blue-500/20 font-mono text-xl space-y-3 text-foreground/85 leading-relaxed">
                         <p className="font-black text-blue-700 text-base">
                           Exemplo 1: 2x - 8 = 10
                         </p>
@@ -355,7 +355,7 @@ export default function AulaEquacoes1Grau({
                           x = 9 ✓
                         </p>
                       </div>
-                      <div className="bg-emerald-500/10 p-5 rounded-xl border border-emerald-500/20 font-mono text-sm space-y-3">
+                      <div className="bg-emerald-500/10 p-5 rounded-xl border border-emerald-500/20 font-mono text-xl space-y-3 text-foreground/85 leading-relaxed">
                         <p className="font-black text-emerald-700 text-base">
                           Exemplo 2: 5x + 3 = 28
                         </p>
@@ -373,7 +373,7 @@ export default function AulaEquacoes1Grau({
                   titulo: "Dicas: Gatilhos Mentais",
                   icone: <LuLightbulb />,
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                       <div className="bg-amber-500/10 p-3 rounded-lg border-l-4 border-amber-500">
                         <p className="font-bold text-amber-700">
                           💡 "Isolamento 3 Passos"
@@ -403,16 +403,16 @@ export default function AulaEquacoes1Grau({
                       tipo="danger"
                       titulo="O Veneno: Número Negativo na Frente"
                     >
-                      <p className="text-sm mb-3">
+                      <p className="text-xl mb-3 text-foreground/85 leading-relaxed">
                         Se vir <code>-3x = 15</code>, o {"-3"} está{" "}
                         <strong>multiplicando</strong>. Ele passa para o outro
                         lado <strong>DIVIDINDO</strong>, junto com o sinal
                         negativo:
                       </p>
-                      <p className="text-sm font-mono font-bold">
+                      <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">
                         x = 15 ÷ (-3) = -5 ✓
                       </p>
-                      <p className="text-sm mt-3">
+                      <p className="text-xl mt-3 text-foreground/85 leading-relaxed">
                         ERRADO pensar: "Inverte o sinal". A operação que
                         inverte, não o sinal!
                       </p>
@@ -429,7 +429,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-2">
                     <LuZap className="w-6 h-6 text-blue-500" />
                     <p className="font-bold">Mnemônico Rápido</p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                       Qual é o oposto de +5?
                     </p>
                   </div>
@@ -438,7 +438,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleCheck className="w-6 h-6 text-emerald-500" />
                     <p className="font-bold">-5 (e vice-versa)</p>
-                    <p className="text-xs text-muted-foreground text-center">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground text-center">
                       Soma inverte para subtração
                     </p>
                   </div>
@@ -449,7 +449,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-2">
                     <LuZap className="w-6 h-6 text-blue-500" />
                     <p className="font-bold">Dúvida Comum</p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                       Inverte o sinal ou a operação?
                     </p>
                   </div>
@@ -458,7 +458,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleCheck className="w-6 h-6 text-emerald-500" />
                     <p className="font-bold">A OPERAÇÃO!</p>
-                    <p className="text-xs text-muted-foreground text-center">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground text-center">
                       O sinal vai junto. -3x passa÷3 com o sinal.
                     </p>
                   </div>
@@ -563,7 +563,7 @@ export default function AulaEquacoes1Grau({
                 <div className="space-y-4 text-left">
                   <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl">
                     <p className="font-bold text-indigo-600 dark:text-indigo-400">Padrão Essencial</p>
-                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Memorize a estrutura-chave deste módulo.</p>
                   </div>
                 </div>
               )
@@ -645,7 +645,7 @@ export default function AulaEquacoes1Grau({
 
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Dicionário Operacional: Palavras → Símbolos</h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                   <p><strong>QUANTIDADES:</strong> Um número=x | Dobro=2x | Metade=x/2 | Triplo=3x | Quádruplo=4x | Sucessor=x+1 | Antecessor=x-1</p>
                   <p><strong>OPERAÇÕES:</strong> Soma=+ | Diferença=- | Produto=× | Quociente=÷ | Aumentado de Y=(+Y) | Diminuído de Y=(-Y)</p>
                   <p><strong>PERCENTUAIS:</strong> Aumento de 20%=(×1,20) | Diminuição de 10%=(×0,90) | Desconto de 5%=(×0,95)</p>
@@ -678,7 +678,7 @@ export default function AulaEquacoes1Grau({
                         Decorar essa tabela é 80% do trabalho.
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20 text-sm">
+                        <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20 text-xl text-foreground/85 leading-relaxed">
                           <p className="font-bold text-emerald-700 mb-2">
                             QUANTIDADES
                           </p>
@@ -706,7 +706,7 @@ export default function AulaEquacoes1Grau({
                             </li>
                           </ul>
                         </div>
-                        <div className="bg-teal-500/10 p-3 rounded border border-teal-500/20 text-sm">
+                        <div className="bg-teal-500/10 p-3 rounded border border-teal-500/20 text-xl text-foreground/85 leading-relaxed">
                           <p className="font-bold text-teal-700 mb-2">
                             OPERAÇÕES
                           </p>
@@ -747,11 +747,11 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-emerald-700 mb-3">
                           Problema 1: (CESGRANRIO 2018 - Técnico)
                         </p>
-                        <p className="text-sm mb-3">
+                        <p className="text-xl mb-3 text-foreground/85 leading-relaxed">
                           "Um operador recebe um bônus de R$ 500 e seu salário
                           fica 30% maior. Qual era o salário antes do aumento?"
                         </p>
-                        <p className="text-xs bg-emerald-500/20 p-2 rounded font-mono">
+                        <p className="text-lg text-foreground/85 leading-relaxed bg-emerald-500/20 p-2 rounded font-mono">
                           S + 500 = S × 1,30 → S × 0,30 = 500 → S = 1.667
                         </p>
                       </div>
@@ -759,11 +759,11 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-teal-700 mb-3">
                           Problema 2: (Petrobras - Sistema 2x2)
                         </p>
-                        <p className="text-sm mb-3">
+                        <p className="text-xl mb-3 text-foreground/85 leading-relaxed">
                           "Dois técnicos têm juntos 12 anos de experiência. Um
                           tem 4 anos a mais que o outro. Quanto cada um tem?"
                         </p>
-                        <p className="text-xs bg-teal-500/20 p-2 rounded font-mono">
+                        <p className="text-lg text-foreground/85 leading-relaxed bg-teal-500/20 p-2 rounded font-mono">
                           t₁ + t₂ = 12 e t₁ = t₂ + 4 → t₂ = 4 anos, t₁ = 8 anos
                         </p>
                       </div>
@@ -775,7 +775,7 @@ export default function AulaEquacoes1Grau({
                   icone: <LuLightbulb />,
                   conteudo: (
                     <div className="space-y-3">
-                      <ol className="space-y-2 text-sm list-decimal list-inside">
+                      <ol className="space-y-2 text-xl list-decimal list-inside text-foreground/85 leading-relaxed">
                         <li>
                           <strong>Leia DUAS VEZES</strong> respirando fundo.
                         </li>
@@ -812,15 +812,15 @@ export default function AulaEquacoes1Grau({
                       tipo="danger"
                       titulo="Pegadinha: Percentual vs Aumento Nominal"
                     >
-                      <p className="text-sm mb-2">
+                      <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                         <strong>ERRADO:</strong> "Salário aumentou R$ 500, que é
                         30% maior" = S + 500 = S + 0,30S ❌
                       </p>
-                      <p className="text-sm mb-2">
+                      <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                         <strong>CERTO:</strong> "Salário fica 30% maior" = S ×
                         1,30 ✓
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Aumentar 30% = multiplicar por 1,30, não somar 30% do
                         valor.
                       </p>
@@ -837,12 +837,12 @@ export default function AulaEquacoes1Grau({
                 {
                   titulo: "Caso 1: Distribuição de Horas",
                   descricao: (
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-2 text-xl text-foreground/85 leading-relaxed">
                       <p>
                         Um técnico da RNEST trabalhou x horas em manutenção e
                         (x+8) horas em inspeção. Total: 40h.
                       </p>
-                      <p className="font-mono text-xs">
+                      <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                         x + (x+8) = 40 → x = 16h
                       </p>
                     </div>
@@ -851,24 +851,24 @@ export default function AulaEquacoes1Grau({
                 {
                   titulo: "Caso 2: Custo de Operação",
                   descricao: (
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-2 text-xl text-foreground/85 leading-relaxed">
                       <p>
                         Combustível custa R$ 50/barril. Se gastar R$ 5.000 em um
                         mês, quantos barris foram consumidos?
                       </p>
-                      <p className="font-mono text-xs">50x = 5000 → x = 100</p>
+                      <p className="font-mono text-lg text-foreground/85 leading-relaxed">50x = 5000 → x = 100</p>
                     </div>
                   ),
                 },
                 {
                   titulo: "Caso 3: Meta de Produção",
                   descricao: (
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-2 text-xl text-foreground/85 leading-relaxed">
                       <p>
                         Plataforma A produz 2x barris/dia. Plataforma B produz
                         1.5x. Juntas: 3.500 barris. Quanto cada uma?
                       </p>
-                      <p className="font-mono text-xs">
+                      <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                         2x + 1.5x = 3.500 → x = 1.000 (A=2.000, B=1.500)
                       </p>
                     </div>
@@ -967,7 +967,7 @@ export default function AulaEquacoes1Grau({
                 <div className="space-y-4 text-left">
                   <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
                     <p className="font-bold text-emerald-600 dark:text-emerald-400">Padrão Essencial</p>
-                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Memorize a estrutura-chave deste módulo.</p>
                   </div>
                 </div>
               )
@@ -1014,7 +1014,7 @@ export default function AulaEquacoes1Grau({
 
           <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
             <h4 className="font-bold text-foreground">Tabela de Traduções Ambíguas (CESGRANRIO explora isso!)</h4>
-            <div className="space-y-3 text-sm">
+            <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
               <p><strong>Frase</strong> → <strong>Tradução Correta</strong> | <strong>Armadilha Comum</strong></p>
               <p>"X é Y a mais que Z" → X = Z + Y | ❌ X = Z − Y</p>
               <p>"X é duas vezes Y" → X = 2Y | ❌ X = Y + 2 (confunde "vezes" com "mais 2")</p>
@@ -1067,7 +1067,7 @@ export default function AulaEquacoes1Grau({
 
               <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Protocolo: Resolver Equações com Frações</h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                   <p><strong>PASSO 1:</strong> Identifique todos os denominadores (2, 3, 4, 5, etc.)</p>
                   <p><strong>PASSO 2:</strong> Calcule MMC de todos os denominadores</p>
                   <p><strong>PASSO 3:</strong> **Multiplique CADA termo da equação inteira pelo MMC** — isto cancela todos os denominadores</p>
@@ -1105,7 +1105,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-amber-700 mb-2">
                           Por que funciona?
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Se multiplicamos por MMC, cada fração tem seu
                           denominador anulado. Ex: (x/2) × 6 = 3x (porque
                           6÷2=3).
@@ -1119,7 +1119,7 @@ export default function AulaEquacoes1Grau({
                   icone: <LuPlay />,
                   conteudo: (
                     <div className="space-y-4">
-                      <div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20 font-mono text-sm space-y-2">
+                      <div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20 font-mono text-xl space-y-2 text-foreground/85 leading-relaxed">
                         <p className="font-black text-amber-700">
                           Exemplo 1: (x/2) + (x/3) = 5
                         </p>
@@ -1128,7 +1128,7 @@ export default function AulaEquacoes1Grau({
                         <p>📌 Simplifica: 3x + 2x = 30</p>
                         <p>📌 Resolve: 5x = 30 → x = 6 ✓</p>
                       </div>
-                      <div className="bg-orange-500/10 p-4 rounded-xl border border-orange-500/20 font-mono text-sm space-y-2">
+                      <div className="bg-orange-500/10 p-4 rounded-xl border border-orange-500/20 font-mono text-xl space-y-2 text-foreground/85 leading-relaxed">
                         <p className="font-black text-orange-700">
                           Exemplo 2: (2x/3) - (x/4) = 5
                         </p>
@@ -1146,19 +1146,19 @@ export default function AulaEquacoes1Grau({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-amber-500/10 p-3 rounded border-l-4 border-amber-500">
-                        <p className="font-bold text-amber-700 text-sm mb-1">
+                        <p className="font-bold text-amber-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           🚀 Atalho: MMC por Vontade
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           Se tiver 2, 3, 4: MMC = 12. Se tiver 5, 6: MMC = 30.
                           Multiplicar por um múltiplo comum SEMPRE funciona.
                         </p>
                       </div>
                       <div className="bg-orange-500/10 p-3 rounded border-l-4 border-orange-500">
-                        <p className="font-bold text-orange-700 text-sm mb-1">
+                        <p className="font-bold text-orange-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           🎯 Passo Crítico
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           Multiplique TODA equação, não só um lado. Erros
                           maiores acontecem aqui.
                         </p>
@@ -1174,14 +1174,14 @@ export default function AulaEquacoes1Grau({
                       tipo="danger"
                       titulo="ATENÇÃO: Multiplicação Cruzada"
                     >
-                      <p className="text-sm mb-2">
+                      <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                         Se tiver <code>(x/2) = (5/3)</code>, NÃO use MMC. Use
                         multiplicação cruzada:
                       </p>
-                      <p className="text-sm font-mono font-bold">
+                      <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">
                         3x = 2 × 5 → x = 10/3 ✓
                       </p>
-                      <p className="text-sm mt-2">
+                      <p className="text-xl mt-2 text-foreground/85 leading-relaxed">
                         Multiplicação cruzada é MAIS RÁPIDA quando tem uma
                         fração = outra fração.
                       </p>
@@ -1204,7 +1204,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleCheck className="w-6 h-6 text-emerald-500" />
                     <p className="font-bold text-center">12</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       Múltiplos: 4, 8, 12... 6, 12...
                     </p>
                   </div>
@@ -1215,14 +1215,14 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-2">
                     <LuZap className="w-6 h-6 text-amber-500" />
                     <p className="font-bold text-center">(x/5) + 2 = 7</p>
-                    <p className="text-sm text-muted-foreground">Qual é x?</p>
+                    <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Qual é x?</p>
                   </div>
                 }
                 verso={
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleCheck className="w-6 h-6 text-emerald-500" />
-                    <p className="font-mono text-sm font-bold">x = 25</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="font-mono text-xl font-bold text-foreground/85 leading-relaxed">x = 25</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       x/5 = 5 → x = 25
                     </p>
                   </div>
@@ -1295,7 +1295,7 @@ export default function AulaEquacoes1Grau({
                 <div className="space-y-4 text-left">
                   <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
                     <p className="font-bold text-cyan-600 dark:text-cyan-400">Padrão Essencial</p>
-                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Memorize a estrutura-chave deste módulo.</p>
                   </div>
                 </div>
               )
@@ -1342,7 +1342,7 @@ export default function AulaEquacoes1Grau({
 
           <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
             <h4 className="font-bold text-foreground">Decisão Rápida: Qual Tipo de Solução?</h4>
-            <div className="space-y-3 text-sm">
+            <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
               <p><strong>Se resulta em "0 = 0"</strong> → Infinitas soluções (identidade). Resposta: S = ℝ</p>
               <p><strong>Se resulta em "0 = 5" ou "3 = 0"</strong> → Nenhuma solução (contradição). Resposta: S = ∅</p>
               <p><strong>Se resulta em "2x = 10"</strong> → Uma solução (x = 5). Resposta: S = {5}</p>
@@ -1393,7 +1393,7 @@ export default function AulaEquacoes1Grau({
 
               <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Métodos & Casos Especiais</h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                   <p><strong>Método da Adição:</strong> Multiplique equações para cancelar uma incógnita, some, resolva a restante</p>
                   <p><strong>Método da Substituição:</strong> Isole uma incógnita, substitua na outra equação, resolva</p>
                   <p><strong>Uma Solução Única:</strong> Retas não-paralelas (caso típico) → (x, y) único</p>
@@ -1428,14 +1428,14 @@ export default function AulaEquacoes1Grau({
                       </p>
                       <div className="bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/20">
                         <p className="font-bold text-cyan-700 mb-2">Exemplo:</p>
-                        <p className="font-mono text-sm mb-2">
+                        <p className="font-mono text-xl mb-2 text-foreground/85 leading-relaxed">
                           x + y = 10
                           <br />x - y = 4<br />
                           <span className="text-cyan-600">
                             Solução: x = 7, y = 3
                           </span>
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Verificação: 7 + 3 = 10 ✓ e 7 - 3 = 4 ✓
                         </p>
                       </div>
@@ -1447,11 +1447,11 @@ export default function AulaEquacoes1Grau({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground mb-3">
+                      <p className="text-xl text-muted-foreground mb-3 text-foreground/85 leading-relaxed">
                         É o método veloz. Empilhe as equações e "some", torcendo
                         para um dos valores se anular.
                       </p>
-                      <div className="bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/20 font-mono text-sm space-y-3">
+                      <div className="bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/20 font-mono text-xl space-y-3 text-foreground/85 leading-relaxed">
                         <p className="font-black">2x + y = 10</p>
                         <p>3x - y = 15</p>
                         <p className="border-t border-cyan-500/50 pt-2">
@@ -1472,10 +1472,10 @@ export default function AulaEquacoes1Grau({
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground mb-3">
+                      <p className="text-xl text-muted-foreground mb-3 text-foreground/85 leading-relaxed">
                         Útil quando uma letra está isolada. Ex: "J = M + 5".
                       </p>
-                      <div className="bg-sky-500/10 p-4 rounded-xl border border-sky-500/20 space-y-2 text-sm">
+                      <div className="bg-sky-500/10 p-4 rounded-xl border border-sky-500/20 space-y-2 text-xl text-foreground/85 leading-relaxed">
                         <p className="font-bold">Sistema:</p>
                         <p className="font-mono">
                           y = 2x
@@ -1499,18 +1499,18 @@ export default function AulaEquacoes1Grau({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-cyan-500/10 p-3 rounded border-l-4 border-cyan-500">
-                        <p className="font-bold text-cyan-700 text-sm">
+                        <p className="font-bold text-cyan-700 text-xl text-foreground/85 leading-relaxed">
                           ⚡ Adição: Quando há simetria
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           Se vir +y e -y, some direto. Rápido!
                         </p>
                       </div>
                       <div className="bg-sky-500/10 p-3 rounded border-l-4 border-sky-500">
-                        <p className="font-bold text-sky-700 text-sm">
+                        <p className="font-bold text-sky-700 text-xl text-foreground/85 leading-relaxed">
                           🔄 Substituição: Quando há isolamento
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           Se já vê x = ... ou y = ..., use substituição.
                         </p>
                       </div>
@@ -1522,15 +1522,15 @@ export default function AulaEquacoes1Grau({
                   icone: <LuTriangleAlert />,
                   conteudo: (
                     <AlertBox tipo="info" titulo="Casos Especiais">
-                      <p className="text-sm mb-2">
+                      <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                         <strong>1. Sistema Impossível:</strong> 2x + y = 5 e 2x
                         + y = 8 (Não há solução, retas paralelas)
                       </p>
-                      <p className="text-sm mb-2">
+                      <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                         <strong>2. Sistema Indeterminado:</strong> 2x + y = 6 e
                         4x + 2y = 12 (Infinitas soluções, retas coincidentes)
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>3. Sistema Normal:</strong> Uma única solução
                         (retas se cruzam em um ponto)
                       </p>
@@ -1606,7 +1606,7 @@ export default function AulaEquacoes1Grau({
                 <div className="space-y-4 text-left">
                   <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                     <p className="font-bold text-blue-600 dark:text-blue-400">Padrão Essencial</p>
-                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Memorize a estrutura-chave deste módulo.</p>
                   </div>
                 </div>
               )
@@ -1676,8 +1676,8 @@ export default function AulaEquacoes1Grau({
               </p>
 
               <div className="bg-indigo-500/10 border-l-4 border-indigo-500 p-5 rounded-r-xl mt-6">
-                <p className="font-bold text-indigo-600 dark:text-indigo-400 text-sm mb-2">📊 O Que Esperar</p>
-                <ul className="text-sm space-y-1 text-foreground">
+                <p className="font-bold text-indigo-600 dark:text-indigo-400 text-xl mb-2 text-foreground/85 leading-relaxed">📊 O Que Esperar</p>
+                <ul className="text-xl space-y-1 text-foreground leading-relaxed">
                   <li>✓ 8 questões integradas (M1-M4)</li>
                   <li>✓ Progressão fácil → difícil</li>
                   <li>✓ Feedback detalhado por resposta</li>
@@ -1776,7 +1776,7 @@ export default function AulaEquacoes1Grau({
                 <div className="space-y-4 text-left">
                   <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
                     <p className="font-bold text-amber-600 dark:text-amber-400">Padrão Essencial</p>
-                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Memorize a estrutura-chave deste módulo.</p>
                   </div>
                 </div>
               )
@@ -1861,11 +1861,11 @@ export default function AulaEquacoes1Grau({
               </p>
 
               <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-                <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">⚠️ Regra de Ouro</p>
-                <p className="text-sm font-mono bg-rose-500/5 p-3 rounded mb-2">
+                <p className="font-bold text-rose-600 dark:text-rose-400 text-xl mb-2 text-foreground/85 leading-relaxed">⚠️ Regra de Ouro</p>
+                <p className="text-xl font-mono bg-rose-500/5 p-3 rounded mb-2 text-foreground/85 leading-relaxed">
                   Ao multiplicar/dividir por <strong>NEGATIVO</strong> → sinal INVERTE
                 </p>
-                <ul className="text-sm space-y-1 text-foreground">
+                <ul className="text-xl space-y-1 text-foreground leading-relaxed">
                   <li>✓ Exemplo: -2x {">"}  8  →  x {"<"} -4</li>
                   <li>✓ Notação: x ∈ (-∞, -4)  ou  x {"<"} -4</li>
                   <li>✓ Sempre VERIFIQUE com um valor do intervalo</li>
@@ -1888,13 +1888,13 @@ export default function AulaEquacoes1Grau({
                         valor.
                       </p>
                       <div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20">
-                        <p className="font-mono text-sm mb-2">
+                        <p className="font-mono text-xl mb-2 text-foreground/85 leading-relaxed">
                           <strong>Exemplo:</strong> 3x - 5 {">"} 7
                         </p>
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Resolve como equação: 3x {">"} 12 → x {">"} 4
                         </p>
-                        <p className="text-xs text-muted-foreground mt-2">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
                           Solução: todos os números maiores que 4.
                         </p>
                       </div>
@@ -1906,19 +1906,19 @@ export default function AulaEquacoes1Grau({
                   icone: <LuPlay />,
                   conteudo: (
                     <div className="space-y-4">
-                      <div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20 font-mono text-sm space-y-2">
+                      <div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20 font-mono text-xl space-y-2 text-foreground/85 leading-relaxed">
                         <p className="font-black">Exemplo 1: -2x {"<"} 8</p>
                         <p>
                           {"→"} x {">"} -4
                         </p>
-                        <p className="text-rose-600 text-xs">
+                        <p className="text-rose-600 text-lg text-foreground/85 leading-relaxed">
                           ⚠️ Divide por -2, INVERTE o sinal de {"<"} para {">"}
                         </p>
                       </div>
-                      <div className="bg-pink-500/10 p-4 rounded-xl border border-pink-500/20 font-mono text-sm space-y-2">
+                      <div className="bg-pink-500/10 p-4 rounded-xl border border-pink-500/20 font-mono text-xl space-y-2 text-foreground/85 leading-relaxed">
                         <p className="font-black">Exemplo 2: 5x ≥ 20</p>
                         <p>{"→"} x ≥ 4</p>
-                        <p className="text-pink-600 text-xs">
+                        <p className="text-pink-600 text-lg text-foreground/85 leading-relaxed">
                           ✓ Divide por 5 (positivo), mantém ≥
                         </p>
                       </div>
@@ -1931,12 +1931,12 @@ export default function AulaEquacoes1Grau({
                   conteudo: (
                     <div className="space-y-3">
                       <AlertBox tipo="danger" titulo="REGRA DE OURO">
-                        <p className="text-sm font-bold">
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">
                           Ao dividir (ou multiplicar) por um NÚMERO NEGATIVO, o
                           sinal de desigualdade INVERTE!
                         </p>
                       </AlertBox>
-                      <div className="bg-rose-500/10 p-3 rounded border-l-4 border-rose-500 text-sm">
+                      <div className="bg-rose-500/10 p-3 rounded border-l-4 border-rose-500 text-xl text-foreground/85 leading-relaxed">
                         <p className="font-bold text-rose-700">
                           {">"} inverte para {"<"}
                         </p>
@@ -1951,17 +1951,17 @@ export default function AulaEquacoes1Grau({
                   titulo: "Exceções: Sistemas de Inequações",
                   icone: <LuTriangleAlert />,
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                       <p className="font-bold">
                         Quando há E: interseção dos intervalos
                       </p>
-                      <div className="bg-rose-500/10 p-2 rounded font-mono text-xs">
+                      <div className="bg-rose-500/10 p-2 rounded font-mono text-lg text-foreground/85 leading-relaxed">
                         x {`>`} 2 E x {`<`} 7 → 2 {`<`} x {`<`} 7
                       </div>
                       <p className="font-bold mt-3">
                         Quando há OU: união dos intervalos
                       </p>
-                      <div className="bg-pink-500/10 p-2 rounded font-mono text-xs">
+                      <div className="bg-pink-500/10 p-2 rounded font-mono text-lg text-foreground/85 leading-relaxed">
                         x {"<"} 0 OU x {">"} 5 → x ∈ (-∞, 0) ∪ (5, +∞)
                       </div>
                     </div>
@@ -1983,7 +1983,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleCheck className="w-6 h-6 text-emerald-500" />
                     <p className="font-mono font-bold">x ≥ -4</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       Dividir por -3 inverte ≤ para ≥
                     </p>
                   </div>
@@ -2002,7 +2002,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleCheck className="w-6 h-6 text-emerald-500" />
                     <p className="font-mono font-bold">x {">"} 4</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       2x {">"} 8 → divide por 2 (positivo)
                     </p>
                   </div>
@@ -2075,7 +2075,7 @@ export default function AulaEquacoes1Grau({
                 <div className="space-y-4 text-left">
                   <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl">
                     <p className="font-bold text-rose-600 dark:text-rose-400">Padrão Essencial</p>
-                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Memorize a estrutura-chave deste módulo.</p>
                   </div>
                 </div>
               )
@@ -2156,8 +2156,8 @@ export default function AulaEquacoes1Grau({
               </p>
 
               <div className="bg-violet-500/10 border-l-4 border-violet-500 p-5 rounded-r-xl mt-6">
-                <p className="font-bold text-violet-600 dark:text-violet-400 text-sm mb-2">🔷 Protocolo 3×3</p>
-                <ol className="text-sm space-y-1 text-foreground list-decimal list-inside">
+                <p className="font-bold text-violet-600 dark:text-violet-400 text-xl mb-2 text-foreground/85 leading-relaxed">🔷 Protocolo 3×3</p>
+                <ol className="text-xl space-y-1 text-foreground list-decimal list-inside leading-relaxed">
                   <li>Use EQ1 para eliminar x das EQ2 e EQ3</li>
                   <li>Use EQ2 (novo) para eliminar y de EQ3 (novo)</li>
                   <li>Resolva z da última equação</li>
@@ -2184,7 +2184,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-violet-700 mb-2">
                           Exemplo Simples:
                         </p>
-                        <div className="font-mono text-xs space-y-1">
+                        <div className="font-mono text-lg text-foreground/85 leading-relaxed space-y-1">
                           <p>x + y + z = 6</p>
                           <p>x - y + z = 4</p>
                           <p>2x + y - z = 5</p>
@@ -2198,11 +2198,11 @@ export default function AulaEquacoes1Grau({
                   icone: <LuPlay />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xs text-muted-foreground mb-3">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mb-3">
                         Estratégia: Use a 1ª equação para eliminar x das outras
                         duas.
                       </p>
-                      <div className="bg-violet-500/10 p-4 rounded-xl border border-violet-500/20 font-mono text-xs space-y-2">
+                      <div className="bg-violet-500/10 p-4 rounded-xl border border-violet-500/20 font-mono text-lg text-foreground/85 leading-relaxed space-y-2">
                         <p className="font-bold">
                           1º: Das 3 equações, faça 2 com um menos:
                         </p>
@@ -2226,12 +2226,12 @@ export default function AulaEquacoes1Grau({
                   titulo: "Dicas: Estratégia de Batalha",
                   icone: <LuLightbulb />,
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                       <div className="bg-violet-500/10 p-3 rounded border-l-4 border-violet-500">
                         <p className="font-bold text-violet-700">
                           1️⃣ Escolha uma incógnita para eliminar
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           Geralmente a que tem coeficiente 1 ou simétrico.
                         </p>
                       </div>
@@ -2239,7 +2239,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-indigo-700">
                           2️⃣ Use as 3 equações para fazer 2
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           Subtraia ou some combinações para eliminar.
                         </p>
                       </div>
@@ -2247,7 +2247,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-violet-700">
                           3️⃣ Repita com as 2 equações (torna-se 2x2)
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           Agora é um sistema 2x2. Use adição ou substituição.
                         </p>
                       </div>
@@ -2259,15 +2259,15 @@ export default function AulaEquacoes1Grau({
                   icone: <LuTriangleAlert />,
                   conteudo: (
                     <AlertBox tipo="info" titulo="Análise de Soluções">
-                      <p className="text-sm mb-2">
+                      <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                         <strong>Uma solução:</strong> Sistema normal, planos se
                         cruzam em um ponto.
                       </p>
-                      <p className="text-sm mb-2">
+                      <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                         <strong>Infinitas soluções:</strong> 0 = 0 (identidade),
                         planos são coincidentes.
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>Nenhuma solução:</strong> 0 = 5 (absurdo),
                         planos são paralelos.
                       </p>
@@ -2343,7 +2343,7 @@ export default function AulaEquacoes1Grau({
                 <div className="space-y-4 text-left">
                   <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl">
                     <p className="font-bold text-indigo-600 dark:text-indigo-400">Padrão Essencial</p>
-                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Memorize a estrutura-chave deste módulo.</p>
                   </div>
                 </div>
               )
@@ -2423,8 +2423,8 @@ export default function AulaEquacoes1Grau({
               </p>
 
               <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-                <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm mb-2">✅ Protocolo de Verificação</p>
-                <ol className="text-sm space-y-1 text-foreground list-decimal list-inside">
+                <p className="font-bold text-emerald-600 dark:text-emerald-400 text-xl mb-2 text-foreground/85 leading-relaxed">✅ Protocolo de Verificação</p>
+                <ol className="text-xl space-y-1 text-foreground list-decimal list-inside leading-relaxed">
                   <li>Encontre o valor (ex.: x = 3)</li>
                   <li>Substitua na equação <strong>original</strong> (não na modificada)</li>
                   <li>Calcule o lado esquerdo</li>
@@ -2448,7 +2448,7 @@ export default function AulaEquacoes1Grau({
                         acerta ou erra.
                       </p>
                       <AlertBox tipo="info" titulo="Estatística Real">
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Estudantes que verificam aumentam sua taxa de acertos
                           em até 15%.
                         </p>
@@ -2465,16 +2465,16 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-teal-700 mb-3">
                           Problema Resolvido: 2x + 3 = 11
                         </p>
-                        <p className="text-sm mb-3">
+                        <p className="text-xl mb-3 text-foreground/85 leading-relaxed">
                           Solução encontrada: x = 4
                         </p>
                         <p className="font-bold text-teal-700 mb-2">
                           Verificação:
                         </p>
-                        <p className="font-mono text-sm">
+                        <p className="font-mono text-xl text-foreground/85 leading-relaxed">
                           2(4) + 3 = 8 + 3 = 11 ✓
                         </p>
-                        <p className="text-xs text-muted-foreground mt-2">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
                           Ambos lados da equação são iguais. x = 4 está CORRETO.
                         </p>
                       </div>
@@ -2483,16 +2483,16 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-cyan-700 mb-3">
                           Contra-exemplo: Erro Detectado
                         </p>
-                        <p className="text-sm mb-3">
+                        <p className="text-xl mb-3 text-foreground/85 leading-relaxed">
                           Solução (errada) encontrada: x = 5
                         </p>
                         <p className="font-bold text-cyan-700 mb-2">
                           Verificação:
                         </p>
-                        <p className="font-mono text-sm">
+                        <p className="font-mono text-xl text-foreground/85 leading-relaxed">
                           2(5) + 3 = 10 + 3 = 13 ≠ 11 ✗
                         </p>
-                        <p className="text-xs text-muted-foreground mt-2">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
                           Lado esquerdo ≠ lado direito. Há erro. Refaça!
                         </p>
                       </div>
@@ -2503,12 +2503,12 @@ export default function AulaEquacoes1Grau({
                   titulo: "Dicas: Verificação Rápida",
                   icone: <LuLightbulb />,
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                       <div className="bg-teal-500/10 p-3 rounded border-l-4 border-teal-500">
                         <p className="font-bold text-teal-700">
                           1️⃣ Substitua direto no original
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           Não use equações intermediárias, volta ao texto.
                         </p>
                       </div>
@@ -2516,7 +2516,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-cyan-700">
                           2️⃣ Calcule ambos os lados separadamente
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           Lado esquerdo = ? Lado direito = ? Iguais?
                         </p>
                       </div>
@@ -2524,7 +2524,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-teal-700">
                           3️⃣ Verifique antes de marcar
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           Se sobrar tempo: SEMPRE verifica.
                         </p>
                       </div>
@@ -2536,15 +2536,15 @@ export default function AulaEquacoes1Grau({
                   icone: <LuTriangleAlert />,
                   conteudo: (
                     <AlertBox tipo="warning" titulo="Atenção com Domínio">
-                      <p className="text-sm mb-2">
+                      <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                         Se a equação tiver{" "}
                         <strong>raízes ou denominadores</strong>, a solução pode
                         ser inválida:
                       </p>
-                      <p className="text-xs mb-2 font-mono">
+                      <p className="text-lg text-foreground/85 leading-relaxed mb-2 font-mono">
                         {"√(x-2)"} precisa x ≥ 2
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Se x = 1 resolver a equação, mas x = 1 {"<"} 2, então x
                         = 1 é <strong>solução estranha</strong> (deve ser
                         descartada).
@@ -2570,7 +2570,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleX className="w-6 h-6 text-rose-500" />
                     <p className="font-bold">Não ✗</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       4(3) - 5 = 7 → 12 - 5 = 7 ✓ (sim!)
                     </p>
                   </div>
@@ -2589,7 +2589,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleCheck className="w-6 h-6 text-emerald-500" />
                     <p className="font-bold">Sim ✓</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       3(-2) + 6 = -6 + 6 = 0 ✓
                     </p>
                   </div>
@@ -2662,7 +2662,7 @@ export default function AulaEquacoes1Grau({
                 <div className="space-y-4 text-left">
                   <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
                     <p className="font-bold text-emerald-600 dark:text-emerald-400">Padrão Essencial</p>
-                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Memorize a estrutura-chave deste módulo.</p>
                   </div>
                 </div>
               )
@@ -2745,8 +2745,8 @@ export default function AulaEquacoes1Grau({
               </p>
 
               <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-                <p className="font-bold text-rose-600 dark:text-rose-400 text-sm mb-2">🏭 Protocolo: Problema Contextualizado</p>
-                <ol className="text-sm space-y-1 text-foreground list-decimal list-inside">
+                <p className="font-bold text-rose-600 dark:text-rose-400 text-xl mb-2 text-foreground/85 leading-relaxed">🏭 Protocolo: Problema Contextualizado</p>
+                <ol className="text-xl space-y-1 text-foreground list-decimal list-inside leading-relaxed">
                   <li><strong>Leia cuidadosamente</strong> — sublinhe os números e relações</li>
                   <li><strong>Defina a incógnita:</strong> "Que x preciso encontrar?"</li>
                   <li><strong>Extraia a equação</strong> do texto (use Módulo 2)</li>
@@ -2774,7 +2774,7 @@ export default function AulaEquacoes1Grau({
                         . O contexto esconde a equação.
                       </p>
                       <AlertBox tipo="info" titulo="Realidade Cesgranrio">
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           80% das questões de equações NO CONCURSO REAL vêm
                           assim: disfarçadas em situações do dia a dia da
                           empresa.
@@ -2792,12 +2792,12 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-orange-700 mb-2">
                           Caso 1: Horas de Trabalho (RNEST - Recife)
                         </p>
-                        <p className="text-sm mb-2">
+                        <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                           Um técnico trabalhou x horas em manutenção (R$ 50/h) e
                           (x+4) horas em inspeção (R$ 60/h). Ganhou R$ 700 no
                           total. Quantas horas de manutenção?
                         </p>
-                        <p className="font-mono text-xs">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                           50x + 60(x+4) = 700 → 50x + 60x + 240 = 700 → 110x =
                           460 → x ≈ 4,18h
                         </p>
@@ -2807,12 +2807,12 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-red-700 mb-2">
                           Caso 2: Produção de Barrís (RPBC - Paulínia)
                         </p>
-                        <p className="text-sm mb-2">
+                        <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                           Plataforma A produz 2.500 b/dia. Plataforma B produz
                           1.5x essa quantidade. Juntas devem produzir 18.000
                           barris. Qual deve ser o fator multiplicador x?
                         </p>
-                        <p className="font-mono text-xs">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                           2500x + 1.5(2500x) = 18000 → 4000x = 18000 → x = 4,5
                         </p>
                       </div>
@@ -2823,12 +2823,12 @@ export default function AulaEquacoes1Grau({
                   titulo: "Dicas: Interpretação do Contexto",
                   icone: <LuLightbulb />,
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                       <div className="bg-orange-500/10 p-3 rounded border-l-4 border-orange-500">
                         <p className="font-bold text-orange-700">
                           1️⃣ Destaque as VARIÁVEIS
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           "x horas", "y barris", "z salários". Sublinha tudo.
                         </p>
                       </div>
@@ -2836,7 +2836,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-red-700">
                           2️⃣ Encontre as RELACIONS
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           "o dobro", "3 vezes menor", "somando todos".
                         </p>
                       </div>
@@ -2844,7 +2844,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-orange-700">
                           3️⃣ Procure o RESULTADO FINAL
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           "Ficou em", "Totalizou", "Somam". Ali fica o "=".
                         </p>
                       </div>
@@ -2856,15 +2856,15 @@ export default function AulaEquacoes1Grau({
                   icone: <LuTriangleAlert />,
                   conteudo: (
                     <AlertBox tipo="warning" titulo="Atenção com Unidades">
-                      <p className="text-sm mb-2">
+                      <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                         <strong>Horas e minutos:</strong> Converta para mesma
                         unidade. 1h30min = 1,5h ou 90 minutos.
                       </p>
-                      <p className="text-sm mb-2">
+                      <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                         <strong>Escalas de produção:</strong> 1.000 barris =
                         1000, não 1k (a menos que o enunciado defina).
                       </p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>Taxas:</strong> R$ 50/h é diferente de R$ 50
                         total. Cuidado!
                       </p>
@@ -2881,12 +2881,12 @@ export default function AulaEquacoes1Grau({
                 {
                   titulo: "Distribuição Proporcional",
                   descricao: (
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-2 text-xl text-foreground/85 leading-relaxed">
                       <p>
                         Orçamento de R$ 50.000 dividido entre 3 unidades em
                         proporção 1:2:2. Quanto cada uma recebe?
                       </p>
-                      <p className="font-mono text-xs">
+                      <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                         1x + 2x + 2x = 50000 → x = 12500
                       </p>
                     </div>
@@ -2895,12 +2895,12 @@ export default function AulaEquacoes1Grau({
                 {
                   titulo: "Análise de Folha de Pagamento",
                   descricao: (
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-2 text-xl text-foreground/85 leading-relaxed">
                       <p>
                         Técnico ganha S. Com desconto INSS de 10%, fica com R$
                         3.600. Qual era o salário bruto?
                       </p>
-                      <p className="font-mono text-xs">
+                      <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                         0.90S = 3600 → S = 4000
                       </p>
                     </div>
@@ -2909,13 +2909,13 @@ export default function AulaEquacoes1Grau({
                 {
                   titulo: "Licitação com Descontos",
                   descricao: (
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-2 text-xl text-foreground/85 leading-relaxed">
                       <p>
                         Fornecedor A oferece 15% de desconto. Fornecedor B
                         oferece R$ 10.000 a menos. Se igual, qual o preço
                         original?
                       </p>
-                      <p className="font-mono text-xs">
+                      <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                         0.85P = P - 10000 → 0.15P = 10000 → P = 66666,67
                       </p>
                     </div>
@@ -3014,7 +3014,7 @@ export default function AulaEquacoes1Grau({
                 <div className="space-y-4 text-left">
                   <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
                     <p className="font-bold text-cyan-600 dark:text-cyan-400">Padrão Essencial</p>
-                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Memorize a estrutura-chave deste módulo.</p>
                   </div>
                 </div>
               )
@@ -3058,7 +3058,7 @@ export default function AulaEquacoes1Grau({
                 inequações, contextos Petrobras. Está pronto para Equações de 2º
                 Grau, Funções e além.
               </p>
-              <div className="flex gap-2 text-sm text-muted-foreground">
+              <div className="flex gap-2 text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                 <LuGraduationCap className="w-4 h-4" />
                 <span>Próximo: Equações de 2º Grau</span>
               </div>
@@ -3113,8 +3113,8 @@ export default function AulaEquacoes1Grau({
                   </p>
 
                   <div className="bg-violet-500/10 border-l-4 border-violet-500 p-5 rounded-r-xl mt-6">
-                    <p className="font-bold text-violet-600 dark:text-violet-400 text-sm mb-2">👑 Simulado Mestre: 5 Passos</p>
-                    <ol className="text-sm space-y-1 text-foreground list-decimal list-inside">
+                    <p className="font-bold text-violet-600 dark:text-violet-400 text-xl mb-2 text-foreground/85 leading-relaxed">👑 Simulado Mestre: 5 Passos</p>
+                    <ol className="text-xl space-y-1 text-foreground list-decimal list-inside leading-relaxed">
                       <li><strong>Leia a questão 2x</strong> — primeira para entender, segunda para sublinhar números</li>
                       <li><strong>Identifique o padrão</strong> — qual módulo (M1-M9) é o núcleo?</li>
                       <li><strong>Resolva passo a passo</strong> — sem pular etapas, mesmo que pareça óbvio</li>
@@ -3125,7 +3125,7 @@ export default function AulaEquacoes1Grau({
                 </div>
 
                 <AlertBox tipo="warning" titulo="Instruções Importantes">
-                  <ul className="text-sm space-y-1 list-disc list-inside">
+                  <ul className="text-xl space-y-1 list-disc list-inside text-foreground/85 leading-relaxed">
                     <li>
                       Tempo estimado: 45 minutos para 8 questões diversas.
                     </li>
@@ -3202,7 +3202,7 @@ export default function AulaEquacoes1Grau({
                 <div className="space-y-4 text-left">
                   <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                     <p className="font-bold text-blue-600 dark:text-blue-400">Padrão Essencial</p>
-                    <p className="text-sm">Memorize a estrutura-chave deste módulo.</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Memorize a estrutura-chave deste módulo.</p>
                   </div>
                 </div>
               )
@@ -3231,7 +3231,7 @@ export default function AulaEquacoes1Grau({
             <div className="space-y-4">
               <div className="bg-slate-500/10 p-6 rounded-2xl border border-slate-500/20">
                 <h4 className="font-bold mb-3">Os 10 Pilares Dominados</h4>
-                <ol className="space-y-2 text-sm list-decimal list-inside">
+                <ol className="space-y-2 text-xl list-decimal list-inside text-foreground/85 leading-relaxed">
                   <li>
                     <strong>Princípio da Balança:</strong> Operação inversa é
                     LEI.

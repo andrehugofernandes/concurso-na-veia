@@ -135,26 +135,26 @@ export default function AulaGeometriaEspacial({
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
               <div className="bg-white/20 rounded-xl p-4 text-center">
                 <p className="text-3xl font-bold">10</p>
-                <p className="text-sm opacity-80">Módulos</p>
+                <p className="text-xl opacity-80 text-foreground/85 leading-relaxed">Módulos</p>
               </div>
               <div className="bg-white/20 rounded-xl p-4 text-center">
                 <p className="text-3xl font-bold">60+</p>
-                <p className="text-sm opacity-80">Questões</p>
+                <p className="text-xl opacity-80 text-foreground/85 leading-relaxed">Questões</p>
               </div>
               <div className="bg-white/20 rounded-xl p-4 text-center">
                 <p className="text-3xl font-bold">15h</p>
-                <p className="text-sm opacity-80">Duração</p>
+                <p className="text-xl opacity-80 text-foreground/85 leading-relaxed">Duração</p>
               </div>
               <div className="bg-white/20 rounded-xl p-4 text-center">
                 <p className="text-3xl font-bold">100%</p>
-                <p className="text-sm opacity-80">CESGRANRIO</p>
+                <p className="text-xl opacity-80 text-foreground/85 leading-relaxed">CESGRANRIO</p>
               </div>
             </div>
           </div>
 
           <AlertBox tipo="success" titulo="Por Que Estudar Geometria Espacial?">
             Geometria espacial é frequente em provas CESGRANRIO (Petrobras), especialmente em contextos industriais:
-            <ul className="list-disc list-inside mt-3 space-y-1 text-sm">
+            <ul className="list-disc list-inside mt-3 space-y-1 text-xl text-foreground/85 leading-relaxed">
               <li><strong>Tanques de armazenamento:</strong> esferóides, cilindros, cones</li>
               <li><strong>Tubulações e dutos:</strong> cilindros com diferentes raios</li>
               <li><strong>Silos e reservatórios:</strong> sólidos compostos (cilindro + cone)</li>
@@ -165,7 +165,7 @@ export default function AulaGeometriaEspacial({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <AlertBox tipo="info" titulo="Estrutura desta Aula">
-              <div className="space-y-2 text-sm mt-3">
+              <div className="space-y-2 text-xl mt-3 text-foreground/85 leading-relaxed">
                 <p><strong>Módulos 1-3:</strong> Fundamentos (poliedros, prismas, pirâmides)</p>
                 <p><strong>Módulos 4-6:</strong> Sólidos de revolução (cilindro, cone, esfera)</p>
                 <p><strong>Módulos 7-8:</strong> Tópicos avançados (troncos, compostos)</p>
@@ -174,7 +174,7 @@ export default function AulaGeometriaEspacial({
             </AlertBox>
 
             <AlertBox tipo="warning" titulo="Pré-requisitos">
-              <div className="space-y-2 text-sm mt-3">
+              <div className="space-y-2 text-xl mt-3 text-foreground/85 leading-relaxed">
                 <p>✓ Área e perímetro de polígonos planos</p>
                 <p>✓ Teorema de Pitágoras (a² + b² = c²)</p>
                 <p>✓ Noções de trigonometria básica (seno, cosseno)</p>
@@ -184,7 +184,7 @@ export default function AulaGeometriaEspacial({
           </div>
 
           <AlertBox tipo="success" titulo="O Que Você Vai Aprender Nesta Aula">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm mt-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xl mt-3 text-foreground/85 leading-relaxed">
               <div>
                 <p className="font-semibold text-emerald-400 mb-2">Conceitos</p>
                 <ul className="list-disc list-inside space-y-1">
@@ -212,7 +212,7 @@ export default function AulaGeometriaEspacial({
                 titulo: "Metodologia de Estudo Recomendada",
                 icone: "📚",
                 conteudo: (
-                  <div className="space-y-3 text-sm">
+                  <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                     <p><strong>1. Leia o conceito:</strong> Entenda a definição e as fórmulas antes de memorizar.</p>
                     <p><strong>2. Visualize em 3D:</strong> Use papel/software ou objetos reais para ver o sólido.</p>
                     <p><strong>3. Decore as fórmulas:</strong> Crie cartões mentais e repita 5-10 vezes.</p>
@@ -260,16 +260,16 @@ export default function AulaGeometriaEspacial({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20 text-center">
-                          <p className="text-xs font-bold text-blue-400 mb-2">Vértices (V)</p>
-                          <p className="text-sm">Pontos onde 3 ou mais arestas se encontram</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Vértices (V)</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Pontos onde 3 ou mais arestas se encontram</p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20 text-center">
-                          <p className="text-xs font-bold text-cyan-400 mb-2">Arestas (A)</p>
-                          <p className="text-sm">Segmentos de reta onde duas faces se encontram</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-2">Arestas (A)</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Segmentos de reta onde duas faces se encontram</p>
                         </div>
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-center">
-                          <p className="text-xs font-bold text-emerald-400 mb-2">Faces (F)</p>
-                          <p className="text-sm">Polígonos planos que delimitam o sólido</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">Faces (F)</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Polígonos planos que delimitam o sólido</p>
                         </div>
                       </div>
                       <AlertBox tipo="info" titulo="Contexto Petrobras">
@@ -288,18 +288,18 @@ export default function AulaGeometriaEspacial({
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-6 text-center">
                         <p className="text-2xl font-bold font-mono text-blue-400">V − A + F = 2</p>
-                        <p className="text-sm text-muted-foreground mt-2">Característica de Euler para poliedros convexos</p>
+                        <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Característica de Euler para poliedros convexos</p>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-400 mb-2">Cubo</p>
-                          <p className="text-sm">V = 8, A = 12, F = 6</p>
-                          <p className="text-sm font-bold">8 − 12 + 6 = <span className="text-emerald-400">2 ✓</span></p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Cubo</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">V = 8, A = 12, F = 6</p>
+                          <p className="text-xl font-bold text-foreground/85 leading-relaxed">8 − 12 + 6 = <span className="text-emerald-400">2 ✓</span></p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-400 mb-2">Tetraedro</p>
-                          <p className="text-sm">V = 4, A = 6, F = 4</p>
-                          <p className="text-sm font-bold">4 − 6 + 4 = <span className="text-emerald-400">2 ✓</span></p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-2">Tetraedro</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">V = 4, A = 6, F = 4</p>
+                          <p className="text-xl font-bold text-foreground/85 leading-relaxed">4 − 6 + 4 = <span className="text-emerald-400">2 ✓</span></p>
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
@@ -317,7 +317,7 @@ export default function AulaGeometriaEspacial({
                         Os <strong>sólidos platônicos</strong> são os únicos poliedros regulares (todas as faces iguais, todos os ângulos iguais):
                       </p>
                       <div className="overflow-x-auto">
-                        <table className="w-full text-sm border-collapse">
+                        <table className="w-full text-xl border-collapse text-foreground/85 leading-relaxed">
                           <thead>
                             <tr className="bg-blue-500/10">
                               <th className="p-2 text-left border border-border">Sólido</th>
@@ -383,22 +383,22 @@ export default function AulaGeometriaEspacial({
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-6 bg-blue-500/5 rounded-xl border border-blue-500/20 space-y-3">
-                <p className="text-sm font-bold text-blue-400">Prisma de base n-gonal</p>
-                <div className="bg-blue-500/10 rounded-lg p-3 space-y-1 font-mono text-sm">
+                <p className="text-xl font-bold text-blue-400 text-foreground/85 leading-relaxed">Prisma de base n-gonal</p>
+                <div className="bg-blue-500/10 rounded-lg p-3 space-y-1 font-mono text-xl text-foreground/85 leading-relaxed">
                   <p>V = 2n (vértices)</p>
                   <p>A = 3n (arestas)</p>
                   <p>F = n + 2 (faces)</p>
                 </div>
-                <p className="text-xs text-muted-foreground">Exemplo: prisma hexagonal → V=12, A=18, F=8</p>
+                <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Exemplo: prisma hexagonal → V=12, A=18, F=8</p>
               </div>
               <div className="p-6 bg-cyan-500/5 rounded-xl border border-cyan-500/20 space-y-3">
-                <p className="text-sm font-bold text-cyan-400">Pirâmide de base n-gonal</p>
-                <div className="bg-cyan-500/10 rounded-lg p-3 space-y-1 font-mono text-sm">
+                <p className="text-xl font-bold text-cyan-400 text-foreground/85 leading-relaxed">Pirâmide de base n-gonal</p>
+                <div className="bg-cyan-500/10 rounded-lg p-3 space-y-1 font-mono text-xl text-foreground/85 leading-relaxed">
                   <p>V = n + 1 (vértices)</p>
                   <p>A = 2n (arestas)</p>
                   <p>F = n + 1 (faces)</p>
                 </div>
-                <p className="text-xs text-muted-foreground">Exemplo: pirâmide quadrangular → V=5, A=8, F=5</p>
+                <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Exemplo: pirâmide quadrangular → V=5, A=8, F=5</p>
               </div>
             </div>
           </section>
@@ -522,20 +522,20 @@ export default function AulaGeometriaEspacial({
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-6 text-center">
                         <p className="text-2xl font-bold font-mono text-emerald-400">V = A_base × h</p>
-                        <p className="text-sm text-muted-foreground mt-2">Válido para qualquer prisma (reto ou oblíquo)</p>
+                        <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Válido para qualquer prisma (reto ou oblíquo)</p>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-400 mb-2">Paralelepípedo</p>
-                          <p className="text-sm font-mono">V = a × b × c</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">Paralelepípedo</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">V = a × b × c</p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-400 mb-2">Prisma Triangular</p>
-                          <p className="text-sm font-mono">V = (b × h_b / 2) × H</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Prisma Triangular</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">V = (b × h_b / 2) × H</p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-400 mb-2">Cubo</p>
-                          <p className="text-sm font-mono">V = a³</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-2">Cubo</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">V = a³</p>
                         </div>
                       </div>
                       <AlertBox tipo="info" titulo="Aplicação na Petrobras">
@@ -553,14 +553,14 @@ export default function AulaGeometriaEspacial({
                         A área total divide-se em <strong>área lateral</strong> (faces retangulares) e <strong>área das bases</strong>:
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-mono font-bold">A_lateral = Perímetro_base × h</p>
-                        <p className="text-sm font-mono font-bold">A_total = A_lateral + 2 × A_base</p>
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">A_lateral = Perímetro_base × h</p>
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">A_total = A_lateral + 2 × A_base</p>
                       </div>
                       <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <p className="text-xs font-bold text-emerald-400 mb-2">Exemplo — Container Industrial</p>
-                        <p className="text-sm">Dimensões: 12 m × 2,4 m × 2,6 m</p>
-                        <p className="text-sm">A_lateral = [2(12+2,4) + 2(2,4+2,6)] × ... (usar fórmula correta)</p>
-                        <p className="text-sm">A_total = 2(ab + bc + ca) = 2(28,8 + 6,24 + 31,2) = <strong>132,48 m²</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">Exemplo — Container Industrial</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Dimensões: 12 m × 2,4 m × 2,6 m</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">A_lateral = [2(12+2,4) + 2(2,4+2,6)] × ... (usar fórmula correta)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">A_total = 2(ab + bc + ca) = 2(28,8 + 6,24 + 31,2) = <strong>132,48 m²</strong></p>
                       </div>
                       <AlertBox tipo="warning" titulo="Atenção">
                         Para um paralelepípedo: A_total = 2(ab + bc + ca). Para outros prismas, some as áreas de todas as faces individualmente.
@@ -577,13 +577,13 @@ export default function AulaGeometriaEspacial({
                         A <strong>diagonal principal</strong> do paralelepípedo conecta vértices opostos e é calculada por dupla aplicação de Pitágoras:
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center font-bold">d = √(a² + b² + c²)</p>
-                        <p className="text-sm text-center text-muted-foreground mt-1">Para o cubo: d = a√3</p>
+                        <p className="text-xl font-mono text-center font-bold text-foreground/85 leading-relaxed">d = √(a² + b² + c²)</p>
+                        <p className="text-xl text-center text-muted-foreground mt-1 text-foreground/85 leading-relaxed">Para o cubo: d = a√3</p>
                       </div>
                       <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                        <p className="text-xs font-bold text-blue-400 mb-2">Passo a passo no cubo de aresta a</p>
-                        <p className="text-sm">1. Diagonal da face: d_face = √(a² + a²) = a√2</p>
-                        <p className="text-sm">2. Diagonal espacial: d = √[(a√2)² + a²] = √(3a²) = <strong>a√3</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Passo a passo no cubo de aresta a</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">1. Diagonal da face: d_face = √(a² + a²) = a√2</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">2. Diagonal espacial: d = √[(a√2)² + a²] = √(3a²) = <strong>a√3</strong></p>
                       </div>
                     </div>
                   ),
@@ -718,14 +718,14 @@ export default function AulaGeometriaEspacial({
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-400 mb-2">Pirâmide Quadrangular</p>
-                          <p className="text-sm font-mono">V = (1/3) × l² × h</p>
-                          <p className="text-xs text-muted-foreground mt-1">l = lado da base quadrada</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Pirâmide Quadrangular</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">V = (1/3) × l² × h</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">l = lado da base quadrada</p>
                         </div>
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-400 mb-2">Pirâmide Triangular</p>
-                          <p className="text-sm font-mono">V = (1/3) × (b×h_b/2) × h</p>
-                          <p className="text-xs text-muted-foreground mt-1">b, h_b = base e altura do triângulo</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">Pirâmide Triangular</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">V = (1/3) × (b×h_b/2) × h</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">b, h_b = base e altura do triângulo</p>
                         </div>
                       </div>
                       <AlertBox tipo="info" titulo="Contextualização Industrial">
@@ -743,8 +743,8 @@ export default function AulaGeometriaEspacial({
                         A <strong>área lateral</strong> da pirâmide regular é calculada pela apótema lateral (a_l), que é a altura de cada face triangular:
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-mono font-bold text-center">A_lateral = (Perímetro_base × a_l) / 2</p>
-                        <p className="text-sm font-mono font-bold text-center">A_total = A_lateral + A_base</p>
+                        <p className="text-xl font-mono font-bold text-center text-foreground/85 leading-relaxed">A_lateral = (Perímetro_base × a_l) / 2</p>
+                        <p className="text-xl font-mono font-bold text-center text-foreground/85 leading-relaxed">A_total = A_lateral + A_base</p>
                       </div>
                       <AlertBox tipo="warning" titulo="Não confunda!">
                         <strong>Apótema lateral (a_l)</strong>: altura da face triangular — usada para calcular área lateral.<br/>
@@ -763,14 +763,14 @@ export default function AulaGeometriaEspacial({
                         Na pirâmide regular, existe um <strong>triângulo retângulo fundamental</strong>:
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center font-bold">a_l² = h² + a_b²</p>
-                        <p className="text-sm text-center text-muted-foreground mt-1">Geratriz² = Altura² + Apótema_base²</p>
+                        <p className="text-xl font-mono text-center font-bold text-foreground/85 leading-relaxed">a_l² = h² + a_b²</p>
+                        <p className="text-xl text-center text-muted-foreground mt-1 text-foreground/85 leading-relaxed">Geratriz² = Altura² + Apótema_base²</p>
                       </div>
                       <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <p className="text-xs font-bold text-emerald-400 mb-2">Exemplo — Pirâmide Quadrangular</p>
-                        <p className="text-sm">Base: l = 6 m → a_b = l/2 = 3 m</p>
-                        <p className="text-sm">Altura: h = 4 m</p>
-                        <p className="text-sm">Apótema lateral: a_l = √(16 + 9) = √25 = <strong>5 m</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">Exemplo — Pirâmide Quadrangular</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Base: l = 6 m → a_b = l/2 = 3 m</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Altura: h = 4 m</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Apótema lateral: a_l = √(16 + 9) = √25 = <strong>5 m</strong></p>
                       </div>
                     </div>
                   ),
@@ -902,7 +902,7 @@ export default function AulaGeometriaEspacial({
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-6 text-center">
                         <p className="text-2xl font-bold font-mono text-cyan-400">V = π × r² × h</p>
-                        <p className="text-sm text-muted-foreground mt-2">r = raio da base circular | h = altura do cilindro</p>
+                        <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">r = raio da base circular | h = altura do cilindro</p>
                       </div>
                       <AlertBox tipo="info" titulo="Aplicação Direta — Tanque Petrobras">
                         Um tanque cilíndrico com raio 5 m e altura 10 m tem V = 3,14 × 25 × 10 = <strong>785 m³</strong> ≈ 4.937 barris de petróleo. Tanques assim são comuns em terminais de armazenamento.
@@ -922,15 +922,15 @@ export default function AulaGeometriaEspacial({
                         A área lateral do cilindro equivale ao retângulo que envolve a superfície curva:
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-mono font-bold">A_lateral = 2π × r × h</p>
-                        <p className="text-sm font-mono font-bold">A_bases = 2 × π × r² (duas bases)</p>
-                        <p className="text-sm font-mono font-bold text-cyan-400">A_total = 2πr(r + h)</p>
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">A_lateral = 2π × r × h</p>
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">A_bases = 2 × π × r² (duas bases)</p>
+                        <p className="text-xl font-mono font-bold text-cyan-400 text-foreground/85 leading-relaxed">A_total = 2πr(r + h)</p>
                       </div>
                       <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                        <p className="text-xs font-bold text-cyan-400 mb-2">Exemplo — Cilindro de Gás</p>
-                        <p className="text-sm">r = 0,4 m, h = 1,2 m</p>
-                        <p className="text-sm">A_lateral = 2 × 3,14 × 0,4 × 1,2 = <strong>3,01 m²</strong></p>
-                        <p className="text-sm">A_total = 2 × 3,14 × 0,4 × (0,4 + 1,2) = 4,02 m²</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-2">Exemplo — Cilindro de Gás</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">r = 0,4 m, h = 1,2 m</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">A_lateral = 2 × 3,14 × 0,4 × 1,2 = <strong>3,01 m²</strong></p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">A_total = 2 × 3,14 × 0,4 × (0,4 + 1,2) = 4,02 m²</p>
                       </div>
                     </div>
                   ),
@@ -944,13 +944,13 @@ export default function AulaGeometriaEspacial({
                         Dutos industriais têm paredes com espessura — o volume de metal é calculado pela <strong>diferença de dois cilindros</strong>:
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono font-bold text-center">V_metal = π × (R² − r²) × h</p>
-                        <p className="text-sm text-center text-muted-foreground mt-1">R = raio externo | r = raio interno</p>
+                        <p className="text-xl font-mono font-bold text-center text-foreground/85 leading-relaxed">V_metal = π × (R² − r²) × h</p>
+                        <p className="text-xl text-center text-muted-foreground mt-1 text-foreground/85 leading-relaxed">R = raio externo | r = raio interno</p>
                       </div>
                       <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                        <p className="text-xs font-bold text-blue-400 mb-2">Oleoduto — Exemplo Real</p>
-                        <p className="text-sm">Diâm. externo 0,5 m (R=0,25), espessura 10 mm (r=0,24)</p>
-                        <p className="text-sm">V/m = π × (0,0625 − 0,0576) × 1 = 3,14 × 0,0049 ≈ <strong>0,01539 m³/m</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Oleoduto — Exemplo Real</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Diâm. externo 0,5 m (R=0,25), espessura 10 mm (r=0,24)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">V/m = π × (0,0625 − 0,0576) × 1 = 3,14 × 0,0049 ≈ <strong>0,01539 m³/m</strong></p>
                       </div>
                     </div>
                   ),
@@ -1084,9 +1084,9 @@ export default function AulaGeometriaEspacial({
                         <p className="text-2xl font-bold font-mono text-emerald-400">V = (1/3) × π × r² × h</p>
                       </div>
                       <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                        <p className="text-xs font-bold text-blue-400 mb-2">Silo Cônico Invertido — Refinaria</p>
-                        <p className="text-sm">r = 3 m, h = 4 m</p>
-                        <p className="text-sm">V = (1/3) × 3,14 × 9 × 4 = (1/3) × 113,04 = <strong>37,68 m³</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Silo Cônico Invertido — Refinaria</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">r = 3 m, h = 4 m</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">V = (1/3) × 3,14 × 9 × 4 = (1/3) × 113,04 = <strong>37,68 m³</strong></p>
                       </div>
                     </div>
                   ),
@@ -1101,11 +1101,11 @@ export default function AulaGeometriaEspacial({
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 text-center">
                         <p className="text-xl font-bold font-mono text-cyan-400">g² = r² + h²</p>
-                        <p className="text-sm text-muted-foreground mt-1">g = geratriz | r = raio | h = altura</p>
+                        <p className="text-xl text-muted-foreground mt-1 text-foreground/85 leading-relaxed">g = geratriz | r = raio | h = altura</p>
                       </div>
                       <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <p className="text-xs font-bold text-emerald-400 mb-2">Cone clássico: r=3, h=4</p>
-                        <p className="text-sm">g = √(9 + 16) = √25 = <strong>5 m</strong> (trio pitagórico 3-4-5)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">Cone clássico: r=3, h=4</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">g = √(9 + 16) = √25 = <strong>5 m</strong> (trio pitagórico 3-4-5)</p>
                       </div>
                       <AlertBox tipo="info" titulo="Trios Pitagóricos Úteis">
                         Memorize: 3-4-5, 5-12-13, 8-15-17. A CESGRANRIO adora usar esses trios em cones e pirâmides para facilitar o cálculo sem calculadora.
@@ -1122,9 +1122,9 @@ export default function AulaGeometriaEspacial({
                         A área lateral do cone, quando planificada, forma um <strong>setor circular</strong>:
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-mono font-bold">A_lateral = π × r × g</p>
-                        <p className="text-sm font-mono font-bold">A_base = π × r²</p>
-                        <p className="text-sm font-mono font-bold text-emerald-400">A_total = π × r × (r + g)</p>
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">A_lateral = π × r × g</p>
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">A_base = π × r²</p>
+                        <p className="text-xl font-mono font-bold text-emerald-400 text-foreground/85 leading-relaxed">A_total = π × r × (r + g)</p>
                       </div>
                     </div>
                   ),
@@ -1256,15 +1256,15 @@ export default function AulaGeometriaEspacial({
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-6 text-center">
                         <p className="text-2xl font-bold font-mono text-blue-400">V = (4/3) × π × r³</p>
-                        <p className="text-sm text-muted-foreground mt-2">r = raio da esfera</p>
+                        <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">r = raio da esfera</p>
                       </div>
                       <AlertBox tipo="info" titulo="Tanque Esférico de GLP">
                         Um tanque esférico de raio 20 m armazena V = (4/3) × 3,14 × 8000 = <strong>33.493 m³</strong> de gás natural — capacidade de um gasômetro industrial.
                       </AlertBox>
                       <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <p className="text-xs font-bold text-emerald-400 mb-2">Escala de raio e volume</p>
-                        <p className="text-sm">Se r dobra: V aumenta 2³ = <strong>8 vezes</strong></p>
-                        <p className="text-sm">Se r triplica: V aumenta 3³ = <strong>27 vezes</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">Escala de raio e volume</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Se r dobra: V aumenta 2³ = <strong>8 vezes</strong></p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Se r triplica: V aumenta 3³ = <strong>27 vezes</strong></p>
                       </div>
                     </div>
                   ),
@@ -1279,12 +1279,12 @@ export default function AulaGeometriaEspacial({
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-6 text-center">
                         <p className="text-2xl font-bold font-mono text-cyan-400">A = 4 × π × r²</p>
-                        <p className="text-sm text-muted-foreground mt-2">= 4 × Área do círculo de mesmo raio</p>
+                        <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">= 4 × Área do círculo de mesmo raio</p>
                       </div>
                       <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                        <p className="text-xs font-bold text-blue-400 mb-2">Vaso de Pressão Esférico — RPBC</p>
-                        <p className="text-sm">Diâmetro = 4 m → r = 2 m</p>
-                        <p className="text-sm">A = 4 × 3,14 × 4 = <strong>50,24 m²</strong> de área a impermeabilizar</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Vaso de Pressão Esférico — RPBC</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Diâmetro = 4 m → r = 2 m</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">A = 4 × 3,14 × 4 = <strong>50,24 m²</strong> de área a impermeabilizar</p>
                       </div>
                     </div>
                   ),
@@ -1299,15 +1299,15 @@ export default function AulaGeometriaEspacial({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20 space-y-2">
-                          <p className="text-sm font-bold text-blue-400">Casca Esférica</p>
-                          <p className="text-sm font-mono">V = (4/3)π(R³ − r³)</p>
-                          <p className="text-xs text-muted-foreground">R = raio externo, r = raio interno</p>
+                          <p className="text-xl font-bold text-blue-400 text-foreground/85 leading-relaxed">Casca Esférica</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">V = (4/3)π(R³ − r³)</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">R = raio externo, r = raio interno</p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20 space-y-2">
-                          <p className="text-sm font-bold text-cyan-400">Hemisfério</p>
-                          <p className="text-sm font-mono">V = (2/3)πr³</p>
-                          <p className="text-sm font-mono">A_curva = 2πr²</p>
-                          <p className="text-sm font-mono">A_total = 3πr²</p>
+                          <p className="text-xl font-bold text-cyan-400 text-foreground/85 leading-relaxed">Hemisfério</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">V = (2/3)πr³</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">A_curva = 2πr²</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">A_total = 3πr²</p>
                         </div>
                       </div>
                     </div>
@@ -1440,13 +1440,13 @@ export default function AulaGeometriaEspacial({
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-6 text-center">
                         <p className="text-xl font-bold font-mono text-cyan-400">V = (h/3) × (A₁ + A₂ + √(A₁ × A₂))</p>
-                        <p className="text-sm text-muted-foreground mt-2">A₁, A₂ = áreas das duas bases | h = altura</p>
+                        <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">A₁, A₂ = áreas das duas bases | h = altura</p>
                       </div>
                       <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                        <p className="text-xs font-bold text-blue-400 mb-2">Exemplo — Base maior 6×6, base menor 4×4, h=3</p>
-                        <p className="text-sm">A₁ = 36 m², A₂ = 16 m²</p>
-                        <p className="text-sm">√(A₁×A₂) = √576 = 24 m²</p>
-                        <p className="text-sm font-bold">V = (3/3)(36 + 16 + 24) = 76 m³</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Exemplo — Base maior 6×6, base menor 4×4, h=3</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">A₁ = 36 m², A₂ = 16 m²</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">√(A₁×A₂) = √576 = 24 m²</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">V = (3/3)(36 + 16 + 24) = 76 m³</p>
                       </div>
                     </div>
                   ),
@@ -1461,7 +1461,7 @@ export default function AulaGeometriaEspacial({
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-6 text-center">
                         <p className="text-xl font-bold font-mono text-emerald-400">V = (πh/3) × (R² + r² + R×r)</p>
-                        <p className="text-sm text-muted-foreground mt-2">R = raio maior | r = raio menor | h = altura</p>
+                        <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">R = raio maior | r = raio menor | h = altura</p>
                       </div>
                       <AlertBox tipo="info" titulo="Aplicação — Barril Industrial">
                         Um barril troncocônico com R = 0,4 m, r = 0,3 m e h = 0,8 m tem volume V = (π×0,8/3)(0,16 + 0,09 + 0,12) = (0,837)(0,37) ≈ <strong>0,276 m³ = 276 L</strong>.
@@ -1481,9 +1481,9 @@ export default function AulaGeometriaEspacial({
                         <p className="text-xl font-bold font-mono text-blue-400">g = √[h² + (R − r)²]</p>
                       </div>
                       <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                        <p className="text-sm font-bold text-cyan-400 mb-2">Área Lateral do Tronco de Cone:</p>
-                        <p className="text-sm font-mono">A_lateral = π × g × (R + r)</p>
-                        <p className="text-sm font-mono">A_total = π×g×(R+r) + π(R²+r²)</p>
+                        <p className="text-xl font-bold text-cyan-400 mb-2 text-foreground/85 leading-relaxed">Área Lateral do Tronco de Cone:</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">A_lateral = π × g × (R + r)</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">A_total = π×g×(R+r) + π(R²+r²)</p>
                       </div>
                     </div>
                   ),
@@ -1617,22 +1617,22 @@ export default function AulaGeometriaEspacial({
                         <div className="flex items-start gap-3 p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
                           <span className="text-blue-400 font-bold text-lg">1.</span>
                           <div>
-                            <p className="font-bold text-sm">Identifique os sólidos componentes</p>
-                            <p className="text-sm text-muted-foreground">Cilindro + semiesfera? Prisma + pirâmide? Cubo com furo cilíndrico?</p>
+                            <p className="font-bold text-xl text-foreground/85 leading-relaxed">Identifique os sólidos componentes</p>
+                            <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Cilindro + semiesfera? Prisma + pirâmide? Cubo com furo cilíndrico?</p>
                           </div>
                         </div>
                         <div className="flex items-start gap-3 p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
                           <span className="text-cyan-400 font-bold text-lg">2.</span>
                           <div>
-                            <p className="font-bold text-sm">Calcule cada volume/área separadamente</p>
-                            <p className="text-sm text-muted-foreground">Use as fórmulas de cada sólido simples com as dimensões corretas.</p>
+                            <p className="font-bold text-xl text-foreground/85 leading-relaxed">Calcule cada volume/área separadamente</p>
+                            <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Use as fórmulas de cada sólido simples com as dimensões corretas.</p>
                           </div>
                         </div>
                         <div className="flex items-start gap-3 p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
                           <span className="text-emerald-400 font-bold text-lg">3.</span>
                           <div>
-                            <p className="font-bold text-sm">Some (ou subtraia) os resultados</p>
-                            <p className="text-sm text-muted-foreground">Adição para sólidos unidos; subtração para furos e remoções.</p>
+                            <p className="font-bold text-xl text-foreground/85 leading-relaxed">Some (ou subtraia) os resultados</p>
+                            <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Adição para sólidos unidos; subtração para furos e remoções.</p>
                           </div>
                         </div>
                       </div>
@@ -1646,16 +1646,16 @@ export default function AulaGeometriaEspacial({
                     <div className="space-y-4">
                       <div className="space-y-4">
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-400 mb-2">Silo Agrícola — Cilindro + Semiesfera</p>
-                          <p className="text-sm">Cilindro: r=3 m, h=5 m → V₁ = π×9×5 = 141,3 m³</p>
-                          <p className="text-sm">Semiesfera: r=3 m → V₂ = (2/3)π×27 = 56,52 m³</p>
-                          <p className="text-sm font-bold">V_total = 141,3 + 56,52 = <span className="text-emerald-400">197,82 m³</span></p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Silo Agrícola — Cilindro + Semiesfera</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Cilindro: r=3 m, h=5 m → V₁ = π×9×5 = 141,3 m³</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Semiesfera: r=3 m → V₂ = (2/3)π×27 = 56,52 m³</p>
+                          <p className="text-xl font-bold text-foreground/85 leading-relaxed">V_total = 141,3 + 56,52 = <span className="text-emerald-400">197,82 m³</span></p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-400 mb-2">Tanque Capsular FPSO — Cilindro + 2 Hemisférios</p>
-                          <p className="text-sm">Cilindro: r=4 m, h=6 m → V₁ = π×16×6 = 301,44 m³</p>
-                          <p className="text-sm">Esfera completa: r=4 → V₂ = (4/3)π×64 = 268,16 m³</p>
-                          <p className="text-sm font-bold">V_total = 301,44 + 268,16 = <span className="text-emerald-400">569,6 m³</span></p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-2">Tanque Capsular FPSO — Cilindro + 2 Hemisférios</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Cilindro: r=4 m, h=6 m → V₁ = π×16×6 = 301,44 m³</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Esfera completa: r=4 → V₂ = (4/3)π×64 = 268,16 m³</p>
+                          <p className="text-xl font-bold text-foreground/85 leading-relaxed">V_total = 301,44 + 268,16 = <span className="text-emerald-400">569,6 m³</span></p>
                         </div>
                       </div>
                     </div>
@@ -1670,9 +1670,9 @@ export default function AulaGeometriaEspacial({
                         Ao calcular a <strong>área total de um sólido composto</strong>, elimine as faces que estão "ocultas" (contato entre os dois sólidos):
                       </p>
                       <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <p className="text-xs font-bold text-emerald-400 mb-2">Cilindro + Cone no Topo</p>
-                        <p className="text-sm">A_total = A_lateral_cilindro + A_base_cilindro + A_lateral_cone</p>
-                        <p className="text-sm text-muted-foreground">NÃO some a base do cone (ela é interna) nem a tampa superior do cilindro!</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">Cilindro + Cone no Topo</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">A_total = A_lateral_cilindro + A_base_cilindro + A_lateral_cone</p>
+                        <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">NÃO some a base do cone (ela é interna) nem a tampa superior do cilindro!</p>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
                         Em sólidos compostos, a banca frequentemente inclui nas alternativas o valor com as faces ocultas somadas. Identifique quais faces são externas antes de calcular!
@@ -1800,26 +1800,26 @@ export default function AulaGeometriaEspacial({
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-400 mb-2">Tanque Atmosférico</p>
-                          <p className="text-sm">Formato: cilindro com teto cônico</p>
-                          <p className="text-sm">V = V_cilindro + V_cone</p>
-                          <p className="text-xs text-muted-foreground mt-1">Armazenamento de petróleo, gasolina, etanol</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Tanque Atmosférico</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Formato: cilindro com teto cônico</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">V = V_cilindro + V_cone</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Armazenamento de petróleo, gasolina, etanol</p>
                         </div>
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-400 mb-2">Tanque Esférico (Bullet)</p>
-                          <p className="text-sm">Formato: esfera ou esferoide</p>
-                          <p className="text-sm">V = (4/3)πr³</p>
-                          <p className="text-xs text-muted-foreground mt-1">GLP, GNL, gases pressurizados</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">Tanque Esférico (Bullet)</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Formato: esfera ou esferoide</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">V = (4/3)πr³</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">GLP, GNL, gases pressurizados</p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-400 mb-2">Tanque de Lastro (FPSO)</p>
-                          <p className="text-sm">Formato: paralelepípedo ou cilindro</p>
-                          <p className="text-sm">Estabilidade da plataforma flutuante</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-2">Tanque de Lastro (FPSO)</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Formato: paralelepípedo ou cilindro</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Estabilidade da plataforma flutuante</p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-400 mb-2">Vaso de Pressão</p>
-                          <p className="text-sm">Cilindro + tampas hemisféricas</p>
-                          <p className="text-sm">Processamento de gás, separadores</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Vaso de Pressão</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Cilindro + tampas hemisféricas</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Processamento de gás, separadores</p>
                         </div>
                       </div>
                     </div>
@@ -1831,15 +1831,15 @@ export default function AulaGeometriaEspacial({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-emerald-400">Conversões Fundamentais</p>
-                        <p className="text-sm font-mono">1 barril de petróleo = 158,987 L ≈ 0,159 m³</p>
-                        <p className="text-sm font-mono">1 m³ = 1.000 L = 6,2898 barris</p>
-                        <p className="text-sm font-mono">1 barril/dia = 0,159 m³/dia</p>
+                        <p className="text-xl font-bold text-emerald-400 text-foreground/85 leading-relaxed">Conversões Fundamentais</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">1 barril de petróleo = 158,987 L ≈ 0,159 m³</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">1 m³ = 1.000 L = 6,2898 barris</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">1 barril/dia = 0,159 m³/dia</p>
                       </div>
                       <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                        <p className="text-xs font-bold text-blue-400 mb-2">Exemplo — Tanque de 8.478 m³</p>
-                        <p className="text-sm">Barris = 8.478 ÷ 0,159 ≈ <strong>53.320 barris</strong></p>
-                        <p className="text-sm">Ou: 8.478 × 6,29 ≈ 53.327 barris</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Exemplo — Tanque de 8.478 m³</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Barris = 8.478 ÷ 0,159 ≈ <strong>53.320 barris</strong></p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Ou: 8.478 × 6,29 ≈ 53.327 barris</p>
                       </div>
                     </div>
                   ),
@@ -1853,13 +1853,13 @@ export default function AulaGeometriaEspacial({
                         Dutos têm paredes com espessura. O volume de metal por metro linear usa a <strong>seção anelar</strong>:
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center font-bold">V_metal/m = π(R² − r²)</p>
+                        <p className="text-xl font-mono text-center font-bold text-foreground/85 leading-relaxed">V_metal/m = π(R² − r²)</p>
                       </div>
                       <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <p className="text-xs font-bold text-emerald-400 mb-2">Oleoduto — Gasoduto Bolivia-Brasil</p>
-                        <p className="text-sm">Diâm. externo ≈ 0,5 m (R=0,25), espessura ≈ 10 mm (r=0,24)</p>
-                        <p className="text-sm">V_aço/m = 3,14 × (0,0625 − 0,0576) = 0,01539 m³/m</p>
-                        <p className="text-sm">Em 3.150 km: ≈ 48.479 m³ de aço!</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">Oleoduto — Gasoduto Bolivia-Brasil</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Diâm. externo ≈ 0,5 m (R=0,25), espessura ≈ 10 mm (r=0,24)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">V_aço/m = 3,14 × (0,0625 − 0,0576) = 0,01539 m³/m</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Em 3.150 km: ≈ 48.479 m³ de aço!</p>
                       </div>
                     </div>
                   ),
@@ -1976,7 +1976,7 @@ export default function AulaGeometriaEspacial({
               className="mb-6"
             />
             <div className="overflow-x-auto">
-              <table className="w-full text-sm border-collapse">
+              <table className="w-full text-xl border-collapse text-foreground/85 leading-relaxed">
                 <thead>
                   <tr className="bg-blue-500/10">
                     <th className="p-3 text-left border border-border">Sólido</th>
@@ -1988,45 +1988,45 @@ export default function AulaGeometriaEspacial({
                 <tbody>
                   <tr>
                     <td className="p-3 border border-border font-bold text-blue-400">Cubo</td>
-                    <td className="p-3 border border-border font-mono text-xs">a³</td>
-                    <td className="p-3 border border-border font-mono text-xs">4a²</td>
-                    <td className="p-3 border border-border font-mono text-xs">6a²</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">a³</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">4a²</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">6a²</td>
                   </tr>
                   <tr className="bg-muted/20">
                     <td className="p-3 border border-border font-bold text-cyan-400">Prisma</td>
-                    <td className="p-3 border border-border font-mono text-xs">A_b × h</td>
-                    <td className="p-3 border border-border font-mono text-xs">P_b × h</td>
-                    <td className="p-3 border border-border font-mono text-xs">A_lat + 2A_b</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">A_b × h</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">P_b × h</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">A_lat + 2A_b</td>
                   </tr>
                   <tr>
                     <td className="p-3 border border-border font-bold text-emerald-400">Pirâmide</td>
-                    <td className="p-3 border border-border font-mono text-xs">(1/3)A_b·h</td>
-                    <td className="p-3 border border-border font-mono text-xs">(P_b × a_l)/2</td>
-                    <td className="p-3 border border-border font-mono text-xs">A_lat + A_b</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">(1/3)A_b·h</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">(P_b × a_l)/2</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">A_lat + A_b</td>
                   </tr>
                   <tr className="bg-muted/20">
                     <td className="p-3 border border-border font-bold text-blue-400">Cilindro</td>
-                    <td className="p-3 border border-border font-mono text-xs">πr²h</td>
-                    <td className="p-3 border border-border font-mono text-xs">2πrh</td>
-                    <td className="p-3 border border-border font-mono text-xs">2πr(r+h)</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">πr²h</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">2πrh</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">2πr(r+h)</td>
                   </tr>
                   <tr>
                     <td className="p-3 border border-border font-bold text-cyan-400">Cone</td>
-                    <td className="p-3 border border-border font-mono text-xs">(1/3)πr²h</td>
-                    <td className="p-3 border border-border font-mono text-xs">πrg</td>
-                    <td className="p-3 border border-border font-mono text-xs">πr(r+g)</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">(1/3)πr²h</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">πrg</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">πr(r+g)</td>
                   </tr>
                   <tr className="bg-muted/20">
                     <td className="p-3 border border-border font-bold text-emerald-400">Esfera</td>
-                    <td className="p-3 border border-border font-mono text-xs">(4/3)πr³</td>
-                    <td className="p-3 border border-border font-mono text-xs">—</td>
-                    <td className="p-3 border border-border font-mono text-xs">4πr²</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">(4/3)πr³</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">—</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">4πr²</td>
                   </tr>
                   <tr>
                     <td className="p-3 border border-border font-bold text-blue-400">Tronco Cone</td>
-                    <td className="p-3 border border-border font-mono text-xs">(πh/3)(R²+r²+Rr)</td>
-                    <td className="p-3 border border-border font-mono text-xs">πg(R+r)</td>
-                    <td className="p-3 border border-border font-mono text-xs">πg(R+r)+π(R²+r²)</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">(πh/3)(R²+r²+Rr)</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">πg(R+r)</td>
+                    <td className="p-3 border border-border font-mono text-lg text-foreground/85 leading-relaxed">πg(R+r)+π(R²+r²)</td>
                   </tr>
                 </tbody>
               </table>
@@ -2034,7 +2034,7 @@ export default function AulaGeometriaEspacial({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
               <AlertBox tipo="info" titulo="Relações-Chave para Memorizar">
-                <ul className="space-y-1 text-sm">
+                <ul className="space-y-1 text-xl text-foreground/85 leading-relaxed">
                   <li>• Euler: V − A + F = 2</li>
                   <li>• V_cone = (1/3) × V_cilindro</li>
                   <li>• V_pirâmide = (1/3) × V_prisma</li>
@@ -2043,7 +2043,7 @@ export default function AulaGeometriaEspacial({
                 </ul>
               </AlertBox>
               <AlertBox tipo="warning" titulo="As 5 Pegadinhas da CESGRANRIO">
-                <ul className="space-y-1 text-sm">
+                <ul className="space-y-1 text-xl text-foreground/85 leading-relaxed">
                   <li>• Diâmetro vs raio (divida por 2!)</li>
                   <li>• Geratriz vs altura no cone</li>
                   <li>• Apótema lateral vs apótema da base</li>
@@ -2154,7 +2154,7 @@ export default function AulaGeometriaEspacial({
           />
 
           <AlertBox tipo="info" titulo="Como Usar Esta Seção de Recursos">
-            <div className="space-y-2 text-sm mt-3">
+            <div className="space-y-2 text-xl mt-3 text-foreground/85 leading-relaxed">
               <p>Esta seção complementa os 10 módulos principais com:</p>
               <ul className="list-disc list-inside space-y-1">
                 <li><strong>Dicas práticas:</strong> Estratégias que economizam tempo na prova</li>
@@ -2169,7 +2169,7 @@ export default function AulaGeometriaEspacial({
           <section className="space-y-6">
             <AlertBox tipo="success" titulo="Visualização 3D — Estratégia Prática">
               Para qualquer sólido, desenhe em papel ou use software de modelagem (GeoGebra 3D). Se a questão descreve um sólido composto, sempre:
-              <ul className="list-disc list-inside mt-2 space-y-1 text-sm">
+              <ul className="list-disc list-inside mt-2 space-y-1 text-xl text-foreground/85 leading-relaxed">
                 <li>Identifique as partes (cilindro, cone, esfera)</li>
                 <li>Marque dimensões dadas (raio, altura, aresta)</li>
                 <li>Use cores diferentes para cada parte</li>
@@ -2179,7 +2179,7 @@ export default function AulaGeometriaEspacial({
             </AlertBox>
 
             <AlertBox tipo="info" titulo="Conversão de Unidades — Tabela Rápida">
-              <div className="font-mono text-xs space-y-1 mt-2">
+              <div className="font-mono text-lg text-foreground/85 leading-relaxed space-y-1 mt-2">
                 <p>1 m³ = 1000 L (litros)</p>
                 <p>1 cm³ = 1 mL</p>
                 <p>1 m³ = 1 000 000 cm³</p>
@@ -2189,7 +2189,7 @@ export default function AulaGeometriaEspacial({
             </AlertBox>
 
             <AlertBox tipo="warning" titulo="Erros Mais Frequentes CESGRANRIO">
-              <ul className="list-disc list-inside space-y-2 text-sm mt-2">
+              <ul className="list-disc list-inside space-y-2 text-xl mt-2 text-foreground/85 leading-relaxed">
                 <li><strong>Confundir diâmetro com raio:</strong> Se D=6m, então r=3m. Erro aqui multiplica volume por 8!</li>
                 <li><strong>Esquecer o fator 1/3:</strong> Pirâmide e cone sempre têm 1/3. Prisma e cilindro não.</li>
                 <li><strong>Misturar geratriz com altura:</strong> Geratriz é o "lado" do cone/pirâmide. Use Pitágoras: g² = h² + r²</li>
@@ -2199,7 +2199,7 @@ export default function AulaGeometriaEspacial({
             </AlertBox>
 
             <AlertBox tipo="success" titulo="Mapa Mental — Organize as Fórmulas Hierarquicamente">
-              <div className="space-y-3 text-sm mt-3">
+              <div className="space-y-3 text-xl mt-3 text-foreground/85 leading-relaxed">
                 <p><strong>Nível 1 (Conceitos)</strong></p>
                 <ul className="list-disc list-inside space-y-1">
                   <li>Poliedro: sólido com faces planas</li>
@@ -2229,7 +2229,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Exercício Resolvido 1 — Prisma Pentagonal",
                   icone: "📐",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Enunciado:</strong> Um prisma pentagonal regular tem aresta da base 4 cm e altura 10 cm. Calcule o volume.</p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
                         <p className="font-semibold mb-2">Resolução:</p>
@@ -2244,7 +2244,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Exercício Resolvido 2 — Esfera Inscrita em Cubo",
                   icone: "⚽",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Enunciado:</strong> Uma esfera está inscrita em um cubo de aresta 6 m. Qual é o volume da esfera?</p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
                         <p className="font-semibold mb-2">Resolução:</p>
@@ -2259,7 +2259,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Dica: Reconhecer Sólidos por Descrição",
                   icone: "🎯",
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Cilindro:</strong> "lata", "tubo", "coluna", "pote", "balde"</p>
                       <p><strong>Cone:</strong> "funil", "chapéu de festa", "silo", "pirâmide redonda"</p>
                       <p><strong>Esfera:</strong> "bola", "globo", "tanque esférico", "reservatório esférico"</p>
@@ -2273,7 +2273,7 @@ export default function AulaGeometriaEspacial({
             />
 
             <AlertBox tipo="info" titulo="Ferramentas de Auxílio">
-              <ul className="list-disc list-inside space-y-1 text-sm mt-2">
+              <ul className="list-disc list-inside space-y-1 text-xl mt-2 text-foreground/85 leading-relaxed">
                 <li><strong>GeoGebra 3D:</strong> Software gratuito para visualizar sólidos (www.geogebra.org)</li>
                 <li><strong>Calculadora Científica:</strong> Use para π (3,14159...) com precisão</li>
                 <li><strong>Papel e Lápis:</strong> Sempre desenhe, mesmo que aproximado</li>
@@ -2282,7 +2282,7 @@ export default function AulaGeometriaEspacial({
             </AlertBox>
 
             <AlertBox tipo="success" titulo="Passo-a-Passo para Resolver Qualquer Problema 3D">
-              <div className="space-y-2 text-sm mt-3">
+              <div className="space-y-2 text-xl mt-3 text-foreground/85 leading-relaxed">
                 <p><strong>1. Leia 2 vezes:</strong> Entenda o cenário (indústria, contexto) e os dados.</p>
                 <p><strong>2. Desenhe:</strong> Faça um esboço, marque dimensões (r, h, a, etc)</p>
                 <p><strong>3. Identifique o sólido:</strong> Cilindro? Cone? Esfera? Composto?</p>
@@ -2294,7 +2294,7 @@ export default function AulaGeometriaEspacial({
             </AlertBox>
 
             <AlertBox tipo="warning" titulo="Armadilhas Comuns — O Que NÃO Fazer">
-              <div className="space-y-2 text-sm mt-3">
+              <div className="space-y-2 text-xl mt-3 text-foreground/85 leading-relaxed">
                 <p>❌ <strong>Confundir fórmulas:</strong> Não misture volume de cone com cilindro.</p>
                 <p>❌ <strong>Esquecer π:</strong> Sempre inclua π nas respostas finais (não use 3,14 antes do fim).</p>
                 <p>❌ <strong>Unidades inconsistentes:</strong> Se r=2cm e h=5m, converta primeiro!</p>
@@ -2310,7 +2310,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Aproximações Práticas para π",
                   icone: "🧮",
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>π ≈ 3,14159265...</strong> (valor completo)</p>
                       <p><strong>π ≈ 3,14</strong> (uso geral em prova)</p>
                       <p><strong>π ≈ 22/7</strong> (fração útil quando não tem calculadora)</p>
@@ -2324,15 +2324,15 @@ export default function AulaGeometriaEspacial({
                   titulo: "Exercício Extra 7 — Esfera Cortada (Calota Esférica)",
                   icone: "🎪",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Conceito:</strong> Uma esfera cortada por um plano deixa uma "calota esférica".</p>
                       <div className="bg-purple-500/10 border border-purple-500/20 rounded-xl p-4">
                         <p className="font-semibold mb-2">Fórmula de Calota Esférica:</p>
-                        <p className="font-mono text-xs">V_calota = (πh²/3) × (3R - h)</p>
-                        <p className="text-xs text-muted-foreground mt-1">onde h = altura da calota, R = raio da esfera</p>
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed">V_calota = (πh²/3) × (3R - h)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">onde h = altura da calota, R = raio da esfera</p>
                       </div>
                       <p><strong>Exemplo:</strong> Uma esfera de raio 5 m é cortada a uma altura de 2 m do topo. Volume da calota?</p>
-                      <p className="font-mono text-xs bg-slate-900 text-white p-2 rounded">V = (π × 2² / 3) × (3 × 5 - 2) = (4π/3) × 13 = 52π/3 ≈ 54,45 m³</p>
+                      <p className="font-mono text-lg text-foreground/85 leading-relaxed bg-slate-900 text-white p-2 rounded">V = (π × 2² / 3) × (3 × 5 - 2) = (4π/3) × 13 = 52π/3 ≈ 54,45 m³</p>
                     </div>
                   ),
                 },
@@ -2340,7 +2340,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Exercício Extra 8 — Cone Reto vs Cone Oblíquo",
                   icone: "📐",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Cone Reto:</strong> O eixo é perpendicular à base. A altura h é a distância do vértice ao centro da base.</p>
                       <p><strong>Cone Oblíquo:</strong> O eixo é inclinado. A altura ainda é medida perpendicularmente à base.</p>
                       <p className="font-semibold">Importante:</p>
@@ -2353,7 +2353,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Técnica de Cálculo: Multiplicação por π no Final",
                   icone: "⚡",
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Errado:</strong> V = 3,14 × 5² × 8 = 3,14 × 25 × 8 = ... (muitos decimais)</p>
                       <p><strong>Certo:</strong> V = π × 5² × 8 = π × 200 = 200π ≈ 628 m³</p>
                       <p className="mt-3">Deixe π como símbolo até o final. Isso evita erros de arredondamento e deixa o cálculo mais limpo.</p>
@@ -2369,7 +2369,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Sequência de Aprendizado Recomendada",
                   icone: "🚀",
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Dia 1-2:</strong> Estude Módulo 1 (Poliedros e Euler) e pratique com exemplos simples.</p>
                       <p><strong>Dia 3-4:</strong> Módulos 2 (Prismas) e 3 (Pirâmides). Faça comparações entre volume de prisma vs pirâmide.</p>
                       <p><strong>Dia 5-6:</strong> Módulos 4 (Cilindro) e 5 (Cone). Use objetos reais (lata, funil) para visualizar.</p>
@@ -2384,7 +2384,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Exercício Extra 3 — Tronco de Pirâmide",
                   icone: "🔻",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Enunciado:</strong> Um tronco de pirâmide quadrangular tem base maior de 8 m, base menor de 4 m e altura 3 m. Calcule o volume.</p>
                       <div className="bg-purple-500/10 border border-purple-500/20 rounded-xl p-4">
                         <p className="font-semibold mb-2">Resolução:</p>
@@ -2401,7 +2401,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Exercício Extra 4 — Cilindro dentro de Cilindro",
                   icone: "🔄",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Enunciado:</strong> Um cilindro oco tem raio externo R = 5 m e raio interno r = 3 m, com altura h = 8 m. Qual é o volume do material?</p>
                       <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl p-4">
                         <p className="font-semibold mb-2">Resolução:</p>
@@ -2416,7 +2416,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Dica Final — Leitura de Desenhos e Projeções",
                   icone: "🎨",
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Projeção Ortogonal:</strong> Quando a questão mostra um desenho 2D de um sólido 3D, sempre identifique:</p>
                       <ul className="list-disc list-inside space-y-1">
                         <li>A visão frontal (o que você vê de frente)</li>
@@ -2431,24 +2431,24 @@ export default function AulaGeometriaEspacial({
                   titulo: "Transformações Geométricas — Escala e Proporção",
                   icone: "📏",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Se um sólido sofre uma transformação de escala (k):</strong></p>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                         <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
-                          <p className="font-bold text-blue-400 text-xs mb-1">Comprimentos</p>
+                          <p className="font-bold text-blue-400 text-lg text-foreground/85 leading-relaxed mb-1">Comprimentos</p>
                           <p className="font-mono">Aumentam por k</p>
                         </div>
                         <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-3">
-                          <p className="font-bold text-cyan-400 text-xs mb-1">Áreas</p>
+                          <p className="font-bold text-cyan-400 text-lg text-foreground/85 leading-relaxed mb-1">Áreas</p>
                           <p className="font-mono">Aumentam por k²</p>
                         </div>
                         <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-3">
-                          <p className="font-bold text-emerald-400 text-xs mb-1">Volumes</p>
+                          <p className="font-bold text-emerald-400 text-lg text-foreground/85 leading-relaxed mb-1">Volumes</p>
                           <p className="font-mono">Aumentam por k³</p>
                         </div>
                       </div>
                       <p className="mt-3"><strong>Exemplo prático:</strong> Se uma esfera tem raio 2 m e outra tem raio 6 m:</p>
-                      <ul className="list-disc list-inside space-y-1 text-xs">
+                      <ul className="list-disc list-inside space-y-1 text-lg text-foreground/85 leading-relaxed">
                         <li>Razão de raios: k = 6/2 = 3</li>
                         <li>Razão de áreas: 3² = 9</li>
                         <li>Razão de volumes: 3³ = 27</li>
@@ -2460,12 +2460,12 @@ export default function AulaGeometriaEspacial({
                   titulo: "Estratégia de Estimativa Rápida",
                   icone: "⚡",
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Quando calcular π × r²:</strong></p>
-                      <p className="font-mono text-xs">πr² ≈ 3r² (aproximação rápida)</p>
+                      <p className="font-mono text-lg text-foreground/85 leading-relaxed">πr² ≈ 3r² (aproximação rápida)</p>
                       <p>Exemplo: πr² para r=5 → 3×25 = 75 (real: 78,5)</p>
                       <p className="mt-3"><strong>Para volume de cilindro rápido:</strong></p>
-                      <p className="font-mono text-xs">V = πr²h ≈ 3r²h</p>
+                      <p className="font-mono text-lg text-foreground/85 leading-relaxed">V = πr²h ≈ 3r²h</p>
                       <p>Para r=2, h=10 → V ≈ 3×4×10 = 120 m³ (real: 125,6)</p>
                       <p className="mt-3"><strong>Aviso:</strong> Use apenas para verificação rápida! Sempre faça contas precisas.</p>
                     </div>
@@ -2475,14 +2475,14 @@ export default function AulaGeometriaEspacial({
                   titulo: "Problema Histórico — A Esfera de Arquimedes",
                   icone: "🏛️",
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                       <p>Arquimedes descobriu que uma esfera inscrita em um cilindro tem:</p>
                       <ul className="list-disc list-inside space-y-1">
                         <li><strong>Altura do cilindro = Diâmetro da esfera</strong></li>
                         <li><strong>Raio do cilindro = Raio da esfera</strong></li>
                         <li><strong>V_esfera = (2/3) × V_cilindro</strong></li>
                       </ul>
-                      <p className="mt-2 text-xs text-muted-foreground">Este é um dos resultados mais belos da geometria clássica e prova por que o volume da esfera é (4/3)πr³!</p>
+                      <p className="mt-2 text-lg text-foreground/85 leading-relaxed text-muted-foreground">Este é um dos resultados mais belos da geometria clássica e prova por que o volume da esfera é (4/3)πr³!</p>
                     </div>
                   ),
                 },
@@ -2490,7 +2490,7 @@ export default function AulaGeometriaEspacial({
             />
 
             <AlertBox tipo="success" titulo="Checklist Final — Antes de Fazer a Prova">
-              <div className="space-y-2 text-sm mt-3">
+              <div className="space-y-2 text-xl mt-3 text-foreground/85 leading-relaxed">
                 <p>☐ Memorizei a Relação de Euler (V - A + F = 2)</p>
                 <p>☐ Sei diferenciar prisma, pirâmide, cilindro, cone e esfera</p>
                 <p>☐ Reconheço quando usar fator 1/3 e quando não usar</p>
@@ -2510,7 +2510,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Exercício Bônus 1 — Paralelepípedo Irregular",
                   icone: "📦",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Enunciado:</strong> Um paralelepípedo tem dimensões 3 m × 4 m × 5 m. Qual é o comprimento da diagonal espacial?</p>
                       <div className="bg-purple-500/10 border border-purple-500/20 rounded-xl p-4">
                         <p className="font-semibold mb-2">Resolução:</p>
@@ -2524,7 +2524,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Exercício Bônus 2 — Pirâmide Regular",
                   icone: "🔺",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Enunciado:</strong> Uma pirâmide regular tem base quadrada de lado 6 m e altura 8 m. Qual é o comprimento da apótema lateral?</p>
                       <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl p-4">
                         <p className="font-semibold mb-2">Resolução:</p>
@@ -2539,7 +2539,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Exercício Bônus 3 — Velocidade de Preenchimento",
                   icone: "⏱️",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Enunciado:</strong> Um tanque cilíndrico de raio 2 m e altura 5 m é preenchido com óleo a uma taxa de 10 m³/hora. Quanto tempo leva para encher?</p>
                       <div className="bg-teal-500/10 border border-teal-500/20 rounded-xl p-4">
                         <p className="font-semibold mb-2">Resolução:</p>
@@ -2553,7 +2553,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Desafio Final — Sólido Composto Complexo",
                   icone: "🏆",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Enunciado Desafiador:</strong> Um monumento consiste em uma pirâmide de base quadrada (lado 10 m, altura 8 m) sobre um cubo (aresta 10 m) que repousa sobre uma semiesfera (raio 5 m). Qual é o volume total?</p>
                       <div className="bg-pink-500/10 border border-pink-500/20 rounded-xl p-4">
                         <p className="font-semibold mb-2">Resolução Passo a Passo:</p>
@@ -2574,7 +2574,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Tabela Rápida de Referência — Todas as Fórmulas",
                   icone: "📋",
                   conteudo: (
-                    <div className="space-y-4 text-xs overflow-auto">
+                    <div className="space-y-4 text-lg text-foreground/85 leading-relaxed overflow-auto">
                       <div className="bg-slate-900 text-white p-4 rounded-lg font-mono">
                         <p className="font-bold mb-3">SÓLIDOS E FÓRMULAS</p>
                         <div className="space-y-2">
@@ -2595,14 +2595,14 @@ export default function AulaGeometriaEspacial({
                   titulo: "Exercício Extra 5 — Cone Inscrito em Cilindro",
                   icone: "🎭",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Enunciado:</strong> Um cone está inscrito em um cilindro de raio 4 m e altura 6 m (o cone tem a mesma base e altura do cilindro). Qual é o volume do espaço vazio entre o cilindro e o cone?</p>
                       <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
                         <p className="font-semibold mb-2">Resolução:</p>
                         <p>1. Volume do cilindro: V_cil = π × 4² × 6 = 96π m³</p>
                         <p>2. Volume do cone: V_cone = (1/3) × π × 4² × 6 = 32π m³</p>
                         <p>3. Volume do espaço vazio: V_vazio = 96π - 32π = 64π ≈ <strong>201,1 m³</strong></p>
-                        <p className="text-xs text-muted-foreground mt-2">Observe que o cilindro sempre tem 3 vezes o volume do cone inscrito!</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">Observe que o cilindro sempre tem 3 vezes o volume do cone inscrito!</p>
                       </div>
                     </div>
                   ),
@@ -2611,7 +2611,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Exercício Extra 6 — Tanque Petrobras Composto",
                   icone: "🛢️",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Enunciado:</strong> Um tanque de armazenamento Petrobras consiste em um cilindro central de raio 6 m e altura 10 m, coroado por uma semiesfera no topo. Qual é o volume total em litros?</p>
                       <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
                         <p className="font-semibold mb-2">Resolução:</p>
@@ -2627,7 +2627,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Estratégia Avançada — Problemas com Proporção",
                   icone: "⚡",
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Situação:</strong> Você tem dois sólidos semelhantes com razão de semelhança k.</p>
                       <ul className="list-disc list-inside space-y-2">
                         <li><strong>Razão linear:</strong> k (lados, altura, raio)</li>
@@ -2635,7 +2635,7 @@ export default function AulaGeometriaEspacial({
                         <li><strong>Razão de volume:</strong> k³ (volumes)</li>
                       </ul>
                       <p className="mt-3"><strong>Exemplo prático:</strong> Se um cilindro A tem raio 2m e cilindro B tem raio 4m (k=2), então:</p>
-                      <ul className="list-disc list-inside space-y-1 text-xs">
+                      <ul className="list-disc list-inside space-y-1 text-lg text-foreground/85 leading-relaxed">
                         <li>Razão de altura: 2</li>
                         <li>Razão de área lateral: 4 (= 2²)</li>
                         <li>Razão de volume: 8 (= 2³)</li>
@@ -2647,7 +2647,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Questão-Tipo CESGRANRIO 1",
                   icone: "📝",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>"Uma plataforma offshore tem um tanque esférico para armazenamento de óleo com diâmetro de 12 metros. Qual é a capacidade aproximada em milhares de litros?"</strong></p>
                       <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4">
                         <p className="font-semibold mb-2">Resolução CESGRANRIO:</p>
@@ -2662,7 +2662,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Questão-Tipo CESGRANRIO 2",
                   icone: "📝",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>"Um silo agrícola tem forma de cilindro com cone no topo. O cilindro tem 4m de raio e 8m de altura. O cone tem 4m de raio e 3m de altura. Qual é o volume total?"</strong></p>
                       <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4">
                         <p className="font-semibold mb-2">Resolução CESGRANRIO:</p>
@@ -2677,7 +2677,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Questão-Tipo CESGRANRIO 3",
                   icone: "📝",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>"Uma tubulação cilíndrica de óleo tem raio interno 0,5 m e comprimento 200 m. Se a densidade do óleo é 0,8 kg/L, qual é a massa total de óleo que pode ser armazenada?"</strong></p>
                       <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4">
                         <p className="font-semibold mb-2">Resolução CESGRANRIO:</p>
@@ -2692,14 +2692,14 @@ export default function AulaGeometriaEspacial({
                   titulo: "Questão-Tipo CESGRANRIO 4",
                   icone: "📝",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>"Dois cilindros A e B têm a mesma altura (10 m). O cilindro A tem raio 2 m, e o cilindro B tem raio 4 m. Qual é a razão entre seus volumes?"</strong></p>
                       <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4">
                         <p className="font-semibold mb-2">Resolução CESGRANRIO:</p>
                         <p>1. V_A = π × 2² × 10 = 40π m³</p>
                         <p>2. V_B = π × 4² × 10 = 160π m³</p>
                         <p>3. V_A / V_B = 40π / 160π = 40/160 = 1/4</p>
-                        <p className="mt-2 text-xs text-muted-foreground">Razão de raios: 2:4 = 1:2 → Razão de volumes: 1²:2² = 1:4</p>
+                        <p className="mt-2 text-lg text-foreground/85 leading-relaxed text-muted-foreground">Razão de raios: 2:4 = 1:2 → Razão de volumes: 1²:2² = 1:4</p>
                       </div>
                     </div>
                   ),
@@ -2708,7 +2708,7 @@ export default function AulaGeometriaEspacial({
             />
 
             <AlertBox tipo="info" titulo="Resumo Executivo — Antes de Começar o Simulado">
-              <div className="space-y-3 text-sm mt-3">
+              <div className="space-y-3 text-xl mt-3 text-foreground/85 leading-relaxed">
                 <p><strong>Domínios Críticos (memorize):</strong></p>
                 <ul className="list-disc list-inside space-y-1">
                   <li>Fator 1/3 em pirâmide e cone</li>
@@ -2723,7 +2723,7 @@ export default function AulaGeometriaEspacial({
             </AlertBox>
 
             <AlertBox tipo="info" titulo="Aprofundamento — Cálculo de Superfícies Laterais">
-              <div className="space-y-3 text-sm mt-3">
+              <div className="space-y-3 text-xl mt-3 text-foreground/85 leading-relaxed">
                 <p><strong>Área Lateral vs Área Total:</strong> Distinção importante!</p>
                 <ul className="list-disc list-inside space-y-1">
                   <li><strong>Área Lateral:</strong> Apenas as faces "em volta" (sem bases)</li>
@@ -2739,7 +2739,7 @@ export default function AulaGeometriaEspacial({
             </AlertBox>
 
             <AlertBox tipo="success" titulo="Dicas Finais para Prova — Estratégia Mental">
-              <div className="space-y-3 text-sm mt-3">
+              <div className="space-y-3 text-xl mt-3 text-foreground/85 leading-relaxed">
                 <p><strong>5 minutos antes de começar:</strong></p>
                 <ul className="list-disc list-inside space-y-1">
                   <li>Respire fundo. Você estudou!</li>
@@ -2768,7 +2768,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Glossário — Termos Essenciais de Geometria Espacial",
                   icone: "📖",
                   conteudo: (
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-2 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Arestas:</strong> Segmentos de reta onde duas faces se encontram.</p>
                       <p><strong>Apótema:</strong> Altura de um triângulo lateral de uma pirâmide ou cone.</p>
                       <p><strong>Base:</strong> Face sobre a qual repousa o sólido (prisma, pirâmide, cilindro, cone).</p>
@@ -2793,7 +2793,7 @@ export default function AulaGeometriaEspacial({
                   titulo: "Verificação Final — Checklist de Cálculo",
                   icone: "✅",
                   conteudo: (
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-2 text-xl text-foreground/85 leading-relaxed">
                       <p>☐ Li o enunciado 2 vezes e entendi a situação</p>
                       <p>☐ Identifiquei corretamente o sólido</p>
                       <p>☐ Extraí todos os dados (r, h, a, D, etc)</p>
@@ -2812,16 +2812,16 @@ export default function AulaGeometriaEspacial({
                   titulo: "Comparação de Volumes — Qual Sólido Armazena Mais?",
                   icone: "⚖️",
                   conteudo: (
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-4 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Situação comum:</strong> Preciso armazenar óleo. Qual sólido é mais eficiente?</p>
                       <p>Suponha que todos têm altura h = 6 m e raio/lado = 3 m:</p>
-                      <div className="space-y-2 font-mono text-xs bg-slate-900 text-white p-3 rounded">
+                      <div className="space-y-2 font-mono text-lg text-foreground/85 leading-relaxed bg-slate-900 text-white p-3 rounded">
                         <p>Cilindro: V = π × 3² × 6 = 54π ≈ <span className="text-emerald-400">169,65 m³</span></p>
                         <p>Cone: V = (1/3)π × 3² × 6 = 18π ≈ <span className="text-blue-400">56,55 m³</span></p>
                         <p>Cubo: V = 3 × 3 × 6 = <span className="text-yellow-400">54 m³</span></p>
                         <p>Esfera (r=3): V = (4/3)π × 3³ ≈ <span className="text-pink-400">113,1 m³</span></p>
                       </div>
-                      <p className="text-xs text-muted-foreground mt-2"><strong>Conclusão:</strong> Cilindro armazena mais que esfera, que armazena mais que cubo, que armazena mais que cone.</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2"><strong>Conclusão:</strong> Cilindro armazena mais que esfera, que armazena mais que cubo, que armazena mais que cone.</p>
                     </div>
                   ),
                 },
@@ -2829,13 +2829,13 @@ export default function AulaGeometriaEspacial({
                   titulo: "Integrais Simples — Geometria Analítica 3D (Extra)",
                   icone: "∫",
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Conhecimento Avançado (não é essencial para CESGRANRIO):</strong></p>
                       <p>O volume de um sólido pode ser calculado por integração:</p>
-                      <p className="font-mono text-xs bg-slate-700 text-white p-2 rounded">V = ∫∫∫ dxdydz</p>
+                      <p className="font-mono text-lg text-foreground/85 leading-relaxed bg-slate-700 text-white p-2 rounded">V = ∫∫∫ dxdydz</p>
                       <p>Para um cilindro com raio R e altura H:</p>
-                      <p className="font-mono text-xs bg-slate-700 text-white p-2 rounded">V = ∫₀ᴴ πR² dh = πR²H</p>
-                      <p className="text-xs text-muted-foreground">Este é o fundamento matemático das fórmulas que você usa!</p>
+                      <p className="font-mono text-lg text-foreground/85 leading-relaxed bg-slate-700 text-white p-2 rounded">V = ∫₀ᴴ πR² dh = πR²H</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Este é o fundamento matemático das fórmulas que você usa!</p>
                     </div>
                   ),
                 },
@@ -2843,12 +2843,12 @@ export default function AulaGeometriaEspacial({
                   titulo: "Casos-Limite — O Que Acontece em Extremos?",
                   icone: "📊",
                   conteudo: (
-                    <div className="space-y-3 text-sm">
+                    <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                       <p><strong>Se a altura de um cone → 0:</strong> Cone vira um disco (área = πr², volume → 0)</p>
                       <p><strong>Se o raio de uma esfera → 0:</strong> Esfera vira um ponto (volume → 0)</p>
                       <p><strong>Se um cilindro tem h = 0:</strong> Vira um disco circular (volume = 0)</p>
                       <p><strong>Se um prisma tem uma dimensão tendendo ao infinito:</strong> Volume → infinito</p>
-                      <p className="text-xs text-muted-foreground mt-2">Pensar em casos-limite ajuda a verificar se suas fórmulas fazem sentido!</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">Pensar em casos-limite ajuda a verificar se suas fórmulas fazem sentido!</p>
                     </div>
                   ),
                 },

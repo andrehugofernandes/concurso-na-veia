@@ -175,11 +175,11 @@ export default function AulaMatrizesDeterminantes({
                         <strong>m×n</strong> (lê-se &quot;m por n&quot;).
                       </p>
                       <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
-                        <p className="text-blue-400 font-mono text-sm text-center">
+                        <p className="text-blue-400 font-mono text-xl text-center text-foreground/85 leading-relaxed">
                           A = (aᵢⱼ)ₘₓₙ — onde i=linha (1 a m), j=coluna (1 a n)
                         </p>
                       </div>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Na <strong>Petrobras</strong>, uma tabela de produção
                         com 3 plataformas (linhas) e 4 turnos (colunas) forma
                         uma matriz 3×4 com 12 células de dados.
@@ -202,25 +202,25 @@ export default function AulaMatrizesDeterminantes({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">
                             Matriz de Produção 2×3
                           </p>
-                          <p className="text-sm font-mono">
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                             P-51: [3000 3100 2900]
                           </p>
-                          <p className="text-sm font-mono">
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                             P-55: [4200 4100 4300]
                           </p>
-                          <p className="text-xs text-muted-foreground mt-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
                             Linhas = plataformas, Colunas = meses
                           </p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-500 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-500 mb-2">
                             Matriz de Pressão 1×4
                           </p>
-                          <p className="text-sm font-mono">[120 118 122 119]</p>
-                          <p className="text-xs text-muted-foreground mt-2">
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">[120 118 122 119]</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
                             1 duto medido em 4 sensores → matriz linha
                           </p>
                         </div>
@@ -260,10 +260,10 @@ export default function AulaMatrizesDeterminantes({
                         j (dimensão 3×2):
                       </p>
                       <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                        <p className="text-sm font-mono text-center mb-3">
+                        <p className="text-xl font-mono text-center mb-3 text-foreground/85 leading-relaxed">
                           Matriz A = [[5,6], [7,8], [9,10]]
                         </p>
-                        <ul className="text-sm space-y-1">
+                        <ul className="text-xl space-y-1 text-foreground/85 leading-relaxed">
                           <li>
                             • a₁₁ = 2(1) + 1 = 3... (erro) → a₁₁ = 2·1+1 = 3 ❌
                             exemplo corrigido: 5
@@ -275,7 +275,7 @@ export default function AulaMatrizesDeterminantes({
                           <li>• a₃₂ = 2·3 + 2 = 8 ✓</li>
                         </ul>
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Pegadinha: confundir aᵢⱼ (índice) com o valor numérico.
                         Sempre substitua i e j pelos números!
                       </p>
@@ -287,39 +287,39 @@ export default function AulaMatrizesDeterminantes({
                   icone: "📊",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="font-semibold text-sm">
+                      <p className="font-semibold text-xl text-foreground/85 leading-relaxed">
                         Nomes especiais conforme dimensão:
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-sm">
+                        <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-xl text-foreground/85 leading-relaxed">
                           <p className="font-bold text-blue-600">
                             Matriz Linha (1×n)
                           </p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                             Ex: [4 -1 7] → 1 linha, 3 colunas
                           </p>
                         </div>
-                        <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20 text-sm">
+                        <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20 text-xl text-foreground/85 leading-relaxed">
                           <p className="font-bold text-emerald-600">
                             Matriz Coluna (m×1)
                           </p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                             Ex: [[2],[5],[8]] → 3 linhas, 1 coluna
                           </p>
                         </div>
-                        <div className="p-3 bg-purple-500/5 rounded-lg border border-purple-500/20 text-sm">
+                        <div className="p-3 bg-purple-500/5 rounded-lg border border-purple-500/20 text-xl text-foreground/85 leading-relaxed">
                           <p className="font-bold text-purple-600">
                             Matriz Quadrada (n×n)
                           </p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                             Linhas = colunas → tem diagonal
                           </p>
                         </div>
-                        <div className="p-3 bg-amber-500/5 rounded-lg border border-amber-500/20 text-sm">
+                        <div className="p-3 bg-amber-500/5 rounded-lg border border-amber-500/20 text-xl text-foreground/85 leading-relaxed">
                           <p className="font-bold text-amber-600">
                             Matriz Retangular (m≠n)
                           </p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                             Mais comum nos dados reais
                           </p>
                         </div>
@@ -332,35 +332,35 @@ export default function AulaMatrizesDeterminantes({
                   icone: "↗️",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Apenas matrizes quadradas têm diagonais com propriedades
                         especiais:
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20">
-                          <p className="text-xs font-bold text-indigo-600 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-indigo-600 mb-2">
                             Diagonal Principal
                           </p>
-                          <p className="text-xs font-mono">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-mono">
                             a₁₁, a₂₂, a₃₃, ... (indices iguais i=j)
                           </p>
-                          <p className="text-xs text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
                             Traço = soma: tr(A) = a₁₁+a₂₂+...+aₙₙ
                           </p>
                         </div>
                         <div className="p-3 bg-rose-500/5 rounded-lg border border-rose-500/20">
-                          <p className="text-xs font-bold text-rose-600 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-rose-600 mb-2">
                             Diagonal Secundária
                           </p>
-                          <p className="text-xs font-mono">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-mono">
                             a₁ₙ, a₂,ₙ₋₁, ... (vai de canto a canto)
                           </p>
-                          <p className="text-xs text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
                             Usada em Sarrus (3×3)
                           </p>
                         </div>
                       </div>
-                      <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-xs">
+                      <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-lg text-foreground/85 leading-relaxed">
                         <p className="font-mono text-center">
                           [[1,2,3],[4,5,6],[7,8,9]]
                         </p>
@@ -377,10 +377,10 @@ export default function AulaMatrizesDeterminantes({
                   icone: "🏷️",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>Atenção à linguagem correta:</strong>
                       </p>
-                      <div className="space-y-2 text-xs">
+                      <div className="space-y-2 text-lg text-foreground/85 leading-relaxed">
                         <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20">
                           <p className="font-bold text-blue-600">
                             Dimensão ou Ordem?
@@ -468,16 +468,16 @@ export default function AulaMatrizesDeterminantes({
                 title: "Pulo do Gato",
                 content: (
                   <div className="space-y-4 text-left">
-                    <p className="text-sm italic">
+                    <p className="text-xl italic text-foreground/85 leading-relaxed">
                       "Sempre leia: LINHA ANTES DE COLUNA"
                     </p>
                     <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl font-mono text-center">
-                      <p className="text-sm">aᵢⱼ: i = linha, j = coluna</p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xl text-foreground/85 leading-relaxed">aᵢⱼ: i = linha, j = coluna</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Mnemônico: LC = Linha Coluna
                       </p>
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       Matriz 2×3 NUNCA é igual a 3×2!
                     </p>
                   </div>
@@ -541,8 +541,8 @@ export default function AulaMatrizesDeterminantes({
                         = I·A = A.
                       </p>
                       <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20">
-                        <p className="font-mono text-sm">I₂ = [[1,0],[0,1]]</p>
-                        <p className="font-mono text-sm">
+                        <p className="font-mono text-xl text-foreground/85 leading-relaxed">I₂ = [[1,0],[0,1]]</p>
+                        <p className="font-mono text-xl text-foreground/85 leading-relaxed">
                           I₃ = [[1,0,0],[0,1,0],[0,0,1]]
                         </p>
                       </div>
@@ -561,31 +561,31 @@ export default function AulaMatrizesDeterminantes({
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                         <div className="p-3 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-400 mb-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-1">
                             Diagonal
                           </p>
-                          <p className="text-xs">
+                          <p className="text-lg text-foreground/85 leading-relaxed">
                             Zeros fora da diagonal principal.
                           </p>
-                          <p className="font-mono text-xs mt-1">
+                          <p className="font-mono text-lg text-foreground/85 leading-relaxed mt-1">
                             [[5,0],[0,7]]
                           </p>
                         </div>
                         <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-400 mb-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-1">
                             Triangular Superior
                           </p>
-                          <p className="text-xs">Zeros abaixo da diagonal.</p>
-                          <p className="font-mono text-xs mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed">Zeros abaixo da diagonal.</p>
+                          <p className="font-mono text-lg text-foreground/85 leading-relaxed mt-1">
                             [[2,3],[0,5]]
                           </p>
                         </div>
                         <div className="p-3 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                          <p className="text-xs font-bold text-indigo-400 mb-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-indigo-400 mb-1">
                             Nula
                           </p>
-                          <p className="text-xs">Todos os elementos = 0.</p>
-                          <p className="font-mono text-xs mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed">Todos os elementos = 0.</p>
+                          <p className="font-mono text-lg text-foreground/85 leading-relaxed mt-1">
                             [[0,0],[0,0]]
                           </p>
                         </div>
@@ -607,7 +607,7 @@ export default function AulaMatrizesDeterminantes({
                         principal = 0.
                       </p>
                       <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
-                        <p className="font-mono text-sm">
+                        <p className="font-mono text-xl text-foreground/85 leading-relaxed">
                           Simétrica: [[1,3],[3,7]] — note a₁₂=a₂₁=3
                         </p>
                       </div>
@@ -625,10 +625,10 @@ export default function AulaMatrizesDeterminantes({
                   icone: "✨",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="font-semibold text-sm">
+                      <p className="font-semibold text-xl text-foreground/85 leading-relaxed">
                         Propriedades imediatas:
                       </p>
-                      <ul className="list-disc list-inside space-y-2 text-sm">
+                      <ul className="list-disc list-inside space-y-2 text-xl text-foreground/85 leading-relaxed">
                         <li>
                           <strong>Diagonal:</strong> det(A) = a₁₁ · a₂₂ · ... ·
                           aₙₙ (produto diagonal)
@@ -650,7 +650,7 @@ export default function AulaMatrizesDeterminantes({
                         </li>
                       </ul>
                       <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20">
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           <strong>Dica:</strong> Se a questão menciona "matriz
                           simétrica" e pede determinante, a resposta
                           provavelmente é um valor real específico.
@@ -664,11 +664,11 @@ export default function AulaMatrizesDeterminantes({
                   icone: "🎲",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Dada a matriz M = [[2,1,0],[1,5,0],[0,0,3]],
                         identifique:
                       </p>
-                      <div className="p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/20 space-y-2 text-sm">
+                      <div className="p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/20 space-y-2 text-xl text-foreground/85 leading-relaxed">
                         <p>✓ É quadrada (3×3)</p>
                         <p>✓ NÃO é diagonal (tem 1 fora da diagonal)</p>
                         <p>✓ É simétrica (a₁₂ = a₂₁ = 1)</p>
@@ -685,10 +685,10 @@ export default function AulaMatrizesDeterminantes({
                   icone: "⚙️",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-semibold">
+                      <p className="text-xl font-semibold text-foreground/85 leading-relaxed">
                         Como se comportam em operações?
                       </p>
-                      <div className="space-y-2 text-xs">
+                      <div className="space-y-2 text-lg text-foreground/85 leading-relaxed">
                         <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20">
                           <p className="font-bold">
                             I (Identidade) + D (Diagonal)
@@ -727,11 +727,11 @@ export default function AulaMatrizesDeterminantes({
                   icone: "⭐",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>Caso especial importante:</strong> Matriz
                         Ortogonal
                       </p>
-                      <div className="p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/20 text-xs space-y-2">
+                      <div className="p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/20 text-lg text-foreground/85 leading-relaxed space-y-2">
                         <p className="font-bold text-cyan-600">Definição:</p>
                         <p className="text-muted-foreground">
                           A·Aᵀ = I ⟹ Aᵀ = A⁻¹
@@ -740,7 +740,7 @@ export default function AulaMatrizesDeterminantes({
                           det(A) = ±1 (sempre!)
                         </p>
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         <strong>Exemplos:</strong> Matrizes de rotação,
                         reflexão. Conservam comprimentos e ângulos — geometria
                         pura!
@@ -813,16 +813,16 @@ export default function AulaMatrizesDeterminantes({
                 title: "Pulo do Gato",
                 content: (
                   <div className="space-y-4 text-left">
-                    <p className="text-sm italic">
+                    <p className="text-xl italic text-foreground/85 leading-relaxed">
                       "Matriz Identidade (I) é o 1 das matrizes"
                     </p>
                     <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl font-mono text-center">
-                      <p className="text-sm">A × I = A</p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xl text-foreground/85 leading-relaxed">A × I = A</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Neutro da multiplicação!
                       </p>
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       Identidade 3×3 tem 1s na diagonal, 0 fora dela
                     </p>
                   </div>
@@ -882,7 +882,7 @@ export default function AulaMatrizesDeterminantes({
                         + bᵢⱼ) — soma elemento a elemento.
                       </p>
                       <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
-                        <p className="font-mono text-sm">
+                        <p className="font-mono text-xl text-foreground/85 leading-relaxed">
                           [[1,2],[3,4]] + [[5,6],[7,8]] = [[6,8],[10,12]]
                         </p>
                       </div>
@@ -905,18 +905,18 @@ export default function AulaMatrizesDeterminantes({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-400 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">
                             Exemplo: k=3
                           </p>
-                          <p className="font-mono text-sm">
+                          <p className="font-mono text-xl text-foreground/85 leading-relaxed">
                             3·[[2,4],[1,5]] = [[6,12],[3,15]]
                           </p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-400 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-2">
                             Oposto (k=−1)
                           </p>
-                          <p className="font-mono text-sm">
+                          <p className="font-mono text-xl text-foreground/85 leading-relaxed">
                             −A: troca o sinal de todos os elementos
                           </p>
                         </div>
@@ -930,7 +930,7 @@ export default function AulaMatrizesDeterminantes({
                   conteudo: (
                     <div className="space-y-4">
                       <p>Propriedades da adição de matrizes:</p>
-                      <ul className="space-y-2 text-sm list-disc list-inside">
+                      <ul className="space-y-2 text-xl list-disc list-inside text-foreground/85 leading-relaxed">
                         <li>
                           <strong>Comutativa</strong>: A + B = B + A ✓
                         </li>
@@ -960,24 +960,24 @@ export default function AulaMatrizesDeterminantes({
                     <div className="space-y-4">
                       <p>Combinar adição + multiplicação escalar:</p>
                       <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <p className="text-sm font-semibold mb-2">
+                        <p className="text-xl font-semibold mb-2 text-foreground/85 leading-relaxed">
                           Exemplo: 2A − 3B + C
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Se A = [[1,2],[3,4]], B = [[5,6],[7,8]], C =
                           [[0,1],[1,0]]:
                         </p>
-                        <p className="text-xs font-mono mt-2">
+                        <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-2">
                           2·[[1,2],[3,4]] − 3·[[5,6],[7,8]] + [[0,1],[1,0]]
                         </p>
-                        <p className="text-xs font-mono">
+                        <p className="text-lg text-foreground/85 leading-relaxed font-mono">
                           = [[2,4],[6,8]] − [[15,18],[21,24]] + [[0,1],[1,0]]
                         </p>
-                        <p className="text-xs font-mono">
+                        <p className="text-lg text-foreground/85 leading-relaxed font-mono">
                           = [[-13,-13],[-14,-16]]
                         </p>
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Sempre faça escalar primeiro, depois adição/subtração.
                       </p>
                     </div>
@@ -988,11 +988,11 @@ export default function AulaMatrizesDeterminantes({
                   icone: "🏭",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>Cenário Petrobras:</strong> Produção de 3
                         plataformas em 2 meses
                       </p>
-                      <div className="p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/20 space-y-2 text-xs">
+                      <div className="p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/20 space-y-2 text-lg text-foreground/85 leading-relaxed">
                         <p>
                           <strong>Janeiro:</strong> P₁=[1000,1100],
                           P₂=[2000,2100], P₃=[1500,1600]
@@ -1018,10 +1018,10 @@ export default function AulaMatrizesDeterminantes({
                   icone: "➖",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         A − B = A + (−B) = soma com a oposta de B
                       </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-lg text-foreground/85 leading-relaxed">
                         <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20">
                           <p className="font-bold text-blue-600">Significado</p>
                           <p className="text-muted-foreground">
@@ -1035,7 +1035,7 @@ export default function AulaMatrizesDeterminantes({
                           </p>
                         </div>
                       </div>
-                      <div className="p-2 bg-indigo-500/5 rounded border border-indigo-500/20 text-xs">
+                      <div className="p-2 bg-indigo-500/5 rounded border border-indigo-500/20 text-lg text-foreground/85 leading-relaxed">
                         <p className="font-bold text-indigo-600">
                           Na prova: A−B = A + (−1)·B
                         </p>
@@ -1051,10 +1051,10 @@ export default function AulaMatrizesDeterminantes({
                   icone: "❌",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-semibold">
+                      <p className="text-xl font-semibold text-foreground/85 leading-relaxed">
                         Casos especiais importantes:
                       </p>
-                      <div className="space-y-2 text-xs">
+                      <div className="space-y-2 text-lg text-foreground/85 leading-relaxed">
                         <div className="p-2 bg-rose-500/5 rounded border border-rose-500/20">
                           <p className="font-bold text-rose-600">
                             −A (negativo da matriz)
@@ -1073,7 +1073,7 @@ export default function AulaMatrizesDeterminantes({
                           </p>
                         </div>
                       </div>
-                      <div className="p-2 bg-amber-500/5 rounded border border-amber-500/20 text-xs">
+                      <div className="p-2 bg-amber-500/5 rounded border border-amber-500/20 text-lg text-foreground/85 leading-relaxed">
                         <p className="font-mono text-center">
                           −[[1,−2],[3,0]] = [[-1,2],[−3,0]]
                         </p>
@@ -1146,16 +1146,16 @@ export default function AulaMatrizesDeterminantes({
                 title: "Pulo do Gato",
                 content: (
                   <div className="space-y-4 text-left">
-                    <p className="text-sm italic">
+                    <p className="text-xl italic text-foreground/85 leading-relaxed">
                       "Mesma ordem m×n é obrigatório!"
                     </p>
                     <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl font-mono text-center">
-                      <p className="text-sm">Matriz 2×3 + 3×2 = IMPOSSÍVEL</p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xl text-foreground/85 leading-relaxed">Matriz 2×3 + 3×2 = IMPOSSÍVEL</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Ordem deve coincidir totalmente
                       </p>
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       Soma elemento por elemento, posição a posição
                     </p>
                   </div>
@@ -1214,10 +1214,10 @@ export default function AulaMatrizesDeterminantes({
                         <strong>colunas(A) = linhas(B)</strong>.
                       </p>
                       <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
-                        <p className="font-mono text-sm text-center">
+                        <p className="font-mono text-xl text-center text-foreground/85 leading-relaxed">
                           A(m×p) · B(p×n) = C(m×n)
                         </p>
-                        <p className="text-xs text-center text-muted-foreground mt-1">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-center text-muted-foreground mt-1">
                           As dimensões &quot;internas&quot; se cancelam, as
                           &quot;externas&quot; formam o resultado
                         </p>
@@ -1239,17 +1239,17 @@ export default function AulaMatrizesDeterminantes({
                         Cada elemento cᵢⱼ = <strong>produto interno</strong> da
                         linha i de A pela coluna j de B:
                       </p>
-                      <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 font-mono text-sm">
+                      <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 font-mono text-xl text-foreground/85 leading-relaxed">
                         <p>cᵢⱼ = aᵢ₁·b₁ⱼ + aᵢ₂·b₂ⱼ + ... + aᵢₚ·bₚⱼ</p>
                       </div>
                       <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <p className="text-xs font-bold text-emerald-400 mb-2">
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">
                           Exemplo: c₁₁
                         </p>
-                        <p className="text-sm font-mono">
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                           A=[[1,2],[3,4]], B=[[5,0],[1,2]]
                         </p>
-                        <p className="text-sm font-mono">c₁₁ = 1·5 + 2·1 = 7</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">c₁₁ = 1·5 + 2·1 = 7</p>
                       </div>
                     </div>
                   ),
@@ -1265,7 +1265,7 @@ export default function AulaMatrizesDeterminantes({
                         <strong>não é comutativa</strong> — esta é a propriedade
                         mais cobrada!
                       </p>
-                      <ul className="space-y-1 text-sm list-disc list-inside">
+                      <ul className="space-y-1 text-xl list-disc list-inside text-foreground/85 leading-relaxed">
                         <li>Associativa: (A·B)·C = A·(B·C) ✓</li>
                         <li>Distributiva: A·(B+C) = A·B + A·C ✓</li>
                         <li>Elemento neutro: A·I = I·A = A ✓</li>
@@ -1285,11 +1285,11 @@ export default function AulaMatrizesDeterminantes({
                   icone: "📝",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Calcule A·B com A = [[1,2,3],[4,5,6]] (2×3) e B =
                         [[7,8],[9,10],[11,12]] (3×2):
                       </p>
-                      <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20 space-y-2 text-xs font-mono">
+                      <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20 space-y-2 text-lg text-foreground/85 leading-relaxed font-mono">
                         <p>
                           <strong>
                             Resultado: C = [[58,64],[139,154]] (2×2)
@@ -1300,7 +1300,7 @@ export default function AulaMatrizesDeterminantes({
                         <p>• c₂₁ = 4·7 + 5·9 + 6·11 = 28 + 45 + 66 = 139 ✓</p>
                         <p>• c₂₂ = 4·8 + 5·10 + 6·12 = 32 + 50 + 72 = 154 ✓</p>
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Dica: organize em linha os números de A e em coluna os
                         de B para não errar.
                       </p>
@@ -1312,22 +1312,22 @@ export default function AulaMatrizesDeterminantes({
                   icone: "⚡",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>A² = A·A</strong> só faz sentido se A é
                         quadrada.
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-xs">
+                        <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-lg text-foreground/85 leading-relaxed">
                           <p className="font-bold text-blue-600">A² = A·A</p>
                           <p className="font-mono">Se A = [[1,2],[3,4]]</p>
                           <p className="font-mono">A² = [[7,10],[15,22]]</p>
                         </div>
-                        <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20 text-xs">
+                        <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20 text-lg text-foreground/85 leading-relaxed">
                           <p className="font-bold text-emerald-600">
                             Identidade I
                           </p>
-                          <p className="text-xs">A·I = A e I·A = A</p>
-                          <p className="text-xs text-muted-foreground">
+                          <p className="text-lg text-foreground/85 leading-relaxed">A·I = A e I·A = A</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                             (I é neutra)
                           </p>
                         </div>
@@ -1340,11 +1340,11 @@ export default function AulaMatrizesDeterminantes({
                   icone: "❌",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>ATENÇÃO:</strong> Multiplicação de matrizes NÃO
                         é elemento a elemento!
                       </p>
-                      <div className="space-y-2 text-xs">
+                      <div className="space-y-2 text-lg text-foreground/85 leading-relaxed">
                         <div className="p-2 bg-red-500/5 rounded border border-red-500/20">
                           <p className="font-bold text-red-600">
                             ❌ ERRADO: [[1,2],[3,4]] · [[5,6],[7,8]] =
@@ -1364,7 +1364,7 @@ export default function AulaMatrizesDeterminantes({
                           </p>
                         </div>
                       </div>
-                      <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20 text-xs">
+                      <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20 text-lg text-foreground/85 leading-relaxed">
                         <p className="font-bold">Dica:</p>
                         <p className="text-muted-foreground">
                           Se a questão disser "multiplicação elemento a
@@ -1440,18 +1440,18 @@ export default function AulaMatrizesDeterminantes({
                 title: "Pulo do Gato",
                 content: (
                   <div className="space-y-4 text-left">
-                    <p className="text-sm italic">
+                    <p className="text-xl italic text-foreground/85 leading-relaxed">
                       "Multiplicação: LINHA da 1ª × COLUNA da 2ª"
                     </p>
                     <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl font-mono text-center">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Soma de produtos: a₁b₁ + a₂b₂ + a₃b₃
                       </p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Cada elemento é uma multiplica multiplicação cruzada!
                       </p>
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       Ordem IMPORTA! A×B ≠ B×A
                     </p>
                   </div>
@@ -1510,7 +1510,7 @@ export default function AulaMatrizesDeterminantes({
                         (i,j) de A vai para (j,i) de Aᵀ. Se A é m×n, então Aᵀ é
                         n×m.
                       </p>
-                      <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 font-mono text-sm">
+                      <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 font-mono text-xl text-foreground/85 leading-relaxed">
                         <p>A = [[1,2,3],[4,5,6]] (2×3)</p>
                         <p>Aᵀ = [[1,4],[2,5],[3,6]] (3×2)</p>
                       </div>
@@ -1532,7 +1532,7 @@ export default function AulaMatrizesDeterminantes({
                         = I.
                       </p>
                       <p>Para matriz 2×2: </p>
-                      <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20 font-mono text-sm">
+                      <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20 font-mono text-xl text-foreground/85 leading-relaxed">
                         <p>Se A = [[a,b],[c,d]], então:</p>
                         <p>A⁻¹ = (1/det) · [[d,−b],[−c,a]]</p>
                       </div>
@@ -1558,18 +1558,18 @@ export default function AulaMatrizesDeterminantes({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">
                             det ≠ 0 → Invertível
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Sistema AX=B tem solução única: X = A⁻¹B
                           </p>
                         </div>
                         <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                          <p className="text-xs font-bold text-rose-500 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-rose-500 mb-2">
                             det = 0 → Singular
                           </p>
-                          <p className="text-sm">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Sistema impossível (SI) ou indeterminado (SII)
                           </p>
                         </div>
@@ -1589,18 +1589,18 @@ export default function AulaMatrizesDeterminantes({
                   icone: "🧮",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>Fórmula para matriz 2×2:</strong>
                       </p>
-                      <div className="p-3 bg-amber-500/5 rounded-lg border border-amber-500/20 font-mono text-xs space-y-1">
+                      <div className="p-3 bg-amber-500/5 rounded-lg border border-amber-500/20 font-mono text-lg text-foreground/85 leading-relaxed space-y-1">
                         <p>A = [[a,b],[c,d]]</p>
                         <p>det(A) = ad − bc</p>
                         <p>A⁻¹ = (1/(ad−bc)) · [[d,−b],[−c,a]]</p>
                       </div>
-                      <p className="text-xs">
+                      <p className="text-lg text-foreground/85 leading-relaxed">
                         <strong>Exemplo:</strong> A = [[1,2],[3,4]]
                       </p>
-                      <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-xs space-y-1">
+                      <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-lg text-foreground/85 leading-relaxed space-y-1">
                         <p>• det = 1·4 − 2·3 = −2</p>
                         <p>
                           • A⁻¹ = (1/−2) · [[4,−2],[−3,1]] = [[-2,1],[1.5,−0.5]]
@@ -1614,10 +1614,10 @@ export default function AulaMatrizesDeterminantes({
                   icone: "✅",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Verifique quais matrizes são invertíveis:
                       </p>
-                      <div className="space-y-2 text-xs">
+                      <div className="space-y-2 text-lg text-foreground/85 leading-relaxed">
                         <div className="p-2 bg-emerald-500/5 rounded border border-emerald-500/20">
                           <p className="font-bold">M₁ = [[2,5],[1,3]]</p>
                           <p>det = 2·3 − 5·1 = 6 − 5 = 1 ≠ 0 ✓ INVERTÍVEL</p>
@@ -1637,10 +1637,10 @@ export default function AulaMatrizesDeterminantes({
                   icone: "🔁",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-semibold">
+                      <p className="text-xl font-semibold text-foreground/85 leading-relaxed">
                         Propriedades que facilitam cálculos:
                       </p>
-                      <ul className="space-y-2 text-xs list-disc list-inside">
+                      <ul className="space-y-2 text-lg text-foreground/85 leading-relaxed list-disc list-inside">
                         <li>
                           <strong>(Aᵀ)ᵀ = A</strong> — transpor duas vezes
                           recupera original
@@ -1661,7 +1661,7 @@ export default function AulaMatrizesDeterminantes({
                           <strong>(A⁻¹)ᵀ = (Aᵀ)⁻¹</strong> — comuta com inversa
                         </li>
                       </ul>
-                      <div className="p-2 bg-amber-500/5 rounded border border-amber-500/20 text-xs mt-2">
+                      <div className="p-2 bg-amber-500/5 rounded border border-amber-500/20 text-lg text-foreground/85 leading-relaxed mt-2">
                         <p className="font-bold text-amber-600">
                           Pegadinha CESGRANRIO:
                         </p>
@@ -1737,18 +1737,18 @@ export default function AulaMatrizesDeterminantes({
                 title: "Pulo do Gato",
                 content: (
                   <div className="space-y-4 text-left">
-                    <p className="text-sm italic">
+                    <p className="text-xl italic text-foreground/85 leading-relaxed">
                       "Transposta é fácil: rode 90°. Inversa precisa de
                       determinante!"
                     </p>
                     <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl font-mono text-center">
-                      <p className="text-sm">(Aᵀ)ᵀ = A</p>
-                      <p className="text-sm">A×A⁻¹ = I (Neutro!)</p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xl text-foreground/85 leading-relaxed">(Aᵀ)ᵀ = A</p>
+                      <p className="text-xl text-foreground/85 leading-relaxed">A×A⁻¹ = I (Neutro!)</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Só inverte se det ≠ 0
                       </p>
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       CESGRANRIO adora pegadinha de matriz singular!
                     </p>
                   </div>
@@ -1808,7 +1808,7 @@ export default function AulaMatrizesDeterminantes({
                         minus diagonal secundária).
                       </p>
                       <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
-                        <p className="font-mono text-sm">
+                        <p className="font-mono text-xl text-foreground/85 leading-relaxed">
                           det([[5,3],[2,4]]) = 5·4 − 3·2 = 20 − 6 = 14
                         </p>
                       </div>
@@ -1825,7 +1825,7 @@ export default function AulaMatrizesDeterminantes({
                   icone: "📋",
                   conteudo: (
                     <div className="space-y-4">
-                      <ul className="space-y-2 text-sm">
+                      <ul className="space-y-2 text-xl text-foreground/85 leading-relaxed">
                         <li>
                           <strong>Linhas iguais</strong>: det = 0
                         </li>
@@ -1863,7 +1863,7 @@ export default function AulaMatrizesDeterminantes({
                         resolve: <strong>xᵢ = det(Aᵢ) / det(A)</strong>, onde Aᵢ
                         substitui a coluna i de A por B.
                       </p>
-                      <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20 text-sm">
+                      <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20 text-xl text-foreground/85 leading-relaxed">
                         <p>Sistema: 2x+y=10, 3x+2y=16</p>
                         <p>det(A)=2·2−1·3=1</p>
                         <p>x = det([[10,1],[16,2]])/1 = (20−16) = 4</p>
@@ -1877,11 +1877,11 @@ export default function AulaMatrizesDeterminantes({
                   icone: "⚡",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>Cálculo de det(kA):</strong> A matriz de ordem n
                         = 2
                       </p>
-                      <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20 text-xs space-y-1">
+                      <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20 text-lg text-foreground/85 leading-relaxed space-y-1">
                         <p>
                           det(kA) = k² · det(A) [porque k multiplica as 2
                           linhas]
@@ -1891,7 +1891,7 @@ export default function AulaMatrizesDeterminantes({
                           15!)
                         </p>
                       </div>
-                      <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div className="grid grid-cols-2 gap-2 text-lg text-foreground/85 leading-relaxed">
                         <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20">
                           <p className="font-bold">det(Aᵀ)</p>
                           <p>= det(A)</p>
@@ -1909,14 +1909,14 @@ export default function AulaMatrizesDeterminantes({
                   icone: "🏭",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xs">
+                      <p className="text-lg text-foreground/85 leading-relaxed">
                         <strong>Contexto Petrobras:</strong> Equilíbrio de
                         pressão em 2 dutos
                       </p>
-                      <div className="p-2 bg-cyan-500/5 rounded border border-cyan-500/20 text-xs space-y-1">
+                      <div className="p-2 bg-cyan-500/5 rounded border border-cyan-500/20 text-lg text-foreground/85 leading-relaxed space-y-1">
                         <p>2P₁ + P₂ = 120 (atm)</p>
                         <p>P₁ + 3P₂ = 180 (atm)</p>
-                        <p className="font-mono text-xs">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                           det = 2·3 − 1·1 = 5 ≠ 0 ✓ Solução única
                         </p>
                         <p>P₁ = (120·3 − 180·1)/5 = 180/5 = 36 atm</p>
@@ -1930,10 +1930,10 @@ export default function AulaMatrizesDeterminantes({
                   icone: "📐",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>O que det(A) representa?</strong>
                       </p>
-                      <ul className="space-y-2 text-xs">
+                      <ul className="space-y-2 text-lg text-foreground/85 leading-relaxed">
                         <li>
                           <strong>|det(A)|:</strong> Área do paralelogramo
                           formado pelas linhas (ou colunas) de A
@@ -1951,7 +1951,7 @@ export default function AulaMatrizesDeterminantes({
                           área zero → matriz singular
                         </li>
                       </ul>
-                      <div className="p-2 bg-indigo-500/5 rounded border border-indigo-500/20 text-xs">
+                      <div className="p-2 bg-indigo-500/5 rounded border border-indigo-500/20 text-lg text-foreground/85 leading-relaxed">
                         <p className="font-bold text-indigo-600">
                           Exemplo: A = [[2,0],[0,3]]
                         </p>
@@ -2030,16 +2030,16 @@ export default function AulaMatrizesDeterminantes({
                 title: "Pulo do Gato",
                 content: (
                   <div className="space-y-4 text-left">
-                    <p className="text-sm italic">
+                    <p className="text-xl italic text-foreground/85 leading-relaxed">
                       "Det 2×2: diagonal principal MENOS anti-diagonal"
                     </p>
                     <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl font-mono text-center">
-                      <p className="text-sm">det = a₁₁×a₂₂ - a₁₂×a₂₁</p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xl text-foreground/85 leading-relaxed">det = a₁₁×a₂₂ - a₁₂×a₂₁</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Desenhe X: uma bolinha, outra cruza (-)!
                       </p>
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       Se det=0, matriz é singular (não invertível)
                     </p>
                   </div>
@@ -2094,7 +2094,7 @@ export default function AulaMatrizesDeterminantes({
                   conteudo: (
                     <div className="space-y-4">
                       <p>Para calcular det de [[a,b,c],[d,e,f],[g,h,i]]:</p>
-                      <ol className="list-decimal list-inside space-y-2 text-sm">
+                      <ol className="list-decimal list-inside space-y-2 text-xl text-foreground/85 leading-relaxed">
                         <li>
                           Replique as 2 primeiras colunas à direita da matriz
                         </li>
@@ -2103,7 +2103,7 @@ export default function AulaMatrizesDeterminantes({
                           Subtraia os produtos das 3 diagonais ↗ (negativos)
                         </li>
                       </ol>
-                      <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20 font-mono text-sm">
+                      <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20 font-mono text-xl text-foreground/85 leading-relaxed">
                         <p className="text-cyan-400">
                           Positivos (+): aei, bfg, cdh
                         </p>
@@ -2128,7 +2128,7 @@ export default function AulaMatrizesDeterminantes({
                   conteudo: (
                     <div className="space-y-4">
                       <p>Calcule det([[2,1,3],[0,4,1],[5,2,0]]):</p>
-                      <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 text-sm font-mono">
+                      <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 text-xl font-mono text-foreground/85 leading-relaxed">
                         <p className="text-emerald-400">
                           Positivos: 2·4·0 + 1·1·5 + 3·0·2 = 0+5+0 = 5
                         </p>
@@ -2151,7 +2151,7 @@ export default function AulaMatrizesDeterminantes({
                   conteudo: (
                     <div className="space-y-4">
                       <p>Propriedades que economizam tempo na prova:</p>
-                      <ul className="space-y-2 text-sm list-disc list-inside">
+                      <ul className="space-y-2 text-xl list-disc list-inside text-foreground/85 leading-relaxed">
                         <li>
                           <strong>Troca de 2 linhas</strong>: muda o sinal do
                           det
@@ -2169,7 +2169,7 @@ export default function AulaMatrizesDeterminantes({
                           <strong>det(A·B) = det(A)·det(B)</strong>
                         </li>
                       </ul>
-                      <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-sm">
+                      <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-xl text-foreground/85 leading-relaxed">
                         <p className="font-bold text-emerald-400">
                           Triangular → det rápido!
                         </p>
@@ -2183,10 +2183,10 @@ export default function AulaMatrizesDeterminantes({
                   icone: "⚠️",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>Pegadinhas CESGRANRIO em Sarrus:</strong>
                       </p>
-                      <ul className="list-disc list-inside space-y-2 text-sm">
+                      <ul className="list-disc list-inside space-y-2 text-xl text-foreground/85 leading-relaxed">
                         <li>
                           Aplicar Sarrus em 4×4 ou maiores (SÓ vale para 3×3!)
                         </li>
@@ -2195,7 +2195,7 @@ export default function AulaMatrizesDeterminantes({
                         </li>
                         <li>Confundir Sarrus com Laplace</li>
                       </ul>
-                      <div className="p-3 bg-red-500/5 rounded-lg border border-red-500/20 text-xs">
+                      <div className="p-3 bg-red-500/5 rounded-lg border border-red-500/20 text-lg text-foreground/85 leading-relaxed">
                         <p className="font-bold text-red-600">
                           ❌ Erro: aplicar Sarrus em
                           [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
@@ -2212,7 +2212,7 @@ export default function AulaMatrizesDeterminantes({
                   icone: "🎯",
                   conteudo: (
                     <div className="space-y-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-lg text-foreground/85 leading-relaxed">
                         <div className="p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/20">
                           <p className="font-bold text-cyan-600">2×2</p>
                           <p>Fórmula: ad − bc (30 seg)</p>
@@ -2238,10 +2238,10 @@ export default function AulaMatrizesDeterminantes({
                   icone: "🔄",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-semibold">
+                      <p className="text-xl font-semibold text-foreground/85 leading-relaxed">
                         Como o determinante muda com operações em linhas:
                       </p>
-                      <div className="space-y-2 text-xs">
+                      <div className="space-y-2 text-lg text-foreground/85 leading-relaxed">
                         <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20">
                           <p className="font-bold">❶ Trocar 2 linhas</p>
                           <p className="text-muted-foreground">
@@ -2263,7 +2263,7 @@ export default function AulaMatrizesDeterminantes({
                           </p>
                         </div>
                       </div>
-                      <p className="text-xs text-muted-foreground mt-2">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
                         Essas operações são usadas em escalonamento para
                         calcular det sem Sarrus!
                       </p>
@@ -2336,19 +2336,19 @@ export default function AulaMatrizesDeterminantes({
                 title: "Pulo do Gato",
                 content: (
                   <div className="space-y-4 text-left">
-                    <p className="text-sm italic">
+                    <p className="text-xl italic text-foreground/85 leading-relaxed">
                       "Sarrus: copia primeiras 2 colunas, multiplica diagonais!"
                     </p>
                     <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl font-mono text-center">
-                      <p className="text-sm">3 diagonais (↘) com sinal (+)</p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">3 diagonais (↘) com sinal (+)</p>
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         3 anti-diagonais (↙) com sinal (-)
                       </p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Soma tudo = determinante!
                       </p>
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       Regra de Sarrus SÓ funciona para 3×3
                     </p>
                   </div>
@@ -2410,10 +2410,10 @@ export default function AulaMatrizesDeterminantes({
                         <strong>Cofator Cᵢⱼ</strong>: Cᵢⱼ = (−1)^(i+j) · Mᵢⱼ
                       </p>
                       <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
-                        <p className="text-sm font-bold">
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">
                           Padrão de sinais (tabuleiro de xadrez):
                         </p>
-                        <p className="font-mono text-sm mt-1">
+                        <p className="font-mono text-xl mt-1 text-foreground/85 leading-relaxed">
                           + − + / − + − / + − +
                         </p>
                       </div>
@@ -2434,13 +2434,13 @@ export default function AulaMatrizesDeterminantes({
                         det(A) = Σ aᵢⱼ · Cᵢⱼ (somando ao longo de qualquer linha
                         ou coluna).
                       </p>
-                      <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-sm">
+                      <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-xl text-foreground/85 leading-relaxed">
                         <p className="font-bold">Expandindo pela 1ª linha:</p>
                         <p className="font-mono mt-1">
                           det(A) = a₁₁·C₁₁ + a₁₂·C₁₂ + a₁₃·C₁₃
                         </p>
                       </div>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>Estratégia de prova</strong>: escolha a
                         linha/coluna com mais zeros — cada zero elimina um
                         cofator a calcular!
@@ -2460,7 +2460,7 @@ export default function AulaMatrizesDeterminantes({
                       <p>
                         <strong>Inversa</strong>: A⁻¹ = (1/det(A)) · adj(A)
                       </p>
-                      <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-sm font-mono">
+                      <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-xl font-mono text-foreground/85 leading-relaxed">
                         <p>Para A = [[a,b],[c,d]]:</p>
                         <p>adj(A) = [[d,−b],[−c,a]]</p>
                         <p>A⁻¹ = (1/(ad−bc)) · [[d,−b],[−c,a]]</p>
@@ -2478,19 +2478,19 @@ export default function AulaMatrizesDeterminantes({
                   icone: "✏️",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>
                           Calcule C₁₂ da matriz A = [[2,1,3],[4,5,6],[7,8,9]]:
                         </strong>
                       </p>
-                      <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 space-y-2 text-xs font-mono">
+                      <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 space-y-2 text-lg text-foreground/85 leading-relaxed font-mono">
                         <p>
                           • Elimine linha 1, coluna 2: M₁₂ = det([[4,6],[7,9]])
                         </p>
                         <p>• M₁₂ = 4·9 − 6·7 = 36 − 42 = −6</p>
                         <p>• C₁₂ = (−1)^(1+2) · (−6) = (−1) · (−6) = 6</p>
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Note o sinal negativo da fórmula (−1)^(1+2).
                       </p>
                     </div>
@@ -2501,12 +2501,12 @@ export default function AulaMatrizesDeterminantes({
                   icone: "⚡",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>
                           Sempre escolha a linha ou coluna com mais zeros!
                         </strong>
                       </p>
-                      <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20 text-xs">
+                      <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20 text-lg text-foreground/85 leading-relaxed">
                         <p className="font-bold">
                           Ex: A = [[1,2,0],[0,3,4],[0,0,5]]
                         </p>
@@ -2529,12 +2529,12 @@ export default function AulaMatrizesDeterminantes({
                   icone: "🔢",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>
                           Passo a passo para calcular Adj(A) e depois A⁻¹:
                         </strong>
                       </p>
-                      <ol className="list-decimal list-inside space-y-2 text-xs">
+                      <ol className="list-decimal list-inside space-y-2 text-lg text-foreground/85 leading-relaxed">
                         <li>
                           Calcule os menores Mᵢⱼ (determinante da submatriz sem
                           linha i, coluna j)
@@ -2544,7 +2544,7 @@ export default function AulaMatrizesDeterminantes({
                         <li>Transponha: adj(A) = Cᵀ</li>
                         <li>Divida por det: A⁻¹ = (1/det) · adj(A)</li>
                       </ol>
-                      <div className="p-2 bg-emerald-500/5 rounded border border-emerald-500/20 text-xs mt-2">
+                      <div className="p-2 bg-emerald-500/5 rounded border border-emerald-500/20 text-lg text-foreground/85 leading-relaxed mt-2">
                         <p className="font-bold text-emerald-600">
                           Prático: Para 2×2
                         </p>
@@ -2623,17 +2623,17 @@ export default function AulaMatrizesDeterminantes({
                 title: "Pulo do Gato",
                 content: (
                   <div className="space-y-4 text-left">
-                    <p className="text-sm italic">
+                    <p className="text-xl italic text-foreground/85 leading-relaxed">
                       "Cofator coloca sinal de xadrez: (+,-,+,-,...)"
                     </p>
                     <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl font-mono text-center">
-                      <p className="text-sm">C₁₁(+) C₁₂(-) C₁₃(+)</p>
-                      <p className="text-sm">C₂₁(-) C₂₂(+) C₂₃(-)</p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xl text-foreground/85 leading-relaxed">C₁₁(+) C₁₂(-) C₁₃(+)</p>
+                      <p className="text-xl text-foreground/85 leading-relaxed">C₂₁(-) C₂₂(+) C₂₃(-)</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Padrão xadrez: (i+j) par=+, ímpar=-
                       </p>
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       A⁻¹ = (1/det) × Adjunta
                     </p>
                   </div>
@@ -2693,7 +2693,7 @@ export default function AulaMatrizesDeterminantes({
                         coeficientes, X o vetor de incógnitas e B o vetor dos
                         termos independentes.
                       </p>
-                      <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-sm font-mono">
+                      <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-xl font-mono text-foreground/85 leading-relaxed">
                         <p>2x + y = 180 (pressão do duto 1)</p>
                         <p>x + 3y = 120 (vazão do duto 2)</p>
                         <p>→ A = [[2,1],[1,3]], B = [[180],[120]]</p>
@@ -2717,12 +2717,12 @@ export default function AulaMatrizesDeterminantes({
                         <strong>matrizes de rotação</strong> para converter
                         coordenadas entre sistemas de referência.
                       </p>
-                      <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 text-sm font-mono">
+                      <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 text-xl font-mono text-foreground/85 leading-relaxed">
                         <p>R(90°) = [[0,−1],[1,0]]</p>
                         <p>Posição (3,4) após rotação:</p>
                         <p>R·[[3],[4]] = [[−4],[3]]</p>
                       </div>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         det(R) = 1 sempre — rotações preservam áreas e
                         distâncias. A Petrobras usa isso em sistemas de
                         navegação inercial de ROVs a 3000m de profundidade.
@@ -2740,7 +2740,7 @@ export default function AulaMatrizesDeterminantes({
                         <strong>matrizes de incidência</strong>: cada linha é um
                         nó (plataforma), cada coluna é um arco (duto).
                       </p>
-                      <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20 text-sm">
+                      <div className="p-4 bg-cyan-500/10 rounded-xl border border-cyan-500/20 text-xl text-foreground/85 leading-relaxed">
                         <p>Matriz 4×6 → 4 plataformas, 6 conexões</p>
                         <p>
                           Elemento +1: saída do nó / −1: entrada / 0: sem
@@ -2767,7 +2767,7 @@ export default function AulaMatrizesDeterminantes({
                         <strong>Cifra de Hill:</strong> usa matrizes invertíveis
                         para criptografar mensagens.
                       </p>
-                      <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20 text-xs space-y-1">
+                      <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20 text-lg text-foreground/85 leading-relaxed space-y-1">
                         <p className="font-mono">Chave: A = [[5,8],[17,29]]</p>
                         <p>Mensagem codificada: C = A·M (mod 26)</p>
                         <p>
@@ -2775,7 +2775,7 @@ export default function AulaMatrizesDeterminantes({
                           invertível!
                         </p>
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Isso reforça a importância de det(A) ≠ 0. Sem
                         inversibilidade, não se decodifica.
                       </p>
@@ -2787,11 +2787,11 @@ export default function AulaMatrizesDeterminantes({
                   icone: "📊",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>Preview:</strong> Autovalores de A satisfazem
                         det(A − λI) = 0.
                       </p>
-                      <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-xs">
+                      <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-lg text-foreground/85 leading-relaxed">
                         <p className="font-bold text-blue-600">
                           Importância: Autovalores indicam estabilidade
                         </p>
@@ -2812,16 +2812,16 @@ export default function AulaMatrizesDeterminantes({
                   icone: "⚙️",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>
                           Método computacional (usado por software):
                         </strong>
                       </p>
-                      <p className="text-xs">
+                      <p className="text-lg text-foreground/85 leading-relaxed">
                         Fatora A = L·U, onde L é triangular inferior e U é
                         triangular superior.
                       </p>
-                      <div className="space-y-2 text-xs">
+                      <div className="space-y-2 text-lg text-foreground/85 leading-relaxed">
                         <div className="p-2 bg-cyan-500/5 rounded border border-cyan-500/20">
                           <p className="font-bold">Vantagem:</p>
                           <p className="text-muted-foreground">
@@ -2837,7 +2837,7 @@ export default function AulaMatrizesDeterminantes({
                           </p>
                         </div>
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Na Petrobras, reservatórios com 1 milhão de células →
                         usa LU, nunca Cramer!
                       </p>
@@ -2910,17 +2910,17 @@ export default function AulaMatrizesDeterminantes({
                 title: "Pulo do Gato",
                 content: (
                   <div className="space-y-4 text-left">
-                    <p className="text-sm italic">
+                    <p className="text-xl italic text-foreground/85 leading-relaxed">
                       "Petrobras usa matrizes para modelar redes complexas"
                     </p>
                     <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl font-mono text-center">
-                      <p className="text-sm">det = 0 → Sistema singular</p>
-                      <p className="text-sm">det ≠ 0 → Solução única</p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xl text-foreground/85 leading-relaxed">det = 0 → Sistema singular</p>
+                      <p className="text-xl text-foreground/85 leading-relaxed">det ≠ 0 → Solução única</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Controle de produção em tempo real!
                       </p>
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       Cada célula pode representar fluxo entre plataformas
                     </p>
                   </div>
@@ -2974,7 +2974,7 @@ export default function AulaMatrizesDeterminantes({
                   icone: "📌",
                   conteudo: (
                     <div className="space-y-4">
-                      <ol className="list-decimal list-inside space-y-2 text-sm">
+                      <ol className="list-decimal list-inside space-y-2 text-xl text-foreground/85 leading-relaxed">
                         <li>
                           <strong>Dimensão do produto A·B</strong>: (m×p)·(p×n)
                           = (m×n)
@@ -3010,34 +3010,34 @@ export default function AulaMatrizesDeterminantes({
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
-                          <p className="text-xs font-bold text-indigo-400 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-indigo-400 mb-2">
                             Inversão 2×2
                           </p>
-                          <p className="font-mono text-xs">
+                          <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                             A⁻¹ = (1/det)·[[d,−b],[−c,a]]
                           </p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-400 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-2">
                             Cramer
                           </p>
-                          <p className="font-mono text-xs">
+                          <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                             xᵢ = det(Aᵢ)/det(A)
                           </p>
                         </div>
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-400 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">
                             Cofator
                           </p>
-                          <p className="font-mono text-xs">
+                          <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                             Cᵢⱼ = (−1)^(i+j) · Mᵢⱼ
                           </p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-400 mb-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">
                             det Produto
                           </p>
-                          <p className="font-mono text-xs">
+                          <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                             det(A·B) = det(A)·det(B)
                           </p>
                         </div>
@@ -3050,7 +3050,7 @@ export default function AulaMatrizesDeterminantes({
                   icone: "⚠️",
                   conteudo: (
                     <div className="space-y-4">
-                      <ul className="space-y-2 text-sm list-disc list-inside">
+                      <ul className="space-y-2 text-xl list-disc list-inside text-foreground/85 leading-relaxed">
                         <li>det(2A) = 4·det(A) para 2×2 (não 2·det!)</li>
                         <li>Sarrus: apenas para 3×3, NUNCA para 4×4</li>
                         <li>A·B ≠ B·A — não comutativa!</li>
@@ -3076,10 +3076,10 @@ export default function AulaMatrizesDeterminantes({
                   icone: "🎯",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-semibold">
+                      <p className="text-xl font-semibold text-foreground/85 leading-relaxed">
                         Quando se depara com uma questão sobre matrizes:
                       </p>
-                      <div className="space-y-2 text-xs">
+                      <div className="space-y-2 text-lg text-foreground/85 leading-relaxed">
                         <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20">
                           <p className="font-bold text-blue-600">
                             ❶ Pergunta sobre produto A·B?
@@ -3130,12 +3130,12 @@ export default function AulaMatrizesDeterminantes({
                   icone: "⏱️",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>
                           Quanto tempo gastar em cada operação (em prova):
                         </strong>
                       </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-lg text-foreground/85 leading-relaxed">
                         <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20">
                           <p className="font-bold">Soma/Subtração (A±B)</p>
                           <p className="text-muted-foreground">
@@ -3165,7 +3165,7 @@ export default function AulaMatrizesDeterminantes({
                           <p className="text-muted-foreground">1-1.5 min</p>
                         </div>
                       </div>
-                      <p className="text-xs text-muted-foreground mt-2">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
                         💡 Se uma operação extrapolar o tempo, pule e volte
                         depois!
                       </p>
@@ -3177,11 +3177,11 @@ export default function AulaMatrizesDeterminantes({
                   icone: "✓",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-semibold">
+                      <p className="text-xl font-semibold text-foreground/85 leading-relaxed">
                         Antes de entrar na prova, certifique-se de que você
                         sabe:
                       </p>
-                      <div className="space-y-2 text-xs">
+                      <div className="space-y-2 text-lg text-foreground/85 leading-relaxed">
                         <div className="flex items-start gap-2">
                           <span className="font-bold text-blue-600">☐ 1.</span>
                           <p>Dimensão de produtos: (m×n)·(n×p) = ?</p>
@@ -3239,10 +3239,10 @@ export default function AulaMatrizesDeterminantes({
                   icone: "📚",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         <strong>Curiosidades para fixar o aprendizado:</strong>
                       </p>
-                      <ul className="space-y-2 text-xs">
+                      <ul className="space-y-2 text-lg text-foreground/85 leading-relaxed">
                         <li>
                           <strong>Gabriel Cramer (1704):</strong> Desenvolveu a
                           Regra de Cramer para resolver sistemas. Ainda é usado
@@ -3265,7 +3265,7 @@ export default function AulaMatrizesDeterminantes({
                           matrizes!
                         </li>
                       </ul>
-                      <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20 text-xs">
+                      <div className="p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20 text-lg text-foreground/85 leading-relaxed">
                         <p className="font-bold text-indigo-600">
                           Conexão com Petrobras:
                         </p>
@@ -3285,10 +3285,10 @@ export default function AulaMatrizesDeterminantes({
                   icone: "🎓",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm font-semibold">
+                      <p className="text-xl font-semibold text-foreground/85 leading-relaxed">
                         O que levar para a prova CESGRANRIO:
                       </p>
-                      <div className="space-y-2 text-xs">
+                      <div className="space-y-2 text-lg text-foreground/85 leading-relaxed">
                         <div className="p-2 bg-blue-500/5 rounded border border-blue-500/20">
                           <p className="font-bold">📝 Fórmulas essenciais</p>
                           <p className="text-muted-foreground">
@@ -3318,7 +3318,7 @@ export default function AulaMatrizesDeterminantes({
                           </p>
                         </div>
                       </div>
-                      <p className="text-xs text-muted-foreground mt-2 font-bold">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2 font-bold">
                         Boa prova! Você tem capacidade para acertar 80%+.
                         Confiança!
                       </p>
@@ -3390,19 +3390,19 @@ export default function AulaMatrizesDeterminantes({
                 title: "Pulo do Gato",
                 content: (
                   <div className="space-y-4 text-left">
-                    <p className="text-sm italic">
+                    <p className="text-xl italic text-foreground/85 leading-relaxed">
                       "Na hora da prova, sempre pergunte: det = 0?"
                     </p>
                     <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl font-mono text-center">
-                      <p className="text-sm">Se det = 0 → Sistema singular</p>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">Se det = 0 → Sistema singular</p>
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Se det ≠ 0 → Sistema tem solução única
                       </p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                         Resolve 70% das questões em 30 segundos!
                       </p>
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       Sarrus APENAS para 3×3. Para 4×4, Laplace!
                     </p>
                   </div>
@@ -3432,7 +3432,7 @@ export default function AulaMatrizesDeterminantes({
               <h2 className="text-2xl font-bold text-indigo-600">
                 🚀 Próximas Fronteiras em Álgebra Linear
               </h2>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                 Tópicos avançados para quem quer aprofundar além do currículo
                 CESGRANRIO:
               </p>
@@ -3443,7 +3443,7 @@ export default function AulaMatrizesDeterminantes({
                 <p className="font-bold text-blue-600">
                   Autovalores e Autovetores
                 </p>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                   Equação característica: det(A − λI) = 0. Essencial para
                   dinâmica de sistemas
                 </p>
@@ -3452,7 +3452,7 @@ export default function AulaMatrizesDeterminantes({
                 <p className="font-bold text-emerald-600">
                   Decomposição Espectral
                 </p>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                   Fatoração em autovalores e autovetores. Base para análise de
                   estabilidade
                 </p>
@@ -3461,19 +3461,19 @@ export default function AulaMatrizesDeterminantes({
                 <p className="font-bold text-purple-600">
                   Normas e Condicionamento
                 </p>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                   Medidas de magnitude e sensibilidade numérica de matrizes
                 </p>
               </div>
               <div className="p-4 bg-pink-500/5 rounded-xl border border-pink-500/20 space-y-2">
                 <p className="font-bold text-pink-600">Espaços Vetoriais</p>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                   Dimensão, base, subespaço. Fundação teórica da álgebra linear
                 </p>
               </div>
               <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20 space-y-2">
                 <p className="font-bold text-cyan-600">Projeções Ortogonais</p>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                   Mínimos quadrados, regressão linear. Aplicação em engenharia
                 </p>
               </div>
@@ -3481,24 +3481,24 @@ export default function AulaMatrizesDeterminantes({
                 <p className="font-bold text-orange-600">
                   Decomposição em Valores Singulares (SVD)
                 </p>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                   A = U·Σ·Vᵀ. Essencial em compressão de imagem e processamento
                 </p>
               </div>
             </div>
 
             <div className="p-4 bg-indigo-500/10 rounded-xl border border-indigo-500/30 space-y-2">
-              <p className="font-bold text-indigo-600 text-sm">
+              <p className="font-bold text-indigo-600 text-xl text-foreground/85 leading-relaxed">
                 💡 Qual é o próximo passo?
               </p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                 Se você domina matrizes e determinantes, está pronto para
                 Álgebra Linear I (universidade). Os conceitos aqui são a base
                 para análise de estabilidade em engenharia de petróleo — desde
                 simulações de reservatório até controle automático de
                 plataformas.
               </p>
-              <p className="text-xs font-mono text-muted-foreground mt-3">
+              <p className="text-lg text-foreground/85 leading-relaxed font-mono text-muted-foreground mt-3">
                 "Matrizes são a linguagem universal da engenharia moderna.
                 Dominar-as é dominar o futuro." — Prof. Algébrico
               </p>
@@ -3516,7 +3516,7 @@ export default function AulaMatrizesDeterminantes({
                 <p className="text-lg font-bold text-blue-600">
                   Definição & Notação
                 </p>
-                <ul className="space-y-1 text-xs list-disc list-inside text-muted-foreground">
+                <ul className="space-y-1 text-lg text-foreground/85 leading-relaxed list-disc list-inside text-muted-foreground">
                   <li>A = (aᵢⱼ)ₘₓₙ</li>
                   <li>Linha i, Coluna j</li>
                   <li>Dimensão m×n</li>
@@ -3526,7 +3526,7 @@ export default function AulaMatrizesDeterminantes({
 
               <div className="p-6 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-2xl border border-emerald-500/30 space-y-3">
                 <p className="text-lg font-bold text-emerald-600">Operações</p>
-                <ul className="space-y-1 text-xs list-disc list-inside text-muted-foreground">
+                <ul className="space-y-1 text-lg text-foreground/85 leading-relaxed list-disc list-inside text-muted-foreground">
                   <li>A + B (m×n iguais)</li>
                   <li>k·A (escalar)</li>
                   <li>A·B (n cols A = m rows B)</li>
@@ -3538,7 +3538,7 @@ export default function AulaMatrizesDeterminantes({
                 <p className="text-lg font-bold text-purple-600">
                   Determinante
                 </p>
-                <ul className="space-y-1 text-xs list-disc list-inside text-muted-foreground">
+                <ul className="space-y-1 text-lg text-foreground/85 leading-relaxed list-disc list-inside text-muted-foreground">
                   <li>2×2: ad−bc</li>
                   <li>3×3: Sarrus</li>
                   <li>n×n: Laplace</li>
@@ -3550,7 +3550,7 @@ export default function AulaMatrizesDeterminantes({
                 <p className="text-lg font-bold text-orange-600">
                   Tipos Especiais
                 </p>
-                <ul className="space-y-1 text-xs list-disc list-inside text-muted-foreground">
+                <ul className="space-y-1 text-lg text-foreground/85 leading-relaxed list-disc list-inside text-muted-foreground">
                   <li>Identidade (I)</li>
                   <li>Diagonal, Nula</li>
                   <li>Simétrica (A=Aᵀ)</li>
@@ -3560,7 +3560,7 @@ export default function AulaMatrizesDeterminantes({
 
               <div className="p-6 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-2xl border border-cyan-500/30 space-y-3">
                 <p className="text-lg font-bold text-cyan-600">Aplicações</p>
-                <ul className="space-y-1 text-xs list-disc list-inside text-muted-foreground">
+                <ul className="space-y-1 text-lg text-foreground/85 leading-relaxed list-disc list-inside text-muted-foreground">
                   <li>Sistemas AX=B</li>
                   <li>Cramer: xᵢ=det(Aᵢ)/det(A)</li>
                   <li>Inversa: A⁻¹</li>
@@ -3572,7 +3572,7 @@ export default function AulaMatrizesDeterminantes({
                 <p className="text-lg font-bold text-indigo-600">
                   Propriedades
                 </p>
-                <ul className="space-y-1 text-xs list-disc list-inside text-muted-foreground">
+                <ul className="space-y-1 text-lg text-foreground/85 leading-relaxed list-disc list-inside text-muted-foreground">
                   <li>(Aᵀ)ᵀ = A</li>
                   <li>det(A·B) = det(A)·det(B)</li>
                   <li>A·I = A</li>
@@ -3585,25 +3585,25 @@ export default function AulaMatrizesDeterminantes({
               <p className="text-center font-bold text-lg">
                 🎓 Parabéns por Completar Matrizes e Determinantes!
               </p>
-              <p className="text-xs text-muted-foreground text-center">
+              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground text-center">
                 Você agora domina um dos tópicos mais fundamentais da matemática
                 aplicada. Estes conceitos são a base para:
               </p>
               <div className="grid grid-cols-2 gap-2 mt-3">
-                <div className="text-xs text-muted-foreground p-2 bg-white/50 rounded">
+                <div className="text-lg text-foreground/85 leading-relaxed text-muted-foreground p-2 bg-white/50 rounded">
                   📐 Geometria Analítica
                 </div>
-                <div className="text-xs text-muted-foreground p-2 bg-white/50 rounded">
+                <div className="text-lg text-foreground/85 leading-relaxed text-muted-foreground p-2 bg-white/50 rounded">
                   📊 Análise Combinatória
                 </div>
-                <div className="text-xs text-muted-foreground p-2 bg-white/50 rounded">
+                <div className="text-lg text-foreground/85 leading-relaxed text-muted-foreground p-2 bg-white/50 rounded">
                   ⚙️ Engenharia
                 </div>
-                <div className="text-xs text-muted-foreground p-2 bg-white/50 rounded">
+                <div className="text-lg text-foreground/85 leading-relaxed text-muted-foreground p-2 bg-white/50 rounded">
                   🔬 Física
                 </div>
               </div>
-              <p className="text-xs font-mono text-center text-indigo-600 mt-3">
+              <p className="text-lg text-foreground/85 leading-relaxed font-mono text-center text-indigo-600 mt-3">
                 Score final: Especialista em Matrizes e Determinantes ✨
               </p>
             </div>

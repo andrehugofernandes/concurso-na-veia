@@ -535,13 +535,13 @@ export default function AulaProgressoesPa({
               title: "PA: Sempre Soma!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Na PA, cada termo é o anterior mais r. Simples assim!"
                   </p>
-                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>PA: (2, 5, 8, 11, ...)</p>
-                    <p className="text-xs text-muted-foreground">a₁ = 2</p>
-                    <p className="text-xs text-muted-foreground">r = 3</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">a₁ = 2</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">r = 3</p>
                   </div>
                 </div>
               ),
@@ -593,7 +593,7 @@ export default function AulaProgressoesPa({
                       </p>
                       <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20">
                         <p className="font-mono font-bold text-center text-emerald-700">aₙ = a₁ + (n-1)r</p>
-                        <div className="mt-4 space-y-2 text-sm">
+                        <div className="mt-4 space-y-2 text-xl text-foreground/85 leading-relaxed">
                           <p><strong>aₙ</strong> = termo procurado</p>
                           <p><strong>a₁</strong> = primeiro termo</p>
                           <p><strong>r</strong> = razão</p>
@@ -608,9 +608,9 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">Encontre o 10º termo de (3, 7, 11, ...):</p>
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Encontre o 10º termo de (3, 7, 11, ...):</p>
                       <div className="bg-emerald-500/10 p-4 rounded border border-emerald-500/20">
-                        <p className="font-mono text-sm text-center">a₁₀ = 3 + (10-1)×4 = 3 + 36 = 39</p>
+                        <p className="font-mono text-xl text-center text-foreground/85 leading-relaxed">a₁₀ = 3 + (10-1)×4 = 3 + 36 = 39</p>
                       </div>
                       <AlertBox tipo="success" titulo="Vantagem">
                         Sem a fórmula, teria que calcular: 3 → 7 → 11 → ... → 39
@@ -626,7 +626,7 @@ export default function AulaProgressoesPa({
                       <AlertBox tipo="warning" titulo="Atenção ao Expoente!">
                         O multiplicador de r é (n-1), NÃO n! Se procura o 5º termo, use 4r, não 5r.
                       </AlertBox>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Posição 1 → multiplicador 0 (a₁ = a₁ + 0×r = a₁)
                       </p>
                     </div>
@@ -638,16 +638,16 @@ export default function AulaProgressoesPa({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
-                        <p className="font-bold text-emerald-700 text-sm mb-1">r = 0: PA Constante</p>
-                        <p className="text-xs">aₙ = a₁ (todos os termos iguais)</p>
+                        <p className="font-bold text-emerald-700 text-xl mb-1 text-foreground/85 leading-relaxed">r = 0: PA Constante</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">aₙ = a₁ (todos os termos iguais)</p>
                       </div>
                       <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
-                        <p className="font-bold text-emerald-700 text-sm mb-1">r {'>'} 0: Crescente</p>
-                        <p className="text-xs">Termos aumentam progressivamente</p>
+                        <p className="font-bold text-emerald-700 text-xl mb-1 text-foreground/85 leading-relaxed">r {'>'} 0: Crescente</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Termos aumentam progressivamente</p>
                       </div>
                       <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
-                        <p className="font-bold text-emerald-700 text-sm mb-1">r {'<'} 0: Decrescente</p>
-                        <p className="text-xs">Termos diminuem progressivamente</p>
+                        <p className="font-bold text-emerald-700 text-xl mb-1 text-foreground/85 leading-relaxed">r {'<'} 0: Decrescente</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Termos diminuem progressivamente</p>
                       </div>
                     </div>
                   ),
@@ -731,12 +731,12 @@ export default function AulaProgressoesPa({
               title: "Termo Geral: aₙ = a₁ + (n-1)r!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Nunca calcule todos os termos. Use a fórmula!"
                   </p>
-                  <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>PA: (2, 5, 8, ...)</p>
-                    <p className="text-xs text-muted-foreground">a₁ = 2, r = 3</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">a₁ = 2, r = 3</p>
                     <p>a₂₀ = 2 + 19×3 = 59</p>
                   </div>
                 </div>
@@ -789,7 +789,7 @@ export default function AulaProgressoesPa({
                       </p>
                       <div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20">
                         <p className="font-mono font-bold text-center text-amber-700 mb-3">Sₙ = (a₁ + aₙ) × n / 2</p>
-                        <p className="text-sm mt-3">Ou alternativamente:</p>
+                        <p className="text-xl mt-3 text-foreground/85 leading-relaxed">Ou alternativamente:</p>
                         <p className="font-mono font-bold text-center text-amber-700 mt-2">Sₙ = n × [2a₁ + (n-1)r] / 2</p>
                       </div>
                     </div>
@@ -800,11 +800,11 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Calcule a soma dos 5 primeiros termos de (2, 5, 8, 11, 14):
                       </p>
                       <div className="bg-amber-500/10 p-4 rounded border border-amber-500/20">
-                        <p className="font-mono text-xs text-center">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed text-center">
                           a₁ = 2, a₅ = 14, n = 5
                           <br />
                           S₅ = (2 + 14) × 5 / 2
@@ -812,7 +812,7 @@ export default function AulaProgressoesPa({
                           S₅ = 16 × 5 / 2 = 40
                         </p>
                       </div>
-                      <p className="text-xs text-muted-foreground text-center">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground text-center">
                         Verificação: 2 + 5 + 8 + 11 + 14 = 40 ✓
                       </p>
                     </div>
@@ -837,16 +837,16 @@ export default function AulaProgressoesPa({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-amber-500/10 p-3 rounded border border-amber-500/20">
-                        <p className="font-bold text-amber-700 text-sm mb-1">
+                        <p className="font-bold text-amber-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           PA Constante (r = 0):
                         </p>
-                        <p className="text-xs">Sₙ = a₁ × n (apenas a₁ repetido n vezes)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Sₙ = a₁ × n (apenas a₁ repetido n vezes)</p>
                       </div>
                       <div className="bg-amber-500/10 p-3 rounded border border-amber-500/20">
-                        <p className="font-bold text-amber-700 text-sm mb-1">
+                        <p className="font-bold text-amber-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           n = 1:
                         </p>
-                        <p className="text-xs">S₁ = a₁ (apenas o primeiro termo)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">S₁ = a₁ (apenas o primeiro termo)</p>
                       </div>
                     </div>
                   ),
@@ -930,12 +930,12 @@ export default function AulaProgressoesPa({
               title: "Soma PA: (a₁+aₙ)n/2!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Soma de extremos, vezes n, dividido por 2. Fácil!"
                   </p>
-                  <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>PA: (1, 3, 5, 7, 9)</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       S₅ = (1 + 9) × 5/2
                     </p>
                     <p>= 50/2 = 25</p>
@@ -1001,11 +1001,11 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Na PA (2, 5, 8, 11, 14, 17, 20):
                       </p>
                       <div className="bg-cyan-500/10 p-4 rounded border border-cyan-500/20">
-                        <p className="font-mono text-xs text-center">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed text-center">
                           a₁ + a₇ = 2 + 20 = 22
                           <br />
                           a₂ + a₆ = 5 + 17 = 22
@@ -1024,11 +1024,11 @@ export default function AulaProgressoesPa({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="info" titulo="Três Termos em PA">
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Se a, b, c estão em PA, então <strong>b = (a + c) / 2</strong>
                         </p>
                       </AlertBox>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Ex: (3, 7, 11) → 7 = (3 + 11) / 2 = 7 ✓
                       </p>
                     </div>
@@ -1040,16 +1040,16 @@ export default function AulaProgressoesPa({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-cyan-500/10 p-3 rounded border border-cyan-500/20">
-                        <p className="font-bold text-cyan-700 text-sm mb-1">
+                        <p className="font-bold text-cyan-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           Número Ímpar de Termos:
                         </p>
-                        <p className="text-xs">Existe termo central, que é a média</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Existe termo central, que é a média</p>
                       </div>
                       <div className="bg-cyan-500/10 p-3 rounded border border-cyan-500/20">
-                        <p className="font-bold text-cyan-700 text-sm mb-1">
+                        <p className="font-bold text-cyan-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           Número Par de Termos:
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Não há termo central único, mas dois centrais
                         </p>
                       </div>
@@ -1135,14 +1135,14 @@ export default function AulaProgressoesPa({
               title: "Propriedade: Soma Simétrica!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Termos equidistantes: a₁+aₙ = a₂+aₙ₋₁ = etc."
                   </p>
-                  <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>PA: (1, 3, 5, 7, 9)</p>
-                    <p className="text-xs text-muted-foreground">1+9 = 10</p>
-                    <p className="text-xs text-muted-foreground">3+7 = 10</p>
-                    <p className="text-xs text-muted-foreground">5 = centro</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">1+9 = 10</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">3+7 = 10</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">5 = centro</p>
                   </div>
                 </div>
               ),
@@ -1193,7 +1193,7 @@ export default function AulaProgressoesPa({
                         Interpolar k termos entre a e b significa inserir k números para formar uma PA com a como primeiro e b como último:
                       </p>
                       <div className="bg-violet-500/10 p-4 rounded-xl border border-violet-500/20">
-                        <p className="text-sm mb-2">
+                        <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                           Se interpolamos k termos, a PA terá (k+2) termos.
                         </p>
                         <p className="font-mono font-bold text-center text-violet-700">
@@ -1208,11 +1208,11 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Interpole 3 termos entre 2 e 14:
                       </p>
                       <div className="bg-violet-500/10 p-4 rounded border border-violet-500/20">
-                        <p className="font-mono text-xs text-center">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed text-center">
                           a = 2, b = 14, k = 3
                           <br />
                           r = (14 - 2) / (3 + 1) = 12 / 4 = 3
@@ -1229,7 +1229,7 @@ export default function AulaProgressoesPa({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="info" titulo="Verifique">
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Conte os termos: deve ter k+2 no total. Verifique se último é de fato b.
                         </p>
                       </AlertBox>
@@ -1242,22 +1242,22 @@ export default function AulaProgressoesPa({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-violet-500/10 p-3 rounded border border-violet-500/20">
-                        <p className="font-bold text-violet-700 text-sm mb-1">
+                        <p className="font-bold text-violet-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           k = 0: Nenhum termo
                         </p>
-                        <p className="text-xs">PA tem apenas 2 termos (a e b)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">PA tem apenas 2 termos (a e b)</p>
                       </div>
                       <div className="bg-violet-500/10 p-3 rounded border border-violet-500/20">
-                        <p className="font-bold text-violet-700 text-sm mb-1">
+                        <p className="font-bold text-violet-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           a = b:
                         </p>
-                        <p className="text-xs">r = 0 (PA constante)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">r = 0 (PA constante)</p>
                       </div>
                       <div className="bg-violet-500/10 p-3 rounded border border-violet-500/20">
-                        <p className="font-bold text-violet-700 text-sm mb-1">
+                        <p className="font-bold text-violet-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           a &gt; b:
                         </p>
-                        <p className="text-xs">r será negativo (decrescente)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">r será negativo (decrescente)</p>
                       </div>
                     </div>
                   ),
@@ -1341,12 +1341,12 @@ export default function AulaProgressoesPa({
               title: "Interpolação: r = (b-a)/(k+1)!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Divida a diferença pelo número de 'passos' para encontrar r."
                   </p>
-                  <div className="p-3 bg-violet-500/10 border border-violet-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-violet-500/10 border border-violet-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>Interpole 4 entre 3 e 23</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       r = (23-3)/(4+1) = 20/5 = 4
                     </p>
                     <p>(3, 7, 11, 15, 19, 23)</p>
@@ -1400,10 +1400,10 @@ export default function AulaProgressoesPa({
                         Uma função afim f(x) = ax + b, quando restrita a n ∈ ℕ, gera uma PA:
                       </p>
                       <div className="bg-teal-500/10 p-4 rounded-xl border border-teal-500/20">
-                        <p className="text-sm mb-2">
+                        <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                           <strong>f(1), f(2), f(3), ... forma PA com razão a</strong>
                         </p>
-                        <p className="font-mono text-xs text-center">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed text-center">
                           f(1) = a + b = a₁
                           <br />
                           f(2) = 2a + b = a₂
@@ -1419,11 +1419,11 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         A função f(x) = 3x + 2 para x = 1, 2, 3, 4, ... gera:
                       </p>
                       <div className="bg-teal-500/10 p-4 rounded border border-teal-500/20">
-                        <p className="font-mono text-xs text-center">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed text-center">
                           f(1) = 5
                           <br />
                           f(2) = 8
@@ -1444,11 +1444,11 @@ export default function AulaProgressoesPa({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="info" titulo="Conexão Simples">
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Na função f(x) = ax + b, o coeficiente a é EXATAMENTE a razão r da PA!
                         </p>
                       </AlertBox>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Se f(x) = 5x - 3, a PA terá r = 5 e a₁ = f(1) = 2
                       </p>
                     </div>
@@ -1460,16 +1460,16 @@ export default function AulaProgressoesPa({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-teal-500/10 p-3 rounded border border-teal-500/20">
-                        <p className="font-bold text-teal-700 text-sm mb-1">
+                        <p className="font-bold text-teal-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           f(x) = ax² + bx + c:
                         </p>
-                        <p className="text-xs">Não gera PA (é quadrática)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Não gera PA (é quadrática)</p>
                       </div>
                       <div className="bg-teal-500/10 p-3 rounded border border-teal-500/20">
-                        <p className="font-bold text-teal-700 text-sm mb-1">
+                        <p className="font-bold text-teal-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           f(x) = a (constante):
                         </p>
-                        <p className="text-xs">Gera PA constante com r = 0</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Gera PA constante com r = 0</p>
                       </div>
                     </div>
                   ),
@@ -1553,12 +1553,12 @@ export default function AulaProgressoesPa({
               title: "PA = f(n) com f(x)=ax+b!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Função afim em naturais: PA com r = a (coef. angular)"
                   </p>
-                  <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>f(x) = 2x + 1</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       f(1)=3, f(2)=5, f(3)=7, ...
                     </p>
                     <p>PA: (3, 5, 7, ...) com r=2</p>
@@ -1612,7 +1612,7 @@ export default function AulaProgressoesPa({
                         Para resolver problemas com PA:
                       </p>
                       <div className="bg-indigo-500/10 p-4 rounded-xl border border-indigo-500/20">
-                        <ol className="text-sm space-y-2">
+                        <ol className="text-xl space-y-2 text-foreground/85 leading-relaxed">
                           <li>1. Identifique se é realmente PA (razão constante)</li>
                           <li>2. Encontre a₁ e r</li>
                           <li>3. Escreva aₙ usando a fórmula do termo geral</li>
@@ -1627,11 +1627,11 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Problema: "Uma empresa produz 100 peças no 1º dia, 105 no 2º, 110 no 3º, etc. Quantas peças em 30 dias? Quantas ao total?"
                       </p>
                       <div className="bg-indigo-500/10 p-4 rounded border border-indigo-500/20">
-                        <p className="text-xs font-mono text-center">
+                        <p className="text-lg text-foreground/85 leading-relaxed font-mono text-center">
                           a₁ = 100, r = 5, n = 30
                           <br />
                           a₃₀ = 100 + 29×5 = 245 peças (dia 30)
@@ -1659,10 +1659,10 @@ export default function AulaProgressoesPa({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-indigo-500/10 p-3 rounded border border-indigo-500/20">
-                        <p className="font-bold text-indigo-700 text-sm mb-1">
+                        <p className="font-bold text-indigo-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           r &lt; 0:
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Diminui. Cuidado: pode ficar negativa, exija a₁ &gt; (n-1)|r| se houver restrição física
                         </p>
                       </div>
@@ -1748,12 +1748,12 @@ export default function AulaProgressoesPa({
               title: "PA em Problema: 4 Passos!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Identifique → Fórmula → Calcule → Interprete"
                   </p>
-                  <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>Produza 100, 105, 110, ...</p>
-                    <p className="text-xs text-muted-foreground">PA com a₁=100, r=5</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">PA com a₁=100, r=5</p>
                     <p>Dia n: 100 + (n-1)×5</p>
                   </div>
                 </div>
@@ -1805,7 +1805,7 @@ export default function AulaProgressoesPa({
                         Às vezes você recebe 2+ informações simultâneas sobre uma PA e deve resolvê-las como sistema:
                       </p>
                       <div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20">
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Ex: "a₃ = 10 e a₇ = 22. Encontre a PA."
                           <br />
                           a₃ = a₁ + 2r = 10
@@ -1823,11 +1823,11 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         "Qual é o primeiro termo positivo de PA (-15, -10, -5, ...)?":
                       </p>
                       <div className="bg-rose-500/10 p-4 rounded border border-rose-500/20">
-                        <p className="text-xs font-mono text-center">
+                        <p className="text-lg text-foreground/85 leading-relaxed font-mono text-center">
                           aₙ = -15 + (n-1)×5 &gt; 0
                           <br />
                           -15 + 5n - 5 &gt; 0
@@ -1846,7 +1846,7 @@ export default function AulaProgressoesPa({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="info" titulo="Sempre Verifique">
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Substitua a₁ e r na fórmula e teste alguns termos. Confira se batem com o enunciado.
                         </p>
                       </AlertBox>
@@ -1859,18 +1859,18 @@ export default function AulaProgressoesPa({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-rose-500/10 p-3 rounded border border-rose-500/20">
-                        <p className="font-bold text-rose-700 text-sm mb-1">
+                        <p className="font-bold text-rose-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           Domínio Físico:
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Se PA representa quantidade, todos termos devem ser positivos
                         </p>
                       </div>
                       <div className="bg-rose-500/10 p-3 rounded border border-rose-500/20">
-                        <p className="font-bold text-rose-700 text-sm mb-1">
+                        <p className="font-bold text-rose-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           n Inteiro:
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Não existe "termo 2.5". Sempre n ∈ ℕ*
                         </p>
                       </div>
@@ -1956,12 +1956,12 @@ export default function AulaProgressoesPa({
               title: "Desafios: Sistema de Equações!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "2+ informações → monte 2+ equações com a₁ e r"
                   </p>
-                  <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>a₂ = 5 e a₅ = 14</p>
-                    <p className="text-xs text-muted-foreground">↓ sistema ↓</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">↓ sistema ↓</p>
                     <p>a₁ + r = 5</p>
                     <p>a₁ + 4r = 14</p>
                   </div>
@@ -2014,7 +2014,7 @@ export default function AulaProgressoesPa({
                         Cronogramas de projetos frequentemente seguem PA:
                       </p>
                       <div className="bg-orange-500/10 p-4 rounded-xl border border-orange-500/20">
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           <strong>Exemplo</strong>: Exploração de poço fase 1, 2, 3, ...
                           <br />
                           Semana 1: 10 operários
@@ -2034,18 +2034,18 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-xl text-foreground/85 leading-relaxed">
                         Equipamento com depreciação linear:
                       </p>
                       <div className="bg-orange-500/10 p-4 rounded border border-orange-500/20">
-                        <p className="text-sm mb-2">
+                        <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                           <strong>Valor inicial</strong>: R$ 100.000
                           <br />
                           <strong>Depreciação/ano</strong>: R$ 10.000
                           <br />
                           <strong>Ano n</strong>: 100.000 - (n-1)×10.000
                         </p>
-                        <p className="font-mono text-xs text-center mt-2">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed text-center mt-2">
                           Ano 1: 100k, Ano 2: 90k, ..., Ano 10: 10k
                         </p>
                       </div>
@@ -2058,7 +2058,7 @@ export default function AulaProgressoesPa({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="info" titulo="Otimização">
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Se restrição é PA, otimize testando extremos (primeiros/últimos termos viáveis).
                         </p>
                       </AlertBox>
@@ -2071,18 +2071,18 @@ export default function AulaProgressoesPa({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-orange-500/10 p-3 rounded border border-orange-500/20">
-                        <p className="font-bold text-orange-700 text-sm mb-1">
+                        <p className="font-bold text-orange-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           Limite Mínimo/Máximo:
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           PA pode não continuar indefinidamente (recursos finitos)
                         </p>
                       </div>
                       <div className="bg-orange-500/10 p-3 rounded border border-orange-500/20">
-                        <p className="font-bold text-orange-700 text-sm mb-1">
+                        <p className="font-bold text-orange-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           Arredondamento:
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Valores reais são sempre inteiros (operários, peças, etc.)
                         </p>
                       </div>
@@ -2168,12 +2168,12 @@ export default function AulaProgressoesPa({
               title: "Petrobras: PA em Cronogramas!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Aumento/redução linear ao longo do tempo = PA"
                   </p>
-                  <div className="p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>Semanistas: 100, 110, 120, ...</p>
-                    <p className="text-xs text-muted-foreground">a₁=100, r=10</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">a₁=100, r=10</p>
                     <p>Semana n: 100 + (n-1)×10</p>
                   </div>
                 </div>

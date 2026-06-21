@@ -202,9 +202,9 @@ export default function AulaProgressoesPg({
                       </p>
                       <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20">
                         <p className="font-bold text-blue-700 mb-2">PG: a₁, a₂, a₃, ...</p>
-                        <p className="text-sm">a₂ = a₁ × q</p>
-                        <p className="text-sm">a₃ = a₂ × q = a₁ × q²</p>
-                        <p className="text-sm">aₙ = a₁ × q^(n-1)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">a₂ = a₁ × q</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">a₃ = a₂ × q = a₁ × q²</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">aₙ = a₁ × q^(n-1)</p>
                       </div>
                     </div>
                   ),
@@ -214,19 +214,19 @@ export default function AulaProgressoesPg({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">Veja PGs em contextos reais:</p>
+                      <p className="text-muted-foreground text-xl text-foreground/85 leading-relaxed">Veja PGs em contextos reais:</p>
                       <div className="space-y-2">
                         <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
-                          <p className="font-bold text-blue-700 text-sm">Crescimento: (2, 4, 8, 16, ...)</p>
-                          <p className="text-xs">a₁ = 2, q = 2 (duplica)</p>
+                          <p className="font-bold text-blue-700 text-xl text-foreground/85 leading-relaxed">Crescimento: (2, 4, 8, 16, ...)</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">a₁ = 2, q = 2 (duplica)</p>
                         </div>
                         <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
-                          <p className="font-bold text-blue-700 text-sm">Decaimento: (100, 50, 25, 12.5, ...)</p>
-                          <p className="text-xs">a₁ = 100, q = 0.5 (metade)</p>
+                          <p className="font-bold text-blue-700 text-xl text-foreground/85 leading-relaxed">Decaimento: (100, 50, 25, 12.5, ...)</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">a₁ = 100, q = 0.5 (metade)</p>
                         </div>
                         <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
-                          <p className="font-bold text-blue-700 text-sm">Negativos: (1, -2, 4, -8, ...)</p>
-                          <p className="text-xs">a₁ = 1, q = -2 (alternado)</p>
+                          <p className="font-bold text-blue-700 text-xl text-foreground/85 leading-relaxed">Negativos: (1, -2, 4, -8, ...)</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">a₁ = 1, q = -2 (alternado)</p>
                         </div>
                       </div>
                     </div>
@@ -238,11 +238,11 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="info" titulo="Teste da Razão">
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Divida dois termos consecutivos. Se o resultado é sempre o mesmo, é PG!
                         </p>
                       </AlertBox>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Sequência (3, 6, 12, 24): 6/3 = 2, 12/6 = 2, 24/12 = 2 ✓ É PG com q = 2
                       </p>
                     </div>
@@ -254,16 +254,16 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
-                        <p className="font-bold text-blue-700 text-sm mb-1">PG Constante: q = 1</p>
-                        <p className="text-xs">(5, 5, 5, ...) todos iguais</p>
+                        <p className="font-bold text-blue-700 text-xl mb-1 text-foreground/85 leading-relaxed">PG Constante: q = 1</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">(5, 5, 5, ...) todos iguais</p>
                       </div>
                       <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
-                        <p className="font-bold text-blue-700 text-sm mb-1">PG Nula: a₁ = 0</p>
-                        <p className="text-xs">(0, 0, 0, ...) todos zero</p>
+                        <p className="font-bold text-blue-700 text-xl mb-1 text-foreground/85 leading-relaxed">PG Nula: a₁ = 0</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">(0, 0, 0, ...) todos zero</p>
                       </div>
                       <div className="bg-blue-500/10 p-3 rounded border border-blue-500/20">
-                        <p className="font-bold text-blue-700 text-sm mb-1">q Negativo: q &lt; 0</p>
-                        <p className="text-xs">Termos alternam de sinal</p>
+                        <p className="font-bold text-blue-700 text-xl mb-1 text-foreground/85 leading-relaxed">q Negativo: q &lt; 0</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Termos alternam de sinal</p>
                       </div>
                     </div>
                   ),
@@ -347,13 +347,13 @@ export default function AulaProgressoesPg({
               title: "PG: Sempre Multiplica!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Na PG, cada termo é o anterior vezes q. Simples assim!"
                   </p>
-                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>PG: (2, 6, 18, 54, ...)</p>
-                    <p className="text-xs text-muted-foreground">a₁ = 2</p>
-                    <p className="text-xs text-muted-foreground">q = 3</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">a₁ = 2</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">q = 3</p>
                   </div>
                 </div>
               ),
@@ -405,7 +405,7 @@ export default function AulaProgressoesPg({
                       </p>
                       <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20">
                         <p className="font-mono font-bold text-center text-emerald-700">aₙ = a₁ × q^(n-1)</p>
-                        <div className="mt-4 space-y-2 text-sm">
+                        <div className="mt-4 space-y-2 text-xl text-foreground/85 leading-relaxed">
                           <p><strong>aₙ</strong> = termo procurado</p>
                           <p><strong>a₁</strong> = primeiro termo</p>
                           <p><strong>q</strong> = razão</p>
@@ -420,9 +420,9 @@ export default function AulaProgressoesPg({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">Encontre o 5º termo de (2, 6, 18, ...):</p>
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Encontre o 5º termo de (2, 6, 18, ...):</p>
                       <div className="bg-emerald-500/10 p-4 rounded border border-emerald-500/20">
-                        <p className="font-mono text-sm text-center">a₅ = 2 × 3^(5-1) = 2 × 3⁴ = 2 × 81 = 162</p>
+                        <p className="font-mono text-xl text-center text-foreground/85 leading-relaxed">a₅ = 2 × 3^(5-1) = 2 × 3⁴ = 2 × 81 = 162</p>
                       </div>
                       <AlertBox tipo="success" titulo="Vantagem">
                         Sem a fórmula, teria que calcular: 2 → 6 → 18 → 54 → 162
@@ -438,7 +438,7 @@ export default function AulaProgressoesPg({
                       <AlertBox tipo="warning" titulo="Atenção ao Expoente!">
                         O expoente é (n-1), NÃO n! Se procura o 5º termo, use q⁴, não q⁵.
                       </AlertBox>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Posição 1 → expoente 0 (a₁ = a₁ × q⁰ = a₁)
                       </p>
                     </div>
@@ -450,16 +450,16 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
-                        <p className="font-bold text-emerald-700 text-sm mb-1">q = 1: PG Constante</p>
-                        <p className="text-xs">aₙ = a₁ (todos os termos iguais)</p>
+                        <p className="font-bold text-emerald-700 text-xl mb-1 text-foreground/85 leading-relaxed">q = 1: PG Constante</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">aₙ = a₁ (todos os termos iguais)</p>
                       </div>
                       <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
-                        <p className="font-bold text-emerald-700 text-sm mb-1">0 {'<'} q {'<'} 1: Decaimento</p>
-                        <p className="text-xs">Termos diminuem (mais lentamente)</p>
+                        <p className="font-bold text-emerald-700 text-xl mb-1 text-foreground/85 leading-relaxed">0 {'<'} q {'<'} 1: Decaimento</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Termos diminuem (mais lentamente)</p>
                       </div>
                       <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
-                        <p className="font-bold text-emerald-700 text-sm mb-1">q {'<'} 0: Alternado</p>
-                        <p className="text-xs">Sinais alternados, módulo aumenta</p>
+                        <p className="font-bold text-emerald-700 text-xl mb-1 text-foreground/85 leading-relaxed">q {'<'} 0: Alternado</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Sinais alternados, módulo aumenta</p>
                       </div>
                     </div>
                   ),
@@ -543,12 +543,12 @@ export default function AulaProgressoesPg({
               title: "Termo Geral: aₙ = a₁ × q^(n-1)!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Nunca calcule todos os termos. Use a fórmula!"
                   </p>
-                  <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>PG: (3, 6, 12, ...)</p>
-                    <p className="text-xs text-muted-foreground">a₁ = 3, q = 2</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">a₁ = 3, q = 2</p>
                     <p>a₁₀ = 3 × 2⁹ = 1536</p>
                   </div>
                 </div>
@@ -601,10 +601,10 @@ export default function AulaProgressoesPg({
                       </p>
                       <div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20">
                         <p className="font-mono font-bold text-center text-amber-700 mb-3">Sₙ = a₁ × (1 - q^n) / (1 - q)</p>
-                        <p className="text-xs text-muted-foreground text-center">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground text-center">
                           (válida quando q ≠ 1)
                         </p>
-                        <p className="text-sm mt-3">Se q = 1: Sₙ = a₁ × n</p>
+                        <p className="text-xl mt-3 text-foreground/85 leading-relaxed">Se q = 1: Sₙ = a₁ × n</p>
                       </div>
                     </div>
                   ),
@@ -614,11 +614,11 @@ export default function AulaProgressoesPg({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Calcule a soma dos 4 primeiros termos de (2, 6, 18, 54):
                       </p>
                       <div className="bg-amber-500/10 p-4 rounded border border-amber-500/20">
-                        <p className="font-mono text-xs text-center">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed text-center">
                           a₁ = 2, q = 3, n = 4
                           <br />
                           S₄ = 2 × (1 - 3⁴) / (1 - 3)
@@ -628,7 +628,7 @@ export default function AulaProgressoesPg({
                           S₄ = 2 × (-80) / (-2) = 80
                         </p>
                       </div>
-                      <p className="text-xs text-muted-foreground text-center">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground text-center">
                         Verificação: 2 + 6 + 18 + 54 = 80 ✓
                       </p>
                     </div>
@@ -642,7 +642,7 @@ export default function AulaProgressoesPg({
                       <AlertBox tipo="warning" titulo="Cuidado com o Sinal">
                         Se q &gt; 1, (1 - q^n) é negativo. (1 - q) também é negativo. Negativo ÷ negativo = positivo!
                       </AlertBox>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Sempre simplifique antes de calcular potências grandes.
                       </p>
                     </div>
@@ -654,14 +654,14 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-amber-500/10 p-3 rounded border border-amber-500/20">
-                        <p className="font-bold text-amber-700 text-sm mb-1">
+                        <p className="font-bold text-amber-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           PG Constante (q = 1):
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Fórmula de denominador zero não aplica.
                         </p>
-                        <p className="text-xs mt-2 font-mono">Sₙ = a₁ × n</p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-2 font-mono">Sₙ = a₁ × n</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                           Ex: (5, 5, 5, 5) → S₄ = 5 × 4 = 20
                         </p>
                       </div>
@@ -747,12 +747,12 @@ export default function AulaProgressoesPg({
               title: "Soma Finita: Fórmula de Ouro!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Não some manualmente! Use Sₙ = a₁(1-q^n)/(1-q)"
                   </p>
-                  <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>PG: (1, 2, 4, 8, ...)</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       S₆ = 1 × (1-2⁶)/(1-2)
                     </p>
                     <p>= (1-64)/(-1) = 63</p>
@@ -807,10 +807,10 @@ export default function AulaProgressoesPg({
                       </p>
                       <div className="bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/20">
                         <p className="font-mono font-bold text-center text-cyan-700 mb-3">S∞ = a₁ / (1 - q)</p>
-                        <p className="text-sm mt-3">
+                        <p className="text-xl mt-3 text-foreground/85 leading-relaxed">
                           <strong>Válida somente se |q| {'<'} 1</strong>
                         </p>
-                        <p className="text-xs text-muted-foreground mt-2">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
                           Se |q| ≥ 1, a série diverge (não converge).
                         </p>
                       </div>
@@ -822,11 +822,11 @@ export default function AulaProgressoesPg({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Calcule a soma infinita de (1, 1/2, 1/4, 1/8, ...):
                       </p>
                       <div className="bg-cyan-500/10 p-4 rounded border border-cyan-500/20">
-                        <p className="font-mono text-xs text-center">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed text-center">
                           a₁ = 1, q = 1/2 (|q| = 0.5 {'<'} 1 ✓)
                           <br />
                           S∞ = 1 / (1 - 1/2) = 1 / (1/2) = 2
@@ -844,16 +844,16 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-cyan-500/10 p-3 rounded border border-cyan-500/20">
-                        <p className="font-bold text-cyan-700 text-sm mb-1">
+                        <p className="font-bold text-cyan-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           |q| {'<'} 1: CONVERGE
                         </p>
-                        <p className="text-xs">Série tem soma finita</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Série tem soma finita</p>
                       </div>
                       <div className="bg-cyan-500/10 p-3 rounded border border-cyan-500/20">
-                        <p className="font-bold text-cyan-700 text-sm mb-1">
+                        <p className="font-bold text-cyan-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           |q| ≥ 1: DIVERGE
                         </p>
-                        <p className="text-xs">Série não tem soma (ou é infinita)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Série não tem soma (ou é infinita)</p>
                       </div>
                     </div>
                   ),
@@ -864,22 +864,22 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-cyan-500/10 p-3 rounded border border-cyan-500/20">
-                        <p className="font-bold text-cyan-700 text-sm mb-1">
+                        <p className="font-bold text-cyan-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           a₁ = 0:
                         </p>
-                        <p className="text-xs">S∞ = 0 (série nula)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">S∞ = 0 (série nula)</p>
                       </div>
                       <div className="bg-cyan-500/10 p-3 rounded border border-cyan-500/20">
-                        <p className="font-bold text-cyan-700 text-sm mb-1">
+                        <p className="font-bold text-cyan-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           q = 0:
                         </p>
-                        <p className="text-xs">S∞ = a₁ (apenas 1º termo)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">S∞ = a₁ (apenas 1º termo)</p>
                       </div>
                       <div className="bg-cyan-500/10 p-3 rounded border border-cyan-500/20">
-                        <p className="font-bold text-cyan-700 text-sm mb-1">
+                        <p className="font-bold text-cyan-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           q negativo:
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Converge se -1 &lt; q &lt; 1, mesmo com sinais alternados
                         </p>
                       </div>
@@ -965,12 +965,12 @@ export default function AulaProgressoesPg({
               title: "Série Infinita: Só se |q| < 1!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Infinitos termos podem somar finito se a razão for bem pequena."
                   </p>
-                  <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>Série: 1 + 0.1 + 0.01 + 0.001 + ...</p>
-                    <p className="text-xs text-muted-foreground">a₁=1, q=0.1</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">a₁=1, q=0.1</p>
                     <p>S∞ = 1/(1-0.1) = 1/0.9 = 10/9</p>
                   </div>
                 </div>
@@ -1034,11 +1034,11 @@ export default function AulaProgressoesPg({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Na PG (2, 4, 8, 16, 32, 64):
                       </p>
                       <div className="bg-violet-500/10 p-4 rounded border border-violet-500/20">
-                        <p className="font-mono text-xs text-center">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed text-center">
                           a₁ × a₆ = 2 × 64 = 128
                           <br />
                           a₂ × a₅ = 4 × 32 = 128
@@ -1055,11 +1055,11 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="info" titulo="Três Termos em PG">
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Se a, b, c estão em PG, então <strong>b² = a × c</strong>
                         </p>
                       </AlertBox>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Ex: (3, 6, 12) → 6² = 36 = 3 × 12 ✓
                       </p>
                     </div>
@@ -1071,18 +1071,18 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-violet-500/10 p-3 rounded border border-violet-500/20">
-                        <p className="font-bold text-violet-700 text-sm mb-1">
+                        <p className="font-bold text-violet-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           Razão Negativa (q &lt; 0):
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Termos alternando positivo e negativo. Produto segue padrão.
                         </p>
                       </div>
                       <div className="bg-violet-500/10 p-3 rounded border border-violet-500/20">
-                        <p className="font-bold text-violet-700 text-sm mb-1">
+                        <p className="font-bold text-violet-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           Simetria:
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Número ímpar de termos: termo central é a raiz do produto
                         </p>
                       </div>
@@ -1168,14 +1168,14 @@ export default function AulaProgressoesPg({
               title: "Propriedade: Produto Simétrico!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Termos equidistantes: a₁×aₙ = a₂×aₙ₋₁ = etc."
                   </p>
-                  <div className="p-3 bg-violet-500/10 border border-violet-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-violet-500/10 border border-violet-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>PG: (1, 2, 4, 8, 16)</p>
-                    <p className="text-xs text-muted-foreground">1×16 = 16</p>
-                    <p className="text-xs text-muted-foreground">2×8 = 16</p>
-                    <p className="text-xs text-muted-foreground">4×4 = 16</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">1×16 = 16</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">2×8 = 16</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">4×4 = 16</p>
                   </div>
                 </div>
               ),
@@ -1226,14 +1226,14 @@ export default function AulaProgressoesPg({
                         Quando algo cresce multiplicando por uma constante &gt; 1 cada período:
                       </p>
                       <div className="bg-teal-500/10 p-4 rounded-xl border border-teal-500/20">
-                        <p className="text-sm mb-2">
+                        <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                           <strong>População</strong>: dobra a cada ano
                         </p>
-                        <p className="font-mono text-xs">P₀, 2P₀, 4P₀, 8P₀, ... (q=2)</p>
-                        <p className="text-sm mt-3">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed">P₀, 2P₀, 4P₀, 8P₀, ... (q=2)</p>
+                        <p className="text-xl mt-3 text-foreground/85 leading-relaxed">
                           <strong>Investimento</strong>: cresce 10% ao ano
                         </p>
-                        <p className="font-mono text-xs">M₀, 1.1M₀, 1.21M₀, ... (q=1.1)</p>
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed">M₀, 1.1M₀, 1.21M₀, ... (q=1.1)</p>
                       </div>
                     </div>
                   ),
@@ -1243,20 +1243,20 @@ export default function AulaProgressoesPg({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-xl text-foreground/85 leading-relaxed">
                         Quando algo decresce multiplicando por constante &lt; 1 cada período:
                       </p>
                       <div className="bg-teal-500/10 p-4 rounded border border-teal-500/20">
-                        <p className="text-sm mb-2">
+                        <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                           <strong>Radioatividade</strong>: meia-vida
                         </p>
-                        <p className="font-mono text-xs">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                           M₀, M₀/2, M₀/4, M₀/8, ... (q=0.5)
                         </p>
-                        <p className="text-sm mt-3">
+                        <p className="text-xl mt-3 text-foreground/85 leading-relaxed">
                           <strong>Depreciação</strong>: perde 20% ao ano
                         </p>
-                        <p className="font-mono text-xs">V₀, 0.8V₀, 0.64V₀, ... (q=0.8)</p>
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed">V₀, 0.8V₀, 0.64V₀, ... (q=0.8)</p>
                       </div>
                     </div>
                   ),
@@ -1271,7 +1271,7 @@ export default function AulaProgressoesPg({
                         <br />
                         Se decresce x% ao ano: q = 1 - x/100
                       </AlertBox>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Ex: +25% ao ano → q = 1.25; -10% ao ano → q = 0.9
                       </p>
                     </div>
@@ -1283,18 +1283,18 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-teal-500/10 p-3 rounded border border-teal-500/20">
-                        <p className="font-bold text-teal-700 text-sm mb-1">
+                        <p className="font-bold text-teal-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           Meia-Vida:
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Tempo necessário para quantidade reduzir à metade
                         </p>
                       </div>
                       <div className="bg-teal-500/10 p-3 rounded border border-teal-500/20">
-                        <p className="font-bold text-teal-700 text-sm mb-1">
+                        <p className="font-bold text-teal-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           Período Composto:
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Se taxa é anual, mas período é mensal, ajuste q
                         </p>
                       </div>
@@ -1380,12 +1380,12 @@ export default function AulaProgressoesPg({
               title: "Exponencial: Rápido!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Crescimento/decaimento sempre por multiplicação constante q"
                   </p>
-                  <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>População dobra/ano</p>
-                    <p className="text-xs text-muted-foreground">a₁ = 100, q = 2</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">a₁ = 100, q = 2</p>
                     <p>Ano 5: 100 × 2⁴ = 1600</p>
                   </div>
                 </div>
@@ -1440,7 +1440,7 @@ export default function AulaProgressoesPg({
                         <p className="font-mono font-bold text-center text-indigo-700 mb-2">
                           M = C × (1 + i)^t
                         </p>
-                        <p className="text-sm mt-2">
+                        <p className="text-xl mt-2 text-foreground/85 leading-relaxed">
                           <strong>M</strong> = montante final
                           <br />
                           <strong>C</strong> = capital inicial
@@ -1458,17 +1458,17 @@ export default function AulaProgressoesPg({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         R$ 1000 aplicado a 10% ao ano por 3 anos:
                       </p>
                       <div className="bg-indigo-500/10 p-4 rounded border border-indigo-500/20">
-                        <p className="font-mono text-xs text-center">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed text-center">
                           M = 1000 × (1.1)³
                           <br />
                           M = 1000 × 1.331 = R$ 1.331
                         </p>
                       </div>
-                      <p className="text-xs text-muted-foreground text-center">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground text-center">
                         Cronograma: 1000 → 1100 → 1210 → 1331 (PG com q=1.1)
                       </p>
                     </div>
@@ -1480,11 +1480,11 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="info" titulo="Financiamento">
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Prestações iguais com juros formam uma série PG. Soma finita resolve!
                         </p>
                       </AlertBox>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Prestação P, taxa i: VP = P × [1-(1+i)^-n] / i
                       </p>
                     </div>
@@ -1496,18 +1496,18 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-indigo-500/10 p-3 rounded border border-indigo-500/20">
-                        <p className="font-bold text-indigo-700 text-sm mb-1">
+                        <p className="font-bold text-indigo-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           Taxa Nominal vs Efetiva:
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Anual com capitalização mensal exige ajuste de taxa
                         </p>
                       </div>
                       <div className="bg-indigo-500/10 p-3 rounded border border-indigo-500/20">
-                        <p className="font-bold text-indigo-700 text-sm mb-1">
+                        <p className="font-bold text-indigo-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           Inflação Acumulada:
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Produto de inflações mensais forma PG
                         </p>
                       </div>
@@ -1593,13 +1593,13 @@ export default function AulaProgressoesPg({
               title: "Finanças: PG do Montante!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Juros compostos: cada período multiplica por (1+i)"
                   </p>
-                  <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>R$ 1000, taxa 5%/ano, 4 anos</p>
-                    <p className="text-xs text-muted-foreground">a₁ = 1000</p>
-                    <p className="text-xs text-muted-foreground">q = 1.05</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">a₁ = 1000</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">q = 1.05</p>
                     <p>M₄ = 1000 × 1.05⁴ ≈ 1216</p>
                   </div>
                 </div>
@@ -1652,13 +1652,13 @@ export default function AulaProgressoesPg({
                       </p>
                       <div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20">
                         <p className="font-bold text-rose-700 mb-2">PA (Aritmética)</p>
-                        <p className="font-mono text-sm">aₙ = a₁ + (n-1)r</p>
-                        <p className="text-xs mt-2">Adição constante r</p>
+                        <p className="font-mono text-xl text-foreground/85 leading-relaxed">aₙ = a₁ + (n-1)r</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-2">Adição constante r</p>
                       </div>
                       <div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20">
                         <p className="font-bold text-rose-700 mb-2">PG (Geométrica)</p>
-                        <p className="font-mono text-sm">aₙ = a₁ × q^(n-1)</p>
-                        <p className="text-xs mt-2">Multiplicação constante q</p>
+                        <p className="font-mono text-xl text-foreground/85 leading-relaxed">aₙ = a₁ × q^(n-1)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-2">Multiplicação constante q</p>
                       </div>
                     </div>
                   ),
@@ -1668,13 +1668,13 @@ export default function AulaProgressoesPg({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         PA (1, 3, 5, 7, ...): cresce por +2
                         <br />
                         PG (2, 4, 8, 16, ...): cresce por ×2
                       </p>
                       <div className="bg-rose-500/10 p-4 rounded border border-rose-500/20">
-                        <p className="font-mono text-xs text-center">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed text-center">
                           n=10:
                           <br />
                           PA: 1 + 9×2 = 19 (cresce lentamente)
@@ -1691,11 +1691,11 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-3">
                       <AlertBox tipo="info" titulo="Teste Rápido">
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Divida dois termos: se razão é constante = PG. Subtraia: se diferença é constante = PA.
                         </p>
                       </AlertBox>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         (10, 20, 30, 40): PA (r=10) | (10, 20, 40, 80): PG (q=2)
                       </p>
                     </div>
@@ -1707,16 +1707,16 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-rose-500/10 p-3 rounded border border-rose-500/20">
-                        <p className="font-bold text-rose-700 text-sm mb-1">
+                        <p className="font-bold text-rose-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           Sequência Constante:
                         </p>
-                        <p className="text-xs">PA com r=0 E PG com q=1</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">PA com r=0 E PG com q=1</p>
                       </div>
                       <div className="bg-rose-500/10 p-3 rounded border border-rose-500/20">
-                        <p className="font-bold text-rose-700 text-sm mb-1">
+                        <p className="font-bold text-rose-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           Justaposição:
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Uma sequência pode ser PA de certos termos e PG de outros
                         </p>
                       </div>
@@ -1802,12 +1802,12 @@ export default function AulaProgressoesPg({
               title: "PA vs PG: Operações Diferentes!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "PA soma, PG multiplica. Exponencial sempre vence no fim."
                   </p>
-                  <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>PA: 1,2,3,4,5 (n=100 → 100)</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
                       vs
                     </p>
                     <p>PG: 1,2,4,8,16 (n=10 → 512)</p>
@@ -1861,10 +1861,10 @@ export default function AulaProgressoesPg({
                         Na Petrobras, a produção frequentemente cresce em percentual fixo ao ano:
                       </p>
                       <div className="bg-orange-500/10 p-4 rounded-xl border border-orange-500/20">
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           <strong>Exemplo</strong>: Campo aumenta produção 15% ao ano
                         </p>
-                        <p className="font-mono text-xs mt-2">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed mt-2">
                           P₀ = 1000 barris/dia
                           <br />
                           P₁ = 1150, P₂ = 1323, P₃ = 1521, ...
@@ -1880,14 +1880,14 @@ export default function AulaProgressoesPg({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-xl text-foreground/85 leading-relaxed">
                         Reserva diminui conforme poços são drenados:
                       </p>
                       <div className="bg-orange-500/10 p-4 rounded border border-orange-500/20">
-                        <p className="text-sm mb-2">
+                        <p className="text-xl mb-2 text-foreground/85 leading-relaxed">
                           <strong>Meia-vida de poço</strong>: 10 anos
                         </p>
-                        <p className="font-mono text-xs">
+                        <p className="font-mono text-lg text-foreground/85 leading-relaxed">
                           R₀ = 500M barris
                           <br />
                           A cada 10 anos: ÷2
@@ -1906,11 +1906,11 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-4">
                       <AlertBox tipo="info" titulo="Decisões Corporativas">
-                        <p className="text-sm">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Quanto investir em exploração futura considerando crescimento projetado (PG)?
                         </p>
                       </AlertBox>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Usa-se Sₙ para calcular produção total acumulada em 5 anos, por exemplo.
                       </p>
                     </div>
@@ -1922,18 +1922,18 @@ export default function AulaProgressoesPg({
                   conteudo: (
                     <div className="space-y-3">
                       <div className="bg-orange-500/10 p-3 rounded border border-orange-500/20">
-                        <p className="font-bold text-orange-700 text-sm mb-1">
+                        <p className="font-bold text-orange-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           Preço do Barril:
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Não segue PG (mercado volátil). Usa-se projeções
                         </p>
                       </div>
                       <div className="bg-orange-500/10 p-3 rounded border border-orange-500/20">
-                        <p className="font-bold text-orange-700 text-sm mb-1">
+                        <p className="font-bold text-orange-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           Taxa de Câmbio:
                         </p>
-                        <p className="text-xs">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Afeta receitas em real. Modelado separadamente
                         </p>
                       </div>
@@ -2019,12 +2019,12 @@ export default function AulaProgressoesPg({
               title: "Petrobras: PG de Produção!",
               content: (
                 <div className="space-y-3 text-left">
-                  <p className="text-sm italic">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">
                     "Crescimento percentual fixo = PG. Perfeito para projeções."
                   </p>
-                  <div className="p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg font-mono text-xs text-center">
+                  <div className="p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>Produção cresce 10%/ano</p>
-                    <p className="text-xs text-muted-foreground">Inicial: 1M bbl/dia</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Inicial: 1M bbl/dia</p>
                     <p>Ano 5: 1M × 1.1⁵ ≈ 1.61M</p>
                   </div>
                 </div>

@@ -156,8 +156,8 @@ export default function AulaMatematicaFinanceira({
                         Em juros simples, os juros incidem <strong>sempre sobre o capital inicial (C)</strong>, independentemente do tempo. O montante cresce de forma <strong>linear</strong>.
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-mono text-center font-bold">J = C · i · t</p>
-                        <div className="grid grid-cols-3 gap-2 text-xs text-center mt-2">
+                        <p className="text-xl font-mono text-center font-bold text-foreground/85 leading-relaxed">J = C · i · t</p>
+                        <div className="grid grid-cols-3 gap-2 text-lg text-foreground/85 leading-relaxed text-center mt-2">
                           <div className="bg-blue-500/10 rounded p-2">
                             <p className="font-bold text-blue-400">C</p>
                             <p>Capital inicial</p>
@@ -188,14 +188,14 @@ export default function AulaMatematicaFinanceira({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">Correto</p>
-                          <p className="text-sm">i = 2% a.m., t = 3 meses</p>
-                          <p className="text-sm">J = C × 0,02 × 3</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">Correto</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">i = 2% a.m., t = 3 meses</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">J = C × 0,02 × 3</p>
                         </div>
                         <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                          <p className="text-xs font-bold text-rose-500 mb-2">Errado</p>
-                          <p className="text-sm">i = 2% a.m., t = 90 dias</p>
-                          <p className="text-sm">Converter: 90 dias ÷ 30 = 3 meses</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-rose-500 mb-2">Errado</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">i = 2% a.m., t = 90 dias</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Converter: 90 dias ÷ 30 = 3 meses</p>
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
@@ -211,14 +211,14 @@ export default function AulaMatematicaFinanceira({
                     <div className="space-y-4">
                       <p>Da fórmula J = C·i·t, podemos isolar qualquer variável:</p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-mono">C = J / (i · t)  — para encontrar o capital</p>
-                        <p className="text-sm font-mono">i = J / (C · t)  — para encontrar a taxa</p>
-                        <p className="text-sm font-mono">t = J / (C · i)  — para encontrar o tempo</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">C = J / (i · t)  — para encontrar o capital</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">i = J / (C · t)  — para encontrar a taxa</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">t = J / (C · i)  — para encontrar o tempo</p>
                       </div>
                       <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                        <p className="text-xs font-bold text-cyan-400 mb-2">Exemplo Industrial</p>
-                        <p className="text-sm">Uma empresa fornecedora da REPLAN aplicou capital desconhecido a 3% a.m. por 4 meses e obteve J = R$ 24.000.</p>
-                        <p className="text-sm font-bold mt-1">C = 24.000 / (0,03 × 4) = 24.000 / 0,12 = <strong>R$ 200.000</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-2">Exemplo Industrial</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Uma empresa fornecedora da REPLAN aplicou capital desconhecido a 3% a.m. por 4 meses e obteve J = R$ 24.000.</p>
+                        <p className="text-xl font-bold mt-1 text-foreground/85 leading-relaxed">C = 24.000 / (0,03 × 4) = 24.000 / 0,12 = <strong>R$ 200.000</strong></p>
                       </div>
                     </div>
                   ),
@@ -237,25 +237,25 @@ export default function AulaMatematicaFinanceira({
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-5 bg-blue-500/5 rounded-xl border border-blue-500/20 space-y-3">
-                <p className="text-sm font-bold text-blue-400">Juros Simples</p>
-                <p className="text-xs text-muted-foreground">Incide sempre sobre o capital inicial</p>
+                <p className="text-xl font-bold text-blue-400 text-foreground/85 leading-relaxed">Juros Simples</p>
+                <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Incide sempre sobre o capital inicial</p>
                 <div className="bg-blue-500/10 rounded-lg p-3">
-                  <p className="text-xs font-mono">C=1.000, i=10%, t=3</p>
-                  <p className="text-xs font-mono">Ano 1: J = 100</p>
-                  <p className="text-xs font-mono">Ano 2: J = 100</p>
-                  <p className="text-xs font-mono">Ano 3: J = 100</p>
-                  <p className="text-xs font-mono font-bold">Total J = 300 | M = 1.300</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">C=1.000, i=10%, t=3</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">Ano 1: J = 100</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">Ano 2: J = 100</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">Ano 3: J = 100</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono font-bold">Total J = 300 | M = 1.300</p>
                 </div>
               </div>
               <div className="p-5 bg-emerald-500/5 rounded-xl border border-emerald-500/20 space-y-3">
-                <p className="text-sm font-bold text-emerald-400">Juros Compostos</p>
-                <p className="text-xs text-muted-foreground">Incide sobre o montante acumulado</p>
+                <p className="text-xl font-bold text-emerald-400 text-foreground/85 leading-relaxed">Juros Compostos</p>
+                <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Incide sobre o montante acumulado</p>
                 <div className="bg-emerald-500/10 rounded-lg p-3">
-                  <p className="text-xs font-mono">C=1.000, i=10%, t=3</p>
-                  <p className="text-xs font-mono">Ano 1: J = 100 (sobre 1.000)</p>
-                  <p className="text-xs font-mono">Ano 2: J = 110 (sobre 1.100)</p>
-                  <p className="text-xs font-mono">Ano 3: J = 121 (sobre 1.210)</p>
-                  <p className="text-xs font-mono font-bold">Total J = 331 | M = 1.331</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">C=1.000, i=10%, t=3</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">Ano 1: J = 100 (sobre 1.000)</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">Ano 2: J = 110 (sobre 1.100)</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">Ano 3: J = 121 (sobre 1.210)</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono font-bold">Total J = 331 | M = 1.331</p>
                 </div>
               </div>
             </div>
@@ -328,26 +328,26 @@ export default function AulaMatematicaFinanceira({
               content: (
                 <div className="space-y-4 text-left">
                   <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
-                    <p className="font-bold text-indigo-700 dark:text-indigo-300 text-sm">Juros Simples = Sempre sobre o capital inicial (LINEAR)</p>
-                    <p className="text-xs mt-1">Fórmula: J = C × i × t | M = C(1 + it)</p>
+                    <p className="font-bold text-indigo-700 dark:text-indigo-300 text-xl text-foreground/85 leading-relaxed">Juros Simples = Sempre sobre o capital inicial (LINEAR)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">Fórmula: J = C × i × t | M = C(1 + it)</p>
                   </div>
                   <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-                    <p className="font-bold text-blue-700 dark:text-blue-300 text-sm">Crescimento Previsível</p>
-                    <p className="text-xs mt-1">→ Proporcional ao tempo | → Reta em gráfico linear</p>
+                    <p className="font-bold text-blue-700 dark:text-blue-300 text-xl text-foreground/85 leading-relaxed">Crescimento Previsível</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Proporcional ao tempo | → Reta em gráfico linear</p>
                   </div>
                   <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
-                    <p className="font-bold text-cyan-700 dark:text-cyan-300 text-sm">Quando Usar</p>
-                    <p className="text-xs mt-1">→ Caderneta poupança (antes 2012) | → Desconto comercial</p>
+                    <p className="font-bold text-cyan-700 dark:text-cyan-300 text-xl text-foreground/85 leading-relaxed">Quando Usar</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Caderneta poupança (antes 2012) | → Desconto comercial</p>
                   </div>
                   <div className="p-3 bg-indigo-500/5 border border-indigo-500/30 rounded-lg">
-                    <p className="font-bold text-indigo-600 dark:text-indigo-400 text-sm">Exemplo Prático</p>
-                    <p className="text-xs font-mono mt-1">C = R$ 1.000 | i = 5% a.m. | t = 3 meses</p>
-                    <p className="text-xs font-mono mt-1">J = 1.000 × 0,05 × 3 = R$ 150</p>
-                    <p className="text-xs font-mono mt-1">M = 1.000 + 150 = R$ 1.150</p>
+                    <p className="font-bold text-indigo-600 dark:text-indigo-400 text-xl text-foreground/85 leading-relaxed">Exemplo Prático</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">C = R$ 1.000 | i = 5% a.m. | t = 3 meses</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">J = 1.000 × 0,05 × 3 = R$ 150</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">M = 1.000 + 150 = R$ 1.150</p>
                   </div>
                   <div className="p-3 bg-indigo-500/5 border border-indigo-500/30 rounded-lg">
-                    <p className="font-bold text-indigo-600 dark:text-indigo-400 text-sm">Tabela Comparativa: 1000 com 5% a.m.</p>
-                    <div className="text-xs font-mono space-y-1 mt-2">
+                    <p className="font-bold text-indigo-600 dark:text-indigo-400 text-xl text-foreground/85 leading-relaxed">Tabela Comparativa: 1000 com 5% a.m.</p>
+                    <div className="text-lg text-foreground/85 leading-relaxed font-mono space-y-1 mt-2">
                       <p>Mês 1: J=50, M=1.050</p>
                       <p>Mês 2: J=100, M=1.100</p>
                       <p>Mês 3: J=150, M=1.150</p>
@@ -355,10 +355,10 @@ export default function AulaMatematicaFinanceira({
                     </div>
                   </div>
                   <div className="p-3 bg-indigo-500/5 border border-indigo-500/30 rounded-lg">
-                    <p className="font-bold text-indigo-600 dark:text-indigo-400 text-sm">Dicas CESGRANRIO</p>
-                    <p className="text-xs mt-1">→ Juros Simples aparece em operações de desconto</p>
-                    <p className="text-xs mt-1">→ Nunca use fórmula de juros compostos por engano!</p>
-                    <p className="text-xs mt-1">→ Percentual deve estar em forma decimal (5% = 0,05)</p>
+                    <p className="font-bold text-indigo-600 dark:text-indigo-400 text-xl text-foreground/85 leading-relaxed">Dicas CESGRANRIO</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Juros Simples aparece em operações de desconto</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Nunca use fórmula de juros compostos por engano!</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Percentual deve estar em forma decimal (5% = 0,05)</p>
                   </div>
                 </div>
               )
@@ -412,14 +412,14 @@ export default function AulaMatematicaFinanceira({
                     <div className="space-y-4">
                       <p>O montante é o capital acrescido dos juros:</p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-mono">M = C + J</p>
-                        <p className="text-sm font-mono">M = C + C·i·t</p>
-                        <p className="text-sm font-mono font-bold">M = C·(1 + i·t)</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">M = C + J</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">M = C + C·i·t</p>
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">M = C·(1 + i·t)</p>
                       </div>
                       <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                        <p className="text-xs font-bold text-blue-400 mb-2">Exemplo Petrobras</p>
-                        <p className="text-sm">Aplicação de R$ 300.000 a 1,5% a.m. por 8 meses:</p>
-                        <p className="text-sm font-bold">M = 300.000 × (1 + 0,015 × 8) = 300.000 × 1,12 = <strong>R$ 336.000</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Exemplo Petrobras</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Aplicação de R$ 300.000 a 1,5% a.m. por 8 meses:</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">M = 300.000 × (1 + 0,015 × 8) = 300.000 × 1,12 = <strong>R$ 336.000</strong></p>
                       </div>
                     </div>
                   ),
@@ -431,12 +431,12 @@ export default function AulaMatematicaFinanceira({
                     <div className="space-y-4">
                       <p>O capital inicial (Valor Presente) é obtido invertendo a fórmula:</p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono font-bold text-center">C = M / (1 + i·t)</p>
+                        <p className="text-xl font-mono font-bold text-center text-foreground/85 leading-relaxed">C = M / (1 + i·t)</p>
                       </div>
                       <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <p className="text-xs font-bold text-emerald-400 mb-2">Aplicação Industrial</p>
-                        <p className="text-sm">Um contrato da TRANSPETRO resultou em M = R$ 130.000 após 5 meses a 2% a.m. simples. Capital inicial:</p>
-                        <p className="text-sm font-bold">C = 130.000 / (1 + 0,02 × 5) = 130.000 / 1,10 = <strong>R$ 118.182</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">Aplicação Industrial</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Um contrato da TRANSPETRO resultou em M = R$ 130.000 após 5 meses a 2% a.m. simples. Capital inicial:</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">C = 130.000 / (1 + 0,02 × 5) = 130.000 / 1,10 = <strong>R$ 118.182</strong></p>
                       </div>
                     </div>
                   ),
@@ -451,18 +451,18 @@ export default function AulaMatematicaFinanceira({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-400 mb-2">Simples (reta)</p>
-                          <p className="text-xs">t=1: M = 1.000 × 1,10 = 1.100</p>
-                          <p className="text-xs">t=2: M = 1.000 × 1,20 = 1.200</p>
-                          <p className="text-xs">t=3: M = 1.000 × 1,30 = 1.300</p>
-                          <p className="text-xs font-bold mt-1">Incremento: +100 constante</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Simples (reta)</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">t=1: M = 1.000 × 1,10 = 1.100</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">t=2: M = 1.000 × 1,20 = 1.200</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">t=3: M = 1.000 × 1,30 = 1.300</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold mt-1">Incremento: +100 constante</p>
                         </div>
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-400 mb-2">Composto (curva)</p>
-                          <p className="text-xs">t=1: M = 1.000 × 1,10 = 1.100</p>
-                          <p className="text-xs">t=2: M = 1.000 × 1,21 = 1.210</p>
-                          <p className="text-xs">t=3: M = 1.000 × 1,331 = 1.331</p>
-                          <p className="text-xs font-bold mt-1">Incremento: crescente</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">Composto (curva)</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">t=1: M = 1.000 × 1,10 = 1.100</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">t=2: M = 1.000 × 1,21 = 1.210</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">t=3: M = 1.000 × 1,331 = 1.331</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold mt-1">Incremento: crescente</p>
                         </div>
                       </div>
                       <AlertBox tipo="info" titulo="Questão Clássica CESGRANRIO">
@@ -484,12 +484,12 @@ export default function AulaMatematicaFinanceira({
               className="mb-6"
             />
             <div className="space-y-4">
-              <p className="text-sm">
+              <p className="text-xl text-foreground/85 leading-relaxed">
                 Quando precisamos calcular o quanto vale hoje um valor futuro (ex: uma duplicata), usamos a fórmula inversa do montante:
               </p>
               <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 space-y-2">
-                <p className="text-sm font-mono text-center">PV = FV / (1 + i·t)  — desconto por dentro (racional)</p>
-                <p className="text-sm font-mono text-center">PV = FV × (1 - i·t)  — desconto por fora (comercial)</p>
+                <p className="text-xl font-mono text-center text-foreground/85 leading-relaxed">PV = FV / (1 + i·t)  — desconto por dentro (racional)</p>
+                <p className="text-xl font-mono text-center text-foreground/85 leading-relaxed">PV = FV × (1 - i·t)  — desconto por fora (comercial)</p>
               </div>
               <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
                 Há <strong>dois tipos</strong> de desconto simples e a banca cobra a diferença. No desconto comercial (por fora), PV = FV·(1 - i·t). No racional (por dentro), PV = FV/(1 + i·t). O desconto comercial é <strong>sempre maior</strong>. Saiba identificar qual está sendo pedido.
@@ -561,27 +561,27 @@ export default function AulaMatematicaFinanceira({
               content: (
                 <div className="space-y-4 text-left">
                   <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
-                    <p className="font-bold text-emerald-700 dark:text-emerald-300 text-sm">M = C + J = C(1 + it)</p>
-                    <p className="text-xs mt-1">Montante é o valor TOTAL no final da aplicação</p>
+                    <p className="font-bold text-emerald-700 dark:text-emerald-300 text-xl text-foreground/85 leading-relaxed">M = C + J = C(1 + it)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">Montante é o valor TOTAL no final da aplicação</p>
                   </div>
                   <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
-                    <p className="font-bold text-green-700 dark:text-green-300 text-sm">Diferenças Chaves</p>
-                    <p className="text-xs mt-1">→ M - C = J | → M &gt; C sempre (ganho positivo)</p>
+                    <p className="font-bold text-green-700 dark:text-green-300 text-xl text-foreground/85 leading-relaxed">Diferenças Chaves</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ M - C = J | → M &gt; C sempre (ganho positivo)</p>
                   </div>
                   <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-lg">
-                    <p className="font-bold text-teal-700 dark:text-teal-300 text-sm">Aplicação Petrobras</p>
-                    <p className="text-xs mt-1">→ Cálculo de retorno simples | → Investimentos curto prazo</p>
+                    <p className="font-bold text-teal-700 dark:text-teal-300 text-xl text-foreground/85 leading-relaxed">Aplicação Petrobras</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Cálculo de retorno simples | → Investimentos curto prazo</p>
                   </div>
                   <div className="p-3 bg-emerald-500/5 border border-emerald-500/30 rounded-lg">
-                    <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm">Exemplo Financeiro</p>
-                    <p className="text-xs font-mono mt-1">Investimento inicial: R$ 10.000</p>
-                    <p className="text-xs font-mono mt-1">Taxa: 2% a.m. por 6 meses</p>
-                    <p className="text-xs font-mono mt-1">J = 10.000 × 0,02 × 6 = R$ 1.200</p>
-                    <p className="text-xs font-mono mt-1">Resgate: M = R$ 11.200</p>
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400 text-xl text-foreground/85 leading-relaxed">Exemplo Financeiro</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Investimento inicial: R$ 10.000</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Taxa: 2% a.m. por 6 meses</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">J = 10.000 × 0,02 × 6 = R$ 1.200</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Resgate: M = R$ 11.200</p>
                   </div>
                   <div className="p-3 bg-emerald-500/5 border border-emerald-500/30 rounded-lg">
-                    <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm">Decomposição: M = C + J</p>
-                    <div className="text-xs font-mono space-y-1 mt-2">
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400 text-xl text-foreground/85 leading-relaxed">Decomposição: M = C + J</p>
+                    <div className="text-lg text-foreground/85 leading-relaxed font-mono space-y-1 mt-2">
                       <p>C (Capital) = R$ 10.000</p>
                       <p>J (Juros) = R$ 1.200</p>
                       <p>M (Montante) = R$ 11.200</p>
@@ -589,9 +589,9 @@ export default function AulaMatematicaFinanceira({
                     </div>
                   </div>
                   <div className="p-3 bg-emerald-500/5 border border-emerald-500/30 rounded-lg">
-                    <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm">Operações Inversas</p>
-                    <p className="text-xs mt-1">→ M = C + J | C = M - J | J = M - C</p>
-                    <p className="text-xs mt-1">→ Útil quando o problema não informa um dos valores</p>
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400 text-xl text-foreground/85 leading-relaxed">Operações Inversas</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ M = C + J | C = M - J | J = M - C</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Útil quando o problema não informa um dos valores</p>
                   </div>
                 </div>
               )
@@ -647,10 +647,10 @@ export default function AulaMatematicaFinanceira({
                         Em juros compostos, ao final de cada período, os juros são <strong>adicionados ao capital</strong> e, no próximo período, os juros incidem sobre esse novo total.
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 space-y-1">
-                        <p className="text-xs font-mono">Período 0: Capital = C</p>
-                        <p className="text-xs font-mono">Período 1: Capital = C × (1+i)</p>
-                        <p className="text-xs font-mono">Período 2: Capital = C × (1+i) × (1+i) = C × (1+i)²</p>
-                        <p className="text-xs font-mono font-bold">Período t: M = C × (1+i)^t</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-mono">Período 0: Capital = C</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-mono">Período 1: Capital = C × (1+i)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-mono">Período 2: Capital = C × (1+i) × (1+i) = C × (1+i)²</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-mono font-bold">Período t: M = C × (1+i)^t</p>
                       </div>
                       <AlertBox tipo="info" titulo="Contexto Petrobras">
                         Um contrato de financiamento de R$ 500.000 a 2% a.m. composto: após 6 meses, M = 500.000 × (1,02)^6. Usando (1,02)^6 = 1,1262: M = <strong>R$ 563.100</strong>. Em juros simples, M = 500.000 × 1,12 = R$ 560.000. A diferença de R$ 3.100 são os "juros sobre juros".
@@ -668,19 +668,19 @@ export default function AulaMatematicaFinanceira({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                         <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-center">
-                          <p className="text-xs font-bold text-emerald-400">(1,02)^3</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400">(1,02)^3</p>
                           <p className="text-lg font-bold">1,0612</p>
-                          <p className="text-xs text-muted-foreground">2% a.m. por 3 meses</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">2% a.m. por 3 meses</p>
                         </div>
                         <div className="p-3 bg-blue-500/5 rounded-xl border border-blue-500/20 text-center">
-                          <p className="text-xs font-bold text-blue-400">(1,01)^12</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400">(1,01)^12</p>
                           <p className="text-lg font-bold">1,1268</p>
-                          <p className="text-xs text-muted-foreground">1% a.m. por 12 meses</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">1% a.m. por 12 meses</p>
                         </div>
                         <div className="p-3 bg-cyan-500/5 rounded-xl border border-cyan-500/20 text-center">
-                          <p className="text-xs font-bold text-cyan-400">(1,10)^3</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400">(1,10)^3</p>
                           <p className="text-lg font-bold">1,331</p>
-                          <p className="text-xs text-muted-foreground">10% a.a. por 3 anos</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">10% a.a. por 3 anos</p>
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Dica de Prova">
@@ -698,9 +698,9 @@ export default function AulaMatematicaFinanceira({
                         A relação entre juros simples e compostos depende do horizonte de tempo:
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm"><strong>t = 1:</strong> J_simples = J_compostos (iguais)</p>
-                        <p className="text-sm"><strong>t &gt; 1:</strong> J_compostos &gt; J_simples</p>
-                        <p className="text-sm"><strong>t &lt; 1:</strong> J_simples &gt; J_compostos</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed"><strong>t = 1:</strong> J_simples = J_compostos (iguais)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed"><strong>t &gt; 1:</strong> J_compostos &gt; J_simples</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed"><strong>t &lt; 1:</strong> J_simples &gt; J_compostos</p>
                       </div>
                       <AlertBox tipo="danger" titulo="Pegadinha da CESGRANRIO">
                         Questões de curto prazo (ex: 15 dias com taxa mensal) usam juros SIMPLES por convenção do mercado. Questões de longo prazo usam COMPOSTOS. A banca cobra essa convenção. Nunca use compostos para frações de período sem verificar o contexto.
@@ -776,37 +776,37 @@ export default function AulaMatematicaFinanceira({
               content: (
                 <div className="space-y-4 text-left">
                   <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
-                    <p className="font-bold text-cyan-700 dark:text-cyan-300 text-sm">Juros Compostos (EXPONENCIAL)</p>
-                    <p className="text-xs mt-1">M = C·(1+i)^t → Crescimento acelerado!</p>
+                    <p className="font-bold text-cyan-700 dark:text-cyan-300 text-xl text-foreground/85 leading-relaxed">Juros Compostos (EXPONENCIAL)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">M = C·(1+i)^t → Crescimento acelerado!</p>
                   </div>
                   <div className="p-3 bg-sky-500/10 border border-sky-500/20 rounded-lg">
-                    <p className="font-bold text-sky-700 dark:text-sky-300 text-sm">Diferença Chave</p>
-                    <p className="text-xs mt-1">→ Juros sobre TUDO acumulado | → Multiplica período a período</p>
+                    <p className="font-bold text-sky-700 dark:text-sky-300 text-xl text-foreground/85 leading-relaxed">Diferença Chave</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Juros sobre TUDO acumulado | → Multiplica período a período</p>
                   </div>
                   <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-                    <p className="font-bold text-blue-700 dark:text-blue-300 text-sm">Quando Usar</p>
-                    <p className="text-xs mt-1">→ Financiamentos | → Poupança/CDB | → Petrobras investe assim!</p>
+                    <p className="font-bold text-blue-700 dark:text-blue-300 text-xl text-foreground/85 leading-relaxed">Quando Usar</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Financiamentos | → Poupança/CDB | → Petrobras investe assim!</p>
                   </div>
                   <div className="p-3 bg-cyan-500/5 border border-cyan-500/30 rounded-lg">
-                    <p className="font-bold text-cyan-600 dark:text-cyan-400 text-sm">Exemplo Exponencial</p>
-                    <p className="text-xs font-mono mt-1">C = R$ 1.000 | i = 10% a.a. | t = 3 anos</p>
-                    <p className="text-xs font-mono mt-1">Ano 1: M = 1.000 × 1,10 = R$ 1.100</p>
-                    <p className="text-xs font-mono mt-1">Ano 2: M = 1.100 × 1,10 = R$ 1.210</p>
-                    <p className="text-xs font-mono mt-1">Ano 3: M = 1.210 × 1,10 = R$ 1.331</p>
+                    <p className="font-bold text-cyan-600 dark:text-cyan-400 text-xl text-foreground/85 leading-relaxed">Exemplo Exponencial</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">C = R$ 1.000 | i = 10% a.a. | t = 3 anos</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Ano 1: M = 1.000 × 1,10 = R$ 1.100</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Ano 2: M = 1.100 × 1,10 = R$ 1.210</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Ano 3: M = 1.210 × 1,10 = R$ 1.331</p>
                   </div>
                   <div className="p-3 bg-cyan-500/5 border border-cyan-500/30 rounded-lg">
-                    <p className="font-bold text-cyan-600 dark:text-cyan-400 text-sm">Comparativo: Simples vs Composto</p>
-                    <div className="text-xs font-mono space-y-1 mt-2">
+                    <p className="font-bold text-cyan-600 dark:text-cyan-400 text-xl text-foreground/85 leading-relaxed">Comparativo: Simples vs Composto</p>
+                    <div className="text-lg text-foreground/85 leading-relaxed font-mono space-y-1 mt-2">
                       <p>Simples (10% a.a.): M = 1.300 (3 anos)</p>
                       <p>Composto (10% a.a.): M = 1.331 (3 anos)</p>
                       <p>Diferença: R$ 31 → Crescente com tempo!</p>
                     </div>
                   </div>
                   <div className="p-3 bg-cyan-500/5 border border-cyan-500/30 rounded-lg">
-                    <p className="font-bold text-cyan-600 dark:text-cyan-400 text-sm">Quando Usar Compostos</p>
-                    <p className="text-xs mt-1">→ Empréstimos bancários e financiamentos</p>
-                    <p className="text-xs mt-1">→ Investimentos de longo prazo (CDB, poupança pós-2012)</p>
-                    <p className="text-xs mt-1">→ A maioria das operações financeiras modernas</p>
+                    <p className="font-bold text-cyan-600 dark:text-cyan-400 text-xl text-foreground/85 leading-relaxed">Quando Usar Compostos</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Empréstimos bancários e financiamentos</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Investimentos de longo prazo (CDB, poupança pós-2012)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ A maioria das operações financeiras modernas</p>
                   </div>
                 </div>
               )
@@ -860,12 +860,12 @@ export default function AulaMatematicaFinanceira({
                     <div className="space-y-4">
                       <p>Para calcular o montante, basta aplicar a fórmula com o fator fornecido:</p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-mono font-bold text-center">M = C · (1+i)^t</p>
+                        <p className="text-xl font-mono font-bold text-center text-foreground/85 leading-relaxed">M = C · (1+i)^t</p>
                       </div>
                       <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                        <p className="text-xs font-bold text-cyan-400 mb-2">Exemplo CESGRANRIO</p>
-                        <p className="text-sm">Capital: R$ 200.000 | i = 1% a.m. | t = 6 meses | (1,01)^6 = 1,0615</p>
-                        <p className="text-sm font-bold">M = 200.000 × 1,0615 = <strong>R$ 212.300</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-2">Exemplo CESGRANRIO</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Capital: R$ 200.000 | i = 1% a.m. | t = 6 meses | (1,01)^6 = 1,0615</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">M = 200.000 × 1,0615 = <strong>R$ 212.300</strong></p>
                       </div>
                     </div>
                   ),
@@ -877,15 +877,15 @@ export default function AulaMatematicaFinanceira({
                     <div className="space-y-4">
                       <p>Para encontrar o capital inicial que gera determinado montante futuro:</p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono font-bold text-center">C = M / (1+i)^t</p>
+                        <p className="text-xl font-mono font-bold text-center text-foreground/85 leading-relaxed">C = M / (1+i)^t</p>
                       </div>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Este cálculo é chamado de <strong>valor presente</strong> ou <strong>desconto composto</strong>. É usado para avaliar se vale a pena antecipar um pagamento futuro.
                       </p>
                       <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                        <p className="text-xs font-bold text-blue-400 mb-2">Aplicação PETROBRAS</p>
-                        <p className="text-sm">Quanto investir hoje a 2% a.m. por 12 meses para obter R$ 268.240? (1,02)^12 = 1,2682</p>
-                        <p className="text-sm font-bold">C = 268.240 / 1,2682 = <strong>R$ 211.500</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Aplicação PETROBRAS</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Quanto investir hoje a 2% a.m. por 12 meses para obter R$ 268.240? (1,02)^12 = 1,2682</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">C = 268.240 / 1,2682 = <strong>R$ 211.500</strong></p>
                       </div>
                     </div>
                   ),
@@ -899,20 +899,20 @@ export default function AulaMatematicaFinanceira({
                         A <strong>Regra do 72</strong> é uma aproximação rápida para estimar em quanto tempo um capital dobra a determinada taxa:
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono font-bold text-center">t ≈ 72 / (i em %)</p>
+                        <p className="text-xl font-mono font-bold text-center text-foreground/85 leading-relaxed">t ≈ 72 / (i em %)</p>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                         <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-center">
-                          <p className="text-xs font-bold text-emerald-400">i = 1% a.m.</p>
-                          <p className="text-sm font-bold">72 meses ≈ 6 anos</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400">i = 1% a.m.</p>
+                          <p className="text-xl font-bold text-foreground/85 leading-relaxed">72 meses ≈ 6 anos</p>
                         </div>
                         <div className="p-3 bg-blue-500/5 rounded-xl border border-blue-500/20 text-center">
-                          <p className="text-xs font-bold text-blue-400">i = 2% a.m.</p>
-                          <p className="text-sm font-bold">36 meses = 3 anos</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400">i = 2% a.m.</p>
+                          <p className="text-xl font-bold text-foreground/85 leading-relaxed">36 meses = 3 anos</p>
                         </div>
                         <div className="p-3 bg-cyan-500/5 rounded-xl border border-cyan-500/20 text-center">
-                          <p className="text-xs font-bold text-cyan-400">i = 6% a.a.</p>
-                          <p className="text-sm font-bold">12 anos</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400">i = 6% a.a.</p>
+                          <p className="text-xl font-bold text-foreground/85 leading-relaxed">12 anos</p>
                         </div>
                       </div>
                     </div>
@@ -986,36 +986,36 @@ export default function AulaMatematicaFinanceira({
               content: (
                 <div className="space-y-4 text-left">
                   <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-                    <p className="font-bold text-blue-700 dark:text-blue-300 text-sm">Encontre C, i ou t</p>
-                    <p className="text-xs mt-1">Da mesma fórmula, isole cada variável!</p>
+                    <p className="font-bold text-blue-700 dark:text-blue-300 text-xl text-foreground/85 leading-relaxed">Encontre C, i ou t</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">Da mesma fórmula, isole cada variável!</p>
                   </div>
                   <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
-                    <p className="font-bold text-indigo-700 dark:text-indigo-300 text-sm">Para Capital Presente</p>
-                    <p className="text-xs font-mono mt-1">C = M / (1+i)^t</p>
+                    <p className="font-bold text-indigo-700 dark:text-indigo-300 text-xl text-foreground/85 leading-relaxed">Para Capital Presente</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">C = M / (1+i)^t</p>
                   </div>
                   <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
-                    <p className="font-bold text-cyan-700 dark:text-cyan-300 text-sm">Para Taxa e Tempo</p>
-                    <p className="text-xs font-mono mt-1">i = (M/C)^(1/t) - 1 | t = log(M/C)/log(1+i)</p>
+                    <p className="font-bold text-cyan-700 dark:text-cyan-300 text-xl text-foreground/85 leading-relaxed">Para Taxa e Tempo</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">i = (M/C)^(1/t) - 1 | t = log(M/C)/log(1+i)</p>
                   </div>
                   <div className="p-3 bg-blue-500/5 border border-blue-500/30 rounded-lg">
-                    <p className="font-bold text-blue-600 dark:text-blue-400 text-sm">Exemplo: Encontrar Capital</p>
-                    <p className="text-xs font-mono mt-1">Montante futuro: R$ 2.000</p>
-                    <p className="text-xs font-mono mt-1">Taxa: 5% a.a. por 10 anos</p>
-                    <p className="text-xs font-mono mt-1">C = 2.000 / (1,05)^10 ≈ R$ 1.227,83</p>
+                    <p className="font-bold text-blue-600 dark:text-blue-400 text-xl text-foreground/85 leading-relaxed">Exemplo: Encontrar Capital</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Montante futuro: R$ 2.000</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Taxa: 5% a.a. por 10 anos</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">C = 2.000 / (1,05)^10 ≈ R$ 1.227,83</p>
                   </div>
                   <div className="p-3 bg-blue-500/5 border border-blue-500/30 rounded-lg">
-                    <p className="font-bold text-blue-600 dark:text-blue-400 text-sm">Isolamento de Variáveis (Algébra)</p>
-                    <div className="text-xs font-mono space-y-1 mt-2">
+                    <p className="font-bold text-blue-600 dark:text-blue-400 text-xl text-foreground/85 leading-relaxed">Isolamento de Variáveis (Algébra)</p>
+                    <div className="text-lg text-foreground/85 leading-relaxed font-mono space-y-1 mt-2">
                       <p>M = C(1+i)^t</p>
                       <p>log(M/C) = t × log(1+i)</p>
                       <p>t = log(M/C) / log(1+i)</p>
                     </div>
                   </div>
                   <div className="p-3 bg-blue-500/5 border border-blue-500/30 rounded-lg">
-                    <p className="font-bold text-blue-600 dark:text-blue-400 text-sm">Aplicação: Quanto Tempo até Dobrar?</p>
-                    <p className="text-xs mt-1">Investimento: R$ 1.000 com 10% a.a.</p>
-                    <p className="text-xs font-mono mt-1">2.000 = 1.000 × 1,10^t</p>
-                    <p className="text-xs font-mono mt-1">t = log(2)/log(1,1) ≈ 7,27 anos</p>
+                    <p className="font-bold text-blue-600 dark:text-blue-400 text-xl text-foreground/85 leading-relaxed">Aplicação: Quanto Tempo até Dobrar?</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">Investimento: R$ 1.000 com 10% a.a.</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">2.000 = 1.000 × 1,10^t</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">t = log(2)/log(1,1) ≈ 7,27 anos</p>
                   </div>
                 </div>
               )
@@ -1071,14 +1071,14 @@ export default function AulaMatematicaFinanceira({
                         No desconto comercial (mais usado pelos bancos), o desconto incide sobre o <strong>valor nominal (N) — valor futuro</strong> do título:
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-mono font-bold">Dc = N · d · t</p>
-                        <p className="text-sm font-mono">PV = N - Dc = N · (1 - d·t)</p>
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">Dc = N · d · t</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">PV = N - Dc = N · (1 - d·t)</p>
                       </div>
                       <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                        <p className="text-xs font-bold text-cyan-400 mb-2">Exemplo Industrial</p>
-                        <p className="text-sm">Uma empresa fornecedora da PETROBRAS tem duplicata de R$ 40.000 vencendo em 3 meses. Banco desconta a 3% a.m. comercial:</p>
-                        <p className="text-sm">Dc = 40.000 × 0,03 × 3 = R$ 3.600</p>
-                        <p className="text-sm font-bold">PV = 40.000 - 3.600 = <strong>R$ 36.400</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-2">Exemplo Industrial</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Uma empresa fornecedora da PETROBRAS tem duplicata de R$ 40.000 vencendo em 3 meses. Banco desconta a 3% a.m. comercial:</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Dc = 40.000 × 0,03 × 3 = R$ 3.600</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">PV = 40.000 - 3.600 = <strong>R$ 36.400</strong></p>
                       </div>
                     </div>
                   ),
@@ -1092,14 +1092,14 @@ export default function AulaMatematicaFinanceira({
                         No desconto racional, o desconto incide sobre o <strong>valor presente (PV)</strong>. É o "justo" matematicamente:
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-mono font-bold">PV = N / (1 + i·t)</p>
-                        <p className="text-sm font-mono">Dr = N - PV</p>
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">PV = N / (1 + i·t)</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">Dr = N - PV</p>
                       </div>
                       <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                        <p className="text-xs font-bold text-blue-400 mb-2">Mesmo Exemplo — Racional</p>
-                        <p className="text-sm">N = R$ 40.000, i = 3% a.m., t = 3 meses:</p>
-                        <p className="text-sm">PV = 40.000 / 1,09 ≈ R$ 36.697</p>
-                        <p className="text-sm font-bold">Dr = 40.000 - 36.697 = <strong>R$ 3.303</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Mesmo Exemplo — Racional</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">N = R$ 40.000, i = 3% a.m., t = 3 meses:</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">PV = 40.000 / 1,09 ≈ R$ 36.697</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">Dr = 40.000 - 36.697 = <strong>R$ 3.303</strong></p>
                       </div>
                     </div>
                   ),
@@ -1111,16 +1111,16 @@ export default function AulaMatematicaFinanceira({
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                          <p className="text-xs font-bold text-rose-400 mb-2">Desconto Comercial</p>
-                          <p className="text-sm">Dc = R$ 3.600</p>
-                          <p className="text-sm">PV = R$ 36.400</p>
-                          <p className="text-xs text-muted-foreground mt-1">Mais caro para o devedor</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-rose-400 mb-2">Desconto Comercial</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Dc = R$ 3.600</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">PV = R$ 36.400</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Mais caro para o devedor</p>
                         </div>
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-400 mb-2">Desconto Racional</p>
-                          <p className="text-sm">Dr = R$ 3.303</p>
-                          <p className="text-sm">PV = R$ 36.697</p>
-                          <p className="text-xs text-muted-foreground mt-1">Mais barato para o devedor</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">Desconto Racional</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Dr = R$ 3.303</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">PV = R$ 36.697</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Mais barato para o devedor</p>
                         </div>
                       </div>
                       <AlertBox tipo="danger" titulo="Pegadinha Clássica CESGRANRIO">
@@ -1197,29 +1197,29 @@ export default function AulaMatematicaFinanceira({
               content: (
                 <div className="space-y-4 text-left">
                   <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg">
-                    <p className="font-bold text-amber-700 dark:text-amber-300 text-sm">Dois Tipos de Desconto</p>
-                    <p className="text-xs mt-1">Comercial (maior) vs Racional (menor)</p>
+                    <p className="font-bold text-amber-700 dark:text-amber-300 text-xl text-foreground/85 leading-relaxed">Dois Tipos de Desconto</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">Comercial (maior) vs Racional (menor)</p>
                   </div>
                   <div className="p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                    <p className="font-bold text-yellow-700 dark:text-yellow-300 text-sm">Desconto Comercial (Por Fora)</p>
-                    <p className="text-xs font-mono mt-1">PV = FV·(1 - it)</p>
-                    <p className="text-xs mt-1">Mais usado, desconta sobre valor futuro</p>
+                    <p className="font-bold text-yellow-700 dark:text-yellow-300 text-xl text-foreground/85 leading-relaxed">Desconto Comercial (Por Fora)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">PV = FV·(1 - it)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">Mais usado, desconta sobre valor futuro</p>
                   </div>
                   <div className="p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg">
-                    <p className="font-bold text-orange-700 dark:text-orange-300 text-sm">Desconto Racional (Por Dentro)</p>
-                    <p className="text-xs font-mono mt-1">PV = FV/(1 + it)</p>
-                    <p className="text-xs mt-1">Usa em Petrobras: dividendos, recebíveis!</p>
+                    <p className="font-bold text-orange-700 dark:text-orange-300 text-xl text-foreground/85 leading-relaxed">Desconto Racional (Por Dentro)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">PV = FV/(1 + it)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">Usa em Petrobras: dividendos, recebíveis!</p>
                   </div>
                   <div className="p-3 bg-amber-500/5 border border-amber-500/30 rounded-lg">
-                    <p className="font-bold text-amber-600 dark:text-amber-400 text-sm">Exemplo: Duplicata</p>
-                    <p className="text-xs font-mono mt-1">Valor futuro: R$ 5.000 (vence em 60 dias)</p>
-                    <p className="text-xs font-mono mt-1">Taxa comercial: 2% a.m.</p>
-                    <p className="text-xs font-mono mt-1">Desc.Com: 5.000 × (1 - 0,02×2) = R$ 4.800</p>
-                    <p className="text-xs font-mono mt-1">Desc.Rac: 5.000 / (1 + 0,02×2) ≈ R$ 4.807,69</p>
+                    <p className="font-bold text-amber-600 dark:text-amber-400 text-xl text-foreground/85 leading-relaxed">Exemplo: Duplicata</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Valor futuro: R$ 5.000 (vence em 60 dias)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Taxa comercial: 2% a.m.</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Desc.Com: 5.000 × (1 - 0,02×2) = R$ 4.800</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Desc.Rac: 5.000 / (1 + 0,02×2) ≈ R$ 4.807,69</p>
                   </div>
                   <div className="p-3 bg-amber-500/5 border border-amber-500/30 rounded-lg">
-                    <p className="font-bold text-amber-600 dark:text-amber-400 text-sm">Diferença de Descontos</p>
-                    <div className="text-xs font-mono space-y-1 mt-2">
+                    <p className="font-bold text-amber-600 dark:text-amber-400 text-xl text-foreground/85 leading-relaxed">Diferença de Descontos</p>
+                    <div className="text-lg text-foreground/85 leading-relaxed font-mono space-y-1 mt-2">
                       <p>Comercial: D = FV × i × t</p>
                       <p>Racional: D = FV × i × t / (1 + it)</p>
                       <p>Diferença: Comercial &gt; Racional</p>
@@ -1227,10 +1227,10 @@ export default function AulaMatematicaFinanceira({
                     </div>
                   </div>
                   <div className="p-3 bg-amber-500/5 border border-amber-500/30 rounded-lg">
-                    <p className="font-bold text-amber-600 dark:text-amber-400 text-sm">Na Prova CESGRANRIO</p>
-                    <p className="text-xs mt-1">→ Identifique qual tipo o problema pede!</p>
-                    <p className="text-xs mt-1">→ Termos como "por fora" = comercial</p>
-                    <p className="text-xs mt-1">→ Termos como "por dentro" = racional</p>
+                    <p className="font-bold text-amber-600 dark:text-amber-400 text-xl text-foreground/85 leading-relaxed">Na Prova CESGRANRIO</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Identifique qual tipo o problema pede!</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Termos como "por fora" = comercial</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Termos como "por dentro" = racional</p>
                   </div>
                 </div>
               )
@@ -1286,8 +1286,8 @@ export default function AulaMatematicaFinanceira({
                         Dinheiro tem <strong>valor no tempo</strong>: R$ 100 hoje vale mais que R$ 100 em 1 ano (porque pode ser aplicado e render juros). Por isso, não podemos somar ou comparar capitais em datas diferentes diretamente.
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-mono">Para levar ao futuro: × (1+i)^t</p>
-                        <p className="text-sm font-mono">Para levar ao passado: ÷ (1+i)^t = × (1+i)^(-t)</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">Para levar ao futuro: × (1+i)^t</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">Para levar ao passado: ÷ (1+i)^t = × (1+i)^(-t)</p>
                       </div>
                       <AlertBox tipo="info" titulo="Regra de Ouro">
                         Escolha a data focal que facilite os cálculos (geralmente a data do pagamento único proposto ou a data 0). <strong>Todos os capitais devem ser transportados para a mesma data antes de qualquer operação.</strong>
@@ -1304,15 +1304,15 @@ export default function AulaMatematicaFinanceira({
                         Quando uma empresa da cadeia de fornecimento da Petrobras quer substituir várias dívidas por uma única, usa o princípio de equivalência:
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center font-bold">Soma dos VP(dívidas antigas) = VP(nova dívida)</p>
-                        <p className="text-xs text-center text-muted-foreground mt-1">Na mesma data focal</p>
+                        <p className="text-xl font-mono text-center font-bold text-foreground/85 leading-relaxed">Soma dos VP(dívidas antigas) = VP(nova dívida)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed text-center text-muted-foreground mt-1">Na mesma data focal</p>
                       </div>
                       <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <p className="text-xs font-bold text-emerald-400 mb-2">Passo a Passo</p>
-                        <p className="text-xs">1. Escolha a data focal</p>
-                        <p className="text-xs">2. Transporte cada dívida para a data focal</p>
-                        <p className="text-xs">3. Some os valores na data focal</p>
-                        <p className="text-xs">4. Esse é o valor do pagamento único na data focal</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">Passo a Passo</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">1. Escolha a data focal</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">2. Transporte cada dívida para a data focal</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">3. Some os valores na data focal</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">4. Esse é o valor do pagamento único na data focal</p>
                       </div>
                     </div>
                   ),
@@ -1323,14 +1323,14 @@ export default function AulaMatematicaFinanceira({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                        <p className="text-xs font-bold text-blue-400 mb-2">Situação</p>
-                        <p className="text-sm">A PETROBRAS tem 2 dívidas: R$ 100.000 em 2 meses e R$ 150.000 em 5 meses. Deseja pagar em 3 meses. Taxa: 2% a.m. (1,02)^2 = 1,0404; (1,02)^(-2) ≈ 0,9612</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Situação</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">A PETROBRAS tem 2 dívidas: R$ 100.000 em 2 meses e R$ 150.000 em 5 meses. Deseja pagar em 3 meses. Taxa: 2% a.m. (1,02)^2 = 1,0404; (1,02)^(-2) ≈ 0,9612</p>
                       </div>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 space-y-1">
-                        <p className="text-xs font-bold text-cyan-400">Data focal = mês 3:</p>
-                        <p className="text-sm font-mono">R$ 100.000 → mês 3: × 1,02 = R$ 102.000</p>
-                        <p className="text-sm font-mono">R$ 150.000 → mês 3: × (1,02)^(-2) = 150.000 × 0,9612 = R$ 144.180</p>
-                        <p className="text-sm font-mono font-bold">Pagamento único = 102.000 + 144.180 = R$ 246.180</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400">Data focal = mês 3:</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">R$ 100.000 → mês 3: × 1,02 = R$ 102.000</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">R$ 150.000 → mês 3: × (1,02)^(-2) = 150.000 × 0,9612 = R$ 144.180</p>
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">Pagamento único = 102.000 + 144.180 = R$ 246.180</p>
                       </div>
                     </div>
                   ),
@@ -1403,25 +1403,25 @@ export default function AulaMatematicaFinanceira({
               content: (
                 <div className="space-y-4 text-left">
                   <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-lg">
-                    <p className="font-bold text-rose-700 dark:text-rose-300 text-sm">Equivalência = Mesmo Valor em Data-Base</p>
-                    <p className="text-xs mt-1">Escolha uma data e compare todos os fluxos ali</p>
+                    <p className="font-bold text-rose-700 dark:text-rose-300 text-xl text-foreground/85 leading-relaxed">Equivalência = Mesmo Valor em Data-Base</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">Escolha uma data e compare todos os fluxos ali</p>
                   </div>
                   <div className="p-3 bg-pink-500/10 border border-pink-500/20 rounded-lg">
-                    <p className="font-bold text-pink-700 dark:text-pink-300 text-sm">Leve para Frente</p>
-                    <p className="text-xs font-mono mt-1">M = C·(1+i)^t (compostos)</p>
+                    <p className="font-bold text-pink-700 dark:text-pink-300 text-xl text-foreground/85 leading-relaxed">Leve para Frente</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">M = C·(1+i)^t (compostos)</p>
                   </div>
                   <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
-                    <p className="font-bold text-red-700 dark:text-red-300 text-sm">Traga para Trás</p>
-                    <p className="text-xs font-mono mt-1">PV = FV/(1+i)^t (desconto)</p>
-                    <p className="text-xs mt-1">Iguale os fluxos e resolva!</p>
+                    <p className="font-bold text-red-700 dark:text-red-300 text-xl text-foreground/85 leading-relaxed">Traga para Trás</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">PV = FV/(1+i)^t (desconto)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">Iguale os fluxos e resolva!</p>
                   </div>
                   <div className="p-3 bg-rose-500/5 border border-rose-500/30 rounded-lg">
-                    <p className="font-bold text-rose-600 dark:text-rose-400 text-sm">Exemplo: Data-base = Hoje</p>
-                    <p className="text-xs font-mono mt-1">Opção A: R$ 1.000 daqui 1 ano</p>
-                    <p className="text-xs font-mono mt-1">Opção B: R$ 1.100 daqui 2 anos</p>
-                    <p className="text-xs font-mono mt-1">Taxa: 5% a.a. | Hoje = data-base</p>
-                    <p className="text-xs font-mono mt-1">A: PV = 1.000/1,05 ≈ R$ 952</p>
-                    <p className="text-xs font-mono mt-1">B: PV = 1.100/1,05² ≈ R$ 999 → Opção A vale mais hoje!</p>
+                    <p className="font-bold text-rose-600 dark:text-rose-400 text-xl text-foreground/85 leading-relaxed">Exemplo: Data-base = Hoje</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Opção A: R$ 1.000 daqui 1 ano</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Opção B: R$ 1.100 daqui 2 anos</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Taxa: 5% a.a. | Hoje = data-base</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">A: PV = 1.000/1,05 ≈ R$ 952</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">B: PV = 1.100/1,05² ≈ R$ 999 → Opção A vale mais hoje!</p>
                   </div>
                 </div>
               )
@@ -1477,10 +1477,10 @@ export default function AulaMatematicaFinanceira({
                         A taxa <strong>nominal</strong> é a taxa declarada para um período, mas a capitalização ocorre em período diferente (geralmente menor).
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
-                        <p className="text-sm">Exemplo: <strong>"12% ao ano, capitalizado mensalmente"</strong></p>
-                        <p className="text-sm mt-2">→ 12% é a taxa nominal anual</p>
-                        <p className="text-sm">→ Capitalização: mensal (12 vezes por ano)</p>
-                        <p className="text-sm font-bold">→ Taxa mensal efetiva = 12%/12 = 1% a.m.</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Exemplo: <strong>"12% ao ano, capitalizado mensalmente"</strong></p>
+                        <p className="text-xl mt-2 text-foreground/85 leading-relaxed">→ 12% é a taxa nominal anual</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">→ Capitalização: mensal (12 vezes por ano)</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">→ Taxa mensal efetiva = 12%/12 = 1% a.m.</p>
                       </div>
                       <AlertBox tipo="warning" titulo="Regra da Taxa Nominal">
                         Taxa nominal: divide-se pelo número de capitalizações no período para obter a taxa efetiva do subperíodo. Isso só vale para conversão de nominal para efetiva. Para comparar taxas de períodos diferentes em compostos, use equivalência.
@@ -1497,15 +1497,15 @@ export default function AulaMatematicaFinanceira({
                         A taxa <strong>efetiva</strong> é a que realmente incide no período de capitalização. Taxas são <strong>equivalentes</strong> quando geram o mesmo montante no mesmo prazo.
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-mono font-bold">Equivalência em juros compostos:</p>
-                        <p className="text-sm font-mono">(1 + i_a)^1 = (1 + i_m)^12</p>
-                        <p className="text-sm font-mono">i_a = (1 + i_m)^12 - 1</p>
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">Equivalência em juros compostos:</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">(1 + i_a)^1 = (1 + i_m)^12</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">i_a = (1 + i_m)^12 - 1</p>
                       </div>
                       <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                        <p className="text-xs font-bold text-cyan-400 mb-2">Exemplo CESGRANRIO</p>
-                        <p className="text-sm">Taxa efetiva anual equivalente a 2% a.m.:</p>
-                        <p className="text-sm font-bold">i_a = (1,02)^12 - 1 = 1,2682 - 1 = <strong>26,82% a.a.</strong></p>
-                        <p className="text-xs text-muted-foreground">Taxa nominal seria: 2% × 12 = 24% a.a. (subestima o custo real)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-2">Exemplo CESGRANRIO</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Taxa efetiva anual equivalente a 2% a.m.:</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">i_a = (1,02)^12 - 1 = 1,2682 - 1 = <strong>26,82% a.a.</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Taxa nominal seria: 2% × 12 = 24% a.a. (subestima o custo real)</p>
                       </div>
                     </div>
                   ),
@@ -1516,7 +1516,7 @@ export default function AulaMatematicaFinanceira({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="overflow-x-auto">
-                        <table className="w-full text-xs border-collapse">
+                        <table className="w-full text-lg text-foreground/85 leading-relaxed border-collapse">
                           <thead>
                             <tr className="bg-emerald-500/10">
                               <th className="p-2 text-left border border-border">Conceito</th>
@@ -1617,23 +1617,23 @@ export default function AulaMatematicaFinanceira({
               content: (
                 <div className="space-y-4 text-left">
                   <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
-                    <p className="font-bold text-indigo-700 dark:text-indigo-300 text-sm">Taxa Nominal vs Efetiva</p>
-                    <p className="text-xs mt-1">Nominal = o que lê | Efetiva = o que recebe (realidade)</p>
+                    <p className="font-bold text-indigo-700 dark:text-indigo-300 text-xl text-foreground/85 leading-relaxed">Taxa Nominal vs Efetiva</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">Nominal = o que lê | Efetiva = o que recebe (realidade)</p>
                   </div>
                   <div className="p-3 bg-purple-500/10 border border-purple-500/20 rounded-lg">
-                    <p className="font-bold text-purple-700 dark:text-purple-300 text-sm">Exemplo Prático</p>
-                    <p className="text-xs mt-1">i_nom = 12% a.a. (capitalização mensal)</p>
-                    <p className="text-xs font-mono mt-1">i_efet = (1 + 0,01)^12 - 1 ≈ 12,68% a.a.</p>
+                    <p className="font-bold text-purple-700 dark:text-purple-300 text-xl text-foreground/85 leading-relaxed">Exemplo Prático</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">i_nom = 12% a.a. (capitalização mensal)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">i_efet = (1 + 0,01)^12 - 1 ≈ 12,68% a.a.</p>
                   </div>
                   <div className="p-3 bg-violet-500/10 border border-violet-500/20 rounded-lg">
-                    <p className="font-bold text-violet-700 dark:text-violet-300 text-sm">Na Prova CESGRANRIO</p>
-                    <p className="text-xs mt-1">→ Compare sempre pela taxa EFETIVA!</p>
+                    <p className="font-bold text-violet-700 dark:text-violet-300 text-xl text-foreground/85 leading-relaxed">Na Prova CESGRANRIO</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Compare sempre pela taxa EFETIVA!</p>
                   </div>
                   <div className="p-3 bg-indigo-500/5 border border-indigo-500/30 rounded-lg">
-                    <p className="font-bold text-indigo-600 dark:text-indigo-400 text-sm">Conversão: Nominal → Efetiva</p>
-                    <p className="text-xs font-mono mt-1">i_nom = 18% a.a. cap. trimestral</p>
-                    <p className="text-xs font-mono mt-1">i_per = 18% / 4 = 4,5% ao trimestre</p>
-                    <p className="text-xs font-mono mt-1">i_efet = (1 + 0,045)^4 - 1 ≈ 19,25% a.a.</p>
+                    <p className="font-bold text-indigo-600 dark:text-indigo-400 text-xl text-foreground/85 leading-relaxed">Conversão: Nominal → Efetiva</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">i_nom = 18% a.a. cap. trimestral</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">i_per = 18% / 4 = 4,5% ao trimestre</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">i_efet = (1 + 0,045)^4 - 1 ≈ 19,25% a.a.</p>
                   </div>
                 </div>
               )
@@ -1689,12 +1689,12 @@ export default function AulaMatematicaFinanceira({
                         O valor presente (PV) de uma série de n pagamentos iguais PMT é:
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono font-bold text-center">PV = PMT × [1 - (1+i)^(-n)] / i</p>
+                        <p className="text-xl font-mono font-bold text-center text-foreground/85 leading-relaxed">PV = PMT × [1 - (1+i)^(-n)] / i</p>
                       </div>
                       <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                        <p className="text-xs font-bold text-cyan-400 mb-2">Aplicação Petrobras</p>
-                        <p className="text-sm">Contrato de R$ 5.000/mês por 12 meses a 1,5% a.m. (fator = 10,9075):</p>
-                        <p className="text-sm font-bold">PV = 5.000 × 10,9075 = <strong>R$ 54.537</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-2">Aplicação Petrobras</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Contrato de R$ 5.000/mês por 12 meses a 1,5% a.m. (fator = 10,9075):</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">PV = 5.000 × 10,9075 = <strong>R$ 54.537</strong></p>
                       </div>
                     </div>
                   ),
@@ -1708,13 +1708,13 @@ export default function AulaMatematicaFinanceira({
                         Para encontrar a parcela, inverta a fórmula do valor presente:
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono font-bold text-center">PMT = PV × i / [1 - (1+i)^(-n)]</p>
+                        <p className="text-xl font-mono font-bold text-center text-foreground/85 leading-relaxed">PMT = PV × i / [1 - (1+i)^(-n)]</p>
                       </div>
                       <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                        <p className="text-xs font-bold text-emerald-400 mb-2">Financiamento Industrial</p>
-                        <p className="text-sm">Equipamento de R$ 180.000, 12 parcelas a 2% a.m. (fator PMT = 0,0946):</p>
-                        <p className="text-sm font-bold">PMT = 180.000 × 0,0946 = <strong>R$ 17.028/mês</strong></p>
-                        <p className="text-xs text-muted-foreground mt-1">Total pago = 12 × 17.028 = R$ 204.336 (juros = R$ 24.336)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-2">Financiamento Industrial</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Equipamento de R$ 180.000, 12 parcelas a 2% a.m. (fator PMT = 0,0946):</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">PMT = 180.000 × 0,0946 = <strong>R$ 17.028/mês</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Total pago = 12 × 17.028 = R$ 204.336 (juros = R$ 24.336)</p>
                       </div>
                     </div>
                   ),
@@ -1728,12 +1728,12 @@ export default function AulaMatematicaFinanceira({
                         Para acumular capital fazendo aportes periódicos (fundo de poupança):
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono font-bold text-center">VF = PMT × [(1+i)^n - 1] / i</p>
+                        <p className="text-xl font-mono font-bold text-center text-foreground/85 leading-relaxed">VF = PMT × [(1+i)^n - 1] / i</p>
                       </div>
                       <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                        <p className="text-xs font-bold text-blue-400 mb-2">Fundo de Renovação</p>
-                        <p className="text-sm">Depósito de R$ 2.000/mês por 24 meses a 0,8% a.m. (1,008)^24 = 1,2096:</p>
-                        <p className="text-sm font-bold">VF = 2.000 × (1,2096-1)/0,008 = 2.000 × 26,20 = <strong>R$ 52.400</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Fundo de Renovação</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Depósito de R$ 2.000/mês por 24 meses a 0,8% a.m. (1,008)^24 = 1,2096:</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">VF = 2.000 × (1,2096-1)/0,008 = 2.000 × 26,20 = <strong>R$ 52.400</strong></p>
                       </div>
                       <AlertBox tipo="warning" titulo="Série Antecipada vs. Postecipada">
                         Série postecipada: primeiro pagamento no final do período 1 (padrão). Série antecipada: primeiro pagamento imediato (data 0). O VF e PV da série antecipada = VF ou PV postecipada × (1+i).
@@ -1809,23 +1809,23 @@ export default function AulaMatematicaFinanceira({
               content: (
                 <div className="space-y-4 text-left">
                   <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
-                    <p className="font-bold text-emerald-700 dark:text-emerald-300 text-sm">Anuidade = Parcelas Iguais</p>
-                    <p className="text-xs mt-1">Mesma prestação ao longo do tempo (financiamento)</p>
+                    <p className="font-bold text-emerald-700 dark:text-emerald-300 text-xl text-foreground/85 leading-relaxed">Anuidade = Parcelas Iguais</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">Mesma prestação ao longo do tempo (financiamento)</p>
                   </div>
                   <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
-                    <p className="font-bold text-green-700 dark:text-green-300 text-sm">Postecipada vs Antecipada</p>
-                    <p className="text-xs mt-1">→ Postecipada: 1ª parcela no FIM do período</p>
-                    <p className="text-xs mt-1">→ Antecipada: 1ª parcela no INÍCIO (à vista)</p>
+                    <p className="font-bold text-green-700 dark:text-green-300 text-xl text-foreground/85 leading-relaxed">Postecipada vs Antecipada</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Postecipada: 1ª parcela no FIM do período</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Antecipada: 1ª parcela no INÍCIO (à vista)</p>
                   </div>
                   <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-lg">
-                    <p className="font-bold text-teal-700 dark:text-teal-300 text-sm">Fórmula Postecipada</p>
-                    <p className="text-xs font-mono mt-1">VP = PMT × [(1 - (1+i)^-n) / i]</p>
+                    <p className="font-bold text-teal-700 dark:text-teal-300 text-xl text-foreground/85 leading-relaxed">Fórmula Postecipada</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">VP = PMT × [(1 - (1+i)^-n) / i]</p>
                   </div>
                   <div className="p-3 bg-emerald-500/5 border border-emerald-500/30 rounded-lg">
-                    <p className="font-bold text-emerald-600 dark:text-emerald-400 text-sm">Exemplo: Financiamento de Casa</p>
-                    <p className="text-xs font-mono mt-1">Valor: R$ 300.000 | Taxa: 0,5% a.m. | Prazo: 360 meses</p>
-                    <p className="text-xs font-mono mt-1">PMT = VP / [(1 - (1+i)^-n) / i]</p>
-                    <p className="text-xs font-mono mt-1">PMT ≈ R$ 1.520 (parcela fixa mensal)</p>
+                    <p className="font-bold text-emerald-600 dark:text-emerald-400 text-xl text-foreground/85 leading-relaxed">Exemplo: Financiamento de Casa</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Valor: R$ 300.000 | Taxa: 0,5% a.m. | Prazo: 360 meses</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">PMT = VP / [(1 - (1+i)^-n) / i]</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">PMT ≈ R$ 1.520 (parcela fixa mensal)</p>
                   </div>
                 </div>
               )
@@ -1881,11 +1881,11 @@ export default function AulaMatematicaFinanceira({
                         Plataformas, refinarias e gasodutos exigem investimentos massivos. A Petrobras usa financiamentos de longo prazo com séries de pagamento uniformes (sistema Price) ou decrescentes (sistema SAC).
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold">Sistema Price (Parcelas Constantes):</p>
-                        <p className="text-xs font-mono">PMT = PV × i / [1-(1+i)^(-n)]</p>
-                        <p className="text-sm font-bold mt-2">Sistema SAC (Amortização Constante):</p>
-                        <p className="text-xs font-mono">Amortização = PV/n (constante)</p>
-                        <p className="text-xs font-mono">Juros = saldo devedor × i (decrescente)</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">Sistema Price (Parcelas Constantes):</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-mono">PMT = PV × i / [1-(1+i)^(-n)]</p>
+                        <p className="text-xl font-bold mt-2 text-foreground/85 leading-relaxed">Sistema SAC (Amortização Constante):</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-mono">Amortização = PV/n (constante)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-mono">Juros = saldo devedor × i (decrescente)</p>
                       </div>
                       <AlertBox tipo="info" titulo="CESGRANRIO cobra:">
                         Diferença entre Price e SAC: no Price as parcelas são constantes; no SAC as parcelas decrescem (os juros diminuem à medida que a dívida é amortizada). No SAC, o total pago em juros é menor que no Price.
@@ -1902,10 +1902,10 @@ export default function AulaMatematicaFinanceira({
                         O arrendamento de plataformas offshore envolve contratos de longo prazo com pagamentos periódicos. O VPL (Valor Presente Líquido) determina se vale a pena alugar vs. comprar.
                       </p>
                       <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                        <p className="text-xs font-bold text-blue-400 mb-2">Decisão: Comprar vs. Alugar</p>
-                        <p className="text-xs">Comprar: desembolso imediato C₀</p>
-                        <p className="text-xs">Alugar: série de pagamentos mensais R por n meses</p>
-                        <p className="text-xs mt-2">Comprar vale mais se: C₀ &lt; PV(aluguéis) = R × fator de anuidade</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Decisão: Comprar vs. Alugar</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Comprar: desembolso imediato C₀</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Alugar: série de pagamentos mensais R por n meses</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-2">Comprar vale mais se: C₀ &lt; PV(aluguéis) = R × fator de anuidade</p>
                       </div>
                     </div>
                   ),
@@ -1919,10 +1919,10 @@ export default function AulaMatematicaFinanceira({
                         Colaboradores da Petrobras recebem PLR (Participação nos Lucros e Resultados) e frequentemente precisam calcular o melhor destino financeiro desse recurso.
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold">Comparação de Investimentos:</p>
-                        <p className="text-xs">CDB: M = C·(1+i)^t</p>
-                        <p className="text-xs">Poupança: taxa menor, sem IR sobre rendimento</p>
-                        <p className="text-xs">Tesouro Direto: SELIC + spread, com marcação a mercado</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">Comparação de Investimentos:</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">CDB: M = C·(1+i)^t</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Poupança: taxa menor, sem IR sobre rendimento</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Tesouro Direto: SELIC + spread, com marcação a mercado</p>
                       </div>
                       <AlertBox tipo="warning" titulo="Questão Típica de Prova">
                         A banca dá PLR de R$ X e pede "qual o montante em Y meses a Z% a.m. compostos?" com o fator fornecido. Aplicação direta: M = X × (1+Z)^Y. Não complique.
@@ -1998,25 +1998,25 @@ export default function AulaMatematicaFinanceira({
               content: (
                 <div className="space-y-4 text-left">
                   <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
-                    <p className="font-bold text-cyan-700 dark:text-cyan-300 text-sm">Critérios de Decisão</p>
-                    <p className="text-xs mt-1">VPL &gt; 0 = Viável | TIR &gt; taxa mín = Rentável</p>
+                    <p className="font-bold text-cyan-700 dark:text-cyan-300 text-xl text-foreground/85 leading-relaxed">Critérios de Decisão</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">VPL &gt; 0 = Viável | TIR &gt; taxa mín = Rentável</p>
                   </div>
                   <div className="p-3 bg-sky-500/10 border border-sky-500/20 rounded-lg">
-                    <p className="font-bold text-sky-700 dark:text-sky-300 text-sm">VPL (Valor Presente Líquido)</p>
-                    <p className="text-xs mt-1">Valor Presente de TODOS os fluxos futuros</p>
-                    <p className="text-xs mt-1">VPL = Σ(Fluxo_t / (1+i)^t) - Investimento Inicial</p>
+                    <p className="font-bold text-sky-700 dark:text-sky-300 text-xl text-foreground/85 leading-relaxed">VPL (Valor Presente Líquido)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">Valor Presente de TODOS os fluxos futuros</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">VPL = Σ(Fluxo_t / (1+i)^t) - Investimento Inicial</p>
                   </div>
                   <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-                    <p className="font-bold text-blue-700 dark:text-blue-300 text-sm">TIR (Taxa Interna de Retorno)</p>
-                    <p className="text-xs mt-1">Taxa que torna VPL = 0</p>
-                    <p className="text-xs mt-1">Petrobras usa: poços, refinarias, infraestrutura</p>
+                    <p className="font-bold text-blue-700 dark:text-blue-300 text-xl text-foreground/85 leading-relaxed">TIR (Taxa Interna de Retorno)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">Taxa que torna VPL = 0</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">Petrobras usa: poços, refinarias, infraestrutura</p>
                   </div>
                   <div className="p-3 bg-cyan-500/5 border border-cyan-500/30 rounded-lg">
-                    <p className="font-bold text-cyan-600 dark:text-cyan-400 text-sm">Exemplo: Poço Exploratório</p>
-                    <p className="text-xs font-mono mt-1">Investimento: -R$ 50M (ano 0)</p>
-                    <p className="text-xs font-mono mt-1">Retornos: +R$ 20M (anos 1-5)</p>
-                    <p className="text-xs font-mono mt-1">Taxa desconto: 10% a.a.</p>
-                    <p className="text-xs font-mono mt-1">Se VPL &gt; 0 e TIR &gt; 10%, viável!</p>
+                    <p className="font-bold text-cyan-600 dark:text-cyan-400 text-xl text-foreground/85 leading-relaxed">Exemplo: Poço Exploratório</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Investimento: -R$ 50M (ano 0)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Retornos: +R$ 20M (anos 1-5)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Taxa desconto: 10% a.a.</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">Se VPL &gt; 0 e TIR &gt; 10%, viável!</p>
                   </div>
                 </div>
               )
@@ -2069,16 +2069,16 @@ export default function AulaMatematicaFinanceira({
                   conteudo: (
                     <div className="space-y-4">
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-xs font-bold text-blue-400 mb-1">Juros Simples:</p>
-                        <p className="text-sm font-mono">J = C·i·t | M = C(1+i·t)</p>
-                        <p className="text-xs font-bold text-emerald-400 mt-2 mb-1">Juros Compostos:</p>
-                        <p className="text-sm font-mono">M = C·(1+i)^t</p>
-                        <p className="text-xs font-bold text-cyan-400 mt-2 mb-1">Descontos:</p>
-                        <p className="text-sm font-mono">Dc = N·d·t | PV_comercial = N(1-d·t)</p>
-                        <p className="text-sm font-mono">PV_racional = N/(1+i·t)</p>
-                        <p className="text-xs font-bold text-blue-400 mt-2 mb-1">Séries:</p>
-                        <p className="text-sm font-mono">PMT = PV·i / [1-(1+i)^(-n)]</p>
-                        <p className="text-sm font-mono">PV = PMT·[1-(1+i)^(-n)] / i</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-1">Juros Simples:</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">J = C·i·t | M = C(1+i·t)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mt-2 mb-1">Juros Compostos:</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">M = C·(1+i)^t</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mt-2 mb-1">Descontos:</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">Dc = N·d·t | PV_comercial = N(1-d·t)</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">PV_racional = N/(1+i·t)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mt-2 mb-1">Séries:</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">PMT = PV·i / [1-(1+i)^(-n)]</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">PV = PMT·[1-(1+i)^(-n)] / i</p>
                       </div>
                     </div>
                   ),
@@ -2090,28 +2090,28 @@ export default function AulaMatematicaFinanceira({
                     <div className="space-y-4">
                       <div className="space-y-2">
                         <div className="flex items-start gap-2">
-                          <span className="text-emerald-400 text-sm">✓</span>
-                          <p className="text-sm"><strong>Unidades:</strong> taxa e tempo na mesma unidade antes de calcular</p>
+                          <span className="text-emerald-400 text-xl text-foreground/85 leading-relaxed">✓</span>
+                          <p className="text-xl text-foreground/85 leading-relaxed"><strong>Unidades:</strong> taxa e tempo na mesma unidade antes de calcular</p>
                         </div>
                         <div className="flex items-start gap-2">
-                          <span className="text-emerald-400 text-sm">✓</span>
-                          <p className="text-sm"><strong>Regime:</strong> identificar se é simples ou composto antes de aplicar a fórmula</p>
+                          <span className="text-emerald-400 text-xl text-foreground/85 leading-relaxed">✓</span>
+                          <p className="text-xl text-foreground/85 leading-relaxed"><strong>Regime:</strong> identificar se é simples ou composto antes de aplicar a fórmula</p>
                         </div>
                         <div className="flex items-start gap-2">
-                          <span className="text-emerald-400 text-sm">✓</span>
-                          <p className="text-sm"><strong>Desconto:</strong> saber se é comercial (Dc {">"} Dr) ou racional (Dr)</p>
+                          <span className="text-emerald-400 text-xl text-foreground/85 leading-relaxed">✓</span>
+                          <p className="text-xl text-foreground/85 leading-relaxed"><strong>Desconto:</strong> saber se é comercial (Dc {">"} Dr) ou racional (Dr)</p>
                         </div>
                         <div className="flex items-start gap-2">
-                          <span className="text-emerald-400 text-sm">✓</span>
-                          <p className="text-sm"><strong>Data focal:</strong> sempre levar todos os capitais para a mesma data</p>
+                          <span className="text-emerald-400 text-xl text-foreground/85 leading-relaxed">✓</span>
+                          <p className="text-xl text-foreground/85 leading-relaxed"><strong>Data focal:</strong> sempre levar todos os capitais para a mesma data</p>
                         </div>
                         <div className="flex items-start gap-2">
-                          <span className="text-emerald-400 text-sm">✓</span>
-                          <p className="text-sm"><strong>Nominal vs. Efetiva:</strong> não confundir taxa nominal com efetiva anual</p>
+                          <span className="text-emerald-400 text-xl text-foreground/85 leading-relaxed">✓</span>
+                          <p className="text-xl text-foreground/85 leading-relaxed"><strong>Nominal vs. Efetiva:</strong> não confundir taxa nominal com efetiva anual</p>
                         </div>
                         <div className="flex items-start gap-2">
-                          <span className="text-emerald-400 text-sm">✓</span>
-                          <p className="text-sm"><strong>t = 1:</strong> simples = compostos; t {">"} 1: compostos {">"} simples; t {"<"} 1: simples {">"} compostos</p>
+                          <span className="text-emerald-400 text-xl text-foreground/85 leading-relaxed">✓</span>
+                          <p className="text-xl text-foreground/85 leading-relaxed"><strong>t = 1:</strong> simples = compostos; t {">"} 1: compostos {">"} simples; t {"<"} 1: simples {">"} compostos</p>
                         </div>
                       </div>
                     </div>
@@ -2122,19 +2122,19 @@ export default function AulaMatematicaFinanceira({
                   icone: "🎯",
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-sm">A CESGRANRIO segue um padrão consistente em Matemática Financeira:</p>
+                      <p className="text-xl text-foreground/85 leading-relaxed">A CESGRANRIO segue um padrão consistente em Matemática Financeira:</p>
                       <div className="space-y-3">
                         <div className="p-3 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-400 mb-1">1. Leia o enunciado identificando:</p>
-                          <p className="text-xs">Regime (simples/composto) | Capital | Taxa | Prazo | Pergunta</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-1">1. Leia o enunciado identificando:</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">Regime (simples/composto) | Capital | Taxa | Prazo | Pergunta</p>
                         </div>
                         <div className="p-3 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
-                          <p className="text-xs font-bold text-cyan-400 mb-1">2. Os fatores geralmente são fornecidos:</p>
-                          <p className="text-xs">(1,02)^6 = 1,1262 | (1,01)^12 = 1,1268 etc. Use-os sem hesitar.</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-1">2. Os fatores geralmente são fornecidos:</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">(1,02)^6 = 1,1262 | (1,01)^12 = 1,1268 etc. Use-os sem hesitar.</p>
                         </div>
                         <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-400 mb-1">3. Verifique a alternativa:</p>
-                          <p className="text-xs">Se o resultado não está entre as opções, releia para ver se confundiu regime, desconto ou unidade.</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-1">3. Verifique a alternativa:</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">Se o resultado não está entre as opções, releia para ver se confundiu regime, desconto ou unidade.</p>
                         </div>
                       </div>
                       <AlertBox tipo="danger" titulo="A Pegadinha Definitiva">
@@ -2211,25 +2211,25 @@ export default function AulaMatematicaFinanceira({
               content: (
                 <div className="space-y-4 text-left">
                   <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-                    <p className="font-bold text-blue-700 dark:text-blue-300 text-sm">Passo 1: IDENTIFICAR</p>
-                    <p className="text-xs mt-1">→ Qual regime? (Simples ou Composto?)</p>
-                    <p className="text-xs mt-1">→ Qual a taxa? (Nominal ou Efetiva?)</p>
+                    <p className="font-bold text-blue-700 dark:text-blue-300 text-xl text-foreground/85 leading-relaxed">Passo 1: IDENTIFICAR</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Qual regime? (Simples ou Composto?)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">→ Qual a taxa? (Nominal ou Efetiva?)</p>
                   </div>
                   <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
-                    <p className="font-bold text-indigo-700 dark:text-indigo-300 text-sm">Passo 2: VERIFICAR</p>
-                    <p className="text-xs mt-1">✓ Leia o enunciado com CUIDADO</p>
-                    <p className="text-xs mt-1">✓ Procure por datas múltiplas (equivalência/séries?)</p>
+                    <p className="font-bold text-indigo-700 dark:text-indigo-300 text-xl text-foreground/85 leading-relaxed">Passo 2: VERIFICAR</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">✓ Leia o enunciado com CUIDADO</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">✓ Procure por datas múltiplas (equivalência/séries?)</p>
                   </div>
                   <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
-                    <p className="font-bold text-cyan-700 dark:text-cyan-300 text-sm">Passo 3: CONVERTER</p>
-                    <p className="text-xs mt-1">✓ Períodos: transforme TUDO para mesma unidade</p>
-                    <p className="text-xs mt-1">✓ Datas: se houver inconsistência, use data-base!</p>
+                    <p className="font-bold text-cyan-700 dark:text-cyan-300 text-xl text-foreground/85 leading-relaxed">Passo 3: CONVERTER</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">✓ Períodos: transforme TUDO para mesma unidade</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">✓ Datas: se houver inconsistência, use data-base!</p>
                   </div>
                   <div className="p-3 bg-blue-500/5 border border-blue-500/30 rounded-lg">
-                    <p className="font-bold text-blue-600 dark:text-blue-400 text-sm">Passo 4: CALCULAR E VALIDAR</p>
-                    <p className="text-xs mt-1">✓ Use a fórmula correta (J=Cit ou M=C(1+i)^t)</p>
-                    <p className="text-xs mt-1">✓ Verifique unidades (taxa e tempo compatíveis?)</p>
-                    <p className="text-xs mt-1">✓ Resultado faz sentido? (M &gt; C sempre!)</p>
+                    <p className="font-bold text-blue-600 dark:text-blue-400 text-xl text-foreground/85 leading-relaxed">Passo 4: CALCULAR E VALIDAR</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">✓ Use a fórmula correta (J=Cit ou M=C(1+i)^t)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">✓ Verifique unidades (taxa e tempo compatíveis?)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">✓ Resultado faz sentido? (M &gt; C sempre!)</p>
                   </div>
                 </div>
               )
@@ -2265,14 +2265,14 @@ export default function AulaMatematicaFinanceira({
             <h3 className="text-xl font-bold text-amber-900 dark:text-amber-100 mb-4">
               📊 Inflação e Taxa Real
             </h3>
-            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+            <div className="space-y-3 text-xl text-gray-700 dark:text-gray-300 text-foreground/85 leading-relaxed">
               <p><strong>Conceito:</strong> A taxa nominal não reflete o poder de compra real.</p>
               <p><strong>Fórmula de Fisher:</strong> (1 + taxa nominal) = (1 + taxa real) × (1 + inflação)</p>
               <div className="p-3 bg-white dark:bg-gray-900 rounded border-l-4 border-amber-500 mt-3">
-                <p className="font-mono text-xs">Taxa Real = [(1 + taxa nominal) / (1 + inflação)] - 1</p>
+                <p className="font-mono text-lg text-foreground/85 leading-relaxed">Taxa Real = [(1 + taxa nominal) / (1 + inflação)] - 1</p>
               </div>
               <p className="mt-3"><strong>Aplicação Petrobras:</strong> Na análise de investimentos em exploração, a taxa real reflete o retorno verdadeiro ajustado pela inflação do custo de equipamentos e mão de obra.</p>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">💡 Dica: Se inflação &gt; taxa nominal, taxa real é negativa (prejuízo de poder de compra).</p>
+              <p className="text-lg text-foreground/85 leading-relaxed text-gray-600 dark:text-gray-400 mt-2">💡 Dica: Se inflação &gt; taxa nominal, taxa real é negativa (prejuízo de poder de compra).</p>
             </div>
           </div>
 
@@ -2281,15 +2281,15 @@ export default function AulaMatematicaFinanceira({
             <h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-4">
               💰 Análise de Viabilidade (VPL e TIR)
             </h3>
-            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+            <div className="space-y-3 text-xl text-gray-700 dark:text-gray-300 text-foreground/85 leading-relaxed">
               <p><strong>VPL (Valor Presente Líquido):</strong> Soma dos fluxos descontados a uma taxa de referência.</p>
               <div className="p-3 bg-white dark:bg-gray-900 rounded border-l-4 border-green-500 mt-3 space-y-2">
-                <p className="font-mono text-xs">VPL = Σ [FCt / (1 + i)^t] - Investimento Inicial</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400">Se VPL &gt; 0: projeto viável | Se VPL &lt; 0: projeto inviável</p>
+                <p className="font-mono text-lg text-foreground/85 leading-relaxed">VPL = Σ [FCt / (1 + i)^t] - Investimento Inicial</p>
+                <p className="text-lg text-foreground/85 leading-relaxed text-gray-600 dark:text-gray-400">Se VPL &gt; 0: projeto viável | Se VPL &lt; 0: projeto inviável</p>
               </div>
               <p className="mt-3"><strong>TIR (Taxa Interna de Retorno):</strong> Taxa que iguala VPL = 0.</p>
               <div className="p-3 bg-white dark:bg-gray-900 rounded border-l-4 border-green-500 mt-3">
-                <p className="text-xs">Se TIR &gt; taxa de desconto: projeto viável</p>
+                <p className="text-lg text-foreground/85 leading-relaxed">Se TIR &gt; taxa de desconto: projeto viável</p>
               </div>
               <p className="mt-3"><strong>Aplicação Petrobras:</strong> Projetos de exploração são avaliados por VPL e TIR. Um poço precisa de TIR &gt; 15% a.a. para ser viável.</p>
             </div>
@@ -2300,13 +2300,13 @@ export default function AulaMatematicaFinanceira({
             <h3 className="text-xl font-bold text-blue-900 dark:text-blue-100 mb-4">
               🔄 Equivalência de Capitais em Múltiplas Datas
             </h3>
-            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+            <div className="space-y-3 text-xl text-gray-700 dark:text-gray-300 text-foreground/85 leading-relaxed">
               <p><strong>Conceito:</strong> Capitais em datas diferentes são equivalentes se descontados à mesma taxa.</p>
               <div className="p-3 bg-white dark:bg-gray-900 rounded border-l-4 border-blue-500 mt-3">
-                <p className="font-mono text-xs">C₀ = C₁/(1+i)¹ = C₂/(1+i)² = ... = Cn/(1+i)ⁿ</p>
+                <p className="font-mono text-lg text-foreground/85 leading-relaxed">C₀ = C₁/(1+i)¹ = C₂/(1+i)² = ... = Cn/(1+i)ⁿ</p>
               </div>
               <p className="mt-3"><strong>Caso Prático:</strong> Financiamento de R$ 500.000 em 4 parcelas trimestrais (taxa 2% a.t.)</p>
-              <div className="p-3 bg-gray-100 dark:bg-gray-800 rounded text-xs space-y-1 mt-3 font-mono">
+              <div className="p-3 bg-gray-100 dark:bg-gray-800 rounded text-lg text-foreground/85 leading-relaxed space-y-1 mt-3 font-mono">
                 <p>T0: Valor atual = 500.000</p>
                 <p>T1: Parcela = 500.000 × (1,02 / [1,02⁴-1]/[0,02×1,02⁴]) ≈ 128.500</p>
                 <p>T2, T3, T4: Idem</p>
@@ -2320,14 +2320,14 @@ export default function AulaMatematicaFinanceira({
             <h3 className="text-xl font-bold text-purple-900 dark:text-purple-100 mb-4">
               📉 Depreciação Contábil vs. Financeira
             </h3>
-            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+            <div className="space-y-3 text-xl text-gray-700 dark:text-gray-300 text-foreground/85 leading-relaxed">
               <p><strong>Depreciação Linear (Contábil):</strong> Valor uniforme a cada período.</p>
               <div className="p-3 bg-white dark:bg-gray-900 rounded border-l-4 border-purple-500 mt-3">
-                <p className="font-mono text-xs">Depreciação = (Valor Original - Valor Residual) / Anos</p>
+                <p className="font-mono text-lg text-foreground/85 leading-relaxed">Depreciação = (Valor Original - Valor Residual) / Anos</p>
               </div>
               <p className="mt-3"><strong>Depreciação Acelerada (Financeira):</strong> Maior redução nos primeiros anos (método da soma dos dígitos ou redução do saldo).</p>
               <p className="mt-3"><strong>Caso Petrobras:</strong> Plataforma de exploração com custo R$ 50 milhões, vida útil 20 anos.</p>
-              <div className="p-3 bg-gray-100 dark:bg-gray-800 rounded text-xs space-y-1 mt-3">
+              <div className="p-3 bg-gray-100 dark:bg-gray-800 rounded text-lg text-foreground/85 leading-relaxed space-y-1 mt-3">
                 <p>• Linear: R$ 2,5 mi/ano (se residual = 0)</p>
                 <p>• Acelerada (soma dígitos): Ano 1 ≈ R$ 4,76 mi | Ano 20 ≈ R$ 0,24 mi</p>
               </div>
@@ -2339,12 +2339,12 @@ export default function AulaMatematicaFinanceira({
             <h3 className="text-xl font-bold text-red-900 dark:text-red-100 mb-4">
               🚗 Decisão: Leasing vs. Compra
             </h3>
-            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+            <div className="space-y-3 text-xl text-gray-700 dark:text-gray-300 text-foreground/85 leading-relaxed">
               <p><strong>Leasing:</strong> Aluguel com opção de compra ao final do contrato.</p>
               <p><strong>Decisão via VPL:</strong> Compare o custo presente de ambas as alternativas.</p>
               <div className="p-3 bg-white dark:bg-gray-900 rounded border-l-4 border-red-500 mt-3 space-y-2">
-                <p className="font-mono text-xs">VPL(Leasing) = Σ [Parcela×(1+i)^-t]</p>
-                <p className="font-mono text-xs">VPL(Compra) = Preço - Σ [Depreciação×(1+i)^-t] + Residual×(1+i)^-n</p>
+                <p className="font-mono text-lg text-foreground/85 leading-relaxed">VPL(Leasing) = Σ [Parcela×(1+i)^-t]</p>
+                <p className="font-mono text-lg text-foreground/85 leading-relaxed">VPL(Compra) = Preço - Σ [Depreciação×(1+i)^-t] + Residual×(1+i)^-n</p>
               </div>
               <p className="mt-3"><strong>Aplicação Petrobras:</strong> Equipamentos de sondagem (bombas, compressores) podem ser alugados ou comprados. Leasing oferece flexibilidade; compra oferece propriedade e depreciação fiscal.</p>
             </div>
@@ -2355,14 +2355,14 @@ export default function AulaMatematicaFinanceira({
             <h3 className="text-xl font-bold text-indigo-900 dark:text-indigo-100 mb-4">
               ⚠️ Análise de Sensibilidade e Risco
             </h3>
-            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+            <div className="space-y-3 text-xl text-gray-700 dark:text-gray-300 text-foreground/85 leading-relaxed">
               <p><strong>Sensibilidade:</strong> Variação do VPL quando um parâmetro muda.</p>
               <div className="p-3 bg-white dark:bg-gray-900 rounded border-l-4 border-indigo-500 mt-3">
-                <p className="text-xs">Se taxa sobe 1%, VPL cai de R$ 1M para R$ 950K (sensibilidade = -50K/0,01 = -5M)</p>
+                <p className="text-lg text-foreground/85 leading-relaxed">Se taxa sobe 1%, VPL cai de R$ 1M para R$ 950K (sensibilidade = -50K/0,01 = -5M)</p>
               </div>
               <p className="mt-3"><strong>Análise de Cenários:</strong> Otimista, base, pessimista.</p>
               <p className="mt-3"><strong>Aplicação Petrobras:</strong> Projeto de exploração sensível a preço do petróleo. Se preço ≤ USD 50/bbl, VPL pode ficar negativo.</p>
-              <div className="p-3 bg-gray-100 dark:bg-gray-800 rounded text-xs space-y-1 mt-3">
+              <div className="p-3 bg-gray-100 dark:bg-gray-800 rounded text-lg text-foreground/85 leading-relaxed space-y-1 mt-3">
                 <p>Cenário Otimista (USD 100/bbl): VPL = +USD 200M</p>
                 <p>Cenário Base (USD 70/bbl): VPL = +USD 50M</p>
                 <p>Cenário Pessimista (USD 40/bbl): VPL = -USD 100M</p>
@@ -2382,7 +2382,7 @@ export default function AulaMatematicaFinanceira({
             {/* Core Concepts */}
             <div className="p-5 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 rounded-lg">
               <h3 className="font-bold text-indigo-900 dark:text-indigo-200 mb-3">📌 Conceitos Fundamentais</h3>
-              <ul className="text-xs space-y-2 text-indigo-800 dark:text-indigo-300">
+              <ul className="text-lg text-foreground/85 leading-relaxed space-y-2 text-indigo-800 dark:text-indigo-300">
                 <li>• Capital (C) = valor inicial</li>
                 <li>• Montante (M) = C + Juros</li>
                 <li>• Taxa (i) = rentabilidade</li>
@@ -2394,7 +2394,7 @@ export default function AulaMatematicaFinanceira({
             {/* Regimes */}
             <div className="p-5 bg-green-50 dark:bg-green-950/40 border border-green-200 dark:border-green-800 rounded-lg">
               <h3 className="font-bold text-green-900 dark:text-green-200 mb-3">⚡ Regimes de Juros</h3>
-              <ul className="text-xs space-y-2 text-green-800 dark:text-green-300">
+              <ul className="text-lg text-foreground/85 leading-relaxed space-y-2 text-green-800 dark:text-green-300">
                 <li>• <strong>Simples:</strong> J = Cit</li>
                 <li>• <strong>Composto:</strong> M = C(1+i)^t</li>
                 <li>• <strong>Contínuo:</strong> M = C·e^(it)</li>
@@ -2405,7 +2405,7 @@ export default function AulaMatematicaFinanceira({
             {/* Operações */}
             <div className="p-5 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 rounded-lg">
               <h3 className="font-bold text-blue-900 dark:text-blue-200 mb-3">🔧 Operações Financeiras</h3>
-              <ul className="text-xs space-y-2 text-blue-800 dark:text-blue-300">
+              <ul className="text-lg text-foreground/85 leading-relaxed space-y-2 text-blue-800 dark:text-blue-300">
                 <li>• Desconto (antecipação)</li>
                 <li>• Equivalência (múltiplas datas)</li>
                 <li>• Séries/Anuidades</li>
@@ -2417,7 +2417,7 @@ export default function AulaMatematicaFinanceira({
             {/* Taxas */}
             <div className="p-5 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-lg">
               <h3 className="font-bold text-amber-900 dark:text-amber-200 mb-3">📈 Tipos de Taxa</h3>
-              <ul className="text-xs space-y-2 text-amber-800 dark:text-amber-300">
+              <ul className="text-lg text-foreground/85 leading-relaxed space-y-2 text-amber-800 dark:text-amber-300">
                 <li>• <strong>Nominal:</strong> taxa contratada</li>
                 <li>• <strong>Efetiva:</strong> taxa real</li>
                 <li>• <strong>Real:</strong> ajustada inflação</li>
@@ -2428,7 +2428,7 @@ export default function AulaMatematicaFinanceira({
             {/* Análise */}
             <div className="p-5 bg-cyan-50 dark:bg-cyan-950/40 border border-cyan-200 dark:border-cyan-800 rounded-lg">
               <h3 className="font-bold text-cyan-900 dark:text-cyan-200 mb-3">📊 Análise de Investimentos</h3>
-              <ul className="text-xs space-y-2 text-cyan-800 dark:text-cyan-300">
+              <ul className="text-lg text-foreground/85 leading-relaxed space-y-2 text-cyan-800 dark:text-cyan-300">
                 <li>• <strong>VPL:</strong> valor presente líquido</li>
                 <li>• <strong>TIR:</strong> taxa interna de retorno</li>
                 <li>• <strong>IL:</strong> índice de lucratividade</li>
@@ -2439,7 +2439,7 @@ export default function AulaMatematicaFinanceira({
             {/* Aplicações */}
             <div className="p-5 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 rounded-lg">
               <h3 className="font-bold text-rose-900 dark:text-rose-200 mb-3">🏭 Aplicações Práticas</h3>
-              <ul className="text-xs space-y-2 text-rose-800 dark:text-rose-300">
+              <ul className="text-lg text-foreground/85 leading-relaxed space-y-2 text-rose-800 dark:text-rose-300">
                 <li>• Financiamentos imobiliários</li>
                 <li>• Empréstimos pessoais</li>
                 <li>• Investimentos em ações/fundos</li>
@@ -2458,7 +2458,7 @@ export default function AulaMatematicaFinanceira({
             📋 Comparação: Juros Simples vs. Compostos
           </h2>
           <div className="overflow-x-auto">
-            <table className="w-full text-xs border-collapse border border-gray-300 dark:border-gray-700">
+            <table className="w-full text-lg text-foreground/85 leading-relaxed border-collapse border border-gray-300 dark:border-gray-700">
               <thead className="bg-indigo-600 text-white">
                 <tr>
                   <th className="border border-gray-300 dark:border-gray-700 p-3 text-left">Aspecto</th>
@@ -2507,7 +2507,7 @@ export default function AulaMatematicaFinanceira({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
               <p className="font-semibold text-gray-800 dark:text-gray-100 mb-3">Módulo 1-3: Fundamentos</p>
-              <ul className="text-xs space-y-1 text-gray-700 dark:text-gray-300">
+              <ul className="text-lg text-foreground/85 leading-relaxed space-y-1 text-gray-700 dark:text-gray-300">
                 <li>☑ Calcular juros simples e compostos</li>
                 <li>☑ Diferenciar regimes de capitalização</li>
                 <li>☑ Resolver problemas de montante</li>
@@ -2515,7 +2515,7 @@ export default function AulaMatematicaFinanceira({
             </div>
             <div className="p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
               <p className="font-semibold text-gray-800 dark:text-gray-100 mb-3">Módulo 4-6: Operações Avançadas</p>
-              <ul className="text-xs space-y-1 text-gray-700 dark:text-gray-300">
+              <ul className="text-lg text-foreground/85 leading-relaxed space-y-1 text-gray-700 dark:text-gray-300">
                 <li>☑ Aplicar desconto simples e composto</li>
                 <li>☑ Verificar equivalência de capitais</li>
                 <li>☑ Converter taxas (nominal/efetiva)</li>
@@ -2523,7 +2523,7 @@ export default function AulaMatematicaFinanceira({
             </div>
             <div className="p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
               <p className="font-semibold text-gray-800 dark:text-gray-100 mb-3">Módulo 7-8: Séries e Amortização</p>
-              <ul className="text-xs space-y-1 text-gray-700 dark:text-gray-300">
+              <ul className="text-lg text-foreground/85 leading-relaxed space-y-1 text-gray-700 dark:text-gray-300">
                 <li>☑ Calcular valor de anuidades</li>
                 <li>☑ Montar tabela de amortização</li>
                 <li>☑ Aplicar sistemas SAC e Price</li>
@@ -2531,7 +2531,7 @@ export default function AulaMatematicaFinanceira({
             </div>
             <div className="p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
               <p className="font-semibold text-gray-800 dark:text-gray-100 mb-3">Módulo 9-10: Aplicações Profissionais</p>
-              <ul className="text-xs space-y-1 text-gray-700 dark:text-gray-300">
+              <ul className="text-lg text-foreground/85 leading-relaxed space-y-1 text-gray-700 dark:text-gray-300">
                 <li>☑ Analisar viabilidade de projetos (VPL, TIR)</li>
                 <li>☑ Resolver casos Petrobras reais</li>
                 <li>☑ Dominar prova CESGRANRIO</li>
@@ -2553,24 +2553,24 @@ export default function AulaMatematicaFinanceira({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
             <div className="p-4 bg-white dark:bg-gray-900 rounded-lg border-l-4 border-indigo-500">
               <p className="font-semibold text-indigo-700 dark:text-indigo-300">💼 Carreiras Financeiras</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Analista de investimentos, gestor de projetos, consultor financeiro</p>
+              <p className="text-xl text-gray-600 dark:text-gray-400 mt-2 text-foreground/85 leading-relaxed">Analista de investimentos, gestor de projetos, consultor financeiro</p>
             </div>
             <div className="p-4 bg-white dark:bg-gray-900 rounded-lg border-l-4 border-green-500">
               <p className="font-semibold text-green-700 dark:text-green-300">🏭 Engenharia Econômica</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Avaliação de projetos, orçamentação de capital, análise de ROI</p>
+              <p className="text-xl text-gray-600 dark:text-gray-400 mt-2 text-foreground/85 leading-relaxed">Avaliação de projetos, orçamentação de capital, análise de ROI</p>
             </div>
             <div className="p-4 bg-white dark:bg-gray-900 rounded-lg border-l-4 border-blue-500">
               <p className="font-semibold text-blue-700 dark:text-blue-300">🛢️ Indústria de Petróleo</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Avaliação de blocos exploratórios, análise de viabilidade, gestão de carteira</p>
+              <p className="text-xl text-gray-600 dark:text-gray-400 mt-2 text-foreground/85 leading-relaxed">Avaliação de blocos exploratórios, análise de viabilidade, gestão de carteira</p>
             </div>
             <div className="p-4 bg-white dark:bg-gray-900 rounded-lg border-l-4 border-amber-500">
               <p className="font-semibold text-amber-700 dark:text-amber-300">📊 CESGRANRIO/Concursos</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">Pronto para questões avançadas de banca em provas oficiais</p>
+              <p className="text-xl text-gray-600 dark:text-gray-400 mt-2 text-foreground/85 leading-relaxed">Pronto para questões avançadas de banca em provas oficiais</p>
             </div>
           </div>
           <div className="p-6 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg mt-8">
             <p className="font-semibold text-blue-900 dark:text-blue-100 mb-3">📚 Próximos Passos Recomendados:</p>
-            <ul className="space-y-2 text-sm text-blue-800 dark:text-blue-200">
+            <ul className="space-y-2 text-xl text-blue-800 dark:text-blue-200 text-foreground/85 leading-relaxed">
               <li>✓ Revisite módulos 9 (Aplicações Petrobras) para casos reais</li>
               <li>✓ Pratique com questões anteriores de CESGRANRIO (2015-2024)</li>
               <li>✓ Estude derivativos e operações de hedge (tema avançado)</li>
@@ -2591,7 +2591,7 @@ export default function AulaMatematicaFinanceira({
             {/* Regimes de Capitalização */}
             <div className="p-6 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/40 dark:to-blue-950/40 rounded-lg border border-indigo-200 dark:border-indigo-800">
               <h3 className="font-bold text-indigo-900 dark:text-indigo-200 mb-4 text-lg">📊 Regimes de Capitalização</h3>
-              <div className="space-y-4 font-mono text-xs bg-white dark:bg-gray-900 p-4 rounded">
+              <div className="space-y-4 font-mono text-lg text-foreground/85 leading-relaxed bg-white dark:bg-gray-900 p-4 rounded">
                 <div>
                   <p className="font-bold text-gray-800 dark:text-gray-100">Juros Simples:</p>
                   <p className="text-gray-700 dark:text-gray-300">J = C × i × t</p>
@@ -2608,7 +2608,7 @@ export default function AulaMatematicaFinanceira({
             {/* Anuidades e Séries */}
             <div className="p-6 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/40 dark:to-emerald-950/40 rounded-lg border border-green-200 dark:border-green-800">
               <h3 className="font-bold text-green-900 dark:text-green-200 mb-4 text-lg">📈 Anuidades (Séries)</h3>
-              <div className="space-y-4 font-mono text-xs bg-white dark:bg-gray-900 p-4 rounded">
+              <div className="space-y-4 font-mono text-lg text-foreground/85 leading-relaxed bg-white dark:bg-gray-900 p-4 rounded">
                 <div>
                   <p className="font-bold text-gray-800 dark:text-gray-100">Valor Presente (A):</p>
                   <p className="text-gray-700 dark:text-gray-300">A = PMT × [(1+i)^n - 1] / [i(1+i)^n]</p>
@@ -2623,7 +2623,7 @@ export default function AulaMatematicaFinanceira({
             {/* Desconto */}
             <div className="p-6 bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/40 dark:to-yellow-950/40 rounded-lg border border-amber-200 dark:border-amber-800">
               <h3 className="font-bold text-amber-900 dark:text-amber-200 mb-4 text-lg">💸 Desconto</h3>
-              <div className="space-y-4 font-mono text-xs bg-white dark:bg-gray-900 p-4 rounded">
+              <div className="space-y-4 font-mono text-lg text-foreground/85 leading-relaxed bg-white dark:bg-gray-900 p-4 rounded">
                 <div>
                   <p className="font-bold text-gray-800 dark:text-gray-100">Desconto Simples:</p>
                   <p className="text-gray-700 dark:text-gray-300">d = N × i × t</p>
@@ -2639,7 +2639,7 @@ export default function AulaMatematicaFinanceira({
             {/* VPL e TIR */}
             <div className="p-6 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950/40 dark:to-blue-950/40 rounded-lg border border-cyan-200 dark:border-cyan-800">
               <h3 className="font-bold text-cyan-900 dark:text-cyan-200 mb-4 text-lg">💼 Análise de Investimentos</h3>
-              <div className="space-y-4 font-mono text-xs bg-white dark:bg-gray-900 p-4 rounded">
+              <div className="space-y-4 font-mono text-lg text-foreground/85 leading-relaxed bg-white dark:bg-gray-900 p-4 rounded">
                 <div>
                   <p className="font-bold text-gray-800 dark:text-gray-100">VPL:</p>
                   <p className="text-gray-700 dark:text-gray-300">VPL = Σ [FC_t / (1+i)^t] - I_0</p>
@@ -2665,15 +2665,15 @@ export default function AulaMatematicaFinanceira({
             <h3 className="font-bold text-lg text-indigo-900 dark:text-indigo-300 mb-4">
               Caso: Exploração de Poço Petrolífero
             </h3>
-            <div className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+            <div className="space-y-3 text-xl text-gray-700 dark:text-gray-300 text-foreground/85 leading-relaxed">
               <p><strong>Contexto Petrobras:</strong> Investimento inicial de R$ 2 milhões. Fluxos esperados: 800K (Y1), 900K (Y2), 1M (Y3). Taxa mínima atrativa: 15% a.a.</p>
               <p><strong>Cálculo VPL:</strong></p>
-              <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded font-mono text-xs space-y-2 mt-3">
+              <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded font-mono text-lg text-foreground/85 leading-relaxed space-y-2 mt-3">
                 <p>VPL = -2.000.000 + 800.000/(1,15)^1 + 900.000/(1,15)^2 + 1.000.000/(1,15)^3</p>
                 <p>VPL = -2.000.000 + 695.652 + 679.653 + 657.516</p>
                 <p><strong>VPL = R$ 32.821 &gt; 0 ✓ (Projeto viável!)</strong></p>
               </div>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-3">💡 O projeto gera valor, aprovação recomendada</p>
+              <p className="text-lg text-foreground/85 leading-relaxed text-gray-600 dark:text-gray-400 mt-3">💡 O projeto gera valor, aprovação recomendada</p>
             </div>
           </div>
         </div>
@@ -2689,28 +2689,28 @@ export default function AulaMatematicaFinanceira({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 bg-white dark:bg-gray-900 rounded-lg">
               <p className="font-bold text-purple-900 dark:text-purple-300 mb-2">1️⃣ Leia Cuidadosamente</p>
-              <p className="text-xs text-gray-700 dark:text-gray-300">Taxa mensal vs anual, capitalização, datas múltiplas</p>
+              <p className="text-lg text-foreground/85 leading-relaxed text-gray-700 dark:text-gray-300">Taxa mensal vs anual, capitalização, datas múltiplas</p>
             </div>
 
             <div className="p-4 bg-white dark:bg-gray-900 rounded-lg">
               <p className="font-bold text-purple-900 dark:text-purple-300 mb-2">2️⃣ Identifique o Tipo</p>
-              <p className="text-xs text-gray-700 dark:text-gray-300">Juros, desconto, série, VPL - cada um tem fórmula</p>
+              <p className="text-lg text-foreground/85 leading-relaxed text-gray-700 dark:text-gray-300">Juros, desconto, série, VPL - cada um tem fórmula</p>
             </div>
 
             <div className="p-4 bg-white dark:bg-gray-900 rounded-lg">
               <p className="font-bold text-purple-900 dark:text-purple-300 mb-2">3️⃣ Converta Unidades</p>
-              <p className="text-xs text-gray-700 dark:text-gray-300">Taxa e tempo na mesma unidade</p>
+              <p className="text-lg text-foreground/85 leading-relaxed text-gray-700 dark:text-gray-300">Taxa e tempo na mesma unidade</p>
             </div>
 
             <div className="p-4 bg-white dark:bg-gray-900 rounded-lg">
               <p className="font-bold text-purple-900 dark:text-purple-300 mb-2">4️⃣ Use Decimais</p>
-              <p className="text-xs text-gray-700 dark:text-gray-300">Sempre 0,05 em vez de 5%</p>
+              <p className="text-lg text-foreground/85 leading-relaxed text-gray-700 dark:text-gray-300">Sempre 0,05 em vez de 5%</p>
             </div>
           </div>
 
           <div className="mt-6 p-4 bg-amber-100 dark:bg-amber-950/40 border-l-4 border-amber-500 rounded-lg">
             <p className="font-bold text-amber-900 dark:text-amber-300 mb-2">⚠️ Pegadinhas Comuns:</p>
-            <ul className="text-xs text-amber-800 dark:text-amber-200 space-y-1 ml-4">
+            <ul className="text-lg text-foreground/85 leading-relaxed text-amber-800 dark:text-amber-200 space-y-1 ml-4">
               <li>• Taxa contratada ≠ taxa efetiva</li>
               <li>• Parcelas postecipadas vs antecipadas</li>
               <li>• Período começa em 0 ou 1?</li>
@@ -2731,25 +2731,25 @@ export default function AulaMatematicaFinanceira({
             <div className="p-6 bg-indigo-50 dark:bg-indigo-950/30 rounded-lg border border-indigo-200 dark:border-indigo-800">
               <p className="text-3xl font-bold text-indigo-700 dark:text-indigo-300 mb-2">10</p>
               <p className="font-semibold text-indigo-900 dark:text-indigo-100">Módulos Completos</p>
-              <p className="text-xs text-indigo-700 dark:text-indigo-300 mt-2">Do básico ao avançado</p>
+              <p className="text-lg text-foreground/85 leading-relaxed text-indigo-700 dark:text-indigo-300 mt-2">Do básico ao avançado</p>
             </div>
 
             <div className="p-6 bg-green-50 dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800">
               <p className="text-3xl font-bold text-green-700 dark:text-green-300 mb-2">30+</p>
               <p className="font-semibold text-green-900 dark:text-green-100">Fórmulas Dominadas</p>
-              <p className="text-xs text-green-700 dark:text-green-300 mt-2">Juros, séries, VPL, TIR...</p>
+              <p className="text-lg text-foreground/85 leading-relaxed text-green-700 dark:text-green-300 mt-2">Juros, séries, VPL, TIR...</p>
             </div>
 
             <div className="p-6 bg-blue-50 dark:bg-blue-950/30 rounded-lg border border-blue-200 dark:border-blue-800">
               <p className="text-3xl font-bold text-blue-700 dark:text-blue-300 mb-2">∞</p>
               <p className="font-semibold text-blue-900 dark:text-blue-100">Aplicações Práticas</p>
-              <p className="text-xs text-blue-700 dark:text-blue-300 mt-2">Petrobras, financiamentos...</p>
+              <p className="text-lg text-foreground/85 leading-relaxed text-blue-700 dark:text-blue-300 mt-2">Petrobras, financiamentos...</p>
             </div>
           </div>
 
           <div className="p-6 bg-gradient-to-r from-slate-50 to-gray-50 dark:from-slate-950 dark:to-gray-950 rounded-lg border border-gray-200 dark:border-gray-800">
             <h3 className="font-bold text-lg text-slate-800 dark:text-slate-100 mb-4">Competências Desenvolvidas:</h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-700 dark:text-gray-300">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xl text-gray-700 dark:text-gray-300 text-foreground/85 leading-relaxed">
               <li className="flex items-start">
                 <span className="text-green-600 dark:text-green-400 mr-2">✓</span>
                 <span>Cálculo de juros (simples e compostos)</span>
@@ -2797,32 +2797,32 @@ export default function AulaMatematicaFinanceira({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
               <p className="font-bold text-gray-900 dark:text-gray-100 mb-3">📊 Estatística & Probabilidade</p>
-              <p className="text-sm text-gray-700 dark:text-gray-300">Análise de risco em investimentos, distribuição de probabilidades de retorno, simulações Monte Carlo para projeção de fluxos</p>
+              <p className="text-xl text-gray-700 dark:text-gray-300 text-foreground/85 leading-relaxed">Análise de risco em investimentos, distribuição de probabilidades de retorno, simulações Monte Carlo para projeção de fluxos</p>
             </div>
 
             <div className="p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
               <p className="font-bold text-gray-900 dark:text-gray-100 mb-3">📈 Contabilidade</p>
-              <p className="text-sm text-gray-700 dark:text-gray-300">Depreciação de ativos, provisão de juros, análise de fluxos de caixa, reconciliação contábil-financeira</p>
+              <p className="text-xl text-gray-700 dark:text-gray-300 text-foreground/85 leading-relaxed">Depreciação de ativos, provisão de juros, análise de fluxos de caixa, reconciliação contábil-financeira</p>
             </div>
 
             <div className="p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
               <p className="font-bold text-gray-900 dark:text-gray-100 mb-3">🏗️ Engenharia Econômica</p>
-              <p className="text-sm text-gray-700 dark:text-gray-300">Avaliação de projetos, custo-benefício, análise de alternativas de investimento, payback descontado</p>
+              <p className="text-xl text-gray-700 dark:text-gray-300 text-foreground/85 leading-relaxed">Avaliação de projetos, custo-benefício, análise de alternativas de investimento, payback descontado</p>
             </div>
 
             <div className="p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
               <p className="font-bold text-gray-900 dark:text-gray-100 mb-3">💼 Administração</p>
-              <p className="text-sm text-gray-700 dark:text-gray-300">Gestão de tesouraria, política de dividendos, alavancagem financeira, estrutura de capital</p>
+              <p className="text-xl text-gray-700 dark:text-gray-300 text-foreground/85 leading-relaxed">Gestão de tesouraria, política de dividendos, alavancagem financeira, estrutura de capital</p>
             </div>
 
             <div className="p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
               <p className="font-bold text-gray-900 dark:text-gray-100 mb-3">💻 Programação</p>
-              <p className="text-sm text-gray-700 dark:text-gray-300">Implementação em Excel/VBA, Python (numpy, pandas), C# para sistemas financeiros, APIs de cálculo</p>
+              <p className="text-xl text-gray-700 dark:text-gray-300 text-foreground/85 leading-relaxed">Implementação em Excel/VBA, Python (numpy, pandas), C# para sistemas financeiros, APIs de cálculo</p>
             </div>
 
             <div className="p-5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
               <p className="font-bold text-gray-900 dark:text-gray-100 mb-3">⚖️ Direito</p>
-              <p className="text-sm text-gray-700 dark:text-gray-300">Contratos de financiamento, tributação (IR, IOF), regulamentação do mercado financeiro</p>
+              <p className="text-xl text-gray-700 dark:text-gray-300 text-foreground/85 leading-relaxed">Contratos de financiamento, tributação (IR, IOF), regulamentação do mercado financeiro</p>
             </div>
           </div>
         </div>
@@ -2835,7 +2835,7 @@ export default function AulaMatematicaFinanceira({
           <p className="text-gray-800 dark:text-gray-200 font-semibold mb-2">
             Domínio Completo em Matemática Financeira
           </p>
-          <p className="text-sm text-gray-700 dark:text-gray-400">
+          <p className="text-xl text-gray-700 dark:text-gray-400 text-foreground/85 leading-relaxed">
             Pronto para CESGRANRIO, análise de projetos e mercado financeiro! 🚀
           </p>
         </div>

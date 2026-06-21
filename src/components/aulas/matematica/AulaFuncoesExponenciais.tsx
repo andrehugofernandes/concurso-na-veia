@@ -232,7 +232,7 @@ export default function AulaFuncoesExponenciais({
 
               <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Regras-Chave da Potenciação</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xl text-foreground/85 leading-relaxed">
                   <div className="bg-white dark:bg-slate-800 p-3 rounded border border-amber-200 dark:border-amber-700">
                     <p className="font-mono font-bold text-amber-700 dark:text-amber-300">aᵐ × aⁿ = aᵐ⁺ⁿ</p>
                   </div>
@@ -271,7 +271,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuZap />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Não dependa de sorte. Dependa das propriedades matemáticas fundamentais que estruturam toda a exponenciação:
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -279,7 +279,7 @@ export default function AulaFuncoesExponenciais({
                           <p className="font-mono font-bold text-blue-700 text-lg">
                             aᵐ × aⁿ = aᵐ⁺ⁿ
                           </p>
-                          <p className="text-xs text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
                             Multiplicação de Mesma Base = Soma os expoentes.
                           </p>
                         </div>
@@ -287,7 +287,7 @@ export default function AulaFuncoesExponenciais({
                           <p className="font-mono font-bold text-blue-700 text-lg">
                             aᵐ ÷ aⁿ = aᵐ⁻ⁿ
                           </p>
-                          <p className="text-xs text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
                             Divisão de Mesma Base = Subtrai os expoentes.
                           </p>
                         </div>
@@ -295,7 +295,7 @@ export default function AulaFuncoesExponenciais({
                           <p className="font-mono font-bold text-blue-700 text-lg">
                             (aᵐ)ⁿ = aᵐˣⁿ
                           </p>
-                          <p className="text-xs text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
                             Potência de Potência = Multiplica os expoentes.
                           </p>
                         </div>
@@ -303,7 +303,7 @@ export default function AulaFuncoesExponenciais({
                           <p className="font-mono font-bold text-blue-700 text-lg">
                             a⁻ⁿ = 1/aⁿ
                           </p>
-                          <p className="text-xs text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
                             Expoente Negativo = Inverte a base.
                           </p>
                         </div>
@@ -316,21 +316,21 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Veja como essas regras funcionam em situações reais:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-sky-500/10 p-4 rounded-lg border border-sky-500/20">
-                          <p className="text-sm font-bold text-sky-700 mb-2">Exemplo 1: Simplificação</p>
-                          <p className="text-sm font-mono">2³ × 2⁵ = 2⁸ = 256 (em vez de 8 × 32)</p>
+                          <p className="text-xl font-bold text-sky-700 mb-2 text-foreground/85 leading-relaxed">Exemplo 1: Simplificação</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">2³ × 2⁵ = 2⁸ = 256 (em vez de 8 × 32)</p>
                         </div>
                         <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/20">
-                          <p className="text-sm font-bold text-blue-700 mb-2">Exemplo 2: Base Petrobras - Crescimento de Reservas</p>
-                          <p className="text-sm">Se a produção quadruplica a cada ano (×4), em 3 anos: 4³ = 64× de aumento inicial.</p>
+                          <p className="text-xl font-bold text-blue-700 mb-2 text-foreground/85 leading-relaxed">Exemplo 2: Base Petrobras - Crescimento de Reservas</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Se a produção quadruplica a cada ano (×4), em 3 anos: 4³ = 64× de aumento inicial.</p>
                         </div>
                         <div className="bg-indigo-500/10 p-4 rounded-lg border border-indigo-500/20">
-                          <p className="text-sm font-bold text-indigo-700 mb-2">Exemplo 3: Expoente Negativo</p>
-                          <p className="text-sm font-mono">3⁻² = 1/9 (processos de decaimento)</p>
+                          <p className="text-xl font-bold text-indigo-700 mb-2 text-foreground/85 leading-relaxed">Exemplo 3: Expoente Negativo</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">3⁻² = 1/9 (processos de decaimento)</p>
                         </div>
                       </div>
                     </div>
@@ -341,18 +341,18 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Domine esses truques para não cometer erros bobos em prova:
                       </p>
                       <div className="space-y-2">
                         <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-emerald-700">📌 Memorize: 2ⁿ = 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024</p>
+                          <p className="text-xl font-bold text-emerald-700 text-foreground/85 leading-relaxed">📌 Memorize: 2ⁿ = 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024</p>
                         </div>
                         <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-cyan-700">📌 Sempre simplifique antes de calcular fatoriais</p>
+                          <p className="text-xl font-bold text-cyan-700 text-foreground/85 leading-relaxed">📌 Sempre simplifique antes de calcular fatoriais</p>
                         </div>
                         <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-blue-700">📌 Base negativa + expoente par = resultado positivo</p>
+                          <p className="text-xl font-bold text-blue-700 text-foreground/85 leading-relaxed">📌 Base negativa + expoente par = resultado positivo</p>
                         </div>
                       </div>
                     </div>
@@ -474,10 +474,10 @@ export default function AulaFuncoesExponenciais({
               title: "O Truque da Mesma Base",
               content: (
                 <div className="space-y-4 text-left">
-                  <p className="text-sm italic">"Quando vejo mesma base, automaticamente faço a operação dos expoentes"</p>
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">"Quando vejo mesma base, automaticamente faço a operação dos expoentes"</p>
                   <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl font-mono text-center">
-                    <p className="text-sm">aᵐ × aⁿ = a^(m+n)</p>
-                    <p className="text-sm mt-2">aᵐ ÷ aⁿ = a^(m-n)</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">aᵐ × aⁿ = a^(m+n)</p>
+                    <p className="text-xl mt-2 text-foreground/85 leading-relaxed">aᵐ ÷ aⁿ = a^(m-n)</p>
                   </div>
                 </div>
               )
@@ -540,7 +540,7 @@ export default function AulaFuncoesExponenciais({
 
               <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
                 <h4 className="font-bold text-foreground">Características Essenciais de f(x) = aˣ</h4>
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                   <div className="bg-white dark:bg-slate-800 p-3 rounded border border-blue-200 dark:border-blue-700">
                     <p className="font-semibold">Domínio:</p> ℝ (todos os reais)
                   </div>
@@ -576,17 +576,17 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Todo gráfico exponencial possui propriedades matemáticas imutáveis que dependem da base:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-emerald-500/10 p-4 rounded-lg border border-emerald-500/20">
-                          <p className="text-sm font-bold text-emerald-700">Base a {`>`} 1: CRESCENTE</p>
-                          <p className="text-sm">Passa por (0, 1), sobe para ∞ quando x→∞, desce para 0 quando x→-∞</p>
+                          <p className="text-xl font-bold text-emerald-700 text-foreground/85 leading-relaxed">Base a {`>`} 1: CRESCENTE</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Passa por (0, 1), sobe para ∞ quando x→∞, desce para 0 quando x→-∞</p>
                         </div>
                         <div className="bg-teal-500/10 p-4 rounded-lg border border-teal-500/20">
-                          <p className="text-sm font-bold text-teal-700">Base 0 {`<`} a {`<`} 1: DECRESCENTE</p>
-                          <p className="text-sm">Passa por (0, 1), desce para 0 quando x→∞, sobe para ∞ quando x→-∞</p>
+                          <p className="text-xl font-bold text-teal-700 text-foreground/85 leading-relaxed">Base 0 {`<`} a {`<`} 1: DECRESCENTE</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Passa por (0, 1), desce para 0 quando x→∞, sobe para ∞ quando x→-∞</p>
                         </div>
                       </div>
                     </div>
@@ -597,21 +597,21 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTrendingUp />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Compare o comportamento de diferentes bases em contextos práticos:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
-                          <p className="text-sm font-bold text-green-700">Exemplo 1: Competição de Crescimento</p>
-                          <p className="text-sm">Em x=10: 2¹⁰=1024, 10¹⁰=10 bilhões. Base maior = crescimento MUITO mais rápido.</p>
+                          <p className="text-xl font-bold text-green-700 text-foreground/85 leading-relaxed">Exemplo 1: Competição de Crescimento</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Em x=10: 2¹⁰=1024, 10¹⁰=10 bilhões. Base maior = crescimento MUITO mais rápido.</p>
                         </div>
                         <div className="bg-cyan-500/10 p-4 rounded-lg border border-cyan-500/20">
-                          <p className="text-sm font-bold text-cyan-700">Exemplo 2: Petrobras - Depreciação de Equipamento</p>
-                          <p className="text-sm">Valor = V₀ × (0,9)ᵗ representa 10% de perda anual. O gráfico desce.</p>
+                          <p className="text-xl font-bold text-cyan-700 text-foreground/85 leading-relaxed">Exemplo 2: Petrobras - Depreciação de Equipamento</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Valor = V₀ × (0,9)ᵗ representa 10% de perda anual. O gráfico desce.</p>
                         </div>
                         <div className="bg-sky-500/10 p-4 rounded-lg border border-sky-500/20">
-                          <p className="text-sm font-bold text-sky-700">Exemplo 3: Juros Compostos</p>
-                          <p className="text-sm">M = C × (1,05)ᵗ - base 1,05 garante crescimento de 5% ao período.</p>
+                          <p className="text-xl font-bold text-sky-700 text-foreground/85 leading-relaxed">Exemplo 3: Juros Compostos</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">M = C × (1,05)ᵗ - base 1,05 garante crescimento de 5% ao período.</p>
                         </div>
                       </div>
                     </div>
@@ -622,18 +622,18 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Identifique rapidamente o tipo de gráfico sem cálculos:
                       </p>
                       <div className="space-y-2">
                         <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-emerald-700">📌 Curva para cima (parecendo "J") = a {`>`} 1</p>
+                          <p className="text-xl font-bold text-emerald-700 text-foreground/85 leading-relaxed">📌 Curva para cima (parecendo "J") = a {`>`} 1</p>
                         </div>
                         <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-teal-700">📌 Curva para baixo (tipo "∩") = 0 {`<`} a {`<`} 1</p>
+                          <p className="text-xl font-bold text-teal-700 text-foreground/85 leading-relaxed">📌 Curva para baixo (tipo "∩") = 0 {`<`} a {`<`} 1</p>
                         </div>
                         <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-cyan-700">📌 SEMPRE passa por (0, 1), pois aº = 1</p>
+                          <p className="text-xl font-bold text-cyan-700 text-foreground/85 leading-relaxed">📌 SEMPRE passa por (0, 1), pois aº = 1</p>
                         </div>
                       </div>
                     </div>
@@ -748,10 +748,10 @@ export default function AulaFuncoesExponenciais({
               title: "A Regra do Ponto Fixo",
               content: (
                 <div className="space-y-4 text-left">
-                  <p className="text-sm">Toda exponencial passa por (0, 1). Use isso como referência!</p>
+                  <p className="text-xl text-foreground/85 leading-relaxed">Toda exponencial passa por (0, 1). Use isso como referência!</p>
                   <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
-                    <p className="text-sm font-mono text-center">f(0) = a⁰ = 1 ✓</p>
-                    <p className="text-xs text-center text-muted-foreground mt-2">Independente da base, sempre verdade</p>
+                    <p className="text-xl font-mono text-center text-foreground/85 leading-relaxed">f(0) = a⁰ = 1 ✓</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-center text-muted-foreground mt-2">Independente da base, sempre verdade</p>
                   </div>
                 </div>
               )
@@ -798,7 +798,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         O objetivo final é sempre chegar num formato onde não haja dúvida das intenções:
                       </p>
                       <div className="bg-cyan-500/10 p-4 text-center rounded-xl border border-cyan-500/20">
@@ -806,7 +806,7 @@ export default function AulaFuncoesExponenciais({
                           aˣ = aʸ ⟹ x = y
                         </p>
                       </div>
-                      <p className="text-sm mt-2 text-muted-foreground">
+                      <p className="text-xl mt-2 text-muted-foreground text-foreground/85 leading-relaxed">
                         Se <code>4ˣ = 8</code>, nós precisamos transformar o 4 em <code>2²</code> e o 8 em <code>2³</code>. Assim teremos <code>2²ˣ = 2³</code>. Cortam-se os números gigantes da base, ficamos com: <code>2x = 3</code>.
                       </p>
                     </div>
@@ -817,21 +817,21 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Veja como resolver diferentes tipos de equações exponenciais:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-sky-500/10 p-4 rounded-lg border border-sky-500/20">
-                          <p className="text-sm font-bold text-sky-700 mb-2">Caso 1: Mesma Base Directa</p>
-                          <p className="text-sm font-mono">8ˣ = 32 → (2³)ˣ = 2⁵ → 2³ˣ = 2⁵ → 3x = 5 → x = 5/3</p>
+                          <p className="text-xl font-bold text-sky-700 mb-2 text-foreground/85 leading-relaxed">Caso 1: Mesma Base Directa</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">8ˣ = 32 → (2³)ˣ = 2⁵ → 2³ˣ = 2⁵ → 3x = 5 → x = 5/3</p>
                         </div>
                         <div className="bg-cyan-500/10 p-4 rounded-lg border border-cyan-500/20">
-                          <p className="text-sm font-bold text-cyan-700 mb-2">Caso 2: Petrobras - Modelo de Crescimento</p>
-                          <p className="text-sm">Produção: P(t) = 100 × 2ᵗ. Se P(t) = 1600, então 2ᵗ = 16 = 2⁴, logo t = 4 anos.</p>
+                          <p className="text-xl font-bold text-cyan-700 mb-2 text-foreground/85 leading-relaxed">Caso 2: Petrobras - Modelo de Crescimento</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Produção: P(t) = 100 × 2ᵗ. Se P(t) = 1600, então 2ᵗ = 16 = 2⁴, logo t = 4 anos.</p>
                         </div>
                         <div className="bg-indigo-500/10 p-4 rounded-lg border border-indigo-500/20">
-                          <p className="text-sm font-bold text-indigo-700 mb-2">Caso 3: Artifício Algébrico</p>
-                          <p className="text-sm">3²ˣ + 3ˣ - 6 = 0 → Faça y = 3ˣ → y² + y - 6 = 0 → y = 2 ou y = -3 → 3ˣ = 2</p>
+                          <p className="text-xl font-bold text-indigo-700 mb-2 text-foreground/85 leading-relaxed">Caso 3: Artifício Algébrico</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">3²ˣ + 3ˣ - 6 = 0 → Faça y = 3ˣ → y² + y - 6 = 0 → y = 2 ou y = -3 → 3ˣ = 2</p>
                         </div>
                       </div>
                     </div>
@@ -842,18 +842,18 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuZap />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Use essas táticas para evitar armadilhas:
                       </p>
                       <div className="space-y-2">
                         <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-cyan-700">📌 Sempre reduza a bases primas (2, 3, 5, 7, 11...)</p>
+                          <p className="text-xl font-bold text-cyan-700 text-foreground/85 leading-relaxed">📌 Sempre reduza a bases primas (2, 3, 5, 7, 11...)</p>
                         </div>
                         <div className="p-3 bg-sky-500/10 border border-sky-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-sky-700">📌 Se tiver 2 bases diferentes, use logaritmo</p>
+                          <p className="text-xl font-bold text-sky-700 text-foreground/85 leading-relaxed">📌 Se tiver 2 bases diferentes, use logaritmo</p>
                         </div>
                         <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-indigo-700">📌 Para equações quadradas, use substituição y = aˣ</p>
+                          <p className="text-xl font-bold text-indigo-700 text-foreground/85 leading-relaxed">📌 Para equações quadradas, use substituição y = aˣ</p>
                         </div>
                       </div>
                     </div>
@@ -944,7 +944,7 @@ export default function AulaFuncoesExponenciais({
                           N(t) = N₀ × aᵗ
                         </p>
                       </div>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         O <strong>N₀</strong> é o valor exato daquele dado (Bactérias, Dinheiro inicial etc) no Início (Tempo 0). E o <strong>a</strong> é a variação (se o texto disser que sobe 20% todo mês, ele será 1,20).
                       </p>
                     </div>
@@ -955,21 +955,21 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Veja exemplos reais de crescimento e decaimento exponencial:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
-                          <p className="text-sm font-bold text-green-700 mb-2">Exemplo 1: Crescimento Bacteriano</p>
-                          <p className="text-sm">B(t) = 1000 × 2ᵗ (bactérias dobram a cada hora). Em 4 horas: B(4) = 1000 × 16 = 16.000 bactérias.</p>
+                          <p className="text-xl font-bold text-green-700 mb-2 text-foreground/85 leading-relaxed">Exemplo 1: Crescimento Bacteriano</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">B(t) = 1000 × 2ᵗ (bactérias dobram a cada hora). Em 4 horas: B(4) = 1000 × 16 = 16.000 bactérias.</p>
                         </div>
                         <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/20">
-                          <p className="text-sm font-bold text-blue-700 mb-2">Exemplo 2: Juros Compostos Petrobras</p>
-                          <p className="text-sm">Se investir R$ 10.000 a 10% ao ano: M(t) = 10.000 × (1,1)ᵗ. Em 5 anos: M(5) = 10.000 × 1,61051 ≈ R$ 16.105.</p>
+                          <p className="text-xl font-bold text-blue-700 mb-2 text-foreground/85 leading-relaxed">Exemplo 2: Juros Compostos Petrobras</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Se investir R$ 10.000 a 10% ao ano: M(t) = 10.000 × (1,1)ᵗ. Em 5 anos: M(5) = 10.000 × 1,61051 ≈ R$ 16.105.</p>
                         </div>
                         <div className="bg-red-500/10 p-4 rounded-lg border border-red-500/20">
-                          <p className="text-sm font-bold text-red-700 mb-2">Exemplo 3: Decaimento Radioativo</p>
-                          <p className="text-sm">N(t) = N₀ × (0,5)ᵗ/ᵀ (vida média T). Metade desaparece a cada período T.</p>
+                          <p className="text-xl font-bold text-red-700 mb-2 text-foreground/85 leading-relaxed">Exemplo 3: Decaimento Radioativo</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">N(t) = N₀ × (0,5)ᵗ/ᵀ (vida média T). Metade desaparece a cada período T.</p>
                         </div>
                       </div>
                     </div>
@@ -980,18 +980,18 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Domine a leitura do enunciado para extrair os dados corretos:
                       </p>
                       <div className="space-y-2">
                         <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-blue-700">📌 "Dobra a cada..." → multiplica por 2</p>
+                          <p className="text-xl font-bold text-blue-700 text-foreground/85 leading-relaxed">📌 "Dobra a cada..." → multiplica por 2</p>
                         </div>
                         <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-indigo-700">📌 "Cresce 5% ao..." → multiplica por 1,05</p>
+                          <p className="text-xl font-bold text-indigo-700 text-foreground/85 leading-relaxed">📌 "Cresce 5% ao..." → multiplica por 1,05</p>
                         </div>
                         <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-cyan-700">📌 "Reduz em 20% a cada..." → multiplica por 0,80</p>
+                          <p className="text-xl font-bold text-cyan-700 text-foreground/85 leading-relaxed">📌 "Reduz em 20% a cada..." → multiplica por 0,80</p>
                         </div>
                       </div>
                     </div>
@@ -1081,8 +1081,8 @@ export default function AulaFuncoesExponenciais({
               title: "O Macete da Base",
               content: (
                 <div className="space-y-4 text-left">
-                  <p className="text-sm">Percentual → Base da fórmula é imediato:</p>
-                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl font-bold text-sm text-center">
+                  <p className="text-xl text-foreground/85 leading-relaxed">Percentual → Base da fórmula é imediato:</p>
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl font-bold text-xl text-center text-foreground/85 leading-relaxed">
                     <p>+5% ao mês → a = 1.05</p>
                     <p className="mt-2">-10% ao ano → a = 0.90</p>
                     <p className="mt-2">Dobra → a = 2</p>
@@ -1137,20 +1137,20 @@ export default function AulaFuncoesExponenciais({
                       </p>
                       <div className="space-y-3">
                         <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
-                          <p className="text-sm font-bold text-amber-700">Regras (M1)</p>
-                          <p className="text-sm">aᵐ × aⁿ = aᵐ⁺ⁿ, aᵐ ÷ aⁿ = aᵐ⁻ⁿ, (aᵐ)ⁿ = aᵐˣⁿ</p>
+                          <p className="text-xl font-bold text-amber-700 text-foreground/85 leading-relaxed">Regras (M1)</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">aᵐ × aⁿ = aᵐ⁺ⁿ, aᵐ ÷ aⁿ = aᵐ⁻ⁿ, (aᵐ)ⁿ = aᵐˣⁿ</p>
                         </div>
                         <div className="bg-orange-500/10 p-4 rounded-lg border border-orange-500/20">
-                          <p className="text-sm font-bold text-orange-700">Gráficos (M2)</p>
-                          <p className="text-sm">Passa por (0,1), crescimento/decaimento conforme a base</p>
+                          <p className="text-xl font-bold text-orange-700 text-foreground/85 leading-relaxed">Gráficos (M2)</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Passa por (0,1), crescimento/decaimento conforme a base</p>
                         </div>
                         <div className="bg-yellow-500/10 p-4 rounded-lg border border-yellow-500/20">
-                          <p className="text-sm font-bold text-yellow-700">Equações (M3)</p>
-                          <p className="text-sm">Igualar bases e expoentes, ou usar substituição</p>
+                          <p className="text-xl font-bold text-yellow-700 text-foreground/85 leading-relaxed">Equações (M3)</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Igualar bases e expoentes, ou usar substituição</p>
                         </div>
                         <div className="bg-red-500/10 p-4 rounded-lg border border-red-500/20">
-                          <p className="text-sm font-bold text-red-700">Aplicações (M4)</p>
-                          <p className="text-sm">N(t) = N₀ × aᵗ para crescimento/decaimento real</p>
+                          <p className="text-xl font-bold text-red-700 text-foreground/85 leading-relaxed">Aplicações (M4)</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">N(t) = N₀ × aᵗ para crescimento/decaimento real</p>
                         </div>
                       </div>
                     </div>
@@ -1161,17 +1161,17 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Problemas que combinam múltiplos conceitos:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
-                          <p className="text-sm font-bold text-amber-700 mb-2">Problema Integrado 1</p>
-                          <p className="text-sm">Um investimento dobra a cada 5 anos (a=2, t em períodos de 5). Se começou com R$ 1000, quanto terá em 20 anos? Resposta: 1000 × 2⁴ = 16.000</p>
+                          <p className="text-xl font-bold text-amber-700 mb-2 text-foreground/85 leading-relaxed">Problema Integrado 1</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Um investimento dobra a cada 5 anos (a=2, t em períodos de 5). Se começou com R$ 1000, quanto terá em 20 anos? Resposta: 1000 × 2⁴ = 16.000</p>
                         </div>
                         <div className="bg-orange-500/10 p-4 rounded-lg border border-orange-500/20">
-                          <p className="text-sm font-bold text-orange-700 mb-2">Problema Integrado 2</p>
-                          <p className="text-sm">Petrobras: Produção P(t) = 100 × (1,2)ᵗ barris/dia. Quando atinge 172,8 barris/dia? Resolve 1,2ᵗ = 1,728 = 1,2³, logo t = 3 dias.</p>
+                          <p className="text-xl font-bold text-orange-700 mb-2 text-foreground/85 leading-relaxed">Problema Integrado 2</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Petrobras: Produção P(t) = 100 × (1,2)ᵗ barris/dia. Quando atinge 172,8 barris/dia? Resolve 1,2ᵗ = 1,728 = 1,2³, logo t = 3 dias.</p>
                         </div>
                       </div>
                     </div>
@@ -1182,18 +1182,18 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Quando enfrentar problemas complexos:
                       </p>
                       <div className="space-y-2">
                         <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-amber-700">📌 Passo 1: Identifique N₀ (valor inicial)</p>
+                          <p className="text-xl font-bold text-amber-700 text-foreground/85 leading-relaxed">📌 Passo 1: Identifique N₀ (valor inicial)</p>
                         </div>
                         <div className="p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-orange-700">📌 Passo 2: Identifique a (crescimento/taxa)</p>
+                          <p className="text-xl font-bold text-orange-700 text-foreground/85 leading-relaxed">📌 Passo 2: Identifique a (crescimento/taxa)</p>
                         </div>
                         <div className="p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-yellow-700">📌 Passo 3: Montar e resolver N(t) = N₀ × aᵗ</p>
+                          <p className="text-xl font-bold text-yellow-700 text-foreground/85 leading-relaxed">📌 Passo 3: Montar e resolver N(t) = N₀ × aᵗ</p>
                         </div>
                       </div>
                     </div>
@@ -1283,7 +1283,7 @@ export default function AulaFuncoesExponenciais({
               title: "Antes de Responder",
               content: (
                 <div className="space-y-4 text-left">
-                  <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-sm font-bold">
+                  <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-xl font-bold text-foreground/85 leading-relaxed">
                     <p>✓ Identifiquei N₀?</p>
                     <p className="mt-2">✓ Identifiquei a?</p>
                     <p className="mt-2">✓ Montei N(t) = N₀ × aᵗ?</p>
@@ -1341,9 +1341,9 @@ export default function AulaFuncoesExponenciais({
                         <p className="font-mono text-lg font-bold text-rose-700">
                           e = lim(1 + 1/n)ⁿ quando n→∞
                         </p>
-                        <p className="text-sm text-muted-foreground mt-2">Aproximadamente 2.71828182845904523536...</p>
+                        <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Aproximadamente 2.71828182845904523536...</p>
                       </div>
-                      <p className="text-sm">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Por que importa? Porque e é a base onde <strong>a derivada equals a própria função</strong>: d/dx(eˣ) = eˣ. É mágico!
                       </p>
                     </div>
@@ -1354,21 +1354,21 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Onde você encontra e na vida real:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-pink-500/10 p-4 rounded-lg border border-pink-500/20">
-                          <p className="text-sm font-bold text-pink-700 mb-2">Juros Compostos Contínuos</p>
-                          <p className="text-sm">M = P × e^(rt) para capitalização contínua. Petrobras usa assim para investimentos.</p>
+                          <p className="text-xl font-bold text-pink-700 mb-2 text-foreground/85 leading-relaxed">Juros Compostos Contínuos</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">M = P × e^(rt) para capitalização contínua. Petrobras usa assim para investimentos.</p>
                         </div>
                         <div className="bg-rose-500/10 p-4 rounded-lg border border-rose-500/20">
-                          <p className="text-sm font-bold text-rose-700 mb-2">Decaimento Radioativo</p>
-                          <p className="text-sm">N(t) = N₀ × e^(-λt) modela perda contínua de massa em reações nucleares.</p>
+                          <p className="text-xl font-bold text-rose-700 mb-2 text-foreground/85 leading-relaxed">Decaimento Radioativo</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">N(t) = N₀ × e^(-λt) modela perda contínua de massa em reações nucleares.</p>
                         </div>
                         <div className="bg-red-500/10 p-4 rounded-lg border border-red-500/20">
-                          <p className="text-sm font-bold text-red-700 mb-2">Crescimento Biológico</p>
-                          <p className="text-sm">P(t) = P₀ × e^(kt) descreve crescimento de populações sem limites.</p>
+                          <p className="text-xl font-bold text-red-700 mb-2 text-foreground/85 leading-relaxed">Crescimento Biológico</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">P(t) = P₀ × e^(kt) descreve crescimento de populações sem limites.</p>
                         </div>
                       </div>
                     </div>
@@ -1379,18 +1379,18 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Trabalhe com e na calculadora:
                       </p>
                       <div className="space-y-2">
                         <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-rose-700">📌 e ≈ 2.718 (memorize com 3 casas decimais)</p>
+                          <p className="text-xl font-bold text-rose-700 text-foreground/85 leading-relaxed">📌 e ≈ 2.718 (memorize com 3 casas decimais)</p>
                         </div>
                         <div className="p-3 bg-pink-500/10 border border-pink-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-pink-700">📌 ln(e) = 1 (logaritmo natural)</p>
+                          <p className="text-xl font-bold text-pink-700 text-foreground/85 leading-relaxed">📌 ln(e) = 1 (logaritmo natural)</p>
                         </div>
                         <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-red-700">📌 e⁰ = 1, e¹ = e, e² ≈ 7.39</p>
+                          <p className="text-xl font-bold text-red-700 text-foreground/85 leading-relaxed">📌 e⁰ = 1, e¹ = e, e² ≈ 7.39</p>
                         </div>
                       </div>
                     </div>
@@ -1480,10 +1480,10 @@ export default function AulaFuncoesExponenciais({
               title: "O Número Mágico",
               content: (
                 <div className="space-y-4 text-left">
-                  <p className="text-sm italic">"e é a única base onde a derivada = a função original"</p>
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">"e é a única base onde a derivada = a função original"</p>
                   <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl font-mono text-center">
-                    <p className="text-sm">d/dx(eˣ) = eˣ ✓</p>
-                    <p className="text-sm mt-2">d/dx(2ˣ) ≠ 2ˣ ✗</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">d/dx(eˣ) = eˣ ✓</p>
+                    <p className="text-xl mt-2 text-foreground/85 leading-relaxed">d/dx(2ˣ) ≠ 2ˣ ✗</p>
                   </div>
                 </div>
               )
@@ -1530,25 +1530,25 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuZap />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         As transformações aplicadas a f(x) = eˣ incluem:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-indigo-500/10 p-3 rounded-lg border border-indigo-500/20">
-                          <p className="font-mono text-sm font-bold text-indigo-700">c*f(x)</p>
-                          <p className="text-xs text-muted-foreground mt-1">Multiplicação por constante (ampliação vertical)</p>
+                          <p className="font-mono text-xl font-bold text-indigo-700 text-foreground/85 leading-relaxed">c*f(x)</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Multiplicação por constante (ampliação vertical)</p>
                         </div>
                         <div className="bg-purple-500/10 p-3 rounded-lg border border-purple-500/20">
-                          <p className="font-mono text-sm font-bold text-purple-700">f(x - h)</p>
-                          <p className="text-xs text-muted-foreground mt-1">Deslocamento horizontal para direita</p>
+                          <p className="font-mono text-xl font-bold text-purple-700 text-foreground/85 leading-relaxed">f(x - h)</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Deslocamento horizontal para direita</p>
                         </div>
                         <div className="bg-violet-500/10 p-3 rounded-lg border border-violet-500/20">
-                          <p className="font-mono text-sm font-bold text-violet-700">f(x) + k</p>
-                          <p className="text-xs text-muted-foreground mt-1">Deslocamento vertical para cima</p>
+                          <p className="font-mono text-xl font-bold text-violet-700 text-foreground/85 leading-relaxed">f(x) + k</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Deslocamento vertical para cima</p>
                         </div>
                         <div className="bg-fuchsia-500/10 p-3 rounded-lg border border-fuchsia-500/20">
-                          <p className="font-mono text-sm font-bold text-fuchsia-700">-f(x)</p>
-                          <p className="text-xs text-muted-foreground mt-1">Reflexão sobre eixo x</p>
+                          <p className="font-mono text-xl font-bold text-fuchsia-700 text-foreground/85 leading-relaxed">-f(x)</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Reflexão sobre eixo x</p>
                         </div>
                       </div>
                     </div>
@@ -1559,24 +1559,24 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Veja como combinar transformações em problemas reais:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-indigo-500/10 p-4 rounded-lg border border-indigo-500/20">
-                          <p className="text-sm font-bold text-indigo-700 mb-2">Exemplo 1: Ampliação</p>
-                          <p className="text-sm font-mono">y = 3 × eˣ (cresce 3× mais rápido)</p>
-                          <p className="text-sm">Ainda passa por (0,3) em vez de (0,1).</p>
+                          <p className="text-xl font-bold text-indigo-700 mb-2 text-foreground/85 leading-relaxed">Exemplo 1: Ampliação</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">y = 3 × eˣ (cresce 3× mais rápido)</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Ainda passa por (0,3) em vez de (0,1).</p>
                         </div>
                         <div className="bg-purple-500/10 p-4 rounded-lg border border-purple-500/20">
-                          <p className="text-sm font-bold text-purple-700 mb-2">Exemplo 2: Deslocamento</p>
-                          <p className="text-sm font-mono">y = e^(x-2) (puxa para direita 2 unidades)</p>
-                          <p className="text-sm">Passa por (2,1) em vez de (0,1).</p>
+                          <p className="text-xl font-bold text-purple-700 mb-2 text-foreground/85 leading-relaxed">Exemplo 2: Deslocamento</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">y = e^(x-2) (puxa para direita 2 unidades)</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Passa por (2,1) em vez de (0,1).</p>
                         </div>
                         <div className="bg-violet-500/10 p-4 rounded-lg border border-violet-500/20">
-                          <p className="text-sm font-bold text-violet-700 mb-2">Exemplo 3: Combinado Petrobras</p>
-                          <p className="text-sm font-mono">y = 100 × e^(0.05t) + 500 (sobe de 500, multiplicado por 100)</p>
-                          <p className="text-sm">Descreve produção com base mínima garantida.</p>
+                          <p className="text-xl font-bold text-violet-700 mb-2 text-foreground/85 leading-relaxed">Exemplo 3: Combinado Petrobras</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">y = 100 × e^(0.05t) + 500 (sobe de 500, multiplicado por 100)</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Descreve produção com base mínima garantida.</p>
                         </div>
                       </div>
                     </div>
@@ -1587,18 +1587,18 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Leia a função e identifique transformações rapidamente:
                       </p>
                       <div className="space-y-2">
                         <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-indigo-700">📌 Coeficiente na frente → ampliação vertical</p>
+                          <p className="text-xl font-bold text-indigo-700 text-foreground/85 leading-relaxed">📌 Coeficiente na frente → ampliação vertical</p>
                         </div>
                         <div className="p-3 bg-purple-500/10 border border-purple-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-purple-700">📌 Subtração no expoente → deslocamento direita</p>
+                          <p className="text-xl font-bold text-purple-700 text-foreground/85 leading-relaxed">📌 Subtração no expoente → deslocamento direita</p>
                         </div>
                         <div className="p-3 bg-violet-500/10 border border-violet-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-violet-700">📌 Adição fora → deslocamento cima</p>
+                          <p className="text-xl font-bold text-violet-700 text-foreground/85 leading-relaxed">📌 Adição fora → deslocamento cima</p>
                         </div>
                       </div>
                     </div>
@@ -1720,8 +1720,8 @@ export default function AulaFuncoesExponenciais({
               title: "Regra de Ouro das Transformações",
               content: (
                 <div className="space-y-4 text-left">
-                  <p className="text-sm font-bold">Sempre leia a função de fora para dentro:</p>
-                  <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl font-mono text-sm text-center">
+                  <p className="text-xl font-bold text-foreground/85 leading-relaxed">Sempre leia a função de fora para dentro:</p>
+                  <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl font-mono text-xl text-center text-foreground/85 leading-relaxed">
                     <p>c × f(x - h) + k</p>
                     <p className="mt-2">c = ampliação</p>
                     <p>h = deslocamento horizontal</p>
@@ -1776,9 +1776,9 @@ export default function AulaFuncoesExponenciais({
                         Um sistema exponencial envolve múltiplas equações com múltiplas bases ou variáveis:
                       </p>
                       <div className="bg-emerald-500/10 p-4 border border-emerald-500/20 rounded-xl">
-                        <p className="text-sm font-mono text-center">2ˣ + 3ʸ = 11</p>
-                        <p className="text-sm font-mono text-center mt-2">2ˣ - 3ʸ = -7</p>
-                        <p className="text-sm text-center text-muted-foreground mt-2">Encontre x e y.</p>
+                        <p className="text-xl font-mono text-center text-foreground/85 leading-relaxed">2ˣ + 3ʸ = 11</p>
+                        <p className="text-xl font-mono text-center mt-2 text-foreground/85 leading-relaxed">2ˣ - 3ʸ = -7</p>
+                        <p className="text-xl text-center text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Encontre x e y.</p>
                       </div>
                     </div>
                   ),
@@ -1788,23 +1788,23 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Técnicas para resolver sistemas de exponenciais:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
-                          <p className="text-sm font-bold text-green-700 mb-2">Técnica 1: Substituição de Variáveis</p>
-                          <p className="text-sm font-mono">Faça u = 2ˣ e v = 3ʸ</p>
-                          <p className="text-sm">Resolva o sistema linear: u + v = 11, u - v = -7</p>
+                          <p className="text-xl font-bold text-green-700 mb-2 text-foreground/85 leading-relaxed">Técnica 1: Substituição de Variáveis</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">Faça u = 2ˣ e v = 3ʸ</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Resolva o sistema linear: u + v = 11, u - v = -7</p>
                         </div>
                         <div className="bg-emerald-500/10 p-4 rounded-lg border border-emerald-500/20">
-                          <p className="text-sm font-bold text-emerald-700 mb-2">Técnica 2: Soma/Subtração</p>
-                          <p className="text-sm">Se 2ˣ + 2ˣ = 8, então 2 × 2ˣ = 8 → 2ˣ⁺¹ = 8 = 2³ → x+1 = 3 → x = 2</p>
+                          <p className="text-xl font-bold text-emerald-700 mb-2 text-foreground/85 leading-relaxed">Técnica 2: Soma/Subtração</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Se 2ˣ + 2ˣ = 8, então 2 × 2ˣ = 8 → 2ˣ⁺¹ = 8 = 2³ → x+1 = 3 → x = 2</p>
                         </div>
                         <div className="bg-teal-500/10 p-4 rounded-lg border border-teal-500/20">
-                          <p className="text-sm font-bold text-teal-700 mb-2">Exemplo Petrobras</p>
-                          <p className="text-sm">Dois poços: P₁(t)=100×2ᵗ, P₂(t)=50×4ᵗ. Quando produzem igual?</p>
-                          <p className="text-sm mt-1">100×2ᵗ = 50×4ᵗ → 100×2ᵗ = 50×(2²)ᵗ → 100×2ᵗ = 50×2²ᵗ → 2 = 2ᵗ → t = 1</p>
+                          <p className="text-xl font-bold text-teal-700 mb-2 text-foreground/85 leading-relaxed">Exemplo Petrobras</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Dois poços: P₁(t)=100×2ᵗ, P₂(t)=50×4ᵗ. Quando produzem igual?</p>
+                          <p className="text-xl mt-1 text-foreground/85 leading-relaxed">100×2ᵗ = 50×4ᵗ → 100×2ᵗ = 50×(2²)ᵗ → 100×2ᵗ = 50×2²ᵗ → 2 = 2ᵗ → t = 1</p>
                         </div>
                       </div>
                     </div>
@@ -1815,18 +1815,18 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Quando se deparar com sistemas:
                       </p>
                       <div className="space-y-2">
                         <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-emerald-700">📌 Reduza a bases primas comuns</p>
+                          <p className="text-xl font-bold text-emerald-700 text-foreground/85 leading-relaxed">📌 Reduza a bases primas comuns</p>
                         </div>
                         <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-green-700">📌 Procure por múltiplos (4 = 2², 8 = 2³, etc)</p>
+                          <p className="text-xl font-bold text-green-700 text-foreground/85 leading-relaxed">📌 Procure por múltiplos (4 = 2², 8 = 2³, etc)</p>
                         </div>
                         <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-teal-700">📌 Use substituição se tiver muitos expoentes</p>
+                          <p className="text-xl font-bold text-teal-700 text-foreground/85 leading-relaxed">📌 Use substituição se tiver muitos expoentes</p>
                         </div>
                       </div>
                     </div>
@@ -1916,8 +1916,8 @@ export default function AulaFuncoesExponenciais({
               title: "O Truque da Redução",
               content: (
                 <div className="space-y-4 text-left">
-                  <p className="text-sm">Sempre reduza tudo a bases primas antes de resolver:</p>
-                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl font-mono text-center text-sm">
+                  <p className="text-xl text-foreground/85 leading-relaxed">Sempre reduza tudo a bases primas antes de resolver:</p>
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl font-mono text-center text-xl text-foreground/85 leading-relaxed">
                     <p>4 = 2²</p>
                     <p>8 = 2³</p>
                     <p>16 = 2⁴</p>
@@ -1973,20 +1973,20 @@ export default function AulaFuncoesExponenciais({
                       </p>
                       <div className="space-y-3">
                         <div className="bg-yellow-500/10 p-4 rounded-lg border border-yellow-500/20">
-                          <p className="text-sm font-bold text-yellow-700">1. Crescimento de Produção</p>
-                          <p className="text-sm">P(t) = P₀ × (1.05)ᵗ (5% crescimento anual)</p>
+                          <p className="text-xl font-bold text-yellow-700 text-foreground/85 leading-relaxed">1. Crescimento de Produção</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">P(t) = P₀ × (1.05)ᵗ (5% crescimento anual)</p>
                         </div>
                         <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
-                          <p className="text-sm font-bold text-amber-700">2. Decaimento de Equipamentos</p>
-                          <p className="text-sm">V(t) = V₀ × (0.9)ᵗ (10% depreciação anual)</p>
+                          <p className="text-xl font-bold text-amber-700 text-foreground/85 leading-relaxed">2. Decaimento de Equipamentos</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">V(t) = V₀ × (0.9)ᵗ (10% depreciação anual)</p>
                         </div>
                         <div className="bg-orange-500/10 p-4 rounded-lg border border-orange-500/20">
-                          <p className="text-sm font-bold text-orange-700">3. Consumo Exponencial</p>
-                          <p className="text-sm">Diesel queimado em turbocompressores: C(t) = 100 × e^(0.02t) litros/dia</p>
+                          <p className="text-xl font-bold text-orange-700 text-foreground/85 leading-relaxed">3. Consumo Exponencial</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Diesel queimado em turbocompressores: C(t) = 100 × e^(0.02t) litros/dia</p>
                         </div>
                         <div className="bg-red-500/10 p-4 rounded-lg border border-red-500/20">
-                          <p className="text-sm font-bold text-red-700">4. Reabsorção de Poluentes</p>
-                          <p className="text-sm">Degradação ambiental: A(t) = A₀ × e^(-0.15t) (meia-vida)</p>
+                          <p className="text-xl font-bold text-red-700 text-foreground/85 leading-relaxed">4. Reabsorção de Poluentes</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Degradação ambiental: A(t) = A₀ × e^(-0.15t) (meia-vida)</p>
                         </div>
                       </div>
                     </div>
@@ -1997,24 +1997,24 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Problemas que caem em provas da Petrobras:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-yellow-500/10 p-4 rounded-lg border border-yellow-500/20">
-                          <p className="text-sm font-bold text-yellow-700 mb-2">Caso 1: REPLAN - Produção</p>
-                          <p className="text-sm">A refinaria começa com 50 mil barris/dia, cresce 3% ao mês. Em 6 meses, quantos barris?</p>
-                          <p className="text-sm font-mono mt-1">P(6) = 50 × (1.03)⁶ ≈ 59.7 mil barris</p>
+                          <p className="text-xl font-bold text-yellow-700 mb-2 text-foreground/85 leading-relaxed">Caso 1: REPLAN - Produção</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">A refinaria começa com 50 mil barris/dia, cresce 3% ao mês. Em 6 meses, quantos barris?</p>
+                          <p className="text-xl font-mono mt-1 text-foreground/85 leading-relaxed">P(6) = 50 × (1.03)⁶ ≈ 59.7 mil barris</p>
                         </div>
                         <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/20">
-                          <p className="text-sm font-bold text-amber-700 mb-2">Caso 2: Depreciação de Máquinas</p>
-                          <p className="text-sm">Compactor custou R$ 200 mil. Deprecia 15% ao ano. Após 5 anos?</p>
-                          <p className="text-sm font-mono mt-1">V(5) = 200 × (0.85)⁵ ≈ R$ 86.9 mil</p>
+                          <p className="text-xl font-bold text-amber-700 mb-2 text-foreground/85 leading-relaxed">Caso 2: Depreciação de Máquinas</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Compactor custou R$ 200 mil. Deprecia 15% ao ano. Após 5 anos?</p>
+                          <p className="text-xl font-mono mt-1 text-foreground/85 leading-relaxed">V(5) = 200 × (0.85)⁵ ≈ R$ 86.9 mil</p>
                         </div>
                         <div className="bg-orange-500/10 p-4 rounded-lg border border-orange-500/20">
-                          <p className="text-sm font-bold text-orange-700 mb-2">Caso 3: Qualidade da Água</p>
-                          <p className="text-sm">Poluição inicial de 100 ppm, reduz 8% ao mês com tratamento. Após 10 meses?</p>
-                          <p className="text-sm font-mono mt-1">P(10) = 100 × (0.92)¹⁰ ≈ 43.4 ppm</p>
+                          <p className="text-xl font-bold text-orange-700 mb-2 text-foreground/85 leading-relaxed">Caso 3: Qualidade da Água</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Poluição inicial de 100 ppm, reduz 8% ao mês com tratamento. Após 10 meses?</p>
+                          <p className="text-xl font-mono mt-1 text-foreground/85 leading-relaxed">P(10) = 100 × (0.92)¹⁰ ≈ 43.4 ppm</p>
                         </div>
                       </div>
                     </div>
@@ -2025,18 +2025,18 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Domine essas palavras-chave em provas Petrobras:
                       </p>
                       <div className="space-y-2">
                         <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-amber-700">📌 "Cresce X% ao..." → multiplica por (1 + X%)</p>
+                          <p className="text-xl font-bold text-amber-700 text-foreground/85 leading-relaxed">📌 "Cresce X% ao..." → multiplica por (1 + X%)</p>
                         </div>
                         <div className="p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-yellow-700">📌 "Reduz X% ao..." → multiplica por (1 - X%)</p>
+                          <p className="text-xl font-bold text-yellow-700 text-foreground/85 leading-relaxed">📌 "Reduz X% ao..." → multiplica por (1 - X%)</p>
                         </div>
                         <div className="p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg">
-                          <p className="text-sm font-bold text-orange-700">📌 "Meia-vida de T" → a = 0.5 com período T</p>
+                          <p className="text-xl font-bold text-orange-700 text-foreground/85 leading-relaxed">📌 "Meia-vida de T" → a = 0.5 com período T</p>
                         </div>
                       </div>
                     </div>
@@ -2126,8 +2126,8 @@ export default function AulaFuncoesExponenciais({
               title: "Petrobras na Prática",
               content: (
                 <div className="space-y-4 text-left">
-                  <p className="text-sm font-bold">Padrão de questões Petrobras:</p>
-                  <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-sm">
+                  <p className="text-xl font-bold text-foreground/85 leading-relaxed">Padrão de questões Petrobras:</p>
+                  <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-xl text-foreground/85 leading-relaxed">
                     <p>1) Identifique N₀ (situação inicial)</p>
                     <p className="mt-2">2) Identifique a (crescimento/taxa)</p>
                     <p className="mt-2">3) Coloque em N(t) = N₀ × aᵗ</p>
@@ -2181,7 +2181,7 @@ export default function AulaFuncoesExponenciais({
                       <p className="text-muted-foreground leading-relaxed">
                         Revisão rápida dos 9 módulos anteriores:
                       </p>
-                      <div className="space-y-2 text-sm">
+                      <div className="space-y-2 text-xl text-foreground/85 leading-relaxed">
                         <div className="bg-slate-700/20 p-3 rounded-lg border border-slate-600 text-slate-50">
                           <p className="font-bold">✓ M1: Regras aᵐ × aⁿ = aᵐ⁺ⁿ, (aᵐ)ⁿ = aᵐˣⁿ</p>
                         </div>
@@ -2218,20 +2218,20 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Um problema que envolve múltiplos conceitos:
                       </p>
                       <div className="bg-slate-700/10 p-4 rounded-lg border border-slate-600">
-                        <p className="text-sm font-bold text-slate-100 mb-3">Megaproblema CESGRANRIO</p>
-                        <p className="text-sm text-slate-200">Petrobras: Dois poços produzem exponencialmente.</p>
-                        <p className="text-sm text-slate-200 mt-2">Poço A: P_A(t) = 1000 × 2ᵗ barris/dia</p>
-                        <p className="text-sm text-slate-200">Poço B: P_B(t) = 500 × e^t barris/dia</p>
-                        <p className="text-sm text-slate-200 mt-2">1) Qual produz mais no início (t=0)?</p>
-                        <p className="text-sm text-slate-200">2) Após 1 dia, quem produz mais?</p>
-                        <p className="text-sm text-slate-200">3) Em que momento produzem igual?</p>
-                        <p className="text-sm text-slate-200 mt-2 font-mono">Resposta: A: 1000 vs 500 (A ganha em 0)</p>
-                        <p className="text-sm text-slate-200 font-mono">t=1: A=2000 vs B=500e≈1359 (A ganha)</p>
-                        <p className="text-sm text-slate-200 font-mono">Igualados em t≈1.6 dias (aproximado)</p>
+                        <p className="text-xl font-bold text-slate-100 mb-3 text-foreground/85 leading-relaxed">Megaproblema CESGRANRIO</p>
+                        <p className="text-xl text-slate-200 text-foreground/85 leading-relaxed">Petrobras: Dois poços produzem exponencialmente.</p>
+                        <p className="text-xl text-slate-200 mt-2 text-foreground/85 leading-relaxed">Poço A: P_A(t) = 1000 × 2ᵗ barris/dia</p>
+                        <p className="text-xl text-slate-200 text-foreground/85 leading-relaxed">Poço B: P_B(t) = 500 × e^t barris/dia</p>
+                        <p className="text-xl text-slate-200 mt-2 text-foreground/85 leading-relaxed">1) Qual produz mais no início (t=0)?</p>
+                        <p className="text-xl text-slate-200 text-foreground/85 leading-relaxed">2) Após 1 dia, quem produz mais?</p>
+                        <p className="text-xl text-slate-200 text-foreground/85 leading-relaxed">3) Em que momento produzem igual?</p>
+                        <p className="text-xl text-slate-200 mt-2 font-mono text-foreground/85 leading-relaxed">Resposta: A: 1000 vs 500 (A ganha em 0)</p>
+                        <p className="text-xl text-slate-200 font-mono text-foreground/85 leading-relaxed">t=1: A=2000 vs B=500e≈1359 (A ganha)</p>
+                        <p className="text-xl text-slate-200 font-mono text-foreground/85 leading-relaxed">Igualados em t≈1.6 dias (aproximado)</p>
                       </div>
                     </div>
                   ),
@@ -2241,20 +2241,20 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-sm">
+                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
                         Dicas finais para dominar a prova:
                       </p>
                       <div className="space-y-2">
-                        <div className="p-3 bg-slate-700/20 border border-slate-600 rounded-lg text-slate-50 text-sm font-bold">
+                        <div className="p-3 bg-slate-700/20 border border-slate-600 rounded-lg text-slate-50 text-xl font-bold text-foreground/85 leading-relaxed">
                           <p>📌 Sempre reduza a bases primas (2, 3, 5, 7...)</p>
                         </div>
-                        <div className="p-3 bg-slate-700/20 border border-slate-600 rounded-lg text-slate-50 text-sm font-bold">
+                        <div className="p-3 bg-slate-700/20 border border-slate-600 rounded-lg text-slate-50 text-xl font-bold text-foreground/85 leading-relaxed">
                           <p>📌 Procure por padrões: duplica, triplica, dobra a cada...</p>
                         </div>
-                        <div className="p-3 bg-slate-700/20 border border-slate-600 rounded-lg text-slate-50 text-sm font-bold">
+                        <div className="p-3 bg-slate-700/20 border border-slate-600 rounded-lg text-slate-50 text-xl font-bold text-foreground/85 leading-relaxed">
                           <p>📌 Exponenciais SÃO SEMPRE positivas</p>
                         </div>
-                        <div className="p-3 bg-slate-700/20 border border-slate-600 rounded-lg text-slate-50 text-sm font-bold">
+                        <div className="p-3 bg-slate-700/20 border border-slate-600 rounded-lg text-slate-50 text-xl font-bold text-foreground/85 leading-relaxed">
                           <p>📌 Verificação: sempre substitua de volta na equação</p>
                         </div>
                       </div>
@@ -2359,8 +2359,8 @@ export default function AulaFuncoesExponenciais({
               title: "O Segredo do Mestre",
               content: (
                 <div className="space-y-4 text-left">
-                  <p className="text-sm italic">"Quem domina exponenciais, domina 40% da prova de matemática Petrobras"</p>
-                  <div className="p-4 bg-slate-700/20 border border-slate-600 rounded-xl text-slate-50 text-sm font-bold text-center">
+                  <p className="text-xl italic text-foreground/85 leading-relaxed">"Quem domina exponenciais, domina 40% da prova de matemática Petrobras"</p>
+                  <div className="p-4 bg-slate-700/20 border border-slate-600 rounded-xl text-slate-50 text-xl font-bold text-center text-foreground/85 leading-relaxed">
                     <p>Reduza → Iguale Bases → Iguale Expoentes</p>
                     <p className="mt-2">Sempre.</p>
                   </div>

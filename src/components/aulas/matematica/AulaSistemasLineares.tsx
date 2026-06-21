@@ -156,10 +156,10 @@ export default function AulaSistemasLineares({
                         Um <strong>sistema linear</strong> é um conjunto de equações do 1º grau com duas ou mais incógnitas, onde buscamos valores que satisfaçam <strong>todas as equações simultaneamente</strong>. Cada equação representa uma restrição ou condição do problema.
                       </p>
                       <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-indigo-400 mb-1">Forma geral (2×2):</p>
-                        <p className="text-sm font-mono">a₁x + b₁y = c₁</p>
-                        <p className="text-sm font-mono">a₂x + b₂y = c₂</p>
-                        <p className="text-xs text-muted-foreground mt-2">
+                        <p className="text-xl font-bold text-indigo-400 mb-1 text-foreground/85 leading-relaxed">Forma geral (2×2):</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">a₁x + b₁y = c₁</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">a₂x + b₂y = c₂</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
                           Onde a₁, b₁, a₂, b₂ são coeficientes e c₁, c₂ são termos independentes.
                         </p>
                       </div>
@@ -182,13 +182,13 @@ export default function AulaSistemasLineares({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">Condição Algébrica</p>
-                          <p className="text-sm font-mono">D = a₁b₂ − a₂b₁ ≠ 0</p>
-                          <p className="text-xs text-muted-foreground mt-2">O determinante não nulo garante solução única.</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">Condição Algébrica</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">D = a₁b₂ − a₂b₁ ≠ 0</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">O determinante não nulo garante solução única.</p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-500 mb-2">Interpretação Geométrica</p>
-                          <p className="text-sm">As duas retas se intersectam em exatamente um ponto (x₀, y₀).</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-2">Interpretação Geométrica</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">As duas retas se intersectam em exatamente um ponto (x₀, y₀).</p>
                         </div>
                       </div>
                       <p>
@@ -207,14 +207,14 @@ export default function AulaSistemasLineares({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                          <p className="text-xs font-bold text-rose-500 mb-2">SI — Sistema Impossível</p>
-                          <p className="text-sm">Coeficientes proporcionais, termos independentes NÃO proporcionais. Retas paralelas distintas. Nenhuma solução.</p>
-                          <p className="text-xs font-mono mt-2 text-muted-foreground">Ex: x+y=5 e x+y=7</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-rose-500 mb-2">SI — Sistema Impossível</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Coeficientes proporcionais, termos independentes NÃO proporcionais. Retas paralelas distintas. Nenhuma solução.</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-2 text-muted-foreground">Ex: x+y=5 e x+y=7</p>
                         </div>
                         <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
-                          <p className="text-xs font-bold text-amber-500 mb-2">SPI — Sistema Possível Indeterminado</p>
-                          <p className="text-sm">TODOS os coeficientes proporcionais, inclusive os termos independentes. Retas coincidentes. Infinitas soluções.</p>
-                          <p className="text-xs font-mono mt-2 text-muted-foreground">Ex: x+y=5 e 2x+2y=10</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-amber-500 mb-2">SPI — Sistema Possível Indeterminado</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">TODOS os coeficientes proporcionais, inclusive os termos independentes. Retas coincidentes. Infinitas soluções.</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-2 text-muted-foreground">Ex: x+y=5 e 2x+2y=10</p>
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
@@ -236,7 +236,7 @@ export default function AulaSistemasLineares({
               className="mb-6"
             />
             <div className="overflow-x-auto">
-              <table className="w-full text-sm border-collapse">
+              <table className="w-full text-xl border-collapse text-foreground/85 leading-relaxed">
                 <thead>
                   <tr className="bg-blue-500/10">
                     <th className="border border-blue-500/20 p-3 text-left font-bold">Tipo</th>
@@ -333,7 +333,7 @@ export default function AulaSistemasLineares({
               content: (
                 <div className="space-y-3">
                   <p className="font-semibold">Reconhecer rapidamente a classificação:</p>
-                  <ul className="list-disc list-inside space-y-1 text-sm">
+                  <ul className="list-disc list-inside space-y-1 text-xl text-foreground/85 leading-relaxed">
                     <li><strong>SPD:</strong> Determinante ≠ 0 → uma solução</li>
                     <li><strong>SPI:</strong> Det = 0 + Equações compatíveis → infinitas soluções</li>
                     <li><strong>SI:</strong> Det = 0 + Equações incompatíveis → sem solução</li>
@@ -392,9 +392,9 @@ export default function AulaSistemasLineares({
                         O primeiro passo é <strong>escolher a equação e a incógnita mais simples de isolar</strong>. Priorize: coeficiente 1 ou −1 para evitar frações desnecessárias. Isso economiza tempo e reduz erros de cálculo.
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-emerald-400 mb-1">Exemplo — Balanço de massa na REDUC:</p>
-                        <p className="text-sm">Sistema: 3x + 2y = 1600 e <strong>x + y = 700</strong></p>
-                        <p className="text-sm">Isole x na 2ª (coef. 1): <strong>x = 700 − y</strong></p>
+                        <p className="text-xl font-bold text-emerald-400 mb-1 text-foreground/85 leading-relaxed">Exemplo — Balanço de massa na REDUC:</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Sistema: 3x + 2y = 1600 e <strong>x + y = 700</strong></p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Isole x na 2ª (coef. 1): <strong>x = 700 − y</strong></p>
                       </div>
                       <p>
                         Quando todos os coeficientes são diferentes de 1, escolha o menor para minimizar a fração resultante. Por exemplo, em 2x+3y=12, isole x para obter x=(12−3y)/2 — a fração é mais manejável que y=(12−2x)/3.
@@ -411,10 +411,10 @@ export default function AulaSistemasLineares({
                         Após isolar uma incógnita, <strong>substitua a expressão obtida na outra equação</strong>. Isso reduz o problema a uma equação de uma variável, que é resolvida diretamente.
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-blue-400 mb-1">Continuando o exemplo:</p>
-                        <p className="text-sm">Substituindo x=700−y na 1ª: 3(700−y)+2y=1600</p>
-                        <p className="text-sm">→ 2100−3y+2y=1600 → −y=−500 → <strong>y=500</strong></p>
-                        <p className="text-sm">→ x=700−500 = <strong>200</strong></p>
+                        <p className="text-xl font-bold text-blue-400 mb-1 text-foreground/85 leading-relaxed">Continuando o exemplo:</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Substituindo x=700−y na 1ª: 3(700−y)+2y=1600</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">→ 2100−3y+2y=1600 → −y=−500 → <strong>y=500</strong></p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">→ x=700−500 = <strong>200</strong></p>
                       </div>
                       <AlertBox tipo="warning" titulo="Erro Frequente em Prova">
                         Após encontrar o valor de uma incógnita, candidatos esquecem de calcular a segunda e marcam apenas o valor encontrado. A questão CESGRANRIO quase sempre pede x+y, x−y ou x·y — não apenas um valor isolado. Sempre calcule as duas incógnitas!
@@ -431,9 +431,9 @@ export default function AulaSistemasLineares({
                         A <strong>verificação</strong> é o passo que separa quem acerta de quem erra por substituição descuidada. Substitua os valores encontrados nas equações ORIGINAIS e confirme que ambas são satisfeitas.
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-cyan-400 mb-1">Verificando x=200, y=500:</p>
-                        <p className="text-sm">1ª eq.: 3(200)+2(500) = 600+1000 = <strong>1600 ✓</strong></p>
-                        <p className="text-sm">2ª eq.: 200+500 = <strong>700 ✓</strong></p>
+                        <p className="text-xl font-bold text-cyan-400 mb-1 text-foreground/85 leading-relaxed">Verificando x=200, y=500:</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">1ª eq.: 3(200)+2(500) = 600+1000 = <strong>1600 ✓</strong></p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">2ª eq.: 200+500 = <strong>700 ✓</strong></p>
                       </div>
                       <p>
                         Em provas CESGRANRIO com 5 alternativas, a verificação permite confirmar a resposta mesmo quando há dúvida no cálculo. Se a solução não verifica, há erro no processo — retorne e revise desde o isolamento.
@@ -468,10 +468,10 @@ export default function AulaSistemasLineares({
                         Problemas de <strong>blending</strong> (mistura de produtos) são recorrentes em provas CESGRANRIO para a Petrobras. A estrutura sempre segue dois tipos de equação: conservação de volume total e conservação de alguma propriedade (concentração, densidade, octanagem).
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-emerald-400 mb-1">Problema tipo:</p>
-                        <p className="text-sm">Misturar gasolina A (80% de octanagem) e B (95%) para obter 1000 L com 87%.</p>
-                        <p className="text-sm font-bold mt-2">Equação 1 (volume): A + B = 1000</p>
-                        <p className="text-sm font-bold">Equação 2 (propriedade): 0,80A + 0,95B = 0,87×1000</p>
+                        <p className="text-xl font-bold text-emerald-400 mb-1 text-foreground/85 leading-relaxed">Problema tipo:</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Misturar gasolina A (80% de octanagem) e B (95%) para obter 1000 L com 87%.</p>
+                        <p className="text-xl font-bold mt-2 text-foreground/85 leading-relaxed">Equação 1 (volume): A + B = 1000</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">Equação 2 (propriedade): 0,80A + 0,95B = 0,87×1000</p>
                       </div>
                       <p>
                         Pelo método de substituição: B=1000−A → 0,80A+0,95(1000−A)=870 → 0,80A+950−0,95A=870 → −0,15A=−80 → A≈533 L. B≈467 L. A estrutura "dois componentes → duas equações" é sempre a mesma.
@@ -550,12 +550,12 @@ export default function AulaSistemasLineares({
               content: (
                 <div className="space-y-3">
                   <p className="font-semibold">O método de substituição é mais simples quando:</p>
-                  <ul className="list-disc list-inside space-y-1 text-sm">
+                  <ul className="list-disc list-inside space-y-1 text-xl text-foreground/85 leading-relaxed">
                     <li>Um coeficiente é 1 ou −1 (isolamento fácil)</li>
                     <li>Variável aparece isolada em uma equação</li>
                     <li>Preferência: isole a variável com coeficiente menor</li>
                   </ul>
-                  <p className="font-semibold text-sm mt-2">Passos: Isole → Substitua → Simplifique → Retorno</p>
+                  <p className="font-semibold text-xl mt-2 text-foreground/85 leading-relaxed">Passos: Isole → Substitua → Simplifique → Retorno</p>
                 </div>
               )
             }}
@@ -610,12 +610,12 @@ export default function AulaSistemasLineares({
                         O <strong>Método da Adição</strong> (ou Eliminação de Gauss) baseia-se em uma propriedade fundamental: podemos <strong>multiplicar qualquer equação por uma constante</strong> e <strong>somar equações</strong> sem alterar o conjunto-solução. O objetivo é fazer os coeficientes de uma variável se tornarem opostos (a + (−a) = 0).
                       </p>
                       <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-amber-400 mb-1">Exemplo — Balanço energético da RLAM:</p>
-                        <p className="text-sm font-mono">3E₁ + 2E₂ = 1400  ... (I)</p>
-                        <p className="text-sm font-mono">E₁  + 4E₂ = 1000  ... (II)</p>
-                        <p className="text-sm mt-2">Para eliminar E₁: mult. (II) por −3:</p>
-                        <p className="text-sm font-mono">−3E₁ − 12E₂ = −3000</p>
-                        <p className="text-sm">Somando com (I): <strong>−10E₂ = −1600 → E₂ = 160 MJ</strong></p>
+                        <p className="text-xl font-bold text-amber-400 mb-1 text-foreground/85 leading-relaxed">Exemplo — Balanço energético da RLAM:</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">3E₁ + 2E₂ = 1400  ... (I)</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">E₁  + 4E₂ = 1000  ... (II)</p>
+                        <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Para eliminar E₁: mult. (II) por −3:</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">−3E₁ − 12E₂ = −3000</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Somando com (I): <strong>−10E₂ = −1600 → E₂ = 160 MJ</strong></p>
                       </div>
                       <p>
                         Escolha sempre qual variável eliminar primeiro. Prefira aquela cujo MDC dos coeficientes seja menor — isso minimiza os multiplicadores e os riscos de erro.
@@ -631,23 +631,23 @@ export default function AulaSistemasLineares({
                       <p>
                         O método da adição é preferível ao de substituição quando:
                       </p>
-                      <ul className="list-disc list-inside space-y-2 text-sm">
+                      <ul className="list-disc list-inside space-y-2 text-xl text-foreground/85 leading-relaxed">
                         <li><strong>Nenhum coeficiente é 1 ou −1</strong> — a substituição geraria frações imediatamente</li>
                         <li><strong>Coeficientes da mesma variável têm mesmo valor absoluto</strong> — a eliminação é imediata (ex: +3y e −3y)</li>
                         <li><strong>Sistemas com frações</strong> — multiplicar toda a equação por um inteiro antes de aplicar a adição simplifica tudo</li>
                       </ul>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
-                          <p className="text-xs font-bold text-emerald-500 mb-2">Situação Ideal para Adição</p>
-                          <p className="text-sm font-mono">4x + 3y = 25</p>
-                          <p className="text-sm font-mono">2x − 3y = 5</p>
-                          <p className="text-xs mt-2 text-muted-foreground">3y e −3y se cancelam ao somar!</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">Situação Ideal para Adição</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">4x + 3y = 25</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">2x − 3y = 5</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-2 text-muted-foreground">3y e −3y se cancelam ao somar!</p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
-                          <p className="text-xs font-bold text-blue-500 mb-2">Situação Ideal para Substituição</p>
-                          <p className="text-sm font-mono">x + 3y = 10</p>
-                          <p className="text-sm font-mono">2x + y = 8</p>
-                          <p className="text-xs mt-2 text-muted-foreground">x tem coef. 1 na 1ª — isole facilmente</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-2">Situação Ideal para Substituição</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">x + 3y = 10</p>
+                          <p className="text-xl font-mono text-foreground/85 leading-relaxed">2x + y = 8</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-2 text-muted-foreground">x tem coef. 1 na 1ª — isole facilmente</p>
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
@@ -666,16 +666,16 @@ export default function AulaSistemasLineares({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
-                          <p className="text-xs font-bold text-rose-500 mb-2">SI — Resultado Absurdo</p>
-                          <p className="text-sm">Após eliminar uma variável, obtém-se uma contradição:</p>
-                          <p className="text-sm font-mono font-bold mt-1">0 = 5 (impossível!)</p>
-                          <p className="text-xs mt-2 text-muted-foreground">Retas paralelas — sistema impossível.</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-rose-500 mb-2">SI — Resultado Absurdo</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Após eliminar uma variável, obtém-se uma contradição:</p>
+                          <p className="text-xl font-mono font-bold mt-1 text-foreground/85 leading-relaxed">0 = 5 (impossível!)</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-2 text-muted-foreground">Retas paralelas — sistema impossível.</p>
                         </div>
                         <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
-                          <p className="text-xs font-bold text-amber-500 mb-2">SPI — Identidade Trivial</p>
-                          <p className="text-sm">Após eliminar uma variável, obtém-se uma tautologia:</p>
-                          <p className="text-sm font-mono font-bold mt-1">0 = 0 (sempre verdade)</p>
-                          <p className="text-xs mt-2 text-muted-foreground">Retas coincidentes — infinitas soluções.</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-amber-500 mb-2">SPI — Identidade Trivial</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">Após eliminar uma variável, obtém-se uma tautologia:</p>
+                          <p className="text-xl font-mono font-bold mt-1 text-foreground/85 leading-relaxed">0 = 0 (sempre verdade)</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-2 text-muted-foreground">Retas coincidentes — infinitas soluções.</p>
                         </div>
                       </div>
                     </div>
@@ -749,13 +749,13 @@ export default function AulaSistemasLineares({
               content: (
                 <div className="space-y-3">
                   <p className="font-semibold">Estratégia de eliminação:</p>
-                  <ul className="list-disc list-inside space-y-1 text-sm">
+                  <ul className="list-disc list-inside space-y-1 text-xl text-foreground/85 leading-relaxed">
                     <li>Escolha qual variável eliminar (x ou y)</li>
                     <li>Multiplique equações para igualar coeficientes (sinais opostos)</li>
                     <li>Soma gera equação com uma incógnita</li>
                     <li>Resolve e retorna para encontrar a outra</li>
                   </ul>
-                  <p className="font-semibold text-sm mt-2">💡 Mais rápido quando coeficientes já são proporcionais!</p>
+                  <p className="font-semibold text-xl mt-2 text-foreground/85 leading-relaxed">💡 Mais rápido quando coeficientes já são proporcionais!</p>
                 </div>
               )
             }}
@@ -810,13 +810,13 @@ export default function AulaSistemasLineares({
                         O <strong>determinante</strong> de uma matriz 2×2 é um número calculado pela fórmula:
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 text-center">
-                        <p className="text-sm font-mono font-bold">
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">
                           |a  b| = ad − bc
                         </p>
-                        <p className="text-sm font-mono font-bold">
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">
                           |c  d|
                         </p>
-                        <p className="text-xs text-muted-foreground mt-2">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
                           "Diagonal principal menos diagonal secundária"
                         </p>
                       </div>
@@ -825,16 +825,16 @@ export default function AulaSistemasLineares({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                         <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20 text-center">
-                          <p className="text-xs font-bold text-emerald-500 mb-1">|1 2; 3 4|</p>
-                          <p className="text-sm">= 1×4 − 2×3 = −2</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-1">|1 2; 3 4|</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">= 1×4 − 2×3 = −2</p>
                         </div>
                         <div className="p-3 bg-blue-500/5 rounded-lg border border-blue-500/20 text-center">
-                          <p className="text-xs font-bold text-blue-500 mb-1">|5 0; 2 3|</p>
-                          <p className="text-sm">= 5×3 − 0×2 = 15</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-1">|5 0; 2 3|</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">= 5×3 − 0×2 = 15</p>
                         </div>
                         <div className="p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/20 text-center">
-                          <p className="text-xs font-bold text-cyan-500 mb-1">|4 -2; 3 1|</p>
-                          <p className="text-sm">= 4×1 − (−2)×3 = 10</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-500 mb-1">|4 -2; 3 1|</p>
+                          <p className="text-xl text-foreground/85 leading-relaxed">= 4×1 − (−2)×3 = 10</p>
                         </div>
                       </div>
                     </div>
@@ -849,10 +849,10 @@ export default function AulaSistemasLineares({
                         Para o sistema <em>a₁x+b₁y=c₁</em> e <em>a₂x+b₂y=c₂</em>, a Regra de Cramer define:
                       </p>
                       <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4 space-y-3">
-                        <p className="text-sm font-mono font-bold">D  = |a₁ b₁; a₂ b₂| (det. principal)</p>
-                        <p className="text-sm font-mono font-bold">Dx = |c₁ b₁; c₂ b₂| (substitui coluna de x pelos termos ind.)</p>
-                        <p className="text-sm font-mono font-bold">Dy = |a₁ c₁; a₂ c₂| (substitui coluna de y pelos termos ind.)</p>
-                        <p className="text-sm font-mono font-bold mt-2">x = Dx/D   &nbsp;&nbsp;&nbsp;   y = Dy/D</p>
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">D  = |a₁ b₁; a₂ b₂| (det. principal)</p>
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">Dx = |c₁ b₁; c₂ b₂| (substitui coluna de x pelos termos ind.)</p>
+                        <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">Dy = |a₁ c₁; a₂ c₂| (substitui coluna de y pelos termos ind.)</p>
+                        <p className="text-xl font-mono font-bold mt-2 text-foreground/85 leading-relaxed">x = Dx/D   &nbsp;&nbsp;&nbsp;   y = Dy/D</p>
                       </div>
                       <p>
                         A "substituição de colunas" é a chave: para Dx, troca-se a coluna dos coeficientes de x (a₁, a₂) pelos termos independentes (c₁, c₂). Para Dy, troca-se a coluna de y.
@@ -871,7 +871,7 @@ export default function AulaSistemasLineares({
                       <p>
                         A Regra de Cramer une elegantemente a resolução e a classificação do sistema:
                       </p>
-                      <ul className="space-y-3 text-sm">
+                      <ul className="space-y-3 text-xl text-foreground/85 leading-relaxed">
                         <li className="flex gap-3">
                           <span className="font-bold text-emerald-500 min-w-fit">D ≠ 0:</span>
                           <span>SPD. x=Dx/D e y=Dy/D têm valores únicos e definidos.</span>
@@ -959,13 +959,13 @@ export default function AulaSistemasLineares({
               content: (
                 <div className="space-y-3">
                   <p className="font-semibold">Fórmula de Cramer para 2×2:</p>
-                  <p className="font-mono text-sm">x = Dx/D,  y = Dy/D</p>
-                  <ul className="list-disc list-inside space-y-1 text-sm mt-2">
+                  <p className="font-mono text-xl text-foreground/85 leading-relaxed">x = Dx/D,  y = Dy/D</p>
+                  <ul className="list-disc list-inside space-y-1 text-xl mt-2 text-foreground/85 leading-relaxed">
                     <li>D = determinante dos coeficientes</li>
                     <li>Dx = substitua coluna de x pelos termos independentes</li>
                     <li>Dy = substitua coluna de y pelos termos independentes</li>
                   </ul>
-                  <p className="font-semibold text-sm mt-2">Se D=0 → Sistema não é SPD (revise SPI ou SI)</p>
+                  <p className="font-semibold text-xl mt-2 text-foreground/85 leading-relaxed">Se D=0 → Sistema não é SPD (revise SPI ou SI)</p>
                 </div>
               )
             }}
@@ -1020,20 +1020,20 @@ export default function AulaSistemasLineares({
                         Para o sistema a₁x+b₁y=c₁ e a₂x+b₂y=c₂, calcule as razões:
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-mono text-center">r₁ = a₁/a₂ &nbsp;&nbsp;&nbsp; r₂ = b₁/b₂ &nbsp;&nbsp;&nbsp; r₃ = c₁/c₂</p>
+                        <p className="text-xl font-mono text-center text-foreground/85 leading-relaxed">r₁ = a₁/a₂ &nbsp;&nbsp;&nbsp; r₂ = b₁/b₂ &nbsp;&nbsp;&nbsp; r₃ = c₁/c₂</p>
                       </div>
                       <div className="space-y-3">
                         <div className="flex items-start gap-3 p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20">
-                          <span className="font-bold text-emerald-500 text-sm min-w-fit">r₁ ≠ r₂:</span>
-                          <span className="text-sm">SPD — as retas têm inclinações diferentes, se cruzam em um ponto.</span>
+                          <span className="font-bold text-emerald-500 text-xl min-w-fit text-foreground/85 leading-relaxed">r₁ ≠ r₂:</span>
+                          <span className="text-xl text-foreground/85 leading-relaxed">SPD — as retas têm inclinações diferentes, se cruzam em um ponto.</span>
                         </div>
                         <div className="flex items-start gap-3 p-3 bg-amber-500/5 rounded-lg border border-amber-500/20">
-                          <span className="font-bold text-amber-500 text-sm min-w-fit">r₁=r₂=r₃:</span>
-                          <span className="text-sm">SPI — todas as razões iguais. Equações são múltiplas, retas coincidentes.</span>
+                          <span className="font-bold text-amber-500 text-xl min-w-fit text-foreground/85 leading-relaxed">r₁=r₂=r₃:</span>
+                          <span className="text-xl text-foreground/85 leading-relaxed">SPI — todas as razões iguais. Equações são múltiplas, retas coincidentes.</span>
                         </div>
                         <div className="flex items-start gap-3 p-3 bg-rose-500/5 rounded-lg border border-rose-500/20">
-                          <span className="font-bold text-rose-500 text-sm min-w-fit">r₁=r₂≠r₃:</span>
-                          <span className="text-sm">SI — coeficientes proporcionais mas termos independentes não. Retas paralelas.</span>
+                          <span className="font-bold text-rose-500 text-xl min-w-fit text-foreground/85 leading-relaxed">r₁=r₂≠r₃:</span>
+                          <span className="text-xl text-foreground/85 leading-relaxed">SI — coeficientes proporcionais mas termos independentes não. Retas paralelas.</span>
                         </div>
                       </div>
                     </div>
@@ -1048,10 +1048,10 @@ export default function AulaSistemasLineares({
                         A CESGRANRIO adora questões do tipo: <em>"para quais valores de k o sistema é SI/SPI?"</em>. A estratégia é:
                       </p>
                       <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4 space-y-3">
-                        <p className="text-sm font-bold text-indigo-400">Exemplo: 2x + ky = 4 e kx + 8y = 6</p>
-                        <p className="text-sm">Para r₁=r₂: 2/k = k/8 → k²=16 → k=±4</p>
-                        <p className="text-sm">Para k=4: r₃=4/6=2/3 e r₁=2/4=1/2 → r₁≠r₃ → <strong>SI</strong></p>
-                        <p className="text-sm">Para k=−4: r₁=2/(−4)=−1/2, r₃=4/6=2/3 → SI</p>
+                        <p className="text-xl font-bold text-indigo-400 text-foreground/85 leading-relaxed">Exemplo: 2x + ky = 4 e kx + 8y = 6</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Para r₁=r₂: 2/k = k/8 → k²=16 → k=±4</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Para k=4: r₃=4/6=2/3 e r₁=2/4=1/2 → r₁≠r₃ → <strong>SI</strong></p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Para k=−4: r₁=2/(−4)=−1/2, r₃=4/6=2/3 → SI</p>
                       </div>
                       <p>
                         Em geral, D=0 fornece os valores de k a investigar. Depois, verificamos se os determinantes secundários também são zero (SPI) ou não (SI).
@@ -1071,9 +1071,9 @@ export default function AulaSistemasLineares({
                         Quando um sistema é SPI, as infinitas soluções podem ser expressas em termos de um <strong>parâmetro livre</strong>. Para x+2y=6:
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm">Seja y = t (parâmetro livre, t ∈ ℝ)</p>
-                        <p className="text-sm font-bold">x = 6 − 2t</p>
-                        <p className="text-sm mt-2">Soluções: (6,0), (4,1), (2,2), (0,3), (−2,4)...</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Seja y = t (parâmetro livre, t ∈ ℝ)</p>
+                        <p className="text-xl font-bold text-foreground/85 leading-relaxed">x = 6 − 2t</p>
+                        <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Soluções: (6,0), (4,1), (2,2), (0,3), (−2,4)...</p>
                       </div>
                       <p>
                         Em contextos industriais, o SPI indica que as medições são redundantes — uma equação não fornece informação nova além da outra. Na prática da Petrobras, isso sinaliza que um sensor está duplicando a leitura de outro ou que uma restrição do processo está implícita em outra.
@@ -1149,12 +1149,12 @@ export default function AulaSistemasLineares({
               content: (
                 <div className="space-y-3">
                   <p className="font-semibold">Detectar rapidamente:</p>
-                  <ul className="list-disc list-inside space-y-1 text-sm">
+                  <ul className="list-disc list-inside space-y-1 text-xl text-foreground/85 leading-relaxed">
                     <li><strong>SI:</strong> Após eliminar variável → 0=k (k≠0) → Impossível</li>
                     <li><strong>SPI:</strong> Após eliminar variável → 0=0 (Tautologia) → Infinitas soluções</li>
                     <li><strong>Geometria:</strong> Retas paralelas (SI) vs coincidentes (SPI)</li>
                   </ul>
-                  <p className="font-semibold text-sm mt-2">🎯 O grande segredo: Equações precisam ser compatíveis!</p>
+                  <p className="font-semibold text-xl mt-2 text-foreground/85 leading-relaxed">🎯 O grande segredo: Equações precisam ser compatíveis!</p>
                 </div>
               )
             }}
@@ -1209,12 +1209,12 @@ export default function AulaSistemasLineares({
                         Para 3 equações e 3 incógnitas, o método de escalonamento (Eliminação de Gauss) reduz o sistema a uma <strong>forma triangular</strong>: primeiro elimina-se a variável x das equações 2 e 3, criando um sistema 2×2 em y e z. Depois elimina-se y da equação 3, obtendo o valor de z diretamente.
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-cyan-400 mb-1">Exemplo — Torre de Destilação REPLAN:</p>
-                        <p className="text-sm font-mono">x + y + z = 1000  ... (I) — Volume total</p>
-                        <p className="text-sm font-mono">2x + y     = 1200  ... (II) — Balanço ramo A</p>
-                        <p className="text-sm font-mono">y + 3z     = 900   ... (III) — Balanço ramo B</p>
-                        <p className="text-sm mt-2">Passo 1: De (I): z=1000−x−y. Substituindo em (III): y+3(1000−x−y)=900 → −3x−2y=−2100 → 3x+2y=2100 ... (IV)</p>
-                        <p className="text-sm">Passo 2: Sistema (II) e (IV): 2x+y=1200 e 3x+2y=2100. Resolvendo: y=0, x=600, z=400.</p>
+                        <p className="text-xl font-bold text-cyan-400 mb-1 text-foreground/85 leading-relaxed">Exemplo — Torre de Destilação REPLAN:</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">x + y + z = 1000  ... (I) — Volume total</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">2x + y     = 1200  ... (II) — Balanço ramo A</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">y + 3z     = 900   ... (III) — Balanço ramo B</p>
+                        <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Passo 1: De (I): z=1000−x−y. Substituindo em (III): y+3(1000−x−y)=900 → −3x−2y=−2100 → 3x+2y=2100 ... (IV)</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Passo 2: Sistema (II) e (IV): 2x+y=1200 e 3x+2y=2100. Resolvendo: y=0, x=600, z=400.</p>
                       </div>
                     </div>
                   ),
@@ -1228,11 +1228,11 @@ export default function AulaSistemasLineares({
                         Após o escalonamento, obtemos a forma triangular. A <strong>retrosubstituição</strong> resolve de baixo para cima: primeiro encontra-se z (da última equação), depois y (substituindo z na penúltima), e por fim x.
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-emerald-400 mb-1">Forma triangular (escalonada):</p>
-                        <p className="text-sm font-mono">ax + by + cz = d  ... Equação 1</p>
-                        <p className="text-sm font-mono">     ey + fz = g   ... Equação 2 (x eliminado)</p>
-                        <p className="text-sm font-mono">          hz = i   ... Equação 3 (x e y eliminados)</p>
-                        <p className="text-sm mt-2">Retrosubstituição: z=i/h → y=(g−fz)/e → x=(d−by−cz)/a</p>
+                        <p className="text-xl font-bold text-emerald-400 mb-1 text-foreground/85 leading-relaxed">Forma triangular (escalonada):</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">ax + by + cz = d  ... Equação 1</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">     ey + fz = g   ... Equação 2 (x eliminado)</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">          hz = i   ... Equação 3 (x e y eliminados)</p>
+                        <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Retrosubstituição: z=i/h → y=(g−fz)/e → x=(d−by−cz)/a</p>
                       </div>
                       <p>
                         A CESGRANRIO raramente exige sistemas 3×3 com cálculos extensos. Quando aparece, geralmente fornece sistemas com coeficientes pequenos ou com uma equação simplificada (ex: z=constante) para agilizar a resolução.
@@ -1252,12 +1252,12 @@ export default function AulaSistemasLineares({
                         Uma aplicação clássica de sistemas 3×3 na Petrobras é a <strong>análise de fluxo em redes de tubulação</strong>. Em cada nó da rede, a vazão que entra deve igualar a que sai (Lei de Kirchhoff adaptada para fluidos).
                       </p>
                       <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-indigo-400 mb-1">Rede de 3 tubulações (TRANSPETRO):</p>
-                        <p className="text-sm">Entrada total: 500 m³/h. Ramal A recebe o triplo de B. C=A+B.</p>
-                        <p className="text-sm font-mono mt-2">A + B + C = 500  (conservação)</p>
-                        <p className="text-sm font-mono">A = 3B           (relação A-B)</p>
-                        <p className="text-sm font-mono">C = A + B        (relação C)</p>
-                        <p className="text-sm mt-2">Substituindo: 3B+B+(3B+B)=500 → 8B=500 → B=62,5; A=187,5; C=250 m³/h.</p>
+                        <p className="text-xl font-bold text-indigo-400 mb-1 text-foreground/85 leading-relaxed">Rede de 3 tubulações (TRANSPETRO):</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Entrada total: 500 m³/h. Ramal A recebe o triplo de B. C=A+B.</p>
+                        <p className="text-xl font-mono mt-2 text-foreground/85 leading-relaxed">A + B + C = 500  (conservação)</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">A = 3B           (relação A-B)</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">C = A + B        (relação C)</p>
+                        <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Substituindo: 3B+B+(3B+B)=500 → 8B=500 → B=62,5; A=187,5; C=250 m³/h.</p>
                       </div>
                     </div>
                   ),
@@ -1330,13 +1330,13 @@ export default function AulaSistemasLineares({
               content: (
                 <div className="space-y-3">
                   <p className="font-semibold">Dicas para 3×3:</p>
-                  <ul className="list-disc list-inside space-y-1 text-sm">
+                  <ul className="list-disc list-inside space-y-1 text-xl text-foreground/85 leading-relaxed">
                     <li>Escolha a equação mais simples para isolamento primeiro</li>
                     <li>Substitua em todas as outras (reduz para 2×2)</li>
                     <li>Resolva o sistema 2×2 resultante</li>
                     <li>Retorne para encontrar a terceira variável</li>
                   </ul>
-                  <p className="font-semibold text-sm mt-2">Ou use Cramer com determinante 3×3 (Regra de Sarrus)</p>
+                  <p className="font-semibold text-xl mt-2 text-foreground/85 leading-relaxed">Ou use Cramer com determinante 3×3 (Regra de Sarrus)</p>
                 </div>
               )
             }}
@@ -1391,8 +1391,8 @@ export default function AulaSistemasLineares({
                         Toda equação linear ax+by=c (com b≠0) define uma <strong>reta no plano cartesiano</strong>. Reescrevendo na forma reduzida:
                       </p>
                       <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
-                        <p className="text-sm font-mono text-center font-bold">ax + by = c  →  y = (−a/b)x + c/b</p>
-                        <p className="text-xs text-muted-foreground text-center mt-2">
+                        <p className="text-xl font-mono text-center font-bold text-foreground/85 leading-relaxed">ax + by = c  →  y = (−a/b)x + c/b</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground text-center mt-2">
                           Coeficiente angular: m = −a/b &nbsp;|&nbsp; Intercepto: b₀ = c/b
                         </p>
                       </div>
@@ -1401,19 +1401,19 @@ export default function AulaSistemasLineares({
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-2">
                         <div className="p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20 text-center">
-                          <p className="text-xs font-bold text-emerald-500 mb-1">m₁ ≠ m₂</p>
-                          <p className="text-xs">Retas concorrentes</p>
-                          <p className="text-xs text-muted-foreground">→ SPD</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-1">m₁ ≠ m₂</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">Retas concorrentes</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">→ SPD</p>
                         </div>
                         <div className="p-3 bg-rose-500/5 rounded-lg border border-rose-500/20 text-center">
-                          <p className="text-xs font-bold text-rose-500 mb-1">m₁=m₂, b₁≠b₂</p>
-                          <p className="text-xs">Paralelas distintas</p>
-                          <p className="text-xs text-muted-foreground">→ SI</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-rose-500 mb-1">m₁=m₂, b₁≠b₂</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">Paralelas distintas</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">→ SI</p>
                         </div>
                         <div className="p-3 bg-amber-500/5 rounded-lg border border-amber-500/20 text-center">
-                          <p className="text-xs font-bold text-amber-500 mb-1">m₁=m₂, b₁=b₂</p>
-                          <p className="text-xs">Retas coincidentes</p>
-                          <p className="text-xs text-muted-foreground">→ SPI</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed font-bold text-amber-500 mb-1">m₁=m₂, b₁=b₂</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">Retas coincidentes</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">→ SPI</p>
                         </div>
                       </div>
                     </div>
@@ -1428,11 +1428,11 @@ export default function AulaSistemasLineares({
                         Para encontrar graficamente a intersecção de duas retas, trace cada reta usando pelo menos dois pontos (ex: interceptos com os eixos) e identifique o ponto de cruzamento visualmente.
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-3">
-                        <p className="text-sm font-bold text-blue-400">Exemplo — Monitoramento de pressão na P-77:</p>
-                        <p className="text-sm">Reta 1: p = 2t + 10 &nbsp;(pontos: (0,10) e (5,20))</p>
-                        <p className="text-sm">Reta 2: p = −t + 40 &nbsp;(pontos: (0,40) e (10,30))</p>
-                        <p className="text-sm mt-2">Igualando: 2t+10=−t+40 → 3t=30 → <strong>t=10h, p=30 bar</strong></p>
-                        <p className="text-xs text-muted-foreground mt-1">A intersecção (10, 30) é o momento e a pressão de equilíbrio entre os dois dutos.</p>
+                        <p className="text-xl font-bold text-blue-400 text-foreground/85 leading-relaxed">Exemplo — Monitoramento de pressão na P-77:</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Reta 1: p = 2t + 10 &nbsp;(pontos: (0,10) e (5,20))</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Reta 2: p = −t + 40 &nbsp;(pontos: (0,40) e (10,30))</p>
+                        <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Igualando: 2t+10=−t+40 → 3t=30 → <strong>t=10h, p=30 bar</strong></p>
+                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">A intersecção (10, 30) é o momento e a pressão de equilíbrio entre os dois dutos.</p>
                       </div>
                       <AlertBox tipo="info" titulo="Aplicação em Análise de Custos">
                         Dois fornecedores cobram: A = 200 + 15Q e B = 500 + 8Q (Q = quantidade de barris). A solução do sistema é o ponto de indiferença: 200+15Q=500+8Q → 7Q=300 → Q≈43 barris. Para Q&lt;43, fornecedor A é mais barato; para Q&gt;43, fornecedor B.
@@ -1448,12 +1448,12 @@ export default function AulaSistemasLineares({
                       <p>
                         Em 3 incógnitas, cada equação representa um <strong>plano no espaço 3D</strong>. Um sistema 3×3 busca o ponto comum a três planos. Os casos são análogos ao 2D:
                       </p>
-                      <ul className="list-disc list-inside space-y-2 text-sm">
+                      <ul className="list-disc list-inside space-y-2 text-xl text-foreground/85 leading-relaxed">
                         <li><strong>SPD:</strong> três planos se cruzam em exatamente um ponto</li>
                         <li><strong>SI:</strong> dois planos paralelos (um deles não compartilha nenhum ponto com os outros)</li>
                         <li><strong>SPI:</strong> os três planos se intersectam em uma reta ou em um plano (infinitos pontos em comum)</li>
                       </ul>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         A visualização 3D é mais complexa, mas os critérios algébricos (determinantes) continuam sendo a ferramenta de prova. O conceito geométrico ajuda a entender o significado físico dos resultados.
                       </p>
                     </div>
@@ -1527,12 +1527,12 @@ export default function AulaSistemasLineares({
               content: (
                 <div className="space-y-3">
                   <p className="font-semibold">Visualizar no plano cartesiano:</p>
-                  <ul className="list-disc list-inside space-y-1 text-sm">
+                  <ul className="list-disc list-inside space-y-1 text-xl text-foreground/85 leading-relaxed">
                     <li><strong>SPD:</strong> 2 retas se cruzam em 1 ponto (solução única)</li>
                     <li><strong>SPI:</strong> 2 retas são iguais (infinitos pontos de cruzamento)</li>
                     <li><strong>SI:</strong> 2 retas paralelas (nenhum cruzamento)</li>
                   </ul>
-                  <p className="font-semibold text-sm mt-2">A geometria confirma: inclinação igual = paralelas ou coincidentes!</p>
+                  <p className="font-semibold text-xl mt-2 text-foreground/85 leading-relaxed">A geometria confirma: inclinação igual = paralelas ou coincidentes!</p>
                 </div>
               )
             }}
@@ -1587,13 +1587,13 @@ export default function AulaSistemasLineares({
                         Enquanto um sistema de equações busca <em>igualdades</em>, um <strong>sistema de inequações</strong> define um conjunto de restrições do tipo ≤, ≥, &lt; ou &gt;. A <strong>região viável</strong> (ou região solução) é o conjunto de todos os pontos (x, y) que satisfazem TODAS as inequações simultaneamente.
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-emerald-400 mb-1">Exemplo industrial — PETROBRAS:</p>
-                        <p className="text-sm">Produção de óleo (x) e gás (y) com restrições:</p>
-                        <p className="text-sm font-mono">x + y ≤ 1000 (capacidade do tanque)</p>
-                        <p className="text-sm font-mono">x ≥ 200      (demanda mínima de óleo)</p>
-                        <p className="text-sm font-mono">y ≥ 100      (demanda mínima de gás)</p>
-                        <p className="text-sm font-mono">x, y ≥ 0    (não-negatividade)</p>
-                        <p className="text-xs mt-2 text-muted-foreground">A região viável é o polígono convexo definido por essas quatro restrições.</p>
+                        <p className="text-xl font-bold text-emerald-400 mb-1 text-foreground/85 leading-relaxed">Exemplo industrial — PETROBRAS:</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Produção de óleo (x) e gás (y) com restrições:</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">x + y ≤ 1000 (capacidade do tanque)</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">x ≥ 200      (demanda mínima de óleo)</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">y ≥ 100      (demanda mínima de gás)</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">x, y ≥ 0    (não-negatividade)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-2 text-muted-foreground">A região viável é o polígono convexo definido por essas quatro restrições.</p>
                       </div>
                       <p>
                         Para traçar a região viável: (1) trace as retas de borda (igualando as inequações); (2) determine o semiplano de cada inequação (teste com a origem (0,0) ou um ponto conveniente); (3) a região viável é a intersecção de todos os semiplanos.
@@ -1610,16 +1610,16 @@ export default function AulaSistemasLineares({
                         A <strong>Programação Linear</strong> busca maximizar ou minimizar uma função objetivo linear P=ax+by dentro da região viável. O <strong>Teorema Fundamental da PL</strong> garante:
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
-                        <p className="text-sm font-bold text-blue-400">Teorema Fundamental:</p>
-                        <p className="text-sm mt-1">Se a região viável é poligonal e limitada, a função objetivo linear atinge seu ótimo (máximo e mínimo) em um dos <strong>vértices</strong> da região.</p>
+                        <p className="text-xl font-bold text-blue-400 text-foreground/85 leading-relaxed">Teorema Fundamental:</p>
+                        <p className="text-xl mt-1 text-foreground/85 leading-relaxed">Se a região viável é poligonal e limitada, a função objetivo linear atinge seu ótimo (máximo e mínimo) em um dos <strong>vértices</strong> da região.</p>
                       </div>
                       <p>
                         Estratégia de prova: (1) Identifique os vértices da região viável (intersecções das retas de borda); (2) Calcule P em cada vértice; (3) O maior valor é o máximo, o menor é o mínimo.
                       </p>
                       <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
-                        <p className="text-xs font-bold text-amber-500 mb-2">Exemplo — Maximizar lucro L=3x+2y:</p>
-                        <p className="text-xs">Vértice A(0,0): L=0 | Vértice B(4,0): L=12 | Vértice C(2,3): L=12 | Vértice D(0,5): L=10</p>
-                        <p className="text-xs mt-1 font-bold">Máximo L=12 em B(4,0) e C(2,3).</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed font-bold text-amber-500 mb-2">Exemplo — Maximizar lucro L=3x+2y:</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed">Vértice A(0,0): L=0 | Vértice B(4,0): L=12 | Vértice C(2,3): L=12 | Vértice D(0,5): L=10</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-1 font-bold">Máximo L=12 em B(4,0) e C(2,3).</p>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
                         Quando a função objetivo é paralela a uma aresta da região viável (o máximo é atingido em dois vértices consecutivos), a questão pode pedir o máximo ou perguntar quantos pontos são ótimos. Nesse caso, TODOS os pontos da aresta são ótimos — infinitos pontos maximizam a função. A banca usa isso para testar leitura atenta do enunciado.
@@ -1635,13 +1635,13 @@ export default function AulaSistemasLineares({
                       <p>
                         Na otimização da produção de derivados do petróleo, a Programação Linear é usada diariamente para:
                       </p>
-                      <ul className="list-disc list-inside space-y-2 text-sm">
+                      <ul className="list-disc list-inside space-y-2 text-xl text-foreground/85 leading-relaxed">
                         <li><strong>Blending de combustíveis:</strong> maximizar lucro sujeito a restrições de qualidade (octanagem, enxofre)</li>
                         <li><strong>Planejamento de produção:</strong> quanto produzir de nafta vs. diesel para maximizar receita com capacidade limitada</li>
                         <li><strong>Alocação de pessoal:</strong> minimizar custo de mão-de-obra satisfazendo requisitos mínimos de turno</li>
                         <li><strong>Transporte:</strong> minimizar custo logístico de entrega de petróleo às refinarias</li>
                       </ul>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
                         Softwares como LINGO, CPLEX e até o Excel Solver resolvem esses problemas com centenas de variáveis. O fundamento matemático continua sendo o mesmo que você estuda aqui.
                       </p>
                     </div>
@@ -1715,13 +1715,13 @@ export default function AulaSistemasLineares({
               content: (
                 <div className="space-y-3">
                   <p className="font-semibold">Método de solução gráfica:</p>
-                  <ul className="list-disc list-inside space-y-1 text-sm">
+                  <ul className="list-disc list-inside space-y-1 text-xl text-foreground/85 leading-relaxed">
                     <li>Trace cada reta como se fosse equação (substitua = por ≤ ou ≥)</li>
                     <li>Escolha um ponto teste para determinar qual lado da reta</li>
                     <li>A solução é a interseção de todas as regiões (semiplanos)</li>
                     <li>Vértices são encontrados resolvendo pares de equações</li>
                   </ul>
-                  <p className="font-semibold text-sm mt-2">💡 Otimização linear: máximo/mínimo ocorre em vértices!</p>
+                  <p className="font-semibold text-xl mt-2 text-foreground/85 leading-relaxed">💡 Otimização linear: máximo/mínimo ocorre em vértices!</p>
                 </div>
               )
             }}
@@ -1776,9 +1776,9 @@ export default function AulaSistemasLineares({
                         Problemas de mistura sempre envolvem <strong>dois tipos de componente</strong> e <strong>duas restrições</strong>: volume total e concentração da propriedade desejada. O template é sempre o mesmo:
                       </p>
                       <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-amber-400 mb-1">Template de Mistura:</p>
-                        <p className="text-sm font-mono">Componente A + Componente B = Volume Total</p>
-                        <p className="text-sm font-mono">Conc_A × A + Conc_B × B = Conc_mix × Total</p>
+                        <p className="text-xl font-bold text-amber-400 mb-1 text-foreground/85 leading-relaxed">Template de Mistura:</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">Componente A + Componente B = Volume Total</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">Conc_A × A + Conc_B × B = Conc_mix × Total</p>
                       </div>
                       <p>
                         Exemplo REPLAN: mistura de óleo pesado (12% enxofre) e leve (3% enxofre) para obter 800 L com 6% de enxofre. Sistema: P+L=800 e 0,12P+0,03L=0,06×800=48. Substituindo L=800−P: 0,12P+0,03(800−P)=48 → 0,09P=24 → P≈267 L.
@@ -1798,13 +1798,13 @@ export default function AulaSistemasLineares({
                         O <strong>balanço de massa</strong> é a lei de conservação da matéria aplicada a processos industriais: <em>Entrada = Saída + Acúmulo</em>. Em regime estacionário (sem acúmulo), temos Entrada = Saída — uma equação linear simples que frequentemente compõe sistemas.
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-blue-400 mb-1">Balanço numa Unidade de Destilação:</p>
-                        <p className="text-sm">Entrada total: F = 1000 t/d de petróleo</p>
-                        <p className="text-sm">Saídas: Nafta (N) + Gasóleo (G) + Resíduo (R)</p>
-                        <p className="text-sm font-mono mt-2">N + G + R = 1000  (balanço global)</p>
-                        <p className="text-sm font-mono">N = 2G            (especificação do processo)</p>
-                        <p className="text-sm font-mono">R = G + 100       (fração de resíduo)</p>
-                        <p className="text-sm mt-2">Resolvendo: G+2G+(G+100)=1000 → 4G=900 → G=225; N=450; R=325 t/d.</p>
+                        <p className="text-xl font-bold text-blue-400 mb-1 text-foreground/85 leading-relaxed">Balanço numa Unidade de Destilação:</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Entrada total: F = 1000 t/d de petróleo</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Saídas: Nafta (N) + Gasóleo (G) + Resíduo (R)</p>
+                        <p className="text-xl font-mono mt-2 text-foreground/85 leading-relaxed">N + G + R = 1000  (balanço global)</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">N = 2G            (especificação do processo)</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">R = G + 100       (fração de resíduo)</p>
+                        <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Resolvendo: G+2G+(G+100)=1000 → 4G=900 → G=225; N=450; R=325 t/d.</p>
                       </div>
                       <AlertBox tipo="info" titulo="Conexão com a Prova">
                         A CESGRANRIO frequentemente contextualiza sistemas lineares em balanços de produção, sempre com dois ou três componentes. Identifique as variáveis, escreva a equação de conservação total e as relações entre componentes — o sistema monta-se naturalmente.
@@ -1821,12 +1821,12 @@ export default function AulaSistemasLineares({
                         Em redes de tubulação com ramais paralelos, a <strong>vazão total se divide</strong> entre os ramais e a <strong>pressão é a mesma</strong> em cada ponto de bifurcação. Isso gera sistemas lineares diretos.
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 space-y-2">
-                        <p className="text-sm font-bold text-cyan-400 mb-1">Problema TRANSPETRO:</p>
-                        <p className="text-sm">Vazão total Q=500 m³/h se divide em ramal A (Qₐ) e B (Q_b).</p>
-                        <p className="text-sm">Ramal A tem resistência dupla: Qₐ = Q_b/2.</p>
-                        <p className="text-sm font-mono mt-2">Qₐ + Q_b = 500</p>
-                        <p className="text-sm font-mono">Qₐ = Q_b/2 → Q_b = 2Qₐ</p>
-                        <p className="text-sm mt-2">Substituindo: Qₐ+2Qₐ=500 → 3Qₐ=500 → Qₐ≈167 m³/h. Q_b≈333 m³/h.</p>
+                        <p className="text-xl font-bold text-cyan-400 mb-1 text-foreground/85 leading-relaxed">Problema TRANSPETRO:</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Vazão total Q=500 m³/h se divide em ramal A (Qₐ) e B (Q_b).</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Ramal A tem resistência dupla: Qₐ = Q_b/2.</p>
+                        <p className="text-xl font-mono mt-2 text-foreground/85 leading-relaxed">Qₐ + Q_b = 500</p>
+                        <p className="text-xl font-mono text-foreground/85 leading-relaxed">Qₐ = Q_b/2 → Q_b = 2Qₐ</p>
+                        <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Substituindo: Qₐ+2Qₐ=500 → 3Qₐ=500 → Qₐ≈167 m³/h. Q_b≈333 m³/h.</p>
                       </div>
                       <p>
                         Esta lógica se estende a redes com três ou mais ramais, formando sistemas 3×3 ou maiores. Em provas, os sistemas geralmente têm no máximo 3 ramais para manter a resolução manual viável.
@@ -1902,13 +1902,13 @@ export default function AulaSistemasLineares({
               content: (
                 <div className="space-y-3">
                   <p className="font-semibold">Aplicações reais em Petrobras:</p>
-                  <ul className="list-disc list-inside space-y-1 text-sm">
+                  <ul className="list-disc list-inside space-y-1 text-xl text-foreground/85 leading-relaxed">
                     <li><strong>Fluxo em Redes:</strong> Quantidade de óleo em cada tubulação</li>
                     <li><strong>Balanço de Massa:</strong> O que entra = o que sai em cada nó</li>
                     <li><strong>Alocação de Produção:</strong> Otimizar distribuição entre campos</li>
                     <li><strong>Bombeamento:</strong> Pressões e vazões em cada etapa</li>
                   </ul>
-                  <p className="font-semibold text-sm mt-2">🎯 Cada nó = uma equação de conservação!</p>
+                  <p className="font-semibold text-xl mt-2 text-foreground/85 leading-relaxed">🎯 Cada nó = uma equação de conservação!</p>
                 </div>
               )
             }}
@@ -1962,23 +1962,23 @@ export default function AulaSistemasLineares({
                       <div className="space-y-3">
                         <div className="flex gap-3 p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20">
                           <span className="font-bold text-emerald-500 min-w-fit">1.</span>
-                          <span className="text-sm"><strong>Classificação rápida:</strong> calcule D. Se D≠0→SPD. Se D=0, verifique Dx e Dy para distinguir SI de SPI.</span>
+                          <span className="text-xl text-foreground/85 leading-relaxed"><strong>Classificação rápida:</strong> calcule D. Se D≠0→SPD. Se D=0, verifique Dx e Dy para distinguir SI de SPI.</span>
                         </div>
                         <div className="flex gap-3 p-3 bg-blue-500/5 rounded-lg border border-blue-500/20">
                           <span className="font-bold text-blue-500 min-w-fit">2.</span>
-                          <span className="text-sm"><strong>Substituição:</strong> priorize a equação com coeficiente 1 ou −1. Sempre verifique a solução nas equações originais.</span>
+                          <span className="text-xl text-foreground/85 leading-relaxed"><strong>Substituição:</strong> priorize a equação com coeficiente 1 ou −1. Sempre verifique a solução nas equações originais.</span>
                         </div>
                         <div className="flex gap-3 p-3 bg-amber-500/5 rounded-lg border border-amber-500/20">
                           <span className="font-bold text-amber-500 min-w-fit">3.</span>
-                          <span className="text-sm"><strong>Adição:</strong> ao multiplicar por escalar negativo, lembre-se de mudar o sinal do termo independente também.</span>
+                          <span className="text-xl text-foreground/85 leading-relaxed"><strong>Adição:</strong> ao multiplicar por escalar negativo, lembre-se de mudar o sinal do termo independente também.</span>
                         </div>
                         <div className="flex gap-3 p-3 bg-cyan-500/5 rounded-lg border border-cyan-500/20">
                           <span className="font-bold text-cyan-500 min-w-fit">4.</span>
-                          <span className="text-sm"><strong>Cramer:</strong> Dx substitui a coluna de x pelos termos independentes. Dy substitui a coluna de y. x=Dx/D, y=Dy/D.</span>
+                          <span className="text-xl text-foreground/85 leading-relaxed"><strong>Cramer:</strong> Dx substitui a coluna de x pelos termos independentes. Dy substitui a coluna de y. x=Dx/D, y=Dy/D.</span>
                         </div>
                         <div className="flex gap-3 p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20">
                           <span className="font-bold text-indigo-500 min-w-fit">5.</span>
-                          <span className="text-sm"><strong>Proporções:</strong> r₁=a₁/a₂, r₂=b₁/b₂, r₃=c₁/c₂. r₁≠r₂→SPD; r₁=r₂=r₃→SPI; r₁=r₂≠r₃→SI.</span>
+                          <span className="text-xl text-foreground/85 leading-relaxed"><strong>Proporções:</strong> r₁=a₁/a₂, r₂=b₁/b₂, r₃=c₁/c₂. r₁≠r₂→SPD; r₁=r₂=r₃→SPI; r₁=r₂≠r₃→SI.</span>
                         </div>
                       </div>
                     </div>
@@ -1992,23 +1992,23 @@ export default function AulaSistemasLineares({
                       <div className="space-y-3">
                         <div className="flex gap-3 p-3 bg-rose-500/5 rounded-lg border border-rose-500/20">
                           <span className="font-bold text-rose-500 min-w-fit">6.</span>
-                          <span className="text-sm"><strong>Problemas de mistura:</strong> equação 1 = volume total. Equação 2 = propriedade × volume. Sempre substitua e verifique.</span>
+                          <span className="text-xl text-foreground/85 leading-relaxed"><strong>Problemas de mistura:</strong> equação 1 = volume total. Equação 2 = propriedade × volume. Sempre substitua e verifique.</span>
                         </div>
                         <div className="flex gap-3 p-3 bg-emerald-500/5 rounded-lg border border-emerald-500/20">
                           <span className="font-bold text-emerald-500 min-w-fit">7.</span>
-                          <span className="text-sm"><strong>Sistemas 3×3:</strong> procure relações diretas entre variáveis antes de escalonar. Ex: A=2B economiza uma equação.</span>
+                          <span className="text-xl text-foreground/85 leading-relaxed"><strong>Sistemas 3×3:</strong> procure relações diretas entre variáveis antes de escalonar. Ex: A=2B economiza uma equação.</span>
                         </div>
                         <div className="flex gap-3 p-3 bg-blue-500/5 rounded-lg border border-blue-500/20">
                           <span className="font-bold text-blue-500 min-w-fit">8.</span>
-                          <span className="text-sm"><strong>Inequações:</strong> o ótimo da PL sempre está em um vértice. Calcule a função objetivo em todos os vértices.</span>
+                          <span className="text-xl text-foreground/85 leading-relaxed"><strong>Inequações:</strong> o ótimo da PL sempre está em um vértice. Calcule a função objetivo em todos os vértices.</span>
                         </div>
                         <div className="flex gap-3 p-3 bg-amber-500/5 rounded-lg border border-amber-500/20">
                           <span className="font-bold text-amber-500 min-w-fit">9.</span>
-                          <span className="text-sm"><strong>Parâmetro k:</strong> D=0 dá os valores de k. Depois teste em Dx e Dy para classificar como SI ou SPI.</span>
+                          <span className="text-xl text-foreground/85 leading-relaxed"><strong>Parâmetro k:</strong> D=0 dá os valores de k. Depois teste em Dx e Dy para classificar como SI ou SPI.</span>
                         </div>
                         <div className="flex gap-3 p-3 bg-indigo-500/5 rounded-lg border border-indigo-500/20">
                           <span className="font-bold text-indigo-500 min-w-fit">10.</span>
-                          <span className="text-sm"><strong>A questão pede x+y, não x ou y separadamente.</strong> Leia com atenção — em 40% dos casos a resposta é uma combinação das incógnitas.</span>
+                          <span className="text-xl text-foreground/85 leading-relaxed"><strong>A questão pede x+y, não x ou y separadamente.</strong> Leia com atenção — em 40% dos casos a resposta é uma combinação das incógnitas.</span>
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Armadilha Final CESGRANRIO">
@@ -2026,14 +2026,14 @@ export default function AulaSistemasLineares({
                         Diante de qualquer questão de Sistemas Lineares na CESGRANRIO, siga este fluxo de decisão:
                       </p>
                       <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4 space-y-3">
-                        <p className="text-sm font-bold text-indigo-400">Fluxo de Resolução:</p>
-                        <p className="text-sm">1. O sistema é classificado ou precisa ser resolvido?</p>
-                        <p className="text-sm text-muted-foreground pl-4">→ Se classificação: use método das proporções ou D</p>
-                        <p className="text-sm">2. Se precisa resolver: algum coef. é 1 ou −1?</p>
-                        <p className="text-sm text-muted-foreground pl-4">→ Sim: use substituição | Não: use adição ou Cramer</p>
-                        <p className="text-sm">3. A questão pede x, y, ou uma combinação?</p>
-                        <p className="text-sm text-muted-foreground pl-4">→ Se x+y: tente somar as equações diretamente</p>
-                        <p className="text-sm">4. Sempre verifique a solução nas equações originais antes de marcar.</p>
+                        <p className="text-xl font-bold text-indigo-400 text-foreground/85 leading-relaxed">Fluxo de Resolução:</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">1. O sistema é classificado ou precisa ser resolvido?</p>
+                        <p className="text-xl text-muted-foreground pl-4 text-foreground/85 leading-relaxed">→ Se classificação: use método das proporções ou D</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">2. Se precisa resolver: algum coef. é 1 ou −1?</p>
+                        <p className="text-xl text-muted-foreground pl-4 text-foreground/85 leading-relaxed">→ Sim: use substituição | Não: use adição ou Cramer</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">3. A questão pede x, y, ou uma combinação?</p>
+                        <p className="text-xl text-muted-foreground pl-4 text-foreground/85 leading-relaxed">→ Se x+y: tente somar as equações diretamente</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">4. Sempre verifique a solução nas equações originais antes de marcar.</p>
                       </div>
                     </div>
                   ),
@@ -2106,14 +2106,14 @@ export default function AulaSistemasLineares({
               content: (
                 <div className="space-y-3">
                   <p className="font-semibold">Checklist antes da prova:</p>
-                  <ul className="list-disc list-inside space-y-1 text-sm">
+                  <ul className="list-disc list-inside space-y-1 text-xl text-foreground/85 leading-relaxed">
                     <li>Substituição: melhor quando há coeficiente 1 ou −1</li>
                     <li>Adição: multiplica para eliminar uma variável</li>
                     <li>Cramer: usa determinantes (se D≠0)</li>
                     <li>Geometria: visualiza a solução como retas</li>
                     <li>Aplicações: reconheça fluxos e balanços</li>
                   </ul>
-                  <p className="font-semibold text-sm mt-2">⭐ Na dúvida: use Adição! É o mais confiável e rápido!</p>
+                  <p className="font-semibold text-xl mt-2 text-foreground/85 leading-relaxed">⭐ Na dúvida: use Adição! É o mais confiável e rápido!</p>
                 </div>
               )
             }}
