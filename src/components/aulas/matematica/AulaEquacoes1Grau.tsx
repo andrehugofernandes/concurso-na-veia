@@ -429,7 +429,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-2">
                     <LuZap className="w-6 h-6 text-blue-500" />
                     <p className="font-bold">Mnemônico Rápido</p>
-                    <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                    <p className="text-xl text-foreground/85 leading-relaxed">
                       Qual é o oposto de +5?
                     </p>
                   </div>
@@ -438,7 +438,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleCheck className="w-6 h-6 text-emerald-500" />
                     <p className="font-bold">-5 (e vice-versa)</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground text-center">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-center">
                       Soma inverte para subtração
                     </p>
                   </div>
@@ -449,7 +449,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-2">
                     <LuZap className="w-6 h-6 text-blue-500" />
                     <p className="font-bold">Dúvida Comum</p>
-                    <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                    <p className="text-xl text-foreground/85 leading-relaxed">
                       Inverte o sinal ou a operação?
                     </p>
                   </div>
@@ -458,7 +458,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleCheck className="w-6 h-6 text-emerald-500" />
                     <p className="font-bold">A OPERAÇÃO!</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground text-center">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-center">
                       O sinal vai junto. -3x passa÷3 com o sinal.
                     </p>
                   </div>
@@ -1149,7 +1149,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-amber-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           🚀 Atalho: MMC por Vontade
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Se tiver 2, 3, 4: MMC = 12. Se tiver 5, 6: MMC = 30.
                           Multiplicar por um múltiplo comum SEMPRE funciona.
                         </p>
@@ -1158,7 +1158,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-orange-700 text-xl mb-1 text-foreground/85 leading-relaxed">
                           🎯 Passo Crítico
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Multiplique TODA equação, não só um lado. Erros
                           maiores acontecem aqui.
                         </p>
@@ -1204,7 +1204,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleCheck className="w-6 h-6 text-emerald-500" />
                     <p className="font-bold text-center">12</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       Múltiplos: 4, 8, 12... 6, 12...
                     </p>
                   </div>
@@ -1215,14 +1215,14 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-2">
                     <LuZap className="w-6 h-6 text-amber-500" />
                     <p className="font-bold text-center">(x/5) + 2 = 7</p>
-                    <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Qual é x?</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Qual é x?</p>
                   </div>
                 }
                 verso={
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleCheck className="w-6 h-6 text-emerald-500" />
                     <p className="font-mono text-xl font-bold text-foreground/85 leading-relaxed">x = 25</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       x/5 = 5 → x = 25
                     </p>
                   </div>
@@ -1447,7 +1447,7 @@ export default function AulaEquacoes1Grau({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground mb-3 text-foreground/85 leading-relaxed">
+                      <p className="text-xl mb-3 text-foreground/85 leading-relaxed">
                         É o método veloz. Empilhe as equações e "some", torcendo
                         para um dos valores se anular.
                       </p>
@@ -1472,7 +1472,7 @@ export default function AulaEquacoes1Grau({
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground mb-3 text-foreground/85 leading-relaxed">
+                      <p className="text-xl mb-3 text-foreground/85 leading-relaxed">
                         Útil quando uma letra está isolada. Ex: "J = M + 5".
                       </p>
                       <div className="bg-sky-500/10 p-4 rounded-xl border border-sky-500/20 space-y-2 text-xl text-foreground/85 leading-relaxed">
@@ -1502,7 +1502,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-cyan-700 text-xl text-foreground/85 leading-relaxed">
                           ⚡ Adição: Quando há simetria
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Se vir +y e -y, some direto. Rápido!
                         </p>
                       </div>
@@ -1510,7 +1510,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-sky-700 text-xl text-foreground/85 leading-relaxed">
                           🔄 Substituição: Quando há isolamento
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Se já vê x = ... ou y = ..., use substituição.
                         </p>
                       </div>
@@ -1894,7 +1894,7 @@ export default function AulaEquacoes1Grau({
                         <p className="text-xl text-foreground/85 leading-relaxed">
                           Resolve como equação: 3x {">"} 12 → x {">"} 4
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-2">
                           Solução: todos os números maiores que 4.
                         </p>
                       </div>
@@ -1983,7 +1983,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleCheck className="w-6 h-6 text-emerald-500" />
                     <p className="font-mono font-bold">x ≥ -4</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       Dividir por -3 inverte ≤ para ≥
                     </p>
                   </div>
@@ -2002,7 +2002,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleCheck className="w-6 h-6 text-emerald-500" />
                     <p className="font-mono font-bold">x {">"} 4</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       2x {">"} 8 → divide por 2 (positivo)
                     </p>
                   </div>
@@ -2198,7 +2198,7 @@ export default function AulaEquacoes1Grau({
                   icone: <LuPlay />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mb-3">
+                      <p className="text-lg text-foreground/85 leading-relaxed mb-3">
                         Estratégia: Use a 1ª equação para eliminar x das outras
                         duas.
                       </p>
@@ -2231,7 +2231,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-violet-700">
                           1️⃣ Escolha uma incógnita para eliminar
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Geralmente a que tem coeficiente 1 ou simétrico.
                         </p>
                       </div>
@@ -2239,7 +2239,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-indigo-700">
                           2️⃣ Use as 3 equações para fazer 2
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Subtraia ou some combinações para eliminar.
                         </p>
                       </div>
@@ -2247,7 +2247,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-violet-700">
                           3️⃣ Repita com as 2 equações (torna-se 2x2)
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Agora é um sistema 2x2. Use adição ou substituição.
                         </p>
                       </div>
@@ -2474,7 +2474,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-mono text-xl text-foreground/85 leading-relaxed">
                           2(4) + 3 = 8 + 3 = 11 ✓
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-2">
                           Ambos lados da equação são iguais. x = 4 está CORRETO.
                         </p>
                       </div>
@@ -2492,7 +2492,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-mono text-xl text-foreground/85 leading-relaxed">
                           2(5) + 3 = 10 + 3 = 13 ≠ 11 ✗
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-2">
                           Lado esquerdo ≠ lado direito. Há erro. Refaça!
                         </p>
                       </div>
@@ -2508,7 +2508,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-teal-700">
                           1️⃣ Substitua direto no original
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Não use equações intermediárias, volta ao texto.
                         </p>
                       </div>
@@ -2516,7 +2516,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-cyan-700">
                           2️⃣ Calcule ambos os lados separadamente
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Lado esquerdo = ? Lado direito = ? Iguais?
                         </p>
                       </div>
@@ -2524,7 +2524,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-teal-700">
                           3️⃣ Verifique antes de marcar
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Se sobrar tempo: SEMPRE verifica.
                         </p>
                       </div>
@@ -2570,7 +2570,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleX className="w-6 h-6 text-rose-500" />
                     <p className="font-bold">Não ✗</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       4(3) - 5 = 7 → 12 - 5 = 7 ✓ (sim!)
                     </p>
                   </div>
@@ -2589,7 +2589,7 @@ export default function AulaEquacoes1Grau({
                   <div className="flex flex-col items-center gap-3">
                     <LuCircleCheck className="w-6 h-6 text-emerald-500" />
                     <p className="font-bold">Sim ✓</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       3(-2) + 6 = -6 + 6 = 0 ✓
                     </p>
                   </div>
@@ -2828,7 +2828,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-orange-700">
                           1️⃣ Destaque as VARIÁVEIS
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           "x horas", "y barris", "z salários". Sublinha tudo.
                         </p>
                       </div>
@@ -2836,7 +2836,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-red-700">
                           2️⃣ Encontre as RELACIONS
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           "o dobro", "3 vezes menor", "somando todos".
                         </p>
                       </div>
@@ -2844,7 +2844,7 @@ export default function AulaEquacoes1Grau({
                         <p className="font-bold text-orange-700">
                           3️⃣ Procure o RESULTADO FINAL
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           "Ficou em", "Totalizou", "Somam". Ali fica o "=".
                         </p>
                       </div>
@@ -3058,7 +3058,7 @@ export default function AulaEquacoes1Grau({
                 inequações, contextos Petrobras. Está pronto para Equações de 2º
                 Grau, Funções e além.
               </p>
-              <div className="flex gap-2 text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+              <div className="flex gap-2 text-xl text-foreground/85 leading-relaxed">
                 <LuGraduationCap className="w-4 h-4" />
                 <span>Próximo: Equações de 2º Grau</span>
               </div>

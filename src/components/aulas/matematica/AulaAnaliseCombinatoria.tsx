@@ -163,7 +163,7 @@ export default function AulaAnaliseCombinatoria({
                 <div className="bg-white dark:bg-slate-900 rounded p-4 font-mono text-center space-y-2">
                   <p className="text-sm md:text-base">Se uma tarefa T tem etapas E₁, E₂, ..., Eₙ com m₁, m₂, ..., mₙ opções respectivamente:</p>
                   <p className="text-base md:text-lg font-bold text-amber-600 dark:text-amber-400">Total = m₁ × m₂ × ... × mₙ</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-3">Válido APENAS quando as etapas são independentes (nenhuma opção em uma etapa depende de escolhas anteriores)</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed mt-3">Válido APENAS quando as etapas são independentes (nenhuma opção em uma etapa depende de escolhas anteriores)</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
                   <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded">
@@ -396,7 +396,7 @@ export default function AulaAnaliseCombinatoria({
                 <div className="bg-white dark:bg-slate-900 rounded p-4 space-y-3">
                   <div className="font-mono text-center">
                     <p className="text-sm md:text-base"><strong>n! = n × (n-1) × (n-2) × ... × 2 × 1</strong></p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Para n ≥ 1</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-1">Para n ≥ 1</p>
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-3">
                     {[
@@ -416,7 +416,7 @@ export default function AulaAnaliseCombinatoria({
                       </div>
                     ))}
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-3">✅ <strong>Memorize:</strong> 0! = 1 (por definição), 1! = 1, 10! = 3.628.800, e use simplificação para valores maiores</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed mt-3">✅ <strong>Memorize:</strong> 0! = 1 (por definição), 1! = 1, 10! = 3.628.800, e use simplificação para valores maiores</p>
                 </div>
               </div>
             </div>
@@ -504,11 +504,11 @@ export default function AulaAnaliseCombinatoria({
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 space-y-2">
                         <p className="text-xl text-foreground/85 leading-relaxed">C(n, 0) = n! / (0! × n!) = n! / (1 × n!) = <strong>1</strong></p>
-                        <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Há exatamente 1 forma de escolher 0 elementos de um conjunto: o subconjunto vazio.</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Há exatamente 1 forma de escolher 0 elementos de um conjunto: o subconjunto vazio.</p>
                       </div>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 space-y-2">
                         <p className="text-xl text-foreground/85 leading-relaxed">C(n, n) = n! / (n! × 0!) = <strong>1</strong></p>
-                        <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Há exatamente 1 forma de escolher todos os elementos: pegar o conjunto inteiro.</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Há exatamente 1 forma de escolher todos os elementos: pegar o conjunto inteiro.</p>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
                         A banca frequentemente usa C(n,0) ou C(n,n) em cálculos. Candidatos que não sabem 0!=1 erram essas questões. <strong>Memorize: 0! = 1, ponto final.</strong>
@@ -650,7 +650,7 @@ export default function AulaAnaliseCombinatoria({
                 <h4 className="font-bold text-foreground text-lg">Fórmula da Permutação Simples</h4>
                 <div className="bg-white dark:bg-slate-900 rounded p-4 font-mono text-center space-y-2">
                   <p className="text-sm md:text-base"><strong>P(n) = n! = n × (n-1) × (n-2) × ... × 2 × 1</strong></p>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">Válido quando: Todos os n elementos são usados, ordem importa, sem repetição</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed mt-2">Válido quando: Todos os n elementos são usados, ordem importa, sem repetição</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
                   <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded">
@@ -692,7 +692,7 @@ export default function AulaAnaliseCombinatoria({
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
                         <p className="font-mono text-center text-lg">P(n) = n!</p>
-                        <p className="text-xl text-center text-muted-foreground mt-1 text-foreground/85 leading-relaxed">Todos os n elementos, todos os n lugares</p>
+                        <p className="text-xl text-center mt-1 text-foreground/85 leading-relaxed">Todos os n elementos, todos os n lugares</p>
                       </div>
                       <AlertBox tipo="info" titulo="Contexto Petrobras">
                         5 técnicos da REPLAN precisam ser escalados em fila para receber treinamento. De quantas formas? P(5) = 5! = 120. Cada ordem é diferente: o técnico A na frente ≠ o técnico B na frente.
@@ -712,22 +712,22 @@ export default function AulaAnaliseCombinatoria({
                         <p className="text-xl font-bold text-teal-500 mb-3 text-foreground/85 leading-relaxed">Exemplo: 4 operadores em 4 turnos</p>
                         <div className="flex items-center gap-2 flex-wrap">
                           <div className="px-3 py-2 bg-teal-500/10 rounded border border-teal-500/20 text-center">
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Turno 1</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">Turno 1</p>
                             <p className="text-xl font-bold text-foreground/85 leading-relaxed">4 opções</p>
                           </div>
                           <span className="text-muted-foreground">×</span>
                           <div className="px-3 py-2 bg-teal-500/10 rounded border border-teal-500/20 text-center">
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Turno 2</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">Turno 2</p>
                             <p className="text-xl font-bold text-foreground/85 leading-relaxed">3 opções</p>
                           </div>
                           <span className="text-muted-foreground">×</span>
                           <div className="px-3 py-2 bg-teal-500/10 rounded border border-teal-500/20 text-center">
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Turno 3</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">Turno 3</p>
                             <p className="text-xl font-bold text-foreground/85 leading-relaxed">2 opções</p>
                           </div>
                           <span className="text-muted-foreground">×</span>
                           <div className="px-3 py-2 bg-teal-500/10 rounded border border-teal-500/20 text-center">
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Turno 4</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">Turno 4</p>
                             <p className="text-xl font-bold text-foreground/85 leading-relaxed">1 opção</p>
                           </div>
                           <span className="text-muted-foreground">=</span>
@@ -752,13 +752,13 @@ export default function AulaAnaliseCombinatoria({
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">Permutação P(n)</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">n elementos → n lugares</p>
                           <p className="text-xl font-mono mt-1 text-foreground/85 leading-relaxed">P(5) = 5! = 120</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">5 técnicos em 5 turnos</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">5 técnicos em 5 turnos</p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-2">Arranjo A(n,p)</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">n elementos → p lugares (p &lt; n)</p>
                           <p className="text-xl font-mono mt-1 text-foreground/85 leading-relaxed">A(8,3) = 8×7×6 = 336</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">8 barcos, pódio de 3</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">8 barcos, pódio de 3</p>
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
@@ -839,7 +839,7 @@ export default function AulaAnaliseCombinatoria({
                     <div className="w-10 h-10 bg-rose-500 text-white flex items-center justify-center rounded font-bold">P</div>
                     <div className="w-10 h-10 border border-emerald-500 flex items-center justify-center rounded font-bold text-emerald-500 animate-pulse">4!</div>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-center text-muted-foreground mt-2">Fixe o elemento estático e permute apenas o restante.</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed text-center mt-2">Fixe o elemento estático e permute apenas o restante.</p>
                 </div>
               )
             }}
@@ -899,7 +899,7 @@ export default function AulaAnaliseCombinatoria({
                 <h4 className="font-bold text-foreground text-lg">Fórmula da Permutação com Repetição</h4>
                 <div className="bg-white dark:bg-slate-900 rounded p-4 space-y-2">
                   <p className="font-mono text-center text-sm md:text-base"><strong>P(n; k₁, k₂, ..., kₘ) = n! / (k₁! × k₂! × ... × kₘ!)</strong></p>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-center text-muted-foreground mt-2">Onde: n = total de elementos | k₁, k₂, ..., kₘ = quantidade de cada tipo repetido | k₁ + k₂ + ... + kₘ = n</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed text-center mt-2">Onde: n = total de elementos | k₁, k₂, ..., kₘ = quantidade de cada tipo repetido | k₁ + k₂ + ... + kₘ = n</p>
                   <div className="mt-3 p-3 bg-rose-500/10 border border-rose-500/20 rounded">
                     <p className="text-lg text-foreground/85 leading-relaxed font-bold text-rose-600 dark:text-rose-400">Exemplo: Palavra "AAABBC" (6 letras, 3 A's, 2 B's, 1 C)</p>
                     <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">P(6; 3, 2, 1) = 6! / (3! × 2! × 1!) = 720 / (6 × 2 × 1) = 60 anagramas distintos</p>
@@ -933,7 +933,7 @@ export default function AulaAnaliseCombinatoria({
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
                         <p className="text-xl font-mono text-center text-foreground/85 leading-relaxed">P(n; n₁, n₂, ..., nₖ) = n! / (n₁! × n₂! × ... × nₖ!)</p>
-                        <p className="text-xl text-center text-muted-foreground mt-1 text-foreground/85 leading-relaxed">onde n₁ + n₂ + ... + nₖ = n</p>
+                        <p className="text-xl text-center mt-1 text-foreground/85 leading-relaxed">onde n₁ + n₂ + ... + nₖ = n</p>
                       </div>
                       <AlertBox tipo="info" titulo="Exemplo Industrial">
                         Sinalizadores em linha: 3 vermelhos (V,V,V) e 2 amarelos (A,A). Sem contar repetições: 5! = 120. Mas V₁V₂V₃A₁A₂ = V₂V₁V₃A₁A₂ (os vermelhos são idênticos). Dividimos: 5!/(3!×2!) = 120/12 = <strong>10 arranjos distintos</strong>.
@@ -976,7 +976,7 @@ export default function AulaAnaliseCombinatoria({
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 space-y-2">
                         <p className="text-xl font-bold text-foreground/85 leading-relaxed">P(n; p, n−p) = C(n, p)</p>
-                        <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Permutação de n elementos em 2 grupos (p e n−p) é igual a combinar n tomados p a p.</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Permutação de n elementos em 2 grupos (p e n−p) é igual a combinar n tomados p a p.</p>
                         <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Ex: P(5; 3, 2) = 5!/(3!×2!) = 10 = C(5,2)</p>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
@@ -1118,7 +1118,7 @@ export default function AulaAnaliseCombinatoria({
                 <div className="bg-white dark:bg-slate-900 rounded p-4 space-y-3">
                   <div className="font-mono text-center">
                     <p className="text-sm md:text-base"><strong>A(n,p) = n! / (n-p)! = n × (n-1) × ... × (n-p+1)</strong></p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">Exatamente p termos consecutivos começando de n</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-2">Exatamente p termos consecutivos começando de n</p>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
                     <div className="p-3 bg-violet-500/10 border border-violet-500/20 rounded">
@@ -1130,7 +1130,7 @@ export default function AulaAnaliseCombinatoria({
                       <p className="text-lg text-foreground/85 leading-relaxed mt-1">Seleciona p de n, ordem NÃO importa (comitê)</p>
                     </div>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-center mt-3 text-muted-foreground">Palavra-chave "pódio", "posto", "sequência", "ordem" → Arranjo. Palavra-chave "comitê", "grupo", "seleção" → Combinação</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed text-center mt-3">Palavra-chave "pódio", "posto", "sequência", "ordem" → Arranjo. Palavra-chave "comitê", "grupo", "seleção" → Combinação</p>
                 </div>
               </div>
             </div>
@@ -1161,7 +1161,7 @@ export default function AulaAnaliseCombinatoria({
                       <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
                         <p className="font-mono text-center text-lg">A(n, p) = n! / (n − p)!</p>
                         <p className="text-xl font-mono text-center mt-1 text-foreground/85 leading-relaxed">= n × (n−1) × ... × (n−p+1)</p>
-                        <p className="text-xl text-center text-muted-foreground mt-1 text-foreground/85 leading-relaxed">São exatamente p fatores, começando por n</p>
+                        <p className="text-xl text-center mt-1 text-foreground/85 leading-relaxed">São exatamente p fatores, começando por n</p>
                       </div>
                       <AlertBox tipo="info" titulo="Contexto Petrobras">
                         De 10 técnicos, escolher e ordenar 3 para os cargos de líder, vice-líder e secretário de turno: A(10,3) = 10×9×8 = <strong>720 formas</strong>. A ordem importa porque líder ≠ vice-líder.
@@ -1181,19 +1181,19 @@ export default function AulaAnaliseCombinatoria({
                         <div className="p-4 bg-indigo-500/5 rounded-xl border border-indigo-500/20">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-indigo-500 mb-2">ARRANJO: Ordem Importa</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">A(5,3) = 5×4×3 = 60</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">ABC ≠ BAC ≠ CBA</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Cargos, pódio, senhas ordenadas</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">ABC ≠ BAC ≠ CBA</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">Cargos, pódio, senhas ordenadas</p>
                         </div>
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">COMBINAÇÃO: Ordem Não Importa</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">C(5,3) = 10</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">ABC = BAC = CBA</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Grupos, equipes, comitês</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">ABC = BAC = CBA</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">Grupos, equipes, comitês</p>
                         </div>
                       </div>
                       <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4">
                         <p className="text-xl font-bold text-foreground/85 leading-relaxed">Relação: A(n,p) = C(n,p) × p!</p>
-                        <p className="text-xl text-muted-foreground mt-1 text-foreground/85 leading-relaxed">Para cada combinação de p elementos, há p! maneiras de ordená-los → cada combinação gera p! arranjos.</p>
+                        <p className="text-xl mt-1 text-foreground/85 leading-relaxed">Para cada combinação de p elementos, há p! maneiras de ordená-los → cada combinação gera p! arranjos.</p>
                       </div>
                     </div>
                   ),
@@ -1210,12 +1210,12 @@ export default function AulaAnaliseCombinatoria({
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
                           <p className="text-xl font-bold text-blue-500 text-foreground/85 leading-relaxed">A(8, 3) = ?</p>
                           <p className="text-xl font-mono mt-1 text-foreground/85 leading-relaxed">= 8 × 7 × 6 = <strong>336</strong></p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">3 fatores começando em 8</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">3 fatores começando em 8</p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
                           <p className="text-xl font-bold text-cyan-500 text-foreground/85 leading-relaxed">A(12, 4) = ?</p>
                           <p className="text-xl font-mono mt-1 text-foreground/85 leading-relaxed">= 12 × 11 × 10 × 9 = <strong>11.880</strong></p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">4 fatores começando em 12</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">4 fatores começando em 12</p>
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
@@ -1360,7 +1360,7 @@ export default function AulaAnaliseCombinatoria({
                 <div className="bg-white dark:bg-slate-900 rounded p-4 space-y-3">
                   <div className="font-mono text-center">
                     <p className="text-sm md:text-base"><strong>C(n,p) = n! / [p! × (n-p)!]</strong></p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">Propriedade: C(n,p) = C(n, n-p) — Simetria</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-2">Propriedade: C(n,p) = C(n, n-p) — Simetria</p>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
                     <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded">
@@ -1372,7 +1372,7 @@ export default function AulaAnaliseCombinatoria({
                       <p className="text-lg text-foreground/85 leading-relaxed mt-1">Ordem importa (pódio, cargos, sequência)</p>
                     </div>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-center mt-3 text-muted-foreground">Atalho: C(n,2) = n(n-1)/2 para "apertos de mão", "diagonais", "pares"</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed text-center mt-3">Atalho: C(n,2) = n(n-1)/2 para "apertos de mão", "diagonais", "pares"</p>
                 </div>
               </div>
             </div>
@@ -1430,7 +1430,7 @@ export default function AulaAnaliseCombinatoria({
                       </div>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
                         <p className="text-xl font-bold text-foreground/85 leading-relaxed">Atalho: C(n, 2) = n(n−1)/2</p>
-                        <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Apertos de mão, diagonais de polígono — sempre C(n,2) = n(n−1)/2.</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Apertos de mão, diagonais de polígono — sempre C(n,2) = n(n−1)/2.</p>
                       </div>
                     </div>
                   ),
@@ -1445,13 +1445,13 @@ export default function AulaAnaliseCombinatoria({
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-500 mb-2">Apertos de Mão</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">n pessoas, cada par cumprimenta uma vez:</p>
                           <p className="text-xl font-mono mt-1 text-foreground/85 leading-relaxed">C(n, 2) = n(n−1)/2</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">6 gerentes → C(6,2) = 15 apertos</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">6 gerentes → C(6,2) = 15 apertos</p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-2">Diagonais de Polígono</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">n vértices, subtraindo os n lados:</p>
                           <p className="text-xl font-mono mt-1 text-foreground/85 leading-relaxed">C(n,2) − n = n(n−3)/2</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Octógono → C(8,2)−8 = 28−8 = 20</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Octógono → C(8,2)−8 = 28−8 = 20</p>
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
@@ -1596,13 +1596,13 @@ export default function AulaAnaliseCombinatoria({
                 <div className="bg-white dark:bg-slate-900 rounded p-4 space-y-3">
                   <div className="font-mono text-center">
                     <p className="text-sm md:text-base"><strong>CR(n,p) = C(n+p-1, p) = (n+p-1)! / [p! × (n-1)!]</strong></p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">Método: "Stars and Bars" — p estrelas, (n-1) barras</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-2">Método: "Stars and Bars" — p estrelas, (n-1) barras</p>
                   </div>
                   <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded mt-4">
                     <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-600 dark:text-blue-400">Exemplo: 5 sorvetes, 3 sabores</p>
                     <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-1">CR(3,5) = C(7,5) = C(7,2) = 7×6/2 = 21 combinações</p>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-center mt-3 text-muted-foreground">Diferença: Combinação simples = sem repetição | Combinação com repetição = com repetição permitida</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed text-center mt-3">Diferença: Combinação simples = sem repetição | Combinação com repetição = com repetição permitida</p>
                 </div>
               </div>
             </div>
@@ -1632,7 +1632,7 @@ export default function AulaAnaliseCombinatoria({
                       </p>
                       <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
                         <p className="font-mono text-center text-lg">CR(n, p) = C(n+p−1, p)</p>
-                        <p className="text-xl text-center text-muted-foreground mt-1 text-foreground/85 leading-relaxed">Equivalente a C(n+p−1, n−1)</p>
+                        <p className="text-xl text-center mt-1 text-foreground/85 leading-relaxed">Equivalente a C(n+p−1, n−1)</p>
                       </div>
                       <AlertBox tipo="info" titulo="Exemplo Prático">
                         Um operador escolhe 3 itens de um cardápio com 5 opções (pode repetir): CR(5,3) = C(5+3−1, 3) = C(7,3) = <strong>35 formas</strong>. Sem repetição seria apenas C(5,3) = 10.
@@ -1656,13 +1656,13 @@ export default function AulaAnaliseCombinatoria({
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
                         <div className="p-3 bg-teal-500/5 rounded-xl border border-teal-500/20">
                           <p className="text-lg text-foreground/85 leading-relaxed text-teal-500 font-bold">CR vs. C: Quando Usar</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">CR: "pode repetir", "pode escolher o mesmo"</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">C: "sem repetição", "cada elemento único"</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">CR: "pode repetir", "pode escolher o mesmo"</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">C: "sem repetição", "cada elemento único"</p>
                         </div>
                         <div className="p-3 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
                           <p className="text-lg text-foreground/85 leading-relaxed text-cyan-500 font-bold">Relação CR {">"} C</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">CR(n,p) ≥ C(n,p) sempre</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Mais opções quando repetição é permitida</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">CR(n,p) ≥ C(n,p) sempre</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">Mais opções quando repetição é permitida</p>
                         </div>
                       </div>
                     </div>
@@ -1794,7 +1794,7 @@ export default function AulaAnaliseCombinatoria({
                   <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl font-mono text-center tracking-widest">
                     ● ● | ● | ● 
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-center text-muted-foreground mt-2">Transforme em Permutação com Repetição de Símbolos.</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed text-center mt-2">Transforme em Permutação com Repetição de Símbolos.</p>
                 </div>
               )
             }}
@@ -1861,7 +1861,7 @@ export default function AulaAnaliseCombinatoria({
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20">
                           <p className="text-xl font-bold text-cyan-500 mb-2 text-foreground/85 leading-relaxed">Uso em Prova</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Se C(n, k) = C(n, 5) e k ≠ 5, então k = n−5.</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">Banca usa para testar se você reconhece a simetria.</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-2">Banca usa para testar se você reconhece a simetria.</p>
                         </div>
                       </div>
                     </div>
@@ -1883,7 +1883,7 @@ export default function AulaAnaliseCombinatoria({
                         <p>1  4  6  4  1</p>
                         <p>1  5  10  10  5  1</p>
                       </div>
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Linha n=4: C(4,0)=1, C(4,1)=4, C(4,2)=6, C(4,3)=4, C(4,4)=1
                       </p>
                       <AlertBox tipo="info" titulo="Aplicação">
@@ -1902,7 +1902,7 @@ export default function AulaAnaliseCombinatoria({
                       </p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
                         <p className="text-xl font-mono text-center text-foreground/85 leading-relaxed">C(n,0) + C(n,1) + ... + C(n,n) = 2ⁿ</p>
-                        <p className="text-xl text-center text-muted-foreground mt-1 text-foreground/85 leading-relaxed">Decorre do Binômio de Newton com x=y=1</p>
+                        <p className="text-xl text-center mt-1 text-foreground/85 leading-relaxed">Decorre do Binômio de Newton com x=y=1</p>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                         <div className="p-3 bg-blue-500/5 rounded-xl border border-blue-500/20 text-center">
@@ -1995,7 +1995,7 @@ export default function AulaAnaliseCombinatoria({
                   <div className="flex justify-center font-mono text-indigo-500 text-lg">
                     1 - 4 - 6 - 4 - 1
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-center text-muted-foreground">O que você escolhe, você também exclui (Simetria).</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed text-center">O que você escolhe, você também exclui (Simetria).</p>
                 </div>
               )
             }}
@@ -2101,13 +2101,13 @@ export default function AulaAnaliseCombinatoria({
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-indigo-500 mb-2">Senhas Ordenadas</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Letras distintas, sem repetição, ordem importa:</p>
                           <p className="text-xl font-mono mt-1 text-foreground/85 leading-relaxed">A(26, 4) = 26×25×24×23</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">= 358.800 senhas de 4 letras distintas</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">= 358.800 senhas de 4 letras distintas</p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-2">Redes de Dutos</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">n nós, máximo de trechos bidirecionais:</p>
                           <p className="text-xl font-mono mt-1 text-foreground/85 leading-relaxed">C(n, 2) = n(n−1)/2</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">6 nós → 15 trechos possíveis</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">6 nós → 15 trechos possíveis</p>
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Estratégia para Provas CESGRANRIO">
@@ -2250,7 +2250,7 @@ export default function AulaAnaliseCombinatoria({
                             <span className="flex-shrink-0 w-6 h-6 bg-indigo-500 text-white rounded-full flex items-center justify-center text-lg text-foreground/85 leading-relaxed font-bold">{item.n}</span>
                             <div>
                               <p className="text-xl font-bold text-foreground/85 leading-relaxed">{item.tipo} <span className="text-indigo-500 font-mono">→ {item.formula}</span></p>
-                              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">{item.desc}</p>
+                              <p className="text-lg text-foreground/85 leading-relaxed">{item.desc}</p>
                             </div>
                           </div>
                         ))}
@@ -2266,19 +2266,19 @@ export default function AulaAnaliseCombinatoria({
                       <div className="space-y-3">
                         <div className="p-4 bg-rose-500/5 rounded-xl border border-rose-500/20">
                           <p className="text-xl font-bold text-rose-500 text-foreground/85 leading-relaxed">Armadilha 1: Confundir Arranjo com Combinação</p>
-                          <p className="text-xl text-muted-foreground mt-1 text-foreground/85 leading-relaxed">Se o enunciado diz "formas de escolher e distribuir em cargos" → arranjo. "Formas de formar um grupo" → combinação.</p>
+                          <p className="text-xl mt-1 text-foreground/85 leading-relaxed">Se o enunciado diz "formas de escolher e distribuir em cargos" → arranjo. "Formas de formar um grupo" → combinação.</p>
                         </div>
                         <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20">
                           <p className="text-xl font-bold text-amber-500 text-foreground/85 leading-relaxed">Armadilha 2: Esquecer 0! = 1</p>
-                          <p className="text-xl text-muted-foreground mt-1 text-foreground/85 leading-relaxed">C(n,0) = 1 e C(n,n) = 1. Questões com casos extremos testam isso explicitamente.</p>
+                          <p className="text-xl mt-1 text-foreground/85 leading-relaxed">C(n,0) = 1 e C(n,n) = 1. Questões com casos extremos testam isso explicitamente.</p>
                         </div>
                         <div className="p-4 bg-orange-500/5 rounded-xl border border-orange-500/20">
                           <p className="text-xl font-bold text-orange-500 text-foreground/85 leading-relaxed">Armadilha 3: PFC — Somar vs. Multiplicar</p>
-                          <p className="text-xl text-muted-foreground mt-1 text-foreground/85 leading-relaxed">"Vai de carro OU de barco" (7 opções ao todo) → soma. "Vai de carro E depois de barco" → multiplica.</p>
+                          <p className="text-xl mt-1 text-foreground/85 leading-relaxed">"Vai de carro OU de barco" (7 opções ao todo) → soma. "Vai de carro E depois de barco" → multiplica.</p>
                         </div>
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
                           <p className="text-xl font-bold text-blue-500 text-foreground/85 leading-relaxed">Armadilha 4: Elementos Juntos / Separados</p>
-                          <p className="text-xl text-muted-foreground mt-1 text-foreground/85 leading-relaxed">Para juntos: trate o bloco como 1 elemento. Para separados: Total − (casos juntos).</p>
+                          <p className="text-xl mt-1 text-foreground/85 leading-relaxed">Para juntos: trate o bloco como 1 elemento. Para separados: Total − (casos juntos).</p>
                         </div>
                       </div>
                     </div>
@@ -2301,7 +2301,7 @@ export default function AulaAnaliseCombinatoria({
                           { nome: "Soma da Linha", formula: "ΣC(n,k) = 2ⁿ" },
                         ].map((item) => (
                           <div key={item.nome} className="p-3 bg-muted/30 rounded-lg border border-border">
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">{item.nome}</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">{item.nome}</p>
                             <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">{item.formula}</p>
                           </div>
                         ))}

@@ -180,7 +180,7 @@ export default function AulaPorcentagem({
                   icone: <LuPercent />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         <strong>Porcentagem</strong> significa literalmente{" "}
                         <em>"por cento"</em> — uma razão cujo denominador é{" "}
                         <strong>sempre 100</strong>. É a forma padronizada para
@@ -191,11 +191,11 @@ export default function AulaPorcentagem({
                         <p className="font-mono text-2xl font-black text-emerald-700 dark:text-emerald-400">
                           p% = p ÷ 100
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Fórmula raiz — tudo parte daqui
                         </p>
                       </div>
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         <strong>Na prática Petrobras:</strong> A eficiência
                         energética de uma caldeira (92%), a pureza mínima de GLP
                         (99,5%), o percentual de redução de emissões de CO₂
@@ -215,7 +215,7 @@ export default function AulaPorcentagem({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Memorizar estas equivalências elimina cálculos na prova.
                         Candidatos que as dominam respondem questões em{" "}
                         <strong>30 segundos</strong> enquanto outros demoram 3
@@ -258,20 +258,20 @@ export default function AulaPorcentagem({
                   icone: <LuCalculator />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Dois métodos rápidos para calcular porcentagens mentalmente:
                       </p>
                       <div className="space-y-3">
                         <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                           <p className="font-bold text-xl mb-1 text-foreground/85 leading-relaxed">Método 1 — Fator Decimal</p>
-                          <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Converta direto: <strong>15% de 240</strong> →{" "}
                             <code>0,15 × 240 = 36</code>
                           </p>
                         </div>
                         <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
                           <p className="font-bold text-xl mb-1 text-foreground/85 leading-relaxed">Método 2 — Decomposição (Mental)</p>
-                          <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             <strong>15% de 240</strong>: 10% = 24, 5% = 12 →{" "}
                             <strong>24 + 12 = 36</strong>. Rápido e sem
                             calculadora.
@@ -279,7 +279,7 @@ export default function AulaPorcentagem({
                         </div>
                         <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
                           <p className="font-bold text-xl mb-1 text-foreground/85 leading-relaxed">Método 3 — Inversão (Comutatividade)</p>
-                          <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             <strong>4% de 75</strong> = <strong>75% de 4</strong>{" "}
                             = 3. Muito mais fácil!
                           </p>
@@ -328,7 +328,7 @@ export default function AulaPorcentagem({
                   <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
                     <LuPercent className="w-10 h-10 text-primary opacity-50" />
                     <h6 className="text-lg font-bold uppercase tracking-tight">1% de 1000</h6>
-                    <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Qual o valor?</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Qual o valor?</p>
                   </div>
                 }
                 verso={
@@ -353,7 +353,7 @@ export default function AulaPorcentagem({
                   <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
                     <LuCalculator className="w-10 h-10 text-primary opacity-50" />
                     <h6 className="text-lg font-bold uppercase tracking-tight">35% de 200</h6>
-                    <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Calcule mentalmente</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Calcule mentalmente</p>
                   </div>
                 }
                 verso={
@@ -377,7 +377,7 @@ export default function AulaPorcentagem({
                   <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
                     <LuArrowRight className="w-10 h-10 text-primary opacity-50" />
                     <h6 className="text-lg font-bold uppercase tracking-tight">3/8 em %</h6>
-                    <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Converta a fração</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Converta a fração</p>
                   </div>
                 }
                 verso={
@@ -545,7 +545,7 @@ export default function AulaPorcentagem({
                   icone: <LuTrendingUp />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         O <strong>fator multiplicador</strong> representa o novo
                         inteiro após aplicar a taxa. Para um aumento de 15%:
                       </p>
@@ -553,11 +553,11 @@ export default function AulaPorcentagem({
                         <p className="font-mono text-xl font-black text-blue-700 dark:text-blue-400">
                           Fator = 1 + (taxa ÷ 100)
                         </p>
-                        <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Aumento de +15% → fator = 1 + 0,15 = <strong>1,15</strong>
                         </p>
                       </div>
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         <strong>Exemplo Petrobras:</strong> O salário base de um
                         técnico de manutenção era R$ 4.800. Recebeu reajuste de
                         12,5%. Novo salário:{" "}
@@ -572,18 +572,18 @@ export default function AulaPorcentagem({
                   icone: <LuTrendingDown />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Para descontos, subtrai-se do 1 (que representa 100%):
                       </p>
                       <div className="p-5 bg-rose-500/10 border border-rose-500/20 rounded-2xl text-center space-y-1">
                         <p className="font-mono text-xl font-black text-rose-700 dark:text-rose-400">
                           Fator = 1 - (taxa ÷ 100)
                         </p>
-                        <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Desconto de -20% → fator = 1 - 0,20 = <strong>0,80</strong>
                         </p>
                       </div>
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         <strong>Exemplo:</strong> Uma plataforma de R$ 2.000.000
                         sofreu desconto de 8% na negociação de um contrato.
                         Valor final:{" "}
@@ -611,7 +611,7 @@ export default function AulaPorcentagem({
                         <p className="font-mono text-xl text-foreground/85 leading-relaxed">
                           Fator Total = F₁ × F₂ × F₃ × ...
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-1">
                           Três aumentos de 10% cada:{" "}
                           <code>1,10³ = 1,331</code> → +33,1% total (não 30%)
                         </p>
@@ -624,7 +624,7 @@ export default function AulaPorcentagem({
                   icone: <LuTriangleAlert />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Na CESGRANRIO, questões de licitação Petrobras distinguem:
                       </p>
                       <div className="space-y-2">
@@ -822,7 +822,7 @@ export default function AulaPorcentagem({
                   icone: <LuActivity />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         A <strong>variação percentual relativa</strong> mede
                         quanto algo cresceu ou diminuiu em relação ao seu estado
                         inicial — o <em>ponto de partida</em> é sempre o
@@ -832,7 +832,7 @@ export default function AulaPorcentagem({
                         <p className="font-mono text-xl font-black text-amber-700 dark:text-amber-400">
                           Var% = (V_Final − V_Inicial) ÷ V_Inicial × 100
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           O denominador é SEMPRE o valor inicial
                         </p>
                       </div>
@@ -865,14 +865,14 @@ export default function AulaPorcentagem({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Esta é a distinção <strong>mais cobrada</strong> pela
                         CESGRANRIO em questões de interpretação de dados:
                       </p>
                       <div className="space-y-3">
                         <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                           <p className="font-bold text-xl text-foreground/85 leading-relaxed">Ponto Percentual (p.p.)</p>
-                          <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Diferença aritmética entre duas taxas. Ex: taxa de
                             eficiência subiu de 4% para 7% → subiu{" "}
                             <strong>3 p.p.</strong>
@@ -880,7 +880,7 @@ export default function AulaPorcentagem({
                         </div>
                         <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
                           <p className="font-bold text-xl text-foreground/85 leading-relaxed">Variação Relativa (%)</p>
-                          <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                          <p className="text-xl text-foreground/85 leading-relaxed">
                             Crescimento proporcional da taxa em si. Subiu de 4%
                             para 7%: variação relativa ={" "}
                             <code>(7−4)/4 × 100 = +75%</code>
@@ -900,7 +900,7 @@ export default function AulaPorcentagem({
                   icone: <LuTriangleAlert />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Quando V_Final {"<"} V_Inicial, o resultado é negativo —
                         isso representa <strong>queda percentual</strong>.
                         Atenção ao sinal na prova.
@@ -1064,7 +1064,7 @@ export default function AulaPorcentagem({
                   icone: <LuFactory />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         <strong>Eficiência percentual</strong> mede quanto da
                         energia/capacidade teórica máxima é convertida em
                         trabalho útil.
@@ -1074,7 +1074,7 @@ export default function AulaPorcentagem({
                           η% = (Saída Útil ÷ Entrada Total) × 100
                         </p>
                       </div>
-                      <div className="text-xl text-muted-foreground space-y-2 text-foreground/85 leading-relaxed">
+                      <div className="text-xl space-y-2 text-foreground/85 leading-relaxed">
                         <p>
                           <strong>Exemplo:</strong> Uma turbina consome 8.000 kW
                           e entrega 6.400 kW de potência útil ao gerador.
@@ -1097,7 +1097,7 @@ export default function AulaPorcentagem({
                   icone: <LuActivity />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Em refinarias e petroquímicas, o{" "}
                         <strong>teor percentual</strong> indica a concentração
                         de uma substância na mistura.
@@ -1131,7 +1131,7 @@ export default function AulaPorcentagem({
                   icone: <LuTrendingUp />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Questões de RH e Planejamento Petrobras cobram
                         percentual de alcance de metas:
                       </p>
@@ -1311,7 +1311,7 @@ export default function AulaPorcentagem({
                   </div>
                   <div>
                     <p className="font-bold text-xl font-mono text-foreground/85 leading-relaxed">{t}</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-0.5">{d}</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-0.5">{d}</p>
                   </div>
                 </div>
               ))}
@@ -1435,14 +1435,14 @@ export default function AulaPorcentagem({
                           <p className="font-bold text-xl text-blue-700 dark:text-blue-400 mb-2 text-foreground/85 leading-relaxed">
                             Juros Simples (Linear)
                           </p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                          <p className="text-lg text-foreground/85 leading-relaxed">
                             Os juros incidem <em>sempre</em> sobre o capital
                             original (C).
                           </p>
                           <div className="mt-2 p-2 bg-muted rounded font-mono text-lg text-foreground/85 leading-relaxed">
                             M = C + C × i × t = C(1 + i·t)
                           </div>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">
                             Cresce linearmente: +R$ fixo por período
                           </p>
                         </div>
@@ -1450,19 +1450,19 @@ export default function AulaPorcentagem({
                           <p className="font-bold text-xl text-indigo-700 dark:text-indigo-400 mb-2 text-foreground/85 leading-relaxed">
                             Juros Compostos (Exponencial)
                           </p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                          <p className="text-lg text-foreground/85 leading-relaxed">
                             Os juros incidem sobre o saldo{" "}
                             <em>atualizado</em> (capital + juros anteriores).
                           </p>
                           <div className="mt-2 p-2 bg-muted rounded font-mono text-lg text-foreground/85 leading-relaxed">
                             M = C × (1 + i)ⁿ
                           </div>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">
                             Cresce exponencialmente: cada período é maior
                           </p>
                         </div>
                       </div>
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         <strong>Exemplo Petrobras:</strong> Investimento de R$
                         100.000 a 5% a.a. por 3 anos.
                         <br />
@@ -1478,7 +1478,7 @@ export default function AulaPorcentagem({
                   icone: <LuTrendingDown />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Equipamentos industriais depreciam pelo modelo de{" "}
                         <strong>juros compostos negativos</strong> — a perda de
                         valor incide sobre o valor venal do ano anterior.
@@ -1487,7 +1487,7 @@ export default function AulaPorcentagem({
                         <p className="font-mono text-xl font-black text-rose-700 dark:text-rose-400">
                           V(t) = V₀ × (1 − d)ⁿ
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           d = taxa de depreciação anual | n = anos
                         </p>
                       </div>
@@ -1513,7 +1513,7 @@ export default function AulaPorcentagem({
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
                           <p className="font-bold text-xl text-foreground/85 leading-relaxed">Taxa Proporcional (Simples)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">
                             Divide/multiplica diretamente.
                             <br />
                             12% a.a. → 1% a.m. (÷12)
@@ -1521,7 +1521,7 @@ export default function AulaPorcentagem({
                         </div>
                         <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl">
                           <p className="font-bold text-xl text-foreground/85 leading-relaxed">Taxa Equivalente (Composta)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">
                             Usa raiz/potência.
                             <br />
                             12% a.a. → (1,12)^(1/12) − 1 ≈ 0,949% a.m.
@@ -1541,7 +1541,7 @@ export default function AulaPorcentagem({
                   icone: <LuTriangleAlert />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Cuidado com interpretações de{" "}
                         <strong>inflação composta</strong> — o poder de compra
                         caindo compostura:
@@ -1789,7 +1789,7 @@ export default function AulaPorcentagem({
                   icone: <LuRotateCcw />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Dado o valor <em>após</em> uma taxa e a própria taxa,
                         para encontrar o valor original:
                       </p>
@@ -1797,7 +1797,7 @@ export default function AulaPorcentagem({
                         <p className="font-mono text-xl font-black text-emerald-700 dark:text-emerald-400">
                           V_Original = V_Final ÷ Fator
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Fator = 1 + taxa/100 (aumento) ou 1 − taxa/100 (desconto)
                         </p>
                       </div>
@@ -1860,7 +1860,7 @@ export default function AulaPorcentagem({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Leia o enunciado com atenção para saber se é cálculo
                         direto (dado original, quer final) ou reverso (dado
                         final, quer original):
@@ -1900,7 +1900,7 @@ export default function AulaPorcentagem({
                   <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
                     <LuRotateCcw className="w-10 h-10 text-primary opacity-50" />
                     <h6 className="text-lg font-bold uppercase tracking-tight">R$ 132 após +10%</h6>
-                    <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Qual era o original?</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Qual era o original?</p>
                   </div>
                 }
                 verso={
@@ -1924,7 +1924,7 @@ export default function AulaPorcentagem({
                   <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
                     <LuRotateCcw className="w-10 h-10 text-primary opacity-50" />
                     <h6 className="text-lg font-bold uppercase tracking-tight">R$ 340 após −15%</h6>
-                    <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Qual era o original?</p>
+                    <p className="text-xl text-foreground/85 leading-relaxed">Qual era o original?</p>
                   </div>
                 }
                 verso={
@@ -2086,7 +2086,7 @@ export default function AulaPorcentagem({
                   icone: <LuCalculator />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Use regra de três quando a incógnita <em>não</em> é
                         diretamente o valor após aplicar a taxa. Há três
                         configurações:
@@ -2099,7 +2099,7 @@ export default function AulaPorcentagem({
                         ].map(({ q, r }) => (
                           <div key={q} className="p-3 bg-muted rounded-xl text-xl text-foreground/85 leading-relaxed">
                             <p className="font-bold">{q}</p>
-                            <p className="text-muted-foreground text-lg text-foreground/85 leading-relaxed mt-0.5 font-mono">{r}</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed mt-0.5 font-mono">{r}</p>
                           </div>
                         ))}
                       </div>
@@ -2142,7 +2142,7 @@ export default function AulaPorcentagem({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Questões avançadas CESGRANRIO combinam dois critérios:
                       </p>
                       <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-xl text-foreground/85 leading-relaxed">
@@ -2311,7 +2311,7 @@ export default function AulaPorcentagem({
                   icone: <LuDollarSign />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Em questões de folha de pagamento, há descontos
                         sucessivos sobre o salário bruto: INSS, depois IRRF
                         sobre o resultado.
@@ -2343,14 +2343,14 @@ export default function AulaPorcentagem({
                   icone: <LuTrendingUp />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Em gestão de contratos Petrobras, a distinção entre
                         markup e margem é crítica:
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                           <p className="font-bold text-xl text-foreground/85 leading-relaxed">Markup (sobre custo)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">
                             Lucro calculado sobre o <em>custo</em>.
                             <br />
                             Custo R$80, markup 25% →<br />
@@ -2361,7 +2361,7 @@ export default function AulaPorcentagem({
                         </div>
                         <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
                           <p className="font-bold text-xl text-foreground/85 leading-relaxed">Margem (sobre preço)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">
                             Lucro calculado sobre o <em>preço de venda</em>.
                             <br />
                             Preço R$100, margem 20% →<br />
@@ -2385,7 +2385,7 @@ export default function AulaPorcentagem({
                   icone: <LuActivity />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Questões de matemática financeira Petrobras cobram o
                         rendimento real descontada a inflação:
                       </p>
@@ -2393,7 +2393,7 @@ export default function AulaPorcentagem({
                         <p className="font-mono text-lg font-black text-teal-700 dark:text-teal-400">
                           (1 + r_real) = (1 + r_nominal) ÷ (1 + inflação)
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Fórmula de Fischer — nunca subtraia inflação da taxa nominal diretamente
                         </p>
                       </div>
@@ -2412,7 +2412,7 @@ export default function AulaPorcentagem({
                   icone: <LuTriangleAlert />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Em questões de licitação, fornecedores apresentam preços
                         "com desconto já embutido". Cuidado:
                       </p>
@@ -2626,7 +2626,7 @@ export default function AulaPorcentagem({
                   </div>
                   <div>
                     <p className="font-bold text-lg text-foreground/85 leading-relaxed font-mono">{t}</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-0.5">{d}</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed mt-0.5">{d}</p>
                   </div>
                 </div>
               ))}

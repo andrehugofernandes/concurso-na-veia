@@ -163,21 +163,21 @@ export default function AulaTrigonometria({
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20 text-center">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-2">SENO</p>
                           <p className="text-lg font-mono font-bold">sen θ = CO/Hip</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-2">
                             Cateto Oposto ÷ Hipotenusa
                           </p>
                         </div>
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-center">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">COSSENO</p>
                           <p className="text-lg font-mono font-bold">cos θ = CA/Hip</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-2">
                             Cateto Adjacente ÷ Hipotenusa
                           </p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20 text-center">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-500 mb-2">TANGENTE</p>
                           <p className="text-lg font-mono font-bold">tan θ = CO/CA</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-2">
                             Cateto Oposto ÷ Cateto Adjacente
                           </p>
                         </div>
@@ -787,7 +787,7 @@ export default function AulaTrigonometria({
                             <p className={`text-xs font-bold text-${q.color}-500`}>
                               {q.quad} Quadrante
                             </p>
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">{q.range}</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">{q.range}</p>
                             <p className="text-xl mt-2 text-foreground/85 leading-relaxed">
                               sen: <strong>{q.sen}</strong> | cos: <strong>{q.cos}</strong>
                             </p>
@@ -826,7 +826,7 @@ export default function AulaTrigonometria({
                             <span className="text-xl font-bold w-12 shrink-0 text-foreground/85 leading-relaxed">
                               {item.angulo}
                             </span>
-                            <span className="text-lg text-foreground/85 leading-relaxed text-muted-foreground font-mono flex-1">
+                            <span className="text-lg text-foreground/85 leading-relaxed font-mono flex-1">
                               {item.ponto}
                             </span>
                           </div>
@@ -1560,7 +1560,7 @@ export default function AulaTrigonometria({
                         <p className="text-xl font-mono font-bold">
                           a/sen A = b/sen B = c/sen C = 2R
                         </p>
-                        <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">
+                        <p className="text-xl mt-2 text-foreground/85 leading-relaxed">
                           onde R é o raio da circunferência circunscrita ao triângulo
                         </p>
                       </div>
@@ -2305,7 +2305,7 @@ export default function AulaTrigonometria({
                           <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                             Projeção horizontal = comprimento × cos(θ)
                           </p>
-                          <p className="text-xl mt-2 text-muted-foreground text-foreground/85 leading-relaxed">
+                          <p className="text-xl mt-2 text-foreground/85 leading-relaxed">
                             Ex: Duto de 100m a 30° → Altura = 50m, Horiz = 50√3m
                           </p>
                         </div>
@@ -2319,7 +2319,7 @@ export default function AulaTrigonometria({
                           <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                             Tensão vertical = T × sen(θ)
                           </p>
-                          <p className="text-xl mt-2 text-muted-foreground text-foreground/85 leading-relaxed">
+                          <p className="text-xl mt-2 text-foreground/85 leading-relaxed">
                             Onde T é a tensão no cabo e θ é o ângulo com a vertical
                           </p>
                         </div>
@@ -2330,7 +2330,7 @@ export default function AulaTrigonometria({
                           <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                             Altura = distância_horizontal × tan(θ_elevação)
                           </p>
-                          <p className="text-xl mt-2 text-muted-foreground text-foreground/85 leading-relaxed">
+                          <p className="text-xl mt-2 text-foreground/85 leading-relaxed">
                             Medição indireta: técnico mede ângulo a distância segura
                           </p>
                         </div>
@@ -2641,7 +2641,7 @@ export default function AulaTrigonometria({
                             <p className="text-xl font-bold text-amber-500 mb-1 text-foreground/85 leading-relaxed">
                               ⚠️ {p.trap}
                             </p>
-                            <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">{p.detail}</p>
+                            <p className="text-xl text-foreground/85 leading-relaxed">{p.detail}</p>
                           </div>
                         ))}
                       </div>

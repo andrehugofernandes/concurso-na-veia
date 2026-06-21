@@ -218,7 +218,7 @@ export default function AulaProbabilidade({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-xl text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Conjunto de TODOS os resultados possíveis. Se esquecer um, sua probabilidade fica errada!
                       </p>
                       <div className="bg-blue-500/10 p-4 rounded border border-blue-500/20">
@@ -239,7 +239,7 @@ export default function AulaProbabilidade({
                           É qualquer resultado ou conjunto de resultados que nos interessa.
                         </p>
                       </AlertBox>
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Ex: "tirar cara" no lançamento de moeda é um evento dentro do espaço amostral.
                       </p>
                     </div>
@@ -345,7 +345,7 @@ export default function AulaProbabilidade({
                   </p>
                   <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>Lançar 1 dado</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">S = {"{1,2,3,4,5,6}"}</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">S = {"{1,2,3,4,5,6}"}</p>
                     <p>Evento: tirar par = {"{2,4,6}"}</p>
                   </div>
                 </div>
@@ -412,7 +412,7 @@ export default function AulaProbabilidade({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Qual é a probabilidade de tirar um número par ao lançar um dado?
                       </p>
                       <div className="bg-emerald-500/10 p-4 rounded border border-emerald-500/20">
@@ -540,8 +540,8 @@ export default function AulaProbabilidade({
                   </p>
                   <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>Tirar ás de baralho?</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">4 ases</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">52 cartas</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">4 ases</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">52 cartas</p>
                     <p>P = 4/52 = 1/13</p>
                   </div>
                 </div>
@@ -608,7 +608,7 @@ export default function AulaProbabilidade({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Probabilidade de tirar uma carta que é ÁS ou VERMELHA:
                       </p>
                       <div className="bg-amber-500/10 p-4 rounded border border-amber-500/20">
@@ -738,7 +738,7 @@ export default function AulaProbabilidade({
                   </p>
                   <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>Moeda: cara OU número &lt; 5?</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       1/2 + 4/6 - 2/6 = ?
                     </p>
                     <p>Se disjuntos: 1/2 + 1/3</p>
@@ -807,7 +807,7 @@ export default function AulaProbabilidade({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Duas cartas do baralho. Qual P(2ª vermelha | 1ª vermelha)?
                       </p>
                       <div className="bg-cyan-500/10 p-4 rounded border border-cyan-500/20">
@@ -933,7 +933,7 @@ export default function AulaProbabilidade({
                   </p>
                   <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>Chuva? P(sim) = 1/3</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       P(sim|nuvem) = ?
                     </p>
                     <p>Novo espaço: "nuvem, nublado"</p>
@@ -999,7 +999,7 @@ export default function AulaProbabilidade({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Qual P(exatamente 3 caras em 4 lançamentos)?
                       </p>
                       <div className="bg-violet-500/10 p-4 rounded border border-violet-500/20">
@@ -1121,7 +1121,7 @@ export default function AulaProbabilidade({
                   </p>
                   <div className="p-3 bg-violet-500/10 border border-violet-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>3 dados, todos 6?</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       C(3,3) × (1/6)³
                     </p>
                     <p>= 1 × 1/216 = 0.46%</p>
@@ -1187,7 +1187,7 @@ export default function AulaProbabilidade({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Qual P(pelo menos um 6 em 3 dados)? Calcule o oposto!
                       </p>
                       <div className="bg-teal-500/10 p-4 rounded border border-teal-500/20">
@@ -1313,7 +1313,7 @@ export default function AulaProbabilidade({
                   </p>
                   <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>Moeda 5x, pelo menos 1 cara?</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       = 1 - P(todas coroas)
                     </p>
                     <p>= 1 - (1/2)⁵ = 31/32</p>
@@ -1379,7 +1379,7 @@ export default function AulaProbabilidade({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Círculo dentro de quadrado. Qual P(acerta o círculo)?
                       </p>
                       <div className="bg-indigo-500/10 p-4 rounded border border-indigo-500/20">
@@ -1510,7 +1510,7 @@ export default function AulaProbabilidade({
                   </p>
                   <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>Ponto em [0,10]?</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       P(em [3,7])
                     </p>
                     <p>= (7-3)/(10-0) = 4/10</p>
@@ -1579,7 +1579,7 @@ export default function AulaProbabilidade({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Qual P(moeda 1 cara E moeda 2 cara)?
                       </p>
                       <div className="bg-rose-500/10 p-4 rounded border border-rose-500/20">
@@ -1707,7 +1707,7 @@ export default function AulaProbabilidade({
                   </p>
                   <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>2 dados: ambos 6?</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       1/6 × 1/6
                     </p>
                     <p>= 1/36 ≈ 2.8%</p>
@@ -1773,7 +1773,7 @@ export default function AulaProbabilidade({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Qual P(sistema funcionar com 2 de 3 bombas)?
                       </p>
                       <div className="bg-orange-500/10 p-4 rounded border border-orange-500/20">
@@ -1901,8 +1901,8 @@ export default function AulaProbabilidade({
                   </p>
                   <div className="p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>2 bombas 99% cada</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Série: 99×99%</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">Série: 99×99%</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       Paralelo: 1-(1%)²
                     </p>
                   </div>

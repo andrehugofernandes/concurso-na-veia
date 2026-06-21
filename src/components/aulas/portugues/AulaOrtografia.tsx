@@ -1152,20 +1152,20 @@ Ditongo é junto, hiato é separação!
                   <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
                     <span className="text-2xl mb-2 block">🤝</span>
                     <h4 className="font-bold text-amber-700 dark:text-amber-400">Ditongo</h4>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground italic">Vogal + Semivogal (JUNTOS)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed italic">Vogal + Semivogal (JUNTOS)</p>
                   </div>
                   <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
                     <span className="text-2xl mb-2 block">✂️</span>
                     <h4 className="font-bold text-blue-700 dark:text-blue-400">Hiato</h4>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground italic">Vogal | Vogal (SEPARADOS)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed italic">Vogal | Vogal (SEPARADOS)</p>
                   </div>
                   <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
                     <span className="text-2xl mb-2 block">👨‍👩‍👦</span>
                     <h4 className="font-bold text-emerald-700 dark:text-emerald-400">Tritongo</h4>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground italic">SV + V + SV (UNIDOS)</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed italic">SV + V + SV (UNIDOS)</p>
                   </div>
                 </div>
-                <p className="text-xl font-medium text-muted-foreground text-foreground/85 leading-relaxed">
+                <p className="text-xl font-medium text-foreground/85 leading-relaxed">
                   Lembre-se: em divisões silábicas, <strong>HIATOS</strong> são os únicos que se separam!
                 </p>
               </div>

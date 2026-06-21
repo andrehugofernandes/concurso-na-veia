@@ -487,14 +487,14 @@ export default function AulaReescritaFrases({
                         Dossiê de Equivalência
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       A manutenção do sentido não é apenas "parecer igual".
                       Exige a preservação da <strong>modalidade</strong>{" "}
                       (certeza vs. possibilidade), da{" "}
                       <strong>polaridade</strong> (afirmação vs. negação) e da{" "}
                       <strong>carga semântica</strong> dos conectivos.
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Para a CESGRANRIO, qualquer alteração nas relações de
                       causa e consequência invalida a reescrita. O verso da
                       moeda é a precisão: se o autor original usou "pode", você
@@ -527,14 +527,14 @@ export default function AulaReescritaFrases({
                         Variação Diafásica
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       A reescrita permite mudar o "tom" da conversa sem ferir o
                       conteúdo. É a transição entre o registro{" "}
                       <strong>coloquial</strong> e o{" "}
                       <strong>culto padrão</strong>. Na Petrobras, prioriza-se a
                       clareza técnica e a impessoalidade administrativa.
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Exemplo CESGRANRIO: "A gente precisa de mais óleo"
                       (Informal) → "Torna-se imperativa a ampliação da extração
                       petrolífera" (Formal). O sentido é idêntico, mas a
@@ -1342,13 +1342,13 @@ export default function AulaReescritaFrases({
                         Mecânica Analítica
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Na voz passiva analítica, o verbo auxiliar{" "}
                       <strong>SER</strong> é quem carrega toda a
                       responsabilidade temporal. Ele deve espelhar exatamente o
                       tempo e modo do verbo original na voz ativa.
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Ex: "A banca <strong>elaborará</strong> (Futuro do
                       Presente) o edital" → "O edital <strong>será</strong>{" "}
                       (Futuro do Presente) <strong>elaborado</strong>". O verbo
@@ -1381,7 +1381,7 @@ export default function AulaReescritaFrases({
                         Regra de Ouro: T.H.A.S.
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Muitos verbos possuem duas formas de particípio. Use o{" "}
                       <strong>Regular</strong> (-ado/-ido) com os auxiliares{" "}
                       <strong>TER</strong> ou <strong>HAVER</strong> (Tem
@@ -1389,7 +1389,7 @@ export default function AulaReescritaFrases({
                       com <strong>SER</strong> ou <strong>ESTAR</strong> (É
                       aceito).
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       A CESGRANRIO tenta induzir ao erro de eufonia: "O contrato
                       foi <i>imprimido</i>" (Errado) vs "O contrato foi{" "}
                       <strong>impresso</strong>" (Correto). Em reescritas, a
@@ -1951,13 +1951,13 @@ export default function AulaReescritaFrases({
                         Deslocamento Temporal
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       No discurso indireto, o <strong>Presente</strong> do
                       falante ("hoje") deve ser reportado como um ponto estático
                       no passado do narrador: <strong>Naquele dia</strong> ou{" "}
                       <strong>Naquele momento</strong>.
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       A banca CESGRANRIO invalida reescritas que mantêm "hoje"
                       no discurso indireto, pois isso cria um anacronismo lógico
                       no relato.
@@ -1988,13 +1988,13 @@ export default function AulaReescritaFrases({
                         Futuro do Relato
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       O que era futuro para quem falou ("amanhã") torna-se uma{" "}
                       <strong>projeção posterior</strong> no relato:{" "}
                       <strong>No dia seguinte</strong> ou{" "}
                       <strong>Posteriormente</strong>.
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Essa mudança é obrigatória para manter a coesão
                       cronológica. Se o autor disse "Virei amanhã", o relato
                       correto é "Ele disse que viria no dia seguinte".
@@ -2025,13 +2025,13 @@ export default function AulaReescritaFrases({
                         Antecedência
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       O <strong>Ontem</strong> (passado em relação ao momento da
                       fala) converte-se em <strong>No dia anterior</strong> ou{" "}
                       <strong>Na véspera</strong> (passado em relação ao momento
                       do relato).
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       O uso de "ontem" no discurso indireto é um erro comum de
                       "cola" do texto original que a Petrobras costuma cobrar em
                       itens de reescrita incorreta.
@@ -2062,13 +2062,13 @@ export default function AulaReescritaFrases({
                         Eixo Locativo
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Os advérbios de lugar que indicam proximidade do falante
                       ("aqui", "este") devem ser convertidos para formas de
                       distanciamento: <strong>Ali</strong>, <strong>Lá</strong>{" "}
                       ou <strong>Aquele lugar</strong>.
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       A reescrita de "Estou aqui" para "Ele disse que estava
                       aqui" só é válida se o narrador estiver no exato mesmo
                       lugar físico. Caso contrário, o correto é "Ele disse que
@@ -3065,14 +3065,14 @@ export default function AulaReescritaFrases({
                         Arqueologia Causal
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Os conectivos causais (
                       <em>porque, uma vez que, visto que, porquanto</em>)
                       indicam o motivo que gerou a ação principal. Em
                       reescritas, a substituição por "porquanto" é a favorita da
                       banca para testar vocabulário erudito.
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Atenção: A causa sempre ocorre cronologicamente{" "}
                       <strong>antes</strong> do efeito. Se a reescrita inverter
                       essa lógica temporal, o sentido foi alterado e a opção
@@ -3104,13 +3104,13 @@ export default function AulaReescritaFrases({
                         Diferença de Escopo
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       O <strong>Pois Causal</strong> introduz a causa real
                       ("Faltou, pois estava doente"). O{" "}
                       <strong>Pois Explicativo</strong> justifica uma ordem ou
                       suposição ("Saia, pois está tarde").
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Para a CESGRANRIO, o explicativo costuma vir após
                       imperativos. A troca de um pelo outro em reescrita pode
                       ser sutil, mas altera a natureza da relação entre as
@@ -3396,7 +3396,7 @@ export default function AulaReescritaFrases({
                         Regra de Ouro
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Ao trocar um conectivo adversativo (<strong>mas</strong>)
                       por um concessivo (<strong>embora</strong>), a força da
                       frase muda e o modo verbal{" "}
@@ -3558,7 +3558,7 @@ export default function AulaReescritaFrases({
                         Formas Nominais
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       A concessão pode ignorar conjunções usando gerúndio ou
                       locuções prepositivas. <strong>"Apesar de"</strong> é o
                       coringa para transformar qualquer oração em concessiva sem
@@ -3593,7 +3593,7 @@ export default function AulaReescritaFrases({
                         Nuance Semântica
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       <strong>Embora</strong> foca em fatos concretos (estava
                       chovendo). <strong>Mesmo que</strong> foca em
                       possibilidades (pode ser que chova). A banca testa essa
@@ -3974,14 +3974,14 @@ export default function AulaReescritaFrases({
                         Mecânica do Discurso
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Na reescrita, os <strong>dois-pontos</strong> que
                       introduzem o discurso direto desaparecem na transição para
                       o indireto. O <strong>travessão</strong> de diálogo também
                       é eliminado em favor de conjunções integrantes (
                       <em>que</em>).
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground italic border-l-2 border-emerald-500/20 pl-3 text-foreground/85">
+                    <p className="text-xl leading-relaxed italic border-l-2 border-emerald-500/20 pl-3 text-foreground/85">
                       "Ele disse: — Irei" → "Ele disse que iria". O travessão
                       explicativo (usado como parênteses) mantém o sentido se
                       substituído por vírgulas.
@@ -4012,14 +4012,14 @@ export default function AulaReescritaFrases({
                         Pausa Intermediária
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       O <strong>ponto-e-vírgula</strong> separa orações
                       coordenadas extensas ou itens de uma enumeração técnica.
                       Em reescritas, substituir uma vírgula por ponto-e-vírgula
                       é gramaticalmente aceitável para evitar a fragmentação do
                       texto.
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Dica de Ouro: No padrão Petrobras, o ponto-e-vírgula é
                       comum em listas de obrigações contratuais ou manuais
                       técnicos, garantindo que o fim de um item não seja
@@ -4051,14 +4051,14 @@ export default function AulaReescritaFrases({
                         Equivalência de Isolamento
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Na reescrita, o <strong>par de travessões</strong> é
                       semanticamente equivalente ao{" "}
                       <strong>par de parênteses</strong> ou ao{" "}
                       <strong>par de vírgulas</strong> para isolar apostos
                       explicativos.
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Atenção: A banca pode propor trocar um pelo outro. O
                       sentido se mantém, mas o <strong>ênfase</strong> muda:
                       travessões destacam a informação, parênteses a "escondem"
@@ -4090,14 +4090,14 @@ export default function AulaReescritaFrases({
                         Modalidade do Enunciado
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       As <strong>reticências</strong> indicam suspensão de
                       pensamento, hesitação ou ironia. Substituí-las por um{" "}
                       <strong>ponto final</strong> na reescrita altera a
                       modalidade do discurso de "subjetivo/hesitante" para
                       "objetivo/categórico".
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Para a CESGRANRIO, essa mudança invalida a manutenção do
                       sentido original, pois altera a atitude do autor perante o
                       enunciado.
@@ -4316,7 +4316,7 @@ export default function AulaReescritaFrases({
                         Foco no Referente
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       <strong>Onde</strong> só aceita antecedentes espaciais
                       físicos. Para reuniões, contratos ou processos, a
                       reescrita correta exige <strong>"em que"</strong> ou{" "}
@@ -4352,7 +4352,7 @@ export default function AulaReescritaFrases({
                         Lógica Oposta
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       <strong>Posto que</strong> é concessivo (= embora).{" "}
                       <strong>Contanto que</strong> é condicional (= se). Trocar
                       um pelo outro altera drasticamente a relação lógica do
@@ -4387,7 +4387,7 @@ export default function AulaReescritaFrases({
                         Regras Rígidas
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Nunca use artigo após <strong>Cujo</strong>. Ele concorda
                       com o que vem depois (possuído), mas se refere ao que veio
                       antes (possuidor).
@@ -4422,7 +4422,7 @@ export default function AulaReescritaFrases({
                         Transformação Dupla
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       A banca ama reescrever verbos como nomes em estruturas
                       passivas. "Aprovou o plano" vira "A aprovação do plano".
                       Mantenha a clareza do agente!
@@ -4493,7 +4493,7 @@ export default function AulaReescritaFrases({
                   verso={
                     <div className="p-4 flex flex-col justify-center h-full space-y-2">
                       <div className="text-red-500 font-bold text-[10px] uppercase border-b border-red-500/10 pb-1">Armadilha #{i+1}</div>
-                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">{err.desc}</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed">{err.desc}</p>
                     </div>
                   }
                   categoria="Alerta de Erro"
@@ -4894,13 +4894,13 @@ export default function AulaReescritaFrases({
                         Peneira Inicial
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Antes de gastar energia com o sentido, procure{" "}
                       <strong>erros de norma culta</strong>. A banca CESGRANRIO
                       adora colocar opções com sentido perfeito, mas com erro de
                       crase ou concordância para eliminar os desatentos.
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Regência errada invalida a opção na hora. Se você achou um
                       erro gramatical, pare a análise semântica e passe para a
                       próxima alternativa.
@@ -4931,14 +4931,14 @@ export default function AulaReescritaFrases({
                         Sintonia Fina
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Leia a paráfrase candidata mentalmente e sinta se ela
                       "soa" como o original. Se a versão nova parece{" "}
                       <strong>mais enfática</strong> ou{" "}
                       <strong>mais vaga</strong> que o texto base, provavelmente
                       houve distorção.
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       A reescrita perfeita não deve adicionar "sentimentos" ou
                       "opiniões" que não estavam no original. Cuidado com o uso
                       de adjetivos extras.
@@ -4969,13 +4969,13 @@ export default function AulaReescritaFrases({
                         Foco na Modalidade
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       O alvo favorito da banca é a <strong>Modalidade</strong>.
                       "Ele deve vir" (Obrigação) ≠ "Ele pode vir"
                       (Possibilidade) ≠ "Ele virá" (Certeza). Essas trocas
                       invalidam qualquer reescrita técnica.
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground italic border-l-2 border-amber-500/20 pl-3 text-foreground/85">
+                    <p className="text-xl leading-relaxed italic border-l-2 border-amber-500/20 pl-3 text-foreground/85">
                       Verifique sempre se o verbo auxiliar de modalidade foi
                       mantido com o mesmo peso semântico original.
                     </p>
@@ -5005,12 +5005,12 @@ export default function AulaReescritaFrases({
                         Equivalência Formal
                       </span>
                     </div>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Cuidado com a <strong>dupla negação</strong>. Em
                       reescritas, "Não é incomum" equivale a "É comum". A banca
                       usa essas voltas lógicas para cansar o candidato.
                     </p>
-                    <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                    <p className="text-xl leading-relaxed text-foreground/85">
                       Desenhe mentalmente a seta da causa para a consequência:
                       se na frase original a causa era X, na reescrita a causa
                       DEVE continuar sendo X. Se inverteram, está errado.

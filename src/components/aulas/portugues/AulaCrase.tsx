@@ -392,9 +392,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">A Lógica Perfeita</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">A crase não é um erro — é uma fusão gráfica de duas vogais iguais. Quando a preposição "a" encontra o artigo "a", elas se fundem.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Vou <strong>à</strong> praia" (vou A + A praia)</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">❌ "Vou <strong>a</strong> pé" (vou A, mas PÉ é masculino)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">A crase não é um erro — é uma fusão gráfica de duas vogais iguais. Quando a preposição "a" encontra o artigo "a", elas se fundem.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Vou <strong>à</strong> praia" (vou A + A praia)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">❌ "Vou <strong>a</strong> pé" (vou A, mas PÉ é masculino)</p>
                 </div>
               }
               categoria="Matemática da Crase"
@@ -419,9 +419,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Verbos Exigentes</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Verbos de movimento ou relacionamento exigem a preposição "a" (IR, DIRIGIR-SE). Quando seguidos de substantivo feminino, há crase.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Dirijo-me <strong>à</strong> gerência"</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Dedico-me <strong>à</strong> pesquisa"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Verbos de movimento ou relacionamento exigem a preposição "a" (IR, DIRIGIR-SE). Quando seguidos de substantivo feminino, há crase.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Dirijo-me <strong>à</strong> gerência"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Dedico-me <strong>à</strong> pesquisa"</p>
                 </div>
               }
               categoria="Regência Verbal"
@@ -446,9 +446,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Classificação</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">A crase ocorre em três contextos: OBRIGATÓRIA (ambas presentes), PROIBIDA (falta uma peça), FACULTATIVA (artigo opcional).</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ OBRIGATÓRIA: "Vou à praia"</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">❌ PROIBIDA: "Comecei a estudar"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">A crase ocorre em três contextos: OBRIGATÓRIA (ambas presentes), PROIBIDA (falta uma peça), FACULTATIVA (artigo opcional).</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ OBRIGATÓRIA: "Vou à praia"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">❌ PROIBIDA: "Comecei a estudar"</p>
                 </div>
               }
               categoria="Estrutura"
@@ -718,9 +718,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">A Mecânica</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Troque a palavra feminina por um masculino equivalente. Se virar "AO", há crase. Se continuar "A", não há crase.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Vou <strong>à</strong> festa" (Vou <strong>ao</strong> baile)</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">❌ "Fui <strong>a</strong> pé" (Continua A)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Troque a palavra feminina por um masculino equivalente. Se virar "AO", há crase. Se continuar "A", não há crase.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Vou <strong>à</strong> festa" (Vou <strong>ao</strong> baile)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">❌ "Fui <strong>a</strong> pé" (Continua A)</p>
                 </div>
               }
               categoria="Metodologia"
@@ -745,8 +745,8 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Equação Completa</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Quando resulta em "AO", prova que temos preposição + artigo masculino. Logo, no feminino, teremos preposição + artigo feminino = À.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Dedico-me <strong>à</strong> leitura" (ao livro)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Quando resulta em "AO", prova que temos preposição + artigo masculino. Logo, no feminino, teremos preposição + artigo feminino = À.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Dedico-me <strong>à</strong> leitura" (ao livro)</p>
                 </div>
               }
               categoria="Diagnóstico Positivo"
@@ -771,9 +771,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Falta uma Peça</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Se continua apenas "A", falta o artigo definido. Ocorre antes de verbos e palavras que não aceitam determinante.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">❌ "Comecei <strong>a</strong> trabalhar"</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">❌ "Andamos <strong>a</strong> cavalo"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Se continua apenas "A", falta o artigo definido. Ocorre antes de verbos e palavras que não aceitam determinante.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">❌ "Comecei <strong>a</strong> trabalhar"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">❌ "Andamos <strong>a</strong> cavalo"</p>
                 </div>
               }
               categoria="Diagnóstico Negativo"
@@ -1007,9 +1007,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">A Regra Ouro</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Nunca se usa crase antes de verbo. Verbos repulsam artigos, logo a equação não se forma. Sem exceções.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">❌ "Começou <strong>à</strong> chover"</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Começou <strong>a</strong> chover"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Nunca se usa crase antes de verbo. Verbos repulsam artigos, logo a equação não se forma. Sem exceções.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">❌ "Começou <strong>à</strong> chover"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Começou <strong>a</strong> chover"</p>
                 </div>
               }
               categoria="Regras Proibitivas"
@@ -1034,8 +1034,8 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Exigência Gramatical</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Substantivos femininos aceitam o artigo "a". Se o termo anterior exigir preposição, a crase será formada e a ocorrência é confirmada com o teste do masculino.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Procedeu <strong>à</strong> análise"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Substantivos femininos aceitam o artigo "a". Se o termo anterior exigir preposição, a crase será formada e a ocorrência é confirmada com o teste do masculino.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Procedeu <strong>à</strong> análise"</p>
                 </div>
               }
               categoria="Regência Correta"
@@ -1060,9 +1060,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Análise Cuidadosa</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Cuidado com adjetivos exigentes ("apto a"). O que define a crase é a palavra que vem depois. Se for verbo, não há crase. Se for substantivo, pode haver.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Apto <strong>a</strong> lutar"</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Apto <strong>à</strong> luta"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Cuidado com adjetivos exigentes ("apto a"). O que define a crase é a palavra que vem depois. Se for verbo, não há crase. Se for substantivo, pode haver.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Apto <strong>a</strong> lutar"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Apto <strong>à</strong> luta"</p>
                 </div>
               }
               categoria="Alerta de pontos de atenção"
@@ -1278,9 +1278,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">A Mecânica</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Pronomes pessoais (ela, ele, você, nós, vós) não aceitam artigo. A equação não se completa.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">❌ "Referi-me <strong>à</strong> ela"</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Referi-me <strong>a</strong> ela"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Pronomes pessoais (ela, ele, você, nós, vós) não aceitam artigo. A equação não se completa.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">❌ "Referi-me <strong>à</strong> ela"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Referi-me <strong>a</strong> ela"</p>
                 </div>
               }
               categoria="Regra Absoluta"
@@ -1305,9 +1305,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Comparação</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Pronomes rejeitam artigos (sem crase). Substantivos aceitam artigos (com crase).</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">❌ "Referi-me <strong>a</strong> ela" (Pronome)</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Referi-me <strong>à</strong> mulher" (Nome)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Pronomes rejeitam artigos (sem crase). Substantivos aceitam artigos (com crase).</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">❌ "Referi-me <strong>a</strong> ela" (Pronome)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Referi-me <strong>à</strong> mulher" (Nome)</p>
                 </div>
               }
               categoria="Análise Morfológica"
@@ -1332,9 +1332,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Extensão da Regra</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Pronomes oblíquos também rejeitam o artigo. A preposição permanece isolada, impossibilitando a fusão.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">❌ "Isso é para <strong>à</strong> mim"</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Isso é para <strong>a</strong> mim" ou "para <strong>mim</strong>"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Pronomes oblíquos também rejeitam o artigo. A preposição permanece isolada, impossibilitando a fusão.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">❌ "Isso é para <strong>à</strong> mim"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Isso é para <strong>a</strong> mim" ou "para <strong>mim</strong>"</p>
                 </div>
               }
               categoria="Atenção Especial"
@@ -1441,7 +1441,7 @@ export default function AulaCrase({
                     <ul className="space-y-2">
                       <li>✅ "Refiro-me <em>a</em> Maria" (SEM crase)</li>
                       <li>✅ "Refiro-me <em>à</em> Maria" (COM crase)</li>
-                      <li className="text-xl italic text-muted-foreground text-foreground/85 leading-relaxed">Ambas as formas são corretas!</li>
+                      <li className="text-xl italic text-foreground/85 leading-relaxed">Ambas as formas são corretas!</li>
                     </ul>
                   </div>
                 ),
@@ -1455,7 +1455,7 @@ export default function AulaCrase({
                     <ul className="space-y-2">
                       <li>❌ "Refiro-me a Maria do Carmo" (ERRADO!)</li>
                       <li>✅ "Refiro-me <em>à</em> Maria do Carmo" (CORRETO!)</li>
-                      <li className="text-xl italic text-muted-foreground text-foreground/85 leading-relaxed">"do Carmo" especifica o nome, torna crase obrigatória</li>
+                      <li className="text-xl italic text-foreground/85 leading-relaxed">"do Carmo" especifica o nome, torna crase obrigatória</li>
                     </ul>
                   </div>
                 ),
@@ -1558,9 +1558,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Crase Facultativa</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Nomes próprios simples (apenas primeiro nome, sem sobrenome) FACULTAM o artigo. Portanto, a crase também é opcional.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Refiro-me <strong>a</strong> Daniela"</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Refiro-me <strong>à</strong> Daniela"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Nomes próprios simples (apenas primeiro nome, sem sobrenome) FACULTAM o artigo. Portanto, a crase também é opcional.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Refiro-me <strong>a</strong> Daniela"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Refiro-me <strong>à</strong> Daniela"</p>
                 </div>
               }
               categoria="Opção Estilística"
@@ -1585,9 +1585,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Crase Obrigatória</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Nomes especificados por sobrenome, título ou adjetivo EXIGEM a presença do artigo, tornando a crase obrigatória.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">❌ "Refiro-me <strong>a</strong> Daniela Silva"</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Refiro-me <strong>à</strong> Daniela Silva"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Nomes especificados por sobrenome, título ou adjetivo EXIGEM a presença do artigo, tornando a crase obrigatória.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">❌ "Refiro-me <strong>a</strong> Daniela Silva"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Refiro-me <strong>à</strong> Daniela Silva"</p>
                 </div>
               }
               categoria="Exceção Fundamental"
@@ -1612,8 +1612,8 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">A Virada de Chave</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">A diferença fundamental reside na presença do determinante. Se o nome recebe qualificações no contexto, a facultatividade desaparece.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ Teste: "a/à Joana" (simples) vs "à Dra. Joana" (especificado).</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">A diferença fundamental reside na presença do determinante. Se o nome recebe qualificações no contexto, a facultatividade desaparece.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ Teste: "a/à Joana" (simples) vs "à Dra. Joana" (especificado).</p>
                 </div>
               }
               categoria="Síntese Visual"
@@ -1732,9 +1732,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Crase Opcional</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Possessivos singulares (minha, sua) tornam o uso do artigo opcional, fazendo com que a fusão seja facultativa.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Refiro-me <strong>a</strong> minha opinião"</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Refiro-me <strong>à</strong> minha opinião"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Possessivos singulares (minha, sua) tornam o uso do artigo opcional, fazendo com que a fusão seja facultativa.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Refiro-me <strong>a</strong> minha opinião"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Refiro-me <strong>à</strong> minha opinião"</p>
                 </div>
               }
               categoria="Regra Base"
@@ -1759,9 +1759,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Crase Obrigatória</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Possessivos plurais (minhas, suas) EXIGEM artigo definido plural. A crase (fusão com "as") passa a ser inegociável.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">❌ "Refiro-me <strong>a</strong> minhas opiniões"</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Refiro-me <strong>às</strong> minhas opiniões"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Possessivos plurais (minhas, suas) EXIGEM artigo definido plural. A crase (fusão com "as") passa a ser inegociável.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">❌ "Refiro-me <strong>a</strong> minhas opiniões"</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Refiro-me <strong>às</strong> minhas opiniões"</p>
                 </div>
               }
               categoria="Alerta Crítico"
@@ -1786,8 +1786,8 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Crase Obrigatória</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Quando o possessivo SUBSTITUI o substantivo na oração, o artigo se torna obrigatório para substantivá-lo, forçando a crase.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Não obedeço à sua regra, obedeço <strong>à</strong> minha."</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Quando o possessivo SUBSTITUI o substantivo na oração, o artigo se torna obrigatório para substantivá-lo, forçando a crase.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Não obedeço à sua regra, obedeço <strong>à</strong> minha."</p>
                 </div>
               }
               categoria="pontos de atenção de Prova"
@@ -1904,9 +1904,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Crase Obrigatória</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Na indicação de horas pontuais (com a preposição A exigida), a fusão com o artigo (a/as) das horas força a crase.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "A operação começa <strong>às</strong> 8h em ponto."</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Cheguei <strong>à</strong> uma hora da tarde."</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Na indicação de horas pontuais (com a preposição A exigida), a fusão com o artigo (a/as) das horas força a crase.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "A operação começa <strong>às</strong> 8h em ponto."</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Cheguei <strong>à</strong> uma hora da tarde."</p>
                 </div>
               }
               categoria="Regra Matemática"
@@ -1931,9 +1931,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Crase Obrigatória</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Locuções femininas que expressam proporção ou medida possuem crase fixa pela gramática.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Aumentava o ritmo <strong>à medida que</strong> corria."</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Multado por trafegar <strong>à velocidade de</strong> 120km/h."</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Locuções femininas que expressam proporção ou medida possuem crase fixa pela gramática.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Aumentava o ritmo <strong>à medida que</strong> corria."</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Multado por trafegar <strong>à velocidade de</strong> 120km/h."</p>
                 </div>
               }
               categoria="Estrutura Cristalizada"
@@ -1958,9 +1958,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Atenção ao Contexto</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Se houver OUTRA preposição antes da hora, a preposição "A" desaparece, e não há crase!</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">❌ "Estou aqui desde <strong>às</strong> 15h" (ERRADO)</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Estou aqui <strong>desde as</strong> 15h" (CORRETO - sem crase)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Se houver OUTRA preposição antes da hora, a preposição "A" desaparece, e não há crase!</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">❌ "Estou aqui desde <strong>às</strong> 15h" (ERRADO)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Estou aqui <strong>desde as</strong> 15h" (CORRETO - sem crase)</p>
                 </div>
               }
               categoria="Armadilha Clássica"
@@ -1995,7 +1995,7 @@ export default function AulaCrase({
                       <p>✅ "Chegue <strong>às</strong> 2 da tarde" (horas exatas)</p>
                     </div>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground italic">Regra de ouro: Horas exatas SEMPRE com crase (ÀS).</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed italic">Regra de ouro: Horas exatas SEMPRE com crase (ÀS).</p>
                 </div>
               }
             />
@@ -2023,7 +2023,7 @@ export default function AulaCrase({
                       <p>✅ "Reunião <strong>à</strong> meia hora" (meia = singular = À)</p>
                     </div>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground italic">Singular = À. Plural/Exata = ÀS.</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed italic">Singular = À. Plural/Exata = ÀS.</p>
                 </div>
               }
             />
@@ -2051,7 +2051,7 @@ export default function AulaCrase({
                       <p>✅ "Pagamento <strong>à</strong> distância" (medida)</p>
                     </div>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground italic">Toda expressão de medida feminina recebe crase!</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed italic">Toda expressão de medida feminina recebe crase!</p>
                 </div>
               }
             />
@@ -2167,9 +2167,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Atenção ao Determinante</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Procure sempre o que vem depois da palavra "casa". A presença de apenas uma palavra descritiva muda toda a regra.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Vou <strong>a</strong> casa." (Genérica = SEM crase)</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Vou <strong>à</strong> casa amarela." (Especificada = COM crase)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Procure sempre o que vem depois da palavra "casa". A presença de apenas uma palavra descritiva muda toda a regra.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Vou <strong>a</strong> casa." (Genérica = SEM crase)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Vou <strong>à</strong> casa amarela." (Especificada = COM crase)</p>
                 </div>
               }
               categoria="Regra do Lar"
@@ -2194,9 +2194,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Oposição ao Mar</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Lembre-se do contexto náutico. Se puder trocar mentalmente por "chão", não haverá crase.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Lançou-se <strong>a</strong> terra." (Piso comum = SEM crase)</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Lançou-se <strong>à</strong> terra prometida." (Especificada = COM crase)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Lembre-se do contexto náutico. Se puder trocar mentalmente por "chão", não haverá crase.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Lançou-se <strong>a</strong> terra." (Piso comum = SEM crase)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Lançou-se <strong>à</strong> terra prometida." (Especificada = COM crase)</p>
                 </div>
               }
               categoria="Navegação e Origem"
@@ -2221,9 +2221,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Foco na Medida</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Distância precisa de números ou determinantes para ganhar a crase. Expressões cristalizadas também a exigem.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">❌ "Graduação <strong>a</strong> distância." (Genérica = SEM crase)</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Tiro <strong>à</strong> queima-roupa e <strong>à</strong> longa distância." (Locuções fixas = COM crase)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Distância precisa de números ou determinantes para ganhar a crase. Expressões cristalizadas também a exigem.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">❌ "Graduação <strong>a</strong> distância." (Genérica = SEM crase)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Tiro <strong>à</strong> queima-roupa e <strong>à</strong> longa distância." (Locuções fixas = COM crase)</p>
                 </div>
               }
               categoria="Métrica e Espaço"
@@ -2254,9 +2254,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Varredura de Adjetivos</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Procure sempre o que vem depois da palavra "casa". A presença de apenas uma palavra descritiva muda toda a regra.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Vou <strong>a</strong> casa." (Genérica = SEM crase)</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Vou <strong>à</strong> casa amarela." (Especificada = COM crase)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Procure sempre o que vem depois da palavra "casa". A presença de apenas uma palavra descritiva muda toda a regra.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Vou <strong>a</strong> casa." (Genérica = SEM crase)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Vou <strong>à</strong> casa amarela." (Especificada = COM crase)</p>
                 </div>
               }
               categoria="Prova Prática"
@@ -2281,9 +2281,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Gramática Histórica</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Lembre-se do contexto náutico da gramática histórica. Se puder trocar mentalmente por "chão", não haverá crase.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Lançou-se <strong>a</strong> terra." (Piso comum = SEM crase)</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Lançou-se <strong>à</strong> terra prometida." (Lugar único = COM crase)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Lembre-se do contexto náutico da gramática histórica. Se puder trocar mentalmente por "chão", não haverá crase.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Lançou-se <strong>a</strong> terra." (Piso comum = SEM crase)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Lançou-se <strong>à</strong> terra prometida." (Lugar único = COM crase)</p>
                 </div>
               }
               categoria="Prova Prática"
@@ -2308,9 +2308,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Mensuração</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Distância precisa de números ou determinantes de extensão para ganhar a crase. Expressões cristalizadas também a exigem.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Graduação <strong>a</strong> distância." (EAD genérico = SEM crase)</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Tiro <strong>à</strong> queima-roupa." (Locução fixa = COM crase)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Distância precisa de números ou determinantes de extensão para ganhar a crase. Expressões cristalizadas também a exigem.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Graduação <strong>a</strong> distância." (EAD genérico = SEM crase)</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Tiro <strong>à</strong> queima-roupa." (Locução fixa = COM crase)</p>
                 </div>
               }
               categoria="Prova Prática"
@@ -2427,9 +2427,9 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Fusão Direta</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">O choque fonético da preposição com a inicial do pronome gera a crase.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Dirijo-me <strong>àquela</strong> senhora."</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Atento <strong>àquilo</strong> que vejo."</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">O choque fonético da preposição com a inicial do pronome gera a crase.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Dirijo-me <strong>àquela</strong> senhora."</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Atento <strong>àquilo</strong> que vejo."</p>
                 </div>
               }
               categoria="Regra de Proximidade"
@@ -2454,9 +2454,9 @@ export default function AulaCrase({
                     <LuUserX className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Sem Fusão Possível</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">A ausência da vogal "A" no início da palavra impossibilita a existência da crase.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">❌ "Dirijo-me <strong>à</strong> esta senhora."</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Dirijo-me <strong>a</strong> esta senhora."</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">A ausência da vogal "A" no início da palavra impossibilita a existência da crase.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">❌ "Dirijo-me <strong>à</strong> esta senhora."</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Dirijo-me <strong>a</strong> esta senhora."</p>
                 </div>
               }
               categoria="Conflito Fonético"
@@ -2481,8 +2481,8 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Confirmação Tática</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Troque "àquele" por "a este". Se a frase fizer sentido e preservar o "a", a crase está correta.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ "Vou <strong>àquele</strong> (a este) local."</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Troque "àquele" por "a este". Se a frase fizer sentido e preservar o "a", a crase está correta.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ "Vou <strong>àquele</strong> (a este) local."</p>
                 </div>
               }
               categoria="Análise de Prova"
@@ -2516,7 +2516,7 @@ export default function AulaCrase({
                       <p>✅ "Não dei atenção <strong>àquilo</strong> que disseram."</p>
                     </div>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground italic">Não importa se a referência é neutra, a regra gramatical é sonora.</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed italic">Não importa se a referência é neutra, a regra gramatical é sonora.</p>
                 </div>
               }
             />
@@ -2543,7 +2543,7 @@ export default function AulaCrase({
                       <p>✅ "Prefiro <strong>esta</strong> máquina <strong>àquela</strong> outra."</p>
                     </div>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground italic">Observe a diferença gráfica ditada apenas pela vogal inicial!</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed italic">Observe a diferença gráfica ditada apenas pela vogal inicial!</p>
                 </div>
               }
             />
@@ -2571,7 +2571,7 @@ export default function AulaCrase({
                       <p>✅ "Não gosto <strong>daquilo</strong>."</p>
                     </div>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground italic">A crase só existe se a transitividade for para "A".</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed italic">A crase só existe se a transitividade for para "A".</p>
                 </div>
               }
             />
@@ -2687,8 +2687,8 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">O Método Primário</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">A primeira ação ao encontrar uma dúvida é tentar a substituição por um termo masculino equivalente.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ Se virar "AO" = Crase confirmada.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">A primeira ação ao encontrar uma dúvida é tentar a substituição por um termo masculino equivalente.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ Se virar "AO" = Crase confirmada.</p>
                 </div>
               }
               categoria="Metodologia Base"
@@ -2713,8 +2713,8 @@ export default function AulaCrase({
                     <LuUserX className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Bloqueio Automático</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Antes de perder tempo, verifique se a palavra a seguir é um verbo no infinitivo, pronome pessoal ou palavra genérica.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">❌ Nesses cenários, corte a crase imediatamente.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Antes de perder tempo, verifique se a palavra a seguir é um verbo no infinitivo, pronome pessoal ou palavra genérica.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">❌ Nesses cenários, corte a crase imediatamente.</p>
                 </div>
               }
               categoria="Filtro Rápido"
@@ -2739,8 +2739,8 @@ export default function AulaCrase({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Análise de Contexto</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">Diante de nomes próprios femininos e possessivos femininos singulares, a crase descansa no livre arbítrio.</p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">✅ Ambas as formas (a/à) estão gramaticalmente impecáveis.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">Diante de nomes próprios femininos e possessivos femininos singulares, a crase descansa no livre arbítrio.</p>
+                  <p className="text-xl leading-relaxed text-foreground/85">✅ Ambas as formas (a/à) estão gramaticalmente impecáveis.</p>
                 </div>
               }
               categoria="Zona Neutra"
@@ -2774,7 +2774,7 @@ export default function AulaCrase({
                       <p>✅ O correto exige crase e concordância: <strong>ÀS normas</strong>.</p>
                     </div>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground italic">Dissonância de plural é o erro mais comum.</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed italic">Dissonância de plural é o erro mais comum.</p>
                 </div>
               }
             />
@@ -2801,7 +2801,7 @@ export default function AulaCrase({
                       <p>✅ Fica apenas o artigo: "Para <strong>as</strong> 14h".</p>
                     </div>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground italic">Se há "desde", "para" ou "após", adeus crase.</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed italic">Se há "desde", "para" ou "após", adeus crase.</p>
                 </div>
               }
             />
@@ -2828,7 +2828,7 @@ export default function AulaCrase({
                       <p>✅ Fica "a prazo" (sem crase) e "à vista" (com crase).</p>
                     </div>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground italic">Sempre verifique o gênero da locução adverbial.</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed italic">Sempre verifique o gênero da locução adverbial.</p>
                 </div>
               }
             />

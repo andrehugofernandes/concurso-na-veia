@@ -293,7 +293,7 @@ export default function AulaEquacoes2Grau({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-xl text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Nem sempre você terá todos os três termos. Existem dois
                         casos:
                       </p>
@@ -434,10 +434,10 @@ export default function AulaEquacoes2Grau({
                   </p>
                   <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl font-mono text-center text-xl text-foreground/85 leading-relaxed">
                     <p>-3x² + 5x - 2 = 0</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">↓ extrair ↓</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">↓ extrair ↓</p>
                     <p>a = -3, b = 5, c = -2</p>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                  <p className="text-lg text-foreground/85 leading-relaxed">
                     Não esqueça do sinal negativo em 'a' e em 'c'!
                   </p>
                 </div>
@@ -491,7 +491,7 @@ export default function AulaEquacoes2Grau({
                           Δ = b² - 4ac
                         </p>
                       </div>
-                      <p className="text-muted-foreground mt-4 text-xl text-foreground/85 leading-relaxed">
+                      <p className="mt-4 text-xl text-foreground/85 leading-relaxed">
                         O Delta prediz o futuro da sua equação. Veja para onde
                         ele te leva:
                       </p>
@@ -500,7 +500,7 @@ export default function AulaEquacoes2Grau({
                           <div className="font-bold text-emerald-600 text-lg">
                             Δ {'>'} 0
                           </div>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-2">
                             Duas raízes REAIS e DIFERENTES.
                           </p>
                         </div>
@@ -508,7 +508,7 @@ export default function AulaEquacoes2Grau({
                           <div className="font-bold text-amber-600 text-lg">
                             Δ = 0
                           </div>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-2">
                             Duas raízes REAIS e IGUAIS (apenas toca o eixo X).
                           </p>
                         </div>
@@ -516,7 +516,7 @@ export default function AulaEquacoes2Grau({
                           <div className="font-bold text-rose-600 text-lg">
                             Δ {'<'} 0
                           </div>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-2">
                             NEM CONTINUE A CONTA. Não tem raiz real!
                           </p>
                         </div>
@@ -529,7 +529,7 @@ export default function AulaEquacoes2Grau({
                   icone: <LuSigma />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Veja como calcular delta em diferentes equações:
                       </p>
                       <div className="space-y-3">
@@ -572,7 +572,7 @@ export default function AulaEquacoes2Grau({
                           x = (-b ± √Δ) / 2a
                         </p>
                       </div>
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         O ± significa que você calcula duas vezes: uma com +
                         (raiz 1) e outra com - (raiz 2).
                       </p>
@@ -711,7 +711,7 @@ export default function AulaEquacoes2Grau({
                     <p>Se Δ = 0 → 1 raiz dupla</p>
                     <p>Se Δ {'<'} 0 → Sem raízes (PARE!)</p>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                  <p className="text-lg text-foreground/85 leading-relaxed">
                     Sempre calcule delta PRIMEIRO!
                   </p>
                 </div>
@@ -811,7 +811,7 @@ export default function AulaEquacoes2Grau({
                           + 5x
                         </p>
                       </AlertBox>
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Terrenos sempre geram dois valores. O negativo SEMPRE é
                         descartado.
                       </p>
@@ -955,7 +955,7 @@ export default function AulaEquacoes2Grau({
                     <p>Tempo: Pode ser válido se for momento 2 ✓</p>
                     <p>Velocidade: Descarte negativo ✗</p>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                  <p className="text-lg text-foreground/85 leading-relaxed">
                     Sempre questione se a resposta faz sentido!
                   </p>
                 </div>
@@ -1011,7 +1011,7 @@ export default function AulaEquacoes2Grau({
                         <p className="font-black text-lg text-foreground my-2">
                           Côncava p/ Cima ∪
                         </p>
-                        <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           O vértice é o ponto de <strong>MÍNIMO</strong> (fundo
                           do poço). Usado para custo mínimo.
                         </p>
@@ -1023,7 +1023,7 @@ export default function AulaEquacoes2Grau({
                         <p className="font-black text-lg text-foreground my-2">
                           Côncava p/ Baixo ∩
                         </p>
-                        <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           O vértice é o ponto de <strong>MÁXIMO</strong> (topo
                           do morro). Usado para lucro e altura.
                         </p>
@@ -1073,7 +1073,7 @@ export default function AulaEquacoes2Grau({
                         <p className="font-mono text-xl font-bold text-cyan-700 text-foreground/85 leading-relaxed">
                           x_v = -b / 2a
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-2">
                           Encontre a coordenada X do vértice
                         </p>
                       </div>
@@ -1081,7 +1081,7 @@ export default function AulaEquacoes2Grau({
                         <p className="font-mono text-xl font-bold text-sky-700 text-foreground/85 leading-relaxed">
                           y_v = f(x_v) ou y_v = -Δ / 4a
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-2">
                           Encontre a coordenada Y do vértice
                         </p>
                       </div>
@@ -1203,7 +1203,7 @@ export default function AulaEquacoes2Grau({
                       <p className="text-lg text-foreground/85 leading-relaxed">Máximo</p>
                     </div>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                  <p className="text-lg text-foreground/85 leading-relaxed">
                     Sempre o vértice é no x = -b/2a
                   </p>
                 </div>
@@ -1252,7 +1252,7 @@ export default function AulaEquacoes2Grau({
                   icone: <LuRepeat />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-xl text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Até agora você aprendeu a identificar coeficientes, usar
                         Bhaskara e aplicar em contextos. Agora vamos integrar!
                       </p>
@@ -1378,7 +1378,7 @@ export default function AulaEquacoes2Grau({
                     <p>✓ Bhaskara aplicado?</p>
                     <p>✓ Contexto analisado?</p>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                  <p className="text-lg text-foreground/85 leading-relaxed">
                     Se um passo falhar, volta e refaz!
                   </p>
                 </div>
@@ -1452,7 +1452,7 @@ export default function AulaEquacoes2Grau({
                   icone: <LuSigma />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-xl text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Dada x² - 7x + 10 = 0:
                       </p>
                       <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20">
@@ -1586,7 +1586,7 @@ export default function AulaEquacoes2Grau({
                     <p>2. Desses, qual soma = S?</p>
                     <p>3. Pronto!</p>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                  <p className="text-lg text-foreground/85 leading-relaxed">
                     Rápido quando funciona. Bhaskara se ficar confuso!
                   </p>
                 </div>
@@ -1644,7 +1644,7 @@ export default function AulaEquacoes2Grau({
                           x_v = -b / 2a
                         </p>
                       </div>
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         A reta vertical que passa por x_v é o eixo de simetria
                         da parábola.
                       </p>
@@ -1656,7 +1656,7 @@ export default function AulaEquacoes2Grau({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-xl text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Para y = x² - 4x + 3:
                       </p>
                       <div className="bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/20">
@@ -1669,7 +1669,7 @@ export default function AulaEquacoes2Grau({
                         <p className="text-xl font-mono mt-2 text-foreground/85 leading-relaxed">
                           y_v = 2² - 4(2) + 3 = 4 - 8 + 3 = -1
                         </p>
-                        <p className="text-xl mt-2 text-muted-foreground text-foreground/85 leading-relaxed">
+                        <p className="text-xl mt-2 text-foreground/85 leading-relaxed">
                           Vértice: (2, -1)
                         </p>
                       </div>
@@ -1809,7 +1809,7 @@ export default function AulaEquacoes2Grau({
                     <p>2. Vértice (x_v, y_v)</p>
                     <p>3. Interseção Y (0, c)</p>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                  <p className="text-lg text-foreground/85 leading-relaxed">
                     Marque esses e você terá o gráfico!
                   </p>
                 </div>
@@ -1866,7 +1866,7 @@ export default function AulaEquacoes2Grau({
                           x² - (r₁+r₂)x + r₁r₂ = 0
                         </p>
                       </div>
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Ou, genericamente: (x - r₁)(x - r₂) = 0
                       </p>
                     </div>
@@ -1877,7 +1877,7 @@ export default function AulaEquacoes2Grau({
                   icone: <LuSigma />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-xl text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Se as raízes são 3 e -2:
                       </p>
                       <div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20">
@@ -2026,7 +2026,7 @@ export default function AulaEquacoes2Grau({
                     <p>2. Produto = r₁ × r₂</p>
                     <p>3. x² - Sx + P = 0</p>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                  <p className="text-lg text-foreground/85 leading-relaxed">
                     Rápido e elegante!
                   </p>
                 </div>
@@ -2094,7 +2094,7 @@ export default function AulaEquacoes2Grau({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-xl text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Uma refinaria produz x barris por dia. O lucro é L(x) =
                         -2x² + 1000x - 50000. Qual a produção que maximiza
                         lucro?
@@ -2106,7 +2106,7 @@ export default function AulaEquacoes2Grau({
                         <p className="text-xl font-mono mt-2 text-foreground/85 leading-relaxed">
                           x_v = -1000 / 2(-2) = -1000 / -4 = 250 barris
                         </p>
-                        <p className="text-xl mt-2 text-muted-foreground text-foreground/85 leading-relaxed">
+                        <p className="text-xl mt-2 text-foreground/85 leading-relaxed">
                           Produção ótima: 250 barris/dia
                         </p>
                       </div>
@@ -2244,7 +2244,7 @@ export default function AulaEquacoes2Grau({
                     <p>↓</p>
                     <p>✓ Verifica Limites</p>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                  <p className="text-lg text-foreground/85 leading-relaxed">
                     Sempre os três passos!
                   </p>
                 </div>

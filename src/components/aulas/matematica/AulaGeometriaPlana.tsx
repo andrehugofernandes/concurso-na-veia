@@ -160,35 +160,35 @@ export default function AulaGeometriaPlana({
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xl text-foreground/85 leading-relaxed">
                           <div className="bg-card rounded-lg p-2 text-center border border-border">
                             <p className="font-bold">3 lados</p>
-                            <p className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Triângulo</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">Triângulo</p>
                           </div>
                           <div className="bg-card rounded-lg p-2 text-center border border-border">
                             <p className="font-bold">4 lados</p>
-                            <p className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Quadrilátero</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">Quadrilátero</p>
                           </div>
                           <div className="bg-card rounded-lg p-2 text-center border border-border">
                             <p className="font-bold">5 lados</p>
-                            <p className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Pentágono</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">Pentágono</p>
                           </div>
                           <div className="bg-card rounded-lg p-2 text-center border border-border">
                             <p className="font-bold">6 lados</p>
-                            <p className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Hexágono</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">Hexágono</p>
                           </div>
                           <div className="bg-card rounded-lg p-2 text-center border border-border">
                             <p className="font-bold">7 lados</p>
-                            <p className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Heptágono</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">Heptágono</p>
                           </div>
                           <div className="bg-card rounded-lg p-2 text-center border border-border">
                             <p className="font-bold">8 lados</p>
-                            <p className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Octógono</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">Octógono</p>
                           </div>
                           <div className="bg-card rounded-lg p-2 text-center border border-border">
                             <p className="font-bold">9 lados</p>
-                            <p className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Eneágono</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">Eneágono</p>
                           </div>
                           <div className="bg-card rounded-lg p-2 text-center border border-border">
                             <p className="font-bold">10 lados</p>
-                            <p className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Decágono</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">Decágono</p>
                           </div>
                         </div>
                       </div>
@@ -285,19 +285,19 @@ export default function AulaGeometriaPlana({
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                         <div className="p-3 bg-card rounded-xl border border-border text-center">
                           <p className="font-bold text-xl text-foreground/85 leading-relaxed">Triângulo</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">n=3: d = 0</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">n=3: d = 0</p>
                         </div>
                         <div className="p-3 bg-card rounded-xl border border-border text-center">
                           <p className="font-bold text-xl text-foreground/85 leading-relaxed">Quadrilátero</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">n=4: d = 2</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">n=4: d = 2</p>
                         </div>
                         <div className="p-3 bg-card rounded-xl border border-border text-center">
                           <p className="font-bold text-xl text-foreground/85 leading-relaxed">Pentágono</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">n=5: d = 5</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">n=5: d = 5</p>
                         </div>
                         <div className="p-3 bg-card rounded-xl border border-border text-center">
                           <p className="font-bold text-xl text-foreground/85 leading-relaxed">Hexágono</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">n=6: d = 9</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">n=6: d = 9</p>
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Dica de Prova">
@@ -447,27 +447,27 @@ export default function AulaGeometriaPlana({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Triângulo (n=3)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Soma: 180° | Diagonais: 0</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed">Soma: 180° | Diagonais: 0</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Quadrilátero (n=4)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Soma: 360° | Diagonais: 2</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed">Soma: 360° | Diagonais: 2</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Pentágono (n=5)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Soma: 540° | Diagonais: 5</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed">Soma: 540° | Diagonais: 5</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Hexágono (n=6)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Soma: 720° | Diagonais: 9</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed">Soma: 720° | Diagonais: 9</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Octógono (n=8)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Soma: 1080° | Diagonais: 20</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed">Soma: 1080° | Diagonais: 20</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Decágono (n=10)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Soma: 1440° | Diagonais: 35</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed">Soma: 1440° | Diagonais: 35</p>
                 </div>
               </div>
             </div>
@@ -508,19 +508,19 @@ export default function AulaGeometriaPlana({
                           <p className="text-2xl mb-2">🔺</p>
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-1">Equilátero</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">3 lados iguais</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Todos ângulos = 60°</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Todos ângulos = 60°</p>
                         </div>
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20 text-center">
                           <p className="text-2xl mb-2">🔺</p>
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-1">Isósceles</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">2 lados iguais</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">2 ângulos da base iguais</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">2 ângulos da base iguais</p>
                         </div>
                         <div className="p-4 bg-cyan-500/5 rounded-xl border border-cyan-500/20 text-center">
                           <p className="text-2xl mb-2">🔺</p>
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-500 mb-1">Escaleno</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">3 lados diferentes</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">3 ângulos diferentes</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">3 ângulos diferentes</p>
                         </div>
                       </div>
                       <AlertBox tipo="info" titulo="Contexto Petrobras">
@@ -542,7 +542,7 @@ export default function AulaGeometriaPlana({
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20 text-center">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-1">Retângulo</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Um ângulo = 90°</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Base do Pitágoras</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Base do Pitágoras</p>
                         </div>
                         <div className="p-4 bg-amber-500/5 rounded-xl border border-amber-500/20 text-center">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-amber-500 mb-1">Obtusângulo</p>
@@ -696,15 +696,15 @@ export default function AulaGeometriaPlana({
               <div className="space-y-4">
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Classificação por Ângulos</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">• Acutângulo: todos ângulos &lt; 90° | • Retângulo: um ângulo = 90° | • Obtusângulo: um ângulo &gt; 90°</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed">• Acutângulo: todos ângulos &lt; 90° | • Retângulo: um ângulo = 90° | • Obtusângulo: um ângulo &gt; 90°</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Classificação por Lados</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">• Equilátero: 3 lados iguais | • Isósceles: 2 lados iguais | • Escaleno: 3 lados diferentes</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed">• Equilátero: 3 lados iguais | • Isósceles: 2 lados iguais | • Escaleno: 3 lados diferentes</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Elementos Principais</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Altura: perpendicular do vértice ao lado | Mediana: linha do vértice ao meio do lado oposto | Mediatriz: perpendicular ao meio do lado</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed">Altura: perpendicular do vértice ao lado | Mediana: linha do vértice ao meio do lado oposto | Mediatriz: perpendicular ao meio do lado</p>
                 </div>
               </div>
             </div>
@@ -742,7 +742,7 @@ export default function AulaGeometriaPlana({
                     <div className="space-y-4">
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 text-center">
                         <p className="text-xl font-mono font-bold">A = (b × h) / 2</p>
-                        <p className="text-xl text-muted-foreground mt-1 text-foreground/85 leading-relaxed">onde h é a altura perpendicular à base b</p>
+                        <p className="text-xl mt-1 text-foreground/85 leading-relaxed">onde h é a altura perpendicular à base b</p>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
@@ -792,19 +792,19 @@ export default function AulaGeometriaPlana({
                       <p>Para o triângulo equilátero de lado L, existe fórmula direta:</p>
                       <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 text-center space-y-2">
                         <p className="text-lg font-mono font-bold">A = (L² × √3) / 4</p>
-                        <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Altura: h = L√3/2</p>
+                        <p className="text-xl text-foreground/85 leading-relaxed">Altura: h = L√3/2</p>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                         <div className="p-3 bg-card rounded-xl border border-border text-center">
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">L = 2</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">L = 2</p>
                           <p className="font-bold text-xl text-foreground/85 leading-relaxed">A = √3 m²</p>
                         </div>
                         <div className="p-3 bg-card rounded-xl border border-border text-center">
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">L = 4</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">L = 4</p>
                           <p className="font-bold text-xl text-foreground/85 leading-relaxed">A = 4√3 m²</p>
                         </div>
                         <div className="p-3 bg-card rounded-xl border border-border text-center">
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">L = 6</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">L = 6</p>
                           <p className="font-bold text-xl text-foreground/85 leading-relaxed">A = 9√3 m²</p>
                         </div>
                       </div>
@@ -928,20 +928,20 @@ export default function AulaGeometriaPlana({
               <div className="space-y-4">
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Fórmula Geral</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed font-mono text-muted-foreground">A = (base × altura) / 2</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed mt-2 text-muted-foreground">Altura deve ser perpendicular à base escolhida.</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">A = (base × altura) / 2</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed mt-2">Altura deve ser perpendicular à base escolhida.</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Triângulo Equilátero (lado L)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed font-mono text-muted-foreground">A = (L² × √3) / 4 | h = (L × √3) / 2</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">A = (L² × √3) / 4 | h = (L × √3) / 2</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Fórmula de Heron (3 lados: a, b, c)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed font-mono text-muted-foreground">A = √[s(s-a)(s-b)(s-c)], onde s = (a+b+c)/2</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">A = √[s(s-a)(s-b)(s-c)], onde s = (a+b+c)/2</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Com 2 lados e ângulo entre eles</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed font-mono text-muted-foreground">A = (a × b × sen C) / 2</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">A = (a × b × sen C) / 2</p>
                 </div>
               </div>
             </div>
@@ -1038,20 +1038,20 @@ export default function AulaGeometriaPlana({
                       <p>O <strong>trapézio</strong> tem exatamente um par de lados paralelos (bases B e b), com a outra dupla de lados não paralela.</p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 text-center">
                         <p className="text-xl font-mono font-bold">A = [(B + b) × h] / 2</p>
-                        <p className="text-xl text-muted-foreground mt-1 text-foreground/85 leading-relaxed">B = base maior, b = base menor, h = altura entre as bases</p>
+                        <p className="text-xl mt-1 text-foreground/85 leading-relaxed">B = base maior, b = base menor, h = altura entre as bases</p>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                         <div className="p-3 bg-card rounded-xl border border-border text-center">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400">Retângulo</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Um lado não paralelo ⊥ às bases</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">Um lado não paralelo ⊥ às bases</p>
                         </div>
                         <div className="p-3 bg-card rounded-xl border border-border text-center">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400">Isósceles</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Lados não paralelos iguais</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">Lados não paralelos iguais</p>
                         </div>
                         <div className="p-3 bg-card rounded-xl border border-border text-center">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400">Escaleno</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Lados não paralelos diferentes</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">Lados não paralelos diferentes</p>
                         </div>
                       </div>
                       <AlertBox tipo="info" titulo="Aplicação em Drenagem">
@@ -1086,27 +1086,27 @@ export default function AulaGeometriaPlana({
                     <tr className="border-b border-border/50">
                       <td className="py-2 pr-4 font-medium">Retângulo</td>
                       <td className="py-2 pr-4 font-mono text-cyan-400">b × h</td>
-                      <td className="py-2 text-muted-foreground text-lg text-foreground/85 leading-relaxed">base × altura</td>
+                      <td className="py-2 text-lg text-foreground/85 leading-relaxed">base × altura</td>
                     </tr>
                     <tr className="border-b border-border/50">
                       <td className="py-2 pr-4 font-medium">Quadrado</td>
                       <td className="py-2 pr-4 font-mono text-cyan-400">L²</td>
-                      <td className="py-2 text-muted-foreground text-lg text-foreground/85 leading-relaxed">lado ao quadrado</td>
+                      <td className="py-2 text-lg text-foreground/85 leading-relaxed">lado ao quadrado</td>
                     </tr>
                     <tr className="border-b border-border/50">
                       <td className="py-2 pr-4 font-medium">Paralelogramo</td>
                       <td className="py-2 pr-4 font-mono text-cyan-400">b × h</td>
-                      <td className="py-2 text-muted-foreground text-lg text-foreground/85 leading-relaxed">h perpendicular à base</td>
+                      <td className="py-2 text-lg text-foreground/85 leading-relaxed">h perpendicular à base</td>
                     </tr>
                     <tr className="border-b border-border/50">
                       <td className="py-2 pr-4 font-medium">Losango</td>
                       <td className="py-2 pr-4 font-mono text-cyan-400">(d₁ × d₂)/2</td>
-                      <td className="py-2 text-muted-foreground text-lg text-foreground/85 leading-relaxed">produto das diagonais / 2</td>
+                      <td className="py-2 text-lg text-foreground/85 leading-relaxed">produto das diagonais / 2</td>
                     </tr>
                     <tr>
                       <td className="py-2 pr-4 font-medium">Trapézio</td>
                       <td className="py-2 pr-4 font-mono text-cyan-400">[(B+b) × h]/2</td>
-                      <td className="py-2 text-muted-foreground text-lg text-foreground/85 leading-relaxed">média das bases × altura</td>
+                      <td className="py-2 text-lg text-foreground/85 leading-relaxed">média das bases × altura</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1220,23 +1220,23 @@ export default function AulaGeometriaPlana({
               <div className="space-y-4">
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Quadrado (lado L)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed font-mono text-muted-foreground">A = L² | P = 4L | d = L√2</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">A = L² | P = 4L | d = L√2</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Retângulo (base b, altura h)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed font-mono text-muted-foreground">A = b × h | P = 2(b+h) | d = √(b² + h²)</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">A = b × h | P = 2(b+h) | d = √(b² + h²)</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Losango (diagonais d₁ e d₂)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed font-mono text-muted-foreground">A = (d₁ × d₂) / 2 | P = 4 × lado</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">A = (d₁ × d₂) / 2 | P = 4 × lado</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Trapézio (bases B e b, altura h)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed font-mono text-muted-foreground">A = [(B + b) × h] / 2 | P = B + b + lado1 + lado2</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">A = [(B + b) × h] / 2 | P = B + b + lado1 + lado2</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Paralelogramo</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed font-mono text-muted-foreground">A = base × altura | P = 2(lado1 + lado2)</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">A = base × altura | P = 2(lado1 + lado2)</p>
                 </div>
               </div>
             </div>
@@ -1276,12 +1276,12 @@ export default function AulaGeometriaPlana({
                         <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 text-center">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">ÁREA do Círculo</p>
                           <p className="text-xl font-mono font-bold">A = π r²</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">resultado em unidades²</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">resultado em unidades²</p>
                         </div>
                         <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 text-center">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-2">COMPRIMENTO da Circunferência</p>
                           <p className="text-xl font-mono font-bold">C = 2πr = πd</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">resultado em unidades lineares</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">resultado em unidades lineares</p>
                         </div>
                       </div>
                       <AlertBox tipo="danger" titulo="Pegadinha Mais Comum">
@@ -1299,12 +1299,12 @@ export default function AulaGeometriaPlana({
                         <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">Setor Circular (ângulo θ°)</p>
                           <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">A = (θ/360°) × πr²</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Ex: setor de 90° = 1/4 do círculo</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Ex: setor de 90° = 1/4 do círculo</p>
                         </div>
                         <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Coroa Circular (anel)</p>
                           <p className="text-xl font-mono font-bold text-foreground/85 leading-relaxed">A = π(R² − r²)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">R = raio externo, r = raio interno</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">R = raio externo, r = raio interno</p>
                         </div>
                       </div>
                       <AlertBox tipo="info" titulo="Aplicação Industrial">
@@ -1324,15 +1324,15 @@ export default function AulaGeometriaPlana({
                         <p className="text-xl text-foreground/85 leading-relaxed">Se o raio multiplica por k → a área multiplica por k²</p>
                         <div className="grid grid-cols-3 gap-2 mt-3 text-center text-xl text-foreground/85 leading-relaxed">
                           <div className="p-2 bg-card rounded-lg border border-border">
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">raio × 2</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">raio × 2</p>
                             <p className="font-bold">área × 4</p>
                           </div>
                           <div className="p-2 bg-card rounded-lg border border-border">
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">raio × 3</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">raio × 3</p>
                             <p className="font-bold">área × 9</p>
                           </div>
                           <div className="p-2 bg-card rounded-lg border border-border">
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">raio × 5</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">raio × 5</p>
                             <p className="font-bold">área × 25</p>
                           </div>
                         </div>
@@ -1453,21 +1453,21 @@ export default function AulaGeometriaPlana({
               <div className="space-y-4">
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Circunferência (raio r)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed font-mono text-muted-foreground">C = 2πr (ou C = πd)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed mt-1 text-muted-foreground">π ≈ 3,14159</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">C = 2πr (ou C = πd)</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed mt-1">π ≈ 3,14159</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Área do Círculo</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed font-mono text-muted-foreground">A = πr²</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">A = πr²</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Setor Circular (ângulo θ em graus)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed font-mono text-muted-foreground">A_setor = (θ/360°) × πr²</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed font-mono text-muted-foreground">C_arco = (θ/360°) × 2πr</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">A_setor = (θ/360°) × πr²</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">C_arco = (θ/360°) × 2πr</p>
                 </div>
                 <div className="p-4 bg-card rounded-xl border border-border">
                   <p className="font-bold text-xl mb-2 text-foreground/85 leading-relaxed">Coroa Circular (raio maior R, menor r)</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed font-mono text-muted-foreground">A = π(R² - r²)</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono">A = π(R² - r²)</p>
                 </div>
               </div>
             </div>
@@ -1510,7 +1510,7 @@ export default function AulaGeometriaPlana({
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-2">AA (Ângulo-Ângulo)</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">2 ângulos correspondentes iguais → semelhantes</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">O mais simples de verificar</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">O mais simples de verificar</p>
                         </div>
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">LAL (Lado-Ângulo-Lado)</p>
@@ -1568,7 +1568,7 @@ export default function AulaGeometriaPlana({
                         <p className="text-xl font-mono text-foreground/85 leading-relaxed">h² = p × q &nbsp;&nbsp;&nbsp; (h = altura à hipotenusa)</p>
                         <p className="text-xl font-mono text-foreground/85 leading-relaxed">a² = c × p &nbsp;&nbsp;&nbsp; (cateto a, projeção p)</p>
                         <p className="text-xl font-mono text-foreground/85 leading-relaxed">b² = c × q &nbsp;&nbsp;&nbsp; (cateto b, projeção q)</p>
-                        <p className="text-xl text-muted-foreground mt-1 text-foreground/85 leading-relaxed">c = hipotenusa, p e q = projeções dos catetos</p>
+                        <p className="text-xl mt-1 text-foreground/85 leading-relaxed">c = hipotenusa, p e q = projeções dos catetos</p>
                       </div>
                       <AlertBox tipo="info" titulo="Aplicação">
                         Essas relações permitem calcular a altura de uma estrutura a partir de suas projeções — técnica usada em engenharia civil e naval sem necessidade de acesso direto ao topo.
@@ -1701,7 +1701,7 @@ export default function AulaGeometriaPlana({
                       </p>
                       <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 text-center">
                         <p className="text-2xl font-mono font-bold">c² = a² + b²</p>
-                        <p className="text-xl text-muted-foreground mt-1 text-foreground/85 leading-relaxed">c = hipotenusa (oposta ao ângulo reto), a e b = catetos</p>
+                        <p className="text-xl mt-1 text-foreground/85 leading-relaxed">c = hipotenusa (oposta ao ângulo reto), a e b = catetos</p>
                       </div>
                       <AlertBox tipo="info" titulo="Contexto Petrobras">
                         Cabos de ancoragem de plataformas, escadas de manutenção, distâncias diagonais em refinarias — todos usam Pitágoras. Um cabo que vai da plataforma (40 m de altura) até o fundo (30 m horizontal) mede: c = √(30² + 40²) = √(900+1600) = √2500 = 50 m.
@@ -1721,19 +1721,19 @@ export default function AulaGeometriaPlana({
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
                           <div className="p-2 bg-card rounded-lg border border-border">
                             <p className="font-bold text-blue-400">3-4-5</p>
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">e múltiplos: 6-8-10, 30-40-50</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">e múltiplos: 6-8-10, 30-40-50</p>
                           </div>
                           <div className="p-2 bg-card rounded-lg border border-border">
                             <p className="font-bold text-emerald-400">5-12-13</p>
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">25+144=169✓</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">25+144=169✓</p>
                           </div>
                           <div className="p-2 bg-card rounded-lg border border-border">
                             <p className="font-bold text-cyan-400">7-24-25</p>
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">49+576=625✓</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">49+576=625✓</p>
                           </div>
                           <div className="p-2 bg-card rounded-lg border border-border">
                             <p className="font-bold text-amber-400">8-15-17</p>
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">64+225=289✓</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed">64+225=289✓</p>
                           </div>
                         </div>
                       </div>
@@ -1908,21 +1908,21 @@ export default function AulaGeometriaPlana({
                             <span className="text-2xl font-bold text-blue-400 w-12 text-center">k</span>
                             <div>
                               <p className="font-bold text-xl text-foreground/85 leading-relaxed">Razão de Lados e Perímetros</p>
-                              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Se lados são 3:5 → k = 3/5</p>
+                              <p className="text-lg text-foreground/85 leading-relaxed">Se lados são 3:5 → k = 3/5</p>
                             </div>
                           </div>
                           <div className="flex items-center gap-3 p-3 bg-card rounded-xl border border-border">
                             <span className="text-2xl font-bold text-emerald-400 w-12 text-center">k²</span>
                             <div>
                               <p className="font-bold text-xl text-foreground/85 leading-relaxed">Razão de Áreas</p>
-                              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Se k = 3/5 → áreas em razão 9/25</p>
+                              <p className="text-lg text-foreground/85 leading-relaxed">Se k = 3/5 → áreas em razão 9/25</p>
                             </div>
                           </div>
                           <div className="flex items-center gap-3 p-3 bg-card rounded-xl border border-border">
                             <span className="text-2xl font-bold text-amber-400 w-12 text-center">k³</span>
                             <div>
                               <p className="font-bold text-xl text-foreground/85 leading-relaxed">Razão de Volumes</p>
-                              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Se k = 3/5 → volumes em razão 27/125</p>
+                              <p className="text-lg text-foreground/85 leading-relaxed">Se k = 3/5 → volumes em razão 27/125</p>
                             </div>
                           </div>
                         </div>
@@ -2128,7 +2128,7 @@ export default function AulaGeometriaPlana({
                         <p className="text-xl font-mono text-foreground/85 leading-relaxed">A = πr²</p>
                         <p className="text-xl font-bold text-blue-400 mt-3 text-foreground/85 leading-relaxed">Área de escoamento (duto oco — mais comum):</p>
                         <p className="text-xl font-mono text-foreground/85 leading-relaxed">A = π(R² − r²) = π(R+r)(R−r)</p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">R = raio externo, r = raio interno (raio do canal interno)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-1">R = raio externo, r = raio interno (raio do canal interno)</p>
                       </div>
                       <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
                         <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-2">Exemplo prático:</p>
@@ -2154,12 +2154,12 @@ export default function AulaGeometriaPlana({
                         <div className="p-4 bg-blue-500/5 rounded-xl border border-blue-500/20">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500 mb-2">Área Total − Exclusões</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">A_útil = A_total − A_excluídas</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Ex: plataforma retangular menos heliporto circular</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Ex: plataforma retangular menos heliporto circular</p>
                         </div>
                         <div className="p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500 mb-2">Escala da Planta</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Área real = área_planta × k²</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">k = fator de escala (ex: 500 para escala 1:500)</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">k = fator de escala (ex: 500 para escala 1:500)</p>
                         </div>
                       </div>
                       <AlertBox tipo="info" titulo="Caso Real">
@@ -2192,7 +2192,7 @@ export default function AulaGeometriaPlana({
                           </div>
                         </div>
                       </div>
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         A <strong>área molhada</strong> (seção transversal ocupada pelo fluido) é usada no cálculo da vazão Q = A × v, onde v é a velocidade do escoamento.
                       </p>
                     </div>

@@ -373,7 +373,7 @@ export default function AulaInterpretacaoTexto({
                         <span className="font-bold text-blue-600 dark:text-blue-400 block mb-2 uppercase tracking-wider text-xl text-foreground/85 leading-relaxed">
                           Anáfora (Resgate)
                         </span>
-                        <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                        <p className="text-xl leading-relaxed text-foreground/85">
                           O elemento anafórico olha para o{" "}
                           <strong>passado</strong> do texto. Ele retoma uma
                           palavra ou ideia já apresentada para evitar repetição
@@ -396,7 +396,7 @@ export default function AulaInterpretacaoTexto({
                         <span className="font-bold text-emerald-600 dark:text-emerald-400 block mb-2 uppercase tracking-wider text-xl text-foreground/85 leading-relaxed">
                           Catáfora (Antecipação)
                         </span>
-                        <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                        <p className="text-xl leading-relaxed text-foreground/85">
                           O elemento catafórico atua como um holofote que
                           ilumina o <strong>futuro</strong> do texto. Ele
                           anuncia uma informação que o autor ainda vai entregar,
@@ -526,13 +526,13 @@ export default function AulaInterpretacaoTexto({
                       Alerta de Contradição
                     </span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     O texto afirma taxativamente que a paralisia <strong>"não decorreu de falta de verba"</strong>.
                   </p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     Bancas exploram o senso comum (crise = falta de dinheiro) para induzir ao erro.
                   </p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     ❌ "A escassez de recursos foi o principal <strong>gargalo</strong> da manutenção."
                   </p>
                 </div>
@@ -561,13 +561,13 @@ export default function AulaInterpretacaoTexto({
                       Dedução Autorizada
                     </span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     Ao contrastar "crise de gestão" com "peças estocadas", o autor circunscreve o erro operacional.
                   </p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     Mesmo sem usar a palavra "humano", deduzir isso é uma inferência <strong>corretíssima</strong>.
                   </p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     ✅ "A falha reside nas <strong>engrenagens operacionais</strong> e de processos."
                   </p>
                 </div>
@@ -823,7 +823,7 @@ export default function AulaInterpretacaoTexto({
                       <strong>Exemplo prático:</strong> "A transição para o
                       hidrogênio verde exige maciça infraestrutura prévia."{" "}
                       <br />
-                      <span className="text-lg text-foreground/85 leading-relaxed text-muted-foreground uppercase tracking-widest mt-1 block">
+                      <span className="text-lg text-foreground/85 leading-relaxed uppercase tracking-widest mt-1 block">
                         (Fim da leitura essencial. Daqui pra frente são adereços
                         de sustentação).
                       </span>
@@ -1272,7 +1272,7 @@ export default function AulaInterpretacaoTexto({
                           "O pré-sal é altamente promissor, <strong>mas</strong>{" "}
                           a pressão extrema exige metalurgia caríssima."
                         </p>
-                        <ul className="mt-2 text-lg text-foreground/85 leading-relaxed md:text-xl list-disc pl-4 space-y-1 text-foreground/85 leading-relaxed">
+                        <ul className="mt-2 text-lg text-foreground/85 leading-relaxed md:text-xl list-disc pl-4 space-y-1">
                           <li>
                             O autor vence o argumento focando na dificuldade
                             técnica.
@@ -1289,7 +1289,7 @@ export default function AulaInterpretacaoTexto({
                           metalurgia caríssima, o pré-sal é altamente
                           promissor."
                         </p>
-                        <ul className="mt-2 text-lg text-foreground/85 leading-relaxed md:text-xl list-disc pl-4 space-y-1 text-foreground/85 leading-relaxed">
+                        <ul className="mt-2 text-lg text-foreground/85 leading-relaxed md:text-xl list-disc pl-4 space-y-1">
                           <li>
                             A dificuldade existe, mas não impede o sucesso.
                             Destacou a glória.
@@ -2910,7 +2910,7 @@ export default function AulaInterpretacaoTexto({
                         <p className="font-bold text-orange-500 flex items-center gap-2 border-b border-orange-500/10 pb-3 uppercase tracking-wide text-lg text-foreground/85 leading-relaxed">
                           <LuCheck className="w-4 h-4" /> VERDADE INCOMPLETA
                         </p>
-                        <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                        <p className="text-xl leading-relaxed text-foreground/85">
                           A afirmação está no texto, porém foca apenas em uma{" "}
                           <strong>fração minoritária</strong> do argumento principal,
                           ignorando a conclusão macroecônomica ou central.
@@ -2947,7 +2947,7 @@ export default function AulaInterpretacaoTexto({
                         <p className="font-bold text-red-500 flex items-center gap-2 border-b border-red-500/10 pb-3 uppercase tracking-wide text-lg text-foreground/85 leading-relaxed">
                           <LuShieldAlert className="w-4 h-4" /> O ACHISMO GOURMET
                         </p>
-                        <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                        <p className="text-xl leading-relaxed text-foreground/85">
                           Traz informações verídicas sobre o Brasil ou o mundo que
                           fazem total sentido, mas que{" "}
                           <strong>jamais foram citadas</strong> no texto original.
@@ -2985,7 +2985,7 @@ export default function AulaInterpretacaoTexto({
                         <p className="font-bold text-rose-500 flex items-center gap-2 border-b border-rose-500/10 pb-3 uppercase tracking-wide text-lg text-foreground/85 leading-relaxed">
                           <LuShieldAlert className="w-4 h-4" /> INVERSÃO DE VALORES
                         </p>
-                        <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                        <p className="text-xl leading-relaxed text-foreground/85">
                           A afirmação cruza perpendicularmente a tese do autor,
                           normalmente ocultando uma negação ou alterando o escopo por
                           intermédio de restritivos (somente, nada).
@@ -3005,7 +3005,7 @@ export default function AulaInterpretacaoTexto({
               </CarouselContent>
               <div className="flex items-center justify-center mt-6 gap-3">
                 <CarouselPrevious className="static translate-y-0 h-10 w-10 rounded-xl hover:bg-primary/5 hover:text-primary transition-colors border-border/60" />
-                <span className="text-lg text-foreground/85 leading-relaxed text-muted-foreground font-medium">3 cards · deslize para ver</span>
+                <span className="text-lg text-foreground/85 leading-relaxed font-medium">3 cards · deslize para ver</span>
                 <CarouselNext className="static translate-y-0 h-10 w-10 rounded-xl hover:bg-primary/5 hover:text-primary transition-colors border-border/60" />
               </div>
             </Carousel>
@@ -3301,12 +3301,12 @@ E vença esse jogo, que hoje tá bonito!`,
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">ALVO AUTORAL</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     O texto <strong>informativo</strong> apenas relata fatos de forma neutra. O
                     <strong>persuasivo</strong> busca moldar a opinião ou convencer de uma
                     tese subjetiva.
                   </p>
-                  <p className="text-xl leading-relaxed text-muted-foreground italic text-foreground/85">
+                  <p className="text-xl leading-relaxed italic text-foreground/85">
                     ✅ "Relatórios da Petrobras costumam ser Informativos, mas com tom 'Institucional'."
                   </p>
                 </div>
@@ -3333,11 +3333,11 @@ E vença esse jogo, que hoje tá bonito!`,
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">MARCAS DE TOM</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     A escolha de adjetivos indica o tom. O uso de <strong>aspas</strong>
                     quase sempre sinaliza ironia ou um distanciamento crítico por parte do autor.
                   </p>
-                  <p className="text-xl leading-relaxed text-muted-foreground italic text-foreground/85">
+                  <p className="text-xl leading-relaxed italic text-foreground/85">
                     ⚠️ "A Cesgranrio foca muito no 'efeito de sentido' de termos entre aspas."
                   </p>
                 </div>
@@ -4118,7 +4118,7 @@ E saia da prova como um vencedor!`,
                     <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 mb-2">
                       A Estratégia do Descarte Técnica
                     </h4>
-                    <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                    <p className="text-xl text-foreground/85 leading-relaxed">
                       Não busque a certa, elimine as erradas por Redução,
                       Extrapolação ou Contradição. Sobrará a verdade.
                     </p>
@@ -4127,7 +4127,7 @@ E saia da prova como um vencedor!`,
                     <h4 className="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-2">
                       Foco no Comando
                     </h4>
-                    <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                    <p className="text-xl text-foreground/85 leading-relaxed">
                       Responda o que o enunciado pediu, não o que o texto diz em
                       outras partes. O comando é soberano.
                     </p>

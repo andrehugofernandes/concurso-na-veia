@@ -455,10 +455,10 @@ export default function AulaClassesPalavras({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Exemplo</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     "<strong>O cantar</strong> dos pássaros é sinal de chuva."
                   </p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     Aqui, o artigo "O" substantivou a ação.
                   </p>
                 </div>
@@ -486,10 +486,10 @@ export default function AulaClassesPalavras({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Exemplo</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     "Recebemos <strong>um não</strong> rotundo da gerência."
                   </p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     O artigo indefinido "UM" operou a mudança.
                   </p>
                 </div>
@@ -517,10 +517,10 @@ export default function AulaClassesPalavras({
                     <LuCheck className="w-5 h-5 shrink-0" />
                     <span className="tracking-widest uppercase text-lg text-foreground/85 leading-relaxed">Exemplo</span>
                   </div>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     "<strong>O azul</strong> do mar na Bacia de Campos."
                   </p>
-                  <p className="text-xl leading-relaxed text-muted-foreground text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     A cor tornou-se o objeto da frase.
                   </p>
                 </div>
@@ -558,7 +558,7 @@ export default function AulaClassesPalavras({
                         <p className="text-lg text-foreground/85 leading-relaxed"><strong>NÃO Variam:</strong> Verbo, Advérbio, Interjeição.</p>
                       </div>
                     </div>
-                    <div className="text-lg text-foreground/85 leading-relaxed italic text-muted-foreground mt-2">
+                    <div className="text-lg text-foreground/85 leading-relaxed italic mt-2">
                       EX: Guarda-chuva (V+S) → Guarda-chuvas | Couve-flor (S+S) → Couves-flores.
                     </div>
                   </div>
@@ -1642,7 +1642,7 @@ export default function AulaClassesPalavras({
                           <div className="pt-4 border-t border-rose-500/10">
                             <p className="font-black text-lg text-rose-700 dark:text-rose-300 mb-2">✦ TER (Pres. Indicativo)</p>
                             {renderConj("tenho", "tens", "tem", "temos", "tendes", "têm")}
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2 italic">Atenção ao acento diferencial no plural!</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed mt-2 italic">Atenção ao acento diferencial no plural!</p>
                           </div>
                         </div>
                         <div className="p-5 bg-rose-500/5 border border-rose-500/20 rounded-xl space-y-6">
@@ -1653,7 +1653,7 @@ export default function AulaClassesPalavras({
                           <div className="pt-4 border-t border-rose-500/10">
                             <p className="font-black text-lg text-rose-700 dark:text-rose-300 mb-2">✦ VER (Pres. Indicativo)</p>
                             {renderConj("vejo", "vês", "vê", "vemos", "vedes", "veem")}
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2 italic font-bold">🚫 Não tem acento em 'veem' (Novo Acordo).</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed mt-2 italic font-bold">🚫 Não tem acento em 'veem' (Novo Acordo).</p>
                           </div>
                         </div>
                       </div>
@@ -1709,7 +1709,7 @@ export default function AulaClassesPalavras({
                           <div className="pt-4 border-t border-amber-500/10">
                             <p className="font-black text-lg text-amber-700 dark:text-amber-300 mb-2">✦ TIVER (Verbo Ter)</p>
                             {renderConj("tiver", "tiveres", "tiver", "tivermos", "tiverdes", "tiverem", "quando")}
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2 italic">Atenção: Não confunda com 'tenha'!</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed mt-2 italic">Atenção: Não confunda com 'tenha'!</p>
                           </div>
                         </div>
                         <div className="p-5 bg-amber-500/5 border border-amber-500/20 rounded-xl space-y-6">
@@ -1720,7 +1720,7 @@ export default function AulaClassesPalavras({
                           <div className="pt-4 border-t border-amber-500/10">
                             <p className="font-black text-lg text-amber-700 dark:text-amber-300 mb-2">✦ VIER (Verbo Vir)</p>
                             {renderConj("vier", "vieres", "vier", "viermos", "vierdes", "vierem", "quando")}
-                            <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2 italic text-rose-500 font-bold">⚠️ VIER (Vir) vs VER (Ver).</p>
+                            <p className="text-lg text-foreground/85 leading-relaxed mt-2 italic text-rose-500 font-bold">⚠️ VIER (Vir) vs VER (Ver).</p>
                           </div>
                         </div>
                       </div>
@@ -2253,7 +2253,7 @@ export default function AulaClassesPalavras({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
                 <div>
                   <p className="font-semibold text-blue-700 dark:text-blue-300">As 18 Essenciais</p>
-                  <p className="text-lg text-foreground/85 leading-relaxed font-mono leading-relaxed p-2 bg-blue-500/5 rounded">
+                  <p className="text-lg text-foreground/85 leading-relaxed font-mono p-2 bg-blue-500/5 rounded">
                     A, ANTE, APÓS, ATÉ, COM, CONTRA, DE, DESDE, EM, ENTRE, PARA, PERANTE, POR, SEM, SOB, SOBRE, TRÁS.
                   </p>
                 </div>

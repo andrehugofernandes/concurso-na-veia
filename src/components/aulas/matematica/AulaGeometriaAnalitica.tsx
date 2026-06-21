@@ -178,22 +178,22 @@ export default function AulaGeometriaAnalitica({
                         <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-center">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-500">1º Quadrante</p>
                           <p className="text-xl font-mono text-foreground/85 leading-relaxed">(+, +)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">x{">"} 0, y{">"} 0</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">x{">"} 0, y{">"} 0</p>
                         </div>
                         <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl text-center">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-500">2º Quadrante</p>
                           <p className="text-xl font-mono text-foreground/85 leading-relaxed">(−, +)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">x{"<"} 0, y{">"} 0</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">x{"<"} 0, y{">"} 0</p>
                         </div>
                         <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl text-center">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-500">3º Quadrante</p>
                           <p className="text-xl font-mono text-foreground/85 leading-relaxed">(−, −)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">x{"<"} 0, y{"<"} 0</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">x{"<"} 0, y{"<"} 0</p>
                         </div>
                         <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-center">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-amber-500">4º Quadrante</p>
                           <p className="text-xl font-mono text-foreground/85 leading-relaxed">(+, −)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">x{">"} 0, y{"<"} 0</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">x{">"} 0, y{"<"} 0</p>
                         </div>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
@@ -212,17 +212,17 @@ export default function AulaGeometriaAnalitica({
                         <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                           <p className="text-xl font-bold text-blue-400 text-foreground/85 leading-relaxed">Simetria em relação ao eixo x</p>
                           <p className="text-xl font-mono text-foreground/85 leading-relaxed">P(a, b) → P&apos;(a, −b)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Inverte o sinal de y</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">Inverte o sinal de y</p>
                         </div>
                         <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
                           <p className="text-xl font-bold text-cyan-400 text-foreground/85 leading-relaxed">Simetria em relação ao eixo y</p>
                           <p className="text-xl font-mono text-foreground/85 leading-relaxed">P(a, b) → P&apos;(−a, b)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Inverte o sinal de x</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">Inverte o sinal de x</p>
                         </div>
                         <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
                           <p className="text-xl font-bold text-emerald-400 text-foreground/85 leading-relaxed">Simetria em relação à origem</p>
                           <p className="text-xl font-mono text-foreground/85 leading-relaxed">P(a, b) → P&apos;(−a, −b)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Inverte ambos os sinais</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">Inverte ambos os sinais</p>
                         </div>
                       </div>
                     </div>
@@ -296,7 +296,7 @@ export default function AulaGeometriaAnalitica({
                 <div className="space-y-3">
                   <p className="font-semibold">Lembre dos 4 quadrantes:</p>
                   <p>Q1: (+,+) | Q2: (-,+) | Q3: (-,-) | Q4: (+,-)</p>
-                  <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Comece pelo lado direito (Q1) e siga no sentido anti-horário!</p>
+                  <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Comece pelo lado direito (Q1) e siga no sentido anti-horário!</p>
                 </div>
               )
             }}
@@ -504,7 +504,7 @@ export default function AulaGeometriaAnalitica({
                 <div className="space-y-3">
                   <p className="font-semibold">Distância é o Pitagoras do Plano!</p>
                   <p>Se A(1,1) e B(4,5): d = √[(4-1)² + (5-1)²] = √[9+16] = 5</p>
-                  <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Ponto Médio é a média aritmética das coordenadas!</p>
+                  <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Ponto Médio é a média aritmética das coordenadas!</p>
                 </div>
               )
             }}
@@ -558,13 +558,13 @@ export default function AulaGeometriaAnalitica({
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-1">m = coeficiente angular</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Mede a <strong>inclinação</strong> da reta.</p>
                           <p className="text-xl font-mono mt-2 text-foreground/85 leading-relaxed">m = (y₂ − y₁) / (x₂ − x₁)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed mt-1 text-muted-foreground">m {">"} 0: crescente | m {"<"} 0: decrescente | m = 0: horizontal</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">m {">"} 0: crescente | m {"<"} 0: decrescente | m = 0: horizontal</p>
                         </div>
                         <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 mb-1">b = coeficiente linear</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Onde a reta <strong>cruza o eixo y</strong>.</p>
                           <p className="text-xl font-mono mt-2 text-foreground/85 leading-relaxed">Ponto: (0, b)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed mt-1 text-muted-foreground">É a ordenada na origem</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">É a ordenada na origem</p>
                         </div>
                       </div>
                       <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4">
@@ -728,7 +728,7 @@ export default function AulaGeometriaAnalitica({
                 <div className="space-y-3">
                   <p className="font-semibold">y = mx + n é mais fácil que ax + by + c = 0!</p>
                   <p>m = inclinação da reta | n = onde cruza o eixo y</p>
-                  <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Dois pontos → encontre m → substitua em y = mx + n</p>
+                  <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Dois pontos → encontre m → substitua em y = mx + n</p>
                 </div>
               )
             }}
@@ -779,17 +779,17 @@ export default function AulaGeometriaAnalitica({
                         <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                           <p className="text-xl font-bold text-blue-400 text-foreground/85 leading-relaxed">Paralelas distintas</p>
                           <p className="text-xl font-mono text-foreground/85 leading-relaxed">m₁ = m₂ e b₁ ≠ b₂</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Mesma inclinação, nunca se cruzam.</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Mesma inclinação, nunca se cruzam.</p>
                         </div>
                         <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
                           <p className="text-xl font-bold text-emerald-400 text-foreground/85 leading-relaxed">Coincidentes</p>
                           <p className="text-xl font-mono text-foreground/85 leading-relaxed">m₁ = m₂ e b₁ = b₂</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">São a mesma reta — infinitos pontos em comum.</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">São a mesma reta — infinitos pontos em comum.</p>
                         </div>
                         <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
                           <p className="text-xl font-bold text-cyan-400 text-foreground/85 leading-relaxed">Secantes</p>
                           <p className="text-xl font-mono text-foreground/85 leading-relaxed">m₁ ≠ m₂</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Se cruzam em exatamente um ponto.</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Se cruzam em exatamente um ponto.</p>
                         </div>
                       </div>
                     </div>
@@ -906,7 +906,7 @@ export default function AulaGeometriaAnalitica({
                 <div className="space-y-3">
                   <p className="font-semibold">Paralelismo = Mesma inclinação!</p>
                   <p>Perpendiculares = Inclinações são opostas e inversas (m₁·m₂ = -1)</p>
-                  <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Dois valores de m? Nunca são paralelas → buscam o ponto de cruzamento!</p>
+                  <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Dois valores de m? Nunca são paralelas → buscam o ponto de cruzamento!</p>
                 </div>
               )
             }}
@@ -1090,7 +1090,7 @@ export default function AulaGeometriaAnalitica({
                 <div className="space-y-3">
                   <p className="font-semibold">A Reta DEVE estar em forma geral (ax + by + c = 0)!</p>
                   <p>Substitua (x₀,y₀) no numerador, calcule √(a²+b²) no denominador</p>
-                  <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Distância ZERO = ponto está sobre a reta!</p>
+                  <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Distância ZERO = ponto está sobre a reta!</p>
                 </div>
               )
             }}
@@ -1146,7 +1146,7 @@ export default function AulaGeometriaAnalitica({
                         <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-2">Exemplo — Tanque Circular</p>
                         <p className="text-xl text-foreground/85 leading-relaxed">Centro C(3, 4), raio r = 5.</p>
                         <p className="text-xl font-mono mt-2 text-foreground/85 leading-relaxed">(x − 3)² + (y − 4)² = 25</p>
-                        <p className="text-lg text-foreground/85 leading-relaxed mt-1 text-muted-foreground">Verifique o ponto (6, 8): (6-3)²+(8-4)²=9+16=25=r² ✓ (sobre a circunferência)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-1">Verifique o ponto (6, 8): (6-3)²+(8-4)²=9+16=25=r² ✓ (sobre a circunferência)</p>
                       </div>
                       <AlertBox tipo="warning" titulo="Pegadinha CESGRANRIO">
                         Em (x−a)²+(y−b)²=r², o raio é r = √(lado direito), <strong>não</strong> o próprio valor. Se a equação for (x-2)²+(y-3)²=25, o raio é √25 = 5, não 25.
@@ -1168,7 +1168,7 @@ export default function AulaGeometriaAnalitica({
                         <p>(x − 3)² + (y + 2)² = 25</p>
                         <p className="font-bold text-cyan-400">C(3, −2), r = 5</p>
                       </div>
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Passo a passo: agrupe os termos em x e em y, adicione o quadrado de metade dos coeficientes de x e y em ambos os lados.
                       </p>
                     </div>
@@ -1183,15 +1183,15 @@ export default function AulaGeometriaAnalitica({
                       <div className="space-y-3">
                         <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
                           <p className="text-xl font-bold text-emerald-400 text-foreground/85 leading-relaxed">Interior: d(C,P) {"<"} r</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">(x₀−a)²+(y₀−b)² {"<"} r²</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">(x₀−a)²+(y₀−b)² {"<"} r²</p>
                         </div>
                         <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                           <p className="text-xl font-bold text-blue-400 text-foreground/85 leading-relaxed">Sobre a circunferência: d(C,P) = r</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">(x₀−a)²+(y₀−b)² = r²</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">(x₀−a)²+(y₀−b)² = r²</p>
                         </div>
                         <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
                           <p className="text-xl font-bold text-cyan-400 text-foreground/85 leading-relaxed">Exterior: d(C,P) {">"} r</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">(x₀−a)²+(y₀−b)² {">"} r²</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed">(x₀−a)²+(y₀−b)² {">"} r²</p>
                         </div>
                       </div>
                     </div>
@@ -1290,7 +1290,7 @@ export default function AulaGeometriaAnalitica({
                 <div className="space-y-3">
                   <p className="font-semibold">(x-a)² + (y-b)² = r² é a FORMA BONITA!</p>
                   <p>Centro = (a, b) | Raio = r (tirando a raiz quadrada do lado direito)</p>
-                  <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Se pede a equação geral, expanda: x² + y² - 2ax - 2by + (a²+b²-r²) = 0</p>
+                  <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Se pede a equação geral, expanda: x² + y² - 2ax - 2by + (a²+b²-r²) = 0</p>
                 </div>
               )
             }}
@@ -1343,12 +1343,12 @@ export default function AulaGeometriaAnalitica({
                         <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-blue-400 mb-1">a {">"} 0</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Concavidade para <strong>cima</strong> (∪)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Vértice é ponto de <strong>mínimo</strong></p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Vértice é ponto de <strong>mínimo</strong></p>
                         </div>
                         <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
                           <p className="text-lg text-foreground/85 leading-relaxed font-bold text-cyan-400 mb-1">a {"<"} 0</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Concavidade para <strong>baixo</strong> (∩)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Vértice é ponto de <strong>máximo</strong></p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Vértice é ponto de <strong>máximo</strong></p>
                         </div>
                       </div>
                     </div>
@@ -1499,7 +1499,7 @@ export default function AulaGeometriaAnalitica({
                 <div className="space-y-3">
                   <p className="font-semibold">Parábola = Lugar geométrico de distâncias iguais!</p>
                   <p>Todo ponto P da parábola satisfaz: distância(P,foco) = distância(P,diretriz)</p>
-                  <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Se 4p &gt; 0 → abre para cima/direita | Se 4p &lt; 0 → abre para baixo/esquerda</p>
+                  <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Se 4p &gt; 0 → abre para cima/direita | Se 4p &lt; 0 → abre para baixo/esquerda</p>
                 </div>
               )
             }}
@@ -1674,7 +1674,7 @@ export default function AulaGeometriaAnalitica({
                 <div className="space-y-3">
                   <p className="font-semibold">Sempre resolva sistemas algebricamente!</p>
                   <p>Para reta ∩ circunferência: substitua a equação da reta na circunferência</p>
-                  <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Δ &gt; 0 = 2 pontos | Δ = 0 = tangente (1 ponto) | Δ &lt; 0 = nenhum ponto</p>
+                  <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Δ &gt; 0 = 2 pontos | Δ = 0 = tangente (1 ponto) | Δ &lt; 0 = nenhum ponto</p>
                 </div>
               )
             }}
@@ -1876,7 +1876,7 @@ export default function AulaGeometriaAnalitica({
                 <div className="space-y-3">
                   <p className="font-semibold">Poços são PONTOS no plano! Calcule distâncias entre eles.</p>
                   <p>Campos de produção = CIRCUNFERÊNCIAS. Encontre raio máximo permitido.</p>
-                  <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Dutos são RETAS. Distância ponto-reta = proximidade de obstáculos!</p>
+                  <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Dutos são RETAS. Distância ponto-reta = proximidade de obstáculos!</p>
                 </div>
               )
             }}
@@ -2087,7 +2087,7 @@ export default function AulaGeometriaAnalitica({
                 <div className="space-y-3">
                   <p className="font-semibold">Em prova: Desenhe sempre! Esboçar ajuda a eliminar alternativas.</p>
                   <p>Fórmulas mais usadas: d=√[(Δx)²+(Δy)²], (x-a)²+(y-b)²=r², y=mx+n</p>
-                  <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Sem calculadora? Use aproximações: √2≈1.4, √3≈1.7, π≈3.14</p>
+                  <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Sem calculadora? Use aproximações: √2≈1.4, √3≈1.7, π≈3.14</p>
                 </div>
               )
             }}

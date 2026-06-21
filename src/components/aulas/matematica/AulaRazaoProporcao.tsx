@@ -496,7 +496,7 @@ export default function AulaRazaoProporcao({
                     <h6 className="text-xl font-bold uppercase tracking-tight">
                       Rendimento
                     </h6>
-                    <p className="font-medium text-muted-foreground text-xl text-foreground/85 leading-relaxed">
+                    <p className="font-medium text-xl text-foreground/85 leading-relaxed">
                       Como calcular o rendimento de uma bomba ou refinaria?
                     </p>
                   </div>
@@ -506,7 +506,7 @@ export default function AulaRazaoProporcao({
                     <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 border-b border-border/30 pb-2">
                       Rendimento = Saída Útil / Entrada Total
                     </p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-zinc-100 leading-relaxed">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-zinc-100">
                       Razão entre o que sai útil e o que entrou. Bomba com
                       2.000W de entrada e 1.600W úteis tem rendimento 1600/2000
                       = 0,80 = 80%.
@@ -529,7 +529,7 @@ export default function AulaRazaoProporcao({
                     <h6 className="text-xl font-bold uppercase tracking-tight">
                       Escala
                     </h6>
-                    <p className="font-medium text-muted-foreground text-xl text-foreground/85 leading-relaxed">
+                    <p className="font-medium text-xl text-foreground/85 leading-relaxed">
                       O que significa a escala 1:50.000 em um mapa?
                     </p>
                   </div>
@@ -539,7 +539,7 @@ export default function AulaRazaoProporcao({
                     <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 border-b border-border/30 pb-2">
                       Escala = Medida no Mapa / Medida Real
                     </p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-zinc-100 leading-relaxed">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-zinc-100">
                       1:50.000 significa que 1 unidade no mapa representa 50.000
                       unidades na realidade. 3 cm no mapa = 1,5 km na realidade.
                     </p>
@@ -560,7 +560,7 @@ export default function AulaRazaoProporcao({
                     <h6 className="text-xl font-bold uppercase tracking-tight">
                       Razão de Mistura
                     </h6>
-                    <p className="font-medium text-muted-foreground text-xl text-foreground/85 leading-relaxed">
+                    <p className="font-medium text-xl text-foreground/85 leading-relaxed">
                       Qual a razão em uma mistura 70% gasolina e 30% etanol?
                     </p>
                   </div>
@@ -570,7 +570,7 @@ export default function AulaRazaoProporcao({
                     <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 border-b border-border/30 pb-2">
                       Razão Gasolina:Etanol = 7:3
                     </p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-zinc-100 leading-relaxed">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-zinc-100">
                       70% e 30% = razão 7:3. Em 50 litros: gasolina = 7/10 × 50
                       = 35L; etanol = 3/10 × 50 = 15L.
                     </p>
@@ -916,7 +916,7 @@ export default function AulaRazaoProporcao({
                         <p className="font-mono text-center text-xl font-bold mb-2">
                           a × d = b × c
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-center text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-center">
                           (produto dos extremos = produto dos meios)
                         </p>
                       </div>
@@ -943,7 +943,7 @@ export default function AulaRazaoProporcao({
                           <p className="text-xl mt-1 text-foreground/85 leading-relaxed">
                             → x × 9 = 3 × 12 → 9x = 36 → <strong>x = 4</strong>
                           </p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">
                             Alternativa: 12/9 = 4/3, logo x/3 = 4/3, x = 4.
                           </p>
                         </div>
@@ -1334,7 +1334,7 @@ export default function AulaRazaoProporcao({
                             DIRETA
                           </p>
                           <p className="text-xl text-foreground/85 leading-relaxed">A sobe → B sobe</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                          <p className="text-lg text-foreground/85 leading-relaxed">
                             Mais tempo = Mais produção
                           </p>
                         </div>
@@ -1343,7 +1343,7 @@ export default function AulaRazaoProporcao({
                             INVERSA
                           </p>
                           <p className="text-xl text-foreground/85 leading-relaxed">A sobe → B desce</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                          <p className="text-lg text-foreground/85 leading-relaxed">
                             Mais operadores = Menos tempo
                           </p>
                         </div>
@@ -2422,7 +2422,7 @@ export default function AulaRazaoProporcao({
                     <h6 className="text-xl font-bold uppercase tracking-tight">
                       Velocidade × Tempo
                     </h6>
-                    <p className="font-medium text-muted-foreground text-xl text-foreground/85 leading-relaxed">
+                    <p className="font-medium text-xl text-foreground/85 leading-relaxed">
                       Para a mesma distância: se a velocidade dobra, o tempo faz
                       o quê?
                     </p>
@@ -2433,7 +2433,7 @@ export default function AulaRazaoProporcao({
                     <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 border-b border-border/30 pb-2">
                       INVERSA — Tempo cai à metade
                     </p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-zinc-100 leading-relaxed">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-zinc-100">
                       v × t = d (constante). Se v dobra (×2), t precisa ser ÷2
                       para o produto continuar igual. São grandezas INVERSAS.
                     </p>
@@ -2454,7 +2454,7 @@ export default function AulaRazaoProporcao({
                     <h6 className="text-xl font-bold uppercase tracking-tight">
                       Operadores × Produção
                     </h6>
-                    <p className="font-medium text-muted-foreground text-xl text-foreground/85 leading-relaxed">
+                    <p className="font-medium text-xl text-foreground/85 leading-relaxed">
                       Dobrar o número de operadores (mesma produtividade) afeta
                       a produção como?
                     </p>
@@ -2465,7 +2465,7 @@ export default function AulaRazaoProporcao({
                     <p className="text-lg text-foreground/85 leading-relaxed font-bold text-emerald-400 border-b border-border/30 pb-2">
                       DIRETA — Produção dobra
                     </p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-zinc-100 leading-relaxed">
+                    <p className="text-lg text-foreground/85 leading-relaxed text-zinc-100">
                       Mais operadores = mais produção (mesma eficiência
                       individual). Produção/Operadores = constante. É uma
                       relação DIRETA.
@@ -2817,7 +2817,7 @@ export default function AulaRazaoProporcao({
                         <p className="font-mono text-xl text-center text-foreground/85 leading-relaxed">
                           cᵢ = (critério direto)ᵢ / (critério inverso)ᵢ
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground text-center mt-1">
+                        <p className="text-lg text-foreground/85 leading-relaxed text-center mt-1">
                           Depois normaliza: xᵢ = (cᵢ / Σcⱼ) × V
                         </p>
                       </div>
@@ -2841,7 +2841,7 @@ export default function AulaRazaoProporcao({
                           <br />
                           <strong>Diferença = 1 parte = R$ 10.000</strong>
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-1">
                           Atalho: diferença = (5-4)/9 × 90.000 = 1/9 × 90.000 =
                           R$ 10.000.
                         </p>
@@ -3238,7 +3238,7 @@ export default function AulaRazaoProporcao({
                         <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                           x = √(4 × 16) = √64 = <strong>8</strong>
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Diferente da média aritmética: (4+16)/2 = 10.
                         </p>
                       </div>
@@ -3249,7 +3249,7 @@ export default function AulaRazaoProporcao({
                         <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                           b² = 3 × 27 = 81 → b = <strong>9</strong>
                         </p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                        <p className="text-lg text-foreground/85 leading-relaxed">
                           Verificação: 3:9 = 9:27 = 1:3 ✓
                         </p>
                       </div>
@@ -3628,7 +3628,7 @@ export default function AulaRazaoProporcao({
                             Escala Grande (mais detalhe)
                           </p>
                           <p className="text-xl font-mono text-foreground/85 leading-relaxed">1:200 → mais zoom</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                          <p className="text-lg text-foreground/85 leading-relaxed">
                             Plantas de equipamentos
                           </p>
                         </div>
@@ -3639,7 +3639,7 @@ export default function AulaRazaoProporcao({
                           <p className="text-xl font-mono text-foreground/85 leading-relaxed">
                             1:500.000 → mais distância
                           </p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                          <p className="text-lg text-foreground/85 leading-relaxed">
                             Mapas de regiões
                           </p>
                         </div>

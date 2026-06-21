@@ -289,7 +289,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuLightbulb />,
                   conteudo: (
                     <div className="space-y-4 text-center">
-                      <p className="text-muted-foreground text-left text-xl text-foreground/85 leading-relaxed">
+                      <p className="text-left text-xl text-foreground/85 leading-relaxed">
                         A raiz da função é o valor exato no eixo horizontal (x)
                         onde o y vale ZERO. Pense no ponto de quebra antes de
                         começar a dar lucro, por exemplo.
@@ -307,7 +307,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Funções afim podem ter comportamentos especiais:
                       </p>
                       <div className="space-y-2">
@@ -444,7 +444,7 @@ export default function AulaFuncoesAfimQuadratica({
                   </p>
                   <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg font-mono text-xl text-center text-foreground/85 leading-relaxed">
                     <p>f(x) = 3x + 5</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">↓</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">↓</p>
                     <p>a = 3 (sobe 3 a cada x)</p>
                     <p>b = 5 (começa em 5)</p>
                   </div>
@@ -600,7 +600,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuLightbulb />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         O discriminante Δ = b² - 4ac diz quantas vezes a
                         parábola cruza o eixo X:
                       </p>
@@ -629,7 +629,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-3">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Parábolas com particularidades:
                       </p>
                       <div className="space-y-2">
@@ -759,7 +759,7 @@ export default function AulaFuncoesAfimQuadratica({
                   </p>
                   <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>f(x) = x² - 4x + 3</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">↓</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">↓</p>
                     <p>a = 1 &gt; 0 → U</p>
                     <p>Δ = 16 - 12 = 4 &gt; 0 → 2 raízes</p>
                   </div>
@@ -900,7 +900,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Para determinar onde f(x) &gt; 0 ou f(x) &lt; 0:
                       </p>
                       <AlertBox tipo="info" titulo="Método Prático">
@@ -918,7 +918,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuLightbulb />,
                   conteudo: (
                     <div className="space-y-3">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Atalhos visuais para análise gráfica:
                       </p>
                       <div className="space-y-2">
@@ -947,7 +947,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-3">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Situações especiais no gráfico:
                       </p>
                       <div className="bg-amber-500/10 p-3 rounded border border-amber-500/20">
@@ -1055,7 +1055,7 @@ export default function AulaFuncoesAfimQuadratica({
                   </p>
                   <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>f(x) = x² - 4</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Raízes: x = ±2</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">Raízes: x = ±2</p>
                     <p className="text-lg text-foreground/85 leading-relaxed">(-∞,-2): + | (-2,2): - | (2,+∞): +</p>
                   </div>
                 </div>
@@ -1131,7 +1131,7 @@ export default function AulaFuncoesAfimQuadratica({
                       <div className="bg-cyan-500/10 p-4 border border-cyan-500/20 text-center rounded-xl font-mono text-lg font-bold">
                         L(x) = R(x) - C(x)
                       </div>
-                      <p className="text-xl mt-2 text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl mt-2 text-foreground/85 leading-relaxed">
                         Onde você diminui toda a função de Receita pela de Custo
                         (lembre de botar parênteses no Custo para o sinal
                         negativo invadir todo mundo corretamente). E a nova
@@ -1173,7 +1173,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-3">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Casos de otimização com restrições:
                       </p>
                       <div className="bg-cyan-500/10 p-3 rounded border border-cyan-500/20">
@@ -1281,7 +1281,7 @@ export default function AulaFuncoesAfimQuadratica({
                   </p>
                   <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>L(x) = -x² + 100x - 1500</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">↓</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">↓</p>
                     <p>xv = -100/(2×-1) = 50</p>
                     <p>Lucro máximo: L(50)</p>
                   </div>
@@ -1374,7 +1374,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuLightbulb />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Comparação prática entre os dois tipos:
                       </p>
                       <div className="space-y-2">
@@ -1399,7 +1399,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-3">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Quando reta e parábola se encontram:
                       </p>
                       <div className="bg-violet-500/10 p-3 rounded border border-violet-500/20">
@@ -1540,10 +1540,10 @@ export default function AulaFuncoesAfimQuadratica({
                   </p>
                   <div className="p-3 bg-violet-500/10 border border-violet-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>f(x) = 10x vs g(x) = x²</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       x=1: f=10, g=1 (reta vence)
                     </p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       x=20: f=200, g=400 (parábola vence)
                     </p>
                   </div>
@@ -1635,7 +1635,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuLightbulb />,
                   conteudo: (
                     <div className="space-y-3">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Método visual para organizar intervalos:
                       </p>
                       <div className="bg-amber-500/10 p-3 rounded border border-amber-500/20">
@@ -1670,7 +1670,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-3">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Situações que pedem cuidado extra:
                       </p>
                       <div className="bg-amber-500/10 p-3 rounded border border-amber-500/20">
@@ -1776,7 +1776,7 @@ export default function AulaFuncoesAfimQuadratica({
                   </p>
                   <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>x² - 5x + 6 &gt; 0</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Raízes: 2 e 3</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">Raízes: 2 e 3</p>
                     <p className="text-lg text-foreground/85 leading-relaxed">
                       Sol: x &lt; 2 ou x &gt; 3
                     </p>
@@ -1885,7 +1885,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuLightbulb />,
                   conteudo: (
                     <div className="space-y-3">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         O que cada resultado significa visualmente:
                       </p>
                       <div className="bg-cyan-500/10 p-3 rounded border border-cyan-500/20">
@@ -1920,7 +1920,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-3">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Sistemas com outras combinações:
                       </p>
                       <div className="bg-cyan-500/10 p-3 rounded border border-cyan-500/20">
@@ -2052,7 +2052,7 @@ export default function AulaFuncoesAfimQuadratica({
                   </p>
                   <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>y = 2x e y = x² - x</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">↓</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">↓</p>
                     <p>2x = x² - x</p>
                     <p>x² - 3x = 0</p>
                   </div>
@@ -2152,7 +2152,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuLightbulb />,
                   conteudo: (
                     <div className="space-y-3">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Estratégias para problemas compostos:
                       </p>
                       <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
@@ -2187,7 +2187,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-3">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Quando o vértice não está disponível:
                       </p>
                       <div className="bg-emerald-500/10 p-3 rounded border border-emerald-500/20">
@@ -2293,7 +2293,7 @@ export default function AulaFuncoesAfimQuadratica({
                   </p>
                   <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>L(x) = -2x² + 80x - 500</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">↓ vértice ↓</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">↓ vértice ↓</p>
                     <p>xv = -80/(2×-2) = 20</p>
                     <p>Lucro máximo: L(20)</p>
                   </div>
@@ -2394,7 +2394,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuLightbulb />,
                   conteudo: (
                     <div className="space-y-3">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Na indústria de petróleo, margens são críticas:
                       </p>
                       <div className="bg-rose-500/10 p-3 rounded border border-rose-500/20">
@@ -2429,7 +2429,7 @@ export default function AulaFuncoesAfimQuadratica({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-3">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Limitações reais do negócio:
                       </p>
                       <div className="bg-rose-500/10 p-3 rounded border border-rose-500/20">
@@ -2545,7 +2545,7 @@ export default function AulaFuncoesAfimQuadratica({
                   <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>R(x) = 500x - 2x²</p>
                     <p>C(x) = 1000 + 100x</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">↓</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">↓</p>
                     <p>L(x) = 400x - 2x² - 1000</p>
                   </div>
                 </div>

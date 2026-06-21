@@ -198,7 +198,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         O Logaritmo é apenas uma pergunta exposta num papel. Ele te questiona de forma direta: &quot;Que número elevei a essa Base para conseguir esse resultado?&quot;
                       </p>
                       <div className="bg-indigo-500/10 p-4 rounded-xl border border-indigo-500/20 text-center shadow-inner">
@@ -206,7 +206,7 @@ export default function AulaFuncoesLogaritmicas({
                           log_a(b) = c &nbsp;&nbsp;&nbsp;⟺&nbsp;&nbsp;&nbsp; aᶜ = b
                         </p>
                       </div>
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Exemplo: <code>log₃(9) = 2</code> significa: &quot;3 elevado a quanto dá 9?&quot; Resposta: 3² = 9.
                       </p>
                       <div className="bg-indigo-500/5 p-4 rounded-lg border border-indigo-500/20">
@@ -225,7 +225,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         As bases mais comuns e importantes aparecem em diferentes contextos:
                       </p>
                       <div className="space-y-3">
@@ -253,7 +253,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuRepeat />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Quando você vê apenas <code>log(x)</code> sem base explícita, há convenções importantes:
                       </p>
                       <div className="space-y-2">
@@ -267,7 +267,7 @@ export default function AulaFuncoesLogaritmicas({
                           <p className="text-xl font-bold text-blue-700 text-foreground/85 leading-relaxed">📌 Em Programação: log = log₂ (base 2)</p>
                         </div>
                       </div>
-                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-3 italic">Sempre leia o enunciado. Em CESGRANRIO, quando não especificado, assuma base 10!</p>
+                      <p className="text-lg text-foreground/85 leading-relaxed mt-3 italic">Sempre leia o enunciado. Em CESGRANRIO, quando não especificado, assuma base 10!</p>
                     </div>
                   ),
                 },
@@ -391,10 +391,10 @@ export default function AulaFuncoesLogaritmicas({
                   <p className="text-xl italic text-foreground/85 leading-relaxed">"Confuso com log? Converta para exponencial!"</p>
                   <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl font-mono text-center">
                     <p className="text-xl text-foreground/85 leading-relaxed">log_a(b) = c</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">↓ converter ↓</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">↓ converter ↓</p>
                     <p className="text-xl text-foreground/85 leading-relaxed">aᶜ = b</p>
                   </div>
-                  <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Use isso SEMPRE quando ficar em dúvida!</p>
+                  <p className="text-lg text-foreground/85 leading-relaxed">Use isso SEMPRE quando ficar em dúvida!</p>
                 </div>
               )
             }}
@@ -440,21 +440,21 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuSigma />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Os logaritmos possuem propriedades que simplificam expressões complexas:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-emerald-500/10 p-4 border border-emerald-500/20 text-center rounded-xl font-mono font-bold text-xl text-foreground/85 leading-relaxed">
                           <p>log_a(m × n) = log_a(m) + log_a(n)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Produto vira soma</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Produto vira soma</p>
                         </div>
                         <div className="bg-teal-500/10 p-4 border border-teal-500/20 text-center rounded-xl font-mono font-bold text-xl text-foreground/85 leading-relaxed">
                           <p>log_a(m ÷ n) = log_a(m) - log_a(n)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Quociente vira subtração</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Quociente vira subtração</p>
                         </div>
                         <div className="bg-green-500/10 p-4 border border-green-500/20 text-center rounded-xl font-mono font-bold text-xl text-foreground/85 leading-relaxed">
                           <p>log_a(bⁿ) = n × log_a(b)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">O expoente "tomba" para frente</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">O expoente "tomba" para frente</p>
                         </div>
                       </div>
                       <AlertBox tipo="info" titulo="Propriedade Extra: Log de 1">
@@ -468,24 +468,24 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Veja como essas propriedades tornam problemas mais simples:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-emerald-500/10 p-4 rounded-lg border border-emerald-500/20">
                           <p className="text-xl font-bold text-emerald-700 mb-2 text-foreground/85 leading-relaxed">Simplificar: log₂(8 × 16)</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">= log₂(8) + log₂(16) = 3 + 4 = 7 ✓</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Verificação: 2⁷ = 128 = 8 × 16 ✓</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Verificação: 2⁷ = 128 = 8 × 16 ✓</p>
                         </div>
                         <div className="bg-teal-500/10 p-4 rounded-lg border border-teal-500/20">
                           <p className="text-xl font-bold text-teal-700 mb-2 text-foreground/85 leading-relaxed">Simplificar: log₃(81 ÷ 9)</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">= log₃(81) - log₃(9) = 4 - 2 = 2 ✓</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Verificação: 81/9 = 9 = 3² ✓</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Verificação: 81/9 = 9 = 3² ✓</p>
                         </div>
                         <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
                           <p className="text-xl font-bold text-green-700 mb-2 text-foreground/85 leading-relaxed">Simplificar: log₁₀(10⁵)</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">= 5 × log₁₀(10) = 5 × 1 = 5 ✓</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Aplicação: log₁₀(100.000) = 5</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Aplicação: log₁₀(100.000) = 5</p>
                         </div>
                       </div>
                     </div>
@@ -496,7 +496,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuRepeat />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         A Mudança de Base é o truque final que os corretores adoram usar:
                       </p>
                       <AlertBox tipo="warning" titulo="A Fórmula Sagrada">
@@ -647,13 +647,13 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         O objetivo é sempre chegar num formato onde a variável fica isolada. A estratégia principal é converter de forma logarítmica para exponencial:
                       </p>
                       <div className="bg-cyan-500/10 p-4 text-center rounded-xl border border-cyan-500/20 font-mono text-xl font-bold text-foreground/85 leading-relaxed">
                         <p>Se log_a(x) = b, então x = aᵇ</p>
                       </div>
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         É SEMPRE a estratégia central: simplifique usando propriedades, depois converta para exponencial, depois resolva algebricamente.
                       </p>
                     </div>
@@ -664,14 +664,14 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Veja como resolver diferentes tipos de equações:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-sky-500/10 p-4 rounded-lg border border-sky-500/20">
                           <p className="text-xl font-bold text-sky-700 mb-2 text-foreground/85 leading-relaxed">Caso 1: log₂(x+8) = 4</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Converta: x+8 = 2⁴ = 16 → x = 8 ✓</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Teste: log₂(8+8) = log₂(16) = 4 ✓</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Teste: log₂(8+8) = log₂(16) = 4 ✓</p>
                         </div>
                         <div className="bg-cyan-500/10 p-4 rounded-lg border border-cyan-500/20">
                           <p className="text-xl font-bold text-cyan-700 mb-2 text-foreground/85 leading-relaxed">Caso 2: log₃(x) + log₃(x-2) = 1</p>
@@ -693,7 +693,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Use essas táticas para evitar armadilhas:
                       </p>
                       <div className="space-y-2">
@@ -797,7 +797,7 @@ export default function AulaFuncoesLogaritmicas({
                   <p className="text-xl italic text-foreground/85 leading-relaxed">"Quando vejo log isolado, converto para exponencial"</p>
                   <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl font-mono text-center">
                     <p className="text-xl text-foreground/85 leading-relaxed">log_a(x) = b</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">↓ converter ↓</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">↓ converter ↓</p>
                     <p className="text-xl text-foreground/85 leading-relaxed">x = aᵇ</p>
                   </div>
                 </div>
@@ -845,7 +845,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Logaritmos só existem sob condições matemáticas rigorosas:
                       </p>
                       <div className="space-y-3">
@@ -867,24 +867,24 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Observe como restrições afetam soluções:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/20">
                           <p className="text-xl font-bold text-blue-700 mb-2 text-foreground/85 leading-relaxed">Exemplo 1: log₂(x-5)</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Domínio: x - 5 &gt; 0 → x &gt; 5</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Logo, x = 3 ou x = 4 NÃO servem!</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Logo, x = 3 ou x = 4 NÃO servem!</p>
                         </div>
                         <div className="bg-indigo-500/10 p-4 rounded-lg border border-indigo-500/20">
                           <p className="text-xl font-bold text-indigo-700 mb-2 text-foreground/85 leading-relaxed">Exemplo 2: log₃(x²-4)</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Domínio: x² - 4 &gt; 0 → x² &gt; 4 → x &lt; -2 ou x &gt; 2</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Logo, x = 1 ou x = -1 NÃO servem!</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Logo, x = 1 ou x = -1 NÃO servem!</p>
                         </div>
                         <div className="bg-purple-500/10 p-4 rounded-lg border border-purple-500/20">
                           <p className="text-xl font-bold text-purple-700 mb-2 text-foreground/85 leading-relaxed">Exemplo 3: log_(x-1)(8)</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Domínio: x - 1 &gt; 0 e x - 1 ≠ 1 → x &gt; 1 e x ≠ 2</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">A base não pode ser 1!</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">A base não pode ser 1!</p>
                         </div>
                       </div>
                     </div>
@@ -895,7 +895,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Ao resolver, sempre teste se a solução é válida:
                       </p>
                       <div className="space-y-2">
@@ -920,7 +920,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuTrophy />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Terminou a equação de Bhaskara e achou -2 e 8? Não corra pra marcar a letra com as respostas!
                       </p>
                       <AlertBox tipo="danger" titulo="Teste Obrigatório">
@@ -1081,7 +1081,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Em problemas integrados, siga um roteiro claro:
                       </p>
                       <div className="space-y-3">
@@ -1098,7 +1098,7 @@ export default function AulaFuncoesLogaritmicas({
                           <p className="text-xl font-bold text-red-700 text-foreground/85 leading-relaxed">Etapa 4: Verifique domínio e restrições</p>
                         </div>
                       </div>
-                      <p className="text-xl text-muted-foreground mt-3 italic text-foreground/85 leading-relaxed">Essa ordem não é sugestão — é OBRIGATÓRIA em CESGRANRIO!</p>
+                      <p className="text-xl mt-3 italic text-foreground/85 leading-relaxed">Essa ordem não é sugestão — é OBRIGATÓRIA em CESGRANRIO!</p>
                     </div>
                   ),
                 },
@@ -1107,7 +1107,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Resolva: log₂(x) + log₂(x-1) = 3
                       </p>
                       <div className="space-y-2 text-xl text-foreground/85 leading-relaxed">
@@ -1130,7 +1130,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Mantenha a ordem para não se perder:
                       </p>
                       <div className="space-y-2">
@@ -1275,7 +1275,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuTrendingUp />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         A função logarítmica f(x) = log_a(x) possui características especiais:
                       </p>
                       <div className="space-y-3">
@@ -1303,7 +1303,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuRepeat />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Deslocar, esticar ou refletir uma função logarítmica:
                       </p>
                       <div className="space-y-3">
@@ -1311,13 +1311,13 @@ export default function AulaFuncoesLogaritmicas({
                           <p className="text-xl font-bold text-rose-700 mb-1 text-foreground/85 leading-relaxed">Deslocamento Horizontal</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">f(x+c): desloca c unidades para ESQUERDA</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">f(x-c): desloca c unidades para DIREITA</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Exemplo: log(x-3) desloca 3 para direita</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Exemplo: log(x-3) desloca 3 para direita</p>
                         </div>
                         <div className="bg-red-500/10 p-4 rounded-lg border border-red-500/20">
                           <p className="text-xl font-bold text-red-700 mb-1 text-foreground/85 leading-relaxed">Deslocamento Vertical</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">f(x)+c: desloca c unidades para CIMA</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">f(x)-c: desloca c unidades para BAIXO</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Exemplo: log(x)+2 desloca 2 para cima</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Exemplo: log(x)+2 desloca 2 para cima</p>
                         </div>
                         <div className="bg-pink-500/10 p-4 rounded-lg border border-pink-500/20">
                           <p className="text-xl font-bold text-pink-700 mb-1 text-foreground/85 leading-relaxed">Escala</p>
@@ -1333,7 +1333,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Identifique rapidamente que tipo de transformação ocorreu:
                       </p>
                       <div className="space-y-2">
@@ -1471,7 +1471,7 @@ export default function AulaFuncoesLogaritmicas({
                   <p className="text-xl text-foreground/85 leading-relaxed">"Todo log passa por (1,0) — use isso como referência!"</p>
                   <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl font-mono text-center">
                     <p className="text-xl text-foreground/85 leading-relaxed">f(1) = log_a(1) = 0 ✓</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-center text-muted-foreground mt-2">Independente de transformações</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-center mt-2">Independente de transformações</p>
                   </div>
                 </div>
               )
@@ -1518,7 +1518,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Quando duas ou mais equações logarítmicas devem ser satisfeitas simultaneamente, combine propriedades com técnicas algébricas:
                       </p>
                       <AlertBox tipo="info" titulo="Estratégia Principal">
@@ -1535,7 +1535,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Exemplo de sistema integrado:
                       </p>
                       <div className="space-y-3">
@@ -1555,7 +1555,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Cuidado especial com inequações — o sinal pode inverter!
                       </p>
                       <div className="space-y-2">
@@ -1734,14 +1734,14 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuRepeat />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Em problemas reversos, você recebe uma expressão aparentemente complexa e precisa identificar que ela é um logaritmo disfarçado:
                       </p>
                       <div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20 text-center font-mono text-xl text-foreground/85 leading-relaxed">
                         <p>"Qual expoente x satisfaz 2ˣ = 5?"</p>
-                        <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2">Isso é: x = log₂(5)</p>
+                        <p className="text-lg text-foreground/85 leading-relaxed mt-2">Isso é: x = log₂(5)</p>
                       </div>
-                      <p className="text-xl text-muted-foreground mt-3 text-foreground/85 leading-relaxed">
+                      <p className="text-xl mt-3 text-foreground/85 leading-relaxed">
                         O truque é reconhecer quando uma PERGUNTA é, na verdade, um logaritmo escondido!
                       </p>
                     </div>
@@ -1752,24 +1752,24 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Veja como identificar logaritmos disfarçados:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
                           <p className="text-xl font-bold text-green-700 mb-1 text-foreground/85 leading-relaxed">Pergunta: "Qual é o expoente?"</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Resposta: Use logaritmo com essa base</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Exemplo: 2ˣ = 10 → x = log₂(10)</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Exemplo: 2ˣ = 10 → x = log₂(10)</p>
                         </div>
                         <div className="bg-emerald-500/10 p-4 rounded-lg border border-emerald-500/20">
                           <p className="text-xl font-bold text-emerald-700 mb-1 text-foreground/85 leading-relaxed">Pergunta: "Em quantos períodos?"</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Em crescimento exponencial: use log para encontrar tempo</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Exemplo: P(t) = 1000·(1.05)ᵗ, quando P = 2000? → t = log_(1.05)(2)</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Exemplo: P(t) = 1000·(1.05)ᵗ, quando P = 2000? → t = log_(1.05)(2)</p>
                         </div>
                         <div className="bg-teal-500/10 p-4 rounded-lg border border-teal-500/20">
                           <p className="text-xl font-bold text-teal-700 mb-1 text-foreground/85 leading-relaxed">Exemplo: "3ˣ = 243, encontre x"</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Solução: x = log₃(243) = 5</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Verificação: 3⁵ = 243 ✓</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Verificação: 3⁵ = 243 ✓</p>
                         </div>
                       </div>
                     </div>
@@ -1780,7 +1780,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Domine essa técnica reversa:
                       </p>
                       <div className="space-y-2">
@@ -1932,24 +1932,24 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Escalas logarítmicas comprimem números enormes em representações manejáveis:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/20">
                           <p className="text-xl font-bold text-blue-700 text-foreground/85 leading-relaxed">pH (Hidrogênio)</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">pH = -log₁₀[H⁺]. Um aumento de 1 unidade = redução de 10× em acidez</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Em refinarias: pH do corrosivo vs neutro</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Em refinarias: pH do corrosivo vs neutro</p>
                         </div>
                         <div className="bg-cyan-500/10 p-4 rounded-lg border border-cyan-500/20">
                           <p className="text-xl font-bold text-cyan-700 text-foreground/85 leading-relaxed">Decibéis (Ruído)</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">dB = 10 × log₁₀(I/I₀). Usado em monitoramento de ruído de plataformas</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Legislação ambiental offshore: limite de 85 dB</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Legislação ambiental offshore: limite de 85 dB</p>
                         </div>
                         <div className="bg-indigo-500/10 p-4 rounded-lg border border-indigo-500/20">
                           <p className="text-xl font-bold text-indigo-700 text-foreground/85 leading-relaxed">Escala Richter (Sísmico)</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">R = log₁₀(A/A₀). Crítico para monitorar atividade sísmica em campos offshore</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Um ponto a mais = 30× mais energia liberada!</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Um ponto a mais = 30× mais energia liberada!</p>
                         </div>
                       </div>
                     </div>
@@ -1960,14 +1960,14 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuTrendingUp />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Problemas reais da indústria petrolífera:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/20">
                           <p className="text-xl font-bold text-blue-700 mb-2 text-foreground/85 leading-relaxed">pH em Refinaria</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Se [H⁺] = 10⁻⁷, então pH = -log₁₀(10⁻⁷) = 7 (neutro). Se [H⁺] = 10⁻⁴, então pH = 4 (ácido)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Diferença de pH 3 = 1000× mais acidez!</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Diferença de pH 3 = 1000× mais acidez!</p>
                         </div>
                         <div className="bg-cyan-500/10 p-4 rounded-lg border border-cyan-500/20">
                           <p className="text-xl font-bold text-cyan-700 mb-2 text-foreground/85 leading-relaxed">Decaimento em Dutos</p>
@@ -1977,7 +1977,7 @@ export default function AulaFuncoesLogaritmicas({
                         <div className="bg-indigo-500/10 p-4 rounded-lg border border-indigo-500/20">
                           <p className="text-xl font-bold text-indigo-700 mb-2 text-foreground/85 leading-relaxed">Monitoramento Sísmico</p>
                           <p className="text-xl text-foreground/85 leading-relaxed">Terremoto magnitude 5.0 vs 6.0 offshore = 10 vezes mais energia!</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Escala é logarítmica, não linear!</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Escala é logarítmica, não linear!</p>
                         </div>
                       </div>
                     </div>
@@ -1988,7 +1988,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Em exploração de petróleo, crescimento e decaimento aparecem frequentemente:
                       </p>
                       <div className="space-y-2">
@@ -2145,25 +2145,25 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuTarget />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Em provas integradas, mantenha essa estratégia:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-purple-500/10 p-4 rounded-lg border border-purple-500/20">
                           <p className="text-xl font-bold text-purple-700 text-foreground/85 leading-relaxed">Etapa 1: Leia com atenção</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Procure palavras-chave: log, expoente, crescimento, escala</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Procure palavras-chave: log, expoente, crescimento, escala</p>
                         </div>
                         <div className="bg-rose-500/10 p-4 rounded-lg border border-rose-500/20">
                           <p className="text-xl font-bold text-rose-700 text-foreground/85 leading-relaxed">Etapa 2: Identifique o tipo de problema</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">É equação? Sistema? Inequação? Aplicação?</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">É equação? Sistema? Inequação? Aplicação?</p>
                         </div>
                         <div className="bg-pink-500/10 p-4 rounded-lg border border-pink-500/20">
                           <p className="text-xl font-bold text-pink-700 text-foreground/85 leading-relaxed">Etapa 3: Aplique propriedades em ordem</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Não pule etapas. Propriedades primeiro!</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Não pule etapas. Propriedades primeiro!</p>
                         </div>
                         <div className="bg-red-500/10 p-4 rounded-lg border border-red-500/20">
                           <p className="text-xl font-bold text-red-700 text-foreground/85 leading-relaxed">Etapa 4: Verifique restrições e domínio</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">A parte que mata — não esqueça!</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">A parte que mata — não esqueça!</p>
                         </div>
                       </div>
                     </div>
@@ -2174,7 +2174,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuBrain />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Resolva: log₂(log₃(x)) = 1
                       </p>
                       <div className="space-y-2 text-xl text-foreground/85 leading-relaxed">
@@ -2193,7 +2193,7 @@ export default function AulaFuncoesLogaritmicas({
                   icone: <LuZap />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Em provas com limite de tempo:
                       </p>
                       <div className="space-y-2">
@@ -2393,7 +2393,7 @@ export default function AulaFuncoesLogaritmicas({
             <div className="bg-indigo-500/10 p-5 rounded-xl border border-indigo-500/20">
               <p className="text-xl font-bold text-indigo-700 mb-3 text-foreground/85 leading-relaxed">Definição Fundamental</p>
               <p className="font-mono text-xl text-center text-foreground/85 leading-relaxed">log_a(b) = c ⟺ aᶜ = b</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-2 text-center">Regra de ouro: CONVERTER</p>
+              <p className="text-lg text-foreground/85 leading-relaxed mt-2 text-center">Regra de ouro: CONVERTER</p>
             </div>
 
             <div className="bg-emerald-500/10 p-5 rounded-xl border border-emerald-500/20">
@@ -2432,7 +2432,7 @@ export default function AulaFuncoesLogaritmicas({
             <div className="bg-blue-500/10 p-5 rounded-xl border border-blue-500/20">
               <p className="text-xl font-bold text-blue-700 mb-3 text-foreground/85 leading-relaxed">Mudança de Base</p>
               <p className="font-mono text-lg text-foreground/85 leading-relaxed text-center">log_a(b) = log₁₀(b)/log₁₀(a)</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Quando base é estranha!</p>
+              <p className="text-lg text-foreground/85 leading-relaxed mt-1">Quando base é estranha!</p>
             </div>
           </div>
         </section>
@@ -2443,27 +2443,27 @@ export default function AulaFuncoesLogaritmicas({
           <div className="space-y-4">
             <div className="border-l-4 border-red-500 bg-red-500/5 p-4 rounded">
               <p className="text-xl font-bold text-red-700 mb-1 text-foreground/85 leading-relaxed">1. Domínio é a RESPOSTA</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Resolveu? Testou no domínio? Descartou invalidas? Só aí marca letra!</p>
+              <p className="text-lg text-foreground/85 leading-relaxed">Resolveu? Testou no domínio? Descartou invalidas? Só aí marca letra!</p>
             </div>
 
             <div className="border-l-4 border-orange-500 bg-orange-500/5 p-4 rounded">
               <p className="text-xl font-bold text-orange-700 mb-1 text-foreground/85 leading-relaxed">2. pH tem sinal negativo</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">pH = -log₁₀[H⁺]. Não esqueça o sinal! pH maior = MENOS ácido!</p>
+              <p className="text-lg text-foreground/85 leading-relaxed">pH = -log₁₀[H⁺]. Não esqueça o sinal! pH maior = MENOS ácido!</p>
             </div>
 
             <div className="border-l-4 border-yellow-500 bg-yellow-500/5 p-4 rounded">
               <p className="text-xl font-bold text-yellow-700 mb-1 text-foreground/85 leading-relaxed">3. Não distribui log sobre soma</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">log(a+b) ≠ log(a) + log(b). Muitos caem nessa! Propriedade só para × e ÷</p>
+              <p className="text-lg text-foreground/85 leading-relaxed">log(a+b) ≠ log(a) + log(b). Muitos caem nessa! Propriedade só para × e ÷</p>
             </div>
 
             <div className="border-l-4 border-green-500 bg-green-500/5 p-4 rounded">
               <p className="text-xl font-bold text-green-700 mb-1 text-foreground/85 leading-relaxed">4. Inequação com base &lt;1 INVERTE</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Se 0&lt;a&lt;1: log_a(x)&lt;log_a(y) ⟹ x&gt;y. Sinal inverte!</p>
+              <p className="text-lg text-foreground/85 leading-relaxed">Se 0&lt;a&lt;1: log_a(x)&lt;log_a(y) ⟹ x&gt;y. Sinal inverte!</p>
             </div>
 
             <div className="border-l-4 border-blue-500 bg-blue-500/5 p-4 rounded">
               <p className="text-xl font-bold text-blue-700 mb-1 text-foreground/85 leading-relaxed">5. Logaritmo de logaritmo de dentro pra fora</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">log₂(log₃(x))? Resolva o de dentro PRIMEIRO, depois o de fora!</p>
+              <p className="text-lg text-foreground/85 leading-relaxed">log₂(log₃(x))? Resolva o de dentro PRIMEIRO, depois o de fora!</p>
             </div>
           </div>
         </section>
@@ -2475,37 +2475,37 @@ export default function AulaFuncoesLogaritmicas({
             <div className="bg-purple-500/10 p-5 rounded-xl border border-purple-500/20">
               <p className="text-xl font-bold text-purple-700 mb-2 text-foreground/85 leading-relaxed">Logaritmo Inverso</p>
               <p className="text-lg text-foreground/85 leading-relaxed">Se aˣ = b, então x = log_a(b)</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">São funções inversas!</p>
+              <p className="text-lg text-foreground/85 leading-relaxed mt-1">São funções inversas!</p>
             </div>
 
             <div className="bg-teal-500/10 p-5 rounded-xl border border-teal-500/20">
               <p className="text-xl font-bold text-teal-700 mb-2 text-foreground/85 leading-relaxed">Logaritmo de 1</p>
               <p className="text-lg text-foreground/85 leading-relaxed">log_a(1) = 0 SEMPRE</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Porque a⁰ = 1</p>
+              <p className="text-lg text-foreground/85 leading-relaxed mt-1">Porque a⁰ = 1</p>
             </div>
 
             <div className="bg-cyan-500/10 p-5 rounded-xl border border-cyan-500/20">
               <p className="text-xl font-bold text-cyan-700 mb-2 text-foreground/85 leading-relaxed">Logaritmo da Base</p>
               <p className="text-lg text-foreground/85 leading-relaxed">log_a(a) = 1 SEMPRE</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Porque a¹ = a</p>
+              <p className="text-lg text-foreground/85 leading-relaxed mt-1">Porque a¹ = a</p>
             </div>
 
             <div className="bg-pink-500/10 p-5 rounded-xl border border-pink-500/20">
               <p className="text-xl font-bold text-pink-700 mb-2 text-foreground/85 leading-relaxed">Base Fora do Log</p>
               <p className="text-lg text-foreground/85 leading-relaxed">a^(log_a(x)) = x</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Propriedade poderosa!</p>
+              <p className="text-lg text-foreground/85 leading-relaxed mt-1">Propriedade poderosa!</p>
             </div>
 
             <div className="bg-indigo-500/10 p-5 rounded-xl border border-indigo-500/20">
               <p className="text-xl font-bold text-indigo-700 mb-2 text-foreground/85 leading-relaxed">Crescimento Exponencial</p>
               <p className="text-lg text-foreground/85 leading-relaxed">N(t) = N₀·aᵗ → t = log_a(N/N₀)</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Use log pra encontrar TEMPO</p>
+              <p className="text-lg text-foreground/85 leading-relaxed mt-1">Use log pra encontrar TEMPO</p>
             </div>
 
             <div className="bg-orange-500/10 p-5 rounded-xl border border-orange-500/20">
               <p className="text-xl font-bold text-orange-700 mb-2 text-foreground/85 leading-relaxed">Meia-Vida / Decaimento</p>
               <p className="text-lg text-foreground/85 leading-relaxed">M(t) = M₀·(1/2)^(t/T) → use log</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Radiatividade, corrosão, etc</p>
+              <p className="text-lg text-foreground/85 leading-relaxed mt-1">Radiatividade, corrosão, etc</p>
             </div>
           </div>
         </section>
@@ -2557,7 +2557,7 @@ export default function AulaFuncoesLogaritmicas({
               <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center flex-shrink-0 text-indigo-700 font-bold text-xl text-foreground/85 leading-relaxed">1</div>
               <div>
                 <p className="font-bold text-xl mb-1 text-foreground/85 leading-relaxed">Releia todas as 10 definições dos módulos</p>
-                <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Conceito é tudo. Se conceito está claro, resolução sai fácil.</p>
+                <p className="text-lg text-foreground/85 leading-relaxed">Conceito é tudo. Se conceito está claro, resolução sai fácil.</p>
               </div>
             </div>
 
@@ -2565,7 +2565,7 @@ export default function AulaFuncoesLogaritmicas({
               <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 text-emerald-700 font-bold text-xl text-foreground/85 leading-relaxed">2</div>
               <div>
                 <p className="font-bold text-xl mb-1 text-foreground/85 leading-relaxed">Grave essas 3 propriedades na memória</p>
-                <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">log(mn) = log(m)+log(n), log(m/n) = log(m)-log(n), log(mⁿ) = n·log(m). Sabe isso? Sabe tudo.</p>
+                <p className="text-lg text-foreground/85 leading-relaxed">log(mn) = log(m)+log(n), log(m/n) = log(m)-log(n), log(mⁿ) = n·log(m). Sabe isso? Sabe tudo.</p>
               </div>
             </div>
 
@@ -2573,7 +2573,7 @@ export default function AulaFuncoesLogaritmicas({
               <div className="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0 text-cyan-700 font-bold text-xl text-foreground/85 leading-relaxed">3</div>
               <div>
                 <p className="font-bold text-xl mb-1 text-foreground/85 leading-relaxed">Pratique converter entre log e exponencial</p>
-                <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Isso é o TRUQUE. A conversão resolve 90% dos problemas. Treina 10 conversões rápidas.</p>
+                <p className="text-lg text-foreground/85 leading-relaxed">Isso é o TRUQUE. A conversão resolve 90% dos problemas. Treina 10 conversões rápidas.</p>
               </div>
             </div>
 
@@ -2581,7 +2581,7 @@ export default function AulaFuncoesLogaritmicas({
               <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 text-blue-700 font-bold text-xl text-foreground/85 leading-relaxed">4</div>
               <div>
                 <p className="font-bold text-xl mb-1 text-foreground/85 leading-relaxed">Teste domínio SEMPRE</p>
-                <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Terminou? Teste a/as solução/soluções no domínio original. Descarta inválidas. Só aí marca.</p>
+                <p className="text-lg text-foreground/85 leading-relaxed">Terminou? Teste a/as solução/soluções no domínio original. Descarta inválidas. Só aí marca.</p>
               </div>
             </div>
 
@@ -2589,7 +2589,7 @@ export default function AulaFuncoesLogaritmicas({
               <div className="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center flex-shrink-0 text-amber-700 font-bold text-xl text-foreground/85 leading-relaxed">5</div>
               <div>
                 <p className="font-bold text-xl mb-1 text-foreground/85 leading-relaxed">Revise pH, dB, Richter</p>
-                <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">CESGRANRIO adora aplicações reais. Se pedir escala logarítmica, você já sabe!</p>
+                <p className="text-lg text-foreground/85 leading-relaxed">CESGRANRIO adora aplicações reais. Se pedir escala logarítmica, você já sabe!</p>
               </div>
             </div>
           </div>
@@ -2644,7 +2644,7 @@ export default function AulaFuncoesLogaritmicas({
             <p className="text-center font-bold text-lg">
               Você virou MESTRE em Funções Logarítmicas! 🏆
             </p>
-            <p className="text-center text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">
+            <p className="text-center text-xl mt-2 text-foreground/85 leading-relaxed">
               Qualquer questão da CESGRANRIO com logaritmo: você conquista!
             </p>
           </div>
@@ -2656,42 +2656,42 @@ export default function AulaFuncoesLogaritmicas({
           <div className="space-y-5">
             <div className="bg-indigo-500/5 p-5 rounded-xl border border-indigo-500/20">
               <p className="font-bold text-xl text-indigo-700 mb-2 text-foreground/85 leading-relaxed">P: Por que logaritmo é a inversa da exponencial?</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">R: Se f(x) = aˣ, então f⁻¹(y) = log_a(y). Aplicar uma depois da outra volta ao original: log_a(aˣ) = x e a^(log_a(x)) = x. São espelhos!</p>
+              <p className="text-lg text-foreground/85 leading-relaxed">R: Se f(x) = aˣ, então f⁻¹(y) = log_a(y). Aplicar uma depois da outra volta ao original: log_a(aˣ) = x e a^(log_a(x)) = x. São espelhos!</p>
             </div>
 
             <div className="bg-emerald-500/5 p-5 rounded-xl border border-emerald-500/20">
               <p className="font-bold text-xl text-emerald-700 mb-2 text-foreground/85 leading-relaxed">P: Qual base usar se nenhuma for especificada?</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">R: Em CESGRANRIO concurso: base 10 (log₁₀). Em cálculo/científico: base e (ln). Em computação: base 2 (log₂). Sempre leia o enunciado!</p>
+              <p className="text-lg text-foreground/85 leading-relaxed">R: Em CESGRANRIO concurso: base 10 (log₁₀). Em cálculo/científico: base e (ln). Em computação: base 2 (log₂). Sempre leia o enunciado!</p>
             </div>
 
             <div className="bg-cyan-500/5 p-5 rounded-xl border border-cyan-500/20">
               <p className="font-bold text-xl text-cyan-700 mb-2 text-foreground/85 leading-relaxed">P: Como resolver log(a+b)?</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">R: Não tem propriedade para isso! log(a+b) ≠ log(a) + log(b). Não existe simplificação direta. Se está nessa forma, algo está errado no problema ou você precisa de outro método.</p>
+              <p className="text-lg text-foreground/85 leading-relaxed">R: Não tem propriedade para isso! log(a+b) ≠ log(a) + log(b). Não existe simplificação direta. Se está nessa forma, algo está errado no problema ou você precisa de outro método.</p>
             </div>
 
             <div className="bg-blue-500/5 p-5 rounded-xl border border-blue-500/20">
               <p className="font-bold text-xl text-blue-700 mb-2 text-foreground/85 leading-relaxed">P: Uma solução é válida? Como saber?</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">R: Teste 3 coisas: (1) Substitua na equação original — ambos lados devem ser iguais. (2) Verifique domínio — todas as variáveis no argumento de log devem ser &gt;0. (3) Se múltiplas soluções, descarta as que violam domínio.</p>
+              <p className="text-lg text-foreground/85 leading-relaxed">R: Teste 3 coisas: (1) Substitua na equação original — ambos lados devem ser iguais. (2) Verifique domínio — todas as variáveis no argumento de log devem ser &gt;0. (3) Se múltiplas soluções, descarta as que violam domínio.</p>
             </div>
 
             <div className="bg-rose-500/5 p-5 rounded-xl border border-rose-500/20">
               <p className="font-bold text-xl text-rose-700 mb-2 text-foreground/85 leading-relaxed">P: Qual é o gráfico de f(x) = log(x)?</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">R: Passa por (1,0). Cresce lentamente para direita (x&gt;1). Cai para -∞ à esquerda (0&lt;x&lt;1). Assíntota vertical em x=0. Domínio: x&gt;0. Contradomínio: todos os reais.</p>
+              <p className="text-lg text-foreground/85 leading-relaxed">R: Passa por (1,0). Cresce lentamente para direita (x&gt;1). Cai para -∞ à esquerda (0&lt;x&lt;1). Assíntota vertical em x=0. Domínio: x&gt;0. Contradomínio: todos os reais.</p>
             </div>
 
             <div className="bg-amber-500/5 p-5 rounded-xl border border-amber-500/20">
               <p className="font-bold text-xl text-amber-700 mb-2 text-foreground/85 leading-relaxed">P: Como resolver 2^(log_2(x)) rapidinho?</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">R: Use propriedade: a^(log_a(b)) = b. Aqui, 2^(log_2(x)) = x. Direto! Tipo: 5^(log_5(10)) = 10. 3^(log_3(7)) = 7. Sempre igual ao argumento!</p>
+              <p className="text-lg text-foreground/85 leading-relaxed">R: Use propriedade: a^(log_a(b)) = b. Aqui, 2^(log_2(x)) = x. Direto! Tipo: 5^(log_5(10)) = 10. 3^(log_3(7)) = 7. Sempre igual ao argumento!</p>
             </div>
 
             <div className="bg-green-500/5 p-5 rounded-xl border border-green-500/20">
               <p className="font-bold text-xl text-green-700 mb-2 text-foreground/85 leading-relaxed">P: Inequações logarítmicas são iguais a equações?</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">R: Quase! Diferença crucial: se base &gt;1, sinal MANTÉM (log crescente). Se 0&lt;base&lt;1, sinal INVERTE (log decrescente). Sempre teste a base ANTES de remover log!</p>
+              <p className="text-lg text-foreground/85 leading-relaxed">R: Quase! Diferença crucial: se base &gt;1, sinal MANTÉM (log crescente). Se 0&lt;base&lt;1, sinal INVERTE (log decrescente). Sempre teste a base ANTES de remover log!</p>
             </div>
 
             <div className="bg-purple-500/5 p-5 rounded-xl border border-purple-500/20">
               <p className="font-bold text-xl text-purple-700 mb-2 text-foreground/85 leading-relaxed">P: Devo memorizar valores como log₁₀(2) = 0,30?</p>
-              <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">R: Ajuda muito! Memorize os 5 principais (2, 3, 5, 7, 10). Mas se esquecer, use mudança de base na calculadora. Banca reconhece que você sabe o método!</p>
+              <p className="text-lg text-foreground/85 leading-relaxed">R: Ajuda muito! Memorize os 5 principais (2, 3, 5, 7, 10). Mas se esquecer, use mudança de base na calculadora. Banca reconhece que você sabe o método!</p>
             </div>
           </div>
         </section>
@@ -2700,7 +2700,7 @@ export default function AulaFuncoesLogaritmicas({
           <h2 className="text-2xl font-bold">Próximos Passos Após Este Curso</h2>
 
           <div className="space-y-4">
-            <p className="text-muted-foreground text-xl text-foreground/85 leading-relaxed">Você completou a jornada em Funções Logarítmicas. Aqui está o que vem depois:</p>
+            <p className="text-xl text-foreground/85 leading-relaxed">Você completou a jornada em Funções Logarítmicas. Aqui está o que vem depois:</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-indigo-500/10 p-4 rounded-lg border border-indigo-500/20">

@@ -1711,7 +1711,7 @@ export default function AulaGestaoProjetos({
               <div className="text-6xl">👑</div>
               <h2 className="text-3xl font-bold text-rose-700">ESPECIALISTA EM GESTÃO</h2>
               <p className="text-lg text-rose-600">Você domina todos os conceitos de Gestão de Projetos PMBOK e está pronto para a Petrobras!</p>
-              <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Parabéns por completar este caminho extraordinário! 🚀</p>
+              <p className="text-xl text-foreground/85 leading-relaxed">Parabéns por completar este caminho extraordinário! 🚀</p>
             </div>
           )}
         </div>

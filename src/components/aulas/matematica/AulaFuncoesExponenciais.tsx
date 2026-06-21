@@ -271,7 +271,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuZap />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Não dependa de sorte. Dependa das propriedades matemáticas fundamentais que estruturam toda a exponenciação:
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -279,7 +279,7 @@ export default function AulaFuncoesExponenciais({
                           <p className="font-mono font-bold text-blue-700 text-lg">
                             aᵐ × aⁿ = aᵐ⁺ⁿ
                           </p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">
                             Multiplicação de Mesma Base = Soma os expoentes.
                           </p>
                         </div>
@@ -287,7 +287,7 @@ export default function AulaFuncoesExponenciais({
                           <p className="font-mono font-bold text-blue-700 text-lg">
                             aᵐ ÷ aⁿ = aᵐ⁻ⁿ
                           </p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">
                             Divisão de Mesma Base = Subtrai os expoentes.
                           </p>
                         </div>
@@ -295,7 +295,7 @@ export default function AulaFuncoesExponenciais({
                           <p className="font-mono font-bold text-blue-700 text-lg">
                             (aᵐ)ⁿ = aᵐˣⁿ
                           </p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">
                             Potência de Potência = Multiplica os expoentes.
                           </p>
                         </div>
@@ -303,7 +303,7 @@ export default function AulaFuncoesExponenciais({
                           <p className="font-mono font-bold text-blue-700 text-lg">
                             a⁻ⁿ = 1/aⁿ
                           </p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">
                             Expoente Negativo = Inverte a base.
                           </p>
                         </div>
@@ -316,7 +316,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Veja como essas regras funcionam em situações reais:
                       </p>
                       <div className="space-y-3">
@@ -341,7 +341,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Domine esses truques para não cometer erros bobos em prova:
                       </p>
                       <div className="space-y-2">
@@ -576,7 +576,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Todo gráfico exponencial possui propriedades matemáticas imutáveis que dependem da base:
                       </p>
                       <div className="space-y-3">
@@ -597,7 +597,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTrendingUp />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Compare o comportamento de diferentes bases em contextos práticos:
                       </p>
                       <div className="space-y-3">
@@ -622,7 +622,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Identifique rapidamente o tipo de gráfico sem cálculos:
                       </p>
                       <div className="space-y-2">
@@ -751,7 +751,7 @@ export default function AulaFuncoesExponenciais({
                   <p className="text-xl text-foreground/85 leading-relaxed">Toda exponencial passa por (0, 1). Use isso como referência!</p>
                   <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
                     <p className="text-xl font-mono text-center text-foreground/85 leading-relaxed">f(0) = a⁰ = 1 ✓</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-center text-muted-foreground mt-2">Independente da base, sempre verdade</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-center mt-2">Independente da base, sempre verdade</p>
                   </div>
                 </div>
               )
@@ -798,7 +798,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         O objetivo final é sempre chegar num formato onde não haja dúvida das intenções:
                       </p>
                       <div className="bg-cyan-500/10 p-4 text-center rounded-xl border border-cyan-500/20">
@@ -806,7 +806,7 @@ export default function AulaFuncoesExponenciais({
                           aˣ = aʸ ⟹ x = y
                         </p>
                       </div>
-                      <p className="text-xl mt-2 text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl mt-2 text-foreground/85 leading-relaxed">
                         Se <code>4ˣ = 8</code>, nós precisamos transformar o 4 em <code>2²</code> e o 8 em <code>2³</code>. Assim teremos <code>2²ˣ = 2³</code>. Cortam-se os números gigantes da base, ficamos com: <code>2x = 3</code>.
                       </p>
                     </div>
@@ -817,7 +817,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Veja como resolver diferentes tipos de equações exponenciais:
                       </p>
                       <div className="space-y-3">
@@ -842,7 +842,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuZap />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Use essas táticas para evitar armadilhas:
                       </p>
                       <div className="space-y-2">
@@ -955,7 +955,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Veja exemplos reais de crescimento e decaimento exponencial:
                       </p>
                       <div className="space-y-3">
@@ -980,7 +980,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Domine a leitura do enunciado para extrair os dados corretos:
                       </p>
                       <div className="space-y-2">
@@ -1161,7 +1161,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Problemas que combinam múltiplos conceitos:
                       </p>
                       <div className="space-y-3">
@@ -1182,7 +1182,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Quando enfrentar problemas complexos:
                       </p>
                       <div className="space-y-2">
@@ -1341,7 +1341,7 @@ export default function AulaFuncoesExponenciais({
                         <p className="font-mono text-lg font-bold text-rose-700">
                           e = lim(1 + 1/n)ⁿ quando n→∞
                         </p>
-                        <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Aproximadamente 2.71828182845904523536...</p>
+                        <p className="text-xl mt-2 text-foreground/85 leading-relaxed">Aproximadamente 2.71828182845904523536...</p>
                       </div>
                       <p className="text-xl text-foreground/85 leading-relaxed">
                         Por que importa? Porque e é a base onde <strong>a derivada equals a própria função</strong>: d/dx(eˣ) = eˣ. É mágico!
@@ -1354,7 +1354,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Onde você encontra e na vida real:
                       </p>
                       <div className="space-y-3">
@@ -1379,7 +1379,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Trabalhe com e na calculadora:
                       </p>
                       <div className="space-y-2">
@@ -1530,25 +1530,25 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuZap />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         As transformações aplicadas a f(x) = eˣ incluem:
                       </p>
                       <div className="space-y-3">
                         <div className="bg-indigo-500/10 p-3 rounded-lg border border-indigo-500/20">
                           <p className="font-mono text-xl font-bold text-indigo-700 text-foreground/85 leading-relaxed">c*f(x)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Multiplicação por constante (ampliação vertical)</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Multiplicação por constante (ampliação vertical)</p>
                         </div>
                         <div className="bg-purple-500/10 p-3 rounded-lg border border-purple-500/20">
                           <p className="font-mono text-xl font-bold text-purple-700 text-foreground/85 leading-relaxed">f(x - h)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Deslocamento horizontal para direita</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Deslocamento horizontal para direita</p>
                         </div>
                         <div className="bg-violet-500/10 p-3 rounded-lg border border-violet-500/20">
                           <p className="font-mono text-xl font-bold text-violet-700 text-foreground/85 leading-relaxed">f(x) + k</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Deslocamento vertical para cima</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Deslocamento vertical para cima</p>
                         </div>
                         <div className="bg-fuchsia-500/10 p-3 rounded-lg border border-fuchsia-500/20">
                           <p className="font-mono text-xl font-bold text-fuchsia-700 text-foreground/85 leading-relaxed">-f(x)</p>
-                          <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground mt-1">Reflexão sobre eixo x</p>
+                          <p className="text-lg text-foreground/85 leading-relaxed mt-1">Reflexão sobre eixo x</p>
                         </div>
                       </div>
                     </div>
@@ -1559,7 +1559,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Veja como combinar transformações em problemas reais:
                       </p>
                       <div className="space-y-3">
@@ -1587,7 +1587,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Leia a função e identifique transformações rapidamente:
                       </p>
                       <div className="space-y-2">
@@ -1778,7 +1778,7 @@ export default function AulaFuncoesExponenciais({
                       <div className="bg-emerald-500/10 p-4 border border-emerald-500/20 rounded-xl">
                         <p className="text-xl font-mono text-center text-foreground/85 leading-relaxed">2ˣ + 3ʸ = 11</p>
                         <p className="text-xl font-mono text-center mt-2 text-foreground/85 leading-relaxed">2ˣ - 3ʸ = -7</p>
-                        <p className="text-xl text-center text-muted-foreground mt-2 text-foreground/85 leading-relaxed">Encontre x e y.</p>
+                        <p className="text-xl text-center mt-2 text-foreground/85 leading-relaxed">Encontre x e y.</p>
                       </div>
                     </div>
                   ),
@@ -1788,7 +1788,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Técnicas para resolver sistemas de exponenciais:
                       </p>
                       <div className="space-y-3">
@@ -1815,7 +1815,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Quando se deparar com sistemas:
                       </p>
                       <div className="space-y-2">
@@ -1997,7 +1997,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Problemas que caem em provas da Petrobras:
                       </p>
                       <div className="space-y-3">
@@ -2025,7 +2025,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Domine essas palavras-chave em provas Petrobras:
                       </p>
                       <div className="space-y-2">
@@ -2218,7 +2218,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuTarget />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Um problema que envolve múltiplos conceitos:
                       </p>
                       <div className="bg-slate-700/10 p-4 rounded-lg border border-slate-600">
@@ -2241,7 +2241,7 @@ export default function AulaFuncoesExponenciais({
                   icone:<LuBrain />,
                   conteudo:(
                     <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed text-xl text-foreground/85">
+                      <p className="leading-relaxed text-xl text-foreground/85">
                         Dicas finais para dominar a prova:
                       </p>
                       <div className="space-y-2">

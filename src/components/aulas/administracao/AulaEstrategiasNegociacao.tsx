@@ -457,7 +457,7 @@ export default function AulaEstrategiasNegociacao(props: AulaProps) {
                     <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
                       É a interseção entre o preço máximo que o comprador aceita pagar e o preço mínimo que o vendedor aceita receber. Se não houver interseção, o acordo é <strong>impossível</strong>.
                     </p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Comprador aceita até R$100 | Vendedor aceita mín. R$80 → ZOPA = R$80 a R$100</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">Comprador aceita até R$100 | Vendedor aceita mín. R$80 → ZOPA = R$80 a R$100</p>
                   </div>
                   <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl space-y-2">
                     <h5 className="font-bold text-emerald-700 dark:text-emerald-300">
@@ -567,28 +567,28 @@ export default function AulaEstrategiasNegociacao(props: AulaProps) {
               <span className="text-2xl">❌</span>
               <div>
                 <p className="font-bold text-rose-600 dark:text-rose-400">Focar apenas no preço</p>
-                <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Ignorar qualidade, prazo, garantia e TCO pode custar muito mais no longo prazo.</p>
+                <p className="text-xl text-foreground/85 leading-relaxed">Ignorar qualidade, prazo, garantia e TCO pode custar muito mais no longo prazo.</p>
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-rose-500/5 rounded-lg">
               <span className="text-2xl">❌</span>
               <div>
                 <p className="font-bold text-rose-600 dark:text-rose-400">Negociar sem preparação</p>
-                <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Entrar em uma negociação sem dados de mercado é ceder o controle para a outra parte.</p>
+                <p className="text-xl text-foreground/85 leading-relaxed">Entrar em uma negociação sem dados de mercado é ceder o controle para a outra parte.</p>
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-rose-500/5 rounded-lg">
               <span className="text-2xl">❌</span>
               <div>
                 <p className="font-bold text-rose-600 dark:text-rose-400">Ignorar o relacionamento</p>
-                <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Tratar fornecedor como adversário destrói parcerias estratégicas de longo prazo.</p>
+                <p className="text-xl text-foreground/85 leading-relaxed">Tratar fornecedor como adversário destrói parcerias estratégicas de longo prazo.</p>
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-rose-500/5 rounded-lg">
               <span className="text-2xl">❌</span>
               <div>
                 <p className="font-bold text-rose-600 dark:text-rose-400">Fazer concessões sem contrapartida</p>
-                <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Toda concessão deve ser trocada por algo de valor equivalente (princípio da reciprocidade).</p>
+                <p className="text-xl text-foreground/85 leading-relaxed">Toda concessão deve ser trocada por algo de valor equivalente (princípio da reciprocidade).</p>
               </div>
             </div>
           </div>

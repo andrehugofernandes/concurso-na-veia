@@ -1867,14 +1867,14 @@ export default function AulaSintaxe({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
              <div className="bg-muted/40 p-6 rounded-xl border border-border">
                 <h4 className="font-bold mb-3">O Aposto (Explica)</h4>
-                <p className="text-xl text-muted-foreground leading-relaxed text-foreground/85">
+                <p className="text-xl leading-relaxed text-foreground/85">
                    Tem relação sintática com um termo da oração. Sua função é explicar, resumir ou especificar um nome.
                 </p>
                 <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-4 text-emerald-600 bg-emerald-500/5 p-2 rounded">Ex: "João, <strong>o engenheiro</strong>, chegou."</p>
              </div>
              <div className="bg-muted/40 p-6 rounded-xl border border-border">
                 <h4 className="font-bold mb-3">O Vocativo (Chama)</h4>
-                <p className="text-xl text-muted-foreground leading-relaxed text-foreground/85">
+                <p className="text-xl leading-relaxed text-foreground/85">
                    Não possui relação sintática com os outros termos. É um chamamento isolado, um apelo ao interlocutor.
                 </p>
                 <p className="text-lg text-foreground/85 leading-relaxed font-mono mt-4 text-rose-600 bg-rose-500/5 p-2 rounded">Ex: "<strong>Sr. Engenheiro</strong>, chegue aqui!"</p>

@@ -317,7 +317,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
               <div className="space-y-2 text-lg font-bold text-center">
                 <p>Produto + Quantidade + Lugar + Tempo</p>
                 <p>+ Condição + Custo + Cliente</p>
-                <p className="text-muted-foreground font-normal text-xl mt-2 text-foreground/85 leading-relaxed">= Logística Perfeita</p>
+                <p className="font-normal text-xl mt-2 text-foreground/85 leading-relaxed">= Logística Perfeita</p>
               </div>
             ),
           }}
@@ -630,7 +630,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           index={3} variant="blue"
           video={{ videoId: "LOG3_V", title: "Armazenagem e Centros de Distribuição", duration: "14:00" }}
           resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Armazenagem", materia: "Logística", images: [{ title: "Layout em U", type: "Esquema", placeholderColor: "bg-emerald-500/20" }, { title: "Fluxo WMS", type: "Diagrama", placeholderColor: "bg-cyan-500/20" }] }}
-          sinteseEstrategica={{ title: "Regra de Ouro do Picking", content: (<div className="text-center text-lg font-bold"><p>Mais GIRO = Mais PERTO da porta</p><p className="text-muted-foreground font-normal text-xl mt-1 text-foreground/85 leading-relaxed">Itens classe A ficam na zona nobre do armazém</p></div>) }}
+          sinteseEstrategica={{ title: "Regra de Ouro do Picking", content: (<div className="text-center text-lg font-bold"><p>Mais GIRO = Mais PERTO da porta</p><p className="font-normal text-xl mt-1 text-foreground/85 leading-relaxed">Itens classe A ficam na zona nobre do armazém</p></div>) }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "Podcast: Dentro do CD", artista: "Prof. Supply Chain" }}
         />
         <QuizInterativo questoes={mapQuizQuestions("modulo-3")} titulo="QUIZ: Armazenagem e CDs" numero={3} variant="blue" onComplete={(score) => handleModuleComplete("modulo-3", score)} />

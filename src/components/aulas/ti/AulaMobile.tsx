@@ -1696,7 +1696,7 @@ export default function AulaMobile({
                     <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                     Consistência Multi-Plataforma
                   </h5>
-                  <p className="text-xl text-muted-foreground leading-relaxed text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     Uso de bibliotecas de componentes que abstraem as diferenças entre <strong>Material Design</strong> (Android) e <strong>Human Interface Guidelines</strong> (iOS), mantendo a experiência do usuário coesa sem perder o <em>feeling</em> nativo de cada SO.
                   </p>
                 </div>
@@ -1705,7 +1705,7 @@ export default function AulaMobile({
                     <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
                     Layouts Adaptativos
                   </h5>
-                  <p className="text-xl text-muted-foreground leading-relaxed text-foreground/85">
+                  <p className="text-xl leading-relaxed text-foreground/85">
                     Estratégias de <strong>Fluid Layouts</strong> para lidar com a fragmentação de telas: desde smartphones compactos até tablets e dispositivos dobráveis, utilizando <em>Media Queries</em> programáticas e <em>Flexbox/Grid</em>.
                   </p>
                 </div>
@@ -1955,19 +1955,19 @@ export default function AulaMobile({
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="p-6 bg-muted/50 rounded-xl border border-border group hover:bg-muted transition-colors">
                     <h6 className="font-bold text-lg mb-2">TestFlight / Beta App</h6>
-                    <p className="text-xl text-muted-foreground leading-snug text-foreground/85 leading-relaxed">
+                    <p className="text-xl leading-snug text-foreground/85 leading-relaxed">
                       Ambiente de <em>Sandboxing</em> para até 10.000 usuários externos antes do release público.
                     </p>
                   </div>
                   <div className="p-6 bg-muted/50 rounded-xl border border-border group hover:bg-muted transition-colors">
                     <h6 className="font-bold text-lg mb-2">Staged Rollouts</h6>
-                    <p className="text-xl text-muted-foreground leading-snug text-foreground/85 leading-relaxed">
+                    <p className="text-xl leading-snug text-foreground/85 leading-relaxed">
                       Lançamento gradual (ex: 1% {"->"} 5% {"->"} 20% {"->"} 100%). Permite abortar o release caso métricas de <em>crash</em> subam no Firebase Crashlytics.
                     </p>
                   </div>
                   <div className="p-6 bg-muted/50 rounded-xl border border-border group hover:bg-muted transition-colors">
                     <h6 className="font-bold text-lg mb-2">Store Presence (ASO)</h6>
-                    <p className="text-xl text-muted-foreground leading-snug text-foreground/85 leading-relaxed">
+                    <p className="text-xl leading-snug text-foreground/85 leading-relaxed">
                       Otimização de keywords, screenshots e vídeos para conversão orgânica e descoberta na loja.
                     </p>
                   </div>

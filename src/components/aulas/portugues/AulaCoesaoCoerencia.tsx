@@ -722,7 +722,7 @@ export default function AulaCoesaoCoerencia({
                         <p className="font-medium text-foreground">
                           Princípio Fundamental das Alternativas
                         </p>
-                        <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Nas questões de coesão, nunca busque apenas a palavra
                           semelhante. Substitua no texto e{" "}
                           <strong>leia o período inteiro</strong> para
@@ -2025,7 +2025,7 @@ export default function AulaCoesaoCoerencia({
                         <p className="font-medium text-foreground">
                           O Troque-Tudo
                         </p>
-                        <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                        <p className="text-xl text-foreground/85 leading-relaxed">
                           Termos como "problema", "fato", "situação" e "este"
                           formam o cinturão de segurança da coesão. São
                           palavras-sumário que compactam o que foi dito.
@@ -2958,7 +2958,7 @@ export default function AulaCoesaoCoerencia({
                           "A empresa defende a segurança total em alto mar, mas
                           flexibiliza o uso de EPIs em áreas de risco grave."
                         </p>
-                        <p className="text-xl mt-2 text-muted-foreground text-foreground/85 leading-relaxed">
+                        <p className="text-xl mt-2 text-foreground/85 leading-relaxed">
                           (Sintaticamente coeso, mas logicamente insano).
                         </p>
                       </div>

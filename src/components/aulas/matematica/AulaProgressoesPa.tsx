@@ -540,8 +540,8 @@ export default function AulaProgressoesPa({
                   </p>
                   <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>PA: (2, 5, 8, 11, ...)</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">a₁ = 2</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">r = 3</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">a₁ = 2</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">r = 3</p>
                   </div>
                 </div>
               ),
@@ -608,7 +608,7 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Encontre o 10º termo de (3, 7, 11, ...):</p>
+                      <p className="text-xl text-foreground/85 leading-relaxed">Encontre o 10º termo de (3, 7, 11, ...):</p>
                       <div className="bg-emerald-500/10 p-4 rounded border border-emerald-500/20">
                         <p className="font-mono text-xl text-center text-foreground/85 leading-relaxed">a₁₀ = 3 + (10-1)×4 = 3 + 36 = 39</p>
                       </div>
@@ -626,7 +626,7 @@ export default function AulaProgressoesPa({
                       <AlertBox tipo="warning" titulo="Atenção ao Expoente!">
                         O multiplicador de r é (n-1), NÃO n! Se procura o 5º termo, use 4r, não 5r.
                       </AlertBox>
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Posição 1 → multiplicador 0 (a₁ = a₁ + 0×r = a₁)
                       </p>
                     </div>
@@ -736,7 +736,7 @@ export default function AulaProgressoesPa({
                   </p>
                   <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>PA: (2, 5, 8, ...)</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">a₁ = 2, r = 3</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">a₁ = 2, r = 3</p>
                     <p>a₂₀ = 2 + 19×3 = 59</p>
                   </div>
                 </div>
@@ -800,7 +800,7 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Calcule a soma dos 5 primeiros termos de (2, 5, 8, 11, 14):
                       </p>
                       <div className="bg-amber-500/10 p-4 rounded border border-amber-500/20">
@@ -812,7 +812,7 @@ export default function AulaProgressoesPa({
                           S₅ = 16 × 5 / 2 = 40
                         </p>
                       </div>
-                      <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground text-center">
+                      <p className="text-lg text-foreground/85 leading-relaxed text-center">
                         Verificação: 2 + 5 + 8 + 11 + 14 = 40 ✓
                       </p>
                     </div>
@@ -935,7 +935,7 @@ export default function AulaProgressoesPa({
                   </p>
                   <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>PA: (1, 3, 5, 7, 9)</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       S₅ = (1 + 9) × 5/2
                     </p>
                     <p>= 50/2 = 25</p>
@@ -1001,7 +1001,7 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Na PA (2, 5, 8, 11, 14, 17, 20):
                       </p>
                       <div className="bg-cyan-500/10 p-4 rounded border border-cyan-500/20">
@@ -1028,7 +1028,7 @@ export default function AulaProgressoesPa({
                           Se a, b, c estão em PA, então <strong>b = (a + c) / 2</strong>
                         </p>
                       </AlertBox>
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Ex: (3, 7, 11) → 7 = (3 + 11) / 2 = 7 ✓
                       </p>
                     </div>
@@ -1140,9 +1140,9 @@ export default function AulaProgressoesPa({
                   </p>
                   <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>PA: (1, 3, 5, 7, 9)</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">1+9 = 10</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">3+7 = 10</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">5 = centro</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">1+9 = 10</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">3+7 = 10</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">5 = centro</p>
                   </div>
                 </div>
               ),
@@ -1208,7 +1208,7 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Interpole 3 termos entre 2 e 14:
                       </p>
                       <div className="bg-violet-500/10 p-4 rounded border border-violet-500/20">
@@ -1346,7 +1346,7 @@ export default function AulaProgressoesPa({
                   </p>
                   <div className="p-3 bg-violet-500/10 border border-violet-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>Interpole 4 entre 3 e 23</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       r = (23-3)/(4+1) = 20/5 = 4
                     </p>
                     <p>(3, 7, 11, 15, 19, 23)</p>
@@ -1419,7 +1419,7 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         A função f(x) = 3x + 2 para x = 1, 2, 3, 4, ... gera:
                       </p>
                       <div className="bg-teal-500/10 p-4 rounded border border-teal-500/20">
@@ -1448,7 +1448,7 @@ export default function AulaProgressoesPa({
                           Na função f(x) = ax + b, o coeficiente a é EXATAMENTE a razão r da PA!
                         </p>
                       </AlertBox>
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Se f(x) = 5x - 3, a PA terá r = 5 e a₁ = f(1) = 2
                       </p>
                     </div>
@@ -1558,7 +1558,7 @@ export default function AulaProgressoesPa({
                   </p>
                   <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>f(x) = 2x + 1</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">
+                    <p className="text-lg text-foreground/85 leading-relaxed">
                       f(1)=3, f(2)=5, f(3)=7, ...
                     </p>
                     <p>PA: (3, 5, 7, ...) com r=2</p>
@@ -1627,7 +1627,7 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Problema: "Uma empresa produz 100 peças no 1º dia, 105 no 2º, 110 no 3º, etc. Quantas peças em 30 dias? Quantas ao total?"
                       </p>
                       <div className="bg-indigo-500/10 p-4 rounded border border-indigo-500/20">
@@ -1753,7 +1753,7 @@ export default function AulaProgressoesPa({
                   </p>
                   <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>Produza 100, 105, 110, ...</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">PA com a₁=100, r=5</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">PA com a₁=100, r=5</p>
                     <p>Dia n: 100 + (n-1)×5</p>
                   </div>
                 </div>
@@ -1823,7 +1823,7 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         "Qual é o primeiro termo positivo de PA (-15, -10, -5, ...)?":
                       </p>
                       <div className="bg-rose-500/10 p-4 rounded border border-rose-500/20">
@@ -1961,7 +1961,7 @@ export default function AulaProgressoesPa({
                   </p>
                   <div className="p-3 bg-rose-500/10 border border-rose-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>a₂ = 5 e a₅ = 14</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">↓ sistema ↓</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">↓ sistema ↓</p>
                     <p>a₁ + r = 5</p>
                     <p>a₁ + 4r = 14</p>
                   </div>
@@ -2034,7 +2034,7 @@ export default function AulaProgressoesPa({
                   icone: <LuBookOpen />,
                   conteudo: (
                     <div className="space-y-4">
-                      <p className="text-muted-foreground text-xl text-foreground/85 leading-relaxed">
+                      <p className="text-xl text-foreground/85 leading-relaxed">
                         Equipamento com depreciação linear:
                       </p>
                       <div className="bg-orange-500/10 p-4 rounded border border-orange-500/20">
@@ -2173,7 +2173,7 @@ export default function AulaProgressoesPa({
                   </p>
                   <div className="p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg font-mono text-lg text-foreground/85 leading-relaxed text-center">
                     <p>Semanistas: 100, 110, 120, ...</p>
-                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">a₁=100, r=10</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed">a₁=100, r=10</p>
                     <p>Semana n: 100 + (n-1)×10</p>
                   </div>
                 </div>
