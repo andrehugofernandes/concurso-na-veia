@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import ScrollAnimatedHeader from './ScrollAnimatedHeader';
 
 const testimonials = [
   {
@@ -47,34 +48,16 @@ export default function TestimonialsSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block mb-4 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary text-sm font-bold tracking-wider uppercase"
-          >
-            Histórias de Sucesso
-          </motion.div>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-black tracking-tight mb-6"
-          >
-            Aprovados pelo <span className="text-primary whitespace-nowrap">A VAGA EH MINHA</span>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-lg text-slate-600 dark:text-slate-400"
-          >
-            Junte-se a centenas de estudantes que revolucionaram sua forma de estudar e conquistaram suas vagas em concursos de alto nível.
-          </motion.p>
-        </div>
+        <ScrollAnimatedHeader
+          badgeText="Histórias de Sucesso"
+          badgeColorClass="border-primary/20 bg-primary/10 text-primary"
+          titleText={
+            <>
+              Aprovados pelo <span className="text-primary whitespace-nowrap">A VAGA EH MINHA</span>
+            </>
+          }
+          subtitleText="Junte-se a centenas de estudantes que revolucionaram sua forma de estudar e conquistaram suas vagas em concursos de alto nível."
+        />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial, idx) => (

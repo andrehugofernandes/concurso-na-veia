@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { LuArrowRight } from 'react-icons/lu';
+import ScrollAnimatedHeader from './ScrollAnimatedHeader';
 
 const solutions = [
   {
@@ -30,34 +31,25 @@ export default function FinalCTASection() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Main heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block mb-4 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary text-sm font-bold tracking-wider uppercase"
-          >
-            Plataforma Completa
-          </motion.div>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tight text-white mb-6">
-            Soluções para todos os <br />
-            <span
-              className="bg-clip-text text-transparent"
-              style={{ backgroundImage: 'var(--primary-gradient)' }}
-            >
-              objetivos de estudo
-            </span>
-          </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            A VAGA EH MINHA tem soluções para todas as suas necessidades de aprendizagem, seja conformidade, integração ou desenvolvimento de competências.
-          </p>
-        </motion.div>
+        <ScrollAnimatedHeader
+          badgeText="Plataforma Completa"
+          badgeColorClass="border-primary/20 bg-primary/10 text-primary"
+          titleText={
+            <>
+              Soluções para todos os <br />
+              <span
+                className="bg-clip-text text-transparent"
+                style={{ backgroundImage: 'var(--primary-gradient)' }}
+              >
+                objetivos de estudo
+              </span>
+            </>
+          }
+          subtitleText="A VAGA EH MINHA tem soluções para todas as suas necessidades de aprendizagem, seja conformidade, integração ou desenvolvimento de competências."
+          titleClassName="text-white text-4xl md:text-6xl"
+          subtitleClassName="text-slate-400"
+          className="mb-16"
+        />
 
         {/* Solution Cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-20">

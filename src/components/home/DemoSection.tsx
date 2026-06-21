@@ -20,6 +20,7 @@ import {
   LuList
 } from 'react-icons/lu';
 import PetrobrasLogo from '../PetrobrasLogo';
+import ScrollAnimatedHeader from './ScrollAnimatedHeader';
 
 const tabs = [
   { id: 'dashboard', label: 'Visão Geral (Dashboard)', icon: <LuLayoutDashboard className="w-4 h-4" /> },
@@ -85,41 +86,23 @@ export default function DemoSection() {
       <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border border-primary/20 bg-primary/5"
-          >
-            <span
-              className="text-sm font-black tracking-widest uppercase bg-clip-text text-transparent"
-              style={{ backgroundImage: 'var(--primary-gradient)' }}
-            >
-              Veja em Ação
-            </span>
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-black tracking-tight mb-4 text-foreground"
-          >
-            Veja a plataforma{' '}
-            <span
-              className="bg-clip-text text-transparent"
-              style={{ backgroundImage: 'var(--primary-gradient)' }}
-            >
-              A VAGA EH MINHA
-            </span>{' '}
-            em ação
-          </motion.h2>
-          <p className="text-slate-500 dark:text-slate-400 text-lg">
-            Explore a interface real e interativa da nossa plataforma pelo olhar de um estudante de nível médio.
-          </p>
-        </div>
+        <ScrollAnimatedHeader
+          badgeText="Veja em Ação"
+          badgeColorClass="border-primary/20 bg-primary/5 text-primary"
+          titleText={
+            <>
+              Veja a plataforma{' '}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{ backgroundImage: 'var(--primary-gradient)' }}
+              >
+                A VAGA EH MINHA
+              </span>{' '}
+              em ação
+            </>
+          }
+          subtitleText="Explore a interface real e interativa da nossa plataforma pelo olhar de um estudante de nível médio."
+        />
 
         {/* Outer Flex Layout: Top Navigation + Dashboard Mockup */}
         <div className="flex flex-col gap-8 items-center">

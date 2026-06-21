@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import ScrollAnimatedHeader from "./home/ScrollAnimatedHeader";
 import { 
   LuTarget, 
   LuBrain, 
@@ -100,23 +101,17 @@ export default function PricingSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/[0.03] rounded-full blur-[150px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10 max-w-6xl">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block mb-4 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary text-sm font-bold tracking-wider uppercase"
-          >
-            Planos & Preços
-          </motion.div>
-          <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
-            Escolha seu <span className="text-primary">plano</span>
-          </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
-            Selecione seu nível e veja os preços ajustados para o seu concurso.
-          </p>
-        </div>
+        <ScrollAnimatedHeader
+          badgeText="Planos & Preços"
+          badgeColorClass="border-primary/20 bg-primary/10 text-primary"
+          titleText={
+            <>
+              Escolha seu <span className="text-primary">plano</span>
+            </>
+          }
+          subtitleText="Selecione seu nível e veja os preços ajustados para o seu concurso."
+          className="mb-12"
+        />
 
         {/* Level Toggle */}
         <div className="flex justify-center mb-14">

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Users, TrendingUp, Zap, Target, Bot } from 'lucide-react';
 import { gsap } from 'gsap';
+import ScrollAnimatedHeader from './ScrollAnimatedHeader';
 
 const stats = [
   {
@@ -127,32 +128,23 @@ export default function ResultsSection() {
       <div className="absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="w-full relative z-10">
-        {/* Section label */}
-        <div className="text-center mb-4 px-6">
-          <span
-            className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-xs font-black tracking-widest uppercase"
-            style={{ color: 'var(--primary-hex, #22c55e)' }}
-          >
-            A plataforma de estudos com impacto real
-          </span>
-        </div>
-
-        {/* Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center text-4xl md:text-5xl font-black tracking-tight mb-16 max-w-3xl mx-auto px-6 text-slate-900 dark:text-white"
-        >
-          A VAGA EH MINHA gera{' '}
-          <span
-            className="bg-clip-text text-transparent"
-            style={{ backgroundImage: 'var(--primary-gradient)' }}
-          >
-            resultados extraordinários
-          </span>{' '}
-          para candidatos
-        </motion.h2>
+        <ScrollAnimatedHeader
+          badgeText="A plataforma de estudos com impacto real"
+          badgeColorClass="border-primary/20 bg-primary/5 text-primary"
+          badgeStyle={{ color: 'var(--primary-hex, #22c55e)' }}
+          titleText={
+            <>
+              A VAGA EH MINHA gera{' '}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{ backgroundImage: 'var(--primary-gradient)' }}
+              >
+                resultados extraordinários
+              </span>{' '}
+              para candidatos
+            </>
+          }
+        />
 
         {/* Carrossel Infinito com Efeito Minhoca */}
         <div className="w-full overflow-hidden py-10 relative">
