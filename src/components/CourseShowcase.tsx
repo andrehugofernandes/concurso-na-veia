@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { useRef, useEffect } from "react";
+import ScrollAnimatedHeader from "./home/ScrollAnimatedHeader";
 import { 
   LuArrowRight,
   LuUsers,
@@ -153,26 +154,17 @@ export default function CourseShowcase() {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <div className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4 shadow-sm">
-              Vitrine de Cursos
-            </div>
-            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
-              Escolha seu{" "}
-              <span className="text-primary">Concurso</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Explore nossos cursos para os principais concursos públicos de nível médio no Brasil. 
-              Cada um com simulados ilimitados, aulas ao vivo e suporte de IA 24h.
-            </p>
-          </motion.div>
-        </div>
+        <ScrollAnimatedHeader
+          badgeText="Vitrine de Cursos"
+          badgeColorClass="border-primary/20 bg-primary/5 text-primary"
+          titleText={
+            <>
+              Escolha seu <span className="text-primary">Concurso</span>
+            </>
+          }
+          subtitleText="Explore nossos cursos para os principais concursos públicos de nível médio no Brasil. Cada um com simulados ilimitados, aulas ao vivo e suporte de IA 24h."
+          className="mb-16"
+        />
 
         {/* Courses Grid */}
         <div

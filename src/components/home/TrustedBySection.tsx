@@ -14,16 +14,16 @@ export default function TrustedBySection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const loopRef = useRef<gsap.core.Tween | null>(null);
 
-  // Triplicamos os logos para garantir o efeito de marquee infinito contínuo e perfeito
-  const duplicatedLogos = [...logos, ...logos, ...logos];
+  // Quintuplicamos os logos para garantir o efeito de marquee infinito contínuo e perfeito mesmo em telas ultra-wide
+  const duplicatedLogos = [...logos, ...logos, ...logos, ...logos, ...logos];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const loop = gsap.to(trackRef.current, {
-        xPercent: -33.3333,
+        xPercent: -20, // Move exatamente 1/5 do contêiner (1 conjunto completo de 6 logos)
         ease: 'none',
         repeat: -1,
-        duration: 18,
+        duration: 16,
       });
       loopRef.current = loop;
     });

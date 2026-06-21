@@ -1,6 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { LuHand, LuBrain } from 'react-icons/lu';
+import ScrollAnimatedHeader from './ScrollAnimatedHeader';
 
 export default function ProfessorParticularSection() {
   return (
@@ -12,29 +12,24 @@ export default function ProfessorParticularSection() {
         <div className="flex flex-col lg:flex-row items-center gap-16 max-w-6xl mx-auto">
           {/* Left Column - Content */}
           <div className="lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-black uppercase tracking-widest mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/80 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-              </span>
-              Exclusivo Plano Elite
-            </div>
-
-            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6 leading-tight tracking-tight">
-              Seu Professor Particular <br />
-              <span 
-                className="bg-clip-text text-transparent"
-                style={{ backgroundImage: 'var(--primary-gradient)' }}
-              >
-                Disponível 24h
-              </span>
-            </h2>
-
-            <p className="text-lg text-slate-500 dark:text-slate-400 mb-8 leading-relaxed font-medium max-w-xl">
-              Participe de <strong>Webinars Interativos</strong> onde um
-              Avatar de IA ministra aulas completas sobre qualquer ponto do
-              edital.
-            </p>
+            <ScrollAnimatedHeader
+              align="left"
+              badgeText="Exclusivo Plano Elite"
+              badgeColorClass="border-primary/20 bg-primary/10 text-primary"
+              titleText={
+                <>
+                  Seu Professor Particular <br />
+                  <span 
+                    className="bg-clip-text text-transparent"
+                    style={{ backgroundImage: 'var(--primary-gradient)' }}
+                  >
+                    Disponível 24h
+                  </span>
+                </>
+              }
+              subtitleText="Participe de Webinars Interativos onde um Avatar de IA ministra aulas completas sobre qualquer ponto do edital."
+              className="mb-8"
+            />
 
             <ul className="space-y-6 mb-10 w-full max-w-md text-left">
               <li className="flex items-start gap-4">

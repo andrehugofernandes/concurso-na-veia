@@ -110,12 +110,6 @@ export default function HomeHero() {
           <LuMouse className="w-6 h-6" />
         </motion.button>
         
-        {/* Curved cutout effect for the bottom section (Trusted By) */}
-        <div className="hidden md:flex absolute bottom-0 left-1/2 -translate-x-1/2 w-[95%] md:w-3/4 max-w-4xl min-h-12 py-2 md:py-0 bg-slate-100 dark:bg-primary rounded-t-[24px] md:rounded-t-[30px] z-[50] items-center justify-center text-center px-4">
-          <p className="text-slate-900 dark:text-primary-foreground text-[11px] md:text-sm font-medium">
-            Mais de <strong className="font-bold">12.000+ candidatos</strong> já estudaram com a plataforma
-          </p>
-        </div>
       </div>
     </section>
   );

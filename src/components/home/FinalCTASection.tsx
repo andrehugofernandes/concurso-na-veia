@@ -72,15 +72,14 @@ export default function FinalCTASection() {
         </div>
 
         {/* Final CTA */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <h3 className="text-3xl md:text-4xl font-black text-white mb-8">
-            Pronto para começar sua jornada?
-          </h3>
+        <div className="text-center">
+          <ScrollAnimatedHeader
+            badgeText="Acesso Imediato"
+            badgeColorClass="border-primary/25 bg-primary/10 text-primary"
+            titleText="Pronto para começar sua jornada?"
+            titleClassName="text-white text-3xl md:text-5xl font-black"
+            className="mb-8"
+          />
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/register"
@@ -100,7 +99,7 @@ export default function FinalCTASection() {
           <p className="text-slate-500 text-sm mt-6">
             Sem cartão de crédito · Acesso imediato · Cancele quando quiser
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
