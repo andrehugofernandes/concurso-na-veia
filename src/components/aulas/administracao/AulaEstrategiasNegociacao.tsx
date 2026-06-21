@@ -238,7 +238,7 @@ export default function AulaEstrategiasNegociacao(props: AulaProps) {
               <p className="text-base text-muted-foreground">
                 As partes buscam soluções que atendam aos <strong>interesses mútuos</strong> e maximizem o valor total. O foco é na colaboração, criando valor para ambos os lados.
               </p>
-              <p className="text-sm mt-3 font-medium text-emerald-700 dark:text-emerald-300">
+              <p className="text-xl mt-3 font-medium text-emerald-700 dark:text-emerald-300 text-foreground/85 leading-relaxed">
                 Ideal para: parcerias de longo prazo, desenvolvimento de fornecedores.
               </p>
             </div>
@@ -247,7 +247,7 @@ export default function AulaEstrategiasNegociacao(props: AulaProps) {
               <p className="text-base text-muted-foreground">
                 Envolve a <strong>divisão de recursos limitados</strong>. Resulta em concessões de uma parte para beneficiar a outra. O recurso é fixo ("bolo" finito).
               </p>
-              <p className="text-sm mt-3 font-medium text-rose-700 dark:text-rose-300">
+              <p className="text-xl mt-3 font-medium text-rose-700 dark:text-rose-300 text-foreground/85 leading-relaxed">
                 Típica em: leilões, commodities, negociação de preço puro.
               </p>
             </div>
@@ -446,7 +446,7 @@ export default function AulaEstrategiasNegociacao(props: AulaProps) {
                     <h5 className="font-bold text-amber-700 dark:text-amber-300">
                       🥇 BATNA vs. Poder de Barganha
                     </h5>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
                       O seu poder de barganha é diretamente proporcional à força do seu <strong>BATNA</strong>. Se você tiver múltiplos fornecedores homologados (BATNA forte), pode caminhar para fora da mesa. Em regime de exclusividade (sole source), o fornecedor dita as regras.
                     </p>
                   </div>
@@ -454,17 +454,17 @@ export default function AulaEstrategiasNegociacao(props: AulaProps) {
                     <h5 className="font-bold text-blue-700 dark:text-blue-300">
                       🥈 ZOPA (Zona de Possível Acordo)
                     </h5>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
                       É a interseção entre o preço máximo que o comprador aceita pagar e o preço mínimo que o vendedor aceita receber. Se não houver interseção, o acordo é <strong>impossível</strong>.
                     </p>
-                    <p className="text-xs text-muted-foreground">Comprador aceita até R$100 | Vendedor aceita mín. R$80 → ZOPA = R$80 a R$100</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Comprador aceita até R$100 | Vendedor aceita mín. R$80 → ZOPA = R$80 a R$100</p>
                   </div>
                   <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl space-y-2">
                     <h5 className="font-bold text-emerald-700 dark:text-emerald-300">
                       🥉 Estratégias de Sourcing (Muito cobrado!)
                     </h5>
                     <div className="overflow-x-auto">
-                      <table className="text-xs w-full">
+                      <table className="text-lg text-foreground/85 leading-relaxed w-full">
                         <thead>
                           <tr className="bg-emerald-100 dark:bg-emerald-950/40">
                             <th className="p-2 text-left">Estratégia</th>
@@ -480,7 +480,7 @@ export default function AulaEstrategiasNegociacao(props: AulaProps) {
                       </table>
                     </div>
                   </div>
-                  <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl border font-mono text-sm">
+                  <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl border font-mono text-xl text-foreground/85 leading-relaxed">
                     <p className="font-bold text-gray-700 dark:text-gray-300 mb-1">🧠 Macete de Código:</p>
                     <p className="text-gray-600 dark:text-gray-400">BATNA FORTE → você pode sair da mesa → poder de barganha máximo</p>
                     <p className="text-gray-600 dark:text-gray-400">BATNA FRACO → você precisa do acordo → fornecedor tem o poder</p>
@@ -567,28 +567,28 @@ export default function AulaEstrategiasNegociacao(props: AulaProps) {
               <span className="text-2xl">❌</span>
               <div>
                 <p className="font-bold text-rose-600 dark:text-rose-400">Focar apenas no preço</p>
-                <p className="text-sm text-muted-foreground">Ignorar qualidade, prazo, garantia e TCO pode custar muito mais no longo prazo.</p>
+                <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Ignorar qualidade, prazo, garantia e TCO pode custar muito mais no longo prazo.</p>
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-rose-500/5 rounded-lg">
               <span className="text-2xl">❌</span>
               <div>
                 <p className="font-bold text-rose-600 dark:text-rose-400">Negociar sem preparação</p>
-                <p className="text-sm text-muted-foreground">Entrar em uma negociação sem dados de mercado é ceder o controle para a outra parte.</p>
+                <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Entrar em uma negociação sem dados de mercado é ceder o controle para a outra parte.</p>
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-rose-500/5 rounded-lg">
               <span className="text-2xl">❌</span>
               <div>
                 <p className="font-bold text-rose-600 dark:text-rose-400">Ignorar o relacionamento</p>
-                <p className="text-sm text-muted-foreground">Tratar fornecedor como adversário destrói parcerias estratégicas de longo prazo.</p>
+                <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Tratar fornecedor como adversário destrói parcerias estratégicas de longo prazo.</p>
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-rose-500/5 rounded-lg">
               <span className="text-2xl">❌</span>
               <div>
                 <p className="font-bold text-rose-600 dark:text-rose-400">Fazer concessões sem contrapartida</p>
-                <p className="text-sm text-muted-foreground">Toda concessão deve ser trocada por algo de valor equivalente (princípio da reciprocidade).</p>
+                <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Toda concessão deve ser trocada por algo de valor equivalente (princípio da reciprocidade).</p>
               </div>
             </div>
           </div>
@@ -697,7 +697,7 @@ export default function AulaEstrategiasNegociacao(props: AulaProps) {
                     <h5 className="font-bold text-amber-700 dark:text-amber-300">
                       Negociação na Lei das Estatais
                     </h5>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
                       Após o julgamento e classificação, o pregoeiro/comprador <strong>deve negociar</strong> com o licitante vencedor para obter termos ainda mais vantajosos. Isso visa à economicidade e eficiência pública.
                     </p>
                   </div>
@@ -705,7 +705,7 @@ export default function AulaEstrategiasNegociacao(props: AulaProps) {
                     <h5 className="font-bold text-red-700 dark:text-red-300">
                       Risco de Emergências
                     </h5>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
                       Em compras emergenciais (inundação, falha crítica offshore), o comprador tem um BATNA extremamente fraco e o fornecedor tenta elevar preços. O papel do comprador é buscar benchmarks históricos e justificar a compatibilidade de preços perante o TCU.
                     </p>
                   </div>

@@ -182,12 +182,12 @@ export default function AulaGestaoQualidadeSuprimento({
             <p>Na Petrobras, o SGI unifica as diretrizes de SMS e qualidade (ISO 9001) para blindar operações contra não-conformidades críticas em tubulações submarinas.</p>
             <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">As 5 Abordagens de Garvin</h4>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-2 text-sm text-center">
-                <div className="p-2 bg-blue-500/10 rounded-lg"><span className="font-bold text-xs">Transcendental</span><span className="text-muted-foreground text-xs">Intuição</span></div>
-                <div className="p-2 bg-blue-500/10 rounded-lg"><span className="font-bold text-xs">Produto</span><span className="text-muted-foreground text-xs">Mensurável</span></div>
-                <div className="p-2 bg-blue-500/10 rounded-lg"><span className="font-bold text-xs">Usuário</span><span className="text-muted-foreground text-xs">Juran</span></div>
-                <div className="p-2 bg-blue-500/10 rounded-lg"><span className="font-bold text-xs">Produção</span><span className="text-muted-foreground text-xs">Crosby</span></div>
-                <div className="p-2 bg-blue-500/10 rounded-lg"><span className="font-bold text-xs">Valor</span><span className="text-muted-foreground text-xs">Custo-benefício</span></div>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-2 text-xl text-center text-foreground/85 leading-relaxed">
+                <div className="p-2 bg-blue-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Transcendental</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Intuição</span></div>
+                <div className="p-2 bg-blue-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Produto</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Mensurável</span></div>
+                <div className="p-2 bg-blue-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Usuário</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Juran</span></div>
+                <div className="p-2 bg-blue-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Produção</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Crosby</span></div>
+                <div className="p-2 bg-blue-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Valor</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Custo-benefício</span></div>
               </div>
             </div>
           
@@ -291,19 +291,19 @@ export default function AulaGestaoQualidadeSuprimento({
                 <div className="grid grid-cols-2 gap-3 mt-6 text-left">
                   <div className="p-3 bg-blue-500/5 border border-blue-500/20 rounded-xl text-center">
                     <p className="font-bold text-blue-600 dark:text-blue-400">Plan</p>
-                    <p className="text-xs text-muted-foreground">Identificar + Planejar</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Identificar + Planejar</p>
                   </div>
                   <div className="p-3 bg-emerald-500/5 border border-emerald-500/20 rounded-xl text-center">
                     <p className="font-bold text-emerald-600 dark:text-emerald-400">Do</p>
-                    <p className="text-xs text-muted-foreground">Executar + Treinar</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Executar + Treinar</p>
                   </div>
                   <div className="p-3 bg-amber-500/5 border border-amber-500/20 rounded-xl text-center">
                     <p className="font-bold text-amber-600 dark:text-amber-400">Check</p>
-                    <p className="text-xs text-muted-foreground">Verificar + Medir</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Verificar + Medir</p>
                   </div>
                   <div className="p-3 bg-rose-500/5 border border-rose-500/20 rounded-xl text-center">
                     <p className="font-bold text-rose-600 dark:text-rose-400">Act</p>
-                    <p className="text-xs text-muted-foreground">Padronizar ou Corrigir</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">Padronizar ou Corrigir</p>
                   </div>
                 </div>
               </>
@@ -344,7 +344,7 @@ export default function AulaGestaoQualidadeSuprimento({
             <p>Em refinarias da Petrobras, os processos de conformidade evoluíram de inspeções físicas de soldas para monitoramentos preditivos digitais e automatizados de vazão.</p>
             <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">Timeline das Eras</h4>
-              <div className="flex flex-wrap items-center justify-center gap-2 text-sm font-medium">
+              <div className="flex flex-wrap items-center justify-center gap-2 text-xl font-medium text-foreground/85 leading-relaxed">
                 <span className="px-3 py-1 bg-rose-500/10 rounded-full">1ª Inspeção</span>
                 <span>→</span>
                 <span className="px-3 py-1 bg-amber-500/10 rounded-full">2ª Controle</span>
@@ -493,12 +493,12 @@ export default function AulaGestaoQualidadeSuprimento({
             <p>Os manuais de SMS da Petrobras aplicam o princípio de Deming de eliminar o medo organizacional para incentivar o reporte proativo de quase-acidentes operacionais.</p>
             <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">Guru → Contribuição Principal</h4>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-2 text-sm text-center">
-                <div className="p-2 bg-emerald-500/10 rounded-lg"><span className="font-bold text-xs">Deming</span><span className="text-muted-foreground text-xs">14 Pontos + PDCA</span></div>
-                <div className="p-2 bg-emerald-500/10 rounded-lg"><span className="font-bold text-xs">Juran</span><span className="text-muted-foreground text-xs">Trilogia + 80/20</span></div>
-                <div className="p-2 bg-emerald-500/10 rounded-lg"><span className="font-bold text-xs">Crosby</span><span className="text-muted-foreground text-xs">Zero Defeitos</span></div>
-                <div className="p-2 bg-emerald-500/10 rounded-lg"><span className="font-bold text-xs">Ishikawa</span><span className="text-muted-foreground text-xs">Diagrama + CCQ</span></div>
-                <div className="p-2 bg-emerald-500/10 rounded-lg"><span className="font-bold text-xs">Feigenbaum</span><span className="text-muted-foreground text-xs">TQC</span></div>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-2 text-xl text-center text-foreground/85 leading-relaxed">
+                <div className="p-2 bg-emerald-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Deming</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">14 Pontos + PDCA</span></div>
+                <div className="p-2 bg-emerald-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Juran</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Trilogia + 80/20</span></div>
+                <div className="p-2 bg-emerald-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Crosby</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Zero Defeitos</span></div>
+                <div className="p-2 bg-emerald-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Ishikawa</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Diagrama + CCQ</span></div>
+                <div className="p-2 bg-emerald-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Feigenbaum</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">TQC</span></div>
               </div>
             </div>
           
@@ -641,15 +641,15 @@ export default function AulaGestaoQualidadeSuprimento({
             <p>Almoxarifes da Petrobras em Macaé preenchem folhas de verificação para registrar avarias físicas em contêineres e cestas de carga antes do embarque.</p>
             <div className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-lg border border-rose-200 dark:border-rose-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">As 7 Ferramentas Básicas</h4>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm text-center">
-                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-xs">Pareto</span><span className="text-muted-foreground text-xs">Priorizar</span></div>
-                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-xs">Ishikawa</span><span className="text-muted-foreground text-xs">Causas raiz</span></div>
-                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-xs">Histograma</span><span className="text-muted-foreground text-xs">Distribuição</span></div>
-                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-xs">Folha Verif.</span><span className="text-muted-foreground text-xs">Coletar dados</span></div>
-                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-xs">Dispersão</span><span className="text-muted-foreground text-xs">Correlação</span></div>
-                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-xs">Fluxograma</span><span className="text-muted-foreground text-xs">Mapear processo</span></div>
-                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-xs">Carta CEP</span><span className="text-muted-foreground text-xs">Monitorar</span></div>
-                <div className="p-2 bg-amber-500/10 rounded-lg"><span className="font-bold text-xs">+ 5W2H</span><span className="text-muted-foreground text-xs">Plano de ação</span></div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xl text-center text-foreground/85 leading-relaxed">
+                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Pareto</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Priorizar</span></div>
+                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Ishikawa</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Causas raiz</span></div>
+                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Histograma</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Distribuição</span></div>
+                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Folha Verif.</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Coletar dados</span></div>
+                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Dispersão</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Correlação</span></div>
+                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Fluxograma</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Mapear processo</span></div>
+                <div className="p-2 bg-rose-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">Carta CEP</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Monitorar</span></div>
+                <div className="p-2 bg-amber-500/10 rounded-lg"><span className="font-bold text-lg text-foreground/85 leading-relaxed">+ 5W2H</span><span className="text-muted-foreground text-lg text-foreground/85 leading-relaxed">Plano de ação</span></div>
               </div>
             </div>
           

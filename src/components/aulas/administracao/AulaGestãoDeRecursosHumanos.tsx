@@ -779,7 +779,7 @@ export default function AulaGestãoDeRecursosHumanos(props: AulaProps) {
               key={mod.id}
               value={mod.id}
               disabled={!unlockedModules.includes(mod.id)}
-              className="text-xs"
+              className="text-lg text-foreground/85 leading-relaxed"
             >
               <div className="flex flex-col items-center gap-1">
                 <span>{idx + 1}</span>

@@ -1293,15 +1293,15 @@ export default function AulaGestaoProjetos({
 
                     <div className="grid grid-cols-1 gap-3">
                       <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-xl">
-                        <p className="font-bold text-indigo-800 text-sm mb-1">🔹 Suportiva</p>
+                        <p className="font-bold text-indigo-800 text-xl mb-1 text-foreground/85 leading-relaxed">🔹 Suportiva</p>
                         <p className="text-[10px] text-indigo-700">Oferece templates, lições aprendidas e consultoria.</p>
                       </div>
                       <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-xl">
-                        <p className="font-bold text-indigo-800 text-sm mb-1">🔹 Controladora</p>
+                        <p className="font-bold text-indigo-800 text-xl mb-1 text-foreground/85 leading-relaxed">🔹 Controladora</p>
                         <p className="text-[10px] text-indigo-700">Exige conformidade com padrões; governa aprovações.</p>
                       </div>
                       <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-xl">
-                        <p className="font-bold text-indigo-800 text-sm mb-1">🔹 Diretiva</p>
+                        <p className="font-bold text-indigo-800 text-xl mb-1 text-foreground/85 leading-relaxed">🔹 Diretiva</p>
                         <p className="text-[10px] text-indigo-700">Gerencia projetos diretamente; maior controle.</p>
                       </div>
                     </div>
@@ -1711,7 +1711,7 @@ export default function AulaGestaoProjetos({
               <div className="text-6xl">👑</div>
               <h2 className="text-3xl font-bold text-rose-700">ESPECIALISTA EM GESTÃO</h2>
               <p className="text-lg text-rose-600">Você domina todos os conceitos de Gestão de Projetos PMBOK e está pronto para a Petrobras!</p>
-              <p className="text-sm text-muted-foreground">Parabéns por completar este caminho extraordinário! 🚀</p>
+              <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Parabéns por completar este caminho extraordinário! 🚀</p>
             </div>
           )}
         </div>

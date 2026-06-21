@@ -2583,7 +2583,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
               </AlertBox>
 
               <div className="p-4 bg-card border rounded-xl space-y-2">
-                <span className="text-xs uppercase tracking-wider font-bold text-emerald-600">Critério 1</span>
+                <span className="text-lg text-foreground/85 leading-relaxed uppercase tracking-wider font-bold text-emerald-600">Critério 1</span>
                 <h5 className="font-bold text-foreground text-xl">Âmbito de Aplicação</h5>
                 <div className="space-y-1 text-lg text-slate-700 dark:text-slate-300">
                   <p><strong>Lei das Estatais (13.303/2016):</strong> Sociedades de Economia Mista (ex: Petrobras, Banco do Brasil), Empresas Públicas (ex: Caixa Econômica) e suas subsidiárias.</p>
@@ -2593,7 +2593,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
               </div>
 
               <div className="p-4 bg-card border rounded-xl space-y-2">
-                <span className="text-xs uppercase tracking-wider font-bold text-emerald-600">Critério 2</span>
+                <span className="text-lg text-foreground/85 leading-relaxed uppercase tracking-wider font-bold text-emerald-600">Critério 2</span>
                 <h5 className="font-bold text-foreground text-xl">Modalidades de Licitação</h5>
                 <div className="space-y-1 text-lg text-slate-700 dark:text-slate-300">
                   <p><strong>Lei das Estatais (13.303/2016):</strong> Não adota modalidades rígidas de nomes da 14.133. Aplica o <strong>Procedimento Licitatório Próprio</strong> e o <strong>Pregão</strong> (para bens e serviços comuns).</p>
@@ -2603,7 +2603,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
               </div>
 
               <div className="p-4 bg-card border rounded-xl space-y-2">
-                <span className="text-xs uppercase tracking-wider font-bold text-emerald-600">Critério 3</span>
+                <span className="text-lg text-foreground/85 leading-relaxed uppercase tracking-wider font-bold text-emerald-600">Critério 3</span>
                 <h5 className="font-bold text-foreground text-xl">Inversão de Fases de Habilitação</h5>
                 <div className="space-y-1 text-lg text-slate-700 dark:text-slate-300">
                   <p><strong>Lei das Estatais (13.303/2016):</strong> <strong>Regra Geral Obrigatória:</strong> Julgamento financeiro primeiro. Somente o licitante 1º colocado tem a documentação de habilitação analisada.</p>
@@ -2613,7 +2613,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
               </div>
 
               <div className="p-4 bg-card border rounded-xl space-y-2">
-                <span className="text-xs uppercase tracking-wider font-bold text-emerald-600">Critério 4</span>
+                <span className="text-lg text-foreground/85 leading-relaxed uppercase tracking-wider font-bold text-emerald-600">Critério 4</span>
                 <h5 className="font-bold text-foreground text-xl">Limites para Dispensa de Licitação</h5>
                 <div className="space-y-1 text-lg text-slate-700 dark:text-slate-300">
                   <p><strong>Lei das Estatais (13.303/2016):</strong> R$ 100.000,00 para obras/engenharia e R$ 50.000,00 para compras/serviços comuns (atualizável por decreto interno).</p>

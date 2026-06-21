@@ -317,7 +317,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
               <div className="space-y-2 text-lg font-bold text-center">
                 <p>Produto + Quantidade + Lugar + Tempo</p>
                 <p>+ Condição + Custo + Cliente</p>
-                <p className="text-muted-foreground font-normal text-sm mt-2">= Logística Perfeita</p>
+                <p className="text-muted-foreground font-normal text-xl mt-2 text-foreground/85 leading-relaxed">= Logística Perfeita</p>
               </div>
             ),
           }}
@@ -630,7 +630,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           index={3} variant="blue"
           video={{ videoId: "LOG3_V", title: "Armazenagem e Centros de Distribuição", duration: "14:00" }}
           resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Armazenagem", materia: "Logística", images: [{ title: "Layout em U", type: "Esquema", placeholderColor: "bg-emerald-500/20" }, { title: "Fluxo WMS", type: "Diagrama", placeholderColor: "bg-cyan-500/20" }] }}
-          sinteseEstrategica={{ title: "Regra de Ouro do Picking", content: (<div className="text-center text-lg font-bold"><p>Mais GIRO = Mais PERTO da porta</p><p className="text-muted-foreground font-normal text-sm mt-1">Itens classe A ficam na zona nobre do armazém</p></div>) }}
+          sinteseEstrategica={{ title: "Regra de Ouro do Picking", content: (<div className="text-center text-lg font-bold"><p>Mais GIRO = Mais PERTO da porta</p><p className="text-muted-foreground font-normal text-xl mt-1 text-foreground/85 leading-relaxed">Itens classe A ficam na zona nobre do armazém</p></div>) }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "Podcast: Dentro do CD", artista: "Prof. Supply Chain" }}
         />
         <QuizInterativo questoes={mapQuizQuestions("modulo-3")} titulo="QUIZ: Armazenagem e CDs" numero={3} variant="blue" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
@@ -810,7 +810,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
             <p>Em bases terrestres da Petrobras, a conferência física e fiscal de insumos químicos para fluidos de perfuração segue rigorosos protocolos de recebimento.</p>
             <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">Fluxo Completo: Inbound → Outbound</h4>
-              <div className="flex flex-wrap items-center justify-center gap-2 text-sm font-medium">
+              <div className="flex flex-wrap items-center justify-center gap-2 text-xl font-medium text-foreground/85 leading-relaxed">
                 <span className="px-3 py-1 bg-blue-500/10 rounded-full">Fornecedor</span>
                 <span>→</span>
                 <span className="px-3 py-1 bg-blue-500/10 rounded-full">Milk Run</span>
@@ -998,7 +998,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
             <p>A Petrobras estabelece portais integrados para que fabricantes acompanhem as previsões de consumo de peças sobressalentes de refinarias nacionais.</p>
             <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-lg border border-amber-200 dark:border-amber-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">Ferramentas de Colaboração na SC</h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xl text-foreground/85 leading-relaxed">
                 <div className="p-3 bg-amber-500/10 rounded-lg text-center">
                   <span className="font-bold">VMI</span>
                   <span className="text-muted-foreground">Fornecedor gerencia estoque do cliente</span>
@@ -1166,7 +1166,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
             <p>A área de suprimentos da Petrobras monitora mensalmente os índices de avarias e o OTIF de prestadores de serviços logísticos offshore e terrestres.</p>
             <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">Dashboard de KPIs Logísticos</h4>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm text-center">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xl text-center text-foreground/85 leading-relaxed">
                 <div className="p-3 bg-blue-500/10 rounded-lg"><span className="font-bold">OTIF</span><span className="text-muted-foreground">Meta: 95%+</span></div>
                 <div className="p-3 bg-emerald-500/10 rounded-lg"><span className="font-bold">Fill Rate</span><span className="text-muted-foreground">Meta: 98%+</span></div>
                 <div className="p-3 bg-amber-500/10 rounded-lg"><span className="font-bold">Lead Time</span><span className="text-muted-foreground">Meta: minimizar</span></div>
@@ -1326,7 +1326,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
             <p>O plano de gestão de resíduos em refinarias da Petrobras garante a destinação ecologicamente correta de borras oleosas e catalisadores industriais exauridos.</p>
             <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg border border-emerald-200 dark:border-emerald-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">Hierarquia de Resíduos (PNRS)</h4>
-              <div className="flex flex-wrap items-center justify-center gap-2 text-sm font-medium">
+              <div className="flex flex-wrap items-center justify-center gap-2 text-xl font-medium text-foreground/85 leading-relaxed">
                 <span className="px-3 py-1 bg-emerald-500/20 rounded-full font-bold">1. Não Gerar</span>
                 <span>→</span>
                 <span className="px-3 py-1 bg-emerald-500/15 rounded-full">2. Reduzir</span>
@@ -1497,7 +1497,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
             <p>O terminal portuário de Imbetiba, em Macaé, é o principal polo de escoamento logístico offshore de materiais pesados e tubos de perfuração da Petrobras.</p>
             <div className="bg-gradient-to-br from-blue-50 to-slate-50 dark:from-blue-950/30 dark:to-slate-950/30 rounded-lg border border-blue-200 dark:border-blue-800 p-6 space-y-4">
               <h4 className="font-bold text-foreground">Frota de Apoio Offshore</h4>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm text-center">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xl text-center text-foreground/85 leading-relaxed">
                 <div className="p-3 bg-blue-500/10 rounded-lg"><span className="font-bold">PSV</span><span className="text-muted-foreground">Suprimentos gerais</span></div>
                 <div className="p-3 bg-amber-500/10 rounded-lg"><span className="font-bold">AHTS</span><span className="text-muted-foreground">Âncoras + supply</span></div>
                 <div className="p-3 bg-emerald-500/10 rounded-lg"><span className="font-bold">FPSO</span><span className="text-muted-foreground">Produção flutuante</span></div>

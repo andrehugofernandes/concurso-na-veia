@@ -87,20 +87,20 @@ export default function AulaAtendimentoCliente(props: AulaProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
             <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
               <h4 className="font-semibold text-gray-800 mb-2 border-b pb-2">1. Prospecção</h4>
-              <p className="text-sm text-gray-600">O primeiro contato define expectativas e cria a primeira impressão sobre a marca.</p>
+              <p className="text-xl text-gray-600 text-foreground/85 leading-relaxed">O primeiro contato define expectativas e cria a primeira impressão sobre a marca.</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
               <h4 className="font-semibold text-gray-800 mb-2 border-b pb-2">2. Venda</h4>
-              <p className="text-sm text-gray-600">Momento em que as dúvidas são esclarecidas e a confiança é construída para a tomada de decisão.</p>
+              <p className="text-xl text-gray-600 text-foreground/85 leading-relaxed">Momento em que as dúvidas são esclarecidas e a confiança é construída para a tomada de decisão.</p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
               <h4 className="font-semibold text-gray-800 mb-2 border-b pb-2">3. Pós-venda</h4>
-              <p className="text-sm text-gray-600">O suporte contínuo que determinará a permanência ou não do cliente com a organização.</p>
+              <p className="text-xl text-gray-600 text-foreground/85 leading-relaxed">O suporte contínuo que determinará a permanência ou não do cliente com a organização.</p>
             </div>
           </div>
           <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-100 mt-4 flex items-start">
             <Lightbulb className="w-6 h-6 text-yellow-600 mr-3 flex-shrink-0 mt-1" />
-            <p className="text-sm text-gray-700">
+            <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
               O atendimento <strong>não é responsabilidade exclusiva de um departamento</strong>, mas uma função estratégica que deve ser incorporada à cultura organizacional. Todos os colaboradores influenciam na percepção do cliente.
             </p>
           </div>
@@ -123,7 +123,7 @@ export default function AulaAtendimentoCliente(props: AulaProps) {
               </div>
               <div>
                 <strong className="text-gray-800">Escuta Ativa:</strong>
-                <p className="text-sm text-gray-600">Compreender o que o cliente está dizendo, prestando atenção ao conteúdo, ao tom e às emoções envolvidas.</p>
+                <p className="text-xl text-gray-600 text-foreground/85 leading-relaxed">Compreender o que o cliente está dizendo, prestando atenção ao conteúdo, ao tom e às emoções envolvidas.</p>
               </div>
             </li>
             <li className="flex items-start">
@@ -132,7 +132,7 @@ export default function AulaAtendimentoCliente(props: AulaProps) {
               </div>
               <div>
                 <strong className="text-gray-800">Empatia:</strong>
-                <p className="text-sm text-gray-600">Colocar-se no lugar do cliente, reconhecer sua frustração ou necessidade, e demonstrar real interesse em ajudá-lo.</p>
+                <p className="text-xl text-gray-600 text-foreground/85 leading-relaxed">Colocar-se no lugar do cliente, reconhecer sua frustração ou necessidade, e demonstrar real interesse em ajudá-lo.</p>
               </div>
             </li>
             <li className="flex items-start">
@@ -141,7 +141,7 @@ export default function AulaAtendimentoCliente(props: AulaProps) {
               </div>
               <div>
                 <strong className="text-gray-800">Clareza na Comunicação:</strong>
-                <p className="text-sm text-gray-600">Informações devem ser transmitidas de forma objetiva, evitando jargões técnicos ou ambiguidades que possam confundir.</p>
+                <p className="text-xl text-gray-600 text-foreground/85 leading-relaxed">Informações devem ser transmitidas de forma objetiva, evitando jargões técnicos ou ambiguidades que possam confundir.</p>
               </div>
             </li>
             <li className="flex items-start">
@@ -150,7 +150,7 @@ export default function AulaAtendimentoCliente(props: AulaProps) {
               </div>
               <div>
                 <strong className="text-gray-800">Agilidade:</strong>
-                <p className="text-sm text-gray-600">Respeitar o tempo do cliente, mas sem comprometer a qualidade da solução oferecida.</p>
+                <p className="text-xl text-gray-600 text-foreground/85 leading-relaxed">Respeitar o tempo do cliente, mas sem comprometer a qualidade da solução oferecida.</p>
               </div>
             </li>
           </ul>
@@ -164,7 +164,7 @@ export default function AulaAtendimentoCliente(props: AulaProps) {
       content: (
         <div className="space-y-4">
           <h4 className="font-semibold text-gray-800">Canais Digitais (Omnichannel)</h4>
-          <p className="text-gray-700 text-sm">
+          <p className="text-gray-700 text-xl text-foreground/85 leading-relaxed">
             O atendimento por e-mail, chat, redes sociais e aplicativos exige linguagem adaptada, rápida resposta e <strong>consistência na informação</strong>. É fundamental integrar os canais (via CRM e histórico) para garantir uma visão unificada do cliente, evitando que ele precise repetir seu problema a cada novo contato.
           </p>
           
@@ -173,17 +173,17 @@ export default function AulaAtendimentoCliente(props: AulaProps) {
             <div className="bg-red-50 border border-red-100 rounded-lg p-4">
               <div className="flex items-start mb-2">
                 <AlertTriangle className="w-5 h-5 text-red-600 mr-2 mt-0.5" />
-                <p className="text-sm text-gray-700">
+                <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
                   Reclamações e falhas devem ser tratadas como <strong>oportunidades</strong> de mostrar compromisso. Ao reconhecer o erro e propor soluções rápidas (ou compensações proporcionais), a empresa demonstra integridade.
                 </p>
               </div>
-              <p className="text-sm font-medium text-red-800 mt-2 italic">
+              <p className="text-xl font-medium text-red-800 mt-2 italic text-foreground/85 leading-relaxed">
                 "Mais do que o problema em si, o que realmente marca a experiência do cliente é a forma como ele foi tratado diante da adversidade."
               </p>
             </div>
           </div>
           
-          <div className="bg-gray-50 p-3 rounded text-sm text-gray-600 border border-gray-200 mt-4">
+          <div className="bg-gray-50 p-3 rounded text-xl text-gray-600 border border-gray-200 mt-4 text-foreground/85 leading-relaxed">
             <strong>Dica:</strong> A melhoria contínua depende da coleta e análise de feedbacks (Pesquisas de Satisfação, NPS, monitoramento de interações) para identificar pontos fracos e ajustar processos.
           </div>
         </div>
@@ -202,7 +202,7 @@ export default function AulaAtendimentoCliente(props: AulaProps) {
             <h4 className="font-semibold text-amber-900 flex items-center">
               📌 Armadilha 1: Custo Psíquico / Desgaste Emocional
             </h4>
-            <p className="text-sm text-gray-700">
+            <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
               Para a CESGRANRIO, aumentar o <strong>valor percebido</strong> pelo cliente exige reduzir os custos totais da transação. Além de dinheiro e tempo, a banca cobra com alta frequência a redução de custos não financeiros, especialmente o <strong>desgaste emocional (custos psíquicos)</strong> até a definição do negócio.
             </p>
           </div>
@@ -210,11 +210,11 @@ export default function AulaAtendimentoCliente(props: AulaProps) {
             <h4 className="font-semibold text-blue-900 flex items-center">
               📌 Armadilha 2: Laços de Fidelidade (Retenção de Clientes)
             </h4>
-            <p className="text-sm text-gray-700">
+            <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
               Programas de fidelidade que dão pontos para troca por descontos ou brindes são classificados pela banca como estratégias de retenção por <strong>laços financeiros</strong>. Já as baseadas em atendimento consultivo e relações pessoais são <strong>laços sociais</strong>.
             </p>
           </div>
-          <div className="p-3 bg-gray-50 rounded text-sm text-gray-600 border border-gray-200 mt-2">
+          <div className="p-3 bg-gray-50 rounded text-xl text-gray-600 border border-gray-200 mt-2 text-foreground/85 leading-relaxed">
             <strong>Macete de Código:</strong> Viu uma questão de valor ao cliente? Busque alternativas que tratem de "tempo" ou "desgaste emocional/psíquico". Viu pontos por desconto? É laço financeiro.
           </div>
         </div>
@@ -286,8 +286,8 @@ export default function AulaAtendimentoCliente(props: AulaProps) {
       {/* Barra de Progresso */}
       <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 mb-8 sticky top-4 z-10">
         <div className="flex justify-between items-center mb-2">
-          <span className="text-sm font-medium text-gray-700">Progresso da Aula</span>
-          <span className="text-sm font-bold text-blue-600">{progress}%</span>
+          <span className="text-xl font-medium text-gray-700 text-foreground/85 leading-relaxed">Progresso da Aula</span>
+          <span className="text-xl font-bold text-blue-600 text-foreground/85 leading-relaxed">{progress}%</span>
         </div>
         <Progress value={progress} className="h-2" />
       </div>

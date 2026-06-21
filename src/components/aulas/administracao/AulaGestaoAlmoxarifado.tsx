@@ -287,15 +287,15 @@ export default function AulaGestaoAlmoxarifado(props: AulaProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
             <div className="p-4 bg-muted border border-border rounded-xl">
               <h4 className="font-bold text-foreground mb-1">📦 Paletização</h4>
-              <p className="text-sm text-muted-foreground">Caixas agrupadas sobre um palete-padrão (PBR). Facilita movimentação mecânica com empilhadeiras, reduz avarias e mano amanipulação manual.</p>
+              <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Caixas agrupadas sobre um palete-padrão (PBR). Facilita movimentação mecânica com empilhadeiras, reduz avarias e mano amanipulação manual.</p>
             </div>
             <div className="p-4 bg-muted border border-border rounded-xl">
               <h4 className="font-bold text-foreground mb-1">🚢 Conteinerização</h4>
-              <p className="text-sm text-muted-foreground">Agrupamento em contêiner intermodal (ISO). Permite transporte multimodal (navio-caminhão-ferrovia) sem remanipulação da carga.</p>
+              <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Agrupamento em contêiner intermodal (ISO). Permite transporte multimodal (navio-caminhão-ferrovia) sem remanipulação da carga.</p>
             </div>
             <div className="p-4 bg-muted border border-border rounded-xl">
               <h4 className="font-bold text-foreground mb-1">🏷️ Bag/Big-Bag</h4>
-              <p className="text-sm text-muted-foreground">Embalagem rígida ou flexível de grande porte para produtos a granel (aréia, químicos). Muito usada em refinarias.</p>
+              <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Embalagem rígida ou flexível de grande porte para produtos a granel (aréia, químicos). Muito usada em refinarias.</p>
             </div>
           </div>
           <AlertBox tipo="warning" titulo="Ponto de Prova CESGRANRIO">
@@ -351,7 +351,7 @@ export default function AulaGestaoAlmoxarifado(props: AulaProps) {
                     <h5 className="font-bold text-amber-700 dark:text-amber-300">
                       Almoxarifado = Gestão Física
                     </h5>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
                       Responsável estritamente pela **guarda, conservação, embalagem, recepção e expedição física** do material.
                     </p>
                   </div>
@@ -359,7 +359,7 @@ export default function AulaGestaoAlmoxarifado(props: AulaProps) {
                     <h5 className="font-bold text-blue-700 dark:text-blue-300">
                       Gestão de Estoque = Gestão Econômica
                     </h5>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
                       Responsável pelo planejamento econômico, previsão de consumo futuro, definição de níveis de segurança e reposição do capital imobilizado.
                     </p>
                   </div>
@@ -407,17 +407,17 @@ export default function AulaGestaoAlmoxarifado(props: AulaProps) {
             <div className="flex-1 p-5 bg-rose-500/10 border border-rose-500/30 rounded-xl text-center">
               <h4 className="text-3xl font-black text-rose-600 dark:text-rose-400 mb-2">Classe A</h4>
               <p className="text-lg font-bold text-foreground">~20% dos itens</p>
-              <p className="text-sm text-muted-foreground mt-2"><strong>~80% do Valor:</strong> Alta prioridade, controle rigoroso (diário), contagem frequente.</p>
+              <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed"><strong>~80% do Valor:</strong> Alta prioridade, controle rigoroso (diário), contagem frequente.</p>
             </div>
             <div className="flex-1 p-5 bg-amber-500/10 border border-amber-500/30 rounded-xl text-center">
               <h4 className="text-3xl font-black text-amber-600 dark:text-amber-400 mb-2">Classe B</h4>
               <p className="text-lg font-bold text-foreground">~30% dos itens</p>
-              <p className="text-sm text-muted-foreground mt-2"><strong>~15% do Valor:</strong> Prioridade média, controle intermediário, contagem periódica.</p>
+              <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed"><strong>~15% do Valor:</strong> Prioridade média, controle intermediário, contagem periódica.</p>
             </div>
             <div className="flex-1 p-5 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-center">
               <h4 className="text-3xl font-black text-emerald-600 dark:text-emerald-400 mb-2">Classe C</h4>
               <p className="text-lg font-bold text-foreground">~50% dos itens</p>
-              <p className="text-sm text-muted-foreground mt-2"><strong>~5% do Valor:</strong> Baixa prioridade (parafusos, clipes), muito volume e pouco valor. Controle mais frouxo.</p>
+              <p className="text-xl text-muted-foreground mt-2 text-foreground/85 leading-relaxed"><strong>~5% do Valor:</strong> Baixa prioridade (parafusos, clipes), muito volume e pouco valor. Controle mais frouxo.</p>
             </div>
           </div>
 
@@ -440,11 +440,11 @@ export default function AulaGestaoAlmoxarifado(props: AulaProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             <div className="p-4 bg-muted rounded-lg border-l-4 border-l-blue-500">
               <h4 className="font-bold mb-2">Inventário Geral (Anual)</h4>
-              <p className="text-sm text-muted-foreground">Normalmente paralisa toda a operação da empresa (balanço). Alto risco de erro pelo cansaço da equipe e prejuízo pela interrupção logística.</p>
+              <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Normalmente paralisa toda a operação da empresa (balanço). Alto risco de erro pelo cansaço da equipe e prejuízo pela interrupção logística.</p>
             </div>
             <div className="p-4 bg-muted rounded-lg border-l-4 border-l-emerald-500">
               <h4 className="font-bold mb-2">Inventário Cíclico (Rotativo)</h4>
-              <p className="text-sm text-muted-foreground">Contagens programadas por amostra (ex: contar prateleira X na terça, classe A na sexta). Não interrompe a operação e corrige erros rapidamente.</p>
+              <p className="text-xl text-muted-foreground text-foreground/85 leading-relaxed">Contagens programadas por amostra (ex: contar prateleira X na terça, classe A na sexta). Não interrompe a operação e corrige erros rapidamente.</p>
             </div>
           </div>
           
@@ -504,16 +504,16 @@ export default function AulaGestaoAlmoxarifado(props: AulaProps) {
                     <h5 className="font-bold text-amber-700 dark:text-amber-300">
                       🥇 Equilíbrio do Lote Econômico (LEC)
                     </h5>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
                       O LEC minimiza o custo total. Graficamente, o ponto mínimo ocorre na interseção entre o <strong>custo de emissão de pedidos</strong> e o <strong>custo de posse/armazenagem</strong>.
                     </p>
-                    <p className="text-xs text-muted-foreground">• Custo de posse sobe com lotes maiores | Custo de pedido cai com lotes maiores</p>
+                    <p className="text-lg text-foreground/85 leading-relaxed text-muted-foreground">• Custo de posse sobe com lotes maiores | Custo de pedido cai com lotes maiores</p>
                   </div>
                   <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl space-y-2">
                     <h5 className="font-bold text-blue-700 dark:text-blue-300">
                       🥈 Inventário Cíclico (Rotativo)
                     </h5>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
                       A contagem cíclica (inventário rotativo) garante a precisão de dados de forma permanente ao longo de todo o ano, **sem paralisar as operações comerciais da empresa** (ao contrário do inventário geral anual).
                     </p>
                   </div>
@@ -521,11 +521,11 @@ export default function AulaGestaoAlmoxarifado(props: AulaProps) {
                     <h5 className="font-bold text-emerald-700 dark:text-emerald-300">
                       🥉 Unitização de Carga
                     </h5>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
                       Agrupamento de volumes menores em carga única (palete, container). Objetivo primário: <strong>reduzir custo de movimentação, diminuir avarias e otimizar o transporte</strong>.
                     </p>
                   </div>
-                  <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl border font-mono text-sm">
+                  <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl border font-mono text-xl text-foreground/85 leading-relaxed">
                     <p className="font-bold text-gray-700 dark:text-gray-300 mb-1">🧠 Macete de Código:</p>
                     <p className="text-gray-600 dark:text-gray-400">CLASSE A → controle rigoroso, inventário frequente, menor estoque de segurança</p>
                     <p className="text-gray-600 dark:text-gray-400">CUSTO DE POSSE = CUSTO DE PEDIDO → ponto do LEC (custo mínimo)</p>

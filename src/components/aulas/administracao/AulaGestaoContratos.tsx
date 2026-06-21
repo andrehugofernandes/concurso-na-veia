@@ -289,7 +289,7 @@ export default function AulaGestaoContratos(props: AulaProps) {
                     <h5 className="font-bold text-amber-700 dark:text-amber-300">
                       🥇 O Preposto da Contratada
                     </h5>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
                       A contratada é <strong>obrigada</strong> a manter preposto no local da obra/serviço para representá-la (Art. 74 da Lei 13.303/16). O fiscal comunica-se com o preposto — jamais com os funcionários diretamente — para evitar vínculo empregatício.
                     </p>
                   </div>
@@ -297,10 +297,10 @@ export default function AulaGestaoContratos(props: AulaProps) {
                     <h5 className="font-bold text-blue-700 dark:text-blue-300">
                       🥈 Reequilíbrio Econômico-Financeiro
                     </h5>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
                       Direito do contratado quando <strong>fatos imprevisíveis ou de consequências incalculáveis</strong> alteram a equação original do contrato.
                     </p>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2 text-xs">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2 text-lg text-foreground/85 leading-relaxed">
                       <div className="p-2 bg-blue-50 dark:bg-blue-950/30 rounded border">
                         <strong>Reajuste</strong><br/>Periódico, previsto em cláusula (índice oficial)
                       </div>
@@ -312,7 +312,7 @@ export default function AulaGestaoContratos(props: AulaProps) {
                       </div>
                     </div>
                   </div>
-                  <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl border font-mono text-sm">
+                  <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl border font-mono text-xl text-foreground/85 leading-relaxed">
                     <p className="font-bold text-gray-700 dark:text-gray-300 mb-1">🧠 Macete de Código:</p>
                     <p className="text-gray-600 dark:text-gray-400">PREPOSTO = voz da contratada (não é empregado da estatal)</p>
                     <p className="text-gray-600 dark:text-gray-400">FISCAL = olhos da Administração (atesta a NF)</p>
@@ -384,15 +384,15 @@ export default function AulaGestaoContratos(props: AulaProps) {
             Omissões na fiscalização geram punições severas para o agente público encarregado:
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-            <div className="p-4 bg-muted border border-border rounded-lg text-sm">
+            <div className="p-4 bg-muted border border-border rounded-lg text-xl text-foreground/85 leading-relaxed">
               <strong className="text-foreground block mb-1">Administrativa</strong>
               Advertência, suspensão ou demissão por negligência.
             </div>
-            <div className="p-4 bg-muted border border-border rounded-lg text-sm">
+            <div className="p-4 bg-muted border border-border rounded-lg text-xl text-foreground/85 leading-relaxed">
               <strong className="text-foreground block mb-1">Civil (Ressarcimento)</strong>
               Ter que pagar do próprio bolso o prejuízo causado ao Estado.
             </div>
-            <div className="p-4 bg-muted border border-border rounded-lg text-sm">
+            <div className="p-4 bg-muted border border-border rounded-lg text-xl text-foreground/85 leading-relaxed">
               <strong className="text-foreground block mb-1">Improbidade</strong>
               Multas pesadas e perda de função se houver dolo ou culpa grave.
             </div>
@@ -456,7 +456,7 @@ export default function AulaGestaoContratos(props: AulaProps) {
                     <h5 className="font-bold text-blue-700 dark:text-blue-300">
                       Culpa In Vigilando (Súmula 331 TST)
                     </h5>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-xl text-gray-700 text-foreground/85 leading-relaxed">
                       A responsabilidade da administração pelas dívidas trabalhistas da empresa contratada não é automática, mas decorre da comprovação de <strong>culpa in vigilando</strong> (falha na fiscalização de guias de INSS e FGTS).
                     </p>
                   </div>
@@ -465,7 +465,7 @@ export default function AulaGestaoContratos(props: AulaProps) {
                       Sanções CAASE — Petrobras (RLCP)
                     </h5>
                     <div className="overflow-x-auto">
-                      <table className="text-xs w-full">
+                      <table className="text-lg text-foreground/85 leading-relaxed w-full">
                         <thead>
                           <tr className="bg-rose-100 dark:bg-rose-950/40">
                             <th className="p-2 text-left">Sanção</th>
@@ -482,7 +482,7 @@ export default function AulaGestaoContratos(props: AulaProps) {
                       </table>
                     </div>
                   </div>
-                  <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl border font-mono text-sm">
+                  <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-xl border font-mono text-xl text-foreground/85 leading-relaxed">
                     <p className="font-bold text-gray-700 dark:text-gray-300 mb-1">🧠 Macete de Código:</p>
                     <p className="text-gray-600 dark:text-gray-400">CNDT + CRF-FGTS + Certidão Federal → exigir MENSALMENTE antes do pagamento</p>
                     <p className="text-gray-600 dark:text-gray-400">FRAUDE NA LICITAÇÃO → suspensão GRAVE (13 a 24 meses)</p>
