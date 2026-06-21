@@ -32,37 +32,40 @@ export default function ScrollAnimatedHeader({
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Badge desliza suavemente para a direita (eixo X) no scroll
-      gsap.fromTo(
-        badgeRef.current,
-        { x: -30, opacity: 0.8 },
-        {
-          x: 30,
-          opacity: 1,
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1.2, // suavização do movimento com o scroll
-          },
-        }
-      );
+      const isMobile = window.innerWidth < 768;
+      const offset = isMobile ? 35 : 80;
 
-      // 2. Título desliza suavemente para a esquerda (eixo X) criando um parallax oposto
-      gsap.fromTo(
+      // Criamos uma única timeline sincronizada com o scroll da seção
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top bottom', // começa assim que o topo entra no rodapé da tela
+          end: 'bottom top',   // termina quando o rodapé sai pelo topo da tela
+          scrub: 1.5,          // scrub um pouco mais suave para dar sensação orgânica
+        },
+      });
+
+      // 1. ANIMAÇÃO DO BADGE: Esquerda (-offset) -> Centro (0) -> Direita (+offset)
+      tl.fromTo(
+        badgeRef.current,
+        { x: -offset, opacity: 0.4 },
+        { x: 0, opacity: 1, duration: 1, ease: 'power1.out' },
+        0
+      )
+      // Mantém centralizado por um breve período de rolagem para leitura confortável
+      .to(badgeRef.current, { x: 0, opacity: 1, duration: 0.4 }, 1)
+      .to(badgeRef.current, { x: offset, opacity: 0.4, duration: 1, ease: 'power1.in' }, 1.4);
+
+      // 2. ANIMAÇÃO DO TÍTULO: Direita (+offset) -> Centro (0) -> Esquerda (-offset)
+      tl.fromTo(
         titleRef.current,
-        { x: 30, opacity: 0.8 },
-        {
-          x: -30,
-          opacity: 1,
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1.2,
-          },
-        }
-      );
+        { x: offset, opacity: 0.4 },
+        { x: 0, opacity: 1, duration: 1, ease: 'power1.out' },
+        0
+      )
+      // Mantém centralizado pelo mesmo período de leitura
+      .to(titleRef.current, { x: 0, opacity: 1, duration: 0.4 }, 1)
+      .to(titleRef.current, { x: -offset, opacity: 0.4, duration: 1, ease: 'power1.in' }, 1.4);
     });
 
     return () => ctx.revert();
