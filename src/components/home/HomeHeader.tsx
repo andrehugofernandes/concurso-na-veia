@@ -14,7 +14,10 @@ export default function HomeHeader() {
       {/* DESKTOP HEADER ELEMENTS */}
       
       {/* Menu Tab (Top Left) */}
-      <div className={`hidden md:flex absolute -top-[1px] left-12 ${bgColor} rounded-b-[24px] px-6 py-4 items-center gap-3 z-[60]`}>
+      <div 
+        className={`hidden md:flex absolute -top-[1px] left-12 ${bgColor} rounded-b-[20px] px-6 items-center gap-3 z-[60]`}
+        style={{ height: '68px' }}
+      >
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="flex items-center gap-2 text-slate-900 dark:text-primary-foreground hover:text-primary dark:hover:text-primary-foreground/80 transition-colors"
@@ -23,14 +26,20 @@ export default function HomeHeader() {
           <span className="font-bold">Menu</span>
         </button>
       </div>
-
-      {/* Logo Tab (Top Center) - Mais larga e mais alta */}
-      <div className={`hidden md:flex absolute -top-[1px] left-1/2 -translate-x-1/2 ${bgColor} rounded-b-[32px] px-12 py-5 items-center justify-center gap-3 z-[60] min-w-[300px]`}>
+ 
+      {/* Logo Tab (Top Center) - Exatamente 90px de height garantido via inline style */}
+      <div 
+        className={`hidden md:flex absolute -top-[1px] left-1/2 -translate-x-1/2 ${bgColor} rounded-b-[28px] px-12 items-center justify-center gap-3 z-[60] min-w-[300px]`}
+        style={{ height: '90px' }}
+      >
         <PetrobrasLogo variant="hero-tab" />
       </div>
-
-      {/* Right Actions (Floating in dark area) */}
-      <div className="hidden md:flex absolute top-6 right-12 items-center gap-6 z-[60]">
+ 
+      {/* Right Actions (Floating in dark area) - Alinhado verticalmente com o cabeçalho de 90px */}
+      <div 
+        className="hidden md:flex absolute top-0 right-12 items-center gap-6 z-[60]"
+        style={{ height: '90px' }}
+      >
         <AuthThemeToggle isScrolled={false} />
         <Link 
           href="/login" 
@@ -62,7 +71,7 @@ export default function HomeHeader() {
         {/* Center: Logo Text centered */}
         <div className="justify-self-center flex flex-col justify-center items-center leading-none text-center">
           <h1 className="font-bebas font-bold text-[24px] tracking-tight leading-none whitespace-nowrap flex items-baseline gap-1">
-            <span className="text-white">A VAGA</span>
+            <span className="text-white">PASSEI</span>
             <span className="text-primary" style={{ color: "var(--primary-hex)" }}>EH MINHA</span>
           </h1>
           <span className="font-sans text-[7.5px] font-black uppercase tracking-[0.3em] text-white/60 mt-0.5 whitespace-nowrap">

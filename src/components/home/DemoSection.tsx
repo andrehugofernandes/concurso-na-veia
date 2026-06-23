@@ -96,7 +96,7 @@ export default function DemoSection() {
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: 'var(--primary-gradient)' }}
               >
-                A VAGA EH MINHA
+                PASSEI NO CONCURSO
               </span>{' '}
               em ação
             </>
@@ -134,17 +134,17 @@ export default function DemoSection() {
                 <div className="w-3 h-3 rounded-full bg-yellow-500" />
                 <div className="w-3 h-3 rounded-full bg-green-500" />
                 <div className="flex-1 ml-4 bg-slate-200 dark:bg-zinc-700 rounded-md px-3 py-1 text-xs text-slate-500 dark:text-slate-300 font-mono max-w-xs">
-                  avagaehminha-concursos.ai
+                  passeinoconcurso.ai
                 </div>
               </div>
 
               {/* Mockup Main Shell (Sidebar + Main Area) */}
               <div className="flex min-h-[640px] bg-slate-50 dark:bg-zinc-950 font-sans">
                 {/* Sidebar Mockup */}
-                <aside className="w-56 flex-shrink-0 border-r border-slate-200 dark:border-white/5 bg-white dark:bg-zinc-900 p-4 hidden md:flex flex-col justify-between">
+                <aside className="w-56 flex-shrink-0 border-r border-slate-200 dark:border-white/5 bg-white dark:bg-zinc-900 p-4 hidden md:flex flex-col justify-between z-10">
                   <div>
                     {/* Logo Container */}
-                    <div className="mb-8 scale-[0.65] origin-left">
+                    <div className="mb-8 scale-[0.5] origin-left">
                       <PetrobrasLogo />
                     </div>
 

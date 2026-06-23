@@ -213,7 +213,7 @@ export default function SejaProPage() {
       <div className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-foreground uppercase tracking-tight flex items-center gap-4">
           <LuZap className="text-yellow-500 w-10 h-10 md:w-12 md:h-12 fill-yellow-500" />
-          A Vaga EH Minha
+          Passei No Concurso
         </h1>
         <p className="text-muted-foreground text-lg mt-2 font-medium max-w-2xl">
           Escolha o seu nível de concurso e o plano ideal para acelerar sua aprovação.

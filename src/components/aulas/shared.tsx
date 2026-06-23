@@ -2133,7 +2133,7 @@ export function ModuleSummaryCarouselNew({
       pdf.setFontSize(22);
       pdf.setTextColor(15, 23, 42);
       pdf.setFont("helvetica", "bold");
-      pdf.text("A VAGA EH MINHA", margin, 18);
+      pdf.text("PASSEI NO CONCURSO", margin, 18);
 
       pdf.setFontSize(10);
       pdf.setFont("helvetica", "normal");

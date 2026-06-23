@@ -71,7 +71,7 @@ export default function HomeFooter() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} A VAGA EH MINHA. Todos os direitos reservados.
+            © {new Date().getFullYear()} PASSEI NO CONCURSO. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-2 text-slate-500 text-sm">
             Feito com <span className="text-red-500">❤️</span> e Inteligência Artificial.

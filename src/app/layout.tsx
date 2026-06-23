@@ -26,11 +26,11 @@ const orbitron = Orbitron({
 });
 
 export const metadata: Metadata = {
-  title: "A Vaga eh Minha - Domine seu Futuro",
+  title: "Passei No Concurso - Sua Aprovação Aqui",
   description:
-    "Sistema avançado de estudos com IA para concursos públicos. A vaga eh sua no avagaemia.ai.",
+    "Sistema avançado de estudos com IA para concursos públicos. A aprovação é sua no passeinoconcurso.ai.",
   keywords:
-    "avagaemia, a vaga eh minha, concurso, ia, simulado, aulas interativas",
+    "passeinoconcurso, simulador, concurso, ia, simulado, aulas interativas",
 };
 
 export default function RootLayout({

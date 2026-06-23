@@ -11,9 +11,9 @@ export default function HomeHero() {
   };
 
   return (
-    <section className="bg-slate-100 dark:bg-primary pt-4 px-4 pb-0">
+    <section className="bg-slate-100 dark:bg-primary p-4">
       {/* Container principal do Hero com bordas arredondadas simulando o frame */}
-      <div className="relative h-[calc(100vh-16px)] flex flex-col items-center justify-start md:justify-center pt-20 xs:pt-24 md:pt-0 pb-12 md:pb-0 overflow-hidden bg-slate-950 rounded-[30px] md:rounded-[40px] shadow-2xl">
+      <div className="relative min-h-[calc(100vh-32px)] md:h-[calc(100vh-32px)] flex flex-col items-center justify-start md:justify-center pt-[100px] xs:pt-[115px] md:pt-[140px] lg:pt-[165px] xl:pt-[190px] 2xl:pt-[210px] pb-[100px] xs:pb-[115px] md:pb-[140px] lg:pb-[165px] xl:pb-[190px] 2xl:pb-[210px] overflow-hidden bg-slate-950 rounded-[30px] md:rounded-[40px] shadow-2xl">
         
         {/* Header embutido para fazer o efeito de recortes "cutout" na borda */}
         <HomeHeader />
@@ -73,7 +73,7 @@ export default function HomeHero() {
             transition={{ delay: 0.2 }}
             className="max-w-2xl mx-auto text-base md:text-xl text-white/70 leading-relaxed font-medium mb-5 md:mb-12"
           >
-            Simulados inteligentes baseados no padrão CESGRANRIO. Estude os temas com maior recorrência nas provas e evolua seu desempenho com análise de IA.
+            Simulados inteligentes baseados no padrão CESGRANRIO. Estude os temas com maior recorrência nas provas e evolua seu desempenho com análise de Inteligência Artificial.
           </motion.p>
 
           {/* Botões CTA */}
@@ -104,7 +104,7 @@ export default function HomeHero() {
           onClick={scrollToNext}
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="hidden md:flex absolute bottom-20 left-1/2 -translate-x-1/2 z-[60] w-14 h-14 items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors cursor-pointer text-white"
+          className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-[60] w-14 h-14 items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors cursor-pointer text-white"
           aria-label="Rolar para baixo"
         >
           <LuMouse className="w-6 h-6" />

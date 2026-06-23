@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Users, TrendingUp, Zap, Target, Bot } from 'lucide-react';
 import { gsap } from 'gsap';
-import ScrollAnimatedHeader from './ScrollAnimatedHeader';
 
 const stats = [
   {
@@ -10,85 +9,85 @@ const stats = [
     value: '12K+',
     label: 'Candidatos Beneficiados',
     sub: 'Mais de 12 mil estudantes já aceleraram seus estudos com a nossa plataforma.',
-    colorClass: 'bg-green-500/10 text-green-600 dark:text-green-500',
-    isDarkCard: false,
+    colorClass: 'bg-green-500/10 text-green-400',
+    borderClass: 'border-green-500/15',
+    glowClass: 'shadow-green-500/5',
   },
   {
     icon: TrendingUp,
     value: '+98%',
     label: 'Evolução em Simulados',
     sub: 'Aumento médio na pontuação para assinantes que estudam diariamente.',
-    colorClass: 'bg-emerald-500/10 text-emerald-500',
-    isDarkCard: true,
+    colorClass: 'bg-emerald-500/10 text-emerald-400',
+    borderClass: 'border-emerald-500/20',
+    glowClass: 'shadow-emerald-500/5',
   },
   {
     icon: Zap,
     value: '12x',
     label: 'Criação de Planos',
     sub: 'Rapidez na geração de cronogramas para o edital do concurso.',
-    colorClass: 'bg-amber-500/10 text-amber-500',
-    isDarkCard: false,
+    colorClass: 'bg-amber-500/10 text-amber-400',
+    borderClass: 'border-amber-500/15',
+    glowClass: 'shadow-amber-500/5',
   },
   {
     icon: Target,
     value: '4x',
     label: 'Mais Questões Resolvidas',
     sub: 'Volume de estudos superior comparado à preparação tradicional.',
-    colorClass: 'bg-pink-500/10 text-pink-500',
-    isDarkCard: false,
+    colorClass: 'bg-pink-500/10 text-pink-400',
+    borderClass: 'border-pink-500/15',
+    glowClass: 'shadow-pink-500/5',
   },
   {
     icon: Bot,
     value: '98%',
     label: 'Redução de Burocracia',
     sub: 'Automação inteligente de cronograma, revisões e métricas.',
-    colorClass: 'bg-indigo-500/10 text-indigo-500',
-    isDarkCard: false,
+    colorClass: 'bg-cyan-500/10 text-cyan-400',
+    borderClass: 'border-cyan-500/15',
+    glowClass: 'shadow-cyan-500/5',
   },
 ];
 
-export default function ResultsSection() {
+const MarqueeRow = ({ items, direction = -1, duration = 30, rowIndex }: { items: any[], direction?: number, duration?: number, rowIndex: number }) => {
   const trackRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const loopRef = useRef<gsap.core.Tween | null>(null);
   const cardAnimsRef = useRef<gsap.core.Tween[]>([]);
 
-  // Triplicamos os itens para garantir um looping infinito perfeitamente fluido e contínuo
-  const duplicatedItems = [...stats, ...stats, ...stats];
-
   useEffect(() => {
-    cardRefs.current = cardRefs.current.slice(0, duplicatedItems.length);
+    cardRefs.current = cardRefs.current.slice(0, items.length);
 
     const ctx = gsap.context(() => {
-      // 1. Loop contínuo horizontal de translação
+      const startX = direction === -1 ? 0 : -33.3333;
+      const endX = direction === -1 ? -33.3333 : 0;
+      
+      gsap.set(trackRef.current, { xPercent: startX });
       const loop = gsap.to(trackRef.current, {
-        xPercent: -33.3333,
+        xPercent: endX,
         ease: 'none',
         repeat: -1,
-        duration: 22,
+        duration: duration,
       });
       loopRef.current = loop;
 
-      // 2. Movimento orgânico peristáltico tipo "minhoca"
-      // Cada card sofre expansão/contração e oscilação de X/Y de forma dessincronizada (staggered)
-      // Porém, os clones (itens na mesma posição relativa do loop) têm a mesma fase/delay
-      // garantindo que a transição de loop seja 100% imperceptível
-      duplicatedItems.forEach((_, index) => {
+      items.forEach((_, index) => {
         const card = cardRefs.current[index];
         if (!card) return;
 
-        const originalIndex = index % stats.length;
-
+        const originalIndex = index % 5;
         const anim = gsap.to(card, {
-          scaleX: 1.07,
-          scaleY: 0.94,
-          x: 14,
-          y: 3,
-          duration: 1.6,
+          scaleX: 1.03,
+          scaleY: 0.97,
+          x: direction === -1 ? 8 : -8,
+          y: 2,
+          duration: 1.8 + rowIndex * 0.4,
           yoyo: true,
           repeat: -1,
           ease: 'sine.inOut',
-          delay: originalIndex * 0.28,
+          delay: originalIndex * 0.3,
         });
         cardAnimsRef.current.push(anim);
       });
@@ -98,103 +97,115 @@ export default function ResultsSection() {
       ctx.revert();
       cardAnimsRef.current = [];
     };
-  }, []);
-
-  const handleMouseEnter = () => {
-    // Reduz suavemente a velocidade geral para 15% ao passar o mouse
-    if (loopRef.current) {
-      gsap.to(loopRef.current, { timeScale: 0.15, duration: 0.8, ease: 'power2.out' });
-    }
-    // Desacelera as animações de minhoca individuais
-    cardAnimsRef.current.forEach((anim) => {
-      gsap.to(anim, { timeScale: 0.25, duration: 0.8, ease: 'power2.out' });
-    });
-  };
-
-  const handleMouseLeave = () => {
-    // Retorna suavemente à velocidade original
-    if (loopRef.current) {
-      gsap.to(loopRef.current, { timeScale: 1, duration: 0.8, ease: 'power2.out' });
-    }
-    cardAnimsRef.current.forEach((anim) => {
-      gsap.to(anim, { timeScale: 1, duration: 0.8, ease: 'power2.out' });
-    });
-  };
+  }, [items, direction, duration, rowIndex]);
 
   return (
-    <section id="resultados" className="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden border-t border-slate-200 dark:border-white/5">
-      {/* Glowes de background */}
-      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-green-500/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
-
-      <div className="w-full relative z-10">
-        <ScrollAnimatedHeader
-          badgeText="A plataforma de estudos com impacto real"
-          badgeColorClass="border-primary/20 bg-primary/5 text-primary"
-          badgeStyle={{ color: 'var(--primary-hex, #22c55e)' }}
-          titleText={
-            <>
-              A VAGA EH MINHA gera{' '}
-              <span
-                className="bg-clip-text text-transparent"
-                style={{ backgroundImage: 'var(--primary-gradient)' }}
-              >
-                resultados extraordinários
-              </span>{' '}
-              para candidatos
-            </>
-          }
-        />
-
-        {/* Carrossel Infinito com Efeito Minhoca */}
-        <div className="w-full overflow-hidden py-10 relative">
-          {/* Degradê de Fade nas Bordas Laterais */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-50 dark:from-slate-900 to-transparent z-20 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-50 dark:from-slate-900 to-transparent z-20 pointer-events-none" />
-
-          <div
-            ref={trackRef}
-            className="flex gap-6 w-max select-none cursor-grab active:cursor-grabbing px-6"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            {duplicatedItems.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={index}
-                  ref={(el) => {
-                    cardRefs.current[index] = el;
-                  }}
-                  className={`flex-shrink-0 w-[300px] md:w-[330px] p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between h-[210px] ${
-                    item.isDarkCard
-                      ? 'bg-slate-950 border-white/10 text-white shadow-2xl shadow-emerald-950/20'
-                      : 'bg-white dark:bg-background border-slate-200 dark:border-white/10 text-slate-900 dark:text-white shadow-lg'
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center gap-4 mb-3">
-                      <div className={`w-12 h-12 rounded-xl ${item.colorClass} flex items-center justify-center shrink-0`}>
-                        <Icon className="w-6 h-6" strokeWidth={2.5} />
-                      </div>
-                      <span
-                        className="text-3xl font-black bg-clip-text text-transparent"
-                        style={{ backgroundImage: 'var(--primary-gradient)' }}
-                      >
-                        {item.value}
-                      </span>
-                    </div>
-                    <h4 className={`text-sm font-extrabold tracking-tight ${item.isDarkCard ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
-                      {item.label}
-                    </h4>
-                    <p className={`text-xs mt-2 leading-relaxed font-medium ${item.isDarkCard ? 'text-slate-400' : 'text-slate-500 dark:text-slate-400'}`}>
-                      {item.sub}
-                    </p>
+    <div
+      ref={trackRef}
+      className="flex gap-8 w-max select-none pointer-events-none px-6 mb-8 last:mb-0"
+    >
+      {items.map((item, index) => {
+        const Icon = item.icon;
+        return (
+          <div key={index} className="flex-shrink-0">
+            <div
+              ref={(el) => {
+                cardRefs.current[index] = el;
+              }}
+              className={`w-[310px] md:w-[340px] p-8 rounded-3xl border transition-all duration-300 flex flex-col justify-between h-[200px] md:h-[220px] bg-slate-900/60 ${item.borderClass} text-white ${item.glowClass} shadow-xl`}
+            >
+              <div>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className={`w-12 h-12 rounded-2xl ${item.colorClass} flex items-center justify-center shrink-0`}>
+                    <Icon className="w-6 h-6" strokeWidth={2.5} />
                   </div>
+                  <span
+                    className="text-3xl md:text-4xl font-black bg-clip-text text-transparent"
+                    style={{ backgroundImage: 'var(--primary-gradient)' }}
+                  >
+                    {item.value}
+                  </span>
                 </div>
-              );
-            })}
+                <h4 className="text-base md:text-lg font-extrabold tracking-tight text-white/95">
+                  {item.label}
+                </h4>
+                <p className="text-xs md:text-sm mt-3 leading-relaxed font-medium text-slate-400">
+                  {item.sub}
+                </p>
+              </div>
+            </div>
           </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default function ResultsSection() {
+  const row1 = [...stats, ...stats, ...stats];
+  
+  const stats2 = [...stats].reverse();
+  const row2 = [...stats2, ...stats2, ...stats2];
+
+  const stats3 = [stats[2], stats[3], stats[4], stats[0], stats[1]];
+  const row3 = [...stats3, ...stats3, ...stats3];
+
+  const stats4 = [stats[4], stats[3], stats[2], stats[1], stats[0]];
+  const row4 = [...stats4, ...stats4, ...stats4];
+
+  const stats5 = [stats[1], stats[2], stats[3], stats[4], stats[0]];
+  const row5 = [...stats5, ...stats5, ...stats5];
+
+  const stats6 = [...stats2];
+  const row6 = [...stats6, ...stats6, ...stats6];
+
+  return (
+    <section id="resultados" className="relative min-h-[750px] md:min-h-[900px] bg-slate-950 flex items-center justify-center overflow-hidden border-t border-b border-white/5 py-24 md:py-32">
+      {/* 1. Parede de Cards Inclinada no Background (estilo Apple TV) */}
+      <div 
+        className="absolute inset-0 w-full h-full overflow-hidden opacity-[0.45] pointer-events-none select-none z-0"
+      >
+        <div className="transform -skew-y-12 scale-[1.45] origin-center py-4 flex flex-col justify-center h-full">
+          <MarqueeRow items={row1} direction={-1} duration={32} rowIndex={0} />
+          <MarqueeRow items={row2} direction={1} duration={40} rowIndex={1} />
+          <MarqueeRow items={row3} direction={-1} duration={28} rowIndex={2} />
+          <MarqueeRow items={row4} direction={1} duration={36} rowIndex={3} />
+          <MarqueeRow items={row5} direction={-1} duration={30} rowIndex={4} />
+          <MarqueeRow items={row6} direction={1} duration={42} rowIndex={5} />
+        </div>
+      </div>
+
+      {/* 2. Máscaras de Gradiente para dar profundidade e contraste */}
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-950/25 to-slate-950 z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_35%,#020617_95%)] z-10 pointer-events-none" />
+
+      {/* 3. Conteúdo Principal Sobreposto e Centralizado */}
+      <div className="relative z-20 max-w-4xl mx-auto px-6 text-center">
+        {/* Efeito Glow atrás do texto */}
+        <div className="absolute inset-0 -m-20 bg-green-500/10 blur-[130px] rounded-full z-0 pointer-events-none" />
+        
+        <div className="relative z-10 flex flex-col items-center">
+          <span 
+            className="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 font-bold text-xs uppercase tracking-widest mb-8 shadow-lg shadow-primary/10 backdrop-blur-md"
+            style={{ color: 'var(--primary-hex, #22c55e)' }}
+          >
+            A plataforma de estudos com impacto real
+          </span>
+          
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tight leading-[1.08] mb-8 drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]">
+            PASSEI NO CONCURSO gera <br className="hidden md:inline" />
+            <span 
+              className="bg-clip-text text-transparent font-extrabold"
+              style={{ backgroundImage: 'var(--primary-gradient)' }}
+            >
+              resultados extraordinários
+            </span> <br className="hidden md:inline" />
+            para candidatos
+          </h2>
+          
+          <p className="text-base sm:text-lg md:text-xl text-slate-300 font-medium max-w-2xl leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+            Estude com inteligência através de simulados avançados no padrão CESGRANRIO, acompanhe sua evolução e conquiste sua vaga usando cronogramas gerados por IA.
+          </p>
         </div>
       </div>
     </section>
