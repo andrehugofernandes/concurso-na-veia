@@ -25,37 +25,64 @@ export class FreeLLMProvider implements AIProvider {
   async generateQuestion(options: AIProviderOptions): Promise<Questao> {
     const { materia, dificuldade, assunto, contexto, questoesAnteriores } = options;
 
-    const prompt = `Você é um especialista em criar questões de concurso no estilo CESGRANRIO para a Petrobras.
+    const prompt = `Você é um elaborador de provas com 20 anos de experiência na banca CESGRANRIO, especialista em concursos da Petrobras.
 
-INSTRUÇÕES CRÍTICAS:
-1. Crie UMA questão de ${materia} ${assunto ? `(Assunto: ${assunto})` : ''} para concurso Petrobras ${contexto?.nivel ? `nível ${contexto.nivel}` : ''} ${contexto?.cargo ? `(Cargo: ${contexto.cargo})` : ''}
-2. Dificuldade: ${dificuldade || 'Média'}
-3. Estilo CESGRANRIO: enunciado CURTO (2-3 linhas), objetivo, direto.
-4. 5 alternativas plausíveis e distintas entre si. PROIBIDO criar opções idênticas. Todas as 5 alternativas devem ser únicas.
-5. PROIBIDO: NUNCA inclua letras (A, B, C, D, E), números ou prefixos no início das alternativas. O JSON deve conter apenas o texto puro da opção.
+TAREFA: Crie UMA questão de ${materia} ${assunto ? `(Assunto: ${assunto})` : ''} para concurso Petrobras ${contexto?.nivel ? `nível ${contexto.nivel}` : ''} ${contexto?.cargo ? `(Cargo: ${contexto.cargo})` : ''}
+Dificuldade: ${dificuldade || 'Média'}
 
-⚠️ REGRA ABSOLUTA DE CONSISTÊNCIA MATEMÁTICA E LÓGICA:
-- Primeiro, defina o problema e REALIZE O CÁLCULO PASSO A PASSO na sua explicacao.
-- A alternativa marcada como CORRETA (índice 0, 1, 2, 3 ou 4) DEVE, SEM EXCEÇÃO, ser o índice exato da string no array "alternativas" que contém a resposta comprovada pela sua explicação.
-- Verificação final: Antes de fechar o JSON, confirme mentalmente se alternativas[correta] === resultado_da_explicacao.
-- DISTRIBUA a resposta correta aleatoriamente entre os índices 0, 1, 2, 3 e 4. NÃO coloque sempre no índice 0.
+ESTRUTURA OBRIGATÓRIA DO ENUNCIADO (PADRÃO CESGRANRIO REAL):
 
-Retorne APENAS um JSON válido seguindo este formato:
+O campo "enunciado" deve ter DUAS PARTES obrigatórias, separadas por \\n\\n:
+
+PARTE 1 — CONTEXTUALIZAÇÃO / SITUAÇÃO-PROBLEMA (obrigatório):
+${materia.toLowerCase().includes("português") || materia.toLowerCase().includes("portug") ? `Para LÍNGUA PORTUGUESA: Parágrafo de 4-8 linhas simulando trecho de reportagem, artigo técnico ou relatório corporativo. Linguagem formal, culta, com estrutura sintática variada.` : ''}${materia.toLowerCase().includes("matemát") || materia.toLowerCase().includes("matemat") ? `Para MATEMÁTICA: Situação-problema realista contextualizada na Petrobras (produção de barris, custos, logística, juros, estatísticas). Forneça TODOS os dados numéricos. Exija raciocínio em 2-3 etapas.` : ''}${materia.toLowerCase().includes("inglês") || materia.toLowerCase().includes("ingles") || materia.toLowerCase().includes("inglesa") ? `Para LÍNGUA INGLESA: Parágrafo de 4-8 linhas EM INGLÊS, artigo técnico ou relatório do setor de energia/petróleo. Vocabulário técnico e formal. Comando da questão em PORTUGUÊS.` : ''}${materia.toLowerCase().includes("específ") || materia.toLowerCase().includes("especif") || materia.toLowerCase().includes("bloco") ? `Para CONHECIMENTOS ESPECÍFICOS: Cenário técnico/normativo realista de 4-8 linhas com situação operacional, problema técnico ou aplicação de norma do cargo "${contexto?.cargo || 'técnico'}". Terminologia técnica precisa.` : ''}${!materia.toLowerCase().includes("português") && !materia.toLowerCase().includes("portug") && !materia.toLowerCase().includes("matemát") && !materia.toLowerCase().includes("matemat") && !materia.toLowerCase().includes("inglês") && !materia.toLowerCase().includes("ingles") && !materia.toLowerCase().includes("inglesa") && !materia.toLowerCase().includes("específ") && !materia.toLowerCase().includes("especif") && !materia.toLowerCase().includes("bloco") ? `Parágrafo de 4-8 linhas contextualizando com cenário realista da indústria do petróleo, energia ou economia brasileira.` : ''}
+
+PARTE 2 — COMANDO DA QUESTÃO (obrigatório):
+Pergunta PRECISA e ESPECÍFICA referenciando elemento concreto da contextualização.
+
+❌ ANTI-PADRÕES (PROIBIDO):
+- Frase solta sem pergunta. Lacuna simplória. Enunciado genérico. Questão de uma operação só.
+
+✅ EXEMPLO (siga este padrão):
+${materia.toLowerCase().includes("matemát") || materia.toLowerCase().includes("matemat") ? `{
+  "enunciado": "Uma plataforma produz 15.000 barris/dia. A produção foi reduzida em 20% durante 10 dias e operou normalmente nos 20 restantes. A US$ 75,00/barril e custo fixo de US$ 8.500.000,00/mês, o lucro obtido naquele mês, em dólares, foi de",
+  "alternativas": ["US$ 18.500.000,00", "US$ 19.250.000,00", "US$ 23.000.000,00", "US$ 24.250.000,00", "US$ 31.500.000,00"],
+  "correta": 2
+}` : ''}${materia.toLowerCase().includes("inglês") || materia.toLowerCase().includes("ingles") || materia.toLowerCase().includes("inglesa") ? `{
+  "enunciado": "Petrobras has developed cutting-edge technologies that have <u>driven down</u> production costs, making deep-water operations commercially viable even during periods of low oil prices.\\n\\nNo texto, a expressão destacada pode ser substituída, sem alteração de sentido, por",
+  "alternativas": ["reduced, indicando diminuição dos custos.", "increased, indicando crescimento dos custos.", "maintained, indicando estabilidade.", "estimated, indicando projeção.", "overlooked, indicando que foram ignorados."],
+  "correta": 0
+}` : ''}${materia.toLowerCase().includes("específ") || materia.toLowerCase().includes("especif") || materia.toLowerCase().includes("bloco") ? `{
+  "enunciado": "Em uma refinaria, a equipe identificou corrosão sob isolamento (CUI) em tubulação de aço carbono a 180°C. O laudo indicou perda de 30% da espessura nominal.\\n\\nDe acordo com a NR-13, o procedimento correto é",
+  "alternativas": ["interditar e substituir antes do retorno operacional.", "aplicar revestimento e monitorar trimestralmente.", "reduzir pressão em 50% até a próxima parada.", "reclassificar para serviço em temperatura ambiente.", "aumentar inspeção visual para quinzenal."],
+  "correta": 0
+}` : ''}${materia.toLowerCase().includes("português") || materia.toLowerCase().includes("portug") ? `{
+  "enunciado": "A Petrobras tem direcionado investimentos para fontes renováveis, <u>embora</u> seu portfólio principal ainda dependa da exploração no pré-sal.\\n\\nA palavra destacada introduz oração que expressa ideia de",
+  "alternativas": ["concessão, pois apresenta fato contrário à expectativa.", "causa, pois justifica o investimento.", "consequência, pois indica resultado.", "finalidade, pois exprime objetivo.", "condição, pois estabelece hipótese."],
+  "correta": 0
+}` : ''}${!materia.toLowerCase().includes("português") && !materia.toLowerCase().includes("portug") && !materia.toLowerCase().includes("matemát") && !materia.toLowerCase().includes("matemat") && !materia.toLowerCase().includes("inglês") && !materia.toLowerCase().includes("ingles") && !materia.toLowerCase().includes("inglesa") && !materia.toLowerCase().includes("específ") && !materia.toLowerCase().includes("especif") && !materia.toLowerCase().includes("bloco") ? `{
+  "enunciado": "A Petrobras previu investimentos de US$ 102 bilhões para 2025-2029, com 83% para exploração e produção.\\n\\nCom base no texto, a estratégia da Petrobras",
+  "alternativas": ["prioriza diversificação para renováveis.", "concentra recursos na exploração e produção.", "busca reduzir produção total.", "destina volumes iguais a todas as áreas.", "visa manter produção sem expansão."],
+  "correta": 1
+}` : ''}
+
+REGRAS TÉCNICAS:
+1. ALTERNATIVAS: 5 opções plausíveis e distintas. PROIBIDO alternativas de uma só palavra quando o contexto pede análise.
+2. PROIBIDO letras (A-E) ou prefixos no início. Texto puro.
+3. GABARITO: Índice "correta" (0-4) correto. DISTRIBUA aleatoriamente.
+4. EXPLICAÇÃO: Detalhada. Para Matemática, passo a passo completo.
+5. HTML: Use <b>, <u>, <i>. NÃO use Markdown.
+6. COERÊNCIA: "PALAVRA destacada" = UMA palavra. "EXPRESSÃO destacada" = LOCUÇÃO.
+
+Retorne APENAS um JSON válido:
 {
-  "enunciado": "texto da questão",
-  "alternativas": ["opção A", "opção B", "opção C", "opção D", "opção E"],
+  "enunciado": "CONTEXTUALIZAÇÃO...\\n\\nCOMANDO DA QUESTÃO",
+  "alternativas": ["opção 1", "opção 2", "opção 3", "opção 4", "opção 5"],
   "correta": 0,
-  "explicacao": "Explicação detalhada com o passo a passo matemático exato",
+  "explicacao": "Explicação detalhada",
   "assunto": "${assunto || 'Geral'}",
   "dificuldade": "${dificuldade || 'Média'}"
-}
-
-REGRAS DE FORMATAÇÃO E COERÊNCIA:
-- COERÊNCIA TOTAL: Se o enunciado pede um conceito (ex: Pronome), as alternativas devem ser desse conceito.
-- Use tags HTML para destaque visual: <b>negrito</b>, <u>sublinhado</u>, <i>itálico</i>.
-- NÃO use Markdown no texto.
-- ⚠️ SUBLINHADO/DESTAQUE DE PALAVRAS: Sempre que o enunciado fizer referência a termos, expressões, palavras ou trechos "destacados", "sublinhados" ou "em negrito", você DEVE, OBRIGATORIAMENTE, aplicar a tag HTML correspondente ao redor desse termo no texto da frase citada. Exemplo: Se o enunciado diz "apresenta duas palavras destacadas", envolva as duas palavras alvo com a tag <u> (ex: "apresenta duas palavras destacadas: a primeira é <u>rapidamente</u> e a segunda..."). Nunca use underscores (_texto_) para sublinhar. Use EXCLUSIVAMENTE a tag HTML <u>texto</u>.
-- ⚠️ COERÊNCIA LINGUÍSTICA: Se o enunciado pede "a PALAVRA sublinhada/destacada", sublinhe/destaque UMA ÚNICA PALAVRA. Se o destaque for uma LOCUÇÃO (2+ palavras), use "a EXPRESSÃO sublinhada/destacada" ou "o TRECHO sublinhado/destacado".`;
+}`;
 
     const start = Date.now();
     try {
@@ -131,30 +158,37 @@ REGRAS DE FORMATAÇÃO E COERÊNCIA:
 
     const orientacaoEspecificas = getOrientacaoMateria();
 
-    const prompt = `Você é um especialista em criar questões de concurso no estilo CESGRANRIO para a Petrobras.
+    const prompt = `Você é um elaborador de provas com 20 anos de experiência na banca CESGRANRIO, especialista em concursos da Petrobras.
     
-    INSTRUÇÕES:
-    1. Crie EXATAMENTE ${batchSize} questões de ${materia} ${assunto ? `(Assunto: ${assunto})` : ''} para candidato a ${contexto?.cargo || 'Geral'} nível ${contexto?.nivel || 'médio'}.${orientacaoEspecificas}
-    2. Estilo CESGRANRIO: enunciado direto, 5 alternativas.
-    3. PROIBIDO: Todas as 5 alternativas DEVEM ser diferentes entre si na mesma questão. Nunca repita uma opção. Todas as 5 opções devem ser únicas.
-    4. PROIBIDO: NUNCA inclua letras (A, B, C, D, E), números ou prefixos no início das alternativas. O JSON deve conter apenas o texto puro da opção.
-    5. UNICIDADE: Cada questão deste lote deve ter enunciado COMPLETAMENTE diferente das demais. PROIBIDO repetir o mesmo trecho no enunciado de duas questões.
-    6. COERÊNCIA: O enunciado e as alternativas devem tratar rigorosamente do mesmo conceito.
-    7. REGRA ABSOLUTA DE GABARITO: O índice informado no campo "correta" (0 a 4) DEVE corresponder EXATAMENTE à posição dentro do array "alternativas". Omitir essa checagem causará erro de gabarito para os alunos.
-    8. REGRAS DE FORMATAÇÃO E COERÊNCIA:
-       - Use tags HTML para destaque visual: <b>negrito</b>, <u>sublinhado</u>, <i>itálico</i>. NÃO use Markdown.
-       - ⚠️ SUBLINHADO/DESTAQUE DE PALAVRAS: Sempre que o enunciado fizer referência a termos, expressões, palavras ou trechos "destacados", "sublinhados" ou "em negrito", você DEVE, OBRIGATORIAMENTE, aplicar a tag HTML correspondente (ex: <u>texto</u>) ao redor desse termo no texto da frase citada.
-       - ⚠️ COERÊNCIA LINGUÍSTICA: Se o enunciado pede "a PALAVRA sublinhada/destacada", sublinhe/destaque UMA ÚNICA PALAVRA. Se o destaque for uma LOCUÇÃO (2+ palavras), use "a EXPRESSÃO sublinhada/destacada" ou "o TRECHO sublinhado/destacado".
-    9. Retorne APENAS um JSON que seja um ARRAY de objetos.
-    10. NÃO adicione texto explicativo fora do JSON.
+    TAREFA: Crie EXATAMENTE ${batchSize} questões de ${materia} ${assunto ? `(Assunto: ${assunto})` : ''} para candidato a ${contexto?.cargo || 'Geral'} nível ${contexto?.nivel || 'médio'}.${orientacaoEspecificas}
+    Dificuldade: ${dificuldade || 'Média'}
 
-    Formato esperado:
+    ESTRUTURA OBRIGATÓRIA DE CADA ENUNCIADO (PADRÃO CESGRANRIO REAL):
+
+    Cada "enunciado" deve ter DUAS PARTES obrigatórias, separadas por \\n\\n:
+
+    PARTE 1 — CONTEXTUALIZAÇÃO / SITUAÇÃO-PROBLEMA (obrigatório):
+${materia.toLowerCase().includes("português") || materia.toLowerCase().includes("portug") ? `    Para LÍNGUA PORTUGUESA: Parágrafo de 4-8 linhas simulando trecho de reportagem, artigo técnico ou relatório. Linguagem formal e culta.` : ''}${materia.toLowerCase().includes("matemát") || materia.toLowerCase().includes("matemat") ? `    Para MATEMÁTICA: Situação-problema realista contextualizada na Petrobras. Forneça TODOS os dados numéricos. Raciocínio em 2-3 etapas.` : ''}${materia.toLowerCase().includes("inglês") || materia.toLowerCase().includes("ingles") || materia.toLowerCase().includes("inglesa") ? `    Para LÍNGUA INGLESA: Parágrafo de 4-8 linhas EM INGLÊS do setor de energia/petróleo. Comando em PORTUGUÊS.` : ''}${materia.toLowerCase().includes("específ") || materia.toLowerCase().includes("especif") || materia.toLowerCase().includes("bloco") ? `    Para CONHECIMENTOS ESPECÍFICOS: Cenário técnico/normativo de 4-8 linhas com situação operacional do cargo "${contexto?.cargo || 'técnico'}".` : ''}${!materia.toLowerCase().includes("português") && !materia.toLowerCase().includes("portug") && !materia.toLowerCase().includes("matemát") && !materia.toLowerCase().includes("matemat") && !materia.toLowerCase().includes("inglês") && !materia.toLowerCase().includes("ingles") && !materia.toLowerCase().includes("inglesa") && !materia.toLowerCase().includes("específ") && !materia.toLowerCase().includes("especif") && !materia.toLowerCase().includes("bloco") ? `    Parágrafo de 4-8 linhas com cenário realista da indústria do petróleo ou economia brasileira.` : ''}
+
+    PARTE 2 — COMANDO DA QUESTÃO (obrigatório):
+    Pergunta PRECISA e ESPECÍFICA referenciando elemento concreto da contextualização.
+
+    ❌ ANTI-PADRÕES (PROIBIDO):
+    - Frase solta sem pergunta. Lacuna simplória. Enunciado genérico. Questão trivial.
+
+    REGRAS:
+    1. 5 alternativas plausíveis, distintas, com distratores inteligentes.
+    2. PROIBIDO letras (A-E) ou prefixos. 3. UNICIDADE: contextualização e comando diferentes em cada questão.
+    4. GABARITO correto. 5. HTML: <b>, <u>, <i>. NÃO Markdown. 6. COERÊNCIA linguística.
+    7. Retorne APENAS JSON. NÃO adicione texto fora do JSON.
+
+    Formato:
     [
       {
-        "enunciado": "...",
-        "alternativas": ["...", "...", "...", "...", "..."],
+        "enunciado": "CONTEXTUALIZAÇÃO...\\n\\nCOMANDO DA QUESTÃO",
+        "alternativas": ["opção 1", "opção 2", "opção 3", "opção 4", "opção 5"],
         "correta": 0,
-        "explicacao": "...",
+        "explicacao": "Explicação detalhada",
         "assunto": "${assunto || 'Geral'}",
         "dificuldade": "${dificuldade || 'Média'}"
       }
