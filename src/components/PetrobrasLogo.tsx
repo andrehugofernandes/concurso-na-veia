@@ -1,14 +1,26 @@
 import React from "react";
 import Link from "next/link";
 
-export default function PetrobrasLogo({ className, variant }: { className?: string; variant?: "default" | "white" | "home-top" | "hero-tab" }) {
+export default function PetrobrasLogo({ 
+  className, 
+  variant,
+  compact 
+}: { 
+  className?: string; 
+  variant?: "default" | "white" | "home-top" | "hero-tab";
+  compact?: boolean;
+}) {
   return (
     <Link 
       href="/" 
-      className={`flex items-center gap-6 md:gap-3 group hover:opacity-90 transition-opacity ${className}`}
+      className={`flex items-center group hover:opacity-90 transition-opacity ${
+        compact ? "gap-2" : "gap-6 md:gap-3"
+      } ${className || ""}`}
     >
       {/* Badge PRETO com Rounded-MD - Estilo Admin Premium */}
-      <div className="relative w-10 h-10 md:w-11 md:h-11 bg-black rounded-md shadow-[0_4px_12px_rgba(0,0,0,0.4)] flex-shrink-0 border border-white/5">
+      <div className={`relative bg-black rounded-md shadow-[0_4px_12px_rgba(0,0,0,0.4)] flex-shrink-0 border border-white/5 ${
+        compact ? "w-8 h-8 md:w-9 md:h-9" : "w-10 h-10 md:w-11 md:h-11"
+      }`}>
         <div 
           className="absolute inset-0 rounded-md opacity-20 group-hover:opacity-40 transition-opacity"
           style={{ backgroundColor: "var(--primary-hex)" }}
@@ -22,8 +34,10 @@ export default function PetrobrasLogo({ className, variant }: { className?: stri
         />
       </div>
       
-      <div className="flex flex-col justify-center leading-tight ml-1">
-        <h1 className="font-bebas font-bold text-[36px] md:text-[36px] tracking-tight leading-tight whitespace-nowrap flex items-baseline gap-2">
+      <div className={`flex flex-col justify-center leading-none ${compact ? "ml-0.5" : "ml-1"}`}>
+        <h1 className={`font-bebas font-bold tracking-tight leading-none whitespace-nowrap flex items-baseline ${
+          compact ? "text-[23px] md:text-[24px] gap-1" : "text-[36px] md:text-[36px] gap-2"
+        }`}>
           <span 
             className={`${(variant === "white" || variant === "home-top") ? "text-white" : variant === "hero-tab" ? "text-foreground dark:text-primary-foreground" : "text-foreground dark:text-white"} transition-colors duration-300`}
           >
@@ -37,8 +51,12 @@ export default function PetrobrasLogo({ className, variant }: { className?: stri
           </span>
         </h1>
         <span 
-          className={`font-sans font-black uppercase ${(variant === "white" || variant === "home-top") ? "text-white/80" : variant === "hero-tab" ? "text-foreground/80 dark:text-primary-foreground/80" : "text-foreground/80 dark:text-white/80"} mt-0 whitespace-nowrap transition-colors duration-300 inline-block mx-auto overflow-hidden text-ellipsis`} 
-          style={{ fontSize: '10.88px', letterSpacing: '0.72em', marginRight: '-0.72em' }}
+          className={`font-sans font-black uppercase ${(variant === "white" || variant === "home-top") ? "text-white/80" : variant === "hero-tab" ? "text-foreground/80 dark:text-primary-foreground/80" : "text-foreground/80 dark:text-white/80"} mt-0.5 whitespace-nowrap transition-colors duration-300 block text-center leading-none`} 
+          style={{ 
+            fontSize: compact ? '7.5px' : '10.88px', 
+            letterSpacing: compact ? '0.68em' : '0.72em', 
+            marginRight: compact ? '-0.68em' : '-0.72em' 
+          }}
         >
           SUA APROVAÇÃO AQUI
         </span>
