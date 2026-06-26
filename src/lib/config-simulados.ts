@@ -205,7 +205,7 @@ export const TIPOS_SIMULADO: ConfigSimulado[] = [
         tipo: 'rapido',
         nome: 'Simulado Rápido',
         descricao: 'Treino rápido para aquecimento',
-        questoes: 10,
+        questoes: 5,
         tempoMinutos: 15,
         materias: ['misto'],
     },

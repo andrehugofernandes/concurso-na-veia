@@ -21,6 +21,7 @@ interface SimuladoConfigModalProps {
     icon?: string;
     color?: string;
     topicos?: { id: string; titulo: string }[];
+    defaultQuantidade?: number;
 }
 
 export function SimuladoConfigModal({
@@ -31,13 +32,14 @@ export function SimuladoConfigModal({
     icon,
     color,
     topicos = [],
+    defaultQuantidade = 5,
 }: SimuladoConfigModalProps) {
     const [dificuldade, setDificuldade] = useState<string>('Médio');
     const [assunto, setAssunto] = useState<string>('all');
 
     const handleConfirm = () => {
         onConfirm({
-            quantidade: 20,
+            quantidade: defaultQuantidade,
             dificuldade,
             assunto: assunto === 'all' ? 'Todos os tópicos (Misturado)' : assunto
         });

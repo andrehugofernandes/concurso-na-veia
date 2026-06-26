@@ -344,6 +344,10 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
     }
 ];
 
+import { CONTEUDO_ESPECIFICO } from './conteudo-especifico';
+CONTEUDO_MATERIAS.push(...CONTEUDO_ESPECIFICO);
+
+
 export function getMateriaById(id: string): MateriaConteudo | undefined {
     return CONTEUDO_MATERIAS.find(m => m.id === id);
 }

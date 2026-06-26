@@ -198,7 +198,7 @@
 - 07h-08h30: Língua Portuguesa (foco: interpretação + verbos)
 - 09h-10h30: Matemática (foco: porcentagem + razão/proporção)
 - 14h-15h30: Revisão + questões básicas
-- 16h-17h: Simulado rápido (20 questões mistas)
+- 16h-17h: Simulado rápido (5 questões mistas)
 
 **Sábado (6h)**
 - 08h-11h: Maratona de questões CESGRANRIO (português + matemática)

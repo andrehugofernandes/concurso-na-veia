@@ -28,7 +28,13 @@ O projeto faz uso intensivo do framework de agentes autônomos para desenvolvime
 ## Banco de Dados de Contexto
 As conversas anteriores do usuário e dos agentes foram migradas e processadas a partir de arquivos `.pb` (Protobuf/binários) do IDE e consolidadas no banco de dados **SQLite (`context_history.db`)** na raiz do projeto. Esse banco servirá de "cérebro persistente" para recuperar rapidamente o histórico de intenções do projeto em sessões futuras.
 
+## Visão de Futuro: Arquitetura White Label (Edital -> Curso)
+Para escalar a aplicação de forma autônoma (Multi-tenant), a arquitetura adotará o padrão **Content-Driven Architecture (CMS + JSON Schema)** sob uma estratégia de **Coexistência Híbrida**:
+- **Criação de Cursos Inteligente:** O novo fluxo administrativo permitirá o upload de um Edital. A Inteligência Artificial fará o parse do documento e gerará um JSON estruturado com todo o conteúdo das aulas e matriz de simulados.
+- **ScoreLessonRenderer:** Um componente de renderização universal que lerá esse JSON e montará as aulas em tempo de execução, injetando os dados estáticos nos mesmos componentes premium do Design System (ModuleBanner, Flashcards, etc).
+- **Legado Blindado (Estratégia Híbrida):** As aulas já desenvolvidas nativamente em código (`.tsx`) para o curso da Petrobras permanecerão intocadas em suas rotas. O novo renderizador atuará apenas nas rotas dinâmicas dos *novos concursos* criados pelo Dashboard Admin, garantindo **Risco Zero** de quebra do que já está validado.
+
 ## Próximos Passos
-1. Concluir extração das mensagens antigas.
-2. Construir scripts CLI para pesquisa rápida no `context_history.db`.
-3. Validar a geração das primeiras aulas utilizando os novos scripts e baseando-se neste PRD.
+1. Modelagem e construção do Admin Dashboard (Tabelas de Usuários, Tickets e Concursos).
+2. Desenvolvimento do `ScoreLessonRenderer` (Motor Universal de renderização de JSON para Aulas).
+3. Construção do Parser de Edital com IA para preenchimento automático do Banco de Dados.

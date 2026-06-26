@@ -40,7 +40,10 @@ export const availableThemes: Record<string, ThemeColors> = {
 export const defaultTheme = 'blue';
 
 export const isLightColor = (color: string): boolean => {
-  const hex = color.replace('#', '');
+  const hex = color.replace('#', '').toLowerCase();
+  // Exceção para o laranja escuro (#FF8500) para garantir contraste com texto branco
+  if (hex === 'ff8500') return false;
+
   const r = parseInt(hex.substr(0, 2), 16);
   const g = parseInt(hex.substr(2, 2), 16);
   const b = parseInt(hex.substr(4, 2), 16);

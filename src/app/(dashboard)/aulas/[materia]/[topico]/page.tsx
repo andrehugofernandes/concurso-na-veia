@@ -22,6 +22,8 @@ import { useSetPageTitle } from "@/contexts/UIContext";
 import { LuClock, LuCheck } from "react-icons/lu";
 
 // Dynamic import para evitar hydration mismatch dos componentes Radix UI (Dialog, Accordion, Tabs)
+import DynamicEspecificaLoader from "@/components/aulas/shared/DynamicEspecificaLoader";
+
 const AulaInterpretacaoTexto = dynamic(
   () => import("@/components/aulas/portugues/AulaInterpretacaoTexto"),
   {
@@ -542,6 +544,126 @@ const AulaMetrologia = dynamic<AulaProps>(
 
 const AulaDesenhoTecnico = dynamic<AulaProps>(
   () => import("@/components/aulas/manutencao/AulaDesenhoTecnico"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaCinematica = dynamic<AulaProps>(
+  () => import("@/components/aulas/fisica/AulaCinematica"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaDinamica = dynamic<AulaProps>(
+  () => import("@/components/aulas/fisica/AulaDinamica"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaEnergia = dynamic<AulaProps>(
+  () => import("@/components/aulas/fisica/AulaEnergia"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaHidraulica = dynamic<AulaProps>(
+  () => import("@/components/aulas/fisica/AulaHidraulica"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaEletricidade = dynamic<AulaProps>(
+  () => import("@/components/aulas/fisica/AulaEletricidade"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaEstruturaAtomica = dynamic<AulaProps>(
+  () => import("@/components/aulas/quimica/AulaEstruturaAtomica"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaTabelaPeriodica = dynamic<AulaProps>(
+  () => import("@/components/aulas/quimica/AulaTabelaPeriodica"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaLigacoesQuimicas = dynamic<AulaProps>(
+  () => import("@/components/aulas/quimica/AulaLigacoesQuimicas"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaReacoesQuimicas = dynamic<AulaProps>(
+  () => import("@/components/aulas/quimica/AulaReacoesQuimicas"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaEstequiometria = dynamic<AulaProps>(
+  () => import("@/components/aulas/quimica/AulaEstequiometria"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaSolucoes = dynamic<AulaProps>(
+  () => import("@/components/aulas/quimica/AulaSolucoes"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaQuimicaOrganica = dynamic<AulaProps>(
+  () => import("@/components/aulas/quimica/AulaQuimicaOrganica"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaPetroleo = dynamic<AulaProps>(
+  () => import("@/components/aulas/quimica/AulaPetroleo"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaNr13 = dynamic<AulaProps>(
+  () => import("@/components/aulas/seguranca/AulaNr13"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaNr33 = dynamic<AulaProps>(
+  () => import("@/components/aulas/seguranca/AulaNr33"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
@@ -2046,6 +2168,279 @@ export default function TopicoPage({ params }: PageProps) {
                 prevTopico={prevTopico}
                 nextTopico={nextTopico}
               />
+                        ) : materiaId === "fisica" && topicoId === "cinematica" ? (
+              <AulaCinematica
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "fisica" && topicoId === "dinamica" ? (
+              <AulaDinamica
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "fisica" && topicoId === "energia" ? (
+              <AulaEnergia
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "fisica" && topicoId === "hidraulica" ? (
+              <AulaHidraulica
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "fisica" && topicoId === "eletricidade" ? (
+              <AulaEletricidade
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "quimica" && topicoId === "estrutura-atomica" ? (
+              <AulaEstruturaAtomica
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "quimica" && topicoId === "tabela-periodica" ? (
+              <AulaTabelaPeriodica
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "quimica" && topicoId === "ligacoes-quimicas" ? (
+              <AulaLigacoesQuimicas
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "quimica" && topicoId === "reacoes-quimicas" ? (
+              <AulaReacoesQuimicas
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "quimica" && topicoId === "estequiometria" ? (
+              <AulaEstequiometria
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "quimica" && topicoId === "solucoes" ? (
+              <AulaSolucoes
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "quimica" && topicoId === "quimica-organica" ? (
+              <AulaQuimicaOrganica
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "quimica" && topicoId === "petroleo" ? (
+              <AulaPetroleo
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "seguranca" && topicoId === "nr13" ? (
+              <AulaNr13
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "seguranca" && topicoId === "nr33" ? (
+              <AulaNr33
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId.startsWith("bloco-") ? (
+              <DynamicEspecificaLoader
+                topicoId={topicoId}
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
             ) : conteudo ? (
               conteudo.secoes.map((secao, index) => (
                 <section
@@ -2203,7 +2598,7 @@ export default function TopicoPage({ params }: PageProps) {
               "gestao-qualidade-suprimento",
               "logistica-suprimento",
               "compras-suprimento",
-            ].includes(topicoId) && (
+            ].includes(topicoId) && !materiaId.startsWith("bloco-") && (
               <div className="max-w-7xl mx-auto px-6 pb-32">
                 <div className="mt-12 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl p-8 border border-yellow-500/30 text-center">
                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">

@@ -118,7 +118,7 @@ export default function AulaNr35({
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}
-      onComplete={onComplete}
+      onComplete={() => onComplete?.()}
       loading={loading}
       xpGanho={xpGanho}
     >

@@ -1,0 +1,1460 @@
+import { MateriaConteudo } from './conteudo';
+
+export const CONTEUDO_ESPECIFICO: MateriaConteudo[] = [
+  {
+    id: 'bloco-1-enfermagem-trabalho',
+    nome: 'Bloco I - UrgÃªncias',
+    descricao: 'Conteúdo específico para TÃ©cnico de Enfermagem do Trabalho',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Prata',
+    profissoes: ['enfermagem-trabalho'],
+    topicos: [
+      { id: 'aph-em-urgancias', titulo: 'APH em urgÃªncias', descricao: 'Estudo focado em APH em urgÃªncias', duracao: '45 min', ordem: 1 },
+      { id: 'epidemiologia', titulo: 'Epidemiologia', descricao: 'Estudo focado em Epidemiologia', duracao: '45 min', ordem: 2 },
+      { id: 'doenaas-ocupacionais', titulo: 'DoenÃ§as ocupacionais', descricao: 'Estudo focado em DoenÃ§as ocupacionais', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-2-enfermagem-trabalho',
+    nome: 'Bloco II - SeguranÃ§a',
+    descricao: 'Conteúdo específico para TÃ©cnico de Enfermagem do Trabalho',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Prata',
+    profissoes: ['enfermagem-trabalho'],
+    topicos: [
+      { id: 'pnsst', titulo: 'PNSST', descricao: 'Estudo focado em PNSST', duracao: '45 min', ordem: 1 },
+      { id: 'normas-regulamentadoras-nrs', titulo: 'Normas Regulamentadoras (NRs)', descricao: 'Estudo focado em Normas Regulamentadoras (NRs)', duracao: '45 min', ordem: 2 },
+      { id: 'pcmso', titulo: 'PCMSO', descricao: 'Estudo focado em PCMSO', duracao: '45 min', ordem: 3 },
+      { id: 'riscos-ambientais', titulo: 'Riscos ambientais', descricao: 'Estudo focado em Riscos ambientais', duracao: '45 min', ordem: 4 },
+      { id: 'toxicologia', titulo: 'Toxicologia', descricao: 'Estudo focado em Toxicologia', duracao: '45 min', ordem: 5 }
+    ]
+  },
+  {
+    id: 'bloco-3-enfermagem-trabalho',
+    nome: 'Bloco III - Enfermagem',
+    descricao: 'Conteúdo específico para TÃ©cnico de Enfermagem do Trabalho',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Prata',
+    profissoes: ['enfermagem-trabalho'],
+    topicos: [
+      { id: 'anatomia', titulo: 'Anatomia', descricao: 'Estudo focado em Anatomia', duracao: '45 min', ordem: 1 },
+      { id: 'enfermagem-clanica', titulo: 'Enfermagem clÃ­nica', descricao: 'Estudo focado em Enfermagem clÃ­nica', duracao: '45 min', ordem: 2 },
+      { id: 'biosseguranaa', titulo: 'BiosseguranÃ§a', descricao: 'Estudo focado em BiosseguranÃ§a', duracao: '45 min', ordem: 3 },
+      { id: 'atica-profissional', titulo: 'Ã‰tica profissional', descricao: 'Estudo focado em Ã‰tica profissional', duracao: '45 min', ordem: 4 },
+      { id: 'lei-8080-sus', titulo: 'Lei 8.080 (SUS)', descricao: 'Estudo focado em Lei 8.080 (SUS)', duracao: '45 min', ordem: 5 }
+    ]
+  },
+  {
+    id: 'bloco-1-seguranca-trabalho',
+    nome: 'Bloco I - GestÃ£o de Riscos',
+    descricao: 'Conteúdo específico para TÃ©cnico de SeguranÃ§a do Trabalho',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Prata',
+    profissoes: ['seguranca-trabalho'],
+    topicos: [
+      { id: 'gestao-de-riscos', titulo: 'GestÃ£o de riscos', descricao: 'Estudo focado em GestÃ£o de riscos', duracao: '45 min', ordem: 1 },
+      { id: 'higiene-ocupacional', titulo: 'Higiene ocupacional', descricao: 'Estudo focado em Higiene ocupacional', duracao: '45 min', ordem: 2 },
+      { id: 'prevenaao-de-incandio', titulo: 'PrevenÃ§Ã£o de incÃªndio', descricao: 'Estudo focado em PrevenÃ§Ã£o de incÃªndio', duracao: '45 min', ordem: 3 },
+      { id: 'legislaaao-nrs', titulo: 'LegislaÃ§Ã£o (NRs)', descricao: 'Estudo focado em LegislaÃ§Ã£o (NRs)', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-seguranca-trabalho',
+    nome: 'Bloco II - AnÃ¡lise',
+    descricao: 'Conteúdo específico para TÃ©cnico de SeguranÃ§a do Trabalho',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Prata',
+    profissoes: ['seguranca-trabalho'],
+    topicos: [
+      { id: 'acidentes-de-trabalho', titulo: 'Acidentes de trabalho', descricao: 'Estudo focado em Acidentes de trabalho', duracao: '45 min', ordem: 1 },
+      { id: 'aprhazop', titulo: 'APR/HAZOP', descricao: 'Estudo focado em APR/HAZOP', duracao: '45 min', ordem: 2 },
+      { id: 'iso-45001', titulo: 'ISO 45001', descricao: 'Estudo focado em ISO 45001', duracao: '45 min', ordem: 3 },
+      { id: 'gestao-de-sesmtcipa', titulo: 'GestÃ£o de SESMT/CIPA', descricao: 'Estudo focado em GestÃ£o de SESMT/CIPA', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-seguranca-trabalho',
+    nome: 'Bloco III - Ergonomia',
+    descricao: 'Conteúdo específico para TÃ©cnico de SeguranÃ§a do Trabalho',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Prata',
+    profissoes: ['seguranca-trabalho'],
+    topicos: [
+      { id: 'ergonomia', titulo: 'Ergonomia', descricao: 'Estudo focado em Ergonomia', duracao: '45 min', ordem: 1 },
+      { id: 'suporte-a-vida', titulo: 'Suporte Ã  vida', descricao: 'Estudo focado em Suporte Ã  vida', duracao: '45 min', ordem: 2 },
+      { id: 'plano-nacional-de-contingancia', titulo: 'Plano Nacional de ContingÃªncia', descricao: 'Estudo focado em Plano Nacional de ContingÃªncia', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-1-manutencao-caldeiraria',
+    nome: 'Bloco I - MecÃ¢nica',
+    descricao: 'Conteúdo específico para TÃ©cnico de ManutenÃ§Ã£o - Caldeiraria',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Prata',
+    profissoes: ['manutencao-caldeiraria'],
+    topicos: [
+      { id: 'tecnologia-mecanica', titulo: 'Tecnologia MecÃ¢nica', descricao: 'Estudo focado em Tecnologia MecÃ¢nica', duracao: '45 min', ordem: 1 },
+      { id: 'ensaios-mecanicos', titulo: 'Ensaios mecÃ¢nicos', descricao: 'Estudo focado em Ensaios mecÃ¢nicos', duracao: '45 min', ordem: 2 },
+      { id: 'resistancia-dos-materiais', titulo: 'ResistÃªncia dos materiais', descricao: 'Estudo focado em ResistÃªncia dos materiais', duracao: '45 min', ordem: 3 },
+      { id: 'soldagem', titulo: 'Soldagem', descricao: 'Estudo focado em Soldagem', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-manutencao-caldeiraria',
+    nome: 'Bloco II - Metalurgia',
+    descricao: 'Conteúdo específico para TÃ©cnico de ManutenÃ§Ã£o - Caldeiraria',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Prata',
+    profissoes: ['manutencao-caldeiraria'],
+    topicos: [
+      { id: 'metalurgia', titulo: 'Metalurgia', descricao: 'Estudo focado em Metalurgia', duracao: '45 min', ordem: 1 },
+      { id: 'metalografia', titulo: 'Metalografia', descricao: 'Estudo focado em Metalografia', duracao: '45 min', ordem: 2 },
+      { id: 'tratamentos-tarmicos', titulo: 'Tratamentos tÃ©rmicos', descricao: 'Estudo focado em Tratamentos tÃ©rmicos', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-3-manutencao-caldeiraria',
+    nome: 'Bloco III - Desenho',
+    descricao: 'Conteúdo específico para TÃ©cnico de ManutenÃ§Ã£o - Caldeiraria',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Prata',
+    profissoes: ['manutencao-caldeiraria'],
+    topicos: [
+      { id: 'desenho-tacnico', titulo: 'Desenho tÃ©cnico', descricao: 'Estudo focado em Desenho tÃ©cnico', duracao: '45 min', ordem: 1 },
+      { id: 'ajustagem', titulo: 'Ajustagem', descricao: 'Estudo focado em Ajustagem', duracao: '45 min', ordem: 2 },
+      { id: 'controle-de-qualidade', titulo: 'Controle de qualidade', descricao: 'Estudo focado em Controle de qualidade', duracao: '45 min', ordem: 3 },
+      { id: 'normas-tacnicas', titulo: 'Normas tÃ©cnicas', descricao: 'Estudo focado em Normas tÃ©cnicas', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-manutencao-eletrica',
+    nome: 'Bloco I - Circuitos',
+    descricao: 'Conteúdo específico para TÃ©cnico de ManutenÃ§Ã£o - ElÃ©trica',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Prata',
+    profissoes: ['manutencao-eletrica'],
+    topicos: [
+      { id: 'diagramas-elatricos', titulo: 'Diagramas elÃ©tricos', descricao: 'Estudo focado em Diagramas elÃ©tricos', duracao: '45 min', ordem: 1 },
+      { id: 'circuitos-ccca', titulo: 'Circuitos CC/CA', descricao: 'Estudo focado em Circuitos CC/CA', duracao: '45 min', ordem: 2 },
+      { id: 'maquinas-elatricas', titulo: 'MÃ¡quinas elÃ©tricas', descricao: 'Estudo focado em MÃ¡quinas elÃ©tricas', duracao: '45 min', ordem: 3 },
+      { id: 'nr-10', titulo: 'NR-10', descricao: 'Estudo focado em NR-10', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-manutencao-eletrica',
+    nome: 'Bloco II - InstalaÃ§Ãµes',
+    descricao: 'Conteúdo específico para TÃ©cnico de ManutenÃ§Ã£o - ElÃ©trica',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Prata',
+    profissoes: ['manutencao-eletrica'],
+    topicos: [
+      { id: 'medidas-elatricas', titulo: 'Medidas elÃ©tricas', descricao: 'Estudo focado em Medidas elÃ©tricas', duracao: '45 min', ordem: 1 },
+      { id: 'retificadores', titulo: 'Retificadores', descricao: 'Estudo focado em Retificadores', duracao: '45 min', ordem: 2 },
+      { id: 'instalaaaes-btmt', titulo: 'InstalaÃ§Ãµes BT/MT', descricao: 'Estudo focado em InstalaÃ§Ãµes BT/MT', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-3-manutencao-eletrica',
+    nome: 'Bloco III - ProteÃ§Ã£o',
+    descricao: 'Conteúdo específico para TÃ©cnico de ManutenÃ§Ã£o - ElÃ©trica',
+    icone: '📚',
+    cor: 'from-cyan-500 to-blue-500',
+    requiredPlan: 'Prata',
+    profissoes: ['manutencao-eletrica'],
+    topicos: [
+      { id: 'aterramento', titulo: 'Aterramento', descricao: 'Estudo focado em Aterramento', duracao: '45 min', ordem: 1 },
+      { id: 'spda', titulo: 'SPDA', descricao: 'Estudo focado em SPDA', duracao: '45 min', ordem: 2 },
+      { id: 'nbr-5410', titulo: 'NBR-5410', descricao: 'Estudo focado em NBR-5410', duracao: '45 min', ordem: 3 },
+      { id: 'eletranica-basica', titulo: 'EletrÃ´nica bÃ¡sica', descricao: 'Estudo focado em EletrÃ´nica bÃ¡sica', duracao: '45 min', ordem: 4 },
+      { id: 'automaaao', titulo: 'AutomaÃ§Ã£o', descricao: 'Estudo focado em AutomaÃ§Ã£o', duracao: '45 min', ordem: 5 }
+    ]
+  },
+  {
+    id: 'bloco-1-manutencao-mecanica',
+    nome: 'Bloco I - Metrologia',
+    descricao: 'Conteúdo específico para TÃ©cnico de ManutenÃ§Ã£o - MecÃ¢nica',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Prata',
+    profissoes: ['manutencao-mecanica'],
+    topicos: [
+      { id: 'metrologia', titulo: 'Metrologia', descricao: 'Estudo focado em Metrologia', duracao: '45 min', ordem: 1 },
+      { id: 'desenho-tacnico', titulo: 'Desenho tÃ©cnico', descricao: 'Estudo focado em Desenho tÃ©cnico', duracao: '45 min', ordem: 2 },
+      { id: 'resistancia-dos-materiais', titulo: 'ResistÃªncia dos materiais', descricao: 'Estudo focado em ResistÃªncia dos materiais', duracao: '45 min', ordem: 3 },
+      { id: 'elementos-de-maquinas', titulo: 'Elementos de mÃ¡quinas', descricao: 'Estudo focado em Elementos de mÃ¡quinas', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-manutencao-mecanica',
+    nome: 'Bloco II - Equipamentos',
+    descricao: 'Conteúdo específico para TÃ©cnico de ManutenÃ§Ã£o - MecÃ¢nica',
+    icone: '📚',
+    cor: 'from-cyan-500 to-blue-500',
+    requiredPlan: 'Prata',
+    profissoes: ['manutencao-mecanica'],
+    topicos: [
+      { id: 'hidraulica', titulo: 'HidrÃ¡ulica', descricao: 'Estudo focado em HidrÃ¡ulica', duracao: '45 min', ordem: 1 },
+      { id: 'bombas', titulo: 'Bombas', descricao: 'Estudo focado em Bombas', duracao: '45 min', ordem: 2 },
+      { id: 'compressores', titulo: 'Compressores', descricao: 'Estudo focado em Compressores', duracao: '45 min', ordem: 3 },
+      { id: 'turbinas', titulo: 'Turbinas', descricao: 'Estudo focado em Turbinas', duracao: '45 min', ordem: 4 },
+      { id: 'motores', titulo: 'Motores', descricao: 'Estudo focado em Motores', duracao: '45 min', ordem: 5 }
+    ]
+  },
+  {
+    id: 'bloco-3-manutencao-mecanica',
+    nome: 'Bloco III - ManutenÃ§Ã£o',
+    descricao: 'Conteúdo específico para TÃ©cnico de ManutenÃ§Ã£o - MecÃ¢nica',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Prata',
+    profissoes: ['manutencao-mecanica'],
+    topicos: [
+      { id: 'lubrificaaao', titulo: 'LubrificaÃ§Ã£o', descricao: 'Estudo focado em LubrificaÃ§Ã£o', duracao: '45 min', ordem: 1 },
+      { id: 'alinhamento', titulo: 'Alinhamento', descricao: 'Estudo focado em Alinhamento', duracao: '45 min', ordem: 2 },
+      { id: 'manutenaao-preditiva', titulo: 'ManutenÃ§Ã£o preditiva', descricao: 'Estudo focado em ManutenÃ§Ã£o preditiva', duracao: '45 min', ordem: 3 },
+      { id: 'gestao-de-manutenaao', titulo: 'GestÃ£o de manutenÃ§Ã£o', descricao: 'Estudo focado em GestÃ£o de manutenÃ§Ã£o', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-manutencao-instrumentacao',
+    nome: 'Bloco I - InstrumentaÃ§Ã£o',
+    descricao: 'Conteúdo específico para TÃ©cnico de ManutenÃ§Ã£o - InstrumentaÃ§Ã£o',
+    icone: '📚',
+    cor: 'from-cyan-500 to-blue-500',
+    requiredPlan: 'Prata',
+    profissoes: ['manutencao-instrumentacao'],
+    topicos: [
+      { id: 'instrumentaaao-industrial', titulo: 'InstrumentaÃ§Ã£o industrial', descricao: 'Estudo focado em InstrumentaÃ§Ã£o industrial', duracao: '45 min', ordem: 1 },
+      { id: 'mediaao-de-grandezas', titulo: 'MediÃ§Ã£o de grandezas', descricao: 'Estudo focado em MediÃ§Ã£o de grandezas', duracao: '45 min', ordem: 2 },
+      { id: 'sensores-e-transmissores', titulo: 'Sensores e transmissores', descricao: 'Estudo focado em Sensores e transmissores', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-2-manutencao-instrumentacao',
+    nome: 'Bloco II - Controle',
+    descricao: 'Conteúdo específico para TÃ©cnico de ManutenÃ§Ã£o - InstrumentaÃ§Ã£o',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Prata',
+    profissoes: ['manutencao-instrumentacao'],
+    topicos: [
+      { id: 'sistemas-de-controle', titulo: 'Sistemas de controle', descricao: 'Estudo focado em Sistemas de controle', duracao: '45 min', ordem: 1 },
+      { id: 'clps', titulo: 'CLPs', descricao: 'Estudo focado em CLPs', duracao: '45 min', ordem: 2 },
+      { id: 'sdcds', titulo: 'SDCDs', descricao: 'Estudo focado em SDCDs', duracao: '45 min', ordem: 3 },
+      { id: 'redes-industriais', titulo: 'Redes industriais', descricao: 'Estudo focado em Redes industriais', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-manutencao-instrumentacao',
+    nome: 'Bloco III - SeguranÃ§a',
+    descricao: 'Conteúdo específico para TÃ©cnico de ManutenÃ§Ã£o - InstrumentaÃ§Ã£o',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Prata',
+    profissoes: ['manutencao-instrumentacao'],
+    topicos: [
+      { id: 'sistemas-instrumentados-de-seguranaa', titulo: 'Sistemas instrumentados de seguranÃ§a', descricao: 'Estudo focado em Sistemas instrumentados de seguranÃ§a', duracao: '45 min', ordem: 1 },
+      { id: 'valvulas-de-controle', titulo: 'VÃ¡lvulas de controle', descricao: 'Estudo focado em VÃ¡lvulas de controle', duracao: '45 min', ordem: 2 },
+      { id: 'analise-de-malhas', titulo: 'AnÃ¡lise de malhas', descricao: 'Estudo focado em AnÃ¡lise de malhas', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-1-operacao',
+    nome: 'Bloco I - Fundamentos',
+    descricao: 'Conteúdo específico para TÃ©cnico de OperaÃ§Ã£o',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Prata',
+    profissoes: ['operacao'],
+    topicos: [
+      { id: 'termodinamica', titulo: 'TermodinÃ¢mica', descricao: 'Estudo focado em TermodinÃ¢mica', duracao: '45 min', ordem: 1 },
+      { id: 'mecanica-dos-fluidos', titulo: 'MecÃ¢nica dos fluidos', descricao: 'Estudo focado em MecÃ¢nica dos fluidos', duracao: '45 min', ordem: 2 },
+      { id: 'operaaaes-unitarias', titulo: 'OperaÃ§Ãµes unitÃ¡rias', descricao: 'Estudo focado em OperaÃ§Ãµes unitÃ¡rias', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-2-operacao',
+    nome: 'Bloco II - Processos',
+    descricao: 'Conteúdo específico para TÃ©cnico de OperaÃ§Ã£o',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Prata',
+    profissoes: ['operacao'],
+    topicos: [
+      { id: 'processos-de-refino', titulo: 'Processos de refino', descricao: 'Estudo focado em Processos de refino', duracao: '45 min', ordem: 1 },
+      { id: 'quamica-organica', titulo: 'QuÃ­mica orgÃ¢nica', descricao: 'Estudo focado em QuÃ­mica orgÃ¢nica', duracao: '45 min', ordem: 2 },
+      { id: 'petroquamica', titulo: 'PetroquÃ­mica', descricao: 'Estudo focado em PetroquÃ­mica', duracao: '45 min', ordem: 3 },
+      { id: 'processos-de-separaaao', titulo: 'Processos de separaÃ§Ã£o', descricao: 'Estudo focado em Processos de separaÃ§Ã£o', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-operacao',
+    nome: 'Bloco III - SeguranÃ§a',
+    descricao: 'Conteúdo específico para TÃ©cnico de OperaÃ§Ã£o',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Prata',
+    profissoes: ['operacao'],
+    topicos: [
+      { id: 'seguranaa-de-processo', titulo: 'SeguranÃ§a de processo', descricao: 'Estudo focado em SeguranÃ§a de processo', duracao: '45 min', ordem: 1 },
+      { id: 'controle-de-processos', titulo: 'Controle de processos', descricao: 'Estudo focado em Controle de processos', duracao: '45 min', ordem: 2 },
+      { id: 'equipamentos-industriais', titulo: 'Equipamentos industriais', descricao: 'Estudo focado em Equipamentos industriais', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-1-operacao-lastro',
+    nome: 'Bloco I - Estabilidade',
+    descricao: 'Conteúdo específico para TÃ©cnico de OperaÃ§Ã£o de Lastro',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Prata',
+    profissoes: ['operacao-lastro'],
+    topicos: [
+      { id: 'estabilidade-de-embarcaaaes', titulo: 'Estabilidade de embarcaÃ§Ãµes', descricao: 'Estudo focado em Estabilidade de embarcaÃ§Ãµes', duracao: '45 min', ordem: 1 },
+      { id: 'sistemas-de-lastro', titulo: 'Sistemas de lastro', descricao: 'Estudo focado em Sistemas de lastro', duracao: '45 min', ordem: 2 },
+      { id: 'hidrostatica-naval', titulo: 'HidrostÃ¡tica naval', descricao: 'Estudo focado em HidrostÃ¡tica naval', duracao: '45 min', ordem: 3 },
+      { id: 'flutuabilidade-e-trim', titulo: 'Flutuabilidade e trim', descricao: 'Estudo focado em Flutuabilidade e trim', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-operacao-lastro',
+    nome: 'Bloco II - Manobra',
+    descricao: 'Conteúdo específico para TÃ©cnico de OperaÃ§Ã£o de Lastro',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Prata',
+    profissoes: ['operacao-lastro'],
+    topicos: [
+      { id: 'manobra-de-navios', titulo: 'Manobra de navios', descricao: 'Estudo focado em Manobra de navios', duracao: '45 min', ordem: 1 },
+      { id: 'equipamentos-de-convas', titulo: 'Equipamentos de convÃ©s', descricao: 'Estudo focado em Equipamentos de convÃ©s', duracao: '45 min', ordem: 2 },
+      { id: 'navegaaao-basica', titulo: 'NavegaÃ§Ã£o bÃ¡sica', descricao: 'Estudo focado em NavegaÃ§Ã£o bÃ¡sica', duracao: '45 min', ordem: 3 },
+      { id: 'cartas-nauticas-e-gps', titulo: 'Cartas nÃ¡uticas e GPS', descricao: 'Estudo focado em Cartas nÃ¡uticas e GPS', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-operacao-lastro',
+    nome: 'Bloco III - SeguranÃ§a MarÃ­tima',
+    descricao: 'Conteúdo específico para TÃ©cnico de OperaÃ§Ã£o de Lastro',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Prata',
+    profissoes: ['operacao-lastro'],
+    topicos: [
+      { id: 'solas', titulo: 'SOLAS', descricao: 'Estudo focado em SOLAS', duracao: '45 min', ordem: 1 },
+      { id: 'ism-code', titulo: 'ISM Code', descricao: 'Estudo focado em ISM Code', duracao: '45 min', ordem: 2 },
+      { id: 'marpol', titulo: 'MARPOL', descricao: 'Estudo focado em MARPOL', duracao: '45 min', ordem: 3 },
+      { id: 'sobrevivancia-no-mar', titulo: 'SobrevivÃªncia no mar', descricao: 'Estudo focado em SobrevivÃªncia no mar', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-inspecao-equipamentos',
+    nome: 'Bloco I - FÃ­sica e QuÃ­mica',
+    descricao: 'Conteúdo específico para TÃ©cnico de InspeÃ§Ã£o de Equipamentos e InstalaÃ§Ãµes',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Prata',
+    profissoes: ['inspecao-equipamentos'],
+    topicos: [
+      { id: 'eletroquamica', titulo: 'EletroquÃ­mica', descricao: 'Estudo focado em EletroquÃ­mica', duracao: '45 min', ordem: 1 },
+      { id: 'desenho-tacnico', titulo: 'Desenho tÃ©cnico', descricao: 'Estudo focado em Desenho tÃ©cnico', duracao: '45 min', ordem: 2 },
+      { id: 'metrologia', titulo: 'Metrologia', descricao: 'Estudo focado em Metrologia', duracao: '45 min', ordem: 3 },
+      { id: 'sistema-internacional', titulo: 'Sistema Internacional', descricao: 'Estudo focado em Sistema Internacional', duracao: '45 min', ordem: 4 },
+      { id: 'estatica-e-dinamica', titulo: 'EstÃ¡tica e DinÃ¢mica', descricao: 'Estudo focado em EstÃ¡tica e DinÃ¢mica', duracao: '45 min', ordem: 5 }
+    ]
+  },
+  {
+    id: 'bloco-2-inspecao-equipamentos',
+    nome: 'Bloco II - Materiais',
+    descricao: 'Conteúdo específico para TÃ©cnico de InspeÃ§Ã£o de Equipamentos e InstalaÃ§Ãµes',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Prata',
+    profissoes: ['inspecao-equipamentos'],
+    topicos: [
+      { id: 'aao-carbono', titulo: 'AÃ§o Carbono', descricao: 'Estudo focado em AÃ§o Carbono', duracao: '45 min', ordem: 1 },
+      { id: 'diagrama-de-equilabrio', titulo: 'Diagrama de equilÃ­brio', descricao: 'Estudo focado em Diagrama de equilÃ­brio', duracao: '45 min', ordem: 2 },
+      { id: 'ensaios-nao-destrutivos', titulo: 'Ensaios nÃ£o destrutivos', descricao: 'Estudo focado em Ensaios nÃ£o destrutivos', duracao: '45 min', ordem: 3 },
+      { id: 'hidrostatica', titulo: 'HidrostÃ¡tica', descricao: 'Estudo focado em HidrostÃ¡tica', duracao: '45 min', ordem: 4 },
+      { id: 'eletricidade-basica', titulo: 'Eletricidade bÃ¡sica', descricao: 'Estudo focado em Eletricidade bÃ¡sica', duracao: '45 min', ordem: 5 }
+    ]
+  },
+  {
+    id: 'bloco-3-inspecao-equipamentos',
+    nome: 'Bloco III - Processos',
+    descricao: 'Conteúdo específico para TÃ©cnico de InspeÃ§Ã£o de Equipamentos e InstalaÃ§Ãµes',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Prata',
+    profissoes: ['inspecao-equipamentos'],
+    topicos: [
+      { id: 'transferancia-de-calor', titulo: 'TransferÃªncia de calor', descricao: 'Estudo focado em TransferÃªncia de calor', duracao: '45 min', ordem: 1 },
+      { id: 'soldagem', titulo: 'Soldagem', descricao: 'Estudo focado em Soldagem', duracao: '45 min', ordem: 2 },
+      { id: 'processos-de-fabricaaao', titulo: 'Processos de fabricaÃ§Ã£o', descricao: 'Estudo focado em Processos de fabricaÃ§Ã£o', duracao: '45 min', ordem: 3 },
+      { id: 'corrosao', titulo: 'CorrosÃ£o', descricao: 'Estudo focado em CorrosÃ£o', duracao: '45 min', ordem: 4 },
+      { id: 'hidrocarbonetos', titulo: 'Hidrocarbonetos', descricao: 'Estudo focado em Hidrocarbonetos', duracao: '45 min', ordem: 5 }
+    ]
+  },
+  {
+    id: 'bloco-1-edificacoes',
+    nome: 'Bloco I - Materiais',
+    descricao: 'Conteúdo específico para TÃ©cnico em EdificaÃ§Ãµes',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Prata',
+    profissoes: ['edificacoes'],
+    topicos: [
+      { id: 'materiais-de-construaao', titulo: 'Materiais de construÃ§Ã£o', descricao: 'Estudo focado em Materiais de construÃ§Ã£o', duracao: '45 min', ordem: 1 },
+      { id: 'topografia', titulo: 'Topografia', descricao: 'Estudo focado em Topografia', duracao: '45 min', ordem: 2 },
+      { id: 'mecanica-dos-solos', titulo: 'MecÃ¢nica dos solos', descricao: 'Estudo focado em MecÃ¢nica dos solos', duracao: '45 min', ordem: 3 },
+      { id: 'estruturas', titulo: 'Estruturas', descricao: 'Estudo focado em Estruturas', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-edificacoes',
+    nome: 'Bloco II - InstalaÃ§Ãµes',
+    descricao: 'Conteúdo específico para TÃ©cnico em EdificaÃ§Ãµes',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Prata',
+    profissoes: ['edificacoes'],
+    topicos: [
+      { id: 'instalaaaes-prediais', titulo: 'InstalaÃ§Ãµes prediais', descricao: 'Estudo focado em InstalaÃ§Ãµes prediais', duracao: '45 min', ordem: 1 },
+      { id: 'oraamento', titulo: 'OrÃ§amento', descricao: 'Estudo focado em OrÃ§amento', duracao: '45 min', ordem: 2 },
+      { id: 'planejamento-ms-project', titulo: 'Planejamento (MS Project)', descricao: 'Estudo focado em Planejamento (MS Project)', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-3-edificacoes',
+    nome: 'Bloco III - Projetos',
+    descricao: 'Conteúdo específico para TÃ©cnico em EdificaÃ§Ãµes',
+    icone: '📚',
+    cor: 'from-cyan-500 to-blue-500',
+    requiredPlan: 'Prata',
+    profissoes: ['edificacoes'],
+    topicos: [
+      { id: 'autocad', titulo: 'AutoCAD', descricao: 'Estudo focado em AutoCAD', duracao: '45 min', ordem: 1 },
+      { id: 'seguranaa-em-obras-nr-18', titulo: 'SeguranÃ§a em obras (NR 18)', descricao: 'Estudo focado em SeguranÃ§a em obras (NR 18)', duracao: '45 min', ordem: 2 }
+    ]
+  },
+  {
+    id: 'bloco-1-eletrica-projetos',
+    nome: 'Bloco I - Projetos',
+    descricao: 'Conteúdo específico para TÃ©cnico de Projetos, ConstruÃ§Ã£o e Montagem - ElÃ©trica',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Prata',
+    profissoes: ['eletrica-projetos'],
+    topicos: [
+      { id: 'projetos-de-instalaaaes', titulo: 'Projetos de instalaÃ§Ãµes', descricao: 'Estudo focado em Projetos de instalaÃ§Ãµes', duracao: '45 min', ordem: 1 },
+      { id: 'luminotacnica', titulo: 'LuminotÃ©cnica', descricao: 'Estudo focado em LuminotÃ©cnica', duracao: '45 min', ordem: 2 },
+      { id: 'subestaaaes', titulo: 'SubestaÃ§Ãµes', descricao: 'Estudo focado em SubestaÃ§Ãµes', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-2-eletrica-projetos',
+    nome: 'Bloco II - ProteÃ§Ã£o',
+    descricao: 'Conteúdo específico para TÃ©cnico de Projetos, ConstruÃ§Ã£o e Montagem - ElÃ©trica',
+    icone: '📚',
+    cor: 'from-cyan-500 to-blue-500',
+    requiredPlan: 'Prata',
+    profissoes: ['eletrica-projetos'],
+    topicos: [
+      { id: 'proteaao-elatrica', titulo: 'ProteÃ§Ã£o elÃ©trica', descricao: 'Estudo focado em ProteÃ§Ã£o elÃ©trica', duracao: '45 min', ordem: 1 },
+      { id: 'comandos-elatricos', titulo: 'Comandos elÃ©tricos', descricao: 'Estudo focado em Comandos elÃ©tricos', duracao: '45 min', ordem: 2 },
+      { id: 'automaaao-predial', titulo: 'AutomaÃ§Ã£o predial', descricao: 'Estudo focado em AutomaÃ§Ã£o predial', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-3-eletrica-projetos',
+    nome: 'Bloco III - FiscalizaÃ§Ã£o',
+    descricao: 'Conteúdo específico para TÃ©cnico de Projetos, ConstruÃ§Ã£o e Montagem - ElÃ©trica',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Prata',
+    profissoes: ['eletrica-projetos'],
+    topicos: [
+      { id: 'fiscalizaaao-de-obras', titulo: 'FiscalizaÃ§Ã£o de obras', descricao: 'Estudo focado em FiscalizaÃ§Ã£o de obras', duracao: '45 min', ordem: 1 },
+      { id: 'comissionamento', titulo: 'Comissionamento', descricao: 'Estudo focado em Comissionamento', duracao: '45 min', ordem: 2 },
+      { id: 'normas-nbr', titulo: 'Normas NBR', descricao: 'Estudo focado em Normas NBR', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-1-mecanica-projetos',
+    nome: 'Bloco I - Montagem',
+    descricao: 'Conteúdo específico para TÃ©cnico de Projetos, ConstruÃ§Ã£o e Montagem - MecÃ¢nica',
+    icone: '📚',
+    cor: 'from-cyan-500 to-blue-500',
+    requiredPlan: 'Prata',
+    profissoes: ['mecanica-projetos'],
+    topicos: [
+      { id: 'montagem-industrial', titulo: 'Montagem industrial', descricao: 'Estudo focado em Montagem industrial', duracao: '45 min', ordem: 1 },
+      { id: 'tubulaaaes', titulo: 'TubulaÃ§Ãµes', descricao: 'Estudo focado em TubulaÃ§Ãµes', duracao: '45 min', ordem: 2 },
+      { id: 'estruturas-metalicas', titulo: 'Estruturas metÃ¡licas', descricao: 'Estudo focado em Estruturas metÃ¡licas', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-2-mecanica-projetos',
+    nome: 'Bloco II - Qualidade',
+    descricao: 'Conteúdo específico para TÃ©cnico de Projetos, ConstruÃ§Ã£o e Montagem - MecÃ¢nica',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Prata',
+    profissoes: ['mecanica-projetos'],
+    topicos: [
+      { id: 'soldagem', titulo: 'Soldagem', descricao: 'Estudo focado em Soldagem', duracao: '45 min', ordem: 1 },
+      { id: 'inspeaao', titulo: 'InspeÃ§Ã£o', descricao: 'Estudo focado em InspeÃ§Ã£o', duracao: '45 min', ordem: 2 },
+      { id: 'ensaios-nao-destrutivos', titulo: 'Ensaios nÃ£o destrutivos', descricao: 'Estudo focado em Ensaios nÃ£o destrutivos', duracao: '45 min', ordem: 3 },
+      { id: 'pintura-industrial', titulo: 'Pintura industrial', descricao: 'Estudo focado em Pintura industrial', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-mecanica-projetos',
+    nome: 'Bloco III - Planejamento',
+    descricao: 'Conteúdo específico para TÃ©cnico de Projetos, ConstruÃ§Ã£o e Montagem - MecÃ¢nica',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Prata',
+    profissoes: ['mecanica-projetos'],
+    topicos: [
+      { id: 'planejamento-de-obras', titulo: 'Planejamento de obras', descricao: 'Estudo focado em Planejamento de obras', duracao: '45 min', ordem: 1 },
+      { id: 'rigging', titulo: 'Rigging', descricao: 'Estudo focado em Rigging', duracao: '45 min', ordem: 2 },
+      { id: 'normas-asmeapi', titulo: 'Normas ASME/API', descricao: 'Estudo focado em Normas ASME/API', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-1-instrumentacao-projetos',
+    nome: 'Bloco I - Detalhamento',
+    descricao: 'Conteúdo específico para TÃ©cnico de Projetos, ConstruÃ§Ã£o e Montagem - InstrumentaÃ§Ã£o',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Prata',
+    profissoes: ['instrumentacao-projetos'],
+    topicos: [
+      { id: 'projetos-de-instrumentaaao', titulo: 'Projetos de instrumentaÃ§Ã£o', descricao: 'Estudo focado em Projetos de instrumentaÃ§Ã£o', duracao: '45 min', ordem: 1 },
+      { id: 'pid', titulo: 'P&ID', descricao: 'Estudo focado em P&ID', duracao: '45 min', ordem: 2 },
+      { id: 'listas-de-instrumentos', titulo: 'Listas de instrumentos', descricao: 'Estudo focado em Listas de instrumentos', duracao: '45 min', ordem: 3 },
+      { id: 'simbologia-isa', titulo: 'Simbologia ISA', descricao: 'Estudo focado em Simbologia ISA', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-instrumentacao-projetos',
+    nome: 'Bloco II - Montagem',
+    descricao: 'Conteúdo específico para TÃ©cnico de Projetos, ConstruÃ§Ã£o e Montagem - InstrumentaÃ§Ã£o',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Prata',
+    profissoes: ['instrumentacao-projetos'],
+    topicos: [
+      { id: 'montagem-de-clpsdcd', titulo: 'Montagem de CLP/SDCD', descricao: 'Estudo focado em Montagem de CLP/SDCD', duracao: '45 min', ordem: 1 },
+      { id: 'tubing-e-cabeamento', titulo: 'Tubing e cabeamento', descricao: 'Estudo focado em Tubing e cabeamento', duracao: '45 min', ordem: 2 },
+      { id: 'calibraaao-em-campo', titulo: 'CalibraÃ§Ã£o em campo', descricao: 'Estudo focado em CalibraÃ§Ã£o em campo', duracao: '45 min', ordem: 3 },
+      { id: 'instalaaao-de-equipamentos', titulo: 'InstalaÃ§Ã£o de equipamentos', descricao: 'Estudo focado em InstalaÃ§Ã£o de equipamentos', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-instrumentacao-projetos',
+    nome: 'Bloco III - Comissionamento',
+    descricao: 'Conteúdo específico para TÃ©cnico de Projetos, ConstruÃ§Ã£o e Montagem - InstrumentaÃ§Ã£o',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Prata',
+    profissoes: ['instrumentacao-projetos'],
+    topicos: [
+      { id: 'comissionamento-de-malhas', titulo: 'Comissionamento de malhas', descricao: 'Estudo focado em Comissionamento de malhas', duracao: '45 min', ordem: 1 },
+      { id: 'fat-e-sat', titulo: 'FAT e SAT', descricao: 'Estudo focado em FAT e SAT', duracao: '45 min', ordem: 2 },
+      { id: 'normas-de-instrumentaaao', titulo: 'Normas de instrumentaÃ§Ã£o', descricao: 'Estudo focado em Normas de instrumentaÃ§Ã£o', duracao: '45 min', ordem: 3 },
+      { id: 'seguranaa-em-instrumentaaao', titulo: 'SeguranÃ§a em instrumentaÃ§Ã£o', descricao: 'Estudo focado em SeguranÃ§a em instrumentaÃ§Ã£o', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-logistica-transportes',
+    nome: 'Bloco I - Armazenagem',
+    descricao: 'Conteúdo específico para TÃ©cnico de LogÃ­stica de Transportes',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Prata',
+    profissoes: ['logistica-transportes'],
+    topicos: [
+      { id: 'armazenagem', titulo: 'Armazenagem', descricao: 'Estudo focado em Armazenagem', duracao: '45 min', ordem: 1 },
+      { id: 'logastica-reversa', titulo: 'LogÃ­stica reversa', descricao: 'Estudo focado em LogÃ­stica reversa', duracao: '45 min', ordem: 2 },
+      { id: 'inventarios', titulo: 'InventÃ¡rios', descricao: 'Estudo focado em InventÃ¡rios', duracao: '45 min', ordem: 3 },
+      { id: 'modais-de-transporte', titulo: 'Modais de transporte', descricao: 'Estudo focado em Modais de transporte', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-logistica-transportes',
+    nome: 'Bloco II - MovimentaÃ§Ã£o',
+    descricao: 'Conteúdo específico para TÃ©cnico de LogÃ­stica de Transportes',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Prata',
+    profissoes: ['logistica-transportes'],
+    topicos: [
+      { id: 'movimentaaao-de-cargas', titulo: 'MovimentaÃ§Ã£o de cargas', descricao: 'Estudo focado em MovimentaÃ§Ã£o de cargas', duracao: '45 min', ordem: 1 },
+      { id: 'logastica-internacional', titulo: 'LogÃ­stica internacional', descricao: 'Estudo focado em LogÃ­stica internacional', duracao: '45 min', ordem: 2 },
+      { id: 'lei-13303-lei-das-estatais', titulo: 'Lei 13.303 (Lei das Estatais)', descricao: 'Estudo focado em Lei 13.303 (Lei das Estatais)', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-3-logistica-transportes',
+    nome: 'Bloco III - SeguranÃ§a',
+    descricao: 'Conteúdo específico para TÃ©cnico de LogÃ­stica de Transportes',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Prata',
+    profissoes: ['logistica-transportes'],
+    topicos: [
+      { id: 'produtos-perigosos', titulo: 'Produtos perigosos', descricao: 'Estudo focado em Produtos perigosos', duracao: '45 min', ordem: 1 },
+      { id: 'nr-11', titulo: 'NR 11', descricao: 'Estudo focado em NR 11', duracao: '45 min', ordem: 2 },
+      { id: 'prevenaao-de-incandios', titulo: 'PrevenÃ§Ã£o de incÃªndios', descricao: 'Estudo focado em PrevenÃ§Ã£o de incÃªndios', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-1-quimica-petroleo',
+    nome: 'Bloco I - AnÃ¡lise',
+    descricao: 'Conteúdo específico para TÃ©cnico de QuÃ­mica de PetrÃ³leo',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Prata',
+    profissoes: ['quimica-petroleo'],
+    topicos: [
+      { id: 'quamica-analatica', titulo: 'QuÃ­mica analÃ­tica', descricao: 'Estudo focado em QuÃ­mica analÃ­tica', duracao: '45 min', ordem: 1 },
+      { id: 'matodos-instrumentais-de-analise', titulo: 'MÃ©todos instrumentais de anÃ¡lise', descricao: 'Estudo focado em MÃ©todos instrumentais de anÃ¡lise', duracao: '45 min', ordem: 2 }
+    ]
+  },
+  {
+    id: 'bloco-2-quimica-petroleo',
+    nome: 'Bloco II - OrgÃ¢nica',
+    descricao: 'Conteúdo específico para TÃ©cnico de QuÃ­mica de PetrÃ³leo',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Prata',
+    profissoes: ['quimica-petroleo'],
+    topicos: [
+      { id: 'quamica-organica', titulo: 'QuÃ­mica orgÃ¢nica', descricao: 'Estudo focado em QuÃ­mica orgÃ¢nica', duracao: '45 min', ordem: 1 },
+      { id: 'quamica-inorganica', titulo: 'QuÃ­mica inorgÃ¢nica', descricao: 'Estudo focado em QuÃ­mica inorgÃ¢nica', duracao: '45 min', ordem: 2 },
+      { id: 'propriedades-do-petraleo', titulo: 'Propriedades do petrÃ³leo', descricao: 'Estudo focado em Propriedades do petrÃ³leo', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-3-quimica-petroleo',
+    nome: 'Bloco III - LaboratÃ³rio',
+    descricao: 'Conteúdo específico para TÃ©cnico de QuÃ­mica de PetrÃ³leo',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Prata',
+    profissoes: ['quimica-petroleo'],
+    topicos: [
+      { id: 'analises-laboratoriais', titulo: 'AnÃ¡lises laboratoriais', descricao: 'Estudo focado em AnÃ¡lises laboratoriais', duracao: '45 min', ordem: 1 },
+      { id: 'controle-de-qualidade', titulo: 'Controle de qualidade', descricao: 'Estudo focado em Controle de qualidade', duracao: '45 min', ordem: 2 },
+      { id: 'seguranaa-em-laboratario', titulo: 'SeguranÃ§a em laboratÃ³rio', descricao: 'Estudo focado em SeguranÃ§a em laboratÃ³rio', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-1-suprimento-adm',
+    nome: 'Bloco I - AdministraÃ§Ã£o',
+    descricao: 'Conteúdo específico para TÃ©cnico de Suprimento de Bens e ServiÃ§os - AdministraÃ§Ã£o',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Prata',
+    profissoes: ['suprimento-adm'],
+    topicos: [
+      { id: 'administraaao-geral', titulo: 'AdministraÃ§Ã£o geral', descricao: 'Estudo focado em AdministraÃ§Ã£o geral', duracao: '45 min', ordem: 1 },
+      { id: 'gestao-de-qualidade', titulo: 'GestÃ£o de qualidade', descricao: 'Estudo focado em GestÃ£o de qualidade', duracao: '45 min', ordem: 2 },
+      { id: 'logastica', titulo: 'LogÃ­stica', descricao: 'Estudo focado em LogÃ­stica', duracao: '45 min', ordem: 3 },
+      { id: 'compras', titulo: 'Compras', descricao: 'Estudo focado em Compras', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-suprimento-adm',
+    nome: 'Bloco II - LegislaÃ§Ã£o',
+    descricao: 'Conteúdo específico para TÃ©cnico de Suprimento de Bens e ServiÃ§os - AdministraÃ§Ã£o',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Prata',
+    profissoes: ['suprimento-adm'],
+    topicos: [
+      { id: 'lei-13303-art-28-91', titulo: 'Lei 13.303 (Art. 28-91)', descricao: 'Estudo focado em Lei 13.303 (Art. 28-91)', duracao: '45 min', ordem: 1 },
+      { id: 'regulamento-de-licitaaaes-petrobras-rlcp', titulo: 'Regulamento de LicitaÃ§Ãµes Petrobras (RLCP)', descricao: 'Estudo focado em Regulamento de LicitaÃ§Ãµes Petrobras (RLCP)', duracao: '45 min', ordem: 2 }
+    ]
+  },
+  {
+    id: 'bloco-3-suprimento-adm',
+    nome: 'Bloco III - Tributos',
+    descricao: 'Conteúdo específico para TÃ©cnico de Suprimento de Bens e ServiÃ§os - AdministraÃ§Ã£o',
+    icone: '📚',
+    cor: 'from-cyan-500 to-blue-500',
+    requiredPlan: 'Prata',
+    profissoes: ['suprimento-adm'],
+    topicos: [
+      { id: 'contabilidade-basica', titulo: 'Contabilidade bÃ¡sica', descricao: 'Estudo focado em Contabilidade bÃ¡sica', duracao: '45 min', ordem: 1 },
+      { id: 'direito-tributario', titulo: 'Direito tributÃ¡rio', descricao: 'Estudo focado em Direito tributÃ¡rio', duracao: '45 min', ordem: 2 },
+      { id: 'administraaao-tributaria', titulo: 'AdministraÃ§Ã£o tributÃ¡ria', descricao: 'Estudo focado em AdministraÃ§Ã£o tributÃ¡ria', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-1-eng-petroleo',
+    nome: 'Bloco I - Engenharia de PoÃ§o',
+    descricao: 'Conteúdo específico para Engenharia de PetrÃ³leo',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['eng-petroleo'],
+    topicos: [
+      { id: 'perfuraaao', titulo: 'PerfuraÃ§Ã£o', descricao: 'Estudo focado em PerfuraÃ§Ã£o', duracao: '45 min', ordem: 1 },
+      { id: 'fluidos-de-perfuraaao', titulo: 'Fluidos de perfuraÃ§Ã£o', descricao: 'Estudo focado em Fluidos de perfuraÃ§Ã£o', duracao: '45 min', ordem: 2 },
+      { id: 'cimentaaao', titulo: 'CimentaÃ§Ã£o', descricao: 'Estudo focado em CimentaÃ§Ã£o', duracao: '45 min', ordem: 3 },
+      { id: 'completaaao', titulo: 'CompletaÃ§Ã£o', descricao: 'Estudo focado em CompletaÃ§Ã£o', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-eng-petroleo',
+    nome: 'Bloco II - Engenharia de ReservatÃ³rios',
+    descricao: 'Conteúdo específico para Engenharia de PetrÃ³leo',
+    icone: '📚',
+    cor: 'from-cyan-500 to-blue-500',
+    requiredPlan: 'Ouro',
+    profissoes: ['eng-petroleo'],
+    topicos: [
+      { id: 'propriedades-da-rocha-e-fluidos', titulo: 'Propriedades da rocha e fluidos', descricao: 'Estudo focado em Propriedades da rocha e fluidos', duracao: '45 min', ordem: 1 },
+      { id: 'escoamento-em-meios-porosos', titulo: 'Escoamento em meios porosos', descricao: 'Estudo focado em Escoamento em meios porosos', duracao: '45 min', ordem: 2 },
+      { id: 'recuperaaao-secundaria', titulo: 'RecuperaÃ§Ã£o secundÃ¡ria', descricao: 'Estudo focado em RecuperaÃ§Ã£o secundÃ¡ria', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-3-eng-petroleo',
+    nome: 'Bloco III - ElevaÃ§Ã£o e Escoamento',
+    descricao: 'Conteúdo específico para Engenharia de PetrÃ³leo',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Ouro',
+    profissoes: ['eng-petroleo'],
+    topicos: [
+      { id: 'matodos-de-elevaaao-artificial', titulo: 'MÃ©todos de elevaÃ§Ã£o artificial', descricao: 'Estudo focado em MÃ©todos de elevaÃ§Ã£o artificial', duracao: '45 min', ordem: 1 },
+      { id: 'garantia-de-escoamento', titulo: 'Garantia de escoamento', descricao: 'Estudo focado em Garantia de escoamento', duracao: '45 min', ordem: 2 },
+      { id: 'processamento-primario', titulo: 'Processamento primÃ¡rio', descricao: 'Estudo focado em Processamento primÃ¡rio', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-1-eng-mecanica',
+    nome: 'Bloco I - Termofluidos',
+    descricao: 'Conteúdo específico para Engenharia MecÃ¢nica',
+    icone: '📚',
+    cor: 'from-cyan-500 to-blue-500',
+    requiredPlan: 'Ouro',
+    profissoes: ['eng-mecanica'],
+    topicos: [
+      { id: 'termodinamica-aplicada', titulo: 'TermodinÃ¢mica aplicada', descricao: 'Estudo focado em TermodinÃ¢mica aplicada', duracao: '45 min', ordem: 1 },
+      { id: 'mecanica-dos-fluidos', titulo: 'MecÃ¢nica dos fluidos', descricao: 'Estudo focado em MecÃ¢nica dos fluidos', duracao: '45 min', ordem: 2 },
+      { id: 'transmissao-de-calor', titulo: 'TransmissÃ£o de calor', descricao: 'Estudo focado em TransmissÃ£o de calor', duracao: '45 min', ordem: 3 },
+      { id: 'maquinas-de-fluxo', titulo: 'MÃ¡quinas de fluxo', descricao: 'Estudo focado em MÃ¡quinas de fluxo', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-eng-mecanica',
+    nome: 'Bloco II - Projeto MecÃ¢nico',
+    descricao: 'Conteúdo específico para Engenharia MecÃ¢nica',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Ouro',
+    profissoes: ['eng-mecanica'],
+    topicos: [
+      { id: 'resistancia-dos-materiais', titulo: 'ResistÃªncia dos materiais', descricao: 'Estudo focado em ResistÃªncia dos materiais', duracao: '45 min', ordem: 1 },
+      { id: 'elementos-de-maquinas', titulo: 'Elementos de mÃ¡quinas', descricao: 'Estudo focado em Elementos de mÃ¡quinas', duracao: '45 min', ordem: 2 },
+      { id: 'vibraaaes-mecanicas', titulo: 'VibraÃ§Ãµes mecÃ¢nicas', descricao: 'Estudo focado em VibraÃ§Ãµes mecÃ¢nicas', duracao: '45 min', ordem: 3 },
+      { id: 'seleaao-de-materiais', titulo: 'SeleÃ§Ã£o de materiais', descricao: 'Estudo focado em SeleÃ§Ã£o de materiais', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-eng-mecanica',
+    nome: 'Bloco III - FabricaÃ§Ã£o e GestÃ£o',
+    descricao: 'Conteúdo específico para Engenharia MecÃ¢nica',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['eng-mecanica'],
+    topicos: [
+      { id: 'processos-de-fabricaaao', titulo: 'Processos de fabricaÃ§Ã£o', descricao: 'Estudo focado em Processos de fabricaÃ§Ã£o', duracao: '45 min', ordem: 1 },
+      { id: 'metrologia', titulo: 'Metrologia', descricao: 'Estudo focado em Metrologia', duracao: '45 min', ordem: 2 },
+      { id: 'manutenaao-industrial', titulo: 'ManutenÃ§Ã£o industrial', descricao: 'Estudo focado em ManutenÃ§Ã£o industrial', duracao: '45 min', ordem: 3 },
+      { id: 'gestao-de-projetos', titulo: 'GestÃ£o de projetos', descricao: 'Estudo focado em GestÃ£o de projetos', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-eng-eletrica',
+    nome: 'Bloco I - Sistemas de PotÃªncia',
+    descricao: 'Conteúdo específico para Engenharia ElÃ©trica',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Ouro',
+    profissoes: ['eng-eletrica'],
+    topicos: [
+      { id: 'geraaao-transmissao-e-distribuiaao', titulo: 'GeraÃ§Ã£o, transmissÃ£o e distribuiÃ§Ã£o', descricao: 'Estudo focado em GeraÃ§Ã£o, transmissÃ£o e distribuiÃ§Ã£o', duracao: '45 min', ordem: 1 },
+      { id: 'analise-de-sistemas-de-potancia', titulo: 'AnÃ¡lise de sistemas de potÃªncia', descricao: 'Estudo focado em AnÃ¡lise de sistemas de potÃªncia', duracao: '45 min', ordem: 2 },
+      { id: 'proteaao-de-sistemas', titulo: 'ProteÃ§Ã£o de sistemas', descricao: 'Estudo focado em ProteÃ§Ã£o de sistemas', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-2-eng-eletrica',
+    nome: 'Bloco II - MÃ¡quinas e Acionamentos',
+    descricao: 'Conteúdo específico para Engenharia ElÃ©trica',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['eng-eletrica'],
+    topicos: [
+      { id: 'transformadores', titulo: 'Transformadores', descricao: 'Estudo focado em Transformadores', duracao: '45 min', ordem: 1 },
+      { id: 'maquinas-rotativas', titulo: 'MÃ¡quinas rotativas', descricao: 'Estudo focado em MÃ¡quinas rotativas', duracao: '45 min', ordem: 2 },
+      { id: 'eletranica-de-potancia', titulo: 'EletrÃ´nica de potÃªncia', descricao: 'Estudo focado em EletrÃ´nica de potÃªncia', duracao: '45 min', ordem: 3 },
+      { id: 'acionamentos-elatricos', titulo: 'Acionamentos elÃ©tricos', descricao: 'Estudo focado em Acionamentos elÃ©tricos', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-eng-eletrica',
+    nome: 'Bloco III - EletrÃ´nica e Controle',
+    descricao: 'Conteúdo específico para Engenharia ElÃ©trica',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['eng-eletrica'],
+    topicos: [
+      { id: 'circuitos-elatricos', titulo: 'Circuitos elÃ©tricos', descricao: 'Estudo focado em Circuitos elÃ©tricos', duracao: '45 min', ordem: 1 },
+      { id: 'eletranica-analagica-e-digital', titulo: 'EletrÃ´nica analÃ³gica e digital', descricao: 'Estudo focado em EletrÃ´nica analÃ³gica e digital', duracao: '45 min', ordem: 2 },
+      { id: 'sistemas-de-controle', titulo: 'Sistemas de controle', descricao: 'Estudo focado em Sistemas de controle', duracao: '45 min', ordem: 3 },
+      { id: 'instrumentaaao', titulo: 'InstrumentaÃ§Ã£o', descricao: 'Estudo focado em InstrumentaÃ§Ã£o', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-eng-civil',
+    nome: 'Bloco I - Estruturas e Geotecnia',
+    descricao: 'Conteúdo específico para Engenharia Civil',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['eng-civil'],
+    topicos: [
+      { id: 'analise-estrutural', titulo: 'AnÃ¡lise estrutural', descricao: 'Estudo focado em AnÃ¡lise estrutural', duracao: '45 min', ordem: 1 },
+      { id: 'concreto-armado-e-protendido', titulo: 'Concreto armado e protendido', descricao: 'Estudo focado em Concreto armado e protendido', duracao: '45 min', ordem: 2 },
+      { id: 'mecanica-dos-solos', titulo: 'MecÃ¢nica dos solos', descricao: 'Estudo focado em MecÃ¢nica dos solos', duracao: '45 min', ordem: 3 },
+      { id: 'fundaaaes', titulo: 'FundaÃ§Ãµes', descricao: 'Estudo focado em FundaÃ§Ãµes', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-eng-civil',
+    nome: 'Bloco II - ConstruÃ§Ã£o Civil',
+    descricao: 'Conteúdo específico para Engenharia Civil',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['eng-civil'],
+    topicos: [
+      { id: 'tecnologia-das-construaaes', titulo: 'Tecnologia das construÃ§Ãµes', descricao: 'Estudo focado em Tecnologia das construÃ§Ãµes', duracao: '45 min', ordem: 1 },
+      { id: 'materiais-de-construaao', titulo: 'Materiais de construÃ§Ã£o', descricao: 'Estudo focado em Materiais de construÃ§Ã£o', duracao: '45 min', ordem: 2 },
+      { id: 'planejamento-e-controle-de-obras', titulo: 'Planejamento e controle de obras', descricao: 'Estudo focado em Planejamento e controle de obras', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-3-eng-civil',
+    nome: 'Bloco III - HidrÃ¡ulica e Saneamento',
+    descricao: 'Conteúdo específico para Engenharia Civil',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['eng-civil'],
+    topicos: [
+      { id: 'mecanica-dos-fluidos', titulo: 'MecÃ¢nica dos fluidos', descricao: 'Estudo focado em MecÃ¢nica dos fluidos', duracao: '45 min', ordem: 1 },
+      { id: 'hidraulica-aplicada', titulo: 'HidrÃ¡ulica aplicada', descricao: 'Estudo focado em HidrÃ¡ulica aplicada', duracao: '45 min', ordem: 2 },
+      { id: 'saneamento-basico', titulo: 'Saneamento bÃ¡sico', descricao: 'Estudo focado em Saneamento bÃ¡sico', duracao: '45 min', ordem: 3 },
+      { id: 'instalaaaes-prediais', titulo: 'InstalaÃ§Ãµes prediais', descricao: 'Estudo focado em InstalaÃ§Ãµes prediais', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-eng-seguranca',
+    nome: 'Bloco I - Higiene e Medicina',
+    descricao: 'Conteúdo específico para Engenharia de SeguranÃ§a',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['eng-seguranca'],
+    topicos: [
+      { id: 'higiene-ocupacional', titulo: 'Higiene ocupacional', descricao: 'Estudo focado em Higiene ocupacional', duracao: '45 min', ordem: 1 },
+      { id: 'doenaas-ocupacionais', titulo: 'DoenÃ§as ocupacionais', descricao: 'Estudo focado em DoenÃ§as ocupacionais', duracao: '45 min', ordem: 2 },
+      { id: 'toxicologia', titulo: 'Toxicologia', descricao: 'Estudo focado em Toxicologia', duracao: '45 min', ordem: 3 },
+      { id: 'ergonomia', titulo: 'Ergonomia', descricao: 'Estudo focado em Ergonomia', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-eng-seguranca',
+    nome: 'Bloco II - Gerenciamento de Riscos',
+    descricao: 'Conteúdo específico para Engenharia de SeguranÃ§a',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['eng-seguranca'],
+    topicos: [
+      { id: 'analise-de-riscos-apr-hazop', titulo: 'AnÃ¡lise de riscos (APR, HAZOP)', descricao: 'Estudo focado em AnÃ¡lise de riscos (APR, HAZOP)', duracao: '45 min', ordem: 1 },
+      { id: 'gerenciamento-de-riscos-pgr', titulo: 'Gerenciamento de riscos (PGR)', descricao: 'Estudo focado em Gerenciamento de riscos (PGR)', duracao: '45 min', ordem: 2 },
+      { id: 'prevenaao-e-controle-de-perdas', titulo: 'PrevenÃ§Ã£o e controle de perdas', descricao: 'Estudo focado em PrevenÃ§Ã£o e controle de perdas', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-3-eng-seguranca',
+    nome: 'Bloco III - LegislaÃ§Ã£o e IncÃªndio',
+    descricao: 'Conteúdo específico para Engenharia de SeguranÃ§a',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['eng-seguranca'],
+    topicos: [
+      { id: 'normas-regulamentadoras-nrs', titulo: 'Normas Regulamentadoras (NRs)', descricao: 'Estudo focado em Normas Regulamentadoras (NRs)', duracao: '45 min', ordem: 1 },
+      { id: 'legislaaao-previdenciaria', titulo: 'LegislaÃ§Ã£o previdenciÃ¡ria', descricao: 'Estudo focado em LegislaÃ§Ã£o previdenciÃ¡ria', duracao: '45 min', ordem: 2 },
+      { id: 'proteaao-contra-incandio-e-explosaes', titulo: 'ProteÃ§Ã£o contra incÃªndio e explosÃµes', descricao: 'Estudo focado em ProteÃ§Ã£o contra incÃªndio e explosÃµes', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-1-administracao',
+    nome: 'Bloco I - GestÃ£o EstratÃ©gica',
+    descricao: 'Conteúdo específico para AdministraÃ§Ã£o',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['administracao'],
+    topicos: [
+      { id: 'planejamento-estratagico', titulo: 'Planejamento estratÃ©gico', descricao: 'Estudo focado em Planejamento estratÃ©gico', duracao: '45 min', ordem: 1 },
+      { id: 'gestao-de-processos', titulo: 'GestÃ£o de processos', descricao: 'Estudo focado em GestÃ£o de processos', duracao: '45 min', ordem: 2 },
+      { id: 'gestao-de-projetos-pmbok', titulo: 'GestÃ£o de projetos (PMBOK)', descricao: 'Estudo focado em GestÃ£o de projetos (PMBOK)', duracao: '45 min', ordem: 3 },
+      { id: 'governanaa-corporativa', titulo: 'GovernanÃ§a corporativa', descricao: 'Estudo focado em GovernanÃ§a corporativa', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-administracao',
+    nome: 'Bloco II - GestÃ£o de Pessoas e Marketing',
+    descricao: 'Conteúdo específico para AdministraÃ§Ã£o',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['administracao'],
+    topicos: [
+      { id: 'comportamento-organizacional', titulo: 'Comportamento organizacional', descricao: 'Estudo focado em Comportamento organizacional', duracao: '45 min', ordem: 1 },
+      { id: 'gestao-de-rh', titulo: 'GestÃ£o de RH', descricao: 'Estudo focado em GestÃ£o de RH', duracao: '45 min', ordem: 2 },
+      { id: 'marketing-estratagico', titulo: 'Marketing estratÃ©gico', descricao: 'Estudo focado em Marketing estratÃ©gico', duracao: '45 min', ordem: 3 },
+      { id: 'pesquisa-de-mercado', titulo: 'Pesquisa de mercado', descricao: 'Estudo focado em Pesquisa de mercado', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-administracao',
+    nome: 'Bloco III - LogÃ­stica e FinanÃ§as',
+    descricao: 'Conteúdo específico para AdministraÃ§Ã£o',
+    icone: '📚',
+    cor: 'from-cyan-500 to-blue-500',
+    requiredPlan: 'Ouro',
+    profissoes: ['administracao'],
+    topicos: [
+      { id: 'gestao-da-cadeia-de-suprimentos', titulo: 'GestÃ£o da cadeia de suprimentos', descricao: 'Estudo focado em GestÃ£o da cadeia de suprimentos', duracao: '45 min', ordem: 1 },
+      { id: 'administraaao-de-materiais', titulo: 'AdministraÃ§Ã£o de materiais', descricao: 'Estudo focado em AdministraÃ§Ã£o de materiais', duracao: '45 min', ordem: 2 },
+      { id: 'administraaao-financeira', titulo: 'AdministraÃ§Ã£o financeira', descricao: 'Estudo focado em AdministraÃ§Ã£o financeira', duracao: '45 min', ordem: 3 },
+      { id: 'oraamento', titulo: 'OrÃ§amento', descricao: 'Estudo focado em OrÃ§amento', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-economia',
+    nome: 'Bloco I - Microeconomia',
+    descricao: 'Conteúdo específico para Economia',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['economia'],
+    topicos: [
+      { id: 'teoria-do-consumidor-e-da-firma', titulo: 'Teoria do consumidor e da firma', descricao: 'Estudo focado em Teoria do consumidor e da firma', duracao: '45 min', ordem: 1 },
+      { id: 'estruturas-de-mercado', titulo: 'Estruturas de mercado', descricao: 'Estudo focado em Estruturas de mercado', duracao: '45 min', ordem: 2 },
+      { id: 'equilabrio-geral', titulo: 'EquilÃ­brio geral', descricao: 'Estudo focado em EquilÃ­brio geral', duracao: '45 min', ordem: 3 },
+      { id: 'teoria-dos-jogos', titulo: 'Teoria dos jogos', descricao: 'Estudo focado em Teoria dos jogos', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-economia',
+    nome: 'Bloco II - Macroeconomia',
+    descricao: 'Conteúdo específico para Economia',
+    icone: '📚',
+    cor: 'from-cyan-500 to-blue-500',
+    requiredPlan: 'Ouro',
+    profissoes: ['economia'],
+    topicos: [
+      { id: 'contabilidade-nacional', titulo: 'Contabilidade nacional', descricao: 'Estudo focado em Contabilidade nacional', duracao: '45 min', ordem: 1 },
+      { id: 'teoria-monetaria', titulo: 'Teoria monetÃ¡ria', descricao: 'Estudo focado em Teoria monetÃ¡ria', duracao: '45 min', ordem: 2 },
+      { id: 'polaticas-fiscal-e-cambial', titulo: 'PolÃ­ticas fiscal e cambial', descricao: 'Estudo focado em PolÃ­ticas fiscal e cambial', duracao: '45 min', ordem: 3 },
+      { id: 'crescimento-econamico', titulo: 'Crescimento econÃ´mico', descricao: 'Estudo focado em Crescimento econÃ´mico', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-economia',
+    nome: 'Bloco III - MÃ©todos Quantitativos',
+    descricao: 'Conteúdo específico para Economia',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Ouro',
+    profissoes: ['economia'],
+    topicos: [
+      { id: 'estatastica-econamica', titulo: 'EstatÃ­stica econÃ´mica', descricao: 'Estudo focado em EstatÃ­stica econÃ´mica', duracao: '45 min', ordem: 1 },
+      { id: 'econometria', titulo: 'Econometria', descricao: 'Estudo focado em Econometria', duracao: '45 min', ordem: 2 },
+      { id: 'matematica-financeira', titulo: 'MatemÃ¡tica financeira', descricao: 'Estudo focado em MatemÃ¡tica financeira', duracao: '45 min', ordem: 3 },
+      { id: 'analise-de-projetos', titulo: 'AnÃ¡lise de projetos', descricao: 'Estudo focado em AnÃ¡lise de projetos', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-analista-sistemas-eng-software',
+    nome: 'Bloco I - Desenvolvimento',
+    descricao: 'Conteúdo específico para Analista de Sistemas - Engenharia de Software',
+    icone: '📚',
+    cor: 'from-cyan-500 to-blue-500',
+    requiredPlan: 'Ouro',
+    profissoes: ['analista-sistemas-eng-software'],
+    topicos: [
+      { id: 'lagica-de-programaaao', titulo: 'LÃ³gica de programaÃ§Ã£o', descricao: 'Estudo focado em LÃ³gica de programaÃ§Ã£o', duracao: '45 min', ordem: 1 },
+      { id: 'estruturas-de-dados', titulo: 'Estruturas de dados', descricao: 'Estudo focado em Estruturas de dados', duracao: '45 min', ordem: 2 },
+      { id: 'padraes-de-projeto', titulo: 'PadrÃµes de projeto', descricao: 'Estudo focado em PadrÃµes de projeto', duracao: '45 min', ordem: 3 },
+      { id: 'linguagens-java-python-c', titulo: 'Linguagens (Java, Python, C#)', descricao: 'Estudo focado em Linguagens (Java, Python, C#)', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-analista-sistemas-eng-software',
+    nome: 'Bloco II - Engenharia de Software',
+    descricao: 'Conteúdo específico para Analista de Sistemas - Engenharia de Software',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Ouro',
+    profissoes: ['analista-sistemas-eng-software'],
+    topicos: [
+      { id: 'ciclo-de-vida-de-software', titulo: 'Ciclo de vida de software', descricao: 'Estudo focado em Ciclo de vida de software', duracao: '45 min', ordem: 1 },
+      { id: 'metodologias-ageis-scrum-kanban', titulo: 'Metodologias Ã¡geis (Scrum, Kanban)', descricao: 'Estudo focado em Metodologias Ã¡geis (Scrum, Kanban)', duracao: '45 min', ordem: 2 },
+      { id: 'devops', titulo: 'DevOps', descricao: 'Estudo focado em DevOps', duracao: '45 min', ordem: 3 },
+      { id: 'testes-de-software', titulo: 'Testes de software', descricao: 'Estudo focado em Testes de software', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-analista-sistemas-eng-software',
+    nome: 'Bloco III - Arquitetura e BD',
+    descricao: 'Conteúdo específico para Analista de Sistemas - Engenharia de Software',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['analista-sistemas-eng-software'],
+    topicos: [
+      { id: 'arquitetura-de-sistemas', titulo: 'Arquitetura de sistemas', descricao: 'Estudo focado em Arquitetura de sistemas', duracao: '45 min', ordem: 1 },
+      { id: 'microserviaos', titulo: 'MicroserviÃ§os', descricao: 'Estudo focado em MicroserviÃ§os', duracao: '45 min', ordem: 2 },
+      { id: 'banco-de-dados-sql-e-nosql', titulo: 'Banco de dados (SQL e NoSQL)', descricao: 'Estudo focado em Banco de dados (SQL e NoSQL)', duracao: '45 min', ordem: 3 },
+      { id: 'seguranaa-da-informaaao', titulo: 'SeguranÃ§a da informaÃ§Ã£o', descricao: 'Estudo focado em SeguranÃ§a da informaÃ§Ã£o', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-analista-sistemas-infra',
+    nome: 'Bloco I - Redes e ComunicaÃ§Ã£o',
+    descricao: 'Conteúdo específico para Analista de Sistemas - Infraestrutura',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Ouro',
+    profissoes: ['analista-sistemas-infra'],
+    topicos: [
+      { id: 'protocolos-tcpip', titulo: 'Protocolos TCP/IP', descricao: 'Estudo focado em Protocolos TCP/IP', duracao: '45 min', ordem: 1 },
+      { id: 'roteamento-e-switching', titulo: 'Roteamento e switching', descricao: 'Estudo focado em Roteamento e switching', duracao: '45 min', ordem: 2 },
+      { id: 'redes-sem-fio', titulo: 'Redes sem fio', descricao: 'Estudo focado em Redes sem fio', duracao: '45 min', ordem: 3 },
+      { id: 'seguranaa-de-redes', titulo: 'SeguranÃ§a de redes', descricao: 'Estudo focado em SeguranÃ§a de redes', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-analista-sistemas-infra',
+    nome: 'Bloco II - Sistemas Operacionais',
+    descricao: 'Conteúdo específico para Analista de Sistemas - Infraestrutura',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['analista-sistemas-infra'],
+    topicos: [
+      { id: 'windows-server', titulo: 'Windows Server', descricao: 'Estudo focado em Windows Server', duracao: '45 min', ordem: 1 },
+      { id: 'linux-red-hatdebian', titulo: 'Linux (Red Hat/Debian)', descricao: 'Estudo focado em Linux (Red Hat/Debian)', duracao: '45 min', ordem: 2 },
+      { id: 'virtualizaaao', titulo: 'VirtualizaÃ§Ã£o', descricao: 'Estudo focado em VirtualizaÃ§Ã£o', duracao: '45 min', ordem: 3 },
+      { id: 'containeres-docker-k8s', titulo: 'ContÃªineres (Docker, K8s)', descricao: 'Estudo focado em ContÃªineres (Docker, K8s)', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-analista-sistemas-infra',
+    nome: 'Bloco III - GestÃ£o e Nuvem',
+    descricao: 'Conteúdo específico para Analista de Sistemas - Infraestrutura',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['analista-sistemas-infra'],
+    topicos: [
+      { id: 'computaaao-em-nuvem-awsazure', titulo: 'ComputaÃ§Ã£o em nuvem (AWS/Azure)', descricao: 'Estudo focado em ComputaÃ§Ã£o em nuvem (AWS/Azure)', duracao: '45 min', ordem: 1 },
+      { id: 'gestao-de-serviaos-itil', titulo: 'GestÃ£o de serviÃ§os (ITIL)', descricao: 'Estudo focado em GestÃ£o de serviÃ§os (ITIL)', duracao: '45 min', ordem: 2 },
+      { id: 'monitoramento', titulo: 'Monitoramento', descricao: 'Estudo focado em Monitoramento', duracao: '45 min', ordem: 3 },
+      { id: 'backup-e-recuperaaao', titulo: 'Backup e recuperaÃ§Ã£o', descricao: 'Estudo focado em Backup e recuperaÃ§Ã£o', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-analista-sistemas-processos',
+    nome: 'Bloco I - Modelagem de Processos',
+    descricao: 'Conteúdo específico para Analista de Sistemas - Processos de NegÃ³cio',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['analista-sistemas-processos'],
+    topicos: [
+      { id: 'bpmn', titulo: 'BPMN', descricao: 'Estudo focado em BPMN', duracao: '45 min', ordem: 1 },
+      { id: 'engenharia-de-requisitos', titulo: 'Engenharia de requisitos', descricao: 'Estudo focado em Engenharia de requisitos', duracao: '45 min', ordem: 2 },
+      { id: 'analise-de-negacios', titulo: 'AnÃ¡lise de negÃ³cios', descricao: 'Estudo focado em AnÃ¡lise de negÃ³cios', duracao: '45 min', ordem: 3 },
+      { id: 'gestao-de-processos-bpm', titulo: 'GestÃ£o de processos (BPM)', descricao: 'Estudo focado em GestÃ£o de processos (BPM)', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-analista-sistemas-processos',
+    nome: 'Bloco II - GestÃ£o de Projetos e ServiÃ§os',
+    descricao: 'Conteúdo específico para Analista de Sistemas - Processos de NegÃ³cio',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['analista-sistemas-processos'],
+    topicos: [
+      { id: 'pmbok', titulo: 'PMBOK', descricao: 'Estudo focado em PMBOK', duracao: '45 min', ordem: 1 },
+      { id: 'scrum', titulo: 'Scrum', descricao: 'Estudo focado em Scrum', duracao: '45 min', ordem: 2 },
+      { id: 'itil-4', titulo: 'ITIL 4', descricao: 'Estudo focado em ITIL 4', duracao: '45 min', ordem: 3 },
+      { id: 'cobit-2019', titulo: 'COBIT 2019', descricao: 'Estudo focado em COBIT 2019', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-analista-sistemas-processos',
+    nome: 'Bloco III - Dados e InovaÃ§Ã£o',
+    descricao: 'Conteúdo específico para Analista de Sistemas - Processos de NegÃ³cio',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['analista-sistemas-processos'],
+    topicos: [
+      { id: 'ciancia-de-dados', titulo: 'CiÃªncia de dados', descricao: 'Estudo focado em CiÃªncia de dados', duracao: '45 min', ordem: 1 },
+      { id: 'transformaaao-digital', titulo: 'TransformaÃ§Ã£o digital', descricao: 'Estudo focado em TransformaÃ§Ã£o digital', duracao: '45 min', ordem: 2 },
+      { id: 'design-thinking', titulo: 'Design Thinking', descricao: 'Estudo focado em Design Thinking', duracao: '45 min', ordem: 3 },
+      { id: 'arquitetura-corporativa', titulo: 'Arquitetura corporativa', descricao: 'Estudo focado em Arquitetura corporativa', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-geologia',
+    nome: 'Bloco I - Geologia Geral',
+    descricao: 'Conteúdo específico para Geologia',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['geologia'],
+    topicos: [
+      { id: 'mineralogia-e-petrologia', titulo: 'Mineralogia e Petrologia', descricao: 'Estudo focado em Mineralogia e Petrologia', duracao: '45 min', ordem: 1 },
+      { id: 'geologia-estrutural', titulo: 'Geologia estrutural', descricao: 'Estudo focado em Geologia estrutural', duracao: '45 min', ordem: 2 },
+      { id: 'sedimentologia', titulo: 'Sedimentologia', descricao: 'Estudo focado em Sedimentologia', duracao: '45 min', ordem: 3 },
+      { id: 'estratigrafia', titulo: 'Estratigrafia', descricao: 'Estudo focado em Estratigrafia', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-geologia',
+    nome: 'Bloco II - Geologia do PetrÃ³leo',
+    descricao: 'Conteúdo específico para Geologia',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['geologia'],
+    topicos: [
+      { id: 'sistemas-petrolaferos', titulo: 'Sistemas petrolÃ­feros', descricao: 'Estudo focado em Sistemas petrolÃ­feros', duracao: '45 min', ordem: 1 },
+      { id: 'geoquamica-organica', titulo: 'GeoquÃ­mica orgÃ¢nica', descricao: 'Estudo focado em GeoquÃ­mica orgÃ¢nica', duracao: '45 min', ordem: 2 },
+      { id: 'geofasica-de-exploraaao', titulo: 'GeofÃ­sica de exploraÃ§Ã£o', descricao: 'Estudo focado em GeofÃ­sica de exploraÃ§Ã£o', duracao: '45 min', ordem: 3 },
+      { id: 'avaliaaao-de-formaaaes', titulo: 'AvaliaÃ§Ã£o de formaÃ§Ãµes', descricao: 'Estudo focado em AvaliaÃ§Ã£o de formaÃ§Ãµes', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-geologia',
+    nome: 'Bloco III - Mapeamento e Recursos',
+    descricao: 'Conteúdo específico para Geologia',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['geologia'],
+    topicos: [
+      { id: 'geotecnologias', titulo: 'Geotecnologias', descricao: 'Estudo focado em Geotecnologias', duracao: '45 min', ordem: 1 },
+      { id: 'sensoriamento-remoto', titulo: 'Sensoriamento remoto', descricao: 'Estudo focado em Sensoriamento remoto', duracao: '45 min', ordem: 2 },
+      { id: 'hidrogeologia', titulo: 'Hidrogeologia', descricao: 'Estudo focado em Hidrogeologia', duracao: '45 min', ordem: 3 },
+      { id: 'geologia-ambiental', titulo: 'Geologia ambiental', descricao: 'Estudo focado em Geologia ambiental', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-geofisica',
+    nome: 'Bloco I - MÃ©todos Potenciais',
+    descricao: 'Conteúdo específico para GeofÃ­sica',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['geofisica'],
+    topicos: [
+      { id: 'gravimetria', titulo: 'Gravimetria', descricao: 'Estudo focado em Gravimetria', duracao: '45 min', ordem: 1 },
+      { id: 'magnetometria', titulo: 'Magnetometria', descricao: 'Estudo focado em Magnetometria', duracao: '45 min', ordem: 2 },
+      { id: 'eletromagnetismo', titulo: 'Eletromagnetismo', descricao: 'Estudo focado em Eletromagnetismo', duracao: '45 min', ordem: 3 },
+      { id: 'processamento-de-dados', titulo: 'Processamento de dados', descricao: 'Estudo focado em Processamento de dados', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-geofisica',
+    nome: 'Bloco II - MÃ©todos SÃ­smicos',
+    descricao: 'Conteúdo específico para GeofÃ­sica',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Ouro',
+    profissoes: ['geofisica'],
+    topicos: [
+      { id: 'aquisiaao-sasmica', titulo: 'AquisiÃ§Ã£o sÃ­smica', descricao: 'Estudo focado em AquisiÃ§Ã£o sÃ­smica', duracao: '45 min', ordem: 1 },
+      { id: 'processamento-sasmico', titulo: 'Processamento sÃ­smico', descricao: 'Estudo focado em Processamento sÃ­smico', duracao: '45 min', ordem: 2 },
+      { id: 'interpretaaao-sasmica', titulo: 'InterpretaÃ§Ã£o sÃ­smica', descricao: 'Estudo focado em InterpretaÃ§Ã£o sÃ­smica', duracao: '45 min', ordem: 3 },
+      { id: 'sismologia', titulo: 'Sismologia', descricao: 'Estudo focado em Sismologia', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-geofisica',
+    nome: 'Bloco III - FÃ­sica da Terra',
+    descricao: 'Conteúdo específico para GeofÃ­sica',
+    icone: '📚',
+    cor: 'from-cyan-500 to-blue-500',
+    requiredPlan: 'Ouro',
+    profissoes: ['geofisica'],
+    topicos: [
+      { id: 'fasica-da-terra-salida', titulo: 'FÃ­sica da Terra sÃ³lida', descricao: 'Estudo focado em FÃ­sica da Terra sÃ³lida', duracao: '45 min', ordem: 1 },
+      { id: 'propriedades-fasicas-das-rochas', titulo: 'Propriedades fÃ­sicas das rochas', descricao: 'Estudo focado em Propriedades fÃ­sicas das rochas', duracao: '45 min', ordem: 2 },
+      { id: 'perfilagem-de-poaos', titulo: 'Perfilagem de poÃ§os', descricao: 'Estudo focado em Perfilagem de poÃ§os', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-1-caixa-tecnico',
+    nome: 'Bloco I - Conhecimentos BancÃ¡rios',
+    descricao: 'Conteúdo específico para Caixa - TÃ©cnico BancÃ¡rio',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Prata',
+    profissoes: ['caixa-tecnico'],
+    topicos: [
+      { id: 'sistema-financeiro-nacional', titulo: 'Sistema Financeiro Nacional', descricao: 'Estudo focado em Sistema Financeiro Nacional', duracao: '45 min', ordem: 1 },
+      { id: 'mercado-financeiro', titulo: 'Mercado Financeiro', descricao: 'Estudo focado em Mercado Financeiro', duracao: '45 min', ordem: 2 },
+      { id: 'produtos-bancarios', titulo: 'Produtos BancÃ¡rios', descricao: 'Estudo focado em Produtos BancÃ¡rios', duracao: '45 min', ordem: 3 },
+      { id: 'garantias-do-sfn', titulo: 'Garantias do SFN', descricao: 'Estudo focado em Garantias do SFN', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-caixa-tecnico',
+    nome: 'Bloco II - Atendimento e TI',
+    descricao: 'Conteúdo específico para Caixa - TÃ©cnico BancÃ¡rio',
+    icone: '📚',
+    cor: 'from-cyan-500 to-blue-500',
+    requiredPlan: 'Prata',
+    profissoes: ['caixa-tecnico'],
+    topicos: [
+      { id: 'atendimento-ao-cliente', titulo: 'Atendimento ao cliente', descricao: 'Estudo focado em Atendimento ao cliente', duracao: '45 min', ordem: 1 },
+      { id: 'diversidade-e-inclusao', titulo: 'Diversidade e InclusÃ£o', descricao: 'Estudo focado em Diversidade e InclusÃ£o', duracao: '45 min', ordem: 2 },
+      { id: 'tecnologia-da-informaaao', titulo: 'Tecnologia da InformaÃ§Ã£o', descricao: 'Estudo focado em Tecnologia da InformaÃ§Ã£o', duracao: '45 min', ordem: 3 },
+      { id: 'seguranaa-da-informaaao', titulo: 'SeguranÃ§a da InformaÃ§Ã£o', descricao: 'Estudo focado em SeguranÃ§a da InformaÃ§Ã£o', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-caixa-tecnico',
+    nome: 'Bloco III - Digital e Vendas',
+    descricao: 'Conteúdo específico para Caixa - TÃ©cnico BancÃ¡rio',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Prata',
+    profissoes: ['caixa-tecnico'],
+    topicos: [
+      { id: 'comportamento-digital', titulo: 'Comportamento digital', descricao: 'Estudo focado em Comportamento digital', duracao: '45 min', ordem: 1 },
+      { id: 'tacnicas-de-vendas', titulo: 'TÃ©cnicas de vendas', descricao: 'Estudo focado em TÃ©cnicas de vendas', duracao: '45 min', ordem: 2 },
+      { id: 'atica-e-conduta-caixa', titulo: 'Ã‰tica e Conduta Caixa', descricao: 'Estudo focado em Ã‰tica e Conduta Caixa', duracao: '45 min', ordem: 3 },
+      { id: 'legislaaao-anticorrupaao', titulo: 'LegislaÃ§Ã£o AnticorrupÃ§Ã£o', descricao: 'Estudo focado em LegislaÃ§Ã£o AnticorrupÃ§Ã£o', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-bb-escriturario',
+    nome: 'Bloco I - Conhecimentos BancÃ¡rios',
+    descricao: 'Conteúdo específico para Banco do Brasil - EscriturÃ¡rio',
+    icone: '📚',
+    cor: 'from-cyan-500 to-blue-500',
+    requiredPlan: 'Prata',
+    profissoes: ['bb-escriturario'],
+    topicos: [
+      { id: 'estrutura-do-sfn', titulo: 'Estrutura do SFN', descricao: 'Estudo focado em Estrutura do SFN', duracao: '45 min', ordem: 1 },
+      { id: 'mercado-de-cambio', titulo: 'Mercado de CÃ¢mbio', descricao: 'Estudo focado em Mercado de CÃ¢mbio', duracao: '45 min', ordem: 2 },
+      { id: 'tatulos-de-cradito', titulo: 'TÃ­tulos de CrÃ©dito', descricao: 'Estudo focado em TÃ­tulos de CrÃ©dito', duracao: '45 min', ordem: 3 },
+      { id: 'criptoativos-e-open-finance', titulo: 'Criptoativos e Open Finance', descricao: 'Estudo focado em Criptoativos e Open Finance', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-bb-escriturario',
+    nome: 'Bloco II - Vendas e NegociaÃ§Ã£o',
+    descricao: 'Conteúdo específico para Banco do Brasil - EscriturÃ¡rio',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Prata',
+    profissoes: ['bb-escriturario'],
+    topicos: [
+      { id: 'marketing-de-relacionamento', titulo: 'Marketing de relacionamento', descricao: 'Estudo focado em Marketing de relacionamento', duracao: '45 min', ordem: 1 },
+      { id: 'tacnicas-de-vendas-no-setor-bancario', titulo: 'TÃ©cnicas de vendas no setor bancÃ¡rio', descricao: 'Estudo focado em TÃ©cnicas de vendas no setor bancÃ¡rio', duracao: '45 min', ordem: 2 },
+      { id: 'resoluaao-cmn-4860', titulo: 'ResoluÃ§Ã£o CMN 4.860', descricao: 'Estudo focado em ResoluÃ§Ã£o CMN 4.860', duracao: '45 min', ordem: 3 },
+      { id: 'cdc', titulo: 'CDC', descricao: 'Estudo focado em CDC', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-bb-escriturario',
+    nome: 'Bloco III - InformÃ¡tica e FinanÃ§as',
+    descricao: 'Conteúdo específico para Banco do Brasil - EscriturÃ¡rio',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Prata',
+    profissoes: ['bb-escriturario'],
+    topicos: [
+      { id: 'noaaes-de-informatica', titulo: 'NoÃ§Ãµes de informÃ¡tica', descricao: 'Estudo focado em NoÃ§Ãµes de informÃ¡tica', duracao: '45 min', ordem: 1 },
+      { id: 'banco-de-dados-e-analytics', titulo: 'Banco de Dados e Analytics', descricao: 'Estudo focado em Banco de Dados e Analytics', duracao: '45 min', ordem: 2 },
+      { id: 'matematica-financeira', titulo: 'MatemÃ¡tica Financeira', descricao: 'Estudo focado em MatemÃ¡tica Financeira', duracao: '45 min', ordem: 3 },
+      { id: 'sistemas-operacionais', titulo: 'Sistemas Operacionais', descricao: 'Estudo focado em Sistemas Operacionais', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-correios-agente',
+    nome: 'Bloco I - Conhecimentos Postais',
+    descricao: 'Conteúdo específico para Correios - Agente de Correios',
+    icone: '📚',
+    cor: 'from-blue-600 to-indigo-700',
+    requiredPlan: 'Prata',
+    profissoes: ['correios-agente'],
+    topicos: [
+      { id: 'serviaos-postais-basicos', titulo: 'ServiÃ§os postais bÃ¡sicos', descricao: 'Estudo focado em ServiÃ§os postais bÃ¡sicos', duracao: '45 min', ordem: 1 },
+      { id: 'regulamento-do-serviao-postal', titulo: 'Regulamento do ServiÃ§o Postal', descricao: 'Estudo focado em Regulamento do ServiÃ§o Postal', duracao: '45 min', ordem: 2 },
+      { id: 'endereaamento-de-correspondancias', titulo: 'EndereÃ§amento de correspondÃªncias', descricao: 'Estudo focado em EndereÃ§amento de correspondÃªncias', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-2-correios-agente',
+    nome: 'Bloco II - Atendimento e Vendas',
+    descricao: 'Conteúdo específico para Correios - Agente de Correios',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Prata',
+    profissoes: ['correios-agente'],
+    topicos: [
+      { id: 'qualidade-no-atendimento', titulo: 'Qualidade no atendimento', descricao: 'Estudo focado em Qualidade no atendimento', duracao: '45 min', ordem: 1 },
+      { id: 'tacnicas-de-abordagem', titulo: 'TÃ©cnicas de abordagem', descricao: 'Estudo focado em TÃ©cnicas de abordagem', duracao: '45 min', ordem: 2 },
+      { id: 'cadigo-de-atica-dos-correios', titulo: 'CÃ³digo de Ã‰tica dos Correios', descricao: 'Estudo focado em CÃ³digo de Ã‰tica dos Correios', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-3-correios-agente',
+    nome: 'Bloco III - InformÃ¡tica e LogÃ­stica',
+    descricao: 'Conteúdo específico para Correios - Agente de Correios',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Prata',
+    profissoes: ['correios-agente'],
+    topicos: [
+      { id: 'noaaes-de-informatica', titulo: 'NoÃ§Ãµes de informÃ¡tica', descricao: 'Estudo focado em NoÃ§Ãµes de informÃ¡tica', duracao: '45 min', ordem: 1 },
+      { id: 'operaaaes-logasticas-basicas', titulo: 'OperaÃ§Ãµes logÃ­sticas bÃ¡sicas', descricao: 'Estudo focado em OperaÃ§Ãµes logÃ­sticas bÃ¡sicas', duracao: '45 min', ordem: 2 },
+      { id: 'organizaaao-de-correspondancias', titulo: 'OrganizaÃ§Ã£o de correspondÃªncias', descricao: 'Estudo focado em OrganizaÃ§Ã£o de correspondÃªncias', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-1-ibge-recenseador',
+    nome: 'Bloco I - Conhecimentos TÃ©cnicos do Censo',
+    descricao: 'Conteúdo específico para IBGE - Recenseador/Agente',
+    icone: '📚',
+    cor: 'from-emerald-500 to-teal-600',
+    requiredPlan: 'Prata',
+    profissoes: ['ibge-recenseador'],
+    topicos: [
+      { id: 'manual-do-recenseador', titulo: 'Manual do Recenseador', descricao: 'Estudo focado em Manual do Recenseador', duracao: '45 min', ordem: 1 },
+      { id: 'estrutura-dos-setores-censitarios', titulo: 'Estrutura dos setores censitÃ¡rios', descricao: 'Estudo focado em Estrutura dos setores censitÃ¡rios', duracao: '45 min', ordem: 2 },
+      { id: 'entrevista-de-campo', titulo: 'Entrevista de campo', descricao: 'Estudo focado em Entrevista de campo', duracao: '45 min', ordem: 3 },
+      { id: 'coleta-de-dados', titulo: 'Coleta de dados', descricao: 'Estudo focado em Coleta de dados', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-ibge-recenseador',
+    nome: 'Bloco II - Ã‰tica no ServiÃ§o PÃºblico',
+    descricao: 'Conteúdo específico para IBGE - Recenseador/Agente',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Prata',
+    profissoes: ['ibge-recenseador'],
+    topicos: [
+      { id: 'cadigo-de-atica-do-ibge', titulo: 'CÃ³digo de Ã‰tica do IBGE', descricao: 'Estudo focado em CÃ³digo de Ã‰tica do IBGE', duracao: '45 min', ordem: 1 },
+      { id: 'lei-811290-regime-disciplinar', titulo: 'Lei 8.112/90 (Regime Disciplinar)', descricao: 'Estudo focado em Lei 8.112/90 (Regime Disciplinar)', duracao: '45 min', ordem: 2 },
+      { id: 'sigilo-estatastico', titulo: 'Sigilo estatÃ­stico', descricao: 'Estudo focado em Sigilo estatÃ­stico', duracao: '45 min', ordem: 3 }
+    ]
+  },
+  {
+    id: 'bloco-3-ibge-recenseador',
+    nome: 'Bloco III - Geografia e MatemÃ¡tica',
+    descricao: 'Conteúdo específico para IBGE - Recenseador/Agente',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Prata',
+    profissoes: ['ibge-recenseador'],
+    topicos: [
+      { id: 'geografia-do-brasil', titulo: 'Geografia do Brasil', descricao: 'Estudo focado em Geografia do Brasil', duracao: '45 min', ordem: 1 },
+      { id: 'leitura-de-mapas-e-croquis', titulo: 'Leitura de mapas e croquis', descricao: 'Estudo focado em Leitura de mapas e croquis', duracao: '45 min', ordem: 2 },
+      { id: 'matematica-basica', titulo: 'MatemÃ¡tica bÃ¡sica', descricao: 'Estudo focado em MatemÃ¡tica bÃ¡sica', duracao: '45 min', ordem: 3 },
+      { id: 'calculo-de-taxas-de-resposta', titulo: 'CÃ¡lculo de taxas de resposta', descricao: 'Estudo focado em CÃ¡lculo de taxas de resposta', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-1-inss-tecnico',
+    nome: 'Bloco I - Direito PrevidenciÃ¡rio',
+    descricao: 'Conteúdo específico para INSS - TÃ©cnico do Seguro Social',
+    icone: '📚',
+    cor: 'from-amber-500 to-orange-600',
+    requiredPlan: 'Prata',
+    profissoes: ['inss-tecnico'],
+    topicos: [
+      { id: 'seguridade-social-na-constituiaao', titulo: 'Seguridade Social na ConstituiÃ§Ã£o', descricao: 'Estudo focado em Seguridade Social na ConstituiÃ§Ã£o', duracao: '45 min', ordem: 1 },
+      { id: 'regime-geral-de-previdancia-social', titulo: 'Regime Geral de PrevidÃªncia Social', descricao: 'Estudo focado em Regime Geral de PrevidÃªncia Social', duracao: '45 min', ordem: 2 },
+      { id: 'segurados-e-dependentes', titulo: 'Segurados e dependentes', descricao: 'Estudo focado em Segurados e dependentes', duracao: '45 min', ordem: 3 },
+      { id: 'benefacios-previdenciarios', titulo: 'BenefÃ­cios previdenciÃ¡rios', descricao: 'Estudo focado em BenefÃ­cios previdenciÃ¡rios', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-2-inss-tecnico',
+    nome: 'Bloco II - Direito Administrativo e Constitucional',
+    descricao: 'Conteúdo específico para INSS - TÃ©cnico do Seguro Social',
+    icone: '📚',
+    cor: 'from-rose-500 to-pink-600',
+    requiredPlan: 'Prata',
+    profissoes: ['inss-tecnico'],
+    topicos: [
+      { id: 'princapios-da-administraaao-pablica', titulo: 'PrincÃ­pios da AdministraÃ§Ã£o PÃºblica', descricao: 'Estudo focado em PrincÃ­pios da AdministraÃ§Ã£o PÃºblica', duracao: '45 min', ordem: 1 },
+      { id: 'atos-administrativos', titulo: 'Atos Administrativos', descricao: 'Estudo focado em Atos Administrativos', duracao: '45 min', ordem: 2 },
+      { id: 'servidores-pablicos', titulo: 'Servidores PÃºblicos', descricao: 'Estudo focado em Servidores PÃºblicos', duracao: '45 min', ordem: 3 },
+      { id: 'direitos-e-garantias-fundamentais', titulo: 'Direitos e garantias fundamentais', descricao: 'Estudo focado em Direitos e garantias fundamentais', duracao: '45 min', ordem: 4 }
+    ]
+  },
+  {
+    id: 'bloco-3-inss-tecnico',
+    nome: 'Bloco III - InformÃ¡tica e RaciocÃ­nio LÃ³gico',
+    descricao: 'Conteúdo específico para INSS - TÃ©cnico do Seguro Social',
+    icone: '📚',
+    cor: 'from-violet-500 to-purple-600',
+    requiredPlan: 'Prata',
+    profissoes: ['inss-tecnico'],
+    topicos: [
+      { id: 'seguranaa-da-informaaao', titulo: 'SeguranÃ§a da informaÃ§Ã£o', descricao: 'Estudo focado em SeguranÃ§a da informaÃ§Ã£o', duracao: '45 min', ordem: 1 },
+      { id: 'ferramentas-de-escritario-wordexcel', titulo: 'Ferramentas de escritÃ³rio (Word/Excel)', descricao: 'Estudo focado em Ferramentas de escritÃ³rio (Word/Excel)', duracao: '45 min', ordem: 2 },
+      { id: 'proposiaaes-lagicas', titulo: 'ProposiÃ§Ãµes lÃ³gicas', descricao: 'Estudo focado em ProposiÃ§Ãµes lÃ³gicas', duracao: '45 min', ordem: 3 },
+      { id: 'resoluaao-de-problemas-quantitativos', titulo: 'ResoluÃ§Ã£o de problemas quantitativos', descricao: 'Estudo focado em ResoluÃ§Ã£o de problemas quantitativos', duracao: '45 min', ordem: 4 }
+    ]
+  },
+];

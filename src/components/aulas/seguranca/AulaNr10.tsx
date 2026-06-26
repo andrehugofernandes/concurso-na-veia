@@ -9,6 +9,8 @@ import {
   QuizInterativo,
   ModuleBanner,
   getRandomQuestions,
+  QuizQuestion,
+
   AulaProps,
   ContentAccordion,
   AulaTemplate,
@@ -99,11 +101,11 @@ export default function AulaNr10({
     }
   }, [completedModules]);
 
-  const [quizM1, setQuizM1] = useState<typeof QUIZ_M1_NR10_INTRO>([]);
-  const [quizM2, setQuizM2] = useState<typeof QUIZ_M2_NR10_MEDIDAS_CONTROLE>([]);
-  const [quizM3, setQuizM3] = useState<typeof QUIZ_M3_NR10_PIE>([]);
-  const [quizM4, setQuizM4] = useState<typeof QUIZ_M4_NR10_VESTIMENTAS>([]);
-  const [quizM5, setQuizM5] = useState<typeof QUIZ_M5_NR10_MESTRE>([]);
+  const [quizM1, setQuizM1] = useState<QuizQuestion[]>([]);
+  const [quizM2, setQuizM2] = useState<QuizQuestion[]>([]);
+  const [quizM3, setQuizM3] = useState<QuizQuestion[]>([]);
+  const [quizM4, setQuizM4] = useState<QuizQuestion[]>([]);
+  const [quizM5, setQuizM5] = useState<QuizQuestion[]>([]);
 
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
 
@@ -138,7 +140,7 @@ export default function AulaNr10({
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       completedModules={completedModules}
-      onComplete={onComplete}
+      onComplete={() => onComplete?.()}
       isCompleted={isCompleted}
       prevTopico={prevTopico}
       nextTopico={nextTopico}

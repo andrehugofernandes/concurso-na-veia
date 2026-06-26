@@ -38,6 +38,15 @@ export interface Questao {
   provider?: string;
 }
 
+export interface QuizQuestion {
+  id: string | number;
+  pergunta: any;
+  opcoes: { label: string; valor: any }[];
+  correta: string;
+  explicacao: any;
+}
+
+
 export interface Simulado {
   tipo: string;
   questoes: Questao[];

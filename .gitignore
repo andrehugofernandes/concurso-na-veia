@@ -53,3 +53,6 @@ tsc_output.*
 uncomplete.js
 update_shared*.js
 update_shared*.py
+
+/felo-skills/
+

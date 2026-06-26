@@ -22,8 +22,8 @@ export default function PetrobrasLogo({ className, variant }: { className?: stri
         />
       </div>
       
-      <div className="flex flex-col justify-center leading-none ml-1">
-        <h1 className="font-bebas font-bold text-[36px] md:text-[36px] tracking-tight leading-[1.1] whitespace-nowrap flex items-baseline gap-2">
+      <div className="flex flex-col justify-center leading-tight ml-1">
+        <h1 className="font-bebas font-bold text-[36px] md:text-[36px] tracking-tight leading-tight whitespace-nowrap flex items-baseline gap-2">
           <span 
             className={`${(variant === "white" || variant === "home-top") ? "text-white" : variant === "hero-tab" ? "text-foreground dark:text-primary-foreground" : "text-foreground dark:text-white"} transition-colors duration-300`}
           >
@@ -37,8 +37,8 @@ export default function PetrobrasLogo({ className, variant }: { className?: stri
           </span>
         </h1>
         <span 
-          className={`font-sans font-black uppercase ${(variant === "white" || variant === "home-top") ? "text-white/80" : variant === "hero-tab" ? "text-foreground/80 dark:text-primary-foreground/80" : "text-foreground/80 dark:text-white/80"} md:mt-1 -mt-0.5 whitespace-nowrap transition-colors duration-300 block w-full text-center overflow-hidden text-ellipsis`} 
-          style={{ fontSize: '17px', letterSpacing: '0.165em', paddingLeft: '0.165em' }}
+          className={`font-sans font-black uppercase ${(variant === "white" || variant === "home-top") ? "text-white/80" : variant === "hero-tab" ? "text-foreground/80 dark:text-primary-foreground/80" : "text-foreground/80 dark:text-white/80"} mt-0 whitespace-nowrap transition-colors duration-300 inline-block mx-auto overflow-hidden text-ellipsis`} 
+          style={{ fontSize: '10.88px', letterSpacing: '0.72em', marginRight: '-0.72em' }}
         >
           SUA APROVAÇÃO AQUI
         </span>

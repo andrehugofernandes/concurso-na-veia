@@ -247,8 +247,11 @@ export default function SimuladoPage() {
     // Loop de geração por lotes
     for (const item of distribuicao) {
       let restantes = item.qtd;
+      let tentativasLote = 0;
+      const MAX_TENTATIVAS_LOTE = item.qtd * 3;
 
-      while (restantes > 0) {
+      while (restantes > 0 && tentativasLote < MAX_TENTATIVAS_LOTE) {
+        tentativasLote++;
         // Lote de no máximo 5 questões para estabilidade
         const batchSize = Math.min(restantes, 5);
 
@@ -276,8 +279,17 @@ export default function SimuladoPage() {
             item.assunto,
           );
 
-          questoes.push(...lote);
-          restantes -= lote.length;
+          // Deduplicação: filtra questões que já existem no simulado
+          const loteUnico = lote.filter((novaQuestao) => 
+            !questoes.some((existente) => existente.enunciado === novaQuestao.enunciado)
+          );
+
+          if (loteUnico.length < lote.length) {
+            console.warn(`[SIMULADO] ${lote.length - loteUnico.length} questões duplicadas filtradas.`);
+          }
+
+          questoes.push(...loteUnico);
+          restantes -= loteUnico.length;
           setProgressoGeracao(questoes.length);
         } catch (error: any) {
           console.error(`[SIMULADO] Erro no lote de ${item.materia}:`, error.message);
@@ -286,6 +298,7 @@ export default function SimuladoPage() {
           if (
             error.message.includes("Rate Limit") ||
             error.message.includes("429") ||
+            error.message.includes("503") ||
             error.message.includes("Limite de taxa") ||
             error.message.includes("fetch failed")
           ) {
@@ -304,12 +317,23 @@ export default function SimuladoPage() {
               "Média",
               item.assunto,
             );
-            questoes.push(...individual);
-            restantes -= 1;
+
+            // Deduplicação no fallback individual
+            const individualUnico = individual.filter((novaQuestao) => 
+              !questoes.some((existente) => existente.enunciado === novaQuestao.enunciado)
+            );
+
+            questoes.push(...individualUnico);
+            // Se veio vazia/duplicada, diminui restantes se estourar limite, senão deixa tentar de novo
+            restantes -= individualUnico.length > 0 ? individualUnico.length : 0;
+            if (individualUnico.length === 0) {
+                // Força um break se as tentativas estourarem, só pra garantir
+                restantes -= 1; 
+            }
             setProgressoGeracao(questoes.length);
           } catch (retryError: any) {
             console.error("[SIMULADO] Erro na retentativa:", retryError.message);
-            if (retryError.message.includes("429") || retryError.message.includes("fetch failed")) {
+            if (retryError.message.includes("429") || retryError.message.includes("503") || retryError.message.includes("fetch failed")) {
               setContagemRegressivaIA(5);
               await new Promise((r) => setTimeout(r, 5000));
             }
