@@ -360,7 +360,7 @@ export default function AulaReadingStrategies({
               titulo="QUIZ: Prediction & Context"
               icone="🧠"
               numero={3}
-              variant="blue"
+              variant={mv[1]}
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
@@ -1467,7 +1467,7 @@ export default function AulaReadingStrategies({
           titulo="READING COMPREHENSION: PETROBRAS CONTEXT"
           descricao="Integre todas as estratégias: textos autênticos com vocabulário e temas Petrobras reais."
           gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800"
-          variant="blue"
+          variant={mv[9]}
         />
 
         <RichIntro>
@@ -1599,7 +1599,7 @@ export default function AulaReadingStrategies({
               titulo="QUIZ: Petrobras Context"
               icone="🌎"
               numero={3}
-              variant="blue"
+              variant={mv[9]}
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>

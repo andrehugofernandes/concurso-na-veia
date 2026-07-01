@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_ELETRICIDADE_BASICA, QUIZ_M2_ELETRICIDADE_BASICA, QUIZ_M3_ELETRICIDADE_BASICA } from '@/data/quizzes/especificas/eletricidade-basica';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -27,40 +25,31 @@ export default function AulaEletricidadeBasica({ onComplete }: AulaProps) {
 
   const modules = [
     {
-      title: 'Módulo 1: Introdução a Eletricidade Basica',
+      title: 'Módulo 1: Introdução a Eletricidade básica',
       content: (
         <div className="space-y-4 text-slate-300">
           <p>Esta aula faz parte dos Conhecimentos Específicos para os cargos técnicos e superiores da Petrobras.</p>
-          <p>O foco inicial deste módulo é introduzir os conceitos básicos de eletricidade basica.</p>
+          <p>O foco inicial deste módulo é introduzir os conceitos básicos de eletricidade básica.</p>
         </div>
       ),
-      quiz: QUIZ_M1_ELETRICIDADE_BASICA
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_ELETRICIDADE_BASICA
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_ELETRICIDADE_BASICA
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Eletricidade Basica"
+    <AulaEspecificaTemplate
+      title="Eletricidade básica"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

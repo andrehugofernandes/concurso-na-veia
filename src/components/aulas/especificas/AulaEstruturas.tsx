@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_ESTRUTURAS, QUIZ_M2_ESTRUTURAS, QUIZ_M3_ESTRUTURAS } from '@/data/quizzes/especificas/estruturas';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -34,33 +32,24 @@ export default function AulaEstruturas({ onComplete }: AulaProps) {
           <p>O foco inicial deste módulo é introduzir os conceitos básicos de estruturas.</p>
         </div>
       ),
-      quiz: QUIZ_M1_ESTRUTURAS
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_ESTRUTURAS
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_ESTRUTURAS
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Estruturas"
+    <AulaEspecificaTemplate
+      title="Estruturas"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

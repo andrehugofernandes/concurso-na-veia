@@ -130,13 +130,13 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           numero={1}
           titulo="Fundamentos e Cadeia de Suprimentos"
           descricao="O papel estratégico da logística na criação de valor e a evolução do Supply Chain Management."
-          variant="blue"
+          variant={mv[1]}
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index="INTRO"
-            variant="blue"
+            variant={mv[1]}
             title="A Missão Estratégica da Logística"
             description="Muito além de transportar: como a logística cria valor competitivo para a Petrobras."
           />
@@ -179,7 +179,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader
             index={1}
-            variant="blue"
+            variant={mv[1]}
             title="Pilares Logísticos"
             description="Os fundamentos que sustentam toda a cadeia de suprimentos."
           />
@@ -198,7 +198,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader
             index={1}
-            variant="blue"
+            variant={mv[1]}
             title="Análise Técnica C.E.D.E."
             description="Conceituação, Exemplificação, Dicas e Exceções dos fundamentos logísticos."
           />
@@ -278,7 +278,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={1}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -300,7 +300,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
           index={1}
-          variant="blue"
+          variant={mv[1]}
           video={{ videoId: "LOG1_V", title: "Fundamentos da Logística", duration: "15:00" }}
           resumoVisual={{
             moduloNome: "Módulo 1",
@@ -327,17 +327,17 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           questoes={mapQuizQuestions("modulo-1")}
           titulo="QUIZ: Fundamentos e Cadeia de Suprimentos"
           numero={1}
-          variant="blue"
+          variant={mv[1]}
           onComplete={(score) => handleModuleComplete("modulo-1", score)}
         />
       </TabsContent>
 
       {/* ==================== MÓDULO 2 ==================== */}
       <TabsContent value="modulo-2" className="space-y-12 mt-0">
-        <ModuleBanner numero={2} titulo="Gestão Integrada de Estoques" variant="blue" descricao="Curva ABC, classificação XYZ, Ponto de Pedido e Lote Econômico de Compra." />
+        <ModuleBanner numero={2} titulo="Gestão Integrada de Estoques" variant={mv[2]} descricao="Curva ABC, classificação XYZ, Ponto de Pedido e Lote Econômico de Compra." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant="blue" title="A Ciência do Estoque" description="Quanto manter, quando repor e como classificar — o trio de ouro da gestão de materiais." />
+          <ModuleSectionHeader index="INTRO" variant={mv[2]} title="A Ciência do Estoque" description="Quanto manter, quando repor e como classificar — o trio de ouro da gestão de materiais." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p><strong>Gestão de estoques</strong> é a arte de equilibrar dois extremos: ter material demais (capital parado, custo
               de armazenagem) vs. ter material de menos (risco de parada operacional, perda de receita). Na Petrobras, esse
@@ -373,7 +373,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={2} variant="blue" title="Ferramentas de Estoques" description="As técnicas que a CESGRANRIO cobra em toda prova de Suprimento." />
+          <ModuleSectionHeader index={2} variant={mv[2]} title="Ferramentas de Estoques" description="As técnicas que a CESGRANRIO cobra em toda prova de Suprimento." />
           <CardCarousel
             cards={[
               { titulo: "Curva ABC (Pareto)", descricao: "20% dos itens representam 80% do valor — foque neles.", icone: <LuActivity />, corFundo: "bg-blue-500/10" },
@@ -385,7 +385,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </div>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={2} variant="blue" title="Análise C.E.D.E." description="Dominando estoques para a prova CESGRANRIO." />
+          <ModuleSectionHeader index={2} variant={mv[2]} title="Análise C.E.D.E." description="Dominando estoques para a prova CESGRANRIO." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Tipos de Estoque",
@@ -444,7 +444,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -466,7 +466,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
           index={2}
-          variant="blue"
+          variant={mv[2]}
           video={{ videoId: "LOG2_V", title: "Gestão Integrada de Estoques", duration: "16:00" }}
           resumoVisual={{
             moduloNome: "Módulo 2",
@@ -493,17 +493,17 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           questoes={mapQuizQuestions("modulo-2")}
           titulo="QUIZ: Gestão Integrada de Estoques"
           numero={2}
-          variant="blue"
+          variant={mv[2]}
           onComplete={(score) => handleModuleComplete("modulo-2", score)}
         />
       </TabsContent>
 
       {/* ==================== MÓDULO 3 ==================== */}
       <TabsContent value="modulo-3" className="space-y-12 mt-0">
-        <ModuleBanner numero={3} titulo="Armazenagem e Centros de Distribuição" variant="blue" descricao="Layouts de armazém, WMS, FIFO/LIFO e técnicas de picking industrial." />
+        <ModuleBanner numero={3} titulo="Armazenagem e Centros de Distribuição" variant={mv[3]} descricao="Layouts de armazém, WMS, FIFO/LIFO e técnicas de picking industrial." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant="blue" title="A Ciência da Armazenagem" description="Muito mais que guardar: como o layout e a tecnologia maximizam eficiência." />
+          <ModuleSectionHeader index="INTRO" variant={mv[3]} title="A Ciência da Armazenagem" description="Muito mais que guardar: como o layout e a tecnologia maximizam eficiência." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p><strong>Armazenagem</strong> é a atividade logística que gerencia o espaço físico necessário para manter estoques.
               Inclui recebimento, conferência, endereçamento, estocagem, separação (picking), embalagem e expedição.
@@ -535,7 +535,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={3} variant="blue" title="Estrutura do CD" description="Como funciona um Centro de Distribuição por dentro." />
+          <ModuleSectionHeader index={3} variant={mv[3]} title="Estrutura do CD" description="Como funciona um Centro de Distribuição por dentro." />
           <CardCarousel
             cards={[
               { titulo: "Layout em U", descricao: "Recebi e expedi pelo mesmo lado — ideal para cross-docking.", icone: <LuRepeat />, corFundo: "bg-emerald-500/10" },
@@ -547,7 +547,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </div>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={3} variant="blue" title="Análise C.E.D.E." description="Dominando armazenagem para a prova." />
+          <ModuleSectionHeader index={3} variant={mv[3]} title="Análise C.E.D.E." description="Dominando armazenagem para a prova." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Funções da Armazenagem",
@@ -606,7 +606,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -627,21 +627,21 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         />
 
         <ModuleConsolidation
-          index={3} variant="blue"
+          index={3} variant={mv[3]}
           video={{ videoId: "LOG3_V", title: "Armazenagem e Centros de Distribuição", duration: "14:00" }}
           resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Armazenagem", materia: "Logística", images: [{ title: "Layout em U", type: "Esquema", placeholderColor: "bg-emerald-500/20" }, { title: "Fluxo WMS", type: "Diagrama", placeholderColor: "bg-cyan-500/20" }] }}
           sinteseEstrategica={{ title: "Regra de Ouro do Picking", content: (<div className="text-center text-lg font-bold"><p>Mais GIRO = Mais PERTO da porta</p><p className="font-normal text-xl mt-1 text-foreground/85 leading-relaxed">Itens classe A ficam na zona nobre do armazém</p></div>) }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "Podcast: Dentro do CD", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-3")} titulo="QUIZ: Armazenagem e CDs" numero={3} variant="blue" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-3")} titulo="QUIZ: Armazenagem e CDs" numero={3} variant={mv[3]} onComplete={(score) => handleModuleComplete("modulo-3", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 4 ==================== */}
       <TabsContent value="modulo-4" className="space-y-12 mt-0">
-        <ModuleBanner numero={4} titulo="Modais e Gestão de Transportes" variant="blue" descricao="Os 5 modais de transporte, intermodalidade, multimodalidade e o papel do dutoviário na Petrobras." />
+        <ModuleBanner numero={4} titulo="Modais e Gestão de Transportes" variant={mv[4]} descricao="Os 5 modais de transporte, intermodalidade, multimodalidade e o papel do dutoviário na Petrobras." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant="blue" title="Os 5 Modais de Transporte" description="Rodoviário, ferroviário, aquaviário, dutoviário e aéreo — características e trade-offs." />
+          <ModuleSectionHeader index="INTRO" variant={mv[4]} title="Os 5 Modais de Transporte" description="Rodoviário, ferroviário, aquaviário, dutoviário e aéreo — características e trade-offs." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>O Brasil possui uma <strong>matriz de transporte desequilibrada</strong>: ~60% rodoviário, ~21% ferroviário, ~14% aquaviário,
               ~4% dutoviário, ~1% aéreo. Na Petrobras, o <strong>dutoviário</strong> é o modal estratégico — a malha de oleodutos e gasodutos
@@ -673,7 +673,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={4} variant="blue" title="Comparativo de Modais" description="Vantagens e desvantagens de cada modal de transporte." />
+          <ModuleSectionHeader index={4} variant={mv[4]} title="Comparativo de Modais" description="Vantagens e desvantagens de cada modal de transporte." />
           <CardCarousel
             cards={[
               { titulo: "Rodoviário", descricao: "Flexível, porta-a-porta, mas alto custo por t/km e dependência de infraestrutura viária.", icone: <LuActivity />, corFundo: "bg-amber-500/10" },
@@ -686,7 +686,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </div>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={4} variant="blue" title="Análise C.E.D.E." description="Dominando transportes para prova de Suprimento." />
+          <ModuleSectionHeader index={4} variant={mv[4]} title="Análise C.E.D.E." description="Dominando transportes para prova de Suprimento." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Inter vs Multi",
@@ -745,7 +745,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -766,22 +766,22 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         />
 
         <ModuleConsolidation
-          index={4} variant="blue"
+          index={4} variant={mv[4]}
           video={{ videoId: "LOG4_V", title: "Modais e Gestão de Transportes", duration: "18:00" }}
           resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Transportes", materia: "Logística", images: [{ title: "Matriz Modal BR", type: "Infográfico", placeholderColor: "bg-amber-500/20" }, { title: "Malha Dutoviária", type: "Mapa", placeholderColor: "bg-emerald-500/20" }] }}
           sinteseEstrategica={{ title: "Hierarquia de Custo", content: (<div className="text-center text-lg font-bold space-y-1"><p className="text-emerald-400">Dutoviário 💰</p><p className="text-blue-400">Aquaviário 💰💰</p><p className="text-cyan-400">Ferroviário 💰💰💰</p><p className="text-amber-400">Rodoviário 💰💰💰💰</p><p className="text-rose-400">Aéreo 💰💰💰💰💰</p></div>) }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Podcast: Modais Brasileiros", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-4")} titulo="QUIZ: Modais e Transportes" numero={4} variant="blue" onComplete={(score) => handleModuleComplete("modulo-4", score)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-4")} titulo="QUIZ: Modais e Transportes" numero={4} variant={mv[4]} onComplete={(score) => handleModuleComplete("modulo-4", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 5 ==================== */}
       <TabsContent value="modulo-5" className="space-y-12 mt-0">
-        <ModuleBanner numero={5} titulo="Logística Inbound e Outbound" variant="blue" descricao="Fluxos de entrada e saída, Milk Run, Cross-Docking, Last Mile e Postponement." />
+        <ModuleBanner numero={5} titulo="Logística Inbound e Outbound" variant={mv[5]} descricao="Fluxos de entrada e saída, Milk Run, Cross-Docking, Last Mile e Postponement." />
 
         {/* ★ RICH INTRO SECTION */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant="blue" title="Fluxos de Entrada e Saída" description="Como os materiais chegam à empresa e como os produtos alcançam o cliente final." />
+          <ModuleSectionHeader index="INTRO" variant={mv[5]} title="Fluxos de Entrada e Saída" description="Como os materiais chegam à empresa e como os produtos alcançam o cliente final." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>A logística se divide em dois grandes fluxos: <strong>Inbound</strong> (logística de entrada) e <strong>Outbound</strong> (logística de saída).
               O <strong>Inbound</strong> abrange todas as atividades desde o fornecedor até a empresa — compras, recebimento, conferência, armazenagem de matérias-primas.
@@ -836,7 +836,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
         {/* ★ C.E.D.E. */}
         <div className="space-y-6">
-          <ModuleSectionHeader index={5} variant="blue" title="Análise C.E.D.E." description="Conceituação, Exemplificação, Dicas e Exceções sobre fluxos logísticos." />
+          <ModuleSectionHeader index={5} variant={mv[5]} title="Análise C.E.D.E." description="Conceituação, Exemplificação, Dicas e Exceções sobre fluxos logísticos." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Os 3 Fluxos Logísticos",
@@ -895,7 +895,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={5}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -917,7 +917,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
           index={5}
-          variant="blue"
+          variant={mv[5]}
           video={{ videoId: "LOG5_V", title: "Logística Inbound e Outbound", duration: "14:00" }}
           resumoVisual={{
             moduloNome: "Módulo 5",
@@ -960,17 +960,17 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           questoes={mapQuizQuestions("modulo-5")}
           titulo="QUIZ: Logística Inbound e Outbound"
           numero={5}
-          variant="blue"
+          variant={mv[5]}
           onComplete={(score) => handleModuleComplete("modulo-5", score)}
         />
       </TabsContent>
 
       {/* ==================== MÓDULO 6 ==================== */}
       <TabsContent value="modulo-6" className="space-y-12 mt-0">
-        <ModuleBanner numero={6} titulo="Supply Chain Management (SCM)" variant="blue" descricao="VMI, Efeito Chicote, CPFR, ECR e a gestão colaborativa da cadeia de suprimentos." />
+        <ModuleBanner numero={6} titulo="Supply Chain Management (SCM)" variant={mv[6]} descricao="VMI, Efeito Chicote, CPFR, ECR e a gestão colaborativa da cadeia de suprimentos." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant="blue" title="A Cadeia como Organismo Vivo" description="Supply Chain Management é a coordenação estratégica entre TODAS as empresas envolvidas." />
+          <ModuleSectionHeader index="INTRO" variant={mv[6]} title="A Cadeia como Organismo Vivo" description="Supply Chain Management é a coordenação estratégica entre TODAS as empresas envolvidas." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p><strong>Supply Chain Management (SCM)</strong> é a gestão integrada de todos os elos da cadeia de suprimentos — desde o fornecedor
               do fornecedor até o cliente do cliente. Enquanto a <strong>logística</strong> foca no fluxo físico dentro de uma empresa, o SCM amplia
@@ -1020,7 +1020,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={6} variant="blue" title="Análise C.E.D.E." description="Dominando Supply Chain Management para a prova." />
+          <ModuleSectionHeader index={6} variant={mv[6]} title="Análise C.E.D.E." description="Dominando Supply Chain Management para a prova." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Os 8 Processos-Chave do SCM",
@@ -1078,7 +1078,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={6}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1099,7 +1099,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         />
 
         <ModuleConsolidation
-          index={6} variant="blue"
+          index={6} variant={mv[6]}
           video={{ videoId: "LOG6_V", title: "Supply Chain Management", duration: "16:00" }}
           resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "SCM", materia: "Logística", images: [{ title: "Bullwhip Effect", type: "Gráfico", placeholderColor: "bg-amber-500/20" }, { title: "Modelo CPFR", type: "Diagrama", placeholderColor: "bg-blue-500/20" }] }}
           sinteseEstrategica={{
@@ -1130,15 +1130,15 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "Podcast: Efeito Chicote", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-6")} titulo="QUIZ: Supply Chain Management" numero={6} variant="blue" onComplete={(score) => handleModuleComplete("modulo-6", score)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-6")} titulo="QUIZ: Supply Chain Management" numero={6} variant={mv[6]} onComplete={(score) => handleModuleComplete("modulo-6", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 7 ==================== */}
       <TabsContent value="modulo-7" className="space-y-12 mt-0">
-        <ModuleBanner numero={7} titulo="Indicadores de Desempenho (KPIs)" variant="blue" descricao="OTIF, Fill Rate, Lead Time, Nível de Serviço e Custo Logístico Total." />
+        <ModuleBanner numero={7} titulo="Indicadores de Desempenho (KPIs)" variant={mv[7]} descricao="OTIF, Fill Rate, Lead Time, Nível de Serviço e Custo Logístico Total." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant="blue" title="Medir para Gerenciar" description="Se você não mede, não gerencia — os KPIs que definem a eficiência logística." />
+          <ModuleSectionHeader index="INTRO" variant={mv[7]} title="Medir para Gerenciar" description="Se você não mede, não gerencia — os KPIs que definem a eficiência logística." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p><strong>KPIs (Key Performance Indicators)</strong> são métricas quantificáveis que avaliam a eficiência e eficácia das operações
               logísticas. Na Petrobras, os KPIs logísticos são monitorados em dashboards de gestão para garantir que os suprimentos cheguem
@@ -1180,7 +1180,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={7} variant="blue" title="Análise C.E.D.E." description="KPIs que caem na prova CESGRANRIO." />
+          <ModuleSectionHeader index={7} variant={mv[7]} title="Análise C.E.D.E." description="KPIs que caem na prova CESGRANRIO." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Família de KPIs",
@@ -1239,7 +1239,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={7}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1260,7 +1260,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         />
 
         <ModuleConsolidation
-          index={7} variant="blue"
+          index={7} variant={mv[7]}
           video={{ videoId: "LOG7_V", title: "KPIs Logísticos", duration: "14:00" }}
           resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "KPIs", materia: "Logística", images: [{ title: "Dashboard KPIs", type: "Tabela", placeholderColor: "bg-blue-500/20" }, { title: "Fórmula OTIF", type: "Esquema", placeholderColor: "bg-rose-500/20" }] }}
           sinteseEstrategica={{
@@ -1291,15 +1291,15 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Podcast: Métricas que Importam", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-7")} titulo="QUIZ: Indicadores de Desempenho" numero={7} variant="blue" onComplete={(score) => handleModuleComplete("modulo-7", score)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-7")} titulo="QUIZ: Indicadores de Desempenho" numero={7} variant={mv[7]} onComplete={(score) => handleModuleComplete("modulo-7", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 8 ==================== */}
       <TabsContent value="modulo-8" className="space-y-12 mt-0">
-        <ModuleBanner numero={8} titulo="Logística Reversa e Sustentabilidade" variant="blue" descricao="PNRS (Lei 12.305/10), responsabilidade compartilhada, economia circular e descarte industrial." />
+        <ModuleBanner numero={8} titulo="Logística Reversa e Sustentabilidade" variant={mv[8]} descricao="PNRS (Lei 12.305/10), responsabilidade compartilhada, economia circular e descarte industrial." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant="blue" title="O Caminho de Volta" description="Logística reversa: quando o produto faz o percurso contrário — do consumidor de volta ao fabricante." />
+          <ModuleSectionHeader index="INTRO" variant={mv[8]} title="O Caminho de Volta" description="Logística reversa: quando o produto faz o percurso contrário — do consumidor de volta ao fabricante." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p><strong>Logística Reversa</strong> é o processo de planejar, implementar e controlar o fluxo de matérias-primas, estoque em processamento,
               produtos acabados e informações relacionadas, do <strong>ponto de consumo ao ponto de origem</strong>, com o propósito de recapturar valor
@@ -1347,7 +1347,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={8} variant="blue" title="Análise C.E.D.E." description="Logística Reversa para a prova de Suprimento." />
+          <ModuleSectionHeader index={8} variant={mv[8]} title="Análise C.E.D.E." description="Logística Reversa para a prova de Suprimento." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Pós-Venda vs Pós-Consumo",
@@ -1405,7 +1405,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={8}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1426,7 +1426,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         />
 
         <ModuleConsolidation
-          index={8} variant="blue"
+          index={8} variant={mv[8]}
           video={{ videoId: "LOG8_V", title: "Logística Reversa e Sustentabilidade", duration: "15:00" }}
           resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Reversa", materia: "Logística", images: [{ title: "Ciclo Reverso", type: "Diagrama", placeholderColor: "bg-emerald-500/20" }, { title: "Hierarquia PNRS", type: "Infográfico", placeholderColor: "bg-amber-500/20" }] }}
           sinteseEstrategica={{
@@ -1457,15 +1457,15 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Podcast: O Caminho de Volta", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-8")} titulo="QUIZ: Logística Reversa" numero={8} variant="blue" onComplete={(score) => handleModuleComplete("modulo-8", score)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-8")} titulo="QUIZ: Logística Reversa" numero={8} variant={mv[8]} onComplete={(score) => handleModuleComplete("modulo-8", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 9 ==================== */}
       <TabsContent value="modulo-9" className="space-y-12 mt-0">
-        <ModuleBanner numero={9} titulo="Logística Offshore Petrobras" variant="blue" descricao="PSV, AHTS, FPSO, Bacias de Campos e Santos, bases terrestres e desafios operacionais no mar." />
+        <ModuleBanner numero={9} titulo="Logística Offshore Petrobras" variant={mv[9]} descricao="PSV, AHTS, FPSO, Bacias de Campos e Santos, bases terrestres e desafios operacionais no mar." />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index="INTRO" variant="blue" title="Logística no Alto-Mar" description="A cadeia de suprimentos mais desafiadora do Brasil: abastecer plataformas a 300 km da costa." />
+          <ModuleSectionHeader index="INTRO" variant={mv[9]} title="Logística no Alto-Mar" description="A cadeia de suprimentos mais desafiadora do Brasil: abastecer plataformas a 300 km da costa." />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>A <strong>logística offshore da Petrobras</strong> é uma das operações mais complexas do mundo: enviar suprimentos, equipamentos,
               alimentos, químicos e pessoas para plataformas de petróleo localizadas em alto-mar, a distâncias de 100 a 300 km da costa.
@@ -1511,7 +1511,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         </section>
 
         <div className="space-y-6">
-          <ModuleSectionHeader index={9} variant="blue" title="Análise C.E.D.E." description="Logística offshore que cai na prova de Suprimento." />
+          <ModuleSectionHeader index={9} variant={mv[9]} title="Análise C.E.D.E." description="Logística offshore que cai na prova de Suprimento." />
           <ContentAccordion mode="stacked" slides={[
               {
                 titulo: "Conceituação: Ciclo Logístico Offshore",
@@ -1571,7 +1571,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={9}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1592,7 +1592,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         />
 
         <ModuleConsolidation
-          index={9} variant="blue"
+          index={9} variant={mv[9]}
           video={{ videoId: "LOG9_V", title: "Logística Offshore Petrobras", duration: "20:00" }}
           resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Petrobras", materia: "Offshore", images: [{ title: "Mapa Bacias", type: "Mapa", placeholderColor: "bg-blue-500/20" }, { title: "Frota PSV/AHTS", type: "Infográfico", placeholderColor: "bg-amber-500/20" }] }}
           sinteseEstrategica={{
@@ -1623,7 +1623,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
           }}
           audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Podcast: No Mar", artista: "Prof. Supply Chain" }}
         />
-        <QuizInterativo questoes={mapQuizQuestions("modulo-9")} titulo="QUIZ: Logística Offshore Petrobras" numero={9} variant="blue" onComplete={(score) => handleModuleComplete("modulo-9", score)} />
+        <QuizInterativo questoes={mapQuizQuestions("modulo-9")} titulo="QUIZ: Logística Offshore Petrobras" numero={9} variant={mv[9]} onComplete={(score) => handleModuleComplete("modulo-9", score)} />
       </TabsContent>
 
       {/* ==================== MÓDULO 10 ==================== */}
@@ -1685,7 +1685,7 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={10}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"

@@ -115,7 +115,7 @@ export default function AulaRLCP(props: AulaProps) {
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index="INTRO"
-            variant="blue"
+            variant={mv[1]}
             title="Princípios Fundamentais do RLCP"
             description="O framework de licitações transparentes e competitivas da Petrobras."
           />
@@ -313,7 +313,7 @@ export default function AulaRLCP(props: AulaProps) {
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index="INTRO"
-            variant="blue"
+            variant={mv[2]}
             title="Modalidades de Licitação"
             description="Concorrência, Tomada de Preços, Convite — escolher a modalidade correta é crítico."
           />
@@ -511,7 +511,7 @@ export default function AulaRLCP(props: AulaProps) {
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
           <ModuleSectionHeader
             index="INTRO"
-            variant="blue"
+            variant={mv[3]}
             title="Procedimento Licitatório: Fases"
             description="Preparação, publicidade, julgamento, adjudicação — roteiro de uma licitação completa."
           />
@@ -710,7 +710,7 @@ export default function AulaRLCP(props: AulaProps) {
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
-              variant="blue"
+              variant={mv[4]}
               title="Termo de Referência e Edital"
               description="Os documentos-mestres que definem o que será licitado e como."
             />

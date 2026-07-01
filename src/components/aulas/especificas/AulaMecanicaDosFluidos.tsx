@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_MECANICA_DOS_FLUIDOS, QUIZ_M2_MECANICA_DOS_FLUIDOS, QUIZ_M3_MECANICA_DOS_FLUIDOS } from '@/data/quizzes/especificas/mecanica-dos-fluidos';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -27,40 +25,31 @@ export default function AulaMecanicaDosFluidos({ onComplete }: AulaProps) {
 
   const modules = [
     {
-      title: 'Módulo 1: Introdução a Mecanica Dos Fluidos',
+      title: 'Módulo 1: Introdução a Mecânica dos fluidos',
       content: (
         <div className="space-y-4 text-slate-300">
           <p>Esta aula faz parte dos Conhecimentos Específicos para os cargos técnicos e superiores da Petrobras.</p>
-          <p>O foco inicial deste módulo é introduzir os conceitos básicos de mecanica dos fluidos.</p>
+          <p>O foco inicial deste módulo é introduzir os conceitos básicos de mecânica dos fluidos.</p>
         </div>
       ),
-      quiz: QUIZ_M1_MECANICA_DOS_FLUIDOS
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_MECANICA_DOS_FLUIDOS
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_MECANICA_DOS_FLUIDOS
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Mecanica Dos Fluidos"
+    <AulaEspecificaTemplate
+      title="Mecânica dos fluidos"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

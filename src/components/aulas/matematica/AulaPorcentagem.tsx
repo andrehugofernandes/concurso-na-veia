@@ -1,4 +1,4 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 import { useState, useEffect } from "react";
@@ -65,7 +65,7 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", titulo: "Simulado Final" },
 ] as const;
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaPorcentagem({
   onComplete,
@@ -163,7 +163,7 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={1}
             titulo="Fundamentos de Porcentagem"
             descricao="O alicerce: conversões, cálculos e a lógica por trás do símbolo %."
-             variant="blue"/>
+             variant={mv[1]}/>
 
           {/* SEÇÃO 1: Conceito Central */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -171,7 +171,7 @@ export default function AulaPorcentagem({
               index={1}
               title="A Linguagem Universal dos Números"
               description="Porcentagem está em todo relatório técnico, toda proposta comercial, todo indicador Petrobras."
-              variant="blue"
+              variant={mv[1]}
             />
             <ContentAccordion
               slides={[
@@ -320,7 +320,7 @@ export default function AulaPorcentagem({
               index={2}
               title="Flashcards de Elite"
               description="Resposta rápida. Clique para revelar o raciocínio completo."
-              variant="blue"
+              variant={mv[1]}
             />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FlipCard
@@ -479,7 +479,7 @@ export default function AulaPorcentagem({
               questoes={quizM1}
               titulo="QUIZ: Fundamentos"
               numero={5}
-              variant="blue"
+              variant={mv[1]}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -529,14 +529,14 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={2}
             titulo="Aumentos e Descontos"
             descricao="O fator multiplicador: a arma secreta que elimina 3 passos de cálculo."
-             variant="blue"/>
+             variant={mv[2]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="O Fator Multiplicador"
               description="Uma única multiplicação substitui: calcular %, somar/subtrair do original."
-              variant="blue"
+              variant={mv[2]}
             />
             <ContentAccordion
               slides={[
@@ -658,7 +658,7 @@ export default function AulaPorcentagem({
               index={2}
               title="Casos da Petrobras"
               description="Situações reais onde o fator multiplicador é indispensável."
-              variant="blue"
+              variant={mv[2]}
             />
             <CardCarousel
               cards={[
@@ -702,7 +702,7 @@ export default function AulaPorcentagem({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -724,7 +724,7 @@ export default function AulaPorcentagem({
 
         <ModuleConsolidation
             index={4}
-            variant="blue"
+            variant={mv[2]}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 2",
@@ -762,7 +762,7 @@ export default function AulaPorcentagem({
               questoes={quizM2}
               titulo="QUIZ: Aumentos e Descontos"
               numero={5}
-              variant="blue"
+              variant={mv[2]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -806,14 +806,14 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={3}
             titulo="Variação Percentual"
             descricao="Calcule quanto subiu ou caiu em relação ao valor inicial — sem errar a base."
-             variant="blue"/>
+             variant={mv[3]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="A Fórmula Inviolável"
               description="Onde 90% dos candidatos erram: confundem base inicial com base final."
-              variant="blue"
+              variant={mv[3]}
             />
             <ContentAccordion
               slides={[
@@ -944,7 +944,7 @@ export default function AulaPorcentagem({
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -966,7 +966,7 @@ export default function AulaPorcentagem({
 
         <ModuleConsolidation
             index={3}
-            variant="blue"
+            variant={mv[3]}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 3",
@@ -1004,7 +1004,7 @@ export default function AulaPorcentagem({
               questoes={quizM3}
               titulo="QUIZ: Variação %"
               numero={4}
-              variant="blue"
+              variant={mv[3]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -1048,14 +1048,14 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={4}
             titulo="Aplicações Industriais"
             descricao="Eficiência de equipamentos, misturas de substâncias e metas operacionais."
-             variant="blue"/>
+             variant={mv[4]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Porcentagem no Chão de Fábrica"
               description="Como a Petrobras usa % para medir eficiência, pureza e produtividade."
-              variant="blue"
+              variant={mv[4]}
             />
             <ContentAccordion
               slides={[
@@ -1204,7 +1204,7 @@ export default function AulaPorcentagem({
 
         <ModuleConsolidation
             index={3}
-            variant="blue"
+            variant={mv[4]}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 4",
@@ -1242,7 +1242,7 @@ export default function AulaPorcentagem({
               questoes={quizM4}
               titulo="QUIZ: Aplicações Industriais"
               numero={4}
-              variant="blue"
+              variant={mv[4]}
               icone="🔥"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1286,14 +1286,14 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={5}
             titulo="Simulado — Metade da Jornada"
             descricao="Teste integrado dos módulos 1 a 4. Mínimo 60% para avançar."
-             variant="blue"/>
+             variant={mv[5]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Revisão Express"
               description="Os 4 conceitos que mais aparecem nas questões do simulado."
-              variant="blue"
+              variant={mv[5]}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
@@ -1338,7 +1338,7 @@ export default function AulaPorcentagem({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1360,7 +1360,7 @@ export default function AulaPorcentagem({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[5]}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 5",
@@ -1398,7 +1398,7 @@ export default function AulaPorcentagem({
               questoes={quizM5}
               titulo="QUIZ: Simulado Parcial"
               numero={3}
-              variant="blue"
+              variant={mv[5]}
               icone="🏆"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1414,7 +1414,7 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={6}
             titulo="Porcentagem Composta"
             descricao="Juros sobre juros, depreciação exponencial e a potência do tempo."
-             variant="blue"/>
+             variant={mv[6]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1663,7 +1663,7 @@ export default function AulaPorcentagem({
         <QuestaoResolvidaStepByStep
           index={5}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1685,7 +1685,7 @@ export default function AulaPorcentagem({
 
         <ModuleConsolidation
             index={5}
-            variant="blue"
+            variant={mv[6]}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 6",
@@ -1773,14 +1773,14 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={7}
             titulo="O Cálculo Reverso"
             descricao="Encontrar o valor original quando se conhece o resultado e a taxa aplicada."
-             variant="blue"/>
+             variant={mv[7]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Desfazendo a Manipulação"
               description="A lógica de dividir pelo fator — não subtrair a taxa do resultado."
-              variant="blue"
+              variant={mv[7]}
             />
             <ContentAccordion
               slides={[
@@ -1892,7 +1892,7 @@ export default function AulaPorcentagem({
               index={2}
               title="Treino Mental — Reverso"
               description="Calcule o valor original rapidamente."
-              variant="blue"
+              variant={mv[7]}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FlipCard
@@ -2026,7 +2026,7 @@ export default function AulaPorcentagem({
               questoes={quizM7}
               titulo="QUIZ: Cálculo Reverso"
               numero={5}
-              variant="blue"
+              variant={mv[7]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -2070,14 +2070,14 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={8}
             titulo="Regra de Três e Porcentagem"
             descricao="Quando o fator multiplicador não basta: alinhamento de grandezas proporcionais."
-             variant="blue"/>
+             variant={mv[8]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Regra de Três: Quando Usar"
               description="Nem toda questão de porcentagem se resolve com fator. Saiba identificar."
-              variant="blue"
+              variant={mv[8]}
             />
             <ContentAccordion
               slides={[
@@ -2191,7 +2191,7 @@ export default function AulaPorcentagem({
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2213,7 +2213,7 @@ export default function AulaPorcentagem({
 
         <ModuleConsolidation
             index={3}
-            variant="blue"
+            variant={mv[8]}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 8",
@@ -2251,7 +2251,7 @@ export default function AulaPorcentagem({
               questoes={quizM8}
               titulo="QUIZ: Regra de Três %"
               numero={4}
-              variant="blue"
+              variant={mv[8]}
               icone="🔥"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -2295,14 +2295,14 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={9}
             titulo="Aplicações Financeiras"
             descricao="Salários, impostos, CDI, INSS e descontos embutidos do mundo real."
-             variant="blue"/>
+             variant={mv[9]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Porcentagem no Mercado Financeiro"
               description="Os indicadores econômicos que aparecem nas questões de raciocínio quantitativo."
-              variant="blue"
+              variant={mv[9]}
             />
             <ContentAccordion
               slides={[
@@ -2436,7 +2436,7 @@ export default function AulaPorcentagem({
               index={2}
               title="Visualização: Juros Simples vs. Compostos"
               description="Compare o crescimento linear e exponencial com a mesma taxa de 10% ao período."
-              variant="blue"
+              variant={mv[9]}
             />
             <FunctionGraph
               title="Comparação: Juros Simples vs. Compostos"
@@ -2484,7 +2484,7 @@ export default function AulaPorcentagem({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2506,7 +2506,7 @@ export default function AulaPorcentagem({
 
         <ModuleConsolidation
             index={4}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 9",
@@ -2544,7 +2544,7 @@ export default function AulaPorcentagem({
               questoes={quizM9}
               titulo="QUIZ: Financeiro"
               numero={5}
-              variant="blue"
+              variant={mv[9]}
               icone="🔥"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -2594,7 +2594,7 @@ export default function AulaPorcentagem({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre — Porcentagem"
             descricao="Todas as competências postas à prova. Nível CESGRANRIO real."
-             variant="blue"/>
+             variant={mv[10]}/>
 
           {/* Revisão rápida final */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
@@ -2675,7 +2675,7 @@ export default function AulaPorcentagem({
 
         <ModuleConsolidation
             index={3}
-            variant="blue"
+            variant={mv[10]}
             video={{
               videoId: "h3S9XW1WzIk",
               title: "Revisão do Módulo 10",
@@ -2714,7 +2714,7 @@ export default function AulaPorcentagem({
               titulo="QUIZ: Simulado Final"
               icone="🏆"
               numero={4}
-              variant="blue"
+              variant={mv[10]}
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>

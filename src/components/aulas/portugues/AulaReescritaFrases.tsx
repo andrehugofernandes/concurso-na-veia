@@ -1,7 +1,7 @@
 "use client";
 
 import { useAulaProgress } from "@/hooks/useAulaProgress";
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 import { useState, useEffect, useCallback } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
@@ -16,7 +16,6 @@ import {
   CardCarousel,
   Comparison,
   QuestaoResolvidaStepByStep} from "../shared";
-import { getModuleVariant } from "@/lib/moduleColors";
 
 import {
   LuBookOpen,
@@ -78,7 +77,7 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", title: "Avaliação de Fixação Avançada (Desafio Final)" },
 ];
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaReescritaFrases({
   onComplete,
@@ -223,7 +222,7 @@ export default function AulaReescritaFrases({
           numero={1}
           titulo="A Arte da Paráfrase"
           descricao="Entenda o binômio da reescrita perfeita: Sentido Intacto e Norma Culta Plena."
-          variant="blue"
+          variant={mv[1]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 1 */}
@@ -232,7 +231,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Fundamentação da Paráfrase"
             description="Os pilares da equivalência semântica e da manutenção do sentido original segundo a norma gramatical padrão."
-            variant="blue"
+            variant={mv[1]}
           />
 
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
@@ -347,7 +346,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="O Conceito de Reescritura"
               description="A mecânica da reescritura e os limites da transformação textual sem perda informativa."
-              variant="blue"
+              variant={mv[1]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -457,7 +456,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Tipos de Reescrita Cobrados pela Banca"
               description="O mapeamento das operações de substituição, reordenação e mudança estrutural exigidas pela banca."
-              variant="blue"
+              variant={mv[1]}
             />
             <p className="text-muted-foreground leading-relaxed text-lg">
               Na reescrita, há dois planos independentes que podem ser alterados
@@ -553,7 +552,7 @@ export default function AulaReescritaFrases({
               index="{3}"
               title="Tipos de Reescrita Cobrados pela Banca"
               description="A taxonomia das transformações textuais que garantem a aprovação no concurso."
-              variant="blue"
+              variant={mv[1]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -597,7 +596,7 @@ export default function AulaReescritaFrases({
               index={4}
               title="O Que a CESGRANRIO Realmente Avalia"
               description="Desvendando o checklist de equivalência semântica e correção gramatical usado pelos examinadores."
-              variant="blue"
+              variant={mv[1]}
             />
             <Comparison
               title="Questão Mal Respondida vs Bem Respondida"
@@ -634,7 +633,7 @@ export default function AulaReescritaFrases({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -658,7 +657,7 @@ export default function AulaReescritaFrases({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-            variant="blue"
+            variant={mv[1]}
           />
         </div>
       </TabsContent>
@@ -669,7 +668,7 @@ export default function AulaReescritaFrases({
           numero={2}
           titulo="Sinonímia e Campo Semântico"
           descricao="Troque palavras mantendo a precisão técnica necessária para a indústria de energia."
-          variant="blue"
+          variant={mv[2]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 2 */}
@@ -678,7 +677,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Arte da Substituição Lexical"
             description="O domínio do vocabulário formal e técnico da Petrobras como ferramenta de precisão na reescrita."
-            variant="blue"
+            variant={mv[2]}
           />
 
           <div className="space-y-6 text-base text-justify text-foreground/85 leading-relaxed">
@@ -788,7 +787,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="A Precisão das Palavras"
               description="Como escolher o termo exato que preserva a carga semântica e a elegância do registro culto."
-              variant="blue"
+              variant={mv[2]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -908,7 +907,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Sinonímia: Sentido Formal vs Informal"
               description="A transposição entre registros linguísticos mantendo a integridade da mensagem técnica."
-              variant="blue"
+              variant={mv[2]}
             />
             <Comparison
               title="Equivalência de Registro — Exemplo Prático"
@@ -940,7 +939,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Pares de Palavras que a Banca Adora Confundir"
               description="As armadilhas de paronímia que a CESGRANRIO utiliza para induzir ao erro."
-              variant="blue"
+              variant={mv[2]}
             />
             <div className="space-y-12">
               <Comparison
@@ -982,7 +981,7 @@ export default function AulaReescritaFrases({
               index={4}
               title="Léxico Técnico Petrobras"
               description="O vocabulário específico da indústria aplicado a questões de reescrita."
-              variant="blue"
+              variant={mv[2]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -1005,7 +1004,7 @@ export default function AulaReescritaFrases({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1029,7 +1028,7 @@ export default function AulaReescritaFrases({
             icone="🎯"
             numero={2}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-            variant="blue"
+            variant={mv[2]}
           />
         </div>
       </TabsContent>
@@ -1040,7 +1039,7 @@ export default function AulaReescritaFrases({
           numero={3}
           titulo="Vozes Verbais"
           descricao="A travessia entre Ativa e Passiva é o tema predileto da banca. Aprenda a não perder o tempo."
-          variant="blue"
+          variant={mv[3]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 3 */}
@@ -1049,7 +1048,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Mecânica da Transformação Verbal"
             description="A arquitetura da transposição entre ativa e passiva, focando na concordância e no tempo verbal."
-            variant="blue"
+            variant={mv[3]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1164,7 +1163,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="A Travessia (Vozes)"
               description="O passo a passo para converter estruturas sem alterar o foco da ação ou a polaridade da frase."
-              variant="blue"
+              variant={mv[3]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -1307,7 +1306,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Armadilha CESGRANRIO: Passiva em Forma de Nominalização"
               description="Como a banca oculta a voz passiva em estruturas nominais para testar sua percepção sintática."
-              variant="blue"
+              variant={mv[3]}
             />
             <AlertBox
               tipo="danger"
@@ -1408,7 +1407,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Casos Especiais de Voz Passiva"
               description="A análise de verbos que não admitem passiva e a função do 'se' como partícula apassivadora."
-              variant="blue"
+              variant={mv[3]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -1571,7 +1570,7 @@ export default function AulaReescritaFrases({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1595,7 +1594,7 @@ export default function AulaReescritaFrases({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-            variant="blue"
+            variant={mv[3]}
           />
         </div>
       </TabsContent>
@@ -1606,7 +1605,7 @@ export default function AulaReescritaFrases({
           numero={4}
           titulo="O Discurso sob Controle"
           descricao="Direto para Indireto: ajuste pronomes, tempos e advérbios sem titubear."
-          variant="blue"
+          variant={mv[4]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 4 */}
@@ -1615,7 +1614,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Arte da Reportagem Verbal"
             description="A arte da reportagem verbal e o recuo temporal na transposição discursiva."
-            variant="blue"
+            variant={mv[4]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1746,7 +1745,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="Direto & Indireto"
               description="A mecânica da transposição entre os discursos direto e indireto."
-              variant="blue"
+              variant={mv[4]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -1888,7 +1887,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Exemplo Completo: Direto → Indireto"
               description="Exemplo prático de transposição e análise de equivalência semântica."
-              variant="blue"
+              variant={mv[4]}
             />
             <Comparison
               title="Discurso Direto vs Indireto — Caso Real"
@@ -1926,7 +1925,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Mapa de Advérbios Temporais"
               description="Mapeamento dos advérbios de tempo e lugar no discurso reportado."
-              variant="blue"
+              variant={mv[4]}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -2086,7 +2085,7 @@ export default function AulaReescritaFrases({
               index={4}
               title="Verbos Introdutores de Discurso Indireto"
               description="A função dos verbos de elocução (dicendi) na estruturação do discurso indireto."
-              variant="blue"
+              variant={mv[4]}
             />
             <p className="text-muted-foreground text-lg leading-relaxed">
               O verbo que introduz o discurso indireto determina como a
@@ -2140,7 +2139,7 @@ export default function AulaReescritaFrases({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2164,7 +2163,7 @@ export default function AulaReescritaFrases({
             icone="🎯"
             numero={5}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-            variant="blue"
+            variant={mv[4]}
           />
         </div>
       </TabsContent>
@@ -2175,7 +2174,7 @@ export default function AulaReescritaFrases({
           numero={5}
           titulo="Nominalização"
           descricao="Transforme verbos em substantivos para dar densidade técnica e profissional ao seu texto."
-          variant="blue"
+          variant={mv[5]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 5 */}
@@ -2184,7 +2183,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Arte da Substantivação de Ações"
             description="A arte da substantivação de ações para densidade técnica e profissional."
-            variant="blue"
+            variant={mv[5]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -2316,7 +2315,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="Verbo para Substantivo"
               description="A mecânica da conversão verbo-substantivo na linguagem técnica."
-              variant="blue"
+              variant={mv[5]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -2432,7 +2431,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Nominalização: Antes e Depois"
               description="Análise comparativa entre estruturas verbais e nominais."
-              variant="blue"
+              variant={mv[5]}
             />
             <Comparison
               title="Frase Verbal vs Frase Nominalizada"
@@ -2459,7 +2458,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Léxico de Nominalizações Frequentes"
               description="Léxico de nominalizações frequentes em documentos técnicos da Petrobras."
-              variant="blue"
+              variant={mv[5]}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <FlipCard
@@ -2600,7 +2599,7 @@ export default function AulaReescritaFrases({
               index={4}
               title="Sufixos Nominalizadores — Como Identificar o Substantivo Correto"
               description="Identificação dos sufixos nominalizadores e precisão terminológica."
-              variant="blue"
+              variant={mv[5]}
             />
             <p className="text-muted-foreground text-lg leading-relaxed">
               Em provas de reescrita, a banca às vezes apresenta uma
@@ -2693,7 +2692,7 @@ export default function AulaReescritaFrases({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2717,7 +2716,7 @@ export default function AulaReescritaFrases({
             icone="🎯"
             numero={5}
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
-            variant="blue"
+            variant={mv[5]}
           />
         </div>
       </TabsContent>
@@ -2728,7 +2727,7 @@ export default function AulaReescritaFrases({
           numero={6}
           titulo="Equivalência Conjuntiva"
           descricao="Domine os conectivos causais, temporais e condicionais. A alma da reescrita sequencial."
-          variant="blue"
+          variant={mv[6]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 6 */}
@@ -2736,7 +2735,7 @@ export default function AulaReescritaFrases({
           <ModuleSectionHeader
             index="INTRO"
             title="A Arquitetura da Coesão Textual"
-            variant="blue"
+            variant={mv[6]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -2870,7 +2869,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="Nexos Equivalentes"
               description="O mapeamento dos nexos lógicos e a substituição de conectivos sem perda de sentido."
-              variant="blue"
+              variant={mv[6]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -3021,7 +3020,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Conectivos Causais: Registro Informal vs Formal"
               description="A distinção de registro entre conectivos causais na linguagem formal e técnica."
-              variant="blue"
+              variant={mv[6]}
             />
             <Comparison
               title="Substituição de Causal — Diferença de Registro"
@@ -3128,7 +3127,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Mapa Completo de Conjunções por Valor Lógico"
               description="Guia completo de equivalência conjuntiva por valor lógico e semântico."
-              variant="blue"
+              variant={mv[6]}
             />
             <p className="text-muted-foreground text-lg leading-relaxed">
               Em reescrita, a equivalência conjuntiva só é válida dentro do
@@ -3197,7 +3196,7 @@ export default function AulaReescritaFrases({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -3221,7 +3220,7 @@ export default function AulaReescritaFrases({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
-            variant="blue"
+            variant={mv[6]}
           />
         </div>
       </TabsContent>
@@ -3232,7 +3231,7 @@ export default function AulaReescritaFrases({
           numero={7}
           titulo="O Duelo Concessivo"
           descricao="Embora vs Mas. A troca mais perigosa e frequente da banca Cesgranrio."
-          variant="blue"
+          variant={mv[7]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 7 */}
@@ -3241,7 +3240,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Arte da Concessão Estratégica"
             description="A arte da concessão estratégica e o domínio das relações de oposição atenuada."
-            variant="blue"
+            variant={mv[7]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -3371,7 +3370,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="Embora x Mas — O Duelo Concessivo"
               description="A complexa transposição entre adversidade (mas) e concessão (embora)."
-              variant="blue"
+              variant={mv[7]}
             />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <FlipCard
@@ -3505,7 +3504,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Comparação: Adversativa vs Concessiva na Prática"
               description="Análise prática da mudança de modo verbal e ênfase argumentativa."
-              variant="blue"
+              variant={mv[7]}
             />
             <Comparison
               title="Mesma ideia — estruturas diferentes"
@@ -3533,7 +3532,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Concessão com Gerúndio e Infinitivo"
               description="Estruturas concessivas reduzidas de gerúndio e infinitivo."
-              variant="blue"
+              variant={mv[7]}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -3613,7 +3612,7 @@ export default function AulaReescritaFrases({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -3637,7 +3636,7 @@ export default function AulaReescritaFrases({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
-            variant="blue"
+            variant={mv[7]}
           />
         </div>
       </TabsContent>
@@ -3648,7 +3647,7 @@ export default function AulaReescritaFrases({
           numero={8}
           titulo="Pontuação e Sentido"
           descricao="A vírgula não é apenas uma pausa; ela é o interruptor do sentido explicativo/restritivo."
-          variant="blue"
+          variant={mv[8]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 8 */}
@@ -3657,7 +3656,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Arquitetura da Pontuação Semântica"
             description="A função lógica da vírgula e o impacto semântico da pontuação na reescrita."
-            variant="blue"
+            variant={mv[8]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -3790,7 +3789,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="O Poder da Vírgula"
               description="Aprofundamento prático na distinção entre explicações e restrições."
-              variant="blue"
+              variant={mv[8]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -3911,7 +3910,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Vírgula que Muda Tudo"
               description="Comparação prática entre o uso e omissão da vírgula em contextos operacionais."
-              variant="blue"
+              variant={mv[8]}
             />
             <Comparison
               title="Presença vs Ausência de Vírgula — Mudança de Sentido"
@@ -3949,7 +3948,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Outros Sinais de Pontuação na Reescrita"
               description="O impacto semântico de outros sinais de pontuação em contextos de reescrita."
-              variant="blue"
+              variant={mv[8]}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -4119,7 +4118,7 @@ export default function AulaReescritaFrases({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -4143,7 +4142,7 @@ export default function AulaReescritaFrases({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
-            variant="blue"
+            variant={mv[8]}
           />
         </div>
       </TabsContent>
@@ -4154,7 +4153,7 @@ export default function AulaReescritaFrases({
           numero={9}
           titulo="Laboratório CESGRANRIO"
           descricao="Analise as 5 trocas que a banca mais ama e que derrubam 90% dos candidatos."
-          variant="blue"
+          variant={mv[9]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 9 */}
@@ -4163,7 +4162,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Anatomia da pontos de atenção"
             description="A anatomia das pontos de atenção da banca e o checklist de sobrevivência do candidato."
-            variant="blue"
+            variant={mv[9]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -4291,7 +4290,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="As 5 Substituições Favoritas da CESGRANRIO"
               description="Os padrões de Avançado e as trocas favoritas da CESGRANRIO em provas técnicas."
-              variant="blue"
+              variant={mv[9]}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -4442,7 +4441,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Os 5 Erros que Derrubam Candidatos"
               description="Análise dos erros recorrentes da banca para evitar armadilhas comuns."
-              variant="blue"
+              variant={mv[9]}
             />
             <AlertBox
               tipo="danger"
@@ -4507,7 +4506,7 @@ export default function AulaReescritaFrases({
               index={3}
               title="Comparação de Reescritas — Laboratório Prático"
               description="Laboratório prático de comparação de reescritas e detecção de erros sutis."
-              variant="blue"
+              variant={mv[9]}
             />
             <Comparison
               title="Armadilha: Pronome Relativo 'Onde' vs 'Em que'"
@@ -4553,7 +4552,7 @@ export default function AulaReescritaFrases({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -4577,7 +4576,7 @@ export default function AulaReescritaFrases({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
-            variant="blue"
+            variant={mv[9]}
           />
         </div>
       </TabsContent>
@@ -4588,7 +4587,7 @@ export default function AulaReescritaFrases({
           numero={10}
           titulo="Avaliação de Fixação Avançada"
           descricao="Simulado Final: 10 questões de reescrita global. O teste definitivo de sua semântica."
-          variant="blue"
+          variant={mv[10]}
         />
 
         {/* ★ RICH INTRO SECTION - Módulo 10 */}
@@ -4597,7 +4596,7 @@ export default function AulaReescritaFrases({
             index="INTRO"
             title="A Síntese da Maestria Linguística"
             description="A síntese da maestria linguística e a integração de todas as técnicas de reescrita."
-            variant="blue"
+            variant={mv[10]}
           />
 
           <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -4732,7 +4731,7 @@ export default function AulaReescritaFrases({
               index={1}
               title="Revisão Express — Todas as Técnicas"
               description="Revisão express de todas as técnicas fundamentais para o simulado final."
-              variant="blue"
+              variant={mv[10]}
             />
             <CardCarousel
               itemsPerView={2}
@@ -4854,7 +4853,7 @@ export default function AulaReescritaFrases({
               index={2}
               title="Estratégia de Prova"
               description="Conselhos táticos e gestão de tempo para o dia do concurso."
-              variant="blue"
+              variant={mv[10]}
             />
             <AlertBox tipo="info" titulo="Recapitulação Final">
               A reescrita bem-sucedida é aquela em que você leria a frase nova
@@ -5034,7 +5033,7 @@ export default function AulaReescritaFrases({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -5058,7 +5057,7 @@ export default function AulaReescritaFrases({
             icone="🏆"
             numero={3}
             onComplete={(score) => handleModuleComplete("modulo-10", score)}
-            variant="blue"
+            variant={mv[10]}
           />
         </div>
       </TabsContent>

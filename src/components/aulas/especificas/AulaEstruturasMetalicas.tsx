@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_ESTRUTURAS_METALICAS, QUIZ_M2_ESTRUTURAS_METALICAS, QUIZ_M3_ESTRUTURAS_METALICAS } from '@/data/quizzes/especificas/estruturas-metalicas';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -27,40 +25,31 @@ export default function AulaEstruturasMetalicas({ onComplete }: AulaProps) {
 
   const modules = [
     {
-      title: 'Módulo 1: Introdução a Estruturas Metalicas',
+      title: 'Módulo 1: Introdução a Estruturas metálicas',
       content: (
         <div className="space-y-4 text-slate-300">
           <p>Esta aula faz parte dos Conhecimentos Específicos para os cargos técnicos e superiores da Petrobras.</p>
-          <p>O foco inicial deste módulo é introduzir os conceitos básicos de estruturas metalicas.</p>
+          <p>O foco inicial deste módulo é introduzir os conceitos básicos de estruturas metálicas.</p>
         </div>
       ),
-      quiz: QUIZ_M1_ESTRUTURAS_METALICAS
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_ESTRUTURAS_METALICAS
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_ESTRUTURAS_METALICAS
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Estruturas Metalicas"
+    <AulaEspecificaTemplate
+      title="Estruturas metálicas"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

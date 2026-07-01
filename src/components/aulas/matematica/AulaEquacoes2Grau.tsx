@@ -1,4 +1,4 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 // Last modified: 2026-03-13 - Upgraded with ModuleConsolidation (4-tab system) and C.E.D.E. pedagogy
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
@@ -58,7 +58,7 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaEquacoes2Grau({
   onComplete,
@@ -187,14 +187,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={1}
             titulo="Conceitos Fundamentais"
             descricao="Desvendando a estrutura das equações do 2º grau."
-             variant="blue"/>
+             variant={mv[1]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Anatomia da Equação"
               description="Identificando os coeficientes sem cair nas armadilhas da banca."
-              variant="blue"
+              variant={mv[1]}
             />
 
             <p className="text-muted-foreground leading-relaxed text-lg">
@@ -397,7 +397,7 @@ export default function AulaEquacoes2Grau({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[1]}
             video={{
               videoId: "gZDzgZxrvAo",
               title: "Equações do 2º Grau: Conceitos Fundamentais",
@@ -455,7 +455,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM1}
               titulo="QUIZ: Conceitos Fundamentais"
               numero={3}
-              variant="blue"
+              variant={mv[1]}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -469,14 +469,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={2}
             titulo="Fórmula de Bhaskara"
             descricao="A fórmula mais famosa da Matemática. Dominando o a, b e c."
-             variant="blue"/>
+             variant={mv[2]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="O Coração do 2º Grau"
               description="Bhaskara: a fórmula que resolve tudo quando bem compreendida."
-              variant="blue"
+              variant={mv[2]}
             />
 
             <ContentAccordion
@@ -651,7 +651,7 @@ export default function AulaEquacoes2Grau({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -673,7 +673,7 @@ export default function AulaEquacoes2Grau({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[2]}
             video={{
               videoId: "RFKjZ2FLSrk",
               title: "Fórmula de Bhaskara: Passo a Passo",
@@ -729,7 +729,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM2}
               titulo="QUIZ: Fórmula de Bhaskara"
               numero={3}
-              variant="blue"
+              variant={mv[2]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -743,14 +743,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={3}
             titulo="Equações Avançadas"
             descricao="Problemas físicos e geométricos que geram equações de 2º grau."
-             variant="blue"/>
+             variant={mv[3]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Tradução Física das Raízes"
               description="Ninguém desenha uma parábola sem motivo de prova."
-              variant="blue"
+              variant={mv[3]}
             />
 
             <ContentAccordion
@@ -893,7 +893,7 @@ export default function AulaEquacoes2Grau({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -915,7 +915,7 @@ export default function AulaEquacoes2Grau({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[3]}
             video={{
               videoId: "lkK4kZWglOk",
               title: "Problemas Contextualizados com Equações 2º Grau",
@@ -973,7 +973,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM3}
               titulo="QUIZ: Equações Avançadas"
               numero={3}
-              variant="blue"
+              variant={mv[3]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -987,14 +987,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={4}
             titulo="O Gráfico e os Vértices"
             descricao="Encontrando o limite absoluto: Lucro Máximo e Altura Máxima."
-             variant="blue"/>
+             variant={mv[4]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="O Ápice da Parábola"
               description="Identificando o pico e o fundo do poço sem precisar desenhar o gráfico."
-              variant="blue"
+              variant={mv[4]}
             />
 
             <ContentAccordion
@@ -1136,7 +1136,7 @@ export default function AulaEquacoes2Grau({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1158,7 +1158,7 @@ export default function AulaEquacoes2Grau({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[4]}
             video={{
               videoId: "bPfYCGCYRN8",
               title: "Vértice e Otimização: Máximos e Mínimos",
@@ -1221,7 +1221,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM4}
               titulo="QUIZ: Problemas Contextualizados"
               numero={3}
-              variant="blue"
+              variant={mv[4]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1235,14 +1235,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={5}
             titulo="Desafio Parcial"
             descricao="Consolidando os conhecimentos dos primeiros 4 módulos."
-             variant="blue"/>
+             variant={mv[5]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Revisão Estratégica"
               description="Antes de avançar para técnicas mais sofisticadas, teste seu domínio."
-              variant="blue"
+              variant={mv[5]}
             />
 
             <ContentAccordion
@@ -1317,7 +1317,7 @@ export default function AulaEquacoes2Grau({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1339,7 +1339,7 @@ export default function AulaEquacoes2Grau({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[5]}
             video={{
               videoId: "SJ-S32r9GUo",
               title: "Revisão: Equações 2º Grau Completas",
@@ -1396,7 +1396,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM5}
               titulo="QUIZ: Desafio Parcial"
               numero={3}
-              variant="blue"
+              variant={mv[5]}
               icone="📊"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1410,14 +1410,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={6}
             titulo="Soma e Produto (Relações de Vieta)"
             descricao="Os atalhos dos ninjas: descubra raízes sem Bhaskara."
-             variant="blue"/>
+             variant={mv[6]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Relações de Vieta"
               description="Soma e produto das raízes."
-              variant="blue"
+              variant={mv[6]}
             />
 
             <ContentAccordion
@@ -1526,7 +1526,7 @@ export default function AulaEquacoes2Grau({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1548,7 +1548,7 @@ export default function AulaEquacoes2Grau({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[6]}
             video={{
               videoId: "8mR0h4Ymfuo",
               title: "Soma e Produto: Relações de Vieta",
@@ -1604,7 +1604,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM6}
               titulo="QUIZ: Soma e Produto (Atalhos)"
               numero={3}
-              variant="blue"
+              variant={mv[6]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1618,14 +1618,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={7}
             titulo="Gráficos e Parábolas"
             descricao="Visualizando raízes, vértices e o comportamento das parábolas."
-             variant="blue"/>
+             variant={mv[7]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="O Ápice da Parábola"
               description="Encontrando máximos e mínimos."
-              variant="blue"
+              variant={mv[7]}
             />
 
             <ContentAccordion
@@ -1747,7 +1747,7 @@ export default function AulaEquacoes2Grau({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1769,7 +1769,7 @@ export default function AulaEquacoes2Grau({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[7]}
             video={{
               videoId: "qAHgWGWZhGs",
               title: "Gráficos de Parábolas: Visualização Completa",
@@ -1827,7 +1827,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM7}
               titulo="QUIZ: Gráficos e Parábolas"
               numero={3}
-              variant="blue"
+              variant={mv[7]}
               icone="📈"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1841,14 +1841,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={8}
             titulo="Resolução Reversa"
             descricao="Do resultado para a equação: encontre coeficientes e parâmetros."
-             variant="blue"/>
+             variant={mv[8]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Pensamento Inverso"
               description="Quando a banca dá as raízes, ache a equação."
-              variant="blue"
+              variant={mv[8]}
             />
 
             <ContentAccordion
@@ -1964,7 +1964,7 @@ export default function AulaEquacoes2Grau({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1986,7 +1986,7 @@ export default function AulaEquacoes2Grau({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[8]}
             video={{
               videoId: "v8HEYcH0WeM",
               title: "Resolução Reversa: Das Raízes à Equação",
@@ -2044,7 +2044,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM8}
               titulo="QUIZ: Resolução Reversa"
               numero={3}
-              variant="blue"
+              variant={mv[8]}
               icone="🔄"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -2058,14 +2058,14 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={9}
             titulo="Aplicações Petrobras"
             descricao="Problemas reais de otimização em operações de petróleo e gás."
-             variant="blue"/>
+             variant={mv[9]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Contexto Industrial"
               description="Equações que resolvem problemas verdadeiros."
-              variant="blue"
+              variant={mv[9]}
             />
 
             <ContentAccordion
@@ -2182,7 +2182,7 @@ export default function AulaEquacoes2Grau({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2204,7 +2204,7 @@ export default function AulaEquacoes2Grau({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Aplicações Reais: Otimização na Indústria",
@@ -2262,7 +2262,7 @@ export default function AulaEquacoes2Grau({
               questoes={quizM9}
               titulo="QUIZ: Aplicações Petrobras"
               numero={3}
-              variant="blue"
+              variant={mv[9]}
               icone="⚙️"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -2276,7 +2276,7 @@ export default function AulaEquacoes2Grau({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="Teste seu domínio absoluto sobre Equações do 2º Grau."
-             variant="blue"/>
+             variant={mv[10]}/>
 
           {showCompletionBadge ? (
             <div className="flex flex-col items-center gap-6 py-10 mt-10">
@@ -2295,7 +2295,7 @@ export default function AulaEquacoes2Grau({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2318,7 +2318,7 @@ export default function AulaEquacoes2Grau({
                 titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={1}
-                variant="blue"
+                variant={mv[10]}
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

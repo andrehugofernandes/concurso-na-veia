@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_CICLO_DE_VIDA_DE_SOFTWARE, QUIZ_M2_CICLO_DE_VIDA_DE_SOFTWARE, QUIZ_M3_CICLO_DE_VIDA_DE_SOFTWARE } from '@/data/quizzes/especificas/ciclo-de-vida-de-software';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -27,40 +25,31 @@ export default function AulaCicloDeVidaDeSoftware({ onComplete }: AulaProps) {
 
   const modules = [
     {
-      title: 'Módulo 1: Introdução a Ciclo De Vida De Software',
+      title: 'Módulo 1: Introdução a Ciclo de vida de software',
       content: (
         <div className="space-y-4 text-slate-300">
           <p>Esta aula faz parte dos Conhecimentos Específicos para os cargos técnicos e superiores da Petrobras.</p>
           <p>O foco inicial deste módulo é introduzir os conceitos básicos de ciclo de vida de software.</p>
         </div>
       ),
-      quiz: QUIZ_M1_CICLO_DE_VIDA_DE_SOFTWARE
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_CICLO_DE_VIDA_DE_SOFTWARE
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_CICLO_DE_VIDA_DE_SOFTWARE
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Ciclo De Vida De Software"
+    <AulaEspecificaTemplate
+      title="Ciclo de vida de software"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

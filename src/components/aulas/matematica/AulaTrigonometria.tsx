@@ -1,4 +1,4 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 
@@ -28,7 +28,7 @@ import {
   QUIZ_M10_SIMULADO_CESGRANRIO,
 } from "./data/trigonometria-quizzes";
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaTrigonometria({
   onComplete,
@@ -131,7 +131,7 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={1}
           titulo="Razões Trigonométricas no Triângulo Retângulo"
           descricao="Domine seno, cosseno e tangente — a base de toda a trigonometria aplicada à engenharia e inspeção industrial."
-           variant="blue"/>
+           variant={mv[1]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -417,14 +417,14 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={2}
           titulo="Ângulos Notáveis: 30°, 45°, 60° e 90°"
           descricao="Memorize os valores exatos que aparecem em 90% das questões de concurso — sem calculadora!"
-           variant="blue"/>
+           variant={mv[2]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Tabela dos Ângulos Notáveis"
               description="Os valores que você deve saber de cor para a prova da CESGRANRIO."
-              variant="blue"
+              variant={mv[2]}
               className="mb-6"
             />
             <ContentAccordion
@@ -662,7 +662,7 @@ export default function AulaTrigonometria({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -684,7 +684,7 @@ export default function AulaTrigonometria({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[2]}
             video={{
               videoId: "V0xjO3M0q0s",
               title: "Ângulos Notáveis: 30°, 45°, 60°",
@@ -722,7 +722,7 @@ export default function AulaTrigonometria({
               titulo="QUIZ: Ângulos Notáveis"
               icone="📊"
               numero={3}
-              variant="blue"
+              variant={mv[2]}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -736,7 +736,7 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={3}
           titulo="Círculo Trigonométrico"
           descricao="Entenda o círculo unitário — a ferramenta que unifica seno, cosseno e tangente para todos os ângulos."
-           variant="blue"/>
+           variant={mv[3]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -933,7 +933,7 @@ export default function AulaTrigonometria({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -955,7 +955,7 @@ export default function AulaTrigonometria({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[3]}
             video={{
               videoId: "0PqJ_MN0n8U",
               title: "Circunferência Unitária e Radianos",
@@ -1008,14 +1008,14 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={4}
           titulo="Funções Trigonométricas"
           descricao="Seno, cosseno e tangente como funções reais — amplitude, período e gráficos aplicados à engenharia."
-           variant="blue"/>
+           variant={mv[4]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Amplitude, Período e Deslocamento"
               description="Os parâmetros que controlam o comportamento de funções trigonométricas."
-              variant="blue"
+              variant={mv[4]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1226,7 +1226,7 @@ export default function AulaTrigonometria({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[4]}
             video={{
               videoId: "xEiUPR46EIQ",
               title: "Funções sen(x), cos(x), tg(x): Gráficos e Propriedades",
@@ -1266,7 +1266,7 @@ export default function AulaTrigonometria({
               titulo="QUIZ: Funções Trigonométricas"
               icone="📈"
               numero={3}
-              variant="blue"
+              variant={mv[4]}
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -1280,7 +1280,7 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={5}
           titulo="Identidades Trigonométricas Fundamentais"
           descricao="As equações que são verdadeiras para todos os ângulos — ferramentas de simplificação e prova."
-           variant="blue"/>
+           variant={mv[5]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1456,7 +1456,7 @@ export default function AulaTrigonometria({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1478,7 +1478,7 @@ export default function AulaTrigonometria({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[5]}
             video={{
               videoId: "1Ixnl1bN3yg",
               title: "Identidades Trigonométricas Fundamentais",
@@ -1531,14 +1531,14 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={6}
           titulo="Lei dos Senos"
           descricao="Resolva qualquer triângulo quando você conhece ângulos e lados opostos — essencial para triangulação em campo."
-           variant="blue"/>
+           variant={mv[6]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Fórmula e Aplicações da Lei dos Senos"
               description="Quando e como usar a Lei dos Senos em problemas industriais."
-              variant="blue"
+              variant={mv[6]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1706,7 +1706,7 @@ export default function AulaTrigonometria({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1728,7 +1728,7 @@ export default function AulaTrigonometria({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[6]}
             video={{
               videoId: "FAp9XvJNc0I",
               title: "Lei dos Senos: a/sen(A) = b/sen(B) = c/sen(C)",
@@ -1766,7 +1766,7 @@ export default function AulaTrigonometria({
               titulo="QUIZ: Lei dos Senos"
               icone="⚖️"
               numero={3}
-              variant="blue"
+              variant={mv[6]}
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -1780,7 +1780,7 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={7}
           titulo="Lei dos Cossenos"
           descricao="A generalização do Teorema de Pitágoras — resolva triângulos quando você conhece três lados ou dois lados e o ângulo entre eles."
-           variant="blue"/>
+           variant={mv[7]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2023,7 +2023,7 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={8}
           titulo="Equações Trigonométricas"
           descricao="Encontre todos os ângulos que satisfazem uma equação — incluindo a solução geral com periodicidade."
-           variant="blue"/>
+           variant={mv[8]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2192,7 +2192,7 @@ export default function AulaTrigonometria({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2214,7 +2214,7 @@ export default function AulaTrigonometria({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[8]}
             video={{
               videoId: "jOpTkIwmJqE",
               title: "Equações Trigonométricas: Resolvendo sin(x)=a, cos(x)=a, tan(x)=a",
@@ -2267,14 +2267,14 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={9}
           titulo="Aplicações Industriais Petrobras"
           descricao="Trigonometria aplicada em rampas offshore, dutos submarinos, triangulação, içamento de cargas e inspeções industriais."
-           variant="blue"/>
+           variant={mv[9]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Cenários Reais da Indústria de Petróleo"
               description="As situações que a CESGRANRIO recria em suas questões contextualizadas."
-              variant="blue"
+              variant={mv[9]}
               className="mb-6"
             />
             <ContentAccordion
@@ -2476,7 +2476,7 @@ export default function AulaTrigonometria({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2498,7 +2498,7 @@ export default function AulaTrigonometria({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "2mQ8V3vAVPs",
               title: "Aplicações Reais: Trigonometria em Engenharia e Indústria",
@@ -2538,7 +2538,7 @@ export default function AulaTrigonometria({
               titulo="QUIZ: Aplicações Industriais"
               icone="⚙️"
               numero={3}
-              variant="blue"
+              variant={mv[9]}
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -2552,7 +2552,7 @@ export default function AulaTrigonometria({
         <ModuleBanner numero={10}
           titulo="Simulado Final — Estilo CESGRANRIO"
           descricao="Questões de nível concurso integrando todos os tópicos de trigonometria. Prove que está pronto para a prova!"
-           variant="blue"/>
+           variant={mv[10]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2816,7 +2816,7 @@ export default function AulaTrigonometria({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[10]}
             video={{
               videoId: "lW3W5I6VLkY",
               title: "Revisão Geral: Trigonometria da Aula 1 ao Módulo 9",

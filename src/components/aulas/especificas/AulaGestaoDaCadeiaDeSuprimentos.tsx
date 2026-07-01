@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_GESTAO_DA_CADEIA_DE_SUPRIMENTOS, QUIZ_M2_GESTAO_DA_CADEIA_DE_SUPRIMENTOS, QUIZ_M3_GESTAO_DA_CADEIA_DE_SUPRIMENTOS } from '@/data/quizzes/especificas/gestao-da-cadeia-de-suprimentos';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -27,40 +25,31 @@ export default function AulaGestaoDaCadeiaDeSuprimentos({ onComplete }: AulaProp
 
   const modules = [
     {
-      title: 'Módulo 1: Introdução a Gestao Da Cadeia De Suprimentos',
+      title: 'Módulo 1: Introdução a Gestão da cadeia de suprimentos',
       content: (
         <div className="space-y-4 text-slate-300">
           <p>Esta aula faz parte dos Conhecimentos Específicos para os cargos técnicos e superiores da Petrobras.</p>
-          <p>O foco inicial deste módulo é introduzir os conceitos básicos de gestao da cadeia de suprimentos.</p>
+          <p>O foco inicial deste módulo é introduzir os conceitos básicos de gestão da cadeia de suprimentos.</p>
         </div>
       ),
-      quiz: QUIZ_M1_GESTAO_DA_CADEIA_DE_SUPRIMENTOS
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_GESTAO_DA_CADEIA_DE_SUPRIMENTOS
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_GESTAO_DA_CADEIA_DE_SUPRIMENTOS
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Gestao Da Cadeia De Suprimentos"
+    <AulaEspecificaTemplate
+      title="Gestão da cadeia de suprimentos"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

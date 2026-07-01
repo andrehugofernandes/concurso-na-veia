@@ -901,15 +901,39 @@ export default function TopicoPage({ params }: PageProps) {
   const [nextTopico, setNextTopico] = useState<Topico | undefined>(undefined);
   const [prevTopico, setPrevTopico] = useState<Topico | undefined>(undefined);
   const [isResolving, setIsResolving] = useState(true);
+  const [isUnauthorized, setIsUnauthorized] = useState(false);
 
   useEffect(() => {
     const resolveContent = async () => {
       try {
-        const userRes = await getCurrentUserAction();
         let userConcursoSlug = "petrobras";
-        if (userRes.status === "success" && userRes.data) {
-          const user = userRes.data;
-          userConcursoSlug = getProfissaoById(user.cargo)?.concurso || user.user_metadata?.concurso || "petrobras";
+        let cargoId = "";
+        let isEliteTotal = false;
+
+        // Verifica Mock Auth no Client Side
+        let mockCargo = null;
+        if (process.env.NODE_ENV === "development") {
+          const mockAuth = localStorage.getItem("DEV_MOCK_AUTH");
+          if (mockAuth) {
+            try {
+              const parsed = JSON.parse(mockAuth);
+              if (parsed.cargo) mockCargo = parsed.cargo;
+              if (parsed.plan) isEliteTotal = parsed.plan === "elite-total";
+              userConcursoSlug = getProfissaoById(parsed.cargo)?.concurso || "petrobras";
+            } catch (e) {}
+          }
+        }
+
+        if (!mockCargo) {
+          const userRes = await getCurrentUserAction();
+          if (userRes.status === "success" && userRes.data) {
+            const user = userRes.data;
+            cargoId = user.cargo;
+            isEliteTotal = user.nivel === "elite-total" || user.plan === "elite-total";
+            userConcursoSlug = getProfissaoById(cargoId)?.concurso || user.user_metadata?.concurso || "petrobras";
+          }
+        } else {
+          cargoId = mockCargo;
         }
 
         let resolvedMateria = getMateriaById(materiaId);
@@ -936,6 +960,17 @@ export default function TopicoPage({ params }: PageProps) {
           if (!resolvedMateria.concursos.includes(userConcursoSlug)) {
             resolvedMateria = undefined;
             resolvedTopico = undefined;
+          }
+        }
+
+        // AUTH GUARD: Verificar se o usuário tem acesso a esta matéria
+        if (resolvedMateria && !isEliteTotal) {
+          const myPrograma = getProgramaDeEstudos(cargoId, false);
+          const hasAccess = myPrograma.some(m => m.id === resolvedMateria!.id);
+          if (!hasAccess) {
+            setIsUnauthorized(true);
+            setIsResolving(false);
+            return;
           }
         }
 
@@ -982,6 +1017,30 @@ export default function TopicoPage({ params }: PageProps) {
 
   if (isResolving) {
     return <div className="animate-pulse h-screen bg-background" />;
+  }
+
+  if (isUnauthorized) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-6">
+        <div className="max-w-md w-full text-center space-y-6">
+          <div className="w-20 h-20 bg-red-500/10 rounded-full flex items-center justify-center mx-auto">
+            <span className="text-4xl">🔒</span>
+          </div>
+          <div>
+            <h1 className="text-2xl font-black text-foreground mb-2">Acesso Restrito</h1>
+            <p className="text-muted-foreground">
+              Esta aula não faz parte do programa de estudos da sua profissão selecionada.
+            </p>
+          </div>
+          <Link
+            href="/aulas"
+            className="inline-flex items-center justify-center w-full px-6 py-4 rounded-2xl bg-primary text-primary-foreground font-bold hover:brightness-110 transition-all"
+          >
+            Voltar para as Aulas
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   if (!materia || !topico) {
@@ -2423,7 +2482,7 @@ export default function TopicoPage({ params }: PageProps) {
                 prevTopico={prevTopico}
                 nextTopico={nextTopico}
               />
-            ) : materiaId.startsWith("bloco-") ? (
+            ) : materiaId.startsWith("especifica-") ? (
               <DynamicEspecificaLoader
                 topicoId={topicoId}
                 onComplete={handleCompleteAula}

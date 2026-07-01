@@ -222,7 +222,7 @@ export default function AulaCoesaoCoerencia({
           numero={1}
           titulo="O Tecido do Texto"
           descricao="Entenda a diferença fundamental entre Coesão (forma) e Coerência (sentido) no padrão CESGRANRIO."
-          variant="blue"
+          variant={mv[1]}
         />
 
         <div className="space-y-[50px]">
@@ -232,7 +232,7 @@ export default function AulaCoesaoCoerencia({
               index="INTRO"
               title="A Matemática do Sentido"
               description="Domine a engenharia de superfície e a mecânica de profundidade para antecipar armadilhas da CESGRANRIO."
-              variant="blue"
+              variant={mv[1]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
@@ -328,7 +328,7 @@ export default function AulaCoesaoCoerencia({
               ]}
               correctAnswer={1}
               explanation="Excelente! Conforme a gramática normativa, a conjunção 'contudo' (adversativa) acompanha o modo indicativo, enquanto 'embora' (concessiva) exige o modo subjuntivo."
-              variant="blue"
+              variant={mv[1]}
             />
           </section>
 
@@ -336,7 +336,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={1}
               title="A Dualidade Textual"
-              variant="blue"
+              variant={mv[1]}
             />
             <ContentAccordion
               mode="stacked"
@@ -420,7 +420,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={2}
               title="Os 5 Grandes Mecanismos de Coesão"
-              variant="blue"
+              variant={mv[1]}
             />
             <ContentAccordion
               mode="stacked"
@@ -571,7 +571,7 @@ export default function AulaCoesaoCoerencia({
             <ModuleSectionHeader
               index={3}
               title="Coesão e Coerência no Contexto Petrobras"
-              variant="blue"
+              variant={mv[1]}
             />
             <CardCarousel
               cards={[
@@ -623,7 +623,7 @@ export default function AulaCoesaoCoerencia({
               index={4}
               title="Consolidação: O Tecido do Texto"
               description="Sintetize os conceitos fundamentais antes do teste prático."
-              variant="blue"
+              variant={mv[1]}
             />
 
             <LessonTabs
@@ -748,7 +748,7 @@ export default function AulaCoesaoCoerencia({
                   ),
                 },
               ]}
-              variant="blue"
+              variant={mv[1]}
             />
           </section>
 
@@ -756,7 +756,7 @@ export default function AulaCoesaoCoerencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -778,7 +778,7 @@ export default function AulaCoesaoCoerencia({
             titulo="QUIZ: O Tecido do Texto"
             icone="🎯"
             numero={5}
-            variant="blue"
+            variant={mv[1]}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
           />
         </div>
@@ -790,7 +790,7 @@ export default function AulaCoesaoCoerencia({
           numero={2}
           titulo="O Poder do Retrovisor"
           descricao="Domine a Anáfora: o recurso de retomar termos anteriores para evitar a repetição cansativa."
-          variant="blue"
+          variant={mv[2]}
         />
 
         <div className="space-y-[50px]">
@@ -800,7 +800,7 @@ export default function AulaCoesaoCoerencia({
               index="INTRO"
               title="O Labirinto das Retomadas"
               description="Entenda como a anáfora economiza recursos cognitivos e evita a estagnação nos manuais técnicos da Petrobras."
-              variant="blue"
+              variant={mv[2]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
@@ -893,7 +893,7 @@ export default function AulaCoesaoCoerencia({
               ]}
               correctAnswer={1}
               explanation="Correto! 'Ela' é um elemento anafórico que retoma 'A refinaria', evitando a repetição e mantendo a coesão referencial."
-              variant="blue"
+              variant={mv[2]}
             />
           </section>
 
@@ -902,7 +902,7 @@ export default function AulaCoesaoCoerencia({
               index={1}
               title="A Mecânica da Anáfora (Retrovisor)"
               description="A arte de fazer o texto avançar enquanto olha para trás."
-              variant="blue"
+              variant={mv[2]}
             />
             <ContentAccordion
               mode="stacked"
@@ -982,7 +982,7 @@ export default function AulaCoesaoCoerencia({
               index={2}
               title="Consolidação: O Poder do Retrovisor"
               description="Acesse o resumo visual e a estratégia de anáfora."
-              variant="blue"
+              variant={mv[2]}
             />
 
             <LessonTabs
@@ -1059,7 +1059,7 @@ export default function AulaCoesaoCoerencia({
                   ),
                 },
               ]}
-              variant="blue"
+              variant={mv[2]}
             />
           </section>
 
@@ -1067,7 +1067,7 @@ export default function AulaCoesaoCoerencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1089,7 +1089,7 @@ export default function AulaCoesaoCoerencia({
             titulo="QUIZ: O Poder do Retrovisor"
             icone="🎯"
             numero={3}
-            variant="blue"
+            variant={mv[2]}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
           />
         </div>
@@ -1101,7 +1101,7 @@ export default function AulaCoesaoCoerencia({
           numero={3}
           titulo="O Farol do Sentido"
           descricao="A Catáfora prepara o leitor para o que virá. Aprenda a antecipar ideias com elegância."
-          variant="blue"
+          variant={mv[3]}
         />
 
         <div className="space-y-[50px]">
@@ -1111,7 +1111,7 @@ export default function AulaCoesaoCoerencia({
               index="INTRO"
               title="A Iluminação Catafórica: O Farol do Texto"
               description="Domine o mecanismo de antecipação classificado como a remissão 'para diante', essencial na clareza de informativos técnicos."
-              variant="blue"
+              variant={mv[3]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
@@ -1208,7 +1208,7 @@ export default function AulaCoesaoCoerencia({
               ]}
               correctAnswer={1}
               explanation="Excelente! 'Este' é um pronome catafórico típico, pois aponta para a informação que ainda será apresentada (dobrar a produção)."
-              variant="blue"
+              variant={mv[3]}
             />
           </section>
 
@@ -1217,7 +1217,7 @@ export default function AulaCoesaoCoerencia({
               index={1}
               title="A Mecânica da Catáfora (Farol)"
               description="A arte de criar expectativa apontando para o que ainda será dito."
-              variant="blue"
+              variant={mv[3]}
             />
             <ContentAccordion
               mode="stacked"
@@ -1301,7 +1301,7 @@ export default function AulaCoesaoCoerencia({
               index={2}
               title="Consolidação: O Farol do Sentido"
               description="Acesse o resumo visual e as estratégias de antecipação catafórica."
-              variant="blue"
+              variant={mv[3]}
             />
 
             <LessonTabs
@@ -1379,7 +1379,7 @@ export default function AulaCoesaoCoerencia({
                   ),
                 },
               ]}
-              variant="blue"
+              variant={mv[3]}
             />
           </section>
 
@@ -1387,7 +1387,7 @@ export default function AulaCoesaoCoerencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1409,7 +1409,7 @@ export default function AulaCoesaoCoerencia({
             titulo="QUIZ: O Farol do Sentido"
             icone="🎯"
             numero={3}
-            variant="blue"
+            variant={mv[3]}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
         </div>
@@ -1421,7 +1421,7 @@ export default function AulaCoesaoCoerencia({
           numero={4}
           titulo="O Silêncio Eloquente"
           descricao="Às vezes, não dizer nada é a melhor forma de conectar. Domine Elipse e Zêugma."
-          variant="blue"
+          variant={mv[4]}
         />
 
         <div className="space-y-[50px]">
@@ -1431,7 +1431,7 @@ export default function AulaCoesaoCoerencia({
               index="INTRO"
               title="O Silêncio Eloquente: Elipse e Zêugma"
               description="Descubra como a omissão estratégica de termos pode tornar o texto mais fluido e elegante, sem comprometer o rigor da norma culta."
-              variant="blue"
+              variant={mv[4]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
@@ -1525,7 +1525,7 @@ export default function AulaCoesaoCoerencia({
               ]}
               correctAnswer={1}
               explanation="Perfeito! O Zêugma é uma forma de elipse que omite um termo já expresso anteriormente ('foca')."
-              variant="blue"
+              variant={mv[4]}
             />
           </section>
 
@@ -1534,7 +1534,7 @@ export default function AulaCoesaoCoerencia({
               index={1}
               title="Coesão por Omissão (Elipse e Zêugma)"
               description="A elegância sintática de não repetir. A força do silêncio estrutural."
-              variant="blue"
+              variant={mv[4]}
             />
             <ContentAccordion
               mode="stacked"
@@ -1614,7 +1614,7 @@ export default function AulaCoesaoCoerencia({
               index={2}
               title="Consolidação: O Silêncio Eloquente"
               description="Acesse o resumo visual e as estratégias de elipse e zêugma."
-              variant="blue"
+              variant={mv[4]}
             />
 
             <LessonTabs
@@ -1692,7 +1692,7 @@ export default function AulaCoesaoCoerencia({
                   ),
                 },
               ]}
-              variant="blue"
+              variant={mv[4]}
             />
           </section>
 
@@ -1700,7 +1700,7 @@ export default function AulaCoesaoCoerencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1722,7 +1722,7 @@ export default function AulaCoesaoCoerencia({
             titulo="QUIZ: O Silêncio Eloquente"
             icone="🎯"
             numero={3}
-            variant="blue"
+            variant={mv[4]}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
           />
         </div>
@@ -1734,7 +1734,7 @@ export default function AulaCoesaoCoerencia({
           numero={5}
           titulo="Substituições de Avançado"
           descricao="Nominalização, Hiperonímia e Palavras-Sumário: o arsenal avançado de coesão lexical."
-          variant="blue"
+          variant={mv[5]}
         />
 
         <div className="space-y-[50px]">
@@ -1744,7 +1744,7 @@ export default function AulaCoesaoCoerencia({
               index="INTRO"
               title="Substituições de Avançado: A Engenharia Lexical"
               description="Aprenda a elevar o nível do seu texto usando a 'reiteração por hiperonímia' e as 'palavras-sumário', recursos de prestígio na norma culta."
-              variant="blue"
+              variant={mv[5]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
@@ -1841,7 +1841,7 @@ export default function AulaCoesaoCoerencia({
               ]}
               correctAnswer={2}
               explanation="Exato! 'Combustível fóssil' é um hiperônimo de 'petróleo', englobando-o em uma categoria superior e mantendo a coesão por reiteração."
-              variant="blue"
+              variant={mv[5]}
             />
           </section>
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1849,7 +1849,7 @@ export default function AulaCoesaoCoerencia({
               index={1}
               title="A Matriz da Coesão Lexical"
               description="A arte de manter o tema orbitando através de sinônimos, nomes genéricos e nominalizações."
-              variant="blue"
+              variant={mv[5]}
             />
             <ContentAccordion
               mode="stacked"
@@ -1925,7 +1925,7 @@ export default function AulaCoesaoCoerencia({
 
           <TextAnalysisLab
             index={5.1}
-            variant="blue"
+            variant={mv[5]}
             titulo="Laboratório Lexical: Micro e Macro"
             subtitulo="Identifique a retomada abstrata (Hiperonímia) e a retomada específica (Hiponímia)."
             legenda={[
@@ -1959,7 +1959,7 @@ export default function AulaCoesaoCoerencia({
               index={5.2}
               title="Consolidação: A Matriz Lexical"
               description="Acesse o resumo visual e as estratégias de classificação vocabular."
-              variant="blue"
+              variant={mv[5]}
             />
 
             <LessonTabs
@@ -2048,7 +2048,7 @@ export default function AulaCoesaoCoerencia({
                   ),
                 },
               ]}
-              variant="blue"
+              variant={mv[5]}
             />
           </section>
 
@@ -2056,7 +2056,7 @@ export default function AulaCoesaoCoerencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2078,7 +2078,7 @@ export default function AulaCoesaoCoerencia({
             titulo="QUIZ: Substituições de Avançado"
             icone="🎯"
             numero={6}
-            variant="blue"
+            variant={mv[5]}
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
           />
         </div>
@@ -2090,7 +2090,7 @@ export default function AulaCoesaoCoerencia({
           numero={6}
           titulo="A Dança dos Conectivos"
           descricao="Transições perfeitas: aprenda a usar conjunções para dar ritmo e lógica ao seu texto."
-          variant="blue"
+          variant={mv[6]}
         />
 
         <div className="space-y-[50px]">
@@ -2100,7 +2100,7 @@ export default function AulaCoesaoCoerencia({
               index="INTRO"
               title="A Dança dos Conectivos: Engenharia de Fluxo"
               description="Transforme seu texto de um amontoado de frases em um organismo vivo por meio da coesão sequencial e dos nexos lógicos da norma culta."
-              variant="blue"
+              variant={mv[6]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
@@ -2204,7 +2204,7 @@ export default function AulaCoesaoCoerencia({
               ]}
               correctAnswer={2}
               explanation="Exatamente! 'Porquanto' é um conectivo de valor causal ou explicativo. Não confunda com 'portanto', que é conclusivo."
-              variant="blue"
+              variant={mv[6]}
             />
           </section>
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2212,7 +2212,7 @@ export default function AulaCoesaoCoerencia({
               index={1}
               title="Sintaxe de Nexos (Coesão Sequencial)"
               description="A articulação matemática das ideias através do tempo e da lógica oracional."
-              variant="blue"
+              variant={mv[6]}
             />
             <ContentAccordion
               mode="stacked"
@@ -2299,7 +2299,7 @@ export default function AulaCoesaoCoerencia({
 
           <TextAnalysisLab
             index={2}
-            variant="blue"
+            variant={mv[6]}
             titulo="Laboratório de Nexos: Causa e Efeito"
             subtitulo="A mecânica da CESGRANRIO inverte frequentemente a ordem temporal e sintática."
             legenda={[
@@ -2333,7 +2333,7 @@ export default function AulaCoesaoCoerencia({
               index={3}
               title="Consolidação: As Pontes de Sentido"
               description="Acesse o resumo visual e acerte a guerra Crítico entre Porquanto e Portanto."
-              variant="blue"
+              variant={mv[6]}
             />
 
             <LessonTabs
@@ -2412,7 +2412,7 @@ export default function AulaCoesaoCoerencia({
                   ),
                 },
               ]}
-              variant="blue"
+              variant={mv[6]}
             />
           </section>
 
@@ -2420,7 +2420,7 @@ export default function AulaCoesaoCoerencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2442,7 +2442,7 @@ export default function AulaCoesaoCoerencia({
             titulo="QUIZ: A Dança dos Conectivos"
             icone="🎯"
             numero={4}
-            variant="blue"
+            variant={mv[6]}
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
           />
         </div>
@@ -2454,7 +2454,7 @@ export default function AulaCoesaoCoerencia({
           numero={7}
           titulo="Concessão & Oposição"
           descricao="O divisor de águas da Cesgranrio: diferencie a força do 'Mas' da resiliência do 'Embora'."
-          variant="blue"
+          variant={mv[7]}
         />
 
         <div className="space-y-[50px]">
@@ -2464,7 +2464,7 @@ export default function AulaCoesaoCoerencia({
               index="INTRO"
               title="A Concessão: A Arte de Contornar"
               description="Aprenda a distinguir a força bruta da oposição (Adversidade) da elegância estratégica da Concessão, um dos temas preferidos da CESGRANRIO."
-              variant="blue"
+              variant={mv[7]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
@@ -2565,7 +2565,7 @@ export default function AulaCoesaoCoerencia({
               ]}
               correctAnswer={2}
               explanation="Perfeito! As conjunções concessivas (embora, conquanto) exigem o modo subjuntivo para sinalizar a natureza da relação lógica."
-              variant="blue"
+              variant={mv[7]}
             />
           </section>
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2573,7 +2573,7 @@ export default function AulaCoesaoCoerencia({
               index={1}
               title="O Grande Duelo Sintático"
               description="Adversativas vs. Concessivas: o divisor de águas entre a lógica imperativa e a argumentação sofisticada."
-              variant="blue"
+              variant={mv[7]}
             />
             <ContentAccordion
               mode="stacked"
@@ -2654,7 +2654,7 @@ export default function AulaCoesaoCoerencia({
 
           <TextAnalysisLab
             index={2}
-            variant="blue"
+            variant={mv[7]}
             titulo="Laboratório de Contrastes"
             subtitulo="Analise a força argumentativa (Oposição vs Concessão) em um cenário de crise operacional."
             legenda={[
@@ -2690,7 +2690,7 @@ export default function AulaCoesaoCoerencia({
               index={3}
               title="Consolidação: O Jogo de Forças"
               description="Domine a inversão de polaridade entre Indicativo Subjuntivo."
-              variant="blue"
+              variant={mv[7]}
             />
 
             <LessonTabs
@@ -2773,7 +2773,7 @@ export default function AulaCoesaoCoerencia({
                   ),
                 },
               ]}
-              variant="blue"
+              variant={mv[7]}
             />
           </section>
 
@@ -2781,7 +2781,7 @@ export default function AulaCoesaoCoerencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2803,7 +2803,7 @@ export default function AulaCoesaoCoerencia({
             titulo="QUIZ: Concessão & Oposição"
             icone="🎯"
             numero={4}
-            variant="blue"
+            variant={mv[7]}
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
           />
         </div>
@@ -2815,7 +2815,7 @@ export default function AulaCoesaoCoerencia({
           numero={8}
           titulo="Arquitetura da Coerência"
           descricao="A harmonia lógica: entenda o Princípio da Não-Contradição e a Consistência Pragmática."
-          variant="blue"
+          variant={mv[8]}
         />
 
         <div className="space-y-[50px]">
@@ -2825,7 +2825,7 @@ export default function AulaCoesaoCoerencia({
               index="INTRO"
               title="Arquitetura da Coerência: A Viga Mestra"
               description="Vá além da gramática e entenda como o Princípio da Não-Contradição sustenta a engenharia de sentido dos textos da Petrobras."
-              variant="blue"
+              variant={mv[8]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
@@ -2924,7 +2924,7 @@ export default function AulaCoesaoCoerencia({
               ]}
               correctAnswer={1}
               explanation="Correto! Enquanto a coesão cuida dos elos gramaticais, a coerência garante que a unidade de sentido seja mantida."
-              variant="blue"
+              variant={mv[8]}
             />
           </section>
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2932,7 +2932,7 @@ export default function AulaCoesaoCoerencia({
               index={1}
               title="A Viga Mestra do Sentido"
               description="A Coerência Pragmática e Semântica: a diferença brutal entre um texto perfeitamente amarrado (coeso) e um texto que de fato faz sentido (coerente)."
-              variant="blue"
+              variant={mv[8]}
             />
             <ContentAccordion
               mode="stacked"
@@ -2994,7 +2994,7 @@ export default function AulaCoesaoCoerencia({
 
           <TextAnalysisLab
             index={2}
-            variant="blue"
+            variant={mv[8]}
             titulo="Laboratório de Sanidade Discursiva"
             subtitulo="Valide se a premissa suporta logicamente a conclusão imposta."
             legenda={[
@@ -3025,7 +3025,7 @@ export default function AulaCoesaoCoerencia({
               index={3}
               title="Consolidação: As Leis da Coerência"
               description="Acesse o resumo visual sobre não-contradição e ancoragem na realidade."
-              variant="blue"
+              variant={mv[8]}
             />
 
             <LessonTabs
@@ -3104,7 +3104,7 @@ export default function AulaCoesaoCoerencia({
                   ),
                 },
               ]}
-              variant="blue"
+              variant={mv[8]}
             />
           </section>
 
@@ -3112,7 +3112,7 @@ export default function AulaCoesaoCoerencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -3134,7 +3134,7 @@ export default function AulaCoesaoCoerencia({
             titulo="QUIZ: Arquitetura da Coerência"
             icone="🎯"
             numero={4}
-            variant="blue"
+            variant={mv[8]}
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
           />
         </div>
@@ -3146,7 +3146,7 @@ export default function AulaCoesaoCoerencia({
           numero={9}
           titulo="Progressão e Relevância"
           descricao="Evite o texto circular: aprenda a evoluir ideias sem perder a conexão temática."
-          variant="blue"
+          variant={mv[9]}
         />
 
         <div className="space-y-[50px]">
@@ -3156,7 +3156,7 @@ export default function AulaCoesaoCoerencia({
               index="INTRO"
               title="Progressão Temática: O Motor do Texto"
               description="Aprenda a evitar o 'texto circular' (Tautologia) e domine o equilíbrio entre a informação dada (Tema) e a informação nova (Rema) segundo a norma culta."
-              variant="blue"
+              variant={mv[9]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
@@ -3255,7 +3255,7 @@ export default function AulaCoesaoCoerencia({
               ]}
               correctAnswer={1}
               explanation="Exato! O 'Rema' é a informação nova que é adicionada ao 'Tema' (informação velha), garantindo a progressão do sentido."
-              variant="blue"
+              variant={mv[9]}
             />
           </section>
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -3263,7 +3263,7 @@ export default function AulaCoesaoCoerencia({
               index={1}
               title="O Movimento do Texto"
               description="A dinâmica de informar: como o texto caminha do conhecido para o novo sem estagnar."
-              variant="blue"
+              variant={mv[9]}
             />
             <ContentAccordion
               mode="stacked"
@@ -3322,7 +3322,7 @@ export default function AulaCoesaoCoerencia({
 
           <TextAnalysisLab
             index={2}
-            variant="blue"
+            variant={mv[9]}
             titulo="Dossiê de Evolução"
             subtitulo="Acompanhe a progressão de ideias em um parágrafo técnico impecável."
             legenda={[
@@ -3359,7 +3359,7 @@ export default function AulaCoesaoCoerencia({
               index={3}
               title="Consolidação: A Esteira do Sentido"
               description="Acesse o resumo visual sobre Tema e Rema."
-              variant="blue"
+              variant={mv[9]}
             />
 
             <LessonTabs
@@ -3436,7 +3436,7 @@ export default function AulaCoesaoCoerencia({
                   ),
                 },
               ]}
-              variant="blue"
+              variant={mv[9]}
             />
           </section>
 
@@ -3444,7 +3444,7 @@ export default function AulaCoesaoCoerencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -3466,7 +3466,7 @@ export default function AulaCoesaoCoerencia({
             titulo="QUIZ: Progressão e Relevância"
             icone="🎯"
             numero={4}
-            variant="blue"
+            variant={mv[9]}
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
           />
         </div>
@@ -3478,7 +3478,7 @@ export default function AulaCoesaoCoerencia({
           numero={10}
           titulo="Avaliação de Fixação Avançada"
           descricao="Simulado Final: Teste seus conhecimentos em questões de alto nível da CESGRANRIO."
-          variant="blue"
+          variant={mv[10]}
         />
 
         <div className="space-y-[50px]">
@@ -3488,7 +3488,7 @@ export default function AulaCoesaoCoerencia({
               index="INTRO"
               title="Avaliação de Fixação Avançada: O Crivo da Aprovação"
               description="Bem-vindo ao Lab de Questões. Aqui, os preceitos gramaticais encontram a pressão da CESGRANRIO em um simulado final de alta periculosidade."
-              variant="blue"
+              variant={mv[10]}
             />
             <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
               <p>
@@ -3583,7 +3583,7 @@ export default function AulaCoesaoCoerencia({
               ]}
               correctAnswer={3}
               explanation="Infelizmente, todas essas são falhas recorrentes. Nesta etapa de avaliação, vamos treinar seu olhar para que você nunca mais caia nessas armadilhas."
-              variant="blue"
+              variant={mv[10]}
             />
           </section>
           <AlertBox tipo="warning" titulo="Síntese Técnica Final: O olhar do Examinador">
@@ -3597,7 +3597,7 @@ export default function AulaCoesaoCoerencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -3619,7 +3619,7 @@ export default function AulaCoesaoCoerencia({
             titulo="Simulado Final de Coesão"
             icone="🏆"
             numero={1}
-            variant="blue"
+            variant={mv[10]}
             onComplete={(score) => handleModuleComplete("modulo-10", score)}
           />
 

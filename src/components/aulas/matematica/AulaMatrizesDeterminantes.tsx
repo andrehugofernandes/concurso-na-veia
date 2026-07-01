@@ -1,4 +1,4 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 
@@ -28,7 +28,7 @@ import {
   QUIZ_M10_SIMULADO_CESGRANRIO,
 } from "./data/matrizes-determinantes-quizzes";
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaMatrizesDeterminantes({
   onComplete,
@@ -147,14 +147,14 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={1}
           titulo="Conceito e Notação de Matrizes"
           descricao="Entenda o que é uma matriz, como ler sua dimensão e interpretar seus elementos — a base de toda álgebra linear aplicada à engenharia."
-           variant="blue"/>
+           variant={mv[1]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="O que é uma Matriz?"
               description="Tabelas de números com identidade própria — a linguagem da engenharia industrial."
-              variant="blue"
+              variant={mv[1]}
               className="mb-6"
             />
             <ContentAccordion
@@ -496,7 +496,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="QUIZ: Conceito e Notação"
               icone="📊"
               numero={3}
-              variant="blue"
+              variant={mv[1]}
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
@@ -510,14 +510,14 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={2}
           titulo="Tipos Especiais de Matrizes"
           descricao="Identidade, nula, diagonal, simétrica, triangular — cada tipo tem propriedades únicas exploradas pela banca examinadora."
-           variant="blue"/>
+           variant={mv[2]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Classificação das Matrizes Especiais"
               description="Reconheça cada tipo rapidamente — economia de tempo na prova."
-              variant="blue"
+              variant={mv[2]}
               className="mb-6"
             />
             <ContentAccordion
@@ -759,7 +759,7 @@ export default function AulaMatrizesDeterminantes({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -781,7 +781,7 @@ export default function AulaMatrizesDeterminantes({
 
         <ModuleConsolidation
               index={2}
-              variant="blue"
+              variant={mv[2]}
               video={{
                 videoId: "ZjxCqCrHT48",
                 title: "Matrizes Especiais: Diagonal, Nula, Identidade",
@@ -841,7 +841,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="QUIZ: Tipos de Matrizes"
               icone="🔢"
               numero={3}
-              variant="blue"
+              variant={mv[2]}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -855,14 +855,14 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={3}
           titulo="Adição e Subtração de Matrizes"
           descricao="Opere entre matrizes de mesma ordem e aplique multiplicação por escalar — operações fundamentais em análise de dados industriais."
-           variant="blue"/>
+           variant={mv[3]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Regras de Adição e Multiplicação Escalar"
               description="Elemento a elemento — simples, mas com pegadinhas de dimensão."
-              variant="blue"
+              variant={mv[3]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1092,7 +1092,7 @@ export default function AulaMatrizesDeterminantes({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1114,7 +1114,7 @@ export default function AulaMatrizesDeterminantes({
 
         <ModuleConsolidation
               index={2}
-              variant="blue"
+              variant={mv[3]}
               video={{
                 videoId: "3v8FqU29m_c",
                 title: "Operações com Matrizes: Adição, Subtração e Escalar",
@@ -1174,7 +1174,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="QUIZ: Adição e Subtração"
               icone="➕"
               numero={3}
-              variant="blue"
+              variant={mv[3]}
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -1188,7 +1188,7 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={4}
           titulo="Multiplicação de Matrizes"
           descricao="A operação mais poderosa — e mais cobrada. Entenda a condição de existência, o processo linha-coluna e por que A·B ≠ B·A."
-           variant="blue"/>
+           variant={mv[4]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1408,7 +1408,7 @@ export default function AulaMatrizesDeterminantes({
 
         <ModuleConsolidation
               index={2}
-              variant="blue"
+              variant={mv[4]}
               video={{
                 videoId: "v2D1zVqAowc",
                 title: "Multiplicação de Matrizes: O Guia Definitivo",
@@ -1470,7 +1470,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="QUIZ: Multiplicação"
               icone="✖️"
               numero={3}
-              variant="blue"
+              variant={mv[4]}
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -1484,14 +1484,14 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={5}
           titulo="Matriz Transposta e Inversa"
           descricao="Duas operações essenciais: a transposta reorganiza linhas em colunas; a inversa 'desfaz' a multiplicação — base para resolver sistemas matriciais."
-           variant="blue"/>
+           variant={mv[5]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Transposta: Linhas Viram Colunas"
               description="Operação simples com consequências profundas — e muito cobrada."
-              variant="blue"
+              variant={mv[5]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1683,7 +1683,7 @@ export default function AulaMatrizesDeterminantes({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1705,7 +1705,7 @@ export default function AulaMatrizesDeterminantes({
 
         <ModuleConsolidation
               index={2}
-              variant="blue"
+              variant={mv[5]}
               video={{
                 videoId: "mD7_Q_LhE6Y",
                 title: "Matriz Inversa e Transposta",
@@ -1767,7 +1767,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="QUIZ: Transposta e Inversa"
               icone="🔄"
               numero={3}
-              variant="blue"
+              variant={mv[5]}
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -1781,7 +1781,7 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={6}
           titulo="Determinante de Ordem 2"
           descricao="O número que revela tudo sobre uma matriz 2×2 — invertibilidade, sistemas lineares e a regra de Cramer. Domine em 5 minutos."
-           variant="blue"/>
+           variant={mv[6]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1976,7 +1976,7 @@ export default function AulaMatrizesDeterminantes({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1998,7 +1998,7 @@ export default function AulaMatrizesDeterminantes({
 
         <ModuleConsolidation
               index={2}
-              variant="blue"
+              variant={mv[6]}
               video={{
                 videoId: "6hL5Mp9Rq2W",
                 title: "Determinante 2×2: Fórmula Simples de Cramer",
@@ -2058,7 +2058,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="QUIZ: Determinante 2×2"
               icone="🔢"
               numero={3}
-              variant="blue"
+              variant={mv[6]}
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -2072,14 +2072,14 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={7}
           titulo="Determinante 3×3 — Regra de Sarrus"
           descricao="O método visual das 6 diagonais — 3 positivas e 3 negativas. Aprenda o passo a passo e resolva qualquer determinante 3×3 em menos de 2 minutos."
-           variant="blue"/>
+           variant={mv[7]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="A Regra de Sarrus: Passo a Passo"
               description="6 diagonais, 3 com sinal + e 3 com sinal −."
-              variant="blue"
+              variant={mv[7]}
               className="mb-6"
             />
             <ContentAccordion
@@ -2381,14 +2381,14 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={8}
           titulo="Cofatores e Desenvolvimento de Laplace"
           descricao="O método mais poderoso para determinantes de qualquer ordem: expanda por linhas ou colunas com mais zeros e reduza o trabalho ao mínimo."
-           variant="blue"/>
+           variant={mv[8]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Cofatores, Menores e Expansão de Laplace"
               description="A generalização que funciona para qualquer ordem n×n."
-              variant="blue"
+              variant={mv[8]}
               className="mb-6"
             />
             <ContentAccordion
@@ -2569,7 +2569,7 @@ export default function AulaMatrizesDeterminantes({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2591,7 +2591,7 @@ export default function AulaMatrizesDeterminantes({
 
         <ModuleConsolidation
               index={2}
-              variant="blue"
+              variant={mv[8]}
               video={{
                 videoId: "5cJ7Nx2Lm8R",
                 title: "Cofatores, Menor e Adjunta: Inversa Passo a Passo",
@@ -2652,7 +2652,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="QUIZ: Cofatores"
               icone="🔬"
               numero={3}
-              variant="blue"
+              variant={mv[8]}
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -2666,14 +2666,14 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={9}
           titulo="Aplicações na Petrobras e Indústria"
           descricao="Sistemas de equações, transformações de coordenadas, redes de dutos e criptografia — matrizes e determinantes resolvendo problemas reais da indústria petrolífera."
-           variant="blue"/>
+           variant={mv[9]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Sistemas Lineares e Transformações Industriais"
               description="Álgebra matricial aplicada ao dia a dia da engenharia de petróleo."
-              variant="blue"
+              variant={mv[9]}
               className="mb-6"
             />
             <ContentAccordion
@@ -2855,7 +2855,7 @@ export default function AulaMatrizesDeterminantes({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2877,7 +2877,7 @@ export default function AulaMatrizesDeterminantes({
 
         <ModuleConsolidation
               index={2}
-              variant="blue"
+              variant={mv[9]}
               video={{
                 videoId: "9lP8Qs1Xw5Y",
                 title:
@@ -2939,7 +2939,7 @@ export default function AulaMatrizesDeterminantes({
               titulo="QUIZ: Aplicações Petrobras"
               icone="🏭"
               numero={3}
-              variant="blue"
+              variant={mv[9]}
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -2953,14 +2953,14 @@ export default function AulaMatrizesDeterminantes({
         <ModuleBanner numero={10}
           titulo="Simulado CESGRANRIO — Nível Mestre"
           descricao="Questões no padrão exato da banca examinadora da Petrobras. Teste tudo que aprendeu sobre matrizes e determinantes em condições reais de prova."
-           variant="blue"/>
+           variant={mv[10]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Revisão Estratégica — Os 10 Pontos-Chave"
               description="O que a CESGRANRIO mais cobra em Matrizes e Determinantes."
-              variant="blue"
+              variant={mv[10]}
               className="mb-6"
             />
             <ContentAccordion
@@ -3358,7 +3358,7 @@ export default function AulaMatrizesDeterminantes({
 
         <ModuleConsolidation
               index={2}
-              variant="blue"
+              variant={mv[10]}
               video={{
                 videoId: "w2ZyJqA4OFs",
                 title: "Simulado CESGRANRIO — Resolução Completa",

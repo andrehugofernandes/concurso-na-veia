@@ -29,7 +29,30 @@ export function useUserProfile() {
 
     const fetchProfile = useCallback(async () => {
         try {
-            setLoading(true);
+            // Dev Mock Auth Bypass
+            if (process.env.NODE_ENV === 'development') {
+                const mockAuth = localStorage.getItem('DEV_MOCK_AUTH');
+                if (mockAuth) {
+                    try {
+                        const parsed = JSON.parse(mockAuth);
+                        setProfile({
+                            id: 'dev-mock-id',
+                            email: 'dev@petrobras.test',
+                            username: 'dev.tester',
+                            full_name: 'Tester (Dev Mode)',
+                            role: 'USER',
+                            job_title: parsed.cargo || 'Técnico de Enfermagem do Trabalho',
+                            cargo: parsed.cargo || 'Técnico de Enfermagem do Trabalho',
+                            nivel: parsed.nivel || 'Técnico',
+                            plan: parsed.plan || 'premium', // Use selected plan
+                            xp: 9999
+                        });
+                        setLoading(false);
+                        return;
+                    } catch(e) {}
+                }
+            }
+
             const { data: { user }, error: authError } = await supabase.auth.getUser();
 
             if (authError || !user) {

@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_MERCADO_FINANCEIRO, QUIZ_M2_MERCADO_FINANCEIRO, QUIZ_M3_MERCADO_FINANCEIRO } from '@/data/quizzes/especificas/mercado-financeiro';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -34,33 +32,24 @@ export default function AulaMercadoFinanceiro({ onComplete }: AulaProps) {
           <p>O foco inicial deste módulo é introduzir os conceitos básicos de mercado financeiro.</p>
         </div>
       ),
-      quiz: QUIZ_M1_MERCADO_FINANCEIRO
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_MERCADO_FINANCEIRO
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_MERCADO_FINANCEIRO
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Mercado Financeiro"
+    <AulaEspecificaTemplate
+      title="Mercado Financeiro"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

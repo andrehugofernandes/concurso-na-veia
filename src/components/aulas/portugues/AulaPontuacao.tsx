@@ -1,6 +1,6 @@
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 
 import { useState, useCallback, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
@@ -77,7 +77,7 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Final" },
 ] as const;
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaPontuacao({
   titulo,
@@ -198,13 +198,13 @@ export default function AulaPontuacao({
             numero={1}
             titulo="Visão Geral e Funções"
             descricao="Pontuar não é apenas pausar para respirar; é garantir a clareza e a coesão do texto técnico."
-          variant="blue"
+          variant={mv[1]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="As Finalidades da Pontuação"
-              variant="blue"
+              variant={mv[1]}
             />
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -285,7 +285,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Os Sinais e Suas Funções"
-          variant="blue"
+          variant={mv[1]}
         />
             <ContentAccordion
               slides={[
@@ -396,7 +396,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Pontuação Normativa × Pontuação Expressiva"
-          variant="blue"
+          variant={mv[1]}
         />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -450,7 +450,7 @@ export default function AulaPontuacao({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -473,7 +473,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          variant="blue"
+          variant={mv[1]}
         />
         </div>
       </TabsContent>
@@ -485,13 +485,13 @@ export default function AulaPontuacao({
             numero={2}
             titulo="Vírgula: Restrições de Uso"
             descricao="O que NUNCA fazer se você quiser ser aprovado. Erros que zeram questões de gramática."
-          variant="blue"
+          variant={mv[2]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="As Proibições Absolutas da Vírgula"
-              variant="blue"
+              variant={mv[2]}
             />
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -537,7 +537,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Scanner de Erros Fatais"
-          variant="blue"
+          variant={mv[2]}
         />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <AlertBox tipo="danger" titulo="Não Separe o Sujeito">
@@ -571,7 +571,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Catálogo Completo das Proibições"
-          variant="blue"
+          variant={mv[2]}
         />
             <ContentAccordion
               slides={[
@@ -704,7 +704,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={3}
               title="Teste Rápido: Certo ou Errado?"
-          variant="blue"
+          variant={mv[2]}
         />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -768,7 +768,7 @@ export default function AulaPontuacao({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -791,7 +791,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={5}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          variant="blue"
+          variant={mv[2]}
         />
         </div>
       </TabsContent>
@@ -803,13 +803,13 @@ export default function AulaPontuacao({
             numero={3}
             titulo="Vírgula: Termos Essenciais"
             descricao="Enumerações, repetições e a organização básica da frase."
-          variant="blue"
+          variant={mv[3]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="O Efeito Organizacional da Vírgula"
-              variant="blue"
+              variant={mv[3]}
             />
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -853,7 +853,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Listas e Repetições"
-          variant="blue"
+          variant={mv[3]}
         />
             <ContentAccordion
               slides={[
@@ -901,7 +901,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Regras SVO e Enumeração"
-          variant="blue"
+          variant={mv[3]}
         />
             <ContentAccordion
               slides={[
@@ -1000,7 +1000,7 @@ export default function AulaPontuacao({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1023,7 +1023,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={5}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          variant="blue"
+          variant={mv[3]}
         />
         </div>
       </TabsContent>
@@ -1035,13 +1035,13 @@ export default function AulaPontuacao({
             numero={4}
             titulo="Vírgula: Aposto e Vocativo"
             descricao="Isole quem você chama e explique o que você cita."
-          variant="blue"
+          variant={mv[4]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="Isolamento de Termos Acessórios"
-              variant="blue"
+              variant={mv[4]}
             />
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -1066,7 +1066,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Chamamento e Explicação"
-          variant="blue"
+          variant={mv[4]}
         />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -1128,7 +1128,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Tipos de Aposto e Posição do Vocativo"
-          variant="blue"
+          variant={mv[4]}
         />
             <ContentAccordion
               slides={[
@@ -1236,7 +1236,7 @@ export default function AulaPontuacao({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1259,7 +1259,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={6}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          variant="blue"
+          variant={mv[4]}
         />
         </div>
       </TabsContent>
@@ -1271,13 +1271,13 @@ export default function AulaPontuacao({
             numero={5}
             titulo="Vírgula: Adjuntos Deslocados"
             descricao="Quando o advérbio sai do seu lugar original e exige o sinal."
-          variant="blue"
+          variant={mv[5]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="O Deslocamento do Adjunto"
-              variant="blue"
+              variant={mv[5]}
             />
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -1302,7 +1302,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="A Regra do Comprimento"
-              variant="blue"
+              variant={mv[5]}
             />
             <AlertBox tipo="warning" titulo="Destaque Estratégico (Cesgranrio)">
               A banca avalia se o adjunto é **Longo** (obrigatória) ou **Curto**
@@ -1334,7 +1334,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="O Que É um Adjunto Adverbial Deslocado?"
-              variant="blue"
+              variant={mv[5]}
             />
             <ContentAccordion
               slides={[
@@ -1450,7 +1450,7 @@ export default function AulaPontuacao({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1473,7 +1473,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={7}
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          variant="blue"
+          variant={mv[5]}
         />
         </div>
       </TabsContent>
@@ -1485,13 +1485,13 @@ export default function AulaPontuacao({
             numero={6}
             titulo="Vírgula: Orações Coordenadas"
             descricao="O fetiche da Cesgranrio: vírgulas antes de MAS, PORÉM e o polêmico E."
-          variant="blue"
+          variant={mv[6]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="Vírgula entre Orações Coordenadas"
-              variant="blue"
+              variant={mv[6]}
             />
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -1516,7 +1516,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="A Conjunção 'E'"
-              variant="blue"
+              variant={mv[6]}
             />
             <p className="text-muted-foreground text-lg">
               Geralmente o 'E' não pede vírgula, mas em 3 situações ele é seu
@@ -1547,7 +1547,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Tipos de Orações Coordenadas"
-              variant="blue"
+              variant={mv[6]}
             />
             <ContentAccordion
               slides={[
@@ -1700,7 +1700,7 @@ export default function AulaPontuacao({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1723,7 +1723,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={8}
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
-          variant="blue"
+          variant={mv[6]}
         />
         </div>
       </TabsContent>
@@ -1735,13 +1735,13 @@ export default function AulaPontuacao({
             numero={7}
             titulo="Vírgula: Orações Subordinadas"
             descricao="A diferença vital entre explicar para todos ou restringir para alguns."
-          variant="blue"
+          variant={mv[7]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="A Pontuação nas Orações Subordinadas"
-              variant="blue"
+              variant={mv[7]}
             />
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -1766,7 +1766,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Explicativa vs Restritiva"
-              variant="blue"
+              variant={mv[7]}
             />
             <Comparison
               title="Impacto Semântico"
@@ -1791,7 +1791,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Tipos de Orações Subordinadas e a Vírgula"
-              variant="blue"
+              variant={mv[7]}
             />
             <ContentAccordion
               slides={[
@@ -1908,7 +1908,7 @@ export default function AulaPontuacao({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1931,7 +1931,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={9}
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
-          variant="blue"
+          variant={mv[7]}
         />
         </div>
       </TabsContent>
@@ -1943,13 +1943,13 @@ export default function AulaPontuacao({
             numero={8}
             titulo="Ponto e Ponto e Vírgula"
             descricao="Organização de listas e períodos extensos que já possuem vírgulas internas."
-          variant="blue"
+          variant={mv[8]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="As Pausas Maiores"
-              variant="blue"
+              variant={mv[8]}
             />
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -1974,7 +1974,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="O ponto-e-vírgula"
-              variant="blue"
+              variant={mv[8]}
             />
             <ContentAccordion
               slides={[
@@ -2002,7 +2002,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Ponto Final, Ponto e Vírgula e Dois-Pontos"
-              variant="blue"
+              variant={mv[8]}
             />
             <ContentAccordion
               slides={[
@@ -2162,7 +2162,7 @@ export default function AulaPontuacao({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2185,7 +2185,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={10}
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
-          variant="blue"
+          variant={mv[8]}
         />
         </div>
       </TabsContent>
@@ -2197,13 +2197,13 @@ export default function AulaPontuacao({
             numero={9}
             titulo="Sinais Complementares"
             descricao="Dois-pontos, Travessões e Parênteses: a estética da explicação."
-          variant="blue"
+          variant={mv[9]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index="INTRO"
               title="Marcadores Especiais"
-              variant="blue"
+              variant={mv[9]}
             />
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -2228,7 +2228,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={1}
               title="Além da Vírgula"
-              variant="blue"
+              variant={mv[9]}
             />
             <div className="grid gap-4 md:grid-cols-2">
               <FlipCard
@@ -2246,7 +2246,7 @@ export default function AulaPontuacao({
             <ModuleSectionHeader
               index={2}
               title="Todos os Sinais Complementares"
-              variant="blue"
+              variant={mv[9]}
             />
             <CardCarousel
               cards={[
@@ -2398,7 +2398,7 @@ export default function AulaPontuacao({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2421,7 +2421,7 @@ export default function AulaPontuacao({
             icone="🎯"
             numero={11}
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
-          variant="blue"
+          variant={mv[9]}
         />
         </div>
       </TabsContent>
@@ -2433,13 +2433,13 @@ export default function AulaPontuacao({
             numero={10}
             titulo="Simulado Final"
             descricao="Teste seu domínio perante uma bateria definitiva focada em Pontuação Global Cesgranrio."
-          variant="blue"
+          variant={mv[10]}
         />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={11}
               title="Mapa Mental: Revisão Completa"
-          variant="blue"
+          variant={mv[10]}
         />
             <ContentAccordion
               slides={[
@@ -2656,7 +2656,7 @@ export default function AulaPontuacao({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2679,7 +2679,7 @@ export default function AulaPontuacao({
               icone="🏆"
               numero={12}
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
-          variant="blue"
+          variant={mv[10]}
         />
             </>
           )}

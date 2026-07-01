@@ -55,14 +55,11 @@ export default function HomeHero() {
             transition={{ delay: 0.1 }}
             className="max-w-4xl mx-auto text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.1] mb-4 md:mb-8"
           >
-            <span 
-              className="block bg-clip-text text-transparent pb-2"
-              style={{ backgroundImage: "var(--primary-gradient)" }}
-            >
-              Sua preparação para Concursos Públicos.
+            <span className="block text-white pb-2">
+              Sua preparação para <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--primary-gradient)" }}>Concursos Públicos.</span>
             </span>
             <span className="block text-white">
-              Potencializada por IA.
+              Potencializada por <span className="text-primary" style={{ color: "var(--primary-hex)" }}>Inteligência Artificial.</span>
             </span>
           </motion.h1>
 
@@ -73,7 +70,7 @@ export default function HomeHero() {
             transition={{ delay: 0.2 }}
             className="max-w-2xl mx-auto text-base md:text-xl text-white/70 leading-relaxed font-medium mb-5 md:mb-12"
           >
-            Simulados inteligentes baseados no padrão CESGRANRIO. Estude os temas com maior recorrência nas provas e evolua seu desempenho com análise de Inteligência Artificial.
+            Simulados inteligentes focados nas principais bancas do país (CESGRANRIO, Cebraspe, FGV, IBFC). Estude os temas com maior recorrência nas provas da Petrobras, Caixa, Correios, INSS, IBGE e evolua seu desempenho com análise de Inteligência Artificial.
           </motion.p>
 
           {/* Botões CTA */}

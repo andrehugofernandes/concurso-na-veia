@@ -95,8 +95,8 @@ REGRAS TÉCNICAS
 2. PROIBIDO: Não inclua NUNCA letras (A, B, C, D, E), números ou prefixos no início das alternativas.
 3. GABARITO: O índice "correta" (0-4) DEVE corresponder EXATAMENTE à posição certa no array "alternativas". DISTRIBUA aleatoriamente entre os índices.
 4. EXPLICAÇÃO: Detalhada, didática, com fundamentação teórica. Para Matemática, cálculo passo a passo completo.
-5. FORMATAÇÃO HTML: Use <b>negrito</b>, <u>sublinhado</u>, <i>itálico</i>. NÃO use Markdown. Quando referenciar uma palavra destacada, aplique <u> ao redor dela.
-6. COERÊNCIA LINGUÍSTICA: Se pede "a PALAVRA destacada", destaque UMA ÚNICA PALAVRA. Para LOCUÇÃO (2+ palavras), use "a EXPRESSÃO destacada".
+5. FORMATAÇÃO HTML: Use <b>negrito</b>, <u>sublinhado</u>, <i>itálico</i>. NÃO use Markdown. DESTAQUES DO ENUNCIADO obrigatórios com a tag <u> (ex: <u>palavra</u>). Aplique a tag <u> APENAS UMA VEZ no texto-base. Se o comando repetir o trecho, não destaque novamente. NÃO use <b> para a palavra destacada. PROIBIDO usar <u> nas alternativas.
+6. COERÊNCIA LINGUÍSTICA: Se pede "a PALAVRA destacada", destaque UMA ÚNICA PALAVRA com <u>. Para LOCUÇÃO (2+ palavras), use "a EXPRESSÃO destacada".
 ${
   questoesAnteriores && questoesAnteriores.length > 0
     ? `
@@ -240,8 +240,8 @@ ${materia.toLowerCase().includes("português") || materia.toLowerCase().includes
     2. PROIBIDO: NUNCA inclua letras (A, B, C, D, E), números ou prefixos no início das alternativas.
     3. UNICIDADE: Cada questão do lote deve ter contextualização e comando COMPLETAMENTE diferentes.
     4. GABARITO: O índice "correta" (0-4) DEVE corresponder EXATAMENTE à posição certa no array "alternativas". Verifique antes de finalizar.
-    5. FORMATAÇÃO HTML: Use <b>negrito</b>, <u>sublinhado</u>, <i>itálico</i>. NÃO use Markdown. Quando referenciar uma palavra destacada, aplique <u> ao redor dela no texto.
-    6. COERÊNCIA LINGUÍSTICA: Se pede "a PALAVRA destacada", destaque UMA ÚNICA PALAVRA. Para LOCUÇÃO (2+ palavras), use "a EXPRESSÃO destacada".
+    5. FORMATAÇÃO HTML: Use <b>, <u>, <i>. NÃO use Markdown. DESTAQUES DO ENUNCIADO obrigatórios com a tag <u> (ex: <u>palavra</u>). Aplique a tag <u> APENAS UMA VEZ no texto-base. Se o comando repetir o trecho, não destaque novamente. NÃO use <b> para a palavra destacada. PROIBIDO usar <u> nas alternativas.
+    6. COERÊNCIA LINGUÍSTICA: Se pede "a PALAVRA destacada", destaque UMA ÚNICA PALAVRA com <u>. Para LOCUÇÃO, use "a EXPRESSÃO destacada".
 
     Retorne APENAS um JSON ARRAY:
     [

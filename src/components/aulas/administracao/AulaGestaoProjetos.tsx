@@ -210,7 +210,7 @@ export default function AulaGestaoProjetos({
               index="INTRO" 
               title="A Essência do Projeto" 
               description="Definição PMBOK, características e a Tríplice Restrição." 
-              variant="blue" 
+              variant={mv[1]} 
             />
             
             <ContentAccordion slides={[
@@ -295,7 +295,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation 
             index={2} 
-            variant="blue" 
+            variant={mv[1]} 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "Fundamentação de Projetos", 
@@ -331,7 +331,7 @@ export default function AulaGestaoProjetos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -353,7 +353,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM1} 
               titulo="QUIZ: Conceitos de Projetos" 
               numero={3} 
-              variant="blue" 
+              variant={mv[1]} 
               icone="🧩" 
               onComplete={(score) => handleModuleComplete("modulo-1", score)} 
             />
@@ -376,7 +376,7 @@ export default function AulaGestaoProjetos({
               index="INTRO" 
               title="A Visão 360 do Projeto" 
               description="Do Escopo às Partes Interessadas." 
-              variant="blue" 
+              variant={mv[2]} 
             />
             
             <ContentAccordion slides={[
@@ -445,7 +445,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation 
             index={2} 
-            variant="blue" 
+            variant={mv[2]} 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "Navegando pelas 10 Áreas", 
@@ -479,7 +479,7 @@ export default function AulaGestaoProjetos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -501,7 +501,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM2} 
               titulo="QUIZ: Áreas do PMBOK" 
               numero={3} 
-              variant="blue" 
+              variant={mv[2]} 
               icone="🎯" 
               onComplete={(score) => handleModuleComplete("modulo-2", score)} 
             />
@@ -524,7 +524,7 @@ export default function AulaGestaoProjetos({
               index="INTRO" 
               title="O Fluxo da Vida de um Projeto" 
               description="Esqueça as fases, foque nos grupos de processos." 
-              variant="blue" 
+              variant={mv[3]} 
             />
             
             <ContentAccordion slides={[
@@ -599,7 +599,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation 
             index={2} 
-            variant="blue" 
+            variant={mv[3]} 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "A Jornada do Projeto", 
@@ -631,7 +631,7 @@ export default function AulaGestaoProjetos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -653,7 +653,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM3} 
               titulo="QUIZ: Grupos de Processos" 
               numero={3} 
-              variant="blue" 
+              variant={mv[3]} 
               icone="⚙️" 
               onComplete={(score) => handleModuleComplete("modulo-3", score)} 
             />
@@ -676,7 +676,7 @@ export default function AulaGestaoProjetos({
               index="INTRO" 
               title="Planejamento de Entrega" 
               description="A estrutura da EAP e o domínio do cronograma." 
-              variant="blue" 
+              variant={mv[4]} 
             />
             
             <ContentAccordion slides={[
@@ -748,7 +748,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation 
             index={2} 
-            variant="blue" 
+            variant={mv[4]} 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "Técnicas de Escopo e Tempo", 
@@ -782,7 +782,7 @@ export default function AulaGestaoProjetos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -804,7 +804,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM4} 
               titulo="QUIZ: Escopo e Tempo" 
               numero={3} 
-              variant="blue" 
+              variant={mv[4]} 
               icone="📅" 
               onComplete={(score) => handleModuleComplete("modulo-4", score)} 
             />
@@ -827,7 +827,7 @@ export default function AulaGestaoProjetos({
               index="INTRO" 
               title="O Valor do Dinheiro e da Entrega" 
               description="EVA, CPI, SPI e métricas de qualidade." 
-              variant="blue" 
+              variant={mv[5]} 
             />
             
             <ContentAccordion slides={[
@@ -904,7 +904,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation 
             index={2} 
-            variant="blue" 
+            variant={mv[5]} 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "Dominando o EVA", 
@@ -936,7 +936,7 @@ export default function AulaGestaoProjetos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -958,7 +958,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM5} 
               titulo="QUIZ: Custos e Qualidade" 
               numero={3} 
-              variant="blue" 
+              variant={mv[5]} 
               icone="💰" 
               onComplete={(score) => handleModuleComplete("modulo-5", score)} 
             />
@@ -981,7 +981,7 @@ export default function AulaGestaoProjetos({
               index="INTRO" 
               title="O Gerenciamento da Incerteza" 
               description="Identificação, análise e resposta aos riscos." 
-              variant="blue" 
+              variant={mv[6]} 
             />
             
             <ContentAccordion slides={[
@@ -1049,7 +1049,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation 
             index={2} 
-            variant="blue" 
+            variant={mv[6]} 
             video={{ 
               videoId: "n7U7R8S_XuU", 
               title: "Gestão de Riscos na Prática", 
@@ -1083,7 +1083,7 @@ export default function AulaGestaoProjetos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1105,7 +1105,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM6} 
               titulo="QUIZ: Gestão de Riscos" 
               numero={3} 
-              variant="blue" 
+              variant={mv[6]} 
               icone="⚠️" 
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1128,7 +1128,7 @@ export default function AulaGestaoProjetos({
               index="INTRO"
               title="A Revolução Ágil"
               description="Adaptabilidade, iteração e entrega contínua de valor."
-              variant="blue"
+              variant={mv[7]}
             />
 
             <ContentAccordion slides={[
@@ -1198,7 +1198,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[7]}
             video={{
               videoId: "jZkUiVDgNWA",
               title: "Scrum Masterclass",
@@ -1233,7 +1233,7 @@ export default function AulaGestaoProjetos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1255,7 +1255,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM7}
               titulo="QUIZ: Metodologias Ágeis"
               numero={3}
-              variant="blue"
+              variant={mv[7]}
               icone="⚡"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -1278,7 +1278,7 @@ export default function AulaGestaoProjetos({
               index="INTRO"
               title="Estrutura de Governança"
               description="PMO, Portfolio e Alinhamento com a Estratégia."
-              variant="blue"
+              variant={mv[8]}
             />
 
             <ContentAccordion slides={[
@@ -1352,7 +1352,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[8]}
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Governance & PMO na Prática",
@@ -1387,7 +1387,7 @@ export default function AulaGestaoProjetos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1409,7 +1409,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM8}
               titulo="QUIZ: PMO e Governança"
               numero={3}
-              variant="blue"
+              variant={mv[8]}
               icone="🏛️"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1432,7 +1432,7 @@ export default function AulaGestaoProjetos({
               index="INTRO"
               title="Realidade Petrobras"
               description="Megaprojetos, Regulação e Stakeholders."
-              variant="blue"
+              variant={mv[9]}
             />
 
             <ContentAccordion slides={[
@@ -1504,7 +1504,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "5_aXSc9KZVc",
               title: "Megaprojetos e Inovação",
@@ -1539,7 +1539,7 @@ export default function AulaGestaoProjetos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1561,7 +1561,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM9}
               titulo="QUIZ: Petrobras na Prática"
               numero={3}
-              variant="blue"
+              variant={mv[9]}
               icone="🛢️"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1584,7 +1584,7 @@ export default function AulaGestaoProjetos({
               index="INTRO"
               title="Revisão Completa & Simulado"
               description="Consolidação de todos os conceitos em um simulado integrado."
-              variant="blue"
+              variant={mv[10]}
             />
 
             <ContentAccordion slides={[
@@ -1643,7 +1643,7 @@ export default function AulaGestaoProjetos({
 
 <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[10]}
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Revisão Geral - Tudo que Você Precisa Saber",
@@ -1678,7 +1678,7 @@ export default function AulaGestaoProjetos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1700,7 +1700,7 @@ export default function AulaGestaoProjetos({
               questoes={quizM10}
               titulo="Simulado Geral: Gestão de Projetos"
               numero={3}
-              variant="blue"
+              variant={mv[10]}
               icone="🏆"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />

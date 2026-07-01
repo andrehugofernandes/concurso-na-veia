@@ -4,7 +4,7 @@ import { useAulaProgress } from "@/hooks/useAulaProgress";
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import { LuChevronDown } from "react-icons/lu";
-import { getModuleVariant, getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 import {
   AlertBox,
   QuizInterativo,
@@ -29,7 +29,7 @@ import {
   QUIZ_M10_SIMULADO_CESGRANRIO,
 } from "./data/analise-combinatoria-quizzes";
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaAnaliseCombinatoria({
   onComplete,
@@ -132,7 +132,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={1}
           titulo="Princípio Fundamental da Contagem"
           descricao="A base de toda análise combinatória: quando multiplicar as possibilidades para contar corretamente sem listar cada caso."
-           variant="blue"/>
+           variant={mv[1]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Princípio Fundamental da Contagem */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -140,7 +140,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Fundamentos: O Princípio Fundamental da Contagem"
               description="Como contar sequências de escolhas independentes sem listar todas as possibilidades"
-              variant="blue"
+              variant={mv[1]}
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -365,7 +365,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={2}
           titulo="Fatorial e Notação"
           descricao="Domine a operação fundamental que sustenta todas as fórmulas de análise combinatória: o fatorial."
-           variant="blue"/>
+           variant={mv[2]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Fatorial */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -373,7 +373,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Fundamentos: A Notação Fatorial"
               description="Entenda o operador ! que aparece em todas as fórmulas de permutações, arranjos e combinações"
-              variant="blue"
+              variant={mv[2]}
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -427,7 +427,7 @@ export default function AulaAnaliseCombinatoria({
               index={2}
               title="Definição de Fatorial"
               description="n! representa o produto de todos os inteiros positivos de 1 até n."
-              variant="blue"
+              variant={mv[2]}
               className="mb-6"
             />
             <ContentAccordion
@@ -541,7 +541,7 @@ export default function AulaAnaliseCombinatoria({
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -563,7 +563,7 @@ export default function AulaAnaliseCombinatoria({
 
         <ModuleConsolidation
             index={3}
-            variant="blue"
+            variant={mv[2]}
             video={{
               videoId: "iG0_F6gW2QY",
               title: "Fatorial: A Operação das Multipicações",
@@ -606,7 +606,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="QUIZ: Fatorial"
               icone="❗"
               numero={4}
-              variant="blue"
+              variant={mv[2]}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -620,7 +620,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={3}
           titulo="Permutação Simples"
           descricao="Quando a ordem importa e usamos todos os elementos: quantas formas distintas de organizar n objetos diferentes."
-           variant="blue"/>
+           variant={mv[3]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Permutação Simples */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -628,7 +628,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Fundamentos: Permutações Simples"
               description="Contando ordenações quando a ordem é essencial e todos os elementos são usados"
-              variant="blue"
+              variant={mv[3]}
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -673,7 +673,7 @@ export default function AulaAnaliseCombinatoria({
               index={2}
               title="P(n) = n! — A Fórmula da Permutação"
               description="O número de arranjos de n elementos distintos em todos os n lugares é n fatorial."
-              variant="blue"
+              variant={mv[3]}
               className="mb-6"
             />
             <ContentAccordion
@@ -792,7 +792,7 @@ export default function AulaAnaliseCombinatoria({
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -814,7 +814,7 @@ export default function AulaAnaliseCombinatoria({
 
         <ModuleConsolidation
             index={3}
-            variant="blue"
+            variant={mv[3]}
             video={{
               videoId: "h6V7j6b7M0I",
               title: "Permutação Simples: Mudando Tudo de Lugar",
@@ -855,7 +855,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="QUIZ: Permutação Simples"
               icone="🔀"
               numero={4}
-              variant="blue"
+              variant={mv[3]}
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -869,7 +869,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={4}
           titulo="Permutação com Repetição"
           descricao="Quando alguns elementos são idênticos, organizações que parecem distintas são na verdade iguais. Aprenda a corrigir a contagem."
-           variant="blue"/>
+           variant={mv[4]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Permutação com Repetição */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -877,7 +877,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Fundamentos: Permutações com Elementos Repetidos"
               description="Ajustando contagens quando alguns elementos são indistinguíveis entre si"
-              variant="blue"
+              variant={mv[4]}
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -914,7 +914,7 @@ export default function AulaAnaliseCombinatoria({
               index={2}
               title="P(n; n₁, n₂, ...) = n! / (n₁! × n₂! × ...)"
               description="Divida pelo fatorial de cada grupo de elementos repetidos para eliminar contagens duplicadas."
-              variant="blue"
+              variant={mv[4]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1087,7 +1087,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={5}
           titulo="Arranjo Simples"
           descricao="Selecionar e ordenar p elementos de um conjunto de n: a ordem importa e cada elemento é usado no máximo uma vez."
-           variant="blue"/>
+           variant={mv[5]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Arranjo Simples */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1095,7 +1095,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Fundamentos: Arranjos Simples"
               description="Selecionando e ordenando um subconjunto de elementos de um conjunto maior"
-              variant="blue"
+              variant={mv[5]}
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -1329,7 +1329,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={6}
           titulo="Combinação Simples"
           descricao="Selecionar p elementos de n sem se preocupar com a ordem: equipes, grupos, subconjuntos — o conceito mais cobrado em provas."
-           variant="blue"/>
+           variant={mv[6]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Combinação Simples */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1337,7 +1337,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Fundamentos: Combinações Simples"
               description="Selecionando subconjuntos quando a ordem de seleção não importa"
-              variant="blue"
+              variant={mv[6]}
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -1383,7 +1383,7 @@ export default function AulaAnaliseCombinatoria({
               index={2}
               title="C(n,p) = n! / [p! × (n−p)!]"
               description="A fórmula mais importante da análise combinatória: contagem de subgrupos sem levar em conta a ordem."
-              variant="blue"
+              variant={mv[6]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1565,7 +1565,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={7}
           titulo="Combinação com Repetição"
           descricao="Quando é permitido escolher o mesmo elemento mais de uma vez: o mais difícil dos problemas de combinatória."
-           variant="blue"/>
+           variant={mv[7]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION: Combinação com Repetição */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1573,7 +1573,7 @@ export default function AulaAnaliseCombinatoria({
               index={1}
               title="Fundamentos: Combinações com Repetição"
               description="Selecionando elementos quando múltiplas cópias de cada elemento podem ser escolhidas"
-              variant="blue"
+              variant={mv[7]}
             />
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
               <p>
@@ -1613,7 +1613,7 @@ export default function AulaAnaliseCombinatoria({
               index={2}
               title="CR(n,p) = C(n+p−1, p)"
               description="A fórmula que transforma um problema com repetição em uma combinação simples de ordem maior."
-              variant="blue"
+              variant={mv[7]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1748,7 +1748,7 @@ export default function AulaAnaliseCombinatoria({
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1770,7 +1770,7 @@ export default function AulaAnaliseCombinatoria({
 
         <ModuleConsolidation
             index={3}
-            variant="blue"
+            variant={mv[7]}
             video={{
               videoId: "jX_l5X7V9QY",
               title: "Combinação com Repetição: O Método Bolinha-Traço",
@@ -1810,7 +1810,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="QUIZ: Combinação com Repetição"
               icone="♻️"
               numero={4}
-              variant="blue"
+              variant={mv[7]}
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -1824,7 +1824,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={8}
           titulo="Propriedades e Identidades"
           descricao="As relações entre combinações que permitem resolver problemas complexos rapidamente: simetria, Pascal e o Teorema Binomial."
-           variant="blue"/>
+           variant={mv[8]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -2025,14 +2025,14 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={9}
           titulo="Aplicações Petrobras"
           descricao="Equipes, senhas, rotas, comissões: os cenários reais mais cobrados pela CESGRANRIO com contexto de operações petrolíferas."
-           variant="blue"/>
+           variant={mv[9]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Problemas Compostos e Estratégia de Resolução"
               description="Como decompor enunciados complexos em etapas simples de combinatória — a habilidade mais exigida na CESGRANRIO."
-              variant="blue"
+              variant={mv[9]}
               className="mb-6"
             />
             <ContentAccordion
@@ -2141,7 +2141,7 @@ export default function AulaAnaliseCombinatoria({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2163,7 +2163,7 @@ export default function AulaAnaliseCombinatoria({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "p8I2-9Z9R9U",
               title: "Aplicações Petrobras: Estratégias de Prova",
@@ -2203,7 +2203,7 @@ export default function AulaAnaliseCombinatoria({
               titulo="QUIZ: Aplicações Petrobras"
               icone="🏭"
               numero={3}
-              variant="blue"
+              variant={mv[9]}
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -2217,7 +2217,7 @@ export default function AulaAnaliseCombinatoria({
         <ModuleBanner numero={10}
           titulo="Simulado CESGRANRIO"
           descricao="Questões no estilo exato da banca: enunciados elaborados, múltiplas restrições, armadilhas clássicas. Teste sua preparação completa."
-           variant="blue"/>
+           variant={mv[10]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader

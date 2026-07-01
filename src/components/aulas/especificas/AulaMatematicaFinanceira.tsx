@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_MATEMATICA_FINANCEIRA, QUIZ_M2_MATEMATICA_FINANCEIRA, QUIZ_M3_MATEMATICA_FINANCEIRA } from '@/data/quizzes/especificas/matematica-financeira';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -27,40 +25,31 @@ export default function AulaMatematicaFinanceira({ onComplete }: AulaProps) {
 
   const modules = [
     {
-      title: 'Módulo 1: Introdução a Matematica Financeira',
+      title: 'Módulo 1: Introdução a Matemática financeira',
       content: (
         <div className="space-y-4 text-slate-300">
           <p>Esta aula faz parte dos Conhecimentos Específicos para os cargos técnicos e superiores da Petrobras.</p>
-          <p>O foco inicial deste módulo é introduzir os conceitos básicos de matematica financeira.</p>
+          <p>O foco inicial deste módulo é introduzir os conceitos básicos de matemática financeira.</p>
         </div>
       ),
-      quiz: QUIZ_M1_MATEMATICA_FINANCEIRA
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_MATEMATICA_FINANCEIRA
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_MATEMATICA_FINANCEIRA
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Matematica Financeira"
+    <AulaEspecificaTemplate
+      title="Matemática financeira"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

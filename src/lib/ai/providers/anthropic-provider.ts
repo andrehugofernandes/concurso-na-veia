@@ -64,7 +64,8 @@ REGRAS:
 1. 5 alternativas plausíveis, distintas, com distratores inteligentes.
 2. PROIBIDO letras (A-E) ou prefixos. 3. Índice "correta" correto. DISTRIBUA aleatoriamente.
 4. Explicação detalhada. Para Matemática, passo a passo.
-5. HTML: <b>, <u>, <i>. NÃO use Markdown. 6. COERÊNCIA linguística nos destaques.
+5. HTML: <b>, <u>, <i>. NÃO use Markdown. DESTAQUES DO ENUNCIADO obrigatórios com tag <u> (ex: <u>palavra</u>). Aplique a tag <u> APENAS UMA VEZ no texto-base. Se o comando repetir o trecho, não destaque novamente. NÃO use <b> para a palavra destacada. PROIBIDO usar <u> nas alternativas.
+6. COERÊNCIA linguística nos destaques.
 
 Retorne APENAS um JSON válido.`;
 
@@ -109,7 +110,8 @@ ${materia.toLowerCase().includes("português") || materia.toLowerCase().includes
     REGRAS:
     1. 5 alternativas plausíveis, distintas, com distratores inteligentes.
     2. PROIBIDO letras (A-E) ou prefixos. 3. UNICIDADE: contextualização e comando diferentes em cada questão.
-    4. GABARITO correto. 5. HTML: <b>, <u>, <i>. NÃO Markdown. 6. COERÊNCIA linguística.
+    4. GABARITO correto. 5. HTML: <b>, <u>, <i>. NÃO Markdown. DESTAQUES DO ENUNCIADO obrigatórios com a tag <u> (ex: <u>palavra</u>). Aplique a tag <u> APENAS UMA VEZ no texto-base. Se o comando repetir o trecho, não destaque novamente. NÃO use <b> para a palavra destacada. PROIBIDO usar <u> nas alternativas.
+    6. COERÊNCIA linguística.
     7. Retorne APENAS JSON ARRAY.
 
     Formato:

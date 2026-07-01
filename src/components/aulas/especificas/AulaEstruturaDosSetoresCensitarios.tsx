@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_ESTRUTURA_DOS_SETORES_CENSITARIOS, QUIZ_M2_ESTRUTURA_DOS_SETORES_CENSITARIOS, QUIZ_M3_ESTRUTURA_DOS_SETORES_CENSITARIOS } from '@/data/quizzes/especificas/estrutura-dos-setores-censitarios';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -27,40 +25,31 @@ export default function AulaEstruturaDosSetoresCensitarios({ onComplete }: AulaP
 
   const modules = [
     {
-      title: 'Módulo 1: Introdução a Estrutura Dos Setores Censitarios',
+      title: 'Módulo 1: Introdução a Estrutura dos setores censitários',
       content: (
         <div className="space-y-4 text-slate-300">
           <p>Esta aula faz parte dos Conhecimentos Específicos para os cargos técnicos e superiores da Petrobras.</p>
-          <p>O foco inicial deste módulo é introduzir os conceitos básicos de estrutura dos setores censitarios.</p>
+          <p>O foco inicial deste módulo é introduzir os conceitos básicos de estrutura dos setores censitários.</p>
         </div>
       ),
-      quiz: QUIZ_M1_ESTRUTURA_DOS_SETORES_CENSITARIOS
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_ESTRUTURA_DOS_SETORES_CENSITARIOS
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_ESTRUTURA_DOS_SETORES_CENSITARIOS
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Estrutura Dos Setores Censitarios"
+    <AulaEspecificaTemplate
+      title="Estrutura dos setores censitários"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

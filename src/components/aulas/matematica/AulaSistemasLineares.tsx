@@ -1,4 +1,4 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 
@@ -28,7 +28,7 @@ import {
   QUIZ_M10_SIMULADO_CESGRANRIO,
 } from "./data/sistemas-lineares-quizzes";
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaSistemasLineares({
   onComplete,
@@ -131,7 +131,7 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={1}
           titulo="Conceito e Classificação de Sistemas Lineares"
           descricao="Entenda o que é um sistema linear, como classificá-lo em SPD, SI ou SPI, e por que isso é essencial nos processos da Petrobras."
-           variant="blue"/>
+           variant={mv[1]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -232,7 +232,7 @@ export default function AulaSistemasLineares({
               index={2}
               title="Tabela de Classificação Rápida"
               description="O atalho visual para classificar qualquer sistema em segundos na prova."
-              variant="blue"
+              variant={mv[1]}
               className="mb-6"
             />
             <div className="overflow-x-auto">
@@ -367,14 +367,14 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={2}
           titulo="Método de Substituição"
           descricao="Isole, substitua e resolva: o método mais intuitivo para sistemas 2×2, ideal quando um coeficiente é 1 ou −1."
-           variant="blue"/>
+           variant={mv[2]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Passo a Passo do Método de Substituição"
               description="Três etapas simples que resolvem qualquer sistema linear 2×2."
-              variant="blue"
+              variant={mv[2]}
               className="mb-6"
             />
             <ContentAccordion
@@ -450,7 +450,7 @@ export default function AulaSistemasLineares({
               index={2}
               title="Aplicação em Misturas Petrobras"
               description="O método de substituição é a ferramenta preferida em problemas de mistura industrial."
-              variant="blue"
+              variant={mv[2]}
               className="mb-6"
             />
             <ContentAccordion
@@ -507,7 +507,7 @@ export default function AulaSistemasLineares({
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -529,7 +529,7 @@ export default function AulaSistemasLineares({
 
         <ModuleConsolidation
             index={3}
-            variant="blue"
+            variant={mv[2]}
             video={{
               videoId: "Fqfh_jCEVpE",
               title: "Método de Substituição em Sistemas Lineares",
@@ -571,7 +571,7 @@ export default function AulaSistemasLineares({
               titulo="QUIZ: Módulo Nº 2"
               icone="🔄"
               numero={4}
-              variant="blue"
+              variant={mv[2]}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -585,14 +585,14 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={3}
           titulo="Método da Adição (Eliminação)"
           descricao="Elimine variáveis somando equações multiplicadas por escalares adequados — o método mais poderoso para sistemas com coeficientes complexos."
-           variant="blue"/>
+           variant={mv[3]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="A Estratégia da Eliminação"
               description="Multiplique equações por escalares para que os coeficientes de uma variável se cancelem."
-              variant="blue"
+              variant={mv[3]}
               className="mb-6"
             />
             <ContentAccordion
@@ -706,7 +706,7 @@ export default function AulaSistemasLineares({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -728,7 +728,7 @@ export default function AulaSistemasLineares({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[3]}
             video={{
               videoId: "K0gU5VJMVzc",
               title: "Método da Adição (Eliminação)",
@@ -771,7 +771,7 @@ export default function AulaSistemasLineares({
               titulo="QUIZ: Módulo Nº 3"
               icone="➕"
               numero={3}
-              variant="blue"
+              variant={mv[3]}
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -785,14 +785,14 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={4}
           titulo="Regra de Cramer e Determinantes"
           descricao="Use determinantes para resolver sistemas de forma sistemática e elegante — o método favorito da CESGRANRIO para sistemas com coeficientes não unitários."
-           variant="blue"/>
+           variant={mv[4]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Determinantes e a Regra de Cramer"
               description="Da definição do determinante 2×2 à fórmula completa de Cramer."
-              variant="blue"
+              variant={mv[4]}
               className="mb-6"
             />
             <ContentAccordion
@@ -938,7 +938,7 @@ export default function AulaSistemasLineares({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[4]}
             video={{
               videoId: "SIeFMNJQwqE",
               title: "Regra de Cramer para Resolver Sistemas",
@@ -981,7 +981,7 @@ export default function AulaSistemasLineares({
               titulo="QUIZ: Módulo Nº 4"
               icone="📊"
               numero={3}
-              variant="blue"
+              variant={mv[4]}
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -995,14 +995,14 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={5}
           titulo="Sistemas Impossíveis e Indeterminados"
           descricao="Domine a identificação de SI e SPI — tópico que a CESGRANRIO explora em questões de múltipla interpretação para testar a profundidade do conhecimento."
-           variant="blue"/>
+           variant={mv[5]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Identificação de SI e SPI — Método das Proporções"
               description="A técnica mais rápida para classificar sistemas degenerados em prova."
-              variant="blue"
+              variant={mv[5]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1106,7 +1106,7 @@ export default function AulaSistemasLineares({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1128,7 +1128,7 @@ export default function AulaSistemasLineares({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[5]}
             video={{
               videoId: "rVBKiBv0Eek",
               title: "Identificando Sistemas Impossíveis e Indeterminados",
@@ -1170,7 +1170,7 @@ export default function AulaSistemasLineares({
               titulo="QUIZ: Módulo Nº 5"
               icone="⚠️"
               numero={3}
-              variant="blue"
+              variant={mv[5]}
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -1184,14 +1184,14 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={6}
           titulo="Sistemas com 3 Variáveis"
           descricao="Amplie o domínio para 3 incógnitas: balanços de massa em torres de destilação, fluxos em redes de tubulação e muito mais."
-           variant="blue"/>
+           variant={mv[6]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Escalonamento de Sistemas 3×3"
               description="O método de Gauss aplicado a três equações e três incógnitas."
-              variant="blue"
+              variant={mv[6]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1287,7 +1287,7 @@ export default function AulaSistemasLineares({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1309,7 +1309,7 @@ export default function AulaSistemasLineares({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[6]}
             video={{
               videoId: "4A8F6DWe9b8",
               title: "Sistemas 3×3: Substituição e Cramer",
@@ -1352,7 +1352,7 @@ export default function AulaSistemasLineares({
               titulo="QUIZ: Módulo Nº 6"
               icone="3️⃣"
               numero={3}
-              variant="blue"
+              variant={mv[6]}
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -1366,7 +1366,7 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={7}
           titulo="Interpretação Geométrica de Sistemas"
           descricao="Visualize sistemas lineares como interseções de retas no plano — uma perspectiva que torna intuitiva a classificação e resolução de qualquer sistema."
-           variant="blue"/>
+           variant={mv[7]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
@@ -1562,14 +1562,14 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={8}
           titulo="Sistemas de Inequações e Programação Linear"
           descricao="Quando as restrições são 'no máximo' e 'no mínimo': domine a Programação Linear, base das decisões de otimização na indústria do petróleo."
-           variant="blue"/>
+           variant={mv[8]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Região Viável e Programação Linear"
               description="A intersecção de semiplanos define a região onde todas as restrições são satisfeitas."
-              variant="blue"
+              variant={mv[8]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1672,7 +1672,7 @@ export default function AulaSistemasLineares({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1694,7 +1694,7 @@ export default function AulaSistemasLineares({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[8]}
             video={{
               videoId: "Z4jDh7iG1J0",
               title: "Sistemas de Inequações: Solução Gráfica",
@@ -1737,7 +1737,7 @@ export default function AulaSistemasLineares({
               titulo="QUIZ: Módulo Nº 8"
               icone="≤"
               numero={3}
-              variant="blue"
+              variant={mv[8]}
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -1751,14 +1751,14 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={9}
           titulo="Aplicações Petrobras — Misturas e Balanços"
           descricao="Sistemas lineares em ação real: blending de derivados, balanços energéticos, distribuição de vazão e problemas de proporcionalidade industrial."
-           variant="blue"/>
+           variant={mv[9]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Modelagem de Problemas Industriais"
               description="A arte de transformar um enunciado técnico em um sistema de equações solucionável."
-              variant="blue"
+              variant={mv[9]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1859,7 +1859,7 @@ export default function AulaSistemasLineares({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1881,7 +1881,7 @@ export default function AulaSistemasLineares({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "tM_JEGxWnvQ",
               title: "Sistemas Lineares em Engenharia: Fluxo em Redes",
@@ -1924,7 +1924,7 @@ export default function AulaSistemasLineares({
               titulo="QUIZ: Módulo Nº 9"
               icone="🛢️"
               numero={3}
-              variant="blue"
+              variant={mv[9]}
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -1938,14 +1938,14 @@ export default function AulaSistemasLineares({
         <ModuleBanner numero={10}
           titulo="Simulado Final CESGRANRIO"
           descricao="Questões no padrão exato da banca: sistemas lineares, Cramer, classificação, inequações e aplicações industriais — tudo integrado em um simulado definitivo."
-           variant="blue"/>
+           variant={mv[10]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Revisão Estratégica — Os 10 Pontos-Chave"
               description="O roteiro de revisão que cobre 95% dos padrões de questão da CESGRANRIO em Sistemas Lineares."
-              variant="blue"
+              variant={mv[10]}
               className="mb-6"
             />
             <ContentAccordion
@@ -2085,7 +2085,7 @@ export default function AulaSistemasLineares({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[10]}
             video={{
               videoId: "9Kxj3pDQVmk",
               title: "Revisão Completa: Sistemas Lineares",
@@ -2129,7 +2129,7 @@ export default function AulaSistemasLineares({
               titulo="QUIZ: Módulo Nº 10"
               icone="🏆"
               numero={3}
-              variant="blue"
+              variant={mv[10]}
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>

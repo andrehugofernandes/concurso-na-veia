@@ -28,7 +28,7 @@ import {
   LuZap,
 } from "react-icons/lu";
 
-import { getModuleVariant, getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 
 import {
   QUIZ_M1_POTENCIACAO,
@@ -56,7 +56,7 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaFuncoesExponenciais({
   onComplete,
@@ -199,14 +199,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={1}
             titulo="Potenciação Base"
             descricao="Onde tudo começa. Dominar as potências é o degrau principal."
-             variant="blue"/>
+             variant={mv[1]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Fundamentos da Potenciação"
               description="A base teórica que sustenta toda a matemática exponencial"
-              variant="blue"
+              variant={mv[1]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -261,7 +261,7 @@ export default function AulaFuncoesExponenciais({
               index={2}
               title="Regras Ocultas"
               description="A matemática trata potências com regras imutáveis."
-              variant="blue"
+              variant={mv[1]}
             />
 
             <ContentAccordion
@@ -493,7 +493,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM1}
               titulo="QUIZ: Potenciação e Bases"
               numero={4}
-              variant="blue"
+              variant={mv[1]}
               icone="🧮"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -507,14 +507,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={2}
             titulo="Gráficos e Comportamento"
             descricao="Entenda como a base controla o crescimento ou decaimento visual da curva exponencial."
-             variant="blue"/>
+             variant={mv[2]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Função Exponencial: Definição e Domínio"
               description="f(x) = aˣ onde a > 0 e a ≠ 1"
-              variant="blue"
+              variant={mv[2]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -566,7 +566,7 @@ export default function AulaFuncoesExponenciais({
               index={2}
               title="Leitura e Interpretação de Gráficos"
               description="A forma do gráfico depende essencialmente da base escolhida."
-              variant="blue"
+              variant={mv[2]}
             />
 
             <ContentAccordion
@@ -706,7 +706,7 @@ export default function AulaFuncoesExponenciais({
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -728,7 +728,7 @@ export default function AulaFuncoesExponenciais({
 
         <ModuleConsolidation
             index={3}
-            variant="blue"
+            variant={mv[2]}
             video={{
               videoId: "xsW3q0DTJJ4",
               title: "Gráficos Exponenciais: Crescimento vs Decaimento",
@@ -767,7 +767,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM2}
               titulo="QUIZ: Gráficos e Comportamento"
               numero={4}
-              variant="blue"
+              variant={mv[2]}
               icone="📈"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -781,14 +781,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={3}
             titulo="Equações Exponenciais"
             descricao="Isolando a variável no expoente para encontrar respostas definitivas."
-             variant="blue"/>
+             variant={mv[3]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Arte de Cortar as Bases"
               description="Quando o 'x' está no céu, e você precisa puxá-lo pra terra."
-              variant="blue"
+              variant={mv[3]}
             />
 
             <ContentAccordion
@@ -884,7 +884,7 @@ export default function AulaFuncoesExponenciais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -906,7 +906,7 @@ export default function AulaFuncoesExponenciais({
             questoes={quizM3}
             titulo="QUIZ: Equações Exponenciais"
             numero={2}
-            variant="blue"
+            variant={mv[3]}
             icone="⚡"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
           />
@@ -919,14 +919,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={4}
             titulo="Crescimento e Decaimento"
             descricao="Aplicações do mundo real onde a exponencial modela fenômenos naturais e financeiros."
-             variant="blue"/>
+             variant={mv[4]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Explosão e Extinção"
               description="N(t) modela todo o caos da natureza ou das finanças financeiras."
-              variant="blue"
+              variant={mv[4]}
             />
 
             <ContentAccordion
@@ -1061,7 +1061,7 @@ export default function AulaFuncoesExponenciais({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[4]}
             video={{
               videoId: "IJMB7qKMSME",
               title: "Crescimento e Decaimento Exponencial no Mundo Real",
@@ -1101,7 +1101,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM4}
               titulo="QUIZ: Crescimento e Decaimento"
               numero={3}
-              variant="blue"
+              variant={mv[4]}
               icone="🌍"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1115,14 +1115,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={5}
             titulo="Desafio Parcial"
             descricao="Teste seus conhecimentos em problemas mistos de exponenciais."
-             variant="blue"/>
+             variant={mv[5]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Revisão Estratégica"
               description="Sintetizando os conceitos dos módulos anteriores."
-              variant="blue"
+              variant={mv[5]}
             />
 
             <ContentAccordion
@@ -1241,7 +1241,7 @@ export default function AulaFuncoesExponenciais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1263,7 +1263,7 @@ export default function AulaFuncoesExponenciais({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[5]}
             video={{
               videoId: "8ydBPLXF0sE",
               title: "Desafio Parcial: Integrando Tudo de Exponenciais",
@@ -1303,7 +1303,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM5}
               titulo="QUIZ: Desafio Parcial"
               numero={3}
-              variant="blue"
+              variant={mv[5]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1317,14 +1317,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={6}
             titulo="Número e e Logaritmo Natural"
             descricao="A base mais importante do cálculo: Euler e seus mistérios."
-             variant="blue"/>
+             variant={mv[6]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="O Número e"
               description="Compreendendo a constante mais importante além de π."
-              variant="blue"
+              variant={mv[6]}
             />
 
             <ContentAccordion
@@ -1438,7 +1438,7 @@ export default function AulaFuncoesExponenciais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1460,7 +1460,7 @@ export default function AulaFuncoesExponenciais({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[6]}
             video={{
               videoId: "W5t6yP6sZWg",
               title: "O Número e: A Constante da Natureza",
@@ -1499,7 +1499,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM6}
               titulo="QUIZ: Número e e Logaritmo"
               numero={3}
-              variant="blue"
+              variant={mv[6]}
               icone="🌌"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1513,7 +1513,7 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={7}
             titulo="Transformações e Deslocamentos"
             descricao="Manipulando gráficos: translações, ampliações e reflexões."
-             variant="blue"/>
+             variant={mv[7]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1755,14 +1755,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={8}
             titulo="Sistemas Exponenciais"
             descricao="Combinando múltiplas bases e resolvendo problemas complexos."
-             variant="blue"/>
+             variant={mv[8]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Resolução de Sistemas"
               description="Quando duas ou mais exponenciais se encontram."
-              variant="blue"
+              variant={mv[8]}
             />
 
             <ContentAccordion
@@ -1874,7 +1874,7 @@ export default function AulaFuncoesExponenciais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1896,7 +1896,7 @@ export default function AulaFuncoesExponenciais({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[8]}
             video={{
               videoId: "vBgCJqNaK_I",
               title: "Sistemas de Equações Exponenciais Resolvidos",
@@ -1937,7 +1937,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM8}
               titulo="QUIZ: Sistemas Exponenciais"
               numero={3}
-              variant="blue"
+              variant={mv[8]}
               icone="⚙️"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1951,14 +1951,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={9}
             titulo="Aplicações Petrobras"
             descricao="Decaimento radioativo, depreciação e otimização em operações reais."
-             variant="blue"/>
+             variant={mv[9]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Exponenciais no Contexto Industrial"
               description="Como grandes empresas usam esses modelos."
-              variant="blue"
+              variant={mv[9]}
             />
 
             <ContentAccordion
@@ -2084,7 +2084,7 @@ export default function AulaFuncoesExponenciais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2106,7 +2106,7 @@ export default function AulaFuncoesExponenciais({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "j0zXdqVhNFA",
               title: "Exponenciais no Contexto de Petróleo e Gás",
@@ -2147,7 +2147,7 @@ export default function AulaFuncoesExponenciais({
               questoes={quizM9}
               titulo="QUIZ: Aplicações Petrobras"
               numero={3}
-              variant="blue"
+              variant={mv[9]}
               icone="🏭"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -2161,14 +2161,14 @@ export default function AulaFuncoesExponenciais({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="Teste seu domínio completo de funções exponenciais."
-             variant="blue"/>
+             variant={mv[10]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Checklist Final"
               description="Revise todos os 9 módulos em um só lugar."
-              variant="blue"
+              variant={mv[10]}
             />
 
             <ContentAccordion
@@ -2317,7 +2317,7 @@ export default function AulaFuncoesExponenciais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2339,7 +2339,7 @@ export default function AulaFuncoesExponenciais({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[10]}
             video={{
               videoId: "2N4tYGJZfr8",
               title: "Simulado Mestre: Revisão Completa de Exponenciais",
@@ -2379,7 +2379,7 @@ export default function AulaFuncoesExponenciais({
                 titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={3}
-                variant="blue"
+                variant={mv[10]}
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

@@ -270,7 +270,7 @@ export function AdminSidebar({
               />
             </div>
           ) : (
-            <PetrobrasLogo className="scale-75 md:scale-[0.80] origin-left" />
+            <PetrobrasLogo compact />
           )}
         </div>
 

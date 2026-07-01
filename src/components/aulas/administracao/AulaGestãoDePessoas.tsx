@@ -190,13 +190,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           numero={1}
           titulo="Fundamentos de Gestão de Pessoas"
           descricao="A evolução do DP ao RH Estratégico: entendendo o capital humano como o ativo mais valioso da Petrobras."
-          variant="blue"
+          variant={mv[1]}
         />
 
         <div className="space-y-6">
           <ModuleSectionHeader
             index="INTRO"
-            variant="blue"
+            variant={mv[1]}
             title="Dossiê de Fundamentos"
             description="Entenda as dimensões da Gestão de Pessoas no cenário industrial moderno."
           />
@@ -237,7 +237,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader
             index={2}
-            variant="blue"
+            variant={mv[1]}
             title="Análise Técnica C.E.D.E."
             description="Explorando a profundidade pedagógica dos fundamentos de GP."
           />
@@ -426,7 +426,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -463,13 +463,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           numero={2}
           titulo="Recrutamento e Seleção"
           descricao="A ciência de atrair o talento certo e a técnica de escolher o perfil ideal para a cultura Petrobras."
-          variant="blue"
+          variant={mv[2]}
         />
 
         <div className="space-y-6">
           <ModuleSectionHeader
             index="INTRO"
-            variant="blue"
+            variant={mv[2]}
             title="Dossiê de Atração"
             description="Processos vitais para a renovação do capital intelectual."
           />
@@ -510,7 +510,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader
             index={2}
-            variant="blue"
+            variant={mv[2]}
             title="Análise Técnica C.E.D.E."
             description="O funil estratégico: do anúncio à decisão final."
           />
@@ -621,7 +621,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
         <ModuleConsolidation
           index={3}
-          variant="blue"
+          variant={mv[2]}
           video={{
             videoId: "7c-YVly_C9o",
             title: "Recrutamento e Seleção Estratégico",
@@ -671,7 +671,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -693,7 +693,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           questoes={quizM2}
           titulo="QUIZ: Recrutamento e Seleção"
           numero={4}
-          variant="blue"
+          variant={mv[2]}
           onComplete={(score: number) =>
             handleModuleComplete("modulo-2", score)
           }
@@ -708,13 +708,13 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           numero={3}
           titulo="Admissão e Integração"
           descricao="A jornada de transformação do candidato em colaborador: do contrato ao aculturamento."
-          variant="blue"
+          variant={mv[3]}
         />
 
         <div className="space-y-6">
           <ModuleSectionHeader
             index="INTRO"
-            variant="blue"
+            variant={mv[3]}
             title="Dossiê de Boas-Vindas"
             description="Os primeiros passos críticos para a retenção de talentos."
           />
@@ -755,7 +755,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <div className="space-y-6">
           <ModuleSectionHeader
             index={2}
-            variant="blue"
+            variant={mv[3]}
             title="Análise Técnica C.E.D.E."
             description="Transformando o recém-chegado em um parceiro de valor."
           />
@@ -853,7 +853,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
 
         <ModuleConsolidation
           index={3}
-          variant="blue"
+          variant={mv[3]}
           video={{
             videoId: "dQw4w9WgXcQ",
             title: "Onboarding de Sucesso",
@@ -903,7 +903,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -925,7 +925,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
           questoes={quizM3}
           titulo="QUIZ: Admissão e Integração"
           numero={4}
-          variant="blue"
+          variant={mv[3]}
           onComplete={(score: number) =>
             handleModuleComplete("modulo-3", score)
           }
@@ -1044,7 +1044,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1180,7 +1180,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1293,7 +1293,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1518,7 +1518,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1742,7 +1742,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1955,7 +1955,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2173,7 +2173,7 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"

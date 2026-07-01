@@ -1,4 +1,4 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 // Last modified: 2026-03-13 - Upgraded with ModuleConsolidation (4-tab system) and C.E.D.E. pedagogy
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
@@ -56,7 +56,7 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaProgressoesPa({
   onComplete,
@@ -181,14 +181,14 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={1}
             titulo="Conceitos Fundamentais de PA"
             descricao="A diferença que se repete: progressão aritmética explicada."
-             variant="blue"/>
+             variant={mv[1]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Conceitos Fundamentais de PA"
               description="Entenda a razão r e o primeiro termo a₁."
-              variant="blue"
+              variant={mv[1]}
             />
 
             {/* ACORDEON 1: Conceituação */}
@@ -503,7 +503,7 @@ export default function AulaProgressoesPa({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[1]}
             video={{
               videoId: "gZDzgZxrvAo",
               title: "PA: Conceitos Fundamentais",
@@ -557,7 +557,7 @@ export default function AulaProgressoesPa({
               questoes={quizM1}
               titulo="QUIZ: Conceitos Fundamentais"
               numero={3}
-              variant="blue"
+              variant={mv[1]}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -571,14 +571,14 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={2}
             titulo="Termo Geral da PA"
             descricao="A fórmula para encontrar qualquer termo sem calcular todos."
-             variant="blue"/>
+             variant={mv[2]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Fórmula do Termo Geral"
               description="aₙ = a₁ + (n-1)r"
-              variant="blue"
+              variant={mv[2]}
             />
 
             <ContentAccordion
@@ -677,7 +677,7 @@ export default function AulaProgressoesPa({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -699,7 +699,7 @@ export default function AulaProgressoesPa({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[2]}
             video={{
               videoId: "2Aq7p7-VgEU",
               title: "PA: Termo Geral Explicado",
@@ -753,7 +753,7 @@ export default function AulaProgressoesPa({
               questoes={quizM2}
               titulo="QUIZ: Termo Geral"
               numero={3}
-              variant="blue"
+              variant={mv[2]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -767,14 +767,14 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={3}
             titulo="Soma de Termos (Finita)"
             descricao="Calcule a soma dos primeiros n termos de uma PA."
-             variant="blue"/>
+             variant={mv[3]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Soma dos Primeiros n Termos"
               description="Fórmula e aplicações práticas."
-              variant="blue"
+              variant={mv[3]}
             />
 
             <ContentAccordion
@@ -876,7 +876,7 @@ export default function AulaProgressoesPa({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -898,7 +898,7 @@ export default function AulaProgressoesPa({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[3]}
             video={{
               videoId: "4KzE9R6zWzY",
               title: "PA: Soma Finita",
@@ -954,7 +954,7 @@ export default function AulaProgressoesPa({
               questoes={quizM3}
               titulo="QUIZ: Soma Finita"
               numero={3}
-              variant="blue"
+              variant={mv[3]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -968,14 +968,14 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={4}
             titulo="Propriedades Especiais de PA"
             descricao="Relações e padrões únicos das progressões aritméticas."
-             variant="blue"/>
+             variant={mv[4]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Propriedades Importantes"
               description="Termos equidistantes, meios aritméticos e simetria."
-              variant="blue"
+              variant={mv[4]}
             />
 
             <ContentAccordion
@@ -1081,7 +1081,7 @@ export default function AulaProgressoesPa({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1103,7 +1103,7 @@ export default function AulaProgressoesPa({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[4]}
             video={{
               videoId: "9KZg0LdwAg4",
               title: "PA: Propriedades Especiais",
@@ -1158,7 +1158,7 @@ export default function AulaProgressoesPa({
               questoes={quizM4}
               titulo="QUIZ: Propriedades"
               numero={3}
-              variant="blue"
+              variant={mv[4]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1172,14 +1172,14 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={5}
             titulo="Interpolação Aritmética"
             descricao="Insira termos entre dois números para formar uma PA."
-             variant="blue"/>
+             variant={mv[5]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Inserindo Termos em PA"
               description="Encontre a razão para formar progressão completa."
-              variant="blue"
+              variant={mv[5]}
             />
 
             <ContentAccordion
@@ -1287,7 +1287,7 @@ export default function AulaProgressoesPa({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1309,7 +1309,7 @@ export default function AulaProgressoesPa({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[5]}
             video={{
               videoId: "5Rw9KzK3jqA",
               title: "Interpolação Aritmética",
@@ -1365,7 +1365,7 @@ export default function AulaProgressoesPa({
               questoes={quizM5}
               titulo="QUIZ: Interpolação"
               numero={3}
-              variant="blue"
+              variant={mv[5]}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1379,14 +1379,14 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={6}
             titulo="PA e Funções Afim"
             descricao="Conexão entre progressões aritméticas e funções do 1º grau."
-             variant="blue"/>
+             variant={mv[6]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="PA Como Restrição de Função Afim"
               description="Quando n é número natural, f(n) forma uma PA."
-              variant="blue"
+              variant={mv[6]}
             />
 
             <ContentAccordion
@@ -1499,7 +1499,7 @@ export default function AulaProgressoesPa({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1521,7 +1521,7 @@ export default function AulaProgressoesPa({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[6]}
             video={{
               videoId: "tZzgzUaHdCw",
               title: "PA e Funções Afim: Conexão",
@@ -1577,7 +1577,7 @@ export default function AulaProgressoesPa({
               questoes={quizM6}
               titulo="QUIZ: PA e Funções Afim"
               numero={3}
-              variant="blue"
+              variant={mv[6]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1591,7 +1591,7 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={7}
             titulo="Prática Integrada"
             descricao="Combine tudo: fórmulas, propriedades e aplicações."
-             variant="blue"/>
+             variant={mv[7]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1784,14 +1784,14 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={8}
             titulo="Desafios Avançados"
             descricao="Problemas complexos e integrações com outros conceitos."
-             variant="blue"/>
+             variant={mv[8]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Nível Avançado"
               description="Sistemas, inequações e aplicações múltiplas."
-              variant="blue"
+              variant={mv[8]}
             />
 
             <ContentAccordion
@@ -1902,7 +1902,7 @@ export default function AulaProgressoesPa({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1924,7 +1924,7 @@ export default function AulaProgressoesPa({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[8]}
             video={{
               videoId: "4KzE9R6zWzY",
               title: "PA Avançada: Desafios",
@@ -1979,7 +1979,7 @@ export default function AulaProgressoesPa({
               questoes={quizM8}
               titulo="QUIZ: Desafios Avançados"
               numero={3}
-              variant="blue"
+              variant={mv[8]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1993,14 +1993,14 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={9}
             titulo="Aplicações Petrobras"
             descricao="Cronogramas, investimentos e programação linear."
-             variant="blue"/>
+             variant={mv[9]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="PA na Indústria"
               description="Cronogramas, depreciação, e programação."
-              variant="blue"
+              variant={mv[9]}
             />
 
             <ContentAccordion
@@ -2114,7 +2114,7 @@ export default function AulaProgressoesPa({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2136,7 +2136,7 @@ export default function AulaProgressoesPa({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "9KZg0LdwAg4",
               title: "PA na Petrobras: Cronogramas",
@@ -2190,7 +2190,7 @@ export default function AulaProgressoesPa({
               questoes={quizM9}
               titulo="QUIZ: Aplicações Petrobras"
               numero={3}
-              variant="blue"
+              variant={mv[9]}
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -2204,7 +2204,7 @@ export default function AulaProgressoesPa({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="Teste final: integre todos os conceitos de progressões aritméticas."
-             variant="blue"/>
+             variant={mv[10]}/>
 
           {showCompletionBadge ? (
             <div className="flex flex-col items-center gap-6 py-10 mt-10">
@@ -2223,7 +2223,7 @@ export default function AulaProgressoesPa({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2246,7 +2246,7 @@ export default function AulaProgressoesPa({
                 titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={1}
-                variant="blue"
+                variant={mv[10]}
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

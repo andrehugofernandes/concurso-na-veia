@@ -60,7 +60,7 @@ export default function HomeFooter() {
           <div className="col-span-2 lg:col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">
             <h4 className="text-white font-bold mb-6">Legal</h4>
             <ul className="space-y-4 text-sm text-slate-400 flex flex-col items-center lg:items-start">
-              <li><Link href="#" className="hover:text-primary transition-colors">Termos de Uso</Link></li>
+              <li><Link href="/termos" className="hover:text-primary transition-colors">Termos de Uso</Link></li>
               <li><Link href="#" className="hover:text-primary transition-colors">Política de Privacidade</Link></li>
               <li><Link href="#" className="hover:text-primary transition-colors">Garantia de 7 dias</Link></li>
               <li><Link href="#" className="hover:text-primary transition-colors">Central de Ajuda</Link></li>

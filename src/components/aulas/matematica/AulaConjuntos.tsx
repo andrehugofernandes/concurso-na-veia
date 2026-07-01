@@ -21,7 +21,7 @@ import {
   ModuleSectionHeader,
   ModuleSkinVariant,
   QuestaoResolvidaStepByStep} from "../shared";
-import { getModuleVariant, getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 import {
   LuBookOpen,
   LuMusic,
@@ -49,7 +49,7 @@ import {
 
 // ── COMPONENT ───────────────────────────────────────────────────────────
 
-const mv = ["slate" as ModuleSkinVariant, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaConjuntos({
   onComplete,
@@ -175,7 +175,7 @@ export default function AulaConjuntos({
           numero={1}
           titulo="Fundamentos de Conjuntos"
           descricao="Domine os conceitos fundamentais: notação, pertinência, subconjuntos e propriedades."
-          variant="blue"
+          variant={mv[1]}
         />
 
         {/* ═══ RICH INTRO SECTION M1 ═══ */}
@@ -184,7 +184,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Conceito Fundamental de Conjunto"
             description="A pedra angular da Matemática moderna e seu lugar no edital CESGRANRIO"
-            variant="blue"
+            variant={mv[1]}
           />
 
           <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -373,7 +373,7 @@ export default function AulaConjuntos({
               index={1}
               title="O que é um Conjunto?"
               description="A pedra fundamental da Matemática para concursos."
-              variant="blue"
+              variant={mv[1]}
               className="mb-6"
             />
             {/* ACORDEON 1: DEFINIÇÃO DE CONJUNTO */}
@@ -710,7 +710,7 @@ export default function AulaConjuntos({
               index={2}
               title="Subconjuntos e Conjunto Potência"
               description="A hierarquia das coleções: de um único elemento ao poder total dos conjuntos das partes."
-              variant="blue"
+              variant={mv[1]}
               className="mb-8"
             />
 
@@ -770,7 +770,7 @@ export default function AulaConjuntos({
             {/* GRID DE FLIPCARDS PREMIUM */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <FlipCard
-                variant="blue"
+                variant={mv[1]}
                 frente={
                   <div className="flex flex-col items-center text-center space-y-4">
                     <div className="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center text-3xl text-amber-600">
@@ -803,7 +803,7 @@ export default function AulaConjuntos({
                 }
               />
               <FlipCard
-                variant="blue"
+                variant={mv[1]}
                 frente={
                   <div className="flex flex-col items-center text-center space-y-4">
                     <div className="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center text-3xl text-amber-600">
@@ -834,7 +834,7 @@ export default function AulaConjuntos({
                 }
               />
               <FlipCard
-                variant="blue"
+                variant={mv[1]}
                 frente={
                   <div className="flex flex-col items-center text-center space-y-4">
                     <div className="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center text-3xl text-amber-600">
@@ -864,7 +864,7 @@ export default function AulaConjuntos({
                 }
               />
               <FlipCard
-                variant="blue"
+                variant={mv[1]}
                 frente={
                   <div className="flex flex-col items-center text-center space-y-4">
                     <div className="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center text-3xl text-amber-600">
@@ -1002,7 +1002,7 @@ export default function AulaConjuntos({
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1025,7 +1025,7 @@ export default function AulaConjuntos({
         <ModuleConsolidation
               index={3}
               moduloNumero={1}
-              variant="blue"
+              variant={mv[1]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 1",
@@ -1115,7 +1115,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Fundamentos"
               icone="🧠"
               numero={4}
-              variant="blue"
+              variant={mv[1]}
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
@@ -1128,7 +1128,7 @@ export default function AulaConjuntos({
           numero={2}
           titulo="Operações com Conjuntos"
           descricao="União, interseção, diferença e complementar: as 4 operações que a CESGRANRIO adora cobrar."
-          variant="blue"
+          variant={mv[2]}
         />
 
         {/* ═══ RICH INTRO SECTION M2 ═══ */}
@@ -1137,7 +1137,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Operações com Conjuntos: Fundamentos e Aplicações"
             description="Dominando união, interseção, diferença e complemento"
-            variant="blue"
+            variant={mv[2]}
           />
 
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
@@ -1298,7 +1298,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={1}
               title="União (∪) e Interseção (∩)"
-              variant="blue"
+              variant={mv[2]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1370,7 +1370,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={2}
               title="Diferença e Complementar"
-              variant="blue"
+              variant={mv[2]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1453,7 +1453,7 @@ export default function AulaConjuntos({
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1476,7 +1476,7 @@ export default function AulaConjuntos({
         <ModuleConsolidation
               index={3}
               moduloNumero={2}
-              variant="blue"
+              variant={mv[2]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 2",
@@ -1577,7 +1577,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Operações"
               icone="⚙️"
               numero={3}
-              variant="blue"
+              variant={mv[2]}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -1590,7 +1590,7 @@ export default function AulaConjuntos({
           numero={3}
           titulo="Diagramas de Venn e Cardinalidade"
           descricao="A ferramenta visual mais poderosa para conjuntos. Domine a fórmula da cardinalidade."
-          variant="blue"
+          variant={mv[3]}
         />
 
         {/* ═══ RICH INTRO SECTION M3 ═══ */}
@@ -1599,7 +1599,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Diagramas de Venn: Linguagem Visual de Conjuntos"
             description="Ferramentas gráficas para resolver problemas com precisão"
-            variant="blue"
+            variant={mv[3]}
           />
 
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
@@ -1741,7 +1741,7 @@ export default function AulaConjuntos({
               index={1}
               title="Diagramas de Venn"
               description="Transforme problemas complexos em simples."
-              variant="blue"
+              variant={mv[3]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1835,7 +1835,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={2}
               title="Fórmula da Cardinalidade"
-              variant="blue"
+              variant={mv[3]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1926,7 +1926,7 @@ export default function AulaConjuntos({
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1949,7 +1949,7 @@ export default function AulaConjuntos({
         <ModuleConsolidation
               index={3}
               moduloNumero={3}
-              variant="blue"
+              variant={mv[3]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 3",
@@ -2050,7 +2050,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Diagramas de Venn"
               icone="⭕"
               numero={3}
-              variant="blue"
+              variant={mv[3]}
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -2063,7 +2063,7 @@ export default function AulaConjuntos({
           numero={4}
           titulo="Conjuntos Numéricos e Intervalos"
           descricao="ℕ, ℤ, ℚ, 𝕀, ℝ — a hierarquia dos números e intervalos na reta real."
-          variant="blue"
+          variant={mv[4]}
         />
 
         {/* ═══ RICH INTRO SECTION M4 ═══ */}
@@ -2072,7 +2072,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Conjuntos Numéricos: A Hierarquia dos Números"
             description="De naturais a reais: construindo a estrutura do sistema numérico"
-            variant="blue"
+            variant={mv[4]}
           />
 
           <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -2194,7 +2194,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={1}
               title="Os 5 Conjuntos Numéricos"
-              variant="blue"
+              variant={mv[4]}
               className="mb-6"
             />
             <CardCarousel
@@ -2244,7 +2244,7 @@ export default function AulaConjuntos({
             <ModuleSectionHeader
               index={2}
               title="Intervalos na Reta Real"
-              variant="blue"
+              variant={mv[4]}
               className="mb-6"
             />
             <ContentAccordion
@@ -2324,7 +2324,7 @@ export default function AulaConjuntos({
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2347,7 +2347,7 @@ export default function AulaConjuntos({
         <ModuleConsolidation
               index={3}
               moduloNumero={4}
-              variant="blue"
+              variant={mv[4]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 4",
@@ -2444,7 +2444,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Conj. Numéricos"
               icone="🔢"
               numero={4}
-              variant="blue"
+              variant={mv[4]}
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -2457,7 +2457,7 @@ export default function AulaConjuntos({
           numero={5}
           titulo="Subconjuntos e Potência"
           descricao="Entenda o que são subconjuntos, como calcular o conjunto das partes e as relações de inclusão que caem na sua prova."
-          variant="blue"
+          variant={mv[5]}
         />
 
         {/* ═══ RICH INTRO SECTION M5 ═══ */}
@@ -2466,7 +2466,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Relações e Propriedades Especiais de Conjuntos"
             description="Subconjuntos, inclusão, igualdade e as leis que governam as operações"
-            variant="blue"
+            variant={mv[5]}
           />
 
           <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -2585,7 +2585,7 @@ export default function AulaConjuntos({
               index={1}
               title="Subconjuntos e Relação de Inclusão"
               description="Entenda a diferença crucial entre pertencer (∈) e estar contido (⊂) — a pegadinha número 1 da CESGRANRIO."
-              variant="blue"
+              variant={mv[5]}
               className="mb-6"
             />
 
@@ -2794,7 +2794,7 @@ export default function AulaConjuntos({
               index={2}
               title="Conjunto Potência — ℘(A) e a Fórmula 2ⁿ"
               description="O conjunto de TODOS os subconjuntos possíveis — e por que o número de combinações cresce de forma explosiva."
-              variant="blue"
+              variant={mv[5]}
               className="mb-6"
             />
 
@@ -2955,7 +2955,7 @@ export default function AulaConjuntos({
               index={3}
               title="Propriedades Algébricas das Operações"
               description="As leis que governam União, Interseção e Complementação — o kit de ferramentas para simplificar qualquer expressão."
-              variant="blue"
+              variant={mv[5]}
               className="mb-6"
             />
 
@@ -3229,7 +3229,7 @@ export default function AulaConjuntos({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -3252,7 +3252,7 @@ export default function AulaConjuntos({
         <ModuleConsolidation
               index={4}
               moduloNumero={5}
-              variant="blue"
+              variant={mv[5]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 5",
@@ -3348,7 +3348,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Subconjuntos"
               icone="🏆"
               numero={4}
-              variant="blue"
+              variant={mv[5]}
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -3361,7 +3361,7 @@ export default function AulaConjuntos({
           numero={6}
           titulo="Fórmula de Inclusão-Exclusão"
           descricao="A ferramenta mestra para calcular cardinalidade de uniões sem contar dois vezes — e o coração das questões de Conjuntos da CESGRANRIO."
-          variant="blue"
+          variant={mv[6]}
         />
 
         {/* ═══ RICH INTRO SECTION M6 ═══ */}
@@ -3370,7 +3370,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="O Princípio de Inclusão-Exclusão: Contagem Sem Dupla Contagem"
             description="A ferramenta mais poderosa para resolver problemas de conjuntos"
-            variant="blue"
+            variant={mv[6]}
           />
 
           <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -3486,7 +3486,7 @@ export default function AulaConjuntos({
               index={1}
               title="Fórmula para 2 Conjuntos"
               description="O princípio base: contar sem duplicar."
-              variant="blue"
+              variant={mv[6]}
               className="mb-6"
             />
             <ContentAccordion
@@ -3595,7 +3595,7 @@ export default function AulaConjuntos({
               index={2}
               title="Extensão para 3 Conjuntos"
               description="A fórmula completa — e a favorita das provas difíceis."
-              variant="blue"
+              variant={mv[6]}
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -3679,7 +3679,7 @@ export default function AulaConjuntos({
               index={3}
               title="Casos Especiais"
               description="Quando a geometria dos conjuntos simplifica o cálculo."
-              variant="blue"
+              variant={mv[6]}
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -3746,7 +3746,7 @@ export default function AulaConjuntos({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -3769,7 +3769,7 @@ export default function AulaConjuntos({
         <ModuleConsolidation
               index={4}
               moduloNumero={6}
-              variant="blue"
+              variant={mv[6]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 6",
@@ -3871,7 +3871,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Inclusão-Exclusão"
               icone="🧮"
               numero={5}
-              variant="blue"
+              variant={mv[6]}
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -3884,7 +3884,7 @@ export default function AulaConjuntos({
           numero={7}
           titulo="ℕ, ℤ, ℚ em Profundidade"
           descricao="Os três primeiros degraus da hierarquia dos números reais — com contexto industrial Petrobras e as pegadinhas favoritas da CESGRANRIO."
-          variant="blue"
+          variant={mv[7]}
         />
 
         {/* ═══ RICH INTRO SECTION M7 ═══ */}
@@ -3893,7 +3893,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Conjuntos Numéricos Discretos: Naturais, Inteiros e Racionais"
             description="Aprofundando-se nos primeiros degraus da hierarquia"
-            variant="blue"
+            variant={mv[7]}
           />
 
           <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -4026,7 +4026,7 @@ export default function AulaConjuntos({
               index={1}
               title="Naturais (ℕ): A Origem dos Números"
               description="Os primeiros números que existiram — e que a CESGRANRIO usa para criar armadilhas."
-              variant="blue"
+              variant={mv[7]}
               className="mb-6"
             />
             <ContentAccordion
@@ -4086,7 +4086,7 @@ export default function AulaConjuntos({
               index={2}
               title="Inteiros (ℤ): Incluindo os Negativos"
               description="O que acontece quando a medição pode ser abaixo do zero?"
-              variant="blue"
+              variant={mv[7]}
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -4201,7 +4201,7 @@ export default function AulaConjuntos({
               index={3}
               title="Racionais (ℚ): Frações e Dízimas"
               description="Todo número que pode ser escrito como fração p/q."
-              variant="blue"
+              variant={mv[7]}
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -4292,7 +4292,7 @@ export default function AulaConjuntos({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -4315,7 +4315,7 @@ export default function AulaConjuntos({
         <ModuleConsolidation
               index={4}
               moduloNumero={7}
-              variant="blue"
+              variant={mv[7]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 7",
@@ -4419,7 +4419,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: ℕ, ℤ, ℚ"
               icone="🔢"
               numero={5}
-              variant="blue"
+              variant={mv[7]}
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -4432,7 +4432,7 @@ export default function AulaConjuntos({
           numero={8}
           titulo="Irracionais e ℝ"
           descricao="Os números que 'escapam' das frações: dízimas infinitas e não periódicas, a reta real completa e as pegadinhas da CESGRANRIO."
-          variant="blue"
+          variant={mv[8]}
         />
 
         {/* ═══ RICH INTRO SECTION M8 ═══ */}
@@ -4441,7 +4441,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Números Irracionais e o Conjunto dos Reais"
             description="As lacunas em ℚ e a completude do contínuo"
-            variant="blue"
+            variant={mv[8]}
           />
 
           <div className="space-y-6 text-xl text-foreground/85 leading-relaxed text-justify">
@@ -4565,7 +4565,7 @@ export default function AulaConjuntos({
               index={1}
               title="Números Irracionais"
               description="Dízimas infinitas sem padrão — impossíveis de escrever como fração."
-              variant="blue"
+              variant={mv[8]}
               className="mb-6"
             />
             <ContentAccordion
@@ -4634,7 +4634,7 @@ export default function AulaConjuntos({
               index={2}
               title="ℝ = ℚ ∪ Irracionais"
               description="A reta real completa — sem lacunas, sem buracos."
-              variant="blue"
+              variant={mv[8]}
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -4718,7 +4718,7 @@ export default function AulaConjuntos({
               index={3}
               title="Raízes: Quando √n é Irracional?"
               description="Regra rápida para classificar raízes em prova."
-              variant="blue"
+              variant={mv[8]}
               className="mb-6 mt-10"
             />
             <ContentAccordion
@@ -4790,7 +4790,7 @@ export default function AulaConjuntos({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -4813,7 +4813,7 @@ export default function AulaConjuntos({
         <ModuleConsolidation
               index={4}
               moduloNumero={8}
-              variant="blue"
+              variant={mv[8]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 8",
@@ -4912,7 +4912,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Irracionais e ℝ"
               icone="∞"
               numero={5}
-              variant="blue"
+              variant={mv[8]}
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -4925,7 +4925,7 @@ export default function AulaConjuntos({
           numero={9}
           titulo="Leis de De Morgan"
           descricao="As duas leis que transformam complementares de operações — imprescindíveis para simplificar expressões e resolver questões avançadas da CESGRANRIO."
-          variant="blue"
+          variant={mv[9]}
         />
         {/* ═══ RICH INTRO SECTION M9 ═══ */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -4933,7 +4933,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="Leis de De Morgan: O Coração da Lógica"
             description="Entenda o que são e por que elas dominam as questões avançadas da CESGRANRIO."
-            variant="blue"
+            variant={mv[9]}
           />
 
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
@@ -4973,7 +4973,7 @@ export default function AulaConjuntos({
               index={1}
               title="1ª Lei de De Morgan: (A ∪ B)ᶜ"
               description="O complementar da UNIÃO é a INTERSEÇÃO dos complementares."
-              variant="blue"
+              variant={mv[9]}
               className="mb-6"
             />
             <ContentAccordion
@@ -5054,7 +5054,7 @@ export default function AulaConjuntos({
               index={2}
               title="2ª Lei de De Morgan: (A ∩ B)ᶜ"
               description="O complementar da INTERSEÇÃO é a UNIÃO dos complementares."
-              variant="blue"
+              variant={mv[9]}
               className="mb-6"
             />
             <ContentAccordion
@@ -5104,7 +5104,7 @@ export default function AulaConjuntos({
               index={3}
               title="Simplificação em Cascata"
               description="Aplicando De Morgan duas vezes — o nível avançado das provas."
-              variant="blue"
+              variant={mv[9]}
               className="mb-6"
             />
             <ContentAccordion
@@ -5213,7 +5213,7 @@ export default function AulaConjuntos({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -5236,7 +5236,7 @@ export default function AulaConjuntos({
         <ModuleConsolidation
               index={4}
               moduloNumero={9}
-              variant="blue"
+              variant={mv[9]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 9",
@@ -5339,7 +5339,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: De Morgan"
               icone="🔁"
               numero={4}
-              variant="blue"
+              variant={mv[9]}
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -5352,7 +5352,7 @@ export default function AulaConjuntos({
           numero={10}
           titulo="Simulado Final — Teoria dos Conjuntos"
           descricao="Revisão express de todas as fórmulas e estratégias de prova, seguida de 10 questões no estilo CESGRANRIO para você sair daqui pronto para gabaritar."
-          variant="blue"
+          variant={mv[10]}
         />
         {/* ═══ RICH INTRO SECTION M10 ═══ */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -5360,7 +5360,7 @@ export default function AulaConjuntos({
             index="INTRO"
             title="A Arte do Gabarito: Sintetizando Conjuntos"
             description="Chegou a hora de reunir todo o conhecimento e transformá-lo em pontos na sua prova."
-            variant="blue"
+            variant={mv[10]}
           />
 
           <div className="space-y-6 text-lg text-foreground/85 leading-relaxed text-justify">
@@ -5397,7 +5397,7 @@ export default function AulaConjuntos({
               index={1}
               title="Revisão Express — Todas as Fórmulas"
               description="Cole na mente antes de entrar na prova."
-              variant="blue"
+              variant={mv[10]}
               className="mb-6"
             />
             <ContentAccordion
@@ -5514,7 +5514,7 @@ export default function AulaConjuntos({
               index={2}
               title="Estratégias de Prova CESGRANRIO"
               description="Como resolver qualquer questão de conjuntos em 90 segundos."
-              variant="blue"
+              variant={mv[10]}
               className="mb-6"
             />
             <ContentAccordion
@@ -5647,7 +5647,7 @@ export default function AulaConjuntos({
               index={3}
               title="Campo Minado: As 5 Armadilhas Clássicas"
               description="Atenção total onde os candidatos mais erram."
-              variant="blue"
+              variant={mv[10]}
               className="mb-6"
             />
             <ContentAccordion
@@ -5756,7 +5756,7 @@ export default function AulaConjuntos({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -5779,7 +5779,7 @@ export default function AulaConjuntos({
         <ModuleConsolidation
               index={4}
               moduloNumero={10}
-              variant="blue"
+              variant={mv[10]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 10",
@@ -5881,7 +5881,7 @@ export default function AulaConjuntos({
               titulo="QUIZ: Simulado Final"
               icone="🏆"
               numero={5}
-              variant="blue"
+              variant={mv[10]}
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>

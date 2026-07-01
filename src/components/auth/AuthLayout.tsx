@@ -47,7 +47,7 @@ export default function AuthLayout({
       >
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <PetrobrasLogo className="scale-75 md:scale-90 origin-left" />
+          <PetrobrasLogo compact />
         </div>
 
         {/* Right side: DynamicIsland and Help Toggle grouped together */}

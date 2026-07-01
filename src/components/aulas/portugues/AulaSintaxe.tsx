@@ -1,4 +1,4 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 
@@ -664,7 +664,7 @@ const QUIZ_ACESSORIOS_POOL: QuizQuestion[] = [
   },
 ];
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaSintaxe({
   onComplete,
@@ -856,7 +856,7 @@ export default function AulaSintaxe({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -990,7 +990,7 @@ export default function AulaSintaxe({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1113,7 +1113,7 @@ export default function AulaSintaxe({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1234,7 +1234,7 @@ export default function AulaSintaxe({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1267,7 +1267,7 @@ export default function AulaSintaxe({
           numero={5}
           titulo="Síntese Estratégica"
           descricao="Resumo visual, mapas mentais e ferramentas de fixação rápida para não esquecer mais."
-          variant="blue"
+          variant={mv[4]}
         />
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-6 md:p-8 shadow-sm space-y-8 mt-12">
@@ -1275,7 +1275,7 @@ export default function AulaSintaxe({
               index="INTRO"
               title="Resumo e Multimídia"
               description="Visão panorâmica de toda a Sintaxe da Oração."
-          variant="blue"
+          variant={mv[4]}
         />
 
             <div className="bg-rose-500/5 border border-rose-500/20 p-6 rounded-xl">
@@ -1336,7 +1336,7 @@ export default function AulaSintaxe({
             </div>
 
             <LessonTabs
-              variant="blue"
+              variant={mv[4]}
               tabs={[
                 {
                   id: "video",
@@ -1499,7 +1499,7 @@ export default function AulaSintaxe({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1623,7 +1623,7 @@ export default function AulaSintaxe({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1722,7 +1722,7 @@ export default function AulaSintaxe({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1821,7 +1821,7 @@ export default function AulaSintaxe({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1898,7 +1898,7 @@ export default function AulaSintaxe({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1947,7 +1947,7 @@ export default function AulaSintaxe({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"

@@ -33,6 +33,8 @@ export const metadata: Metadata = {
     "passeinoconcurso, simulador, concurso, ia, simulado, aulas interativas",
 };
 
+import { DevProfileSwitcher } from "@/components/dev/DevProfileSwitcher";
+
 export default function RootLayout({
   children,
 }: {
@@ -52,6 +54,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {children}
+            <DevProfileSwitcher />
           </ThemeProvider>
         </SkinProvider>
       </body>

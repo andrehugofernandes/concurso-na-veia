@@ -183,7 +183,7 @@ export default function AulaGovernancaCorporativa({
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={1} titulo="Conceitos de Governança Corporativa" descricao="Os princípios, agentes e mecanismos que protegem os stakeholders." gradiente="bg-gradient-to-br from-amber-300 via-amber-500 to-amber-400" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index="INTRO" title="Fundamentos da Governança" description="Princípios IBGC, problema de agência e stakeholders." variant="blue" />
+            <ModuleSectionHeader index="INTRO" title="Fundamentos da Governança" description="Princípios IBGC, problema de agência e stakeholders." variant={mv[1]} />
             <ContentAccordion slides={[
               { titulo: "Conceituação - O que é Governança Corporativa?", icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed"><strong>Governança Corporativa</strong> é o sistema pelo qual as organizações são dirigidas, monitoradas e incentivadas, envolvendo os relacionamentos entre proprietários, conselho de administração, diretoria e órgãos de controle.</p><div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20"><p className="font-bold text-blue-700 mb-2">4 Princípios (IBGC):</p><div className="space-y-2 text-lg"><p><strong>Transparência:</strong> Disponibilizar informações além das obrigatórias</p><p><strong>Equidade:</strong> Tratamento justo para todos os sócios e stakeholders</p><p><strong>Prestação de Contas (Accountability):</strong> Responsabilizar-se pelas decisões</p><p><strong>Responsabilidade Corporativa:</strong> Zelar pela sustentabilidade da organização</p></div></div><div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20"><p className="font-bold text-blue-700 mb-2">Problema de Agência:</p><p className="text-lg">Conflito entre <strong>Principal</strong> (acionista/dono) e <strong>Agente</strong> (gestor). O gestor pode agir em interesse próprio, não do acionista. A governança mitiga isso.</p></div></div>) },
               { titulo: "Exemplificação - Agentes de Governança", icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><div className="space-y-2"><div className="bg-blue-500/10 p-3 rounded border border-blue-500/20"><p className="font-bold text-blue-700 text-lg">Assembleia de Acionistas</p><p className="text-lg">Órgão soberano — elege o Conselho de Administração</p></div><div className="bg-blue-500/10 p-3 rounded border border-blue-500/20"><p className="font-bold text-blue-700 text-lg">Conselho de Administração</p><p className="text-lg">Define estratégia, supervisiona diretoria, protege stakeholders</p></div><div className="bg-blue-500/10 p-3 rounded border border-blue-500/20"><p className="font-bold text-blue-700 text-lg">Diretoria Executiva</p><p className="text-lg">Executa a estratégia, gestão do dia a dia</p></div><div className="bg-blue-500/10 p-3 rounded border border-blue-500/20"><p className="font-bold text-blue-700 text-lg">Conselho Fiscal</p><p className="text-lg">Fiscaliza atos dos administradores e demonstrações financeiras</p></div></div></div>) },
@@ -193,12 +193,12 @@ export default function AulaGovernancaCorporativa({
           </section>
 
           <section id="quiz-modulo-1" className="mt-16">
-            <ModuleConsolidation index={1} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Governança Corporativa: Fundamentos", duration: "18:00" }} resumoVisual={{ moduloNome: "Módulo 1", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "4 Princípios IBGC", type: "Conceito", placeholderColor: "bg-blue-500/20" }, { title: "Problema de Agência", type: "Teoria", placeholderColor: "bg-sky-500/20" }, { title: "Agentes de Governança", type: "Estrutura", placeholderColor: "bg-cyan-500/20" }] }} sinteseEstrategica={{ title: "TEPR: Transparência, Equidade, Prestação de Contas, Responsabilidade", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Principal quer lucro, Agente quer salário. Governança alinha os dois."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Governança: Fundamentos", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={1} variant={mv[1]} video={{ videoId: "b1VjGMSRfMk", title: "Governança Corporativa: Fundamentos", duration: "18:00" }} resumoVisual={{ moduloNome: "Módulo 1", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "4 Princípios IBGC", type: "Conceito", placeholderColor: "bg-blue-500/20" }, { title: "Problema de Agência", type: "Teoria", placeholderColor: "bg-sky-500/20" }, { title: "Agentes de Governança", type: "Estrutura", placeholderColor: "bg-cyan-500/20" }] }} sinteseEstrategica={{ title: "TEPR: Transparência, Equidade, Prestação de Contas, Responsabilidade", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Principal quer lucro, Agente quer salário. Governança alinha os dois."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Governança: Fundamentos", artista: "Prof. Administração" }} />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -216,7 +216,7 @@ export default function AulaGovernancaCorporativa({
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={quizM1} titulo="QUIZ: Conceitos de Governança" numero={1} variant="blue" icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
+        <QuizInterativo questoes={quizM1} titulo="QUIZ: Conceitos de Governança" numero={1} variant={mv[1]} icone="🧠" onComplete={(score) => handleModuleComplete("modulo-1", score)} />
           </section>
         </div>
       </TabsContent>
@@ -226,7 +226,7 @@ export default function AulaGovernancaCorporativa({
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={2} titulo="Compliance e Ética Empresarial" descricao="Programas de integridade, código de ética e canais de denúncia." gradiente="bg-gradient-to-br from-emerald-600 to-teal-800" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={2} title="Integridade Corporativa" description="Compliance, ética e anticorrupção." variant="blue" />
+            <ModuleSectionHeader index={2} title="Integridade Corporativa" description="Compliance, ética e anticorrupção." variant={mv[2]} />
             <ContentAccordion slides={[
               { titulo: "Conceituação - Compliance e Ética", icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed"><strong>Compliance</strong> é o cumprimento de leis, regulações, políticas internas e padrões éticos. <strong>Ética</strong> envolve princípios morais que guiam as decisões organizacionais.</p><div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20"><p className="font-bold text-emerald-700 mb-2">Programa de Compliance:</p><div className="space-y-2 text-lg"><p><strong>1. Código de Ética:</strong> Documento que define valores, princípios e comportamentos esperados</p><p><strong>2. Políticas:</strong> Regras claras sobre anticorrupção, conflito de interesse, segurança</p><p><strong>3. Treinamento:</strong> Capacitação periódica de todos os colaboradores</p><p><strong>4. Canais de Denúncia:</strong> Ouvidoria, hotline, mecanismos de proteção ao denunciante</p><p><strong>5. Investigação:</strong> Apuração independente de irregularidades</p><p><strong>6. Disciplina:</strong> Consequências progressivas para violações</p></div></div></div>) },
               { titulo: "Exemplificação - Casos Reais", icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20"><p className="font-bold text-emerald-700 mb-3">Lava Jato (2014-2020) - Petrobras:</p><p className="text-lg mb-2">Maior investigação de corrupção do Brasil. Executivos envolvidos em:</p><ul className="text-lg list-disc list-inside space-y-1"><li>Recebimento de propinas de construtoras</li><li>Superfaturamento de refinarias e navios</li><li>Desvio de bilhões em recursos públicos</li></ul><p className="text-lg font-bold mt-3">Consequência:</p><p className="text-lg">Implementação rigorosa de programa de compliance na Petrobras, auditorias externas contínuas, códigos de conduta revisos.</p></div><div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20"><p className="font-bold text-emerald-700 mb-2">Conflito de Interesse:</p><p className="text-lg">Executivo que participa de licitações onde sua família tem interesse deve se declarar e se afastar.</p></div></div>) },
@@ -235,12 +235,12 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-2" className="mt-16">
-            <ModuleConsolidation index={2} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Compliance e Ética Empresarial", duration: "16:00" }} resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "6 Pilares de Compliance", type: "Estrutura", placeholderColor: "bg-emerald-500/20" }, { title: "Lava Jato - Petrobras", type: "Caso Real", placeholderColor: "bg-emerald-500/20" }, { title: "Conflitos de Interesse", type: "Risco", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "CÓDIGO-POLÍTICAS-TREINAMENTO-DENÚNCIA-INVESTIGAÇÃO-DISCIPLINA", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Compliance é cultura, não apenas regra."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Compliance e Ética", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={2} variant={mv[2]} video={{ videoId: "b1VjGMSRfMk", title: "Compliance e Ética Empresarial", duration: "16:00" }} resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "6 Pilares de Compliance", type: "Estrutura", placeholderColor: "bg-emerald-500/20" }, { title: "Lava Jato - Petrobras", type: "Caso Real", placeholderColor: "bg-emerald-500/20" }, { title: "Conflitos de Interesse", type: "Risco", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "CÓDIGO-POLÍTICAS-TREINAMENTO-DENÚNCIA-INVESTIGAÇÃO-DISCIPLINA", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Compliance é cultura, não apenas regra."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Compliance e Ética", artista: "Prof. Administração" }} />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -258,7 +258,7 @@ export default function AulaGovernancaCorporativa({
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={quizM2} titulo="QUIZ: Compliance e Ética" numero={2} variant="blue" icone="✅" onComplete={(score) => handleModuleComplete("modulo-2", score)} />
+        <QuizInterativo questoes={quizM2} titulo="QUIZ: Compliance e Ética" numero={2} variant={mv[2]} icone="✅" onComplete={(score) => handleModuleComplete("modulo-2", score)} />
           </section>
         </div>
       </TabsContent>
@@ -268,7 +268,7 @@ export default function AulaGovernancaCorporativa({
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={3} titulo="Gestão de Riscos Corporativos (COSO ERM)" descricao="Framework COSO, apetite a risco e mapa de riscos." gradiente="bg-gradient-to-br from-amber-600 to-orange-700" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={3} title="Framework COSO ERM" description="Gestão integrada de riscos corporativos." variant="blue" />
+            <ModuleSectionHeader index={3} title="Framework COSO ERM" description="Gestão integrada de riscos corporativos." variant={mv[3]} />
             <ContentAccordion slides={[
               { titulo: "Conceituação - COSO Enterprise Risk Management", icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed"><strong>COSO ERM (2004, atualizado 2017)</strong> é um framework para gestão de riscos corporativos que integra riscos em toda a organização.</p><div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20"><p className="font-bold text-amber-700 mb-2">8 Componentes COSO ERM:</p><div className="space-y-2 text-lg"><p><strong>1. Governança e Cultura:</strong> Tom no topo, comitês de risco</p><p><strong>2. Estratégia e Objetivos:</strong> Definir apetite a risco</p><p><strong>3. Identificação de Riscos:</strong> Brainstorming, análise de dados</p><p><strong>4. Avaliação de Riscos:</strong> Matriz probabilidade × impacto</p><p><strong>5. Resposta a Riscos:</strong> Evitar, mitigar, transferir, aceitar</p><p><strong>6. Atividades de Controle:</strong> Segregação de funções, aprovações</p><p><strong>7. Informação e Comunicação:</strong> Reportes gerenciais</p><p><strong>8. Atividades de Monitoramento:</strong> Revisões periódicas do mapa de riscos</p></div></div></div>) },
               { titulo: "Exemplificação - Mapa de Riscos", icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20"><p className="font-bold text-amber-700 mb-3">Exemplo: Refinaria da Petrobras</p><div className="space-y-2 text-lg"><div className="bg-white/10 p-2 rounded"><p><strong>Risco:</strong> Vazamento de óleo</p><p><strong>Probabilidade:</strong> Baixa (2/5)</p><p><strong>Impacto:</strong> Muito Alto (5/5) — ambiental, legal</p><p><strong>Prioridade:</strong> CRÍTICA (2×5=10)</p><p><strong>Resposta:</strong> <strong>MITIGAR</strong> — investir em sistemas de detecção</p></div></div></div><div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20"><p className="font-bold text-amber-700 mb-2">Apetite a Risco:</p><p className="text-lg">Nível máximo de risco que a organização está disposta a aceitar para alcançar seus objetivos. Exemplo: Petrobras tolera risco exploração, não tolera compliance.</p></div></div>) },
@@ -277,12 +277,12 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-3" className="mt-16">
-            <ModuleConsolidation index={3} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Gestão de Riscos COSO ERM", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "8 Componentes COSO", type: "Framework", placeholderColor: "bg-amber-500/20" }, { title: "Matriz de Riscos", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Risco Bruto vs Residual", type: "Conceito", placeholderColor: "bg-yellow-500/20" }] }} sinteseEstrategica={{ title: "COSO ERM: 8 Passos Integrados", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Risco bem gerenciado = Oportunidade bem aproveitada"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Gestão de Riscos COSO", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={3} variant={mv[3]} video={{ videoId: "b1VjGMSRfMk", title: "Gestão de Riscos COSO ERM", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "8 Componentes COSO", type: "Framework", placeholderColor: "bg-amber-500/20" }, { title: "Matriz de Riscos", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Risco Bruto vs Residual", type: "Conceito", placeholderColor: "bg-yellow-500/20" }] }} sinteseEstrategica={{ title: "COSO ERM: 8 Passos Integrados", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Risco bem gerenciado = Oportunidade bem aproveitada"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Gestão de Riscos COSO", artista: "Prof. Administração" }} />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -300,7 +300,7 @@ export default function AulaGovernancaCorporativa({
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={quizM3} titulo="QUIZ: Gestão de Riscos" numero={3} variant="blue" icone="⚠️" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
+        <QuizInterativo questoes={quizM3} titulo="QUIZ: Gestão de Riscos" numero={3} variant={mv[3]} icone="⚠️" onComplete={(score) => handleModuleComplete("modulo-3", score)} />
           </section>
         </div>
       </TabsContent>
@@ -310,7 +310,7 @@ export default function AulaGovernancaCorporativa({
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={4} titulo="Controles Internos" descricao="COSO Internal Control Framework e 5 componentes." gradiente="bg-gradient-to-br from-rose-600 to-pink-800" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={4} title="Sistema de Controles" description="Ambiente, avaliação, atividades, informação e monitoramento." variant="blue" />
+            <ModuleSectionHeader index={4} title="Sistema de Controles" description="Ambiente, avaliação, atividades, informação e monitoramento." variant={mv[4]} />
             <ContentAccordion slides={[
               { titulo: "Conceituação - COSO Internal Control", icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed"><strong>COSO IC (1992, atualizado 2013)</strong> define controles internos como processo para garantir:</p><div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20"><p className="font-bold text-rose-700 mb-2">5 Componentes COSO IC:</p><div className="space-y-2 text-lg"><p><strong>1. Ambiente de Controle:</strong> Tone at the top, valores éticos, competência</p><p><strong>2. Avaliação de Riscos:</strong> Identificar e analisar riscos para objetivos</p><p><strong>3. Atividades de Controle:</strong> Políticas, procedimentos (aprovações, segregação funções)</p><p><strong>4. Informação e Comunicação:</strong> Dados precisos, comunicação clara dos controles</p><p><strong>5. Monitoramento:</strong> Avaliações contínuas e periódicas de efetividade</p></div></div></div>) },
               { titulo: "Exemplificação - Controles Operacionais", icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20"><p className="font-bold text-rose-700 mb-3">Exemplo 1: Segregação de Funções</p><p className="text-lg">A pessoa que <strong>autoriza</strong> pagamento NÃO pode ser a que <strong>executa</strong> nem a que <strong>registra</strong>. Evita fraude.</p></div><div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20"><p className="font-bold text-rose-700 mb-3">Exemplo 2: Sistema de Aprovações</p><p className="text-lg">Compras acima de R$50 mil requerem aprovação de 2 gerentes. Protege contra gasto excessivo.</p></div><div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20"><p className="font-bold text-rose-700 mb-3">Exemplo 3: Reconciliação Bancária</p><p className="text-lg">Conferência mensal de saldos de caixa vs. banco. Detecta erros ou desvios.</p></div></div>) },
@@ -319,12 +319,12 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-4" className="mt-16">
-            <ModuleConsolidation index={4} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Controles Internos COSO", duration: "18:00" }} resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "5 Componentes COSO IC", type: "Framework", placeholderColor: "bg-rose-500/20" }, { title: "Segregação de Funções", type: "Controle", placeholderColor: "bg-pink-500/20" }, { title: "Limitações Inerentes", type: "Risco", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "COSO IC: Ambiente → Risco → Atividades → Info → Monitoramento", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Controle não é restrição, é proteção"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Controles Internos", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={4} variant={mv[4]} video={{ videoId: "b1VjGMSRfMk", title: "Controles Internos COSO", duration: "18:00" }} resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "5 Componentes COSO IC", type: "Framework", placeholderColor: "bg-rose-500/20" }, { title: "Segregação de Funções", type: "Controle", placeholderColor: "bg-pink-500/20" }, { title: "Limitações Inerentes", type: "Risco", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "COSO IC: Ambiente → Risco → Atividades → Info → Monitoramento", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Controle não é restrição, é proteção"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Controles Internos", artista: "Prof. Administração" }} />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -342,7 +342,7 @@ export default function AulaGovernancaCorporativa({
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={quizM4} titulo="QUIZ: Controles Internos" numero={4} variant="blue" icone="🔐" onComplete={(score) => handleModuleComplete("modulo-4", score)} />
+        <QuizInterativo questoes={quizM4} titulo="QUIZ: Controles Internos" numero={4} variant={mv[4]} icone="🔐" onComplete={(score) => handleModuleComplete("modulo-4", score)} />
           </section>
         </div>
       </TabsContent>
@@ -352,7 +352,7 @@ export default function AulaGovernancaCorporativa({
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={5} titulo="Lei Sarbanes-Oxley (SOX)" descricao="Seções 302, 404, 906 e impacto na governança." gradiente="bg-gradient-to-br from-violet-600 to-purple-800" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={5} title="SOX na Prática" description="Responsabilização de executivos e controles internos." variant="blue" />
+            <ModuleSectionHeader index={5} title="SOX na Prática" description="Responsabilização de executivos e controles internos." variant={mv[5]} />
             <ContentAccordion slides={[
               { titulo: "Conceituação - Lei Sarbanes-Oxley", icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed"><strong>SOX (2002)</strong> é lei federal americana que regulamenta empresas listadas em bolsa (NASDAQ, NYSE) para restaurar confiança após escândalos contábeis.</p><div className="bg-violet-500/10 p-4 rounded-xl border border-violet-500/20"><p className="font-bold text-violet-700 mb-2">Seções Principais:</p><div className="space-y-2 text-lg"><p><strong>Seção 302:</strong> CEO e CFO certificam demonstrações financeiras (responsabilidade pessoal, até prisão)</p><p><strong>Seção 404:</strong> Avaliar efetividade de controles internos sobre relatórios financeiros (auditoria externa obrigatória)</p><p><strong>Seção 906:</strong> Penalidade criminal para certificação falsa (até 20 anos de prisão)</p><p><strong>Seção 802:</strong> Destruição de documentos é crime (7 anos)</p><p><strong>Seção 906:</strong> Proteção ao denunciante (whistleblower)</p></div></div></div>) },
               { titulo: "Exemplificação - Impacto na Governança", icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><div className="bg-violet-500/10 p-4 rounded-xl border border-violet-500/20"><p className="font-bold text-violet-700 mb-3">Caso Enron (2001) — Motivou SOX:</p><p className="text-lg"><strong>CEO Kenny Lay</strong> aprovava relatórios que ocultavam US$38 bilhões em dívida. Resultado: Company faliu, 20 mil empregados perderam tudo.</p><p className="text-lg mt-2"><strong>Lição:</strong> A partir de SOX, CEO assina pessoalmente e responde criminalmente.</p></div><div className="bg-violet-500/10 p-4 rounded-xl border border-violet-500/20"><p className="font-bold text-violet-700 mb-3">Petrobras + Lava Jato:</p><p className="text-lg">Embora Petrobras seja brasileira, seu ADR (American Depositary Receipt) é listado em NYSE, logo <strong>sujeita a SOX</strong>. Isso forçou:</p><ul className="text-lg list-disc list-inside space-y-1"><li>Auditoria externa intensificada (Big Four)</li><li>Relatórios de controles internos trimestrais</li><li>Proteção de denunciantes reforçada</li></ul></div></div>) },
@@ -361,12 +361,12 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-5" className="mt-16">
-            <ModuleConsolidation index={5} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Lei Sarbanes-Oxley SOX", duration: "17:00" }} resumoVisual={{ moduloNome: "Módulo 5", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Seções Principais SOX", type: "Lei", placeholderColor: "bg-violet-500/20" }, { title: "Caso Enron", type: "História", placeholderColor: "bg-purple-500/20" }, { title: "Impacto Petrobras", type: "Aplicação", placeholderColor: "bg-indigo-500/20" }] }} sinteseEstrategica={{ title: "SOX 302/404/906: Certificação, Controles, Responsabilidade", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Com grande poder vem grande responsabilidade (criminal)"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Lei Sarbanes-Oxley", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={5} variant={mv[5]} video={{ videoId: "b1VjGMSRfMk", title: "Lei Sarbanes-Oxley SOX", duration: "17:00" }} resumoVisual={{ moduloNome: "Módulo 5", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Seções Principais SOX", type: "Lei", placeholderColor: "bg-violet-500/20" }, { title: "Caso Enron", type: "História", placeholderColor: "bg-purple-500/20" }, { title: "Impacto Petrobras", type: "Aplicação", placeholderColor: "bg-indigo-500/20" }] }} sinteseEstrategica={{ title: "SOX 302/404/906: Certificação, Controles, Responsabilidade", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Com grande poder vem grande responsabilidade (criminal)"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Lei Sarbanes-Oxley", artista: "Prof. Administração" }} />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -384,7 +384,7 @@ export default function AulaGovernancaCorporativa({
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={quizM5} titulo="QUIZ: Lei Sarbanes-Oxley" numero={5} variant="blue" icone="⚖️" onComplete={(score) => handleModuleComplete("modulo-5", score)} />
+        <QuizInterativo questoes={quizM5} titulo="QUIZ: Lei Sarbanes-Oxley" numero={5} variant={mv[5]} icone="⚖️" onComplete={(score) => handleModuleComplete("modulo-5", score)} />
           </section>
         </div>
       </TabsContent>
@@ -394,7 +394,7 @@ export default function AulaGovernancaCorporativa({
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={6} titulo="Conselho de Administração" descricao="Composição, comitês, independência e melhores práticas." gradiente="bg-gradient-to-br from-amber-900 via-amber-500 to-amber-800" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={6} title="Estruturas de Governança" description="Conselho, comitês e auditoria." variant="blue" />
+            <ModuleSectionHeader index={6} title="Estruturas de Governança" description="Conselho, comitês e auditoria." variant={mv[6]} />
             <ContentAccordion slides={[
               { titulo: "Conceituação - Conselho de Administração", icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed"><strong>Conselho de Administração (CA)</strong> é órgão colegial eleito pela Assembleia que define estratégia, supervisiona executivos e protege stakeholders.</p><div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20"><p className="font-bold text-amber-700 mb-2">Composição Recomendada:</p><div className="space-y-2 text-lg"><p><strong>Independentes:</strong> Sem vínculo com empresa (min. 30%, ideal 50%)</p><p><strong>Conselheiros Externos:</strong> Podem ter vínculo pequeno mas trazem visão nova</p><p><strong>Presidente do CA:</strong> Idealmente diferente de CEO (separação)</p><p><strong>Tamanho:</strong> 5-11 membros (equilíbrio entre diversidade e agilidade)</p></div></div><div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20"><p className="font-bold text-amber-700 mb-2">Comitês Importantes:</p><div className="space-y-2 text-lg"><p><strong>Auditoria:</strong> Supervisiona auditores, revisa controles</p><p><strong>Compliance/Risco:</strong> Monitora ERM e programa de integridade</p><p><strong>Remuneração:</strong> Define bônus e incentivos de executivos</p><p><strong>Sucessão:</strong> Planeja transição de CEO e lideranças críticas</p></div></div></div>) },
               { titulo: "Exemplificação - Conselho Petrobras", icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20"><p className="font-bold text-amber-700 mb-3">Governança Petrobras Pós-Lava Jato:</p><p className="text-lg mb-2"><strong>Antes:</strong> Conselho fraco, CEO muito poderoso, partido político interferia</p><p className="text-lg"><strong>Depois (2016+):</strong></p><ul className="text-lg list-disc list-inside space-y-1"><li>Aumentado independência do CA (Lei 13.303)</li><li>Criado Comitê de Conformidade e Integridade</li><li>Auditoria externa contínua (Big Four)</li><li>Relatórios ESG anuais obrigatórios</li></ul></div><div className="bg-amber-500/10 p-4 rounded-xl border border-amber-500/20"><p className="font-bold text-amber-700 mb-2">Estrutura Atual:</p><p className="text-lg">9 conselheiros, 30% independentes, Comitês de Auditoria, Risco/Compliance, Remuneração, Sucessão.</p></div></div>) },
@@ -403,12 +403,12 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-6" className="mt-16">
-            <ModuleConsolidation index={6} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Conselho de Administração", duration: "19:00" }} resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Composição CA", type: "Estrutura", placeholderColor: "bg-amber-500/20" }, { title: "Comitês Especializados", type: "Governance", placeholderColor: "bg-amber-600/20" }, { title: "Independência", type: "Qualidade", placeholderColor: "bg-amber-400/20" }] }} sinteseEstrategica={{ title: "CA: Estratégia, Supervisão, Proteção - Mínimo 30% Independentes", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Bom conselho desconfia, não delega cegamente"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Conselho de Administração", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={6} variant={mv[6]} video={{ videoId: "b1VjGMSRfMk", title: "Conselho de Administração", duration: "19:00" }} resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Composição CA", type: "Estrutura", placeholderColor: "bg-amber-500/20" }, { title: "Comitês Especializados", type: "Governance", placeholderColor: "bg-amber-600/20" }, { title: "Independência", type: "Qualidade", placeholderColor: "bg-amber-400/20" }] }} sinteseEstrategica={{ title: "CA: Estratégia, Supervisão, Proteção - Mínimo 30% Independentes", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Bom conselho desconfia, não delega cegamente"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Conselho de Administração", artista: "Prof. Administração" }} />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -426,7 +426,7 @@ export default function AulaGovernancaCorporativa({
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={quizM6} titulo="QUIZ: Conselho de Administração" numero={6} variant="blue" icone="👥" onComplete={(score) => handleModuleComplete("modulo-6", score)} />
+        <QuizInterativo questoes={quizM6} titulo="QUIZ: Conselho de Administração" numero={6} variant={mv[6]} icone="👥" onComplete={(score) => handleModuleComplete("modulo-6", score)} />
           </section>
         </div>
       </TabsContent>
@@ -436,7 +436,7 @@ export default function AulaGovernancaCorporativa({
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={7} titulo="Transparência e Prestação de Contas" descricao="Relatórios, disclosure e comunicação com stakeholders." gradiente="bg-gradient-to-br from-blue-900 via-blue-500 to-blue-800" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={7} title="Accountability" description="Relatórios integrados e disclosure." variant="blue" />
+            <ModuleSectionHeader index={7} title="Accountability" description="Relatórios integrados e disclosure." variant={mv[7]} />
             <ContentAccordion slides={[
               { titulo: "Conceituação - Transparência e Disclosure", icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed"><strong>Transparência</strong> é disponibilizar informações completas, precisas e em tempo hábil. <strong>Disclosure</strong> é o ato de revelar informações material.</p><div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20"><p className="font-bold text-blue-700 mb-2">Tipos de Relatórios:</p><div className="space-y-2 text-lg"><p><strong>Relatório Anual:</strong> Demonstrações financeiras auditadas + análise gerencial</p><p><strong>Relatório Trimestral (ITR):</strong> Informações contábeis não auditadas mas revisadas</p><p><strong>Relatório Integrado:</strong> Combina financeiro + ambiental + social (IIRC)</p><p><strong>Relatório de Sustentabilidade:</strong> GRI, ESG, emissões de CO₂</p><p><strong>Avisos Relevantes:</strong> Eventos que afetam preço da ação (aquisições, litígios)</p></div></div></div>) },
               { titulo: "Exemplificação - Práticas de Disclosure", icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20"><p className="font-bold text-blue-700 mb-3">Relatório Integrado Petrobras:</p><p className="text-lg mb-2">Publicado anualmente, inclui:</p><ul className="text-lg list-disc list-inside space-y-1"><li><strong>Financeiro:</strong> Receita, EBITDA, fluxo de caixa</li><li><strong>Operacional:</strong> Produção de petróleo (bbl/dia), refinarias</li><li><strong>Ambiental:</strong> Emissões Escopo 1,2,3 (meta net-zero 2050)</li><li><strong>Social:</strong> Diversidade, acidentes de trabalho (TRIR), comunidades</li><li><strong>Governança:</strong> Independência CA, execuções Lava Jato, integridade</li></ul></div><div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20"><p className="font-bold text-blue-700 mb-2">Aviso Relevante Exemplo:</p><p className="text-lg">"Petrobras anuncia aumento de preços de combustíveis em 10% a partir de amanhã" — isso move mercado, deve ser divulgado imediatamente.</p></div></div>) },
@@ -445,12 +445,12 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-7" className="mt-16">
-            <ModuleConsolidation index={7} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Transparência e Prestação de Contas", duration: "16:00" }} resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Tipos de Relatórios", type: "Disclosure", placeholderColor: "bg-blue-500/20" }, { title: "Relatório Integrado", type: "Comunicação", placeholderColor: "bg-cyan-500/20" }, { title: "Informação Material", type: "Conceito", placeholderColor: "bg-sky-500/20" }] }} sinteseEstrategica={{ title: "Transparência: Financeiro + Ambiental + Social + Governança", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Transparência total reduz custos de capital"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Transparência e Disclosure", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={7} variant={mv[7]} video={{ videoId: "b1VjGMSRfMk", title: "Transparência e Prestação de Contas", duration: "16:00" }} resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Tipos de Relatórios", type: "Disclosure", placeholderColor: "bg-blue-500/20" }, { title: "Relatório Integrado", type: "Comunicação", placeholderColor: "bg-cyan-500/20" }, { title: "Informação Material", type: "Conceito", placeholderColor: "bg-sky-500/20" }] }} sinteseEstrategica={{ title: "Transparência: Financeiro + Ambiental + Social + Governança", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Transparência total reduz custos de capital"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Transparência e Disclosure", artista: "Prof. Administração" }} />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -468,7 +468,7 @@ export default function AulaGovernancaCorporativa({
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={quizM7} titulo="QUIZ: Transparência" numero={7} variant="blue" icone="📊" onComplete={(score) => handleModuleComplete("modulo-7", score)} />
+        <QuizInterativo questoes={quizM7} titulo="QUIZ: Transparência" numero={7} variant={mv[7]} icone="📊" onComplete={(score) => handleModuleComplete("modulo-7", score)} />
           </section>
         </div>
       </TabsContent>
@@ -478,7 +478,7 @@ export default function AulaGovernancaCorporativa({
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={8} titulo="Governança em Estatais (Lei 13.303)" descricao="Lei das Estatais, requisitos de governança e transparência." gradiente="bg-gradient-to-br from-emerald-900 via-emerald-500 to-emerald-800" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={8} title="Lei das Estatais" description="13.303/2016 e suas exigências." variant="blue" />
+            <ModuleSectionHeader index={8} title="Lei das Estatais" description="13.303/2016 e suas exigências." variant={mv[8]} />
             <ContentAccordion slides={[
               { titulo: "Conceituação - Lei 13.303/2016", icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed"><strong>Lei 13.303/2016</strong> regulamenta estatais (Petrobras, Caixa, BNDES) para melhorar governança, combater corrupção e aumentar eficiência.</p><div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20"><p className="font-bold text-emerald-700 mb-2">Objetivos Principais:</p><div className="space-y-2 text-lg"><p><strong>1. Profissionalizar Gestão:</strong> Eliminar influência política direta nas decisões operacionais</p><p><strong>2. Conselho Independente:</strong> Maioria dos conselheiros (min. 50%) sem vínculo político</p><p><strong>3. Auditoria Rigorosa:</strong> Auditoria interna independente, externa obrigatória (Big Four)</p><p><strong>4. Transparência Total:</strong> Relatórios anuais, divulgação de critérios de seleção de executivos</p><p><strong>5. Combate à Corrupção:</strong> Programa de Integridade, Código de Ética, Ouvidoria</p></div></div></div>) },
               { titulo: "Exemplificação - Petrobras Pós-Lava Jato", icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20"><p className="font-bold text-emerald-700 mb-3">Cronologia da Lava Jato (Petrobras):</p><p className="text-lg"><strong>2009-2014:</strong> Fraude massiva — executivos e construtoras recebem propinas</p><p className="text-lg"><strong>2014 (Março):</strong> Operação Lava Jato inicia investigação</p><p className="text-lg"><strong>2015:</strong> CEO Graça Foster renuncia, reveladas descobertas contábeis</p><p className="text-lg"><strong>2016:</strong> Lei 13.303 promulgada (resposta legal)</p><p className="text-lg"><strong>2017+:</strong> Reestruturação total de governança, CFO novos, Comitê de Integridade criado</p></div><div className="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20"><p className="font-bold text-emerald-700 mb-2">Resultado Atual:</p><p className="text-lg">Petrobras é agora modelo de governança em estatais brasileiras (listada em NYSE, IBGC Nível 1).</p></div></div>) },
@@ -487,12 +487,12 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-8" className="mt-16">
-            <ModuleConsolidation index={8} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Lei 13.303 - Estatais", duration: "17:00" }} resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Lei 13.303/2016", type: "Regulação", placeholderColor: "bg-emerald-500/20" }, { title: "Lava Jato", type: "Contexto", placeholderColor: "bg-red-500/20" }, { title: "Governança Petrobras", type: "Aplicação", placeholderColor: "bg-emerald-600/20" }] }} sinteseEstrategica={{ title: "Lei 13.303: 50% Independência, Auditoria Rigorosa, Integridade Total", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Estatal que governa bem atrai investidores"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Lei 13.303 e Estatais", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={8} variant={mv[8]} video={{ videoId: "b1VjGMSRfMk", title: "Lei 13.303 - Estatais", duration: "17:00" }} resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Lei 13.303/2016", type: "Regulação", placeholderColor: "bg-emerald-500/20" }, { title: "Lava Jato", type: "Contexto", placeholderColor: "bg-red-500/20" }, { title: "Governança Petrobras", type: "Aplicação", placeholderColor: "bg-emerald-600/20" }] }} sinteseEstrategica={{ title: "Lei 13.303: 50% Independência, Auditoria Rigorosa, Integridade Total", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Estatal que governa bem atrai investidores"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Lei 13.303 e Estatais", artista: "Prof. Administração" }} />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -510,7 +510,7 @@ export default function AulaGovernancaCorporativa({
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={quizM8} titulo="QUIZ: Lei 13.303" numero={8} variant="blue" icone="📜" onComplete={(score) => handleModuleComplete("modulo-8", score)} />
+        <QuizInterativo questoes={quizM8} titulo="QUIZ: Lei 13.303" numero={8} variant={mv[8]} icone="📜" onComplete={(score) => handleModuleComplete("modulo-8", score)} />
           </section>
         </div>
       </TabsContent>
@@ -520,7 +520,7 @@ export default function AulaGovernancaCorporativa({
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={9} titulo="Aplicações Petrobras" descricao="Governança na Petrobras: comitês, integridade e lições aprendidas." gradiente="bg-gradient-to-br from-rose-900 via-rose-500 to-rose-800" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={9} title="Governança Petrobras" description="Da Lava Jato às melhores práticas." variant="blue" />
+            <ModuleSectionHeader index={9} title="Governança Petrobras" description="Da Lava Jato às melhores práticas." variant={mv[9]} />
             <ContentAccordion slides={[
               { titulo: "Conceituação - Estrutura de Governança Petrobras", icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed">A Petrobras, como estatal listada em NYSE e conformidade SOX + Lei 13.303, implementou governança de classe mundial.</p><div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20"><p className="font-bold text-rose-700 mb-2">Estrutura Atual Petrobras:</p><div className="space-y-2 text-lg"><p><strong>Assembleia de Acionistas:</strong> 50% Estado, 50% Mercado (cotistas privados)</p><p><strong>Conselho de Administração:</strong> 9 membros, 30% independentes, presidido por personalidade de mercado</p><p><strong>Comitês:</strong> Auditoria, Conformidade/Integridade, Remuneração, Sucessão, Saúde/Segurança/Meio Ambiente</p><p><strong>Diretoria Executiva:</strong> CEO + 5-6 Diretores (Financeiro, Operações, Exploração, Refino, etc.)</p><p><strong>Auditoria Interna:</strong> Independente, reporta ao CA</p><p><strong>Compliance:</strong> Diretor de Conformidade, programa de integridade, ouvidoria 24/7</p></div></div></div>) },
               { titulo: "Exemplificação - Casos Reais Petrobras", icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><div className="bg-rose-500/10 p-4 rounded-xl border border-rose-500/20"><p className="font-bold text-rose-700 mb-3">Lições da Lava Jato na Petrobras:</p><p className="text-lg"><strong>Antes:</strong> CEO Graça Foster ignorava sinais de fraude, conselho fraco, auditoria interna comprometida</p><p className="text-lg"><strong>Fraudes Detectadas:</strong></p><ul className="text-lg list-disc list-inside space-y-1"><li>Superfaturamento refinaria Abreu e Lima (Pernambuco): R$ 4 bilhões</li><li>Navios-tanque não entregues: R$ 5 bilhões</li><li>Esquema propinas construtoras (Odebrecht, Andrade Gutierrez): R$ 2 bilhões</li></ul><p className="text-lg mt-2"><strong>Depois:</strong> CEO Pedro Parente + Castello Branco implementaram:</p><ul className="text-lg list-disc list-inside space-y-1"><li>Auditoria interna triplicada em pessoal</li><li>Programa "Fale Seguro" (ouvidoria anônima)</li><li>Políticas rígidas de seleção de fornecedores</li><li>Relatórios integrados anuais (ESG)</li></ul></div></div>) },
@@ -529,12 +529,12 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-9" className="mt-16">
-            <ModuleConsolidation index={9} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Governança Petrobras na Prática", duration: "18:00" }} resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Estrutura Governança Petrobras", type: "Organograma", placeholderColor: "bg-rose-500/20" }, { title: "Lava Jato: Lições", type: "Caso Real", placeholderColor: "bg-red-500/20" }, { title: "Programa de Integridade", type: "Compliance", placeholderColor: "bg-rose-600/20" }] }} sinteseEstrategica={{ title: "Petrobras: 50% Estado, 50% Mercado, Governança Mundial", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Governança forte protege empresa E acionistas"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Governança Petrobras", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={9} variant={mv[9]} video={{ videoId: "b1VjGMSRfMk", title: "Governança Petrobras na Prática", duration: "18:00" }} resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Estrutura Governança Petrobras", type: "Organograma", placeholderColor: "bg-rose-500/20" }, { title: "Lava Jato: Lições", type: "Caso Real", placeholderColor: "bg-red-500/20" }, { title: "Programa de Integridade", type: "Compliance", placeholderColor: "bg-rose-600/20" }] }} sinteseEstrategica={{ title: "Petrobras: 50% Estado, 50% Mercado, Governança Mundial", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Governança forte protege empresa E acionistas"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Governança Petrobras", artista: "Prof. Administração" }} />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -552,7 +552,7 @@ export default function AulaGovernancaCorporativa({
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={quizM9} titulo="QUIZ: Aplicações Petrobras" numero={9} variant="blue" icone="🏢" onComplete={(score) => handleModuleComplete("modulo-9", score)} />
+        <QuizInterativo questoes={quizM9} titulo="QUIZ: Aplicações Petrobras" numero={9} variant={mv[9]} icone="🏢" onComplete={(score) => handleModuleComplete("modulo-9", score)} />
           </section>
         </div>
       </TabsContent>
@@ -562,7 +562,7 @@ export default function AulaGovernancaCorporativa({
         <div className="space-y-12 animate-in fade-in duration-500">
           <ModuleBanner numero={10} titulo="Simulado Geral - Governança Corporativa" descricao="Teste integrado com questões de todos os módulos. Prove seu domínio!" gradiente="bg-gradient-to-br from-violet-900 via-violet-500 to-violet-800" />
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-            <ModuleSectionHeader index={10} title="Desafio Final" description="Consolidação de conhecimentos - 10 questões integradas." variant="blue" />
+            <ModuleSectionHeader index={10} title="Desafio Final" description="Consolidação de conhecimentos - 10 questões integradas." variant={mv[10]} />
             <ContentAccordion slides={[
               { titulo: "Como Usar este Simulado", icone: <LuBrain />, conteudo: (<div className="space-y-4"><p className="text-muted-foreground leading-relaxed">Este simulado consolida os 9 módulos anteriores e simula questões CESGRANRIO reais.</p><div className="bg-violet-500/10 p-4 rounded-xl border border-violet-500/20"><p className="font-bold text-violet-700 mb-2">Estratégia:</p><div className="space-y-2 text-lg"><p><strong>1. Leia cada questão 2x:</strong> Identifique a pontos de atenção (alternativa que parece correta mas não é)</p><p><strong>2. Retire palavras-chave:</strong> "Governança", "Compliance", "Controle", "Risco", "Independência"</p><p><strong>3. Elimine absurdas:</strong> Opções que mentem descaradamente</p><p><strong>4. Entre as 2 restantes, foque em nuances:</strong> Qual é MAIS correta?</p></div></div></div>) },
               { titulo: "Tópicos Cobertos", icone: <LuBookOpen />, conteudo: (<div className="space-y-4"><div className="bg-violet-500/10 p-4 rounded-xl border border-violet-500/20"><p className="font-bold text-violet-700 mb-2">Questões por Módulo:</p><p className="text-lg"><strong>1x Conceitos (M1)</strong> | <strong>1x Compliance (M2)</strong> | <strong>1x Riscos COSO (M3)</strong> | <strong>1x Controles (M4)</strong> | <strong>1x SOX (M5)</strong> | <strong>1x CA (M6)</strong> | <strong>1x Transparência (M7)</strong> | <strong>1x Lei 13.303 (M8)</strong> | <strong>1x Petrobras (M9)</strong> | <strong>1x Integrada (Todos)</strong></p></div></div>) },
@@ -571,12 +571,12 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-10" className="mt-16">
-            <ModuleConsolidation index={10} variant="blue" video={{ videoId: "b1VjGMSRfMk", title: "Simulado Final Governança", duration: "22:00" }} resumoVisual={{ moduloNome: "Módulo 10 - Simulado", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "9 Módulos Integrados", type: "Consolidação", placeholderColor: "bg-violet-500/20" }, { title: "10 Questões CESGRANRIO", type: "Simulado", placeholderColor: "bg-purple-500/20" }, { title: "Score ≥70% = Aprovado", type: "Critério", placeholderColor: "bg-indigo-500/20" }] }} sinteseEstrategica={{ title: "Governança Corporativa Masterclass: 10 Módulos Concluídos!", content: (<div className="space-y-2 text-left"><p className="text-lg italic font-bold">"A melhor governança é aquela que funciona em crise"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Simulado Final Governança", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={10} variant={mv[10]} video={{ videoId: "b1VjGMSRfMk", title: "Simulado Final Governança", duration: "22:00" }} resumoVisual={{ moduloNome: "Módulo 10 - Simulado", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "9 Módulos Integrados", type: "Consolidação", placeholderColor: "bg-violet-500/20" }, { title: "10 Questões CESGRANRIO", type: "Simulado", placeholderColor: "bg-purple-500/20" }, { title: "Score ≥70% = Aprovado", type: "Critério", placeholderColor: "bg-indigo-500/20" }] }} sinteseEstrategica={{ title: "Governança Corporativa Masterclass: 10 Módulos Concluídos!", content: (<div className="space-y-2 text-left"><p className="text-lg italic font-bold">"A melhor governança é aquela que funciona em crise"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Simulado Final Governança", artista: "Prof. Administração" }} />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -594,7 +594,7 @@ export default function AulaGovernancaCorporativa({
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={quizM10} titulo="👑 Simulado Geral - Governança Corporativa" numero={10} variant="blue" icone="👑" onComplete={(score) => handleModuleComplete("modulo-10", score)} />
+        <QuizInterativo questoes={quizM10} titulo="👑 Simulado Geral - Governança Corporativa" numero={10} variant={mv[10]} icone="👑" onComplete={(score) => handleModuleComplete("modulo-10", score)} />
           </section>
         </div>
       </TabsContent>

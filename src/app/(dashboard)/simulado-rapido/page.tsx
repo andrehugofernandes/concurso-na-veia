@@ -292,7 +292,7 @@ export default function SimuladoPage() {
           restantes -= loteUnico.length;
           setProgressoGeracao(questoes.length);
         } catch (error: any) {
-          console.error(`[SIMULADO] Erro no lote de ${item.materia}:`, error.message);
+          console.warn(`[SIMULADO] Erro no lote de ${item.materia}:`, error.message);
 
           // Se for Rate Limit ou Fetch Failed (muitas vezes correlacionado), espera (25s conforme erro)
           if (
@@ -332,7 +332,7 @@ export default function SimuladoPage() {
             }
             setProgressoGeracao(questoes.length);
           } catch (retryError: any) {
-            console.error("[SIMULADO] Erro na retentativa:", retryError.message);
+            console.warn("[SIMULADO] Erro na retentativa:", retryError.message);
             if (retryError.message.includes("429") || retryError.message.includes("503") || retryError.message.includes("fetch failed")) {
               setContagemRegressivaIA(5);
               await new Promise((r) => setTimeout(r, 5000));

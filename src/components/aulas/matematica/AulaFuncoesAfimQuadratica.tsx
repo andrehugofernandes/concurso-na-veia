@@ -18,7 +18,7 @@ import {
   type FunctionPlot,
   QuestaoResolvidaStepByStep} from "../shared";
 
-import { getModuleVariant, getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 
 import {
   LuBookOpen,
@@ -57,7 +57,7 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaFuncoesAfimQuadratica({
   onComplete,
@@ -182,14 +182,14 @@ export default function AulaFuncoesAfimQuadratica({
           <ModuleBanner numero={1}
             titulo="Função Afim (A Reta)"
             descricao="Custo fixo e variável: modelando o comportamento corporativo."
-             variant="blue"/>
+             variant={mv[1]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Função Afim: Fundamentos da Reta"
               description="Modelagem linear em operações Petrobras"
-              variant="blue"
+              variant={mv[1]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -406,7 +406,7 @@ export default function AulaFuncoesAfimQuadratica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[1]}
             video={{
               videoId: "gZDzgZxrvAo",
               title: "Função Afim: Fundamentos da Reta",
@@ -462,7 +462,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM1}
               titulo="QUIZ: A Função Afim (A Reta)"
               numero={3}
-              variant="blue"
+              variant={mv[1]}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -476,14 +476,14 @@ export default function AulaFuncoesAfimQuadratica({
           <ModuleBanner numero={2}
             titulo="A Função Quadrática"
             descricao="O reino do crescimento acelerado e do formato parabólico."
-             variant="blue"/>
+             variant={mv[2]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Função Quadrática: Parábolas e Otimização"
               description="Forma, vértice e análise de extremos"
-              variant="blue"
+              variant={mv[2]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -699,7 +699,7 @@ export default function AulaFuncoesAfimQuadratica({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -721,7 +721,7 @@ export default function AulaFuncoesAfimQuadratica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[2]}
             video={{
               videoId: "2Aq7p7-VgEU",
               title: "Função Quadrática: Análise Completa",
@@ -777,7 +777,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM2}
               titulo="QUIZ: A Quadrática (A Parábola)"
               numero={3}
-              variant="blue"
+              variant={mv[2]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -791,14 +791,14 @@ export default function AulaFuncoesAfimQuadratica({
           <ModuleBanner numero={3}
             titulo="Interpretação Geográfica"
             descricao="Brotou o gráfico na sua frente. O que ele está dizendo?"
-             variant="blue"/>
+             variant={mv[3]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Interpretação Gráfica: Sinal e Monotonia"
               description="Lendo parábolas e retas para extrair informações"
-              variant="blue"
+              variant={mv[3]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -995,7 +995,7 @@ export default function AulaFuncoesAfimQuadratica({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1017,7 +1017,7 @@ export default function AulaFuncoesAfimQuadratica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[3]}
             video={{
               videoId: "9KZg0LdwAg4",
               title: "Leitura de Gráficos: Análise Completa",
@@ -1072,7 +1072,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM3}
               titulo="QUIZ: Interpretação de Gráficos"
               numero={3}
-              variant="blue"
+              variant={mv[3]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -1086,14 +1086,14 @@ export default function AulaFuncoesAfimQuadratica({
           <ModuleBanner numero={4}
             titulo="O Vértice do Poder"
             descricao="Maximizando o lucro da empresa ou escapando da ruína a tempo."
-             variant="blue"/>
+             variant={mv[4]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Dominando Vértices"
               description="Não tente achar raízes em problemas de lucro máximo."
-              variant="blue"
+              variant={mv[4]}
             />
 
             <ContentAccordion
@@ -1222,7 +1222,7 @@ export default function AulaFuncoesAfimQuadratica({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1244,7 +1244,7 @@ export default function AulaFuncoesAfimQuadratica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[4]}
             video={{
               videoId: "7Pg5MZV2XqU",
               title: "Otimização: Máximos e Mínimos",
@@ -1299,7 +1299,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM4}
               titulo="QUIZ: Aplicações de Max e Min"
               numero={3}
-              variant="blue"
+              variant={mv[4]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1313,14 +1313,14 @@ export default function AulaFuncoesAfimQuadratica({
           <ModuleBanner numero={5}
             titulo="Comparação Afim vs Quadrática"
             descricao="Entenda as diferenças e semelhanças entre retas e parábolas."
-             variant="blue"/>
+             variant={mv[5]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Duas Famílias Distintas"
               description="Linear versus Quadrático: comportamentos completamente diferentes."
-              variant="blue"
+              variant={mv[5]}
             />
 
             <ContentAccordion
@@ -1480,7 +1480,7 @@ export default function AulaFuncoesAfimQuadratica({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1502,7 +1502,7 @@ export default function AulaFuncoesAfimQuadratica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[5]}
             video={{
               videoId: "tZzgzUaHdCw",
               title: "Comparação: Afim vs Quadrática",
@@ -1561,7 +1561,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM5}
               titulo="QUIZ: Comparação Afim vs Quadrática"
               numero={3}
-              variant="blue"
+              variant={mv[5]}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1575,14 +1575,14 @@ export default function AulaFuncoesAfimQuadratica({
           <ModuleBanner numero={6}
             titulo="Inequações com Afim e Quadrática"
             descricao="Resolva f(x) > 0, f(x) < 0 e variações com confiança."
-             variant="blue"/>
+             variant={mv[6]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Estudando o Sinal da Função"
               description="Onde a função é positiva, negativa ou nula."
-              variant="blue"
+              variant={mv[6]}
             />
 
             <ContentAccordion
@@ -1717,7 +1717,7 @@ export default function AulaFuncoesAfimQuadratica({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1739,7 +1739,7 @@ export default function AulaFuncoesAfimQuadratica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[6]}
             video={{
               videoId: "4KzE9R6zWzY",
               title: "Inequações: Análise de Sinais",
@@ -1795,7 +1795,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM6}
               titulo="QUIZ: Inequações com Afim e Quadrática"
               numero={3}
-              variant="blue"
+              variant={mv[6]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1809,14 +1809,14 @@ export default function AulaFuncoesAfimQuadratica({
           <ModuleBanner numero={7}
             titulo="Sistemas e Intersecções"
             descricao="Encontre onde retas e parábolas se cruzam no plano cartesiano."
-             variant="blue"/>
+             variant={mv[7]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Encontrando Pontos de Encontro"
               description="Sistemas com funções afim e quadrática."
-              variant="blue"
+              variant={mv[7]}
             />
 
             <ContentAccordion
@@ -1993,7 +1993,7 @@ export default function AulaFuncoesAfimQuadratica({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2015,7 +2015,7 @@ export default function AulaFuncoesAfimQuadratica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[7]}
             video={{
               videoId: "5Rw9KzK3jqA",
               title: "Sistemas: Intersecções",
@@ -2070,7 +2070,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM7}
               titulo="QUIZ: Sistemas e Intersecções"
               numero={3}
-              variant="blue"
+              variant={mv[7]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -2084,14 +2084,14 @@ export default function AulaFuncoesAfimQuadratica({
           <ModuleBanner numero={8}
             titulo="Otimização Avançada"
             descricao="Maximizar lucros, minimizar custos e resolver problemas reais."
-             variant="blue"/>
+             variant={mv[8]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Vértice: O Ponto Mágico"
               description="Máximos e mínimos de funções quadráticas."
-              variant="blue"
+              variant={mv[8]}
             />
 
             <ContentAccordion
@@ -2234,7 +2234,7 @@ export default function AulaFuncoesAfimQuadratica({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2256,7 +2256,7 @@ export default function AulaFuncoesAfimQuadratica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[8]}
             video={{
               videoId: "7Pg5MZV2XqU",
               title: "Otimização Avançada: Problemas Reais",
@@ -2311,7 +2311,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM8}
               titulo="QUIZ: Otimização Avançada"
               numero={3}
-              variant="blue"
+              variant={mv[8]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -2325,14 +2325,14 @@ export default function AulaFuncoesAfimQuadratica({
           <ModuleBanner numero={9}
             titulo="Aplicações Petrobras"
             descricao="Resolvendo problemas reais da indústria de petróleo e gás."
-             variant="blue"/>
+             variant={mv[9]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Matemática Corporativa"
               description="Casos de uso na Petrobras e similares."
-              variant="blue"
+              variant={mv[9]}
             />
 
             <ContentAccordion
@@ -2484,7 +2484,7 @@ export default function AulaFuncoesAfimQuadratica({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2506,7 +2506,7 @@ export default function AulaFuncoesAfimQuadratica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "2xQr4vZ5M1I",
               title: "Aplicações Petrobras: Otimização",
@@ -2562,7 +2562,7 @@ export default function AulaFuncoesAfimQuadratica({
               questoes={quizM9}
               titulo="QUIZ: Aplicações Petrobras"
               numero={3}
-              variant="blue"
+              variant={mv[9]}
               icone="🌹"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -2576,7 +2576,7 @@ export default function AulaFuncoesAfimQuadratica({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="Teste final: integre tudo e domine funções afim e quadrática."
-             variant="blue"/>
+             variant={mv[10]}/>
 
           {showCompletionBadge ? (
             <div className="flex flex-col items-center gap-6 py-10 mt-10">
@@ -2595,7 +2595,7 @@ export default function AulaFuncoesAfimQuadratica({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2618,7 +2618,7 @@ export default function AulaFuncoesAfimQuadratica({
                 titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={1}
-                variant="blue"
+                variant={mv[10]}
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

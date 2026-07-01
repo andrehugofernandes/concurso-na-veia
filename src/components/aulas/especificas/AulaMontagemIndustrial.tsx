@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_MONTAGEM_INDUSTRIAL, QUIZ_M2_MONTAGEM_INDUSTRIAL, QUIZ_M3_MONTAGEM_INDUSTRIAL } from '@/data/quizzes/especificas/montagem-industrial';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -27,40 +25,31 @@ export default function AulaMontagemIndustrial({ onComplete }: AulaProps) {
 
   const modules = [
     {
-      title: 'Módulo 1: Introdução a Montagem Industrial',
+      title: 'Módulo 1: Introdução a Montagem industrial',
       content: (
         <div className="space-y-4 text-slate-300">
           <p>Esta aula faz parte dos Conhecimentos Específicos para os cargos técnicos e superiores da Petrobras.</p>
           <p>O foco inicial deste módulo é introduzir os conceitos básicos de montagem industrial.</p>
         </div>
       ),
-      quiz: QUIZ_M1_MONTAGEM_INDUSTRIAL
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_MONTAGEM_INDUSTRIAL
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_MONTAGEM_INDUSTRIAL
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Montagem Industrial"
+    <AulaEspecificaTemplate
+      title="Montagem industrial"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

@@ -21,7 +21,7 @@ import {
   type FunctionPlot,
   QuestaoResolvidaStepByStep} from "../shared";
 
-import { getModuleVariant, getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 
 import {
   LuBookOpen,
@@ -51,7 +51,7 @@ import {
 
 // ── COMPONENT ───────────────────────────────────────────────────────────
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaRazaoProporcao({
   onComplete,
@@ -172,7 +172,7 @@ export default function AulaRazaoProporcao({
         <ModuleBanner numero={1}
           titulo="Razão: A Comparação Primitiva"
           descricao="Domine o conceito fundamental que está por trás de densidades, escalas e produtividades industriais."
-           variant="blue"/>
+           variant={mv[1]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm text-justify text-2xl space-y-8">
@@ -180,7 +180,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Razão: A Fundação da Comparação Quantitativa"
               description="De densidades a escalas — o quociente que permeia toda a matemática industrial"
-              variant="blue"
+              variant={mv[1]}
             />
 
             <div className="space-y-6 text-xl text-foreground/85 text-justify leading-relaxed">
@@ -328,7 +328,7 @@ export default function AulaRazaoProporcao({
               index={2}
               title="O que é Razão?"
               description="A comparação exata entre duas quantidades da mesma natureza."
-              variant="blue"
+              variant={mv[1]}
               className="mb-6"
             />
             <ContentAccordion
@@ -486,7 +486,7 @@ export default function AulaRazaoProporcao({
               index={3}
               title="Tipos de Razão na Prática"
               description="Os contextos industriais onde razão aparece disfarçada."
-              variant="blue"
+              variant={mv[1]}
             />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FlipCard
@@ -595,7 +595,7 @@ export default function AulaRazaoProporcao({
         <QuestaoResolvidaStepByStep
           index={5}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -617,7 +617,7 @@ export default function AulaRazaoProporcao({
 
         <ModuleConsolidation
               index={5}
-              variant="blue"
+              variant={mv[1]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 1",
@@ -672,7 +672,7 @@ export default function AulaRazaoProporcao({
               questoes={quizRazao}
               titulo="QUIZ: Razão"
               numero={6}
-              variant="blue"
+              variant={mv[1]}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -683,7 +683,7 @@ export default function AulaRazaoProporcao({
             <ModuleSectionHeader
               index={4}
               title="Resumo Visual"
-              variant="blue"
+              variant={mv[1]}
             />
             <LessonTabs
               tabs={[
@@ -726,7 +726,7 @@ export default function AulaRazaoProporcao({
         <ModuleBanner numero={2}
           titulo="Proporção: A Balança de Duas Razões"
           descricao="Propriedade fundamental, produtos cruzados e as fórmulas que a CESGRANRIO cobra todo ano."
-           variant="blue"/>
+           variant={mv[2]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -734,7 +734,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Proporção: A Igualdade Que Governa a Engenharia"
               description="Do produto cruzado à divisão proporcional de lucros — o fundamento das relações quantitativas"
-              variant="blue"
+              variant={mv[2]}
             />
 
             <div className="space-y-6 text-foreground/85 text-xl leading-relaxed">
@@ -889,7 +889,7 @@ export default function AulaRazaoProporcao({
               index={2}
               title="Proporção e Propriedade Fundamental"
               description="A igualdade de duas razões e sua regra de ouro."
-              variant="blue"
+              variant={mv[2]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1048,7 +1048,7 @@ export default function AulaRazaoProporcao({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1070,7 +1070,7 @@ export default function AulaRazaoProporcao({
 
         <ModuleConsolidation
               index={4}
-              variant="blue"
+              variant={mv[2]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 2",
@@ -1125,7 +1125,7 @@ export default function AulaRazaoProporcao({
               questoes={quizProporcao}
               titulo="QUIZ: Proporção"
               numero={5}
-              variant="blue"
+              variant={mv[2]}
               icone="⚖️"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -1136,7 +1136,7 @@ export default function AulaRazaoProporcao({
             <ModuleSectionHeader
               index={3}
               title="Resumo Visual"
-              variant="blue"
+              variant={mv[2]}
             />
             <LessonTabs
               tabs={[
@@ -1174,7 +1174,7 @@ export default function AulaRazaoProporcao({
         <ModuleBanner numero={3}
           titulo="Regra de Três Simples"
           descricao="O método que resolve 60% das questões de matemática em concursos. Domine o passo a passo."
-           variant="blue"/>
+           variant={mv[3]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1182,7 +1182,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Regra de Três Simples: O Atalho da Indústria"
               description="Da proporcionalidade direta à inversa — o método que resolve a maioria das questões de concurso"
-              variant="blue"
+              variant={mv[3]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1307,7 +1307,7 @@ export default function AulaRazaoProporcao({
               index={2}
               title="O Método Completo"
               description="Identificação, montagem e resolução em 3 passos."
-              variant="blue"
+              variant={mv[3]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1461,7 +1461,7 @@ export default function AulaRazaoProporcao({
               index={3}
               title="Regra de Três Composta"
               description="Múltiplas grandezas, um único resultado. O método que vence provas."
-              variant="blue"
+              variant={mv[3]}
             />
             <ContentAccordion
               titulo="Regra de Três Composta — Técnica Industrial"
@@ -1518,7 +1518,7 @@ export default function AulaRazaoProporcao({
               index={4}
               title="Visualização Gráfica: Direta vs. Inversa"
               description="Observe como as duas relações se comportam no mesmo domínio."
-              variant="blue"
+              variant={mv[3]}
             />
             <FunctionGraph
               title="Comparação: Proporção Direta vs. Inversa"
@@ -1554,7 +1554,7 @@ export default function AulaRazaoProporcao({
         <QuestaoResolvidaStepByStep
           index={6}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1576,7 +1576,7 @@ export default function AulaRazaoProporcao({
 
         <ModuleConsolidation
               index={6}
-              variant="blue"
+              variant={mv[3]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 3",
@@ -1631,7 +1631,7 @@ export default function AulaRazaoProporcao({
               questoes={quizRegra3}
               titulo="QUIZ: Regra de 3 Simples"
               numero={7}
-              variant="blue"
+              variant={mv[3]}
               icone="🔢"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -1642,7 +1642,7 @@ export default function AulaRazaoProporcao({
             <ModuleSectionHeader
               index={5}
               title="Resumo Visual"
-              variant="blue"
+              variant={mv[3]}
             />
             <LessonTabs
               tabs={[
@@ -1679,7 +1679,7 @@ export default function AulaRazaoProporcao({
         <ModuleBanner numero={4}
           titulo="Divisão Proporcional Básica"
           descricao="Distribua recursos com precisão: lucros, orçamentos e bonificações em questões CESGRANRIO."
-           variant="blue"/>
+           variant={mv[4]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1687,7 +1687,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Divisão Proporcional: Distribuição Justa de Recursos"
               description="Como repartir lucros, orçamentos e bonificações segundo razões estabelecidas"
-              variant="blue"
+              variant={mv[4]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1814,7 +1814,7 @@ export default function AulaRazaoProporcao({
               index={2}
               title="Dividir Proporcionalmente"
               description="Três passos infalíveis para nunca errar divisão proporcional."
-              variant="blue"
+              variant={mv[4]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1954,7 +1954,7 @@ export default function AulaRazaoProporcao({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1976,7 +1976,7 @@ export default function AulaRazaoProporcao({
 
         <ModuleConsolidation
               index={4}
-              variant="blue"
+              variant={mv[4]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 4",
@@ -2031,7 +2031,7 @@ export default function AulaRazaoProporcao({
               questoes={quizDivisao}
               titulo="QUIZ: Divisão Proporcional"
               numero={5}
-              variant="blue"
+              variant={mv[4]}
               icone="✂️"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -2042,7 +2042,7 @@ export default function AulaRazaoProporcao({
             <ModuleSectionHeader
               index={3}
               title="Resumo Visual"
-              variant="blue"
+              variant={mv[4]}
             />
             <LessonTabs
               tabs={[
@@ -2081,7 +2081,7 @@ export default function AulaRazaoProporcao({
         <ModuleBanner numero={5}
           titulo="Grandezas Proporcionais"
           descricao="O ponto que mais derruba candidatos: identificar se duas grandezas andam juntas ou em sentidos opostos."
-           variant="blue"/>
+           variant={mv[5]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2089,7 +2089,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Grandezas Proporcionais: Diretas vs. Inversas"
               description="A rainha do erro em provas — identificar se duas variáveis crescem juntas ou em sentidos opostos"
-              variant="blue"
+              variant={mv[5]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -2220,7 +2220,7 @@ export default function AulaRazaoProporcao({
               index={2}
               title="Direta vs. Inversa — A Grande Batalha"
               description="Como identificar a relação correta antes de montar a conta."
-              variant="blue"
+              variant={mv[5]}
               className="mb-6"
             />
             <ContentAccordion
@@ -2371,7 +2371,7 @@ export default function AulaRazaoProporcao({
               index={3}
               title="Visualização: Proporcionalidade Direta"
               description="Diferentes constantes k geram retas com inclinações distintas — todas passando pela origem."
-              variant="blue"
+              variant={mv[5]}
             />
             <FunctionGraph
               title="Proporcionalidade Direta: y = kx"
@@ -2412,7 +2412,7 @@ export default function AulaRazaoProporcao({
               index={4}
               title="Casos Clássicos da CESGRANRIO"
               description="Flashcards com as relações mais cobradas em prova."
-              variant="blue"
+              variant={mv[5]}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FlipCard
@@ -2490,7 +2490,7 @@ export default function AulaRazaoProporcao({
               index={5}
               title="Visualização: Proporcionalidade Inversa"
               description="Hipérboles: quanto maior x, menor y — o produto x·y permanece constante."
-              variant="blue"
+              variant={mv[5]}
             />
             <FunctionGraph
               title="Proporcionalidade Inversa: y = k/x"
@@ -2526,7 +2526,7 @@ export default function AulaRazaoProporcao({
         <QuestaoResolvidaStepByStep
           index={7}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2548,7 +2548,7 @@ export default function AulaRazaoProporcao({
 
         <ModuleConsolidation
               index={7}
-              variant="blue"
+              variant={mv[5]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 5",
@@ -2603,7 +2603,7 @@ export default function AulaRazaoProporcao({
               questoes={quizGrandezas}
               titulo="QUIZ: Grandezas D/I"
               numero={8}
-              variant="blue"
+              variant={mv[5]}
               icone="↕️"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -2614,7 +2614,7 @@ export default function AulaRazaoProporcao({
             <ModuleSectionHeader
               index={6}
               title="Resumo Visual"
-              variant="blue"
+              variant={mv[5]}
             />
             <LessonTabs
               tabs={[
@@ -2651,7 +2651,7 @@ export default function AulaRazaoProporcao({
         <ModuleBanner numero={6}
           titulo="Divisão Proporcional Avançada"
           descricao="Distribuições inversas, combinadas e casos especiais. O nível que separa os aprovados dos classificados."
-           variant="blue"/>
+           variant={mv[6]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2659,7 +2659,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Divisão Proporcional Avançada: Múltiplos Critérios"
               description="De inversas puras a combinações complexas — o que separa candidatos aprovados de classificados"
-              variant="blue"
+              variant={mv[6]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -2787,7 +2787,7 @@ export default function AulaRazaoProporcao({
               index={2}
               title="Divisão com Múltiplos Critérios"
               description="Quando a distribuição envolve condições mistas ou encadeadas."
-              variant="blue"
+              variant={mv[6]}
               className="mb-6"
             />
             <ContentAccordion
@@ -2934,7 +2934,7 @@ export default function AulaRazaoProporcao({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2956,7 +2956,7 @@ export default function AulaRazaoProporcao({
 
         <ModuleConsolidation
               index={4}
-              variant="blue"
+              variant={mv[6]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 6",
@@ -3011,7 +3011,7 @@ export default function AulaRazaoProporcao({
               questoes={quizDivisaoAdv}
               titulo="QUIZ: Div. Prop. Avançada"
               numero={5}
-              variant="blue"
+              variant={mv[6]}
               icone="⚙️"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -3022,7 +3022,7 @@ export default function AulaRazaoProporcao({
             <ModuleSectionHeader
               index={3}
               title="Resumo Visual"
-              variant="blue"
+              variant={mv[6]}
             />
             <LessonTabs
               tabs={[
@@ -3060,7 +3060,7 @@ export default function AulaRazaoProporcao({
         <ModuleBanner numero={7}
           titulo="Proporção Contínua e Média Proporcional"
           descricao="O tema mais elegante da proporção: quando o meio é a raiz quadrada dos extremos."
-           variant="blue"/>
+           variant={mv[7]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -3068,7 +3068,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Proporção Contínua: O Elegante Encadeamento"
               description="Quando o meio termo é a chave geométrica entre os extremos — a média proporcional"
-              variant="blue"
+              variant={mv[7]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -3189,7 +3189,7 @@ export default function AulaRazaoProporcao({
               index={2}
               title="Proporção Contínua e Termos Proporcionais"
               description="Da média geométrica à quarta proporcional — tudo que a CESGRANRIO cobra."
-              variant="blue"
+              variant={mv[7]}
               className="mb-6"
             />
             <ContentAccordion
@@ -3340,7 +3340,7 @@ export default function AulaRazaoProporcao({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -3362,7 +3362,7 @@ export default function AulaRazaoProporcao({
 
         <ModuleConsolidation
               index={4}
-              variant="blue"
+              variant={mv[7]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 7",
@@ -3417,7 +3417,7 @@ export default function AulaRazaoProporcao({
               questoes={quizContinua}
               titulo="QUIZ: Proporção Contínua"
               numero={5}
-              variant="blue"
+              variant={mv[7]}
               icone="🔗"
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
@@ -3428,7 +3428,7 @@ export default function AulaRazaoProporcao({
             <ModuleSectionHeader
               index={3}
               title="Resumo Visual"
-              variant="blue"
+              variant={mv[7]}
             />
             <LessonTabs
               tabs={[
@@ -3465,7 +3465,7 @@ export default function AulaRazaoProporcao({
         <ModuleBanner numero={8}
           titulo="Escalas e Mapas"
           descricao="De plantas industriais a mapas cartográficos: as conversões que a CESGRANRIO cobra todo concurso."
-           variant="blue"/>
+           variant={mv[8]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -3473,7 +3473,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Escalas: A Razão Entre Representação e Realidade"
               description="De plantas industriais a mapas geográficos — a aplicação mais tangível da razão em engenharia"
-              variant="blue"
+              variant={mv[8]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -3602,7 +3602,7 @@ export default function AulaRazaoProporcao({
               index={2}
               title="Escalas: Teoria e Conversão"
               description="Da definição às conversões mais complexas de unidades."
-              variant="blue"
+              variant={mv[8]}
               className="mb-6"
             />
             <ContentAccordion
@@ -3772,7 +3772,7 @@ export default function AulaRazaoProporcao({
               index={3}
               title="Tipos de Questão de Escala"
               description="Os 4 formatos que a CESGRANRIO usa para cobrar escalas."
-              variant="blue"
+              variant={mv[8]}
             />
             <CardCarousel
               cards={[
@@ -3817,7 +3817,7 @@ export default function AulaRazaoProporcao({
         <QuestaoResolvidaStepByStep
           index={5}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -3839,7 +3839,7 @@ export default function AulaRazaoProporcao({
 
         <ModuleConsolidation
               index={5}
-              variant="blue"
+              variant={mv[8]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 8",
@@ -3894,7 +3894,7 @@ export default function AulaRazaoProporcao({
               questoes={quizEscalas}
               titulo="QUIZ: Escalas e Mapas"
               numero={6}
-              variant="blue"
+              variant={mv[8]}
               icone="🗺️"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -3905,7 +3905,7 @@ export default function AulaRazaoProporcao({
             <ModuleSectionHeader
               index={4}
               title="Resumo Visual"
-              variant="blue"
+              variant={mv[8]}
             />
             <LessonTabs
               tabs={[
@@ -3942,7 +3942,7 @@ export default function AulaRazaoProporcao({
         <ModuleBanner numero={9}
           titulo="Aplicações Industriais Petrobras"
           descricao="Contextos reais: FPSO, oleodutos, refinarias e plataformas. O coração das questões CESGRANRIO."
-           variant="blue"/>
+           variant={mv[9]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -3950,7 +3950,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Razão e Proporção no Coração da Petrobras"
               description="De FPSO a refinarias: como a matemática funciona em operações reais de exploração e produção"
-              variant="blue"
+              variant={mv[9]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -4075,7 +4075,7 @@ export default function AulaRazaoProporcao({
               index={2}
               title="Razão e Proporção no Setor de E&P"
               description="Exemplos reais de como estas ferramentas são usadas em operações petrolíferas."
-              variant="blue"
+              variant={mv[9]}
               className="mb-6"
             />
             <ContentAccordion
@@ -4216,7 +4216,7 @@ export default function AulaRazaoProporcao({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -4238,7 +4238,7 @@ export default function AulaRazaoProporcao({
 
         <ModuleConsolidation
               index={4}
-              variant="blue"
+              variant={mv[9]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 9",
@@ -4293,7 +4293,7 @@ export default function AulaRazaoProporcao({
               questoes={quizPetrobras}
               titulo="QUIZ: Aplicações Petrobras"
               numero={5}
-              variant="blue"
+              variant={mv[9]}
               icone="🛢️"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -4304,7 +4304,7 @@ export default function AulaRazaoProporcao({
             <ModuleSectionHeader
               index={3}
               title="Resumo Visual"
-              variant="blue"
+              variant={mv[9]}
             />
             <LessonTabs
               tabs={[
@@ -4341,7 +4341,7 @@ export default function AulaRazaoProporcao({
         <ModuleBanner numero={10}
           titulo="Simulado Final — Nível Elite"
           descricao="8 questões integrando todos os temas. O teste definitivo de preparação para a CESGRANRIO."
-           variant="blue"/>
+           variant={mv[10]}/>
         <div className="space-y-[50px]">
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -4349,7 +4349,7 @@ export default function AulaRazaoProporcao({
               index={1}
               title="Simulado Final: Integrando Razão, Proporção e Aplicações"
               description="O teste definitivo — 8 questões que cobrem todos os 9 módulos anteriores em contextos reais"
-              variant="blue"
+              variant={mv[10]}
             />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -4472,7 +4472,7 @@ export default function AulaRazaoProporcao({
               index={2}
               title="Mapa de Revisão — Todos os Temas"
               description="Revise os pontos críticos antes de enfrentar o simulado final."
-              variant="blue"
+              variant={mv[10]}
               className="mb-6"
             />
             <CardCarousel
@@ -4531,7 +4531,7 @@ export default function AulaRazaoProporcao({
               index={3}
               title="Armadilhas Fatais da CESGRANRIO"
               description="Os erros que eliminam candidatos no último momento."
-              variant="blue"
+              variant={mv[10]}
             />
             <div className="grid md:grid-cols-2 gap-4">
               <AlertBox tipo="danger" titulo="Armadilha 1 — Ordem da Razão">
@@ -4567,7 +4567,7 @@ export default function AulaRazaoProporcao({
         <QuestaoResolvidaStepByStep
           index={5}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -4589,7 +4589,7 @@ export default function AulaRazaoProporcao({
 
         <ModuleConsolidation
               index={5}
-              variant="blue"
+              variant={mv[10]}
               video={{
                 videoId: "h3S9XW1WzIk",
                 title: "Revisão do Módulo 10",
@@ -4644,7 +4644,7 @@ export default function AulaRazaoProporcao({
               questoes={quizFinal}
               titulo="QUIZ: Simulado Final"
               numero={6}
-              variant="blue"
+              variant={mv[10]}
               icone="🏆"
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
@@ -4655,7 +4655,7 @@ export default function AulaRazaoProporcao({
             <ModuleSectionHeader
               index={4}
               title="Resumo Visual da Aula Completa"
-              variant="blue"
+              variant={mv[10]}
             />
             <LessonTabs
               tabs={[

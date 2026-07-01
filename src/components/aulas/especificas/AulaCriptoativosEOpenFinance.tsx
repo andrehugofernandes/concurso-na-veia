@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_CRIPTOATIVOS_E_OPEN_FINANCE, QUIZ_M2_CRIPTOATIVOS_E_OPEN_FINANCE, QUIZ_M3_CRIPTOATIVOS_E_OPEN_FINANCE } from '@/data/quizzes/especificas/criptoativos-e-open-finance';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -27,40 +25,31 @@ export default function AulaCriptoativosEOpenFinance({ onComplete }: AulaProps) 
 
   const modules = [
     {
-      title: 'Módulo 1: Introdução a Criptoativos E Open Finance',
+      title: 'Módulo 1: Introdução a Criptoativos e Open Finance',
       content: (
         <div className="space-y-4 text-slate-300">
           <p>Esta aula faz parte dos Conhecimentos Específicos para os cargos técnicos e superiores da Petrobras.</p>
           <p>O foco inicial deste módulo é introduzir os conceitos básicos de criptoativos e open finance.</p>
         </div>
       ),
-      quiz: QUIZ_M1_CRIPTOATIVOS_E_OPEN_FINANCE
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_CRIPTOATIVOS_E_OPEN_FINANCE
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_CRIPTOATIVOS_E_OPEN_FINANCE
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Criptoativos E Open Finance"
+    <AulaEspecificaTemplate
+      title="Criptoativos e Open Finance"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

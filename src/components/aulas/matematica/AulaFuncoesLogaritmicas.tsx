@@ -1,4 +1,4 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 // Last modified: 2026-03-13 - Upgraded with ModuleConsolidation (4-tab system) and C.E.D.E. pedagogy
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
@@ -56,7 +56,7 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaFuncoesLogaritmicas({
   onComplete,
@@ -181,7 +181,7 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={1}
             titulo="O Conceito de Logaritmo"
             descricao="Números colossais encolhem em números menores através da pergunta fundamental."
-             variant="blue"/>
+             variant={mv[1]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -423,14 +423,14 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={2}
             titulo="Propriedades Operacionais"
             descricao="Multiplicação encolhe para soma e potência descende como o tombo."
-             variant="blue"/>
+             variant={mv[2]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Vantagem Algébrica"
               description="Manobras lícitas que convertem calvários em passeios."
-              variant="blue"
+              variant={mv[2]}
             />
 
             <ContentAccordion
@@ -551,7 +551,7 @@ export default function AulaFuncoesLogaritmicas({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -573,7 +573,7 @@ export default function AulaFuncoesLogaritmicas({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[2]}
             video={{
               videoId: "WFQDrp84Hxc",
               title: "Propriedades dos Logaritmos Explicadas Passo a Passo",
@@ -616,7 +616,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM2}
               titulo="QUIZ: Propriedades Fundamentais"
               numero={3}
-              variant="blue"
+              variant={mv[2]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -630,14 +630,14 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={3}
             titulo="Equações Logarítmicas"
             descricao="X nas cordas e logs somando e subtraindo do lado."
-             variant="blue"/>
+             variant={mv[3]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Eliminando o Logaritmo"
               description="Para eliminar a palavra log da equação, a base inferior tem que se sacrificar."
-              variant="blue"
+              variant={mv[3]}
             />
 
             <ContentAccordion
@@ -752,7 +752,7 @@ export default function AulaFuncoesLogaritmicas({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -774,7 +774,7 @@ export default function AulaFuncoesLogaritmicas({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[3]}
             video={{
               videoId: "w5YdI5OXpGg",
               title: "Resolvendo Equações Logarítmicas: Técnicas Essenciais",
@@ -814,7 +814,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM3}
               titulo="QUIZ: Equações Logarítmicas"
               numero={3}
-              variant="blue"
+              variant={mv[3]}
               icone="⚙️"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -828,14 +828,14 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={4}
             titulo="Condições de Existência"
             descricao="Bancas colocam raízes falsas que não existem na vida real."
-             variant="blue"/>
+             variant={mv[4]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Masmorra de Erros"
               description="Um logaritmo negativo te levará a uma explosão no meio da prova."
-              variant="blue"
+              variant={mv[4]}
             />
 
             <ContentAccordion
@@ -1006,7 +1006,7 @@ export default function AulaFuncoesLogaritmicas({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[4]}
             video={{
               videoId: "8X3_kPaKqgQ",
               title: "Domínio e Restrições em Funções Logarítmicas",
@@ -1050,7 +1050,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM4}
               titulo="QUIZ: Condições de Existência"
               numero={3}
-              variant="blue"
+              variant={mv[4]}
               icone="🔍"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1064,14 +1064,14 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={5}
             titulo="Desafio Integrado"
             descricao="Combine todo o conhecimento em questões de média dificuldade."
-             variant="blue"/>
+             variant={mv[5]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Consolidação do Conhecimento"
               description="Revisão de conceitos, propriedades, equações e domínios combinados."
-              variant="blue"
+              variant={mv[5]}
             />
 
             <ContentAccordion
@@ -1186,7 +1186,7 @@ export default function AulaFuncoesLogaritmicas({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1208,7 +1208,7 @@ export default function AulaFuncoesLogaritmicas({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[5]}
             video={{
               videoId: "fJXCR-K8DxQ",
               title: "Problemas Integrados com Logaritmos: Estratégias Completas",
@@ -1244,7 +1244,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM5}
               titulo="QUIZ: Desafio Integrado"
               numero={3}
-              variant="blue"
+              variant={mv[5]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1258,14 +1258,14 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={6}
             titulo="Funções Logarítmicas"
             descricao="Transformações, composições e o domínio das curvas que subem com cuidado."
-             variant="blue"/>
+             variant={mv[6]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Forma Padrão das Funções Log"
               description="Como as funções logarítmicas se comportam quando transformadas."
-              variant="blue"
+              variant={mv[6]}
             />
 
             <ContentAccordion
@@ -1426,7 +1426,7 @@ export default function AulaFuncoesLogaritmicas({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1448,7 +1448,7 @@ export default function AulaFuncoesLogaritmicas({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[6]}
             video={{
               videoId: "TL_LjVyT_Xk",
               title: "Gráficos de Funções Logarítmicas e Suas Transformações",
@@ -1487,7 +1487,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM6}
               titulo="QUIZ: Funções Logarítmicas"
               numero={3}
-              variant="blue"
+              variant={mv[6]}
               icone="📊"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1501,7 +1501,7 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={7}
             titulo="Sistemas e Inequações"
             descricao="Quando múltiplas equações logarítmicas se encontram numa mesma arena."
-             variant="blue"/>
+             variant={mv[7]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1717,14 +1717,14 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={8}
             titulo="Resolução Reversa"
             descricao="Desconstruir problemas complexos até seus componentes logarítmicos primitivos."
-             variant="blue"/>
+             variant={mv[8]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Decomposição de Problemas"
               description="Inverta a lógica: comece pelo resultado e trabalhe para trás até o argumento."
-              variant="blue"
+              variant={mv[8]}
             />
 
             <ContentAccordion
@@ -1836,7 +1836,7 @@ export default function AulaFuncoesLogaritmicas({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1858,7 +1858,7 @@ export default function AulaFuncoesLogaritmicas({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[8]}
             video={{
               videoId: "K8oQAHHmXYQ",
               title: "Resolução Reversa: Convertendo Exponencial para Logaritmo",
@@ -1901,7 +1901,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM8}
               titulo="QUIZ: Resolução Reversa"
               numero={3}
-              variant="blue"
+              variant={mv[8]}
               icone="🔄"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1915,14 +1915,14 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={9}
             titulo="Aplicações Petrobras"
             descricao="Onde os logaritmos vivem na indústria de petróleo e gás natural."
-             variant="blue"/>
+             variant={mv[9]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Logaritmos no Mundo Real"
               description="A matemática por trás das operações de exploração e produção."
-              variant="blue"
+              variant={mv[9]}
             />
 
             <ContentAccordion
@@ -2071,7 +2071,7 @@ export default function AulaFuncoesLogaritmicas({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "uQDCPEEJVH0",
               title: "Logaritmos em Engenharia: pH, Decibéis e Escala Richter",
@@ -2114,7 +2114,7 @@ export default function AulaFuncoesLogaritmicas({
               questoes={quizM9}
               titulo="QUIZ: Aplicações Petrobras"
               numero={3}
-              variant="blue"
+              variant={mv[9]}
               icone="🛢️"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -2128,14 +2128,14 @@ export default function AulaFuncoesLogaritmicas({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="O teste final combinando todo o conhecimento de logaritmos. Prepare-se para a prova real."
-             variant="blue"/>
+             variant={mv[10]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Integração Completa de Conhecimento"
               description="Questões que combinam múltiplos conceitos em um único desafio."
-              variant="blue"
+              variant={mv[10]}
             />
 
             <ContentAccordion
@@ -2269,7 +2269,7 @@ export default function AulaFuncoesLogaritmicas({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2291,7 +2291,7 @@ export default function AulaFuncoesLogaritmicas({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[10]}
             video={{
               videoId: "mUFv1Y-JkjE",
               title: "Revisão Completa de Logaritmos: Preparação para Prova",
@@ -2338,7 +2338,7 @@ export default function AulaFuncoesLogaritmicas({
                 titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={3}
-                variant="blue"
+                variant={mv[10]}
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

@@ -1,4 +1,4 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 // Last modified: 2026-03-13 - Upgraded with ModuleConsolidation (4-tab system) and C.E.D.E. pedagogy
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
@@ -55,7 +55,7 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaProgressoesPg({
   onComplete,
@@ -180,14 +180,14 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={1}
             titulo="Conceitos Fundamentais de PG"
             descricao="A razão que multiplica: progressão geométrica explicada."
-             variant="blue"/>
+             variant={mv[1]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Sequência que Multiplica"
               description="Entenda a razão q e o primeiro termo a₁."
-              variant="blue"
+              variant={mv[1]}
             />
 
             <ContentAccordion
@@ -315,7 +315,7 @@ export default function AulaProgressoesPg({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[1]}
             video={{
               videoId: "gZDzgZxrvAo",
               title: "PG: Conceitos Fundamentais",
@@ -369,7 +369,7 @@ export default function AulaProgressoesPg({
               questoes={quizM1}
               titulo="QUIZ: Conceitos Fundamentais"
               numero={3}
-              variant="blue"
+              variant={mv[1]}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -383,14 +383,14 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={2}
             titulo="Termo Geral da PG"
             descricao="A fórmula para encontrar qualquer termo sem calcular todos."
-             variant="blue"/>
+             variant={mv[2]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Fórmula do Termo Geral"
               description="aₙ = a₁ × q^(n-1)"
-              variant="blue"
+              variant={mv[2]}
             />
 
             <ContentAccordion
@@ -489,7 +489,7 @@ export default function AulaProgressoesPg({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -511,7 +511,7 @@ export default function AulaProgressoesPg({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[2]}
             video={{
               videoId: "2Aq7p7-VgEU",
               title: "PG: Termo Geral Explicado",
@@ -565,7 +565,7 @@ export default function AulaProgressoesPg({
               questoes={quizM2}
               titulo="QUIZ: Termo Geral"
               numero={3}
-              variant="blue"
+              variant={mv[2]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -579,14 +579,14 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={3}
             titulo="Soma de Termos (Finita)"
             descricao="Calcule a soma dos primeiros n termos de uma PG."
-             variant="blue"/>
+             variant={mv[3]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Soma dos Primeiros n Termos"
               description="Fórmula e aplicações práticas."
-              variant="blue"
+              variant={mv[3]}
             />
 
             <ContentAccordion
@@ -693,7 +693,7 @@ export default function AulaProgressoesPg({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -715,7 +715,7 @@ export default function AulaProgressoesPg({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[3]}
             video={{
               videoId: "4KzE9R6zWzY",
               title: "PG: Soma Finita",
@@ -771,7 +771,7 @@ export default function AulaProgressoesPg({
               questoes={quizM3}
               titulo="QUIZ: Soma Finita"
               numero={3}
-              variant="blue"
+              variant={mv[3]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -785,14 +785,14 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={4}
             titulo="Soma Infinita (Série PG)"
             descricao="O limite da soma quando n tende ao infinito."
-             variant="blue"/>
+             variant={mv[4]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Série Geométrica Infinita"
               description="Convergência e limite da série."
-              variant="blue"
+              variant={mv[4]}
             />
 
             <ContentAccordion
@@ -911,7 +911,7 @@ export default function AulaProgressoesPg({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -933,7 +933,7 @@ export default function AulaProgressoesPg({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[4]}
             video={{
               videoId: "9KZg0LdwAg4",
               title: "PG Infinita: Série Convergente",
@@ -987,7 +987,7 @@ export default function AulaProgressoesPg({
               questoes={quizM4}
               titulo="QUIZ: Soma Infinita"
               numero={3}
-              variant="blue"
+              variant={mv[4]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -1001,14 +1001,14 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={5}
             titulo="Propriedades Especiais de PG"
             descricao="Relações e padrões únicos das progressões geométricas."
-             variant="blue"/>
+             variant={mv[5]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Propriedades Importantes"
               description="Produtos, meios geométricos e simetrias."
-              variant="blue"
+              variant={mv[5]}
             />
 
             <ContentAccordion
@@ -1114,7 +1114,7 @@ export default function AulaProgressoesPg({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1136,7 +1136,7 @@ export default function AulaProgressoesPg({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[5]}
             video={{
               videoId: "7Pg5MZV2XqU",
               title: "PG: Propriedades Especiais",
@@ -1191,7 +1191,7 @@ export default function AulaProgressoesPg({
               questoes={quizM5}
               titulo="QUIZ: Propriedades"
               numero={3}
-              variant="blue"
+              variant={mv[5]}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1205,14 +1205,14 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={6}
             titulo="Crescimento e Decaimento"
             descricao="Exponencial na natureza: população, radioatividade, juros."
-             variant="blue"/>
+             variant={mv[6]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="PG Aplicada a Fenômenos Naturais"
               description="Exponencial explica crescimento rápido ou decaimento lento."
-              variant="blue"
+              variant={mv[6]}
             />
 
             <ContentAccordion
@@ -1326,7 +1326,7 @@ export default function AulaProgressoesPg({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1348,7 +1348,7 @@ export default function AulaProgressoesPg({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[6]}
             video={{
               videoId: "tZzgzUaHdCw",
               title: "Crescimento Exponencial: Aplicações",
@@ -1402,7 +1402,7 @@ export default function AulaProgressoesPg({
               questoes={quizM6}
               titulo="QUIZ: Crescimento/Decaimento"
               numero={3}
-              variant="blue"
+              variant={mv[6]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1416,7 +1416,7 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={7}
             titulo="Matemática Financeira com PG"
             descricao="Juros compostos, prestações e investimentos."
-             variant="blue"/>
+             variant={mv[7]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1630,14 +1630,14 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={8}
             titulo="Comparação: PA vs PG"
             descricao="Diferenças fundamentais entre progressão aritmética e geométrica."
-             variant="blue"/>
+             variant={mv[8]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Duas Famílias de Sequências"
               description="Quando usar PA, quando usar PG."
-              variant="blue"
+              variant={mv[8]}
             />
 
             <ContentAccordion
@@ -1748,7 +1748,7 @@ export default function AulaProgressoesPg({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1770,7 +1770,7 @@ export default function AulaProgressoesPg({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[8]}
             video={{
               videoId: "2xQr4vZ5M1I",
               title: "PA vs PG: Comparação Completa",
@@ -1826,7 +1826,7 @@ export default function AulaProgressoesPg({
               questoes={quizM8}
               titulo="QUIZ: PA vs PG"
               numero={3}
-              variant="blue"
+              variant={mv[8]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1840,14 +1840,14 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={9}
             titulo="Aplicações Petrobras"
             descricao="Produção, reservas e investimentos em óleo e gás."
-             variant="blue"/>
+             variant={mv[9]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Progressões Geométricas na Indústria"
               description="Crescimento de produção, depleção de reservas."
-              variant="blue"
+              variant={mv[9]}
             />
 
             <ContentAccordion
@@ -1965,7 +1965,7 @@ export default function AulaProgressoesPg({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1987,7 +1987,7 @@ export default function AulaProgressoesPg({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "4KzE9R6zWzY",
               title: "PG na Petrobras: Produção e Reservas",
@@ -2041,7 +2041,7 @@ export default function AulaProgressoesPg({
               questoes={quizM9}
               titulo="QUIZ: Aplicações Petrobras"
               numero={3}
-              variant="blue"
+              variant={mv[9]}
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -2055,7 +2055,7 @@ export default function AulaProgressoesPg({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="Teste final: integre todos os conceitos de progressões geométricas."
-             variant="blue"/>
+             variant={mv[10]}/>
 
           {showCompletionBadge ? (
             <div className="flex flex-col items-center gap-6 py-10 mt-10">
@@ -2074,7 +2074,7 @@ export default function AulaProgressoesPg({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2097,7 +2097,7 @@ export default function AulaProgressoesPg({
                 titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={1}
-                variant="blue"
+                variant={mv[10]}
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

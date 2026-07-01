@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_VALVULAS_DE_CONTROLE, QUIZ_M2_VALVULAS_DE_CONTROLE, QUIZ_M3_VALVULAS_DE_CONTROLE } from '@/data/quizzes/especificas/valvulas-de-controle';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -27,40 +25,31 @@ export default function AulaValvulasDeControle({ onComplete }: AulaProps) {
 
   const modules = [
     {
-      title: 'Módulo 1: Introdução a Valvulas De Controle',
+      title: 'Módulo 1: Introdução a Válvulas de controle',
       content: (
         <div className="space-y-4 text-slate-300">
           <p>Esta aula faz parte dos Conhecimentos Específicos para os cargos técnicos e superiores da Petrobras.</p>
-          <p>O foco inicial deste módulo é introduzir os conceitos básicos de valvulas de controle.</p>
+          <p>O foco inicial deste módulo é introduzir os conceitos básicos de válvulas de controle.</p>
         </div>
       ),
-      quiz: QUIZ_M1_VALVULAS_DE_CONTROLE
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_VALVULAS_DE_CONTROLE
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_VALVULAS_DE_CONTROLE
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Valvulas De Controle"
+    <AulaEspecificaTemplate
+      title="Válvulas de controle"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

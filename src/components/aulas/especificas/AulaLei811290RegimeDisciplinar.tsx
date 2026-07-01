@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_LEI_811290_REGIME_DISCIPLINAR, QUIZ_M2_LEI_811290_REGIME_DISCIPLINAR, QUIZ_M3_LEI_811290_REGIME_DISCIPLINAR } from '@/data/quizzes/especificas/lei-811290-regime-disciplinar';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -27,40 +25,31 @@ export default function AulaLei811290RegimeDisciplinar({ onComplete }: AulaProps
 
   const modules = [
     {
-      title: 'Módulo 1: Introdução a Lei 811290 Regime Disciplinar',
+      title: 'Módulo 1: Introdução a Lei 8.112/90 (Regime Disciplinar)',
       content: (
         <div className="space-y-4 text-slate-300">
           <p>Esta aula faz parte dos Conhecimentos Específicos para os cargos técnicos e superiores da Petrobras.</p>
-          <p>O foco inicial deste módulo é introduzir os conceitos básicos de lei 811290 regime disciplinar.</p>
+          <p>O foco inicial deste módulo é introduzir os conceitos básicos de lei 8.112/90 (regime disciplinar).</p>
         </div>
       ),
-      quiz: QUIZ_M1_LEI_811290_REGIME_DISCIPLINAR
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_LEI_811290_REGIME_DISCIPLINAR
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_LEI_811290_REGIME_DISCIPLINAR
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Lei 811290 Regime Disciplinar"
+    <AulaEspecificaTemplate
+      title="Lei 8.112/90 (Regime Disciplinar)"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

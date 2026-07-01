@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_ALINHAMENTO, QUIZ_M2_ALINHAMENTO, QUIZ_M3_ALINHAMENTO } from '@/data/quizzes/especificas/alinhamento';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -34,33 +32,24 @@ export default function AulaAlinhamento({ onComplete }: AulaProps) {
           <p>O foco inicial deste módulo é introduzir os conceitos básicos de alinhamento.</p>
         </div>
       ),
-      quiz: QUIZ_M1_ALINHAMENTO
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_ALINHAMENTO
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_ALINHAMENTO
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Alinhamento"
+    <AulaEspecificaTemplate
+      title="Alinhamento"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

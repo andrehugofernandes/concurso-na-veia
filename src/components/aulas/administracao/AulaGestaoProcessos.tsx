@@ -202,7 +202,7 @@ export default function AulaGestaoProcessos({
               index="INTRO"
               title="Fundamentos do Processo de Negócio"
               description="A definição técnica e os componentes vitais que caem na sua prova."
-              variant="blue"
+              variant={mv[1]}
             />
 
             <ContentAccordion
@@ -391,7 +391,7 @@ export default function AulaGestaoProcessos({
 
 <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[1]}
             video={{
               videoId: "T3Z7M-0eEG8",
               title: "Hierarquia e Tipos de Processos",
@@ -434,7 +434,7 @@ export default function AulaGestaoProcessos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -456,7 +456,7 @@ export default function AulaGestaoProcessos({
               questoes={quizM1}
               titulo="QUIZ: Módulo Nº 1"
               numero={3}
-              variant="blue"
+              variant={mv[1]}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -481,7 +481,7 @@ export default function AulaGestaoProcessos({
               index="INTRO" 
               title="A Filosofia e o Ciclo de Vida" 
               description="Do planejamento estratégico ao refinamento contínuo (Baseado no CBOK)." 
-              variant="blue" 
+              variant={mv[2]} 
             />
             
             <ContentAccordion slides={[
@@ -620,7 +620,7 @@ export default function AulaGestaoProcessos({
 
 <ModuleConsolidation 
             index={2} 
-            variant="blue" 
+            variant={mv[2]} 
             video={{ 
               videoId: "T3Z7M-0eEG8", 
               title: "A Jornada do Ciclo de Vida BPM", 
@@ -659,7 +659,7 @@ export default function AulaGestaoProcessos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -681,7 +681,7 @@ export default function AulaGestaoProcessos({
               questoes={quizM2} 
               titulo="QUIZ: Módulo Nº 2" 
               numero={3} 
-              variant="blue" 
+              variant={mv[2]} 
               icone="🎯" 
               onComplete={(score) => handleModuleComplete("modulo-2", score)} 
             />
@@ -706,7 +706,7 @@ export default function AulaGestaoProcessos({
               index="INTRO" 
               title="Gramática do Processo" 
               description="Alfabeto visual: Eventos, Atividades, Gateways e Artefatos." 
-              variant="blue" 
+              variant={mv[3]} 
             />
             
             <ContentAccordion slides={[
@@ -848,7 +848,7 @@ export default function AulaGestaoProcessos({
 
 <ModuleConsolidation 
             index={2} 
-            variant="blue" 
+            variant={mv[3]} 
             video={{ 
               videoId: "T3Z7M-0eEG8", 
               title: "Modelando seu Primeiro Processo BPMN", 
@@ -887,7 +887,7 @@ export default function AulaGestaoProcessos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -909,7 +909,7 @@ export default function AulaGestaoProcessos({
               questoes={quizM3} 
               titulo="QUIZ: Módulo Nº 3" 
               numero={3} 
-              variant="blue" 
+              variant={mv[3]} 
               icone="📊" 
               onComplete={(score) => handleModuleComplete("modulo-3", score)} 
             />
@@ -934,7 +934,7 @@ export default function AulaGestaoProcessos({
               index="INTRO" 
               title="AS-IS e TO-BE: A Ponte para a Melhoria" 
               description="Não se melhora o que não se entende. O mapeamento é a fotografia da realidade." 
-              variant="blue" 
+              variant={mv[4]} 
             />
             
             <ContentAccordion slides={[
@@ -1073,7 +1073,7 @@ export default function AulaGestaoProcessos({
 
 <ModuleConsolidation 
             index={2} 
-            variant="blue" 
+            variant={mv[4]} 
             video={{ 
               videoId: "T3Z7M-0eEG8", 
               title: "Do Caos à Ordem: AS-IS e TO-BE", 
@@ -1109,7 +1109,7 @@ export default function AulaGestaoProcessos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1131,7 +1131,7 @@ export default function AulaGestaoProcessos({
               questoes={quizM4} 
               titulo="QUIZ: Módulo Nº 4" 
               numero={3} 
-              variant="blue" 
+              variant={mv[4]} 
               icone="🎯" 
               onComplete={(score) => handleModuleComplete("modulo-4", score)} 
             />
@@ -1156,7 +1156,7 @@ export default function AulaGestaoProcessos({
               index="INTRO" 
               title="Filosofias de Otimização" 
               description="Do Ciclo de Deming ao rigor estatístico do Six Sigma." 
-              variant="blue" 
+              variant={mv[5]} 
             />
             
             <ContentAccordion slides={[
@@ -1301,7 +1301,7 @@ export default function AulaGestaoProcessos({
 
 <ModuleConsolidation 
             index={2} 
-            variant="blue" 
+            variant={mv[5]} 
             video={{ 
               videoId: "pSg4e7jS_9I", 
               title: "Lean Six Sigma na Indústria de Petróleo", 
@@ -1340,7 +1340,7 @@ export default function AulaGestaoProcessos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1362,7 +1362,7 @@ export default function AulaGestaoProcessos({
               questoes={quizM5} 
               titulo="QUIZ: Módulo Nº 5" 
               numero={3} 
-              variant="blue" 
+              variant={mv[5]} 
               icone="🚀" 
               onComplete={(score) => handleModuleComplete("modulo-5", score)} 
             />
@@ -1387,7 +1387,7 @@ export default function AulaGestaoProcessos({
               index="INTRO" 
               title="A Ciência da Medição" 
               description="Eficiência, Eficácia e Efetividade: A trindade do desempenho." 
-              variant="blue" 
+              variant={mv[6]} 
             />
             
             <ContentAccordion slides={[
@@ -1495,7 +1495,7 @@ export default function AulaGestaoProcessos({
 
 <ModuleConsolidation 
             index={2} 
-            variant="blue" 
+            variant={mv[6]} 
             video={{ 
               videoId: "T3Z7M-0eEG8", 
               title: "Dominando KPIs de Processos", 
@@ -1533,7 +1533,7 @@ export default function AulaGestaoProcessos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1555,7 +1555,7 @@ export default function AulaGestaoProcessos({
               questoes={quizM6} 
               titulo="QUIZ: Módulo Nº 6" 
               numero={3} 
-              variant="blue" 
+              variant={mv[6]} 
               icone="📈" 
               onComplete={(score) => handleModuleComplete("modulo-6", score)} 
             />
@@ -1580,7 +1580,7 @@ export default function AulaGestaoProcessos({
               index="INTRO" 
               title="A Era Digital nos Processos" 
               description="Sistemas, robôs e orquestração de fluxos." 
-              variant="blue" 
+              variant={mv[7]} 
             />
             
             <ContentAccordion slides={[
@@ -1673,7 +1673,7 @@ export default function AulaGestaoProcessos({
 
 <ModuleConsolidation 
             index={2} 
-            variant="blue" 
+            variant={mv[7]} 
             video={{ 
               videoId: "T3Z7M-0eEG8", 
               title: "A Revolução do BPMS", 
@@ -1708,7 +1708,7 @@ export default function AulaGestaoProcessos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1730,7 +1730,7 @@ export default function AulaGestaoProcessos({
               questoes={quizM7} 
               titulo="QUIZ: Módulo Nº 7" 
               numero={3} 
-              variant="blue" 
+              variant={mv[7]} 
               icone="⚙️" 
               onComplete={(score) => handleModuleComplete("modulo-7", score)} 
             />
@@ -1755,7 +1755,7 @@ export default function AulaGestaoProcessos({
               index="INTRO" 
               title="A Cultura da Qualidade" 
               description="Do Ishikawa ao Pareto: Resolvendo problemas na raiz." 
-              variant="blue" 
+              variant={mv[8]} 
             />
             
             <ContentAccordion slides={[
@@ -1843,7 +1843,7 @@ export default function AulaGestaoProcessos({
 
 <ModuleConsolidation 
             index={2} 
-            variant="blue" 
+            variant={mv[8]} 
             video={{ 
               videoId: "T3Z7M-0eEG8", 
               title: "ISO 9001 na Prática Operacional", 
@@ -1882,7 +1882,7 @@ export default function AulaGestaoProcessos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1904,7 +1904,7 @@ export default function AulaGestaoProcessos({
               questoes={quizM8} 
               titulo="QUIZ: Módulo Nº 8" 
               numero={3} 
-              variant="blue" 
+              variant={mv[8]} 
               icone="🏆" 
               onComplete={(score) => handleModuleComplete("modulo-8", score)} 
             />
@@ -1929,7 +1929,7 @@ export default function AulaGestaoProcessos({
               index="INTRO" 
               title="A Cadeia de Valor Integrada" 
               description="Upstream, Midstream e Downstream." 
-              variant="blue" 
+              variant={mv[9]} 
             />
             
             <ContentAccordion slides={[
@@ -2001,7 +2001,7 @@ export default function AulaGestaoProcessos({
 
 <ModuleConsolidation 
             index={2} 
-            variant="blue" 
+            variant={mv[9]} 
             video={{ 
               videoId: "T3Z7M-0eEG8", 
               title: "Explorando a Cadeia de Valor Petrobras", 
@@ -2040,7 +2040,7 @@ export default function AulaGestaoProcessos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2062,7 +2062,7 @@ export default function AulaGestaoProcessos({
               questoes={quizM9} 
               titulo="QUIZ: Módulo Nº 9" 
               numero={3} 
-              variant="blue" 
+              variant={mv[9]} 
               icone="🏭" 
               onComplete={(score) => handleModuleComplete("modulo-9", score)} 
             />
@@ -2087,7 +2087,7 @@ export default function AulaGestaoProcessos({
               index="INTRO" 
               title="O Checklist de Ouro" 
               description="O que você NÃO pode esquecer para a prova da CESGRANRIO." 
-              variant="blue" 
+              variant={mv[10]} 
             />
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -2170,7 +2170,7 @@ export default function AulaGestaoProcessos({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2192,7 +2192,7 @@ export default function AulaGestaoProcessos({
               questoes={quizM10} 
               titulo="QUIZ: Módulo Nº 10" 
               numero={2} 
-              variant="blue" 
+              variant={mv[10]} 
               icone="👑" 
               onComplete={(score) => handleModuleComplete("modulo-10", score)} 
             />

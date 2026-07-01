@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -72,10 +74,10 @@ export default function HomeHeader() {
         <div className="justify-self-center flex flex-col justify-center items-center leading-none text-center">
           <h1 className="font-bebas font-bold text-[24px] tracking-tight leading-none whitespace-nowrap flex items-baseline gap-1">
             <span className="text-white">PASSEI</span>
-            <span className="text-primary" style={{ color: "var(--primary-hex)" }}>EH MINHA</span>
+            <span className="text-primary" style={{ color: "var(--primary-hex)" }}>NO CONCURSO</span>
           </h1>
           <span className="font-sans text-[7.5px] font-black uppercase tracking-[0.3em] text-white/60 mt-0.5 whitespace-nowrap">
-            Simulador de Concursos
+            SUA APROVAÇÃO AQUI
           </span>
         </div>
         

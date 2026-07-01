@@ -1,7 +1,7 @@
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import {
@@ -70,7 +70,7 @@ import {
  * Versão: 2.0 (2000+ linhas, 10 módulos completos)
  */
 
-const mv = [undefined, ...getAllModuleVariants()] as any;
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaCrase({
   titulo,
@@ -189,7 +189,7 @@ export default function AulaCrase({
         <ModuleBanner
           numero={1}
           titulo="Conceito e Regra Geral"
-          variant="blue"
+          variant={mv[1]}
           descricao="A + A = À: A Equação Fundamental"
         />
 
@@ -199,7 +199,7 @@ export default function AulaCrase({
             index="INTRO"
             title="A Crase: Fusão de Duas Vogais Idênticas"
             description="Entenda a lógica matemática por trás da crase e elimine a decoreba de vez."
-            variant="blue"
+            variant={mv[1]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
@@ -233,7 +233,7 @@ export default function AulaCrase({
 
         {/* ★ ACCORDION 1: Três Pilares */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Os Três Pilares da Crase" variant="blue" />
+          <ModuleSectionHeader index={2} title="Os Três Pilares da Crase" variant={mv[1]} />
           <ContentAccordion
             slides={[
               {
@@ -294,7 +294,7 @@ export default function AulaCrase({
 
         {/* ★ CARD CAROUSEL: Exemplos */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Exemplos Práticos: Crase Obrigatória" variant="blue" />
+          <ModuleSectionHeader index={3} title="Exemplos Práticos: Crase Obrigatória" variant={mv[1]} />
           <CardCarousel
             cards={[
               {
@@ -333,7 +333,7 @@ export default function AulaCrase({
 
         {/* ★ ACCORDION 2: Regência Verbal */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={4} title="Regência: Verbos e Nomes que Exigem A" variant="blue" />
+          <ModuleSectionHeader index={4} title="Regência: Verbos e Nomes que Exigem A" variant={mv[1]} />
           <ContentAccordion
             slides={[
               {
@@ -370,7 +370,7 @@ export default function AulaCrase({
 
         {/* ★ FLIP CARDS: Exercícios */}
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={5} title="Prática: Identifique a Crase" variant="blue" />
+          <ModuleSectionHeader index={5} title="Prática: Identifique a Crase" variant={mv[1]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
               frente={
@@ -473,7 +473,7 @@ export default function AulaCrase({
         <QuestaoResolvidaStepByStep
           index={1}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -494,7 +494,7 @@ export default function AulaCrase({
 
         <ModuleConsolidation
           index={1}
-          variant="blue"
+          variant={mv[1]}
           video={{ videoId: "CRASE_01", title: "Crase - Módulo 1: Conceito", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 1",
@@ -511,7 +511,7 @@ export default function AulaCrase({
           questoes={quizM1}
           titulo="Quiz - Módulo 1: Conceito e Regra Geral"
           numero={1}
-          variant="blue"
+          variant={mv[1]}
           onComplete={(s) => handleModuleComplete("modulo-1", s)}
         />
       </TabsContent>
@@ -523,7 +523,7 @@ export default function AulaCrase({
         <ModuleBanner
           numero={2}
           titulo="Teste do Masculino"
-          variant="blue"
+          variant={mv[2]}
           descricao="A técnica mais poderosa para identificar crase"
         />
 
@@ -532,7 +532,7 @@ export default function AulaCrase({
             index="INTRO"
             title="O Teste do Masculino: A Técnica Fundamental da Crase"
             description="A técnica mais confiável para confirmar a presença simultânea de preposição e artigo."
-            variant="blue"
+            variant={mv[2]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
@@ -570,7 +570,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Exemplos Práticos: Teste Passo a Passo" variant="blue" />
+          <ModuleSectionHeader index={2} title="Exemplos Práticos: Teste Passo a Passo" variant={mv[2]} />
           <ContentAccordion
             slides={[
               {
@@ -640,7 +640,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Card: Casos Comuns de Teste" variant="blue" />
+          <ModuleSectionHeader index={3} title="Card: Casos Comuns de Teste" variant={mv[2]} />
           <CardCarousel
             cards={[
               {
@@ -678,7 +678,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={4} title="Casos que Enganam: Quando o Teste Falha" variant="blue" />
+          <ModuleSectionHeader index={4} title="Casos que Enganam: Quando o Teste Falha" variant={mv[2]} />
           <AlertBox tipo="warning" titulo="Exceções ao Teste do Masculino">
             <p>O teste do masculino é confiável em 95% dos casos, mas algumas palavras femininas NÃO têm equivalente masculino natural, exigindo criatividade:</p>
             <div className="mt-4 space-y-3">
@@ -696,7 +696,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={5} title="Prática: Aplique o Teste" variant="blue" />
+          <ModuleSectionHeader index={5} title="Prática: Aplique o Teste" variant={mv[2]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
               frente={
@@ -789,7 +789,7 @@ export default function AulaCrase({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -810,7 +810,7 @@ export default function AulaCrase({
 
         <ModuleConsolidation
           index={2}
-          variant="blue"
+          variant={mv[2]}
           video={{ videoId: "CRASE_02", title: "Crase - Módulo 2: Teste Masculino", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 2",
@@ -826,7 +826,7 @@ export default function AulaCrase({
           questoes={quizM2}
           titulo="Quiz - Módulo 2: Teste do Masculino"
           numero={2}
-          variant="blue"
+          variant={mv[2]}
           onComplete={(s) => handleModuleComplete("modulo-2", s)}
         />
       </TabsContent>
@@ -838,7 +838,7 @@ export default function AulaCrase({
         <ModuleBanner
           numero={3}
           titulo="Verbos Proíbem Crase"
-          variant="blue"
+          variant={mv[3]}
           descricao="Por que verbos nunca levam crase"
         />
 
@@ -847,7 +847,7 @@ export default function AulaCrase({
             index="INTRO"
             title="A Muralha dos Verbos: Por que a Crase é Proibida"
             description="Entenda a restrição gramatical que impede o uso de crase antes de ações."
-            variant="blue"
+            variant={mv[3]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
@@ -885,7 +885,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Verbos Comuns que Exigem Preposição A" variant="blue" />
+          <ModuleSectionHeader index={2} title="Verbos Comuns que Exigem Preposição A" variant={mv[3]} />
           <ContentAccordion
             slides={[
               {
@@ -931,7 +931,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Exemplos: Erros Frequentes com Verbos" variant="blue" />
+          <ModuleSectionHeader index={3} title="Exemplos: Erros Frequentes com Verbos" variant={mv[3]} />
           <CardCarousel
             cards={[
               {
@@ -969,7 +969,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={4} title="Armadilha: Adjetivo + Infinitivo" variant="blue" />
+          <ModuleSectionHeader index={4} title="Armadilha: Adjetivo + Infinitivo" variant={mv[3]} />
           <AlertBox tipo="warning" titulo="Cuidado com Construções Complexas">
             <p>
               Alguns candidatos tropeçam em frases como: "Sou <strong>apto</strong> <em>a</em> trabalhar" ou "Estou <strong>pronto</strong> <em>a</em> partir". Aqui, "apto" e "pronto" são adjetivos que exigem A, mas o que segue é um VERBO (trabalhar, partir), não um substantivo. Logo, SEM crase.
@@ -985,7 +985,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={5} title="Prática: Verbos vs Substantivos" variant="blue" />
+          <ModuleSectionHeader index={5} title="Prática: Verbos vs Substantivos" variant={mv[3]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
               frente={
@@ -1078,7 +1078,7 @@ export default function AulaCrase({
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1099,7 +1099,7 @@ export default function AulaCrase({
 
         <ModuleConsolidation
           index={3}
-          variant="blue"
+          variant={mv[3]}
           video={{ videoId: "CRASE_03", title: "Crase - Módulo 3: Verbos", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 3",
@@ -1115,7 +1115,7 @@ export default function AulaCrase({
           questoes={quizM3}
           titulo="Quiz - Módulo 3: Verbos Proíbem Crase"
           numero={3}
-          variant="blue"
+          variant={mv[3]}
           onComplete={(s) => handleModuleComplete("modulo-3", s)}
         />
       </TabsContent>
@@ -1127,7 +1127,7 @@ export default function AulaCrase({
         <ModuleBanner
           numero={4}
           titulo="Pronomes Pessoais Proíbem Crase"
-          variant="blue"
+          variant={mv[4]}
           descricao="Ela, Você, Mim, Ti, Si — nunca levam crase"
         />
 
@@ -1135,7 +1135,7 @@ export default function AulaCrase({
           <ModuleSectionHeader
             index="INTRO"
             title="Pronomes Pessoais: Regra Categórica"
-            variant="blue"
+            variant={mv[4]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
@@ -1157,7 +1157,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Lista: Pronomes Pessoais (Proíbem Crase)" variant="blue" />
+          <ModuleSectionHeader index={2} title="Lista: Pronomes Pessoais (Proíbem Crase)" variant={mv[4]} />
           <ContentAccordion
             slides={[
               {
@@ -1206,7 +1206,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Exemplos: Pronomes Pessoais vs Nomes" variant="blue" />
+          <ModuleSectionHeader index={3} title="Exemplos: Pronomes Pessoais vs Nomes" variant={mv[4]} />
           <CardCarousel
             cards={[
               {
@@ -1244,7 +1244,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={4} title="Confusão Comum: Nome vs Pronome" variant="blue" />
+          <ModuleSectionHeader index={4} title="Confusão Comum: Nome vs Pronome" variant={mv[4]} />
           <AlertBox tipo="warning" titulo="Diferença Crítica">
             <p><strong>Pronomes pessoais:</strong> "Referi-me <em>a</em> ela" (SEM crase)</p>
             <p><strong>Nomes/substantivos femininos:</strong> "Referi-me <em>à</em> mulher" (COM crase)</p>
@@ -1256,7 +1256,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={5} title="Prática: Pronomes Pessoais" variant="blue" />
+          <ModuleSectionHeader index={5} title="Prática: Pronomes Pessoais" variant={mv[4]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
               frente={
@@ -1350,7 +1350,7 @@ export default function AulaCrase({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1371,7 +1371,7 @@ export default function AulaCrase({
 
         <ModuleConsolidation
           index={4}
-          variant="blue"
+          variant={mv[4]}
           video={{ videoId: "CRASE_04", title: "Crase - Módulo 4: Pronomes", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 4",
@@ -1387,7 +1387,7 @@ export default function AulaCrase({
           questoes={quizM4}
           titulo="Quiz - Módulo 4: Pronomes Pessoais"
           numero={4}
-          variant="blue"
+          variant={mv[4]}
           onComplete={(s) => handleModuleComplete("modulo-4", s)}
         />
       </TabsContent>
@@ -1399,7 +1399,7 @@ export default function AulaCrase({
         <ModuleBanner
           numero={5}
           titulo="Crase Facultativa: Nomes Próprios"
-          variant="blue"
+          variant={mv[5]}
           descricao="Ambas as formas estão corretas"
         />
 
@@ -1407,7 +1407,7 @@ export default function AulaCrase({
           <ModuleSectionHeader
             index="INTRO"
             title="Nomes Próprios Femininos: Artigo Opcional"
-            variant="blue"
+            variant={mv[5]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
@@ -1429,7 +1429,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={2} title="Exemplos: Nomes Próprios Simples vs Especificados" variant="blue" />
+          <ModuleSectionHeader index={2} title="Exemplos: Nomes Próprios Simples vs Especificados" variant={mv[5]} />
           <ContentAccordion
             slides={[
               {
@@ -1480,7 +1480,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={3} title="Card: Exemplos Práticos" variant="blue" />
+          <ModuleSectionHeader index={3} title="Card: Exemplos Práticos" variant={mv[5]} />
           <CardCarousel
             cards={[
               {
@@ -1518,7 +1518,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader index={4} title="Estratégia em Prova: Como Escolher?" variant="blue" />
+          <ModuleSectionHeader index={4} title="Estratégia em Prova: Como Escolher?" variant={mv[5]} />
           <AlertBox tipo="info" titulo="Quando Ambas Estão em Alternativas">
             <p>
               Se em uma questão de múltipla escolha aparecerem DUAS alternativas — uma "a Maria" e outra "à Maria" — com certeza apenas UMA será o gabarito (segundo a banca). A estratégia é:
@@ -1536,7 +1536,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={5} title="Prática: Simples vs Especificado" variant="blue" />
+          <ModuleSectionHeader index={5} title="Prática: Simples vs Especificado" variant={mv[5]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
               frente={
@@ -1631,7 +1631,7 @@ export default function AulaCrase({
         <QuestaoResolvidaStepByStep
           index={5}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1652,7 +1652,7 @@ export default function AulaCrase({
 
         <ModuleConsolidation
           index={5}
-          variant="blue"
+          variant={mv[5]}
           video={{ videoId: "CRASE_05", title: "Crase - Módulo 5: Nomes Próprios", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 5",
@@ -1668,7 +1668,7 @@ export default function AulaCrase({
           questoes={quizM5}
           titulo="Quiz - Módulo 5: Nomes Próprios"
           numero={5}
-          variant="blue"
+          variant={mv[5]}
           onComplete={(s) => handleModuleComplete("modulo-5", s)}
         />
       </TabsContent>
@@ -1680,7 +1680,7 @@ export default function AulaCrase({
         <ModuleBanner
           numero={6}
           titulo="Crase Facultativa: Possessivos"
-          variant="blue"
+          variant={mv[6]}
           descricao="Minha, Sua, Tua, Nossa (singular)"
         />
 
@@ -1688,7 +1688,7 @@ export default function AulaCrase({
           <ModuleSectionHeader
             index="INTRO"
             title="Possessivos Femininos Singulares: Artigo Opcional"
-            variant="blue"
+            variant={mv[6]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
@@ -1710,7 +1710,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={1} title="A Dinâmica do Pronome Possessivo" variant="blue" />
+          <ModuleSectionHeader index={1} title="A Dinâmica do Pronome Possessivo" variant={mv[6]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
               frente={
@@ -1803,7 +1803,7 @@ export default function AulaCrase({
         <QuestaoResolvidaStepByStep
           index={6}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1824,7 +1824,7 @@ export default function AulaCrase({
 
         <ModuleConsolidation
           index={6}
-          variant="blue"
+          variant={mv[6]}
           video={{ videoId: "CRASE_06", title: "Crase - Módulo 6: Possessivos", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 6",
@@ -1840,7 +1840,7 @@ export default function AulaCrase({
           questoes={quizM6}
           titulo="Quiz - Módulo 6: Possessivos"
           numero={6}
-          variant="blue"
+          variant={mv[6]}
           onComplete={(s) => handleModuleComplete("modulo-6", s)}
         />
       </TabsContent>
@@ -1852,7 +1852,7 @@ export default function AulaCrase({
         <ModuleBanner
           numero={7}
           titulo="Horas e Medidas"
-          variant="blue"
+          variant={mv[7]}
           descricao="Crase Obrigatória com Horários e Expressões de Medida"
         />
 
@@ -1860,7 +1860,7 @@ export default function AulaCrase({
           <ModuleSectionHeader
             index="INTRO"
             title="Horas Exatas e Expressões de Medida: Fusão Automática"
-            variant="blue"
+            variant={mv[7]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
@@ -1882,7 +1882,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={1} title="A Lógica do Tempo e da Proporção" variant="blue" />
+          <ModuleSectionHeader index={1} title="A Lógica do Tempo e da Proporção" variant={mv[7]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
               frente={
@@ -1969,7 +1969,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={5} title="Prática: Horas e Medidas" variant="blue" />
+          <ModuleSectionHeader index={5} title="Prática: Horas e Medidas" variant={mv[7]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
                 frente={
@@ -2066,7 +2066,7 @@ export default function AulaCrase({
         <QuestaoResolvidaStepByStep
           index={7}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2087,7 +2087,7 @@ export default function AulaCrase({
 
         <ModuleConsolidation
           index={7}
-          variant="blue"
+          variant={mv[7]}
           video={{ videoId: "CRASE_07", title: "Crase - Módulo 7: Horas", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 7",
@@ -2103,7 +2103,7 @@ export default function AulaCrase({
           questoes={quizM7}
           titulo="Quiz - Módulo 7: Horas e Medidas"
           numero={7}
-          variant="blue"
+          variant={mv[7]}
           onComplete={(s) => handleModuleComplete("modulo-7", s)}
         />
       </TabsContent>
@@ -2115,7 +2115,7 @@ export default function AulaCrase({
         <ModuleBanner
           numero={8}
           titulo="Casa, Terra e Distância"
-          variant="blue"
+          variant={mv[8]}
           descricao="Regra da Especificação"
         />
 
@@ -2123,7 +2123,7 @@ export default function AulaCrase({
           <ModuleSectionHeader
             index="INTRO"
             title="Casa, Terra e Distância: A Regra da Especificação"
-            variant="blue"
+            variant={mv[8]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
@@ -2145,7 +2145,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={1} title="A Dinâmica da Especificação" variant="blue" />
+          <ModuleSectionHeader index={1} title="A Dinâmica da Especificação" variant={mv[8]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
               frente={
@@ -2232,7 +2232,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={2} title="Prática: Aplicação em Contexto" variant="blue" />
+          <ModuleSectionHeader index={2} title="Prática: Aplicação em Contexto" variant={mv[8]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
               frente={
@@ -2326,7 +2326,7 @@ export default function AulaCrase({
         <QuestaoResolvidaStepByStep
           index={8}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2347,7 +2347,7 @@ export default function AulaCrase({
 
         <ModuleConsolidation
           index={8}
-          variant="blue"
+          variant={mv[8]}
           video={{ videoId: "CRASE_08", title: "Crase - Módulo 8: Casa Terra", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 8",
@@ -2363,7 +2363,7 @@ export default function AulaCrase({
           questoes={quizM8}
           titulo="Quiz - Módulo 8: Casa, Terra, Distância"
           numero={8}
-          variant="blue"
+          variant={mv[8]}
           onComplete={(s) => handleModuleComplete("modulo-8", s)}
         />
       </TabsContent>
@@ -2375,7 +2375,7 @@ export default function AulaCrase({
         <ModuleBanner
           numero={9}
           titulo="Pronomes Demonstrativos: Àquele, Àquela, Àquilo"
-          variant="blue"
+          variant={mv[9]}
           descricao="Fusão Especial da Preposição com Demonstrativos"
         />
 
@@ -2383,7 +2383,7 @@ export default function AulaCrase({
           <ModuleSectionHeader
             index="INTRO"
             title="Demonstrativos: A Fusão Especial do Acento Grave"
-            variant="blue"
+            variant={mv[9]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
@@ -2405,7 +2405,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={1} title="A Dinâmica dos Pronomes" variant="blue" />
+          <ModuleSectionHeader index={1} title="A Dinâmica dos Pronomes" variant={mv[9]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
               frente={
@@ -2491,7 +2491,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={2} title="Prática: A Fusão Especial" variant="blue" />
+          <ModuleSectionHeader index={2} title="Prática: A Fusão Especial" variant={mv[9]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
                 frente={
@@ -2586,7 +2586,7 @@ export default function AulaCrase({
         <QuestaoResolvidaStepByStep
           index={9}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2607,7 +2607,7 @@ export default function AulaCrase({
 
         <ModuleConsolidation
           index={9}
-          variant="blue"
+          variant={mv[9]}
           video={{ videoId: "CRASE_09", title: "Crase - Módulo 9: Demonstrativos", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 9",
@@ -2623,7 +2623,7 @@ export default function AulaCrase({
           questoes={quizM9}
           titulo="Quiz - Módulo 9: Demonstrativos"
           numero={9}
-          variant="blue"
+          variant={mv[9]}
           onComplete={(s) => handleModuleComplete("modulo-9", s)}
         />
       </TabsContent>
@@ -2635,7 +2635,7 @@ export default function AulaCrase({
         <ModuleBanner
           numero={10}
           titulo="Simulado Integrado: Consolidação Total"
-          variant="blue"
+          variant={mv[10]}
           descricao="Teste seus conhecimentos em todas as regras de crase"
         />
 
@@ -2643,7 +2643,7 @@ export default function AulaCrase({
           <ModuleSectionHeader
             index="INTRO"
             title="Consolidação Estratégica: O Domínio Definitivo da Crase"
-            variant="blue"
+            variant={mv[10]}
           />
           <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
             <p>
@@ -2665,7 +2665,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={1} title="O Arsenal Analítico" variant="blue" />
+          <ModuleSectionHeader index={1} title="O Arsenal Analítico" variant={mv[10]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
               frente={
@@ -2749,7 +2749,7 @@ export default function AulaCrase({
         </section>
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
-          <ModuleSectionHeader index={2} title="Prática: Mapeamento de Prova" variant="blue" />
+          <ModuleSectionHeader index={2} title="Prática: Mapeamento de Prova" variant={mv[10]} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FlipCard
                 frente={
@@ -2849,7 +2849,7 @@ export default function AulaCrase({
         <QuestaoResolvidaStepByStep
           index={10}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2870,7 +2870,7 @@ export default function AulaCrase({
 
         <ModuleConsolidation
           index={10}
-          variant="blue"
+          variant={mv[10]}
           video={{ videoId: "CRASE_10", title: "Crase - Módulo 10: Simulado", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 10",
@@ -2886,7 +2886,7 @@ export default function AulaCrase({
           questoes={quizM10}
           titulo="Quiz Final - Módulo 10: Simulado Integrado"
           numero={10}
-          variant="blue"
+          variant={mv[10]}
           onComplete={(s) => handleModuleComplete("modulo-10", s)}
         />
       </TabsContent>

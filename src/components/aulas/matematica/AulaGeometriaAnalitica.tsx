@@ -28,9 +28,9 @@ import {
   QUIZ_M9_APLICACOES_PETROBRAS,
   QUIZ_M10_SIMULADO,
 } from "./data/geometria-analitica-quizzes";
-import { getModuleVariant, getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaGeometriaAnalitica({
   onComplete,
@@ -133,14 +133,14 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={1}
           titulo="Ponto no Plano Cartesiano"
           descricao="Domine o sistema de coordenadas, quadrantes, simetrias e a localização de pontos — base de toda a Geometria Analítica."
-           variant="blue"/>
+           variant={mv[1]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="O Plano Cartesiano e os Quadrantes"
               description="O mapa de coordenadas que organiza o espaço geométrico."
-              variant="blue"
+              variant={mv[1]}
               className="mb-6"
             />
             <ContentAccordion
@@ -321,14 +321,14 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={2}
           titulo="Distância entre Pontos e Ponto Médio"
           descricao="As fórmulas essenciais para medir separação e encontrar o centro entre dois pontos — aplicadas em mapeamento de dutos e plataformas."
-           variant="blue"/>
+           variant={mv[2]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Fórmula da Distância entre Dois Pontos"
               description="Derivada do Teorema de Pitágoras — mede o comprimento do segmento AB."
-              variant="blue"
+              variant={mv[2]}
               className="mb-6"
             />
             <ContentAccordion
@@ -460,7 +460,7 @@ export default function AulaGeometriaAnalitica({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -482,7 +482,7 @@ export default function AulaGeometriaAnalitica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[2]}
             video={{
               videoId: "pFZjMKqKZEQ",
               title: "Distância entre Pontos e Ponto Médio",
@@ -529,14 +529,14 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={3}
           titulo="Equação da Reta"
           descricao="Forme reduzida, geral e segmentária — entenda o coeficiente angular e linear para modelar qualquer trajetória linear."
-           variant="blue"/>
+           variant={mv[3]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Formas da Equação da Reta"
               description="Três formas equivalentes — cada uma útil em contextos diferentes."
-              variant="blue"
+              variant={mv[3]}
               className="mb-6"
             />
             <ContentAccordion
@@ -684,7 +684,7 @@ export default function AulaGeometriaAnalitica({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -706,7 +706,7 @@ export default function AulaGeometriaAnalitica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[3]}
             video={{
               videoId: "oSbX2VVjkts",
               title: "Equação da Reta: Reduzida e Geral",
@@ -753,14 +753,14 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={4}
           titulo="Posição Relativa entre Retas"
           descricao="Paralelas, perpendiculares, coincidentes ou secantes — aprenda a classificar retas e encontrar pontos de interseção."
-           variant="blue"/>
+           variant={mv[4]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Classificação das Posições Relativas"
               description="Três casos possíveis para duas retas no plano."
-              variant="blue"
+              variant={mv[4]}
               className="mb-6"
             />
             <ContentAccordion
@@ -884,7 +884,7 @@ export default function AulaGeometriaAnalitica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[4]}
             video={{
               videoId: "QJL5J6LjqFE",
               title: "Posições Relativas entre Retas",
@@ -931,14 +931,14 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={5}
           titulo="Distância de um Ponto a uma Reta"
           descricao="A fórmula mais testada em concursos — fundamental para calcular afastamentos de equipamentos a gasodutos e zonas de segurança."
-           variant="blue"/>
+           variant={mv[5]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="A Fórmula da Distância Ponto-Reta"
               description="Direta e eficiente — basta substituir as coordenadas do ponto na equação da reta."
-              variant="blue"
+              variant={mv[5]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1046,7 +1046,7 @@ export default function AulaGeometriaAnalitica({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1068,7 +1068,7 @@ export default function AulaGeometriaAnalitica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[5]}
             video={{
               videoId: "D4FZQBmYzFU",
               title: "Distância de um Ponto a uma Reta",
@@ -1115,14 +1115,14 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={6}
           titulo="Circunferência: Equação e Posições Relativas"
           descricao="Modele tanques, zonas de segurança e áreas de influência com a equação da circunferência e analise posições de pontos e retas."
-           variant="blue"/>
+           variant={mv[6]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Equação da Circunferência"
               description="Forma reduzida e geral — e como identificar centro e raio rapidamente."
-              variant="blue"
+              variant={mv[6]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1246,7 +1246,7 @@ export default function AulaGeometriaAnalitica({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1268,7 +1268,7 @@ export default function AulaGeometriaAnalitica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[6]}
             video={{
               videoId: "8YS-4Zj1JVo",
               title: "Circunferência: Centro, Raio e Equação",
@@ -1315,14 +1315,14 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={7}
           titulo="Parábola"
           descricao="Vértice, eixo de simetria, raízes e concavidade — a cônica mais presente em trajetórias, câmaras e otimizações industriais."
-           variant="blue"/>
+           variant={mv[7]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Equação, Vértice e Propriedades da Parábola"
               description="De y = ax² + bx + c ao vértice e raízes — tudo de forma sistemática."
-              variant="blue"
+              variant={mv[7]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1524,14 +1524,14 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={8}
           titulo="Interseções e Sistemas"
           descricao="Combine retas, circunferências e parábolas em sistemas — encontre pontos de cruzamento com precisão analítica."
-           variant="blue"/>
+           variant={mv[8]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Interseção de Curvas"
               description="A estratégia de substituição resolve todos os casos."
-              variant="blue"
+              variant={mv[8]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1630,7 +1630,7 @@ export default function AulaGeometriaAnalitica({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1652,7 +1652,7 @@ export default function AulaGeometriaAnalitica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[8]}
             video={{
               videoId: "hCHWEFQgQPw",
               title: "Interseções: Reta com Reta, Reta com Circunferência",
@@ -1699,14 +1699,14 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={9}
           titulo="Aplicações Petrobras — Coordenadas Industriais"
           descricao="Plataformas, dutos, FPSOs e zonas de exclusão: Geometria Analítica no cenário real dos concursos CESGRANRIO para a Petrobras."
-           variant="blue"/>
+           variant={mv[9]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Problemas Típicos do Contexto Petrobras"
               description="Aprenda a reconhecer e resolver cada tipo de questão contextualizada."
-              variant="blue"
+              variant={mv[9]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1832,7 +1832,7 @@ export default function AulaGeometriaAnalitica({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1854,7 +1854,7 @@ export default function AulaGeometriaAnalitica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "SflP4vQ0jEE",
               title: "Geometria Analítica na Indústria Petrolífera",
@@ -1901,14 +1901,14 @@ export default function AulaGeometriaAnalitica({
         <ModuleBanner numero={10}
           titulo="Simulado Final — Padrão CESGRANRIO"
           descricao="Questões no nível e estilo exatos da banca CESGRANRIO. Integre todos os conceitos de Geometria Analítica com velocidade e precisão."
-           variant="blue"/>
+           variant={mv[10]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Revisão Geral — Fórmulas Essenciais"
               description="Consolide tudo antes do simulado final."
-              variant="blue"
+              variant={mv[10]}
               className="mb-6"
             />
             <ContentAccordion
@@ -2065,7 +2065,7 @@ export default function AulaGeometriaAnalitica({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[10]}
             video={{
               videoId: "7U2Vh_7y3BE",
               title: "Geometria Analítica - Simulado Final Completo",

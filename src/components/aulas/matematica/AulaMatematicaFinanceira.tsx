@@ -1,4 +1,4 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 
@@ -28,7 +28,7 @@ import {
   QUIZ_M10_SIMULADO,
 } from "./data/matematica-financeira-quizzes";
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaMatematicaFinanceira({
   onComplete,
@@ -131,14 +131,14 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={1}
           titulo="Juros Simples: J = C · i · t"
           descricao="Compreenda o regime de capitalização simples, onde os juros incidem sempre sobre o capital inicial — base de descontos e operações de curto prazo."
-           variant="blue"/>
+           variant={mv[1]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="A Fórmula dos Juros Simples"
               description="A base de tudo: J = C·i·t. Domine-a e resolva 70% das questões de curto prazo."
-              variant="blue"
+              variant={mv[1]}
               className="mb-6"
             />
             <ContentAccordion
@@ -232,7 +232,7 @@ export default function AulaMatematicaFinanceira({
               index={2}
               title="Comparação: Simples vs. Composto"
               description="Entenda desde já a diferença crítica — a base de muitas pegadinhas da CESGRANRIO."
-              variant="blue"
+              variant={mv[1]}
               className="mb-6"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -375,7 +375,7 @@ export default function AulaMatematicaFinanceira({
               titulo="QUIZ: Juros Simples"
               icone="💰"
               numero={4}
-              variant="blue"
+              variant={mv[1]}
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
@@ -389,14 +389,14 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={2}
           titulo="Montante em Juros Simples: M = C + J"
           descricao="Calcule o valor total retornado ao final de uma aplicação simples e interprete graficamente o crescimento linear."
-           variant="blue"/>
+           variant={mv[2]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="M = C(1 + i·t): A Fórmula do Montante"
               description="O montante unifica capital e juros em uma única expressão compacta."
-              variant="blue"
+              variant={mv[2]}
               className="mb-6"
             />
             <ContentAccordion
@@ -480,7 +480,7 @@ export default function AulaMatematicaFinanceira({
               index={2}
               title="Relações Inversas: Desconto Simples"
               description="Calcular o Valor Presente (PV) a partir do Valor Futuro (FV) em juros simples."
-              variant="blue"
+              variant={mv[2]}
               className="mb-6"
             />
             <div className="space-y-4">
@@ -518,7 +518,7 @@ export default function AulaMatematicaFinanceira({
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -540,7 +540,7 @@ export default function AulaMatematicaFinanceira({
 
         <ModuleConsolidation
             index={3}
-            variant="blue"
+            variant={mv[2]}
             video={{
               videoId: "kL8nLz8zqWg",
               title: "Montante Simples: Resgate e Capitalização Linear",
@@ -608,7 +608,7 @@ export default function AulaMatematicaFinanceira({
               titulo="QUIZ: Montante Simples"
               icone="📈"
               numero={4}
-              variant="blue"
+              variant={mv[2]}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -622,14 +622,14 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={3}
           titulo="Juros Compostos: Juros sobre Juros"
           descricao="O regime dominante no mercado financeiro: os juros se incorporam ao capital a cada período, gerando crescimento exponencial."
-           variant="blue"/>
+           variant={mv[3]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="O Mecanismo da Capitalização Composta"
               description="Entenda como os juros se acumulam sobre si mesmos a cada período."
-              variant="blue"
+              variant={mv[3]}
               className="mb-6"
             />
             <ContentAccordion
@@ -733,7 +733,7 @@ export default function AulaMatematicaFinanceira({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -755,7 +755,7 @@ export default function AulaMatematicaFinanceira({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[3]}
             video={{
               videoId: "h5FYmYW-I6Y",
               title: "Juros Compostos: Capitalização Exponencial e Poder do Tempo",
@@ -823,7 +823,7 @@ export default function AulaMatematicaFinanceira({
               titulo="QUIZ: Juros Compostos"
               icone="📊"
               numero={3}
-              variant="blue"
+              variant={mv[3]}
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -837,14 +837,14 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={4}
           titulo="Montante Composto: M = C·(1+i)^t"
           descricao="Aplique a fórmula exponencial para calcular montantes, encontrar capitais presentes e determinar prazos em operações de longo prazo."
-           variant="blue"/>
+           variant={mv[4]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Cálculo e Aplicação do Montante Composto"
               description="Da fórmula à prática: financiamentos, investimentos e análise de retorno."
-              variant="blue"
+              variant={mv[4]}
               className="mb-6"
             />
             <ContentAccordion
@@ -965,7 +965,7 @@ export default function AulaMatematicaFinanceira({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[4]}
             video={{
               videoId: "aX5LZQR-9Qc",
               title: "Montante Composto: Encontrando Capital, Taxa e Tempo",
@@ -1032,7 +1032,7 @@ export default function AulaMatematicaFinanceira({
               titulo="QUIZ: Montante Composto"
               icone="💹"
               numero={3}
-              variant="blue"
+              variant={mv[4]}
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -1046,14 +1046,14 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={5}
           titulo="Desconto Simples: Comercial e Racional"
           descricao="Aprenda a calcular o valor presente de títulos (duplicatas, cheques) antecipando seus vencimentos — operação central no dia a dia das empresas."
-           variant="blue"/>
+           variant={mv[5]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Dois Tipos de Desconto Simples"
               description="Desconto Comercial (por fora) vs. Desconto Racional (por dentro) — saiba a diferença."
-              variant="blue"
+              variant={mv[5]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1154,7 +1154,7 @@ export default function AulaMatematicaFinanceira({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1176,7 +1176,7 @@ export default function AulaMatematicaFinanceira({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[5]}
             video={{
               videoId: "S8xPFP1lU4w",
               title: "Desconto Simples: Antecipação de Fluxos e Duplicatas",
@@ -1247,7 +1247,7 @@ export default function AulaMatematicaFinanceira({
               titulo="QUIZ: Desconto"
               icone="🏦"
               numero={3}
-              variant="blue"
+              variant={mv[5]}
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -1261,14 +1261,14 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={6}
           titulo="Equivalência de Capitais"
           descricao="Compare e substitua dívidas transportando capitais para uma mesma data focal — habilidade essencial em renegociações e contratos da Petrobras."
-           variant="blue"/>
+           variant={mv[6]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="O Conceito de Data Focal"
               description="Toda comparação de capitais exige uma data de referência comum."
-              variant="blue"
+              variant={mv[6]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1360,7 +1360,7 @@ export default function AulaMatematicaFinanceira({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1382,7 +1382,7 @@ export default function AulaMatematicaFinanceira({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[6]}
             video={{
               videoId: "kGZVW7zDV2Y",
               title: "Equivalência de Capitais: Comparar Fluxos em Datas Diferentes",
@@ -1438,7 +1438,7 @@ export default function AulaMatematicaFinanceira({
               titulo="QUIZ: Equivalência de Capitais"
               icone="🔀"
               numero={3}
-              variant="blue"
+              variant={mv[6]}
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -1452,14 +1452,14 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={7}
           titulo="Taxa Nominal vs. Taxa Efetiva"
           descricao="Entenda a diferença entre a taxa anunciada e a taxa que realmente incide sobre seu capital — fonte de inúmeras pegadinhas da CESGRANRIO."
-           variant="blue"/>
+           variant={mv[7]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Nominal, Efetiva e Equivalente"
               description="Três conceitos que muitos confundem — domine-os e nunca erre esse tipo de questão."
-              variant="blue"
+              variant={mv[7]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1650,7 +1650,7 @@ export default function AulaMatematicaFinanceira({
               titulo="QUIZ: Taxas Nominal e Efetiva"
               icone="📊"
               numero={3}
-              variant="blue"
+              variant={mv[7]}
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -1664,14 +1664,14 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={8}
           titulo="Séries de Pagamento (Anuidades)"
           descricao="Calcule financiamentos, parcelas e valores presentes de fluxos de caixa periódicos — base para contratos de longo prazo e planos de investimento."
-           variant="blue"/>
+           variant={mv[8]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Anuidades Uniformes: PMT Constante"
               description="A fórmula de parcelas uniformes (PMT) e como interpretar os fatores de anuidade."
-              variant="blue"
+              variant={mv[8]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1766,7 +1766,7 @@ export default function AulaMatematicaFinanceira({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1788,7 +1788,7 @@ export default function AulaMatematicaFinanceira({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[8]}
             video={{
               videoId: "CXW5V4zDvWY",
               title: "Séries de Pagamento: Anuidades Postecipadas e Antecipadas",
@@ -1842,7 +1842,7 @@ export default function AulaMatematicaFinanceira({
               titulo="QUIZ: Séries de Pagamento"
               icone="💳"
               numero={3}
-              variant="blue"
+              variant={mv[8]}
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -1856,14 +1856,14 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={9}
           titulo="Aplicações Petrobras: Financiamentos e Contratos"
           descricao="Questões integradas com contexto real da indústria petrolífera: arrendamentos, PLR, financiamentos de equipamentos, debêntures e fundos de renovação."
-           variant="blue"/>
+           variant={mv[9]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Matemática Financeira no Setor Petrolífero"
               description="Como os conceitos se aplicam nos processos reais de investimento e financiamento da Petrobras."
-              variant="blue"
+              variant={mv[9]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1955,7 +1955,7 @@ export default function AulaMatematicaFinanceira({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1977,7 +1977,7 @@ export default function AulaMatematicaFinanceira({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "2HYVqU1Kgdg",
               title: "Matemática Financeira em Projetos Petrobras: VPL e TIR",
@@ -2033,7 +2033,7 @@ export default function AulaMatematicaFinanceira({
               titulo="QUIZ: Aplicações Petrobras"
               icone="🛢️"
               numero={3}
-              variant="blue"
+              variant={mv[9]}
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -2047,14 +2047,14 @@ export default function AulaMatematicaFinanceira({
         <ModuleBanner numero={10}
           titulo="Simulado Final CESGRANRIO"
           descricao="Questões integradas no nível e estilo CESGRANRIO, cobrindo todos os tópicos de Matemática Financeira — o teste definitivo antes da prova real."
-           variant="blue"/>
+           variant={mv[10]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Revisão Geral: Os 5 Pilares"
               description="Consolide os conceitos antes de enfrentar o simulado final."
-              variant="blue"
+              variant={mv[10]}
               className="mb-6"
             />
             <ContentAccordion
@@ -2190,7 +2190,7 @@ export default function AulaMatematicaFinanceira({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[10]}
             video={{
               videoId: "kxJXBg_lRfU",
               title: "Revisão Final: Matemática Financeira Integrada CESGRANRIO",
@@ -2246,7 +2246,7 @@ export default function AulaMatematicaFinanceira({
               titulo="QUIZ: Simulado Final"
               icone="🏆"
               numero={3}
-              variant="blue"
+              variant={mv[10]}
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>

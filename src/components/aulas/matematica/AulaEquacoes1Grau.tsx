@@ -1,4 +1,4 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 
@@ -63,7 +63,7 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaEquacoes1Grau({
   onComplete,
@@ -205,7 +205,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={1}
             titulo="Fundamentos & Princípio da Balança"
             descricao="A base: isolar a incógnita na balança invisível. Operação inversa é LEI."
-          variant="blue"
+          variant={mv[1]}
         />
 
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
@@ -214,7 +214,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Equação de 1º Grau: A Linguagem Algébrica da Balança"
               description="O conceito fundamental que permite resolver qualquer problema com uma incógnita desconhecida"
-          variant="blue"
+          variant={mv[1]}
         />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -258,7 +258,7 @@ export default function AulaEquacoes1Grau({
               index={2}
               title="Protocolo de Três Passos para Resolver Qualquer Equação de 1º Grau"
               description="A sequência mecânica que SEMPRE funciona, sem exceção"
-          variant="blue"
+          variant={mv[1]}
         />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -293,7 +293,7 @@ export default function AulaEquacoes1Grau({
               index={3}
               title="A Mecânica das Equações de 1º Grau"
               description="Dominando a balança matemática: o que você faz de um lado, faz do outro."
-          variant="blue"
+          variant={mv[1]}
         />
 
             <p className="text-muted-foreground leading-relaxed text-lg">
@@ -520,7 +520,7 @@ export default function AulaEquacoes1Grau({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -573,7 +573,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant="blue"
+          variant={mv[1]}
         />
 
                     <QuizInterativo
@@ -582,7 +582,7 @@ export default function AulaEquacoes1Grau({
             numero={5}
             icone="🧠"
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          variant="blue"
+          variant={mv[1]}
         />
 
           <div className="space-y-8 bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm">
@@ -610,7 +610,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={2}
             titulo="Tradução de Problemas: Português → Matemática"
             descricao="A habilidade que separa os 70% dos 90%: ler e converter em equação."
-          variant="blue"
+          variant={mv[2]}
         />
 
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
@@ -619,7 +619,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Do Português para a Linguagem Algébrica: A Tradução Crítica"
               description="Converter palavras em símbolos matemáticos — a barreira entre ler um problema e resolvê-lo"
-          variant="blue"
+          variant={mv[2]}
         />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -661,7 +661,7 @@ export default function AulaEquacoes1Grau({
               index={2}
               title="O Dicionário Operacional"
               description="Como a CESGRANRIO pensa em português e a gente converte para x."
-          variant="blue"
+          variant={mv[2]}
         />
 
             <ContentAccordion
@@ -924,7 +924,7 @@ export default function AulaEquacoes1Grau({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -977,7 +977,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant="blue"
+          variant={mv[2]}
         />
 
                     <QuizInterativo
@@ -986,7 +986,7 @@ export default function AulaEquacoes1Grau({
             numero={5}
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          variant="blue"
+          variant={mv[2]}
         />
         </div>
       </TabsContent>
@@ -996,7 +996,7 @@ export default function AulaEquacoes1Grau({
           index={3}
           title="Interpretação Avançada: Pegadinhas Comuns de Tradução"
           description="Onde candidatos escorregam (e como você vai se safar)"
-          variant="blue"
+          variant={mv[2]}
         />
 
         <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1032,7 +1032,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={3}
             titulo="Equações com Frações: O Aniquilador de Denominador"
             descricao="Como destruir frações em um único golpe: MMC. Nunca mais sofrer com ÷."
-          variant="blue"
+          variant={mv[3]}
         />
 
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
@@ -1041,7 +1041,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Equações com Frações: Eliminando o Denominador Antes de Começar"
               description="O segredo para eliminar 90% da complexidade — multiplicar tudo pelo MMC no primeiro passo"
-          variant="blue"
+          variant={mv[3]}
         />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1084,7 +1084,7 @@ export default function AulaEquacoes1Grau({
               index={2}
               title="Limpando Frações Rápidamente"
               description="Frações atraem erros. Seu objetivo: eliminá-las no PRIMEIRO passo."
-          variant="blue"
+          variant={mv[3]}
         />
 
             <ContentAccordion
@@ -1252,7 +1252,7 @@ export default function AulaEquacoes1Grau({
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1305,7 +1305,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant="blue"
+          variant={mv[3]}
         />
 
                     <QuizInterativo
@@ -1314,7 +1314,7 @@ export default function AulaEquacoes1Grau({
             numero={5}
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          variant="blue"
+          variant={mv[3]}
         />
         </div>
       </TabsContent>
@@ -1324,7 +1324,7 @@ export default function AulaEquacoes1Grau({
           index={3}
           title="Casos Especiais: Equações Degeneradas e Indeterminadas"
           description="Quando MMC é apenas meia história"
-          variant="blue"
+          variant={mv[3]}
         />
 
         <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1358,7 +1358,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={4}
             titulo="Sistemas Lineares 2x2"
             descricao="Duas equações, duas incógnitas. Método da Adição vs Substituição."
-          variant="blue"
+          variant={mv[4]}
         />
 
           {/* ★ RICH INTRO SECTION — TEXTO DENSO INTRODUTÓRIO */}
@@ -1367,7 +1367,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Sistemas de Duas Equações e Duas Incógnitas"
               description="Quando você tem dois valores desconhecidos e duas pistas — usar múltiplas informações simultaneamente"
-          variant="blue"
+          variant={mv[4]}
         />
 
             <div className="space-y-6 text-base text-foreground/85 leading-relaxed">
@@ -1410,7 +1410,7 @@ export default function AulaEquacoes1Grau({
               index={2}
               title="Dominando X e Y"
               description="Quando você tem duas balas para dois alvos."
-          variant="blue"
+          variant={mv[4]}
         />
 
             <ContentAccordion
@@ -1563,7 +1563,7 @@ export default function AulaEquacoes1Grau({
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1616,7 +1616,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant="blue"
+          variant={mv[4]}
         />
 
                     <QuizInterativo
@@ -1625,7 +1625,7 @@ export default function AulaEquacoes1Grau({
             numero={4}
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          variant="blue"
+          variant={mv[4]}
         />
         </div>
       </TabsContent>
@@ -1636,7 +1636,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={5}
             titulo="Simulado Parcial"
             descricao="Reúna tudo dos Módulos 1-4. Você está no caminho certo?"
-          variant="blue"
+          variant={mv[5]}
         />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1644,7 +1644,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Checkpoint: Revisão Progressiva"
               description="Teste seus conhecimentos antes de avançar para inequações e sistemas avançados."
-          variant="blue"
+          variant={mv[5]}
         />
 
             <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
@@ -1733,7 +1733,7 @@ export default function AulaEquacoes1Grau({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1786,7 +1786,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant="blue"
+          variant={mv[5]}
         />
 
                     <QuizInterativo
@@ -1795,7 +1795,7 @@ export default function AulaEquacoes1Grau({
             numero={3}
             icone="📋"
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          variant="blue"
+          variant={mv[5]}
         />
         </div>
       </TabsContent>
@@ -1808,7 +1808,7 @@ export default function AulaEquacoes1Grau({
             descricao={
               "Equações ao contrário: > e <. Regra do Sinal INVERTE ao dividir por negativo."
             }
-          variant="blue"
+          variant={mv[6]}
         />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -1818,7 +1818,7 @@ export default function AulaEquacoes1Grau({
               description={
                 "Quando a igualdade (=) vira desigualdade (>, <, ≥, ≤)."
               }
-          variant="blue"
+          variant={mv[6]}
         />
 
             <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
@@ -2032,7 +2032,7 @@ export default function AulaEquacoes1Grau({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2085,7 +2085,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant="blue"
+          variant={mv[6]}
         />
 
                     <QuizInterativo
@@ -2094,7 +2094,7 @@ export default function AulaEquacoes1Grau({
             numero={3}
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
-          variant="blue"
+          variant={mv[6]}
         />
         </div>
       </TabsContent>
@@ -2105,7 +2105,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={7}
             titulo="Sistemas Lineares Avançados (3x3)"
             descricao="Três equações, três incógnitas. Eliminação de Gauss (simplificado)."
-          variant="blue"
+          variant={mv[7]}
         />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2113,7 +2113,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Da Dimensão 2x2 para 3x3"
               description="Mesma estratégia: isolar incógnitas progressivamente."
-          variant="blue"
+          variant={mv[7]}
         />
 
             <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
@@ -2300,7 +2300,7 @@ export default function AulaEquacoes1Grau({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2353,7 +2353,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant="blue"
+          variant={mv[7]}
         />
 
                     <QuizInterativo
@@ -2362,7 +2362,7 @@ export default function AulaEquacoes1Grau({
             numero={3}
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
-          variant="blue"
+          variant={mv[7]}
         />
         </div>
       </TabsContent>
@@ -2373,7 +2373,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={8}
             titulo="Resolução Reversa e Verificação"
             descricao="Trabalhe de trás para frente: dado o resultado, é a solução certa?"
-          variant="blue"
+          variant={mv[8]}
         />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2381,7 +2381,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Técnica de Prova: Substituição na Equação Original"
               description="A verificação não é luxo, é necessidade na CESGRANRIO."
-          variant="blue"
+          variant={mv[8]}
         />
 
             <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
@@ -2619,7 +2619,7 @@ export default function AulaEquacoes1Grau({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2672,7 +2672,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant="blue"
+          variant={mv[8]}
         />
 
                     <QuizInterativo
@@ -2681,7 +2681,7 @@ export default function AulaEquacoes1Grau({
             numero={3}
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
-          variant="blue"
+          variant={mv[8]}
         />
         </div>
       </TabsContent>
@@ -2692,7 +2692,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={9}
             titulo="Aplicações Petrobras & Contextos Reais"
             descricao="Onde as equações vivem: RNEST, RPBC, caldeiras, licitações, folha de pagamento."
-          variant="blue"
+          variant={mv[9]}
         />
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
@@ -2700,7 +2700,7 @@ export default function AulaEquacoes1Grau({
               index={1}
               title="Problemas Contextualizados Petrobras"
               description="A CESGRANRIO adora disfarçar equações em situações reais da empresa."
-          variant="blue"
+          variant={mv[9]}
         />
 
             <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
@@ -2971,7 +2971,7 @@ export default function AulaEquacoes1Grau({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -3024,7 +3024,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant="blue"
+          variant={mv[9]}
         />
 
                     <QuizInterativo
@@ -3033,7 +3033,7 @@ export default function AulaEquacoes1Grau({
             numero={3}
             icone="🎯"
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
-          variant="blue"
+          variant={mv[9]}
         />
         </div>
       </TabsContent>
@@ -3044,7 +3044,7 @@ export default function AulaEquacoes1Grau({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre — Elite Masterclass"
             descricao="Reúna TUDO: balança, sistemas, inequações, contextos. 90+ = domínio total."
-          variant="blue"
+          variant={mv[10]}
         />
 
           {showCompletionBadge ? (
@@ -3070,7 +3070,7 @@ export default function AulaEquacoes1Grau({
                   index={1}
                   title="Avaliação Final Compreensiva"
                   description="Este simulado cobre TODOS os tópicos: M1 até M9. Mínimo 75% para aprovação."
-          variant="blue"
+          variant={mv[10]}
         />
 
                 <div className="space-y-6 text-base leading-relaxed text-foreground prose-invert">
@@ -3159,7 +3159,7 @@ export default function AulaEquacoes1Grau({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -3212,7 +3212,7 @@ export default function AulaEquacoes1Grau({
               titulo: "Rítmo do Aprendizado",
               artista: "Prof. Musical"
             }}
-          variant="blue"
+          variant={mv[10]}
         />
 
                         <QuizInterativo
@@ -3221,7 +3221,7 @@ export default function AulaEquacoes1Grau({
                 icone="🏆"
                 numero={3}
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
-          variant="blue"
+          variant={mv[10]}
         />
             </section>
           )}

@@ -1,4 +1,4 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 
@@ -77,7 +77,7 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Final" },
 ] as const;
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaRegencia({
   titulo,
@@ -198,7 +198,7 @@ export default function AulaRegencia({
             numero={1}
             titulo="Fundamentos e Mecânica"
             descricao="Entenda a relação de atração entre o termo regente (imã) e o termo regido (complemento)."
-          variant="blue"
+          variant={mv[1]}
         />
 
           {/* ★ RICH INTRO M1 */}
@@ -206,7 +206,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index="INTRO"
               title="O Que É Regência e Por Que Ela Decide Aprovações"
-              variant="blue"
+              variant={mv[1]}
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
               <p>
@@ -279,7 +279,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="A Lógica da Regência"
-          variant="blue"
+          variant={mv[1]}
         />
             <ContentAccordion
               slides={[
@@ -347,7 +347,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Regência Verbal vs Nominal"
-          variant="blue"
+          variant={mv[1]}
         />
             <ContentAccordion
               slides={[
@@ -445,7 +445,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={3}
               title="Transitivo Direto vs Indireto"
-          variant="blue"
+          variant={mv[1]}
         />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -490,7 +490,7 @@ export default function AulaRegencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -513,7 +513,7 @@ export default function AulaRegencia({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-          variant="blue"
+          variant={mv[1]}
         />
         </div>
       </TabsContent>
@@ -525,7 +525,7 @@ export default function AulaRegencia({
             numero={2}
             titulo="Regência Nominal: Adjetivos"
             descricao="Lista crítica de adjetivos que exigem preposições fixas para não errar na prova."
-          variant="blue"
+          variant={mv[2]}
         />
 
           {/* ★ RICH INTRO M2 */}
@@ -533,7 +533,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index="INTRO"
               title="Adjetivos e Suas Preposições: O Casamento Gramatical que a CESGRANRIO Adora"
-              variant="blue"
+              variant={mv[2]}
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
               <p>
@@ -579,7 +579,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Radar de Adjetivos"
-          variant="blue"
+          variant={mv[2]}
         />
             <CardCarousel
               cards={[
@@ -614,7 +614,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Adjetivos Críticos com Preposição COM"
-          variant="blue"
+          variant={mv[2]}
         />
             <ContentAccordion
               slides={[
@@ -688,7 +688,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={3}
               title="Armadilhas Cesgranrio — Adjetivos"
-          variant="blue"
+          variant={mv[2]}
         />
             <AlertBox tipo="danger" titulo="Os 5 Adjetivos Mais Cobrados">
               Decore estas combinações — elas aparecem diretamente nas provas da
@@ -735,7 +735,7 @@ export default function AulaRegencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -758,7 +758,7 @@ export default function AulaRegencia({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-          variant="blue"
+          variant={mv[2]}
         />
         </div>
       </TabsContent>
@@ -770,7 +770,7 @@ export default function AulaRegencia({
             numero={3}
             titulo="Regência Nominal: Substantivos"
             descricao="A forte atração de nomes como 'Respeito', 'Amor' e 'Dúvida'."
-          variant="blue"
+          variant={mv[3]}
         />
 
           {/* ★ RICH INTRO M3 */}
@@ -778,7 +778,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index="INTRO"
               title="Substantivos que Regem: Quando o Nome Exige Preposição"
-              variant="blue"
+              variant={mv[3]}
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
               <p>
@@ -826,7 +826,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Equilíbrio de Nomes"
-          variant="blue"
+          variant={mv[3]}
         />
             <ContentAccordion
               slides={[
@@ -872,7 +872,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Substantivos e Suas Preposições Fixas"
-          variant="blue"
+          variant={mv[3]}
         />
             <ContentAccordion
               slides={[
@@ -955,7 +955,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={3}
               title="Comparação: Uso Correto vs Coloquial"
-          variant="blue"
+          variant={mv[3]}
         />
             <Comparison
               title="Respeito: Preposição A ou COM?"
@@ -986,7 +986,7 @@ export default function AulaRegencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1009,7 +1009,7 @@ export default function AulaRegencia({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-3", score)}
-          variant="blue"
+          variant={mv[3]}
         />
         </div>
       </TabsContent>
@@ -1021,7 +1021,7 @@ export default function AulaRegencia({
             numero={4}
             titulo="Verbos de Avançado: Parte I"
             descricao="Assistir, Aspirar e Visar: O trio que decide aprovações na Cesgranrio."
-          variant="blue"
+          variant={mv[4]}
         />
 
           {/* ★ RICH INTRO M4 */}
@@ -1029,7 +1029,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index="INTRO"
               title="O Trio de Ouro: Verbos que Mudam de Sentido com a Preposição"
-              variant="blue"
+              variant={mv[4]}
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
               <p>
@@ -1075,7 +1075,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="A Variação de Sentido"
-          variant="blue"
+          variant={mv[4]}
         />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <FlipCard
@@ -1132,7 +1132,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Armadilhas Cesgranrio — Verbos Bifrontes"
-          variant="blue"
+          variant={mv[4]}
         />
             <AlertBox tipo="danger" titulo="Verbos que mudam de regência conforme o sentido">
               Os verbos bifrontes são o maior desafio de regência verbal. Cada
@@ -1215,7 +1215,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={3}
               title="Comparação Direta: Assistir a vs Assistir"
-          variant="blue"
+          variant={mv[4]}
         />
             <Comparison
               title="O verbo ASSISTIR no contexto corporativo"
@@ -1238,7 +1238,7 @@ export default function AulaRegencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1261,7 +1261,7 @@ export default function AulaRegencia({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-4", score)}
-          variant="blue"
+          variant={mv[4]}
         />
         </div>
       </TabsContent>
@@ -1273,7 +1273,7 @@ export default function AulaRegencia({
             numero={5}
             titulo="Verbos de Avançado: Parte II"
             descricao="Custar, Proceder, Querer e Chamar: nuances que o candidato comum ignora."
-          variant="blue"
+          variant={mv[5]}
         />
 
           {/* ★ RICH INTRO M5 */}
@@ -1281,7 +1281,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index="INTRO"
               title="Verbos de Comportamento Único: Quando a Língua Culta Surpreende"
-              variant="blue"
+              variant={mv[5]}
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
               <p>
@@ -1325,7 +1325,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="A Lógica do Custar e Proceder"
-          variant="blue"
+          variant={mv[5]}
         />
             <Comparison
               title="O Verbo CUSTAR"
@@ -1353,7 +1353,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Top 10 Verbos Que Confundem Candidatos"
-          variant="blue"
+          variant={mv[5]}
         />
             <AlertBox tipo="danger" titulo="Lista Crítica — Decore Antes da Prova">
               Os 10 verbos que mais caem em provas da Cesgranrio/Petrobras:
@@ -1384,7 +1384,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={3}
               title="Pares de Confusão: FlipCards"
-          variant="blue"
+          variant={mv[5]}
         />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FlipCard
@@ -1437,7 +1437,7 @@ export default function AulaRegencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1460,7 +1460,7 @@ export default function AulaRegencia({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-5", score)}
-          variant="blue"
+          variant={mv[5]}
         />
         </div>
       </TabsContent>
@@ -1472,7 +1472,7 @@ export default function AulaRegencia({
             numero={6}
             titulo="Transitividade Bifronte"
             descricao="Pagar, Perdoar e Informar: Um pé na preposição, outro na liberdade."
-          variant="blue"
+          variant={mv[6]}
         />
 
           {/* ★ RICH INTRO M6 */}
@@ -1480,7 +1480,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index="INTRO"
               title="A Regra Pessoa/Coisa: O Critério que Determina a Preposição"
-              variant="blue"
+              variant={mv[6]}
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
               <p>
@@ -1525,7 +1525,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Pessoa vs Coisa"
-          variant="blue"
+          variant={mv[6]}
         />
             <div className="p-6 bg-cyan-500/5 rounded-2xl border border-cyan-500/20 space-y-4">
               <h4 className="font-black text-cyan-600 uppercase tracking-widest text-lg flex items-center gap-2">
@@ -1559,7 +1559,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Regra Pessoa/Coisa: Os Verbos Bifrontes Mais Cobrados"
-          variant="blue"
+          variant={mv[6]}
         />
             <ContentAccordion
               slides={[
@@ -1624,7 +1624,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={3}
               title="Implicar em: o erro mais famoso"
-          variant="blue"
+          variant={mv[6]}
         />
             <Comparison
               title="IMPLICAR no sentido de 'causar/acarretar'"
@@ -1656,7 +1656,7 @@ export default function AulaRegencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1679,7 +1679,7 @@ export default function AulaRegencia({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-6", score)}
-          variant="blue"
+          variant={mv[6]}
         />
         </div>
       </TabsContent>
@@ -1691,7 +1691,7 @@ export default function AulaRegencia({
             numero={7}
             titulo="Movimento e Pronominais"
             descricao="Ir, Chegar e a saga dos verbos que 'se esquecem' ou 'lembram'."
-          variant="blue"
+          variant={mv[7]}
         />
 
           {/* ★ RICH INTRO M7 */}
@@ -1699,7 +1699,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index="INTRO"
               title="Ir e Chegar: A Batalha entre 'A' e 'EM' que Define Aprovações"
-              variant="blue"
+              variant={mv[7]}
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
               <p>
@@ -1742,7 +1742,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="A Preposição 'A' no Movimento"
-          variant="blue"
+          variant={mv[7]}
         />
             <AlertBox tipo="warning" titulo="O Erro do 'EM'">
               Na norma culta, quem vai, vai **A** algum lugar. O uso do **EM** é
@@ -1767,7 +1767,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Ir A vs Ir PARA vs Ir EM"
-          variant="blue"
+          variant={mv[7]}
         />
             <ContentAccordion
               slides={[
@@ -1851,7 +1851,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={3}
               title="Comparação: Chegar A vs Chegar EM"
-          variant="blue"
+          variant={mv[7]}
         />
             <Comparison
               title="Verbos de Chegada na Norma Culta"
@@ -1882,7 +1882,7 @@ export default function AulaRegencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1905,7 +1905,7 @@ export default function AulaRegencia({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-7", score)}
-          variant="blue"
+          variant={mv[7]}
         />
         </div>
       </TabsContent>
@@ -1917,7 +1917,7 @@ export default function AulaRegencia({
             numero={8}
             titulo="Peculiaridades Cesgranrio"
             descricao="Implicar, Preferir e Aludir: Detalhes técnicos que o manual do Petrobras exige."
-          variant="blue"
+          variant={mv[8]}
         />
 
           {/* ★ RICH INTRO M8 */}
@@ -1925,7 +1925,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index="INTRO"
               title="Os Verbos que a CESGRANRIO Mais Ama: Implicar, Preferir, Aludir e Outros"
-              variant="blue"
+              variant={mv[8]}
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
               <p>
@@ -1970,7 +1970,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Dossiê IMPLICAR"
-          variant="blue"
+          variant={mv[8]}
         />
             <p className="text-muted-foreground leading-relaxed">
               O verbo **IMPLICAR** é o maior gerador de erros na regência verbal
@@ -2004,7 +2004,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Peculiaridades que a Cesgranrio Adora"
-          variant="blue"
+          variant={mv[8]}
         />
             <ContentAccordion
               slides={[
@@ -2109,7 +2109,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={3}
               title="FlipCards: Precisar, Carecer e Necessitar"
-          variant="blue"
+          variant={mv[8]}
         />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <FlipCard
@@ -2152,7 +2152,7 @@ export default function AulaRegencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2175,7 +2175,7 @@ export default function AulaRegencia({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-8", score)}
-          variant="blue"
+          variant={mv[8]}
         />
         </div>
       </TabsContent>
@@ -2187,7 +2187,7 @@ export default function AulaRegencia({
             numero={9}
             titulo="Regência e Relativos"
             descricao="Onde a preposição viaja para antes do QUE, QUEM ou CUJO."
-          variant="blue"
+          variant={mv[9]}
         />
 
           {/* ★ RICH INTRO M9 */}
@@ -2195,7 +2195,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index="INTRO"
               title="A Preposição Viajante: Como a Regência Comanda os Pronomes Relativos"
-              variant="blue"
+              variant={mv[9]}
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
               <p>
@@ -2237,7 +2237,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="A Preposição Viajante"
-          variant="blue"
+          variant={mv[9]}
         />
             <p className="text-muted-foreground text-lg">
               A regra é: olhe para o verbo que vem DEPOIS do pronome. Se ele
@@ -2270,7 +2270,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Linguagem Petrobras: Verbos em Textos Técnicos"
-          variant="blue"
+          variant={mv[9]}
         />
             <AlertBox tipo="info" titulo="Verbos Formais da Redação Oficial Petrobras">
               Em documentos técnicos, relatórios e atas da Petrobras, estes
@@ -2362,7 +2362,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={3}
               title="CardCarousel: Pronomes Relativos com Preposição"
-          variant="blue"
+          variant={mv[9]}
         />
             <CardCarousel
               cards={[
@@ -2399,7 +2399,7 @@ export default function AulaRegencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2422,7 +2422,7 @@ export default function AulaRegencia({
             icone="🎯"
             numero={4}
             onComplete={(score) => handleModuleComplete("modulo-9", score)}
-          variant="blue"
+          variant={mv[9]}
         />
         </div>
       </TabsContent>
@@ -2434,7 +2434,7 @@ export default function AulaRegencia({
             numero={10}
             titulo="Simulado Final"
             descricao="Teste seu domínio perante uma bateria definitiva focada em Regência Global Cesgranrio."
-          variant="blue"
+          variant={mv[10]}
         />
 
           {/* ★ RICH INTRO M10 */}
@@ -2442,7 +2442,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index="INTRO"
               title="Simulado Geral: Como a CESGRANRIO Monta Questões de Regência"
-              variant="blue"
+              variant={mv[10]}
             />
             <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
               <p>
@@ -2487,7 +2487,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Mapa Mental: Todas as Regras de Regência"
-          variant="blue"
+          variant={mv[10]}
         />
             <ContentAccordion
               slides={[
@@ -2613,7 +2613,7 @@ export default function AulaRegencia({
             <ModuleSectionHeader
               index={2}
               title="Estratégia Final de Prova"
-          variant="blue"
+          variant={mv[10]}
         />
             <AlertBox tipo="info" titulo="Estratégia Definitiva para Gabaritar Regência">
               <strong>1. Identifique o verbo regente</strong> e pergunte:
@@ -2674,7 +2674,7 @@ export default function AulaRegencia({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2697,7 +2697,7 @@ export default function AulaRegencia({
               icone="🏆"
               numero={3}
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
-          variant="blue"
+          variant={mv[10]}
         />
             </>
           )}

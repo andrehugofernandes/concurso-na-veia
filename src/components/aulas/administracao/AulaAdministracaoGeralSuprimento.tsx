@@ -194,13 +194,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={1}
             titulo="Fundamentos de Administração"
             descricao="Entenda a essência da administração como processo de planejar, organizar, dirigir e controlar recursos para atingir objetivos organizacionais."
-            variant="blue"
+            variant={mv[1]}
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant="blue"
+              variant={mv[1]}
               title="Definição e Pilares da Administração"
               description="Os conceitos fundamentais que sustentam toda a prática administrativa moderna."
             />
@@ -251,7 +251,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant="blue"
+              variant={mv[1]}
               title="Habilidades e Papéis Gerenciais no Contexto Administrativo"
               description="Explorando a profundidade pedagógica dos fundamentos de administração."
             />
@@ -420,7 +420,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={3}
-              variant="blue"
+              variant={mv[1]}
               title="Exemplos Práticos Petrobras"
               description="Como esses conceitos fundamentais se aplicam na realidade da empresa."
             />
@@ -450,7 +450,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={1}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -472,7 +472,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
             index={1}
-            variant="blue"
+            variant={mv[1]}
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Fundamentos de Administração - Visão Geral",
@@ -530,7 +530,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-1")}
             titulo="QUIZ: Fundamentos de Administração"
             numero={1}
-            variant="blue"
+            variant={mv[1]}
             onComplete={(score: number) => handleModuleComplete("modulo-1", score)}
           />
         </TabsContent>
@@ -543,13 +543,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={2}
             titulo="Funções Administrativas PODC"
             descricao="Aprofunde nas quatro funções que sustentam a administração: Planejamento, Organização, Direção e Controle."
-            variant="blue"
+            variant={mv[2]}
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant="blue"
+              variant={mv[2]}
               title="Dossiê das Funções Administrativas"
               description="Entenda como cada função se desdobra em técnicas e ferramentas específicas."
             />
@@ -600,7 +600,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant="blue"
+              variant={mv[2]}
               title="Aprofundamento Funcional do Ciclo Administrativo"
               description="Desdobramentos técnicos de cada função administrativa."
             />
@@ -739,7 +739,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -761,7 +761,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[2]}
             video={{
               videoId: "7c-YVly_C9o",
               title: "PODC - Desdobramento Prático",
@@ -815,7 +815,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-2")}
             titulo="QUIZ: Funções Administrativas PODC"
             numero={2}
-            variant="blue"
+            variant={mv[2]}
             onComplete={(score: number) => handleModuleComplete("modulo-2", score)}
           />
         </TabsContent>
@@ -828,13 +828,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={3}
             titulo="Estruturas Organizacionais"
             descricao="Conheça os principais modelos de estrutura organizacional e como a Petrobras se organiza para otimizar processos e decisões."
-            variant="blue"
+            variant={mv[3]}
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant="blue"
+              variant={mv[3]}
               title="Dossiê de Modelos Estruturais"
               description="Das estruturas clássicas às contemporâneas: compreendendo as linhas de força e as escolhas de design organizacional."
             />
@@ -885,7 +885,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant="blue"
+              variant={mv[3]}
               title="Modelagem e Análise do Design Organizacional"
               description="Análise profunda de cada modelo estrutural."
             />
@@ -1008,7 +1008,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={3}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1030,7 +1030,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
             index={3}
-            variant="blue"
+            variant={mv[3]}
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Estruturas Organizacionais",
@@ -1084,7 +1084,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-3")}
             titulo="QUIZ: Estruturas Organizacionais"
             numero={3}
-            variant="blue"
+            variant={mv[3]}
             onComplete={(score: number) => handleModuleComplete("modulo-3", score)}
           />
         </TabsContent>
@@ -1097,13 +1097,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={4}
             titulo="Comportamento Organizacional"
             descricao="Entenda como as pessoas atuam dentro das organizações: motivação, liderança, comunicação, trabalho em equipe e cultura organizacional."
-            variant="blue"
+            variant={mv[4]}
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant="blue"
+              variant={mv[4]}
               title="Dossiê Comportamental"
               description="Os fatores psicossociais que impactam desempenho e satisfação nas organizações."
             />
@@ -1154,7 +1154,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant="blue"
+              variant={mv[4]}
               title="Vetores da Dinâmica Humana nas Organizações"
               description="Aprofundamento em conceitos de comportamento organizacional."
             />
@@ -1258,7 +1258,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={4}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1280,7 +1280,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
             index={4}
-            variant="blue"
+            variant={mv[4]}
             video={{
               videoId: "7c-YVly_C9o",
               title: "Comportamento Organizacional",
@@ -1338,7 +1338,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-4")}
             titulo="QUIZ: Comportamento Organizacional"
             numero={4}
-            variant="blue"
+            variant={mv[4]}
             onComplete={(score: number) => handleModuleComplete("modulo-4", score)}
           />
         </TabsContent>
@@ -1351,13 +1351,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={5}
             titulo="Gestão por Processos"
             descricao="Aprenda a mapear, analisar e otimizar processos de negócios corporativos, promovendo a integração horizontal e eliminando gargalos."
-            variant="blue"
+            variant={mv[5]}
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant="blue"
+              variant={mv[5]}
               title="Dossiê de Gestão de Processos BPM"
               description="A quebra de silos e o gerenciamento horizontal voltado à entrega de valor."
             />
@@ -1408,7 +1408,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant="blue"
+              variant={mv[5]}
               title="Metodologia e Ciclos de Melhoria BPM"
               description="Estruturação, mapeamento e modelagem horizontal de fluxos de valor."
             />
@@ -1510,7 +1510,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={5}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1532,7 +1532,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
             index={5}
-            variant="blue"
+            variant={mv[5]}
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Gestão por Processos",
@@ -1590,7 +1590,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-5")}
             titulo="QUIZ: Gestão por Processos"
             numero={5}
-            variant="blue"
+            variant={mv[5]}
             onComplete={(score: number) => handleModuleComplete("modulo-5", score)}
           />
         </TabsContent>
@@ -1603,13 +1603,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={6}
             titulo="Teoria das Organizações"
             descricao="Evolução histórica do pensamento administrativo: de Taylor à Contingência. Escolas, correntes e como elas moldaram a administração moderna."
-            variant="blue"
+            variant={mv[6]}
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant="blue"
+              variant={mv[6]}
               title="Dossiê Histórico-Teórico"
               description="As grandes escolas e teorias que fundamentam a administração contemporânea."
             />
@@ -1660,7 +1660,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant="blue"
+              variant={mv[6]}
               title="Fundamentos Históricos e Escolas de Pensamento"
               description="Comparação crítica entre as grandes escolas administrativas."
             />
@@ -1788,7 +1788,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={6}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1810,7 +1810,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
             index={6}
-            variant="blue"
+            variant={mv[6]}
             video={{
               videoId: "7c-YVly_C9o",
               title: "Escolas Administrativas - Linha do Tempo",
@@ -1868,7 +1868,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-6")}
             titulo="QUIZ: Teoria das Organizações"
             numero={6}
-            variant="blue"
+            variant={mv[6]}
             onComplete={(score: number) => handleModuleComplete("modulo-6", score)}
           />
         </TabsContent>
@@ -1881,13 +1881,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={7}
             titulo="Comunicação e Conflitos"
             descricao="A comunicação como processo vital. Canais, barreiras, feedback. Conflitos: naturais, necessários, podem ser construtivos ou destrutivos."
-            variant="blue"
+            variant={mv[7]}
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant="blue"
+              variant={mv[7]}
               title="Dossiê de Comunicação e Conflitos"
               description="Fundamentos teóricos e dinâmicas relacionais nas organizações contemporâneas."
             />
@@ -1909,7 +1909,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant="blue"
+              variant={mv[7]}
               title="Mecanismos de Diálogo e Gestão de Conflitos"
               description="Aprofundamento técnico nos processos comunicacionais e na mediação corporativa."
             />
@@ -2131,7 +2131,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={7}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2153,7 +2153,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
             index={7}
-            variant="blue"
+            variant={mv[7]}
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Comunicação e Conflitos Organizacionais",
@@ -2211,7 +2211,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-7")}
             titulo="QUIZ: Comunicação e Conflitos"
             numero={7}
-            variant="blue"
+            variant={mv[7]}
             onComplete={(score: number) => handleModuleComplete("modulo-7", score)}
           />
         </TabsContent>
@@ -2224,13 +2224,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={8}
             titulo="Decisão e Inovação"
             descricao="Processo decisório nas organizações: tipos, modelos, técnicas. Inovação: necessidade estratégica na era do conhecimento."
-            variant="blue"
+            variant={mv[8]}
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant="blue"
+              variant={mv[8]}
               title="Dossiê Decisório e Inovação"
               description="Racionalidade limitada, espiral do conhecimento e armadilhas mentais na tomada de decisão."
             />
@@ -2252,7 +2252,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant="blue"
+              variant={mv[8]}
               title="Racionalidade Decisória e Vetores de Inovação"
               description="Modelos de tomada de decisão e gestão estratégica do conhecimento."
             />
@@ -2445,7 +2445,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={8}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2468,7 +2468,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
             index={8}
-            variant="blue"
+            variant={mv[8]}
             video={{
               videoId: "7c-YVly_C9o",
               title: "Decisão Administrativa e Inovação",
@@ -2530,7 +2530,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-8")}
             titulo="QUIZ: Decisão e Inovação"
             numero={8}
-            variant="blue"
+            variant={mv[8]}
             onComplete={(score: number) => handleModuleComplete("modulo-8", score)}
           />
         </TabsContent>
@@ -2543,13 +2543,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={9}
             titulo="Administração na Petrobras"
             descricao="Aplicação prática: desafios únicos de suprimento em uma estatal de energia. Leis 13.303 e 14.133, processos, fornecedores, sustentabilidade."
-            variant="blue"
+            variant={mv[9]}
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant="blue"
+              variant={mv[9]}
               title="Dossiê Petrobras: Marco Regulatório Legal"
               description="Domine a complexidade jurídica e a comparação crítica dos regimes de contratações estatais e públicas."
             />
@@ -2571,7 +2571,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index="LICITAÇÕES"
-              variant="blue"
+              variant={mv[9]}
               title="Lei das Estatais (13.303) vs. Nova Lei de Licitações (14.133)"
               description="Comparativo definitivo exigido pela banca CESGRANRIO para o cargo de Técnico de Suprimentos."
             />
@@ -2673,7 +2673,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant="blue"
+              variant={mv[9]}
               title="Direito Administrativo Aplicado à Sociedade de Economia Mista"
               description="Desafios e soluções administrativas na realidade Petrobras."
             />
@@ -2836,7 +2836,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={9}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2858,7 +2858,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
             index={9}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "dQw4w9WgXcQ",
               title: "Administração Pública e Lei 13.303",
@@ -2916,7 +2916,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={mapQuizQuestions("modulo-9")}
             titulo="QUIZ: Administração na Petrobras"
             numero={9}
-            variant="blue"
+            variant={mv[9]}
             onComplete={(score: number) => handleModuleComplete("modulo-9", score)}
           />
         </TabsContent>
@@ -2929,13 +2929,13 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             numero={10}
             titulo="Simulado Geral"
             descricao="Consolidação de todos os 9 módulos anteriores. 10 questões integradas cobrindo fundamentos, teorias, processos e contexto Petrobras."
-            variant="blue"
+            variant={mv[10]}
           />
 
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
-              variant="blue"
+              variant={mv[10]}
               title="Síntese Integradora"
               description="Antes do simulado: revise os conceitos-chave de cada módulo."
             />
@@ -2948,7 +2948,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
           <div className="space-y-6">
             <ModuleSectionHeader
               index={2}
-              variant="blue"
+              variant={mv[10]}
               title="Checklist de Preparação"
               description="Antes de iniciar o simulado, certifique-se que você domina os pilares estratégicos:"
             />
@@ -2970,7 +2970,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <QuestaoResolvidaStepByStep
           index={10}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -2992,7 +2992,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
             index={10}
-            variant="blue"
+            variant={mv[10]}
             video={{
               videoId: "7c-YVly_C9o",
               title: "Revisão Geral - Administração Completa",
@@ -3065,7 +3065,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             questoes={quizM10}
             titulo="Simulado Geral: Administração Geral Completa"
             numero={10}
-            variant="blue"
+            variant={mv[10]}
             onComplete={(score: number) => handleModuleComplete("modulo-10", score)}
           />
         </TabsContent>

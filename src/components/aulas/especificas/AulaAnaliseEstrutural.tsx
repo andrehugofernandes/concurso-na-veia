@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_ANALISE_ESTRUTURAL, QUIZ_M2_ANALISE_ESTRUTURAL, QUIZ_M3_ANALISE_ESTRUTURAL } from '@/data/quizzes/especificas/analise-estrutural';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -27,40 +25,31 @@ export default function AulaAnaliseEstrutural({ onComplete }: AulaProps) {
 
   const modules = [
     {
-      title: 'Módulo 1: Introdução a Analise Estrutural',
+      title: 'Módulo 1: Introdução a Análise estrutural',
       content: (
         <div className="space-y-4 text-slate-300">
           <p>Esta aula faz parte dos Conhecimentos Específicos para os cargos técnicos e superiores da Petrobras.</p>
-          <p>O foco inicial deste módulo é introduzir os conceitos básicos de analise estrutural.</p>
+          <p>O foco inicial deste módulo é introduzir os conceitos básicos de análise estrutural.</p>
         </div>
       ),
-      quiz: QUIZ_M1_ANALISE_ESTRUTURAL
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_ANALISE_ESTRUTURAL
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_ANALISE_ESTRUTURAL
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Analise Estrutural"
+    <AulaEspecificaTemplate
+      title="Análise estrutural"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

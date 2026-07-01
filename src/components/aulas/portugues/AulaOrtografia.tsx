@@ -1,4 +1,4 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 
@@ -731,7 +731,7 @@ const QUIZ_MOD10_POOL: QuizQuestion[] = [
 // COMPONENTE PRINCIPAL
 // ============================================================================
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaOrtografia({
   onComplete,
@@ -898,7 +898,7 @@ export default function AulaOrtografia({
           numero={1}
           titulo="Encontros Vocálicos e Sílabas"
           descricao="A base da fonética: entenda ditongos, tritongos, hiatos e como separar as sílabas corretamente."
-          variant="blue"
+          variant={mv[1]}
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -906,7 +906,7 @@ export default function AulaOrtografia({
             index="INTRO"
             title="Encontros Vocálicos"
             description="A fundação da fonética: compreenda a união e a separação de sons vocálicos nas palavras."
-          variant="blue"
+          variant={mv[1]}
         />
 
           <AlertBox tipo="info" titulo="O que são?">
@@ -984,7 +984,7 @@ export default function AulaOrtografia({
           <ModuleSectionHeader
             index={2}
             title="Resumo e Multimídia"
-          variant="blue"
+          variant={mv[1]}
         />
           <LessonTabs
             tabs={[
@@ -1092,7 +1092,7 @@ Ditongo é junto, hiato é separação!
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1115,7 +1115,7 @@ Ditongo é junto, hiato é separação!
             icone="🎯"
             numero={3}
             onComplete={(score) => handleModuleComplete("modulo-1", score)}
-            variant="blue"
+            variant={mv[1]}
           />
         </section>
 
@@ -1190,7 +1190,7 @@ Ditongo é junto, hiato é separação!
           numero={2}
           titulo="Fundamentos da Acentuação"
           descricao="As 4 regras de ouro para dominar oxítonas, paroxítonas, proparoxítonas e monossílabos."
-          variant="blue"
+          variant={mv[2]}
         />
 
         <section className="bg-card rounded-2xl border border-border p-8 md:p-12 shadow-sm space-y-12">
@@ -1198,7 +1198,7 @@ Ditongo é junto, hiato é separação!
             index="INTRO"
             title="Classificação da Sílaba Tônica"
             description="Aprenda a identificar o coração sonoro das palavras para aplicar as regras de acento."
-          variant="blue"
+          variant={mv[2]}
         />
 
           <AlertBox tipo="info" titulo="O que é a Sílaba Tônica?">
@@ -1379,7 +1379,7 @@ Ditongo é junto, hiato é separação!
             index={2}
             title="Resumo e Multimídia"
             description="Ferramentas práticas para memorizar as 4 regras de ouro da acentuação."
-          variant="blue"
+          variant={mv[2]}
         />
           <LessonTabs
             tabs={[
@@ -1487,7 +1487,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1510,7 +1510,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             icone="⚡"
             numero={3}
             onComplete={(score) => handleModuleComplete("modulo-2", score)}
-            variant="blue"
+            variant={mv[2]}
           />
         </section>
 
@@ -1585,7 +1585,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1660,7 +1660,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1689,7 +1689,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
       </TabsContent>
 
       <TabsContent value="modulo-5" className="space-y-12 mt-12">
-        <ModuleBanner numero={5} titulo="Mal vs Mau" descricao="Opostos que derrubam candidatos." variant="blue" />
+        <ModuleBanner numero={5} titulo="Mal vs Mau" descricao="Opostos que derrubam candidatos." variant={mv[5]} />
         <section className="bg-card rounded-3xl border p-8 space-y-6">
            <AlertBox tipo="warning" titulo="Mal x Mau">
               <strong>Mal:</strong> Oposto de BEM.<br/><strong>Mau:</strong> Oposto de BOM.
@@ -1697,7 +1697,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         </section>
         <ModuleConsolidation 
           index={5} 
-          variant="blue" 
+          variant={mv[5]} 
           video={{videoId:"dQw4w9WgXcQ", title:"Opostos", duration:"05:00"}} 
           resumoVisual={{moduloNome:"Opostos", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Tabela", placeholderColor:"bg-rose-100"}]}}
           sinteseEstrategica={{
@@ -1710,7 +1710,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1727,11 +1727,11 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={qMod5} titulo="QUIZ: Opostos" icone="⚖️" numero={5} onComplete={(s) => handleModuleComplete("modulo-5", s)} variant="blue" />
+        <QuizInterativo questoes={qMod5} titulo="QUIZ: Opostos" icone="⚖️" numero={5} onComplete={(s) => handleModuleComplete("modulo-5", s)} variant={mv[5]} />
       </TabsContent>
 
       <TabsContent value="modulo-6" className="space-y-12 mt-12">
-        <ModuleBanner numero={6} titulo="Os Porquês" descricao="Regra definitiva." variant="blue" />
+        <ModuleBanner numero={6} titulo="Os Porquês" descricao="Regra definitiva." variant={mv[6]} />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
            {["Por que", "Por quê", "Porque", "Porquê"].map((p,i) => (
              <div key={i} className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-center font-bold text-amber-600">{p}</div>
@@ -1739,7 +1739,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         </div>
         <ModuleConsolidation 
           index={6} 
-          variant="blue" 
+          variant={mv[6]} 
           video={{videoId:"dQw4w9WgXcQ", title:"Os Porquês", duration:"04:00"}} 
           resumoVisual={{moduloNome:"Porquês", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Mapa", placeholderColor:"bg-amber-100"}]}}
           sinteseEstrategica={{
@@ -1752,7 +1752,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1769,17 +1769,17 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={qMod6} titulo="QUIZ: Porquês" icone="❓" numero={6} onComplete={(s) => handleModuleComplete("modulo-6", s)} variant="blue" />
+        <QuizInterativo questoes={qMod6} titulo="QUIZ: Porquês" icone="❓" numero={6} onComplete={(s) => handleModuleComplete("modulo-6", s)} variant={mv[6]} />
       </TabsContent>
 
       <TabsContent value="modulo-7" className="space-y-12 mt-12">
-        <ModuleBanner numero={7} titulo="Uso do Hífen" descricao="Magnetismo Gráfico." variant="blue" />
+        <ModuleBanner numero={7} titulo="Uso do Hífen" descricao="Magnetismo Gráfico." variant={mv[7]} />
         <section className="bg-card rounded-3xl border p-8 text-center space-y-4">
            <p className="text-xl font-bold">IGUAIS (-) | DIFERENTES (+)</p>
         </section>
         <ModuleConsolidation 
           index={7} 
-          variant="blue" 
+          variant={mv[7]} 
           video={{videoId:"dQw4w9WgXcQ", title:"Hífen", duration:"06:00"}} 
           resumoVisual={{moduloNome:"Hífen", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Tabela", placeholderColor:"bg-violet-100"}]}}
           sinteseEstrategica={{
@@ -1792,7 +1792,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1809,14 +1809,14 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={qMod7} titulo="QUIZ: Hífen" icone="🧲" numero={7} onComplete={(s) => handleModuleComplete("modulo-7", s)} variant="blue" />
+        <QuizInterativo questoes={qMod7} titulo="QUIZ: Hífen" icone="🧲" numero={7} onComplete={(s) => handleModuleComplete("modulo-7", s)} variant={mv[7]} />
       </TabsContent>
 
       <TabsContent value="modulo-8" className="space-y-12 mt-12">
-        <ModuleBanner numero={8} titulo="Semântica" descricao="Homônimos e Parônimos." variant="blue" />
+        <ModuleBanner numero={8} titulo="Semântica" descricao="Homônimos e Parônimos." variant={mv[8]} />
         <ModuleConsolidation 
           index={8} 
-          variant="blue" 
+          variant={mv[8]} 
           video={{videoId:"dQw4w9WgXcQ", title:"Semântica", duration:"07:00"}} 
           resumoVisual={{moduloNome:"Semântica", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Lista", placeholderColor:"bg-emerald-100"}]}}
           sinteseEstrategica={{
@@ -1829,7 +1829,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1846,14 +1846,14 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={qMod8} titulo="QUIZ: Semântica" icone="🎭" numero={8} onComplete={(s) => handleModuleComplete("modulo-8", s)} variant="blue" />
+        <QuizInterativo questoes={qMod8} titulo="QUIZ: Semântica" icone="🎭" numero={8} onComplete={(s) => handleModuleComplete("modulo-8", s)} variant={mv[8]} />
       </TabsContent>
 
       <TabsContent value="modulo-9" className="space-y-12 mt-12">
-        <ModuleBanner numero={9} titulo="Contexto" descricao="A fim de / Afim." variant="blue" />
+        <ModuleBanner numero={9} titulo="Contexto" descricao="A fim de / Afim." variant={mv[9]} />
         <ModuleConsolidation 
           index={9} 
-          variant="blue" 
+          variant={mv[9]} 
           video={{videoId:"dQw4w9WgXcQ", title:"Contexto", duration:"03:00"}} 
           resumoVisual={{moduloNome:"Contexto", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Card", placeholderColor:"bg-blue-100"}]}}
           sinteseEstrategica={{
@@ -1866,7 +1866,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1883,17 +1883,17 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={qMod9} titulo="QUIZ: Conectivos" icone="🧬" numero={9} onComplete={(s) => handleModuleComplete("modulo-9", s)} variant="blue" />
+        <QuizInterativo questoes={qMod9} titulo="QUIZ: Conectivos" icone="🧬" numero={9} onComplete={(s) => handleModuleComplete("modulo-9", s)} variant={mv[9]} />
       </TabsContent>
 
       <TabsContent value="modulo-10" className="space-y-12 mt-12">
-        <ModuleBanner numero={10} titulo="Maratona Final" descricao="Lab Cesgranrio." variant="blue" />
+        <ModuleBanner numero={10} titulo="Maratona Final" descricao="Lab Cesgranrio." variant={mv[10]} />
         <section className="mt-12">
           {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1910,11 +1910,11 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             { titulo: "Passo 3", conteudo: "Gabarito confirmado." }
           ]}
         />
-        <QuizInterativo questoes={qMod10} titulo="SIMULADO FINAL" icone="🏆" numero={10} onComplete={(s) => handleModuleComplete("modulo-10", s)} variant="blue" />
+        <QuizInterativo questoes={qMod10} titulo="SIMULADO FINAL" icone="🏆" numero={10} onComplete={(s) => handleModuleComplete("modulo-10", s)} variant={mv[10]} />
         </section>
         <ModuleConsolidation 
           index={10} 
-          variant="blue" 
+          variant={mv[10]} 
           video={{videoId:"dQw4w9WgXcQ", title:"Revisão", duration:"05:00"}} 
           resumoVisual={{moduloNome:"Final", tituloAula:"Ortografia", materia:"Português", images:[{title:"Checklist", type:"Card", placeholderColor:"bg-blue-200"}]}}
           sinteseEstrategica={{

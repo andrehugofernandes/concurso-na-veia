@@ -71,8 +71,8 @@ REGRAS TÉCNICAS:
 2. PROIBIDO letras (A-E) ou prefixos no início. Texto puro.
 3. GABARITO: Índice "correta" (0-4) correto. DISTRIBUA aleatoriamente.
 4. EXPLICAÇÃO: Detalhada. Para Matemática, passo a passo completo.
-5. HTML: Use <b>, <u>, <i>. NÃO use Markdown.
-6. COERÊNCIA: "PALAVRA destacada" = UMA palavra. "EXPRESSÃO destacada" = LOCUÇÃO.
+5. HTML: Use <b>, <u>, <i>. NÃO use Markdown. DESTAQUES DO ENUNCIADO obrigatórios com a tag <u> (ex: <u>palavra</u>). Aplique a tag <u> APENAS UMA VEZ no texto-base. Se o comando repetir o trecho, não destaque novamente. NÃO use <b> para a palavra destacada. PROIBIDO usar <u> nas alternativas.
+6. COERÊNCIA LINGUÍSTICA: Se pede "a PALAVRA destacada", destaque UMA ÚNICA PALAVRA com <u>. Para LOCUÇÃO, use "a EXPRESSÃO destacada".
 
 Retorne APENAS um JSON válido:
 {
@@ -179,7 +179,8 @@ ${materia.toLowerCase().includes("português") || materia.toLowerCase().includes
     REGRAS:
     1. 5 alternativas plausíveis, distintas, com distratores inteligentes.
     2. PROIBIDO letras (A-E) ou prefixos. 3. UNICIDADE: contextualização e comando diferentes em cada questão.
-    4. GABARITO correto. 5. HTML: <b>, <u>, <i>. NÃO Markdown. 6. COERÊNCIA linguística.
+    4. GABARITO correto. 5. HTML: <b>, <u>, <i>. NÃO Markdown. DESTAQUES DO ENUNCIADO obrigatórios com a tag <u> (ex: <u>palavra</u>). Aplique a tag <u> APENAS UMA VEZ no texto-base. Se o comando repetir o trecho, não destaque novamente. NÃO use <b> para a palavra destacada. PROIBIDO usar <u> nas alternativas.
+    6. COERÊNCIA LINGUÍSTICA: Se pede "a PALAVRA", destaque UMA. Para LOCUÇÃO, use "a EXPRESSÃO".
     7. Retorne APENAS JSON. NÃO adicione texto fora do JSON.
 
     Formato:

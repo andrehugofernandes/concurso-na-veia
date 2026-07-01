@@ -41,9 +41,9 @@ import {
   QuizQuestion,
   getRandomQuestions,
   QuestaoResolvidaStepByStep} from "../shared";
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 const MODULE_DEFS = [
   { id: "modulo-1", label: "Módulo 1", title: "Narração" },
@@ -412,7 +412,7 @@ export default function AulaTiposTextuais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[1]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -467,7 +467,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={2}
-          variant="blue"
+          variant={mv[2]}
           video={{ videoId: "2-0mD4J7X1I", title: "Descrição Técnica", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 2", materia: "Português", tituloAula: "Descrição",
@@ -480,7 +480,7 @@ export default function AulaTiposTextuais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -532,7 +532,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={3}
-          variant="blue"
+          variant={mv[3]}
           video={{ videoId: "3-pE9M4zS3Y", title: "Exposição Pura", duration: "11:00" }}
           resumoVisual={{
             moduloNome: "Módulo 3", materia: "Português", tituloAula: "Exposição",
@@ -545,7 +545,7 @@ export default function AulaTiposTextuais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -600,7 +600,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={4}
-          variant="blue"
+          variant={mv[4]}
           video={{ videoId: "4-pE9M4zS3Y", title: "Poder da Argumentação", duration: "14:00" }}
           resumoVisual={{
             moduloNome: "Módulo 4", materia: "Português", tituloAula: "Argumentação",
@@ -613,7 +613,7 @@ export default function AulaTiposTextuais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -665,7 +665,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={5}
-          variant="blue"
+          variant={mv[5]}
           video={{ videoId: "5-pE9M4zS3Y", title: "Guia de Injunção", duration: "09:00" }}
           resumoVisual={{
             moduloNome: "Módulo 5", materia: "Português", tituloAula: "Injunção",
@@ -678,7 +678,7 @@ export default function AulaTiposTextuais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -730,7 +730,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={6}
-          variant="blue"
+          variant={mv[6]}
           video={{ videoId: "6-pE9M4zS3Y", title: "Diálogo em Prova", duration: "08:00" }}
           resumoVisual={{
             moduloNome: "Módulo 6", materia: "Português", tituloAula: "Modo Dialogal",
@@ -743,7 +743,7 @@ export default function AulaTiposTextuais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -795,7 +795,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={7}
-          variant="blue"
+          variant={mv[7]}
           video={{ videoId: "7-pE9M4zS3Y", title: "Gêneros na Prática", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 7", materia: "Português", tituloAula: "Gêneros",
@@ -808,7 +808,7 @@ export default function AulaTiposTextuais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[7]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -873,7 +873,7 @@ export default function AulaTiposTextuais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -925,7 +925,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={9}
-          variant="blue"
+          variant={mv[9]}
           video={{ videoId: "9-pE9M4zS3Y", title: "Dicas de Ouro", duration: "15:00" }}
           resumoVisual={{
             moduloNome: "Módulo 9", materia: "Português", tituloAula: "Laboratório",
@@ -938,7 +938,7 @@ export default function AulaTiposTextuais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -981,7 +981,7 @@ export default function AulaTiposTextuais({
         </section>
         <ModuleConsolidation
           index={10}
-          variant="blue"
+          variant={mv[10]}
           video={{ videoId: "10-pE9M4zS3Y", title: "Review Geral", duration: "20:00" }}
           resumoVisual={{
             moduloNome: "Módulo 10", materia: "Português", tituloAula: "Simulado",
@@ -994,7 +994,7 @@ export default function AulaTiposTextuais({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"

@@ -19,7 +19,7 @@ interface AuthLayoutProps {
 }
 
 export function AuthLayout({
-  title = 'WP2Next Dashboard',
+  title = 'Passei no Concurso Dashboard',
   subtitle = 'Autenticação Segura',
   imageSrc = '/images/login-bg.png',
   imageAlt = 'Login Background',

@@ -1,4 +1,4 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 // Last modified: 2026-03-13 - Upgraded with ModuleConsolidation (4-tab system) and C.E.D.E. pedagogy
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
@@ -55,7 +55,7 @@ const MODULE_DEFS = [
   { id: "modulo-10", label: "Módulo 10", title: "Simulado Mestre" },
 ] as const;
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaProbabilidade({
   onComplete,
@@ -181,14 +181,14 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={1}
             titulo="Fundamentos da Probabilidade"
             descricao="O alicerce: experimentos aleatórios, espaço amostral e eventos."
-             variant="blue"/>
+             variant={mv[1]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Base Intelectual"
               description="Terminologias que a banca adora cobrar."
-              variant="blue"
+              variant={mv[1]}
             />
 
             <ContentAccordion
@@ -308,7 +308,7 @@ export default function AulaProbabilidade({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[1]}
             video={{
               videoId: "gZDzgZxrvAo",
               title: "Probabilidade: Fundamentos",
@@ -362,7 +362,7 @@ export default function AulaProbabilidade({
               questoes={quizM1}
               titulo="QUIZ: Fundamentos"
               numero={3}
-              variant="blue"
+              variant={mv[1]}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
@@ -376,14 +376,14 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={2}
             titulo="Lei de Laplace"
             descricao="P(E) = (casos favoráveis) / (casos totais). A fórmula mágica!"
-             variant="blue"/>
+             variant={mv[2]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="A Fórmula da Probabilidade"
               description="Quando todos os eventos são igualmente prováveis."
-              variant="blue"
+              variant={mv[2]}
             />
 
             <ContentAccordion
@@ -481,7 +481,7 @@ export default function AulaProbabilidade({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -503,7 +503,7 @@ export default function AulaProbabilidade({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[2]}
             video={{
               videoId: "2Aq7p7-VgEU",
               title: "Lei de Laplace Explicada",
@@ -558,7 +558,7 @@ export default function AulaProbabilidade({
               questoes={quizM2}
               titulo="QUIZ: Lei de Laplace"
               numero={3}
-              variant="blue"
+              variant={mv[2]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
@@ -572,14 +572,14 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={3}
             titulo="União e Interseção de Eventos"
             descricao="Quando combinar probabilidades: regra da adição."
-             variant="blue"/>
+             variant={mv[3]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Operações Entre Eventos"
               description="OU = União (+), E = Interseção (×)."
-              variant="blue"
+              variant={mv[3]}
             />
 
             <ContentAccordion
@@ -679,7 +679,7 @@ export default function AulaProbabilidade({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -701,7 +701,7 @@ export default function AulaProbabilidade({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[3]}
             video={{
               videoId: "4KzE9R6zWzY",
               title: "União e Interseção de Eventos",
@@ -757,7 +757,7 @@ export default function AulaProbabilidade({
               questoes={quizM3}
               titulo="QUIZ: União e Interseção"
               numero={3}
-              variant="blue"
+              variant={mv[3]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
@@ -774,14 +774,14 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={4}
             titulo="Probabilidade Condicional"
             descricao="P(A|B) = Quando um evento depende de outro ter ocorrido."
-             variant="blue"/>
+             variant={mv[4]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Eventos Dependentes"
               description="A probabilidade muda quando há informação prévia."
-              variant="blue"
+              variant={mv[4]}
             />
 
             <ContentAccordion
@@ -874,7 +874,7 @@ export default function AulaProbabilidade({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[4]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -896,7 +896,7 @@ export default function AulaProbabilidade({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[4]}
             video={{
               videoId: "7Pg5MZV2XqU",
               title: "Probabilidade Condicional",
@@ -952,7 +952,7 @@ export default function AulaProbabilidade({
               questoes={quizM4}
               titulo="QUIZ: Probabilidade Condicional"
               numero={3}
-              variant="blue"
+              variant={mv[4]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
@@ -966,14 +966,14 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={5}
             titulo="Distribuição Binomial"
             descricao="Repetir n tentativas de 2 resultados (sucesso/fracasso)."
-             variant="blue"/>
+             variant={mv[5]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Experimentos Repetidos"
               description="Exatamente k sucessos em n tentativas."
-              variant="blue"
+              variant={mv[5]}
             />
 
             <ContentAccordion
@@ -1062,7 +1062,7 @@ export default function AulaProbabilidade({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1084,7 +1084,7 @@ export default function AulaProbabilidade({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[5]}
             video={{
               videoId: "tZzgzUaHdCw",
               title: "Distribuição Binomial",
@@ -1140,7 +1140,7 @@ export default function AulaProbabilidade({
               questoes={quizM5}
               titulo="QUIZ: Probabilidade Binomial"
               numero={3}
-              variant="blue"
+              variant={mv[5]}
               icone="🧠"
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
@@ -1154,14 +1154,14 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={6}
             titulo="Evento Complementar"
             descricao="P(Eᶜ) = 1 - P(E). O atalho mais lindo!"
-             variant="blue"/>
+             variant={mv[6]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Negação de Eventos"
               description="Às vezes é mais fácil calcular o oposto."
-              variant="blue"
+              variant={mv[6]}
             />
 
             <ContentAccordion
@@ -1254,7 +1254,7 @@ export default function AulaProbabilidade({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1276,7 +1276,7 @@ export default function AulaProbabilidade({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[6]}
             video={{
               videoId: "9KZg0LdwAg4",
               title: "Evento Complementar",
@@ -1332,7 +1332,7 @@ export default function AulaProbabilidade({
               questoes={quizM6}
               titulo="QUIZ: Complementar"
               numero={3}
-              variant="blue"
+              variant={mv[6]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
@@ -1346,7 +1346,7 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={7}
             titulo="Probabilidade Geométrica"
             descricao="Razão de áreas/comprimentos para eventos contínuos."
-             variant="blue"/>
+             variant={mv[7]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
@@ -1543,14 +1543,14 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={8}
             titulo="Independência de Eventos"
             descricao="Quando P(A ∩ B) = P(A) × P(B). Nenhuma interferência!"
-             variant="blue"/>
+             variant={mv[8]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Eventos Sem Correlação"
               description="Multiplicação simples: P(A e B) = P(A) × P(B)."
-              variant="blue"
+              variant={mv[8]}
             />
 
             <ContentAccordion
@@ -1648,7 +1648,7 @@ export default function AulaProbabilidade({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1670,7 +1670,7 @@ export default function AulaProbabilidade({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[8]}
             video={{
               videoId: "2xQr4vZ5M1I",
               title: "Independência de Eventos",
@@ -1726,7 +1726,7 @@ export default function AulaProbabilidade({
               questoes={quizM8}
               titulo="QUIZ: Independência"
               numero={3}
-              variant="blue"
+              variant={mv[8]}
               icone="🎯"
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
@@ -1740,14 +1740,14 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={9}
             titulo="Engenharia de Riscos (Petrobras)"
             descricao="Confiabilidade, falhas e estratégias de redundância."
-             variant="blue"/>
+             variant={mv[9]}/>
 
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
             <ModuleSectionHeader
               index={1}
               title="Probabilidade na Indústria"
               description="Análise de risco e confiabilidade de sistemas."
-              variant="blue"
+              variant={mv[9]}
             />
 
             <ContentAccordion
@@ -1842,7 +1842,7 @@ export default function AulaProbabilidade({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1864,7 +1864,7 @@ export default function AulaProbabilidade({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "4KzE9R6zWzY",
               title: "Engenharia de Riscos",
@@ -1920,7 +1920,7 @@ export default function AulaProbabilidade({
               questoes={quizM9}
               titulo="QUIZ: Engenharia de Riscos"
               numero={3}
-              variant="blue"
+              variant={mv[9]}
               icone="🌊"
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
@@ -1934,7 +1934,7 @@ export default function AulaProbabilidade({
           <ModuleBanner numero={10}
             titulo="Simulado Mestre"
             descricao="Teste final: integre todos os conceitos de probabilidade."
-             variant="blue"/>
+             variant={mv[10]}/>
 
           {showCompletionBadge ? (
             <div className="flex flex-col items-center gap-6 py-10 mt-10">
@@ -1953,7 +1953,7 @@ export default function AulaProbabilidade({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[10]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1976,7 +1976,7 @@ export default function AulaProbabilidade({
                 titulo="QUIZ: Simulado Mestre"
                 icone="🏆"
                 numero={1}
-                variant="blue"
+                variant={mv[10]}
                 onComplete={(score) => handleModuleComplete("modulo-10", score)}
               />
             </section>

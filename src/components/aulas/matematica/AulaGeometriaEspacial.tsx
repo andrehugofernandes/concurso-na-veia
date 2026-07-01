@@ -1,4 +1,4 @@
-import { getAllModuleVariants } from "@/lib/moduleColors";
+import { getModuleVariant } from "@/lib/moduleColors";
 "use client";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 
@@ -28,7 +28,7 @@ import {
   QUIZ_M10_SIMULADO,
 } from "./data/geometria-espacial-quizzes";
 
-const mv = [undefined, ...getAllModuleVariants()];
+const mv = Array.from({ length: 11 }, (_, i) => getModuleVariant(i));
 
 export default function AulaGeometriaEspacial({
   onComplete,
@@ -234,14 +234,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={1}
           titulo="Poliedros e a Relação de Euler"
           descricao="Identifique vértices, arestas e faces de sólidos geométricos e aplique a relação V − A + F = 2 para resolver questões CESGRANRIO."
-           variant="blue"/>
+           variant={mv[1]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="O que é um Poliedro?"
               description="Sólidos com faces planas — a base da geometria espacial."
-              variant="blue"
+              variant={mv[1]}
               className="mb-6"
             />
             <ContentAccordion
@@ -378,7 +378,7 @@ export default function AulaGeometriaEspacial({
               index={2}
               title="Fórmulas para Prismas e Pirâmides"
               description="Conte vértices, arestas e faces de qualquer prisma ou pirâmide usando fórmulas gerais."
-              variant="blue"
+              variant={mv[1]}
               className="mb-6"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -482,7 +482,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Poliedros e Euler"
               icone="🔷"
               numero={4}
-              variant="blue"
+              variant={mv[1]}
               onComplete={(score) => handleModuleComplete("modulo-1", score)}
             />
           </section>
@@ -496,14 +496,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={2}
           titulo="Prismas: Volume e Área Total"
           descricao="Calcule volumes e áreas de prismas retos e oblíquos — de containers a dutos industriais da Petrobras."
-           variant="blue"/>
+           variant={mv[2]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Volume do Prisma: V = A_base × h"
               description="A fórmula universal que conecta geometria plana com geometria espacial."
-              variant="blue"
+              variant={mv[2]}
               className="mb-6"
             />
             <ContentAccordion
@@ -617,7 +617,7 @@ export default function AulaGeometriaEspacial({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[2]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -639,7 +639,7 @@ export default function AulaGeometriaEspacial({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[2]}
             video={{
               videoId: "7K8VgX2sXMc",
               title: "Prismas: Volume, Área Lateral e Total",
@@ -675,7 +675,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Prismas"
               icone="📦"
               numero={3}
-              variant="blue"
+              variant={mv[2]}
               onComplete={(score) => handleModuleComplete("modulo-2", score)}
             />
           </section>
@@ -689,14 +689,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={3}
           titulo="Pirâmides: Volume e Área Lateral"
           descricao="O fator 1/3 que muda tudo. Domine volumes e áreas laterais de pirâmides regulares e aplique em estruturas industriais."
-           variant="blue"/>
+           variant={mv[3]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Volume da Pirâmide: V = (1/3) × A_base × h"
               description="Por que 1/3? Três pirâmides de mesma base e altura formam um prisma."
-              variant="blue"
+              variant={mv[3]}
               className="mb-6"
             />
             <ContentAccordion
@@ -804,7 +804,7 @@ export default function AulaGeometriaEspacial({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[3]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -826,7 +826,7 @@ export default function AulaGeometriaEspacial({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[3]}
             video={{
               videoId: "4lLu2Kj2W0A",
               title: "Pirâmides: Apótema, Volume e Área Lateral",
@@ -862,7 +862,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Pirâmides"
               icone="🔺"
               numero={3}
-              variant="blue"
+              variant={mv[3]}
               onComplete={(score) => handleModuleComplete("modulo-3", score)}
             />
           </section>
@@ -876,14 +876,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={4}
           titulo="Cilindro: Volume e Área"
           descricao="O sólido mais presente na indústria petrolífera. Domine os cálculos de tanques, dutos e vasos de pressão cilíndricos."
-           variant="blue"/>
+           variant={mv[4]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Volume e Área do Cilindro"
               description="As três fórmulas essenciais que todo técnico Petrobras precisa dominar."
-              variant="blue"
+              variant={mv[4]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1006,7 +1006,7 @@ export default function AulaGeometriaEspacial({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[4]}
             video={{
               videoId: "I7C8Ygvdp8k",
               title: "Cilindro: Superfícies, Secções e Volume",
@@ -1042,7 +1042,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Cilindro"
               icone="🛢️"
               numero={3}
-              variant="blue"
+              variant={mv[4]}
               onComplete={(score) => handleModuleComplete("modulo-4", score)}
             />
           </section>
@@ -1056,14 +1056,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={5}
           titulo="Cone: Volume e Área"
           descricao="Silos, funis e coberturas cônicas — calcule volume, área lateral e geratriz com precisão de engenharia."
-           variant="blue"/>
+           variant={mv[5]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Volume e Área do Cone de Revolução"
               description="O cone como pirâmide circular — 1/3 do cilindro correspondente."
-              variant="blue"
+              variant={mv[5]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1158,7 +1158,7 @@ export default function AulaGeometriaEspacial({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[5]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1180,7 +1180,7 @@ export default function AulaGeometriaEspacial({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[5]}
             video={{
               videoId: "Gn7r8JTqPO8",
               title: "Cone: Geratriz, Planificação e Volume",
@@ -1216,7 +1216,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Cone"
               icone="🔻"
               numero={3}
-              variant="blue"
+              variant={mv[5]}
               onComplete={(score) => handleModuleComplete("modulo-5", score)}
             />
           </section>
@@ -1230,14 +1230,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={6}
           titulo="Esfera: Volume e Área"
           descricao="Tanques esféricos de GLP, boias de sondagem e vasos de pressão — as fórmulas da esfera são indispensáveis na engenharia offshore."
-           variant="blue"/>
+           variant={mv[6]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Volume e Área da Esfera"
               description="Duas fórmulas que você não pode errar na prova CESGRANRIO."
-              variant="blue"
+              variant={mv[6]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1342,7 +1342,7 @@ export default function AulaGeometriaEspacial({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[6]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1364,7 +1364,7 @@ export default function AulaGeometriaEspacial({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[6]}
             video={{
               videoId: "5P6jf8dO1Zc",
               title: "Esfera: Volume, Área e Secções Esféricas",
@@ -1400,7 +1400,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Esfera"
               icone="🌐"
               numero={3}
-              variant="blue"
+              variant={mv[6]}
               onComplete={(score) => handleModuleComplete("modulo-6", score)}
             />
           </section>
@@ -1414,14 +1414,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={7}
           titulo="Troncos: Cone e Pirâmide"
           descricao="Barris, silos decantadores e reservatórios troncocônicos — as fórmulas dos troncos resolvem problemas reais de armazenamento industrial."
-           variant="blue"/>
+           variant={mv[7]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Volume dos Troncos"
               description="A fórmula de Heron generalizada — conecta as duas bases com a média geométrica."
-              variant="blue"
+              variant={mv[7]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1575,7 +1575,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Troncos"
               icone="🪣"
               numero={3}
-              variant="blue"
+              variant={mv[7]}
               onComplete={(score) => handleModuleComplete("modulo-7", score)}
             />
           </section>
@@ -1589,14 +1589,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={8}
           titulo="Sólidos Compostos"
           descricao="Silos, torres e tanques capsulares são combinações de sólidos. Domine a estratégia de decompor e calcular parte por parte."
-           variant="blue"/>
+           variant={mv[8]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Estratégia: Decomposição em Sólidos Simples"
               description="Todo sólido composto é resolvido dividindo-o em partes conhecidas."
-              variant="blue"
+              variant={mv[8]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1705,7 +1705,7 @@ export default function AulaGeometriaEspacial({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[8]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1727,7 +1727,7 @@ export default function AulaGeometriaEspacial({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[8]}
             video={{
               videoId: "EZ9KF3dK8Hg",
               title: "Sólidos Compostos: Decomposição e Volume",
@@ -1763,7 +1763,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Sólidos Compostos"
               icone="🏗️"
               numero={3}
-              variant="blue"
+              variant={mv[8]}
               onComplete={(score) => handleModuleComplete("modulo-8", score)}
             />
           </section>
@@ -1777,14 +1777,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={9}
           titulo="Aplicações Petrobras: Tanques e Reservatórios"
           descricao="Geometria espacial aplicada diretamente ao dia a dia da indústria petrolífera — oleodutos, tanques de lastro, vasos de pressão e silos de refinaria."
-           variant="blue"/>
+           variant={mv[9]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Geometria na Indústria Petrolífera"
               description="Cada sólido tem uma aplicação real — reconheça e calcule no contexto industrial."
-              variant="blue"
+              variant={mv[9]}
               className="mb-6"
             />
             <ContentAccordion
@@ -1893,7 +1893,7 @@ export default function AulaGeometriaEspacial({
         <QuestaoResolvidaStepByStep
           index={2}
           titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
+          variant={mv[9]}
           banca="CESGRANRIO"
           ano="2024"
           concurso="Processo Seletivo Petrobras"
@@ -1915,7 +1915,7 @@ export default function AulaGeometriaEspacial({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[9]}
             video={{
               videoId: "zW7j2P5kK9I",
               title: "Geometria Espacial na Petrobras: Tanques e Tubulações",
@@ -1951,7 +1951,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Tanques e Reservatórios"
               icone="🛢️"
               numero={3}
-              variant="blue"
+              variant={mv[9]}
               onComplete={(score) => handleModuleComplete("modulo-9", score)}
             />
           </section>
@@ -1965,14 +1965,14 @@ export default function AulaGeometriaEspacial({
         <ModuleBanner numero={10}
           titulo="Simulado CESGRANRIO — Geometria Espacial"
           descricao="Questões no estilo e nível de dificuldade da banca CESGRANRIO. Teste tudo que você aprendeu nos 9 módulos anteriores."
-           variant="blue"/>
+           variant={mv[10]}/>
         <div className="space-y-[50px]">
           <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-6">
             <ModuleSectionHeader
               index={1}
               title="Revisão Final — Tabela de Fórmulas"
               description="Consolide todas as fórmulas antes do simulado definitivo."
-              variant="blue"
+              variant={mv[10]}
               className="mb-6"
             />
             <div className="overflow-x-auto">
@@ -2097,7 +2097,7 @@ export default function AulaGeometriaEspacial({
 
         <ModuleConsolidation
             index={2}
-            variant="blue"
+            variant={mv[10]}
             video={{
               videoId: "hN1K7mX4qJE",
               title: "Geometria Espacial: Resumo Completo e Estratégia CESGRANRIO",
@@ -2133,7 +2133,7 @@ export default function AulaGeometriaEspacial({
               titulo="QUIZ: Simulado Final"
               icone="🏆"
               numero={3}
-              variant="blue"
+              variant={mv[10]}
               onComplete={(score) => handleModuleComplete("modulo-10", score)}
             />
           </section>
@@ -2150,7 +2150,7 @@ export default function AulaGeometriaEspacial({
             titulo="Recursos Complementares — Geometria Espacial 3D"
             descricao="Aprenda estratégias avançadas, como resolver problemas de visualização 3D e conversão entre unidades."
 
-            variant="blue"
+            variant={mv[10]}
           />
 
           <AlertBox tipo="info" titulo="Como Usar Esta Seção de Recursos">

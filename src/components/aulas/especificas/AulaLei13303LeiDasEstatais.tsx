@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_LEI_13303_LEI_DAS_ESTATAIS, QUIZ_M2_LEI_13303_LEI_DAS_ESTATAIS, QUIZ_M3_LEI_13303_LEI_DAS_ESTATAIS } from '@/data/quizzes/especificas/lei-13303-lei-das-estatais';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -27,40 +25,31 @@ export default function AulaLei13303LeiDasEstatais({ onComplete }: AulaProps) {
 
   const modules = [
     {
-      title: 'Módulo 1: Introdução a Lei 13303 Lei Das Estatais',
+      title: 'Módulo 1: Introdução a Lei 13.303 (Lei das Estatais)',
       content: (
         <div className="space-y-4 text-slate-300">
           <p>Esta aula faz parte dos Conhecimentos Específicos para os cargos técnicos e superiores da Petrobras.</p>
-          <p>O foco inicial deste módulo é introduzir os conceitos básicos de lei 13303 lei das estatais.</p>
+          <p>O foco inicial deste módulo é introduzir os conceitos básicos de lei 13.303 (lei das estatais).</p>
         </div>
       ),
-      quiz: QUIZ_M1_LEI_13303_LEI_DAS_ESTATAIS
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_LEI_13303_LEI_DAS_ESTATAIS
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_LEI_13303_LEI_DAS_ESTATAIS
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Lei 13303 Lei Das Estatais"
+    <AulaEspecificaTemplate
+      title="Lei 13.303 (Lei das Estatais)"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }

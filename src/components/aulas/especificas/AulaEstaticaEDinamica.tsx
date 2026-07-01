@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AulaTemplate } from '@/components/aulas/shared/AulaTemplate';
-import { QuizQuestion } from '@/lib/types';
-import { QUIZ_M1_ESTATICA_E_DINAMICA, QUIZ_M2_ESTATICA_E_DINAMICA, QUIZ_M3_ESTATICA_E_DINAMICA } from '@/data/quizzes/especificas/estatica-e-dinamica';
+import { AulaEspecificaTemplate } from '@/components/aulas/shared';
 
 interface AulaProps {
   onComplete?: () => void;
@@ -27,40 +25,31 @@ export default function AulaEstaticaEDinamica({ onComplete }: AulaProps) {
 
   const modules = [
     {
-      title: 'Módulo 1: Introdução a Estatica E Dinamica',
+      title: 'Módulo 1: Introdução a Estática e Dinâmica',
       content: (
         <div className="space-y-4 text-slate-300">
           <p>Esta aula faz parte dos Conhecimentos Específicos para os cargos técnicos e superiores da Petrobras.</p>
-          <p>O foco inicial deste módulo é introduzir os conceitos básicos de estatica e dinamica.</p>
+          <p>O foco inicial deste módulo é introduzir os conceitos básicos de estática e dinâmica.</p>
         </div>
       ),
-      quiz: QUIZ_M1_ESTATICA_E_DINAMICA
+      quiz: []
     },
     {
       title: 'Módulo 2: Aprofundamento Prático',
       content: (
         <div className="space-y-4 text-slate-300">
-          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova.</p>
+          <p>Neste módulo, mergulhamos nas aplicações industriais e cenários reais de prova da Transpetro e Petrobras.</p>
         </div>
       ),
-      quiz: QUIZ_M2_ESTATICA_E_DINAMICA
-    },
-    {
-      title: 'Módulo 3: Simulado Cesgranrio',
-      content: (
-        <div className="space-y-4 text-slate-300">
-          <p>Questões no padrão da banca Cesgranrio para consolidação final.</p>
-        </div>
-      ),
-      quiz: QUIZ_M3_ESTATICA_E_DINAMICA
+      quiz: []
     }
   ];
 
   return (
-    <AulaTemplate
-      title="Aula: Estatica E Dinamica"
+    <AulaEspecificaTemplate
+      title="Estática e Dinâmica"
       modules={modules}
-      onComplete={isCompleted ? undefined : handleComplete}
+      onComplete={handleComplete}
     />
   );
 }
