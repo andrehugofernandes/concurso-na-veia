@@ -25,8 +25,6 @@ yarn-error.log*
 # local env files
 .env*.local
 .env
-temp_new_reference/
-temp_reference_repo/
 
 # vercel
 .vercel
@@ -43,6 +41,7 @@ next-env.d.ts
 /tmp/
 test-results/
 playwright-report/
+playwright-mcp/
 blob-report/
 playwright/.cache/
 *.log
@@ -53,6 +52,30 @@ tsc_output.*
 uncomplete.js
 update_shared*.js
 update_shared*.py
+fix_*.js
+check_options.js
+diff.txt
+generated_materias.json
+context_history.db
+implementation_plan.md
 
+# pastas adicionais e relatórios
+temp_new_reference/
+temp_reference_repo/
 /felo-skills/
+/admin-template/
+/supabase/
+/.agent/
+/.agents/
+/tests/
 
+# relatorios md e txt gerados
+AUDIT_*.md
+AUDIT_*.txt
+SPRINT*.md
+SPRINT*.txt
+*_REPORT.md
+ANTES_DEPOIS_COMPARACAO.md
+BLOCO_III_*.md
+BLOCO_III_*.txt
+README_AUDIT_BLOCO_III.md
