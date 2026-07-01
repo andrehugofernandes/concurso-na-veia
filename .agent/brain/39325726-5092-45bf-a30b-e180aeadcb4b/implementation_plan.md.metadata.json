@@ -1,5 +1,0 @@
-{
-  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Plano para corrigir o erro de hidratação \"<a> cannot be a descendant of <a>\" removendo links aninhados redundantes.",
-  "updatedAt": "2026-04-23T15:18:04.037935100Z"
-}

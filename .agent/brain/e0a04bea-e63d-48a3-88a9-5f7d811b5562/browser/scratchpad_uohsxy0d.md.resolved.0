@@ -1,9 +1,0 @@
-# Mobile Verification: Coesão e Coerência
-
-## Checklist
-- [ ] Set viewport to iPhone 13 dimensions (390x844)
-- [ ] Navigate to Módulo 3
-- [ ] Verify CardCarousel alignment (Icon above title, centered)
-- [ ] Verify CardCarousel title wrapping and description centering
-- [ ] Verify Anáfora vs Catáfora flip card height (No scrollbar)
-- [ ] Capture screenshots of fixed elements

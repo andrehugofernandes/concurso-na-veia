@@ -1,7 +1,0 @@
-﻿src/components/aulas/ingles/AulaVerbTenses.tsx(2507,14): error TS1003: Identifier expected.
-src/components/aulas/ingles/AulaVerbTenses.tsx(2507,38): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
-src/components/aulas/matematica/AulaEquacoes1Grau.tsx(588,79): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
-src/components/aulas/matematica/AulaEquacoes1Grau.tsx(588,98): error TS1003: Identifier expected.
-src/components/aulas/matematica/AulaEquacoes1Grau.tsx(1593,28): error TS1003: Identifier expected.
-src/components/aulas/matematica/AulaEquacoes1Grau.tsx(1593,29): error TS1005: '...' expected.
-src/components/aulas/matematica/AulaEquacoes1Grau.tsx(1593,33): error TS1003: Identifier expected.

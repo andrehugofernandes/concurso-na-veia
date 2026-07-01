@@ -1,6 +1,0 @@
-{
-  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary": "Resumo das correções de sintaxe JSX em AulaConjuntos.tsx. Todos os 10 módulos agora possuem escape correto de chaves de conjuntos.",
-  "updatedAt": "2026-03-28T14:40:19.539245100Z",
-  "version": "1"
-}

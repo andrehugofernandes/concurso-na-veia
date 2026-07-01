@@ -1,8 +1,0 @@
-# Task List: Migration to Acordeon-Carrossel Pattern
-
-[ ] Map all `ContentAccordion` components in the target lesson files.
-[ ] Analyze the internal slides of each `ContentAccordion` to identify logical splits (e.g., Concepts vs. Examples, Rules vs. Exceptions).
-[ ] Split single `ContentAccordion` blocks into multiple independent `ContentAccordion` components per module (e.g., Acordeon 1, Acordeon 2).
-[ ] Update typography within all Accordion slides: increase font sizes (e.g., change `text-sm` to `text-base` and `text-xs` to `text-sm` or remove them to use defaults).
-[ ] Verify visual layout and test responsiveness to ensure no content is squeezed.
-[ ] Repeat for all modules in the targeted file(s).

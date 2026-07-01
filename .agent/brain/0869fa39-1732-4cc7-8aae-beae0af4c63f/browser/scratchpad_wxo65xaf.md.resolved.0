@@ -1,9 +1,0 @@
-# Task: Perform login test on localhost:3000/login
-
-## Checklist
-- [ ] Open `http://localhost:3000/login`
-- [ ] Enter username `andrehugo-analista-sistemas-sup`
-- [ ] Enter password `andrehugo-analista-sistemas-sup`
-- [ ] Click login button
-- [ ] Wait 5 seconds and observe result
-- [ ] Report URL, error messages, and success/failure indicators

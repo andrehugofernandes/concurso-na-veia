@@ -1,9 +1,0 @@
-# Tarefa: Testar botões Home e Menu no mobile
-
-- [ ] Redimensionar para mobile (375x812)
-- [ ] Acessar http://localhost:3000/aulas/portugues/interpretacao-texto
-- [ ] Verificar botões "Home" e "Menu" (estado inicial)
-- [ ] Verificar botões em estado sticky (scroll down)
-- [ ] Testar clique no botão "Menu" (Mostrar Cabeçalho)
-- [ ] Verificar se barra e botões descem juntos
-- [ ] Verificar se botão "Home" (ícone House) é clicável

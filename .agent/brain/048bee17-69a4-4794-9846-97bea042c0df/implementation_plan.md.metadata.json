@@ -1,7 +1,0 @@
-{
-  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Plano para corrigir problemas visuais no modo Light e garantir visibilidade dos botões do Wizard. Inclui transição para Sticky Footer e ajustes de contraste no Checkbox.",
-  "createdAt": "2026-04-14T18:42:06.501623200Z",
-  "updatedAt": "2026-04-15T14:53:15.490181400Z",
-  "version": "9"
-}

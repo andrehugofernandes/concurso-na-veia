@@ -1,6 +1,0 @@
-{
-  "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Checklist de tarefas atualizado, incluindo o rollback do commit problemático e a preservação das correções de build e API.",
-  "updatedAt": "2026-03-15T18:00:42.036085900Z",
-  "version": "14"
-}

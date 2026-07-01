@@ -1,5 +1,0 @@
-{
-  "artifactType": "ARTIFACT_TYPE_OTHER",
-  "summary": "Relatório comparativo detalhado do estado atual da autenticação do PMAVV vs. o PRD. Documenta: divergências na rota de login, ausência total do fluxo de 2FA, login-action que pula a etapa de 2FA, proxy.ts verificando cookie errado, design reimplementado em vez de copiado. Inclui plano de implementação em 5 fases (reorganizar rota, copiar componentes, adaptar action, criar APIs de 2FA, proteger rotas via layout do App Router).",
-  "updatedAt": "2026-03-11T18:53:15.088445200Z"
-}

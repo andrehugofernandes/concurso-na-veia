@@ -1,9 +1,0 @@
-# Tarefas: Correção de Layout e Rollback
-
-- [x] Resolver erro de build em [AulaGestaoProcessos](file:///C:/Workspace/petrobras-quest/src/components/aulas/administracao/AulaGestaoProcessos.tsx#53-359) (faltava extensão [.tsx](file:///C:/Workspace/petrobras-quest/prev_shared.tsx))
-- [x] Realizar upgrade do plano do usuário `andrehugofernandes` para "Ouro" via Supabase
-- [x] Atualizar provedor Gemini para `gemini-1.5-flash-latest` e melhorar parser de JSON
-- [x] Investigar perda de comportamento "pixel-perfect" no [StickyModuleNav](file:///C:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#2487-2890)
-- [x] Realizar rollback do commit `216ae45` que causou a regressão no layout
-- [x] Preservar correções recentes (Gemini e imports) após o rollback
-- [x] Limpar arquivos temporários de análise

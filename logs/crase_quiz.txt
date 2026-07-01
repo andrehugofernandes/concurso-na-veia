@@ -1,4 +1,0 @@
-47: QuizInterativo,
-807: <QuizInterativo
-1075: <QuizInterativo
-1377: <QuizInterativo

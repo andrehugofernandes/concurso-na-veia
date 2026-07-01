@@ -1,6 +1,0 @@
-{
-  "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Tarefas atualizadas para focar na correção de bugs no fluxo de autenticação 2FA (Unexpected Response e logs de Time Drift).",
-  "updatedAt": "2026-03-18T16:33:25.345015300Z",
-  "version": "1"
-}

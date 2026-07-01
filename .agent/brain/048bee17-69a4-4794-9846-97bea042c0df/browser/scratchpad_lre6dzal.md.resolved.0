@@ -1,7 +1,0 @@
-# Plano de Validação - Entidade Vítimas
-
-- [ ] Acessar `http://localhost:3000/vitimas`
-- [ ] Confirmar carregamento da página
-- [ ] Abrir modal "Nova Vítima"
-- [ ] Validar largura (440px) e posicionamento (lateral direita com gaps)
-- [ ] Capturar screenshot do modal aberto

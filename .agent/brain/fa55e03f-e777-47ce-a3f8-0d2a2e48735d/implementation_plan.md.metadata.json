@@ -1,7 +1,0 @@
-{
-  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Correção Crítica: AulaTemplate Interface Sync. 🛡️🏗️🚀🏁\nA regeneração anterior causou um crash (White Screen) porque o componente AulaTemplate exige props obrigatórias (materiaNome, materiaCor, activeTab, modules) que não foram fornecidas. Este plano sincroniza a Aula com a versão mais recente do shared.tsx API.",
-  "updatedAt": "2026-03-29T19:06:57.788937200Z",
-  "version": "10",
-  "requestFeedback": true
-}

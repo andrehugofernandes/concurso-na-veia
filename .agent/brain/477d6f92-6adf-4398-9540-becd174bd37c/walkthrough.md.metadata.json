@@ -1,5 +1,0 @@
-{
-  "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary":  "Resumo da correção do erro de tipagem no componente ModuleConsolidation em AulaOrtografia.tsx. O erro foi resolvido ao refatorar o Módulo 1 para a nova interface estruturada de multimídia.",
-  "updatedAt":  "2026-04-06T15:53:52.436446500Z"
-}

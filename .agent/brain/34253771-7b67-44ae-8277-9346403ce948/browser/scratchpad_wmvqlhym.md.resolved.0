@@ -1,6 +1,0 @@
-- Initial inspection of `StickyModuleNav` on mobile (390px viewport, actually 500x715 in current session).
-- Sticky nav is pinned but has visible gaps on the left and right.
-- Sidebar is hidden, so `--sidebar-width` should be `0px`.
-- Need to check parent padding and exact classes on the sticky nav wrapper.
-- Current sticky nav buttons have border in dark mode (as request previously) but user says they are too subtle.
-- Goal: Make sticky nav edge-to-edge (pixel perfect).

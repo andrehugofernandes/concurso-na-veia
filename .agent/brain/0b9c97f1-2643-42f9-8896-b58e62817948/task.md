@@ -1,5 +1,0 @@
-- [x] Padronizar Hero da página `/aulas`
-    - [x] Centralizar elementos no mobile (ícone, título, descrição)
-    - [x] Aplicar estilo premium (glassmorphism/gradientes)
-    - [x] Ajustar tipografia e espaçamentos
-- [x] Validar visualmente a responsividade

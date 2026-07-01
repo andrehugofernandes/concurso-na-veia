@@ -1,4 +1,0 @@
-- `[ ]` Aplicar correção defensiva no `shared.tsx` (NavHeader)
-- `[ ]` Atualizar o repasse de props em `AulaClassesPalavras.tsx`
-- `[ ]` Realizar auditoria rápida em outras aulas de Português
-- `[ ]` Validar a renderização no navegador (localhost:3000/aulas/portugues/classes-palavras)

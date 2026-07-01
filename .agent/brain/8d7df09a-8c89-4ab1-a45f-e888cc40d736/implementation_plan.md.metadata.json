@@ -1,6 +1,0 @@
-{
-  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary":  "Plano detalhado de auditoria e remoção de referências autorais em todas as aulas do projeto Petrobras Quest. Identifica todos os autores referenciados por matéria (Português, Administração), classifica o risco jurídico de cada tipo de referência, e propõe estratégias de substituição para tornar o conteúdo original e de domínio público. Inclui mapeamento arquivo-por-arquivo com contagem de ocorrências e abordagem de substituição recomendada.",
-  "updatedAt":  "2026-05-05T18:34:09.836060Z",
-  "requestFeedback":  true
-}

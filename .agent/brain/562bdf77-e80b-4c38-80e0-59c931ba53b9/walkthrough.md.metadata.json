@@ -1,6 +1,0 @@
-{
-  "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary":  "Resumo das implementações realizadas para padronizar as listagens de Agressores e Denunciantes, além da correção do erro de carregamento no módulo de agressores. Foram criados componentes de tabela dedicados e atualizadas as Actions do servidor para garantir integridade dos dados e consistência visual premium em todo o dashboard.",
-  "updatedAt":  "2026-04-22T19:21:48.033396700Z",
-  "version":  "6"
-}

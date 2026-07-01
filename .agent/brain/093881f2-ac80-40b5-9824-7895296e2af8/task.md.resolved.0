@@ -1,6 +1,0 @@
-# Checklist de Correção de Tipo
-
-- [/] Corrigir erro de tipo em [page.tsx](file:///c:/GSW/WP2NEXT-MIGRATOR/packages/dashboard-core/app/admin/image-galleries/page.tsx)
-    - [ ] Criar plano de implementação [x]
-    - [ ] Corrigir atribuição de `galleriesData` em [page.tsx](file:///c:/GSW/WP2NEXT-MIGRATOR/packages/dashboard-core/app/admin/image-galleries/page.tsx) [ ]
-    - [ ] Validar a correção [ ]

@@ -1,6 +1,0 @@
-# PMAVV Login Page Verification
-
-- [ ] Open `http://localhost:3000/login`
-- [ ] Verify if the page content contains "PMAVV — Sistema de Monitoramento"
-- [ ] Capture screenshot for confirmation
-- [ ] Report findings to the user

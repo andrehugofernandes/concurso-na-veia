@@ -1,4 +1,0 @@
-- [ ] Atualizar a interface de props do `AulaTemplate` em `shared.tsx`.
-- [ ] Implementar a lógica de exibição do `showCompletionBadge` no JSX do `AulaTemplate`.
-- [ ] Verificar a correção do TypeScript no `AulaVocabulary.tsx`.
-- [ ] Validar visualmente (se possível via leitura de código) outros arquivos afetados.

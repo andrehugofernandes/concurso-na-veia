@@ -1,8 +1,0 @@
-# Investigação e Correção: Refresh Token Not Found
-
-## Status
-- [/] Analisar configuração do Cliente Supabase (`src/lib/supabase`)
-- [ ] Verificar `middleware.ts` para persistência de sessão
-- [ ] Checar tratamento de erros de auth no `provider` ou `layout`
-- [ ] Implementar correção (limpeza de cookies ou ajuste de rotas)
-- [ ] Validar solução

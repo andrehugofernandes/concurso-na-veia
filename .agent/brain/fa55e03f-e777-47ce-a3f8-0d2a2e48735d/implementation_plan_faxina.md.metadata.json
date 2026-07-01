@@ -1,7 +1,0 @@
-{
-  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Plano expandido para a 'Operação Faxina Total'. Inclui a unificação de scripts no Motor Ultimate, a organização da raiz do projeto (movendo logs, backups e docs para pastas apropriadas) e a sanitização do diretório de scripts.",
-  "updatedAt": "2026-03-29T15:58:09.301232300Z",
-  "version": "1",
-  "requestFeedback": true
-}

@@ -1,7 +1,0 @@
-# Task: Fix Type Mismatch in AulaConjuntos.tsx
-
-- [/] Research `mv` array definition and initialization <!-- id: 0 -->
-- [ ] Research `ModuleConsolidation` variant type requirements <!-- id: 1 -->
-- [ ] Create implementation plan <!-- id: 2 -->
-- [ ] Fix type errors in [AulaConjuntos.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/matematica/AulaConjuntos.tsx) <!-- id: 3 -->
-- [ ] Verify fix <!-- id: 4 -->

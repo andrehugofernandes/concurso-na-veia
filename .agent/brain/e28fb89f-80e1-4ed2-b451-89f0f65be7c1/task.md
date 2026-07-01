@@ -1,6 +1,0 @@
-# Tarefas: Restauração dos Botões Mobile na Sticky Nav
-
-- [x] Pesquisar: Analisar o histórico do Git para `src/components/aulas/shared.tsx` e identificar o estado anterior dos botões mobile.
-- [x] Planejar: Criar um plano de implementação para restaurar os botões sem quebrar a correção do desktop.
-- [x] Execução: Aplicar as correções no arquivo `shared.tsx`.
-- [x] Verificação: Validar o comportamento em modo mobile e desktop usando o subagente de browser.

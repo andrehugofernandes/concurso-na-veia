@@ -1,8 +1,0 @@
-# Task: Fix 2FA Authentication Flow
-
-- [x] Create implementation plan for 2FA fixes ([implementation_plan.md](file:///C:/Users/andre.hugo/.gemini/antigravity/brain/fdc1399e-2f13-456c-9ba9-01d83036b0dd/implementation_plan.md))
-- [/] Fix "Unexpected Response" error in Server Actions
-- [/] Enable Admin Client for forced MFA reset
-- [/] Add Time Drift checks to understand why OTP codes are failing
-- [ ] Improve frontend error handling during OTP verification
-- [ ] Verify functionality with the test account

@@ -1,8 +1,0 @@
-# Task List: CardCarousel Mobile Alignment
-
-- [ ] Inspect the [CardCarousel](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx#269-382) component in [shared.tsx](file:///c:/Workspace/petrobras-quest/src/components/aulas/shared.tsx).
-- [x] Update the layout classes for the icon and title container targeting mobile viewports.
-- [x] Change the layout from a row or left-aligned column to a centered column containing the icon and title.
-- [x] Ensure the title text wraps correctly allowing multiple lines.
-- [x] Draft an [implementation_plan.md](file:///C:/Users/andre.hugo/.gemini/antigravity/brain/e0a04bea-e63d-48a3-88a9-5f7d811b5562/implementation_plan.md) to communicate these changes.
-- [x] Test the new alignment via the web browser subagent on a mobile viewport.

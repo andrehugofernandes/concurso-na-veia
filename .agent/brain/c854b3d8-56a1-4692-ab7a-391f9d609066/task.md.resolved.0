@@ -1,8 +1,0 @@
-# Tarefas: Renovação Visual Matemática (Padrao Ultimate)
-
-- [ ] Atualizar `c:\Workspace\petrobras-quest\.agent\workflows\aula-ultimate.md` com template rico
-- [ ] Atualizar `c:\Workspace\petrobras-quest\.agent\skills\criar-aula-premium\SKILL.md`
-- [ ] Desenvolver script `enrich_math_macetes.py` para automação
-- [ ] Aplicar script em `AulaConjuntos.tsx` (Piloto)
-- [ ] Aplicar script em todas as outras 18 aulas de matemática
-- [ ] Validação visual e build final

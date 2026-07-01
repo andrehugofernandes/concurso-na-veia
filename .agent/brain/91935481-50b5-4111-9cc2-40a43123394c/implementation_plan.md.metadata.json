@@ -1,6 +1,0 @@
-{
-  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary": "Plano para corrigir o erro de TypeScript no AulaTemplate adicionando suporte a badges de conclusão (showCompletionBadge).",
-  "updatedAt": "2026-03-29T11:53:52.959021900Z",
-  "requestFeedback": true
-}

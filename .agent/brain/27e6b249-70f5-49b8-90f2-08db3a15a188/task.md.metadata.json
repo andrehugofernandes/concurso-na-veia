@@ -1,6 +1,0 @@
-{
-  "artifactType":  "ARTIFACT_TYPE_TASK",
-  "summary":  "Lista de tarefas atualizada com a conclusão de todas as etapas de persistência em localStorage, alinhamento premium v3 com modo stacked, correção de grids e validação estática de build.",
-  "updatedAt":  "2026-05-18T16:11:15.092007900Z",
-  "version":  "4"
-}

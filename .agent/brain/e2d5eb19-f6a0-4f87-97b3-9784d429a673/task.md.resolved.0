@@ -1,8 +1,0 @@
-- [ ] Correção do TypeError em `src/components/aulas/shared.tsx` (sanitização de `titulo` em `QuizInterativo`)
-- [ ] Correção das chamadas do `QuizInterativo` em `src/components/aulas/ingles/AulaTextComprehension.tsx` (passando o `titulo` correto)
-- [ ] Correção do `AlertBox` em `src/components/aulas/ingles/AulaTextComprehension.tsx` (migrar propriedade `descricao` para children)
-- [ ] Correção do `ComparisonSide` em `src/components/aulas/ingles/AulaTextComprehension.tsx` (converter chamadas lado1/lado2 para grid de duas colunas com instâncias individuais)
-- [ ] Adaptação das introduções de módulo em `AulaTextComprehension.tsx` para o padrão C.E.D.E.A (index="INTRO" e 5 parágrafos estruturados)
-- [ ] Substituição de emojis em `FlipCard` por ícones Lucide e ajuste de espaçamento do grid para `gap-6`
-- [ ] Migração de `maceteVisual` para `sinteseEstrategica` no componente `ModuleConsolidation`
-- [ ] Verificação da compilação e qualidade do código com testes/linter

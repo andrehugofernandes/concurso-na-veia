@@ -1,4 +1,0 @@
-- [x] Criar o manual de prompt para LLMs e humanos em `docs/GUIA_CRIACAO_AULAS.md`
-- [x] Criar/restaurar a skill unificada em `.agent/skills/criar-aula-premium/SKILL.md`
-- [x] Criar o workflow em `.agent/workflows/criar-aula-premium.md`
-- [x] Realizar teste de compilação com TypeScript
