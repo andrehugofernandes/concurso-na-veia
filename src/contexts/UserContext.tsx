@@ -41,28 +41,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
             // But for initial load it's fine. 
             // setProfile(prev => prev) // keep previous while loading?
 
-            // Dev Mock Auth Bypass
-            if (process.env.NODE_ENV === 'development') {
-                const mockAuth = localStorage.getItem('DEV_MOCK_AUTH');
-                if (mockAuth) {
-                    try {
-                        const parsed = JSON.parse(mockAuth);
-                        setProfile({
-                            id: 'dev-mock-id',
-                            email: 'dev@petrobras.test',
-                            username: 'dev.tester',
-                            full_name: 'Tester (Dev Mode)',
-                            role: 'USER',
-                            job_title: parsed.cargo || 'Enfermagem do Trabalho',
-                            nivel: parsed.nivel || 'Técnico',
-                            plan: parsed.plan || 'premium',
-                            xp: 9999
-                        });
-                        setLoading(false);
-                        return;
-                    } catch(e) {}
-                }
-            }
+
 
             const { data: { user }, error: authError } = await supabase.auth.getUser();
 
