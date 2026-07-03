@@ -153,8 +153,10 @@ export default function PetroLingoExercise({
       if (!currentExercise.type || currentExercise.type === "translation") {
         if (currentExercise.mode !== "pt_to_en") {
           // Banco de palavras em Português
-          const targetPtWords = currentExercise.portugueseTarget || currentExercise.portuguese.replace(/[.,?!]/g, "").split(" ");
-          const distractors = currentExercise.options || ["de", "uma", "mais", "pouco", "mesa", "pequenas"];
+          const rawTargetPtWords = currentExercise.portugueseTarget || currentExercise.portuguese.replace(/[.,?!]/g, "").split(" ");
+          const targetPtWords = rawTargetPtWords.map(w => w.toLowerCase().trim()).filter(Boolean);
+          const rawDistractors = currentExercise.options || ["de", "uma", "mais", "pouco", "mesa", "pequenas"];
+          const distractors = rawDistractors.map(w => w.toLowerCase().trim()).filter(Boolean);
           const allWords = Array.from(new Set([...targetPtWords, ...distractors]));
           const shuffled = [...allWords].sort(() => Math.random() - 0.5);
           setPoolWords(shuffled);
@@ -1050,11 +1052,11 @@ export default function PetroLingoExercise({
 
       {/* BOTÃO DE CHECK (BOTTOM BAR FIXA) */}
       {status === "idle" && !isFinished && (
-        <div className="p-6 bg-white dark:bg-zinc-900 md:dark:bg-transparent border-t border-border md:border-0 flex justify-center md:justify-end items-center gap-4 fixed bottom-0 left-0 right-0 z-40 md:relative md:p-0 md:mt-12 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] dark:shadow-none md:shadow-none transition-all duration-300">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+        <div className="p-4 md:p-6 bg-white dark:bg-zinc-900 md:dark:bg-transparent border-t border-border md:border-0 flex justify-center md:justify-end items-center fixed bottom-0 left-0 right-0 z-40 md:relative md:p-0 md:mt-12 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] dark:shadow-none md:shadow-none transition-all duration-300">
+        <div className="flex flex-row items-center justify-between gap-3 md:gap-4 max-w-4xl mx-auto w-full">
           <Button 
             variant="ghost" 
-            className="w-full md:w-auto text-muted-foreground hover:bg-muted font-bold text-lg rounded-2xl"
+            className="md:w-auto text-muted-foreground hover:bg-muted font-bold text-sm md:text-lg rounded-2xl px-3 md:px-6 flex-shrink-0"
             onClick={onBack}
           >
             {labels.skip}
@@ -1071,10 +1073,10 @@ export default function PetroLingoExercise({
                 onClick={handleCheck}
                 size="lg"
                 className={cn(
-                  "w-full md:w-64 rounded-2xl py-6 md:py-8 h-auto font-black text-2xl shadow-xl transition-all",
+                  "flex-1 md:flex-none md:w-64 rounded-2xl py-6 md:py-8 h-auto font-black text-xl md:text-2xl shadow-xl transition-all",
                   (currentExercise.type === "reading" || currentExercise.type === "cloze" || currentExercise.type === "listening" ? !!selectedOption : selectedWords.length > 0)
                     ? "bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_6px_0_0_#059669] active:translate-y-1 active:shadow-none" 
-                    : "bg-muted text-muted-foreground cursor-not-allowed"
+                    : "bg-muted text-muted-foreground cursor-not-allowed border-2 border-border/50"
                 )}
               >
                 {labels.check}
@@ -1085,7 +1087,7 @@ export default function PetroLingoExercise({
               onClick={handleNext}
               size="lg"
               className={cn(
-                "w-full md:w-64 rounded-2xl py-6 md:py-8 h-auto font-black text-2xl shadow-xl transition-all animate-bounce-subtle",
+                "flex-1 md:flex-none md:w-64 rounded-2xl py-6 md:py-8 h-auto font-black text-2xl shadow-xl transition-all animate-bounce-subtle",
                 status === "correct" 
                   ? "bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_6px_0_0_#059669]" 
                   : "bg-rose-500 hover:bg-rose-600 text-white shadow-[0_6px_0_0_be123c]"

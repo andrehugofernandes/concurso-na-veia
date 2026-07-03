@@ -52,7 +52,8 @@ const MASTER_UNITS_DATA: {
         id: "l1-e1",
         portuguese: "O engenheiro trabalha na refinaria.",
         english: ["The", "engineer", "works", "at", "the", "refinery."],
-        explanation: "Em inglês, profissões e locais de trabalho costumam usar o artigo 'the'."
+        options: ["médico", "técnico", "plataforma", "escritório", "de", "uma"],
+        explanation: "Em inglês, profissões e locais de trabalho costumam usar o artigo 'the'. Cuidado com os falsos cognatos: 'engineer' significa engenheiro, enquanto 'refinery' é refinaria."
       },
       {
         id: "l1-e2",

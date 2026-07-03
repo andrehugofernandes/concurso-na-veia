@@ -76,8 +76,8 @@ export function MobileBottomNav() {
 
       <nav 
         className={cn(
-          "fixed bottom-0 left-0 right-0 md:hidden h-16 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-around px-2 z-[50] transition-transform duration-300 ease-in-out",
-          (!isOpen && isInsideLesson) ? "translate-y-full shadow-none" : "translate-y-0 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]"
+          "fixed bottom-0 left-0 right-0 md:hidden h-16 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-around px-2 z-[50] transition-all duration-300 ease-in-out",
+          (!isOpen && isInsideLesson) ? "translate-y-[120px] opacity-0 pointer-events-none" : "translate-y-0 opacity-100 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]"
         )}
       >
         {bottomNavItems.map((item) => {
