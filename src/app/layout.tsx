@@ -31,6 +31,11 @@ export const metadata: Metadata = {
     "Sistema avançado de estudos com IA para concursos públicos. A aprovação é sua no passeinoconcurso.ai.",
   keywords:
     "passeinoconcurso, simulador, concurso, ia, simulado, aulas interativas",
+  icons: {
+    icon: "/logo-icone.png",
+    shortcut: "/favicon.ico",
+    apple: "/logo-icone.png",
+  },
 };
 
 export default function RootLayout({
