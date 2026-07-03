@@ -43,25 +43,22 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const headersList = await headers();
-  const tenantPrimary = headersList.get('x-tenant-primary') || '#0037C1';
-  const tenantSecondary = headersList.get('x-tenant-secondary') || '#008C32';
+  const tenantPrimaryHeader = headersList.get('x-tenant-primary');
+  const tenantSecondaryHeader = headersList.get('x-tenant-secondary');
 
-  const primaryHsl = hexToHsl(tenantPrimary);
-  const primaryHoverHsl = hexToHsl(tenantPrimary);
-  const primaryRgbValues = hexToRgbValues(tenantPrimary);
-  const isLight = isLightColor(tenantPrimary);
-  const foregroundHsl = isLight ? "222.2 84.7% 4.9%" : "210 40% 98%";
+  const tenantPrimary = tenantPrimaryHeader || undefined;
+  const tenantSecondary = tenantSecondaryHeader || undefined;
 
-  const inlineStyles = `
+  const inlineStyles = tenantPrimary ? `
     :root {
-      --primary: ${primaryHsl};
-      --primary-hover: ${primaryHoverHsl};
+      --primary: ${hexToHsl(tenantPrimary)};
+      --primary-hover: ${hexToHsl(tenantPrimary)};
       --primary-hex: ${tenantPrimary};
       --primary-hover-hex: ${tenantPrimary};
-      --primary-rgb: ${primaryRgbValues};
-      --primary-foreground: ${foregroundHsl};
+      --primary-rgb: ${hexToRgbValues(tenantPrimary)};
+      --primary-foreground: ${isLightColor(tenantPrimary) ? "222.2 84.7% 4.9%" : "210 40% 98%"};
     }
-  `;
+  ` : '';
 
   return (
     <html lang="pt-BR" suppressHydrationWarning>

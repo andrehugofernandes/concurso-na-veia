@@ -42,7 +42,7 @@ export const availableThemes: Record<string, ThemeColors> = {
   }
 };
 
-export const defaultTheme = 'purple';
+export const defaultTheme = 'blue';
 
 export const isLightColor = (color: string): boolean => {
   const hex = color.replace('#', '').toLowerCase();

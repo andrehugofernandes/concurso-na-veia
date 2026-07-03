@@ -34,8 +34,8 @@
     --radius: 0.75rem;
 
     /* Primary Dynamic Tokens (updated by ThemeContext) */
-    --primary-hex: #7C3AED;
-    --primary-hover-hex: #6D28D9;
+    --primary-hex: #0037C1;
+    --primary-hover-hex: #002A91;
     --primary-gradient: linear-gradient(135deg, var(--primary-hex) 0%, var(--primary-hover-hex, var(--primary-hex)) 100%);
     --primary-gradient-hover: linear-gradient(135deg, var(--primary-hover-hex, var(--primary-hex)) 0%, var(--primary-hex) 100%);
 
