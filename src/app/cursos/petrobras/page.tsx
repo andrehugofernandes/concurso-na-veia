@@ -515,7 +515,7 @@ export default function VitrinePetrobrasPage() {
                       {/* Botão de Ação Direta com Gradient do Skin System */}
                       <Link
                         href={`/register?concurso=petrobras&cargo=${p.id}&nivel=${p.nivel === "superior" ? "superior" : "medio"}`}
-                        className="w-full py-3.5 px-4 rounded-xl bg-primary hover:bg-primary/90 text-white font-black text-sm transition-all duration-300 flex items-center justify-center gap-2 shadow-md shadow-primary/20 group-hover:scale-[1.02]"
+                        className="w-full py-3.5 px-4 rounded-xl bg-primary hover:bg-primary/90 text-white hover:text-white group-hover:text-white font-black text-sm transition-all duration-300 flex items-center justify-center gap-2 shadow-md shadow-primary/20 group-hover:scale-[1.02]"
                         style={{ backgroundImage: "var(--primary-gradient)" }}
                       >
                         Garantir Vaga neste Cargo
@@ -539,7 +539,7 @@ export default function VitrinePetrobrasPage() {
           </p>
           <Link
             href="/register?concurso=petrobras"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary hover:bg-primary/90 text-white font-black text-base shadow-xl shadow-primary/30 hover:scale-105 transition-all"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary hover:bg-primary/90 text-white hover:text-white group-hover:text-white font-black text-base shadow-xl shadow-primary/30 hover:scale-105 transition-all"
             style={{ backgroundImage: "var(--primary-gradient)" }}
           >
             Iniciar Teste Gratuito Agora

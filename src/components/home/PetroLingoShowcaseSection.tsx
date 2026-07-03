@@ -186,21 +186,16 @@ export default function PetroLingoShowcaseSection() {
               {/* Card da Prévia Interativa */}
               <div className="relative bg-slate-900/90 border border-white/10 rounded-2xl p-6 md:p-8 min-h-[360px] flex flex-col justify-between overflow-hidden">
                 {!isPlayingDemo && !demoCompleted ? (
-                  <div className="my-auto text-center space-y-6">
-                    <div 
-                      className="w-20 h-20 mx-auto rounded-3xl p-0.5 shadow-xl"
-                      style={{ backgroundImage: 'var(--primary-gradient)' }}
-                    >
-                      <div className="w-full h-full bg-slate-950 rounded-[22px] flex items-center justify-center">
-                        <img 
-                          src="/images/petrolingo/engineer.png" 
-                          alt="Eng. Pedro" 
-                          className="w-14 h-14 object-contain filter drop-shadow"
-                        />
-                      </div>
+                  <div className="my-auto text-center space-y-2">
+                    <div className="w-56 h-56 md:w-64 md:h-64 mx-auto flex items-center justify-center -my-6 md:-my-10 relative z-10">
+                      <img 
+                        src="/images/petrolingo/petrolingo.png" 
+                        alt="PetroLingo" 
+                        className="w-full h-full object-contain filter drop-shadow-2xl scale-110"
+                      />
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-2 relative z-20">
                       <span className="text-xs font-black uppercase tracking-widest text-primary">
                         Unidade 1: The Linker Kingdom
                       </span>
