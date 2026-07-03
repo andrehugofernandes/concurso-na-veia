@@ -1184,7 +1184,7 @@ export default function PetroLingoExercise({
             currentExercise.type !== "matching" && (
               <Button 
                 disabled={
-                  currentExercise.type === "reading" || currentExercise.type === "cloze" || currentExercise.type === "listening"
+                  currentExercise.type === "reading" || currentExercise.type === "cloze"
                     ? !selectedOption 
                     : selectedWords.length === 0
                 }
@@ -1192,7 +1192,7 @@ export default function PetroLingoExercise({
                 size="lg"
                 className={cn(
                   "flex-1 md:flex-none md:w-64 rounded-2xl py-6 md:py-8 h-auto font-black text-xl md:text-2xl shadow-xl transition-all",
-                  (currentExercise.type === "reading" || currentExercise.type === "cloze" || currentExercise.type === "listening" ? !!selectedOption : selectedWords.length > 0)
+                  (currentExercise.type === "reading" || currentExercise.type === "cloze" ? !!selectedOption : selectedWords.length > 0)
                     ? "bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_6px_0_0_#059669] active:translate-y-1 active:shadow-none" 
                     : "bg-muted text-muted-foreground cursor-not-allowed border-2 border-border/50"
                 )}
