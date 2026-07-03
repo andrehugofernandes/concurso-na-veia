@@ -9,7 +9,7 @@ export interface BlocoConteudo {
 export interface Profissao {
     id: string;
     nome: string;
-    nivel: 'tecnico' | 'superior';
+    nivel: 'medio' | 'tecnico' | 'superior';
     area: string;
     blocos: BlocoConteudo[];
     concurso?: string;
@@ -357,7 +357,7 @@ export const PROFISSOES: Profissao[] = [
     {
         id: 'suprimento-adm',
         nome: 'Técnico de Suprimento de Bens e Serviços - Administração',
-        nivel: 'tecnico',
+        nivel: 'medio',
         area: 'Logística, Suprimento e Química',
         blocos: [
             {
@@ -634,7 +634,7 @@ export function getProfissoesByArea(area: string): Profissao[] {
 }
 
 // Função para obter profissões por nível
-export function getProfissoesByNivel(nivel: 'tecnico' | 'superior'): Profissao[] {
+export function getProfissoesByNivel(nivel: 'medio' | 'tecnico' | 'superior'): Profissao[] {
     return PROFISSOES.filter((p) => p.nivel === nivel);
 }
 

@@ -3,8 +3,6 @@ import { Poppins, Khand, Orbitron } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ThemeProvider as SkinProvider } from "@/lib/contexts/theme-context";
-import { headers } from "next/headers";
-import { hexToHsl, hexToRgbValues, isLightColor } from "@/lib/themes";
 
 const poppins = Poppins({
   weight: ["300", "400", "600", "700", "800"],
@@ -37,42 +35,18 @@ export const metadata: Metadata = {
 
 import { DevProfileSwitcher } from "@/components/dev/DevProfileSwitcher";
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const headersList = await headers();
-  const tenantPrimaryHeader = headersList.get('x-tenant-primary');
-  const tenantSecondaryHeader = headersList.get('x-tenant-secondary');
-
-  const tenantPrimary = tenantPrimaryHeader || undefined;
-  const tenantSecondary = tenantSecondaryHeader || undefined;
-
-  const inlineStyles = tenantPrimary ? `
-    :root {
-      --primary: ${hexToHsl(tenantPrimary)};
-      --primary-hover: ${hexToHsl(tenantPrimary)};
-      --primary-hex: ${tenantPrimary};
-      --primary-hover-hex: ${tenantPrimary};
-      --primary-rgb: ${hexToRgbValues(tenantPrimary)};
-      --primary-foreground: ${isLightColor(tenantPrimary) ? "222.2 84.7% 4.9%" : "210 40% 98%"};
-    }
-  ` : '';
-
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <head>
-        <style dangerouslySetInnerHTML={{ __html: inlineStyles }} />
-      </head>
       <body
         className={`${poppins.variable} ${khand.variable} ${orbitron.variable} font-sans overflow-x-clip`}
         suppressHydrationWarning
       >
-        <SkinProvider 
-          tenantPrimary={tenantPrimary}
-          tenantSecondary={tenantSecondary}
-        >
+        <SkinProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -80,8 +54,7 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             {children}
-            {/* Oculto por pedido do dev. Para ativar, basta descomentar a linha abaixo */}
-            {/* <DevProfileSwitcher /> */}
+            <DevProfileSwitcher />
           </ThemeProvider>
         </SkinProvider>
       </body>
