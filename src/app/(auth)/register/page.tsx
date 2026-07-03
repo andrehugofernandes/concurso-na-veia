@@ -9,24 +9,26 @@ import AuthLayout from "@/components/auth/AuthLayout";
 import { AnimatedInput } from "@/components/ui/animated-input";
 import { LuUser, LuMail, LuLock, LuEye, LuEyeOff } from "react-icons/lu";
 import { FaHome } from "react-icons/fa";
-import { StripeEmbeddedCheckout } from "@/components/stripe/StripeEmbeddedCheckout";
+import { StripeEmbeddedCheckout } from "@/components/stripe/StripeEmbeddedCheckout";import { PROFISSOES } from "@/lib/profissoes-edital";
 
 const NIVEIS = [
   { id: "medio", nome: "Nível Médio/Técnico", icon: "🔧", desc: "Cargos técnicos e operacionais" },
   { id: "superior", nome: "Nível Superior", icon: "🎓", desc: "Engenharia, Análise e Geologia" },
 ];
 
+const PETROBRAS_CARGOS_MEDIO = PROFISSOES.filter((p) => p.nivel === "tecnico").map((p) => ({
+  id: p.id,
+  nome: p.nome,
+}));
+
+const PETROBRAS_CARGOS_SUPERIOR = PROFISSOES.filter((p) => p.nivel === "superior").map((p) => ({
+  id: p.id,
+  nome: p.nome,
+}));
+
 const CARGOS = {
   medio: [
-    { id: "operacao", nome: "Técnico de Operação" },
-    { id: "manutencao-mecanica", nome: "Manutenção Mecânica" },
-    { id: "manutencao-eletrica", nome: "Manutenção Elétrica" },
-    { id: "manutencao-instrumentacao", nome: "Manutenção Instrumentação" },
-    { id: "enfermagem-trabalho", nome: "Técnico de Enfermagem do Trabalho" },
-    { id: "seguranca", nome: "Segurança do Trabalho" },
-    { id: "administracao", nome: "Suprimentos/Administração" },
-    { id: "logistica", nome: "Logística de Transportes" },
-    { id: "quimica", nome: "Química de Petróleo" },
+    ...PETROBRAS_CARGOS_MEDIO,
     { id: "caixa-tecnico", nome: "Caixa - Técnico Bancário" },
     { id: "bb-escriturario", nome: "Banco do Brasil - Escriturário" },
     { id: "correios-agente", nome: "Correios - Agente de Correios" },
@@ -34,14 +36,7 @@ const CARGOS = {
     { id: "inss-tecnico", nome: "INSS - Técnico do Seguro Social" },
   ],
   superior: [
-    { id: "eng-petroleo", nome: "Engenheiro de Petróleo" },
-    { id: "eng-mecanico", nome: "Engenheiro Mecânico" },
-    { id: "eng-eletrico", nome: "Engenheiro Elétrico" },
-    { id: "eng-civil", nome: "Engenheiro Civil" },
-    { id: "analista-sistemas", nome: "Analista de Sistemas" },
-    { id: "analista-admin", nome: "Analista de Administração" },
-    { id: "geologo", nome: "Geólogo" },
-    { id: "economista", nome: "Economista" },
+    ...PETROBRAS_CARGOS_SUPERIOR,
   ],
 };
 
@@ -138,30 +133,36 @@ function RegisterForm() {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
 
   const concursoFromUrl = searchParams.get("concurso") || "";
+  const cargoFromUrl = searchParams.get("cargo") || "";
+  const nivelFromUrl = searchParams.get("nivel") || "";
 
   useEffect(() => {
     if (concursoFromUrl) {
-      let nivel = "";
-      let cargo = "";
+      let nivel = nivelFromUrl;
+      let cargo = cargoFromUrl;
 
-      if (concursoFromUrl === "petrobras") {
-        nivel = "medio";
-        cargo = "operacao";
-      } else if (concursoFromUrl === "caixa") {
-        nivel = "medio";
-        cargo = "caixa-tecnico";
-      } else if (concursoFromUrl === "bb") {
-        nivel = "medio";
-        cargo = "bb-escriturario";
-      } else if (concursoFromUrl === "correios") {
-        nivel = "medio";
-        cargo = "correios-agente";
-      } else if (concursoFromUrl === "ibge") {
-        nivel = "medio";
-        cargo = "ibge-recenseador";
-      } else if (concursoFromUrl === "inss") {
-        nivel = "medio";
-        cargo = "inss-tecnico";
+      if (nivel === "tecnico") nivel = "medio";
+
+      if (!nivel || !cargo) {
+        if (concursoFromUrl === "petrobras") {
+          nivel = "medio";
+          cargo = "operacao";
+        } else if (concursoFromUrl === "caixa") {
+          nivel = "medio";
+          cargo = "caixa-tecnico";
+        } else if (concursoFromUrl === "bb") {
+          nivel = "medio";
+          cargo = "bb-escriturario";
+        } else if (concursoFromUrl === "correios") {
+          nivel = "medio";
+          cargo = "correios-agente";
+        } else if (concursoFromUrl === "ibge") {
+          nivel = "medio";
+          cargo = "ibge-recenseador";
+        } else if (concursoFromUrl === "inss") {
+          nivel = "medio";
+          cargo = "inss-tecnico";
+        }
       }
 
       if (nivel && cargo) {
@@ -173,7 +174,7 @@ function RegisterForm() {
         }));
       }
     }
-  }, [concursoFromUrl]);
+  }, [concursoFromUrl, cargoFromUrl, nivelFromUrl]);
 
   const handleCargoSelect = (cargoId: string) => {
     let concurso = "petrobras";

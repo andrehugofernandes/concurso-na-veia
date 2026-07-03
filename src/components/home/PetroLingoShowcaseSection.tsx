@@ -79,20 +79,23 @@ export default function PetroLingoShowcaseSection() {
 
   return (
     <section id="petrolingo" className="py-24 bg-white dark:bg-slate-950 relative overflow-hidden border-t border-slate-200 dark:border-white/5">
-      {/* Elementos decorativos de fundo */}
+      {/* Elementos decorativos de fundo com suporte dinâmico ao Skin System */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-30 dark:opacity-10 pointer-events-none" />
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-sky-500/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         {/* Cabeçalho da Seção */}
         <ScrollAnimatedHeader
           badgeText="EXCLUSIVO PLANO ELITE"
-          badgeColorClass="border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold"
+          badgeColorClass="border-primary/20 bg-primary/10 text-primary font-bold"
           titleText={
             <>
               PetroLingo: Inglês Técnico <br />
-              <span className="bg-gradient-to-r from-emerald-500 via-teal-400 to-sky-500 bg-clip-text text-transparent">
+              <span 
+                className="bg-clip-text text-transparent"
+                style={{ backgroundImage: 'var(--primary-gradient)' }}
+              >
                 Gamificado para a Petrobras
               </span>
             </>
@@ -105,8 +108,8 @@ export default function PetroLingoShowcaseSection() {
           {/* Coluna da Esquerda: Recursos e diferenciais */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-6">
-              <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800 transition-all hover:border-emerald-500/40">
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 flex items-center justify-center shrink-0 shadow-sm">
+              <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800 transition-all hover:border-primary/40">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center shrink-0 shadow-sm">
                   <LuHeadphones className="w-6 h-6" />
                 </div>
                 <div>
@@ -117,8 +120,8 @@ export default function PetroLingoShowcaseSection() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800 transition-all hover:border-sky-500/40">
-                <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-500 flex items-center justify-center shrink-0 shadow-sm">
+              <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800 transition-all hover:border-primary/40">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center shrink-0 shadow-sm">
                   <LuLayers className="w-6 h-6" />
                 </div>
                 <div>
@@ -145,7 +148,8 @@ export default function PetroLingoShowcaseSection() {
             <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
               <button
                 onClick={() => setIsPlayingDemo(true)}
-                className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black text-base shadow-xl shadow-emerald-500/20 active:scale-95 transition-all flex items-center justify-center gap-3 group"
+                className="w-full sm:w-auto px-8 py-4 rounded-2xl text-white font-black text-base shadow-xl active:scale-95 transition-all flex items-center justify-center gap-3 group"
+                style={{ backgroundImage: 'var(--primary-gradient)' }}
               >
                 <LuPlay className="w-5 h-5 fill-white group-hover:scale-110 transition-transform" />
                 Experimentar Lição 1 em Ação
@@ -162,18 +166,18 @@ export default function PetroLingoShowcaseSection() {
 
           {/* Coluna da Direita: Mockup / Interface Interativa */}
           <div className="lg:col-span-7">
-            <div className="relative rounded-3xl border-2 border-emerald-500/30 bg-slate-950/90 shadow-2xl p-4 md:p-6 backdrop-blur-xl overflow-hidden group">
+            <div className="relative rounded-3xl border-2 border-primary/20 bg-slate-950/90 shadow-2xl p-4 md:p-6 backdrop-blur-xl overflow-hidden group">
               {/* Barra de título estilo App / Browser */}
               <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
                 <div className="flex items-center gap-2">
                   <span className="w-3 h-3 rounded-full bg-red-500/80" />
                   <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
                   <span className="w-3 h-3 rounded-full bg-green-500/80" />
-                  <span className="ml-3 text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">
+                  <span className="ml-3 text-xs font-mono text-primary font-bold uppercase tracking-wider">
                     PetroLingo v2.0 • Demonstration Mode
                   </span>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
+                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-bold">
                   <LuSparkles className="w-3.5 h-3.5" />
                   Lição 1 Liberada
                 </div>
@@ -183,7 +187,10 @@ export default function PetroLingoShowcaseSection() {
               <div className="relative bg-slate-900/90 border border-white/10 rounded-2xl p-6 md:p-8 min-h-[360px] flex flex-col justify-between overflow-hidden">
                 {!isPlayingDemo && !demoCompleted ? (
                   <div className="my-auto text-center space-y-6">
-                    <div className="w-20 h-20 mx-auto rounded-3xl bg-gradient-to-tr from-emerald-500 to-sky-500 p-0.5 shadow-xl shadow-emerald-500/20">
+                    <div 
+                      className="w-20 h-20 mx-auto rounded-3xl p-0.5 shadow-xl"
+                      style={{ backgroundImage: 'var(--primary-gradient)' }}
+                    >
                       <div className="w-full h-full bg-slate-950 rounded-[22px] flex items-center justify-center">
                         <img 
                           src="/images/petrolingo/engineer.png" 
@@ -194,7 +201,7 @@ export default function PetroLingoShowcaseSection() {
                     </div>
 
                     <div className="space-y-2">
-                      <span className="text-xs font-black uppercase tracking-widest text-emerald-400">
+                      <span className="text-xs font-black uppercase tracking-widest text-primary">
                         Unidade 1: The Linker Kingdom
                       </span>
                       <h3 className="text-2xl md:text-3xl font-black text-white">
@@ -207,7 +214,8 @@ export default function PetroLingoShowcaseSection() {
 
                     <button
                       onClick={() => setIsPlayingDemo(true)}
-                      className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-base shadow-lg shadow-emerald-500/30 hover:scale-105 active:scale-95 transition-all"
+                      className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-white font-black text-base shadow-lg hover:scale-105 active:scale-95 transition-all"
+                      style={{ backgroundImage: 'var(--primary-gradient)' }}
                     >
                       <LuPlay className="w-5 h-5 fill-white" />
                       Iniciar Lição 1 (Demonstração)
@@ -243,7 +251,8 @@ export default function PetroLingoShowcaseSection() {
                       </button>
                       <a
                         href="#pricing"
-                        className="px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-black text-sm shadow-lg shadow-emerald-500/20 transition-all"
+                        className="px-8 py-3 rounded-xl text-white font-black text-sm shadow-lg transition-all"
+                        style={{ backgroundImage: 'var(--primary-gradient)' }}
                       >
                         Desbloquear Todas as Lições no Plano Elite
                       </a>
