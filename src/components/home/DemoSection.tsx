@@ -329,7 +329,7 @@ export default function DemoSection() {
                               </div>
                             </div>
                             <div className="bg-white dark:bg-zinc-900 p-4 rounded-xl border border-slate-200 dark:border-white/5 flex items-center gap-3">
-                              <div className="p-2 bg-purple-500/10 rounded-lg text-purple-500 text-lg">🎯</div>
+                              <div className="p-2 bg-primary/10 rounded-lg text-primary text-lg">🎯</div>
                               <div>
                                 <p className="text-[8px] text-slate-400 uppercase font-bold tracking-wider leading-none mb-1">Precisão</p>
                                 <p className="text-sm font-extrabold">0%</p>
@@ -432,7 +432,7 @@ export default function DemoSection() {
                                 <h4 className="text-xs font-extrabold text-slate-800 dark:text-white">LÍNGUA PORTUGUESA</h4>
                                 <p className="text-[9px] text-slate-400 mt-1.5">Gramática, interpretação de texto e redação oficial.</p>
                               </div>
-                              <div className="bg-white dark:bg-zinc-900 p-4 rounded-xl border border-slate-200 dark:border-white/5 border-t-4 border-t-purple-500 hover:shadow-md transition-all cursor-pointer" onClick={() => handleTabChange('simulador')}>
+                              <div className="bg-white dark:bg-zinc-900 p-4 rounded-xl border border-slate-200 dark:border-white/5 border-t-4 border-t-primary hover:shadow-md transition-all cursor-pointer" onClick={() => handleTabChange('simulador')}>
                                 <span className="text-xl mb-1 block">🔢</span>
                                 <h4 className="text-xs font-extrabold text-slate-800 dark:text-white">MATEMÁTICA</h4>
                                 <p className="text-[9px] text-slate-400 mt-1.5">Raciocínio lógico, álgebra e geometria aplicada.</p>
@@ -446,16 +446,19 @@ export default function DemoSection() {
                           </div>
 
                           {/* Treino Intensivo de Aceleração */}
-                          <div className="bg-purple-500/5 rounded-2xl border border-purple-500/10 p-5">
-                            <h3 className="text-xs font-black uppercase text-purple-500 mb-4 flex items-center gap-2">
+                          <div className="bg-primary/5 rounded-2xl border border-primary/10 p-5">
+                            <h3 className="text-xs font-black uppercase text-primary mb-4 flex items-center gap-2">
                               <span>🔥</span> Treino Intensivo de Aceleração
                             </h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                              <div className="bg-gradient-to-r from-purple-600 to-purple-800 p-5 rounded-xl text-white relative overflow-hidden shadow-lg">
+                              <div 
+                                className="p-5 rounded-xl text-white relative overflow-hidden shadow-lg"
+                                style={{ backgroundImage: 'var(--primary-gradient)' }}
+                              >
                                 <div className="relative z-10">
                                   <span className="text-2xl mb-1 block">🎯</span>
                                   <h4 className="text-xs font-black uppercase">Treino Intensivo</h4>
-                                  <p className="text-[10px] text-purple-100 mt-1.5">20 questões de uma matéria ou tópico específico. FOCO TOTAL - 30 MIN.</p>
+                                  <p className="text-[10px] text-white/90 mt-1.5">20 questões de uma matéria ou tópico específico. FOCO TOTAL - 30 MIN.</p>
                                 </div>
                               </div>
                               <div className="bg-gradient-to-r from-orange-500 to-amber-600 p-5 rounded-xl text-slate-900 relative overflow-hidden shadow-lg">
@@ -507,20 +510,20 @@ export default function DemoSection() {
                                 </div>
 
                                 {/* Matemática Subject */}
-                                <div onClick={() => setActiveLessonSubject('matematica')} className="bg-white dark:bg-zinc-900 p-5 rounded-xl border border-slate-200 dark:border-white/5 flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:border-purple-500/30 transition-all cursor-pointer group">
+                                <div onClick={() => setActiveLessonSubject('matematica')} className="bg-white dark:bg-zinc-900 p-5 rounded-xl border border-slate-200 dark:border-white/5 flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:border-primary/30 transition-all cursor-pointer group">
                                   <div className="flex items-center gap-4">
                                     <span className="text-3xl transition-transform group-hover:scale-110">🔢</span>
                                     <div>
-                                      <h3 className="text-sm font-extrabold text-slate-800 dark:text-white group-hover:text-purple-500 transition-colors">Matemática</h3>
+                                      <h3 className="text-sm font-extrabold text-slate-800 dark:text-white group-hover:text-primary transition-colors">Matemática</h3>
                                       <p className="text-[10px] text-slate-400 mt-1">Aula disponível: <strong>Fundamentos de Porcentagem</strong></p>
                                     </div>
                                   </div>
                                   <div className="flex items-center gap-4">
                                     <div className="text-right">
                                       <span className="text-[10px] text-slate-400 font-bold block">10 tópicos cadastrados</span>
-                                      <span className="text-xs font-extrabold text-purple-500">0% completo</span>
+                                      <span className="text-xs font-extrabold text-primary">0% completo</span>
                                     </div>
-                                    <button className="px-4 py-2 border border-purple-500/20 text-purple-500 dark:text-purple-400 text-xs font-bold rounded-lg group-hover:bg-purple-500/10 transition-all">Acessar Aula</button>
+                                    <button className="px-4 py-2 border border-primary/20 text-primary dark:text-primary text-xs font-bold rounded-lg group-hover:bg-primary/10 transition-all">Acessar Aula</button>
                                   </div>
                                 </div>
 
@@ -663,16 +666,19 @@ export default function DemoSection() {
                               {activeLessonSubject === 'matematica' && (
                                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
                                   {/* Subject Banner */}
-                                  <div className="bg-gradient-to-r from-purple-600 to-pink-500 p-6 rounded-2xl text-white shadow-md">
+                                  <div 
+                                    className="p-6 rounded-2xl text-white shadow-md"
+                                    style={{ backgroundImage: 'var(--primary-gradient)' }}
+                                  >
                                     <span className="text-[10px] font-black uppercase bg-white/20 px-2.5 py-1 rounded">Matemática</span>
                                     <h2 className="text-xl font-bold mt-2">Fundamentos de Porcentagem</h2>
-                                    <p className="text-xs text-purple-100 mt-1">O alicerce dos números: conversões e cálculo mental rápido.</p>
+                                    <p className="text-xs text-white/90 mt-1">O alicerce dos números: conversões e cálculo mental rápido.</p>
                                   </div>
 
                                   {/* Video Player Mock */}
                                   <div className="w-full aspect-video bg-slate-900 rounded-2xl flex items-center justify-center relative overflow-hidden group shadow-lg border border-slate-800">
                                     <div className="absolute inset-0 bg-slate-800 opacity-50"></div>
-                                    <button className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center z-10 group-hover:scale-110 group-hover:bg-purple-500 transition-all shadow-xl">
+                                    <button className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center z-10 group-hover:scale-110 group-hover:bg-primary transition-all shadow-xl">
                                       <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[16px] border-l-white border-b-[10px] border-b-transparent ml-1"></div>
                                     </button>
                                     <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white/80 font-bold z-10">
@@ -683,19 +689,19 @@ export default function DemoSection() {
                                       </div>
                                     </div>
                                     <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
-                                      <div className="h-full bg-purple-500 w-1/4"></div>
+                                      <div className="h-full bg-primary w-1/4"></div>
                                     </div>
                                   </div>
 
                                   {/* Lesson Content Body */}
                                   <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200 dark:border-white/5 p-6 space-y-6 leading-relaxed">
-                                    <h3 className="text-sm font-black border-l-4 border-l-purple-500 pl-3">A Linguagem Universal do Edital</h3>
+                                    <h3 className="text-sm font-black border-l-4 border-l-primary pl-3">A Linguagem Universal do Edital</h3>
                                     <p className="text-xs text-slate-600 dark:text-slate-300">
                                       A <strong>Porcentagem</strong> é uma razão centesimal, ou seja, uma fração cujo denominador é igual a **100**. Operar com porcentagem de forma rápida é essencial para resolver questões da CESGRANRIO em menos de 1 minuto.
                                     </p>
 
-                                    <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-2xl text-center space-y-1">
-                                      <p className="font-mono text-xl font-black text-purple-600 dark:text-purple-400">
+                                    <div className="p-4 bg-primary/10 border border-primary/20 rounded-2xl text-center space-y-1">
+                                      <p className="font-mono text-xl font-black text-primary">
                                         p% = p ÷ 100
                                       </p>
                                       <p className="text-[10px] text-slate-400">Representação básica de fração centesimal</p>
@@ -727,7 +733,7 @@ export default function DemoSection() {
 
                                     {/* Mini Interactive Exercise */}
                                     <div className="border-t border-slate-100 dark:border-white/5 pt-6 space-y-4">
-                                      <h4 className="text-xs font-black uppercase text-purple-500">Fixação Rápida (Quiz)</h4>
+                                      <h4 className="text-xs font-black uppercase text-primary">Fixação Rápida (Quiz)</h4>
                                       <p className="text-xs font-bold text-slate-800 dark:text-white">Qual o valor de 35% de 200?</p>
                                       
                                       <div className="space-y-2">
@@ -742,7 +748,7 @@ export default function DemoSection() {
                                           const isCorrect = opt.index === 1;
 
                                           let btnClass = "border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-zinc-800/40";
-                                          if (isSelected && !matematicaIsAnswered) btnClass = "border-purple-500 bg-purple-500/10 text-purple-600 dark:text-purple-400";
+                                          if (isSelected && !matematicaIsAnswered) btnClass = "border-primary bg-primary/10 text-primary";
                                           if (matematicaIsAnswered) {
                                             if (isCorrect) btnClass = "border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400";
                                             else if (isSelected) btnClass = "border-red-500 bg-red-500/10 text-red-600 dark:text-red-400";
@@ -767,7 +773,7 @@ export default function DemoSection() {
                                           className={`flex-1 py-2 text-center text-xs font-bold rounded-lg ${
                                             matematicaAnswer === null || matematicaIsAnswered
                                               ? 'bg-slate-100 dark:bg-zinc-800 text-slate-400 cursor-not-allowed'
-                                              : 'bg-purple-600 text-white hover:bg-purple-700'
+                                              : 'bg-primary text-white hover:bg-primary-hover'
                                           }`}
                                         >
                                           Confirmar
