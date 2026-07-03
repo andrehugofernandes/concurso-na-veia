@@ -32,9 +32,12 @@ export const metadata: Metadata = {
   keywords:
     "passeinoconcurso, simulador, concurso, ia, simulado, aulas interativas",
   icons: {
-    icon: "/logo-icone.png",
+    icon: [
+      { url: "/logo-badge.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
     shortcut: "/favicon.ico",
-    apple: "/logo-icone.png",
+    apple: "/logo-badge.png",
   },
 };
 
