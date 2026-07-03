@@ -559,9 +559,46 @@ export default function PetroLingoExercise({
                 </div>
               ) : currentExercise.type === "matching" ? (
                 <div className="space-y-8 animate-in zoom-in-95 duration-500">
-                  <p className="text-center text-muted-foreground font-black uppercase tracking-widest text-sm">{labels.matching}</p>
+                  <div className="flex flex-row md:items-start gap-4 md:gap-8">
+                    {/* AVATAR DO PERSONAGEM */}
+                    <motion.div 
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      key={`char-matching-${character.id}-${currentIndex}`}
+                      className="relative flex flex-col items-center shrink-0"
+                    >
+                      <div className={cn(
+                        "w-20 h-20 md:w-28 md:h-28 rounded-3xl border-2 flex items-center justify-center p-2 shadow-xl overflow-hidden backdrop-blur-md relative group",
+                        character.avatarBg
+                      )}>
+                        <img 
+                          src={character.image} 
+                          alt={character.name}
+                          className="w-full h-full object-contain filter drop-shadow-md transition-transform group-hover:scale-110"
+                        />
+                      </div>
+                      <span className="mt-2 text-[10px] font-black uppercase tracking-wider text-muted-foreground bg-muted px-2.5 py-0.5 rounded-full border border-border shadow-sm">
+                        {character.name}
+                      </span>
+                    </motion.div>
+
+                    {/* BALÃO DE FALA (ENUNCIADO) */}
+                    <div className="relative flex-1 bg-card border-2 border-border p-6 md:p-8 rounded-[36px] rounded-tl-none shadow-2xl flex items-center">
+                      <div className="absolute -left-3 top-6 w-0 h-0 border-t-[10px] border-t-transparent border-r-[12px] border-r-border border-b-[10px] border-b-transparent" />
+                      <div className="absolute -left-[9px] top-6 w-0 h-0 border-t-[9px] border-t-transparent border-r-[11px] border-r-card border-b-[9px] border-b-transparent z-10" />
+
+                      <div className="space-y-2">
+                        <p className="text-xs font-black uppercase tracking-widest text-primary">
+                          {labels.matching}
+                        </p>
+                        <p className="text-xl md:text-2xl font-bold text-foreground">
+                          {currentExercise.portuguese || "Associe as palavras corretamente."}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                   
-                  <div className="grid grid-cols-2 gap-8">
+                  <div className="grid grid-cols-2 gap-4 md:gap-8">
                     {/* Coluna Inglês */}
                     <div className="space-y-3">
                       {currentExercise.pairs?.map((pair) => (
