@@ -80,8 +80,10 @@ export default function PetroLingoPath({ onSelectUnit, units, onResetProgress }:
       {/* 1. TOP STATS BAR (ESTILO DUOLINGO: FLAMAS, GEMAS, VIDAS) */}
       <div className="w-full bg-card/90 backdrop-blur-md border-b border-border px-5 py-3 flex items-center justify-between z-30 sticky top-0 shadow-sm">
         <div className="flex items-center gap-1.5 font-black text-sm text-foreground">
-          <span className="text-lg">🇧🇷</span>
-          <span className="text-xs uppercase font-black tracking-wider text-sky-500">PETROBRAS</span>
+          <span className="text-xl">🦜</span>
+          <span className="text-sm uppercase font-black tracking-wider text-sky-500">
+            PETRO<span className="text-green-500">LINGO</span>
+          </span>
         </div>
 
         <div className="flex items-center gap-4 text-xs font-black">

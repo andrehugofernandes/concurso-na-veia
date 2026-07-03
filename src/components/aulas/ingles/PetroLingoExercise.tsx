@@ -151,7 +151,7 @@ export default function PetroLingoExercise({
       setStartTime(Date.now());
       
       if (!currentExercise.type || currentExercise.type === "translation") {
-        if (currentExercise.mode === "en_to_pt") {
+        if (currentExercise.mode !== "pt_to_en") {
           // Banco de palavras em Português
           const targetPtWords = currentExercise.portugueseTarget || currentExercise.portuguese.replace(/[.,?!]/g, "").split(" ");
           const distractors = currentExercise.options || ["de", "uma", "mais", "pouco", "mesa", "pequenas"];
@@ -185,7 +185,7 @@ export default function PetroLingoExercise({
 
   const handleWordSelect = (word: string, index: number) => {
     if (status !== "idle") return;
-    if (currentExercise.mode !== "en_to_pt") {
+    if (currentExercise.mode === "pt_to_en") {
       speakEnglishText(word);
     }
     const newPool = [...poolWords];
@@ -237,7 +237,7 @@ export default function PetroLingoExercise({
     } else if (currentExercise.type === "listening") {
       const expected = currentExercise.targetWord || currentExercise.english[0];
       isCorrect = selectedOption === expected;
-    } else if (currentExercise.mode === "en_to_pt") {
+    } else if (currentExercise.mode !== "pt_to_en") {
       const targetPtWords = currentExercise.portugueseTarget || currentExercise.portuguese.replace(/[.,?!]/g, "").split(" ");
       const userText = selectedWords.join(" ").toLowerCase().trim();
       const expectedText = targetPtWords.join(" ").toLowerCase().trim();
@@ -675,7 +675,7 @@ export default function PetroLingoExercise({
                       <div className="absolute -left-3 top-6 w-0 h-0 border-t-[10px] border-t-transparent border-r-[12px] border-r-border border-b-[10px] border-b-transparent" />
                       <div className="absolute -left-[9px] top-6 w-0 h-0 border-t-[9px] border-t-transparent border-r-[11px] border-r-card border-b-[9px] border-b-transparent z-10" />
 
-                      {currentExercise.mode === "en_to_pt" ? (
+                      {currentExercise.mode !== "pt_to_en" ? (
                         <div>
                           <p className="text-xs font-black text-primary uppercase tracking-widest mb-3">{labels.translate}</p>
                           <div className="flex items-center gap-3">

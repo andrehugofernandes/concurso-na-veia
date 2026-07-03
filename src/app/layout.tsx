@@ -83,7 +83,8 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             {children}
-            <DevProfileSwitcher />
+            {/* Oculto por pedido do dev. Para ativar, basta descomentar a linha abaixo */}
+            {/* <DevProfileSwitcher /> */}
           </ThemeProvider>
         </SkinProvider>
       </body>
