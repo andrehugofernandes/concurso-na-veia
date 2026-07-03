@@ -1,7 +1,9 @@
 import React, { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import PetroLingoPath from "./PetroLingoPath";
 import PetroLingoExercise, { SentenceData } from "./PetroLingoExercise";
 import { usePetroLingoProgress } from "@/hooks/usePetroLingoProgress";
+import { useUserProfile } from "@/hooks/useUserProfile";
 import { 
   LuFileText, 
   LuLink, 
@@ -570,7 +572,12 @@ export default function PetroLingoMain() {
 
   // Hook de persistência customizado para PetroLingo
   const unitIds = useMemo(() => MASTER_UNITS_DATA.map(u => u.id), []);
-  const { progress, loading, completeUnit, resetProgress } = usePetroLingoProgress(unitIds);
+  const { progress, loading: progressLoading, completeUnit, resetProgress } = usePetroLingoProgress(unitIds);
+  
+  // Hook de perfil do usuário para pegar o XP global
+  const { profile, refetch: refetchProfile, loading: profileLoading } = useUserProfile();
+
+  const loading = progressLoading || profileLoading;
 
   // Une os dados da trilha estática com o progresso do banco
   const units = useMemo(() => {
@@ -591,6 +598,8 @@ export default function PetroLingoMain() {
     // Atualiza o progresso no banco via RPC
     if (selectedUnitId) {
       await completeUnit(selectedUnitId, 25);
+      // Atualiza o perfil para refletir o novo XP no painel global
+      await refetchProfile();
     }
     setView("path");
   };
@@ -617,9 +626,11 @@ export default function PetroLingoMain() {
           <PetroLingoPath 
             units={units} 
             onSelectUnit={handleSelectUnit} 
+            userXp={profile?.xp || 0}
             onResetProgress={async () => {
               if (confirm("Tem certeza que deseja zerar o progresso do PetroLingo e recomeçar a trilha do zero?")) {
                 await resetProgress();
+                await refetchProfile();
               }
             }}
           />

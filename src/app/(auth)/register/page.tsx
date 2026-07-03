@@ -195,14 +195,14 @@ function RegisterForm() {
       return [
         { id: "free", nome: "Iniciante", preco: "Grátis", descricao: "5 questões/dia, histórico de 3 dias", tag: null },
         { id: "aprovado-medio", nome: "Aprovado Médio", preco: "R$ 49,99/mês", descricao: "Questões ilimitadas, simulados, explicações IA", tag: null },
-        { id: "elite-medio", nome: "Elite Médio", preco: "R$ 79,99/mês", descricao: "Tudo + Professor IA 24h, Mentoria, Cronograma", tag: "POPULAR" },
+        { id: "elite-medio", nome: "Elite Médio", preco: "R$ 79,99/mês", descricao: "Tudo + PetroLingo (Inglês), Mentoria, Cronograma", tag: "POPULAR" },
         { id: "elite-total", nome: "Elite Total", preco: "R$ 149,99/mês", descricao: "Acesso a TODOS os cargos, Médio + Superior", tag: "COMPLETO" },
       ];
     } else if (formData.nivel === "superior") {
       return [
         { id: "free", nome: "Iniciante", preco: "Grátis", descricao: "5 questões/dia, histórico de 3 dias", tag: null },
         { id: "aprovado-superior", nome: "Aprovado Superior", preco: "R$ 69,99/mês", descricao: "Questões ilimitadas, simulados, explicações IA", tag: null },
-        { id: "elite-superior", nome: "Elite Superior", preco: "R$ 119,99/mês", descricao: "Tudo + Professor IA 24h, Mentoria, Cronograma", tag: "RECOMENDADO" },
+        { id: "elite-superior", nome: "Elite Superior", preco: "R$ 119,99/mês", descricao: "Tudo + PetroLingo (Inglês), Mentoria, Cronograma", tag: "RECOMENDADO" },
         { id: "elite-total", nome: "Elite Total", preco: "R$ 149,99/mês", descricao: "Acesso a TODOS os cargos, Médio + Superior", tag: "COMPLETO" },
       ];
     }

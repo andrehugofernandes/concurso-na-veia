@@ -7,7 +7,9 @@ import { getCurrentUserAction } from "@/lib/actions/auth";
 import HomeHero from "@/components/home/HomeHero";
 import TrustedBySection from "@/components/home/TrustedBySection";
 import DemoSection from "@/components/home/DemoSection";
-import ProfessorParticularSection from "@/components/home/ProfessorParticularSection";
+import PetroLingoShowcaseSection from "@/components/home/PetroLingoShowcaseSection";
+// Mantido intacto para o próximo MVP:
+// import ProfessorParticularSection from "@/components/home/ProfessorParticularSection";
 import ResultsSection from "@/components/home/ResultsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import FinalCTASection from "@/components/home/FinalCTASection";
@@ -51,8 +53,10 @@ export default function HomeLandingPage() {
       {/* Demo Interativo com Tabs */}
       <DemoSection />
 
-      {/* Professor Particular 24h (Avatar IA) */}
-      <ProfessorParticularSection />
+      {/* PetroLingo (Inglês Técnico Gamificado - Exclusivo Plano Elite) */}
+      <PetroLingoShowcaseSection />
+      {/* Professor Particular 24h (Avatar IA) - Mantido para o próximo MVP */}
+      {/* <ProfessorParticularSection /> */}
 
       {/* Bento Box de Resultados */}
       <ResultsSection />

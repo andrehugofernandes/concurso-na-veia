@@ -47,7 +47,7 @@ const PLANOS_MEDIO = [
     destaque: true,
     beneficios: [
       { texto: 'Tudo do plano Aprovado Médio', status: true },
-      { texto: 'Professor IA 24h', status: true },
+      { texto: 'PetroLingo (Inglês Gamificado)', status: true },
       { texto: 'Mentoria semanal ao vivo', status: true },
       { texto: 'Acesso antecipado a novos conteúdos', status: true },
       { texto: 'Suporte VIP', status: true },
@@ -93,7 +93,7 @@ const PLANOS_SUPERIOR = [
     destaque: true,
     beneficios: [
       { texto: 'Tudo do plano Aprovado Superior', status: true },
-      { texto: 'Professor IA 24h', status: true },
+      { texto: 'PetroLingo (Inglês Gamificado)', status: true },
       { texto: 'Mentoria semanal ao vivo', status: true },
       { texto: 'Acesso antecipado a novos conteúdos', status: true },
       { texto: 'Suporte VIP', status: true },

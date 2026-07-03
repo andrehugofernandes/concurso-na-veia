@@ -40,6 +40,7 @@ interface PetroLingoPathProps {
   onSelectUnit: (unitId: string) => void;
   units: Unit[];
   onResetProgress?: () => void;
+  userXp?: number;
 }
 
 const PETROLINGO_CHARACTERS = [
@@ -65,7 +66,7 @@ const PETROLINGO_CHARACTERS = [
   }
 ];
 
-export default function PetroLingoPath({ onSelectUnit, units, onResetProgress }: PetroLingoPathProps) {
+export default function PetroLingoPath({ onSelectUnit, units, onResetProgress, userXp = 0 }: PetroLingoPathProps) {
   // Offsets da Serpente em S (Zig-zag Duolingo style)
   const offsets = [0, 45, 80, 45, 0, -45, -80, -45];
 
@@ -95,9 +96,9 @@ export default function PetroLingoPath({ onSelectUnit, units, onResetProgress }:
             <span className="text-sm">💎</span>
             <span>678</span>
           </div>
-          <div className="flex items-center gap-1 text-rose-500">
+          <div className="flex items-center gap-1 text-rose-500" title="Seus XP (Pontos de Experiência)">
             <LuZap className="w-4 h-4 fill-rose-500" />
-            <span>25</span>
+            <span>{userXp}</span>
           </div>
         </div>
       </div>
@@ -284,34 +285,7 @@ export default function PetroLingoPath({ onSelectUnit, units, onResetProgress }:
         </div>
       </div>
 
-      {/* 5. BARRA DE NAVEGAÇÃO INFERIOR (FIXA DUOLINGO STYLE) */}
-      <div className="w-full bg-card border-t border-border px-6 py-3 flex items-center justify-around z-30 sticky bottom-0 shadow-lg">
-        <button className="flex flex-col items-center gap-1 text-sky-500 font-bold text-xs">
-          <div className="p-2 bg-sky-500/10 rounded-2xl">
-            <LuHouse size={22} />
-          </div>
-        </button>
-        <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground font-bold text-xs">
-          <div className="p-2 hover:bg-muted rounded-2xl">
-            <LuShield size={22} />
-          </div>
-        </button>
-        <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground font-bold text-xs">
-          <div className="p-2 hover:bg-muted rounded-2xl">
-            <LuTrophy size={22} />
-          </div>
-        </button>
-        <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground font-bold text-xs">
-          <div className="p-2 hover:bg-muted rounded-2xl">
-            <LuHeart size={22} />
-          </div>
-        </button>
-        <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground font-bold text-xs">
-          <div className="p-2 hover:bg-muted rounded-2xl">
-            <LuUser size={22} />
-          </div>
-        </button>
-      </div>
+
 
     </div>
   );

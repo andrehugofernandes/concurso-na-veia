@@ -109,8 +109,8 @@ export default function HomeHeader() {
                 <Link href="#demo" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
                   Demonstração
                 </Link>
-                <Link href="#ia" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
-                  Professor IA
+                <Link href="#petrolingo" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
+                  PetroLingo
                 </Link>
                 <Link href="#resultados" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
                   Resultados

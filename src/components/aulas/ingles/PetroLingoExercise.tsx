@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Reorder } from "framer-motion";
 import { 
   LuHeart, 
   LuCheck, 
@@ -73,6 +73,11 @@ export interface SentenceData {
   portugueseTarget?: string[];
 }
 
+export interface WordItem {
+  id: string;
+  word: string;
+}
+
 interface PetroLingoExerciseProps {
   exercises: SentenceData[];
   onBack: () => void;
@@ -82,12 +87,12 @@ interface PetroLingoExerciseProps {
 export default function PetroLingoExercise({
   exercises,
   onBack,
-  onFinish
+  onFinish,
 }: PetroLingoExerciseProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lives, setLives] = useState(3);
-  const [selectedWords, setSelectedWords] = useState<string[]>([]);
-  const [poolWords, setPoolWords] = useState<string[]>([]);
+  const [selectedWords, setSelectedWords] = useState<WordItem[]>([]);
+  const [poolWords, setPoolWords] = useState<WordItem[]>([]);
   const [status, setStatus] = useState<"idle" | "correct" | "incorrect">("idle");
   const [showExplanation, setShowExplanation] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
@@ -160,7 +165,7 @@ export default function PetroLingoExercise({
           const uniqueDistractors = distractors.filter(d => !targetPtWords.includes(d));
           const allWords = [...targetPtWords, ...uniqueDistractors];
           const shuffled = [...allWords].sort(() => Math.random() - 0.5);
-          setPoolWords(shuffled);
+          setPoolWords(shuffled.map((word, idx) => ({ id: `word_${idx}`, word })));
           setSelectedWords([]);
           // Auto-play do áudio em inglês do balão
           speakEnglishText(currentExercise.english.join(" "));
@@ -170,7 +175,7 @@ export default function PetroLingoExercise({
             ? [...currentExercise.english, ...currentExercise.options]
             : [...currentExercise.english];
           const shuffled = [...allWords].sort(() => Math.random() - 0.5);
-          setPoolWords(shuffled);
+          setPoolWords(shuffled.map((word, idx) => ({ id: `word_${idx}`, word })));
           setSelectedWords([]);
         }
       } else if (currentExercise.type === "matching") {
@@ -181,7 +186,7 @@ export default function PetroLingoExercise({
           ? [...currentExercise.english, ...currentExercise.options]
           : [...currentExercise.english];
         const shuffled = [...allWords].sort(() => Math.random() - 0.5);
-        setPoolWords(shuffled);
+        setPoolWords(shuffled.map((word, idx) => ({ id: `word_${idx}`, word })));
         setSelectedWords([]);
         // Auto-play da sentença completa após um breve delay
         setTimeout(() => speakEnglishText(currentExercise.english.join(" ")), 600);
@@ -192,23 +197,23 @@ export default function PetroLingoExercise({
     }
   }, [currentIndex, currentExercise]);
 
-  const handleWordSelect = (word: string, index: number) => {
+  const handleWordSelect = (wordItem: WordItem, index: number) => {
     if (status !== "idle") return;
     if (currentExercise.mode === "pt_to_en") {
-      speakEnglishText(word);
+      speakEnglishText(wordItem.word);
     }
     const newPool = [...poolWords];
     newPool.splice(index, 1);
     setPoolWords(newPool);
-    setSelectedWords([...selectedWords, word]);
+    setSelectedWords([...selectedWords, wordItem]);
   };
 
-  const handleWordRemove = (word: string, index: number) => {
+  const handleWordRemove = (wordItem: WordItem, index: number) => {
     if (status !== "idle") return;
     const newSelected = [...selectedWords];
     newSelected.splice(index, 1);
     setSelectedWords(newSelected);
-    setPoolWords([...poolWords, word]);
+    setPoolWords([...poolWords, wordItem]);
   };
 
   const handlePairSelect = (type: "en" | "pt", word: string) => {
@@ -643,12 +648,11 @@ export default function PetroLingoExercise({
                   </div>
                 </div>
               ) : currentExercise.type === "listening" ? (
-                <div className="space-y-6 animate-in zoom-in-95 duration-500">
-                  {/* HEADER */}
-                  <p className="text-center text-sky-500 font-black uppercase tracking-widest text-sm">{labels.listening}</p>
+                <div className="flex flex-col md:grid md:grid-cols-[1fr_1.5fr] gap-6 md:gap-12 w-full animate-in zoom-in-95 duration-500">
+                  {/* COLUNA ESQUERDA: PERSONAGEM + BALÃO */}
+                  <div className="flex flex-col md:items-center gap-5 my-4">
+                    <p className="text-center text-sky-500 font-black uppercase tracking-widest text-sm">{labels.listening}</p>
 
-                  {/* PERSONAGEM + BALÃO COM BOTÃO DE ÁUDIO */}
-                  <div className="flex items-start gap-4">
                     <motion.div
                       initial={{ scale: 0.8, opacity: 0, y: 10 }}
                       animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -669,8 +673,9 @@ export default function PetroLingoExercise({
 
                     {/* BALÃO COM BOTÃO DE ÁUDIO */}
                     <div className="relative flex-1 bg-card border-2 border-sky-500/40 p-5 rounded-[32px] rounded-tl-none shadow-2xl">
-                      <div className="absolute -left-3 top-6 w-0 h-0 border-t-[10px] border-t-transparent border-r-[12px] border-r-sky-500/40 border-b-[10px] border-b-transparent" />
-                      <div className="absolute -left-[9px] top-6 w-0 h-0 border-t-[9px] border-t-transparent border-r-[11px] border-r-card border-b-[9px] border-b-transparent z-10" />
+                      {/* Seta do balão apontando para cima */}
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[12px] border-l-transparent border-b-[12px] border-b-sky-500/40 border-r-[12px] border-r-transparent" />
+                      <div className="absolute -top-[10px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-b-[10px] border-b-card border-r-[10px] border-r-transparent z-10" />
 
                       <div className="space-y-4">
                         <p className="text-xs font-black text-sky-500 uppercase tracking-widest">Toque para ouvir a frase:</p>
@@ -709,23 +714,32 @@ export default function PetroLingoExercise({
                     </div>
                   </div>
 
-                  {/* ÁREA DE CONSTRUÇÃO DA FRASE */}
-                  <div className="min-h-[80px] p-4 bg-muted/20 rounded-[24px] border-2 border-dashed border-sky-500/40 flex flex-wrap gap-2 items-center content-center justify-center transition-all">
-                    <AnimatePresence mode="popLayout">
-                      {selectedWords.map((word, idx) => (
-                        <motion.button
-                          key={`sel-listen-${word}-${idx}`}
-                          layoutId={`listen-word-${word}-${idx}`}
-                          initial={{ scale: 0.8, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          exit={{ scale: 0.8, opacity: 0 }}
-                          onClick={() => handleWordRemove(word, idx)}
-                          className="px-4 py-2 bg-sky-500/10 border-2 border-sky-500/60 text-sky-600 dark:text-sky-400 rounded-xl font-bold text-lg shadow-[0_3px_0_0_rgba(14,165,233,0.2)] hover:translate-y-px active:translate-y-1 active:shadow-none transition-all"
-                        >
-                          {word}
-                        </motion.button>
-                      ))}
-                    </AnimatePresence>
+                  {/* COLUNA DA DIREITA: ÁREA DE CONSTRUÇÃO E POOL */}
+                  <div className="flex flex-col gap-6">
+                    {/* ÁREA DE CONSTRUÇÃO DA FRASE */}
+                    <div className="min-h-[140px] p-6 bg-muted/20 rounded-[40px] border-2 border-dashed border-sky-500/40 flex flex-wrap gap-3 items-center content-center justify-center transition-all">
+                      <Reorder.Group
+                        axis="x"
+                        values={selectedWords}
+                        onReorder={setSelectedWords}
+                        className="min-w-[100%] flex flex-wrap gap-3 items-center content-center justify-center"
+                      >
+                        {selectedWords.map((wordItem, idx) => (
+                          <Reorder.Item
+                            key={`sel-listen-${wordItem.id}`}
+                            value={wordItem}
+                            layoutId={`listen-word-${wordItem.id}`}
+                            className="relative"
+                          >
+                            <motion.button
+                              onClick={() => handleWordRemove(wordItem, idx)}
+                              className="px-4 py-2 bg-sky-500/10 border-2 border-sky-500/60 text-sky-600 dark:text-sky-400 rounded-xl font-bold text-lg shadow-[0_3px_0_0_rgba(14,165,233,0.2)] hover:translate-y-px active:translate-y-1 active:shadow-none transition-all cursor-grab active:cursor-grabbing"
+                            >
+                              {wordItem.word}
+                            </motion.button>
+                          </Reorder.Item>
+                        ))}
+                      </Reorder.Group>
                     {selectedWords.length === 0 && (
                       <p className="text-muted-foreground font-medium italic opacity-50 text-sm">Toque nas palavras para montar o que ouviu...</p>
                     )}
@@ -734,31 +748,32 @@ export default function PetroLingoExercise({
                   {/* POOL DE PALAVRAS EM INGLÊS */}
                   <div className="flex flex-wrap gap-3 justify-center">
                     <AnimatePresence mode="popLayout">
-                      {poolWords.map((word, idx) => (
+                      {poolWords.map((wordItem, idx) => (
                         <motion.button
-                          key={`pool-listen-${word}-${idx}`}
-                          layoutId={`listen-word-${word}-${idx}`}
+                          key={`pool-listen-${wordItem.id}-${idx}`}
+                          layoutId={`listen-word-${wordItem.id}`}
                           initial={{ scale: 0.9, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
                           exit={{ scale: 0.8, opacity: 0 }}
                           onClick={() => {
                             if (status !== "idle") return;
-                            speakEnglishText(word); // Pronuncia a palavra individual ao clicar
-                            handleWordSelect(word, idx);
+                            speakEnglishText(wordItem.word); // Pronuncia a palavra individual ao clicar
+                            handleWordSelect(wordItem, idx);
                           }}
                           className="px-5 py-3 bg-card border-2 border-border rounded-2xl font-black text-lg text-foreground/90 shadow-[0_5px_0_0_rgba(0,0,0,0.15)] dark:shadow-[0_5px_0_0_rgba(255,255,255,0.1)] hover:bg-sky-500/5 hover:border-sky-400 active:translate-y-1 active:shadow-none transition-all"
                           whileTap={{ scale: 0.95 }}
                         >
-                          {word}
+                          {wordItem.word}
                         </motion.button>
                       ))}
                     </AnimatePresence>
+                    </div>
                   </div>
                 </div>
               ) : (
-                <>
+                <div className="flex flex-col md:grid md:grid-cols-[1fr_1.5fr] gap-6 md:gap-12 w-full">
                   {/* PROMPT (O PERSONAGEM DA PETROBRAS - TRADUÇÃO) */}
-                  <div className="flex items-start gap-5 my-4">
+                  <div className="flex flex-col md:items-center gap-5 my-4">
                     <motion.div 
                       initial={{ scale: 0.8, opacity: 0, y: 10 }}
                       animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -778,9 +793,9 @@ export default function PetroLingoExercise({
                     </motion.div>
 
                     <div className="relative flex-1 bg-card border-2 border-border p-6 rounded-[32px] rounded-tl-none shadow-2xl">
-                      {/* Seta do balão de fala */}
-                      <div className="absolute -left-3 top-6 w-0 h-0 border-t-[10px] border-t-transparent border-r-[12px] border-r-border border-b-[10px] border-b-transparent" />
-                      <div className="absolute -left-[9px] top-6 w-0 h-0 border-t-[9px] border-t-transparent border-r-[11px] border-r-card border-b-[9px] border-b-transparent z-10" />
+                      {/* Seta do balão de fala (Apontando para cima) */}
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[12px] border-l-transparent border-b-[12px] border-b-border border-r-[12px] border-r-transparent" />
+                      <div className="absolute -top-[10px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-b-[10px] border-b-card border-r-[10px] border-r-transparent z-10" />
 
                       {currentExercise.mode !== "pt_to_en" ? (
                         <div>
@@ -829,20 +844,32 @@ export default function PetroLingoExercise({
                     </div>
                   </div>
 
-                  {/* ÁREA DE DEPÓSITO (ONDE AS PALAVRAS CAEM) */}
+                  {/* COLUNA DA DIREITA: ÁREA DE DEPÓSITO E POOL */}
+                  <div className="flex flex-col gap-6">
+                    {/* ÁREA DE DEPÓSITO (ONDE AS PALAVRAS CAEM) */}
                   <div className="min-h-[140px] p-6 bg-muted/20 rounded-[40px] border-2 border-dashed border-border/60 flex flex-wrap gap-3 items-center content-center justify-center transition-all">
-                    <AnimatePresence mode="popLayout">
-                      {selectedWords.map((word, idx) => (
-                        <motion.button
-                          key={`sel-${word}-${idx}`}
-                          layoutId={`word-${word}`}
-                          onClick={() => handleWordRemove(word, idx)}
-                          className="px-5 py-3 bg-card border-2 border-border rounded-2xl font-bold text-lg text-foreground shadow-[0_4px_0_0_rgba(0,0,0,0.1)] dark:shadow-[0_4px_0_0_rgba(255,255,255,0.05)] hover:translate-y-px hover:shadow-[0_2px_0_0_rgba(0,0,0,0.1)] active:translate-y-1 active:shadow-none transition-all"
+                    <Reorder.Group
+                      axis="x"
+                      values={selectedWords}
+                      onReorder={setSelectedWords}
+                      className="min-w-[100%] flex flex-wrap gap-3 items-center content-center justify-center"
+                    >
+                      {selectedWords.map((wordItem, idx) => (
+                        <Reorder.Item
+                          key={`sel-${wordItem.id}`}
+                          value={wordItem}
+                          layoutId={`word-${wordItem.id}`}
+                          className="relative"
                         >
-                          {word}
-                        </motion.button>
+                          <motion.button
+                            onClick={() => handleWordRemove(wordItem, idx)}
+                            className="px-5 py-3 bg-card border-2 border-border rounded-2xl font-bold text-lg text-foreground shadow-[0_4px_0_0_rgba(0,0,0,0.1)] dark:shadow-[0_4px_0_0_rgba(255,255,255,0.05)] hover:translate-y-px hover:shadow-[0_2px_0_0_rgba(0,0,0,0.1)] active:translate-y-1 active:shadow-none transition-all cursor-grab active:cursor-grabbing"
+                          >
+                            {wordItem.word}
+                          </motion.button>
+                        </Reorder.Item>
                       ))}
-                    </AnimatePresence>
+                    </Reorder.Group>
                     {selectedWords.length === 0 && (
                       <p className="text-muted-foreground font-medium italic opacity-50">Toque nas palavras para montar a frase...</p>
                     )}
@@ -851,20 +878,21 @@ export default function PetroLingoExercise({
                   {/* BANCO DE PALAVRAS (POOL) */}
                   <div className="flex flex-wrap gap-4 justify-center">
                     <AnimatePresence mode="popLayout">
-                      {poolWords.map((word, idx) => (
+                      {poolWords.map((wordItem, idx) => (
                         <motion.button
-                          key={`pool-${word}-${idx}`}
-                          layoutId={`word-${word}`}
-                          onClick={() => handleWordSelect(word, idx)}
+                          key={`pool-${wordItem.id}-${idx}`}
+                          layoutId={`word-${wordItem.id}`}
+                          onClick={() => handleWordSelect(wordItem, idx)}
                           className="px-6 py-4 bg-card border-2 border-border rounded-2xl font-black text-xl text-foreground/90 shadow-[0_5px_0_0_rgba(0,0,0,0.15)] dark:shadow-[0_5px_0_0_rgba(255,255,255,0.1)] hover:bg-accent hover:border-primary/40 active:translate-y-1 active:shadow-none transition-all"
                           whileTap={{ scale: 0.95 }}
                         >
-                          {word}
+                          {wordItem.word}
                         </motion.button>
                       ))}
                     </AnimatePresence>
                   </div>
-                </>
+                </div>
+              </div>
               )}
             </motion.div>
           ) : (
