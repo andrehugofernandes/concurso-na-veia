@@ -506,22 +506,19 @@ export default function PetroLingoExercise({
                   {/* CHARACTER AVATAR + SPEECH BALLOON */}
                   <div className="flex items-start gap-5 my-4">
                     <motion.div 
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
+                      initial={{ scale: 0.8, opacity: 0, y: 10 }}
+                      animate={{ scale: 1, opacity: 1, y: 0 }}
                       key={`char-cloze-${character.id}-${currentIndex}`}
                       className="relative flex flex-col items-center shrink-0"
                     >
-                      <div className={cn(
-                        "w-24 h-24 md:w-28 md:h-28 rounded-3xl border-2 flex items-center justify-center p-2 shadow-xl overflow-hidden backdrop-blur-md relative group",
-                        character.avatarBg
-                      )}>
-                        <img 
-                          src={character.image} 
-                          alt={character.name}
-                          className="w-full h-full object-contain filter drop-shadow-md transition-transform group-hover:scale-110"
-                        />
-                      </div>
-                      <span className="mt-2 text-[10px] font-black uppercase tracking-wider text-muted-foreground bg-muted px-2.5 py-0.5 rounded-full border border-border shadow-sm">
+                      <motion.img
+                        animate={{ y: [0, -5, 0] }}
+                        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                        src={character.image}
+                        alt={character.name}
+                        className="w-20 h-20 md:w-24 md:h-24 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)] transition-transform hover:scale-105"
+                      />
+                      <span className="mt-1.5 text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60">
                         {character.name}
                       </span>
                     </motion.div>
@@ -570,22 +567,19 @@ export default function PetroLingoExercise({
                   <div className="flex flex-row md:items-start gap-4 md:gap-8">
                     {/* AVATAR DO PERSONAGEM */}
                     <motion.div 
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
+                      initial={{ scale: 0.8, opacity: 0, y: 10 }}
+                      animate={{ scale: 1, opacity: 1, y: 0 }}
                       key={`char-matching-${character.id}-${currentIndex}`}
                       className="relative flex flex-col items-center shrink-0"
                     >
-                      <div className={cn(
-                        "w-20 h-20 md:w-28 md:h-28 rounded-3xl border-2 flex items-center justify-center p-2 shadow-xl overflow-hidden backdrop-blur-md relative group",
-                        character.avatarBg
-                      )}>
-                        <img 
-                          src={character.image} 
-                          alt={character.name}
-                          className="w-full h-full object-contain filter drop-shadow-md transition-transform group-hover:scale-110"
-                        />
-                      </div>
-                      <span className="mt-2 text-[10px] font-black uppercase tracking-wider text-muted-foreground bg-muted px-2.5 py-0.5 rounded-full border border-border shadow-sm">
+                      <motion.img
+                        animate={{ y: [0, -5, 0] }}
+                        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                        src={character.image}
+                        alt={character.name}
+                        className="w-20 h-20 md:w-24 md:h-24 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)] transition-transform hover:scale-105"
+                      />
+                      <span className="mt-1.5 text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60">
                         {character.name}
                       </span>
                     </motion.div>
@@ -656,22 +650,19 @@ export default function PetroLingoExercise({
                   {/* PERSONAGEM + BALÃO COM BOTÃO DE ÁUDIO */}
                   <div className="flex items-start gap-4">
                     <motion.div
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
+                      initial={{ scale: 0.8, opacity: 0, y: 10 }}
+                      animate={{ scale: 1, opacity: 1, y: 0 }}
                       key={`char-listen-${character.id}-${currentIndex}`}
                       className="relative flex flex-col items-center shrink-0"
                     >
-                      <div className={cn(
-                        "w-20 h-20 md:w-24 md:h-24 rounded-3xl border-2 flex items-center justify-center p-2 shadow-xl overflow-hidden backdrop-blur-md relative group",
-                        character.avatarBg
-                      )}>
-                        <img
-                          src={character.image}
-                          alt={character.name}
-                          className="w-full h-full object-contain filter drop-shadow-md transition-transform group-hover:scale-110"
-                        />
-                      </div>
-                      <span className="mt-2 text-[10px] font-black uppercase tracking-wider text-muted-foreground bg-muted px-2.5 py-0.5 rounded-full border border-border shadow-sm">
+                      <motion.img
+                        animate={{ y: [0, -5, 0] }}
+                        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                        src={character.image}
+                        alt={character.name}
+                        className="w-20 h-20 md:w-24 md:h-24 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)] transition-transform hover:scale-105"
+                      />
+                      <span className="mt-1.5 text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60">
                         {character.name}
                       </span>
                     </motion.div>
@@ -769,22 +760,19 @@ export default function PetroLingoExercise({
                   {/* PROMPT (O PERSONAGEM DA PETROBRAS - TRADUÇÃO) */}
                   <div className="flex items-start gap-5 my-4">
                     <motion.div 
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
+                      initial={{ scale: 0.8, opacity: 0, y: 10 }}
+                      animate={{ scale: 1, opacity: 1, y: 0 }}
                       key={`char-trans-${character.id}-${currentIndex}`}
                       className="relative flex flex-col items-center shrink-0"
                     >
-                      <div className={cn(
-                        "w-24 h-24 md:w-28 md:h-28 rounded-3xl border-2 flex items-center justify-center p-2 shadow-xl overflow-hidden backdrop-blur-md relative group",
-                        character.avatarBg
-                      )}>
-                        <img 
-                          src={character.image} 
-                          alt={character.name}
-                          className="w-full h-full object-contain filter drop-shadow-md transition-transform group-hover:scale-110"
-                        />
-                      </div>
-                      <span className="mt-2 text-[10px] font-black uppercase tracking-wider text-muted-foreground bg-muted px-2.5 py-0.5 rounded-full border border-border shadow-sm">
+                      <motion.img
+                        animate={{ y: [0, -5, 0] }}
+                        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                        src={character.image}
+                        alt={character.name}
+                        className="w-24 h-24 md:w-28 md:h-28 object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)] transition-transform hover:scale-105"
+                      />
+                      <span className="mt-1.5 text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60">
                         {character.name}
                       </span>
                     </motion.div>
