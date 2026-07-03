@@ -133,11 +133,10 @@ function DashboardShell({
 }) {
   const { isStickyNavPinned } = useHeaderState();
 
-  // Sidebar colapsa automaticamente ao entrar no PetroLingo ou numa aula
-  // Mobile: some completamente. Desktop: colapsa para ícone.
+  // Mobile: sidebar some completamente ao entrar no PetroLingo ou numa aula
+  // Desktop: comportamento normal controlado pelo usuário
   const shouldHideSidebar =
-    (isMobile && isInsideLesson && !isMobileSidebarOpen) ||
-    (!isMobile && isInsideLesson && isStickyNavPinned && !isSidebarCollapsed);
+    isMobile && isInsideLesson && !isMobileSidebarOpen;
 
   return (
     <div
@@ -145,20 +144,18 @@ function DashboardShell({
       suppressHydrationWarning
       style={
         {
-          "--sidebar-width": isMobile
-            ? shouldHideSidebar ? "0px" : "56px"
-            : isInsideLesson && !isMobileSidebarOpen
-              ? isSidebarCollapsed ? "80px" : "80px"
-              : isSidebarCollapsed
-                ? "80px"
-                : "256px",
+          "--sidebar-width": shouldHideSidebar
+            ? "0px"
+            : isSidebarCollapsed
+              ? isMobile ? "56px" : "80px"
+              : "256px",
         } as React.CSSProperties
       }
     >
-      {/* Sidebar - no PetroLingo/aulas, colapsa automaticamente no desktop */}
+      {/* Sidebar - no mobile, some ao entrar no PetroLingo/aulas */}
       <AdminSidebar
-        isCollapsed={isMobile ? !isMobileSidebarOpen : (isInsideLesson ? true : isSidebarCollapsed)}
-        isHidden={isMobile && isInsideLesson && !isMobileSidebarOpen}
+        isCollapsed={isMobile ? !isMobileSidebarOpen : isSidebarCollapsed}
+        isHidden={shouldHideSidebar}
         isOverlayOpen={isMobileSidebarOpen && isMobile}
         onNavigate={closeMobileSidebar}
       />
@@ -172,16 +169,14 @@ function DashboardShell({
         />
       )}
 
-      {/* Main Content - sem margem no PetroLingo/aulas mobile; colapsa no desktop */}
+      {/* Main Content */}
       <div
         className={cn(
           "transition-all duration-300",
-          isMobile
-            ? isInsideLesson
-              ? "ml-0" // Mobile + PetroLingo/aulas: sidebar some, full width
-              : "ml-14" // Mobile normal: margem da sidebar colapsada
-            : isInsideLesson
-              ? "md:ml-20" // Desktop + PetroLingo/aulas: sidebar colapsa para ícone
+          shouldHideSidebar
+            ? "ml-0" // Mobile + PetroLingo/aulas: sem margem
+            : isMobile
+              ? "ml-14" // Mobile normal: margem da sidebar colapsada
               : isSidebarCollapsed
                 ? "md:ml-20"
                 : "ml-64",
