@@ -85,10 +85,26 @@ const MASTER_UNITS_DATA: {
         explanation: "'Although' (Embora) introduz uma contradição, questão recorrente na Cesgranrio."
       },
       {
+        id: "l1-e4b",
+        type: "listening" as const,
+        portuguese: "Ouvição: Monte a frase que você ouviu:",
+        english: ["Although", "the", "system", "failed,", "the", "backup", "worked."],
+        options: ["However,", "report", "slowly", "was"],
+        explanation: "'Although' (Embora) aparece no início para introduzir a contradição entre as duas ideias."
+      },
+      {
         id: "l1-e5",
         portuguese: "No entanto, precisamos de mais dados.",
         english: ["However,", "we", "need", "more", "data."],
         explanation: "'However' (No entanto) expressa oposição, tão frequente quanto 'But'."
+      },
+      {
+        id: "l1-e5b",
+        type: "listening" as const,
+        portuguese: "Ouvição: Monte a frase que você ouviu:",
+        english: ["However,", "we", "need", "more", "data."],
+        options: ["Although", "they", "enough", "report."],
+        explanation: "'However' (No entanto) é um conector de contraste muito comum em textos técnicos da Petrobras."
       }
     ]
   },
@@ -136,10 +152,26 @@ const MASTER_UNITS_DATA: {
         explanation: "O 'by' indica o agente da passiva nos textos de prova."
       },
       {
+        id: "l2-e4b",
+        type: "listening" as const,
+        portuguese: "Ouvição: Monte a frase que você ouviu:",
+        english: ["The", "report", "was", "written", "by", "the", "engineer."],
+        options: ["Oil", "has", "been", "reviewed", "for"],
+        explanation: "'Was written by' = voz passiva no passado. 'By' indica o agente responsável."
+      },
+      {
         id: "l2-e5",
         portuguese: "A manutenção tem sido feita regularmente.",
         english: ["Maintenance", "has", "been", "done", "regularly."],
         explanation: "'Has been done' é a voz passiva no Present Perfect, indicando continuidade."
+      },
+      {
+        id: "l2-e5b",
+        type: "listening" as const,
+        portuguese: "Ouvição: Monte a frase que você ouviu:",
+        english: ["Maintenance", "has", "been", "done", "regularly."],
+        options: ["The", "work", "was", "completed", "weekly."],
+        explanation: "'Has been done' é o Present Perfect Passivo — ação que começou no passado e ainda é relevante."
       }
     ]
   },
@@ -185,6 +217,14 @@ const MASTER_UNITS_DATA: {
         portuguese: "O técnico cuja ferramenta quebrou avisou o chefe.",
         english: ["The", "technician", "whose", "tool", "broke", "notified", "the", "boss."],
         explanation: "'Whose' indica posse (cujo/cuja), item gramatical avançado da Cesgranrio."
+      },
+      {
+        id: "l3-e4b",
+        type: "listening" as const,
+        portuguese: "Ouvição: Monte a frase que você ouviu:",
+        english: ["The", "technician", "whose", "tool", "broke", "notified", "the", "boss."],
+        options: ["engineer", "which", "machine", "informed", "their"],
+        explanation: "'Whose' é pronome relativo de posse. Difere de 'which' (para coisas) e 'who' (para pessoas)."
       }
     ]
   },
@@ -230,6 +270,22 @@ const MASTER_UNITS_DATA: {
         portuguese: "Pode haver um vazamento no tanque.",
         english: ["There", "might", "be", "a", "leak", "in", "the", "tank."],
         explanation: "'Might' ou 'May' indicam possibilidade remota ou incerteza."
+      },
+      {
+        id: "l4-e4b",
+        type: "listening" as const,
+        portuguese: "Ouvição: Monte a frase que você ouviu:",
+        english: ["There", "might", "be", "a", "leak", "in", "the", "tank."],
+        options: ["must", "should", "fire", "on", "platform."],
+        explanation: "'Might be' expressa incerteza sobre algo que é possível, mas não confirmado."
+      },
+      {
+        id: "l4-e5",
+        type: "listening" as const,
+        portuguese: "Ouvição: Monte a frase que você ouviu:",
+        english: ["You", "must", "wear", "a", "helmet", "in", "the", "unit."],
+        options: ["should", "can", "safety", "mask", "on", "platform."],
+        explanation: "'Must' = obrigação. Treinar listening com frases de segurança é essencial para provas técnicas."
       }
     ]
   },
@@ -275,6 +331,22 @@ const MASTER_UNITS_DATA: {
         portuguese: "A tarefa foi concluída com sucesso.",
         english: ["The", "task", "was", "successfully", "completed."],
         explanation: "'Task' é sinônimo de 'Assignment' ou 'Duty' (tarefa/dever)."
+      },
+      {
+        id: "l5-e4b",
+        type: "listening" as const,
+        portuguese: "Ouvição: Monte a frase que você ouviu:",
+        english: ["The", "task", "was", "successfully", "completed."],
+        options: ["duty", "has", "been", "efficiently", "finished."],
+        explanation: "'Task' e 'duty' são sinônimos. Ambos surgem em textos de concurso."
+      },
+      {
+        id: "l5-e5",
+        type: "listening" as const,
+        portuguese: "Ouvição: Monte a frase que você ouviu:",
+        english: ["Production", "dropped", "sharply."],
+        options: ["supply", "fell", "decreased", "significantly."],
+        explanation: "'Dropped sharply' pode ser substituído por 'fell sharply' ou 'decreased significantly'."
       }
     ]
   },
@@ -320,6 +392,22 @@ const MASTER_UNITS_DATA: {
         portuguese: "Nós consultamos a biblioteca técnica.",
         english: ["We", "consulted", "the", "technical", "library."],
         explanation: "'Library' é biblioteca. 'Bookstore' é livraria. Cuidado com o falso cognato."
+      },
+      {
+        id: "l6-e4b",
+        type: "listening" as const,
+        portuguese: "Ouvição: Monte a frase que você ouviu:",
+        english: ["We", "consulted", "the", "technical", "library."],
+        options: ["They", "reviewed", "an", "engineering", "bookstore."],
+        explanation: "'Library' (biblioteca) vs 'bookstore' (livraria): falso cognato clássico da Cesgranrio."
+      },
+      {
+        id: "l6-e5",
+        type: "listening" as const,
+        portuguese: "Ouvição: Monte a frase que você ouviu:",
+        english: ["Currently,", "we", "use", "new", "technologies."],
+        options: ["Actually,", "they", "apply", "old", "methods."],
+        explanation: "'Currently' (atualmente) vs 'Actually' (na verdade): dois dos falsos cognatos mais cobrados."
       }
     ]
   },
@@ -386,6 +474,22 @@ const MASTER_UNITS_DATA: {
           "Reduzir a profundidade de exploração."
         ],
         explanation: "O texto afirma explicitamente: 'This technology minimizes risks to divers'."
+      },
+      {
+        id: "l7-e5",
+        type: "listening" as const,
+        portuguese: "Ouvição: Monte a frase técnica que você ouviu:",
+        english: ["Safety", "is", "the", "paramount", "priority", "in", "offshore", "operations."],
+        options: ["Security", "was", "a", "main", "concern", "during", "onshore", "work."],
+        explanation: "'Paramount priority' = máxima prioridade. Vocabulário de nível C1 presente em textos da Petrobras."
+      },
+      {
+        id: "l7-e6",
+        type: "listening" as const,
+        portuguese: "Ouvição: Monte a frase técnica que você ouviu:",
+        english: ["Daily", "drills", "are", "mandatory", "to", "ensure", "emergency", "protocols."],
+        options: ["Monthly", "tasks", "were", "optional", "for", "maintaining", "safety", "procedures."],
+        explanation: "'Mandatory' (obrigatório) é o oposto de 'optional' (opcional). Ambos aparecem em provas."
       }
     ]
   },
@@ -439,6 +543,22 @@ const MASTER_UNITS_DATA: {
           "A proibição do uso de carros a gasolina."
         ],
         explanation: "O texto afirma: 'This shift is driven by the need to reduce greenhouse gas emissions'."
+      },
+      {
+        id: "l8-e5",
+        type: "listening" as const,
+        portuguese: "Desafio Final — Ouvição: Monte a frase que você ouviu:",
+        english: ["Although", "the", "project", "was", "expensive,", "it", "was", "approved."],
+        options: ["However", "a", "budget", "is", "limited,", "they", "were", "rejected."],
+        explanation: "Frase de elite: mistura Conector (Although) + Voz Passiva (was approved) + Referência (it). Todos os conteúdos da trilha em uma frase!"
+      },
+      {
+        id: "l8-e6",
+        type: "listening" as const,
+        portuguese: "Desafio Final — Ouvição: Monte a frase que você ouviu:",
+        english: ["Investments", "in", "deep-water", "technology", "have", "been", "increasing."],
+        options: ["Costs", "for", "offshore", "platforms", "were", "been", "reduced."],
+        explanation: "'Have been increasing' = Present Perfect Continuous na voz ativa. Indica tendência em curso."
       }
     ]
   }

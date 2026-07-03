@@ -176,9 +176,15 @@ export default function PetroLingoExercise({
       } else if (currentExercise.type === "matching") {
         setMatchingPairs([...(currentExercise.pairs || [])].sort(() => Math.random() - 0.5));
       } else if (currentExercise.type === "listening") {
-        // Toca o áudio da palavra-alvo automaticamente ao abrir
-        const wordToSpeak = currentExercise.targetWord || currentExercise.english[0];
-        speakEnglishText(wordToSpeak, 0.85);
+        // Para listening: cria pool embaralhado das palavras em inglês
+        const allWords = currentExercise.options 
+          ? [...currentExercise.english, ...currentExercise.options]
+          : [...currentExercise.english];
+        const shuffled = [...allWords].sort(() => Math.random() - 0.5);
+        setPoolWords(shuffled);
+        setSelectedWords([]);
+        // Auto-play da sentença completa após um breve delay
+        setTimeout(() => speakEnglishText(currentExercise.english.join(" ")), 600);
       }
       
       setStatus("idle");
@@ -238,8 +244,8 @@ export default function PetroLingoExercise({
     if (currentExercise.type === "reading" || currentExercise.type === "cloze") {
       isCorrect = selectedOption === currentExercise.english[0];
     } else if (currentExercise.type === "listening") {
-      const expected = currentExercise.targetWord || currentExercise.english[0];
-      isCorrect = selectedOption === expected;
+      // Listening: compara palavras selecionadas com o array english
+      isCorrect = JSON.stringify(selectedWords) === JSON.stringify(currentExercise.english);
     } else if (currentExercise.mode !== "pt_to_en") {
       const targetPtWords = currentExercise.portugueseTarget || currentExercise.portuguese.replace(/[.,?!]/g, "").split(" ");
       const userText = selectedWords.join(" ").toLowerCase().trim();
@@ -643,48 +649,119 @@ export default function PetroLingoExercise({
                   </div>
                 </div>
               ) : currentExercise.type === "listening" ? (
-                <div className="space-y-8 animate-in zoom-in-95 duration-500">
-                  <div className="text-center space-y-2">
-                    <p className="text-center text-primary font-black uppercase tracking-widest text-sm">{labels.listening}</p>
-                    <p className="text-muted-foreground font-bold text-base">Toque no megafone para ouvir e selecione a palavra correta:</p>
-                  </div>
+                <div className="space-y-6 animate-in zoom-in-95 duration-500">
+                  {/* HEADER */}
+                  <p className="text-center text-sky-500 font-black uppercase tracking-widest text-sm">{labels.listening}</p>
 
-                  {/* Botão Central de Megafone Grande (Estilo Duolingo) */}
-                  <div className="flex justify-center my-6">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => speakEnglishText(currentExercise.targetWord || currentExercise.english[0], 0.85)}
-                      className="w-32 h-32 md:w-36 md:h-36 rounded-3xl bg-sky-500 hover:bg-sky-600 text-white flex items-center justify-center shadow-[0_10px_0_0_#0284c7] active:translate-y-2 active:shadow-none transition-all relative group"
+                  {/* PERSONAGEM + BALÃO COM BOTÃO DE ÁUDIO */}
+                  <div className="flex items-start gap-4">
+                    <motion.div
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      key={`char-listen-${character.id}-${currentIndex}`}
+                      className="relative flex flex-col items-center shrink-0"
                     >
-                      <LuVolume2 className="w-16 h-16 animate-pulse" />
-                      <span className="absolute -bottom-8 text-xs font-black uppercase tracking-wider text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                        Ouvir Novamente 🔊
+                      <div className={cn(
+                        "w-20 h-20 md:w-24 md:h-24 rounded-3xl border-2 flex items-center justify-center p-2 shadow-xl overflow-hidden backdrop-blur-md relative group",
+                        character.avatarBg
+                      )}>
+                        <img
+                          src={character.image}
+                          alt={character.name}
+                          className="w-full h-full object-contain filter drop-shadow-md transition-transform group-hover:scale-110"
+                        />
+                      </div>
+                      <span className="mt-2 text-[10px] font-black uppercase tracking-wider text-muted-foreground bg-muted px-2.5 py-0.5 rounded-full border border-border shadow-sm">
+                        {character.name}
                       </span>
-                    </motion.button>
+                    </motion.div>
+
+                    {/* BALÃO COM BOTÃO DE ÁUDIO */}
+                    <div className="relative flex-1 bg-card border-2 border-sky-500/40 p-5 rounded-[32px] rounded-tl-none shadow-2xl">
+                      <div className="absolute -left-3 top-6 w-0 h-0 border-t-[10px] border-t-transparent border-r-[12px] border-r-sky-500/40 border-b-[10px] border-b-transparent" />
+                      <div className="absolute -left-[9px] top-6 w-0 h-0 border-t-[9px] border-t-transparent border-r-[11px] border-r-card border-b-[9px] border-b-transparent z-10" />
+
+                      <div className="space-y-4">
+                        <p className="text-xs font-black text-sky-500 uppercase tracking-widest">Toque para ouvir a frase:</p>
+                        {/* Botões de áudio: Normal e Devagar */}
+                        <div className="flex items-center gap-3">
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.92 }}
+                            onClick={() => speakEnglishText(currentExercise.english.join(" "), 1.0)}
+                            className="flex items-center gap-3 px-5 py-4 rounded-2xl bg-sky-500 hover:bg-sky-600 text-white font-black shadow-[0_6px_0_0_#0284c7] active:translate-y-1 active:shadow-none transition-all"
+                          >
+                            <LuVolume2 className="w-7 h-7" />
+                            <div className="flex gap-[3px] items-center h-6">
+                              {[3,6,9,5,7,4,8,5,6].map((h, i) => (
+                                <motion.span
+                                  key={i}
+                                  animate={{ scaleY: [1, 1.5 + Math.random(), 0.7, 1] }}
+                                  transition={{ repeat: Infinity, duration: 0.6 + i * 0.08, ease: "easeInOut" }}
+                                  className="w-[3px] bg-white/70 rounded-full"
+                                  style={{ height: `${h * 2.5}px` }}
+                                />
+                              ))}
+                            </div>
+                          </motion.button>
+
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.92 }}
+                            onClick={() => speakEnglishText(currentExercise.english.join(" "), 0.65)}
+                            className="px-4 py-3 rounded-2xl border-2 border-sky-500/40 text-sky-500 font-black text-sm hover:bg-sky-500/10 transition-all"
+                          >
+                            DEVAGAR
+                          </motion.button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Grid de 4 Opções (2x2) */}
-                  <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
-                    {currentExercise.options?.map((option, idx) => (
-                      <motion.button
-                        key={idx}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => {
-                          if (status !== "idle") return;
-                          setSelectedOption(option);
-                          speakEnglishText(option);
-                        }}
-                        className={cn(
-                          "p-6 h-28 rounded-3xl border-2 font-black text-2xl transition-all flex items-center justify-center text-center shadow-[0_6px_0_0_rgba(0,0,0,0.1)] active:translate-y-1 active:shadow-none",
-                          selectedOption === option 
-                            ? "bg-sky-500 border-sky-600 text-white scale-105 shadow-sky-700/30" 
-                            : "bg-card border-border text-foreground hover:border-sky-400"
-                        )}
-                      >
-                        {option}
-                      </motion.button>
-                    ))}
+                  {/* ÁREA DE CONSTRUÇÃO DA FRASE */}
+                  <div className="min-h-[80px] p-4 bg-muted/20 rounded-[24px] border-2 border-dashed border-sky-500/40 flex flex-wrap gap-2 items-center content-center justify-center transition-all">
+                    <AnimatePresence mode="popLayout">
+                      {selectedWords.map((word, idx) => (
+                        <motion.button
+                          key={`sel-listen-${word}-${idx}`}
+                          layoutId={`listen-word-${word}-${idx}`}
+                          initial={{ scale: 0.8, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          exit={{ scale: 0.8, opacity: 0 }}
+                          onClick={() => handleWordRemove(word, idx)}
+                          className="px-4 py-2 bg-sky-500/10 border-2 border-sky-500/60 text-sky-600 dark:text-sky-400 rounded-xl font-bold text-lg shadow-[0_3px_0_0_rgba(14,165,233,0.2)] hover:translate-y-px active:translate-y-1 active:shadow-none transition-all"
+                        >
+                          {word}
+                        </motion.button>
+                      ))}
+                    </AnimatePresence>
+                    {selectedWords.length === 0 && (
+                      <p className="text-muted-foreground font-medium italic opacity-50 text-sm">Toque nas palavras para montar o que ouviu...</p>
+                    )}
+                  </div>
+
+                  {/* POOL DE PALAVRAS EM INGLÊS */}
+                  <div className="flex flex-wrap gap-3 justify-center">
+                    <AnimatePresence mode="popLayout">
+                      {poolWords.map((word, idx) => (
+                        <motion.button
+                          key={`pool-listen-${word}-${idx}`}
+                          layoutId={`listen-word-${word}-${idx}`}
+                          initial={{ scale: 0.9, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          exit={{ scale: 0.8, opacity: 0 }}
+                          onClick={() => {
+                            if (status !== "idle") return;
+                            speakEnglishText(word); // Pronuncia a palavra individual ao clicar
+                            handleWordSelect(word, idx);
+                          }}
+                          className="px-5 py-3 bg-card border-2 border-border rounded-2xl font-black text-lg text-foreground/90 shadow-[0_5px_0_0_rgba(0,0,0,0.15)] dark:shadow-[0_5px_0_0_rgba(255,255,255,0.1)] hover:bg-sky-500/5 hover:border-sky-400 active:translate-y-1 active:shadow-none transition-all"
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          {word}
+                        </motion.button>
+                      ))}
+                    </AnimatePresence>
                   </div>
                 </div>
               ) : (
