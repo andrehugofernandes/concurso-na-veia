@@ -453,41 +453,43 @@ export default function PetroLingoExercise({
                   </div>
 
                   {/* Pergunta de Interpretação com Mascote Reativo */}
-                  <div className="flex items-start gap-6">
-                    <motion.div 
-                      animate={status === "correct" ? { scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] } : status === "incorrect" ? { x: [-5, 5, -5, 5, 0] } : {}}
-                      className="w-20 h-20 rounded-3xl bg-primary/10 flex items-center justify-center text-4xl shadow-lg shrink-0"
-                    >
-                      {status === "correct" ? "🎯" : status === "incorrect" ? "🤕" : "🧐"}
-                    </motion.div>
-                    
-                    <div className="flex-1 space-y-4">
-                      <p className="text-xl font-black text-foreground leading-tight">{currentExercise.portuguese}</p>
-                      <div className="grid grid-cols-1 gap-3">
+                  <div className="space-y-5">
+                    {/* Linha com ícone e pergunta */}
+                    <div className="flex items-center gap-3">
+                      <motion.div 
+                        animate={status === "correct" ? { scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] } : status === "incorrect" ? { x: [-5, 5, -5, 5, 0] } : {}}
+                        className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl shadow-md shrink-0"
+                      >
+                        {status === "correct" ? "🎯" : status === "incorrect" ? "🤕" : "🧐"}
+                      </motion.div>
+                      <p className="text-lg md:text-xl font-black text-foreground leading-tight">{currentExercise.portuguese}</p>
+                    </div>
+
+                    {/* Opções em coluna única - largura total */}
+                    <div className="flex flex-col gap-3 w-full">
                         {currentExercise.options?.map((option, idx) => (
                           <motion.button
                             key={idx}
                             onClick={() => status === "idle" && setSelectedOption(option)}
                             className={cn(
-                              "w-full text-left p-5 rounded-3xl border-2 transition-all font-bold text-lg relative overflow-hidden group/opt",
+                              "w-full text-left p-4 md:p-5 rounded-3xl border-2 transition-all font-bold text-base md:text-lg relative overflow-hidden group/opt",
                               selectedOption === option 
-                                ? "bg-primary/10 border-primary text-primary shadow-lg scale-[1.02]" 
+                                ? "bg-primary/10 border-primary text-primary shadow-lg scale-[1.01]" 
                                 : "bg-card border-border text-foreground hover:border-primary/50 shadow-[0_4px_0_0_rgba(0,0,0,0.05)] active:translate-y-1 active:shadow-none"
                             )}
                             whileTap={{ scale: 0.98 }}
                           >
                             <div className="flex items-center gap-4">
                               <div className={cn(
-                                "w-10 h-10 rounded-2xl border-2 flex items-center justify-center shrink-0 font-black transition-colors",
+                                "w-9 h-9 rounded-xl border-2 flex items-center justify-center shrink-0 font-black transition-colors text-sm",
                                 selectedOption === option ? "bg-primary border-primary text-white" : "border-border text-muted-foreground group-hover/opt:border-primary/40"
                               )}>
                                 {String.fromCharCode(65 + idx)}
                               </div>
-                              <span className="flex-1">{option}</span>
+                              <span className="flex-1 leading-snug">{option}</span>
                             </div>
                           </motion.button>
                         ))}
-                      </div>
                     </div>
                   </div>
                 </div>
