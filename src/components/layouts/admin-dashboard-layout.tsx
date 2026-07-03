@@ -25,10 +25,12 @@ export function AdminDashboardLayout({ children }: AdminDashboardLayoutProps) {
   const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname();
 
-  // Detectar se está dentro de uma aula (rota /aulas/[materia]/[topico])
+  // Detectar se está dentro de uma aula ou do PetroLingo
   const isInsideLesson = (() => {
     const segments = (pathname || "").split("/").filter(Boolean);
-    return segments[0] === "aulas" && segments.length >= 3;
+    const isPetroLingo = segments[0] === "PetroLingo";
+    const isLesson = segments[0] === "aulas" && segments.length >= 3;
+    return isPetroLingo || isLesson;
   })();
 
   // Detectar se é mobile e carregar estado do sidebar
@@ -131,9 +133,11 @@ function DashboardShell({
 }) {
   const { isStickyNavPinned } = useHeaderState();
 
-  // Sidebar esconde completamente apenas dentro de aulas com nav sticky no mobile
+  // Sidebar colapsa automaticamente ao entrar no PetroLingo ou numa aula
+  // Mobile: some completamente. Desktop: colapsa para ícone.
   const shouldHideSidebar =
-    isMobile && isInsideLesson && isStickyNavPinned && !isMobileSidebarOpen;
+    (isMobile && isInsideLesson && !isMobileSidebarOpen) ||
+    (!isMobile && isInsideLesson && isStickyNavPinned && !isSidebarCollapsed);
 
   return (
     <div
@@ -141,20 +145,20 @@ function DashboardShell({
       suppressHydrationWarning
       style={
         {
-          "--sidebar-width": shouldHideSidebar
-            ? "0px"
-            : isSidebarCollapsed
-              ? isMobile
-                ? "56px"
-                : "80px"
-              : "256px",
+          "--sidebar-width": isMobile
+            ? shouldHideSidebar ? "0px" : "56px"
+            : isInsideLesson && !isMobileSidebarOpen
+              ? isSidebarCollapsed ? "80px" : "80px"
+              : isSidebarCollapsed
+                ? "80px"
+                : "256px",
         } as React.CSSProperties
       }
     >
-      {/* Sidebar - always visible collapsed on mobile, overlay when open */}
+      {/* Sidebar - no PetroLingo/aulas, colapsa automaticamente no desktop */}
       <AdminSidebar
-        isCollapsed={isMobile ? !isMobileSidebarOpen : isSidebarCollapsed}
-        isHidden={shouldHideSidebar}
+        isCollapsed={isMobile ? !isMobileSidebarOpen : (isInsideLesson ? true : isSidebarCollapsed)}
+        isHidden={isMobile && isInsideLesson && !isMobileSidebarOpen}
         isOverlayOpen={isMobileSidebarOpen && isMobile}
         onNavigate={closeMobileSidebar}
       />
@@ -168,14 +172,16 @@ function DashboardShell({
         />
       )}
 
-      {/* Main Content - margin fixa no mobile (colapsada), ajusta no desktop */}
+      {/* Main Content - sem margem no PetroLingo/aulas mobile; colapsa no desktop */}
       <div
         className={cn(
           "transition-all duration-300",
-          shouldHideSidebar
-            ? "ml-0"
-            : isMobile
-              ? "ml-14" // Mobile: sempre margem fixa da sidebar colapsada (w-14)
+          isMobile
+            ? isInsideLesson
+              ? "ml-0" // Mobile + PetroLingo/aulas: sidebar some, full width
+              : "ml-14" // Mobile normal: margem da sidebar colapsada
+            : isInsideLesson
+              ? "md:ml-20" // Desktop + PetroLingo/aulas: sidebar colapsa para ícone
               : isSidebarCollapsed
                 ? "md:ml-20"
                 : "ml-64",
