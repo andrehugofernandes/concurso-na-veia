@@ -898,67 +898,68 @@ export default function PetroLingoExercise({
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             className={cn(
-              "fixed bottom-0 left-0 right-0 p-6 md:p-8 border-t-4 z-50 backdrop-blur-xl transition-all",
+              "fixed bottom-0 left-0 right-0 p-4 md:p-8 border-t-2 z-50 transition-all",
               status === "correct" 
-                ? "bg-emerald-500/95 border-emerald-400 text-white" 
-                : "bg-rose-500/95 border-rose-400 text-white shadow-[0_-20px_50px_rgba(244,63,94,0.3)]"
+                ? "bg-[#d7ffb8] dark:bg-emerald-950 border-[#bfe2a1] dark:border-emerald-900" 
+                : "bg-[#ffdfe0] dark:bg-rose-950 border-[#eabcc1] dark:border-rose-900"
             )}
           >
-            <div className="max-w-3xl mx-auto flex flex-col gap-6">
-              <div className="flex items-center justify-between gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white flex items-center justify-center text-3xl shadow-2xl shrink-0">
-                    {status === "correct" ? "✅" : "⚠️"}
+            <div className="max-w-4xl mx-auto flex flex-col gap-4 md:gap-6">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                
+                {/* Header do Feedback */}
+                <div className="flex items-start gap-4">
+                  <div className={cn(
+                    "w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center text-xl md:text-3xl shrink-0 mt-1 md:mt-0",
+                    status === "correct" ? "bg-white text-[#58a700] dark:bg-emerald-900 dark:text-emerald-400" : "bg-white text-[#ea2b2b] dark:bg-rose-900 dark:text-rose-400"
+                  )}>
+                    {status === "correct" ? <LuCheck className="w-6 h-6 md:w-8 md:h-8" strokeWidth={4} /> : <LuX className="w-6 h-6 md:w-8 md:h-8" strokeWidth={4} />}
                   </div>
                   <div>
-                    <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter">
+                    <h3 className={cn(
+                      "text-2xl md:text-3xl font-black mb-1 md:mb-2",
+                      status === "correct" ? "text-[#58a700] dark:text-emerald-400" : "text-[#ea2b2b] dark:text-rose-400"
+                    )}>
                       {status === "correct" ? labels.correct : labels.incorrect}
                     </h3>
-                    <p className="text-sm md:text-base font-bold opacity-90">
-                      <span className="font-extrabold uppercase">Significado:</span> "{currentExercise.portuguese}"
-                    </p>
+                    <div className={cn(
+                      "text-sm md:text-base font-bold",
+                      status === "correct" ? "text-[#58a700]/90 dark:text-emerald-500" : "text-[#ea2b2b]/90 dark:text-rose-500"
+                    )}>
+                      <span className="font-extrabold block md:inline mb-1 md:mb-0 md:mr-2">Significado:</span> 
+                      <span className="font-medium text-base md:text-lg">"{currentExercise.portuguese}"</span>
+                    </div>
                   </div>
                 </div>
 
-                <Button
-                  onClick={status === "correct" ? handleNext : () => setStatus("idle")}
-                  size="lg"
-                  className={cn(
-                    "hidden md:flex rounded-3xl px-10 py-7 h-auto font-black text-xl shadow-2xl transition-all items-center gap-3 shrink-0",
-                    status === "correct" 
-                      ? "bg-white !text-emerald-700 hover:scale-105 active:scale-95" 
-                      : "bg-white !text-rose-700 hover:scale-105 active:scale-95"
-                  )}
-                >
-                  {status === "correct" ? labels.continue : labels.tryAgain}
-                  {status === "correct" ? <LuArrowRight className="w-6 h-6" /> : <LuRotateCcw className="w-6 h-6" />}
-                </Button>
-              </div>
+                {/* Botões (Desktop usa layout em linha, Mobile usa layout em coluna) */}
+                <div className="flex flex-col md:flex-row w-full md:w-auto gap-3 md:gap-4 mt-2 md:mt-0">
+                  <Button
+                    onClick={() => setShowExplainModal(true)}
+                    variant="outline"
+                    className={cn(
+                      "w-full md:w-auto rounded-2xl py-6 px-6 font-black text-[15px] uppercase tracking-widest shadow-[0_4px_0_0_rgba(0,0,0,0.1)] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center",
+                      status === "correct"
+                        ? "bg-transparent border-2 border-[#58cc02] text-[#58cc02] hover:bg-[#58cc02]/10 dark:border-emerald-500 dark:text-emerald-500"
+                        : "bg-transparent border-2 border-[#ff4b4b] text-[#ff4b4b] hover:bg-[#ff4b4b]/10 dark:border-rose-500 dark:text-rose-500"
+                    )}
+                  >
+                    EXPLIQUE MINHA RESPOSTA
+                  </Button>
 
-              {/* Botão Secundário: EXPLIQUE MINHA RESPOSTA (Estilo Duolingo Max AI) */}
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-2 border-t border-white/20">
-                <Button
-                  onClick={() => setShowExplainModal(true)}
-                  variant="outline"
-                  className="w-full md:w-auto rounded-2xl py-6 px-8 bg-white/10 hover:bg-white/20 border-2 border-white/40 text-white font-black text-lg flex items-center justify-center gap-3 backdrop-blur-md shadow-lg transition-all"
-                >
-                  <LuSparkles className="w-6 h-6 text-amber-300 animate-pulse" />
-                  <span>EXPLIQUE MINHA RESPOSTA</span>
-                </Button>
-
-                <Button
-                  onClick={status === "correct" ? handleNext : () => setStatus("idle")}
-                  size="lg"
-                  className={cn(
-                    "w-full md:hidden rounded-2xl py-6 h-auto font-black text-xl shadow-2xl transition-all flex items-center justify-center gap-3",
-                    status === "correct" 
-                      ? "bg-white !text-emerald-700 hover:scale-105 active:scale-95" 
-                      : "bg-white !text-rose-700 hover:scale-105 active:scale-95"
-                  )}
-                >
-                  {status === "correct" ? labels.continue : labels.tryAgain}
-                  {status === "correct" ? <LuArrowRight className="w-6 h-6" /> : <LuRotateCcw className="w-6 h-6" />}
-                </Button>
+                  <Button
+                    onClick={status === "correct" ? handleNext : () => setStatus("idle")}
+                    size="lg"
+                    className={cn(
+                      "w-full md:w-auto rounded-2xl py-6 px-10 h-auto font-black text-[15px] uppercase tracking-widest shadow-[0_4px_0_0_rgba(0,0,0,0.2)] active:translate-y-1 active:shadow-none transition-all",
+                      status === "correct" 
+                        ? "bg-[#58cc02] hover:bg-[#46a302] text-white shadow-[0_4px_0_0_#46a302]" 
+                        : "bg-[#ff4b4b] hover:bg-[#ea2b2b] text-white shadow-[0_4px_0_0_#ea2b2b]"
+                    )}
+                  >
+                    {status === "correct" ? labels.continue : labels.tryAgain}
+                  </Button>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -1090,7 +1091,7 @@ export default function PetroLingoExercise({
 
       {/* BOTÃO DE CHECK (BOTTOM BAR FIXA) */}
       {status === "idle" && !isFinished && (
-        <div className="p-4 md:p-6 bg-white dark:bg-zinc-900 md:dark:bg-transparent border-t border-border md:border-0 flex justify-center md:justify-end items-center fixed bottom-0 left-0 right-0 z-40 md:relative md:p-0 md:mt-12 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] dark:shadow-none md:shadow-none transition-all duration-300">
+        <div className="p-4 bg-white dark:bg-zinc-900 md:dark:bg-transparent border-t border-border md:border-0 flex justify-center md:justify-end items-center fixed bottom-0 left-0 right-0 z-40 md:relative md:p-0 md:mt-12 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] dark:shadow-none md:shadow-none transition-all duration-300">
         <div className="flex flex-row items-center justify-between gap-3 md:gap-4 max-w-4xl mx-auto w-full">
           <Button 
             variant="ghost" 
