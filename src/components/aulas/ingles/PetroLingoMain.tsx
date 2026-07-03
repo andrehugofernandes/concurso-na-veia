@@ -80,7 +80,7 @@ const MASTER_UNITS_DATA: {
       },
       {
         id: "l1-e4",
-        portuguese: "Embora o sistema falhasse, o backup funcionou.",
+        portuguese: "Embora o sistema falhou, o backup funcionou.",
         english: ["Although", "the", "system", "failed,", "the", "backup", "worked."],
         explanation: "'Although' (Embora) introduz uma contradição, questão recorrente na Cesgranrio."
       },

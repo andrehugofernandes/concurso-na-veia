@@ -157,7 +157,8 @@ export default function PetroLingoExercise({
           const targetPtWords = rawTargetPtWords.map(w => w.toLowerCase().trim()).filter(Boolean);
           const rawDistractors = currentExercise.options || ["de", "uma", "mais", "pouco", "mesa", "pequenas"];
           const distractors = rawDistractors.map(w => w.toLowerCase().trim()).filter(Boolean);
-          const allWords = Array.from(new Set([...targetPtWords, ...distractors]));
+          const uniqueDistractors = distractors.filter(d => !targetPtWords.includes(d));
+          const allWords = [...targetPtWords, ...uniqueDistractors];
           const shuffled = [...allWords].sort(() => Math.random() - 0.5);
           setPoolWords(shuffled);
           setSelectedWords([]);
