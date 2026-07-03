@@ -91,6 +91,11 @@ export function ThemeProvider({
       root.style.setProperty("--primary-hover-hex", primaryHoverColor || primaryColor);
       root.style.setProperty("--primary-rgb", primaryRgbValues);
 
+      const grad = `linear-gradient(135deg, ${primaryColor} 0%, ${primaryHoverColor || primaryColor} 100%)`;
+      const gradHover = `linear-gradient(135deg, ${primaryHoverColor || primaryColor} 0%, ${primaryColor} 100%)`;
+      root.style.setProperty("--primary-gradient", grad);
+      root.style.setProperty("--primary-gradient-hover", gradHover);
+
       // Calcular contraste para o texto sobre a cor primária
       const isLight = isLightColor(primaryColor);
       const foregroundHsl = isLight ? "222.2 84.7% 4.9%" : "210 40% 98%";

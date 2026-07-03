@@ -5,11 +5,6 @@ export interface ThemeColors {
 }
 
 export const availableThemes: Record<string, ThemeColors> = {
-  purple: {
-    primary: '#7C3AED',
-    primaryHover: '#6D28D9',
-    name: 'Roxo'
-  },
   orange: {
     primary: '#FF8500',
     primaryHover: '#E67600',
