@@ -155,17 +155,18 @@ export default function VitrinePetrobrasPage() {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.96)_0%,rgba(255,255,255,0.88)_50%,rgba(255,255,255,0.25)_100%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(15,23,42,0.96)_0%,rgba(15,23,42,0.88)_50%,rgba(15,23,42,0.25)_100%)]" />
           </div>
 
-          {/* Destaque com Logomarca Petrobras e Badge RNEST */}
-          <div className="absolute top-6 right-6 z-20 hidden md:flex items-center gap-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-md">
-            <img src="/assets/images/logos/petrobras-hz.png" alt="Petrobras" className="h-6 object-contain" />
-            <span className="text-[10px] font-black tracking-widest text-primary uppercase border-l border-slate-300 dark:border-slate-700 pl-2">
-              RNEST
-            </span>
-          </div>
-
           {/* Conteúdo Centralizado no Meio */}
           <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center text-center">
             
+            {/* Logomarca Centralizada e Destacada */}
+            <div className="mb-8 mt-2">
+              <img 
+                src="/assets/images/logos/petrobras-hz.png" 
+                alt="Petrobras" 
+                className="h-10 md:h-14 object-contain filter drop-shadow-sm" 
+              />
+            </div>
+
             {/* Pílulas de Ação e Pré-Edital com suporte a Skin */}
             <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
               <Link 
@@ -453,6 +454,14 @@ export default function VitrinePetrobrasPage() {
                             <span className="text-[11px] bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-800 font-medium">
                               {CONHECIMENTOS_BASICOS.matematica.nome}
                             </span>
+                            {p.nivel === "superior" && (
+                              <span className="text-[11px] bg-sky-50 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 px-2 py-0.5 rounded-md border border-sky-200 dark:border-sky-800 font-bold flex items-center gap-1">
+                                <span className="w-3.5 h-3.5 rounded-full bg-white flex items-center justify-center shadow-sm">
+                                  <img src="/images/petrolingo/petrolingo.png" alt="PetroLingo" className="w-2.5 h-2.5 object-contain" />
+                                </span>
+                                Inglês
+                              </span>
+                            )}
                           </div>
                         </div>
 
