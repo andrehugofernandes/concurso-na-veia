@@ -22,12 +22,21 @@ const ALL_LINKS = [
   { href: "#pricing", label: "Planos" },
 ];
 
-export default function StickyHeader() {
-  const [isVisible, setIsVisible] = useState(false);
+interface StickyHeaderProps {
+  alwaysVisible?: boolean;
+}
+
+export default function StickyHeader({ alwaysVisible = false }: StickyHeaderProps) {
+  const [isVisible, setIsVisible] = useState(alwaysVisible);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
 
   useEffect(() => {
+    if (alwaysVisible) {
+      setIsVisible(true);
+      return;
+    }
+
     const heroHeight = window.innerHeight * 0.75;
 
     const handleScroll = () => {
@@ -38,7 +47,7 @@ export default function StickyHeader() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [alwaysVisible]);
 
   return (
     <AnimatePresence>

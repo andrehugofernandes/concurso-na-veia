@@ -45,7 +45,7 @@ export default function HomeHeader() {
         <AuthThemeToggle isScrolled={false} />
         <Link 
           href="/login" 
-          className="px-5 py-2 rounded-full border border-white/20 text-white hover:text-white font-bold hover:bg-white/10 transition-colors text-sm"
+          className="px-5 py-2 rounded-full border border-slate-300 dark:border-white/20 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 font-bold transition-colors text-sm"
         >
           Entrar
         </Link>

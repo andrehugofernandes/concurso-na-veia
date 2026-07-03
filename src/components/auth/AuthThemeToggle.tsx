@@ -67,7 +67,7 @@ export function AuthThemeToggle({ isScrolled = false }: { isScrolled?: boolean }
                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-3 px-1">
                   Sistemas de Skin
                 </p>
-                <div className="grid grid-cols-4 gap-3">
+                <div className="grid grid-cols-3 gap-3">
                   {Object.entries(availableThemes).map(([key, theme]) => (
                     <button
                       key={key}
