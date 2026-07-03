@@ -23,6 +23,8 @@ import { LuClock, LuCheck } from "react-icons/lu";
 
 // Dynamic import para evitar hydration mismatch dos componentes Radix UI (Dialog, Accordion, Tabs)
 import DynamicEspecificaLoader from "@/components/aulas/shared/DynamicEspecificaLoader";
+import { createClient } from "@/lib/supabase/client";
+import ScoreLessonRenderer from "@/components/aulas/shared/ScoreLessonRenderer";
 
 const AulaInterpretacaoTexto = dynamic(
   () => import("@/components/aulas/portugues/AulaInterpretacaoTexto"),
@@ -902,6 +904,7 @@ export default function TopicoPage({ params }: PageProps) {
   const [prevTopico, setPrevTopico] = useState<Topico | undefined>(undefined);
   const [isResolving, setIsResolving] = useState(true);
   const [isUnauthorized, setIsUnauthorized] = useState(false);
+  const [dynamicLessonContent, setDynamicLessonContent] = useState<any | null>(null);
 
   useEffect(() => {
     const resolveContent = async () => {
@@ -929,7 +932,8 @@ export default function TopicoPage({ params }: PageProps) {
           if (userRes.status === "success" && userRes.data) {
             const user = userRes.data;
             cargoId = user.cargo;
-            isEliteTotal = user.nivel === "elite-total" || user.plan === "elite-total";
+            const isAdmin = user.role?.toUpperCase() === 'ADMIN' || user.role?.toUpperCase() === 'SYSADMIN';
+            isEliteTotal = user.nivel === "elite-total" || user.plan === "elite-total" || isAdmin;
             userConcursoSlug = getProfissaoById(cargoId)?.concurso || user.user_metadata?.concurso || "petrobras";
           }
         } else {
@@ -963,8 +967,59 @@ export default function TopicoPage({ params }: PageProps) {
           }
         }
 
-        // AUTH GUARD: Verificar se o usuário tem acesso a esta matéria
-        if (resolvedMateria && !isEliteTotal) {
+        // Se nao resolveu estaticamente, tentar buscar do banco (Aulas Dinamicas do White-Label)
+        if (!resolvedTopico) {
+          const supabase = createClient();
+          const { data: dbLesson } = await supabase
+            .from('lessons')
+            .select(`
+              id,
+              titulo,
+              duracao,
+              ordem,
+              conteudo_json,
+              concurso_id,
+              concursos (
+                nome,
+                slug,
+                primary_color,
+                secondary_color
+              )
+            `)
+            .eq('materia_id', materiaId)
+            .eq('topico_id', topicoId)
+            .maybeSingle();
+
+          if (dbLesson) {
+            resolvedTopico = {
+              id: topicoId,
+              titulo: dbLesson.titulo,
+              descricao: (dbLesson.conteudo_json as any)?.descricao || 'Aula baseada no Edital do Concurso',
+              duracao: dbLesson.duracao || '15 min',
+              ordem: dbLesson.ordem || 1,
+            };
+
+            if (!resolvedMateria) {
+              const contestName = (dbLesson.concursos as any)?.nome || 'Concurso';
+              const primaryCol = (dbLesson.concursos as any)?.primary_color || 'indigo';
+              const secondaryCol = (dbLesson.concursos as any)?.secondary_color || 'emerald';
+              resolvedMateria = {
+                id: materiaId,
+                nome: contestName,
+                descricao: `Curso Preparatório - ${contestName}`,
+                icone: '📚',
+                cor: `from-${primaryCol}-500 to-${secondaryCol}-500`,
+                requiredPlan: 'Bronze',
+                topicos: [resolvedTopico]
+              };
+            }
+
+            setDynamicLessonContent(dbLesson.conteudo_json as any);
+          }
+        }
+
+        // AUTH GUARD: Verificar se o usuário tem acesso a esta matéria (ignorado para aulas dinâmicas)
+        if (resolvedMateria && !isEliteTotal && !dynamicLessonContent) {
           const myPrograma = getProgramaDeEstudos(cargoId, false);
           const hasAccess = myPrograma.some(m => m.id === resolvedMateria!.id);
           if (!hasAccess) {
@@ -1064,7 +1119,25 @@ export default function TopicoPage({ params }: PageProps) {
         <main className="w-full">
           {/* Article Content */}
           <article className="w-full">
-            {materiaId === "portugues" && topicoId === "interpretacao-texto" ? (
+            {dynamicLessonContent ? (
+              <ScoreLessonRenderer
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+                conteudoJson={dynamicLessonContent}
+              />
+            ) : materiaId === "portugues" && topicoId === "interpretacao-texto" ? (
               <AulaInterpretacaoTexto
                 onComplete={handleCompleteAula}
                 isCompleted={isCompleted}

@@ -469,7 +469,6 @@ export default function PetroLingoMain() {
   const handleFinishExercise = async (score: number) => {
     // Atualiza o progresso no banco via RPC
     if (selectedUnitId) {
-      // XP proporcional à unidade ou fixo
       await completeUnit(selectedUnitId, 25);
     }
     setView("path");
@@ -490,39 +489,18 @@ export default function PetroLingoMain() {
     );
   }
 
-  return (
-    <div className="w-full min-h-screen bg-background text-foreground transition-colors duration-300 pb-20 md:pb-10">
+  const content = (
+    <div className="w-full text-foreground transition-colors duration-300">
       {view === "path" ? (
         <div className="space-y-6">
-          <div className="max-w-4xl mx-auto px-6 pt-10">
-            <div className="p-6 rounded-3xl bg-gradient-to-r from-blue-600/10 to-purple-600/10 border border-blue-500/20 backdrop-blur-sm">
-              <div className="flex items-center gap-4 mb-2">
-                <div className="p-2 bg-blue-500 rounded-lg text-white">
-                  <LuFileText size={20} />
-                </div>
-                <h2 className="text-xl font-black uppercase tracking-tight">Trilha de Inglês Instrumental</h2>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed font-medium mb-4">
-                Esta trilha foi desenhada seguindo o padrão **Cesgranrio** das suas aulas de Inglês.
-                Módulos de gramática aplicada, conectores e estratégias de leitura para garantir sua nota mínima (ou máxima!) no edital.
-              </p>
-              <div className="flex justify-end mt-2">
-                <button 
-                  onClick={async () => {
-                    if (confirm("Tem certeza que deseja zerar toda a trilha e recomeçar? (O XP ganho será mantido)")) {
-                      await resetProgress();
-                    }
-                  }}
-                  className="px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-500 border border-rose-500/20 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5"
-                >
-                  Recomeçar Trilha
-                </button>
-              </div>
-            </div>
-          </div>
           <PetroLingoPath 
             units={units} 
             onSelectUnit={handleSelectUnit} 
+            onResetProgress={async () => {
+              if (confirm("Tem certeza que deseja zerar o progresso do PetroLingo e recomeçar a trilha do zero?")) {
+                await resetProgress();
+              }
+            }}
           />
         </div>
       ) : (
@@ -541,6 +519,14 @@ export default function PetroLingoMain() {
           />
         )
       )}
+    </div>
+  );
+
+  return (
+    <div className="w-full min-h-[100dvh] bg-background">
+      <div className="max-w-4xl mx-auto w-full">
+        {content}
+      </div>
     </div>
   );
 }

@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -10,15 +8,56 @@ import {
   LuArrowRight,
   LuLightbulb,
   LuTrophy,
-  LuFileText
+  LuFileText,
+  LuVolume2,
+  LuZap,
+  LuArrowLeft,
+  LuThumbsUp,
+  LuThumbsDown,
+  LuSparkles,
+  LuTimer,
+  LuTarget
 } from "react-icons/lu";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { triggerSuccessConfetti } from "@/lib/confetti";
+import { speakEnglishText, playMatchSuccessSound, playErrorSound, playVictoryFanfareSound } from "@/lib/petrolingoAudio";
+
+export const PETROLINGO_CHARACTERS = [
+  {
+    id: "engineer",
+    name: "Eng. Pedro",
+    role: "Engenheiro de Petróleo",
+    image: "/images/petrolingo/engineer.png",
+    avatarBg: "bg-amber-500/10 border-amber-500/30"
+  },
+  {
+    id: "geologist",
+    name: "Dra. Helena",
+    role: "Geóloga de Reservatórios",
+    image: "/images/petrolingo/geologist.png",
+    avatarBg: "bg-emerald-500/10 border-emerald-500/30"
+  },
+  {
+    id: "diver",
+    name: "Mergulhador Lucas",
+    role: "Operações Subsea",
+    image: "/images/petrolingo/diver.png",
+    avatarBg: "bg-sky-500/10 border-sky-500/30"
+  },
+  {
+    id: "operator",
+    name: "Técnico Bruno",
+    role: "Operador de Refinaria",
+    image: "/images/petrolingo/operator.png",
+    avatarBg: "bg-indigo-500/10 border-indigo-500/30"
+  }
+];
 
 export interface SentenceData {
   id: string;
-  type?: "translation" | "reading" | "cloze" | "matching";
+  type?: "translation" | "reading" | "cloze" | "matching" | "listening";
+  mode?: "en_to_pt" | "pt_to_en";
   text?: string;
   portuguese: string;
   english: string[]; 
@@ -29,6 +68,9 @@ export interface SentenceData {
   clozePrefix?: string;
   clozeSuffix?: string;
   pairs?: { en: string; pt: string }[];
+  targetWord?: string;
+  portugueseWords?: string[];
+  portugueseTarget?: string[];
 }
 
 interface PetroLingoExerciseProps {
@@ -56,7 +98,27 @@ export default function PetroLingoExercise({
   const [selectedEn, setSelectedEn] = useState<string | null>(null);
   const [completedPairs, setCompletedPairs] = useState<string[]>([]);
 
+  // Estados para Resposta Rápida / Combo com Raio ⚡ e Tremor de Tela
+  const [startTime, setStartTime] = useState<number>(Date.now());
+  const [lessonStartTime] = useState<number>(Date.now());
+  const [comboCount, setComboCount] = useState<number>(0);
+  const [showLightning, setShowLightning] = useState<boolean>(false);
+  const [isScreenShaking, setIsScreenShaking] = useState<boolean>(false);
+
+  // Estado do Modal "Explique Minha Resposta" (Duolingo Max AI)
+  const [showExplainModal, setShowExplainModal] = useState<boolean>(false);
+  const [feedbackRating, setFeedbackRating] = useState<"like" | "dislike" | null>(null);
+
+  // Efeito Sonoro Triumfant quando finaliza
+  useEffect(() => {
+    if (isFinished) {
+      playVictoryFanfareSound();
+      triggerSuccessConfetti();
+    }
+  }, [isFinished]);
+
   const currentExercise = exercises[currentIndex];
+  const character = PETROLINGO_CHARACTERS[currentIndex % PETROLINGO_CHARACTERS.length];
 
   // Labels em Português conforme solicitado
   const labels = {
@@ -65,6 +127,7 @@ export default function PetroLingoExercise({
     reading: "Leitura e Interpretação de Texto:",
     cloze: "Complete a frase com a opção correta:",
     matching: "Combine os pares (Inglês ➔ Português):",
+    listening: "O que você escuta?",
     check: "Verificar",
     continue: "Continuar",
     skip: "Pular",
@@ -79,19 +142,40 @@ export default function PetroLingoExercise({
     finishedDesc: "Você completou esta lição com sucesso!"
   };
 
-  // Inicializa o pool de palavras ou estado de leitura/cloze/matching
+  // Inicializa o pool de palavras ou estado de leitura/cloze/matching/listening
   useEffect(() => {
     if (currentExercise) {
       setSelectedOption(null);
       setSelectedEn(null);
       setCompletedPairs([]);
+      setStartTime(Date.now());
       
-      if (currentExercise.type === "translation") {
-        const shuffled = [...currentExercise.english].sort(() => Math.random() - 0.5);
-        setPoolWords(shuffled);
-        setSelectedWords([]);
+      if (!currentExercise.type || currentExercise.type === "translation") {
+        if (currentExercise.mode === "en_to_pt") {
+          // Banco de palavras em Português
+          const targetPtWords = currentExercise.portugueseTarget || currentExercise.portuguese.replace(/[.,?!]/g, "").split(" ");
+          const distractors = currentExercise.options || ["de", "uma", "mais", "pouco", "mesa", "pequenas"];
+          const allWords = Array.from(new Set([...targetPtWords, ...distractors]));
+          const shuffled = [...allWords].sort(() => Math.random() - 0.5);
+          setPoolWords(shuffled);
+          setSelectedWords([]);
+          // Auto-play do áudio em inglês do balão
+          speakEnglishText(currentExercise.english.join(" "));
+        } else {
+          // Banco de palavras em Inglês
+          const allWords = currentExercise.options 
+            ? [...currentExercise.english, ...currentExercise.options]
+            : [...currentExercise.english];
+          const shuffled = [...allWords].sort(() => Math.random() - 0.5);
+          setPoolWords(shuffled);
+          setSelectedWords([]);
+        }
       } else if (currentExercise.type === "matching") {
         setMatchingPairs([...(currentExercise.pairs || [])].sort(() => Math.random() - 0.5));
+      } else if (currentExercise.type === "listening") {
+        // Toca o áudio da palavra-alvo automaticamente ao abrir
+        const wordToSpeak = currentExercise.targetWord || currentExercise.english[0];
+        speakEnglishText(wordToSpeak, 0.85);
       }
       
       setStatus("idle");
@@ -101,6 +185,9 @@ export default function PetroLingoExercise({
 
   const handleWordSelect = (word: string, index: number) => {
     if (status !== "idle") return;
+    if (currentExercise.mode !== "en_to_pt") {
+      speakEnglishText(word);
+    }
     const newPool = [...poolWords];
     newPool.splice(index, 1);
     setPoolWords(newPool);
@@ -120,11 +207,14 @@ export default function PetroLingoExercise({
     
     if (type === "en") {
       setSelectedEn(word);
+      speakEnglishText(word);
     } else if (selectedEn) {
       // Verifica se o par está correto
       const pair = currentExercise.pairs?.find(p => p.en === selectedEn && p.pt === word);
       if (pair) {
         setCompletedPairs([...completedPairs, selectedEn]);
+        speakEnglishText(selectedEn);
+        playMatchSuccessSound();
         setSelectedEn(null);
         // Se completou todos os pares
         if (completedPairs.length + 1 === currentExercise.pairs?.length) {
@@ -132,6 +222,7 @@ export default function PetroLingoExercise({
         }
       } else {
         // Errou o par
+        playErrorSound();
         setLives(prev => Math.max(0, prev - 1));
         setSelectedEn(null);
       }
@@ -143,14 +234,47 @@ export default function PetroLingoExercise({
 
     if (currentExercise.type === "reading" || currentExercise.type === "cloze") {
       isCorrect = selectedOption === currentExercise.english[0];
+    } else if (currentExercise.type === "listening") {
+      const expected = currentExercise.targetWord || currentExercise.english[0];
+      isCorrect = selectedOption === expected;
+    } else if (currentExercise.mode === "en_to_pt") {
+      const targetPtWords = currentExercise.portugueseTarget || currentExercise.portuguese.replace(/[.,?!]/g, "").split(" ");
+      const userText = selectedWords.join(" ").toLowerCase().trim();
+      const expectedText = targetPtWords.join(" ").toLowerCase().trim();
+      const cleanPortuguese = currentExercise.portuguese.toLowerCase().replace(/[.,?!]/g, "").trim();
+      isCorrect = userText === expectedText || userText === cleanPortuguese;
     } else {
       isCorrect = JSON.stringify(selectedWords) === JSON.stringify(currentExercise.english);
     }
 
+    const elapsedSeconds = (Date.now() - startTime) / 1000;
+
     if (isCorrect) {
       setStatus("correct");
+      playMatchSuccessSound();
+
+      const isFastAnswer = elapsedSeconds <= 6;
+      const nextCombo = comboCount + 1;
+      setComboCount(nextCombo);
+
+      // Dispara efeito de Raio ⚡ e Tremor de Tela se respondeu rápido ou tem combo!
+      if (isFastAnswer || nextCombo >= 2) {
+        setShowLightning(true);
+        setIsScreenShaking(true);
+        setTimeout(() => setShowLightning(false), 700);
+        setTimeout(() => setIsScreenShaking(false), 500);
+        if (typeof window !== 'undefined' && 'vibrate' in navigator) {
+          try { navigator.vibrate([40, 60, 40]); } catch (e) {}
+        }
+      }
+
+      if (!currentExercise.type || currentExercise.type === "translation") {
+        speakEnglishText(currentExercise.english.join(" "));
+      }
     } else {
       setStatus("incorrect");
+      playErrorSound();
+      setComboCount(0);
       setLives(prev => Math.max(0, prev - 1));
     }
   };
@@ -160,6 +284,7 @@ export default function PetroLingoExercise({
       setCurrentIndex(prev => prev + 1);
     } else {
       setIsFinished(true);
+      setStatus("idle");
     }
   };
 
@@ -173,6 +298,7 @@ export default function PetroLingoExercise({
   useEffect(() => {
     if (isFinished) {
       triggerSuccessConfetti();
+      playVictoryFanfareSound();
     }
   }, [isFinished]);
 
@@ -198,8 +324,40 @@ export default function PetroLingoExercise({
   }
 
   return (
-    <div className="relative w-full max-w-2xl mx-auto flex flex-col min-h-[600px] gap-8 py-8">
-      
+    <motion.div 
+      animate={isScreenShaking ? { x: [-8, 8, -6, 6, -3, 3, 0], y: [-4, 4, -3, 3, 0] } : {}}
+      transition={{ duration: 0.4 }}
+      className="relative w-full max-w-2xl mx-auto flex flex-col min-h-[600px] gap-8 py-8"
+    >
+      {/* EFEITO DE RAIO E MULTIPLICADOR DE COMBO (RESPOSTA RÁPIDA / STREAK) */}
+      <AnimatePresence>
+        {showLightning && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 1, 0.8, 1, 0] }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+            className="fixed inset-0 z-[100] pointer-events-none flex items-center justify-center bg-amber-400/20 backdrop-blur-[2px]"
+          >
+            {/* SVG do Raio cruzando a tela */}
+            <svg className="w-full h-full text-amber-400 filter drop-shadow-[0_0_30px_rgba(251,191,36,0.9)] opacity-90" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <polygon points="55,0 45,45 62,45 40,100 50,55 35,55" fill="currentColor" />
+            </svg>
+            
+            {/* Badge Flutuante do Combo */}
+            <motion.div 
+              initial={{ scale: 0, rotate: -15 }}
+              animate={{ scale: [0, 1.3, 1], rotate: [-15, 8, 0] }}
+              exit={{ scale: 0 }}
+              className="absolute bg-gradient-to-r from-amber-400 to-amber-500 text-amber-950 font-black text-3xl md:text-5xl px-8 py-4 rounded-full shadow-[0_10px_40px_rgba(251,191,36,0.6)] border-4 border-white flex items-center gap-3 uppercase tracking-wider"
+            >
+              <LuZap className="w-10 h-10 fill-amber-950 animate-bounce" />
+              <span>COMBO {comboCount}x! ⚡</span>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* HEADER: Barra de Progresso e Vidas */}
       <div className="flex items-center justify-between gap-6 px-4">
         <Button 
@@ -331,18 +489,46 @@ export default function PetroLingoExercise({
                   </div>
                 </div>
               ) : currentExercise.type === "cloze" ? (
-                <div className="space-y-12 animate-in slide-in-from-bottom-5 duration-500">
-                  <div className="flex flex-col items-center gap-8 text-center bg-card border-2 border-border p-10 rounded-[40px] shadow-2xl">
-                    <p className="text-sm font-black text-primary uppercase tracking-[0.2em]">{labels.cloze}</p>
-                    <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-4 text-2xl md:text-3xl font-bold text-foreground">
-                      <span>{currentExercise.clozePrefix}</span>
-                      <span className={cn(
-                        "inline-block px-6 py-2 border-b-4 border-dashed border-primary bg-primary/5 rounded-xl min-w-[120px] transition-all",
-                        selectedOption && "border-solid bg-primary text-white scale-110"
+                <div className="space-y-8 animate-in slide-in-from-bottom-5 duration-500">
+                  <p className="text-center text-xs font-black text-primary uppercase tracking-[0.2em]">Complete o espaço vazio:</p>
+
+                  {/* CHARACTER AVATAR + SPEECH BALLOON */}
+                  <div className="flex items-start gap-5 my-4">
+                    <motion.div 
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      key={`char-cloze-${character.id}-${currentIndex}`}
+                      className="relative flex flex-col items-center shrink-0"
+                    >
+                      <div className={cn(
+                        "w-24 h-24 md:w-28 md:h-28 rounded-3xl border-2 flex items-center justify-center p-2 shadow-xl overflow-hidden backdrop-blur-md relative group",
+                        character.avatarBg
                       )}>
-                        {selectedOption || "___"}
+                        <img 
+                          src={character.image} 
+                          alt={character.name}
+                          className="w-full h-full object-contain filter drop-shadow-md transition-transform group-hover:scale-110"
+                        />
+                      </div>
+                      <span className="mt-2 text-[10px] font-black uppercase tracking-wider text-muted-foreground bg-muted px-2.5 py-0.5 rounded-full border border-border shadow-sm">
+                        {character.name}
                       </span>
-                      <span>{currentExercise.clozeSuffix}</span>
+                    </motion.div>
+
+                    <div className="relative flex-1 bg-card border-2 border-border p-8 rounded-[36px] rounded-tl-none shadow-2xl">
+                      <div className="absolute -left-3 top-6 w-0 h-0 border-t-[10px] border-t-transparent border-r-[12px] border-r-border border-b-[10px] border-b-transparent" />
+                      <div className="absolute -left-[9px] top-6 w-0 h-0 border-t-[9px] border-t-transparent border-r-[11px] border-r-card border-b-[9px] border-b-transparent z-10" />
+
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-4 text-xl md:text-2xl font-bold text-foreground">
+                        <span>{currentExercise.clozePrefix}</span>
+                        <span className={cn(
+                          "inline-block px-6 py-2 border-b-4 border-dashed border-primary bg-primary/5 rounded-xl min-w-[120px] text-center transition-all",
+                          selectedOption && "border-solid bg-primary text-white scale-105"
+                        )}>
+                          {selectedOption || "___"}
+                        </span>
+                        <span>{currentExercise.clozeSuffix}</span>
+                      </div>
                     </div>
                   </div>
 
@@ -350,9 +536,14 @@ export default function PetroLingoExercise({
                     {currentExercise.options?.map((option, idx) => (
                       <motion.button
                         key={idx}
-                        onClick={() => status === "idle" && setSelectedOption(option)}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => {
+                          if (status !== "idle") return;
+                          setSelectedOption(option);
+                          speakEnglishText(option);
+                        }}
                         className={cn(
-                          "px-10 py-5 rounded-3xl border-2 font-black text-xl transition-all shadow-[0_6px_0_0_rgba(0,0,0,0.1)] active:translate-y-1 active:shadow-none",
+                          "px-8 py-4 md:px-10 md:py-5 rounded-3xl border-2 font-black text-xl transition-all shadow-[0_6px_0_0_rgba(0,0,0,0.1)] active:translate-y-1 active:shadow-none",
                           selectedOption === option 
                             ? "bg-primary border-primary text-white" 
                             : "bg-card border-border text-foreground hover:border-primary/40"
@@ -409,20 +600,125 @@ export default function PetroLingoExercise({
                     </div>
                   </div>
                 </div>
+              ) : currentExercise.type === "listening" ? (
+                <div className="space-y-8 animate-in zoom-in-95 duration-500">
+                  <div className="text-center space-y-2">
+                    <p className="text-center text-primary font-black uppercase tracking-widest text-sm">{labels.listening}</p>
+                    <p className="text-muted-foreground font-bold text-base">Toque no megafone para ouvir e selecione a palavra correta:</p>
+                  </div>
+
+                  {/* Botão Central de Megafone Grande (Estilo Duolingo) */}
+                  <div className="flex justify-center my-6">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => speakEnglishText(currentExercise.targetWord || currentExercise.english[0], 0.85)}
+                      className="w-32 h-32 md:w-36 md:h-36 rounded-3xl bg-sky-500 hover:bg-sky-600 text-white flex items-center justify-center shadow-[0_10px_0_0_#0284c7] active:translate-y-2 active:shadow-none transition-all relative group"
+                    >
+                      <LuVolume2 className="w-16 h-16 animate-pulse" />
+                      <span className="absolute -bottom-8 text-xs font-black uppercase tracking-wider text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                        Ouvir Novamente 🔊
+                      </span>
+                    </motion.button>
+                  </div>
+
+                  {/* Grid de 4 Opções (2x2) */}
+                  <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
+                    {currentExercise.options?.map((option, idx) => (
+                      <motion.button
+                        key={idx}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => {
+                          if (status !== "idle") return;
+                          setSelectedOption(option);
+                          speakEnglishText(option);
+                        }}
+                        className={cn(
+                          "p-6 h-28 rounded-3xl border-2 font-black text-2xl transition-all flex items-center justify-center text-center shadow-[0_6px_0_0_rgba(0,0,0,0.1)] active:translate-y-1 active:shadow-none",
+                          selectedOption === option 
+                            ? "bg-sky-500 border-sky-600 text-white scale-105 shadow-sky-700/30" 
+                            : "bg-card border-border text-foreground hover:border-sky-400"
+                        )}
+                      >
+                        {option}
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
               ) : (
                 <>
-                  {/* PROMPT (O Professor Petrolino - TRADUÇÃO) */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-4xl shadow-lg shrink-0">
-                      🛢️
-                    </div>
-                    <div className="relative bg-card border-2 border-border p-5 rounded-3xl rounded-tl-none shadow-xl">
+                  {/* PROMPT (O PERSONAGEM DA PETROBRAS - TRADUÇÃO) */}
+                  <div className="flex items-start gap-5 my-4">
+                    <motion.div 
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      key={`char-trans-${character.id}-${currentIndex}`}
+                      className="relative flex flex-col items-center shrink-0"
+                    >
+                      <div className={cn(
+                        "w-24 h-24 md:w-28 md:h-28 rounded-3xl border-2 flex items-center justify-center p-2 shadow-xl overflow-hidden backdrop-blur-md relative group",
+                        character.avatarBg
+                      )}>
+                        <img 
+                          src={character.image} 
+                          alt={character.name}
+                          className="w-full h-full object-contain filter drop-shadow-md transition-transform group-hover:scale-110"
+                        />
+                      </div>
+                      <span className="mt-2 text-[10px] font-black uppercase tracking-wider text-muted-foreground bg-muted px-2.5 py-0.5 rounded-full border border-border shadow-sm">
+                        {character.name}
+                      </span>
+                    </motion.div>
+
+                    <div className="relative flex-1 bg-card border-2 border-border p-6 rounded-[32px] rounded-tl-none shadow-2xl">
                       {/* Seta do balão de fala */}
-                      <div className="absolute -left-2 top-0 w-0 h-0 border-t-[10px] border-t-transparent border-r-[10px] border-r-border border-b-[10px] border-b-transparent" />
-                      <p className="text-sm font-bold text-primary uppercase tracking-wider mb-1">{labels.translate}</p>
-                      <p className="text-xl md:text-2xl font-bold text-foreground italic">
-                        "{currentExercise.portuguese}"
-                      </p>
+                      <div className="absolute -left-3 top-6 w-0 h-0 border-t-[10px] border-t-transparent border-r-[12px] border-r-border border-b-[10px] border-b-transparent" />
+                      <div className="absolute -left-[9px] top-6 w-0 h-0 border-t-[9px] border-t-transparent border-r-[11px] border-r-card border-b-[9px] border-b-transparent z-10" />
+
+                      {currentExercise.mode === "en_to_pt" ? (
+                        <div>
+                          <p className="text-xs font-black text-primary uppercase tracking-widest mb-3">{labels.translate}</p>
+                          <div className="flex items-center gap-3">
+                            <motion.button
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.9 }}
+                              onClick={() => speakEnglishText(currentExercise.english.join(" "))}
+                              className="w-12 h-12 rounded-2xl bg-sky-500 hover:bg-sky-600 text-white flex items-center justify-center shadow-lg shrink-0 transition-colors"
+                              title="Ouvir a frase completa em inglês"
+                            >
+                              <LuVolume2 className="w-6 h-6 animate-pulse" />
+                            </motion.button>
+                            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xl md:text-2xl font-bold text-foreground">
+                              {currentExercise.english.map((word, wIdx) => (
+                                <span 
+                                  key={wIdx} 
+                                  className="border-b-2 border-dashed border-muted-foreground/40 hover:border-sky-500 cursor-pointer transition-colors px-0.5"
+                                  onClick={() => speakEnglishText(word)}
+                                  title="Clique para ouvir a palavra"
+                                >
+                                  {word}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="flex items-center justify-between gap-4 mb-2">
+                            <p className="text-xs font-black text-primary uppercase tracking-widest">{labels.translate}</p>
+                            <button
+                              onClick={() => speakEnglishText(currentExercise.english.join(" "))}
+                              className="p-2.5 rounded-2xl bg-primary/10 hover:bg-primary/20 text-primary transition-colors shrink-0"
+                              title="Ouvir a frase completa em inglês"
+                            >
+                              <LuVolume2 className="w-5 h-5" />
+                            </button>
+                          </div>
+                          <p className="text-xl md:text-2xl font-bold text-foreground italic leading-relaxed">
+                            "{currentExercise.portuguese}"
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -465,42 +761,96 @@ export default function PetroLingoExercise({
               )}
             </motion.div>
           ) : (
-            /* TELA DE SUCESSO FINAL */
+            /* TELA DE SUCESSO FINAL ESTILO DUOLINGO */
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="text-center space-y-8 bg-card border-2 border-border rounded-[40px] p-12 shadow-2xl"
+              className="text-center space-y-8 bg-card border-2 border-border rounded-[40px] p-6 md:p-10 shadow-2xl relative overflow-hidden"
             >
-              <div className="relative inline-block">
-                <motion.div 
-                  className="text-8xl"
-                  animate={{ rotate: [0, -10, 10, -10, 0] }}
-                  transition={{ repeat: Infinity, duration: 2 }}
+              {/* Personagem Animado Saltando com Sparkles */}
+              <div className="relative inline-block my-2">
+                <motion.div
+                  animate={{ 
+                    y: [0, -16, 0],
+                    rotate: [0, -4, 4, 0]
+                  }}
+                  transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+                  className="w-32 h-32 md:w-40 md:h-40 mx-auto relative group"
                 >
-                  🏆
+                  <img 
+                    src={character.image} 
+                    alt={character.name}
+                    className="w-full h-full object-contain filter drop-shadow-xl"
+                  />
                 </motion.div>
-                <div className="absolute -top-4 -right-4 bg-emerald-500 text-white p-2 rounded-full shadow-lg">
-                  <LuCheck size={24} />
+                <div className="absolute -top-2 -right-2 bg-amber-400 text-black p-2 rounded-full shadow-lg animate-bounce">
+                  <LuSparkles size={20} />
                 </div>
               </div>
-              <div className="space-y-4">
-                <h2 className="text-4xl font-black text-foreground tracking-tight">{labels.congrats}</h2>
-                <p className="text-xl text-muted-foreground">{labels.finishedDesc}</p>
+
+              {/* Título & Subtítulo */}
+              <div className="space-y-2">
+                <h2 className="text-3xl md:text-4xl font-black text-sky-500 tracking-tight">
+                  Um combo de arrasar!
+                </h2>
+                <p className="text-base md:text-lg font-bold text-muted-foreground">
+                  {exercises.length} acertos seguidos? Continue assim!
+                </p>
               </div>
+
+              {/* 3 Cards de Estatísticas Estilo Duolingo */}
+              <div className="grid grid-cols-3 gap-3 md:gap-4 max-w-lg mx-auto">
+                {/* CARD 1: TOTAL DE XP */}
+                <div className="bg-amber-400/10 border-2 border-amber-400/40 rounded-3xl p-3 md:p-4 flex flex-col items-center justify-center space-y-1 shadow-md">
+                  <span className="text-[9px] md:text-xs font-black uppercase tracking-wider text-amber-500">
+                    TOTAL DE XP
+                  </span>
+                  <div className="flex items-center gap-1 text-xl md:text-2xl font-black text-amber-500">
+                    <LuZap className="w-5 h-5 fill-amber-400 text-amber-500" />
+                    <span>+35</span>
+                  </div>
+                </div>
+
+                {/* CARD 2: COMBO */}
+                <div className="bg-sky-500/10 border-2 border-sky-400/40 rounded-3xl p-3 md:p-4 flex flex-col items-center justify-center space-y-1 shadow-md">
+                  <span className="text-[9px] md:text-xs font-black uppercase tracking-wider text-sky-500">
+                    COMBO
+                  </span>
+                  <div className="flex items-center gap-1 text-xl md:text-2xl font-black text-sky-500">
+                    <LuTarget className="w-5 h-5 text-sky-500" />
+                    <span>x{comboCount || exercises.length}</span>
+                  </div>
+                </div>
+
+                {/* CARD 3: TEMPO / INCANSÁVEL */}
+                <div className="bg-emerald-500/10 border-2 border-emerald-400/40 rounded-3xl p-3 md:p-4 flex flex-col items-center justify-center space-y-1 shadow-md">
+                  <span className="text-[9px] md:text-xs font-black uppercase tracking-wider text-emerald-500">
+                    INCANSÁVEL
+                  </span>
+                  <div className="flex items-center gap-1 text-xl md:text-2xl font-black text-emerald-500">
+                    <LuTimer className="w-5 h-5 text-emerald-500" />
+                    <span>
+                      {Math.floor(Math.max(1, Math.floor((Date.now() - lessonStartTime) / 1000)) / 60)}:
+                      {String(Math.max(1, Math.floor((Date.now() - lessonStartTime) / 1000)) % 60).padStart(2, '0')}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Botão de Ação: RECEBER XP */}
               <Button 
                 onClick={() => onFinish(100)}
                 size="lg"
-                className="w-full rounded-2xl py-8 h-auto font-black text-2xl shadow-[0_8px_0_0_#059669] active:translate-y-2 active:shadow-none transition-all bg-emerald-500 hover:bg-emerald-600 text-white"
+                className="w-full rounded-3xl py-7 h-auto font-black text-xl md:text-2xl shadow-[0_8px_0_0_#0284c7] active:translate-y-2 active:shadow-none transition-all bg-sky-500 hover:bg-sky-600 text-white uppercase tracking-wider"
               >
-                {labels.backToPath}
-                <LuArrowRight className="ml-3" />
+                RECEBER XP
               </Button>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      {/* BARRA DE FEEDBACK (POPA QUANDO VERIFICA) */}
+      {/* BARRA DE FEEDBACK INFERIOR (ESTILO DUOLINGO MAX) */}
       <AnimatePresence>
         {status !== "idle" && (
           <motion.div
@@ -508,44 +858,192 @@ export default function PetroLingoExercise({
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             className={cn(
-              "fixed bottom-0 left-0 right-0 p-8 border-t-4 z-50 backdrop-blur-xl",
+              "fixed bottom-0 left-0 right-0 p-6 md:p-8 border-t-4 z-50 backdrop-blur-xl transition-all",
               status === "correct" 
                 ? "bg-emerald-500/95 border-emerald-400 text-white" 
-                : "bg-red-500/95 border-red-400 text-white shadow-[0_-20px_50px_rgba(244,63,94,0.3)]"
+                : "bg-rose-500/95 border-rose-400 text-white shadow-[0_-20px_50px_rgba(244,63,94,0.3)]"
             )}
           >
-            <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="flex items-center gap-6">
-                <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center text-4xl shadow-2xl shrink-0">
-                  {status === "correct" ? "✅" : "⚠️"}
+            <div className="max-w-3xl mx-auto flex flex-col gap-6">
+              <div className="flex items-center justify-between gap-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white flex items-center justify-center text-3xl shadow-2xl shrink-0">
+                    {status === "correct" ? "✅" : "⚠️"}
+                  </div>
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter">
+                      {status === "correct" ? labels.correct : labels.incorrect}
+                    </h3>
+                    <p className="text-sm md:text-base font-bold opacity-90">
+                      <span className="font-extrabold uppercase">Significado:</span> "{currentExercise.portuguese}"
+                    </p>
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <h3 className="text-3xl font-black uppercase tracking-tighter">
-                    {status === "correct" ? labels.correct : labels.incorrect}
-                  </h3>
-                  <div className="flex items-start gap-2 bg-black/10 p-4 rounded-2xl border border-white/10 max-w-2xl">
-                    <LuLightbulb className="w-5 h-5 shrink-0 mt-1 opacity-70" />
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-widest opacity-60 mb-1">{labels.explanation}</p>
-                      <p className="text-base font-bold leading-tight">{currentExercise.explanation}</p>
-                    </div>
+
+                <Button
+                  onClick={status === "correct" ? handleNext : () => setStatus("idle")}
+                  size="lg"
+                  className={cn(
+                    "hidden md:flex rounded-3xl px-10 py-7 h-auto font-black text-xl shadow-2xl transition-all items-center gap-3 shrink-0",
+                    status === "correct" 
+                      ? "bg-white !text-emerald-700 hover:scale-105 active:scale-95" 
+                      : "bg-white !text-rose-700 hover:scale-105 active:scale-95"
+                  )}
+                >
+                  {status === "correct" ? labels.continue : labels.tryAgain}
+                  {status === "correct" ? <LuArrowRight className="w-6 h-6" /> : <LuRotateCcw className="w-6 h-6" />}
+                </Button>
+              </div>
+
+              {/* Botão Secundário: EXPLIQUE MINHA RESPOSTA (Estilo Duolingo Max AI) */}
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-2 border-t border-white/20">
+                <Button
+                  onClick={() => setShowExplainModal(true)}
+                  variant="outline"
+                  className="w-full md:w-auto rounded-2xl py-6 px-8 bg-white/10 hover:bg-white/20 border-2 border-white/40 text-white font-black text-lg flex items-center justify-center gap-3 backdrop-blur-md shadow-lg transition-all"
+                >
+                  <LuSparkles className="w-6 h-6 text-amber-300 animate-pulse" />
+                  <span>EXPLIQUE MINHA RESPOSTA</span>
+                </Button>
+
+                <Button
+                  onClick={status === "correct" ? handleNext : () => setStatus("idle")}
+                  size="lg"
+                  className={cn(
+                    "w-full md:hidden rounded-2xl py-6 h-auto font-black text-xl shadow-2xl transition-all flex items-center justify-center gap-3",
+                    status === "correct" 
+                      ? "bg-white !text-emerald-700 hover:scale-105 active:scale-95" 
+                      : "bg-white !text-rose-700 hover:scale-105 active:scale-95"
+                  )}
+                >
+                  {status === "correct" ? labels.continue : labels.tryAgain}
+                  {status === "correct" ? <LuArrowRight className="w-6 h-6" /> : <LuRotateCcw className="w-6 h-6" />}
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* MODAL "EXPLIQUE MINHA RESPOSTA" (DUOLINGO MAX AI EXPLANATION) */}
+      <AnimatePresence>
+        {showExplainModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[120] bg-background/80 backdrop-blur-md flex flex-col justify-end md:justify-center items-center p-0 md:p-6"
+          >
+            <motion.div
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ type: "spring", damping: 25 }}
+              className="w-full max-w-2xl bg-card border-t-4 md:border-2 border-border rounded-t-[40px] md:rounded-[40px] p-8 md:p-10 shadow-2xl space-y-8 max-h-[90vh] overflow-y-auto relative"
+            >
+              {/* Cabeçalho do Modal */}
+              <div className="flex items-center justify-between border-b border-border/60 pb-6">
+                <button
+                  onClick={() => setShowExplainModal(false)}
+                  className="p-3 rounded-full hover:bg-muted text-muted-foreground transition-colors flex items-center gap-2 font-bold text-sm"
+                >
+                  <LuArrowLeft size={24} />
+                  <span>Voltar</span>
+                </button>
+                <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-2xl text-primary font-black text-sm border border-primary/20">
+                  <LuSparkles className="w-4 h-4 text-amber-500" />
+                  <span>Explicação Didática</span>
+                </div>
+              </div>
+
+              {/* Destaque da Frase com a Palavra-Chave */}
+              <div className="bg-muted/40 border-2 border-border p-6 rounded-3xl text-center space-y-3">
+                <p className="text-xs font-black uppercase tracking-widest text-muted-foreground">Sentença Analisada:</p>
+                <div className="flex flex-wrap items-center justify-center gap-2 text-2xl font-black text-foreground">
+                  {currentExercise.english.map((w, idx) => (
+                    <span 
+                      key={idx}
+                      className={cn(
+                        "px-3 py-1 rounded-xl transition-all",
+                        idx === 0 ? "bg-sky-500 text-white shadow-md" : "bg-card border border-border"
+                      )}
+                    >
+                      {w}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Card Principal da Explicação */}
+              <div className="bg-card border-2 border-border p-8 rounded-3xl space-y-6 shadow-xl relative overflow-hidden">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-500 shrink-0">
+                    <LuLightbulb className="w-6 h-6" />
+                  </div>
+                  <div className="space-y-3 flex-1">
+                    <h4 className="text-xl font-black text-foreground">Por que esta é a resposta correta?</h4>
+                    <p className="text-muted-foreground font-medium text-lg leading-relaxed">
+                      {currentExercise.explanation}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Exemplos Práticos de Apoio */}
+                <div className="bg-muted/30 p-5 rounded-2xl border border-border/50 space-y-3">
+                  <p className="text-xs font-black uppercase tracking-widest text-primary flex items-center gap-2">
+                    📌 Exemplos Recorrentes em Prova (Cesgranrio):
+                  </p>
+                  <ul className="space-y-2 text-sm md:text-base font-bold text-foreground opacity-90">
+                    <li className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-primary" />
+                      <span>"{currentExercise.english.join(" ")}"</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-muted-foreground">
+                      <span className="w-2 h-2 rounded-full bg-muted-foreground/40" />
+                      <span>Tradução: "{currentExercise.portuguese}"</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Avaliação Útil / Não Útil 👍 👎 */}
+                <div className="flex items-center justify-between pt-4 border-t border-border/40">
+                  <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Esta explicação foi útil?</span>
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => setFeedbackRating("like")}
+                      className={cn(
+                        "p-3 rounded-2xl border-2 transition-all flex items-center justify-center",
+                        feedbackRating === "like" ? "bg-emerald-500 border-emerald-600 text-white scale-110" : "bg-card border-border hover:border-emerald-400 text-muted-foreground"
+                      )}
+                    >
+                      <LuThumbsUp className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={() => setFeedbackRating("dislike")}
+                      className={cn(
+                        "p-3 rounded-2xl border-2 transition-all flex items-center justify-center",
+                        feedbackRating === "dislike" ? "bg-rose-500 border-rose-600 text-white scale-110" : "bg-card border-border hover:border-rose-400 text-muted-foreground"
+                      )}
+                    >
+                      <LuThumbsDown className="w-5 h-5" />
+                    </button>
                   </div>
                 </div>
               </div>
+
+              {/* Botão de Ação: CONTINUAR LIÇÃO */}
               <Button
-                onClick={status === "correct" ? handleNext : () => setStatus("idle")}
+                onClick={() => {
+                  setShowExplainModal(false);
+                  if (status === "correct") handleNext();
+                  else setStatus("idle");
+                }}
                 size="lg"
-                className={cn(
-                  "w-full md:w-auto rounded-3xl px-12 py-8 h-auto font-black text-2xl shadow-2xl transition-all flex items-center gap-3",
-                  status === "correct" 
-                    ? "bg-white !text-emerald-700 hover:scale-105 active:scale-95 shadow-emerald-900/20" 
-                    : "bg-white !text-red-700 hover:scale-105 active:scale-95 shadow-red-900/20"
-                )}
+                className="w-full rounded-2xl py-7 h-auto font-black text-2xl bg-sky-500 hover:bg-sky-600 text-white shadow-[0_6px_0_0_#0284c7] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider"
               >
-                {status === "correct" ? labels.continue : labels.tryAgain}
-                {status === "correct" ? <LuArrowRight className="w-8 h-8" /> : <LuRotateCcw className="w-8 h-8" />}
+                CONTINUAR LIÇÃO
               </Button>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -566,7 +1064,7 @@ export default function PetroLingoExercise({
             currentExercise.type !== "matching" && (
               <Button 
                 disabled={
-                  currentExercise.type === "reading" || currentExercise.type === "cloze" 
+                  currentExercise.type === "reading" || currentExercise.type === "cloze" || currentExercise.type === "listening"
                     ? !selectedOption 
                     : selectedWords.length === 0
                 }
@@ -574,7 +1072,7 @@ export default function PetroLingoExercise({
                 size="lg"
                 className={cn(
                   "w-full md:w-64 rounded-2xl py-6 md:py-8 h-auto font-black text-2xl shadow-xl transition-all",
-                  (currentExercise.type === "reading" || currentExercise.type === "cloze" ? !!selectedOption : selectedWords.length > 0)
+                  (currentExercise.type === "reading" || currentExercise.type === "cloze" || currentExercise.type === "listening" ? !!selectedOption : selectedWords.length > 0)
                     ? "bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_6px_0_0_#059669] active:translate-y-1 active:shadow-none" 
                     : "bg-muted text-muted-foreground cursor-not-allowed"
                 )}
@@ -590,7 +1088,7 @@ export default function PetroLingoExercise({
                 "w-full md:w-64 rounded-2xl py-6 md:py-8 h-auto font-black text-2xl shadow-xl transition-all animate-bounce-subtle",
                 status === "correct" 
                   ? "bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_6px_0_0_#059669]" 
-                  : "bg-rose-500 hover:bg-rose-600 text-white shadow-[0_6px_0_0_#be123c]"
+                  : "bg-rose-500 hover:bg-rose-600 text-white shadow-[0_6px_0_0_be123c]"
               )}
             >
               <div className="flex items-center gap-2">
@@ -602,6 +1100,6 @@ export default function PetroLingoExercise({
         </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

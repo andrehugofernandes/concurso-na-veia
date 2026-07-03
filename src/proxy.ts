@@ -6,9 +6,52 @@ import { NextResponse, type NextRequest } from 'next/server'
  * Handles authentication session refresh and route protection
  */
 export async function proxy(request: NextRequest) {
+    const url = new URL(request.url);
+    const tenantParam = url.searchParams.get('tenant');
+    const host = request.headers.get('host') || '';
+    
+    let tenantSlug = 'petrobras';
+    if (tenantParam) {
+        tenantSlug = tenantParam;
+    } else {
+        const parts = host.split('.');
+        if (parts.length > 1) {
+            const possibleSubdomain = parts[0];
+            if (possibleSubdomain !== 'www' && possibleSubdomain !== 'localhost' && possibleSubdomain !== '127') {
+                tenantSlug = possibleSubdomain;
+            }
+        }
+    }
+
+    // Criar cliente Supabase temporario para buscar dados publicos do tenant
+    const tempSupabase = createServerClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        {
+            cookies: {
+                getAll() { return [] },
+                setAll() {},
+            }
+        }
+    );
+
+    const { data: tenant } = await tempSupabase
+        .from('concursos')
+        .select('slug, primary_color, secondary_color, nome')
+        .eq('slug', tenantSlug)
+        .single();
+
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set('x-tenant-slug', tenantSlug);
+    requestHeaders.set('x-tenant-name', tenant?.nome || 'Passei no Concurso');
+    requestHeaders.set('x-tenant-primary', tenant?.primary_color || '#0037C1');
+    requestHeaders.set('x-tenant-secondary', tenant?.secondary_color || '#008C32');
+
     let supabaseResponse = NextResponse.next({
-        request,
-    })
+        request: {
+            headers: requestHeaders,
+        },
+    });
 
     const supabase = createServerClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -23,7 +66,9 @@ export async function proxy(request: NextRequest) {
                         request.cookies.set(name, value)
                     )
                     supabaseResponse = NextResponse.next({
-                        request,
+                        request: {
+                            headers: requestHeaders,
+                        },
                     })
                     cookiesToSet.forEach(({ name, value, options }) =>
                         supabaseResponse.cookies.set(name, value, options)
@@ -40,6 +85,7 @@ export async function proxy(request: NextRequest) {
 
     // Protected routes check
     const isProtectedRoute = request.nextUrl.pathname.startsWith('/dashboard')
+    const isAdminRoute = request.nextUrl.pathname.startsWith('/admin')
 
     // Pages that logged-in users should NOT visit (because they are already logged in)
     const isGuestOnlyRoute = request.nextUrl.pathname === '/login' ||
@@ -49,7 +95,7 @@ export async function proxy(request: NextRequest) {
 
     // 2FA pages are for authenticated users, so they are not guest-only
 
-    if (!user && isProtectedRoute) {
+    if (!user && (isProtectedRoute || isAdminRoute)) {
         const url = request.nextUrl.clone()
         url.pathname = '/login'
         return NextResponse.redirect(url)
@@ -62,7 +108,7 @@ export async function proxy(request: NextRequest) {
         return NextResponse.redirect(url)
     }
 
-    // Configuração de Content Security Policy (CSP)
+    const isProd = process.env.NODE_ENV === 'production';
     const cspHeader = `
         default-src 'self';
         script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com https://www.gstatic.com https://js.stripe.com;
@@ -75,7 +121,7 @@ export async function proxy(request: NextRequest) {
         base-uri 'self';
         form-action 'self';
         frame-ancestors 'none';
-        upgrade-insecure-requests;
+        ${isProd ? 'upgrade-insecure-requests;' : ''}
     `.replace(/\s{2,}/g, ' ').trim();
 
     supabaseResponse.headers.set('Content-Security-Policy', cspHeader);

@@ -1,0 +1,162 @@
+﻿
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(18,33): error TS2307: Cannot find module 
+'@/components/aulas/shared/ModuleConsolidation' or 
+its corresponding type declarations.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(19,30): error TS2307: Cannot find module 
+'@/components/aulas/shared/ContentAccordion' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(20,26): error TS2307: Cannot find module 
+'@/components/aulas/shared/CardCarousel' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(21,28): error TS2307: Cannot find module 
+'@/components/aulas/shared/QuizInterativo' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(22,26): error TS2307: Cannot find module 
+'@/components/aulas/shared/ModuleBanner' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(39,55): error TS2339: Property 
+'topicoId' does not exist on type 'AulaProps'.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(112,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(172,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(232,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(292,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(352,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(412,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(472,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(532,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(592,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaAdministracaoTr
+ibutaria.tsx(652,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(18,33): error TS2307: Cannot find module 
+'@/components/aulas/shared/ModuleConsolidation' or 
+its corresponding type declarations.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(19,30): error TS2307: Cannot find module 
+'@/components/aulas/shared/ContentAccordion' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(20,26): error TS2307: Cannot find module 
+'@/components/aulas/shared/CardCarousel' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(21,28): error TS2307: Cannot find module 
+'@/components/aulas/shared/QuizInterativo' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(22,26): error TS2307: Cannot find module 
+'@/components/aulas/shared/ModuleBanner' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(39,51): error TS2339: Property 'topicoId' 
+does not exist on type 'AulaProps'.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(112,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(172,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(232,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(292,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(352,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(412,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(472,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(532,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(592,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaContabilidadeBa
+sica.tsx(652,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(18,33): error TS2307: Cannot find module 
+'@/components/aulas/shared/ModuleConsolidation' or 
+its corresponding type declarations.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(19,30): error TS2307: Cannot find module 
+'@/components/aulas/shared/ContentAccordion' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(20,26): error TS2307: Cannot find module 
+'@/components/aulas/shared/CardCarousel' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(21,28): error TS2307: Cannot find module 
+'@/components/aulas/shared/QuizInterativo' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(22,26): error TS2307: Cannot find module 
+'@/components/aulas/shared/ModuleBanner' or its 
+corresponding type declarations.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(39,49): error TS2339: Property 'topicoId' does 
+not exist on type 'AulaProps'.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(112,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(172,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(232,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(292,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(352,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(412,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(472,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(532,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(592,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+src/components/aulas/administracao/AulaDireitoTributar
+io.tsx(652,22): error TS7006: Parameter 'score' 
+implicitly has an 'any' type.
+
+

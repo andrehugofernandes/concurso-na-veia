@@ -11,7 +11,6 @@ import {
   Cell,
   ResponsiveContainer,
   Tooltip as RechartsTooltip,
-  Legend,
 } from "recharts";
 import { useAllAulasProgress } from "@/hooks/useAulaProgress";
 import { useSetPageTitle } from "@/contexts/UIContext";
@@ -19,6 +18,31 @@ import { CARGO_ID_MAP } from "@/lib/cargos-map";
 import { getRankingAction } from "@/lib/actions/ranking";
 import { getCurrentUserAction } from "@/lib/actions/auth";
 import { useTelemetry } from "@/hooks/useTelemetry";
+import {
+  Flame,
+  Zap,
+  Target,
+  FileText,
+  Trophy,
+  Crown,
+  Lock,
+  Rocket,
+  BookOpen,
+  Play,
+  Clock,
+  Sparkles,
+  ChevronRight,
+  ArrowRight,
+  GraduationCap,
+  Award,
+  Activity,
+  BarChart3,
+  ShieldCheck,
+  Globe,
+  X,
+  CalendarCheck,
+  TrendingUp,
+} from "lucide-react";
 
 interface UserData {
   nome: string;
@@ -45,16 +69,14 @@ export default function DashboardPage() {
   const [user, setUser] = useState<UserData | null>(null);
   const [loadingUser, setLoadingUser] = useState(true);
   const [stats, setStats] = useState({ completed: 0, inProgress: 0, total: 0 });
-  const { fetchProfile, profile: telemetryProfile, isLoadingProfile } = useTelemetry();
+  const { fetchProfile, profile: telemetryProfile } = useTelemetry();
 
   const { progressData: allContentProgress, loading: loadingProgress } =
     useAllAulasProgress();
   const loading = loadingUser || loadingProgress;
 
-  // Definir título da página no cabeçalho
-  useSetPageTitle("Dashboard");
+  useSetPageTitle("Dashboard do Aluno");
 
-  // Config Modal State
   const [configModal, setConfigModal] = useState<{
     open: boolean;
     tipo?: string;
@@ -71,7 +93,6 @@ export default function DashboardPage() {
   );
 
   useEffect(() => {
-    // Load user data from cookie/session
     const loadUser = async () => {
       try {
         const result = await getCurrentUserAction();
@@ -91,19 +112,20 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!loadingProgress) {
-      // Obter o concurso do usuário baseado no cargo ou metadata
       const userCargo = user?.cargo || "operacao";
-      const userConcursoSlug = getProfissaoById(userCargo)?.concurso || user?.user_metadata?.concurso || "petrobras";
+      const userConcursoSlug =
+        getProfissaoById(userCargo)?.concurso ||
+        user?.user_metadata?.concurso ||
+        "petrobras";
 
       const filtered = CONTEUDO_MATERIAS.filter((m) => {
-        if (!m.concursos) return true; // Matérias comuns
+        if (!m.concursos) return true;
         return m.concursos.includes(userConcursoSlug);
       });
 
       let totalLessons = 0;
       filtered.forEach((m) => (totalLessons += m.topicos.length));
 
-      // Filtrar progressos que pertencem às matérias do concurso do usuário
       const completedCount = Object.entries(allContentProgress).filter(
         ([key, p]) => {
           const [materiaId] = key.split("/");
@@ -140,13 +162,15 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary" />
+      <div className="min-h-[70vh] bg-background flex flex-col items-center justify-center gap-3">
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-primary" />
+        <p className="text-xs text-muted-foreground font-medium animate-pulse">
+          Carregando portal de estudos...
+        </p>
       </div>
     );
   }
 
-  // Mix Auth profile with Gamification profile
   const userData: UserData = user
     ? {
         ...user,
@@ -192,7 +216,10 @@ export default function DashboardPage() {
       };
 
   const userCargo = userData.cargo || "operacao";
-  const userConcursoSlug = getProfissaoById(userCargo)?.concurso || userData.user_metadata?.concurso || "petrobras";
+  const userConcursoSlug =
+    getProfissaoById(userCargo)?.concurso ||
+    userData.user_metadata?.concurso ||
+    "petrobras";
 
   const filtered = CONTEUDO_MATERIAS.filter((m) => {
     if (!m.concursos) return true;
@@ -203,7 +230,7 @@ export default function DashboardPage() {
     materiaId: "portugues",
     topicoId: "interpretacao-texto",
     titulo: "Interpretação de Texto",
-    materiaNome: "Língua Portuguesa"
+    materiaNome: "Língua Portuguesa",
   };
 
   if (filtered.length > 0) {
@@ -213,7 +240,9 @@ export default function DashboardPage() {
     });
 
     if (progressList.length > 0) {
-      const inProgress = progressList.find(([_, p]) => !p.completed && p.progress_percent > 0);
+      const inProgress = progressList.find(
+        ([_, p]) => !p.completed && p.progress_percent > 0
+      );
       const chosen = inProgress || progressList[0];
       if (chosen) {
         const [materiaId, topicoId] = chosen[0].split("/");
@@ -224,7 +253,7 @@ export default function DashboardPage() {
             materiaId,
             topicoId,
             titulo: top.titulo,
-            materiaNome: mat.nome
+            materiaNome: mat.nome,
           };
         }
       }
@@ -236,7 +265,7 @@ export default function DashboardPage() {
           materiaId: firstMat.id,
           topicoId: firstTop.id,
           titulo: firstTop.titulo,
-          materiaNome: firstMat.nome
+          materiaNome: firstMat.nome,
         };
       }
     }
@@ -249,13 +278,13 @@ export default function DashboardPage() {
         userData.diasRestantesTrial <= 0
       ) {
         alert(
-          "Seu período de teste acabou! 🚫\n\nAssine o PRO para continuar treinando sem limites.",
+          "Seu período de teste acabou!\n\nAssine o PRO para continuar treinando sem limites.",
         );
         return;
       }
       if (userData.simuladosHoje !== undefined && userData.simuladosHoje >= 1) {
         alert(
-          "Você já usou seu simulado diário gratuito! ⏳\n\nVolte amanhã ou assine o PRO para acesso ilimitado.",
+          "Você já usou seu simulado diário gratuito de hoje!\n\nVolte amanhã ou assine o PRO para acesso ilimitado.",
         );
         return;
       }
@@ -263,954 +292,920 @@ export default function DashboardPage() {
     setConfigModal({ open: true, tipo, nome, cor });
   };
 
+  const profissaoUsuario = getProfissaoById(CARGO_ID_MAP[userCargo] || userCargo);
+  const showIngles =
+    userData.nivelConcurso === "superior" ||
+    (!userData.nivelConcurso &&
+      getProfissaoById(CARGO_ID_MAP[userData.cargo] || userData.cargo)?.nivel === "superior");
+
   return (
-    <div className="p-4 md:p-8 space-y-8">
-      <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-        <div className="animate-in fade-in slide-in-from-left duration-500 flex-1">
-          <div className="flex items-center gap-3 mb-1">
-            <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
-              Olá, {userData.nome.split(" ")[0]}! 👋
-            </h1>
-            {userData.plan === 'elite-total' && (
-              <span className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-widest shadow-sm shadow-yellow-500/20">
-                PRO ELITE
+    <div className="w-full p-4 md:p-8 lg:p-10 space-y-8 animate-in fade-in duration-300">
+      {/* HEADER SUPERIOR DO ALUNO */}
+      <header className="relative bg-card border border-border/70 rounded-3xl p-6 sm:p-8 shadow-sm overflow-hidden backdrop-blur-xl">
+        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 relative z-10">
+          <div className="space-y-3 max-w-2xl">
+            <div className="flex flex-wrap items-center gap-2.5">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20">
+                <Sparkles className="w-3.5 h-3.5" />
+                {profissaoUsuario?.nome || "Concurseiro Petrobras"}
               </span>
-            )}
-          </div>
-          
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-4">
-            {/* Gamification Badge - Streak */}
-            <div className="flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 px-3 py-1.5 rounded-lg w-fit">
-              <span className={`text-xl ${userData.sequencia_atual > 0 ? 'animate-pulse drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] text-orange-500' : 'text-zinc-500 grayscale'}`}>
-                🔥
-              </span>
-              <div className="flex flex-col leading-none">
-                <span className="text-[10px] text-orange-600 dark:text-orange-400 font-bold uppercase tracking-wider">
-                  Ofensiva
+
+              {userData.plan === "elite-total" && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 uppercase tracking-wider shadow-sm">
+                  <Crown className="w-3 h-3 fill-slate-950" />
+                  PRO ELITE
                 </span>
-                <span className="text-sm font-black text-foreground">
-                  {userData.sequencia_atual} dias
-                </span>
-              </div>
+              )}
             </div>
 
-            {/* Gamification - XP Bar */}
-            <div className="flex-1 max-w-sm">
-              <div className="flex justify-between items-end mb-1">
-                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
-                  Nível {userData.nivel_jogador}
-                </span>
-                <span className="text-xs font-black text-primary">
-                  {userData.xp} XP
-                </span>
-              </div>
-              <div className="h-2.5 bg-muted rounded-full overflow-hidden border border-border/50">
-                <div 
-                  className="h-full bg-gradient-to-r from-primary to-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)] transition-all duration-1000 ease-out relative"
-                  style={{ width: `${Math.min(100, Math.max(5, (userData.xp % 1000) / 10))}%` }}
-                >
-                  <div className="absolute top-0 right-0 bottom-0 w-4 bg-white/20 blur-[2px] animate-pulse"></div>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-tight">
+              Olá, {userData.nome.split(" ")[0]}!
+            </h1>
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+              Bem-vindo ao seu portal de preparação. Acompanhe suas métricas e fortaleça sua rotina de estudos.
+            </p>
+
+            <div className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6">
+              {/* Ofensiva */}
+              <div className="flex items-center gap-2.5 bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/25 px-4 py-2.5 rounded-2xl">
+                <Flame className={`w-5 h-5 ${userData.sequencia_atual > 0 ? "text-amber-500 dark:text-orange-400 fill-amber-500/30 animate-pulse" : "text-muted-foreground"}`} />
+                <div>
+                  <p className="text-[10px] text-amber-600 dark:text-amber-400 font-extrabold uppercase tracking-wider leading-none">
+                    Ofensiva
+                  </p>
+                  <p className="text-base font-black text-foreground mt-0.5">
+                    {userData.sequencia_atual} {userData.sequencia_atual === 1 ? "dia" : "dias"}
+                  </p>
                 </div>
               </div>
-              <p className="text-[9px] text-muted-foreground mt-1 text-right">
-                Próximo nível em {1000 - (userData.xp % 1000)} XP
-              </p>
-            </div>
-          </div>
-        </div>
 
-        {userData.plan === "free" && (
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full md:w-auto">
-            <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-start bg-card/50 sm:bg-transparent px-3 py-2 sm:p-0 rounded-xl border border-border/50 sm:border-none">
-              <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">
-                Período de Teste
-              </span>
-              <div className="flex items-center gap-1.5 bg-card sm:bg-card px-2 py-1 rounded-lg border border-border shadow-sm sm:mt-1">
-                <span
-                  className={`text-lg font-black ${userData.diasRestantesTrial && userData.diasRestantesTrial <= 3 ? "text-red-500 animate-pulse" : "text-yellow-500"}`}
-                >
-                  {userData.diasRestantesTrial}
-                </span>
-                <span className="text-[10px] text-muted-foreground font-bold">
-                  dias restantes
-                </span>
+              {/* XP */}
+              <div className="flex-1 min-w-[200px] max-w-xs space-y-1.5">
+                <div className="flex justify-between items-center text-xs">
+                  <span className="font-extrabold text-muted-foreground flex items-center gap-1">
+                    <GraduationCap className="w-4 h-4 text-primary" />
+                    {userData.nivel_jogador}
+                  </span>
+                  <span className="font-black text-primary font-mono text-sm">
+                    {userData.xp} XP
+                  </span>
+                </div>
+                <div className="h-2.5 bg-muted rounded-full overflow-hidden p-0.5 border border-border/50">
+                  <div
+                    className="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-primary rounded-full transition-all duration-700 relative shadow-sm"
+                    style={{ width: `${Math.min(100, Math.max(6, (userData.xp % 1000) / 10))}%` }}
+                  />
+                </div>
               </div>
             </div>
-            <Link
-              href="/pricing"
-              className="w-full sm:w-auto text-center px-6 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 text-slate-900 font-bold rounded-xl hover:shadow-lg hover:shadow-orange-500/20 transition-all text-xs uppercase tracking-wider shadow-sm"
-            >
-              Seja PRO 👑
-            </Link>
           </div>
-        )}
+
+          {/* Card de Assinatura */}
+          {userData.plan === "free" && (
+            <div className="w-full lg:w-auto bg-card/80 border border-amber-500/25 rounded-2xl p-5 flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-stretch justify-between gap-4 shadow-sm backdrop-blur-md">
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-amber-500/10 text-amber-500 rounded-xl shrink-0">
+                  <Clock className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="text-[10px] text-muted-foreground font-extrabold uppercase tracking-wider">
+                    Período de Teste Gratuito
+                  </span>
+                  <p className="text-base font-black text-foreground">
+                    <span className={userData.diasRestantesTrial && userData.diasRestantesTrial <= 3 ? "text-red-500 animate-pulse" : "text-amber-500"}>
+                      {userData.diasRestantesTrial} dias restantes
+                    </span>
+                  </p>
+                </div>
+              </div>
+
+              <Link
+                href="/pricing"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:to-orange-500 text-slate-950 font-black rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-orange-500/20 transition-all hover:scale-[1.02] active:scale-95 text-center"
+              >
+                <Crown className="w-4 h-4 fill-slate-950" />
+                Seja Aluno PRO
+              </Link>
+            </div>
+          )}
+        </div>
       </header>
 
-      {/* Tabs */}
-      <div className="flex gap-6 mb-8 border-b border-border overflow-x-auto scrollbar-none">
+      {/* ABAS SUPERIORES DE NAVEGAÇÃO */}
+      <div className="flex border-b border-border gap-6">
         <button
           onClick={() => setActiveTab("overview")}
-          className={`pb-4 px-1 text-sm font-bold transition-all relative whitespace-nowrap ${activeTab === "overview" ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
+          className={`pb-3.5 text-base font-black flex items-center gap-2 transition-all relative ${
+            activeTab === "overview"
+              ? "text-primary border-b-2 border-primary"
+              : "text-muted-foreground hover:text-foreground"
+          }`}
         >
-          Visão Geral
-          {activeTab === "overview" && (
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-primary rounded-t-full animate-in fade-in zoom-in duration-300"></div>
-          )}
+          <BarChart3 className="w-5 h-5" />
+          Visão Geral (Portal)
         </button>
         <button
           onClick={() => setActiveTab("ranking")}
-          className={`pb-4 px-1 text-sm font-bold transition-all relative whitespace-nowrap ${activeTab === "ranking" ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
+          className={`pb-3.5 text-base font-black flex items-center gap-2 transition-all relative ${
+            activeTab === "ranking"
+              ? "text-primary border-b-2 border-primary"
+              : "text-muted-foreground hover:text-foreground"
+          }`}
         >
-          Ranking
-          {activeTab === "ranking" && (
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-primary rounded-t-full animate-in fade-in zoom-in duration-300"></div>
-          )}
+          <Trophy className="w-5 h-5" />
+          Ranking Completo
         </button>
       </div>
 
       <main>
         {activeTab === "overview" ? (
-          <>
-            {/* Stats Row */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8">
-              <div className="bg-card p-4 rounded-xl border border-border flex flex-col xs:flex-row items-center xs:items-center gap-2 xs:gap-4 shadow-sm hover:shadow-md transition-shadow">
-                <div className="p-3 bg-blue-500/10 rounded-xl text-blue-500 text-xl xs:text-2xl shrink-0">
-                  ⚡
-                </div>
-                <div className="text-center xs:text-left">
-                  <p className="text-muted-foreground text-[9px] xs:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
-                    Sequência
-                  </p>
-                  <p className="text-lg xs:text-xl font-black text-foreground">
-                    {userData.sequencia_atual} dias
-                  </p>
-                </div>
-              </div>
-              <div className="bg-card p-4 rounded-xl border border-border flex flex-col xs:flex-row items-center xs:items-center gap-2 xs:gap-4 shadow-sm hover:shadow-md transition-shadow">
-                <div className="p-3 bg-purple-500/10 rounded-xl text-purple-500 text-xl xs:text-2xl shrink-0">
-                  🎯
-                </div>
-                <div className="text-center xs:text-left">
-                  <p className="text-muted-foreground text-[9px] xs:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
-                    Precisão
-                  </p>
-                  <p className="text-lg xs:text-xl font-black text-foreground">
-                    {taxaAcerto}%
-                  </p>
-                </div>
-              </div>
-              <div className="bg-card p-4 rounded-xl border border-border flex flex-col xs:flex-row items-center xs:items-center gap-2 xs:gap-4 shadow-sm hover:shadow-md transition-shadow">
-                <div className="p-3 bg-green-500/10 rounded-xl text-green-500 text-xl xs:text-2xl shrink-0">
-                  📝
-                </div>
-                <div className="text-center xs:text-left">
-                  <p className="text-muted-foreground text-[9px] xs:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
-                    Questões
-                  </p>
-                  <p className="text-lg xs:text-xl font-black text-foreground">
-                    {userData.questoes_geradas}
-                  </p>
-                </div>
-              </div>
-              <div className="bg-card p-4 rounded-xl border border-border flex flex-col xs:flex-row items-center xs:items-center gap-2 xs:gap-4 shadow-sm hover:shadow-md transition-shadow">
-                <div className="p-3 bg-yellow-500/10 rounded-xl text-yellow-500 text-xl xs:text-2xl shrink-0">
-                  🏆
-                </div>
-                <div className="text-center xs:text-left">
-                  <p className="text-muted-foreground text-[9px] xs:text-[10px] uppercase font-bold tracking-wider leading-none mb-1">
-                    Nível
-                  </p>
-                  <p className="text-lg xs:text-xl font-black text-foreground line-clamp-1">
-                    {userData.nivel_jogador}
-                  </p>
-                </div>
-              </div>
-            </div>
+          /* ESTRUTURA EDITORIAL / HIERARQUIA VISUAL (GRID PRINCIPAL + SIDEBAR LATERAL) */
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            {/* COLUNA ESQUERDA PRINCIPAL (HERO BANNER + DESTAQUES + FEED DE SIMULADOS) - 8 COLUNAS */}
+            <div className="lg:col-span-8 space-y-8">
+              
+              {/* NÍVEL 1: HERO BANNER DE ALTO DESTAQUE (HERO CARD DO PORTAL) */}
+              <section className="relative bg-gradient-to-br from-primary/15 via-card to-card border border-primary/25 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-md overflow-hidden group">
+                <div className="absolute top-0 right-0 -mr-12 -mt-12 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none group-hover:scale-110 transition-transform" />
 
-            {/* SECTION 0: My Progress */}
-            {stats.total > 0 && (
-              <section className="mb-8 grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                {/* Chart Card */}
-                <div className="bg-card rounded-2xl border border-border p-6 shadow-sm flex flex-col">
-                  <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-                    <span className="text-xl">📊</span> Meu Progresso Geral
-                  </h3>
-                  <div className="flex-1 min-h-[200px] relative">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <PieChart>
-                        <Pie
-                          data={[
-                            { name: "Concluído", value: stats.completed },
-                            {
-                              name: "Restante",
-                              value: stats.total - stats.completed,
-                            },
-                          ]}
-                          cx="50%"
-                          cy="50%"
-                          innerRadius={60}
-                          outerRadius={80}
-                          paddingAngle={5}
-                          dataKey="value"
-                          stroke="none"
-                        >
-                          <Cell key="cell-0" fill="#22c55e" />
-                          <Cell key="cell-1" fill="#334155" opacity={0.3} />
-                        </Pie>
-                        <RechartsTooltip
-                          contentStyle={{
-                            backgroundColor: "#1e293b",
-                            borderColor: "#334155",
-                            color: "#f8fafc",
-                          }}
-                          itemStyle={{ color: "#f8fafc" }}
-                        />
-                        <Legend verticalAlign="bottom" height={36} />
-                      </PieChart>
-                    </ResponsiveContainer>
-                    {/* Center Text */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <div className="text-center">
-                        <span className="text-3xl font-bold text-foreground">
-                          {Math.round(
-                            (stats.completed / (stats.total || 1)) * 100,
-                          )}
-                          %
-                        </span>
-                        <p className="text-xs text-muted-foreground uppercase font-bold">
-                          Concluído
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                  <div className="space-y-4 max-w-xl">
+                    <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest bg-primary/20 text-primary border border-primary/30">
+                      <Sparkles className="w-4 h-4" />
+                      Destaque de Aprendizado
+                    </span>
 
-                {/* Recent Activity / Continue Watching */}
-                <div className="md:col-span-2 bg-gradient-to-br from-indigo-900/20 to-blue-900/20 rounded-2xl border border-indigo-500/20 p-6 shadow-sm flex flex-col justify-center">
-                  <div className="flex flex-col xs:flex-row justify-between items-center xs:items-center gap-6 mb-6">
-                    <div className="text-center xs:text-left">
-                      <h3 className="text-xl font-bold text-foreground flex items-center justify-center xs:justify-start gap-2">
-                        <span className="animate-pulse">▶️</span> Continue de
-                        onde parou
-                      </h3>
-                      <p className="text-muted-foreground text-sm mt-2 max-w-xs">
-                        Você estava estudando{" "}
-                        <strong className="text-indigo-400">
-                          {lastStudiedTopic.titulo}
-                        </strong>{" "}
-                        em <span className="text-muted-foreground">{lastStudiedTopic.materiaNome}</span>.
-                      </p>
-                    </div>
-                    <Link
-                      href={`/aulas/${lastStudiedTopic.materiaId}/${lastStudiedTopic.topicoId}`}
-                      className="w-full xs:w-auto text-center px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition shadow-lg shadow-indigo-500/20 active:scale-95"
-                    >
-                      Retomar Aula
-                    </Link>
-                  </div>
-                  <div className="bg-background/50 rounded-xl p-4 border border-border/50">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-foreground tracking-tight leading-tight">
+                      {lastStudiedTopic.titulo}
+                    </h2>
+
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                      Você está estudando na disciplina de <strong className="text-foreground font-bold">{lastStudiedTopic.materiaNome}</strong>. Mantenha o ritmo para dominar os temas do edital Petrobras.
+                    </p>
+
                     {(() => {
                       const progressKey = `${lastStudiedTopic.materiaId}/${lastStudiedTopic.topicoId}`;
                       const progress = allContentProgress[progressKey];
-
-                      let percent = progress?.progress_percent || 0;
-                      let moduleName = "Continuar Estudando";
-
-                      if (progress?.completed) {
-                        percent = 100;
-                        moduleName = "Aula Concluída";
-                      } else if (percent > 0) {
-                        moduleName = "Em andamento";
-                      } else {
-                        percent = 0;
-                        moduleName = "Não iniciado";
-                      }
+                      const percent = progress?.progress_percent || 0;
 
                       return (
-                        <>
-                          <div className="flex justify-between text-sm mb-2 font-bold text-muted-foreground">
-                            <span>{moduleName}</span>
-                            <span>{percent}% Concluído</span>
-                          </div>
-                          <div className="h-3 bg-muted rounded-full overflow-hidden">
+                        <div className="pt-2 flex items-center gap-3">
+                          <div className="flex-1 max-w-xs h-3 bg-muted rounded-full overflow-hidden p-0.5 border border-border/50">
                             <div
-                              className="h-full bg-indigo-500 rounded-full shadow-[0_0_10px_rgba(99,102,241,0.5)] transition-all duration-1000"
+                              className="h-full bg-primary rounded-full transition-all duration-700"
                               style={{ width: `${percent}%` }}
-                            ></div>
+                            />
                           </div>
-                        </>
+                          <span className="text-sm font-black text-foreground font-mono">{percent}% concluído</span>
+                        </div>
                       );
                     })()}
                   </div>
+
+                  <div className="w-full md:w-auto flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+                    <Link
+                      href={`/aulas/${lastStudiedTopic.materiaId}/${lastStudiedTopic.topicoId}`}
+                      className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-black rounded-2xl text-sm uppercase tracking-wider shadow-lg hover:opacity-95 transition hover:scale-105 active:scale-95 text-center text-white dark:text-white"
+                    >
+                      Retomar Conteúdo
+                      <ArrowRight className="w-5 h-5 text-white" />
+                    </Link>
+                  </div>
                 </div>
               </section>
-            )}
 
-            {/* SECTION 1: Aulas (Moved to Top) */}
-            <section className="mb-8 p-6 bg-blue-500/5 rounded-3xl border border-blue-500/10">
-              <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
-                <span className="p-2 bg-blue-500/20 rounded-lg text-blue-500 text-xl">
-                  📚
-                </span>
-                Conteúdo Teórico e Aulas
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* NÍVEL 2: BANNERS SECUNDÁRIOS DE APRENDIZADO (GRID 2 COLUNAS DE DESTAQUE) */}
+              <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Banner 1: Aulas Teóricas */}
                 <Link
                   href="/aulas"
-                  className="group bg-card backdrop-blur-lg rounded-xl p-6 border border-border shadow-lg hover:border-blue-500/50 transition-all hover:transform hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10"
+                  className="group bg-card border border-border/70 rounded-3xl p-6 sm:p-7 shadow-sm hover:border-primary/50 transition-all flex flex-col justify-between space-y-5 hover:-translate-y-1 hover:shadow-md"
                 >
-                  <div className="flex flex-col xs:flex-row items-center xs:items-start gap-4">
-                    <div className="text-4xl xs:text-5xl p-4 xs:p-0 bg-blue-500/10 xs:bg-transparent rounded-2xl xs:rounded-none shrink-0 mb-2 xs:mb-0">
-                      📖
+                  <div className="flex items-start gap-4">
+                    <div className="p-3.5 bg-blue-500/10 text-blue-500 rounded-2xl group-hover:scale-110 transition-transform shrink-0">
+                      <BookOpen className="w-7 h-7" />
                     </div>
-                    <div className="text-center xs:text-left">
-                      <h3 className="text-xl font-bold text-foreground group-hover:text-blue-500 transition-colors">
-                        Conteúdo Teórico
+                    <div className="space-y-1.5">
+                      <span className="text-xs font-extrabold uppercase tracking-widest text-blue-500">
+                        Teoria C.E.D.E.A
+                      </span>
+                      <h3 className="text-lg sm:text-xl font-black text-foreground group-hover:text-primary transition-colors">
+                        Módulos Teóricos & Aulas
                       </h3>
-                      <p className="text-muted-foreground text-sm mt-1 leading-relaxed">
-                        Aulas completas organizadas por edital, com
-                        acompanhamento de progresso.
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                        Aulas completas com 10 módulos, síntese estratégica e FlipCards de memorização.
                       </p>
                     </div>
                   </div>
-                  <div className="mt-6 flex items-center justify-center xs:justify-start gap-2 text-blue-400 font-bold group-hover:text-blue-300 transition text-xs uppercase tracking-widest border-t border-border/50 pt-4 xs:border-none xs:pt-0">
-                    Acessar Aulas
-                    <svg
-                      className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
+
+                  <div className="flex items-center justify-between text-xs font-black text-primary group-hover:gap-2 transition-all pt-3 border-t border-border/50">
+                    <span>Acessar Módulos de Estudo</span>
+                    <ChevronRight className="w-4 h-4" />
                   </div>
                 </Link>
 
+                {/* Banner 2: Plano de Estudos */}
                 <Link
                   href="/plano-estudos"
-                  className="group bg-card backdrop-blur-lg rounded-xl p-6 border border-border shadow-lg hover:border-emerald-500/50 transition-all hover:transform hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/10"
+                  className="group bg-card border border-border/70 rounded-3xl p-6 sm:p-7 shadow-sm hover:border-emerald-500/50 transition-all flex flex-col justify-between space-y-5 hover:-translate-y-1 hover:shadow-md"
                 >
-                  <div className="flex flex-col xs:flex-row items-center xs:items-start gap-4">
-                    <div className="text-4xl xs:text-5xl p-4 xs:p-0 bg-emerald-500/10 xs:bg-transparent rounded-2xl xs:rounded-none shrink-0 mb-2 xs:mb-0">
-                      🎯
+                  <div className="flex items-start gap-4">
+                    <div className="p-3.5 bg-emerald-500/10 text-emerald-500 rounded-2xl group-hover:scale-110 transition-transform shrink-0">
+                      <CalendarCheck className="w-7 h-7" />
                     </div>
-                    <div className="text-center xs:text-left">
-                      <h3 className="text-xl font-bold text-foreground group-hover:text-emerald-500 transition-colors">
-                        Plano de Estudos
+                    <div className="space-y-1.5">
+                      <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-500">
+                        Cronograma Guiado
+                      </span>
+                      <h3 className="text-lg sm:text-xl font-black text-foreground group-hover:text-emerald-500 transition-colors">
+                        Plano de Estudos Individual
                       </h3>
-                      <p className="text-muted-foreground text-sm mt-1 leading-relaxed">
-                        Cronograma personalizado baseado no seu tempo
-                        disponível.
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                        Distribuição personalizada do tempo por matéria com base no seu edital.
                       </p>
                     </div>
                   </div>
-                  <div className="mt-6 flex items-center justify-center xs:justify-start gap-2 text-emerald-400 font-bold group-hover:text-emerald-300 transition text-xs uppercase tracking-widest border-t border-border/50 pt-4 xs:border-none xs:pt-0">
-                    Acessar Plano
-                    <svg
-                      className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
+
+                  <div className="flex items-center justify-between text-xs font-black text-emerald-500 group-hover:gap-2 transition-all pt-3 border-t border-border/50">
+                    <span>Ver Meu Cronograma</span>
+                    <ChevronRight className="w-4 h-4" />
                   </div>
                 </Link>
-              </div>
-            </section>
+              </section>
 
-            {/* SECTION 2: Simulados Rápidos */}
-            <section className="mb-8 p-4 sm:p-6 bg-muted/20 rounded-2xl sm:rounded-3xl border border-border">
-              <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <span className="p-2 bg-green-500/20 rounded-lg text-green-500 text-lg sm:text-xl">
-                  ⚡
-                </span>
-                Simulados Rápidos
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                {/* Português Card */}
-                <button
-                  onClick={() =>
-                    handleSimuladoClick(
-                      "portugues",
-                      "Língua Portuguesa",
-                      "blue",
-                    )
-                  }
-                  className="bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:border-primary/50 transition-all group text-left flex flex-col h-full active:scale-[0.98]"
-                >
-                  <div className="h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 shrink-0"></div>
-                  <div className="p-5 sm:p-6 flex flex-col h-full justify-between gap-6">
-                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-                      <div className="text-3xl sm:text-5xl p-3 sm:p-0 bg-blue-500/10 sm:bg-transparent rounded-xl sm:rounded-none shrink-0 mb-2 sm:mb-0 transition-transform group-hover:scale-110">
-                        📝
-                      </div>
-                      <div className="text-center sm:text-left">
-                        <h3 className="text-xl sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300 bg-clip-text text-transparent">
-                          LÍNGUA PORTUGUESA
-                        </h3>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center sm:items-end gap-3 mt-auto border-t border-border/30 pt-4">
-                      <p className="text-muted-foreground text-xs leading-snug line-clamp-2 flex-1">
-                        Gramática, interpretação de texto e redação oficial.
-                      </p>
-                      <span className="text-[10px] bg-muted text-muted-foreground px-2 py-0.5 rounded shrink-0 font-bold">
-                        5 min
-                      </span>
-                    </div>
+              {/* NÍVEL 3: FEED DE SIMULADOS RÁPIDOS POR DISCIPLINA (SEM ESPAÇO VAGO E COM TÍTULOS EXPANDIDOS) */}
+              <section className="space-y-4 pt-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-black text-foreground flex items-center gap-2.5 tracking-tight">
+                      <Zap className="w-6 h-6 text-amber-500" />
+                      Simulados Rápidos por Disciplina
+                    </h2>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                      Fixação diária de 5 minutos com questões comentadas.
+                    </p>
                   </div>
-                </button>
+                </div>
 
-                {/* Matemática Card */}
-                <button
-                  onClick={() =>
-                    handleSimuladoClick("matematica", "Matemática", "purple")
-                  }
-                  className="bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:border-primary/50 transition-all group text-left flex flex-col h-full active:scale-[0.98]"
+                {/* Grid Responsivo Inteligente: Se houver 3 matérias, ocupa 3 colunas perfeitamente sem buracos! */}
+                <div
+                  className={`grid grid-cols-1 sm:grid-cols-2 ${
+                    showIngles ? "lg:grid-cols-4" : "lg:grid-cols-3"
+                  } gap-5`}
                 >
-                  <div className="h-1.5 bg-gradient-to-r from-purple-500 to-pink-500 shrink-0"></div>
-                  <div className="p-5 sm:p-6 flex flex-col h-full justify-between gap-6">
-                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-                      <div className="text-3xl sm:text-5xl p-3 sm:p-0 bg-purple-500/10 sm:bg-transparent rounded-xl sm:rounded-none shrink-0 mb-2 sm:mb-0 transition-transform group-hover:scale-110">
-                        🔢
-                      </div>
-                      <div className="text-center sm:text-left">
-                        <h3 className="text-xl sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-purple-600 to-pink-500 dark:from-purple-400 dark:to-pink-500 bg-clip-text text-transparent">
-                          MATEMÁTICA
-                        </h3>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center sm:items-end gap-3 mt-auto border-t border-border/30 pt-4">
-                      <p className="text-muted-foreground text-xs leading-snug line-clamp-2 flex-1">
-                        Raciocínio lógico, álgebra e geometria aplicada.
-                      </p>
-                      <span className="text-[10px] bg-muted text-muted-foreground px-2 py-0.5 rounded shrink-0 font-bold">
-                        5 min
-                      </span>
-                    </div>
-                  </div>
-                </button>
-
-                {/* Específicos Card */}
-                <button
-                  onClick={() =>
-                    handleSimuladoClick(
-                      "especificas",
-                      "Conhecimentos Específicos",
-                      "green",
-                    )
-                  }
-                  className="bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:border-primary/50 transition-all group text-left flex flex-col h-full active:scale-[0.98]"
-                >
-                  <div className="h-1.5 bg-gradient-to-r from-green-500 to-emerald-500 shrink-0"></div>
-                  <div className="p-5 sm:p-6 flex flex-col h-full justify-between gap-6">
-                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-                      <div className="text-3xl sm:text-5xl p-3 sm:p-0 bg-green-500/10 sm:bg-transparent rounded-xl sm:rounded-none shrink-0 mb-2 sm:mb-0 transition-transform group-hover:scale-110">
-                        🏭
-                      </div>
-                      <div className="text-center sm:text-left">
-                        <h3 className="text-xl sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-green-600 to-yellow-500 dark:from-green-400 dark:to-yellow-400 bg-clip-text text-transparent">
-                          ESPECÍFICOS
-                        </h3>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center sm:items-end gap-3 mt-auto border-t border-border/30 pt-4">
-                      <p className="text-muted-foreground text-xs leading-snug line-clamp-2 flex-1">
-                        Questões focadas no seu cargo:{" "}
-                        {(() => {
-                          const cargoId =
-                            CARGO_ID_MAP[userData.cargo] || userData.cargo;
-                          const profissao = getProfissaoById(cargoId);
-                          return profissao?.nome || "Selecione no perfil";
-                        })()}
-                      </p>
-                      <span className="text-[10px] bg-muted text-muted-foreground px-2 py-0.5 rounded shrink-0 font-bold">
-                        5 min
-                      </span>
-                    </div>
-                  </div>
-                </button>
-
-                {/* Inglês Card - Apenas Nível Superior Estrito */}
-                {(userData.nivelConcurso === "superior" ||
-                  (!userData.nivelConcurso &&
-                    getProfissaoById(
-                      CARGO_ID_MAP[userData.cargo] || userData.cargo,
-                    )?.nivel === "superior")) && (
+                  {/* Português */}
                   <button
                     onClick={() =>
-                      handleSimuladoClick("ingles", "Língua Inglesa", "red")
+                      handleSimuladoClick("portugues", "Língua Portuguesa", "blue")
                     }
-                    className="bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:border-primary/50 transition-all group text-left flex flex-col h-full relative active:scale-[0.98]"
+                    className="bg-card border border-border/70 rounded-3xl p-6 text-left shadow-sm hover:border-blue-500/50 hover:shadow-md transition-all group flex flex-col justify-between space-y-5"
                   >
-                    <div className="h-1.5 bg-gradient-to-r from-red-500 to-rose-500 shrink-0"></div>
-                    <div className="p-5 sm:p-6 flex flex-col h-full justify-between gap-4">
-                      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-                        <div className="text-3xl sm:text-5xl p-3 sm:p-0 bg-red-500/10 sm:bg-transparent rounded-xl sm:rounded-none shrink-0 mb-2 sm:mb-0 transition-transform group-hover:scale-110 relative">
-                          🇺🇸
-                          <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-white dark:bg-zinc-900 border border-red-500 flex items-center justify-center shadow-md">
-                            <span className="text-[7px] font-black text-red-600">
-                              US
-                            </span>
-                          </div>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div className="p-3 bg-blue-500/10 text-blue-500 rounded-2xl group-hover:scale-110 transition-transform">
+                          <FileText className="w-6 h-6" />
                         </div>
-                        <div className="text-center sm:text-left">
-                          <h3 className="text-xl sm:text-2xl font-black uppercase leading-[1.1] sm:leading-tight bg-gradient-to-r from-red-600 to-rose-500 dark:from-red-400 dark:to-rose-500 bg-clip-text text-transparent">
-                            INGLÊS
-                          </h3>
-                        </div>
-                      </div>
-                      <div className="flex justify-between items-end gap-3 mt-auto">
-                        <p className="text-muted-foreground text-xs sm:text-sm leading-snug">
-                          Compreensão de texto e gramática aplicada.
-                        </p>
-                        <span className="text-[9px] bg-muted text-muted-foreground px-2 py-0.5 rounded shrink-0 font-bold uppercase tracking-tight">
-                          Superior
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 bg-blue-500/10 text-blue-500 rounded-full border border-blue-500/20">
+                          5 min
                         </span>
                       </div>
+
+                      <div>
+                        <h3 className="text-lg font-black text-foreground group-hover:text-blue-500 transition-colors">
+                          Língua Portuguesa
+                        </h3>
+                        <p className="text-xs text-muted-foreground font-semibold mt-0.5">
+                          5 Questões • Rápido
+                        </p>
+                      </div>
+
+                      <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+                        Gramática, ortografia, concordância e interpretação de texto Cesgranrio.
+                      </p>
+                    </div>
+
+                    <div className="flex items-center justify-between text-xs font-black text-blue-500 group-hover:gap-1.5 transition-all pt-3 border-t border-border/40">
+                      <span>Iniciar Treino</span>
+                      <ArrowRight className="w-4 h-4" />
                     </div>
                   </button>
-                )}
-              </div>
-            </section>
 
-            {/* SECTION 3: Intensive Simulados */}
-            <section className="mb-8 p-6 bg-purple-500/5 rounded-3xl border border-purple-500/10">
-              <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
-                <span className="p-2 bg-purple-500/20 rounded-lg text-purple-500 text-xl">
-                  🔥
-                </span>
-                Treino Intensivo de Aceleração
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {userData.plan === "free" ? (
-                  <>
-                    <div className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border shadow-lg relative group">
-                      <div className="absolute inset-0 z-10 bg-black/80 backdrop-blur-[2px] flex flex-col items-center justify-center p-4 text-center transition-opacity">
-                        <div className="text-5xl mb-3">🔒</div>
-                        <h3 className="text-xl font-bold text-white mb-1">
-                          Simulado Específico
-                        </h3>
-                        <p className="text-gray-300 text-sm mb-4">
-                          Exclusivo para assinantes PRO
-                        </p>
-                        <Link
-                          href="/pricing"
-                          className="px-6 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 font-bold rounded-lg hover:shadow-lg hover:shadow-orange-500/25 transition-all transform hover:scale-105"
-                        >
-                          Desbloquear 🚀
-                        </Link>
-                      </div>
-                      <div className="p-6 opacity-30 pointer-events-none grayscale">
-                        <div className="bg-gradient-to-r from-purple-600 to-purple-700 p-6 text-white rounded-lg mb-4">
-                          <div className="text-4xl mb-2">📝</div>
-                          <h3 className="text-xl font-bold">Prova Completa</h3>
-                        </div>
-                        <div className="p-2 flex justify-between">
-                          <span>Bloqueado</span>
-                          <span>4h</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border shadow-lg relative group">
-                      <div className="absolute inset-0 z-10 bg-black/80 backdrop-blur-[2px] flex flex-col items-center justify-center p-4 text-center transition-opacity">
-                        <div className="text-5xl mb-3">👑</div>
-                        <h3 className="text-xl font-bold text-white mb-1">
-                          Maratona CESGRANRIO
-                        </h3>
-                        <p className="text-gray-300 text-sm mb-4">
-                          Teste seus limites como no dia da prova!
-                        </p>
-                        <Link
-                          href="/pricing"
-                          className="px-6 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 font-bold rounded-lg hover:shadow-lg hover:shadow-orange-500/25 transition-all transform hover:scale-105"
-                        >
-                          Virar PRO 👑
-                        </Link>
-                      </div>
-                      <div className="p-6 opacity-30 pointer-events-none grayscale">
-                        <div className="bg-gradient-to-r from-yellow-500 to-orange-500 p-6 text-slate-900 rounded-lg mb-4">
-                          <div className="text-4xl mb-2">🔥</div>
-                          <h3 className="text-xl font-bold">
-                            Maratona 70 Questões
-                          </h3>
-                        </div>
-                        <div className="p-2 flex justify-between">
-                          <span>Bloqueado</span>
-                          <span>4h</span>
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      onClick={() =>
-                        setConfigModal({
-                          open: true,
-                          tipo: "intensivo",
-                          nome: "Treino Intensivo focalizado",
-                          cor: "purple",
-                          qtd: 20,
-                        })
-                      }
-                      className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border hover:border-purple-500/50 transition-all group text-left w-full shadow-lg"
-                    >
-                      <div className="bg-gradient-to-r from-purple-600 to-purple-800 p-6 text-white group-hover:from-purple-500 group-hover:to-purple-700 transition-all relative overflow-hidden">
-                        <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl transform translate-x-10 -translate-y-10">
-                          🎯
-                        </div>
-                        <div className="relative z-10 flex flex-col items-center xs:items-start text-center xs:text-left">
-                          <div className="text-4xl mb-3 p-4 bg-white/10 rounded-2xl xs:bg-transparent xs:p-0">
-                            🎯
-                          </div>
-                          <h3 className="text-xl font-bold">
-                            Treino Intensivo
-                          </h3>
-                          <p className="text-purple-100 text-sm mt-1 leading-relaxed">
-                            20 questões de uma matéria ou tópico específico
-                          </p>
-                          <div className="flex justify-center xs:justify-start gap-2 mt-4">
-                            <span className="px-2 py-1 bg-white/20 rounded text-xs font-bold uppercase tracking-wider">
-                              Foco Total
-                            </span>
-                            <span className="px-2 py-1 bg-white/20 rounded text-xs font-bold uppercase tracking-wider">
-                              30 min
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="p-4 flex items-center justify-between">
-                        <span className="text-purple-400 font-bold group-hover:text-purple-300 transition-colors flex items-center gap-2">
-                          Configurar Treino
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M14 5l7 7m0 0l-7 7m7-7H3"
-                            />
-                          </svg>
-                        </span>
-                      </div>
-                    </button>
-
-                    <button
-                      onClick={() =>
-                        setConfigModal({
-                          open: true,
-                          tipo: "maratona",
-                          nome: "Maratona CESGRANRIO",
-                          cor: "yellow",
-                          qtd: 70,
-                        })
-                      }
-                      className="bg-card backdrop-blur-lg rounded-xl overflow-hidden border border-border hover:border-yellow-500/50 transition-all group text-left w-full shadow-lg"
-                    >
-                      <div className="bg-gradient-to-r from-yellow-600 to-orange-600 p-6 text-white group-hover:from-yellow-500 group-hover:to-orange-500 transition-all relative overflow-hidden">
-                        <div className="absolute top-0 right-0 p-4 opacity-10 text-9xl transform translate-x-10 -translate-y-10">
-                          🔥
-                        </div>
-                        <div className="relative z-10 flex flex-col items-center xs:items-start text-center xs:text-left">
-                          <div className="text-4xl mb-3 p-4 bg-white/10 rounded-2xl xs:bg-transparent xs:p-0">
-                            🔥
-                          </div>
-                          <h3 className="text-xl font-bold">
-                            Maratona Oficial
-                          </h3>
-                          <p className="text-orange-50 text-sm mt-1 leading-relaxed">
-                            Simulação real da prova (Médio ou Superior)
-                          </p>
-                          <div className="flex flex-wrap justify-center xs:justify-start gap-2 mt-4">
-                            <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold uppercase tracking-wider">
-                              Port
-                            </span>
-                            <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold uppercase tracking-wider">
-                              Mat
-                            </span>
-                            <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold uppercase tracking-wider">
-                              Esp
-                            </span>
-                            {userData.nivel === "superior" && (
-                              <span className="px-2 py-1 bg-black/20 rounded text-xs font-bold uppercase tracking-wider">
-                                Ing
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="p-4 flex items-center justify-between">
-                        <span className="text-yellow-400 font-bold group-hover:text-yellow-300 transition-colors flex items-center gap-2">
-                          Aceitar Desafio
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M14 5l7 7m0 0l-7 7m7-7H3"
-                            />
-                          </svg>
-                        </span>
-                        <span className="text-gray-400 text-sm">~4 horas</span>
-                      </div>
-                    </button>
-                  </>
-                )}
-              </div>
-            </section>
-
-            {/* Config Modal */}
-            {configModal.open && (
-              <div
-                className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-                onClick={(e) => {
-                  if (e.target === e.currentTarget)
-                    setConfigModal({ open: false });
-                }}
-              >
-                <div className="bg-card border border-border rounded-2xl w-full max-w-md shadow-2xl animate-in fade-in zoom-in duration-200">
-                  <div
-                    className={`p-6 bg-gradient-to-r ${
-                      configModal.cor === "blue"
-                        ? "from-blue-500/20 to-cyan-500/20"
-                        : configModal.cor === "purple"
-                          ? "from-purple-500/20 to-pink-500/20"
-                          : configModal.cor === "green"
-                            ? "from-green-500/20 to-emerald-500/20"
-                            : configModal.cor === "yellow"
-                              ? "from-yellow-500/20 to-orange-500/20"
-                              : configModal.cor === "red"
-                                ? "from-red-500/20 to-rose-500/20"
-                                : "from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900"
-                    } rounded-t-2xl border-b border-border flex justify-between items-center`}
+                  {/* Matemática */}
+                  <button
+                    onClick={() =>
+                      handleSimuladoClick("matematica", "Matemática", "indigo")
+                    }
+                    className="bg-card border border-border/70 rounded-3xl p-6 text-left shadow-sm hover:border-indigo-500/50 hover:shadow-md transition-all group flex flex-col justify-between space-y-5"
                   >
-                    <h3 className="text-xl font-bold text-foreground">
-                      {configModal.nome}
-                    </h3>
-                    <button
-                      onClick={() => setConfigModal({ open: false })}
-                      className="p-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition-colors text-foreground"
-                    >
-                      ✕
-                    </button>
-                  </div>
-
-                  <div className="p-6 space-y-6">
-                    {/* Difficulty Selection */}
-                    <div>
-                      <label className="block text-gray-400 text-sm mb-2">
-                        Nível de Dificuldade
-                      </label>
-                      <div className="grid grid-cols-2 gap-2">
-                        {["Fácil", "Médio", "Difícil", "Casca de Banana"].map(
-                          (dif) => (
-                            <button
-                              key={dif}
-                              onClick={() =>
-                                setSelection({ ...selection, dificuldade: dif })
-                              }
-                              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
-                                selection.dificuldade === dif
-                                  ? "bg-yellow-500 text-slate-900 shadow-md shadow-yellow-500/20"
-                                  : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
-                              }`}
-                            >
-                              {dif}
-                            </button>
-                          ),
-                        )}
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl group-hover:scale-110 transition-transform">
+                          <Activity className="w-6 h-6" />
+                        </div>
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 bg-indigo-500/10 text-indigo-500 rounded-full border border-indigo-500/20">
+                          5 min
+                        </span>
                       </div>
+
+                      <div>
+                        <h3 className="text-lg font-black text-foreground group-hover:text-indigo-500 transition-colors">
+                          Matemática
+                        </h3>
+                        <p className="text-xs text-muted-foreground font-semibold mt-0.5">
+                          5 Questões • Rápido
+                        </p>
+                      </div>
+
+                      <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+                        Raciocínio lógico, matemática financeira, probabilidade e estatística.
+                      </p>
                     </div>
 
-                    <div>
-                      <label className="block text-muted-foreground text-sm mb-2">
-                        Assunto Específico (Opcional)
-                      </label>
-                      <select
-                        className="w-full bg-card border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:border-yellow-500 appearance-none shadow-sm"
-                        value={selection.assunto}
-                        onChange={(e) =>
-                          setSelection({
-                            ...selection,
-                            assunto: e.target.value,
+                    <div className="flex items-center justify-between text-xs font-black text-indigo-500 group-hover:gap-1.5 transition-all pt-3 border-t border-border/40">
+                      <span>Iniciar Treino</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </button>
+
+                  {/* Específicos */}
+                  <button
+                    onClick={() =>
+                      handleSimuladoClick(
+                        "especificas",
+                        "Conhecimentos Específicos",
+                        "green",
+                      )
+                    }
+                    className="bg-card border border-border/70 rounded-3xl p-6 text-left shadow-sm hover:border-emerald-500/50 hover:shadow-md transition-all group flex flex-col justify-between space-y-5"
+                  >
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl group-hover:scale-110 transition-transform">
+                          <ShieldCheck className="w-6 h-6" />
+                        </div>
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 bg-emerald-500/10 text-emerald-500 rounded-full border border-emerald-500/20">
+                          Edital
+                        </span>
+                      </div>
+
+                      <div>
+                        <h3 className="text-lg font-black text-foreground group-hover:text-emerald-500 transition-colors">
+                          Conhecimentos Específicos
+                        </h3>
+                        <p className="text-xs text-muted-foreground font-semibold mt-0.5">
+                          Foco no Seu Cargo
+                        </p>
+                      </div>
+
+                      <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+                        {profissaoUsuario?.nome || "Questões alinhadas ao seu edital selecionado"}.
+                      </p>
+                    </div>
+
+                    <div className="flex items-center justify-between text-xs font-black text-emerald-500 group-hover:gap-1.5 transition-all pt-3 border-t border-border/40">
+                      <span>Iniciar Treino</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </button>
+
+                  {/* Inglês (Apenas para Nível Superior) */}
+                  {showIngles && (
+                    <button
+                      onClick={() =>
+                        handleSimuladoClick("ingles", "Língua Inglesa", "red")
+                      }
+                      className="bg-card border border-border/70 rounded-3xl p-6 text-left shadow-sm hover:border-rose-500/50 hover:shadow-md transition-all group flex flex-col justify-between space-y-5"
+                    >
+                      <div className="space-y-3">
+                        <div className="flex items-center justify-between">
+                          <div className="p-3 bg-rose-500/10 text-rose-500 rounded-2xl group-hover:scale-110 transition-transform">
+                            <Globe className="w-6 h-6" />
+                          </div>
+                          <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 bg-rose-500/10 text-rose-500 rounded-full border border-rose-500/20">
+                            Superior
+                          </span>
+                        </div>
+
+                        <div>
+                          <h3 className="text-lg font-black text-foreground group-hover:text-rose-500 transition-colors">
+                            Língua Inglesa
+                          </h3>
+                          <p className="text-xs text-muted-foreground font-semibold mt-0.5">
+                            Interpretação Técnica
+                          </p>
+                        </div>
+
+                        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+                          Compreensão técnica de textos e vocabulário da indústria de energia.
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-between text-xs font-black text-rose-500 group-hover:gap-1.5 transition-all pt-3 border-t border-border/40">
+                        <span>Iniciar Treino</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
+                    </button>
+                  )}
+                </div>
+              </section>
+
+              {/* NÍVEL 3: TREINO INTENSIVO & MARATONA CESGRANRIO */}
+              <section className="space-y-4 pt-2">
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-black text-foreground flex items-center gap-2.5 tracking-tight">
+                    <Flame className="w-6 h-6 text-orange-500" />
+                    Treino Intensivo & Maratonas Oficiais
+                  </h2>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                    Provas completas com cronômetro para simular o dia da prova.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {userData.plan === "free" ? (
+                    <>
+                      {/* Card Bloqueado: Intensivo */}
+                      <div className="bg-card border border-border/70 rounded-3xl p-7 relative overflow-hidden flex flex-col justify-between shadow-sm">
+                        <div className="absolute inset-0 bg-background/85 dark:bg-slate-950/85 backdrop-blur-md z-10 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                          <div className="p-3.5 bg-amber-500/10 text-amber-500 rounded-full border border-amber-500/20">
+                            <Lock className="w-6 h-6" />
+                          </div>
+                          <h3 className="text-lg font-black text-foreground">
+                            Simulado Intensivo (20 Questões)
+                          </h3>
+                          <p className="text-xs sm:text-sm text-muted-foreground max-w-xs">
+                            Exclusivo para assinantes PRO. Treine tópicos específicos em profundidade.
+                          </p>
+                          <Link
+                            href="/pricing"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black rounded-xl text-xs shadow-md hover:scale-105 transition-all uppercase tracking-wider"
+                          >
+                            <Rocket className="w-4 h-4 fill-slate-950" />
+                            Acessar com PRO
+                          </Link>
+                        </div>
+
+                        <div className="opacity-20 pointer-events-none space-y-4">
+                          <div className="flex items-center gap-3">
+                            <Target className="w-6 h-6 text-indigo-500" />
+                            <h3 className="font-black text-lg">Treino Intensivo</h3>
+                          </div>
+                          <p className="text-xs text-muted-foreground">
+                            20 questões com gabarito.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Card Bloqueado: Maratona */}
+                      <div className="bg-card border border-border/70 rounded-3xl p-7 relative overflow-hidden flex flex-col justify-between shadow-sm">
+                        <div className="absolute inset-0 bg-background/85 dark:bg-slate-950/85 backdrop-blur-md z-10 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                          <div className="p-3.5 bg-amber-500/10 text-amber-500 rounded-full border border-amber-500/20">
+                            <Crown className="w-6 h-6" />
+                          </div>
+                          <h3 className="text-lg font-black text-foreground">
+                            Maratona CESGRANRIO (70 Questões)
+                          </h3>
+                          <p className="text-xs sm:text-sm text-muted-foreground max-w-xs">
+                            Simulação oficial de 4h.
+                          </p>
+                          <Link
+                            href="/pricing"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black rounded-xl text-xs shadow-md hover:scale-105 transition-all uppercase tracking-wider"
+                          >
+                            <Crown className="w-4 h-4 fill-slate-950" />
+                            Seja PRO
+                          </Link>
+                        </div>
+
+                        <div className="opacity-20 pointer-events-none space-y-4">
+                          <div className="flex items-center gap-3">
+                            <Trophy className="w-6 h-6 text-amber-500" />
+                            <h3 className="font-black text-lg">Maratona 70 Questões</h3>
+                          </div>
+                          <p className="text-xs text-muted-foreground">
+                            Cronômetro real de 4 horas.
+                          </p>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* Liberado: Intensivo */}
+                      <button
+                        onClick={() =>
+                          setConfigModal({
+                            open: true,
+                            tipo: "intensivo",
+                            nome: "Treino Intensivo Focalizado",
+                            cor: "indigo",
+                            qtd: 20,
                           })
                         }
+                        className="bg-card border border-border/70 rounded-3xl p-7 text-left shadow-sm hover:border-indigo-500/50 hover:shadow-md transition-all group flex flex-col justify-between space-y-6"
                       >
-                        <option value="">Todos os tópicos (Misturado)</option>
-                        {(() => {
-                          // Determine topics based on selected type
-                          let topics: string[] = [];
+                        <div className="flex items-start justify-between">
+                          <div className="p-3.5 bg-indigo-500/10 text-indigo-500 rounded-2xl group-hover:scale-110 transition-transform">
+                            <Target className="w-7 h-7" />
+                          </div>
+                          <span className="text-xs font-extrabold uppercase tracking-wider px-3 py-1 bg-indigo-500/10 text-indigo-500 rounded-full border border-indigo-500/20">
+                            20 Questões
+                          </span>
+                        </div>
 
-                          // Handle general subjects (Portuguese, Math) from CONTEUDO_MATERIAS
-                          if (
-                            configModal.tipo === "portugues" ||
-                            configModal.tipo === "matematica"
-                          ) {
-                            const materia = CONTEUDO_MATERIAS.find(
-                              (m) => m.id === configModal.tipo,
-                            );
-                            if (materia) {
-                              topics = materia.topicos.map((t) => t.titulo);
-                            }
-                          }
-                          // Handle specific knowledge from PROFISSOES based on user role
-                          else if (configModal.tipo === "especificas") {
-                            // Find the profession matching the user's cargo
-                            const mappedCargoId =
-                              CARGO_ID_MAP[userData.cargo] || userData.cargo;
-                            const profession = PROFISSOES.find(
-                              (p) => p.id === mappedCargoId,
-                            );
-                            if (profession) {
-                              // Flatten all topics from all blocks
-                              topics = profession.blocos.flatMap(
-                                (b) => b.topicos,
-                              );
-                            }
-                          }
-                          // Handle 'intensivo' (20 questions focused)
-                          else if (configModal.tipo === "intensivo") {
-                            // Option to choose full subjects
-                            topics.push("Língua Portuguesa");
-                            topics.push("Matemática");
+                        <div className="space-y-1.5">
+                          <h3 className="text-lg sm:text-xl font-black text-foreground group-hover:text-indigo-500 transition-colors">
+                            Treino Intensivo de Aceleração
+                          </h3>
+                          <p className="text-xs sm:text-sm text-muted-foreground">
+                            20 questões focadas no tópico da sua escolha com análise imediata.
+                          </p>
+                        </div>
 
-                            // Add profession-specific topics
-                            const mappedCargoId =
-                              CARGO_ID_MAP[userData.cargo] || userData.cargo;
-                            const profession = PROFISSOES.find(
-                              (p) => p.id === mappedCargoId,
-                            );
-                            if (profession) {
-                              topics.push(
-                                ...profession.blocos.flatMap((b) => b.topicos),
-                              );
-                            }
-                          }
-                          // Handle 'maratona' - Fixed structure, no topic selection needed
-                          else if (configModal.tipo === "maratona") {
-                            return (
-                              <option value="">
-                                Estrutura fixa do Edital (Port + Mat + Esp)
-                              </option>
-                            );
-                          }
-                          // Handle 'ingles'
-                          else if (configModal.tipo === "ingles") {
-                            const materia = CONTEUDO_MATERIAS.find(
-                              (m) => m.id === "ingles",
-                            );
-                            if (materia) {
-                              topics = materia.topicos.map((t) => t.titulo);
-                            }
-                          }
+                        <div className="flex items-center justify-between text-xs font-black text-indigo-500 group-hover:gap-2 transition-all pt-3 border-t border-border/40">
+                          <span>Configurar Treino</span>
+                          <ChevronRight className="w-4 h-4" />
+                        </div>
+                      </button>
 
-                          return topics.map((topic, index) => (
-                            <option key={index} value={topic}>
-                              {topic}
-                            </option>
-                          ));
-                        })()}
-                      </select>
-                      {configModal.tipo === "intensivo" && (
-                        <p className="text-xs text-muted-foreground mt-1">
-                          Escolha uma matéria completa ou um tópico específico
-                          para treinar.
-                        </p>
-                      )}
-                      {configModal.tipo === "maratona" && (
-                        <p className="text-xs text-muted-foreground mt-1">
-                          O simulado seguirá a distribuição exata do edital para
-                          seu nível.
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Start Button */}
-                    <button
-                      onClick={() => {
-                        if (!configModal.tipo) return;
-
-                        const queryParams = new URLSearchParams({
-                          tipo: configModal.tipo,
-                          qtd: configModal.qtd?.toString() || "10",
-                          dificuldade: selection.dificuldade,
-                          assunto: selection.assunto,
-                        });
-
-                        if (configModal.tipo === "maratona") {
-                          router.push(
-                            `/maratona-100?${queryParams.toString()}`,
-                          );
-                        } else if (configModal.tipo === "especificas") {
-                          router.push(
-                            `/simulado-especifico?${queryParams.toString()}`,
-                          );
-                        } else {
-                          // Português, Matemática e Inglês vão para o simulado rápido
-                          router.push(
-                            `/simulado-rapido?${queryParams.toString()}`,
-                          );
+                      {/* Liberado: Maratona */}
+                      <button
+                        onClick={() =>
+                          setConfigModal({
+                            open: true,
+                            tipo: "maratona",
+                            nome: "Maratona Oficial CESGRANRIO",
+                            cor: "yellow",
+                            qtd: 70,
+                          })
                         }
-                      }}
-                      className="w-full py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all text-lg"
-                    >
-                      Começar Desafio 🚀
-                    </button>
+                        className="bg-card border border-border/70 rounded-3xl p-7 text-left shadow-sm hover:border-amber-500/50 hover:shadow-md transition-all group flex flex-col justify-between space-y-6"
+                      >
+                        <div className="flex items-start justify-between">
+                          <div className="p-3.5 bg-amber-500/10 text-amber-500 rounded-2xl group-hover:scale-110 transition-transform">
+                            <Crown className="w-7 h-7" />
+                          </div>
+                          <span className="text-xs font-extrabold uppercase tracking-wider px-3 py-1 bg-amber-500/10 text-amber-500 rounded-full border border-amber-500/20">
+                            70 Questões • 4h
+                          </span>
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <h3 className="text-lg sm:text-xl font-black text-foreground group-hover:text-amber-500 transition-colors">
+                            Maratona Oficial CESGRANRIO
+                          </h3>
+                          <p className="text-xs sm:text-sm text-muted-foreground">
+                            Simulado completo com a distribuição exata do edital para seu nível.
+                          </p>
+                        </div>
+
+                        <div className="flex items-center justify-between text-xs font-black text-amber-500 group-hover:gap-2 transition-all pt-3 border-t border-border/40">
+                          <span>Iniciar Maratona</span>
+                          <ChevronRight className="w-4 h-4" />
+                        </div>
+                      </button>
+                    </>
+                  )}
+                </div>
+              </section>
+            </div>
+
+            {/* COLUNA DIREITA (SIDEBAR DE APOIO COM WIDGETS VISUAIS) - 4 COLUNAS */}
+            <aside className="lg:col-span-4 space-y-6">
+              
+              {/* WIDGET 1: PROGRESSO NO EDITAL (GRÁFICO RECHARTS) */}
+              <div className="bg-card border border-border/70 rounded-3xl p-6 shadow-sm space-y-4">
+                <div className="flex items-center justify-between border-b border-border/60 pb-3">
+                  <h3 className="text-base font-black text-foreground flex items-center gap-2">
+                    <TrendingUp className="w-5 h-5 text-emerald-500" />
+                    Progresso no Edital
+                  </h3>
+                  <span className="text-xs font-mono font-black text-primary">
+                    {stats.completed}/{stats.total}
+                  </span>
+                </div>
+
+                <div className="h-48 w-full relative flex items-center justify-center">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={[
+                          { name: "Concluído", value: stats.completed },
+                          {
+                            name: "Restante",
+                            value: Math.max(0, stats.total - stats.completed),
+                          },
+                        ]}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={52}
+                        outerRadius={70}
+                        paddingAngle={4}
+                        dataKey="value"
+                        stroke="none"
+                      >
+                        <Cell key="cell-0" fill="#10b981" />
+                        <Cell key="cell-1" fill="hsl(var(--muted))" opacity={0.6} />
+                      </Pie>
+                      <RechartsTooltip
+                        contentStyle={{
+                          backgroundColor: "hsl(var(--card))",
+                          borderColor: "hsl(var(--border))",
+                          color: "hsl(var(--foreground))",
+                          borderRadius: "12px",
+                        }}
+                      />
+                    </PieChart>
+                  </ResponsiveContainer>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                    <span className="text-2xl font-black text-foreground">
+                      {Math.round((stats.completed / (stats.total || 1)) * 100)}%
+                    </span>
+                    <span className="text-[10px] text-muted-foreground uppercase font-bold tracking-wider">
+                      Concluído
+                    </span>
                   </div>
                 </div>
               </div>
-            )}
 
-            {/* Upgrade Banner for Free Users */}
-            {userData.plan === "free" && (
-              <div className="bg-gradient-to-br from-yellow-500/5 to-orange-500/5 backdrop-blur-lg rounded-2xl p-6 sm:p-10 border border-yellow-500/10 text-center shadow-sm">
-                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3">
-                  🚀 Desbloqueie todo o potencial!
+              {/* WIDGET 2: MÉTRICAS RÁPIDAS DE DESEMPENHO */}
+              <div className="bg-card border border-border/70 rounded-3xl p-6 shadow-sm space-y-4">
+                <h3 className="text-base font-black text-foreground flex items-center gap-2 border-b border-border/60 pb-3">
+                  <Activity className="w-5 h-5 text-blue-500" />
+                  Métricas da Semana
                 </h3>
-                <p className="text-sm sm:text-base text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-                  Assinantes PRO têm acesso ilimitado a Simulados Intensivos,
-                  Maratonas Oficiais, Ranking completo e análises de desempenho
-                  personalizadas.
-                </p>
-                <Link
-                  href="/pricing"
-                  className="px-8 py-3.5 bg-gradient-to-r from-yellow-500 to-orange-600 text-slate-900 font-bold rounded-xl hover:shadow-xl hover:shadow-orange-500/30 transition-all inline-block transform hover:scale-105 active:scale-95 text-sm uppercase tracking-widest"
-                >
-                  Ver Planos e Preços
-                </Link>
+
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between p-3.5 rounded-2xl bg-muted/40 border border-border/40">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-amber-500/10 text-amber-500 rounded-xl">
+                        <Zap className="w-4 h-4" />
+                      </div>
+                      <span className="text-xs font-extrabold text-muted-foreground">Sequência Ativa</span>
+                    </div>
+                    <span className="text-sm font-black text-foreground">{userData.sequencia_atual} dias</span>
+                  </div>
+
+                  <div className="flex items-center justify-between p-3.5 rounded-2xl bg-muted/40 border border-border/40">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-emerald-500/10 text-emerald-500 rounded-xl">
+                        <Target className="w-4 h-4" />
+                      </div>
+                      <span className="text-xs font-extrabold text-muted-foreground">Taxa de Precisão</span>
+                    </div>
+                    <span className="text-sm font-black text-foreground">{taxaAcerto}%</span>
+                  </div>
+
+                  <div className="flex items-center justify-between p-3.5 rounded-2xl bg-muted/40 border border-border/40">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-blue-500/10 text-blue-500 rounded-xl">
+                        <FileText className="w-4 h-4" />
+                      </div>
+                      <span className="text-xs font-extrabold text-muted-foreground">Questões Resolvidas</span>
+                    </div>
+                    <span className="text-sm font-black text-foreground">{userData.questoes_geradas}</span>
+                  </div>
+                </div>
               </div>
-            )}
-          </>
+
+              {/* WIDGET 3: MINI RANKING DE LÍDERES */}
+              <div className="bg-card border border-border/70 rounded-3xl p-6 shadow-sm space-y-4">
+                <div className="flex items-center justify-between border-b border-border/60 pb-3">
+                  <h3 className="text-base font-black text-foreground flex items-center gap-2">
+                    <Trophy className="w-5 h-5 text-amber-500" />
+                    Líderes do Mês
+                  </h3>
+                  <button
+                    onClick={() => setActiveTab("ranking")}
+                    className="text-xs font-black text-primary hover:underline"
+                  >
+                    Ver Tudo
+                  </button>
+                </div>
+
+                <MiniRankingWidget userCargo={userData.cargo || ""} />
+              </div>
+
+            </aside>
+          </div>
         ) : (
+          /* TAB DE RANKING COMPLETO */
           <RankingTable userCargo={userData.cargo || ""} />
         )}
       </main>
+
+      {/* MODAL CONFIGURAÇÃO DE SIMULADO */}
+      {configModal.open && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 dark:bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setConfigModal({ open: false });
+          }}
+        >
+          <div className="bg-card border border-border rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
+            <div className="p-6 border-b border-border flex justify-between items-center bg-muted/40">
+              <div>
+                <h3 className="text-lg font-bold text-foreground">
+                  {configModal.nome}
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  Ajuste a dificuldade antes de começar.
+                </p>
+              </div>
+              <button
+                onClick={() => setConfigModal({ open: false })}
+                className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="p-6 space-y-6">
+              {/* Dificuldade */}
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
+                  Nível de Dificuldade
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {["Fácil", "Médio", "Difícil", "Casca de Banana"].map((dif) => (
+                    <button
+                      key={dif}
+                      onClick={() => setSelection({ ...selection, dificuldade: dif })}
+                      className={`px-3 py-2 rounded-xl text-xs font-bold transition-all border ${
+                        selection.dificuldade === dif
+                          ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                          : "bg-muted/50 border-border/60 text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      {dif}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Assunto Específico */}
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
+                  Assunto / Tópico
+                </label>
+                <select
+                  className="w-full bg-background border border-border rounded-xl px-4 py-2.5 text-xs text-foreground focus:outline-none focus:border-primary shadow-sm"
+                  value={selection.assunto}
+                  onChange={(e) => setSelection({ ...selection, assunto: e.target.value })}
+                >
+                  <option value="">Todos os tópicos (Geral)</option>
+                  {(() => {
+                    let topics: string[] = [];
+
+                    if (
+                      configModal.tipo === "portugues" ||
+                      configModal.tipo === "matematica"
+                    ) {
+                      const materia = CONTEUDO_MATERIAS.find(
+                        (m) => m.id === configModal.tipo,
+                      );
+                      if (materia) {
+                        topics = materia.topicos.map((t) => t.titulo);
+                      }
+                    } else if (configModal.tipo === "especificas") {
+                      const mappedCargoId =
+                        CARGO_ID_MAP[userData.cargo] || userData.cargo;
+                      const profession = PROFISSOES.find(
+                        (p) => p.id === mappedCargoId,
+                      );
+                      if (profession) {
+                        topics = profession.blocos.flatMap((b) => b.topicos);
+                      }
+                    } else if (configModal.tipo === "intensivo") {
+                      topics.push("Língua Portuguesa", "Matemática");
+                      const mappedCargoId =
+                        CARGO_ID_MAP[userData.cargo] || userData.cargo;
+                      const profession = PROFISSOES.find(
+                        (p) => p.id === mappedCargoId,
+                      );
+                      if (profession) {
+                        topics.push(...profession.blocos.flatMap((b) => b.topicos));
+                      }
+                    } else if (configModal.tipo === "maratona") {
+                      return (
+                        <option value="">
+                          Distribuição Oficial do Edital Petrobras
+                        </option>
+                      );
+                    } else if (configModal.tipo === "ingles") {
+                      const materia = CONTEUDO_MATERIAS.find((m) => m.id === "ingles");
+                      if (materia) {
+                        topics = materia.topicos.map((t) => t.titulo);
+                      }
+                    }
+
+                    return topics.map((topic, index) => (
+                      <option key={index} value={topic}>
+                        {topic}
+                      </option>
+                    ));
+                  })()}
+                </select>
+              </div>
+
+              {/* Botão de Ação */}
+              <button
+                onClick={() => {
+                  if (!configModal.tipo) return;
+
+                  const queryParams = new URLSearchParams({
+                    tipo: configModal.tipo,
+                    qtd: configModal.qtd?.toString() || "10",
+                    dificuldade: selection.dificuldade,
+                    assunto: selection.assunto,
+                  });
+
+                  if (configModal.tipo === "maratona") {
+                    router.push(`/maratona-100?${queryParams.toString()}`);
+                  } else if (configModal.tipo === "especificas") {
+                    router.push(`/simulado-especifico?${queryParams.toString()}`);
+                  } else {
+                    router.push(`/simulado-rapido?${queryParams.toString()}`);
+                  }
+                }}
+                className="w-full py-3 bg-primary text-primary-foreground font-bold rounded-xl hover:opacity-90 transition shadow-lg text-sm flex items-center justify-center gap-2"
+              >
+                Iniciando Simulado
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
+{/* WIDGET COMPACTO DE MINI RANKING (COLUNA LATERAL) */}
+function MiniRankingWidget({ userCargo }: { userCargo: string }) {
+  const [ranking, setRanking] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchRanking = async () => {
+      try {
+        const result = await getRankingAction("geral", userCargo);
+        if (result.status === "success" && result.data) {
+          setRanking(result.data.slice(0, 3));
+        }
+      } catch (err) {
+        console.error("Error fetching mini ranking:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchRanking();
+  }, [userCargo]);
+
+  if (loading) {
+    return <div className="text-xs text-muted-foreground animate-pulse text-center py-4">Carregando líderes...</div>;
+  }
+
+  return (
+    <div className="space-y-3">
+      {ranking.map((player) => (
+        <div
+          key={player.posicao}
+          className="flex items-center justify-between p-3 rounded-2xl bg-muted/30 border border-border/40"
+        >
+          <div className="flex items-center gap-3">
+            <span
+              className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-[10px] font-extrabold ${
+                player.posicao === 1
+                  ? "bg-amber-500/10 text-amber-500 border border-amber-500/30"
+                  : player.posicao === 2
+                    ? "bg-slate-400/10 text-slate-400 border border-slate-400/30"
+                    : "bg-amber-600/10 text-amber-600 border border-amber-600/30"
+              }`}
+            >
+              #{player.posicao}
+            </span>
+            <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center overflow-hidden text-xs font-bold shrink-0 border border-border">
+              {player.avatar_url ? (
+                <img src={player.avatar_url} alt="" className="w-full h-full object-cover" />
+              ) : (
+                (player.nome || "E").charAt(0)
+              )}
+            </div>
+            <span className="text-xs font-bold text-foreground truncate max-w-[110px]">
+              {player.nome || "Estudante"}
+            </span>
+          </div>
+          <span className="text-xs font-mono font-bold text-primary">{player.xp?.toLocaleString()} XP</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+{/* TABELA DE RANKING COMPLETA */}
 function RankingTable({ userCargo }: { userCargo: string }) {
   const [ranking, setRanking] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -1240,21 +1235,36 @@ function RankingTable({ userCargo }: { userCargo: string }) {
   }, [filter, userCargo]);
 
   return (
-    <div className="bg-card rounded-2xl border border-border overflow-hidden shadow-sm">
-      <div className="p-5 sm:p-6 border-b border-border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h2 className="text-xl sm:text-2xl font-bold text-foreground flex items-center gap-2">
-          🏆 Ranking <span className="hidden sm:inline">de Jogadores</span>
-        </h2>
-        <div className="flex bg-muted rounded-full p-1 w-full sm:w-auto">
+    <div className="bg-card rounded-3xl border border-border/70 overflow-hidden shadow-sm">
+      <div className="p-6 border-b border-border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h2 className="text-xl font-black text-foreground flex items-center gap-2">
+            <Trophy className="w-6 h-6 text-amber-500" />
+            Ranking Geral de Alunos
+          </h2>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Classificação atualizada com base no XP acumulado.
+          </p>
+        </div>
+
+        <div className="flex bg-muted/60 p-1 rounded-xl text-xs font-bold w-full sm:w-auto">
           <button
             onClick={() => setFilter("geral")}
-            className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-full text-xs font-bold transition-all ${filter === "geral" ? "bg-card text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
+            className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-lg transition-all ${
+              filter === "geral"
+                ? "bg-card text-foreground shadow-sm font-black"
+                : "text-muted-foreground hover:text-foreground font-semibold"
+            }`}
           >
             Geral
           </button>
           <button
             onClick={() => setFilter("cargo")}
-            className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-full text-xs font-bold transition-all ${filter === "cargo" ? "bg-card text-primary shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
+            className={`flex-1 sm:flex-initial px-4 py-1.5 rounded-lg transition-all ${
+              filter === "cargo"
+                ? "bg-card text-foreground shadow-sm font-black"
+                : "text-muted-foreground hover:text-foreground font-semibold"
+            }`}
           >
             Meu Cargo
           </button>
@@ -1262,37 +1272,32 @@ function RankingTable({ userCargo }: { userCargo: string }) {
       </div>
 
       {loading ? (
-        <div className="p-12 text-center text-muted-foreground">
-          Carregando ranking...
+        <div className="p-12 text-center text-xs text-muted-foreground animate-pulse">
+          Atualizando tabela de líderes...
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full text-left">
-            <thead className="bg-muted/50 text-muted-foreground text-[10px] uppercase tracking-widest font-bold">
+          <table className="w-full text-left border-collapse">
+            <thead className="bg-muted/40 text-muted-foreground text-[10px] uppercase tracking-widest font-extrabold border-b border-border">
               <tr>
-                <th className="px-4 sm:px-6 py-3">Pos</th>
-                <th className="px-4 sm:px-6 py-3">Usuário</th>
-                <th className="hidden xs:table-cell px-4 sm:px-6 py-3 text-center">
-                  Nível
-                </th>
-                <th className="px-4 sm:px-6 py-3 text-right">XP</th>
+                <th className="px-6 py-3.5">Posição</th>
+                <th className="px-6 py-3.5">Estudante</th>
+                <th className="px-6 py-3.5 text-center">Patamar</th>
+                <th className="px-6 py-3.5 text-right">XP Acumulado</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-border">
+            <tbody className="divide-y divide-border/60 text-xs">
               {ranking.map((player) => (
-                <tr
-                  key={player.posicao}
-                  className="hover:bg-muted/50 transition"
-                >
-                  <td className="px-6 py-4">
+                <tr key={player.posicao} className="hover:bg-muted/30 transition-colors">
+                  <td className="px-6 py-4 font-black">
                     <span
-                      className={`font-black ${
+                      className={`inline-flex items-center justify-center w-7 h-7 rounded-full text-xs ${
                         player.posicao === 1
-                          ? "text-yellow-500 text-xl"
+                          ? "bg-amber-500/10 text-amber-500 border border-amber-500/30"
                           : player.posicao === 2
-                            ? "text-slate-400 text-lg"
+                            ? "bg-slate-400/10 text-slate-400 border border-slate-400/30"
                             : player.posicao === 3
-                              ? "text-orange-500 text-lg"
+                              ? "bg-amber-600/10 text-amber-600 border border-amber-600/30"
                               : "text-muted-foreground"
                       }`}
                     >
@@ -1300,7 +1305,7 @@ function RankingTable({ userCargo }: { userCargo: string }) {
                     </span>
                   </td>
                   <td className="px-6 py-4 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center overflow-hidden border border-border">
+                    <div className="w-9 h-9 rounded-full bg-muted flex items-center justify-center overflow-hidden border border-border/80 font-bold text-xs shrink-0">
                       {player.avatar_url ? (
                         <img
                           src={player.avatar_url}
@@ -1308,30 +1313,25 @@ function RankingTable({ userCargo }: { userCargo: string }) {
                           className="w-full h-full object-cover"
                         />
                       ) : (
-                        <span className="text-foreground font-bold">
-                          {(player.nome || "Estudante").charAt(0)}
-                        </span>
+                        (player.nome || "E").charAt(0)
                       )}
                     </div>
                     <div className="min-w-0">
-                      <p className="text-foreground font-bold truncate">
+                      <p className="font-bold text-foreground truncate">
                         {player.nome || "Estudante"}
                       </p>
-                      <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-tight truncate">
-                        {(() => {
-                          const profissao = getProfissaoById(player.cargo);
-                          return profissao?.nome || player.cargo;
-                        })()}
+                      <p className="text-[10px] text-muted-foreground truncate">
+                        {getProfissaoById(player.cargo)?.nome || player.cargo}
                       </p>
                     </div>
                   </td>
                   <td className="px-6 py-4 text-center">
-                    <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-muted text-muted-foreground border border-border">
+                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-muted text-muted-foreground border border-border/60">
                       {player.nivel || "Novato"}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-right font-mono font-bold text-yellow-600 dark:text-yellow-400">
-                    {player.xp.toLocaleString()} XP
+                  <td className="px-6 py-4 text-right font-mono font-bold text-primary">
+                    {player.xp?.toLocaleString()} XP
                   </td>
                 </tr>
               ))}

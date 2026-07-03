@@ -3,6 +3,8 @@ import { Poppins, Khand, Orbitron } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ThemeProvider as SkinProvider } from "@/lib/contexts/theme-context";
+import { headers } from "next/headers";
+import { hexToHsl, hexToRgbValues, isLightColor } from "@/lib/themes";
 
 const poppins = Poppins({
   weight: ["300", "400", "600", "700", "800"],
@@ -35,18 +37,45 @@ export const metadata: Metadata = {
 
 import { DevProfileSwitcher } from "@/components/dev/DevProfileSwitcher";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const headersList = await headers();
+  const tenantPrimary = headersList.get('x-tenant-primary') || '#0037C1';
+  const tenantSecondary = headersList.get('x-tenant-secondary') || '#008C32';
+
+  const primaryHsl = hexToHsl(tenantPrimary);
+  const primaryHoverHsl = hexToHsl(tenantPrimary);
+  const primaryRgbValues = hexToRgbValues(tenantPrimary);
+  const isLight = isLightColor(tenantPrimary);
+  const foregroundHsl = isLight ? "222.2 84.7% 4.9%" : "210 40% 98%";
+
+  const inlineStyles = `
+    :root {
+      --primary: ${primaryHsl};
+      --primary-hover: ${primaryHoverHsl};
+      --primary-hex: ${tenantPrimary};
+      --primary-hover-hex: ${tenantPrimary};
+      --primary-rgb: ${primaryRgbValues};
+      --primary-foreground: ${foregroundHsl};
+    }
+  `;
+
   return (
     <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <style dangerouslySetInnerHTML={{ __html: inlineStyles }} />
+      </head>
       <body
         className={`${poppins.variable} ${khand.variable} ${orbitron.variable} font-sans overflow-x-clip`}
         suppressHydrationWarning
       >
-        <SkinProvider>
+        <SkinProvider 
+          tenantPrimary={tenantPrimary}
+          tenantSecondary={tenantSecondary}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

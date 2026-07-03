@@ -1,0 +1,32 @@
+src/components/aulas/ingles/AulaVerbTenses.tsx(508,64): error TS1003: Identifier expected.
+src/components/aulas/ingles/AulaVerbTenses.tsx(508,65): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(509,12): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(859,64): error TS1003: Identifier expected.
+src/components/aulas/ingles/AulaVerbTenses.tsx(859,65): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(860,12): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(1244,64): error TS1003: Identifier expected.
+src/components/aulas/ingles/AulaVerbTenses.tsx(1244,65): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(1245,12): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(1574,64): error TS1003: Identifier expected.
+src/components/aulas/ingles/AulaVerbTenses.tsx(1574,65): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(1575,12): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(1993,64): error TS1003: Identifier expected.
+src/components/aulas/ingles/AulaVerbTenses.tsx(1993,65): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(1994,12): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(2415,64): error TS1003: Identifier expected.
+src/components/aulas/ingles/AulaVerbTenses.tsx(2415,65): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(2416,12): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(2507,14): error TS1003: Identifier expected.
+src/components/aulas/ingles/AulaVerbTenses.tsx(2507,38): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(2795,64): error TS1003: Identifier expected.
+src/components/aulas/ingles/AulaVerbTenses.tsx(2795,65): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(2796,12): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(3201,64): error TS1003: Identifier expected.
+src/components/aulas/ingles/AulaVerbTenses.tsx(3201,65): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(3202,12): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(3516,64): error TS1003: Identifier expected.
+src/components/aulas/ingles/AulaVerbTenses.tsx(3516,65): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(3517,12): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(3779,65): error TS1003: Identifier expected.
+src/components/aulas/ingles/AulaVerbTenses.tsx(3779,66): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/components/aulas/ingles/AulaVerbTenses.tsx(3780,12): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?

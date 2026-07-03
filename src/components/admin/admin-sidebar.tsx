@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 // import Image from "next/image"; // Removed as per instruction
 import { usePathname } from "next/navigation";
@@ -26,6 +27,9 @@ import {
   LuFlame,
   LuTarget,
   LuCrown,
+  LuChevronDown,
+  LuChevronUp,
+  LuActivity
 } from "react-icons/lu";
 import { cn } from "@/lib/utils";
 
@@ -104,34 +108,34 @@ const ALL_MENU_SECTIONS: MenuSection[] = [
       {
         id: "posts",
         label: "Posts",
-        href: "/dashboard/posts",
+        href: "/admin/posts",
         icon: LuFileText,
       },
-      { id: "pages", label: "Páginas", href: "/dashboard/pages", icon: LuFile },
+      { id: "pages", label: "Páginas", href: "/admin/pages", icon: LuFile },
       {
         id: "categories",
         label: "Categorias",
-        href: "/dashboard/categories",
+        href: "/admin/categories",
         icon: LuFolderTree,
       },
-      { id: "media", label: "Mídia", href: "/dashboard/media", icon: LuImage },
+      { id: "media", label: "Mídia", href: "/admin/media", icon: LuImage },
     ],
   },
   {
     title: "Gerenciar",
     items: [
-      { id: "menus", label: "Menus", href: "/dashboard/menus", icon: LuList },
+      { id: "menus", label: "Menus", href: "/admin/menus", icon: LuList },
       {
         id: "comments",
         label: "Comentários",
-        href: "/dashboard/comments",
+        href: "/admin/comments",
         icon: LuMessageSquare,
         badge: 5,
       },
       {
         id: "users",
         label: "Usuários",
-        href: "/dashboard/users",
+        href: "/admin/users",
         icon: LuUsers,
       },
     ],
@@ -142,19 +146,19 @@ const ALL_MENU_SECTIONS: MenuSection[] = [
       {
         id: "cta-popups",
         label: "CTA Popups",
-        href: "/dashboard/cta-popups",
+        href: "/admin/cta-popups",
         icon: LuBell,
       },
       {
         id: "accordions",
         label: "Acordeons",
-        href: "/dashboard/accordions",
+        href: "/admin/accordions",
         icon: LuLayers,
       },
       {
         id: "image-galleries",
         label: "Galeria de Imagens",
-        href: "/dashboard/image-galleries",
+        href: "/admin/image-galleries",
         icon: LuImage,
       },
     ],
@@ -163,21 +167,27 @@ const ALL_MENU_SECTIONS: MenuSection[] = [
     title: "Sistema",
     items: [
       {
+        id: "tenants",
+        label: "Tenants / White-Label",
+        href: "/admin/tenants",
+        icon: LuLayers,
+      },
+      {
         id: "backups",
         label: "Backups",
-        href: "/dashboard/backups",
+        href: "/admin/backups",
         icon: LuDatabase,
       },
       {
         id: "audit-logs",
         label: "Auditoria",
-        href: "/dashboard/audit-logs",
+        href: "/admin/audit-logs",
         icon: LuShieldCheck,
       },
       {
         id: "settings",
         label: "Configurações",
-        href: "/dashboard/settings",
+        href: "/admin/settings",
         icon: LuSettings,
       },
     ],
@@ -194,14 +204,14 @@ export function AdminSidebar({
   const pathname = usePathname();
   const { profile } = useUser();
   const isAdmin =
-    profile?.role === "ADMIN" ||
-    profile?.role === "SYSADMIN" ||
-    userRole === "ADMIN";
+    profile?.role?.toUpperCase() === "ADMIN" ||
+    profile?.role?.toUpperCase() === "SYSADMIN" ||
+    userRole?.toUpperCase() === "ADMIN";
   const userPlan = profile?.plan?.toLowerCase() || "";
 
   // Filtra as seções e itens com base no cargo (role) e plano
   // O PetroLingo é exclusivo para Admin ou Plano Ouro/Elite
-  const menuSections = ALL_MENU_SECTIONS.map((section) => ({
+  const allSections = ALL_MENU_SECTIONS.map((section) => ({
     ...section,
     items: section.items.filter((item) => {
       if (item.id === "petrolingo") {
@@ -215,6 +225,20 @@ export function AdminSidebar({
     if (isAdmin) return true;
     return section.title === "Estudo" && section.items.length > 0;
   });
+
+  const estudoSection = allSections.find(s => s.title === "Estudo");
+  const menuSections = isAdmin ? allSections.filter(s => s.title !== "Estudo") : allSections;
+
+  const studyPaths = ["/aulas", "/plano-estudos", "/simulado-rapido", "/simulado-especifico", "/maratona-100", "/historico", "/rankings"];
+  const isCurrentPathStudy = studyPaths.some(path => pathname?.startsWith(path));
+  
+  const [isEstudoOpen, setIsEstudoOpen] = useState(isCurrentPathStudy);
+
+  useEffect(() => {
+    if (isCurrentPathStudy) {
+      setIsEstudoOpen(true);
+    }
+  }, [pathname, isCurrentPathStudy]);
 
   // Adiciona a seção de Suporte para o usuário comum se não for admin
   if (!isAdmin) {
@@ -306,6 +330,105 @@ export function AdminSidebar({
               </div>
             )}
           </Link>
+
+          {/* Estudo como Acordeon para Admin */}
+          {isAdmin && estudoSection && (
+            <div className="mb-4">
+              <button
+                onClick={() => setIsEstudoOpen(!isEstudoOpen)}
+                className={cn(
+                  "flex items-center w-full px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group",
+                  isCurrentPathStudy
+                    ? "bg-primary/10 text-primary dark:bg-primary/20"
+                    : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700",
+                  isCollapsed && !isOverlayOpen && "justify-center px-2",
+                )}
+                title={isCollapsed && !isOverlayOpen ? "Estudo" : undefined}
+              >
+                <div
+                  className={cn(
+                    "flex items-center justify-center",
+                    isCollapsed && !isOverlayOpen ? "w-7 h-7" : "w-4 h-4",
+                  )}
+                >
+                  <LuActivity size={18} className="flex-shrink-0 text-indigo-500" />
+                </div>
+                {(!isCollapsed || isOverlayOpen) && (
+                  <>
+                    <span className="ml-3 whitespace-nowrap">Estudo</span>
+                    <span className="ml-auto transition-transform duration-200">
+                      {isEstudoOpen ? <LuChevronUp size={16} /> : <LuChevronDown size={16} />}
+                    </span>
+                  </>
+                )}
+                {isCollapsed && !isOverlayOpen && (
+                  <div className="absolute left-full ml-2 px-2 py-1 bg-gray-900 text-white text-sm rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 shadow-lg">
+                    Estudo
+                  </div>
+                )}
+              </button>
+
+              {isEstudoOpen && (
+                <div className={cn(
+                  "space-y-1 mt-1 transition-all duration-300", 
+                  (!isCollapsed || isOverlayOpen) ? "pl-4 border-l border-gray-200 dark:border-gray-700 ml-5" : "pl-0"
+                )}>
+                  {estudoSection.items.map((item) => {
+                    const Icon = item.icon;
+                    const isActive = (() => {
+                      if (pathname === item.href) return true;
+                      if (item.id === "aulas" && pathname.startsWith("/aulas/ingles/petrolingo")) {
+                        return false;
+                      }
+                      return pathname.startsWith(item.href + "/");
+                    })();
+
+                    return (
+                      <Link
+                        key={item.id}
+                        href={item.href}
+                        onClick={onNavigate}
+                        className={cn(
+                          "flex items-center px-3 py-1.5 rounded-lg text-xs font-medium transition-colors relative group",
+                          isActive
+                            ? "bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90"
+                            : "text-gray-650 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700/50",
+                          isCollapsed && !isOverlayOpen && "justify-center px-2",
+                        )}
+                        title={isCollapsed && !isOverlayOpen ? item.label : undefined}
+                      >
+                        <div
+                          className={cn(
+                            "flex items-center justify-center",
+                            isCollapsed && !isOverlayOpen ? "w-6 h-6" : "w-3.5 h-3.5",
+                          )}
+                        >
+                          <Icon size={14} className="flex-shrink-0" />
+                        </div>
+                        {(!isCollapsed || isOverlayOpen) && (
+                          <>
+                            <span className="ml-3 whitespace-nowrap">
+                              {item.label}
+                            </span>
+                            {item.badge && (
+                              <span className="ml-auto bg-red-500 text-white text-[10px] rounded-full px-1.5 py-0.5">
+                                {item.badge}
+                              </span>
+                            )}
+                          </>
+                        )}
+                        {isCollapsed && !isOverlayOpen && (
+                          <div className="absolute left-full ml-2 px-2 py-1 bg-gray-900 text-white text-sm rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 shadow-lg">
+                            {item.label}
+                          </div>
+                        )}
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Seções do menu */}
           {menuSections.map((section, sectionIndex) => (

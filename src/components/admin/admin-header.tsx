@@ -33,7 +33,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 // import { logoutAction } from '@/app/actions/auth'; // Removed
 // import { getDashboardTitleForHeader } from '@/app/admin/settings/actions'; // Removed
-import { availableThemes } from "@/lib/themes";
+import { availableThemes, isLightColor } from "@/lib/themes";
 import { createClient } from "@/lib/supabase/client";
 import { useUserProfile } from "@/hooks/useUserProfile";
 import { useUI } from "@/contexts/UIContext";
@@ -145,12 +145,21 @@ export function AdminHeader({
       root.style.setProperty("--primary-hover", primaryHoverHsl);
       root.style.setProperty("--ring", primaryHsl); // Sync ring with primary
 
+      // Update Hex variables
+      root.style.setProperty("--primary-hex", colors.primary);
+      root.style.setProperty("--primary-hover-hex", colors.primaryHover);
+
       // Update RGB variables
       root.style.setProperty("--primary-rgb", hexToRgbTriplet(colors.primary));
       root.style.setProperty(
         "--primary-hover-rgb",
         hexToRgbTriplet(colors.primaryHover),
       );
+
+      // Update Primary Foreground for contrast
+      const isLight = isLightColor(colors.primary);
+      const foregroundHsl = isLight ? "222.2 84.7% 4.9%" : "210 40% 98%";
+      root.style.setProperty("--primary-foreground", foregroundHsl);
 
       localStorage.setItem("app-theme-color", themeColor);
     }

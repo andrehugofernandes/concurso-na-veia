@@ -90,7 +90,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
                 email: user.email || '',
                 username: profileData?.username || user.user_metadata?.username || '',
                 full_name: profileData?.nome || user.user_metadata?.full_name || user.user_metadata?.nome || '',
-                role: user.user_metadata?.role || 'USER',
+                role: profileData?.role || user.user_metadata?.role || 'USER',
                 job_title: profileData?.cargo || user.user_metadata?.cargo || '',
                 nivel: profileData?.nivel || user.user_metadata?.nivel || '',
                 plan: profileData?.plan || user.user_metadata?.plan || 'free',

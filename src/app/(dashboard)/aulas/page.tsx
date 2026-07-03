@@ -20,7 +20,8 @@ export default function AulasPage() {
     // Define o título da página
     useSetPageTitle('Aulas');
 
-    const isElite = user?.plan === 'elite-total';
+    const isAdmin = user?.role?.toUpperCase() === 'ADMIN' || user?.role?.toUpperCase() === 'SYSADMIN';
+    const isElite = user?.plan === 'elite-total' || isAdmin;
     
     // Programa base para o cargo do usuário (inclui básicas + específicas dele)
     const programaBase = getProgramaDeEstudos(user?.cargo, false);

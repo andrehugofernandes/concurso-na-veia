@@ -8,9 +8,9 @@ import { OtpTutorialContent } from "@/components/auth/OtpTutorialContent";
 import { AnimatedInput } from "@/components/ui/animated-input";
 import { LuUser, LuLock, LuEye, LuEyeOff } from "react-icons/lu";
 import { FaFacebook, FaHome } from "react-icons/fa";
-import { loginAction } from "@/lib/actions/auth";
-import { reset2FAAction } from "@/lib/actions/reset-2fa";
+import { loginAction, getCurrentUserAction } from "@/lib/actions/auth";
 import { createClient } from "@/lib/supabase/client";
+import { Lock, ArrowLeft, RefreshCw, CheckCircle2 } from "lucide-react";
 
 type AuthStep = "login" | "verify-otp" | "setup-otp";
 
@@ -31,7 +31,6 @@ export default function LoginPage() {
   const [otpError, setOtpError] = useState("");
   const otpRefs = useRef<(HTMLInputElement | null)[]>([]);
 
-  // Focus first OTP input when switching to OTP step
   useEffect(() => {
     if (step === "verify-otp" || step === "setup-otp") {
       setTimeout(() => otpRefs.current[0]?.focus(), 100);
@@ -55,7 +54,12 @@ export default function LoginPage() {
       } else if (result.data?.mfaSetupRequired) {
         router.push("/auth/setup-2fa");
       } else {
-        router.push("/dashboard");
+        const userResult = await getCurrentUserAction();
+        if (userResult.data?.role === "admin") {
+          router.push("/admin");
+        } else {
+          router.push("/dashboard");
+        }
       }
     } catch (err: any) {
       setError(err.message);
@@ -64,7 +68,6 @@ export default function LoginPage() {
     }
   };
 
-  // OTP handlers
   const handleOtpChange = (index: number, value: string) => {
     if (!/^\d*$/.test(value)) return;
 
@@ -111,7 +114,6 @@ export default function LoginPage() {
     setOtpLoading(true);
     setOtpError("");
     try {
-      // Chamada via API Route (100% estável no Turbopack)
       const response = await fetch("/api/auth/reset-2fa", { method: "POST" });
       const result = await response.json();
       
@@ -119,7 +121,6 @@ export default function LoginPage() {
       
       alert("Autenticador removido com sucesso. Por favor, faça login novamente.");
 
-      // Fazer logout para forçar novo fluxo com QR Code
       const supabase = createClient();
       await supabase.auth.signOut();
       setStep("login");
@@ -152,7 +153,6 @@ export default function LoginPage() {
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || "Código inválido");
       } else {
-        // Verificação OTP via client SDK direto (evita crash de Server Action no Turbopack)
         const { data: factors, error: factorsError } = await supabase.auth.mfa.listFactors();
         if (factorsError) throw factorsError;
 
@@ -165,8 +165,12 @@ export default function LoginPage() {
         });
         if (verifyError) throw verifyError;
       }
-
-      router.push("/dashboard");
+      const userResult = await getCurrentUserAction();
+      if (userResult.data?.role === "admin") {
+        router.push("/admin");
+      } else {
+        router.push("/dashboard");
+      }
     } catch (err: any) {
       console.error("[LoginOTP] Erro na verificação:", err);
       setOtpError(err.message || "Código incorreto ou expirado.");
@@ -177,7 +181,6 @@ export default function LoginPage() {
     }
   };
 
-  // Determine right column content
   const getRightContent = () => {
     if (step === "verify-otp") {
       return <OtpTutorialContent mode="verify" />;
@@ -185,10 +188,9 @@ export default function LoginPage() {
     if (step === "setup-otp") {
       return <OtpTutorialContent mode="setup" />;
     }
-    return undefined; // Default image via AuthLayout
+    return undefined;
   };
 
-  // Render OTP input group
   const renderOtpInputs = () => (
     <div className="flex justify-center gap-2">
       {otp.map((digit, index) => (
@@ -206,7 +208,7 @@ export default function LoginPage() {
           onPaste={handleOtpPaste}
           maxLength={6}
           aria-label={`Dígito ${index + 1} do código OTP`}
-          className="w-10 h-14 md:w-12 md:h-16 text-center text-xl font-bold bg-gray-50 dark:bg-slate-900/50 border border-gray-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-white focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+          className="w-10 h-14 md:w-12 md:h-16 text-center text-xl font-black bg-background border border-border rounded-xl text-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
         />
       ))}
     </div>
@@ -220,7 +222,6 @@ export default function LoginPage() {
     >
       {step === "login" ? (
         <div className="flex flex-col gap-8 md:gap-10 mt-12 md:mt-20">
-          {/* Título de Boas-vindas com Skin Gradient */}
           <div className="text-center md:text-left space-y-2">
             <h1 
               className="text-2xl md:text-5xl text-center md:text-center font-black tracking-tighter leading-none bg-clip-text text-transparent transition-smooth font-display whitespace-nowrap"
@@ -233,9 +234,7 @@ export default function LoginPage() {
             </p>
           </div>
 
-          {/* Login Form */}
-          <div className="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-xl dark:shadow-2xl transition-smooth overflow-hidden">
-            {/* Top accent */}
+          <div className="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-xl transition-smooth overflow-hidden relative">
             <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundImage: "var(--primary-gradient)" }} />
 
             {error && (
@@ -272,7 +271,7 @@ export default function LoginPage() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"
+                    className="text-muted-foreground hover:text-foreground transition"
                   >
                     {showPassword ? (
                       <LuEyeOff className="w-5 h-5" />
@@ -287,7 +286,7 @@ export default function LoginPage() {
                 <label className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    className="w-4 h-4 rounded border-gray-300 dark:border-slate-600 bg-gray-100 dark:bg-slate-700 text-primary focus:ring-primary"
+                    className="w-4 h-4 rounded border-border bg-background text-primary focus:ring-primary"
                   />
                   <span className="text-sm text-muted-foreground">
                     Lembrar de mim
@@ -295,7 +294,7 @@ export default function LoginPage() {
                 </label>
                 <a
                   href="#"
-                  className="text-sm text-primary hover:text-primary/80 transition"
+                  className="text-sm text-primary hover:text-primary/80 font-medium transition"
                 >
                   Esqueceu a senha?
                 </a>
@@ -304,35 +303,10 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 bg-primary text-primary-foreground font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-4 bg-primary text-primary-foreground font-extrabold rounded-xl hover:shadow-lg transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider"
                 style={{ background: "var(--primary-gradient)" }}
               >
-                {loading ? (
-                  <span className="inline-flex items-center gap-2">
-                    <svg
-                      className="animate-spin w-5 h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      />
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      />
-                    </svg>
-                    Entrando...
-                  </span>
-                ) : (
-                  "Entrar"
-                )}
+                {loading ? "Entrando..." : "Entrar"}
               </button>
             </form>
 
@@ -341,126 +315,71 @@ export default function LoginPage() {
                 Não tem uma conta?{" "}
                 <Link
                   href="/register"
-                  className="text-primary font-semibold hover:text-primary/80 transition"
+                  className="text-primary font-bold hover:underline transition"
                 >
                   Criar conta grátis
                 </Link>
               </p>
             </div>
-
-            {/* Social Login */}
-            <div className="mt-8">
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-200 dark:border-slate-600" />
-                </div>
-                <div className="relative flex justify-center text-sm">
-                  <span className="px-4 bg-card text-muted-foreground truncate-line">
-                    ou continue com
-                  </span>
-                </div>
-              </div>
-
-              <div className="mt-6 grid grid-cols-2 gap-4">
-                <button className="flex items-center justify-center p-3 border border-border rounded-xl text-foreground hover:bg-accent transition">
-                  <svg
-                    className="w-6 h-6"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                      fill="#4285F4"
-                    />
-                    <path
-                      d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                      fill="#34A853"
-                    />
-                    <path
-                      d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                      fill="#FBBC05"
-                    />
-                    <path
-                      d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                      fill="#EA4335"
-                    />
-                  </svg>
-                </button>
-                <button className="flex items-center justify-center p-3 border border-gray-200 dark:border-slate-600 rounded-xl text-[#1877F2] hover:bg-gray-50 dark:hover:bg-slate-700/50 transition">
-                  <FaFacebook className="w-6 h-6" />
-                </button>
-              </div>
-            </div>
-
-            {/* Back to home */}
-            <div className="mt-6 pt-4 border-t border-border/50 text-center">
-              <Link
-                href="/"
-                className="text-muted-foreground hover:text-foreground transition inline-flex items-center gap-2 text-sm font-medium"
-              >
-                <FaHome className="w-4 h-4" />
-                Voltar para o início
-              </Link>
-            </div>
           </div>
         </div>
       ) : (
-        <>
-          {/* OTP Form */}
-
-          <div className="bg-white dark:bg-slate-800/50 backdrop-blur-lg rounded-2xl p-8 border border-gray-200 dark:border-slate-700/50 shadow-2xl">
-            <div className="text-center mb-6">
-              <span className="text-4xl block mb-2">🔒</span>
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
-                {step === "setup-otp"
-                  ? "Configurar Autenticação"
-                  : "Verificação em Duas Etapas"}
-              </h2>
-              <p className="text-slate-600 dark:text-gray-400 mt-2 text-sm">
-                Digite o código de 6 dígitos do seu aplicativo autenticador.
-              </p>
+        <div className="bg-card border border-border rounded-3xl p-6 md:p-8 shadow-2xl space-y-6">
+          <div className="text-center space-y-2">
+            <div className="p-3 bg-primary/10 text-primary rounded-2xl w-fit mx-auto">
+              <Lock className="w-6 h-6" />
             </div>
-
-            {otpError && (
-              <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6 text-center">
-                <p className="text-red-400 text-sm">{otpError}</p>
-              </div>
-            )}
-
-            <form onSubmit={handleOtpSubmit} className="space-y-6">
-              {renderOtpInputs()}
-
-              <button
-                type="submit"
-                disabled={otp.join("").length !== 6 || otpLoading}
-                className="w-full py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 font-bold rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {otpLoading ? "Verificando..." : "Confirmar"}
-              </button>
-            </form>
-
-            <div className="mt-8 flex flex-col gap-4 text-center">
-              {step === "verify-otp" && (
-                <button
-                  onClick={handleReset2FA}
-                  className="text-primary hover:underline text-sm font-semibold transition-all"
-                >
-                  Perdeu acesso ao autenticador? Resete aqui
-                </button>
-              )}
-              <button
-                onClick={() => {
-                  setStep("login");
-                  setOtp(["", "", "", "", "", ""]);
-                  setOtpError("");
-                }}
-                className="text-gray-400 hover:text-white text-sm transition"
-              >
-                ← Voltar para Login
-              </button>
-            </div>
+            <h2 className="text-xl md:text-2xl font-extrabold text-foreground">
+              {step === "setup-otp"
+                ? "Configurar Autenticação"
+                : "Verificação em Duas Etapas"}
+            </h2>
+            <p className="text-muted-foreground text-xs md:text-sm">
+              Digite o código de 6 dígitos do seu aplicativo autenticador.
+            </p>
           </div>
-        </>
+
+          {otpError && (
+            <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-3 text-center">
+              <p className="text-red-400 text-xs font-semibold">{otpError}</p>
+            </div>
+          )}
+
+          <form onSubmit={handleOtpSubmit} className="space-y-6">
+            {renderOtpInputs()}
+
+            <button
+              type="submit"
+              disabled={otp.join("").length !== 6 || otpLoading}
+              className="w-full py-3.5 bg-primary text-primary-foreground font-extrabold rounded-xl hover:opacity-90 transition shadow-md disabled:opacity-50 text-sm uppercase tracking-wider"
+              style={{ background: "var(--primary-gradient)" }}
+            >
+              {otpLoading ? "Verificando..." : "Confirmar Código"}
+            </button>
+          </form>
+
+          <div className="flex flex-col gap-3 text-center pt-2 border-t border-border/60">
+            {step === "verify-otp" && (
+              <button
+                onClick={handleReset2FA}
+                className="text-xs text-primary hover:underline font-semibold transition"
+              >
+                Perdeu acesso ao autenticador? Resete aqui
+              </button>
+            )}
+            <button
+              onClick={() => {
+                setStep("login");
+                setOtp(["", "", "", "", "", ""]);
+                setOtpError("");
+              }}
+              className="text-xs text-muted-foreground hover:text-foreground font-medium transition flex items-center justify-center gap-1.5"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              Voltar para Login
+            </button>
+          </div>
+        </div>
       )}
     </AuthLayout>
   );

@@ -23,7 +23,6 @@ export default function AuthLayout({
   const [helpOpen, setHelpOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
 
-  // Observe the dark class on <html> to reliably detect theme changes
   useEffect(() => {
     const html = document.documentElement;
     setIsDark(html.classList.contains("dark"));
@@ -36,25 +35,22 @@ export default function AuthLayout({
   }, []);
 
   return (
-    <div className="relative min-h-screen flex flex-col md:flex-row">
-      {/* ── Header: uses observed isDark for reliable bg ── */}
+    <div className="relative min-h-screen flex flex-col md:flex-row bg-background text-foreground">
+      {/* ── Header ── */}
       <header
-        className="fixed top-0 left-0 right-0 flex items-center justify-between px-4 md:px-8 py-3 z-50 backdrop-blur-sm shadow-sm"
+        className="fixed top-0 left-0 right-0 flex items-center justify-between px-4 md:px-8 py-3 z-50 backdrop-blur-md shadow-sm"
         style={{
           backgroundColor: "hsl(var(--background) / 0.85)",
           borderBottom: "1px solid hsl(var(--border))",
         }}
       >
-        {/* Logo */}
         <div className="flex items-center gap-3">
           <PetrobrasLogo compact />
         </div>
 
-        {/* Right side: DynamicIsland and Help Toggle grouped together */}
         <div className="flex items-center gap-2 md:gap-4">
           <DynamicIsland position="static" className="self-start mt-1" />
 
-          {/* Help Toggle (Mobile Only) */}
           {showHelp && (
             <button
               onClick={() => setHelpOpen(true)}
@@ -74,16 +70,13 @@ export default function AuthLayout({
                 size={22}
                 strokeWidth={2.5}
               />
-
               <span
                 className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full animate-ping opacity-75"
-                style={{
-                  backgroundColor: "var(--primary-hex)",
-                }}
+                style={{ backgroundColor: "var(--primary-hex, #ff8500)" }}
               />
               <span
                 className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full"
-                style={{ backgroundColor: "var(--primary-hex)" }}
+                style={{ backgroundColor: "var(--primary-hex, #ff8500)" }}
               />
             </button>
           )}
@@ -91,28 +84,20 @@ export default function AuthLayout({
       </header>
 
       {/* ── Left Column: Form ── */}
-      <div
-        className="w-full md:w-1/2 min-h-screen flex flex-col justify-center px-4 py-8 md:px-12 md:py-16 bg-background"
-      >
+      <div className="w-full md:w-1/2 min-h-screen flex flex-col justify-center px-4 py-8 md:px-12 md:py-16 bg-background">
         <div className="w-full max-w-md mx-auto pt-32 md:pt-0">{children}</div>
       </div>
 
-      {/* ── Right Column: Image or Tutorial — Responsive to skin ── */}
-      <div className="hidden md:block md:w-1/2 min-h-screen relative overflow-hidden">
+      {/* ── Right Column: Slideshow or High-Contrast Tutorial ── */}
+      <div className="hidden md:block md:w-1/2 min-h-screen relative overflow-hidden bg-slate-950">
         {rightContent ? (
-          <div
-            className="w-full h-full min-h-screen flex items-center justify-center p-8 relative"
-            style={{
-              background: "var(--primary-gradient)",
-              backgroundColor: "var(--primary-hex)",
-            }}
-          >
-            <div className="relative z-10 w-full max-w-lg">{rightContent}</div>
+          <div className="w-full h-full min-h-screen flex items-center justify-center p-8 relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900">
             {/* Ambient Glow */}
             <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] blur-[120px] opacity-20 pointer-events-none rounded-full"
-              style={{ backgroundColor: "var(--primary-hex)" }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] blur-[140px] opacity-20 pointer-events-none rounded-full"
+              style={{ backgroundColor: "var(--primary-hex, #ff8500)" }}
             />
+            <div className="relative z-10 w-full max-w-lg">{rightContent}</div>
           </div>
         ) : (
           <div className="relative w-full min-h-screen">
@@ -127,65 +112,44 @@ export default function AuthLayout({
               interval={6000}
             />
 
-            {/* Bottom info card with 3 breaking news blocks separated by pipes */}
-            <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 z-10">
-              <div className="flex items-stretch gap-0">
-                {/* Block 1 */}
+            <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-black/75 backdrop-blur-md border border-white/10 z-10">
+              <div className="flex items-stretch gap-0 text-white">
                 <div className="flex-1 px-3">
                   <p className="text-white text-xs font-semibold mb-1.5">
                     🛢️ Seu futuro na Petrobras começa aqui
                   </p>
-                  <div className="flex items-center gap-2 text-[10px] text-gray-400">
-                    <span className="text-white font-bold text-xs">+2.500</span>{" "}
-                    Questões
+                  <div className="flex items-center gap-2 text-[10px] text-gray-300">
+                    <span className="text-white font-bold text-xs">+2.500</span> Questões
                     <span className="text-white/20">·</span>
-                    <span className="text-white font-bold text-xs">
-                      94%
-                    </span>{" "}
-                    Aprovação
+                    <span className="text-white font-bold text-xs">94%</span> Aprovação
                     <span className="text-white/20">·</span>
-                    <span className="text-white font-bold text-xs">
-                      120+
-                    </span>{" "}
-                    Aulas
+                    <span className="text-white font-bold text-xs">120+</span> Aulas
                   </div>
                 </div>
 
-                {/* Pipe 1 */}
                 <div className="w-px bg-white/15 mx-1 self-stretch" />
 
-                {/* Block 2 */}
                 <div className="flex-1 px-3">
                   <p className="text-white text-xs font-semibold mb-1.5">
                     📋 Próximo Concurso Petrobras
                   </p>
-                  <div className="flex items-center gap-2 text-[10px] text-gray-400">
-                    <span className="text-white font-bold text-xs">2026</span>{" "}
-                    Previsão
+                  <div className="flex items-center gap-2 text-[10px] text-gray-300">
+                    <span className="text-white font-bold text-xs">2026</span> Previsão
                     <span className="text-white/20">·</span>
-                    <span className="text-white font-bold text-xs">
-                      6.412
-                    </span>{" "}
-                    Vagas
+                    <span className="text-white font-bold text-xs">6.412</span> Vagas
                   </div>
                 </div>
 
-                {/* Pipe 2 */}
                 <div className="w-px bg-white/15 mx-1 self-stretch" />
 
-                {/* Block 3 */}
                 <div className="flex-1 px-3">
                   <p className="text-white text-xs font-semibold mb-1.5">
                     🎓 Comunidade de Estudos
                   </p>
-                  <div className="flex items-center gap-2 text-[10px] text-gray-400">
-                    <span className="text-white font-bold text-xs">15k+</span>{" "}
-                    Alunos
+                  <div className="flex items-center gap-2 text-[10px] text-gray-300">
+                    <span className="text-white font-bold text-xs">15k+</span> Alunos
                     <span className="text-white/20">·</span>
-                    <span className="text-white font-bold text-xs">
-                      4.8★
-                    </span>{" "}
-                    Avaliação
+                    <span className="text-white font-bold text-xs">4.8★</span> Avaliação
                   </div>
                 </div>
               </div>
@@ -194,7 +158,6 @@ export default function AuthLayout({
         )}
       </div>
 
-      {/* Mobile Help Modal */}
       {showHelp && (
         <OtpHelpModal
           mode={otpMode}

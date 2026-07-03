@@ -22,15 +22,13 @@ export default function PetrobrasLogo({
         compact ? "w-8 h-8 md:w-9 md:h-9" : "w-10 h-10 md:w-11 md:h-11"
       }`}>
         <div 
-          className="absolute inset-0 rounded-md opacity-20 group-hover:opacity-40 transition-opacity"
-          style={{ backgroundColor: "var(--primary-hex)" }}
+          className="absolute inset-0 rounded-md bg-primary/20 opacity-20 group-hover:opacity-40 transition-opacity"
         />
         <img
           src="/logo-icone.png"
           alt="Petrobras Quest Logo"
-          /* Ícone EXTREMO (w-[260%]) para passar bastante das bordas */
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] w-[260%] h-[260%] max-w-none object-contain z-10 transition-all duration-300 group-hover:scale-110"
-          style={{ filter: `drop-shadow(0 15px 25px var(--primary-hex))` }}
+          style={{ filter: `drop-shadow(0 15px 25px hsl(var(--primary)))` }}
         />
       </div>
       
@@ -44,8 +42,7 @@ export default function PetrobrasLogo({
             PASSEI
           </span>
           <span 
-            className={`transition-colors duration-300 ${variant === "hero-tab" ? "dark:text-primary-foreground" : "dark:text-white"}`}
-            style={variant === "hero-tab" ? undefined : { color: "var(--primary-hex)" }}
+            className={`transition-colors duration-300 text-primary ${variant === "hero-tab" ? "dark:text-primary-foreground" : ""}`}
           >
             NO CONCURSO
           </span>

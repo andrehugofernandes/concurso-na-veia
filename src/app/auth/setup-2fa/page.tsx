@@ -6,7 +6,7 @@ import Image from "next/image";
 import QRCode from "qrcode";
 import AuthLayout from "@/components/auth/AuthLayout";
 import { OtpTutorialContent } from "@/components/auth/OtpTutorialContent";
-import { enrollMFAAction, verify2FAAction } from "@/lib/actions/auth";
+import { enrollMFAAction, verify2FAAction, getCurrentUserAction } from "@/lib/actions/auth";
 
 export default function Setup2FAPage() {
   const [loading, setLoading] = useState(true);
@@ -56,8 +56,8 @@ export default function Setup2FAPage() {
             const userEmail = user?.email || "usuario";
             
             // Alterar o path (label) e o parâmetro issuer
-            urlObj.pathname = `AVAGAEHMINHA:${userEmail}`;
-            urlObj.searchParams.set("issuer", "AVAGAEHMINHA");
+            urlObj.pathname = `Passei no Concurso:${userEmail}`;
+            urlObj.searchParams.set("issuer", "Passei no Concurso");
             uri = urlObj.toString();
           } catch (e) {
             console.warn("Falha ao personalizar URI do MFA:", e);
@@ -128,8 +128,13 @@ export default function Setup2FAPage() {
 
       if (result.status === "error") throw new Error(result.error);
 
-      // Success! Redirect to dashboard
-      router.push("/dashboard");
+      // Success! Redirect based on role
+      const userResult = await getCurrentUserAction();
+      if (userResult.data?.role === "admin") {
+        router.push("/admin");
+      } else {
+        router.push("/dashboard");
+      }
     } catch (err: any) {
       setError("Código inválido. Tente novamente.");
     }
