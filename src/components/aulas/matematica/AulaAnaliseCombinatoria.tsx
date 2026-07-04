@@ -309,11 +309,6 @@ export default function AulaAnaliseCombinatoria({
         <ModuleConsolidation
             index={3}
             variant="indigo"
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Princípio Fundamental da Contagem: A Regra do Produto",
-              duration: "10:45"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Análise Combinatória",
@@ -339,11 +334,15 @@ export default function AulaAnaliseCombinatoria({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Batida da Contagem (PFC)",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "analisecombinatoria",
+            aulaTitulo: "Analise Combinatoria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -564,11 +563,6 @@ export default function AulaAnaliseCombinatoria({
         <ModuleConsolidation
             index={3}
             variant={mv[2]}
-            video={{
-              videoId: "iG0_F6gW2QY",
-              title: "Fatorial: A Operação das Multipicações",
-              duration: "08:20"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Análise Combinatória",
@@ -594,11 +588,15 @@ export default function AulaAnaliseCombinatoria({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-              titulo: "O Ritmo do Fatorial",
-              artista: "MC Matemática"
-            }}
+            podcast={{
+            aulaId: "analisecombinatoria",
+            aulaTitulo: "Analise Combinatoria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -815,11 +813,6 @@ export default function AulaAnaliseCombinatoria({
         <ModuleConsolidation
             index={3}
             variant={mv[3]}
-            video={{
-              videoId: "h6V7j6b7M0I",
-              title: "Permutação Simples: Mudando Tudo de Lugar",
-              duration: "09:15"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Análise Combinatória",
@@ -843,11 +836,15 @@ export default function AulaAnaliseCombinatoria({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-              titulo: "Dança das Cadeiras (Permutação)",
-              artista: "Pop Logic"
-            }}
+            podcast={{
+            aulaId: "analisecombinatoria",
+            aulaTitulo: "Analise Combinatoria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1033,11 +1030,6 @@ export default function AulaAnaliseCombinatoria({
         <ModuleConsolidation
             index={3}
             variant="indigo"
-            video={{
-              videoId: "8v2S4cI9U0k",
-              title: "Permutação com Repetição: Corrigindo Dossiês",
-              duration: "11:50"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Análise Combinatória",
@@ -1061,11 +1053,15 @@ export default function AulaAnaliseCombinatoria({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-              titulo: "Eco das Repetições",
-              artista: "DJ Dividir"
-            }}
+            podcast={{
+            aulaId: "analisecombinatoria",
+            aulaTitulo: "Analise Combinatoria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1272,11 +1268,6 @@ export default function AulaAnaliseCombinatoria({
         <ModuleConsolidation
             index={3}
             variant="indigo"
-            video={{
-              videoId: "Z1o6Hq0J-i8",
-              title: "Arranjo Simples: Diferenciando da Combinação",
-              duration: "09:50"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Análise Combinatória",
@@ -1303,11 +1294,15 @@ export default function AulaAnaliseCombinatoria({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-              titulo: "Ranking da Vitória",
-              artista: "Banda Posicional"
-            }}
+            podcast={{
+            aulaId: "analisecombinatoria",
+            aulaTitulo: "Analise Combinatoria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1508,11 +1503,6 @@ export default function AulaAnaliseCombinatoria({
         <ModuleConsolidation
             index={3}
             variant="indigo"
-            video={{
-              videoId: "_bL1Qn6GezU",
-              title: "Combinação Simples: O Coração da Combinatória",
-              duration: "12:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Análise Combinatória",
@@ -1539,11 +1529,15 @@ export default function AulaAnaliseCombinatoria({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-              titulo: "União sem Ordem",
-              artista: "Voz do Povo"
-            }}
+            podcast={{
+            aulaId: "analisecombinatoria",
+            aulaTitulo: "Analise Combinatoria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1771,11 +1765,6 @@ export default function AulaAnaliseCombinatoria({
         <ModuleConsolidation
             index={3}
             variant={mv[7]}
-            video={{
-              videoId: "jX_l5X7V9QY",
-              title: "Combinação com Repetição: O Método Bolinha-Traço",
-              duration: "14:10"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Análise Combinatória",
@@ -1798,11 +1787,15 @@ export default function AulaAnaliseCombinatoria({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-              titulo: "Sinfonia do Repeteco",
-              artista: "The Combinations"
-            }}
+            podcast={{
+            aulaId: "analisecombinatoria",
+            aulaTitulo: "Analise Combinatoria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1972,11 +1965,6 @@ export default function AulaAnaliseCombinatoria({
         <ModuleConsolidation
             index={2}
             variant="indigo"
-            video={{
-              videoId: "k1V9X8Z7Y6W",
-              title: "Pascal e Binômio: As Leis da Harmonia",
-              duration: "10:00"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Análise Combinatória",
@@ -1999,11 +1987,15 @@ export default function AulaAnaliseCombinatoria({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-              titulo: "Harmonia de Pascal",
-              artista: "Sinfonia Binomial"
-            }}
+            podcast={{
+            aulaId: "analisecombinatoria",
+            aulaTitulo: "Analise Combinatoria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2164,11 +2156,6 @@ export default function AulaAnaliseCombinatoria({
         <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "p8I2-9Z9R9U",
-              title: "Aplicações Petrobras: Estratégias de Prova",
-              duration: "15:20"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Análise Combinatória",
@@ -2191,11 +2178,15 @@ export default function AulaAnaliseCombinatoria({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-              titulo: "Estratégia REPLAN",
-              artista: "Operação Gabarito"
-            }}
+            podcast={{
+            aulaId: "analisecombinatoria",
+            aulaTitulo: "Analise Combinatoria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2360,11 +2351,6 @@ export default function AulaAnaliseCombinatoria({
         <ModuleConsolidation
             index={2}
             variant="indigo"
-            video={{
-              videoId: "m7X8Y9Z0W1V",
-              title: "Revision Final e Simulado: O Grande Final",
-              duration: "20:00"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: "Análise Combinatória",
@@ -2387,11 +2373,15 @@ export default function AulaAnaliseCombinatoria({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-              titulo: "Hino do Aprovado",
-              artista: "Mestre da Matemática"
-            }}
+            podcast={{
+            aulaId: "analisecombinatoria",
+            aulaTitulo: "Analise Combinatoria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo

@@ -158,7 +158,6 @@ export default function AulaEletricidade({
           <ModuleConsolidation
             index={1}
             variant={mv[1]}
-            video={{ videoId: "dQw4w9WgXcQ", title: "Introdução a Eletricidade Básica", duration: "05:00" }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Eletricidade Básica",
@@ -166,7 +165,15 @@ export default function AulaEletricidade({
               images: [{ title: "Esquema Básico", type: "infographic", placeholderColor: "blue" }]
             }}
             sinteseEstrategica={{ title: "Resumo", content: "Lembre-se sempre dos conceitos básicos." }}
-            audio={{ audioUrl: "/audio/aula-m1.mp3", titulo: "Podcast M1", artista: "Prof. Petro" }}
+            podcast={{
+            aulaId: "eletricidade",
+            aulaTitulo: "Eletricidade",
+            materia: "Física",
+            materiaId: "fisica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo titulo="QUIZ: Módulo Nº 1" questoes={quizM1} variant={mv[1]} onComplete={() => handleModuleComplete("modulo-1")} />
@@ -211,7 +218,6 @@ export default function AulaEletricidade({
           <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            video={{ videoId: "dQw4w9WgXcQ", title: "Aprofundamento", duration: "10:00" }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Aplicações de Eletricidade Básica",
@@ -219,6 +225,15 @@ export default function AulaEletricidade({
               images: [{ title: "Exceções e Casos", type: "table", placeholderColor: "indigo" }]
             }}
             sinteseEstrategica={{ title: "Casos Práticos", content: "Atenção às exceções, é lá que a banca faz pegadinhas." }}
+          podcast={{
+            aulaId: "eletricidade",
+            aulaTitulo: "Eletricidade",
+            materia: "Física",
+            materiaId: "fisica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo titulo="QUIZ: Módulo Nº 2" questoes={quizM2} variant={mv[2]} onComplete={() => handleModuleComplete("modulo-2")} />
@@ -263,7 +278,6 @@ export default function AulaEletricidade({
           <ModuleConsolidation
             index={3}
             variant={mv[3]}
-            video={{ videoId: "dQw4w9WgXcQ", title: "Resolução e Simulado", duration: "15:00" }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Revisão Final Eletricidade Básica",
@@ -271,6 +285,15 @@ export default function AulaEletricidade({
               images: [{ title: "Checklist de Aprovação", type: "diagram", placeholderColor: "purple" }]
             }}
             sinteseEstrategica={{ title: "Revisão", content: "A prática leva à fixação." }}
+          podcast={{
+            aulaId: "eletricidade",
+            aulaTitulo: "Eletricidade",
+            materia: "Física",
+            materiaId: "fisica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo titulo="QUIZ: Módulo Nº 3" questoes={quizM3} variant={mv[3]} onComplete={() => handleModuleComplete("modulo-3")} />

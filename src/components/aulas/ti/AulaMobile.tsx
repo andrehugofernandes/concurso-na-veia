@@ -291,16 +291,6 @@ export default function AulaMobile({
           <ModuleConsolidation
             index={1}
             variant={mv[1]}
-            video={{
-              videoId: "mobile_architecture_intro",
-              title: "Fundamentos de Arquitetura de Sistemas Móveis",
-              duration: "15:45",
-            }}
-            audio={{
-              artista: "Corpo Docente Especializado",
-              titulo: "Protocolos de Segurança e Isolamento",
-              audioUrl: "",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: titulo,
@@ -342,6 +332,15 @@ export default function AulaMobile({
                 </div>
               ),
             }}
+          podcast={{
+            aulaId: "mobile",
+            aulaTitulo: "Mobile",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -492,16 +491,6 @@ export default function AulaMobile({
 <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Performance Nativa",
-              duration: "18:20",
-            }}
-            audio={{
-              artista: "Prof. Antigravity",
-              titulo: "Linguagens Modernas",
-              audioUrl: "",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: titulo,
@@ -540,6 +529,15 @@ export default function AulaMobile({
                 </div>
               ),
             }}
+          podcast={{
+            aulaId: "mobile",
+            aulaTitulo: "Mobile",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -676,16 +674,6 @@ export default function AulaMobile({
 <ModuleConsolidation
             index={2}
             variant={mv[3]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "PWA Profundo",
-              duration: "20:00",
-            }}
-            audio={{
-              artista: "Prof. Antigravity",
-              titulo: "Estratégias de Cache",
-              audioUrl: "",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: titulo,
@@ -727,6 +715,15 @@ export default function AulaMobile({
                 </div>
               ),
             }}
+          podcast={{
+            aulaId: "mobile",
+            aulaTitulo: "Mobile",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -887,16 +884,6 @@ export default function AulaMobile({
           <ModuleConsolidation
             index={4}
             variant={mv[4]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Arquitetura RN",
-              duration: "25:00",
-            }}
-            audio={{
-              artista: "Prof. Antigravity",
-              titulo: "Bridge vs JSI",
-              audioUrl: "",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: titulo,
@@ -932,6 +919,15 @@ export default function AulaMobile({
                 </div>
               ),
             }}
+          podcast={{
+            aulaId: "mobile",
+            aulaTitulo: "Mobile",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -1072,16 +1068,6 @@ export default function AulaMobile({
 <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Navigation & State",
-              duration: "22:30",
-            }}
-            audio={{
-              artista: "Prof. Antigravity",
-              titulo: "Offline Persistent State",
-              audioUrl: "",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: titulo,
@@ -1117,6 +1103,15 @@ export default function AulaMobile({
                 </div>
               ),
             }}
+          podcast={{
+            aulaId: "mobile",
+            aulaTitulo: "Mobile",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1288,16 +1283,6 @@ export default function AulaMobile({
 <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Widgets & Rendering",
-              duration: "19:00",
-            }}
-            audio={{
-              artista: "Prof. Antigravity",
-              titulo: "A Magia das Árvores",
-              audioUrl: "",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: titulo,
@@ -1333,6 +1318,15 @@ export default function AulaMobile({
                 </div>
               ),
             }}
+          podcast={{
+            aulaId: "mobile",
+            aulaTitulo: "Mobile",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1466,16 +1460,6 @@ export default function AulaMobile({
 <ModuleConsolidation
             index={2}
             variant={mv[7]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "State Management Pro",
-              duration: "24:15",
-            }}
-            audio={{
-              artista: "Prof. Antigravity",
-              titulo: "BLoC vs Riverpod",
-              audioUrl: "",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: titulo,
@@ -1509,6 +1493,15 @@ export default function AulaMobile({
                 </p>
               ),
             }}
+          podcast={{
+            aulaId: "mobile",
+            aulaTitulo: "Mobile",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1604,16 +1597,6 @@ export default function AulaMobile({
           <ModuleConsolidation
             index={8}
             variant={mv[8]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Native APIs & Sensors",
-              duration: "16:50",
-            }}
-            audio={{
-              artista: "Prof. Antigravity",
-              titulo: "Segurança de Dados Locais",
-              audioUrl: "",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: titulo,
@@ -1655,6 +1638,15 @@ export default function AulaMobile({
                 </div>
               ),
             }}
+          podcast={{
+            aulaId: "mobile",
+            aulaTitulo: "Mobile",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -1810,16 +1802,6 @@ export default function AulaMobile({
 <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Premium UI/UX",
-              duration: "18:40",
-            }}
-            audio={{
-              artista: "Prof. Antigravity",
-              titulo: "Design Systems no Mobile",
-              audioUrl: "",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: titulo,
@@ -1853,6 +1835,15 @@ export default function AulaMobile({
                 </div>
               ),
             }}
+          podcast={{
+            aulaId: "mobile",
+            aulaTitulo: "Mobile",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -2035,16 +2026,6 @@ export default function AulaMobile({
 <ModuleConsolidation
             index={2}
             variant={mv[10]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "App Stores Release",
-              duration: "25:00",
-            }}
-            audio={{
-              artista: "Prof. Antigravity",
-              titulo: "A Arte do Deploy Ininterrupto",
-              audioUrl: "",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: titulo,
@@ -2078,6 +2059,15 @@ export default function AulaMobile({
                 </div>
               ),
             }}
+          podcast={{
+            aulaId: "mobile",
+            aulaTitulo: "Mobile",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo

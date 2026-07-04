@@ -389,11 +389,6 @@ export default function AulaGeometriaPlana({
         <ModuleConsolidation
             index={3}
             variant="indigo"
-            video={{
-              videoId: "aN1mKSMWiow",
-              title: "Polígonos: Classificação, Ângulos Internos e Propriedades",
-              duration: "12:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Geometria Plana",
@@ -424,11 +419,15 @@ export default function AulaGeometriaPlana({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "A Dança dos Polígonos",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaplana",
+            aulaTitulo: "Geometria Plana",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -634,11 +633,6 @@ export default function AulaGeometriaPlana({
         <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            video={{
-              videoId: "xhEQa-uECe0",
-              title: "Triângulos: Classificação, Desigualdade Triangular e Altura",
-              duration: "14:20"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Geometria Plana",
@@ -673,11 +667,15 @@ export default function AulaGeometriaPlana({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-              titulo: "Trilha dos Triângulos",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaplana",
+            aulaTitulo: "Geometria Plana",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -862,11 +860,6 @@ export default function AulaGeometriaPlana({
         <ModuleConsolidation
             index={2}
             variant={mv[3]}
-            video={{
-              videoId: "K7eVVVHGDe4",
-              title: "Cálculo de Áreas de Triângulos: Fórmulas Principais e Casos Especiais",
-              duration: "11:15"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Geometria Plana",
@@ -905,11 +898,15 @@ export default function AulaGeometriaPlana({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-              titulo: "A Fórmula da Área",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaplana",
+            aulaTitulo: "Geometria Plana",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1158,11 +1155,6 @@ export default function AulaGeometriaPlana({
         <ModuleConsolidation
             index={3}
             variant={mv[4]}
-            video={{
-              videoId: "ZcX-8SmG6nA",
-              title: "Quadriláteros: Tipos, Diagonais, Perímetro e Área",
-              duration: "13:45"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Geometria Plana",
@@ -1197,11 +1189,15 @@ export default function AulaGeometriaPlana({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-              titulo: "Os Quatro Quadros",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaplana",
+            aulaTitulo: "Geometria Plana",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1391,11 +1387,6 @@ export default function AulaGeometriaPlana({
         <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            video={{
-              videoId: "p-e5Ot_BDOA",
-              title: "Círculo e Circunferência: Perímetro, Área, Setor e Coroa Circular",
-              duration: "12:50"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Geometria Plana",
@@ -1430,11 +1421,15 @@ export default function AulaGeometriaPlana({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-              titulo: "A Canção do Raio e do Pi",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaplana",
+            aulaTitulo: "Geometria Plana",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1610,11 +1605,6 @@ export default function AulaGeometriaPlana({
         <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            video={{
-              videoId: "t4WdZDvp8Ps",
-              title: "Semelhança de Triângulos: Critérios AA, LAL, LLL e Teorema de Thales",
-              duration: "15:10"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Geometria Plana",
@@ -1649,12 +1639,7 @@ export default function AulaGeometriaPlana({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-              titulo: "A Proporcionalidade dos Triângulos",
-              artista: "Prof. Rítmico"
-            }}
-          />
+            />
 
             <QuizInterativo
               questoes={quizM6}
@@ -1814,11 +1799,6 @@ export default function AulaGeometriaPlana({
         <ModuleConsolidation
             index={2}
             variant="indigo"
-            video={{
-              videoId: "v4Zl1qZpXv4",
-              title: "Teorema de Pitágoras: Aplicações, Ternas e Problemas Espaciais",
-              duration: "13:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Geometria Plana",
@@ -1854,12 +1834,7 @@ export default function AulaGeometriaPlana({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-              titulo: "O Ritmo Pitagórico",
-              artista: "Prof. Rítmico"
-            }}
-          />
+            />
 
                       <QuizInterativo
               questoes={quizM7}
@@ -2033,11 +2008,6 @@ export default function AulaGeometriaPlana({
         <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            video={{
-              videoId: "JQuBrpJv2K8",
-              title: "Razão de Semelhança: Aplicação em Áreas e Volumes de Figuras Semelhantes",
-              duration: "14:20"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Geometria Plana",
@@ -2073,12 +2043,7 @@ export default function AulaGeometriaPlana({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-              titulo: "A Progressão das Razões",
-              artista: "Prof. Rítmico"
-            }}
-          />
+            />
 
                       <QuizInterativo
               questoes={quizM8}
@@ -2246,11 +2211,6 @@ export default function AulaGeometriaPlana({
         <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "xKh0_l-Wevs",
-              title: "Aplicações Petrobras: Cálculo de Áreas de Concessão, Plataformas e Tanques",
-              duration: "16:00"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Geometria Plana",
@@ -2286,12 +2246,7 @@ export default function AulaGeometriaPlana({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-              titulo: "Geometria no Poço (Tema Petrobras)",
-              artista: "Prof. Rítmico"
-            }}
-          />
+            />
 
                       <QuizInterativo
               questoes={quizM9}
@@ -2404,11 +2359,6 @@ export default function AulaGeometriaPlana({
         <ModuleConsolidation
             index={2}
             variant={mv[10]}
-            video={{
-              videoId: "1N7NcVB0pN8",
-              title: "Simulado Mestre: Revisão Completa e Estratégia de Prova para Geometria Plana",
-              duration: "18:45"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: "Geometria Plana",
@@ -2449,12 +2399,7 @@ export default function AulaGeometriaPlana({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-              titulo: "Hino da Geometria Plana",
-              artista: "Prof. Rítmico"
-            }}
-          />
+            />
 
                       <QuizInterativo
               questoes={quizM10}

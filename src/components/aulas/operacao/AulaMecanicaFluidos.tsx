@@ -361,11 +361,6 @@ export default function AulaMecanicaFluidos({
 <ModuleConsolidation 
                 index={1}
                 variant="blue"
-                video={{
-                   videoId: "Lg2X1X_d6U8", 
-                   title: "Entendendo a Viscosidade",
-                   duration: "08:45"
-                }}
                 resumoVisual={{
                   moduloNome: "Módulo 1",
                   tituloAula: "Propriedades",
@@ -384,12 +379,16 @@ export default function AulaMecanicaFluidos({
                     </div>
                   )
                 }}
-                audio={{
-                  audioUrl: "#",
-                  titulo: "Intro: Fluidos",
-                  artista: "Prof. Técnico"
-                }}
-              />
+                podcast={{
+            aulaId: "mecanicafluidos",
+            aulaTitulo: "Mecanica Fluidos",
+            materia: "Operação",
+            materiaId: "operacao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                              <QuizInterativo 
                 questoes={quizM1} 
@@ -462,11 +461,6 @@ export default function AulaMecanicaFluidos({
                <ModuleConsolidation 
                 index={2}
                 variant="cyan"
-                video={{
-                   videoId: "pS-Oun3G5Xw", 
-                   title: "Manometria na Prática",
-                   duration: "10:20"
-                }}
                 resumoVisual={{
                   moduloNome: "Módulo 2",
                   tituloAula: "Estática",
@@ -485,12 +479,16 @@ export default function AulaMecanicaFluidos({
                     </div>
                   )
                 }}
-                audio={{
-                  audioUrl: "#",
-                  titulo: "Estática de Vasos",
-                  artista: "Prof. Técnico"
-                }}
-              />
+                podcast={{
+            aulaId: "mecanicafluidos",
+            aulaTitulo: "Mecanica Fluidos",
+            materia: "Operação",
+            materiaId: "operacao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
             </TabsContent>
 
             {/* 4. MÓDULO 3: REGIMES DE ESCOAMENTO */}

@@ -361,11 +361,6 @@ export default function AulaLei13303(props: AulaProps) {
         <ModuleConsolidation
           index={1}
           variant={getBannerVariant(1)}
-          video={{
-            videoId: "mXWw_DLo83M",
-            title: "Fundamentos da Lei 13.303",
-            duration: "12:45"
-          }}
           resumoVisual={{
             moduloNome: "Módulo 1",
             tituloAula: "Lei 13.303",
@@ -397,12 +392,16 @@ export default function AulaLei13303(props: AulaProps) {
               </div>
             )
           }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-            titulo: "Podcast: A Origem do Estatuto",
-            artista: "Prof. Gestão"
+          podcast={{
+            aulaId: "lei13303",
+            aulaTitulo: "Lei13303",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
                 <QuizInterativo
           questoes={getQuiz("modulo-1")}
@@ -637,11 +636,6 @@ export default function AulaLei13303(props: AulaProps) {
         <ModuleConsolidation
           index={2}
           variant={getBannerVariant(2)}
-          video={{
-            videoId: "7w6z0_L_L0M",
-            title: "Diferença entre EP e SEM",
-            duration: "08:20"
-          }}
           resumoVisual={{
             moduloNome: "Módulo 2",
             tituloAula: "Lei 13.303",
@@ -664,12 +658,16 @@ export default function AulaLei13303(props: AulaProps) {
               </div>
             )
           }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-            titulo: "Podcast: O Foro e o Capital",
-            artista: "Dra. Administrativo"
+          podcast={{
+            aulaId: "lei13303",
+            aulaTitulo: "Lei13303",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
                 <QuizInterativo
           questoes={getQuiz("modulo-2")}
@@ -884,11 +882,6 @@ export default function AulaLei13303(props: AulaProps) {
         <ModuleConsolidation
           index={3}
           variant={getBannerVariant(3)}
-          video={{
-            videoId: "xyz123",
-            title: "Direitos dos Acionistas",
-            duration: "10:30"
-          }}
           resumoVisual={{
             moduloNome: "Módulo 3",
             tituloAula: "Lei 13.303",
@@ -909,12 +902,16 @@ export default function AulaLei13303(props: AulaProps) {
               </div>
             )
           }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-            titulo: "Podcast: O Investidor Ético",
-            artista: "Dra. Finanças"
+          podcast={{
+            aulaId: "lei13303",
+            aulaTitulo: "Lei13303",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
                 <QuizInterativo
           questoes={getQuiz("modulo-3")}
@@ -1125,11 +1122,6 @@ export default function AulaLei13303(props: AulaProps) {
         <ModuleConsolidation
           index={4}
           variant={getBannerVariant(4)}
-          video={{
-            videoId: "abc456",
-            title: "Estrutura Institucional",
-            duration: "13:45"
-          }}
           resumoVisual={{
             moduloNome: "Módulo 4",
             tituloAula: "Lei 13.303",
@@ -1150,12 +1142,16 @@ export default function AulaLei13303(props: AulaProps) {
               </div>
             )
           }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-            titulo: "Podcast: O Poder na Companhia",
-            artista: "Prof. Alberto"
+          podcast={{
+            aulaId: "lei13303",
+            aulaTitulo: "Lei13303",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
                 <QuizInterativo
           questoes={getQuiz("modulo-4")}
@@ -1398,11 +1394,6 @@ export default function AulaLei13303(props: AulaProps) {
         <ModuleConsolidation
           index={5}
           variant={getBannerVariant(5)}
-          video={{
-            videoId: "9HnS-2vX060",
-            title: "Funcionamento das Assembleias",
-            duration: "11:15"
-          }}
           resumoVisual={{
             moduloNome: "Módulo 5",
             tituloAula: "Lei 13.303",
@@ -1426,12 +1417,16 @@ export default function AulaLei13303(props: AulaProps) {
               </div>
             )
           }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-            titulo: "Podcast: A Voz do Acionista",
-            artista: "Auditores Independentes"
+          podcast={{
+            aulaId: "lei13303",
+            aulaTitulo: "Lei13303",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
                 <QuizInterativo
           questoes={getQuiz("modulo-5")}
@@ -1658,11 +1653,6 @@ export default function AulaLei13303(props: AulaProps) {
         <ModuleConsolidation
           index={6}
           variant={getBannerVariant(6)}
-          video={{
-            videoId: "3rR_rW0e9A0",
-            title: "O Conselho de Administração",
-            duration: "14:50"
-          }}
           resumoVisual={{
             moduloNome: "Módulo 6",
             tituloAula: "Lei 13.303",
@@ -1682,12 +1672,16 @@ export default function AulaLei13303(props: AulaProps) {
               </div>
             )
           }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-            titulo: "Podcast: Blindagem e Competência",
-            artista: "Conselheiros Certificados"
+          podcast={{
+            aulaId: "lei13303",
+            aulaTitulo: "Lei13303",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
                 <QuizInterativo
           questoes={getQuiz("modulo-6")}
@@ -1893,11 +1887,6 @@ export default function AulaLei13303(props: AulaProps) {
         <ModuleConsolidation
           index={7}
           variant={getBannerVariant(7)}
-          video={{
-            videoId: "vXWw_DLo83M",
-            title: "Diretoria e Fiscalização",
-            duration: "13:20"
-          }}
           resumoVisual={{
             moduloNome: "Módulo 7",
             tituloAula: "Lei 13.303",
@@ -1915,12 +1904,16 @@ export default function AulaLei13303(props: AulaProps) {
               </div>
             )
           }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-            titulo: "Podcast: O Olhar do Fiscal",
-            artista: "Controladores de Contas"
+          podcast={{
+            aulaId: "lei13303",
+            aulaTitulo: "Lei13303",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
                 <QuizInterativo
           questoes={getQuiz("modulo-7")}
@@ -2131,11 +2124,6 @@ export default function AulaLei13303(props: AulaProps) {
         <ModuleConsolidation
           index={8}
           variant={getBannerVariant(8)}
-          video={{
-            videoId: "9HnS-2vX060",
-            title: "Ética e Conflito de Interesses",
-            duration: "09:45"
-          }}
           resumoVisual={{
             moduloNome: "Módulo 8",
             tituloAula: "Lei 13.303",
@@ -2153,12 +2141,16 @@ export default function AulaLei13303(props: AulaProps) {
               </div>
             )
           }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-            titulo: "Podcast: A Ética do Administrador",
-            artista: "Auditores de Compliance"
+          podcast={{
+            aulaId: "lei13303",
+            aulaTitulo: "Lei13303",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
                 <QuizInterativo
           questoes={getQuiz("modulo-8")}
@@ -2398,11 +2390,6 @@ export default function AulaLei13303(props: AulaProps) {
         <ModuleConsolidation
           index={9}
           variant={getBannerVariant(9)}
-          video={{
-            videoId: "m9k8l7",
-            title: "Petrobras e Governanca",
-            duration: "15:10"
-          }}
           resumoVisual={{
             moduloNome: "Módulo 9",
             tituloAula: "Lei 13.303",
@@ -2420,12 +2407,16 @@ export default function AulaLei13303(props: AulaProps) {
               </div>
             )
           }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-            titulo: "Podcast: O Case Petrobras",
-            artista: "Analista de Mercado"
+          podcast={{
+            aulaId: "lei13303",
+            aulaTitulo: "Lei13303",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
                 <QuizInterativo
           questoes={getQuiz("modulo-9")}

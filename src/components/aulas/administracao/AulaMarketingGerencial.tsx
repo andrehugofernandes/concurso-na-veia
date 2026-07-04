@@ -1043,7 +1043,16 @@ export default function AulaMarketingGerencial(props: AulaProps) {
                   summary={moduleContent.consolidation.summary}
                   mnemonic={moduleContent.consolidation.mnemonic}
                   variant={variant}
-                />
+                podcast={{
+            aulaId: "marketinggerencial",
+            aulaTitulo: "Marketing Gerencial",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
                 */}
 
                 <QuizInterativo

@@ -517,11 +517,6 @@ export default function AulaEngenhariaSoftware({
 <ModuleConsolidation
             index={3}
             variant={mv[1]}
-            video={{
-              videoId: "5zE_w187E60",
-              title: "CMMI vs MPS.BR em 5 Minutos",
-              duration: "6:15",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: titulo,
@@ -552,11 +547,15 @@ export default function AulaEngenhariaSoftware({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "/audio/resumo-cmmi.mp3",
-              titulo: "Minuto da Maturidade",
-              artista: "Engenharia de Software Master",
-            }}
+            podcast={{
+            aulaId: "engenhariasoftware",
+            aulaTitulo: "Engenharia Software",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -748,11 +747,6 @@ export default function AulaEngenhariaSoftware({
 <ModuleConsolidation
             index={3}
             variant={mv[2]}
-            video={{
-              videoId: "p8Zshf051QY",
-              title: "Ciclos de Vida: Do Cascata ao Ágil",
-              duration: "12:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: titulo,
@@ -782,11 +776,15 @@ export default function AulaEngenhariaSoftware({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "/audio/ciclo-vida-software.mp3",
-              titulo: "Podcast: O Ciclo Infinito",
-              artista: "Dev Cast",
-            }}
+            podcast={{
+            aulaId: "engenhariasoftware",
+            aulaTitulo: "Engenharia Software",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1064,11 +1062,6 @@ export default function AulaEngenhariaSoftware({
           <ModuleConsolidation
             index={3}
             variant={mv[3]}
-            video={{
-              videoId: "zH8I8lYfSRE",
-              title: "Engenharia de Requisitos: O Segredo do Sucesso",
-              duration: "15:20",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: titulo,
@@ -1113,12 +1106,7 @@ export default function AulaEngenhariaSoftware({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "/audio/requisitos-petroliferos.mp3",
-              titulo: "Elicitação Offshore",
-              artista: "Eng. Software Pod",
-            }}
-          />
+            />
 
           <section id="quiz-modulo-3">
             <QuizInterativo
@@ -1339,11 +1327,6 @@ export default function AulaEngenhariaSoftware({
 <ModuleConsolidation
             index={3}
             variant={mv[4]}
-            video={{
-              videoId: "v9ejT8FO-7I",
-              title: "UML e Patterns: A Visão Arquitetural",
-              duration: "18:40",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: titulo,
@@ -1378,12 +1361,7 @@ export default function AulaEngenhariaSoftware({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "/audio/uml-rap.mp3",
-              titulo: "Rap da UML",
-              artista: "Dev MC",
-            }}
-          />
+            />
 
                       <QuizInterativo
               questoes={quizM4}
@@ -1584,11 +1562,6 @@ export default function AulaEngenhariaSoftware({
 <ModuleConsolidation
             index={3}
             variant={mv[5]}
-            video={{
-              videoId: "XrgPSTvSClE",
-              title: "Scrum, Kanban e DevOps: O Guia Completo",
-              duration: "22:15",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: titulo,
@@ -1630,12 +1603,7 @@ export default function AulaEngenhariaSoftware({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "/audio/agile-mindset.mp3",
-              titulo: "Mentalidade Ágil em 2 Minutos",
-              artista: "Agile Coach",
-            }}
-          />
+            />
 
                       <QuizInterativo
               questoes={quizM5}
@@ -1815,11 +1783,6 @@ export default function AulaEngenhariaSoftware({
 <ModuleConsolidation
             index={3}
             variant={mv[6]}
-            video={{
-              videoId: "Ofktsne-utM",
-              title: "SQL e Modelo Relacional Completo",
-              duration: "25:00",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: titulo,
@@ -1847,12 +1810,7 @@ export default function AulaEngenhariaSoftware({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "/audio/sql-basics.mp3",
-              titulo: "Queries Rápidas",
-              artista: "DBA Cast",
-            }}
-          />
+            />
 
                       <QuizInterativo
               questoes={quizM6}
@@ -1992,11 +1950,6 @@ export default function AulaEngenhariaSoftware({
 <ModuleConsolidation
             index={3}
             variant={mv[7]}
-            video={{
-              videoId: "qI_g07C_Q5I",
-              title: "Big Data & NoSQL para Concursos",
-              duration: "20:10",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: titulo,
@@ -2024,12 +1977,7 @@ export default function AulaEngenhariaSoftware({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "/audio/nosql-trends.mp3",
-              titulo: "O Fim do SQL?",
-              artista: "Tech Today",
-            }}
-          />
+            />
 
                       <QuizInterativo
               questoes={quizM7}
@@ -2163,11 +2111,6 @@ export default function AulaEngenhariaSoftware({
 <ModuleConsolidation
             index={3}
             variant={mv[8]}
-            video={{
-              videoId: "y8OnoxKotPQ",
-              title: "Microserviços: Do Zero ao Avançado",
-              duration: "28:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: titulo,
@@ -2195,12 +2138,7 @@ export default function AulaEngenhariaSoftware({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "/audio/api-design.mp3",
-              titulo: "Boas Práticas de REST",
-              artista: "Dev Cast",
-            }}
-          />
+            />
 
                       <QuizInterativo
               questoes={quizM8}
@@ -2336,11 +2274,6 @@ export default function AulaEngenhariaSoftware({
 <ModuleConsolidation
             index={3}
             variant={mv[9]}
-            video={{
-              videoId: "zYI2_aXm_aE",
-              title: "Segurança de Software: O Guia Definitivo",
-              duration: "32:15",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: titulo,
@@ -2368,12 +2301,7 @@ export default function AulaEngenhariaSoftware({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "/audio/security-breaches.mp3",
-              titulo: "Casos Reais de Invasão",
-              artista: "Sec Report",
-            }}
-          />
+            />
 
                       <QuizInterativo
               questoes={quizM9}
@@ -2507,11 +2435,6 @@ export default function AulaEngenhariaSoftware({
 <ModuleConsolidation
             index={3}
             variant={mv[10]}
-            video={{
-              videoId: "v9ejT8FO-7I",
-              title: "Qualidade de Software: Da Teoria à Prática",
-              duration: "24:30",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: titulo,
@@ -2545,12 +2468,7 @@ export default function AulaEngenhariaSoftware({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "/audio/testing-strategies.mp3",
-              titulo: "Automação vs Manual",
-              artista: "QA World",
-            }}
-          />
+            />
 
                       <QuizInterativo
               questoes={quizM10}

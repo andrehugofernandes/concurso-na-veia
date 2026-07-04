@@ -158,7 +158,6 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
         <ModuleConsolidation
         index={1}
         variant={getModuleVariant(1)}
-        video={{ videoId: "dQw4w9WgXcQ", title: "Administração Tributária: Conceitos", duration: "12:00" }}
         resumoVisual={{
           moduloNome: "Módulo 1",
           tituloAula: "Administração Tributária",
@@ -172,8 +171,16 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           title: "Tripé da Administração Tributária",
           content: <div className="text-lg space-y-2"><p><strong>1. Conformidade:</strong> Cumprir prazos e obrigações</p><p><strong>2. Otimização:</strong> Reduzir custos legalmente</p><p><strong>3. Segurança:</strong> Documentação robusta</p></div>,
         }}
-        audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Administração Tributária", artista: "Prof. Administração" }}
-      />
+        podcast={{
+            aulaId: "administracaotributaria",
+            aulaTitulo: "Administracao Tributaria",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         slides={[
@@ -266,7 +273,6 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
         <ModuleConsolidation
         index={2}
         variant={getModuleVariant(2)}
-        video={{ videoId: "dQw4w9WgXcQ", title: "Órgãos Arrecadadores", duration: "12:00" }}
         resumoVisual={{
           moduloNome: "Módulo 2",
           tituloAula: "Administração Tributária",
@@ -280,8 +286,16 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           title: "Hierarquia dos Órgãos",
           content: <div className="text-lg space-y-2"><p><strong>Federal:</strong> RFB (IR, COFINS, PIS)</p><p><strong>Estadual:</strong> SEFAZ (ICMS)</p><p><strong>Municipal:</strong> Prefeitura (ISS)</p></div>,
         }}
-        audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Órgãos Arrecadadores", artista: "Prof. Administração" }}
-      />
+        podcast={{
+            aulaId: "administracaotributaria",
+            aulaTitulo: "Administracao Tributaria",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         slides={[
@@ -374,7 +388,6 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
         <ModuleConsolidation
         index={3}
         variant={getModuleVariant(3)}
-        video={{ videoId: "dQw4w9WgXcQ", title: "Registros e Documentos Fiscais", duration: "12:00" }}
         resumoVisual={{
           moduloNome: "Módulo 3",
           tituloAula: "Administração Tributária",
@@ -388,8 +401,16 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           title: "Documentação Essencial",
           content: <div className="text-lg space-y-2"><p><strong>NF-e:</strong> Venda de mercadoria</p><p><strong>RPA:</strong> Serviço autônomo</p><p><strong>ECD:</strong> Contabilidade digital</p></div>,
         }}
-        audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Documentos Fiscais", artista: "Prof. Administração" }}
-      />
+        podcast={{
+            aulaId: "administracaotributaria",
+            aulaTitulo: "Administracao Tributaria",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         slides={[
@@ -482,7 +503,6 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
         <ModuleConsolidation
         index={4}
         variant={getModuleVariant(4)}
-        video={{ videoId: "dQw4w9WgXcQ", title: "Declarações Tributárias", duration: "12:00" }}
         resumoVisual={{
           moduloNome: "Módulo 4",
           tituloAula: "Administração Tributária",
@@ -496,8 +516,16 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           title: "Calendário de Declarações",
           content: <div className="text-lg space-y-2"><p><strong>ECF:</strong> Até dia 15 (mensal)</p><p><strong>DACON:</strong> Quando compensar</p><p><strong>DIPJ:</strong> Até 30 de abril</p></div>,
         }}
-        audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Declarações Tributárias", artista: "Prof. Administração" }}
-      />
+        podcast={{
+            aulaId: "administracaotributaria",
+            aulaTitulo: "Administracao Tributaria",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         slides={[
@@ -590,7 +618,6 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
         <ModuleConsolidation
         index={5}
         variant={getModuleVariant(5)}
-        video={{ videoId: "dQw4w9WgXcQ", title: "Prazos e Obrigações", duration: "12:00" }}
         resumoVisual={{
           moduloNome: "Módulo 5",
           tituloAula: "Administração Tributária",
@@ -604,8 +631,16 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           title: "Regra de Ouro",
           content: <div className="text-lg space-y-2"><p><strong>Dia 15:</strong> ICMS, PIS, COFINS, INSS</p><p><strong>Dia 21:</strong> IR (estimativa)</p><p><strong>Não atrasar = evitar multas imensas</strong></p></div>,
         }}
-        audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Prazos Tributários", artista: "Prof. Administração" }}
-      />
+        podcast={{
+            aulaId: "administracaotributaria",
+            aulaTitulo: "Administracao Tributaria",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         slides={[
@@ -698,7 +733,6 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
         <ModuleConsolidation
         index={6}
         variant={getModuleVariant(6)}
-        video={{ videoId: "dQw4w9WgXcQ", title: "Gestão de Impostos", duration: "12:00" }}
         resumoVisual={{
           moduloNome: "Módulo 6",
           tituloAula: "Administração Tributária",
@@ -712,8 +746,16 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           title: "Equação de Sucesso",
           content: <div className="text-lg space-y-2"><p><strong>Conformidade:</strong> 100% cumprimento</p><p><strong>+Otimização:</strong> reduzir custos legalmente</p><p><strong>=Excelência tributária</strong></p></div>,
         }}
-        audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Gestão de Impostos", artista: "Prof. Administração" }}
-      />
+        podcast={{
+            aulaId: "administracaotributaria",
+            aulaTitulo: "Administracao Tributaria",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         slides={[
@@ -806,7 +848,6 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
         <ModuleConsolidation
         index={7}
         variant={getModuleVariant(7)}
-        video={{ videoId: "dQw4w9WgXcQ", title: "Controle de Créditos", duration: "12:00" }}
         resumoVisual={{
           moduloNome: "Módulo 7",
           tituloAula: "Administração Tributária",
@@ -820,8 +861,16 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           title: "Fórmula ICMS",
           content: <div className="text-lg space-y-2"><p><strong>Débito (saída):</strong> ICMS na venda</p><p><strong>- Crédito (entrada):</strong> ICMS na compra</p><p><strong>= ICMS a pagar</strong> (a diferença)</p></div>,
         }}
-        audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Créditos Tributários", artista: "Prof. Administração" }}
-      />
+        podcast={{
+            aulaId: "administracaotributaria",
+            aulaTitulo: "Administracao Tributaria",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         slides={[
@@ -914,7 +963,6 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
         <ModuleConsolidation
         index={8}
         variant={getModuleVariant(8)}
-        video={{ videoId: "dQw4w9WgXcQ", title: "Sistemas de Informação", duration: "12:00" }}
         resumoVisual={{
           moduloNome: "Módulo 8",
           tituloAula: "Administração Tributária",
@@ -928,8 +976,16 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           title: "Fluxo Digital",
           content: <div className="text-lg space-y-2"><p><strong>ERP → NF-e (valida) → Assina (cert.) → SEFAZ</strong></p><p><strong>ERP → SPED (valida) → Assina → RFB</strong></p><p>Tudo integrado, automático</p></div>,
         }}
-        audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Sistemas Tributários", artista: "Prof. Administração" }}
-      />
+        podcast={{
+            aulaId: "administracaotributaria",
+            aulaTitulo: "Administracao Tributaria",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         slides={[
@@ -1022,7 +1078,6 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
         <ModuleConsolidation
         index={9}
         variant={getModuleVariant(9)}
-        video={{ videoId: "dQw4w9WgXcQ", title: "Tributação em Petrobras", duration: "12:00" }}
         resumoVisual={{
           moduloNome: "Módulo 9",
           tituloAula: "Administração Tributária",
@@ -1036,8 +1091,16 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           title: "Complexidade Petrobras",
           content: <div className="text-lg space-y-2"><p><strong>27 estados:</strong> cada um com ICMS diferente</p><p><strong>Bilhões em imposto:</strong> exigem precisão absoluta</p><p><strong>Royalties/PE:</strong> repassos bilionários ao governo</p></div>,
         }}
-        audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Tributação Petrobras", artista: "Prof. Administração" }}
-      />
+        podcast={{
+            aulaId: "administracaotributaria",
+            aulaTitulo: "Administracao Tributaria",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         slides={[
@@ -1133,7 +1196,6 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
         <ModuleConsolidation
         index={10}
         variant={getModuleVariant(10)}
-        video={{ videoId: "dQw4w9WgXcQ", title: "Simulado Geral", duration: "12:00" }}
         resumoVisual={{
           moduloNome: "Módulo 10",
           tituloAula: "Administração Tributária",
@@ -1147,8 +1209,16 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           title: "Estrutura Simulado",
           content: <div className="text-lg space-y-2"><p><strong>10 questões integradas</strong> cobrindo todos módulos</p><p><strong>Conhecimento + Procedimentos + Gestão</strong></p><p><strong>70%+ = Expert em Tributária</strong></p></div>,
         }}
-        audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Simulado Geral", artista: "Prof. Administração" }}
-      />
+        podcast={{
+            aulaId: "administracaotributaria",
+            aulaTitulo: "Administracao Tributaria",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         slides={[

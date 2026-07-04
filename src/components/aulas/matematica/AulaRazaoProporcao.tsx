@@ -618,11 +618,6 @@ export default function AulaRazaoProporcao({
         <ModuleConsolidation
               index={5}
               variant={mv[1]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 1",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 1",
                 tituloAula: "Razão e Proporção",
@@ -660,13 +655,16 @@ export default function AulaRazaoProporcao({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              podcast={{
+            aulaId: "razaoproporcao",
+            aulaTitulo: "Razao Proporcao",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizRazao}
@@ -1071,11 +1069,6 @@ export default function AulaRazaoProporcao({
         <ModuleConsolidation
               index={4}
               variant={mv[2]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 2",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 2",
                 tituloAula: "Razão e Proporção",
@@ -1113,13 +1106,16 @@ export default function AulaRazaoProporcao({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              podcast={{
+            aulaId: "razaoproporcao",
+            aulaTitulo: "Razao Proporcao",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizProporcao}
@@ -1577,11 +1573,6 @@ export default function AulaRazaoProporcao({
         <ModuleConsolidation
               index={6}
               variant={mv[3]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 3",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 3",
                 tituloAula: "Razão e Proporção",
@@ -1619,13 +1610,16 @@ export default function AulaRazaoProporcao({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              podcast={{
+            aulaId: "razaoproporcao",
+            aulaTitulo: "Razao Proporcao",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizRegra3}
@@ -1977,11 +1971,6 @@ export default function AulaRazaoProporcao({
         <ModuleConsolidation
               index={4}
               variant={mv[4]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 4",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 4",
                 tituloAula: "Razão e Proporção",
@@ -2019,13 +2008,16 @@ export default function AulaRazaoProporcao({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              podcast={{
+            aulaId: "razaoproporcao",
+            aulaTitulo: "Razao Proporcao",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizDivisao}
@@ -2549,11 +2541,6 @@ export default function AulaRazaoProporcao({
         <ModuleConsolidation
               index={7}
               variant={mv[5]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 5",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 5",
                 tituloAula: "Razão e Proporção",
@@ -2591,13 +2578,16 @@ export default function AulaRazaoProporcao({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              podcast={{
+            aulaId: "razaoproporcao",
+            aulaTitulo: "Razao Proporcao",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizGrandezas}
@@ -2957,11 +2947,6 @@ export default function AulaRazaoProporcao({
         <ModuleConsolidation
               index={4}
               variant={mv[6]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 6",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 6",
                 tituloAula: "Razão e Proporção",
@@ -2999,13 +2984,16 @@ export default function AulaRazaoProporcao({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              podcast={{
+            aulaId: "razaoproporcao",
+            aulaTitulo: "Razao Proporcao",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizDivisaoAdv}
@@ -3363,11 +3351,6 @@ export default function AulaRazaoProporcao({
         <ModuleConsolidation
               index={4}
               variant={mv[7]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 7",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 7",
                 tituloAula: "Razão e Proporção",
@@ -3405,13 +3388,16 @@ export default function AulaRazaoProporcao({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              podcast={{
+            aulaId: "razaoproporcao",
+            aulaTitulo: "Razao Proporcao",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizContinua}
@@ -3840,11 +3826,6 @@ export default function AulaRazaoProporcao({
         <ModuleConsolidation
               index={5}
               variant={mv[8]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 8",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 8",
                 tituloAula: "Razão e Proporção",
@@ -3882,13 +3863,16 @@ export default function AulaRazaoProporcao({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              podcast={{
+            aulaId: "razaoproporcao",
+            aulaTitulo: "Razao Proporcao",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizEscalas}
@@ -4239,11 +4223,6 @@ export default function AulaRazaoProporcao({
         <ModuleConsolidation
               index={4}
               variant={mv[9]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 9",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 9",
                 tituloAula: "Razão e Proporção",
@@ -4281,13 +4260,16 @@ export default function AulaRazaoProporcao({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              podcast={{
+            aulaId: "razaoproporcao",
+            aulaTitulo: "Razao Proporcao",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizPetrobras}
@@ -4590,11 +4572,6 @@ export default function AulaRazaoProporcao({
         <ModuleConsolidation
               index={5}
               variant={mv[10]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 10",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 10",
                 tituloAula: "Razão e Proporção",
@@ -4632,13 +4609,16 @@ export default function AulaRazaoProporcao({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              podcast={{
+            aulaId: "razaoproporcao",
+            aulaTitulo: "Razao Proporcao",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizFinal}

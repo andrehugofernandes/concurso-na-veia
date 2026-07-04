@@ -399,14 +399,21 @@ export default function AulaTiposTextuais({
         <ModuleConsolidation
           index={1}
           variant="indigo"
-          video={{ videoId: "dQw4w9WgXcQ", title: "Narração Definitiva", duration: "12:00" }}
           resumoVisual={{
             moduloNome: "Módulo 1", materia: "Português", tituloAula: "Narração",
             images: [{ title: "PENTE", type: "Esquema", placeholderColor: "bg-indigo-500/20" }]
           }}
           sinteseEstrategica={{ title: "Filme vs Foto", content: "Narração = Filme | Descrição = Foto" }}
-          audio={{ audioUrl: "#", titulo: "Ritmo Narrativo", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "tipostextuais",
+            aulaTitulo: "Tipos Textuais",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
@@ -468,14 +475,21 @@ export default function AulaTiposTextuais({
         <ModuleConsolidation
           index={2}
           variant={mv[2]}
-          video={{ videoId: "2-0mD4J7X1I", title: "Descrição Técnica", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 2", materia: "Português", tituloAula: "Descrição",
             images: [{ title: "Adjetivação", type: "Tabela", placeholderColor: "bg-emerald-500/20" }]
           }}
           sinteseEstrategica={{ title: "Congelar o Tempo", content: "A descrição para o relógio para pintar o cenário." }}
-          audio={{ audioUrl: "#", titulo: "Texturas do Texto", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "tipostextuais",
+            aulaTitulo: "Tipos Textuais",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -533,14 +547,21 @@ export default function AulaTiposTextuais({
         <ModuleConsolidation
           index={3}
           variant={mv[3]}
-          video={{ videoId: "3-pE9M4zS3Y", title: "Exposição Pura", duration: "11:00" }}
           resumoVisual={{
             moduloNome: "Módulo 3", materia: "Português", tituloAula: "Exposição",
             images: [{ title: "Clareza", type: "Esquema", placeholderColor: "bg-violet-500/20" }]
           }}
           sinteseEstrategica={{ title: "Ensinar vs Brigar", content: "Expor é dar uma aula. Argumentar é dar um sermão." }}
-          audio={{ audioUrl: "#", titulo: "Voz Didática", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "tipostextuais",
+            aulaTitulo: "Tipos Textuais",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -601,14 +622,21 @@ export default function AulaTiposTextuais({
         <ModuleConsolidation
           index={4}
           variant={mv[4]}
-          video={{ videoId: "4-pE9M4zS3Y", title: "Poder da Argumentação", duration: "14:00" }}
           resumoVisual={{
             moduloNome: "Módulo 4", materia: "Português", tituloAula: "Argumentação",
             images: [{ title: "Tese vs Fato", type: "Esquema", placeholderColor: "bg-blue-500/20" }]
           }}
           sinteseEstrategica={{ title: "Vender a Ideia", content: "Imagine que cada parágrafo argumentativo é um 'vendedor' da sua tese." }}
-          audio={{ audioUrl: "#", titulo: "Retórica de Concurso", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "tipostextuais",
+            aulaTitulo: "Tipos Textuais",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -666,14 +694,21 @@ export default function AulaTiposTextuais({
         <ModuleConsolidation
           index={5}
           variant={mv[5]}
-          video={{ videoId: "5-pE9M4zS3Y", title: "Guia de Injunção", duration: "09:00" }}
           resumoVisual={{
             moduloNome: "Módulo 5", materia: "Português", tituloAula: "Injunção",
             images: [{ title: "Verbos de Ordem", type: "Diagrama", placeholderColor: "bg-amber-500/20" }]
           }}
           sinteseEstrategica={{ title: "Mão na Massa", content: "Injunção = Passo a Passo para o leitor agir." }}
-          audio={{ audioUrl: "#", titulo: "Comandos Verbais", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "tipostextuais",
+            aulaTitulo: "Tipos Textuais",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -731,14 +766,21 @@ export default function AulaTiposTextuais({
         <ModuleConsolidation
           index={6}
           variant={mv[6]}
-          video={{ videoId: "6-pE9M4zS3Y", title: "Diálogo em Prova", duration: "08:00" }}
           resumoVisual={{
             moduloNome: "Módulo 6", materia: "Português", tituloAula: "Modo Dialogal",
             images: [{ title: "Turnos de Fala", type: "Esquema", placeholderColor: "bg-rose-500/20" }]
           }}
           sinteseEstrategica={{ title: "Tênis Textual", content: "O diálogo é como uma partida de tênis: a bola (fala) vai e volta." }}
-          audio={{ audioUrl: "#", titulo: "Vozes Cruzadas", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "tipostextuais",
+            aulaTitulo: "Tipos Textuais",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -796,14 +838,21 @@ export default function AulaTiposTextuais({
         <ModuleConsolidation
           index={7}
           variant={mv[7]}
-          video={{ videoId: "7-pE9M4zS3Y", title: "Gêneros na Prática", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 7", materia: "Português", tituloAula: "Gêneros",
             images: [{ title: "Tabela de Gêneros", type: "Tabela", placeholderColor: "bg-cyan-500/20" }]
           }}
           sinteseEstrategica={{ title: "Andaime e Prédio", content: "Tipo = Andaime (estrutura); Gênero = Prédio pronto (uso)." }}
-          audio={{ audioUrl: "#", titulo: "Comunicação Social", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "tipostextuais",
+            aulaTitulo: "Tipos Textuais",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -861,14 +910,21 @@ export default function AulaTiposTextuais({
         <ModuleConsolidation
           index={8}
           variant="indigo"
-          video={{ videoId: "8-pE9M4zS3Y", title: "Mix de Tipos", duration: "11:00" }}
           resumoVisual={{
             moduloNome: "Módulo 8", materia: "Português", tituloAula: "Hibridismo",
             images: [{ title: "Transição Lógica", type: "Diagrama", placeholderColor: "bg-indigo-500/20" }]
           }}
           sinteseEstrategica={{ title: "Tipo Camaleão", content: "O texto muda de 'cor' (tipo) conforme a necessidade do autor." }}
-          audio={{ audioUrl: "#", titulo: "Harmonia Textual", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "tipostextuais",
+            aulaTitulo: "Tipos Textuais",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -926,14 +982,21 @@ export default function AulaTiposTextuais({
         <ModuleConsolidation
           index={9}
           variant={mv[9]}
-          video={{ videoId: "9-pE9M4zS3Y", title: "Dicas de Ouro", duration: "15:00" }}
           resumoVisual={{
             moduloNome: "Módulo 9", materia: "Português", tituloAula: "Laboratório",
             images: [{ title: "Radar CESGRANRIO", type: "Mapa Mental", placeholderColor: "bg-emerald-500/20" }]
           }}
           sinteseEstrategica={{ title: "Detetive de Texto", content: "Procure as 'pegadas' gramaticais que definem o tipo." }}
-          audio={{ audioUrl: "#", titulo: "Tática de Prova", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "tipostextuais",
+            aulaTitulo: "Tipos Textuais",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -982,14 +1045,21 @@ export default function AulaTiposTextuais({
         <ModuleConsolidation
           index={10}
           variant={mv[10]}
-          video={{ videoId: "10-pE9M4zS3Y", title: "Review Geral", duration: "20:00" }}
           resumoVisual={{
             moduloNome: "Módulo 10", materia: "Português", tituloAula: "Simulado",
             images: [{ title: "Checklist Final", type: "Lista", placeholderColor: "bg-violet-500/20" }]
           }}
           sinteseEstrategica={{ title: "Foco Total", content: "A prova é um jogo de paciência e aplicação de técnica." }}
-          audio={{ audioUrl: "#", titulo: "Mentalidade Estratégica", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "tipostextuais",
+            aulaTitulo: "Tipos Textuais",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}

@@ -435,11 +435,6 @@ export default function AulaGovernanca({
 <ModuleConsolidation
             index={2}
             variant={mv[1]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Intro à Governança de TI",
-              duration: "10:15",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: titulo,
@@ -473,11 +468,15 @@ export default function AulaGovernanca({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "",
-              titulo: "Podcast Resumo - M1",
-              artista: "Prof. Antigravity",
-            }}
+            podcast={{
+            aulaId: "governanca",
+            aulaTitulo: "Governanca",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -713,11 +712,6 @@ export default function AulaGovernanca({
 <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Dominando o COBIT 2019",
-              duration: "12:00",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: titulo,
@@ -746,11 +740,15 @@ export default function AulaGovernanca({
                 </p>
               ),
             }}
-            audio={{
-              audioUrl: "",
-              titulo: "Podcast COBIT",
-              artista: "Prof. Antigravity",
-            }}
+            podcast={{
+            aulaId: "governanca",
+            aulaTitulo: "Governanca",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -963,11 +961,6 @@ export default function AulaGovernanca({
 <ModuleConsolidation
             index={2}
             variant={mv[3]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Resumo ITIL 4",
-              duration: "11:30",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: titulo,
@@ -993,11 +986,15 @@ export default function AulaGovernanca({
                 <p>SVS = A Engrenagem que transforma Demanda em Valor.</p>
               ),
             }}
-            audio={{
-              audioUrl: "",
-              titulo: "ITIL Audio",
-              artista: "Prof. Antigravity",
-            }}
+            podcast={{
+            aulaId: "governanca",
+            aulaTitulo: "Governanca",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1204,11 +1201,6 @@ export default function AulaGovernanca({
 <ModuleConsolidation
             index={2}
             variant={mv[4]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "ISO 38500 Passo a Passo",
-              duration: "9:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: titulo,
@@ -1232,11 +1224,15 @@ export default function AulaGovernanca({
               title: "Fases de Gestão de Riscos",
               content: <p>PETI sonha, PDTI realiza.</p>,
             }}
-            audio={{
-              audioUrl: "",
-              titulo: "Audio Norma",
-              artista: "Prof. Antigravity",
-            }}
+            podcast={{
+            aulaId: "governanca",
+            aulaTitulo: "Governanca",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1398,11 +1394,6 @@ export default function AulaGovernanca({
           <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Planejamento TI na Prática",
-              duration: "11:00",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: titulo,
@@ -1426,11 +1417,15 @@ export default function AulaGovernanca({
               title: "Alinhamento Estratégico",
               content: <p>PETI define diretrizes, PDTI viabiliza a execução.</p>,
             }}
-            audio={{
-              audioUrl: "",
-              titulo: "Podcast PDTI",
-              artista: "Prof. Antigravity",
-            }}
+            podcast={{
+            aulaId: "governanca",
+            aulaTitulo: "Governanca",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
         </div>
       </TabsContent>
@@ -1498,11 +1493,6 @@ export default function AulaGovernanca({
 <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Gestão de Riscos TI",
-              duration: "12:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: titulo,
@@ -1530,11 +1520,15 @@ export default function AulaGovernanca({
                 </p>
               ),
             }}
-            audio={{
-              audioUrl: "",
-              titulo: "Podcast Riscos",
-              artista: "Prof. Antigravity",
-            }}
+            podcast={{
+            aulaId: "governanca",
+            aulaTitulo: "Governanca",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1591,11 +1585,6 @@ export default function AulaGovernanca({
 <ModuleConsolidation
             index={2}
             variant={mv[7]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Compliance e LGPD",
-              duration: "10:30",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: titulo,
@@ -1623,11 +1612,15 @@ export default function AulaGovernanca({
                 </p>
               ),
             }}
-            audio={{
-              audioUrl: "",
-              titulo: "Podcast LGPD",
-              artista: "Prof. Antigravity",
-            }}
+            podcast={{
+            aulaId: "governanca",
+            aulaTitulo: "Governanca",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1696,11 +1689,6 @@ export default function AulaGovernanca({
 <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Gestão de SLAs",
-              duration: "11:20",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: titulo,
@@ -1724,11 +1712,15 @@ export default function AulaGovernanca({
               title: "Alinhamento Estratégico",
               content: <p>SLA = Promessa externa. OLA = Ajuda interna.</p>,
             }}
-            audio={{
-              audioUrl: "",
-              titulo: "Podcast Terceiros",
-              artista: "Prof. Antigravity",
-            }}
+            podcast={{
+            aulaId: "governanca",
+            aulaTitulo: "Governanca",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1793,11 +1785,6 @@ export default function AulaGovernanca({
 <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Métricas e BSC",
-              duration: "13:15",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: titulo,
@@ -1826,11 +1813,15 @@ export default function AulaGovernanca({
                 </p>
               ),
             }}
-            audio={{
-              audioUrl: "",
-              titulo: "Podcast KPIs",
-              artista: "Prof. Antigravity",
-            }}
+            podcast={{
+            aulaId: "governanca",
+            aulaTitulo: "Governanca",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1893,11 +1884,6 @@ export default function AulaGovernanca({
 <ModuleConsolidation
             index={2}
             variant={mv[10]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Governança Ágil",
-              duration: "11:50",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: titulo,
@@ -1925,11 +1911,15 @@ export default function AulaGovernanca({
                 </p>
               ),
             }}
-            audio={{
-              audioUrl: "",
-              titulo: "Podcast Futuro",
-              artista: "Prof. Antigravity",
-            }}
+            podcast={{
+            aulaId: "governanca",
+            aulaTitulo: "Governanca",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo

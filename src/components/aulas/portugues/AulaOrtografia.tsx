@@ -1122,11 +1122,6 @@ Ditongo é junto, hiato é separação!
         <ModuleConsolidation
           index={1}
           variant={mv[1] || "amber"}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Encontros Vocálicos na Prática",
-            duration: "08:00"
-          }}
           resumoVisual={{
             moduloNome: "Encontros Vocálicos",
             tituloAula: "Ortografia",
@@ -1171,12 +1166,16 @@ Ditongo é junto, hiato é separação!
               </div>
             ),
           }}
-          audio={{
-            audioUrl: "#",
-            titulo: "Resumo: Encontros Vocálicos",
-            artista: "Prof. André",
+          podcast={{
+            aulaId: "ortografia",
+            aulaTitulo: "Ortografia",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
       </TabsContent>
 
       {/* =======================================================
@@ -1517,7 +1516,6 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <ModuleConsolidation
           index={2}
           variant={mv[2] || "blue"}
-          video={{ videoId: "dQw4w9WgXcQ", title: "Acentuação na Prática", duration: "12:00" }}
           resumoVisual={{
             moduloNome: "Acentuação", tituloAula: "Ortografia", materia: "Português",
             images: [{ title: "Mapa Mental: Acentos", type: "Mapa Mental", placeholderColor: "bg-blue-100" }]
@@ -1526,8 +1524,16 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             title: "A Regra do Oposto",
             content: <p className="text-lg">"<strong>Paroxítonas</strong> são o oposto das <strong>Oxítonas</strong>: o que acentua uma, não acentua a outra."</p>
           }}
-          audio={{ audioUrl: "#", titulo: "AudioAula: Acentuação", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "ortografia",
+            aulaTitulo: "Ortografia",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
       </TabsContent>
       {/* ========================================================================
                         MÓDULO 3: O Novo Acordo
@@ -1568,7 +1574,6 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <ModuleConsolidation
           index={3}
           variant={mv[3] || "blue"}
-          video={{ videoId: "dQw4w9WgXcQ", title: "Novo Acordo", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Novo Acordo", tituloAula: "Ortografia", materia: "Português",
             images: [{ title: "Tabela de Mudanças", type: "Tabela", placeholderColor: "bg-blue-100" }]
@@ -1577,8 +1582,16 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
              title: "Princípio Fundamental",
              content: <p className="text-lg">"<strong>Paroxítona</strong> mudou, <strong>oxítona</strong> ficou. O trema morreu e as duplas perderam o chapéu."</p>
           }}
-          audio={{ audioUrl: "#", titulo: "AudioAula: O Acordo", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "ortografia",
+            aulaTitulo: "Ortografia",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <section className="mt-12">
           {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1643,7 +1656,6 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <ModuleConsolidation
           index={4}
           variant={mv[4] || "indigo"}
-          video={{ videoId: "dQw4w9WgXcQ", title: "Grafia Visual", duration: "08:00" }}
           resumoVisual={{
             moduloNome: "Grafia", tituloAula: "Ortografia", materia: "Português",
             images: [{ title: "Mapa G vs J", type: "Mapa Mental", placeholderColor: "bg-indigo-100" }]
@@ -1652,8 +1664,16 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
             title: "Sufixos",
             content: <p className="text-lg">"Origem/Nacionalidade usa <strong>S</strong> (Holandês). Abstração/Qualidade usa <strong>Z</strong> (Rigidez)."</p>
           }}
-          audio={{ audioUrl: "#", titulo: "AudioAula: Grafia", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "ortografia",
+            aulaTitulo: "Ortografia",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <section className="mt-12">
           {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1698,14 +1718,21 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <ModuleConsolidation 
           index={5} 
           variant={mv[5]} 
-          video={{videoId:"dQw4w9WgXcQ", title:"Opostos", duration:"05:00"}} 
           resumoVisual={{moduloNome:"Opostos", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Tabela", placeholderColor:"bg-rose-100"}]}}
           sinteseEstrategica={{
             title: "Macete do Lobo",
             content: <p className="text-lg">"Lobo <strong>Mau</strong> é Lobo <strong>Bom</strong> (Troque por BOM). Mal-vindo é <strong>Bem</strong>-vindo (Troque por BEM)."</p>
           }}
-          audio={{ audioUrl: "#", titulo: "AudioAula: Mal vs Mau", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "ortografia",
+            aulaTitulo: "Ortografia",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -1740,14 +1767,21 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <ModuleConsolidation 
           index={6} 
           variant={mv[6]} 
-          video={{videoId:"dQw4w9WgXcQ", title:"Os Porquês", duration:"04:00"}} 
           resumoVisual={{moduloNome:"Porquês", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Mapa", placeholderColor:"bg-amber-100"}]}}
           sinteseEstrategica={{
             title: "Destaque Estratégico",
             content: <div className="space-y-2"><p><strong>Por que</strong> (separado) = Pergunta.</p><p><strong>Porque</strong> (junto) = Resposta.</p></div>
           }}
-          audio={{ audioUrl: "#", titulo: "AudioAula: Porquês", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "ortografia",
+            aulaTitulo: "Ortografia",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -1780,14 +1814,21 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <ModuleConsolidation 
           index={7} 
           variant={mv[7]} 
-          video={{videoId:"dQw4w9WgXcQ", title:"Hífen", duration:"06:00"}} 
           resumoVisual={{moduloNome:"Hífen", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Tabela", placeholderColor:"bg-violet-100"}]}}
           sinteseEstrategica={{
             title: "Regra dos Opostos",
             content: <p className="text-lg">"Os incomuns se atraem (Sem Hífen). Os iguais se repelem (Com Hífen)."</p>
           }}
-          audio={{ audioUrl: "#", titulo: "AudioAula: Hífen", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "ortografia",
+            aulaTitulo: "Ortografia",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -1817,14 +1858,21 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <ModuleConsolidation 
           index={8} 
           variant={mv[8]} 
-          video={{videoId:"dQw4w9WgXcQ", title:"Semântica", duration:"07:00"}} 
           resumoVisual={{moduloNome:"Semântica", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Lista", placeholderColor:"bg-emerald-100"}]}}
           sinteseEstrategica={{
             title: "Trinca da Cesgranrio",
             content: <div className="space-y-1"><p><strong>Sessão</strong> (Tempo/Cinema)</p><p><strong>Seção</strong> (Lugar/Divisão)</p><p><strong>Cessão</strong> (Dar/Ceder)</p></div>
           }}
-          audio={{ audioUrl: "#", titulo: "AudioAula: Semântica", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "ortografia",
+            aulaTitulo: "Ortografia",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -1854,14 +1902,21 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <ModuleConsolidation 
           index={9} 
           variant={mv[9]} 
-          video={{videoId:"dQw4w9WgXcQ", title:"Contexto", duration:"03:00"}} 
           resumoVisual={{moduloNome:"Contexto", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Card", placeholderColor:"bg-blue-100"}]}}
           sinteseEstrategica={{
             title: "A fim de",
             content: <p className="text-lg">"<strong>A fim de</strong> (separado) indica finalidade (Para). <strong>Afim</strong> (junto) indica semelhança."</p>
           }}
-          audio={{ audioUrl: "#", titulo: "AudioAula: Contexto", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "ortografia",
+            aulaTitulo: "Ortografia",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -1915,14 +1970,21 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <ModuleConsolidation 
           index={10} 
           variant={mv[10]} 
-          video={{videoId:"dQw4w9WgXcQ", title:"Revisão", duration:"05:00"}} 
           resumoVisual={{moduloNome:"Final", tituloAula:"Ortografia", materia:"Português", images:[{title:"Checklist", type:"Card", placeholderColor:"bg-blue-200"}]}}
           sinteseEstrategica={{
             title: "Checklist de Prova",
             content: <ul className="text-left list-disc list-inside"><li>Novo Acordo?</li><li>Porquês?</li><li>Mal vs Mau?</li></ul>
           }}
-          audio={{ audioUrl: "#", titulo: "AudioAula: Maratona", artista: "Prof. André" }}
-        />
+          podcast={{
+            aulaId: "ortografia",
+            aulaTitulo: "Ortografia",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
       </TabsContent>
     </AulaTemplate>
   );

@@ -320,11 +320,6 @@ export default function AulaReadingStrategies({
 <ModuleConsolidation
               index={2}
               variant={mv[1]}
-              video={{
-                videoId: "kOunF5Z0vWA",
-                title: "Prediction Techniques for Exams",
-                duration: "6:15"
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 1",
                 tituloAula: "Inglês Instrumental",
@@ -348,12 +343,16 @@ export default function AulaReadingStrategies({
                   </div>
                 )
               }}
-              audio={{
-                audioUrl: "#",
-                titulo: "Sinfonia da Predição",
-                artista: "Prof. Douglas"
-              }}
-            />
+              podcast={{
+            aulaId: "readingstrategies",
+            aulaTitulo: "Reading Strategies",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizPrediction}
@@ -461,11 +460,6 @@ export default function AulaReadingStrategies({
 <ModuleConsolidation
               index={2}
               variant={mv[2]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Skimming Mastery",
-                duration: "7:40"
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 2",
                 tituloAula: "Inglês Instrumental",
@@ -486,12 +480,16 @@ export default function AulaReadingStrategies({
                   </div>
                 )
               }}
-              audio={{
-                audioUrl: "#",
-                titulo: "Voo Rasante",
-                artista: "Prof. Douglas"
-              }}
-            />
+              podcast={{
+            aulaId: "readingstrategies",
+            aulaTitulo: "Reading Strategies",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizSkimming}
@@ -631,11 +629,6 @@ export default function AulaReadingStrategies({
 <ModuleConsolidation
               index={2}
               variant={mv[3]}
-              video={{
-                videoId: "8kGv8C_R91A",
-                title: "Scanning Drills for Competitive Exams",
-                duration: "8:15"
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 3",
                 tituloAula: "Inglês Instrumental",
@@ -657,12 +650,16 @@ export default function AulaReadingStrategies({
                   </div>
                 )
               }}
-              audio={{
-                audioUrl: "#",
-                titulo: "Foco no Alvo: Scanning",
-                artista: "Prof. Douglas"
-              }}
-            />
+              podcast={{
+            aulaId: "readingstrategies",
+            aulaTitulo: "Reading Strategies",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizScanning}
@@ -865,11 +862,6 @@ export default function AulaReadingStrategies({
 <ModuleConsolidation
               index={3}
               variant={mv[4]}
-              video={{
-                videoId: "kOunF5Z0vWA",
-                title: "Vocabulary Strategies for Petrobras",
-                duration: "10:15"
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 4",
                 tituloAula: titulo,
@@ -891,12 +883,16 @@ export default function AulaReadingStrategies({
                   </div>
                 )
               }}
-              audio={{
-                audioUrl: "#",
-                titulo: "Vocabulário Produtivo",
-                artista: "Prof. Douglas"
-              }}
-            />
+              podcast={{
+            aulaId: "readingstrategies",
+            aulaTitulo: "Reading Strategies",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizVocabulary}
@@ -997,11 +993,6 @@ export default function AulaReadingStrategies({
 <ModuleConsolidation
               index={2}
               variant={mv[5]}
-              video={{
-                videoId: "kOunF5Z0vWA",
-                title: "Context Clues & Inference",
-                duration: "8:45"
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 5",
                 tituloAula: titulo,
@@ -1025,12 +1016,16 @@ export default function AulaReadingStrategies({
                   </div>
                 )
               }}
-              audio={{
-                audioUrl: "#",
-                titulo: "Inferência Contextual",
-                artista: "Prof. Douglas"
-              }}
-            />
+              podcast={{
+            aulaId: "readingstrategies",
+            aulaTitulo: "Reading Strategies",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizInferencing}
@@ -1130,11 +1125,6 @@ export default function AulaReadingStrategies({
 <ModuleConsolidation
               index={2}
               variant={mv[6]}
-              video={{
-                videoId: "kOunF5Z0vWA",
-                title: "Main Idea & Text Organization",
-                duration: "9:20"
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 6",
                 tituloAula: titulo,
@@ -1156,12 +1146,16 @@ export default function AulaReadingStrategies({
                   </div>
                 )
               }}
-              audio={{
-                audioUrl: "#",
-                titulo: "Arquitetura de Texto",
-                artista: "Prof. Douglas"
-              }}
-            />
+              podcast={{
+            aulaId: "readingstrategies",
+            aulaTitulo: "Reading Strategies",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizMainIdea}
@@ -1262,11 +1256,6 @@ export default function AulaReadingStrategies({
 <ModuleConsolidation
               index={2}
               variant={mv[7]}
-              video={{
-                videoId: "kOunF5Z0vWA",
-                title: "Tone, Bias & Critical Reading",
-                duration: "10:05"
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 7",
                 tituloAula: titulo,
@@ -1290,12 +1279,16 @@ export default function AulaReadingStrategies({
                   </div>
                 )
               }}
-              audio={{
-                audioUrl: "#",
-                titulo: "Leitura Crítica",
-                artista: "Prof. Douglas"
-              }}
-            />
+              podcast={{
+            aulaId: "readingstrategies",
+            aulaTitulo: "Reading Strategies",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizTone}
@@ -1415,11 +1408,6 @@ export default function AulaReadingStrategies({
 <ModuleConsolidation
               index={2}
               variant={mv[8]}
-              video={{
-                videoId: "kOunF5Z0vWA",
-                title: "Text Structure Signals",
-                duration: "9:50"
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 8",
                 tituloAula: titulo,
@@ -1441,12 +1429,16 @@ export default function AulaReadingStrategies({
                   </div>
                 )
               }}
-              audio={{
-                audioUrl: "#",
-                titulo: "Arquitetura Textual",
-                artista: "Prof. Douglas"
-              }}
-            />
+              podcast={{
+            aulaId: "readingstrategies",
+            aulaTitulo: "Reading Strategies",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizStructure}
@@ -1561,11 +1553,6 @@ export default function AulaReadingStrategies({
 <ModuleConsolidation
               index={2}
               variant={mv[9]}
-              video={{
-                videoId: "kOunF5Z0vWA",
-                title: "Integrated Strategies in Action",
-                duration: "11:30"
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 9",
                 tituloAula: titulo,
@@ -1587,12 +1574,16 @@ export default function AulaReadingStrategies({
                   </div>
                 )
               }}
-              audio={{
-                audioUrl: "#",
-                titulo: "Leitura Integrada",
-                artista: "Prof. Douglas"
-              }}
-            />
+              podcast={{
+            aulaId: "readingstrategies",
+            aulaTitulo: "Reading Strategies",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizPetrobras}
@@ -1657,11 +1648,6 @@ export default function AulaReadingStrategies({
 <ModuleConsolidation
               index={2}
               variant={mv[10]}
-              video={{
-                videoId: "kOunF5Z0vWA",
-                title: "Master Exam Strategies",
-                duration: "12:00"
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 10",
                 tituloAula: titulo,
@@ -1686,12 +1672,16 @@ export default function AulaReadingStrategies({
                   </div>
                 )
               }}
-              audio={{
-                audioUrl: "#",
-                titulo: "Domínio Completo",
-                artista: "Prof. Douglas"
-              }}
-            />
+              podcast={{
+            aulaId: "readingstrategies",
+            aulaTitulo: "Reading Strategies",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizSimuladoMestre}

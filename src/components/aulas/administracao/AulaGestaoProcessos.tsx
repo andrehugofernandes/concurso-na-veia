@@ -392,11 +392,6 @@ export default function AulaGestaoProcessos({
 <ModuleConsolidation
             index={2}
             variant={mv[1]}
-            video={{
-              videoId: "T3Z7M-0eEG8",
-              title: "Hierarquia e Tipos de Processos",
-              duration: "18:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Gestão de Processos",
@@ -423,11 +418,15 @@ export default function AulaGestaoProcessos({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Podcast: O que é Processo?",
-              artista: "Prof. Gestão de Operações",
-            }}
+            podcast={{
+            aulaId: "gestaoprocessos",
+            aulaTitulo: "Gestao Processos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -621,11 +620,6 @@ export default function AulaGestaoProcessos({
 <ModuleConsolidation 
             index={2} 
             variant={mv[2]} 
-            video={{ 
-              videoId: "T3Z7M-0eEG8", 
-              title: "A Jornada do Ciclo de Vida BPM", 
-              duration: "21:10" 
-            }} 
             resumoVisual={{ 
               moduloNome: "Módulo 2", 
               tituloAula: "Gestão de Processos", 
@@ -648,11 +642,15 @@ export default function AulaGestaoProcessos({
                 </div>
               ) 
             }} 
-            audio={{ 
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", 
-              titulo: "Masterclass: Ciclo BPM", 
-              artista: "Especialista CBOK" 
-            }} 
+            podcast={{
+            aulaId: "gestaoprocessos",
+            aulaTitulo: "Gestao Processos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -849,11 +847,6 @@ export default function AulaGestaoProcessos({
 <ModuleConsolidation 
             index={2} 
             variant={mv[3]} 
-            video={{ 
-              videoId: "T3Z7M-0eEG8", 
-              title: "Modelando seu Primeiro Processo BPMN", 
-              duration: "25:00" 
-            }} 
             resumoVisual={{ 
               moduloNome: "Módulo 3", 
               tituloAula: "Gestão de Processos", 
@@ -876,11 +869,15 @@ export default function AulaGestaoProcessos({
                 </div>
               ) 
             }} 
-            audio={{ 
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", 
-              titulo: "Audioguia: Lógica de Gateways", 
-              artista: "Prof. Modelagem" 
-            }} 
+            podcast={{
+            aulaId: "gestaoprocessos",
+            aulaTitulo: "Gestao Processos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1074,11 +1071,6 @@ export default function AulaGestaoProcessos({
 <ModuleConsolidation 
             index={2} 
             variant={mv[4]} 
-            video={{ 
-              videoId: "T3Z7M-0eEG8", 
-              title: "Do Caos à Ordem: AS-IS e TO-BE", 
-              duration: "18:45" 
-            }} 
             resumoVisual={{ 
               moduloNome: "Módulo 4", 
               tituloAula: "Gestão de Processos", 
@@ -1098,11 +1090,15 @@ export default function AulaGestaoProcessos({
                 </div>
               ) 
             }} 
-            audio={{ 
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", 
-              titulo: "Minicast: Mapeamento Ágil", 
-              artista: "Consultor de Processos" 
-            }} 
+            podcast={{
+            aulaId: "gestaoprocessos",
+            aulaTitulo: "Gestao Processos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1302,11 +1298,6 @@ export default function AulaGestaoProcessos({
 <ModuleConsolidation 
             index={2} 
             variant={mv[5]} 
-            video={{ 
-              videoId: "pSg4e7jS_9I", 
-              title: "Lean Six Sigma na Indústria de Petróleo", 
-              duration: "15:20" 
-            }} 
             resumoVisual={{ 
               moduloNome: "Módulo 5", 
               tituloAula: "Gestão de Processos", 
@@ -1329,11 +1320,15 @@ export default function AulaGestaoProcessos({
                 </div>
               ) 
             }} 
-            audio={{ 
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", 
-              titulo: "Podcast: A Mentalidade Enxuta", 
-              artista: "Especialista em Qualidade" 
-            }} 
+            podcast={{
+            aulaId: "gestaoprocessos",
+            aulaTitulo: "Gestao Processos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1496,11 +1491,6 @@ export default function AulaGestaoProcessos({
 <ModuleConsolidation 
             index={2} 
             variant={mv[6]} 
-            video={{ 
-              videoId: "T3Z7M-0eEG8", 
-              title: "Dominando KPIs de Processos", 
-              duration: "20:00" 
-            }} 
             resumoVisual={{ 
               moduloNome: "Módulo 6", 
               tituloAula: "Gestão de Processos", 
@@ -1522,11 +1512,15 @@ export default function AulaGestaoProcessos({
                 </div>
               ) 
             }} 
-            audio={{ 
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", 
-              titulo: "Masterclass: Métricas de Sucesso", 
-              artista: "Analista de Desempenho" 
-            }} 
+            podcast={{
+            aulaId: "gestaoprocessos",
+            aulaTitulo: "Gestao Processos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1674,11 +1668,6 @@ export default function AulaGestaoProcessos({
 <ModuleConsolidation 
             index={2} 
             variant={mv[7]} 
-            video={{ 
-              videoId: "T3Z7M-0eEG8", 
-              title: "A Revolução do BPMS", 
-              duration: "12:10" 
-            }} 
             resumoVisual={{ 
               moduloNome: "Módulo 7", 
               tituloAula: "Gestão de Processos", 
@@ -1697,11 +1686,15 @@ export default function AulaGestaoProcessos({
                 </div>
               ) 
             }} 
-            audio={{ 
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", 
-              titulo: "Minicast: BPMS na Indústria 4.0", 
-              artista: "Especialista em Automação" 
-            }} 
+            podcast={{
+            aulaId: "gestaoprocessos",
+            aulaTitulo: "Gestao Processos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1844,11 +1837,6 @@ export default function AulaGestaoProcessos({
 <ModuleConsolidation 
             index={2} 
             variant={mv[8]} 
-            video={{ 
-              videoId: "T3Z7M-0eEG8", 
-              title: "ISO 9001 na Prática Operacional", 
-              duration: "25:00" 
-            }} 
             resumoVisual={{ 
               moduloNome: "Módulo 8", 
               tituloAula: "Gestão de Processos", 
@@ -1871,11 +1859,15 @@ export default function AulaGestaoProcessos({
                 </div>
               ) 
             }} 
-            audio={{ 
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", 
-              titulo: "Workshop: Ishikawa em Operações", 
-              artista: "Consultor Lean" 
-            }} 
+            podcast={{
+            aulaId: "gestaoprocessos",
+            aulaTitulo: "Gestao Processos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -2002,11 +1994,6 @@ export default function AulaGestaoProcessos({
 <ModuleConsolidation 
             index={2} 
             variant={mv[9]} 
-            video={{ 
-              videoId: "T3Z7M-0eEG8", 
-              title: "Explorando a Cadeia de Valor Petrobras", 
-              duration: "30:00" 
-            }} 
             resumoVisual={{ 
               moduloNome: "Módulo 9", 
               tituloAula: "Gestão de Processos", 
@@ -2029,11 +2016,15 @@ export default function AulaGestaoProcessos({
                 </div>
               ) 
             }} 
-            audio={{ 
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", 
-              titulo: "Palestra: Governança e Processos", 
-              artista: "Diretor Petrobras" 
-            }} 
+            podcast={{
+            aulaId: "gestaoprocessos",
+            aulaTitulo: "Gestao Processos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}

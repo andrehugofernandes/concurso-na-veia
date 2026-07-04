@@ -495,7 +495,6 @@ export default function AulaCrase({
         <ModuleConsolidation
           index={1}
           variant={mv[1]}
-          video={{ videoId: "CRASE_01", title: "Crase - Módulo 1: Conceito", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 1",
             tituloAula: "Crase",
@@ -503,8 +502,16 @@ export default function AulaCrase({
             images: [{ title: "Módulo 1", type: "Resumo", placeholderColor: "bg-blue-100" }],
           }}
           sinteseEstrategica={{ title: "Síntese Estratégica S1", content: "A + A = À: Se a preposição 'a' encontra o artigo 'a', ocorre a crase." }}
-          audio={{ audioUrl: "#", titulo: "AudioAula 1 - Crase", artista: "Petrobras Quest" }}
-        />
+          podcast={{
+            aulaId: "crase",
+            aulaTitulo: "Crase",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         {/* ★ QUIZ */}
         <QuizInterativo
@@ -811,7 +818,6 @@ export default function AulaCrase({
         <ModuleConsolidation
           index={2}
           variant={mv[2]}
-          video={{ videoId: "CRASE_02", title: "Crase - Módulo 2: Teste Masculino", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 2",
             tituloAula: "Crase",
@@ -819,8 +825,16 @@ export default function AulaCrase({
             images: [{ title: "Módulo 2", type: "Resumo", placeholderColor: "bg-amber-100" }],
           }}
           sinteseEstrategica={{ title: "Síntese Estratégica S2", content: "AO no masculino? Tem crase no feminino (À)!" }}
-          audio={{ audioUrl: "#", titulo: "AudioAula 2 - Crase", artista: "Petrobras Quest" }}
-        />
+          podcast={{
+            aulaId: "crase",
+            aulaTitulo: "Crase",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM2}
@@ -1100,7 +1114,6 @@ export default function AulaCrase({
         <ModuleConsolidation
           index={3}
           variant={mv[3]}
-          video={{ videoId: "CRASE_03", title: "Crase - Módulo 3: Verbos", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 3",
             tituloAula: "Crase",
@@ -1108,8 +1121,16 @@ export default function AulaCrase({
             images: [{ title: "Módulo 3", type: "Resumo", placeholderColor: "bg-emerald-100" }],
           }}
           sinteseEstrategica={{ title: "Síntese Estratégica S3", content: "Antecedendo VERBOS: o uso da crase é vedado." }}
-          audio={{ audioUrl: "#", titulo: "AudioAula 3 - Crase", artista: "Petrobras Quest" }}
-        />
+          podcast={{
+            aulaId: "crase",
+            aulaTitulo: "Crase",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM3}
@@ -1372,7 +1393,6 @@ export default function AulaCrase({
         <ModuleConsolidation
           index={4}
           variant={mv[4]}
-          video={{ videoId: "CRASE_04", title: "Crase - Módulo 4: Pronomes", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 4",
             tituloAula: "Crase",
@@ -1380,8 +1400,16 @@ export default function AulaCrase({
             images: [{ title: "Módulo 4", type: "Resumo", placeholderColor: "bg-rose-100" }],
           }}
           sinteseEstrategica={{ title: "Síntese Estratégica S4", content: "Antecedendo PRONOMES pessoais: ausência de crase." }}
-          audio={{ audioUrl: "#", titulo: "AudioAula 4 - Crase", artista: "Petrobras Quest" }}
-        />
+          podcast={{
+            aulaId: "crase",
+            aulaTitulo: "Crase",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM4}
@@ -1653,7 +1681,6 @@ export default function AulaCrase({
         <ModuleConsolidation
           index={5}
           variant={mv[5]}
-          video={{ videoId: "CRASE_05", title: "Crase - Módulo 5: Nomes Próprios", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 5",
             tituloAula: "Crase",
@@ -1661,8 +1688,16 @@ export default function AulaCrase({
             images: [{ title: "Módulo 5", type: "Resumo", placeholderColor: "bg-violet-100" }],
           }}
           sinteseEstrategica={{ title: "Síntese Estratégica S5", content: "Nomes próprios femininos: o uso do artigo é facultativo." }}
-          audio={{ audioUrl: "#", titulo: "AudioAula 5 - Crase", artista: "Petrobras Quest" }}
-        />
+          podcast={{
+            aulaId: "crase",
+            aulaTitulo: "Crase",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM5}
@@ -1825,7 +1860,6 @@ export default function AulaCrase({
         <ModuleConsolidation
           index={6}
           variant={mv[6]}
-          video={{ videoId: "CRASE_06", title: "Crase - Módulo 6: Possessivos", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 6",
             tituloAula: "Crase",
@@ -1833,8 +1867,16 @@ export default function AulaCrase({
             images: [{ title: "Módulo 6", type: "Resumo", placeholderColor: "bg-orange-100" }],
           }}
           sinteseEstrategica={{ title: "Síntese Estratégica S6", content: "Possessivos no singular: facultativo; no plural: obrigatório." }}
-          audio={{ audioUrl: "#", titulo: "AudioAula 6 - Crase", artista: "Petrobras Quest" }}
-        />
+          podcast={{
+            aulaId: "crase",
+            aulaTitulo: "Crase",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM6}
@@ -2088,7 +2130,6 @@ export default function AulaCrase({
         <ModuleConsolidation
           index={7}
           variant={mv[7]}
-          video={{ videoId: "CRASE_07", title: "Crase - Módulo 7: Horas", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 7",
             tituloAula: "Crase",
@@ -2096,8 +2137,16 @@ export default function AulaCrase({
             images: [{ title: "Módulo 7", type: "Resumo", placeholderColor: "bg-cyan-100" }],
           }}
           sinteseEstrategica={{ title: "Síntese Estratégica S7", content: "Indicação de horas exatas exige o acento grave." }}
-          audio={{ audioUrl: "#", titulo: "AudioAula 7 - Crase", artista: "Petrobras Quest" }}
-        />
+          podcast={{
+            aulaId: "crase",
+            aulaTitulo: "Crase",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM7}
@@ -2348,7 +2397,6 @@ export default function AulaCrase({
         <ModuleConsolidation
           index={8}
           variant={mv[8]}
-          video={{ videoId: "CRASE_08", title: "Crase - Módulo 8: Casa Terra", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 8",
             tituloAula: "Crase",
@@ -2356,8 +2404,16 @@ export default function AulaCrase({
             images: [{ title: "Módulo 8", type: "Resumo", placeholderColor: "bg-teal-100" }],
           }}
           sinteseEstrategica={{ title: "Síntese Estratégica S8", content: "Casa/Terra genérica: sem crase; especificada: com crase." }}
-          audio={{ audioUrl: "#", titulo: "AudioAula 8 - Crase", artista: "Petrobras Quest" }}
-        />
+          podcast={{
+            aulaId: "crase",
+            aulaTitulo: "Crase",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM8}
@@ -2608,7 +2664,6 @@ export default function AulaCrase({
         <ModuleConsolidation
           index={9}
           variant={mv[9]}
-          video={{ videoId: "CRASE_09", title: "Crase - Módulo 9: Demonstrativos", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 9",
             tituloAula: "Crase",
@@ -2616,8 +2671,16 @@ export default function AulaCrase({
             images: [{ title: "Módulo 9", type: "Resumo", placeholderColor: "bg-indigo-100" }],
           }}
           sinteseEstrategica={{ title: "Macete M9", content: "Àquele/Àquela/Àquilo: crase sempre (a + aquele)." }}
-          audio={{ audioUrl: "#", titulo: "AudioAula 9 - Crase", artista: "Petrobras Quest" }}
-        />
+          podcast={{
+            aulaId: "crase",
+            aulaTitulo: "Crase",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM9}
@@ -2871,7 +2934,6 @@ export default function AulaCrase({
         <ModuleConsolidation
           index={10}
           variant={mv[10]}
-          video={{ videoId: "CRASE_10", title: "Crase - Módulo 10: Simulado", duration: "10:00" }}
           resumoVisual={{
             moduloNome: "Módulo 10",
             tituloAula: "Crase",
@@ -2879,8 +2941,16 @@ export default function AulaCrase({
             images: [{ title: "Módulo 10", type: "Resumo", placeholderColor: "bg-slate-100" }],
           }}
           sinteseEstrategica={{ title: "Macete M10", content: "Domine a equação e o teste do masculino: 95% resolvidas." }}
-          audio={{ audioUrl: "#", titulo: "AudioAula 10 - Crase", artista: "Petrobras Quest" }}
-        />
+          podcast={{
+            aulaId: "crase",
+            aulaTitulo: "Crase",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM10}

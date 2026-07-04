@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ScrollAnimatedHeader from './ScrollAnimatedHeader';
+import AnimatedElement from '../ui/AnimatedElement';
 
 const testimonials = [
   {
@@ -63,12 +64,9 @@ export default function TestimonialsSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial, idx) => (
-            <motion.div
+            <AnimatedElement
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.5 }}
+              delay={idx * 0.1}
               className="bg-white dark:bg-background/50 backdrop-blur-sm border border-slate-200 dark:border-white/10 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
               <div className="flex gap-1 mb-6 text-yellow-400">
@@ -90,7 +88,7 @@ export default function TestimonialsSection() {
                   <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">{testimonial.role}</span>
                 </div>
               </div>
-            </motion.div>
+            </AnimatedElement>
           ))}
         </div>
       </div>

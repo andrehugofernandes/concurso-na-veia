@@ -398,11 +398,6 @@ export default function AulaEquacoes2Grau({
         <ModuleConsolidation
             index={2}
             variant={mv[1]}
-            video={{
-              videoId: "gZDzgZxrvAo",
-              title: "Equações do 2º Grau: Conceitos Fundamentais",
-              duration: "12:30",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Equações do 2º Grau",
@@ -443,12 +438,15 @@ export default function AulaEquacoes2Grau({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl:
-                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Equações 2º Grau: Fundamentos",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "equacoes2grau",
+            aulaTitulo: "Equacoes2 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -674,11 +672,6 @@ export default function AulaEquacoes2Grau({
         <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            video={{
-              videoId: "RFKjZ2FLSrk",
-              title: "Fórmula de Bhaskara: Passo a Passo",
-              duration: "14:15",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Equações do 2º Grau",
@@ -717,12 +710,15 @@ export default function AulaEquacoes2Grau({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl:
-                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Bhaskara: O Mantra do 2º Grau",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "equacoes2grau",
+            aulaTitulo: "Equacoes2 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -916,11 +912,6 @@ export default function AulaEquacoes2Grau({
         <ModuleConsolidation
             index={2}
             variant={mv[3]}
-            video={{
-              videoId: "lkK4kZWglOk",
-              title: "Problemas Contextualizados com Equações 2º Grau",
-              duration: "13:40",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Equações do 2º Grau",
@@ -961,12 +952,15 @@ export default function AulaEquacoes2Grau({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl:
-                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Problemas Reais com Equações 2º Grau",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "equacoes2grau",
+            aulaTitulo: "Equacoes2 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1159,11 +1153,6 @@ export default function AulaEquacoes2Grau({
         <ModuleConsolidation
             index={2}
             variant={mv[4]}
-            video={{
-              videoId: "bPfYCGCYRN8",
-              title: "Vértice e Otimização: Máximos e Mínimos",
-              duration: "15:20",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Equações do 2º Grau",
@@ -1209,12 +1198,15 @@ export default function AulaEquacoes2Grau({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl:
-                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Otimização: Máximos e Mínimos",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "equacoes2grau",
+            aulaTitulo: "Equacoes2 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1340,11 +1332,6 @@ export default function AulaEquacoes2Grau({
         <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            video={{
-              videoId: "SJ-S32r9GUo",
-              title: "Revisão: Equações 2º Grau Completas",
-              duration: "16:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Equações do 2º Grau",
@@ -1384,12 +1371,15 @@ export default function AulaEquacoes2Grau({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl:
-                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Desafio: Integrando Conceitos",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "equacoes2grau",
+            aulaTitulo: "Equacoes2 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1549,11 +1539,6 @@ export default function AulaEquacoes2Grau({
         <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            video={{
-              videoId: "8mR0h4Ymfuo",
-              title: "Soma e Produto: Relações de Vieta",
-              duration: "12:50",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Equações do 2º Grau",
@@ -1592,12 +1577,15 @@ export default function AulaEquacoes2Grau({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl:
-                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Soma e Produto: O Atalho",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "equacoes2grau",
+            aulaTitulo: "Equacoes2 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1770,11 +1758,6 @@ export default function AulaEquacoes2Grau({
         <ModuleConsolidation
             index={2}
             variant={mv[7]}
-            video={{
-              videoId: "qAHgWGWZhGs",
-              title: "Gráficos de Parábolas: Visualização Completa",
-              duration: "14:30",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Equações do 2º Grau",
@@ -1815,12 +1798,15 @@ export default function AulaEquacoes2Grau({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl:
-                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Gráficos: Visualizando Parábolas",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "equacoes2grau",
+            aulaTitulo: "Equacoes2 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1987,11 +1973,6 @@ export default function AulaEquacoes2Grau({
         <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            video={{
-              videoId: "v8HEYcH0WeM",
-              title: "Resolução Reversa: Das Raízes à Equação",
-              duration: "13:15",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Equações do 2º Grau",
@@ -2032,12 +2013,15 @@ export default function AulaEquacoes2Grau({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl:
-                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Reversa: Construindo Equações",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "equacoes2grau",
+            aulaTitulo: "Equacoes2 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2205,11 +2189,6 @@ export default function AulaEquacoes2Grau({
         <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Aplicações Reais: Otimização na Indústria",
-              duration: "15:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Equações do 2º Grau",
@@ -2250,12 +2229,15 @@ export default function AulaEquacoes2Grau({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl:
-                "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Otimização: Aplicações Petrobras",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "equacoes2grau",
+            aulaTitulo: "Equacoes2 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo

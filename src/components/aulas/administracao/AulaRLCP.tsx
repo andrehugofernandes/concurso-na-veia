@@ -252,11 +252,6 @@ export default function AulaRLCP(props: AulaProps) {
         <ModuleConsolidation
           index={3}
           variant={variant}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Introdução ao RLCP",
-            duration: "05:20",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 1",
             tituloAula: "Conceitos Fundamentais",
@@ -288,12 +283,16 @@ export default function AulaRLCP(props: AulaProps) {
               </div>
             ),
           }}
-          audio={{
-            audioUrl: "#",
-            titulo: "Podcast RLCP M1",
-            artista: "Time de Compliance",
+          podcast={{
+            aulaId: "rlcp",
+            aulaTitulo: "R L C P",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
                   <QuizInterativo
             titulo="QUIZ: Conceitos Fundamentais RLCP"
@@ -452,11 +451,6 @@ export default function AulaRLCP(props: AulaProps) {
         <ModuleConsolidation
           index={3}
           variant={variant}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Modalidades de Licitação",
-            duration: "08:15",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 2",
             tituloAula: "Modalidades de Licitação",
@@ -486,12 +480,16 @@ export default function AulaRLCP(props: AulaProps) {
               </div>
             ),
           }}
-          audio={{
-            audioUrl: "#",
-            titulo: "Modalidades em 5 Minutos",
-            artista: "Auditório Petrobras",
+          podcast={{
+            aulaId: "rlcp",
+            aulaTitulo: "R L C P",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
                   <QuizInterativo
             questoes={toQQ(quizM2)}
@@ -649,11 +647,6 @@ export default function AulaRLCP(props: AulaProps) {
         <ModuleConsolidation
           index={3}
           variant={variant}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Passo a Passo da Licitação",
-            duration: "12:30",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 3",
             tituloAula: "Procedimento Licitatório",
@@ -685,12 +678,16 @@ export default function AulaRLCP(props: AulaProps) {
               </div>
             ),
           }}
-          audio={{
-            audioUrl: "#",
-            titulo: "Fluxograma Licitatório",
-            artista: "Auditório Petrobras",
+          podcast={{
+            aulaId: "rlcp",
+            aulaTitulo: "R L C P",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
                   <QuizInterativo
             titulo="QUIZ: Procedimento Licitatório"
@@ -776,11 +773,6 @@ export default function AulaRLCP(props: AulaProps) {
         <ModuleConsolidation
             index={5}
             variant={variant}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "TR e Edital",
-              duration: "08:15",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "O Termo de Referência e o Edital",
@@ -813,11 +805,15 @@ export default function AulaRLCP(props: AulaProps) {
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-              titulo: "Documentos da Licitação",
-              artista: "Petrobras Quest",
-            }}
+            podcast={{
+            aulaId: "rlcp",
+            aulaTitulo: "R L C P",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -916,11 +912,6 @@ export default function AulaRLCP(props: AulaProps) {
         <ModuleConsolidation
             index={5}
             variant={variant}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Fase de Julgamento",
-              duration: "08:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Julgamento",
@@ -943,11 +934,15 @@ export default function AulaRLCP(props: AulaProps) {
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-              titulo: "Critérios de Escolha",
-              artista: "Petrobras Quest",
-            }}
+            podcast={{
+            aulaId: "rlcp",
+            aulaTitulo: "R L C P",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -1045,11 +1040,6 @@ export default function AulaRLCP(props: AulaProps) {
         <ModuleConsolidation
             index={6}
             variant={variant}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Recursos e Impugnações",
-              duration: "09:12",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Controle",
@@ -1070,11 +1060,15 @@ export default function AulaRLCP(props: AulaProps) {
                  </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-              titulo: "Direito de Defesa",
-              artista: "Petrobras Quest",
-            }}
+            podcast={{
+            aulaId: "rlcp",
+            aulaTitulo: "R L C P",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -1171,11 +1165,6 @@ export default function AulaRLCP(props: AulaProps) {
         <ModuleConsolidation
             index={7}
             variant={variant}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Gestão Contratual",
-              duration: "11:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Vida do Contrato",
@@ -1196,11 +1185,15 @@ export default function AulaRLCP(props: AulaProps) {
                  </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-              titulo: "Fiscalização e Sanção",
-              artista: "Petrobras Quest",
-            }}
+            podcast={{
+            aulaId: "rlcp",
+            aulaTitulo: "R L C P",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -1297,16 +1290,6 @@ export default function AulaRLCP(props: AulaProps) {
         <ModuleConsolidation
             index={8}
             variant={variant}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Exclusões no RLCP",
-              duration: "07:15",
-            }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-              titulo: "Inabilitação e Desclassificação",
-              artista: "Petrobras Quest",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Causas de Exclusão",
@@ -1327,6 +1310,15 @@ export default function AulaRLCP(props: AulaProps) {
                  </div>
               ),
             }}
+          podcast={{
+            aulaId: "rlcp",
+            aulaTitulo: "R L C P",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -1409,16 +1401,6 @@ export default function AulaRLCP(props: AulaProps) {
         <ModuleConsolidation
             index={9}
             variant={variant}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Vida Corporativa e RLCP",
-              duration: "08:20",
-            }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-              titulo: "Rotina de Suprimentos",
-              artista: "Petrobras Quest",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Prática",
@@ -1439,6 +1421,15 @@ export default function AulaRLCP(props: AulaProps) {
                  </div>
               ),
             }}
+          podcast={{
+            aulaId: "rlcp",
+            aulaTitulo: "R L C P",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -1503,16 +1494,6 @@ export default function AulaRLCP(props: AulaProps) {
         <ModuleConsolidation
             index={10}
             variant={variant}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Simulado Final",
-              duration: "15:00",
-            }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-              titulo: "Vitória no RLCP",
-              artista: "Petrobras Quest",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: "Simulado",
@@ -1533,6 +1514,15 @@ export default function AulaRLCP(props: AulaProps) {
                  </div>
               ),
             }}
+          podcast={{
+            aulaId: "rlcp",
+            aulaTitulo: "R L C P",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo

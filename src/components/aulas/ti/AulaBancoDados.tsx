@@ -225,7 +225,6 @@ export default function AulaBancoDados({
           <ModuleConsolidation
             index={2}
             variant={mv[1]}
-            video={{ videoId: "", title: "", duration: "" }}
             resumoVisual={{
                 moduloNome: "Módulo 1",
                 tituloAula: titulo,
@@ -236,7 +235,15 @@ export default function AulaBancoDados({
                 title: "Destaque Estratégico",
                 content: "Entidade = Substantivo. Atributo = Adjetivo. Relacionamento = Verbo."
             }}
-             audio={{ audioUrl: "", titulo: "", artista: "" }}
+             podcast={{
+            aulaId: "bancodados",
+            aulaTitulo: "Banco Dados",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
         </div>
       </TabsContent>
@@ -660,7 +667,6 @@ export default function AulaBancoDados({
           <ModuleConsolidation
             index={2}
             variant={mv[10]}
-            video={{ videoId: "", title: "", duration: "" }}
             resumoVisual={{
                 moduloNome: "Módulo 10",
                 tituloAula: titulo,
@@ -671,7 +677,15 @@ export default function AulaBancoDados({
                 title: "Dica de Ouro",
                 content: "Backup sem teste de Restore não é Backup. É esperança."
             }}
-             audio={{ audioUrl: "", titulo: "", artista: "" }}
+             podcast={{
+            aulaId: "bancodados",
+            aulaTitulo: "Banco Dados",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
         </div>
       </TabsContent>

@@ -197,6 +197,16 @@ export default function AulaPremiumDataEngine({ data, ...props }: EngineProps) {
               images: sec.resumoVisual.images || []
             } : undefined}
             sinteseEstrategica={sec.sinteseEstrategica}
+          
+            podcast={{
+              aulaId: "premiumdataengine",
+              aulaTitulo: "Premium Data Engine",
+              materia: "shared",
+              materiaId: "shared",
+              moduloNumero: 1,
+              moduloTitulo: "Módulo 1",
+              conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+            }}
           />
         );
       default:

@@ -177,11 +177,6 @@ export default function AulaDesenhoTecnico({
 <ModuleConsolidation 
             index={1}
             variant="blue"
-            video={{
-                videoId: "9cIrI73r200",
-                title: "O Alfabeto do Desenho Técnico",
-                duration: "12:00"
-            }}
             resumoVisual={{
                 moduloNome: "Módulo 1",
                 tituloAula: "Fundamentos",
@@ -195,12 +190,16 @@ export default function AulaDesenhoTecnico({
                 title: "A Regra do Oposto na Escala",
                 content: <p className="text-lg">"Se o 1 vem atrás, o desenho é maior. Se o 1 vem na frente, o desenho é menor!"</p>
             }}
-            audio={{
-                audioUrl: "/audio/desenho-m1.mp3",
-                titulo: "Podcast: Normas ABNT",
-                artista: "Mestre da Manutenção"
-            }}
-        />
+            podcast={{
+            aulaId: "desenhotecnico",
+            aulaTitulo: "Desenho Tecnico",
+            materia: "Manutenção",
+            materiaId: "manutencao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                 <QuizInterativo 
             questoes={QUIZ_M1_DESENHO_FUNDAMENTOS}
@@ -246,11 +245,6 @@ export default function AulaDesenhoTecnico({
 <ModuleConsolidation 
             index={2}
             variant="indigo"
-            video={{
-                videoId: "8l_m2-v5R4c",
-                title: "Vistas Ortográficas Paso a Paso",
-                duration: "15:40"
-            }}
             resumoVisual={{
                 moduloNome: "Módulo 2",
                 tituloAula: "Projeções",
@@ -264,12 +258,16 @@ export default function AulaDesenhoTecnico({
                 title: "Destaque Estratégico",
                 content: <p className="text-lg italic">"Superior em baixo, esquerda na direita. No Brasil a projeção é assim feita!"</p>
             }}
-            audio={{
-                audioUrl: "/audio/desenho-m2.mp3",
-                titulo: "A Lógica das Vistas",
-                artista: "Mestre da Manutenção"
-            }}
-        />
+            podcast={{
+            aulaId: "desenhotecnico",
+            aulaTitulo: "Desenho Tecnico",
+            materia: "Manutenção",
+            materiaId: "manutencao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                 <QuizInterativo 
             questoes={QUIZ_M2_DESENHO_PROJECAO}
@@ -321,11 +319,6 @@ export default function AulaDesenhoTecnico({
 <ModuleConsolidation 
             index={3}
             variant="emerald"
-            video={{
-                videoId: "dQw4w9WgXcQ",
-                title: "A Arte das Hachuras",
-                duration: "08:15"
-            }}
             resumoVisual={{
                 moduloNome: "Módulo 3",
                 tituloAula: "Cortes",
@@ -339,12 +332,16 @@ export default function AulaDesenhoTecnico({
                 title: "Hachura não é enfeite",
                 content: <p className="text-lg">"Lugar de hachura é no lugar da massa!" Se for vazio, não tem risquinho.</p>
             }}
-            audio={{
-                audioUrl: "/audio/desenho-m3.mp3",
-                titulo: "Visualização Interna",
-                artista: "Mestre da Manutenção"
-            }}
-        />
+            podcast={{
+            aulaId: "desenhotecnico",
+            aulaTitulo: "Desenho Tecnico",
+            materia: "Manutenção",
+            materiaId: "manutencao",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                 <QuizInterativo 
             questoes={QUIZ_M3_DESENHO_CORTES}
@@ -376,11 +373,6 @@ export default function AulaDesenhoTecnico({
 <ModuleConsolidation 
             index={4}
             variant="amber"
-            video={{
-                videoId: "dQw4w9WgXcQ",
-                title: "Regras de Ouro da Cotagem",
-                duration: "11:20"
-            }}
             resumoVisual={{
                 moduloNome: "Módulo 4",
                 tituloAula: "Cotagem",
@@ -394,12 +386,16 @@ export default function AulaDesenhoTecnico({
                 title: "A Orientação da Cota",
                 content: <p className="text-lg">"Leia de baixo ou da direita." As cotas devem estar sempre acima da linha de cota.</p>
             }}
-            audio={{
-                audioUrl: "/audio/desenho-m4.mp3",
-                titulo: "Dimensionando com Sucesso",
-                artista: "Mestre da Manutenção"
-            }}
-        />
+            podcast={{
+            aulaId: "desenhotecnico",
+            aulaTitulo: "Desenho Tecnico",
+            materia: "Manutenção",
+            materiaId: "manutencao",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                 <QuizInterativo 
             questoes={QUIZ_M4_DESENHO_COTAGEM}
@@ -428,11 +424,6 @@ export default function AulaDesenhoTecnico({
 <ModuleConsolidation 
             index={5}
             variant="rose"
-            video={{
-                videoId: "dQw4w9WgXcQ",
-                title: "Lendo Isométricos Petrobras",
-                duration: "20:00"
-            }}
             resumoVisual={{
                 moduloNome: "Módulo 5",
                 tituloAula: "Tubulações",
@@ -446,12 +437,16 @@ export default function AulaDesenhoTecnico({
                 title: "A Bússola no Isométrico",
                 content: <p className="text-lg">"Olhe sempre para o Norte!" Todo isométrico indica a direção do Norte de Projeto para orientação no campo.</p>
             }}
-            audio={{
-                audioUrl: "/audio/desenho-m5.mp3",
-                titulo: "Guia de Fluxogramas",
-                artista: "Mestre da Manutenção"
-            }}
-        />
+            podcast={{
+            aulaId: "desenhotecnico",
+            aulaTitulo: "Desenho Tecnico",
+            materia: "Manutenção",
+            materiaId: "manutencao",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                 <QuizInterativo 
             questoes={QUIZ_M5_DESENHO_ISOMETRICOS}

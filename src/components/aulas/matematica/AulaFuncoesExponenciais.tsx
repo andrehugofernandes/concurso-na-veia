@@ -455,11 +455,6 @@ export default function AulaFuncoesExponenciais({
         <ModuleConsolidation
             index={3}
             variant="indigo"
-            video={{
-              videoId: "kIq5CZlg8Ik",
-              title: "Potenciação Base: Regras de Expoentes Explicadas",
-              duration: "12:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Funções Exponenciais",
@@ -482,11 +477,15 @@ export default function AulaFuncoesExponenciais({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "As Regras da Potenciação (Batida Matemática)",
-              artista: "Prof. Exponencial"
-            }}
+            podcast={{
+            aulaId: "funcoesexponenciais",
+            aulaTitulo: "Funcoes Exponenciais",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -729,11 +728,6 @@ export default function AulaFuncoesExponenciais({
         <ModuleConsolidation
             index={3}
             variant={mv[2]}
-            video={{
-              videoId: "xsW3q0DTJJ4",
-              title: "Gráficos Exponenciais: Crescimento vs Decaimento",
-              duration: "11:15"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Funções Exponenciais",
@@ -756,11 +750,15 @@ export default function AulaFuncoesExponenciais({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-              titulo: "O Ritmo dos Gráficos (Crescimento Exponencial)",
-              artista: "DJ Funções"
-            }}
+            podcast={{
+            aulaId: "funcoesexponenciais",
+            aulaTitulo: "Funcoes Exponenciais",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1062,11 +1060,6 @@ export default function AulaFuncoesExponenciais({
         <ModuleConsolidation
             index={2}
             variant={mv[4]}
-            video={{
-              videoId: "IJMB7qKMSME",
-              title: "Crescimento e Decaimento Exponencial no Mundo Real",
-              duration: "13:45"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Funções Exponenciais",
@@ -1090,11 +1083,15 @@ export default function AulaFuncoesExponenciais({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-              titulo: "O Crescimento da Vida (Beat Exponencial)",
-              artista: "Prof. Natureza"
-            }}
+            podcast={{
+            aulaId: "funcoesexponenciais",
+            aulaTitulo: "Funcoes Exponenciais",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1264,11 +1261,6 @@ export default function AulaFuncoesExponenciais({
         <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            video={{
-              videoId: "8ydBPLXF0sE",
-              title: "Desafio Parcial: Integrando Tudo de Exponenciais",
-              duration: "14:20"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Funções Exponenciais",
@@ -1292,11 +1284,15 @@ export default function AulaFuncoesExponenciais({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-              titulo: "O Desafio Parcial (Trilha Épica)",
-              artista: "Orquestra Matemática"
-            }}
+            podcast={{
+            aulaId: "funcoesexponenciais",
+            aulaTitulo: "Funcoes Exponenciais",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1461,11 +1457,6 @@ export default function AulaFuncoesExponenciais({
         <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            video={{
-              videoId: "W5t6yP6sZWg",
-              title: "O Número e: A Constante da Natureza",
-              duration: "12:50"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Funções Exponenciais",
@@ -1488,11 +1479,15 @@ export default function AulaFuncoesExponenciais({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-              titulo: "O Mistério do Número e (Jazz Matemático)",
-              artista: "Euler & Friends"
-            }}
+            podcast={{
+            aulaId: "funcoesexponenciais",
+            aulaTitulo: "Funcoes Exponenciais",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1701,11 +1696,6 @@ export default function AulaFuncoesExponenciais({
         <ModuleConsolidation
             index={2}
             variant="indigo"
-            video={{
-              videoId: "9w2EfgU-QjE",
-              title: "Transformações de Funções Exponenciais",
-              duration: "13:20"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Funções Exponenciais",
@@ -1730,11 +1720,15 @@ export default function AulaFuncoesExponenciais({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-              titulo: "Dançando com Transformações (Remixado)",
-              artista: "Graph Shifters"
-            }}
+            podcast={{
+            aulaId: "funcoesexponenciais",
+            aulaTitulo: "Funcoes Exponenciais",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1897,11 +1891,6 @@ export default function AulaFuncoesExponenciais({
         <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            video={{
-              videoId: "vBgCJqNaK_I",
-              title: "Sistemas de Equações Exponenciais Resolvidos",
-              duration: "14:10"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Funções Exponenciais",
@@ -1926,11 +1915,15 @@ export default function AulaFuncoesExponenciais({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-              titulo: "Harmonia dos Sistemas (Sinfônico)",
-              artista: "Sinfônica Matemática"
-            }}
+            podcast={{
+            aulaId: "funcoesexponenciais",
+            aulaTitulo: "Funcoes Exponenciais",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2107,11 +2100,6 @@ export default function AulaFuncoesExponenciais({
         <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "j0zXdqVhNFA",
-              title: "Exponenciais no Contexto de Petróleo e Gás",
-              duration: "15:05"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Funções Exponenciais",
@@ -2136,11 +2124,15 @@ export default function AulaFuncoesExponenciais({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-              titulo: "Ritmo da Indústria (Tema Corporativo)",
-              artista: "Petrobras Sound"
-            }}
+            podcast={{
+            aulaId: "funcoesexponenciais",
+            aulaTitulo: "Funcoes Exponenciais",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2340,11 +2332,6 @@ export default function AulaFuncoesExponenciais({
         <ModuleConsolidation
             index={2}
             variant={mv[10]}
-            video={{
-              videoId: "2N4tYGJZfr8",
-              title: "Simulado Mestre: Revisão Completa de Exponenciais",
-              duration: "16:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: "Funções Exponenciais",
@@ -2367,11 +2354,15 @@ export default function AulaFuncoesExponenciais({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-              titulo: "O Hino do Mestre (Épico Final)",
-              artista: "Orquestra de Gênios"
-            }}
+            podcast={{
+            aulaId: "funcoesexponenciais",
+            aulaTitulo: "Funcoes Exponenciais",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                         <QuizInterativo

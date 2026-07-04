@@ -365,11 +365,6 @@ export default function AulaTrigonometria({
         <ModuleConsolidation
             index={2}
             variant="indigo"
-            video={{
-              videoId: "qXv_IOKSZPY",
-              title: "Razões Trigonométricas no Triângulo Retângulo",
-              duration: "12:34"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Trigonometria",
@@ -391,11 +386,15 @@ export default function AulaTrigonometria({
                 <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Lembre: em um triângulo retângulo, sempre há uma hipotenusa e dois catetos (oposto e adjacente).</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Razões Trigonométricas - Resumo Ritmado",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "trigonometria",
+            aulaTitulo: "Trigonometria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -685,11 +684,6 @@ export default function AulaTrigonometria({
         <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            video={{
-              videoId: "V0xjO3M0q0s",
-              title: "Ângulos Notáveis: 30°, 45°, 60°",
-              duration: "15:22"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Trigonometria",
@@ -710,11 +704,15 @@ export default function AulaTrigonometria({
                 <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Seno AUMENTA de 0° a 90°. Cosseno DIMINUI de 0° a 90°.</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-              titulo: "Ângulos Notáveis - Sequência √1, √2, √3",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "trigonometria",
+            aulaTitulo: "Trigonometria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -956,11 +954,6 @@ export default function AulaTrigonometria({
         <ModuleConsolidation
             index={2}
             variant={mv[3]}
-            video={{
-              videoId: "0PqJ_MN0n8U",
-              title: "Circunferência Unitária e Radianos",
-              duration: "18:45"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Trigonometria",
@@ -982,11 +975,15 @@ export default function AulaTrigonometria({
                 <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Use ângulo de referência: sempre use distância para eixo mais próximo.</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-              titulo: "Círculo Unitário - Quadrantes e Sinais",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "trigonometria",
+            aulaTitulo: "Trigonometria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1227,11 +1224,6 @@ export default function AulaTrigonometria({
         <ModuleConsolidation
             index={2}
             variant={mv[4]}
-            video={{
-              videoId: "xEiUPR46EIQ",
-              title: "Funções sen(x), cos(x), tg(x): Gráficos e Propriedades",
-              duration: "20:15"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Trigonometria",
@@ -1254,11 +1246,15 @@ export default function AulaTrigonometria({
                 <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Deslocamento: sen(x+π/2) = cos(x)</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-              titulo: "Funções Trigonométricas - Período e Amplitude",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "trigonometria",
+            aulaTitulo: "Trigonometria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1479,11 +1475,6 @@ export default function AulaTrigonometria({
         <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            video={{
-              videoId: "1Ixnl1bN3yg",
-              title: "Identidades Trigonométricas Fundamentais",
-              duration: "16:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Trigonometria",
@@ -1505,11 +1496,15 @@ export default function AulaTrigonometria({
                 <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Tip: Deduza a partir da primeira! Divida por cos² ou sen².</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-              titulo: "Identidades - A Pitagórica é a Mãe",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "trigonometria",
+            aulaTitulo: "Trigonometria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1729,11 +1724,6 @@ export default function AulaTrigonometria({
         <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            video={{
-              videoId: "FAp9XvJNc0I",
-              title: "Lei dos Senos: a/sen(A) = b/sen(B) = c/sen(C)",
-              duration: "14:50"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Trigonometria",
@@ -1754,11 +1744,15 @@ export default function AulaTrigonometria({
                 <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Use quando: conhecer 2 ângulos + 1 lado (AAS ou ASA)</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-              titulo: "Lei dos Senos - Lado sobre Seno Oposto",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "trigonometria",
+            aulaTitulo: "Trigonometria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1972,11 +1966,6 @@ export default function AulaTrigonometria({
         <ModuleConsolidation
             index={2}
             variant="indigo"
-            video={{
-              videoId: "oXDe-QYqbWo",
-              title: "Lei dos Cossenos: a² = b² + c² - 2bc·cos(A)",
-              duration: "17:22"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Trigonometria",
@@ -1997,11 +1986,15 @@ export default function AulaTrigonometria({
                 <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Se cos(A) = 0 (A = 90°), vira a² = b² + c² (Pitágoras!).</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-              titulo: "Lei dos Cossenos - Pitágoras do Triângulo Oblíquo",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "trigonometria",
+            aulaTitulo: "Trigonometria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2215,11 +2208,6 @@ export default function AulaTrigonometria({
         <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            video={{
-              videoId: "jOpTkIwmJqE",
-              title: "Equações Trigonométricas: Resolvendo sin(x)=a, cos(x)=a, tan(x)=a",
-              duration: "19:05"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Trigonometria",
@@ -2241,11 +2229,15 @@ export default function AulaTrigonometria({
                 <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Lembre: Sen e Cos têm período 2π; Tangente tem período π.</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-              titulo: "Equações Trigonométricas - Isolar e Aplicar Periodicidade",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "trigonometria",
+            aulaTitulo: "Trigonometria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2499,11 +2491,6 @@ export default function AulaTrigonometria({
         <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "2mQ8V3vAVPs",
-              title: "Aplicações Reais: Trigonometria em Engenharia e Indústria",
-              duration: "21:40"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Trigonometria",
@@ -2526,11 +2513,15 @@ export default function AulaTrigonometria({
                 <p className="text-xl italic pt-2 text-foreground/85 leading-relaxed">Tip: Desenhe sempre o triângulo ou diagrama vetorial!</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-              titulo: "Trigonometria na Engenharia Petrolífera",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "trigonometria",
+            aulaTitulo: "Trigonometria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2817,11 +2808,6 @@ export default function AulaTrigonometria({
         <ModuleConsolidation
             index={2}
             variant={mv[10]}
-            video={{
-              videoId: "lW3W5I6VLkY",
-              title: "Revisão Geral: Trigonometria da Aula 1 ao Módulo 9",
-              duration: "24:18"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: "Trigonometria",
@@ -2848,11 +2834,15 @@ export default function AulaTrigonometria({
                 <p>9. Aplicações Petrobras: sempre desenhe o diagrama!</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-              titulo: "Trigonometria - Os 9 Pilares Consolidados",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "trigonometria",
+            aulaTitulo: "Trigonometria",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo

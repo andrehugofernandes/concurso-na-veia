@@ -437,11 +437,6 @@ export default function AulaMatrizesDeterminantes({
         <ModuleConsolidation
               index={2}
               variant="indigo"
-              video={{
-                videoId: "HgKYwTKiHc0",
-                title: "Introdução às Matrizes: Conceitos Fundamentais",
-                duration: "15:22",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 1",
                 tituloAula: "Matrizes e Determinantes",
@@ -483,13 +478,16 @@ export default function AulaMatrizesDeterminantes({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Ritmo das Matrizes (Conceito)",
-                artista: "Prof. Algébrico",
-              }}
-            />
+              podcast={{
+            aulaId: "matrizesdeterminantes",
+            aulaTitulo: "Matrizes Determinantes",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizM1}
@@ -782,11 +780,6 @@ export default function AulaMatrizesDeterminantes({
         <ModuleConsolidation
               index={2}
               variant={mv[2]}
-              video={{
-                videoId: "ZjxCqCrHT48",
-                title: "Matrizes Especiais: Diagonal, Nula, Identidade",
-                duration: "12:15",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 2",
                 tituloAula: "Matrizes e Determinantes",
@@ -828,13 +821,16 @@ export default function AulaMatrizesDeterminantes({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-                titulo: "Matrizes Especiais",
-                artista: "Prof. Algébrico",
-              }}
-            />
+              podcast={{
+            aulaId: "matrizesdeterminantes",
+            aulaTitulo: "Matrizes Determinantes",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizM2}
@@ -1115,11 +1111,6 @@ export default function AulaMatrizesDeterminantes({
         <ModuleConsolidation
               index={2}
               variant={mv[3]}
-              video={{
-                videoId: "3v8FqU29m_c",
-                title: "Operações com Matrizes: Adição, Subtração e Escalar",
-                duration: "18:45",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 3",
                 tituloAula: "Matrizes e Determinantes",
@@ -1161,13 +1152,16 @@ export default function AulaMatrizesDeterminantes({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-                titulo: "Adição de Matrizes",
-                artista: "Prof. Algébrico",
-              }}
-            />
+              podcast={{
+            aulaId: "matrizesdeterminantes",
+            aulaTitulo: "Matrizes Determinantes",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizM3}
@@ -1409,11 +1403,6 @@ export default function AulaMatrizesDeterminantes({
         <ModuleConsolidation
               index={2}
               variant={mv[4]}
-              video={{
-                videoId: "v2D1zVqAowc",
-                title: "Multiplicação de Matrizes: O Guia Definitivo",
-                duration: "22:10",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 4",
                 tituloAula: "Matrizes e Determinantes",
@@ -1457,13 +1446,16 @@ export default function AulaMatrizesDeterminantes({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-                titulo: "Multiplicação de Matrizes",
-                artista: "Prof. Algébrico",
-              }}
-            />
+              podcast={{
+            aulaId: "matrizesdeterminantes",
+            aulaTitulo: "Matrizes Determinantes",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizM4}
@@ -1706,11 +1698,6 @@ export default function AulaMatrizesDeterminantes({
         <ModuleConsolidation
               index={2}
               variant={mv[5]}
-              video={{
-                videoId: "mD7_Q_LhE6Y",
-                title: "Matriz Inversa e Transposta",
-                duration: "20:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 5",
                 tituloAula: "Matrizes e Determinantes",
@@ -1754,13 +1741,16 @@ export default function AulaMatrizesDeterminantes({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-                titulo: "Transposta e Inversa",
-                artista: "Prof. Algébrico",
-              }}
-            />
+              podcast={{
+            aulaId: "matrizesdeterminantes",
+            aulaTitulo: "Matrizes Determinantes",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizM5}
@@ -1999,11 +1989,6 @@ export default function AulaMatrizesDeterminantes({
         <ModuleConsolidation
               index={2}
               variant={mv[6]}
-              video={{
-                videoId: "6hL5Mp9Rq2W",
-                title: "Determinante 2×2: Fórmula Simples de Cramer",
-                duration: "9:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 6",
                 tituloAula: "Matrizes e Determinantes",
@@ -2045,13 +2030,16 @@ export default function AulaMatrizesDeterminantes({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-                titulo: "Determinante 2×2",
-                artista: "Prof. Algébrico",
-              }}
-            />
+              podcast={{
+            aulaId: "matrizesdeterminantes",
+            aulaTitulo: "Matrizes Determinantes",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizM6}
@@ -2304,11 +2292,6 @@ export default function AulaMatrizesDeterminantes({
         <ModuleConsolidation
               index={2}
               variant="indigo"
-              video={{
-                videoId: "8iK3Ts0Uv4P",
-                title: "Determinante 3×3: Regra de Sarrus vs Cofatores",
-                duration: "18:15",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 7",
                 tituloAula: "Matrizes e Determinantes",
@@ -2354,13 +2337,16 @@ export default function AulaMatrizesDeterminantes({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-                titulo: "Determinante 3×3 - Sarrus",
-                artista: "Prof. Algébrico",
-              }}
-            />
+              podcast={{
+            aulaId: "matrizesdeterminantes",
+            aulaTitulo: "Matrizes Determinantes",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizM7}
@@ -2592,11 +2578,6 @@ export default function AulaMatrizesDeterminantes({
         <ModuleConsolidation
               index={2}
               variant={mv[8]}
-              video={{
-                videoId: "5cJ7Nx2Lm8R",
-                title: "Cofatores, Menor e Adjunta: Inversa Passo a Passo",
-                duration: "20:40",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 8",
                 tituloAula: "Matrizes e Determinantes",
@@ -2639,13 +2620,16 @@ export default function AulaMatrizesDeterminantes({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-                titulo: "Cofatores e Adjunta",
-                artista: "Prof. Algébrico",
-              }}
-            />
+              podcast={{
+            aulaId: "matrizesdeterminantes",
+            aulaTitulo: "Matrizes Determinantes",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizM8}
@@ -2878,12 +2862,6 @@ export default function AulaMatrizesDeterminantes({
         <ModuleConsolidation
               index={2}
               variant={mv[9]}
-              video={{
-                videoId: "9lP8Qs1Xw5Y",
-                title:
-                  "Matrizes na Petrobras: Sistemas de Dutos e Análise de Redes",
-                duration: "17:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 9",
                 tituloAula: "Matrizes e Determinantes",
@@ -2926,13 +2904,16 @@ export default function AulaMatrizesDeterminantes({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-                titulo: "Matrizes na Indústria",
-                artista: "Prof. Algébrico",
-              }}
-            />
+              podcast={{
+            aulaId: "matrizesdeterminantes",
+            aulaTitulo: "Matrizes Determinantes",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizM9}
@@ -3359,11 +3340,6 @@ export default function AulaMatrizesDeterminantes({
         <ModuleConsolidation
               index={2}
               variant={mv[10]}
-              video={{
-                videoId: "w2ZyJqA4OFs",
-                title: "Simulado CESGRANRIO — Resolução Completa",
-                duration: "24:15",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 10",
                 tituloAula: "Matrizes e Determinantes",
@@ -3408,13 +3384,16 @@ export default function AulaMatrizesDeterminantes({
                   </div>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-                titulo: "Revisão Mestre",
-                artista: "Prof. Algébrico",
-              }}
-            />
+              podcast={{
+            aulaId: "matrizesdeterminantes",
+            aulaTitulo: "Matrizes Determinantes",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
               questoes={quizM10}

@@ -534,7 +534,6 @@ export default function AulaWeb({
           <ModuleConsolidation
             index={1}
             variant={mv[10]}
-            video={{ videoId: "", title: "", duration: "" }}
             resumoVisual={{
                 moduloNome: "Módulo 10",
                 tituloAula: titulo,
@@ -545,7 +544,15 @@ export default function AulaWeb({
                 title: "O Princípio Web",
                 content: "Estrutura no HTML, Beleza no CSS, Comportamento no JS."
             }}
-             audio={{ audioUrl: "", titulo: "", artista: "" }}
+             podcast={{
+            aulaId: "web",
+            aulaTitulo: "Web",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
         </div>
       </TabsContent>

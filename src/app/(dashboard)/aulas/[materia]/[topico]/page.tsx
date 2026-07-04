@@ -114,6 +114,22 @@ const AulaOrtografia = dynamic<AulaProps>(
   },
 );
 
+const AulaSemantica = dynamic<AulaProps>(
+  () => import("@/components/aulas/portugues/AulaSemantica"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
+const AulaEstatisticaBasica = dynamic<AulaProps>(
+  () => import("@/components/aulas/matematica/AulaEstatisticaBasica"),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
+  },
+);
+
 const AulaConjuntos = dynamic<AulaProps>(
   () => import("@/components/aulas/matematica/AulaConjuntos"),
   {
@@ -1324,6 +1340,23 @@ export default function TopicoPage({ params }: PageProps) {
                 prevTopico={prevTopico}
                 nextTopico={nextTopico}
               />
+            ) : materiaId === "portugues" && topicoId === "semantica" ? (
+              <AulaSemantica
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
             ) : materiaId === "matematica" && topicoId === "conjuntos" ? (
               <AulaConjuntos
                 onComplete={handleCompleteAula}
@@ -1658,6 +1691,23 @@ export default function TopicoPage({ params }: PageProps) {
             ) : materiaId === "matematica" &&
               topicoId === "sistemas-lineares" ? (
               <AulaSistemasLineares
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "matematica" && topicoId === "estatistica-basica" ? (
+              <AulaEstatisticaBasica
                 onComplete={handleCompleteAula}
                 isCompleted={isCompleted}
                 loading={loading}

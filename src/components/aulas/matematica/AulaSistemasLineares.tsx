@@ -313,11 +313,6 @@ export default function AulaSistemasLineares({
         <ModuleConsolidation
             index={3}
             variant="indigo"
-            video={{
-              videoId: "r4sFqOFe8LU",
-              title: "Sistemas Lineares: Conceitos Fundamentais",
-              duration: "12:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Sistemas Lineares",
@@ -341,11 +336,15 @@ export default function AulaSistemasLineares({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Conceito de Sistemas",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "sistemaslineares",
+            aulaTitulo: "Sistemas Lineares",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -530,11 +529,6 @@ export default function AulaSistemasLineares({
         <ModuleConsolidation
             index={3}
             variant={mv[2]}
-            video={{
-              videoId: "Fqfh_jCEVpE",
-              title: "Método de Substituição em Sistemas Lineares",
-              duration: "11:15"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Sistemas Lineares",
@@ -559,11 +553,15 @@ export default function AulaSistemasLineares({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-              titulo: "Batida da Substituição",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "sistemaslineares",
+            aulaTitulo: "Sistemas Lineares",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -729,11 +727,6 @@ export default function AulaSistemasLineares({
         <ModuleConsolidation
             index={2}
             variant={mv[3]}
-            video={{
-              videoId: "K0gU5VJMVzc",
-              title: "Método da Adição (Eliminação)",
-              duration: "13:45"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Sistemas Lineares",
@@ -759,11 +752,15 @@ export default function AulaSistemasLineares({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-              titulo: "Ritmo da Adição",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "sistemaslineares",
+            aulaTitulo: "Sistemas Lineares",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -939,11 +936,6 @@ export default function AulaSistemasLineares({
         <ModuleConsolidation
             index={2}
             variant={mv[4]}
-            video={{
-              videoId: "SIeFMNJQwqE",
-              title: "Regra de Cramer para Resolver Sistemas",
-              duration: "14:20"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Sistemas Lineares",
@@ -969,11 +961,15 @@ export default function AulaSistemasLineares({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-              titulo: "Cadência de Cramer",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "sistemaslineares",
+            aulaTitulo: "Sistemas Lineares",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1129,11 +1125,6 @@ export default function AulaSistemasLineares({
         <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            video={{
-              videoId: "rVBKiBv0Eek",
-              title: "Identificando Sistemas Impossíveis e Indeterminados",
-              duration: "12:00"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Sistemas Lineares",
@@ -1158,11 +1149,15 @@ export default function AulaSistemasLineares({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-              titulo: "Alerta de Impossibilidade",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "sistemaslineares",
+            aulaTitulo: "Sistemas Lineares",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1310,11 +1305,6 @@ export default function AulaSistemasLineares({
         <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            video={{
-              videoId: "4A8F6DWe9b8",
-              title: "Sistemas 3×3: Substituição e Cramer",
-              duration: "15:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Sistemas Lineares",
@@ -1340,11 +1330,15 @@ export default function AulaSistemasLineares({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-              titulo: "Dança Tripla (3×3)",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "sistemaslineares",
+            aulaTitulo: "Sistemas Lineares",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1507,11 +1501,6 @@ export default function AulaSistemasLineares({
         <ModuleConsolidation
             index={2}
             variant="indigo"
-            video={{
-              videoId: "mQ7TwB3c_4w",
-              title: "Interpretação Geométrica de Sistemas Lineares",
-              duration: "11:50"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Sistemas Lineares",
@@ -1536,11 +1525,15 @@ export default function AulaSistemasLineares({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-              titulo: "Tela Geométrica",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "sistemaslineares",
+            aulaTitulo: "Sistemas Lineares",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1695,11 +1688,6 @@ export default function AulaSistemasLineares({
         <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            video={{
-              videoId: "Z4jDh7iG1J0",
-              title: "Sistemas de Inequações: Solução Gráfica",
-              duration: "13:15"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Sistemas Lineares",
@@ -1725,11 +1713,15 @@ export default function AulaSistemasLineares({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-              titulo: "Zona Sombreada",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "sistemaslineares",
+            aulaTitulo: "Sistemas Lineares",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1882,11 +1874,6 @@ export default function AulaSistemasLineares({
         <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "tM_JEGxWnvQ",
-              title: "Sistemas Lineares em Engenharia: Fluxo em Redes",
-              duration: "14:40"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Sistemas Lineares",
@@ -1912,11 +1899,15 @@ export default function AulaSistemasLineares({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-              titulo: "Fluxo na Petrobras",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "sistemaslineares",
+            aulaTitulo: "Sistemas Lineares",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2086,11 +2077,6 @@ export default function AulaSistemasLineares({
         <ModuleConsolidation
             index={2}
             variant={mv[10]}
-            video={{
-              videoId: "9Kxj3pDQVmk",
-              title: "Revisão Completa: Sistemas Lineares",
-              duration: "16:00"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: "Sistemas Lineares",
@@ -2117,11 +2103,15 @@ export default function AulaSistemasLineares({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-              titulo: "Hino de Revisão (10 Módulos)",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "sistemaslineares",
+            aulaTitulo: "Sistemas Lineares",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo

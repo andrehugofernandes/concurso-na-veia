@@ -240,11 +240,6 @@ export default function AulaInfraestruturaTI({
           <ModuleConsolidation
             index={2}
             variant={mv[1]}
-            video={{
-                videoId: "6_z6_z6_z6_",
-                title: "TCP/IP vs OSI",
-                duration: "10:00"
-            }}
             resumoVisual={{
                 moduloNome: "Módulo 1",
                 tituloAula: titulo,
@@ -257,11 +252,15 @@ export default function AulaInfraestruturaTI({
                 title: "Mneumônico de Camadas",
                 content: "Memorize: Roteador = Camada 3 (Rede). Switch = Camada 2 (Enlace). Hub = Camada 1 (Física)."
             }}
-            audio={{
-                audioUrl: "",
-                titulo: "Protocolos Base",
-                artista: "Infra Expert"
-            }}
+            podcast={{
+            aulaId: "infraestruturati",
+            aulaTitulo: "Infraestrutura T I",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
         </div>
       </TabsContent>
@@ -345,7 +344,6 @@ export default function AulaInfraestruturaTI({
           <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            video={{ videoId: "", title: "", duration: "" }}
             resumoVisual={{
                 moduloNome: "Módulo 2",
                 tituloAula: titulo,
@@ -356,7 +354,15 @@ export default function AulaInfraestruturaTI({
                 title: "L2 vs L3",
                 content: "Switching trata da rede local (MAC). Roteamento trata da conexão entre redes (IP)."
             }}
-             audio={{ audioUrl: "", titulo: "", artista: "" }}
+             podcast={{
+            aulaId: "infraestruturati",
+            aulaTitulo: "Infraestrutura T I",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
         </div>
       </TabsContent>
@@ -436,13 +442,20 @@ export default function AulaInfraestruturaTI({
           <ModuleConsolidation
               index={2}
               variant={mv[3]}
-              video={{ videoId: "", title: "", duration: "" }}
               resumoVisual={{ moduloNome: "Módulo 3", tituloAula: titulo, materia: materiaNome, images: [] }}
               sinteseEstrategica={{
                   title: "IDS vs IPS",
                   content: "IDS detecta, IPS bloqueia ataques em tempo real."
               }}
-               audio={{ audioUrl: "", titulo: "", artista: "" }}
+               podcast={{
+            aulaId: "infraestruturati",
+            aulaTitulo: "Infraestrutura T I",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
         </div>
       </TabsContent>
@@ -502,13 +515,20 @@ export default function AulaInfraestruturaTI({
           <ModuleConsolidation
             index={2}
             variant={mv[4]}
-            video={{ videoId: "", title: "", duration: "" }}
             resumoVisual={{ moduloNome: "Módulo 4", tituloAula: titulo, materia: materiaNome, images: [] }}
             sinteseEstrategica={{
                 title: "AD = Centralização",
                 content: "Múltiplas máquinas, um gerenciamento centralizado via GPOs."
             }}
-             audio={{ audioUrl: "", titulo: "", artista: "" }}
+             podcast={{
+            aulaId: "infraestruturati",
+            aulaTitulo: "Infraestrutura T I",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
         </div>
       </TabsContent>
@@ -578,14 +598,21 @@ export default function AulaInfraestruturaTI({
            <ModuleConsolidation
                 index={2}
                 variant={mv[5]}
-                video={{ videoId: "", title: "", duration: "" }}
                 resumoVisual={{ moduloNome: "Módulo 5", tituloAula: titulo, materia: materiaNome, images: [] }}
                 sinteseEstrategica={{
                     title: "Tudo é arquivo",
                     content: "No Linux, quase tudo pode ser configurado via arquivos em /etc."
                 }}
-                 audio={{ audioUrl: "", titulo: "", artista: "" }}
-            />
+                 podcast={{
+            aulaId: "infraestruturati",
+            aulaTitulo: "Infraestrutura T I",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         </div>
       </TabsContent>
 
@@ -841,13 +868,20 @@ export default function AulaInfraestruturaTI({
           <ModuleConsolidation
             index={2}
             variant={mv[10]}
-            video={{ videoId: "", title: "", duration: "" }}
             resumoVisual={{ moduloNome: "Módulo 10", tituloAula: titulo, materia: materiaNome, images: [] }}
             sinteseEstrategica={{
               title: "Regra 3-2-1",
               content: "3 cópias, 2 mídias diferentes, 1 off-site (nuvem/outra sede)."
             }}
-             audio={{ audioUrl: "", titulo: "", artista: "" }}
+             podcast={{
+            aulaId: "infraestruturati",
+            aulaTitulo: "Infraestrutura T I",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
         </div>
       </TabsContent>

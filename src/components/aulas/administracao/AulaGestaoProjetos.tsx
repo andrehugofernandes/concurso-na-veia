@@ -296,11 +296,6 @@ export default function AulaGestaoProjetos({
 <ModuleConsolidation 
             index={2} 
             variant={mv[1]} 
-            video={{ 
-              videoId: "n7U7R8S_XuU", 
-              title: "Fundamentação de Projetos", 
-              duration: "18:45" 
-            }} 
             resumoVisual={{ 
               moduloNome: "Módulo 1", 
               tituloAula: "Gestão de Projetos", 
@@ -320,11 +315,15 @@ export default function AulaGestaoProjetos({
                 </div>
               ) 
             }} 
-            audio={{ 
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", 
-              titulo: "Podcast: O mindset de Projetos", 
-              artista: "Especialista em PMO" 
-            }} 
+            podcast={{
+            aulaId: "gestaoprojetos",
+            aulaTitulo: "Gestao Projetos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -446,11 +445,6 @@ export default function AulaGestaoProjetos({
 <ModuleConsolidation 
             index={2} 
             variant={mv[2]} 
-            video={{ 
-              videoId: "n7U7R8S_XuU", 
-              title: "Navegando pelas 10 Áreas", 
-              duration: "15:00" 
-            }} 
             resumoVisual={{ 
               moduloNome: "Módulo 2", 
               tituloAula: "Gestão de Projetos", 
@@ -468,11 +462,15 @@ export default function AulaGestaoProjetos({
                 </div>
               ) 
             }} 
-            audio={{ 
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", 
-              titulo: "Resumo Áreas PMBOK", 
-              artista: "Especialista" 
-            }} 
+            podcast={{
+            aulaId: "gestaoprojetos",
+            aulaTitulo: "Gestao Projetos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -600,11 +598,6 @@ export default function AulaGestaoProjetos({
 <ModuleConsolidation 
             index={2} 
             variant={mv[3]} 
-            video={{ 
-              videoId: "n7U7R8S_XuU", 
-              title: "A Jornada do Projeto", 
-              duration: "22:00" 
-            }} 
             resumoVisual={{ 
               moduloNome: "Módulo 3", 
               tituloAula: "Gestão de Projetos", 
@@ -620,11 +613,15 @@ export default function AulaGestaoProjetos({
                 <p className="text-lg font-bold text-center text-amber-600 tracking-widest">Inicia - Planeja - Executa - Monitora - Encerra</p>
               ) 
             }} 
-            audio={{ 
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", 
-              titulo: "Fluxos e Processos PMI", 
-              artista: "Prof. Gestão" 
-            }} 
+            podcast={{
+            aulaId: "gestaoprojetos",
+            aulaTitulo: "Gestao Projetos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -749,11 +746,6 @@ export default function AulaGestaoProjetos({
 <ModuleConsolidation 
             index={2} 
             variant={mv[4]} 
-            video={{ 
-              videoId: "n7U7R8S_XuU", 
-              title: "Técnicas de Escopo e Tempo", 
-              duration: "25:10" 
-            }} 
             resumoVisual={{ 
               moduloNome: "Módulo 4", 
               tituloAula: "Gestão de Projetos", 
@@ -771,11 +763,15 @@ export default function AulaGestaoProjetos({
                 </div>
               ) 
             }} 
-            audio={{ 
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", 
-              titulo: "Minicast: EAP vs Cronograma", 
-              artista: "Especialista em Planejamento" 
-            }} 
+            podcast={{
+            aulaId: "gestaoprojetos",
+            aulaTitulo: "Gestao Projetos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -905,11 +901,6 @@ export default function AulaGestaoProjetos({
 <ModuleConsolidation 
             index={2} 
             variant={mv[5]} 
-            video={{ 
-              videoId: "n7U7R8S_XuU", 
-              title: "Dominando o EVA", 
-              duration: "30:00" 
-            }} 
             resumoVisual={{ 
               moduloNome: "Módulo 5", 
               tituloAula: "Gestão de Projetos", 
@@ -925,11 +916,15 @@ export default function AulaGestaoProjetos({
                 <p className="text-lg text-emerald-600 font-bold uppercase tracking-wider">Acima de 1 tá rindo, abaixo tá chorando!</p>
               ) 
             }} 
-            audio={{ 
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", 
-              titulo: "Podcast: Métricas do Valor Agregado", 
-              artista: "Controller de Projetos" 
-            }} 
+            podcast={{
+            aulaId: "gestaoprojetos",
+            aulaTitulo: "Gestao Projetos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1050,11 +1045,6 @@ export default function AulaGestaoProjetos({
 <ModuleConsolidation 
             index={2} 
             variant={mv[6]} 
-            video={{ 
-              videoId: "n7U7R8S_XuU", 
-              title: "Gestão de Riscos na Prática", 
-              duration: "20:45" 
-            }} 
             resumoVisual={{ 
               moduloNome: "Módulo 6", 
               tituloAula: "Gestão de Projetos", 
@@ -1072,11 +1062,15 @@ export default function AulaGestaoProjetos({
                 </div>
               ) 
             }} 
-            audio={{ 
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", 
-              titulo: "Miniclass: Analise de Riscos", 
-              artista: "Especialista de Riscos" 
-            }} 
+            podcast={{
+            aulaId: "gestaoprojetos",
+            aulaTitulo: "Gestao Projetos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1199,11 +1193,6 @@ export default function AulaGestaoProjetos({
 <ModuleConsolidation
             index={2}
             variant={mv[7]}
-            video={{
-              videoId: "jZkUiVDgNWA",
-              title: "Scrum Masterclass",
-              duration: "22:15"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Gestão de Projetos",
@@ -1222,11 +1211,15 @@ export default function AulaGestaoProjetos({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-              titulo: "Agilidade na Prática",
-              artista: "Scrum Master Certificado"
-            }}
+            podcast={{
+            aulaId: "gestaoprojetos",
+            aulaTitulo: "Gestao Projetos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1353,11 +1346,6 @@ export default function AulaGestaoProjetos({
 <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Governance & PMO na Prática",
-              duration: "19:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Gestão de Projetos",
@@ -1376,11 +1364,15 @@ export default function AulaGestaoProjetos({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-              titulo: "Governance Best Practices",
-              artista: "PMO Director"
-            }}
+            podcast={{
+            aulaId: "gestaoprojetos",
+            aulaTitulo: "Gestao Projetos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1505,11 +1497,6 @@ export default function AulaGestaoProjetos({
 <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "5_aXSc9KZVc",
-              title: "Megaprojetos e Inovação",
-              duration: "24:00"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Gestão de Projetos",
@@ -1528,11 +1515,15 @@ export default function AulaGestaoProjetos({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-              titulo: "Complexidade e Inovação",
-              artista: "Gerente de Megaprojetos"
-            }}
+            podcast={{
+            aulaId: "gestaoprojetos",
+            aulaTitulo: "Gestao Projetos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1644,11 +1635,6 @@ export default function AulaGestaoProjetos({
 <ModuleConsolidation
             index={2}
             variant={mv[10]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Revisão Geral - Tudo que Você Precisa Saber",
-              duration: "45:00"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: "Gestão de Projetos",
@@ -1667,11 +1653,15 @@ export default function AulaGestaoProjetos({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-              titulo: "Encerramento & Motivação",
-              artista: "Mentor Especialista"
-            }}
+            podcast={{
+            aulaId: "gestaoprojetos",
+            aulaTitulo: "Gestao Projetos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}

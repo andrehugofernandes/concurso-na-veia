@@ -583,7 +583,6 @@ export default function AulaSegurancaInformacao({
           <ModuleConsolidation
             index={1}
             variant={mv[10]}
-            video={{ videoId: "", title: "", duration: "" }}
             resumoVisual={{
                 moduloNome: "Módulo 10",
                 tituloAula: titulo,
@@ -594,7 +593,15 @@ export default function AulaSegurancaInformacao({
                 title: "Resumo Final",
                 content: "Segurança não é um evento, é um processo contínuo de vigilância e proteção."
             }}
-             audio={{ audioUrl: "", titulo: "", artista: "" }}
+             podcast={{
+            aulaId: "segurancainformacao",
+            aulaTitulo: "Seguranca Informacao",
+            materia: "Tecnologia da Informação",
+            materiaId: "ti",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
         </div>
       </TabsContent>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { useRef, useEffect } from "react";
+import AnimatedElement from "./ui/AnimatedElement";
 import ScrollAnimatedHeader from "./home/ScrollAnimatedHeader";
 import { 
   LuArrowRight,
@@ -251,13 +252,9 @@ export default function CourseShowcase() {
             );
 
             return (
-              <motion.div
+              <AnimatedElement
                 key={course.id}
-                custom={index}
-                variants={fadeInUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
+                delay={index * 0.1}
                 data-animate
                 whileHover={isAvailable ? { y: -8, transition: { duration: 0.3 } } : {}}
                 className={`group relative ${!isAvailable ? "opacity-80" : ""}`}
@@ -273,17 +270,14 @@ export default function CourseShowcase() {
                     {content}
                   </div>
                 )}
-              </motion.div>
+              </AnimatedElement>
             );
           })}
         </div>
 
         {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          viewport={{ once: true }}
+        <AnimatedElement
+          delay={0.3}
           className="text-center mt-16"
         >
           <p className="text-muted-foreground mb-6">
@@ -296,7 +290,7 @@ export default function CourseShowcase() {
             Sugerir um Novo Concurso
             <LuArrowRight className="w-4 h-4" />
           </Link>
-        </motion.div>
+        </AnimatedElement>
       </div>
     </section>
   );

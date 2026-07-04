@@ -7,6 +7,8 @@ import { usePathname, useParams } from "next/navigation";
 import { useHeaderState } from "@/contexts/HeaderStateContext";
 export { FunctionGraph, type FunctionPlot } from "./shared/FunctionGraph";
 export { default as AulaPremiumDataEngine, type AulaPremiumData } from "./shared/AulaPremiumDataEngine";
+export { PodcastPlayerCard, type PodcastPlayerCardProps } from "./shared/PodcastPlayerCard";
+import { PodcastPlayerCard } from "./shared/PodcastPlayerCard";
 import { cn } from "@/lib/utils";
 import {
   Carousel,
@@ -3356,6 +3358,7 @@ export function ModuleConsolidation({
   sinteseEstrategica,
   maceteVisual,
   audio,
+  podcast,
   moduloNumero,
 }: {
   index: number;
@@ -3386,21 +3389,10 @@ export function ModuleConsolidation({
     capaUrl?: string;
     lyrics?: string;
   };
+  podcast?: import("./shared/PodcastPlayerCard").PodcastPlayerCardProps;
   moduloNumero?: number;
 }) {
   const tabs = [
-    video && {
-      id: "video",
-      label: "Vídeo Aula",
-      icon: LuPlay,
-      content: (
-        <div className="w-full flex flex-col items-center py-6">
-          <div className="w-full max-w-3xl">
-            <VideoModal {...video} />
-          </div>
-        </div>
-      ),
-    },
     resumoVisual && {
       id: "resumo",
       label: "Resumo Virtual",
@@ -3427,15 +3419,17 @@ export function ModuleConsolidation({
         </div>
       ),
     },
-    audio && {
-      id: "audio",
-      label: "Música do Módulo",
+    podcast && {
+      id: "podcast",
+      label: "Podcast do Módulo",
       icon: LuVolume2,
       content: (
-        <div className="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-xl border border-indigo-500/20">
-          <div className="w-full max-w-md">
-            <MusicPlayerCard {...audio} />
-          </div>
+        <div className="w-full">
+          <PodcastPlayerCard
+            {...podcast}
+            moduloNumero={moduloNumero ?? podcast.moduloNumero ?? index}
+            moduloTitulo={`Módulo ${moduloNumero ?? podcast.moduloNumero ?? index}`}
+          />
         </div>
       ),
     },

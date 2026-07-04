@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import ScrollAnimatedHeader from "./home/ScrollAnimatedHeader";
+import AnimatedElement from "./ui/AnimatedElement";
 import { 
   LuTarget, 
   LuBrain, 
@@ -114,7 +115,7 @@ export default function PricingSection() {
         />
 
         {/* Level Toggle */}
-        <div className="flex justify-center mb-14">
+        <AnimatedElement delay={0.1} className="flex justify-center mb-14">
           <div className="relative bg-muted border border-border rounded-full p-1 inline-grid grid-cols-2 gap-1">
             <button
               onClick={() => setNivel("medio")}
@@ -145,12 +146,12 @@ export default function PricingSection() {
               }`}
             />
           </div>
-        </div>
+        </AnimatedElement>
 
         {/* Cards Grid: Iniciante | Aprovado | Elite | Elite Total */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-2 max-w-[1400px] mx-auto mb-16 px-4 items-center">
           {/* FREE */}
-          <div className="bg-background border border-border rounded-2xl p-6 flex flex-col shadow-sm hover:shadow-md transition-all h-full min-h-[480px]">
+          <AnimatedElement delay={0.2} className="bg-background border border-border rounded-2xl p-6 flex flex-col shadow-sm hover:shadow-md transition-all h-full min-h-[480px]">
             <div className="mb-auto">
               <h3 className="text-sm font-bold text-muted-foreground mb-1 uppercase tracking-wider">Iniciante</h3>
               <div className="flex items-end gap-1 mb-3">
@@ -184,10 +185,10 @@ export default function PricingSection() {
             >
               Começar Grátis
             </Link>
-          </div>
+          </AnimatedElement>
 
           {/* APROVADO */}
-          <div className="bg-muted/30 border border-border rounded-2xl p-6 flex flex-col shadow-sm hover:shadow-md transition-all h-full min-h-[480px]">
+          <AnimatedElement delay={0.3} className="bg-muted/30 border border-border rounded-2xl p-6 flex flex-col shadow-sm hover:shadow-md transition-all h-full min-h-[480px]">
             <div className="mb-auto">
               <h3 className="text-sm font-bold text-primary mb-1 uppercase tracking-wider">{planos.aprovado.nome}</h3>
               <div className="flex items-end gap-1 mb-3">
@@ -214,10 +215,10 @@ export default function PricingSection() {
             >
               Escolher Aprovado
             </Link>
-          </div>
+          </AnimatedElement>
 
           {/* ELITE */}
-          <div className="bg-primary border-4 border-primary rounded-3xl p-8 flex flex-col relative shadow-2xl shadow-primary/40 lg:scale-110 z-30 min-h-[580px] text-primary-foreground transform transition-all hover:scale-[1.12]">
+          <AnimatedElement delay={0.4} className="bg-primary border-4 border-primary rounded-3xl p-8 flex flex-col relative shadow-2xl shadow-primary/40 lg:scale-110 z-30 min-h-[580px] text-primary-foreground transform transition-all hover:scale-[1.12]">
             {/* Glow effect */}
             <div className="absolute inset-0 bg-white/10 rounded-3xl pointer-events-none opacity-50 blur-xl" />
             
@@ -255,10 +256,10 @@ export default function PricingSection() {
             >
               Escolher Elite
             </Link>
-          </div>
+          </AnimatedElement>
 
           {/* ELITE TOTAL */}
-          <div className="bg-slate-950 border-4 border-indigo-500/50 rounded-3xl p-8 flex flex-col relative shadow-2xl shadow-indigo-500/20 lg:scale-[1.15] z-40 min-h-[600px] text-white transform transition-all hover:scale-[1.18] group">
+          <AnimatedElement delay={0.5} className="bg-slate-950 border-4 border-indigo-500/50 rounded-3xl p-8 flex flex-col relative shadow-2xl shadow-indigo-500/20 lg:scale-[1.15] z-40 min-h-[600px] text-white transform transition-all hover:scale-[1.18] group">
             {/* Premium Glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-primary/10 rounded-3xl pointer-events-none opacity-50 blur-2xl group-hover:opacity-80 transition-opacity" />
             
@@ -302,15 +303,15 @@ export default function PricingSection() {
             >
               Garantir Acesso Total
             </Link>
-          </div>
+          </AnimatedElement>
         </div>
 
         {/* Divider */}
-        <div className="flex items-center gap-4 max-w-5xl mx-auto mb-14">
+        <AnimatedElement delay={0.6} className="flex items-center gap-4 max-w-5xl mx-auto mb-14">
           <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
           <span className="text-muted-foreground text-xs font-mono uppercase tracking-widest">ou acesse tudo</span>
           <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-        </div>
+        </AnimatedElement>
 
       </div>
     </section>

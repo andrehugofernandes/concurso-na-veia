@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { FaInstagram, FaXTwitter, FaTiktok, FaYoutube } from 'react-icons/fa6';
 import PetrobrasLogo from '../PetrobrasLogo';
+import AnimatedElement from '../ui/AnimatedElement';
 
 export default function HomeFooter() {
   return (
@@ -9,7 +10,7 @@ export default function HomeFooter() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-y-12 gap-x-8 lg:gap-8 mb-16">
           {/* Brand & Info */}
-          <div className="col-span-2 lg:col-span-2">
+          <AnimatedElement delay={0.1} className="col-span-2 lg:col-span-2">
             <div className="mb-6 inline-block dark">
               <PetrobrasLogo variant="default" />
             </div>
@@ -30,10 +31,10 @@ export default function HomeFooter() {
                 <FaXTwitter size={20} />
               </a>
             </div>
-          </div>
+          </AnimatedElement>
 
           {/* Links: Produto */}
-          <div className="col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <AnimatedElement delay={0.2} className="col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">
             <h4 className="text-white font-bold mb-6">Produto</h4>
             <ul className="space-y-4 text-sm text-slate-400 flex flex-col items-center lg:items-start">
               <li><Link href="#features" className="hover:text-primary transition-colors">Funcionalidades</Link></li>
@@ -42,10 +43,10 @@ export default function HomeFooter() {
               <li><Link href="#testimonials" className="hover:text-primary transition-colors">Casos de Sucesso</Link></li>
               <li><Link href="#petrolingo" className="hover:text-primary transition-colors">PetroLingo (Inglês Técnico)</Link></li>
             </ul>
-          </div>
+          </AnimatedElement>
 
           {/* Links: Empresa */}
-          <div className="col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <AnimatedElement delay={0.3} className="col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">
             <h4 className="text-white font-bold mb-6">Empresa</h4>
             <ul className="space-y-4 text-sm text-slate-400 flex flex-col items-center lg:items-start">
               <li><Link href="#" className="hover:text-primary transition-colors">Sobre Nós</Link></li>
@@ -54,10 +55,10 @@ export default function HomeFooter() {
               <li><Link href="#" className="hover:text-primary transition-colors">Contato</Link></li>
               <li><Link href="#" className="hover:text-primary transition-colors">Parceiros</Link></li>
             </ul>
-          </div>
+          </AnimatedElement>
 
           {/* Links: Legal */}
-          <div className="col-span-2 lg:col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <AnimatedElement delay={0.4} className="col-span-2 lg:col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">
             <h4 className="text-white font-bold mb-6">Legal</h4>
             <ul className="space-y-4 text-sm text-slate-400 flex flex-col items-center lg:items-start">
               <li><Link href="/termos" className="hover:text-primary transition-colors">Termos de Uso</Link></li>
@@ -65,18 +66,18 @@ export default function HomeFooter() {
               <li><Link href="#" className="hover:text-primary transition-colors">Garantia de 7 dias</Link></li>
               <li><Link href="#" className="hover:text-primary transition-colors">Central de Ajuda</Link></li>
             </ul>
-          </div>
+          </AnimatedElement>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <AnimatedElement delay={0.5} className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
             © {new Date().getFullYear()} PASSEI NO CONCURSO. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-2 text-slate-500 text-sm">
             Feito com <span className="text-red-500">❤️</span> e Inteligência Artificial.
           </div>
-        </div>
+        </AnimatedElement>
       </div>
     </footer>
   );

@@ -836,7 +836,16 @@ export default function AulaGestãoDeRecursosHumanos(props: AulaProps) {
                     summary={moduleContent.consolidation.summary}
                     mnemonic={moduleContent.consolidation.mnemonic}
                     variant={variant}
-                  />
+                  podcast={{
+            aulaId: "gestãoderecursoshumanos",
+            aulaTitulo: "Gestão De Recursos Humanos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
                   */}
 
                   <QuizInterativo

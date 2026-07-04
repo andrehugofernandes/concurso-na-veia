@@ -603,14 +603,6 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={4}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title:
-              "Compreensão vs Interpretação: Distinção Crítica para o Desempenho",
-            duration: "12:30",
-            thumbnail:
-              "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1073&auto=format&fit=crop",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 1",
             tituloAula: "Interpretação de Texto",
@@ -677,17 +669,17 @@ export default function AulaInterpretacaoTexto({
               </>
             ),
           }}
-          audio={{
-            audioUrl: "https://audio-placeholder.mp3",
-            titulo: "Podcast: Decifrando o Relatório Técnico",
-            artista: "Guia Técnico Petrobras",
-            capaUrl:
-              "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
-            lyrics:
-              "[Intro] - O segredo está em não projetar seus medos no texto...",
-          }}
           variant={mv[1]}
-        />
+        podcast={{
+            aulaId: "interpretacaotexto",
+            aulaTitulo: "Interpretacao Texto",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM1}
@@ -1054,13 +1046,6 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={5}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "A Engenharia do Parágrafo: Dominando o Tópico Frasal",
-            duration: "10:15",
-            thumbnail:
-              "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 2",
             tituloAula: "Interpretação de Texto",
@@ -1120,17 +1105,17 @@ export default function AulaInterpretacaoTexto({
               </>
             ),
           }}
-          audio={{
-            audioUrl: "https://audio-placeholder.mp3",
-            titulo: "Áudio Resumo: A Arquitetura do Parágrafo",
-            artista: "Dossiê Petrobras",
-            capaUrl:
-              "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
-            lyrics:
-              "[Host] - Se você ler apenas a primeira frase de cada parágrafo...",
-          }}
           variant={mv[2]}
-        />
+        podcast={{
+            aulaId: "interpretacaotexto",
+            aulaTitulo: "Interpretacao Texto",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM2}
@@ -1515,13 +1500,6 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={3}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Operadores Lógicos: A 'Cola' do Texto Petrobras",
-            duration: "11:45",
-            thumbnail:
-              "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 3",
             tituloAula: "Interpretação de Texto",
@@ -1580,17 +1558,17 @@ export default function AulaInterpretacaoTexto({
               </>
             ),
           }}
-          audio={{
-            audioUrl: "https://audio-placeholder.mp3",
-            titulo: "Áudio Resumo: Conectivos de Impacto",
-            artista: "Dossiê Petrobras",
-            capaUrl:
-              "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
-            lyrics:
-              "[Host] - Se vir um 'Embora', saiba que a ideia principal vem depois da vírgula...",
-          }}
           variant={mv[3]}
-        />
+        podcast={{
+            aulaId: "interpretacaotexto",
+            aulaTitulo: "Interpretacao Texto",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM3}
@@ -1969,13 +1947,6 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={4}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "DNA do Texto: Tipologias e Gêneros de Avançado",
-            duration: "09:45",
-            thumbnail:
-              "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 4",
             tituloAula: "Interpretação de Texto",
@@ -2019,17 +1990,17 @@ export default function AulaInterpretacaoTexto({
               </>
             ),
           }}
-          audio={{
-            audioUrl: "https://audio-placeholder.mp3",
-            titulo: "DNA Textual em 3 Minutos",
-            artista: "Dossiê Petrobras",
-            capaUrl:
-              "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
-            lyrics:
-              "[Host] - Tipologia não é gênero. Gênero é o frasco, Tipologia é o conteúdo...",
-          }}
           variant={mv[4]}
-        />
+        podcast={{
+            aulaId: "interpretacaotexto",
+            aulaTitulo: "Interpretacao Texto",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM4}
@@ -2377,13 +2348,6 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={3}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Leitura de Avançado: Eliminando Vícios e Ganhando Velocidade",
-            duration: "07:30",
-            thumbnail:
-              "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 5",
             tituloAula: "Interpretação de Texto",
@@ -2443,17 +2407,17 @@ export default function AulaInterpretacaoTexto({
               </>
             ),
           }}
-          audio={{
-            audioUrl: "https://audio-placeholder.mp3",
-            titulo: "Áudio Resumo: Velocidade Tática",
-            artista: "Dossiê Petrobras",
-            capaUrl:
-              "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
-            lyrics:
-              "[Host] - Ler rápido não é correr, é saber o que ignorar...",
-          }}
           variant={mv[5]}
-        />
+        podcast={{
+            aulaId: "interpretacaotexto",
+            aulaTitulo: "Interpretacao Texto",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM5}
@@ -2706,13 +2670,6 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={3}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "A Arte das Entrelinhas: Pressupostos e Subentendidos",
-            duration: "08:15",
-            thumbnail:
-              "https://images.unsplash.com/photo-1454165833767-023023e1e2d1?q=80&w=1000",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 6",
             tituloAula: "Interpretação de Texto",
@@ -2774,17 +2731,17 @@ export default function AulaInterpretacaoTexto({
               </>
             ),
           }}
-          audio={{
-            audioUrl: "https://audio-placeholder.mp3",
-            titulo: "Áudio Resumo: Detetive de Entrelinhas",
-            artista: "Dossiê Petrobras",
-            capaUrl:
-              "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
-            lyrics:
-              "[Dica] - Se o autor diz que algo 'parou', pressupõe-se que ocorria antes...",
-          }}
           variant={mv[6]}
-        />
+        podcast={{
+            aulaId: "interpretacaotexto",
+            aulaTitulo: "Interpretacao Texto",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM6}
@@ -3077,13 +3034,6 @@ export default function AulaInterpretacaoTexto({
 
         <ModuleConsolidation
           index={4}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Campo Minado: Evitando Redução, Extrapolação e Contradição",
-            duration: "09:10",
-            thumbnail:
-              "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1000",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 7",
             tituloAula: "Interpretação de Texto",
@@ -3145,41 +3095,17 @@ export default function AulaInterpretacaoTexto({
               </>
             ),
           }}
-          audio={{
-            audioUrl: "https://audio-placeholder.mp3",
-            titulo: "Radar de Armadilhas (Módulo 7)",
-            artista: "Sertanejo de Avançado",
-            capaUrl:
-              "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
-            lyrics: `[Intro]
-[Verse 1]
-A prova é um campo com minas no chão 
-Extrapolar é a maior tentação 
-Cuidado com o "Sempre" e com o "Jamais" 
-Pois o autor quase nunca diz tanto assim, rapaz! 
-
-Tem a Redução que te conta a metade 
-Esconde o que falta pra ser a verdade 
-E a Contradição que te diz o contrário 
-Pra te confundir e te fazer de otário 
-
-[Pre-Chorus]
-Se o texto não disse, não tente inventar 
-Dentro do limite você tem que ficar! 
-
-[Chorus]
-Liga o radar, olha a armadilha 
-A Cesgranrio joga com a matilha 
-Se é Redução, falta informação 
-Se Extrapolou, viajou na diversão 
-
-Mantenha a calma, use a blindagem 
-Não caia no truque dessa miragem 
-Fique no texto, siga o que foi dito 
-E vença esse jogo, que hoje tá bonito!`,
-          }}
           variant={mv[7]}
-        />
+        podcast={{
+            aulaId: "interpretacaotexto",
+            aulaTitulo: "Interpretacao Texto",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM7}
@@ -3405,13 +3331,6 @@ E vença esse jogo, que hoje tá bonito!`,
 
         <ModuleConsolidation
           index={3}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "A Vontade do Autor: Decifrando Intenção e Tons",
-            duration: "06:15",
-            thumbnail:
-              "https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=1000",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 8",
             tituloAula: "Interpretação de Texto",
@@ -3471,41 +3390,17 @@ E vença esse jogo, que hoje tá bonito!`,
               </>
             ),
           }}
-          audio={{
-            audioUrl: "https://audio-placeholder.mp3",
-            titulo: "A Mira do Autor (Módulo 8)",
-            artista: "Sertanejo de Avançado",
-            capaUrl:
-              "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
-            lyrics: `[Intro]
-[Verse 1]
-Por trás de cada linha tem um coração 
-Uma vontade louca ou uma opinião 
-Se o autor quer te dar informação 
-Ele limpa os adjetivos da sua visão 
-
-Mas se ele usa aspas pra ironizar 
-Ou verbos de comando pra te persuadir 
-A intenção tá lá, pronta pra brilhar 
-Basta você saber pra onde ela vai fugir 
-
-[Pre-Chorus]
-É um tom irônico ou é institucional? 
-Mapeia o adjetivo e acerta o final! 
-
-[Chorus]
-Na mira do autor, veja o objetivo 
-Pode ser irônico ou só descritivo 
-Ele quer te convencer ou só te relatar? 
-A intenção é a chave pra você passar 
-
-Mira no alvo, busca a finalidade 
-Entre o fato puro e a subjetividade 
-Decifre o tom, ganhe a questão 
-E mostre pro mundo sua superação!`,
-          }}
           variant={mv[8]}
-        />
+        podcast={{
+            aulaId: "interpretacaotexto",
+            aulaTitulo: "Interpretacao Texto",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM8}
@@ -3709,13 +3604,6 @@ E mostre pro mundo sua superação!`,
 
         <ModuleConsolidation
           index={3}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "O Filtro Cesgranrio: Sinônimos e Eixos Temáticos",
-            duration: "08:45",
-            thumbnail:
-              "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1000",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 9",
             tituloAula: "Interpretação de Texto",
@@ -3781,41 +3669,17 @@ E mostre pro mundo sua superação!`,
               </>
             ),
           }}
-          audio={{
-            audioUrl: "https://audio-placeholder.mp3",
-            titulo: "Troca de Peças (Módulo 9)",
-            artista: "Sertanejo de Avançado",
-            capaUrl:
-              "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
-            lyrics: `[Intro]
-[Verse 1]
-Mudar a palavra sem mudar o sentido 
-É o desafio que te deixa aturdido 
-"Viabilizar" é "tornar possível" 
-Um vocabulário que te faz invencível 
-
-Se o texto diz "fomentar" o debate 
-É "promover" que a alternativa abate 
-"Negligenciar" é "deixar de lado" 
-Fique esperto pra não ser enganado! 
-
-[Pre-Chorus]
-É a semântica, o jogo das palavras 
-Derrubando muros, abrindo as lavras! 
-
-[Chorus]
-Na troca de peças, o sentido se mantém 
-Sinônimo técnico que te leva o bem 
-Não é o que parece, é o que ele traduz 
-Mapeia a troca e enxergue a luz 
-
-A peça encaixa, o quebra-cabeça 
-Faz com que a questão rápido apareça 
-Mude a palavra, segure o valor 
-E saia da prova como um vencedor!`,
-          }}
           variant={mv[9]}
-        />
+        podcast={{
+            aulaId: "interpretacaotexto",
+            aulaTitulo: "Interpretacao Texto",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizM9}
@@ -4068,13 +3932,6 @@ E saia da prova como um vencedor!`,
 
         <ModuleConsolidation
           index={2}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Checklist de Avançado: A Blindagem Final",
-            duration: "07:30",
-            thumbnail:
-              "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1000",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 10",
             tituloAula: "Interpretação de Texto",
@@ -4136,41 +3993,17 @@ E saia da prova como um vencedor!`,
               </>
             ),
           }}
-          audio={{
-            audioUrl: "https://audio-placeholder.mp3",
-            titulo: "Consolidação de Desempenho (Módulo 10)",
-            artista: "Trilha de Foco Estratégico",
-            capaUrl:
-              "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000",
-            lyrics: `[Intro]
-[Verse 1]
-Chegou a hora, o momento final 
-A prova te espera, o clima é real 
-Mapeou o parágrafo, achou a viga 
-Agora é na prática que a competência se confirma 
-
-Lembrou dos conectivos e da coesão 
-Limpou o DNA da sua visão 
-Vincou as entrelinhas com precisão 
-Pra não cair em nenhuma redução 
-
-[Pre-Chorus]
-A blindagem tá feita, o radar tá ligado 
-O seu nome na lista já tá desenhado! 
-
-[Chorus]
-Consolidando a excelência, com foco estratégico 
-Pro seu sucesso não tem mais limite 
-A Petrobras chama, o sonho é real 
-Interpretação técnica, nível profissional 
-
-Dossiê completo, missão cumprida 
-Uma nova etapa na sua vida 
-Confia no treino, use a estratégia 
-E brilhe na prova, saia da média!`,
-          }}
           variant={mv[10]}
-        />
+        podcast={{
+            aulaId: "interpretacaotexto",
+            aulaTitulo: "Interpretacao Texto",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         <QuizInterativo
           questoes={quizFinal}

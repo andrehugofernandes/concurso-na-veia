@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { motion } from 'framer-motion';
+import AnimatedElement from '../ui/AnimatedElement';
 
 const logos = [
   { name: 'Petrobras', path: '/assets/images/logos/petrobras-icon.png' },
@@ -45,7 +47,7 @@ export default function TrustedBySection() {
 
   return (
     <section className="py-12 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-white/5 overflow-hidden relative">
-      <div className="w-full text-center">
+      <AnimatedElement className="w-full text-center">
         {/* Container do Carrossel de Logos */}
         <div className="w-full relative py-2 overflow-hidden">
           {/* Fades laterais para um visual elegante de sumiço gradual */}
@@ -75,7 +77,7 @@ export default function TrustedBySection() {
             ))}
           </div>
         </div>
-      </div>
+      </AnimatedElement>
     </section>
   );
 }

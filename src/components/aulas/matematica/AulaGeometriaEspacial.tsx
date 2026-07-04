@@ -447,11 +447,6 @@ export default function AulaGeometriaEspacial({
         <ModuleConsolidation
             index={3}
             variant="indigo"
-            video={{
-              videoId: "Zf4sGKq8TL8",
-              title: "Poliedros e a Relação de Euler",
-              duration: "12:45"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Geometria Espacial",
@@ -470,11 +465,15 @@ export default function AulaGeometriaEspacial({
                 <p>Para qualquer poliedro convexo: Vértices - Arestas + Faces = 2. Use em pirâmides, prismas e qualquer sólido fechado.</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Resumo dos Poliedros e Euler",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaespacial",
+            aulaTitulo: "Geometria Espacial",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -640,11 +639,6 @@ export default function AulaGeometriaEspacial({
         <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            video={{
-              videoId: "7K8VgX2sXMc",
-              title: "Prismas: Volume, Área Lateral e Total",
-              duration: "14:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Geometria Espacial",
@@ -663,11 +657,15 @@ export default function AulaGeometriaEspacial({
                 <p>A altura é sempre perpendicular à base. Para área lateral, some as áreas dos retângulos das faces. Para área total: A_total = 2 × A_base + A_lateral.</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-              titulo: "Prismas Descomplicados",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaespacial",
+            aulaTitulo: "Geometria Espacial",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -827,11 +825,6 @@ export default function AulaGeometriaEspacial({
         <ModuleConsolidation
             index={2}
             variant={mv[3]}
-            video={{
-              videoId: "4lLu2Kj2W0A",
-              title: "Pirâmides: Apótema, Volume e Área Lateral",
-              duration: "15:20"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Geometria Espacial",
@@ -850,11 +843,15 @@ export default function AulaGeometriaEspacial({
                 <p>V = (1/3) × A_base × h. Use Pitágoras para achar apótema lateral: a_l² = h² + a_b². Não confunda apótema da base com apótema lateral!</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-              titulo: "Pirâmides: O Fator 1/3",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaespacial",
+            aulaTitulo: "Geometria Espacial",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1007,11 +1004,6 @@ export default function AulaGeometriaEspacial({
         <ModuleConsolidation
             index={2}
             variant={mv[4]}
-            video={{
-              videoId: "I7C8Ygvdp8k",
-              title: "Cilindro: Superfícies, Secções e Volume",
-              duration: "13:45"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Geometria Espacial",
@@ -1030,11 +1022,15 @@ export default function AulaGeometriaEspacial({
                 <p>V = π × r² × h. Se o raio dobra, volume quadruplica. Área lateral = 2πrh (a "banda" lateral). Área total = 2πr(h + r).</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-              titulo: "Cilindros e Secções",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaespacial",
+            aulaTitulo: "Geometria Espacial",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1181,11 +1177,6 @@ export default function AulaGeometriaEspacial({
         <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            video={{
-              videoId: "Gn7r8JTqPO8",
-              title: "Cone: Geratriz, Planificação e Volume",
-              duration: "14:10"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Geometria Espacial",
@@ -1204,11 +1195,15 @@ export default function AulaGeometriaEspacial({
                 <p>V = (1/3)πr²h. Área lateral = πrg (use geratriz, não altura). A planificação do cone é um setor de círculo com raio = geratriz.</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-              titulo: "Cone: Geratriz e Planificação",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaespacial",
+            aulaTitulo: "Geometria Espacial",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1365,11 +1360,6 @@ export default function AulaGeometriaEspacial({
         <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            video={{
-              videoId: "5P6jf8dO1Zc",
-              title: "Esfera: Volume, Área e Secções Esféricas",
-              duration: "13:55"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Geometria Espacial",
@@ -1388,11 +1378,15 @@ export default function AulaGeometriaEspacial({
                 <p>V = (4/3)πr³, A = 4πr². Casca esférica: V = (4/3)π(R³-r³). Hemisfério: V = (2/3)πr³. Sempre verifique a unidade dada no problema.</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-              titulo: "Esferas: Fórmulas e Cálculos",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaespacial",
+            aulaTitulo: "Geometria Espacial",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1540,11 +1534,6 @@ export default function AulaGeometriaEspacial({
         <ModuleConsolidation
             index={2}
             variant="indigo"
-            video={{
-              videoId: "rK7qN2pL0J4",
-              title: "Troncos de Cone e Pirâmide: Volumes",
-              duration: "14:25"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Geometria Espacial",
@@ -1563,11 +1552,15 @@ export default function AulaGeometriaEspacial({
                 <p>V = (πh/3)(R² + Rr + r²). Geratriz: g = √[h² + (R-r)²]. Método alternativo: cone grande - cone pequeno.</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-              titulo: "Troncos: Fórmulas Condensadas",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaespacial",
+            aulaTitulo: "Geometria Espacial",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1728,11 +1721,6 @@ export default function AulaGeometriaEspacial({
         <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            video={{
-              videoId: "EZ9KF3dK8Hg",
-              title: "Sólidos Compostos: Decomposição e Volume",
-              duration: "13:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Geometria Espacial",
@@ -1751,11 +1739,15 @@ export default function AulaGeometriaEspacial({
                 <p>Calcule cada parte separadamente e some. Cuidado: faces internas não contam para área total. Use cores ou rabiscos para marcar as partes.</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-              titulo: "Sólidos Compostos: Estratégia",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaespacial",
+            aulaTitulo: "Geometria Espacial",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1916,11 +1908,6 @@ export default function AulaGeometriaEspacial({
         <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "zW7j2P5kK9I",
-              title: "Geometria Espacial na Petrobras: Tanques e Tubulações",
-              duration: "15:40"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Geometria Espacial",
@@ -1939,11 +1926,15 @@ export default function AulaGeometriaEspacial({
                 <p>Tanques de armazenamento: cilindros (V = πr²h). Silos: cilindro + cone. Tubulações: cilindros com diâmetro × comprimento. Cálculo de capacidade em litros: 1 m³ = 1000 L.</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-              titulo: "Tanques e Tubulações na Indústria",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaespacial",
+            aulaTitulo: "Geometria Espacial",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2098,11 +2089,6 @@ export default function AulaGeometriaEspacial({
         <ModuleConsolidation
             index={2}
             variant={mv[10]}
-            video={{
-              videoId: "hN1K7mX4qJE",
-              title: "Geometria Espacial: Resumo Completo e Estratégia CESGRANRIO",
-              duration: "16:20"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: "Geometria Espacial",
@@ -2121,11 +2107,15 @@ export default function AulaGeometriaEspacial({
                 <p>Leia o enunciado 2 vezes. Identifique o sólido. Use Pitágoras para geratriz. Cuidado com diâmetro vs raio. Decomponha sólidos compostos. Ignore faces internas na área total.</p>
               </div>)
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-              titulo: "Geometria Espacial: Revisão Final",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaespacial",
+            aulaTitulo: "Geometria Espacial",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo

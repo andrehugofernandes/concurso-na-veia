@@ -369,11 +369,6 @@ export default function AulaFuncoesLogaritmicas({
         <ModuleConsolidation
             index={2}
             variant="indigo"
-            video={{
-              videoId: "Uj1K_2OT82A",
-              title: "Introdução ao Logaritmo: A Função Inversa da Exponencial",
-              duration: "13:45"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Funções Logarítmicas",
@@ -398,11 +393,15 @@ export default function AulaFuncoesLogaritmicas({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "O Ritmo do Logaritmo (Conceito)",
-              artista: "Prof. Lógico"
-            }}
+            podcast={{
+            aulaId: "funcoeslogaritmicas",
+            aulaTitulo: "Funcoes Logaritmicas",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -574,11 +573,6 @@ export default function AulaFuncoesLogaritmicas({
         <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            video={{
-              videoId: "WFQDrp84Hxc",
-              title: "Propriedades dos Logaritmos Explicadas Passo a Passo",
-              duration: "14:20"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Funções Logarítmicas",
@@ -605,11 +599,15 @@ export default function AulaFuncoesLogaritmicas({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-              titulo: "As 3 Propriedades (Batida Rítmica)",
-              artista: "DJ Logaritmo"
-            }}
+            podcast={{
+            aulaId: "funcoeslogaritmicas",
+            aulaTitulo: "Funcoes Logaritmicas",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -775,11 +773,6 @@ export default function AulaFuncoesLogaritmicas({
         <ModuleConsolidation
             index={2}
             variant={mv[3]}
-            video={{
-              videoId: "w5YdI5OXpGg",
-              title: "Resolvendo Equações Logarítmicas: Técnicas Essenciais",
-              duration: "12:50"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Funções Logarítmicas",
@@ -803,11 +796,15 @@ export default function AulaFuncoesLogaritmicas({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-              titulo: "Equações Logarítmicas (Batida de Resolução)",
-              artista: "Prof. Algébrico"
-            }}
+            podcast={{
+            aulaId: "funcoeslogaritmicas",
+            aulaTitulo: "Funcoes Logaritmicas",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1007,11 +1004,6 @@ export default function AulaFuncoesLogaritmicas({
         <ModuleConsolidation
             index={2}
             variant={mv[4]}
-            video={{
-              videoId: "8X3_kPaKqgQ",
-              title: "Domínio e Restrições em Funções Logarítmicas",
-              duration: "11:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Funções Logarítmicas",
@@ -1039,11 +1031,15 @@ export default function AulaFuncoesLogaritmicas({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-              titulo: "Restrições e Domínios (Vigilância Matemática)",
-              artista: "Prof. Atento"
-            }}
+            podcast={{
+            aulaId: "funcoeslogaritmicas",
+            aulaTitulo: "Funcoes Logaritmicas",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1209,11 +1205,6 @@ export default function AulaFuncoesLogaritmicas({
         <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            video={{
-              videoId: "fJXCR-K8DxQ",
-              title: "Problemas Integrados com Logaritmos: Estratégias Completas",
-              duration: "15:00"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Funções Logarítmicas",
@@ -1233,11 +1224,15 @@ export default function AulaFuncoesLogaritmicas({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-              titulo: "Estratégia Integrada (Ritmo de Sucesso)",
-              artista: "Prof. Estrategista"
-            }}
+            podcast={{
+            aulaId: "funcoeslogaritmicas",
+            aulaTitulo: "Funcoes Logaritmicas",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1449,11 +1444,6 @@ export default function AulaFuncoesLogaritmicas({
         <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            video={{
-              videoId: "TL_LjVyT_Xk",
-              title: "Gráficos de Funções Logarítmicas e Suas Transformações",
-              duration: "13:15"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Funções Logarítmicas",
@@ -1476,11 +1466,15 @@ export default function AulaFuncoesLogaritmicas({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-              titulo: "As Transformações Logarítmicas (Visual Musical)",
-              artista: "DJ Geometria"
-            }}
+            podcast={{
+            aulaId: "funcoeslogaritmicas",
+            aulaTitulo: "Funcoes Logaritmicas",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1664,11 +1658,6 @@ export default function AulaFuncoesLogaritmicas({
         <ModuleConsolidation
             index={2}
             variant="indigo"
-            video={{
-              videoId: "TjfFfaO-YO0",
-              title: "Sistemas e Inequações com Logaritmos",
-              duration: "14:40"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Funções Logarítmicas",
@@ -1692,11 +1681,15 @@ export default function AulaFuncoesLogaritmicas({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-              titulo: "Sistemas Complexos (Coordenação Harmônica)",
-              artista: "Prof. Sistemático"
-            }}
+            podcast={{
+            aulaId: "funcoeslogaritmicas",
+            aulaTitulo: "Funcoes Logaritmicas",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1859,11 +1852,6 @@ export default function AulaFuncoesLogaritmicas({
         <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            video={{
-              videoId: "K8oQAHHmXYQ",
-              title: "Resolução Reversa: Convertendo Exponencial para Logaritmo",
-              duration: "12:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Funções Logarítmicas",
@@ -1890,11 +1878,15 @@ export default function AulaFuncoesLogaritmicas({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-              titulo: "O Espelho das Funções (Simetria Matemática)",
-              artista: "Prof. Inverso"
-            }}
+            podcast={{
+            aulaId: "funcoeslogaritmicas",
+            aulaTitulo: "Funcoes Logaritmicas",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2072,11 +2064,6 @@ export default function AulaFuncoesLogaritmicas({
         <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "uQDCPEEJVH0",
-              title: "Logaritmos em Engenharia: pH, Decibéis e Escala Richter",
-              duration: "15:20"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Funções Logarítmicas",
@@ -2103,11 +2090,15 @@ export default function AulaFuncoesLogaritmicas({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-              titulo: "Escalas Industriais (Harmonia da Engenharia)",
-              artista: "Prof. Industrial"
-            }}
+            podcast={{
+            aulaId: "funcoeslogaritmicas",
+            aulaTitulo: "Funcoes Logaritmicas",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2292,11 +2283,6 @@ export default function AulaFuncoesLogaritmicas({
         <ModuleConsolidation
             index={2}
             variant={mv[10]}
-            video={{
-              videoId: "mUFv1Y-JkjE",
-              title: "Revisão Completa de Logaritmos: Preparação para Prova",
-              duration: "16:45"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: "Funções Logarítmicas",
@@ -2326,11 +2312,15 @@ export default function AulaFuncoesLogaritmicas({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-              titulo: "Sinfonia Final de Logaritmos (Maestria)",
-              artista: "Prof. Mestre"
-            }}
+            podcast={{
+            aulaId: "funcoeslogaritmicas",
+            aulaTitulo: "Funcoes Logaritmicas",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                         <QuizInterativo

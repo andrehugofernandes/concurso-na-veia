@@ -444,7 +444,7 @@ export default function AulaClassesPalavras({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Verbo → Subst.
                   </span>
-                  <span className="text-xl text-amber-500/80 font-medium text-foreground/85 leading-relaxed">
+                  <span className="text-xl text-amber-500/80 font-medium leading-relaxed">
                     Verbo Substantivado
                   </span>
                 </div>
@@ -475,7 +475,7 @@ export default function AulaClassesPalavras({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Advérbio → Subst.
                   </span>
-                  <span className="text-xl text-orange-500/80 font-medium text-foreground/85 leading-relaxed">
+                  <span className="text-xl text-orange-500/80 font-medium leading-relaxed">
                     Advérbio Substantivado
                   </span>
                 </div>
@@ -506,7 +506,7 @@ export default function AulaClassesPalavras({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Adjetivo → Subst.
                   </span>
-                  <span className="text-xl text-amber-500/80 font-medium text-foreground/85 leading-relaxed">
+                  <span className="text-xl text-amber-500/80 font-medium leading-relaxed">
                     Adjetivo Substantivado
                   </span>
                 </div>
@@ -618,11 +618,6 @@ export default function AulaClassesPalavras({
         <ModuleConsolidation
           index={5}
           variant={mv[1]}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Substantivo: O Nomeador",
-            duration: "08:45",
-          }}
           resumoVisual={{
             moduloNome: "M1: Substantivo",
             tituloAula: "Classes de Palavras",
@@ -648,12 +643,16 @@ export default function AulaClassesPalavras({
               </p>
             ),
           }}
-          audio={{
-            audioUrl: "#",
-            titulo: "AudioAula: Substantivo",
-            artista: "Prof. André",
+          podcast={{
+            aulaId: "classespalavras",
+            aulaTitulo: "Classes Palavras",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         <section className="mt-12">
           <QuizInterativo
@@ -851,11 +850,6 @@ export default function AulaClassesPalavras({
         <ModuleConsolidation
           index={2}
           variant={mv[2]}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Adjetivo: O Qualificador",
-            duration: "10:15",
-          }}
           resumoVisual={{
             moduloNome: "M2: Adjetivo",
             tituloAula: "Classes de Palavras",
@@ -885,12 +879,16 @@ export default function AulaClassesPalavras({
               </div>
             ),
           }}
-          audio={{
-            audioUrl: "#",
-            titulo: "AudioAula: Adjetivo",
-            artista: "Prof. André",
+          podcast={{
+            aulaId: "classespalavras",
+            aulaTitulo: "Classes Palavras",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         <section className="mt-12">
           <QuizInterativo
@@ -1040,11 +1038,6 @@ export default function AulaClassesPalavras({
         <ModuleConsolidation
           index={3}
           variant={mv[3]}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Artigo: O Determinante",
-            duration: "07:20",
-          }}
           resumoVisual={{
             moduloNome: "M3: Artigo",
             tituloAula: "Classes de Palavras",
@@ -1075,12 +1068,16 @@ export default function AulaClassesPalavras({
               </div>
             ),
           }}
-          audio={{
-            audioUrl: "#",
-            titulo: "AudioAula: Artigo",
-            artista: "Prof. André",
+          podcast={{
+            aulaId: "classespalavras",
+            aulaTitulo: "Classes Palavras",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         <section className="mt-12">
           <QuizInterativo
@@ -1265,11 +1262,6 @@ export default function AulaClassesPalavras({
         <ModuleConsolidation
           index={4}
           variant={mv[4]}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Pronome: O Substituto Estratégico",
-            duration: "15:40",
-          }}
           resumoVisual={{
             moduloNome: "M4: Pronome",
             tituloAula: "Classes de Palavras",
@@ -1300,12 +1292,16 @@ export default function AulaClassesPalavras({
               </div>
             ),
           }}
-          audio={{
-            audioUrl: "#",
-            titulo: "AudioAula: Pronome",
-            artista: "Prof. André",
+          podcast={{
+            aulaId: "classespalavras",
+            aulaTitulo: "Classes Palavras",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         <section className="mt-12">
           <QuizInterativo
@@ -1828,18 +1824,7 @@ export default function AulaClassesPalavras({
                   </div>
                 ),
               },
-              {
-                id: "audio",
-                label: "Resumo Áudio",
-                icon: LuMusic,
-                content: (
-                   <MusicPlayerCard 
-                     titulo="Ação e Tempo: Domínio Verbal"
-                     artista="Resumo Morfologia"
-                     audioUrl=""
-                   />
-                ),
-              },
+              
             ]}
           />
         </section>
@@ -2398,18 +2383,7 @@ export default function AulaClassesPalavras({
                   />
                 ),
               },
-              {
-                id: "audio",
-                label: "Resumo Áudio",
-                icon: LuMusic,
-                content: (
-                   <MusicPlayerCard 
-                     titulo="O Elo de Ferro: Preposições"
-                     artista="Resumo Morfologia"
-                     audioUrl=""
-                   />
-                ),
-              },
+              
             ]}
           />
         </section>
@@ -2701,18 +2675,7 @@ export default function AulaClassesPalavras({
                   </div>
                 ),
               },
-              {
-                id: "audio",
-                label: "Resumo Áudio",
-                icon: LuMusic,
-                content: (
-                   <MusicPlayerCard 
-                     titulo="Cimento do Texto: Conjunções"
-                     artista="Resumo Morfologia"
-                     audioUrl=""
-                   />
-                ),
-              },
+              
             ]}
           />
         </section>
@@ -2927,18 +2890,7 @@ export default function AulaClassesPalavras({
                   />
                 ),
               },
-              {
-                id: "audio",
-                label: "Resumo Áudio",
-                icon: LuMusic,
-                content: (
-                   <MusicPlayerCard 
-                     titulo="Bipes de Emoção: Interjeições"
-                     artista="Resumo Morfologia"
-                     audioUrl=""
-                   />
-                ),
-              },
+              
             ]}
           />
         </section>

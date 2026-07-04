@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { LuArrowRight } from 'react-icons/lu';
 import ScrollAnimatedHeader from './ScrollAnimatedHeader';
+import AnimatedElement from '../ui/AnimatedElement';
 
 const solutions = [
   {
@@ -56,12 +57,9 @@ export default function FinalCTASection() {
         {/* Solution Cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-20">
           {solutions.map((sol, idx) => (
-            <motion.div
+            <AnimatedElement
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
+              delay={idx * 0.1}
               className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 hover:bg-white/10 transition group"
             >
               <span className="text-4xl block mb-4">{sol.icon}</span>
@@ -69,7 +67,7 @@ export default function FinalCTASection() {
                 {sol.title}
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed">{sol.desc}</p>
-            </motion.div>
+            </AnimatedElement>
           ))}
         </div>
 
@@ -82,7 +80,7 @@ export default function FinalCTASection() {
             titleClassName="text-white text-3xl md:text-5xl font-black"
             className="mb-8"
           />
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <AnimatedElement delay={0.2} className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/register"
               className="inline-flex items-center gap-2 px-10 py-4 text-primary-foreground hover:text-white font-bold rounded-full text-lg hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all"
@@ -97,10 +95,12 @@ export default function FinalCTASection() {
             >
               Já tenho conta
             </Link>
-          </div>
-          <p className="text-slate-500 text-sm mt-6">
-            Sem cartão de crédito · Acesso imediato · Cancele quando quiser
-          </p>
+          </AnimatedElement>
+          <AnimatedElement delay={0.3}>
+            <p className="text-slate-500 text-sm mt-6">
+              Sem cartão de crédito · Acesso imediato · Cancele quando quiser
+            </p>
+          </AnimatedElement>
         </div>
       </div>
     </section>

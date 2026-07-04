@@ -129,9 +129,39 @@ export default function VitrinePetrobrasPage() {
     });
   }, [selectedNivel, selectedArea, searchTerm]);
 
-  const countMedio = useMemo(() => PROFISSOES.filter((p) => p.nivel === "medio").length, []);
-  const countTecnico = useMemo(() => PROFISSOES.filter((p) => p.nivel === "tecnico").length, []);
-  const countSuperior = useMemo(() => PROFISSOES.filter((p) => p.nivel === "superior").length, []);
+  // Para calcular contagens de áreas (ignora a área selecionada, mas respeita nível e busca)
+  const profissoesForAreaFilter = useMemo(() => {
+    return PROFISSOES.filter((p) => {
+      if (selectedNivel !== "todos" && p.nivel !== selectedNivel) return false;
+      if (searchTerm.trim() !== "") {
+        const query = searchTerm.toLowerCase();
+        const matchNome = p.nome.toLowerCase().includes(query);
+        const matchArea = p.area.toLowerCase().includes(query);
+        const matchTopicos = p.blocos.some((b) => b.topicos.some((t) => t.toLowerCase().includes(query)));
+        return matchNome || matchArea || matchTopicos;
+      }
+      return true;
+    });
+  }, [selectedNivel, searchTerm]);
+
+  // Para calcular contagens de nível (ignora o nível selecionado, mas respeita área e busca)
+  const profissoesForNivelFilter = useMemo(() => {
+    return PROFISSOES.filter((p) => {
+      if (selectedArea !== "todas" && p.area !== selectedArea) return false;
+      if (searchTerm.trim() !== "") {
+        const query = searchTerm.toLowerCase();
+        const matchNome = p.nome.toLowerCase().includes(query);
+        const matchArea = p.area.toLowerCase().includes(query);
+        const matchTopicos = p.blocos.some((b) => b.topicos.some((t) => t.toLowerCase().includes(query)));
+        return matchNome || matchArea || matchTopicos;
+      }
+      return true;
+    });
+  }, [selectedArea, searchTerm]);
+
+  const countMedio = profissoesForNivelFilter.filter((p) => p.nivel === "medio").length;
+  const countTecnico = profissoesForNivelFilter.filter((p) => p.nivel === "tecnico").length;
+  const countSuperior = profissoesForNivelFilter.filter((p) => p.nivel === "superior").length;
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-sans selection:bg-primary selection:text-white">
@@ -231,11 +261,12 @@ export default function VitrinePetrobrasPage() {
                 }`}
               >
                 <LuLayers className="w-4 h-4" />
-                Todos os Cargos ({PROFISSOES.length})
+                Todos os Cargos ({profissoesForNivelFilter.length})
               </button>
 
-              <button
-                onClick={() => setSelectedNivel("medio")}
+              {countMedio > 0 && (
+                <button
+                  onClick={() => setSelectedNivel("medio")}
                 className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs md:text-sm font-bold transition-all whitespace-nowrap ${
                   selectedNivel === "medio"
                     ? "bg-primary text-white shadow-md shadow-primary/20 font-black ring-2 ring-primary/50"
@@ -245,10 +276,12 @@ export default function VitrinePetrobrasPage() {
               >
                 <LuAward className="w-4 h-4" />
                 Nível Médio (Bens e Serviços - Adm) ({countMedio})
-              </button>
+                </button>
+              )}
 
-              <button
-                onClick={() => setSelectedNivel("tecnico")}
+              {countTecnico > 0 && (
+                <button
+                  onClick={() => setSelectedNivel("tecnico")}
                 className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs md:text-sm font-bold transition-all whitespace-nowrap ${
                   selectedNivel === "tecnico"
                     ? "bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20 font-black"
@@ -257,10 +290,12 @@ export default function VitrinePetrobrasPage() {
               >
                 <LuWrench className="w-4 h-4" />
                 Nível Técnico ({countTecnico})
-              </button>
+                </button>
+              )}
 
-              <button
-                onClick={() => setSelectedNivel("superior")}
+              {countSuperior > 0 && (
+                <button
+                  onClick={() => setSelectedNivel("superior")}
                 className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs md:text-sm font-bold transition-all whitespace-nowrap ${
                   selectedNivel === "superior"
                     ? "bg-cyan-600 text-white shadow-md shadow-cyan-600/20 font-black"
@@ -269,7 +304,8 @@ export default function VitrinePetrobrasPage() {
               >
                 <LuGraduationCap className="w-4 h-4" />
                 Nível Superior ({countSuperior})
-              </button>
+                </button>
+              )}
             </div>
 
             {/* Input de Busca */}
@@ -308,11 +344,12 @@ export default function VitrinePetrobrasPage() {
                   : "bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 border border-slate-200 dark:border-slate-700/60"
               }`}
             >
-              Todas ({PROFISSOES.length})
+              Todas ({profissoesForAreaFilter.length})
             </button>
 
             {AREAS.map((area) => {
-              const count = PROFISSOES.filter((p) => p.area === area).length;
+              const count = profissoesForAreaFilter.filter((p) => p.area === area).length;
+              if (count === 0) return null;
               return (
                 <button
                   key={area}

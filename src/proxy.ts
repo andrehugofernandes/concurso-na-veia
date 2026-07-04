@@ -114,6 +114,7 @@ export async function proxy(request: NextRequest) {
         script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com https://www.gstatic.com https://js.stripe.com;
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
         img-src 'self' blob: data: https://firebasestorage.googleapis.com https://*.supabase.co https://lh3.googleusercontent.com;
+        media-src 'self' blob: data:;
         font-src 'self' https://fonts.gstatic.com;
         connect-src 'self' https://*.supabase.co wss://*.supabase.co https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firebasestorage.googleapis.com https://api.stripe.com;
         frame-src 'self' https://js.stripe.com https://hooks.stripe.com;

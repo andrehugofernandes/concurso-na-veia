@@ -275,11 +275,6 @@ export default function AulaGeometriaAnalitica({
         <ModuleConsolidation
             index={2}
             variant="indigo"
-            video={{
-              videoId: "6coNvK0rMoE",
-              title: "Geometria Analítica - O Ponto no Plano",
-              duration: "12:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Geometria Analítica",
@@ -300,11 +295,15 @@ export default function AulaGeometriaAnalitica({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "O Ritmo do Plano Cartesiano",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaanalitica",
+            aulaTitulo: "Geometria Analitica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -483,11 +482,6 @@ export default function AulaGeometriaAnalitica({
         <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            video={{
-              videoId: "pFZjMKqKZEQ",
-              title: "Distância entre Pontos e Ponto Médio",
-              duration: "14:15"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Geometria Analítica",
@@ -508,11 +502,15 @@ export default function AulaGeometriaAnalitica({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-              titulo: "Distância e Proporção",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaanalitica",
+            aulaTitulo: "Geometria Analitica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -707,11 +705,6 @@ export default function AulaGeometriaAnalitica({
         <ModuleConsolidation
             index={2}
             variant={mv[3]}
-            video={{
-              videoId: "oSbX2VVjkts",
-              title: "Equação da Reta: Reduzida e Geral",
-              duration: "15:45"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Geometria Analítica",
@@ -732,11 +725,15 @@ export default function AulaGeometriaAnalitica({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-              titulo: "A Reta que Melhor Encaixa",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaanalitica",
+            aulaTitulo: "Geometria Analitica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -885,11 +882,6 @@ export default function AulaGeometriaAnalitica({
         <ModuleConsolidation
             index={2}
             variant={mv[4]}
-            video={{
-              videoId: "QJL5J6LjqFE",
-              title: "Posições Relativas entre Retas",
-              duration: "13:50"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Geometria Analítica",
@@ -910,11 +902,15 @@ export default function AulaGeometriaAnalitica({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-              titulo: "Retas que se Encontram",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaanalitica",
+            aulaTitulo: "Geometria Analitica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1069,11 +1065,6 @@ export default function AulaGeometriaAnalitica({
         <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            video={{
-              videoId: "D4FZQBmYzFU",
-              title: "Distância de um Ponto a uma Reta",
-              duration: "14:20"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Geometria Analítica",
@@ -1094,11 +1085,15 @@ export default function AulaGeometriaAnalitica({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-              titulo: "A Menor Distância",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaanalitica",
+            aulaTitulo: "Geometria Analitica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1269,11 +1264,6 @@ export default function AulaGeometriaAnalitica({
         <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            video={{
-              videoId: "8YS-4Zj1JVo",
-              title: "Circunferência: Centro, Raio e Equação",
-              duration: "15:05"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Geometria Analítica",
@@ -1294,11 +1284,15 @@ export default function AulaGeometriaAnalitica({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-              titulo: "O Círculo Perfeito",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaanalitica",
+            aulaTitulo: "Geometria Analitica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1478,11 +1472,6 @@ export default function AulaGeometriaAnalitica({
         <ModuleConsolidation
             index={2}
             variant="indigo"
-            video={{
-              videoId: "F3T0xZZz9nE",
-              title: "Parábola: Vértice, Foco e Diretriz",
-              duration: "16:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Geometria Analítica",
@@ -1503,11 +1492,15 @@ export default function AulaGeometriaAnalitica({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-              titulo: "A Trajetória Parabólica",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaanalitica",
+            aulaTitulo: "Geometria Analitica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1653,11 +1646,6 @@ export default function AulaGeometriaAnalitica({
         <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            video={{
-              videoId: "hCHWEFQgQPw",
-              title: "Interseções: Reta com Reta, Reta com Circunferência",
-              duration: "14:40"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Geometria Analítica",
@@ -1678,11 +1666,15 @@ export default function AulaGeometriaAnalitica({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-              titulo: "Encontros e Cruzamentos",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaanalitica",
+            aulaTitulo: "Geometria Analitica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1855,11 +1847,6 @@ export default function AulaGeometriaAnalitica({
         <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "SflP4vQ0jEE",
-              title: "Geometria Analítica na Indústria Petrolífera",
-              duration: "17:00"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Geometria Analítica",
@@ -1880,11 +1867,15 @@ export default function AulaGeometriaAnalitica({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-              titulo: "Geometria do Petróleo",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaanalitica",
+            aulaTitulo: "Geometria Analitica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -2066,11 +2057,6 @@ export default function AulaGeometriaAnalitica({
         <ModuleConsolidation
             index={2}
             variant={mv[10]}
-            video={{
-              videoId: "7U2Vh_7y3BE",
-              title: "Geometria Analítica - Simulado Final Completo",
-              duration: "18:45"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: "Geometria Analítica",
@@ -2091,11 +2077,15 @@ export default function AulaGeometriaAnalitica({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-              titulo: "A Jornada Geométrica Completa",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "geometriaanalitica",
+            aulaTitulo: "Geometria Analitica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo

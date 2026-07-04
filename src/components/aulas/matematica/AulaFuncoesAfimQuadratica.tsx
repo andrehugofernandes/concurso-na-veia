@@ -407,11 +407,6 @@ export default function AulaFuncoesAfimQuadratica({
         <ModuleConsolidation
             index={2}
             variant={mv[1]}
-            video={{
-              videoId: "gZDzgZxrvAo",
-              title: "Função Afim: Fundamentos da Reta",
-              duration: "11:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Funções Afim e Quadrática",
@@ -451,11 +446,15 @@ export default function AulaFuncoesAfimQuadratica({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Função Afim: Fundamentos",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "funcoesafimquadratica",
+            aulaTitulo: "Funcoes Afim Quadratica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -722,11 +721,6 @@ export default function AulaFuncoesAfimQuadratica({
         <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            video={{
-              videoId: "2Aq7p7-VgEU",
-              title: "Função Quadrática: Análise Completa",
-              duration: "14:20",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Funções Afim e Quadrática",
@@ -766,11 +760,15 @@ export default function AulaFuncoesAfimQuadratica({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-              titulo: "Função Quadrática: Parábolas",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "funcoesafimquadratica",
+            aulaTitulo: "Funcoes Afim Quadratica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1018,11 +1016,6 @@ export default function AulaFuncoesAfimQuadratica({
         <ModuleConsolidation
             index={2}
             variant={mv[3]}
-            video={{
-              videoId: "9KZg0LdwAg4",
-              title: "Leitura de Gráficos: Análise Completa",
-              duration: "13:10",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Funções Afim e Quadrática",
@@ -1061,11 +1054,15 @@ export default function AulaFuncoesAfimQuadratica({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-              titulo: "Interpretação Gráfica: Sinais",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "funcoesafimquadratica",
+            aulaTitulo: "Funcoes Afim Quadratica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1245,11 +1242,6 @@ export default function AulaFuncoesAfimQuadratica({
         <ModuleConsolidation
             index={2}
             variant={mv[4]}
-            video={{
-              videoId: "7Pg5MZV2XqU",
-              title: "Otimização: Máximos e Mínimos",
-              duration: "12:35",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Funções Afim e Quadrática",
@@ -1288,11 +1280,15 @@ export default function AulaFuncoesAfimQuadratica({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-              titulo: "Otimização: Vértices",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "funcoesafimquadratica",
+            aulaTitulo: "Funcoes Afim Quadratica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1503,11 +1499,6 @@ export default function AulaFuncoesAfimQuadratica({
         <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            video={{
-              videoId: "tZzgzUaHdCw",
-              title: "Comparação: Afim vs Quadrática",
-              duration: "11:55",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Funções Afim e Quadrática",
@@ -1550,11 +1541,15 @@ export default function AulaFuncoesAfimQuadratica({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-              titulo: "Comparação: Comportamentos",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "funcoesafimquadratica",
+            aulaTitulo: "Funcoes Afim Quadratica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1740,11 +1735,6 @@ export default function AulaFuncoesAfimQuadratica({
         <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            video={{
-              videoId: "4KzE9R6zWzY",
-              title: "Inequações: Análise de Sinais",
-              duration: "13:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Funções Afim e Quadrática",
@@ -1784,11 +1774,15 @@ export default function AulaFuncoesAfimQuadratica({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-              titulo: "Inequações: Análise de Sinais",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "funcoesafimquadratica",
+            aulaTitulo: "Funcoes Afim Quadratica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2016,11 +2010,6 @@ export default function AulaFuncoesAfimQuadratica({
         <ModuleConsolidation
             index={2}
             variant={mv[7]}
-            video={{
-              videoId: "5Rw9KzK3jqA",
-              title: "Sistemas: Intersecções",
-              duration: "12:15",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Funções Afim e Quadrática",
@@ -2059,11 +2048,15 @@ export default function AulaFuncoesAfimQuadratica({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-              titulo: "Sistemas: Intersecções",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "funcoesafimquadratica",
+            aulaTitulo: "Funcoes Afim Quadratica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2257,11 +2250,6 @@ export default function AulaFuncoesAfimQuadratica({
         <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            video={{
-              videoId: "7Pg5MZV2XqU",
-              title: "Otimização Avançada: Problemas Reais",
-              duration: "14:50",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Funções Afim e Quadrática",
@@ -2300,11 +2288,15 @@ export default function AulaFuncoesAfimQuadratica({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-              titulo: "Otimização: Problemas Avançados",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "funcoesafimquadratica",
+            aulaTitulo: "Funcoes Afim Quadratica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2507,11 +2499,6 @@ export default function AulaFuncoesAfimQuadratica({
         <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "2xQr4vZ5M1I",
-              title: "Aplicações Petrobras: Otimização",
-              duration: "15:20",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Funções Afim e Quadrática",
@@ -2551,11 +2538,15 @@ export default function AulaFuncoesAfimQuadratica({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-              titulo: "Aplicações Petrobras",
-              artista: "Prof. Algébrico",
-            }}
+            podcast={{
+            aulaId: "funcoesafimquadratica",
+            aulaTitulo: "Funcoes Afim Quadratica",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo

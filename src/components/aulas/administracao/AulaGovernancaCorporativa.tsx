@@ -193,7 +193,16 @@ export default function AulaGovernancaCorporativa({
           </section>
 
           <section id="quiz-modulo-1" className="mt-16">
-            <ModuleConsolidation index={1} variant={mv[1]} video={{ videoId: "b1VjGMSRfMk", title: "Governança Corporativa: Fundamentos", duration: "18:00" }} resumoVisual={{ moduloNome: "Módulo 1", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "4 Princípios IBGC", type: "Conceito", placeholderColor: "bg-blue-500/20" }, { title: "Problema de Agência", type: "Teoria", placeholderColor: "bg-sky-500/20" }, { title: "Agentes de Governança", type: "Estrutura", placeholderColor: "bg-cyan-500/20" }] }} sinteseEstrategica={{ title: "TEPR: Transparência, Equidade, Prestação de Contas, Responsabilidade", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Principal quer lucro, Agente quer salário. Governança alinha os dois."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Governança: Fundamentos", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={1} variant={mv[1]} resumoVisual={{ moduloNome: "Módulo 1", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "4 Princípios IBGC", type: "Conceito", placeholderColor: "bg-blue-500/20" }, { title: "Problema de Agência", type: "Teoria", placeholderColor: "bg-sky-500/20" }, { title: "Agentes de Governança", type: "Estrutura", placeholderColor: "bg-cyan-500/20" }] }} sinteseEstrategica={{ title: "TEPR: Transparência, Equidade, Prestação de Contas, Responsabilidade", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Principal quer lucro, Agente quer salário. Governança alinha os dois."</p></div>) }} podcast={{
+            aulaId: "governancacorporativa",
+            aulaTitulo: "Governanca Corporativa",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -235,7 +244,16 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-2" className="mt-16">
-            <ModuleConsolidation index={2} variant={mv[2]} video={{ videoId: "b1VjGMSRfMk", title: "Compliance e Ética Empresarial", duration: "16:00" }} resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "6 Pilares de Compliance", type: "Estrutura", placeholderColor: "bg-emerald-500/20" }, { title: "Lava Jato - Petrobras", type: "Caso Real", placeholderColor: "bg-emerald-500/20" }, { title: "Conflitos de Interesse", type: "Risco", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "CÓDIGO-POLÍTICAS-TREINAMENTO-DENÚNCIA-INVESTIGAÇÃO-DISCIPLINA", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Compliance é cultura, não apenas regra."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Compliance e Ética", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={2} variant={mv[2]} resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "6 Pilares de Compliance", type: "Estrutura", placeholderColor: "bg-emerald-500/20" }, { title: "Lava Jato - Petrobras", type: "Caso Real", placeholderColor: "bg-emerald-500/20" }, { title: "Conflitos de Interesse", type: "Risco", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "CÓDIGO-POLÍTICAS-TREINAMENTO-DENÚNCIA-INVESTIGAÇÃO-DISCIPLINA", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Compliance é cultura, não apenas regra."</p></div>) }} podcast={{
+            aulaId: "governancacorporativa",
+            aulaTitulo: "Governanca Corporativa",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -277,7 +295,16 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-3" className="mt-16">
-            <ModuleConsolidation index={3} variant={mv[3]} video={{ videoId: "b1VjGMSRfMk", title: "Gestão de Riscos COSO ERM", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "8 Componentes COSO", type: "Framework", placeholderColor: "bg-amber-500/20" }, { title: "Matriz de Riscos", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Risco Bruto vs Residual", type: "Conceito", placeholderColor: "bg-yellow-500/20" }] }} sinteseEstrategica={{ title: "COSO ERM: 8 Passos Integrados", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Risco bem gerenciado = Oportunidade bem aproveitada"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Gestão de Riscos COSO", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={3} variant={mv[3]} resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "8 Componentes COSO", type: "Framework", placeholderColor: "bg-amber-500/20" }, { title: "Matriz de Riscos", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Risco Bruto vs Residual", type: "Conceito", placeholderColor: "bg-yellow-500/20" }] }} sinteseEstrategica={{ title: "COSO ERM: 8 Passos Integrados", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Risco bem gerenciado = Oportunidade bem aproveitada"</p></div>) }} podcast={{
+            aulaId: "governancacorporativa",
+            aulaTitulo: "Governanca Corporativa",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -319,7 +346,16 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-4" className="mt-16">
-            <ModuleConsolidation index={4} variant={mv[4]} video={{ videoId: "b1VjGMSRfMk", title: "Controles Internos COSO", duration: "18:00" }} resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "5 Componentes COSO IC", type: "Framework", placeholderColor: "bg-rose-500/20" }, { title: "Segregação de Funções", type: "Controle", placeholderColor: "bg-pink-500/20" }, { title: "Limitações Inerentes", type: "Risco", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "COSO IC: Ambiente → Risco → Atividades → Info → Monitoramento", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Controle não é restrição, é proteção"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Controles Internos", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={4} variant={mv[4]} resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "5 Componentes COSO IC", type: "Framework", placeholderColor: "bg-rose-500/20" }, { title: "Segregação de Funções", type: "Controle", placeholderColor: "bg-pink-500/20" }, { title: "Limitações Inerentes", type: "Risco", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "COSO IC: Ambiente → Risco → Atividades → Info → Monitoramento", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Controle não é restrição, é proteção"</p></div>) }} podcast={{
+            aulaId: "governancacorporativa",
+            aulaTitulo: "Governanca Corporativa",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -361,7 +397,16 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-5" className="mt-16">
-            <ModuleConsolidation index={5} variant={mv[5]} video={{ videoId: "b1VjGMSRfMk", title: "Lei Sarbanes-Oxley SOX", duration: "17:00" }} resumoVisual={{ moduloNome: "Módulo 5", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Seções Principais SOX", type: "Lei", placeholderColor: "bg-violet-500/20" }, { title: "Caso Enron", type: "História", placeholderColor: "bg-purple-500/20" }, { title: "Impacto Petrobras", type: "Aplicação", placeholderColor: "bg-indigo-500/20" }] }} sinteseEstrategica={{ title: "SOX 302/404/906: Certificação, Controles, Responsabilidade", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Com grande poder vem grande responsabilidade (criminal)"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Lei Sarbanes-Oxley", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={5} variant={mv[5]} resumoVisual={{ moduloNome: "Módulo 5", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Seções Principais SOX", type: "Lei", placeholderColor: "bg-violet-500/20" }, { title: "Caso Enron", type: "História", placeholderColor: "bg-purple-500/20" }, { title: "Impacto Petrobras", type: "Aplicação", placeholderColor: "bg-indigo-500/20" }] }} sinteseEstrategica={{ title: "SOX 302/404/906: Certificação, Controles, Responsabilidade", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Com grande poder vem grande responsabilidade (criminal)"</p></div>) }} podcast={{
+            aulaId: "governancacorporativa",
+            aulaTitulo: "Governanca Corporativa",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -403,7 +448,16 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-6" className="mt-16">
-            <ModuleConsolidation index={6} variant={mv[6]} video={{ videoId: "b1VjGMSRfMk", title: "Conselho de Administração", duration: "19:00" }} resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Composição CA", type: "Estrutura", placeholderColor: "bg-amber-500/20" }, { title: "Comitês Especializados", type: "Governance", placeholderColor: "bg-amber-600/20" }, { title: "Independência", type: "Qualidade", placeholderColor: "bg-amber-400/20" }] }} sinteseEstrategica={{ title: "CA: Estratégia, Supervisão, Proteção - Mínimo 30% Independentes", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Bom conselho desconfia, não delega cegamente"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Conselho de Administração", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={6} variant={mv[6]} resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Composição CA", type: "Estrutura", placeholderColor: "bg-amber-500/20" }, { title: "Comitês Especializados", type: "Governance", placeholderColor: "bg-amber-600/20" }, { title: "Independência", type: "Qualidade", placeholderColor: "bg-amber-400/20" }] }} sinteseEstrategica={{ title: "CA: Estratégia, Supervisão, Proteção - Mínimo 30% Independentes", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Bom conselho desconfia, não delega cegamente"</p></div>) }} podcast={{
+            aulaId: "governancacorporativa",
+            aulaTitulo: "Governanca Corporativa",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -445,7 +499,16 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-7" className="mt-16">
-            <ModuleConsolidation index={7} variant={mv[7]} video={{ videoId: "b1VjGMSRfMk", title: "Transparência e Prestação de Contas", duration: "16:00" }} resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Tipos de Relatórios", type: "Disclosure", placeholderColor: "bg-blue-500/20" }, { title: "Relatório Integrado", type: "Comunicação", placeholderColor: "bg-cyan-500/20" }, { title: "Informação Material", type: "Conceito", placeholderColor: "bg-sky-500/20" }] }} sinteseEstrategica={{ title: "Transparência: Financeiro + Ambiental + Social + Governança", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Transparência total reduz custos de capital"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Transparência e Disclosure", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={7} variant={mv[7]} resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Tipos de Relatórios", type: "Disclosure", placeholderColor: "bg-blue-500/20" }, { title: "Relatório Integrado", type: "Comunicação", placeholderColor: "bg-cyan-500/20" }, { title: "Informação Material", type: "Conceito", placeholderColor: "bg-sky-500/20" }] }} sinteseEstrategica={{ title: "Transparência: Financeiro + Ambiental + Social + Governança", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Transparência total reduz custos de capital"</p></div>) }} podcast={{
+            aulaId: "governancacorporativa",
+            aulaTitulo: "Governanca Corporativa",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -487,7 +550,16 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-8" className="mt-16">
-            <ModuleConsolidation index={8} variant={mv[8]} video={{ videoId: "b1VjGMSRfMk", title: "Lei 13.303 - Estatais", duration: "17:00" }} resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Lei 13.303/2016", type: "Regulação", placeholderColor: "bg-emerald-500/20" }, { title: "Lava Jato", type: "Contexto", placeholderColor: "bg-red-500/20" }, { title: "Governança Petrobras", type: "Aplicação", placeholderColor: "bg-emerald-600/20" }] }} sinteseEstrategica={{ title: "Lei 13.303: 50% Independência, Auditoria Rigorosa, Integridade Total", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Estatal que governa bem atrai investidores"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Lei 13.303 e Estatais", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={8} variant={mv[8]} resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Lei 13.303/2016", type: "Regulação", placeholderColor: "bg-emerald-500/20" }, { title: "Lava Jato", type: "Contexto", placeholderColor: "bg-red-500/20" }, { title: "Governança Petrobras", type: "Aplicação", placeholderColor: "bg-emerald-600/20" }] }} sinteseEstrategica={{ title: "Lei 13.303: 50% Independência, Auditoria Rigorosa, Integridade Total", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Estatal que governa bem atrai investidores"</p></div>) }} podcast={{
+            aulaId: "governancacorporativa",
+            aulaTitulo: "Governanca Corporativa",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -529,7 +601,16 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-9" className="mt-16">
-            <ModuleConsolidation index={9} variant={mv[9]} video={{ videoId: "b1VjGMSRfMk", title: "Governança Petrobras na Prática", duration: "18:00" }} resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Estrutura Governança Petrobras", type: "Organograma", placeholderColor: "bg-rose-500/20" }, { title: "Lava Jato: Lições", type: "Caso Real", placeholderColor: "bg-red-500/20" }, { title: "Programa de Integridade", type: "Compliance", placeholderColor: "bg-rose-600/20" }] }} sinteseEstrategica={{ title: "Petrobras: 50% Estado, 50% Mercado, Governança Mundial", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Governança forte protege empresa E acionistas"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Governança Petrobras", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={9} variant={mv[9]} resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "Estrutura Governança Petrobras", type: "Organograma", placeholderColor: "bg-rose-500/20" }, { title: "Lava Jato: Lições", type: "Caso Real", placeholderColor: "bg-red-500/20" }, { title: "Programa de Integridade", type: "Compliance", placeholderColor: "bg-rose-600/20" }] }} sinteseEstrategica={{ title: "Petrobras: 50% Estado, 50% Mercado, Governança Mundial", content: (<div className="space-y-2 text-left"><p className="text-lg italic">"Governança forte protege empresa E acionistas"</p></div>) }} podcast={{
+            aulaId: "governancacorporativa",
+            aulaTitulo: "Governanca Corporativa",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}
@@ -571,7 +652,16 @@ export default function AulaGovernancaCorporativa({
             ]} />
           </section>
           <section id="quiz-modulo-10" className="mt-16">
-            <ModuleConsolidation index={10} variant={mv[10]} video={{ videoId: "b1VjGMSRfMk", title: "Simulado Final Governança", duration: "22:00" }} resumoVisual={{ moduloNome: "Módulo 10 - Simulado", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "9 Módulos Integrados", type: "Consolidação", placeholderColor: "bg-violet-500/20" }, { title: "10 Questões CESGRANRIO", type: "Simulado", placeholderColor: "bg-purple-500/20" }, { title: "Score ≥70% = Aprovado", type: "Critério", placeholderColor: "bg-indigo-500/20" }] }} sinteseEstrategica={{ title: "Governança Corporativa Masterclass: 10 Módulos Concluídos!", content: (<div className="space-y-2 text-left"><p className="text-lg italic font-bold">"A melhor governança é aquela que funciona em crise"</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Simulado Final Governança", artista: "Prof. Administração" }} />
+            <ModuleConsolidation index={10} variant={mv[10]} resumoVisual={{ moduloNome: "Módulo 10 - Simulado", tituloAula: "Governança Corporativa", materia: "Administração", images: [{ title: "9 Módulos Integrados", type: "Consolidação", placeholderColor: "bg-violet-500/20" }, { title: "10 Questões CESGRANRIO", type: "Simulado", placeholderColor: "bg-purple-500/20" }, { title: "Score ≥70% = Aprovado", type: "Critério", placeholderColor: "bg-indigo-500/20" }] }} sinteseEstrategica={{ title: "Governança Corporativa Masterclass: 10 Módulos Concluídos!", content: (<div className="space-y-2 text-left"><p className="text-lg italic font-bold">"A melhor governança é aquela que funciona em crise"</p></div>) }} podcast={{
+            aulaId: "governancacorporativa",
+            aulaTitulo: "Governanca Corporativa",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
             {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
           index={2}

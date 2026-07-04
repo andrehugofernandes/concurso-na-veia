@@ -475,11 +475,6 @@ export default function AulaTermodinamica({
 <ModuleConsolidation 
                 index={1}
                 variant="amber"
-                video={{
-                   videoId: "L7X_W7eYjQY", 
-                   title: "Substância Pura e Diagramas de Fase",
-                   duration: "12:30"
-                }}
                 resumoVisual={{
                   moduloNome: "Módulo 1",
                   tituloAula: "Bases da Termo",
@@ -498,12 +493,16 @@ export default function AulaTermodinamica({
                     </div>
                   )
                 }}
-                audio={{
-                  audioUrl: "#",
-                  titulo: "Resumo M1: Fundamentos",
-                  artista: "Prof. Técnico"
-                }}
-              />
+                podcast={{
+            aulaId: "termodinamica",
+            aulaTitulo: "Termodinamica",
+            materia: "Operação",
+            materiaId: "operacao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                             <QuizInterativo 
                 questoes={quizModulo1}
@@ -604,11 +603,6 @@ export default function AulaTermodinamica({
                <ModuleConsolidation 
                 index={2}
                 variant="blue"
-                video={{
-                  videoId: "bN3e9X_8u3E",
-                  title: "Segunda Lei da Termodinâmica",
-                  duration: "15:45"
-                }}
                 resumoVisual={{
                   moduloNome: "Módulo 2",
                   tituloAula: "Leis da Termo",
@@ -633,12 +627,16 @@ export default function AulaTermodinamica({
                     </div>
                   )
                 }}
-                audio={{
-                  audioUrl: "#",
-                  titulo: "Dicas de Leis",
-                  artista: "Prof. Técnico"
-                }}
-              />
+                podcast={{
+            aulaId: "termodinamica",
+            aulaTitulo: "Termodinamica",
+            materia: "Operação",
+            materiaId: "operacao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
             </div>
           </TabsContent>
 

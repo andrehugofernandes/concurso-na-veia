@@ -156,11 +156,6 @@ export default function AulaDiagramasEletricos(props: AulaProps) {
       <ModuleConsolidation
         index={1}
         variant={getModuleVariant(1)}
-        video={{
-          videoId: "tPq4FjWz_Zg",
-          title: "Leitura de Diagramas - Prática Industrial",
-          duration: "10:15",
-        }}
         resumoVisual={{
           moduloNome: "Módulo 1",
           tituloAula: "Diagramas Unifilares vs Multifilares",
@@ -175,7 +170,16 @@ export default function AulaDiagramasEletricos(props: AulaProps) {
             </p>
           ),
         }}
-      />
+      podcast={{
+            aulaId: "diagramaseletricos",
+            aulaTitulo: "Diagramas Eletricos",
+            materia: "Específicas",
+            materiaId: "especificas",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <div className="space-y-6">
         <ModuleSectionHeader

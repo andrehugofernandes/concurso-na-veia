@@ -164,7 +164,6 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         <ModuleConsolidation
         index={1}
         variant={getModuleVariant(1)}
-        video={{ videoId: "cont-m1", title: "O que é Contabilidade", duration: "10:00" }}
         resumoVisual={{
           moduloNome: "Módulo 1",
           tituloAula: "Contabilidade Básica",
@@ -178,8 +177,16 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           title: "Destaque Estratégico",
           content: <p className="text-lg italic">{"A Contabilidade não é exata, é social. Ela conta a história da empresa através dos números."}</p>
         }}
-        audio={{ audioUrl: "#", titulo: "Introdução à Contabilidade", artista: "Prof. Contabilidade" }}
-      />
+        podcast={{
+            aulaId: "contabilidadebasica",
+            aulaTitulo: "Contabilidade Basica",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
       <ContentAccordion mode="stacked" 
         slides={[
           {
@@ -299,7 +306,6 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         <ModuleConsolidation
         index={2}
         variant={getModuleVariant(2)}
-        video={{ videoId: "cont-m2", title: "Equação Contábil", duration: "12:00" }}
         resumoVisual={{
           moduloNome: "Módulo 2",
           tituloAula: "Contabilidade Básica",
@@ -313,8 +319,16 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Pense no Ativo como o que você TEM e no Passivo como o que você DEVE. O PL é o que realmente é SEU."}</p>
         }}
-        audio={{ audioUrl: "#", titulo: "Equação Patrimonial", artista: "Prof. Contabilidade" }}
-      />
+        podcast={{
+            aulaId: "contabilidadebasica",
+            aulaTitulo: "Contabilidade Basica",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
       <ContentAccordion mode="stacked" 
         slides={[
           {
@@ -434,11 +448,6 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         <ModuleConsolidation
         index={3}
         variant={getModuleVariant(3)}
-        video={{
-          videoId: "cont-m3",
-          title: "Organizando as Contas",
-          duration: "11:15"
-        }}
         resumoVisual={{
           moduloNome: "Módulo 3",
           tituloAula: "Contabilidade Básica",
@@ -452,12 +461,16 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           title: "Macete de Código",
           content: <p className="text-lg italic">{"O primeiro dígito diz o que a conta representa. 1 é sempre Ativo, 2 é Passivo."}</p>
         }}
-        audio={{
-          audioUrl: "#",
-          titulo: "Podcast: Plano de Contas",
-          artista: "Prof. Contabilidade"
-        }}
-      />
+        podcast={{
+            aulaId: "contabilidadebasica",
+            aulaTitulo: "Contabilidade Basica",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
       <ContentAccordion mode="stacked" 
         slides={[
           {
@@ -578,11 +591,6 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         <ModuleConsolidation
         index={4}
         variant={getModuleVariant(4)}
-        video={{
-          videoId: "contabilidade-m4",
-          title: "Lançamentos na Prática",
-          duration: "12:45"
-        }}
         resumoVisual={{
           moduloNome: "Módulo 4",
           tituloAula: "Contabilidade Básica",
@@ -596,12 +604,16 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           title: "Mnemônico",
           content: <p className="text-lg italic">{"O Ativo DEVE para a empresa, por isso aumenta no DÉBITO."}</p>
         }}
-        audio={{
-          audioUrl: "#",
-          titulo: "PodQuest: Lançamentos",
-          artista: "Prof. Contabilidade"
-        }}
-      />
+        podcast={{
+            aulaId: "contabilidadebasica",
+            aulaTitulo: "Contabilidade Basica",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
       <ContentAccordion mode="stacked" 
         slides={[
           {
@@ -721,11 +733,6 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         <ModuleConsolidation
         index={5}
         variant={getModuleVariant(5)}
-        video={{
-          videoId: "cont-m5",
-          title: "Auditoria via Balancete",
-          duration: "10:20"
-        }}
         resumoVisual={{
           moduloNome: "Módulo 5",
           tituloAula: "Contabilidade Básica",
@@ -739,12 +746,16 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           title: "Dica de Segurança",
           content: <p className="text-lg italic">{"O balancete acusa erros matemáticos, mas não acusa se você debitou a conta errada!"}</p>
         }}
-        audio={{
-          audioUrl: "#",
-          titulo: "Podcast Técnico",
-          artista: "Prof. Contabilidade"
-        }}
-      />
+        podcast={{
+            aulaId: "contabilidadebasica",
+            aulaTitulo: "Contabilidade Basica",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
       <ContentAccordion mode="stacked" 
         slides={[
           {
@@ -864,7 +875,6 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         <ModuleConsolidation
         index={6}
         variant={getModuleVariant(6)}
-        video={{ videoId: "cont-m6", title: "Demonstrações Contábeis", duration: "16:00" }}
         resumoVisual={{
           moduloNome: "Módulo 6",
           tituloAula: "Contabilidade Básica",
@@ -878,8 +888,16 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           title: "Mestre da DRE",
           content: <p className="text-lg italic">{"Receita - Custo - Despesa = Lucro. Siga o fluxo!"}</p>
         }}
-        audio={{ audioUrl: "#", titulo: "Relatórios Contábeis", artista: "Prof. Contabilidade" }}
-      />
+        podcast={{
+            aulaId: "contabilidadebasica",
+            aulaTitulo: "Contabilidade Basica",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
       <ContentAccordion mode="stacked" 
         slides={[
           {
@@ -999,11 +1017,6 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         <ModuleConsolidation
         index={7}
         variant={getModuleVariant(7)}
-        video={{
-          videoId: "cont-m7",
-          title: "Dominando os Índices",
-          duration: "18:20"
-        }}
         resumoVisual={{
           moduloNome: "Módulo 7",
           tituloAula: "Contabilidade Básica",
@@ -1017,12 +1030,16 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           title: "Regra do 1.0",
           content: <p className="text-lg italic">{"Liquidez abaixo de 1.0 é sinal de alerta: a empresa deve mais do que tem disponível no ano."}</p>
         }}
-        audio={{
-          audioUrl: "#",
-          titulo: "Debate: Saúde Financeira",
-          artista: "Prof. Contabilidade"
-        }}
-      />
+        podcast={{
+            aulaId: "contabilidadebasica",
+            aulaTitulo: "Contabilidade Basica",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
       <ContentAccordion mode="stacked" 
         slides={[
           {
@@ -1143,11 +1160,6 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         <ModuleConsolidation
         index={8}
         variant={getModuleVariant(8)}
-        video={{
-          videoId: "cont-m8",
-          title: "Gestão de Custos",
-          duration: "14:50"
-        }}
         resumoVisual={{
           moduloNome: "Módulo 8",
           tituloAula: "Contabilidade Básica",
@@ -1161,12 +1173,16 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           title: "Custo vs Despesa",
           content: <p className="text-lg italic">{"Se faz falta na fábrica, é CUSTO. Se faz falta no escritório, é DESPESA."}</p>
         }}
-        audio={{
-          audioUrl: "#",
-          titulo: "Papo de Engenheiro",
-          artista: "Prof. Contabilidade"
-        }}
-      />
+        podcast={{
+            aulaId: "contabilidadebasica",
+            aulaTitulo: "Contabilidade Basica",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
       <ContentAccordion mode="stacked" 
         slides={[
           {
@@ -1287,7 +1303,6 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         <ModuleConsolidation
         index={9}
         variant={getModuleVariant(9)}
-        video={{ videoId: "cont-m9", title: "Contabilidade na Petrobras", duration: "15:00" }}
         resumoVisual={{
           moduloNome: "Módulo 9",
           tituloAula: "Contabilidade Básica",
@@ -1301,8 +1316,16 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           title: "Compliance é Lei",
           content: <p className="text-lg italic">{"Lei 13.303 + CVM + IFRS = Transparência total para acionistas e sociedade."}</p>
         }}
-        audio={{ audioUrl: "#", titulo: "Petrobras Contábil", artista: "Prof. Contabilidade" }}
-      />
+        podcast={{
+            aulaId: "contabilidadebasica",
+            aulaTitulo: "Contabilidade Basica",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
       <ContentAccordion mode="stacked" 
         slides={[
           {
@@ -1431,11 +1454,6 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
         <ModuleConsolidation
         index={10}
         variant={getModuleVariant(10)}
-        video={{
-          videoId: "cont-m10",
-          title: "Dicas de Prova",
-          duration: "20:00"
-        }}
         resumoVisual={{
           moduloNome: "Simulado Final",
           tituloAula: "Contabilidade Básica",
@@ -1449,12 +1467,16 @@ export default function AulaContabilidadeBasica(props: AulaProps) {
           title: "Foco Total",
           content: <p className="text-lg italic">{"Respire fundo. A contabilidade é lógica. Se a conta não fechar, verifique a origem versus aplicação."}</p>
         }}
-        audio={{
-          audioUrl: "#",
-          titulo: "Podcast: Sucesso no Concurso",
-          artista: "Prof. Contabilidade"
-        }}
-      />
+        podcast={{
+            aulaId: "contabilidadebasica",
+            aulaTitulo: "Contabilidade Basica",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
       <ContentAccordion mode="stacked" 
         slides={[
           {

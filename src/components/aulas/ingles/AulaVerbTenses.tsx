@@ -544,6 +544,15 @@ export default function AulaVerbTenses({
                 </div>
               )
             }}
+          podcast={{
+            aulaId: "verbtenses",
+            aulaTitulo: "Verb Tenses",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -907,6 +916,15 @@ export default function AulaVerbTenses({
                 </div>
               )
             }}
+          podcast={{
+            aulaId: "verbtenses",
+            aulaTitulo: "Verb Tenses",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1304,6 +1322,15 @@ export default function AulaVerbTenses({
                 </div>
               )
             }}
+          podcast={{
+            aulaId: "verbtenses",
+            aulaTitulo: "Verb Tenses",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1656,6 +1683,15 @@ export default function AulaVerbTenses({
                 </div>
               )
             }}
+          podcast={{
+            aulaId: "verbtenses",
+            aulaTitulo: "Verb Tenses",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -2088,6 +2124,15 @@ export default function AulaVerbTenses({
                 </div>
               )
             }}
+          podcast={{
+            aulaId: "verbtenses",
+            aulaTitulo: "Verb Tenses",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo

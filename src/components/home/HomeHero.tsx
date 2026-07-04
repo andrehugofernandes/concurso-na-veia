@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import HeroCarousel from '../HeroCarousel';
 import HomeHeader from './HomeHeader';
 import { LuMouse } from 'react-icons/lu';
+import AnimatedElement from '../ui/AnimatedElement';
 
 export default function HomeHero() {
   const scrollToNext = () => {
@@ -36,9 +37,8 @@ export default function HomeHero() {
         <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
           
           {/* Pill Tag */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+          <AnimatedElement
+            delay={0}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-3 md:mb-8"
           >
             <span className="relative flex h-2 w-2">
@@ -48,7 +48,7 @@ export default function HomeHero() {
             <span className="text-white/80 text-xs font-bold tracking-widest uppercase">
               Edital 2026 Confirmado
             </span>
-          </motion.div>
+          </AnimatedElement>
 
           {/* Título Principal */}
           <motion.h1
@@ -66,20 +66,16 @@ export default function HomeHero() {
           </motion.h1>
 
           {/* Subtítulo */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+          <AnimatedElement
+            delay={0.2}
             className="max-w-2xl mx-auto text-base md:text-xl text-white/70 leading-relaxed font-medium mb-5 md:mb-12"
           >
             Simulados inteligentes focados nas principais bancas do país (CESGRANRIO, Cebraspe, FGV, IBFC). Estude os temas com maior recorrência nas provas da Petrobras, Caixa, Correios, INSS, IBGE e evolua seu desempenho com análise de Inteligência Artificial.
-          </motion.p>
+          </AnimatedElement>
 
           {/* Botões CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+          <AnimatedElement
+            delay={0.3}
             className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 w-full sm:w-auto px-4 sm:px-0"
           >
             <Link
@@ -90,12 +86,12 @@ export default function HomeHero() {
               Começar Grátis →
             </Link>
             <a
-              href="#cursos"
+              href="/#cursos"
               className="w-full sm:w-auto px-8 py-3.5 md:py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white hover:text-white font-semibold rounded-full hover:bg-white/20 transition-all text-base md:text-lg flex items-center justify-center gap-2"
             >
               Explorar Cursos <span className="text-xl">→</span>
             </a>
-          </motion.div>
+          </AnimatedElement>
         </div>
 
         {/* Scroll Indicator (Icon Only & Clickable) - Oculto no Mobile */}

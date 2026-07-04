@@ -216,7 +216,6 @@ export default function AulaNr10({
 <ModuleConsolidation
             index={1}
             variant={mv[1]}
-            video={{ videoId: "dQw4w9WgXcQ", title: "Introdução à NR-10", duration: "10:30" }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Segurança Elétrica",
@@ -224,7 +223,15 @@ export default function AulaNr10({
               images: [{ title: "G-T-D-C", type: "infographic", placeholderColor: "amber" }]
             }}
             sinteseEstrategica={{ title: "Berço ao Túmulo", content: "Projeto -> Construção -> Operação -> Manutenção -> Descarte" }}
-            audio={{ audioUrl: "/audio/nr10-m1.mp3", titulo: "Podcast NR-10 Intro", artista: "Prof. Petro" }}
+            podcast={{
+            aulaId: "nr10",
+            aulaTitulo: "Nr10",
+            materia: "Segurança do Trabalho",
+            materiaId: "seguranca",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo titulo="QUIZ: Módulo Nº 1" questoes={quizM1} variant={mv[1]} onComplete={() => handleModuleComplete("modulo-1")} />
@@ -303,7 +310,6 @@ export default function AulaNr10({
 <ModuleConsolidation
             index={1}
             variant={mv[2]}
-            video={{ videoId: "dQw4w9WgXcQ", title: "Hierarquia de Proteção", duration: "12:15" }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Controle",
@@ -311,7 +317,15 @@ export default function AulaNr10({
               images: [{ title: "EPC > EPI", type: "infographic", placeholderColor: "blue" }]
             }}
             sinteseEstrategica={{ title: "S-I-C-A-P-S", content: "Secciona, Impede, Constata, Aterra, Protege e Sinaliza!" }}
-            audio={{ audioUrl: "/audio/nr10-m2.mp3", titulo: "Audioaula Medidas", artista: "Prof. Petro" }}
+            podcast={{
+            aulaId: "nr10",
+            aulaTitulo: "Nr10",
+            materia: "Segurança do Trabalho",
+            materiaId: "seguranca",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo titulo="QUIZ: Módulo Nº 2" questoes={quizM2} variant={mv[2]} onComplete={() => handleModuleComplete("modulo-2")} />
@@ -382,7 +396,6 @@ export default function AulaNr10({
 <ModuleConsolidation
             index={1}
             variant={mv[3]}
-            video={{ videoId: "dQw4w9WgXcQ", title: "Entendendo o PIE", duration: "09:40" }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Documentação",
@@ -390,7 +403,15 @@ export default function AulaNr10({
               images: [{ title: "PIE Checklist", type: "table", placeholderColor: "emerald" }]
             }}
             sinteseEstrategica={{ title: "75 é o Limite", content: "Carga > 75kW = PIE Obrigatório!" }}
-            audio={{ audioUrl: "/audio/nr10-m3.mp3", titulo: "Podcast PIE", artista: "Prof. Petro" }}
+            podcast={{
+            aulaId: "nr10",
+            aulaTitulo: "Nr10",
+            materia: "Segurança do Trabalho",
+            materiaId: "seguranca",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo titulo="QUIZ: Módulo Nº 3" questoes={quizM3} variant={mv[3]} onComplete={() => handleModuleComplete("modulo-3")} />
@@ -465,7 +486,6 @@ export default function AulaNr10({
 <ModuleConsolidation
             index={1}
             variant={mv[4]}
-            video={{ videoId: "dQw4w9WgXcQ", title: "EPI e Vestimentas", duration: "11:00" }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Segurança Pessoal",
@@ -473,7 +493,15 @@ export default function AulaNr10({
               images: [{ title: "Proibição de Adornos", type: "infographic", placeholderColor: "orange" }]
             }}
             sinteseEstrategica={{ title: "Regra da Pele", content: "EPI é o úlitmo escudo. Se chegou no EPI, a proteção coletiva falhou." }}
-            audio={{ audioUrl: "/audio/nr10-m4.mp3", titulo: "Podcast Vestimentas", artista: "Prof. Petro" }}
+            podcast={{
+            aulaId: "nr10",
+            aulaTitulo: "Nr10",
+            materia: "Segurança do Trabalho",
+            materiaId: "seguranca",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo titulo="QUIZ: Módulo Nº 4" questoes={quizM4} variant={mv[4]} onComplete={() => handleModuleComplete("modulo-4")} />
@@ -538,7 +566,6 @@ export default function AulaNr10({
 <ModuleConsolidation
             index={1}
             variant={mv[5]}
-            video={{ videoId: "dQw4w9WgXcQ", title: "Mapa de Zonas", duration: "14:50" }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Zonas",
@@ -546,7 +573,15 @@ export default function AulaNr10({
               images: [{ title: "Raios de Segurança", type: "diagram", placeholderColor: "red" }]
             }}
             sinteseEstrategica={{ title: "ZR = Arco", content: "Na ZR, o arco pula. Na ZC, ele te observa." }}
-            audio={{ audioUrl: "/audio/nr10-m5.mp3", titulo: "Podcast Final", artista: "Prof. Petro" }}
+            podcast={{
+            aulaId: "nr10",
+            aulaTitulo: "Nr10",
+            materia: "Segurança do Trabalho",
+            materiaId: "seguranca",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo titulo="QUIZ: Módulo Nº 5" questoes={quizM5} variant={mv[5]} onComplete={() => handleModuleComplete("modulo-5")} />

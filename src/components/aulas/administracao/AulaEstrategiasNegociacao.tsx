@@ -327,11 +327,6 @@ export default function AulaEstrategiasNegociacao(props: AulaProps) {
       <ModuleConsolidation
         index={1}
         variant={getModuleVariant(1)}
-        video={{
-          videoId: "dQw4w9WgXcQ",
-          title: "Estratégias de Negociação para Suprimentos",
-          duration: "12:00",
-        }}
         resumoVisual={{
           moduloNome: "Módulo 1",
           tituloAula: "Fundamentos da Negociação",
@@ -366,12 +361,16 @@ export default function AulaEstrategiasNegociacao(props: AulaProps) {
             </>
           ),
         }}
-        audio={{
-          audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-          titulo: "Podcast: A Arte de Negociar",
-          artista: "Prof. Administração",
-        }}
-      />
+        podcast={{
+            aulaId: "estrategiasnegociacao",
+            aulaTitulo: "Estrategias Negociacao",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <div className="space-y-6">
         <ModuleSectionHeader
@@ -611,11 +610,6 @@ export default function AulaEstrategiasNegociacao(props: AulaProps) {
       <ModuleConsolidation
         index={2}
         variant={getModuleVariant(2)}
-        video={{
-          videoId: "dQw4w9WgXcQ",
-          title: "Negociação na Prática — Suprimentos",
-          duration: "11:30",
-        }}
         resumoVisual={{
           moduloNome: "Módulo 2",
           tituloAula: "Negociação Aplicada",
@@ -636,7 +630,16 @@ export default function AulaEstrategiasNegociacao(props: AulaProps) {
             </>
           ),
         }}
-      />
+      podcast={{
+            aulaId: "estrategiasnegociacao",
+            aulaTitulo: "Estrategias Negociacao",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <div className="space-y-6">
         <ModuleSectionHeader

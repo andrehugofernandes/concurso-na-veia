@@ -247,7 +247,16 @@ export default function AulaGestaoContratos(props: AulaProps) {
             </>
           ),
         }}
-      />
+      podcast={{
+            aulaId: "gestaocontratos",
+            aulaTitulo: "Gestao Contratos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <div className="space-y-6">
         <ModuleSectionHeader
@@ -414,7 +423,16 @@ export default function AulaGestaoContratos(props: AulaProps) {
             </>
           ),
         }}
-      />
+      podcast={{
+            aulaId: "gestaocontratos",
+            aulaTitulo: "Gestao Contratos",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <div className="space-y-6">
         <ModuleSectionHeader

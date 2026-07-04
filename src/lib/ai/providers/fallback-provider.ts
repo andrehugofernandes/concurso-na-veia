@@ -2,80 +2,97 @@ import { Questao } from "@/lib/types";
 import { AIProvider, AIProviderOptions } from "./base-provider";
 
 /**
- * Provider com fallback automático: tenta o primário e, se receber
- * Rate Limit (429), troca para o secundário pelo resto da sessão.
+ * Provedor em cascata (Fallback automático):
+ * Tenta os provedores configurados sequencialmente. Se um deles falhar com
+ * erro de rede ou limite de taxa (429), avança automaticamente para o próximo.
  */
 export class FallbackProvider implements AIProvider {
-  private primary: AIProvider;
-  private fallback: AIProvider;
-  private primaryName: string;
-  private fallbackName: string;
-  private useFallback = false;
+  private providers: { name: string; provider: AIProvider }[];
+  private activeIndex = 0;
 
-  constructor(
-    primary: AIProvider,
-    fallback: AIProvider,
-    primaryName: string,
-    fallbackName: string,
-  ) {
-    this.primary = primary;
-    this.fallback = fallback;
-    this.primaryName = primaryName;
-    this.fallbackName = fallbackName;
-    console.log(`[FALLBACK] Configurado: ${primaryName} → ${fallbackName}`);
+  constructor(providers: { name: string; provider: AIProvider }[]) {
+    this.providers = providers.filter(p => !!p.provider);
+    console.log(
+      `[FALLBACK] Configurado com ${this.providers.length} provedores: ${this.providers
+        .map((p) => p.name)
+        .join(" -> ")}`
+    );
   }
 
-  private isRateLimitError(error: any): boolean {
+  private isRateLimitOrNetworkError(error: any): boolean {
     const msg = error?.message || "";
     return (
       msg.includes("429") ||
       msg.toLowerCase().includes("rate limit") ||
       msg.toLowerCase().includes("quota exceeded") ||
-      msg.toLowerCase().includes("too many requests")
+      msg.toLowerCase().includes("too many requests") ||
+      msg.toLowerCase().includes("fetch failed") ||
+      msg.toLowerCase().includes("timeout") ||
+      msg.toLowerCase().includes("bad gateway") ||
+      msg.toLowerCase().includes("service unavailable")
     );
   }
 
-  private getActiveProvider(): { provider: AIProvider; name: string } {
-    if (this.useFallback) {
-      return { provider: this.fallback, name: this.fallbackName };
-    }
-    return { provider: this.primary, name: this.primaryName };
-  }
-
   async generateQuestion(options: AIProviderOptions): Promise<Questao> {
-    const { provider, name } = this.getActiveProvider();
+    let lastError: any;
 
-    try {
-      return await provider.generateQuestion(options);
-    } catch (error: any) {
-      if (!this.useFallback && this.isRateLimitError(error)) {
-        console.warn(
-          `[FALLBACK] ${this.primaryName} atingiu Rate Limit. Trocando para ${this.fallbackName}...`,
-        );
-        this.useFallback = true;
-        return await this.fallback.generateQuestion(options);
+    for (let i = this.activeIndex; i < this.providers.length; i++) {
+      const { name, provider } = this.providers[i];
+      try {
+        console.log(`[FALLBACK] Tentando gerar questão via ${name}...`);
+        const questao = await provider.generateQuestion(options);
+        
+        // Mantém esse provedor ativo como padrão
+        this.activeIndex = i;
+        return questao;
+      } catch (error: any) {
+        lastError = error;
+        if (this.isRateLimitOrNetworkError(error)) {
+          console.warn(`[FALLBACK] Provedor ${name} falhou (Rate Limit/Rede). Passando para o próximo da fila...`);
+          continue;
+        }
+        // Se for erro de parsing de JSON ou sintático, joga direto pra depuração rápida
+        throw error;
       }
-      throw error;
     }
+
+    // Se todos falharem, tentar voltar do início caso as cotas tenham resetado
+    if (this.activeIndex > 0) {
+      console.log("[FALLBACK] Resetando fila de provedores para tentar do início...");
+      this.activeIndex = 0;
+    }
+
+    throw new Error(`[FALLBACK-CRÍTICO] Todos os provedores falharam em gerar a questão. Último erro: ${lastError?.message}`);
   }
 
   async generateQuestionsBatch(
     options: AIProviderOptions,
     quantity: number,
   ): Promise<Questao[]> {
-    const { provider, name } = this.getActiveProvider();
+    let lastError: any;
 
-    try {
-      return await provider.generateQuestionsBatch(options, quantity);
-    } catch (error: any) {
-      if (!this.useFallback && this.isRateLimitError(error)) {
-        console.warn(
-          `[FALLBACK] ${this.primaryName} atingiu Rate Limit no batch. Trocando para ${this.fallbackName}...`,
-        );
-        this.useFallback = true;
-        return await this.fallback.generateQuestionsBatch(options, quantity);
+    for (let i = this.activeIndex; i < this.providers.length; i++) {
+      const { name, provider } = this.providers[i];
+      try {
+        console.log(`[FALLBACK] Tentando gerar lote de ${quantity} questões via ${name}...`);
+        const questoes = await provider.generateQuestionsBatch(options, quantity);
+        
+        this.activeIndex = i;
+        return questoes;
+      } catch (error: any) {
+        lastError = error;
+        if (this.isRateLimitOrNetworkError(error)) {
+          console.warn(`[FALLBACK-BATCH] Provedor ${name} falhou. Passando para o próximo...`);
+          continue;
+        }
+        throw error;
       }
-      throw error;
     }
+
+    if (this.activeIndex > 0) {
+      this.activeIndex = 0;
+    }
+
+    throw new Error(`[FALLBACK-CRÍTICO] Todos os provedores falharam em gerar o lote. Último erro: ${lastError?.message}`);
   }
 }

@@ -110,7 +110,7 @@ export const quizM2: QuizQuestion[] = [
       { label: "E", valor: "1000 W" }
     ],
     correta: "D",
-    explicacao: "A potência dissipada por efeito Joule é calculada pela relação P = R * I². Substituindo os valores do enunciado: P = 0,2 Ω * (50 A)² = 0,2 * 2500 = 500 W."
+    explicacao: "A potência dissipada por efeito Joule é calculada pela relação P = R * I². Substituindo os valores do pergunta: P = 0,2 Ω * (50 A)² = 0,2 * 2500 = 500 W."
   },
   {
     id: "m2-q4",
@@ -246,7 +246,7 @@ export const quizM4: QuizQuestion[] = [
       { label: "E", valor: "12 V" }
     ],
     correta: "C",
-    explicacao: "A regra do divisor de tensão estabelece que V_out = V_in * [R2 / (R1 + R2)]. Aplicando os valores do enunciado: V_out = 12 V * [6 kΩ / (3 kΩ + 6 kΩ)] = 12 * [6 / 9] = 12 * (2 / 3) = 8 V."
+    explicacao: "A regra do divisor de tensão estabelece que V_out = V_in * [R2 / (R1 + R2)]. Aplicando os valores do pergunta: V_out = 12 V * [6 kΩ / (3 kΩ + 6 kΩ)] = 12 * [6 / 9] = 12 * (2 / 3) = 8 V."
   },
   {
     id: "m4-q4",
@@ -518,7 +518,7 @@ export const quizM8: QuizQuestion[] = [
       { label: "E", valor: "1000000 rad/s" }
     ],
     correta: "D",
-    explicacao: "A frequência angular de ressonância w₀ de um RLC série é dada por w₀ = 1 / √(L * C). Substituindo os valores do enunciado: L * C = 10⁻³ H * 100 * 10⁻⁹ F = 10⁻³ * 10⁻⁷ = 10⁻¹⁰. Logo, w₀ = 1 / √(10⁻¹⁰) = 1 / 10⁻⁵ = 10⁵ rad/s = 100000 rad/s."
+    explicacao: "A frequência angular de ressonância w₀ de um RLC série é dada por w₀ = 1 / √(L * C). Substituindo os valores do pergunta: L * C = 10⁻³ H * 100 * 10⁻⁹ F = 10⁻³ * 10⁻⁷ = 10⁻¹⁰. Logo, w₀ = 1 / √(10⁻¹⁰) = 1 / 10⁻⁵ = 10⁵ rad/s = 100000 rad/s."
   },
   {
     id: "m8-q4",

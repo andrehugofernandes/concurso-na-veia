@@ -166,11 +166,6 @@ export default function AulaDireitoTributario(props: AulaProps) {
         <ModuleConsolidation
         index={1}
         variant={getModuleVariant(1)}
-        video={{
-          videoId: "tributario-m1",
-          title: "Competência Tributária",
-          duration: "12:30"
-        }}
         resumoVisual={{
           moduloNome: "Módulo 1",
           tituloAula: "Direito Tributário",
@@ -184,12 +179,16 @@ export default function AulaDireitoTributario(props: AulaProps) {
           title: "Destaque Estratégico",
           content: <p className="text-lg italic">{"Competência é indelegável. O que é meu, é meu e ninguém tasca (só posso delegar a capacidade de arrecadar)."}</p>
         }}
-        audio={{
-          audioUrl: "#",
-          titulo: "Podcast: Fundamentos Tributários",
-          artista: "Prof. Direito"
-        }}
-      />
+        podcast={{
+            aulaId: "direitotributario",
+            aulaTitulo: "Direito Tributario",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
       <ContentAccordion mode="stacked" 
         titulo="📖 Explicação Detalhada"
         icone="⚖️"
@@ -301,11 +300,6 @@ export default function AulaDireitoTributario(props: AulaProps) {
         <ModuleConsolidation
         index={2}
         variant={getModuleVariant(2)}
-        video={{
-          videoId: "tributario-m2",
-          title: "Impostos Federais em Detalhes",
-          duration: "10:30"
-        }}
         resumoVisual={{
           moduloNome: "Módulo 2",
           tituloAula: "Direito Tributário",
@@ -319,12 +313,16 @@ export default function AulaDireitoTributario(props: AulaProps) {
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Federais = Lucro e Fronteira (IRPJ e Comércio Exterior)"}</p>
         }}
-        audio={{
-          audioUrl: "/audio/tributario-m2.mp3",
-          titulo: "Resumo Módulo 2",
-          artista: "Especialista Tributário"
-        }}
-      />
+        podcast={{
+            aulaId: "direitotributario",
+            aulaTitulo: "Direito Tributario",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         titulo="Detalhamento Técnico"
@@ -429,11 +427,6 @@ export default function AulaDireitoTributario(props: AulaProps) {
         <ModuleConsolidation
         index={3}
         variant={getModuleVariant(3)}
-        video={{
-          videoId: "tributario-m3",
-          title: "Tributos sobre Consumo",
-          duration: "11:15"
-        }}
         resumoVisual={{
           moduloNome: "Módulo 3",
           tituloAula: "Direito Tributário",
@@ -447,12 +440,16 @@ export default function AulaDireitoTributario(props: AulaProps) {
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Consumo = Indireto (Alguém paga, você sente no preço final)."}</p>
         }}
-        audio={{
-          audioUrl: "/audio/tributario-m3.mp3",
-          titulo: "Resumo Módulo 3",
-          artista: "Especialista Tributário"
-        }}
-      />
+        podcast={{
+            aulaId: "direitotributario",
+            aulaTitulo: "Direito Tributario",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         titulo="Detalhamento Técnico"
@@ -552,11 +549,6 @@ export default function AulaDireitoTributario(props: AulaProps) {
         <ModuleConsolidation
         index={4}
         variant={getModuleVariant(4)}
-        video={{
-          videoId: "tributario-m4",
-          title: "PIS/COFINS e CIDE",
-          duration: "09:20"
-        }}
         resumoVisual={{
           moduloNome: "Módulo 4",
           tituloAula: "Direito Tributário",
@@ -570,12 +562,16 @@ export default function AulaDireitoTributario(props: AulaProps) {
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"CIDE = Intervenção (Governo usando imposto para regular o preço do óleo)."}</p>
         }}
-        audio={{
-          audioUrl: "/audio/tributario-m4.mp3",
-          titulo: "Resumo Módulo 4",
-          artista: "Especialista Tributário"
-        }}
-      />
+        podcast={{
+            aulaId: "direitotributario",
+            aulaTitulo: "Direito Tributario",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         titulo="Detalhamento Técnico"
@@ -675,11 +671,6 @@ export default function AulaDireitoTributario(props: AulaProps) {
         <ModuleConsolidation
         index={5}
         variant={getModuleVariant(5)}
-        video={{
-          videoId: "tributario-m5",
-          title: "Crédito e Obrigação Tributária",
-          duration: "11:10"
-        }}
         resumoVisual={{
           moduloNome: "Módulo 5",
           tituloAula: "Direito Tributário",
@@ -693,12 +684,16 @@ export default function AulaDireitoTributario(props: AulaProps) {
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Fato Gerador ocorreu? Dívida nasceu! Lançamento formalizou? Cobrança começou!"}</p>
         }}
-        audio={{
-          audioUrl: "/audio/tributario-m5.mp3",
-          titulo: "Resumo Módulo 5",
-          artista: "Especialista Tributário"
-        }}
-      />
+        podcast={{
+            aulaId: "direitotributario",
+            aulaTitulo: "Direito Tributario",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         titulo="Processos Administrativos"
@@ -803,11 +798,6 @@ export default function AulaDireitoTributario(props: AulaProps) {
         <ModuleConsolidation
         index={6}
         variant={getModuleVariant(6)}
-        video={{
-          videoId: "tributario-m6",
-          title: "Fiscalização e Multas",
-          duration: "07:50"
-        }}
         resumoVisual={{
           moduloNome: "Módulo 6",
           tituloAula: "Direito Tributário",
@@ -821,12 +811,16 @@ export default function AulaDireitoTributario(props: AulaProps) {
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Multa não é tributo! Tributo é obrigação, multa é punição."}</p>
         }}
-        audio={{
-          audioUrl: "/audio/tributario-m6.mp3",
-          titulo: "Resumo Módulo 6",
-          artista: "Especialista Tributário"
-        }}
-      />
+        podcast={{
+            aulaId: "direitotributario",
+            aulaTitulo: "Direito Tributario",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         titulo="Ritos de Fiscalização"
@@ -926,11 +920,6 @@ export default function AulaDireitoTributario(props: AulaProps) {
         <ModuleConsolidation
         index={7}
         variant={getModuleVariant(7)}
-        video={{
-          videoId: "tributario-m7",
-          title: "Incidência Tributária",
-          duration: "10:15"
-        }}
         resumoVisual={{
           moduloNome: "Módulo 7",
           tituloAula: "Direito Tributário",
@@ -943,12 +932,16 @@ export default function AulaDireitoTributario(props: AulaProps) {
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Fato Gerador é o gatilho; Base e Alíquota definem o tamanho do estrago no caixa."}</p>
         }}
-        audio={{
-          audioUrl: "/audio/tributario-m7.mp3",
-          titulo: "Resumo Módulo 7",
-          artista: "Especialista Tributário"
-        }}
-      />
+        podcast={{
+            aulaId: "direitotributario",
+            aulaTitulo: "Direito Tributario",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         titulo="Detalhamento Técnico"
@@ -1053,11 +1046,6 @@ export default function AulaDireitoTributario(props: AulaProps) {
         <ModuleConsolidation
         index={8}
         variant={getModuleVariant(8)}
-        video={{
-          videoId: "tributario-m8",
-          title: "Operações Petrobras",
-          duration: "12:30"
-        }}
         resumoVisual={{
           moduloNome: "Módulo 8",
           tituloAula: "Direito Tributário",
@@ -1070,12 +1058,16 @@ export default function AulaDireitoTributario(props: AulaProps) {
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Royalties se paga pela produção; Imposto se paga pelo lucro."}</p>
         }}
-        audio={{
-          audioUrl: "/audio/tributario-m8.mp3",
-          titulo: "Resumo Módulo 8",
-          artista: "Especialista Tributário"
-        }}
-      />
+        podcast={{
+            aulaId: "direitotributario",
+            aulaTitulo: "Direito Tributario",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         titulo="Detalhamento do Setor"
@@ -1175,11 +1167,6 @@ export default function AulaDireitoTributario(props: AulaProps) {
         <ModuleConsolidation
         index={9}
         variant={getModuleVariant(9)}
-        video={{
-          videoId: "tributario-m9",
-          title: "Planejamento Tributário",
-          duration: "09:45"
-        }}
         resumoVisual={{
           moduloNome: "Módulo 9",
           tituloAula: "Direito Tributário",
@@ -1192,12 +1179,16 @@ export default function AulaDireitoTributario(props: AulaProps) {
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Elisão = Lícita (Antes do fato gerador). Evasão = Crime (Depois do fato gerador)."}</p>
         }}
-        audio={{
-          audioUrl: "/audio/tributario-m9.mp3",
-          titulo: "Resumo Módulo 9",
-          artista: "Especialista Tributário"
-        }}
-      />
+        podcast={{
+            aulaId: "direitotributario",
+            aulaTitulo: "Direito Tributario",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         titulo="Detalhamento do Planejamento"
@@ -1307,11 +1298,6 @@ export default function AulaDireitoTributario(props: AulaProps) {
         <ModuleConsolidation
         index={10}
         variant={getModuleVariant(10)}
-        video={{
-          videoId: "tributario-m10",
-          title: "Revisão Geral",
-          duration: "15:00"
-        }}
         resumoVisual={{
           moduloNome: "Módulo 10",
           tituloAula: "Direito Tributário",
@@ -1324,12 +1310,16 @@ export default function AulaDireitoTributario(props: AulaProps) {
           title: "Dica de Mestre",
           content: <p className="text-lg italic">{"Leia o enunciado com calma. Identifique o tributo e a competência primeiro."}</p>
         }}
-        audio={{
-          audioUrl: "/audio/tributario-m10.mp3",
-          titulo: "Resumo Módulo 10",
-          artista: "Especialista Tributário"
-        }}
-      />
+        podcast={{
+            aulaId: "direitotributario",
+            aulaTitulo: "Direito Tributario",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <ContentAccordion mode="stacked" 
         titulo="Tópicos-Chave para Revisão"

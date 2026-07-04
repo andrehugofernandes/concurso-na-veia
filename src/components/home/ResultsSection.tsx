@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import AnimatedElement from '../ui/AnimatedElement';
 import { Users, TrendingUp, Zap, Target, Bot } from 'lucide-react';
 import { gsap } from 'gsap';
 
@@ -187,12 +188,14 @@ export default function ResultsSection() {
         <div className="absolute inset-0 -m-20 bg-green-500/10 blur-[130px] rounded-full z-0 pointer-events-none" />
         
         <div className="relative z-10 flex flex-col items-center">
-          <span 
-            className="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 font-bold text-xs uppercase tracking-widest mb-8 shadow-lg shadow-primary/10 backdrop-blur-md"
-            style={{ color: 'var(--primary-hex, #22c55e)' }}
-          >
-            A plataforma de estudos com impacto real
-          </span>
+          <AnimatedElement delay={0.1}>
+            <span 
+              className="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 font-bold text-xs uppercase tracking-widest mb-8 shadow-lg shadow-primary/10 backdrop-blur-md"
+              style={{ color: 'var(--primary-hex, #22c55e)' }}
+            >
+              A plataforma de estudos com impacto real
+            </span>
+          </AnimatedElement>
           
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tight leading-[1.08] mb-8 drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]">
             PASSEI NO CONCURSO gera <br className="hidden md:inline" />
@@ -205,9 +208,11 @@ export default function ResultsSection() {
             para candidatos
           </h2>
           
-          <p className="text-base sm:text-lg md:text-xl text-slate-300 font-medium max-w-2xl leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-            Estude com inteligência através de simulados avançados no padrão CESGRANRIO, acompanhe sua evolução e conquiste sua vaga usando cronogramas gerados por IA.
-          </p>
+          <AnimatedElement delay={0.2}>
+            <p className="text-base sm:text-lg md:text-xl text-slate-300 font-medium max-w-2xl leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+              Estude com Inteligência Artificial (IA) através de simulados avançados que decifram o padrão das principais bancas (CESGRANRIO, Cebraspe, FGV, IBFC). Acompanhe sua evolução e conquiste sua vaga usando cronogramas gerados por Inteligência Artificial (IA).
+            </p>
+          </AnimatedElement>
         </div>
       </div>
     </section>

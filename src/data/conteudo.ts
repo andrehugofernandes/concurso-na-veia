@@ -40,6 +40,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'classes-palavras', titulo: 'Classes de Palavras', descricao: 'Substantivo, verbo, pronome, conjunção, etc.', duracao: '33 min', ordem: 9 },
             { id: 'tipos-textuais', titulo: 'Tipos Textuais', descricao: 'Narração, descrição, injunção e dissertação', duracao: '21 min', ordem: 10 },
             { id: 'ortografia', titulo: 'Ortografia e Acentuação', descricao: 'Hífen, novo acordo ortográfico e regras de acentuação', duracao: '19 min', ordem: 11 },
+            { id: 'semantica', titulo: 'Semântica', descricao: 'Significado das palavras, sinônimos, antônimos e contexto', duracao: '30 min', ordem: 12 },
         ]
     },
     {
@@ -69,6 +70,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'geometria-espacial', titulo: 'Geometria Espacial', descricao: 'Volumes e áreas de sólidos', duracao: '8 min', ordem: 17 },
             { id: 'geometria-analitica', titulo: 'Geometria Analítica', descricao: 'Equação da reta, parábola e circunferência', duracao: '10 min', ordem: 18 },
             { id: 'matematica-financeira', titulo: 'Matemática Financeira', descricao: 'Juros simples, compostos, capital e montante', duracao: '10 min', ordem: 19 },
+            { id: 'estatistica-basica', titulo: 'Estatística Básica', descricao: 'Médias, mediana, moda e interpretação de gráficos', duracao: '40 min', ordem: 20 },
         ]
     },
     {

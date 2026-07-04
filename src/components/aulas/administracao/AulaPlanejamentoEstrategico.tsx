@@ -439,7 +439,6 @@ export default function AulaPlanejamentoEstrategico({
 <ModuleConsolidation
             index={2}
             variant={mv[1]}
-            video={{ videoId: "iV7hKYv0fDc", title: "Planejamento Estratégico: Fundamentos", duration: "18:00" }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Planejamento Estratégico",
@@ -462,7 +461,15 @@ export default function AulaPlanejamentoEstrategico({
                 </div>
               ),
             }}
-            audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Conceitos de PE", artista: "Prof. Administração" }}
+            podcast={{
+            aulaId: "planejamentoestrategico",
+            aulaTitulo: "Planejamento Estrategico",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -644,7 +651,16 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation index={2} variant={mv[2]} video={{ videoId: "iV7hKYv0fDc", title: "SWOT Completo", duration: "15:00" }} resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "Quadrantes SWOT", type: "Conceito", placeholderColor: "bg-emerald-500/20" }, { title: "Interno vs Externo", type: "Classificação", placeholderColor: "bg-teal-500/20" }, { title: "Cruzamento TOWS", type: "Estratégia", placeholderColor: "bg-green-500/20" }] }} sinteseEstrategica={{ title: "SWOT: S e W = INTERNO, O e T = EXTERNO", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Força e Fraqueza você controla. Oportunidade e Ameaça você enfrenta."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "SWOT Descomplicado", artista: "Prof. Administração" }} />
+<ModuleConsolidation index={2} variant={mv[2]} resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "Quadrantes SWOT", type: "Conceito", placeholderColor: "bg-emerald-500/20" }, { title: "Interno vs Externo", type: "Classificação", placeholderColor: "bg-teal-500/20" }, { title: "Cruzamento TOWS", type: "Estratégia", placeholderColor: "bg-green-500/20" }] }} sinteseEstrategica={{ title: "SWOT: S e W = INTERNO, O e T = EXTERNO", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Força e Fraqueza você controla. Oportunidade e Ameaça você enfrenta."</p></div>) }} podcast={{
+            aulaId: "planejamentoestrategico",
+            aulaTitulo: "Planejamento Estrategico",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
@@ -792,7 +808,16 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation index={2} variant={mv[3]} video={{ videoId: "iV7hKYv0fDc", title: "BSC Explicado", duration: "16:00" }} resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "4 Perspectivas BSC", type: "Conceito", placeholderColor: "bg-amber-500/20" }, { title: "Mapa Estratégico", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Causa e Efeito", type: "Relação", placeholderColor: "bg-yellow-500/20" }] }} sinteseEstrategica={{ title: "BSC: F-C-P-A (Finanças Com Processos Aprendidos)", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Kaplan e Norton criaram em 1992. 4 perspectivas. Mapa estratégico."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "BSC na Prática", artista: "Prof. Administração" }} />
+<ModuleConsolidation index={2} variant={mv[3]} resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "4 Perspectivas BSC", type: "Conceito", placeholderColor: "bg-amber-500/20" }, { title: "Mapa Estratégico", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Causa e Efeito", type: "Relação", placeholderColor: "bg-yellow-500/20" }] }} sinteseEstrategica={{ title: "BSC: F-C-P-A (Finanças Com Processos Aprendidos)", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Kaplan e Norton criaram em 1992. 4 perspectivas. Mapa estratégico."</p></div>) }} podcast={{
+            aulaId: "planejamentoestrategico",
+            aulaTitulo: "Planejamento Estrategico",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
@@ -938,7 +963,16 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation index={2} variant={mv[4]} video={{ videoId: "iV7hKYv0fDc", title: "Estratégias de Porter", duration: "20:00" }} resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "5 Forças de Porter", type: "Relação", placeholderColor: "bg-rose-500/20" }, { title: "Estratégias Genéricas", type: "Opções", placeholderColor: "bg-pink-500/20" }, { title: "Matriz Ansoff", type: "Crescimento", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "PORTER: Custo, Diferenciação ou Foco", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Ou você é barato, ou é especial, ou foca em um bando."</p></div>) }} audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Estratégias Competitivas", artista: "Prof. Administração" }} />
+<ModuleConsolidation index={2} variant={mv[4]} resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "5 Forças de Porter", type: "Relação", placeholderColor: "bg-rose-500/20" }, { title: "Estratégias Genéricas", type: "Opções", placeholderColor: "bg-pink-500/20" }, { title: "Matriz Ansoff", type: "Crescimento", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "PORTER: Custo, Diferenciação ou Foco", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Ou você é barato, ou é especial, ou foca em um bando."</p></div>) }} podcast={{
+            aulaId: "planejamentoestrategico",
+            aulaTitulo: "Planejamento Estrategico",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
@@ -1095,7 +1129,6 @@ export default function AulaPlanejamentoEstrategico({
 <ModuleConsolidation 
             index={2} 
             variant={mv[5]} 
-            video={{ videoId: "iV7hKYv0fDc", title: "Implementação e Execução", duration: "22:00" }} 
             resumoVisual={{ 
               moduloNome: "Módulo 5", 
               tituloAula: "Planejamento Estratégico", 
@@ -1110,7 +1143,15 @@ export default function AulaPlanejamentoEstrategico({
               title: "RACI: Quem Faz, Quem Manda, Quem Ajuda, Quem Sabe", 
               content: (<div className="space-y-3 text-left"><p className="text-lg italic">"R - Põe a mão. A - Responde (O Dono). C - Dá pitaco. I - Fica sabendo."</p></div>) 
             }} 
-            audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Táticas de Implementação", artista: "Prof. Administração" }} 
+            podcast={{
+            aulaId: "planejamentoestrategico",
+            aulaTitulo: "Planejamento Estrategico",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1267,7 +1308,6 @@ export default function AulaPlanejamentoEstrategico({
 <ModuleConsolidation 
             index={2} 
             variant={mv[6]} 
-            video={{ videoId: "iV7hKYv0fDc", title: "Monitoramento e Controle", duration: "19:00" }} 
             resumoVisual={{ 
               moduloNome: "Módulo 6", 
               tituloAula: "Planejamento Estratégico", 
@@ -1282,7 +1322,15 @@ export default function AulaPlanejamentoEstrategico({
               title: "KPI: Como estou? KRI: Vou me ferrar?", 
               content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Se o KPI tá baixo, você não produziu. Se o KRI tá alto, você vai explodir."</p></div>) 
             }} 
-            audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "A Arte de Medir", artista: "Prof. Administração" }} 
+            podcast={{
+            aulaId: "planejamentoestrategico",
+            aulaTitulo: "Planejamento Estrategico",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1423,7 +1471,6 @@ export default function AulaPlanejamentoEstrategico({
 <ModuleConsolidation 
             index={2} 
             variant={mv[7]} 
-            video={{ videoId: "iV7hKYv0fDc", title: "Legislação e Governança", duration: "21:00" }} 
             resumoVisual={{ 
               moduloNome: "Módulo 7", 
               tituloAula: "Planejamento Estratégico", 
@@ -1438,7 +1485,15 @@ export default function AulaPlanejamentoEstrategico({
               title: "PPA-LDO-LOA: Planeja - Decide - Aloca", 
               content: (<div className="space-y-3 text-left"><p className="text-lg italic">"PPA guia o rumo. LDO escolhe a briga. LOA paga a conta."</p></div>) 
             }} 
-            audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Público vs Privado", artista: "Prof. Administração" }} 
+            podcast={{
+            aulaId: "planejamentoestrategico",
+            aulaTitulo: "Planejamento Estrategico",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1580,7 +1635,6 @@ export default function AulaPlanejamentoEstrategico({
 <ModuleConsolidation 
             index={2} 
             variant={mv[8]} 
-            video={{ videoId: "iV7hKYv0fDc", title: "Cenários e Prospectiva", duration: "18:00" }} 
             resumoVisual={{ 
               moduloNome: "Módulo 8", 
               tituloAula: "Planejamento Estratégico", 
@@ -1595,7 +1649,15 @@ export default function AulaPlanejamentoEstrategico({
               title: "Cenário não é Previsão!", 
               content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Prever é tentar acertar um ponto. Cenarizar é desenhar o mapa do território desconhecido."</p></div>) 
             }} 
-            audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Prospectiva Estratégica", artista: "Prof. Administração" }} 
+            podcast={{
+            aulaId: "planejamentoestrategico",
+            aulaTitulo: "Planejamento Estrategico",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1746,7 +1808,6 @@ export default function AulaPlanejamentoEstrategico({
 <ModuleConsolidation 
             index={2} 
             variant={mv[9]} 
-            video={{ videoId: "iV7hKYv0fDc", title: "O Plano 2024-2028", duration: "25:00" }} 
             resumoVisual={{ 
               moduloNome: "Módulo 9", 
               tituloAula: "Planejamento Estratégico", 
@@ -1761,7 +1822,15 @@ export default function AulaPlanejamentoEstrategico({
               title: "Missão E J S", 
               content: (<div className="space-y-3 text-left"><p className="text-lg italic">"<strong>É</strong>tica, <strong>J</strong>usta e <strong>S</strong>egura. Lembre-se do EJS para a Missão!"</p></div>) 
             }} 
-            audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Estratégia Petrobras 2024", artista: "Prof. Administração" }} 
+            podcast={{
+            aulaId: "planejamentoestrategico",
+            aulaTitulo: "Planejamento Estrategico",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -1847,7 +1916,6 @@ export default function AulaPlanejamentoEstrategico({
 <ModuleConsolidation 
             index={2} 
             variant={mv[10]} 
-            video={{ videoId: "iV7hKYv0fDc", title: "Simulado Comentado", duration: "45:00" }} 
             resumoVisual={{ 
               moduloNome: "Módulo 10", 
               tituloAula: "Planejamento Estratégico", 
@@ -1858,7 +1926,15 @@ export default function AulaPlanejamentoEstrategico({
               title: "Confie no Processo!", 
               content: (<div className="text-lg italic text-left"><p>Você percorreu todos os 10 módulos. Agora é hora de brilhar!</p></div>) 
             }} 
-            audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", titulo: "Dicas Finais", artista: "Prof. Administração" }} 
+            podcast={{
+            aulaId: "planejamentoestrategico",
+            aulaTitulo: "Planejamento Estrategico",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
@@ -2019,7 +2095,6 @@ export default function AulaPlanejamentoEstrategico({
 <ModuleConsolidation
               index={2}
               variant={mv[11]}
-              video={{ videoId: "iV7hKYv0fDc", title: "Estratégia Petrobras 2024-2028", duration: "32:00" }}
               resumoVisual={{
                 moduloNome: "Módulo 11",
                 tituloAula: "Planejamento Estratégico",
@@ -2038,8 +2113,16 @@ export default function AulaPlanejamentoEstrategico({
                   </div>
                 ),
               }}
-              audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3", titulo: "O Novo PE Petrobras", artista: "Prof. Administração" }}
-            />
+              podcast={{
+            aulaId: "planejamentoestrategico",
+            aulaTitulo: "Planejamento Estrategico",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 11,
+            moduloTitulo: "Módulo 11",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo questoes={quizM11} titulo="QUIZ: PE Petrobras 2024-2028 (Pro)" numero={3} variant={mv[11]} icone="🛢️" onComplete={(score) => handleModuleComplete("modulo-11", score)} />
           </section>

@@ -473,11 +473,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <ModuleConsolidation
             index={1}
             variant={mv[1]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Fundamentos de Administração - Visão Geral",
-              duration: "12:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Administração Geral",
@@ -519,11 +514,15 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Fundamentos de Administração",
-              artista: "Petrobras Quest",
-            }}
+            podcast={{
+            aulaId: "administracaogeralsuprimento",
+            aulaTitulo: "Administracao Geral Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -762,11 +761,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            video={{
-              videoId: "7c-YVly_C9o",
-              title: "PODC - Desdobramento Prático",
-              duration: "15:20",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Administração Geral",
@@ -804,11 +798,15 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-              titulo: "Funções Administrativas PODC",
-              artista: "Petrobras Quest",
-            }}
+            podcast={{
+            aulaId: "administracaogeralsuprimento",
+            aulaTitulo: "Administracao Geral Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -1031,11 +1029,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <ModuleConsolidation
             index={3}
             variant={mv[3]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Estruturas Organizacionais",
-              duration: "14:30",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Administração Geral",
@@ -1073,11 +1066,15 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-              titulo: "Estruturas Organizacionais",
-              artista: "Petrobras Quest",
-            }}
+            podcast={{
+            aulaId: "administracaogeralsuprimento",
+            aulaTitulo: "Administracao Geral Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -1281,11 +1278,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <ModuleConsolidation
             index={4}
             variant={mv[4]}
-            video={{
-              videoId: "7c-YVly_C9o",
-              title: "Comportamento Organizacional",
-              duration: "13:15",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Administração Geral",
@@ -1327,11 +1319,15 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-              titulo: "Comportamento Organizacional",
-              artista: "Petrobras Quest",
-            }}
+            podcast={{
+            aulaId: "administracaogeralsuprimento",
+            aulaTitulo: "Administracao Geral Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -1533,11 +1529,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <ModuleConsolidation
             index={5}
             variant={mv[5]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Gestão por Processos",
-              duration: "13:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Administração Geral",
@@ -1579,11 +1570,15 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-              titulo: "Gestão por Processos",
-              artista: "Petrobras Quest",
-            }}
+            podcast={{
+            aulaId: "administracaogeralsuprimento",
+            aulaTitulo: "Administracao Geral Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -1811,11 +1806,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <ModuleConsolidation
             index={6}
             variant={mv[6]}
-            video={{
-              videoId: "7c-YVly_C9o",
-              title: "Escolas Administrativas - Linha do Tempo",
-              duration: "15:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Administração Geral",
@@ -1857,11 +1847,15 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-              titulo: "Teoria das Organizações",
-              artista: "Petrobras Quest",
-            }}
+            podcast={{
+            aulaId: "administracaogeralsuprimento",
+            aulaTitulo: "Administracao Geral Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -2154,11 +2148,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <ModuleConsolidation
             index={7}
             variant={mv[7]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Comunicação e Conflitos Organizacionais",
-              duration: "13:30",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Administração Geral",
@@ -2200,11 +2189,15 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-              titulo: "Comunicação e Conflitos",
-              artista: "Petrobras Quest",
-            }}
+            podcast={{
+            aulaId: "administracaogeralsuprimento",
+            aulaTitulo: "Administracao Geral Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -2469,11 +2462,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <ModuleConsolidation
             index={8}
             variant={mv[8]}
-            video={{
-              videoId: "7c-YVly_C9o",
-              title: "Decisão Administrativa e Inovação",
-              duration: "14:15",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Administração Geral",
@@ -2519,11 +2507,15 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-              titulo: "Decisão e Inovação",
-              artista: "Petrobras Quest",
-            }}
+            podcast={{
+            aulaId: "administracaogeralsuprimento",
+            aulaTitulo: "Administracao Geral Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -2859,11 +2851,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <ModuleConsolidation
             index={9}
             variant={mv[9]}
-            video={{
-              videoId: "dQw4w9WgXcQ",
-              title: "Administração Pública e Lei 13.303",
-              duration: "13:00",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Administração Geral",
@@ -2905,11 +2892,15 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-              titulo: "Administração na Petrobras",
-              artista: "Petrobras Quest",
-            }}
+            podcast={{
+            aulaId: "administracaogeralsuprimento",
+            aulaTitulo: "Administracao Geral Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo
@@ -2993,11 +2984,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
         <ModuleConsolidation
             index={10}
             variant={mv[10]}
-            video={{
-              videoId: "7c-YVly_C9o",
-              title: "Revisão Geral - Administração Completa",
-              duration: "20:00",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: "Administração Geral",
@@ -3054,11 +3040,15 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-              titulo: "Síntese Administração Geral",
-              artista: "Petrobras Quest",
-            }}
+            podcast={{
+            aulaId: "administracaogeralsuprimento",
+            aulaTitulo: "Administracao Geral Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <QuizInterativo

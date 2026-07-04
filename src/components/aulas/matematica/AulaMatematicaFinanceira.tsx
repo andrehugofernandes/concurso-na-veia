@@ -308,11 +308,6 @@ export default function AulaMatematicaFinanceira({
         <ModuleConsolidation
             index={3}
             variant="indigo"
-            video={{
-              videoId: "XxrO_yVcrTI",
-              title: "Juros Simples: Fórmula J=Cit e Aplicações Práticas",
-              duration: "12:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Matemática Financeira",
@@ -363,11 +358,15 @@ export default function AulaMatematicaFinanceira({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Ritmo dos Juros Simples",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "matematicafinanceira",
+            aulaTitulo: "Matematica Financeira",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -541,11 +540,6 @@ export default function AulaMatematicaFinanceira({
         <ModuleConsolidation
             index={3}
             variant={mv[2]}
-            video={{
-              videoId: "kL8nLz8zqWg",
-              title: "Montante Simples: Resgate e Capitalização Linear",
-              duration: "11:15"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Matemática Financeira",
@@ -596,11 +590,15 @@ export default function AulaMatematicaFinanceira({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-              titulo: "Montante Crescendo",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "matematicafinanceira",
+            aulaTitulo: "Matematica Financeira",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -756,11 +754,6 @@ export default function AulaMatematicaFinanceira({
         <ModuleConsolidation
             index={2}
             variant={mv[3]}
-            video={{
-              videoId: "h5FYmYW-I6Y",
-              title: "Juros Compostos: Capitalização Exponencial e Poder do Tempo",
-              duration: "13:45"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Matemática Financeira",
@@ -811,11 +804,15 @@ export default function AulaMatematicaFinanceira({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-              titulo: "Exponencial Crescendo Rápido",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "matematicafinanceira",
+            aulaTitulo: "Matematica Financeira",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -966,11 +963,6 @@ export default function AulaMatematicaFinanceira({
         <ModuleConsolidation
             index={2}
             variant={mv[4]}
-            video={{
-              videoId: "aX5LZQR-9Qc",
-              title: "Montante Composto: Encontrando Capital, Taxa e Tempo",
-              duration: "14:20"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Matemática Financeira",
@@ -1020,11 +1012,15 @@ export default function AulaMatematicaFinanceira({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-              titulo: "Quebra-cabeça Financeiro Resolvido",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "matematicafinanceira",
+            aulaTitulo: "Matematica Financeira",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1177,11 +1173,6 @@ export default function AulaMatematicaFinanceira({
         <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            video={{
-              videoId: "S8xPFP1lU4w",
-              title: "Desconto Simples: Antecipação de Fluxos e Duplicatas",
-              duration: "12:00"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Matemática Financeira",
@@ -1235,11 +1226,15 @@ export default function AulaMatematicaFinanceira({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-              titulo: "Antecipação Financeira",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "matematicafinanceira",
+            aulaTitulo: "Matematica Financeira",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1383,11 +1378,6 @@ export default function AulaMatematicaFinanceira({
         <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            video={{
-              videoId: "kGZVW7zDV2Y",
-              title: "Equivalência de Capitais: Comparar Fluxos em Datas Diferentes",
-              duration: "13:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Matemática Financeira",
@@ -1426,11 +1416,15 @@ export default function AulaMatematicaFinanceira({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-              titulo: "Viagem Financeira no Tempo",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "matematicafinanceira",
+            aulaTitulo: "Matematica Financeira",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1597,11 +1591,6 @@ export default function AulaMatematicaFinanceira({
         <ModuleConsolidation
             index={2}
             variant="indigo"
-            video={{
-              videoId: "rHzRFYdT3Kc",
-              title: "Taxa Nominal vs Taxa Efetiva: Conversão e Comparação Real",
-              duration: "12:45"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Matemática Financeira",
@@ -1638,11 +1627,15 @@ export default function AulaMatematicaFinanceira({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-              titulo: "Escondido na Letra Pequena",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "matematicafinanceira",
+            aulaTitulo: "Matematica Financeira",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1789,11 +1782,6 @@ export default function AulaMatematicaFinanceira({
         <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            video={{
-              videoId: "CXW5V4zDvWY",
-              title: "Séries de Pagamento: Anuidades Postecipadas e Antecipadas",
-              duration: "14:10"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Matemática Financeira",
@@ -1830,11 +1818,15 @@ export default function AulaMatematicaFinanceira({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-              titulo: "Parcelas no Ritmo Certo",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "matematicafinanceira",
+            aulaTitulo: "Matematica Financeira",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1978,11 +1970,6 @@ export default function AulaMatematicaFinanceira({
         <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "2HYVqU1Kgdg",
-              title: "Matemática Financeira em Projetos Petrobras: VPL e TIR",
-              duration: "15:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Matemática Financeira",
@@ -2021,11 +2008,15 @@ export default function AulaMatematicaFinanceira({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-              titulo: "Projeto Petroleum Viável",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "matematicafinanceira",
+            aulaTitulo: "Matematica Financeira",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -2191,11 +2182,6 @@ export default function AulaMatematicaFinanceira({
         <ModuleConsolidation
             index={2}
             variant={mv[10]}
-            video={{
-              videoId: "kxJXBg_lRfU",
-              title: "Revisão Final: Matemática Financeira Integrada CESGRANRIO",
-              duration: "16:00"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: "Matemática Financeira",
@@ -2234,11 +2220,15 @@ export default function AulaMatematicaFinanceira({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-              titulo: "Mestre em Finanças - Consolidação Final",
-              artista: "Prof. Rítmico"
-            }}
+            podcast={{
+            aulaId: "matematicafinanceira",
+            aulaTitulo: "Matematica Financeira",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo

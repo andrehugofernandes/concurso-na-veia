@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import PetrobrasLogo from '../PetrobrasLogo';
@@ -10,6 +10,23 @@ import { AuthThemeToggle } from '../auth/AuthThemeToggle';
 export default function HomeHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const bgColor = "bg-slate-50 dark:bg-primary";
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMenuOpen && 
+        menuRef.current && 
+        !menuRef.current.contains(event.target as Node) &&
+        !(event.target as Element).closest('#menu-toggle-desktop, #menu-toggle-mobile')
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMenuOpen]);
 
   return (
     <>
@@ -21,6 +38,7 @@ export default function HomeHeader() {
         style={{ height: '68px' }}
       >
         <button 
+          id="menu-toggle-desktop"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="flex items-center gap-2 text-slate-900 dark:text-primary-foreground hover:text-primary dark:hover:text-primary-foreground/80 transition-colors"
         >
@@ -83,6 +101,7 @@ export default function HomeHeader() {
         
         {/* Right: Menu Toggle */}
         <button 
+          id="menu-toggle-mobile"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="justify-self-end flex items-center justify-center w-9 h-9 text-white hover:text-white/80 transition-colors shrink-0"
           aria-label="Menu"
@@ -95,6 +114,7 @@ export default function HomeHeader() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
+            ref={menuRef}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -103,22 +123,22 @@ export default function HomeHeader() {
             <div className="flex flex-col gap-3">
               {/* Links Grid */}
               <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-                <Link href="#cursos" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
+                <Link href="/#cursos" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
                   Cursos
                 </Link>
-                <Link href="#demo" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
+                <Link href="/#demo" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
                   Demonstração
                 </Link>
-                <Link href="#petrolingo" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
+                <Link href="/#petrolingo" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
                   PetroLingo
                 </Link>
-                <Link href="#resultados" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
+                <Link href="/#resultados" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
                   Resultados
                 </Link>
-                <Link href="#depoimentos" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
+                <Link href="/#depoimentos" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
                   Depoimentos
                 </Link>
-                <Link href="#pricing" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
+                <Link href="/#pricing" onClick={() => setIsMenuOpen(false)} className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary rounded-lg font-medium transition text-sm">
                   Planos
                 </Link>
               </div>

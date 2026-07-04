@@ -301,7 +301,6 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <ModuleConsolidation
           index={1}
           variant={mv[1]}
-          video={{ videoId: "LOG1_V", title: "Fundamentos da Logística", duration: "15:00" }}
           resumoVisual={{
             moduloNome: "Módulo 1",
             tituloAula: "Logística",
@@ -321,8 +320,16 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
               </div>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Podcast: Essência Logística", artista: "Prof. Supply Chain" }}
-        />
+          podcast={{
+            aulaId: "logisticasuprimento",
+            aulaTitulo: "Logistica Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo
           questoes={mapQuizQuestions("modulo-1")}
           titulo="QUIZ: Fundamentos e Cadeia de Suprimentos"
@@ -467,7 +474,6 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <ModuleConsolidation
           index={2}
           variant={mv[2]}
-          video={{ videoId: "LOG2_V", title: "Gestão Integrada de Estoques", duration: "16:00" }}
           resumoVisual={{
             moduloNome: "Módulo 2",
             tituloAula: "Estoques",
@@ -487,8 +493,16 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
               </div>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "Podcast: Estoques Inteligentes", artista: "Prof. Supply Chain" }}
-        />
+          podcast={{
+            aulaId: "logisticasuprimento",
+            aulaTitulo: "Logistica Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo
           questoes={mapQuizQuestions("modulo-2")}
           titulo="QUIZ: Gestão Integrada de Estoques"
@@ -628,11 +642,18 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
           index={3} variant={mv[3]}
-          video={{ videoId: "LOG3_V", title: "Armazenagem e Centros de Distribuição", duration: "14:00" }}
           resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Armazenagem", materia: "Logística", images: [{ title: "Layout em U", type: "Esquema", placeholderColor: "bg-emerald-500/20" }, { title: "Fluxo WMS", type: "Diagrama", placeholderColor: "bg-cyan-500/20" }] }}
           sinteseEstrategica={{ title: "Regra de Ouro do Picking", content: (<div className="text-center text-lg font-bold"><p>Mais GIRO = Mais PERTO da porta</p><p className="font-normal text-xl mt-1 text-foreground/85 leading-relaxed">Itens classe A ficam na zona nobre do armazém</p></div>) }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "Podcast: Dentro do CD", artista: "Prof. Supply Chain" }}
-        />
+          podcast={{
+            aulaId: "logisticasuprimento",
+            aulaTitulo: "Logistica Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo questoes={mapQuizQuestions("modulo-3")} titulo="QUIZ: Armazenagem e CDs" numero={3} variant={mv[3]} onComplete={(score) => handleModuleComplete("modulo-3", score)} />
       </TabsContent>
 
@@ -767,11 +788,18 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
           index={4} variant={mv[4]}
-          video={{ videoId: "LOG4_V", title: "Modais e Gestão de Transportes", duration: "18:00" }}
           resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Transportes", materia: "Logística", images: [{ title: "Matriz Modal BR", type: "Infográfico", placeholderColor: "bg-amber-500/20" }, { title: "Malha Dutoviária", type: "Mapa", placeholderColor: "bg-emerald-500/20" }] }}
           sinteseEstrategica={{ title: "Hierarquia de Custo", content: (<div className="text-center text-lg font-bold space-y-1"><p className="text-emerald-400">Dutoviário 💰</p><p className="text-blue-400">Aquaviário 💰💰</p><p className="text-cyan-400">Ferroviário 💰💰💰</p><p className="text-amber-400">Rodoviário 💰💰💰💰</p><p className="text-rose-400">Aéreo 💰💰💰💰💰</p></div>) }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Podcast: Modais Brasileiros", artista: "Prof. Supply Chain" }}
-        />
+          podcast={{
+            aulaId: "logisticasuprimento",
+            aulaTitulo: "Logistica Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo questoes={mapQuizQuestions("modulo-4")} titulo="QUIZ: Modais e Transportes" numero={4} variant={mv[4]} onComplete={(score) => handleModuleComplete("modulo-4", score)} />
       </TabsContent>
 
@@ -918,7 +946,6 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <ModuleConsolidation
           index={5}
           variant={mv[5]}
-          video={{ videoId: "LOG5_V", title: "Logística Inbound e Outbound", duration: "14:00" }}
           resumoVisual={{
             moduloNome: "Módulo 5",
             tituloAula: "Fluxos",
@@ -954,8 +981,16 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
               </>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Podcast: Cadeia Integrada", artista: "Prof. Supply Chain" }}
-        />
+          podcast={{
+            aulaId: "logisticasuprimento",
+            aulaTitulo: "Logistica Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo
           questoes={mapQuizQuestions("modulo-5")}
           titulo="QUIZ: Logística Inbound e Outbound"
@@ -1100,7 +1135,6 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
           index={6} variant={mv[6]}
-          video={{ videoId: "LOG6_V", title: "Supply Chain Management", duration: "16:00" }}
           resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "SCM", materia: "Logística", images: [{ title: "Bullwhip Effect", type: "Gráfico", placeholderColor: "bg-amber-500/20" }, { title: "Modelo CPFR", type: "Diagrama", placeholderColor: "bg-blue-500/20" }] }}
           sinteseEstrategica={{
             title: "O Macete do 'Chicote'",
@@ -1128,8 +1162,16 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
               </>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "Podcast: Efeito Chicote", artista: "Prof. Supply Chain" }}
-        />
+          podcast={{
+            aulaId: "logisticasuprimento",
+            aulaTitulo: "Logistica Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo questoes={mapQuizQuestions("modulo-6")} titulo="QUIZ: Supply Chain Management" numero={6} variant={mv[6]} onComplete={(score) => handleModuleComplete("modulo-6", score)} />
       </TabsContent>
 
@@ -1261,7 +1303,6 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
           index={7} variant={mv[7]}
-          video={{ videoId: "LOG7_V", title: "KPIs Logísticos", duration: "14:00" }}
           resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "KPIs", materia: "Logística", images: [{ title: "Dashboard KPIs", type: "Tabela", placeholderColor: "bg-blue-500/20" }, { title: "Fórmula OTIF", type: "Esquema", placeholderColor: "bg-rose-500/20" }] }}
           sinteseEstrategica={{
             title: "O Macete do 'OTIF'",
@@ -1289,8 +1330,16 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
               </>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Podcast: Métricas que Importam", artista: "Prof. Supply Chain" }}
-        />
+          podcast={{
+            aulaId: "logisticasuprimento",
+            aulaTitulo: "Logistica Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo questoes={mapQuizQuestions("modulo-7")} titulo="QUIZ: Indicadores de Desempenho" numero={7} variant={mv[7]} onComplete={(score) => handleModuleComplete("modulo-7", score)} />
       </TabsContent>
 
@@ -1427,7 +1476,6 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
           index={8} variant={mv[8]}
-          video={{ videoId: "LOG8_V", title: "Logística Reversa e Sustentabilidade", duration: "15:00" }}
           resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Reversa", materia: "Logística", images: [{ title: "Ciclo Reverso", type: "Diagrama", placeholderColor: "bg-emerald-500/20" }, { title: "Hierarquia PNRS", type: "Infográfico", placeholderColor: "bg-amber-500/20" }] }}
           sinteseEstrategica={{
             title: "O Macete da 'Seta Invertida'",
@@ -1455,8 +1503,16 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
               </>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Podcast: O Caminho de Volta", artista: "Prof. Supply Chain" }}
-        />
+          podcast={{
+            aulaId: "logisticasuprimento",
+            aulaTitulo: "Logistica Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo questoes={mapQuizQuestions("modulo-8")} titulo="QUIZ: Logística Reversa" numero={8} variant={mv[8]} onComplete={(score) => handleModuleComplete("modulo-8", score)} />
       </TabsContent>
 
@@ -1593,7 +1649,6 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
 
         <ModuleConsolidation
           index={9} variant={mv[9]}
-          video={{ videoId: "LOG9_V", title: "Logística Offshore Petrobras", duration: "20:00" }}
           resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Petrobras", materia: "Offshore", images: [{ title: "Mapa Bacias", type: "Mapa", placeholderColor: "bg-blue-500/20" }, { title: "Frota PSV/AHTS", type: "Infográfico", placeholderColor: "bg-amber-500/20" }] }}
           sinteseEstrategica={{
             title: "O Macete do 'Barco Certo'",
@@ -1621,8 +1676,16 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
               </>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Podcast: No Mar", artista: "Prof. Supply Chain" }}
-        />
+          podcast={{
+            aulaId: "logisticasuprimento",
+            aulaTitulo: "Logistica Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo questoes={mapQuizQuestions("modulo-9")} titulo="QUIZ: Logística Offshore Petrobras" numero={9} variant={mv[9]} onComplete={(score) => handleModuleComplete("modulo-9", score)} />
       </TabsContent>
 
@@ -1708,11 +1771,6 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
         <ModuleConsolidation
           index={10}
           variant={getModuleVariant(10)}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Revisão e Simulado Geral de Logística",
-            duration: "25:15"
-          }}
           resumoVisual={{
             moduloNome: "Simulado Final",
             tituloAula: "Logística",
@@ -1725,12 +1783,16 @@ export default function AulaLogisticaSuprimento(props: AulaProps) {
             title: "O Ponto Final",
             content: <div className="text-center"><span className="text-6xl my-6 animate-pulse inline-block">🎓 🏆</span><p className="text-lg italic text-center">"O Técnico de Suprimentos zela pela conformidade técnica de cada processo operacional."</p></div>
           }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-            titulo: "Podcast: Sucesso no Concurso Petrobras",
-            artista: "Prof. Suprimentos"
+          podcast={{
+            aulaId: "logisticasuprimento",
+            aulaTitulo: "Logistica Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         <QuizInterativo
           titulo="Simulado Final: Logística"

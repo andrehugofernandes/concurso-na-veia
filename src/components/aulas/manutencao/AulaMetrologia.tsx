@@ -166,11 +166,6 @@ export default function AulaMetrologia({
 <ModuleConsolidation 
             index={1}
             variant="indigo"
-            video={{
-                videoId: "dQw4w9WgXcQ",
-                title: "Fundamentos de Metrologia e SI",
-                duration: "12:45"
-            }}
             resumoVisual={{
                 moduloNome: "Módulo 1",
                 tituloAula: "Metrologia Industrial",
@@ -184,12 +179,16 @@ export default function AulaMetrologia({
                 title: "Destaque Estratégico: 25,4",
                 content: <p className="text-lg italic">"Vinte e cinco vírgula quatro, no meu bolso eu sempre guardo. De polegada para mm, multiplique sem medo!"</p>
             }}
-            audio={{
-                audioUrl: "/audio/metrologia-rap-1.mp3",
-                titulo: "Rima da Medição",
-                artista: "Mestre da Manutenção"
-            }}
-        />
+            podcast={{
+            aulaId: "metrologia",
+            aulaTitulo: "Metrologia",
+            materia: "Manutenção",
+            materiaId: "manutencao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                 <QuizInterativo 
             questoes={QUIZ_M1_FUNDAMENTOS}
@@ -250,11 +249,6 @@ export default function AulaMetrologia({
 <ModuleConsolidation 
             index={2}
             variant="emerald"
-            video={{
-                videoId: "dQw4w9WgXcQ",
-                title: "Prática com Paquímetro",
-                duration: "15:20"
-            }}
             resumoVisual={{
                 moduloNome: "Módulo 2",
                 tituloAula: "Paquímetro",
@@ -268,12 +262,16 @@ export default function AulaMetrologia({
                 title: "Resolução na Mão",
                 content: <p className="text-lg">Sempre 1 dividido pelo número de casinhas do nônio. 50 divisões? 0,02. 20 divisões? 0,05.</p>
             }}
-            audio={{
-                audioUrl: "/audio/paquimetro-beat.mp3",
-                titulo: "O Som do Nônio",
-                artista: "Mestre da Manutenção"
-            }}
-        />
+            podcast={{
+            aulaId: "metrologia",
+            aulaTitulo: "Metrologia",
+            materia: "Manutenção",
+            materiaId: "manutencao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                 <QuizInterativo 
             questoes={QUIZ_M2_PAQUIMETRO}
@@ -327,11 +325,6 @@ export default function AulaMetrologia({
 <ModuleConsolidation 
             index={3}
             variant="violet"
-            video={{
-                videoId: "dQw4w9WgXcQ",
-                title: "Mastering Micrometers",
-                duration: "18:10"
-            }}
             resumoVisual={{
                 moduloNome: "Módulo 3",
                 tituloAula: "Micrômetro",
@@ -345,12 +338,16 @@ export default function AulaMetrologia({
                 title: "Dica de Ouro: O traço de baixo",
                 content: <p className="text-lg">Viu o traço debaixo da bainha? Some na hora 0,50mm ao valor do tambor!</p>
             }}
-            audio={{
-                audioUrl: "/audio/micrometro-lofi.mp3",
-                titulo: "Precisão Centesimal",
-                artista: "Mestre da Manutenção"
-            }}
-        />
+            podcast={{
+            aulaId: "metrologia",
+            aulaTitulo: "Metrologia",
+            materia: "Manutenção",
+            materiaId: "manutencao",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                 <QuizInterativo 
             questoes={QUIZ_M3_MICROMETRO}
@@ -411,11 +408,6 @@ export default function AulaMetrologia({
 <ModuleConsolidation 
             index={4}
             variant="amber"
-            video={{
-                videoId: "dQw4w9WgXcQ",
-                title: "ISO 286: Tolerâncias",
-                duration: "20:00"
-            }}
             resumoVisual={{
                 moduloNome: "Módulo 4",
                 tituloAula: "Tolerâncias",
@@ -429,12 +421,16 @@ export default function AulaMetrologia({
                 title: "Maiúsculo vs Minúsculo",
                 content: <p className="text-lg">"FURO é GRANDE (Letra Maiúscula), eixo é pequeno (letra minúscula)."</p>
             }}
-            audio={{
-                audioUrl: "/audio/iso-techno.mp3",
-                titulo: "Dossiê H7/g6",
-                artista: "Mestre da Manutenção"
-            }}
-        />
+            podcast={{
+            aulaId: "metrologia",
+            aulaTitulo: "Metrologia",
+            materia: "Manutenção",
+            materiaId: "manutencao",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                 <QuizInterativo 
             questoes={QUIZ_M4_TOLERANCIAS}
@@ -490,11 +486,6 @@ export default function AulaMetrologia({
 <ModuleConsolidation 
             index={5}
             variant="rose"
-            video={{
-                videoId: "dQw4w9WgXcQ",
-                title: "Rugosidade e Estado de Superfície",
-                duration: "14:30"
-            }}
             resumoVisual={{
                 moduloNome: "Módulo 5",
                 tituloAula: "Rugosidade",
@@ -508,12 +499,16 @@ export default function AulaMetrologia({
                 title: "Ra x Rz",
                 content: <p className="text-lg">"Ra é a média, Rz é o pico. Para a Cesgranrio, o Ra é o favorito!"</p>
             }}
-            audio={{
-                audioUrl: "/audio/rugosidade-funk.mp3",
-                titulo: "Superfície Perfeita",
-                artista: "Mestre da Manutenção"
-            }}
-        />
+            podcast={{
+            aulaId: "metrologia",
+            aulaTitulo: "Metrologia",
+            materia: "Manutenção",
+            materiaId: "manutencao",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                 <QuizInterativo 
             questoes={QUIZ_M5_RUGOSIDADE}

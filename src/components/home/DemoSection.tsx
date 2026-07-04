@@ -23,6 +23,7 @@ import {
 } from 'react-icons/lu';
 import PetrobrasLogo from '../PetrobrasLogo';
 import ScrollAnimatedHeader from './ScrollAnimatedHeader';
+import AnimatedElement from '../ui/AnimatedElement';
 
 const tabs = [
   { id: 'dashboard', label: 'Visão Geral (Dashboard)', icon: <LuLayoutDashboard className="w-4 h-4" /> },
@@ -107,7 +108,7 @@ export default function DemoSection() {
         />
 
         {/* Outer Flex Layout: Top Navigation + Dashboard Mockup */}
-        <div className="flex flex-col gap-8 items-center">
+        <AnimatedElement delay={0.2} className="flex flex-col gap-8 items-center">
           {/* Top Navigation tab pills */}
           <div className="w-full flex flex-row justify-start lg:justify-center gap-3 overflow-x-auto pb-4 scrollbar-none">
             {tabs.map((tab) => (
@@ -1130,7 +1131,7 @@ export default function DemoSection() {
               </div>
             </div>
           </div>
-        </div>
+        </AnimatedElement>
       </div>
     </section>
   );

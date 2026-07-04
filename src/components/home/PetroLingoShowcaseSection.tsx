@@ -16,6 +16,7 @@ import {
   LuTarget
 } from "react-icons/lu";
 import ScrollAnimatedHeader from "./ScrollAnimatedHeader";
+import AnimatedElement from "../ui/AnimatedElement";
 import PetroLingoExercise, { SentenceData } from "../aulas/ingles/PetroLingoExercise";
 
 // Dados da Lição 1 do PetroLingo para a demonstração na Landing Page
@@ -104,7 +105,7 @@ export default function PetroLingoShowcaseSection() {
           className="mb-16 text-center max-w-3xl mx-auto"
         />
 
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+        <AnimatedElement delay={0.2} className="grid lg:grid-cols-12 gap-12 items-center">
           {/* Coluna da Esquerda: Recursos e diferenciais */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-6">
@@ -279,7 +280,7 @@ export default function PetroLingoShowcaseSection() {
               </div>
             </div>
           </div>
-        </div>
+        </AnimatedElement>
       </div>
 
       {/* Modal Tela Cheia da Lição 1 (quando aberto) */}

@@ -542,11 +542,6 @@ export default function AulaEquacoes1Grau({
 
         <ModuleConsolidation
             index={4}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Revisão do Módulo 1",
-              duration: "8:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Equações de 1º Grau",
@@ -568,13 +563,17 @@ export default function AulaEquacoes1Grau({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Rítmo do Aprendizado",
-              artista: "Prof. Musical"
-            }}
-          variant={mv[1]}
-        />
+            variant={mv[1]}
+        podcast={{
+            aulaId: "equacoes1grau",
+            aulaTitulo: "Equacoes1 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                     <QuizInterativo
             questoes={quizM1}
@@ -946,11 +945,6 @@ export default function AulaEquacoes1Grau({
 
         <ModuleConsolidation
             index={4}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Revisão do Módulo 2",
-              duration: "8:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Equações de 1º Grau",
@@ -972,13 +966,17 @@ export default function AulaEquacoes1Grau({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Rítmo do Aprendizado",
-              artista: "Prof. Musical"
-            }}
-          variant={mv[2]}
-        />
+            variant={mv[2]}
+        podcast={{
+            aulaId: "equacoes1grau",
+            aulaTitulo: "Equacoes1 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                     <QuizInterativo
             questoes={quizM2}
@@ -1274,11 +1272,6 @@ export default function AulaEquacoes1Grau({
 
         <ModuleConsolidation
             index={4}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Revisão do Módulo 3",
-              duration: "8:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Equações de 1º Grau",
@@ -1300,13 +1293,17 @@ export default function AulaEquacoes1Grau({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Rítmo do Aprendizado",
-              artista: "Prof. Musical"
-            }}
-          variant={mv[3]}
-        />
+            variant={mv[3]}
+        podcast={{
+            aulaId: "equacoes1grau",
+            aulaTitulo: "Equacoes1 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                     <QuizInterativo
             questoes={quizM3}
@@ -1585,11 +1582,6 @@ export default function AulaEquacoes1Grau({
 
         <ModuleConsolidation
             index={3}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Revisão do Módulo 4",
-              duration: "8:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Equações de 1º Grau",
@@ -1611,13 +1603,17 @@ export default function AulaEquacoes1Grau({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Rítmo do Aprendizado",
-              artista: "Prof. Musical"
-            }}
-          variant={mv[4]}
-        />
+            variant={mv[4]}
+        podcast={{
+            aulaId: "equacoes1grau",
+            aulaTitulo: "Equacoes1 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                     <QuizInterativo
             questoes={quizM4}
@@ -1755,11 +1751,6 @@ export default function AulaEquacoes1Grau({
 
         <ModuleConsolidation
             index={2}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Revisão do Módulo 5",
-              duration: "8:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Equações de 1º Grau",
@@ -1781,13 +1772,17 @@ export default function AulaEquacoes1Grau({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Rítmo do Aprendizado",
-              artista: "Prof. Musical"
-            }}
-          variant={mv[5]}
-        />
+            variant={mv[5]}
+        podcast={{
+            aulaId: "equacoes1grau",
+            aulaTitulo: "Equacoes1 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                     <QuizInterativo
             questoes={quizM5}
@@ -2054,11 +2049,6 @@ export default function AulaEquacoes1Grau({
 
         <ModuleConsolidation
             index={2}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Revisão do Módulo 6",
-              duration: "8:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Equações de 1º Grau",
@@ -2080,13 +2070,17 @@ export default function AulaEquacoes1Grau({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Rítmo do Aprendizado",
-              artista: "Prof. Musical"
-            }}
-          variant={mv[6]}
-        />
+            variant={mv[6]}
+        podcast={{
+            aulaId: "equacoes1grau",
+            aulaTitulo: "Equacoes1 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                     <QuizInterativo
             questoes={quizM6}
@@ -2322,11 +2316,6 @@ export default function AulaEquacoes1Grau({
 
         <ModuleConsolidation
             index={2}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Revisão do Módulo 7",
-              duration: "8:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Equações de 1º Grau",
@@ -2348,13 +2337,17 @@ export default function AulaEquacoes1Grau({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Rítmo do Aprendizado",
-              artista: "Prof. Musical"
-            }}
-          variant={mv[7]}
-        />
+            variant={mv[7]}
+        podcast={{
+            aulaId: "equacoes1grau",
+            aulaTitulo: "Equacoes1 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                     <QuizInterativo
             questoes={quizM7}
@@ -2641,11 +2634,6 @@ export default function AulaEquacoes1Grau({
 
         <ModuleConsolidation
             index={2}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Revisão do Módulo 8",
-              duration: "8:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Equações de 1º Grau",
@@ -2667,13 +2655,17 @@ export default function AulaEquacoes1Grau({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Rítmo do Aprendizado",
-              artista: "Prof. Musical"
-            }}
-          variant={mv[8]}
-        />
+            variant={mv[8]}
+        podcast={{
+            aulaId: "equacoes1grau",
+            aulaTitulo: "Equacoes1 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                     <QuizInterativo
             questoes={quizM8}
@@ -2993,11 +2985,6 @@ export default function AulaEquacoes1Grau({
 
         <ModuleConsolidation
             index={2}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Revisão do Módulo 9",
-              duration: "8:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Equações de 1º Grau",
@@ -3019,13 +3006,17 @@ export default function AulaEquacoes1Grau({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Rítmo do Aprendizado",
-              artista: "Prof. Musical"
-            }}
-          variant={mv[9]}
-        />
+            variant={mv[9]}
+        podcast={{
+            aulaId: "equacoes1grau",
+            aulaTitulo: "Equacoes1 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                     <QuizInterativo
             questoes={quizM9}
@@ -3181,11 +3172,6 @@ export default function AulaEquacoes1Grau({
 
         <ModuleConsolidation
             index={2}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Revisão do Módulo 10",
-              duration: "8:30"
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: "Equações de 1º Grau",
@@ -3207,13 +3193,17 @@ export default function AulaEquacoes1Grau({
                 </div>
               )
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Rítmo do Aprendizado",
-              artista: "Prof. Musical"
-            }}
-          variant={mv[10]}
-        />
+            variant={mv[10]}
+        podcast={{
+            aulaId: "equacoes1grau",
+            aulaTitulo: "Equacoes1 Grau",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                         <QuizInterativo
                 questoes={quizFinal}

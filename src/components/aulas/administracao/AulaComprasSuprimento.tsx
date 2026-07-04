@@ -164,11 +164,6 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         <ModuleConsolidation
         index={1}
         variant={getModuleVariant(1)}
-        video={{
-          videoId: "dQw4w9WgXcQ",
-          title: "Os 5 Certos em Compras",
-          duration: "10:30",
-        }}
         resumoVisual={{
           moduloNome: "Módulo 1",
           tituloAula: "Gestão de Compras",
@@ -182,12 +177,16 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           title: "A Regra Mnemônica",
           content: <p className="text-lg italic text-center">"Q² T P F: Quem Quer Ter Preço Forte (Qualidade, Quantidade, Tempo, Preço, Fonte)"</p>,
         }}
-        audio={{
-          audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-          titulo: "Podcast: O Coração do Suprimento",
-          artista: "Prof. Administração",
-        }}
-      />
+        podcast={{
+            aulaId: "comprassuprimento",
+            aulaTitulo: "Compras Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <div className="space-y-6">
         <ModuleSectionHeader index={1} variant={getModuleVariant(1)} title="Análise C.E.D.E." description="Fundamentos de compras na prova." />
@@ -324,11 +323,6 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         <ModuleConsolidation
         index={2}
         variant={getModuleVariant(2)}
-        video={{
-          videoId: "dQw4w9WgXcQ",
-          title: "O Ciclo do Pedido",
-          duration: "14:15",
-        }}
         resumoVisual={{
           moduloNome: "Módulo 2",
           tituloAula: "Processo de Compras",
@@ -341,12 +335,16 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           title: "A Santíssima Trindade do Recebimento",
           content: <p className="text-lg italic text-center">"O Triplo Check P-R-N: Pedido, Recebimento e Nota."</p>,
         }}
-        audio={{
-          audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-          titulo: "Podcast: Desvendando o P2P",
-          artista: "Prof. Administração",
-        }}
-      />
+        podcast={{
+            aulaId: "comprassuprimento",
+            aulaTitulo: "Compras Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
       <div className="space-y-6">
         <ModuleSectionHeader index={2} variant={getModuleVariant(2)} title="Análise C.E.D.E." description="O fluxo Processo-P2P na prova." />
         <ContentAccordion mode="stacked" 
@@ -480,11 +478,6 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         <ModuleConsolidation
         index={3}
         variant={getModuleVariant(3)}
-        video={{
-          videoId: "dQw4w9WgXcQ",
-          title: "Homologação de Fornecedores",
-          duration: "16:20",
-        }}
         resumoVisual={{
           moduloNome: "Módulo 3",
           tituloAula: "Seleção de Fornecedores",
@@ -497,12 +490,16 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           title: "A Diferença Crucial",
           content: <p className="text-lg italic text-center">"SOLE = Solo (Sozinho no Mundo). SINGLE = Escolha Singela do Coração."</p>,
         }}
-        audio={{
-          audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-          titulo: "Podcast: O Dilema Make or Buy",
-          artista: "Prof. Administração",
-        }}
-      />
+        podcast={{
+            aulaId: "comprassuprimento",
+            aulaTitulo: "Compras Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <div className="space-y-6">
         <ModuleSectionHeader index={3} variant={getModuleVariant(3)} title="Análise C.E.D.E." description="Qualificação de fornecedores nos editais." />
@@ -638,11 +635,6 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         <ModuleConsolidation
         index={4}
         variant={getModuleVariant(4)}
-        video={{
-          videoId: "dQw4w9WgXcQ",
-          title: "Negociação na Prática",
-          duration: "13:30",
-        }}
         resumoVisual={{
           moduloNome: "Módulo 4",
           tituloAula: "Negociação",
@@ -655,12 +647,16 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           title: "Bate na Zopa!",
           content: <p className="text-lg italic text-center">"O BATNA protege (Alternativa). A ZOPA permite fechar acordo (Zona)."</p>,
         }}
-        audio={{
-          audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-          titulo: "Podcast: O Bote do Ancoramento",
-          artista: "Prof. Administração",
-        }}
-      />
+        podcast={{
+            aulaId: "comprassuprimento",
+            aulaTitulo: "Compras Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <div className="space-y-6">
         <ModuleSectionHeader index={4} variant={getModuleVariant(4)} title="Análise C.E.D.E." description="Táticas e conceitos de negociação b2b." />
@@ -794,11 +790,6 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         <ModuleConsolidation
         index={5}
         variant={getModuleVariant(5)}
-        video={{
-          videoId: "dQw4w9WgXcQ",
-          title: "Tipos de Compras e ERP",
-          duration: "11:20",
-        }}
         resumoVisual={{
           moduloNome: "Módulo 5",
           tituloAula: "Tipos de Compras",
@@ -811,12 +802,16 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           title: "A Pirâmide da Decisão",
           content: <p className="text-lg italic text-center">"Da prateleira do JIT à Cadeira do Acordo-Quadro. Fuja da Emergencial!"</p>,
         }}
-        audio={{
-          audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-          titulo: "Podcast: Consignados da Empresa",
-          artista: "Prof. Administração",
-        }}
-      />
+        podcast={{
+            aulaId: "comprassuprimento",
+            aulaTitulo: "Compras Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <div className="space-y-6">
         <ModuleSectionHeader index={5} variant={getModuleVariant(5)} title="Análise C.E.D.E." description="Modalidades de compras na prova." />
@@ -949,11 +944,6 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         <ModuleConsolidation
         index={6}
         variant={getModuleVariant(6)}
-        video={{
-          videoId: "dQw4w9WgXcQ",
-          title: "SLA, Multas e Gestão Corretiva Contratual Corporativa Integrada e Segura",
-          duration: "13:45",
-        }}
         resumoVisual={{
           moduloNome: "Módulo 6",
           tituloAula: "Gestão Contratual",
@@ -966,12 +956,16 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           title: "SLA não perdoa",
           content: <p className="text-lg italic text-center">"O SLA é o juiz cego. Bateu a métrica ganha. Falhou, leva glosa mensal na cabeça financeira corporativamente faturada pela fiscalização implacável rígida estatal fiscalizadora."</p>,
         }}
-        audio={{
-          audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-          titulo: "Podcast: As Armadilhas Fiscais",
-          artista: "Prof. Administração",
-        }}
-      />
+        podcast={{
+            aulaId: "comprassuprimento",
+            aulaTitulo: "Compras Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <div className="space-y-6">
         <ModuleSectionHeader index={6} variant={getModuleVariant(6)} title="Análise C.E.D.E." description="Gestão pós-contratação na prova." />
@@ -1104,11 +1098,6 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         <ModuleConsolidation
         index={7}
         variant={getModuleVariant(7)}
-        video={{
-          videoId: "dQw4w9WgXcQ",
-          title: "Leilão Reverso e Portais Eletrônicos em Ação Visceral",
-          duration: "09:50",
-        }}
         resumoVisual={{
           moduloNome: "Módulo 7",
           tituloAula: "e-Procurement B2B",
@@ -1121,12 +1110,16 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           title: "Sem papel. Sem Miguel.",
           content: <p className="text-lg italic text-center">"O digital rastreia e barateia. Catálogo para agilidade, Leilão Reverso para Commodities e Preço. Integração total no ERP."</p>,
         }}
-        audio={{
-          audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-          titulo: "Podcast: Petronect Desvendado e a revolução digital",
-          artista: "Prof. Administração",
-        }}
-      />
+        podcast={{
+            aulaId: "comprassuprimento",
+            aulaTitulo: "Compras Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <div className="space-y-6">
         <ModuleSectionHeader index={7} variant={getModuleVariant(7)} title="Análise C.E.D.E." description="Digitalização e plataformas estatais." />
@@ -1259,11 +1252,6 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         <ModuleConsolidation
         index={8}
         variant={getModuleVariant(8)}
-        video={{
-          videoId: "dQw4w9WgXcQ",
-          title: "Ética nas Compras Corporativas: Cortando o Mal",
-          duration: "20:05",
-        }}
         resumoVisual={{
           moduloNome: "Módulo 8",
           tituloAula: "Ética e Compliance",
@@ -1276,12 +1264,16 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           title: "Brinde, Cartel e Ambiente Sustentável",
           content: <p className="text-lg italic text-center">"Amigo secreto de 1 milhão? Corrupção! Compre do melhor e fiscalize como ele fabrica."</p>,
         }}
-        audio={{
-          audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-          titulo: "Podcast: As Fronteiras de Ouro e Regras Verdes Legais da Ética Indiscutível",
-          artista: "Prof. Administração",
-        }}
-      />
+        podcast={{
+            aulaId: "comprassuprimento",
+            aulaTitulo: "Compras Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <div className="space-y-6">
         <ModuleSectionHeader index={8} variant={getModuleVariant(8)} title="Análise C.E.D.E." description="A ética inegociável na Petrobras." />
@@ -1414,11 +1406,6 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         <ModuleConsolidation
         index={9}
         variant={getModuleVariant(9)}
-        video={{
-          videoId: "dQw4w9WgXcQ",
-          title: "A Lei 13.303 e o RLCP Desbravado Profundo Prático Ágil",
-          duration: "25:10",
-        }}
         resumoVisual={{
           moduloNome: "Módulo 9",
           tituloAula: "Compras Petrobras",
@@ -1431,12 +1418,16 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           title: "Rigidez Moral com Agilidade Funcional Comercial Operante Eficiente Otimizada Veloz Rápida Inteligente Lucrativa Competitiva Sustentável Robusta",
           content: <p className="text-lg italic text-center">"O RLCP é o carro blindado com motor de Fórmula 1 e pneus de tração pesada sustentável aderente."</p>,
         }}
-        audio={{
-          audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-          titulo: "Podcast: O Monstro Híbrido Estata e Privado Foco Competitivo",
-          artista: "Prof. Administração",
-        }}
-      />
+        podcast={{
+            aulaId: "comprassuprimento",
+            aulaTitulo: "Compras Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <div className="space-y-6">
         <ModuleSectionHeader index={9} variant={getModuleVariant(9)} title="Análise C.E.D.E." description="A flexibilidade da estatal (RLCP) nas compras." />
@@ -1584,11 +1575,6 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         <ModuleConsolidation
         index={10}
         variant={getModuleVariant(10)}
-        video={{
-          videoId: "dQw4w9WgXcQ",
-          title: "Revisão e Simulado Geral de Gestão de Compras",
-          duration: "25:15"
-        }}
         resumoVisual={{
           moduloNome: "Simulado Final",
           tituloAula: "Gestão de Compras",
@@ -1601,12 +1587,16 @@ export default function AulaComprasSuprimento(props: AulaProps) {
           title: "O Ponto Final",
           content: <div className="text-center"><span className="text-6xl my-6 animate-pulse inline-block">🎓 🏆</span><p className="text-lg italic text-center">"O Técnico de Suprimentos zela pela conformidade técnica de cada processo operacional."</p></div>
         }}
-        audio={{
-          audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-          titulo: "Podcast: Sucesso no Concurso Petrobras",
-          artista: "Prof. Suprimentos"
-        }}
-      />
+        podcast={{
+            aulaId: "comprassuprimento",
+            aulaTitulo: "Compras Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
       <QuizInterativo
         titulo="Simulado Final: Gestão de Compras"
@@ -1737,11 +1727,6 @@ export default function AulaComprasSuprimento(props: AulaProps) {
         <ModuleConsolidation
           index={10}
           variant={getModuleVariant(10)}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Revisão e Simulado Geral de Suprimentos",
-            duration: "25:15"
-          }}
           resumoVisual={{
             moduloNome: "Simulado Final",
             tituloAula: "Suprimentos",
@@ -1754,12 +1739,16 @@ export default function AulaComprasSuprimento(props: AulaProps) {
             title: "O Ponto Final",
             content: <div className="text-center"><span className="text-6xl my-6 animate-pulse inline-block">🎓 🏆</span><p className="text-lg italic text-center">"O Técnico de Suprimentos zela pela conformidade técnica de cada processo operacional."</p></div>
           }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-            titulo: "Podcast: Sucesso no Concurso Petrobras",
-            artista: "Prof. Suprimentos"
+          podcast={{
+            aulaId: "comprassuprimento",
+            aulaTitulo: "Compras Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         <QuizInterativo
           titulo="Simulado Final: Suprimentos"

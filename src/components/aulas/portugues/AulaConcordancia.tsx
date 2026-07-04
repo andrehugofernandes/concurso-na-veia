@@ -4034,13 +4034,6 @@ export default function AulaConcordancia({
 
           <ModuleConsolidation
             index={1}
-            video={{
-              videoId: "concordancia-verbal-v4",
-              title: "Concordância Verbal: O Eixo Petrobras",
-              duration: "12:30",
-              thumbnail:
-                "/assets/images/portugues/concordancia/thumb_verbal.png",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Concordância Verbal",
@@ -4093,17 +4086,16 @@ export default function AulaConcordancia({
                 </>
               ),
             }}
-            audio={{
-              audioUrl:
-                "/assets/audio/portugues/concordancia/resumo_verbal.mp3",
-              titulo: "Podcast: O Verbo na Petrobras",
-              artista: "Dossiê Petrobras",
-              capaUrl:
-                "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
-              lyrics:
-                "[Host] - Atenção concurseiro, o verbo 'haver' no sentido de existir não tem plural...",
-            }}
             variant={mv[1] || "blue"}
+          podcast={{
+            aulaId: "concordancia",
+            aulaTitulo: "Concordancia",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           {/* QUIZ DIAGNÓSTICO */}
@@ -4746,13 +4738,6 @@ export default function AulaConcordancia({
 
           <ModuleConsolidation
             index={2}
-            video={{
-              videoId: "concordancia-nominal-v4",
-              title: "Concordância Nominal: O Reino do Substantivo",
-              duration: "10:15",
-              thumbnail:
-                "/assets/images/portugues/concordancia/thumb_nominal.png",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Concordância Nominal",
@@ -4798,12 +4783,16 @@ export default function AulaConcordancia({
                 </>
               ),
             }}
-            audio={{
-              audioUrl: "",
-              titulo: "Concordância Nominal",
-              artista: "Petrobras Quest",
-            }}
             variant={mv[2] || "emerald"}
+          podcast={{
+            aulaId: "concordancia",
+            aulaTitulo: "Concordancia",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           {/* QUIZ MODULE 2 */}
@@ -5593,13 +5582,6 @@ export default function AulaConcordancia({
 
           <ModuleConsolidation
             index={4}
-            video={{
-              videoId: "avancado-concordancia-v4",
-              title: "Casos de Elite: Porcentagens e Relativos",
-              duration: "14:20",
-              thumbnail:
-                "/assets/images/portugues/concordancia/thumb_avancado.png",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Casos de Avançado",
@@ -5648,12 +5630,16 @@ export default function AulaConcordancia({
                 </>
               ),
             }}
-            audio={{
-              audioUrl: "",
-              titulo: "Casos de Avançado",
-              artista: "Petrobras Quest",
-            }}
             variant={mv[4] || "amber"}
+          podcast={{
+            aulaId: "concordancia",
+            aulaTitulo: "Concordancia",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <section id="quiz-modulo-4" className="mt-16">
@@ -5832,13 +5818,6 @@ export default function AulaConcordancia({
 
           <ModuleConsolidation
             index={5}
-            video={{
-              videoId: "laboratorio-cesgranrio-v4",
-              title: "Laboratório Final: O Padrão Petrobras",
-              duration: "18:45",
-              thumbnail:
-                "/assets/images/portugues/concordancia/thumb_laboratorio.png",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Laboratório Cesgranrio",
@@ -5875,12 +5854,16 @@ export default function AulaConcordancia({
                 </>
               ),
             }}
-            audio={{
-              audioUrl: "",
-              titulo: "Laboratório Cesgranrio",
-              artista: "Petrobras Quest",
-            }}
             variant={mv[5] || "rose"}
+          podcast={{
+            aulaId: "concordancia",
+            aulaTitulo: "Concordancia",
+            materia: "Português",
+            materiaId: "portugues",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
           <section id="quiz-modulo-5" className="mt-16">

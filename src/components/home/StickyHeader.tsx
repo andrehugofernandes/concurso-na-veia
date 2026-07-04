@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { AuthThemeToggle } from "../auth/AuthThemeToggle";
@@ -8,18 +8,18 @@ import PetrobrasLogo from "../PetrobrasLogo";
 import { LuLayoutGrid, LuX, LuArrowRight } from "react-icons/lu";
 
 const NAV_LINKS = [
-  { href: "#cursos", label: "Cursos" },
-  { href: "#resultados", label: "Resultados" },
-  { href: "#pricing", label: "Planos" },
+  { href: "/#cursos", label: "Cursos" },
+  { href: "/#resultados", label: "Resultados" },
+  { href: "/#pricing", label: "Planos" },
 ];
 
 const ALL_LINKS = [
-  { href: "#cursos", label: "Cursos" },
-  { href: "#demo", label: "Demonstração" },
-  { href: "#petrolingo", label: "PetroLingo" },
-  { href: "#resultados", label: "Resultados" },
-  { href: "#depoimentos", label: "Depoimentos" },
-  { href: "#pricing", label: "Planos" },
+  { href: "/#cursos", label: "Cursos" },
+  { href: "/#demo", label: "Demonstração" },
+  { href: "/#petrolingo", label: "PetroLingo" },
+  { href: "/#resultados", label: "Resultados" },
+  { href: "/#depoimentos", label: "Depoimentos" },
+  { href: "/#pricing", label: "Planos" },
 ];
 
 interface StickyHeaderProps {
@@ -30,6 +30,22 @@ export default function StickyHeader({ alwaysVisible = false }: StickyHeaderProp
   const [isVisible, setIsVisible] = useState(alwaysVisible);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMenuOpen && 
+        menuRef.current && 
+        !menuRef.current.contains(event.target as Node) &&
+        !(event.target as Element).closest('#sticky-menu-toggle-desktop, #sticky-menu-toggle-mobile')
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isMenuOpen]);
 
   useEffect(() => {
     if (alwaysVisible) {
@@ -92,6 +108,7 @@ export default function StickyHeader({ alwaysVisible = false }: StickyHeaderProp
 
               {/* Menu Button (Desktop/Tablet Only) */}
               <button
+                id="sticky-menu-toggle-desktop"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="hidden md:flex items-center gap-2 px-3 py-1.5 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
               >
@@ -147,6 +164,7 @@ export default function StickyHeader({ alwaysVisible = false }: StickyHeaderProp
 
             {/* MOBILE ONLY TOGGLE (Aligned to the right) */}
             <button
+              id="sticky-menu-toggle-mobile"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden w-9 h-9 rounded-xl flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors"
               aria-label="Menu"
@@ -158,6 +176,7 @@ export default function StickyHeader({ alwaysVisible = false }: StickyHeaderProp
             <AnimatePresence>
               {isMenuOpen && (
                 <motion.div
+                  ref={menuRef}
                   key="mobile-menu"
                   initial={{ opacity: 0, y: -8, scale: 0.97 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}

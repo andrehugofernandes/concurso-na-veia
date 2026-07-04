@@ -316,11 +316,6 @@ export default function AulaProgressoesPg({
         <ModuleConsolidation
             index={2}
             variant={mv[1]}
-            video={{
-              videoId: "gZDzgZxrvAo",
-              title: "PG: Conceitos Fundamentais",
-              duration: "10:20",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Progressões Geométricas",
@@ -358,11 +353,15 @@ export default function AulaProgressoesPg({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "PG: Conceitos Fundamentais",
-              artista: "Prof. Progressões",
-            }}
+            podcast={{
+            aulaId: "progressoespg",
+            aulaTitulo: "Progressoes Pg",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -512,11 +511,6 @@ export default function AulaProgressoesPg({
         <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            video={{
-              videoId: "2Aq7p7-VgEU",
-              title: "PG: Termo Geral Explicado",
-              duration: "12:15",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Progressões Geométricas",
@@ -554,11 +548,15 @@ export default function AulaProgressoesPg({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-              titulo: "PG: Termo Geral",
-              artista: "Prof. Progressões",
-            }}
+            podcast={{
+            aulaId: "progressoespg",
+            aulaTitulo: "Progressoes Pg",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -716,11 +714,6 @@ export default function AulaProgressoesPg({
         <ModuleConsolidation
             index={2}
             variant={mv[3]}
-            video={{
-              videoId: "4KzE9R6zWzY",
-              title: "PG: Soma Finita",
-              duration: "11:50",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Progressões Geométricas",
@@ -760,11 +753,15 @@ export default function AulaProgressoesPg({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-              titulo: "PG: Soma Finita",
-              artista: "Prof. Progressões",
-            }}
+            podcast={{
+            aulaId: "progressoespg",
+            aulaTitulo: "Progressoes Pg",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -934,11 +931,6 @@ export default function AulaProgressoesPg({
         <ModuleConsolidation
             index={2}
             variant={mv[4]}
-            video={{
-              videoId: "9KZg0LdwAg4",
-              title: "PG Infinita: Série Convergente",
-              duration: "13:40",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Progressões Geométricas",
@@ -976,11 +968,15 @@ export default function AulaProgressoesPg({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-              titulo: "PG Infinita: Série Geométrica",
-              artista: "Prof. Progressões",
-            }}
+            podcast={{
+            aulaId: "progressoespg",
+            aulaTitulo: "Progressoes Pg",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1137,11 +1133,6 @@ export default function AulaProgressoesPg({
         <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            video={{
-              videoId: "7Pg5MZV2XqU",
-              title: "PG: Propriedades Especiais",
-              duration: "10:50",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Progressões Geométricas",
@@ -1180,11 +1171,15 @@ export default function AulaProgressoesPg({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-              titulo: "PG: Propriedades",
-              artista: "Prof. Progressões",
-            }}
+            podcast={{
+            aulaId: "progressoespg",
+            aulaTitulo: "Progressoes Pg",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1349,11 +1344,6 @@ export default function AulaProgressoesPg({
         <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            video={{
-              videoId: "tZzgzUaHdCw",
-              title: "Crescimento Exponencial: Aplicações",
-              duration: "12:25",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Progressões Geométricas",
@@ -1391,11 +1381,15 @@ export default function AulaProgressoesPg({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-              titulo: "Crescimento Exponencial",
-              artista: "Prof. Progressões",
-            }}
+            podcast={{
+            aulaId: "progressoespg",
+            aulaTitulo: "Progressoes Pg",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1562,11 +1556,6 @@ export default function AulaProgressoesPg({
         <ModuleConsolidation
             index={2}
             variant="indigo"
-            video={{
-              videoId: "5Rw9KzK3jqA",
-              title: "Juros Compostos: Progressão Geométrica",
-              duration: "13:10",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Progressões Geométricas",
@@ -1605,11 +1594,15 @@ export default function AulaProgressoesPg({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-              titulo: "Juros Compostos: Financeiro",
-              artista: "Prof. Progressões",
-            }}
+            podcast={{
+            aulaId: "progressoespg",
+            aulaTitulo: "Progressoes Pg",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1771,11 +1764,6 @@ export default function AulaProgressoesPg({
         <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            video={{
-              videoId: "2xQr4vZ5M1I",
-              title: "PA vs PG: Comparação Completa",
-              duration: "11:30",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Progressões Geométricas",
@@ -1815,11 +1803,15 @@ export default function AulaProgressoesPg({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-              titulo: "PA vs PG: Comparação",
-              artista: "Prof. Progressões",
-            }}
+            podcast={{
+            aulaId: "progressoespg",
+            aulaTitulo: "Progressoes Pg",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1988,11 +1980,6 @@ export default function AulaProgressoesPg({
         <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "4KzE9R6zWzY",
-              title: "PG na Petrobras: Produção e Reservas",
-              duration: "12:40",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Progressões Geométricas",
@@ -2030,11 +2017,15 @@ export default function AulaProgressoesPg({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-              titulo: "PG na Petrobras",
-              artista: "Prof. Progressões",
-            }}
+            podcast={{
+            aulaId: "progressoespg",
+            aulaTitulo: "Progressoes Pg",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo

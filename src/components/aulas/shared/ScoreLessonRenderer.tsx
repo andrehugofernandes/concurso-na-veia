@@ -386,6 +386,16 @@ export default function ScoreLessonRenderer({
               content: conteudoJson?.estruturar?.resumos?.join("\n\n") || "Leia o resumo para consolidar seu aprendizado."
             }}
             audio={conteudoJson?.estruturar?.audio}
+          
+            podcast={{
+              aulaId: "scorelessonrenderer",
+              aulaTitulo: "Score Lesson Renderer",
+              materia: "shared",
+              materiaId: "shared",
+              moduloNumero: 1,
+              moduloTitulo: "Módulo 1",
+              conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+            }}
           />
 
           <div className="flex justify-center pt-6">

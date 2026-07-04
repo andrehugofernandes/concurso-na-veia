@@ -167,7 +167,7 @@ export default function AulaCircuitosCcca(props: AulaProps) {
                   </span>
                   <div className="space-y-1">
                     <h5 className="font-bold text-foreground text-xl">{item.title}</h5>
-                    <p className="text-lg text-muted-foreground leading-relaxed">{item.text}</p>
+                    <p className="text-lg text-muted-foreground leading-relaxed">{item.valor}</p>
                   </div>
                 </div>
               ))}
@@ -282,11 +282,6 @@ export default function AulaCircuitosCcca(props: AulaProps) {
         <ModuleConsolidation
           index={modulo.numero}
           variant={variantColor}
-          video={{
-            videoId: modulo.consolidation.videoId,
-            title: modulo.consolidation.videoTitle,
-            duration: modulo.consolidation.videoDuration
-          }}
           resumoVisual={{
             moduloNome: `Módulo ${modulo.numero}`,
             tituloAula: "Circuitos CC/CA",
@@ -304,7 +299,16 @@ export default function AulaCircuitosCcca(props: AulaProps) {
               </div>
             )
           }}
-        />
+        podcast={{
+            aulaId: "circuitosccca",
+            aulaTitulo: "Circuitos Ccca",
+            materia: "Específicas",
+            materiaId: "especificas",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
         {/* Seção 5: Quiz de Módulo */}
         <QuizInterativo

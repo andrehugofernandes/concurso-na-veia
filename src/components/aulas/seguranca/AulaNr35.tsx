@@ -146,11 +146,6 @@ export default function AulaNr35({
 <ModuleConsolidation 
             index={1}
             variant="amber"
-            video={{
-                videoId: "dQw4w9WgXcQ",
-                title: "Princípios da NR-35",
-                duration: "10:30"
-            }}
             resumoVisual={{
                 moduloNome: "Módulo 1",
                 tituloAula: "Gestão NR-35",
@@ -164,12 +159,16 @@ export default function AulaNr35({
                 title: "O Mnemônico de Planejamento",
                 content: <p className="text-lg italic">"Eliminar &rarr; Prevenir &rarr; Mitigar." Essa é a ordem de sobrevivência!</p>
             }}
-            audio={{
-                audioUrl: "/audio/nr35-m1.mp3",
-                titulo: "Gestão de Segurança",
-                artista: "Técnico Petrobras"
-            }}
-        />
+            podcast={{
+            aulaId: "nr35",
+            aulaTitulo: "Nr35",
+            materia: "Segurança do Trabalho",
+            materiaId: "seguranca",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                 <QuizInterativo 
             questoes={QUIZ_M1_NR35_GESTAO}
@@ -259,11 +258,6 @@ export default function AulaNr35({
 <ModuleConsolidation 
             index={3}
             variant="rose"
-            video={{
-                videoId: "dQw4w9WgXcQ",
-                title: "Inspecionando EPIs",
-                duration: "14:45"
-            }}
             resumoVisual={{
                 moduloNome: "Módulo 3",
                 tituloAula: "EPI e EPC",
@@ -277,12 +271,16 @@ export default function AulaNr35({
                 title: "A ZQL (Zona de Queda Livre)",
                 content: <p className="text-lg">"Antes de subir, calcule se o chão vai te atingir!" ZQL = Comprimento do Talabarte + Absorvedor Aberto + Altura do Trabalhador + 1m de Segurança.</p>
             }}
-            audio={{
-                audioUrl: "/audio/nr35-m3.mp3",
-                titulo: "Sistemas Anti-Queda",
-                artista: "Especialista em Segurança"
-            }}
-        />
+            podcast={{
+            aulaId: "nr35",
+            aulaTitulo: "Nr35",
+            materia: "Segurança do Trabalho",
+            materiaId: "seguranca",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                 <QuizInterativo 
             questoes={QUIZ_M3_NR35_SISTEMAS}
@@ -337,11 +335,6 @@ export default function AulaNr35({
 <ModuleConsolidation 
             index={5}
             variant="amber"
-            video={{
-                videoId: "dQw4w9WgXcQ",
-                title: "Segurança em Escadas Industriais",
-                duration: "18:00"
-            }}
             resumoVisual={{
                 moduloNome: "Módulo 5",
                 tituloAula: "Anexos Especiais",
@@ -355,12 +348,16 @@ export default function AulaNr35({
                 title: "A Regra dos 3 Pontos",
                 content: <p className="text-lg italic">"Duas mãos e um pé, ou dois pés e uma mão. Na escada, nunca se solta do corrimão!"</p>
             }}
-            audio={{
-                audioUrl: "/audio/nr35-m5.mp3",
-                titulo: "Acessos Especializados",
-                artista: "Especialista em Segurança"
-            }}
-        />
+            podcast={{
+            aulaId: "nr35",
+            aulaTitulo: "Nr35",
+            materia: "Segurança do Trabalho",
+            materiaId: "seguranca",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
                 <QuizInterativo 
             questoes={QUIZ_M5_NR35_ACESSOS}

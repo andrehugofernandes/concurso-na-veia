@@ -568,22 +568,21 @@ export default function AulaVocabulary({
                 </div>
               ),
             }}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Technical English Masterclass",
-              duration: "12:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
             }}
-            audio={{
-              audioUrl: "https://www.google.com",
-              titulo: "Podclass Vocabulário",
-              artista: "Professor de Inglês",
-            }}
+            podcast={{
+            aulaId: "vocabulary",
+            aulaTitulo: "Vocabulary",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -989,22 +988,21 @@ export default function AulaVocabulary({
                 </div>
               ),
             }}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Technical English Masterclass",
-              duration: "12:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
             }}
-            audio={{
-              audioUrl: "https://www.google.com",
-              titulo: "Podclass Vocabulário",
-              artista: "Professor de Inglês",
-            }}
+            podcast={{
+            aulaId: "vocabulary",
+            aulaTitulo: "Vocabulary",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1420,22 +1418,21 @@ export default function AulaVocabulary({
                 </div>
               ),
             }}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Technical English Masterclass",
-              duration: "12:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
             }}
-            audio={{
-              audioUrl: "https://www.google.com",
-              titulo: "Podclass Vocabulário",
-              artista: "Professor de Inglês",
-            }}
+            podcast={{
+            aulaId: "vocabulary",
+            aulaTitulo: "Vocabulary",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -1854,22 +1851,21 @@ export default function AulaVocabulary({
                 </div>
               ),
             }}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Technical English Masterclass",
-              duration: "12:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
             }}
-            audio={{
-              audioUrl: "https://www.google.com",
-              titulo: "Podclass Vocabulário",
-              artista: "Professor de Inglês",
-            }}
+            podcast={{
+            aulaId: "vocabulary",
+            aulaTitulo: "Vocabulary",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -2285,22 +2281,21 @@ export default function AulaVocabulary({
                 </div>
               ),
             }}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Technical English Masterclass",
-              duration: "12:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
             }}
-            audio={{
-              audioUrl: "https://www.google.com",
-              titulo: "Podclass Vocabulário",
-              artista: "Professor de Inglês",
-            }}
+            podcast={{
+            aulaId: "vocabulary",
+            aulaTitulo: "Vocabulary",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -2708,22 +2703,21 @@ export default function AulaVocabulary({
                 </div>
               ),
             }}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Technical English Masterclass",
-              duration: "12:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
             }}
-            audio={{
-              audioUrl: "https://www.google.com",
-              titulo: "Podclass Vocabulário",
-              artista: "Professor de Inglês",
-            }}
+            podcast={{
+            aulaId: "vocabulary",
+            aulaTitulo: "Vocabulary",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -3139,22 +3133,21 @@ export default function AulaVocabulary({
                 </div>
               ),
             }}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Technical English Masterclass",
-              duration: "12:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
             }}
-            audio={{
-              audioUrl: "https://www.google.com",
-              titulo: "Podclass Vocabulário",
-              artista: "Professor de Inglês",
-            }}
+            podcast={{
+            aulaId: "vocabulary",
+            aulaTitulo: "Vocabulary",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -3575,22 +3568,21 @@ export default function AulaVocabulary({
                 </div>
               ),
             }}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Technical English Masterclass",
-              duration: "12:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
             }}
-            audio={{
-              audioUrl: "https://www.google.com",
-              titulo: "Podclass Vocabulário",
-              artista: "Professor de Inglês",
-            }}
+            podcast={{
+            aulaId: "vocabulary",
+            aulaTitulo: "Vocabulary",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -4115,22 +4107,21 @@ export default function AulaVocabulary({
                 </div>
               ),
             }}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Technical English Masterclass",
-              duration: "12:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
             }}
-            audio={{
-              audioUrl: "https://www.google.com",
-              titulo: "Podclass Vocabulário",
-              artista: "Professor de Inglês",
-            }}
+            podcast={{
+            aulaId: "vocabulary",
+            aulaTitulo: "Vocabulary",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo
@@ -4398,22 +4389,21 @@ export default function AulaVocabulary({
                 </div>
               ),
             }}
-            video={{
-              videoId: "h3S9XW1WzIk",
-              title: "Technical English Masterclass",
-              duration: "12:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: "Inglês Petrobras",
               materia: "Inglês",
               images: [],
             }}
-            audio={{
-              audioUrl: "https://www.google.com",
-              titulo: "Podclass Vocabulário",
-              artista: "Professor de Inglês",
-            }}
+            podcast={{
+            aulaId: "vocabulary",
+            aulaTitulo: "Vocabulary",
+            materia: "Inglês",
+            materiaId: "ingles",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                     <QuizInterativo

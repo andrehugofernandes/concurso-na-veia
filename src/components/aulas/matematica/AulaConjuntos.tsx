@@ -1026,11 +1026,6 @@ export default function AulaConjuntos({
               index={3}
               moduloNumero={1}
               variant={mv[1]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 1",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 1",
                 tituloAula: "Conjuntos",
@@ -1102,13 +1097,16 @@ export default function AulaConjuntos({
                   </>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              podcast={{
+            aulaId: "conjuntos",
+            aulaTitulo: "Conjuntos",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
 
             <QuizInterativo
               questoes={quizFundamentos}
@@ -1477,11 +1475,6 @@ export default function AulaConjuntos({
               index={3}
               moduloNumero={2}
               variant={mv[2]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 2",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 2",
                 tituloAula: "Conjuntos",
@@ -1564,13 +1557,7 @@ export default function AulaConjuntos({
                   </>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              />
 
             <QuizInterativo
               questoes={quizOperacoes}
@@ -1950,11 +1937,6 @@ export default function AulaConjuntos({
               index={3}
               moduloNumero={3}
               variant={mv[3]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 3",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 3",
                 tituloAula: "Conjuntos",
@@ -2037,13 +2019,7 @@ export default function AulaConjuntos({
                   </>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              />
 
             <QuizInterativo
               questoes={quizVenn}
@@ -2348,11 +2324,6 @@ export default function AulaConjuntos({
               index={3}
               moduloNumero={4}
               variant={mv[4]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 4",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 4",
                 tituloAula: "Conjuntos",
@@ -2431,13 +2402,7 @@ export default function AulaConjuntos({
                   </>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              />
 
             <QuizInterativo
               questoes={quizNumericos}
@@ -3253,11 +3218,6 @@ export default function AulaConjuntos({
               index={4}
               moduloNumero={5}
               variant={mv[5]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 5",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 5",
                 tituloAula: "Conjuntos",
@@ -3335,13 +3295,7 @@ export default function AulaConjuntos({
                   </>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              />
 
             <QuizInterativo
               questoes={quizFinal}
@@ -3770,11 +3724,6 @@ export default function AulaConjuntos({
               index={4}
               moduloNumero={6}
               variant={mv[6]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 6",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 6",
                 tituloAula: "Conjuntos",
@@ -3858,13 +3807,7 @@ export default function AulaConjuntos({
                   </>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              />
 
             <QuizInterativo
               questoes={quizInclusaoExclusao}
@@ -4316,11 +4259,6 @@ export default function AulaConjuntos({
               index={4}
               moduloNumero={7}
               variant={mv[7]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 7",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 7",
                 tituloAula: "Conjuntos",
@@ -4406,13 +4344,7 @@ export default function AulaConjuntos({
                   </>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              />
 
             <QuizInterativo
               questoes={quizNumericosBasicos}
@@ -4814,11 +4746,6 @@ export default function AulaConjuntos({
               index={4}
               moduloNumero={8}
               variant={mv[8]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 8",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 8",
                 tituloAula: "Conjuntos",
@@ -4899,13 +4826,7 @@ export default function AulaConjuntos({
                   </>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              />
 
             <QuizInterativo
               questoes={quizIrracReais}
@@ -5237,11 +5158,6 @@ export default function AulaConjuntos({
               index={4}
               moduloNumero={9}
               variant={mv[9]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 9",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 9",
                 tituloAula: "Conjuntos",
@@ -5326,13 +5242,7 @@ export default function AulaConjuntos({
                   </>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              />
 
             <QuizInterativo
               questoes={quizDeMorgan}
@@ -5780,11 +5690,6 @@ export default function AulaConjuntos({
               index={4}
               moduloNumero={10}
               variant={mv[10]}
-              video={{
-                videoId: "h3S9XW1WzIk",
-                title: "Revisão do Módulo 10",
-                duration: "8:30",
-              }}
               resumoVisual={{
                 moduloNome: "Módulo 10",
                 tituloAula: "Conjuntos",
@@ -5868,13 +5773,7 @@ export default function AulaConjuntos({
                   </>
                 ),
               }}
-              audio={{
-                audioUrl:
-                  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                titulo: "Rítmo do Aprendizado",
-                artista: "Prof. Musical",
-              }}
-            />
+              />
 
             <QuizInterativo
               questoes={quizSimulado}

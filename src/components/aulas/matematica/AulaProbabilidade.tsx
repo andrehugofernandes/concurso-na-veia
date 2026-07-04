@@ -309,11 +309,6 @@ export default function AulaProbabilidade({
         <ModuleConsolidation
             index={2}
             variant={mv[1]}
-            video={{
-              videoId: "gZDzgZxrvAo",
-              title: "Probabilidade: Fundamentos",
-              duration: "10:15",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Probabilidade",
@@ -351,11 +346,15 @@ export default function AulaProbabilidade({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-              titulo: "Probabilidade: Fundamentos",
-              artista: "Prof. Probabilidades",
-            }}
+            podcast={{
+            aulaId: "probabilidade",
+            aulaTitulo: "Probabilidade",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -504,11 +503,6 @@ export default function AulaProbabilidade({
         <ModuleConsolidation
             index={2}
             variant={mv[2]}
-            video={{
-              videoId: "2Aq7p7-VgEU",
-              title: "Lei de Laplace Explicada",
-              duration: "11:00",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Probabilidade",
@@ -547,11 +541,15 @@ export default function AulaProbabilidade({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-              titulo: "Lei de Laplace",
-              artista: "Prof. Probabilidades",
-            }}
+            podcast={{
+            aulaId: "probabilidade",
+            aulaTitulo: "Probabilidade",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -702,11 +700,6 @@ export default function AulaProbabilidade({
         <ModuleConsolidation
             index={2}
             variant={mv[3]}
-            video={{
-              videoId: "4KzE9R6zWzY",
-              title: "União e Interseção de Eventos",
-              duration: "12:10",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Probabilidade",
@@ -746,11 +739,15 @@ export default function AulaProbabilidade({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-              titulo: "União e Interseção",
-              artista: "Prof. Probabilidades",
-            }}
+            podcast={{
+            aulaId: "probabilidade",
+            aulaTitulo: "Probabilidade",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -897,11 +894,6 @@ export default function AulaProbabilidade({
         <ModuleConsolidation
             index={2}
             variant={mv[4]}
-            video={{
-              videoId: "7Pg5MZV2XqU",
-              title: "Probabilidade Condicional",
-              duration: "13:00",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Probabilidade",
@@ -941,11 +933,15 @@ export default function AulaProbabilidade({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-              titulo: "Probabilidade Condicional",
-              artista: "Prof. Probabilidades",
-            }}
+            podcast={{
+            aulaId: "probabilidade",
+            aulaTitulo: "Probabilidade",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1085,11 +1081,6 @@ export default function AulaProbabilidade({
         <ModuleConsolidation
             index={2}
             variant={mv[5]}
-            video={{
-              videoId: "tZzgzUaHdCw",
-              title: "Distribuição Binomial",
-              duration: "12:30",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Probabilidade",
@@ -1129,11 +1120,15 @@ export default function AulaProbabilidade({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-              titulo: "Distribuição Binomial",
-              artista: "Prof. Probabilidades",
-            }}
+            podcast={{
+            aulaId: "probabilidade",
+            aulaTitulo: "Probabilidade",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1277,11 +1272,6 @@ export default function AulaProbabilidade({
         <ModuleConsolidation
             index={2}
             variant={mv[6]}
-            video={{
-              videoId: "9KZg0LdwAg4",
-              title: "Evento Complementar",
-              duration: "9:45",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Probabilidade",
@@ -1321,11 +1311,15 @@ export default function AulaProbabilidade({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-              titulo: "Evento Complementar",
-              artista: "Prof. Probabilidades",
-            }}
+            podcast={{
+            aulaId: "probabilidade",
+            aulaTitulo: "Probabilidade",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1474,11 +1468,6 @@ export default function AulaProbabilidade({
         <ModuleConsolidation
             index={2}
             variant="indigo"
-            video={{
-              videoId: "5Rw9KzK3jqA",
-              title: "Probabilidade Geométrica",
-              duration: "11:20",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Probabilidade",
@@ -1518,11 +1507,15 @@ export default function AulaProbabilidade({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-              titulo: "Probabilidade Geométrica",
-              artista: "Prof. Probabilidades",
-            }}
+            podcast={{
+            aulaId: "probabilidade",
+            aulaTitulo: "Probabilidade",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1671,11 +1664,6 @@ export default function AulaProbabilidade({
         <ModuleConsolidation
             index={2}
             variant={mv[8]}
-            video={{
-              videoId: "2xQr4vZ5M1I",
-              title: "Independência de Eventos",
-              duration: "10:50",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Probabilidade",
@@ -1715,11 +1703,15 @@ export default function AulaProbabilidade({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-              titulo: "Independência de Eventos",
-              artista: "Prof. Probabilidades",
-            }}
+            podcast={{
+            aulaId: "probabilidade",
+            aulaTitulo: "Probabilidade",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo
@@ -1865,11 +1857,6 @@ export default function AulaProbabilidade({
         <ModuleConsolidation
             index={2}
             variant={mv[9]}
-            video={{
-              videoId: "4KzE9R6zWzY",
-              title: "Engenharia de Riscos",
-              duration: "13:15",
-            }}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Probabilidade",
@@ -1909,11 +1896,15 @@ export default function AulaProbabilidade({
                 </div>
               ),
             }}
-            audio={{
-              audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-              titulo: "Engenharia de Riscos",
-              artista: "Prof. Probabilidades",
-            }}
+            podcast={{
+            aulaId: "probabilidade",
+            aulaTitulo: "Probabilidade",
+            materia: "Matemática",
+            materiaId: "matematica",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
           />
 
                       <QuizInterativo

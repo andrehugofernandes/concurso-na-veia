@@ -275,7 +275,6 @@ export default function AulaGestaoQualidadeSuprimento({
 
         <ModuleConsolidation
           index={1} variant={mv[1]}
-          video={{ videoId: "Q1", title: "Fundamentos da Qualidade", duration: "12:00" }}
           resumoVisual={{ moduloNome: "M1", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Ciclo PDCA", type: "Diagrama", placeholderColor: "bg-blue-500/20" }, { title: "Custos da Qualidade", type: "Gráfico", placeholderColor: "bg-amber-500/20" }] }}
           sinteseEstrategica={{
             title: "O Macete do 'PDCA'",
@@ -309,8 +308,16 @@ export default function AulaGestaoQualidadeSuprimento({
               </>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", titulo: "Podcast: Fundamentos", artista: "Prof. Qualidade" }}
-        />
+          podcast={{
+            aulaId: "gestaoqualidadesuprimento",
+            aulaTitulo: "Gestao Qualidade Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo questoes={mapQuizQuestions("modulo-1")} titulo="QUIZ: Fundamentos da Qualidade" numero={1} variant={mv[1]} onComplete={(s) => handleModuleComplete("modulo-1", s)} />
       </TabsContent>
 
@@ -439,7 +446,6 @@ export default function AulaGestaoQualidadeSuprimento({
 
         <ModuleConsolidation
           index={2} variant={mv[2]}
-          video={{ videoId: "Q2", title: "As 4 Eras da Qualidade", duration: "10:00" }}
           resumoVisual={{ moduloNome: "M2", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Timeline Eras", type: "Timeline", placeholderColor: "bg-amber-500/20" }, { title: "Evolução do Foco", type: "Diagrama", placeholderColor: "bg-blue-500/20" }] }}
           sinteseEstrategica={{
             title: "O Macete do 'ICGT'",
@@ -457,8 +463,16 @@ export default function AulaGestaoQualidadeSuprimento({
               </>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", titulo: "Podcast: Eras", artista: "Prof. Qualidade" }}
-        />
+          podcast={{
+            aulaId: "gestaoqualidadesuprimento",
+            aulaTitulo: "Gestao Qualidade Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo questoes={mapQuizQuestions("modulo-2")} titulo="QUIZ: Eras da Qualidade" numero={2} variant={mv[2]} onComplete={(s) => handleModuleComplete("modulo-2", s)} />
       </TabsContent>
 
@@ -588,7 +602,6 @@ export default function AulaGestaoQualidadeSuprimento({
 
         <ModuleConsolidation
           index={3} variant={mv[3]}
-          video={{ videoId: "Q3", title: "Os Gurus da Qualidade", duration: "15:00" }}
           resumoVisual={{ moduloNome: "M3", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Tabela Gurus", type: "Tabela", placeholderColor: "bg-emerald-500/20" }, { title: "Diagrama Ishikawa", type: "Diagrama", placeholderColor: "bg-amber-500/20" }] }}
           sinteseEstrategica={{
             title: "O Macete do 'Guru Certo'",
@@ -604,8 +617,16 @@ export default function AulaGestaoQualidadeSuprimento({
               </>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", titulo: "Podcast: Os Mestres", artista: "Prof. Qualidade" }}
-        />
+          podcast={{
+            aulaId: "gestaoqualidadesuprimento",
+            aulaTitulo: "Gestao Qualidade Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo questoes={mapQuizQuestions("modulo-3")} titulo="QUIZ: Gurus da Qualidade" numero={3} variant={mv[3]} onComplete={(s) => handleModuleComplete("modulo-3", s)} />
       </TabsContent>
 
@@ -738,7 +759,6 @@ export default function AulaGestaoQualidadeSuprimento({
 
         <ModuleConsolidation
           index={4} variant={mv[4]}
-          video={{ videoId: "Q4", title: "Ferramentas da Qualidade", duration: "18:00" }}
           resumoVisual={{ moduloNome: "M4", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "7 Ferramentas", type: "Dashboard", placeholderColor: "bg-rose-500/20" }, { title: "6M Ishikawa", type: "Diagrama", placeholderColor: "bg-blue-500/20" }] }}
           sinteseEstrategica={{
             title: "O Macete dos '6M'",
@@ -754,8 +774,16 @@ export default function AulaGestaoQualidadeSuprimento({
               </>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", titulo: "Podcast: Ferramentas", artista: "Prof. Qualidade" }}
-        />
+          podcast={{
+            aulaId: "gestaoqualidadesuprimento",
+            aulaTitulo: "Gestao Qualidade Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo questoes={mapQuizQuestions("modulo-4")} titulo="QUIZ: Ferramentas da Qualidade" numero={4} variant={mv[4]} onComplete={(s) => handleModuleComplete("modulo-4", s)} />
       </TabsContent>
 
@@ -872,7 +900,6 @@ export default function AulaGestaoQualidadeSuprimento({
 
         <ModuleConsolidation
           index={5} variant={mv[5]}
-          video={{ videoId: "Q5", title: "Normas ISO e Certificação", duration: "14:00" }}
           resumoVisual={{ moduloNome: "M5", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Família ISO", type: "Selo", placeholderColor: "bg-blue-500/20" }, { title: "SGI", type: "Diagrama", placeholderColor: "bg-emerald-500/20" }] }}
           sinteseEstrategica={{
             title: "O Macete do '9-14-45'",
@@ -888,8 +915,16 @@ export default function AulaGestaoQualidadeSuprimento({
               </>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", titulo: "Podcast: ISO", artista: "Prof. Qualidade" }}
-        />
+          podcast={{
+            aulaId: "gestaoqualidadesuprimento",
+            aulaTitulo: "Gestao Qualidade Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo questoes={mapQuizQuestions("modulo-5")} titulo="QUIZ: Normas ISO" numero={5} variant={mv[5]} onComplete={(s) => handleModuleComplete("modulo-5", s)} />
       </TabsContent>
 
@@ -1004,7 +1039,6 @@ export default function AulaGestaoQualidadeSuprimento({
 
         <ModuleConsolidation
           index={6} variant={mv[6]}
-          video={{ videoId: "Q6", title: "Six Sigma e Lean", duration: "16:00" }}
           resumoVisual={{ moduloNome: "M6", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "DMAIC", type: "Infográfico", placeholderColor: "bg-blue-500/20" }, { title: "7 Desperdícios", type: "Diagrama", placeholderColor: "bg-amber-500/20" }] }}
           sinteseEstrategica={{
             title: "O Macete do 'DMAIC'",
@@ -1020,8 +1054,16 @@ export default function AulaGestaoQualidadeSuprimento({
               </>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", titulo: "Podcast: Lean Sigma", artista: "Prof. Qualidade" }}
-        />
+          podcast={{
+            aulaId: "gestaoqualidadesuprimento",
+            aulaTitulo: "Gestao Qualidade Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo questoes={mapQuizQuestions("modulo-6")} titulo="QUIZ: Six Sigma e Lean" numero={6} variant={mv[6]} onComplete={(s) => handleModuleComplete("modulo-6", s)} />
       </TabsContent>
 
@@ -1135,7 +1177,6 @@ export default function AulaGestaoQualidadeSuprimento({
 
         <ModuleConsolidation
           index={7} variant={mv[7]}
-          video={{ videoId: "Q7", title: "CEP e Cartas de Controle", duration: "14:00" }}
           resumoVisual={{ moduloNome: "M7", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Carta de Controle", type: "Gráfico", placeholderColor: "bg-amber-500/20" }, { title: "Cp/Cpk", type: "Fórmula", placeholderColor: "bg-blue-500/20" }] }}
           sinteseEstrategica={{
             title: "O Macete do 'LSC-LIC'",
@@ -1151,8 +1192,16 @@ export default function AulaGestaoQualidadeSuprimento({
               </>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", titulo: "Podcast: CEP", artista: "Prof. Qualidade" }}
-        />
+          podcast={{
+            aulaId: "gestaoqualidadesuprimento",
+            aulaTitulo: "Gestao Qualidade Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo questoes={mapQuizQuestions("modulo-7")} titulo="QUIZ: Controle Estatístico" numero={7} variant={mv[7]} onComplete={(s) => handleModuleComplete("modulo-7", s)} />
       </TabsContent>
 
@@ -1265,7 +1314,6 @@ export default function AulaGestaoQualidadeSuprimento({
 
         <ModuleConsolidation
           index={8} variant={mv[8]}
-          video={{ videoId: "Q8", title: "Auditoria e Conformidade", duration: "12:00" }}
           resumoVisual={{ moduloNome: "M8", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "Tipos de Auditoria", type: "Diagrama", placeholderColor: "bg-emerald-500/20" }, { title: "Não Conformidades", type: "Tabela", placeholderColor: "bg-rose-500/20" }] }}
           sinteseEstrategica={{
             title: "O Macete do '1-2-3'",
@@ -1281,8 +1329,16 @@ export default function AulaGestaoQualidadeSuprimento({
               </>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", titulo: "Podcast: Auditoria", artista: "Prof. Qualidade" }}
-        />
+          podcast={{
+            aulaId: "gestaoqualidadesuprimento",
+            aulaTitulo: "Gestao Qualidade Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo questoes={mapQuizQuestions("modulo-8")} titulo="QUIZ: Auditoria" numero={8} variant={mv[8]} onComplete={(s) => handleModuleComplete("modulo-8", s)} />
       </TabsContent>
 
@@ -1397,7 +1453,6 @@ export default function AulaGestaoQualidadeSuprimento({
 
         <ModuleConsolidation
           index={9} variant={mv[9]}
-          video={{ videoId: "Q9", title: "Qualidade na Petrobras", duration: "10:00" }}
           resumoVisual={{ moduloNome: "M9", tituloAula: "Qualidade", materia: "Suprimento", images: [{ title: "SGI Petrobras", type: "Diagrama", placeholderColor: "bg-blue-500/20" }, { title: "SMS", type: "Infográfico", placeholderColor: "bg-emerald-500/20" }] }}
           sinteseEstrategica={{
             title: "O Macete do 'SMS'",
@@ -1413,8 +1468,16 @@ export default function AulaGestaoQualidadeSuprimento({
               </>
             ),
           }}
-          audio={{ audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", titulo: "Podcast: Petrobras", artista: "Prof. Qualidade" }}
-        />
+          podcast={{
+            aulaId: "gestaoqualidadesuprimento",
+            aulaTitulo: "Gestao Qualidade Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
+          }}
+          />
         <QuizInterativo questoes={mapQuizQuestions("modulo-9")} titulo="QUIZ: Qualidade na Petrobras" numero={9} variant={mv[9]} onComplete={(s) => handleModuleComplete("modulo-9", s)} />
       </TabsContent>
 
@@ -1498,11 +1561,6 @@ export default function AulaGestaoQualidadeSuprimento({
         <ModuleConsolidation
           index={10}
           variant={getModuleVariant(10)}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Revisão e Simulado Geral de Gestão de Qualidade",
-            duration: "25:15"
-          }}
           resumoVisual={{
             moduloNome: "Simulado Final",
             tituloAula: "Gestão de Qualidade",
@@ -1515,12 +1573,16 @@ export default function AulaGestaoQualidadeSuprimento({
             title: "O Ponto Final",
             content: <div className="text-center"><span className="text-6xl my-6 animate-pulse inline-block">🎓 🏆</span><p className="text-lg italic text-center">"O Técnico de Suprimentos zela pela conformidade técnica de cada processo operacional."</p></div>
           }}
-          audio={{
-            audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-            titulo: "Podcast: Sucesso no Concurso Petrobras",
-            artista: "Prof. Suprimentos"
+          podcast={{
+            aulaId: "gestaoqualidadesuprimento",
+            aulaTitulo: "Gestao Qualidade Suprimento",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         <QuizInterativo
           titulo="Simulado Final: Gestão de Qualidade"

@@ -26,7 +26,7 @@ export interface ModuloConteudo {
     listaCorrida?: {
       num: number;
       title: string;
-      text: string;
+      valor: string;
     }[];
   };
   accordion: {
@@ -75,8 +75,8 @@ export const CONTEUDO_CIRCUITOS: ModuloConteudo[] = [
         legenda: "Fig 1. Relação entre tensão, corrente e resistência."
       },
       listaCorrida: [
-        { num: 1, title: "Condutores", text: "Materiais com elétrons livres fracamente ligados ao núcleo (cobre, alumínio)." },
-        { num: 2, title: "Isolantes", text: "Materiais com elétrons fortemente ligados, dificultando a corrente (borracha, vidro)." }
+        { num: 1, title: "Condutores", valor: "Materiais com elétrons livres fracamente ligados ao núcleo (cobre, alumínio)." },
+        { num: 2, title: "Isolantes", valor: "Materiais com elétrons fortemente ligados, dificultando a corrente (borracha, vidro)." }
       ]
     },
     accordion: [

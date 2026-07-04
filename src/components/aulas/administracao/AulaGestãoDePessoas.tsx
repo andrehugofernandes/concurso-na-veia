@@ -377,11 +377,6 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <ModuleConsolidation
           index={4}
           variant="cyan"
-          video={{
-            videoId: "XpREx30z5qI",
-            title: "Gestão de Pessoas - Visão Geral",
-            duration: "12:45",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 1",
             tituloAula: "Gestão de Pessoas",
@@ -414,13 +409,16 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
               </div>
             ),
           }}
-          audio={{
-            audioUrl:
-              "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-            titulo: "Sinfonia da Gestão",
-            artista: "Petrobras Quest",
+          podcast={{
+            aulaId: "gestãodepessoas",
+            aulaTitulo: "Gestão De Pessoas",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 1,
+            moduloTitulo: "Módulo 1",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
@@ -622,11 +620,6 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <ModuleConsolidation
           index={3}
           variant={mv[2]}
-          video={{
-            videoId: "7c-YVly_C9o",
-            title: "Recrutamento e Seleção Estratégico",
-            duration: "15:20",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 2",
             tituloAula: "Gestão de Pessoas",
@@ -659,13 +652,16 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
               </div>
             ),
           }}
-          audio={{
-            audioUrl:
-              "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-            titulo: "O Talento Certo",
-            artista: "Petrobras Quest",
+          podcast={{
+            aulaId: "gestãodepessoas",
+            aulaTitulo: "Gestão De Pessoas",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 2,
+            moduloTitulo: "Módulo 2",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
@@ -854,11 +850,6 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <ModuleConsolidation
           index={3}
           variant={mv[3]}
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Onboarding de Sucesso",
-            duration: "10:15",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 3",
             tituloAula: "Gestão de Pessoas",
@@ -891,13 +882,16 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
               </div>
             ),
           }}
-          audio={{
-            audioUrl:
-              "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-            titulo: "Boas-vindas ao Time",
-            artista: "Petrobras Quest",
+          podcast={{
+            aulaId: "gestãodepessoas",
+            aulaTitulo: "Gestão De Pessoas",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 3,
+            moduloTitulo: "Módulo 3",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
@@ -982,11 +976,6 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <ModuleConsolidation
           index={2}
           variant="cyan"
-          video={{
-            videoId: "7c-YVly_C9o", // Exemplo, idealmente um de capacitação
-            title: "Capacitação Corporativa",
-            duration: "13:10",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 4",
             tituloAula: "Desenvolvimento e Capacitação",
@@ -1032,13 +1021,16 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
               </div>
             ),
           }}
-          audio={{
-            audioUrl:
-              "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-            titulo: "Aprendizado Contínuo",
-            artista: "Petrobras Quest",
+          podcast={{
+            aulaId: "gestãodepessoas",
+            aulaTitulo: "Gestão De Pessoas",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 4,
+            moduloTitulo: "Módulo 4",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
@@ -1131,11 +1123,6 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <ModuleConsolidation
           index={2}
           variant="amber"
-          video={{
-            videoId: "dQw4w9WgXcQ",
-            title: "Performance e Feedback",
-            duration: "11:45",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 5",
             tituloAula: "Avaliação de Desempenho",
@@ -1168,13 +1155,16 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
               </div>
             ),
           }}
-          audio={{
-            audioUrl:
-              "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-            titulo: "Métrica de Sucesso",
-            artista: "Petrobras Quest",
+          podcast={{
+            aulaId: "gestãodepessoas",
+            aulaTitulo: "Gestão De Pessoas",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 5,
+            moduloTitulo: "Módulo 5",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
@@ -1253,11 +1243,6 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <ModuleConsolidation
           index={2}
           variant="rose"
-          video={{
-            videoId: "XpREx30z5qI",
-            title: "Compensação Estratégica",
-            duration: "14:00",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 6",
             tituloAula: "Gestão Salarial",
@@ -1281,13 +1266,16 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
               </p>
             ),
           }}
-          audio={{
-            audioUrl:
-              "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-            titulo: "Valorização Real",
-            artista: "Petrobras Quest",
+          podcast={{
+            aulaId: "gestãodepessoas",
+            aulaTitulo: "Gestão De Pessoas",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 6,
+            moduloTitulo: "Módulo 6",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
@@ -1479,11 +1467,6 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <ModuleConsolidation
           index={3}
           variant={mv[7] as any}
-          video={{
-            videoId: "9H36Gjg5SLM",
-            title: "O Poder da Liderança",
-            duration: "18:30",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 7",
             tituloAula: "Gestão de Pessoas",
@@ -1506,13 +1489,16 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
               </p>
             ),
           }}
-          audio={{
-            audioUrl:
-              "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-            titulo: "Líder Inspirador",
-            artista: "Petrobras Quest",
+          podcast={{
+            aulaId: "gestãodepessoas",
+            aulaTitulo: "Gestão De Pessoas",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 7,
+            moduloTitulo: "Módulo 7",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
@@ -1703,11 +1689,6 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <ModuleConsolidation
           index={3}
           variant={mv[8] as any}
-          video={{
-            videoId: "3tUuW5gV6k0",
-            title: "Resolução de Conflitos",
-            duration: "14:50",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 8",
             tituloAula: "Gestão de Pessoas",
@@ -1730,13 +1711,16 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
               </p>
             ),
           }}
-          audio={{
-            audioUrl:
-              "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-            titulo: "Clima Organizacional",
-            artista: "Petrobras Quest",
+          podcast={{
+            aulaId: "gestãodepessoas",
+            aulaTitulo: "Gestão De Pessoas",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 8,
+            moduloTitulo: "Módulo 8",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
@@ -1917,11 +1901,6 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <ModuleConsolidation
           index={3}
           variant={mv[9] as any}
-          video={{
-            videoId: "fW8amMCVAJQ",
-            title: "Cultura Organizacional",
-            duration: "15:20",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 9",
             tituloAula: "Gestão de Pessoas",
@@ -1943,13 +1922,16 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
               </p>
             ),
           }}
-          audio={{
-            audioUrl:
-              "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-            titulo: "DNA Corporativo",
-            artista: "Petrobras Quest",
+          podcast={{
+            aulaId: "gestãodepessoas",
+            aulaTitulo: "Gestão De Pessoas",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 9,
+            moduloTitulo: "Módulo 9",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
@@ -2135,11 +2117,6 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <ModuleConsolidation
           index={3}
           variant={mv[10] as any}
-          video={{
-            videoId: "hYmX36X6y4M",
-            title: "Future of HR",
-            duration: "20:00",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 10",
             tituloAula: "Gestão de Pessoas",
@@ -2161,13 +2138,16 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
               </p>
             ),
           }}
-          audio={{
-            audioUrl:
-              "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
-            titulo: "Horizontes do RH",
-            artista: "Petrobras Quest",
+          podcast={{
+            aulaId: "gestãodepessoas",
+            aulaTitulo: "Gestão De Pessoas",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 10,
+            moduloTitulo: "Módulo 10",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
         <QuestaoResolvidaStepByStep
@@ -2359,11 +2339,6 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
         <ModuleConsolidation
           index={3}
           variant={mv[11] as any}
-          video={{
-            videoId: "LPT3-fW8y78",
-            title: "RH Petrobras por Dentro",
-            duration: "25:00",
-          }}
           resumoVisual={{
             moduloNome: "Módulo 11",
             tituloAula: "Gestão de Pessoas",
@@ -2385,13 +2360,16 @@ export default function AulaGestãoDePessoas(props: AulaProps) {
               </p>
             ),
           }}
-          audio={{
-            audioUrl:
-              "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3",
-            titulo: "Carreira de Sucesso",
-            artista: "Petrobras Quest",
+          podcast={{
+            aulaId: "gestãodepessoas",
+            aulaTitulo: "Gestão De Pessoas",
+            materia: "Administração",
+            materiaId: "administracao",
+            moduloNumero: 11,
+            moduloTitulo: "Módulo 11",
+            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
           }}
-        />
+          />
 
         <QuizInterativo
           questoes={[
