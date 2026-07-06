@@ -3392,6 +3392,15 @@ export function ModuleConsolidation({
   podcast?: import("./shared/PodcastPlayerCard").PodcastPlayerCardProps;
   moduloNumero?: number;
 }) {
+  const derivedPodcast = podcast || (resumoVisual ? {
+    aulaId: resumoVisual.tituloAula.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "-"),
+    aulaTitulo: resumoVisual.tituloAula,
+    materia: resumoVisual.materia,
+    materiaId: resumoVisual.materia.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "-"),
+    moduloNumero: moduloNumero ?? index,
+    moduloTitulo: resumoVisual.moduloNome || `Módulo ${moduloNumero ?? index}`,
+  } : null);
+
   const tabs = [
     resumoVisual && {
       id: "resumo",
@@ -3419,16 +3428,16 @@ export function ModuleConsolidation({
         </div>
       ),
     },
-    podcast && {
+    derivedPodcast && {
       id: "podcast",
       label: "Podcast do Módulo",
       icon: LuVolume2,
       content: (
         <div className="w-full">
           <PodcastPlayerCard
-            {...podcast}
-            moduloNumero={moduloNumero ?? podcast.moduloNumero ?? index}
-            moduloTitulo={`Módulo ${moduloNumero ?? podcast.moduloNumero ?? index}`}
+            {...derivedPodcast}
+            moduloNumero={moduloNumero ?? derivedPodcast.moduloNumero ?? index}
+            moduloTitulo={`Módulo ${moduloNumero ?? derivedPodcast.moduloNumero ?? index}`}
           />
         </div>
       ),

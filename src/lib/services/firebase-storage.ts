@@ -7,7 +7,7 @@ export interface UploadResult {
 }
 
 // Configuração do Firebase Storage (usa variáveis de ambiente do client SDK)
-const FIREBASE_STORAGE_BUCKET = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'pmjg-apps-dev.firebasestorage.app';
+const FIREBASE_STORAGE_BUCKET = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'passei-no-concurso-b33e0.firebasestorage.app';
 
 // Prefixo do app para isolamento de dados no Storage compartilhado
 // Cada app dentro de pmjg-apps-dev tem seu próprio prefixo
@@ -139,7 +139,6 @@ export async function deleteFromFirebaseStorage(fileUrl: string): Promise<Upload
       method: 'DELETE',
     });
     
-    // 404 é OK (arquivo já foi deletado)
     if (!response.ok && response.status !== 404) {
       const errorText = await response.text();
       return {
@@ -150,7 +149,6 @@ export async function deleteFromFirebaseStorage(fileUrl: string): Promise<Upload
     
     return { success: true };
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.error('[deleteFromFirebaseStorage] Error:', error);
     return {
       success: false,
@@ -158,3 +156,84 @@ export async function deleteFromFirebaseStorage(fileUrl: string): Promise<Upload
     };
   }
 }
+
+/**
+ * Faz upload do áudio de um podcast para o Firebase Storage
+ */
+export async function uploadPodcastToFirebaseStorage(
+  fileBuffer: Buffer,
+  materia: string,
+  aulaId: string,
+  moduloNumero: number
+): Promise<UploadResult> {
+  try {
+    const materiaFolder = materia
+      .toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]/g, '-');
+    
+    const storagePath = `podcasts/${materiaFolder}/${aulaId}/modulo-${moduloNumero}.wav`;
+    const uploadUrl = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_STORAGE_BUCKET}/o?uploadType=media&name=${encodeURIComponent(storagePath)}`;
+
+    console.log('[uploadPodcastToFirebaseStorage] Enviando podcast para:', storagePath);
+
+    const response = await fetch(uploadUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'audio/wav',
+      },
+      body: new Uint8Array(fileBuffer),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('[uploadPodcastToFirebaseStorage] Falha no upload:', response.status, errorText);
+      return {
+        success: false,
+        error: `Erro no upload: ${response.status} - ${errorText}`,
+      };
+    }
+
+    const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_STORAGE_BUCKET}/o/${encodeURIComponent(storagePath)}?alt=media`;
+    console.log('[uploadPodcastToFirebaseStorage] Podcast armazenado com sucesso:', publicUrl);
+
+    return {
+      success: true,
+      url: publicUrl,
+    };
+  } catch (error) {
+    console.error('[uploadPodcastToFirebaseStorage] Erro:', error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Erro no upload do podcast',
+    };
+  }
+}
+
+/**
+ * Obtém a URL pública do podcast no Firebase Storage e verifica se ele existe
+ */
+export async function getPodcastFirebaseUrl(
+  materia: string,
+  aulaId: string,
+  moduloNumero: number
+): Promise<string | null> {
+  try {
+    const materiaFolder = materia
+      .toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]/g, '-');
+    
+    const storagePath = `podcasts/${materiaFolder}/${aulaId}/modulo-${moduloNumero}.wav`;
+    const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_STORAGE_BUCKET}/o/${encodeURIComponent(storagePath)}?alt=media`;
+
+    const res = await fetch(publicUrl, { method: 'HEAD' });
+    if (res.ok) {
+      return publicUrl;
+    }
+  } catch (e) {
+    // Não encontrado
+  }
+  return null;
+}
+

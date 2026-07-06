@@ -87,6 +87,7 @@ PERSONAGENS:
 
 FORMATO DO PODCAST:
 - Duração alvo: 2-3 minutos de fala (~400-600 palavras totais)
+- O roteiro DEVE conter no mínimo 6 a 8 segmentos de fala para cobrir adequadamente o assunto.
 - Estrutura OBRIGATÓRIA:
   1. ABERTURA (~30s): ${APRESENTADORA_NOME} dá as boas-vindas, apresenta o tema e o professor
   2. BLOCO 1 (~40s): Conceito fundamental — o que é, por que importa
@@ -101,7 +102,7 @@ RESTRIÇÕES:
 - Incluir PELO MENOS 1 macete de memorização ou frase mnemônica
 - Tom: Educativo, envolvente, motivacional — como um podcast real de estudo
 - PROIBIDO: Gírias excessivas, humor forçado, autopromoção, referências a redes sociais
-- Cada fala deve ter entre 1 a 4 frases (natural, conversacional)
+- Cada fala deve ter entre 2 a 5 frases completas e ricas.
 
 Retorne APENAS um JSON válido com esta estrutura:
 {
@@ -110,8 +111,12 @@ Retorne APENAS um JSON válido com esta estrutura:
   "professorNome": "${input.professorNome}",
   "apresentadoraNome": "${APRESENTADORA_NOME}",
   "segmentos": [
-    { "speaker": "apresentadora", "texto": "Fala da apresentadora...", "estilo": "acolhedor" },
-    { "speaker": "professor", "texto": "Fala do professor...", "estilo": "explicativo" }
+    { "speaker": "apresentadora", "texto": "Olá! Seja muito bem-vindo...", "estilo": "acolhedor" },
+    { "speaker": "professor", "texto": "Olá! É um prazer estar aqui. Hoje vamos falar sobre...", "estilo": "explicativo" },
+    { "speaker": "apresentadora", "texto": "Isso é muito interessante. E como funciona na prática?", "estilo": "curioso" },
+    { "speaker": "professor", "texto": "Na prática, isso significa que...", "estilo": "explicativo" },
+    { "speaker": "apresentadora", "texto": "Entendi! Pode dar um exemplo focando na banca CESGRANRIO?", "estilo": "curioso" },
+    { "speaker": "professor", "texto": "Com certeza! A CESGRANRIO costuma cobrar...", "estilo": "explicativo" }
   ],
   "duracaoEstimada": "2:30",
   "transcricaoCompleta": "Texto corrido completo de toda a conversa, com marcações [Ana Carolina] e [Prof. Nome] antes de cada fala"
@@ -119,84 +124,10 @@ Retorne APENAS um JSON válido com esta estrutura:
 
   let text = "";
 
-  // ── Helper: chama endpoint compat\u00edvel com OpenAI ──
-  async function tryOpenAICompatible(
-    name: string,
-    url: string,
-    key: string,
-    model: string,
-  ): Promise<boolean> {
+  // 1. Gemini nativo (SDK) - Prioridade total já que o limite pago está ativo
+  if (process.env.GEMINI_API_KEY) {
     try {
-      console.log(`[Podcast-Script] Tentando gerar via ${name} (${model})...`);
-      const res = await fetch(`${url}/chat/completions`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${key}`,
-        },
-        body: JSON.stringify({
-          model,
-          messages: [{ role: "user", content: prompt + "\n\nIMPORTANTE: Retorne APENAS o JSON v\u00e1lido, sem markdown, sem coment\u00e1rios." }],
-        }),
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        const content = data.choices?.[0]?.message?.content || "";
-        if (content.length > 50) {
-          text = content;
-          console.log(`[Podcast-Script] \u2705 Sucesso via ${name}!`);
-          return true;
-        }
-      }
-      console.warn(`[Podcast-Script] ${name} retornou status ${res.status} ou vazio`);
-    } catch (e: any) {
-      console.warn(`[Podcast-Script] Erro no ${name}: ${e.message}`);
-    }
-    return false;
-  }
-
-  // ── Cascata de provedores (prioridade: gratuitos primeiro) ──
-
-  // 1. Free LLM (OpenAI compat)
-  if (!text && process.env.FREE_LLM_API_KEY && process.env.FREE_LLM_URL) {
-    await tryOpenAICompatible("Free LLM", process.env.FREE_LLM_URL, process.env.FREE_LLM_API_KEY, "gemini-2.5-flash");
-  }
-
-  // 2. DeepSeek (OpenAI compat) — cr\u00e9dito gratis ~$5
-  if (!text && process.env.DEEPSEEK_API_KEY) {
-    await tryOpenAICompatible("DeepSeek", "https://api.deepseek.com/v1", process.env.DEEPSEEK_API_KEY, "deepseek-chat");
-  }
-
-  // 3. SiliconFlow (OpenAI compat) — ~2M tokens/dia gratis
-  if (!text && process.env.SILICONFLOW_API_KEY) {
-    await tryOpenAICompatible("SiliconFlow", "https://api.siliconflow.cn/v1", process.env.SILICONFLOW_API_KEY, "deepseek-ai/DeepSeek-V3");
-  }
-
-  // 4. Qwen / DashScope (OpenAI compat) — 1M tokens/mês grátis
-  if (!text && process.env.DASHSCOPE_API_KEY) {
-    await tryOpenAICompatible("Qwen/DashScope", "https://dashscope.aliyuncs.com/compatible-mode/v1", process.env.DASHSCOPE_API_KEY, "qwen-turbo");
-  }
-
-  // 5. Zhipu GLM (OpenAI compat) — glm-4-flash 100% grátis
-  if (!text && process.env.ZHIPU_API_KEY) {
-    await tryOpenAICompatible("Zhipu GLM", "https://open.bigmodel.cn/api/paas/v4", process.env.ZHIPU_API_KEY, "glm-4-flash");
-  }
-
-  // 6. Groq (OpenAI compat) — grátis com limites
-  if (!text && process.env.GROQ_API_KEY) {
-    await tryOpenAICompatible("Groq", "https://api.groq.com/openai/v1", process.env.GROQ_API_KEY, "llama3-8b-8192");
-  }
-
-  // 7. OpenRouter (OpenAI compat) — grátis
-  if (!text && process.env.OPENROUTER_API_KEY) {
-    await tryOpenAICompatible("OpenRouter", "https://openrouter.ai/api/v1", process.env.OPENROUTER_API_KEY, "google/gemini-2.5-flash:free");
-  }
-
-  // 8. Gemini nativo (SDK)
-  if (!text && process.env.GEMINI_API_KEY) {
-    try {
-      console.log("[Podcast-Script] Tentando gerar via Gemini nativo...");
+      console.log("[Podcast-Script] Gerando roteiro via Gemini nativo (API Premium)...");
       const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
       const model = genAI.getGenerativeModel({
         model: "gemini-2.5-flash",
@@ -204,37 +135,9 @@ Retorne APENAS um JSON válido com esta estrutura:
       });
       const result = await model.generateContent(prompt);
       text = result.response.text();
+      console.log("[Podcast-Script] ✅ Sucesso via Gemini!");
     } catch (e: any) {
       console.warn(`[Podcast-Script] Erro no Gemini nativo: ${e.message}`);
-    }
-  }
-
-  // 7. Anthropic (REST) — \u00faltimo recurso (pago)
-  if (!text && process.env.ANTHROPIC_API_KEY) {
-    try {
-      console.log("[Podcast-Script] Tentando gerar via Anthropic...");
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: {
-          "x-api-key": process.env.ANTHROPIC_API_KEY,
-          "anthropic-version": "2023-06-01",
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "claude-3-haiku-20240307",
-          max_tokens: 1500,
-          messages: [{ role: "user", content: prompt + "\n\nIMPORTANTE: Retorne apenas o JSON e nada mais." }],
-        }),
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        text = data.content?.[0]?.text || "";
-      } else {
-        console.warn(`[Podcast-Script] Falha na Anthropic: ${res.status}`);
-      }
-    } catch (e: any) {
-      console.warn(`[Podcast-Script] Erro na Anthropic: ${e.message}`);
     }
   }
 
@@ -243,10 +146,24 @@ Retorne APENAS um JSON válido com esta estrutura:
   }
 
   try {
-    const jsonStr = text.replace(/```json/g, "").replace(/```/g, "").trim();
-    const data = JSON.parse(jsonStr) as PodcastScript;
+    let cleanText = text.replace(/```json/gi, "").replace(/```/g, "").trim();
+    const jsonMatch = cleanText.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      cleanText = jsonMatch[0];
+    }
+    const data = JSON.parse(cleanText) as PodcastScript;
     return data;
   } catch (error: any) {
+    try {
+      // Robust fallback for LLMs that include unescaped raw control characters or newlines
+      const match = text.match(/\{[\s\S]*\}/);
+      if (match) {
+        const fixed = match[0]
+          .replace(/(?<=": "[^"]*)\n(?=[^"]*")/g, "\\n")
+          .replace(/[\u0000-\u001F]+/g, (m) => (m === "\n" || m === "\r" ? " " : ""));
+        return JSON.parse(fixed) as PodcastScript;
+      }
+    } catch (_) {}
     console.error("[Podcast] Erro ao parsear script JSON:", text.substring(0, 300));
     throw new Error(`Falha ao gerar script do podcast: ${error.message}`);
   }
@@ -263,39 +180,7 @@ export async function synthesizeSegment(
   speaker: "apresentadora" | "professor",
   maxRetries = 2
 ): Promise<{ audioBase64: string; mimeType: string } | null> {
-  // 1. Tentar Free LLM TTS (Compatível com OpenAI /audio/speech) para máxima estabilidade de timbre
-  if (process.env.FREE_LLM_API_KEY && process.env.FREE_LLM_URL) {
-    try {
-      console.log(`[Podcast-TTS] Tentando TTS via Free LLM para ${speaker}...`);
-      const freeRes = await fetch(`${process.env.FREE_LLM_URL}/audio/speech`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.FREE_LLM_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: "tts-1",
-          input: texto,
-          voice: VOZES_FREE[speaker],
-          response_format: "mp3"
-        }),
-      });
-
-      if (freeRes.ok) {
-        const arrayBuffer = await freeRes.arrayBuffer();
-        const buffer = Buffer.from(arrayBuffer);
-        console.log(`[Podcast-TTS] Sucesso no Free LLM TTS para ${speaker}`);
-        return {
-          audioBase64: buffer.toString("base64"),
-          mimeType: "audio/mp3",
-        };
-      } else {
-        console.warn(`[Podcast-TTS] Free LLM TTS falhou com status ${freeRes.status}. Caindo para Gemini TTS...`);
-      }
-    } catch (e: any) {
-      console.warn(`[Podcast-TTS] Erro no Free LLM TTS: ${e.message}. Caindo para Gemini TTS...`);
-    }
-  }
+  // Omitido: Free LLM TTS foi removido para focar direto no Gemini TTS, mais rápido e com cota premium
 
   // 2. Fallback para Gemini TTS
   const apiKey = process.env.GEMINI_API_KEY;

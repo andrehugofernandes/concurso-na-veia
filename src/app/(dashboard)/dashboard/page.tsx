@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { CONTEUDO_MATERIAS } from "@/data/conteudo";
 import { PROFISSOES, getProfissaoById } from "@/lib/profissoes-edital";
@@ -301,11 +302,11 @@ export default function DashboardPage() {
   return (
     <div className="w-full p-4 md:p-8 lg:p-10 space-y-8 animate-in fade-in duration-300">
       {/* HEADER SUPERIOR DO ALUNO */}
-      <header className="relative bg-card border border-border/70 rounded-3xl p-6 sm:p-8 shadow-sm overflow-hidden backdrop-blur-xl">
+      <header className="relative bg-card border border-border/70 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-sm overflow-hidden backdrop-blur-xl">
         <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 relative z-10">
-          <div className="space-y-3 max-w-2xl">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 relative z-10">
+          <div className="flex-1 space-y-4">
             <div className="flex flex-wrap items-center gap-2.5">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20">
                 <Sparkles className="w-3.5 h-3.5" />
@@ -323,36 +324,36 @@ export default function DashboardPage() {
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-tight">
               Olá, {userData.nome.split(" ")[0]}!
             </h1>
-            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed max-w-xl">
               Bem-vindo ao seu portal de preparação. Acompanhe suas métricas e fortaleça sua rotina de estudos.
             </p>
 
-            <div className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6">
+            <div className="pt-4 flex flex-wrap items-center gap-4 sm:gap-6">
               {/* Ofensiva */}
-              <div className="flex items-center gap-2.5 bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/25 px-4 py-2.5 rounded-2xl">
-                <Flame className={`w-5 h-5 ${userData.sequencia_atual > 0 ? "text-amber-500 dark:text-orange-400 fill-amber-500/30 animate-pulse" : "text-muted-foreground"}`} />
+              <div className="flex items-center gap-3 bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/25 px-5 py-3 rounded-2xl">
+                <Flame className={`w-6 h-6 ${userData.sequencia_atual > 0 ? "text-amber-500 dark:text-orange-400 fill-amber-500/30 animate-pulse" : "text-muted-foreground"}`} />
                 <div>
                   <p className="text-[10px] text-amber-600 dark:text-amber-400 font-extrabold uppercase tracking-wider leading-none">
                     Ofensiva
                   </p>
-                  <p className="text-base font-black text-foreground mt-0.5">
+                  <p className="text-lg font-black text-foreground mt-1">
                     {userData.sequencia_atual} {userData.sequencia_atual === 1 ? "dia" : "dias"}
                   </p>
                 </div>
               </div>
 
               {/* XP */}
-              <div className="flex-1 min-w-[200px] max-w-xs space-y-1.5">
-                <div className="flex justify-between items-center text-xs">
-                  <span className="font-extrabold text-muted-foreground flex items-center gap-1">
-                    <GraduationCap className="w-4 h-4 text-primary" />
+              <div className="flex-1 min-w-[200px] max-w-xs space-y-2">
+                <div className="flex justify-between items-center text-sm">
+                  <span className="font-extrabold text-muted-foreground flex items-center gap-1.5">
+                    <GraduationCap className="w-5 h-5 text-primary" />
                     {userData.nivel_jogador}
                   </span>
-                  <span className="font-black text-primary font-mono text-sm">
+                  <span className="font-black text-primary font-mono text-base">
                     {userData.xp} XP
                   </span>
                 </div>
-                <div className="h-2.5 bg-muted rounded-full overflow-hidden p-0.5 border border-border/50">
+                <div className="h-3 bg-muted rounded-full overflow-hidden p-0.5 border border-border/50">
                   <div
                     className="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-primary rounded-full transition-all duration-700 relative shadow-sm"
                     style={{ width: `${Math.min(100, Math.max(6, (userData.xp % 1000) / 10))}%` }}
@@ -360,36 +361,93 @@ export default function DashboardPage() {
                 </div>
               </div>
             </div>
+
+            {/* Card de Assinatura */}
+            {userData.plan === "free" && (
+              <div className="w-full max-w-xl bg-card/80 border border-amber-500/25 rounded-2xl p-4 mt-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm backdrop-blur-md">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-amber-500/10 text-amber-500 rounded-xl shrink-0">
+                    <Clock className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-muted-foreground font-extrabold uppercase tracking-wider">
+                      Período de Teste Gratuito
+                    </span>
+                    <p className="text-sm font-black text-foreground">
+                      <span className={userData.diasRestantesTrial && userData.diasRestantesTrial <= 3 ? "text-red-500 animate-pulse" : "text-amber-500"}>
+                        {userData.diasRestantesTrial} dias restantes
+                      </span>
+                    </p>
+                  </div>
+                </div>
+
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:to-orange-500 text-slate-950 font-black rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-orange-500/20 transition-all hover:scale-[1.02] active:scale-95 text-center shrink-0"
+                >
+                  <Crown className="w-4 h-4 fill-slate-950" />
+                  Seja Aluno PRO
+                </Link>
+              </div>
+            )}
           </div>
 
-          {/* Card de Assinatura */}
-          {userData.plan === "free" && (
-            <div className="w-full lg:w-auto bg-card/80 border border-amber-500/25 rounded-2xl p-5 flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-stretch justify-between gap-4 shadow-sm backdrop-blur-md">
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-amber-500/10 text-amber-500 rounded-xl shrink-0">
-                  <Clock className="w-6 h-6" />
-                </div>
-                <div>
-                  <span className="text-[10px] text-muted-foreground font-extrabold uppercase tracking-wider">
-                    Período de Teste Gratuito
-                  </span>
-                  <p className="text-base font-black text-foreground">
-                    <span className={userData.diasRestantesTrial && userData.diasRestantesTrial <= 3 ? "text-red-500 animate-pulse" : "text-amber-500"}>
-                      {userData.diasRestantesTrial} dias restantes
-                    </span>
-                  </p>
-                </div>
+          {/* WIDGET 1: PROGRESSO NO EDITAL (GRÁFICO RECHARTS) */}
+          <div className="hidden lg:block w-full lg:w-1/3 xl:w-2/5">
+            <div className="bg-card border border-border/70 rounded-3xl p-6 shadow-sm space-y-4 h-full flex flex-col justify-center">
+              <div className="flex items-center justify-between border-b border-border/60 pb-3">
+                <h3 className="text-base font-black text-foreground flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5 text-emerald-500" />
+                  Progresso
+                </h3>
+                <span className="text-xs font-mono font-black text-primary">
+                  {stats.completed}/{stats.total}
+                </span>
               </div>
 
-              <Link
-                href="/pricing"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:to-orange-500 text-slate-950 font-black rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-orange-500/20 transition-all hover:scale-[1.02] active:scale-95 text-center"
-              >
-                <Crown className="w-4 h-4 fill-slate-950" />
-                Seja Aluno PRO
-              </Link>
+              <div className="h-44 w-full relative flex items-center justify-center">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={[
+                        { name: "Concluído", value: stats.completed },
+                        {
+                          name: "Restante",
+                          value: Math.max(0, stats.total - stats.completed),
+                        },
+                      ]}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={45}
+                      outerRadius={65}
+                      paddingAngle={4}
+                      dataKey="value"
+                      stroke="none"
+                    >
+                      <Cell key="cell-0" fill="#10b981" />
+                      <Cell key="cell-1" fill="hsl(var(--muted))" opacity={0.6} />
+                    </Pie>
+                    <RechartsTooltip
+                      contentStyle={{
+                        backgroundColor: "hsl(var(--card))",
+                        borderColor: "hsl(var(--border))",
+                        color: "hsl(var(--foreground))",
+                        borderRadius: "12px",
+                      }}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                  <span className="text-2xl font-black text-foreground">
+                    {Math.round((stats.completed / (stats.total || 1)) * 100)}%
+                  </span>
+                  <span className="text-[10px] text-muted-foreground uppercase font-bold tracking-wider">
+                    Concluído
+                  </span>
+                </div>
+              </div>
             </div>
-          )}
+          </div>
         </div>
       </header>
 
@@ -421,88 +479,96 @@ export default function DashboardPage() {
 
       <main>
         {activeTab === "overview" ? (
-          /* ESTRUTURA EDITORIAL / HIERARQUIA VISUAL (GRID PRINCIPAL + SIDEBAR LATERAL) */
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <>
+            {/* ESTRUTURA EDITORIAL / HIERARQUIA VISUAL (GRID PRINCIPAL + SIDEBAR LATERAL) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             {/* COLUNA ESQUERDA PRINCIPAL (HERO BANNER + DESTAQUES + FEED DE SIMULADOS) - 8 COLUNAS */}
             <div className="lg:col-span-8 space-y-8">
               
-              {/* NÍVEL 1: HERO BANNER DE ALTO DESTAQUE (HERO CARD DO PORTAL) */}
-              <section className="relative bg-gradient-to-br from-primary/15 via-card to-card border border-primary/25 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-md overflow-hidden group">
+              {/* NÍVEL 1: HERO BANNER DE ALTO DESTAQUE (JORNADA DE AULAS) */}
+              <Link href="/aulas" className="relative bg-card border border-primary/25 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-md overflow-hidden group min-h-[260px] lg:min-h-[300px] flex items-center hover:border-blue-500/50 hover:shadow-lg transition-all">
                 <div className="absolute top-0 right-0 -mr-12 -mt-12 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none group-hover:scale-110 transition-transform" />
+                
+                {/* Imagem de fundo estilizada */}
+                <div className="absolute inset-y-0 right-0 w-full md:w-2/3 lg:w-3/5 z-0 pointer-events-none">
+                  <Image src="/images/jornada_aulas.png" alt="" fill className="object-cover object-right md:object-center opacity-30 md:opacity-80 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-card via-card/90 md:via-card/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent md:hidden" />
+                </div>
 
-                <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div className="relative z-10 flex flex-col items-start justify-center gap-6 w-full h-full">
                   <div className="space-y-4 max-w-xl">
-                    <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest bg-primary/20 text-primary border border-primary/30">
-                      <Sparkles className="w-4 h-4" />
-                      Destaque de Aprendizado
+                    <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest bg-blue-500/20 text-blue-500 border border-blue-500/30 shadow-sm backdrop-blur-sm">
+                      <BookOpen className="w-4 h-4" />
+                      Módulos Teóricos
                     </span>
 
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-foreground tracking-tight leading-tight">
-                      {lastStudiedTopic.titulo}
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-tight group-hover:text-blue-500 transition-colors">
+                      Jornada de Aulas
                     </h2>
 
-                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                      Você está estudando na disciplina de <strong className="text-foreground font-bold">{lastStudiedTopic.materiaNome}</strong>. Mantenha o ritmo para dominar os temas do edital Petrobras.
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-lg">
+                      <strong className="text-foreground/80 font-bold">C</strong>ontexto, <strong className="text-foreground/80 font-bold">E</strong>xplicação, <strong className="text-foreground/80 font-bold">D</strong>emonstração, <strong className="text-foreground/80 font-bold">E</strong>xpansão e <strong className="text-foreground/80 font-bold">A</strong>plicação. Domine o edital com nosso método.
                     </p>
-
-                    {(() => {
-                      const progressKey = `${lastStudiedTopic.materiaId}/${lastStudiedTopic.topicoId}`;
-                      const progress = allContentProgress[progressKey];
-                      const percent = progress?.progress_percent || 0;
-
-                      return (
-                        <div className="pt-2 flex items-center gap-3">
-                          <div className="flex-1 max-w-xs h-3 bg-muted rounded-full overflow-hidden p-0.5 border border-border/50">
-                            <div
-                              className="h-full bg-primary rounded-full transition-all duration-700"
-                              style={{ width: `${percent}%` }}
-                            />
-                          </div>
-                          <span className="text-sm font-black text-foreground font-mono">{percent}% concluído</span>
-                        </div>
-                      );
-                    })()}
                   </div>
 
-                  <div className="w-full md:w-auto flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
-                    <Link
-                      href={`/aulas/${lastStudiedTopic.materiaId}/${lastStudiedTopic.topicoId}`}
-                      className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-black rounded-2xl text-sm uppercase tracking-wider shadow-lg hover:opacity-95 transition hover:scale-105 active:scale-95 text-center text-white dark:text-white"
-                    >
-                      Retomar Conteúdo
+                  <div className="w-full md:w-auto mt-2">
+                    <div className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-blue-600 text-white font-black rounded-2xl text-sm uppercase tracking-wider shadow-lg shadow-blue-500/20 group-hover:bg-blue-500 transition group-hover:scale-105 active:scale-95 text-center">
+                      Acessar Módulos
                       <ArrowRight className="w-5 h-5 text-white" />
-                    </Link>
+                    </div>
                   </div>
                 </div>
-              </section>
+              </Link>
 
               {/* NÍVEL 2: BANNERS SECUNDÁRIOS DE APRENDIZADO (GRID 2 COLUNAS DE DESTAQUE) */}
               <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Banner 1: Aulas Teóricas */}
+                {/* Banner 1: Retomar de Onde Parou */}
                 <Link
-                  href="/aulas"
-                  className="group bg-card border border-border/70 rounded-3xl p-6 sm:p-7 shadow-sm hover:border-primary/50 transition-all flex flex-col justify-between space-y-5 hover:-translate-y-1 hover:shadow-md"
+                  href={`/aulas/${lastStudiedTopic.materiaId}/${lastStudiedTopic.topicoId}`}
+                  className="group relative bg-card border border-border/70 rounded-3xl p-6 sm:p-7 shadow-sm hover:border-primary/50 transition-all flex flex-col justify-between space-y-6 hover:-translate-y-1 hover:shadow-md overflow-hidden min-h-[240px]"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="p-3.5 bg-blue-500/10 text-blue-500 rounded-2xl group-hover:scale-110 transition-transform shrink-0">
-                      <BookOpen className="w-7 h-7" />
+                  {/* Fundo Decorativo Hero Style */}
+                  <div className="absolute inset-y-0 right-0 w-2/3 md:w-3/4 z-0 pointer-events-none">
+                    <Image src="/images/retomar_estudos.png" alt="" fill className="object-cover object-right opacity-30 md:opacity-50 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-card via-card/90 to-transparent" />
+                  </div>
+                  
+                  <div className="relative z-10 flex items-start gap-4">
+                    <div className="p-3.5 bg-primary/10 text-primary rounded-2xl group-hover:scale-110 group-hover:bg-primary/20 transition-all shrink-0 backdrop-blur-md border border-primary/20">
+                      <Sparkles className="w-7 h-7" />
                     </div>
-                    <div className="space-y-1.5">
-                      <span className="text-xs font-extrabold uppercase tracking-widest text-blue-500">
-                        Teoria C.E.D.E.A
-                      </span>
-                      <h3 className="text-lg sm:text-xl font-black text-foreground group-hover:text-primary transition-colors">
-                        Módulos Teóricos & Aulas
-                      </h3>
-                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                        Aulas completas com 10 módulos, síntese estratégica e FlipCards de memorização.
+                    <div className="space-y-2 max-w-[200px] sm:max-w-[250px]">
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-extrabold uppercase tracking-widest text-primary bg-primary/10 backdrop-blur-md px-2 py-0.5 rounded-full inline-block border border-primary/20">
+                          Continuar Estudando
+                        </span>
+                        <h3 className="text-xl sm:text-2xl font-black text-foreground group-hover:text-primary transition-colors tracking-tight">
+                          Retomar Conteúdo
+                        </h3>
+                      </div>
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-2" title={lastStudiedTopic.titulo}>
+                        Você parou em: <strong className="text-foreground/80 font-bold">{lastStudiedTopic.titulo}</strong>
                       </p>
+                      {(() => {
+                        const progressKey = `${lastStudiedTopic.materiaId}/${lastStudiedTopic.topicoId}`;
+                        const progress = allContentProgress[progressKey];
+                        const percent = progress?.progress_percent || 0;
+                        return (
+                          <div className="pt-2 flex items-center gap-2">
+                            <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden p-0.5">
+                              <div className="h-full bg-primary rounded-full transition-all duration-700" style={{ width: `${percent}%` }} />
+                            </div>
+                            <span className="text-[10px] font-black text-foreground font-mono">{percent}%</span>
+                          </div>
+                        );
+                      })()}
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between text-xs font-black text-primary group-hover:gap-2 transition-all pt-3 border-t border-border/50">
-                    <span>Acessar Módulos de Estudo</span>
+                  <div className="relative z-10 flex items-center justify-between text-xs font-black text-primary group-hover:gap-2 transition-all pt-4 border-t border-border/50">
+                    <span>Ir para aula</span>
                     <ChevronRight className="w-4 h-4" />
                   </div>
                 </Link>
@@ -510,425 +576,46 @@ export default function DashboardPage() {
                 {/* Banner 2: Plano de Estudos */}
                 <Link
                   href="/plano-estudos"
-                  className="group bg-card border border-border/70 rounded-3xl p-6 sm:p-7 shadow-sm hover:border-emerald-500/50 transition-all flex flex-col justify-between space-y-5 hover:-translate-y-1 hover:shadow-md"
+                  className="group relative bg-card border border-border/70 rounded-3xl p-6 sm:p-7 shadow-sm hover:border-emerald-500/50 transition-all flex flex-col justify-between space-y-6 hover:-translate-y-1 hover:shadow-md overflow-hidden min-h-[240px]"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="p-3.5 bg-emerald-500/10 text-emerald-500 rounded-2xl group-hover:scale-110 transition-transform shrink-0">
+                  {/* Fundo Decorativo Hero Style */}
+                  <div className="absolute inset-y-0 right-0 w-2/3 md:w-3/4 z-0 pointer-events-none">
+                    <Image src="/images/plano_estudos.png" alt="" fill className="object-cover object-right opacity-30 md:opacity-70 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-card via-card/90 to-transparent" />
+                  </div>
+
+                  <div className="relative z-10 flex items-start gap-4">
+                    <div className="p-3.5 bg-emerald-500/10 text-emerald-500 rounded-2xl group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all shrink-0 backdrop-blur-md border border-emerald-500/20">
                       <CalendarCheck className="w-7 h-7" />
                     </div>
-                    <div className="space-y-1.5">
-                      <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-500">
-                        Cronograma Guiado
-                      </span>
-                      <h3 className="text-lg sm:text-xl font-black text-foreground group-hover:text-emerald-500 transition-colors">
-                        Plano de Estudos Individual
-                      </h3>
+                    <div className="space-y-2 max-w-[200px] sm:max-w-[250px]">
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-extrabold uppercase tracking-widest text-emerald-500 bg-emerald-500/10 backdrop-blur-md px-2 py-0.5 rounded-full inline-block border border-emerald-500/20">
+                          Plano Individual
+                        </span>
+                        <h3 className="text-xl sm:text-2xl font-black text-foreground group-hover:text-emerald-500 transition-colors tracking-tight">
+                          Plano de Estudos
+                        </h3>
+                      </div>
                       <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                        Distribuição personalizada do tempo por matéria com base no seu edital.
+                        Distribuição otimizada do seu tempo por disciplina, baseada no peso do edital.
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between text-xs font-black text-emerald-500 group-hover:gap-2 transition-all pt-3 border-t border-border/50">
+                  <div className="relative z-10 flex items-center justify-between text-xs font-black text-emerald-500 group-hover:gap-2 transition-all pt-4 border-t border-border/50">
                     <span>Ver Meu Cronograma</span>
                     <ChevronRight className="w-4 h-4" />
                   </div>
                 </Link>
               </section>
 
-              {/* NÍVEL 3: FEED DE SIMULADOS RÁPIDOS POR DISCIPLINA (SEM ESPAÇO VAGO E COM TÍTULOS EXPANDIDOS) */}
-              <section className="space-y-4 pt-2">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                  <div>
-                    <h2 className="text-xl sm:text-2xl font-black text-foreground flex items-center gap-2.5 tracking-tight">
-                      <Zap className="w-6 h-6 text-amber-500" />
-                      Simulados Rápidos por Disciplina
-                    </h2>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
-                      Fixação diária de 5 minutos com questões comentadas.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Grid Responsivo Inteligente: Se houver 3 matérias, ocupa 3 colunas perfeitamente sem buracos! */}
-                <div
-                  className={`grid grid-cols-1 sm:grid-cols-2 ${
-                    showIngles ? "lg:grid-cols-4" : "lg:grid-cols-3"
-                  } gap-5`}
-                >
-                  {/* Português */}
-                  <button
-                    onClick={() =>
-                      handleSimuladoClick("portugues", "Língua Portuguesa", "blue")
-                    }
-                    className="bg-card border border-border/70 rounded-3xl p-6 text-left shadow-sm hover:border-blue-500/50 hover:shadow-md transition-all group flex flex-col justify-between space-y-5"
-                  >
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <div className="p-3 bg-blue-500/10 text-blue-500 rounded-2xl group-hover:scale-110 transition-transform">
-                          <FileText className="w-6 h-6" />
-                        </div>
-                        <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 bg-blue-500/10 text-blue-500 rounded-full border border-blue-500/20">
-                          5 min
-                        </span>
-                      </div>
-
-                      <div>
-                        <h3 className="text-lg font-black text-foreground group-hover:text-blue-500 transition-colors">
-                          Língua Portuguesa
-                        </h3>
-                        <p className="text-xs text-muted-foreground font-semibold mt-0.5">
-                          5 Questões • Rápido
-                        </p>
-                      </div>
-
-                      <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
-                        Gramática, ortografia, concordância e interpretação de texto Cesgranrio.
-                      </p>
-                    </div>
-
-                    <div className="flex items-center justify-between text-xs font-black text-blue-500 group-hover:gap-1.5 transition-all pt-3 border-t border-border/40">
-                      <span>Iniciar Treino</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </button>
-
-                  {/* Matemática */}
-                  <button
-                    onClick={() =>
-                      handleSimuladoClick("matematica", "Matemática", "indigo")
-                    }
-                    className="bg-card border border-border/70 rounded-3xl p-6 text-left shadow-sm hover:border-indigo-500/50 hover:shadow-md transition-all group flex flex-col justify-between space-y-5"
-                  >
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl group-hover:scale-110 transition-transform">
-                          <Activity className="w-6 h-6" />
-                        </div>
-                        <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 bg-indigo-500/10 text-indigo-500 rounded-full border border-indigo-500/20">
-                          5 min
-                        </span>
-                      </div>
-
-                      <div>
-                        <h3 className="text-lg font-black text-foreground group-hover:text-indigo-500 transition-colors">
-                          Matemática
-                        </h3>
-                        <p className="text-xs text-muted-foreground font-semibold mt-0.5">
-                          5 Questões • Rápido
-                        </p>
-                      </div>
-
-                      <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
-                        Raciocínio lógico, matemática financeira, probabilidade e estatística.
-                      </p>
-                    </div>
-
-                    <div className="flex items-center justify-between text-xs font-black text-indigo-500 group-hover:gap-1.5 transition-all pt-3 border-t border-border/40">
-                      <span>Iniciar Treino</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </button>
-
-                  {/* Específicos */}
-                  <button
-                    onClick={() =>
-                      handleSimuladoClick(
-                        "especificas",
-                        "Conhecimentos Específicos",
-                        "green",
-                      )
-                    }
-                    className="bg-card border border-border/70 rounded-3xl p-6 text-left shadow-sm hover:border-emerald-500/50 hover:shadow-md transition-all group flex flex-col justify-between space-y-5"
-                  >
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl group-hover:scale-110 transition-transform">
-                          <ShieldCheck className="w-6 h-6" />
-                        </div>
-                        <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 bg-emerald-500/10 text-emerald-500 rounded-full border border-emerald-500/20">
-                          Edital
-                        </span>
-                      </div>
-
-                      <div>
-                        <h3 className="text-lg font-black text-foreground group-hover:text-emerald-500 transition-colors">
-                          Conhecimentos Específicos
-                        </h3>
-                        <p className="text-xs text-muted-foreground font-semibold mt-0.5">
-                          Foco no Seu Cargo
-                        </p>
-                      </div>
-
-                      <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
-                        {profissaoUsuario?.nome || "Questões alinhadas ao seu edital selecionado"}.
-                      </p>
-                    </div>
-
-                    <div className="flex items-center justify-between text-xs font-black text-emerald-500 group-hover:gap-1.5 transition-all pt-3 border-t border-border/40">
-                      <span>Iniciar Treino</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </button>
-
-                  {/* Inglês (Apenas para Nível Superior) */}
-                  {showIngles && (
-                    <button
-                      onClick={() =>
-                        handleSimuladoClick("ingles", "Língua Inglesa", "red")
-                      }
-                      className="bg-card border border-border/70 rounded-3xl p-6 text-left shadow-sm hover:border-rose-500/50 hover:shadow-md transition-all group flex flex-col justify-between space-y-5"
-                    >
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between">
-                          <div className="p-3 bg-rose-500/10 text-rose-500 rounded-2xl group-hover:scale-110 transition-transform">
-                            <Globe className="w-6 h-6" />
-                          </div>
-                          <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 bg-rose-500/10 text-rose-500 rounded-full border border-rose-500/20">
-                            Superior
-                          </span>
-                        </div>
-
-                        <div>
-                          <h3 className="text-lg font-black text-foreground group-hover:text-rose-500 transition-colors">
-                            Língua Inglesa
-                          </h3>
-                          <p className="text-xs text-muted-foreground font-semibold mt-0.5">
-                            Interpretação Técnica
-                          </p>
-                        </div>
-
-                        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
-                          Compreensão técnica de textos e vocabulário da indústria de energia.
-                        </p>
-                      </div>
-
-                      <div className="flex items-center justify-between text-xs font-black text-rose-500 group-hover:gap-1.5 transition-all pt-3 border-t border-border/40">
-                        <span>Iniciar Treino</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </div>
-                    </button>
-                  )}
-                </div>
-              </section>
-
-              {/* NÍVEL 3: TREINO INTENSIVO & MARATONA CESGRANRIO */}
-              <section className="space-y-4 pt-2">
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-black text-foreground flex items-center gap-2.5 tracking-tight">
-                    <Flame className="w-6 h-6 text-orange-500" />
-                    Treino Intensivo & Maratonas Oficiais
-                  </h2>
-                  <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
-                    Provas completas com cronômetro para simular o dia da prova.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {userData.plan === "free" ? (
-                    <>
-                      {/* Card Bloqueado: Intensivo */}
-                      <div className="bg-card border border-border/70 rounded-3xl p-7 relative overflow-hidden flex flex-col justify-between shadow-sm">
-                        <div className="absolute inset-0 bg-background/85 dark:bg-slate-950/85 backdrop-blur-md z-10 flex flex-col items-center justify-center p-6 text-center space-y-3">
-                          <div className="p-3.5 bg-amber-500/10 text-amber-500 rounded-full border border-amber-500/20">
-                            <Lock className="w-6 h-6" />
-                          </div>
-                          <h3 className="text-lg font-black text-foreground">
-                            Simulado Intensivo (20 Questões)
-                          </h3>
-                          <p className="text-xs sm:text-sm text-muted-foreground max-w-xs">
-                            Exclusivo para assinantes PRO. Treine tópicos específicos em profundidade.
-                          </p>
-                          <Link
-                            href="/pricing"
-                            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black rounded-xl text-xs shadow-md hover:scale-105 transition-all uppercase tracking-wider"
-                          >
-                            <Rocket className="w-4 h-4 fill-slate-950" />
-                            Acessar com PRO
-                          </Link>
-                        </div>
-
-                        <div className="opacity-20 pointer-events-none space-y-4">
-                          <div className="flex items-center gap-3">
-                            <Target className="w-6 h-6 text-indigo-500" />
-                            <h3 className="font-black text-lg">Treino Intensivo</h3>
-                          </div>
-                          <p className="text-xs text-muted-foreground">
-                            20 questões com gabarito.
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Card Bloqueado: Maratona */}
-                      <div className="bg-card border border-border/70 rounded-3xl p-7 relative overflow-hidden flex flex-col justify-between shadow-sm">
-                        <div className="absolute inset-0 bg-background/85 dark:bg-slate-950/85 backdrop-blur-md z-10 flex flex-col items-center justify-center p-6 text-center space-y-3">
-                          <div className="p-3.5 bg-amber-500/10 text-amber-500 rounded-full border border-amber-500/20">
-                            <Crown className="w-6 h-6" />
-                          </div>
-                          <h3 className="text-lg font-black text-foreground">
-                            Maratona CESGRANRIO (70 Questões)
-                          </h3>
-                          <p className="text-xs sm:text-sm text-muted-foreground max-w-xs">
-                            Simulação oficial de 4h.
-                          </p>
-                          <Link
-                            href="/pricing"
-                            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black rounded-xl text-xs shadow-md hover:scale-105 transition-all uppercase tracking-wider"
-                          >
-                            <Crown className="w-4 h-4 fill-slate-950" />
-                            Seja PRO
-                          </Link>
-                        </div>
-
-                        <div className="opacity-20 pointer-events-none space-y-4">
-                          <div className="flex items-center gap-3">
-                            <Trophy className="w-6 h-6 text-amber-500" />
-                            <h3 className="font-black text-lg">Maratona 70 Questões</h3>
-                          </div>
-                          <p className="text-xs text-muted-foreground">
-                            Cronômetro real de 4 horas.
-                          </p>
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      {/* Liberado: Intensivo */}
-                      <button
-                        onClick={() =>
-                          setConfigModal({
-                            open: true,
-                            tipo: "intensivo",
-                            nome: "Treino Intensivo Focalizado",
-                            cor: "indigo",
-                            qtd: 20,
-                          })
-                        }
-                        className="bg-card border border-border/70 rounded-3xl p-7 text-left shadow-sm hover:border-indigo-500/50 hover:shadow-md transition-all group flex flex-col justify-between space-y-6"
-                      >
-                        <div className="flex items-start justify-between">
-                          <div className="p-3.5 bg-indigo-500/10 text-indigo-500 rounded-2xl group-hover:scale-110 transition-transform">
-                            <Target className="w-7 h-7" />
-                          </div>
-                          <span className="text-xs font-extrabold uppercase tracking-wider px-3 py-1 bg-indigo-500/10 text-indigo-500 rounded-full border border-indigo-500/20">
-                            20 Questões
-                          </span>
-                        </div>
-
-                        <div className="space-y-1.5">
-                          <h3 className="text-lg sm:text-xl font-black text-foreground group-hover:text-indigo-500 transition-colors">
-                            Treino Intensivo de Aceleração
-                          </h3>
-                          <p className="text-xs sm:text-sm text-muted-foreground">
-                            20 questões focadas no tópico da sua escolha com análise imediata.
-                          </p>
-                        </div>
-
-                        <div className="flex items-center justify-between text-xs font-black text-indigo-500 group-hover:gap-2 transition-all pt-3 border-t border-border/40">
-                          <span>Configurar Treino</span>
-                          <ChevronRight className="w-4 h-4" />
-                        </div>
-                      </button>
-
-                      {/* Liberado: Maratona */}
-                      <button
-                        onClick={() =>
-                          setConfigModal({
-                            open: true,
-                            tipo: "maratona",
-                            nome: "Maratona Oficial CESGRANRIO",
-                            cor: "yellow",
-                            qtd: 70,
-                          })
-                        }
-                        className="bg-card border border-border/70 rounded-3xl p-7 text-left shadow-sm hover:border-amber-500/50 hover:shadow-md transition-all group flex flex-col justify-between space-y-6"
-                      >
-                        <div className="flex items-start justify-between">
-                          <div className="p-3.5 bg-amber-500/10 text-amber-500 rounded-2xl group-hover:scale-110 transition-transform">
-                            <Crown className="w-7 h-7" />
-                          </div>
-                          <span className="text-xs font-extrabold uppercase tracking-wider px-3 py-1 bg-amber-500/10 text-amber-500 rounded-full border border-amber-500/20">
-                            70 Questões • 4h
-                          </span>
-                        </div>
-
-                        <div className="space-y-1.5">
-                          <h3 className="text-lg sm:text-xl font-black text-foreground group-hover:text-amber-500 transition-colors">
-                            Maratona Oficial CESGRANRIO
-                          </h3>
-                          <p className="text-xs sm:text-sm text-muted-foreground">
-                            Simulado completo com a distribuição exata do edital para seu nível.
-                          </p>
-                        </div>
-
-                        <div className="flex items-center justify-between text-xs font-black text-amber-500 group-hover:gap-2 transition-all pt-3 border-t border-border/40">
-                          <span>Iniciar Maratona</span>
-                          <ChevronRight className="w-4 h-4" />
-                        </div>
-                      </button>
-                    </>
-                  )}
-                </div>
-              </section>
             </div>
 
             {/* COLUNA DIREITA (SIDEBAR DE APOIO COM WIDGETS VISUAIS) - 4 COLUNAS */}
             <aside className="lg:col-span-4 space-y-6">
               
-              {/* WIDGET 1: PROGRESSO NO EDITAL (GRÁFICO RECHARTS) */}
-              <div className="bg-card border border-border/70 rounded-3xl p-6 shadow-sm space-y-4">
-                <div className="flex items-center justify-between border-b border-border/60 pb-3">
-                  <h3 className="text-base font-black text-foreground flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5 text-emerald-500" />
-                    Progresso no Edital
-                  </h3>
-                  <span className="text-xs font-mono font-black text-primary">
-                    {stats.completed}/{stats.total}
-                  </span>
-                </div>
 
-                <div className="h-48 w-full relative flex items-center justify-center">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <PieChart>
-                      <Pie
-                        data={[
-                          { name: "Concluído", value: stats.completed },
-                          {
-                            name: "Restante",
-                            value: Math.max(0, stats.total - stats.completed),
-                          },
-                        ]}
-                        cx="50%"
-                        cy="50%"
-                        innerRadius={52}
-                        outerRadius={70}
-                        paddingAngle={4}
-                        dataKey="value"
-                        stroke="none"
-                      >
-                        <Cell key="cell-0" fill="#10b981" />
-                        <Cell key="cell-1" fill="hsl(var(--muted))" opacity={0.6} />
-                      </Pie>
-                      <RechartsTooltip
-                        contentStyle={{
-                          backgroundColor: "hsl(var(--card))",
-                          borderColor: "hsl(var(--border))",
-                          color: "hsl(var(--foreground))",
-                          borderRadius: "12px",
-                        }}
-                      />
-                    </PieChart>
-                  </ResponsiveContainer>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                    <span className="text-2xl font-black text-foreground">
-                      {Math.round((stats.completed / (stats.total || 1)) * 100)}%
-                    </span>
-                    <span className="text-[10px] text-muted-foreground uppercase font-bold tracking-wider">
-                      Concluído
-                    </span>
-                  </div>
-                </div>
-              </div>
 
               {/* WIDGET 2: MÉTRICAS RÁPIDAS DE DESEMPENHO */}
               <div className="bg-card border border-border/70 rounded-3xl p-6 shadow-sm space-y-4">
@@ -989,7 +676,351 @@ export default function DashboardPage() {
               </div>
 
             </aside>
+
           </div>
+
+          {/* NOVAS SEÇÕES FULL WIDTH */}
+          <div className="space-y-12 mt-12">
+              {/* NÍVEL 3: FEED DE SIMULADOS RÁPIDOS POR DISCIPLINA (SEM ESPAÇO VAGO E COM TÍTULOS EXPANDIDOS) */}
+            <section className="space-y-4 pt-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-black text-foreground flex items-center gap-2.5 tracking-tight">
+                    <Zap className="w-6 h-6 text-amber-500" />
+                    Simulados Rápidos por Disciplina
+                  </h2>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                    Fixação diária de 5 minutos com questões comentadas.
+                  </p>
+                </div>
+              </div>
+
+              {/* Grid Responsivo Inteligente: Se houver 3 matérias, ocupa 3 colunas perfeitamente sem buracos! */}
+              <div
+                className={`grid grid-cols-1 sm:grid-cols-2 ${
+                  showIngles ? "lg:grid-cols-4" : "lg:grid-cols-3"
+                } gap-5`}
+              >
+                {/* Português */}
+                <button
+                  onClick={() =>
+                    handleSimuladoClick("portugues", "Língua Portuguesa", "blue")
+                  }
+                  className="relative overflow-hidden bg-card border border-border/70 rounded-3xl p-6 text-left shadow-sm hover:border-blue-500/50 hover:-translate-y-1 hover:shadow-md transition-all group flex flex-col justify-between space-y-5 min-h-[240px]"
+                >
+                  <div className="absolute inset-0 z-0 pointer-events-none">
+                    <Image src="/images/simulado_portugues.png" alt="" fill className="object-cover object-right opacity-30 md:opacity-60 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-card via-card/80 to-transparent" />
+                  </div>
+                  
+                  <div className="relative z-10 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="p-3 bg-blue-500/10 text-blue-500 rounded-2xl group-hover:scale-110 transition-transform">
+                        <FileText className="w-6 h-6" />
+                      </div>
+                      <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 bg-blue-500/10 text-blue-500 rounded-full border border-blue-500/20">
+                        5 min
+                      </span>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-black text-foreground group-hover:text-blue-500 transition-colors">
+                        Língua Portuguesa
+                      </h3>
+                      <p className="text-xs text-muted-foreground font-semibold mt-0.5">
+                        5 Questões • Rápido
+                      </p>
+                    </div>
+
+                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+                      Gramática, ortografia, concordância e interpretação de texto Cesgranrio.
+                    </p>
+                  </div>
+
+
+                  <div className="relative z-10 flex items-center justify-between text-xs font-black text-blue-500 group-hover:gap-1.5 transition-all pt-3 border-t border-border/40 w-full">
+                    <span>Iniciar Treino</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </button>
+
+                {/* Matemática */}
+                <button
+                  onClick={() =>
+                    handleSimuladoClick("matematica", "Matemática", "indigo")
+                  }
+                  className="relative overflow-hidden bg-card border border-border/70 rounded-3xl p-6 text-left shadow-sm hover:border-indigo-500/50 hover:-translate-y-1 hover:shadow-md transition-all group flex flex-col justify-between space-y-5 min-h-[240px]"
+                >
+                  <div className="absolute inset-y-0 right-0 w-2/3 md:w-3/4 z-0 pointer-events-none">
+                    <Image src="/images/simulado_matematica.png" alt="" fill className="object-cover object-right opacity-20 md:opacity-40 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-card via-card/90 to-transparent" />
+                  </div>
+                  
+                  <div className="relative z-10 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-2xl group-hover:scale-110 transition-transform">
+                        <Activity className="w-6 h-6" />
+                      </div>
+                      <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 bg-indigo-500/10 text-indigo-500 rounded-full border border-indigo-500/20">
+                        5 min
+                      </span>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-black text-foreground group-hover:text-indigo-500 transition-colors">
+                        Matemática
+                      </h3>
+                      <p className="text-xs text-muted-foreground font-semibold mt-0.5">
+                        5 Questões • Rápido
+                      </p>
+                    </div>
+
+                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+                      Raciocínio lógico, matemática financeira, probabilidade e estatística.
+                    </p>
+                  </div>
+
+
+                  <div className="relative z-10 flex items-center justify-between text-xs font-black text-indigo-500 group-hover:gap-1.5 transition-all pt-3 border-t border-border/40 w-full">
+                    <span>Iniciar Treino</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </button>
+
+                {/* Específicos */}
+                <button
+                  onClick={() =>
+                    handleSimuladoClick(
+                      "especificas",
+                      "Conhecimentos Específicos",
+                      "green",
+                    )
+                  }
+                  className="relative overflow-hidden bg-card border border-border/70 rounded-3xl p-6 text-left shadow-sm hover:border-emerald-500/50 hover:-translate-y-1 hover:shadow-md transition-all group flex flex-col justify-between space-y-5 min-h-[240px]"
+                >
+                  <div className="absolute inset-y-0 right-0 w-2/3 md:w-3/4 z-0 pointer-events-none">
+                    <Image src="/images/simulado_especificos.png" alt="" fill className="object-cover object-right opacity-20 md:opacity-40 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-card via-card/90 to-transparent" />
+                  </div>
+
+                  <div className="relative z-10 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-2xl group-hover:scale-110 transition-transform">
+                        <ShieldCheck className="w-6 h-6" />
+                      </div>
+                      <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 bg-emerald-500/10 text-emerald-500 rounded-full border border-emerald-500/20">
+                        Edital
+                      </span>
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-black text-foreground group-hover:text-emerald-500 transition-colors">
+                        Conhecimentos Específicos
+                      </h3>
+                      <p className="text-xs text-muted-foreground font-semibold mt-0.5">
+                        Foco no Seu Cargo
+                      </p>
+                    </div>
+
+                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+                      {profissaoUsuario?.nome || "Questões alinhadas ao seu edital selecionado"}.
+                    </p>
+                  </div>
+
+
+                  <div className="relative z-10 flex items-center justify-between text-xs font-black text-emerald-500 group-hover:gap-1.5 transition-all pt-3 border-t border-border/40 w-full">
+                    <span>Iniciar Treino</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </button>
+
+                {/* Inglês (Apenas para Nível Superior) */}
+                {showIngles && (
+                  <button
+                    onClick={() =>
+                      handleSimuladoClick("ingles", "Língua Inglesa", "red")
+                    }
+                    className="relative overflow-hidden bg-card border border-border/70 rounded-3xl p-6 text-left shadow-sm hover:border-rose-500/50 hover:-translate-y-1 hover:shadow-md transition-all group flex flex-col justify-between space-y-5 min-h-[240px]"
+                  >
+                    <div className="absolute inset-y-0 right-0 w-2/3 md:w-3/4 z-0 pointer-events-none">
+                      <Image src="/images/simulado_ingles.png" alt="" fill className="object-cover object-right opacity-20 md:opacity-40 group-hover:scale-105 transition-transform duration-700" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-card via-card/90 to-transparent" />
+                    </div>
+
+                    <div className="relative z-10 space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div className="p-3 bg-rose-500/10 text-rose-500 rounded-2xl group-hover:scale-110 transition-transform">
+                          <Globe className="w-6 h-6" />
+                        </div>
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 bg-rose-500/10 text-rose-500 rounded-full border border-rose-500/20">
+                          Superior
+                        </span>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-black text-foreground group-hover:text-rose-500 transition-colors">
+                          Língua Inglesa
+                        </h3>
+                        <p className="text-xs text-muted-foreground font-semibold mt-0.5">
+                          Interpretação Técnica
+                        </p>
+                      </div>
+
+                      <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+                        Compreensão técnica de textos e vocabulário da indústria de energia.
+                      </p>
+                    </div>
+
+
+                    <div className="relative z-10 flex items-center justify-between text-xs font-black text-rose-500 group-hover:gap-1.5 transition-all pt-3 border-t border-border/40 w-full">
+                      <span>Iniciar Treino</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </button>
+                )}
+              </div>
+            </section>
+
+
+            {/* NÍVEL 4: TREINO INTENSIVO & MARATONA CESGRANRIO (LARGURA TOTAL HERO STYLE) */}
+            <section className="space-y-6">
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-black text-foreground flex items-center gap-2.5 tracking-tight">
+                    <Flame className="w-6 h-6 text-orange-500" />
+                    Treino Intensivo & Maratonas Oficiais
+                  </h2>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                    Provas completas com cronômetro para simular o dia da prova.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {userData.plan === "free" ? (
+                    <>
+                      {/* FREE: Treino Intensivo (Hero Style) */}
+                      <div className="relative bg-card border border-border/70 rounded-3xl p-7 overflow-hidden flex flex-col justify-between shadow-sm min-h-[280px] group">
+                        <Image src="/images/treino_intensivo.png" alt="" fill className="object-cover object-right opacity-30 md:opacity-60 transition-transform duration-700" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-card via-card/90 to-transparent" />
+                        
+                        <div className="absolute inset-0 bg-background/80 dark:bg-slate-950/80 backdrop-blur-md z-10 flex flex-col items-center justify-center p-6 text-center space-y-4">
+                          <div className="p-4 bg-amber-500/10 text-amber-500 rounded-full border border-amber-500/20">
+                            <Lock className="w-8 h-8" />
+                          </div>
+                          <h3 className="text-xl font-black text-foreground">
+                            Simulado Intensivo (20 Questões)
+                          </h3>
+                          <p className="text-sm text-muted-foreground max-w-sm">
+                            Exclusivo para assinantes PRO. Treine tópicos específicos em profundidade.
+                          </p>
+                          <Link href="/pricing" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black rounded-xl text-sm shadow-md hover:scale-105 transition-all uppercase tracking-wider mt-2">
+                            <Rocket className="w-4 h-4 fill-slate-950" />
+                            Acessar com PRO
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* FREE: Maratona (Hero Style) */}
+                      <div className="relative bg-card border border-border/70 rounded-3xl p-7 overflow-hidden flex flex-col justify-between shadow-sm min-h-[280px] group">
+                        <Image src="/images/maratona_cesgranrio.png" alt="" fill className="object-cover object-right opacity-30 md:opacity-60 transition-transform duration-700" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-card via-card/90 to-transparent" />
+                        
+                        <div className="absolute inset-0 bg-background/80 dark:bg-slate-950/80 backdrop-blur-md z-10 flex flex-col items-center justify-center p-6 text-center space-y-4">
+                          <div className="p-4 bg-amber-500/10 text-amber-500 rounded-full border border-amber-500/20">
+                            <Crown className="w-8 h-8" />
+                          </div>
+                          <h3 className="text-xl font-black text-foreground">
+                            Maratona CESGRANRIO (70 Questões)
+                          </h3>
+                          <p className="text-sm text-muted-foreground max-w-sm">
+                            Simulação oficial de 4h.
+                          </p>
+                          <Link href="/pricing" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black rounded-xl text-sm shadow-md hover:scale-105 transition-all uppercase tracking-wider mt-2">
+                            <Crown className="w-4 h-4 fill-slate-950" />
+                            Seja PRO
+                          </Link>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* PRO: Treino Intensivo (Hero Style) */}
+                      <button
+                        onClick={() => setConfigModal({ open: true, tipo: "intensivo", nome: "Treino Intensivo Focalizado", cor: "indigo", qtd: 20 })}
+                        className="group relative bg-card border border-border/70 rounded-3xl p-8 shadow-sm hover:border-indigo-500/50 hover:shadow-lg transition-all flex flex-col justify-center space-y-6 text-left overflow-hidden min-h-[280px]"
+                      >
+                        <div className="absolute inset-y-0 right-0 w-2/3 z-0 pointer-events-none">
+                          <Image src="/images/treino_intensivo.png" alt="" fill className="object-cover object-right opacity-30 md:opacity-60 transition-transform duration-700" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-card via-card/90 to-transparent pointer-events-none" />
+                        </div>
+
+                        <div className="relative z-10 flex flex-col gap-4 max-w-md">
+                          <div className="flex items-center gap-4">
+                            <div className="p-4 bg-indigo-500/10 text-indigo-500 rounded-2xl group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all shrink-0 backdrop-blur-md border border-indigo-500/20">
+                              <Target className="w-8 h-8" />
+                            </div>
+                            <span className="text-xs font-extrabold uppercase tracking-wider px-3 py-1 bg-indigo-500/10 text-indigo-500 rounded-full border border-indigo-500/20 backdrop-blur-md">
+                              20 Questões
+                            </span>
+                          </div>
+
+                          <div className="space-y-2 mt-2">
+                            <h3 className="text-2xl sm:text-3xl font-black text-foreground group-hover:text-indigo-500 transition-colors tracking-tight">
+                              Treino Intensivo
+                            </h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
+                              20 questões focadas no tópico da sua escolha com análise imediata e correção detalhada.
+                            </p>
+                          </div>
+                          
+                          <div className="flex items-center gap-2 text-sm font-black text-indigo-500 group-hover:gap-3 transition-all pt-4">
+                            <span>Configurar Treino</span>
+                            <ArrowRight className="w-4 h-4" />
+                          </div>
+                        </div>
+                      </button>
+
+                      {/* PRO: Maratona (Hero Style) */}
+                      <button
+                        onClick={() => setConfigModal({ open: true, tipo: "maratona", nome: "Maratona Oficial CESGRANRIO", cor: "yellow", qtd: 70 })}
+                        className="group relative bg-card border border-border/70 rounded-3xl p-8 shadow-sm hover:border-amber-500/50 hover:shadow-lg transition-all flex flex-col justify-center space-y-6 text-left overflow-hidden min-h-[280px]"
+                      >
+                        <div className="absolute inset-y-0 right-0 w-2/3 z-0 pointer-events-none">
+                          <Image src="/images/maratona_cesgranrio.png" alt="" fill className="object-cover object-right opacity-30 md:opacity-60 transition-transform duration-700" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-card via-card/90 to-transparent pointer-events-none" />
+                        </div>
+
+                        <div className="relative z-10 flex flex-col gap-4 max-w-md">
+                          <div className="flex items-center gap-4">
+                            <div className="p-4 bg-amber-500/10 text-amber-500 rounded-2xl group-hover:scale-110 group-hover:bg-amber-500/20 transition-all shrink-0 backdrop-blur-md border border-amber-500/20">
+                              <Crown className="w-8 h-8" />
+                            </div>
+                            <span className="text-xs font-extrabold uppercase tracking-wider px-3 py-1 bg-amber-500/10 text-amber-500 rounded-full border border-amber-500/20 backdrop-blur-md">
+                              70 Questões • 4h
+                            </span>
+                          </div>
+
+                          <div className="space-y-2 mt-2">
+                            <h3 className="text-2xl sm:text-3xl font-black text-foreground group-hover:text-amber-500 transition-colors tracking-tight">
+                              Maratona CESGRANRIO
+                            </h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
+                              Simulado completo com a distribuição exata do edital para o seu cargo.
+                            </p>
+                          </div>
+                          
+                          <div className="flex items-center gap-2 text-sm font-black text-amber-500 group-hover:gap-3 transition-all pt-4">
+                            <span>Iniciar Maratona</span>
+                            <ArrowRight className="w-4 h-4" />
+                          </div>
+                        </div>
+                      </button>
+                    </>
+                  )}
+                </div>
+            </section>
+
+          </div>
+        </>
         ) : (
           /* TAB DE RANKING COMPLETO */
           <RankingTable userCargo={userData.cargo || ""} />

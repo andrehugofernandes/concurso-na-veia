@@ -304,16 +304,12 @@ export default function AulaAdministracaoTributariaSuprimento({
               moduloNumero={num}
               variant={mv[num]}
               sinteseEstrategica={{ title: "Resumo Estratégico", content: `Foco total na CESGRANRIO para o módulo ${num}.` }}
-              podcast={{
-            aulaId: "administracaotributaria",
-            aulaTitulo: "Administracao Tributaria",
-            materia: "suprimento",
-            materiaId: "suprimento",
-            moduloNumero: 1,
-            moduloTitulo: "Módulo 1",
-            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-          }}
-          />
+              resumoVisual={{
+                moduloNome: `Módulo ${num}`,
+                tituloAula: "Administração Tributária Suprimento",
+                materia: "especifica-bloco-iii-tributos-suprimento",
+              }}
+            />
 
             <QuizInterativo
               titulo={`Prática: Módulo ${num}`}

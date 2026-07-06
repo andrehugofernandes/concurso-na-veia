@@ -107,6 +107,48 @@ export function PodcastPlayerCard({
     };
   }, [playlist]);
 
+  // Verifica se o podcast já existe no Storage ao carregar a página/módulo
+  useEffect(() => {
+    const checkExistingPodcast = async () => {
+      try {
+        console.log(`[PodcastClient] 🔍 Verificando se áudio já existe para ${aulaId} - módulo ${moduloNumero}`);
+        const response = await fetch("/api/podcast/generate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            aulaId,
+            aulaTitulo,
+            materia,
+            materiaId,
+            moduloNumero,
+            moduloTitulo,
+            checkOnly: true
+          }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success && data.exists && data.audioUrl) {
+            console.log(`[PodcastClient] 🎯 Cache HIT no client: áudio localizado! URL: ${data.audioUrl}`);
+            const tracks = ["/podcasts/jingles/intro.mp3", data.audioUrl, "/podcasts/jingles/outro.mp3"];
+            setPlaylist(tracks);
+            setCurrentTrackIndex(0);
+            setAudioUrl(tracks[0]);
+          } else {
+            console.log("[PodcastClient] 💨 Cache MISS no client: áudio não encontrado no Storage.");
+            setAudioUrl(null);
+            setPlaylist([]);
+            setScript(null);
+          }
+        }
+      } catch (err) {
+        console.warn("[PodcastClient] Erro ao checar áudio existente:", err);
+      }
+    };
+
+    checkExistingPodcast();
+  }, [aulaId, moduloNumero, aulaTitulo, materia, materiaId, moduloTitulo]);
+
   // Força o recarregamento do áudio quando audioUrl mudar
   useEffect(() => {
     if (audioUrl && audioRef.current) {
@@ -180,9 +222,15 @@ export function PodcastPlayerCard({
         setScript(data.script);
       }
 
-      if (data.audioBase64) {
+      if (data.audioUrl) {
+        console.log(`[PodcastClient] 🎉 URL do áudio recebida do Supabase: ${data.audioUrl}`);
+        const tracks = ["/podcasts/jingles/intro.mp3", data.audioUrl, "/podcasts/jingles/outro.mp3"];
+        setPlaylist(tracks);
+        setCurrentTrackIndex(0);
+        setAudioUrl(tracks[0]);
+      } else if (data.audioBase64) {
         try {
-          console.log("[PodcastClient] 🔄 Decodificando áudio base64...");
+          console.log("[PodcastClient] 🔄 Decodificando áudio base64 (fallback)...");
           const cleanedBase64 = data.audioBase64.replace(/\s/g, "");
           const binaryString = atob(cleanedBase64);
           const bytes = new Uint8Array(binaryString.length);

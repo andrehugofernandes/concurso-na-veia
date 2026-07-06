@@ -105,7 +105,7 @@ export function getAIProvider(): AIProvider {
           "Groq",
           "https://api.groq.com/openai/v1",
           process.env.GROQ_API_KEY,
-          "llama3-8b-8192"
+          "llama-3.1-8b-instant"
         ),
       });
     } catch (e) {
@@ -122,7 +122,7 @@ export function getAIProvider(): AIProvider {
           "OpenRouter",
           "https://openrouter.ai/api/v1",
           process.env.OPENROUTER_API_KEY,
-          "google/gemini-2.5-flash:free"
+          "meta-llama/llama-3.3-70b-instruct:free"
         ),
       });
     } catch (e) {
