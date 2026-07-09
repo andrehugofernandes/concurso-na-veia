@@ -172,7 +172,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           content: <div className="text-lg space-y-2"><p><strong>1. Conformidade:</strong> Cumprir prazos e obrigações</p><p><strong>2. Otimização:</strong> Reduzir custos legalmente</p><p><strong>3. Segurança:</strong> Documentação robusta</p></div>,
         }}
         podcast={{
-            aulaId: "administracaotributaria",
+            aulaId: "administracao-tributaria",
             aulaTitulo: "Administracao Tributaria",
             materia: "Administração",
             materiaId: "administracao",
@@ -287,7 +287,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           content: <div className="text-lg space-y-2"><p><strong>Federal:</strong> RFB (IR, COFINS, PIS)</p><p><strong>Estadual:</strong> SEFAZ (ICMS)</p><p><strong>Municipal:</strong> Prefeitura (ISS)</p></div>,
         }}
         podcast={{
-            aulaId: "administracaotributaria",
+            aulaId: "administracao-tributaria",
             aulaTitulo: "Administracao Tributaria",
             materia: "Administração",
             materiaId: "administracao",
@@ -402,7 +402,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           content: <div className="text-lg space-y-2"><p><strong>NF-e:</strong> Venda de mercadoria</p><p><strong>RPA:</strong> Serviço autônomo</p><p><strong>ECD:</strong> Contabilidade digital</p></div>,
         }}
         podcast={{
-            aulaId: "administracaotributaria",
+            aulaId: "administracao-tributaria",
             aulaTitulo: "Administracao Tributaria",
             materia: "Administração",
             materiaId: "administracao",
@@ -517,7 +517,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           content: <div className="text-lg space-y-2"><p><strong>ECF:</strong> Até dia 15 (mensal)</p><p><strong>DACON:</strong> Quando compensar</p><p><strong>DIPJ:</strong> Até 30 de abril</p></div>,
         }}
         podcast={{
-            aulaId: "administracaotributaria",
+            aulaId: "administracao-tributaria",
             aulaTitulo: "Administracao Tributaria",
             materia: "Administração",
             materiaId: "administracao",
@@ -632,7 +632,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           content: <div className="text-lg space-y-2"><p><strong>Dia 15:</strong> ICMS, PIS, COFINS, INSS</p><p><strong>Dia 21:</strong> IR (estimativa)</p><p><strong>Não atrasar = evitar multas imensas</strong></p></div>,
         }}
         podcast={{
-            aulaId: "administracaotributaria",
+            aulaId: "administracao-tributaria",
             aulaTitulo: "Administracao Tributaria",
             materia: "Administração",
             materiaId: "administracao",
@@ -747,7 +747,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           content: <div className="text-lg space-y-2"><p><strong>Conformidade:</strong> 100% cumprimento</p><p><strong>+Otimização:</strong> reduzir custos legalmente</p><p><strong>=Excelência tributária</strong></p></div>,
         }}
         podcast={{
-            aulaId: "administracaotributaria",
+            aulaId: "administracao-tributaria",
             aulaTitulo: "Administracao Tributaria",
             materia: "Administração",
             materiaId: "administracao",
@@ -862,7 +862,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           content: <div className="text-lg space-y-2"><p><strong>Débito (saída):</strong> ICMS na venda</p><p><strong>- Crédito (entrada):</strong> ICMS na compra</p><p><strong>= ICMS a pagar</strong> (a diferença)</p></div>,
         }}
         podcast={{
-            aulaId: "administracaotributaria",
+            aulaId: "administracao-tributaria",
             aulaTitulo: "Administracao Tributaria",
             materia: "Administração",
             materiaId: "administracao",
@@ -977,7 +977,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           content: <div className="text-lg space-y-2"><p><strong>ERP → NF-e (valida) → Assina (cert.) → SEFAZ</strong></p><p><strong>ERP → SPED (valida) → Assina → RFB</strong></p><p>Tudo integrado, automático</p></div>,
         }}
         podcast={{
-            aulaId: "administracaotributaria",
+            aulaId: "administracao-tributaria",
             aulaTitulo: "Administracao Tributaria",
             materia: "Administração",
             materiaId: "administracao",
@@ -1092,7 +1092,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           content: <div className="text-lg space-y-2"><p><strong>27 estados:</strong> cada um com ICMS diferente</p><p><strong>Bilhões em imposto:</strong> exigem precisão absoluta</p><p><strong>Royalties/PE:</strong> repassos bilionários ao governo</p></div>,
         }}
         podcast={{
-            aulaId: "administracaotributaria",
+            aulaId: "administracao-tributaria",
             aulaTitulo: "Administracao Tributaria",
             materia: "Administração",
             materiaId: "administracao",
@@ -1210,7 +1210,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           content: <div className="text-lg space-y-2"><p><strong>10 questões integradas</strong> cobrindo todos módulos</p><p><strong>Conhecimento + Procedimentos + Gestão</strong></p><p><strong>70%+ = Expert em Tributária</strong></p></div>,
         }}
         podcast={{
-            aulaId: "administracaotributaria",
+            aulaId: "administracao-tributaria",
             aulaTitulo: "Administracao Tributaria",
             materia: "Administração",
             materiaId: "administracao",

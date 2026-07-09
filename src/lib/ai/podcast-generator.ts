@@ -179,7 +179,7 @@ export async function synthesizeSegment(
   texto: string,
   speaker: "apresentadora" | "professor",
   maxRetries = 2
-): Promise<{ audioBase64: string; mimeType: string } | null> {
+): Promise<{ audioBase64: string; mimeType: string; error?: string } | null> {
   // Omitido: Free LLM TTS foi removido para focar direto no Gemini TTS, mais rápido e com cota premium
 
   // 2. Fallback para Gemini TTS
@@ -230,8 +230,8 @@ export async function synthesizeSegment(
       );
 
       if (!audioPart) {
-        console.warn("[Podcast-TTS] Nenhum áudio retornado pelo Gemini");
-        return null;
+        console.warn("[Podcast-TTS] Nenhum áudio retornado pelo Gemini. Response:", JSON.stringify(data));
+        return { audioBase64: "", mimeType: "error", error: "Nenhum áudio retornado: " + JSON.stringify(data) };
       }
 
       return {
@@ -240,7 +240,7 @@ export async function synthesizeSegment(
       };
     } catch (error: any) {
       console.error(`[Podcast-TTS] Erro ao sintetizar no Gemini (Tentativa ${attempt + 1}):`, error.message);
-      if (attempt >= maxRetries) return null;
+      if (attempt >= maxRetries) return { audioBase64: "", mimeType: "error", error: error.message };
     }
   }
   
@@ -293,6 +293,12 @@ export async function generatePodcast(
       const pcmBuffer = Buffer.from(audioResult.audioBase64, "base64");
       combinedPcm = Buffer.concat([combinedPcm, pcmBuffer]);
       hasAudio = true;
+    } else if (audioResult && (audioResult as any).error) {
+      console.warn(`[Podcast] Erro ao sintetizar segmento ${i + 1}:`, (audioResult as any).error);
+      return {
+        script,
+        error: `Falha no TTS (Segmento ${i+1}): ${(audioResult as any).error}`,
+      };
     } else {
       console.warn(`[Podcast] Falha ao sintetizar segmento ${i + 1}`);
     }
