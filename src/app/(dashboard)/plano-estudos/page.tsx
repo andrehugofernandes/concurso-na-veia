@@ -68,6 +68,7 @@ export default function PlanoEstudosPage() {
   const [configurando, setConfigurando] = useState<boolean>(true);
   const [cronograma, setCronograma] = useState<DiaEstudo[]>([]);
   const [programa, setPrograma] = useState<MateriaConteudo[]>([]);
+  const [dataConclusao, setDataConclusao] = useState<Date | null>(null);
   const [progressoModulos, setProgressoModulos] = useState<LessonProgress[]>([]);
   const [topicosDificuldade, setTopicosDificuldade] = useState<
     {
@@ -146,6 +147,9 @@ export default function PlanoEstudosPage() {
           const parsed = JSON.parse(planoSalvo);
           setHorasSemanais(parsed.horasSemanais);
           setCronograma(parsed.cronograma);
+          if (parsed.dataConclusao) {
+            setDataConclusao(new Date(parsed.dataConclusao));
+          }
           setConfigurando(false);
         } catch (e) {}
       }
@@ -160,30 +164,37 @@ export default function PlanoEstudosPage() {
     const minutosPorDia = Math.round((horasSemanais * 60) / 7);
     const novoCronograma: DiaEstudo[] = [];
 
-    const todosTopicos: {
-      materiaId: string;
-      materiaNome: string;
-      topicoId: string;
-      topicoNome: string;
-      cor: string;
-      icone: string;
-    }[] = [];
+    // Estrutura as matérias com suas durações
+    const materiasDisponiveis = programa.map((m) => ({
+      ...m,
+      topicos: m.topicos.map((t) => ({
+        materiaId: m.id,
+        materiaNome: m.nome,
+        topicoId: t.id,
+        topicoNome: t.titulo,
+        cor: m.cor || "from-slate-600 to-slate-800",
+        icone: m.icone || "📚",
+        duracaoOriginal: parseInt(t.duracao) || 30,
+      })),
+    }));
 
-    programa.forEach((m) => {
-      m.topicos.forEach((t) => {
-        todosTopicos.push({
-          materiaId: m.id,
-          materiaNome: m.nome,
-          topicoId: t.id,
-          topicoNome: t.titulo,
-          cor: m.cor || "from-slate-600 to-slate-800",
-          icone: m.icone || "📚",
-        });
-      });
-    });
+    // Intercalação (Round-Robin) de tópicos
+    const todosTopicos: typeof materiasDisponiveis[0]["topicos"] = [];
+    let added = true;
+    const indices = new Array(materiasDisponiveis.length).fill(0);
+
+    while (added) {
+      added = false;
+      for (let i = 0; i < materiasDisponiveis.length; i++) {
+        if (indices[i] < materiasDisponiveis[i].topicos.length) {
+          todosTopicos.push(materiasDisponiveis[i].topicos[indices[i]]);
+          indices[i]++;
+          added = true;
+        }
+      }
+    }
 
     let topicoIndex = 0;
-
     const dias = getDiasDinamicos();
 
     for (let i = 0; i < 7; i++) {
@@ -192,9 +203,11 @@ export default function PlanoEstudosPage() {
 
       while (tempoRestante >= 30 && topicoIndex < todosTopicos.length) {
         const topicoAtual = todosTopicos[topicoIndex];
-        const duracao = tempoRestante >= 60 ? 60 : tempoRestante;
-        materiasDoDia.push({ ...topicoAtual, duracaoMinutos: duracao });
-        tempoRestante -= duracao;
+        const duracao = Math.min(topicoAtual.duracaoOriginal, tempoRestante);
+        const tempoGasto = Math.max(duracao, 30); // Pelo menos 30min por sessão
+
+        materiasDoDia.push({ ...topicoAtual, duracaoMinutos: tempoGasto });
+        tempoRestante -= tempoGasto;
         topicoIndex = (topicoIndex + 1) % todosTopicos.length;
       }
 
@@ -205,16 +218,29 @@ export default function PlanoEstudosPage() {
       });
     }
 
+    const dataEstimada = new Date();
+    dataEstimada.setDate(dataEstimada.getDate() + (semanasEstimadas * 7));
+
     setCronograma(novoCronograma);
+    setDataConclusao(dataEstimada);
     setConfigurando(false);
+    
     localStorage.setItem(
       "planoEstudos",
-      JSON.stringify({ horasSemanais, cronograma: novoCronograma })
+      JSON.stringify({ horasSemanais, cronograma: novoCronograma, dataConclusao: dataEstimada })
     );
   };
 
   const totalMinutosSemana = horasSemanais * 60;
   const minutosFormato = `${horasSemanais}h`;
+
+  const totalMinutosEdital = programa.reduce((total, m) => {
+    return total + m.topicos.reduce((tTotal, t) => tTotal + (parseInt(t.duracao) || 30), 0);
+  }, 0);
+  
+  const semanasEstimadas = Math.ceil(totalMinutosEdital / (horasSemanais * 60)) || 1;
+  const simulacaoDataEstimada = new Date();
+  simulacaoDataEstimada.setDate(simulacaoDataEstimada.getDate() + (semanasEstimadas * 7));
 
   if (loadingUser || !usuario) {
     return (
@@ -285,15 +311,13 @@ export default function PlanoEstudosPage() {
               bg: "bg-amber-500/10 border-amber-500/20",
             },
             {
-              label: "Alertas CESGRANRIO",
-              value: topicosDificuldade.length.toString(),
-              icon: topicosDificuldade.length > 0 ? LuTriangleAlert : LuTrophy,
-              color:
-                topicosDificuldade.length > 0 ? "text-rose-500" : "text-emerald-500",
-              bg:
-                topicosDificuldade.length > 0
-                  ? "bg-rose-500/10 border-rose-500/20"
-                  : "bg-emerald-500/10 border-emerald-500/20",
+              label: "Conclusão Estimada",
+              value: dataConclusao 
+                ? dataConclusao.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' })
+                : "--",
+              icon: LuTarget,
+              color: "text-purple-500",
+              bg: "bg-purple-500/10 border-purple-500/20",
             },
           ].map((stat, i) => (
             <div
@@ -355,6 +379,10 @@ export default function PlanoEstudosPage() {
 
             <div className="flex justify-between text-xs text-muted-foreground">
               <span>5h mínimo</span>
+              <div className="flex flex-col items-center">
+                <span className="font-semibold text-primary">Conclusão em {semanasEstimadas} semanas</span>
+                <span>({simulacaoDataEstimada.toLocaleDateString('pt-BR')})</span>
+              </div>
               <span>40h máximo</span>
             </div>
 
