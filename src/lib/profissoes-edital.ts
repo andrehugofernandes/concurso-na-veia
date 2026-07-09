@@ -623,9 +623,16 @@ export const PROFISSOES: Profissao[] = [
 
 ];
 
-// Função para obter profissão por ID
-export function getProfissaoById(id: string): Profissao | undefined {
-    return PROFISSOES.find((p) => p.id === id);
+// Função para obter profissão por ID ou nome
+export function getProfissaoById(idOrName: string): Profissao | undefined {
+    if (!idOrName) return undefined;
+    const normalized = idOrName.toLowerCase().trim();
+    return PROFISSOES.find((p) => 
+        p.id.toLowerCase() === normalized || 
+        p.nome.toLowerCase() === normalized ||
+        normalized.includes(p.id.toLowerCase()) ||
+        normalized.includes(p.nome.toLowerCase())
+    );
 }
 
 // Função para obter profissões por área
