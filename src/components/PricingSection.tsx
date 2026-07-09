@@ -149,14 +149,14 @@ export default function PricingSection() {
         </AnimatedElement>
 
         {/* Cards Grid: Iniciante | Aprovado | Elite | Elite Total */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-2 max-w-[1400px] mx-auto mb-16 px-4 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-2 max-w-[1400px] mx-auto mb-16 px-4 items-center justify-center">
           {/* FREE */}
-          <AnimatedElement delay={0.2} className="bg-background border border-border rounded-2xl p-6 flex flex-col shadow-sm hover:shadow-md transition-all h-full min-h-[480px]">
+          <AnimatedElement delay={0.2} className="bg-background border border-border rounded-2xl p-6 flex flex-col shadow-sm hover:shadow-md min-h-[460px] transition-all">
             <div className="mb-auto">
               <h3 className="text-sm font-bold text-muted-foreground mb-1 uppercase tracking-wider">Iniciante</h3>
               <div className="flex items-end gap-1 mb-3">
                 <span className="text-3xl font-black text-foreground tracking-tight">R$ 0</span>
-                <span className="text-muted-foreground text-xs mb-1">/mês</span>
+                <span className="text-muted-foreground text-xs mb-1">único</span>
               </div>
               <p className="text-muted-foreground/70 text-xs mb-6 leading-relaxed">
                 Conheça a plataforma sem compromisso por tempo limitado.
@@ -188,12 +188,12 @@ export default function PricingSection() {
           </AnimatedElement>
 
           {/* APROVADO */}
-          <AnimatedElement delay={0.3} className="bg-muted/30 border border-border rounded-2xl p-6 flex flex-col shadow-sm hover:shadow-md transition-all h-full min-h-[480px]">
+          <AnimatedElement delay={0.3} className="bg-muted/30 border border-border rounded-2xl p-6 flex flex-col shadow-sm hover:shadow-md min-h-[500px] transition-all">
             <div className="mb-auto">
               <h3 className="text-sm font-bold text-primary mb-1 uppercase tracking-wider">{planos.aprovado.nome}</h3>
               <div className="flex items-end gap-1 mb-3">
                 <span className="text-3xl font-black text-foreground tracking-tight">R$ {planos.aprovado.preco}</span>
-                <span className="text-muted-foreground text-xs mb-1">{planos.aprovado.centavos}/mês</span>
+                <span className="text-muted-foreground text-xs mb-1">{planos.aprovado.centavos} único</span>
               </div>
               <p className="text-muted-foreground/70 text-xs mb-6 leading-relaxed">
                 {planos.aprovado.descricao}
@@ -218,7 +218,7 @@ export default function PricingSection() {
           </AnimatedElement>
 
           {/* ELITE */}
-          <AnimatedElement delay={0.4} className="bg-primary border-4 border-primary rounded-3xl p-8 flex flex-col relative shadow-2xl shadow-primary/40 lg:scale-110 z-30 min-h-[580px] text-primary-foreground transform transition-all hover:scale-[1.12]">
+          <AnimatedElement delay={0.4} className="bg-primary border-4 border-primary rounded-3xl p-8 flex flex-col relative shadow-2xl shadow-primary/40 z-30 min-h-[540px] text-primary-foreground transition-all">
             {/* Glow effect */}
             <div className="absolute inset-0 bg-white/10 rounded-3xl pointer-events-none opacity-50 blur-xl" />
             
@@ -234,7 +234,7 @@ export default function PricingSection() {
               <h3 className="text-xl font-black mb-1 uppercase tracking-wider">{planos.elite.nome}</h3>
               <div className="flex items-end gap-1 mb-4 whitespace-nowrap">
                 <span className="text-5xl font-black tracking-tight">R$ {planos.elite.preco}</span>
-                <span className="opacity-80 text-sm mb-1">{planos.elite.centavos}/mês</span>
+                <span className="opacity-80 text-sm mb-1">{planos.elite.centavos} único</span>
               </div>
               <p className="opacity-90 text-sm mb-8 font-medium leading-relaxed">
                 {planos.elite.descricao}
@@ -259,7 +259,7 @@ export default function PricingSection() {
           </AnimatedElement>
 
           {/* ELITE TOTAL */}
-          <AnimatedElement delay={0.5} className="bg-slate-950 border-4 border-indigo-500/50 rounded-3xl p-8 flex flex-col relative shadow-2xl shadow-indigo-500/20 lg:scale-[1.15] z-40 min-h-[600px] text-white transform transition-all hover:scale-[1.18] group">
+          <AnimatedElement delay={0.5} className="bg-slate-950 border-4 border-indigo-500/50 rounded-3xl p-8 flex flex-col relative shadow-2xl shadow-indigo-500/20 z-40 min-h-[580px] text-white transition-all group">
             {/* Premium Glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-primary/10 rounded-3xl pointer-events-none opacity-50 blur-2xl group-hover:opacity-80 transition-opacity" />
             
@@ -274,7 +274,7 @@ export default function PricingSection() {
               <h3 className="text-xl font-black mb-1 uppercase tracking-wider text-indigo-400">Elite Total</h3>
               <div className="flex items-end gap-1 mb-4 whitespace-nowrap">
                 <span className="text-5xl font-black tracking-tight">R$ 149</span>
-                <span className="opacity-80 text-sm mb-1">,99/mês</span>
+                <span className="opacity-80 text-sm mb-1">,99 único</span>
               </div>
               <p className="opacity-90 text-sm mb-8 font-medium leading-relaxed text-slate-300">
                 Acesso total e ilimitado a todos os cargos, níveis e recursos da plataforma.

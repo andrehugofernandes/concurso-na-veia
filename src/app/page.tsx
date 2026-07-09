@@ -65,7 +65,7 @@ export default function HomeLandingPage() {
       <TestimonialsSection />
 
       {/* Planos de Preço */}
-      <div id="pricing" className="bg-white dark:bg-slate-950">
+      <div className="bg-white dark:bg-slate-950">
         <PricingSection />
       </div>
 
