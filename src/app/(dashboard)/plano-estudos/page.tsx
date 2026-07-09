@@ -79,6 +79,7 @@ export default function PlanoEstudosPage() {
       materiaNome: string;
     }[]
   >([]);
+  const [visaoPlano, setVisaoPlano] = useState<'semanal' | 'total'>('semanal');
 
   useEffect(() => {
     if (loadingUser) return;
@@ -196,8 +197,9 @@ export default function PlanoEstudosPage() {
 
     let topicoIndex = 0;
     const dias = getDiasDinamicos();
+    let i = 0;
 
-    for (let i = 0; i < 7; i++) {
+    while (topicoIndex < todosTopicos.length) {
       let tempoRestante = minutosPorDia;
       const materiasDoDia = [];
 
@@ -208,14 +210,16 @@ export default function PlanoEstudosPage() {
 
         materiasDoDia.push({ ...topicoAtual, duracaoMinutos: tempoGasto });
         tempoRestante -= tempoGasto;
-        topicoIndex = (topicoIndex + 1) % todosTopicos.length;
+        topicoIndex++;
       }
 
+      const diaIdx = i % 7;
       novoCronograma.push({
-        dia: dias[i].nome,
-        abrev: dias[i].abrev,
+        dia: dias[diaIdx].nome,
+        abrev: i < 7 ? dias[diaIdx].abrev : dias[diaIdx].nome.substring(0, 3).toUpperCase(),
         materias: materiasDoDia,
       });
+      i++;
     }
 
     const dataEstimada = new Date();
@@ -419,72 +423,173 @@ export default function PlanoEstudosPage() {
           </button>
         </section>
       ) : (
-        /* ── CRONOGRAMA SEMANAL (grid 7 colunas) ────────────── */
+        /* ── CRONOGRAMA SEMANAL E TOTAL ────────────── */
         <section className="space-y-4">
-          <div className="flex items-center gap-2">
-            <LuCalendarDays className="w-5 h-5 text-muted-foreground" />
-            <h2 className="text-lg font-bold text-foreground">
-              Cronograma Semanal
-            </h2>
-          </div>
-
-          {/* Grid 7 colunas — scroll horizontal em telas pequenas */}
-          <div className="overflow-x-auto pb-2">
-            <div className="grid grid-cols-7 gap-3 min-w-[700px]">
-              {cronograma.map((dia, idx) => (
-                <div
-                  key={idx}
-                  className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col"
-                >
-                  {/* Cabeçalho do dia */}
-                  <div className="px-3 py-2.5 border-b border-border/60 text-center">
-                    <span className="block text-[11px] font-black text-muted-foreground uppercase tracking-widest">
-                      {dia.abrev}
-                    </span>
-                    {dia.materias.length > 0 && (
-                      <span className="text-[10px] text-muted-foreground flex items-center justify-center gap-1 mt-0.5">
-                        <LuClock className="w-2.5 h-2.5" />
-                        {dia.materias.reduce((a, m) => a + m.duracaoMinutos, 0)}min
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Cards de matérias empilhados */}
-                  <div className="p-2 flex flex-col gap-2 flex-1">
-                    {dia.materias.length === 0 ? (
-                      <div className="flex-1 flex items-center justify-center py-6">
-                        <span className="text-xs text-muted-foreground text-center">☕ Descanso</span>
-                      </div>
-                    ) : (
-                      dia.materias.map((mat, i) => (
-                        <Link
-                          key={i}
-                          href={`/aulas/${mat.materiaId}/${mat.topicoId}`}
-                          className="group block bg-background hover:bg-muted/40 border border-border hover:border-emerald-500/40 rounded-xl p-3 transition-all hover:shadow-sm"
-                        >
-                          {/* Barra colorida no topo */}
-                          <div
-                            className={`h-0.5 w-full rounded-full bg-gradient-to-r ${mat.cor} mb-2`}
-                          />
-                          <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider flex items-center gap-1 mb-1">
-                            <span>{mat.icone}</span>
-                            <span className="truncate">{mat.materiaNome}</span>
-                          </div>
-                          <p className="text-xs font-semibold text-foreground line-clamp-2 leading-tight">
-                            {mat.topicoNome}
-                          </p>
-                          <span className="text-[10px] text-muted-foreground flex items-center gap-1 mt-1.5">
-                            <LuClock className="w-2.5 h-2.5" />
-                            {mat.duracaoMinutos}min
-                          </span>
-                        </Link>
-                      ))
-                    )}
-                  </div>
-                </div>
-              ))}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <LuCalendarDays className="w-5 h-5 text-muted-foreground" />
+              <h2 className="text-lg font-bold text-foreground">
+                {visaoPlano === 'semanal' ? 'Cronograma Semanal' : 'Panorama Geral (Edital Completo)'}
+              </h2>
+            </div>
+            
+            {/* Toggle Visão */}
+            <div className="flex items-center p-1 bg-muted/50 border border-border rounded-xl">
+              <button
+                onClick={() => setVisaoPlano('semanal')}
+                className={`px-4 py-1.5 text-sm font-semibold rounded-lg transition-all ${
+                  visaoPlano === 'semanal'
+                    ? 'bg-background text-foreground shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                Semanal
+              </button>
+              <button
+                onClick={() => setVisaoPlano('total')}
+                className={`px-4 py-1.5 text-sm font-semibold rounded-lg transition-all ${
+                  visaoPlano === 'total'
+                    ? 'bg-background text-foreground shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                Total
+              </button>
             </div>
           </div>
+
+          {visaoPlano === 'semanal' ? (
+            /* Grid 7 colunas — scroll horizontal em telas pequenas */
+            <div className="overflow-x-auto pb-2">
+              <div className="grid grid-cols-7 gap-3 min-w-[700px]">
+                {cronograma.slice(0, 7).map((dia, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col"
+                  >
+                    {/* Cabeçalho do dia */}
+                    <div className="px-3 py-2.5 border-b border-border/60 text-center">
+                      <span className="block text-[11px] font-black text-muted-foreground uppercase tracking-widest">
+                        {dia.abrev}
+                      </span>
+                      {dia.materias.length > 0 && (
+                        <span className="text-[10px] text-muted-foreground flex items-center justify-center gap-1 mt-0.5">
+                          <LuClock className="w-2.5 h-2.5" />
+                          {dia.materias.reduce((a, m) => a + m.duracaoMinutos, 0)}min
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Cards de matérias empilhados */}
+                    <div className="p-2 flex flex-col gap-2 flex-1">
+                      {dia.materias.length === 0 ? (
+                        <div className="flex-1 flex items-center justify-center py-6">
+                          <span className="text-xs text-muted-foreground text-center">☕ Descanso</span>
+                        </div>
+                      ) : (
+                        dia.materias.map((mat, i) => (
+                          <Link
+                            key={i}
+                            href={`/aulas/${mat.materiaId}/${mat.topicoId}`}
+                            className="group block bg-background hover:bg-muted/40 border border-border hover:border-emerald-500/40 rounded-xl p-3 transition-all hover:shadow-sm"
+                          >
+                            {/* Barra colorida no topo */}
+                            <div
+                              className={`h-0.5 w-full rounded-full bg-gradient-to-r ${mat.cor} mb-2`}
+                            />
+                            <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider flex items-center gap-1 mb-1">
+                              <span>{mat.icone}</span>
+                              <span className="truncate">{mat.materiaNome}</span>
+                            </div>
+                            <p className="text-xs font-semibold text-foreground line-clamp-2 leading-tight">
+                              {mat.topicoNome}
+                            </p>
+                            <span className="text-[10px] text-muted-foreground flex items-center gap-1 mt-1.5">
+                              <LuClock className="w-2.5 h-2.5" />
+                              {mat.duracaoMinutos}min
+                            </span>
+                          </Link>
+                        ))
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            /* Visão Total - Agrupada por Semanas */
+            <div className="space-y-6 animate-in fade-in">
+              {Array.from({ length: Math.ceil(cronograma.length / 7) }).map((_, weekIdx) => {
+                const diasDaSemana = cronograma.slice(weekIdx * 7, (weekIdx + 1) * 7);
+                // Calcula quantas matérias tem na semana e duração total
+                const totalMaterias = diasDaSemana.reduce((acc, dia) => acc + dia.materias.length, 0);
+                const duracaoSemana = diasDaSemana.reduce(
+                  (acc, dia) => acc + dia.materias.reduce((a, m) => a + m.duracaoMinutos, 0),
+                  0
+                );
+
+                return (
+                  <div key={weekIdx} className="bg-card border border-border rounded-2xl overflow-hidden">
+                    <div className="p-4 border-b border-border/60 bg-muted/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 font-bold flex items-center justify-center">
+                          {weekIdx + 1}
+                        </div>
+                        <h3 className="font-bold text-foreground">Semana {weekIdx + 1}</h3>
+                      </div>
+                      <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground">
+                        <span className="flex items-center gap-1">
+                          <LuBookOpen className="w-3.5 h-3.5" />
+                          {totalMaterias} tópicos
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <LuClock className="w-3.5 h-3.5" />
+                          {Math.floor(duracaoSemana / 60)}h {duracaoSemana % 60}m
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <div className="p-4 overflow-x-auto">
+                      <div className="grid grid-cols-7 gap-3 min-w-[700px]">
+                        {diasDaSemana.map((dia, idx) => (
+                          <div key={idx} className="flex flex-col gap-2">
+                            <span className="text-[10px] font-bold text-muted-foreground uppercase text-center">
+                              {dia.dia.substring(0, 3)}
+                            </span>
+                            <div className="bg-background border border-border rounded-xl p-2 min-h-[60px]">
+                              {dia.materias.length > 0 ? (
+                                <div className="space-y-1.5">
+                                  {dia.materias.map((mat, i) => (
+                                    <div key={i} className="text-[10px] p-1.5 rounded-lg bg-muted/40 border border-border/50 truncate flex items-center gap-1.5 group relative cursor-help">
+                                      <span>{mat.icone}</span>
+                                      <span className="truncate">{mat.materiaNome}</span>
+                                      {/* Tooltip hover */}
+                                      <div className="absolute opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto bottom-full left-1/2 -translate-x-1/2 mb-1 w-48 bg-slate-900 text-white p-2 rounded-lg text-xs z-10 shadow-xl transition-opacity">
+                                        <p className="font-bold text-emerald-400 mb-0.5">{mat.materiaNome}</p>
+                                        <p className="line-clamp-3 text-slate-300">{mat.topicoNome}</p>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              ) : (
+                                <div className="h-full flex items-center justify-center">
+                                  <span className="text-[10px] text-muted-foreground">Livre</span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                        {/* Preenche dias vazios se a última semana não tiver 7 dias */}
+                        {Array.from({ length: 7 - diasDaSemana.length }).map((_, idx) => (
+                          <div key={`empty-${idx}`} className="opacity-30"></div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </section>
       )}
 
