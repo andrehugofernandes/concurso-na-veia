@@ -247,7 +247,7 @@ export default function PetroLingoShowcaseSection() {
                       </button>
                       <a
                         href="#pricing"
-                        className="px-8 py-3 rounded-xl text-white font-black text-sm shadow-lg transition-all"
+                        className="px-8 py-3 rounded-xl text-white hover:text-white font-black text-sm shadow-lg transition-all"
                         style={{ backgroundImage: 'var(--primary-gradient)' }}
                       >
                         Desbloquear Todas as Lições no Plano Elite

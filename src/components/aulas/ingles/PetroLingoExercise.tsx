@@ -21,7 +21,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { triggerSuccessConfetti } from "@/lib/confetti";
-import { speakEnglishText, playMatchSuccessSound, playErrorSound, playVictoryFanfareSound } from "@/lib/petrolingoAudio";
+import { speakEnglishText, playMatchSuccessSound, playErrorSound, playVictoryFanfareSound, playLightningSound } from "@/lib/petrolingoAudio";
 
 export const PETROLINGO_CHARACTERS = [
   {
@@ -250,15 +250,19 @@ export default function PetroLingoExercise({
       isCorrect = selectedOption === currentExercise.english[0];
     } else if (currentExercise.type === "listening") {
       // Listening: compara palavras selecionadas com o array english
-      isCorrect = JSON.stringify(selectedWords) === JSON.stringify(currentExercise.english);
+      const userPhrase = selectedWords.map(w => w.word).join(" ");
+      const expectedPhrase = currentExercise.english.join(" ");
+      isCorrect = userPhrase === expectedPhrase;
     } else if (currentExercise.mode !== "pt_to_en") {
       const targetPtWords = currentExercise.portugueseTarget || currentExercise.portuguese.replace(/[.,?!]/g, "").split(" ");
-      const userText = selectedWords.join(" ").toLowerCase().trim();
+      const userText = selectedWords.map(w => w.word).join(" ").toLowerCase().trim();
       const expectedText = targetPtWords.join(" ").toLowerCase().trim();
       const cleanPortuguese = currentExercise.portuguese.toLowerCase().replace(/[.,?!]/g, "").trim();
       isCorrect = userText === expectedText || userText === cleanPortuguese;
     } else {
-      isCorrect = JSON.stringify(selectedWords) === JSON.stringify(currentExercise.english);
+      const userPhrase = selectedWords.map(w => w.word).join(" ");
+      const expectedPhrase = currentExercise.english.join(" ");
+      isCorrect = userPhrase === expectedPhrase;
     }
 
     const elapsedSeconds = (Date.now() - startTime) / 1000;
@@ -275,6 +279,7 @@ export default function PetroLingoExercise({
       if (isFastAnswer || nextCombo >= 2) {
         setShowLightning(true);
         setIsScreenShaking(true);
+        playLightningSound();
         setTimeout(() => setShowLightning(false), 700);
         setTimeout(() => setIsScreenShaking(false), 500);
         if (typeof window !== 'undefined' && 'vibrate' in navigator) {

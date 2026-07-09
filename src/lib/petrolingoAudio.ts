@@ -181,3 +181,67 @@ export const playVictoryFanfareSound = () => {
     // Ignorar
   }
 };
+
+/**
+ * Toca um efeito sonoro de raio/trovão para respostas rápidas e combos
+ */
+export const playLightningSound = () => {
+  if (typeof window === 'undefined') return;
+  try {
+    const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    if (!AudioContextClass) return;
+
+    const ctx = new AudioContextClass();
+    const now = ctx.currentTime;
+
+    // Criar buffer de ruído branco para o trovão
+    const bufferSize = ctx.sampleRate * 1.5; // 1.5 segundos
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) {
+      data[i] = Math.random() * 2 - 1;
+    }
+
+    const noise = ctx.createBufferSource();
+    noise.buffer = buffer;
+
+    // Filtro passa-baixa para o estrondo (low-pass)
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(1000, now);
+    filter.frequency.exponentialRampToValueAtTime(100, now + 1.0);
+
+    // Ganho (Envelope do trovão)
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(0.5, now + 0.05); // Ataque rápido
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 1.2); // Decaimento longo
+
+    noise.connect(filter);
+    filter.connect(gain);
+    gain.connect(ctx.destination);
+
+    noise.start(now);
+    noise.stop(now + 1.5);
+    
+    // Adicionar um bipe agudo "zap" de eletricidade
+    const zapOsc = ctx.createOscillator();
+    const zapGain = ctx.createGain();
+    
+    zapOsc.type = 'sawtooth';
+    zapOsc.frequency.setValueAtTime(800, now);
+    zapOsc.frequency.exponentialRampToValueAtTime(200, now + 0.2);
+    
+    zapGain.gain.setValueAtTime(0.2, now);
+    zapGain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+    
+    zapOsc.connect(zapGain);
+    zapGain.connect(ctx.destination);
+    
+    zapOsc.start(now);
+    zapOsc.stop(now + 0.2);
+
+  } catch (e) {
+    // Ignorar restrições de som do navegador
+  }
+};
