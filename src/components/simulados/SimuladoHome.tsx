@@ -347,6 +347,13 @@ export default function SimuladoHome({
           icon={materiaSelecionada.icone}
           color={materiaSelecionada.cor}
           topicos={(materiaSelecionada as any).topicos}
+          defaultQuantidade={
+            tipoPagina === "geral" 
+              ? 5 
+              : (materiaSelecionada.id === "portugues" || materiaSelecionada.id === "matematica" || materiaSelecionada.id === "ingles" 
+                  ? (usuario?.nivelConcurso === "superior" && materiaSelecionada.id !== "portugues" ? 15 : 20) 
+                  : (materiaSelecionada.id.startsWith("especifico-") ? 10 : 30))
+          }
         />
       )}
     </div>

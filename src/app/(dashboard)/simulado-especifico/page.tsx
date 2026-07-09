@@ -279,11 +279,11 @@ export default function SimuladoEspecificoPage() {
             else if (taxaAcerto < 0.5) dificuldade = "Fácil";
           }
 
-          // Delay mandatório de 26 segundos entre lotes para o FreeLLM
+          // Pequeno delay entre lotes para não sobrecarregar
           if (questoes.length > 0) {
-            console.log(`[FRONTEND] Aguardando 26s para o próximo lote (Rate Limit FreeLLM)...`);
-            setContagemRegressivaIA(26);
-            await new Promise((r) => setTimeout(r, 26000));
+            console.log(`[FRONTEND] Aguardando 3s para o próximo lote...`);
+            setContagemRegressivaIA(3);
+            await new Promise((r) => setTimeout(r, 3000));
           }
 
           const result = await gerarQuestoesLoteAction({

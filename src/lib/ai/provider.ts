@@ -13,7 +13,22 @@ export function getAIProvider(): AIProvider {
 
   const providers: { name: string; provider: AIProvider }[] = [];
 
-  // 1. FreeLLM (Custom API Free LLM)
+  // 1. Gemini (Nativo) - Main provider as requested
+  if (
+    process.env.GEMINI_API_KEY &&
+    process.env.GEMINI_API_KEY !== "YOUR_GEMINI_API_KEY_HERE"
+  ) {
+    try {
+      providers.push({
+        name: "Gemini Nativo",
+        provider: new GeminiProvider(),
+      });
+    } catch (e) {
+      console.error("[AI-FACTORY] Erro ao carregar Gemini Nativo:", e);
+    }
+  }
+
+  // 2. FreeLLM (Custom API Free LLM)
   if (
     process.env.FREE_LLM_API_KEY &&
     process.env.FREE_LLM_API_KEY !== "YOUR_FREE_LLM_API_KEY_HERE"
@@ -130,22 +145,7 @@ export function getAIProvider(): AIProvider {
     }
   }
 
-  // 8. Gemini (Nativo)
-  if (
-    process.env.GEMINI_API_KEY &&
-    process.env.GEMINI_API_KEY !== "YOUR_GEMINI_API_KEY_HERE"
-  ) {
-    try {
-      providers.push({
-        name: "Gemini Nativo",
-        provider: new GeminiProvider(),
-      });
-    } catch (e) {
-      console.error("[AI-FACTORY] Erro ao carregar Gemini Nativo:", e);
-    }
-  }
-
-  // 9. Anthropic (Claude)
+  // 8. Anthropic (Claude)
   if (process.env.ANTHROPIC_API_KEY) {
     try {
       providers.push({

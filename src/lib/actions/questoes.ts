@@ -105,8 +105,8 @@ export async function gerarQuestoesLoteAction(
     for (let attempt = 0; attempt <= maxRetries; attempt++) {
       try {
         if (attempt > 0) {
-          // Para lote, o delay precisa ser maior se bater no rate limit
-          const delay = attempt * 15000; // 15s, 30s...
+          // Para lote, o delay precisa ser menor para não causar timeout (504)
+          const delay = attempt * 2000; // 2s, 4s...
           console.log(`[ACTION] Rate limit detectado. Aguardando ${delay/1000}s para tentativa ${attempt + 1}...`);
           await new Promise(resolve => setTimeout(resolve, delay));
         }
