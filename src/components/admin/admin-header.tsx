@@ -430,7 +430,7 @@ export function AdminHeader({
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   onClick={handleLogout}
-                  className="text-red-600"
+                  className="text-red-600 cursor-pointer"
                 >
                   <LuLogOut className="mr-2 h-4 w-4" /> Sair
                 </DropdownMenuItem>
