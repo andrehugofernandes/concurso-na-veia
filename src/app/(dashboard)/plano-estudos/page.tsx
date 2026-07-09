@@ -199,17 +199,17 @@ export default function PlanoEstudosPage() {
     const dias = getDiasDinamicos();
     let i = 0;
 
+    const MEDIA_MINUTOS_POR_AULA = 40;
+    const metaAulasDia = Math.max(1, Math.round(minutosPorDia / MEDIA_MINUTOS_POR_AULA));
+
     while (topicoIndex < todosTopicos.length) {
-      let tempoRestante = minutosPorDia;
       const materiasDoDia = [];
 
-      while (tempoRestante >= 30 && topicoIndex < todosTopicos.length) {
+      for (let j = 0; j < metaAulasDia && topicoIndex < todosTopicos.length; j++) {
         const topicoAtual = todosTopicos[topicoIndex];
-        const duracao = Math.min(topicoAtual.duracaoOriginal, tempoRestante);
-        const tempoGasto = Math.max(duracao, 30); // Pelo menos 30min por sessão
+        const tempoGasto = topicoAtual.duracaoOriginal;
 
         materiasDoDia.push({ ...topicoAtual, duracaoMinutos: tempoGasto });
-        tempoRestante -= tempoGasto;
         topicoIndex++;
       }
 
@@ -560,7 +560,11 @@ export default function PlanoEstudosPage() {
                               {dia.materias.length > 0 ? (
                                 <div className="space-y-1.5">
                                   {dia.materias.map((mat, i) => (
-                                    <div key={i} className="text-[10px] p-1.5 rounded-lg bg-muted/40 border border-border/50 truncate flex items-center gap-1.5 group relative cursor-help">
+                                    <Link 
+                                      key={i} 
+                                      href={`/aulas/${mat.materiaId}/${mat.topicoId}`}
+                                      className="text-[10px] p-1.5 rounded-lg bg-muted/40 border border-border/50 truncate flex items-center gap-1.5 group relative cursor-pointer hover:bg-muted/60 transition-colors"
+                                    >
                                       <span>{mat.icone}</span>
                                       <span className="truncate">{mat.materiaNome}</span>
                                       {/* Tooltip hover */}
@@ -568,7 +572,7 @@ export default function PlanoEstudosPage() {
                                         <p className="font-bold text-emerald-400 mb-0.5">{mat.materiaNome}</p>
                                         <p className="line-clamp-3 text-slate-300">{mat.topicoNome}</p>
                                       </div>
-                                    </div>
+                                    </Link>
                                   ))}
                                 </div>
                               ) : (
