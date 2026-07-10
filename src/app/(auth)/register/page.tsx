@@ -12,11 +12,12 @@ import { FaHome } from "react-icons/fa";
 import { StripeEmbeddedCheckout } from "@/components/stripe/StripeEmbeddedCheckout";import { PROFISSOES } from "@/lib/profissoes-edital";
 
 const NIVEIS = [
-  { id: "medio", nome: "Nível Médio/Técnico", icon: "🔧", desc: "Cargos técnicos e operacionais" },
+  { id: "medio", nome: "Nível Médio", icon: "📖", desc: "Cargos gerais de nível médio" },
+  { id: "tecnico", nome: "Nível Técnico", icon: "🔧", desc: "Cargos técnicos e operacionais" },
   { id: "superior", nome: "Nível Superior", icon: "🎓", desc: "Engenharia, Análise e Geologia" },
 ];
 
-const PETROBRAS_CARGOS_MEDIO = PROFISSOES.filter((p) => p.nivel === "tecnico").map((p) => ({
+const PETROBRAS_CARGOS_TECNICO = PROFISSOES.filter((p) => p.nivel === "tecnico").map((p) => ({
   id: p.id,
   nome: p.nome,
 }));
@@ -28,12 +29,15 @@ const PETROBRAS_CARGOS_SUPERIOR = PROFISSOES.filter((p) => p.nivel === "superior
 
 const CARGOS = {
   medio: [
-    ...PETROBRAS_CARGOS_MEDIO,
+    { id: "suprimento-adm", nome: "Técnico de Suprimento de Bens e Serviços - Administração" },
     { id: "caixa-tecnico", nome: "Caixa - Técnico Bancário" },
     { id: "bb-escriturario", nome: "Banco do Brasil - Escriturário" },
     { id: "correios-agente", nome: "Correios - Agente de Correios" },
     { id: "ibge-recenseador", nome: "IBGE - Recenseador/Agente" },
     { id: "inss-tecnico", nome: "INSS - Técnico do Seguro Social" },
+  ],
+  tecnico: [
+    ...PETROBRAS_CARGOS_TECNICO,
   ],
   superior: [
     ...PETROBRAS_CARGOS_SUPERIOR,
@@ -136,16 +140,17 @@ function RegisterForm() {
   const cargoFromUrl = searchParams.get("cargo") || "";
   const nivelFromUrl = searchParams.get("nivel") || "";
 
+  // Guardar se foi carregado da URL para pular o passo de cargo na navegação
+  const [cameFromUrlWithCargo, setCameFromUrlWithCargo] = useState(false);
+
   useEffect(() => {
     if (concursoFromUrl) {
       let nivel = nivelFromUrl;
       let cargo = cargoFromUrl;
 
-      if (nivel === "tecnico") nivel = "medio";
-
       if (!nivel || !cargo) {
         if (concursoFromUrl === "petrobras") {
-          nivel = "medio";
+          nivel = "tecnico";
           cargo = "operacao";
         } else if (concursoFromUrl === "caixa") {
           nivel = "medio";
@@ -172,6 +177,10 @@ function RegisterForm() {
           cargo,
           concurso: concursoFromUrl,
         }));
+        // Se vieram parâmetros explícitos de cargo na URL, marcaremos para pular o passo 2
+        if (cargoFromUrl) {
+          setCameFromUrlWithCargo(true);
+        }
       }
     }
   }, [concursoFromUrl, cargoFromUrl, nivelFromUrl]);
@@ -192,7 +201,7 @@ function RegisterForm() {
   };
 
   const getPlanosByNivel = () => {
-    if (formData.nivel === "medio") {
+    if (formData.nivel === "medio" || formData.nivel === "tecnico") {
       return [
         { id: "free", nome: "Iniciante", preco: "Grátis", descricao: "5 questões/dia, histórico de 3 dias", tag: null },
         { id: "aprovado-medio", nome: "Aprovado Médio", preco: "R$ 49,99/mês", descricao: "Questões ilimitadas, simulados, explicações IA", tag: null },
@@ -218,7 +227,11 @@ function RegisterForm() {
         setError("Preencha todos os campos obrigatórios");
         return;
       }
-      setStep(2);
+      if (cameFromUrlWithCargo) {
+        setStep(3);
+      } else {
+        setStep(2);
+      }
       return;
     }
 
@@ -297,7 +310,11 @@ function RegisterForm() {
 
   const handleBack = () => {
     setError("");
-    if (step > 1) setStep(step - 1);
+    if (step === 3 && cameFromUrlWithCargo) {
+      setStep(1);
+    } else if (step > 1) {
+      setStep(step - 1);
+    }
   };
 
   const passwordChecks = [
@@ -395,8 +412,8 @@ function RegisterForm() {
           <div className="space-y-6">
             {/* Nível */}
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-3">Nível do concurso</label>
-              <div className="grid grid-cols-2 gap-3">
+              <label className="block text-sm font-medium text-foreground/90 mb-3">Nível do concurso</label>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {NIVEIS.map((n) => (
                   <button
                     key={n.id}
@@ -419,22 +436,43 @@ function RegisterForm() {
             {/* Cargo */}
             {formData.nivel && (
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-3">Cargo pretendido</label>
+                <label className="block text-sm font-medium text-foreground/90 mb-3">Cargo pretendido</label>
                 <div className="grid grid-cols-2 gap-2">
-                  {CARGOS[formData.nivel as keyof typeof CARGOS].map((cargo) => (
-                    <button
-                      key={cargo.id}
-                      type="button"
-                      onClick={() => handleCargoSelect(cargo.id)}
-                      className={`px-3 py-2.5 rounded-lg border text-left text-sm transition-all ${
-                        formData.cargo === cargo.id
-                          ? "border-primary bg-primary/10 text-foreground font-medium"
-                          : "border-border text-muted-foreground hover:border-border/80 hover:text-foreground"
-                      }`}
-                    >
-                      {cargo.nome}
-                    </button>
-                  ))}
+                  {(() => {
+                    const concursoAtivo = formData.concurso || concursoFromUrl;
+                    const todosCargos = CARGOS[formData.nivel as keyof typeof CARGOS] || [];
+                    
+                    // Filtrar cargos baseados no concurso ativo
+                    const cargosFiltrados = todosCargos.filter((cargo) => {
+                      if (!concursoAtivo) return true; // Se não tem concurso especificado, mostra todos
+                      
+                      // Regras específicas de concurso
+                      if (concursoAtivo === "petrobras") {
+                        // A Petrobras só tem cargos que estão mapeados nas PROFISSOES do edital da Petrobras
+                        // O 'suprimento-adm' e cargos em PETROBRAS_CARGOS_TECNICO e PETROBRAS_CARGOS_SUPERIOR pertencem a Petrobras
+                        const pertencePetrobras = PROFISSOES.some(p => p.id === cargo.id);
+                        return pertencePetrobras;
+                      } else {
+                        // Outros concursos (caixa, bb, correios, ibge, inss) mapeiam ids específicos
+                        return cargo.id.startsWith(concursoAtivo) || cargo.id === `${concursoAtivo}-tecnico` || cargo.id === `${concursoAtivo}-agente` || cargo.id === `${concursoAtivo}-recenseador` || cargo.id === `${concursoAtivo}-escriturario`;
+                      }
+                    });
+
+                    return cargosFiltrados.map((cargo) => (
+                      <button
+                        key={cargo.id}
+                        type="button"
+                        onClick={() => handleCargoSelect(cargo.id)}
+                        className={`px-3 py-2.5 rounded-lg border text-left text-sm transition-all ${
+                          formData.cargo === cargo.id
+                            ? "border-primary bg-primary/10 text-foreground font-medium"
+                            : "border-border text-muted-foreground hover:border-border/80 hover:text-foreground"
+                        }`}
+                      >
+                        {cargo.nome}
+                      </button>
+                    ));
+                  })()}
                 </div>
               </div>
             )}
@@ -473,11 +511,11 @@ function RegisterForm() {
                     )}
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="font-bold text-white">{plano.nome}</p>
-                        <p className="text-xs text-gray-500 mt-0.5">{plano.descricao}</p>
+                        <p className="font-bold text-foreground dark:text-white">{plano.nome}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{plano.descricao}</p>
                       </div>
                       <div className="text-right flex-shrink-0 ml-4">
-                        <p className="font-black text-yellow-400 text-lg">{plano.preco}</p>
+                        <p className="font-black text-yellow-500 dark:text-yellow-400 text-lg">{plano.preco}</p>
                       </div>
                     </div>
                   </button>
@@ -523,10 +561,10 @@ function RegisterForm() {
             />
 
             {/* Requisitos */}
-            <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 p-3 bg-zinc-800/30 rounded-lg border border-zinc-700/50">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 p-3 bg-accent/40 rounded-lg border border-border">
               {passwordChecks.map((req, i) => (
-                <div key={i} className={`flex items-center gap-2 text-xs ${req.ok ? "text-green-400" : "text-gray-500"}`}>
-                  {req.ok ? <CheckIcon /> : <div className="w-4 h-4 rounded-full border border-gray-600" />}
+                <div key={i} className={`flex items-center gap-2 text-xs ${req.ok ? "text-green-600 dark:text-green-400" : "text-muted-foreground"}`}>
+                  {req.ok ? <CheckIcon /> : <div className="w-4 h-4 rounded-full border border-border" />}
                   {req.label}
                 </div>
               ))}
@@ -562,13 +600,13 @@ function RegisterForm() {
               <input
                 type="checkbox"
                 required
-                className="mt-0.5 w-4 h-4 rounded border-zinc-600 bg-zinc-800 text-yellow-500 focus:ring-yellow-500"
+                className="mt-0.5 w-4 h-4 rounded border-input bg-background text-primary focus:ring-primary"
               />
-              <span className="text-sm text-gray-400">
+              <span className="text-sm text-muted-foreground">
                 Li e aceito os{" "}
-                <a href="#" className="text-yellow-400 hover:underline">Termos de Uso</a>{" "}
+                <a href="#" className="text-primary hover:underline">Termos de Uso</a>{" "}
                 e a{" "}
-                <a href="#" className="text-yellow-400 hover:underline">Política de Privacidade</a>
+                <a href="#" className="text-primary hover:underline">Política de Privacidade</a>
               </span>
             </label>
           </div>
@@ -581,7 +619,7 @@ function RegisterForm() {
               <button
                 type="button"
                 onClick={handleBack}
-                className="px-6 py-3 border border-zinc-700 text-gray-300 font-semibold rounded-lg hover:bg-zinc-800 transition text-sm"
+                className="px-6 py-3 border border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition text-sm"
               >
                 Voltar
               </button>

@@ -513,7 +513,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Falsa Conclusão Financeira
                   </span>
-                  <span className="text-xl text-red-500/80 font-medium text-foreground/85 leading-relaxed">
+                  <span className="text-xl text-red-500/80 font-medium leading-relaxed">
                     Contradição Direta
                   </span>
                 </div>
@@ -548,7 +548,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Gargalo Interno e Humano
                   </span>
-                  <span className="text-xl text-emerald-500/80 font-medium text-foreground/85 leading-relaxed">
+                  <span className="text-xl text-emerald-500/80 font-medium leading-relaxed">
                     Inferência Lícita
                   </span>
                 </div>
@@ -917,7 +917,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Tópico Frasal: Sempre na cabeça?
                   </span>
-                  <span className="text-xl text-emerald-500/80 font-medium text-foreground/85 leading-relaxed">
+                  <span className="text-xl text-emerald-500/80 font-medium leading-relaxed">
                     A primeira regra da localização
                   </span>
                 </div>
@@ -956,7 +956,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Tem tópico implícito?
                   </span>
-                  <span className="text-xl text-amber-500/80 font-medium text-foreground/85 leading-relaxed">
+                  <span className="text-xl text-amber-500/80 font-medium leading-relaxed">
                     Parágrafos sem centro claro
                   </span>
                 </div>
@@ -1351,7 +1351,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-widest text-foreground">
                     Porquanto
                   </span>
-                  <span className="text-xl text-emerald-500/80 font-medium text-foreground/85 leading-relaxed">
+                  <span className="text-xl text-emerald-500/80 font-medium leading-relaxed">
                     Equação do Passado
                   </span>
                 </div>
@@ -1383,7 +1383,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-widest text-foreground">
                     Conquanto
                   </span>
-                  <span className="text-xl text-indigo-500/80 font-medium text-foreground/85 leading-relaxed">
+                  <span className="text-xl text-indigo-500/80 font-medium leading-relaxed">
                     A pontos de atenção Suprema
                   </span>
                 </div>
@@ -1416,7 +1416,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-widest text-foreground">
                     Aliás
                   </span>
-                  <span className="text-xl text-amber-500/80 font-medium text-foreground/85 leading-relaxed">
+                  <span className="text-xl text-amber-500/80 font-medium leading-relaxed">
                     Reajuste de Rotas
                   </span>
                 </div>
@@ -1820,7 +1820,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
                     O Editorial
                   </span>
-                  <span className="text-xl font-medium text-indigo-500/80 text-foreground/85 leading-relaxed">
+                  <span className="text-xl font-medium text-indigo-500/80 leading-relaxed">
                     Jornais e Revistas
                   </span>
                 </div>
@@ -1858,7 +1858,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
                     Manual Técnico
                   </span>
-                  <span className="text-xl font-medium text-orange-500/80 text-foreground/85 leading-relaxed">
+                  <span className="text-xl font-medium text-orange-500/80 leading-relaxed">
                     Normas e Procedimentos
                   </span>
                 </div>
@@ -2113,7 +2113,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
                     Subvocalização
                   </span>
-                  <span className="text-xl font-medium text-red-500/80 text-foreground/85 leading-relaxed">
+                  <span className="text-xl font-medium text-red-500/80 leading-relaxed">
                     O Freio da Mente
                   </span>
                 </div>
@@ -2153,7 +2153,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
                     Regressão Ocular
                   </span>
-                  <span className="text-xl font-medium text-orange-500/80 text-foreground/85 leading-relaxed">
+                  <span className="text-xl font-medium text-orange-500/80 leading-relaxed">
                     A Ansiedade do Entendimento
                   </span>
                 </div>
@@ -2530,7 +2530,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
                     Pressuposto
                   </span>
-                  <span className="text-xl font-medium text-cyan-500/80 text-foreground/85 leading-relaxed">
+                  <span className="text-xl font-medium text-cyan-500/80 leading-relaxed">
                     A Matemática do Texto
                   </span>
                 </div>
@@ -2564,7 +2564,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-xl md:text-2xl font-black uppercase tracking-widest text-foreground mt-2">
                     Subentendido
                   </span>
-                  <span className="text-xl font-medium text-teal-500/80 text-foreground/85 leading-relaxed">
+                  <span className="text-xl font-medium text-teal-500/80 leading-relaxed">
                     O Perigo da Insinuação
                   </span>
                 </div>
@@ -2857,7 +2857,7 @@ export default function AulaInterpretacaoTexto({
                         <span className="text-xl font-black uppercase tracking-widest text-foreground mt-2">
                           1. Redução
                         </span>
-                        <span className="text-xl font-medium text-orange-500/80 text-foreground/85 leading-relaxed">
+                        <span className="text-xl font-medium text-orange-500/80 leading-relaxed">
                           O &quot;Meio-Certo&quot;
                         </span>
                       </div>
@@ -2894,7 +2894,7 @@ export default function AulaInterpretacaoTexto({
                         <span className="text-xl font-black uppercase tracking-widest text-foreground mt-2">
                           2. Extrapolação
                         </span>
-                        <span className="text-xl font-medium text-red-500/80 text-foreground/85 leading-relaxed">
+                        <span className="text-xl font-medium text-red-500/80 leading-relaxed">
                           A Ilusão Lógica
                         </span>
                       </div>
@@ -2932,7 +2932,7 @@ export default function AulaInterpretacaoTexto({
                         <span className="text-xl font-black uppercase tracking-widest text-foreground mt-2">
                           3. Contradição
                         </span>
-                        <span className="text-xl font-medium text-rose-500/80 text-foreground/85 leading-relaxed">
+                        <span className="text-xl font-medium text-rose-500/80 leading-relaxed">
                           A Rota Oposta
                         </span>
                       </div>
@@ -3216,7 +3216,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Informativo vs. Persuasivo
                   </span>
-                  <span className="text-xl text-blue-500/80 font-medium text-foreground/85 leading-relaxed">
+                  <span className="text-xl text-blue-500/80 font-medium leading-relaxed">
                     ALVO DISCURSIVO
                   </span>
                 </div>
@@ -3248,7 +3248,7 @@ export default function AulaInterpretacaoTexto({
                   <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
                     Crítico vs. Elogioso
                   </span>
-                  <span className="text-xl text-indigo-500/80 font-medium text-foreground/85 leading-relaxed">
+                  <span className="text-xl text-indigo-500/80 font-medium leading-relaxed">
                     MODALIZAÇÃO DE TOM
                   </span>
                 </div>

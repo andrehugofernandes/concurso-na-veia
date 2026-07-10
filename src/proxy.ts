@@ -101,6 +101,37 @@ export async function proxy(request: NextRequest) {
         return NextResponse.redirect(url)
     }
 
+    // Proteção de rotas do dashboard/cursos GovTech (White Label)
+    if (user && request.nextUrl.pathname.startsWith("/dashboard/cursos/")) {
+        const slug = request.nextUrl.pathname.split("/").pop();
+        if (slug) {
+            // Busca o curso de forma assíncrona usando o cliente supabase
+            const { data: curso } = await supabase
+                .from("cursos")
+                .select("tenant_id, is_public")
+                .eq("slug", slug)
+                .single();
+
+            // Se for um curso GovTech privado
+            if (curso && !curso.is_public && curso.tenant_id) {
+                // Obter o tenant_id do perfil do usuário logado
+                const { data: profile } = await supabase
+                    .from("profiles")
+                    .select("tenant_id, role")
+                    .eq("id", user.id)
+                    .single();
+
+                // Se o usuário não for sysadmin e o tenant_id não bater, barrar
+                if (profile?.role !== "sysadmin" && (!profile || profile.tenant_id !== curso.tenant_id)) {
+                    console.warn(`[Proxy GovTech] Acesso negado ao usuário ${user.id} para o curso GovTech ${slug}`);
+                    const url = request.nextUrl.clone();
+                    url.pathname = "/dashboard";
+                    return NextResponse.redirect(url);
+                }
+            }
+        }
+    }
+
     // Redirect logged-in users away from auth pages (login/register)
     if (user && isGuestOnlyRoute) {
         const url = request.nextUrl.clone()
