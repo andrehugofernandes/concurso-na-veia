@@ -99,7 +99,7 @@ export default function DemoSection() {
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: 'var(--primary-gradient)' }}
               >
-                PASSEI NO CONCURSO
+                PASSEI NO CONCURSO.AI
               </span>{' '}
               em ação
             </>

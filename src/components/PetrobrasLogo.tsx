@@ -34,7 +34,7 @@ export default function PetrobrasLogo({
       
       <div className={`flex flex-col justify-center leading-none ${compact ? "ml-0.5" : "ml-1"}`}>
         <h1 className={`font-bebas font-bold tracking-tight leading-none whitespace-nowrap flex items-baseline ${
-          compact ? "text-[23px] md:text-[24px] gap-1" : "text-[36px] md:text-[36px] gap-2"
+          compact ? "text-[19px] md:text-[20px] gap-1" : "text-[30px] md:text-[30px] gap-2"
         }`}>
           <span 
             className={`${(variant === "white" || variant === "home-top") ? "text-white" : variant === "hero-tab" ? "text-foreground dark:text-primary-foreground" : "text-foreground dark:text-white"} transition-colors duration-300`}
@@ -44,15 +44,15 @@ export default function PetrobrasLogo({
           <span 
             className={`transition-colors duration-300 text-primary ${variant === "hero-tab" ? "dark:text-primary-foreground" : ""}`}
           >
-            NO CONCURSO
+            NO CONCURSO.AI
           </span>
         </h1>
         <span 
           className={`font-sans font-black uppercase ${(variant === "white" || variant === "home-top") ? "text-white/80" : variant === "hero-tab" ? "text-foreground/80 dark:text-primary-foreground/80" : "text-foreground/80 dark:text-white/80"} mt-0.5 whitespace-nowrap transition-colors duration-300 block text-center leading-none`} 
           style={{ 
-            fontSize: compact ? '7.5px' : '10.88px', 
-            letterSpacing: compact ? '0.68em' : '0.72em', 
-            marginRight: compact ? '-0.68em' : '-0.72em' 
+            fontSize: compact ? '6.8px' : '10.2px', 
+            letterSpacing: compact ? '0.52em' : '0.54em', 
+            marginRight: compact ? '-0.52em' : '-0.54em' 
           }}
         >
           SUA APROVAÇÃO AQUI

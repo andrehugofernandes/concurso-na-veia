@@ -56,7 +56,7 @@ export default function TestimonialsSection() {
           badgeColorClass="border-primary/20 bg-primary/10 text-primary"
           titleText={
             <>
-              Aprovados pelo <span className="text-primary whitespace-nowrap">PASSEI NO CONCURSO</span>
+              Aprovados pelo <span className="text-primary whitespace-nowrap">PASSEI NO CONCURSO.AI</span>
             </>
           }
           subtitleText="Junte-se a centenas de estudantes que revolucionaram sua forma de estudar e conquistaram suas vagas em concursos de alto nível."
