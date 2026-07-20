@@ -13,7 +13,7 @@ export async function GET() {
     // Query estrita garantindo apenas cursos B2C (públicos e sem associação de tenant)
     const { data: cursos, error } = await supabase
       .from("cursos")
-      .select("id, titulo, slug, imagem_capa, materia_id, preco, stripe_price_id")
+      .select("id, titulo, slug, imagem_capa, materia_id, preco, stripe_price_id, is_public, tenant_id")
       .eq("is_public", true)
       .is("tenant_id", null);
 

@@ -155,7 +155,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={1}
         index={1}
         variant={getModuleVariant(1)}
         resumoVisual={{
@@ -270,7 +270,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={2}
         index={2}
         variant={getModuleVariant(2)}
         resumoVisual={{
@@ -385,7 +385,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={3}
         index={3}
         variant={getModuleVariant(3)}
         resumoVisual={{
@@ -500,7 +500,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={4}
         index={4}
         variant={getModuleVariant(4)}
         resumoVisual={{
@@ -615,7 +615,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={5}
         index={5}
         variant={getModuleVariant(5)}
         resumoVisual={{
@@ -730,7 +730,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={6}
         index={6}
         variant={getModuleVariant(6)}
         resumoVisual={{
@@ -845,7 +845,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={7}
         index={7}
         variant={getModuleVariant(7)}
         resumoVisual={{
@@ -960,7 +960,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={8}
         index={8}
         variant={getModuleVariant(8)}
         resumoVisual={{
@@ -1075,7 +1075,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={9}
         index={9}
         variant={getModuleVariant(9)}
         resumoVisual={{
@@ -1193,7 +1193,7 @@ export default function AulaAdministracaoTributaria(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={10}
         index={10}
         variant={getModuleVariant(10)}
         resumoVisual={{

@@ -213,7 +213,7 @@ export default function AulaNr10({
 
           
 
-<ModuleConsolidation
+<ModuleConsolidation moduloNumero={1}
             index={1}
             variant={mv[1]}
             resumoVisual={{
@@ -307,8 +307,8 @@ export default function AulaNr10({
 
           
 
-<ModuleConsolidation
-            index={1}
+<ModuleConsolidation moduloNumero={2}
+            index={2}
             variant={mv[2]}
             resumoVisual={{
               moduloNome: "Módulo 2",
@@ -393,8 +393,8 @@ export default function AulaNr10({
 
           
 
-<ModuleConsolidation
-            index={1}
+<ModuleConsolidation moduloNumero={3}
+            index={3}
             variant={mv[3]}
             resumoVisual={{
               moduloNome: "Módulo 3",
@@ -483,8 +483,8 @@ export default function AulaNr10({
 
           
 
-<ModuleConsolidation
-            index={1}
+<ModuleConsolidation moduloNumero={4}
+            index={4}
             variant={mv[4]}
             resumoVisual={{
               moduloNome: "Módulo 4",
@@ -563,8 +563,8 @@ export default function AulaNr10({
 
           
 
-<ModuleConsolidation
-            index={1}
+<ModuleConsolidation moduloNumero={5}
+            index={5}
             variant={mv[5]}
             resumoVisual={{
               moduloNome: "Módulo 5",

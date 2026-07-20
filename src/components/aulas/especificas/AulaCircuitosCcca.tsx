@@ -279,7 +279,7 @@ export default function AulaCircuitosCcca(props: AulaProps) {
         </section>
 
         {/* Seção 4: Consolidação Multimídia */}
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={1}
           index={modulo.numero}
           variant={variantColor}
           resumoVisual={{

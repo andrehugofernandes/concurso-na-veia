@@ -434,8 +434,8 @@ export default function AulaMatrizesDeterminantes({
           ]}
         />
 
-        <ModuleConsolidation
-              index={2}
+        <ModuleConsolidation moduloNumero={1}
+              index={1}
               variant="indigo"
               resumoVisual={{
                 moduloNome: "Módulo 1",
@@ -777,7 +777,7 @@ export default function AulaMatrizesDeterminantes({
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={2}
               index={2}
               variant={mv[2]}
               resumoVisual={{
@@ -1108,8 +1108,8 @@ export default function AulaMatrizesDeterminantes({
           ]}
         />
 
-        <ModuleConsolidation
-              index={2}
+        <ModuleConsolidation moduloNumero={3}
+              index={3}
               variant={mv[3]}
               resumoVisual={{
                 moduloNome: "Módulo 3",
@@ -1400,8 +1400,8 @@ export default function AulaMatrizesDeterminantes({
           ]}
         />
 
-        <ModuleConsolidation
-              index={2}
+        <ModuleConsolidation moduloNumero={4}
+              index={4}
               variant={mv[4]}
               resumoVisual={{
                 moduloNome: "Módulo 4",
@@ -1695,8 +1695,8 @@ export default function AulaMatrizesDeterminantes({
           ]}
         />
 
-        <ModuleConsolidation
-              index={2}
+        <ModuleConsolidation moduloNumero={5}
+              index={5}
               variant={mv[5]}
               resumoVisual={{
                 moduloNome: "Módulo 5",
@@ -1986,8 +1986,8 @@ export default function AulaMatrizesDeterminantes({
           ]}
         />
 
-        <ModuleConsolidation
-              index={2}
+        <ModuleConsolidation moduloNumero={6}
+              index={6}
               variant={mv[6]}
               resumoVisual={{
                 moduloNome: "Módulo 6",
@@ -2289,8 +2289,8 @@ export default function AulaMatrizesDeterminantes({
           ]}
         />
 
-        <ModuleConsolidation
-              index={2}
+        <ModuleConsolidation moduloNumero={7}
+              index={7}
               variant="indigo"
               resumoVisual={{
                 moduloNome: "Módulo 7",
@@ -2575,8 +2575,8 @@ export default function AulaMatrizesDeterminantes({
           ]}
         />
 
-        <ModuleConsolidation
-              index={2}
+        <ModuleConsolidation moduloNumero={8}
+              index={8}
               variant={mv[8]}
               resumoVisual={{
                 moduloNome: "Módulo 8",
@@ -2859,8 +2859,8 @@ export default function AulaMatrizesDeterminantes({
           ]}
         />
 
-        <ModuleConsolidation
-              index={2}
+        <ModuleConsolidation moduloNumero={9}
+              index={9}
               variant={mv[9]}
               resumoVisual={{
                 moduloNome: "Módulo 9",
@@ -3337,8 +3337,8 @@ export default function AulaMatrizesDeterminantes({
           ]}
         />
 
-        <ModuleConsolidation
-              index={2}
+        <ModuleConsolidation moduloNumero={10}
+              index={10}
               variant={mv[10]}
               resumoVisual={{
                 moduloNome: "Módulo 10",

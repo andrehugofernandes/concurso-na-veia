@@ -580,7 +580,7 @@ export default function AulaSegurancaInformacao({
             />
           </section>
 
-          <ModuleConsolidation
+          <ModuleConsolidation moduloNumero={1}
             index={1}
             variant={mv[10]}
             resumoVisual={{

@@ -67,7 +67,7 @@ export default function AulasPage() {
         const matematica = allMaterias.find(m => m.id === 'matematica');
 
         const profUsuario = PROFISSOES.find(p => p.id === user?.cargo || p.id === CARGO_ID_MAP[user?.cargo || '']);
-        const isTecnico = profUsuario?.nivel === 'tecnico';
+        const isTecnico = profUsuario?.nivel === 'tecnico' || profUsuario?.nivel === 'medio';
         
         if (isTecnico) {
             // Técnico vê as Bases do Superior

@@ -472,7 +472,7 @@ export default function AulaTermodinamica({
 
 
 
-<ModuleConsolidation 
+<ModuleConsolidation moduloNumero={1} 
                 index={1}
                 variant="amber"
                 resumoVisual={{
@@ -600,7 +600,7 @@ export default function AulaTermodinamica({
                 />
               </section>
 
-               <ModuleConsolidation 
+               <ModuleConsolidation moduloNumero={2} 
                 index={2}
                 variant="blue"
                 resumoVisual={{

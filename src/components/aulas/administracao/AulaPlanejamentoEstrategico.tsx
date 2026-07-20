@@ -436,8 +436,8 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation
-            index={2}
+<ModuleConsolidation moduloNumero={1}
+            index={1}
             variant={mv[1]}
             resumoVisual={{
               moduloNome: "Módulo 1",
@@ -651,7 +651,7 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation index={2} variant={mv[2]} resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "Quadrantes SWOT", type: "Conceito", placeholderColor: "bg-emerald-500/20" }, { title: "Interno vs Externo", type: "Classificação", placeholderColor: "bg-teal-500/20" }, { title: "Cruzamento TOWS", type: "Estratégia", placeholderColor: "bg-green-500/20" }] }} sinteseEstrategica={{ title: "SWOT: S e W = INTERNO, O e T = EXTERNO", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Força e Fraqueza você controla. Oportunidade e Ameaça você enfrenta."</p></div>) }} podcast={{
+<ModuleConsolidation moduloNumero={2} index={2} variant={mv[2]} resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "Quadrantes SWOT", type: "Conceito", placeholderColor: "bg-emerald-500/20" }, { title: "Interno vs Externo", type: "Classificação", placeholderColor: "bg-teal-500/20" }, { title: "Cruzamento TOWS", type: "Estratégia", placeholderColor: "bg-green-500/20" }] }} sinteseEstrategica={{ title: "SWOT: S e W = INTERNO, O e T = EXTERNO", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Força e Fraqueza você controla. Oportunidade e Ameaça você enfrenta."</p></div>) }} podcast={{
             aulaId: "planejamentoestrategico",
             aulaTitulo: "Planejamento Estrategico",
             materia: "Administração",
@@ -808,7 +808,7 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation index={2} variant={mv[3]} resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "4 Perspectivas BSC", type: "Conceito", placeholderColor: "bg-amber-500/20" }, { title: "Mapa Estratégico", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Causa e Efeito", type: "Relação", placeholderColor: "bg-yellow-500/20" }] }} sinteseEstrategica={{ title: "BSC: F-C-P-A (Finanças Com Processos Aprendidos)", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Kaplan e Norton criaram em 1992. 4 perspectivas. Mapa estratégico."</p></div>) }} podcast={{
+<ModuleConsolidation moduloNumero={3} index={2} variant={mv[3]} resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "4 Perspectivas BSC", type: "Conceito", placeholderColor: "bg-amber-500/20" }, { title: "Mapa Estratégico", type: "Ferramenta", placeholderColor: "bg-orange-500/20" }, { title: "Causa e Efeito", type: "Relação", placeholderColor: "bg-yellow-500/20" }] }} sinteseEstrategica={{ title: "BSC: F-C-P-A (Finanças Com Processos Aprendidos)", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Kaplan e Norton criaram em 1992. 4 perspectivas. Mapa estratégico."</p></div>) }} podcast={{
             aulaId: "planejamentoestrategico",
             aulaTitulo: "Planejamento Estrategico",
             materia: "Administração",
@@ -963,7 +963,7 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation index={2} variant={mv[4]} resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "5 Forças de Porter", type: "Relação", placeholderColor: "bg-rose-500/20" }, { title: "Estratégias Genéricas", type: "Opções", placeholderColor: "bg-pink-500/20" }, { title: "Matriz Ansoff", type: "Crescimento", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "PORTER: Custo, Diferenciação ou Foco", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Ou você é barato, ou é especial, ou foca em um bando."</p></div>) }} podcast={{
+<ModuleConsolidation moduloNumero={4} index={2} variant={mv[4]} resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "Planejamento Estratégico", materia: "Administração", images: [{ title: "5 Forças de Porter", type: "Relação", placeholderColor: "bg-rose-500/20" }, { title: "Estratégias Genéricas", type: "Opções", placeholderColor: "bg-pink-500/20" }, { title: "Matriz Ansoff", type: "Crescimento", placeholderColor: "bg-red-500/20" }] }} sinteseEstrategica={{ title: "PORTER: Custo, Diferenciação ou Foco", content: (<div className="space-y-3 text-left"><p className="text-lg italic">"Ou você é barato, ou é especial, ou foca em um bando."</p></div>) }} podcast={{
             aulaId: "planejamentoestrategico",
             aulaTitulo: "Planejamento Estrategico",
             materia: "Administração",
@@ -1126,8 +1126,8 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation 
-            index={2} 
+<ModuleConsolidation moduloNumero={5} 
+            index={5} 
             variant={mv[5]} 
             resumoVisual={{ 
               moduloNome: "Módulo 5", 
@@ -1305,8 +1305,8 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation 
-            index={2} 
+<ModuleConsolidation moduloNumero={6} 
+            index={6} 
             variant={mv[6]} 
             resumoVisual={{ 
               moduloNome: "Módulo 6", 
@@ -1468,8 +1468,8 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation 
-            index={2} 
+<ModuleConsolidation moduloNumero={7} 
+            index={7} 
             variant={mv[7]} 
             resumoVisual={{ 
               moduloNome: "Módulo 7", 
@@ -1632,8 +1632,8 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation 
-            index={2} 
+<ModuleConsolidation moduloNumero={8} 
+            index={8} 
             variant={mv[8]} 
             resumoVisual={{ 
               moduloNome: "Módulo 8", 
@@ -1805,8 +1805,8 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation 
-            index={2} 
+<ModuleConsolidation moduloNumero={9} 
+            index={9} 
             variant={mv[9]} 
             resumoVisual={{ 
               moduloNome: "Módulo 9", 
@@ -1913,8 +1913,8 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation 
-            index={2} 
+<ModuleConsolidation moduloNumero={10} 
+            index={10} 
             variant={mv[10]} 
             resumoVisual={{ 
               moduloNome: "Módulo 10", 
@@ -2092,8 +2092,8 @@ export default function AulaPlanejamentoEstrategico({
 
 
 
-<ModuleConsolidation
-              index={2}
+<ModuleConsolidation moduloNumero={11}
+              index={11}
               variant={mv[11]}
               resumoVisual={{
                 moduloNome: "Módulo 11",

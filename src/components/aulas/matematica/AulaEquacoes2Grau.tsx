@@ -395,8 +395,8 @@ export default function AulaEquacoes2Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={2}
+        <ModuleConsolidation moduloNumero={1}
+            index={1}
             variant={mv[1]}
             resumoVisual={{
               moduloNome: "Módulo 1",
@@ -669,7 +669,7 @@ export default function AulaEquacoes2Grau({
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={2}
             index={2}
             variant={mv[2]}
             resumoVisual={{
@@ -909,8 +909,8 @@ export default function AulaEquacoes2Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={2}
+        <ModuleConsolidation moduloNumero={3}
+            index={3}
             variant={mv[3]}
             resumoVisual={{
               moduloNome: "Módulo 3",
@@ -1150,8 +1150,8 @@ export default function AulaEquacoes2Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={2}
+        <ModuleConsolidation moduloNumero={4}
+            index={4}
             variant={mv[4]}
             resumoVisual={{
               moduloNome: "Módulo 4",
@@ -1329,8 +1329,8 @@ export default function AulaEquacoes2Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={2}
+        <ModuleConsolidation moduloNumero={5}
+            index={5}
             variant={mv[5]}
             resumoVisual={{
               moduloNome: "Módulo 5",
@@ -1536,8 +1536,8 @@ export default function AulaEquacoes2Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={2}
+        <ModuleConsolidation moduloNumero={6}
+            index={6}
             variant={mv[6]}
             resumoVisual={{
               moduloNome: "Módulo 6",
@@ -1755,8 +1755,8 @@ export default function AulaEquacoes2Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={2}
+        <ModuleConsolidation moduloNumero={7}
+            index={7}
             variant={mv[7]}
             resumoVisual={{
               moduloNome: "Módulo 7",
@@ -1970,8 +1970,8 @@ export default function AulaEquacoes2Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={2}
+        <ModuleConsolidation moduloNumero={8}
+            index={8}
             variant={mv[8]}
             resumoVisual={{
               moduloNome: "Módulo 8",
@@ -2186,8 +2186,8 @@ export default function AulaEquacoes2Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={2}
+        <ModuleConsolidation moduloNumero={9}
+            index={9}
             variant={mv[9]}
             resumoVisual={{
               moduloNome: "Módulo 9",

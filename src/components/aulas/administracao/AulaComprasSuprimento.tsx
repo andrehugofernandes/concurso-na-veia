@@ -1,1763 +1,208 @@
 "use client";
-import { useAulaProgress } from "@/hooks/useAulaProgress";
 
-import { useState, useEffect } from "react";
-import { AulaProps, QuizQuestion,
-  QuestaoResolvidaStepByStep} from "../shared";
+import { useState } from "react";
+import { useAulaProgress } from "@/hooks/useAulaProgress";
+import { TabsContent } from "@/components/ui/tabs";
 import {
   ModuleConsolidation,
-  ContentAccordion,
-  CardCarousel,
   QuizInterativo,
   ModuleBanner,
-  ModuleSectionHeader,
+  AulaProps,
+  FlipCard,
   AulaTemplate,
-  AlertBox,
+  ModuleSectionHeader,
 } from "../shared";
-import { LuBrain, LuBookOpen, LuFileText, LuSearch } from "react-icons/lu";
-import { TabsContent } from "@/components/ui/tabs";
-import { COMPRAS_QUIZZES } from "@/data/quizzes/compras-quizzes";
+import * as Icons from "react-icons/lu";
+import { LuBookOpen, LuCheck } from "react-icons/lu";
 
-function toQQ(
-  quiz:
-    | {
-        questions: {
-          id: number;
-          question: string;
-          options: string[];
-          correct: number;
-          explanation: string;
-        }[];
-      }
-    | undefined,
-): QuizQuestion[] {
-  if (!quiz) return [];
-  return quiz.questions.map((q) => ({
-    id: q.id,
-    pergunta: q.question,
-    opcoes: q.options.map((o) => ({ label: o, valor: o })),
-    correta: q.options[q.correct] ?? "",
-    explicacao: q.explanation,
-  }));
-}
+import { QUIZ_MODULES } from "./data/compras-suprimento-quizzes";
+import { MODULE_CONTENTS } from "./data/compras-suprimento-content";
 
-const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", title: "Fundamentos de Compras" },
-  { id: "modulo-2", label: "Módulo 2", title: "Processo de Compras" },
-  { id: "modulo-3", label: "Módulo 3", title: "Seleção de Fornecedores" },
-  { id: "modulo-4", label: "Módulo 4", title: "Negociação" },
-  { id: "modulo-5", label: "Módulo 5", title: "Tipos de Compras" },
-  { id: "modulo-6", label: "Módulo 6", title: "Gestão de Contratos" },
-  { id: "modulo-7", label: "Módulo 7", title: "e-Procurement" },
-  { id: "modulo-8", label: "Módulo 8", title: "Ética e Compliance" },
-  { id: "modulo-9", label: "Módulo 9", title: "Compras na Petrobras" },
-  { id: "modulo-10", label: "Módulo 10", title: "Simulado Geral" },
-] as const;
+const mv = ["indigo", "emerald", "amber", "rose", "blue", "violet", "slate", "cyan", "indigo", "emerald", "amber"] as const;
 
-export default function AulaComprasSuprimento(props: AulaProps) {
-    const STORAGE_KEY_PREFIX = "petrobras_quest_aula_compras_suprimento_";
-
-  const [activeTab, setActiveTab] = useState(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`${STORAGE_KEY_PREFIX}active_tab`);
-      return saved || "modulo-1";
-    }
-    return "modulo-1";
-  });
-
+export default function AulaComprasSuprimento({
+  onComplete,
+  isCompleted,
+  loading,
+  xpGanho = 50,
+  currentProgress,
+  titulo,
+  descricao,
+  duracao,
+  materiaNome,
+  materiaCor,
+  materiaId,
+  prevTopico,
+  nextTopico,
+}: AulaProps) {
+  const [activeTab, setActiveTab] = useState("modulo-1");
   const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
   const completedModules = new Set(completedModulesList);
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(`${STORAGE_KEY_PREFIX}active_tab`, activeTab);
-    }
-  }, [activeTab]);
-
+  const totalModules = 10;
   
+  const MODULE_DEFS = Array.from({ length: totalModules }, (_, i) => ({
+    id: `modulo-${i + 1}`,
+    label: `${i + 1}`,
+    title: MODULE_CONTENTS[i + 1]?.title || `Módulo ${i + 1}`,
+  }));
 
-  const handleQuizComplete = (moduleId: string, score: number) => {
-    if (score >= 70) {
-      updateCompletedModules([...completedModules, moduleId]);
-      const progress = Math.round(
-        (completedModules.size / (MODULE_DEFS.length - 1)) * 100,
-      );
-      props.onUpdateProgress?.(progress);
-      if (moduleId === "modulo-10") {
-        props.onComplete?.();
-      }
+  const handleModuleComplete = (moduleId: string, score: number) => {
+    updateCompletedModules([...Array.from(completedModules), moduleId]);
+    if (completedModules.size >= totalModules) {
+      onComplete?.();
     }
   };
-
-  const getModuleVariant = (num: number) => {
-    const variants = ["cyan", "emerald", "amber", "rose", "blue"] as const;
-    return variants[(num - 1) % variants.length];
-  };
-
-  const renderModulo1 = () => (
-    <div className="space-y-6">
-      <ModuleBanner
-        numero={1}
-        titulo="Fundamentos de Compras"
-        descricao="Conceitos básicos, evolução e a importância estratégica da função."
-        variant={getModuleVariant(1)}
-      />
-
-      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-        <ModuleSectionHeader
-          index="INTRO"
-          title="A Base do Suprimento Estratégico"
-          description="Entenda por que compras é o coração financeiro da indústria."
-          variant={getModuleVariant(1)}
-        />
-
-        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
-            <p>A função de <strong>Compras</strong> deixou de ser uma atividade puramente burocrática e reativa para se tornar um pilar estratégico nas organizações. Em indústrias de capital intensivo como a Petrobras, o custo de materiais e serviços adquiridos pode representar de 40% a 70% do faturamento total. Isso significa que qualquer economia gerada em compras tem impacto direto e massivo no lucro operacional da empresa, muito maior do que um aumento equivalente nas vendas.</p>
-            <p>Em cotações da CESGRANRIO, saiba discernir os objetivos clássicos da área de compras, que envolvem a garantia do abastecimento e a economicidade das propostas.</p>
-            <p>O objetivo central da área de suprimentos é magistralmente resumido no princípio dos <strong>5 Certos (5Rs)</strong>: garantir que a empresa adquira a <strong>Qualidade</strong> certa, na <strong>Quantidade</strong> certa, no <strong>Tempo</strong> certo, pelo <strong>Preço</strong> certo (considerando o Custo Total de Propriedade - TCO), através da <strong>Fonte</strong> (fornecedor) certa. Falhar em apenas um desses "certos" pode comprometer toda a cadeia produtiva e gerar prejuízos incalculáveis.</p>
-            <p>O processo de aquisição corporativa estrutura-se em fases sequenciais: identificação da necessidade, especificação, cotação comercial, julgamento e emissão do pedido.</p>
-            <p>Na evolução histórica, o setor passou de um simples "departamento de pedidos" (operacional e passivo, focado apenas no menor preço de face) para o nível de <em>Supply Management</em> estratégico. No modelo moderno, o comprador atua como gestor de relacionamentos, focando em desenvolvimento de fornecedores, análise de riscos da cadeia de suprimentos e inteligência de mercado. A área de compras agora é proativa, antecipando demandas em vez de apenas reagir a solicitações de emergência.</p>
-            <p>A segregação de funções em compras atua como barreira contra fraudes, separando o colaborador que especifica do profissional que conduz as cotações.</p>
-            <p>O <strong>Custo Total de Propriedade (TCO - Total Cost of Ownership)</strong> é a lente através da qual as decisões modernas de compras são tomadas. Em vez de focar no menor Preço de Aquisição, o TCO contabiliza fretes, impostos, custos de instalação, treinamento, manutenção, consumo de energia e até o descarte. Um equipamento 20% mais barato pode ter um TCO 40% maior devido a quebras frequentes, o que justifica a escolha técnica por fornecedores mais confiáveis, mesmo com valor de face superior.</p>
-            <p>O lote econômico de compras (LEC) busca equilibrar financeiramente o custo administrativo de emitir pedidos com o custo financeiro de manter inventários.</p>
-            <p>No contexto da Petrobras (e provas da CESGRANRIO), a continuidade operacional é O Princípio absoluto. Uma plataforma offshore (E&P) ou refinaria não pode parar por falta de uma válvula crítica. Portanto, o <em>Lead Time</em> (tempo desde a emissão do pedido até o recebimento) e a confiabilidade do fornecedor muitas vezes superam a guerra por centavos. O suprimento na estatal atua para garantir a segurança da operação, equilibrando austeridade financeira com a garantia de excelência em segurança e meio ambiente (SMS).</p>
-            <p>O Técnico de Suprimentos na Petrobras atua diariamente no Petronect, operacionalizando cotações comerciais de itens de consumo das refinarias.</p>
-            <div className="bg-cyan-500/10 border-l-4 border-cyan-500 p-5 rounded-r-xl mt-6">
-            <span className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">💡 Fundamentos de Ouro</span>
-            <ul className="text-lg space-y-1 text-foreground">
-              <li>✓ <strong>Os 5 Certos:</strong> Qualidade, Quantidade, Tempo, Preço e Fonte.</li>
-              <li>✓ <strong>TCO:</strong> Custo Total de Propriedade (vai muito além do preço na nota fiscal).</li>
-              <li>✓ <strong>Evolução:</strong> De Operacional/Burocrático para Estratégico/Supply Management.</li>
-              <li>✓ <strong>Lead Time:</strong> Tempo total do ciclo do pedido (emissão ao recebimento).</li>
-              <li>✓ <strong>Continuidade Operacional:</strong> Foco absoluto na Petrobras para evitar lucros cessantes.</li>
-            </ul>
-          </div>
-        
-          
-          </div>
-      </section>
-
-              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={1}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Durante o processo de seleção de um novo fornecedor de válvulas industriais para refinarias da Petrobras, a equipe de suprimento optou por um modelo cujo preço de aquisição na nota fiscal era 15% superior à menor oferta do mercado. A justificativa residiu no menor consumo energético do equipamento e no maior intervalo entre manutenções preventivas, o que reduz custos operacionais totais. Essa decisão ampara-se no conceito de:"
-          alternativas={[
-            { letra: "A", texto: "Lote Econômico de Compras (LEC)", correta: false },
-              { letra: "B", texto: "Custo Total de Propriedade (TCO)", correta: true },
-              { letra: "C", texto: "Just-in-Time (JIT)", correta: false },
-              { letra: "D", texto: "Valor de Face Operacional", correta: false },
-              { letra: "E", texto: "Ponto de Ressuprimento Dinâmico", correta: false }
-          ]}
-          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O Custo Total de Propriedade (TCO) analisa todos os custos do ciclo de vida de um bem (aquisição, operação, manutenção e descarte) e não apenas o preço de compra inicial na nota fiscal." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
-          ]}
-        />
-
-        <ModuleConsolidation
-        index={1}
-        variant={getModuleVariant(1)}
-        resumoVisual={{
-          moduloNome: "Módulo 1",
-          tituloAula: "Gestão de Compras",
-          materia: "Suprimento",
-          images: [
-            { title: "Os 5 Certos", type: "Diagrama", placeholderColor: "bg-cyan-500/20" },
-            { title: "Evolução do Setor", type: "Mapa Mental", placeholderColor: "bg-cyan-500/20" },
-          ],
-        }}
-        sinteseEstrategica={{
-          title: "A Regra Mnemônica",
-          content: <p className="text-lg italic text-center">"Q² T P F: Quem Quer Ter Preço Forte (Qualidade, Quantidade, Tempo, Preço, Fonte)"</p>,
-        }}
-        podcast={{
-            aulaId: "comprassuprimento",
-            aulaTitulo: "Compras Suprimento",
-            materia: "Administração",
-            materiaId: "administracao",
-            moduloNumero: 1,
-            moduloTitulo: "Módulo 1",
-            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-          }}
-          />
-
-      <div className="space-y-6">
-        <ModuleSectionHeader index={1} variant={getModuleVariant(1)} title="Análise C.E.D.E." description="Fundamentos de compras na prova." />
-        <ContentAccordion mode="stacked" 
-          slides={[
-            {
-              titulo: "Conceituação: O Modelo Evolutivo",
-              icone: <LuBrain />,
-              conteudo: (
-                <div className="space-y-4">
-                  <p>O setor de compras evoluiu de um modelo <strong>Reativo/Passivo</strong> (tirador de pedidos, focado em menor preço e burocracia) para um modelo <strong>Ativo/Estratégico</strong> (Supply Management, gestão da cadeia de suprimentos, focado no custo total de propriedade - TCO).</p>
-                  <AlertBox tipo="info" titulo="Evolução">
-                    No estágio máximo, o setor de compras influencia ativamente no desenvolvimento de produtos e se integra às estratégias globais de mercado.
-                  </AlertBox>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exemplificação: Os 5 Certos (5R's)",
-              icone: <LuBookOpen />,
-              conteudo: (
-                <div className="space-y-4">
-                  <div className="p-4 bg-muted rounded-lg border border-border">
-                    <p className="text-base"><strong>Caso real:</strong> Um analista de suprimentos descobre que a matéria-prima adquirida atendia perfeitamente em qualidade, no fornecedor certo e com preço adequado. Porém, ao focar excessivamente em preço, solicitou um lote enorme, o que descumpriu a "Quantidade certa" (custo de estocagem absurdo) e o "Tempo certo" (venceu antes do uso).</p>
-                  </div>
-                </div>
-              ),
-            },
-            {
-              titulo: "Dicas: Centralização e TCO",
-              icone: <LuFileText />,
-              conteudo: (
-                <div className="space-y-4">
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Compras Centralizadas:</strong> Melhor negociação (ganho de escala), padronização, mas menor agilidade e pouca adaptação local.</li>
-                    <li><strong>Compras Descentralizadas:</strong> Velocidade de resposta, autonomia local, mas perda de economia de escala.</li>
-                    <li><strong>TCO (Custo Total de Propriedade):</strong> Nunca caia na pontos de atenção do "menor preço de nota fiscal". TCO = Preço base + Aquisição + Custos Operacionais.</li>
-                  </ul>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exceções: Foco Absoluto em Preço",
-              icone: <LuSearch />,
-              conteudo: (
-                <div className="space-y-4">
-                  <AlertBox tipo="warning" titulo="Quando o Menor Preço é Rei">
-                    Embora o modelo estratégico rejeite focar só em preço, em licitações tradicionais para bens de prateleira hiperpadronizados (comoditizados, como papel A4 ou água), o menor preço ofertado que atende ao edital será sim o único critério de julgamento tático prático.
-                  </AlertBox>
-                </div>
-              ),
-            },
-          ]}
-        />
-      </div>
-
-      <QuizInterativo
-        titulo="Fundamentos de Compras"
-        numero={1}
-        variant={getModuleVariant(1)}
-        questoes={toQQ(COMPRAS_QUIZZES["modulo-1"])}
-        onComplete={(score: number) => handleQuizComplete("modulo-1", score)}
-      />
-    </div>
-  );
-
-  const renderModulo2 = () => (
-    <div className="space-y-6">
-      <ModuleBanner
-        numero={2}
-        titulo="Processo de Compras"
-        descricao="As etapas sequenciais: requisição, cotação, aprovações e ciclo do pedido."
-        variant={getModuleVariant(2)}
-      />
-
-      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-        <ModuleSectionHeader
-          index="INTRO"
-          title="O Ciclo do Pedido Analisado"
-          description="Do surgimento da necessidade até o pagamento e encerramento (P2P)."
-          variant={getModuleVariant(2)}
-        />
-
-        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
-            <p>O <strong>Ciclo de Compras</strong> é a espinha dorsal de qualquer departamento de suprimentos estruturado. Ele tem início não com o comprador, mas com a <strong>Requisição de Compras (RC)</strong> emitida pela área usuária (produção, manutenção, engenharia). A RC documenta a necessidade, especificando características técnicas do material ou serviço requeridos e a data limite em que o item precisa estar disponível na instalação operante.</p>
-            <p>A banca cobra o trâmite sequencial do Purchase-to-Pay (P2P). Atenção ao trâmite de conferência física e fiscal de 3 vias (Three-Way Match) no ERP.</p>
-            <p>Após a emissão e aprovação gerencial da Requisição, entra em cena a fase de <em>Sourcing</em> ou Pesquisa de Mercado. O comprador analisa seu portfólio de fornecedores homologados e lança uma <strong>Request for Quotation (RFQ)</strong>, chamando o mercado à disputa. Diferente de um contrato definitivo, a RFQ é uma consulta formal. É vital que as especificações estejam perfeitamente delineadas para assegurar a isonomia, de forma que as diferentes propostas comerciais (maçãs com maçãs) possam ser comparadas objetivamente.</p>
-            <p>A conciliação de três vias compara: o pedido de compra (PO), a nota fiscal do fornecedor e o relatório de recebimento físico do almoxarifado.</p>
-            <p>A emissão do <strong>Pedido de Compras (Purchase Order - PO)</strong> marca a consolidação comercial. O PO não é mais uma consulta; é um documento com valor legal e financeiro que formaliza o compromisso de compra frente ao fornecedor escolhido. No PO constam as condições pactuadas: preço acordado, impostos incidentes, incoterms para transporte, penalidades por atraso e cronograma de medições ou entregas físicas do material.</p>
-            <p>O controle de alçadas de aprovação (DoA) estabelece limites de valor financeiro para a liberação de requisições por gerentes de diferentes níveis hierárquicos.</p>
-            <p>As <strong>Alçadas de Aprovação</strong> constituem o principal mecanismo antifraude no processo de compras. O comprador opera e negocia, mas a liberação sistêmica financeira depende do nível de delegação (<em>DoA - Delegation of Authority</em>). Um analista pode ter aprovação sistêmica liberada para pedidos de até R$ 50.000,00, mas ordens que chegam a dezenas de milhões exigem assinaturas duplas ou aprovação de diretores das áreas envolvidas.</p>
-            <p>A automação de compras por e-procurement reduz tempos de trâmite burocrático e otimiza a aquisição de itens de suprimento indireto (MRO).</p>
-            <p>O clímax operacional ocorre na etapa de Recebimento. O setor de recebimento ou almoxarifado não é apenas um depósito de descarregamento de caixa; ele realiza o <em>Three-Way Match</em> (Conciliação a 3 Vias): compara a quantidade e integridade física da carga com o descrito na Nota Fiscal e, crucialmente, verifica se a nota fiscal reflete perfeitamente os valores fechados no Pedido de Compra (PO) inicialmente, destravando a engrenagem do faturamento no ecossistema ERP.</p>
-            <p>O processamento eletrônico de pedidos no portal Petronect da Petrobras assegura a isonomia e a auditabilidade de todas as transações com fornecedores.</p>
-            <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-            <span className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">📦 Fluxo Padrão</span>
-            <ul className="text-lg space-y-1 text-foreground">
-              <li>✓ <strong>RC (Requisição):</strong> Gatilho interno gerado pela área usuária para pedir o suprimento.</li>
-              <li>✓ <strong>RFQ (Cotação):</strong> Convite para propostas enviado a fornecedores homologados.</li>
-              <li>✓ <strong>PO (Pedido):</strong> Documento contratual formalizando obrigações e preços (Aceite/Envio).</li>
-              <li>✓ <strong>Three-Way Check:</strong> PO + Nota Fiscal + Conferência Física garantem a integridade do processo para pagamento.</li>
-              <li>✓ <strong>Alçada:</strong> Governança (compliance) que divide poderes por valores financeiros.</li>
-            </ul>
-          </div>
-        
-          
-          </div>
-      </section>
-
-              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={2}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="O ciclo do pedido é a sequência formal de etapas do processo de compras. Qual é a ordem correta das etapas iniciais?"
-          alternativas={[
-            { letra: "A", texto: "Emissão do PO → Cotação → Requisição → Aprovação.", correta: false },
-              { letra: "B", texto: "Requisição interna → Aprovação → Definição de especificação → Pesquisa de fornecedores → Solicitação de cotação (RFQ).", correta: true },
-              { letra: "C", texto: "Pagamento → Recebimento → Pedido → Negociação.", correta: false },
-              { letra: "D", texto: "Auditoria → Compliance → Pagamento → Entrega.", correta: false },
-              { letra: "E", texto: "Contrato → Especificação → Pedido → Aprovação.", correta: false }
-          ]}
-          dicaEstrategica="Essa sequência garante que o processo seja planejado e aprovado antes de qualquer comprometimento financeiro."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O ciclo do pedido começa com a Requisição de Compra (RC) pela área solicitante, passa pela aprovação por alçada, depois pela definição técnica do item, pesquisa de fornecedores qualificados, e por fim pela emissão da RFQ (Request for Quotation)." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
-          ]}
-        />
-
-        <ModuleConsolidation
-        index={2}
-        variant={getModuleVariant(2)}
-        resumoVisual={{
-          moduloNome: "Módulo 2",
-          tituloAula: "Processo de Compras",
-          materia: "Suprimento",
-          images: [
-            { title: "Fluxo P2P (Procure-to-Pay)", type: "Fluxograma", placeholderColor: "bg-emerald-500/20" },
-          ],
-        }}
-        sinteseEstrategica={{
-          title: "A Santíssima Trindade do Recebimento",
-          content: <p className="text-lg italic text-center">"O Triplo Check P-R-N: Pedido, Recebimento e Nota."</p>,
-        }}
-        podcast={{
-            aulaId: "comprassuprimento",
-            aulaTitulo: "Compras Suprimento",
-            materia: "Administração",
-            materiaId: "administracao",
-            moduloNumero: 2,
-            moduloTitulo: "Módulo 2",
-            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-          }}
-          />
-      <div className="space-y-6">
-        <ModuleSectionHeader index={2} variant={getModuleVariant(2)} title="Análise C.E.D.E." description="O fluxo Processo-P2P na prova." />
-        <ContentAccordion mode="stacked" 
-          slides={[
-            {
-              titulo: "Conceituação: Fluxo P2P Progressivo",
-              icone: <LuBrain />,
-              conteudo: (
-                <div className="space-y-4">
-                  <p>O fluxo de compras padrão inicia na área usuária, não em Compras. <strong>Requisição (RC)</strong>: pedido interno → <strong>Pesquisa/Cotação (RFQ)</strong>: mercado → <strong>Pedido de compra (PO)</strong>: contrato comercial e cobrança → <strong>Recebimento</strong>: verificação física e sistêmica → <strong>Pagamento</strong>: financeiro.</p>
-                  <AlertBox tipo="info" titulo="O Three-Way Match">
-                    Conciliação a 3 Vias: compara a Ordem de Compra original, a Nota Fiscal e o Recebimento Físico (Guia de Remessa) antes de autorizar pagamento. É o bastião final antifraude.
-                  </AlertBox>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exemplificação: DoA",
-              icone: <LuBookOpen />,
-              conteudo: (
-                <div className="space-y-4">
-                  <div className="p-4 bg-muted rounded-lg border border-border">
-                    <p className="text-base"><strong>Caso real:</strong> Um pedido de válvulas de titânio totalzou 3 milhões. Apesar do analista técnico conduzir todo o RFQ processual, o sistema bloqueou (DoA) a conversão de RFQ para Pedido (PO) aguardando assinatura do Gerente Executivo para habilitar juridicamente o negócio.</p>
-                  </div>
-                </div>
-              ),
-            },
-            {
-              titulo: "Dicas: Follow-up Operacional",
-              icone: <LuFileText />,
-              conteudo: (
-                <div className="space-y-4">
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Follow-up:</strong> Não basta emitir pedido, tem que acompanhar (diligenciar). Atrasos são imperdoáveis para linhas vitais ininterruptas.</li>
-                    <li><strong>Área de atuação:</strong> Compradores não criam demandas do nada. A Requisição nasce em áreas especialistas técnicas operantes (Manutenção, Obras).</li>
-                  </ul>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exceções: Urgência Extrema (Bypass)",
-              icone: <LuSearch />,
-              conteudo: (
-                <div className="space-y-4">
-                  <AlertBox tipo="warning" titulo="Compressão P2P Emergencial">
-                    Para falhas de material que ameacem o meio ambiente gravemente imediatista ou integridade física ou risco incalculável fabril de parada, a burocracia é quebrada por meio de regimes simplificados urgenciais e adiantamentos (famoso suprimento de fundos ou caixa pequeno para bens iminentes).
-                  </AlertBox>
-                </div>
-              ),
-            },
-          ]}
-        />
-        <QuizInterativo
-          titulo="Processo de Compras"
-          numero={2}
-          variant={getModuleVariant(2)}
-          questoes={toQQ(COMPRAS_QUIZZES["modulo-2"])}
-          onComplete={(score: number) => handleQuizComplete("modulo-2", score)}
-        />
-      </div>
-    </div>
-  );
-
-  const renderModulo3 = () => (
-    <div className="space-y-6">
-      <ModuleBanner
-        numero={3}
-        titulo="Seleção e Avaliação de Fornecedores"
-        descricao="Cadeias produtivas, desenvolvimento e modelagem da decisão Make or Buy."
-        variant={getModuleVariant(3)}
-      />
-
-      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-        <ModuleSectionHeader
-          index="INTRO"
-          title="Gestão da Base de Fornecedores"
-          description="Critérios de qualificação técnica, saúde financeira e homologação."
-          variant={getModuleVariant(3)}
-        />
-
-        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
-            <p>A <strong>Gestão Estratégica de Fornecedores (Supplier Relationship Management - SRM)</strong> é o diferenciador central de empresas prósperas. A base de fornecedores de uma estatal de grande porte não aceita "aventureiros". Para fornecer à Petrobras, a empresa precisa passar por um rigoroso processo de <em>Homologação (Qualificação)</em>. A homologação previne falhas graves analisando retrospecto técnico operante, balanço financeiro, e garantindo que não existem débitos estatais, sanções de órgãos de controle administrativo e passivos trabalhistas ocultos.</p>
-            <p>CESGRANRIO exige critérios objetivos de qualificação técnica e capacidade financeira de licitantes para afastar o risco de inexecuções contratuais.</p>
-            <p>Dentro das dinâmicas de <em>sourcing</em> (suprimento), destacam-se estratégias pontuais dependendo da criticidade do material. <strong>Single Sourcing (Fonte Única)</strong> consiste numa escolha intencional de um único parceiro para um serviço, a fim de alinhar engenharias conjuntas e alavancar profundas economias de escala, assumindo conscientemente o enorme risco do desabastecimento. Diferencia-se de parceiros monopolistas vitais, o <strong>Sole Sourcing (Fonte Exclusiva)</strong>, uma condição fatal imposta pelos agentes externos, onde não existem concorrentes globais por conta de barreiras tecnológicas ou de propriedade patentes intelectuais exclusivas de empresas transnacionais.</p>
-            <p>A qualificação de fornecedores envolve a análise minuciosa de balanços contábeis, regularidade fiscal, licenças ambientais e atestados de acervo técnico.</p>
-            <p>O <strong>Scorecard (Índice de Qualificidade do Fornecimento)</strong> é o placar vivo da gestão contratual e tem sigla em destaque nas corporações globais de engenharia: <strong>QPCD (Quality, Price/Cost, Delivery)</strong>. Esse instrumento acompanha, pós-contratação, as porcentagens milimétricas de atrasos da frota de recebimento, as porcentagens de lotes defeituosos na qualidade final operante e mensura pontualmente todo aditivo renegociado. Punições no <em>scorecard</em> acarretam rebaixamento do selo de homologação do fornecedor, podendo enviá-lo à restrição em futuras chamadas.</p>
-            <p>A homologação sistemática de novos fornecedores amplia a competitividade de cotações, mas exige vistorias físicas para mitigar riscos de qualidade.</p>
-            <p>A Petrobras possui, estatutariamente e legalmente, robustos cadernos de <strong>Desenvolvimento de Fornecedores e Fomento da Indústria Nacional (Conteúdo Local)</strong>. O desenvolvimento baseia-se em missões integrativas de engenheiros nas plantas das siderúrgicas parceiras, capacitação maciça conjunta em gestão de portfólio de SMS e auxílio consultivo. O objetivo dessas "infiltrações" técnicas benéficas é transformar o fornecedor não-capacitado em um competidor robusto capaz de produzir nacionalmente equipamentos complexos, visando proteção às oscilações geopolíticas da cadeira do petróleo bruto.</p>
-            <p>O cadastramento corporativo avalia continuamente o desempenho de entregas operacionais do parceiro de negócios através de métricas de qualidade e prazos.</p>
-            <p>Constantemente deparamos na malha decisória do Planejamento Integrado Estratégico a clássica decisão da Fronteira Operante: a avaliação binária primária do chamado <strong>Make or Buy (Fazer Internamente ou Comprar no Mercado Externo)</strong>. Essa modelagem matemática deve precificar os ativos da mão de obra engessada, flexibilidade contratual reativa das oscilações, sigilo intelectual industrial e qual é de fato o <em>Core Competence</em> inalienável intrínseco aos valores fundadores do planejamento master corporativista base.</p>
-            <p>O cadastro CRCC da Petrobras unifica os critérios técnicos, legais e financeiros que habilitam grandes prestadoras de serviços industriais a atuar na estatal.</p>
-            <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <span className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">🤝 Sourcing e Homologação</span>
-            <ul className="text-lg space-y-1 text-foreground">
-              <li>✓ <strong>Make or Buy:</strong> O dilema estratégico entre a produção própria (core business) e a terceirização externa competitiva.</li>
-              <li>✓ <strong>Qualificação Previa:</strong> Compliance vital de atestados tributários impeditivos antes da habilitação na concorrência técnica.</li>
-              <li>✓ <strong>Sole vs Single:</strong> Sole (obrigado compulsoriamente); Single (voluntariado metodologicamente em prol de parceria).</li>
-              <li>✓ <strong>QPCD (IQF):</strong> Quality, Price/Cost, Delivery. (Indicadores do sucesso de entrega temporal e de calibração unitária).</li>
-              <li>✓ <strong>Conteúdo Local Nacional:</strong> Programa de aceleração massiva da resiliência interna para proteção geopolítica e cambial sistêmica.</li>
-            </ul>
-          </div>
-        
-          
-          </div>
-      </section>
-
-              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={3}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="A homologação de fornecedores é um processo formal que antecede o primeiro pedido. Qual é seu objetivo principal?"
-          alternativas={[
-            { letra: "A", texto: "Reduzir o preço de compra ao mínimo possível.", correta: false },
-              { letra: "B", texto: "Verificar e certificar que o fornecedor atende aos requisitos técnicos, financeiros, legais e de qualidade antes de ser incluído na base de fornecedores.", correta: true },
-              { letra: "C", texto: "Substituir fornecedores nacionais por internacionais.", correta: false },
-              { letra: "D", texto: "Automatizar o processo de cotação.", correta: false },
-              { letra: "E", texto: "Garantir exclusividade de fornecimento.", correta: false }
-          ]}
-          dicaEstrategica="Somente fornecedores homologados podem receber pedidos."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "A homologação (ou qualificação) de fornecedores avalia previamente se o candidato tem capacidade técnica (equipamentos, processos, certificações), saúde financeira (para cumprir contratos), conformidade legal (certidões, regularidade fiscal) e alinhamento com os padrões de qualidade do comprador." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
-          ]}
-        />
-
-        <ModuleConsolidation
-        index={3}
-        variant={getModuleVariant(3)}
-        resumoVisual={{
-          moduloNome: "Módulo 3",
-          tituloAula: "Seleção de Fornecedores",
-          materia: "Suprimento",
-          images: [
-            { title: "Matriz Make | Buy", type: "Quadro Comparativo", placeholderColor: "bg-amber-500/20" },
-          ],
-        }}
-        sinteseEstrategica={{
-          title: "A Diferença Crucial",
-          content: <p className="text-lg italic text-center">"SOLE = Solo (Sozinho no Mundo). SINGLE = Escolha Singela do Coração."</p>,
-        }}
-        podcast={{
-            aulaId: "comprassuprimento",
-            aulaTitulo: "Compras Suprimento",
-            materia: "Administração",
-            materiaId: "administracao",
-            moduloNumero: 3,
-            moduloTitulo: "Módulo 3",
-            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-          }}
-          />
-
-      <div className="space-y-6">
-        <ModuleSectionHeader index={3} variant={getModuleVariant(3)} title="Análise C.E.D.E." description="Qualificação de fornecedores nos editais." />
-        <ContentAccordion mode="stacked" 
-          slides={[
-            {
-              titulo: "Conceituação: Sole vs Single Sourcing",
-              icone: <LuBrain />,
-              conteudo: (
-                <div className="space-y-4">
-                  <p><strong>Sole Sourcing:</strong> É forçado pelo mercado (Fonte Única Exclusiva). Só existe UM fornecedor detentor da tecnologia mundial monopolista, não existe outra opção concorrencial. <strong>Single Sourcing:</strong> É escolha por estratégia. Você ESCOLHEU voluntariamente aliar-se a apenas um entre múltiplos concorrentes viáveis, firmando parcerias de longo prazo exclusivas.</p>
-                  <AlertBox tipo="info" titulo="Qualificação Contínua">
-                    Homologar não é para sempre. Fornecedores são auditados periodicamente quanto a saúde financeira (Z-score insolvente premonitório) e cumprimento legal estatal/tributário.
-                  </AlertBox>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exemplificação: Scorecard IQF",
-              icone: <LuBookOpen />,
-              conteudo: (
-                <div className="space-y-4">
-                  <div className="p-4 bg-muted rounded-lg border border-border">
-                    <p className="text-base"><strong>Caso real:</strong> Avaliando o histórico de um parceiro. Indicadores revelaram 0% de deficiências de qualidade (QPCD Q perfeito), mas 40% de atrasos repetitivos de entrega (Delivery penalizante). Resultado: o sistema rebaixa sua nota final, barrando sua presença em cotações "Just In Time" emergenciais urgentes vitalíssimas.</p>
-                  </div>
-                </div>
-              ),
-            },
-            {
-              titulo: "Dicas: Estratégias do Make or Buy",
-              icone: <LuFileText />,
-              conteudo: (
-                <div className="space-y-4">
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>A decisão <strong>Fazer (Make)</strong> prioriza quando é segredo industrial fundamental, competência central (core), independência garantida irrestrita, altos volumes constantes monopolizados da capacidade ociosa fabril.</li>
-                    <li>A decisão <strong>Comprar (Buy)</strong> é tomada se requer pequena escala que desvia o foco central, pouca expertise da matriz, busca de tecnologia da ponta inovadora flexível barata por empresas ultra-focadas segmentadas (fábrica chinesa tech), barateando o patrimônio próprio paralisado engessante improdutivo.</li>
-                  </ul>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exceções: Parcerias Keiretsu Reversos",
-              icone: <LuSearch />,
-              conteudo: (
-                <div className="space-y-4">
-                  <AlertBox tipo="warning" titulo="Subcontratação Híbrida">
-                    A terceirização agressiva (Buy total para TUDO) já resultou, historicamente, em perdas letais de controle tecnológico matriz por esvaziamento estrutural ("Hollowing Out"). Por vezes, o Make ganha força mesmo que antieconômico por puro resguardo patrio estratégico governamental nacional de defesa (Programa Espacial e Bélico).
-                  </AlertBox>
-                </div>
-              ),
-            },
-          ]}
-        />
-      </div>
-
-      <QuizInterativo
-        titulo="Seleção de Fornecedores"
-        numero={3}
-        variant={getModuleVariant(3)}
-        questoes={toQQ(COMPRAS_QUIZZES["modulo-3"])}
-        onComplete={(score: number) => handleQuizComplete("modulo-3", score)}
-      />
-    </div>
-  );
-
-  const renderModulo4 = () => (
-    <div className="space-y-6">
-      <ModuleBanner
-        numero={4}
-        titulo="Negociação"
-        descricao="ZOPA, BATNA e as dimensões cooperativas x competitivas."
-        variant={getModuleVariant(4)}
-      />
-
-      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-        <ModuleSectionHeader
-          index="INTRO"
-          title="Negociação Cooperativa e Competitiva"
-          description="A maestria diplomática na mesa de barganha no suprimento moderno."
-          variant={getModuleVariant(4)}
-        />
-
-        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
-            <p>A premissa da doutrina acadêmica focada em negociações modernas dita que, em licitações privadas ou em processos isentos em Suprimentos Estatais, deve-se imperativamente realizar separações contextuais baseadas em volume mercantilista transicionado, ditando os rumos das abordagens de confrontação <strong>Distributiva versus Integrativa</strong> em reuniões acaloradas com fornecedores de maquinários ultra importados ou massivos estoques de commoditization básica em galpões regionais pulverizados nacionalmente.</p>
-            <p>A banca cobra as táticas de negociação. Saiba diferenciar a negociação distributiva (disputa de preço puro) da negociação integrativa (parceria de valor).</p>
-            <p>Negociações puramente <strong>Distributivas</strong>, também apelidadas pelas premissas "ganha-perde" ou jogo de soma zero absoluto matematicamente comprovado em matriz, retratam barganhas pontuais de transações isoladas onde não interessa em esferas operacionais do fomento paritário amigável de relações vitalícias futuras, focando no ardor canibalista do preço instantâneo final (premissa muito usada em leilões isolados não-recorrentes com peças singulares esporádicas de baixo perfil mantenedor posterior operacional).</p>
-            <p>O conceito de BATNA estabelece a melhor alternativa fora da mesa de negociação, delimitando o ponto de desistência de acordo comercial de suprimentos.</p>
-            <p>Ao revés, grandes licitações de empreiteiras especializadas e empresas multinacionais que prestam contratos "guarda-chuvas" (terceirizações imensas da integridade estrutural e pintura da corrosão embarcada do casco vital de plataformas flutuantes off-shore e navios ancorados do terminal) evocam impositivamente <strong>Negociações Integrativas (Ganha-Ganha)</strong>, baseando-se que parcerias vitalícias de longo lastro se estilhaçariam via pressões esmagadoras focadas numa guerra tarifária cega instantânea de margem espremida desonradamente e predatoriamente em detrimento impositivo.</p>
-            <p>O planejamento de negociações estratégicas exige mapear antecipadamente as forças e fraquezas de fornecedores essenciais da cadeia produtiva.</p>
-            <p>Conceitos mandatórios de Harvard: o <strong>BATNA (Best Alternative to a Negotiated Agreement)</strong> configura o poderio de levantamento bélico diplomático dos atores. A "Saída de Incêndio" invisível antes de engajamento do salão oval da tratativa precificadora. Se o fornecedor "X" é o único dono dos chips controladores, seu BATNA tratora a Petrobras implacavelmente. Caso a Petrobras fomente o mercado competitivo plural com a massificação paralela da empresa "Y" e homologando novos atuantes satélites orientais, ergue suas muralhas do "Melhor Alternativa Confortável" em reações futuras caso rompida a pacificação negocial contratual prévia.</p>
-            <p>A concessão recíproca controlada permite destravar acordos difíceis de compras complexas sem comprometer o orçamento interno programado.</p>
-            <p>O fechamento comercial só atinge os assinadores de contratos lúdicos via <strong>ZOPA (Zone of Possible Agreement)</strong>. A intersecção geométrica invisível das margens de suportabilidade respirável do mercado onde reside o aceite (O fornecedor "Z" implora secretamente para fechar entre R$ 821,00 a R$ 900,00 de lucros enquanto as estimativas balizadoras da Estatal ditam aceitação de compras balizadas entre R$ 800,00 limitadas pela linha vermelha rigorosa do teto matemático indexador de R$ 860,00 engessadas em edital). É o cruzamento áureo que abençoa negócios bilionários em corporações transnacionais petrolíferas de suprimentos estratégicos globais interconectados com fluidez.</p>
-            <p>Nas compras públicas de grande vulto da Petrobras, a fase de negociação de propostas visa a buscar melhores descontos comerciais em cotações eletrônicas.</p>
-            <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-            <span className="font-bold text-rose-600 dark:text-rose-400 text-lg mb-2">🤝 Dicionário do Negociador</span>
-            <ul className="text-lg space-y-1 text-foreground">
-              <li>✓ <strong>Integrativa:</strong> As partes aumentam juntas o bolo colaborando. Negociações a longo prazo em contratos vitais.</li>
-              <li>✓ <strong>Distributiva:</strong> Divisão cruel do bolo engessado, foco excludente total fixado cruamente nas reduções unitárias absolutas preteritamente amarradas no instante exato e singular temporal desprovida da relacional humanidade subjacente integrativa.</li>
-              <li>✓ <strong>ZOPA:</strong> Janela restrita matemática do cruzamento limite de margens operante no lucro limítrofe das cotações viabilizáveis e balizadas nas partes e que intercedem pacificamente mutuamente sem rompantes unilaterais traumáticos desestimulantes ou inviabilizadores da entrega contínua subseqüente.</li>
-              <li>✓ <strong>BATNA:</strong> Minha saída digna alternativa caso o jogo atual encerre melancolicamente as tratativas.</li>
-              <li>✓ <strong>Ancoragem (Viés):</strong> Ditar inicialmente o referencial (número psicológico) gravando magnetismo forte orientador no rumo das reações gravitacionais opostas balizadas pelo interlocutor estupefato em desvantagem cronológica surpresa posicional.</li>
-            </ul>
-          </div>
-        
-          
-          </div>
-      </section>
-
-              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={4}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="O conceito de BATNA (Best Alternative to a Negotiated Agreement) na negociação de compras refere-se a:"
-          alternativas={[
-            { letra: "A", texto: "O melhor preço obtido na última cotação realizada.", correta: false },
-              { letra: "B", texto: "A melhor alternativa que o negociador tem caso a negociação atual falhe — define o poder de barganha.", correta: true },
-              { letra: "C", texto: "O contrato padrão utilizado como referência pelo departamento jurídico.", correta: false },
-              { letra: "D", texto: "A estratégia de ancoragem inicial na negociação.", correta: false },
-              { letra: "E", texto: "O limite máximo de desconto que o fornecedor pode oferecer.", correta: false }
-          ]}
-          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "BATNA é sua" },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
-          ]}
-        />
-
-        <ModuleConsolidation
-        index={4}
-        variant={getModuleVariant(4)}
-        resumoVisual={{
-          moduloNome: "Módulo 4",
-          tituloAula: "Negociação",
-          materia: "Suprimento",
-          images: [
-            { title: "Gráfico de ZOPA", type: "Gráfico X-Y", placeholderColor: "bg-rose-500/20" },
-          ],
-        }}
-        sinteseEstrategica={{
-          title: "Bate na Zopa!",
-          content: <p className="text-lg italic text-center">"O BATNA protege (Alternativa). A ZOPA permite fechar acordo (Zona)."</p>,
-        }}
-        podcast={{
-            aulaId: "comprassuprimento",
-            aulaTitulo: "Compras Suprimento",
-            materia: "Administração",
-            materiaId: "administracao",
-            moduloNumero: 4,
-            moduloTitulo: "Módulo 4",
-            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-          }}
-          />
-
-      <div className="space-y-6">
-        <ModuleSectionHeader index={4} variant={getModuleVariant(4)} title="Análise C.E.D.E." description="Táticas e conceitos de negociação b2b." />
-        <ContentAccordion mode="stacked" 
-          slides={[
-            {
-              titulo: "Conceituação: ZOPA e BATNA",
-              icone: <LuBrain />,
-              conteudo: (
-                <div className="space-y-4">
-                  <p><strong>ZOPA (Zone of Possible Agreement):</strong> É a zona de possível acordo. O limite máximo que o comprador aceita pagar cruzado com o limite mínimo que o vendedor aceita cobrar. <strong>BATNA:</strong> Melhor alternativa em caso de não acordo (sua válvula de escape caso as negociações fracassem).</p>
-                  <AlertBox tipo="info" titulo="O Poder do BATNA">
-                    Princípio Fundamental da negociação de Harvard: Quem tem o melhor BATNA detém o poder na mesa. Se você não depende do fornecedor (tem outros homologados), ele cederá.
-                  </AlertBox>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exemplificação: Integrativa e Distributiva",
-              icone: <LuBookOpen />,
-              conteudo: (
-                <div className="space-y-4">
-                  <div className="p-4 bg-muted rounded-lg border border-border">
-                    <p className="text-base"><strong>Caso real:</strong> Na compra de papel higiênico, a negociação é <strong>Distributiva (ganha-perde)</strong>: o valor está no preço, fatias de um bolo fixo. Já na subcontratação de engenharia naval para FPSO, a negociação é <strong>Integrativa (ganha-ganha)</strong>: construtora e estatal aumentam o bolo juntas visando longo prazo.</p>
-                  </div>
-                </div>
-              ),
-            },
-            {
-              titulo: "Dicas: A Tática da Ancoragem",
-              icone: <LuFileText />,
-              conteudo: (
-                <div className="space-y-4">
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Ancoragem:</strong> A primeira oferta dita o ritmo da negociação. Quem fala primeiro o preço ancora o viés psicológico do outro na mesa.</li>
-                    <li>Sempre separe as pessoas do problema nas rodadas extenuantes de precificação para manter relações comerciais saudáveis.</li>
-                  </ul>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exceções: Abandono da ZOPA",
-              icone: <LuSearch />,
-              conteudo: (
-                <div className="space-y-4">
-                  <AlertBox tipo="warning" titulo="Quando levantar da mesa?">
-                    Nunca feche um acordo se a oferta final do fornecedor for PIOR que o seu BATNA. Muitas vezes as partes esticam a negociação por pura pressão psicológica ignorando a matemática da ausência de ZOPA.
-                  </AlertBox>
-                </div>
-              ),
-            },
-          ]}
-        />
-        <QuizInterativo
-          titulo="Negociação"
-          numero={4}
-          variant={getModuleVariant(4)}
-          questoes={toQQ(COMPRAS_QUIZZES["modulo-4"])}
-          onComplete={(score: number) => handleQuizComplete("modulo-4", score)}
-        />
-      </div>
-    </div>
-  );
-
-  const renderModulo5 = () => (
-    <div className="space-y-6">
-      <ModuleBanner
-        numero={5}
-        titulo="Tipos de Compras e Contratação"
-        descricao="Abordagens específicas: de commodities e compras SPOT a acordos plurianuais Kanban."
-        variant={getModuleVariant(5)}
-      />
-
-      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-        <ModuleSectionHeader
-          index="INTRO"
-          title="O Portfólio de Aquisições"
-          description="Estratégias emergenciais, descentralizadas, Consignações industriais flexíveis e sistemas Pull/Push adaptáveis e ágeis corporativamente operantes nas frentes estatais."
-          variant={getModuleVariant(5)}
-        />
-
-        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
-            <p>A modelagem transacional dos <strong>Tipos de Compras</strong> diferencia-se radicalmente conforme a essência da categoria dos bens suprimentares manipulados logísticos ou operantes (commodities brutas voláteis transacionadas no mar do câmbio internacional spot-fórum via importativas navios tanques graneleiros até requisições triviais singelas unitárias fragmentadas compradas localmente do mercadinho varejista adjacente descentralizadamente regional nas extremidades dos postinhos rodoviários em terras distantes interioranas dos ramais distantes rurais da rede corporativa estatal ramificada nas veias do país infraestrutural vitalmente pujante).</p>
-            <p>Questões sobre tipos de compras exploram a distinção entre contratação emergencial (spot) e acordos de fornecimento contínuo de longo prazo.</p>
-            <p><strong>Compras SPOT</strong> consubstanciam as investidas transacionais ágeis esporádicas momentâneas não pautadas no rigor relacional apegado de longo escopo vitalício das premissas contratuais firmes do suprimento (compra no momento x, liquida e encerra transação isolada de commodity oscilante aproveitando "gap" da alta favorável num "canyon" de queda pontual no gráfico financeiro para o favorecimento monetário). E as compras <strong>Emergenciais</strong> revelam o calcanhar da infraestrutura defeituosa da prevenção não acurada programada do planejamento integrado logado ou que não mapeou acidentes fortuitos com quebras intermitentes surpresas estourando pressupostos orçamentários vitais urgentes não regrados via preços exorbitantes punitivos taxativos do frete imediato noturno supertarifado na madrugada dos prestadores heróicos de socorro estressante caros.</p>
-            <p>As aquisições dividem-se em diretas (insumos que integram o produto final) e indiretas (MRO — Manutenção, Reparo e Operação e serviços gerais).</p>
-            <p>No panteão da excelência enxuta transborda o modelo do <strong>Kanban em Compras e o JIT (Just in Time)</strong>, filosofias onde o repuxo puxado do chão de fábrica alavanca sistemicamente eletronicamente gatilhos virtuais automatizados de reposição direta da prateleira na doca sem a mão pesada burocrática engessante das canetas de diretores, otimizando os armazéns corporativistas estatais diminuindo galpões inúteis engessados pelo capital afundado inativo em peças inertes empilhadas no teto enferrujando tristemente contabilizadas depreciativas custosamente.</p>
-            <p>O gerenciamento de MRO exige catalogação precisa para padronizar insumos operacionais e evitar a fragmentação de compras de baixo valor.</p>
-            <p>No formato relacional "Asset Light", o modal da repactuação de compras por <strong>Consignação</strong> delega impositivamente o encargo da subscrição da posse temporária de estocagem ao bolso inegociável penalizador mantenedor fiscalizador do fornecedor titular parceiro do lote mantido nas nossas instalações (A Petrobras só desembolsa faturas monetárias pontualmente singulares no exato intercurso microscópico temporal da retirada efetiva do rolamento catalogado do caixote fornecido pelo produtor terceiro acomodado graciosamente no galpão oficial da estatal).</p>
-            <p>Os acordos de fornecimento de longo prazo (contratos-quadro) reduzem a burocracia de compras frequentes ao estabelecer tabelas de preços fixas.</p>
-            <p>Por fim, temos os venerados <strong>Acordos-Quadro (Master Agreements)</strong>, emulações geniais de previsibilidade estanque tranquilizadora contábil-legalística onde a empresa fecha a tarifação base do insumo de amplo largo fluxo ininterrupto de consumo rotineiro para o ano letivo das estações corporativas, e as bases distritais das gerências operacionais executam pedidos filhotes ágeis ("Call-Offs") consumindo o guarda-chuva mestre negociado ferozmente centralizada na matriz sem se importar burocraticamente com as aprovações repetitivas tediosas exaustivas que abarrotem ineficientemente corredores de papel das diretorias homologatórias centrais ineficientemente em Brasília das licitações operantes legais governamentais vigentes estatais protocolares do país da amarra pública travadora institucionalizada legislada pormenorizada pesadamente engessadora restritiva burocrática limitativa punitiva regulamentar estrita cautelosa fiscalizadora do erário.</p>
-            <p>Em refinarias da Petrobras, contratos plurianuais de fornecimento garantem o fluxo contínuo de insumos de SMS e gases industriais críticos.</p>
-            <div className="bg-teal-500/10 border-l-4 border-teal-500 p-5 rounded-r-xl mt-6">
-            <span className="font-bold text-teal-600 dark:text-teal-400 text-lg mb-2">🏷️ Modalidades e Execução</span>
-            <ul className="text-lg space-y-1 text-foreground">
-              <li>✓ <strong>Kanban / JIT:</strong> Foco brutal no desengessamento da ociosidade dos milhões parados inutilmente acumulados juntando pó na armazenagem das valas de manutenção sub-operantes sem visão puxada sincronizada veloz imediata e fluida do Lean metodológico automotivo transposto para estatais gigantes logísticas operacionais infraestruturais.</li>
-              <li>✓ <strong>Emergencial vs SPOT:</strong> Emergencial transborda dor, atraso produtivo caríssimo reativo (manutenção curativa extrema). O SPOT é apenas uma modalidade desapegada livre pontual comercial oportuna mercantilista de preços voláteis ágil do comprador sem vínculo perpétuo com os ofertantes flutuantes na maré viva da flutuação da bolsa monetária mercantil global.</li>
-              <li>✓ <strong>Consignação de Repouso Terceiro Fiduciário:</strong> Mantido conosco no solo matricial estatal operante mas o CPF/CNPJ patrimonial indexado remete ao credor parceiro que só envia os carnês cobradores faturamento no giro temporal estrito das saques da engenharia em caso de incidentes vitais trocos nas refinarias manutenções contínuas operantes interruptas vitais das plantas matrizes complexas das operações pesadas brasileiras off/on-shores da atividade núcleo e central base focal petrolífera nacionalmente relevante estratégica essencial sistêmica pátria.</li>
-              <li>✓ <strong>Acordos-Quadrão Plurianuais Simplificados Rápidos Ligeiros:</strong> Fechamentos longos predeterminantes das tarifas contratuais master unindo base nacional (Call-offs gerados pelas bordas pontuais das instalações independentes capilares).</li>
-            </ul>
-          </div>
-        
-          
-          </div>
-      </section>
-
-              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={5}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="A compra emergencial difere da compra programada principalmente porque:"
-          alternativas={[
-            { letra: "A", texto: "A compra emergencial é sempre mais barata.", correta: false },
-              { letra: "B", texto: "A compra emergencial é realizada sem planejamento prévio, em situação urgente, geralmente resultando em custos mais altos, menos fornecedores consultados e menor poder de negociação.", correta: true },
-              { letra: "C", texto: "A compra programada não exige cotação.", correta: false },
-              { letra: "D", texto: "A compra emergencial usa sempre pagamento à vista.", correta: false },
-              { letra: "E", texto: "A compra programada é exclusiva para materiais de MRO.", correta: false }
-          ]}
-          dicaEstrategica="Uma análise da Petrobras mostrou que compras emergenciais custam em média 20-40% a mais que compras programadas equivalentes."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Compras emergenciais (ou de urgência) ocorrem quando o planejamento falhou ou houve consumo inesperado." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Como o tempo é crítico, o comprador aceita pagar mais caro, consulta menos fornecedores e tem menor poder de negociação." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
-          ]}
-        />
-
-        <ModuleConsolidation
-        index={5}
-        variant={getModuleVariant(5)}
-        resumoVisual={{
-          moduloNome: "Módulo 5",
-          tituloAula: "Tipos de Compras",
-          materia: "Suprimento",
-          images: [
-            { title: "Matriz Portfólio de Compras", type: "Tabela", placeholderColor: "bg-teal-500/20" },
-          ],
-        }}
-        sinteseEstrategica={{
-          title: "A Pirâmide da Decisão",
-          content: <p className="text-lg italic text-center">"Da prateleira do JIT à Cadeira do Acordo-Quadro. Fuja da Emergencial!"</p>,
-        }}
-        podcast={{
-            aulaId: "comprassuprimento",
-            aulaTitulo: "Compras Suprimento",
-            materia: "Administração",
-            materiaId: "administracao",
-            moduloNumero: 5,
-            moduloTitulo: "Módulo 5",
-            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-          }}
-          />
-
-      <div className="space-y-6">
-        <ModuleSectionHeader index={5} variant={getModuleVariant(5)} title="Análise C.E.D.E." description="Modalidades de compras na prova." />
-        <ContentAccordion mode="stacked" 
-          slides={[
-            {
-              titulo: "Conceituação: Master Agreements",
-              icone: <LuBrain />,
-              conteudo: (
-                <div className="space-y-4">
-                  <p><strong>Acordos-Quadro (Master Agreements):</strong> Contratos guarda-chuvas estipulantes de preços globais centralizados onde bases regionais locais realizam pedidos rápidos (Call-offs) simplificando a burocracia de compras frequentes plurianuais rotineiras para infraestrutura.</p>
-                  <AlertBox tipo="info" titulo="Sistema Pull x Push">
-                    JIT e Kanban representam o ápice do modelo "Puxado" (Pull) na logística de suprimentos, em detrimento do antigo modelo empurrado de estocagem inchada (Push).
-                  </AlertBox>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exemplificação: Consignação e Ativo Leve",
-              icone: <LuBookOpen />,
-              conteudo: (
-                <div className="space-y-4">
-                  <div className="p-4 bg-muted rounded-lg border border-border">
-                    <p className="text-base"><strong>Caso real:</strong> Num almoxarifado on-shore, caixas de rolamentos estão disponíveis 24h. Porém, a posse é da fabricante (terceirizada). A Petrobras só paga a NF no momento exato em que a manutenção saca a caixa para uso prático na esteira. Isso é Consignação.</p>
-                  </div>
-                </div>
-              ),
-            },
-            {
-              titulo: "Dicas: SPOT vs Padrão",
-              icone: <LuFileText />,
-              conteudo: (
-                <div className="space-y-4">
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Compras SPOT:</strong> Mercado à vista, ágeis, mercadológicas, esporádicas. Foco no momento x e encerra-se. Típicas para aproveitar "gaps" de queda das bolsas ou cotações vantajosas efêmeras de commodities.</li>
-                    <li>Sistemas descentralizados nas extremidades (ex: fundo fixo via cartão corporativo para um tubo avulso em posto rodoviário rincão) dão folga para suprimentos centrais focarem nos contratos Master multibilionários vitais.</li>
-                  </ul>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exceções: Compras Emergenciais",
-              icone: <LuSearch />,
-              conteudo: (
-                <div className="space-y-4">
-                  <AlertBox tipo="warning" titulo="O Preço do Atraso">
-                    A via emergencial (reativa) quebra os rituais do Master Agreement pagando taxas altíssimas logísticas (frete aéreo imediato fretado supertarifado). Evidenciam uma falha grotesca do planejamento preventivo no setor de Suprimentos programáticos ou falha sistêmica de equipamentos graves.
-                  </AlertBox>
-                </div>
-              ),
-            },
-          ]}
-        />
-        <QuizInterativo
-          titulo="Tipos de Compras"
-          numero={5}
-          variant={getModuleVariant(5)}
-          questoes={toQQ(COMPRAS_QUIZZES["modulo-5"])}
-          onComplete={(score: number) => handleQuizComplete("modulo-5", score)}
-        />
-      </div>
-    </div>
-  );
-
-  const renderModulo6 = () => (
-    <div className="space-y-6">
-      <ModuleBanner
-        numero={6}
-        titulo="Gestão de Contratos de Fornecimento"
-        descricao="Administração contratual, SLA, penalidades e reajustes."
-        variant={getModuleVariant(6)}
-      />
-
-      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-        <ModuleSectionHeader
-          index="INTRO"
-          title="Fase de Execução e Controle Contratual"
-          description="Onde a estratégia de compras se transforma em entregas reais medidas."
-          variant={getModuleVariant(6)}
-        />
-
-        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
-            <p>A ilusão dos compradores amadores é acreditar que o sucesso do suprimento se encerra com a belíssima assinatura da ordem formal de compra. No mercado de capitais pesados, a <strong>Gestão de Contratos (Post-Award Management)</strong> é, em verdade, o autêntico coração operacional: a arte de assegurar que centenas de variáveis negociadas na mesa de barganha virem resultados entregues nos canteiros da Petrobras.</p>
-            <p>Questões cobram as prerrogativas do fiscal e do gestor de contratos na administração pública, com destaque para a aplicação de sanções administrativas.</p>
-            <p>O dispositivo legal controlador fundamental é o <strong>SLA (Service Level Agreement - Acordo de Nível de Serviço)</strong>. Essa métrica, ao invés de usar terminologias subjetivas ("fornecer boa limpeza industrial"), parametriza quantitativamente e inequivocamente ("manter nível bacteriológico da praça refeitório em padrão ISO-A com 99% de conformidade auferida mensalmente"). O SLA quantifica métricas abstratas, travando a régua exigida para pagamentos dos faturamentos mensais. Se a métrica afundar, os descontos diretos na fatura (glosas) atuam compulsoriamente como remédio de equalização da falha.</p>
-            <p>A fiscalização contratual monitora ativamente o cumprimento de obrigações fiscais, trabalhistas, de segurança de trabalho e prazos físicos da obra.</p>
-            <p>Os <strong>Reajustes Econômico-Financeiros (Revisão Contratual)</strong> são salvaguardas cruciais do equilíbrio do pacto. Num contrato plurianual duradouro estático nominalmente de fornecimento logístico naval para as Bacias de Campos, por exemplo, como o dono dos rebocadores sobreviverá e manterá o barco rodando por 4 anos sem ser pulverizado pela inflação do diesel naval e pela variação do câmbio na cotação de manutenção globalizada marítima do mercado? Eis os Índices de Reajuste atrelados por fórmulas matemáticas (INPCA, FGV, Diesel Índice), que readéquam automaticamente anualmente as taxas transacionais.</p>
-            <p>A aplicação de penalidades ao fornecedor faltoso exige o registro documental detalhado das ocorrências e a concessão do direito de defesa.</p>
-            <p>As execuções demandam pulso firme por meio dos fiscais de contrato da empresa contratante operante para o fiel rigor de <strong>Penalidades e Multas Moratórias</strong>. O contrato estatal assinado sob a ótica rígida (Regulamento de Licitações - RLCP) expede sansões implacáveis antecipadas. Atraso gerará retenção da garantia exigida, ou glosa no faturamento (Ex: redução linear no boletim de medição mensal em montante proporcional a 2% a cada 10 dias rompidos dos prazos).</p>
-            <p>Alterações qualitativas ou quantitativas em contratos públicos exigem formalização por termos aditivos, respeitando-se os tetos e limites de lei.</p>
-            <p>Finalmente, a administração lida incansavelmente contra o "Scope Creep" ou Desvio Infeccioso do Escopo Contratual original projetado. Fornecedores espertos muitas vezes aceitam margens "zeradas" e esmagadas na licitação visando posteriormente encher a área contratante de solicitações aditivas extorsivas baseadas em ambiguidades descritas no memorial do contrato para "recuperarem o prejuízo" da disputa no preço original. A engenharia dos fiscais e as blindagens contratuais dos editais são o escudo anti-aditivos parasitários injustificados contra a Petrobras transnacional exploradora.</p>
-            <p>Técnicos de suprimentos da Petrobras fiscalizan contratos operacionais e emitem relatórios de medição mensal de serviços executados nas bases.</p>
-            <div className="bg-cyan-500/10 border-l-4 border-cyan-500 p-5 rounded-r-xl mt-6">
-            <span className="font-bold text-cyan-600 dark:text-cyan-400 text-lg mb-2">📜 Mecanismos Vivos Contratuais</span>
-            <ul className="text-lg space-y-1 text-foreground">
-              <li>✓ <strong>SLA (Acordo Funcional Nivelado):</strong> Transmuta objetivos abstratos em porcentagens concretas medíveis operacionais inquestionáveis mensais.</li>
-              <li>✓ <strong>Eqüidade Econômica:</strong> A proteção indexada tarifada matemática para rebater externalidades cambiais inflacionárias corroedoras temporais de longo termo nos acordos fixos iniciais e manter o prestador respirando na operação ininterrupta.</li>
-              <li>✓ <strong>Aditivos (Scope Creep):</strong> Tentáculos que aumentam sorrateiramente o preço fixado ou prazos dilatados exigindo readequações da planilha matriz inicial; os bons contratos blindam esses furos iniciais hermeneuticamente e proíbem aditivações superfaturadas maliciosas perigosas na fiscalização.</li>
-            </ul>
-          </div>
-        
-          
-          </div>
-      </section>
-
-              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={6}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="O SLA (Service Level Agreement) em contratos de fornecimento define:"
-          alternativas={[
-            { letra: "A", texto: "O preço mínimo garantido ao fornecedor.", correta: false },
-              { letra: "B", texto: "As métricas de desempenho contratadas — indicadores mensuráveis de qualidade, prazo e disponibilidade que o fornecedor se compromete a cumprir.", correta: true },
-              { letra: "C", texto: "O prazo de pagamento acordado entre as partes.", correta: false },
-              { letra: "D", texto: "A cláusula de rescisão unilateral do contrato.", correta: false },
-              { letra: "E", texto: "O índice de reajuste de preços aplicável.", correta: false }
-          ]}
-          dicaEstrategica="A Petrobras inclui SLAs rigorosos em contratos de manutenção e tecnologia."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "O SLA é o coração do contrato de serviço: define métricas como disponibilidade do sistema (99,9%), tempo de resposta a incidentes (4h), índice de qualidade mínimo (99,5% de conformidade), prazo de entrega (95% no prazo)." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "Sem SLA claro, é impossível mensurar desempenho e aplicar penalidades." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
-          ]}
-        />
-
-        <ModuleConsolidation
-        index={6}
-        variant={getModuleVariant(6)}
-        resumoVisual={{
-          moduloNome: "Módulo 6",
-          tituloAula: "Gestão Contratual",
-          materia: "Suprimento",
-          images: [
-            { title: "SLA x Pagamentos Mensais Glosados", type: "Fluxograma", placeholderColor: "bg-cyan-500/20" },
-          ],
-        }}
-        sinteseEstrategica={{
-          title: "SLA não perdoa",
-          content: <p className="text-lg italic text-center">"O SLA é o juiz cego. Bateu a métrica ganha. Falhou, leva glosa mensal na cabeça financeira corporativamente faturada pela fiscalização implacável rígida estatal fiscalizadora."</p>,
-        }}
-        podcast={{
-            aulaId: "comprassuprimento",
-            aulaTitulo: "Compras Suprimento",
-            materia: "Administração",
-            materiaId: "administracao",
-            moduloNumero: 6,
-            moduloTitulo: "Módulo 6",
-            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-          }}
-          />
-
-      <div className="space-y-6">
-        <ModuleSectionHeader index={6} variant={getModuleVariant(6)} title="Análise C.E.D.E." description="Gestão pós-contratação na prova." />
-        <ContentAccordion mode="stacked" 
-          slides={[
-            {
-              titulo: "Conceituação: Gestão Post-Award",
-              icone: <LuBrain />,
-              conteudo: (
-                <div className="space-y-4">
-                  <p>A gestão de contratos (post-award) verifica se aquilo assinado se torna real em campo. A gestão visa coibir perdas pela não exigência do escoamento dos acordos estabelecidos perante as fiscalizadoras.</p>
-                  <AlertBox tipo="info" titulo="O Pilar do Nível de Serviço">
-                    O SLA (Service Level Agreement) estipula concretamente as metas de desempenho objetivas. Em vez de "fazer uma limpeza boa", formaliza "piso limpo auferido de hora em hora sem manchas - nível 95% de aprovação".
-                  </AlertBox>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exemplificação: Multas e Glosas",
-              icone: <LuBookOpen />,
-              conteudo: (
-                <div className="space-y-4">
-                  <div className="p-4 bg-muted rounded-lg border border-border">
-                    <p className="text-base"><strong>Caso real:</strong> Um fornecedor alimentício de plataforma obteve pontuação mensal de 70% no SLA auditado face ao mínimo de 95% indexado em contrato. Imediatamente a corporação aplica uma <strong>Glosa</strong> no Boletim de Medição mensal, descontando o percentual estipulado monetário direto na nota para pagar.</p>
-                  </div>
-                </div>
-              ),
-            },
-            {
-              titulo: "Dicas: A Eqüidade Econômica",
-              icone: <LuFileText />,
-              conteudo: (
-                <div className="space-y-4">
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>Contratos plurianuais (ex: vigência de 4 anos de navegação turística/industrial) fatalmente sofrem os dissabores dos dissídios salariais sindicais e inflações monetárias corrosivas ao lucro inicial contratual fixado engessado da maré global do petróleo.</li>
-                    <li>Por isto, existem os índices de reajuste protetivos para repactuar justamente as taxas ao ano letivo em favor dos contratados sobreviventes (Reequilíbrio e Revisão Econômica).</li>
-                  </ul>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exceções: Scope Creep parasitário",
-              icone: <LuSearch />,
-              conteudo: (
-                <div className="space-y-4">
-                  <AlertBox tipo="warning" titulo="Mergulho profundo (Low Balling)">
-                    Alguns fornecedores ofertam mergulhos rasos de preço (quase prejuízo aparente suicida) taticamente na licitação para vencer concorrentes e em seguida, usando ambiguidades contratuais obscuras, entopem os fiscais com intermináveis <strong>Addenda (Aditivos)</strong> e paralisações extorsivas aumentando sorrateiramente seu faturamento.
-                  </AlertBox>
-                </div>
-              ),
-            },
-          ]}
-        />
-        <QuizInterativo
-          titulo="Gestão de Contratos de Fornecimento"
-          numero={6}
-          variant={getModuleVariant(6)}
-          questoes={toQQ(COMPRAS_QUIZZES["modulo-6"])}
-          onComplete={(score: number) => handleQuizComplete("modulo-6", score)}
-        />
-      </div>
-    </div>
-  );
-
-  const renderModulo7 = () => (
-    <div className="space-y-6">
-      <ModuleBanner
-        numero={7}
-        titulo="Compras Eletrônicas e e-Procurement"
-        descricao="A digitalização radical: Catálogos internos, Leilões Reversos e Portais Petronect."
-        variant={getModuleVariant(7)}
-      />
-
-      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-        <ModuleSectionHeader
-          index="INTRO"
-          title="Digitalização Integrada das Aquisições B2B"
-          description="A velocidade digital aniquilando a barreira burocrática física no chão e na nuvem do ecossistema ERP SAP-Ariba-Petronect conectado em teia."
-          variant={getModuleVariant(7)}
-        />
-
-        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
-            <p>O paradigma burocrático de envelopes pardos lacrados com cera, pregoeiros berrando em salas apertadas enfumaçadas e contratos pesando toneladas em armários metálicos foi pulverizado pelo <strong>E-Procurement</strong>. A essência do Electronic Procurement é transmutar 100% da relação comprador-fornecedor em rotas criptografadas auditáveis on-line interligadas ponta a ponta sem interferimento analógico ou físico, varrendo o risco do conluio presencial e da lerdeza temporal insuportável no comércio logístico.</p>
-            <p>A banca exige conhecimentos de ferramentas digitais e catálogos corporativos. O e-procurement elimina trâmites manuais e eleva a conformidade interna.</p>
-            <p>O <strong>Catálogo Eletrônico (Punch-out / e-Catalog)</strong> trouxe a experiência intuitiva limpa varejista (estilo "clica e arrasta carrinho supermercado on-line livremente") para compras industriais massivamente complexas. Um técnico da plataforma entra no portal interno, visualiza macacões nomex, EPIs e conexões estatais já homologados pré-contratualmente, insere no carrinho o quantitativo, preenche o centro de custo local e dá "enter". A compra já rola automatizada pelo sistema puxado Kanban diretamente enviada ao fornecedor matriz logístico remoto interligado imediatamente via nuvens da SAP sem engarrafar analistas centrais preciosos da corporação mestre.</p>
-            <p>O portal de compras integra requisições internas aprovadas no ERP diretamente com o ambiente de cotação pública, agilizando as rodadas de negociação.</p>
-            <p>No teatro operacional da concorrência brutal de preço mercadológica brilha reluzente em neônio ofuscante a ágora do <strong>Eletronic Reverse Auction (Leilão Reverso Digitalizado Eletrônico Instantâneo)</strong>. É aqui onde o modelo tradicional se inverte agressivamente para baixo em degraus descendentes compulsórios num ringue livre onde lances competitivos barateiam a cotação a níveis mínimos exatos sustentáveis pela engenharia industrial. Ideal para commodities de pura guerra de preço (aço, chapas homogêneas, cimentos unificados). Não adequado para serviços super intelectuais arquitetônicos obscuros difíceis de metrificação pura unitária.</p>
-            <p>Catálogos eletrônicos pré-acordados permitem que departamentos requisitem insumos táticos com preços previamente auditados e homologados em sistema.</p>
-            <p>A auditoria do Tribunal de Contas (TCU) e da CGU endeusam profundamente no Estado Brasileiro as virtudes infalíveis dos <strong>Portais Unificados de Compras Públicas</strong> (como as plataformas ComprasNET e a gigantesca transnacional <strong>Petronect</strong> exclusiva das contradições do Sistema Petrobras). Todo e qualquer movimento digital (hora do clique emissor da RFQ, tempo das respostas de cotação das emrpesas, as quedas microscópicas de cada lance reverso) fica fossilizado no blockchain de banco de dados ERP, rastreável e impassível de adulteração das mãos mal-intencionadas nas esferas coruptivas das licitações antigas escusas e veladas nos porões obscuros dos trâmites físicos cartorários em papel rasurável rasurável.</p>
-            <p>A integridade e segurança de dados em portais eletrônicos são protegidas por chaves criptográficas para garantir o sigilo de propostas concorrentes.</p>
-            <p>O fluxo B2B eletrônico exige integração profunda <strong>EDI (Electronic Data Interchange)</strong> e APIS ativas. O fornecedor insere NF (Nota Fiscal Eletrônica governamental homologativa fiscal do Sintegra logístico) e o sistema lê sem toque humano digitativo e cruza perfeitamente com o Pedido PO matriz eletrônico fechado meses trás na Petronect acoplando harmonicamente os dígitos. Se o cruzamento der "ok completo triplo", a liberação cai na tesouraria do SAP corporativo emulando transfer bancária na sexta-feira à tarde tranquilamente pontualmente fluidamente sem engastes.</p>
-            <p>A Petrobras integra o portal Petronect ao SAP ERP para gerenciar eletronicamente os fluxos de compras de serviços técnicos complexos.</p>
-            <div className="bg-emerald-500/10 border-l-4 border-emerald-500 p-5 rounded-r-xl mt-6">
-            <span className="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2">🌐 O Arsenal do E-Procurement</span>
-            <ul className="text-lg space-y-1 text-foreground">
-              <li>✓ <strong>Catálogos Punch-Out:</strong> Compra pulverizada local nas pontas como "e-commerce" interno, atrelado aos acordos matrizes guarda-chuvas negociados.</li>
-              <li>✓ <strong>Leilão Reverso Eletrônico:</strong> Dinâmica veloz para commodities e itens homogêneos descritíveis em que foca única e brutalmente no achatamento máximo agressivo reativo de preço e margens entre licitantes habilitados técnicos escondidos em sigilo digital virtual sem rosto nem combinações de carteis ilegais em praça pública física coniventes e suspeitos flagrantemente espúrios operantes fraudulentos.</li>
-              <li>✓ <strong>Petronect:</strong> O portal unificado monolítico governamental da holding para homologação, cotação, negociação e faturamento sistêmico imutável auditável interativo para transparência do cidadão observador vigilante na pátria mãe gentil e forte da indústria base petrolífera produtora energética sustentaculadora financeira arrecadatória impositiva massiva pesada colossal brasileira âncora soberana nacionalista forte estatal ativa gigantesca viva gigante colossal pilar gigante!</li>
-            </ul>
-          </div>
-        
-          
-          </div>
-      </section>
-
-              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={7}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="O leilão reverso (reverse auction) eletrônico é uma modalidade em que:"
-          alternativas={[
-            { letra: "A", texto: "O comprador aumenta o preço progressivamente para atrair fornecedores.", correta: false },
-              { letra: "B", texto: "Fornecedores concorrem em tempo real reduzindo seus preços para vencer a disputa — o menor preço ganha.", correta: true },
-              { letra: "C", texto: "A empresa leiloa seus ativos para compradores externos.", correta: false },
-              { letra: "D", texto: "O preço é fixado pelo sistema eletronicamente sem negociação.", correta: false },
-              { letra: "E", texto: "Apenas um fornecedor pode participar por rodada.", correta: false }
-          ]}
-          dicaEstrategica="Foque nas pegadinhas clássicas da CESGRANRIO envolvendo este assunto."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "No leilão reverso, os papéis são invertidos em relação ao leilão tradicional: os fornecedores são os que" },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
-          ]}
-        />
-
-        <ModuleConsolidation
-        index={7}
-        variant={getModuleVariant(7)}
-        resumoVisual={{
-          moduloNome: "Módulo 7",
-          tituloAula: "e-Procurement B2B",
-          materia: "Suprimento",
-          images: [
-            { title: "Arquitetura Petronect e SAP B2B EDI", type: "Esquema Digital de API", placeholderColor: "bg-emerald-500/20" },
-          ],
-        }}
-        sinteseEstrategica={{
-          title: "Sem papel. Sem Miguel.",
-          content: <p className="text-lg italic text-center">"O digital rastreia e barateia. Catálogo para agilidade, Leilão Reverso para Commodities e Preço. Integração total no ERP."</p>,
-        }}
-        podcast={{
-            aulaId: "comprassuprimento",
-            aulaTitulo: "Compras Suprimento",
-            materia: "Administração",
-            materiaId: "administracao",
-            moduloNumero: 7,
-            moduloTitulo: "Módulo 7",
-            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-          }}
-          />
-
-      <div className="space-y-6">
-        <ModuleSectionHeader index={7} variant={getModuleVariant(7)} title="Análise C.E.D.E." description="Digitalização e plataformas estatais." />
-        <ContentAccordion mode="stacked" 
-          slides={[
-            {
-              titulo: "Conceituação: E-Procurement B2B",
-              icone: <LuBrain />,
-              conteudo: (
-                <div className="space-y-4">
-                  <p>A era dos envelopes de papel e conluios disfarçados ruiu mediante o "Eletronic Procurement". A digitalização massiva B2B transforma 100% da relação fornecedor-comprador em registros eletrônicos indexados rastreáveis imperecíveis do princípio (cotação) ao fim (pagamento automatizado na tesouraria corporativa estatal).</p>
-                  <AlertBox tipo="info" titulo="Auditabilidade Plena">
-                    No e-procurement (ex. Petronect / SAP Ariba), todos os logins, horários de clique, IP e "propostas abertas" ficam fossilizadas no blockchain (arquitetura imutável) impossibilitando manipulações posteriores fraudulentas.
-                  </AlertBox>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exemplificação: Punch-outs e Catálogos",
-              icone: <LuBookOpen />,
-              conteudo: (
-                <div className="space-y-4">
-                  <div className="p-4 bg-muted rounded-lg border border-border">
-                    <p className="text-base"><strong>Caso real:</strong> Um mantenedor na bacia de Santos não liga para o comprador clamando por EPI ou óleos. Ele entra no portal <strong>e-Catalog</strong> da Petrobras e seleciona (como num carrinho de supermercado de e-commerce real B2C). Os preços ali expostos do catálogo já foram previamente super-negociados ferozmente tempos atrás pelos compradores macros do Master Agreement da matriz.</p>
-                  </div>
-                </div>
-              ),
-            },
-            {
-              titulo: "Dicas: A arena do Leilão Reverso",
-              icone: <LuFileText />,
-              conteudo: (
-                <div className="space-y-4">
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>O <strong>Leilão Reverso Eletrônico</strong> funciona invertido: quem dá o MENOR lance ganha. Fantástico ringue virtual anonimizado hiper-competitivo para esmagar os preços finais e as margens esfoladas inflacionadas em comoditization (commodities).</li>
-                    <li>Sistemas como <strong>EDI (Electronic Data Interchange)</strong> leem a Nota Fiscal eletrônica do caminhão chegando e já batem com a Ordem PO emitida (Three Way Match) emulando pagamento e quitação autônomos por IA sistêmica de cruzamento matricial corporativo sem toque orgânico contábil falível.</li>
-                  </ul>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exceções: Leilão em Projetos Complexos",
-              icone: <LuSearch />,
-              conteudo: (
-                <div className="space-y-4">
-                  <AlertBox tipo="warning" titulo="Quando o Reverso Não Funciona">
-                    Não se coloca "Arquitetura e Projeto Conceitual Oculto Inédito Complexo" (Serviços super intelectuais) em ringue eletrônico de leilão reverso agressivo. Nesses casos, o julgamento por "Técnica e Preço" predomina sutilmente em cadernos técnicos densos.
-                  </AlertBox>
-                </div>
-              ),
-            },
-          ]}
-        />
-        <QuizInterativo
-          titulo="e-Procurement"
-          numero={7}
-          variant={getModuleVariant(7)}
-          questoes={toQQ(COMPRAS_QUIZZES["modulo-7"])}
-          onComplete={(score: number) => handleQuizComplete("modulo-7", score)}
-        />
-      </div>
-    </div>
-  );
-
-  const renderModulo8 = () => (
-    <div className="space-y-6">
-      <ModuleBanner
-        numero={8}
-        titulo="Ética, Sustentabilidade e Compliance em Compras"
-        descricao="Cadeia limpa sustentável e blindada contra corrupções ou práticas desonrosas espúrias de suborno inaceitável nas contratações."
-        variant={getModuleVariant(8)}
-      />
-
-      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-        <ModuleSectionHeader
-          index="INTRO"
-          title="O Escudo de Compliance Inquebrável"
-          description="A integridade suprema que rege as interações com entes terceirizados e a proibição ao favorecimento cartelizado em cadeias sensíveis de compras bilionárias."
-          variant={getModuleVariant(8)}
-        />
-
-        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
-            <p>A relação entre <strong>Compradores e Fornecedores</strong> corporativos transnacionais representa o segmento topograficamente mais sensível à erosão corrompedora financeira e aos colapsos corporativos e escândalos governamentais na crônica mundial moderna recente penal e administrativa estatal midiática. Por movimentarem fatias monstruosas bilionárias e transacionais do orçamento, os agentes envolvidos ficam sujeitos a pressões inauditas da sedução corruptiva lobista tentadora contínua sorrateira persistente ininterrupta em favores ofertados ocultamente ilegitimamente ilícitas antiéticas no seio corporativo transacional de negócios velados e propostas escuras não auditáveis.</p>
-            <p>A prova exige conformidade ética total e prevenção a fraudes em licitações, em linha com as diretrizes da Lei Anticorrupção 12.846/13.</p>
-            <p>O <strong>Compliance</strong> impõe a separação abissal irrevogável restritiva. O comprador de estatais reza a cartilha sagrada do Código de Conduta Integrada inviolável e rigorosamente implacável da ouvidoria blindada. Nenhuma ceia exótica desnecessária deve ser custeada amigavelmente pela prestadora transacional participante do pleito licitatório competitivo. <strong>Brindes de baixíssima monta temporal ou brindes insignificantes triviais (canetas sem valor substancial) num contexto puramente técnico isento mercadologicamente livre de coações sutis não configuram conflito</strong>, mas hospedagens suntuosas recreativas obscuras pagas discretamente por fornecedores alijam imediatamente por total irregularidade infrações gravíssimas expurgatórias demissionárias rescisórias imediatas punitivas penais o gestor do assento gerencial outorgado estatutariamente público no departamento executivo!</p>
-            <p>Os programas de integridade estruturam a due diligence em fornecedores e regulam rigidamente o recebimento de presentes por empregados públicos.</p>
-            <p>A ótica expansiva abrange a <strong>Sustentabilidade Sócio-Ambiental e o ESG moderno logístico em cadeias produtivas globais complexas ramificadas pulverizadoras</strong>. O suprimento na Petrobras não visa meramente fechar torneiras monetárias e amealhar caixas em superávits anuais, ele opera como agente transformador impulsionador indutor vigilante estatal forte ambiental na pátria provedora de negócios virtuosos operantes nas regiões. A empresa bloqueia impiedosamente fornecedores listados tacitamente negativamente sujos em fiscalizações do trabalho análogo ao modelo escravagista em canteiros obscuros nas confecções remotas não documentadas ou nas frentes destrutivas florestais das queimadas ilícitas descontroladas danosas climáticas planetárias graves irresponsáveis operantes negligentes criminosas devastadoras regionais agressoras e predatórias ao solo biológico local.</p>
-            <p>A segregação de atribuições impede conflitos de interesses ao evitar que o mesmo profissional selecione, aprove e audite as próprias compras.</p>
-            <p>Políticas de <strong>Compras Verdes (Green Purchasing) e Respeito Humano Decente (Social Sourcing)</strong> obrigam que a matriz Ponderadora Qualidade x Preço embute o peso da credencial de certificações florestais autênticas homologadas. Madeiras compensadas para andaimes de pintura naval exigem atestados "selo verde" originais da exploração compensatória florestal não devastadoras criminosas fátuas indevidas invasivas em unidades protetivas preservativas originárias territoriais indígenas do interior amazônico ribeirinho em faixas protegidas. O barato sem certificação lícita provada vira caro numa autuação internacional na bacia manchada na logomarca sustentável exportadora. É vetado peremptoriamente compras dessas matizes marginais poluidoras perigosas degradantes agressoras sem compliance verde provado!</p>
-            <p>O Código de Conduta Ética serve de bússola para os técnicos, orientando as relações comerciais impessoais com prestadores da cadeia de suprimento.</p>
-            <p><strong>Conflito de Interesses e Conluios de Cartelização Engessada.</strong> Operações de auditoria pente fino revistam se irmãos, esposas ou prepostos gerenciais dos diretores decisores operacionais da estatal em compras detém o capital acionário obscuro sigiloso rentável fantasma daquelas entidades licitantes cadastradas proponentes vitoriosas do certame competitivo concorrido supostamente equitativo que fora emuladamente forjado de fachada lúdica legal dissimuladora fraudada lesiva concorrência simulada. Essas ramificações espúrias antiéticas sangram silenciosamente os cofres ineficientemente corrompedoramente asfixiantemente penalmente criminalmente severamente! Bloqueios do portal compliance barram isso automatizado no CPF/CNPJ.</p>
-            <p>Auditorias externas do TCU analisam regularmente os processos de suprimentos da Petrobras para atestar a transparência de licitações.</p>
-            <div className="bg-amber-500/10 border-l-4 border-amber-500 p-5 rounded-r-xl mt-6">
-            <span className="font-bold text-amber-600 dark:text-amber-400 text-lg mb-2">⚖️ Pilares Éticos do Suprimento</span>
-            <ul className="text-lg space-y-1 text-foreground">
-              <li>✓ <strong>Brindes e Hospitalidade (Gifts & Entertainment):</strong> Regrada rigorosamente milimetricamente em valores nominais. Tolerância zero para vantagens obscuras manipuladoras influenciadoras direcionais das decisões contratuais matrizes estratégicas operantes nas planilhas e compras unitárias licitadas dos cofres centrais estatais estritos rigorosos normatizados regulamentados balizados auditáveis legalistas do órgão fiscal controlador soberano restritivo do gasto livre alheio desregrado governamental inconseqüente corrupto.</li>
-              <li>✓ <strong>Cadeia Sucja (Trabalho Indigno/Escravagista):</strong> É banimento eterno, suspensão eterna inegociável moral irreversível do Cadastro Petronect e da Receita homologatória limpa e das faturas limpas de concorrências. Sustentabilidade e humanidade prevalecem invariavelmente impiedosamente intocáveis.</li>
-              <li>✓ <strong>Conflito de Interesse e Nepotismo Transacional Corporativo Direcional Lesivo:</strong> Impedimento sistêmico de homologação técnica de ofertantes vinculados ao grau familiar diretivo dos empregados chaves decisórios manipulativos tendenciosos internos concursados emprestados ou em postos transacionais mandatórios do comando contratual vigente. Ficha limpa dupla matriz na hierarquia isonômica de mercado livre impoluto!</li>
-            </ul>
-          </div>
-        
-          
-          </div>
-      </section>
-
-              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={8}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="O conflito de interesse em compras ocorre quando:"
-          alternativas={[
-            { letra: "A", texto: "O comprador discorda do preço proposto pelo fornecedor.", correta: false },
-              { letra: "B", texto: "O responsável pela decisão de compra tem interesse pessoal (financeiro, familiar ou afetivo) no resultado que pode comprometer sua imparcialidade.", correta: true },
-              { letra: "C", texto: "Dois fornecedores apresentam preços iguais.", correta: false },
-              { letra: "D", texto: "O departamento jurídico questiona cláusulas contratuais.", correta: false },
-              { letra: "E", texto: "O comprador negocia com fornecedor estrangeiro.", correta: false }
-          ]}
-          dicaEstrategica="A falta de disclosure é uma das principais causas de corrupção corporativa em compras."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Conflito de interesse em compras ocorre quando o decisor tem relação pessoal que pode influenciar sua objetividade: familiar que é sócio do fornecedor, participação societária em empresa fornecedora, amizade que leva a favorecer um concorrente." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O correto é declarar o conflito e se recusar do processo." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
-          ]}
-        />
-
-        <ModuleConsolidation
-        index={8}
-        variant={getModuleVariant(8)}
-        resumoVisual={{
-          moduloNome: "Módulo 8",
-          tituloAula: "Ética e Compliance",
-          materia: "Suprimento",
-          images: [
-            { title: "Matriz Sustentabilidade ESG x Lucratividade na Contratação", type: "Fluxograma de Balança", placeholderColor: "bg-amber-500/20" },
-          ],
-        }}
-        sinteseEstrategica={{
-          title: "Brinde, Cartel e Ambiente Sustentável",
-          content: <p className="text-lg italic text-center">"Amigo secreto de 1 milhão? Corrupção! Compre do melhor e fiscalize como ele fabrica."</p>,
-        }}
-        podcast={{
-            aulaId: "comprassuprimento",
-            aulaTitulo: "Compras Suprimento",
-            materia: "Administração",
-            materiaId: "administracao",
-            moduloNumero: 8,
-            moduloTitulo: "Módulo 8",
-            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-          }}
-          />
-
-      <div className="space-y-6">
-        <ModuleSectionHeader index={8} variant={getModuleVariant(8)} title="Análise C.E.D.E." description="A ética inegociável na Petrobras." />
-        <ContentAccordion mode="stacked" 
-          slides={[
-            {
-              titulo: "Conceituação: O Guardião Compliance",
-              icone: <LuBrain />,
-              conteudo: (
-                <div className="space-y-4">
-                  <p>Por manusear fluxos bilionários orçamentários vitais, Compras é o elo frágil exposto sedutor no front ao favorecimento oculto e fraudes obscuras empresariais lobistas corrompedoras contínuas agressivas sedutoras. O <strong>Compliance e Conduta</strong> representam a blindagem isolante que afasta o decisor público de benesses predatórias inaceitáveis dos prestadores de serviço fornecedores ansiosos em fechar comícios milionários lucrativos privados parciais estatais rentáveis.</p>
-                  <AlertBox tipo="info" titulo="Tolerância Zero para Sucata Humana">
-                    Licitações governamentais bloqueiam fornecedores maculados no pacto social (Fornecedores na "lista suja" do ministério do Trabalho escravo ou autuados em destruição planetária madeireira queimadora) bloqueando inegociavelmente suas matriculas no Portal unificado.
-                  </AlertBox>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exemplificação: Brindes vs Sedução",
-              icone: <LuBookOpen />,
-              conteudo: (
-                <div className="space-y-4">
-                  <div className="p-4 bg-muted rounded-lg border border-border">
-                    <p className="text-base"><strong>Caso real:</strong> O diretor da supridora ganha cortesias camarotes e propinas fantasiadas luxuosas suntuosas dissimuladas (jantares finíssimos em Paris patrocinados por licitantes europeus na antevéspera da mega abertura do certame dos R$5 bilhões). Ato flagrantemente expulsório, imoral condenatório passível de escória pública irrevogável, com base legal severa inquestionável sem salvaguarda de defesa cabal técnica processual plausível admitida na regra geral ética da ouvidoria. </p>
-                  </div>
-                </div>
-              ),
-            },
-            {
-              titulo: "Dicas: Avaliação de ESG e Nepotismo",
-              icone: <LuFileText />,
-              conteudo: (
-                <div className="space-y-4">
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>O mercado avalia a sustentabilidade logistica verde de cadeias: prioridade às aquisições ambientalmente puras descarbonizadas certificadas ("Green Purchasing").</li>
-                    <li>Sistemas buscam e cruzam sócios CPF nos board boards societários licitantes impedindo <strong>Nepotismo / Conflito de Interesse dismularizado</strong> (irmãos ou esposas laranjas abarcando licitações da diretoria onde atua o mantenedor empossado encarregado de comprar estritamente neutramental a coisa estatal requerida e limpa sem interesse familiar mesclado obscurecido disfarçado).</li>
-                  </ul>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exceções: Pequenos Brindes Inocentes",
-              icone: <LuSearch />,
-              conteudo: (
-                <div className="space-y-4">
-                  <AlertBox tipo="warning" titulo="Limiares de Conformidade">
-                    Ganhar uma simples caneta de R$ 5 gravada com logotipo num evento genérico setorial para 20.000 pessoas NÃO É quebra de compliance. Entende-se o pequeno brinde comum não possuidor de gravidade pecuniária sedutora com valor limitativo insignificante estrito para afastar a paranoiana extremada burocrática limitativa punitária absurda desconexa da vida coorporativa real sociável de trocas de catálogos na porta!
-                  </AlertBox>
-                </div>
-              ),
-            },
-          ]}
-        />
-        <QuizInterativo
-          titulo="Ética e Compliance em Compras"
-          numero={8}
-          variant={getModuleVariant(8)}
-          questoes={toQQ(COMPRAS_QUIZZES["modulo-8"])}
-          onComplete={(score: number) => handleQuizComplete("modulo-8", score)}
-        />
-      </div>
-    </div>
-  );
-
-  const renderModulo9 = () => (
-    <div className="space-y-6">
-      <ModuleBanner
-        numero={9}
-        titulo="Compras na Petrobras: Prática e Leis (RLCP)"
-        descricao="Normas Estatais, Lei das Estatais e as engrenagens de aquisição exclusivas da Logística Brasileira."
-        variant={getModuleVariant(9)}
-      />
-
-      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-        <ModuleSectionHeader
-          index="INTRO"
-          title="Regulamento de Licitações (RLCP) e Regras Excepcionais"
-          description="Quando o mercado petrolífero exige agilidade legal perante a concorrência brutal privada internacional fluida sem barreiras pesadas governamentais burocráticas letárgicas estatais."
-          variant={getModuleVariant(9)}
-        />
-
-        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
-            <p>No desbravamento mercadológico brasileiro, compras para o aparato do Estado travam sob os auspícios engessantes monolíticos imensos herméticos burocráticos arrastados paralisantes trituradores temporais das famosas <strong>"Licitatórias" Clássicas Antigovernamentais Generalizadas da extinta mas imorredoura culturalmente operante lei geral nacional amarrada a órgãos letárgicos paquidérmicos protocolares longos ineficientes de meses arrastados até um prego na porta das obras viárias estancadas paralisadas apodrecidas nos anos esquecidos das intempéries.</strong></p>
-            <p>Questões abordam as peculiaridades das aquisições e o respeito absoluto às metas de conteúdo local estipuladas nos contratos estatais.</p>
-            <p>Mas a <strong>Petrobras opera incrustada ferozmente e implacavelmente no mercado competitivo hiper-ágil globalizado transnacional petrolífero internacional contra mega-corporações privadas colossais leves fluidas ultra ágeis do Oriente Médio, Ásia e ocidentais globais ávidas.</strong> Sujeitar as refinarias dinâmicas logísticas brutais off-shore bilionárias marítimas diárias naquelas mesmas metodologias travadas paquidérmicas da repartição prefeitural burocrática faria a holding naufragar estruturalmente, falindo em competições frente às multinacionais concorrentes transnacionais imbatíveis ágeis ligeiras vorazes e tubarões livres burocráticos globais capitalistas predatórios! Essa a essência basilar!</p>
-            <p>As contratações no refino equilibram a busca de eficiência de mercado e o fomento legal da cadeia de fornecedores nacionais estrategicamente.</p>
-            <p>Surge o farol libertador legal: A inovadora revolucionária <strong>Lei das Estatais (Lei nº 13.303/2016) e o instrumento magno flexibilizador operante das compras do sistema chamado: "RLCP" (Regulamento de Licitações e Contratos da Petrobras Misto Ágil Integrado Híbrido Competitivo Flexível Rápido Específico Adaptativo Focado Setorial Direcional Direto Privatista de Dinâmicas Comerciais)</strong>. Ele destrava a companhia. Instala modalidades competitivas híbridas enxutas aceleradas ágeis. Mantém controle probatório fiscal anti-corruptivo forte, porém gira e homologa aquisições vitais velozmente desobstruindo compras pesadas num rito mais paralelo aos dos preceitos fluidos flexíveis privatizados corporativistas da bolsa livre sem perder o pendor estatal probatório austero responsável publicamente impoluto zeloso do erário financeiro amealhado.</p>
-            <p>A comissão técnica avalia a conformidade de propostas de engenharia pesada de forma colegiada para afastar riscos de direcionamento licitatório.</p>
-            <p><strong>Dispensa e Inexigibilidade Flexibilizadas Excepcionais Específicas Dinâmicas Permissíveis Criteriosamente Pautadas Baseadas Tecnicamente Comprobatórias Emergenciais Rápidas Singulares Únicas Notáveis Patenteadas Focais Locais Raras Necessárias</strong>. O RLCP detalhou hipóteses ágeis seguras para contratações super emergenciais (plataformas em chamas, refinaria vazando óleo tóxico mortal diário não podem aguardar prazos longos editalícios licitatórios). Além disso previu inteligentemente o uso do Conteúdo Local com direcionamento legalista aprovos focados em incentivar o produtor regional estaleiro construtor nacional fornecedor base para fomentar o PIB tecnológico complexo industrial tupiniquim, mesmo que o mercado em terras longínquas despeje navios na metade do preço construído em subsidiárias de mão de obra barateadas distantes do globo doentias aviltantes obscuras sem frete verde e de aço barato sem matriz social protetiva garantidora vital protetiva.</p>
-            <p>A exigência regulatória de conteúdo local visa a estimular a indústria de estaleiros nacionais e a fabricação de equipamentos no país.</p>
-            <p>Por tudo isso a CESGRANRIO exige que o estudante devore o entendimento vital macro desta balança híbrida complexa maravilhosa equilibrada oscilante: A Petrobras compra respeitando o dinheiro público da união soberana arrecadadora impoluta, mas exige a eficiência operante ágil fluida flexível e veloz capitalista feroz da máquina produtiva off-shore profunda exploratória competitiva multinacional agressora mercadológica para bater recordes de barris produtivos perfurantes de margens gigantes em solos azuis profundos marítimos pré-salinos bilionários pujantes. Essa equação mágica opera no balizar das negociações técnicas homologadas normatizadas diárias e noturnas da estatal amada brasileira corporativa transnacional energética pilar fundadora!</p>
-            <p>A equipe de suprimentos da Petrobras fiscaliza o índice de conteúdo local declarado na montagem física de FPSOs nas bacias brasileiras.</p>
-            <div className="bg-rose-500/10 border-l-4 border-rose-500 p-5 rounded-r-xl mt-6">
-            <span className="font-bold text-rose-600 dark:text-rose-400 text-lg mb-2">🔰 As Ferramentas do Estado Empreendedor</span>
-            <ul className="text-lg space-y-1 text-foreground">
-              <li>✓ <strong>Lei 13.303 e o Regulamento Próprio RLCP (Regulamento de Licitações da Petrobras):</strong> O passaporte da agilidade mitigadora travadora burocrática arcaica que a companhia ganhou legitimamente do congresso para competir bravamente contra as super potências multinacionais privadas velozes que navegam os oceanos petrolíferos globais agressivos capitalistas soltos.</li>
-              <li>✓ <strong>Inexigibilidade Notória:</strong> Quando há inviabilidade total e fatal absoluta indiscutível de concorrência por exclusividade cabal irrefutável (Patente gringa trancada e única homologadora mantenedora segura confiável da turbina suíça giratória submarina vital única global inimitável patenteada sem cópias locais ou globais viáveis técnicas toleráveis seguras do equipamento master no leito oceânico profundo pressórico gigacalórico termal inabitável).</li>
-              <li>✓ <strong>Políticas Sociais Conteúdista Locais:</strong> Um misto legal que engessa parcialmente o preço super barato focado para fortalecer e criar gigantescas molas indutoras tecnológicas na indústria brasileira basal forjada naval fornecedora que gerará divisas pátrias e blindará geopoliticamente a nação isolada da matriz energética soberana provedora inquebrável pátria verde e amarela continental gigantesca estruturada próspera soberana pujante.</li>
-            </ul>
-          </div>
-        
-          
-          </div>
-      </section>
-
-              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={9}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="O RLCP (Regulamento de Licitações e Contratações da Petrobras) determina que:"
-          alternativas={[
-            { letra: "A", texto: "Todas as compras devem ser realizadas exclusivamente por licitação pública aberta.", correta: false },
-              { letra: "B", texto: "Contratações acima de determinados pisos de valor devem seguir processo competitivo formal, garantindo transparência, isonomia e economicidade.", correta: true },
-              { letra: "C", texto: "A Petrobras pode contratar diretamente qualquer fornecedor sem processo competitivo.", correta: false },
-              { letra: "D", texto: "Somente fornecedores brasileiros podem participar de licitações.", correta: false },
-              { letra: "E", texto: "O processo de compras deve ser auditado mensalmente pelo TCU.", correta: false }
-          ]}
-          dicaEstrategica="Garante que o processo seja competitivo, transparente e alinhado à governança corporativa."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O RLCP (Regulamento de Licitações e Contratações da Petrobras) é o instrumento normativo interno que, baseado na Lei 13.303/2016, define as regras para contratações: modalidades (convite, tomada de preços, concorrência), limites de valor para dispensa, critérios de habilitação, julgamento de propostas e gestão contratual." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
-          ]}
-        />
-
-        <ModuleConsolidation
-        index={9}
-        variant={getModuleVariant(9)}
-        resumoVisual={{
-          moduloNome: "Módulo 9",
-          tituloAula: "Compras Petrobras",
-          materia: "Suprimento",
-          images: [
-            { title: "Balança da Estata: Dinheiro Público vs Agilidade Privada", type: "Equação Dinâmica Ilustratória Gráfica Visual", placeholderColor: "bg-rose-500/20" },
-          ],
-        }}
-        sinteseEstrategica={{
-          title: "Rigidez Moral com Agilidade Funcional Comercial Operante Eficiente Otimizada Veloz Rápida Inteligente Lucrativa Competitiva Sustentável Robusta",
-          content: <p className="text-lg italic text-center">"O RLCP é o carro blindado com motor de Fórmula 1 e pneus de tração pesada sustentável aderente."</p>,
-        }}
-        podcast={{
-            aulaId: "comprassuprimento",
-            aulaTitulo: "Compras Suprimento",
-            materia: "Administração",
-            materiaId: "administracao",
-            moduloNumero: 9,
-            moduloTitulo: "Módulo 9",
-            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-          }}
-          />
-
-      <div className="space-y-6">
-        <ModuleSectionHeader index={9} variant={getModuleVariant(9)} title="Análise C.E.D.E." description="A flexibilidade da estatal (RLCP) nas compras." />
-        <ContentAccordion mode="stacked" 
-          slides={[
-            {
-              titulo: "Conceituação: A Libertação do RLCP",
-              icone: <LuBrain />,
-              conteudo: (
-                <div className="space-y-4">
-                  <p>A Petrobras competia de mãos amarradas contra petrolíferas gigantes mundiais ágeis presas nos arames farpados antigos da morosidade administrativa pública licitatória letárgica tradicional das autarquias estatais morosa antiquada prefeitural. A invenção da <strong>Lei das Estatais e do RLCP (Regulamento Híbrido Próprio Flexível Autônomo e Ágil Setorial)</strong> proporcionou regras rápidas equivalentes e fluidas simulando negociações de companhias ativas dinâmicas enxutas privadas de bolsa e corporações globais bilionárias aceleradas.</p>
-                  <AlertBox tipo="info" titulo="Híbrido de Agilidade e Ética">
-                    No RLCP a empresa ganha hiper agilidade privatista negocial mas NÃO perde a vigilância pública, o freio ético transparente anti-desvios, fomento à base, ouvidoria inquebrável ou submissão inarredável da fiscalização do TCU.
-                  </AlertBox>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exemplificação: O Poder do Conteúdo Local",
-              icone: <LuBookOpen />,
-              conteudo: (
-                <div className="space-y-4">
-                  <div className="p-4 bg-muted rounded-lg border border-border">
-                    <p className="text-base"><strong>Caso real:</strong> Em vez de despejar e importar navios chineses ultrabaratos gerando zero valor agregado tributário aos cofres da União, a estatal embute nos contratos o bônus "Conteúdo Local". O estaleiro brasileiro ganha as licitações com um repasse leve indexador premium visando construir nacionalmente garantindo dezenas de milhares operárias navais brasileiras atarefadas gerando divisões impulsionadoras das universidades técnicas navais nativas operantes orgulhosas base soberana imponente na infra-estrutura nacional pátria industrial complexa!</p>
-                  </div>
-                </div>
-              ),
-            },
-            {
-              titulo: "Dicas: Inexigibilidade vs Dispensa",
-              icone: <LuFileText />,
-              conteudo: (
-                <div className="space-y-4">
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li><strong>Inexigibilidade:</strong> Impossível licitar! É único, não tem com quem competir exclusividade material singular artística ou patente inigualável estrangeira técnica homologada testada de fonte monopólica mundial incontestável imutável sólida engessada fatal cabal e absoluta.</li>
-                    <li><strong>Dispensa:</strong> Tem como competir na praça aberta até, MAAASSSSS é inviável, perigoso de perda monetária se parar a frota de reabertura complexa demorada do pleito. Emergências explosões urgências e estragos reativos graves e compras ridiculamente irrisórias do cotiano trivial barato de caixinha de clips de escritórios no mercado central não se montam editais de milhões. Dispensa e pronto pragmático ágil imediato faturado!</li>
-                  </ul>
-                </div>
-              ),
-            },
-            {
-              titulo: "Exceções: Rigidez Omitida",
-              icone: <LuSearch />,
-              conteudo: (
-                <div className="space-y-4">
-                  <AlertBox tipo="warning" titulo="O Limite das Urgências Desculpáveis">
-                    Comprávamos por "Dispensa Emergencial" pela falha total da manutenção, sim. Mas se o MPU / TCU descobre a falta do planejamento da matriz que DEIXOU ficar doente a planta por dolo de ignorar o estoque base... isso é <strong>Falsa Emergência Fabricada Culposa Irresponsável Omissa Temerária</strong> que gera pesadelo retroativo penal prisões sanções rescisórias terríveis expurgatórias aos mandachuvas compradores relapsos adormecidos!
-                  </AlertBox>
-                </div>
-              ),
-            },
-          ]}
-        />
-        <QuizInterativo
-          titulo="Compras na Petrobras"
-          numero={9}
-          variant={getModuleVariant(9)}
-          questoes={toQQ(COMPRAS_QUIZZES["modulo-9"])}
-          onComplete={(score: number) => handleQuizComplete("modulo-9", score)}
-        />
-      </div>
-    </div>
-  );
-
-  const renderModulo10 = () => (
-    <div className="space-y-12 mt-0 outline-none">
-      <ModuleBanner
-        numero={10}
-        titulo="Simulado Geral"
-        descricao="Teste final abrangente. Aprovação destrava a XP completa da Missão Geração Ouro da CESGRANRIO focada em concursos Petrobras."
-        variant={getModuleVariant(10)}
-      />
-
-      <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-        <ModuleSectionHeader
-          index="INTRO"
-          title="Simulado Geral: Compras"
-          description="Avaliação integrada consolidando todos os conceitos estudados nesta aula."
-          variant={getModuleVariant(10)}
-        />
-
-        <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
-            <p>O Simulado Geral é a avaliação integradora que sintetiza tudo que você aprendeu nos 9 módulos anteriores de Gestão de Compras. Diferente dos quizzes individuais de cada módulo que focam em conceitos específicos de forma isolada, o simulado combina múltiplos domínios em questões de alta complexidade. Uma questão pode começar descrevendo um processo de aquisição, pedir para avaliar os riscos de fraude ou conformidade ética, e em seguida questionar as regras do RLCP aplicáveis. Requer que você entenda não apenas os conceitos de forma estática, mas também como eles interagem de forma dinâmica nas decisões de compras corporativas.</p>
-            <p>A estrutura do simulado inclui questões estruturadas no formato clássico da banca examinadora para garantir o treinamento adequado. A meta de aprovação de 70% reflete o padrão de exigência para aprovação no concurso. As questões cobrem de forma balanceada os principais tópicos: desde as fases do processo de compras até as vedações éticas e regras da Lei das Estatais.</p>
-            <p>Os cenários avaliados envolvem situações típicas do dia a dia da Petrobras e de suas subsidiárias. Licitações para aquisição de grandes equipamentos, processos de contratação de serviços de engenharia e a aplicação das regras do RLCP são trazidos para avaliar a competência técnica do candidato.</p>
-            <p>O processo de compras (P2P) engloba requisição (RC), cotação (RFQ), pedido (PO) e o fechamento por meio da conciliação física e fiscal de 3 vias (Three-Way Match) no ERP.</p>
-            <p>A estratégia de resolução exige leitura atenta e foco nos detalhes do edital. Muitos erros comuns ocorrem pela confusão entre conceitos vizinhos ou má interpretação do rito licitatório. O candidato deve ler primeiro o comando da questão para saber exatamente qual conceito está sendo avaliado.</p>
-            <p>Como exemplo prático, o uso de alçadas de aprovação (DoA) impede fraudes e garante que compras de alto valor sejam assinadas por diretores com a devida representação jurídica.</p>
-            <p>A preparação focada na Petrobras exige o domínio das inovações legais promovidas pela Lei 13.303. O simulado consolida a visão de que o setor de compras da estatal deve ser ágil e eficiente, operando em conformidade ética com o TCU e a CGU. Atingir a pontuação mínima valida que você desenvolveu o raciocínio crítico necessário para atuar com compras e contratos.</p>
-            <p>As técnicas de negociação (distributiva vs integrativa) e a qualificação de fornecedores são cruciais para a mitigação de riscos e garantia de continuidade de suprimentos.</p>
-            <p>Na Petrobras, o Regulamento de Licitações (RLCP) dita as regras de compras governamentais, equilibrando agilidade tática e controle legal sob os ditames da CGU/TCU.</p>
-            <p>Atingir a pontuação mínima valida que você desenvolveu o raciocínio crítico necessário para atuar na companhia.</p>
-          </div>
-      </section>
-
-      <ContentAccordion mode="stacked"
-        slides={[
-          {
-            titulo: "Visão Integrada de Conceitos",
-            icone: <LuBrain />,
-            conteudo: <p className="text-lg text-justify">O simulado exige que você conecte as teorias, os processos práticos de suporte e a conformidade ética em cenários realistas de auditorias e concorrência.</p>
-          },
-          {
-            titulo: "Tempo e Estratégia",
-            icone: <LuFileText />,
-            conteudo: <p className="text-lg text-justify">Treine a resolução de questões sob a média de 3 minutos por item. Aprenda a identificar as pegadinhas da banca e a eliminar alternativas incorretas rapidamente.</p>
-          },
-          {
-            titulo: "Padrão CESGRANRIO",
-            icone: <LuBookOpen />,
-            conteudo: <p className="text-lg text-justify">As questões simulam fielmente as provas recentes da Petrobras, cobrando o discernimento entre casos práticos e a legislação em vigor.</p>
-          },
-          {
-            titulo: "Calibração de Desempenho",
-            icone: <LuSearch />,
-            conteudo: <p className="text-lg text-justify">Utilize o resultado do simulado para identificar quais módulos requerem revisão ativa. Focar nas suas fraquezas agora garante os pontos decisivos no dia da prova.</p>
-          }
-        ]}
-      />
-
-              {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={10}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Um Técnico de Suprimento da Petrobras recebe uma requisição emergencial para aquisição de uma válvula crítica de segurança para uma plataforma offshore. O processo padrão levaria 30 dias, mas a parada de produção está gerando prejuízo de R$ 2 milhões/dia. O técnico deve:"
-          alternativas={[
-            { letra: "A", texto: "Aguardar o processo padrão de 30 dias para garantir compliance total.", correta: false },
-              { letra: "B", texto: "Acionar o procedimento de compra emergencial previsto no RLCP, que permite processo simplificado com prazo reduzido, documentando e justificando formalmente a urgência.", correta: true },
-              { letra: "C", texto: "Comprar diretamente do fornecedor sem qualquer documentação para agilizar.", correta: false },
-              { letra: "D", texto: "Transferir a responsabilidade para o fornecedor resolver.", correta: false },
-              { letra: "E", texto: "Cancelar a requisição e utilizar equipamento substituto sem análise técnica.", correta: false }
-          ]}
-          dicaEstrategica="O compliance não é eliminado na emergência; é adaptado."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O RLCP prevê procedimentos de compra emergencial com processo simplificado — menos fornecedores consultados, prazo de cotação reduzido, aprovação em circuito acelerado — mas ainda com documentação formal da urgência, justificativa técnica e econômica (prejuízo por parada), e registro de todas as etapas para auditoria posterior." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
-          ]}
-        />
-
-        <ModuleConsolidation
-        index={10}
-        variant={getModuleVariant(10)}
-        resumoVisual={{
-          moduloNome: "Simulado Final",
-          tituloAula: "Gestão de Compras",
-          materia: "Suprimento",
-          images: [
-            { title: "Mapa Mental Geral de Revisão", type: "infográfico", placeholderColor: "bg-rose-500/20" }
-          ]
-        }}
-        sinteseEstrategica={{
-          title: "O Ponto Final",
-          content: <div className="text-center"><span className="text-6xl my-6 animate-pulse inline-block">🎓 🏆</span><p className="text-lg italic text-center">"O Técnico de Suprimentos zela pela conformidade técnica de cada processo operacional."</p></div>
-        }}
-        podcast={{
-            aulaId: "comprassuprimento",
-            aulaTitulo: "Compras Suprimento",
-            materia: "Administração",
-            materiaId: "administracao",
-            moduloNumero: 1,
-            moduloTitulo: "Módulo 1",
-            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-          }}
-          />
-
-      <QuizInterativo
-        titulo="Simulado Final: Gestão de Compras"
-        numero={10}
-        variant={getModuleVariant(10)}
-        questoes={toQQ(COMPRAS_QUIZZES["modulo-10"])}
-        onComplete={(score: number) => handleQuizComplete("modulo-10", score)}
-      />
-    </div>
-  );;
 
   const isModuleUnlocked = (index: number) => {
     if (index === 0) return true;
-    const previousModule = MODULE_DEFS[index - 1];
-    return completedModules.has(previousModule.id);
+    const prevModuleId = `modulo-${index}`;
+    return completedModules.has(prevModuleId);
   };
 
   return (
     <AulaTemplate
-      canComplete={completedModules.size >= MODULE_DEFS.length}
-      lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
       activeTab={activeTab}
       setActiveTab={setActiveTab}
-      completedModules={completedModules}
+      xpGanho={xpGanho}
+      currentProgress={currentProgress}
+      titulo={titulo}
+      descricao={descricao}
+      duracao={duracao}
+      materiaNome={materiaNome}
+      materiaCor={materiaCor || "indigo"}
+      materiaId={materiaId || "suprimento"}
+      prevTopico={prevTopico}
+      nextTopico={nextTopico}
       modules={MODULE_DEFS}
-      isCompleted={props.isCompleted}
-      loading={props.loading}
-      xpGanho={props.xpGanho}
-      currentProgress={props.currentProgress}
-      onComplete={props.onComplete}
-      titulo={props.titulo}
-      descricao={props.descricao}
-      duracao={props.duracao}
-      materiaNome={props.materiaNome}
-      materiaCor={props.materiaCor}
-      materiaId={props.materiaId}
-      prevTopico={props.prevTopico}
-      nextTopico={props.nextTopico}
+      completedModules={completedModules}
+      isModuleUnlocked={isModuleUnlocked}
+      onComplete={() => onComplete?.()}
+      isCompleted={isCompleted}
     >
-      <TabsContent value="modulo-1">{renderModulo1()}</TabsContent>
-      <TabsContent value="modulo-2">{renderModulo2()}</TabsContent>
-      <TabsContent value="modulo-3">{renderModulo3()}</TabsContent>
-      <TabsContent value="modulo-4">{renderModulo4()}</TabsContent>
-      <TabsContent value="modulo-5">{renderModulo5()}</TabsContent>
-      <TabsContent value="modulo-6">{renderModulo6()}</TabsContent>
-      <TabsContent value="modulo-7">{renderModulo7()}</TabsContent>
-      <TabsContent value="modulo-8">{renderModulo8()}</TabsContent>
-      <TabsContent value="modulo-9">{renderModulo9()}</TabsContent>
-      <TabsContent value="modulo-10" className="space-y-12 mt-0 outline-none">
-        <ModuleBanner
-          numero={10}
-          titulo="Simulado Geral"
-          descricao="Teste final abrangente. Aprovação destrava a XP completa da Missão Geração Ouro da CESGRANRIO focada em concursos Petrobras."
-          variant={getModuleVariant(10)}
-        />
+      {Array.from({ length: totalModules }, (_, i) => i + 1).map((num) => {
+        const quizArray = QUIZ_MODULES[num] || [];
+        const moduleContent = MODULE_CONTENTS[num];
+        const variantColor = (mv[num] || "indigo") as "indigo" | "emerald" | "amber" | "rose" | "violet" | "cyan" | "blue" | "slate";
 
-        <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
-          <ModuleSectionHeader
-            index="INTRO"
-            title="Simulado Geral: Compras"
-            description="Avaliação integrada consolidando todos os conceitos estudados nesta aula."
-            variant={getModuleVariant(10)}
-          />
+        return (
+          <TabsContent key={`mod-${num}`} value={`modulo-${num}`} className="space-y-16 outline-none">
+            <ModuleBanner
+              numero={num}
+              titulo={MODULE_DEFS[num - 1].title}
+              variant={variantColor}
+              descricao={`Aprofundamento conceitual do Módulo ${num}.`}
+            />
 
-          <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
-            <p>O <strong>Simulado Geral é a avaliação integradora</strong> que sintetiza tudo que você aprendeu nos 9 módulos anteriores de Gestão de Compras. Diferente dos quizzes individuais de cada módulo (que focam em conceitos específicos de forma isolada), o simulado combina múltiplos domínios em <strong>questões de alta complexidade</strong>. Uma questão pode começar descrevendo um processo de aquisição, pedir para avaliar os riscos de fraude ou conformidade ética, e em seguida questionar as regras do RLCP aplicáveis. Requer que você entenda não apenas os conceitos de forma estática, mas também como eles interagem de forma dinâmica nas decisões de compras corporativas.</p>
-            <p>A <strong>estrutura do simulado</strong> inclui questões estruturadas no formato clássico da banca examinadora para garantir o treinamento adequado. A meta de aprovação de 70% reflete o padrão de exigência para aprovação no concurso. As questões cobrem de forma balanceada os principais tópicos: desde as fases do processo de compras até as vedações éticas e regras da Lei das Estatais.</p>
-            <p>Os <strong>cenários avaliados</strong> envolvem situações típicas do dia a dia da Petrobras e de suas subsidiárias. Licitações para aquisição de grandes equipamentos, processos de contratação de serviços de engenharia e a aplicação das regras do RLCP são trazidos para avaliar a competência técnica do candidato.</p>
-            <p><strong>[Explicação]</strong> O processo de compras (P2P) engloba requisição (RC), cotação (RFQ), pedido (PO) e o fechamento por meio da conciliação física e fiscal de 3 vias (Three-Way Match) no ERP.</p>
-            <p>A <strong>estratégia de resolução</strong> exige leitura atenta e foco nos detalhes do edital. Muitos erros comuns ocorrem pela confusão entre conceitos vizinhos ou má interpretação do rito licitatório. O candidato deve ler primeiro o comando da questão para saber exatamente qual conceito está sendo avaliado.</p>
-            <p><strong>[Demonstração]</strong> Como exemplo prático, o uso de alçadas de aprovação (DoA) impede fraudes e garante que compras de alto valor sejam assinadas por diretores com a devida representação jurídica.</p>
-            <p>A <strong>preparação focada na Petrobras</strong> exige o domínio das inovações legais promovidas pela Lei 13.303. O simulado consolida a visão de que o setor de compras da estatal deve ser ágil e eficiente, operando em conformidade ética com o TCU e a CGU. Atingir a pontuação mínima valida que você desenvolveu o raciocínio crítico necessário para atuar com compras e contratos.</p>
-            <p><strong>[Expansão]</strong> As técnicas de negociação (distributiva vs integrativa) e a qualificação de fornecedores são cruciais para a mitigação de riscos e garantia de continuidade de suprimentos.</p>
-            <p><strong>[Aplicação]</strong> Na Petrobras, o Regulamento de Licitações (RLCP) dita as regras de compras governamentais, equilibrando agilidade tática e controle legal sob os ditames da CGU/TCU.</p>
-            <p><strong>[Aplicação]</strong> Atingir a pontuação mínima valida que você desenvolveu o raciocínio crítico necessário para atuar na companhia.</p>
+            <section className="space-y-8">
+              <ModuleSectionHeader index="INTRO" title={`Introdução ao Módulo ${num}`} variant={variantColor} />
+              
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start my-8">
+                <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+                  {moduleContent?.paragraphs?.map((paragraph: any, idx: number) => (
+                    <p key={idx} dangerouslySetInnerHTML={{ __html: paragraph.text }} />
+                  ))}
+                </div>
+                <div className="shrink-0 space-y-2 w-full max-w-[320px] mx-auto lg:mx-0">
+                  <div 
+                    className="cursor-zoom-in hover:scale-[1.02] transition-transform duration-200"
+                    onClick={() => setZoomedImage(`/assets/images/suprimento/content/compras-suprimento/modulo-${num}/m${num}-intro.png`)}
+                  >
+                    <img
+                      src={`/assets/images/suprimento/content/compras-suprimento/modulo-${num}/m${num}-intro.png`}
+                      alt={`Visualização Módulo ${num}`}
+                      className="w-full rounded-2xl border border-border/20 shadow-lg"
+                      onError={(e) => {
+                        (e.target as HTMLElement).style.display = 'none';
+                      }}
+                    />
+                  </div>
+                  <p className="text-sm text-muted-foreground text-center">Fig {num}. Representação conceitual.</p>
+                </div>
+              </div>
+            </section>
+
+            <section className="space-y-8">
+              <ModuleSectionHeader index="FLIP" title="Conceitos Essenciais" variant={variantColor} />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {moduleContent?.flipCards?.map((card: any, idx: number) => {
+                  const IconComp = (Icons as any)[card.front.icon] || LuBookOpen;
+                  return (
+                    <FlipCard
+                      key={idx}
+                      categoria="Conceito"
+                      variant={variantColor}
+                      frente={
+                        <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                          <div className={`p-4 bg-${variantColor}-500/10 rounded-full shadow-inner ring-1 ring-${variantColor}-500/20`}>
+                            <IconComp className={`w-12 h-12 text-${variantColor}-500`} />
+                          </div>
+                          <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                            {card.front.title}
+                          </span>
+                        </div>
+                      }
+                      verso={
+                        <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                          <div className={`flex items-center gap-2 text-${variantColor}-500 font-bold border-b border-${variantColor}-500/10 pb-3`}>
+                            <LuCheck className="w-5 h-5 shrink-0" />
+                            <span className="tracking-widest uppercase text-xs">Conceito</span>
+                          </div>
+                          <p 
+                            className="text-sm leading-relaxed text-muted-foreground"
+                            dangerouslySetInnerHTML={{ __html: card.back.content }}
+                          />
+                        </div>
+                      }
+                    />
+                  );
+                })}
+              </div>
+            </section>
+            
+            {moduleContent && (
+              <ModuleConsolidation moduloNumero={1}
+                index={num}
+                variant={variantColor}
+                sinteseEstrategica={moduleContent.consolidation}
+                podcast={{
+                  aulaId: "compras-suprimento",
+                  aulaTitulo: "Compras",
+                  materia: "suprimento",
+                  materiaId: "suprimento",
+                  moduloNumero: num,
+                  moduloTitulo: MODULE_DEFS[num - 1].title,
+                  conteudoResumo: "Resumo da aula"
+                }}
+              />
+            )}
+
+            <QuizInterativo
+              titulo={`Prática: Módulo ${num}`}
+              numero={num}
+              questoes={quizArray}
+              onComplete={(score) => handleModuleComplete(`modulo-${num}`, score)}
+              variant={variantColor}
+            />
+          </TabsContent>
+        );
+      })}
+
+      {zoomedImage && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-background/90 backdrop-blur-md cursor-zoom-out p-4 md:p-8"
+          onClick={() => setZoomedImage(null)}
+        >
+          <div className="relative max-w-4xl max-h-[90vh] w-full h-full flex items-center justify-center">
+            <img
+              src={zoomedImage}
+              alt="Imagem ampliada"
+              className="max-w-full max-h-full object-contain rounded-2xl border border-border/40 shadow-2xl animate-in fade-in zoom-in-95 duration-200"
+            />
           </div>
-        </section>
-
-        <ContentAccordion mode="stacked"
-          slides={[
-            {
-              titulo: "Visão Integrada de Conceitos",
-              icone: <LuBrain />,
-              conteudo: <p className="text-lg text-justify">O simulado exige que você conecte as teorias, os processos práticos de suporte e a conformidade ética em cenários realistas de auditorias e concorrência.</p>
-            },
-            {
-              titulo: "Tempo e Estratégia",
-              icone: <LuFileText />,
-              conteudo: <p className="text-lg text-justify">Treine a resolução de questões sob a média de 3 minutos por item. Aprenda a identificar as pegadinhas da banca e a eliminar alternativas incorretas rapidamente.</p>
-            },
-            {
-              titulo: "Padrão CESGRANRIO",
-              icone: <LuBookOpen />,
-              conteudo: <p className="text-lg text-justify">As questões simulam fielmente as provas recentes da Petrobras, cobrando o discernimento entre casos práticos e a legislação em vigor.</p>
-            },
-            {
-              titulo: "Calibração de Desempenho",
-              icone: <LuSearch />,
-              conteudo: <p className="text-lg text-justify">Utilize o resultado do simulado para identificar quais módulos requerem revisão activa. Focar nas suas fraquezas agora garante os pontos decisivos no dia da prova.</p>
-            }
-          ]}
-        />
-
-                {/* ★ QUESTÃO RESOLVIDA PASSO A PASSO */}
-        <QuestaoResolvidaStepByStep
-          index={10}
-          titulo="Na Prática: Como a Banca Cobra"
-          variant="blue"
-          banca="CESGRANRIO"
-          ano="2024"
-          concurso="Processo Seletivo Petrobras"
-          enunciado="Um Técnico de Suprimento da Petrobras recebe uma requisição emergencial para aquisição de uma válvula crítica de segurança para uma plataforma offshore. O processo padrão levaria 30 dias, mas a parada de produção está gerando prejuízo de R$ 2 milhões/dia. O técnico deve:"
-          alternativas={[
-            { letra: "A", texto: "Aguardar o processo padrão de 30 dias para garantir compliance total.", correta: false },
-              { letra: "B", texto: "Acionar o procedimento de compra emergencial previsto no RLCP, que permite processo simplificado com prazo reduzido, documentando e justificando formalmente a urgência.", correta: true },
-              { letra: "C", texto: "Comprar diretamente do fornecedor sem qualquer documentação para agilizar.", correta: false },
-              { letra: "D", texto: "Transferir a responsabilidade para o fornecedor resolver.", correta: false },
-              { letra: "E", texto: "Cancelar a requisição e utilizar equipamento substituto sem análise técnica.", correta: false }
-          ]}
-          dicaEstrategica="O compliance não é eliminado na emergência; é adaptado."
-          passos={[
-            { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas no enunciado." },
-            { titulo: "Passo 2: Análise das Alternativas", conteudo: "O RLCP prevê procedimentos de compra emergencial com processo simplificado — menos fornecedores consultados, prazo de cotação reduzido, aprovação em circuito acelerado — mas ainda com documentação formal da urgência, justificativa técnica e econômica (prejuízo por parada), e registro de todas as etapas para auditoria posterior." },
-            { titulo: "Passo 3: Validação da Resposta", conteudo: "Confirmar a alternativa B como a resposta correta." }
-          ]}
-        />
-
-        <ModuleConsolidation
-          index={10}
-          variant={getModuleVariant(10)}
-          resumoVisual={{
-            moduloNome: "Simulado Final",
-            tituloAula: "Suprimentos",
-            materia: "Suprimento",
-            images: [
-              { title: "Mapa Mental Geral de Revisão", type: "infográfico", placeholderColor: "bg-rose-500/20" }
-            ]
-          }}
-          sinteseEstrategica={{
-            title: "O Ponto Final",
-            content: <div className="text-center"><span className="text-6xl my-6 animate-pulse inline-block">🎓 🏆</span><p className="text-lg italic text-center">"O Técnico de Suprimentos zela pela conformidade técnica de cada processo operacional."</p></div>
-          }}
-          podcast={{
-            aulaId: "comprassuprimento",
-            aulaTitulo: "Compras Suprimento",
-            materia: "Administração",
-            materiaId: "administracao",
-            moduloNumero: 1,
-            moduloTitulo: "Módulo 1",
-            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-          }}
-          />
-
-        <QuizInterativo
-          titulo="Simulado Final: Suprimentos"
-          numero={10}
-          variant={getModuleVariant(10)}
-          questoes={toQQ(COMPRAS_QUIZZES["modulo-10"])}
-          onComplete={(score: number) => handleQuizComplete("modulo-10", score)}
-        />
-      </TabsContent>
+        </div>
+      )}
     </AulaTemplate>
   );
 }

@@ -242,9 +242,8 @@ export default function AulaSemantica({
           </div>
         </section>
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={1}
           index={1}
-          moduloNumero={1}
           variant={mv[1]}
           sinteseEstrategica={{ title: "Resumo Estratégico", content: "Sinônimo não é palavra igual, é palavra de sentido semelhante no CONTEXTO da frase lida." }}
           
@@ -298,9 +297,8 @@ export default function AulaSemantica({
               </div>
             </section>
             
-            <ModuleConsolidation
+            <ModuleConsolidation moduloNumero={2}
               index={num}
-              moduloNumero={num}
               variant={mv[num]}
               sinteseEstrategica={{ title: "Resumo Estratégico", content: `Nunca analise uma palavra isolada. O segredo de ${MODULE_DEFS[num - 1].title} é o texto.` }}
               

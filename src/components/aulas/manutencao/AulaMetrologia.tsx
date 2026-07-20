@@ -163,7 +163,7 @@ export default function AulaMetrologia({
 
         
 
-<ModuleConsolidation 
+<ModuleConsolidation moduloNumero={1} 
             index={1}
             variant="indigo"
             resumoVisual={{
@@ -246,7 +246,7 @@ export default function AulaMetrologia({
 
         
 
-<ModuleConsolidation 
+<ModuleConsolidation moduloNumero={2} 
             index={2}
             variant="emerald"
             resumoVisual={{
@@ -322,7 +322,7 @@ export default function AulaMetrologia({
 
         
 
-<ModuleConsolidation 
+<ModuleConsolidation moduloNumero={3} 
             index={3}
             variant="violet"
             resumoVisual={{
@@ -405,7 +405,7 @@ export default function AulaMetrologia({
 
         
 
-<ModuleConsolidation 
+<ModuleConsolidation moduloNumero={4} 
             index={4}
             variant="amber"
             resumoVisual={{
@@ -483,7 +483,7 @@ export default function AulaMetrologia({
 
         
 
-<ModuleConsolidation 
+<ModuleConsolidation moduloNumero={5} 
             index={5}
             variant="rose"
             resumoVisual={{

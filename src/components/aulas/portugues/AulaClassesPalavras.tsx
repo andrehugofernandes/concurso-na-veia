@@ -615,8 +615,8 @@ export default function AulaClassesPalavras({
           ]}
         />
 
-        <ModuleConsolidation
-          index={5}
+        <ModuleConsolidation moduloNumero={1}
+          index={1}
           variant={mv[1]}
           resumoVisual={{
             moduloNome: "M1: Substantivo",
@@ -847,7 +847,7 @@ export default function AulaClassesPalavras({
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={2}
           index={2}
           variant={mv[2]}
           resumoVisual={{
@@ -1035,7 +1035,7 @@ export default function AulaClassesPalavras({
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={3}
           index={3}
           variant={mv[3]}
           resumoVisual={{
@@ -1259,7 +1259,7 @@ export default function AulaClassesPalavras({
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={4}
           index={4}
           variant={mv[4]}
           resumoVisual={{

@@ -153,7 +153,7 @@ export default function AulaDiagramasEletricos(props: AulaProps) {
         </div>
       </section>
 
-      <ModuleConsolidation
+      <ModuleConsolidation moduloNumero={1}
         index={1}
         variant={getModuleVariant(1)}
         resumoVisual={{

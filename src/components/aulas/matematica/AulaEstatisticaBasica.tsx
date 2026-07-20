@@ -278,9 +278,8 @@ export default function AulaEstatisticaBasica({
           As variáveis quantitativas são o foco principal dos cálculos estatísticos. Lembre-se: Discreta = Conta-se (0, 1, 2). Contínua = Mede-se (peso, altura, temperatura, aceita decimais).
         </AlertBox>
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={1}
           index={1}
-          moduloNumero={1}
           variant={mv[1]}
           sinteseEstrategica={{ title: "Resumo Estratégico", content: "População é o TUDO. Amostra é uma FATIA. Variáveis podem ser Qualidade ou Quantidade." }}
           
@@ -417,9 +416,8 @@ export default function AulaEstatisticaBasica({
           </div>
         </section>
 
-        <ModuleConsolidation
-          index={1}
-          moduloNumero={1}
+        <ModuleConsolidation moduloNumero={2}
+          index={2}
           variant={mv[1]}
           sinteseEstrategica={{ title: "Resumo Estratégico", content: "Para questões de 'O que acontece com a nova Média?', encontre a SOMA TOTAL antiga, adicione o valor novo e divida pela nova QUANTIDADE." }}
           
@@ -490,9 +488,8 @@ export default function AulaEstatisticaBasica({
             </div>
             </section>
             
-            <ModuleConsolidation
-          index={1}
-          moduloNumero={1}
+            <ModuleConsolidation moduloNumero={3}
+          index={3}
           variant={mv[1]}
           sinteseEstrategica={{ title: "Resumo Estratégico", content: "Aplique as fórmulas e domine os conceitos principais de Medidas de Dispersão e Centralidade." }}
           

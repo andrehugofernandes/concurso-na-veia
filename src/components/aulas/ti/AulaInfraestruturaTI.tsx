@@ -237,8 +237,8 @@ export default function AulaInfraestruturaTI({
             />
           </section>
 
-          <ModuleConsolidation
-            index={2}
+          <ModuleConsolidation moduloNumero={1}
+            index={1}
             variant={mv[1]}
             resumoVisual={{
                 moduloNome: "Módulo 1",
@@ -341,7 +341,7 @@ export default function AulaInfraestruturaTI({
             />
           </section>
 
-          <ModuleConsolidation
+          <ModuleConsolidation moduloNumero={2}
             index={2}
             variant={mv[2]}
             resumoVisual={{
@@ -439,8 +439,8 @@ export default function AulaInfraestruturaTI({
             />
           </section>
 
-          <ModuleConsolidation
-              index={2}
+          <ModuleConsolidation moduloNumero={3}
+              index={3}
               variant={mv[3]}
               resumoVisual={{ moduloNome: "Módulo 3", tituloAula: titulo, materia: materiaNome, images: [] }}
               sinteseEstrategica={{
@@ -512,8 +512,8 @@ export default function AulaInfraestruturaTI({
             />
           </section>
 
-          <ModuleConsolidation
-            index={2}
+          <ModuleConsolidation moduloNumero={4}
+            index={4}
             variant={mv[4]}
             resumoVisual={{ moduloNome: "Módulo 4", tituloAula: titulo, materia: materiaNome, images: [] }}
             sinteseEstrategica={{
@@ -595,8 +595,8 @@ export default function AulaInfraestruturaTI({
             />
            </section>
 
-           <ModuleConsolidation
-                index={2}
+           <ModuleConsolidation moduloNumero={5}
+                index={5}
                 variant={mv[5]}
                 resumoVisual={{ moduloNome: "Módulo 5", tituloAula: titulo, materia: materiaNome, images: [] }}
                 sinteseEstrategica={{
@@ -865,8 +865,8 @@ export default function AulaInfraestruturaTI({
             />
           </section>
 
-          <ModuleConsolidation
-            index={2}
+          <ModuleConsolidation moduloNumero={6}
+            index={6}
             variant={mv[10]}
             resumoVisual={{ moduloNome: "Módulo 10", tituloAula: titulo, materia: materiaNome, images: [] }}
             sinteseEstrategica={{

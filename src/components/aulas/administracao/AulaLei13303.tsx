@@ -358,7 +358,7 @@ export default function AulaLei13303(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={1}
           index={1}
           variant={getBannerVariant(1)}
           resumoVisual={{
@@ -633,7 +633,7 @@ export default function AulaLei13303(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={2}
           index={2}
           variant={getBannerVariant(2)}
           resumoVisual={{
@@ -879,7 +879,7 @@ export default function AulaLei13303(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={3}
           index={3}
           variant={getBannerVariant(3)}
           resumoVisual={{
@@ -1119,7 +1119,7 @@ export default function AulaLei13303(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={4}
           index={4}
           variant={getBannerVariant(4)}
           resumoVisual={{
@@ -1391,7 +1391,7 @@ export default function AulaLei13303(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={5}
           index={5}
           variant={getBannerVariant(5)}
           resumoVisual={{
@@ -1650,7 +1650,7 @@ export default function AulaLei13303(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={6}
           index={6}
           variant={getBannerVariant(6)}
           resumoVisual={{
@@ -1884,7 +1884,7 @@ export default function AulaLei13303(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={7}
           index={7}
           variant={getBannerVariant(7)}
           resumoVisual={{
@@ -2121,7 +2121,7 @@ export default function AulaLei13303(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={8}
           index={8}
           variant={getBannerVariant(8)}
           resumoVisual={{
@@ -2387,7 +2387,7 @@ export default function AulaLei13303(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={9}
           index={9}
           variant={getBannerVariant(9)}
           resumoVisual={{

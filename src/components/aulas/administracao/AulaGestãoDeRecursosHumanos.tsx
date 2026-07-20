@@ -830,7 +830,7 @@ export default function AulaGestãoDeRecursosHumanos(props: AulaProps) {
                   />
 
                   {/* 
-                  <ModuleConsolidation
+                  <ModuleConsolidation moduloNumero={1}
                     videoTitle={moduleContent.consolidation.video}
                     audioTitle={moduleContent.consolidation.audio}
                     summary={moduleContent.consolidation.summary}

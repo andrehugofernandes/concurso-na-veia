@@ -87,7 +87,7 @@ export default function AulaNr13({
   };
 
   const mv = Object.fromEntries(
-    Array.from({ length: 4 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
   ) as Record<number, ReturnType<typeof getModuleVariant>>;
 
   return (
@@ -155,7 +155,7 @@ export default function AulaNr13({
             ]}
           />
 
-          <ModuleConsolidation
+          <ModuleConsolidation moduloNumero={1}
             index={1}
             variant={mv[1]}
             resumoVisual={{
@@ -215,7 +215,7 @@ export default function AulaNr13({
             ]}
           />
 
-          <ModuleConsolidation
+          <ModuleConsolidation moduloNumero={2}
             index={2}
             variant={mv[2]}
             resumoVisual={{
@@ -275,7 +275,7 @@ export default function AulaNr13({
             ]}
           />
 
-          <ModuleConsolidation
+          <ModuleConsolidation moduloNumero={3}
             index={3}
             variant={mv[3]}
             resumoVisual={{

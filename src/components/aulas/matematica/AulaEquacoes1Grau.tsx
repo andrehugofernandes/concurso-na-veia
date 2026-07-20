@@ -85,16 +85,16 @@ export default function AulaEquacoes1Grau({
   const { completedModules: completedModulesList, updateCompletedModules } = useAulaProgress();
   const completedModules = new Set(completedModulesList);
 
-  const [quizM1, setQuizM1] = useState<typeof QUIZ_M1_CONCEITOS>([]);
-  const [quizM2, setQuizM2] = useState<typeof QUIZ_M2_FRACOES>([]);
-  const [quizM3, setQuizM3] = useState<typeof QUIZ_M3_PROBLEMAS>([]);
-  const [quizM4, setQuizM4] = useState<typeof QUIZ_M4_INEQUACOES>([]);
-  const [quizM5, setQuizM5] = useState<typeof QUIZ_M5_FINAL>([]);
-  const [quizM6, setQuizM6] = useState<typeof QUIZ_M6_SISTEMAS_AVANCADOS>([]);
-  const [quizM7, setQuizM7] = useState<typeof QUIZ_M7_VERIFICACAO>([]);
-  const [quizM8, setQuizM8] = useState<typeof QUIZ_M8_PEGADINHAS>([]);
-  const [quizM9, setQuizM9] = useState<typeof QUIZ_M9_PETROBRASESPECIFICO>([]);
-  const [quizFinal, setQuizFinal] = useState<typeof QUIZ_M10_SIMULADO_MESTRE>(
+  const [quizM1, setQuizM1] = useState<any[]>([]);
+  const [quizM2, setQuizM2] = useState<any[]>([]);
+  const [quizM3, setQuizM3] = useState<any[]>([]);
+  const [quizM4, setQuizM4] = useState<any[]>([]);
+  const [quizM5, setQuizM5] = useState<any[]>([]);
+  const [quizM6, setQuizM6] = useState<any[]>([]);
+  const [quizM7, setQuizM7] = useState<any[]>([]);
+  const [quizM8, setQuizM8] = useState<any[]>([]);
+  const [quizM9, setQuizM9] = useState<any[]>([]);
+  const [quizFinal, setQuizFinal] = useState<any[]>(
     [],
   );
 
@@ -540,8 +540,8 @@ export default function AulaEquacoes1Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={4}
+        <ModuleConsolidation moduloNumero={1}
+            index={1}
             resumoVisual={{
               moduloNome: "Módulo 1",
               tituloAula: "Equações de 1º Grau",
@@ -943,8 +943,8 @@ export default function AulaEquacoes1Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={4}
+        <ModuleConsolidation moduloNumero={2}
+            index={2}
             resumoVisual={{
               moduloNome: "Módulo 2",
               tituloAula: "Equações de 1º Grau",
@@ -1270,8 +1270,8 @@ export default function AulaEquacoes1Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={4}
+        <ModuleConsolidation moduloNumero={3}
+            index={3}
             resumoVisual={{
               moduloNome: "Módulo 3",
               tituloAula: "Equações de 1º Grau",
@@ -1580,8 +1580,8 @@ export default function AulaEquacoes1Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={3}
+        <ModuleConsolidation moduloNumero={4}
+            index={4}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Equações de 1º Grau",
@@ -1749,8 +1749,8 @@ export default function AulaEquacoes1Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={2}
+        <ModuleConsolidation moduloNumero={5}
+            index={5}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Equações de 1º Grau",
@@ -2047,8 +2047,8 @@ export default function AulaEquacoes1Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={2}
+        <ModuleConsolidation moduloNumero={6}
+            index={6}
             resumoVisual={{
               moduloNome: "Módulo 6",
               tituloAula: "Equações de 1º Grau",
@@ -2314,8 +2314,8 @@ export default function AulaEquacoes1Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={2}
+        <ModuleConsolidation moduloNumero={7}
+            index={7}
             resumoVisual={{
               moduloNome: "Módulo 7",
               tituloAula: "Equações de 1º Grau",
@@ -2632,8 +2632,8 @@ export default function AulaEquacoes1Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={2}
+        <ModuleConsolidation moduloNumero={8}
+            index={8}
             resumoVisual={{
               moduloNome: "Módulo 8",
               tituloAula: "Equações de 1º Grau",
@@ -2983,8 +2983,8 @@ export default function AulaEquacoes1Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={2}
+        <ModuleConsolidation moduloNumero={9}
+            index={9}
             resumoVisual={{
               moduloNome: "Módulo 9",
               tituloAula: "Equações de 1º Grau",
@@ -3170,8 +3170,8 @@ export default function AulaEquacoes1Grau({
           ]}
         />
 
-        <ModuleConsolidation
-            index={2}
+        <ModuleConsolidation moduloNumero={10}
+            index={10}
             resumoVisual={{
               moduloNome: "Módulo 10",
               tituloAula: "Equações de 1º Grau",

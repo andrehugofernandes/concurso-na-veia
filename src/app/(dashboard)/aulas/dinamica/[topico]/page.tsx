@@ -179,6 +179,12 @@ export default async function DynamicAulaPage({ params }: PageProps) {
           "use server";
           console.log(`Aula ${id} marcada como concluída.`);
         }}
+        titulo={engineData.titulo}
+        descricao={engineData.descricao}
+        duracao={engineData.duracao}
+        materiaNome={engineData.materiaNome}
+        materiaCor={engineData.materiaCor}
+        materiaId={engineData.materiaId}
       />
     </div>
   );

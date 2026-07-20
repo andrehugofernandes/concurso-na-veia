@@ -87,18 +87,34 @@ export async function POST(request: NextRequest) {
     const finalMateria = materia || "materia";
     const finalModuloNumero = moduloNumero || 1;
 
-    const existingFirebaseUrl = await getPodcastFirebaseUrl(finalMateria, sanitizedAulaId, finalModuloNumero);
+    let existingFirebaseUrl = await getPodcastFirebaseUrl(finalMateria, sanitizedAulaId, finalModuloNumero);
+    
+    if (!existingFirebaseUrl) {
+      // Fallback 1: Tentar derivar o ID diretamente do título da aula usando hífens
+      const dashedSlug = aulaTitulo ? aulaTitulo.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") : "";
+      if (dashedSlug && dashedSlug !== sanitizedAulaId) {
+        console.log(`[API/Podcast] 🔍 Tentando Fallback 1: ${dashedSlug}`);
+        existingFirebaseUrl = await getPodcastFirebaseUrl(finalMateria, dashedSlug, finalModuloNumero);
+      }
+      
+      // Fallback 2: Se for "administracaogeralsuprimento" ou "administracao-geral-suprimento", mapear para a pasta física "administracao-geral"
+      if (!existingFirebaseUrl && (sanitizedAulaId.includes("administracaogeral") || (dashedSlug && dashedSlug.includes("administracao-geral")))) {
+        console.log(`[API/Podcast] 🔍 Tentando Fallback 2: administracao-geral`);
+        existingFirebaseUrl = await getPodcastFirebaseUrl(finalMateria, "administracao-geral", finalModuloNumero);
+      }
+    }
     
     if (existingFirebaseUrl) {
       console.log(`[API/Podcast] 🎧 Cache HIT (Firebase): Podcast já existe! URL: ${existingFirebaseUrl}`);
       const prof = getProfessor(materiaId || finalMateria.toLowerCase(), sanitizedAulaId);
+      const proxyUrl = `/api/podcast/audio?materia=${finalMateria}&aulaId=${sanitizedAulaId}&modulo=${finalModuloNumero}`;
       return NextResponse.json({
         success: true,
         exists: true,
         script: null, 
         professor: prof,
         audioDisponivel: true,
-        audioUrl: existingFirebaseUrl,
+        audioUrl: proxyUrl,
         audioBase64: null,
         audioMimeType: 'audio/wav',
         error: null,
@@ -244,12 +260,14 @@ export async function POST(request: NextRequest) {
       temErro: !!result.error
     });
 
+    const proxyUrl = audioUrl ? `/api/podcast/audio?materia=${input.materia}&aulaId=${input.aulaId}&modulo=${input.moduloNumero}` : null;
+
     return NextResponse.json({
       success: true,
       script: result.script,
       professor,
       audioDisponivel: !!result.audioBase64,
-      audioUrl: audioUrl,
+      audioUrl: proxyUrl,
       audioBase64: result.audioBase64 || null, // keeping for fallback
       audioMimeType: result.audioMimeType || null,
       error: result.error || null,

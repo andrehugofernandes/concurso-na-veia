@@ -143,7 +143,7 @@ export default function AulaNr35({
 
         
 
-<ModuleConsolidation 
+<ModuleConsolidation moduloNumero={1} 
             index={1}
             variant="amber"
             resumoVisual={{
@@ -255,8 +255,8 @@ export default function AulaNr35({
 
         
 
-<ModuleConsolidation 
-            index={3}
+<ModuleConsolidation moduloNumero={2} 
+            index={2}
             variant="rose"
             resumoVisual={{
                 moduloNome: "Módulo 3",
@@ -332,8 +332,8 @@ export default function AulaNr35({
 
         
 
-<ModuleConsolidation 
-            index={5}
+<ModuleConsolidation moduloNumero={3} 
+            index={3}
             variant="amber"
             resumoVisual={{
                 moduloNome: "Módulo 5",

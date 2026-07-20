@@ -249,8 +249,8 @@ export default function AulaRLCP(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
-          index={3}
+        <ModuleConsolidation moduloNumero={1}
+          index={1}
           variant={variant}
           resumoVisual={{
             moduloNome: "Módulo 1",
@@ -448,8 +448,8 @@ export default function AulaRLCP(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
-          index={3}
+        <ModuleConsolidation moduloNumero={2}
+          index={2}
           variant={variant}
           resumoVisual={{
             moduloNome: "Módulo 2",
@@ -644,7 +644,7 @@ export default function AulaRLCP(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={3}
           index={3}
           variant={variant}
           resumoVisual={{
@@ -770,8 +770,8 @@ export default function AulaRLCP(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
-            index={5}
+        <ModuleConsolidation moduloNumero={4}
+            index={4}
             variant={variant}
             resumoVisual={{
               moduloNome: "Módulo 4",
@@ -909,7 +909,7 @@ export default function AulaRLCP(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={5}
             index={5}
             variant={variant}
             resumoVisual={{
@@ -1037,7 +1037,7 @@ export default function AulaRLCP(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={6}
             index={6}
             variant={variant}
             resumoVisual={{
@@ -1162,7 +1162,7 @@ export default function AulaRLCP(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={7}
             index={7}
             variant={variant}
             resumoVisual={{
@@ -1287,7 +1287,7 @@ export default function AulaRLCP(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={8}
             index={8}
             variant={variant}
             resumoVisual={{
@@ -1398,7 +1398,7 @@ export default function AulaRLCP(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={9}
             index={9}
             variant={variant}
             resumoVisual={{
@@ -1491,7 +1491,7 @@ export default function AulaRLCP(props: AulaProps) {
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={10}
             index={10}
             variant={variant}
             resumoVisual={{

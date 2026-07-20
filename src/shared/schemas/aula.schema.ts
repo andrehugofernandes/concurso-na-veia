@@ -9,7 +9,7 @@ export const QuizQuestionSchema = z.object({
   pergunta: z.string().min(5, "A pergunta deve ter pelo menos 5 caracteres"),
   alternativas: z.array(QuizAlternativaSchema).length(5, "A questão deve possuir exatamente 5 alternativas"),
   respostaCorreta: z.enum(["A", "B", "C", "D", "E"], {
-    errorMap: () => ({ message: "A resposta correta deve ser uma letra de A a E" }),
+    message: "A resposta correta deve ser uma letra de A a E",
   }),
   explicacaoStepByStep: z.array(z.string()).min(1, "A explicação deve conter pelo menos 1 passo explicativo"),
 });

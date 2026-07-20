@@ -16,7 +16,9 @@ export default function NovoCursoWizard() {
   const [step, setStep] = useState(1);
   const [tenants, setTenants] = useState<Tenant[]>([]);
   const [loading, setLoading] = useState(false);
+  const [generating, setGenerating] = useState(false);
   const [error, setError] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
 
   const [formData, setFormData] = useState({
     titulo: "",
@@ -27,7 +29,10 @@ export default function NovoCursoWizard() {
     tenant_id: "",
     preco: "",
     stripe_price_id: "",
+    editalText: "", // Campo para colar o conteúdo do edital
   });
+
+  const [generatedAulas, setGeneratedAulas] = useState<any[]>([]);
 
   useEffect(() => {
     async function loadTenants() {
@@ -54,9 +59,46 @@ export default function NovoCursoWizard() {
     if (step > 1) setStep(step - 1);
   };
 
+  // Função para ler edital e gerar ementa premium estruturada via API de IA
+  const handleGerarAulas = async () => {
+    if (!formData.editalText) {
+      setError("Por favor, cole o conteúdo do edital para gerar as aulas.");
+      return;
+    }
+
+    setGenerating(true);
+    setError("");
+    setSuccessMsg("");
+
+    try {
+      const response = await fetch("/api/aulas/gerar-wizard", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          editalText: formData.editalText,
+          materiaId: formData.materia_id,
+          tituloCurso: formData.titulo,
+        }),
+      });
+
+      const resData = await response.json();
+      if (!response.ok) throw new Error(resData.error || "Falha na geração didática.");
+
+      if (resData.success && resData.data.modulos) {
+        setGeneratedAulas(resData.data.modulos);
+        setSuccessMsg(`Sucesso! Ementa premium com ${resData.data.modulos.length} módulos completa, parágrafos C.E.D.E.A, podcasts e quizzes criados.`);
+      }
+    } catch (err: any) {
+      setError(err.message || "Erro na conexão com o servidor de IA.");
+    } finally {
+      setGenerating(false);
+    }
+  };
+
   const handleSubmit = async () => {
     setLoading(true);
     setError("");
+    setSuccessMsg("");
 
     try {
       const payload = {
@@ -70,7 +112,8 @@ export default function NovoCursoWizard() {
         stripe_price_id: formData.is_public ? formData.stripe_price_id : null,
       };
 
-      const { data, error: dbError } = await supabase
+      // 1. Criar o Curso
+      const { data: curso, error: dbError } = await supabase
         .from("cursos")
         .insert(payload)
         .select()
@@ -78,8 +121,47 @@ export default function NovoCursoWizard() {
 
       if (dbError) throw dbError;
 
-      alert("Curso criado com sucesso!");
-      router.push("/admin");
+      // 2. Vincular as Aulas Premium geradas ao Curso recém-criado
+      if (generatedAulas.length > 0) {
+        for (const modulo of generatedAulas) {
+          const aulaPayload = {
+            titulo: modulo.titulo,
+            slug: `${formData.slug}-modulo-${modulo.numero}`,
+            curso_id: curso.id,
+            materia_id: formData.materia_id,
+            tenant_id: payload.tenant_id,
+            metadata: {
+              modulo_numero: modulo.numero,
+              laboratorioTexto: modulo.laboratorioTexto || "",
+              sinteseEstrategica: modulo.sinteseEstrategica || {},
+              audio: modulo.audio || {},
+            },
+            conteudo: {
+              modulos: [
+                {
+                  numero: modulo.numero,
+                  titulo: modulo.titulo,
+                  introducaoCEDEA: modulo.introducaoCEDEA,
+                  flipCards: modulo.flipCards,
+                  quiz: modulo.quiz,
+                }
+              ]
+            }
+          };
+
+          // Salvar aula no banco
+          const { error: aulaError } = await supabase
+            .from("aulas")
+            .insert(aulaPayload);
+
+          if (aulaError) {
+            console.error(`Erro ao salvar aula do módulo ${modulo.numero}:`, aulaError);
+          }
+        }
+      }
+
+      alert("Curso e ementa de aulas premium gerados com sucesso!");
+      router.push("/admin/usuarios"); // Redireciona de volta para usuários
     } catch (err: any) {
       setError(err.message || "Erro desconhecido ao cadastrar o curso.");
     } finally {
@@ -90,13 +172,19 @@ export default function NovoCursoWizard() {
   return (
     <div className="p-6 md:p-8 max-w-3xl mx-auto space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Criar Novo Curso</h1>
-        <p className="text-muted-foreground mt-1">Wizard de criação de ementas B2C ou White Label (GovTech).</p>
+        <h1 className="text-3xl font-bold tracking-tight">Criar Novo Curso Inteligente</h1>
+        <p className="text-muted-foreground mt-1">Wizard integrado com leitura de editais e geração didática premium por IA.</p>
       </div>
 
       {error && (
         <div className="bg-rose-500/10 border border-rose-500/30 text-rose-500 text-sm p-4 rounded-xl">
           {error}
+        </div>
+      )}
+
+      {successMsg && (
+        <div className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 text-sm p-4 rounded-xl">
+          {successMsg}
         </div>
       )}
 
@@ -116,7 +204,7 @@ export default function NovoCursoWizard() {
         {/* PASSO 1: Segmentação de Mercado */}
         {step === 1 && (
           <div className="space-y-6">
-            <h2 className="text-xl font-bold">Passo 1: Segmentação e Ementa</h2>
+            <h2 className="text-xl font-bold">Passo 1: Segmentação de Mercado</h2>
             
             <div className="space-y-2">
               <label className="text-sm font-semibold">Distribuição do Curso</label>
@@ -242,20 +330,41 @@ export default function NovoCursoWizard() {
           </div>
         )}
 
-        {/* PASSO 3: Confirmação e Criação */}
+        {/* PASSO 3: Geração Inteligente de Conteúdo (Edital) */}
         {step === 3 && (
           <div className="space-y-6">
-            <h2 className="text-xl font-bold">Passo 3: Confirmar e Finalizar</h2>
-            <div className="bg-muted p-4 rounded-xl border space-y-2 text-sm">
-              <p><strong>Nome:</strong> {formData.titulo}</p>
-              <p><strong>Rota:</strong> /cursos/{formData.slug}</p>
-              <p><strong>Distribuição:</strong> {formData.is_public ? "Público B2C" : "Privado GovTech"}</p>
-              {formData.is_public ? (
-                <p><strong>Preço:</strong> R$ {formData.preco || "Gratuito"}</p>
-              ) : (
-                <p><strong>Tenant ID:</strong> {formData.tenant_id || "Geral"}</p>
-              )}
+            <h2 className="text-xl font-bold">Passo 3: Geração Automática das Aulas (Edital)</h2>
+            
+            <div className="space-y-2">
+              <label className="text-sm font-semibold block">Conteúdo Programático ou Edital</label>
+              <textarea
+                rows={6}
+                placeholder="Cole aqui os tópicos oficiais do edital para que a IA divida e formate as aulas em 10 módulos premium com parágrafos C.E.D.E.A, FlipCards e Quizzes..."
+                value={formData.editalText}
+                onChange={(e) => setFormData({ ...formData, editalText: e.target.value })}
+                className="w-full p-3 border border-border bg-background rounded-xl text-sm leading-relaxed"
+              />
             </div>
+
+            <button
+              type="button"
+              onClick={handleGerarAulas}
+              disabled={generating || !formData.editalText}
+              className="w-full py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-500 transition-all text-sm disabled:opacity-50"
+            >
+              {generating ? "Processando Edital e Formatando Teoria Riqueza..." : "✨ Ler Edital e Gerar Aulas Premium"}
+            </button>
+
+            {generatedAulas.length > 0 && (
+              <div className="border border-border rounded-xl p-4 bg-muted/30 space-y-2">
+                <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Estrutura de Ementa Planejada:</p>
+                <ul className="text-sm space-y-1.5 list-decimal list-inside text-foreground font-medium">
+                  {generatedAulas.map((aula, i) => (
+                    <li key={i}>{aula.titulo}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         )}
 
@@ -281,10 +390,10 @@ export default function NovoCursoWizard() {
             <button
               type="button"
               onClick={handleSubmit}
-              disabled={loading}
-              className="px-6 py-2.5 bg-primary text-primary-foreground font-bold rounded-lg hover:opacity-90 transition text-sm"
+              disabled={loading || generatedAulas.length === 0}
+              className="px-6 py-2.5 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition text-sm disabled:opacity-50"
             >
-              {loading ? "Criando..." : "Finalizar e Salvar"}
+              {loading ? "Gravando no Banco..." : "Finalizar e Publicar Curso"}
             </button>
           )}
         </div>

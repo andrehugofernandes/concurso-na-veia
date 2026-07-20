@@ -396,7 +396,7 @@ export default function AulaTiposTextuais({
           </div>
         </section>
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={1}
           index={1}
           variant="indigo"
           resumoVisual={{
@@ -472,7 +472,7 @@ export default function AulaTiposTextuais({
             </div>
           </div>
         </section>
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={2}
           index={2}
           variant={mv[2]}
           resumoVisual={{
@@ -544,7 +544,7 @@ export default function AulaTiposTextuais({
             </p>
           </div>
         </section>
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={3}
           index={3}
           variant={mv[3]}
           resumoVisual={{
@@ -619,7 +619,7 @@ export default function AulaTiposTextuais({
             </div>
           </div>
         </section>
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={4}
           index={4}
           variant={mv[4]}
           resumoVisual={{
@@ -691,7 +691,7 @@ export default function AulaTiposTextuais({
             </p>
           </div>
         </section>
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={5}
           index={5}
           variant={mv[5]}
           resumoVisual={{
@@ -763,7 +763,7 @@ export default function AulaTiposTextuais({
             </p>
           </div>
         </section>
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={6}
           index={6}
           variant={mv[6]}
           resumoVisual={{
@@ -835,7 +835,7 @@ export default function AulaTiposTextuais({
             </p>
           </div>
         </section>
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={7}
           index={7}
           variant={mv[7]}
           resumoVisual={{
@@ -907,7 +907,7 @@ export default function AulaTiposTextuais({
             </p>
           </div>
         </section>
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={8}
           index={8}
           variant="indigo"
           resumoVisual={{
@@ -979,7 +979,7 @@ export default function AulaTiposTextuais({
             </p>
           </div>
         </section>
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={9}
           index={9}
           variant={mv[9]}
           resumoVisual={{
@@ -1042,7 +1042,7 @@ export default function AulaTiposTextuais({
             Este simulado mistura todos os conceitos vistos. Lembre-se: atenção ao <strong>texto original</strong> e às <strong>nuances</strong> de cada fragmento. Boa sorte!
           </p>
         </section>
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={10}
           index={10}
           variant={mv[10]}
           resumoVisual={{

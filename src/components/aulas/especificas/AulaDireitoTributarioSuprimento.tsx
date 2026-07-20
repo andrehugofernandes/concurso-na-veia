@@ -299,9 +299,8 @@ export default function AulaDireitoTributarioSuprimento({
               </div>
             </section>
             
-            <ModuleConsolidation
+            <ModuleConsolidation moduloNumero={1}
               index={num}
-              moduloNumero={num}
               variant={mv[num]}
               sinteseEstrategica={{ title: "Resumo Estratégico", content: `Foco total na CESGRANRIO para o módulo ${num}.` }}
               podcast={{

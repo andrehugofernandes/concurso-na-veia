@@ -4032,7 +4032,7 @@ export default function AulaConcordancia({
             />
           </section>
 
-          <ModuleConsolidation
+          <ModuleConsolidation moduloNumero={1}
             index={1}
             resumoVisual={{
               moduloNome: "Módulo 1",
@@ -4736,7 +4736,7 @@ export default function AulaConcordancia({
             />
           </section>
 
-          <ModuleConsolidation
+          <ModuleConsolidation moduloNumero={2}
             index={2}
             resumoVisual={{
               moduloNome: "Módulo 2",
@@ -5580,8 +5580,8 @@ export default function AulaConcordancia({
             />
           </section>
 
-          <ModuleConsolidation
-            index={4}
+          <ModuleConsolidation moduloNumero={3}
+            index={3}
             resumoVisual={{
               moduloNome: "Módulo 4",
               tituloAula: "Casos de Avançado",
@@ -5816,8 +5816,8 @@ export default function AulaConcordancia({
             />
           </section>
 
-          <ModuleConsolidation
-            index={5}
+          <ModuleConsolidation moduloNumero={4}
+            index={4}
             resumoVisual={{
               moduloNome: "Módulo 5",
               tituloAula: "Laboratório Cesgranrio",

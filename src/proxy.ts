@@ -101,6 +101,24 @@ export async function proxy(request: NextRequest) {
         return NextResponse.redirect(url)
     }
 
+    // Validação de acessos para a área de Admin
+    if (user && isAdminRoute) {
+        // Obter o perfil do usuário para verificar a role
+        const { data: profile } = await supabase
+            .from("profiles")
+            .select("role, tenant_id")
+            .eq("id", user.id)
+            .single();
+
+        // Apenas 'sysadmin' e 'admin' podem acessar o painel de admin
+        if (!profile || (profile.role !== "sysadmin" && profile.role !== "admin")) {
+            console.warn(`[Proxy Admin] Acesso negado ao usuário ${user.id} com role ${profile?.role || "null"}`);
+            const url = request.nextUrl.clone();
+            url.pathname = "/dashboard";
+            return NextResponse.redirect(url);
+        }
+    }
+
     // Proteção de rotas do dashboard/cursos GovTech (White Label)
     if (user && request.nextUrl.pathname.startsWith("/dashboard/cursos/")) {
         const slug = request.nextUrl.pathname.split("/").pop();
@@ -145,7 +163,7 @@ export async function proxy(request: NextRequest) {
         script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com https://www.gstatic.com https://js.stripe.com;
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
         img-src 'self' blob: data: https://firebasestorage.googleapis.com https://*.supabase.co https://lh3.googleusercontent.com;
-        media-src 'self' blob: data:;
+        media-src 'self' blob: data: https://firebasestorage.googleapis.com https://*.supabase.co;
         font-src 'self' https://fonts.gstatic.com;
         connect-src 'self' https://*.supabase.co wss://*.supabase.co https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firebasestorage.googleapis.com https://api.stripe.com;
         frame-src 'self' https://js.stripe.com https://hooks.stripe.com;

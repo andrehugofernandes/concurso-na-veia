@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import { getModuleVariant } from "@/lib/moduleColors";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
+import * as LuIcons from "react-icons/lu";
 
 import {
   ModuleConsolidation,
@@ -11,38 +12,46 @@ import {
   ModuleBanner,
   getRandomQuestions,
   QuizQuestion,
-
   AulaProps,
   AulaTemplate,
   RichIntro,
-  QuestaoResolvidaStepByStep
+  ModuleSectionHeader,
+  FlipCard
 } from "../shared";
 
-import { LuBookOpen } from "react-icons/lu";
+import { MODULE_CONTENTS } from "./data/hidraulica-content";
+import * as Quizzes from "./data/hidraulica-quizzes";
 
-import {
-  QUIZ_M1_HIDRAULICA,
-  QUIZ_M2_HIDRAULICA,
-  QUIZ_M3_HIDRAULICA,
-} from "./data/hidraulica-quizzes";
+// Dynamic Icon Component
+function DynamicLucideIcon({ name, className }: { name: string; className?: string }) {
+  const IconComponent = (LuIcons as any)[name] || LuIcons.LuBook;
+  return <IconComponent className={className} />;
+}
 
 const MODULE_DEFS = [
-  { id: "modulo-1", label: "Módulo 1", title: "Introdução e Conceitos Base" },
-  { id: "modulo-2", label: "Módulo 2", title: "Aprofundamento e Aplicações" },
-  { id: "modulo-3", label: "Módulo 3", title: "Resolução de Questões e Simulado" },
-] as const;
+  { id: "modulo-1", numero: 1, label: "Mód 1", title: "Fundamentos da Hidrostática", descricao: "Conteúdo essencial e aprofundamento estratégico para a prova." },
+  { id: "modulo-2", numero: 2, label: "Mód 2", title: "Desvendando a Pressão", descricao: "Conteúdo essencial e aprofundamento estratégico para a prova." },
+  { id: "modulo-3", numero: 3, label: "Mód 3", title: "Princípio de Stevin na Prática", descricao: "Conteúdo essencial e aprofundamento estratégico para a prova." },
+  { id: "modulo-4", numero: 4, label: "Mód 4", title: "O Mistério de Pascal e Prensas", descricao: "Conteúdo essencial e aprofundamento estratégico para a prova." },
+  { id: "modulo-5", numero: 5, label: "Mód 5", title: "Arquimedes e o Empuxo Real", descricao: "Conteúdo essencial e aprofundamento estratégico para a prova." },
+  { id: "modulo-6", numero: 6, label: "Mód 6", title: "Introdução à Hidrodinâmica", descricao: "Conteúdo essencial e aprofundamento estratégico para a prova." },
+  { id: "modulo-7", numero: 7, label: "Mód 7", title: "Vazão e Continuidade", descricao: "Conteúdo essencial e aprofundamento estratégico para a prova." },
+  { id: "modulo-8", numero: 8, label: "Mód 8", title: "A Lógica CESGRANRIO", descricao: "Análise do perfil da banca e principais pegadinhas." },
+  { id: "modulo-9", numero: 9, label: "Mód 9", title: "Checklist Tático", descricao: "Passo a passo definitivo para resolução rápida de questões." },
+  { id: "modulo-10", numero: 10, label: "Mód 10", title: "Laboratório de Consolidação Final", descricao: "Treinamento intensivo com questões simuladas." }
+];
 
 export default function AulaHidraulica({
   onComplete,
   isCompleted,
   loading,
   xpGanho = 50,
-  titulo,
-  descricao,
-  duracao,
-  materiaNome,
+  titulo = "Hidráulica e Fluidos",
+  descricao = "Estática e dinâmica dos fluidos",
+  duracao = "120 min",
+  materiaNome = "Fisica",
   materiaCor,
-  materiaId,
+  materiaId = "fisica",
   prevTopico,
   nextTopico,
 }: AulaProps) {
@@ -65,17 +74,18 @@ export default function AulaHidraulica({
     }
   }, [activeTab]);
 
-  const [quizM1, setQuizM1] = useState<QuizQuestion[]>([]);
-  const [quizM2, setQuizM2] = useState<QuizQuestion[]>([]);
-  const [quizM3, setQuizM3] = useState<QuizQuestion[]>([]);
-
+  const [quizzes, setQuizzes] = useState<Record<number, QuizQuestion[]>>({});
   const [hasSyncedInitial, setHasSyncedInitial] = useState(false);
 
   useEffect(() => {
     if (!hasSyncedInitial && !loading) {
-      setQuizM1(getRandomQuestions(QUIZ_M1_HIDRAULICA, 5));
-      setQuizM2(getRandomQuestions(QUIZ_M2_HIDRAULICA, 5));
-      setQuizM3(getRandomQuestions(QUIZ_M3_HIDRAULICA, 5));
+      const qs: Record<number, QuizQuestion[]> = {};
+      for (let i = 1; i <= 10; i++) {
+        const quizKey = Object.keys(Quizzes).find(k => k === `QUIZ_M${i}` || k.startsWith(`QUIZ_M${i}_`));
+        const quizData = quizKey ? (Quizzes as any)[quizKey] : [];
+        qs[i] = getRandomQuestions(quizData, 5);
+      }
+      setQuizzes(qs);
       setHasSyncedInitial(true);
     }
   }, [loading, hasSyncedInitial]);
@@ -84,22 +94,30 @@ export default function AulaHidraulica({
     const nextCompleted = new Set(completedModules);
     nextCompleted.add(moduleId);
     updateCompletedModules(Array.from(nextCompleted));
+    
+    if (nextCompleted.size === 10) {
+      setTimeout(() => {
+        onComplete?.();
+      }, 500);
+    }
   };
 
   const mv = Object.fromEntries(
-    Array.from({ length: 4 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
+    Array.from({ length: 10 }, (_, i) => [i + 1, getModuleVariant(i + 1)])
   ) as Record<number, ReturnType<typeof getModuleVariant>>;
+
+  const defaultGradient = materiaCor || (materiaId === "ingles" ? "from-cyan-500 to-blue-500" : materiaId === "quimica" ? "from-amber-500 to-orange-500" : "from-blue-500 to-indigo-500");
 
   return (
     <AulaTemplate
-      canComplete={completedModules.size >= MODULE_DEFS.length}
+      canComplete={completedModules.size >= 10}
       lockMessage="Você precisa responder a todos os quizzes desta aula para finalizá-la."
-      titulo={titulo || "Hidrostática"}
-      descricao={descricao || "Pressão, empuxo e princípio de Pascal"}
-      duracao={duracao || "45 min"}
-      materiaNome={materiaNome || "Física"}
-      materiaCor={materiaCor || "from-blue-500 to-cyan-500"}
-      materiaId={materiaId || "fisica"}
+      titulo={titulo}
+      descricao={descricao}
+      duracao={duracao}
+      materiaNome={materiaNome}
+      materiaCor={defaultGradient}
+      materiaId={materiaId}
       modules={MODULE_DEFS}
       activeTab={activeTab}
       setActiveTab={setActiveTab}
@@ -109,196 +127,173 @@ export default function AulaHidraulica({
       prevTopico={prevTopico}
       nextTopico={nextTopico}
     >
-      {/* ========================================================================= */}
-      {/* MÓDULO 1 */}
-      {/* ========================================================================= */}
-      <TabsContent value="modulo-1">
-        <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={1}
-            titulo={MODULE_DEFS[0].title}
-            variant={mv[1]}
-            descricao="Neste módulo introdutório vamos entender os conceitos base para Hidrostática cobrados pela Cesgranrio."
-          />
-
-          <RichIntro>
-            <div className="space-y-6 text-slate-700 dark:text-slate-300 leading-relaxed">
-              <p className="text-xl font-bold text-slate-900 dark:text-white border-l-4 border-blue-500 pl-4 mb-4">
-                O essencial de Hidrostática que você não pode esquecer na hora da prova.
-              </p>
-              <p>
-                Esteja preparado para identificar os padrões comuns de cobrança da banca. Foque em conceitos, fórmulas e teoria direta.
-              </p>
-            </div>
-          </RichIntro>
-          
-          <QuestaoResolvidaStepByStep
-            index={1}
-            titulo="Na Prática: Como a Banca Cobra"
-            variant={mv[1]}
-            banca="CESGRANRIO"
-            ano="2024"
-            concurso="Petrobras"
-            enunciado="Uma questão simulada de Hidrostática. Qual a resposta correta de acordo com as diretrizes e regras estudadas?"
-            alternativas={[
-              { letra: "A", texto: "Alternativa correta", correta: true },
-              { letra: "B", texto: "Pegadinha clássica", correta: false },
-              { letra: "C", texto: "Conceito invertido", correta: false },
-              { letra: "D", texto: "Informação fora do edital", correta: false },
-              { letra: "E", texto: "Alternativa absurda", correta: false }
-            ]}
-            dicaEstrategica="Sempre verifique os detalhes no enunciado. A CESGRANRIO gosta de inserir pequenos distratores."
-            passos={[
-              { titulo: "Passo 1: Identificar o Contexto", conteudo: "Identificar o contexto e as regras cobradas." },
-              { titulo: "Passo 2: Análise das Alternativas", conteudo: "Analisar as alternativas e eliminar as absurdas." },
-              { titulo: "Passo 3: Validação", conteudo: "Confirmar a alternativa A como a correta pela regra geral." }
-            ]}
-          />
-
-          <ModuleConsolidation
-            index={1}
-            variant={mv[1]}
-            resumoVisual={{
-              moduloNome: "Módulo 1",
-              tituloAula: "Hidrostática",
-              materia: "Física",
-              images: [{ title: "Esquema Básico", type: "infographic", placeholderColor: "blue" }]
-            }}
-            sinteseEstrategica={{ title: "Resumo", content: "Lembre-se sempre dos conceitos básicos." }}
-            podcast={{
-            aulaId: "hidraulica",
-            aulaTitulo: "Hidraulica",
-            materia: "Física",
-            materiaId: "fisica",
-            moduloNumero: 1,
-            moduloTitulo: "Módulo 1",
-            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-          }}
-          />
-
-          <QuizInterativo titulo="QUIZ: Módulo Nº 1" questoes={quizM1} variant={mv[1]} onComplete={() => handleModuleComplete("modulo-1")} />
-        </div>
-      </TabsContent>
-
-      {/* ========================================================================= */}
-      {/* MÓDULO 2 */}
-      {/* ========================================================================= */}
-      <TabsContent value="modulo-2">
-        <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={2}
-            titulo={MODULE_DEFS[1].title}
-            variant={mv[2]}
-            descricao="Aprofundamento com foco em pontos sensíveis e exceções da regra para Hidrostática."
-          />
-          
-          <QuestaoResolvidaStepByStep
-            index={2}
-            titulo="Na Prática: Como a Banca Cobra"
-            variant={mv[2]}
-            banca="CESGRANRIO"
-            ano="2023"
-            concurso="Transpetro"
-            enunciado="Sobre Hidrostática e aprofundamentos práticos, analise a situação problema e indique o comportamento esperado."
-            alternativas={[
-              { letra: "A", texto: "Ação baseada em senso comum", correta: false },
-              { letra: "B", texto: "Aplicação de caso específico previsto", correta: true },
-              { letra: "C", texto: "Ação que contraria o procedimento padrão", correta: false },
-              { letra: "D", texto: "Ignorar por ser irrelevante", correta: false },
-              { letra: "E", texto: "Depende de critérios não regulamentados", correta: false }
-            ]}
-            dicaEstrategica="Cuidado com alternativas baseadas no 'senso comum'."
-            passos={[
-              { titulo: "Passo 1", conteudo: "Localizar a palavra-chave no texto." },
-              { titulo: "Passo 2", conteudo: "Aplicar a regra especial vista na aula." },
-              { titulo: "Passo 3", conteudo: "A alternativa B é a única que reflete a regra." }
-            ]}
-          />
-
-          <ModuleConsolidation
-            index={2}
-            variant={mv[2]}
-            resumoVisual={{
-              moduloNome: "Módulo 2",
-              tituloAula: "Aplicações de Hidrostática",
-              materia: "Física",
-              images: [{ title: "Exceções e Casos", type: "table", placeholderColor: "indigo" }]
-            }}
-            sinteseEstrategica={{ title: "Casos Práticos", content: "Atenção às exceções, é lá que a banca faz pegadinhas." }}
-          podcast={{
-            aulaId: "hidraulica",
-            aulaTitulo: "Hidraulica",
-            materia: "Física",
-            materiaId: "fisica",
-            moduloNumero: 2,
-            moduloTitulo: "Módulo 2",
-            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-          }}
-          />
-
-          <QuizInterativo titulo="QUIZ: Módulo Nº 2" questoes={quizM2} variant={mv[2]} onComplete={() => handleModuleComplete("modulo-2")} />
-        </div>
-      </TabsContent>
-
-      {/* ========================================================================= */}
-      {/* MÓDULO 3 */}
-      {/* ========================================================================= */}
-      <TabsContent value="modulo-3">
-        <div className="space-y-12 animate-in fade-in duration-500">
-          <ModuleBanner
-            numero={3}
-            titulo={MODULE_DEFS[2].title}
-            variant={mv[3]}
-            descricao="Consolidação final com questões desafiadoras e resumo dos principais tópicos de Hidrostática."
-          />
-          
-          <QuestaoResolvidaStepByStep
-            index={3}
-            titulo="Na Prática: Como a Banca Cobra"
-            variant={mv[3]}
-            banca="CESGRANRIO"
-            ano="2021"
-            concurso="Petrobras"
-            enunciado="Questão de alta dificuldade englobando todo o assunto de Hidrostática. Marque a asserção exata."
-            alternativas={[
-              { letra: "A", texto: "Afirmativa correta porém incompleta", correta: false },
-              { letra: "B", texto: "Afirmativa totalmente equivocada", correta: false },
-              { letra: "C", texto: "Afirmativa correta, precisa e completa", correta: true },
-              { letra: "D", texto: "Mistura de conceitos corretos e incorretos", correta: false },
-              { letra: "E", texto: "Afirmativa fora de contexto", correta: false }
-            ]}
-            dicaEstrategica="A alternativa correta precisa ser 100% verdadeira e responder ao que foi perguntado."
-            passos={[
-              { titulo: "Passo 1", conteudo: "Leia com atenção cada parte das afirmativas complexas." },
-              { titulo: "Passo 2", conteudo: "Identifique erros nas afirmações A e D." },
-              { titulo: "Passo 3", conteudo: "A afirmação C é perfeita em seu escopo." }
-            ]}
-          />
-
-          <ModuleConsolidation
-            index={3}
-            variant={mv[3]}
-            resumoVisual={{
-              moduloNome: "Módulo 3",
-              tituloAula: "Revisão Final Hidrostática",
-              materia: "Física",
-              images: [{ title: "Checklist de Aprovação", type: "diagram", placeholderColor: "purple" }]
-            }}
-            sinteseEstrategica={{ title: "Revisão", content: "A prática leva à fixação." }}
-          podcast={{
-            aulaId: "hidraulica",
-            aulaTitulo: "Hidraulica",
-            materia: "Física",
-            materiaId: "fisica",
-            moduloNumero: 3,
-            moduloTitulo: "Módulo 3",
-            conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-          }}
-          />
-
-          <QuizInterativo titulo="QUIZ: Módulo Nº 3" questoes={quizM3} variant={mv[3]} onComplete={() => handleModuleComplete("modulo-3")} />
-        </div>
-      </TabsContent>
+      {MODULE_DEFS.map((mod) => {
+        const modNum = mod.numero;
+        const blocks = MODULE_CONTENTS[modNum] || [];
+        const quiz = quizzes[modNum] || [];
+        
+        const introBlock = blocks.find((b: any) => b.type === "text" && b.index === "INTRO");
+        const flipcardsBlock = blocks.find((b: any) => b.type === "flipcards");
+        const consolidationBlock = blocks.find((b: any) => b.type === "consolidation");
+        
+        return (
+          <TabsContent key={mod.id} value={mod.id} className="space-y-12 animate-in fade-in duration-500">
+            <ModuleBanner
+              numero={modNum}
+              titulo={mod.title}
+              variant={mv[modNum]}
+              descricao={mod.descricao}
+            />
+            
+            {introBlock && (
+              <section className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-sm space-y-8">
+                <ModuleSectionHeader
+                  index="INTRO"
+                  title={mod.title}
+                  description={mod.descricao}
+                  variant={mv[modNum]}
+                />
+                <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+                  {introBlock.content.split("\n\n").map((paragraph: string, idx: number) => (
+                    <p key={idx}>{paragraph}</p>
+                  ))}
+                </div>
+              </section>
+            )}
+            
+            {flipcardsBlock && (
+              <section className="space-y-6">
+                <ModuleSectionHeader
+                  index={1}
+                  title="Conceitos Chave & Termos Técnicos"
+                  description="Fique por dentro das definições cruciais para a sua prova."
+                  variant={mv[modNum]}
+                />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {flipcardsBlock.cards.slice(0, 3).map((card: any, idx: number) => (
+                    <FlipCard
+                      key={idx}
+                      frente={
+                        <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                          <div className="p-4 bg-blue-500/10 rounded-full shadow-inner ring-1 ring-blue-500/20">
+                            <DynamicLucideIcon name={card.icon} className="w-12 h-12 text-blue-500" />
+                          </div>
+                          <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                            {card.front.split(" + ")[1] || card.front}
+                          </span>
+                        </div>
+                      }
+                      verso={
+                        <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                          <div className="flex items-center gap-2 text-blue-500 font-bold border-b border-blue-500/10 pb-3">
+                            <LuIcons.LuCheck className="w-5 h-5 shrink-0" />
+                            <span className="tracking-widest uppercase text-xs">Memorização</span>
+                          </div>
+                          <p className="text-sm leading-relaxed text-muted-foreground">
+                            {card.back}
+                          </p>
+                        </div>
+                      }
+                      categoria="Conceitos"
+                      variant={mv[modNum]}
+                    />
+                  ))}
+                </div>
+                
+                <ModuleSectionHeader
+                  index={2}
+                  title="Análise Prática & Contextualização"
+                  description="Casos reais e aplicação prática dos conceitos do módulo."
+                  variant={mv[modNum]}
+                />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {flipcardsBlock.cards.slice(3, 6).map((card: any, idx: number) => (
+                    <FlipCard
+                      key={idx}
+                      frente={
+                        <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                          <div className="p-4 bg-emerald-500/10 rounded-full shadow-inner ring-1 ring-emerald-500/20">
+                            <DynamicLucideIcon name={card.icon} className="w-12 h-12 text-emerald-500" />
+                          </div>
+                          <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                            {card.front.split(" + ")[1] || card.front}
+                          </span>
+                        </div>
+                      }
+                      verso={
+                        <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                          <div className="flex items-center gap-2 text-emerald-500 font-bold border-b border-emerald-500/10 pb-3">
+                            <LuIcons.LuCheck className="w-5 h-5 shrink-0" />
+                            <span className="tracking-widest uppercase text-xs">Aplicação Prática</span>
+                          </div>
+                          <p className="text-sm leading-relaxed text-muted-foreground">
+                            {card.back}
+                          </p>
+                        </div>
+                      }
+                      categoria="Aplicação"
+                      variant={mv[modNum]}
+                    />
+                  ))}
+                </div>
+              </section>
+            )}
+            
+            {consolidationBlock && (
+              <ModuleConsolidation
+                index={modNum}
+                variant={mv[modNum]}
+                sinteseEstrategica={{
+                  title: "Síntese Estratégica",
+                  content: consolidationBlock.sinteseEstrategica
+                }}
+                resumoVisual={{
+                  moduloNome: `Módulo ${modNum}`,
+                  tituloAula: titulo,
+                  materia: materiaNome,
+                  images: [
+                    {
+                      title: `Mapa Mental - Módulo ${modNum}`,
+                      type: "mapa-mental",
+                      placeholderColor: "bg-blue-600/20 text-blue-600",
+                      imageUrl: `/images/mapa-mental/mapa_\${materiaId}_hidraulica_m\${modNum}.png`
+                    },
+                    {
+                      title: `Esquema - Módulo ${modNum}`,
+                      type: "esquema",
+                      placeholderColor: "bg-indigo-600/20 text-indigo-600",
+                      imageUrl: `/images/mapa-mental/esquema_\${materiaId}_hidraulica_m\${modNum}.png`
+                    },
+                    {
+                      title: `Fluxograma - Módulo ${modNum}`,
+                      type: "fluxograma",
+                      placeholderColor: "bg-emerald-600/20 text-emerald-600",
+                      imageUrl: `/images/mapa-mental/fluxo_\${materiaId}_hidraulica_m\${modNum}.png`
+                    }
+                  ]
+                }}
+                podcast={{
+                  aulaId: "hidraulica",
+                  aulaTitulo: titulo,
+                  materia: materiaNome,
+                  materiaId: materiaId,
+                  moduloNumero: modNum,
+                  moduloTitulo: `Módulo ${modNum} - Podcast`,
+                  conteudoResumo: "Áudio de fixação focando em memorização e dicas quentes para prova."
+                }}
+              />
+            )}
+            
+            <QuizInterativo
+              questoes={quiz}
+              titulo={`QUIZ: Módulo Nº ${modNum}`}
+              numero={modNum}
+              variant={mv[modNum]}
+              onComplete={() => handleModuleComplete(mod.id)}
+            />
+          </TabsContent>
+        );
+      })}
     </AulaTemplate>
   );
 }

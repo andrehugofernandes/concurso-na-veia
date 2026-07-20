@@ -39,6 +39,12 @@ export default function AdminUsuariosPage() {
           .eq("id", user.id)
           .single();
         setCurrentUser(profile);
+        
+        // Se o usuário logado for ADMIN de um Tenant específico, define o filtro padrão para o tenant dele
+        if (profile && profile.role === "admin" && profile.tenant_id) {
+          setSelectedTenantFilter(profile.tenant_id);
+          setActiveTab("govtech");
+        }
       }
 
       // Buscar lista de Tenants
@@ -55,6 +61,10 @@ export default function AdminUsuariosPage() {
   async function fetchUsers() {
     setLoading(true);
     try {
+      // Carregar Tenants novamente para garantir nomes atualizados
+      const { data: currentTenants } = await supabase.from("tenants").select("id, nome");
+      const tenantMap = new Map((currentTenants || []).map(t => [t.id, t.nome]));
+
       let query = supabase
         .from("profiles")
         .select(`
@@ -81,7 +91,7 @@ export default function AdminUsuariosPage() {
       // Buscar nomes dos tenants para enriquecer a tabela
       const enrichedUsers = (profileData || []).map((u: any) => ({
         ...u,
-        tenant_nome: tenants.find(t => t.id === u.tenant_id)?.nome || "Não definido"
+        tenant_nome: tenantMap.get(u.tenant_id) || "Não definido"
       }));
 
       setUsers(enrichedUsers);
@@ -105,38 +115,55 @@ export default function AdminUsuariosPage() {
     }
   }
 
+  async function handleRevokeAccess(userId: string) {
+    if (confirm("Deseja realmente revogar o acesso deste usuário? Ele será alterado para o cargo 'aluno' e desvinculado de qualquer Tenant.")) {
+      const { error } = await supabase
+        .from("profiles")
+        .update({ role: "aluno", tenant_id: null })
+        .eq("id", userId);
+      
+      if (error) {
+        alert("Erro ao revogar acesso: " + error.message);
+      } else {
+        fetchUsers();
+      }
+    }
+  }
+
   return (
     <div className="p-6 md:p-8 space-y-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Gerenciamento de Alunos & Usuários</h1>
-          <p className="text-muted-foreground mt-1">Controle de acessos, Roles (SYSADMIN, ADMIN, ALUNO) e Tenants.</p>
+          <p className="text-muted-foreground mt-1">Controle de acessos, Roles (SYSADMIN, ADMIN, ALUNO) e isolamento de Tenants.</p>
         </div>
       </div>
 
-      {/* Abas Principais de Filtro */}
-      <div className="flex border-b border-border">
-        <button
-          onClick={() => setActiveTab("b2c")}
-          className={`px-4 py-2 font-bold text-sm border-b-2 transition-all ${
-            activeTab === "b2c"
-              ? "border-primary text-primary"
-              : "border-transparent text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          Alunos B2C (Venda Direta)
-        </button>
-        <button
-          onClick={() => setActiveTab("govtech")}
-          className={`px-4 py-2 font-bold text-sm border-b-2 transition-all ${
-            activeTab === "govtech"
-              ? "border-primary text-primary"
-              : "border-transparent text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          GovTech & Corporativos (Tenants)
-        </button>
-      </div>
+      {/* Abas Principais de Filtro (Escondidas se for admin de Tenant, pois só vê GovTech dele) */}
+      {!(currentUser?.role === "admin" && currentUser?.tenant_id) && (
+        <div className="flex border-b border-border">
+          <button
+            onClick={() => setActiveTab("b2c")}
+            className={`px-4 py-2 font-bold text-sm border-b-2 transition-all ${
+              activeTab === "b2c"
+                ? "border-primary text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Alunos B2C (Venda Direta)
+          </button>
+          <button
+            onClick={() => setActiveTab("govtech")}
+            className={`px-4 py-2 font-bold text-sm border-b-2 transition-all ${
+              activeTab === "govtech"
+                ? "border-primary text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            GovTech & Corporativos (Tenants)
+          </button>
+        </div>
+      )}
 
       {/* Filtros específicos de Tenants se for SYSADMIN */}
       {activeTab === "govtech" && currentUser?.role === "sysadmin" && (
@@ -205,7 +232,7 @@ export default function AdminUsuariosPage() {
                   ) : (
                     <td className="p-4 text-muted-foreground">{user.tenant_nome}</td>
                   )}
-                  <td className="p-4 text-right">
+                  <td className="p-4 text-right space-x-2">
                     <select
                       value={user.role}
                       onChange={(e) => handleRoleChange(user.id, e.target.value as any)}
@@ -218,6 +245,13 @@ export default function AdminUsuariosPage() {
                         <option value="sysadmin">Superadministrador (Sysadmin)</option>
                       )}
                     </select>
+
+                    <button
+                      onClick={() => handleRevokeAccess(user.id)}
+                      className="px-2.5 py-1.5 bg-rose-500/10 text-rose-500 hover:bg-rose-500 hover:text-white rounded-lg text-xs font-semibold transition-all"
+                    >
+                      Revogar
+                    </button>
                   </td>
                 </tr>
               ))}

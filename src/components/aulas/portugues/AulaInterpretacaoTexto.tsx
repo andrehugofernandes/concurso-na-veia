@@ -601,8 +601,8 @@ export default function AulaInterpretacaoTexto({
           ]}
         />
 
-        <ModuleConsolidation
-          index={4}
+        <ModuleConsolidation moduloNumero={1}
+          index={1}
           resumoVisual={{
             moduloNome: "Módulo 1",
             tituloAula: "Interpretação de Texto",
@@ -1044,8 +1044,8 @@ export default function AulaInterpretacaoTexto({
           ]}
         />
 
-        <ModuleConsolidation
-          index={5}
+        <ModuleConsolidation moduloNumero={2}
+          index={2}
           resumoVisual={{
             moduloNome: "Módulo 2",
             tituloAula: "Interpretação de Texto",
@@ -1498,7 +1498,7 @@ export default function AulaInterpretacaoTexto({
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={3}
           index={3}
           resumoVisual={{
             moduloNome: "Módulo 3",
@@ -1945,7 +1945,7 @@ export default function AulaInterpretacaoTexto({
           ]}
         />
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={4}
           index={4}
           resumoVisual={{
             moduloNome: "Módulo 4",
@@ -2346,8 +2346,8 @@ export default function AulaInterpretacaoTexto({
           ]}
         />
 
-        <ModuleConsolidation
-          index={3}
+        <ModuleConsolidation moduloNumero={5}
+          index={5}
           resumoVisual={{
             moduloNome: "Módulo 5",
             tituloAula: "Interpretação de Texto",
@@ -2668,8 +2668,8 @@ export default function AulaInterpretacaoTexto({
           ]}
         />
 
-        <ModuleConsolidation
-          index={3}
+        <ModuleConsolidation moduloNumero={6}
+          index={6}
           resumoVisual={{
             moduloNome: "Módulo 6",
             tituloAula: "Interpretação de Texto",
@@ -3032,8 +3032,8 @@ export default function AulaInterpretacaoTexto({
           ]}
         />
 
-        <ModuleConsolidation
-          index={4}
+        <ModuleConsolidation moduloNumero={7}
+          index={7}
           resumoVisual={{
             moduloNome: "Módulo 7",
             tituloAula: "Interpretação de Texto",
@@ -3329,8 +3329,8 @@ export default function AulaInterpretacaoTexto({
           ]}
         />
 
-        <ModuleConsolidation
-          index={3}
+        <ModuleConsolidation moduloNumero={8}
+          index={8}
           resumoVisual={{
             moduloNome: "Módulo 8",
             tituloAula: "Interpretação de Texto",
@@ -3602,8 +3602,8 @@ export default function AulaInterpretacaoTexto({
           ]}
         />
 
-        <ModuleConsolidation
-          index={3}
+        <ModuleConsolidation moduloNumero={9}
+          index={9}
           resumoVisual={{
             moduloNome: "Módulo 9",
             tituloAula: "Interpretação de Texto",
@@ -3930,8 +3930,8 @@ export default function AulaInterpretacaoTexto({
           ]}
         />
 
-        <ModuleConsolidation
-          index={2}
+        <ModuleConsolidation moduloNumero={10}
+          index={10}
           resumoVisual={{
             moduloNome: "Módulo 10",
             tituloAula: "Interpretação de Texto",

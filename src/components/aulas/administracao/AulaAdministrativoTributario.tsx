@@ -227,8 +227,8 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
 
         
 
-<ModuleConsolidation
-          index={3}
+<ModuleConsolidation moduloNumero={1}
+          index={1}
           variant={mv[1]}
           resumoVisual={{
             moduloNome: "Módulo 1",
@@ -409,8 +409,8 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
 
         
 
-<ModuleConsolidation
-          index={3}
+<ModuleConsolidation moduloNumero={2}
+          index={2}
           variant={mv[2]}
           resumoVisual={{ moduloNome: "Módulo 2", tituloAula: "Estrutura Contábil", materia: "Administração", images: [{ title: "T-Account / Razonete", type: "Estrutura", placeholderColor: "bg-blue-500/20" }, { title: "Regras D/C por Conta", type: "Tabela", placeholderColor: "bg-blue-500/20" }] }}
           sinteseEstrategica={{ title: "DEAD CLIC", content: (<div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl space-y-1 text-lg"><p className="font-bold text-blue-600 dark:text-blue-400">D→ Expenses, Assets, Dividends</p><p className="font-bold text-blue-600 dark:text-blue-400">C→ Liabilities, Income, Capital</p></div>) }}
@@ -571,7 +571,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
 
         
 
-<ModuleConsolidation
+<ModuleConsolidation moduloNumero={3}
           index={3}
           variant={mv[3]}
           resumoVisual={{ moduloNome: "Módulo 3", tituloAula: "Tributos: Conceitos e Sistema", materia: "Administração", images: [{ title: "5 Espécies Tributárias", type: "Mapa", placeholderColor: "bg-emerald-500/20" }, { title: "Competência Federal/Estadual/Municipal", type: "Tabela", placeholderColor: "bg-emerald-500/20" }] }}
@@ -741,8 +741,8 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
 
         
 
-<ModuleConsolidation
-          index={3}
+<ModuleConsolidation moduloNumero={4}
+          index={4}
           variant={mv[4]}
           resumoVisual={{ moduloNome: "Módulo 4", tituloAula: "ICMS e IPI", materia: "Administração", images: [{ title: "Cálculo Crédito-Débito ICMS", type: "Exercício", placeholderColor: "bg-rose-500/20" }, { title: "ICMS vs IPI vs ISS", type: "Comparativo", placeholderColor: "bg-rose-500/20" }] }}
           sinteseEstrategica={{ title: "I — C — I: Quem paga o quê?", content: (<div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl space-y-1 text-lg"><p className="font-bold text-rose-600 dark:text-rose-400">ICMS = Estado | IPI = União | ISS = Município</p><p className="text-foreground/70 text-lg">Todos são não-cumulativos (ICMS e IPI). ISS: cumulativo.</p></div>) }}
@@ -832,7 +832,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           ]} />
         </div>
         
-<ModuleConsolidation index={3} variant={mv[5]} resumoVisual={{ moduloNome: "Módulo 5", tituloAula: "IRPJ e CSLL", materia: "Administracao", images: [{ title: "Regimes vs Faturamento", type: "Comparativo", placeholderColor: "bg-teal-500/20" }] }} sinteseEstrategica={{ title: "34% sobre o lucro", content: (<div className="p-4 bg-teal-500/10 border border-teal-500/20 rounded-xl text-lg"><p className="font-bold text-teal-600 dark:text-teal-400">IRPJ 25% + CSLL 9% = 34% sobre o lucro</p><p className="text-lg text-foreground/70">Lucro Real obrigatorio acima R$78M (Petrobras)</p></div>) }} podcast={{
+<ModuleConsolidation moduloNumero={5} index={3} variant={mv[5]} resumoVisual={{ moduloNome: "Módulo 5", tituloAula: "IRPJ e CSLL", materia: "Administracao", images: [{ title: "Regimes vs Faturamento", type: "Comparativo", placeholderColor: "bg-teal-500/20" }] }} sinteseEstrategica={{ title: "34% sobre o lucro", content: (<div className="p-4 bg-teal-500/10 border border-teal-500/20 rounded-xl text-lg"><p className="font-bold text-teal-600 dark:text-teal-400">IRPJ 25% + CSLL 9% = 34% sobre o lucro</p><p className="text-lg text-foreground/70">Lucro Real obrigatorio acima R$78M (Petrobras)</p></div>) }} podcast={{
             aulaId: "administrativotributario",
             aulaTitulo: "Administrativo Tributario",
             materia: "Administração",
@@ -909,7 +909,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           ]} />
         </div>
         
-<ModuleConsolidation index={3} variant={mv[6]} resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "PIS e COFINS", materia: "Administracao", images: [{ title: "Aliquotas Comparadas", type: "Tabela", placeholderColor: "bg-amber-500/20" }] }} sinteseEstrategica={{ title: "0,65/3 vs 1,65/7,6", content: (<div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-lg"><p className="font-bold text-amber-600 dark:text-amber-400">Cumulativo: PIS 0,65% + COFINS 3%</p><p className="font-bold text-amber-600 dark:text-amber-400">Nao-cum: PIS 1,65% + COFINS 7,6%</p></div>) }} podcast={{
+<ModuleConsolidation moduloNumero={6} index={3} variant={mv[6]} resumoVisual={{ moduloNome: "Módulo 6", tituloAula: "PIS e COFINS", materia: "Administracao", images: [{ title: "Aliquotas Comparadas", type: "Tabela", placeholderColor: "bg-amber-500/20" }] }} sinteseEstrategica={{ title: "0,65/3 vs 1,65/7,6", content: (<div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-lg"><p className="font-bold text-amber-600 dark:text-amber-400">Cumulativo: PIS 0,65% + COFINS 3%</p><p className="font-bold text-amber-600 dark:text-amber-400">Nao-cum: PIS 1,65% + COFINS 7,6%</p></div>) }} podcast={{
             aulaId: "administrativotributario",
             aulaTitulo: "Administrativo Tributario",
             materia: "Administração",
@@ -987,7 +987,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           ]} />
         </div>
         
-<ModuleConsolidation index={3} variant={mv[7]} resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "Adm. Tributaria", materia: "Administracao", images: [{ title: "3 Modalidades Lancamento", type: "Tabela", placeholderColor: "bg-blue-500/20" }] }} sinteseEstrategica={{ title: "Decadencia vs Prescricao", content: (<div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-lg"><p className="font-bold text-blue-600 dark:text-blue-400">Decadencia: 5 anos para LANCAR</p><p className="font-bold text-blue-600 dark:text-blue-400">Prescricao: 5 anos para COBRAR</p></div>) }} podcast={{
+<ModuleConsolidation moduloNumero={7} index={3} variant={mv[7]} resumoVisual={{ moduloNome: "Módulo 7", tituloAula: "Adm. Tributaria", materia: "Administracao", images: [{ title: "3 Modalidades Lancamento", type: "Tabela", placeholderColor: "bg-blue-500/20" }] }} sinteseEstrategica={{ title: "Decadencia vs Prescricao", content: (<div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-lg"><p className="font-bold text-blue-600 dark:text-blue-400">Decadencia: 5 anos para LANCAR</p><p className="font-bold text-blue-600 dark:text-blue-400">Prescricao: 5 anos para COBRAR</p></div>) }} podcast={{
             aulaId: "administrativotributario",
             aulaTitulo: "Administrativo Tributario",
             materia: "Administração",
@@ -1064,7 +1064,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           ]} />
         </div>
         
-<ModuleConsolidation index={3} variant={mv[8]} resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Planejamento Tributario", materia: "Administracao", images: [{ title: "Elisao vs Evasao", type: "Comparativo", placeholderColor: "bg-emerald-500/20" }] }} sinteseEstrategica={{ title: "Antes x Depois do FG", content: (<div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-lg"><p className="font-bold text-emerald-600 dark:text-emerald-400">Antes + legal = ELISAO (ok)</p><p className="font-bold text-red-500 dark:text-red-400">Depois + ilegal = EVASAO (crime)</p></div>) }} podcast={{
+<ModuleConsolidation moduloNumero={8} index={3} variant={mv[8]} resumoVisual={{ moduloNome: "Módulo 8", tituloAula: "Planejamento Tributario", materia: "Administracao", images: [{ title: "Elisao vs Evasao", type: "Comparativo", placeholderColor: "bg-emerald-500/20" }] }} sinteseEstrategica={{ title: "Antes x Depois do FG", content: (<div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-lg"><p className="font-bold text-emerald-600 dark:text-emerald-400">Antes + legal = ELISAO (ok)</p><p className="font-bold text-red-500 dark:text-red-400">Depois + ilegal = EVASAO (crime)</p></div>) }} podcast={{
             aulaId: "administrativotributario",
             aulaTitulo: "Administrativo Tributario",
             materia: "Administração",
@@ -1143,7 +1143,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           { icone: <LuScale className="w-6 h-6" />, titulo: "Bonus de Assinatura", descricao: "Pagamento unico a ANP pela concessao ou partilha de producao. Nao e tributo recorrente." },
         ]} titulo="Participacoes Governamentais" />
         
-<ModuleConsolidation index={3} variant={mv[9]} resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Tributos Petrobras", materia: "Administracao", images: [{ title: "Participacoes Governamentais", type: "Estrutura", placeholderColor: "bg-rose-500/20" }] }} sinteseEstrategica={{ title: "Custo Efetivo em Suprimentos", content: (<div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl text-lg"><p className="font-bold text-rose-600 dark:text-rose-400">Custo Efetivo = Preco menos (IPI+ICMS+PIS/COFINS)</p><p className="text-lg text-foreground/70">Pode ser 20-30% menor que o valor nominal.</p></div>) }} podcast={{
+<ModuleConsolidation moduloNumero={9} index={3} variant={mv[9]} resumoVisual={{ moduloNome: "Módulo 9", tituloAula: "Tributos Petrobras", materia: "Administracao", images: [{ title: "Participacoes Governamentais", type: "Estrutura", placeholderColor: "bg-rose-500/20" }] }} sinteseEstrategica={{ title: "Custo Efetivo em Suprimentos", content: (<div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl text-lg"><p className="font-bold text-rose-600 dark:text-rose-400">Custo Efetivo = Preco menos (IPI+ICMS+PIS/COFINS)</p><p className="text-lg text-foreground/70">Pode ser 20-30% menor que o valor nominal.</p></div>) }} podcast={{
             aulaId: "administrativotributario",
             aulaTitulo: "Administrativo Tributario",
             materia: "Administração",
@@ -1198,7 +1198,7 @@ export default function AulaAdministrativoTributario(props: AulaProps) {
           <p className="text-lg">12 questoes no padrao CESGRANRIO. Precisa de 70% para completar a aula. Boa sorte, futuro Tecnico de Suprimento da Petrobras!</p>
         </AlertBox>
         
-<ModuleConsolidation index={2} variant={mv[10]} resumoVisual={{ moduloNome: "Módulo 10", tituloAula: "Simulado Geral", materia: "Administracao", images: [{ title: "Mapa Mental Completo", type: "Sintese", placeholderColor: "bg-teal-500/20" }] }} sinteseEstrategica={{ title: "Resumo Total", content: (<div className="p-4 bg-teal-500/10 border border-teal-500/20 rounded-xl text-lg"><p className="font-bold text-teal-600 dark:text-teal-400">Lucro: IRPJ 25% + CSLL 9% = 34%</p><p className="font-bold text-teal-600 dark:text-teal-400">Receita: PIS 1,65% + COFINS 7,6%</p><p className="text-lg text-foreground/70">ICMS=Estado | IPI=Uniao | ISS=Municipio</p></div>) }} podcast={{
+<ModuleConsolidation moduloNumero={10} index={2} variant={mv[10]} resumoVisual={{ moduloNome: "Módulo 10", tituloAula: "Simulado Geral", materia: "Administracao", images: [{ title: "Mapa Mental Completo", type: "Sintese", placeholderColor: "bg-teal-500/20" }] }} sinteseEstrategica={{ title: "Resumo Total", content: (<div className="p-4 bg-teal-500/10 border border-teal-500/20 rounded-xl text-lg"><p className="font-bold text-teal-600 dark:text-teal-400">Lucro: IRPJ 25% + CSLL 9% = 34%</p><p className="font-bold text-teal-600 dark:text-teal-400">Receita: PIS 1,65% + COFINS 7,6%</p><p className="text-lg text-foreground/70">ICMS=Estado | IPI=Uniao | ISS=Municipio</p></div>) }} podcast={{
             aulaId: "administrativotributario",
             aulaTitulo: "Administrativo Tributario",
             materia: "Administração",

@@ -47,7 +47,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Play, X } from "lucide-react";
+import { Play, X, Target, Lightbulb, AlertTriangle, Zap, CheckCircle2 } from "lucide-react";
 import { jsPDF } from "jspdf";
 import {
   LuPlay,
@@ -897,7 +897,7 @@ export function FlipCard({
         >
           <div
             className={cn(
-              "relative z-10 flex items-center gap-3 mb-5 font-black border-b pb-3 shrink-0 uppercase tracking-tighter text-sm",
+              "relative z-10 flex flex-col items-center justify-center gap-3 mb-5 font-black border-b pb-4 shrink-0 uppercase tracking-tighter text-2xl md:text-3xl text-center",
               variant === "dark"
                 ? "text-white border-white/10"
                 : "text-primary border-primary/20",
@@ -905,11 +905,11 @@ export function FlipCard({
           >
             <div
               className={cn(
-                "p-1.5 rounded",
+                "p-2 rounded-full",
                 variant === "dark" ? "bg-white/10" : "bg-primary/10",
               )}
             >
-              <LuCheck className="text-xl" />
+              <LuCheck className="text-3xl" />
             </div>
             <span>Explicação de Elite</span>
           </div>
@@ -3346,6 +3346,128 @@ export function ModuleSectionHeader({
   );
 }
 
+export function AutoRichSintese({ title, content, variant }: { title: string; content: string; variant?: string }) {
+  // Try to split the content by "." to extract sentences
+  const sentences = content.split(/\.\s+/).filter(s => s.trim().length > 0);
+  
+  if (sentences.length <= 1) {
+    // If it's just one sentence or no clear split, return simple rich wrapper
+    return (
+      <div className="w-full text-center p-8 space-y-6 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl border border-primary/20">
+        <div className="text-6xl mb-4 animate-pulse">🎯</div>
+        <h3 className="text-2xl font-bold text-primary">{title}</h3>
+        <p className="text-lg text-foreground/80 leading-relaxed max-w-3xl mx-auto">{content}</p>
+      </div>
+    );
+  }
+
+  const mainConcept = sentences[0] + ".";
+  const details = sentences.slice(1);
+
+  const icons = [Target, Lightbulb, AlertTriangle, Zap, CheckCircle2];
+
+  return (
+    <div className="w-full space-y-8 p-4 md:p-8 rounded-3xl bg-zinc-50 dark:bg-zinc-900/50 border border-border/50 shadow-sm relative overflow-hidden group">
+      <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-500" />
+      <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-all duration-500" />
+
+      <div className="text-center space-y-4 max-w-4xl mx-auto relative z-10">
+        <div className="inline-flex p-4 rounded-full bg-primary/10 text-primary mb-2 shadow-inner border border-primary/20">
+          <Lightbulb className="w-8 h-8" />
+        </div>
+        <h3 className="text-2xl md:text-3xl font-black text-foreground tracking-tight">{title}</h3>
+        <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+          {mainConcept}
+        </p>
+      </div>
+
+      <div className="mt-8 relative z-10 text-left">
+        {details.length > 2 ? (
+          <Carousel className="w-full">
+            <CarouselContent>
+              {details.map((detail, idx) => {
+                const Icon = icons[idx % icons.length];
+                const isWarning = detail.toLowerCase().includes("pegadinha") || detail.toLowerCase().includes("atenção") || detail.toLowerCase().includes("cuidado") || detail.toLowerCase().includes("erro");
+                const isRule = detail.toLowerCase().includes("sempre") || detail.toLowerCase().includes("lembre-se") || detail.toLowerCase().includes("regra");
+
+                let cardColor = "bg-primary/5 border-primary/20 text-primary";
+                let iconColor = "text-primary";
+                let label = "Insight Estratégico";
+
+                if (isWarning) {
+                  cardColor = "bg-red-500/5 border-red-500/20 text-red-600 dark:text-red-400";
+                  iconColor = "text-red-500";
+                  label = "Ponto Crítico";
+                } else if (isRule) {
+                  cardColor = "bg-green-500/5 border-green-500/20 text-green-600 dark:text-green-400";
+                  iconColor = "text-green-500";
+                  label = "Regra de Ouro";
+                }
+
+                return (
+                  <CarouselItem key={idx} className="md:basis-1/2">
+                    <div className={cn("p-5 rounded-2xl border flex flex-col gap-3 shadow-sm hover:shadow-md transition-shadow h-full", cardColor)}>
+                      <div className="flex items-center gap-3 border-b border-current/10 pb-3">
+                        <Icon className={cn("w-6 h-6", iconColor)} />
+                        <span className="font-bold uppercase tracking-wider text-xs">
+                          {label}
+                        </span>
+                      </div>
+                      <p className="text-sm md:text-base leading-relaxed text-foreground/80 font-medium">
+                        {detail}{detail.endsWith('.') ? '' : '.'}
+                      </p>
+                    </div>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+            <div className="flex justify-center gap-2 mt-4">
+              <CarouselPrevious className="static translate-y-0" />
+              <CarouselNext className="static translate-y-0" />
+            </div>
+          </Carousel>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            {details.map((detail, idx) => {
+              const Icon = icons[idx % icons.length];
+              const isWarning = detail.toLowerCase().includes("pegadinha") || detail.toLowerCase().includes("atenção") || detail.toLowerCase().includes("cuidado") || detail.toLowerCase().includes("erro");
+              const isRule = detail.toLowerCase().includes("sempre") || detail.toLowerCase().includes("lembre-se") || detail.toLowerCase().includes("regra");
+
+              let cardColor = "bg-primary/5 border-primary/20 text-primary";
+              let iconColor = "text-primary";
+              let label = "Insight Estratégico";
+
+              if (isWarning) {
+                cardColor = "bg-red-500/5 border-red-500/20 text-red-600 dark:text-red-400";
+                iconColor = "text-red-500";
+                label = "Ponto Crítico";
+              } else if (isRule) {
+                cardColor = "bg-green-500/5 border-green-500/20 text-green-600 dark:text-green-400";
+                iconColor = "text-green-500";
+                label = "Regra de Ouro";
+              }
+
+              return (
+                <div key={idx} className={cn("p-5 rounded-2xl border flex flex-col gap-3 shadow-sm hover:shadow-md transition-shadow h-full", cardColor)}>
+                  <div className="flex items-center gap-3 border-b border-current/10 pb-3">
+                    <Icon className={cn("w-6 h-6", iconColor)} />
+                    <span className="font-bold uppercase tracking-wider text-xs">
+                      {label}
+                    </span>
+                  </div>
+                  <p className="text-sm md:text-base leading-relaxed text-foreground/80 font-medium">
+                    {detail}{detail.endsWith('.') ? '' : '.'}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 /**
  * COMPONENTE IMPERATIVO DE CONSOLIDAÇÃO (Dossiê Premium)
  * Padroniza as 4 abas obrigatórias antes do Quiz.
@@ -3413,11 +3535,17 @@ export function ModuleConsolidation({
       label: "Síntese Estratégica",
       icon: LuImage,
       content: (sinteseEstrategica || maceteVisual) ? (
-        <div className="text-center p-8 space-y-6">
-          <h3 className="text-xl font-bold text-foreground">
-            {(sinteseEstrategica || maceteVisual)?.title}
-          </h3>
-          {(sinteseEstrategica || maceteVisual)?.content}
+        <div className="w-full">
+          {typeof (sinteseEstrategica || maceteVisual)?.content === "string" ? (
+            <AutoRichSintese title={(sinteseEstrategica || maceteVisual)!.title} content={(sinteseEstrategica || maceteVisual)!.content as string} variant={variant} />
+          ) : (
+            <div className="text-center p-8 space-y-6">
+              <h3 className="text-xl font-bold text-foreground">
+                {(sinteseEstrategica || maceteVisual)?.title}
+              </h3>
+              {(sinteseEstrategica || maceteVisual)?.content}
+            </div>
+          )}
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center p-12 text-center">

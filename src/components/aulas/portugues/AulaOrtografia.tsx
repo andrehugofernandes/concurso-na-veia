@@ -1119,7 +1119,7 @@ Ditongo é junto, hiato é separação!
           />
         </section>
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={1}
           index={1}
           variant={mv[1] || "amber"}
           resumoVisual={{
@@ -1513,7 +1513,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           />
         </section>
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={2}
           index={2}
           variant={mv[2] || "blue"}
           resumoVisual={{
@@ -1571,7 +1571,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           </div>
         </section>
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={3}
           index={3}
           variant={mv[3] || "blue"}
           resumoVisual={{
@@ -1653,7 +1653,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
           </div>
         </section>
 
-        <ModuleConsolidation
+        <ModuleConsolidation moduloNumero={4}
           index={4}
           variant={mv[4] || "indigo"}
           resumoVisual={{
@@ -1715,7 +1715,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
               <strong>Mal:</strong> Oposto de BEM.<br/><strong>Mau:</strong> Oposto de BOM.
            </AlertBox>
         </section>
-        <ModuleConsolidation 
+        <ModuleConsolidation moduloNumero={5} 
           index={5} 
           variant={mv[5]} 
           resumoVisual={{moduloNome:"Opostos", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Tabela", placeholderColor:"bg-rose-100"}]}}
@@ -1764,7 +1764,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
              <div key={i} className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-center font-bold text-amber-600">{p}</div>
            ))}
         </div>
-        <ModuleConsolidation 
+        <ModuleConsolidation moduloNumero={6} 
           index={6} 
           variant={mv[6]} 
           resumoVisual={{moduloNome:"Porquês", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Mapa", placeholderColor:"bg-amber-100"}]}}
@@ -1811,7 +1811,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         <section className="bg-card rounded-3xl border p-8 text-center space-y-4">
            <p className="text-xl font-bold">IGUAIS (-) | DIFERENTES (+)</p>
         </section>
-        <ModuleConsolidation 
+        <ModuleConsolidation moduloNumero={7} 
           index={7} 
           variant={mv[7]} 
           resumoVisual={{moduloNome:"Hífen", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Tabela", placeholderColor:"bg-violet-100"}]}}
@@ -1855,7 +1855,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
 
       <TabsContent value="modulo-8" className="space-y-12 mt-12">
         <ModuleBanner numero={8} titulo="Semântica" descricao="Homônimos e Parônimos." variant={mv[8]} />
-        <ModuleConsolidation 
+        <ModuleConsolidation moduloNumero={8} 
           index={8} 
           variant={mv[8]} 
           resumoVisual={{moduloNome:"Semântica", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Lista", placeholderColor:"bg-emerald-100"}]}}
@@ -1899,7 +1899,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
 
       <TabsContent value="modulo-9" className="space-y-12 mt-12">
         <ModuleBanner numero={9} titulo="Contexto" descricao="A fim de / Afim." variant={mv[9]} />
-        <ModuleConsolidation 
+        <ModuleConsolidation moduloNumero={9} 
           index={9} 
           variant={mv[9]} 
           resumoVisual={{moduloNome:"Contexto", tituloAula:"Ortografia", materia:"Português", images:[{title:"Resumo", type:"Card", placeholderColor:"bg-blue-100"}]}}
@@ -1967,7 +1967,7 @@ R-OU-X-I-N-O-L, deixa o concurseiro preparado!
         />
         <QuizInterativo questoes={qMod10} titulo="SIMULADO FINAL" icone="🏆" numero={10} onComplete={(s) => handleModuleComplete("modulo-10", s)} variant={mv[10]} />
         </section>
-        <ModuleConsolidation 
+        <ModuleConsolidation moduloNumero={10} 
           index={10} 
           variant={mv[10]} 
           resumoVisual={{moduloNome:"Final", tituloAula:"Ortografia", materia:"Português", images:[{title:"Checklist", type:"Card", placeholderColor:"bg-blue-200"}]}}

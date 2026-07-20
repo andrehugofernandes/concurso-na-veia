@@ -222,8 +222,8 @@ export default function AulaBancoDados({
             />
           </section>
 
-          <ModuleConsolidation
-            index={2}
+          <ModuleConsolidation moduloNumero={1}
+            index={1}
             variant={mv[1]}
             resumoVisual={{
                 moduloNome: "Módulo 1",
@@ -664,7 +664,7 @@ export default function AulaBancoDados({
             />
           </section>
 
-          <ModuleConsolidation
+          <ModuleConsolidation moduloNumero={2}
             index={2}
             variant={mv[10]}
             resumoVisual={{

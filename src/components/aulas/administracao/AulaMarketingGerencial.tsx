@@ -1037,7 +1037,7 @@ export default function AulaMarketingGerencial(props: AulaProps) {
                 />
 
                 {/* 
-                <ModuleConsolidation
+                <ModuleConsolidation moduloNumero={1}
                   videoTitle={moduleContent.consolidation.video}
                   audioTitle={moduleContent.consolidation.audio}
                   summary={moduleContent.consolidation.summary}

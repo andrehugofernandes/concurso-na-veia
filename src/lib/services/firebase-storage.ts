@@ -224,16 +224,25 @@ export async function getPodcastFirebaseUrl(
       .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
       .replace(/[^a-z0-9]/g, '-');
     
-    const storagePath = `podcasts/${materiaFolder}/${aulaId}/modulo-${moduloNumero}.wav`;
-    const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_STORAGE_BUCKET}/o/${encodeURIComponent(storagePath)}?alt=media`;
+    // Tenta primeiro com extensão .mp3 (ElevenLabs)
+    const storagePathMp3 = `podcasts/${materiaFolder}/${aulaId}/modulo-${moduloNumero}.mp3`;
+    const publicUrlMp3 = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_STORAGE_BUCKET}/o/${encodeURIComponent(storagePathMp3)}?alt=media`;
 
-    const res = await fetch(publicUrl, { method: 'HEAD' });
-    if (res.ok) {
-      return publicUrl;
+    const resMp3 = await fetch(publicUrlMp3, { method: 'HEAD' });
+    if (resMp3.ok) {
+      return publicUrlMp3;
+    }
+
+    // Se não encontrou, tenta fallback para .wav (Gemini legado)
+    const storagePathWav = `podcasts/${materiaFolder}/${aulaId}/modulo-${moduloNumero}.wav`;
+    const publicUrlWav = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_STORAGE_BUCKET}/o/${encodeURIComponent(storagePathWav)}?alt=media`;
+
+    const resWav = await fetch(publicUrlWav, { method: 'HEAD' });
+    if (resWav.ok) {
+      return publicUrlWav;
     }
   } catch (e) {
     // Não encontrado
   }
   return null;
 }
-

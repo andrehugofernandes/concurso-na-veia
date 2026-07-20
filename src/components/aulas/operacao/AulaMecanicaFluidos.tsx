@@ -358,7 +358,7 @@ export default function AulaMecanicaFluidos({
 
 
 
-<ModuleConsolidation 
+<ModuleConsolidation moduloNumero={1} 
                 index={1}
                 variant="blue"
                 resumoVisual={{
@@ -458,7 +458,7 @@ export default function AulaMecanicaFluidos({
                   </div>
                </div>
 
-               <ModuleConsolidation 
+               <ModuleConsolidation moduloNumero={2} 
                 index={2}
                 variant="cyan"
                 resumoVisual={{

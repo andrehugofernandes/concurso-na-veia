@@ -304,7 +304,7 @@ export default function AulaGestaoAlmoxarifado(props: AulaProps) {
         </div>
       </section>
 
-      <ModuleConsolidation
+      <ModuleConsolidation moduloNumero={1}
         index={1}
         variant={getModuleVariant(1)}
         sinteseEstrategica={{
@@ -466,7 +466,7 @@ export default function AulaGestaoAlmoxarifado(props: AulaProps) {
         </div>
       </section>
 
-      <ModuleConsolidation
+      <ModuleConsolidation moduloNumero={2}
         index={2}
         variant={getModuleVariant(2)}
         sinteseEstrategica={{
