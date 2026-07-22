@@ -14,7 +14,7 @@ export default function ConcursoNaVeiaLogo({
     <Link 
       href="/" 
       className={`flex items-center group hover:opacity-90 transition-opacity ${
-        compact ? "gap-2" : "gap-6 md:gap-3"
+        compact ? "gap-2" : "gap-3 md:gap-3"
       } ${className || ""}`}
     >
       {/* Badge PRETO com Rounded-MD - Estilo Admin Premium */}
@@ -33,6 +33,7 @@ export default function ConcursoNaVeiaLogo({
       </div>
       
       <div className={`flex flex-col justify-center leading-none ${compact ? "ml-0.5" : "ml-1"}`}>
+        {/* Título no tamanho original */}
         <h1 className={`font-bebas font-bold tracking-tight leading-none whitespace-nowrap flex items-baseline ${
           compact ? "text-[19px] md:text-[20px] gap-1" : "text-[30px] md:text-[30px] gap-2"
         }`}>
@@ -47,12 +48,14 @@ export default function ConcursoNaVeiaLogo({
             NA VEIA
           </span>
         </h1>
+        {/* Slogan menor para caber abaixo do título */}
         <span 
-          className={`font-sans font-black uppercase ${(variant === "white" || variant === "home-top") ? "text-white/80" : variant === "hero-tab" ? "text-foreground/80 dark:text-primary-foreground/80" : "text-foreground/80 dark:text-white/80"} mt-0.5 whitespace-nowrap transition-colors duration-300 block text-center leading-none`} 
+          className={`font-sans font-black uppercase ${(variant === "white" || variant === "home-top") ? "text-white/80" : variant === "hero-tab" ? "text-foreground/80 dark:text-primary-foreground/80" : "text-foreground/80 dark:text-white/80"} whitespace-nowrap transition-colors duration-300 block text-center leading-none`} 
           style={{ 
-            fontSize: compact ? '6.8px' : '10.2px', 
-            letterSpacing: compact ? '0.52em' : '0.54em', 
-            marginRight: compact ? '-0.52em' : '-0.54em' 
+            fontSize: compact ? '6.8px' : '8.5px', 
+            letterSpacing: compact ? '0.52em' : '0.62em', 
+            marginRight: compact ? '-0.52em' : '-0.62em',
+            marginTop: '2px',
           }}
         >
           SUA APROVAÇÃO AQUI
