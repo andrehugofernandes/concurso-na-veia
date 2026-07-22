@@ -45,7 +45,7 @@ export function OtpTutorialContent({ mode }: OtpTutorialContentProps) {
             icon: <Search className="w-6 h-6 text-amber-400" />,
             title: "Encontre sua Conta",
             description:
-              'Procure por "Passei No Concurso" na lista de contas do aplicativo.',
+              'Procure por "Concurso Na Veia" na lista de contas do aplicativo.',
           },
           {
             number: "03",

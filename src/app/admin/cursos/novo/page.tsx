@@ -279,7 +279,7 @@ export default function NovoCursoWizard() {
                 <label className="text-sm font-semibold block">Título do Curso</label>
                 <input
                   type="text"
-                  placeholder="Ex: Petrobras Quest - Médio"
+                  placeholder="Ex: Concurso Na Veia - Médio"
                   value={formData.titulo}
                   onChange={(e) => setFormData({ ...formData, titulo: e.target.value })}
                   className="w-full p-2.5 border border-border bg-background rounded-xl text-sm"

@@ -27,7 +27,7 @@ const testimonials = [
   {
     name: "Mariana Costa",
     role: "Técnica de Operação",
-    content: "Eu não tinha muito tempo livre por causa do trabalho. O PASSEI NO CONCURSO me ajudou a focar só no que a Cesgranrio mais cobra. Eficiência pura.",
+    content: "Eu não tinha muito tempo livre por causa do trabalho. O Concurso Na Veia me ajudou a focar só no que a Cesgranrio mais cobra. Eficiência pura.",
     avatar: "M"
   },
   {
@@ -56,7 +56,7 @@ export default function TestimonialsSection() {
           badgeColorClass="border-primary/20 bg-primary/10 text-primary"
           titleText={
             <>
-              Aprovados pelo <span className="text-primary whitespace-nowrap">PASSEI NO CONCURSO.AI</span>
+              Aprovados pelo <span className="text-primary whitespace-nowrap">Concurso Na Veia</span>
             </>
           }
           subtitleText="Junte-se a centenas de estudantes que revolucionaram sua forma de estudar e conquistaram suas vagas em concursos de alto nível."

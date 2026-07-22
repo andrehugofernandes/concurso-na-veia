@@ -137,7 +137,7 @@ export async function POST(request: Request) {
         ],
         sinteseEstrategica: {
           title: `Mentalização Rápida: Módulo ${num}`,
-          content: `Visualização focada das conexões didáticas de ${tema.titulo}. Use o mnemônico oficial do Petrobras Quest para memorizar os pilares!`
+          content: `Visualização focada das conexões didáticas de ${tema.titulo}. Use o mnemônico oficial do Concurso Na Veia para memorizar os pilares!`
         },
         audio: {
           audioUrl: `https://storage.googleapis.com/petrobras-quest/podcasts/modulo-${num}.mp3`,

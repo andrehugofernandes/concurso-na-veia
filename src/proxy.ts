@@ -43,7 +43,7 @@ export async function proxy(request: NextRequest) {
 
     const requestHeaders = new Headers(request.headers);
     requestHeaders.set('x-tenant-slug', tenantSlug);
-    requestHeaders.set('x-tenant-name', tenant?.nome || 'Passei no Concurso');
+    requestHeaders.set('x-tenant-name', tenant?.nome || 'Concurso Na Veia');
     requestHeaders.set('x-tenant-primary', tenant?.primary_color || '#0037C1');
     requestHeaders.set('x-tenant-secondary', tenant?.secondary_color || '#008C32');
 

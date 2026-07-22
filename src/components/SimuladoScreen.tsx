@@ -215,19 +215,44 @@ export default function SimuladoScreen({
 
                 {/* Explanation (when answered) */}
                 {mostrarResultado && (
-                    <div className="bg-primary/5 dark:bg-primary/10 backdrop-blur-xl rounded-[32px] p-8 border-2 border-primary/20 mb-8 animate-in slide-in-from-bottom-4 duration-500">
-                        <h3 className="text-xl font-black text-primary mb-5 flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-2xl bg-primary/20 flex items-center justify-center">
-                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                                </svg>
+                    <div className="bg-primary/5 dark:bg-primary/10 backdrop-blur-xl rounded-[32px] p-8 border-2 border-primary/20 mb-8 animate-in slide-in-from-bottom-4 duration-500 space-y-6">
+                        
+                        {questao.objetivoBanca && (
+                            <div className="bg-white/60 dark:bg-zinc-900/60 rounded-2xl p-6 border border-zinc-200/50 dark:border-white/5">
+                                <h4 className="text-sm font-black uppercase tracking-widest text-primary flex items-center gap-2 mb-2">
+                                    <span className="text-lg">🎯</span> Objetivo da Banca
+                                </h4>
+                                <p className="text-zinc-700 dark:text-zinc-300 font-medium">
+                                    {questao.objetivoBanca}
+                                </p>
                             </div>
-                            Explicação
-                        </h3>
-                        <div
-                            className="text-muted-foreground leading-relaxed text-lg"
-                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questao.explicacao) }}
-                        />
+                        )}
+
+                        {questao.dicaEstrategica && (
+                            <div className="bg-purple-500/5 dark:bg-purple-500/10 rounded-2xl p-6 border border-purple-500/20">
+                                <h4 className="text-sm font-black uppercase tracking-widest text-purple-600 dark:text-purple-400 flex items-center gap-2 mb-2">
+                                    <span className="text-lg">💡</span> O que perceber de cara
+                                </h4>
+                                <p className="text-zinc-700 dark:text-zinc-300 font-medium">
+                                    {questao.dicaEstrategica}
+                                </p>
+                            </div>
+                        )}
+
+                        <div>
+                            <h3 className="text-xl font-black text-primary mb-5 flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-2xl bg-primary/20 flex items-center justify-center">
+                                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                Explicação Detalhada
+                            </h3>
+                            <div
+                                className="text-muted-foreground leading-relaxed text-lg"
+                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questao.explicacao) }}
+                            />
+                        </div>
                     </div>
                 )}
 

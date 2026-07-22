@@ -931,7 +931,7 @@ export function FlipCard({
               variant === "dark" ? "text-white/40" : "text-primary/60",
             )}
           >
-            <span>© Petrobras Quest System</span>
+            <span>© Concurso Na Veia System</span>
             <span>Ref: 2026-B.P.O</span>
           </div>
         </div>
@@ -2136,7 +2136,7 @@ export function ModuleSummaryCarouselNew({
       pdf.setFontSize(22);
       pdf.setTextColor(15, 23, 42);
       pdf.setFont("helvetica", "bold");
-      pdf.text("PASSEI NO CONCURSO", margin, 18);
+      pdf.text("Concurso Na Veia", margin, 18);
 
       pdf.setFontSize(10);
       pdf.setFont("helvetica", "normal");

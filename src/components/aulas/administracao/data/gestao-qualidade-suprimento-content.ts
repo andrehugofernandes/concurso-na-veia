@@ -106,7 +106,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
         "titulo": "Podcast Gestão de Qualidade - Módulo 1",
-        "artista": "Prof. Petrobras Quest"
+        "artista": "Prof. Concurso Na Veia"
     }
 },
   2: {
@@ -178,7 +178,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
         "titulo": "Podcast Gestão de Qualidade - Módulo 2",
-        "artista": "Prof. Petrobras Quest"
+        "artista": "Prof. Concurso Na Veia"
     }
 },
   3: {
@@ -250,7 +250,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
         "titulo": "Podcast Gestão de Qualidade - Módulo 3",
-        "artista": "Prof. Petrobras Quest"
+        "artista": "Prof. Concurso Na Veia"
     }
 },
   4: {
@@ -322,7 +322,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
         "titulo": "Podcast Gestão de Qualidade - Módulo 4",
-        "artista": "Prof. Petrobras Quest"
+        "artista": "Prof. Concurso Na Veia"
     }
 },
   5: {
@@ -394,7 +394,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
         "titulo": "Podcast Gestão de Qualidade - Módulo 5",
-        "artista": "Prof. Petrobras Quest"
+        "artista": "Prof. Concurso Na Veia"
     }
 },
   6: {
@@ -466,7 +466,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
         "titulo": "Podcast Gestão de Qualidade - Módulo 6",
-        "artista": "Prof. Petrobras Quest"
+        "artista": "Prof. Concurso Na Veia"
     }
 },
   7: {
@@ -538,7 +538,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
         "titulo": "Podcast Gestão de Qualidade - Módulo 7",
-        "artista": "Prof. Petrobras Quest"
+        "artista": "Prof. Concurso Na Veia"
     }
 },
   8: {
@@ -610,7 +610,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
         "titulo": "Podcast Gestão de Qualidade - Módulo 8",
-        "artista": "Prof. Petrobras Quest"
+        "artista": "Prof. Concurso Na Veia"
     }
 },
   9: {
@@ -682,7 +682,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
         "titulo": "Podcast Gestão de Qualidade - Módulo 9",
-        "artista": "Prof. Petrobras Quest"
+        "artista": "Prof. Concurso Na Veia"
     }
 },
   10: {
@@ -754,7 +754,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
         "titulo": "Podcast Gestão de Qualidade - Módulo 10",
-        "artista": "Prof. Petrobras Quest"
+        "artista": "Prof. Concurso Na Veia"
     }
 },
 };

@@ -2190,7 +2190,7 @@ export default function AulaGestaoProcessos({
           </section>
 
           <footer className="pt-10 border-t border-slate-200 opacity-50 text-center pb-20">
-            <p className="text-lg text-slate-400 italic">© 2026 Petrobras Quest AI - Conteúdo Premium Estilo CESGRANRIO</p>
+            <p className="text-lg text-slate-400 italic">© 2026 Concurso Na Veia AI - Conteúdo Premium Estilo CESGRANRIO</p>
           </footer>
         </div>
       </TabsContent>

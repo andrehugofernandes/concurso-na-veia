@@ -21,7 +21,7 @@ import {
   LuTriangleAlert,
   LuList
 } from 'react-icons/lu';
-import PetrobrasLogo from '../PetrobrasLogo';
+import ConcursoNaVeiaLogo from '../ConcursoNaVeiaLogo';
 import ScrollAnimatedHeader from './ScrollAnimatedHeader';
 import AnimatedElement from '../ui/AnimatedElement';
 
@@ -99,7 +99,7 @@ export default function DemoSection() {
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: 'var(--primary-gradient)' }}
               >
-                PASSEI NO CONCURSO.AI
+                Concurso Na Veia
               </span>{' '}
               em ação
             </>
@@ -148,7 +148,7 @@ export default function DemoSection() {
                   <div>
                     {/* Logo Container */}
                     <div className="mb-8 scale-[0.5] origin-left">
-                      <PetrobrasLogo />
+                      <ConcursoNaVeiaLogo />
                     </div>
 
                     {/* Navigation Links */}

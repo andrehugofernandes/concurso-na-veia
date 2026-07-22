@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { FaInstagram, FaXTwitter, FaTiktok, FaYoutube } from 'react-icons/fa6';
-import PetrobrasLogo from '../PetrobrasLogo';
+import ConcursoNaVeiaLogo from '../ConcursoNaVeiaLogo';
 import AnimatedElement from '../ui/AnimatedElement';
 
 export default function HomeFooter() {
@@ -12,7 +12,7 @@ export default function HomeFooter() {
           {/* Brand & Info */}
           <AnimatedElement delay={0.1} className="col-span-2 lg:col-span-2">
             <div className="mb-6 inline-block dark">
-              <PetrobrasLogo variant="default" />
+              <ConcursoNaVeiaLogo variant="default" />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-8">
               A plataforma definitiva de estudos impulsionada por Inteligência Artificial. Revolucionamos a forma como você se prepara para os maiores concursos do Brasil com metodologia ativa e simulados infinitos.
@@ -72,7 +72,7 @@ export default function HomeFooter() {
         {/* Bottom Bar */}
         <AnimatedElement delay={0.5} className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} PASSEI NO CONCURSO.AI. Todos os direitos reservados.
+            © {new Date().getFullYear()} Concurso Na Veia. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-2 text-slate-500 text-sm">
             Feito com <span className="text-red-500">❤️</span> e Inteligência Artificial.

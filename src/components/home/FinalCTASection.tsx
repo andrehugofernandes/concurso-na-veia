@@ -48,7 +48,7 @@ export default function FinalCTASection() {
               </span>
             </>
           }
-          subtitleText="PASSEI NO CONCURSO tem soluções para todas as suas necessidades de aprendizagem, seja conformidade, integração ou desenvolvimento de competências."
+          subtitleText="Concurso Na Veia tem soluções para todas as suas necessidades de aprendizagem, seja conformidade, integração ou desenvolvimento de competências."
           titleClassName="text-white text-4xl md:text-6xl"
           subtitleClassName="text-slate-400"
           className="mb-16"

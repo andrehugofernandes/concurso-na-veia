@@ -5,8 +5,8 @@ import { AdminDashboardLayout } from '@/components/layouts/admin-dashboard-layou
 export const revalidate = 0;
 
 export const metadata: Metadata = {
-  title: 'Dashboard - Passei no Concurso',
-  description: 'Gerenciamento do Passei no Concurso',
+  title: 'Dashboard - Concurso Na Veia',
+  description: 'Gerenciamento do Concurso Na Veia',
 };
 
 import { UserProvider } from '@/contexts/UserContext';

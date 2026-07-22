@@ -20,7 +20,7 @@ export async function GET() {
       if (!price) {
         // Cria produto
         const product = await stripe.products.create({
-          name: `Passei No Concurso - ${config.nome}`,
+          name: `Concurso Na Veia - ${config.nome}`,
           description: config.descricao,
           metadata: { app_plan: planKey },
         });

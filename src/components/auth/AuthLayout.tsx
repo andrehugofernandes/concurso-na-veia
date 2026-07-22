@@ -5,7 +5,7 @@ import { HeroSlideshow } from "./HeroSlideshow";
 import { OtpHelpModal } from "./OtpHelpModal";
 import { DynamicIsland } from "@/components/ui/dynamic-island";
 import { Menu } from "lucide-react";
-import PetrobrasLogo from "@/components/PetrobrasLogo";
+import ConcursoNaVeiaLogo from "@/components/ConcursoNaVeiaLogo";
 
 interface AuthLayoutProps {
   children: ReactNode;
@@ -45,7 +45,7 @@ export default function AuthLayout({
         }}
       >
         <div className="flex items-center gap-3">
-          <PetrobrasLogo compact />
+          <ConcursoNaVeiaLogo compact />
         </div>
 
         <div className="flex items-center gap-2 md:gap-4">

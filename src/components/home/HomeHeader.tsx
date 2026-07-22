@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import PetrobrasLogo from '../PetrobrasLogo';
+import ConcursoNaVeiaLogo from '../ConcursoNaVeiaLogo';
 import { LuLayoutGrid, LuX, LuArrowRight } from 'react-icons/lu';
 import { AuthThemeToggle } from '../auth/AuthThemeToggle';
 
@@ -52,7 +52,7 @@ export default function HomeHeader() {
         className={`hidden md:flex absolute -top-[1px] left-1/2 -translate-x-1/2 ${bgColor} rounded-b-[28px] px-12 items-center justify-center gap-3 z-[60] min-w-[300px]`}
         style={{ height: '90px' }}
       >
-        <PetrobrasLogo variant="hero-tab" />
+        <ConcursoNaVeiaLogo variant="hero-tab" />
       </div>
  
       {/* Right Actions (Floating in dark area) - Alinhado verticalmente com o cabeçalho de 90px */}

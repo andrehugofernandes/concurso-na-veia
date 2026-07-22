@@ -4,8 +4,8 @@ import HomeHeader from '@/components/home/HomeHeader';
 import HomeFooter from '@/components/home/HomeFooter';
 
 export const metadata = {
-  title: 'Termos de Uso - Passei no Concurso',
-  description: 'Termos e Condições de Uso da plataforma Passei no Concurso.',
+  title: 'Termos de Uso - Concurso Na Veia',
+  description: 'Termos e Condições de Uso da plataforma Concurso Na Veia.',
 };
 
 export default function TermosDeUsoPage() {
@@ -27,16 +27,16 @@ export default function TermosDeUsoPage() {
             <section>
               <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">1. Aceitação dos Termos</h2>
               <p>
-                Ao acessar e utilizar a plataforma <strong>Passei no Concurso</strong>, você concorda expressamente com estes Termos de Uso. 
+                Ao acessar e utilizar a plataforma <strong>Concurso Na Veia</strong>, você concorda expressamente com estes Termos de Uso. 
                 Se você não concordar com qualquer parte destes termos, não deverá utilizar nossos serviços. 
-                Estes termos formam um contrato legalmente vinculante entre você (o "Usuário") e o Passei no Concurso.
+                Estes termos formam um contrato legalmente vinculante entre você (o "Usuário") e o Concurso Na Veia.
               </p>
             </section>
 
             <section>
               <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">2. Uso Pessoal e Intransferível (Proibição de Rateio)</h2>
               <p>
-                A sua conta no Passei no Concurso é de uso estritamente <strong>pessoal, individual e intransferível</strong>. 
+                A sua conta no Concurso Na Veia é de uso estritamente <strong>pessoal, individual e intransferível</strong>. 
                 É terminantemente proibido o compartilhamento de dados de acesso (login e senha), revenda de contas, ou a prática conhecida como "rateio".
               </p>
               <ul className="list-disc pl-5 mt-2 space-y-2">
@@ -61,12 +61,12 @@ export default function TermosDeUsoPage() {
             <section>
               <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">4. Inteligência Artificial e Simulados (Isenção de Responsabilidade)</h2>
               <p>
-                O Passei no Concurso utiliza tecnologias de Inteligência Artificial para gerar simulados e análises preditivas com foco em bancas específicas (CESGRANRIO, Cebraspe, FGV, etc).
+                O Concurso Na Veia utiliza tecnologias de Inteligência Artificial para gerar simulados e análises preditivas com foco em bancas específicas (CESGRANRIO, Cebraspe, FGV, etc).
               </p>
               <ul className="list-disc pl-5 mt-2 space-y-2">
                 <li>Nossas ferramentas analisam padrões passados para criar <strong>probabilidades</strong>, e não certezas.</li>
                 <li>Nós <strong>não garantimos</strong> que as questões geradas em nossos simulados cairão idênticas na prova real.</li>
-                <li>O Passei no Concurso não possui nenhum vínculo com as bancas examinadoras e não possui acesso a exames não publicados.</li>
+                <li>O Concurso Na Veia não possui nenhum vínculo com as bancas examinadoras e não possui acesso a exames não publicados.</li>
                 <li>O Usuário reconhece que a aprovação no concurso público depende exclusivamente do seu próprio esforço, estudo e dedicação. A plataforma é uma ferramenta de auxílio, não garantindo a aprovação.</li>
               </ul>
             </section>
@@ -74,7 +74,7 @@ export default function TermosDeUsoPage() {
             <section>
               <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">5. Propriedade Intelectual</h2>
               <p>
-                Todos os direitos relativos à plataforma e suas funcionalidades (código-fonte, design, logotipos, algoritmos, modelos de Inteligência Artificial e banco de questões) são de propriedade exclusiva do Passei no Concurso ou licenciados a nós.
+                Todos os direitos relativos à plataforma e suas funcionalidades (código-fonte, design, logotipos, algoritmos, modelos de Inteligência Artificial e banco de questões) são de propriedade exclusiva do Concurso Na Veia ou licenciados a nós.
               </p>
               <p>
                 É proibida a reprodução, cópia, extração (scraping) ou engenharia reversa de qualquer parte da plataforma, sob pena de responsabilização civil e criminal.
@@ -97,7 +97,7 @@ export default function TermosDeUsoPage() {
             <section>
               <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">7. Atualizações dos Termos</h2>
               <p>
-                O Passei no Concurso poderá alterar estes Termos de Uso a qualquer momento. A continuação do uso da plataforma após as alterações será considerada como aceitação tácita dos novos termos.
+                O Concurso Na Veia poderá alterar estes Termos de Uso a qualquer momento. A continuação do uso da plataforma após as alterações será considerada como aceitação tácita dos novos termos.
               </p>
             </section>
           </div>

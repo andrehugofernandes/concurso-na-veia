@@ -1929,7 +1929,7 @@ export default function AulaSintaxe({
         <ModuleBanner
           numero={10}
           titulo="Simulado de Consolidação Final"
-          descricao="O grande teste. Questões de alto nível filtradas pela Petrobras Quest para garantir sua aprovação."
+          descricao="O grande teste. Questões de alto nível filtradas pela Concurso Na Veia para garantir sua aprovação."
           variant={mv[2] as any} /* Usando variante 2 para destaque */
         />
 

@@ -288,8 +288,8 @@ export async function enrollMFAAction(friendlyName?: string): Promise<ActionResp
 
     const { data, error } = await supabase.auth.mfa.enroll({
       factorType: 'totp',
-      issuer: 'Passei no Concurso',
-      friendlyName: `Passei no Concurso (${Date.now()})`,
+      issuer: 'Concurso Na Veia',
+      friendlyName: `Concurso Na Veia (${Date.now()})`,
     });
 
     if (error) return createErrorResponse(error.message);

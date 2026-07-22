@@ -198,7 +198,7 @@ export default function ResultsSection() {
           </AnimatedElement>
           
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tight leading-[1.08] mb-8 drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]">
-            PASSEI NO CONCURSO.AI gera <br className="hidden md:inline" />
+            Concurso Na Veia gera <br className="hidden md:inline" />
             <span 
               className="bg-clip-text text-transparent font-extrabold"
               style={{ backgroundImage: 'var(--primary-gradient)' }}

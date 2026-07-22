@@ -34,7 +34,7 @@ import {
 import { cn } from "@/lib/utils";
 
 import { useUser } from "@/contexts/UserContext";
-import PetrobrasLogo from "@/components/PetrobrasLogo";
+import ConcursoNaVeiaLogo from "@/components/ConcursoNaVeiaLogo";
 
 interface AdminSidebarProps {
   isCollapsed: boolean;
@@ -294,7 +294,7 @@ export function AdminSidebar({
               />
             </div>
           ) : (
-            <PetrobrasLogo compact />
+            <ConcursoNaVeiaLogo compact />
           )}
         </div>
 

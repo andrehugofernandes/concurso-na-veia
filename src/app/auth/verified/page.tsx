@@ -33,7 +33,7 @@ export default function VerifiedPage({
                     </CardHeader>
                     <CardContent>
                         <div className="text-center text-sm text-muted-foreground">
-                            Obrigado por se juntar ao Petrobras Quest AI.
+                            Obrigado por se juntar ao Concurso Na Veia AI.
                         </div>
                     </CardContent>
                     <CardFooter>

@@ -19,7 +19,7 @@ interface AuthLayoutProps {
 }
 
 export function AuthLayout({
-  title = 'Passei no Concurso Dashboard',
+  title = 'Concurso Na Veia Dashboard',
   subtitle = 'Autenticação Segura',
   imageSrc = '/images/login-bg.png',
   imageAlt = 'Login Background',

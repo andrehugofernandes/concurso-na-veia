@@ -9,8 +9,8 @@ import type { Metadata } from 'next';
 export const revalidate = 0;
 
 export const metadata: Metadata = {
-  title: 'Admin SaaS - Passei no Concurso',
-  description: 'Gerenciamento do SaaS Passei no Concurso',
+  title: 'Admin SaaS - Concurso Na Veia',
+  description: 'Gerenciamento do SaaS Concurso Na Veia',
 };
 
 export default async function SaaSAdminLayout({

@@ -105,7 +105,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
       "titulo": "Podcast Módulo 1 - Planejamento Organizacional",
-      "artista": "Petrobras Quest"
+      "artista": "Concurso Na Veia"
     }
   },
   2: {
@@ -177,7 +177,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
       "titulo": "Podcast Módulo 2 - Estrutura e Organização",
-      "artista": "Petrobras Quest"
+      "artista": "Concurso Na Veia"
     }
   },
   3: {
@@ -249,7 +249,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
       "titulo": "Podcast Módulo 3 - Direção e Liderança",
-      "artista": "Petrobras Quest"
+      "artista": "Concurso Na Veia"
     }
   },
   4: {
@@ -321,7 +321,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
       "titulo": "Podcast Módulo 4 - Controle e KPIs",
-      "artista": "Petrobras Quest"
+      "artista": "Concurso Na Veia"
     }
   },
   5: {
@@ -393,7 +393,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
       "titulo": "Podcast Módulo 5 - Administração da Qualidade",
-      "artista": "Petrobras Quest"
+      "artista": "Concurso Na Veia"
     }
   },
   6: {
@@ -465,7 +465,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
       "titulo": "Podcast Módulo 6 - Ferramentas da Qualidade",
-      "artista": "Petrobras Quest"
+      "artista": "Concurso Na Veia"
     }
   },
   7: {
@@ -537,7 +537,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
       "titulo": "Podcast Módulo 7 - Gestão por Processos",
-      "artista": "Petrobras Quest"
+      "artista": "Concurso Na Veia"
     }
   },
   8: {
@@ -609,7 +609,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
       "titulo": "Podcast Módulo 8 - Ciclo de Vida de Processos",
-      "artista": "Petrobras Quest"
+      "artista": "Concurso Na Veia"
     }
   },
   9: {
@@ -681,7 +681,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
       "titulo": "Podcast Módulo 9 - Atendimento ao Cliente",
-      "artista": "Petrobras Quest"
+      "artista": "Concurso Na Veia"
     }
   },
   10: {
@@ -753,7 +753,7 @@ export const MODULE_CONTENTS: Record<number, ModuleData> = {
     },
     "audio": {
       "titulo": "Podcast Módulo 10 - Ouvidoria e Feedback",
-      "artista": "Petrobras Quest"
+      "artista": "Concurso Na Veia"
     }
   }
 };

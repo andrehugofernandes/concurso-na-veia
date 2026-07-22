@@ -16,7 +16,7 @@ export function UIProvider({ children }: { children: ReactNode }) {
         setPageTitleState(title);
         // Opcional: Atualizar o document.title também
         if (typeof document !== 'undefined' && title) {
-            document.title = `${title} - Passei no Concurso`;
+            document.title = `${title} - Concurso Na Veia`;
         }
     }, []);
 

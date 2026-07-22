@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-export default function PetrobrasLogo({ 
+export default function ConcursoNaVeiaLogo({ 
   className, 
   variant,
   compact 
@@ -26,7 +26,7 @@ export default function PetrobrasLogo({
         />
         <img
           src="/logo-icone.png"
-          alt="Petrobras Quest Logo"
+          alt="Concurso Na Veia Logo"
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] w-[260%] h-[260%] max-w-none object-contain z-10 transition-all duration-300 group-hover:scale-110"
           style={{ filter: `drop-shadow(0 15px 25px hsl(var(--primary)))` }}
         />
@@ -39,12 +39,12 @@ export default function PetrobrasLogo({
           <span 
             className={`${(variant === "white" || variant === "home-top") ? "text-white" : variant === "hero-tab" ? "text-foreground dark:text-primary-foreground" : "text-foreground dark:text-white"} transition-colors duration-300`}
           >
-            PASSEI
+            CONCURSO
           </span>
           <span 
             className={`transition-colors duration-300 text-primary ${variant === "hero-tab" ? "dark:text-primary-foreground" : ""}`}
           >
-            NO CONCURSO.AI
+            NA VEIA
           </span>
         </h1>
         <span 

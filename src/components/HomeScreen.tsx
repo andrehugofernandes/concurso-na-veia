@@ -45,7 +45,7 @@ export default function HomeScreen({ usuario, setUsuario, iniciarSimulado, geran
     return (
       <div className="min-h-screen gradient-bg flex items-center justify-center p-4">
         <div className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full">
-          <h1 className="text-3xl font-bold text-center mb-6">🤖 Petrobras Quest AI</h1>
+          <h1 className="text-3xl font-bold text-center mb-6">🤖 Concurso Na Veia AI</h1>
           <p className="text-gray-600 text-center mb-6">Digite seu nome para começar:</p>
           <input
             type="text"
@@ -134,7 +134,7 @@ export default function HomeScreen({ usuario, setUsuario, iniciarSimulado, geran
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-800">Petrobras Quest AI</h1>
+              <h1 className="text-3xl font-bold text-gray-800">Concurso Na Veia AI</h1>
               <div className="flex items-center gap-2 mt-1">
                 <span className="bg-purple-100 text-purple-700 px-3 py-0.5 rounded-full text-sm font-medium">
                   {cargoSelecionado?.nome}

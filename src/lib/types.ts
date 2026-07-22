@@ -36,6 +36,8 @@ export interface Questao {
   banca: string;
   geradaPorIA?: boolean;
   provider?: string;
+  objetivoBanca?: string;
+  dicaEstrategica?: string;
 }
 
 export interface QuizQuestion {

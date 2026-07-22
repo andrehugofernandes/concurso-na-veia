@@ -26,7 +26,7 @@ const orbitron = Orbitron({
 });
 
 export const metadata: Metadata = {
-  title: "Passei No Concurso - Sua Aprovação Aqui",
+  title: "Concurso Na Veia - Sua Aprovação Aqui",
   description:
     "Sistema avançado de estudos com IA para concursos públicos. A aprovação é sua no passeinoconcurso.ai.",
   keywords:

@@ -56,8 +56,8 @@ export default function Setup2FAPage() {
             const userEmail = user?.email || "usuario";
             
             // Alterar o path (label) e o parâmetro issuer
-            urlObj.pathname = `Passei no Concurso:${userEmail}`;
-            urlObj.searchParams.set("issuer", "Passei no Concurso");
+            urlObj.pathname = `Concurso Na Veia:${userEmail}`;
+            urlObj.searchParams.set("issuer", "Concurso Na Veia");
             uri = urlObj.toString();
           } catch (e) {
             console.warn("Falha ao personalizar URI do MFA:", e);

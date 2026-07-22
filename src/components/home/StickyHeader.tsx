@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { AuthThemeToggle } from "../auth/AuthThemeToggle";
-import PetrobrasLogo from "../PetrobrasLogo";
+import ConcursoNaVeiaLogo from "../ConcursoNaVeiaLogo";
 import { LuLayoutGrid, LuX, LuArrowRight } from "react-icons/lu";
 
 const NAV_LINKS = [
@@ -124,7 +124,7 @@ export default function StickyHeader({ alwaysVisible = false }: StickyHeaderProp
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1, duration: 0.3 }}
             >
-              <PetrobrasLogo variant="default" />
+              <ConcursoNaVeiaLogo variant="default" />
             </motion.div>
           </div>
 
