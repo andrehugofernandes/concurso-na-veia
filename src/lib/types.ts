@@ -70,6 +70,7 @@ export interface Ticket {
   assunto: string;
   categoria: string;
   mensagem: string;
+  attachment_urls?: string[];
   status: 'ABERTO' | 'EM_ANDAMENTO' | 'RESOLVIDO';
   created_at: string;
 }
@@ -78,6 +79,7 @@ export interface CreateTicketInput {
   assunto: string;
   categoria: string;
   mensagem: string;
+  attachment_urls?: string[];
 }
 
 export interface StudentProfile {

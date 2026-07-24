@@ -88,19 +88,63 @@ export async function getNotificationsAction(limit: number = 20): Promise<Action
     }
 
     const userId = userRes.data.user.id;
+    const { createClient } = await import('@/lib/supabase/server');
+    const supabase = await createClient();
 
-    let notifications: any[] = [];
-    try {
-        notifications = await (db as any).notification.findMany({
-            where: { userId },
-            orderBy: { createdAt: 'desc' },
-            take: limit
-        });
-    } catch (e) {
-        console.warn('Prisma: Model notification missing');
+    const { data: notifications, error } = await supabase
+      .from('notifications')
+      .select('*')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false })
+      .limit(limit);
+
+    let finalNotifications = notifications || [];
+
+    // Fallback inteligente: se a tabela de notificações estiver vazia ou não criada, gerar via tickets do usuário
+    if (!error && finalNotifications.length === 0) {
+      const { data: userTickets } = await supabase
+        .from('tickets')
+        .select('*')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false })
+        .limit(limit);
+
+      if (userTickets && userTickets.length > 0) {
+        finalNotifications = userTickets.map((ticket: any) => ({
+          id: ticket.id,
+          user_id: ticket.user_id,
+          title: `Chamado: ${ticket.assunto || ticket.subject || 'Novo Suporte'}`,
+          message: ticket.mensagem || 'Chamado registrado no suporte.',
+          type: 'ticket',
+          is_read: false,
+          created_at: ticket.created_at,
+          action_url: '/tickets'
+        }));
+      }
+    } else if (error) {
+      // Caso a tabela notifications retorne erro no Supabase, buscar tickets como fallback principal
+      const { data: userTickets } = await supabase
+        .from('tickets')
+        .select('*')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false })
+        .limit(limit);
+
+      if (userTickets && userTickets.length > 0) {
+        finalNotifications = userTickets.map((ticket: any) => ({
+          id: ticket.id,
+          user_id: ticket.user_id,
+          title: `Chamado: ${ticket.assunto || ticket.subject || 'Novo Suporte'}`,
+          message: ticket.mensagem || 'Chamado registrado no suporte.',
+          type: 'ticket',
+          is_read: false,
+          created_at: ticket.created_at,
+          action_url: '/tickets'
+        }));
+      }
     }
 
-    return createSuccessResponse({ notifications });
+    return createSuccessResponse({ notifications: finalNotifications });
   } catch (error: any) {
     return createErrorResponse(error.message || 'Erro ao carregar notificações');
   }
@@ -112,16 +156,15 @@ export async function getNotificationsAction(limit: number = 20): Promise<Action
 export async function markNotificationAsReadAction(notificationId: string): Promise<ActionResponse<any>> {
   try {
     const userRes = await getCurrentUserAction();
-    if (userRes.status === 'error' ) return createErrorResponse('Não autorizado');
+    if (userRes.status === 'error') return createErrorResponse('Não autorizado');
 
-    try {
-        await (db as any).notification.update({
-            where: { id: notificationId },
-            data: { isRead: true, readAt: new Date() }
-        });
-    } catch (e) {
-        console.warn('Prisma: Error updating notification');
-    }
+    const { createClient } = await import('@/lib/supabase/server');
+    const supabase = await createClient();
+
+    await supabase
+      .from('notifications')
+      .update({ is_read: true, read_at: new Date().toISOString() })
+      .eq('id', notificationId);
 
     return createSuccessResponse({ success: true });
   } catch (error: any) {
@@ -129,9 +172,6 @@ export async function markNotificationAsReadAction(notificationId: string): Prom
   }
 }
 
-/**
- * Marca todas as notificações como lidas.
- */
 export async function markAllNotificationsAsReadAction(): Promise<ActionResponse<any>> {
   try {
     const userRes = await getCurrentUserAction();
@@ -140,15 +180,14 @@ export async function markAllNotificationsAsReadAction(): Promise<ActionResponse
     }
 
     const userId = userRes.data.user.id;
+    const { createClient } = await import('@/lib/supabase/server');
+    const supabase = await createClient();
 
-    try {
-        await (db as any).notification.updateMany({
-            where: { userId, isRead: false },
-            data: { isRead: true, readAt: new Date() }
-        });
-    } catch (e) {
-        console.warn('Prisma: Error updating many notifications');
-    }
+    await supabase
+      .from('notifications')
+      .update({ is_read: true, read_at: new Date().toISOString() })
+      .eq('user_id', userId)
+      .eq('is_read', false);
 
     return createSuccessResponse({ success: true });
   } catch (error: any) {

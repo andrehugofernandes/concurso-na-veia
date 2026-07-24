@@ -38,6 +38,7 @@ import { createClient } from "@/lib/supabase/client";
 import { useUserProfile } from "@/hooks/useUserProfile";
 import { useUI } from "@/contexts/UIContext";
 import { useHeaderState } from "@/contexts/HeaderStateContext";
+import { getNotificationsAction, markAllNotificationsAsReadAction } from "@/lib/actions/notifications";
 import { CONTEUDO_MATERIAS } from "@/data/conteudo";
 import { Activity } from "@/components/aulas/shared";
 import { cn } from "@/lib/utils";
@@ -243,13 +244,42 @@ export function AdminHeader({
 
   const { profile } = useUserProfile();
   const { pageTitle } = useUI();
-  const { notificationCount } = useNotificationCount();
+  const { notificationCount, setNotificationCount } = useNotificationCount();
 
-  // Use profile data from context
   const displayName = profile?.full_name || "Usuário";
   const username = profile?.username || "";
   const avatarUrl = profile?.avatar_url || null;
   const avatarInitials = getUserInitials(displayName);
+
+  const [notificationsList, setNotificationsList] = useState<any[]>([]);
+  const [unreadCount, setUnreadCount] = useState(0);
+
+  const loadNotifications = async () => {
+    try {
+      const res = await getNotificationsAction(10);
+      if (res.status === 'success' && res.data?.notifications) {
+        setNotificationsList(res.data.notifications);
+        const unread = res.data.notifications.filter((n: any) => !n.is_read).length;
+        setUnreadCount(unread);
+        setNotificationCount(unread);
+      }
+    } catch (e) {
+      console.warn("Erro ao buscar notificações:", e);
+    }
+  };
+
+  useEffect(() => {
+    if (mounted) {
+      loadNotifications();
+      const interval = setInterval(loadNotifications, 30000);
+      return () => clearInterval(interval);
+    }
+  }, [mounted]);
+
+  const handleMarkAllRead = async () => {
+    await markAllNotificationsAsReadAction();
+    loadNotifications();
+  };
 
   // Função para processar o título do dashboard
   const getDisplayTitle = () => {
@@ -329,24 +359,62 @@ export function AdminHeader({
                 <button
                   className="flex relative p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300"
                   aria-label="Notificações"
+                  onClick={loadNotifications}
                 >
                   <LuBell className="h-5 w-5" />
-                  {notificationCount > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                      {notificationCount > 9 ? "9+" : notificationCount}
+                  {unreadCount > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                      {unreadCount > 9 ? "9+" : unreadCount}
                     </span>
                   )}
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 align="end"
-                className="w-80 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg"
+                className="w-80 max-h-96 overflow-y-auto bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-xl p-0"
               >
-                <DropdownMenuLabel>Notificações</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <div className="p-4 text-center text-gray-500 dark:text-gray-400 text-sm">
-                  Nenhuma notificação
+                <div className="p-3 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gray-50/50 dark:bg-gray-800/50">
+                  <span className="font-bold text-sm text-zinc-900 dark:text-white">Notificações</span>
+                  {unreadCount > 0 && (
+                    <button 
+                      onClick={handleMarkAllRead} 
+                      className="text-xs text-primary hover:underline font-medium"
+                    >
+                      Marcar lidas
+                    </button>
+                  )}
                 </div>
+                {notificationsList.length === 0 ? (
+                  <div className="p-6 text-center text-gray-500 dark:text-gray-400 text-sm">
+                    Nenhuma notificação
+                  </div>
+                ) : (
+                  <div className="divide-y divide-gray-100 dark:divide-gray-700/50">
+                    {notificationsList.map((notif: any) => (
+                      <Link
+                        key={notif.id}
+                        href={notif.action_url || "#"}
+                        className={`block p-3 transition hover:bg-gray-50 dark:hover:bg-gray-700/50 ${
+                          !notif.is_read ? 'bg-primary/5 dark:bg-primary/10' : ''
+                        }`}
+                      >
+                        <div className="flex items-start gap-2">
+                          {!notif.is_read && (
+                            <span className="w-2 h-2 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+                          )}
+                          <div className="flex-1 min-w-0">
+                            <p className="text-xs font-bold text-zinc-900 dark:text-white truncate">
+                              {notif.title}
+                            </p>
+                            <p className="text-xs text-zinc-600 dark:text-gray-300 line-clamp-2 mt-0.5">
+                              {notif.message}
+                            </p>
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </DropdownMenuContent>
             </DropdownMenu>
           )}
