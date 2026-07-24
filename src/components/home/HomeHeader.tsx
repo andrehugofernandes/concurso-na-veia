@@ -77,33 +77,22 @@ export default function HomeHeader() {
       </div>
 
       {/* MOBILE HEADER ELEMENTS */}
-      <div className="md:hidden absolute top-0 left-0 right-0 w-full grid grid-cols-3 items-center px-6 py-4 z-[60]">
+      <div className="md:hidden absolute top-0 left-0 right-0 w-full flex items-center justify-between px-5 py-4 z-[60]">
         {/* Left: Logo Icon */}
-        <Link href="/" className="justify-self-start relative w-9 h-9 bg-black rounded-md border border-white/5 flex items-center justify-center overflow-hidden shrink-0">
-          <div className="absolute inset-0 rounded-md opacity-20 bg-primary" />
-          <img 
-            src="/logo-icone.png" 
-            alt="Icon" 
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] w-[260%] h-[260%] max-w-none object-contain z-10" 
-          />
-        </Link>
+        <div className="flex-shrink-0 z-10">
+          <ConcursoNaVeiaLogo compact variant="white" hideText />
+        </div>
         
-        {/* Center: Logo Text centered */}
-        <div className="justify-self-center flex flex-col justify-center items-center leading-none text-center">
-          <h1 className="font-bebas font-bold text-[24px] tracking-tight leading-none whitespace-nowrap flex items-baseline gap-1">
-            <span className="text-white">PASSEI</span>
-            <span className="text-primary" style={{ color: "var(--primary-hex)" }}>NO CONCURSO.AI</span>
-          </h1>
-          <span className="font-sans text-[7.5px] font-black uppercase tracking-[0.3em] text-white/60 mt-0.5 whitespace-nowrap">
-            SUA APROVAÇÃO AQUI
-          </span>
+        {/* Center: Logo Text */}
+        <div className="flex-1 flex justify-center z-0 px-2">
+          <ConcursoNaVeiaLogo compact variant="white" hideIcon className="pointer-events-none" />
         </div>
         
         {/* Right: Menu Toggle */}
         <button 
           id="menu-toggle-mobile"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="justify-self-end flex items-center justify-center w-9 h-9 text-white hover:text-white/80 transition-colors shrink-0"
+          className="flex-shrink-0 flex items-center justify-center w-9 h-9 text-white hover:text-white/80 transition-colors z-10"
           aria-label="Menu"
         >
           {isMenuOpen ? <LuX className="w-6 h-6" /> : <LuLayoutGrid className="w-6 h-6" />}

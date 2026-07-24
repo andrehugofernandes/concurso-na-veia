@@ -49,8 +49,8 @@ export default function FinalCTASection() {
             </>
           }
           subtitleText="Concurso Na Veia tem soluções para todas as suas necessidades de aprendizagem, seja conformidade, integração ou desenvolvimento de competências."
-          titleClassName="text-white text-4xl md:text-6xl"
-          subtitleClassName="text-slate-400"
+          titleClassName="text-white text-4xl md:text-6xl text-balance mx-auto"
+          subtitleClassName="text-slate-400 text-balance mx-auto max-w-2xl"
           className="mb-16"
         />
 

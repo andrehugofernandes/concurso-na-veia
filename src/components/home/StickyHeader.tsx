@@ -97,14 +97,9 @@ export default function StickyHeader({ alwaysVisible = false }: StickyHeaderProp
             {/* LEFT — Logo Icon (Mobile) / Nav Links (Desktop) */}
             <div className="flex items-center gap-2">
               {/* Logo Icon (Mobile Only) */}
-              <Link href="/" className="md:hidden relative w-9 h-9 bg-black rounded-md border border-white/5 flex items-center justify-center overflow-hidden shrink-0">
-                <div className="absolute inset-0 rounded-md opacity-20 bg-primary" />
-                <img 
-                  src="/logo-icone.png" 
-                  alt="Icon" 
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] w-[260%] h-[260%] max-w-none object-contain z-10" 
-                />
-              </Link>
+              <div className="md:hidden">
+                <ConcursoNaVeiaLogo compact variant="default" hideText />
+              </div>
 
               {/* Menu Button (Desktop/Tablet Only) */}
               <button
@@ -117,14 +112,18 @@ export default function StickyHeader({ alwaysVisible = false }: StickyHeaderProp
               </button>
             </div>
 
-          {/* CENTER — Logo real (Desktop Only) */}
-          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center">
+          {/* CENTER — Logo real */}
+          <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center w-full px-12 md:px-0 md:max-w-none pointer-events-none">
             <motion.div
               initial={{ scale: 0.85, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1, duration: 0.3 }}
+              className="pointer-events-auto flex items-center justify-center"
             >
-              <ConcursoNaVeiaLogo variant="default" />
+              {/* Desktop version */}
+              <ConcursoNaVeiaLogo variant="default" className="hidden md:flex" />
+              {/* Mobile version (Text Only) */}
+              <ConcursoNaVeiaLogo variant="default" compact hideIcon hideSlogan className="flex md:hidden" />
             </motion.div>
           </div>
 
@@ -166,7 +165,7 @@ export default function StickyHeader({ alwaysVisible = false }: StickyHeaderProp
             <button
               id="sticky-menu-toggle-mobile"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden w-9 h-9 rounded-xl flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors"
+              className="md:hidden w-9 h-9 rounded-xl flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors shrink-0 z-10"
               aria-label="Menu"
             >
               {isMenuOpen ? <LuX className="w-5 h-5" /> : <LuLayoutGrid className="w-5 h-5" />}
