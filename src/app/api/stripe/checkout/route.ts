@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
     // Cria sessão de checkout
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
-      payment_method_types: ['card'],
+
       line_items: [{ price: price.id, quantity: 1 }],
       mode: 'subscription',
       success_url: `${appUrl}/seja-pro?success=true&plan=${plan}`,

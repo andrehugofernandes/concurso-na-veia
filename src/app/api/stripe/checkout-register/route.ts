@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
     // Criar sessão de checkout com dados de usuário no metadata
     const session = await stripe.checkout.sessions.create({
       customer_email: userData.email,
-      payment_method_types: ['card'],
+
       line_items: [{ price: price.id, quantity: 1 }],
       mode: 'subscription',
       success_url: `${appUrl}/register/success?session_id={CHECKOUT_SESSION_ID}&plan=${planKey}`,
