@@ -198,14 +198,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             variant={mv[1]}
           />
 
-          {/* 🎧 Áudio Aula — Ouvir Módulo (Elite Total) */}
-          <AudioAulaPlayer
-            materiaId={props.materiaId}
-            aulaId="administracaogeralsuprimento"
-            aulaTitulo="Administração Geral (Suprimento)"
-            moduloNumero={1}
-            moduloTitulo="Fundamentos de Administração"
-          />
 
           <div className="space-y-6">
             <ModuleSectionHeader
@@ -555,14 +547,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             variant={mv[2]}
           />
 
-          {/* 🎧 Áudio Aula — Ouvir Módulo (Elite Total) */}
-          <AudioAulaPlayer
-            materiaId={props.materiaId}
-            aulaId="administracaogeralsuprimento"
-            aulaTitulo="Administração Geral (Suprimento)"
-            moduloNumero={2}
-            moduloTitulo="Funções Administrativas PODC"
-          />
 
           <div className="space-y-6">
             <ModuleSectionHeader
@@ -848,14 +832,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             variant={mv[3]}
           />
 
-          {/* 🎧 Áudio Aula — Ouvir Módulo (Elite Total) */}
-          <AudioAulaPlayer
-            materiaId={props.materiaId}
-            aulaId="administracaogeralsuprimento"
-            aulaTitulo="Administração Geral (Suprimento)"
-            moduloNumero={3}
-            moduloTitulo="Estruturas Organizacionais"
-          />
 
           <div className="space-y-6">
             <ModuleSectionHeader
@@ -1125,13 +1101,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             variant={mv[4]}
           />
 
-          <AudioAulaPlayer
-            materiaId={props.materiaId}
-            aulaId="administracaogeralsuprimento"
-            aulaTitulo="Administração Geral (Suprimento)"
-            moduloNumero={4}
-            moduloTitulo="Comportamento Organizacional"
-          />
 
           <div className="space-y-6">
             <ModuleSectionHeader
@@ -1386,14 +1355,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             variant={mv[5]}
           />
 
-          {/* 🎧 Áudio Aula — Ouvir Módulo (Elite Total) */}
-          <AudioAulaPlayer
-            materiaId={props.materiaId}
-            aulaId="administracaogeralsuprimento"
-            aulaTitulo="Administração Geral (Suprimento)"
-            moduloNumero={5}
-            moduloTitulo="Gestão por Processos"
-          />
 
           <div className="space-y-6">
             <ModuleSectionHeader
@@ -1646,13 +1607,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             variant={mv[6]}
           />
 
-          <AudioAulaPlayer
-            materiaId={props.materiaId}
-            aulaId="administracaogeralsuprimento"
-            aulaTitulo="Administração Geral (Suprimento)"
-            moduloNumero={6}
-            moduloTitulo="Teoria das Organizações"
-          />
 
           <div className="space-y-6">
             <ModuleSectionHeader
@@ -1931,13 +1885,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             variant={mv[7]}
           />
 
-          <AudioAulaPlayer
-            materiaId={props.materiaId}
-            aulaId="administracaogeralsuprimento"
-            aulaTitulo="Administração Geral (Suprimento)"
-            moduloNumero={7}
-            moduloTitulo="Comunicação e Conflitos"
-          />
 
           <div className="space-y-6">
             <ModuleSectionHeader
@@ -2281,13 +2228,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             variant={mv[8]}
           />
 
-          <AudioAulaPlayer
-            materiaId={props.materiaId}
-            aulaId="administracaogeralsuprimento"
-            aulaTitulo="Administração Geral (Suprimento)"
-            moduloNumero={8}
-            moduloTitulo="Decisão e Inovação"
-          />
 
           <div className="space-y-6">
             <ModuleSectionHeader
@@ -2607,13 +2547,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             variant={mv[9]}
           />
 
-          <AudioAulaPlayer
-            materiaId={props.materiaId}
-            aulaId="administracaogeralsuprimento"
-            aulaTitulo="Administração Geral (Suprimento)"
-            moduloNumero={9}
-            moduloTitulo="Administração na Petrobras"
-          />
 
           <div className="space-y-6">
             <ModuleSectionHeader
@@ -3000,14 +2933,6 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             variant={mv[10]}
           />
 
-          {/* 🎧 Áudio Aula — Ouvir Módulo (Elite Total) */}
-          <AudioAulaPlayer
-            materiaId={props.materiaId}
-            aulaId="administracaogeralsuprimento"
-            aulaTitulo="Administração Geral (Suprimento)"
-            moduloNumero={10}
-            moduloTitulo="Simulado Geral"
-          />
 
           <div className="space-y-6">
             <ModuleSectionHeader

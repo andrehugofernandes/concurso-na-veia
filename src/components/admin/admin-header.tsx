@@ -390,29 +390,47 @@ export function AdminHeader({
                   </div>
                 ) : (
                   <div className="divide-y divide-gray-100 dark:divide-gray-700/50">
-                    {notificationsList.map((notif: any) => (
-                      <Link
-                        key={notif.id}
-                        href={notif.action_url || "#"}
-                        className={`block p-3 transition hover:bg-gray-50 dark:hover:bg-gray-700/50 ${
-                          !notif.is_read ? 'bg-primary/5 dark:bg-primary/10' : ''
-                        }`}
-                      >
-                        <div className="flex items-start gap-2">
-                          {!notif.is_read && (
-                            <span className="w-2 h-2 rounded-full bg-primary mt-1.5 flex-shrink-0" />
-                          )}
-                          <div className="flex-1 min-w-0">
-                            <p className="text-xs font-bold text-zinc-900 dark:text-white truncate">
-                              {notif.title}
-                            </p>
-                            <p className="text-xs text-zinc-600 dark:text-gray-300 line-clamp-2 mt-0.5">
-                              {notif.message}
-                            </p>
+                    {notificationsList.map((notif: any) => {
+                      const timeAgo = (() => {
+                        const diff = Date.now() - new Date(notif.created_at).getTime();
+                        const mins = Math.floor(diff / 60000);
+                        if (mins < 1) return 'agora';
+                        if (mins < 60) return `${mins}min`;
+                        const hrs = Math.floor(mins / 60);
+                        if (hrs < 24) return `${hrs}h`;
+                        const days = Math.floor(hrs / 24);
+                        return `${days}d`;
+                      })();
+
+                      return (
+                        <Link
+                          key={notif.id}
+                          href={notif.action_url || "#"}
+                          className={`block p-3 transition hover:bg-gray-50 dark:hover:bg-gray-700/50 ${
+                            !notif.is_read ? 'bg-primary/5 dark:bg-primary/10' : ''
+                          }`}
+                        >
+                          <div className="flex items-start gap-2">
+                            {!notif.is_read && (
+                              <span className="w-2 h-2 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+                            )}
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between gap-2">
+                                <p className="text-xs font-bold text-zinc-900 dark:text-white truncate">
+                                  {notif.title}
+                                </p>
+                                <span className="text-[10px] text-zinc-400 dark:text-gray-500 flex-shrink-0">
+                                  {timeAgo}
+                                </span>
+                              </div>
+                              <p className="text-xs text-zinc-600 dark:text-gray-300 line-clamp-2 mt-0.5">
+                                {notif.message}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      </Link>
-                    ))}
+                        </Link>
+                      );
+                    })}
                   </div>
                 )}
               </DropdownMenuContent>

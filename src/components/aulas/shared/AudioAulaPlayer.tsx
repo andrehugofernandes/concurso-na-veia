@@ -15,6 +15,7 @@ import {
   LuX,
   LuRadio,
   LuSlidersHorizontal,
+  LuGripVertical,
 } from "react-icons/lu";
 import { useAudioAula } from "@/hooks/useAudioAula";
 import {
@@ -117,10 +118,25 @@ export function AudioAulaPlayer({
 
       if (activeTabEl) {
         const clone = activeTabEl.cloneNode(true) as HTMLElement;
+
+        // Anexa temporariamente ao DOM para forçar o navegador a computar o layout/innerText corretamente
+        const hiddenWrapper = document.createElement("div");
+        hiddenWrapper.style.position = "fixed";
+        hiddenWrapper.style.left = "-9999px";
+        hiddenWrapper.style.top = "-9999px";
+        hiddenWrapper.style.opacity = "0";
+        hiddenWrapper.style.pointerEvents = "none";
+        hiddenWrapper.appendChild(clone);
+        document.body.appendChild(hiddenWrapper);
+
+        // Remove botões, scripts, formulários e o próprio áudio player do clone
         clone
-          .querySelectorAll("button, svg, [role='dialog'], input, script, style, form")
+          .querySelectorAll("button, svg, [role='dialog'], input, script, style, form, .audio-aula-player")
           .forEach((el) => el.remove());
+
         const rawText = clone.innerText || clone.textContent || "";
+        document.body.removeChild(hiddenWrapper);
+
         const cleaned = cleanTextForTTS(rawText);
         if (cleaned.length > 50) return cleaned;
       }
@@ -202,12 +218,15 @@ export function AudioAulaPlayer({
               )}
             </button>
 
-            {/* Metadados — Apenas Título e Badge conforme solicitado */}
+            {/* Metadados */}
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
                   <LuRadio className="w-3 h-3 animate-pulse" />
                   Áudio Aula Grátis
+                </span>
+                <span className="text-slate-400 text-xs hidden sm:inline">
+                  • {estimatedMinutes} min de estudo
                 </span>
               </div>
 
@@ -215,9 +234,17 @@ export function AudioAulaPlayer({
                 {audioAula.isGenerating
                   ? "Sintetizando narração em áudio..."
                   : audioAula.isPlaying
-                    ? `Reproduzindo: Módulo ${moduloNumero} (${formatTime(audioAula.currentTime)} / ${formatTime(audioAula.duration)})`
+                    ? `Reproduzindo: Módulo ${moduloNumero}`
                     : `Ouvir Módulo ${moduloNumero}: ${moduloTitulo}`}
               </h4>
+
+              <p className="text-xs sm:text-sm text-slate-300 mt-0.5 line-clamp-1">
+                {audioAula.isGenerating
+                  ? "Gerando voz neural em português..."
+                  : audioAula.isPlaying || audioAula.isPaused
+                    ? `Progresso: ${formatTime(audioAula.currentTime)} / ${formatTime(audioAula.duration)}`
+                    : "Ouça a aula no trânsito ou se exercitando • Voz Neural pt-BR"}
+              </p>
             </div>
 
             {/* Botão de Ação */}
@@ -264,11 +291,14 @@ export function AudioAulaPlayer({
       <AnimatePresence>
         {isAudioActive && (
           <motion.div
+            drag
+            dragMomentum={false}
+            whileDrag={{ scale: 1.05, cursor: "grabbing" }}
             initial={{ scale: 0.8, opacity: 0, y: 40 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 40 }}
             transition={{ type: "spring", stiffness: 350, damping: 25 }}
-            className="fixed bottom-20 right-4 sm:right-6 z-[90] pointer-events-auto flex flex-col items-end gap-2"
+            className="audio-aula-player fixed bottom-20 right-4 sm:right-6 z-[90] pointer-events-auto flex flex-col items-end gap-2 touch-none"
           >
             {/* Popover Expandido de Controles Avançados */}
             <AnimatePresence>
@@ -278,7 +308,7 @@ export function AudioAulaPlayer({
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
                   transition={{ duration: 0.15 }}
-                  className="w-72 bg-slate-900/95 backdrop-blur-xl border border-emerald-500/40 rounded-2xl shadow-2xl p-4 text-white space-y-3"
+                  className="w-72 bg-slate-900/95 backdrop-blur-xl border border-emerald-500/40 rounded-2xl shadow-2xl p-4 text-white space-y-3 cursor-default"
                 >
                   <div className="flex items-center justify-between border-b border-slate-800 pb-2">
                     <span className="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
@@ -347,7 +377,12 @@ export function AudioAulaPlayer({
             </AnimatePresence>
 
             {/* Widget Pílula/Quadradinho Flutuante Principal */}
-            <div className="bg-slate-900/95 backdrop-blur-xl border border-emerald-500/40 rounded-2xl shadow-2xl p-2.5 flex items-center gap-2 text-white transition-all duration-300 hover:border-emerald-400">
+            <div className="bg-slate-900/95 backdrop-blur-xl border border-emerald-500/40 rounded-2xl shadow-2xl p-2.5 flex items-center gap-2 text-white transition-all duration-300 hover:border-emerald-400 cursor-grab active:cursor-grabbing">
+              {/* Alça de Arraste */}
+              <div className="text-slate-500 hover:text-slate-300 cursor-grab active:cursor-grabbing p-0.5" title="Arraste para mover">
+                <LuGripVertical className="w-4 h-4" />
+              </div>
+
               {/* Botão Play/Pause */}
               <button
                 onClick={handlePlayPause}

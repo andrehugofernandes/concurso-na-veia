@@ -10,6 +10,7 @@ export { default as AulaPremiumDataEngine, type AulaPremiumData } from "./shared
 export { PodcastPlayerCard, type PodcastPlayerCardProps } from "./shared/PodcastPlayerCard";
 export { AudioAulaPlayer, type AudioAulaPlayerProps } from "./shared/AudioAulaPlayer";
 import { PodcastPlayerCard } from "./shared/PodcastPlayerCard";
+import { AudioAulaPlayer } from "./shared/AudioAulaPlayer";
 import { cn } from "@/lib/utils";
 import {
   Carousel,
@@ -2511,6 +2512,11 @@ export function AulaTemplate({
   canComplete?: boolean;
   lockMessage?: string;
 }) {
+  const pathname = usePathname();
+  const aulaId = (pathname || "").split("/").filter(Boolean).pop() || "aula";
+  const activeModuleDef = modules.find((m) => m.id === activeTab);
+  const moduloNumero = parseInt(activeTab.replace(/\D/g, ""), 10) || 1;
+
   // Helper function to get correct breadcrumb name based on materiaId
   const getBreadcrumbName = (id: string, fallbackName: string) => {
     // Check for specific block patterns first (more specific to general)
@@ -2655,6 +2661,16 @@ export function AulaTemplate({
               />
 
               <main className="mt-6 md:mt-[50px] space-y-6 md:space-y-[50px]">
+                {/* 🎧 Player de Áudio Aula Global (Disponível para todas as aulas) */}
+                {activeModuleDef && (
+                  <AudioAulaPlayer
+                    materiaId={materiaId}
+                    aulaId={aulaId}
+                    aulaTitulo={titulo}
+                    moduloNumero={moduloNumero}
+                    moduloTitulo={activeModuleDef.title || ""}
+                  />
+                )}
                 <div className="px-[10px] md:px-0">{children}</div>
               </main>
 

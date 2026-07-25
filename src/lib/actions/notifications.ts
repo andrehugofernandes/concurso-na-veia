@@ -10,11 +10,11 @@ import { ActionResponse, createSuccessResponse, createErrorResponse } from '@/li
 export async function getNotificationPreferencesAction(): Promise<ActionResponse<any>> {
   try {
     const userRes = await getCurrentUserAction();
-    if (userRes.status === 'error' || !userRes.data?.user) {
+    if (userRes.status === 'error' || !userRes.data) {
       return createErrorResponse('Não autorizado');
     }
 
-    const userId = userRes.data.user.id;
+    const userId = userRes.data.id;
 
     // Tenta encontrar preferências no DB
     let prefs = null;
@@ -54,11 +54,11 @@ export async function getNotificationPreferencesAction(): Promise<ActionResponse
 export async function updateNotificationPreferenceAction(data: any): Promise<ActionResponse<any>> {
   try {
     const userRes = await getCurrentUserAction();
-    if (userRes.status === 'error' || !userRes.data?.user) {
+    if (userRes.status === 'error' || !userRes.data) {
       return createErrorResponse('Não autorizado');
     }
 
-    const userId = userRes.data.user.id;
+    const userId = userRes.data.id;
 
     try {
         const updated = await (db as any).notificationPreference.upsert({
@@ -83,69 +83,73 @@ export async function updateNotificationPreferenceAction(data: any): Promise<Act
 export async function getNotificationsAction(limit: number = 20): Promise<ActionResponse<any>> {
   try {
     const userRes = await getCurrentUserAction();
-    if (userRes.status === 'error' || !userRes.data?.user) {
+    if (userRes.status === 'error' || !userRes.data) {
+      console.warn('[getNotificationsAction] Usuário não autenticado');
       return createErrorResponse('Não autorizado');
     }
 
-    const userId = userRes.data.user.id;
+    const userId = userRes.data.id;
     const { createClient } = await import('@/lib/supabase/server');
     const supabase = await createClient();
 
-    const { data: notifications, error } = await supabase
-      .from('notifications')
-      .select('*')
-      .eq('user_id', userId)
-      .order('created_at', { ascending: false })
-      .limit(limit);
-
-    let finalNotifications = notifications || [];
-
-    // Fallback inteligente: se a tabela de notificações estiver vazia ou não criada, gerar via tickets do usuário
-    if (!error && finalNotifications.length === 0) {
-      const { data: userTickets } = await supabase
-        .from('tickets')
+    // 1. Tentar buscar da tabela notifications
+    let finalNotifications: any[] = [];
+    try {
+      const { data: notifications, error } = await supabase
+        .from('notifications')
         .select('*')
         .eq('user_id', userId)
         .order('created_at', { ascending: false })
         .limit(limit);
 
-      if (userTickets && userTickets.length > 0) {
-        finalNotifications = userTickets.map((ticket: any) => ({
-          id: ticket.id,
-          user_id: ticket.user_id,
-          title: `Chamado: ${ticket.assunto || ticket.subject || 'Novo Suporte'}`,
-          message: ticket.mensagem || 'Chamado registrado no suporte.',
-          type: 'ticket',
-          is_read: false,
-          created_at: ticket.created_at,
-          action_url: '/tickets'
-        }));
+      if (!error && notifications && notifications.length > 0) {
+        finalNotifications = notifications;
+        console.log(`[getNotificationsAction] Encontradas ${notifications.length} notificações na tabela`);
+      } else {
+        if (error) {
+          console.warn('[getNotificationsAction] Erro na tabela notifications:', error.message);
+        }
       }
-    } else if (error) {
-      // Caso a tabela notifications retorne erro no Supabase, buscar tickets como fallback principal
-      const { data: userTickets } = await supabase
-        .from('tickets')
-        .select('*')
-        .eq('user_id', userId)
-        .order('created_at', { ascending: false })
-        .limit(limit);
+    } catch (e: any) {
+      console.warn('[getNotificationsAction] Exceção ao buscar notifications:', e.message);
+    }
 
-      if (userTickets && userTickets.length > 0) {
-        finalNotifications = userTickets.map((ticket: any) => ({
-          id: ticket.id,
-          user_id: ticket.user_id,
-          title: `Chamado: ${ticket.assunto || ticket.subject || 'Novo Suporte'}`,
-          message: ticket.mensagem || 'Chamado registrado no suporte.',
-          type: 'ticket',
-          is_read: false,
-          created_at: ticket.created_at,
-          action_url: '/tickets'
-        }));
+    // 2. Fallback: se não encontrou notificações, sintetizar a partir dos tickets do usuário
+    if (finalNotifications.length === 0) {
+      console.log('[getNotificationsAction] Fallback: buscando tickets do usuário para gerar notificações...');
+      try {
+        const { data: userTickets, error: ticketError } = await supabase
+          .from('tickets')
+          .select('*')
+          .eq('user_id', userId)
+          .order('created_at', { ascending: false })
+          .limit(limit);
+
+        if (ticketError) {
+          console.warn('[getNotificationsAction] Erro ao buscar tickets:', ticketError.message);
+        }
+
+        if (userTickets && userTickets.length > 0) {
+          finalNotifications = userTickets.map((ticket: any) => ({
+            id: `ticket-${ticket.id}`,
+            user_id: ticket.user_id,
+            title: `Chamado: ${ticket.assunto || ticket.subject || 'Novo Suporte'}`,
+            message: ticket.mensagem || 'Chamado registrado no suporte.',
+            type: 'ticket',
+            is_read: false,
+            created_at: ticket.created_at,
+            action_url: '/tickets'
+          }));
+          console.log(`[getNotificationsAction] Sintetizadas ${finalNotifications.length} notificações via tickets`);
+        }
+      } catch (e: any) {
+        console.warn('[getNotificationsAction] Exceção ao buscar tickets fallback:', e.message);
       }
     }
 
     return createSuccessResponse({ notifications: finalNotifications });
   } catch (error: any) {
+    console.error('[getNotificationsAction] ERRO GERAL:', error);
     return createErrorResponse(error.message || 'Erro ao carregar notificações');
   }
 }
@@ -175,11 +179,11 @@ export async function markNotificationAsReadAction(notificationId: string): Prom
 export async function markAllNotificationsAsReadAction(): Promise<ActionResponse<any>> {
   try {
     const userRes = await getCurrentUserAction();
-    if (userRes.status === 'error' || !userRes.data?.user) {
+    if (userRes.status === 'error' || !userRes.data) {
       return createErrorResponse('Não autorizado');
     }
 
-    const userId = userRes.data.user.id;
+    const userId = userRes.data.id;
     const { createClient } = await import('@/lib/supabase/server');
     const supabase = await createClient();
 
