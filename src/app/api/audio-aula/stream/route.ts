@@ -26,15 +26,15 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  let storagePath = `audio-aulas-v10/${materia}/${aulaId}/modulo-${modulo}.mp3`;
+  let storagePath = `wp2next/audio-aulas-v11/${materia}/${aulaId}/modulo-${modulo}.mp3`;
   let firebaseUrl = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_STORAGE_BUCKET}/o/${encodeURIComponent(storagePath)}?alt=media`;
 
   try {
     let response = await fetch(firebaseUrl);
 
-    // Fallback para os paths anteriores se não encontrar no v10
+    // Fallback para os paths anteriores se não encontrar no v11
     if (!response.ok) {
-      storagePath = `audio-aulas-v9/${materia}/${aulaId}/modulo-${modulo}.mp3`;
+      storagePath = `wp2next/audio-aulas-v10/${materia}/${aulaId}/modulo-${modulo}.mp3`;
       firebaseUrl = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_STORAGE_BUCKET}/o/${encodeURIComponent(storagePath)}?alt=media`;
       response = await fetch(firebaseUrl);
     }

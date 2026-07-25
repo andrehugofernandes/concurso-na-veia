@@ -204,11 +204,14 @@ export function cleanTextForTTS(text: string): string {
     // 3. Remove marcadores visuais, bullets e símbolos que forçam fala literal
     .replace(/[•●○◆◇▸▹►▻★☆✓✗✔✘→←↑↓⬆⬇⬅➡#]/g, " ")
 
-    // 4. Remove metadados de rodapé/UI do sistema
+    // 4. Remove metadados de rodapé/UI do sistema e frases da UI do player
     .replace(/Ref:\s*\d+-[A-Z.]+/gi, "")
     .replace(/©\s*Concurso\s*Na\s*Veia\s*System/gi, "")
     .replace(/Clique\s*para\s*revelar[^\n.]*/gi, "")
     .replace(/Dossiê\s*Técnico/gi, "")
+    .replace(/Ouça\s*a\s*aula\s*no\s*trânsito[^\n.]*/gi, "")
+    .replace(/se\s*exercitando[^\n.]*/gi, "")
+    .replace(/Voz\s*neural\s*PT-BR[^\n.]*/gi, "")
 
     // 5. Suprime pontos de siglas/acrónimos (ex: C.E.D.E.A -> CEDEA, P.O.D.C. -> PODC, B.P.O. -> BPO, E.S.G. -> ESG)
     .replace(/\b([A-Z])\.(?=[A-Z]\b|\.[A-Z]|(?:\.[A-Z])+)/g, "$1")
