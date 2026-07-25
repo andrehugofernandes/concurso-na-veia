@@ -8,6 +8,7 @@ import { useHeaderState } from "@/contexts/HeaderStateContext";
 export { FunctionGraph, type FunctionPlot } from "./shared/FunctionGraph";
 export { default as AulaPremiumDataEngine, type AulaPremiumData } from "./shared/AulaPremiumDataEngine";
 export { PodcastPlayerCard, type PodcastPlayerCardProps } from "./shared/PodcastPlayerCard";
+export { AudioAulaPlayer, type AudioAulaPlayerProps } from "./shared/AudioAulaPlayer";
 import { PodcastPlayerCard } from "./shared/PodcastPlayerCard";
 import { cn } from "@/lib/utils";
 import {

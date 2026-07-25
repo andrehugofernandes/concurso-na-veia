@@ -14,7 +14,8 @@ import {
   ModuleSectionHeader,
   ModuleConsolidation,
   CardCarousel,
-  QuestaoResolvidaStepByStep} from "../shared";
+  QuestaoResolvidaStepByStep,
+  AudioAulaPlayer} from "../shared";
 import {
   LuAward,
   LuShieldAlert,
@@ -195,6 +196,15 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             titulo="Fundamentos de Administração"
             descricao="Entenda a essência da administração como processo de planejar, organizar, dirigir e controlar recursos para atingir objetivos organizacionais."
             variant={mv[1]}
+          />
+
+          {/* 🎧 Áudio Aula — Ouvir Módulo (Elite Total) */}
+          <AudioAulaPlayer
+            materiaId={props.materiaId}
+            aulaId="administracaogeralsuprimento"
+            aulaTitulo="Administração Geral (Suprimento)"
+            moduloNumero={1}
+            moduloTitulo="Fundamentos de Administração"
           />
 
           <div className="space-y-6">
@@ -545,6 +555,15 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             variant={mv[2]}
           />
 
+          {/* 🎧 Áudio Aula — Ouvir Módulo (Elite Total) */}
+          <AudioAulaPlayer
+            materiaId={props.materiaId}
+            aulaId="administracaogeralsuprimento"
+            aulaTitulo="Administração Geral (Suprimento)"
+            moduloNumero={2}
+            moduloTitulo="Funções Administrativas PODC"
+          />
+
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
@@ -829,6 +848,15 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             variant={mv[3]}
           />
 
+          {/* 🎧 Áudio Aula — Ouvir Módulo (Elite Total) */}
+          <AudioAulaPlayer
+            materiaId={props.materiaId}
+            aulaId="administracaogeralsuprimento"
+            aulaTitulo="Administração Geral (Suprimento)"
+            moduloNumero={3}
+            moduloTitulo="Estruturas Organizacionais"
+          />
+
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
@@ -1097,6 +1125,14 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             variant={mv[4]}
           />
 
+          <AudioAulaPlayer
+            materiaId={props.materiaId}
+            aulaId="administracaogeralsuprimento"
+            aulaTitulo="Administração Geral (Suprimento)"
+            moduloNumero={4}
+            moduloTitulo="Comportamento Organizacional"
+          />
+
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
@@ -1166,7 +1202,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                         <div className="p-5 bg-muted rounded-lg border">
                           <h6 className="font-bold text-rose-700 dark:text-rose-400 text-xl mb-2">Teorias de Conteúdo (O QUE motiva):</h6>
-                          <p className="text-base text-muted-foreground mb-2">Identificam as necessidades internas das pessoas.</p>
+                          <p className="text-base text-muted-foreground">Identificam as necessidades internas das pessoas.</p>
                           <ul className="list-disc pl-5 text-lg space-y-2">
                             <li><strong>Maslow (Hierarquia):</strong> Necessidades fisiológicas, segurança, sociais, estima, autorrealização (as inferiores devem ser satisfeitas primeiro).</li>
                             <li><strong>Herzberg (Dois Fatores):</strong> Fatores Higiênicos (evitam insatisfação, mas não motivam - ex: salário, estrutura física) vs. Fatores Motivadores (geram real motivação - ex: trabalho desafiador, crescimento).</li>
@@ -1175,7 +1211,7 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
                         </div>
                         <div className="p-5 bg-muted rounded-lg border">
                           <h6 className="font-bold text-pink-700 dark:text-pink-400 text-xl mb-2">Teorias de Processo (COMO motiva):</h6>
-                          <p className="text-base text-muted-foreground mb-2">Explicam como o comportamento se inicia e é mantido.</p>
+                          <p className="text-base text-muted-foreground">Explicam como o comportamento se inicia e é mantido.</p>
                           <ul className="list-disc pl-5 text-lg space-y-2">
                             <li><strong>Vroom (Expectativa):</strong> A motivação é o produto de três variáveis: Valência (valor da recompensa) x Instrumentalidade (crença no ganho) x Expectativa (crença no próprio esforço).</li>
                             <li><strong>Skinner (Reforço):</strong> Comportamentos reforçados positivamente tendem a se repetir, enquanto punições extinguem comportamentos.</li>
@@ -1348,6 +1384,15 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             titulo="Gestão por Processos"
             descricao="Aprenda a mapear, analisar e otimizar processos de negócios corporativos, promovendo a integração horizontal e eliminando gargalos."
             variant={mv[5]}
+          />
+
+          {/* 🎧 Áudio Aula — Ouvir Módulo (Elite Total) */}
+          <AudioAulaPlayer
+            materiaId={props.materiaId}
+            aulaId="administracaogeralsuprimento"
+            aulaTitulo="Administração Geral (Suprimento)"
+            moduloNumero={5}
+            moduloTitulo="Gestão por Processos"
           />
 
           <div className="space-y-6">
@@ -1599,6 +1644,14 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             titulo="Teoria das Organizações"
             descricao="Evolução histórica do pensamento administrativo: de Taylor à Contingência. Escolas, correntes e como elas moldaram a administração moderna."
             variant={mv[6]}
+          />
+
+          <AudioAulaPlayer
+            materiaId={props.materiaId}
+            aulaId="administracaogeralsuprimento"
+            aulaTitulo="Administração Geral (Suprimento)"
+            moduloNumero={6}
+            moduloTitulo="Teoria das Organizações"
           />
 
           <div className="space-y-6">
@@ -1876,6 +1929,14 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             titulo="Comunicação e Conflitos"
             descricao="A comunicação como processo vital. Canais, barreiras, feedback. Conflitos: naturais, necessários, podem ser construtivos ou destrutivos."
             variant={mv[7]}
+          />
+
+          <AudioAulaPlayer
+            materiaId={props.materiaId}
+            aulaId="administracaogeralsuprimento"
+            aulaTitulo="Administração Geral (Suprimento)"
+            moduloNumero={7}
+            moduloTitulo="Comunicação e Conflitos"
           />
 
           <div className="space-y-6">
@@ -2220,6 +2281,14 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             variant={mv[8]}
           />
 
+          <AudioAulaPlayer
+            materiaId={props.materiaId}
+            aulaId="administracaogeralsuprimento"
+            aulaTitulo="Administração Geral (Suprimento)"
+            moduloNumero={8}
+            moduloTitulo="Decisão e Inovação"
+          />
+
           <div className="space-y-6">
             <ModuleSectionHeader
               index="INTRO"
@@ -2536,6 +2605,14 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             titulo="Administração na Petrobras"
             descricao="Aplicação prática: desafios únicos de suprimento em uma estatal de energia. Leis 13.303 e 14.133, processos, fornecedores, sustentabilidade."
             variant={mv[9]}
+          />
+
+          <AudioAulaPlayer
+            materiaId={props.materiaId}
+            aulaId="administracaogeralsuprimento"
+            aulaTitulo="Administração Geral (Suprimento)"
+            moduloNumero={9}
+            moduloTitulo="Administração na Petrobras"
           />
 
           <div className="space-y-6">
@@ -2921,6 +2998,15 @@ export default function AulaAdministracaoGeralSuprimento(props: AulaProps) {
             titulo="Simulado Geral"
             descricao="Consolidação de todos os 9 módulos anteriores. 10 questões integradas cobrindo fundamentos, teorias, processos e contexto Petrobras."
             variant={mv[10]}
+          />
+
+          {/* 🎧 Áudio Aula — Ouvir Módulo (Elite Total) */}
+          <AudioAulaPlayer
+            materiaId={props.materiaId}
+            aulaId="administracaogeralsuprimento"
+            aulaTitulo="Administração Geral (Suprimento)"
+            moduloNumero={10}
+            moduloTitulo="Simulado Geral"
           />
 
           <div className="space-y-6">
