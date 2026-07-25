@@ -78,14 +78,14 @@ export async function POST(request: NextRequest) {
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/[^a-z0-9]/g, "-");
 
-    const storagePath = `audio-aulas-v9/${materiaFolder}/${sanitizedAulaId}/modulo-${moduloNumero || 1}.mp3`;
+    const storagePath = `audio-aulas-v10/${materiaFolder}/${sanitizedAulaId}/modulo-${moduloNumero || 1}.mp3`;
     const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_STORAGE_BUCKET}/o/${encodeURIComponent(storagePath)}?alt=media`;
 
-    // Verifica se já existe no cache (v9: áudio completo extraído do módulo)
+    // Verifica se já existe no cache (v10: correção da pronúncia de 'no', 'nos' e 'nós')
     try {
       const headRes = await fetch(publicUrl, { method: "HEAD" });
       if (headRes.ok) {
-        console.log(`[API/AudioAula] 🎯 Cache HIT: Áudio v9 já existe para o Módulo ${moduloNumero}!`);
+        console.log(`[API/AudioAula] 🎯 Cache HIT: Áudio v10 já existe para o Módulo ${moduloNumero}!`);
         return NextResponse.json({
           success: true,
           exists: true,

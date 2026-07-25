@@ -221,8 +221,9 @@ export function cleanTextForTTS(text: string): string {
     .replace(/\bex\.\s*/gi, "exemplo, ")
     .replace(/\betc\.\s*/gi, "e assim por diante. ")
     .replace(/\bvs\.\s*/gi, "versus ")
-    .replace(/\bN\.[ºo]\s*/gi, "número ")
-    .replace(/\bn[ºo]\s*/gi, "número ")
+    // Abreviações estritas de número (Nº, N.º, Nr., etc.) - NUNCA casa com as palavras "no", "nos" ou "nós"
+    .replace(/\b[Nn]\.?[º°]\.?\s*/g, "número ")
+    .replace(/\b[Nn][Rr]\.\s*/g, "número ")
     .replace(/\b([0-9]+)[ºª]\s*/g, "$1 ")
 
     // 7. Trata numeração de tópicos/listas (ex: "1. " ou "Módulo 1." -> "1, " ou "Módulo 1:")
