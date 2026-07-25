@@ -108,12 +108,17 @@ export function AudioAulaPlayer({
 
     if (typeof document !== "undefined") {
       const activeTabEl =
+        document.querySelector(`[value="modulo-${moduloNumero}"]`) ||
+        document.querySelector(`[data-value="modulo-${moduloNumero}"]`) ||
+        document.querySelector(`[id*="modulo-${moduloNumero}"]`) ||
         document.querySelector(`[data-state="active"][role="tabpanel"]`) ||
+        document.querySelector(`[data-state="active"]`) ||
         document.querySelector(`.space-y-12`);
+
       if (activeTabEl) {
         const clone = activeTabEl.cloneNode(true) as HTMLElement;
         clone
-          .querySelectorAll("button, svg, [role='dialog'], input, script, style")
+          .querySelectorAll("button, svg, [role='dialog'], input, script, style, form")
           .forEach((el) => el.remove());
         const rawText = clone.innerText || clone.textContent || "";
         const cleaned = cleanTextForTTS(rawText);
