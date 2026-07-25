@@ -107,35 +107,39 @@ export function extractModuleText(data: ModuleContentData): string {
     parts.push("");
   }
 
-  // 4. Cards do Carrossel
+  // 4. Cards do Carrossel (apenas os títulos dos cards, conforme instrução do usuário)
   if (data.cardCarousel && data.cardCarousel.cards.length > 0) {
     parts.push("Pontos-chave deste módulo:");
     for (const card of data.cardCarousel.cards) {
-      parts.push(`${card.titulo}: ${card.descricao}`);
+      if (card.titulo) {
+        parts.push(cleanTextForTTS(card.titulo) + ".");
+      }
     }
     parts.push("");
   }
 
-  // 5. Seções de conteúdo (accordion, exemplos)
+  // 5. Seções de conteúdo (apenas os títulos das seções, accordions e cards)
   if (data.sections && data.sections.length > 0) {
     for (const section of data.sections) {
-      parts.push(section.header.title + ".");
-      if (section.header.description) {
-        parts.push(section.header.description);
+      if (section.header?.title) {
+        parts.push(cleanTextForTTS(section.header.title) + ".");
       }
 
-      // Accordion slides
+      // Accordion slides (apenas o título de cada slide)
       if (section.accordionSlides && section.accordionSlides.length > 0) {
         for (const slide of section.accordionSlides) {
-          parts.push(slide.titulo + ":");
-          parts.push(cleanTextForTTS(slide.conteudoTexto));
+          if (slide.titulo) {
+            parts.push(cleanTextForTTS(slide.titulo) + ".");
+          }
         }
       }
 
-      // Exemplo cards
+      // Exemplo cards (apenas o título do card)
       if (section.exemploCards && section.exemploCards.length > 0) {
         for (const card of section.exemploCards) {
-          parts.push(`${card.titulo}: ${card.texto}`);
+          if (card.titulo) {
+            parts.push(cleanTextForTTS(card.titulo) + ".");
+          }
         }
       }
 
@@ -145,28 +149,19 @@ export function extractModuleText(data: ModuleContentData): string {
 
   // 6. Questão resolvida passo a passo
   if (data.questaoResolvida) {
-    parts.push("Questão resolvida passo a passo:");
+    parts.push("Questão resolvida:");
     parts.push(cleanTextForTTS(data.questaoResolvida.enunciado));
 
     const correta = data.questaoResolvida.alternativas.find(a => a.correta);
     if (correta) {
-      parts.push(`A resposta correta é a alternativa ${correta.letra}: ${correta.texto}.`);
-    }
-
-    for (const passo of data.questaoResolvida.passos) {
-      parts.push(`${passo.titulo}: ${passo.conteudo}`);
-    }
-
-    if (data.questaoResolvida.dicaEstrategica) {
-      parts.push(`Dica estratégica: ${data.questaoResolvida.dicaEstrategica}`);
+      parts.push(`Resposta correta: alternativa ${correta.letra}.`);
     }
     parts.push("");
   }
 
   // 7. Síntese estratégica (consolidação)
-  if (data.sinteseEstrategica) {
-    parts.push("Síntese Estratégica: " + data.sinteseEstrategica.title);
-    parts.push(cleanTextForTTS(data.sinteseEstrategica.contentTexto));
+  if (data.sinteseEstrategica?.title) {
+    parts.push("Síntese Estratégica: " + cleanTextForTTS(data.sinteseEstrategica.title) + ".");
     parts.push("");
   }
 
@@ -206,11 +201,13 @@ export function cleanTextForTTS(text: string): string {
     // 3. Remove marcadores visuais, bullets e símbolos que forçam fala literal
     .replace(/[•●○◆◇▸▹►▻★☆✓✗✔✘→←↑↓⬆⬇⬅➡#]/g, " ")
 
-    // 4. Remove metadados de rodapé/UI específicos do sistema
+    // 4. Remove metadados de rodapé/UI e artefatos de código TSX/React
     .replace(/Ref:\s*\d+-[A-Z.]+/gi, "")
     .replace(/©\s*Concurso\s*Na\s*Veia\s*System/gi, "")
     .replace(/Clique\s*para\s*revelar[^\n.]*/gi, "")
     .replace(/Dossiê\s*Técnico/gi, "")
+    .replace(/\b(className|variant|props|export|import|const|function|return|useState|useEffect|useMemo|useCallback)\b[^.\n]*/gi, "")
+    .replace(/[\{\}<>]/g, " ")
 
     // 5. Suprime pontos de siglas/acrónimos (ex: C.E.D.E.A -> CEDEA, P.O.D.C. -> PODC, B.P.O. -> BPO, E.S.G. -> ESG)
     .replace(/\b([A-Z])\.(?=[A-Z]\b|\.[A-Z]|(?:\.[A-Z])+)/g, "$1")

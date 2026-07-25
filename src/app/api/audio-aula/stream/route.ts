@@ -26,15 +26,15 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  let storagePath = `audio-aulas-v2/${materia}/${aulaId}/modulo-${modulo}.mp3`;
+  let storagePath = `audio-aulas-v3/${materia}/${aulaId}/modulo-${modulo}.mp3`;
   let firebaseUrl = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_STORAGE_BUCKET}/o/${encodeURIComponent(storagePath)}?alt=media`;
 
   try {
     let response = await fetch(firebaseUrl);
 
-    // Fallback para o path antigo se não encontrar no v2
+    // Fallback para o path v2 se não encontrar no v3
     if (!response.ok) {
-      storagePath = `audio-aulas/${materia}/${aulaId}/modulo-${modulo}.mp3`;
+      storagePath = `audio-aulas-v2/${materia}/${aulaId}/modulo-${modulo}.mp3`;
       firebaseUrl = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_STORAGE_BUCKET}/o/${encodeURIComponent(storagePath)}?alt=media`;
       response = await fetch(firebaseUrl);
     }
