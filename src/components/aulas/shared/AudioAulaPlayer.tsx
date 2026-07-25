@@ -202,15 +202,12 @@ export function AudioAulaPlayer({
               )}
             </button>
 
-            {/* Metadados */}
+            {/* Metadados — Apenas Título e Badge conforme solicitado */}
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
                   <LuRadio className="w-3 h-3 animate-pulse" />
                   Áudio Aula Grátis
-                </span>
-                <span className="text-slate-400 text-xs hidden sm:inline">
-                  • {estimatedMinutes} min de estudo
                 </span>
               </div>
 
@@ -218,17 +215,9 @@ export function AudioAulaPlayer({
                 {audioAula.isGenerating
                   ? "Sintetizando narração em áudio..."
                   : audioAula.isPlaying
-                    ? `Reproduzindo: Módulo ${moduloNumero}`
+                    ? `Reproduzindo: Módulo ${moduloNumero} (${formatTime(audioAula.currentTime)} / ${formatTime(audioAula.duration)})`
                     : `Ouvir Módulo ${moduloNumero}: ${moduloTitulo}`}
               </h4>
-
-              <p className="text-xs sm:text-sm text-slate-300 mt-0.5 line-clamp-1">
-                {audioAula.isGenerating
-                  ? "Gerando voz neural em português..."
-                  : audioAula.isPlaying || audioAula.isPaused
-                    ? `Progresso: ${formatTime(audioAula.currentTime)} / ${formatTime(audioAula.duration)}`
-                    : "Ouça a aula no trânsito ou se exercitando • Voz Neural pt-BR"}
-              </p>
             </div>
 
             {/* Botão de Ação */}

@@ -201,12 +201,20 @@ export function useAudioAula(options: UseAudioAulaOptions) {
           throw new Error("Nenhum áudio retornado pela API");
         }
 
+        const finalUrl = audioUrl;
         setState((prev) => ({
           ...prev,
           status: "ready",
           progress: 100,
-          audioUrl,
+          audioUrl: finalUrl,
         }));
+
+        // Tenta iniciar a reprodução automaticamente sem fechar o widget
+        if (typeof window !== "undefined") {
+          setTimeout(() => {
+            playAudio(finalUrl);
+          }, 150);
+        }
       } catch (err: any) {
         clearInterval(progressInterval);
         setState((prev) => ({
@@ -222,11 +230,12 @@ export function useAudioAula(options: UseAudioAulaOptions) {
 
   // ── Controles de playback ──────────────────────────────────────────────
 
-  const play = useCallback(() => {
-    if (!state.audioUrl) return;
+  const playAudio = useCallback((urlOverride?: string) => {
+    const targetUrl = urlOverride || state.audioUrl;
+    if (!targetUrl) return;
 
     if (!audioRef.current) {
-      audioRef.current = new Audio(state.audioUrl);
+      audioRef.current = new Audio(targetUrl);
       audioRef.current.playbackRate = state.playbackRate;
 
       audioRef.current.addEventListener("loadedmetadata", () => {
@@ -245,22 +254,19 @@ export function useAudioAula(options: UseAudioAulaOptions) {
         if (intervalRef.current) clearInterval(intervalRef.current);
       });
 
-      audioRef.current.addEventListener("error", () => {
-        setState((prev) => ({
-          ...prev,
-          status: "error",
-          error: "Erro ao reproduzir áudio",
-        }));
+      audioRef.current.addEventListener("error", (e) => {
+        console.warn("[AudioAula] Audio element error:", e);
       });
+    } else {
+      audioRef.current.src = targetUrl;
     }
 
-    audioRef.current.src = state.audioUrl;
     audioRef.current.playbackRate = state.playbackRate;
 
     audioRef.current.play().then(() => {
-      setState((prev) => ({ ...prev, status: "playing" }));
+      setState((prev) => ({ ...prev, status: "playing", audioUrl: targetUrl }));
 
-      // Update current time
+      if (intervalRef.current) clearInterval(intervalRef.current);
       intervalRef.current = setInterval(() => {
         if (audioRef.current) {
           setState((prev) => ({
@@ -271,14 +277,19 @@ export function useAudioAula(options: UseAudioAulaOptions) {
         }
       }, 250);
     }).catch((err) => {
-      console.error("[AudioAula] Play error:", err);
+      console.warn("[AudioAula] Autoplay notice:", err);
+      // Mantém o estado como 'ready' e o widget ativado para o usuário tocar Play
       setState((prev) => ({
         ...prev,
-        status: "error",
-        error: "Falha ao iniciar reprodução",
+        status: "ready",
+        audioUrl: targetUrl,
       }));
     });
   }, [state.audioUrl, state.playbackRate]);
+
+  const play = useCallback(() => {
+    playAudio();
+  }, [playAudio]);
 
   const pause = useCallback(() => {
     if (audioRef.current) {

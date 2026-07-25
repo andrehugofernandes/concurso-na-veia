@@ -223,8 +223,10 @@ export function cleanTextForTTS(text: string): string {
     .replace(/\bex\.\s*/gi, "exemplo, ")
     .replace(/\betc\.\s*/gi, "e assim por diante. ")
     .replace(/\bvs\.\s*/gi, "versus ")
-    .replace(/\bN\.[ºo]\s*/gi, "número ")
-    .replace(/\bn[ºo]\s*/gi, "número ")
+    .replace(/\bN[º°]\.?\s*/g, "número ")
+    .replace(/\bn[º°]\.?\s*/g, "número ")
+    .replace(/\bN\.\s*(?=\d)/g, "número ")
+    .replace(/\bn\.\s*(?=\d)/g, "número ")
     .replace(/\b([0-9]+)[ºª]\s*/g, "$1 ")
 
     // 7. Trata numeração de tópicos/listas (ex: "1. " ou "Módulo 1." -> "1, " ou "Módulo 1:")
