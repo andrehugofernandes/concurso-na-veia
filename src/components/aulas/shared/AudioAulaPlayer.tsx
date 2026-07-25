@@ -129,6 +129,20 @@ export function AudioAulaPlayer({
         hiddenWrapper.appendChild(clone);
         document.body.appendChild(hiddenWrapper);
 
+        // Desbloqueia e exibe todos os elementos colapsados (Accordions fechados, Collapsibles, etc.)
+        clone.querySelectorAll("*").forEach((el) => {
+          const htmlEl = el as HTMLElement;
+          htmlEl.removeAttribute("hidden");
+          if (htmlEl.hasAttribute("data-state")) {
+            htmlEl.setAttribute("data-state", "open");
+          }
+          if (htmlEl.style) {
+            htmlEl.style.display = "block";
+            htmlEl.style.visibility = "visible";
+            htmlEl.style.opacity = "1";
+          }
+        });
+
         // Remove botões, scripts, formulários e o próprio áudio player do clone
         clone
           .querySelectorAll("button, svg, [role='dialog'], input, script, style, form, .audio-aula-player")
