@@ -109,11 +109,10 @@ export function AudioAulaPlayer({
 
     if (typeof document !== "undefined") {
       const activeTabEl =
-        document.querySelector(`[value="modulo-${moduloNumero}"]`) ||
-        document.querySelector(`[data-value="modulo-${moduloNumero}"]`) ||
-        document.querySelector(`[id*="modulo-${moduloNumero}"]`) ||
-        document.querySelector(`[data-state="active"][role="tabpanel"]`) ||
-        document.querySelector(`[data-state="active"]`) ||
+        document.querySelector(`[role="tabpanel"][data-state="active"]`) ||
+        document.querySelector(`div[role="tabpanel"][value="modulo-${moduloNumero}"]`) ||
+        document.querySelector(`div[role="tabpanel"][data-value="modulo-${moduloNumero}"]`) ||
+        document.querySelector(`[role="tabpanel"]`) ||
         document.querySelector(`.space-y-12`);
 
       if (activeTabEl) {
@@ -143,9 +142,9 @@ export function AudioAulaPlayer({
           }
         });
 
-        // Remove botões, scripts, formulários e o próprio áudio player do clone
+        // Remove apenas scripts, formulários, modais e o próprio áudio player (preservando títulos de accordions)
         clone
-          .querySelectorAll("button, svg, [role='dialog'], input, script, style, form, .audio-aula-player")
+          .querySelectorAll("svg, [role='dialog'], input, script, style, form, .audio-aula-player")
           .forEach((el) => el.remove());
 
         const rawText = clone.innerText || clone.textContent || "";
