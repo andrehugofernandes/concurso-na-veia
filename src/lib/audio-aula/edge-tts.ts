@@ -37,13 +37,24 @@ export const VOICES = {
 } as const;
 
 const DEFAULT_VOICE = VOICES.francisca;
-const MAX_CHARS_PER_REQUEST = 1500; // Reduzido de 4000 para evitar timeout/stream closed no WebSocket
+const MAX_CHARS_PER_REQUEST = 3000;
+const MAX_RETRIES = 2;
+
+// ── Helpers ──────────────────────────────────────────────────────────────
+
+function delay(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 // ── Main Function ────────────────────────────────────────────────────────
 
 /**
  * Gera áudio MP3 a partir de texto usando Microsoft Edge TTS.
  * Divide textos longos em chunks e concatena os buffers.
+ *
+ * IMPORTANTE: O texto DEVE ser pré-processado por cleanTextForTTS()
+ * que inclui escape XML (&amp; &lt; &gt;) obrigatório para evitar
+ * quebrar o SSML gerado internamente pela biblioteca msedge-tts.
  */
 export async function generateAudioFromText(
   text: string,
@@ -53,6 +64,7 @@ export async function generateAudioFromText(
   const rate = options.rate || "+0%";
   const pitch = options.pitch || "+0Hz";
   const volume = options.volume || "+0%";
+  const streamOpts = { rate, pitch, volume };
 
   console.log(`[Edge-TTS] 🎙️ Iniciando geração de áudio com voz: ${voice}`);
   console.log(`[Edge-TTS] 📏 Tamanho do texto: ${text.length} caracteres`);
@@ -67,22 +79,20 @@ export async function generateAudioFromText(
     const chunk = chunks[i];
     console.log(`[Edge-TTS] 🔊 Processando chunk ${i + 1}/${chunks.length} (${chunk.length} chars)`);
 
-    let attempt = 0;
-    const maxAttempts = 3;
-    let chunkSuccess = false;
+    let success = false;
 
-    while (attempt < maxAttempts && !chunkSuccess) {
-      attempt++;
+    for (let attempt = 1; attempt <= MAX_RETRIES && !success; attempt++) {
       try {
+        // Pequeno delay entre chunks (não no primeiro)
+        if (i > 0 || attempt > 1) {
+          const waitMs = attempt > 1 ? 2000 * attempt : 500;
+          await delay(waitMs);
+        }
+
         const tts = new MsEdgeTTS();
         await tts.setMetadata(voice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
 
-        const result = tts.toStream(chunk, {
-          rate,
-          pitch,
-          volume,
-        });
-
+        const result = tts.toStream(chunk, streamOpts);
         const stream = result.audioStream;
         const bufferChunks: Buffer[] = [];
 
@@ -90,30 +100,23 @@ export async function generateAudioFromText(
           stream.on("data", (data: Buffer) => {
             bufferChunks.push(data);
           });
-
-          stream.on("end", () => {
-            resolve();
-          });
-
-          stream.on("error", (err: Error) => {
-            reject(err);
-          });
+          stream.on("end", () => resolve());
+          stream.on("error", (err: Error) => reject(err));
         });
 
         const chunkBuffer = Buffer.concat(bufferChunks);
         if (chunkBuffer.length > 0) {
           audioBuffers.push(chunkBuffer);
+          console.log(`[Edge-TTS] ✅ Chunk ${i + 1} processado: ${chunkBuffer.length} bytes (Tentativa ${attempt})`);
+          success = true;
+        } else {
+          console.warn(`[Edge-TTS] ⚠️ Chunk ${i + 1} retornou vazio (Tentativa ${attempt}/${MAX_RETRIES})`);
         }
-
-        console.log(`[Edge-TTS] ✅ Chunk ${i + 1} processado: ${chunkBuffer.length} bytes (Tentativa ${attempt})`);
-        chunkSuccess = true;
       } catch (error: any) {
-        console.warn(`[Edge-TTS] ⚠️ Erro no chunk ${i + 1} (Tentativa ${attempt}/${maxAttempts}):`, error.message);
-        if (attempt >= maxAttempts) {
-          throw new Error(`Falha ao gerar áudio no chunk ${i + 1} após ${maxAttempts} tentativas: ${error.message}`);
+        console.warn(`[Edge-TTS] ⚠️ Erro no chunk ${i + 1} (Tentativa ${attempt}/${MAX_RETRIES}):`, error.message);
+        if (attempt >= MAX_RETRIES) {
+          throw new Error(`Falha ao gerar áudio no chunk ${i + 1} após ${MAX_RETRIES} tentativas: ${error.message}`);
         }
-        // Wait a bit before retrying
-        await new Promise(res => setTimeout(res, 1000));
       }
     }
   }
@@ -124,7 +127,7 @@ export async function generateAudioFromText(
 
   const finalBuffer = Buffer.concat(audioBuffers);
   const wordsCount = text.split(/\s+/).filter(w => w.length > 0).length;
-  const durationEstimate = Math.ceil(wordsCount / 2.5); // ~150 palavras/min = 2.5 palavras/s
+  const durationEstimate = Math.ceil(wordsCount / 2.5);
 
   console.log(`[Edge-TTS] 🏁 Áudio final: ${finalBuffer.length} bytes (~${durationEstimate}s estimados)`);
 

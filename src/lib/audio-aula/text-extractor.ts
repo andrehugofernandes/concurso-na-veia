@@ -251,6 +251,14 @@ export function cleanTextForTTS(text: string): string {
     .replace(/\n{3,}/g, "\n\n")
     .trim();
 
+  // 13. Escape XML/SSML: a biblioteca msedge-tts envolve o texto em tags SSML (XML).
+  // Se o texto contiver &, < ou > fora de tags, o XML fica malformado e o servidor
+  // da Microsoft derruba o WebSocket com "Stream closed before synthesis completed".
+  cleaned = cleaned
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
   return cleaned;
 }
 
