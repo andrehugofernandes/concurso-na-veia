@@ -462,7 +462,7 @@ const AulaAdministracaoTributaria = dynamic<AulaProps>(
 
 const AulaAdministracaoGeralSuprimento = dynamic<AulaProps>(
   () =>
-    import("@/components/aulas/administracao/AulaAdministracaoGeralSuprimento"),
+    import("@/components/aulas/especificas/AulaAdministracaoGeralSuprimento"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,
@@ -471,7 +471,7 @@ const AulaAdministracaoGeralSuprimento = dynamic<AulaProps>(
 
 const AulaGestaoQualidadeSuprimento = dynamic<AulaProps>(
   () =>
-    import("@/components/aulas/administracao/AulaGestaoQualidadeSuprimento"),
+    import("@/components/aulas/especificas/AulaGestaoQualidadeSuprimento"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" />,

@@ -7,11 +7,12 @@ export interface UploadResult {
 }
 
 // Configuração do Firebase Storage (usa variáveis de ambiente do client SDK)
-const FIREBASE_STORAGE_BUCKET = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'passei-no-concurso-b33e0.firebasestorage.app';
+const FIREBASE_STORAGE_BUCKET = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'concurso-na-veia.firebasestorage.app';
+
 
 // Prefixo do app para isolamento de dados no Storage compartilhado
 // Cada app dentro de pmjg-apps-dev tem seu próprio prefixo
-const APP_STORAGE_PREFIX = 'wp2next';
+const APP_STORAGE_PREFIX = 'concurso-na-veia';
 
 /**
  * Faz upload de um arquivo para o Firebase Storage usando a API REST

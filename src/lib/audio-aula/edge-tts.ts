@@ -37,7 +37,7 @@ export const VOICES = {
 } as const;
 
 const DEFAULT_VOICE = VOICES.francisca;
-const MAX_CHARS_PER_REQUEST = 4000;
+const MAX_CHARS_PER_REQUEST = 1500; // Reduzido de 4000 para evitar timeout/stream closed no WebSocket
 
 // ── Main Function ────────────────────────────────────────────────────────
 
@@ -67,42 +67,54 @@ export async function generateAudioFromText(
     const chunk = chunks[i];
     console.log(`[Edge-TTS] 🔊 Processando chunk ${i + 1}/${chunks.length} (${chunk.length} chars)`);
 
-    try {
-      const tts = new MsEdgeTTS();
-      await tts.setMetadata(voice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
+    let attempt = 0;
+    const maxAttempts = 3;
+    let chunkSuccess = false;
 
-      const result = tts.toStream(chunk, {
-        rate,
-        pitch,
-        volume,
-      });
+    while (attempt < maxAttempts && !chunkSuccess) {
+      attempt++;
+      try {
+        const tts = new MsEdgeTTS();
+        await tts.setMetadata(voice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
 
-      const stream = result.audioStream;
-      const bufferChunks: Buffer[] = [];
-
-      await new Promise<void>((resolve, reject) => {
-        stream.on("data", (data: Buffer) => {
-          bufferChunks.push(data);
+        const result = tts.toStream(chunk, {
+          rate,
+          pitch,
+          volume,
         });
 
-        stream.on("end", () => {
-          resolve();
+        const stream = result.audioStream;
+        const bufferChunks: Buffer[] = [];
+
+        await new Promise<void>((resolve, reject) => {
+          stream.on("data", (data: Buffer) => {
+            bufferChunks.push(data);
+          });
+
+          stream.on("end", () => {
+            resolve();
+          });
+
+          stream.on("error", (err: Error) => {
+            reject(err);
+          });
         });
 
-        stream.on("error", (err: Error) => {
-          reject(err);
-        });
-      });
+        const chunkBuffer = Buffer.concat(bufferChunks);
+        if (chunkBuffer.length > 0) {
+          audioBuffers.push(chunkBuffer);
+        }
 
-      const chunkBuffer = Buffer.concat(bufferChunks);
-      if (chunkBuffer.length > 0) {
-        audioBuffers.push(chunkBuffer);
+        console.log(`[Edge-TTS] ✅ Chunk ${i + 1} processado: ${chunkBuffer.length} bytes (Tentativa ${attempt})`);
+        chunkSuccess = true;
+      } catch (error: any) {
+        console.warn(`[Edge-TTS] ⚠️ Erro no chunk ${i + 1} (Tentativa ${attempt}/${maxAttempts}):`, error.message);
+        if (attempt >= maxAttempts) {
+          throw new Error(`Falha ao gerar áudio no chunk ${i + 1} após ${maxAttempts} tentativas: ${error.message}`);
+        }
+        // Wait a bit before retrying
+        await new Promise(res => setTimeout(res, 1000));
       }
-
-      console.log(`[Edge-TTS] ✅ Chunk ${i + 1} processado: ${chunkBuffer.length} bytes`);
-    } catch (error: any) {
-      console.error(`[Edge-TTS] ❌ Erro no chunk ${i + 1}:`, error.message);
-      throw new Error(`Falha ao gerar áudio no chunk ${i + 1}: ${error.message}`);
     }
   }
 

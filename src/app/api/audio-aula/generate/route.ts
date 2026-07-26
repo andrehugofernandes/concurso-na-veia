@@ -12,10 +12,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { generateAudioFromText, VOICES } from "@/lib/audio-aula/edge-tts";
 import { cleanTextForTTS } from "@/lib/audio-aula/text-extractor";
 import { createClient } from "@/lib/supabase/server";
+import { getStorageInstance } from "@/lib/auth";
 
 const FIREBASE_STORAGE_BUCKET =
   process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ||
-  "passei-no-concurso-b33e0.firebasestorage.app";
+  "concurso-na-veia.firebasestorage.app";
 
 // Planos que têm acesso ao Áudio Aula
 const ALLOWED_PLANS = ["elite-total"];
@@ -78,7 +79,7 @@ export async function POST(request: NextRequest) {
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/[^a-z0-9]/g, "-");
 
-    const storagePath = `wp2next/audio-aulas-v11/${materiaFolder}/${sanitizedAulaId}/modulo-${moduloNumero || 1}.mp3`;
+    const storagePath = `concurso-na-veia/audio-aulas-v11/${materiaFolder}/${sanitizedAulaId}/modulo-${moduloNumero || 1}.mp3`;
     const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_STORAGE_BUCKET}/o/${encodeURIComponent(storagePath)}?alt=media`;
 
     // Verifica se já existe no cache do Firebase Storage (v11)
@@ -127,10 +128,8 @@ export async function POST(request: NextRequest) {
       `[API/AudioAula] ✅ Áudio gerado: ${result.audioBuffer.length} bytes (~${result.durationEstimate}s)`
     );
 
-    // 6) Upload para Firebase Storage (cache)
     try {
       const uploadUrl = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_STORAGE_BUCKET}/o?uploadType=media&name=${encodeURIComponent(storagePath)}`;
-
       const uploadRes = await fetch(uploadUrl, {
         method: "POST",
         headers: { "Content-Type": "audio/mpeg" },
@@ -140,8 +139,8 @@ export async function POST(request: NextRequest) {
       if (uploadRes.ok) {
         console.log("[API/AudioAula] 📦 Upload para Firebase concluído:", storagePath);
       } else {
-        const errText = await uploadRes.text();
-        console.warn("[API/AudioAula] ⚠️ Falha no upload (cache perdido):", errText);
+        const errorText = await uploadRes.text();
+        console.warn(`[API/AudioAula] ⚠️ Erro no upload (Status ${uploadRes.status}):`, errorText);
       }
     } catch (uploadErr: any) {
       console.warn("[API/AudioAula] ⚠️ Exceção no upload:", uploadErr.message);

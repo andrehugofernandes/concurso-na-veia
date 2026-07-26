@@ -80,13 +80,13 @@ export function AuthLayout({
     };
 
     loadPublicSettings();
-    window.addEventListener('wp2next:siteLogoUpdated', handleSiteLogoUpdated);
-    window.addEventListener('wp2next:loginParticlesStyleUpdated', handleLoginParticlesStyleUpdated);
+    window.addEventListener('concurso-na-veia:siteLogoUpdated', handleSiteLogoUpdated);
+    window.addEventListener('concurso-na-veia:loginParticlesStyleUpdated', handleLoginParticlesStyleUpdated);
 
     return () => {
       isCancelled = true;
-      window.removeEventListener('wp2next:siteLogoUpdated', handleSiteLogoUpdated);
-      window.removeEventListener('wp2next:loginParticlesStyleUpdated', handleLoginParticlesStyleUpdated);
+      window.removeEventListener('concurso-na-veia:siteLogoUpdated', handleSiteLogoUpdated);
+      window.removeEventListener('concurso-na-veia:loginParticlesStyleUpdated', handleLoginParticlesStyleUpdated);
     };
   }, []);
 

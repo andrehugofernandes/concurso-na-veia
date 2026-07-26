@@ -3363,6 +3363,83 @@ export function ModuleSectionHeader({
   );
 }
 
+export function HtmlToRichSintese({ html }: { html: string }) {
+  const innerHtml = html.replace(/^<div[^>]*>/i, '').replace(/<\/div>$/i, '');
+  
+  const pMatch = innerHtml.match(/<p[^>]*>(.*?)<\/p>/i);
+  const pText = pMatch ? pMatch[1].replace(/<[^>]*>?/gm, '').trim() : "";
+
+  const items: { title: string; desc: string }[] = [];
+  const liRegex = /<li[^>]*>(.*?)<\/li>/gi;
+  let liMatch;
+  
+  while ((liMatch = liRegex.exec(innerHtml)) !== null) {
+    const liContent = liMatch[1];
+    const strongMatch = liContent.match(/<strong[^>]*>(.*?)<\/strong>/i);
+    let title = "";
+    let desc = "";
+    
+    if (strongMatch) {
+      title = strongMatch[1].replace(/<[^>]*>?/gm, '').trim();
+      desc = liContent.replace(strongMatch[0], '').replace(/<[^>]*>?/gm, '').trim();
+    } else {
+      const cleanContent = liContent.replace(/<[^>]*>?/gm, '').trim();
+      const colonIdx = cleanContent.indexOf(':');
+      if (colonIdx !== -1) {
+        title = cleanContent.substring(0, colonIdx).trim();
+        desc = cleanContent.substring(colonIdx + 1).trim();
+      } else {
+        desc = cleanContent;
+      }
+    }
+    
+    title = title.replace(/:$/, '').trim();
+    desc = desc.replace(/^:?\s*/, '').trim();
+    items.push({ title, desc });
+  }
+
+  if (items.length === 0) {
+    return <div dangerouslySetInnerHTML={{ __html: html }} className="prose dark:prose-invert max-w-none text-left" />;
+  }
+
+  const COLOR_CLASSES = [
+    { bg: "bg-emerald-500/5", border: "border-emerald-500/20", text: "text-emerald-600 dark:text-emerald-400" },
+    { bg: "bg-blue-500/5", border: "border-blue-500/20", text: "text-blue-600 dark:text-blue-400" },
+    { bg: "bg-amber-500/5", border: "border-amber-500/20", text: "text-amber-600 dark:text-amber-400" },
+    { bg: "bg-purple-500/5", border: "border-purple-500/20", text: "text-purple-600 dark:text-purple-400" },
+    { bg: "bg-rose-500/5", border: "border-rose-500/20", text: "text-rose-600 dark:text-rose-400" },
+    { bg: "bg-cyan-500/5", border: "border-cyan-500/20", text: "text-cyan-600 dark:text-cyan-400" }
+  ];
+
+  return (
+    <>
+      <div className="text-6xl my-6 animate-pulse">🎯 🧠</div>
+      {pText && (
+        <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto italic">
+          "{pText}"
+        </p>
+      )}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
+        {items.map((item, idx) => {
+          const color = COLOR_CLASSES[idx % COLOR_CLASSES.length];
+          return (
+            <div key={idx} className={`p-5 ${color.bg} border ${color.border} rounded-2xl shadow-sm hover:shadow-md transition-shadow`}>
+              {item.title && (
+                <h4 className={`text-lg font-bold ${color.text} mb-2`}>
+                  {item.title}
+                </h4>
+              )}
+              <p className="text-md text-muted-foreground leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+}
+
 export function AutoRichSintese({ title, content, variant }: { title: string; content: string; variant?: string }) {
   // Try to split the content by "." to extract sentences
   const sentences = content.split(/\.\s+/).filter(s => s.trim().length > 0);

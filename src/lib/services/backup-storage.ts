@@ -7,7 +7,7 @@
 const FIREBASE_STORAGE_BUCKET = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'pmjg-apps-dev.firebasestorage.app';
 
 // Prefixo do app no bucket compartilhado (mesmo padrão usado em uploads de mídia)
-const APP_STORAGE_PREFIX = 'wp2next';
+const APP_STORAGE_PREFIX = 'concurso-na-veia';
 
 // ============================================================================
 // Types

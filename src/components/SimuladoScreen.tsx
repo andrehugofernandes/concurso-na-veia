@@ -168,7 +168,7 @@ export default function SimuladoScreen({
                         {/* Question Text */}
                         <div
                             className="text-xl md:text-2xl font-bold text-foreground mb-10 leading-relaxed tracking-tight"
-                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questao.enunciado) }}
+                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questao?.enunciado || "Enunciado não carregado") }}
                         />
 
                         {/* Alternatives */}

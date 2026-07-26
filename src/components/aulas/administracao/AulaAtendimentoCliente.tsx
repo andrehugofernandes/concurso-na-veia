@@ -98,29 +98,13 @@ export default function AulaAtendimentoCliente({
             <section className="space-y-8">
               <ModuleSectionHeader index="INTRO" title={`Introdução ao Módulo ${num}`} variant={variantColor} />
               
-              <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start my-8">
-                <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+              <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+
                   {moduleContent?.paragraphs?.map((paragraph: any, idx: number) => (
                     <p key={idx} dangerouslySetInnerHTML={{ __html: paragraph.text }} />
                   ))}
-                </div>
-                <div className="shrink-0 space-y-2 w-full max-w-[320px] mx-auto lg:mx-0">
-                  <div 
-                    className="cursor-zoom-in hover:scale-[1.02] transition-transform duration-200"
-                    onClick={() => setZoomedImage(`/assets/images/suprimento/content/atendimento-cliente-suprimento/modulo-${num}/m${num}-intro.png`)}
-                  >
-                    <img
-                      src={`/assets/images/suprimento/content/atendimento-cliente-suprimento/modulo-${num}/m${num}-intro.png`}
-                      alt={`Visualização Módulo ${num}`}
-                      className="w-full rounded-2xl border border-border/20 shadow-lg"
-                      onError={(e) => {
-                        (e.target as HTMLElement).style.display = 'none';
-                      }}
-                    />
-                  </div>
-                  <p className="text-sm text-muted-foreground text-center">Fig {num}. Representação conceitual.</p>
-                </div>
-              </div>
+                
+</div>
             </section>
 
             <section className="space-y-8">

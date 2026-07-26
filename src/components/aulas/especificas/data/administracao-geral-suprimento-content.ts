@@ -9,8 +9,14 @@ export interface FlipCardData {
   conteudoVerso: string;
 }
 
+export interface AccordionSlide {
+  titulo: string;
+  conteudo: string;
+}
+
 export interface ModuleData {
   introducaoCEDEA: string[];
+  accordions?: AccordionSlide[];
   flipcards: FlipCardData[];
   sinteseEstrategica: {
     title: string;
@@ -37,723 +43,757 @@ export const MODULE_DEFS = [
 
 export const MODULE_CONTENTS: Record<number, ModuleData> = {
   1: {
-    "introducaoCEDEA": [
-      "O planejamento estratégico representa o nível mais elevado e abrangente do processo de planejamento de uma organização. Ele estabelece as diretrizes fundamentais, a visão de futuro e a missão da instituição, servindo como norteador para todas as decisões subsequentes de médio e curto prazo.",
-      "No contexto da Petrobras, o planejamento estratégico de longo prazo deve ser robusto o suficiente para enfrentar as oscilações do mercado global de petróleo, a transição energética e as demandas de conformidade legal, definindo onde a estatal deseja se posicionar nos próximos dez a vinte anos.",
-      "Para operacionalizar essas diretrizes, a empresa desenvolve o planejamento tático, que traduz a estratégia macro em planos de ação específicos para as diferentes unidades de negócios e departamentos. É nesse nível intermediário que se decidem as alocações de recursos específicos e as metas departamentais, como as metas de exploração de uma determinada bacia de refino.",
-      "O planejamento operacional, por sua vez, é detalhado e de curto prazo, focando na execução rotineira das atividades. Ele define cronogramas, escalas de trabalho e fluxos de tarefas imediatas, como as atividades diárias de manutenção em uma plataforma de petróleo específica, garantindo que o plano estratégico global seja efetivado no chão de fábrica.",
-      "A perfeita integração e o alinhamento vertical entre os níveis estratégico, tático e operacional são as chaves para que a Petrobras atinja seus objetivos organizacionais de forma eficiente e sustentável.",
-      "A ausência de um desdobramento tático adequado deixa as equipes operacionais sem rumo e sem clareza sobre como suas tarefas diárias contribuem para a visão de futuro estabelecida pela diretoria executiva da empresa.",
-      "Em cenários de crise ou mudanças bruscas de mercado, a flexibilidade nos planejamentos operacionais e táticos é essencial para absorver os impactos sem que a missão estratégica de longo prazo seja desconfigurada.",
-      "A mensuração contínua do progresso por meio de indicadores de desempenho é uma prática intrinseca ao planejamento, garantindo que os desvios sejam identificados e corrigidos rapidamente em todos os níveis.",
-      "Para a banca CESGRANRIO, é fundamental diferenciar claramente os horizontes temporais (longo, médio e curto prazo), os níveis de decisão (institucional, intermediário e operacional) e a abrangência (global, departamental e específica) de cada tipo de planejamento.",
-      "As questões frequentemente cobram a capacidade do candidato de identificar qual nível de planejamento está sendo descrito em um estudo de caso prático envolvendo uma empresa pública ou sociedade de economia mista."
+    introducaoCEDEA: [
+      "O planejamento estratégico representa a espinha dorsal de qualquer organização moderna, configurando-se como o nível mais elevado e abrangente do processo administrativo. Ele transcende a mera alocação de recursos, estabelecendo as diretrizes fundamentais, a visão de futuro e a missão institucional, elementos que servem como norteadores absolutos para todas as decisões subsequentes de médio e curto prazo em um ambiente corporativo volátil.",
+      "No contexto específico de operações de alta complexidade como as da Petrobras, o planejamento de longo prazo exige uma robustez ímpar para enfrentar as brutais oscilações do mercado global de commodities, os imperativos da transição energética e as severas demandas de conformidade legal. É nesta etapa de formulação macro que a estatal define com precisão onde deseja se posicionar estrategicamente nas próximas décadas, mitigando riscos sistêmicos e garantindo a soberania energética e o retorno aos acionistas.",
+      "Para operacionalizar essas diretrizes globais, a arquitetura organizacional desenvolve o planejamento tático, um desdobramento que traduz a estratégia macro em planos de ação específicos para as diferentes unidades de negócios e departamentos isolados. É nesse nível gerencial intermediário que se decidem as alocações de recursos específicos, orçamentos setoriais e as metas departamentais, funcionando como um elo de tradução indispensável entre a alta cúpula e a base produtiva da empresa.",
+      "O planejamento operacional, por sua vez, caracteriza-se pela sua extrema minúcia e foco no curto prazo, dedicando-se exclusivamente à execução rotineira e padronizada das atividades laborais. Ele define cronogramas diários, escalas de trabalho precisas e fluxos de tarefas imediatas, garantindo que as grandes diretrizes estratégicas sejam efetivamente materializadas no chão de fábrica e nas operações de linha de frente, sem margem para improvisações.",
+      "Em uma aplicação prática, enquanto a diretoria executiva (nível estratégico) decide investir bilhões na exploração de energia eólica offshore nos próximos 15 anos, a gerência de engenharia (nível tático) elabora um plano de três anos para capacitar a equipe técnica e adquirir equipamentos específicos. Simultaneamente, o supervisor da plataforma (nível operacional) define a escala de turno da equipe que fará a manutenção dos sensores na semana atual, demonstrando o perfeito alinhamento vertical das decisões.",
+      "A ausência de um desdobramento tático adequado é um erro crasso e letal para grandes corporações, pois deixa as equipes operacionais completamente à deriva, executando tarefas de forma isolada e sem qualquer clareza sobre como suas rotinas exaustivas contribuem, de fato, para a visão de futuro estabelecida pela diretoria. Sem esse alinhamento, a organização desperdiça recursos preciosos em atividades que não geram valor estratégico real.",
+      "Em cenários de crise aguda ou mudanças abruptas e imprevisíveis de mercado — como choques nos preços do petróleo ou crises sanitárias globais —, a flexibilidade embutida nos planejamentos táticos e operacionais torna-se a principal ferramenta de resiliência corporativa. Essa capacidade de adaptação rápida na base permite que a empresa absorva os impactos externos sem que a sua missão e os seus objetivos estratégicos de longo prazo sejam irreversivelmente desconfigurados ou abandonados.",
+      "Além disso, a mensuração contínua do progresso por meio de indicadores-chave de desempenho (KPIs) não é um evento isolado, mas uma prática intrínseca e indissociável de qualquer nível de planejamento. A retroalimentação constante garante que os desvios operacionais sejam identificados e corrigidos cirurgicamente em tempo real, evitando que pequenas ineficiências departamentais se transformem em rombos financeiros que comprometam a sustentabilidade do negócio.",
+      "Para as provas elaboradas pela banca CESGRANRIO, é rigorosamente obrigatório que o candidato saiba diferenciar os horizontes temporais (longo, médio e curto prazo), os níveis de decisão hierárquica (institucional, intermediário e operacional) e a abrangência (global, departamental e específica) inerentes a cada tipologia de planejamento, pois essas são as chaves-mestras para a resolução de questões diretas e estudos de caso complexos.",
+      "As questões da CESGRANRIO frequentemente cobram a habilidade de analisar um estudo de caso narrativo envolvendo uma sociedade de economia mista e identificar de forma inequívoca qual nível de planejamento está sendo descrito nas atitudes dos gestores. O candidato de alto desempenho não pode confundir ações departamentais de médio prazo com diretrizes globais da alta direção corporativa."
     ],
-    "flipcards": [
+    accordions: [
       {
-        "categoria": "Nível Estratégico",
-        "tituloFrente": "Planejamento Macro",
-        "iconeFrente": "LuBookOpen",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Foco a Longo Prazo",
-        "conteudoVerso": "Define a <strong>missão, visão e valores</strong> da Petrobras. Abrange toda a organização com foco no longo prazo e na adaptação ao ambiente externo. 🏢"
+        titulo: "Habilidades Administrativas de Robert Katz",
+        conteudo: "<p>Katz dividiu as habilidades gerenciais em 3 categorias essenciais:</p><ul class='list-disc pl-5 mt-2 space-y-2'><li><strong>Habilidades Técnicas:</strong> Conhecimento especializado e execução de tarefas. Predominam no <em>nível operacional</em>.</li><li><strong>Habilidades Humanas:</strong> Capacidade de lidar com pessoas, liderar e comunicar. Fundamentais em <em>todos os níveis</em>.</li><li><strong>Habilidades Conceituais:</strong> Visão sistêmica da organização e do ambiente. Prioridade máxima no <em>nível estratégico</em>.</li></ul>"
       },
       {
-        "categoria": "Nível Tático",
-        "tituloFrente": "Planejamento Setorial",
-        "iconeFrente": "LuLayers",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Foco a Médio Prazo",
-        "conteudoVerso": "Traduz o plano macro em <strong>metas para departamentos</strong> ou unidades de negócios. Horizonte de médio prazo. 📊"
-      },
-      {
-        "categoria": "Nível Operacional",
-        "tituloFrente": "Execução Diária",
-        "iconeFrente": "LuTarget",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Foco a Curto Prazo",
-        "conteudoVerso": "Detalha as <strong>atividades e tarefas rotineiras</strong>. Curto prazo, alta especificidade e procedimentos claros. ⚙️"
-      },
-      {
-        "categoria": "Alinhamento",
-        "tituloFrente": "Integração de Níveis",
-        "iconeFrente": "LuTriangle",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Cascateamento",
-        "conteudoVerso": "Os planos devem ser <strong>alinhados verticalmente</strong>: o operacional viabiliza o tático, que por sua vez viabiliza o estratégico. 🔗"
-      },
-      {
-        "categoria": "Indicadores",
-        "tituloFrente": "Métricas de Sucesso",
-        "iconeFrente": "LuCheck",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Mensuração",
-        "conteudoVerso": "Cada nível exige <strong>indicadores de desempenho (KPIs)</strong> adequados para monitoramento e correção de desvios. 📈"
-      },
-      {
-        "categoria": "Pegadinha de Prova",
-        "tituloFrente": "Foco CESGRANRIO",
-        "iconeFrente": "LuMessageSquare",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Cuidado!",
-        "conteudoVerso": "A banca adora confundir a <strong>abrangência departamental (tático)</strong> com a <strong>execução específica de tarefas (operacional)</strong>. Atenção aos termos! ⚠️"
+        titulo: "Os 10 Papéis Gerenciais de Mintzberg",
+        conteudo: "<p>Dividendos em 3 famílias de papéis:</p><ul class='list-disc pl-5 mt-2 space-y-2'><li><strong>Interpessoais:</strong> Símbolo, Líder, Ligação.</li><li><strong>Informacionais:</strong> Monitor, Disseminador, Porta-voz.</li><li><strong>Decisórios:</strong> Empreendedor, Solucionador de Distúrbios, Alocador de Recursos, Negociador.</li></ul>"
       }
     ],
-    "sinteseEstrategica": {
-      "title": "Mnemônico dos Níveis de Planejamento",
-      "content": "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>Para a prova, lembre-se do triângulo da gestão:</p><ul class='list-disc pl-5 mt-2'><li><strong>Estratégico:</strong> Direção, Futuro, Longo Prazo, Alta Cúpula.</li><li><strong>Tático:</strong> Departamentos, Integração, Médio Prazo, Gerentes.</li><li><strong>Operacional:</strong> Tarefas, Rotina, Curto Prazo, Supervisores/Executores.</li></ul></div>"
+    flipcards: [
+      {
+        categoria: "Nível Estratégico",
+        tituloFrente: "Planejamento Macro",
+        iconeFrente: "LuBookOpen",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Foco a Longo Prazo",
+        conteudoVerso: "Define a <strong>missão, visão e valores</strong> da Petrobras. Abrange toda a organização com foco no longo prazo e na adaptação ao ambiente externo. 🏢"
+      },
+      {
+        categoria: "Nível Tático",
+        tituloFrente: "Planejamento Setorial",
+        iconeFrente: "LuLayers",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Foco a Médio Prazo",
+        conteudoVerso: "Traduz o plano macro em <strong>metas para departamentos</strong> ou unidades de negócios. Horizonte de médio prazo. 📊"
+      },
+      {
+        categoria: "Nível Operacional",
+        tituloFrente: "Execução Diária",
+        iconeFrente: "LuTarget",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Foco a Curto Prazo",
+        conteudoVerso: "Detalha as <strong>atividades e tarefas rotineiras</strong>. Curto prazo, alta especificidade e procedimentos claros. ⚙️"
+      },
+      {
+        categoria: "Alinhamento",
+        tituloFrente: "Integração de Níveis",
+        iconeFrente: "LuTriangle",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Cascateamento",
+        conteudoVerso: "Os planos devem ser <strong>alinhados verticalmente</strong>: o operacional viabiliza o tático, que por sua vez viabiliza o estratégico. 🔗"
+      },
+      {
+        categoria: "Indicadores",
+        tituloFrente: "Métricas de Sucesso",
+        iconeFrente: "LuCheck",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Mensuração",
+        conteudoVerso: "Cada nível exige <strong>indicadores de desempenho (KPIs)</strong> adequados para monitoramento e correção de desvios. 📈"
+      },
+      {
+        categoria: "Pegadinha de Prova",
+        tituloFrente: "Foco CESGRANRIO",
+        iconeFrente: "LuMessageSquare",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Cuidado!",
+        conteudoVerso: "A banca adora confundir a <strong>abrangência departamental (tático)</strong> com a <strong>execução específica de tarefas (operacional)</strong>. Atenção aos termos! ⚠️"
+      }
+    ],
+    sinteseEstrategica: {
+      title: "Mnemônico dos Níveis de Planejamento",
+      content: "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>Para a prova, lembre-se do triângulo da gestão:</p><ul class='list-disc pl-5 mt-2'><li><strong>Estratégico:</strong> Direção, Futuro, Longo Prazo, Alta Cúpula.</li><li><strong>Tático:</strong> Departamentos, Integração, Médio Prazo, Gerentes.</li><li><strong>Operacional:</strong> Tarefas, Rotina, Curto Prazo, Supervisores/Executores.</li></ul></div>"
     },
-    "audio": {
-      "titulo": "Podcast Módulo 1 - Planejamento Organizacional",
-      "artista": "Concurso Na Veia"
-    }
+    audio: { titulo: "Podcast Módulo 1 - Planejamento Organizacional", artista: "Concurso Na Veia" }
   },
   2: {
-    "introducaoCEDEA": [
-      "A função administrativa de organização é o processo de estruturar a empresa de forma a facilitar o alcance dos objetivos planejados. Ela consiste em dividir o trabalho, definir as responsabilidades, estabelecer a hierarquia e coordenar as atividades.",
-      "Na estrutura organizacional da Petrobras, a divisão do trabalho deve ser desenhada com precisão cirúrgica, separando funções técnicas de exploração, refino, transporte e distribuição em diretorias e gerências especializadas.",
-      "A autoridade e a responsabilidade são distribuídas ao longo de uma cadeia de comando clara, garantindo que as decisões críticas sobre segurança operacional e investimentos tenham fluxos formais de aprovação e governança.",
-      "A alocação de recursos, tanto humanos quanto materiais, é realizada de maneira estratégica para maximizar a eficiência, evitando redundâncias e garantindo que cada equipe tenha o suporte necessário para suas operações.",
-      "A coordenação é o elo que unifica os esforços dispersos in prol do objetivo comum, integrando diferentes áreas e projetos que funcionam de forma interdependente na cadeia produtiva do petróleo.",
-      "Modelos de estruturas como a funcional, linear ou matricial oferecem diferentes vantagens e desvantagens que impactam diretamente a velocidade de resposta da organização e a especialização das equipes.",
-      "A centralização versus descentralização define onde o poder de decisão reside, influenciando o grau de autonomia dos gerentes locais nas plataformas e refinarias da estatal.",
-      "Uma estrutura inadequada gera gargalos na comunicação, conflitos de autoridade e atrasos em projetos de grande complexidade, elevando o custo de transação da firma.",
-      "Para a banca CESGRANRIO, as questões costumam focar na identificação de elementos da estrutura organizacional (cadeia de comando, amplitude administrativa, departamentalização) in situações hipotéticas corporativas.",
-      "É essencial dominar as características da departamentalização por projetos, matricial e funcional, relacionando-as com a eficiência e a flexibilidade exigidas em grandes corporações públicas."
+    introducaoCEDEA: [
+      "A função administrativa de organização transcende a simples alocação física de pessoas e mesas, configurando-se como o complexo processo de estruturar a empresa de maneira lógica para facilitar o alcance milimétrico dos objetivos estratégicos planejados. Ela consiste em dividir o trabalho humano de forma inteligente, definir as esferas de responsabilidade, estabelecer a hierarquia formal e coordenar as atividades em um ecossistema produtivo sinérgico.",
+      "Na vasta e complexa estrutura organizacional de uma gigante como a Petrobras, a divisão do trabalho deve ser desenhada com precisão absoluta e cirúrgica, separando com clareza as intrincadas funções técnicas de exploração offshore, refino de altíssima complexidade, transporte logístico e distribuição comercial. Cada uma dessas frentes exige diretorias e gerências altamente especializadas, capazes de operar com autonomia, mas sem perder o alinhamento central.",
+      "A autoridade legal e a responsabilidade corporativa são distribuídas metodicamente ao longo de uma cadeia de comando cristalina, garantindo que todas as decisões críticas, especialmente aquelas referentes à segurança operacional e investimentos multibilionários, possuam fluxos formais, auditáveis e rigorosos de aprovação e governança. Isso impede ações unilaterais que poderiam colocar em risco a integridade da companhia.",
+      "A alocação criteriosa de recursos, tanto o capital humano especializado quanto os recursos materiais e tecnológicos de ponta, é realizada de maneira puramente estratégica para maximizar a eficiência global. Esse rigor estrutural visa eliminar impiedosamente as redundâncias operacionais, garantindo que cada equipe departamental tenha exatamente o suporte e a verba necessários para executar suas operações sem desperdícios ou ociosidade.",
+      "A coordenação funciona como a argamassa institucional que unifica os esforços naturalmente dispersos das diversas áreas em prol do objetivo comum estabelecido pela alta direção. Ao integrar um projeto monumental, geólogos, engenheiros de poço, analistas financeiros e especialistas ambientais precisam atuar de forma interdependente, onde a saída do processo de um profissional torna-se o insumo imediato para o início do trabalho do outro.",
+      "A escolha do modelo de departamentalização é vital: enquanto a estrutura funcional agrupa especialistas (como todos os engenheiros juntos) promovendo alta excelência técnica mas pouca comunicação intersetorial, a estrutura matricial cruza gerentes de função com gerentes de projetos, forçando a integração, mas gerando o desafio prático da dupla subordinação para os funcionários, o que pode causar graves conflitos de autoridade se não houver maturidade corporativa.",
+      "O eterno debate entre a centralização e a descentralização define com precisão onde o poder real de decisão reside na teia organizacional, fator que influencia diretamente o grau de autonomia e o tempo de resposta dos gerentes locais nas plataformas marítimas e refinarias terrestres. Decisões estratégicas tendem a ser retidas no topo, enquanto decisões puramente operacionais devem ser pulverizadas na base para dar agilidade à firma.",
+      "Uma estrutura organizacional mal desenhada, engessada ou antiquada gera inevitavelmente funestos gargalos na comunicação interna, intensifica os conflitos territoriais de autoridade e provoca atrasos crônicos em projetos de grande complexidade técnica. Em última análise, essa ineficiência estrutural eleva drasticamente o custo de transação interno da empresa, corroendo suas margens de lucro e sua competitividade global.",
+      "No rigoroso escopo de cobrança da banca CESGRANRIO, as questões de múltipla escolha costumam focar de maneira implacável na identificação prática de elementos estruturais primordiais, exigindo que o candidato relacione conceitos como cadeia de comando, amplitude administrativa de controle e modelos específicos de departamentalização com situações corporativas hipotéticas de elevada tensão.",
+      "É de vital importância dominar as minúcias e as características distintivas da departamentalização por projetos (temporária e focada em resultados), da estrutura matricial (que quebra a unidade de comando clássica) e da departamentalização funcional (que foca na especialização profunda), relacionando-as perfeitamente com os trade-offs de eficiência, comunicação e flexibilidade exigidos em grandes corporações do setor público."
     ],
-    "flipcards": [
+    accordions: [
       {
-        "categoria": "Função Organizar",
-        "tituloFrente": "Papel da Organização",
-        "iconeFrente": "LuBookOpen",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Estruturação",
-        "conteudoVerso": "Consiste em <strong>distribuir tarefas, recursos e autoridade</strong> para que os planos estratégicos sejam executados de forma coordenada. 🏗️"
-      },
-      {
-        "categoria": "Divisão do Trabalho",
-        "tituloFrente": "Especialização",
-        "iconeFrente": "LuLayers",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Foco na Eficiência",
-        "conteudoVerso": "Divide as tarefas complexas em <strong>atividades menores e especializadas</strong>, aumentando a produtividade e a destreza dos colaboradores. ⚙️"
-      },
-      {
-        "categoria": "Departamentalização",
-        "tituloFrente": "Agrupamento",
-        "iconeFrente": "LuTarget",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Tipos de Estruturas",
-        "conteudoVerso": "Agrupa atividades afins em unidades específicas (departamentos), que podem ser por <strong>função, produto, cliente, região ou projeto</strong>. 📂"
-      },
-      {
-        "categoria": "Hierarquia",
-        "tituloFrente": "Cadeia de Comando",
-        "iconeFrente": "LuTriangle",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Autoridade e Poder",
-        "conteudoVerso": "Define a <strong>linha formal de autoridade</strong> que liga todos os cargos da organização, determinando quem se reporta a quem. 👑"
-      },
-      {
-        "categoria": "Amplitude",
-        "tituloFrente": "Limite de Controle",
-        "iconeFrente": "LuCheck",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Subordinados",
-        "conteudoVerso": "Representa o <strong>número de pessoas sob a supervisão direta</strong> de um único gestor, afetando o número de níveis hierárquicos. 👥"
-      },
-      {
-        "categoria": "Pegadinha de Prova",
-        "tituloFrente": "Foco CESGRANRIO",
-        "iconeFrente": "LuMessageSquare",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Estrutura Matricial",
-        "conteudoVerso": "A banca cobra muito a <strong>estrutura matricial</strong>, que mescla a funcional com a de projetos, gerando a dupla subordinação. Cuidado! ⚠️"
+        titulo: "Tipos Principais de Departamentalização",
+        conteudo: "<p>Classificação clássica exigida em concursos:</p><ul class='list-disc pl-5 mt-2 space-y-2'><li><strong>Funcional:</strong> Agrupa por especialidades afins (Financeiro, Suprimentos, RH). Promove alta especialização.</li><li><strong>Por Produtos/Serviços:</strong> Agrupa por linhas de saída (Gasolina, Diesel, Lubrificantes). Foco na flexibilidade.</li><li><strong>Matricial:</strong> Combina estrutura funcional e por projetos. Dupla subordinação (exige maturidade cultural).</li><li><strong>Geográfica/Territorial:</strong> Agrupa por regiões atendidas (Bacia de Santos, Nordeste, Internacional).</li></ul>"
       }
     ],
-    "sinteseEstrategica": {
-      "title": "Tabela Rápida de Departamentalização",
-      "content": "<div class='p-4 bg-slate-800 text-white rounded-lg'><ul class='list-disc pl-5'><li><strong>Funcional:</strong> Agrupa por especialidade (ex: Financeiro, RH). Alta especialização.</li><li><strong>Por Projetos:</strong> Foco em resultados temporários. Alta flexibilidade.</li><li><strong>Matricial:</strong> Dupla subordinação (Funcional + Projetos). Requer alta coordenação.</li></ul></div>"
+    flipcards: [
+      {
+        categoria: "Função Organizar",
+        tituloFrente: "Papel da Organização",
+        iconeFrente: "LuBookOpen",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Estruturação",
+        conteudoVerso: "Consiste em <strong>distribuir tarefas, recursos e autoridade</strong> para que os planos estratégicos sejam executados de forma coordenada. 🏗️"
+      },
+      {
+        categoria: "Divisão do Trabalho",
+        tituloFrente: "Especialização",
+        iconeFrente: "LuLayers",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Foco na Eficiência",
+        conteudoVerso: "Divide as tarefas complexas em <strong>atividades menores e especializadas</strong>, aumentando a produtividade e a destreza dos colaboradores. ⚙️"
+      },
+      {
+        categoria: "Departamentalização",
+        tituloFrente: "Agrupamento",
+        iconeFrente: "LuTarget",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Tipos de Estruturas",
+        conteudoVerso: "Agrupa atividades afins em unidades específicas (departamentos), que podem ser por <strong>função, produto, cliente, região ou projeto</strong>. 📂"
+      },
+      {
+        categoria: "Hierarquia",
+        tituloFrente: "Cadeia de Comando",
+        iconeFrente: "LuTriangle",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Fluxo de Autoridade",
+        conteudoVerso: "Linha contínua de autoridade que liga o topo executivo ao chão de fábrica, definindo quem se reporta a quem. 📐"
+      },
+      {
+        categoria: "Amplitude",
+        tituloFrente: "Amplitude de Controle",
+        iconeFrente: "LuCheck",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Subordinados por Gestor",
+        conteudoVerso: "Número de pessoas sob o comando direto de um único gerente. Define se a estrutura é <strong>aguda (alta)</strong> ou <strong>achatada (plana)</strong>. 👥"
+      },
+      {
+        categoria: "Pegadinha de Prova",
+        tituloFrente: "Estrutura Matricial",
+        iconeFrente: "LuMessageSquare",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Dupla Subordinação",
+        conteudoVerso: "A estrutura matricial rompe o princípio clássico da <strong>unidade de comando</strong> (o funcionário tem dois chefes). Cuidado na prova! ⚠️"
+      }
+    ],
+    sinteseEstrategica: {
+      title: "Mnemônico dos Tipos de Estrutura",
+      content: "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>Dica de prova para Departamentalização:</p><ul class='list-disc pl-5 mt-2'><li><strong>Funcional:</strong> Foco no CONHECIMENTO (Economia de escala)</li><li><strong>Projetos:</strong> Foco no RESULTADO (Flexibilidade)</li><li><strong>Matricial:</strong> Foco AMBOS (Dupla subordinação)</li></ul></div>"
     },
-    "audio": {
-      "titulo": "Podcast Módulo 2 - Estrutura e Organização",
-      "artista": "Concurso Na Veia"
-    }
+    audio: { titulo: "Podcast Módulo 2 - Estrutura e Organização", artista: "Concurso Na Veia" }
   },
   3: {
-    "introducaoCEDEA": [
-      "A função de direção é a responsável por guiar, orientar, motivar e liderar os recursos humanos da organização para a realização dos objetivos planejados e organizados. Ela atua diretamente no comportamento das pessoas no ambiente de trabalho.",
-      "Na Petrobras, a direção de equipes de alta performance em ambientes complexos e perigosos, como plataformas em alto mar, exige lideranças adaptáveis, com forte foco em segurança e comunicação assertiva.",
-      "Liderança não se confunde com chefia; o líder influencia e inspira sua equipe voluntariamente, enquanto o chefe apoia-se em sua autoridade formal e posição na hierarquia.",
-      "As teorias sobre liderança (traços, comportamentais e situacionais) buscam compreender quais estilos são mais eficazes em diferentes contextos e como desenvolver essas competências nos gestores.",
-      "A motivação é um fator intrínseco, mas que pode ser influenciado pelo ambiente de trabalho, pelas políticas de reconhecimento e pelo design das tarefas, conforme explicam teorias como a de Maslow e a de Herzberg.",
-      "A comunicação eficaz é a ferramenta essencial da direção, garantindo que as informações circulem de forma clara e que não ocorram ruídos que prejudiquem a execução das tarefas.",
-      "A gestão do clima organizacional e a resolução de conflitos são atribuições críticas do líder, visando manter um ambiente de cooperação e produtividade sustentável.",
-      "Líderes autocráticos, democráticos e liberais geram impactos distintos no engajamento da equipe, na velocidade de decisão e na criatividade organizacional.",
-      "Para a banca CESGRANRIO, as teorias motivacionais de Herzberg (fatores higiênicos x motivacionais) e a Hierarquia das Necessidades de Maslow são cobradas recorrentemente.",
-      "O candidato deve ser capaz de associar o estilo de liderança correto (autocrático, democrático, liberal ou situacional) a diferentes cenários e problemas gerenciais apresentados na prova."
+    introducaoCEDEA: [
+      "A função administrativa de direção é indiscutivelmente o núcleo humano da gestão corporativa, envolvendo a arte e a técnica de guiar, motivar intensamente e liderar os recursos humanos em direção ao alcance implacável dos objetivos definidos no plano de negócios. Distribuída capilarmente em todos os níveis hierárquicos, a direção é a única função que lida diretamente com a complexidade, a imprevisibilidade e a dinâmica singular do comportamento humano no ambiente laboral.",
+      "Na realidade operacional de empresas de energia como a Petrobras, o exercício da liderança em ambientes offshore ou industriais de altíssimo risco e confinamento exige dos gestores uma inteligência emocional extraordinária, uma comunicação assertiva e transparente, e a rara capacidade de manter equipes multidisciplinares altamente engajadas, mesmo sob a pressão esmagadora de prazos críticos e normas rígidas de segurança (SMS).",
+      "O substrato teórico da direção apoia-se nas teorias motivacionais, que se ramificam em teorias de conteúdo (que mapeiam o que, de fato, motiva o ser humano) e teorias de processo (que descrevem como ocorre a mecânica da motivação). A consagrada Hierarquia das Necessidades de Abraham Maslow estrutura esse desejo em uma pirâmide rígida de cinco patamares fundamentais: necessidades fisiológicas, de segurança, sociais, de estima e, no topo, a autorrealização profunda.",
+      "Por outro lado, a Teoria Bifatorial de Frederick Herzberg propõe uma ruptura paradigmática ao afirmar que a satisfação e a insatisfação não são extremos do mesmo contínuo. Ele diferencia categoricamente os Fatores Higiênicos (elementos extrínsecos do ambiente, como salário base e iluminação, que apenas evitam a insatisfação) dos Fatores Motivacionais (elementos intrínsecos ao cargo, como reconhecimento, autonomia e crescimento, que de fato geram a verdadeira motivação e o orgulho profissional).",
+      "As polarizadas Teorias X e Y de Douglas McGregor contrastam de forma visceral duas visões gerenciais sobre a natureza do trabalhador: a obsoleta Teoria X assume que o funcionário é inato e irremediavelmente indolente, evita o esforço e, portanto, exige coerção e controle militar; já a moderna Teoria Y pressupõe que o trabalho é tão natural quanto o lazer e que as pessoas, quando devidamente estimuladas, buscam proativamente assumir grandes responsabilidades criativas.",
+      "A manifestação prática da direção revela-se nos estilos de liderança clássicos: enquanto o líder Autocrático centraliza o poder absoluto de forma impositiva e não consulta a equipe, o líder Democrático encoraja a tomada de decisão compartilhada e constrói consensos. Já o líder Liberal (Laissez-faire) adota uma postura de máxima delegação, abdicando do controle direto e exigindo que a própria equipe possua uma altíssima maturidade e autogestão técnica para entregar os resultados esperados.",
+      "Avançando nas abordagens contemporâneas, a Teoria da Liderança Situacional defende com veemência que não existe, em hipótese alguma, um único estilo de gestão universalmente perfeito. O gestor de excelência deve possuir a flexibilidade de adaptar o seu comportamento — oscilando entre ser altamente diretivo ou profundamente apoiador — calibrando sua atuação de acordo com o nível específico de maturidade técnica e psicológica de cada liderado diante da tarefa designada.",
+      "No topo da influência interpessoal encontra-se a Liderança Transformacional, um estilo carismático que inspira e provoca os liderados a transcenderem seus próprios interesses individuais, abraçando apaixonadamente a visão de futuro da organização. Em contraste absoluto, a Liderança Transacional atua como uma via de mão dupla mecânica, baseando-se estritamente em trocas utilitárias, recompensas imediatas condicionais e punições disciplinares para garantir o cumprimento estrito das metas de curto prazo.",
+      "Nas implacáveis provas de administração organizadas pela banca CESGRANRIO, as pegadinhas mais recorrentes e perigosas envolvem a clássica afirmação ardilosa de que o 'aumento de salário' atua como um fator puramente motivacional e gerador de engajamento duradouro, quando, na verdade absoluta da Teoria de Herzberg, a remuneração é tipificada estritamente como um fator higiênico extrínseco.",
+      "O domínio profundo, crítico e minucioso deste amplo arco temático da função de direção habilita o candidato de alto nível a dissecar e resolver com fluidez as questões densas de liderança situacional, gestão estratégica de equipes de alta performance e engenharia do clima organizacional, competências centrais exigidas nos editais das principais carreiras do funcionalismo público federal."
     ],
-    "flipcards": [
+    accordions: [
       {
-        "categoria": "Função Direção",
-        "tituloFrente": "Papel da Direção",
-        "iconeFrente": "LuBookOpen",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Guia de Pessoas",
-        "conteudoVerso": "Foco em <strong>liderar, motivar e coordenar</strong> o comportamento humano na organização para atingir as metas. 🧭"
-      },
-      {
-        "categoria": "Liderança",
-        "tituloFrente": "Líder vs Chefe",
-        "iconeFrente": "LuLayers",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Influência",
-        "conteudoVerso": "O líder usa a <strong>influência e autoridade informal</strong>. O chefe usa o poder formal e a coerção da hierarquia. 🤝"
-      },
-      {
-        "categoria": "Motivação",
-        "tituloFrente": "Fatores Herzberg",
-        "iconeFrente": "LuTarget",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Higiene vs Motivação",
-        "conteudoVerso": "Fatores <strong>higiênicos</strong> (salário, condições) evitam a insatisfação. Fatores <strong>motivacionais</strong> (reconhecimento, crescimento) geram satisfação. 💡"
-      },
-      {
-        "categoria": "Estilos de Liderança",
-        "tituloFrente": "Os 3 Estilos",
-        "iconeFrente": "LuTriangle",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Autocrático, Democrático, Liberal",
-        "conteudoVerso": "<strong>Autocrático:</strong> Decisão centralizada no líder. <strong>Democrático:</strong> Participação do grupo. <strong>Liberal:</strong> Autonomia total ao grupo. 📊"
-      },
-      {
-        "categoria": "Comunicação",
-        "tituloFrente": "Canais e Ruídos",
-        "iconeFrente": "LuCheck",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Feedback",
-        "conteudoVerso": "Garantir a <strong>retroalimentação (feedback)</strong> e mitigar barreiras na comunicação (físicas, semânticas, psicológicas). 🗣️"
-      },
-      {
-        "categoria": "Pegadinha de Prova",
-        "tituloFrente": "Foco CESGRANRIO",
-        "iconeFrente": "LuMessageSquare",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Herzberg e Salário",
-        "conteudoVerso": "A banca adora dizer que o salário é fator motivacional. Falso! Para Herzberg, o salário é um fator <strong>higiênico</strong> (evita insatisfação apenas). ⚠️"
+        titulo: "Teoria dos Dois Fatores de Herzberg",
+        conteudo: "<p>Diferenciação indispensável para concursos:</p><ul class='list-disc pl-5 mt-2 space-y-2'><li><strong>Fatores Higiênicos (Extrínsecos/Ambiente):</strong> Salário, benefícios, políticas da empresa, instalações físicas. Se ausentes, geram <em>insatisfação</em>. Se presentes, geram apenas <em>não-insatisfação</em> (neutro).</li><li><strong>Fatores Motivacionais (Intrínsecos/Conteúdo):</strong> Reconhecimento, autonomia, desafio do trabalho, crescimento. Se presentes, geram <em>satisfação real e motivação</em>.</li></ul>"
       }
     ],
-    "sinteseEstrategica": {
-      "title": "Pirâmide de Maslow para Concursos",
-      "content": "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>Memorize a ordem das necessidades de Maslow (da base ao topo):</p><ol class='list-decimal pl-5 mt-2'><li>Fisiológicas</li><li>Segurança</li><li>Sociais (Amor/Pertencimento)</li><li>Estima</li><li>Auto-realização</li></ol></div>"
+    flipcards: [
+      {
+        categoria: "Motivação",
+        tituloFrente: "Pirâmide de Maslow",
+        iconeFrente: "LuTriangle",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Hierarquia de Necessidades",
+        conteudoVerso: "Fisiológicas $\\rightarrow$ Segurança $\\rightarrow$ Sociais $\\rightarrow$ Estima $\\rightarrow$ Autorrealização. As necessidades mais baixas devem ser satisfeitas primeiro. 🔺"
+      },
+      {
+        categoria: "Motivação",
+        tituloFrente: "Herzberg - Higiênicos",
+        iconeFrente: "LuShield",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Evitam Insatisfação",
+        conteudoVerso: "Salário, benefícios e ambiente físico <strong>NÃO motivam</strong>; apenas evitam a insatisfação do trabalhador. 💵"
+      },
+      {
+        categoria: "Liderança",
+        tituloFrente: "Liderança Situacional",
+        iconeFrente: "LuTarget",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Flexibilidade do Líder",
+        conteudoVerso: "O estilo de liderança deve variar de acordo com a <strong>maturidade técnica e emocional</strong> do liderado na tarefa. 🎯"
+      },
+      {
+        categoria: "Estilos",
+        tituloFrente: "Liderança Democrática",
+        iconeFrente: "LuUsers",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Participação da Equipe",
+        conteudoVerso: "O líder orienta e estimula a participação do grupo nas decisões. As diretrizes são debatidas coletivamente. 👥"
+      },
+      {
+        categoria: "Estilos",
+        tituloFrente: "Liderança Transformacional",
+        iconeFrente: "LuAward",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Inspiração e Visão",
+        conteudoVerso: "Transforma a cultura e inspira os liderados a alcançarem resultados extraordinários por meio de uma visão compartilhada. 🌟"
+      },
+      {
+        categoria: "CESGRANRIO",
+        tituloFrente: "Pegadinha de Prova",
+        iconeFrente: "LuCheck",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Salário Motiva?",
+        conteudoVerso: "Para Herzberg, o <strong>salário é um fator higiênico</strong> (não motiva). A CESGRANRIO adora tentar enganar o candidato com essa assertiva! ⚠️"
+      }
+    ],
+    sinteseEstrategica: {
+      title: "Mnemônico dos Estilos de Liderança",
+      content: "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>Resumo dos Estilos Clássicos:</p><ul class='list-disc pl-5 mt-2'><li><strong>Autocrático:</strong> Centraliza (Eu mando)</li><li><strong>Democrático:</strong> Participa (Nós decidimos)</li><li><strong>Liberal:</strong> Delega totalmente (Vocês fazem)</li></ul></div>"
     },
-    "audio": {
-      "titulo": "Podcast Módulo 3 - Direção e Liderança",
-      "artista": "Concurso Na Veia"
-    }
+    audio: { titulo: "Podcast Módulo 3 - Direção e Liderança", artista: "Concurso Na Veia" }
   },
   4: {
-    "introducaoCEDEA": [
-      "A função de controle fecha o ciclo administrativo clássico, atuando como o mecanismo de monitoramento, avaliação e correção que garante o alinhamento das atividades com os planos traçados.",
-      "Na governança da Petrobras, os processos de controle são rigorosos, envolvendo auditorias internas, conformidade com a Lei das Estatais, e o acompanhamento meticuloso de indicadores financeiros e operacionais.",
-      "O processo de controle divide-se em quatro etapas fundamentais: o estabelecimento de padrões de desempenho, a medição do desempenho atual, a comparação do desempenho com o padrão, e a tomada de ação corretiva.",
-      "O estabelecimento de padrões define o 'norte' ou a meta a ser alcançada, servindo como a base de comparação do sistema.",
-      "A medição é a coleta de dados e fatos sobre as atividades em execução, exigindo confiabilidade e tempestividade nas informações.",
-      "A comparação avalia os desvios entre a realidade e o planejado, permitindo classificar se as variações estão dentro de limites toleráveis.",
-      "A ação corretiva é a resposta gerencial para eliminar a causa raiz das variações indesejadas, recolocando a organização no rumo correto.",
-      "Os tipos de controle podem ser classificados pelo seu momento de ocorrência: prévio (preventivo), concomitante (simultâneo) ou posterior (feedback).",
-      "Para a banca CESGRANRIO, as etapas do processo de controle e a sua classificação quanto ao momento de execução são temas frequentes e diretos.",
-      "O candidato deve saber diferenciar os controles preventivos (ex: manutenção preventiva de equipamentos) dos controles baseados em feedback posterior (ex: análise de relatórios financeiros)."
+    introducaoCEDEA: [
+      "A função administrativa de controle é o elo que fecha e consolida o ciclo do processo administrativo, atuando como o mecanismo garantidor de que as atividades executadas no mundo real estejam milimetricamente alinhadas com as diretrizes e metas traçadas no planejamento estratégico. Esse processo envolve a definição rigorosa de padrões de desempenho, a medição constante dos resultados atuais, a comparação analítica minuciosa e, sobretudo, a imediata tomada de ações corretivas em caso de desvios.",
+      "Em um cenário de extrema complexidade industrial como o da Petrobras, a ausência de um sistema de controle implacável sobre a estrutura de custos, estoques de peças sobressalentes e prazos de manutenção preditiva pode resultar em falhas catastróficas. É o controle que atua como o principal fiador da lucratividade estatal, da governança corporativa transparente e, acima de tudo, da manutenção inegociável da segurança ambiental nas plataformas e refinarias.",
+      "Teoricamente, os controles organizacionais são classificados de acordo com o momento cronológico em que atuam no processo produtivo. O Controle Prévio (ou ex-ante) age de forma estritamente profilática sobre os insumos e a qualificação da mão de obra antes que o trabalho inicie. O Controle Simultâneo (concorrente) ocorre no 'chão de fábrica' durante a execução, corrigindo rotas em tempo real. Já o Controle Posterior (ex-post ou de feedback) analisa os resultados finais entregues aos clientes e fornece subsídios vitais para o próximo ciclo de planejamento.",
+      "No topo da arquitetura de controle estratégico global encontra-se o aclamado Balanced Scorecard (BSC), desenvolvido por Kaplan e Norton. Mais do que um simples painel de métricas, o BSC é um sistema de tradução estratégica que repudia a velha visão focada exclusivamente no lucro de curto prazo (contábil). Ele materializa a missão e a visão intangíveis da empresa em um mapa estratégico tangível, equilibrado de forma holística em quatro perspectivas interdependentes e perfeitamente encadeadas.",
+      "As quatro perspectivas sagradas do BSC ilustram a lógica de causa e efeito da corporação: a perspectiva de Aprendizado e Crescimento (capacitação humana e TI) impulsiona a eficiência na perspectiva dos Processos Internos (inovação e operação); processos de excelência geram alto valor na perspectiva de Clientes (atração e retenção); e clientes extremamente satisfeitos garantem os resultados financeiros desejados na perspectiva Financeira (lucratividade e retorno sobre o investimento).",
+      "Para que qualquer sistema de controle funcione e não recaia no perigoso terreno do achismo gerencial, a estipulação prévia de indicadores-chave de desempenho (KPIs) é um pilar não negociável. Somente com métricas claras, objetivas e quantificáveis é possível isolar avaliações puramente subjetivas e avaliar se a gerência está, de fato, entregando a performance estabelecida no nível tático e operacional.",
+      "O conceito sistêmico de 'Amplitude de Controle' está umbilicalmente ligado ao desenho estrutural e define matematicamente o número ideal de subordinados diretamente supervisionados por cada gestor. Uma amplitude muito estreita gera um microgerenciamento sufocante e estruturas organizacionais verticalizadas e caras, enquanto uma amplitude exageradamente larga provoca a perda de controle sobre a execução técnica, exigindo maior autonomia e maturidade da equipe.",
+      "Outro desafio crônico do processo de controle é a resistência comportamental inerente ao ser humano. Quando as métricas e os padrões de supervisão são comunicados pela liderança de maneira exclusivamente punitiva, policialesca e controladora, as equipes reagem com boicotes sistêmicos. O controle eficaz deve ser sempre posicionado organizacionalmente como uma bússola pedagógica orientadora de melhorias e de alavancagem de desempenho.",
+      "Nas sofisticadas e concorridas provas aplicadas pela banca CESGRANRIO, o candidato enfrentará impiedosas questões que exigem a exata diferenciação das quatro perspectivas do mapa estratégico do BSC, e também a habilidade cirúrgica para classificar o momento do controle (preventivo, concorrente ou posterior) com base em descrições práticas de auditoria e inspeção fornecidas nos enunciados hipotéticos.",
+      "Compreender a profundidade e a lógica inerente do processo de controle capacita integralmente o candidato de alta performance a resolver não só as questões diretas de administração, mas também temas transversais densos que abordam auditoria interna rigorosa, compliance de ponta e sistemas complexos de governança corporativa no rigoroso ambiente estatal brasileiro."
     ],
-    "flipcards": [
+    accordions: [
       {
-        "categoria": "Função Controle",
-        "tituloFrente": "Papel do Controle",
-        "iconeFrente": "LuBookOpen",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Realinhamento",
-        "conteudoVerso": "Assegura que os <strong>resultados reais estejam de acordo com os planejados</strong>, monitorando o progresso e corrigindo rumos. 🎯"
-      },
-      {
-        "categoria": "Processo",
-        "tituloFrente": "As 4 Etapas",
-        "iconeFrente": "LuLayers",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Fluxo do Controle",
-        "conteudoVerso": "1. Padrões. 2. Medição. 3. Comparação. 4. Ação Corretiva. Um ciclo contínuo de melhoria. 🔄"
-      },
-      {
-        "categoria": "Tipos de Controle",
-        "tituloFrente": "Controle Prévio",
-        "iconeFrente": "LuTarget",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Prevenção",
-        "conteudoVerso": "Focado nas <strong>entradas (inputs)</strong> de recursos. Exemplo: seleção de matéria-prima qualificada na Petrobras. 🛡️"
-      },
-      {
-        "categoria": "Tipos de Controle",
-        "tituloFrente": "Controle Simultâneo",
-        "iconeFrente": "LuTriangle",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Tempo Real",
-        "conteudoVerso": "Ocorre durante a <strong>execução do processo</strong>. Exemplo: monitoramento em tempo real da pressão de um poço. ⚙️"
-      },
-      {
-        "categoria": "Tipos de Controle",
-        "tituloFrente": "Controle Posterior",
-        "iconeFrente": "LuCheck",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Feedback",
-        "conteudoVerso": "Ocorre após a <strong>finalização do processo (outputs)</strong>. Exemplo: relatórios contábeis e de metas anuais. 📊"
-      },
-      {
-        "categoria": "Pegadinha de Prova",
-        "tituloFrente": "Foco CESGRANRIO",
-        "iconeFrente": "LuMessageSquare",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Ação Corretiva",
-        "conteudoVerso": "A ação corretiva não é apenas 'castigar', mas sim <strong>ajustar o processo ou a meta</strong> para evitar novos desvios. 🧠"
+        titulo: "As 4 Perspectivas do Balanced Scorecard (BSC)",
+        conteudo: "<p>Estrutura clássica do mapa estratégico BSC:</p><ul class='list-disc pl-5 mt-2 space-y-2'><li><strong>Financeira:</strong> Como parecemos aos acionistas? (Lucratividade, ROI, custos).</li><li><strong>Clientes:</strong> Como os clientes nos veem? (Satisfação, retenção, imagem).</li><li><strong>Processos Internos:</strong> Em que processos devemos se sobressair? (Qualidade, inovação, tempo de ciclo).</li><li><strong>Aprendizado e Crescimento:</strong> Como podemos continuar a melhorar? (Capacitação, clima, tecnologia).</li></ul>"
       }
     ],
-    "sinteseEstrategica": {
-      "title": "Mapeamento dos 3 Tipos de Controle",
-      "content": "<div class='p-4 bg-slate-800 text-white rounded-lg'><ul class='list-disc pl-5'><li><strong>Prévio (Preventivo):</strong> Antes da atividade. Previne desvios.</li><li><strong>Simultâneo (Concomitante):</strong> Durante a atividade. Corrige na hora.</li><li><strong>Posterior (Feedback):</strong> Depois da atividade. Serve para aprendizado.</li></ul></div>"
+    flipcards: [
+      {
+        categoria: "Controle",
+        tituloFrente: "Controle Preventivo",
+        iconeFrente: "LuShield",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Atuação Ex-Ante",
+        conteudoVerso: "Ocorre <strong>antes da execução</strong>. Foco nos insumos e na prevenção de desvios (ex: inspeção de matéria-prima). 🛡️"
+      },
+      {
+        categoria: "Controle",
+        tituloFrente: "Controle Simultâneo",
+        iconeFrente: "LuActivity",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Atuação Concorrente",
+        conteudoVerso: "Ocorre <strong>durante o processo</strong>. Foco na supervisão direta e correção em tempo real. ⚡"
+      },
+      {
+        categoria: "Controle",
+        tituloFrente: "Controle Posterior",
+        iconeFrente: "LuTarget",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Atuação Ex-Post",
+        conteudoVerso: "Ocorre <strong>após a conclusão</strong>. Foco na medição dos resultados finais e auditoria de balanço. 📊"
+      },
+      {
+        categoria: "BSC",
+        tituloFrente: "Equilíbrio no BSC",
+        iconeFrente: "LuLayers",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Não Apenas Financeiro",
+        conteudoVerso: "O BSC evita o foco exclusivo em indicadores financeiros, incluindo métricas de clientes, processos e aprendizado. ⚖️"
+      },
+      {
+        categoria: "KPIs",
+        tituloFrente: "Padrão de Desempenho",
+        iconeFrente: "LuBookOpen",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Métrica de Comparação",
+        conteudoVerso: "Sem um padrão preestabelecido, a medição torna-se inútil pois não há parâmetro para julgar se o resultado foi bom ou ruim. 📏"
+      },
+      {
+        categoria: "CESGRANRIO",
+        tituloFrente: "Pegadinha de Prova",
+        iconeFrente: "LuCheck",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Orçamento é Controle?",
+        conteudoVerso: "O <strong>Orçamento</strong> é simultaneamente uma ferramenta de <strong>planejamento</strong> (ao definir limites) e de <strong>controle</strong> (ao medir o gasto real). ⚠️"
+      }
+    ],
+    sinteseEstrategica: {
+      title: "Mnemônico das 4 Perspectivas do BSC",
+      content: "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>Lembre-se da sigla <strong>F-C-P-A</strong>:</p><ul class='list-disc pl-5 mt-2'><li><strong>F</strong>inanceira</li><li><strong>C</strong>lientes</li><li><strong>P</strong>rocessos Internos</li><li><strong>A</strong>prendizado e Crescimento</li></ul></div>"
     },
-    "audio": {
-      "titulo": "Podcast Módulo 4 - Controle e KPIs",
-      "artista": "Concurso Na Veia"
-    }
+    audio: { titulo: "Podcast Módulo 4 - Controle e KPIs", artista: "Concurso Na Veia" }
   },
   5: {
-    "introducaoCEDEA": [
-      "A Gestão da Qualidade evoluiu de um foco puramente operacional e inspetivo para uma abordagem estratégica e sistêmica conhecida como Gestão da Qualidade Total (TQM).",
-      "Na cadeia logística e de suprimentos da Petrobras, os critérios de qualidade são inegociáveis para garantir a segurança operacional das refinarias e a confiabilidade dos fornecedores de insumos.",
-      "O foco no cliente é o ponto de partida e a razão de ser da qualidade, visando atender ou superar as suas expectativas de forma contínua.",
-      "A melhoria contínua (Kaizen) postula que todos os processos podem e devem ser aprimorados constantemente de maneira incremental, envolvendo todos os membros da empresa.",
-      "Os mestres da qualidade (como Deming, Juran e Ishikawa) estabeleceram princípios e filosofias que estruturam as melhores práticas de gestão modernas.",
-      "O envolvimento das pessoas e o trabalho em equipe são fundamentais para que a cultura da qualidade penetre na rotina operacional da organização.",
-      "A gestão baseada em fatos e dados substitui o 'achismo' e a intuição na tomada de decisão gerencial.",
-      "A abordagem por processos garante que as atividades sejam compreendidas e geridas como partes integradas de uma cadeia de valor.",
-      "Para a banca CESGRANRIO, os princípios da Qualidade Total e os 14 pontos de Deming são de suma importância.",
-      "O candidato deve compreender a transição da era da inspeção (corretiva) para o controle estatístico de processos e a garantia de qualidade proativa."
+    introducaoCEDEA: [
+      "A disciplina da Administração da Qualidade evoluiu historicamente de um controle técnico reativo e isolado, restrito apenas a inspetores de linha de montagem, para um modelo de gestão estratégica sistêmico e absolutamente indispensável. Ela integra toda a cadeia de valor da corporação e posiciona a melhoria contínua e a plena satisfação das necessidades e expectativas dos clientes no epicentro do modelo de negócios moderno.",
+      "Na gigantesca malha logística e de produção da Petrobras, a garantia irrestrita de padrões de qualidade supremos em insumos de engenharia, maquinário pesado e prestação de serviços é o alicerce fundamental. Uma única peça fora da especificação técnica rigorosa não gera apenas desperdício, mas pode comprometer o desempenho dos ativos de bilhões de dólares, ameaçar vidas humanas e macular irremediavelmente a imagem corporativa da estatal no mercado global.",
+      "A grande revolução promovida pela qualidade total é a mudança de paradigma da 'inspeção ex-post' (descobrir o defeito depois que o produto está pronto) para a 'prevenção ex-ante' (projetar o sistema para que seja impossível produzir um erro). O enfoque preventivo assegura um envolvimento sistêmico de todas as esferas organizacionais, rompendo os antiquados silos departamentais e unificando os objetivos técnicos da base operacional com as diretrizes financeiras da alta direção.",
+      "Essa abordagem introduz conceitos de extrema robustez corporativa, como o 'Custo da Qualidade', que explicita matematicamente a massiva vantagem econômica de investir preventivamente em treinamentos avançados e padronização. Isso pulveriza os vultosos prejuízos ocultos provenientes de refugo (descarte), retrabalho exaustivo, devoluções de clientes insatisfeitos e pesados passivos judiciais que assombram empresas de baixa maturidade processual.",
+      "Um dos pilares conceituais mais importantes exigidos em editais de excelência é a perspectiva de que o ciclo da qualidade permeia as relações internas da firma. Cada colaborador não atende apenas o mercado externo, mas serve ao seu 'cliente interno' — o colega do departamento seguinte na linha de produção. Seccionar o fluxo e garantir a máxima qualidade na transferência de informações ou peças internamente é a única forma de garantir a pureza do produto final.",
+      "Os princípios globais de gestão da qualidade, fortemente ancorados em famílias de normas consagradas como a ISO 9001, funcionam como um arcabouço normativo que se integra diretamente à governança corporativa. Essa aderência rigorosa a processos auditáveis, indicadores calibrados e ações corretivas sistemáticas fornece a base jurídica e técnica exigida para obtenção e manutenção de certificações internacionais mandatórias no setor de óleo e gás.",
+      "No entanto, o sucesso desse modelo não se sustenta apenas por manuais operacionais; ele exige irrevogavelmente a consolidação de uma vigorosa Cultura da Qualidade. Isso impõe à liderança o papel de patrocinadora implacável dessa transformação cultural (top-down), além da necessidade crônica de capacitação continuada e empoderamento real (empowerment) de todos os colaboradores do chão de fábrica para que possam interromper linhas de produção diante de inconformidades críticas.",
+      "Quando o foco sai do mero controle de variabilidade e passa a mirar o processo de maneira horizontal, a gestão sistêmica ganha agilidade para identificar os reais elos frágeis e gargalos paralisantes na cadeia global de suprimentos. Isso possibilita à organização alocar investimentos de melhoria nos exatos pontos onde o retorno operacional e a proteção contra riscos serão potencializados ao máximo.",
+      "Nas afiadas e exigentes avaliações aplicadas pela Fundação CESGRANRIO, a recorrência em cobrar a diferenciação abissal entre as fases históricas da qualidade é uma tradição. O candidato deve dominar os conceitos e as limitações da Era da Inspeção (foco no produto e separação de lotes ruins), do Controle Estatístico (amostragem), da Garantia da Qualidade (normas e processos preventivos) e da Gestão da Qualidade Total - TQM (estratégia de negócios liderada pela alta cúpula).",
+      "O domínio soberano desses pilares conceituais e filosóficos capacita estrategicamente o estudante de alto rendimento a responder com celeridade e extrema precisão técnica a todo um amplo espectro de questões conceituais cruciais, estudos de caso situacionais e armadilhas terminológicas implícitas nas provas para carreiras de analistas e engenheiros do sistema estatal federal."
     ],
-    "flipcards": [
+    accordions: [
       {
-        "categoria": "Qualidade",
-        "tituloFrente": "Conceito de Qualidade",
-        "iconeFrente": "LuBookOpen",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Total e Sistêmica",
-        "conteudoVerso": "A qualidade total envolve a <strong>satisfação do cliente, melhoria contínua, envolvimento da equipe</strong> e abordagem por processos. 🏆"
-      },
-      {
-        "categoria": "Deming",
-        "tituloFrente": "14 Pontos de Deming",
-        "iconeFrente": "LuLayers",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Constância de Propósito",
-        "conteudoVerso": "Filosofia focada na <strong>eliminação de metas numéricas arbitrárias, medo nas organizações</strong> e barreiras entre departamentos. 💡"
-      },
-      {
-        "categoria": "Melhoria Contínua",
-        "tituloFrente": "Kaizen",
-        "iconeFrente": "LuTarget",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Pequenas Mudanças",
-        "conteudoVerso": "Filosofia de melhoria incremental constante, onde <strong>pequenos avanços diários</strong> geram grandes resultados a longo prazo. 🏔️"
-      },
-      {
-        "categoria": "Foco no Cliente",
-        "tituloFrente": "Foco do TQM",
-        "iconeFrente": "LuTriangle",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Satisfação Total",
-        "conteudoVerso": "A qualidade é <strong>definida pelo cliente</strong>. Todos os esforços internos devem convergir para atender suas necessidades. 🤝"
-      },
-      {
-        "categoria": "Parcerias",
-        "tituloFrente": "Relação Fornecedores",
-        "iconeFrente": "LuCheck",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Ganho Mútuo",
-        "conteudoVerso": "Abandonar a prática de fechar negócios apenas pelo menor preço. Focar em <strong>parcerias de longo prazo</strong>. 🤝"
-      },
-      {
-        "categoria": "Pegadinha de Prova",
-        "tituloFrente": "Foco CESGRANRIO",
-        "iconeFrente": "LuMessageSquare",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Inspeção em Massa",
-        "conteudoVerso": "Deming defende a <strong>eliminação da inspeção em massa</strong>, substituindo-a pela prevenção por meio de estatística de processo. ⚠️"
+        titulo: "Visão Geral da Gestão da Qualidade",
+        conteudo: "<p>Pontos de atenção para concursos:</p><ul class='list-disc pl-5 mt-2 space-y-2'><li>A qualidade é um processo dinâmico e contínuo.</li><li>Exige integração entre projeto, compras, produção e atendimento.</li><li>Foco na eliminação das causas das não conformidades.</li></ul>"
       }
     ],
-    "sinteseEstrategica": {
-      "title": "A Trilogia de Juran",
-      "content": "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>Juran divide a gestão da qualidade em 3 pilares vitais:</p><ul class='list-disc pl-5 mt-2'><li><strong>Planejamento da Qualidade:</strong> Identificar clientes e necessidades.</li><li><strong>Controle da Qualidade:</strong> Comparar resultados reais e metas.</li><li><strong>Melhoria da Qualidade:</strong> Reduzir desperdícios e otimizar processos.</li></ul></div>"
+    flipcards: [
+      {
+        categoria: "Qualidade",
+        tituloFrente: "Foco Preventivo",
+        iconeFrente: "LuShield",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Evitar o Erro",
+        conteudoVerso: "Investir na fase de planejamento e projeto para que a falha não ocorra na operação. 🛡️"
+      },
+      {
+        categoria: "Qualidade",
+        tituloFrente: "Garantia da Qualidade",
+        iconeFrente: "LuAward",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Confiança Sistêmica",
+        conteudoVerso: "Conjunto de ações planejadas para fornecer a confiança de que o produto atenderá aos requisitos. 🏆"
+      },
+      {
+        categoria: "Qualidade",
+        tituloFrente: "Melhoria Contínua",
+        iconeFrente: "LuActivity",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Kaizen",
+        conteudoVerso: "Esforço permanente para aprimorar os processos, reduzindo variabilidades. 📈"
+      },
+      {
+        categoria: "Qualidade",
+        tituloFrente: "Cliente Interno",
+        iconeFrente: "LuUsers",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Próxima Etapa",
+        conteudoVerso: "Cada setor deve tratar a etapa seguinte do processo como seu cliente. 👥"
+      },
+      {
+        categoria: "Qualidade",
+        tituloFrente: "Padronização",
+        iconeFrente: "LuBookOpen",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Estabilidade do Processo",
+        conteudoVerso: "Fixar a melhor forma executada para garantir reprodutibilidade nos resultados. 📄"
+      },
+      {
+        categoria: "CESGRANRIO",
+        tituloFrente: "Pegadinha de Prova",
+        iconeFrente: "LuCheck",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Inspeção vs Qualidade",
+        conteudoVerso: "Inspeção apenas encontra erros já cometidos; a gestão da qualidade impede que eles aconteçam. ⚠️"
+      }
+    ],
+    sinteseEstrategica: {
+      title: "Mnemônico da Gestão da Qualidade",
+      content: "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>Essência da Qualidade:</p><p class='mt-2 font-mono text-indigo-400'>PREVENIR > INSPECIONAR</p></div>"
     },
-    "audio": {
-      "titulo": "Podcast Módulo 5 - Administração da Qualidade",
-      "artista": "Concurso Na Veia"
-    }
+    audio: { titulo: "Podcast Módulo 5 - Administração da Qualidade", artista: "Concurso Na Veia" }
   },
   6: {
-    "introducaoCEDEA": [
-      "As ferramentas estatísticas da qualidade são instrumentos consagrados para coletar, estruturar, analisar e solucionar problemas de variabilidade em processos produtivos e administrativos.",
-      "Na rotina de manutenção e segurança da Petrobras, a utilização dessas ferramentas estatísticas auxilia a prever falhas operacionais e estruturar o refino de forma estável.",
-      "O Diagrama de Ishikawa, também conhecido como espinha de peixe ou causa e efeito, organiza as possíveis causas de um problema sob seis categorias conhecidas como os 6Ms: Método, Mão de Obra, Material, Máquina, Medida e Meio Ambiente.",
-      "O Gráfico de Pareto baseia-se no princípio 80/20, apontando que cerca de 80% das consequências (problemas) derivam de 20% das causas principais.",
-      "O Histograma é um gráfico de barras que demonstra a distribuição de frequência de um conjunto de dados contínuos, facilitando a visualização de padrões de variabilidade.",
-      "O Diagrama de Dispersão é utilizado para identificar possíveis relações de causa e efeito ou correlação entre duas variáveis.",
-      "As Cartas de Controle monitoram a estabilidade do processo ao longo do tempo, indicando se as variações encontradas decorrem de causas comuns ou especiais.",
-      "As Folhas de Verificação e o Fluxograma são ferramentas auxiliares cruciais na etapa inicial de coleta de dados e mapeamento das atividades.",
-      "Para a banca CESGRANRIO, a identificação visual e a utilidade de cada uma das 7 ferramentas clássicas da qualidade são exigidas com frequência.",
-      "O candidato deve associar prontamente o Diagrama de Ishikawa ao mapeamento de causas raiz e o Diagrama de Pareto à priorização de problemas."
+    introducaoCEDEA: [
+      "As ferramentas de gestão da qualidade, frequentemente referidas como as 'Sete Ferramentas Básicas', constituem a principal e mais robusta caixa de instrumentos analíticos à disposição do gestor contemporâneo. Elas fornecem metodologias gráficas e lógicas rigorosas para a identificação precoce de desvios operacionais, o diagnóstico incontestável das causas-raiz e a implementação assertiva de planos de solução técnica de alto impacto nas corporações.",
+      "No intrincado e dinâmico ecossistema de contratações e logística da Petrobras, a utilização pragmática e correta desse arsenal estatístico e esquemático reduz drasticamente os funestos tempos de parada programada e mitiga as bilionárias perdas ocasionadas por falhas sequenciais no recebimento e inspeção rigorosa dos cruciais materiais e equipamentos de campo em ambientes inóspitos.",
+      "A premissa mestre da moderna gestão exige a aniquilação completa de práticas arcaicas baseadas em palpites e pressupostos subjetivos. Com a utilização de ferramentas analíticas objetivas, as organizações consolidam a irrevogável cultura da decisão orientada exclusivamente por fatos e dados coletados e rastreáveis na linha de frente (gemba). É a substituição do 'eu acho que' pela inquestionável precisão matemática da 'estatística demonstra que'.",
+      "O célebre Diagrama de Pareto (também conhecido estritamente como a regra 80/20) é o instrumento supremo para a priorização de esforços e capital. Ele permite ao gestor de recursos escassos identificar cirurgicamente que cerca de 20% das causas vitais são as geradoras diretas e implacáveis de 80% das falhas operacionais e prejuízos financeiros da cadeia de valor, ordenando as ações da causa mais grave para a mais leve.",
+      "Já o clássico Diagrama de Ishikawa (espinha de peixe ou diagrama de causa e efeito) brilha intensamente na fase de diagnóstico estruturado. Ele obriga a equipe a dissecar exaustivamente um problema (efeito não desejado) em múltiplas ramificações minuciosas baseadas na matriz dos 6Ms: Mão de obra, Máquina, Material, Método, Medida e Meio ambiente, esgotando todas as possíveis hipóteses geradoras da não conformidade na produção.",
+      "Para garantir que as soluções propostas pelas ferramentas de diagnóstico ganhem vida executável e não fiquem restritas a reuniões inócuas, emprega-se o metodológico plano de ação 5W2H. Ele funciona como uma matriz impecável composta por sete perguntas pragmáticas, que detalham com precisão microscópica quem fará, o que fará, onde, quando, por que, de que forma e quanto custará a implementação integral do remédio gerencial ao processo produtivo.",
+      "No campo da variação e estabilidade estatística do sistema, as Cartas de Controle de Shewhart e os Histogramas desempenham papel ímpar. O histograma revela graficamente o comportamento da distribuição da frequência dos dados amostrais coletados, enquanto as cartas de controle monitoram os processos dinamicamente em tempo real, disparando severos alarmes quando os resultados ultrapassam as rigorosas linhas de controle superior e inferior.",
+      "Todo esse ferramental tático orbita o magnânimo e onipresente Ciclo PDCA (Plan-Do-Check-Act/Adjust), que é, por si só, o método mental consagrado para transformar qualquer simples insight de melhoria corporativa em uma rotina operacional solidamente padronizada e imune a retrocessos na eficiência produtiva da organização, materializando assim a filosofia japonesa do Kaizen no mundo ocidental.",
+      "A prestigiosa banca CESGRANRIO tem um vasto histórico de cobrar, de forma situacional e aplicada, a associação mental imediata de cada uma das sete ferramentas básicas (e outras complementares como Brainstorming e Fluxogramas) com a sua finalidade técnica exata. Trocar o objetivo do Diagrama de Pareto com as funcionalidades do Diagrama de Ishikawa é um erro inaceitável para candidatos e resulta em reprovação quase certa.",
+      "O domínio pleno e articulado deste denso módulo prepara estrategicamente e blindadamente o aluno para resolver, com margem zero de hesitação, os mais complexos estudos de caso e enunciados longos presentes em provas de certame. Com esse arsenal em mente, a leitura e a dissecação situacional de casos práticos durante a prova transformam-se em processos lógicos, puramente mecanicistas e de acerto garantido."
     ],
-    "flipcards": [
+    accordions: [
       {
-        "categoria": "Causa e Efeito",
-        "tituloFrente": "Diagrama de Ishikawa",
-        "iconeFrente": "LuBookOpen",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Os 6Ms",
-        "conteudoVerso": "Estrutura as causas raiz de um problema em 6 categorias: <strong>Máquina, Método, Mão de Obra, Material, Medida e Meio Ambiente</strong>. 🐟"
-      },
-      {
-        "categoria": "Priorização",
-        "tituloFrente": "Gráfico de Pareto",
-        "iconeFrente": "LuLayers",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Princípio 80/20",
-        "conteudoVerso": "Gráfico de colunas ordenado de forma decrescente para <strong>priorizar os problemas mais vitais</strong> (poucos vitais vs. muitos triviais). 📊"
-      },
-      {
-        "categoria": "Distribuição",
-        "tituloFrente": "Histograma",
-        "iconeFrente": "LuTarget",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Frequência de Dados",
-        "conteudoVerso": "Visualiza a <strong>distribuição de frequências</strong> de uma variável para avaliar a simetria e a variabilidade do processo. 📊"
-      },
-      {
-        "categoria": "Correlação",
-        "tituloFrente": "Diagrama Dispersão",
-        "iconeFrente": "LuTriangle",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Relação de Variáveis",
-        "conteudoVerso": "Mostra a relação entre duas variáveis contínuas, identificando se há <strong>correlação positiva, negativa ou nula</strong>. 📈"
-      },
-      {
-        "categoria": "Estabilidade",
-        "tituloFrente": "Cartas de Controle",
-        "iconeFrente": "LuCheck",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Limites Estatísticos",
-        "conteudoVerso": "Monitora variações no tempo usando <strong>Limites de Controle (LSC e LIC)</strong> para saber se a variação é sob controle ou fora de controle. 📉"
-      },
-      {
-        "categoria": "Pegadinha de Prova",
-        "tituloFrente": "Foco CESGRANRIO",
-        "iconeFrente": "LuMessageSquare",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Pareto de Acidentes",
-        "conteudoVerso": "Se a questão falar em <strong>'focar nos problemas que causam a maior parte das perdas'</strong>, a ferramenta correta é Pareto. Gravou? 💡"
+        titulo: "Aplicação Prática das Ferramentas",
+        conteudo: "<p>Principais usabilidades operacionais:</p><ul class='list-disc pl-5 mt-2 space-y-2'><li>Pareto: Priorização dos 20% que geram 80% do impacto.</li><li>Ishikawa: Descoberta da causa-raiz dividida nos 6Ms.</li><li>5W2H: Construção de planos de ação claros sem lacunas.</li></ul>"
       }
     ],
-    "sinteseEstrategica": {
-      "title": "Mnemônico dos 6Ms de Ishikawa",
-      "content": "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>Pense nos recursos da empresa para lembrar dos 6Ms:</p><ul class='list-disc pl-5 mt-2'><li><strong>M</strong>áquina (Equipamentos)</li><li><strong>M</strong>étodo (Processo de trabalho)</li><li><strong>M</strong>ão de Obra (Trabalhador)</li><li><strong>M</strong>aterial (Matéria-prima)</li><li><strong>M</strong>edida (Métricas/Calibração)</li><li><strong>M</strong>eio Ambiente (Local de trabalho)</li></ul></div>"
+    flipcards: [
+      {
+        categoria: "Ferramentas",
+        tituloFrente: "Pareto",
+        iconeFrente: "LuTarget",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Priorização",
+        conteudoVerso: "Gráfico de barras que separa os 'poucos vitais' dos 'muitos triviais'. 📊"
+      },
+      {
+        categoria: "Ferramentas",
+        tituloFrente: "Ishikawa",
+        iconeFrente: "LuTriangle",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Causa e Efeito",
+        conteudoVerso: "Mapeamento gráfico das possíveis causas-raiz de um problema específico. 🐟"
+      },
+      {
+        categoria: "Ferramentas",
+        tituloFrente: "5W2H",
+        iconeFrente: "LuBookOpen",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Plano de Ação",
+        conteudoVerso: "Matriz com 7 perguntas que definem completamente a execução de uma tarefa. 📝"
+      },
+      {
+        categoria: "Ferramentas",
+        tituloFrente: "Histograma",
+        iconeFrente: "LuActivity",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Frequência de Dados",
+        conteudoVerso: "Mostra a distribuição e variação de dados numéricos contínuos. 📈"
+      },
+      {
+        categoria: "Ferramentas",
+        tituloFrente: "Carta de Controle",
+        iconeFrente: "LuShield",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Limites Estatísticos",
+        conteudoVerso: "Gráfico com limites de controle para verificar a estabilidade do processo. 📉"
+      },
+      {
+        categoria: "CESGRANRIO",
+        tituloFrente: "Pegadinha de Prova",
+        iconeFrente: "LuCheck",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Escolha da Ferramenta",
+        conteudoVerso: "Para priorizar use Pareto; para encontrar causas use Ishikawa; para executar use 5W2H! ⚠️"
+      }
+    ],
+    sinteseEstrategica: {
+      title: "Mnemônico da Escolha de Ferramentas",
+      content: "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>Associação Rápida:</p><ul class='list-disc pl-5 mt-2'><li><strong>Pareto:</strong> Priorizar</li><li><strong>Ishikawa:</strong> Investigar Causa</li><li><strong>5W2H:</strong> Planejar Ação</li></ul></div>"
     },
-    "audio": {
-      "titulo": "Podcast Módulo 6 - Ferramentas da Qualidade",
-      "artista": "Concurso Na Veia"
-    }
+    audio: { titulo: "Podcast Módulo 6 - Ferramentas da Qualidade", artista: "Concurso Na Veia" }
   },
   7: {
-    "introducaoCEDEA": [
-      "A Gestão por Processos (BPM - Business Process Management) é uma disciplina gerencial que integra estratégias e objetivos da organização com as expectativas e necessidades dos clientes.",
-      "Na Petrobras, o mapeamento de processos fim a fim, ligando a extração do petróleo ao refino e à entrega ao cliente, reduz gargalos operacionais e melhora a governança corporativa.",
-      "Diferente da visão funcional tradicional em silos, a gestão por processos tem foco nas interações horizontais que atravessam os limites departamentais.",
-      "Um processo de negócio é um conjunto de atividades inter-relacionadas que recebem entradas, agregam valor e produzem uma saída útil para o cliente final.",
-      "A agregação de valor é a medida pela qual o cliente está disposto a remunerar as atividades que compõem o processo.",
-      "A cadeia de valor de Porter é um modelo que organiza os processos de uma empresa em processos primários (fim) e de suporte (meio).",
-      "Os papéis clássicos no BPM incluem o Dono do Processo (Process Owner), Analistas e Engenheiros de Processo.",
-      "O alinhamento estratégico garante que a melhoria de processos locais contribua diretamente para os objetivos estratégicos globais da instituição.",
-      "Para a banca CESGRANRIO, as definições básicas de processo e a distinção entre visão funcional tradicional e visão por processos são de alto valor.",
-      "O candidato deve entender que na visão por processos o foco está no cliente final e no fluxo de trabalho horizontal (transfuncional)."
+    introducaoCEDEA: [
+      "A moderna Gestão por Processos de Negócio, consagrada globalmente pelo acrônimo BPM (Business Process Management), atua como a revolução copernicana dentro da teoria organizacional, reorganizando todo o trabalho corporativo, o foco estratégico e os fluxos sistêmicos a partir de uma ótica estritamente transversal, horizontal, e desenhada ponta a ponta para agregar o máximo de valor diretamente ao consumidor e ao cliente final.",
+      "Em um conglomerado estatal vasto, compartimentado e multidisciplinar como a Petrobras, a implantação madura da visão voltada para os processos supera e implosiona os perigosos e antiquados isolamentos (silos) departamentais clássicos, integrando, com precisão técnica irretocável, as pesadas operações diárias das diretorias de logística naval, engenharia petroleira de alto mar, finanças corporativas e o exigente departamento de compliance.",
+      "O exaustivo mapeamento formal dos processos existentes é a base cirúrgica que permite desmascarar ineficiências cruciais. Ao documentar a realidade operacional com exatidão implacável, a gestão é capaz de identificar severas duplicidades estruturais de atividades laborais e, principalmente, gargalos logísticos de execução crônicos que encarecem silenciosa e absurdamente as rotinas logísticas da megaoperação nacional sem gerar o equivalente retorno ou eficácia estratégica.",
+      "Neste escopo de engenharia organizacional, as metodologias do AS-IS e do TO-BE assumem enorme protagonismo conceitual e prático. O mapeamento denominado de AS-IS (como está) atua como um retrato fiel, implacável e muitas vezes doloroso dos vícios, falhas e burocracias inúteis da situação presente da empresa, enquanto o desenho TO-BE (como será) é concebido cientificamente para ser o projeto seguro, inovador e otimizado do estado futuro das rotinas livres de gargalos e imperfeições sistêmicas.",
+      "Para que esse novo desenho estrutural tenha validade e seja compreensível uniformemente, emprega-se rigorosamente a notação internacional BPMN (Business Process Model and Notation). Ela padroniza todos os símbolos gráficos de desenho técnico — piscinas, raias, eventos e gateways —, criando uma linguagem corporativa franca, fluida e universal que facilita incrivelmente a comunicação crítica entre equipes executivas, áreas técnicas de Tecnologia da Informação (TI) e gestores setoriais.",
+      "A rigorosa gestão baseada puramente em processos apoia também a necessária revolução digital das rotinas de negócio mediante a intensa adoção da automação de fluxos de trabalho gerenciais. Softwares complexos conhecidos como plataformas BPMS assumem o controle, garantindo governança impecável, conformidade e o monitoramento estatístico em tempo real da eficiência do fluxo, tudo rigorosamente integrado aos grandes sistemas ERPs (Enterprise Resource Planning) da corporação estatal.",
+      "É imperativo que haja o total alinhamento vertical dos novos processos mapeados em relação à estratégia corporativa de cúpula global, de maneira que cada singela atividade pontual no nível operacional seja diretamente responsabilizada e quantificada em sua modesta, mas imprescindível contribuição sistemática rumo ao atingimento pleno e robusto das grandes e complexas metas da mega organização energética brasileira.",
+      "Um elemento disruptivo e vital nesse cenário é a governança moderna de processos que, ao quebrar as amarras verticais, institui, empodera e legitima a inovadora e polêmica figura executiva dos Donos de Processos (Process Owners). Esses líderes especializados passam a ser os únicos e indiscutíveis responsáveis legais pelo desempenho implacável, resultados palpáveis e conformidade do fluxo do processo de ponta a ponta, mesmo que esse fluxo cruze diversas e ciumentas chefias departamentais.",
+      "A CESGRANRIO exige com mão de ferro nos certames o domínio maduro e cirúrgico da terminologia BPM, requerendo não apenas a definição, mas a capacidade aguçada do candidato de reconhecer, categorizar e classificar instintivamente em narrativas as diferenças axiais e funcionais entre o processo primário (fim), o indispensável processo de suporte técnico (meio ou apoio vital), e o complexo processo de gerenciamento corporativo institucional de controle e estratégia (gestão).",
+      "Compreender sistemicamente com profundidade o denso modelo BPM prepara e qualifica de forma ímpar e diferenciada o aluno-candidato para não só entender a teoria pura dos livros de administração, mas a responder tempestiva, exata e assertivamente aos enunciados e às questões extensas sobre fluxos organizacionais, modernização administrativa setorial e análise crítica de cenários governamentais sob as exigentes diretrizes de processos do serviço público federal brasileiro."
     ],
-    "flipcards": [
+    accordions: [
       {
-        "categoria": "Gestão Processos",
-        "tituloFrente": "Abordagem BPM",
-        "iconeFrente": "LuBookOpen",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Foco Horizontal",
-        "conteudoVerso": "BPM é uma <strong>abordagem transfuncional (horizontal)</strong> que foca em otimizar o fluxo de valor que cruza os departamentos. 🔀"
-      },
-      {
-        "categoria": "Processo",
-        "tituloFrente": "Conceito Processo",
-        "iconeFrente": "LuLayers",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Entrada e Saída",
-        "conteudoVerso": "Conjunto de tarefas lógicas que recebe <strong>inputs (entradas)</strong>, agrega valor e gera um <strong>output (saída/produto)</strong> para o cliente. ⚙️"
-      },
-      {
-        "categoria": "Cadeia de Valor",
-        "tituloFrente": "Cadeia de Porter",
-        "iconeFrente": "LuTarget",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Primários vs Suporte",
-        "conteudoVerso": "<strong>Primários:</strong> Logística, Operações, Vendas (fim). <strong>Suporte:</strong> RH, TI, Infraestrutura (meio). 🏢"
-      },
-      {
-        "categoria": "Agregação Valor",
-        "tituloFrente": "Agregar Valor",
-        "iconeFrente": "LuTriangle",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Útil ao Cliente",
-        "conteudoVerso": "Atividades que transformam o input em algo que o cliente <strong>valoriza e necessita</strong>. O restante deve ser minimizado. 💡"
-      },
-      {
-        "categoria": "Dono do Processo",
-        "tituloFrente": "Process Owner",
-        "iconeFrente": "LuCheck",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Responsável",
-        "conteudoVerso": "Papel central no BPM. Indivíduo responsável pelo <strong>desempenho ponta a ponta</strong> de um processo específico. 👑"
-      },
-      {
-        "categoria": "Pegadinha de Prova",
-        "tituloFrente": "Foco CESGRANRIO",
-        "iconeFrente": "LuMessageSquare",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Silos Organizacionais",
-        "conteudoVerso": "A banca adora opor a <strong>Gestão de Processos (horizontal e integrada)</strong> à <strong>Estrutura Funcional (vertical em silos isolados)</strong>. Lembre-se disso! ⚠️"
+        titulo: "Categorias de Processos no BPM",
+        conteudo: "<p>Divisão clássica de processos:</p><ul class='list-disc pl-5 mt-2 space-y-2'><li><strong>Processos Primários (Core):</strong> Atividades fim que entregam valor diretamente ao cliente externo.</li><li><strong>Processos de Suporte (Apoio):</strong> Viabilizam a execução dos processos primários (ex: TI, RH).</li><li><strong>Processos Gerenciais:</strong> Garantem a medição, controle e alinhamento estratégico da empresa.</li></ul>"
       }
     ],
-    "sinteseEstrategica": {
-      "title": "Os 3 Tipos de Processos no BPM",
-      "content": "<div class='p-4 bg-slate-800 text-white rounded-lg'><ul class='list-disc pl-5'><li><strong>Processos Primários (Finalísticos):</strong> Geram valor direto ao cliente externo.</li><li><strong>Processos de Suporte (Apoio):</strong> Viabilizam os processos primários.</li><li><strong>Processos de Gerenciamento:</strong> Coordenação e governança corporativa.</li></ul></div>"
+    flipcards: [
+      {
+        categoria: "BPM",
+        tituloFrente: "Processos Primários",
+        iconeFrente: "LuLayers",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Atividades-Fim",
+        conteudoVerso: "Ligados diretamente à entrega do produto ou serviço ao cliente externo. 🚀"
+      },
+      {
+        categoria: "BPM",
+        tituloFrente: "Processos de Suporte",
+        iconeFrente: "LuBookOpen",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Atividades de Apoio",
+        conteudoVerso: "Garantem a infraestrutura e recursos para que os processos primários funcionem. 🛠️"
+      },
+      {
+        categoria: "BPM",
+        tituloFrente: "Mapeamento AS-IS",
+        iconeFrente: "LuTarget",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Diagnóstico Atual",
+        conteudoVerso: "Mapeamento fidedigno da situação presente, incluindo falhas e gargalos existentes. 📸"
+      },
+      {
+        categoria: "BPM",
+        tituloFrente: "Desenho TO-BE",
+        iconeFrente: "LuAward",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Situação Futura",
+        conteudoVerso: "Proposta do novo fluxo otimizado, sem os gargalos identificados no AS-IS. ✨"
+      },
+      {
+        categoria: "BPM",
+        tituloFrente: "Process Owner",
+        iconeFrente: "LuUsers",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Dono do Processo",
+        conteudoVerso: "Gestor responsável pelo desempenho ponta a ponta do fluxo, além das fronteiras funcionais. 👤"
+      },
+      {
+        categoria: "CESGRANRIO",
+        tituloFrente: "Pegadinha de Prova",
+        iconeFrente: "LuCheck",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Fluxo vs Departamento",
+        conteudoVerso: "O processo é **horizontal** e cruza departamentos; o departamento é **vertical** e isolado. ⚠️"
+      }
+    ],
+    sinteseEstrategica: {
+      title: "Mnemônico dos Tipos de Processo",
+      content: "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>Classificação BPM:</p><ul class='list-disc pl-5 mt-2'><li><strong>Primário:</strong> Valor ao Cliente</li><li><strong>Suporte:</strong> Apoio Interno</li><li><strong>Gerencial:</strong> Controle e Estratégia</li></ul></div>"
     },
-    "audio": {
-      "titulo": "Podcast Módulo 7 - Gestão por Processos",
-      "artista": "Concurso Na Veia"
-    }
+    audio: { titulo: "Podcast Módulo 7 - Gestão por Processos", artista: "Concurso Na Veia" }
   },
   8: {
-    "introducaoCEDEA": [
-      "O ciclo de vida de processos no BPM descreve as fases sequenciais necessárias para planejar, desenhar, implementar, monitorar e otimizar as atividades organizacionais.",
-      "Na governança de processos da Petrobras, a obediência às fases do ciclo de vida assegura que novos fluxos de trabalho sejam modelados de forma controlada e auditável.",
-      "A modelagem 'AS-IS' retrata a situação atual do processo, documentando a realidade com seus problemas, gargalos e ineficiências reais.",
-      "A modelagem 'TO-BE' projeta o estado futuro desejado para o processo, desenhando as melhorias que eliminarão as ineficiências identificadas.",
-      "A fase de mapeamento de processos envolve documentar fluxos de trabalho através de notações padrão como a BPMN (Business Process Model and Notation).",
-      "A análise de processos foca em entender as causas raiz das ineficiências e desperdícios identificados no AS-IS.",
-      "A execução e implementação do processo redesenhado (TO-BE) pode envolver a automação de etapas através de sistemas BPMS.",
-      "O monitoramento contínuo coleta dados de execução, avaliando o desempenho do processo em relação aos indicadores estratégicos definidos.",
-      "Para a banca CESGRANRIO, os termos AS-IS (situação atual) e TO-BE (situação futura) são extremamente cobrados e relevantes.",
-      "O candidato deve compreender que a modelagem AS-IS deve preceder qualquer tentativa de melhoria ou automação de processos organizacionais."
+    introducaoCEDEA: [
+      "O Ciclo de Vida de Processos de Negócio é o framework teórico e metodológico que descreve de forma estruturada as etapas evolutivas pelas quais um processo corporativo obrigatoriamente passa, desde sua concepção embrionária e planejamento estratégico até a sua eventual otimização revolucionária ou descontinuação definitiva.",
+      "No contexto de suprimentos de gigantes como a Petrobras, gerenciar com maestria o ciclo de vida de gigantescos contratos de infraestrutura e da cadeia de fornecedores garante não apenas o abastecimento, mas assegura que as operações monumentais offshore acompanhem pari passu as inovações tecnológicas globais e não fiquem presas a fluxos arcaicos e ineficientes.",
+      "Segundo as diretrizes internacionais, como o BPM CBOK (Corpo de Conhecimento em Gestão de Processos), o ciclo é tipicamente desmembrado em fases sequenciais claras: Planejamento (alinhamento estratégico inicial), Modelagem (desenho do processo), Simulação (teste virtual), Execução (implantação real no chão de fábrica), Monitoramento (coleta métrica) e Otimização (melhoria ou inovação radical).",
+      "A fase de Modelagem é crítica. Nela, as equipes de analistas não apenas desenham um fluxograma superficial, mas documentam pormenorizadamente como o trabalho deve ser feito (incluindo papéis, sistemas, regras de negócio e SLAs) para alcançar a máxima eficiência produtiva, preparando o terreno para a crucial fase de Simulação, que testa o modelo matematicamente em ambiente seguro (sandbox) antes da implantação real em larga escala que poderia ser catastrófica se falhastesse.",
+      "Após o 'Go-Live' (Execução), geralmente orquestrado por potentes sistemas de gestão (BPMS), entra a etapa vital de Monitoramento. Nesse estágio, painéis em tempo real alimentados por tecnologias como o BAM (Business Activity Monitoring) disparam alertas automáticos de anomalias processuais, atrasos ou quebras de conformidade (compliance) muito antes do processo colapsar e afetar o cliente.",
+      "A etapa final de Otimização fecha o ciclo sistêmico realimentando a fase inicial. Ela pode resultar em dois caminhos distintos: a melhoria contínua (incremental, degrau a degrau, como o Kaizen japonês) ou a radical reengenharia de processos (abandono do fluxo atual e desenho de uma folha em branco, com quebra total de paradigmas em busca de saltos exorbitantes de produtividade).",
+      "É vital para o profissional moderno entender academicamente que a Reengenharia implica invariavelmente em começar do absoluto zero (conceito de blank sheet of paper), renegando as velhas práticas e estruturas corporativas vigentes, enquanto a Melhoria Contínua atua no ajuste fino e cirúrgico do que já existe, sem rupturas traumáticas drásticas na organização vigente.",
+      "Sem o estrito e zeloso acompanhamento disciplinado desse ciclo vitalício, grandes corporações rapidamente transformam processos outrora de ponta em amontoados burocráticos engessados, lentos e caros que drenam a capacidade competitiva e abrem flancos mortais para concorrentes mais ágeis no implacável mercado petrolífero internacional.",
+      "A banca organizadora CESGRANRIO costuma focar suas baterias de questões exatamente na diferença fundamental, conceitual e prática entre os pressupostos da melhoria contínua suave e os da reengenharia de processos corporativos drástica, além de exigir que o candidato conheça a exata sequência teórica das fases dispostas no aclamado framework do CBOK.",
+      "O domínio soberano das fases orgânicas do ciclo de vida capacita amplamente o candidato a gabaritar questões complexas, cruzar conhecimentos com a gestão de projetos tradicionais e entender plenamente as sofisticadas metodologias de análise de fluxos administrativos em qualquer nível hierárquico governamental federal."
     ],
-    "flipcards": [
+    accordions: [
       {
-        "categoria": "Ciclo de Vida",
-        "tituloFrente": "Ciclo do BPM",
-        "iconeFrente": "LuBookOpen",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Fases de Evolução",
-        "conteudoVerso": "Compreende: <strong>Planejamento, Análise, Desenho (Modelagem), Implementação, Monitoramento e Refinamento</strong> dos processos. 🔄"
-      },
-      {
-        "categoria": "AS-IS",
-        "tituloFrente": "Mapeamento Atual",
-        "iconeFrente": "LuLayers",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Situação Real",
-        "conteudoVerso": "Documenta o <strong>processo como ele é executado hoje</strong>. Essencial para identificar gargalos e falhas de fluxo. 🕵️"
-      },
-      {
-        "categoria": "TO-BE",
-        "tituloFrente": "Desenho do Futuro",
-        "iconeFrente": "LuTarget",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Estado Desejado",
-        "conteudoVerso": "Modelagem do <strong>processo redesenhado com as melhorias implementadas</strong>. Meta de eficiência e automação. 🚀"
-      },
-      {
-        "categoria": "Notação BPMN",
-        "tituloFrente": "Padrão BPMN",
-        "iconeFrente": "LuTriangle",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Simbolologia",
-        "conteudoVerso": "Linguagem padrão para modelar fluxos, contendo <strong>Piscinas (Pools), Raias (Lanes), Eventos, Atividades e Gateways</strong>. 📊"
-      },
-      {
-        "categoria": "Monitoramento",
-        "tituloFrente": "Gestão de Gargalos",
-        "iconeFrente": "LuCheck",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Gargalo Operacional",
-        "conteudoVerso": "Identificar e mitigar o <strong>gargalo (recurso de menor capacidade)</strong>, que limita o fluxo produtivo total. ⏳"
-      },
-      {
-        "categoria": "Pegadinha de Prova",
-        "tituloFrente": "Foco CESGRANRIO",
-        "iconeFrente": "LuMessageSquare",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Automação Precoce",
-        "conteudoVerso": "Automatizar um processo ruim no estado AS-IS só acelera o erro. Primeiro <strong>analisa-se e redesenha-se (TO-BE)</strong>, depois automatiza-se. ⚠️"
+        titulo: "Reengenharia vs Kaizen (Melhoria Contínua)",
+        conteudo: "<p>Diferenças fundamentais para provas:</p><ul class='list-disc pl-5 mt-2 space-y-2'><li><strong>Kaizen:</strong> Incremental, contínuo, baixo investimento, participação de todos os colaboradores.</li><li><strong>Reengenharia:</strong> Radical, reinício do zero (folha em branco), alto investimento, top-down.</li></ul>"
       }
     ],
-    "sinteseEstrategica": {
-      "title": "Elementos Básicos do BPMN",
-      "content": "<div class='p-4 bg-slate-800 text-white rounded-lg'><ul class='list-disc pl-5'><li><strong>Piscina (Pool):</strong> Representa o processo ou a organização inteira.</li><li><strong>Raia (Lane):</strong> Representa quem executa (departamento ou cargo).</li><li><strong>Gateway (Losango):</strong> Pontos de decisão no fluxo de trabalho.</li></ul></div>"
+    flipcards: [
+      {
+        categoria: "Ciclo de Vida",
+        tituloFrente: "Análise de Processos",
+        iconeFrente: "LuBookOpen",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Diagnóstico de Problemas",
+        conteudoVerso: "Investigação detalhada das causas dos atrasos e gargalos no fluxo de trabalho. 🔎"
+      },
+      {
+        categoria: "Ciclo de Vida",
+        tituloFrente: "Redesenho",
+        iconeFrente: "LuTarget",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Solução Proposta",
+        conteudoVerso: "Criação de novas regras e rotinas para solucionar as ineficiências encontradas. 📐"
+      },
+      {
+        categoria: "Abordagens",
+        tituloFrente: "Reengenharia",
+        iconeFrente: "LuActivity",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Mudança Radical",
+        conteudoVerso: "Reconceituação do zero do processo para obter melhorias gigantescas em custo e velocidade. 💥"
+      },
+      {
+        categoria: "Abordagens",
+        tituloFrente: "Kaizen",
+        iconeFrente: "LuAward",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Melhoria Incremental",
+        conteudoVerso: "Aprimoramento gradual e diário aproveitando as sugestões das próprias equipes operacionais. 🌱"
+      },
+      {
+        categoria: "Controle",
+        tituloFrente: "Monitoramento",
+        iconeFrente: "LuShield",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Acompanhamento de KPIs",
+        conteudoVerso: "Medição em tempo real do desempenho do processo redesenhado. 📈"
+      },
+      {
+        categoria: "CESGRANRIO",
+        tituloFrente: "Pegadinha de Prova",
+        iconeFrente: "LuCheck",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Reengenharia é Kaizen?",
+        conteudoVerso: "Reengenharia é **radical e do zero**; Kaizen é **gradual e cumulativo**. Não confunda na prova! ⚠️"
+      }
+    ],
+    sinteseEstrategica: {
+      title: "Mnemônico de Redesenho",
+      content: "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>Gatilho Mental de Redesenho:</p><ul class='list-disc pl-5 mt-2'><li><strong>Kaizen:</strong> Passo a Passo (Gradual)</li><li><strong>Reengenharia:</strong> Folha em Branco (Radical)</li></ul></div>"
     },
-    "audio": {
-      "titulo": "Podcast Módulo 8 - Ciclo de Vida de Processos",
-      "artista": "Concurso Na Veia"
-    }
+    audio: { titulo: "Podcast Módulo 8 - Ciclo de Vida dos Processos", artista: "Concurso Na Veia" }
   },
   9: {
-    "introducaoCEDEA": [
-      "O atendimento ao cliente é um diferencial estratégico e a linha de frente da imagem da organização, exigindo técnicas de escuta ativa, empatia e clareza na comunicação.",
-      "Na Petrobras, o atendimento abrange desde o relacionamento comercial com grandes distribuidoras e indústrias até o atendimento ao cidadão através de canais da Ouvidoria Pública.",
-      "A empatia é a capacidade de compreender os sentimentos e a perspectiva do cliente, servindo como base para desarmar conflitos e frustrações.",
-      "A escuta ativa consiste em ouvir com atenção plena, decodificar a mensagem do cliente sem preconceitos e demonstrar compreensão real do seu problema.",
-      "A comunicação não-violenta (CNV) é uma ferramenta poderosa para o atendimento, baseada na observação sem julgamento e no alinhamento de necessidades.",
-      "Os canais digitais de atendimento exigem agilidade, linguagem adequada e integração para garantir uma experiência omnicanal consistente.",
-      "A jornada do cliente mapeia todos os pontos de contato e interações dele com a organização, buscando otimizar cada etapa do relacionamento.",
-      "O tratamento adequado de reclamações transforma clientes insatisfeitos em defensores da marca quando resolvidos de forma ágil e justa.",
-      "Para a banca CESGRANRIO, as qualidades do atendimento ao cliente (cortesia, presteza, eficácia) e a gestão de conflitos são temas recorrentes em provas de nível médio.",
-      "O candidato deve identificar posturas corretas de atendimento público e privado, focando em empatia, resolução de problemas e assertividade."
+    introducaoCEDEA: [
+      "O atendimento ao cliente deixou irreversivelmente de ser considerado uma mera área reativa, focada exclusivamente em apagar incêndios e receber reclamações, para se consagrar como o diferencial competitivo mais central, agressivo e rentável de uma corporação. Hoje, o foco total reside na gestão integral e emocional da 'Experiência do Consumidor' (Customer Experience - CX) em todas as pontas.",
+      "Na imensa complexidade da cadeia de logística e suprimentos da Petrobras, o excelente atendimento prestado aos exigentes clientes internos (como engenheiros de manutenção em plataformas isoladas e refinarias de alta criticidade) deve ser absurdamente ágil, resolutivo e livre de qualquer burocracia que possa paralisar a produção de riquezas minerais no país.",
+      "Para atuar na excelência, é preciso dominar a teoria de que Serviços possuem quatro características acadêmicas únicas que os diferenciam visceralmente de produtos físicos convencionais: a Intangibilidade (não podem ser tocados), a Inseparabilidade (são produzidos e consumidos simultaneamente), a Perecibilidade (não podem ser estocados) e a Variabilidade (cada prestação é única e depende do prestador humano no momento).",
+      "No âmago dessa interação, surge o famoso conceito de 'Momento da Verdade' (popularizado por Jan Carlzon). Ele descreve dramaticamente o instante único e exato em que o cliente entra em contato com qualquer aspecto da empresa e, em questão de frações de segundos, forma sua duradoura impressão mental sobre a qualidade geral da marca e do serviço ofertado.",
+      "A tecnologia atual apoia ferozmente esse processo mediante os mega Sistemas de CRM (Customer Relationship Management). Ao centralizar e mastigar analiticamente todo o gigantesco Big Data do histórico de compras e comportamento dos clientes, a empresa passa a personalizar o atendimento de forma intimista e, principalmente, a antecipar cirurgicamente as futuras necessidades e dores do consumidor antes mesmo que ele as externe.",
+      "Contudo, falhas operacionais sempre ocorrerão em cenários do mundo real. A mágica reside na tática de 'Recuperação de Serviços' (Service Recovery), que é a rara habilidade estruturada e treinada da empresa em reverter uma drástica insatisfação pós-falha grave em encantamento, muitas vezes tornando o cliente atingido mais fiel à marca do que se o serviço tivesse ocorrido normalmente (Paradoxo da Recuperação).",
+      "Isso só ganha força por meio de uma genuína cultura de Customer Centricity (centralidade estrutural no cliente). Sob esse prisma inovador, todas as decisões estratégicas pesadas da diretoria, orçamentos, produtos e desenhos operacionais de processos são definidos colocando o ponto de vista do consumidor final estritamente no centro das atenções, abolindo visões engessadas internas.",
+      "Na linha de frente humana, a empatia genuína e a sofisticada capacidade de escuta ativa (ouvir para compreender e não para rebater) despontam historicamente como as competências comportamentais inegociáveis e mais valorizadas em equipes de atendimento ao público corporativo premium e suporte a contratos logísticos de grande porte.",
+      "O radar da CESGRANRIO sistematicamente avalia com bastante rigor o conhecimento do candidato acerca das quatro características essenciais dos serviços (especialmente intangibilidade e inseparabilidade) e cobra as cinco dimensões mundiais da qualidade percebida no atendimento: Confiabilidade, Receptividade, Segurança, Empatia e Tangibilidade (apresentação física das instalações e do pessoal).",
+      "Saber diferenciar filosoficamente e na prática os desafios do produto tangível versus o serviço invisível, compreendendo toda a complexa e emocional jornada do cliente (customer journey), garante ao candidato o pleno acerto em difíceis questões de gestão comercial, posicionamento de mercado estratégico e comportamento organizacional em grandes empresas públicas."
     ],
-    "flipcards": [
+    accordions: [
       {
-        "categoria": "Atendimento",
-        "tituloFrente": "Qualidade Atendimento",
-        "iconeFrente": "LuBookOpen",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Pilares Centrais",
-        "conteudoVerso": "Envolve <strong>presteza, cortesia, empatia, clareza e eficácia</strong> na resolução de problemas do cidadão ou cliente. 🌟"
-      },
-      {
-        "categoria": "Escuta Ativa",
-        "tituloFrente": "Técnica da Escuta",
-        "iconeFrente": "LuLayers",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Atenção Plena",
-        "conteudoVerso": "Ouvir o cliente com <strong>atenção plena</strong>, confirmando o entendimento através de paráfrases e demonstrando empatia. 🗣️"
-      },
-      {
-        "categoria": "Empatia",
-        "tituloFrente": "Postura Empática",
-        "iconeFrente": "LuTarget",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Calçar Sapatos",
-        "conteudoVerso": "Esforço de se colocar no lugar do cliente para <strong>compreender suas frustrações</strong> e buscar soluções viáveis de forma justa. 🤝"
-      },
-      {
-        "categoria": "CNV",
-        "tituloFrente": "Comunicação CNV",
-        "iconeFrente": "LuTriangle",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Sem Julgamentos",
-        "conteudoVerso": "Método focado em <strong>observar fatos, expressar sentimentos e necessidades</strong> de forma clara e não agressiva. 💡"
-      },
-      {
-        "categoria": "Omnicanal",
-        "tituloFrente": "Atendimento Omnicanal",
-        "iconeFrente": "LuCheck",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Integração",
-        "conteudoVerso": "Oferecer uma <strong>experiência integrada de canais</strong> (telefone, chat, e-mail), onde a transição não cause atritos para o cliente. 📱"
-      },
-      {
-        "categoria": "Pegadinha de Prova",
-        "tituloFrente": "Foco CESGRANRIO",
-        "iconeFrente": "LuMessageSquare",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Atrito Público",
-        "conteudoVerso": "As questões adoram colocar o atendente sendo defensivo perante a crítica do cidadão. A postura correta deve ser sempre de <strong>acolhimento e presteza</strong>. ⚠️"
+        titulo: "As 5 Dimensões da Qualidade em Serviços (SERVQUAL)",
+        conteudo: "<p>Dimensões de avaliação pelo cliente:</p><ul class='list-disc pl-5 mt-2 space-y-2'><li><strong>Tangibilidade:</strong> Aparência das instalações físicas, equipamentos e pessoal.</li><li><strong>Confiabilidade:</strong> Capacidade de prestar o serviço prometido de forma precisa e confiável.</li><li><strong>Capacidade de Resposta:</strong> Disposição para ajudar os clientes e prestar serviço presteza.</li><li><strong>Segurança:</strong> Conhecimento, cortesia e capacidade dos funcionários de transmitir confiança.</li><li><strong>Empatia:</strong> Atenção individualizada e cuidadosa proporcionada aos clientes.</li></ul>"
       }
     ],
-    "sinteseEstrategica": {
-      "title": "Os 4 Componentes da CNV",
-      "content": "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>A Comunicação Não-Violenta baseia-se em:</p><ol class='list-decimal pl-5 mt-2'><li><strong>Observação:</strong> Descrever os fatos sem julgamentos.</li><li><strong>Sentimento:</strong> Expressar como nos sentimos diante disso.</li><li><strong>Necessidade:</strong> Revelar nossas necessidades não atendidas.</li><li><strong>Pedido:</strong> Fazer solicitações concretas e factíveis.</li></ol></div>"
+    flipcards: [
+      {
+        categoria: "Serviços",
+        tituloFrente: "Intangibilidade",
+        iconeFrente: "LuBookOpen",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Não se Pode Tocar",
+        conteudoVerso: "O serviço não pode ser visto ou experimentado antes de ser adquirido e executado. 🌫️"
+      },
+      {
+        categoria: "Serviços",
+        tituloFrente: "Inseparabilidade",
+        iconeFrente: "LuLayers",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Produção e Consumo",
+        conteudoVerso: "O serviço é produzido e consumido simultaneamente com a presença do cliente. 🤝"
+      },
+      {
+        categoria: "SERVQUAL",
+        tituloFrente: "Confiabilidade",
+        iconeFrente: "LuShield",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Promessa Cumprida",
+        conteudoVerso: "Entregar o serviço exatamente como acordado, sem erros e dentro do prazo estipulado. 🎯"
+      },
+      {
+        categoria: "SERVQUAL",
+        tituloFrente: "Empatia",
+        iconeFrente: "LuUsers",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Atenção Personalizada",
+        conteudoVerso: "Colocar-se no lugar do cliente e oferecer atendimento atencioso às suas necessidades individuais. 👁️"
+      },
+      {
+        categoria: "SLA",
+        tituloFrente: "Acordo de Nível de Serviço",
+        iconeFrente: "LuTarget",
+        subtituloFrente: "Memorização",
+        tituloVerso: "SLA",
+        conteudoVerso: "Contrato formal que define as métricas de tempo e qualidade esperadas entre fornecedor e cliente. 📜"
+      },
+      {
+        categoria: "CESGRANRIO",
+        tituloFrente: "Pegadinha de Prova",
+        iconeFrente: "LuCheck",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Perecibilidade do Serviço",
+        conteudoVerso: "Serviços **não podem ser estocados**. Um assento vazio de voo ou hora ociosa é perda irreversível! ⚠️"
+      }
+    ],
+    sinteseEstrategica: {
+      title: "Mnemônico das 5 Dimensões SERVQUAL",
+      content: "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>Sigla para as 5 Dimensões:</p><ul class='list-disc pl-5 mt-2'><li><strong>T</strong>angibilidade</li><li><strong>R</strong>esposta (Capacidade)</li><li><strong>A</strong>ssurance (Segurança)</li><li><strong>C</strong>onfiabilidade</li><li><strong>E</strong>mpatia</li></ul></div>"
     },
-    "audio": {
-      "titulo": "Podcast Módulo 9 - Atendimento ao Cliente",
-      "artista": "Concurso Na Veia"
-    }
+    audio: { titulo: "Podcast Módulo 9 - Atendimento ao Cliente e Serviços", artista: "Concurso Na Veia" }
   },
   10: {
-    "introducaoCEDEA": [
-      "A Ouvidoria é o canal de segunda instância e o termômetro ético das organizações públicas, atuando na mediação de conflitos, tratamento de denúncias e garantia de transparência.",
-      "Na estrutura de governança da Petrobras, a Ouvidoria Geral desempenha papel central de compliance, recebendo manifestações sobre a aplicação prática do Código de Conduta Ética.",
-      "O NPS (Net Promoter Score) é uma métrica consolidada para avaliar a satisfação e lealdade do cliente através da pergunta definitiva: 'De 0 a 10, quanto você recomendaria nossos serviços?'.",
-      "A classificação do NPS divide os respondentes em três perfis: Promotores (9 ou 10), Neutros (7 ou 8) e Detratores (0 a 6).",
-      "A Ouvidoria atua de forma independente e autônoma, buscando solucionar os problemas do cidadão de maneira justa e promovendo melhorias na gestão pública.",
-      "O tratamento de reclamações deve ser ágil e resolutivo, convertendo gargalos e falhas identificadas em propostas de melhoria contínua de processos.",
-      "A governança corporativa em estatais exige a estruturação de canais seguros para reporte de irregularidades e denúncias, garantindo a proteção aos denunciantes.",
-      "O fechamento do loop com o cliente após o tratamento da sua manifestação ou reclamação é fundamental para recuperar a confiança e fidelidade.",
-      "Para a banca CESGRANRIO, as atribuições da Ouvidoria em empresas de economia mista e o cálculo do NPS são temas quentes de prova.",
-      "O candidato deve dominar o cálculo da nota do NPS: subtrair a porcentagem de detratores da porcentagem de promotores, ignorando os clientes neutros."
+    introducaoCEDEA: [
+      "A Ouvidoria Institucional e a arquitetura de Feedback contínuo despontam como instrumentos de altíssima criticidade para a escuta corporativa madura. Eles são, indiscutivelmente, ferramentas essenciais para assegurar a blindagem da transparência governamental, promover a melhoria contínua dos pesados processos internos e garantir um fortalecimento intransigente dos robustos programas de compliance nas estatais modernas.",
+      "No ambiente restrito e altamente escrutinado da Petrobras, o Canal de Denúncia Independente e a Ouvidoria-Geral atuam como as instâncias máximas e sagradas de governança corporativa. Eles recebem e apuram rigorosamente não apenas insatisfações sistêmicas com fornecedores, mas atuam como escudo para relatar assédios, ilícitos penais, corrupção e desvios éticos de conduta entre os prestadores de serviços de suprimentos e contratos gigantescos.",
+      "É basilar e exigido legalmente entender que a Ouvidoria se diferencia abissalmente do popular Serviço de Atendimento ao Consumidor (SAC). O SAC atua na base operacional e na primeira linha de frente (First-line) para solucionar reclamações diárias sobre faturamento e rotinas normais, enquanto a ouvidoria é a 'instância de apelação e de segunda instância' na corporação, sendo acionada apenas quando todas as outras áreas administrativas normais de triagem e de atendimento fracassaram na solução da dor do cidadão.",
+      "Por sua natureza delicadíssima e missão fiscalizatória, a ouvidoria opera de forma autônoma e independente dos demais departamentos operacionais e reporta-se diretamente e exclusivamente ao conselho de administração ou à mais alta direção executiva da companhia (CEO), garantindo autonomia plena e possuindo fortíssimo poder de recomendação estratégica e disciplinar interna que não pode ser facilmente engavetada por gestores médios ofendidos com os relatórios gerados.",
+      "Já no âmbito da gestão de pessoas, o Feedback é a arte de devolução estruturada, periódica e científica de informações sobre o desempenho quantitativo ou comportamento qualitativo interpessoal, sempre com o fito precípuo de propiciar o desenvolvimento profissional sadio e contínuo do colaborador no ambiente laboral que não pode ficar alheio às expectativas da sua liderança direta.",
+      "Neste espectro psicológico, a clássica matriz da 'Janela de Johari' ilustra magistralmente como o compartilhamento de feedback construtivo expande incrivelmente a chamada área 'aberta' de relacionamento confiável e reduz violentamente a perigosa 'área cega' dos pontos fracos interpessoais, os quais os próprios colaboradores ignoram que os possuem, mas que são visíveis para todo o restante da equipe que não têm coragem de reportá-los sem um canal adequado e seguro para fazê-lo livremente sem sanções retaliatórias institucionais invisíveis pela chefia avaliada negativamente por eles.",
+      "Para chancelar a efetividade no atendimento das expectativas do usuário corporativo de grandes contratações da empresa e dos grandes projetos logísticos internos, a técnica Net Promoter Score (NPS) consagrou-se como a métrica universal moderna e definitiva que mensura com um único dígito percentual simplificado a lealdade do cliente pautada na célebre pergunta existencial para os negócios: 'Em uma escala de 0 a 10, você, como usuário, recomendaria efusivamente os serviços prestados pela nossa área de compras para os outros colegas de departamento da sua plataforma isolada?'.",
+      "A proteção absoluta ao informante em sistemas sensíveis (whistleblower) impõe que um programa eficaz de ouvidoria deve garantir absoluto, irrestrito e perpétuo anonimato protetor, preservando a vida do informante e blindando-o contra eventuais perseguições profissionais desleais ou violentas retaliações organizacionais que são naturais em ambientes de denúncias corporativas bilionárias e com altos interesses comerciais escusos e ilegais em jogo.",
+      "A meticulosa banca CESGRANRIO foca reiteradamente as suas tradicionais 'cascas de banana' justamente na distinção estratégica entre a função do SAC (puramente operacional, para queixas básicas) e da Ouvidoria (institucional, última instância, apuração sigilosa), além de testar o candidato nas premissas que separam, em teoria organizacional de Liderança moderna e em manuais de coaching empresarial consolidados as perigosas e desmotivadoras críticas vagas dos efetivos e maduros feedbacks avaliativos comportamentais pontuais e focados puramente em uma efetiva melhoria progressiva na execução dos processos administrativos de trabalho.",
+      "A sólida compreensão desta infraestrutura corporativa dual (Ouvidoria e Feedback) concede ao candidato de alta competitividade os poderosos alicerces teóricos para aniquilar as mais duras e exaustivas questões sobre moderna gestão de governança e controles estatais severos do TCU, ética profissional de agentes públicos submetidos à lei de responsabilidades do Estado brasileiro, proteção estratégica a dados confidenciais cruciais em licitações abertas (LGPD no Serviço Público moderno) e avançada gestão psicológica e humanizada das mais valiosas peças da corporação federal brasileira que são as valorosas e únicas Pessoas do quadro fixo da companhia de capital misto nacional."
     ],
-    "flipcards": [
+    accordions: [
       {
-        "categoria": "Ouvidoria",
-        "tituloFrente": "Papel Ouvidoria",
-        "iconeFrente": "LuBookOpen",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Segunda Instância",
-        "conteudoVerso": "Atua como <strong>canal de segunda instância</strong> e mediação de conflitos. Garante transparência e conformidade com a ética. ⚖️"
-      },
-      {
-        "categoria": "NPS",
-        "tituloFrente": "Net Promoter Score",
-        "iconeFrente": "LuLayers",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "Métrica de Lealdade",
-        "conteudoVerso": "NPS avalia lealdade. <strong>Promotores (9-10):</strong> Defensores. <strong>Neutros (7-8):</strong> Indiferentes. <strong>Detratores (0-6):</strong> Insatisfeitos. 📊"
-      },
-      {
-        "categoria": "Cálculo NPS",
-        "tituloFrente": "Cálculo NPS",
-        "iconeFrente": "LuTarget",
-        "subtituloFrente": "Detalhamento Técnico",
-        "tituloVerso": "A Fórmula",
-        "conteudoVerso": "Fórmula: <strong>NPS = % Promotores - % Detratores</strong>. Neutros são totalmente ignorados no cálculo. 📝"
-      },
-      {
-        "categoria": "Governança",
-        "tituloFrente": "Ética e Denúncias",
-        "iconeFrente": "LuTriangle",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Compliance",
-        "conteudoVerso": "Canais seguros de denúncia garantem a <strong>integridade corporativa e compliance</strong> de acordo com a Lei das Estatais. 🛡️"
-      },
-      {
-        "categoria": "Fechamento Loop",
-        "tituloFrente": "Fechar o Loop",
-        "iconeFrente": "LuCheck",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "Resposta Final",
-        "conteudoVerso": "Garantir o <strong>retorno e feedback final</strong> ao cliente insatisfeito sobre quais ações corretivas foram adotadas. 🔄"
-      },
-      {
-        "categoria": "Pegadinha de Prova",
-        "tituloFrente": "Foco CESGRANRIO",
-        "iconeFrente": "LuMessageSquare",
-        "subtituloFrente": "Memorização",
-        "tituloVerso": "NPS Negativo",
-        "conteudoVerso": "Lembre-se que o NPS varia de <strong>-100 a +100</strong>. Valores abaixo de zero indicam crise crítica de satisfação de clientes. ⚠️"
+        titulo: "Tipos de Manifestação na Ouvidoria (Lei 13.460/2017)",
+        conteudo: "<p>Classificação legal das manifestações:</p><ul class='list-disc pl-5 mt-2 space-y-2'><li><strong>Denúncia:</strong> Comunicação de ato ilícito, irregularidade ou violação de norma.</li><li><strong>Reclamação:</strong> Demonstração de insatisfação sobre serviço público ou atendimento prestado.</li><li><strong>Solicitação:</strong> Pedido de adoção de providência ou prestação de serviço.</li><li><strong>Sugestão:</strong> Proposta de ideia para melhoria dos serviços.</li><li><strong>Elogio:</strong> Demonstração de satisfação ou reconhecimento pelo atendimento recebido.</li></ul>"
       }
     ],
-    "sinteseEstrategica": {
-      "title": "Cálculo do NPS em Concursos",
-      "content": "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>Exemplo rápido:</p><p class='mt-2'>Numa pesquisa com 100 clientes:</p><ul class='list-disc pl-5'><li>50 são Promotores (50%)</li><li>30 são Neutros (ignora)</li><li>20 são Detratores (20%)</li></ul><p class='mt-2'><strong>NPS: 50% - 20% = +30</strong></p></div>"
+    flipcards: [
+      {
+        categoria: "Ouvidoria",
+        tituloFrente: "Segunda Instância",
+        iconeFrente: "LuShield",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Atuação Recursal",
+        conteudoVerso: "A ouvidoria atua quando os canais regulares de atendimento (1ª instância) não resolveram o problema. 🏢"
+      },
+      {
+        categoria: "Manifestação",
+        tituloFrente: "Denúncia",
+        iconeFrente: "LuActivity",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Comunicação de Ilícito",
+        conteudoVerso: "Relato de fraude, corrupção ou irregularidade grave. Exige investigação e apuração. 🚨"
+      },
+      {
+        categoria: "Manifestação",
+        tituloFrente: "Reclamação",
+        iconeFrente: "LuBookOpen",
+        subtituloFrente: "Detalhamento Técnico",
+        tituloVerso: "Insatisfação com Serviço",
+        conteudoVerso: "Queixa sobre a má qualidade do atendimento ou descumprimento de prazos. 📉"
+      },
+      {
+        categoria: "Governança",
+        tituloFrente: "Whistleblower",
+        iconeFrente: "LuUsers",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Proteção ao Denunciante",
+        conteudoVerso: "Garantia legal de anonimato e proteção contra qualquer tipo de retaliação profissional. 🛡️"
+      },
+      {
+        categoria: "Legislação",
+        tituloFrente: "Lei 13.460/2017",
+        iconeFrente: "LuTarget",
+        subtituloFrente: "Memorização",
+        tituloVerso: "Direitos do Usuário",
+        conteudoVerso: "Regulamenta os direitos e a atuação das ouvidorias públicas e sociedades de economia mista. 📜"
+      },
+      {
+        categoria: "CESGRANRIO",
+        tituloFrente: "Pegadinha de Prova",
+        iconeFrente: "LuCheck",
+        subtituloFrente: "Memorização",
+        tituloVerso: "SAC vs Ouvidoria",
+        conteudoVerso: "O **SAC** realiza o atendimento operacional primário; a **Ouvidoria** é canal estratégico independente de 2ª instância. ⚠️"
+      }
+    ],
+    sinteseEstrategica: {
+      title: "Mnemônico dos Tipos de Manifestação",
+      content: "<div class='p-4 bg-slate-800 text-white rounded-lg'><p>Tipos de Manifestação:</p><ul class='list-disc pl-5 mt-2'><li><strong>Denúncia:</strong> Algo Errado/Ilícito</li><li><strong>Reclamação:</strong> Algo Ruim/Demorado</li><li><strong>Sugestão:</strong> Ideia de Melhoria</li><li><strong>Elogio:</strong> Reconhecimento</li></ul></div>"
     },
-    "audio": {
-      "titulo": "Podcast Módulo 10 - Ouvidoria e Feedback",
-      "artista": "Concurso Na Veia"
-    }
+    audio: { titulo: "Podcast Módulo 10 - Ouvidoria e Feedback na Governança", artista: "Concurso Na Veia" }
   }
 };

@@ -139,8 +139,8 @@ export default function AulaSemantica({
 
         <section className="space-y-8">
           <ModuleSectionHeader index="INTRO" title="O Significado em Jogo" variant={mv[1]} />
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start my-8">
-              <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+
 
             <p>
               A <strong>Semântica</strong> é o ramo da linguística que estuda o significado das palavras e a relação de sentido que elas estabelecem dentro de um contexto. Nas provas da Cesgranrio, especialmente para concursos como o da Petrobras, a cobrança não se restringe à decoreba de vocabulário, mas à capacidade do candidato de perceber as nuances de significado exigidas por um texto corporativo, técnico ou literário.
@@ -157,23 +157,8 @@ export default function AulaSemantica({
             <p>
               A Cesgranrio frequentemente usa trechos de crônicas ou textos jornalísticos e pede a substituição de uma palavra sublinhada por um sinônimo sem prejuízo de sentido. Muitas vezes, a alternativa correta é uma palavra que você não usa no dia a dia, mas que o contexto ajuda a decifrar por eliminação.
             </p>
-                        </div>
-              
-              <div className="shrink-0 space-y-2 w-full max-w-[320px] mx-auto lg:mx-0">
-                <div 
-                  className="cursor-zoom-in hover:scale-[1.02] transition-transform duration-200"
-                  onClick={() => setZoomedImage(`/assets/images/portugues/semantica/modulo-1/m1-intro.png`)}
-                >
-                  <img
-                    src={`/assets/images/portugues/semantica/modulo-1/m1-intro.png`}
-                    // PROMPT: [MANDATÓRIO] Descreva o que aparecerá na imagem gerada pelo Nano Banana. Estilo Dark Premium, fundo (#0a0f1d), proporção 1:1. NÃO inclua textos em inglês sob nenhuma hipótese. Represente o conceito de O Significado em Jogo.
-                    alt="Ilustração do conceito"
-                    className="w-full rounded-2xl border border-border/20 shadow-lg"
-                  />
-                </div>
-                <p className="text-sm text-muted-foreground text-center">Fig 1. Representação visual do conceito.</p>
-              </div>
-            </div>
+                        
+</div>
         </section>
 
         <section className="space-y-8">

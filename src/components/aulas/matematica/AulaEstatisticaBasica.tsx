@@ -141,8 +141,8 @@ export default function AulaEstatisticaBasica({
 
         <section className="space-y-8">
           <ModuleSectionHeader index="INTRO" title="O Universo da Estatística" variant={mv[1]} />
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start my-8">
-              <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+
 
             <p>
               A Estatística é a ciência que se dedica à coleta, organização, análise e interpretação de dados para a tomada de decisões. Nos concursos da Petrobras, compreender os alicerces estatísticos não é apenas uma exigência do edital, mas uma necessidade real para a rotina de um técnico ou analista, que frequentemente lida com relatórios de produção e inspeção.
@@ -159,23 +159,8 @@ export default function AulaEstatisticaBasica({
             <p>
               A banca Cesgranrio costuma ser bem direta na cobrança conceitual inicial. As questões frequentemente apresentam um cenário prático, como uma medição de pressão de válvulas, e pedem para o candidato classificar a variável envolvida. Lembre-se: se há necessidade de instrumento de medida (termômetro, balança), a variável é quantitativa contínua.
             </p>
-                        </div>
-              
-              <div className="shrink-0 space-y-2 w-full max-w-[320px] mx-auto lg:mx-0">
-                <div 
-                  className="cursor-zoom-in hover:scale-[1.02] transition-transform duration-200"
-                  onClick={() => setZoomedImage(`/assets/images/matematica/estatistica-basica/modulo-1/m1-intro.png`)}
-                >
-                  <img
-                    src={`/assets/images/matematica/estatistica-basica/modulo-1/m1-intro.png`}
-                    // PROMPT: [MANDATÓRIO] Descreva o que aparecerá na imagem gerada pelo Nano Banana. Estilo Dark Premium, fundo (#0a0f1d), proporção 1:1. NÃO inclua textos em inglês sob nenhuma hipótese. Represente o conceito de O Universo da Estatística.
-                    alt="Ilustração do conceito"
-                    className="w-full rounded-2xl border border-border/20 shadow-lg"
-                  />
-                </div>
-                <p className="text-sm text-muted-foreground text-center">Fig 1. Representação visual do conceito.</p>
-              </div>
-            </div>
+                        
+</div>
         </section>
 
         <section className="space-y-8">
@@ -313,8 +298,8 @@ export default function AulaEstatisticaBasica({
 
         <section className="space-y-8">
           <ModuleSectionHeader index="INTRO" title="Entendendo a Média" variant={mv[4]} />
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start my-8">
-              <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+
 
             <p>
               A <strong>Média Aritmética Simples</strong> é, de longe, a medida de tendência central mais cobrada e utilizada no dia a dia. Ela atua como um "ponto de equilíbrio" da distribuição, representando o valor que cada elemento do grupo teria se o total fosse dividido igualmente entre todos.
@@ -331,23 +316,8 @@ export default function AulaEstatisticaBasica({
             <p>
               Para a banca CESGRANRIO, as questões de média raramente exigem apenas aplicar a fórmula pura. O padrão é fornecer a média de um grupo, adicionar ou retirar um elemento e perguntar a nova média. O segredo para dominar esse modelo é sempre trabalhar com a <em>Soma Total</em> (Soma = Média × Quantidade).
             </p>
-                        </div>
-              
-              <div className="shrink-0 space-y-2 w-full max-w-[320px] mx-auto lg:mx-0">
-                <div 
-                  className="cursor-zoom-in hover:scale-[1.02] transition-transform duration-200"
-                  onClick={() => setZoomedImage(`/assets/images/matematica/estatistica-basica/modulo-1/m1-intro.png`)}
-                >
-                  <img
-                    src={`/assets/images/matematica/estatistica-basica/modulo-1/m1-intro.png`}
-                    // PROMPT: [MANDATÓRIO] Descreva o que aparecerá na imagem gerada pelo Nano Banana. Estilo Dark Premium, fundo (#0a0f1d), proporção 1:1. NÃO inclua textos em inglês sob nenhuma hipótese. Represente o conceito de Entendendo a Média.
-                    alt="Ilustração do conceito"
-                    className="w-full rounded-2xl border border-border/20 shadow-lg"
-                  />
-                </div>
-                <p className="text-sm text-muted-foreground text-center">Fig 1. Representação visual do conceito.</p>
-              </div>
-            </div>
+                        
+</div>
         </section>
 
         <section className="space-y-8">
@@ -461,31 +431,16 @@ export default function AulaEstatisticaBasica({
             />
             <section className="space-y-8">
               <ModuleSectionHeader index="INTRO" title="Detalhes do Módulo" variant={mv[num]} />
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start my-8">
-              <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+            <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+
 
                 <p>O conceito de {MODULE_DEFS[num - 1].title} é vital no edital.</p>
                 <p>Na prática, a banca Cesgranrio exigirá domínio matemático.</p>
                 <p>Diferente de matemática abstrata, usamos dados do cotidiano.</p>
                 <p>Devemos prestar atenção em possíveis pegadinhas no enunciado.</p>
                 <p>Para isso, resolver questões anteriores e dominar o cálculo é fundamental.</p>
-                            </div>
-              
-              <div className="shrink-0 space-y-2 w-full max-w-[320px] mx-auto lg:mx-0">
-                <div 
-                  className="cursor-zoom-in hover:scale-[1.02] transition-transform duration-200"
-                  onClick={() => setZoomedImage(`/assets/images/matematica/estatistica-basica/modulo-${num}/m${num}-intro.png`)}
-                >
-                  <img
-                    src={`/assets/images/matematica/estatistica-basica/modulo-${num}/m${num}-intro.png`}
-                    // PROMPT: [MANDATÓRIO] Descreva o que aparecerá na imagem gerada pelo Nano Banana. Estilo Dark Premium, fundo (#0a0f1d), proporção 1:1. NÃO inclua textos em inglês sob nenhuma hipótese. Represente o conceito de Detalhes do Módulo.
-                    alt="Ilustração do conceito"
-                    className="w-full rounded-2xl border border-border/20 shadow-lg"
-                  />
-                </div>
-                <p className="text-sm text-muted-foreground text-center">Fig ${num}. Representação visual do conceito.</p>
-              </div>
-            </div>
+                            
+</div>
             </section>
             
             <ModuleConsolidation moduloNumero={3}

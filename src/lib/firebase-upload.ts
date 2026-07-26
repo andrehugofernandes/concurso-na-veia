@@ -3,7 +3,7 @@ import { storage } from './firebase-client';
 
 // Prefixo do app para isolamento de dados no Storage compartilhado
 // Cada app dentro de pmjg-apps-dev tem seu próprio prefixo
-const APP_STORAGE_PREFIX = 'wp2next';
+const APP_STORAGE_PREFIX = 'concurso-na-veia';
 
 export interface UploadProgress {
   bytesTransferred: number;

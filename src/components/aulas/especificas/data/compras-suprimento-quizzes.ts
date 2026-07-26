@@ -1,290 +1,292 @@
-export const QUIZ_M1 = [
+import { QuizQuestion } from "../../shared";
+
+export const QUIZ_M1: QuizQuestion[] = [
   {
-    id: "q1_1",
-    pergunta: "Questão placeholder 1.1",
+    id: "q1",
+    pergunta: "Em relação ao tópico de O Papel Estratégico de Compras, qual das seguintes afirmações é considerada a prática mais recomendada?",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "Ignorar o planejamento prévio e focar exclusivamente na execução das atividades." },
+      { label: "B", valor: "Delegar todas as responsabilidades estratégicas para agentes operacionais." },
+      { label: "C", valor: "Alinhar as diretrizes do tema aos princípios de governança, economia e transparência da instituição." },
+      { label: "D", valor: "Basear as decisões estruturais apenas no menor preço, independentemente da qualidade." },
+      { label: "E", valor: "Adotar uma abordagem rígida, sem espaço para inovação ou adaptação ao contexto do mercado." }
     ],
-    correta: "A",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C (3ª opção) está correta porque a gestão contemporânea exige alinhamento com governança e transparência. As demais opções apresentam falhas graves de planejamento ou visão limitada."
   },
   {
-    id: "q1_2",
-    pergunta: "Questão placeholder 1.2",
+    id: "q2",
+    pergunta: "Sobre as regulamentações aplicáveis a O Papel Estratégico de Compras, assinale a opção correta considerando a atuação em empresas estatais:",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "O foco é puramente no lucro, ignorando a função social da empresa." },
+      { label: "B", valor: "As decisões de contratação dispensam análise de viabilidade técnica se houver urgência." },
+      { label: "C", valor: "Deve-se buscar a vantajosidade e o desenvolvimento nacional sustentável nos procedimentos pertinentes." },
+      { label: "D", valor: "É permitida a contratação direta em qualquer caso, desde que aprovada pelo gerente da área." },
+      { label: "E", valor: "O compliance não se aplica a esses processos devido à sua natureza operacional." }
     ],
-    correta: "B",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C está correta. A busca por vantajosidade e sustentabilidade é um pilar da atuação de estatais."
   }
 ];
 
-export const QUIZ_M2 = [
+export const QUIZ_M2: QuizQuestion[] = [
   {
-    id: "q2_1",
-    pergunta: "Questão placeholder 2.1",
+    id: "q1",
+    pergunta: "Em relação ao tópico de Processo de Requisição e Aquisição, qual das seguintes afirmações é considerada a prática mais recomendada?",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "Ignorar o planejamento prévio e focar exclusivamente na execução das atividades." },
+      { label: "B", valor: "Delegar todas as responsabilidades estratégicas para agentes operacionais." },
+      { label: "C", valor: "Alinhar as diretrizes do tema aos princípios de governança, economia e transparência da instituição." },
+      { label: "D", valor: "Basear as decisões estruturais apenas no menor preço, independentemente da qualidade." },
+      { label: "E", valor: "Adotar uma abordagem rígida, sem espaço para inovação ou adaptação ao contexto do mercado." }
     ],
-    correta: "A",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C (3ª opção) está correta porque a gestão contemporânea exige alinhamento com governança e transparência. As demais opções apresentam falhas graves de planejamento ou visão limitada."
   },
   {
-    id: "q2_2",
-    pergunta: "Questão placeholder 2.2",
+    id: "q2",
+    pergunta: "Sobre as regulamentações aplicáveis a Processo de Requisição e Aquisição, assinale a opção correta considerando a atuação em empresas estatais:",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "O foco é puramente no lucro, ignorando a função social da empresa." },
+      { label: "B", valor: "As decisões de contratação dispensam análise de viabilidade técnica se houver urgência." },
+      { label: "C", valor: "Deve-se buscar a vantajosidade e o desenvolvimento nacional sustentável nos procedimentos pertinentes." },
+      { label: "D", valor: "É permitida a contratação direta em qualquer caso, desde que aprovada pelo gerente da área." },
+      { label: "E", valor: "O compliance não se aplica a esses processos devido à sua natureza operacional." }
     ],
-    correta: "B",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C está correta. A busca por vantajosidade e sustentabilidade é um pilar da atuação de estatais."
   }
 ];
 
-export const QUIZ_M3 = [
+export const QUIZ_M3: QuizQuestion[] = [
   {
-    id: "q3_1",
-    pergunta: "Questão placeholder 3.1",
+    id: "q1",
+    pergunta: "Em relação ao tópico de Seleção e Cadastro de Fornecedores, qual das seguintes afirmações é considerada a prática mais recomendada?",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "Ignorar o planejamento prévio e focar exclusivamente na execução das atividades." },
+      { label: "B", valor: "Delegar todas as responsabilidades estratégicas para agentes operacionais." },
+      { label: "C", valor: "Alinhar as diretrizes do tema aos princípios de governança, economia e transparência da instituição." },
+      { label: "D", valor: "Basear as decisões estruturais apenas no menor preço, independentemente da qualidade." },
+      { label: "E", valor: "Adotar uma abordagem rígida, sem espaço para inovação ou adaptação ao contexto do mercado." }
     ],
-    correta: "A",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C (3ª opção) está correta porque a gestão contemporânea exige alinhamento com governança e transparência. As demais opções apresentam falhas graves de planejamento ou visão limitada."
   },
   {
-    id: "q3_2",
-    pergunta: "Questão placeholder 3.2",
+    id: "q2",
+    pergunta: "Sobre as regulamentações aplicáveis a Seleção e Cadastro de Fornecedores, assinale a opção correta considerando a atuação em empresas estatais:",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "O foco é puramente no lucro, ignorando a função social da empresa." },
+      { label: "B", valor: "As decisões de contratação dispensam análise de viabilidade técnica se houver urgência." },
+      { label: "C", valor: "Deve-se buscar a vantajosidade e o desenvolvimento nacional sustentável nos procedimentos pertinentes." },
+      { label: "D", valor: "É permitida a contratação direta em qualquer caso, desde que aprovada pelo gerente da área." },
+      { label: "E", valor: "O compliance não se aplica a esses processos devido à sua natureza operacional." }
     ],
-    correta: "B",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C está correta. A busca por vantajosidade e sustentabilidade é um pilar da atuação de estatais."
   }
 ];
 
-export const QUIZ_M4 = [
+export const QUIZ_M4: QuizQuestion[] = [
   {
-    id: "q4_1",
-    pergunta: "Questão placeholder 4.1",
+    id: "q1",
+    pergunta: "Em relação ao tópico de Avaliação de Desempenho de Fornecedores, qual das seguintes afirmações é considerada a prática mais recomendada?",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "Ignorar o planejamento prévio e focar exclusivamente na execução das atividades." },
+      { label: "B", valor: "Delegar todas as responsabilidades estratégicas para agentes operacionais." },
+      { label: "C", valor: "Alinhar as diretrizes do tema aos princípios de governança, economia e transparência da instituição." },
+      { label: "D", valor: "Basear as decisões estruturais apenas no menor preço, independentemente da qualidade." },
+      { label: "E", valor: "Adotar uma abordagem rígida, sem espaço para inovação ou adaptação ao contexto do mercado." }
     ],
-    correta: "A",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C (3ª opção) está correta porque a gestão contemporânea exige alinhamento com governança e transparência. As demais opções apresentam falhas graves de planejamento ou visão limitada."
   },
   {
-    id: "q4_2",
-    pergunta: "Questão placeholder 4.2",
+    id: "q2",
+    pergunta: "Sobre as regulamentações aplicáveis a Avaliação de Desempenho de Fornecedores, assinale a opção correta considerando a atuação em empresas estatais:",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "O foco é puramente no lucro, ignorando a função social da empresa." },
+      { label: "B", valor: "As decisões de contratação dispensam análise de viabilidade técnica se houver urgência." },
+      { label: "C", valor: "Deve-se buscar a vantajosidade e o desenvolvimento nacional sustentável nos procedimentos pertinentes." },
+      { label: "D", valor: "É permitida a contratação direta em qualquer caso, desde que aprovada pelo gerente da área." },
+      { label: "E", valor: "O compliance não se aplica a esses processos devido à sua natureza operacional." }
     ],
-    correta: "B",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C está correta. A busca por vantajosidade e sustentabilidade é um pilar da atuação de estatais."
   }
 ];
 
-export const QUIZ_M5 = [
+export const QUIZ_M5: QuizQuestion[] = [
   {
-    id: "q5_1",
-    pergunta: "Questão placeholder 5.1",
+    id: "q1",
+    pergunta: "Em relação ao tópico de Matriz de Kraljic (Estratégia de Itens), qual das seguintes afirmações é considerada a prática mais recomendada?",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "Ignorar o planejamento prévio e focar exclusivamente na execução das atividades." },
+      { label: "B", valor: "Delegar todas as responsabilidades estratégicas para agentes operacionais." },
+      { label: "C", valor: "Alinhar as diretrizes do tema aos princípios de governança, economia e transparência da instituição." },
+      { label: "D", valor: "Basear as decisões estruturais apenas no menor preço, independentemente da qualidade." },
+      { label: "E", valor: "Adotar uma abordagem rígida, sem espaço para inovação ou adaptação ao contexto do mercado." }
     ],
-    correta: "A",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C (3ª opção) está correta porque a gestão contemporânea exige alinhamento com governança e transparência. As demais opções apresentam falhas graves de planejamento ou visão limitada."
   },
   {
-    id: "q5_2",
-    pergunta: "Questão placeholder 5.2",
+    id: "q2",
+    pergunta: "Sobre as regulamentações aplicáveis a Matriz de Kraljic (Estratégia de Itens), assinale a opção correta considerando a atuação em empresas estatais:",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "O foco é puramente no lucro, ignorando a função social da empresa." },
+      { label: "B", valor: "As decisões de contratação dispensam análise de viabilidade técnica se houver urgência." },
+      { label: "C", valor: "Deve-se buscar a vantajosidade e o desenvolvimento nacional sustentável nos procedimentos pertinentes." },
+      { label: "D", valor: "É permitida a contratação direta em qualquer caso, desde que aprovada pelo gerente da área." },
+      { label: "E", valor: "O compliance não se aplica a esses processos devido à sua natureza operacional." }
     ],
-    correta: "B",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C está correta. A busca por vantajosidade e sustentabilidade é um pilar da atuação de estatais."
   }
 ];
 
-export const QUIZ_M6 = [
+export const QUIZ_M6: QuizQuestion[] = [
   {
-    id: "q6_1",
-    pergunta: "Questão placeholder 6.1",
+    id: "q1",
+    pergunta: "Em relação ao tópico de Gestão de Categorias (Category Management), qual das seguintes afirmações é considerada a prática mais recomendada?",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "Ignorar o planejamento prévio e focar exclusivamente na execução das atividades." },
+      { label: "B", valor: "Delegar todas as responsabilidades estratégicas para agentes operacionais." },
+      { label: "C", valor: "Alinhar as diretrizes do tema aos princípios de governança, economia e transparência da instituição." },
+      { label: "D", valor: "Basear as decisões estruturais apenas no menor preço, independentemente da qualidade." },
+      { label: "E", valor: "Adotar uma abordagem rígida, sem espaço para inovação ou adaptação ao contexto do mercado." }
     ],
-    correta: "A",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C (3ª opção) está correta porque a gestão contemporânea exige alinhamento com governança e transparência. As demais opções apresentam falhas graves de planejamento ou visão limitada."
   },
   {
-    id: "q6_2",
-    pergunta: "Questão placeholder 6.2",
+    id: "q2",
+    pergunta: "Sobre as regulamentações aplicáveis a Gestão de Categorias (Category Management), assinale a opção correta considerando a atuação em empresas estatais:",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "O foco é puramente no lucro, ignorando a função social da empresa." },
+      { label: "B", valor: "As decisões de contratação dispensam análise de viabilidade técnica se houver urgência." },
+      { label: "C", valor: "Deve-se buscar a vantajosidade e o desenvolvimento nacional sustentável nos procedimentos pertinentes." },
+      { label: "D", valor: "É permitida a contratação direta em qualquer caso, desde que aprovada pelo gerente da área." },
+      { label: "E", valor: "O compliance não se aplica a esses processos devido à sua natureza operacional." }
     ],
-    correta: "B",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C está correta. A busca por vantajosidade e sustentabilidade é um pilar da atuação de estatais."
   }
 ];
 
-export const QUIZ_M7 = [
+export const QUIZ_M7: QuizQuestion[] = [
   {
-    id: "q7_1",
-    pergunta: "Questão placeholder 7.1",
+    id: "q1",
+    pergunta: "Em relação ao tópico de Ética e Compliance em Compras, qual das seguintes afirmações é considerada a prática mais recomendada?",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "Ignorar o planejamento prévio e focar exclusivamente na execução das atividades." },
+      { label: "B", valor: "Delegar todas as responsabilidades estratégicas para agentes operacionais." },
+      { label: "C", valor: "Alinhar as diretrizes do tema aos princípios de governança, economia e transparência da instituição." },
+      { label: "D", valor: "Basear as decisões estruturais apenas no menor preço, independentemente da qualidade." },
+      { label: "E", valor: "Adotar uma abordagem rígida, sem espaço para inovação ou adaptação ao contexto do mercado." }
     ],
-    correta: "A",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C (3ª opção) está correta porque a gestão contemporânea exige alinhamento com governança e transparência. As demais opções apresentam falhas graves de planejamento ou visão limitada."
   },
   {
-    id: "q7_2",
-    pergunta: "Questão placeholder 7.2",
+    id: "q2",
+    pergunta: "Sobre as regulamentações aplicáveis a Ética e Compliance em Compras, assinale a opção correta considerando a atuação em empresas estatais:",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "O foco é puramente no lucro, ignorando a função social da empresa." },
+      { label: "B", valor: "As decisões de contratação dispensam análise de viabilidade técnica se houver urgência." },
+      { label: "C", valor: "Deve-se buscar a vantajosidade e o desenvolvimento nacional sustentável nos procedimentos pertinentes." },
+      { label: "D", valor: "É permitida a contratação direta em qualquer caso, desde que aprovada pelo gerente da área." },
+      { label: "E", valor: "O compliance não se aplica a esses processos devido à sua natureza operacional." }
     ],
-    correta: "B",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C está correta. A busca por vantajosidade e sustentabilidade é um pilar da atuação de estatais."
   }
 ];
 
-export const QUIZ_M8 = [
+export const QUIZ_M8: QuizQuestion[] = [
   {
-    id: "q8_1",
-    pergunta: "Questão placeholder 8.1",
+    id: "q1",
+    pergunta: "Em relação ao tópico de Sourcing Estratégico, qual das seguintes afirmações é considerada a prática mais recomendada?",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "Ignorar o planejamento prévio e focar exclusivamente na execução das atividades." },
+      { label: "B", valor: "Delegar todas as responsabilidades estratégicas para agentes operacionais." },
+      { label: "C", valor: "Alinhar as diretrizes do tema aos princípios de governança, economia e transparência da instituição." },
+      { label: "D", valor: "Basear as decisões estruturais apenas no menor preço, independentemente da qualidade." },
+      { label: "E", valor: "Adotar uma abordagem rígida, sem espaço para inovação ou adaptação ao contexto do mercado." }
     ],
-    correta: "A",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C (3ª opção) está correta porque a gestão contemporânea exige alinhamento com governança e transparência. As demais opções apresentam falhas graves de planejamento ou visão limitada."
   },
   {
-    id: "q8_2",
-    pergunta: "Questão placeholder 8.2",
+    id: "q2",
+    pergunta: "Sobre as regulamentações aplicáveis a Sourcing Estratégico, assinale a opção correta considerando a atuação em empresas estatais:",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "O foco é puramente no lucro, ignorando a função social da empresa." },
+      { label: "B", valor: "As decisões de contratação dispensam análise de viabilidade técnica se houver urgência." },
+      { label: "C", valor: "Deve-se buscar a vantajosidade e o desenvolvimento nacional sustentável nos procedimentos pertinentes." },
+      { label: "D", valor: "É permitida a contratação direta em qualquer caso, desde que aprovada pelo gerente da área." },
+      { label: "E", valor: "O compliance não se aplica a esses processos devido à sua natureza operacional." }
     ],
-    correta: "B",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C está correta. A busca por vantajosidade e sustentabilidade é um pilar da atuação de estatais."
   }
 ];
 
-export const QUIZ_M9 = [
+export const QUIZ_M9: QuizQuestion[] = [
   {
-    id: "q9_1",
-    pergunta: "Questão placeholder 9.1",
+    id: "q1",
+    pergunta: "Em relação ao tópico de E-procurement e Compras Digitais, qual das seguintes afirmações é considerada a prática mais recomendada?",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "Ignorar o planejamento prévio e focar exclusivamente na execução das atividades." },
+      { label: "B", valor: "Delegar todas as responsabilidades estratégicas para agentes operacionais." },
+      { label: "C", valor: "Alinhar as diretrizes do tema aos princípios de governança, economia e transparência da instituição." },
+      { label: "D", valor: "Basear as decisões estruturais apenas no menor preço, independentemente da qualidade." },
+      { label: "E", valor: "Adotar uma abordagem rígida, sem espaço para inovação ou adaptação ao contexto do mercado." }
     ],
-    correta: "A",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C (3ª opção) está correta porque a gestão contemporânea exige alinhamento com governança e transparência. As demais opções apresentam falhas graves de planejamento ou visão limitada."
   },
   {
-    id: "q9_2",
-    pergunta: "Questão placeholder 9.2",
+    id: "q2",
+    pergunta: "Sobre as regulamentações aplicáveis a E-procurement e Compras Digitais, assinale a opção correta considerando a atuação em empresas estatais:",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "O foco é puramente no lucro, ignorando a função social da empresa." },
+      { label: "B", valor: "As decisões de contratação dispensam análise de viabilidade técnica se houver urgência." },
+      { label: "C", valor: "Deve-se buscar a vantajosidade e o desenvolvimento nacional sustentável nos procedimentos pertinentes." },
+      { label: "D", valor: "É permitida a contratação direta em qualquer caso, desde que aprovada pelo gerente da área." },
+      { label: "E", valor: "O compliance não se aplica a esses processos devido à sua natureza operacional." }
     ],
-    correta: "B",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C está correta. A busca por vantajosidade e sustentabilidade é um pilar da atuação de estatais."
   }
 ];
 
-export const QUIZ_M10 = [
+export const QUIZ_M10: QuizQuestion[] = [
   {
-    id: "q10_1",
-    pergunta: "Questão placeholder 10.1",
+    id: "q1",
+    pergunta: "Em relação ao tópico de KPIs no Setor de Compras, qual das seguintes afirmações é considerada a prática mais recomendada?",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "Ignorar o planejamento prévio e focar exclusivamente na execução das atividades." },
+      { label: "B", valor: "Delegar todas as responsabilidades estratégicas para agentes operacionais." },
+      { label: "C", valor: "Alinhar as diretrizes do tema aos princípios de governança, economia e transparência da instituição." },
+      { label: "D", valor: "Basear as decisões estruturais apenas no menor preço, independentemente da qualidade." },
+      { label: "E", valor: "Adotar uma abordagem rígida, sem espaço para inovação ou adaptação ao contexto do mercado." }
     ],
-    correta: "A",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C (3ª opção) está correta porque a gestão contemporânea exige alinhamento com governança e transparência. As demais opções apresentam falhas graves de planejamento ou visão limitada."
   },
   {
-    id: "q10_2",
-    pergunta: "Questão placeholder 10.2",
+    id: "q2",
+    pergunta: "Sobre as regulamentações aplicáveis a KPIs no Setor de Compras, assinale a opção correta considerando a atuação em empresas estatais:",
     opcoes: [
-      { label: "A", valor: "Opção A" },
-      { label: "B", valor: "Opção B" },
-      { label: "C", valor: "Opção C" },
-      { label: "D", valor: "Opção D" },
-      { label: "E", valor: "Opção E" }
+      { label: "A", valor: "O foco é puramente no lucro, ignorando a função social da empresa." },
+      { label: "B", valor: "As decisões de contratação dispensam análise de viabilidade técnica se houver urgência." },
+      { label: "C", valor: "Deve-se buscar a vantajosidade e o desenvolvimento nacional sustentável nos procedimentos pertinentes." },
+      { label: "D", valor: "É permitida a contratação direta em qualquer caso, desde que aprovada pelo gerente da área." },
+      { label: "E", valor: "O compliance não se aplica a esses processos devido à sua natureza operacional." }
     ],
-    correta: "B",
-    explicacao: "Explicação placeholder."
+    correta: "C",
+    explicacao: "A alternativa C está correta. A busca por vantajosidade e sustentabilidade é um pilar da atuação de estatais."
   }
 ];
 

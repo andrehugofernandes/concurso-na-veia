@@ -11,7 +11,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 const FIREBASE_STORAGE_BUCKET =
   process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ||
-  "passei-no-concurso-b33e0.firebasestorage.app";
+  "concurso-na-veia.firebasestorage.app";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  let storagePath = `wp2next/audio-aulas-v11/${materia}/${aulaId}/modulo-${modulo}.mp3`;
+  let storagePath = `concurso-na-veia/audio-aulas-v11/${materia}/${aulaId}/modulo-${modulo}.mp3`;
   let firebaseUrl = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_STORAGE_BUCKET}/o/${encodeURIComponent(storagePath)}?alt=media`;
 
   try {
@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
 
     // Fallback para os paths anteriores se não encontrar no v11
     if (!response.ok) {
-      storagePath = `wp2next/audio-aulas-v10/${materia}/${aulaId}/modulo-${modulo}.mp3`;
+      storagePath = `concurso-na-veia/audio-aulas-v10/${materia}/${aulaId}/modulo-${modulo}.mp3`;
       firebaseUrl = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_STORAGE_BUCKET}/o/${encodeURIComponent(storagePath)}?alt=media`;
       response = await fetch(firebaseUrl);
     }

@@ -109,35 +109,19 @@ export default function AulaGestaoQualidadeSuprimento({
               numero={num}
               titulo={MODULE_DEFS[num - 1].title}
               variant={variantColor}
-              descricao={`Aprofundamento conceitual do MÃ³dulo ${num}.`}
+              descricao={`Aprofundamento conceitual do Módulo ${num}.`}
             />
 
             <section className="space-y-8">
-              <ModuleSectionHeader index="INTRO" title={`IntroduÃ§Ã£o ao MÃ³dulo ${num}`} variant={variantColor} />
+              <ModuleSectionHeader index="INTRO" title={`Introdução ao Módulo ${num}`} variant={variantColor} />
               
-              <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start my-8">
-                <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+              <div className="space-y-6 text-lg text-justify text-foreground/85 leading-relaxed">
+
                   {moduleContent?.introducaoCEDEA.map((paragraph, idx) => (
                     <p key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} />
                   ))}
-                </div>
-                <div className="shrink-0 space-y-2 w-full max-w-[320px] mx-auto lg:mx-0">
-                  <div 
-                    className="cursor-zoom-in hover:scale-[1.02] transition-transform duration-200"
-                    onClick={() => setZoomedImage(`/assets/images/suprimento/content/gestao-qualidade-suprimento/modulo-${num}/m${num}-intro.png`)}
-                  >
-                    <img
-                      src={`/assets/images/suprimento/content/gestao-qualidade-suprimento/modulo-${num}/m${num}-intro.png`}
-                      alt={`VisualizaÃ§Ã£o MÃ³dulo ${num}`}
-                      className="w-full rounded-2xl border border-border/20 shadow-lg"
-                      onError={(e) => {
-                        (e.target as HTMLElement).style.display = 'none';
-                      }}
-                    />
-                  </div>
-                  <p className="text-sm text-muted-foreground text-center">Fig {num}. RepresentaÃ§Ã£o conceitual.</p>
-                </div>
-              </div>
+                
+</div>
             </section>
 
             <section className="space-y-8">
@@ -185,7 +169,7 @@ export default function AulaGestaoQualidadeSuprimento({
                 sinteseEstrategica={moduleContent.sinteseEstrategica}
                 podcast={{
                   aulaId: "gestao-qualidade-suprimento",
-                  aulaTitulo: "GestÃ£o de Qualidade",
+                  aulaTitulo: "Gestão de Qualidade",
                   materia: "suprimento",
                   materiaId: "suprimento",
                   moduloNumero: num,
@@ -196,7 +180,7 @@ export default function AulaGestaoQualidadeSuprimento({
             )}
 
             <QuizInterativo
-              titulo={`PrÃ¡tica: MÃ³dulo ${num}`}
+              titulo={`Prática: Módulo ${num}`}
               numero={num}
               questoes={quizArray}
               onComplete={(score) => handleModuleComplete(`modulo-${num}`, score)}
