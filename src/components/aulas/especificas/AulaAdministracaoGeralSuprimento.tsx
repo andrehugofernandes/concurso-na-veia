@@ -205,29 +205,41 @@ export default function AulaAdministracaoGeralSuprimento({
               <>
                 <section className="space-y-12">
                   <TextAnalysisLab
-                    title={`Laboratório de Texto CESGRANRIO - Módulo ${num}`}
-                    text="A <strong>planejamento estratégico</strong> na administração pública deve obrigatoriamente prever a <em>participação social</em>, garantindo que as <span class='highlight-red'>decisões de alto nível</span> reflitam as necessidades coletivas e não apenas a <span class='highlight-blue'>eficiência operacional interna</span>."
-                    highlights={[
-                      { text: "planejamento estratégico", color: "yellow", description: "Foco no longo prazo e visão macro da organização." },
-                      { text: "participação social", color: "green", description: "Princípio fundamental da governança pública contemporânea." },
-                      { text: "decisões de alto nível", color: "red", description: "Características das decisões da alta cúpula." },
-                      { text: "eficiência operacional interna", color: "blue", description: "Características do nível operacional/tarefas." }
+                    index={num}
+                    titulo={`Laboratório de Texto CESGRANRIO - Módulo ${num}`}
+                    texto="A <strong>planejamento estratégico</strong> na administração pública deve obrigatoriamente prever a <em>participação social</em>, garantindo que as <span class='highlight-red'>decisões de alto nível</span> reflitam as necessidades coletivas e não apenas a <span class='highlight-blue'>eficiência operacional interna</span>."
+                    legenda={[
+                      { label: "planejamento estratégico: Foco no longo prazo e visão macro da organização.", cor: "bg-yellow-400" },
+                      { label: "participação social: Princípio fundamental da governança pública contemporânea.", cor: "bg-green-400" },
+                      { label: "decisões de alto nível: Características das decisões da alta cúpula.", cor: "bg-red-400" },
+                      { label: "eficiência operacional interna: Características do nível operacional/tarefas.", cor: "bg-blue-400" }
                     ]}
                     variant={mv[num]}
                   />
 
                   <QuestaoResolvidaStepByStep
+                    index={num}
                     banca="CESGRANRIO"
                     ano="2024"
-                    orgao="PETROBRAS"
-                    cargo="Profissional Petrobras de Nível Superior - Administração"
+                    concurso="PETROBRAS - Profissional Petrobras de Nível Superior - Administração"
                     enunciado="No contexto da administração geral, a departamentalização é a forma como a organização agrupa suas atividades. A estrutura em que os funcionários respondem simultaneamente a dois gestores diferentes, quebrando o princípio da unidade de comando, é denominada:"
                     alternativas={[
-                      { letra: "A", texto: "Geográfica.", analise: "Incorreto. A geográfica divide por regiões.", isCorrect: false },
-                      { letra: "B", texto: "Funcional.", analise: "Incorreto. A funcional divide por áreas de especialização.", isCorrect: false },
-                      { letra: "C", texto: "Por clientes.", analise: "Incorreto. Foca em públicos específicos.", isCorrect: false },
-                      { letra: "D", texto: "Matricial.", analise: "CORRETO. A matricial cria uma dupla chefia (funcional e de projeto).", isCorrect: true },
-                      { letra: "E", texto: "Linear.", analise: "Incorreto. É a mais simples e respeita rigorosamente a unidade de comando.", isCorrect: false }
+                      { letra: "A", texto: "Geográfica.", correta: false },
+                      { letra: "B", texto: "Funcional.", correta: false },
+                      { letra: "C", texto: "Por clientes.", correta: false },
+                      { letra: "D", texto: "Matricial.", correta: true },
+                      { letra: "E", texto: "Linear.", correta: false }
+                    ]}
+                    passos={[
+                      { titulo: "Análise das Alternativas", conteudo: (
+                        <div className="space-y-2 text-sm text-muted-foreground">
+                          <p><strong>A) Geográfica.</strong> Incorreto. A geográfica divide por regiões.</p>
+                          <p><strong>B) Funcional.</strong> Incorreto. A funcional divide por áreas de especialização.</p>
+                          <p><strong>C) Por clientes.</strong> Incorreto. Foca em públicos específicos.</p>
+                          <p><strong>D) Matricial.</strong> CORRETO. A matricial cria uma dupla chefia (funcional e de projeto).</p>
+                          <p><strong>E) Linear.</strong> Incorreto. É a mais simples e respeita rigorosamente a unidade de comando.</p>
+                        </div>
+                      ) }
                     ]}
                     variant={mv[num]}
                   />
