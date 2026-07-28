@@ -160,13 +160,13 @@ export async function proxy(request: NextRequest) {
     const isProd = process.env.NODE_ENV === 'production';
     const cspHeader = `
         default-src 'self';
-        script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com https://www.gstatic.com https://js.stripe.com;
+        script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com https://www.gstatic.com https://js.stripe.com https://checkout.stripe.com;
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-        img-src 'self' blob: data: https://firebasestorage.googleapis.com https://*.supabase.co https://lh3.googleusercontent.com;
+        img-src 'self' blob: data: https://firebasestorage.googleapis.com https://*.supabase.co https://lh3.googleusercontent.com https://*.stripe.com;
         media-src 'self' blob: data: https://firebasestorage.googleapis.com https://*.supabase.co;
         font-src 'self' https://fonts.gstatic.com;
-        connect-src 'self' https://*.supabase.co wss://*.supabase.co https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firebasestorage.googleapis.com https://api.stripe.com;
-        frame-src 'self' https://js.stripe.com https://hooks.stripe.com;
+        connect-src 'self' https://*.supabase.co wss://*.supabase.co https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firebasestorage.googleapis.com https://api.stripe.com https://checkout.stripe.com;
+        frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://checkout.stripe.com;
         object-src 'none';
         base-uri 'self';
         form-action 'self';

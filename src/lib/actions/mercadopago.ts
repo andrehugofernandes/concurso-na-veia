@@ -14,41 +14,41 @@ interface CheckoutRegisterData {
   };
 }
 
-export async function createMPCheckoutSession(data: CheckoutRegisterData) {
+export async function createMercadoPagoCheckoutRegister(data: CheckoutRegisterData) {
   try {
     const { planKey, userData } = data;
 
     if (!planKey || !userData?.email) {
-      return { error: "Dados inválidos" };
+      return { error: "Dados inválidos para checkout" };
     }
 
     if (!(planKey in PLANOS_CONFIG)) {
-      return { error: "Plano inválido" };
+      return { error: "Plano selecionado inválido" };
     }
 
-    const planConfig = PLANOS_CONFIG[planKey as AppPlan];
+    const config = PLANOS_CONFIG[planKey as AppPlan];
     const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
-    const preference = await mpPreference.create({
+    const preferenceData = {
       body: {
         items: [
           {
             id: planKey,
-            title: planConfig.nome,
-            description: planConfig.descricao,
+            title: `Concurso Na Veia - ${config.nome}`,
+            description: `${config.descricao} (Acesso até a prova)`,
             quantity: 1,
-            unit_price: planConfig.preco / 100, // MP espera em Reais, não em centavos
-            currency_id: 'BRL',
-          }
+            unit_price: config.preco / 100,
+            currency_id: "BRL",
+          },
         ],
         payer: {
           email: userData.email,
-          name: userData.nome,
+          name: userData.nome || userData.username,
         },
         back_urls: {
-          success: `${appUrl}/register/success?plan=${planKey}`,
-          failure: `${appUrl}/seja-pro?canceled=true`,
-          pending: `${appUrl}/register/success?plan=${planKey}&pending=true`,
+          success: `${appUrl}/register/success?gateway=mercadopago&plan=${planKey}&email=${encodeURIComponent(userData.email)}`,
+          pending: `${appUrl}/register/success?gateway=mercadopago&status=pending&plan=${planKey}`,
+          failure: `${appUrl}/register?error=payment_failed`,
         },
         auto_return: "approved",
         metadata: {
@@ -59,27 +59,34 @@ export async function createMPCheckoutSession(data: CheckoutRegisterData) {
           user_nivel: userData.nivel,
           user_cargo: userData.cargo,
         },
-      }
-    });
+        notification_url: `${appUrl}/api/mercadopago/webhook`,
+      },
+    };
 
-    return { url: preference.init_point }; // URL de redirecionamento do MP
+    const response = await mpPreference.create(preferenceData);
+
+    const checkoutUrl = process.env.NODE_ENV === "production"
+      ? response.init_point
+      : response.sandbox_init_point || response.init_point;
+
+    return { url: checkoutUrl, preferenceId: response.id };
   } catch (error: any) {
-    console.error("[Mercado Pago Checkout Register]", error);
-    return { error: error.message ?? "Erro ao criar checkout" };
+    console.error("[MercadoPago Checkout Register Error]", error);
+    return { error: error.message ?? "Erro ao criar preferência de pagamento no Mercado Pago" };
   }
 }
 
-export async function createMPAuthenticatedCheckout(plan: string) {
+export async function createMercadoPagoCheckoutAuth(planKey: string) {
   try {
-    if (!plan || !(plan in PLANOS_CONFIG)) {
-      return { error: "Plano inválido" };
+    if (!planKey || !(planKey in PLANOS_CONFIG)) {
+      return { error: "Plano selecionado inválido" };
     }
 
     const supabase = await createClient();
     const { data: { user }, error: authError } = await supabase.auth.getUser();
 
     if (authError || !user) {
-      return { error: "Não autenticado" };
+      return { error: "Usuário não autenticado" };
     }
 
     const { data: profile } = await supabase
@@ -88,47 +95,54 @@ export async function createMPAuthenticatedCheckout(plan: string) {
       .eq("id", user.id)
       .single();
 
-    if (profile?.plan === plan) {
-      return { error: "Você já possui este plano" };
+    if (profile?.plan === planKey) {
+      return { error: "Você já possui este plano ativo" };
     }
 
+    const config = PLANOS_CONFIG[planKey as AppPlan];
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
     const email = user.email ?? profile?.email ?? "";
     const nome = profile?.full_name ?? user.user_metadata?.full_name ?? "";
-    const planConfig = PLANOS_CONFIG[plan as AppPlan];
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
-    const preference = await mpPreference.create({
+    const preferenceData = {
       body: {
         items: [
           {
-            id: plan,
-            title: planConfig.nome,
-            description: planConfig.descricao,
+            id: planKey,
+            title: `Concurso Na Veia - ${config.nome}`,
+            description: `${config.descricao} (Acesso até a prova)`,
             quantity: 1,
-            unit_price: planConfig.preco / 100,
-            currency_id: 'BRL',
-          }
+            unit_price: config.preco / 100,
+            currency_id: "BRL",
+          },
         ],
         payer: {
-          email: email,
+          email,
           name: nome,
         },
         back_urls: {
-          success: `${appUrl}/seja-pro?success=true&plan=${plan}`,
+          success: `${appUrl}/seja-pro?success=true&gateway=mercadopago&plan=${planKey}`,
+          pending: `${appUrl}/seja-pro?pending=true&gateway=mercadopago`,
           failure: `${appUrl}/seja-pro?canceled=true`,
-          pending: `${appUrl}/seja-pro?pending=true&plan=${plan}`,
         },
         auto_return: "approved",
         metadata: {
           supabase_user_id: user.id,
-          app_plan: plan,
+          app_plan: planKey,
         },
-      }
-    });
+        notification_url: `${appUrl}/api/mercadopago/webhook`,
+      },
+    };
 
-    return { url: preference.init_point };
+    const response = await mpPreference.create(preferenceData);
+
+    const checkoutUrl = process.env.NODE_ENV === "production"
+      ? response.init_point
+      : response.sandbox_init_point || response.init_point;
+
+    return { url: checkoutUrl, preferenceId: response.id };
   } catch (error: any) {
-    console.error("[Mercado Pago Checkout Auth]", error);
-    return { error: error.message ?? "Erro ao criar checkout" };
+    console.error("[MercadoPago Checkout Auth Error]", error);
+    return { error: error.message ?? "Erro ao criar preferência de pagamento no Mercado Pago" };
   }
 }

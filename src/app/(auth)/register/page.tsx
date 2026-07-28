@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { registerAction } from "@/lib/actions/auth";
 import { createCheckoutSession } from "@/lib/actions/stripe";
+import { createMercadoPagoCheckoutRegister } from "@/lib/actions/mercadopago";
 import AuthLayout from "@/components/auth/AuthLayout";
 import { AnimatedInput } from "@/components/ui/animated-input";
 import { LuUser, LuMail, LuLock, LuEye, LuEyeOff } from "react-icons/lu";
@@ -133,6 +134,9 @@ function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   
+  // Gateway de Pagamento ('stripe' ou 'mercadopago')
+  const [paymentGateway, setPaymentGateway] = useState<"stripe" | "mercadopago">("mercadopago");
+
   // Checkout Embutido
   const [clientSecret, setClientSecret] = useState<string | null>(null);
 
@@ -248,20 +252,39 @@ function RegisterForm() {
       if (formData.plan !== "free") {
         setLoading(true);
         try {
-          const result = await createCheckoutSession({
-            planKey: formData.plan,
-            userData: {
-              nome: formData.nome,
-              email: formData.email,
-              username: formData.username,
-              nivel: formData.nivel,
-              cargo: formData.cargo,
-            },
-          });
-          if (result.clientSecret) {
-            setClientSecret(result.clientSecret);
+          if (paymentGateway === "mercadopago") {
+            const result = await createMercadoPagoCheckoutRegister({
+              planKey: formData.plan,
+              userData: {
+                nome: formData.nome,
+                email: formData.email,
+                username: formData.username,
+                nivel: formData.nivel,
+                cargo: formData.cargo,
+              },
+            });
+            if (result.url) {
+              window.location.href = result.url;
+              return;
+            } else {
+              setError(result.error || "Erro ao gerar checkout do Mercado Pago");
+            }
           } else {
-            setError(result.error || "Erro ao criar sessão de pagamento");
+            const result = await createCheckoutSession({
+              planKey: formData.plan,
+              userData: {
+                nome: formData.nome,
+                email: formData.email,
+                username: formData.username,
+                nivel: formData.nivel,
+                cargo: formData.cargo,
+              },
+            });
+            if (result.clientSecret) {
+              setClientSecret(result.clientSecret);
+            } else {
+              setError(result.error || "Erro ao criar sessão de pagamento");
+            }
           }
         } catch (err: any) {
           setError(err.message || "Erro ao processar pagamento");
@@ -519,7 +542,50 @@ function RegisterForm() {
                       </div>
                     </div>
                   </button>
-                ))}
+                {formData.plan !== "free" && (
+                  <div className="mt-5 p-4 rounded-xl bg-accent/30 border border-border">
+                    <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
+                      Forma de Pagamento
+                    </p>
+                    <div className="grid grid-cols-2 gap-3">
+                      <button
+                        type="button"
+                        onClick={() => setPaymentGateway("mercadopago")}
+                        className={`p-3 rounded-lg border-2 text-left transition-all flex flex-col justify-between ${
+                          paymentGateway === "mercadopago"
+                            ? "border-sky-500 bg-sky-500/10 text-foreground"
+                            : "border-border hover:border-border/80 bg-background/50 text-muted-foreground"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="text-lg">⚡</span>
+                          <span className="font-bold text-sm">Mercado Pago</span>
+                        </div>
+                        <span className="text-[11px] text-muted-foreground mt-1">
+                          PIX instantâneo ou Cartão
+                        </span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setPaymentGateway("stripe")}
+                        className={`p-3 rounded-lg border-2 text-left transition-all flex flex-col justify-between ${
+                          paymentGateway === "stripe"
+                            ? "border-indigo-500 bg-indigo-500/10 text-foreground"
+                            : "border-border hover:border-border/80 bg-background/50 text-muted-foreground"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="text-lg">💳</span>
+                          <span className="font-bold text-sm">Stripe</span>
+                        </div>
+                        <span className="text-[11px] text-muted-foreground mt-1">
+                          Cartão de Crédito
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                )}
               </>
             )}
            </div>

@@ -10,6 +10,7 @@ import { LuZap, LuCircleCheck, LuLoader, LuGraduationCap, LuBriefcase } from 're
 import { cn } from '@/lib/utils';
 import type { StripePlan } from '@/lib/stripe';
 import { createAuthenticatedCheckout, createPortalSession } from '@/lib/actions/stripe';
+import { createMercadoPagoCheckoutAuth } from '@/lib/actions/mercadopago';
 
 const PLANOS_MEDIO = [
   {
@@ -179,13 +180,19 @@ export default function SejaProPage() {
     }
   }, [searchParams, router]);
 
-  const handleCheckout = async (plan: StripePlan) => {
+  const handleCheckout = async (plan: StripePlan, gateway: 'stripe' | 'mercadopago' = 'mercadopago') => {
     setLoadingPlan(plan);
     setFeedback(null);
     try {
-      const result = await createAuthenticatedCheckout(plan);
-      if (result.error) throw new Error(result.error);
-      if (result.url) window.location.href = result.url;
+      if (gateway === 'mercadopago') {
+        const result = await createMercadoPagoCheckoutAuth(plan);
+        if (result.error) throw new Error(result.error);
+        if (result.url) window.location.href = result.url;
+      } else {
+        const result = await createAuthenticatedCheckout(plan);
+        if (result.error) throw new Error(result.error);
+        if (result.url) window.location.href = result.url;
+      }
     } catch (err: any) {
       setFeedback({ tipo: 'error', msg: err.message });
       setLoadingPlan(null);
