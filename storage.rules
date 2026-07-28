@@ -7,5 +7,10 @@ service firebase.storage {
     match /concurso-na-veia/{allPaths=**} {
       allow read, write: if true;
     }
+    // Podcasts gerados pelo servidor (sem autenticação no server-side)
+    match /podcasts/{allPaths=**} {
+      allow read: if true;
+      allow write: if true;
+    }
   }
 }

@@ -17,7 +17,7 @@ import {
 } from "@/lib/ai/podcast-generator";
 import { getProfessor } from "@/data/podcast-professors";
 import { uploadPodcastToSupabaseStorage } from "@/lib/services/supabase-storage";
-import { uploadPodcastToFirebaseStorage, getPodcastFirebaseUrl } from "@/lib/services/firebase-storage";
+import { getPodcastFirebaseUrl } from "@/lib/services/firebase-storage";
 import { createClient } from "@/lib/supabase/server";
 
 function createWavBufferFromPcm(pcmBytes: Buffer, sampleRate = 24000): Buffer {
@@ -216,37 +216,23 @@ export async function POST(request: NextRequest) {
     let audioUrl = null;
 
     if (result.audioBase64) {
-      console.log("[API/Podcast] 📦 Áudio gerado. Convertendo PCM Base64 para Buffer WAV e enviando para o Firebase Storage (5GB)...");
+      console.log("[API/Podcast] 📦 Áudio gerado. Convertendo PCM → WAV e enviando para o Supabase Storage...");
       try {
         const pcmBuffer = Buffer.from(result.audioBase64, 'base64');
         const wavBuffer = createWavBufferFromPcm(pcmBuffer);
-        
-        // Tentativa 1: Firebase Storage (5GB Grátis)
-        const fbUploadRes = await uploadPodcastToFirebaseStorage(
+
+        const uploadRes = await uploadPodcastToSupabaseStorage(
           wavBuffer,
           input.materia,
           input.aulaId,
           input.moduloNumero
         );
 
-        if (fbUploadRes.success && fbUploadRes.url) {
-          audioUrl = fbUploadRes.url;
-          console.log("[API/Podcast] ✅ Upload para o Firebase Storage concluído com sucesso:", audioUrl);
+        if (uploadRes.success && uploadRes.url) {
+          audioUrl = uploadRes.url;
+          console.log("[API/Podcast] ✅ Upload para o Supabase Storage concluído:", audioUrl);
         } else {
-          console.warn("[API/Podcast] ⚠️ Firebase Storage indisponível, usando Supabase Storage como fallback:", fbUploadRes.error);
-          const uploadRes = await uploadPodcastToSupabaseStorage(
-            wavBuffer,
-            input.materia,
-            input.aulaId,
-            input.moduloNumero
-          );
-
-          if (uploadRes.success && uploadRes.url) {
-            audioUrl = uploadRes.url;
-            console.log("[API/Podcast] ✅ Upload para o Supabase Storage concluído com sucesso:", audioUrl);
-          } else {
-            console.error("[API/Podcast] ❌ Erro ao fazer upload em ambos os storages:", uploadRes.error);
-          }
+          console.error("[API/Podcast] ❌ Erro ao fazer upload no Supabase Storage:", uploadRes.error);
         }
       } catch (err) {
         console.error("[API/Podcast] ❌ Exceção ao preparar/fazer upload do áudio:", err);

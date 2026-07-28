@@ -1,7 +1,0 @@
-{
-  "line": 480,
-  "source": "MODEL",
-  "type": "PLANNER_RESPONSE",
-  "tool_name": "replace_file_content",
-  "arguments": {}
-}

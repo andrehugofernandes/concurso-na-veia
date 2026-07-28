@@ -180,49 +180,9 @@ export async function synthesizeSegment(
   speaker: "apresentadora" | "professor",
   maxRetries = 2
 ): Promise<{ audioBase64: string; mimeType: string; error?: string } | null> {
-  // 1. Tentar ElevenLabs se a chave estiver configurada
-  const elevenlabsApiKey = process.env.ELEVENLABS_API_KEY;
-  if (elevenlabsApiKey) {
-    const voiceId = speaker === "apresentadora" ? "21m00Tcm4TlvDq8ikWAM" : "ErXwobaYko015HEsdImW";
-    try {
-      console.log(`[Podcast-TTS] Utilizando ElevenLabs para o segmento (${speaker})...`);
-      const response = await fetch(
-        `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}?output_format=pcm_24000`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "xi-api-key": elevenlabsApiKey,
-          },
-          body: JSON.stringify({
-            text: texto,
-            model_id: "eleven_multilingual_v2",
-            voice_settings: {
-              stability: 0.5,
-              similarity_boost: 0.75,
-            },
-          }),
-        }
-      );
+  // Gemini TTS (único provider ativo — ElevenLabs removido: vozes de library
+  // exigem plano pago e voice IDs gratuitos foram descontinuados)
 
-      if (response.ok) {
-        const arrayBuffer = await response.arrayBuffer();
-        const buffer = Buffer.from(arrayBuffer);
-        console.log(`[Podcast-TTS] ✅ Sucesso via ElevenLabs! (${buffer.length} bytes)`);
-        return {
-          audioBase64: buffer.toString("base64"),
-          mimeType: "audio/pcm",
-        };
-      } else {
-        const errorText = await response.text();
-        console.warn(`[Podcast-TTS] Erro ElevenLabs API: ${response.status} - ${errorText}. Fazendo fallback para o Gemini...`);
-      }
-    } catch (error: any) {
-      console.warn(`[Podcast-TTS] Falha ao conectar no ElevenLabs: ${error.message}. Fazendo fallback para o Gemini...`);
-    }
-  }
-
-  // 2. Fallback para Gemini TTS
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) throw new Error("GEMINI_API_KEY não configurada para o TTS");
 

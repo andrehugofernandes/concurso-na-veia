@@ -542,6 +542,8 @@ function RegisterForm() {
                       </div>
                     </div>
                   </button>
+                ))}
+
                 {formData.plan !== "free" && (
                   <div className="mt-5 p-4 rounded-xl bg-accent/30 border border-border">
                     <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
