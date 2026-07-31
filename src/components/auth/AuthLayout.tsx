@@ -112,7 +112,7 @@ export default function AuthLayout({
               interval={6000}
             />
 
-            <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-black/75 backdrop-blur-md border border-white/10 z-10">
+            <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-black/75 backdrop-blur-md border border-white/10 z-0">
               <div className="flex items-stretch gap-0 text-white">
                 <div className="flex-1 px-3">
                   <p className="text-white text-xs font-semibold mb-1.5">
