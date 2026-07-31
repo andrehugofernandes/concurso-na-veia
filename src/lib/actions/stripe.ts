@@ -1,5 +1,6 @@
 "use server";
 
+import Stripe from "stripe";
 import { stripe, getPriceByLookupKey, getOrCreateStripeCustomer, STRIPE_LOOKUP_KEYS, PLANOS_CONFIG, type StripePlan } from "@/lib/stripe";
 import { createClient } from "@/lib/supabase/server";
 
@@ -37,11 +38,10 @@ export async function createCheckoutSession(data: CheckoutRegisterData) {
 
     const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
-    const session = await stripe.checkout.sessions.create({
+    const sessionParams: Stripe.Checkout.SessionCreateParams = {
       customer_email: userData.email,
-      payment_method_types: ["card"],
       line_items: [{ price: price.id, quantity: 1 }],
-      mode: "subscription",
+      mode: "payment",
       ui_mode: "embedded",
       return_url: `${appUrl}/register/success?session_id={CHECKOUT_SESSION_ID}&plan=${planKey}`,
       metadata: {
@@ -52,7 +52,7 @@ export async function createCheckoutSession(data: CheckoutRegisterData) {
         user_nivel: userData.nivel,
         user_cargo: userData.cargo,
       },
-      subscription_data: {
+      payment_intent_data: {
         metadata: {
           app_plan: planKey,
           user_email: userData.email,
@@ -62,8 +62,35 @@ export async function createCheckoutSession(data: CheckoutRegisterData) {
           user_cargo: userData.cargo,
         },
       },
+      payment_method_options: {
+        boleto: {
+          expires_after_days: 3,
+        },
+      },
       locale: "pt-BR",
-    });
+    };
+
+    let session: Stripe.Checkout.Session;
+    try {
+      session = await stripe.checkout.sessions.create({
+        ...sessionParams,
+        payment_method_types: ["card", "boleto", "pix"],
+      });
+    } catch (err: any) {
+      try {
+        console.warn("[Stripe Checkout] Tentando fallback para ['card', 'boleto']...");
+        session = await stripe.checkout.sessions.create({
+          ...sessionParams,
+          payment_method_types: ["card", "boleto"],
+        });
+      } catch (errBoleto: any) {
+        console.warn("[Stripe Checkout] Fallback final para ['card']...");
+        session = await stripe.checkout.sessions.create({
+          ...sessionParams,
+          payment_method_types: ["card"],
+        });
+      }
+    }
 
     return { clientSecret: session.client_secret };
   } catch (error: any) {
@@ -111,25 +138,51 @@ export async function createAuthenticatedCheckout(plan: string) {
 
     const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
-    const session = await stripe.checkout.sessions.create({
+    const sessionParams: Stripe.Checkout.SessionCreateParams = {
       customer: customerId,
-      payment_method_types: ["card"],
       line_items: [{ price: price.id, quantity: 1 }],
-      mode: "subscription",
+      mode: "payment",
       success_url: `${appUrl}/seja-pro?success=true&plan=${plan}`,
       cancel_url: `${appUrl}/seja-pro?canceled=true`,
       metadata: {
         supabase_user_id: user.id,
         app_plan: plan,
       },
-      subscription_data: {
+      payment_intent_data: {
         metadata: {
           supabase_user_id: user.id,
           app_plan: plan,
         },
       },
+      payment_method_options: {
+        boleto: {
+          expires_after_days: 3,
+        },
+      },
       locale: "pt-BR",
-    });
+    };
+
+    let session: Stripe.Checkout.Session;
+    try {
+      session = await stripe.checkout.sessions.create({
+        ...sessionParams,
+        payment_method_types: ["card", "boleto", "pix"],
+      });
+    } catch (err: any) {
+      try {
+        console.warn("[Stripe Checkout Auth] Tentando fallback para ['card', 'boleto']...");
+        session = await stripe.checkout.sessions.create({
+          ...sessionParams,
+          payment_method_types: ["card", "boleto"],
+        });
+      } catch (errBoleto: any) {
+        console.warn("[Stripe Checkout Auth] Fallback final para ['card']...");
+        session = await stripe.checkout.sessions.create({
+          ...sessionParams,
+          payment_method_types: ["card"],
+        });
+      }
+    }
 
     return { url: session.url };
   } catch (error: any) {
