@@ -5,12 +5,15 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { registerAction } from "@/lib/actions/auth";
 import { createCheckoutSession } from "@/lib/actions/stripe";
-import { createMercadoPagoCheckoutRegister } from "@/lib/actions/mercadopago";
+import { createInfinitePayPixChargeRegister } from "@/lib/actions/infinitepay";
+import { InfinitePayPixModal } from "@/components/checkout/InfinitePayPixModal";
 import AuthLayout from "@/components/auth/AuthLayout";
 import { AnimatedInput } from "@/components/ui/animated-input";
-import { LuUser, LuMail, LuLock, LuEye, LuEyeOff } from "react-icons/lu";
+import { LuUser, LuMail, LuLock, LuEye, LuEyeOff, LuQrCode } from "react-icons/lu";
 import { FaHome } from "react-icons/fa";
-import { StripeEmbeddedCheckout } from "@/components/stripe/StripeEmbeddedCheckout";import { PROFISSOES } from "@/lib/profissoes-edital";
+import { SiStripe } from "react-icons/si";
+import { StripeEmbeddedCheckout } from "@/components/stripe/StripeEmbeddedCheckout";
+import { PROFISSOES } from "@/lib/profissoes-edital";
 
 const NIVEIS = [
   { id: "medio", nome: "Nível Médio", icon: "📖", desc: "Cargos gerais de nível médio" },
@@ -20,17 +23,17 @@ const NIVEIS = [
 
 const PETROBRAS_CARGOS_TECNICO = PROFISSOES.filter((p) => p.nivel === "tecnico").map((p) => ({
   id: p.id,
-  nome: p.nome,
+  nome: `Petrobras - ${p.nome}`,
 }));
 
 const PETROBRAS_CARGOS_SUPERIOR = PROFISSOES.filter((p) => p.nivel === "superior").map((p) => ({
   id: p.id,
-  nome: p.nome,
+  nome: `Petrobras - ${p.nome}`,
 }));
 
 const CARGOS = {
   medio: [
-    { id: "suprimento-adm", nome: "Técnico de Suprimento de Bens e Serviços - Administração" },
+    { id: "suprimento-adm", nome: "Petrobras - Técnico de Suprimento de Bens e Serviços - Administração" },
     { id: "caixa-tecnico", nome: "Caixa - Técnico Bancário" },
     { id: "bb-escriturario", nome: "Banco do Brasil - Escriturário" },
     { id: "correios-agente", nome: "Correios - Agente de Correios" },
@@ -45,6 +48,14 @@ const CARGOS = {
   ],
 };
 
+function Activity({ mode, children }: { mode: "visible" | "hidden"; children: React.ReactNode }) {
+  return (
+    <div style={{ display: mode === "visible" ? "block" : "none" }} aria-hidden={mode === "hidden"}>
+      {children}
+    </div>
+  );
+}
+
 const STEPS = [
   { num: 1, label: "Dados" },
   { num: 2, label: "Cargo" },
@@ -52,7 +63,13 @@ const STEPS = [
   { num: 4, label: "Senha" },
 ];
 
-function StepIndicator({ current }: { current: number }) {
+function StepIndicator({
+  current,
+  onStepClick,
+}: {
+  current: number;
+  onStepClick?: (step: number) => void;
+}) {
   return (
     <div className="flex items-center justify-between mb-8 px-2">
       {STEPS.map((s, i) => {
@@ -60,15 +77,19 @@ function StepIndicator({ current }: { current: number }) {
         const active = current === s.num;
         return (
           <div key={s.num} className="flex items-center flex-1 last:flex-none">
-            {/* Circle */}
-            <div className="flex flex-col items-center">
+            {/* Clickable Circle & Label */}
+            <button
+              type="button"
+              onClick={() => onStepClick?.(s.num)}
+              className="flex flex-col items-center group cursor-pointer focus:outline-none"
+            >
               <div
-                className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 ${
+                className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 group-hover:scale-110 ${
                   done
-                    ? "bg-primary text-primary-foreground"
+                    ? "bg-primary text-primary-foreground shadow-sm"
                     : active
-                      ? "bg-primary text-primary-foreground ring-4 ring-primary/20"
-                      : "bg-accent text-muted-foreground border border-border"
+                      ? "bg-primary text-primary-foreground ring-4 ring-primary/20 shadow-md"
+                      : "bg-accent text-muted-foreground border border-border group-hover:border-primary/50"
                 }`}
               >
                 {done ? (
@@ -81,12 +102,16 @@ function StepIndicator({ current }: { current: number }) {
               </div>
               <span
                 className={`text-[11px] mt-1.5 font-medium transition-colors ${
-                  active ? "text-primary" : done ? "text-primary/70" : "text-muted-foreground"
+                  active
+                    ? "text-primary font-bold"
+                    : done
+                      ? "text-primary/70 font-semibold"
+                      : "text-muted-foreground group-hover:text-foreground"
                 }`}
               >
                 {s.label}
               </span>
-            </div>
+            </button>
             {/* Connector line */}
             {i < STEPS.length - 1 && (
               <div className="flex-1 mx-2 mb-5">
@@ -133,12 +158,13 @@ function RegisterForm() {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  
-  // Gateway de Pagamento ('stripe' ou 'mercadopago')
-  const [paymentGateway, setPaymentGateway] = useState<"stripe" | "mercadopago">("mercadopago");
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
-  // Checkout Embutido
+  // Checkout Gateway ('stripe' ou 'efi')
+  const [paymentGateway, setPaymentGateway] = useState<"stripe" | "efi">("stripe");
   const [clientSecret, setClientSecret] = useState<string | null>(null);
+  const [efiPixData, setEfiPixData] = useState<any>(null);
+  const [isPixModalOpen, setIsPixModalOpen] = useState(false);
 
   const concursoFromUrl = searchParams.get("concurso") || "";
   const cargoFromUrl = searchParams.get("cargo") || "";
@@ -208,16 +234,16 @@ function RegisterForm() {
     if (formData.nivel === "medio" || formData.nivel === "tecnico") {
       return [
         { id: "free", nome: "Iniciante", preco: "Grátis", descricao: "5 questões/dia, histórico de 3 dias", tag: null },
-        { id: "aprovado-medio", nome: "Aprovado Médio", preco: "R$ 49,99/mês", descricao: "Questões ilimitadas, simulados, explicações IA", tag: null },
-        { id: "elite-medio", nome: "Elite Médio", preco: "R$ 79,99/mês", descricao: "Tudo + PetroLingo (Inglês), Mentoria, Cronograma", tag: "POPULAR" },
-        { id: "elite-total", nome: "Elite Total", preco: "R$ 149,99/mês", descricao: "Acesso a TODOS os cargos, Médio + Superior", tag: "COMPLETO" },
+        { id: "aprovado-medio", nome: "Aprovado Médio", preco: "R$ 49,99", descricao: "Questões ilimitadas, simulados, explicações IA", tag: null },
+        { id: "elite-medio", nome: "Elite Médio", preco: "R$ 79,99", descricao: "Tudo + PetroLingo (Inglês), Mentoria, Cronograma", tag: "POPULAR" },
+        { id: "elite-total", nome: "Elite Total", preco: "R$ 149,99", descricao: "Acesso a TODOS os cargos, Médio + Superior", tag: "COMPLETO" },
       ];
     } else if (formData.nivel === "superior") {
       return [
         { id: "free", nome: "Iniciante", preco: "Grátis", descricao: "5 questões/dia, histórico de 3 dias", tag: null },
-        { id: "aprovado-superior", nome: "Aprovado Superior", preco: "R$ 69,99/mês", descricao: "Questões ilimitadas, simulados, explicações IA", tag: null },
-        { id: "elite-superior", nome: "Elite Superior", preco: "R$ 119,99/mês", descricao: "Tudo + PetroLingo (Inglês), Mentoria, Cronograma", tag: "RECOMENDADO" },
-        { id: "elite-total", nome: "Elite Total", preco: "R$ 149,99/mês", descricao: "Acesso a TODOS os cargos, Médio + Superior", tag: "COMPLETO" },
+        { id: "aprovado-superior", nome: "Aprovado Superior", preco: "R$ 69,99", descricao: "Questões ilimitadas, simulados, explicações IA", tag: null },
+        { id: "elite-superior", nome: "Elite Superior", preco: "R$ 119,99", descricao: "Tudo + PetroLingo (Inglês), Mentoria, Cronograma", tag: "RECOMENDADO" },
+        { id: "elite-total", nome: "Elite Total", preco: "R$ 149,99", descricao: "Acesso a TODOS os cargos, Médio + Superior", tag: "COMPLETO" },
       ];
     }
     return [];
@@ -252,8 +278,8 @@ function RegisterForm() {
       if (formData.plan !== "free") {
         setLoading(true);
         try {
-          if (paymentGateway === "mercadopago") {
-            const result = await createMercadoPagoCheckoutRegister({
+          if (paymentGateway === "efi") {
+            const result = await createInfinitePayPixChargeRegister({
               planKey: formData.plan,
               userData: {
                 nome: formData.nome,
@@ -263,11 +289,11 @@ function RegisterForm() {
                 cargo: formData.cargo,
               },
             });
-            if (result.url) {
-              window.location.href = result.url;
-              return;
+            if (result.error) {
+              setError(result.error);
             } else {
-              setError(result.error || "Erro ao gerar checkout do Mercado Pago");
+              setEfiPixData(result);
+              setIsPixModalOpen(true);
             }
           } else {
             const result = await createCheckoutSession({
@@ -331,8 +357,18 @@ function RegisterForm() {
     }
   };
 
+  const handleResetGateway = () => {
+    setClientSecret(null);
+    setEfiPixData(null);
+    setIsPixModalOpen(false);
+  };
+
   const handleBack = () => {
     setError("");
+    if (step === 3 && (clientSecret || efiPixData)) {
+      handleResetGateway();
+      return;
+    }
     if (step === 3 && cameFromUrlWithCargo) {
       setStep(1);
     } else if (step > 1) {
@@ -374,7 +410,14 @@ function RegisterForm() {
       <div className="h-1 bg-gradient-to-r from-primary-hex via-primary-hover-hex to-primary-hex" style={{ backgroundColor: "var(--primary-hex)" }} />
 
       <div className="p-6 md:p-8">
-        <StepIndicator current={step} />
+        <StepIndicator
+          current={step}
+          onStepClick={(targetStep) => {
+            setError("");
+            if (step === 3) handleResetGateway();
+            setStep(targetStep);
+          }}
+        />
 
         {/* Error */}
         {error && (
@@ -384,38 +427,42 @@ function RegisterForm() {
         )}
 
         {/* =========== STEP 1: Dados Pessoais =========== */}
-        {step === 1 && (
+        <Activity mode={step === 1 ? "visible" : "hidden"}>
           <div className="space-y-5">
-            <AnimatedInput
-              id="nome"
-              label="Nome completo"
-              type="text"
-              icon={<LuUser className="w-5 h-5" />}
-              value={formData.nome}
-              onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
-              required
-              placeholder="Seu nome completo"
-              surfaceClassName="bg-card"
-              inputClassName="bg-background border-border text-foreground rounded-xl focus:border-primary focus:ring-primary/20"
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <AnimatedInput
+                id="nome"
+                label="Nome completo"
+                type="text"
+                icon={<LuUser className="w-5 h-5" />}
+                value={formData.nome}
+                onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+                required
+                placeholder="Seu nome completo"
+                surfaceClassName="bg-card"
+                inputClassName="bg-background border-border text-foreground rounded-xl focus:border-primary focus:ring-primary/20"
+              />
 
-            <AnimatedInput
-              id="username"
-              label="Username"
-              type="text"
-              icon={<LuUser className="w-5 h-5 opacity-50" />}
-              value={formData.username}
-              onChange={(e) =>
-                setFormData({ ...formData, username: e.target.value.toLowerCase().replace(/\s/g, "") })
-              }
-              required
-              placeholder="usuario_exemplo"
-              surfaceClassName="bg-card"
-              inputClassName="bg-background border-border text-foreground rounded-xl focus:border-primary focus:ring-primary/20"
-            />
-            <p className="text-[10px] text-muted-foreground px-1 -mt-4">
-              Seu identificador único na plataforma
-            </p>
+              <div>
+                <AnimatedInput
+                  id="username"
+                  label="Username"
+                  type="text"
+                  icon={<LuUser className="w-5 h-5 opacity-50" />}
+                  value={formData.username}
+                  onChange={(e) =>
+                    setFormData({ ...formData, username: e.target.value.toLowerCase().replace(/\s/g, "") })
+                  }
+                  required
+                  placeholder="usuario_exemplo"
+                  surfaceClassName="bg-card"
+                  inputClassName="bg-background border-border text-foreground rounded-xl focus:border-primary focus:ring-primary/20"
+                />
+                <p className="text-[10px] text-muted-foreground px-1 mt-1">
+                  Seu identificador único na plataforma
+                </p>
+              </div>
+            </div>
 
             <AnimatedInput
               id="email"
@@ -428,10 +475,10 @@ function RegisterForm() {
               placeholder="seu@email.com"
             />
           </div>
-        )}
+        </Activity>
 
         {/* =========== STEP 2: Nível + Cargo =========== */}
-        {step === 2 && (
+        <Activity mode={step === 2 ? "visible" : "hidden"}>
           <div className="space-y-6">
             {/* Nível */}
             <div>
@@ -471,12 +518,9 @@ function RegisterForm() {
                       
                       // Regras específicas de concurso
                       if (concursoAtivo === "petrobras") {
-                        // A Petrobras só tem cargos que estão mapeados nas PROFISSOES do edital da Petrobras
-                        // O 'suprimento-adm' e cargos em PETROBRAS_CARGOS_TECNICO e PETROBRAS_CARGOS_SUPERIOR pertencem a Petrobras
                         const pertencePetrobras = PROFISSOES.some(p => p.id === cargo.id);
                         return pertencePetrobras;
                       } else {
-                        // Outros concursos (caixa, bb, correios, ibge, inss) mapeiam ids específicos
                         return cargo.id.startsWith(concursoAtivo) || cargo.id === `${concursoAtivo}-tecnico` || cargo.id === `${concursoAtivo}-agente` || cargo.id === `${concursoAtivo}-recenseador` || cargo.id === `${concursoAtivo}-escriturario`;
                       }
                     });
@@ -500,13 +544,20 @@ function RegisterForm() {
               </div>
             )}
           </div>
-        )}
+        </Activity>
 
         {/* =========== STEP 3: Plano =========== */}
-        {step === 3 && (
+        <Activity mode={step === 3 ? "visible" : "hidden"}>
           <div className="space-y-3">
             {clientSecret ? (
                <div className="mt-4 -mx-4 md:mx-0">
+                 <button
+                   type="button"
+                   onClick={handleResetGateway}
+                   className="mb-4 px-3 py-1.5 rounded-lg bg-accent border border-border text-xs font-bold text-primary hover:bg-accent/80 transition flex items-center gap-2"
+                 >
+                   ← Trocar forma de pagamento ou plano
+                 </button>
                  <StripeEmbeddedCheckout clientSecret={clientSecret} />
                </div>
             ) : (
@@ -516,33 +567,36 @@ function RegisterForm() {
                     {NIVEIS.find((n) => n.id === formData.nivel)?.icon} {cargoNome}
                   </p>
                 </div>
-                {getPlanosByNivel().map((plano) => (
-                  <button
-                    key={plano.id}
-                    type="button"
-                    onClick={() => setFormData({ ...formData, plan: plano.id })}
-                    className={`w-full p-4 rounded-xl border-2 text-left transition-all relative ${
-                      formData.plan === plano.id
-                        ? "border-primary bg-primary/10"
-                        : "border-border hover:border-border/80 bg-background/30"
-                    }`}
-                  >
-                    {plano.tag && (
-                      <span className="absolute -top-2.5 right-4 bg-yellow-400 text-black text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                        {plano.tag}
-                      </span>
-                    )}
-                    <div className="flex items-center justify-between">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {getPlanosByNivel().map((plano) => (
+                    <button
+                      key={plano.id}
+                      type="button"
+                      onClick={() => {
+                        setFormData({ ...formData, plan: plano.id });
+                        handleResetGateway();
+                      }}
+                      className={`w-full p-4 rounded-xl border-2 text-left transition-all relative flex flex-col justify-between ${
+                        formData.plan === plano.id
+                          ? "border-primary bg-primary/10"
+                          : "border-border hover:border-border/80 bg-background/30"
+                      }`}
+                    >
+                      {plano.tag && (
+                        <span className="absolute -top-2.5 right-4 bg-yellow-400 text-black text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                          {plano.tag}
+                        </span>
+                      )}
                       <div>
                         <p className="font-bold text-foreground dark:text-white">{plano.nome}</p>
-                        <p className="text-xs text-muted-foreground mt-0.5">{plano.descricao}</p>
+                        <p className="text-xs text-muted-foreground mt-1">{plano.descricao}</p>
                       </div>
-                      <div className="text-right flex-shrink-0 ml-4">
+                      <div className="text-right mt-3">
                         <p className="font-black text-yellow-500 dark:text-yellow-400 text-lg">{plano.preco}</p>
                       </div>
-                    </div>
-                  </button>
-                ))}
+                    </button>
+                  ))}
+                </div>
 
                 {formData.plan !== "free" && (
                   <div className="mt-5 p-4 rounded-xl bg-accent/30 border border-border">
@@ -552,25 +606,10 @@ function RegisterForm() {
                     <div className="grid grid-cols-2 gap-3">
                       <button
                         type="button"
-                        onClick={() => setPaymentGateway("mercadopago")}
-                        className={`p-3 rounded-lg border-2 text-left transition-all flex flex-col justify-between ${
-                          paymentGateway === "mercadopago"
-                            ? "border-sky-500 bg-sky-500/10 text-foreground"
-                            : "border-border hover:border-border/80 bg-background/50 text-muted-foreground"
-                        }`}
-                      >
-                        <div className="flex items-center gap-2">
-                          <span className="text-lg">⚡</span>
-                          <span className="font-bold text-sm">Mercado Pago</span>
-                        </div>
-                        <span className="text-[11px] text-muted-foreground mt-1">
-                          PIX instantâneo ou Cartão
-                        </span>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => setPaymentGateway("stripe")}
+                        onClick={() => {
+                          setPaymentGateway("stripe");
+                          handleResetGateway();
+                        }}
                         className={`p-3 rounded-lg border-2 text-left transition-all flex flex-col justify-between ${
                           paymentGateway === "stripe"
                             ? "border-indigo-500 bg-indigo-500/10 text-foreground"
@@ -578,11 +617,32 @@ function RegisterForm() {
                         }`}
                       >
                         <div className="flex items-center gap-2">
-                          <span className="text-lg">💳</span>
-                          <span className="font-bold text-sm">Stripe</span>
+                          <SiStripe className="w-5 h-5 text-[#635BFF]" />
+                          <span className="font-bold text-sm">Cartão (Stripe)</span>
                         </div>
                         <span className="text-[11px] text-muted-foreground mt-1">
-                          Cartão de Crédito
+                          Cartão de Crédito em até 12x
+                        </span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPaymentGateway("efi");
+                          handleResetGateway();
+                        }}
+                        className={`p-3 rounded-lg border-2 text-left transition-all flex flex-col justify-between ${
+                          paymentGateway === "efi"
+                            ? "border-green-500 bg-green-500/10 text-foreground"
+                            : "border-border hover:border-border/80 bg-background/50 text-muted-foreground"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <LuQrCode className="w-5 h-5 text-emerald-500" />
+                          <span className="font-bold text-sm">PIX (InfinitePay)</span>
+                        </div>
+                        <span className="text-[11px] text-muted-foreground mt-1">
+                          QR Code + Copia e Cola
                         </span>
                       </button>
                     </div>
@@ -591,10 +651,10 @@ function RegisterForm() {
               </>
             )}
            </div>
-        )}
+        </Activity>
 
         {/* =========== STEP 4: Senha =========== */}
-        {step === 4 && (
+        <Activity mode={step === 4 ? "visible" : "hidden"}>
           <div className="space-y-5">
             {/* Resumo */}
             <div className="flex items-center gap-3 p-3 bg-accent rounded-lg border border-border text-sm">
@@ -603,30 +663,56 @@ function RegisterForm() {
               <span className="text-muted-foreground">{cargoNome}</span>
             </div>
 
-            {/* Senha */}
-            <AnimatedInput
-              id="password"
-              label="Senha"
-              type={showPassword ? "text" : "password"}
-              icon={<LuLock className="w-5 h-5" />}
-              value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-              required
-              placeholder="Crie uma senha forte"
-              trailing={
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="text-muted-foreground hover:text-foreground transition"
-                >
-                  {showPassword ? (
-                    <LuEyeOff className="w-5 h-5" />
-                  ) : (
-                    <LuEye className="w-5 h-5" />
-                  )}
-                </button>
-              }
-            />
+            {/* Senhas em 2 colunas */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <AnimatedInput
+                id="password"
+                label="Senha"
+                type={showPassword ? "text" : "password"}
+                icon={<LuLock className="w-5 h-5" />}
+                value={formData.password}
+                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                required
+                placeholder="Crie uma senha forte"
+                trailing={
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="text-muted-foreground hover:text-foreground transition"
+                  >
+                    {showPassword ? (
+                      <LuEyeOff className="w-5 h-5" />
+                    ) : (
+                      <LuEye className="w-5 h-5" />
+                    )}
+                  </button>
+                }
+              />
+
+              <AnimatedInput
+                id="confirmPassword"
+                label="Confirmar senha"
+                type={showConfirmPassword ? "text" : "password"}
+                icon={<LuLock className="w-5 h-5 opacity-50" />}
+                value={formData.confirmPassword}
+                onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                required
+                placeholder="Repita a senha"
+                trailing={
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="text-muted-foreground hover:text-foreground transition"
+                  >
+                    {showConfirmPassword ? (
+                      <LuEyeOff className="w-5 h-5" />
+                    ) : (
+                      <LuEye className="w-5 h-5" />
+                    )}
+                  </button>
+                }
+              />
+            </div>
 
             {/* Requisitos */}
             <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 p-3 bg-accent/40 rounded-lg border border-border">
@@ -638,47 +724,24 @@ function RegisterForm() {
               ))}
             </div>
 
-            {/* Confirmar */}
-            <AnimatedInput
-              id="confirmPassword"
-              label="Confirmar senha"
-              type={showConfirmPassword ? "text" : "password"}
-              icon={<LuLock className="w-5 h-5 opacity-50" />}
-              value={formData.confirmPassword}
-              onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-              required
-              placeholder="Repita a senha"
-              trailing={
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="text-muted-foreground hover:text-foreground transition"
-                >
-                  {showConfirmPassword ? (
-                    <LuEyeOff className="w-5 h-5" />
-                  ) : (
-                    <LuEye className="w-5 h-5" />
-                  )}
-                </button>
-              }
-            />
-
             {/* Termos */}
             <label className="flex items-start gap-2.5 cursor-pointer">
               <input
                 type="checkbox"
                 required
+                checked={termsAccepted}
+                onChange={(e) => setTermsAccepted(e.target.checked)}
                 className="mt-0.5 w-4 h-4 rounded border-input bg-background text-primary focus:ring-primary"
               />
               <span className="text-sm text-muted-foreground">
                 Li e aceito os{" "}
-                <a href="#" className="text-primary hover:underline">Termos de Uso</a>{" "}
+                <Link href="/termos" target="_blank" className="text-primary hover:underline">Termos de Uso</Link>{" "}
                 e a{" "}
-                <a href="#" className="text-primary hover:underline">Política de Privacidade</a>
+                <Link href="/privacidade" target="_blank" className="text-primary hover:underline">Política de Privacidade</Link>
               </span>
             </label>
           </div>
-        )}
+        </Activity>
 
         {/* Navigation */}
         {(!clientSecret || step !== 3) && (
@@ -698,7 +761,8 @@ function RegisterForm() {
               disabled={
                 loading ||
                 (step === 2 && (!formData.nivel || !formData.cargo)) ||
-                (step === 3 && !formData.plan)
+                (step === 3 && !formData.plan) ||
+                (step === 4 && !termsAccepted)
               }
               className="flex-1 py-3 bg-primary text-primary-foreground font-bold rounded-lg hover:shadow-lg hover:shadow-primary/20 transition-all disabled:opacity-40 disabled:cursor-not-allowed text-sm"
               style={{ background: "var(--primary-gradient)" }}
@@ -741,15 +805,25 @@ function RegisterForm() {
           </Link>
         </div>
       </div>
+
+      <InfinitePayPixModal
+        isOpen={isPixModalOpen}
+        onClose={() => setIsPixModalOpen(false)}
+        onSuccess={() => {
+          setIsPixModalOpen(false);
+          setStep(4);
+        }}
+        pixData={efiPixData}
+      />
     </div>
-  </div>
+    </div>
   );
 }
 
 export default function RegisterPage() {
   return (
     <AuthLayout>
-      <div className="relative z-10 w-full max-w-lg">
+      <div className="relative z-10 w-full max-w-3xl">
         <Suspense
           fallback={
             <div className="text-center py-12">

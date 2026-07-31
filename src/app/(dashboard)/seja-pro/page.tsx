@@ -10,7 +10,8 @@ import { LuZap, LuCircleCheck, LuLoader, LuGraduationCap, LuBriefcase } from 're
 import { cn } from '@/lib/utils';
 import type { StripePlan } from '@/lib/stripe';
 import { createAuthenticatedCheckout, createPortalSession } from '@/lib/actions/stripe';
-import { createMercadoPagoCheckoutAuth } from '@/lib/actions/mercadopago';
+import { createInfinitePayPixChargeAuth } from '@/lib/actions/infinitepay';
+import { InfinitePayPixModal } from '@/components/checkout/InfinitePayPixModal';
 
 const PLANOS_MEDIO = [
   {
@@ -145,6 +146,15 @@ const ICONE_PLANO: Record<string, string> = {
   free: '🌱',
 };
 
+const HIERARQUIA_PLANOS: Record<string, number> = {
+  free: 0,
+  'aprovado-medio': 1,
+  'aprovado-superior': 2,
+  'elite-medio': 3,
+  'elite-superior': 4,
+  'elite-total': 5,
+};
+
 export default function SejaProPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -180,21 +190,33 @@ export default function SejaProPage() {
     }
   }, [searchParams, router]);
 
-  const handleCheckout = async (plan: StripePlan, gateway: 'stripe' | 'mercadopago' = 'mercadopago') => {
+  const [efiPixData, setEfiPixData] = useState<any>(null);
+  const [isPixModalOpen, setIsPixModalOpen] = useState(false);
+
+  const handleCheckout = async (plan: StripePlan) => {
     setLoadingPlan(plan);
     setFeedback(null);
     try {
-      if (gateway === 'mercadopago') {
-        const result = await createMercadoPagoCheckoutAuth(plan);
-        if (result.error) throw new Error(result.error);
-        if (result.url) window.location.href = result.url;
-      } else {
-        const result = await createAuthenticatedCheckout(plan);
-        if (result.error) throw new Error(result.error);
-        if (result.url) window.location.href = result.url;
-      }
+      const result = await createAuthenticatedCheckout(plan);
+      if (result.error) throw new Error(result.error);
+      if (result.url) window.location.href = result.url;
     } catch (err: any) {
       setFeedback({ tipo: 'error', msg: err.message });
+      setLoadingPlan(null);
+    }
+  };
+
+  const handleCheckoutPix = async (plan: StripePlan) => {
+    setLoadingPlan(plan);
+    setFeedback(null);
+    try {
+      const result = await createInfinitePayPixChargeAuth(plan);
+      if (result.error) throw new Error(result.error);
+      setEfiPixData(result);
+      setIsPixModalOpen(true);
+    } catch (err: any) {
+      setFeedback({ tipo: 'error', msg: err.message });
+    } finally {
       setLoadingPlan(null);
     }
   };
@@ -295,6 +317,10 @@ export default function SejaProPage() {
             {PLANOS_MEDIO.map((plano) => {
               const isCurrent = planAtual === plano.id;
               const isLoading = loadingPlan === plano.id;
+              const tierAtual = HIERARQUIA_PLANOS[planAtual] ?? 0;
+              const tierPlano = HIERARQUIA_PLANOS[plano.id] ?? 0;
+              const isInferior = !isCurrent && tierPlano < tierAtual;
+              const isDisabled = isCurrent || isLoading || isInferior;
 
               return (
                 <div
@@ -361,18 +387,18 @@ export default function SejaProPage() {
 
                   <div className="p-8 pt-4">
                     <button
-                      onClick={() => { if (!isCurrent && !isLoading) handleCheckout(plano.id); }}
-                      disabled={isCurrent || isLoading}
+                      onClick={() => { if (!isDisabled) handleCheckout(plano.id); }}
+                      disabled={isDisabled}
                       className={cn(
                         'flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-black uppercase text-xs tracking-widest transition-all active:scale-[0.98]',
                         plano.destaque
                           ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:shadow-primary/40'
                           : 'bg-secondary/50 text-foreground border border-border/50 hover:bg-secondary',
-                        isCurrent && 'opacity-50 cursor-not-allowed grayscale'
+                        isDisabled && 'opacity-50 cursor-not-allowed grayscale'
                       )}
                     >
                       {isLoading && <LuLoader className="w-4 h-4 animate-spin" />}
-                      {isCurrent ? 'Plano Atual' : plano.cta}
+                      {isCurrent ? 'Plano Atual' : isInferior ? 'Indisponível' : plano.cta}
                     </button>
                   </div>
                 </div>
@@ -391,6 +417,10 @@ export default function SejaProPage() {
             {PLANOS_SUPERIOR.map((plano) => {
               const isCurrent = planAtual === plano.id;
               const isLoading = loadingPlan === plano.id;
+              const tierAtual = HIERARQUIA_PLANOS[planAtual] ?? 0;
+              const tierPlano = HIERARQUIA_PLANOS[plano.id] ?? 0;
+              const isInferior = !isCurrent && tierPlano < tierAtual;
+              const isDisabled = isCurrent || isLoading || isInferior;
 
               return (
                 <div
@@ -457,18 +487,18 @@ export default function SejaProPage() {
 
                   <div className="p-8 pt-4">
                     <button
-                      onClick={() => { if (!isCurrent && !isLoading) handleCheckout(plano.id); }}
-                      disabled={isCurrent || isLoading}
+                      onClick={() => { if (!isDisabled) handleCheckout(plano.id); }}
+                      disabled={isDisabled}
                       className={cn(
                         'flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-black uppercase text-xs tracking-widest transition-all active:scale-[0.98]',
                         plano.destaque
                           ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:shadow-primary/40'
                           : 'bg-secondary/50 text-foreground border border-border/50 hover:bg-secondary',
-                        isCurrent && 'opacity-50 cursor-not-allowed grayscale'
+                        isDisabled && 'opacity-50 cursor-not-allowed grayscale'
                       )}
                     >
                       {isLoading && <LuLoader className="w-4 h-4 animate-spin" />}
-                      {isCurrent ? 'Plano Atual' : plano.cta}
+                      {isCurrent ? 'Plano Atual' : isInferior ? 'Indisponível' : plano.cta}
                     </button>
                   </div>
                 </div>
@@ -490,6 +520,10 @@ export default function SejaProPage() {
             const plano = PLANO_TOTAL;
             const isCurrent = planAtual === plano.id;
             const isLoading = loadingPlan === plano.id;
+            const tierAtual = HIERARQUIA_PLANOS[planAtual] ?? 0;
+            const tierPlano = HIERARQUIA_PLANOS[plano.id] ?? 0;
+            const isInferior = !isCurrent && tierPlano < tierAtual;
+            const isDisabled = isCurrent || isLoading || isInferior;
 
             return (
               <div className={cn(
@@ -540,16 +574,16 @@ export default function SejaProPage() {
                   </div>
 
                   <button
-                    onClick={() => { if (!isCurrent && !isLoading) handleCheckout(plano.id); }}
-                    disabled={isCurrent || isLoading}
+                    onClick={() => { if (!isDisabled) handleCheckout(plano.id); }}
+                    disabled={isDisabled}
                     className={cn(
                       'flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-black uppercase text-xs tracking-widest transition-all active:scale-[0.98]',
                       'bg-amber-500 text-white shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:bg-amber-400',
-                      isCurrent && 'opacity-50 cursor-not-allowed grayscale'
+                      isDisabled && 'opacity-50 cursor-not-allowed grayscale'
                     )}
                   >
                     {isLoading && <LuLoader className="w-4 h-4 animate-spin" />}
-                    {isCurrent ? 'Plano Atual' : plano.cta}
+                    {isCurrent ? 'Plano Atual' : isInferior ? 'Indisponível' : plano.cta}
                   </button>
                 </div>
               </div>
@@ -563,6 +597,16 @@ export default function SejaProPage() {
         <p>Pagamento seguro via Stripe. Cancele quando quiser pelo portal do cliente.</p>
         <p className="text-xs opacity-60">Dúvidas? Entre em contato via Ticket no suporte.</p>
       </div>
+
+      <InfinitePayPixModal
+        isOpen={isPixModalOpen}
+        onClose={() => setIsPixModalOpen(false)}
+        onSuccess={() => {
+          setIsPixModalOpen(false);
+          router.replace('/seja-pro?success=true&plan=pro');
+        }}
+        pixData={efiPixData}
+      />
     </div>
   );
 }
