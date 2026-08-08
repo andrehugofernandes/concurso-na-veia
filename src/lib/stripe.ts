@@ -8,11 +8,12 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 // Mapeamento de plano → lookup key do Stripe
 export const STRIPE_LOOKUP_KEYS = {
-  'aprovado-medio': 'avaga-aprovado-medio-monthly',
-  'aprovado-superior': 'avaga-aprovado-superior-monthly',
-  'elite-medio': 'avaga-elite-medio-monthly',
-  'elite-superior': 'avaga-elite-superior-monthly',
-  'elite-total': 'avaga-elite-total-monthly',
+  'aprovado-medio': 'avaga-aprovado-medio-onetime',
+  'aprovado-superior': 'avaga-aprovado-superior-onetime',
+  'elite-medio': 'avaga-elite-medio-onetime',
+  'elite-superior': 'avaga-elite-superior-onetime',
+  'elite-total': 'avaga-elite-total-onetime',
+  'vitalis-total': 'avaga-vitalis-total-onetime',
 } as const;
 
 // Dados dos planos para criação no Stripe
@@ -46,6 +47,12 @@ export const PLANOS_CONFIG = {
     descricao: 'Acesso total: Médio + Superior, IA, Mentoria e todos os cargos',
     preco: 14999, // R$ 149,99 em centavos
     lookupKey: STRIPE_LOOKUP_KEYS['elite-total'],
+  },
+  'vitalis-total': {
+    nome: 'Vitalis Total',
+    descricao: 'Acesso VITALÍCIO a TODOS os concursos presentes e futuros da plataforma',
+    preco: 65000, // R$ 650,00 em centavos
+    lookupKey: STRIPE_LOOKUP_KEYS['vitalis-total'],
   },
 } as const;
 

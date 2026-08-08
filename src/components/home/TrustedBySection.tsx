@@ -10,6 +10,7 @@ const logos = [
   { name: 'Correios', path: '/assets/images/logos/correios-icon.png' },
   { name: 'IBGE', path: '/assets/images/logos/ibge-icon.png' },
   { name: 'INSS', path: '/assets/images/logos/inss-icon.png' },
+  { name: 'ATA-MF', path: '/assets/images/logos/ata-mf/Coat_of_arms_of_Brazil.svg.webp' },
 ];
 
 export default function TrustedBySection() {

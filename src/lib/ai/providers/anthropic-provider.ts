@@ -19,17 +19,17 @@ export class AnthropicProvider implements AIProvider {
   async generateQuestion(options: AIProviderOptions): Promise<Questao> {
     const { materia, dificuldade, assunto, contexto, questoesAnteriores } = options;
 
-    const prompt = `Você é um elaborador de provas com 20 anos de experiência na banca CESGRANRIO, especialista em concursos da Petrobras.
+    const prompt = `Você é um elaborador de provas com 20 anos de experiência na banca ${contexto?.banca || "CESGRANRIO"}, especialista em concursos da ${contexto?.concurso_nome || "Petrobras"}.
 
-TAREFA: Criar UMA questão de ${materia} ${assunto ? `(Assunto: ${assunto})` : ''} para concurso Petrobras ${contexto?.nivel ? `nível ${contexto.nivel}` : ''} ${contexto?.cargo ? `(Cargo: ${contexto.cargo})` : ''}
+TAREFA: Criar UMA questão de ${materia} ${assunto ? `(Assunto: ${assunto})` : ''} para o concurso ${contexto?.concurso_nome || "Petrobras"} ${contexto?.nivel ? `nível ${contexto.nivel}` : ''} ${contexto?.cargo ? `(Cargo: ${contexto.cargo})` : ''}
 Dificuldade: ${dificuldade || 'Média'}
 
-ESTRUTURA OBRIGATÓRIA DO ENUNCIADO (PADRÃO CESGRANRIO REAL):
+${contexto?.bancaContexto ? `═══════════════════════════════════════════\nPERFIL HACKER DA BANCA (${contexto.banca})\n═══════════════════════════════════════════\n${contexto.bancaContexto}\n\n` : ""}ESTRUTURA OBRIGATÓRIA DO ENUNCIADO (PADRÃO ${contexto?.banca || "CESGRANRIO"} REAL):
 
 O campo "enunciado" deve ter DUAS PARTES obrigatórias, separadas por \\n\\n:
 
 PARTE 1 — CONTEXTUALIZAÇÃO / SITUAÇÃO-PROBLEMA (obrigatório):
-${materia.toLowerCase().includes("português") || materia.toLowerCase().includes("portug") ? `Para LÍNGUA PORTUGUESA: Parágrafo de 4-8 linhas simulando trecho de reportagem, artigo técnico ou relatório. Linguagem formal, culta, com estrutura sintática variada.` : ''}${materia.toLowerCase().includes("matemát") || materia.toLowerCase().includes("matemat") ? `Para MATEMÁTICA: Situação-problema realista contextualizada na Petrobras (produção, custos, logística, juros). Forneça TODOS os dados numéricos. Exija raciocínio em 2-3 etapas.` : ''}${materia.toLowerCase().includes("inglês") || materia.toLowerCase().includes("ingles") || materia.toLowerCase().includes("inglesa") ? `Para LÍNGUA INGLESA: Parágrafo de 4-8 linhas EM INGLÊS do setor de energia/petróleo. Vocabulário técnico. Comando em PORTUGUÊS.` : ''}${materia.toLowerCase().includes("específ") || materia.toLowerCase().includes("especif") || materia.toLowerCase().includes("bloco") ? `Para CONHECIMENTOS ESPECÍFICOS: Cenário técnico/normativo realista de 4-8 linhas com situação operacional ou aplicação de norma do cargo "${contexto?.cargo || 'técnico'}".` : ''}${!materia.toLowerCase().includes("português") && !materia.toLowerCase().includes("portug") && !materia.toLowerCase().includes("matemát") && !materia.toLowerCase().includes("matemat") && !materia.toLowerCase().includes("inglês") && !materia.toLowerCase().includes("ingles") && !materia.toLowerCase().includes("inglesa") && !materia.toLowerCase().includes("específ") && !materia.toLowerCase().includes("especif") && !materia.toLowerCase().includes("bloco") ? `Parágrafo de 4-8 linhas com cenário realista da indústria do petróleo, energia ou economia brasileira.` : ''}
+${materia.toLowerCase().includes("português") || materia.toLowerCase().includes("portug") ? `Para LÍNGUA PORTUGUESA: Parágrafo de 4-8 linhas simulando trecho de reportagem, artigo técnico ou relatório. Linguagem formal, culta, com estrutura sintática variada.` : ''}${materia.toLowerCase().includes("matemát") || materia.toLowerCase().includes("matemat") ? `Para MATEMÁTICA: Situação-problema realista contextualizada (produção, custos, logística, juros). Forneça TODOS os dados numéricos. Exija raciocínio em 2-3 etapas.` : ''}${materia.toLowerCase().includes("inglês") || materia.toLowerCase().includes("ingles") || materia.toLowerCase().includes("inglesa") ? `Para LÍNGUA INGLESA: Parágrafo de 4-8 linhas EM INGLÊS do setor. Vocabulário técnico. Comando em PORTUGUÊS.` : ''}${materia.toLowerCase().includes("específ") || materia.toLowerCase().includes("especif") || materia.toLowerCase().includes("bloco") ? `Para CONHECIMENTOS ESPECÍFICOS: Cenário técnico/normativo realista de 4-8 linhas com situação operacional ou aplicação de norma do cargo "${contexto?.cargo || 'técnico'}".` : ''}${!materia.toLowerCase().includes("português") && !materia.toLowerCase().includes("portug") && !materia.toLowerCase().includes("matemát") && !materia.toLowerCase().includes("matemat") && !materia.toLowerCase().includes("inglês") && !materia.toLowerCase().includes("ingles") && !materia.toLowerCase().includes("inglesa") && !materia.toLowerCase().includes("específ") && !materia.toLowerCase().includes("especif") && !materia.toLowerCase().includes("bloco") ? `Parágrafo de 4-8 linhas com cenário realista da indústria ou economia.` : ''}
 
 PARTE 2 — COMANDO DA QUESTÃO (obrigatório):
 Pergunta PRECISA e ESPECÍFICA referenciando elemento concreto da contextualização.
@@ -60,10 +60,11 @@ ${materia.toLowerCase().includes("matemát") || materia.toLowerCase().includes("
   "correta": 1
 }` : ''}
 
-REGRAS:
-1. 5 alternativas plausíveis, distintas, com distratores inteligentes.
-2. PROIBIDO letras (A-E) ou prefixos. 3. Índice "correta" correto. DISTRIBUA aleatoriamente.
-4. Explicação detalhada. Para Matemática, passo a passo.
+REGRAS TÉCNICAS:
+${contexto?.banca?.toLowerCase().includes("cebraspe") || contexto?.banca?.toLowerCase().includes("cespe") ? "1. ALTERNATIVAS: Exatamente 2 opções: 'Certo' e 'Errado'." : "1. ALTERNATIVAS: Múltipla escolha (4 ou 5 opções plausíveis e distintas, conforme o padrão da banca). PROIBIDO alternativas de uma só palavra."}
+2. PROIBIDO letras (A-E) ou prefixos no início. Texto puro.
+3. GABARITO: Índice "correta" (0-${contexto?.banca?.toLowerCase().includes("cebraspe") || contexto?.banca?.toLowerCase().includes("cespe") ? "1" : "4"}) correspondendo à resposta.
+4. EXPLICAÇÃO: Detalhada. Para Matemática, passo a passo completo.
 5. HTML: <b>, <u>, <i>. NÃO use Markdown. DESTAQUES DO ENUNCIADO obrigatórios com tag <u> (ex: <u>palavra</u>). Aplique a tag <u> APENAS UMA VEZ no texto-base. Se o comando repetir o trecho, não destaque novamente. NÃO use <b> para a palavra destacada. PROIBIDO usar <u> nas alternativas.
 6. COERÊNCIA linguística nos destaques.
 

@@ -104,11 +104,6 @@ export async function getNotificationsAction(limit: number = 20): Promise<Action
 
       if (!error && notifications && notifications.length > 0) {
         finalNotifications = notifications;
-        console.log(`[getNotificationsAction] Encontradas ${notifications.length} notificações na tabela`);
-      } else {
-        if (error) {
-          console.warn('[getNotificationsAction] Erro na tabela notifications:', error.message);
-        }
       }
     } catch (e: any) {
       console.warn('[getNotificationsAction] Exceção ao buscar notifications:', e.message);
@@ -116,7 +111,6 @@ export async function getNotificationsAction(limit: number = 20): Promise<Action
 
     // 2. Fallback: se não encontrou notificações, sintetizar a partir dos tickets do usuário
     if (finalNotifications.length === 0) {
-      console.log('[getNotificationsAction] Fallback: buscando tickets do usuário para gerar notificações...');
       try {
         const { data: userTickets, error: ticketError } = await supabase
           .from('tickets')

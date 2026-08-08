@@ -12,6 +12,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { CARGO_ID_MAP } from '@/lib/cargos-map';
 
 import { PROFISSOES, Profissao } from '@/lib/profissoes-edital';
+import { useDynamicAulas } from '@/hooks/useDynamicAulas';
 
 export default function AulasPage() {
     const { profile: user, loading: userLoading } = useUserProfile();
@@ -22,9 +23,11 @@ export default function AulasPage() {
 
     const isAdmin = user?.role?.toUpperCase() === 'ADMIN' || user?.role?.toUpperCase() === 'SYSADMIN';
     const isElite = user?.plan === 'elite-total' || isAdmin;
+    const isVitalis = user?.plan === 'vitalis-total' || isAdmin;
     
-    // Programa base para o cargo do usuário (inclui básicas + específicas dele)
-    const programaBase = getProgramaDeEstudos(user?.cargo, false);
+    // Programa base para o cargo do usuário (inclui básicas + específicas dele) via BD ou estático
+    const { programa: programaBase, loading: dynamicLoading, isDynamic } = useDynamicAulas(user?.cargo);
+    
     
     // Separação em Blocos (Básicos vs Específicos) conforme o brainstorm
     const gradeBase = programaBase.filter(m => ['portugues', 'matematica', 'ingles'].includes(m.id));
@@ -101,9 +104,9 @@ export default function AulasPage() {
         }
     }
 
-    const cargoNome = user?.cargo ? programaBase.filter(m => !['portugues', 'matematica', 'ingles'].includes(m.id))[0]?.descricao.split('para ')[1] || user.cargo : '';
+    const cargoNome = user?.cargo && !isDynamic ? programaBase.filter(m => !['portugues', 'matematica', 'ingles'].includes(m.id))[0]?.descricao.split('para ')[1] || user?.cargo || '' : (isDynamic ? user?.cargo || '' : '');
 
-    const loading = userLoading || progressLoading;
+    const loading = userLoading || progressLoading || dynamicLoading;
 
     if (loading) {
         return (
@@ -249,6 +252,91 @@ export default function AulasPage() {
                     </div>
                 </div>
             </header>
+
+            {/* SEÇÃO VITALIS - CARDS DE CONCURSOS */}
+            {isVitalis && (
+                <section className="mb-20 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
+                    <div className="flex items-center gap-4 mb-8">
+                        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
+                        <h2 className="text-sm md:text-base font-black text-amber-600 dark:text-amber-500 uppercase tracking-[0.3em] flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" /> Seus Concursos Vitalícios
+                        </h2>
+                        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {/* Card Petrobras (Pronto) */}
+                        <div className="group relative bg-slate-900 rounded-3xl p-8 overflow-hidden border border-amber-500/20 hover:border-amber-500/60 transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/20 cursor-pointer hover:-translate-y-2">
+                            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="relative z-10">
+                                <div className="flex justify-between items-start mb-6">
+                                    <div className="w-16 h-16 rounded-2xl bg-amber-500/20 flex items-center justify-center text-3xl shadow-lg shadow-amber-500/20">
+                                        🛢️
+                                    </div>
+                                    <Badge className="bg-green-500 text-white border-0 font-black px-3 py-1 text-xs">
+                                        LIBERADO
+                                    </Badge>
+                                </div>
+                                <h3 className="text-2xl font-black text-white mb-2 tracking-tight group-hover:text-amber-400 transition-colors">
+                                    Concurso Petrobras
+                                </h3>
+                                <p className="text-slate-400 text-sm font-medium mb-6 line-clamp-2">
+                                    Acesso completo a todos os cargos de nível médio e superior. Mais de 50 matérias.
+                                </p>
+                                <button className="w-full py-3 rounded-xl bg-amber-500/10 text-amber-500 font-bold text-sm border border-amber-500/20 group-hover:bg-amber-500 group-hover:text-white transition-all">
+                                    Acessar Aulas →
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Card Banco do Brasil (Em breve) */}
+                        <div className="group relative bg-slate-100 dark:bg-slate-900/50 rounded-3xl p-8 overflow-hidden border border-slate-200 dark:border-white/5 opacity-70">
+                            <div className="relative z-10">
+                                <div className="flex justify-between items-start mb-6">
+                                    <div className="w-16 h-16 rounded-2xl bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-3xl grayscale">
+                                        🏦
+                                    </div>
+                                    <Badge className="bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-0 font-black px-3 py-1 text-xs">
+                                        EM BREVE
+                                    </Badge>
+                                </div>
+                                <h3 className="text-2xl font-black text-slate-700 dark:text-slate-300 mb-2 tracking-tight">
+                                    Banco do Brasil
+                                </h3>
+                                <p className="text-slate-500 dark:text-slate-500 text-sm font-medium mb-6 line-clamp-2">
+                                    Edital previsto. O curso será gerado automaticamente assim que o edital sair.
+                                </p>
+                                <button className="w-full py-3 rounded-xl bg-slate-200/50 dark:bg-slate-800/50 text-slate-500 font-bold text-sm border border-slate-300/50 dark:border-slate-700/50 cursor-not-allowed">
+                                    Aguardando Edital
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Card Caixa (Em breve) */}
+                        <div className="group relative bg-slate-100 dark:bg-slate-900/50 rounded-3xl p-8 overflow-hidden border border-slate-200 dark:border-white/5 opacity-70 hidden lg:block">
+                            <div className="relative z-10">
+                                <div className="flex justify-between items-start mb-6">
+                                    <div className="w-16 h-16 rounded-2xl bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-3xl grayscale">
+                                        💲
+                                    </div>
+                                    <Badge className="bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-0 font-black px-3 py-1 text-xs">
+                                        EM BREVE
+                                    </Badge>
+                                </div>
+                                <h3 className="text-2xl font-black text-slate-700 dark:text-slate-300 mb-2 tracking-tight">
+                                    Caixa Econômica
+                                </h3>
+                                <p className="text-slate-500 dark:text-slate-500 text-sm font-medium mb-6 line-clamp-2">
+                                    Preparação completa para Técnico Bancário e TI.
+                                </p>
+                                <button className="w-full py-3 rounded-xl bg-slate-200/50 dark:bg-slate-800/50 text-slate-500 font-bold text-sm border border-slate-300/50 dark:border-slate-700/50 cursor-not-allowed">
+                                    Aguardando Edital
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            )}
 
             <div className="space-y-20">
                 {/* 1. SEÇÃO DE BASES DO USUÁRIO */}

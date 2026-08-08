@@ -4021,3 +4021,92 @@ export function AulaEspecificaTemplate({ title, modules, onComplete }: AulaEspec
     </div>
   );
 }
+
+// ── Componente de Questão Comentada de Fixação Pré-Quiz ─────────────────────
+
+export interface QuestaoComentadaData {
+  banca?: string;
+  ano?: string;
+  cargo?: string;
+  enunciado: string;
+  opcoes: string[];
+  respostaCorreta: string;
+  analisePegadinha?: string;
+  explicacaoDetalhadas?: string[];
+}
+
+export function ResolvedQuestionCard({ data }: { data: QuestaoComentadaData }) {
+  const [showAnalysis, setShowAnalysis] = useState(false);
+
+  return (
+    <div className="bg-card border border-border rounded-2xl p-6 md:p-8 space-y-6 shadow-sm">
+      <div className="flex items-center justify-between border-b border-border/50 pb-4">
+        <div className="flex items-center gap-2">
+          <span className="bg-primary/10 text-primary font-bold text-xs uppercase px-3 py-1 rounded-full">
+            {data.banca || "CESGRANRIO"} {data.ano || "2024 / 2025"}
+          </span>
+          <span className="text-xs text-muted-foreground font-medium">
+            {data.cargo || "Questão Oficial Comentada"}
+          </span>
+        </div>
+        <span className="text-xs font-bold text-emerald-500 uppercase tracking-wider bg-emerald-500/10 px-2.5 py-1 rounded-md">
+          Gabarito Orientado
+        </span>
+      </div>
+
+      <div className="space-y-4">
+        <h4 className="font-bold text-lg text-foreground leading-relaxed">
+          {data.enunciado}
+        </h4>
+
+        <div className="space-y-2">
+          {data.opcoes.map((opt, idx) => {
+            const letter = String.fromCharCode(65 + idx);
+            const isCorrect = data.respostaCorreta.toUpperCase().startsWith(letter) || data.respostaCorreta === letter;
+            return (
+              <div
+                key={idx}
+                className={`p-3.5 rounded-xl border text-sm transition-all font-medium ${
+                  showAnalysis && isCorrect
+                    ? "bg-emerald-500/10 border-emerald-500/50 text-emerald-600 dark:text-emerald-400 font-bold"
+                    : "bg-muted/30 border-border/40 text-foreground"
+                }`}
+              >
+                {opt}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="pt-2">
+        <button
+          onClick={() => setShowAnalysis(!showAnalysis)}
+          className="w-full py-3 px-4 bg-primary/10 text-primary hover:bg-primary/20 font-bold rounded-xl text-sm transition-all flex items-center justify-center gap-2"
+        >
+          {showAnalysis ? "Ocultar Análise do Professor" : "💡 Ver Resolução e Análise da Pegadinha"}
+        </button>
+
+        {showAnalysis && (
+          <div className="mt-4 p-5 bg-muted/40 border border-border/60 rounded-xl space-y-4 animate-in fade-in slide-in-from-top-2">
+            {data.analisePegadinha && (
+              <div className="p-3.5 bg-amber-500/10 border border-amber-500/30 rounded-lg text-amber-600 dark:text-amber-400 text-sm font-medium">
+                <strong>⚠️ Alerta de Pegadinha:</strong> {data.analisePegadinha}
+              </div>
+            )}
+            
+            {data.explicacaoDetalhadas && data.explicacaoDetalhadas.length > 0 && (
+              <div className="space-y-2 text-sm text-foreground/85 leading-relaxed">
+                <p className="font-bold text-xs uppercase text-muted-foreground tracking-wider">Passo a Passo da Resolução:</p>
+                {data.explicacaoDetalhadas.map((step, sIdx) => (
+                  <p key={sIdx}>{step}</p>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+

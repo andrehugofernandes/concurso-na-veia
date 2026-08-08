@@ -144,8 +144,8 @@ export default function SimuladoHome({
     materiasVisiveis = [
       {
         id: "maratona-100",
-        nome: "Maratona 100",
-        descricao: "Desafio supremo de 100 questões",
+        nome: "Maratona Oficial",
+        descricao: "Desafio supremo da prova oficial",
         icone: "🔥",
         cor: "from-red-600 to-orange-600",
         topicos: [{ titulo: "Simulação Real do Edital" }],
@@ -164,8 +164,8 @@ export default function SimuladoHome({
     assunto: string;
   }) => {
     if (tipoPagina === "maratona") {
-      // Maratona: 70 questões (médio) ou 80 (superior), sem modal
-      const qtd = usuario.nivelConcurso === "superior" ? 80 : 70;
+      // Maratona: 60 questões (médio/técnico) ou 70 (superior), sem modal
+      const qtd = usuario.nivelConcurso === "superior" ? 70 : 60;
       iniciarSimulado("maratona", qtd, "Média", "");
     } else if (materiaSelecionada) {
       iniciarSimulado(
@@ -186,14 +186,14 @@ export default function SimuladoHome({
             ? "🔥 Simulados Rápidos"
             : tipoPagina === "especifico"
               ? "🎯 Simulados Específicos"
-              : "🔥 Maratona 100"}
+              : "🔥 Maratona Oficial"}
         </h1>
         <p className="text-muted-foreground text-lg mt-2 font-medium">
           {tipoPagina === "geral"
             ? "Escolha uma área para praticar com questões de IA"
             : tipoPagina === "especifico"
-              ? "Treinamento focado nos conhecimentos técnicos"
-              : "O desafio final para sua aprovação"}
+              ? "Treinamento focado nos conhecimentos técnicos e disciplinas do edital"
+              : "O desafio final no formato exato da prova oficial"}
         </p>
 
         {/* Maratona Info Cards */}
@@ -205,7 +205,7 @@ export default function SimuladoHome({
                 <span className="text-sm font-bold text-muted-foreground uppercase">Estrutura</span>
               </div>
               <p className="text-foreground font-semibold text-sm">
-                {usuario?.nivelConcurso === "superior" ? "80 questões (20 Port + 15 Mat + 15 Ing + 30 Esp)" : "70 questões (20 Port + 20 Mat + 30 Esp)"}
+                {usuario?.nivelConcurso === "superior" ? "70 questões (20 Port + 10 Ing + 40 Esp)" : "60 questões (10 Port + 10 Mat + 40 Esp)"}
               </p>
             </div>
 
@@ -215,7 +215,7 @@ export default function SimuladoHome({
                 <span className="text-sm font-bold text-muted-foreground uppercase">Tempo</span>
               </div>
               <p className="text-foreground font-semibold text-sm">
-                Até 4h30 (~3-4 min por questão)
+                Até 4h (240 minutos)
               </p>
             </div>
 
@@ -252,12 +252,12 @@ export default function SimuladoHome({
               Começar Maratona
             </h2>
             <p className="text-muted-foreground text-sm mb-6">
-              Enfrente o desafio final com {usuario?.nivelConcurso === "superior" ? "80" : "70"} questões no estilo CESGRANRIO. Você tem até 4h30 para completar!
+              Enfrente o desafio final com {usuario?.nivelConcurso === "superior" ? "70" : "60"} questões no estilo CESGRANRIO. Você tem até 4h para completar!
             </p>
 
             {/* Button */}
             <button
-              onClick={() => handleConfirmSimulado({ quantidade: usuario.nivelConcurso === "superior" ? 80 : 70, dificuldade: "Média", assunto: "" })}
+              onClick={() => handleConfirmSimulado({ quantidade: usuario?.nivelConcurso === "superior" ? 70 : 60, dificuldade: "Média", assunto: "" })}
               disabled={gerandoQuestoes}
               className="mt-auto px-6 py-3 bg-gradient-to-r from-primary to-primary/80 text-white font-bold uppercase tracking-wide rounded-xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-1 transition-all active:scale-95 disabled:opacity-50"
             >
@@ -350,9 +350,13 @@ export default function SimuladoHome({
           defaultQuantidade={
             tipoPagina === "geral" 
               ? 5 
-              : (materiaSelecionada.id === "portugues" || materiaSelecionada.id === "matematica" || materiaSelecionada.id === "ingles" 
-                  ? (usuario?.nivelConcurso === "superior" && materiaSelecionada.id !== "portugues" ? 15 : 20) 
-                  : (materiaSelecionada.id.startsWith("especifico-") ? 10 : 30))
+              : (materiaSelecionada.id === "portugues" 
+                  ? (usuario?.nivelConcurso === "superior" ? 20 : 10)
+                  : materiaSelecionada.id === "matematica"
+                  ? 10
+                  : materiaSelecionada.id === "ingles"
+                  ? 10
+                  : (materiaSelecionada.id.startsWith("especifico-") ? 15 : 40))
           }
         />
       )}

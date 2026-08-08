@@ -47,7 +47,7 @@ const bottomNavItems: BottomNavItem[] = [
 export function MobileBottomNav() {
   const pathname = usePathname();
   
-  // Detectar se estamos no ambiente PetroLingo/Aulas
+  // Detectar se estamos no ambiente NaVeiaLingo/Aulas
   const isInsideLesson = (() => {
     const segments = (pathname || "").split("/").filter(Boolean);
     return segments[0] === "aulas" && segments.length >= 3;

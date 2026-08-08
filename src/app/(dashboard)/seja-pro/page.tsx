@@ -30,7 +30,7 @@ const PLANOS_MEDIO = [
       { texto: 'Questões ilimitadas', status: true },
       { texto: 'Simulados completos', status: true },
       { texto: 'Histórico e gráficos de desempenho', status: true },
-      { texto: 'PetroLingo (Inglês e Matérias Comuns)', status: false },
+      { texto: 'NaVeiaLingo (Inglês e Matérias Comuns)', status: false },
       { texto: 'Professor IA 24h', status: false },
       { texto: 'Mentoria semanal', status: false },
     ],
@@ -49,7 +49,7 @@ const PLANOS_MEDIO = [
     destaque: true,
     beneficios: [
       { texto: 'Tudo do plano Aprovado Médio', status: true },
-      { texto: 'PetroLingo (Inglês Gamificado)', status: true },
+      { texto: 'NaVeiaLingo (Inglês Gamificado)', status: true },
       { texto: 'Mentoria semanal ao vivo', status: true },
       { texto: 'Acesso antecipado a novos conteúdos', status: true },
       { texto: 'Suporte VIP', status: true },
@@ -76,7 +76,7 @@ const PLANOS_SUPERIOR = [
       { texto: 'Questões ilimitadas', status: true },
       { texto: 'Simulados completos', status: true },
       { texto: 'Histórico e gráficos de desempenho', status: true },
-      { texto: 'PetroLingo (Inglês e Matérias Comuns)', status: false },
+      { texto: 'NaVeiaLingo (Inglês e Matérias Comuns)', status: false },
       { texto: 'Professor IA 24h', status: false },
       { texto: 'Mentoria semanal', status: false },
     ],
@@ -95,7 +95,7 @@ const PLANOS_SUPERIOR = [
     destaque: true,
     beneficios: [
       { texto: 'Tudo do plano Aprovado Superior', status: true },
-      { texto: 'PetroLingo (Inglês Gamificado)', status: true },
+      { texto: 'NaVeiaLingo (Inglês Gamificado)', status: true },
       { texto: 'Mentoria semanal ao vivo', status: true },
       { texto: 'Acesso antecipado a novos conteúdos', status: true },
       { texto: 'Suporte VIP', status: true },
@@ -112,7 +112,7 @@ const PLANO_TOTAL = {
   preco: 'R$ 149',
   precoCentavos: '99',
   periodo: '/mês',
-  descricao: 'Acesso completo a todos os cargos, matérias, IA, mentoria e o exclusivo PetroLingo. O plano definitivo.',
+  descricao: 'Acesso completo a todos os cargos, matérias, IA, mentoria e o exclusivo NaVeiaLingo. O plano definitivo.',
   icone: '💎',
   cor: 'from-yellow-500 to-amber-600',
   destaque: false,
@@ -122,10 +122,33 @@ const PLANO_TOTAL = {
     { texto: 'Professor IA 24h', status: true },
     { texto: 'Mentoria semanal ao vivo', status: true },
     { texto: 'Suporte VIP prioritário', status: true },
-    { texto: 'PetroLingo: Estudo gamificado exclusivo', status: true },
+    { texto: 'NaVeiaLingo: Estudo gamificado exclusivo', status: true },
     { texto: 'Cronograma personalizado por IA', status: true },
   ],
   cta: 'Assinar Elite Total',
+};
+
+const PLANO_VITALIS = {
+  id: 'vitalis-total' as StripePlan,
+  nome: 'Vitalis Total',
+  nivel: 'Acesso Vitalício',
+  preco: 'R$ 650',
+  precoCentavos: '00',
+  periodo: ' pagamento único',
+  descricao: 'Acesso VITALÍCIO ilimitado a TODOS os concursos presentes e futuros da plataforma. Nunca mais pague nada.',
+  icone: '♾️',
+  cor: 'from-emerald-500 via-teal-500 to-cyan-600',
+  destaque: true,
+  beneficios: [
+    { texto: 'Acesso Vitalício sem mensalidade ou renovação', status: true },
+    { texto: 'Todos os concursos atuais e lançamentos futuros', status: true },
+    { texto: 'Professor IA 24h ilimitado', status: true },
+    { texto: 'Mentoria semanal ao vivo e VIP', status: true },
+    { texto: 'Suporte VIP prioritário 24/7', status: true },
+    { texto: 'NaVeiaLingo & Módulos Gamificados Ilimitados', status: true },
+    { texto: 'Cronograma e simulados inéditos por IA', status: true },
+  ],
+  cta: 'Assinar Vitalis Total Vitalício',
 };
 
 const NOME_PLANO: Record<string, string> = {
@@ -134,6 +157,7 @@ const NOME_PLANO: Record<string, string> = {
   'elite-medio': 'Elite Médio',
   'elite-superior': 'Elite Superior',
   'elite-total': 'Elite Total',
+  'vitalis-total': 'Vitalis Total',
   free: 'Iniciante',
 };
 
@@ -143,6 +167,7 @@ const ICONE_PLANO: Record<string, string> = {
   'elite-medio': '👑',
   'elite-superior': '👑',
   'elite-total': '💎',
+  'vitalis-total': '♾️',
   free: '🌱',
 };
 
@@ -153,6 +178,7 @@ const HIERARQUIA_PLANOS: Record<string, number> = {
   'elite-medio': 3,
   'elite-superior': 4,
   'elite-total': 5,
+  'vitalis-total': 6,
 };
 
 export default function SejaProPage() {
@@ -514,32 +540,40 @@ export default function SejaProPage() {
           <div className="flex-1 h-px bg-border/50" />
         </div>
 
-        {/* Elite Total — sempre visível */}
-        <div className="max-w-3xl">
-          {(() => {
-            const plano = PLANO_TOTAL;
+        {/* Elite Total & Vitalis Total — Máximo Acesso */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          {[PLANO_TOTAL, PLANO_VITALIS].map((plano) => {
             const isCurrent = planAtual === plano.id;
             const isLoading = loadingPlan === plano.id;
             const tierAtual = HIERARQUIA_PLANOS[planAtual] ?? 0;
             const tierPlano = HIERARQUIA_PLANOS[plano.id] ?? 0;
             const isInferior = !isCurrent && tierPlano < tierAtual;
             const isDisabled = isCurrent || isLoading || isInferior;
+            const isVitalis = plano.id === 'vitalis-total';
 
             return (
-              <div className={cn(
-                'relative flex flex-col md:flex-row bg-card backdrop-blur-lg rounded-3xl border transition-all duration-300 shadow-xl overflow-hidden',
-                'border-amber-500/50 shadow-amber-500/10'
-              )}>
+              <div
+                key={plano.id}
+                className={cn(
+                  'relative flex flex-col bg-card backdrop-blur-lg rounded-3xl border transition-all duration-300 shadow-xl overflow-hidden justify-between',
+                  isVitalis
+                    ? 'border-emerald-500/50 shadow-emerald-500/10 ring-2 ring-emerald-500/20'
+                    : 'border-amber-500/50 shadow-amber-500/10'
+                )}
+              >
                 <AnimatedBorder borderRadius="rounded-3xl" />
 
-                <div className="absolute top-0 right-10 bg-amber-500 text-white text-[10px] font-black px-3 py-1 rounded-b-lg uppercase tracking-widest z-20">
-                  Acesso Total
+                <div className={cn(
+                  'absolute top-0 right-10 text-white text-[10px] font-black px-3 py-1 rounded-b-lg uppercase tracking-widest z-20',
+                  isVitalis ? 'bg-emerald-600' : 'bg-amber-500'
+                )}>
+                  {isVitalis ? 'Vitalício Definitivo' : 'Acesso Total Mensal'}
                 </div>
 
-                <div className="p-8 md:w-1/2">
+                <div className="p-8 pb-4">
                   <div className="flex items-center gap-4 mb-2">
                     <div className={cn(
-                      'flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br text-2xl shadow-lg',
+                      'flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br text-2xl shadow-lg text-white',
                       plano.cor
                     )}>
                       {plano.icone}
@@ -548,7 +582,10 @@ export default function SejaProPage() {
                       <h2 className="text-2xl font-black text-foreground tracking-tight uppercase leading-none">
                         {plano.nome}
                       </h2>
-                      <span className="text-xs font-bold text-amber-500 uppercase tracking-widest">
+                      <span className={cn(
+                        'text-xs font-bold uppercase tracking-widest',
+                        isVitalis ? 'text-emerald-500' : 'text-amber-500'
+                      )}>
                         {plano.nivel}
                       </span>
                     </div>
@@ -563,32 +600,42 @@ export default function SejaProPage() {
                   <p className="text-muted-foreground text-sm font-medium">{plano.descricao}</p>
                 </div>
 
-                <div className="flex flex-col md:w-1/2 px-8 md:px-0 md:pr-8 py-8 md:py-8">
-                  <div className="flex-1 space-y-4 mb-6">
-                    {plano.beneficios.map((ben, idx) => (
-                      <div key={idx} className="flex items-start gap-3 text-sm text-foreground font-medium">
-                        <LuCircleCheck className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
-                        <span>{ben.texto}</span>
-                      </div>
-                    ))}
-                  </div>
+                <div className="flex-1 px-8 py-6 space-y-4">
+                  {plano.beneficios.map((ben, idx) => (
+                    <div key={idx} className="flex items-start gap-3 text-sm text-foreground font-medium">
+                      <LuCircleCheck className={cn('w-5 h-5 mt-0.5 flex-shrink-0', isVitalis ? 'text-emerald-500' : 'text-amber-500')} />
+                      <span>{ben.texto}</span>
+                    </div>
+                  ))}
+                </div>
 
+                <div className="p-8 pt-4 space-y-3">
                   <button
                     onClick={() => { if (!isDisabled) handleCheckout(plano.id); }}
                     disabled={isDisabled}
                     className={cn(
                       'flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-black uppercase text-xs tracking-widest transition-all active:scale-[0.98]',
-                      'bg-amber-500 text-white shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:bg-amber-400',
+                      isVitalis
+                        ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/40 hover:bg-emerald-500'
+                        : 'bg-amber-500 text-white shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:bg-amber-400',
                       isDisabled && 'opacity-50 cursor-not-allowed grayscale'
                     )}
                   >
                     {isLoading && <LuLoader className="w-4 h-4 animate-spin" />}
                     {isCurrent ? 'Plano Atual' : isInferior ? 'Indisponível' : plano.cta}
                   </button>
+
+                  <button
+                    onClick={() => { if (!isDisabled) handleCheckoutPix(plano.id); }}
+                    disabled={isDisabled}
+                    className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl font-bold text-xs tracking-wider border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 transition"
+                  >
+                    ⚡ Pagar com PIX Instantâneo
+                  </button>
                 </div>
               </div>
             );
-          })()}
+          })}
         </div>
       </div>
 

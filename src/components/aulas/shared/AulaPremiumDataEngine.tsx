@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
 import { getModuleVariant } from "@/lib/moduleColors";
+import { recordQuizAttempt } from "@/lib/actions/quiz-tracking";
 import {
   AlertBox,
   ContentAccordion,
@@ -14,28 +15,22 @@ import {
   AulaTemplate,
   ModuleConsolidation,
   QuizQuestion,
+  ResolvedQuestionCard,
+  QuestaoComentadaData,
+  ContentSlide,
 } from "../shared";
 
 // ── Tipagem dos Dados da Aula ───────────────────────────────────────────
 
-export interface AccordionItem {
-  titulo: string;
-  conteudo: string | React.ReactNode;
-  icone?: React.ReactNode;
-}
-
 export interface SectionData {
-  tipo: "texto" | "accordion" | "alerta" | "consolidation" | "header";
+  tipo: "texto" | "accordion" | "alerta" | "consolidation" | "header" | "questao_comentada";
   titulo?: string;
   subtitulo?: string;
   descricao?: string;
-  // Para tipo "texto":
   conteudo?: string | React.ReactNode;
-  // Para tipo "alerta":
   tipoAlerta?: "info" | "warning" | "danger" | "success";
-  // Para tipo "accordion":
-  slides?: AccordionItem[];
-  // Para tipo "consolidation":
+  slides?: ContentSlide[];
+  questaoComentada?: QuestaoComentadaData;
   video?: {
     videoId: string;
     title: string;
@@ -50,19 +45,35 @@ export interface SectionData {
       type: string;
       placeholderColor: string;
       imageUrl?: string;
+      format?: string;
     }[];
   };
   sinteseEstrategica?: {
     title: string;
     content: string | React.ReactNode;
   };
+  audio?: {
+    audioUrl: string;
+    titulo: string;
+    artista: string;
+    lyrics?: string;
+  };
+  podcast?: {
+    aulaId: string;
+    aulaTitulo: string;
+    materia: string;
+    materiaId: string;
+    moduloNumero: number;
+    moduloTitulo: string;
+    conteudoResumo?: string;
+  };
 }
 
 export interface QuizQuestionData {
-  id: number;
+  id: string | number;
   question: string;
   options: string[];
-  correct: number; // 0 a 4 (índice da alternativa correta)
+  correct: number | string; // 0 a 4 (índice) ou "A", "B", "C", "D", "E"
   explanation: string;
 }
 
@@ -73,6 +84,8 @@ export interface ModuleData {
   subtitle: string;
   duration: string;
   sections: SectionData[];
+  accordions?: ContentSlide[];
+  questaoComentada?: QuestaoComentadaData;
   quiz: QuizQuestionData[];
 }
 
@@ -91,16 +104,35 @@ export interface AulaPremiumData {
 
 function mapQuizQuestions(questions: QuizQuestionData[]): QuizQuestion[] {
   const labels = ["A", "B", "C", "D", "E"];
-  return questions.map((q) => ({
-    id: q.id.toString(),
-    pergunta: q.question,
-    opcoes: q.options.map((opt, idx) => ({
-      label: labels[idx] ?? String.fromCharCode(65 + idx),
-      valor: opt,
-    })),
-    correta: labels[q.correct] ?? "A",
-    explicacao: q.explanation,
-  }));
+  return questions.map((q) => {
+    let correctLetter = "A";
+    if (typeof q.correct === "number") {
+      correctLetter = labels[q.correct] ?? "A";
+    } else if (typeof q.correct === "string") {
+      correctLetter = q.correct.trim().toUpperCase().charAt(0);
+    }
+
+    return {
+      id: q.id.toString(),
+      pergunta: q.question,
+      opcoes: q.options.map((opt, idx) => ({
+        label: labels[idx] ?? String.fromCharCode(65 + idx),
+        valor: opt,
+      })),
+      correta: correctLetter,
+      explicacao: q.explanation,
+    };
+  });
+}
+
+/**
+ * Seleciona 4 questões rotativas por módulo a partir do pool total
+ */
+function getRandomRotatedQuestions(questions: QuizQuestionData[], count = 4): QuizQuestionData[] {
+  if (!questions || questions.length <= count) return questions || [];
+  // Usa embaralhamento pseudo-aleatório baseado no timestamp atual do client
+  const shuffled = [...questions].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
 }
 
 // ── Componente Engine Principal ─────────────────────────────────────────
@@ -129,10 +161,27 @@ export default function AulaPremiumDataEngine({ data, ...props }: EngineProps) {
     }
   }, [activeTab, data.id]);
 
-  const handleQuizComplete = (moduleId: string, score: number) => {
+  // Gravação de tentativas no histórico de quiz do usuário
+  const handleQuizComplete = async (mod: ModuleData, score: number, questionsAttempted?: QuizQuestion[]) => {
     const newCompleted = new Set(completedModules);
-    newCompleted.add(moduleId);
+    newCompleted.add(mod.id);
     updateCompletedModules(Array.from(newCompleted));
+
+    // Salva cada questão respondida no backend para métricas de erros
+    if (questionsAttempted && questionsAttempted.length > 0) {
+      for (const q of questionsAttempted) {
+        await recordQuizAttempt({
+          aulaId: data.id,
+          moduloNumero: parseInt(mod.id.replace("modulo-", "")) || 1,
+          questaoId: String(q.id),
+          pergunta: typeof q.pergunta === "string" ? q.pergunta : String(q.pergunta || ""),
+          respostaUsuario: "REGISTRADO",
+          respostaCorreta: q.correta,
+          correto: score >= 70,
+          materiaId: data.materiaId,
+        });
+      }
+    }
   };
 
   const moduleDefs = data.modulos.map((m) => ({
@@ -183,6 +232,18 @@ export default function AulaPremiumDataEngine({ data, ...props }: EngineProps) {
             slides={sec.slides || []}
           />
         );
+      case "questao_comentada":
+        return sec.questaoComentada ? (
+          <div key={idx} className="space-y-4">
+            <ModuleSectionHeader
+              index={moduleIndex}
+              variant={variant}
+              title="Resolução Prática Orientada (Questão Comentada)"
+              description="Análise detalhada de pegadinha e resolução passo a passo da banca CESGRANRIO antes do Quiz."
+            />
+            <ResolvedQuestionCard data={sec.questaoComentada} />
+          </div>
+        ) : null;
       case "consolidation":
         return (
           <ModuleConsolidation
@@ -197,16 +258,8 @@ export default function AulaPremiumDataEngine({ data, ...props }: EngineProps) {
               images: sec.resumoVisual.images || []
             } : undefined}
             sinteseEstrategica={sec.sinteseEstrategica}
-          
-            podcast={{
-              aulaId: "premiumdataengine",
-              aulaTitulo: "Premium Data Engine",
-              materia: "shared",
-              materiaId: "shared",
-              moduloNumero: 1,
-              moduloTitulo: "Módulo 1",
-              conteudoResumo: "Resumo em áudio dos pontos essenciais da aula para a prova CESGRANRIO."
-            }}
+            audio={sec.audio}
+            podcast={sec.podcast}
           />
         );
       default:
@@ -228,6 +281,9 @@ export default function AulaPremiumDataEngine({ data, ...props }: EngineProps) {
         const moduleNumber = modIdx + 1;
         const variant = getModuleVariant(moduleNumber);
 
+        // Seleciona 4 questões rotativas a partir do pool total de questões do módulo
+        const rotatedQuizQuestions = mapQuizQuestions(getRandomRotatedQuestions(mod.quiz, 4));
+
         return (
           <TabsContent key={mod.id} value={mod.id} className="mt-0">
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -240,19 +296,45 @@ export default function AulaPremiumDataEngine({ data, ...props }: EngineProps) {
               />
 
               {/* Seções de Conteúdo */}
-              {mod.sections.map((sec, secIdx) =>
+              {mod.sections && mod.sections.map((sec, secIdx) =>
                 renderSection(sec, secIdx, moduleNumber, variant)
               )}
 
-              {/* Quiz do Módulo */}
-              {mod.quiz && mod.quiz.length > 0 && (
+              {/* Acordeons Didáticos do Módulo (caso definidos no módulo) */}
+              {mod.accordions && mod.accordions.length > 0 && (
+                <div className="space-y-4">
+                  <ModuleSectionHeader
+                    index={moduleNumber}
+                    variant={variant}
+                    title="Detalhamento Técnico e Acordeões Didáticos"
+                    description="Aprofundamento conceitual, exemplificação prática e exceções da matéria."
+                  />
+                  <ContentAccordion mode="stacked" slides={mod.accordions} />
+                </div>
+              )}
+
+              {/* Questão Comentada de Fixação Pré-Quiz (caso definida no módulo) */}
+              {mod.questaoComentada && (
+                <div className="space-y-4 pt-4">
+                  <ModuleSectionHeader
+                    index={moduleNumber}
+                    variant={variant}
+                    title="Análise de Questão Comentada CESGRANRIO"
+                    description="Exame prático de pegadinhas e gabarito comentado antes do Quiz de fixação."
+                  />
+                  <ResolvedQuestionCard data={mod.questaoComentada} />
+                </div>
+              )}
+
+              {/* Quiz Interativo Rotativo (Mínimo de 4 Questões Selecionadas do Pool) */}
+              {rotatedQuizQuestions.length > 0 && (
                 <div className="space-y-6 pt-4">
                   <QuizInterativo
-                    titulo={mod.title}
+                    titulo={`Desafio Rotativo de Fixação - Módulo ${moduleNumber}`}
                     numero={moduleNumber}
                     variant={variant}
-                    questoes={mapQuizQuestions(mod.quiz)}
-                    onComplete={(score: number) => handleQuizComplete(mod.id, score)}
+                    questoes={rotatedQuizQuestions}
+                    onComplete={(score: number) => handleQuizComplete(mod, score, rotatedQuizQuestions)}
                   />
                 </div>
               )}

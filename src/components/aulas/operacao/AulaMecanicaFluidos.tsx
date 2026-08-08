@@ -677,14 +677,14 @@ export default function AulaMecanicaFluidos({
                           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
                           Bônus de Especialista
                         </p>
-                        <Link href="/aulas/ingles/petrolingo">
+                        <Link href="/aulas/ingles/naveialingo">
                           <div className="p-6 rounded-[2rem] bg-gradient-to-br from-emerald-500/10 to-blue-500/10 border border-emerald-500/20 hover:border-emerald-500/40 transition-all group flex flex-col md:flex-row items-center gap-6 text-left">
                             <div className="w-20 h-20 rounded-2xl bg-emerald-500 flex items-center justify-center text-white shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-transform">
                               <LuWaves size={40} />
                             </div>
                             <div className="flex-1 space-y-1">
-                              <h4 className="text-xl font-black text-emerald-600 dark:text-emerald-400">Praticar English: PetroLingo</h4>
-                              <p className="text-lg text-muted-foreground">O edital cobra Inglês. Domine Voz Passiva e Conectores fundamentais para ler textos técnicos no PetroLingo!</p>
+                              <h4 className="text-xl font-black text-emerald-600 dark:text-emerald-400">Praticar English: NaVeiaLingo</h4>
+                              <p className="text-lg text-muted-foreground">O edital cobra Inglês. Domine Voz Passiva e Conectores fundamentais para ler textos técnicos no NaVeiaLingo!</p>
                             </div>
                             <div className="px-6 py-3 rounded-xl bg-emerald-500 text-white font-bold group-hover:bg-emerald-600 transition-colors">
                               IR PARA O PETROLINGO

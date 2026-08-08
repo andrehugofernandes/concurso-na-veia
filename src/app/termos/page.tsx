@@ -1,119 +1,69 @@
-import React from 'react';
-import Link from 'next/link';
-import HomeHeader from '@/components/home/HomeHeader';
-import HomeFooter from '@/components/home/HomeFooter';
+"use client";
 
-export const metadata = {
-  title: 'Termos de Uso - Concurso Na Veia',
-  description: 'Termos e Condições de Uso da plataforma Concurso Na Veia.',
-};
+import Link from "next/link";
+import { LuArrowLeft, LuFileText } from "react-icons/lu";
+import StickyHeader from "@/components/home/StickyHeader";
+import HomeFooter from "@/components/home/HomeFooter";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 
-export default function TermosDeUsoPage() {
+export default function TermosPage() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col">
-      <HomeHeader />
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-sans selection:bg-primary selection:text-white">
+      <StickyHeader alwaysVisible={true} />
 
-      <main className="flex-1 container mx-auto px-6 py-32 max-w-4xl">
-        <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-12 shadow-sm border border-slate-200 dark:border-slate-800">
-          <h1 className="text-3xl md:text-4xl font-black mb-8 text-slate-900 dark:text-white">
-            Termos de Uso
-          </h1>
-          
-          <div className="prose prose-slate dark:prose-invert max-w-none space-y-6 text-slate-600 dark:text-slate-300">
-            <p className="text-sm text-slate-500">
-              Última atualização: {new Date().toLocaleDateString('pt-BR')}
+      <main className="flex-1 container mx-auto px-4 sm:px-6 pt-24 md:pt-28 pb-20 max-w-4xl">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 md:p-14 shadow-sm border border-slate-200 dark:border-slate-800 mb-8 relative overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.96)_0%,rgba(255,255,255,0.88)_50%,rgba(255,255,255,0.25)_100%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(15,23,42,0.96)_0%,rgba(15,23,42,0.88)_50%,rgba(15,23,42,0.25)_100%)]" />
+          </div>
+
+          <div className="relative z-10 flex flex-col items-center text-center">
+            <div className="mb-6 mt-2">
+              <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-4 border border-primary/20">
+                <LuFileText className="w-8 h-8" />
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+              <Link 
+                href="/register" 
+                className="inline-flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors bg-white/90 dark:bg-slate-800/90 backdrop-blur-md px-4 py-2 rounded-full border border-slate-200 dark:border-slate-700/60 shadow-xs"
+              >
+                <LuArrowLeft className="w-3.5 h-3.5" />
+                Voltar
+              </Link>
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.12] mb-5 text-balance max-w-2xl mx-auto">
+              Termos de <span className="text-primary">Uso</span>
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8 max-w-2xl mx-auto text-center">
+              Ao utilizar nossa plataforma, você concorda com as condições e regras estabelecidas neste documento.
             </p>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">1. Aceitação dos Termos</h2>
-              <p>
-                Ao acessar e utilizar a plataforma <strong>Concurso Na Veia</strong>, você concorda expressamente com estes Termos de Uso. 
-                Se você não concordar com qualquer parte destes termos, não deverá utilizar nossos serviços. 
-                Estes termos formam um contrato legalmente vinculante entre você (o "Usuário") e o Concurso Na Veia.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">2. Uso Pessoal e Intransferível (Proibição de Rateio)</h2>
-              <p>
-                A sua conta no Concurso Na Veia é de uso estritamente <strong>pessoal, individual e intransferível</strong>. 
-                É terminantemente proibido o compartilhamento de dados de acesso (login e senha), revenda de contas, ou a prática conhecida como "rateio".
-              </p>
-              <ul className="list-disc pl-5 mt-2 space-y-2">
-                <li>O acesso simultâneo por múltiplos dispositivos é monitorado pelo nosso sistema.</li>
-                <li>A detecção de compartilhamento de conta resultará no <strong>bloqueio imediato e banimento definitivo</strong> do Usuário, sem direito a reembolso ou aviso prévio.</li>
-                <li>A plataforma reserva-se o direito de tomar as medidas judiciais cabíveis em casos de pirataria ou distribuição ilegal de nosso conteúdo.</li>
-              </ul>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">3. Assinaturas, Compras e Cancelamentos</h2>
-              <p>
-                Nossos serviços são oferecidos mediante a aquisição de pacotes ou assinaturas específicas.
-              </p>
-              <ul className="list-disc pl-5 mt-2 space-y-2">
-                <li><strong>Direito de Arrependimento:</strong> Em conformidade com o Art. 49 do Código de Defesa do Consumidor, o Usuário tem o prazo de 7 (sete) dias corridos, contados a partir da data de liberação do acesso, para solicitar o cancelamento e a restituição integral do valor pago.</li>
-                <li>Para pagamentos realizados por cartão de crédito, o estorno será processado junto à operadora do cartão. Para pagamentos via PIX ou Boleto, a restituição será feita em conta bancária de mesma titularidade.</li>
-                <li>Após o prazo de 7 dias, não haverá reembolso proporcional em caso de cancelamento.</li>
-              </ul>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">4. Inteligência Artificial e Simulados (Isenção de Responsabilidade)</h2>
-              <p>
-                O Concurso Na Veia utiliza tecnologias de Inteligência Artificial para gerar simulados e análises preditivas com foco em bancas específicas (CESGRANRIO, Cebraspe, FGV, etc).
-              </p>
-              <ul className="list-disc pl-5 mt-2 space-y-2">
-                <li>Nossas ferramentas analisam padrões passados para criar <strong>probabilidades</strong>, e não certezas.</li>
-                <li>Nós <strong>não garantimos</strong> que as questões geradas em nossos simulados cairão idênticas na prova real.</li>
-                <li>O Concurso Na Veia não possui nenhum vínculo com as bancas examinadoras e não possui acesso a exames não publicados.</li>
-                <li>O Usuário reconhece que a aprovação no concurso público depende exclusivamente do seu próprio esforço, estudo e dedicação. A plataforma é uma ferramenta de auxílio, não garantindo a aprovação.</li>
-              </ul>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">5. Propriedade Intelectual</h2>
-              <p>
-                Todos os direitos relativos à plataforma e suas funcionalidades (código-fonte, design, logotipos, algoritmos, modelos de Inteligência Artificial e banco de questões) são de propriedade exclusiva do Concurso Na Veia ou licenciados a nós.
-              </p>
-              <p>
-                É proibida a reprodução, cópia, extração (scraping) ou engenharia reversa de qualquer parte da plataforma, sob pena de responsabilização civil e criminal.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">6. Comunidade e Conduta</h2>
-              <p>
-                Onde a plataforma permitir interação entre os alunos (fóruns, ranking, comentários), o Usuário se compromete a manter o respeito. 
-                Não serão tolerados:
-              </p>
-              <ul className="list-disc pl-5 mt-2 space-y-2">
-                <li>Discurso de ódio, ofensas, assédio ou discriminação.</li>
-                <li>Spam, correntes, ou propaganda de terceiros/concorrentes.</li>
-                <li>O descumprimento pode acarretar na suspensão ou banimento da conta.</li>
-              </ul>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">7. Atualizações dos Termos</h2>
-              <p>
-                O Concurso Na Veia poderá alterar estes Termos de Uso a qualquer momento. A continuação do uso da plataforma após as alterações será considerada como aceitação tácita dos novos termos.
-              </p>
-            </section>
           </div>
+        </div>
+
+        <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-10 shadow-sm border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 space-y-6 text-sm leading-relaxed">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white">1. Aceitação dos Termos</h2>
+          <p>
+            Ao acessar e usar o Concurso na Veia, você aceita e concorda em estar vinculado pelos termos e disposições deste acordo.
+          </p>
           
-          <div className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800 flex justify-center">
-            <Link 
-              href="/"
-              className="px-6 py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-full font-medium transition-colors"
-            >
-              Voltar para o início
-            </Link>
-          </div>
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8">2. Uso da Plataforma</h2>
+          <p>
+            Você concorda em usar nossa plataforma apenas para fins educacionais lícitos e de forma que não infrinja os direitos de, ou restrinja ou iniba o uso e o aproveitamento da plataforma por qualquer terceiro.
+          </p>
+
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8">3. Propriedade Intelectual</h2>
+          <p>
+            Todo o conteúdo presente no Concurso na Veia, incluindo textos, gráficos, logos, ícones, imagens, clipes de áudio e vídeo, é propriedade exclusiva do Concurso na Veia ou de seus fornecedores de conteúdo.
+          </p>
         </div>
       </main>
 
       <HomeFooter />
+      <ScrollToTop />
     </div>
   );
 }

@@ -694,8 +694,8 @@ export default function AulaTermodinamica({
                                   🇬🇧
                                 </span>
                                 <div className="flex-1">
-                                 <h4 className="text-lg font-black text-amber-600 dark:text-amber-400 leading-tight">Practice English: PetroLingo</h4>
-                                 <p className="text-lg text-muted-foreground">Domine 'Passive Voice', 'Connectors' e referências no PetroLingo.</p>
+                                 <h4 className="text-lg font-black text-amber-600 dark:text-amber-400 leading-tight">Practice English: NaVeiaLingo</h4>
+                                 <p className="text-lg text-muted-foreground">Domine 'Passive Voice', 'Connectors' e referências no NaVeiaLingo.</p>
                                </div>
                            </li>
                         </ol>

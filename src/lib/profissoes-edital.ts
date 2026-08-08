@@ -621,7 +621,77 @@ export const PROFISSOES: Profissao[] = [
         ],
     },
 
+    // ===== BANCO DO BRASIL =====
+    {
+        id: 'bb-escriturario',
+        nome: 'Agente Comercial (Escriturário)',
+        nivel: 'medio',
+        area: 'Bancária',
+        concurso: 'banco-do-brasil',
+        blocos: [
+            {
+                nome: 'Bloco I - Conhecimentos Bancários',
+                topicos: [
+                    'Sistema Financeiro Nacional (SFN)',
+                    'Mercado financeiro e seus desdobramentos',
+                    'Produtos e serviços bancários',
+                    'ESG, sustentabilidade e ética bancária'
+                ],
+            },
+            {
+                nome: 'Bloco II - Atendimento e Vendas',
+                topicos: [
+                    'Técnicas de vendas e negociação bancária',
+                    'Noções de marketing relacional',
+                    'Gestão da experiência do cliente',
+                    'Código de Defesa do Consumidor bancário'
+                ],
+            },
+            {
+                nome: 'Bloco III - Conhecimentos Complementares',
+                topicos: [
+                    'Língua Inglesa aplicada a finanças',
+                    'Matemática Financeira e Raciocínio Lógico',
+                    'Atualidades do mercado financeiro'
+                ],
+            },
+        ],
+    },
+    {
+        id: 'agente-tecnologia',
+        nome: 'Agente de Tecnologia (TI)',
+        nivel: 'medio',
+        area: 'Tecnologia da Informação',
+        concurso: 'banco-do-brasil',
+        blocos: [
+            {
+                nome: 'Bloco I - Engenharia de Software e Banco de Dados',
+                topicos: [
+                    'Modelagem de dados e SQL',
+                    'Arquitetura de microsserviços e APIs',
+                    'DevOps e CI/CD'
+                ],
+            },
+            {
+                nome: 'Bloco II - Programação e Algoritmos',
+                topicos: [
+                    'Lógica de programação e algoritmos',
+                    'Linguagem Python e Java',
+                    'Estrutura de dados'
+                ],
+            },
+            {
+                nome: 'Bloco III - Ciência de Dados e Segurança da Informação',
+                topicos: [
+                    'Noções de Machine Learning e Big Data',
+                    'Segurança da informação e LGPD',
+                    'Criptografia e autenticação'
+                ],
+            },
+        ],
+    },
 ];
+
 
 // Função para obter profissão por ID ou nome
 export function getProfissaoById(idOrName: string): Profissao | undefined {

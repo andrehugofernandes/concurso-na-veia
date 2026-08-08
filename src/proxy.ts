@@ -104,14 +104,20 @@ export async function proxy(request: NextRequest) {
     // Validação de acessos para a área de Admin
     if (user && isAdminRoute) {
         // Obter o perfil do usuário para verificar a role
-        const { data: profile } = await supabase
+        const { data: profile, error: profileError } = await supabase
             .from("profiles")
-            .select("role, tenant_id")
+            .select("role, concurso_id")
             .eq("id", user.id)
             .single();
 
+        if (profileError) {
+            console.error(`[Proxy Admin] Erro ao buscar perfil do usuário ${user.id}:`, profileError);
+        }
+
+        const userRole = (profile?.role || "").toLowerCase();
+
         // Apenas 'sysadmin' e 'admin' podem acessar o painel de admin
-        if (!profile || (profile.role !== "sysadmin" && profile.role !== "admin")) {
+        if (!profile || (userRole !== "sysadmin" && userRole !== "admin")) {
             console.warn(`[Proxy Admin] Acesso negado ao usuário ${user.id} com role ${profile?.role || "null"}`);
             const url = request.nextUrl.clone();
             url.pathname = "/dashboard";
@@ -132,15 +138,18 @@ export async function proxy(request: NextRequest) {
 
             // Se for um curso GovTech privado
             if (curso && !curso.is_public && curso.tenant_id) {
-                // Obter o tenant_id do perfil do usuário logado
+                // Obter o concurso_id do perfil do usuário logado
                 const { data: profile } = await supabase
                     .from("profiles")
-                    .select("tenant_id, role")
+                    .select("concurso_id, role")
                     .eq("id", user.id)
                     .single();
 
+                const userRole = (profile?.role || "").toLowerCase();
+                const userConcursoId = profile?.concurso_id;
+
                 // Se o usuário não for sysadmin e o tenant_id não bater, barrar
-                if (profile?.role !== "sysadmin" && (!profile || profile.tenant_id !== curso.tenant_id)) {
+                if (userRole !== "sysadmin" && (!profile || userConcursoId !== curso.tenant_id)) {
                     console.warn(`[Proxy GovTech] Acesso negado ao usuário ${user.id} para o curso GovTech ${slug}`);
                     const url = request.nextUrl.clone();
                     url.pathname = "/dashboard";
@@ -162,7 +171,7 @@ export async function proxy(request: NextRequest) {
         default-src 'self';
         script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com https://www.gstatic.com https://js.stripe.com https://checkout.stripe.com;
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-        img-src 'self' blob: data: https://firebasestorage.googleapis.com https://*.supabase.co https://lh3.googleusercontent.com https://*.stripe.com;
+        img-src 'self' blob: data: https://images.unsplash.com https://*.unsplash.com https://pollinations.ai https://*.pollinations.ai https://image.pollinations.ai https://firebasestorage.googleapis.com https://*.supabase.co https://lh3.googleusercontent.com https://*.stripe.com;
         media-src 'self' blob: data: https://firebasestorage.googleapis.com https://*.supabase.co;
         font-src 'self' https://fonts.gstatic.com;
         connect-src 'self' https://*.supabase.co wss://*.supabase.co https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firebasestorage.googleapis.com https://api.stripe.com https://checkout.stripe.com;

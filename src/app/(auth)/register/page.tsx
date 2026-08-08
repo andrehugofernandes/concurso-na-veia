@@ -39,6 +39,7 @@ const CARGOS = {
     { id: "correios-agente", nome: "Correios - Agente de Correios" },
     { id: "ibge-recenseador", nome: "IBGE - Recenseador/Agente" },
     { id: "inss-tecnico", nome: "INSS - Técnico do Seguro Social" },
+    { id: "ata-mf", nome: "ATA-MF - Assistente Técnico Administrativo" },
   ],
   tecnico: [
     ...PETROBRAS_CARGOS_TECNICO,
@@ -137,10 +138,63 @@ function CheckIcon() {
   );
 }
 
+// Normaliza o slug do concurso para o ID interno (ex: 'banco-do-brasil' → 'bb')
+function normalizeConcursoSlug(slug: string): string {
+  const map: Record<string, string> = {
+    "banco-do-brasil": "bb",
+    "banco-brasil": "bb",
+    "caixa-economica-federal": "caixa",
+    "caixa-economica": "caixa",
+    "correios-ecf": "correios",
+    "inss-prev": "inss",
+  };
+  return map[slug] || slug;
+}
+
+function normalizeNivel(nivel: string): string {
+  if (!nivel) return "";
+  const n = nivel.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  if (n.includes("medio")) return "medio";
+  if (n.includes("tecnico")) return "tecnico";
+  if (n.includes("superior")) return "superior";
+  return n;
+}
+
+// Resolve nivel+cargo a partir do concurso normalizado (fallback quando não vem na URL)
+function resolveNivelCargoByConcurso(concurso: string): { nivel: string; cargo: string } | null {
+  switch (concurso) {
+    case "petrobras": return { nivel: "tecnico", cargo: "operacao" };
+    case "caixa":     return { nivel: "medio",   cargo: "caixa-tecnico" };
+    case "bb":        return { nivel: "medio",   cargo: "bb-escriturario" };
+    case "correios":  return { nivel: "medio",   cargo: "correios-agente" };
+    case "ibge":      return { nivel: "medio",   cargo: "ibge-recenseador" };
+    case "inss":      return { nivel: "medio",   cargo: "inss-tecnico" };
+    case "ata-mf":    return { nivel: "medio",   cargo: "ata-mf" };
+    default:          return null;
+  }
+}
+
 function RegisterForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const planFromUrl = searchParams.get("plan") || "free";
+
+  const rawConcurso  = searchParams.get("concurso") || "";
+  const concursoFromUrl = normalizeConcursoSlug(rawConcurso);
+  const cargoFromUrl    = searchParams.get("cargo")  || "";
+  const nivelFromUrl    = normalizeNivel(searchParams.get("nivel") || "");
+
+  // Resolve nivel/cargo de forma síncrona (lazy init) para evitar render vazio no Step 3
+  const resolvedInit = (() => {
+    if (!concursoFromUrl) return { nivel: "", cargo: "", concurso: "" };
+    let nivel = nivelFromUrl;
+    let cargo = cargoFromUrl;
+    if (!nivel || !cargo) {
+      const resolved = resolveNivelCargoByConcurso(concursoFromUrl);
+      if (resolved) { nivel = resolved.nivel; cargo = resolved.cargo; }
+    }
+    return { nivel: normalizeNivel(nivel), cargo, concurso: concursoFromUrl };
+  })();
 
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -149,10 +203,10 @@ function RegisterForm() {
     email: "",
     password: "",
     confirmPassword: "",
-    nivel: "",
-    cargo: "",
+    nivel: resolvedInit.nivel,
+    cargo: resolvedInit.cargo,
     plan: planFromUrl,
-    concurso: "",
+    concurso: resolvedInit.concurso,
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -166,54 +220,10 @@ function RegisterForm() {
   const [efiPixData, setEfiPixData] = useState<any>(null);
   const [isPixModalOpen, setIsPixModalOpen] = useState(false);
 
-  const concursoFromUrl = searchParams.get("concurso") || "";
-  const cargoFromUrl = searchParams.get("cargo") || "";
-  const nivelFromUrl = searchParams.get("nivel") || "";
+  // Sinaliza que veio da vitrine com cargo pré-selecionado → pular Passo 2
+  const cameFromUrlWithCargo = !!(concursoFromUrl && (cargoFromUrl || resolvedInit.cargo));
+  const [, setCameFromUrlWithCargo] = useState(cameFromUrlWithCargo);
 
-  // Guardar se foi carregado da URL para pular o passo de cargo na navegação
-  const [cameFromUrlWithCargo, setCameFromUrlWithCargo] = useState(false);
-
-  useEffect(() => {
-    if (concursoFromUrl) {
-      let nivel = nivelFromUrl;
-      let cargo = cargoFromUrl;
-
-      if (!nivel || !cargo) {
-        if (concursoFromUrl === "petrobras") {
-          nivel = "tecnico";
-          cargo = "operacao";
-        } else if (concursoFromUrl === "caixa") {
-          nivel = "medio";
-          cargo = "caixa-tecnico";
-        } else if (concursoFromUrl === "bb") {
-          nivel = "medio";
-          cargo = "bb-escriturario";
-        } else if (concursoFromUrl === "correios") {
-          nivel = "medio";
-          cargo = "correios-agente";
-        } else if (concursoFromUrl === "ibge") {
-          nivel = "medio";
-          cargo = "ibge-recenseador";
-        } else if (concursoFromUrl === "inss") {
-          nivel = "medio";
-          cargo = "inss-tecnico";
-        }
-      }
-
-      if (nivel && cargo) {
-        setFormData((prev) => ({
-          ...prev,
-          nivel,
-          cargo,
-          concurso: concursoFromUrl,
-        }));
-        // Se vieram parâmetros explícitos de cargo na URL, marcaremos para pular o passo 2
-        if (cargoFromUrl) {
-          setCameFromUrlWithCargo(true);
-        }
-      }
-    }
-  }, [concursoFromUrl, cargoFromUrl, nivelFromUrl]);
 
   const handleCargoSelect = (cargoId: string) => {
     let concurso = "petrobras";
@@ -231,19 +241,22 @@ function RegisterForm() {
   };
 
   const getPlanosByNivel = () => {
-    if (formData.nivel === "medio" || formData.nivel === "tecnico") {
+    const nivelNorm = normalizeNivel(formData.nivel);
+    if (nivelNorm === "medio" || nivelNorm === "tecnico") {
       return [
         { id: "free", nome: "Iniciante", preco: "Grátis", descricao: "5 questões/dia, histórico de 3 dias", tag: null },
         { id: "aprovado-medio", nome: "Aprovado Médio", preco: "R$ 49,99", descricao: "Questões ilimitadas, simulados, explicações IA", tag: null },
-        { id: "elite-medio", nome: "Elite Médio", preco: "R$ 79,99", descricao: "Tudo + PetroLingo (Inglês), Mentoria, Cronograma", tag: "POPULAR" },
+        { id: "elite-medio", nome: "Elite Médio", preco: "R$ 79,99", descricao: "Tudo + NaVeiaLingo (Inglês), Mentoria, Cronograma", tag: "POPULAR" },
         { id: "elite-total", nome: "Elite Total", preco: "R$ 149,99", descricao: "Acesso a TODOS os cargos, Médio + Superior", tag: "COMPLETO" },
+        { id: "vitalis-total", nome: "Vitalis Total", preco: "R$ 650,00", descricao: "Acesso VITALÍCIO a TODOS os concursos presentes e futuros da plataforma", tag: "VITALÍCIO VIP" },
       ];
-    } else if (formData.nivel === "superior") {
+    } else if (nivelNorm === "superior") {
       return [
         { id: "free", nome: "Iniciante", preco: "Grátis", descricao: "5 questões/dia, histórico de 3 dias", tag: null },
         { id: "aprovado-superior", nome: "Aprovado Superior", preco: "R$ 69,99", descricao: "Questões ilimitadas, simulados, explicações IA", tag: null },
-        { id: "elite-superior", nome: "Elite Superior", preco: "R$ 119,99", descricao: "Tudo + PetroLingo (Inglês), Mentoria, Cronograma", tag: "RECOMENDADO" },
+        { id: "elite-superior", nome: "Elite Superior", preco: "R$ 119,99", descricao: "Tudo + NaVeiaLingo (Inglês), Mentoria, Cronograma", tag: "RECOMENDADO" },
         { id: "elite-total", nome: "Elite Total", preco: "R$ 149,99", descricao: "Acesso a TODOS os cargos, Médio + Superior", tag: "COMPLETO" },
+        { id: "vitalis-total", nome: "Vitalis Total", preco: "R$ 650,00", descricao: "Acesso VITALÍCIO a TODOS os concursos presentes e futuros da plataforma", tag: "VITALÍCIO VIP" },
       ];
     }
     return [];
@@ -562,40 +575,63 @@ function RegisterForm() {
                </div>
             ) : (
               <>
-                <div className="text-center mb-4">
-                  <p className="text-gray-500 text-sm">
-                    {NIVEIS.find((n) => n.id === formData.nivel)?.icon} {cargoNome}
-                  </p>
+                {/* Contexto do cargo selecionado */}
+                <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-xl border border-border mb-2">
+                  <span className="text-2xl">{NIVEIS.find((n) => n.id === formData.nivel)?.icon || "📋"}</span>
+                  <div>
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Cargo selecionado</p>
+                    <p className="font-bold text-foreground text-sm">{cargoNome}</p>
+                  </div>
                 </div>
+                <p className="text-sm font-semibold text-foreground/80 mb-1">Escolha seu plano:</p>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {getPlanosByNivel().map((plano) => (
-                    <button
-                      key={plano.id}
-                      type="button"
-                      onClick={() => {
-                        setFormData({ ...formData, plan: plano.id });
-                        handleResetGateway();
-                      }}
-                      className={`w-full p-4 rounded-xl border-2 text-left transition-all relative flex flex-col justify-between ${
-                        formData.plan === plano.id
-                          ? "border-primary bg-primary/10"
-                          : "border-border hover:border-border/80 bg-background/30"
-                      }`}
-                    >
-                      {plano.tag && (
-                        <span className="absolute -top-2.5 right-4 bg-yellow-400 text-black text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                          {plano.tag}
-                        </span>
-                      )}
-                      <div>
-                        <p className="font-bold text-foreground dark:text-white">{plano.nome}</p>
-                        <p className="text-xs text-muted-foreground mt-1">{plano.descricao}</p>
-                      </div>
-                      <div className="text-right mt-3">
-                        <p className="font-black text-yellow-500 dark:text-yellow-400 text-lg">{plano.preco}</p>
-                      </div>
-                    </button>
-                  ))}
+                  {getPlanosByNivel().map((plano) => {
+                    const isVitalis = plano.id === "vitalis-total";
+                    const isSelected = formData.plan === plano.id;
+                    return (
+                      <button
+                        key={plano.id}
+                        type="button"
+                        onClick={() => {
+                          setFormData({ ...formData, plan: plano.id });
+                          handleResetGateway();
+                        }}
+                        className={`w-full p-4 rounded-xl border-2 text-left transition-all relative flex flex-col justify-between ${
+                          isVitalis ? "col-span-1 md:col-span-2" : ""
+                        } ${
+                          isSelected
+                            ? isVitalis
+                              ? "border-amber-500 bg-amber-500/10 ring-2 ring-amber-500/20"
+                              : "border-primary bg-primary/10"
+                            : isVitalis
+                              ? "border-border hover:border-amber-500/50 bg-gradient-to-r from-amber-500/5 to-transparent"
+                              : "border-border hover:border-border/80 bg-background/30"
+                        }`}
+                      >
+                        {plano.tag && (
+                          <span
+                            className={`absolute -top-2.5 right-4 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider ${
+                              isVitalis
+                                ? "bg-gradient-to-r from-amber-400 to-yellow-500 text-black shadow-sm"
+                                : "bg-yellow-400 text-black"
+                            }`}
+                          >
+                            {plano.tag}
+                          </span>
+                        )}
+                        <div>
+                          <p className={`font-bold ${isVitalis ? "text-amber-600 dark:text-amber-400 text-base" : "text-foreground dark:text-white"}`}>
+                            {plano.nome}
+                          </p>
+                          <p className="text-xs text-muted-foreground mt-1">{plano.descricao}</p>
+                        </div>
+                        <div className="text-right mt-3">
+                          <p className={`font-black text-lg ${isVitalis ? "text-amber-600 dark:text-amber-400" : "text-yellow-500 dark:text-yellow-400"}`}>{plano.preco}</p>
+                        </div>
+                      </button>
+                    );
+                  })}
                 </div>
 
                 {formData.plan !== "free" && (

@@ -16,6 +16,9 @@ import { PROFISSOES, getProfissaoById } from "@/lib/profissoes-edital";
 import { getCurrentUserAction } from "@/lib/actions/auth";
 import { notFound } from "next/navigation";
 import { useAulaProgress } from "@/hooks/useAulaProgress";
+import AulaRedesComunicacao from "@/components/aulas/especificas/AulaRedesComunicacao";
+import AulaLogicaDeProgramacao from "@/components/aulas/especificas/AulaLogicaDeProgramacao";
+import AulaEngenhariaDeRequisitos from "@/components/aulas/especificas/AulaEngenhariaDeRequisitos";
 import { AulaProps } from "@/components/aulas/shared";
 import { useSetPageTitle } from "@/contexts/UIContext";
 // HeaderStateProvider is already provided by AdminDashboardLayout — do NOT re-wrap here
@@ -330,8 +333,8 @@ const AulaTextComprehension = dynamic<AulaProps>(
   },
 );
 
-const PetroLingoMain = dynamic(
-  () => import("@/components/aulas/ingles/PetroLingoMain"),
+const NaVeiaLingoMain = dynamic(
+  () => import("@/components/aulas/ingles/NaVeiaLingoMain"),
   {
     ssr: false,
     loading: () => <div className="animate-pulse h-screen bg-background" />,
@@ -977,7 +980,12 @@ export default function TopicoPage({ params }: PageProps) {
 
         // Validar restrição de concurso na matéria resolvida
         if (resolvedMateria && resolvedMateria.concursos) {
-          if (!resolvedMateria.concursos.includes(userConcursoSlug)) {
+          const normUserConcurso = (userConcursoSlug === 'bb' || userConcursoSlug === 'banco_do_brasil') ? 'banco-do-brasil' : userConcursoSlug.toLowerCase();
+          const hasMatchingConcurso = resolvedMateria.concursos.some(c => {
+            const normC = (c === 'bb' || c === 'banco_do_brasil') ? 'banco-do-brasil' : c.toLowerCase();
+            return normC === normUserConcurso;
+          });
+          if (!hasMatchingConcurso) {
             resolvedMateria = undefined;
             resolvedTopico = undefined;
           }
@@ -1033,6 +1041,43 @@ export default function TopicoPage({ params }: PageProps) {
             setDynamicLessonContent(dbLesson.conteudo_json as any);
           }
         }
+
+        // Fallback Resiliente: se ainda não resolveu, criar tópico/matéria dinâmicos legíveis para evitar 404
+        if (!resolvedTopico) {
+          const formattedMateriaName = materiaId
+            .replace('especifica-bloco-i-', '')
+            .replace('especifica-bloco-ii-', '')
+            .replace('especifica-bloco-iii-', '')
+            .replace('especifica-', '')
+            .split('-')
+            .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+            .join(' ');
+          const formattedTopicoName = topicoId
+            .split('-')
+            .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+            .join(' ');
+
+          resolvedTopico = {
+            id: topicoId,
+            titulo: formattedTopicoName || 'Tópico da Aula',
+            descricao: `Conteúdo focado no edital: ${formattedTopicoName}`,
+            duracao: '20 min',
+            ordem: 1,
+          };
+
+          if (!resolvedMateria) {
+            resolvedMateria = {
+              id: materiaId,
+              nome: formattedMateriaName || 'Conhecimentos Específicos',
+              descricao: `Matéria técnica do concurso: ${formattedMateriaName}`,
+              icone: '📚',
+              cor: 'from-amber-500 to-orange-600',
+              requiredPlan: 'Bronze',
+              topicos: [resolvedTopico],
+            };
+          }
+        }
+
 
         // AUTH GUARD: Verificar se o usuário tem acesso a esta matéria (ignorado para aulas dinâmicas)
         if (resolvedMateria && !isEliteTotal && !dynamicLessonContent) {
@@ -1723,8 +1768,8 @@ export default function TopicoPage({ params }: PageProps) {
                 prevTopico={prevTopico}
                 nextTopico={nextTopico}
               />
-            ) : materiaId === "ingles" && topicoId === "petrolingo" ? (
-              <PetroLingoMain />
+            ) : materiaId === "ingles" && topicoId === "naveialingo" ? (
+              <NaVeiaLingoMain />
             ) : materiaId === "especifica-bloco-i-fundamentos" &&
               topicoId === "termodinamica" ? (
               <AulaTermodinamica
@@ -2211,6 +2256,40 @@ export default function TopicoPage({ params }: PageProps) {
             ) : materiaId === "especifica-bloco-i-administracao-suprimento" &&
               topicoId === "gestao-estoques-almoxarifados-suprimento" ? (
               <AulaGestaoAlmoxarifado
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-desenvolvimento" && topicoId === "logica-de-programacao" ? (
+              <AulaLogicaDeProgramacao
+                onComplete={handleCompleteAula}
+                isCompleted={isCompleted}
+                loading={loading}
+                xpGanho={xpGanho}
+                currentProgress={progress}
+                onUpdateProgress={updateProgress}
+                titulo={topico.titulo}
+                descricao={topico.descricao}
+                duracao={topico.duracao}
+                materiaNome={materia.nome}
+                materiaCor={materia.cor}
+                materiaId={materiaId}
+                prevTopico={prevTopico}
+                nextTopico={nextTopico}
+              />
+            ) : materiaId === "especifica-bloco-i-desenvolvimento" && topicoId === "engenharia-de-requisitos" ? (
+              <AulaEngenhariaDeRequisitos
                 onComplete={handleCompleteAula}
                 isCompleted={isCompleted}
                 loading={loading}

@@ -981,7 +981,7 @@ export default function DashboardPage() {
 
                       {/* PRO: Maratona (Hero Style) */}
                       <button
-                        onClick={() => setConfigModal({ open: true, tipo: "maratona", nome: "Maratona Oficial CESGRANRIO", cor: "yellow", qtd: 70 })}
+                        onClick={() => setConfigModal({ open: true, tipo: "maratona", nome: "Maratona 70/100", cor: "yellow", qtd: 70 })}
                         className="group relative bg-card border border-border/70 rounded-3xl p-8 shadow-sm hover:border-amber-500/50 hover:shadow-lg transition-all flex flex-col justify-center space-y-6 text-left overflow-hidden min-h-[280px]"
                       >
                         <div className="absolute inset-y-0 right-0 w-2/3 z-0 pointer-events-none">
@@ -1148,7 +1148,7 @@ export default function DashboardPage() {
 
                   const queryParams = new URLSearchParams({
                     tipo: configModal.tipo,
-                    qtd: configModal.qtd?.toString() || "10",
+                    qtd: configModal.qtd?.toString() || "5",
                     dificuldade: selection.dificuldade,
                     assunto: selection.assunto,
                   });

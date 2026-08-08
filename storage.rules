@@ -1,9 +1,6 @@
 rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
-    match /wp2next/{allPaths=**} {
-      allow read, write: if true;
-    }
     match /concurso-na-veia/{allPaths=**} {
       allow read, write: if true;
     }
@@ -14,3 +11,4 @@ service firebase.storage {
     }
   }
 }
+

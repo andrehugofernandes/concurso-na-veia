@@ -29,7 +29,8 @@ import {
   LuCrown,
   LuChevronDown,
   LuChevronUp,
-  LuActivity
+  LuActivity,
+  LuTrendingUp
 } from "react-icons/lu";
 import { cn } from "@/lib/utils";
 
@@ -61,7 +62,7 @@ interface MenuSection {
   items: MenuItem[];
 }
 
-// Menu items organizados por seções temáticas (Merged: Project + Reference)
+// Menu items organizados para o propósito de Gestão de Cursos, Editais e Alunos
 const ALL_MENU_SECTIONS: MenuSection[] = [
   {
     title: "Estudo",
@@ -69,9 +70,9 @@ const ALL_MENU_SECTIONS: MenuSection[] = [
       { id: "aulas", label: "Aulas", href: "/aulas", icon: LuBookOpen },
       { id: "plano-estudos", label: "Plano de Estudos", href: "/plano-estudos", icon: LuList },
       {
-        id: "petrolingo",
-        label: "PetroLingo",
-        href: "/aulas/ingles/petrolingo",
+        id: "naveialingo",
+        label: "NaVeiaLingo",
+        href: "/aulas/ingles/naveialingo",
         icon: LuCrown,
         badge: "ELITE TOTAL",
       },
@@ -89,7 +90,7 @@ const ALL_MENU_SECTIONS: MenuSection[] = [
       },
       {
         id: "maratona-100",
-        label: "Maratona 100",
+        label: "Maratona Oficial",
         href: "/maratona-100",
         icon: LuFlame,
       },
@@ -103,92 +104,49 @@ const ALL_MENU_SECTIONS: MenuSection[] = [
     ],
   },
   {
-    title: "Conteúdo",
+    title: "Cursos & Editais",
     items: [
       {
-        id: "posts",
-        label: "Posts",
-        href: "/admin/posts",
+        id: "novo-curso",
+        label: "Criar Curso (Edital)",
+        href: "/admin/cursos/novo",
         icon: LuFileText,
       },
-      { id: "pages", label: "Páginas", href: "/admin/pages", icon: LuFile },
-      {
-        id: "categories",
-        label: "Categorias",
-        href: "/admin/categories",
-        icon: LuFolderTree,
-      },
-      { id: "media", label: "Mídia", href: "/admin/media", icon: LuImage },
-    ],
-  },
-  {
-    title: "Gerenciar",
-    items: [
-      { id: "menus", label: "Menus", href: "/admin/menus", icon: LuList },
-      {
-        id: "comments",
-        label: "Comentários",
-        href: "/admin/comments",
-        icon: LuMessageSquare,
-        badge: 5,
-      },
-      {
-        id: "users",
-        label: "Usuários",
-        href: "/admin/users",
-        icon: LuUsers,
-      },
-    ],
-  },
-  {
-    title: "Marketing",
-    items: [
-      {
-        id: "cta-popups",
-        label: "CTA Popups",
-        href: "/admin/cta-popups",
-        icon: LuBell,
-      },
-      {
-        id: "accordions",
-        label: "Acordeons",
-        href: "/admin/accordions",
-        icon: LuLayers,
-      },
-      {
-        id: "image-galleries",
-        label: "Galeria de Imagens",
-        href: "/admin/image-galleries",
-        icon: LuImage,
-      },
-    ],
-  },
-  {
-    title: "Sistema",
-    items: [
       {
         id: "tenants",
-        label: "Tenants / White-Label",
-        href: "/admin/tenants",
+        label: "Concursos & Editais",
+        href: "/admin/cursos",
         icon: LuLayers,
       },
       {
-        id: "backups",
-        label: "Backups",
-        href: "/admin/backups",
-        icon: LuDatabase,
+        id: "editais-base",
+        label: "Editais Base (PDFs)",
+        href: "/admin/editais-base",
+        icon: LuFileText,
+      },
+    ],
+  },
+  {
+    title: "Gestão & Atendimento",
+    items: [
+      {
+        id: "financeiro",
+        label: "Vendas & Relatórios",
+        href: "/admin/financeiro",
+        icon: LuTrendingUp,
+        badge: "NOVO",
       },
       {
-        id: "audit-logs",
-        label: "Auditoria",
-        href: "/admin/audit-logs",
-        icon: LuShieldCheck,
+        id: "usuarios",
+        label: "Usuários & Alunos",
+        href: "/admin/usuarios",
+        icon: LuUsers,
       },
       {
-        id: "settings",
-        label: "Configurações",
-        href: "/admin/settings",
-        icon: LuSettings,
+        id: "tickets",
+        label: "Tickets de Suporte",
+        href: "/admin/tickets",
+        icon: LuLifeBuoy,
       },
     ],
   },
@@ -210,11 +168,11 @@ export function AdminSidebar({
   const userPlan = profile?.plan?.toLowerCase() || "";
 
   // Filtra as seções e itens com base no cargo (role) e plano
-  // O PetroLingo é exclusivo para Admin ou Plano Ouro/Elite
+  // O NaVeiaLingo é exclusivo para Admin ou Plano Ouro/Elite
   const allSections = ALL_MENU_SECTIONS.map((section) => ({
     ...section,
     items: section.items.filter((item) => {
-      if (item.id === "petrolingo") {
+      if (item.id === "naveialingo") {
         const hasAccess =
           isAdmin || userPlan === "elite-total" || userPlan === "ouro";
         return hasAccess;
@@ -377,7 +335,7 @@ export function AdminSidebar({
                     const Icon = item.icon;
                     const isActive = (() => {
                       if (pathname === item.href) return true;
-                      if (item.id === "aulas" && pathname.startsWith("/aulas/ingles/petrolingo")) {
+                      if (item.id === "aulas" && pathname.startsWith("/aulas/ingles/naveialingo")) {
                         return false;
                       }
                       return pathname.startsWith(item.href + "/");
@@ -452,11 +410,15 @@ export function AdminSidebar({
                     // Check if strictly equal
                     if (pathname === item.href) return true;
 
-                    // Specific priority for PetroLingo
+                    // Specific priority for NaVeiaLingo
                     if (
                       item.id === "aulas" &&
-                      pathname.startsWith("/aulas/ingles/petrolingo")
+                      pathname.startsWith("/aulas/ingles/naveialingo")
                     ) {
+                      return false;
+                    }
+                    
+                    if (item.id === "tenants" && pathname.startsWith("/admin/cursos/novo")) {
                       return false;
                     }
 

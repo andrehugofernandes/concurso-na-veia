@@ -25,14 +25,16 @@ export default async function SaaSAdminLayout({
     redirect('/login');
   }
 
-  // Verificar se é admin
+  // Verificar se é admin ou sysadmin
   const { data: profile } = await supabase
     .from('profiles')
     .select('role')
     .eq('id', user.id)
     .single();
 
-  if (!profile || profile.role !== 'admin') {
+  const userRole = (profile?.role || '').toLowerCase();
+
+  if (!profile || (userRole !== 'admin' && userRole !== 'sysadmin')) {
     redirect('/'); // Redireciona usuários comuns para a home
   }
 

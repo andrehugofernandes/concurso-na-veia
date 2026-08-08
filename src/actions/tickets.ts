@@ -158,6 +158,29 @@ export const updateTicketStatusAction = actionClient
       throw new Error("Erro ao atualizar status: " + error.message);
     }
 
+    // Notificar o dono do ticket sobre a alteração de status
+    try {
+      const { data: ticket } = await supabase
+        .from("tickets")
+        .select("user_id, subject, assunto")
+        .eq("id", ticketId)
+        .single();
+
+      if (ticket) {
+        const statusLabel = status === 'CLOSED' ? 'Encerrado' : status === 'PENDING' ? 'Em Andamento' : 'Aberto';
+        await supabase.from("notifications").insert({
+          user_id: ticket.user_id,
+          type: "ticket",
+          title: `Status do Chamado: ${statusLabel}`,
+          message: `O status do seu chamado "${ticket.subject || ticket.assunto || 'Suporte'}" foi alterado para ${statusLabel}.`,
+          priority: status === 'CLOSED' ? 'info' : 'warning',
+          action_url: `/suporte/${ticketId}`,
+        });
+      }
+    } catch (e) {
+      console.warn("Falha ao notificar sobre alteração de status:", e);
+    }
+
     revalidatePath(`/suporte/${ticketId}`);
     revalidatePath(`/admin/tickets/${ticketId}`);
     revalidatePath(`/admin/tickets`);

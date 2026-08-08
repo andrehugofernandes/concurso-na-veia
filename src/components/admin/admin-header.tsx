@@ -195,7 +195,7 @@ export function AdminHeader({
     simulados: "Simulados",
     "simulado-rapido": "Simulados Rápidos",
     "simulado-especifico": "Simulados Específicos",
-    "maratona-100": "Maratona 100",
+    "maratona-100": "Maratona Oficial",
     historico: "Histórico",
     rankings: "Rankings",
     perfil: "Perfil",
@@ -283,6 +283,10 @@ export function AdminHeader({
 
   // Função para processar o título do dashboard
   const getDisplayTitle = () => {
+    const isUserAdmin = profile?.role?.toUpperCase() === "SYSADMIN" || profile?.role?.toUpperCase() === "ADMIN" || userRole?.toUpperCase() === "ADMIN";
+    if (isUserAdmin && (pathname === "/dashboard" || pathname === "/admin" || pageTitle === "Dashboard do Aluno")) {
+      return "Painel do Administrador";
+    }
     if (pageTitle) return pageTitle;
     const title = getCurrentPageName();
     if (typeof window !== "undefined" && window.innerWidth < 768) {
@@ -340,8 +344,10 @@ export function AdminHeader({
         <div className="flex items-center space-x-2 md:space-x-4 flex-shrink-0">
           {/* Seja Pro CTA - esconde quando sidebar overlay aberta */}
           {!isMobileSidebarOpen &&
-            userRole !== "ADMIN" &&
-            userRole !== "SYSADMIN" &&
+            userRole?.toUpperCase() !== "ADMIN" &&
+            userRole?.toUpperCase() !== "SYSADMIN" &&
+            profile?.role?.toUpperCase() !== "ADMIN" &&
+            profile?.role?.toUpperCase() !== "SYSADMIN" &&
             (!profile?.plan || profile.plan === "free") && (
               <Link
                 href="/seja-pro"

@@ -21,22 +21,29 @@ export class GeminiProvider implements AIProvider {
     });
   }
 
+  async generateResponse(prompt: string, systemInstruction?: string): Promise<string> {
+    const fullPrompt = systemInstruction ? `${systemInstruction}\n\n${prompt}` : prompt;
+    const result = await this.model.generateContent(fullPrompt);
+    const response = await result.response;
+    return response.text();
+  }
+
   async generateQuestion(options: AIProviderOptions): Promise<Questao> {
     const { materia, dificuldade, assunto, contexto, questoesAnteriores } = options;
 
-    const prompt = `Você é um elaborador de provas com 20 anos de experiência na banca CESGRANRIO, especialista em concursos da Petrobras.
+    const prompt = `Você é um elaborador de provas com 20 anos de experiência na banca ${contexto?.banca || "CESGRANRIO"}, especialista em concursos da ${contexto?.concurso_nome || "Petrobras"}.
 
-TAREFA: Crie UMA questão de ${materia} ${assunto ? `(Assunto: ${assunto})` : ""} para concurso Petrobras ${contexto?.nivel ? `nível ${contexto.nivel}` : ""} ${contexto?.cargo ? `(Cargo: ${contexto.cargo})` : ""}
+TAREFA: Crie UMA questão de ${materia} ${assunto ? `(Assunto: ${assunto})` : ""} para o concurso ${contexto?.concurso_nome || "Petrobras"} ${contexto?.nivel ? `nível ${contexto.nivel}` : ""} ${contexto?.cargo ? `(Cargo: ${contexto.cargo})` : ""}
 Dificuldade: ${dificuldade || "Média"}
 
-═══════════════════════════════════════════
-ESTRUTURA OBRIGATÓRIA DO ENUNCIADO (PADRÃO CESGRANRIO REAL)
+${contexto?.bancaContexto ? `═══════════════════════════════════════════\nPERFIL HACKER DA BANCA (${contexto.banca})\n═══════════════════════════════════════════\n${contexto.bancaContexto}\n\n` : ""}═══════════════════════════════════════════
+ESTRUTURA OBRIGATÓRIA DO ENUNCIADO (PADRÃO ${contexto?.banca || "CESGRANRIO"} REAL)
 ═══════════════════════════════════════════
 
 O campo "enunciado" deve ter DUAS PARTES obrigatórias, separadas por \\n\\n:
 
 PARTE 1 — CONTEXTUALIZAÇÃO / SITUAÇÃO-PROBLEMA (obrigatório):
-${materia.toLowerCase().includes("português") || materia.toLowerCase().includes("portug") ? `Para LÍNGUA PORTUGUESA: Um parágrafo de 4 a 8 linhas simulando um trecho de reportagem, artigo técnico, relatório corporativo ou texto literário. Use linguagem formal e culta com estrutura sintática variada (orações subordinadas, apostos, inversões). Tema pertinente à realidade corporativa, energia ou economia brasileira.` : ""}${materia.toLowerCase().includes("matemát") || materia.toLowerCase().includes("matemat") ? `Para MATEMÁTICA: Uma situação-problema realista e contextualizada no universo da Petrobras ou do mercado de trabalho (produção de barris, custos operacionais, logística, proporções, juros, estatísticas). Forneça TODOS os dados numéricos necessários. O problema deve exigir raciocínio em 2-3 etapas, não apenas uma operação trivial.` : ""}${materia.toLowerCase().includes("inglês") || materia.toLowerCase().includes("ingles") || materia.toLowerCase().includes("inglesa") ? `Para LÍNGUA INGLESA: Um parágrafo de 4 a 8 linhas EM INGLÊS, simulando um trecho de artigo técnico, relatório de mercado ou publicação do setor de energia/petróleo. Vocabulário técnico e formal. O comando da questão deve ser em PORTUGUÊS.` : ""}${materia.toLowerCase().includes("específ") || materia.toLowerCase().includes("especif") || materia.toLowerCase().includes("bloco") ? `Para CONHECIMENTOS ESPECÍFICOS: Um cenário técnico/normativo realista de 4 a 8 linhas descrevendo uma situação operacional, problema técnico, aplicação de norma ou estudo de caso do cotidiano profissional do cargo "${contexto?.cargo || "técnico"}". Use terminologia técnica precisa e dados concretos.` : ""}${!materia.toLowerCase().includes("português") && !materia.toLowerCase().includes("portug") && !materia.toLowerCase().includes("matemát") && !materia.toLowerCase().includes("matemat") && !materia.toLowerCase().includes("inglês") && !materia.toLowerCase().includes("ingles") && !materia.toLowerCase().includes("inglesa") && !materia.toLowerCase().includes("específ") && !materia.toLowerCase().includes("especif") && !materia.toLowerCase().includes("bloco") ? `Um parágrafo de 4 a 8 linhas contextualizando o tema com um cenário realista, pertinente à indústria do petróleo, energia, economia brasileira ou realidade corporativa. Use linguagem formal e dados concretos quando aplicável.` : ""}
+${materia.toLowerCase().includes("português") || materia.toLowerCase().includes("portug") ? `Para LÍNGUA PORTUGUESA: Um parágrafo de 4 a 8 linhas simulando um trecho de reportagem, artigo técnico, relatório corporativo ou texto literário. Use linguagem formal e culta com estrutura sintática variada (orações subordinadas, apostos, inversões). Tema pertinente à realidade corporativa ou cenário nacional aplicável ao cargo.` : ""}${materia.toLowerCase().includes("matemát") || materia.toLowerCase().includes("matemat") ? `Para MATEMÁTICA: Uma situação-problema realista e contextualizada no universo do trabalho (produção, logística, proporções, juros, estatísticas) aplicável ao concurso ${contexto?.concurso_nome || ""}. Forneça TODOS os dados numéricos necessários. O problema deve exigir raciocínio em 2-3 etapas, não apenas uma operação trivial.` : ""}${materia.toLowerCase().includes("inglês") || materia.toLowerCase().includes("ingles") || materia.toLowerCase().includes("inglesa") ? `Para LÍNGUA INGLESA: Um parágrafo de 4 a 8 linhas EM INGLÊS, simulando um trecho de artigo técnico ou publicação do setor relacionado ao concurso. Vocabulário técnico e formal. O comando da questão deve ser em PORTUGUÊS.` : ""}${materia.toLowerCase().includes("específ") || materia.toLowerCase().includes("especif") || materia.toLowerCase().includes("bloco") ? `Para CONHECIMENTOS ESPECÍFICOS: Um cenário técnico/normativo realista de 4 a 8 linhas descrevendo uma situação operacional, problema técnico, aplicação de norma ou estudo de caso do cotidiano profissional do cargo "${contexto?.cargo || "técnico"}". Use terminologia técnica precisa e dados concretos.` : ""}${!materia.toLowerCase().includes("português") && !materia.toLowerCase().includes("portug") && !materia.toLowerCase().includes("matemát") && !materia.toLowerCase().includes("matemat") && !materia.toLowerCase().includes("inglês") && !materia.toLowerCase().includes("ingles") && !materia.toLowerCase().includes("inglesa") && !materia.toLowerCase().includes("específ") && !materia.toLowerCase().includes("especif") && !materia.toLowerCase().includes("bloco") ? `Um parágrafo de 4 a 8 linhas contextualizando o tema com um cenário realista, pertinente à realidade corporativa do órgão. Use linguagem formal e dados concretos quando aplicável.` : ""}
 
 PARTE 2 — COMANDO DA QUESTÃO (obrigatório):
 Após a contextualização, uma pergunta ou instrução PRECISA e ESPECÍFICA que:

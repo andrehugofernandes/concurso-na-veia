@@ -16,7 +16,7 @@ const NAV_LINKS = [
 const ALL_LINKS = [
   { href: "/#cursos", label: "Cursos" },
   { href: "/#demo", label: "Demonstração" },
-  { href: "/#petrolingo", label: "PetroLingo" },
+  { href: "/#naveialingo", label: "NaVeiaLingo" },
   { href: "/#resultados", label: "Resultados" },
   { href: "/#depoimentos", label: "Depoimentos" },
   { href: "/#pricing", label: "Planos" },

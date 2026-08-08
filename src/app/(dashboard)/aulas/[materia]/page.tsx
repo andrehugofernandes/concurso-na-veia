@@ -11,6 +11,7 @@ import { getCurrentUserAction } from "@/lib/actions/auth";
 import { Usuario } from "@/lib/types";
 import { getProfissaoById } from "@/lib/profissoes-edital";
 import { useSetPageTitle } from "@/contexts/UIContext";
+import { useDynamicAulas } from "@/hooks/useDynamicAulas";
 
 // Mapeamento de IDs do registro para IDs do profissoes-edital
 const CARGO_ID_MAP: Record<string, string> = {
@@ -37,6 +38,8 @@ export default function MateriaPage({ params }: PageProps) {
     Record<string, boolean>
   >({});
   const [usuario, setUsuario] = useState<Usuario | null>(null);
+  
+  const { programa: dynamicPrograma, loading: dynamicLoading, isDynamic } = useDynamicAulas(usuario?.cargo);
 
   // Access Control Logic - Hooks must be at top level
   const [userPlan, setUserPlan] = useState<string | null>(null);
@@ -62,7 +65,20 @@ export default function MateriaPage({ params }: PageProps) {
 
   useEffect(() => {
     const loadMateriaData = async () => {
+      if (dynamicLoading) return; // Aguarda o hook terminar
+      
       const userCargo = usuario?.cargo || "operacao";
+      
+      // Se for curso dinâmico gerado pelo Wizard, buscar no hook
+      if (isDynamic && dynamicPrograma) {
+         const dynMateria = dynamicPrograma.find(m => m.id === materiaId);
+         if (dynMateria) {
+            setMateria(dynMateria);
+            setLoading(false);
+            return;
+         }
+      }
+
       const userConcursoSlug = getProfissaoById(userCargo)?.concurso || (usuario as any)?.user_metadata?.concurso || "petrobras";
 
       // 1. Verificar se é uma matéria padrão
@@ -149,7 +165,7 @@ export default function MateriaPage({ params }: PageProps) {
     };
 
     loadMateriaData();
-  }, [materiaId, usuario]);
+  }, [materiaId, usuario, dynamicLoading, isDynamic, dynamicPrograma]);
 
   const { getProgress, loading: progressLoading } = useAllAulasProgress();
 

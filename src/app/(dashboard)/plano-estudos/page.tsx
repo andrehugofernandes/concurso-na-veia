@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Usuario } from "@/lib/types";
-import { salvarUsuario, carregarUsuario } from "@/lib/utils";
-import { getProgramaDeEstudos } from "@/data/programa-estudos";
+import { carregarUsuario, salvarUsuario } from "@/lib/utils";
+import { useDynamicAulas } from "@/hooks/useDynamicAulas";
 import { MateriaConteudo } from "@/data/conteudo";
 import { progressService, LessonProgress } from "@/lib/services/progress";
 import { useUser } from "@/contexts/UserContext";
@@ -64,10 +64,13 @@ export default function PlanoEstudosPage() {
   const router = useRouter();
   const { profile, loading: loadingUser } = useUser();
   const [usuario, setUsuario] = useState<Usuario | null>(null);
+  
+  const { programa: dynamicPrograma, loading: dynamicLoading } = useDynamicAulas(usuario?.cargo || "operacao");
+  const programa = dynamicPrograma;
+
   const [horasSemanais, setHorasSemanais] = useState<number>(15);
   const [configurando, setConfigurando] = useState<boolean>(true);
   const [cronograma, setCronograma] = useState<DiaEstudo[]>([]);
-  const [programa, setPrograma] = useState<MateriaConteudo[]>([]);
   const [dataConclusao, setDataConclusao] = useState<Date | null>(null);
   const [progressoModulos, setProgressoModulos] = useState<LessonProgress[]>([]);
   const [topicosDificuldade, setTopicosDificuldade] = useState<
@@ -106,10 +109,15 @@ export default function PlanoEstudosPage() {
 
     if (dadosSalvos) {
       setUsuario(dadosSalvos);
-      const prog = getProgramaDeEstudos(dadosSalvos.cargo || "");
-      setPrograma(prog);
+    } else {
+      router.push("/login");
+    }
+  }, [router, profile, loadingUser]);
 
-      const fetchTelemetry = async () => {
+  useEffect(() => {
+    if (!usuario || dynamicLoading || !programa) return;
+
+    const fetchTelemetry = async () => {
         try {
           const progressData = await progressService.getProgress();
           setProgressoModulos(progressData);
@@ -120,7 +128,7 @@ export default function PlanoEstudosPage() {
               const parts = p.lessonId.split("/");
               if (parts.length === 2) {
                 const [matId, topId] = parts;
-                const materiaMatch = prog.find((m) => m.id === matId);
+                const materiaMatch = programa.find((m) => m.id === matId);
                 const topicoMatch = materiaMatch?.topicos.find((t) => t.id === topId);
                 if (topicoMatch) {
                   fracos.push({
@@ -154,10 +162,7 @@ export default function PlanoEstudosPage() {
           setConfigurando(false);
         } catch (e) {}
       }
-    } else {
-      router.push("/login");
-    }
-  }, [router, profile, loadingUser]);
+  }, [usuario, dynamicLoading, programa]);
 
   const gerarCronograma = () => {
     if (!usuario || programa.length === 0) return;
@@ -246,7 +251,7 @@ export default function PlanoEstudosPage() {
   const simulacaoDataEstimada = new Date();
   simulacaoDataEstimada.setDate(simulacaoDataEstimada.getDate() + (semanasEstimadas * 7));
 
-  if (loadingUser || !usuario) {
+  if (loadingUser || dynamicLoading || !usuario) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary" />

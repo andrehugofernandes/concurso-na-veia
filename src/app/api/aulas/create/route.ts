@@ -23,7 +23,8 @@ export async function POST(request: Request) {
       .eq("id", user.id)
       .single();
 
-    if (!profile || profile.role !== "admin") {
+    const userRole = (profile?.role || "").toLowerCase();
+    if (!profile || (userRole !== "admin" && userRole !== "sysadmin")) {
       return NextResponse.json({ error: "Permissão de administrador necessária" }, { status: 403 });
     }
 

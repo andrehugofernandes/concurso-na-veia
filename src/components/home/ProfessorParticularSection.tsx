@@ -135,7 +135,7 @@ export default function ProfessorParticularSection() {
                 </span>
               </div>
               <div className="text-slate-900 dark:text-white font-black text-sm">
-                1.248 alunos estudando agora
+                Tutor IA Online • Resposta Instantânea
               </div>
             </div>
           </div>

@@ -13,10 +13,28 @@ export function getAIProvider(): AIProvider {
 
   const providers: { name: string; provider: AIProvider }[] = [];
 
-  // 1. Gemini (Nativo) - Main provider as requested
+  // 1. Groq (Alta Velocidade + Cota Grátis Ativa)
+  if (process.env.GROQ_API_KEY) {
+    try {
+      providers.push({
+        name: "Groq (Llama 3.3 70B)",
+        provider: new OpenAIProvider(
+          "Groq",
+          "https://api.groq.com/openai/v1",
+          process.env.GROQ_API_KEY,
+          "llama-3.3-70b-versatile"
+        ),
+      });
+    } catch (e) {
+      console.error("[AI-FACTORY] Erro ao carregar Groq:", e);
+    }
+  }
+
+  // 2. Gemini (Nativo)
   if (
     process.env.GEMINI_API_KEY &&
-    process.env.GEMINI_API_KEY !== "YOUR_GEMINI_API_KEY_HERE"
+    process.env.GEMINI_API_KEY !== "YOUR_GEMINI_API_KEY_HERE" &&
+    process.env.GEMINI_API_KEY.startsWith("AIza")
   ) {
     try {
       providers.push({

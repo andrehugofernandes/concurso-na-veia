@@ -1,7 +1,7 @@
-# Petrobras Quest: PRD Unificado
+# Concurso Na Veia: PRD Unificado
 
 ## Visão Geral
-O **Petrobras Quest** é uma plataforma de estudo gamificada focada na preparação para o concurso da Petrobras 2026. A aplicação utiliza inteligência artificial avançada para geração de simulados, trilhas de aprendizagem dinâmicas e conteúdos ricos para engajar e preparar os candidatos com alta performance.
+O **Concurso Na Veia** é uma plataforma de estudo gamificada focada na preparação para concursos públicos. A aplicação utiliza inteligência artificial avançada para geração de simulados, trilhas de aprendizagem dinâmicas e conteúdos ricos para engajar e preparar os candidatos com alta performance.
 
 ## Stack Tecnológico
 - **Frontend / Fullstack:** Next.js 15 (App Router).

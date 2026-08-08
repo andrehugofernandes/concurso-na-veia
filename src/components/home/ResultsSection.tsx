@@ -3,15 +3,15 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedElement from '../ui/AnimatedElement';
-import { Users, TrendingUp, Zap, Target, Bot } from 'lucide-react';
+import { CheckCircle2, TrendingUp, Zap, Target, Bot } from 'lucide-react';
 import { gsap } from 'gsap';
 
 const stats = [
   {
-    icon: Users,
-    value: '12K+',
-    label: 'Candidatos Beneficiados',
-    sub: 'Mais de 12 mil estudantes já aceleraram seus estudos com a nossa plataforma.',
+    icon: CheckCircle2,
+    value: '100%',
+    label: 'Edital Mapeado',
+    sub: 'Cobertura completa de temas e conteúdos focados nas principais bancas.',
     colorClass: 'bg-green-500/10 text-green-400',
     borderClass: 'border-green-500/15',
     glowClass: 'shadow-green-500/5',

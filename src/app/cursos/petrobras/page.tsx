@@ -494,7 +494,7 @@ export default function VitrinePetrobrasPage() {
                             {p.nivel === "superior" && (
                               <span className="text-[11px] bg-sky-50 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 px-2 py-0.5 rounded-md border border-sky-200 dark:border-sky-800 font-bold flex items-center gap-1">
                                 <span className="w-3.5 h-3.5 rounded-full bg-white flex items-center justify-center shadow-sm">
-                                  <img src="/images/petrolingo/petrolingo.png" alt="PetroLingo" className="w-2.5 h-2.5 object-contain" />
+                                  <img src="/images/naveialingo/naveialingo.png" alt="NaVeiaLingo" className="w-2.5 h-2.5 object-contain" />
                                 </span>
                                 Inglês
                               </span>
@@ -561,11 +561,11 @@ export default function VitrinePetrobrasPage() {
                       {/* Botão de Ação Direta com Gradient do Skin System */}
                       <Link
                         href={`/register?concurso=petrobras&cargo=${p.id}&nivel=${p.nivel === "superior" ? "superior" : "medio"}`}
-                        className="w-full py-3.5 px-4 rounded-xl bg-primary hover:bg-primary/90 text-white hover:text-white group-hover:text-white font-black text-sm transition-all duration-300 flex items-center justify-center gap-2 shadow-md shadow-primary/20 group-hover:scale-[1.02]"
-                        style={{ backgroundImage: "var(--primary-gradient)" }}
+                        className="w-full py-3.5 px-4 rounded-xl bg-primary hover:bg-primary/90 !text-white hover:!text-white group-hover:!text-white font-black text-sm transition-all duration-300 flex items-center justify-center gap-2 shadow-md shadow-primary/20 group-hover:scale-[1.02]"
+                        style={{ backgroundImage: "var(--primary-gradient)", color: "#ffffff" }}
                       >
-                        Garantir Vaga neste Cargo
-                        <LuArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        <span className="!text-white group-hover:!text-white font-black">Garantir Vaga neste Cargo</span>
+                        <LuArrowRight className="w-4 h-4 !text-white group-hover:!text-white group-hover:translate-x-1 transition-transform" />
                       </Link>
                     </div>
                   </motion.div>
@@ -585,11 +585,11 @@ export default function VitrinePetrobrasPage() {
           </p>
           <Link
             href="/register?concurso=petrobras"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary hover:bg-primary/90 text-white hover:text-white group-hover:text-white font-black text-base shadow-xl shadow-primary/30 hover:scale-105 transition-all"
-            style={{ backgroundImage: "var(--primary-gradient)" }}
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary hover:bg-primary/90 !text-white hover:!text-white group-hover:!text-white font-black text-base shadow-xl shadow-primary/30 hover:scale-105 transition-all"
+            style={{ backgroundImage: "var(--primary-gradient)", color: "#ffffff" }}
           >
-            Iniciar Teste Gratuito Agora
-            <LuArrowRight className="w-5 h-5" />
+            <span className="!text-white group-hover:!text-white font-black">Iniciar Teste Gratuito Agora</span>
+            <LuArrowRight className="w-5 h-5 !text-white group-hover:!text-white" />
           </Link>
         </div>
 

@@ -133,7 +133,7 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
         requiredPlan: 'Ouro',
         concursos: ['petrobras', 'bb'],
         topicos: [
-            { id: 'petrolingo', titulo: 'Petro-Lingo', descricao: 'Aprenda inglês técnico com gamificação no estilo Duolingo', duracao: 'Prática Livre', ordem: 1 },
+            { id: 'naveialingo', titulo: 'Petro-Lingo', descricao: 'Aprenda inglês técnico com gamificação no estilo Duolingo', duracao: 'Prática Livre', ordem: 1 },
             { id: 'reading-strategies', titulo: 'Reading Strategies', descricao: 'Técnicas de leitura e skimming', duracao: '6 min', ordem: 2 },
             { id: 'verb-tenses', titulo: 'Verb Tenses', descricao: 'Tempos verbais em inglês', duracao: '8 min', ordem: 3 },
             { id: 'connectors', titulo: 'Connectors', descricao: 'Palavras de ligação e transição', duracao: '5 min', ordem: 4 },
@@ -343,8 +343,69 @@ export const CONTEUDO_MATERIAS: MateriaConteudo[] = [
             { id: 'atos-administrativos', titulo: 'Atos Administrativos', descricao: 'Requisitos, atributos e extinção de atos públicos', duracao: '25 min', ordem: 2 },
             { id: 'direitos-fundamentais', titulo: 'Direitos e Garantias Fundamentais', descricao: 'Artigo 5º da CF/88 e remédios constitucionais', duracao: '30 min', ordem: 3 },
         ]
+    },
+    // BANCO DO BRASIL
+    {
+        id: 'conhecimentos-bancarios',
+        nome: 'Conhecimentos Bancários',
+        descricao: 'Estrutura do Sistema Financeiro Nacional, produtos bancários e garantias',
+        icone: '🏦',
+        cor: 'from-yellow-500 to-amber-600',
+        requiredPlan: 'Bronze',
+        concursos: ['banco-do-brasil'],
+        topicos: [
+            { id: 'sistema-financeiro-nacional-sfn', titulo: 'Sistema Financeiro Nacional (SFN)', descricao: 'Composição, órgãos normativos e supervisores', duracao: '25 min', ordem: 1 },
+            { id: 'mercado-financeiro-e-seus-desdobramentos', titulo: 'Mercado financeiro e seus desdobramentos', descricao: 'Mercados monetário, de crédito, de capitais e de câmbio', duracao: '30 min', ordem: 2 },
+            { id: 'produtos-e-servicos-bancarios', titulo: 'Produtos e serviços bancários', descricao: 'Contas, depósitos, meios de pagamento e operações de crédito', duracao: '35 min', ordem: 3 },
+            { id: 'esg-sustentabilidade-e-etica-bancaria', titulo: 'ESG, sustentabilidade e ética bancária', descricao: 'Princípios de sustentabilidade e integridade corporativa no BB', duracao: '20 min', ordem: 4 }
+        ]
+    },
+    {
+        id: 'atendimento-vendas',
+        nome: 'Atendimento e Vendas no Setor Bancário',
+        descricao: 'Técnicas de negociação, satisfação do cliente e Código de Defesa do Consumidor',
+        icone: '🤝',
+        cor: 'from-blue-600 to-indigo-700',
+        requiredPlan: 'Bronze',
+        concursos: ['banco-do-brasil'],
+        topicos: [
+            { id: 'tecnicas-de-vendas-e-negociacao-bancaria', titulo: 'Técnicas de vendas e negociação bancária', descricao: 'Processo de vendas e superação de objeções no ambiente bancário', duracao: '30 min', ordem: 1 },
+            { id: 'nocoes-de-marketing-relacional', titulo: 'Noções de marketing relacional', descricao: 'Gestão do relacionamento e retenção de clientes', duracao: '25 min', ordem: 2 },
+            { id: 'gestao-da-experiencia-do-cliente', titulo: 'Gestão da experiência do cliente', descricao: 'Qualidade em serviços e jornada do cliente bancário', duracao: '20 min', ordem: 3 },
+            { id: 'codigo-de-defesa-do-consumidor-bancario', titulo: 'Código de Defesa do Consumidor bancário', descricao: 'Direitos básicos do consumidor de serviços bancários', duracao: '25 min', ordem: 4 }
+        ]
+    },
+    {
+        id: 'mercado-financeiro',
+        nome: 'Atualidades do Mercado Financeiro',
+        descricao: 'Transformação digital, Open Finance, Pix e inteligência artificial nas finanças',
+        icone: '📊',
+        cor: 'from-emerald-500 to-teal-600',
+        requiredPlan: 'Bronze',
+        concursos: ['banco-do-brasil'],
+        topicos: [
+            { id: 'lingua-inglesa-aplicada-a-financas', titulo: 'Língua Inglesa aplicada a finanças', descricao: 'Vocabulário bancário e interpretação de textos financeiros', duracao: '20 min', ordem: 1 },
+            { id: 'matematica-financeira-e-raciocinio-logico', titulo: 'Matemática Financeira e Raciocínio Lógico', descricao: 'Juros simples, compostos e equivalência de fluxos de caixa', duracao: '30 min', ordem: 2 },
+            { id: 'atualidades-do-mercado-financeiro', titulo: 'Atualidades do mercado financeiro', descricao: 'Open Finance, Pix, Moedas Digitais (DREX) e fintechs', duracao: '25 min', ordem: 3 }
+        ]
+    },
+    {
+        id: 'ti-bancaria',
+        nome: 'Tecnologia da Informação e Dados',
+        descricao: 'Bancos de dados, linguagens de programação e segurança cibernética',
+        icone: '💻',
+        cor: 'from-violet-600 to-purple-800',
+        requiredPlan: 'Bronze',
+        concursos: ['banco-do-brasil'],
+        topicos: [
+            { id: 'modelagem-de-dados-e-sql', titulo: 'Modelagem de dados e SQL', descricao: 'Modelagem relacional, consultas SQL e bancos de dados NOSQL', duracao: '35 min', ordem: 1 },
+            { id: 'arquitetura-de-microsservicos-e-apis', titulo: 'Arquitetura de microsservicos e APIs', descricao: 'REST, contêineres e integração de sistemas', duracao: '30 min', ordem: 2 },
+            { id: 'logica-de-programacao-e-algoritmos', titulo: 'Lógica de programação e algoritmos', descricao: 'Fundamentos de programação e estrutura de dados', duracao: '40 min', ordem: 3 },
+            { id: 'linguagem-python-e-java', titulo: 'Linguagem Python e Java', descricao: 'Sintaxe, orientação a objetos e desenvolvimento', duracao: '45 min', ordem: 4 }
+        ]
     }
 ];
+
 
 import { CONTEUDO_ESPECIFICO } from './conteudo-especifico';
 CONTEUDO_MATERIAS.push(...CONTEUDO_ESPECIFICO);

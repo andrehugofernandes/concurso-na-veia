@@ -1,6 +1,6 @@
-# 🤖 Petrobras Quest AI - Next.js 15
+# 🤖 Concurso Na Veia AI - Next.js 15
 
-Sistema de estudos gamificado com geração de questões por IA para o concurso da Petrobras 2026.
+Sistema de estudos gamificado com geração de questões por IA para concursos públicos.
 
 ## 🚀 Deploy Rápido na Vercel (RECOMENDADO)
 

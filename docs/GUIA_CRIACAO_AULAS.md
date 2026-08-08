@@ -1,6 +1,6 @@
-# 🏆 GUIA MESTRE DE CRIAÇÃO DE AULAS PREMIUM — PETROBRAS QUEST
+# 🏆 GUIA MESTRE DE CRIAÇÃO DE AULAS PREMIUM — CONCURSO NA VEIA
 
-Este guia serve como a especificação técnica e pedagógica definitiva (Super Prompt) para a geração de novos componentes de aula no **Petrobras Quest**. Siga estas diretrizes de ponta a ponta para construir aulas que unam estética visual espetacular, conformidade com TypeScript e preparação direcionada para a banca **CESGRANRIO**.
+Este guia serve como a especificação técnica e pedagógica definitiva (Super Prompt) para a geração de novos componentes de aula no **Concurso Na Veia**. Siga estas diretrizes de ponta a ponta para construir aulas que unam estética visual espetacular, conformidade com TypeScript e preparação direcionada para a banca **CESGRANRIO**.
 
 ---
 

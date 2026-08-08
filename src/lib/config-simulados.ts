@@ -24,14 +24,14 @@ export const PROVA_TECNICO_PADRAO: ConfiguracaoProva = {
     ],
 };
 
-// Configuração para Simulado Completo (100 questões - modo intensivo)
-export const PROVA_SIMULADO_COMPLETO: ConfiguracaoProva = {
-    totalQuestoes: 100,
+// Configuração para Nível Superior (70 questões - padrão CESGRANRIO)
+export const PROVA_SUPERIOR_PADRAO: ConfiguracaoProva = {
+    totalQuestoes: 70,
     tempoLimiteMinutos: 240, // 4 horas
     distribuicaoMaterias: [
-        { materia: 'Língua Portuguesa', quantidade: 15, peso: 1 },
-        { materia: 'Matemática', quantidade: 15, peso: 1 },
-        { materia: 'Conhecimentos Específicos', quantidade: 70, peso: 2 },
+        { materia: 'Língua Portuguesa', quantidade: 20, peso: 1 },
+        { materia: 'Língua Inglesa', quantidade: 10, peso: 1 },
+        { materia: 'Conhecimentos Específicos', quantidade: 40, peso: 2 },
     ],
 };
 
@@ -227,9 +227,9 @@ export const TIPOS_SIMULADO: ConfigSimulado[] = [
     },
     {
         tipo: 'maratona',
-        nome: 'Maratona 100 Questões',
-        descricao: 'Simulado intensivo com 100 questões',
-        questoes: 100,
+        nome: 'Maratona 70/100',
+        descricao: 'Simulado intensivo com 70 ou 80 questões',
+        questoes: 70,
         tempoMinutos: 240,
         materias: ['Língua Portuguesa', 'Matemática', 'Conhecimentos Específicos'],
     },

@@ -31,6 +31,7 @@ function CompleteContent() {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   // Carregar dados da sessão do Stripe
   useEffect(() => {
@@ -244,17 +245,19 @@ function CompleteContent() {
             <input
               type="checkbox"
               required
+              checked={termsAccepted}
+              onChange={(e) => setTermsAccepted(e.target.checked)}
               className="mt-1 w-4 h-4 rounded border-gray-300 dark:border-slate-600 bg-gray-50 dark:bg-slate-700 text-primary focus:ring-primary"
             />
             <span className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-white transition-colors">
               Li e aceito os{" "}
-              <a href="#" className="text-primary hover:underline font-medium">
+              <Link href="/termos" target="_blank" className="text-primary hover:underline font-medium">
                 Termos de Uso
-              </a>{" "}
+              </Link>{" "}
               e a{" "}
-              <a href="#" className="text-primary hover:underline font-medium">
+              <Link href="/privacidade" target="_blank" className="text-primary hover:underline font-medium">
                 Política de Privacidade
-              </a>
+              </Link>
             </span>
           </label>
 
@@ -262,7 +265,7 @@ function CompleteContent() {
           <div className="flex gap-4 pt-4">
             <button
               type="submit"
-              disabled={loading}
+              disabled={loading || !termsAccepted}
               className="w-full py-4 text-primary-foreground font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.01]"
               style={{ background: "var(--primary-gradient)" }}
             >

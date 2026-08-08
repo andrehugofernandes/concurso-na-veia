@@ -19,40 +19,33 @@ export class FallbackProvider implements AIProvider {
     );
   }
 
-  private isRateLimitOrNetworkError(error: any): boolean {
-    const msg = error?.message || "";
-    return (
-      msg.includes("429") ||
-      msg.toLowerCase().includes("rate limit") ||
-      msg.toLowerCase().includes("quota exceeded") ||
-      msg.toLowerCase().includes("too many requests") ||
-      msg.toLowerCase().includes("fetch failed") ||
-      msg.toLowerCase().includes("timeout") ||
-      msg.toLowerCase().includes("bad gateway") ||
-      msg.toLowerCase().includes("service unavailable")
-    );
+  private isProviderError(error: any): boolean {
+    if (!error) return false;
+    const msg = String(error.message || error).toLowerCase();
+    // Se for erro de JSON.parse em resposta vazia/malformada do provider, também faz fallback
+    if (msg.includes("unexpected token") || msg.includes("json")) {
+      return true;
+    }
+    // Não faz fallback se for erro explícito do nosso próprio código interno sem relação com o provider
+    return true; 
   }
 
   async generateQuestion(options: AIProviderOptions): Promise<Questao> {
     let lastError: any;
 
-    for (let i = this.activeIndex; i < this.providers.length; i++) {
-      const { name, provider } = this.providers[i];
+    for (let i = 0; i < this.providers.length; i++) {
+      const idx = (this.activeIndex + i) % this.providers.length;
+      const { name, provider } = this.providers[idx];
       try {
         console.log(`[FALLBACK] Tentando gerar questão via ${name}...`);
         const questao = await provider.generateQuestion(options);
         
         // Mantém esse provedor ativo como padrão
-        this.activeIndex = i;
+        this.activeIndex = idx;
         return questao;
       } catch (error: any) {
         lastError = error;
-        if (this.isRateLimitOrNetworkError(error)) {
-          console.warn(`[FALLBACK] Provedor ${name} falhou (Rate Limit/Rede). Passando para o próximo da fila...`);
-          continue;
-        }
-        // Se for erro de parsing de JSON ou sintático, joga direto pra depuração rápida
-        throw error;
+        console.warn(`[FALLBACK] Provedor ${name} falhou (${error?.message || error}). Tentando próximo provedor...`);
       }
     }
 
@@ -71,21 +64,18 @@ export class FallbackProvider implements AIProvider {
   ): Promise<Questao[]> {
     let lastError: any;
 
-    for (let i = this.activeIndex; i < this.providers.length; i++) {
-      const { name, provider } = this.providers[i];
+    for (let i = 0; i < this.providers.length; i++) {
+      const idx = (this.activeIndex + i) % this.providers.length;
+      const { name, provider } = this.providers[idx];
       try {
         console.log(`[FALLBACK] Tentando gerar lote de ${quantity} questões via ${name}...`);
         const questoes = await provider.generateQuestionsBatch(options, quantity);
         
-        this.activeIndex = i;
+        this.activeIndex = idx;
         return questoes;
       } catch (error: any) {
         lastError = error;
-        if (this.isRateLimitOrNetworkError(error)) {
-          console.warn(`[FALLBACK-BATCH] Provedor ${name} falhou. Passando para o próximo...`);
-          continue;
-        }
-        throw error;
+        console.warn(`[FALLBACK-BATCH] Provedor ${name} falhou (${error?.message || error}). Tentando próximo...`);
       }
     }
 
@@ -94,5 +84,31 @@ export class FallbackProvider implements AIProvider {
     }
 
     throw new Error(`[FALLBACK-CRÍTICO] Todos os provedores falharam em gerar o lote. Último erro: ${lastError?.message}`);
+  }
+
+  async generateResponse(prompt: string, systemInstruction?: string): Promise<string> {
+    let lastError: any;
+
+    for (let i = 0; i < this.providers.length; i++) {
+      const idx = (this.activeIndex + i) % this.providers.length;
+      const { name, provider } = this.providers[idx];
+      if (provider.generateResponse) {
+        try {
+          console.log(`[FALLBACK] Tentando gerar resposta de texto via ${name}...`);
+          const text = await provider.generateResponse(prompt, systemInstruction);
+          this.activeIndex = idx;
+          return text;
+        } catch (error: any) {
+          lastError = error;
+          console.warn(`[FALLBACK] Provedor ${name} falhou em generateResponse (${error?.message || error}). Tentando próximo...`);
+        }
+      }
+    }
+
+    if (this.activeIndex > 0) {
+      this.activeIndex = 0;
+    }
+
+    throw new Error(`[FALLBACK-CRÍTICO] Todos os provedores falharam em gerar a resposta. Último erro: ${lastError?.message}`);
   }
 }

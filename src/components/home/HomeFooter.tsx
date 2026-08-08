@@ -41,7 +41,7 @@ export default function HomeFooter() {
               <li><Link href="#pricing" className="hover:text-primary transition-colors">Planos e Preços</Link></li>
               <li><Link href="#resultados" className="hover:text-primary transition-colors">Metodologia</Link></li>
               <li><Link href="#testimonials" className="hover:text-primary transition-colors">Casos de Sucesso</Link></li>
-              <li><Link href="#petrolingo" className="hover:text-primary transition-colors">PetroLingo (Inglês Técnico)</Link></li>
+              <li><Link href="#naveialingo" className="hover:text-primary transition-colors">NaVeiaLingo (Inglês Técnico)</Link></li>
             </ul>
           </AnimatedElement>
 

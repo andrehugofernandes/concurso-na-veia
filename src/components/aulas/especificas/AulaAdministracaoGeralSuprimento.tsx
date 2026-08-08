@@ -19,7 +19,9 @@ import {
 } from "../shared";
 import { getModuleVariant } from "@/lib/moduleColors";
 import * as Icons from "react-icons/lu";
-import { LuBookOpen, LuCheck } from "react-icons/lu";
+import { 
+  LuZap, LuActivity, LuCpu, LuShieldAlert, LuCheck, LuX, LuTrendingUp, LuLayers, LuBookOpen
+} from "react-icons/lu";
 import {
   QUIZ_M1,
   QUIZ_M2,
@@ -137,68 +139,81 @@ export default function AulaAdministracaoGeralSuprimento({
               </div>
             </section>
 
-            {/* SEÇÃO 2: ACCORDION DE TEORIA E APROFUNDAMENTO */}
-            {moduleContent?.accordions && moduleContent.accordions.length > 0 && (
-              <section className="space-y-8">
-                <ModuleSectionHeader index={1} title="Aprofundamento Teórico" variant={mv[num]} />
-                <ContentAccordion
-                  mode="stacked"
-                  slides={moduleContent.accordions.map((acc) => ({
-                    titulo: acc.titulo,
-                    conteudo: (
-                      <div
-                        className="text-lg leading-relaxed space-y-4"
-                        dangerouslySetInnerHTML={{ __html: acc.conteudo }}
-                      />
-                    ),
-                  }))}
-                />
-              </section>
-            )}
+            {/* SEÇÃO 2: APROFUNDAMENTO TEÓRICO E CONCEITOS ESSENCIAIS (ACORDEÕES + FLIPCARDS) */}
+            <section className="space-y-8">
+              <ModuleSectionHeader index={1} title="Aprofundamento e Conceitos" variant={mv[num]} />
+              
+              <div className="flex flex-col xl:flex-row gap-8 items-start">
+                {/* Lado Esquerdo: Acordeões (60% da largura em telas grandes) */}
+                {moduleContent?.accordions && moduleContent.accordions.length > 0 && (
+                  <div className="w-full xl:w-3/5 space-y-6">
+                    <h3 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
+                      <LuBookOpen className={`w-6 h-6 text-${mv[num]}-500`} />
+                      Exploração Detalhada
+                    </h3>
+                    <ContentAccordion
+                      mode="stacked"
+                      slides={moduleContent.accordions.map((acc) => ({
+                        titulo: acc.titulo,
+                        conteudo: (
+                          <div
+                            className="text-lg leading-relaxed space-y-4"
+                            dangerouslySetInnerHTML={{ __html: acc.conteudo }}
+                          />
+                        ),
+                      }))}
+                    />
+                  </div>
+                )}
 
-            {/* SEÇÃO 3: FLIPCARDS PREMIUM */}
-            {moduleContent?.flipcards && moduleContent.flipcards.length > 0 && (
-              <section className="space-y-8">
-                <ModuleSectionHeader index={2} title="Conceitos Essenciais" variant={mv[num]} />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {moduleContent.flipcards.map((card, idx) => {
-                    const IconComp = (Icons as any)[card.iconeFrente] || LuBookOpen;
-                    return (
-                      <FlipCard
-                        key={idx}
-                        categoria={card.categoria}
-                        variant={mv[num]}
-                        frente={
-                          <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
-                            <div className={`p-4 bg-${mv[num]}-500/10 rounded-full shadow-inner ring-1 ring-${mv[num]}-500/20`}>
-                              <IconComp className={`w-12 h-12 text-${mv[num]}-500`} />
-                            </div>
-                            <span className="text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
-                              {card.tituloFrente}
-                            </span>
-                            <span className={`text-sm text-${mv[num]}-500/80 font-medium`}>
-                              {card.subtituloFrente}
-                            </span>
-                          </div>
-                        }
-                        verso={
-                          <div className="space-y-4 p-4 flex flex-col justify-center h-full">
-                            <div className={`flex items-center gap-2 text-${mv[num]}-500 font-bold border-b border-${mv[num]}-500/10 pb-3`}>
-                              <LuCheck className="w-5 h-5 shrink-0" />
-                              <span className="tracking-widest uppercase text-xs">{card.tituloVerso}</span>
-                            </div>
-                            <p
-                              className="text-sm leading-relaxed text-muted-foreground"
-                              dangerouslySetInnerHTML={{ __html: card.conteudoVerso }}
-                            />
-                          </div>
-                        }
-                      />
-                    );
-                  })}
-                </div>
-              </section>
-            )}
+                {/* Lado Direito: FlipCards Premium (40% da largura em telas grandes) */}
+                {moduleContent?.flipcards && moduleContent.flipcards.length > 0 && (
+                  <div className="w-full xl:w-2/5 space-y-6">
+                    <h3 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
+                      <LuLayers className={`w-6 h-6 text-${mv[num]}-500`} />
+                      Cardápio de Memorização
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-6">
+                      {moduleContent.flipcards.map((card, idx) => {
+                        const IconComp = (Icons as any)[card.iconeFrente] || LuBookOpen;
+                        return (
+                          <FlipCard
+                            key={idx}
+                            categoria={card.categoria}
+                            variant={mv[num]}
+                            frente={
+                              <div className="flex flex-col items-center justify-center p-6 gap-5 text-center h-full">
+                                <div className={`p-4 bg-${mv[num]}-500/10 rounded-full shadow-inner ring-1 ring-${mv[num]}-500/20`}>
+                                  <IconComp className={`w-12 h-12 text-${mv[num]}-500`} />
+                                </div>
+                                <span className="text-lg font-bold uppercase tracking-tight text-foreground">
+                                  {card.tituloFrente}
+                                </span>
+                                <span className={`text-sm text-${mv[num]}-500/80 font-medium`}>
+                                  {card.subtituloFrente}
+                                </span>
+                              </div>
+                            }
+                            verso={
+                              <div className="space-y-4 p-4 flex flex-col justify-center h-full">
+                                <div className={`flex items-center gap-2 text-${mv[num]}-500 font-bold border-b border-${mv[num]}-500/10 pb-3`}>
+                                  <LuCheck className="w-5 h-5 shrink-0" />
+                                  <span className="tracking-widest uppercase text-xs">{card.tituloVerso}</span>
+                                </div>
+                                <p
+                                  className="text-sm leading-relaxed text-muted-foreground"
+                                  dangerouslySetInnerHTML={{ __html: card.conteudoVerso }}
+                                />
+                              </div>
+                            }
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </section>
 
             {/* SEÇÃO 4: MESA DE REVISÃO E PODCAST (MESMO PADRÃO DA AULA DE INTERPRETAÇÃO DE TEXTO) */}
             {moduleContent && (

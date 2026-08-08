@@ -1,5 +1,6 @@
 # dependencies
-/node_modules
+node_modules/
+**/node_modules/
 /.pnp
 .pnp.js
 
@@ -16,6 +17,9 @@
 # misc
 .DS_Store
 *.pem
+*.crt
+*.key
+certs/
 
 # debug
 npm-debug.log*
@@ -79,3 +83,17 @@ ANTES_DEPOIS_COMPARACAO.md
 BLOCO_III_*.md
 BLOCO_III_*.txt
 README_AUDIT_BLOCO_III.md
+
+# binários e ferramentas
+stripe-cli/
+
+# gemini IDE
+.gemini/
+
+# scripts utilitários temporários
+check_andre_hugo.ts
+delete_user.ts
+find_sysadmin.ts
+update_user_pwd.ts
+fix_user_role.ts
+check_user_roles.ts

@@ -82,7 +82,13 @@ const PLAN_LEVELS: Record<string, number> = {
   'Ouro': 3,
   // Planos do usuário vindos do Stripe/Supabase
   'free': 1,
-  'pro': 2,
+  'aprovado-medio': 1,
+  'aprovado-superior': 2,
+  'elite-medio': 2,
+  'elite-superior': 3,
+  'elite-total': 3,
+  'vitalis-total': 3,
+  'pro': 3,
   'enterprise': 3,
 };
 

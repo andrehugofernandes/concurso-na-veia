@@ -1,6 +1,6 @@
 # Protocolo de Expansão Premium — Contexto para Claude Code
 
-Este documento serve como a "memória de longo prazo" para a evolução do conteúdo pedagógico do projeto Petrobras Quest.
+Este documento serve como a "memória de longo prazo" para a evolução do conteúdo pedagógico do projeto Concurso Na Veia.
 
 ## 1. O Salto de Qualidade (5 → 10 Módulos)
 

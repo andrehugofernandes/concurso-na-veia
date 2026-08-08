@@ -50,19 +50,26 @@ export function useUserProfile() {
                 console.error('Error fetching profile table:', profileError);
             }
 
+            const rawName = (user.user_metadata?.first_name || user.user_metadata?.last_name)
+                ? `${user.user_metadata?.first_name || ''} ${user.user_metadata?.last_name || ''}`.trim()
+                : (user.user_metadata?.full_name || user.user_metadata?.nome || profileData?.nome || '');
+
+            const resolvedFullName = (profileData?.nome && profileData.nome !== 'Usuário') 
+                ? profileData.nome 
+                : (rawName || profileData?.nome || 'Usuário');
+
             // Merge data
             const userProfile: UserProfile = {
                 id: user.id,
                 email: user.email || '',
                 username: profileData?.username || user.user_metadata?.username || '',
-                full_name: profileData?.nome || user.user_metadata?.full_name || user.user_metadata?.nome || '',
-                role: user.user_metadata?.role || 'USER', // Role usually from metadata or specific table, not 'cargo'
+                full_name: resolvedFullName,
+                role: profileData?.role || user.user_metadata?.role || 'USER',
                 cargo: profileData?.cargo || user.user_metadata?.cargo || '',
                 nivel: profileData?.nivel || user.user_metadata?.nivel || '',
                 plan: profileData?.plan || user.user_metadata?.plan || 'free',
                 xp: profileData?.xp || 0,
                 avatar_url: profileData?.avatar_url || user.user_metadata?.avatar_url,
-                // Optional fields that might be added to profiles table later
                 phone: profileData?.phone,
             };
 

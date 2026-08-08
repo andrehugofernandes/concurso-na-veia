@@ -16,6 +16,7 @@ export interface UserProfile {
     avatar_url?: string;
     plan?: string;
     xp?: number;
+    created_at?: string;
 }
 
 interface UserContextType {
@@ -76,6 +77,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
                 xp: profileData?.xp || 0,
                 avatar_url: profileData?.avatar_url || user.user_metadata?.avatar_url,
                 phone: profileData?.phone,
+                created_at: user.created_at,
             };
 
             setProfile(userProfile);

@@ -19,18 +19,20 @@ interface AdminDashboardLayoutProps {
   children: ReactNode;
 }
 
+import { TrialEnforcer } from "@/components/auth/trial-enforcer";
+
 export function AdminDashboardLayout({ children }: AdminDashboardLayoutProps) {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname();
 
-  // Detectar se está dentro de uma aula ou do PetroLingo
+  // Detectar se está dentro de uma aula ou do NaVeiaLingo
   const isInsideLesson = (() => {
     const segments = (pathname || "").split("/").filter(Boolean);
-    const isPetroLingo = segments[0] === "PetroLingo";
+    const isNaVeiaLingo = segments[0] === "NaVeiaLingo";
     const isLesson = segments[0] === "aulas" && segments.length >= 3;
-    return isPetroLingo || isLesson;
+    return isNaVeiaLingo || isLesson;
   })();
 
   // Detectar se é mobile e carregar estado do sidebar
@@ -102,7 +104,9 @@ export function AdminDashboardLayout({ children }: AdminDashboardLayoutProps) {
           toggleSidebar={toggleSidebar}
           closeMobileSidebar={closeMobileSidebar}
         >
-          {children}
+          <TrialEnforcer>
+            {children}
+          </TrialEnforcer>
         </DashboardShell>
       </NotificationCountProvider>
     </HeaderStateProvider>
@@ -133,7 +137,7 @@ function DashboardShell({
 }) {
   const { isStickyNavPinned } = useHeaderState();
 
-  // Mobile: sidebar some completamente ao entrar no PetroLingo ou numa aula
+  // Mobile: sidebar some completamente ao entrar no NaVeiaLingo ou numa aula
   // Desktop: comportamento normal controlado pelo usuário
   const shouldHideSidebar =
     isMobile && isInsideLesson && !isMobileSidebarOpen;
@@ -152,7 +156,7 @@ function DashboardShell({
         } as React.CSSProperties
       }
     >
-      {/* Sidebar - no mobile, some ao entrar no PetroLingo/aulas */}
+      {/* Sidebar - no mobile, some ao entrar no NaVeiaLingo/aulas */}
       <AdminSidebar
         isCollapsed={isMobile ? !isMobileSidebarOpen : isSidebarCollapsed}
         isHidden={shouldHideSidebar}
@@ -174,7 +178,7 @@ function DashboardShell({
         className={cn(
           "transition-all duration-300",
           shouldHideSidebar
-            ? "ml-0" // Mobile + PetroLingo/aulas: sem margem
+            ? "ml-0" // Mobile + NaVeiaLingo/aulas: sem margem
             : isMobile
               ? "ml-14" // Mobile normal: margem da sidebar colapsada
               : isSidebarCollapsed

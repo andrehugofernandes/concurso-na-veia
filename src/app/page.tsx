@@ -7,7 +7,7 @@ import { getCurrentUserAction } from "@/lib/actions/auth";
 import HomeHero from "@/components/home/HomeHero";
 import TrustedBySection from "@/components/home/TrustedBySection";
 import DemoSection from "@/components/home/DemoSection";
-import PetroLingoShowcaseSection from "@/components/home/PetroLingoShowcaseSection";
+import NaVeiaLingoShowcaseSection from "@/components/home/NaVeiaLingoShowcaseSection";
 // Mantido intacto para o próximo MVP:
 // import ProfessorParticularSection from "@/components/home/ProfessorParticularSection";
 import ResultsSection from "@/components/home/ResultsSection";
@@ -53,8 +53,8 @@ export default function HomeLandingPage() {
       {/* Demo Interativo com Tabs */}
       <DemoSection />
 
-      {/* PetroLingo (Inglês Técnico Gamificado - Exclusivo Plano Elite) */}
-      <PetroLingoShowcaseSection />
+      {/* NaVeiaLingo (Inglês Técnico Gamificado - Exclusivo Plano Elite) */}
+      <NaVeiaLingoShowcaseSection />
       {/* Professor Particular 24h (Avatar IA) - Mantido para o próximo MVP */}
       {/* <ProfessorParticularSection /> */}
 

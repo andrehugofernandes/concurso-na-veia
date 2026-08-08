@@ -16,6 +16,8 @@ const gerarQuestaoSchema = z.object({
   contexto: z.object({
     cargo: z.string().optional(),
     nivel: z.string().optional(),
+    banca: z.string().optional(),
+    concurso_nome: z.string().optional(),
   }).optional(),
   questoesAnteriores: z.array(z.string()).optional(),
 });
@@ -51,6 +53,9 @@ export async function gerarQuestaoAction(
           contexto: validated.contexto ? {
             cargo: validated.contexto.cargo || 'Geral',
             nivel: validated.contexto.nivel || 'médio',
+            banca: validated.contexto.banca || 'CESGRANRIO',
+            concurso_nome: validated.contexto.concurso_nome || 'Petrobras',
+            bancaContexto: validated.contexto.banca ? (await import('@/lib/banca-intelligence')).getBancaHackerContext(validated.contexto.banca) : undefined,
           } : undefined,
           questoesAnteriores: validated.questoesAnteriores,
         });

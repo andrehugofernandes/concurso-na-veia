@@ -1,7 +1,7 @@
-# PRD (Product Requirements Document) - Sistema Petrobras Quest
+# PRD (Product Requirements Document) - Sistema Concurso Na Veia
 
 ## Visão Geral do Sistema
-O **Petrobras Quest** é uma plataforma de estudos gamificados focada na preparação para concursos da CESGRANRIO, especificamente para a Petrobras. A aplicação é construída em Next.js 16 e tem como objetivo oferecer um ambiente de aprendizado dinâmico e focado.
+O **Concurso Na Veia** é uma plataforma de estudos gamificados focada na preparação para concursos públicos. A aplicação é construída em Next.js e tem como objetivo oferecer um ambiente de aprendizado dinâmico e focado.
 
 ---
 
