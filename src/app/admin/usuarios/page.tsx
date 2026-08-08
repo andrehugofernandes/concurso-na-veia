@@ -652,7 +652,7 @@ export default function AdminUsuariosPage() {
                 <option value="elite-medio">Elite Médio</option>
                 <option value="elite-superior">Elite Superior</option>
                 <option value="elite-total">💎 Elite Total</option>
-                <option value="vittalis-total">🚀 Vittalis Total</option>
+                <option value="vitalis-total">🚀 Vitalis Total</option>
               </select>
             </div>
 

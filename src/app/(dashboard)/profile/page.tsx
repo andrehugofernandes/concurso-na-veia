@@ -38,6 +38,7 @@ const PLAN_LABELS: Record<string, { label: string; color: string }> = {
   'elite-medio':       { label: 'Elite Médio',        color: 'border-cyan-500 text-cyan-600 bg-cyan-50 dark:bg-cyan-900/20' },
   'elite-superior':    { label: 'Elite Superior',     color: 'border-indigo-500 text-indigo-600 bg-indigo-50 dark:bg-indigo-900/20' },
   'elite-total':       { label: '💎 Elite Total',     color: 'border-amber-500 text-amber-600 bg-amber-50 dark:bg-amber-900/20 font-bold' },
+  'vitalis-total':     { label: '♾️ Vitalis Total',   color: 'border-purple-500 text-purple-600 bg-purple-50 dark:bg-purple-900/20 font-bold' },
 };
 
 const ROLE_CONFIG: Record<string, { label: string; badge: string; icon: typeof Crown }> = {
