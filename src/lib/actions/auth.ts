@@ -192,23 +192,73 @@ export async function getCurrentUserAction(): Promise<ActionResponse<any>> {
       .eq('id', user.id)
       .single();
 
-    if (profileError) {
-      console.warn('Profile not found, using metadata fallback.');
-      return createSuccessResponse({
-        id: user.id,
-        email: user.email,
-        nome: user.user_metadata.nome,
-        nivel: user.user_metadata.nivel,
-        cargo: user.user_metadata.cargo,
-        plan: user.user_metadata.plan,
-        xp: 0,
-        questoes_geradas: 0,
-        user_metadata: user.user_metadata
-      });
+    let certas = profile.questoes_certas || 0;
+    let erradas = profile.questoes_erradas || 0;
+    let totalGeradas = profile.questoes_geradas || (certas + erradas);
+    let sequencia = profile.sequencia_atual || 0;
+
+    try {
+      const { data: attempts } = await supabase
+        .from('user_quiz_attempts')
+        .select('correto, created_at')
+        .eq('user_id', user.id);
+
+      if (attempts && attempts.length > 0) {
+        certas = attempts.filter((a: any) => a.correto).length;
+        erradas = attempts.filter((a: any) => !a.correto).length;
+        totalGeradas = attempts.length;
+
+        // Calcular streak de dias ativos consecutivos
+        const uniqueDates = Array.from(
+          new Set(
+            attempts
+              .map((a: any) =>
+                a.created_at ? new Date(a.created_at).toISOString().split('T')[0] : null
+              )
+              .filter(Boolean)
+          )
+        )
+          .sort()
+          .reverse();
+
+        if (uniqueDates.length > 0) {
+          let currentStreak = 0;
+          const today = new Date().toISOString().split('T')[0];
+          const yesterdayDate = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+
+          let checkDate = uniqueDates.includes(today)
+            ? today
+            : uniqueDates.includes(yesterdayDate)
+            ? yesterdayDate
+            : null;
+
+          if (checkDate) {
+            let target = new Date(checkDate);
+            while (true) {
+              const str = target.toISOString().split('T')[0];
+              if (uniqueDates.includes(str as string)) {
+                currentStreak++;
+                target.setDate(target.getDate() - 1);
+              } else {
+                break;
+              }
+            }
+          }
+          if (currentStreak > 0) {
+            sequencia = currentStreak;
+          }
+        }
+      }
+    } catch {
+      // Caso a tabela ainda não esteja totalmente sincronizada
     }
 
     return createSuccessResponse({
       ...profile,
+      questoes_certas: certas,
+      questoes_erradas: erradas,
+      questoes_geradas: totalGeradas,
+      sequencia_atual: sequencia,
       email: user.email,
       user_metadata: user.user_metadata
     });

@@ -652,7 +652,11 @@ export default function DashboardPage() {
                       </div>
                       <span className="text-xs font-extrabold text-muted-foreground">Questões Resolvidas</span>
                     </div>
-                    <span className="text-sm font-black text-foreground">{userData.questoes_geradas}</span>
+                    <span className="text-sm font-black text-foreground">
+                      {userData.questoes_certas + userData.questoes_erradas > 0
+                        ? userData.questoes_certas + userData.questoes_erradas
+                        : userData.questoes_geradas}
+                    </span>
                   </div>
                 </div>
               </div>

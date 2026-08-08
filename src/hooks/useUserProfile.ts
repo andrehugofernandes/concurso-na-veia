@@ -70,7 +70,7 @@ export function useUserProfile() {
                 plan: profileData?.plan || user.user_metadata?.plan || 'free',
                 xp: profileData?.xp || 0,
                 avatar_url: profileData?.avatar_url || user.user_metadata?.avatar_url,
-                phone: profileData?.phone,
+                phone: profileData?.phone || user.user_metadata?.phone || '',
             };
 
             setProfile(userProfile);

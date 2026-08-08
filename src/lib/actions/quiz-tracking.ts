@@ -40,8 +40,30 @@ export async function recordQuizAttempt(attempt: QuizAttemptRecord) {
       materia_id: attempt.materiaId || "geral",
     });
 
-    if (dbError) {
-      // Se a tabela ainda não existir no schema do banco, atualiza o contador no perfil do usuário
+    // Atualiza estatísticas no perfil do usuário
+    try {
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("questoes_certas, questoes_erradas, questoes_geradas")
+        .eq("id", user.id)
+        .single();
+
+      if (profile) {
+        const certas = (profile.questoes_certas || 0) + (attempt.correto ? 1 : 0);
+        const erradas = (profile.questoes_erradas || 0) + (attempt.correto ? 0 : 1);
+        const total = certas + erradas;
+
+        await supabase
+          .from("profiles")
+          .update({
+            questoes_certas: certas,
+            questoes_erradas: erradas,
+            questoes_geradas: total,
+          })
+          .eq("id", user.id);
+      }
+    } catch (profErr) {
+      // Fallback RPC se tabela tiver restrições
       try {
         if (attempt.correto) {
           await supabase.rpc("increment_profile_score", { p_user_id: user.id, p_correct: 1 });

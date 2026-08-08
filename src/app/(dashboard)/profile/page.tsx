@@ -224,7 +224,7 @@ export default function ProfilePage() {
     .toUpperCase() || '?';
 
   return (
-    <div className="px-4 py-3 md:px-12 md:py-8 pb-20 md:pb-6 max-w-5xl mx-auto space-y-8">
+    <div className="px-4 py-3 md:px-12 md:py-8 pb-20 md:pb-6 w-full space-y-8">
       {/* Back Link */}
       <Link
         href="/dashboard"
